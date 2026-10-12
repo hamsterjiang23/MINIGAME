@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniGame.Core", "MiniGame.Core\MiniGame.Core.csproj", "{E8225BAB-190C-4D06-AE03-90F5464F1EEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniGame.Core.Tests", "MiniGame.Core.Tests\MiniGame.Core.Tests.csproj", "{26F20EB6-30E7-4E54-963A-C7A9199DE22A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8225BAB-190C-4D06-AE03-90F5464F1EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8225BAB-190C-4D06-AE03-90F5464F1EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8225BAB-190C-4D06-AE03-90F5464F1EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8225BAB-190C-4D06-AE03-90F5464F1EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
