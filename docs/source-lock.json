@@ -1,0 +1,732 @@
+{
+  "captured_at": "2026-10-12T18:42:42+08:00",
+  "source_files": [
+    {
+      "path": "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+      "sha256": "ecbce623c966a48a07e26d62240fb15eae0b2928d5e799e6c6f3066d2ac11fd2",
+      "repository_count": 15
+    },
+    {
+      "path": "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+      "sha256": "96cf748bf663cd7ca776ce94eed7aef58fec7a7922d3583253d32af40d7859ea",
+      "repository_count": 15
+    },
+    {
+      "path": "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+      "sha256": "ecf133b53757568ee505bc10d202d148f3b4e0b9e000af17b60c1cf8db35c07b",
+      "repository_count": 14
+    },
+    {
+      "path": "Dependency/研发任务WBS.csv",
+      "sha256": "47ea090d2c5aa2ac7cdf51a04720278ea8d1591f19140e5e9a3d6990ecbd037a",
+      "repository_count": 0
+    },
+    {
+      "path": "Dependency/项目与源码参考索引.csv",
+      "sha256": "90e42661e364a946c790986f2536ff840d759ba7dd5407258588cd6a5f6c6674",
+      "repository_count": 15
+    }
+  ],
+  "expected_count": 15,
+  "repositories": [
+    {
+      "url": "https://github.com/adamico/gatekeeper-insight",
+      "owner": "adamico",
+      "name": "gatekeeper-insight",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/gatekeeper-insight",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "8d4658a4805b645eb9a234be5e90bdaab954f3f6",
+      "origin": "https://github.com/adamico/gatekeeper-insight.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "8d4658a4805b645eb9a234be5e90bdaab954f3f6",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 136,
+      "license_files": [
+        "LICENSE"
+      ],
+      "engine_versions": [
+        {
+          "engine": "Godot",
+          "version": "4.4",
+          "file": "project.godot"
+        }
+      ],
+      "assets_directories": [
+        "Assets",
+        "resources",
+        "scenes"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/AnhKimHaTran/DeadLetterOffice_Day1",
+      "owner": "AnhKimHaTran",
+      "name": "DeadLetterOffice_Day1",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/DeadLetterOffice_Day1",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "cb68456f96ed60e4a7e1e03ce6ccbe83e2227063",
+      "origin": "https://github.com/AnhKimHaTran/DeadLetterOffice_Day1.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "cb68456f96ed60e4a7e1e03ce6ccbe83e2227063",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 51,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 999,
+      "license_files": [],
+      "engine_versions": [
+        {
+          "engine": "Unity",
+          "version": "2022.3.16f1",
+          "file": "ProjectSettings/ProjectVersion.txt"
+        }
+      ],
+      "assets_directories": [
+        "Assets"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:31:56+08:00"
+    },
+    {
+      "url": "https://github.com/Cyanilux/URP_RetroCRTShader",
+      "owner": "Cyanilux",
+      "name": "URP_RetroCRTShader",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/URP_RetroCRTShader",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "ccd515c616f409e7aabda4fd02a46fa97317de10",
+      "origin": "https://github.com/Cyanilux/URP_RetroCRTShader.git",
+      "branch": "master",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "master",
+      "remote_head": "ccd515c616f409e7aabda4fd02a46fa97317de10",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 30,
+      "license_files": [
+        "LICENSE.md",
+        "LICENSE.md.meta"
+      ],
+      "engine_versions": [],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/inkle/ink-unity-integration",
+      "owner": "inkle",
+      "name": "ink-unity-integration",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/ink-unity-integration",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "aa7b8b4f78e2046f203e47f89a10a6f9f9ba67c6",
+      "origin": "https://github.com/inkle/ink-unity-integration.git",
+      "branch": "master",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "master",
+      "remote_head": "aa7b8b4f78e2046f203e47f89a10a6f9f9ba67c6",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 1183,
+      "license_files": [
+        "LICENCE.md"
+      ],
+      "engine_versions": [
+        {
+          "engine": "Unity",
+          "version": "2022.3.62f3",
+          "file": "ProjectSettings/ProjectVersion.txt"
+        }
+      ],
+      "assets_directories": [
+        "Assets"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/juliangrtz/NINAHSaveEditor",
+      "owner": "juliangrtz",
+      "name": "NINAHSaveEditor",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/NINAHSaveEditor",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "cc5e9e767d27396798abe5c7cbe80cb329efdd76",
+      "origin": "https://github.com/juliangrtz/NINAHSaveEditor.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "cc5e9e767d27396798abe5c7cbe80cb329efdd76",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 31,
+      "license_files": [
+        "LICENSE"
+      ],
+      "engine_versions": [],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/katrinrash/Do-You-Trust-Them",
+      "owner": "katrinrash",
+      "name": "Do-You-Trust-Them",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/Do-You-Trust-Them",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "6b0d507e8af609639c6228d53ee6964566ee1cdb",
+      "origin": "https://github.com/katrinrash/Do-You-Trust-Them.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "6b0d507e8af609639c6228d53ee6964566ee1cdb",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 53,
+      "license_files": [],
+      "engine_versions": [],
+      "assets_directories": [
+        "Screenshots"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/lamnguyenkhoa/human-please",
+      "owner": "lamnguyenkhoa",
+      "name": "human-please",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/human-please",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "802d042324abd39bd47d34e3a589186eb1ef2fbf",
+      "origin": "https://github.com/lamnguyenkhoa/human-please.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "802d042324abd39bd47d34e3a589186eb1ef2fbf",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 373,
+      "license_files": [],
+      "engine_versions": [
+        {
+          "engine": "Godot",
+          "version": "4.2",
+          "file": "project.godot"
+        }
+      ],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/limeraiin/Papers-Please_Unity",
+      "owner": "limeraiin",
+      "name": "Papers-Please_Unity",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/Papers-Please_Unity",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "bacb203893627645a90575c353e162b7c66e386e",
+      "origin": "https://github.com/limeraiin/Papers-Please_Unity.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "bacb203893627645a90575c353e162b7c66e386e",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 304,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 13028,
+      "license_files": [],
+      "engine_versions": [
+        {
+          "engine": "Unity",
+          "version": "2020.3.25f1",
+          "file": "ProjectSettings/ProjectVersion.txt"
+        }
+      ],
+      "assets_directories": [
+        "Assets"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:13:19+08:00"
+    },
+    {
+      "url": "https://github.com/Luci0n/CrowFX-unity-image-effects",
+      "owner": "Luci0n",
+      "name": "CrowFX-unity-image-effects",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/CrowFX-unity-image-effects",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "5a322fa7bb1f386323be36b7117d1fb321237020",
+      "origin": "https://github.com/Luci0n/CrowFX-unity-image-effects.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "5a322fa7bb1f386323be36b7117d1fb321237020",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 319,
+      "license_files": [
+        "LICENSE"
+      ],
+      "engine_versions": [],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/oakwarrior/DeathAndTaxes",
+      "owner": "oakwarrior",
+      "name": "DeathAndTaxes",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/DeathAndTaxes",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "8fc4bb9211f09a5296ef081e1359cdb27f313688",
+      "origin": "https://github.com/oakwarrior/DeathAndTaxes.git",
+      "branch": "master",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "master",
+      "remote_head": "8fc4bb9211f09a5296ef081e1359cdb27f313688",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 499,
+      "license_files": [
+        "LICENSE"
+      ],
+      "engine_versions": [
+        {
+          "engine": "Unity",
+          "version": "2019.2.10f1",
+          "file": "ProjectSettings/ProjectVersion.txt"
+        }
+      ],
+      "assets_directories": [
+        "Assets"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/ObjectInSpace/im-a-blind-human",
+      "owner": "ObjectInSpace",
+      "name": "im-a-blind-human",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/im-a-blind-human",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "adcb4d1f814a56de24e76a38ac546427b9496be3",
+      "origin": "https://github.com/ObjectInSpace/im-a-blind-human.git",
+      "branch": "master",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "master",
+      "remote_head": "adcb4d1f814a56de24e76a38ac546427b9496be3",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 68,
+      "license_files": [],
+      "engine_versions": [],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:08:46+08:00"
+    },
+    {
+      "url": "https://github.com/OOM-WG/NINAH-Docs",
+      "owner": "OOM-WG",
+      "name": "NINAH-Docs",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/NINAH-Docs",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "f43ba4ca5854ab7ed174547826c1b07ab270279a",
+      "origin": "https://github.com/OOM-WG/NINAH-Docs.git",
+      "branch": "shiror.ren",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "shiror.ren",
+      "remote_head": "f43ba4ca5854ab7ed174547826c1b07ab270279a",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 432,
+      "license_files": [
+        "LICENSE.txt"
+      ],
+      "engine_versions": [],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:13:19+08:00"
+    },
+    {
+      "url": "https://github.com/PeppeLe21/The-Guest",
+      "owner": "PeppeLe21",
+      "name": "The-Guest",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/The-Guest",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "40a9d70baed36ee05ae86578939c8d182ff3b3a4",
+      "origin": "https://github.com/PeppeLe21/The-Guest.git",
+      "branch": "master",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "master",
+      "remote_head": "40a9d70baed36ee05ae86578939c8d182ff3b3a4",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 5075,
+      "license_files": [],
+      "engine_versions": [
+        {
+          "engine": "Unity",
+          "version": "6000.0.58f2",
+          "file": "ProjectSettings/ProjectVersion.txt"
+        }
+      ],
+      "assets_directories": [
+        "Assets"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:28:40+08:00"
+    },
+    {
+      "url": "https://github.com/sedmugen/moral-matrix",
+      "owner": "sedmugen",
+      "name": "moral-matrix",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.pdf",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/moral-matrix",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "96ee5522390d92c4fb2345e5e7b5cf758ad831a2",
+      "origin": "https://github.com/sedmugen/moral-matrix.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "96ee5522390d92c4fb2345e5e7b5cf758ad831a2",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 1090,
+      "license_files": [
+        "LICENSE"
+      ],
+      "engine_versions": [
+        {
+          "engine": "Unity",
+          "version": "2023.1.20f1",
+          "file": "ProjectSettings/ProjectVersion.txt"
+        }
+      ],
+      "assets_directories": [
+        "Assets"
+      ],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "object_integrity_checked_at": "2026-10-12T18:42:42+08:00"
+    },
+    {
+      "url": "https://github.com/YarnSpinnerTool/YarnSpinner-Unity",
+      "owner": "YarnSpinnerTool",
+      "name": "YarnSpinner-Unity",
+      "sources": [
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.docx",
+        "Dependency/寻找伪人_相似玩法源码与Unity开发研究报告_2026-10.md",
+        "Dependency/项目与源码参考索引.csv"
+      ],
+      "path": "references/YarnSpinner-Unity",
+      "checked_at": "2026-10-12T18:42:42+08:00",
+      "commit": "478309e5e70a1d88e94be47c65c793b851d35f56",
+      "origin": "https://github.com/YarnSpinnerTool/YarnSpinner-Unity.git",
+      "branch": "main",
+      "shallow": false,
+      "remote_verified": true,
+      "remote_default_branch": "main",
+      "remote_head": "478309e5e70a1d88e94be47c65c793b851d35f56",
+      "working_tree_clean": true,
+      "git_connectivity_ok": true,
+      "lfs": {
+        "tracked_files": 0,
+        "unresolved_pointers": [],
+        "list_exit_code": 0,
+        "fsck_exit_code": 0,
+        "fsck_output": "Git LFS fsck OK",
+        "fsck_error": ""
+      },
+      "submodule_status": "",
+      "submodules": [],
+      "tracked_file_count": 539,
+      "license_files": [
+        "LICENSE.md",
+        "LICENSE.md.meta"
+      ],
+      "engine_versions": [],
+      "assets_directories": [],
+      "build_status": "not_run",
+      "status": "verified",
+      "errors": [],
+      "remote_verified_at": "2026-10-12T18:42:42+08:00",
+      "object_integrity_checked_at": "2026-10-12T18:34:03+08:00"
+    }
+  ]
+}

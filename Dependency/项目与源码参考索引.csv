@@ -1,0 +1,16 @@
+﻿项目名称,资源类别,引擎/版本,许可情况,实际公开内容,重点参考,优先级,主要限制,链接,证据级别,文档来源编号
+The Gatekeeper’s Insight,游戏源码,Godot 4.4,MIT,完整 Jam 玩法工程,身份审查、Focus 检查、放行拒绝、日结算,非常高,不能直接导入 Unity,https://github.com/adamico/gatekeeper-insight,A,S04
+Death and Taxes,游戏源码,Unity 2019.2.10f1+（README 建议）,MIT（源码）,正式游戏代码，部分资源不公开,每日裁决、跨日状态、结局与数据组织,非常高,美术资源不完整；旧 Unity 版本,https://github.com/oakwarrior/DeathAndTaxes,A,S06
+Moral Matrix,游戏源码,Unity 2023.1.20f1 / URP 15.0.7,MIT（仓库）,2.5D Unity 演示工程,房间切换、2D/3D 混合、镜头、NPC 对话,非常高,保存和复杂分支还在路线图,https://github.com/sedmugen/moral-matrix,A,S07
+Dead Letter Office Day 1,游戏源码,Unity 2022.3.16f1,未发现明确许可证,第 1 天 Unity 工程,随机数据、物品检查、规则验证,高,未完成；不可默认商用复制,https://github.com/AnhKimHaTran/DeadLetterOffice_Day1,A,S08
+The Guest,游戏源码,Unity 6000.0.58f2,未见明确统一商用授权,Unity 项目，依赖 Groq API,NPCProfile、Memory、调查笔记、对话,高,外部密钥、隐私和资产授权,https://github.com/PeppeLe21/The-Guest,A,S09
+"Human, Please",游戏源码,Godot 4.2,未发现明确许可证,Godot 项目,审查玩法 + Analog Horror 氛围,高,Godot + 授权问题,https://github.com/lamnguyenkhoa/human-please,A,S10
+Papers-Please_Unity,游戏源码,Unity，具体版本待核验,未发现明确许可证,未完成 Game Jam 工程,基础审查界面与原型组织,中,作者明确未完成,https://github.com/limeraiin/Papers-Please_Unity,A,S11
+Do You Trust Them?,部分源码,Unity C#，具体版本待核验,未发现明确许可证,Scripts 和 Screenshots,昼夜循环、笔记、条件事件、结局,中,不是完整 Unity 工程,https://github.com/katrinrash/Do-You-Trust-Them,A,S12
+I’m a Blind Human,MOD 源码,Unity 6.3 / IL2CPP（MOD 自述）,需逐文件核验,基于原作的第三方 MOD,对话、检查提示、世界交互切面,高,不是原作游戏完整工程,https://github.com/ObjectInSpace/im-a-blind-human,A,S02
+NINAHSaveEditor,工具源码,.NET Framework 4.8 / C#,Unlicense（工具）,存档分析与编辑工具,存档数据结构和解析,中,不是玩法源码,https://github.com/juliangrtz/NINAHSaveEditor,A,S23
+NINAH-Docs,攻略文档,Next.js,需核验,社区文档/攻略,角色及玩法要素表,中,不含游戏源码,https://github.com/OOM-WG/NINAH-Docs,A/C,S24
+Yarn Spinner 3,框架,Unity 2022.3+,MIT,分支对话框架,对话树、事件回调、Storylets,非常高,独立于身份与检查规则,https://github.com/YarnSpinnerTool/YarnSpinner-Unity,A,S13
+Ink Unity Integration,框架,Unity 2022.3+,MIT,分支叙事框架,条件文本与选项,高,与 Yarn 二选一，避免双引擎,https://github.com/inkle/ink-unity-integration,A,S19
+Retro CRT Shader,Shader,Unity URP,MIT,特效 Shader,复古 CRT 视觉,中,需要核对 URP 版本,https://github.com/Cyanilux/URP_RetroCRTShader,A,S25
+CrowFX,Shader,Unity（URP/HDRP 实验性）,MIT,特效 Shader,VHS/CRT 与旧录像观感,中,兼容性及性能测试,https://github.com/Luci0n/CrowFX-unity-image-effects,A,S26

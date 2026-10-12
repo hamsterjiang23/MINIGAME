@@ -1,0 +1,120 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "nodes": [
+      {
+        "angle": 0,
+        "height": 184,
+        "id": "p1:1",
+        "style": {
+          "border_color": "#000000",
+          "border_color_type": 0,
+          "border_opacity": 100,
+          "border_style": "none",
+          "border_width": "narrow",
+          "fill_color_type": 0,
+          "fill_opacity": 100,
+          "theme_border_color_code": -1,
+          "theme_fill_color_code": -1
+        },
+        "svg": {
+          "key": "emoji_drumstick.png",
+          "svg_code": "",
+          "type": 125
+        },
+        "type": "svg",
+        "width": 184,
+        "x": 978,
+        "y": 548,
+        "z_index": 1
+      },
+      {
+        "angle": 0,
+        "composite_shape": {
+          "type": "round_rect"
+        },
+        "height": 161,
+        "id": "o1:2",
+        "style": {
+          "border_color": "#000000",
+          "border_color_type": 0,
+          "border_opacity": 100,
+          "border_style": "solid",
+          "border_width": "narrow",
+          "fill_color": "#f0f4fc",
+          "fill_color_type": 0,
+          "fill_opacity": 100,
+          "h_flip": false,
+          "theme_border_color_code": -1,
+          "theme_fill_color_code": -1,
+          "v_flip": false
+        },
+        "text": {
+          "angle": 0,
+          "font_size": 36,
+          "font_weight": "regular",
+          "horizontal_align": "left",
+          "italic": false,
+          "line_through": false,
+          "text": "一个吃剩的鸡腿。。。",
+          "text_background_color_type": 0,
+          "text_color": "#1f2329",
+          "text_color_type": 0,
+          "theme_text_background_color_code": -1,
+          "theme_text_color_code": -1,
+          "underline": false,
+          "vertical_align": "top"
+        },
+        "type": "composite_shape",
+        "width": 739,
+        "x": 730,
+        "y": 869,
+        "z_index": 2
+      },
+      {
+        "angle": 0,
+        "composite_shape": {
+          "type": "rect"
+        },
+        "height": 898,
+        "id": "o1:1",
+        "style": {
+          "border_color": "#000000",
+          "border_color_type": 0,
+          "border_opacity": 100,
+          "border_style": "solid",
+          "border_width": "narrow",
+          "fill_color": "#f0f4fc",
+          "fill_color_type": 0,
+          "fill_opacity": 100,
+          "h_flip": false,
+          "theme_border_color_code": -1,
+          "theme_fill_color_code": -1,
+          "v_flip": false
+        },
+        "text": {
+          "angle": 0,
+          "font_size": 14,
+          "font_weight": "regular",
+          "horizontal_align": "center",
+          "italic": false,
+          "line_through": false,
+          "text": "",
+          "text_background_color_type": 0,
+          "text_color": "#1f2329",
+          "text_color_type": 0,
+          "theme_text_background_color_code": -1,
+          "theme_text_color_code": -1,
+          "underline": false,
+          "vertical_align": "mid"
+        },
+        "type": "composite_shape",
+        "width": 1493,
+        "x": 353,
+        "y": 236,
+        "z_index": 0
+      }
+    ]
+  }
+}

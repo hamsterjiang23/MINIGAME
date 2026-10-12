@@ -1,0 +1,15 @@
+{
+  "content": "<title>心理恐怖叙事游戏Wiki</title>\n\n# Mini Game交付标准\n\n1. **正式全流程相同玩家体验**\n2. **3天内容**\n3. **5位病人**\n4. **3种结局**\n\n# 概念\n\n![图片为一张白板，记录了关于心理恐怖叙事游戏的DEMO标准内容。白板上用不同颜色的笔标注了“3天”“5位病人”“3种结局”等关键信息。还详细列出了“时代”“世界观”“病人设定”等板块，如时代为“科技性中下”，世界观为“现实世界+一场离奇死亡”，病人设定有“小孩”“神父”等。此外，还涉及“解密”“治疗”“潜行”等游戏机制，以及“1个主创”“1个监督”等团队配置。该图片与文档中Mini Game交付标准部分紧密相关，直观呈现了相关内容。](https://feishu.cn/file/LDkCbIILPoTYjJxKTP6ciaaGn5b)\n\n### 世界观\n\n\n\n### 病人设定\n\n<cite doc-id=\"A5XuwDTTWijkGGkFhqUcxg8qnSg\" file-type=\"wiki\" title=\"P01  神父 设计文档\" type=\"doc\"></cite>\n\n<cite doc-id=\"DiI4weVOxiAknuku0uzchcf5nyc\" file-type=\"wiki\" title=\"【人物】小孩\" type=\"doc\"></cite>\n\n<cite doc-id=\"Fkq1wdjODiwex7k2j4bcJrxcnEf\" file-type=\"wiki\" title=\"【人物】女性执政者\" type=\"doc\"></cite>\n\n<cite doc-id=\"WWqCwCFwxisowlklgA0cnwtGnBf\" file-type=\"wiki\" title=\"【人物】战场医生\" type=\"doc\"></cite>\n\n<cite doc-id=\"HwQNwN2fgiQoIrkEiLjc82S8ncg\" file-type=\"wiki\" title=\"【人物】外交官\" type=\"doc\"></cite>\n\n### 主角设定\n\n### 玩家设定\n\n# 玩法\n\n细致全流程：\n\n<whiteboard token=\"IykwwdNvihVgabb0wfKctsnOnJd\"></whiteboard>\n\n### 全流程（特殊分支不在讨论范畴里）\n\nDay0\n\n电脑开机--转到监控界面--审判病人0--净化病人0--睡觉--做梦\n\nDay1\n\n醒来--监督员对话--仪器检测--介绍任务--审判病人12345--睡觉--做梦\n\nDay2\n\n醒来--监督员对话--仪器检测--介绍指标--审判病人12345--睡觉--做梦\n\nDay3\n\n醒来--监督员对话--仪器检测--介绍指标--审判病人12345--睡觉--做梦\n\nDay4\n\n醒来--监督员对话--仪器检测--不通过--玩家被永远锁在房间里--游戏结束\n\n### 对话分支\n\n### 结局\n\n1. 正常全流程，玩家被带走\n2. 神父来杀人\n3. 没有完成KPI，跳转到Day４\n4. r\n\n# 程序\n\n### 玩法框架\n\n### 屏幕画面表现\n\n### AI管线\n\n# 美术\n\n### 2D\n\n##### 病人立绘\n\n##### 梦境画面\n\n##### UI\n\n### 3D\n\n##### 场景\n\n##### 物件\n\n### 音乐&音效<cite type=\"user\" user-id=\"ou_92bc3a72ef73456899e30293b5758364\" user-name=\"马步庭(Mcqueen)\"></cite>\n\n音乐需求：\n\n1. 开始菜单 https://suno.com/s/DEJdjK3NLSIzuZD1\n2. 主Gameplay https://suno.com/song/fbb6233d-b8f0-4b16-8143-93716f8d1490\n3. 电脑噪音 https://freesound.org/people/8bitmyketison/sounds/699726/\n4. 做梦场景\n5. 不同分支结局\n\n音效需求：\n\n1. 检测仪扫描\n2. 检测仪亮灯\n3. 对话弹出\n4. 放映机\n5. 3D场景按键交互\n6.  监控画面按键交互 \n\n# 参考\n\n| 来源 | 参考纬度 | 内容 (贴链接/图片/视频) |\n|-|-|-|\n|  |  |  |",
+  "document_id": "COEBdbgoSohH7TxIEsecNU5DnoO",
+  "reference_map": {
+    "comments": {
+      "c1": {
+        "data": "<comment comment-id=\"7686769152800558010\" block-id=\"IMzvdjqjxobOFxxtzPXcfjqxnHf\"><quote>参考</quote><msg user=\"马步庭(Mcqueen)\">要加参考的都统一写在这里,上文进行引用即可</msg></comment>"
+      }
+    }
+  },
+  "revision_id": 481,
+  "source_url": "https://moonton.feishu.cn/wiki/SBq3wnQOqifGkHk5h8gcXPV0nb3",
+  "retrieved_at": "2026-10-12T17:28:52+08:00",
+  "out_of_scope": []
+}

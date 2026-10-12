@@ -1,0 +1,26 @@
+﻿Issue,任务,依赖,完成判定
+CORE-01,建立 `GamePhase` 状态机,P0,切换合法，非法命令拒绝
+CORE-02,建立 `GameState` 与 `GameCommand`,CORE-01,无 Unity 依赖，可运行单测
+NPC-01,ScriptableObject 人物模板,CORE-02,至少 8 个实例化模板
+NPC-02,Seeded VisitorGenerator,NPC-01,同一 seed 多次生成一致
+EVI-01,背景→潜在症状联合生成,NPC-02,正常人与伪人均可出现异常，但因果一致
+EVI-02,InspectionService 精力扣减,EVI-01,不重复扣费、不可越界、同证据稳定
+UI-01,门口访客交互,"CORE-01, NPC-02",访客依次登场且可操作
+UI-02,对话界面,UI-01,可显示分支，能够完成一次交谈
+UI-03,白天检查页,"EVI-02, UI-01",可检查并展示局内固定证据
+UI-04,证据本,UI-03,切换人物后证据正确归档
+DEC-01,Admit / Reject 决策接口,UI-01,决策仅处理一次、写入历史
+DEC-02,决策后果结算,DEC-01,状态更新并触发预定事件
+RES-01,精力/补给/安全资源,CORE-02,操作代价符合规则表
+EVT-01,条件 DSL 与事件队列,DEC-02,支持日期、flag、资源、人物状态
+EVT-02,角色关系与跨日事件,EVT-01,角色离开/存活条件可门控事件
+NAR-01,Yarn Spinner 集成,UI-02,1 个 NPC 3 条分支可正常执行
+NAR-02,Yarn→GameCommand 白名单桥接,"NAR-01, CORE-02",对话无法直接写入任意 GameState
+END-01,3 结局判定,EVT-01,每个结局都有至少一个测试种子
+SAV-01,SchemaVersion + JSON 存档,CORE-02,读档恢复运行状态与 RNG
+SAV-02,Yarn 对话游标/变量存档,"NAR-01, SAV-01",恢复后不会重播一次性剧情
+QA-01,生成器批量 Monte Carlo,"NPC-02, EVI-01",输出策略对比与无解局统计
+QA-02,内容链接静态检查,"EVT-01, NAR-02",缺失角色/flag 会阻断构建
+ART-01,2D 人物 / 2.5D 场景基线,UI-01,至少 1 个可见房间与 2 个人物
+ART-02,UI 音频和反馈节奏,UI-03,检查、判定、夜间过场有区分反馈
+REL-01,Windows 打包及设置页,P4,新机器可启动、输入、保存、退出
