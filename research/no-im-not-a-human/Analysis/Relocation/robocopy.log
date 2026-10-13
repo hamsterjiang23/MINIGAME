@@ -1,0 +1,29 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 13, 2026 12:47:35 PM
+   Source : D:\NoImNotAHuman-Research\
+     Dest : F:\AAMINIGAME\MINIGAME\research\no-im-not-a-human\
+
+    Files : *.*
+	    
+  Options : *.* /NDL /NFL /S /E /DCOPY:DAT /COPY:DAT /NP /XJ /R:2 /W:2 
+
+------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :      1219      1217         2         0         0         1
+   Files :     23961     23961         0         0         0         0
+   Bytes :   6.523 g   6.523 g         0         0         0         0
+   Times :   0:00:14   0:00:13                       0:00:00   0:00:00
+
+
+   Speed :           511424972 Bytes/sec.
+   Speed :           29263.971 MegaBytes/min.
+   Ended : Tuesday, October 13, 2026 12:47:49 PM
+

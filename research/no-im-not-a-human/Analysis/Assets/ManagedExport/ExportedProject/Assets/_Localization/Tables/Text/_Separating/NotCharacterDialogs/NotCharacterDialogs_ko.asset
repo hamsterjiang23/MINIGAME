@@ -1,0 +1,4851 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NotCharacterDialogs_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: fdb5e7c1e1a06f94cb20bf63a5da666e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21953783779328
+    m_Localized: 'TV: 긴급 속보입니다!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556544
+    m_Localized: 'TV: 오늘 오전 6시 28분에, 태양으로부터 강력한 에너지 방출이 감지되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556545
+    m_Localized: 'TV: 이번 폭발은 과학자들의 예측을 훨씬 뛰어넘은 수준이었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556546
+    m_Localized: 'TV: 실외 온도는 치명적인 수준으로 치솟았습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556547
+    m_Localized: 'TV: 또한 정부는 긴급 사태를 선포하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556548
+    m_Localized: 'TV: 국민 여러분께서는 낮시간동안 외출을 자제하여 주시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556549
+    m_Localized: 'TV: 그럼, 다음 소식으로는...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556550
+    m_Localized: 'TV: 잠시만요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556551
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556552
+    m_Localized: 'TV: 저희 스튜디오로 방문자와의 접촉과 관련하여 긴급한 소식이 들어왔습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556553
+    m_Localized: 'TV: 목격자들의 증언에 따르면 이들은 생김새와 행동을 인간처럼 흉내 낼 수 있는 생물체라고 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556554
+    m_Localized: 'TV: 방문자와의 접촉은 삼가시기를 바랍니다. 한편, 이들 존재를 식별할 수 있는 결정적인 징후가 확인되었습니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556555
+    m_Localized: 'TV: 바로 완벽하게 고른 흰 치아입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556556
+    m_Localized: 'TV: 한 목격자의 증언이 이를 뒷받침해주고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556557
+    m_Localized: 'TV: 완벽히 하얀 치아를 가진 노숙인을 마주친 그는, 그 인물이 ‘방문자’였다는 사실을 뒤늦게 알게 됐습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556558
+    m_Localized: 'TV: 이상으로 속보를 마칩니다. 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556559
+    m_Localized: 'TV: 다음으로는 예능 방송을 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556560
+    m_Localized: 'TV: 안녕하십니까. 오늘의 날씨입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556561
+    m_Localized: 'TV: 따뜻한 기류가 이쪽 지역으로 유입되면서, 이전 최고 기온 기록을 경신하는 더위가 찾아올 전망입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556562
+    m_Localized: 'TV: 기상학자들의 말에 따르면 최고 기록을 훨씬 웃도는 더위가 예상된다고 하는데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556563
+    m_Localized: 'TV: 태양의 활동이 활발해진 지금, 자외선 역시 훨씬 강력해질 것으로 예상됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556564
+    m_Localized: 'TV: 안전을 위해, 가급적 일광욕을 자제하여 주시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556565
+    m_Localized: 'TV: 높은 온도로 인하여 일사병에 걸릴 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556566
+    m_Localized: 'TV: 태양빛에 오래 노출되는 게 건강에 부정적 영향을 끼치는 지는 정확히 조사된 바가 없지만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556567
+    m_Localized: 'TV: 3도 화상의 위협이 있으니, 외출을 자제하시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556568
+    m_Localized: 'TV: 현재 상황에서는, 자외선 차단제도 소용이 없다고 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556569
+    m_Localized: 'TV: 이상으로 일기예보를 마칩니다. 다음 순서는 예능 프로그램입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556570
+    m_Localized: 'TV: 발레리나들이 우아하게 춤을 추며, 힘차면서도 섬세하게 도약하며 무대를 가로지르는 모습이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556571
+    m_Localized: 'TV: 우아한 모습에도 불과하고, 춤추는 모습을 보고 있노라니 불안한 생각이 엄습해 온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556572
+    m_Localized: 'TV: 마치 현재 일어나는 일들에 집중하지 못하게끔 이런 춤을 보여준다는 기분이 드는 것이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556573
+    m_Localized: 'TV: 누군가 무슨 일이 벌어지는지 명쾌하게 설명해줬으면 좋으련만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556574
+    m_Localized: 'TV: 시청자 여러분, 안녕하십니까. 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556575
+    m_Localized: 'TV: 태양의 움직임이 수그러질 기미가 보이지 않는 가운데, 범죄율이 다소 상승했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556576
+    m_Localized: 'TV: 최근 집계된 자료에 따르면, 지난 며칠 밤 사이 발생한 살인 사건 수가 평균치를 웃도는 것으로 나타났습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556577
+    m_Localized: 'TV: 전문가들은 이 같은 증가세가 ‘방문자’와, 사회 전반에 확산되고 있는 불안감과 관련이 있을 것으로 보고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556578
+    m_Localized: 'TV: 이어지는 소식입니다. 목격자들의 제보에 따르면, ‘방문자’를 식별할 수 있는 새로운 징후가 발견됐습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556579
+    m_Localized: 'TV: 바로 손톱 밑에 낀 흙입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556580
+    m_Localized: 'TV: 전문가들의 분석에 따르면, 이 징후는 지하에서 기어 올라온 ‘방문자’를 식별하는 데 도움이 되는 것으로 나타났습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556581
+    m_Localized: 'TV: 이상으로 속보를 마칩니다. 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556582
+    m_Localized: 'TV: 다음으로는, 창백한 살인마에 대한 소식을 전해드립니다. 그전에 잠시 광고를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556583
+    m_Localized: 'TV: 매번 장 보러 나가기 귀찮으셨죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556584
+    m_Localized: 'TV: 이제는 전화기를 들고 주문만 하면 간편하게 구매가 가능!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556585
+    m_Localized: 'TV: 휴마켓의 상품 배달 서비스를 써보세요. 지금 바로 XXX-XXX-XXXX로 전화 주시면 집앞까지 상품을 배달해 드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556586
+    m_Localized: 'TV: 휴마켓. 집에서도 맛있고 편안하게.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556587
+    m_Localized: 'TV: 창백한 살인마가 도시 거리에 나타났다는 소식입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556588
+    m_Localized: 'TV: 경찰은 목격자 진술을 통해, 피해자 모두가 ‘혼자 있었다’는 공통점을 발견했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556589
+    m_Localized: 'TV: 또한, 살인마는 살인을 저지르기 전에 피해자에게 말을 거는 것으로 알려졌습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556590
+    m_Localized: 'TV: 경찰은 목격자들의 진술을 토대로 용의자의 몽타주를 작성했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556591
+    m_Localized: 'TV: 용의자는 매우 창백한 중년의 남성으로 검은색 머리카락을 지니고 있습니다. 호리호리한 체형에 상의는 탈의한 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556592
+    m_Localized: 'TV: 몇몇 사람의 진술에 따르면 살인마는 다른 인간의 살가죽을 뒤집어쓰고 있다고 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556593
+    m_Localized: 'TV: 해당 정보는 아직 확인된 바는 없습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556594
+    m_Localized: 'TV: 만약 이런 남성을 보시게 되는 경우, 절대 문을 열어주지 마시고 집에 혼자 있지 않다고 말씀하도록 하십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556595
+    m_Localized: 'TV: 이상으로 뉴스를 마칩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556596
+    m_Localized: 'TV: 시청자 여러분, 안녕하십니까. 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556597
+    m_Localized: 'TV: 비정상적인 무더위가 점점 더 심해지는 가운데, 방문자의 침략 역시 끊이지 않고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750848
+    m_Localized: 'TV: 현 비상 상황을 타개하기 위해 정부는 특별 전담팀을 꾸렸습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750849
+    m_Localized: 'TV: 연방 재난관리청, 줄여서 ''연재청'' 혹은 ''관리청''입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750850
+    m_Localized: 'TV: 관리청 직원은 노란색 방호복과 방독면을 쓰고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750851
+    m_Localized: 'TV: 출범한 지 얼마 되지 않았음에도 불구하고, 해당 기관은 ‘방문자’를 식별할 수 있는 새로운 징후를 이미 하나 발견해 냈습니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750852
+    m_Localized: 'TV: 바로 새빨갛게 충혈된 눈입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750853
+    m_Localized: 'TV: 저희가 확보한 자료에 따르면, 관리청은 구금된 ‘방문자’들을 관찰하는 과정에서 해당 징후를 보고한 것으로 나타났습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750854
+    m_Localized: 'TV: 해당 생명체들은 빛에 대한 민감도가 높아, 눈이 충혈되고 붉게 변하는 현상을 보입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750855
+    m_Localized: 'TV: 이상으로 속보를 마칩니다. 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750856
+    m_Localized: 'TV: 다음으로는, 관리청과 관련된 소식을 전해드립니다. 그 전에, 잠시 광고를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750857
+    m_Localized: 'TV: 혼란, 공포, 고통... 이 모든 것은 ‘방문자’들로부터 비롯되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750858
+    m_Localized: 'TV: 하지만 너무나 힘든 이 시기에, 눈물이 강물처럼 흐르기 시작할 때...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750859
+    m_Localized: 'TV: 연방 재난관리청의 직원들이 우리 곁에 나타났습니다!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750860
+    m_Localized: 'TV: 연방 재난관리청의 용감한 영웅들은 ‘방문자’의 침입으로부터 우리를 지키기 위해 오늘도 힘쓰고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750861
+    m_Localized: 'TV: 현재까지, 기관에서는 무려 27,000마리의 위험 생명체를 식별해 냈습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750862
+    m_Localized: 'TV: 기억하세요: 당신의 주변에서 수상한 활동을 목격했다면, 이를 즉각 신고함으로써 기관에 힘을 보탤 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750863
+    m_Localized: 'TV: 관리청 방문 초대권을 사용해 직접 기관을 방문해 주시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750864
+    m_Localized: 'TV: 혹시 자신이 방문자일지도 모른다는 생각이 드신다면, 저희의 핫라인으로 전화하여 주시기 바랍니다. {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750865
+    m_Localized: 'TV: 관리청을 돕는다는 건, ‘방문자’에 맞선 싸움을 함께한다는 뜻입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750866
+    m_Localized: 'TV: 관리청이란 어떤 곳인가요? 또한 왜 설립되었을까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750867
+    m_Localized: 'TV: 연방 재난관리청은 현재 발생한 위기를 완화하고자 설립된 특별 정부 기관입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750868
+    m_Localized: 'TV: 관리청은 방문자들의 침략으로 인해 발생한 문제들을 조치하는 데 도움을 드리고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750869
+    m_Localized: 'TV: 기관에서 정확히 어떤 작업을 진행 중인지는 알려지지 않았습니다만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750870
+    m_Localized: 'TV: 확실히 말씀드릴 수 있는 것은, 우리의 운명을 맡겨도 될 만큼 믿음직한 곳이라는 것입니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750871
+    m_Localized: 'TV: 해당 기관은 저명한 과학자를 포함한 다양한 분야의 전문가들로 구성되어 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750872
+    m_Localized: 'TV: 만약 관리청 직원이 여러분의 문을 두드린다면, 협조해 주시고 지시에 따르실 것을 권고드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750873
+    m_Localized: 'TV: 기억해 주십시오. 관리청을 돕는다는 건, ‘방문자’에 맞선 싸움을 함께한다는 뜻입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750874
+    m_Localized: 'TV: 시청자 여러분, 안녕하십니까. 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750875
+    m_Localized: 'TV: 관리청은 방문자 사태를 해결하기 위해 새로운 대책을 강구하기 시작하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750876
+    m_Localized: 'TV: 현재, 잠재적 위험인물들을 위한 격리 구역이 운영되고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750877
+    m_Localized: 'TV: 또한 관리청에서는 구금된 ‘방문자’들을 실험하는 과정에서 이들을 식별할 수 있는 또다른 징후를 확인했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750878
+    m_Localized: 'TV: 바로 털이 없는 겨드랑이입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750879
+    m_Localized: 'TV: 관리청은 이 징후가 ‘방문자’들이 해당 부위에 전혀 털이 없는 특성과 관련되어 있다고 밝혔습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750880
+    m_Localized: 'TV: 관리청은 시민들에게 검사 및 격리 구역으로의 동행에 대해 이해와 협조를 당부하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750881
+    m_Localized: 'TV: 이상으로 속보를 마칩니다. 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750882
+    m_Localized: 'TV: 다음은 방문자를 목격했을 때의 행동 요령입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750883
+    m_Localized: 'TV: 관리청은 ‘방문자’ 현상이 전염되거나, 기타 생물학적 위험 요소를 동반할 수 있다는 가능성을 제기했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750884
+    m_Localized: 'TV: 따라서 주변에서 의심스러운 인물이 포착된다면 지체 없이 신고하고, 해당 인물을 격리하는 것이 핵심적인 대응 방안입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750885
+    m_Localized: 'TV: 방문자를 즉시 격리 구역으로 인계할 수 없는 경우에는, 그들에게 연재청에 출석하라는 통지서를 전달해 주시기 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750886
+    m_Localized: 'TV: 다음번 방문 주기에, 이 문서를 지닌 사람은 직원에 의해 선별되어 검사를 받게 됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750887
+    m_Localized: 'TV: 이상으로 뉴스를 마칩니다. 다음으로 잠시 광고를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750888
+    m_Localized: 'TV: 식지 않는 열기 속에서, 끊임없이 질주하라!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750889
+    m_Localized: 'TV: 에너제카와 함께, 살아있는 기분을!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750890
+    m_Localized: 'TV: 물보다 갈증을 빠르고 효과적으로 해소해주는 에너지 드링크.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750891
+    m_Localized: 'TV: 휴마켓 배달을 통해 지금 바로 만나보세요. 지금 바로 XXX-XXX-XXXX로 전화해서 주문하세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750892
+    m_Localized: 'Window: 당신 이웃의 집이 건초가 가득한 들판 위에 우두커니 서있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750893
+    m_Localized: 'Window: 창문에선 불빛이 새어 나오고 있지 않다. 이웃의 가족은 잠자리에 든듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750894
+    m_Localized: 'Window: 깡마른 개 한 마리가 들판을 가로지르는 오솔길 위에 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750895
+    m_Localized: 'Window: 고통스러운 신음을 흘리며 주변을 둘러보는 게, 먹이를 찾는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750896
+    m_Localized: 'Window: 몇몇 술주정뱅이들이 길가에 퍼질러져 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750897
+    m_Localized: 'Window: 비록 찬바닥에 누워있긴 하지만, 아주 깊은 잠에 빠진 듯하다. 당장은 썩 나쁘지 않은 상태인 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750898
+    m_Localized: 'Window: 저 멀리 지금 당신의 집에 와있는 이웃 아저씨의 집이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750899
+    m_Localized: 'Window: 창밖으로는 불빛이 비치고 있으며, 가족들은 이웃 아저씨가 집으로 돌아오기를 기다리고 있는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750900
+    m_Localized: 'Window: 십대 청소년 몇 명이 마당 쪽에 모여서 놀고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750901
+    m_Localized: 'Window: 아무런 근심걱정 없이 모여앉아서, 뭔가를 조잘거리고 있으며, 당신에겐 관심조차 없다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750902
+    m_Localized: 'Window: 바깥이 쥐죽은듯이 고요하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750903
+    m_Localized: 'Window: 아무도 없다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750904
+    m_Localized: 'Window: 취객들조차 바깥에는 나오지 않기로 결심한 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750905
+    m_Localized: 'Window: 뭔가를 두려워하는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750906
+    m_Localized: 'Window: 창문으로 이웃 남성과 그의 딸이 함께 놀고 있는 모습이 눈에 들어온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750907
+    m_Localized: 'Window: 작금의 공포를 잊으려는 듯, 즐겁게 노닐고 있다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750908
+    m_Localized: 'Window: 비록 아주 짧은 순간이나마.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750909
+    m_Localized: 'Window: 땅바닥에 십대 청소년들의 시체가 널브러져 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750910
+    m_Localized: 'Window: 누군가 이 아이들을 살해하였다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750911
+    m_Localized: 'Window: 아주 최근에 일어난 일인 듯하다. 혈흔이 채 마르지 않았다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750912
+    m_Localized: 'Window: 사신처럼 창백한 남자가 오솔길 위에 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750913
+    m_Localized: 'Window: 살가죽 곳곳에는 이상한 주름이 잡혀 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750914
+    m_Localized: 'Window: 마치 몸에 맞지 않는 살가죽을 걸치고 있는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750915
+    m_Localized: 'Window: 여기서 그의 눈은 보이지 않지만, 그 시선이 당신을 꿰뚫는 듯한 기분이 든다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750916
+    m_Localized: 'Window: 공포가 밀려들기 시작하며 당신은 무시무시한 방문자가 당신의 집을 그대로 지나치길 간절히 기도한다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750917
+    m_Localized: 'Window: 당신의 이웃집에 일단의 관리청 직원들이 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750918
+    m_Localized: 'Window: 무슨 이야기가 오가는지 문득 궁금해진다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750919
+    m_Localized: 'Window: 토양 표본이라도 가져가려는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750920
+    m_Localized: 'Window: 아니면 기지를 설립할 부지를 찾고 있는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750921
+    m_Localized: 'Window: 바싹 그을린 십대 청소년들의 살가죽이 땅바닥에 널브러져 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750922
+    m_Localized: 'Window: 하루 종일 그대로 방치되어 있었던 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750923
+    m_Localized: 'Window: 두 명의 관리청 직원이 시신 옆에 서서 뭔가를 적고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750924
+    m_Localized: 'Window: 직원들이 시신을 회수하고자 나타났다니 마음이 한결 놓인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750925
+    m_Localized: 'Window: 부패 중인 시신이 그대로 썩게끔 방치되어 있었다면 뭔가 감염병이 돌았을지도 모른다는 데에 생각이 미치자 당신은 몸서리를 친다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750926
+    m_Localized: 'Window: 창 밖으로 한 무리의 무장한 군인들이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750927
+    m_Localized: 'Window: 관리청 직원들의 안전을 보장하고자 도시에서 보낸 소규모 분대임이 분명하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750928
+    m_Localized: 'Window: 상반신이 벌거벗은 창백한 남자에 관한 단편적인 정보가 들려온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750929
+    m_Localized: 'Window: 그 오싹한 방문자를 추적하려고 하는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750930
+    m_Localized: 'Window: 이웃집 남자가 불과 얼마 전에 흰색으로 칠했던 집은 속절없이 타고 있으매, 이제 남게 될 건 어둠보다 더 짙은 그을음뿐일 것이리라.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750931
+    m_Localized: 'Window: 불과 얼마 전에 불이 붙은 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750932
+    m_Localized: 'Window: 누군가가 고의로 불을 지른 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750933
+    m_Localized: 'Window: 이웃집 남자의 가족에겐 어떤 일이 벌어진 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750934
+    m_Localized: 'Window: 아직 누군가 살아있긴 한 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750935
+    m_Localized: 'Window: 걱정스러운 생각이 머릿속을 맴돌자, 불가해하면서도 무기력한 기분에 휩싸인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750936
+    m_Localized: 'Window: 창백하고, 으스스한 사내가 웃는 얼굴로 거리에 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750937
+    m_Localized: 'Window: 헬멧을 쓴 채로 잘린 누군가의 머리를 쥐고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750938
+    m_Localized: 'Window: 군인의 머리이다. 군인의 표정은 공포로 일그러진 채로 딱딱하게 굳어있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750939
+    m_Localized: 'Window: 군인이 창백한 방문자와, 다가오는 죽음 중 어떤 것을 더 두려워했는지는 알 수 없는 노릇이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750940
+    m_Localized: 'Window: 어제까지만 해도 여기에 있었던 분대원 전원이 몰살당했다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750941
+    m_Localized: 'Window: 학살극이 벌어진 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750942
+    m_Localized: 'Window: 거리 곳곳에는 시체가 여기저기 흩뿌려져 있고, 그중 한 구의 시신의 머리가 보이질 않는다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750943
+    m_Localized: 'Window: 그 창백하고, 으스스한 이방인이 모두를 죽인 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750944
+    m_Localized: “여기는 긴급 구조 센터입니다. 무엇을 도와드릴까요?” “사람들이... 불타고 있어요.”
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750945
+    m_Localized: “뭐가 보이시는지 자세히 설명해 주시겠어요? 혹시 불이 난 건가요? ” “아뇨, 태양이요. 사람들이... 사람들이 태양빛 아래에서 불타고 있어요.”
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750946
+    m_Localized: “어두워지기 전에는 집밖으로 나오지 마십시오.” “안 돼요, 밤에는 그 남자가 돌아다니는걸요. 창백하고 깡마른 남자요... 그 남자는 인간이 아니에요.”
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750947
+    m_Localized: 자, 이제 새롭게 시작하는 코너, “네, 저는 인간입니다” 시간입니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750948
+    m_Localized: 방법은 간단해요. 여러분의 사진을 보내주시면, 저희가 직접 당신의 정체를 확인해 드립니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750949
+    m_Localized: 여러분의 사진을 yesiam@humanverification.agency로 보내주시기만 하면, 확인 절차를 진행해 드리도록 하겠습니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750950
+    m_Localized: 하지만 눈, 치아, 손톱 이외의 부위를 찍어 보내진 말아 주세요. 세 부위의 사진만 받도록 하겠습니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750951
+    m_Localized: 눈이 충혈되셨나요? 치아가 새하얗다고요? 손톱 밑에 때가 꼈나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750952
+    m_Localized: 사악한 영혼이 당신에게 깃들었습니다. 당신은 방문자로군요!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750953
+    m_Localized: 어두운 그림자가 여러분의 육신을 차지하게 방치하지 마시길! 즉각 777-460으로 전화 주셔서, 저희 전문가의 상담을 받아보십시오.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750954
+    m_Localized: 악령을 쫓아내고, 해로운 기운을 정화하며, 강화된 보호를 제공해 드립니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750955
+    m_Localized: 어서 오세요. 지금부터는 “믿고 싶습니다” 시간입니다. 이 프로그램에서는 각종 미스터리와 정부의 음모를 파헤쳐봅니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750956
+    m_Localized: 오늘은 특별 게스트분과 함께 방문자에 관한 진실에 대해 말씀을 나눠볼 건데요. 권위 있는 과학 박사이자 관리청의...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750957
+    m_Localized: 잠깐만요, 뭐라고요? 안 오신다고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750958
+    m_Localized: 서류를 전부 도둑맞았다고요? 그 많은 자료를!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750959
+    m_Localized: 젠장. 역시 우리가 진실을 말하도록 놔둘 리가 없지. 망할 놈들...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415503822848
+    m_Localized: 옛날 옛적에, 두 형제가 댐 근처에 살고 있었답니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182976
+    m_Localized: 이 둘은 부서지는 물결에서 시원하면서도 거품이 가득한 마실 것을 떠올렸지요...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182977
+    m_Localized: 두 형제가 성인이 되자, 이 둘은 함께 보베르 양조장을 설립했답니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182978
+    m_Localized: 보베르 체르니 맥주는 가정용으로도, 업소용으로도 가장 사랑받는 술이 되었답니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182979
+    m_Localized: 보베르 체르니 맥주. 좋은 걸 많이 마셔요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182980
+    m_Localized: 'Window: 이웃집 아저씨네 집의 잔해가 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182981
+    m_Localized: 'Window: 불과 얼마 전까지만 해도 행복한 가족이 기거하던 곳이었건만, 이제는 음산한 껍데기만 남아있다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182982
+    m_Localized: 'Window: 마치 이런 사태가 오리라 알고 있었던 것만 같은, 이상한 기분이 당신을 덮쳐온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182983
+    m_Localized: 'Window: 마치... 죽음이 정말이지 너무나도 금방 이 집에 들이닥칠 것만 같다는 예감이, 이미 스쳐간 것처럼 말이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182984
+    m_Localized: 'Window: 헬멧을 쓴 해골이 꽂힌 말뚝이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182985
+    m_Localized: 'Window: 해골에는 검게 타버린 피부가 다소 붙어 있으며, 누군가가 치아는 뽑아 가버린 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182986
+    m_Localized: 'Window: 이렇게 하루 종일 이곳에 놓여 있었다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182987
+    m_Localized: 'Window: 그 끔찍한 광경 전체가 마치 모종의 경고처럼 보인다. 아마도 그 소름 끼치는 창백한 방문자가 남기고 갔을 것이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182988
+    m_Localized: 'Window: 관리청 직원들이 학살이 일어난 현장을 조사하고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182989
+    m_Localized: 'Window: 죽은 군인들의 장비며 무기를 수거하여 약탈자들의 손에 들어가지 않게끔 조치한다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182990
+    m_Localized: 'Window: 아마도 무장 병력을 잔뜩 보내면 창백한 방문자라도 살아남지 못할 것이라 여겼으리라.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182991
+    m_Localized: 'Window: 이제는 시체 자루만 몇 개 더 늘어난 셈이 됐다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102088
+    m_Localized: 'TV: 다음으로는 날씨 관련 소식을 전해드리겠습니다. 그전에 잠시 광고 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102127
+    m_Localized: 'TV: 이상으로 뉴스를 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102132
+    m_Localized: 'TV: 안녕하십니까. 오후 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102133
+    m_Localized: 'TV: 방문자 징후를 보이는 사람들이 급증함에 따라 연방 재난 관리청에서 새로운 조치사항을 도입하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102134
+    m_Localized: 'TV: 현 시간부터 각 지역 모든 주요 도시에서 전면 격리 조치가 집행될 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102135
+    m_Localized: 'TV: 이에 따라 현재 본인이 살고 있는 도시나 인근 정착지를 벗어나는 행위는 엄격히 금지됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102136
+    m_Localized: 'TV: 지정된 구역 내에 머물러 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102137
+    m_Localized: 'TV: 또한 연방 재난 관리청에서는 새로운 방문자 식별 방법을 발표했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102138
+    m_Localized: 'TV: 바로 아우라 촬영 기법을 이용한 사진인데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102139
+    m_Localized: 'TV: 촬영 대상자의 아우라 이미지에 어두운 반점이 나타난다면 대상자는 방문자일 가능성이 높습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102140
+    m_Localized: 'TV: 이상으로 현재까지 들어온 소식을 모두 전해드렸습니다. 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102141
+    m_Localized: 'TV: 이제 잠시 광고를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102142
+    m_Localized: 'TV: 방문자는 대체 무엇일까요? 유령일까요? 혹은 지하에서 온 생물일까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102143
+    m_Localized: 'TV: 현 상황을 공상 과학 소설이나, 싸구려 뉴스의 헤드라인 정도로 생각하시면 큰 오산입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102144
+    m_Localized: 'TV: 방문자 현상은 엄연한 현실입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102145
+    m_Localized: 'TV: 방문자의 진짜 기원에 대한 각종 루머가 판치고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102146
+    m_Localized: 'TV: 외계인이다? 걸어 다니는 시체다? 실패한 실험체다?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102147
+    m_Localized: 'TV: 연방 재난 관리청에 따르면 이러한 루머들은 모두 단순한 추측에 불과합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102148
+    m_Localized: 'TV: 연재청의 평가 보고서에서는 인간이 바이러스 혹은 그에 준하는 생물학적 인자에 접촉할 경우 방문자로 변이하는 것으로 파악하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102149
+    m_Localized: 'TV: 전염 경로는 아직 알려지지 않았습니다. 그러나 연재청에서는 특정 인원에게서 방문자의 징후가 보일 경우 긴장의 끈을 결코 놓지 말 것을 촉구하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102150
+    m_Localized: 'TV: 만약 본인이 방문자와 접촉한 사실이 있다거나, 이미 방문자로 변한 것은 아닌지 불확실하시다면, 연재청 핫라인으로 연락하시기 바랍니다. 다음 화면에 나오는 번호를 기억해 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102151
+    m_Localized: 'TV: {0} 입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102152
+    m_Localized: 'TV: 이상으로 최신 소식을 전해드렸습니다. 잠시 후 계속됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102153
+    m_Localized: 'TV: 방문자 식별이 점점 더 어려워지고 있는 요즘.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102154
+    m_Localized: 'TV: 식별용 징후도 유용하지만, 보다 확실한 방법을 원하신다면?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102155
+    m_Localized: 'TV: 그래서 준비했습니다! 저희가 개발한 혁신적인 촬영용 필름을!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102156
+    m_Localized: 'TV: 저희의 필름은 영혼의 에너지를 드러내주기 때문에, 인간과 적대적인 방문자를 구분하실 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102157
+    m_Localized: 'TV: 촬영 후, 검은 반점이 보이신다면, 방문자를 찾아낸 것입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102158
+    m_Localized: 'TV: 지금 전화하셔서 무료 체험용 필름을 받아보세요. {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102159
+    m_Localized: 'TV: 긴급 속보입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102160
+    m_Localized: 'TV: 태양의 활동이 더욱 거세져서, 곳곳에서 산불이 발생하여 숲을 덮치고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102161
+    m_Localized: 'TV: 전문가들은 이 같은 현상이 비정상적으로 활발한 태양 활동 때문이라 추정하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102162
+    m_Localized: 'TV: 산불 재해의 전체 규모는 아직 정확히 파악되지 않고 있으나, 인근 도시들로부터 화재를 진압하기 위해 여러 팀의 소방대가 파견되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296384
+    m_Localized: 'TV: 이상으로 현재까지 들어온 소식을 모두 전해드렸습니다. 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296385
+    m_Localized: 'TV: 침착함을 유지하시고, 주간에는 외출을 삼가시기를 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296386
+    m_Localized: 'TV: 다음으로는 잠시 광고를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296392
+    m_Localized: 'TV: 잠시 속보를 전해드리겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296393
+    m_Localized: 'TV: 인접 도시에서 시민 소요 사태가 발생했다는 보고가 들어오고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296394
+    m_Localized: 'TV: 소요 사태가 진정될 기미가 보이지 않자, 연재청 병력이 해당 지역을 봉쇄하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296395
+    m_Localized: 'TV: 외출을 자제하여 주십시오. 추가 방침이 곧 전달될 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296396
+    m_Localized: 'TV: 관리청에 협조해 주시는 여러분이야말로, 세계 수호에 앞장서고 있음을 명심하여 주시기 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296397
+    m_Localized: 'TV: 이상으로 최신 소식 전파를 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296398
+    m_Localized: 'TV: 현 위치에서 섣불리 이동하지 마시고, 추후 방침이 하달될 때까지 대기하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296399
+    m_Localized: 'TV: 열심히 일한 당신, 쉬어라.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296400
+    m_Localized: 'TV: 마르고로 담배, 깊게 한 모금 들이쉬면 진정한 휴식이 찾아옵니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296401
+    m_Localized: 'TV: 마르고로. 진짜 사나이를 위한 담배.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296402
+    m_Localized: 'TV: (면책 고지: 회사는 생명이나 건강 상의 어떠한 피해에도 법적 책임이 없습니다)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296403
+    m_Localized: 'TV: 안녕하십니까. 오후 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296404
+    m_Localized: 'TV: 중요 소식을 전해드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296405
+    m_Localized: 'TV: 최근 들어 도시 지역에서 발생한 사건의 세부 사항이 새로이 밝혀졌습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296406
+    m_Localized: 'TV: 격리 구역 중 한 곳이 무장한 개인의 공격을 받았습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296407
+    m_Localized: 'TV: 현재로서는 범행 동기가 무엇인지는 명확하지 않으며, 공격자에게 공범이 있었는지 여부 역시 알려지지 않았습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296408
+    m_Localized: 'TV: 몇몇 신원 불명의 인원들이 탈주하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296409
+    m_Localized: 'TV: 침묵은 죽음의 징후로다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296410
+    m_Localized: 'TV: 영혼을 좀먹는 침묵이 그러하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296411
+    m_Localized: 'TV: 그러나 공허보다도 끔찍한 것이 있다면... 그것은 울림이리라.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296412
+    m_Localized: 'TV: 울려 퍼지는 장례식 종소리는 점차 커져만 가고.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296413
+    m_Localized: 'TV: 마침내 종소리가 모두에게 울려퍼지면, 우리 귀에 가득 차는 것은 영겁의 소음.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296414
+    m_Localized: 'TV: 추잡한 관념들이 귀지와 얽혀 쌓인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296415
+    m_Localized: 'TV: 이는 방문자들을 번성케 하는 지옥의 둥지.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296416
+    m_Localized: 'TV: 끈적한 자양분에 뒤엉켜 파고드는구나.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296417
+    m_Localized: 'TV: 귀지가 넘쳐흐르리. 귀지가 넘쳐흐르리. 귀지가 넘쳐흐르리.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296418
+    m_Localized: 'TV: 오늘 사건으로 인해 몇 가지 가설이 첨예하게 대립 중입니다. 목격자의 진술 역시 각양각색입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296419
+    m_Localized: 'TV: 일부 보고서에는 단독 총격범이 묘사되어 있는 한편, 다른 보고서에는 후드를 눌러쓴 채로 무장한 집단이 언급되어 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296420
+    m_Localized: 'TV: 더욱 심각한 문제는 따로 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296421
+    m_Localized: 'TV: 도시가 저지선에 의하여 봉쇄됨에 따라 주변 지역의 시신 반출 역시 일시적으로 중단되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296422
+    m_Localized: 'TV: 이러한 상황에서도 주거지 검사는 계속될 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296423
+    m_Localized: 'TV: 유해를 화장하실 수 있는 여건이시라면, 즉각 시행하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296424
+    m_Localized: 'TV: 여건상 화장이 불가능하다면, 상황이 정상화될 때까지는 시신을 보관하여 두셨다가, 이후 관련 기관에 인도해 주시기 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296425
+    m_Localized: 'TV: 지금까지 뉴스였습니다. 채널을 고정하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296426
+    m_Localized: 'TV: 안녕하십니까. 오후 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296427
+    m_Localized: 'TV: 현재 연재청은 격리 구역 공격으로 발생한 피해자들을 돕고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296428
+    m_Localized: 'TV: 기존 시설의 과밀로 인해 관리청에서는 이에 대한 대응 방안을 마련하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296429
+    m_Localized: 'TV: 이러한 대응 방안은 시설에서 대피한 주민들을 도시 외곽의 건물로 임시로 수용하는 내용을 골자로 하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296430
+    m_Localized: 'TV: 해당 지역의 주민들의 협조에 힘입어 연재청에서는 피난소를 확보하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296431
+    m_Localized: 'TV: 다만 현재로서는 격리 구역에서 탈출한 사람들 중 일부만 소재파악이 완료된 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296432
+    m_Localized: 'TV: 한편 관계 기관으로부터 새로운 식별 수단이 발표되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296433
+    m_Localized: 'TV: 잇몸 출혈입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296434
+    m_Localized: 'TV: 해당 상태의 인원이 집으로 찾아오더라도, 접촉을 삼가 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296435
+    m_Localized: 'TV: 정기 순찰을 기다렸다가 해당 인원을 신고하시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296436
+    m_Localized: 'TV: 이상으로 뉴스를 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296437
+    m_Localized: 'TV: 현 위치에서 섣불리 이동하지 마시고, 추후 방침이 하달될 때까지 대기하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296438
+    m_Localized: 'TV: 다음으로는 위험한 신흥 광신도들에 대한 특별 편성 보고를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296439
+    m_Localized: 'TV: 방문자들은 단순히 우리들 사이에 숨어만 있는 것이 아닙니다. 급기야 사람들의 사상에마저 침투하고 있는 것인데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296440
+    m_Localized: 'TV: 현재 여러 도시에서 광신도들의 활동이 조직적으로 발생하고 있다는 보고가 잇따르고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296441
+    m_Localized: 'TV: 이들 집단은 여러 혐의를 받고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296442
+    m_Localized: 'TV: 산 제물 봉헌, 미지의 신격체 숭배, 그리고 방문자들과의 연관 가능성 등이 이러한 혐의에 해당합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296443
+    m_Localized: 'TV: 최신 보고에 따르면, 이 광신도 단체는 공개적으로 연재청에 대립하는 입장을 표명하고 있다고 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296444
+    m_Localized: 'TV: 단순한 선언이나 선동을 넘어, 이제는 직접적인 행동으로 격화되는 지경에 이르렀습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296445
+    m_Localized: 'TV: 최근 도시 지역에서 발생한 많은 사건의 배후로 해당 광신도 집단이 거론되고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296446
+    m_Localized: 'TV: 시청자 여러분께 소위 ‘신흥 종교인’들과의 접촉을 피할 것을 권고드리는 바입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296447
+    m_Localized: 'TV: 이들을 돕거나 이들의 사상에 동조하면 체포로 이어질 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296448
+    m_Localized: 'TV: 지금까지 뉴스였습니다. 채널을 고정하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296449
+    m_Localized: 'TV: 안녕하십니까. 오후 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296450
+    m_Localized: 'TV: 도시의 상황은 점차 안정되고 있지만, 미처 확보하지 못한 탈주자들이 대거 거리를 활보하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296451
+    m_Localized: 'TV: 한편, 시신 처리 작업이 재개되었지만 새로운 문제들이 잇따라 발생 중입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296452
+    m_Localized: 'TV: 최근의 보고서에 따르면 현재 길거리에서는 들개 무리가 여럿 돌아다니고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296453
+    m_Localized: 'TV: 연재청에서는 이러한 위협에 대처하기 위해 전담 팀을 꾸려 파견하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296454
+    m_Localized: 'TV: 관리청은 잠재적 위험 인자를 식별할 수 있는 새로운 징후를 발표했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296455
+    m_Localized: 'TV: 바로 피부 발진입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296456
+    m_Localized: 'TV: 도시에서 일어난 공격 행위에 대한 조사는 아직 진행 중인 것으로 밝혀졌습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296457
+    m_Localized: 'TV: 공격자가 단독으로 행동했는지 여부는 여전히 불투명한 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296458
+    m_Localized: 'TV: 다만 확실한 것은 연재청이 해당 공격 행위와 방문자의 위협 모두 적절히 억누를 것이라는 점입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296459
+    m_Localized: 'TV: 방문자 징후를 파악하는 데에 있어 궁금한 점이 있으실 경우 언제든 연재청 핫라인으로 전화하십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296460
+    m_Localized: 'TV: 번호는 {0} 입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296461
+    m_Localized: 'TV: 이상으로 뉴스를 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296462
+    m_Localized: 'TV: 현 위치에서 섣불리 이동하지 마시고, 추후 방침이 하달될 때까지 대기하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296463
+    m_Localized: 'TV: 다음은 적도 지역 국가들의 상황에 대한 소식입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296464
+    m_Localized: 'TV: 오늘 밤 적도 지역에서 우려할 만한 소식이 들어왔습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296465
+    m_Localized: 'TV: 광범위한 산불과 극심한 폭염, 가뭄이 여러 국가를 황폐화시키고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296466
+    m_Localized: 'TV: 최근 보고에 따르면 해당 지역의 기온이 크게 상승한 나머지 지면과 접촉하는 것만으로도 3도 화상을 입는 지경에 이른 것으로 파악됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296467
+    m_Localized: 'TV: 사망자 수는 아직 확인되지 않았으며, 현재로서는 대피마저 불가능합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296468
+    m_Localized: 'TV: 정부는 피해 당사국들과의 연락을 시도하였으나 현재까지는 모든 연락 수단이 두절된 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296469
+    m_Localized: 'TV: 이러한 상황임에도 몇몇 조건이 맞아떨어질 경우, 연재청 요원들이 재난 구호 활동을 위하여 파견될 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296470
+    m_Localized: 'TV: 지금까지 뉴스였습니다. 채널을 고정하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296471
+    m_Localized: 'TV: 안녕하십니까. 오후 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296472
+    m_Localized: 'TV: 도시의 상황은 여전히 불안정하며, 봉쇄 조치가 계속해서 이어지고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296473
+    m_Localized: 'TV: 이러한 상황에도 불구하고 새로운 위협이 대두되었습니다. 금지된 광신도 집단의 구성원들이 변두리 지역에서 목격되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296474
+    m_Localized: 'TV: 최근 보고에 따르면, 광신도들은 개활지에 불을 지르는 행위를 포함하는 종교의식을 준비 중인 것으로 파악되고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296475
+    m_Localized: 'TV: 연재청은 해당 광신도 집단이 격리 구역에 대한 공격에 가담했을 것이라 추정하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296476
+    m_Localized: 'TV: 도시의 현재 상황으로 인해 연재청이나 군대에서 해당 집단에 대응할 전담 부대를 보낼 여유가 없는 실정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296477
+    m_Localized: 'TV: 해당 단체의 구성원이 집 근처에 나타나면 즉시 연재청 핫라인으로 전화주십시오. 번호는 {0} 입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296478
+    m_Localized: 'TV: 또한 관리청에서는 새로운 식별 징후를 발표하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296479
+    m_Localized: 'TV: 겨드랑이 부위에 균류가 자라나는 현상입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296480
+    m_Localized: 'TV: 이상으로 뉴스를 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296481
+    m_Localized: 'TV: 현 위치에서 섣불리 이동하지 마시고, 추후 방침이 하달될 때까지 대기하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296482
+    m_Localized: 'TV: 다음은 극지방 상황에 대한 최신 정보를 보내드리겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296483
+    m_Localized: 'TV: 또다시 태양의 공격이 거세지고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296484
+    m_Localized: 'TV: 과학자들이 발표한 새로운 예측이 우려를 불러일으키고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296485
+    m_Localized: 'TV: 현재의 폭염이 가라앉지 않으면 극지방의 빙하가 완전히 녹아 대규모 홍수가 발생할 수 있을 거라는 것이 과학자들의 주장입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296486
+    m_Localized: 'TV: 연구자들은 지속되는 기후 이상 현상의 원인을 계속 조사하고 있으나, 아직까지 정확한 원인을 밝혀내지 못했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296487
+    m_Localized: 'TV: 지금까지 뉴스였습니다. 채널을 고정하여 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296488
+    m_Localized: 'TV: 속보입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296489
+    m_Localized: 'TV: 도시의 상황은 안정될 기미가 보이지 않습니다. 현 재난 상황은 악화 일로를 걷고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296490
+    m_Localized: 'TV: 빙하가 녹으면서 해수면이 빠르게 상승하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296491
+    m_Localized: 'TV: 이로 인해 주요 도시를 포함한 해안 지역의 침수 피해 위협이 발생하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296492
+    m_Localized: 'TV: 방사능 물질을 포함하고 있는 것으로 알려진 오염된 호수들이 메마르기 시작하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296493
+    m_Localized: 'TV: 과학자들은 이러한 현상으로 인해 산성비가 형성될 수 있다고 경고하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296494
+    m_Localized: 'TV: 천둥소리가 들리면 즉각 산성비 노출로부터 몸을 보호할 수 있는 안전한 곳으로 대피하시기 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296495
+    m_Localized: 'TV: 또한 도시는 계속해서 봉쇄 상태를 유지 중입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296496
+    m_Localized: 'TV: 연재청에서는 아직 모든 탈주자를 생포하지 못한 상태이며, 방문자 식별에 활용할 수 있는 새로운 징후를 발표하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296497
+    m_Localized: 'TV: 바로 급격한 동공 움직임입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296498
+    m_Localized: 'TV: 이상으로 뉴스를 마치겠습니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296499
+    m_Localized: 'TV: 저희 스튜디오에 대한 공격 위험 때문에 현재 보도를 중단하겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296500
+    m_Localized: 'TV: 방문자 식별과 관련하여 질문 사항이 있으시면 핫라인 {0}으로 전화하십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296501
+    m_Localized: 'TV: 이상으로 방송을 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296502
+    m_Localized: 'TV: 긴급 속보입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296503
+    m_Localized: 'TV: 연재청에서 상당수의 정부 관계자들을 연행하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296504
+    m_Localized: 'TV: 기관은 정부 관계자들 중 일부가 방문자로 식별되었다고 보고하였습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296505
+    m_Localized: 'TV: 의회가 더 이상 제 기능을 하지 못하는 상황이기에, 연재청이 임시 정부 역할을 맡을 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296506
+    m_Localized: 'TV: 또한...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296507
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296508
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296509
+    m_Localized: 'TV: 잠시만 기다려 주십시오...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296510
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296511
+    m_Localized: 'TV: 연재청에서 방금 들어온 소식입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296512
+    m_Localized: 'TV: 도시 내 격리 구역을 공격한 세력이 차단선을 돌파한 것으로 확인됐습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296513
+    m_Localized: 'TV: 반복합니다, 공격자들이 차단선을 돌파하였으며 아주 큰 세력을 형성한 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296514
+    m_Localized: 'TV: 집안 창문에 바리케이드를 치십시오. 현관문을 잠가 두십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296515
+    m_Localized: 'TV: 추가 지시사항이 하달될 때까지 실내에 머무르십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296516
+    m_Localized: 'TV: 이상으로 방송을 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296565
+    m_Localized: 'Window: 상처 입은 자신의 남편 곁에서 울부짖고 있는 한 여성의 모습이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296566
+    m_Localized: 'Window: 남자가 살아있는지 죽었는지는 분간이 되지 않는다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296567
+    m_Localized: 'Window: 눈물범벅이 된 채로, 여자는 총탄이 빗발치는 곳에서 벗어나고자 남편의 무거운 몸을 질질 끌고 간다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296568
+    m_Localized: 'Window: 하나의 생각이 당신을 사로잡은 채 놓아주질 않는다. 상황은 점점 더 악화될 것이라는 생각이.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296569
+    m_Localized: 'Window: 들판을 따라 뻗은 오솔길에는 도망치려다 죽은 사람들의 시체가 여기저기 널브러져 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296570
+    m_Localized: 'Window: 근방에는 이러한 사태를 야기한 주범, 연재청 요원 한 명이 호젓하니 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296571
+    m_Localized: 'Window: 남자가 쥐고 있는 소총의 포신에서는, 채 식지 않은 연기가 피어오르고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296572
+    m_Localized: 'Window: 겁에 질려 어쩔 줄 몰라하는 사람들이 근처의 집을 향하여 허둥지둥 내달린다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296573
+    m_Localized: 'Window: 몸을 숨길 곳이 절실한 나머지 아무 현관문이나 두들겨댄다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296574
+    m_Localized: 'Window: 허나 그 누구도 이들을 들이려는 자가 없는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296575
+    m_Localized: 'Window: 강제 퇴거 조치를 당한 사람들이 폐허로 변해버린 이웃집 터에 모여든 채 우두커니 서있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296576
+    m_Localized: 'Window: 그들은 충격에 휩싸인 채, 저들끼리 속삭이고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296577
+    m_Localized: 'Window: 아무래도 그곳을 피난처 삼고자 하는 듯싶다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296578
+    m_Localized: 'Window: 헌데 저곳에 안전하게 숨어 있을 수 있는 곳이 아직 남아 있기는 한 걸까? 저곳 뿐만이 아니라 이 세상 어디에든?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296579
+    m_Localized: 'Window: 오솔길 위에 돌격 소총으로 무장한 사내가 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296580
+    m_Localized: 'Window: 그의 재킷에는 뽑아낸 이빨, 눈알, 그리고 다른 정체 모를 것들이 덕지덕지 붙어 있다. 여기서는 당최 무엇인지 형체가 분간조차 되지 않는 그런 것들 말이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296581
+    m_Localized: 'Window: 만약 이 남자가 호신 목적이 아니라, 오락이나 전리품을 목적 삼아 죽여대는 것이라면 어떡해야 할까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296582
+    m_Localized: 'Window: 어찌 됐든 당신은 남자가 당신의 적이 아니기만을 바랄 뿐이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296583
+    m_Localized: 'Window: 전봇대에 "네놈들이 내게서 모든 것을 앗아갔다."라고 쓰인 푯말을 달고 있는 남자가 매달려 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296584
+    m_Localized: 'Window: 강도라도 당한 것일까? 아니면 연재청에서 가족을 앗아갔다던지?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296585
+    m_Localized: 'Window: 이리저리 머리를 굴려 보아도, 알 길이 없는 노릇이다. 몇 가지 추측만 해볼 수 있을 뿐.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296586
+    m_Localized: 'Window: 연재청에 의해 퇴거된 일단의 무리가 이웃집 잔해에 자리잡았다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296587
+    m_Localized: 'Window: 집터에는 남아있는 것이 거의 없지만, 지하실만은 어떻게든 온전한 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296588
+    m_Localized: 'Window: 안전하게 숨어들 수 있는 하나의 작은 섬처럼.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296589
+    m_Localized: 'Window: 허나 그들이 얼마나 오래 숨어 있을 수 있을 것인가?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296590
+    m_Localized: 'Window: 들개들이 거리를 어슬렁거리고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296591
+    m_Localized: 'Window: 개들의 몸통에는 옅은 화상 자국이 있으며, 배고픔에 바짝 야위었다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296592
+    m_Localized: 'Window: 집 안에서는 딱히 개들이 두렵지 않다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296593
+    m_Localized: 'Window: 하지만 이제는 밖에 나가지 않는 편이 좋을 것이라는 감정을 도무지 떨쳐낼 수 없다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296594
+    m_Localized: 'Window: 이런저런 짐을 싸들고 있는 사람들이 삼삼오오 근처 민가에 모여든다. 연재청 요원에게 들킬세라, 조심스래 속삭인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296595
+    m_Localized: 'Window: 격리 구역에서 온 사람들처럼 보이며, 전에는 누군가가 살던 빈집으로 이동해 온 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296596
+    m_Localized: 'Window: 이 지경이 되자, 매달려 있는 사내는 모종의 섬뜩한 "환영해요" 표지판처럼 보이기도 한다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296597
+    m_Localized: 'Window: 무장한 방문자 사냥꾼이 생존자 무리에게 총구를 겨누고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296598
+    m_Localized: 'Window: 사내는 아마도 우연히 그들을 마주친 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296599
+    m_Localized: 'Window: 터져 나오는 고함 소리며, 미친 듯한 목소리로 질러대는 비명 등이 간헐적으로 들려온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296600
+    m_Localized: 'Window: 이렇게 뒤바뀌어버린 세상에서 살아남을 자는 누구인가? 적어도 이 사람들이 아닌 것만큼은 확실하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296601
+    m_Localized: 'Window: 연재청 관리들이 죽은 개들을 내려다보고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296602
+    m_Localized: 'Window: 그중 한 명이 서류판에 뭔가를 끄적대고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296603
+    m_Localized: 'Window: 허나 단 몇 사람 만으로 굶주린 동물 떼를 막아낼 수 있을까? 필시 역부족일 것이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296604
+    m_Localized: 'Window: 연재청 요원 두 명이 가로등 옆에 서서, 매달려 있는 남자를 바라본다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296605
+    m_Localized: 'Window: 드디어 저들도 지역 관광 명소가 되어버린 이곳에 관심이 기운 모양이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296606
+    m_Localized: 'Window: 그들은 마치 매달려 있는 사내가 대체 사다리도 없이 어떻게 저렇게 높이 올라갔을까 알쏭달쏭해하고 있는, 대책 없는 뜨내기 탐정인 양 굴고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296607
+    m_Localized: 'Window: 전원이 사망하였다. 굶주린 개들이 유해를 뜯어먹고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296608
+    m_Localized: 'Window: 시체 근처에는 탄피가 흩어져 있다. 예의 그 사냥꾼이 사람들을 죽인 듯 보이며, 높은 확률로 전리품도 챙겨갔을 터이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296609
+    m_Localized: 'Window: 세상의 광기가 도를 넘어서고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296610
+    m_Localized: 'Window: 광신도들이 장작을 쌓아 큰 더미를 만들고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296611
+    m_Localized: 'Window: 누군가를 태우기라도 하려는 것일까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296612
+    m_Localized: 'Window: 광기 어린 계획은 곧 그 실체를 드러낼 터이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296613
+    m_Localized: 'Window: 광신도들이 외쳐대는 대의를 위하여 얼마나 무고한 생명이 희생되어야 하는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296614
+    m_Localized: 'Window: 길 위에 정신이 나가버린 무장 괴한이 우두커니 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296615
+    m_Localized: 'Window: 사내는 휘발유통과 화염병을 쥐고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296616
+    m_Localized: 'Window: 마을 전체를 불태울 계획이라도 세우고 있는 것일까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296617
+    m_Localized: 'Window: 누군가 저 사내에게 격리 구역 출신의 사람들이 있다고 말이라도 해준 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296618
+    m_Localized: 'Window: 이웃집 폐허 속에 숨어 지내던 사람들의 시신이 한낮의 태양빛 아래에서 바싹 불타버렸다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296619
+    m_Localized: 'Window: 그들의 사체를 뜯어먹던 개들조차 뭔가에 겁이 잔뜩 질린 듯 모두 도망쳐 버렸다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296620
+    m_Localized: 'Window: 혹시 연재청 요원들이 아니라, 뭔가 더 끔찍한 것을 피해 달아난 것은 아닐는지?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296621
+    m_Localized: 'Window: 쌓아 놓은 장작 더미 부근에, 광신도들이 묶여 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296622
+    m_Localized: 'Window: 스스로를 제물로 바치기로 결심한 것일까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296623
+    m_Localized: 'Window: 그렇게 생각하자 정신이 뒤틀리는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296624
+    m_Localized: 'Window: 죽음에 대한 두려움이 이성을 흐려버리며, 이윽고 사람들은 차마 입에 담을 수조차 없는 짓거리들을 기꺼이 하려 든다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296625
+    m_Localized: 'Window: 고작 몇 주 정도가 지났을 뿐임에도 이런 광기가 버젓이 자행되고 있는 판국에, 다음에는 어떤 일이 벌어질지 상상하는 것만으로도 소름이 끼친다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296626
+    m_Localized: 'Window: 불이 붙은 집들이 눈이 부시게 활활 타오른다. 저 멀리서는 비명이 메아리가 되어 울려퍼진다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296627
+    m_Localized: 'Window: 이러한 혼돈의 배후가 방문자들을 죄다 쓸어버리려 드는 미치광이임은 익히 알고 있는 바이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490688
+    m_Localized: 'Window: 당신의 집이 다음 차례인 걸까? 그렇다면 그건 내일일까? 아니면 다음 주?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490689
+    m_Localized: 'Window: 이대로라면 결국 저 미치광이와 직접 마주하게 될 것이다. 그저 시간문제일 뿐이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490690
+    m_Localized: 'Window: 불에 탄 시신이 있어야 할 자리에 아무것도 남아있지 않다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490691
+    m_Localized: 'Window: 기묘하고, 딱히 형태랄 게 없는 덩어리만 덩그러니 놓여 있을 뿐이다. 진흙처럼 생겼다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490692
+    m_Localized: 'Window: 무엇인가가 시신을 삼켜버리기 전에 살과 뼈를 몽땅 녹여버린 것은 아닐까 하는 생각이 스쳐 지나간다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490693
+    m_Localized: 'Window: 당신은 그 괴물이 그림자 속에 머물러 있기만을 기도한다. 그런 괴물을 목도한다면 정신이 온전치 못할 것이라는 두려움이 몰려온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490694
+    m_Localized: 'Window: 연재청 요원들이 불에 탄 시신들을 둘러싸고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490695
+    m_Localized: 'Window: 광신도들의 죽음을 기록해둔다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490696
+    m_Localized: 'Window: 광신도들의 얼굴은, 마치 죽기 직전에 무시무시한 무언가를 목격한 듯, 극심한 공포와 고통으로 굳어져 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490697
+    m_Localized: 'Window: 주변의 모든 집이 폐허가 되어버렸다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490698
+    m_Localized: 'Window: 끝내 당신의 집 하나만 남아 우두커니 서 있을 뿐이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490699
+    m_Localized: 'Window: 광인의 무차별 공격을 받아줄 이는 더 이상 남아있지 않다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490700
+    m_Localized: 'Window: 이다음에 무슨 일이 일어날 것이던지 간에, 당신에게 일어날 일이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490701
+    m_Localized: 여기는 관제실. 격리 구역 상태 확인 요망. 코드 51. 오전 3시 폭발 상황 보고됨.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490702
+    m_Localized: 32-8 유닛 보고한다. 코드 60 발생. 민간인 사상자 대량 발생, 요원 사망...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490703
+    m_Localized: 여기는 28-8. 코드 451. 시신 처리를 위한 소각팀 지원 바람.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490704
+    m_Localized: 알겠다. 코드 984를 발동하겠다. 조사가 완료될 때까지 도시는 봉쇄 예정임. 지원군 도착 시까지 대기 바람.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490705
+    m_Localized: 이 방송이 들리신다면... 도시 외곽으로는 절대 가지 마세요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490706
+    m_Localized: 연재청 요원들이 도시에서 나가려는 사람은 모조리 쏴재끼고 있습니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490707
+    m_Localized: 이게 대체 다 무슨 일이야! 그냥 여기서 나가고 싶은 것뿐인데!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490708
+    m_Localized: 누구든! 제발 도와—
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490709
+    m_Localized: 격리 구역을 공격한 자들과는 다른 자들이었어요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490710
+    m_Localized: 전 봤습니다. 거기에 있는 게 뭔지 봤다구요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490711
+    m_Localized: 그... 그것은... 인간이라 할 수 없어...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490712
+    m_Localized: 강제 퇴거된 주민입니다. 다른 분들께 알립니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490713
+    m_Localized: 만약 우리와 같이 연재청 놈들한테 쫓겨난 신세라면, 불타 버린 집의 지하실에 숨어 지낼 곳이 있으니 이쪽으로 오십시오.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490714
+    m_Localized: 위치는 예의 그 은둔자 분의 집 근처입니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490715
+    m_Localized: 현재 남은 음식이 별로 없습니다. 이대로라면 모두 배를 곯겠죠.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490716
+    m_Localized: 혹시 음식을 가지고 와주실 수 있는 분이 계시다면, 도와주십시오. 정말 절실하게 필요한 상황입니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490717
+    m_Localized: 이 방송을 듣고 계신 모든 분들께...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490718
+    m_Localized: 연재청은 현재 일어나고 있는 사건의 진상을 은폐하기 위해 도시의 모든 라디오 전파에 대한 교란 공작을 시도 중입니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490719
+    m_Localized: 그 자식들은 도시에서 일어나고 있는 모든 일들을 숨겨두고자 합니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490720
+    m_Localized: 또한 격리 구역에 있던 모두를 죽여버린 정신병자가 모든 일의 원흉인 것처럼 떠들어대고 있습니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490721
+    m_Localized: 아직도 도시 안에 있으시다면 — 떠나십... 여...는 안전하지 않습...다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490722
+    m_Localized: 연재청이 순찰을 오면 피하십...오. 그 자식들은 여러... 죽이려... 합...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490723
+    m_Localized: 도망...세요, 아직... 도...칠 수 있을 때—
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490724
+    m_Localized: 시...신을 태우지... 말았어야...했... 그게... 그것... 끌어... 들...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490725
+    m_Localized: 그냥... 그냥... 유해를... 이런 일은 안 일어났을—
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490726
+    m_Localized: 모...든 연...청 부대에...전송...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490727
+    m_Localized: '새...로운 지...시: 코드 451이 코드 955로 대체...다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490728
+    m_Localized: 시신을 태...지 말 것. 대신... 석ㅎ...를 뿌릴 것.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490729
+    m_Localized: 반복... 코드 451은... 시...신을 태우는 것...은... 대...상에 의한 위협... 확보...기 ...해...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490730
+    m_Localized: 여기... 18-8. 대상 확보에 실...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490731
+    m_Localized: 대상... 도시 경계... 벗어났다. 즉...적인 지원이 필요...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490732
+    m_Localized: 반...한다. 지원... 요청... 단독... 대상을 확보... 불가...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490843
+    m_Localized: 'Phone: 안녕하십니까. 현재 연결 가능한 방문자 제거 전문가가 없습니다. 통화가 연결될 때까지 잠시 기다려 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490844
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490845
+    m_Localized: 'Phone: 안녕하십니까? 전화 주신 분은 누구신가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490846
+    m_Localized: 무슨 뜻이죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490847
+    m_Localized: 왜 제가 누구인지 물어보시는 거죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490848
+    m_Localized: 'Phone: 아하, 그렇군요. 바로 인간이라고 답변을 주시지 못하셨네요... 방문자의 영혼이 이미 고객님의 영혼에 뿌리를 내리기 시작한 상태이십니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490849
+    m_Localized: 'Phone: 이제 정말 잘 들으셔야 합니다, 시간이 많지 않거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490850
+    m_Localized: 'Phone: 말씀해 주세요. 주방에 빵을 한 조각씩 남겨놓는 편이십니까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490851
+    m_Localized: 아니요? 왜 그래야 하죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490852
+    m_Localized: 빵 한 조각이라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490853
+    m_Localized: 'Phone: 그렇게 해주셔야 제가 고객님에게 깃든 방문자의 영혼을 퇴치하는 데에 도움이 되거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490854
+    m_Localized: 'Phone: 그렇군요, 일단 됐습니다. 잘 들으세요, 시간이 많지 않거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490855
+    m_Localized: 'Phone: 말씀해 주세요. 주방에 빵을 한 조각씩 남겨놓는 편이십니까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490856
+    m_Localized: 아니요? 왜 그래야 하죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490857
+    m_Localized: 빵 한 조각이라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490858
+    m_Localized: 'Phone: 아아... 그런 거였군요. 고객님께서는 고객님 집의 영혼과 그다지 사이가 좋지 않으신 거로군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490859
+    m_Localized: 'Phone: 그래서 방문자 영혼이 집까지 찾아온 겁니다. 하지만 걱정하지 마시길. 저희가 해결해 드릴 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490860
+    m_Localized: 'Phone: 집에 개인용 컴퓨터를 보유 중이신가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490861
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490862
+    m_Localized: 개인용 뭐라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490863
+    m_Localized: 'Phone: 집의 영혼에게 공물을 바치지 않으시는 건가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490864
+    m_Localized: 'Phone: 그러니 방문자 영혼이 고객님께 관심을 가지게 된 겁니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490865
+    m_Localized: 'Phone: 집에 개인용 컴퓨터를 보유 중이신가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490866
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490867
+    m_Localized: 개인용 뭐라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490868
+    m_Localized: 'Phone: 알겠습니다. 그러면 Alt+F4는 안 되겠고...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490869
+    m_Localized: 'Phone: 흐으으으음, 그러면 이걸 여쭤봐야겠네요. 혹시 버섯을 드십니까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490870
+    m_Localized: 이따금씩 콤부차만 먹습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490871
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490872
+    m_Localized: 'Phone: 진심으로 컴퓨터가 뭔지 모르시는 건가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490873
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490874
+    m_Localized: 'Phone: 그렇군요, 알겠습니다. 그럼 다음으로 넘어가서...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490875
+    m_Localized: 이따금씩 콤부차만 먹습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490876
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490877
+    m_Localized: 'Phone: 아앗 그런...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490878
+    m_Localized: 'Phone: 즉시 섭취를 중단하셔야 합니다. 콤부차는 고대의 악 그 자체거든요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490879
+    m_Localized: 'Phone: 콤부차를 섭취하면 신체 내부에 균사체가 자라나게 됩니다. 이럴 경우 영혼이 고객님을 장난감처럼 조종할 수 있게 되지요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490880
+    m_Localized: 'Phone: 방문자의 영혼이 고객님의 기억을 건드리기라도 하면 정말 난리도 아니랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490881
+    m_Localized: 'Phone: 아예 고객님의 기억을 지워버리거나... 기억을 자꾸자꾸 읽어내서, 고객님이 내리는 결정에 영향을 미치기도 하거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490882
+    m_Localized: 'Phone: 뭐가 최악인지 아시나요? 고객님이 조종당하고 있다는 사실조차 깨닫지 못한다는 거죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490883
+    m_Localized: 'Phone: 좋습니다, 그러면 마지막 질문입니다. 고객님 댁에서 피를 보신 적이 있으신가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490884
+    m_Localized: 네
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490885
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490886
+    m_Localized: 'Phone: 다행입니다. 절대 섭취하지 마십시오. 섭취하기라도 했다가는 방문자의 영이 고객님 육신에 접촉하기 쉬워집니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490887
+    m_Localized: 'Phone: 혹시라도 섭취하셨다고 가정해 본다면, 균사체가 고객님 몸속에 자라나고 있었겠지요. 그 이후엔 고객님을 장난감처럼 조종할 수 있게 됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490888
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490889
+    m_Localized: 'Phone: 휴우... 이렇게 까다로운 경우는 잘 없는데... 어렵다, 정말 어려워...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490890
+    m_Localized: 네
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490891
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490892
+    m_Localized: 'Phone: 아, 그렇군요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490893
+    m_Localized: 'Phone: 현재 문제의 원인은 방문자의 영혼이 아닙니다. 유령의 영혼이 문제죠. 죽은 자의 영 말입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490894
+    m_Localized: 'Phone: 죄송하지만 죽은 자의 영 제거는 제 전문 분야가 아니라서요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490895
+    m_Localized: 'Phone: 그런 경우에는 퇴마사가 필요하십니다. 그분들이 도움을 주실 거예요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490896
+    m_Localized: 'Phone: 제가 해드릴 수 있는 일이 없군요. 안녕히 계십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490897
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490898
+    m_Localized: 'Phone: 방문자 제거 세션이 종료되었습니다. 서비스를 이용해 주셔서 감사합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490899
+    m_Localized: 'Phone: 상담료가 익월 사용료에 합산 부가됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490900
+    m_Localized: 상담료라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490901
+    m_Localized: 통화는 무료인 줄 알았는데요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490902
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490903
+    m_Localized: 'Phone: 아, 정말 안타깝네요. 그렇다면 제가 식별할 수 있는 종류의 영혼이 아니겠군요. 어떤 종류의 영혼인지 알 수 없다면, 제가 도와드릴 수 있는 방법이 없겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490904
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490905
+    m_Localized: 'Phone: 안타깝지만, 본 상담은 여기까지만 진행토록 하겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490906
+    m_Localized: 'Phone: 강인하게 버텨내시길... 그럼 안녕히.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490907
+    m_Localized: 'Phone: 방문자 제거 세션이 종료되었습니다. 서비스를 이용해 주셔서 감사합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490908
+    m_Localized: 'Phone: 상담료가 익월 사용료에 합산 부가됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490909
+    m_Localized: 상담료라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490910
+    m_Localized: 통화는 무료인 줄 알았는데요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490911
+    m_Localized: 'Phone: 그렇습니다. 저희 방문자 제거 전문가들도 먹고 살아야 하니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490912
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490913
+    m_Localized: 'Phone: 오늘의 경험을 어떻게 평가하시겠어요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490914
+    m_Localized: 좋았음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684992
+    m_Localized: 전혀 도움이 되지 않았음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684993
+    m_Localized: 좆까, 이 사기꾼 새끼들아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684994
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684995
+    m_Localized: 'Phone: 고객님, 광고 하단에 보시면 작은 글씨로 통화료는 무료가 아니라고 분명히 적혀 있답니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684996
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684997
+    m_Localized: 'Phone: 오늘의 경험을 어떻게 평가하시겠어요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684998
+    m_Localized: 좋음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684999
+    m_Localized: 전혀 도움이 되지 않았음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685000
+    m_Localized: 좆까, 이 사기꾼 새끼들아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685001
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685002
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685003
+    m_Localized: 'Phone: 감사합니다. 고객님의 의견은 저희에게 큰 힘이 됩니다. 안녕히 계십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610048
+    m_Localized: 'TV: 이상으로 뉴스를 마치겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610049
+    m_Localized: 'TV: 이제 휴마켓 식료품 배송을 통해 이용하실 수 있습니다. 지금 {0}번으로 전화하세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610050
+    m_Localized: 'TV: 안녕하십니까. 오후 뉴스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610051
+    m_Localized: 'TV: 치솟는 불길에도 불구하고, 방문자들은 계속해서 국가 전체를 공포에 떨게 하고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610052
+    m_Localized: 'TV: 연재청에서는 방문자를 식별하는 새로운 징후를 발표했습니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610053
+    m_Localized: 'TV: 다음으로는 방문자의 본질에 대한 특별 보고서를 시청하시겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113249218560
+    m_Localized: 'Phone: 으음? 네, 여보세요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995776
+    m_Localized: 선생님 아내한테 번호를 받고 전화드립니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995777
+    m_Localized: 선생님의 아내가 도움이 필요한 상황입니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995778
+    m_Localized: 'Phone: 으으음. 그래서요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995779
+    m_Localized: 아내 분이 자제분들을 모두 잃어버리셨어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995780
+    m_Localized: 아이들이 선생님과 함께 있나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995781
+    m_Localized: 'Phone: 아주 그냥 지긋지긋하네. 사고를 쳐놓고 또 뒷수습은 내 몫이라 이거지.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995782
+    m_Localized: 'Phone: 맨날 그냥 어디 퍼질러 앉아서 한다는 말이, “아, 피곤해”.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995783
+    m_Localized: 'Phone: 원데이 투데이가 아냐 아주.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995784
+    m_Localized: 아내 분이 자제분들을 모두 잃어버리셨어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995785
+    m_Localized: 아이들이 선생님과 함께 있나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995786
+    m_Localized: 'Phone: 아아아아, 그렇군요. 이번에도 애들을 내팽개쳐 두지 않고선 배기질 못했나 보군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995787
+    m_Localized: 'Phone: 뒤치다꺼리는 또 내가 해야겠네....'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995788
+    m_Localized: 'Phone: 애엄마 친정 집은 확인해 보셨나요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995789
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995790
+    m_Localized: 선생님이 오셔서 아내 분을 데려가 주실 수 있을까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995791
+    m_Localized: 'Phone: 아니요. 애들이 애엄마랑 같이 있는 게 아니라고요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995792
+    m_Localized: 'Phone: 딱히 놀랍지도 않네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995793
+    m_Localized: 'Phone: 애엄마 친정 집은 확인해 보셨나요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995794
+    m_Localized: 아니요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995795
+    m_Localized: 선생님이 오셔서 아내 분을 데려가 주실 수 있을까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995796
+    m_Localized: 'Phone: 흠흠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995797
+    m_Localized: 'Phone: 뭐, 애엄마 친정에 있나 보죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995798
+    m_Localized: 'Phone: 나는 안 가볼 겁니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995799
+    m_Localized: 'Phone: 애엄마한테 직접 하라고 하세요. 애들한테 쥐뿔도 관심 없는 엄마가 대체 뭔 놈의 엄마인지도 한번 물어봐 주시고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995800
+    m_Localized: 두 분께서 알아서 해결하시지요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995801
+    m_Localized: 아무튼 남편분이 살아 계시고 기다리는 중이라 전하겠습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995802
+    m_Localized: 'Phone: 애엄마보고 알아서 오라 하세요. 이거 뭐 공주님도 아니고.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995803
+    m_Localized: 'Phone: 아주 사지 멀쩡한 거 보셨을 거 아니에요? 근데 대체 왜 그런데?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995804
+    m_Localized: 두 분께서 알아서 해결하시지요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995805
+    m_Localized: 아무튼 남편분이 살아 계시고 기다리는 중이라 전하겠습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995806
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995807
+    m_Localized: 'Phone: 아니 이 양반아 그럼 전화는 왜 했어? 불쌍한 처자 하나 구하는 셈 쳤다는 거야 뭐야?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995808
+    m_Localized: 'Phone: 거기서 지지든 볶든 맘대로 하쇼. 그 썅년이야 어차피 뭐가 어찌 돼도 신경도 안 쓸 테니.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995809
+    m_Localized: 'Phone: 그냥 제발 날 좀 내버려 두쇼.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995810
+    m_Localized: 'Phone: 내가 살아있다고 이야기를 해주시겠다고?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995811
+    m_Localized: 'Phone: 괜한 데 힘 빼지 마세요. 그게 뭔 의미가 있다고요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995812
+    m_Localized: 'Phone: 서로 연 끊고 산지 오래됐다니까.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995813
+    m_Localized: 'Phone: 아저씨가 뭐라고 참견하는지 모르겠네.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995814
+    m_Localized: 'Phone: 뭐 아무튼... 애엄마랑 같이 잘 지내시길. 아주 환상적인 삶을 꾸려가 보쇼.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995815
+    m_Localized: 'Phone: 죽음을 믿으십니까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995816
+    m_Localized: 당신 남편이 전화해 달라고 부탁했어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995817
+    m_Localized: 설교는 생략 부탁드려요. 남편분 일로 전화드렸습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995818
+    m_Localized: 'Phone: 뭐라고요? 제 남편요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995819
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995820
+    m_Localized: 'Phone: 남편이 저지른 일들을 생각하면... 남편에 대해선 단 한 마디도 듣고 싶지 않네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995821
+    m_Localized: 남편 분이 이전 일은 미안하다고 전해달라 했어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995822
+    m_Localized: 남편 분이 선생님더러 지옥에나 가라고 전해달라는군요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995823
+    m_Localized: 'Phone: 제 남편이요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995824
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995825
+    m_Localized: 'Phone: 남편이 저지른 일들을 생각하면... 남편에 대해선 단 한 마디도 듣고 싶지 않네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995826
+    m_Localized: 남편 분이 이전 일은 미안하다고 전해달라고 했어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995827
+    m_Localized: 남편 분이 선생님더러 지옥에나 가라고 전해달라는군요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995828
+    m_Localized: 'Phone: 하. 미안하다고요?!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995829
+    m_Localized: 'Phone: 진심으로요? 또요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995830
+    m_Localized: 'Phone: 그이가 이전에도 이렇게 다른 사람을 시켜서 대신 사과한 적이 있다는 건 모르시겠군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995831
+    m_Localized: 'Phone: 그이가 왜 직접 전화하지 못하는지 알려드릴까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995832
+    m_Localized: 'Phone: 그이는 본인이 저지른 짓거리를 받아들일 배짱이 없거든요. 인정을 못 하는 거죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995833
+    m_Localized: 'Phone: 남편은 아직도 예전처럼 돌아갈 수 있기만을 바라고 있어요. 하지만 인생은 그렇게 돌아가지 않는 법이잖아요. 아무도 시간을 되돌릴 수는 없으니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995834
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995835
+    m_Localized: 'Phone: 차라리 저는 지금이 훨씬 편해요. 절 이해해주는 사람들과 함께 하는 중이니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995836
+    m_Localized: 광신도 무리가 당신을 이해해준다고 생각하는 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995837
+    m_Localized: 도대체 왜 사이비 종교에 들어간 거예요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995838
+    m_Localized: 뭐 그렇게 말씀하신다면야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995839
+    m_Localized: 'Phone: 그쪽이 뭐라 부르건 상관 안 해요. 이들이야말로 이제는 제 가족이거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995840
+    m_Localized: 'Phone: 우리는 같은 믿음을 공유하고 있죠. 곧 ''죽음''께서 찾아오시리란 걸 알고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995841
+    m_Localized: 'Phone: 그리고 그것께서 고통이 아닌 평화를 가져다주리라는 것도요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995842
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995843
+    m_Localized: 'Phone: 안녕히 계세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995844
+    m_Localized: 'Phone: 우리는 앞으로 다가올 일이 무엇인지에 대해 같은 믿음을 지니고 있죠. 바로 ''죽음''께서 임하실 것이라는 믿음 말이죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995845
+    m_Localized: 'Phone: 이상하게 들릴지도 모르겠지만, ''죽음''께서는 슬픔이 아니라 행복을 가져다 주신답니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995846
+    m_Localized: 'Phone: 평강 속에서의 행복, 또한 고통의 종식 같은 것들을요. 선생님께서도 분명 살면서 이런저런 고충을 겪으셨겠지요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995847
+    m_Localized: 'Phone: 언젠가는 당신도 이해하시게 될 수도, 그리하여 저희의 관점에서 세상을 관조하실 수 있게 될 수도 있겠지요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995848
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995849
+    m_Localized: 'Phone: 안녕히 계세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995850
+    m_Localized: 'Phone: 이해해 주셔서 감사합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995851
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995852
+    m_Localized: 'Phone: 안녕히 계세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995853
+    m_Localized: 'Phone: 여보세요? 누구시죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995854
+    m_Localized: 안녕하세요. 남동생 분한테서 연락처를 받았습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995855
+    m_Localized: 혹시 남동생 분좀 도와주실 수 있으실까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995856
+    m_Localized: 'Phone: 어떤 남동생요? 저한테는...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995857
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995858
+    m_Localized: 'Phone: 아, 이복동생을 말씀하시는 거군요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995859
+    m_Localized: 'Phone: 그런데 잠깐... 당신은 누구고, 왜 그 사람이 당신과 함께 있는 거죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995860
+    m_Localized: 남동생 분의 부모님이 사라졌어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995861
+    m_Localized: 남동생 분께서 몸을 숨길 곳을 찾느라 저희 집에 왔어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995862
+    m_Localized: 'Phone: 사라졌다고요? 어떻게 그런 일이?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995863
+    m_Localized: 'Phone: 설마 그분들이...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995864
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995865
+    m_Localized: 'Phone: 젠장... 이게 사실일 리가... 설마 돌아가신 걸까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995866
+    m_Localized: 모르겠군요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995867
+    m_Localized: 아마도요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995868
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995869
+    m_Localized: 'Phone: 몸을 숨길 곳을 찾다니요? 이복동생은 부모님과 함께 살고 있을 텐데요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995870
+    m_Localized: 'Phone: 설마 그분들이...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995871
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995872
+    m_Localized: 'Phone: 젠장... 이게 사실일 리가... 설마 돌아가신 걸까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995873
+    m_Localized: 모르겠어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995874
+    m_Localized: 아마도요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995875
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995876
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995877
+    m_Localized: 'Phone: 세상에... 어떻게 이런 일이...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995878
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995879
+    m_Localized: 'Phone: 남동생이라면 제가 데리고 있을게요. 그렇게 전해주세요. 제가 어디 사는지는 알고 있을 거예요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995880
+    m_Localized: 'Phone: 그리고... 동생을 도와주셔서 고맙습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995881
+    m_Localized: 'Phone: 안녕히 계세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995882
+    m_Localized: 'Phone: 여보세요? 누구시죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995883
+    m_Localized: 선생님의 부인과 처제분을 제가 데리고 있습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995884
+    m_Localized: 선생님 부인께 번호를 받고 전화드립니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995885
+    m_Localized: 'Phone: 뭐 몸값이라도 뜯어낼 작정인 것처럼 말을 하시네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995886
+    m_Localized: 'Phone: 이거 어쩝니까. 뭐 드릴 게 개뿔도 안 남았는데.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995887
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995888
+    m_Localized: 'Phone: 어차피 곧 모두가 깡그리 죽어버리겠지만요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995889
+    m_Localized: 그게 무슨 말입니까? 대체 왜 그러시는 거죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995890
+    m_Localized: 부인 분께서는 잘 지내고 계십니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995891
+    m_Localized: 'Phone: 어디 아프거나 한 건 아니죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995892
+    m_Localized: 'Phone: 아주 야무진 여자거든요. 분명 무슨 일이 있어도 잘 버텨낼 수 있을 거예요. 아마 마주치는 사람들을 전부 다 도와주려 들겠죠!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995893
+    m_Localized: 'Phone: 정작 이제 전 어떻게 도와줘도 소용이 없을 테지만요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995894
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995895
+    m_Localized: 'Phone: 저는 오래 버티지 못할 듯합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995896
+    m_Localized: 그게 무슨 말입니까? 대체 왜 그러시는 거죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995897
+    m_Localized: 부인 분께서는 잘 지내고 계십니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995898
+    m_Localized: 'Phone: 저... 전 더 이상 버틸 수가 없어요. 태양이고, 방문자고, 미친 군중이고 나발이고. 아주 그냥 미칠 듯이 무섭다고요. 온몸의 힘이 다 빠져버린 기분이에요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995899
+    m_Localized: 'Phone: 그냥... 그냥 이제 다 내려놓고 싶어요. 이제 이 지옥에서 탈출할 방법은 딱 하나밖에 없어요... 무슨 말인지 아시겠어요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995900
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995901
+    m_Localized: 'Phone: 아내에게 사랑한다 전해주세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995902
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995903
+    m_Localized: 'Phone: 아니야... 그냥 아무 말도 하지 말아 주세요. 그냥 절 찾아오지 않게끔만 잘 타일러 주시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995904
+    m_Localized: 'Phone: 제가 아내를 내버려 두고 혼자만 떠났다는 걸 몰랐으면 좋겠네요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995905
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995906
+    m_Localized: 'Phone: 전화해 주셔서 고맙습니다. 또 이야기를 들어주셔서요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995907
+    m_Localized: 'Phone: 안녕히...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995908
+    m_Localized: 'Phone: 아내라면 처제한테 꼭 붙어 있겠군요. 도무지 포기하는 법을 모르는 여자였으니까요, 하하...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995909
+    m_Localized: 'Phone: 아내가 너무 불쌍해요. 나약한 사람들만 주변에 가득하니까요. 뭐, 그래서 저라도 아내 곁에서 떠나야겠다 싶었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995910
+    m_Localized: 'Phone: 안녕하십니까, 연재청 접수처입니다. 어떻게 도와드릴까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995911
+    m_Localized: 연재청 요원의 아내 분이 여기에 계셔서요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995912
+    m_Localized: 당신들의 대열에 합류하고자 하는 이타주의자 한 분이 계셔서요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995913
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995914
+    m_Localized: 'Phone: 좋습니다, 그렇다면 선생님의 문의 사항은 어떻게 되시죠? 제가 어떻게 도와드리면 좋을지 아직 모르겠군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995915
+    m_Localized: 'Phone: 협박 전화를 거신 게 아니라면 말이죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995916
+    m_Localized: ... 협박 전화 맞는데요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995917
+    m_Localized: 연재청에 일자리를 구하고 계시답니다. 예전에는 국경 쪽에서 일을 하셨다는군요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995918
+    m_Localized: 'Phone: (수화기 너머로 커다란 한숨 소리가 들려온다)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995919
+    m_Localized: 'Phone: 당신도 활동가 나부랭이신가 보죠? 불평만 늘어놓는 종자들 같으니.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995920
+    m_Localized: 'Phone: 남의 시간 좀 쓸데없이 뺏지 마세요. 지금도 진짜로 도움이 필요한 분들이 저희한테 전화를 걸고 계실 거란 말입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995921
+    m_Localized: 'Phone: 어딘가에 방문자들이 침입하는 상황일 수도 있습니다. 혹은 더 심한 상황일 수도 있고요. 이제 이런 분들은 당신네들의 전화질 덕에 죽어나가게 되겠죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995922
+    m_Localized: 'Phone: 끊습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995923
+    m_Localized: 'Phone: 흠. 그분께서도 저희 쪽 일이... 쉽지 않다는 건 알고 계셔야 할 텐데요. 정말로 마음의 준비가 되신 분이 맞나요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995924
+    m_Localized: 'Phone: 각오가 되신 분이라면, 31-G 양식을 3부 작성하라고 전해주세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995925
+    m_Localized: 'Phone: 그다음에는 의료 검사를 통과하셔야 합니다..이후에 작성하실 거는...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995926
+    m_Localized: 'Phone: (당신은 전화를 끊어버린다. 애초에 뭐 하러 이 여자 일로 전화를 걸었던 걸까?)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995927
+    m_Localized: 'Phone: 어떤 직책에 지원하신다고 하시던가요? 제발 임원만은 아니길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995928
+    m_Localized: 'Phone: 임원직 지원자만 오늘 벌써 세 번째거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995929
+    m_Localized: 임원직
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995930
+    m_Localized: 추적자 내지는 정찰대원 같은 직책
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995931
+    m_Localized: 'Phone: 이런 병신 같은 장난 전화에는 진절머리가 나는군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995932
+    m_Localized: 'Phone: 당신이 이딴 식으로 전화기를 붙들고 있는 동안 다른 사람은 통화가 불가능하다고. 누군가가 방문자에게 한창 죽어나가고 있을지도 모르는 일이지.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995933
+    m_Localized: 'Phone: 이 머저리 같고, 부적절한 장난질을 어떻게 책임질 거야.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995934
+    m_Localized: 'Phone: (전화를 그냥 끊어버렸다. 진짜 이러기냐?)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995935
+    m_Localized: 'Phone: 현재 해당 직군에 대한 채용은 진행하지 않고 있습니다. 현재 저희에게 필요한 직군은 전염병 전문가 및 전문 과학자라서요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995936
+    m_Localized: 'Phone: 선생님의 친구 분께 딱히 도움은 드리지 못하겠네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995937
+    m_Localized: 'Phone: 흠 그게 말이죠. 여기 상황이 시시각각 변하거든요. 일주일 쯤 있다가 다시 전화 주세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995938
+    m_Localized: 'Phone: 그... 뭐라고 하셨죠? 이타주의자? 이타주의자 분께도 적당한 자리가 분명 생길 테니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995939
+    m_Localized: 'Phone: 사과의 구조: 상층 사과, 버섯과 종이의 땅.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995940
+    m_Localized: 'Phone: 버섯의 ...을 두려워하라...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995941
+    m_Localized: 'Phone: 하지만 그것의 ...는 ...를 매혹시킨다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995942
+    m_Localized: 'Phone: 그곳에... 만나...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995943
+    m_Localized: 'Phone: 오직 눈물과 이별의 운명뿐.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995944
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995945
+    m_Localized: 'Phone: 여자의 호흡을 확인하시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995946
+    m_Localized: 'Phone: 왜 대답하지 않으시죠? 전 죽고 싶어요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995947
+    m_Localized: 'Phone: (전화가 끊긴다. 당신이 예상했던 것과는... 꽤나 많이 달랐다)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995948
+    m_Localized: 'Phone: 현재는 비행기나 기차를 통한 입국이 불가능하오니, 이 점 참고해 주시기 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995949
+    m_Localized: 'Phone: 어떻게 도와드릴까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995950
+    m_Localized: 관광객 한명을 집으로 돌려보내야 해서요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995951
+    m_Localized: 기차는 왜 운행이 중단된 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995952
+    m_Localized: 'Phone: 현재로서는 항공 운행이 다시 허용될 때까지 기다리시는 것이 최선입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995953
+    m_Localized: 'Phone: 선박 편이 운행되고 있긴 하지만 안전하다고는 말씀 못 드리겠네요. 야간 태풍 위험이 너무나 큽니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995954
+    m_Localized: 'Phone: 게다가 수면에서 태양빛을 반사해 선박에 비춰대는 통에 승무원들도 장기간 항해가 불가능한 상황이고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995955
+    m_Localized: 그럼 이 불쌍한 사람은 어떻게 집으로 보내라는 거죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995956
+    m_Localized: 현재 저희 집에 머물고 있습니다. 혹시 그쪽에서 이분을 받아주실 수 있나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995957
+    m_Localized: 'Phone: 고온으로 인해 철로가 늘어나서, 낮에는 열차 운행이 매우 위험한 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995958
+    m_Localized: 'Phone: 기차는 밤에만 운행하고 있어서 장거리 이동이 불가능하고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995959
+    m_Localized: 'Phone: 환승 횟수가 너무 많아질 겁니다. 차라리 항공편이 재개될 때까지 기다리는 편이 좋습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995960
+    m_Localized: 그럼 이 불쌍한 사람은 어떻게 집으로 보내라는 거죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995961
+    m_Localized: 현재는 저희 집에 머물고 있습니다. 혹시 그쪽에서 이분을 받아주실 수 있나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995962
+    m_Localized: 'Phone: 일단은 기다려 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995963
+    m_Localized: 'Phone: 지금 당장은 조치해 드릴 수 있는 일이 없습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995964
+    m_Localized: 이분은 우리말을 할줄 모르시는데요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995965
+    m_Localized: 아니 이것도 안 되고, 저것도 안 되면, 당신네들은 뭐 하러 있는 겁니까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995966
+    m_Localized: 'Phone: 남는 호텔방이 없습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995967
+    m_Localized: 'Phone: 저희가 해드릴 수 있는 게 딱히 없네요. 저희도 사태 해결을 위해 노력 중입니다. 이런 상황에 부닥친 사람이 어디 한둘이어야지요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995968
+    m_Localized: 이분은 우리말을 할 줄 모르시는데요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995969
+    m_Localized: 아니 이것도 안 되고, 저것도 안 되면, 당신네들은 뭐 하러 있는 겁니까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995970
+    m_Localized: 'Phone: 저희 직원들 전원이 바쁜 상황이라서요. 대사관 예산이 크게 삭감됐다는 얘기를 들어보셨겠지요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995971
+    m_Localized: 'Phone: 저희로서는 최선을 다 하는 중입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995972
+    m_Localized: 오, 와우, 아주 영웅 나리들 납셨구먼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995973
+    m_Localized: 게으름뱅이는 질색인데
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995974
+    m_Localized: 'Phone: 대체 왜 그런식으로 말씀하시는지 모르겠네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995975
+    m_Localized: 'Phone: 뭐 저희가 등에 업고 가드리기라도 할까요? 그분을 도와드리고 싶다면, 알아서 도와드리시죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995976
+    m_Localized: 'Phone: 예산이 너무 크게 삭감되는 통에 저희도 사실상 열정 하나만 붙들고 일하고 있단 말입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995977
+    m_Localized: 오, 와우, 아주 영웅 나리들 납셨구먼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995978
+    m_Localized: 게으름뱅이는 질색인데
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995979
+    m_Localized: 'Phone: 저희의 일처리 방식이 마음에 안 드나요? 그럼 직접 해보시던가.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995980
+    m_Localized: 'Phone: 분명 방문자 검문과 한낮의 열기를 뚫고 잘도 국경을 넘으실 수 있으실 거예요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995981
+    m_Localized: 알겠습니다, 감사합니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995982
+    m_Localized: 엿이나 까잡수세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995983
+    m_Localized: 'Phone: 그러는 댁은 왜 집에 계시고 일하러 안 가셨을까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995984
+    m_Localized: 'Phone: 뭣하면 직접 이쪽으로 오셔서 어떻게 하면 좋을지 시범이라도 보여주실 텐가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995985
+    m_Localized: 'Phone: 선생처럼 잘 아는 분이 도와주신다면야, 정말 매우 든든하겠습니다요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995986
+    m_Localized: 알겠습니다, 감사합니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995987
+    m_Localized: 엿이나 까잡수세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995988
+    m_Localized: 'Phone: 제가 괜히 화를 냈네요, 죄송합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995989
+    m_Localized: 'Phone: 이렇게 화난 목소리로 전화하신 게... 선생님이 처음이 아니시라서요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995990
+    m_Localized: 'Phone: 좋은 하루 보내세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995991
+    m_Localized: 'Phone: 안전한 여행 되시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995992
+    m_Localized: 'Phone: 언젠가 꼭 여행을 가고 싶다는 마음이 생기셨으면 좋겠네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995993
+    m_Localized: 'Phone: 그때는 꼭 도움을 드리겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995994
+    m_Localized: 다른 방 쪽으로 나있는 창문이다. 한쪽 방에 불을 켜두면 불빛이 다른 방까지 스며들어서 전기 요금을 절약할 수 있기에, 이런 식의 시공이 한때는 유행이었다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995995
+    m_Localized: 그러다 언젠가 창문을 막아버렸다... 한쪽만 막긴 했지만서도.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995996
+    m_Localized: 아니, 저쪽은 쳐다보고 싶지도 않다. 이제 더는.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995997
+    m_Localized: 침대 협탁 옆에서 자는 건 질색이다. 안 좋은 기억이 너무나도 많기에...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995998
+    m_Localized: 대체 왜 이런 걸 방 중앙에 떡하니 걸어둔 걸까. 구석에 놓는 게 암묵적인 규칙인 줄 알고 있었건만.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995999
+    m_Localized: 뭐어... 아버지는 규칙 따위에는 개뿔 관심도 없으셨더랬지.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996000
+    m_Localized: 토토. 내가 어렸을 때 가지고 놀던 사실상 유일한 장난감이었다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996001
+    m_Localized: 뭐... 풀때기를 두드릴 때 쓰던 나무막대기를 제외한다면 말이다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996002
+    m_Localized: 흐음. 할머니께서는 찬장이란 찬장은 죄다 그릇으로 꽉꽉 채워두셨다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996003
+    m_Localized: 화려한 그릇은 명절 때나 꺼내다가 쓰셨다. 이제 와서... 누가 이걸 필요로 하기나 할까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996004
+    m_Localized: 솔직히, 그냥 집에 혼자 있는 편이 편하다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996005
+    m_Localized: 혼잣말도 미친놈처럼 소리 내면서 막 할 수 있고.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996006
+    m_Localized: 군중들 틈에 있는 특정 인물을 찾아내야 하는 그런 류의 잡지이다...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996007
+    m_Localized: 잡지 속의 주인공은 정말이지 짜증 날 것이다. 나야 그냥 나 좀 혼자 내버려뒀으면 좋겠는데...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996008
+    m_Localized: 그분은 이전에 그렇게 말씀하셨다. "내가 세상을 뜨고 나면, 저 상자를 열지 말지는 네가 직접 정하거라."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996009
+    m_Localized: 15년째 고민하는 중이다. 아직도 결정을 못 내렸다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295719612416
+    m_Localized: 외롭다고 느끼시나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583936
+    m_Localized: 대화할 사람이 없으시다고요? 불안하신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583937
+    m_Localized: 그런 당신을 위해 전화 룰렛을 준비했답니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583938
+    m_Localized: 지금 당장 891-533로 전화 주시면, 완벽한 대화 상대와 연결해 드립니다.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583939
+    m_Localized: 따님은 괜찮으신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583940
+    m_Localized: 누가 그 사람들을 죽인 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583941
+    m_Localized: 조심히 지내시길 (통화 종료)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583942
+    m_Localized: 따님은 괜찮으신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583943
+    m_Localized: 누가 그 사람들을 죽인 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583944
+    m_Localized: 조심히 지내시길 (통화 종료)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583945
+    m_Localized: 선생님 댁 세입자를 어디로 데려간 거랍니까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583946
+    m_Localized: 따님마저 안 데려갔기에 망정이지요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583947
+    m_Localized: 연재청이 뭐 하는 덴가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583948
+    m_Localized: 몸조심하세요 (통화 종료)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583949
+    m_Localized: 선생님 댁 세입자를 어디로 데려간 거랍니까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583950
+    m_Localized: 따님마저 안 데려갔기에 망정이지요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583951
+    m_Localized: 연재청이 뭐 하는 덴가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583952
+    m_Localized: 몸조심하세요 (통화 종료)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583953
+    m_Localized: 선생님 댁 세입자를 어디로 데려간 거랍니까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583954
+    m_Localized: 따님마저 안 데려갔기에 망정이지요.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583955
+    m_Localized: 연재청이 뭐 하는 덴가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583956
+    m_Localized: 몸조심하세요 (통화 종료)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583957
+    m_Localized: 'Phone: 안녕하십니까, 연재청 핫라인입니다. 무엇을 도와드릴까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583958
+    m_Localized: 네? 연재청이라니요? 그게 뭔가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583959
+    m_Localized: 무슨 소리를 하시는 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583960
+    m_Localized: 'Phone: (수화기 너머의 여자가 무어라 말하기도 전에, 웬 남성의 커다란 고함소리가 터져나온다)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583961
+    m_Localized: 'Phone: 뭐 이런 모자란 놈이 다 있어?! 당장 전화 끊어!!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583962
+    m_Localized: 겨드랑이로 뭘 어떻게 하라는 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583963
+    m_Localized: 귀로는 뭘 어떻게 하라는 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583964
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583965
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583966
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583967
+    m_Localized: 'Phone: 겨드랑이 검사를 정확하게 수행하시기 위해서는, 물과의 접촉은 피해 주셔야만 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583968
+    m_Localized: 'Phone: 샤워나 손 씻기 등을 삼가 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583969
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583970
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583971
+    m_Localized: 'Phone: 귀 말씀이시죠? 잠시만요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583972
+    m_Localized: 'Phone: 관리 부서에 문의하여 곧 알려드리도록 하겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583973
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583974
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583975
+    m_Localized: 'Phone: 좋습니다, 한 가지만 확인 부탁드립니다. 혹시 버섯 등의 균류를 섭취하십니까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583976
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583977
+    m_Localized: 'Phone: 좋습니다, 그러면 마지막 질문입니다. 고객님 댁에서 피를 보신 적이 있으실까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583978
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583979
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778240
+    m_Localized: 'Phone: 안녕하십니까, 지금 거신 번호는 전화 룰렛입니다. 곧 완벽한 대화 파트너와 연결해 드리겠습니다. 잠시만 기다려 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778241
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778242
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778243
+    m_Localized: 'Phone: 여보세요, 안녕하세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778244
+    m_Localized: 여보세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778245
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778246
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778247
+    m_Localized: 'Phone: 여보세요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778248
+    m_Localized: 여보세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778249
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778250
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778251
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778252
+    m_Localized: 'Phone: 아무도 안 듣고 있는 건가...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778253
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778254
+    m_Localized: 'Phone: 하아... 누군가 대화할 상대가 필요해요. 요새 정말 많은 일이 있었잖아요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778255
+    m_Localized: 'Phone: 친구들이나 지인들에게 닥치는 대로 전화를 해봤는데, 아무도 전화를 안 받더군요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778256
+    m_Localized: 'Phone: 그러다가 전화 룰렛이란걸 발견하게 돼서요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778257
+    m_Localized: 'Phone: 진심을 쏟아내기에는 아무래도 부족한 부분이 있겠지만, 없는 것보다는 낫잖아요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778258
+    m_Localized: 'Phone: 제 개인적인 문제로 남한테 부담을 줘서는 안 된다는 것 정도는 알고 있지만서도...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778259
+    m_Localized: 'Phone: 누군가한테 말을 건다는 것만으로도 저한테 얼마나 큰 도움이 되는지 절대 모르실 거예요. 이렇게 이야기를 하는 것만으로도... 기분이 한결 낫네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778260
+    m_Localized: 'Phone: 혹시 제 이야기를 들어보시겠어요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778261
+    m_Localized: 알겠어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778262
+    m_Localized: 너무 긴 대화라면 조금 그런데요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778263
+    m_Localized: 'Phone: 앗...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778264
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778265
+    m_Localized: 'Phone: 알겠습니다, 귀찮게 해드린 거라면 미안합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778266
+    m_Localized: 'Phone: 끊습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778267
+    m_Localized: 'Phone: 정말 고맙습니다. 고마워요!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778268
+    m_Localized: 'Phone: 제가 어떤 사람인지 말씀드리면 조금 수월하게 시작할 수 있겠군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778269
+    m_Localized: 'Phone: 혹시 알고 싶으신 게 있으실까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778270
+    m_Localized: 어디에 사시나요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778271
+    m_Localized: 왜 친구들한테 전화하지 않으시고 여기로 전화를 하신 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778272
+    m_Localized: 'Phone: 지금은 불행히도 고향에서 멀리 떨어진 곳에서 살고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778273
+    m_Localized: 'Phone: 열기를 피하려고 하다가 보니, 제가 아는 한 가장 추운 곳까지 와버렸지 뭡니까.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778274
+    m_Localized: 'Phone: 여긴 뭐 아무것도 없어요. 너무나도 추워서 아주 뼈까지 시릴 지경이고, 풀 한 포기조차 제대로 자라지 않죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778275
+    m_Localized: 'Phone: 그 어느 곳과도 가깝지 않은, 상대적으로 안전한 장소랄까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778276
+    m_Localized: 'Phone: 뭐 지옥의 아홉 고리 중에는 엄청나게 추운 곳도 있다고들 하니... 생각해보면 또 그렇게 나쁠 것도 없네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778277
+    m_Localized: 'Phone: 웃기죠, 원래는 추위라면 질색이었는데, 지금은... 일종의 축복처럼 느껴지기까지 한다니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778278
+    m_Localized: 'Phone: 태양의 열기가 좀 식어서 이 모든 사태가 끝날 거라고 믿고 싶네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778279
+    m_Localized: 'Phone: 그런데 요새 들어 행복한 결말이 올 거라는 믿음이 점차 사라지고 있어요. 태양이 타오르기를 멈추고 나면 어떻게 되는 걸까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778280
+    m_Localized: 'Phone: 방문자들은 그래도 끊임없이 나타나겠죠. 그 자식들이 친구들과 사랑하는 이들의 자리를 꿰찬대도, 우린 눈치조차 못 챌 거고요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778281
+    m_Localized: 왜 혼자서 떠나신 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778282
+    m_Localized: 고향이 그리우신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778283
+    m_Localized: 'Phone: 저도 전화해보고 싶은 마음은 굴뚝같지만... 어떻게 해야 연락을 할 수 있을지 모르겠네요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778284
+    m_Localized: 'Phone: 그게 말이죠, 이 대격변 사태가 시작되자마자, 전 고향 마을을 떠나야겠다고 결심했습니다. 비행기를 타고 열기로부터 되도록 멀리 떨어진 곳으로 가야겠다고 말이죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778285
+    m_Localized: 'Phone: 모두에게 꼬박꼬박 전화도 하고, 다들 잘 지내는지 확인도 하고, 별 탈 없이 지내는지 알아보겠다고 장담했는데...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778286
+    m_Localized: 'Phone: 막상 도착하고 보니까, 연락이 되는 사람이 하나도 없더라고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778287
+    m_Localized: 'Phone: 나중에서야 이유를 알게 됐죠. 다들 전화선이 끊겼더군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778288
+    m_Localized: 'Phone: 도시 전체의 전화선이 세계 타 지역과 단절되어 버렸던 거예요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778289
+    m_Localized: 'Phone: 저야 이제 여기에 안전히 있다지만, 제 친구들은...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778290
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778291
+    m_Localized: 'Phone: 제가 아끼는 사람들을 다시는 볼 수 없을지도 모른다는 생각에 몸서리가 나요'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778292
+    m_Localized: 'Phone: 삶이 단순하면서도 미래에 대한 희망을 품을 수 있던, 고요하던 나날들이 그립네요'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778293
+    m_Localized: 왜 혼자서 떠나신 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778294
+    m_Localized: 고향이 그리우신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778295
+    m_Localized: 'Phone: 그러고 싶은 건 아니었지만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778296
+    m_Localized: 'Phone: 사실, 제 가장 친한 친구랑 같이 가려고 했습니다만, 그러지 못하게 됐죠...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778297
+    m_Localized: 'Phone: 친구 녀석은 저랑 같이 여행을 가는 데에 필요한 서류를 구비하지 못했거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778298
+    m_Localized: 'Phone: 대격변이 발생한 이후로는, 그런 서류를 구비하는 게 말 그대로 불가능해졌고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778299
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778300
+    m_Localized: 'Phone: 친구 녀석이 엄청나게 좌절했더랬지요... 왜 진즉 발급받아두지 않았던 걸까 후회하면서요. 도와주고 싶었지만, 방법을 모르겠더라고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778301
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778302
+    m_Localized: 'Phone: 정말 그립네요. 딱히 고향 도시가 그리운 건 아니지만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778303
+    m_Localized: 'Phone: 사람들은 대부분 다 그리워요, 특히 절친들은 더욱...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778304
+    m_Localized: 'Phone: 친구 녀석이 함께 오고 싶어 했지만, 그럴 수 없었죠. 그 녀석에게 연락하겠다고, 전화를 주겠다고 약속했습니다. 하지만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778305
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778306
+    m_Localized: 'Phone: 아무래도 그는 저를 사랑했던 것 같아요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778307
+    m_Localized: 'Phone: 그는 절 무척이나 아껴줬죠. 항상 절 지지해주고, 이야기도 잘 들어줬고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778308
+    m_Localized: 'Phone: 그러다 문득 저는 우리가 서로 좋아한다는 걸 깨닫게 됐어요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778309
+    m_Localized: 'Phone: 저는 그가 감정을 고백할 때까지 기다리고 있었어요. 그가 먼저 말해주기를 바랐죠. 하지만 그는 도무지 그러질 않더군요. 적당한 시기를 찾지 못했던 거겠죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778310
+    m_Localized: 'Phone: 그러다가... 대격변이 시작되어 버렸고, 서로의 감정을 확인할 시간은 없어져 버렸죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778311
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778312
+    m_Localized: 'Phone: 먼저 고백하지 못한 게 후회되네요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778313
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778314
+    m_Localized: 'Phone: 자, 이제 저에 대해서 조금 아시겠죠. 이제 당신 차례에요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778315
+    m_Localized: 제 이야기를 하는 게 익숙하진 않습니다만...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778316
+    m_Localized: 뭐부터 말해야 할지...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778317
+    m_Localized: 'Phone: 부끄러워 마시고요. 경청할게요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778318
+    m_Localized: 그게... 가깝게 지내는 사람이 없습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778319
+    m_Localized: 저는... 외로운 사람입니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778320
+    m_Localized: 'Phone: 걱정 마세요. 자기 자신에 대해 얘기하는 게 나쁜 일도 아닌걸요 뭘.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972544
+    m_Localized: 그게... 가깝게 지내는 사람이 없습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972545
+    m_Localized: 저는... 외로운 사람입니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972546
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972547
+    m_Localized: 저는... 아버지와 사이가 서먹서먹합니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972548
+    m_Localized: 저는 아버지를... 증오했습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972549
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972550
+    m_Localized: 전 가족들과는 의절한 거나 마찬가지에요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972551
+    m_Localized: 그러다 어느 날, 전 그 사람의 아들이길 그만두기로 했습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972555
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972556
+    m_Localized: 이제 제게 남은 거라곤 이 빌어먹을 집구석 뿐이네요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972557
+    m_Localized: 이제 가족들이 남겨준 거라곤 이 집뿐이네요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972558
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972559
+    m_Localized: 'Phone: 어떤 기분인지 알 것 같아요... 집을 물려받게 됐다고 해서 딱히 기쁘신 것 같지도 않네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972560
+    m_Localized: 그렇습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972561
+    m_Localized: 차라리 불타 없어졌으면 좋았겠네요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972562
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972563
+    m_Localized: 'Phone: 대... 대체 어떤 일을 겪으신 건지 상상조차 되질 않네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972564
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972565
+    m_Localized: 'Phone: 집이 불타 없어지길 바라실 정도라면, 대체 얼마나 아버지를 미워하시는 건지 저로선 짐작조차 되질 않네요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972566
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972567
+    m_Localized: 'Phone: 아무튼 저와 대화해 주셔서 고맙습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972568
+    m_Localized: 'Phone: 그럼 끊을게요. 굳건하게 버텨내시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972569
+    m_Localized: 'Phone: 여보세요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972570
+    m_Localized: 안녕하세요, 혹시 댁의 따님과 얘기좀 해도 될까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972571
+    m_Localized: 안녕하세요, 혹시 댁의 따님이 이쪽으로 와서 친구랑 잠깐 같이 놀아도 괜찮을까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972572
+    m_Localized: 'Phone: 네? 저희 아이랑은 뭐 때문에 이야기하고 싶으신 거죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972573
+    m_Localized: 따님의 친구가 이쪽으로 따님이 들러도 괜찮겠냐고 물어보더군요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972574
+    m_Localized: 여기에 여자아이가 한 명이 있는데... 아이 아버지가 돌아가셨습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972575
+    m_Localized: 'Phone: 그러니까... 그분이... 그분도 방문자였던 건가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972576
+    m_Localized: 그분"도"라니, 그게 무슨 뜻이시죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972577
+    m_Localized: 아뇨, 어떤 미친 자들이 아무 이유 없이 그분을 산채로 태워버렸습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972578
+    m_Localized: 'Phone: 아무 이유도 없이 사람을 산 채로 태웠을까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972579
+    m_Localized: 'Phone: 그러니까 그 아저씨도 방문자였던 거네요... 우리 딸아이처럼요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972580
+    m_Localized: 'Phone: 사람들이 우리 딸아이도 태워버렸거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972581
+    m_Localized: 'Phone: 그 아이가 다니던 유치원에서요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972582
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972583
+    m_Localized: 'Phone: 저도 처음에는 펑펑 울어댔죠. 그냥 콱 죽어버리고 싶었어요. 딸아이 없이 살 수 없었으니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972584
+    m_Localized: 'Phone: 그래도 남편이 이겨낼 수 있도록 많이 도와줬어요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972585
+    m_Localized: 'Phone: 전화주신 분도 이겨내실 수 있으실 겁니다... 그 꼬마 아이도 그럴 거고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972586
+    m_Localized: 'Phone: 아시겠나요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972587
+    m_Localized: 'Phone: 이유 없이 벌어지는 일은 없습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972588
+    m_Localized: 'Phone: 사람들이 그 아이의 아버지를 불태웠다면... 꼭 일어나야만 하는 일이었던 거겠죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972589
+    m_Localized: 'Phone: 질질 짠다고 해서 도움 될 것 하나 없습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972590
+    m_Localized: 'Phone: 부디... 그 아이에게 이렇게 전해주시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972591
+    m_Localized: 'Phone: 끊습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972592
+    m_Localized: 'Phone: 우리 딸아이는... 그 아이는...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972593
+    m_Localized: 'Phone: 죽었습니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972594
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972595
+    m_Localized: 'Phone: 그럴 수밖에 없었어요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972596
+    m_Localized: 'Phone: 저희로선 그 아이를 죽일 수밖에 없었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972597
+    m_Localized: 뭐라고요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972598
+    m_Localized: (전화 끊기)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972599
+    m_Localized: 'Phone: 우리가 그 아이를 죽였어요. 들어 보세요, 그러는 수밖에 없었다니까요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972600
+    m_Localized: 'Phone: 모든 징후가 다 맞아떨어졌거든요... 남편이 강력하게 밀어붙였어요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972601
+    m_Localized: 그러니까... 본인 아이를 죽이기로 하셨다는 건가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972602
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972603
+    m_Localized: 'Phone: 어디서 함부로 단정 짓는 거야!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972604
+    m_Localized: 'Phone: 그년은 방문자였다고! 모든 징후가 다 맞아떨어졌어, 백 퍼센트였단 말이야!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972605
+    m_Localized: 이런 씹...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972606
+    m_Localized: 이해합니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972607
+    m_Localized: 'Phone: 그 아이는 방문자였거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972608
+    m_Localized: 'Phone: 모든 징후가 그럴 가능성을 가리키고 있었죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972609
+    m_Localized: 'Phone: 그 아이라면 누구보다 제가 잘 알아요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972610
+    m_Localized: 'Phone: 그렇기에 즉시 모든 징후를 눈치챌 수 있었던 겁니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972611
+    m_Localized: 'Phone: 모든 징후가 일치했어요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972612
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972613
+    m_Localized: 'Phone: 남편한테 그걸 말해주자마자, 그이가...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972614
+    m_Localized: 'Phone: 그이가 그 방문자 녀석을 단박에 처치해 줬죠.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972615
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972616
+    m_Localized: 'Phone: 처음에는 그이를 죽여버리고 싶더라고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972617
+    m_Localized: 'Phone: 그러다가 문득 깨닫게 됐습니다... 그건 우리 딸아이가 아니었다는 것을.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972618
+    m_Localized: 'Phone: 남편 덕에 겨우 제대로 이해할 수 있었어요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972619
+    m_Localized: 'Phone: 이제 와서 유일하게 후회되는 게 있다면 내 딸의 몸을 차지했던 그 녀석이 우리 아이에게 무슨 짓을 했는지 묻지 못했다는 거겠네요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972620
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972621
+    m_Localized: 'Phone: 미안합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972622
+    m_Localized: 'Phone: 다시는 전화하지 말아주세요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972623
+    m_Localized: 'Phone: 제발...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972624
+    m_Localized: 'Phone: 대체 내가 뭐 한다고 구구절절하게 내 이야기를 하고 있었던 거람?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972625
+    m_Localized: 'Phone: 지옥에나 가버려!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972626
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972627
+    m_Localized: 'Phone: 그래도... 아직도 그 아이가 너무 그리워요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972628
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576140324864
+    m_Localized: 'TV: 안녕하십니까. 오늘의 날씨입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102080
+    m_Localized: 'TV: 따뜻한 기류가 이쪽 지역으로 유입되면서, 이전 최고 기온 기록을 경신하는 더위가 찾아올 전망입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102081
+    m_Localized: 'TV: 기상학자들의 말에 따르면 최고 기록을 훨씬 웃도는 더위가 예상된다고 하는데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102082
+    m_Localized: 'TV: 태양의 활동이 활발해진 지금, 자외선 역시 훨씬 강력해질 것으로 예상됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102083
+    m_Localized: 'TV: 안전을 위해, 가급적 일광욕을 자제하여 주시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102084
+    m_Localized: 'TV: 높은 온도로 인하여 일사병에 걸릴 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102085
+    m_Localized: 'TV: 태양빛에 오래 노출되는 게 건강에 부정적 영향을 끼치는 지는 정확히 조사된 바가 없지만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102086
+    m_Localized: 'TV: 3도 화상의 위협이 있으니, 외출을 자제하시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102087
+    m_Localized: 'TV: 현재 상황에서는, 자외선 차단제도 소용이 없다고 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102089
+    m_Localized: 'TV: 발레리나들이 우아하게 춤을 추며, 힘차면서도 섬세하게 도약하며 무대를 가로지르는 모습이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102090
+    m_Localized: 'TV: 우아한 모습에도 불과하고, 춤추는 모습을 보고 있노라니 불안한 생각이 엄습해 온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102091
+    m_Localized: 'TV: 마치 현재 일어나는 일들에 집중하지 못하게끔 이런 춤을 보여준다는 기분이 드는 것이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102092
+    m_Localized: 'TV: 누군가 무슨 일이 벌어지는지 명쾌하게 설명해줬으면 좋으련만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102093
+    m_Localized: 'TV: 매번 장 보러 나가기 귀찮으셨죠?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102094
+    m_Localized: 'TV: 이제는 전화기를 들고 주문만 하면 간편하게 구매가 가능!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102095
+    m_Localized: 'TV: 휴마켓의 상품 배달 서비스를 써보세요. 지금 바로 {0}로 전화 주시면 집앞까지 상품을 배달해 드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102096
+    m_Localized: 'TV: 휴마켓. 집에서도 맛있고 편안하게.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102097
+    m_Localized: 'TV: 백색 살인마가 도시 거리에 나타났다는 소식입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102098
+    m_Localized: 'TV: 경찰은 목격자 진술을 통해, 피해자 모두가 ‘혼자 있었다’는 공통점을 발견했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102099
+    m_Localized: 'TV: 또한, 살인마는 살인을 저지르기 전에 피해자에게 말을 거는 것으로 알려졌습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102100
+    m_Localized: 'TV: 경찰은 목격자들의 진술을 토대로 용의자의 몽타주를 작성했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102101
+    m_Localized: 'TV: 용의자는 매우 창백한 중년의 남성으로 검은색 머리카락을 지니고 있습니다. 호리호리한 체형에 상의는 탈의한 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102102
+    m_Localized: 'TV: 몇몇 사람의 진술에 따르면 살인마는 다른 인간의 살가죽을 뒤집어쓰고 있다고 합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102103
+    m_Localized: 'TV: 해당 정보는 아직 확인된 바는 없습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102104
+    m_Localized: 'TV: 만약 이런 남성을 보시게 되는 경우, 절대 문을 열어주지 마시고 집에 혼자 있지 않다고 말씀하도록 하십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102106
+    m_Localized: 'TV: 혼란, 공포, 고통... 이 모든 것은 ‘방문자’들로부터 비롯되었습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102107
+    m_Localized: 'TV: 하지만 너무나 힘든 이 시기에, 눈물이 강물처럼 흐르기 시작할 때...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102108
+    m_Localized: 'TV: 연방 재난관리청의 직원들이 우리 곁에 나타났습니다!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102109
+    m_Localized: 'TV: 연방 재난관리청의 용감한 영웅들은 ‘방문자’의 침입으로부터 우리를 지키기 위해 오늘도 힘쓰고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102110
+    m_Localized: 'TV: 현재까지, 기관에서는 무려 27,000마리의 위험 생명체를 식별해 냈습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102111
+    m_Localized: 'TV: 기억하세요: 당신의 주변에서 수상한 활동을 목격했다면, 이를 즉각 신고함으로써 기관에 힘을 보탤 수 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102112
+    m_Localized: 'TV: 관리청 방문 초대권을 사용해 직접 기관을 방문해 주시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102113
+    m_Localized: 'TV: 누군가가 ‘방문자’인지 확신이 서지 않는다면, 핫라인: {0}으로 언제든지 전화해 주세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102114
+    m_Localized: 'TV: 관리청을 돕는다는 건, ‘방문자’에 맞선 싸움을 함께한다는 뜻입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102115
+    m_Localized: 'TV: 관리청이란 어떤 곳인가요? 또한 왜 설립되었을까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102116
+    m_Localized: 'TV: 연방 재난관리청은 현재 발생한 위기를 완화하고자 설립된 특별 정부 기관입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102117
+    m_Localized: 'TV: 관리청은 방문자들의 침략으로 인해 발생한 문제들을 조치하는 데 도움을 드리고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102118
+    m_Localized: 'TV: 기관에서 정확히 어떤 작업을 진행 중인지는 알려지지 않았습니다만...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102119
+    m_Localized: 'TV: 확실히 말씀드릴 수 있는 것은, 우리의 운명을 맡겨도 될 만큼 믿음직한 곳이라는 것입니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102120
+    m_Localized: 'TV: 해당 기관은 저명한 과학자를 포함한 다양한 분야의 전문가들로 구성되어 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102121
+    m_Localized: 'TV: 만약 관리청 직원이 여러분의 문을 두드린다면, 협조해 주시고 지시에 따르실 것을 권고드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102122
+    m_Localized: 'TV: 기억해 주십시오. 관리청을 돕는다는 건, ‘방문자’에 맞선 싸움을 함께한다는 뜻입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102123
+    m_Localized: 'TV: 관리청은 ‘방문자’ 현상이 전염되거나, 기타 생물학적 위험 요소를 동반할 수 있다는 가능성을 제기했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102124
+    m_Localized: 'TV: 따라서 주변에서 의심스러운 인물이 포착된다면 지체 없이 신고하고, 해당 인물을 격리하는 것이 핵심적인 대응 방안입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102125
+    m_Localized: 'TV: 방문자를 즉시 격리 구역으로 인계할 수 없는 경우에는, 그들에게 관리청에 출석하라는 특별 요청서를 전달해 주시기 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102126
+    m_Localized: 'TV: 다음번 방문 주기에, 이 문서를 지닌 사람은 직원에 의해 선별되어 검사를 받게 됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102128
+    m_Localized: 'TV: 식지 않는 열기 속에서, 끊임없이 질주하라!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102129
+    m_Localized: 'TV: 에너제카와 함께, 살아있는 기분을!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102130
+    m_Localized: 'TV: 물보다 갈증을 빠르고 효과적으로 해소해주는 에너지 드링크.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102131
+    m_Localized: 'TV: 휴마켓 배달을 통해 지금 바로 만나보세요. 지금 바로 {0}로 전화해서 주문하세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296387
+    m_Localized: 'TV: 옛날 옛적에, 두 형제가 댐 근처에 살고 있었답니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296388
+    m_Localized: 'TV: 이 둘은 부서지는 물결에서 시원하면서도 거품이 가득한 마실 것을 떠올렸지요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296389
+    m_Localized: 'TV: 두 형제가 성인이 되자, 이 둘은 함께 보베르 양조장을 설립했답니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296390
+    m_Localized: 'TV: 보베르 체르니 맥주는 가정용으로도, 업소용으로도 가장 사랑받는 술이 되었답니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296391
+    m_Localized: 'TV: 보베르 체르니 맥주. 좋은 걸 많이 마셔요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296517
+    m_Localized: 'Window: 당신 이웃의 집이 건초가 가득한 들판 위에 우두커니 서있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296518
+    m_Localized: 'Window: 창문에선 불빛이 새어 나오고 있지 않다. 이웃의 가족은 잠자리에 든듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296519
+    m_Localized: 'Window: 몇몇 술주정뱅이들이 길가에 퍼질러져 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296520
+    m_Localized: 'Window: 비록 찬바닥에 누워있긴 하지만, 아주 깊은 잠에 빠진 듯하다. 당장은 썩 나쁘지 않은 상태인 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296521
+    m_Localized: 'Window: 저 멀리 지금 당신의 집에 와있는 이웃 아저씨의 집이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296522
+    m_Localized: 'Window: 창밖으로는 불빛이 비치고 있으며, 가족들은 이웃 아저씨가 집으로 돌아오기를 기다리고 있는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296523
+    m_Localized: 'Window: 바깥이 쥐죽은듯이 고요하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296524
+    m_Localized: 'Window: 아무도 없다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296525
+    m_Localized: 'Window: 취객들조차 바깥에는 나오지 않기로 결심한 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296526
+    m_Localized: 'Window: 뭔가를 두려워하는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296527
+    m_Localized: 'Window: 창문으로 이웃 남성과 그의 딸이 함께 놀고 있는 모습이 눈에 들어온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296528
+    m_Localized: 'Window: 작금의 공포를 잊으려는 듯, 즐겁게 노닐고 있다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296529
+    m_Localized: 'Window: 비록 아주 짧은 순간이나마.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296530
+    m_Localized: 'Window: 사신처럼 창백한 남자가 오솔길 위에 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296531
+    m_Localized: 'Window: 살가죽 곳곳에는 이상한 주름이 잡혀 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296532
+    m_Localized: 'Window: 마치 몸에 맞지 않는 살가죽을 걸치고 있는 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296533
+    m_Localized: 'Window: 여기서 그의 눈은 보이지 않지만, 그 시선이 당신을 꿰뚫는 듯한 기분이 든다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296534
+    m_Localized: 'Window: 공포가 밀려들기 시작하며 당신은 무시무시한 방문자가 당신의 집을 그대로 지나치길 간절히 기도한다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296535
+    m_Localized: 'Window: 당신의 이웃집에 일단의 관리청 직원들이 서 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296536
+    m_Localized: 'Window: 무슨 이야기가 오가는지 문득 궁금해진다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296537
+    m_Localized: 'Window: 토양 표본이라도 가져가려는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296538
+    m_Localized: 'Window: 아니면 기지를 설립할 부지를 찾고 있는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296539
+    m_Localized: 'Window: 창 밖으로 한 무리의 무장한 군인들이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296540
+    m_Localized: 'Window: 관리청 직원들의 안전을 보장하고자 도시에서 보낸 소규모 분대임이 분명하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296541
+    m_Localized: 'Window: 상반신이 벌거벗은 창백한 남자에 관한 단편적인 정보가 들려온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296542
+    m_Localized: 'Window: 그 오싹한 방문자를 추적하려고 하는 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296543
+    m_Localized: 'Window: 이웃집 남자가 불과 얼마 전에 흰색으로 칠했던 집은 속절없이 타고 있으매, 이제 남게 될 건 어둠보다 더 짙은 그을음뿐일 것이리라.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296544
+    m_Localized: 'Window: 불과 얼마 전에 불이 붙은 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296545
+    m_Localized: 'Window: 누군가가 고의로 불을 지른 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296546
+    m_Localized: 'Window: 이웃집 남자의 가족에겐 어떤 일이 벌어진 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296547
+    m_Localized: 'Window: 아직 누군가 살아있긴 한 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296548
+    m_Localized: 'Window: 걱정스러운 생각이 머릿속을 맴돌자, 불가해하면서도 무기력한 기분에 휩싸인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296549
+    m_Localized: 'Window: 어제까지만 해도 여기에 있었던 분대원 전원이 몰살당했다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296550
+    m_Localized: 'Window: 학살극이 벌어진 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296551
+    m_Localized: 'Window: 거리 곳곳에는 시체가 여기저기 흩뿌려져 있고, 그중 한 구의 시신의 머리가 보이질 않는다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296552
+    m_Localized: 'Window: 그 창백하고, 으스스한 이방인이 모두를 죽인 걸까?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296553
+    m_Localized: 'Window: 이웃집 아저씨네 집의 잔해가 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296554
+    m_Localized: 'Window: 불과 얼마 전까지만 해도 행복한 가족이 기거하던 곳이었건만, 이제는 음산한 껍데기만 남아있다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296555
+    m_Localized: 'Window: 마치 이런 사태가 오리라 알고 있었던 것만 같은, 이상한 기분이 당신을 덮쳐온다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296556
+    m_Localized: 'Window: 마치... 죽음이 정말이지 너무나도 금방 이 집에 들이닥칠 것만 같다는 예감이, 이미 스쳐간 것처럼 말이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296557
+    m_Localized: 'Window: 헬멧을 쓴 해골이 꽂힌 말뚝이 보인다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296558
+    m_Localized: 'Window: 해골에는 검게 타버린 피부가 다소 붙어 있으며, 누군가가 치아는 뽑아 가버린 듯하다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296559
+    m_Localized: 'Window: 이렇게 하루 종일 이곳에 놓여 있었다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296560
+    m_Localized: 'Window: 그 끔찍한 광경 전체가 마치 모종의 경고처럼 보인다. 아마도 그 소름 끼치는 창백한 방문자가 남기고 갔을 것이다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296561
+    m_Localized: 'Window: 관리청 직원들이 학살이 일어난 현장을 조사하고 있다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296562
+    m_Localized: 'Window: 죽은 군인들의 장비며 무기를 수거하여 약탈자들의 손에 들어가지 않게끔 조치한다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296563
+    m_Localized: 'Window: 아마도 무장 병력을 잔뜩 보내면 창백한 방문자라도 살아남지 못할 것이라 여겼으리라.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296564
+    m_Localized: 'Window: 이제는 시체 자루만 몇 개 더 늘어난 셈이 됐다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102105
+    m_Localized: 'TV:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490733
+    m_Localized: 'Phone: 여어, 이웃집 양반. 목소리 들으니 좋네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490734
+    m_Localized: 'Phone: 그래서... 집에 사람은 좀 들이셨고?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490735
+    m_Localized: 'Phone: 아직도 아무도 안 들인 거라면, 너무 지체하시면 안 될 겁니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490736
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490737
+    m_Localized: 'Phone: 혹시 궁금한 거라도 있어요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490742
+    m_Localized: 'Phone: 네, 뭐 저라고 별 수 있나요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490743
+    m_Localized: 'Phone: 저희 딸내미가 아주 질색을 하더군요. 그래도 뭐 어쩌겠습니까? 다른 방법이 없는걸요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490744
+    m_Localized: 'Phone: 딸아이가 자꾸만 밖에 나가자고 보채는데, 아무래도 집안에 낯선 사람이 잔뜩 들어와 있으니 좀 떨어져 있고 싶은가 봐요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490745
+    m_Localized: 'Phone: 하지만 대낮에 돌아다닐 수는 없는 노릇이니, 그냥 밤에 슬슬 돌아다니고 있는 참입니다. 물론 위험하긴 하지만... 애가 하도 졸라대는 통에.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490746
+    m_Localized: 'Phone: 저라고 뭐 알겠나요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490747
+    m_Localized: 'Phone: 얼마나 많은 징후가 나타나야 방문자인지는 제대로 아는 사람이 없더군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490748
+    m_Localized: 'Phone: 일단은 징후 하나가 보였다고 해서 성급하게 결론을 내리시지는 않는 게 좋을 듯합니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490749
+    m_Localized: 'Phone: 그냥 별 일 아닌 것일 수도 있잖아요. 세상이 이 꼴이 되기 전에 치과에 갔다던지요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490750
+    m_Localized: 'Phone: 저야 운이 좋았죠. 진즉에 비상식량을 쟁여뒀으니까요. 아마 선생 댁에도 쌓아두시지 않으셨던가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490751
+    m_Localized: 'Phone: 그래도 따로 살 게 있으면, 뭐냐 그 식료품 배달 서비스 있었잖아요. 휴마켓.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490752
+    m_Localized: 'Phone: 번호까진 모르겠는데, TV나 라디오 광고에서 전화번호가 나올 겁니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490753
+    m_Localized: 'Phone: 몸조심하시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490754
+    m_Localized: 'Phone: 여어, 이웃집 양반.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490755
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490756
+    m_Localized: 'Phone: 바깥에 보셨어요? 학생들이 잔뜩 죽어있던데...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490757
+    m_Localized: 'Phone: 거리라면 그렇게까지 위험하진 않을 줄로만 알고 있었는데. 아무래도 아닌가 봐요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490758
+    m_Localized: 'Phone: 딸아이가 밖에 나가서 같이 놀자더군요. 다 좋았습니다... 죽은 아이들을 보기 전까지는요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490759
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490760
+    m_Localized: 'Phone: 자칫 딸아이 목숨이 위험할 수도 있었다고 생각하니 다신 못 나갈 듯싶네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490761
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490762
+    m_Localized: 'Phone: 하아, 만약 딸한테 무슨 일이라도 생기면 스스로를 절대 용서 못 할 듯싶네요. 제겐 딸아이가 전부거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490766
+    m_Localized: 모르겠군요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490767
+    m_Localized: 'Phone: 수풀이 크게 우거져 있었으니, 딸아이는 아무것도 못 봤으리라 생각했습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490768
+    m_Localized: 'Phone: 그런데 집에 오더니 딸아이가 수풀 속에서 웬 얼굴을 봤다고 하더군요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490769
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490770
+    m_Localized: 'Phone: 애한테는 잘못 봤을 거라고는 해두고 있지만... 믿지를 않더군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490771
+    m_Localized: 'Phone: 아무래도 그 창백하고, 커다란 녀석인 듯해요. 집 안에 있는 사람만 죽이는 줄로 알고 있었는데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490772
+    m_Localized: 'Phone: 제가 생각이 짧았습니다. 그런 실루엣 같은 게 보이기라도 하면, 그저 잽싸게 집으로 돌아오면 되겠거니 생각했거든요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490773
+    m_Localized: 'Phone: 딸아이가 시체를 볼 수도 있다는 생각은 미처 못 했네요...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490774
+    m_Localized: 'Phone: 고마워요. 선생도 몸조심하세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490775
+    m_Localized: 'Phone: 여어, 이웃집 양반. 전화해 줘서 고마워요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490776
+    m_Localized: 'Phone: 솔직히, 전 아직도 충격이 가시질 않네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490777
+    m_Localized: 'Phone: 살인이며, 군인들에, 연재청까지...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490778
+    m_Localized: 'Phone: 어젯밤에는 저희 집에도 왔지 뭡니까.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490779
+    m_Localized: 'Phone: 여기서 묵고 있는 사람들에게 이것저것 캐묻다가, 서류판에 뭔가를 휘갈겨 쓰고는...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490780
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490781
+    m_Localized: 'Phone: 요원 하나가 저희 집에서 누구 한 명을 멋대로 데려가더군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490786
+    m_Localized: 'Phone: 제가 뭘 어떻게 알겠습니까. "조사"차 데려간다고만 하던데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490787
+    m_Localized: 'Phone: 군인들이나 재난 관리청이 뭐라도 해줄 거라고만 생각했는데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490788
+    m_Localized: 'Phone: 그 자식들이 저희를 도와준다거나 안전한 곳으로 데려다준다는 안이한 생각은 하면 안 됐나 봅니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490789
+    m_Localized: 'Phone: 제가 절대로 그렇게 둘 리가 없잖습니까.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490790
+    m_Localized: 'Phone: 제 눈에 흙이 들어가기 전엔 절대 안 됩니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490791
+    m_Localized: 'Phone: 딸아이한테 손가락 하나 까딱하기만 해 보라지요, 아주 그냥 다 반 죽여놓을 겁니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490792
+    m_Localized: 'Phone: 저도 모르지요. 제대로 아는 사람도 없는 듯하고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490793
+    m_Localized: 'Phone: 별안간 어디에서 갑자기 나타나서는, 본인들이 책임자라도 되는 것처럼 굴던데요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490794
+    m_Localized: 'Phone: 그런데 애초에 각종 징후라는 것들도 대체 어떻게 알아내는 걸까요? 전부다 그냥 멀쩡한 사람한테서도 나타날 수 있는 현상 아닌가요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490795
+    m_Localized: 'Phone: 아무래도 녀석들이 숨기고 싶어 하는 뭔가가 있는 듯합니다...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490796
+    m_Localized: 'Phone: 고맙습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490797
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490798
+    m_Localized: 'Phone: 진짜 이런 난장판 속에서 살게 될 줄은 꿈에도 몰랐네요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490799
+    m_Localized: 'Phone: 태양이며, 방문자에다가, 이젠 연재청까지...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490800
+    m_Localized: 'Phone: 궁금한 건 너무도 많은데, 속 시원하게 알아낼 방법이 없군요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490801
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490802
+    m_Localized: 'Phone: 이웃집 양반, 뭐 하나만 부탁 좀 합시다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490803
+    m_Localized: 'Phone: 제게 무슨 일이 생기거든, 제 딸을 잘 보살펴 주시겠다고 약속해 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490806
+    m_Localized: 'Phone: 이웃집 양반, 고마워요. 선생이라면 믿고 맡길 수 있을 줄 알았다니까.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490807
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490808
+    m_Localized: 'Phone: 그래요, 전 이만 끊을게요. 잘 버티고 계시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490809
+    m_Localized: 'Phone: 그...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490810
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490811
+    m_Localized: 'Phone: 정말로 딸아이를 도와주지 않으실 작정입니까? 아직 애 아닙니까. 홀로 남겨두는 일만은 피하고 싶다고요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490812
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490813
+    m_Localized: 'Phone: 제기랄, 이젠 도망쳐야...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490814
+    m_Localized: 'Phone: 잘 있어요, 이웃집 양반.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490815
+    m_Localized: 'Phone: 안녕하세요, 휴마켓 식료품 배달 서비스입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490816
+    m_Localized: 'Phone: 주문은 어떻게 도와드릴까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490820
+    m_Localized: 'Phone: 죄송합니다, 전산 확인 결과 고객님께서는 얼마 전에 넣어두신 주문 건이 있으셔서, 고객님의 주문을 접수할 수 없는 상태입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490821
+    m_Localized: 'Phone: 배달 서비스 이용 폭증으로 인해, 하루 접수 주문량을 부득이하게 제한하고 있는 점 양해 부탁드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490822
+    m_Localized: 'Phone: 추가 주문은 나중에 다시 전화 주시길 바랍니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490823
+    m_Localized: 'Phone: 감사합니다, 안녕히 계십시오'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490824
+    m_Localized: 'Phone: 알겠습니다, 고객님의 주문이 접수되었습니다. 내일 저녁 무렵 배송될 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490825
+    m_Localized: 'Phone: 알겠습니다, 고객님의 주문이 접수되었습니다. 내일 저녁 무렵 배송될 예정입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490826
+    m_Localized: 'Phone: 안녕하십니까, 연방 재난관리청 의료 분과입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490827
+    m_Localized: 'Phone: 방문자 선별 절차에 관한 상담을 도와드리고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490829
+    m_Localized: 'Phone: 궁금하신 점이 있으실까요?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490834
+    m_Localized: 'Phone: 정확한 검사를 위해, 흡연을 자제하시기를 권장드리고 있습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490835
+    m_Localized: 'Phone: 흡연으로 인해 치아의 상태가 변하여, 결과의 신뢰도가 떨어질 수 있기 때문입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490836
+    m_Localized: 'Phone: 본인 상태의 정확한 진단을 위해서, 검사 전 손 씻기를 자제하여 주시기를 당부드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490837
+    m_Localized: 'Phone: 수분으로 인해 잔여물이 제거될 경우, 검사 과정에서의 오류 및 잘못된 진단 결과가 도출될 수 있기 때문입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490838
+    m_Localized: 'Phone: 정확한 선별을 위해서, 커피나 카페인 함유 음료 섭취는 최대한 피해 주십시오.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490839
+    m_Localized: 'Phone: 카페인으로 인하여 수면 장애 및 신경과민이 촉발될뿐더러, 안구 충혈까지도 이어질 수 있기 때문입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490840
+    m_Localized: 'Phone: 연방 재난 관리청에 협조하여 주셔서 감사드립니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490841
+    m_Localized: 'Phone: 여러분의 기여가 현 상황 해결에 대단히 중요한 상황입니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490842
+    m_Localized: 'Phone: 정확한 검사를 통해, 본인뿐만 아니라 인류 전체를 도와주고 계시다는 걸 꼭 알아두시길.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096192
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096193
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096194
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490738
+    m_Localized: 선생님도 집에 사람들을 들이고 계세요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490739
+    m_Localized: 누가 방문자인지 판별하려면 최소 몇 개의 징후가 필요하다는 거죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490740
+    m_Localized: 식량 문제는 어떻게 해결하고 계신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490741
+    m_Localized: 안녕히 계세요 (전화 끊기)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490763
+    m_Localized: 따님은 괜찮으신가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490764
+    m_Localized: 누가 그 아이들을 죽였을까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490765
+    m_Localized: 몸조심하시길 (전화 끊기)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490782
+    m_Localized: 대체 어디로 데려간 걸까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490783
+    m_Localized: 따님을 안 데려갔기에 망정이지요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490784
+    m_Localized: 연재청은 대체 뭐 하는 곳인가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490785
+    m_Localized: 몸조심하시길 (전화 끊기)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490804
+    m_Localized: 약속드릴게요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490805
+    m_Localized: 확답은 못 드리겠습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490817
+    m_Localized: 에너제카 두 캔이요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490818
+    m_Localized: 커피 한 캔이요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490819
+    m_Localized: 마음이 바뀌었네요, 주문은 안 할게요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490830
+    m_Localized: 치아 검사는 어떻게 진행하죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490831
+    m_Localized: 손톱 검사는 어떻게 진행하죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490832
+    m_Localized: 안구 검사는 어떻게 진행하죠?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490833
+    m_Localized: 고맙습니다, 이제 충분합니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096195
+    m_Localized: 'TV: 다음으로 시신 처리가 일시적으로 중단된다는 소식을 전해드리겠습니다.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58690054376120320
+    m_Localized: 'TV: 이제 휴마켓 식료품 배송을 통해 이용하실 수 있습니다. 지금 {0}번으로 전화하세요.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803335401472
+    m_Localized: 고양이 먹이 두 캔이요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790080
+    m_Localized: 담배 한 갑 부탁드려요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790081
+    m_Localized: 콤부차 한 병 부탁드립니다
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

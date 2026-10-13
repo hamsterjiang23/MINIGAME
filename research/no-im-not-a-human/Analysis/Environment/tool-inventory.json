@@ -1,0 +1,465 @@
+{
+  "scan_time_iso": "2026-10-13T10:53:15.5194666+08:00",
+  "scope": "Read-only PATH discovery; bounded known installation roots; UnityHub nonsecret editor metadata; executable VersionInfo; process paths; selected package-cache names",
+  "commands": [
+    {
+      "name": "ilspycmd",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "ILSpy",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "Cpp2IL",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "cpp2il",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "ghidraRun",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "analyzeHeadless",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "AssetRipper",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "AssetRipper.GUI",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "AssetRipper.CLI",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "Unity",
+      "found_in_path": true,
+      "commands": [
+        {
+          "path": "C:\\Users\\admin\\AppData\\Local\\Unity\\bin\\unity.exe",
+          "type": "Application",
+          "version": "0.0.0.0"
+        }
+      ]
+    },
+    {
+      "name": "dotnet",
+      "found_in_path": true,
+      "commands": [
+        {
+          "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+          "type": "Application",
+          "version": "10.0.526.15411"
+        }
+      ]
+    },
+    {
+      "name": "uv",
+      "found_in_path": true,
+      "commands": [
+        {
+          "path": "C:\\Users\\admin\\.local\\bin\\uv.exe",
+          "type": "Application",
+          "version": "0.0.0.0"
+        }
+      ]
+    },
+    {
+      "name": "python",
+      "found_in_path": true,
+      "commands": [
+        {
+          "path": "C:\\Users\\admin\\AppData\\Local\\.aimana\\bin\\python\\python.exe",
+          "type": "Application",
+          "version": "3.12.8150.1013"
+        }
+      ]
+    },
+    {
+      "name": "node",
+      "found_in_path": true,
+      "commands": [
+        {
+          "path": "C:\\Users\\admin\\AppData\\Local\\pi-node\\current\\node.exe",
+          "type": "Application",
+          "version": "22.23.2.0"
+        }
+      ]
+    },
+    {
+      "name": "rea",
+      "found_in_path": false,
+      "commands": []
+    },
+    {
+      "name": "java",
+      "found_in_path": true,
+      "commands": [
+        {
+          "path": "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\java.exe",
+          "type": "Application",
+          "version": "17.0.12.0"
+        }
+      ]
+    },
+    {
+      "name": "fd",
+      "found_in_path": false,
+      "commands": []
+    }
+  ],
+  "version_probes": [
+    {
+      "command": "dotnet --list-sdks",
+      "output": [
+        "10.0.201 [C:\\Program Files\\dotnet\\sdk]"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": "dotnet --list-runtimes",
+      "output": [
+        "Microsoft.AspNetCore.App 10.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.AspNetCore.App]",
+        "Microsoft.NETCore.App 10.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App]",
+        "Microsoft.WindowsDesktop.App 10.0.5 [C:\\Program Files\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": "uv --version",
+      "output": [
+        "uv 0.11.3 (45da18ac3 2026-04-01 x86_64-pc-windows-msvc)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": "python --version",
+      "output": [
+        "Python 3.12.8"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": "node --version",
+      "output": [
+        "v22.23.2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": "java -version",
+      "output": [
+        "java version \"17.0.12\" 2024-07-16 LTS",
+        "Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)",
+        "Java HotSpot(TM) 64-Bit Server VM (build 17.0.12+8-LTS-286, mixed mode, sharing)"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "bounded_roots": [
+    {
+      "path": "D:\\tools",
+      "exists": true,
+      "entries": [
+        {
+          "FullName": "D:\\tools\\AndroidSDK_Unity2019",
+          "Name": "AndroidSDK_Unity2019",
+          "PSIsContainer": true
+        },
+        {
+          "FullName": "D:\\tools\\NDK_25.2.9519653",
+          "Name": "NDK_25.2.9519653",
+          "PSIsContainer": true
+        },
+        {
+          "FullName": "D:\\tools\\AndroidSDK_Unity2019.zip",
+          "Name": "AndroidSDK_Unity2019.zip",
+          "PSIsContainer": false
+        },
+        {
+          "FullName": "D:\\tools\\NDK_25.2.9519653.zip",
+          "Name": "NDK_25.2.9519653.zip",
+          "PSIsContainer": false
+        }
+      ]
+    },
+    {
+      "path": "D:\\Unity_Hub",
+      "exists": true,
+      "entries": []
+    },
+    {
+      "path": "D:\\UnityHub",
+      "exists": false,
+      "entries": []
+    },
+    {
+      "path": "D:\\Unity",
+      "exists": false,
+      "entries": []
+    },
+    {
+      "path": "C:\\Program Files\\Unity Hub",
+      "exists": false,
+      "entries": []
+    },
+    {
+      "path": "C:\\Program Files\\Unity\\Hub\\Editor",
+      "exists": true,
+      "entries": []
+    },
+    {
+      "path": "C:\\Program Files\\Unity\\Hub",
+      "exists": true,
+      "entries": [
+        {
+          "FullName": "C:\\Program Files\\Unity\\Hub\\Editor",
+          "Name": "Editor",
+          "PSIsContainer": true
+        }
+      ]
+    },
+    {
+      "path": "C:\\Tools",
+      "exists": false,
+      "entries": []
+    },
+    {
+      "path": "C:\\Users\\admin\\.dotnet\\tools",
+      "exists": false,
+      "entries": []
+    }
+  ],
+  "unity_editors": [
+    {
+      "path": "E:\\hamster_unity\\unity20190433\\build\\WindowsEditor\\Unity.exe",
+      "exists": true,
+      "fileVersion": "2019.4.33.12885827",
+      "productVersion": "2019.4.33f1_c49f43f34"
+    },
+    {
+      "path": "C:\\unity_release\\Unity20190433_release\\Editor\\Unity.exe",
+      "exists": true,
+      "fileVersion": "2019.4.33.547543",
+      "productVersion": "2019.4.33f1_085ad7ea8"
+    },
+    {
+      "path": "E:\\Unity20190433_release\\Editor\\Unity.exe",
+      "exists": true,
+      "fileVersion": "2019.4.33.5548327",
+      "productVersion": "2019.4.33f1_54a9274d8"
+    },
+    {
+      "path": "E:\\hamster_unity\\unity20220323\\build\\WindowsEditor\\x64\\Debug\\Unity.exe",
+      "exists": true,
+      "fileVersion": "2022.3.23.1850003",
+      "productVersion": "2022.3.23f1_1c3a937ba526"
+    },
+    {
+      "path": "E:\\hamster_unity\\unity20190433\\build\\WindowsEditor\\2022.3.62f3c1\\Editor\\Unity.exe",
+      "exists": false,
+      "fileVersion": null,
+      "productVersion": null
+    },
+    {
+      "path": "E:\\Unity\\Editors\\2022.3.23f1\\Editor\\Unity.exe",
+      "exists": true,
+      "fileVersion": "2022.3.23.4851570",
+      "productVersion": "2022.3.23f1c1_4a0772a0ebd0"
+    }
+  ],
+  "unity_processes": [
+    {
+      "Name": "Unity.exe",
+      "ExecutablePath": "E:\\hamster_unity\\unity20190433\\build\\WindowsEditor\\Unity.exe",
+      "ProcessId": 48740,
+      "CommandLine": "unity  -nohub"
+    }
+  ],
+  "unity_hub_metadata": [
+    {
+      "path": "C:\\Users\\admin\\AppData\\Roaming\\UnityHub\\editors.json",
+      "contents": {
+        "2019.4.33f1": {
+          "version": "2019.4.33f1",
+          "location": [
+            "C:\\unity_release/Unity20190433_release/Editor/Unity.exe"
+          ],
+          "manual": true,
+          "isDownloadCorrupted": false,
+          "buildPlatforms": [
+            {
+              "dirName": "LinuxStandaloneSupport",
+              "name": "Linux",
+              "buildTarget": "StandaloneLinux64"
+            },
+            {
+              "dirName": "androidplayer",
+              "name": "Android",
+              "buildTarget": "Android"
+            },
+            {
+              "dirName": "iOSSupport",
+              "name": "iOS",
+              "buildTarget": "iOS"
+            },
+            {
+              "dirName": "windowsstandalonesupport",
+              "name": "Windows 64-bit",
+              "buildTarget": "StandaloneWindows64"
+            }
+          ]
+        },
+        "2022.3.23f1": {
+          "version": "2022.3.23f1",
+          "location": [
+            "E:/hamster_unity/unity20220323/build/WindowsEditor/x64/Debug/Unity.exe"
+          ],
+          "manual": true
+        },
+        "2022.3.62f3": {
+          "version": "2022.3.62f3",
+          "location": [
+            "E:/hamster_unity/unity20190433/build/WindowsEditor/2022.3.62f3c1/Editor/Unity.exe"
+          ],
+          "manual": true,
+          "isDownloadCorrupted": false,
+          "buildPlatforms": [
+            {
+              "dirName": "windowsstandalonesupport",
+              "name": "Windows 64-bit",
+              "buildTarget": "StandaloneWindows64"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "C:\\Users\\admin\\AppData\\Roaming\\UnityHub\\editors-v2.json",
+      "contents": {
+        "schema_version": "2",
+        "data": [
+          {
+            "version": "2019.4.33f1",
+            "manual": true,
+            "architecture": "x86_64",
+            "location": [
+              "E:\\Unity20190433_release\\Editor\\Unity.exe"
+            ],
+            "productName": "Unity",
+            "isDownloadCorrupted": false,
+            "buildPlatforms": [
+              {
+                "dirName": "LinuxStandaloneSupport",
+                "name": "Linux",
+                "buildTarget": "StandaloneLinux64"
+              },
+              {
+                "dirName": "iOSSupport",
+                "name": "iOS",
+                "buildTarget": "iOS"
+              },
+              {
+                "dirName": "windowsstandalonesupport",
+                "name": "Windows 64-bit",
+                "buildTarget": "StandaloneWindows64"
+              }
+            ]
+          },
+          {
+            "version": "2022.3.23f1",
+            "location": [
+              "E:/hamster_unity/unity20220323/build/WindowsEditor/x64/Debug/Unity.exe"
+            ],
+            "manual": true,
+            "architecture": "x86_64",
+            "productName": "Unity"
+          }
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\admin\\AppData\\Roaming\\UnityHub\\installedEditorBinaryMetadata.json",
+      "contents": {
+        "E:\\hamster_unity\\unity20190433\\build\\WindowsEditor\\2022.3.62f3c1\\Editor\\Unity.exe": {
+          "architecture": "x86_64",
+          "size": 89411408,
+          "mtimeMs": 1764214718000,
+          "updatedAt": 1785811110975
+        }
+      }
+    },
+    {
+      "path": "C:\\Users\\admin\\AppData\\Roaming\\UnityHub\\secondaryInstallPath.json",
+      "contents": "E:\\Unity\\Editors"
+    }
+  ],
+  "rea_cached_packages": [
+    {
+      "path": "C:\\Users\\admin\\AppData\\Local\\npm-cache\\_npx\\af752b90495482d7\\node_modules\\rea-agents\\package.json",
+      "name": "rea-agents",
+      "version": "6.4.0",
+      "cli_path": "C:\\Users\\admin\\AppData\\Local\\npm-cache\\_npx\\af752b90495482d7\\node_modules\\rea-agents\\scripts\\rea.mjs",
+      "cli_execution_tested": false
+    },
+    {
+      "path": "C:\\Users\\admin\\AppData\\Local\\npm-cache\\_npx\\dea9475797100b20\\node_modules\\rea-agents\\package.json",
+      "name": "rea-agents",
+      "version": "6.4.0",
+      "cli_path": "C:\\Users\\admin\\AppData\\Local\\npm-cache\\_npx\\dea9475797100b20\\node_modules\\rea-agents\\scripts\\rea.mjs",
+      "cli_execution_tested": false
+    }
+  ],
+  "selected_nuget_packages": [
+    {
+      "Name": "mono.cecil",
+      "FullName": "C:\\Users\\admin\\.nuget\\packages\\mono.cecil"
+    }
+  ],
+  "limitations": [
+    "No exhaustive whole-disk search. Not found means absent from PATH and inspected bounded roots, not proven absent from host.",
+    "No software installed, upgraded or downloaded. Only lightweight version commands executed; no target game, analysis GUI, export or Unity Editor launched.",
+    "Unity Editor license/batchmode/project import not tested.",
+    "Cached REA CLI package observed but CLI execution not tested in this scan.",
+    "No Steam source files or MINIGAME workspace files modified."
+  ],
+  "official_acquisition_candidates": [
+    {
+      "name": "ILSpy",
+      "url": "https://github.com/icsharpcode/ILSpy",
+      "verified_online": true
+    },
+    {
+      "name": "Cpp2IL",
+      "url": "https://github.com/SamboyCoding/Cpp2IL",
+      "verified_online": true
+    },
+    {
+      "name": "Ghidra",
+      "url": "https://github.com/NationalSecurityAgency/ghidra",
+      "verified_online": true,
+      "current_master_readme_requirement": "JDK 25 64-bit (README Install); pin actual release requirements before acquisition."
+    },
+    {
+      "name": "AssetRipper",
+      "url": "https://github.com/AssetRipper/AssetRipper",
+      "verified_online": true
+    }
+  ]
+}

@@ -1,0 +1,1055 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: 2c9f148e973fd914eb8426fb4d22c384, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16302985216
+    m_Localized: Giriş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Banyo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Salon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Yatak Odası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Çalışma Odası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Mutfak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Kiler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Pencere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: Şu an hiç yatasım yok, gayet zindeyim!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: Şu saatte uyumayayım. Ya insanlar sığınacak bir yer arıyorsa?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Herhâlde bu gece başka gelen giden olmayacak.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: Evdeki kokuya bakılırsa bu gece biri ölmüş...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Dil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Çık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: Kaydet ve masaüstüne dön
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Kaydetmeden menüye dön
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Aç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Ayrıl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Başla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: Hayır, Ben İnsan Değilim, Ben {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: Bira uykumu getirdi. Yavaştan yatsam iyi olur.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Bober Černý
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: Her şey boka sarmış olsa da soğuk bir bira her zaman iyi gelir.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: Kimyasal deposu ama enerjik kalmak istiyorsan neden içmeyesin?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Kahve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: Artık sıcak kahve hiç içmiyorum. Muhtemelen kimse içmiyordur.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Aç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Gir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Kullan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: Bak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Bodrum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: Ev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Telefon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Radyo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Sigara ({0} tane kaldı)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: İç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Çivile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Ana Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Müzik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: Ses Efekti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Kaydet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: Yeni Oyun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Devam Et
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: QWERTYUIOPĞÜASDFGHJKLŞİZXCVBNMÖÇqwertyuıopğüasdfghjklşizxcvbnmöç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Mantar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Kaz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Delik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Sev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Kedi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Ayarlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Geri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Ekran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Konuş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Ölüm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Metin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Duraklatıldı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Kombuça (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: Bir süredir sigara içmiyorum. En son... herkes gittiğinde içmiştim herhâlde.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Sigara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: Oyunu kaydeder. Mevcut oyun sona erdikten sonra bile bu kayıt korunur.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: En sevdiğim içecek. Hem iyi geliyor hem kafamı toparlıyor. Güzel günleri aklıma getiriyor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Kombuça
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Madenci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Tam Ekran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Çerçevesiz Tam Ekran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Pencereli Tam Ekran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Pencere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Çık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Kapat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Ayrıl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Bırak [basılı tut]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Koş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Kendimi öyle ya da böyle savunmam lazım.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: Dünyanın sonu geliyor ama belki hayatta kalmanın bir yolu vardır...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: Pencereleri kapatsam iyi olur. Bu saatten sonra işler iyice boka saracak ama yine de pes edemem.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: Komşu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: Falcı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Kahve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Herhâlde bugün başka radyo yayını olmayacak.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Talimatlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Şimdi hiç içeri girmeyeyim. Gündüz vakti bakarım.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: Şimdi dışarı bakarsam kör olabilirim. En iyisi ben gece bakayım.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: Bugün buna ayıracak vaktim kalmadı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: Bugün buna ayıracak vaktim kalmadı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: Bu saatte kimse sokağa çıkmaz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: Bugün buna ayıracak vaktim kalmadı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: Sanırım bugünlük benden bu kadar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: Sinyal yakalamak için sağ düğmeyi çevir. Çevirmek için sağ düğmeye sol tıklayıp basılı tut ve imleci sağa veya sola kaydır. Soldaki düğmeyle ses yüksekliğini ayarlayabilirsin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: Radyodaki sinyal engelleyiciyi çıkardım. Götlerine girsin!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: Siktir... Artık çalışmıyor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: Sinyal gelmiyorsa dalga aralığını değiştirmeyi dene. Bunun için ortadaki düğmeye sol tıkla ve sağdaki düğmeyle dalgayı aramaya devam et.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Çıkmak istediğinden emin misin?\n Kaydedilmeyen tüm ilerlemen kaybolacak."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Çıkmak istediğinden emin misin?\n İlerlemen kaydedilecek."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Evet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: Bağırıp çağıran dengesiz herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: Manyak teyze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: Hatlar sonbahara kadar kapalı. Bekleyeceğiz artık...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Cevap ver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Dinle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Frekans ara [döndür]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: FM dalga bandına geç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: AM dalga bandına geç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Kontrol Cihazı Titreşimi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Kontrol Cihazı Hassasiyeti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Odalarda Kontrol Cihazı Hassasiyeti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Fare Hassasiyeti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Kontroller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Takvim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: Bira Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: Hıyar Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: Aile Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: Konjonktivit Farkındalık Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: Çocuk Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: Kasiyerler Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: Dünya Teşekkür Etme Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: Diplomasi Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: Barışma Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: Yel Değirmeni Bayramı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Yaz Sonu Şenliği
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: Gün
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: Tarotçu hatun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: Amogus tişörtlü eleman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: Ceset taşıyan kadın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Koleksiyon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: Şimdi yiyesim geldi ama... Neyse, dolaba koyayım.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: Ne garip bir mantar bu? Patateste nasıl büyümüş olabilir ki?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: Elmayı yedim. Hem ekşi hem de tatlıydı...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Bira
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Kedi Maması
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: İçtiğinde   <sprite=0>, 0 olur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: Birkaç günlüğüne +1   <sprite=1>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Oynadığın için teşekkürler!\n  İstek listene eklemeyi unutma... Tabii, eğer insansan!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Daktilo Efekti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Kullanma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: '<sprite=0> tamamen yenilenir fakat sonraki güne bir   <sprite=1> eksik başlarsın'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Ayrıl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Eşyayı kullan [basılı tut]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: KapımaGelsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Telefon Numaraları
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: Depresif hatun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: İlçe Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: Konukseverlik Günü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Dedikodular
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '{0} tane <color=#225555>{1}</color> <color=#444444>elde ettin</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '{0} tane <color=#225555>{1}</color> <color=#444444>verdin</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Atla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: Sakallı iri adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: Gözsüz garip herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: Koca kafalı çokbilmiş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: Bıyıklı dört göz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: Ağlayan küçük kız
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: Şapkalı velet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: Çift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: Takım elbiseli keko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: Kedili hatun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: Dindar moruk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: Sırık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: Formalı eleman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: Taksi şoförü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: Mont giyip üşüyen değişik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: Mor bandanalı adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: Sigara içen kadın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: Kâküllü şişko kadın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: Siyah kapüşonlu adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: Yeşil şapkalı adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: Dev herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: Kambur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: Geveze karı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: Kültist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: Kangrenli beyefendi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: Gözlüklü kazaklı kadın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: Kültist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: Yaralı eleman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: Anne ve çocuk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: Çıplak şişko herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: FEMA kıyafetli adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: Sarılık geçiren değişik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: Kafası güzel herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: Sırtı yamuk kız
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: Evsiz adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: Ağzı dikişli adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: Bunalımlı kadın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: Herkes gitmiş. Bu... rüya yüzünden mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: Sakin bir yaşam. Gelecekte yatan karanlığın ne farkında ne de ondan etkileniyor...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: Yoğun sisin arasından bir ateş yükseldi ve kalabalığın üzerinde kül kokan kanatlar belirdi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: Bodrum katı, kendi dünyası hâline geldi. Pencereler tuğlayla örtüldü, konuşmalar saat sesine karıştı. Güneş soldu gitti... fakat işkenceden kurtulmak o kadar da kolay değil.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: Ziyaretçiler baştan beri buradaydı. Karanlıkta sıcak bir nefes, arkanda zalim bir fısıltı... Bir daha asla ışığı görmeyeceksin. Tabii, ışık bir gün dönerse.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: Nihai sessizlik çöksün diye dua ettiler. Galiba duaları duyuldu, dışarısı epey sessiz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: Sirenlerini açıp seni götürdüler, geriye yalnızca anılarını bıraktılar. Keşke dönebilsen de en azından o posteri yanında götürebilsen...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: Gölgesi eşiği aştığı an eve bir sessizlik çöktü. Artık senden geriye kalan, yalnızca fısıltılar...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: Tanıştığın herkes sana düşman gibi geldi. Korkun, seni kör etti. Başkaları ise senin başlattığını bitirdi yalnızca.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: Toprakta mantarlar bitti, yeni ve yabancı şehirler inşa ettiler. Acele ettin ama bu yeni dünyanın kapısı çoktan kapanmıştı.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: Bir imtihan bitti, yenisi başladı. Artık kalabalığın yeni korkusu sensin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: Çizgiyi aşan tek bir adımla tüm korkuların önemini yitirdi. Zaman kavramı artık yok, yalnızca içini rahatlatan bir soğukluk var...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: Falcı hatundan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: Anne kuzusunun kardeşi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: Perişan annenin kocası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: İkizlerden birinin kocası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: Telefon Ruleti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: Şişkonun karısı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: FEMA'cının karısından
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: Elçilik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: Küçük kızın arkadaşı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "1. Bugün, dünya baştan inşa edildi\n ve bodrum katında mantarlar bitti.\n Boyu uzundu ama vakit gelmişti;\n cüret edenler, onu midesine indirmişti.\n \n 2. Misafir kabul etmek, her yiğidin harcı değildir;\n Göreceğin o Mantar, uzun incedir\n Elma Ağacı'nın altında istirahat et,\n seni tatlı meyveleriyle besler elbet.\n \n \n 3. Gün gelecek, diz çökmen gerekecek\n çünkü mantarın görkemli sesi inleyecek\n Akrep ve yelkovan tepeye bakar.\n Acele et dostum, zaman durmadan akar!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Seni geçici olarak Mantarlar Diyarı'na yollar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: Gülümsemeler Kitabı'nın dediği gibi saati 12'ye ayarladım.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: FEMA İhbarı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Kilitli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Hızlandır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: Yukarıdaki dünya solup gidiyor, sen de eski hayatının harabelerinin arasında yalnız başına kalıyorsun. Yok edilenler, sen de dâhil olmak üzere sonsuza dek gömülü kalacak.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: Yerinde duramayan eleman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: Rock'çı çocuk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: Çıplak herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: Ceketli çocuk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: Straplez giyen kız
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: Yumurta kafa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: Atletli değişik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: Kurdeşenli adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: Hayalperest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: Kıllı izbandut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: Dövmeli hatun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: Yüzü yanık adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: Kültist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: doktor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: bacaksız adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: Sinyal yakalamak için sağ düğmeyi çevir. Çevirmek için oyun kumandasının sağ düğmesini saat yönünde ya da saat yönünün tersine döndür. Soldaki düğmeyle ses yüksekliğini ayarlayabilirsin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: Hâlâ sinyal gelmiyorsa dalga aralığını değiştirmeyi dene. Çevirmek için sağ ya da sol yassı düğmeye bas ve sağ analog stick ile ihtiyacın olan sinyali aramaya devam et.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: "Y Eksenini Ters Çevir (fare)\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Y Eksenini Ters Çevir (oyun kumandası)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

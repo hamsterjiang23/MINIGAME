@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496cd01e8199ac8449cebcdda2ff4b4c, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier:
+  <MusicByDay>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: 0
+        <NoiseVolume>k__BackingField: 0
+    - Key: 1
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0
+    - Key: 2
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0
+    - Key: 3
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -1456058293
+        <Noise>k__BackingField: -393504397
+        <NoiseVolume>k__BackingField: 0.5
+    - Key: 4
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -1456058293
+        <Noise>k__BackingField: -393504397
+        <NoiseVolume>k__BackingField: 0.7
+    - Key: 5
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -1456058293
+        <Noise>k__BackingField: -393504397
+        <NoiseVolume>k__BackingField: 0.8
+    - Key: 6
+      Value:
+        <DayMusic>k__BackingField: 696029164
+        <NightMusic>k__BackingField: -998264214
+        <Noise>k__BackingField: 0
+        <NoiseVolume>k__BackingField: 0
+    - Key: 7
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651197
+        <Noise>k__BackingField: -393503372
+        <NoiseVolume>k__BackingField: 0.5
+    - Key: 8
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651197
+        <Noise>k__BackingField: -393503372
+        <NoiseVolume>k__BackingField: 0.6
+    - Key: 9
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651197
+        <Noise>k__BackingField: -393510795
+        <NoiseVolume>k__BackingField: 0.6
+    - Key: 10
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651198
+        <Noise>k__BackingField: -393510795
+        <NoiseVolume>k__BackingField: 0.7
+    - Key: 11
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651198
+        <Noise>k__BackingField: -393509522
+        <NoiseVolume>k__BackingField: 0.7
+    - Key: 12
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651198
+        <Noise>k__BackingField: -393509522
+        <NoiseVolume>k__BackingField: 0.8
+    - Key: 13
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651198
+        <Noise>k__BackingField: -393509522
+        <NoiseVolume>k__BackingField: 0.9
+    - Key: 14
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -1803651198
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0
+    - Key: 15
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0
+    - Key: 16
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0
+    - Key: 17
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0
+    - Key: 18
+      Value:
+        <DayMusic>k__BackingField: 1975006581
+        <NightMusic>k__BackingField: -293258879
+        <Noise>k__BackingField: -718864496
+        <NoiseVolume>k__BackingField: 0

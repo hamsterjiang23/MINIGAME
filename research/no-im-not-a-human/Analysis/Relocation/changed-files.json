@@ -1,0 +1,133 @@
+{
+  "allowed_files": [
+    "Analysis/Tools/validate_deliverables.py",
+    "Analysis/Tools/ManagedInspector/map_native.py",
+    "Analysis/Tools/ManagedInspector/verify_indices.py",
+    "Analysis/Gameplay/index_yarn.py",
+    "Analysis/Gameplay/update_report.py",
+    "Analysis/Gameplay/parse-yarn.ps1",
+    "Analysis/Assets/index_recovery.py",
+    "Analysis/Assets/probe_character_unitypy.py",
+    "Analysis/investigation-status.json",
+    "README.md",
+    "Reports/gameplay-dialogue-progression.md",
+    "Reports/path-discovery.md",
+    "Reports/unity-recovery.md",
+    "Analysis/deliverable-verification.json"
+  ],
+  "changed_file_count": 14,
+  "changes": [
+    {
+      "path": "Analysis/Assets/index_recovery.py",
+      "original_sha256": "31e1ac38f1d76bc8fa1912df554eab54acbd9a2abce2b97b97f33e2f8b0a2637",
+      "current_sha256": "9b2f1312f58096e1ce99ca9f1f258f3396b38b64e2d7c57426240fb92bb1abeb",
+      "original_bytes": 8920,
+      "current_bytes": 8921,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Assets/probe_character_unitypy.py",
+      "original_sha256": "68c82b00d7b3823053c2ebdeb018934d792378f77a1e02706c67d2b4faac5fa2",
+      "current_sha256": "a37de1e31f1a89204d537b10ecaf894a317f57d013469e304df032103d10bb6a",
+      "original_bytes": 4802,
+      "current_bytes": 4803,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Gameplay/index_yarn.py",
+      "original_sha256": "066534060c996bc2e0641e352c0f890b370acf616eab0478ee767299ba40b53d",
+      "current_sha256": "c1f4d7356a508de32352f023402b46e9b92c3331a8fa866c0889ceaf3743f130",
+      "original_bytes": 10238,
+      "current_bytes": 10239,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Gameplay/parse-yarn.ps1",
+      "original_sha256": "7c4a97a3ee8b693584dd0708f0c23f4d0f3a882d96bb0ba3b64e474159e0e286",
+      "current_sha256": "0f9bd212e51b730cd0c40ba99ea41cf8715aaf322e46b29ecbd39a9ae8f5859d",
+      "original_bytes": 1707,
+      "current_bytes": 1775,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Gameplay/update_report.py",
+      "original_sha256": "5337a46a32ad12f878b88ed8d44516835970527003f54e6195f4b08f39e80fd0",
+      "current_sha256": "b233f48186bba90678adcadf9e8940c9d60b647cd5af13ce3f908036b16bd8a1",
+      "original_bytes": 15332,
+      "current_bytes": 16019,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Tools/ManagedInspector/map_native.py",
+      "original_sha256": "9edeac43a0b09e6e2d11ca136d345f6c85b4bdcf98511d004e87eede09b7e905",
+      "current_sha256": "c6899c18f7ae36a583abddae93571fd731b6ed5ab0a105761190c68de5b01960",
+      "original_bytes": 9724,
+      "current_bytes": 9725,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Tools/ManagedInspector/verify_indices.py",
+      "original_sha256": "36c40c3d3e7b773c66235de4f698bccb476a2871321008b21e40ad4d1719a64c",
+      "current_sha256": "48823001050467fe016cc5f284066ea66afe6550f7941d50f863069035f83ecf",
+      "original_bytes": 8011,
+      "current_bytes": 8016,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/Tools/validate_deliverables.py",
+      "original_sha256": "3f2ab159258b5354e790baf4d24b9ec8a3da5ae7f1ae7b2ca1d6fd5528480df2",
+      "current_sha256": "c8a7b0e776a681ee52716f87558f8a00d953d29799a7dbda884db809ac746d77",
+      "original_bytes": 4457,
+      "current_bytes": 4458,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Analysis/deliverable-verification.json",
+      "original_sha256": "eb82bd651a424f8d31e2283d93cc3c1f86cdbe7197b2a0e2a05bc9b5c2d63888",
+      "current_sha256": "883d7a2f8dbf6cc6e57d7b3c35a98714bb3ae2f6036736e40425ad5837d12ba7",
+      "original_bytes": 1040,
+      "current_bytes": 1040,
+      "reason": "Re-ran relocated artifact validator; links count reflects migration navigation"
+    },
+    {
+      "path": "Analysis/investigation-status.json",
+      "original_sha256": "a4b5762ebfd57a0335cd530b96e24c2dea7eb9ad37e1ae640a8ea20c690e0b74",
+      "current_sha256": "a3566ab5ba274c8860485069ac662e680c891acf7b848f136878ef254002ffa1",
+      "original_bytes": 1444,
+      "current_bytes": 1678,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "README.md",
+      "original_sha256": "75db8096750184363eb085e2686322363324ff85b66ecbd776351aac3ce72b27",
+      "current_sha256": "eacbde1f915aac31c0e992f73a67c76d9ca77cb44bfad975f4632eaa5a041bd2",
+      "original_bytes": 1812,
+      "current_bytes": 2170,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Reports/gameplay-dialogue-progression.md",
+      "original_sha256": "8021b2074a6d5651bb5d1592bed421f4077e3cf293d02e7ea244768251938ecc",
+      "current_sha256": "8672c16b87824898e449830ef06d4de41974e6137adc1d1dbc476ce66d7a66b0",
+      "original_bytes": 35120,
+      "current_bytes": 33323,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Reports/path-discovery.md",
+      "original_sha256": "74e14d313345552c4e59322c110169bd66d3b262cc164ed3874a6b02c4b96983",
+      "current_sha256": "45772349c43b7a9680f25ec31fcb4e5856ef8425a126ab477b25dce82d50d0ea",
+      "original_bytes": 1998,
+      "current_bytes": 2188,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    },
+    {
+      "path": "Reports/unity-recovery.md",
+      "original_sha256": "53f23756e402edd9fd836f0c96e2f2cb760fbe0b924643e528a787ccc4394e5b",
+      "current_sha256": "ec69adf8d49a16f603f7b570ede1aa28273697e08884334a3284be252717b8a4",
+      "original_bytes": 15381,
+      "current_bytes": 15381,
+      "reason": "Approved relocation: relative navigation or script-root resolution; original historical JSON provenance retained"
+    }
+  ]
+}

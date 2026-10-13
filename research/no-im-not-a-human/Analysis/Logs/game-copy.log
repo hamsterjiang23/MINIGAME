@@ -1,0 +1,29 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, October 13, 2026 10:53:16 AM
+   Source : E:\steam\steamapps\common\No, I'm not a Human\
+     Dest : D:\NoImNotAHuman-Research\Analysis\Inputs\GameCopy\
+
+    Files : *.*
+	    
+  Options : *.* /NDL /NFL /S /E /DCOPY:DAT /COPY:DAT /NP /XJ /R:1 /W:1 
+
+------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :        20        19         1         0         0         0
+   Files :       965       965         0         0         0         0
+   Bytes :   2.291 g   2.291 g         0         0         0         0
+   Times :   0:00:09   0:00:09                       0:00:00   0:00:00
+
+
+   Speed :           252562190 Bytes/sec.
+   Speed :           14451.724 MegaBytes/min.
+   Ended : Tuesday, October 13, 2026 10:53:26 AM
+

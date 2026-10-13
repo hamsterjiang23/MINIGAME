@@ -1,0 +1,62 @@
+﻿{
+  "language_version": "CSharp9",
+  "roslyn_assembly": "Microsoft.CodeAnalysis.CSharp, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+  "input_paths": [
+    "D:\\NoImNotAHuman-Research\\DecompiledCode\\UnityCompatible\\Assembly-CSharp",
+    "D:\\NoImNotAHuman-Research\\DecompiledCode\\UnityCompatible\\Assembly-CSharp-firstpass"
+  ],
+  "mode": "single_file_smoke",
+  "discovered_source_files": 629,
+  "inspected_source_files": 1,
+  "syntax_error_count": 0,
+  "syntax_warning_count": 0,
+  "files_with_syntax_errors": 0,
+  "syntax_passed": true,
+  "preprocessor_symbols": [],
+  "excluded_directory_segments": [
+    "bin",
+    "obj"
+  ],
+  "file_scoped_namespace_count": 0,
+  "performed_comprehensive_language_feature_compatibility_validation": false,
+  "global_using_count": 0,
+  "observed_feature_node_counts": {
+    "RecordStructDeclaration": 0,
+    "ListPattern": 0,
+    "CollectionExpression": 0
+  },
+  "sdk_supports_observed_feature_kind_names": {
+    "RecordStructDeclaration": true,
+    "ListPattern": true,
+    "CollectionExpression": true
+  },
+  "performed_symbol_binding": false,
+  "performed_compilation_or_emit": false,
+  "performed_unity_import": false,
+  "loaded_or_executed_game_assemblies": false,
+  "executed_game_functions": false,
+  "limitations": [
+    "Roslyn ParseText/GetDiagnostics checks only source grammar under CSharp9, not references, symbol binding, API support or code generation.",
+    "The SDK Roslyn version is not Unity\u0027s actual embedded compiler binary; no Unity compilation/import was performed.",
+    "No preprocessor symbols were supplied; inactive conditional branches are not parsed as active source.",
+    "CSharp9 syntax acceptance does not validate Unity-specific unsupported language/runtime/serialization features.",
+    "An observed original file-scoped-namespace control has zero SyntaxTree diagnostics under CSharp9. ParseText/GetDiagnostics alone does not enforce every language-version feature gate; selected modern constructs are counted separately as AST observations."
+  ],
+  "files": [
+    {
+      "path": "D:\\NoImNotAHuman-Research\\DecompiledCode\\UnityCompatible\\Assembly-CSharp-firstpass\\AYellowpaper\\SerializedCollections\\SerializedDictionarySample.cs",
+      "byte_length": 292,
+      "sha256": "bcc4e8b59db12e3ba42336bd00b171ae98f6ed48c6bd864987a82eb94af9c13c",
+      "error_count": 0,
+      "warning_count": 0,
+      "file_scoped_namespace_count": 0,
+      "global_using_count": 0,
+      "observed_feature_node_counts": {
+        "RecordStructDeclaration": 0,
+        "ListPattern": 0,
+        "CollectionExpression": 0
+      },
+      "diagnostics": []
+    }
+  ]
+}

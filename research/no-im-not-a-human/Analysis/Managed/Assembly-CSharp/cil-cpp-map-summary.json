@@ -1,0 +1,17 @@
+{
+  "method_count": 5855,
+  "pointer_table_entries": 5855,
+  "null_pointer_slots": 856,
+  "slots_with_cpp_definition": 4999,
+  "nonnull_slots_without_scanned_cpp_definition": 0,
+  "cpp_definition_symbols": 4999,
+  "scanned_cpp_files": 10,
+  "codegen_source": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\il2cppOutput\\Assembly-CSharp_CodeGen.c",
+  "codegen_sha256": "bceb8db857bace89eea622a0e0e24928ece54912435a0de7bedcc8d7be2e0bcc",
+  "limits": [
+    "Index mapping uses observed matching registration count and MethodDef order; no shipped GameAssembly symbol RVA or runtime observation.",
+    "NULL includes abstract/generic method slots; it is not proof of absence of an implementation.",
+    "Generic instantiations/sharing and adjustor thunks are not independently reconstructed by this mapping.",
+    "C++ text body hashes are source spans, not machine-code hashes."
+  ]
+}

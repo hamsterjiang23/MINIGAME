@@ -1,0 +1,76 @@
+{
+  "timestampUtc": "2026-10-13T02:58:00.4386263Z",
+  "os": {
+    "TotalVisibleMemorySize": 66877288,
+    "FreePhysicalMemory": 14157068,
+    "TotalVirtualMemorySize": 104966912,
+    "FreeVirtualMemory": 13365096
+  },
+  "processes": [
+    {
+      "Name": "Unity",
+      "Id": 48740,
+      "WorkingSet64": 10689130496
+    },
+    {
+      "Name": "Memory Compression",
+      "Id": 2784,
+      "WorkingSet64": 6290161664
+    },
+    {
+      "Name": "ChatGPT",
+      "Id": 100284,
+      "WorkingSet64": 1293271040
+    },
+    {
+      "Name": "codex",
+      "Id": 24028,
+      "WorkingSet64": 1100255232
+    },
+    {
+      "Name": "chrome",
+      "Id": 109340,
+      "WorkingSet64": 640954368
+    },
+    {
+      "Name": "MsMpEng",
+      "Id": 5040,
+      "WorkingSet64": 636043264
+    },
+    {
+      "Name": "chrome",
+      "Id": 84924,
+      "WorkingSet64": 618659840
+    },
+    {
+      "Name": "chrome",
+      "Id": 89876,
+      "WorkingSet64": 587542528
+    },
+    {
+      "Name": "chrome",
+      "Id": 97900,
+      "WorkingSet64": 573636608
+    },
+    {
+      "Name": "Code",
+      "Id": 37040,
+      "WorkingSet64": 570736640
+    },
+    {
+      "Name": "chrome",
+      "Id": 5232,
+      "WorkingSet64": 556527616
+    },
+    {
+      "Name": "vmmem",
+      "Id": 93192,
+      "WorkingSet64": 551571456
+    }
+  ],
+  "storage": {
+    "Root": "D:\\",
+    "Free": 1492392017920,
+    "Used": 508003676160
+  }
+}

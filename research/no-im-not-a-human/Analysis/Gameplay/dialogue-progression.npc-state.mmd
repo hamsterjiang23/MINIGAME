@@ -1,0 +1,22 @@
+stateDiagram-v2
+  [*] --> DoorPending: generated dingdong
+  DoorPending --> EntranceDialogue: CharacterCame / ShowFullSizeCharacter
+  EntranceDialogue --> Refused: Yarn Refuse / append refused list
+  EntranceDialogue --> InsideAlive: Yarn LetIn / room activation
+  EntranceDialogue --> DoorCompleted: dialogue ended / CompleteEvent
+  Refused --> DoorCompleted: dialogue ended
+  InsideAlive --> RoomDialogue: click when no dialog and pose allows
+  RoomDialogue --> InsideAlive: dialogue ends
+  InsideAlive --> PoseChanged: ChangePose / next morning queue
+  PoseChanged --> InsideAlive: presentation state retained
+  InsideAlive --> Exiled: ExileCharacter / remove inside
+  InsideAlive --> Dead: Kill / remove inside
+  Dead --> Corpse: IsImposter true
+  Dead --> Bags: IsImposter false
+  Corpse --> Cleared: daytime changed / ClearCorpses
+  Bags --> Cleared: daytime changed / ClearCorpses
+  Exiled --> [*]
+  Refused --> [*]
+  Cleared --> [*]
+%% This is reconstructed lifecycle, not an original named finite-state-machine class.
+%% Evidence: CharactersManager.cs L176-223/L335-349; CharacterRoomObjectView.cs L38-64; ARoom.cs L138-182; RoomsManager.cs L268-305.

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5660d166e538661cb93e233cff01d6, type: 3}
+  m_Name: TheDeath
+  m_EditorClassIdentifier:
+  _endingType: 5
+  _videoClip: {fileID: 32900000, guid: 5f7aa947c88ec7e449ad8cc3c0cd10c7, type: 3}
+  _subtitles:
+    _endingSubtitles:
+    - _nodeName: Death_Ending_1
+      _duration: 22
+      _beforeNodeDelay: 4
+    - _nodeName: Death_Ending_2
+      _duration: 21
+      _beforeNodeDelay: 4
+    - _nodeName: Death_Ending_3
+      _duration: 30
+      _beforeNodeDelay: 4
+  _music: 696029164
+  _slides: []
+  _gachaData:
+    <SpoilerImages>k__BackingField:
+    - {fileID: 21300000, guid: 2f432230181f9da4ca91385b0fe5250c, type: 2}
+    - {fileID: 21300000, guid: 891f5cde5aab43e46b377f43173e2302, type: 2}
+    - {fileID: 21300000, guid: 1a8d02fb589fc154c841994e49fa52b1, type: 2}
+    _description:
+      m_TableReference:
+        m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+      m_TableEntryReference:
+        m_KeyId: 118165792199548928
+        m_Key:
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

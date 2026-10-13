@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5660d166e538661cb93e233cff01d6, type: 3}
+  m_Name: Mushroom
+  m_EditorClassIdentifier:
+  _endingType: 9
+  _videoClip: {fileID: 32900000, guid: 684573883d0402042817ac8a37c5c24c, type: 3}
+  _subtitles:
+    _endingSubtitles:
+    - _nodeName: Mushroom_end_1
+      _duration: 20
+      _beforeNodeDelay: 6
+    - _nodeName: Mushroom_end_2
+      _duration: 25
+      _beforeNodeDelay: 4
+    - _nodeName: Mushroom_end_3
+      _duration: 20
+      _beforeNodeDelay: 4
+    - _nodeName: Mushroom_end_4
+      _duration: 18
+      _beforeNodeDelay: 4
+    - _nodeName: Mushroom_end_5
+      _duration: 14
+      _beforeNodeDelay: 24
+  _music: 696029164
+  _slides: []
+  _gachaData:
+    <SpoilerImages>k__BackingField:
+    - {fileID: 21300000, guid: 78021e8b4180d5e4190ee3a2d988a77d, type: 2}
+    - {fileID: 21300000, guid: 29174f82b245a9c45a298f393137577c, type: 2}
+    - {fileID: 21300000, guid: 76d00c01b314e9448a1d4ab3bc64f4a7, type: 2}
+    _description:
+      m_TableReference:
+        m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+      m_TableEntryReference:
+        m_KeyId: 118165741096148992
+        m_Key:
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

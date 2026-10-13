@@ -1,0 +1,18 @@
+{
+  "endpoint": "http://127.0.0.1:57941/LoadFolder",
+  "method": "POST",
+  "body": {
+    "path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy"
+  },
+  "startedUtc": "2026-10-13T02:59:52.7397675Z",
+  "gcHeapHardLimit": "0x180000000",
+  "stage": "finished",
+  "status": 200,
+  "elapsedSeconds": 3.4265137,
+  "process": {
+    "Id": 64400,
+    "WorkingSet64": 2302857216,
+    "PrivateMemorySize64": 2298638336,
+    "PeakWorkingSet64": 2302861312
+  }
+}

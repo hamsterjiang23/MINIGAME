@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92478d09144a28174064c4be6e1f7af, type: 3}
+  m_Name: LeftTrigger
+  m_EditorClassIdentifier:
+  <KeyType>k__BackingField: 18
+  <Sprites>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 21300000, guid: 31b9b0a7328e10e42a90d3aea8bceca0, type: 2}
+    - Key: 1
+      Value: {fileID: 21300000, guid: 31b9b0a7328e10e42a90d3aea8bceca0, type: 2}
+    - Key: 2
+      Value: {fileID: 21300000, guid: 2ceb62d7f484a8c45a17275b6a3e059d, type: 2}
+    - Key: 3
+      Value: {fileID: 21300000, guid: 2ceb62d7f484a8c45a17275b6a3e059d, type: 2}
+    - Key: 4
+      Value: {fileID: 21300000, guid: 2ceb62d7f484a8c45a17275b6a3e059d, type: 2}

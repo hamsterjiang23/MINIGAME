@@ -1,0 +1,4851 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NotCharacterDialogs_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: e5ff4525f54b4b14096a51f9eb9cf8ce, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21953783779328
+    m_Localized: 'TV: 緊急速報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556544
+    m_Localized: "TV: 本日 午前6時28分 太陽から\n強力なエネルギー放射が\n観測されました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556545
+    m_Localized: "TV: 放射規模は科学者による\n予測を大きく上回りました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556546
+    m_Localized: 'TV: 屋外の気温は危険水域に達しています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556547
+    m_Localized: "TV: これに伴い 政府は\n非常事態宣言を発令しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556548
+    m_Localized: 'TV: 日中の外出を 控えるよう お願いします'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556549
+    m_Localized: 'TV: それでは 次の…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556550
+    m_Localized: 'TV: 少々お待ちください…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556551
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556552
+    m_Localized: "TV: ただいま 来訪者との接触に関する\n緊急情報が入ってきました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556553
+    m_Localized: "TV: 目撃者の証言によると\n来訪者は人間の外見および振る舞いを\n模倣するとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556554
+    m_Localized: "TV: 来訪者との接触は避けてください\n先行事例により見分ける徴候の一つが\n確認されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556555
+    m_Localized: 'TV: 真っ白な歯です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556556
+    m_Localized: 'TV: 証言を裏付ける目撃者もいます'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556557
+    m_Localized: "TV: 目撃者が出会った浮浪者は\n白く整った歯をしており\n後に来訪者と判明したとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556558
+    m_Localized: "TV: 以上です\n落ち着いて\n日中は外出しないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556559
+    m_Localized: 'TV: 続いては 明るい情報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556560
+    m_Localized: "TV: こんにちは\n本日の天気予報です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556561
+    m_Localized: "TV: 当地域に暖気が流れ込み\n過去最高気温を更新する見込みです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556562
+    m_Localized: "TV: 気象専門家によれば\nさらなる高気温が\n予想されるとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556563
+    m_Localized: "TV: 太陽活動の活性化に伴い\n紫外線も強まる見通しです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556564
+    m_Localized: 'TV: 安全のため 日光浴は控えてください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556565
+    m_Localized: 'TV: 高温による熱射病の恐れがあります'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556566
+    m_Localized: "TV: 太陽の下にいることによる\n健康への悪影響は\n定かではありませんが…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556567
+    m_Localized: "TV: 重度の火傷を防ぐためにも\n外出しないようにしてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556568
+    m_Localized: "TV: 残念ながら 日焼け止めでは\n効果がありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556569
+    m_Localized: "TV: 以上です\n続いて 白鳥の湖を お送りします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556570
+    m_Localized: "TV: バレリーナたちが優雅に舞い\nしなやかに舞台を跳ねている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556571
+    m_Localized: "TV: 気品とは裏腹\n見ていると不安になる踊り"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556572
+    m_Localized: "TV: 眼前の現実から\n目を逸らさせようとしているような"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556573
+    m_Localized: 'TV: 誰か この事態を説明してくれれば…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556574
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556575
+    m_Localized: "TV: 太陽活動は衰えを見せず\n犯罪発生率が わずかに\n上昇しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556576
+    m_Localized: "TV: 最新の統計によれば\nここ数晩の殺人件数は\n平均を上回ったとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556577
+    m_Localized: "TV: 専門家によれば\n来訪者および社会全体に蔓延する\n不安によるものとされています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556578
+    m_Localized: "TV: そして新情報です\n目撃者の証言により来訪者を見分ける\n新たな徴候が明らかになりました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556579
+    m_Localized: 'TV: 爪の間の泥です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556580
+    m_Localized: "TV: 研究者の情報によると\n地中から這い出てくる来訪者に\n見られる徴候とのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556581
+    m_Localized: "TV: 以上です\n落ち着いて\n日中は外出しないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556582
+    m_Localized: "TV: 引き続き\n蒼白の狂人についての報道です\nまずはCMから"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556583
+    m_Localized: 'TV: 買い物といえば 店までの重い足取り'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556584
+    m_Localized: "TV: でも For Restなら\nなんと電話一本で商品を お届け"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556585
+    m_Localized: "TV: ご利用は For Rest宅配まで お電話を\n{0}\nお電話いただければ\nたった一日で商品が玄関へ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556586
+    m_Localized: "TV: For Rest\nおいしいくつろぎ 家で安らぎ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556587
+    m_Localized: 'TV: 蒼白の狂人が町に出没しています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556588
+    m_Localized: "TV: 目撃者の証言から\n警察は被害者の共通点を\n見出しました\n一人きりでいたことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556589
+    m_Localized: "TV: また 殺される前に\n狂人と会話を交わしていたことも\n判明しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556590
+    m_Localized: "TV: 警察は目撃証言をもとに\n容疑者の似顔絵を作成しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556591
+    m_Localized: "TV: 容疑者は極めて蒼白の中年男性で\n黒髪の痩せ型\n衣服はズボンのみを着用しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556592
+    m_Localized: "TV: 男は 別人の皮膚を\nまとっているという証言が\n複数 寄せられています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556593
+    m_Localized: 'TV: ただし この情報は 未確定です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556594
+    m_Localized: "TV: 男を見かけたなら 決してドアを開けず\n家に一人きりじゃない\nと告げてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556595
+    m_Localized: 'TV: 以上です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556596
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556597
+    m_Localized: "TV: 異常気温は なお上昇しており\n来訪者の侵攻も続いています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750848
+    m_Localized: "TV: この緊急事態に対応すべく\n政府は特別機関を設立しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750849
+    m_Localized: "TV: Federal Emergency\nManagement Agency\n（連邦緊急事態管理庁）\n略してFEMAです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750850
+    m_Localized: "TV: FEMA職員は黄色の化学防護服と\nガスマスクを着用しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750851
+    m_Localized: "TV: FEMAは活動を開始したばかりですが\nすでに来訪者の新たな徴候を\n突き止めました…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750852
+    m_Localized: 'TV: 充血した赤い目です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750853
+    m_Localized: "TV: 情報によれば FEMAが拘束した\n来訪者を観察して発見した\nとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750854
+    m_Localized: "TV: 来訪者は光に過敏なため\n目が炎症を起こし赤くなります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750855
+    m_Localized: "TV: 以上です\n落ち着いて\n日中は外出しないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750856
+    m_Localized: "TV: 引き続き\nFEMAの特集をお送りします\nまずはCMから"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750857
+    m_Localized: "TV: 混乱 恐怖 苦難\nどれも来訪者によるものです…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750858
+    m_Localized: "TV: しかし\n困難に涙が川のように流れたとき…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750859
+    m_Localized: 'TV: FEMA職員が救出に登場！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750860
+    m_Localized: "TV: 連邦緊急事態管理庁の勇者たちが\n来訪者の侵略から守ってくれます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750861
+    m_Localized: "TV: これまで FEMAは2万7千体もの\n危険生物を特定してきました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750862
+    m_Localized: "TV: 忘れないでください\n身の回りの不審な活動を通報すれば\nFEMAの力になれます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750863
+    m_Localized: "TV: その際は\nFEMAへの招聘状を\nご利用ください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750864
+    m_Localized: "TV: 自分が来訪者かどうか不安な方は\nFEMAホットラインまで お電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750865
+    m_Localized: "TV: FEMAへ協力することで\nあなたも来訪者と戦えるのです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750866
+    m_Localized: "TV: FEMAとは一体？\nなんのために設立されたのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750867
+    m_Localized: "TV: 連邦緊急事態管理庁は\n大災害に対処すべく設立された\n政府直属の特別機関です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750868
+    m_Localized: "TV: 現在 来訪者の侵攻により\n発生した問題に対処しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750869
+    m_Localized: "TV: 具体的な取り組みは\n定かではありませんが…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750870
+    m_Localized: "TV: 私たちの運命は\n頼もしい手に委ねられたはずです…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750871
+    m_Localized: "TV: 著名科学者はじめ\n各分野の専門家が\n機関に集っています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750872
+    m_Localized: "TV: FEMA職員が訪れた際は\n指示に従い 協力するよう\nお願いします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750873
+    m_Localized: "TV: 忘れないでください\nFEMAへ協力することで\nあなたも来訪者と戦えるのです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750874
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750875
+    m_Localized: "TV: FEMAは来訪者について\n更なる対策を講じています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750876
+    m_Localized: "TV: 潜在的な危険性のある人物に対し\n隔離区域が設けられました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750877
+    m_Localized: "TV: また FEMAは拘束した来訪者を調査し\n新たな徴候を特定しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750878
+    m_Localized: 'TV: 脇毛がないことです'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750879
+    m_Localized: "TV: FEMAによれば 来訪者は脇に\n全く毛が生えていないとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750880
+    m_Localized: "TV: 当局は市民の皆様に対し\n検査および隔離区域への同行に\n協力を要請しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750881
+    m_Localized: "TV: 以上です\n落ち着いて\n日中は外出しないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750882
+    m_Localized: "TV: 続いて 来訪者を目撃した際の\n対応方法についての報道です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750883
+    m_Localized: "TV: FEMAは来訪者現象が感染症\nあるいは何らかの生物的脅威である\n可能性を指摘しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750884
+    m_Localized: "TV: このため 不審な人物の速やかな通報\nおよび隔離が重要です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750885
+    m_Localized: "TV: すぐに来訪者を隔離区域へ\n送れない場合は\nFEMA出頭要請状を渡してください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750886
+    m_Localized: "TV: 次の巡回時\nFEMA職員が対象を連行し\n調査を行います"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750887
+    m_Localized: "TV: 以上です\n続いてCMを どうぞ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750888
+    m_Localized: "TV: 暑さに負けるな！\n力を呼び覚ませ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750889
+    m_Localized: "TV: エナジェカで\n元気ハツラツ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750890
+    m_Localized: "TV: 水より早く深い潤い\n衝撃のエナドリ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750891
+    m_Localized: "TV: For Rest宅配で ご利用いただけます\n今すぐ お電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750892
+    m_Localized: 'Window: 干し草畑に 隣人の家が佇んでいる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750893
+    m_Localized: 'Window: 窓には灯がなく 一家は眠っているらしい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750894
+    m_Localized: 'Window: 痩せこけた犬が 歩道に立ち尽くしている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750895
+    m_Localized: 'Window: うら寂しく あたりを見回し 餌を探している'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750896
+    m_Localized: 'Window: 酔っ払いが数人 通りに転がっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750897
+    m_Localized: "Window: 冷たい地面の上でも ぐっすり眠りこけている\nそれで うまくいっているのだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750898
+    m_Localized: "Window: 彼方に 隣人の家が見える\n今 訪ねてきている相手の"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750899
+    m_Localized: 'Window: 窓から明かりが漏れ 家族が帰りを待っているようだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750900
+    m_Localized: 'Window: 庭先に 数人の若者が たむろしている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750901
+    m_Localized: "Window: 何食わぬ顔で座り なにか喋っている\nこちらに目もくれず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750902
+    m_Localized: 'Window: 外は 死んでいるかのように静かだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750903
+    m_Localized: 'Window: 誰一人いない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750904
+    m_Localized: 'Window: 酔っ払い連中さえ 外出を避けている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750905
+    m_Localized: 'Window: なにか怯えているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750906
+    m_Localized: 'Window: 窓の向こうに 隣人と娘の姿が見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750907
+    m_Localized: 'Window: 楽しげに遊び 絶え間ない恐怖を忘れようとしている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750908
+    m_Localized: 'Window: たとえ ほんの一時でも'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750909
+    m_Localized: 'Window: 若者たちの死体が 地面に横たわっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750910
+    m_Localized: 'Window: 誰かに殺されたのだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750911
+    m_Localized: "Window: ついさっきの出来事らしい\nまだ血が乾いていない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750912
+    m_Localized: 'Window: 歩道に 死神のように蒼白の男が立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750913
+    m_Localized: 'Window: 肌に 奇妙な皺が走っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750914
+    m_Localized: 'Window: まるで 肌の大きさが体に合ってないかのように'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750915
+    m_Localized: "Window: ここからじゃ目は見えないが\n突き刺す視線を感じる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750916
+    m_Localized: "Window: 恐怖に息が詰まり 神に祈る\nあの恐ろしい来訪者が 家を素通りしますように"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750917
+    m_Localized: 'Window: 隣人の家の傍に FEMA職員の一団が立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750918
+    m_Localized: 'Window: なにを話しているのだろうか'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750919
+    m_Localized: 'Window: 土壌サンプルでも採取しているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750920
+    m_Localized: 'Window: それとも 拠点を築く場所を探しているとか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750921
+    m_Localized: 'Window: 若者たちの黒焦げ死体が 地面に転がっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750922
+    m_Localized: 'Window: 一日中 放置されていたようだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750923
+    m_Localized: "Window: 亡骸の傍で FEMA職員が二人\nなにか書き留めている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750924
+    m_Localized: 'Window: 遺体の回収に来てくれて良かった'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750925
+    m_Localized: "Window: あんな腐乱死体が放置されていたら\nどんな疫病が広がるか考えたくもない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750926
+    m_Localized: 'Window: 窓の外に 武装した兵士の一団が見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750927
+    m_Localized: "Window: どうやら FEMA職員の警護に\n町から派遣された小隊らしい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750928
+    m_Localized: "Window: 青白く上半身裸の男について\n断片的な会話が聞こえる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750929
+    m_Localized: 'Window: もしかして あの不気味な来訪者を追っているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750930
+    m_Localized: "Window: 隣人の家は先日 白く塗り替えられたばかりだった\n今や 真っ黒に焼け焦げている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750931
+    m_Localized: 'Window: 鎮火したのは ついさきほどのようだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750932
+    m_Localized: 'Window: 誰かに放火されたのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750933
+    m_Localized: 'Window: 隣人一家はどうなった？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750934
+    m_Localized: 'Window: 誰か生き残りは？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750935
+    m_Localized: 'Window: 不安が脳裏で渦を巻き 不可解と無力感に包まれる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750936
+    m_Localized: 'Window: あの青白く不気味な男が 通りに立ち 微笑んでいる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750937
+    m_Localized: 'Window: 手に持つヘルメットには 切断された頭部が入っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750938
+    m_Localized: "Window: 兵士の首だ\n怯えた顔で固まっている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750939
+    m_Localized: "Window: 恐怖したのは 来訪者にか\nあるいは自分の死にか…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750940
+    m_Localized: 'Window: 昨日ここにいた小隊は全員 死んでいた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750941
+    m_Localized: 'Window: 皆殺しにあったらしい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750942
+    m_Localized: "Window: 通り中に死体が転がり\n一つには首がない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750943
+    m_Localized: 'Window: あの蒼白の変人が殺戮したのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750944
+    m_Localized: "「はい 緊急通報サービスです\n　ご用件をどうぞ」\n「人が… 燃えてるんです」"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750945
+    m_Localized: "「見えているものを\n　教えてもらえますか\n　火事ですか？」\n「いえ 太陽です…\n　太陽に焼かれてるんです…」"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750946
+    m_Localized: "「暗くなるまで\n　外出を控えてください」\n「夜は あの男が歩き回ってて\n　蒼白で痩せてて… \n　人間じゃありません」"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750947
+    m_Localized: "では新番組を お届けします\n「Yes, I’m a Human.」"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750948
+    m_Localized: "簡単です\n自分の写真を送ってもらえれば\nあなたの正体を鑑定します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750949
+    m_Localized: "メールで写真を送ってください\n宛先は yesiamhuman@gmail.com\n後は私たちで処理します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750950
+    m_Localized: "ただし 送れる部位は\n目 歯 爪に限ります\n他の箇所は受け付けていません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750951
+    m_Localized: "目が充血してませんか？\n歯は白すぎませんか？\n爪の間に泥が溜まってませんか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750952
+    m_Localized: "悪霊が入り込んでいます\nあなたは来訪者です！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750953
+    m_Localized: "穢れ に体を乗っ取られる前に！\nいますぐ専門家へ お電話を\n777-460"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750954
+    m_Localized: "悪霊を祓い\n体から有害なオーラを浄化し\n強力な保護を施します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750955
+    m_Localized: "ようこそ\n「I Want to Believe」の時間です\nこの番組では 謎と政府の陰謀を\n暴いていきます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750956
+    m_Localized: "本日は スペシャルゲストを迎え\n来訪者の真実について語ります\n科学博士であり職員代表の…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750957
+    m_Localized: えっ！？来ないの？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750958
+    m_Localized: "資料みんな盗まれたって？\nキロトン単位の情報が\n詰まってたのに！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750959
+    m_Localized: "クソッ\nやはり真実を明かすのは\n許されないってことか\nクソ食らえ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415503822848
+    m_Localized: "昔々 ダムのそばに\n二人の兄弟が暮らしていました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182976
+    m_Localized: "水しぶきは 冷たく泡立つ酒を\n思い起こさせました…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182977
+    m_Localized: "そして大人になった二人は\nBober醸造所を立ち上げました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182978
+    m_Localized: "Bober黒ビールは酒屋や酒場で\n一番人気のアルコール飲料の\n一つになりました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182979
+    m_Localized: "TV: Bober黒ビール\n本物を飲もう とことん飲もう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182980
+    m_Localized: 'Window: 廃墟と化した隣人の家が見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182981
+    m_Localized: "Window: 今や亡霊のような残骸が残っているだけだ\nつい先日まで幸せな一家が暮らしていたのに"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182982
+    m_Localized: "Window: 奇妙な感覚に襲われる\nまるで こうなると わかっていたかのような…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182983
+    m_Localized: "Window: まるで…予感していたかのような\nこの家に ああ すぐ死が訪れると"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182984
+    m_Localized: 'Window: ヘルメットを被った頭蓋骨が杭に刺さっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182985
+    m_Localized: "Window: 頭蓋骨には黒く焦げた皮膚が残っている\n歯は誰かに引き抜かれたようだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182986
+    m_Localized: 'Window: 首は一日中そこにある'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182987
+    m_Localized: "Window: 凄惨な光景は まるで脅迫めいていた\nあの不気味で蒼白の来訪者の仕業かもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182988
+    m_Localized: 'Window: FEMA職員が起きたばかりの虐殺現場を調査している'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182989
+    m_Localized: "Window: 死んだ兵士の装備や武器を回収し\n漁り屋の手に渡らないようにしている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182990
+    m_Localized: "Window: 考えもしなかったのだろう\n蒼白の来訪者が武装した集団との遭遇を生き延びるなど"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182991
+    m_Localized: 'Window: 今や遺体袋が さらに増えている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576140324864
+    m_Localized: "TV: こんにちは\n本日の天気予報です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102080
+    m_Localized: "TV: 当地域に暖気が流れ込み\n過去最高気温を更新する見込みです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102081
+    m_Localized: "TV: 気象専門家によれば\nさらなる高気温が\n予想されるとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102082
+    m_Localized: "TV: 太陽活動の活性化に伴い\n紫外線も強まる見通しです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102083
+    m_Localized: 'TV: 安全のため 日光浴は控えてください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102084
+    m_Localized: 'TV: 高温による熱射病の恐れがあります'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102085
+    m_Localized: "TV: 太陽の下にいることによる\n健康への悪影響は\n定かではありませんが…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102086
+    m_Localized: "TV: 重度の火傷を防ぐためにも\n外出しないようにしてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102087
+    m_Localized: "TV: 残念ながら 日焼け止めでは\n効果がありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102089
+    m_Localized: "TV: バレリーナたちが優雅に舞い\nしなやかに舞台を跳ねている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102090
+    m_Localized: "TV: 気品とは裏腹\n見ていると不安になる踊り"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102091
+    m_Localized: "TV: 眼前の現実から\n目を逸らさせようとしているような"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102092
+    m_Localized: 'TV: 誰か この事態を説明してくれれば…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102093
+    m_Localized: 'TV: 買い物といえば 店までの重い足取り'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102094
+    m_Localized: "TV: でも なんと\n電話一本で商品を お届け"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102095
+    m_Localized: "TV: ご利用は For Rest宅配まで お電話を\n{0}\nお電話いただければ\nたった一日で商品が玄関へ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102096
+    m_Localized: "TV: For Rest\nおいしいくつろぎ 家で安らぎ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102097
+    m_Localized: 'TV: 蒼白の狂人が町に出没しています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102098
+    m_Localized: "TV: 目撃者の証言から\n警察は被害者の共通点を\n見出しました\n一人きりでいたことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102099
+    m_Localized: "TV: また 殺される前に\n狂人と会話を交わしていたことも\n判明しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102100
+    m_Localized: "TV: 警察は目撃証言をもとに\n容疑者の似顔絵を作成しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102101
+    m_Localized: "TV: 容疑者は非常に蒼白の中年男性で\n黒髪の痩せ型\n衣服はズボンのみを着用しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102102
+    m_Localized: "TV: 男は 別人の皮膚を\nまとっているという証言が\n複数 寄せられています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102103
+    m_Localized: 'TV: ただし この情報は 未確定です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102104
+    m_Localized: "TV: 男を見かけたなら 決してドアを開けず\n家に一人きりじゃない\nと告げてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102106
+    m_Localized: "TV: 混乱 恐怖 苦難\nどれも来訪者によるものです…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102107
+    m_Localized: "TV: しかし\n困難に涙が川のように流れたとき…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102108
+    m_Localized: 'TV: FEMAが救出に登場！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102109
+    m_Localized: "TV: 連邦緊急事態管理庁の勇者たちが\n来訪者の侵略から守ってくれます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102110
+    m_Localized: "TV: これまで FEMAは2万7千体もの\n危険生物を特定してきました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102111
+    m_Localized: "TV: 忘れないでください\n身の回りの不審な活動を通報すれば\nFEMAの力になれます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102112
+    m_Localized: "TV: その際は\nFEMAへの招聘状を\nご利用ください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102113
+    m_Localized: "TV: 自分が来訪者かどうか不安な方は\nFEMAホットラインまで お電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102114
+    m_Localized: "TV: FEMAへ協力することで\nあなたも来訪者と戦えるのです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102115
+    m_Localized: "TV: FEMAとは一体？\nなんのために設立されたのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102116
+    m_Localized: "TV: 連邦緊急事態管理庁は\n大災害に対処すべく設立された\n政府直属の特別機関です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102117
+    m_Localized: "TV: 現在 来訪者の侵攻により\n発生した問題に対処しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102118
+    m_Localized: "TV: 具体的な取り組みは\n定かではありませんが…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102119
+    m_Localized: "TV: 私たちの運命は\n頼もしい手に委ねられたはずです…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102120
+    m_Localized: "TV: 著名科学者はじめ\n各分野の専門家が\n機関に集っています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102121
+    m_Localized: "TV: FEMA職員が訪れた際は\n指示に従い 協力するよう\nお願いします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102122
+    m_Localized: "TV: 忘れないでください\nFEMAへ協力することで\nあなたも来訪者と戦えるのです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102123
+    m_Localized: "TV: FEMAは来訪者現象が感染症\nあるいは何らかの生物的脅威である\n可能性を指摘しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102124
+    m_Localized: "TV: このため 不審な人物の速やかな通報\nおよび隔離が重要です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102125
+    m_Localized: "TV: すぐに来訪者を隔離区域へ\n送れない場合は\nFEMA出頭要請状を渡してください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102126
+    m_Localized: "TV: 次の巡回時\nFEMA職員が対象を連行し\n調査を行います"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102128
+    m_Localized: 'TV: うだるような暑さも…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102129
+    m_Localized: "TV: エナジェカで\n元気ハツラツ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102130
+    m_Localized: "TV: 水より早く深い潤い\n衝撃のエナドリ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102131
+    m_Localized: "TV: For Rest宅配で ご利用いただけます\n今すぐ お電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296387
+    m_Localized: "TV: 昔々 ダムのそばに\n二人の兄弟が暮らしていました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296388
+    m_Localized: "TV: 水しぶきは 冷たく泡立つ酒を\n思い起こさせました…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296389
+    m_Localized: "TV: そして大人になった二人は\nBober醸造所を立ち上げました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296390
+    m_Localized: "TV: Bober黒ビールは酒屋や酒場で\n一番人気のアルコール飲料の\n一つになりました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296391
+    m_Localized: "TV: Bober黒ビール\n本物を飲もう とことん飲もう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296517
+    m_Localized: 'Window: 干し草畑に 隣人の家が佇んでいる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296518
+    m_Localized: 'Window: 窓には灯がなく 一家は眠っているらしい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296519
+    m_Localized: 'Window: 酔っ払いが数人 通りに転がっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296520
+    m_Localized: "Window: 冷たい地面の上でも ぐっすり眠りこけている\nそれで うまくいっているのだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296521
+    m_Localized: "Window: 彼方に 隣人の家が見える\n今 訪ねてきている相手の"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296522
+    m_Localized: 'Window: 窓から明かりが漏れ 家族が帰りを待っているようだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296523
+    m_Localized: 'Window: 外は 死んでいるかのように静かだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296524
+    m_Localized: 'Window: 誰一人いない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296525
+    m_Localized: 'Window: 酔っ払い連中さえ 外出を避けている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296526
+    m_Localized: 'Window: 何かに怯えているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296527
+    m_Localized: 'Window: 窓の向こうに 隣人と娘の姿が見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296528
+    m_Localized: 'Window: 楽しげに遊び 絶え間ない恐怖を忘れようとしている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296529
+    m_Localized: 'Window: たとえ ほんの一時でも'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296530
+    m_Localized: 'Window: 歩道に 死神のように蒼白の男が立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296531
+    m_Localized: 'Window: 肌に 奇妙な皺が走っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296532
+    m_Localized: 'Window: まるで 肌の大きさが体に合ってないかのように'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296533
+    m_Localized: "Window: ここからじゃ目は見えないが\n突き刺す視線を感じる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296534
+    m_Localized: "Window: 恐怖に息が詰まり 神に祈る\nあの恐ろしい来訪者が 家を素通りしますように"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296535
+    m_Localized: 'Window: 隣人の家の傍に FEMA職員 数人が立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296536
+    m_Localized: 'Window: なにを話しているのだろうか'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296537
+    m_Localized: 'Window: 土壌サンプルでも採取しているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296538
+    m_Localized: 'Window: それとも 拠点を築く場所を探しているとか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296539
+    m_Localized: 'Window: 窓の外に 武装した兵士の一団が見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296540
+    m_Localized: "Window: どうやら FEMA職員の警護に\n町から派遣された小隊らしい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296541
+    m_Localized: "Window: 青白く上半身裸の男について\n断片的な会話が聞こえる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296542
+    m_Localized: 'Window: もしかして あの不気味な来訪者を追っているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296543
+    m_Localized: "Window: 隣人の家は先日 白く塗り替えられたばかりだった\n今や 真っ黒に焼け焦げている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296544
+    m_Localized: 'Window: 鎮火したのは ついさきほどのようだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296545
+    m_Localized: 'Window: 誰かに放火されたのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296546
+    m_Localized: 'Window: 隣人一家はどうなった？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296547
+    m_Localized: 'Window: 誰か生き残りは？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296548
+    m_Localized: 'Window: 不安が脳裏で渦を巻き 不可解と無力感に包まれる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296549
+    m_Localized: 'Window: 昨日ここにいた小隊は全員 死んでいた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296550
+    m_Localized: 'Window: 皆殺しにあったらしい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296551
+    m_Localized: "Window: 通り中に死体が転がり\n一つには首がない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296552
+    m_Localized: 'Window: あの蒼白の変人が殺戮したのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296553
+    m_Localized: 'Window: 廃墟と化した隣人の家が見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296554
+    m_Localized: "Window: 今や亡霊のような残骸が残っているだけだ\nつい先日まで幸せな一家が暮らしていたのに"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296555
+    m_Localized: "Window: 奇妙な感覚に襲われる\nまるで こうなると 分かっていたかのような…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296556
+    m_Localized: "Window: まるで…予感していたかのような\nこの家に ああ すぐ死が訪れると"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296557
+    m_Localized: 'Window: ヘルメットを被った頭蓋骨が杭に刺さっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296558
+    m_Localized: "Window: 頭蓋骨には黒く焦げた皮膚が残っている\n歯は誰かに引き抜かれたようだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296559
+    m_Localized: 'Window: 首は一日中そこにある'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296560
+    m_Localized: "Window: 凄惨な光景は まるで脅迫めいていた\nあの不気味で蒼白の来訪者の仕業かもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296561
+    m_Localized: 'Window: FEMA職員が起きたばかりの虐殺現場を調査している'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296562
+    m_Localized: "Window: 死んだ兵士の装備や武器を回収し\n漁り屋の手に渡らないようにしている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296563
+    m_Localized: "Window: 考えもしなかったのだろう\n蒼白の来訪者が武装した集団との遭遇を生き延びるなど"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296564
+    m_Localized: 'Window: 今や遺体袋が さらに増えている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102088
+    m_Localized: "TV: 続いては 最新の天気情報です\nまずはスポンサーからの お知らせです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102105
+    m_Localized: 'TV: 以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102127
+    m_Localized: 'TV: 以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102132
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102133
+    m_Localized: "TV: 来訪者の目撃疑惑 急増を受け\nFEMAは新たな防護措置の実施を\n発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102134
+    m_Localized: "TV: 即時発効により\n主要な人口集中地区において\n全面的な隔離が施行されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102135
+    m_Localized: "TV: 市外や近隣の村への移動は\n固く禁じられています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102136
+    m_Localized: 'TV: 必ず指定区域内で過ごしてください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102137
+    m_Localized: "TV: 加えて FEMAは\n新たな来訪者識別手順を公開しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102138
+    m_Localized: 'TV: オーラ写真撮影です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102139
+    m_Localized: "TV: 撮影した画像に黒い斑点が現れた場合\n被写体が来訪者である恐れが\n高いとされています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102140
+    m_Localized: "TV: 以上 最新情報でした\n落ち着いて\n日中は外出しないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102141
+    m_Localized: "TV: 続いては\nスポンサーからの お知らせです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102142
+    m_Localized: "TV: 来訪者とは何者でしょう？\n幽霊？地の底からの怪物？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102143
+    m_Localized: "TV: いいえ これはSF小説でも\n安っぽい見出しでも ありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102144
+    m_Localized: 'TV: 新たな現実です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102145
+    m_Localized: "TV: 来訪者の正体を めぐる噂は\n今も渦巻いています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102146
+    m_Localized: "TV: 宇宙人なのか？歩く死者なのか？\n失敗した実験の産物なのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102147
+    m_Localized: "TV: 当局によれば\nどれも根拠のない憶測に過ぎません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102148
+    m_Localized: "TV: 研究によると来訪者とは\n正体不明の生物学的因子と接触した\n人間であると示されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102149
+    m_Localized: "TV: 感染経路は依然不明であり\nFEMAは引き続き来訪者の徴候に\n注意を払うよう呼びかけています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102150
+    m_Localized: "TV: 自分が曝露した恐れがある\nあるいは来訪者かどうか不安な方は\nFEMAホットラインまで お電話を"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102151
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102152
+    m_Localized: "TV: 以上 最新情報でした\n続きはCMの後で"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102153
+    m_Localized: "TV: 日を追うごとに 来訪者の特定は\nますます困難を極めています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102154
+    m_Localized: "TV: 徴候は手がかりになりますが…\n確実な方法が欲しいと\n思ったことはありませんか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102155
+    m_Localized: "TV: そこで新登場\n革新的オーラ感知フィルム！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102156
+    m_Localized: "TV: 魂のエネルギーを写しだし\n敵対的な来訪者と人間とを\nご家庭でも見分けられるように"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102157
+    m_Localized: "TV: パシャリ 一枚 撮影して…\n黒い斑点が出たら 来訪者の証！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102158
+    m_Localized: "TV: 今すぐお電話を\n無料スターターキットをプレゼント\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102159
+    m_Localized: 'TV: 緊急警報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102160
+    m_Localized: 'TV: 森林地帯で山火事が広がっています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102161
+    m_Localized: "TV: 専門家によれば異常な太陽活動が\n原因とされています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102162
+    m_Localized: "TV: 被害の全貌は未だ不明ですが\n近隣都市から消防隊が派遣され\n鎮火に当たっています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296384
+    m_Localized: "TV: 落ち着いて\n日中は外出しないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296385
+    m_Localized: 'TV: …以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296386
+    m_Localized: "TV: 続いては\nスポンサーからの お知らせです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296392
+    m_Localized: "TV: 番組を中止して\n緊急速報を お送りします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296393
+    m_Localized: "TV: 近隣都市で市民による暴動が\n報告されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296394
+    m_Localized: "TV: 対処不可能な事態により\nFEMA部隊が当該地域を封鎖しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296395
+    m_Localized: 'TV: 自宅から出ないでください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296396
+    m_Localized: "TV: その場から動かず\n追って指示を待ってください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296397
+    m_Localized: "TV: そして忘れないでください…\nFEMAを支持し\n来訪者との戦いに参加しましょう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296398
+    m_Localized: "TV: 以上 最新情報でした\n続いてはCMです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296399
+    m_Localized: 'TV: どんな働き者にも 休息は不可欠'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296400
+    m_Localized: "TV: マルゴロのタバコなら\n深呼吸し 心からのくつろぎを"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296401
+    m_Localized: "TV: マルゴロ\n本物の男のタバコ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296402
+    m_Localized: "TV: ※免責事項\n肺や寿命に生じ得る害について\n当社は一切の責任を負いません\nご自身の責任でご使用ください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296403
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296404
+    m_Localized: 'TV: 重要な新情報を お伝えします'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296405
+    m_Localized: "TV: 市内で発生した最近の事件について\n新たな詳細が明らかになりました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296406
+    m_Localized: "TV: 市内の隔離区域の一つが\n武装した人物による襲撃を受けました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296407
+    m_Localized: "TV: 容疑者の動機は現時点で不明\n共犯者の有無も判明していません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296408
+    m_Localized: "TV: また 未確認の人物 数名が\n隔離区域から脱走しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296409
+    m_Localized: 'TV: 沈黙は死の前触れ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296410
+    m_Localized: 'TV: 魂を吸い尽くす不吉な静けさ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296411
+    m_Localized: "TV: だが空虚よりも恐ろしいのは…\n鐘の音"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296412
+    m_Localized: "TV: 彼方で鳴る葬送の鐘が\n次第に大きく響いてくる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296413
+    m_Localized: "TV: 万人のために鐘は鳴り響き\n終わりなき音で耳を満たす"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296414
+    m_Localized: 'TV: 穢れた思考が耳垢に絡め取られる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296415
+    m_Localized: 'TV: 来訪者が繁殖する 内なる巣'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296416
+    m_Localized: 'TV: 深く粘ついた養分に絡みあう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296417
+    m_Localized: "TV: 耳垢栓塞\n耳垢栓塞\n耳垢栓塞"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296418
+    m_Localized: "TV: 本日の事件を受け\n様々な憶測が飛び交っています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296419
+    m_Localized: "TV: 単独犯という報告もあれば\nフード姿で武装した集団との\n証言もあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296420
+    m_Localized: "TV: しかし 市が直面する最大の課題は\nこれからかもしれません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296421
+    m_Localized: "TV: 封鎖措置により 周辺地域での\n遺体処理は一時停止されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296422
+    m_Localized: "TV: しかし 住居検査は\n予定通り継続されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296423
+    m_Localized: "TV: 故人の火葬が可能な場合は\n速やかに行ってください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296424
+    m_Localized: "TV: 不可能な場合は 事態が収束するまで\n遺体を引き渡さないでください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296425
+    m_Localized: "TV: 以上 最新情報でした\n続報を お待ちください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296426
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296427
+    m_Localized: "TV: FEMAは現在 隔離区域襲撃の\n被害者支援を実施しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296428
+    m_Localized: "TV: 既存施設の過密状態を受け\n機関は次の決定を下しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296429
+    m_Localized: "TV: 避難住民は都市郊外の建物に\n一時的に収容されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296430
+    m_Localized: "TV: 幸い 地元の住宅所有者がFEMAに\n協力し 避難所を提供しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296431
+    m_Localized: "TV: この報告によれば 逃亡者の大半は\nいまだ所在不明です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296432
+    m_Localized: "TV: 朗報としては 当局は本日未明\n新たな徴候を発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296433
+    m_Localized: 'TV: 歯茎の出血です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296434
+    m_Localized: "TV: この症状を持つ人物が訪ねてきた場合\n接触を避けてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296435
+    m_Localized: "TV: 予定されているFEMAの巡回を待ち\n不審者を関係当局へ通報してください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296436
+    m_Localized: "TV: その場から動かず\n追って指示を待ってください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296437
+    m_Localized: 'TV: …以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296438
+    m_Localized: "TV: 続いて 危険な新興カルトに関する\n特別報道です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296439
+    m_Localized: "TV: 来訪者は 私たちの間に\n潜んでいるだけではありません\n思考そのものにまで\n浸透している恐れがあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296440
+    m_Localized: "TV: 複数の都市で 組織的なカルト活動の\n発生が報告されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296441
+    m_Localized: 'TV: カルトには次の疑いがあります'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296442
+    m_Localized: "TV: 儀式的な生贄 未知の神性への崇拝\nそして来訪者と関与している可能性"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296443
+    m_Localized: "TV: 新たな報告によれば\nカルトはFEMAに公然と\n対立姿勢を取っています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296444
+    m_Localized: "TV: 当初は無害な布教活動でしたが\n今や直接行動へと過激化しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296445
+    m_Localized: "TV: 都市における最近の暴力事件\nその背後にいる可能性を\n指摘する専門家もいます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296446
+    m_Localized: "TV: 視聴者のみなさんは\nこの「新信徒」と呼ばれるカルトとの\n接触を避けてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296447
+    m_Localized: "TV: どんなカルトへの援助および同情も\n逮捕または告発の\n対象となる恐れがあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296448
+    m_Localized: "TV: 以上 最新情報でした\n続報を お待ちください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296449
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296450
+    m_Localized: "TV: 市内の状況は徐々に\n安定しつつありますが\n一部の逃亡者は未だ行方不明です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296451
+    m_Localized: "TV: 一方で 遺体処理は再開されましたが\n新たな問題が浮上しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296452
+    m_Localized: "TV: 最新の報告によれば\n現在 野犬の群れが\n街を徘徊しているとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296453
+    m_Localized: 'TV: FEMAは脅威対策班を派遣しました'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296454
+    m_Localized: "TV: 当局は危険人物の新たな徴候を\n発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296455
+    m_Localized: 'TV: 皮膚の炎症です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296456
+    m_Localized: 'TV: 襲撃の調査は現在も続いています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296457
+    m_Localized: 'TV: 単独犯か否かは未だ不明です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296458
+    m_Localized: "TV: しかし 本件および来訪者の脅威\n双方をFEMAが収束させることに\n疑いはありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296459
+    m_Localized: "TV: 来訪者の見分け方に関する質問は\nFEMAホットラインへ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296460
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296461
+    m_Localized: "TV: いつもどおり その場から動かず\n追って指示を待ってください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296462
+    m_Localized: 'TV: …以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296463
+    m_Localized: 'TV: 続いて 赤道からの最新情報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296464
+    m_Localized: "TV: 今夜 赤道地域の各国から\n憂慮すべき報告が届いています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296465
+    m_Localized: "TV: 大規模な山火事 極端な高温 干魃により\n複数の国々が壊滅しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296466
+    m_Localized: "TV: 地面に触れただけで III度の火傷を\n負うほどの気温が観測されたとの\n最新情報もあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296467
+    m_Localized: "TV: 死者数は未だ不明\n今なお避難は不可能な状況です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296468
+    m_Localized: "TV: 政府は被災地域の現地当局との\n通信を確立できていません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296469
+    m_Localized: "TV: しかし 状況が整い次第\nFEMA職員が災害支援に派遣予定です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296470
+    m_Localized: "TV: 以上 最新情報でした\n続報を お待ちください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296471
+    m_Localized: "TV: こんにちは\nニュースの時間です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296472
+    m_Localized: "TV: 市内の状況は依然として不安定で\n封鎖は継続中です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296473
+    m_Localized: "TV: しかし 新たな脅威が現れました\n郊外でカルトの一団が目撃されました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296474
+    m_Localized: "TV: 焚火を伴う儀式を準備しているとの\n見解もあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296475
+    m_Localized: "TV: FEMAによれば 当集団は最近の\n隔離区域への襲撃に直接関与している\n恐れがあるとのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296476
+    m_Localized: "TV: 残念ながら 現時点では FEMAも軍も\n専門の任務部隊を割けない状況です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296477
+    m_Localized: "TV: カルトの一員が自宅に近づいた場合は\nただちに FEMAホットラインまで\nお電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296478
+    m_Localized: "TV: この困難の支援に当たり\n当局は新たな徴候を発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296479
+    m_Localized: 'TV: 脇下のカビの増殖です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296480
+    m_Localized: "TV: いつもどおり その場から動かず\n追って指示を待ってください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296481
+    m_Localized: 'TV: …以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296482
+    m_Localized: 'TV: 続いて 極地からの最新情報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296483
+    m_Localized: 'TV: 太陽が再び猛威を振るっています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296484
+    m_Localized: "TV: 科学者は 地球規模の気候に関して\n憂慮すべき新たな予測を発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296485
+    m_Localized: "TV: 現在の熱波が収まらなければ\n極地の氷床の融解により壊滅的な\n洪水が発生する恐れがあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296486
+    m_Localized: "TV: 研究者は 今なお続く異常気象の\n原因究明を続けていますが\n未だ解明には至っていません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296487
+    m_Localized: "TV: 以上 最新情報でした\n続報を お待ちください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296488
+    m_Localized: 'TV: 緊急速報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296489
+    m_Localized: "TV: 市内の状況に安定化の兆しはなく\nさらに災害は悪化の一途を\nたどっています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296490
+    m_Localized: "TV: 氷河の融解により 海面上昇は\n驚異的な速度で続いています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296491
+    m_Localized: "TV: 世界各地の沿岸地域 数多くの大都市が\n深刻な洪水の危機に直面しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296492
+    m_Localized: "TV: また 放射能で汚染された湖が\n蒸発を始めています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296493
+    m_Localized: "TV: 有毒な雨となり降り注ぐ危険性を\n科学者は警告しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296494
+    m_Localized: "TV: 雷鳴を耳にしたら ただちに避難し\n曝露を避けてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296495
+    m_Localized: "TV: 残念ながら 市は依然として\n封鎖下にあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296496
+    m_Localized: "TV: FEMAは未だ すべての逃亡者を\n捕らえるに至っていませんが\n来訪者の新たな徴候を発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296497
+    m_Localized: 'TV: 急速な瞳孔の動きです'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296498
+    m_Localized: 'TV: 緊急警報'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296499
+    m_Localized: "TV: スタジオが襲撃を受ける恐れが\nあるため 報道を中断します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296500
+    m_Localized: "TV: 来訪者の見分け方に関する質問は\nホットラインへ\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296501
+    m_Localized: 'TV: 放送を終了します'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296502
+    m_Localized: 'TV: 緊急速報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296503
+    m_Localized: "TV: FEMAは政府高官の大多数を\n逮捕しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296504
+    m_Localized: "TV: 当局の報告によると 行政の一部職員が\n来訪者として特定された とのことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296505
+    m_Localized: "TV: 省庁が機能不全に陥ったため\nFEMAが暫定政府の役割を担います"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296506
+    m_Localized: 'TV: さらに…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296507
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296508
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296509
+    m_Localized: 'TV: 少々お待ちください…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296510
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296511
+    m_Localized: 'TV: FEMAから最新情報です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296512
+    m_Localized: 'TV: 逃亡者が市全域の封鎖を突破しました'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296513
+    m_Localized: "TV: 繰り返します\n逃亡者が封鎖を突破し\n現在 逃走中です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296514
+    m_Localized: 'TV: 窓を塞ぎ 扉を施錠してください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296515
+    m_Localized: "TV: その場から動かず\n追って指示を待ってください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296516
+    m_Localized: 'TV: 放送を終了します'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296565
+    m_Localized: 'Window: 負傷した夫に 女が泣きすがっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296566
+    m_Localized: 'Window: 生死は判別できない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296567
+    m_Localized: "Window: 女は涙で頬を濡らしながら 銃撃の中\n重い体を引きずっていく"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296568
+    m_Localized: "Window: 脳裏に浮かぶ思考は一つだけ\n状況は悪化するばかり"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296569
+    m_Localized: "Window: 畑の小道には死体が散乱している\n逃げようとした人々だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296570
+    m_Localized: 'Window: 近くに立つのは犯人 FEMA職員'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296571
+    m_Localized: 'Window: ライフルを構え 銃口からは煙が立ち上っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296572
+    m_Localized: 'Window: 人々は恐慌に陥り 近くの家々へと駆け込む'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296573
+    m_Localized: 'Window: 必死に扉を叩き 避難を求める'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296574
+    m_Localized: 'Window: だが 誰も中へ入れようとしない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296575
+    m_Localized: 'Window: 隣家の廃墟に 追放者の一団が立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296576
+    m_Localized: 'Window: 呆然とし 小声で囁きあっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296577
+    m_Localized: 'Window: きっと そこで身を寄せ合おうとしているのだろう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296578
+    m_Localized: "Window: だが 逃れられる先など あるだろうか？\nこの凄惨な世界に？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296579
+    m_Localized: "Window: 道端にはアサルトライフルを構えた男が立っている\n完全に正気を失っている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296580
+    m_Localized: "Window: ジャケットには引き抜かれた歯や眼球\n他にもなにか縫い付けられているが よく見えない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296581
+    m_Localized: "Window: 戦利品を見せびらかしているのか？\n防衛ではなく娯楽のために殺しているのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296582
+    m_Localized: 'Window: どうであれ 敵ではないことを祈る他ない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296583
+    m_Localized: "Window: 柱に男が吊るされ 首の札には\n「お前は私から全てを奪った」と書かれている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296584
+    m_Localized: "Window: 強盗に遭ったのか？\nそれともFEMAに家族を奪われたのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296585
+    m_Localized: 'Window: 思考が駆けるが 答えは出ず 憶測ばかり'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296586
+    m_Localized: "Window: 隣家の廃墟には人が住み着いた\nFEMAによる追放者の一団だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296587
+    m_Localized: 'Window: ほとんど何も残っていないが 地下室は無事らしい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296588
+    m_Localized: 'Window: ほんの小さな安全地帯'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296589
+    m_Localized: 'Window: だが いつまで隠れ続けられる？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296590
+    m_Localized: 'Window: 野犬が通りを徘徊している'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296591
+    m_Localized: 'Window: 体には浅い火傷の跡 飢えて痩せ細っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296592
+    m_Localized: 'Window: 家にいれば 恐れることはない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296593
+    m_Localized: 'Window: だが 外出を避けるべきという不安が頭を離れない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296594
+    m_Localized: "Window: 荷物を抱えた小集団が近くに集まっている\nFEMA職員に聞かれまいと 小声で囁いている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296595
+    m_Localized: "Window: 隔離区域から来た人々らしく\n空き家に住みはじめている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296596
+    m_Localized: 'Window: 今や 吊るされた男は「ようこそ」の看板に見える'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296597
+    m_Localized: "Window: 武装した来訪者狩りが\n生存者の一団を銃で脅している"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296598
+    m_Localized: 'Window: きっと偶然 遭遇したのだろう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296599
+    m_Localized: 'Window: 怒号と絶叫が響く'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296600
+    m_Localized: "Window: この新世界で誰が生き残るのだろう？\n…あの人たちではなさそうだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296601
+    m_Localized: 'Window: FEMA職員が死んだ犬の傍らに立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296602
+    m_Localized: 'Window: 一人は用紙に何か書き込んでいる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296603
+    m_Localized: "Window: 飢えた獣の群れを わずかな人間で止められるのか？\n望みは薄そうだ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296604
+    m_Localized: "Window: 二人のFEMA職員が街灯の下に立ち\n吊るされた男を見上げている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296605
+    m_Localized: 'Window: ようやく この地域の名物に取りかかるようだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296606
+    m_Localized: "Window: 間抜けな探偵のように見える\n梯子なしで どう吊ったか首を捻っているに違いない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296607
+    m_Localized: "Window: 一団は全滅している\n飢えた犬が亡骸を食い荒らしている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296608
+    m_Localized: "Window: 死体の傍には薬莢が散らばっている\n狩人が殺し 戦利品を奪い去ったのだろう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296609
+    m_Localized: 'Window: 世界の狂気は度し難い'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296610
+    m_Localized: 'Window: カルト信者が薪を巨大に積み上げている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296611
+    m_Localized: 'Window: 何かを燃やそうとしているのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296612
+    m_Localized: 'Window: 狂気の算段は いずれ明らかになるだろう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296613
+    m_Localized: 'Window: それまでに どれほど無辜の命が奪われるだろう？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296614
+    m_Localized: 'Window: 道端に狂った男が立っている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296615
+    m_Localized: 'Window: 手にはガソリン缶と火炎瓶'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296616
+    m_Localized: 'Window: 村を丸ごと焼き払うつもりなのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296617
+    m_Localized: 'Window: 隔離区域から逃れた人々だと知らないのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296618
+    m_Localized: "Window: 隣家の地下室に隠れていた人々の死体\n真昼の太陽に焼かれている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296619
+    m_Localized: "Window: 貪り食らっていた犬は逃げ去った\n怯えてか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296620
+    m_Localized: 'Window: FEMA以上の恐怖から逃げたとしたら？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296621
+    m_Localized: 'Window: カルト信者が焚火の場所に縛り付けられている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296622
+    m_Localized: 'Window: 自らを生贄にするつもりなのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296623
+    m_Localized: 'Window: その発想に精神が ねじ曲がる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296624
+    m_Localized: "Window: 死への恐怖が理性を曇らせ\n名状しがたい行為へ人々を駆り立てる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296625
+    m_Localized: "Window: たった数週間で この狂気\n先の未来を想像するのは恐ろしい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296626
+    m_Localized: 'Window: 家々が炎に包まれ 遠くから悲鳴が響く…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296627
+    m_Localized: 'Window: あの異常者が背後にいるのは分かっている'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490688
+    m_Localized: 'Window: 次は自分の家か？明日か？来週か？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490689
+    m_Localized: "Window: いずれ あの異常者と顔を合わせることになる\n時間の問題だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490690
+    m_Localized: 'Window: 焼けた亡骸は跡形もなく消え失せた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490691
+    m_Localized: "Window: 残されたのは奇妙で形のない塊\nヘドロのようにも見える"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490692
+    m_Localized: 'Window: 何かが肉と骨を溶かし 全て飲み込んだのだろうか'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490693
+    m_Localized: "Window: その怪物が闇に潜み続けるよう祈る\n目にすれば心が耐えられそうもない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490694
+    m_Localized: 'Window: FEMA職員が焼けた死体を取り囲んでいる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490695
+    m_Localized: 'Window: カルト信者の死を記録している'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490696
+    m_Localized: "Window: 恐怖と苦悶に固まった顔\n死の直前 何か恐ろしいものを目にしたかのような"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490697
+    m_Localized: 'Window: 周囲の家々は全て廃墟と化した'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490698
+    m_Localized: 'Window: 残っているのは自分の家だけ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490699
+    m_Localized: 'Window: 最早 異常者の激情を引き受けてくれる相手はいない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490700
+    m_Localized: 'Window: 次に何が起きても 全ては自分に降りかかるのだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490701
+    m_Localized: "こちら司令部\n隔離区域の状況を確認せよ\nコード51\n0300時に爆発の報告あり"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490702
+    m_Localized: "こちら32-8班\nコード60\n民間人に多数の死傷者\n警官にも犠牲者が…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490703
+    m_Localized: "こちら28-8班\nコード451\n遺体処理に焼却班を要請する"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490704
+    m_Localized: "了解\nコード984\n調査完了まで市を封鎖する\n増援を待て"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490705
+    m_Localized: "これを聞いているなら\n郊外に近づくな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490706
+    m_Localized: "FEMA職員が\n脱出を試みる者を\n片っ端から撃っている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490707
+    m_Localized: "どうなってるんだ！\nただ出たいだけなんだ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490708
+    m_Localized: 誰か 頼む 助け…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490709
+    m_Localized: "隔離区域を襲ったのは\nあいつら じゃない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490710
+    m_Localized: "見たんだ\nあそこに いたものを"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490711
+    m_Localized: "あれは…\nあれは…\n人間じゃなかった…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490712
+    m_Localized: "えっと…\nこちら 追放された住民だ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490713
+    m_Localized: "FEMAに追い出されたなら\n俺たちは焼け落ちた家の\n地下室に避難している"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490714
+    m_Localized: 隠者の住まいの近くだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490715
+    m_Localized: "食料が ほとんど残ってない\nこのままじゃ飢え死にする"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490716
+    m_Localized: "もし食料を分けてくれる\n人がいたら助けてほしい\n本当に足りないんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490717
+    m_Localized: 聞いている みんなへ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490718
+    m_Localized: "FEMAは全通信を妨害して\n真実の隠蔽を試みている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490719
+    m_Localized: "市で起きていることを\nすべて覆い隠そうとしている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490720
+    m_Localized: "隔離区域で全員を殺した\nあの異常者に すべての罪を\nなすりつけようとしている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490721
+    m_Localized: "まだ市内にいるなら…\n逃…げろ…\nも…安全じゃ…な…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490722
+    m_Localized: "FEMA…巡回を避…ろ…\n連中…殺すつ…お前を…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490723
+    m_Localized: "逃…ろ…\n生き…いる…に…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490724
+    m_Localized: "連中…死体…\n燃…べきじゃ…た…\n引き…せて…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490725
+    m_Localized: "死…を…\n残し…いれ…\n来な…か…たは…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490726
+    m_Localized: "司…部より…\nF…MA全…へ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490727
+    m_Localized: "新し…指…\nコード451…コード955に…\n置き換…る"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490728
+    m_Localized: "死体を燃…すな…\nかわりに放…おけ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490729
+    m_Localized: "繰…返す…\nコード451は…\n死…を燃やすのは…\n脅…封じ…めに不適…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490730
+    m_Localized: "こちら18-8…\n抑えき…なか…た"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490731
+    m_Localized: "対…が市の境…を抜け…\n至急…増援を要…す…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490732
+    m_Localized: "いますぐ…援を…\n我々…けでは…\n対…を抑…きれ…い…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490733
+    m_Localized: "Phone: おう お隣さん\n元気そうで なによりだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490734
+    m_Localized: "Phone: それで…\nもう 何人か家に入れたのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490735
+    m_Localized: "Phone: まだなら\nそろそろ考えだしたほうがいい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490736
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490737
+    m_Localized: 'Phone: なにか気になることは あるか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490738
+    m_Localized: あなたも人の受け入れを？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490739
+    m_Localized: "来訪者を見分けるのに\nいくつ徴候があれば？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490740
+    m_Localized: 食糧問題は どう解決を？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490741
+    m_Localized: "では\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490742
+    m_Localized: 'Phone: ああ しょうがない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490743
+    m_Localized: "Phone: 娘は本当に嫌がってる\nでも どうしようもないだろう\n他に手立てがないんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490744
+    m_Localized: "Phone: 娘からは外に連れて行けと\nせがまれて ばかりだ\n家に他人が大勢いるのが嫌らしい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490745
+    m_Localized: "Phone: だが 昼間は出歩けないから\n夜に外出している\n危険だが…どうしても ねだるんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490746
+    m_Localized: 'Phone: それが わかればな…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490747
+    m_Localized: "Phone: 徴候が いくつあれば確実か なんて\n実のところ 誰にも わかってない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490748
+    m_Localized: "Phone: 俺から言えるのは\n一つぐらいで 結論を急ぐな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490749
+    m_Localized: "Phone: なんでもない かもしれないし\n地獄と化す前に歯医者に\n行っただけ かもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490750
+    m_Localized: "Phone: 運が良かったんだ\n事前に備蓄しておいた\n確か アンタも そうだよな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490751
+    m_Localized: "Phone: 特別な品が欲しいなら\n宅配サービスの For Rest がある"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490752
+    m_Localized: "Phone: 電話番号は知らないが\nテレビやラジオの広告で\n流れてるはずだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490753
+    m_Localized: 'Phone: 元気でな'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490754
+    m_Localized: 'Phone: おう お隣さん'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490755
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490756
+    m_Localized: "Phone: 近くで起きた事件 見たか？\n若者が殺されていた…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490757
+    m_Localized: "Phone: 通りが あそこまで危険だとは\n勘違いしていた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490758
+    m_Localized: "Phone: 娘に頼まれて 外で遊んでいたんだ\n問題なかった…死体を見るまでは"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490759
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490760
+    m_Localized: "Phone: あんな風に娘の命を危険に晒すのは\nもう最後にする"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490761
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490762
+    m_Localized: "Phone: ああ 娘に なにかあったら\n自分を絶対に許せない\n娘は俺の すべてなんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490763
+    m_Localized: "娘さんは\n大丈夫ですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490764
+    m_Localized: 誰が殺したんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490765
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490766
+    m_Localized: 'Phone: 誰が殺したんだ？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490767
+    m_Localized: "Phone: あんなに草が生い茂ってたんだ\n娘は気付いてないはず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490768
+    m_Localized: "Phone: でも 家で娘が言ったんだ\n草むら の中に顔を見た と…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490769
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490770
+    m_Localized: "Phone: 想像の産物だと説得を試みてる\nだが…娘は そうは思ってない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490771
+    m_Localized: "Phone: あの蒼白で背が高い奴だ\n殺すのは 中にいる人間だけかと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490772
+    m_Localized: "Phone: 対処できると勘違いしてた\n姿を見かけたら すぐ家に戻ればいいと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490773
+    m_Localized: 'Phone: だが まさか死体を目にするとは…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490774
+    m_Localized: "Phone: ありがとう\nアンタも気をつけて"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490775
+    m_Localized: "Phone: おう お隣さん\n電話ありがとう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490776
+    m_Localized: 'Phone: 正直 まだ気が動転してる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490777
+    m_Localized: 'Phone: 殺人鬼 兵士 FEMA…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490778
+    m_Localized: 'Phone: 昨夜 ついにウチにも来たよ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490779
+    m_Localized: "Phone: 泊めてる人たちのことを訊かれた\n向こうは用紙に なにか書いてて\nそれから…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490780
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490781
+    m_Localized: 'Phone: 一人 ウチから連れて行かれた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490782
+    m_Localized: "どこへ連行\nされたんです？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490783
+    m_Localized: "娘さんじゃなくて\n幸いでしたね"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490784
+    m_Localized: "FEMAは一体\n何者なんでしょう？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490785
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490786
+    m_Localized: "Phone: 知ったことか\n「検査」だとか言ってた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490787
+    m_Localized: "Phone: 兵士やFEMAが来れば\n状況が改善するかと思ってた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490788
+    m_Localized: "Phone: 助けてくれるとか\n安全な場所へ連れて行ってくれるとか\n考えるべきじゃなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490789
+    m_Localized: 'Phone: 絶対に させるものか'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490790
+    m_Localized: 'Phone: 俺の屍を越えていけ ってんだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490791
+    m_Localized: "Phone: 娘に指一本でも触れたら\nあのバカども 真っ二つにしてやる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490792
+    m_Localized: "Phone: わからない\n詳細は誰も知らない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490793
+    m_Localized: "Phone: どこからともなく現れて\nすべて掌握してるみたいに\n振る舞ってる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490794
+    m_Localized: "Phone: だが 一体どうやって\n徴候を見分けてるんだ？\nどうして 普通の人間の症状と\nそっくりなんだ？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490795
+    m_Localized: "Phone: 全貌を明かしてない気が\nしてならない…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490796
+    m_Localized: 'Phone: ありがとう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490797
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490798
+    m_Localized: "Phone: まさか 本物の混沌の中で\n暮らす羽目になるとはな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490799
+    m_Localized: 'Phone: 太陽 来訪者 今度はFEMA…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490800
+    m_Localized: 'Phone: 疑念ばかりで 答えは一つもない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490801
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490802
+    m_Localized: "Phone: お隣さん\n頼みがあるんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490803
+    m_Localized: "Phone: 俺に なにかあったら娘を頼む\n約束してくれ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490804
+    m_Localized: 約束する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490805
+    m_Localized: 約束できない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490806
+    m_Localized: "Phone: ありがとう お隣さん\n頼りになるよ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490807
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490808
+    m_Localized: "Phone: じゃあ 行かないと\nしっかりな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490809
+    m_Localized: 'Phone: 俺は…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490810
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490811
+    m_Localized: "Phone: 本当に娘を助けてくれないのか？\nまだ小さい子供なんだ\n一人ぼっちに したくない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490812
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490813
+    m_Localized: 'Phone: クソッ 逃げないと…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490814
+    m_Localized: 'Phone: じゃあな お隣さん'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490815
+    m_Localized: "Phone: もしもし\nこちら For Rest宅配です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490816
+    m_Localized: 'Phone: ご注文は いかがなさいますか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490817
+    m_Localized: エナジェカ 二本 お願いします
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490818
+    m_Localized: コーヒー 一本 お願いします
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490819
+    m_Localized: "気が変わりました\n注文は やめます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490820
+    m_Localized: "Phone: 申し訳ございません\n当社のシステムによれば お客様は\n最近ご注文いただいたばかりのため\n現在ご注文を承ることができません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490821
+    m_Localized: "Phone: 予期せぬ需要に逼迫しており\n一日に受けられる注文数を\n一時的に制限しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490822
+    m_Localized: "Phone: ご注文を ご希望の場合は\n後日 改めて お電話ください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490823
+    m_Localized: "Phone: ありがとうございました\n失礼いたします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490824
+    m_Localized: "Phone: はい ご注文を承りました\n配達は明日の夜を予定しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490825
+    m_Localized: "Phone: はい ご注文を承りました\n配達は明日の夜を予定しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490826
+    m_Localized: "Phone: もしもし\nこちら連邦緊急事態管理庁\n医療部門です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490827
+    m_Localized: "Phone: 来訪者の検査手順に関する\nご相談を承っております"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490829
+    m_Localized: 'Phone: ご質問は ございますか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490830
+    m_Localized: "歯の検査は\nどうすればいいですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490831
+    m_Localized: "爪の検査は\nどうすればいいですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490832
+    m_Localized: "目の検査は\nどうすればいいですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490833
+    m_Localized: "ありがとうございます\nもう充分です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490834
+    m_Localized: "Phone: 正確な検査のため\nタバコ製品の使用は お控えください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490835
+    m_Localized: "Phone: 喫煙は歯の状態に影響を及ぼし\n結果が不正確になる恐れがあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490836
+    m_Localized: "Phone: 正確な検査のため\n手洗いは お控えください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490837
+    m_Localized: "Phone: 水で表皮の残留物が洗い流され\n誤った結果につながる恐れがあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490838
+    m_Localized: "Phone: 正確な検査のため\nコーヒーなどカフェインを含む飲料は\nお控えください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490839
+    m_Localized: "Phone: カフェインは不眠や神経過敏を\n引き起こすだけでなく\n目の充血に繋がる恐れがあります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490840
+    m_Localized: "Phone: 連邦緊急事態管理庁への\nご協力に感謝します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490841
+    m_Localized: "Phone: 現在の状況の解決に向けて\nご貢献は記録されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490842
+    m_Localized: "Phone: 正確な検査の実施は\nご自身のみならず人類全体の\n助けにつながります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490843
+    m_Localized: "Phone: もしもし\n来訪者退治専門家に おつなぎします\nそのまま お待ちください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490844
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490845
+    m_Localized: "Phone: もしもし？\nどちら様ですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490846
+    m_Localized: どういう意味です？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490847
+    m_Localized: "何故 私が誰かを\n知る必要が？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490848
+    m_Localized: "Phone: なるほど…回答を避けましたね…\nすでに来訪霊が あなたの中に\n根を下ろしているようです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490849
+    m_Localized: "Phone: よく聞いてください\n残された時間は わずかです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490850
+    m_Localized: "Phone: 教えてください\n台所にパン一切れを\n置いたままにすることは ありますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490851
+    m_Localized: "ありませんが？\n何故そんなことを？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490852
+    m_Localized: パン一切れ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490853
+    m_Localized: "Phone: あなたの中の来訪霊を\n祓うために役立ちます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490854
+    m_Localized: "Phone: …いいでしょう\nよく聞いてください\n残された時間は わずかです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490855
+    m_Localized: "Phone: 教えてください\n台所にパン一切れを\n置いたままにすることは ありますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490856
+    m_Localized: "ありませんが？\n何故そんなことを？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490857
+    m_Localized: パン一切れ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490858
+    m_Localized: "Phone: ああ…そういうことですか\n家霊と うまくいってませんね"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490859
+    m_Localized: "Phone: だから来訪霊が来たのです\nですが心配ご無用\n対処できます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490860
+    m_Localized: "Phone: 家にパーソナルコンピュータは\nありますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490861
+    m_Localized: ありません
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490862
+    m_Localized: "パーソナル…\nなんですって？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490863
+    m_Localized: "Phone: 家霊への供物を\n捧げていないのですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490864
+    m_Localized: "Phone: だから来訪霊に\n目を つけられたのです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490865
+    m_Localized: "Phone: 家にパーソナルコンピュータは\nありますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490866
+    m_Localized: ありません
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490867
+    m_Localized: "パーソナル…\nなんですって？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490868
+    m_Localized: "Phone: なるほど\nでは Alt+F4 は使えませんね…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490869
+    m_Localized: "Phone: ふむ…では 質問を変えましょう\nキノコを口にしますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490870
+    m_Localized: "ええ コンブチャを\nたまに"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490871
+    m_Localized: いえ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490872
+    m_Localized: "Phone: 本当にコンピュータを\n知らないんですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490873
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490874
+    m_Localized: "Phone: まあ いいでしょう\n次に進みます…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490875
+    m_Localized: "ええ コンブチャを\nたまに"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490876
+    m_Localized: いえ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490877
+    m_Localized: 'Phone: なんてことを…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490878
+    m_Localized: "Phone: すぐに やめなさい！\nコンブチャは太古の邪悪として\n知られています…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490879
+    m_Localized: "Phone: 菌糸が体内に広がり\n操り人形のように霊に支配されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490880
+    m_Localized: "Phone: 記憶まで入り込まれたら どうなるか\n想像も つきません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490881
+    m_Localized: "Phone: 記憶を完全に抹消されたり…\n何度も何度も 繰り返し\n選択を変えられてしまうんです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490882
+    m_Localized: "Phone: 最悪なのは 支配を受けていると\n気づきすらしないことです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490883
+    m_Localized: "Phone: さて 最後の質問です\nご自宅で血が流されたことは？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490884
+    m_Localized: あります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490885
+    m_Localized: ありません
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490886
+    m_Localized: "Phone: なら始めないように！コンブチャも！\nさもなければ 霊に体を奪われます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490887
+    m_Localized: "Phone: 一口でも飲めば菌糸が体に根を張り\n操り人形のように\n支配されてしまいます！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490888
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490889
+    m_Localized: "Phone: ふう…\n簡単な案件ではありませんね…\nまったく…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490890
+    m_Localized: あります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490891
+    m_Localized: ありません
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490892
+    m_Localized: 'Phone: ああ それでわかりました…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490893
+    m_Localized: "Phone: それは来訪霊ではありません\n死霊\n死者の霊です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490894
+    m_Localized: 'Phone: 残念ながら 死霊は専門外です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490895
+    m_Localized: "Phone: エクソシストを呼んでください\n力になるでしょう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490896
+    m_Localized: "Phone: 私が力になれるのは ここまでです\nさようなら"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490897
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490898
+    m_Localized: "Phone: これで来訪者退治セッション完了です\nご利用ありがとうございました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490899
+    m_Localized: "Phone: 相談料は接続されている口座に\n間もなく請求されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490900
+    m_Localized: 相談料？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490901
+    m_Localized: 無料なのかと
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490902
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490903
+    m_Localized: "Phone: ああ なんてことでしょう\n私では霊の種類を特定できません…\n力になれるのは ここまでです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490904
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490905
+    m_Localized: "Phone: 残念ながら\nセッションは ここまでです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490906
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490907
+    m_Localized: "Phone: これで来訪者退治セッション完了です\nご利用ありがとうございました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490908
+    m_Localized: "Phone: 相談料は接続されている口座に\n間もなく請求されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490909
+    m_Localized: 相談料？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490910
+    m_Localized: 無料なのかと
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490911
+    m_Localized: "Phone: そのとおりです\n来訪者退治専門家とはいえ\n生計を立てねばなりませんので"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490912
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490913
+    m_Localized: 'Phone: 本日の体験を どう評価されますか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490914
+    m_Localized: 星五つ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684992
+    m_Localized: 10点中 1点
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684993
+    m_Localized: ふざけんな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684994
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684995
+    m_Localized: "Phone: 広告を よく ご覧いただければ\n初回の通話には少額の相談料が\nかかると細かい字で明記されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684996
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684997
+    m_Localized: 'Phone: 本日の体験を どう評価されますか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684998
+    m_Localized: 星五つ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684999
+    m_Localized: 10点中 1点
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685000
+    m_Localized: ふざけんな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685001
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685002
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685003
+    m_Localized: "Phone: ありがとうございます\n貴重な ご意見 感謝します\n失礼いたします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610048
+    m_Localized: 'TV: …以上 最新情報でした'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610049
+    m_Localized: "TV: For Rest宅配で ご利用いただけます\n今すぐ お電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610050
+    m_Localized: "TV: こんにちは\n本日のニュースです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610051
+    m_Localized: "TV: 火災が続く中 来訪者は依然として\n国を恐怖に陥れています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610052
+    m_Localized: "TV: FEMAは来訪者との戦いに向けて\n新たな徴候を発表しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610053
+    m_Localized: "TV: 続いては 来訪者の正体に関する\n特別報道です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113249218560
+    m_Localized: "Phone: あん？\nもしもし？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995776
+    m_Localized: "奥さんから番号を\n聞きました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995777
+    m_Localized: "奥さんが助けを\n必要としています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995778
+    m_Localized: 'Phone: はあ それで？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995779
+    m_Localized: "奥さんは お子さんを\nみんな見失いました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995780
+    m_Localized: "お子さんは そちらに\nいらっしゃいますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995781
+    m_Localized: "Phone: いつものことだ\n後始末するのは いつも俺"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995782
+    m_Localized: "Phone: アイツは座って\n「でも 疲れてて」\nなんて言うだけ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995783
+    m_Localized: 'Phone: 今に始まった ことじゃない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995784
+    m_Localized: "奥さんは お子さんを\nみんな見失いました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995785
+    m_Localized: "お子さんは そちらに\nいらっしゃいますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995786
+    m_Localized: "Phone: はあ またかよ\nアイツ 自分の子供に\nまるで関心ないんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995787
+    m_Localized: "Phone: で 挙げ句の果てに 俺が後始末\n信じられない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995788
+    m_Localized: 'Phone: アイツの義母の家を確かめたか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995789
+    m_Localized: いえ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995790
+    m_Localized: "奥さんを迎えに\n来てもらえませんか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995791
+    m_Localized: "Phone: いや 別に\nアイツと一緒じゃないのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995792
+    m_Localized: 'Phone: 驚きもしないがな'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995793
+    m_Localized: 'Phone: アイツの義母の家を確かめたか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995794
+    m_Localized: いえ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995795
+    m_Localized: "奥さんを迎えに\n来てもらえませんか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995796
+    m_Localized: 'Phone: はあ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995797
+    m_Localized: 'Phone: なら 子供は そこかもな'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995798
+    m_Localized: 'Phone: 俺は行かない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995799
+    m_Localized: "Phone: アイツに行かせろ\n自分の子供を見失う母親って なんだ？\nそう言ってやれ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995800
+    m_Localized: 二人で解決してください
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995801
+    m_Localized: "とにかく あなたは生きていると\n奥さんに伝えておきます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995802
+    m_Localized: "Phone: アイツに行かせろ\nお姫様気取りか"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995803
+    m_Localized: "Phone: 足は二本あるんだろ？\nなら なんの問題がある？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995804
+    m_Localized: 二人で解決してください
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995805
+    m_Localized: "とにかく あなたは生きていると\n奥さんに伝えておきます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995806
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995807
+    m_Localized: "Phone: で なんで電話してきたんだ？\n哀れな お姫様を救うためか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995808
+    m_Localized: "Phone: 好きにしろ\nあんなアマ どうでもいい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995809
+    m_Localized: 'Phone: もう俺に構うな'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995810
+    m_Localized: 'Phone: 俺が生きていると伝える？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995811
+    m_Localized: "Phone: やめとけ\n無意味だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995812
+    m_Localized: 'Phone: お互い どうだっていいんだよ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995813
+    m_Localized: "Phone: なんで アンタが首突っ込んでるのか\n理解できん"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995814
+    m_Localized: "Phone: まあいい…\n二人で よろしくやれよ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995815
+    m_Localized: 'Phone: 死を信じます？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995816
+    m_Localized: "旦那さんに頼まれて\n電話しました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995817
+    m_Localized: "説教は よしてください\n旦那さんに ついてです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995818
+    m_Localized: 'Phone: なんです？旦那？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995819
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995820
+    m_Localized: "Phone: あんなことをしておいて…\nもう あの人のことは\n聞きたくありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995821
+    m_Localized: "起きたことについて\n謝罪していましたよ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995822
+    m_Localized: "地獄へ行け と\n言ってました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995823
+    m_Localized: 'Phone: 旦那？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995824
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995825
+    m_Localized: "Phone: あんなことをしておいて…\nもう あの人のことは\n聞きたくありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995826
+    m_Localized: "起きたことについて\n謝罪していましたよ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995827
+    m_Localized: "地獄へ行け と\n言ってました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995828
+    m_Localized: 'Phone: ふん 謝罪ですって！？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995829
+    m_Localized: 'Phone: 本気？またなの？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995830
+    m_Localized: 'Phone: あの人 前も他人に謝らせたの'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995831
+    m_Localized: 'Phone: なんで 自分で電話しないか知ってる？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995832
+    m_Localized: "Phone: 自分の やったことに\n向き合う勇気がないから\n認められないから"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995833
+    m_Localized: "Phone: まだ全部 元通りに直して\n昔に戻れると思ってる\nでも 人生はそうじゃない\n誰にも時間は巻き戻せない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995834
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995835
+    m_Localized: "Phone: 私は今のほうが幸せ\n理解してくれる人たちがいる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995836
+    m_Localized: "狂信者どもが あなたを\n理解していると？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995837
+    m_Localized: どうしてカルトに？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995838
+    m_Localized: そうですか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995839
+    m_Localized: "Phone: 好きに呼べばいい\n今は私の家族だもの"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995840
+    m_Localized: "Phone: 同じ信念を共有しているの\n大いなる死は まもなく到来する"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995841
+    m_Localized: "Phone: もたらされるのは\n苦痛ではなく 安寧"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995842
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995843
+    m_Localized: 'Phone: お元気で'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995844
+    m_Localized: "Phone: 私たちは同じものを信じている\n次は 大いなる死が到来する"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995845
+    m_Localized: "Phone: 奇妙に聞こえるかもしれないけど\n大いなる死が もたらすのは\n悲しみ ではなく 喜び"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995846
+    m_Localized: "Phone: 安寧に包まれる喜び 苦悩の終わり\n同じ苦労に直面してきたでしょう？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995847
+    m_Localized: "Phone: きっと いつか理解できる\n私たちと 同じ目線を持てる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995848
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995849
+    m_Localized: 'Phone: お元気で'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995850
+    m_Localized: 'Phone: 理解してくれて ありがとう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995851
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995852
+    m_Localized: 'Phone: お元気で'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995853
+    m_Localized: 'Phone: もしもし？誰？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995854
+    m_Localized: "こんにちは\n弟さんから番号を聞きました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995855
+    m_Localized: "弟さんの代理で\n連絡しています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995856
+    m_Localized: "Phone: どの弟？\nアタシには…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995857
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995858
+    m_Localized: 'Phone: ああ 父さんの息子のこと？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995859
+    m_Localized: "Phone: でも 待って…あなた誰？\nどうして アイツと一緒に？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995860
+    m_Localized: ご両親が行方不明なんです
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995861
+    m_Localized: 避難先を求めてウチに来ました
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995862
+    m_Localized: 'Phone: 行方不明？どうして？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995863
+    m_Localized: 'Phone: まさか…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995864
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995865
+    m_Localized: "Phone: ああっ…こんなのあり得ない…\n二人は死んだの？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995866
+    m_Localized: わかりません
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995867
+    m_Localized: 恐らく
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995868
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995869
+    m_Localized: "Phone: 避難先を求めて？\nでも 親と住んでるんじゃ？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995870
+    m_Localized: "Phone: …いや 言わないで\nまさか…？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995871
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995872
+    m_Localized: "Phone: ああっ…こんなのあり得ない…\n二人は死んだの？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995873
+    m_Localized: わかりません
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995874
+    m_Localized: 恐らく
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995875
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995876
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995877
+    m_Localized: 'Phone: そんな…どうしてこんなこと…？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995878
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995879
+    m_Localized: "Phone: アタシが引き取ります\nそう伝えて\nウチの場所なら知ってるから"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995880
+    m_Localized: "Phone: それと…弟を助けてくれて\nありがとう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995881
+    m_Localized: 'Phone: さようなら'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995882
+    m_Localized: 'Phone: ああ？誰だ？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995883
+    m_Localized: "奥さんと その妹さんと\n一緒に いる者です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995884
+    m_Localized: "奥さんから この番号を\n聞いた者です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995885
+    m_Localized: "Phone: 身代金でも要求してるみたいな\n言い草だな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995886
+    m_Localized: 'Phone: 悪いが 渡すものなんて残ってない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995887
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995888
+    m_Localized: "Phone: すぐに 誰もが なにも\n残らなくなるだろうよ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995889
+    m_Localized: "どういう意味です？\nなにが あったんです？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995890
+    m_Localized: 奥さんは無事ですよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995891
+    m_Localized: "Phone: 頼む\nあの人が無事だと言ってくれ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995892
+    m_Localized: "Phone: あの人は強い\nなんだって乗り越えるはずだ\n途中で誰かを助けさえするだろう！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995893
+    m_Localized: 'Phone: だが俺は もう力に なれそうもない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995894
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995895
+    m_Localized: 'Phone: 長くもたない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995896
+    m_Localized: "どういう意味です？\nなにが あったんです？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995897
+    m_Localized: 奥さんは無事ですよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995898
+    m_Localized: "Phone: 俺は…もう耐えられない\n太陽も来訪者も…なにもかも恐ろしい\n体が竦む"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995899
+    m_Localized: "Phone: もう…終わらせたいんだ\n道は一つしかない…わかるだろ？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995900
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995901
+    m_Localized: 'Phone: 愛していると伝えてくれ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995902
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995903
+    m_Localized: "Phone: いや…やはり なにも言わなくていい\nただ あの人が俺を探さずに\nすむよう してくれ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995904
+    m_Localized: 'Phone: 見捨てたと知られたくないんだ…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995905
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995906
+    m_Localized: "Phone: 電話ありがとう…\n聞いてくれて ありがとう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995907
+    m_Localized: 'Phone: じゃあな…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995908
+    m_Localized: "Phone: きっと まだ妹さんに すがってる\n手放すことを知らない人だからな…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995909
+    m_Localized: "Phone: 不運な人だ\n弱者ばかりに囲まれて\nだから 俺は見捨てたんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995910
+    m_Localized: "Phone: こんにちは FEMA採用部門です\nご用件は？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995911
+    m_Localized: "ウチにFEMA職員の\n奥さんがいます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995912
+    m_Localized: "ウチにいる献身家の方が\n仲間に加わりたいと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995913
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995914
+    m_Localized: "Phone: なるほど…ご質問は なんですか？\nまだ お力になれるか わかりません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995915
+    m_Localized: 'Phone: 脅迫ではないと仮定して'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995916
+    m_Localized: …脅迫です
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995917
+    m_Localized: "そちらでの仕事を探しています\n以前 国境で働いていた方です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995918
+    m_Localized: 'Phone: （大きな ため息が聞こえる）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995919
+    m_Localized: "Phone: あんた活動家だろ？\nいつも文句ばっか言ってる奴"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995920
+    m_Localized: "Phone: 時間を無駄にするな\n今この瞬間 本当に助けを求めて\n電話を繋ごうとしている人が\nいるかもしれないんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995921
+    m_Localized: "Phone: 来訪者が どこかに\n侵入しているかもしれない\n最悪 人が死ぬかもしれない\nあんたのせいで"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995922
+    m_Localized: 'Phone: じゃあな'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995923
+    m_Localized: "Phone: ふむ その方も きっとご存じのとおり\n仕事は…簡単ではありません\n心構えは できているのでしょうか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995924
+    m_Localized: "Phone: できているのなら\n31-Gの書類を三部 用意してください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995925
+    m_Localized: "Phone: それから健康診断があります\nその後は 書類に…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995926
+    m_Localized: "Phone: （電話を切った\n何故 あの女の件で わざわざ\n 電話したんだ？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995927
+    m_Localized: "Phone: 応募したい職種は どれですか？\nただし「管理者」だけは\nよしてください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995928
+    m_Localized: 'Phone: 今日だけで三人目になります'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995929
+    m_Localized: 管理者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995930
+    m_Localized: "探偵\nそれか偵察かなにか"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995931
+    m_Localized: 'Phone: ふざけたイタズラ電話はウンザリだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995932
+    m_Localized: "Phone: あんたが下らない真似してる間に\n本当に助けを求めている人を救えない\n今この瞬間 来訪者に殺されている人が\nいるかもしれないんだぞ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995933
+    m_Localized: 'Phone: 馬鹿げた冗談の責任を取れ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995934
+    m_Localized: 'Phone: （電話が切れた びっくり）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995935
+    m_Localized: "Phone: そんな募集はありません\n必要としているのは疫学の専門家と\n資格持ちの科学者です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995936
+    m_Localized: 'Phone: ご友人は適任ではないでしょう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995937
+    m_Localized: "Phone: ですが まあ\n状況は急速に変わっています\n一週間後に かけ直してください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995938
+    m_Localized: "Phone: きっと枠があるはずです…\nなんでしたっけ？「献身家」とやらの"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995939
+    m_Localized: "Phone: リンゴは\nリンゴ中 キノコの土地と紙から\n成り立っています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995940
+    m_Localized: 'Phone: キノ…の土…という…を注意…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995941
+    m_Localized: 'Phone: あっ…の陽…射す草原…誘…れても'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995942
+    m_Localized: 'Phone: なぜ…らあ…こに踏…入れ…者は'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995943
+    m_Localized: 'Phone: 嘆きと お別れにしか会わない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995944
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995945
+    m_Localized: 'Phone: 息をしているかどうか確かめて'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995946
+    m_Localized: 'Phone: なぜ応えない？私は死にたいんだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995947
+    m_Localized: "Phone: （電話が切れた\n予想とは…少し違った）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995948
+    m_Localized: "Phone: ご注意ください\n現在 飛行機や列車で当国に\n入る手段はありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995949
+    m_Localized: 'Phone: ご用件は なんでしょうか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995950
+    m_Localized: "観光客を母国に\n帰したいんです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995951
+    m_Localized: なぜ列車に乗れないんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995952
+    m_Localized: 'Phone: 飛行機の再開まで待つのが一番です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995953
+    m_Localized: "Phone: フェリーは運航していますが\n安全ではありません\n夜の台風の危険が高すぎます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995954
+    m_Localized: "Phone: さらに 水面が日光を反射して\n船に当たるため 乗組員が長時間\n耐えられません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995955
+    m_Localized: "では ウチの気の毒な方を\nどう母国に帰せば？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995956
+    m_Localized: "男は今ウチで暮らしてます\n引き取ってもらえませんか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995957
+    m_Localized: "Phone: 暑さで線路が伸びており\n日中の運行は危険すぎます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995958
+    m_Localized: "Phone: 列車は夜しか運行しておらず\n遠くまではいけません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995959
+    m_Localized: "Phone: 乗り継ぎが多すぎます\n航空便の再開を待ったほうが\nよいでしょう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995960
+    m_Localized: "では ウチの気の毒な方を\nどう母国に帰せば？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995961
+    m_Localized: "男は今ウチで暮らしてます\n引き取ってもらえませんか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995962
+    m_Localized: 'Phone: 待つしかありません'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995963
+    m_Localized: "Phone: 残念ですが 現時点では他に\nできることはありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995964
+    m_Localized: 言葉も通じないんですよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995965
+    m_Localized: "ふざけてるのか？\n役立たずめ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995966
+    m_Localized: 'Phone: 滞在可能なホテルはありません'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995967
+    m_Localized: "Phone: できることは なにもありません\n問題解決に努めていますが\n取り残されている方は大勢います"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995968
+    m_Localized: 言葉も通じないんですよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995969
+    m_Localized: "ふざけてるのか？\n役立たずめ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995970
+    m_Localized: "Phone: 聞いてください\nこちらの職員は手一杯です\n大使館の予算が大幅に\n削減されたのは ご存じでしょう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995971
+    m_Localized: 'Phone: できる限りを尽くしています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995972
+    m_Localized: ほう 大した英雄だな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995973
+    m_Localized: よく言うな 怠け者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995974
+    m_Localized: 'Phone: そんな言い方は やめてください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995975
+    m_Localized: "Phone: 背負って帰すわけには いきません\nそこまで助けたい のであれば\nそちらで送り届けて ください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995976
+    m_Localized: "Phone: 予算が厳しく\nほとんど熱意だけで働いているんです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995977
+    m_Localized: ほう 大した英雄だな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995978
+    m_Localized: よく言うな 怠け者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995979
+    m_Localized: "Phone: こちらの対応が お気に召さないなら\nご自身で どうぞ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995980
+    m_Localized: "Phone: 来訪者の検査や 真昼の暑さを越え\n国境を渡れるものなら"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995981
+    m_Localized: "わかりました\nありがとうございます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995982
+    m_Localized: くたばれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995983
+    m_Localized: "Phone: では 何故そちらは家にいて\n働いてないのですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995984
+    m_Localized: "Phone: それとも来て\nやり方を教示してもらえますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995985
+    m_Localized: "Phone: 誰よりも賢い方からの助力は\n大歓迎です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995986
+    m_Localized: "わかりました\nありがとうございます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995987
+    m_Localized: くたばれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995988
+    m_Localized: 'Phone: …さきほどは 言い過ぎました'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995989
+    m_Localized: "Phone: 苛立って電話してくる方は\nあなただけでは ありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995990
+    m_Localized: 'Phone: 良い一日を'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995991
+    m_Localized: 'Phone: 道中 お気を付けて'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995992
+    m_Localized: 'Phone: また旅に出たいと思ったときは ぜひ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995993
+    m_Localized: 'Phone: その時は喜んでお手伝いします'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995994
+    m_Localized: "別室に通じる窓\n昔は こうして電気代を節約したものだ\n隣の部屋の光を流し込んで"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995995
+    m_Localized: "それから塞いでしまった…\n片方だけ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995996
+    m_Localized: "いや 向こうは見ない\nもう二度と"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995997
+    m_Localized: "ナイトスタンドの隣で寝るのは嫌いだ\n悪い思い出が多すぎる…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995998
+    m_Localized: "なぜ隅に置いてないんだ\nそういう決まり事だったはず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995999
+    m_Localized: "とはいえ…\n決まり事なんて 親父には関係なかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996000
+    m_Localized: "トト\n子供の頃に持っていた唯一のオモチャ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996001
+    m_Localized: "まあ…\n草を叩いて遊んでいた棒きれは別として"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996002
+    m_Localized: はは 祖母は戸棚に食器を詰め込んでいた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996003
+    m_Localized: "立派なセットを出すのは祝日だけ\n今となっては…誰も必要としない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996004
+    m_Localized: 正直 一人でいるほうが気楽だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996005
+    m_Localized: 声に出して 独り言を呟いたっていい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996006
+    m_Localized: "群衆の中から特定人物を見つける…\nそんな雑誌の一つ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996007
+    m_Localized: "うんざりする\nもう放っておいてほしい…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996008
+    m_Localized: "あのとき言われた\n「俺がいなくなったら この箱を開けるかどうかは\n自分で決めろ」"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996009
+    m_Localized: "十五年間 ずっと迷っている\nまだ決めかねている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295719612416
+    m_Localized: 孤独を感じるかい？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583936
+    m_Localized: 誰とも話せず不安かい？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583937
+    m_Localized: "それなら\n電話ルーレットが\nうってつけ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583938
+    m_Localized: "今すぐ 891-533へ\nお電話を\nぴったりの話し相手に\nおつなぎします"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583939
+    m_Localized: "娘さんは\n大丈夫ですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583940
+    m_Localized: 誰が殺したんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583941
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583942
+    m_Localized: "娘さんは\n大丈夫ですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583943
+    m_Localized: 誰が殺したんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583944
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583945
+    m_Localized: "どこへ連行\nされたんです？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583946
+    m_Localized: "娘さんじゃなくて\n幸いでしたね"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583947
+    m_Localized: "FEMAは一体\n何者なんでしょう？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583948
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583949
+    m_Localized: "どこへ連行\nされたんです？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583950
+    m_Localized: "娘さんじゃなくて\n幸いでしたね"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583951
+    m_Localized: "FEMAは一体\n何者なんでしょう？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583952
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583953
+    m_Localized: "どこへ連行\nされたんです？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583954
+    m_Localized: "娘さんじゃなくて\n幸いでしたね"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583955
+    m_Localized: "FEMAは一体\n何者なんでしょう？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583956
+    m_Localized: "気をつけて\n（電話を切る）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583957
+    m_Localized: "Phone: もしもし FEMAホットラインです\nご用件は？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583958
+    m_Localized: "なんだ？FEMA？\nなんのことだ？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583959
+    m_Localized: なに言ってるんだ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583960
+    m_Localized: "Phone: （向こうの女が話し終える前に\n男の大声が電話越しに飛び込む）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583961
+    m_Localized: "Phone: このバカ野郎！\n今すぐ電話を切れ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583962
+    m_Localized: "脇の検査は\nどうすればいいですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583963
+    m_Localized: "耳の検査は\nどうすればいいですか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583964
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583965
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583966
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583967
+    m_Localized: "Phone: 正確な検査のため\n水との接触を避けなければなりません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583968
+    m_Localized: 'Phone: 入浴や手洗いは お控えください'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583969
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583970
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583971
+    m_Localized: "Phone: 耳ですか？\nお待ちください…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583972
+    m_Localized: 'Phone: 上に確認し 後で お知らせします'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583973
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583974
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583975
+    m_Localized: "Phone: では 具体的に教えてください\nキノコ類は摂取しますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583976
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583977
+    m_Localized: "Phone: さて 最後の質問です\nご自宅で血が流されたことは？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583978
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583979
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778240
+    m_Localized: "Phone: もしもし 電話ルーレット です\n間もなく あなた ぴったりの\n話し相手に つなぎます\n少々お待ちください"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778241
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778242
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778243
+    m_Localized: 'Phone: やあ こんにちは'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778244
+    m_Localized: こんにちは
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778245
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778246
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778247
+    m_Localized: 'Phone: もしもし？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778248
+    m_Localized: こんにちは
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778249
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778250
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778251
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778252
+    m_Localized: 'Phone: 誰も いないみたいだな…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778253
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778254
+    m_Localized: "Phone: 誰かと…話したいんだ\n最近 色々ありすぎて…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778255
+    m_Localized: "Phone: 友達や知り合いに 連絡してみたが\n誰も出てくれなくて…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778256
+    m_Localized: 'Phone: それで 電話ルーレットを見つけたんだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778257
+    m_Localized: "Phone: 心の内を ぶちまけるのに\n最適な場所じゃ ないかもしれない\nでも なにもないよりマシだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778258
+    m_Localized: "Phone: 見知らぬ誰かに 悩みを押しつけるのは\nよくないと わかってるけど…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778259
+    m_Localized: "Phone: 誰かと話せるだけで\nどれだけ救われるか\n想像も つかないだろう\nすごく…楽に なるんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778260
+    m_Localized: 'Phone: 聞いてくれないか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778261
+    m_Localized: どうぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778262
+    m_Localized: "長話する気分じゃ\nありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778263
+    m_Localized: 'Phone: ああ…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778264
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778265
+    m_Localized: "Phone: わかったよ\n邪魔して悪かった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778266
+    m_Localized: 'Phone: じゃあな'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778267
+    m_Localized: "Phone: 本当に ありがとう\n感謝する！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778268
+    m_Localized: "Phone: まずは 自己紹介から始めたほうが\n話しやすいかも しれないな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778269
+    m_Localized: 'Phone: なにを知りたい？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778270
+    m_Localized: どこに住んでるんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778271
+    m_Localized: "なぜ友達ではなく\nここに電話を？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778272
+    m_Localized: "Phone: 家から遠く離れた場所だ\n残念ながら"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778273
+    m_Localized: "Phone: 暑さから逃げようとして\nできるだけ寒い場所を探したんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778274
+    m_Localized: "Phone: 今は人里離れた ところにいる\n寒さが骨身に染みて\n草すら ほぼ生えない土地だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778275
+    m_Localized: "Phone: 比較的 安全な場所だ\nどこからも かけ離れている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778276
+    m_Localized: "Phone: でも 冷たい場所だっていうなら\n地獄の第九圏だろうと…\n案外 悪くないかもな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778277
+    m_Localized: "Phone: 昔は寒さが苦手だったのに\n今じゃ…祝福みたいだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778278
+    m_Localized: "Phone: 太陽の灼熱が和らぎ\nこの惨状が終わると信じたい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778279
+    m_Localized: "Phone: でも ハッピーエンドなんて\n信じられなく なりつつある\n太陽が燃え尽きたら どうなる？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778280
+    m_Localized: "Phone: 来訪者は消えないかも しれない\n友人や愛する人が すり替わっても\n気付きもしない…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778281
+    m_Localized: なぜ一人で行ったんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778282
+    m_Localized: 故郷が恋しいですか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778283
+    m_Localized: "Phone: みんなに電話したい\nだが…もう連絡が取れないんだ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778284
+    m_Localized: "Phone: 大厄災が始まったとき\n故郷を離れることにしたんだ\nできるだけ暑さから 遠くへ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778285
+    m_Localized: "Phone: 定期的に電話すると約束したんだ\nみんな 一人一人の無事を確認しに…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778286
+    m_Localized: "Phone: でも 着いてみたら\n誰にも連絡できなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778287
+    m_Localized: "Phone: 後で理由が判明した\n電話線が切られていたんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778288
+    m_Localized: 'Phone: 街全体が世界から遮断されていた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778289
+    m_Localized: "Phone: 今ここは安全だ\nでも 友達は…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778290
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778291
+    m_Localized: "Phone: 恐ろしくてたまらない\n大切な人たちに\n二度と会えないかもしれないと思うと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778292
+    m_Localized: "Phone: 静かな日々が懐かしい\n人生が単純で\n未来に希望を持てた頃が"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778293
+    m_Localized: なぜ一人で行ったんです？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778294
+    m_Localized: 故郷が恋しいですか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778295
+    m_Localized: "Phone: 一人で行きたかった わけじゃない\nだが…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778296
+    m_Localized: "Phone: 実は 親友が一緒に行きたがっていた\nでも ダメだったんだ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778297
+    m_Localized: "Phone: アイツには 一緒に旅立つための\n書類が なかったんだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778298
+    m_Localized: "Phone: そして大厄災が起きてからは\nもう書類の入手は不可能だった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778299
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778300
+    m_Localized: "Phone: アイツ ひどく落ち込んでいた…\nもっと早く準備してれば と後悔して\n助けたかったが どうしていいか\nわからなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778301
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778302
+    m_Localized: "Phone: みんなが恋しい\n街というより 残った人たちが…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778303
+    m_Localized: 'Phone: なによりも 親友が…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778304
+    m_Localized: "Phone: 一緒に来たがってたけど ダメだった\n連絡を取り続ける 電話する と約束した\nけれど…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778305
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778306
+    m_Localized: 'Phone: 多分 アイツ 私に恋してた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778307
+    m_Localized: "Phone: 私を すごく大事に してくれてた\nいつも支えてくれて\nいつでも耳を傾けてくれた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778308
+    m_Localized: "Phone: そして気付いたんだ\n互いに惹かれ合っていた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778309
+    m_Localized: "Phone: 告白を待ってたんだ\n向こうから先に言ってほしかった\nでも アイツは意気地なしで\n思い切れなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778310
+    m_Localized: "Phone: それから…大厄災が起きて\nそんな暇なくなった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778311
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778312
+    m_Localized: 'Phone: 先に言わなかったこと 後悔してる…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778313
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778314
+    m_Localized: "Phone: さて これで少しは知ってもらえたかな\n次は君の番だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778315
+    m_Localized: "自分のことを話すのは\n苦手で…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778316
+    m_Localized: "自分自身\nよくわからなくて…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778317
+    m_Localized: "Phone: 恥ずかしがるなよ\n聞く準備なら できてる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778318
+    m_Localized: "まあ…\n近しい人はいません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778319
+    m_Localized: "私は…\n孤独な人間なんです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778320
+    m_Localized: "Phone: 心配するな\n自己開示は悪いことじゃない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972544
+    m_Localized: "まあ…\n近しい人はいません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972545
+    m_Localized: "私は…\n孤独な人間なんです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972546
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972547
+    m_Localized: 父との関係が…難しくて
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972548
+    m_Localized: 父親が…嫌いでした
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972549
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972550
+    m_Localized: "もう家族の一員じゃ\nありません"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972551
+    m_Localized: "ある日 息子であることを\nやめたんです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972555
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972556
+    m_Localized: "私に残ったのは\nこの忌々しい家だけです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972557
+    m_Localized: "家族の思い出は\nこの家だけです"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972558
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972559
+    m_Localized: "Phone: 実に気の毒だね…\n家を引き継いでも\nまるで嬉しくなさそうだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972560
+    m_Localized: そのとおりです
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972561
+    m_Localized: "焼け落ちたほうが\nマシでした"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972562
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972563
+    m_Localized: "Phone: 君が…なにを経験したのか\n想像も つかないよ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972564
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972565
+    m_Localized: "Phone: お父さんへの憎しみの深さも…\n家を焼き払いたいと願うほどの…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972566
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972567
+    m_Localized: "Phone: 本当に ありがとう\n話してくれて"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972568
+    m_Localized: "Phone: さよなら\nしっかりな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972569
+    m_Localized: 'Phone: もしもし？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972570
+    m_Localized: "こんにちは お嬢さんと\nお話しできますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972571
+    m_Localized: "こんにちは お嬢さんと\nお友達を遊ばせてもらえますか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972572
+    m_Localized: "Phone: えっ？\nどうして娘と？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972573
+    m_Localized: "お嬢さんの お友達が\n遊びに来てほしい と"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972574
+    m_Localized: "ウチに女の子がいて…\n父親を亡くしてます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972575
+    m_Localized: "Phone: その人も…\n来訪者だったの？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972576
+    m_Localized: 「も」とは？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972577
+    m_Localized: "いえ なんの理由もなく\n異常者に焼き殺されました"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972578
+    m_Localized: 'Phone: 理由もなく人を焼いたり するものか'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972579
+    m_Localized: "Phone: その人も来訪者だったんだ…\nウチの娘と同様に"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972580
+    m_Localized: 'Phone: 娘も焼かれたんだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972581
+    m_Localized: 'Phone: 幼稚園で'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972582
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972583
+    m_Localized: "Phone: はじめは泣いたよ\n自殺したくなった\n娘なしでは 生きていけないと思った"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972584
+    m_Localized: 'Phone: でも 夫が支えてくれた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972585
+    m_Localized: "Phone: だから あなたも乗り越えられる…\nその女の子も"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972586
+    m_Localized: 'Phone: わかるはず…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972587
+    m_Localized: 'Phone: 火のないところに煙は立たない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972588
+    m_Localized: "Phone: その子の お父さんが焼かれたのなら…\n起こるべくして起こったこと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972589
+    m_Localized: 'Phone: 泣いたところで なんにもならない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972590
+    m_Localized: 'Phone: どうか…その子に そう伝えて'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972591
+    m_Localized: 'Phone: さよなら'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972592
+    m_Localized: 'Phone: ウチの娘は…あの子は…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972593
+    m_Localized: 'Phone: 死んだの…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972594
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972595
+    m_Localized: 'Phone: 私たち…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972596
+    m_Localized: 'Phone: 殺すしかなかった'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972597
+    m_Localized: えっ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972598
+    m_Localized: （電話を切る）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972599
+    m_Localized: "Phone: 私たちが殺したの\n信じて\n他に打つ手がなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972600
+    m_Localized: "Phone: あらゆる徴候が一致してた…\n夫が そう言い張って"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972601
+    m_Localized: "自分の子供を…\n殺す決断を？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972602
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972603
+    m_Localized: 'Phone: 批判しないで！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972604
+    m_Localized: "Phone: 娘は来訪者だった！\n徴候は どれも一致してた！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972605
+    m_Localized: クソッ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972606
+    m_Localized: わかりました
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972607
+    m_Localized: 'Phone: 娘は来訪者だった'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972608
+    m_Localized: 'Phone: あらゆる徴候が示してた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972609
+    m_Localized: 'Phone: 娘のことは隅々まで知っていた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972610
+    m_Localized: 'Phone: だから すぐに徴候に気付いた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972611
+    m_Localized: 'Phone: すべて一致していた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972612
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972613
+    m_Localized: 'Phone: そう伝えたら 夫は…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972614
+    m_Localized: 'Phone: すぐに その来訪者を処理した'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972615
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972616
+    m_Localized: 'Phone: はじめは 夫を殺したかった'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972617
+    m_Localized: "Phone: でも気付いた…\nあれは もう娘じゃ なかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972618
+    m_Localized: 'Phone: 夫が そう理解させてくれた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972619
+    m_Localized: "Phone: 今でも唯一 後悔してるのは…\n入れ替わった子に\n訊かずじまいだったこと…\n私たちの娘に なにをしたのか…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972620
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972621
+    m_Localized: 'Phone: ごめんなさい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972622
+    m_Localized: 'Phone: もう二度と かけてこないで'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972623
+    m_Localized: 'Phone: お願いだから…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972624
+    m_Localized: 'Phone: なんで あんたなんかに弁解を？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972625
+    m_Localized: 'Phone: くたばれ！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972626
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972627
+    m_Localized: 'Phone: でも…まだ 娘が恋しい'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972628
+    m_Localized: 'Phone: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096192
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096193
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096194
+    m_Localized: 'TV: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096195
+    m_Localized: "TV: 続きまして 遺体処理の一時停止に\n関する特別報道です"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58690054376120320
+    m_Localized: "TV: For Rest宅配で ご利用いただけます\n今すぐ お電話を\n{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803335401472
+    m_Localized: 猫缶 二つ お願いします
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790080
+    m_Localized: タバコ 一箱 お願いします
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790081
+    m_Localized: コンブチャ 一瓶 お願いします
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,1659 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Endings_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 5b2e2a6d2de35064e96737a28b7715de, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 206681661440
+    m_Localized: 実は旅行から帰ってきたところだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632960
+    m_Localized: ずっと家にいて 飽きないか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632961
+    m_Localized: ああ 覚えてる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632962
+    m_Localized: 浜辺に行ったんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632963
+    m_Localized: だが昨日は暑すぎて 早めに切り上げた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632964
+    m_Localized: ああ 娘を学校に通わせる準備をしている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632965
+    m_Localized: 本人は行きたがってないが 仕方ない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632966
+    m_Localized: よし 今夜 遅くに寄る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632967
+    m_Localized: じゃあ また後で
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632968
+    m_Localized: 生存者たちと一緒に 地下室へ降りていく
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632969
+    m_Localized: "ここは涼しいが 空気はまだ重く\n不安が漂っている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632970
+    m_Localized: "慎重に配分すれば 食料は\n一ヶ月か二ヶ月はもつはずだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632971
+    m_Localized: "扉を封じる\nもう誰も入ってこられない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632972
+    m_Localized: 地下室の壁を刻み 日々を数える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632973
+    m_Localized: 終焉を待つ時は 二ヶ月近くに及んだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632974
+    m_Localized: "太陽が大地を灰燼と帰すか\n闇に消えることを望む者もいた\n自らの手で終わりを求める者もいた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632975
+    m_Localized: "避け得ない終末を引き延ばすのは\n一瞬の幕引きよりも苦痛だ\n生者を羨む者は誰もいない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632976
+    m_Localized: ある日 ラジオから報道が流れる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632977
+    m_Localized: 「…日中の外出が安全となる見込みです」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632978
+    m_Localized: この感情は…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632979
+    m_Localized: 失望？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632980
+    m_Localized: 今年もまた 生き延びるのか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632981
+    m_Localized: "だが その先は？次の夏こそ最後になるのか？\nそれとも まだ続くのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632982
+    m_Localized: "終焉を待ち続ける重荷を思うと\n胸が締め付けられる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632983
+    m_Localized: それでも 生存者の一人は幸福そうだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632984
+    m_Localized: "もしかしたら…\n十年先までも 続くのかもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632985
+    m_Localized: 生存者たちと一緒に 地下室へ降りていく
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632986
+    m_Localized: "ここは涼しいが 空気はまだ重く\n不安が漂っている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632987
+    m_Localized: "慎重に配分すれば\n食料は一ヶ月か二ヶ月は もつはずだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632988
+    m_Localized: 扉を封じ もう誰も入ってこられない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632989
+    m_Localized: 地下室の壁を刻み 日々を数える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632990
+    m_Localized: 終焉を待つ時間は 二ヶ月近くに及んだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827264
+    m_Localized: 太陽だけが 頭上に迫る脅威ではない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827265
+    m_Localized: 疑心暗鬼は日ごと鋭利になる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827266
+    m_Localized: 冷たく 計算高く 人ならざる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827267
+    m_Localized: すべては終わろうとしている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827268
+    m_Localized: 逃げる先などない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827269
+    m_Localized: 家に迎え入れたのは 人間だけではなかった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827270
+    m_Localized: 痛みが体を焼き尽くす
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827271
+    m_Localized: すぐに たどり着けることを願う
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827272
+    m_Localized: 痛みは薄れ 意識は遠のいていく…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827273
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827274
+    m_Localized: 入れてくれないか…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827275
+    m_Localized: 後悔なんて してないよね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827276
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827277
+    m_Localized: この先のこと 考えたことあるかい？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827278
+    m_Localized: "つまり 君がいなくなった後\n何が残るんだい？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827279
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827280
+    m_Localized: もう受け入れてるんだね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827281
+    m_Localized: "君がいなくなった後のことを\n心配しても しかたないだろう？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827282
+    m_Localized: 行く時が来た
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827283
+    m_Localized: "数日が経っても\nその家は空っぽのままだった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827284
+    m_Localized: 誰もが不吉を感じ 寄りつかなかった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827285
+    m_Localized: "家には多くの噂が立った\nかつて暮らしていた人の数よりも多くの"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827286
+    m_Localized: "家で最後に暮らした住人の痕跡は\n時の流れに風化していった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827287
+    m_Localized: "親族が訪れ 残されたものを\n見ることもなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827288
+    m_Localized: "住人は消えた\nあたかも 最初から存在しなかったかの如く"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827289
+    m_Localized: "持ち物は すべて失われ\n消えていき 忘れ去られた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827290
+    m_Localized: 何故 人は かくも完全に消滅するのだろうか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827291
+    m_Localized: ひとたび死ねば たちまち痕跡は消えはじめる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827292
+    m_Localized: すべては虚無へ溶けていく
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827293
+    m_Localized: "はじめから この世界に\n存在しなかったかのように"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827294
+    m_Localized: その凍えた手が 私を愛せたなら
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827295
+    m_Localized: お前に そんなことが できただろうか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827296
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827297
+    m_Localized: 祝福しよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827298
+    m_Localized: "お前は奇妙な空間に現れる\n眼前には廊下が延び 端には机がある"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827299
+    m_Localized: …なんだ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827300
+    m_Localized: ここは…どこだ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827301
+    m_Localized: "私を恐れる群衆で\n大都市一つできるだろう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827302
+    m_Localized: "だが 怯える必要はない\n恐れるものなど ここにはない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827303
+    m_Localized: 私に会いたかったのだろう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827304
+    m_Localized: "どうやら そのようだ\nもう叶ったな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827305
+    m_Localized: これから どうなる？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827306
+    m_Localized: "死んだのか？\nここが終わり？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827307
+    m_Localized: "この悲しき地では\nすべてが冬に備えている\n厚い壁 厚い上着 厚い夢"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827308
+    m_Localized: "長き夜の終わりは\nなんと素晴らしきことか\n朝が迫るが 影を守ってやろうか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827309
+    m_Localized: 私を求めているように見えるぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827310
+    m_Localized: 恐れる理由など 何もない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827311
+    m_Localized: 怯えるものなど 何もない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827312
+    m_Localized: "道はねじれ ぬめるように絡まり\nそして 断たれたのだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827313
+    m_Localized: これから どうなる？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827314
+    m_Localized: "死んだのか？\nここが終わり？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827315
+    m_Localized: 長き永遠が待っている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827316
+    m_Localized: "なんと素晴らしきことか\nすべての苦悩に終わりが\nもたらされるのだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827317
+    m_Localized: 望んだ答えを お前は学ぶことになる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827318
+    m_Localized: だが 求める答えは見つからない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827319
+    m_Localized: A:そして習いのごとく 真言を繰り返す
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827320
+    m_Localized: 「恐ろしい」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827321
+    m_Localized: "この先…\n行ける場所はあるのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021568
+    m_Localized: 恐怖に足が竦む
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021569
+    m_Localized: 死んだ…だと？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021570
+    m_Localized: "どういう意味だ\n「死んだ」とは"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021571
+    m_Localized: "私たちは ただ疲れ果て\n夢の中 安らぐに過ぎないかもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021572
+    m_Localized: 私たちは どこか似ている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021573
+    m_Localized: "私は認められざる同胞\n民衆の家族からの異端児だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021574
+    m_Localized: "この先…\n行ける場所はあるのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021575
+    m_Localized: 恐ろしい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021576
+    m_Localized: 無論
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021577
+    m_Localized: "こんなにも小さき王国が\nいかに多くの眠りを飲み込んできたか"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021578
+    m_Localized: お前は どこへ行きたい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021579
+    m_Localized: 心に傷を残した あの眼差しか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021580
+    m_Localized: いや 見たくはあるまい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021581
+    m_Localized: お前は疲れ果てているのだから
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021582
+    m_Localized: 行くべき場所は他にある
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021583
+    m_Localized: "数多の飾り鏡が あつらえられ\n豊穣を たたえたところへ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021584
+    m_Localized: "恐れることはない\n時を生み出したのは私だ\nお前を傷つけるものなど ここにはない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021585
+    m_Localized: "幸い 暗がりには仮面の男も\n他の誰も いはしない\nただ 私の煉瓦の壁に影が落ちるのみ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021586
+    m_Localized: 準備ができたと見える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021587
+    m_Localized: "お前を連れて行こう\n松が星へと届く夜の中へ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021588
+    m_Localized: それこそが お前の望みだろう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021589
+    m_Localized: ここが お前の場所だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021590
+    m_Localized: "道は短いが やがて\n不思議と広く見えるだろう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021591
+    m_Localized: "大きく 塵にまみれ\n妥協に満ちた道として"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021592
+    m_Localized: 享受せよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021593
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021594
+    m_Localized: 死んだのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021595
+    m_Localized: "ここから永遠に\n出られないのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021596
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021597
+    m_Localized: 誰か来るのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021598
+    m_Localized: 映画は見られるのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021599
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021600
+    m_Localized: 誰か来るのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021601
+    m_Localized: 映画は見られるのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021602
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021603
+    m_Localized: 誰か いないのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021604
+    m_Localized: 恐ろしい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021605
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021606
+    m_Localized: 誰か いないのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021607
+    m_Localized: 恐ろしい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021608
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021609
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021610
+    m_Localized: ここでは 昼も夜も意味を持たない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021611
+    m_Localized: どれほど時が過ぎたかも判然としない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021612
+    m_Localized: "だが今は…落ち着いている\nとても 落ち着いている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215872
+    m_Localized: "足音もなく 声もなく\n感じるものもない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215873
+    m_Localized: どうやって来たのかも 覚えていない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215874
+    m_Localized: どうやって出ればいいのかも わからない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215875
+    m_Localized: だが 出たいとも思わない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215876
+    m_Localized: ただ もう少しだけ 続いてほしい…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215877
+    m_Localized: 一体 どんな意味が あったのか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215878
+    m_Localized: なぜ自分は招かれたのか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215879
+    m_Localized: 誰か 迎えにきてくれるのか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215880
+    m_Localized: "一目だけでも また会いたい\nみんなに"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215881
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215882
+    m_Localized: 今は疲れた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215883
+    m_Localized: 少し休もう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215884
+    m_Localized: キノコって 格別じゃろ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215885
+    m_Localized: "伸びて伸びて伸びて…豆の木みたいにのう\n目の前で 一瞬で"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215886
+    m_Localized: "それで 考えてしまうんじゃ\n真夜中の鐘が鳴ったら どうなるのかのう…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215887
+    m_Localized: 菌糸に悪意の塊が溜まるんじゃ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215888
+    m_Localized: なにも残らなく なるまで
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215889
+    m_Localized: "だから 坊主\n菌糸は 激情の吐き先を探すんじゃ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215890
+    m_Localized: 儀式で鎮められるはずじゃった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215891
+    m_Localized: "リンゴの種は 人間とキノコとの絆を\n思い出させるはずじゃった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215892
+    m_Localized: "だが 菌糸は正気を失っとる\n内に秘めた憤怒のあまり 目が眩んどる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215893
+    m_Localized: キノコランドは どこかにあるはずじゃ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215894
+    m_Localized: "菌糸を止めねばの\nキノコが大きく育ちすぎる前に！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215895
+    m_Localized: 地下へ まっしぐらじゃ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215896
+    m_Localized: あっ 手遅れのようじゃの 坊主
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215897
+    m_Localized: "まあ…\nなら しかたあるまい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215898
+    m_Localized: "のう…\nあの コンブチャ まだ持っとるか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215903
+    m_Localized: "天を見よ！\n如何に光が陰るかを！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215904
+    m_Localized: "最早 何者も襲って来るまい\nかの時は過ぎ去った"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215905
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215906
+    m_Localized: "憂いの時は終わった\n我が信徒は誰一人 最早 苦悶せぬはずだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215907
+    m_Localized: 今日こそ 我らが救世の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215908
+    m_Localized: "まずは備えよ\nかくして 待て"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215909
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215911
+    m_Localized: "死者に名を与えん\nその死を無為に せぬために\n死者もまた 我らと等しく\n連れ去られよう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215912
+    m_Localized: "かくして我らは オルンを覆わん\nそれが新しき名だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215913
+    m_Localized: 我らも また 名を授からん
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215914
+    m_Localized: "果たせるかな\n時は満ちた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215915
+    m_Localized: "同胞よ 彼女を呼び求めん\nすでに備わった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215916
+    m_Localized: 虚無へ帰すに非ず 大いなる死に還るのだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215917
+    m_Localized: "我らは知り得た 肉体を大いなる死へ還し\n来世に安寧を見出す術を"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215918
+    m_Localized: "かつて この叡智は大地に宿れども\n大絶滅が命と共に奪った"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215919
+    m_Localized: "Ending: かくして今\n我らは ついに学んだのだ\n大いなる死を招く術を"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215920
+    m_Localized: "声が空に響く\n誰のものか 定かならず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215921
+    m_Localized: "Ending: 汝の声を見つけねば ならぬ地が\n未だ幾多ある"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215922
+    m_Localized: "Ending: されど…汝も我と同じく\nこの道が至る先を知っていよう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215923
+    m_Localized: "Ending: 初めより明らかだった\n我らが出会うべき地は"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215924
+    m_Localized: "Ending: ここ\nこの瞬間だったのだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215925
+    m_Localized: "Ending: 袖に忍ばせる札の如く\n汝を匿うべきか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215926
+    m_Localized: "Ending: 洪水や火災 時の流れより\n汝を護るべきか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215927
+    m_Localized: 'Ending: それぞ 汝の渇望ではないか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215928
+    m_Localized: "Ending: 我は聞く 汝の咆哮 汝の哀歌を\n嘆きの母が昇れば 汝を見出したであろう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215929
+    m_Localized: "Ending: 何故 この地を去る？\n畢竟 夜へ還る というのに"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215930
+    m_Localized: "我は汝を隠そう\n隠し あるべき地へ還そう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215931
+    m_Localized: 'Ending: 愚かなる因果が 我らの前に繰り広げられた'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215932
+    m_Localized: "Ending: だが 賜を崇める方が良かろう\n深き墓の恩寵を"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215933
+    m_Localized: 汝は無より現れ 一身に視線を集めた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215934
+    m_Localized: 開けずにおくべき扉もある
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215935
+    m_Localized: "Ending: 汝は定められておらぬ\n宇宙の狂気を生き延びるようには"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215936
+    m_Localized: 'Ending: …汝の記憶は 我が護ろう'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215937
+    m_Localized: "やあ\n立ち寄るつもりはなかったが…\n幻視を見てな\nここで なにか奇妙なことが起きている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215938
+    m_Localized: "お前の家を見ていると\nひとつの言葉が浮かんでくる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215939
+    m_Localized: "何も望むべくもない深い闇を覗くとき\n冷たい大地がお前を見つめている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215940
+    m_Localized: 何を…したのだ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215941
+    m_Localized: なんのことだか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215942
+    m_Localized: "来訪者を殺す\n他に生きる術があるとでも？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215943
+    m_Localized: わかっているはずだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215944
+    m_Localized: "お前の背後は 影の跡が連なっている\n本来 こうなるはずでは なかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215945
+    m_Localized: "死を恐れているのか？\n至極 当然だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215946
+    m_Localized: "だが お前は道を外した\n死を より引き寄せたに過ぎない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215947
+    m_Localized: "私には手の打ちようがない\nすまない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215948
+    m_Localized: "いや\n確実に道を違えている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215949
+    m_Localized: "待て…\n見えてきたぞ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410176
+    m_Localized: "怯えすぎたのか\nなんということだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410177
+    m_Localized: 恐怖に目が眩んだのだな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410178
+    m_Localized: "これから何かが起こるが\n私には手の打ちようがない\nすまない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410179
+    m_Localized: 承知しているとも
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410180
+    m_Localized: "身の毛もよだつ選択に\n追い込まれたのだな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410181
+    m_Localized: 行き着く先を見るのも痛ましい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410182
+    m_Localized: 一体 なにに怯えていた？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410183
+    m_Localized: 苦痛か？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410184
+    m_Localized: 消え去る恐怖か？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410185
+    m_Localized: 遅かれ早かれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410186
+    m_Localized: "だが…\nお前が選んだのは 早いほうだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410187
+    m_Localized: 本当に すまない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410188
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410189
+    m_Localized: 銃もなく 打ちのめされて
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410190
+    m_Localized: 太陽の光から這って逃げる力も残っていない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410191
+    m_Localized: 自ら苦悩を終わらせる術もない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410192
+    m_Localized: 焼かれていく…ゆっくりと
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410193
+    m_Localized: いるとすれば…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410194
+    m_Localized: "Window: 再び あの子供が目に入る\nだが あそこで なにをしている？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410195
+    m_Localized: "Window: 犬を喰らっているのか？\nいや…獣の胸に密着しているだけだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410196
+    m_Localized: 'Window: 立ち尽くし 身動きがとれない'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410197
+    m_Localized: 'Window: なぜ 母親のもとへ行かない？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410198
+    m_Localized: 'Window: そもそも 本当に妊娠していたのか？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410199
+    m_Localized: "Window: 思考を巡らせるうち\n外の世界は薄れゆき 濃霧に飲まれた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410200
+    m_Localized: そばに気配を感じる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410201
+    m_Localized: "確かに あの子供を見た\nだが これは別の問題だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410202
+    m_Localized: 息も詰まる霧の彼方
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410203
+    m_Localized: あらゆる音は霧に飲み込まれている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410204
+    m_Localized: 沈黙は綿のように世界を包んでいる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410205
+    m_Localized: 人々が囁くような音がする
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410206
+    m_Localized: 声をかけると 途端に音は止まった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410207
+    m_Localized: あるいは災厄の前触れか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410208
+    m_Localized: その腕の中には あの子供が身動ぎしている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410209
+    m_Localized: "もはや この世界に光はもたらされない\n恐らくは"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410210
+    m_Localized: "それは救いなのか\nそれとも呪いなのか"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410211
+    m_Localized: 恐慌に身が竦む
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410212
+    m_Localized: 三人が子供を別方向へ引っ張る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410213
+    m_Localized: "銃を構え 無我夢中で撃つ\n狙いもつけず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410214
+    m_Localized: "なんだ これは？\nなぜ あんな格好を？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410215
+    m_Localized: 霧の奥から さらなる影が現れる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410216
+    m_Localized: "「貴方は予言者」女が言う\n「理解していないのですか？」"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410217
+    m_Localized: 「私たちの救世主」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410218
+    m_Localized: 「誰も備えられて いない地に」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410219
+    m_Localized: 「そして この地は楽園となる」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410220
+    m_Localized: 「貴方は身を捧げ 私たちを救う！」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410221
+    m_Localized: なんなんだ この狂気は？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410222
+    m_Localized: 次は 自分も どうなることか
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410223
+    m_Localized: 群衆の手に きらめく釘が目に入る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410224
+    m_Localized: 恐るべきことが この街で起ころうとしている
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410225
+    m_Localized: 'Gasmask: こんばんは'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410226
+    m_Localized: "Gasmask: 緊急対応について\nあなたの貢献が記録されています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410227
+    m_Localized: 'Gasmask: あなたのような人材が必要です'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410228
+    m_Localized: 意外ですね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410229
+    m_Localized: なぜ私が？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410230
+    m_Localized: "Gasmask: 懸念は了解しています\nですが 心配には当たりません\n報酬は充分に支払われ\n無論 福利厚生も完備されます"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410231
+    m_Localized: "Gasmask: 準備してください\nこれから連行します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410232
+    m_Localized: 興味ない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410233
+    m_Localized: 準備はできてる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410234
+    m_Localized: "Gasmask: あなたは機転が利き 率先して動きます\nそうした人材こそ 我々は求めています"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410235
+    m_Localized: "Gasmask: 我々も何かを見落とす恐れがあります\n新任者は その助けとなります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410236
+    m_Localized: 'Gasmask: 今こそ 新たな人員が必要なのです'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410237
+    m_Localized: 興味ない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410238
+    m_Localized: 準備はできてる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410239
+    m_Localized: 'Gasmask: 問答は終わりです'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410240
+    m_Localized: "Gasmask: 荷造りしてください\nさもなければ\n車両へ押し込むことになります"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410241
+    m_Localized: 'Gasmask: 選ぶのは あなたです'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410242
+    m_Localized: "Gasmask: 話が早くて助かります\n必需品の他は所持しないでください\n住居は提供します"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410243
+    m_Localized: "Gasmask: ここへ戻ることは ありません\n少なくとも 当面のところは"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410244
+    m_Localized: 'Gasmask: 待っています'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410245
+    m_Localized: "狼狽する\nこれがFEMAの標準的な採用なのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410246
+    m_Localized: "巨大組織だ\n数多の人間と関わることになるはずだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410247
+    m_Localized: 長期勤務が待っているに違いない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410248
+    m_Localized: "さておき\nこの仕事は どれほど危険なのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410249
+    m_Localized: "正直 こうして人を捕まえ\nその場で雇うなど 異様だ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410250
+    m_Localized: "そんなに離職率が高いのか？\nなぜ 採用が…こうも強引なんだ？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410251
+    m_Localized: 隔離区域への人の護送か？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410252
+    m_Localized: その先は？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410253
+    m_Localized: 同居人が どうなったのかも わからない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410254
+    m_Localized: "もう二度と かつての暮らしには\nもどれない気がする"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410255
+    m_Localized: "この仕事は長期的生存を想定していないと\nブリーフィングで明らかになった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410256
+    m_Localized: "唯一の後悔は\nあのポスターを置いてきたことだ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410257
+    m_Localized: "ドアの向こうから異常者の声がする\n剥き出しの害意を吐き散らかしている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410258
+    m_Localized: "だが じっと待つ\nなにも起きないよう 祈りながら"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410259
+    m_Localized: "武装した男の目には 怒りの靄が宿る\nどんな来訪者よりも恐ろしい"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410260
+    m_Localized: 荒い息づかいが聞こえる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410261
+    m_Localized: クソッ やられた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410262
+    m_Localized: "こちらが容易に屈しないから 長引かせたんだ\nだが他の人たちは？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410263
+    m_Localized: "静かになった\n確認しないと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410264
+    m_Localized: こんなクズのせいで 大勢が死んだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410265
+    m_Localized: お前みたいな奴が 友人を殺したんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410266
+    m_Localized: "そして お前みたいな奴は誰一人\n他人に安らぎを与えるものか"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410267
+    m_Localized: なんだ 反撃されないと思ったか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410268
+    m_Localized: 叩き潰してやる！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410269
+    m_Localized: 狂気に呪われた精神がな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410270
+    m_Localized: 地の底へ叩き込んでやる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410271
+    m_Localized: 貴様らの血で なにもかも溺れさせてやる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410272
+    m_Localized: "武器を手にしたクソ野郎は\n今日で残らず死ぬ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410273
+    m_Localized: 一人 残らずな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836555284480
+    m_Localized: 「太陽活動は弱まりつつあり…」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836555284481
+    m_Localized: 「…科学者の予測によれば 数日以内に…」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478784
+    m_Localized: 信頼は薄れる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478785
+    m_Localized: 視線を感じる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478786
+    m_Localized: 死の恐怖に 体が麻痺する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478787
+    m_Localized: 逃げようという考えすら浮かばない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478788
+    m_Localized: 恐怖に目が曇る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478789
+    m_Localized: 体が引き裂かれる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478790
+    m_Localized: 暗闇が視界を覆う
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478791
+    m_Localized: 心に浮かぶのは 小さく寂しい家
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478792
+    m_Localized: 保っているのも 難しい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478793
+    m_Localized: "喜ばしきかな 汝は我らに加わった\n大いなる死は 無為に汝を\n選び給うたに非ず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478794
+    m_Localized: "旧き死の概念は 真なる死の道より\n我らを遠ざけていた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478795
+    m_Localized: されど今や 本来あるべき道を歩んでいる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478796
+    m_Localized: 安寧は万人を抱擁する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478797
+    m_Localized: 誰一人 見捨てぬ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478798
+    m_Localized: "大いなる死 御自ら 我らの元へ\n降り立ち給うやもしれぬ…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478799
+    m_Localized: "感じるか？\n彼女が ここに在り給う"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478800
+    m_Localized: 今こそ 行わねばならん
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478801
+    m_Localized: 我は汝を隠そう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478802
+    m_Localized: "元より在るべき地へと\n汝を還さん"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478803
+    m_Localized: 汝に安寧を授けん
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478804
+    m_Localized: 人類が長らく切望したものを
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478805
+    m_Localized: "汝は定められておらぬ\n宇宙の狂気を生き延びるようには"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478806
+    m_Localized: 汝の記憶は 我が護ろう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478807
+    m_Localized: "Vigilante: クソ野郎！カス来訪者が\n俺を騙せるとでも思ったか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478808
+    m_Localized: 'Vigilante: 死ぬ時間だ マヌケ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478809
+    m_Localized: 'Vigilante: クソッ 薄汚い来訪者が！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478810
+    m_Localized: 'Vigilante: 遊びは終わりだ クソガキ…'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478811
+    m_Localized: "Vigilante: 虚仮にしているのか？\n本気で引っかかるとでも？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478812
+    m_Localized: 'Vigilante: おしまいだよ イキり野郎！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478813
+    m_Localized: "それで 何人 殺戮した？\n何人 焼き殺した？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062336
+    m_Localized: とても静かだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062337
+    m_Localized: 妨げる者もいない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062338
+    m_Localized: だが それは後のこと
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062339
+    m_Localized: 事態が悪化すれば キノコは急速に育つ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062340
+    m_Localized: そして キノコが大きく育つほど…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062341
+    m_Localized: "溜まった末\n傘が地球全体を覆うかもしれん"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256640
+    m_Localized: "さあ ついて来るんじゃ\n走れ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256641
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256642
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256643
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256644
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256645
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256646
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256647
+    m_Localized: 死は恐ろしい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256648
+    m_Localized: 恐怖ひとつで人は狂う
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256649
+    m_Localized: "お前に授けられた\n天命が見える"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256650
+    m_Localized: いずれにせよ そうなるのだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256651
+    m_Localized: 皆に路上へ放り出されたのだな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256652
+    m_Localized: 責める相手もいない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256653
+    m_Localized: なにかが ずっと 見つめているのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256654
+    m_Localized: 会うのは吉兆なのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256655
+    m_Localized: なにが起きている？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256656
+    m_Localized: 「貴方は世界の罪を告発する」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256657
+    m_Localized: 「あの子は 恐怖の王国へ 我らを導く」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256658
+    m_Localized: 「ですが 貴方は…闇を払う」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256659
+    m_Localized: その言葉に 体が麻痺する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256660
+    m_Localized: どう転ぼうとも 子供を殺した相手だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256661
+    m_Localized: 'Gasmask: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256662
+    m_Localized: 'Gasmask: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256663
+    m_Localized: 'Gasmask: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256664
+    m_Localized: 'Gasmask: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256665
+    m_Localized: いつ帰してもらえるかも わからない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256666
+    m_Localized: どんな仕事かさえ 不明だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256667
+    m_Localized: 自分の家が どうなったのかも知らない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256668
+    m_Localized: 'Vigilante: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256669
+    m_Localized: 'Vigilante: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256670
+    m_Localized: 'Vigilante: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256671
+    m_Localized: 'Vigilante: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256672
+    m_Localized: 'Vigilante: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256673
+    m_Localized: 'Vigilante: …'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256674
+    m_Localized: "俺は もう すべてを失った\nだが…お前には 失うものが 残っている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884693868544
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884744200192
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884744200193
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884744200194
+    m_Localized: …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361586487812096
+    m_Localized: "所有品も 創作物も\n仕事も 思考も 感情も"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361586487812097
+    m_Localized: 今は もう ない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195392
+    m_Localized: ここまでだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195393
+    m_Localized: "生き延びた\n一人きりで"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195394
+    m_Localized: こうするより 他になかった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195395
+    m_Localized: なにもかも きちんとやった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195397
+    m_Localized: 何時間 過ぎた？何日 経った？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195399
+    m_Localized: 他に誰かいたら なにか変わっただろうか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195400
+    m_Localized: "父に どれほど憎んでいるか伝えられていたら\n家から出る力を 得られただろうか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195401
+    m_Localized: 母は 自分のしたことを 誇りに思っただろうか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195402
+    m_Localized: "壁は崩れ落ちた\nもう出口はない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195403
+    m_Localized: "しかし 出て行く必要など ないのかもしれない\nこれが 終わりなのかもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195404
+    m_Localized: 唯一の後悔は 憎しみを抱えたまま死ぬこと
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195405
+    m_Localized: "父への憎しみ 自分への憎しみ\n全人類への憎しみ"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195406
+    m_Localized: "母が助けを必要としていたとき\n誰も手を差し伸べてくれなかった"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195407
+    m_Localized: "\nあの窓を覗いたときを思い出すと まだ手が震える"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195408
+    m_Localized: すべては崩れ落ちた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195409
+    m_Localized: "家が憎くて ならなかった\n失って 良かったのかもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195410
+    m_Localized: "すべては塵に帰した\nなのに なぜだか 心が軽い"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195411
+    m_Localized: 昔の生活を思い出させるものは なにもない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195412
+    m_Localized: 母に見せられないのが 残念だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195413
+    m_Localized: どうして こんなに体が 軽いんだ？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195414
+    m_Localized: "わからない…\nただ あの重苦しい感覚は もうない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195415
+    m_Localized: 消えた
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38371868175048704
+    m_Localized: なにもかも きちんとやった...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38371868175048705
+    m_Localized: 父は母を追い詰めた
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

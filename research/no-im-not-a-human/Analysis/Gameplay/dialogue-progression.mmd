@@ -1,0 +1,42 @@
+%% Static source graph; real CIL decompilation. Solid arrows=direct/interface calls; dotted arrows=C# or Unity events/data binding, not unconditional runtime calls.
+%% Source root: D:/NoImNotAHuman-Research/DecompiledCode/Assembly-CSharp
+flowchart TD
+  EventPoll["GameEventsManager.OnUpdateAction<br/>every 1s, night only"] --> Conditions["AGameEvent.CheckConditions<br/>day/time/delay/prerequisites"]
+  Conditions -. "CharacterCame C# event" .-> Rooms["RoomsManager.OnCharacterCame"]
+  Rooms --> Entrance["EntranceRoom.ShowFullSizeCharacter"]
+  Entrance --> Run["DialogManager.RunDialog"]
+  Run --> View["DialogView.StartDialog"]
+  View --> Yarn["FakeDialogRunner : DialogueRunner<br/>StartDialogue(nodeName)"]
+  Yarn -. "YarnCommand attribute binding" .-> Commands["DialogCommandsInstance"]
+  Commands --> LetIn["ICharactersManager.LetIn"]
+  Commands --> Refuse["ICharactersManager.Refuse"]
+  Commands --> Kill["ICharactersManager.Kill/ExileCharacter"]
+  Yarn -. "Metadata / selected option" .-> Opt["FakeOptionView"]
+  Opt -. "energy callbacks through runner/view/manager" .-> Act["DayNightController.Act<br/>DayActions minus 1"]
+  Yarn -. "onDialogueComplete UnityEvent" .-> End["DialogView.EndDialog / DialogManager.OnDialogEnded"]
+  End -. "registered end action" .-> Complete["GameEventsManager.CompleteEvent"]
+  Complete -. "AnyEventCompleted" .-> LastChange["DayNightController updates LastChange"]
+  Complete --> EventsSave["CompletedEvents / DingDongEvents"]
+  LetIn --> NPCSave["CharactersManagerSaveData"]
+  Refuse --> NPCSave
+  Kill --> NPCSave
+  NPCSave -. "room direct callback" .-> Pose["CharacterRoomObjectView<br/>sprite pose / corpse / bags"]
+  Commands -. "ChangePose event" .-> Pose
+  Commands -. "ChangePoseTomorrow event" .-> Tomorrow["DayNightSaveData.ChangePosesTomorrow"]
+  Act --> SleepGate["HasCompletedDaytimeGoal<br/>Day energy <= 0 / night all events completed"]
+  SleepGate --> Change["DayNightController.Change"]
+  Change --> Transition["asleep / dream / InitNewNight or InitNewDay"]
+  Transition -. "Changed event" .-> Ending["GameplayEndingManager.ActualEnding<br/>highest Priority fulfilled"]
+  Ending --> Trigger["AGameplayEnding.Trigger"]
+  Commands -. "Ending event" .-> Clip["ActualEnding.ShowClip -> EndingShower.ShowEnding"]
+  Trigger -. "data/object change or special day" .-> Transition
+  SaveHandler["GameSaveDataHandler"] --> Json["JSON maps keyed by service Type string<br/>normal / reserve"]
+  NPCSave -. "ASavableClass registration" .-> SaveHandler
+  EventsSave -. "ASavableClass registration" .-> SaveHandler
+  Tomorrow -. "ASavableClass registration" .-> SaveHandler
+  Json --> AES["EncryptedPrefsDataStorage<br/>AES(JSON)"]
+  AES --> Prefs["PlayerPrefs.SetString + Save"]
+  AES --> Cloud["SteamRemoteStorage.Write<br/>GameSaveData.sav"]
+%% Evidence: GameEventsManager.cs L139-165; RoomsManager.cs L268-277; EntranceRoom.cs L95-115; DialogManager.cs L673-686/L834-854; DialogView.cs L82-101/L170-200.
+%% Evidence: DialogCommandsInstance.cs L145-250; FakeOptionView.cs L23-100; DayNightController.cs L267-441/L501-505; GameplayEndingManager.cs L48-62/L187-195.
+%% Evidence: GameSaveData.cs L13-71; GameSaveDataHandler.cs L49-74; EncryptedPrefsDataStorage.cs L15-34; SteamCloudSaver.cs L33-45.

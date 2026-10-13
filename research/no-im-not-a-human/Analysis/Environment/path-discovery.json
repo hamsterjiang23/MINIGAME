@@ -1,0 +1,154 @@
+{
+  "observedAtUtc": "2026-10-13T02:50:53.2220381Z",
+  "requestedGameDirectory": "D:\\SteamLibrary\\steamapps\\common\\NoImNotAHuman",
+  "discoveredGameDirectory": "E:\\steam\\steamapps\\common\\No, I'm not a Human",
+  "steamInstallDirectory": "E:\\steam",
+  "appId": "3180070",
+  "buildId": "23967901",
+  "evidence": {
+    "manifestPath": "E:\\steam\\steamapps\\appmanifest_3180070.acf",
+    "gameMarkers": [
+      {
+        "relativePath": "NoImNotAHuman.exe",
+        "absolutePath": "E:\\steam\\steamapps\\common\\No, I'm not a Human\\NoImNotAHuman.exe",
+        "exists": true,
+        "directory": false,
+        "bytes": 667648
+      },
+      {
+        "relativePath": "UnityPlayer.dll",
+        "absolutePath": "E:\\steam\\steamapps\\common\\No, I'm not a Human\\UnityPlayer.dll",
+        "exists": true,
+        "directory": false,
+        "bytes": 35748776
+      },
+      {
+        "relativePath": "GameAssembly.dll",
+        "absolutePath": "E:\\steam\\steamapps\\common\\No, I'm not a Human\\GameAssembly.dll",
+        "exists": true,
+        "directory": false,
+        "bytes": 81678336
+      },
+      {
+        "relativePath": "NoImNotAHuman_Data",
+        "absolutePath": "E:\\steam\\steamapps\\common\\No, I'm not a Human\\NoImNotAHuman_Data",
+        "exists": true,
+        "directory": true,
+        "bytes": 1
+      },
+      {
+        "relativePath": "NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame",
+        "absolutePath": "E:\\steam\\steamapps\\common\\No, I'm not a Human\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame",
+        "exists": true,
+        "directory": true,
+        "bytes": 1
+      }
+    ],
+    "manifestFields": {
+      "appid": "3180070",
+      "name": "No, I'm not a Human",
+      "installdir": "No, I'm not a Human",
+      "StateFlags": "4",
+      "buildid": "23967901",
+      "SizeOnDisk": "2460965987"
+    },
+    "libraryConfigText": "\"libraryfolders\"\n{\n\t\"0\"\n\t{\n\t\t\"path\"\t\t\"E:\\\\steam\"\n\t\t\"label\"\t\t\"\"\n\t\t\"contentid\"\t\t\"2976985971208786472\"\n\t\t\"totalsize\"\t\t\"0\"\n\t\t\"update_clean_bytes_tally\"\t\t\"2149114976\"\n\t\t\"time_last_update_verified\"\t\t\"1791858930\"\n\t\t\"apps\"\n\t\t{\n\t\t\t\"228980\"\t\t\"0\"\n\t\t\t\"3180070\"\t\t\"0\"\n\t\t}\n\t}\n}\n",
+    "registry": [
+      {
+        "path": "HKCU:\\Software\\Valve\\Steam",
+        "SteamPath": "e:/steam",
+        "InstallPath": null,
+        "SteamExe": "e:/steam/steam.exe"
+      },
+      {
+        "path": "HKLM:\\SOFTWARE\\WOW6432Node\\Valve\\Steam",
+        "SteamPath": null,
+        "InstallPath": "E:\\steam",
+        "SteamExe": null
+      },
+      {
+        "path": "HKLM:\\SOFTWARE\\Valve\\Steam",
+        "SteamPath": null,
+        "InstallPath": "E:\\steam",
+        "SteamExe": null
+      }
+    ],
+    "libraryConfig": "E:\\steam\\steamapps\\libraryfolders.vdf"
+  },
+  "boundedSearch": {
+    "steamProcessFound": false,
+    "strategy": "Steam registry -> libraryfolders.vdf -> app manifests -> shallow game root/Data listing; root-level Steam/SteamLibrary/steamapps probes on C,D,E,F",
+    "recursiveDiskSearchPerformed": false,
+    "pathProbes": [
+      {
+        "path": "D:\\SteamLibrary\\steamapps\\common\\NoImNotAHuman",
+        "exists": false
+      },
+      {
+        "path": "D:\\SteamLibrary",
+        "exists": false
+      },
+      {
+        "path": "C:\\Program Files (x86)\\Steam",
+        "exists": false
+      },
+      {
+        "path": "C:\\Program Files\\Steam",
+        "exists": false
+      },
+      {
+        "path": "D:\\Steam",
+        "exists": false
+      },
+      {
+        "path": "C:\\Steam",
+        "exists": false
+      },
+      {
+        "path": "C:\\SteamLibrary",
+        "exists": false
+      },
+      {
+        "path": "C:\\steamapps",
+        "exists": false
+      },
+      {
+        "path": "D:\\steamapps",
+        "exists": false
+      },
+      {
+        "path": "E:\\SteamLibrary",
+        "exists": false
+      },
+      {
+        "path": "E:\\steamapps",
+        "exists": false
+      },
+      {
+        "path": "F:\\Steam",
+        "exists": false
+      },
+      {
+        "path": "F:\\SteamLibrary",
+        "exists": false
+      },
+      {
+        "path": "F:\\steamapps",
+        "exists": false
+      },
+      {
+        "path": "E:\\steam",
+        "exists": true
+      },
+      {
+        "path": "E:\\steam\\steamapps\\libraryfolders.vdf",
+        "exists": true
+      },
+      {
+        "path": "E:\\steam\\config\\libraryfolders.vdf",
+        "exists": true
+      }
+    ]
+  },
+  "sourceMutationsPerformed": false
+}

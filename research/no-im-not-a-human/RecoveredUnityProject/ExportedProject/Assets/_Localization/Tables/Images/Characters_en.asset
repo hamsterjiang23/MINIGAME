@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -149288805, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Characters_en
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2cf955adea53cb34f9f786c65d547049, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7104876544
+    m_Localized: f95fdd2bb2ec9a947a1a0602461a23f3[fek_teeth_eng]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1422451789824
+    m_Localized: 6a80d8bb10f3c7542901a54761cb3a9b[fek_hands_eng]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6087011881443328
+    m_Localized: c909e04dc423a534c866a2b05a596224[fek_eyes_eng]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6087378803351552
+    m_Localized: 48f3c6a41b7ba5f42932a9f28e4d46e5[fek_photo_eng]
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

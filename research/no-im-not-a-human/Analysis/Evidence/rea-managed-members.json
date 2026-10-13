@@ -1,0 +1,84 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"evidence_id\":\"ev_fa8e1c7c569b7fec562aa7947cb4de258ce2674fedc4cc15ca218ad6448716a6\",\"subject\":{\"name\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\\\Managed\\\\Assembly-CSharp.dll\",\"digest\":{\"sha256\":\"c674f171c61b644e6e746e0ced079ffa365abee2336d04ea9e67cbbc93e88213\"},\"format\":\"pe\",\"architecture\":\"x86\",\"local_path\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\\\Managed\\\\Assembly-CSharp.dll\"},\"provider\":{\"id\":\"rea-dotnet-static\",\"name\":\"REA managed static analysis provider\",\"version\":\"1\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis\",\"operation\":\"inspect_managed_members\",\"parameters\":{\"path\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\\\Managed\\\\Assembly-CSharp.dll\"},\"raw_result\":null,\"normalized_result\":{\"artifact\":{\"path\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\\\Managed\\\\Assembly-CSharp.dll\",\"sha256\":\"c674f171c61b644e6e746e0ced079ffa365abee2336d04ea9e67cbbc93e88213\",\"byte_length\":948736,\"format\":\"pe\"},\"module\":null,\"metadata\":{\"status\":\"partial\",\"version\":null,\"table_row_counts\":{}},\"identity_scope\":{\"token_identity\":\"build-local\",\"requires_artifact_sha256\":\"c674f171c61b644e6e746e0ced079ffa365abee2336d04ea9e67cbbc93e88213\",\"requires_mvid\":null},\"types\":[],\"fields\":[],\"methods\":[],\"member_refs\":[],\"call_edges\":[],\"field_accesses\":[],\"coverage\":{\"state\":\"unavailable\",\"issues\":[{\"code\":\"resource-limit\",\"scope\":\"metadata.representation\",\"offset\":143152,\"detail\":\"Managed metadata exceeds the 67108864 byte representation budget\"}]},\"limitations\":[\"The CLI metadata could not be admitted; managed member inspection is unavailable.\"]},\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"The CLI metadata could not be admitted; managed member inspection is unavailable.\"],\"locations\":[{\"kind\":\"file-offset\",\"offset\":0}],\"evidence_links\":[]}"
+    }
+  ],
+  "structuredContent": {
+    "evidence_id": "ev_fa8e1c7c569b7fec562aa7947cb4de258ce2674fedc4cc15ca218ad6448716a6",
+    "subject": {
+      "name": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\Managed\\Assembly-CSharp.dll",
+      "digest": {
+        "sha256": "c674f171c61b644e6e746e0ced079ffa365abee2336d04ea9e67cbbc93e88213"
+      },
+      "format": "pe",
+      "architecture": "x86",
+      "local_path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\Managed\\Assembly-CSharp.dll"
+    },
+    "provider": {
+      "id": "rea-dotnet-static",
+      "name": "REA managed static analysis provider",
+      "version": "1"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "inspect_managed_members",
+    "parameters": {
+      "path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\Managed\\Assembly-CSharp.dll"
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "artifact": {
+        "path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\\Managed\\Assembly-CSharp.dll",
+        "sha256": "c674f171c61b644e6e746e0ced079ffa365abee2336d04ea9e67cbbc93e88213",
+        "byte_length": 948736,
+        "format": "pe"
+      },
+      "module": null,
+      "metadata": {
+        "status": "partial",
+        "version": null,
+        "table_row_counts": {}
+      },
+      "identity_scope": {
+        "token_identity": "build-local",
+        "requires_artifact_sha256": "c674f171c61b644e6e746e0ced079ffa365abee2336d04ea9e67cbbc93e88213",
+        "requires_mvid": null
+      },
+      "types": [],
+      "fields": [],
+      "methods": [],
+      "member_refs": [],
+      "call_edges": [],
+      "field_accesses": [],
+      "coverage": {
+        "state": "unavailable",
+        "issues": [
+          {
+            "code": "resource-limit",
+            "scope": "metadata.representation",
+            "offset": 143152,
+            "detail": "Managed metadata exceeds the 67108864 byte representation budget"
+          }
+        ]
+      },
+      "limitations": [
+        "The CLI metadata could not be admitted; managed member inspection is unavailable."
+      ]
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "The CLI metadata could not be admitted; managed member inspection is unavailable."
+    ],
+    "locations": [
+      {
+        "kind": "file-offset",
+        "offset": 0
+      }
+    ],
+    "evidence_links": []
+  }
+}

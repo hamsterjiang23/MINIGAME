@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c4699b7b7711d1618c9096a9dd2cf7, type: 3}
+  m_Name: Cigarettes
+  m_EditorClassIdentifier:
+  <Consumable>k__BackingField: 1
+  <Name>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+    m_TableEntryReference:
+      m_KeyId: 77562143573790720
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <GameplayDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+    m_TableEntryReference:
+      m_KeyId: 77560897118916608
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <NarrativeDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+    m_TableEntryReference:
+      m_KeyId: 77560970431156224
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

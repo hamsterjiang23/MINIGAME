@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd18013e1530d6ee2594d3454f9b000, type: 3}
+  m_Name: Gun
+  m_EditorClassIdentifier:
+  <Style>k__BackingField: 5
+  <BaseImage>k__BackingField:
+    <CyclingType>k__BackingField: 1
+    <Frames>k__BackingField:
+    - {fileID: 21300000, guid: 82ba59c0d6e375e428bb26b2e1b9c7ad, type: 2}
+    - {fileID: 21300000, guid: ef5d7cd2a0a8c0f45bedf360f06d9608, type: 2}
+    - {fileID: 21300000, guid: 6d9b5a731d7897b46a899b7a8cb46e65, type: 2}
+    - {fileID: 21300000, guid: 2fb3eec8075418043b417357933f791d, type: 2}
+    - {fileID: 21300000, guid: b0ea5c46c5ba96443ac1a8e28b293a7f, type: 2}
+    - {fileID: 21300000, guid: 43ef2baba8a82f04582e4d871a9c12ad, type: 2}
+    <FramesPerSecond>k__BackingField: 12
+  <HoveredImage>k__BackingField:
+    <CyclingType>k__BackingField: 1
+    <Frames>k__BackingField:
+    - {fileID: 21300000, guid: 1c33df7963cde8a4e8be537d7478d2e4, type: 2}
+    - {fileID: 21300000, guid: 0c4846a3ae602854181f5a6360347e27, type: 2}
+    - {fileID: 21300000, guid: 3fa3ec75f1084974f9d74bf0f5048e04, type: 2}
+    - {fileID: 21300000, guid: 487660fc2775f30499f7c62291146f12, type: 2}
+    - {fileID: 21300000, guid: 9459fd70bba4a594091a36269b002d23, type: 2}
+    - {fileID: 21300000, guid: fc3e0c3bab09cdb4bb15dd0789d1ccd6, type: 2}
+    <FramesPerSecond>k__BackingField: 12
+  <BaseColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <HoveredColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+  <BasePaddings>k__BackingField: {x: 20, y: 20, z: 20, w: 20}
+  <HoveredPaddings>k__BackingField: {x: 20, y: 20, z: 20, w: 20}

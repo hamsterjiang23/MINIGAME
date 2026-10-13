@@ -1,0 +1,1067 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_en
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2c9f148e973fd914eb8426fb4d22c384, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16302985216
+    m_Localized: Entrance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Bathroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Bedroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Office
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Kitchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Storage Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Hall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: I don't want to sleep right now. I'm full of energy!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: I can't sleep now. What if someone comes here looking for shelter?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Looks like no one else is coming tonight.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: Smells like someone died tonight...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Quit to menu without saving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: No, I'm Not a Human, I'm {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: That beer sure made me sleepy. I should go to bed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Bober Černý
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: World’s gone to shit, but a cold beer still hits right.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: Reduces   <sprite=0> to 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: Pure chemicals. But why not drink it if you need to stay up?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Coffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: I don’t drink hot coffee anymore. Probably no one does.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1   <sprite=1> for a few days
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Thank you for playing!\n Make sure to wishlist...if you're a human!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43618340848783360
+    m_Localized: NO SIGNAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: View
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Basement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: House
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Phone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Cigarettes ({0} remaining)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: Smoke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Nail down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Mushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: I'll put it in the fridge… even though I kinda want to eat it right now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Dig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Hole
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "1. Today the world was built anew,\nAnd in the basement, mushroom grew.\nIt towered high, and time is nigh\nTo eat it whole, if one would try.\n\n2. To welcome guests is not for strong,\nThe Mushroom stands, tall and long\nUnder Tree of Apple can you rest,\nShe'll feed you with her sweet fruit's best.\n\n\n3. The day will come, when one must kneel\nBefore the mushroom's mighty peal\nWhile on the clock the hand shall climb.\nMake haste, my friend, there is no time!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Cat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Talk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Typing Effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Fullscreen Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Maximized Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Hang up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Put down [hold]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Use item [hold]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: For Rest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: Neighbor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: Psychics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Phone Numbers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Coffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Looks like I won't be picking up any more radio broadcasts today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: crazy granny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Instructions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Better not go in there right now. I'll check during the day.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: I'm afraid looking out right now will make me go blind. I'd better take a peek at night.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: There's no time for this today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: There's no time for this today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: There's no time for this today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: No one will be out on the street at this time of day.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: I think I'm done for today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86605930199502848
+    m_Localized: Wishlist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: To catch a signal, turn the right knob. To do this, left-click and hold on the right knob and move your cursor left or right. The knob for adjusting the volume is on the left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: I removed the wave blocker from the radios. Fuck them!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: Fuck... It doesn't work now
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: If you still can't get a signal, try changing the wave range. To do this, left-click on the handles in the middle and continue searching for the wave you need with the right knob.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86608835057012736
+    m_Localized: "You can see more and more Visitors on the street. The sun is heating the Earth more and more. Death is on our doorstep.\n\nNobody wants to die. But you need to survive, you want to live more than others. Or is it not a desire to live but a fear of the unknown? What is there, after death?\n\nWe don’t know. But maybe the Visitors know something?.. Maybe we’ll be able to survive this summer, so that this fall we can try to discover the answers to the most terrible question.\n\nWe just have to wait a little. Survive the summer heat. Don’t let the Visitors in.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Are you sure you want to quit?\nAll unsaved progress will be lost."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: fucked-up yelling guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: gloomy chick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: The phone lines are down until fall. We'll just have to wait...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Respond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Listen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Search for frequency [rotate]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: Change waveband to FM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: Change waveband to AM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Gamepad Vibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Gamepad Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Gamepad Sensitivity in Rooms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Mouse Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Calendar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: Beer day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: Cucumber day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: Family day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#444444>Received</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#444444>Gave away</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Kombucha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Cigarettes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Kombucha (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Don't use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: Fully restores   <sprite=0>, but costs one   <sprite=1> the next day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: It's been a while since I smoked. Last time was probably...after everyone left, I guess.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: Saves the game. This save persists even after your current playthrough ends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: My favorite drink. Makes me feel good, clears my head. Reminds me of better times.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Miner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: Conjunctivitis Awareness Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: Children's Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: Cashier's Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: Township Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: Hospitality Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: World Thank You Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: Diplomacy Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: Reconciliation Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: National Windmill Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Summer's End Festival
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: big bearded guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: weird no-eyes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: tarot lady
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: amogus tee guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: big-headed smartass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: moustache guy with glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: crying girl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: kid in a cap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: couple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: bald thug in a suit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: cat lady
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: crusty old believer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: stringbean
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: guy in a jersey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: cabby hat guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: cold guy in a coat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: purple bandana guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: smoking woman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: flabby woman with bangs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: black hoodie guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: green cap guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: big ogre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: hunchback
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: loudmouth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: cultist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: neat man with gangrene
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: sweater glasses lady
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: cultist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: guy with his guts hanging out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: mother and child
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: woman with a corpse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: naked fat guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: FEMA suit guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: jaundiced slob
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: super baked dude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: crooked girl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: homeless guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: stitched-mouth guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: depressed woman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: A quiet slice of life, untouched and unaware of the darkness looming ahead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: No one's left. Is this...because of the dream?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: A shot thundered through the milk of the fog, and above the crowd rose wings that reeked of ash.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: The basement became a universe—windows bricked shut, voices merged with the ticking clock. The sun fades...but torment does not end so gently.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: The Visitors were here all along—a warm breath in the dark, a cruel whisper at your back. You will never see the light again, should it ever return.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: They prayed for the final silence. Perhaps their plea was finally heard— it's quiet out there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: They carried you away under sirens, leaving all your memories behind. If only you could return, just to take the poster with you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: The moment his shadow crossed the threshold, the house fell silent. Now all that remains of you are the whispers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: Everyone you met seemed an enemy. Fear blinded you, and others merely finished what you had already begun.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: Mushrooms rose from the soil, building foreign cities anew. You hurried, but the doors to their world were already closed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: One trial ended, only for another to begin. Now, in the eyes of the crowd, you are the one to be feared.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: One heavy step across the line, and everything you feared loses its weight. Time has vanished, leaving only a coldness that feels like comfort.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: From the psychic lady
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: Mama's boy's sister
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: Deadbeat mom's husband
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: Twin's husband
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: Phone Roulette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: Fat aggro's wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: From the FEMA guy's wife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: Foreign Embassy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: That girl's friend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: What a weird mushroom... How did it even grow in a potato?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Temporarily sends you to Mushroom Land.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: Ate the apple. Sweet and sour at the same time…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: Set it to 12, just like the Book of Smiles says.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Rumoralia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Gotta defend myself. Any way I can.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: This world’s cursed... But maybe there's still a chance to survive...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: I should board 'em up. Thing's are only gonna get worse from here...but I have to try.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: FEMA Notice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Beer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Cat food
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Are you sure you want to quit?\nProgress will be saved.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: Save and quit to desktop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Speed Up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: As the world above withers, you remain alone among the ruins of your life. What’s been destroyed is buried for good — along with you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: twitchy one
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: rocker dude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: naked guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: kid with a jacket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: tube top girl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: egghead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: weirdo in a tank top
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: rash guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: daydreamer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: big hairy dude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: inked girl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: sunburned guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: cultist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: doctor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: legless guy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: To catch a signal, turn the right knob. To do this, rotate the right joystick of the gamepad clockwise or counterclockwise. The knob for adjusting the volume is on the left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: If you still can't get a signal, try changing the wave range. To do this, press the left or right bumper and continue searching for the wave you need using the right stick.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: Invert Y (Mouse)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Invert Y (Gamepad)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

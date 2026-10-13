@@ -1,0 +1,83 @@
+{
+  "status": "probe-failed",
+  "readOnly": true,
+  "packages": {
+    "UnityPy": "1.25.4",
+    "TypeTreeGeneratorAPI": "0.0.10"
+  },
+  "targetName": "Alkonost",
+  "unityVersion": "6000.3.10f1",
+  "officialDocumentation": "Analysis/Assets/UnityPy-README.md",
+  "attemptLimit": "One MonoBehaviour from one asset file; no source mutation",
+  "monoBehaviourHeadersChecked": 19,
+  "raw": {
+    "path": "D:\\NoImNotAHuman-Research\\Analysis\\Assets\\Alkonost.original.raw.bin",
+    "bytes": 1388,
+    "sha256": "0b5a0740235b8377a3e9a6eecc3ba54a010684e4716192c62d8a342d88493322"
+  },
+  "source": {
+    "assetFile": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\NoImNotAHuman_Data\\sharedassets0.assets",
+    "pathID": 2615,
+    "byteStart": 85736720,
+    "byteSize": 1388,
+    "unityVersionObserved": "6000.3.10f1"
+  },
+  "generatedTypeTree": {
+    "type": "CharacterSOData",
+    "rootName": "Base",
+    "directChildren": [
+      "m_GameObject",
+      "m_Enabled",
+      "m_Script",
+      "m_Name",
+      "_characterType",
+      "_poses",
+      "_emotions",
+      "_emotionOverrides",
+      "_room",
+      "_nameLocalizationKey",
+      "_corpseMask",
+      "_handsSpriteHuman",
+      "_eyeSpriteHuman",
+      "_teethSpriteHuman",
+      "_earHuman",
+      "_armpitHuman",
+      "_photoHuman",
+      "_handsSpriteImposter",
+      "_eyeSpriteImposter",
+      "_teethSpriteImposter",
+      "_earImposter",
+      "_armpitImposter",
+      "_photoImposter",
+      "_knockSound",
+      "_entranceTheme",
+      "_nightRoomSound",
+      "_isImposter",
+      "_entranceScale",
+      "_roomScale",
+      "_canExile",
+      "_isPreset",
+      "_place",
+      "_isStatusRandomlyGenerated",
+      "_visits",
+      "_allowedDays",
+      "_minimumGamesCompletedToAppear",
+      "_quote",
+      "_gachaPosBias",
+      "_gachaScaleBias",
+      "_FEMARatingBonus",
+      "<ExtraPosition>k__BackingField",
+      "<ExtraRotation>k__BackingField",
+      "<ExtraScale>k__BackingField",
+      "<DialogPosition>k__BackingField",
+      "<DialogScale>k__BackingField",
+      "references"
+    ]
+  },
+  "error": {
+    "type": "ValueError",
+    "message": "Referenced type not found: CharacterBaseSpriteByEmotionData _Code.Characters Assembly-CSharp",
+    "traceback": "Traceback (most recent call last):\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Assets\\probe_character_unitypy.py\", line 67, in main\n    parsed = target.parse_as_dict(node, check_read=True)\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\files\\ObjectReader.py\", line 314, in parse_as_dict\n    return self.read_typetree(nodes=node, wrap=False, check_read=check_read)  # type: ignore\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\files\\ObjectReader.py\", line 252, in read_typetree\n    ret = TypeTreeHelper.read_typetree(\n        node,\n    ...<4 lines>...\n        check_read=check_read,\n    )\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\helpers\\TypeTreeHelper.py\", line 151, in read_typetree\n    obj = read_value(root_node, reader, config)\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\helpers\\TypeTreeHelper.py\", line 230, in read_value\n    value[child.m_Name if config.as_dict else child._clean_name] = read_value(child, reader, config)\n                                                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\helpers\\TypeTreeHelper.py\", line 230, in read_value\n    value[child.m_Name if config.as_dict else child._clean_name] = read_value(child, reader, config)\n                                                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\helpers\\TypeTreeHelper.py\", line 219, in read_value\n    value = [read_value(subtype, reader, config) for _ in range(size)]\n             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\helpers\\TypeTreeHelper.py\", line 200, in read_value\n    ref_type_nodes = get_ref_type_node(value, config.assetsfile)\n  File \"D:\\NoImNotAHuman-Research\\Analysis\\Tools\\AssetRipper\\unitypy-env\\Lib\\site-packages\\UnityPy\\helpers\\TypeTreeHelper.py\", line 108, in get_ref_type_node\n    raise ValueError(f\"Referenced type not found: {cls} {ns} {asm}\")\nValueError: Referenced type not found: CharacterBaseSpriteByEmotionData _Code.Characters Assembly-CSharp\n"
+  },
+  "elapsedSeconds": 0.21723960002418607
+}

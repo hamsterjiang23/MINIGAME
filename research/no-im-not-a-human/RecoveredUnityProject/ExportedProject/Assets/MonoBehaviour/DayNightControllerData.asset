@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf845dd5805bfae23210b08428b50f6c, type: 3}
+  m_Name: DayNightControllerData
+  m_EditorClassIdentifier:
+  _volumeProfiles:
+  - <TimeOfDay>k__BackingField: 0
+    <VolumeProfile>k__BackingField: {fileID: 11400000, guid: b904c0a532c81eb4d872b45bcb5fc3bf, type: 2}
+    <HasLight>k__BackingField: 1
+    <HasActionsCount>k__BackingField: 1
+  - <TimeOfDay>k__BackingField: 1
+    <VolumeProfile>k__BackingField: {fileID: 11400000, guid: b988cc2ec8ce5fd4a9be0ade57901830, type: 2}
+    <HasLight>k__BackingField: 0
+    <HasActionsCount>k__BackingField: 0
+  _lightBeamNightMaterial: {fileID: 2100000, guid: f5eed2761bc257641b2fd89143a10bfa, type: 2}
+  _lightBeamDayMaterial: {fileID: 2100000, guid: 8cb5e88f44df2e84a8150a8c17461c09, type: 2}
+  _fullscreenEffectMaterial: {fileID: 2100000, guid: 1122045c423f6414bacd8f591096cc87, type: 2}
+  _windowMaterial: {fileID: 2100000, guid: f892e6458fcae354d957919dd6cbe285, type: 2}
+  _maxDayActionsByDays: 01000000020000000200000002000000030000000300000003000000030000000300000003000000030000000300000003000000040000000500000000000000000000000000000000000000
+  _lensDistortionByDays:
+  - 0
+  - -0.05
+  - -0.1
+  - -0.15
+  - -0.2
+  - -0.25
+  _colorsCountByDays: 000400000002000000010000800000006000000040000000
+  _lastDay: 14
+  _babyEndingDay: 16
+  _killerEndingDay: 17
+  _femaEndingDay: 15
+  _coffeeBoostDays: 3

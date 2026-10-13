@@ -1,0 +1,1063 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 887365d10d50d8d4a969d13498591929, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16302985216
+    m_Localized: Haustür
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Badezimmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Wohnzimmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Schlafzimmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Büro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Küche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Abstellraum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Fenster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: Ich will jetzt nicht schlafen. Ich bin voller Energie!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: Ich kann jetzt nicht schlafen. Was, wenn jemand kommt und Schutz sucht?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Sieht aus, als würde heute niemand mehr kommen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: Es riecht, als wäre heute Nacht jemand gestorben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Sprache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Lautstärke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Spiel beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Zum Menü zurückkehren ohne zu speichern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Öffnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: No, I’m Not a Human, I’m {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: Das Bier hat mich müde gemacht. Ich sollte schlafen gehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Bober Černý
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: Die Familienbrauerei wird von zwei Brüdern betrieben, die in der Nähe eines Damms wohnen. Der frische, natürliche Charakter des Biers erinnert an einen sommerlichen Waldspaziergang.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: Senkt   <sprite=0> auf 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: Ein starker Energydrink von Jewgeni Arnold, aromatisiert mit den Tränen überarbeiteter Spieleentwickler. Gibt dir Kraft für eine Crunch-Phase ohne Burnout!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Kaffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: Ein leckerer Eiskaffee, der dir einen langanhaltenden Energieschub verleiht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1   <sprite=1> für ein paar Tage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Danke fürs Spielen!\nAuf die Wunschliste setzen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Öffnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Betreten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Benutzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: Ansehen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Keller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: Haus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Telefon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Zigarette (noch {0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: Rauchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Vernageln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Gesamt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Musik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Speichern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: Neues Spiel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Fortsetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: KWJOLACNPUQRMBIFYXEHZTSVGDkwjolacnpuqrmbifyxehztsvgd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Pilz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: Ich werde das in den Kühlschrank stellen ... obwohl ich es eigentlich sofort essen möchte.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Graben
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Loch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "1. Die Stadt entsteht neu, schneller und schneller,\nund stumm wächst der Pilz unten im Keller.\nHoch ragt er auf, doch wer würd es wagen\nihn ganz zu verspeisen, ohne zu versagen?\n\n2. Wer Gäste empfängt, ist aus schwachem Holz.\nDer Pilz steht allein, aufrecht und stolz.\nDoch der Apfelbaum gewährt dir Rast\nund nährt dich mit Früchten von seinem Ast.\n\n\n3. Einst wird er sich beugen mit Demut und Acht\nvor der Kraft des Pilzes und all seiner Macht.\nDie Zeit schreitet voran, das Schicksal beginnt,\nspute dich, mein Freund, bevor sie verrinnt."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Streicheln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Katze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Zurück
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Bildschirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Reden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Tod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Tippeffekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Exklusives Vollbild
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Vollbild-Fenster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Maximiertes Fenster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Fenster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Auflegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Ablegen [halten]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Rennen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Verwenden [halten]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Kaffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Sieht aus, als könnten Sie heute keine Radiosendungen mehr empfangen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Anleitung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Ich sollte jetzt nicht da reingehen, sondern lieber tagsüber nachsehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: Ich will nicht blind werden. Ich sollte lieber nachts nachsehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: Dafür ist heute keine Zeit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: Dafür ist heute keine Zeit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: Zu dieser Tageszeit wird niemand auf der Straße sein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: Dafür ist heute keine Zeit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: Ich glaube, ich habe genug für heute.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: "Drehen Sie den rechten Regler, um ein Signal zu empfangen. Halten Sie dafür die linke Maustaste auf dem rechten Regler gedrückt und bewegen Sie Ihren Cursor nach links oder rechts.\n\nDer Regler für die Lautstärke ist auf der linken Seite."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: "Ich habe den Frequenzblocker aus dem Radio entfernt\nscheiß auf die!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: verdammt, das funktioniert jetzt nicht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: Falls Sie kein Signal bekommen, ändern Sie den Frequenzbereich. Klicken Sie dafür mit der linken Maustaste auf die Knöpfe in der Mitte und suchen Sie mit dem rechten Regler weiter nach der richtigen Frequenz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86605930199502848
+    m_Localized: Wunschliste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86608835057012736
+    m_Localized: "Sie sehen immer mehr Besucher auf der Straße. Die Sonne heizt die Erde immer weiter auf. Der Tod steht an Ihrer Türschwelle.\n\nNiemand will sterben. Aber Sie haben einen noch stärkeren Überlebenswillen als andere. Oder ist es die Angst vor dem Unbekannten? Was kommt nach dem Tod?\n\nWir wissen es nicht. Aber vielleicht wissen die Besucher mehr? Falls wir diesen Sommer überleben, können wir im Herbst vielleicht die Antworten auf diese furchterregendste aller Fragen suchen.\n\nWir müssen nur ein wenig warten. Überleben Sie die Sommerhitze. Lassen Sie keine Besucher herein.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Sind Sie sicher, dass Sie beenden möchten?\r\nAlle nicht gespeicherten Fortschritte gehen verloren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: Nein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: dieser irre Schreihals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: das schwermütige Mädchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: die verrückte Oma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: Das Telefonnetz fällt bis zum Herbst aus. Wir müssen warten ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Antworten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Zuhören
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Frequenz suchen [drehen]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: Frequenzband auf FM stellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: Frequenzband auf AM stellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Gamepad-Vibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Gamepad-Empfindlichkeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Gamepad-Empfindlichkeit in Innenräumen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Maus-Empfindlichkeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Steuerung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Kombucha (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Nicht verwenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: Stellt   <sprite=0> vollständig wieder her, kostet aber am nächsten Tag 1   <sprite=1>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: Ich habe lange nicht mehr geraucht. Das letzte Mal war ... wahrscheinlich, als alle verschwunden sind.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Zigaretten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: "Speichert das Spiel. Der Fortschritt bleibt auch nach dem Abschluss des Durchlaufs erhalten.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: Mein Lieblingsgetränk. Es gibt mir ein gutes Gefühl und macht mir den Kopf frei. Das erinnert mich an bessere Zeiten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Kombucha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Minenarbeiter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: „For Rest“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: Nachbar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: Hellseher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Telefonnummern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Kalender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: "Tag der Binde-\nhautentzündung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: Tag der Kinder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: Tag der Kassierer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: Tag der Gemeinde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: Tag der Gastfreundschaft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: Internationaler Tag des Danks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: Tag der Diplomatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: Tag der Versöhnung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: Nationaler Tag der Windmühlen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Sommerabschlussfest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: Tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#225555>{1}</color> x{0} <color=#444444>erhalten</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#225555>{1}</color> x{0} <color=#444444>weggegeben</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Überspringen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: dieser Waldschrat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: dieser Augenlose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: diese Esoteriktante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: dieser Amogus-Typ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: dieser Klugscheißer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: dieser Schnurrbarttyp mit Brille
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: diese Heulsuse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: dieses Mützenmädchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: dieses Pärchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: dieser Glatzkopf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: diese Katzenlady
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: diese Nonne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: diese Bohnenstange
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: dieser Trikottyp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: dieser Taxifahrer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: dieser frierende Kerl im Mantel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: dieser Stirnbandtyp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: diese Raucherin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: diese Dicke mit Pony
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: dieser Kapuzentyp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: dieses Grünkäppchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: dieser Oger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: dieser Bucklige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: diese Meckerliese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: dieser Sektenheini
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: dieser Mann mit Wundbrand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: diese Kindergärtnerin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: dieser Sektenheini
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: dieser angeschossene Mann
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: diese Mutter mit Kind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: diese Frau mit Leiche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: dieser nackte Fettsack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: dieser FEMA-Typ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: dieser gelbsüchtige Schmutzfink
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: dieser bekiffte Typ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: dieses gekrümmte Mädchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: dieser Obdachlose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: dieser zugenähte Typ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: diese depressive Frau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: Ein stiller Ausschnitt des Lebens, unberührt und ahnungslos gegenüber der lauernden Dunkelheit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Sammlung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: Tag des Bieres
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: Tag der Gurken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: Tag der Familie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Rumoralia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: Es ist niemand mehr da. Ist das ... wegen des Traums?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: Ein Schuss donnerte durch den milchigen Nebel und über der Menge erhoben sich Flügel, die nach Asche rochen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: Der Keller wurde zum Universum – zugemauerte Fenster, Stimmen, die mit dem Ticken einer Uhr verschmolzen. Die Sonne schwindet ... aber sind die Qualen wirklich vorbei?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: Die Besucher waren die ganze Zeit hier – warmer Atem im Dunkeln, grausames Geflüster im Rücken. Sie werden das Licht nie wiedersehen, selbst wenn es zurückkommt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: Sie beteten nicht für die Lebenden. Vielleicht wurde ihre Bitte schließlich erhört und die Welt wurde stiller.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: Mit heulenden Sirenen brachten sie Sie fort und ließen all Ihre Erinnerungen im alten Haus zurück. Wenn Sie nur zurückkönnten, um wenigstens das Poster zu holen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: Sobald sein Schatten die Türschwelle überschritt, wurde es im Haus still. Manchmal bleibt nichts als Geflüster von einem übrig.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: Jeder, den Sie trafen, schien ein Feind zu sein. Sie waren blind vor Angst und die Leute brachten nur zu Ende, was Sie begonnen hatten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: Pilze schossen aus der Erde und ließen fremdartige Städte entstehen. Sie beeilten sich, doch die Türen in ihre Welt waren bereits verschlossen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: Eine Prüfung war vorbei, doch die nächste hatte schon begonnen. Für die Menge sind Sie nun derjenige, vor dem man sich fürchten muss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: Ein schwerer Schritt über die Schwelle und alles, was Sie fürchteten, verliert sein Gewicht. Es gibt keine Zeit mehr und die zurückbleibende Kälte ist beinahe tröstlich.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: Von der Hellseherin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: "Schwester des Mutter-\nsöhnchens"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: Ehemann der schlechten Mutter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: Ehemann des Zwillings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: Telefon-Roulette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: Ehefrau des fetten Aggrotypen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: Ehefrau des FEMA-Typen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: "Ausländische Botschaft\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: Die Freundin dieses Mädchens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: Was für ein seltsamer Pilz. Wie konnte er überhaupt in einer Kartoffel wachsen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Versetzt Sie vorübergehend ins Land der Pilze.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: Ich habe den Apfel gegessen. Er schmeckt süß und sauer zugleich ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: Auf 12 eingestellt, genau wie es im Lächelleitfaden steht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Man muss sich verteidigen, egal wie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: Wenn ich mich anstrenge, kann ich vielleicht überleben. Diese Welt ist bereits dem Untergang geweiht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: Ich sollte die Fenster vernageln. Ab jetzt wird es nur noch schlimmer, aber ich muss alles versuchen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: FEMA-Mitteilung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Bier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Katzenfutter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Ende noch nicht freigeschaltet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: Speichern und zum Desktop beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Sind Sie sicher, dass Sie beenden möchten?\r\nDer Fortschritt wird gespeichert.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Beschleunigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: "Während die Welt über Ihnen zerfällt, bleiben Sie allein in den Trümmern Ihres Lebens zurück. Was zerstört wurde, ist auf ewig begraben – und Sie ebenfalls.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: Zuckender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: Rockertyp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: Nackter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: Kind mit Jacke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: Mädchen im Tube-Top
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: Eierkopf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: Spinner im Muskelshirt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: Typ mit Ausschlag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: Tagträumer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: Großer, haariger Typ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: Tätowiertes Mädchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: Typ mit Sonnenbrand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: dieser Sektenheini
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: Doktor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: beinloser Typ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: Drehen Sie den rechten Regler, um ein Signal zu empfangen. Drehen Sie dafür den rechten Controller-Stick im oder gegen den Uhrzeigersinn. Der Regler für die Lautstärke ist auf der linken Seite.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: Falls Sie kein Signal bekommen, ändern Sie den Frequenzbereich. Drücken Sie dafür die linke oder rechte Schultertaste und suchen Sie mit dem rechten Stick weiter nach der richtigen Frequenz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: "Y-Achse invertieren (Maus)\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Y-Achse invertieren (Gamepad)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

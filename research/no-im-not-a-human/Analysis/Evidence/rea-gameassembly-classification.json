@@ -1,0 +1,95 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"evidence_id\":\"ev_a14f77266402338b57266c4676088bae77a8ca7ed2187792d23c249d49f1e6cd\",\"subject\":{\"name\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\GameAssembly.dll\",\"digest\":{\"sha256\":\"de2c120d90e757916d74c298f264040df0cda1ddaa8c412e438aeee72eb4dc3f\"},\"format\":\"pe\",\"architecture\":\"x86_64\",\"local_path\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\GameAssembly.dll\"},\"provider\":{\"id\":\"rea-dotnet-static\",\"name\":\"REA managed static analysis provider\",\"version\":\"1\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis\",\"operation\":\"inspect_managed_artifact\",\"parameters\":{\"path\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\GameAssembly.dll\"},\"raw_result\":null,\"normalized_result\":{\"artifact\":{\"path\":\"D:\\\\NoImNotAHuman-Research\\\\Analysis\\\\Inputs\\\\GameCopy\\\\GameAssembly.dll\",\"sha256\":\"de2c120d90e757916d74c298f264040df0cda1ddaa8c412e438aeee72eb4dc3f\",\"byte_length\":81678336,\"format\":\"pe\"},\"pe\":{\"machine\":34404,\"machine_hex\":\"0x8664\",\"architecture\":\"x86_64\",\"optional_header\":\"pe32-plus\",\"section_count\":7,\"characteristics\":8226,\"cli\":null},\"classification\":{\"status\":\"not-managed\",\"container\":\"pe\",\"runtime_family\":\"unknown\",\"implementation\":\"not-managed\",\"managed_architecture\":\"unknown\",\"evidence\":[{\"code\":\"cli-directory-absent\",\"detail\":\"The PE has no CLI data directory; managed metadata and CIL are unavailable.\",\"file_offset\":null}]},\"metadata\":{\"status\":\"absent\",\"version\":null,\"stream_names\":[],\"table_row_counts\":{}},\"module\":null,\"assembly\":null,\"target_frameworks\":[],\"references\":[],\"resources\":[],\"attributes\":[],\"coverage\":{\"state\":\"unavailable\",\"issues\":[]},\"limitations\":[\"The PE has no CLI data directory; managed metadata and CIL are unavailable.\"]},\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"The PE has no CLI data directory; managed metadata and CIL are unavailable.\"],\"locations\":[{\"kind\":\"file-offset\",\"offset\":0}],\"evidence_links\":[]}"
+    }
+  ],
+  "structuredContent": {
+    "evidence_id": "ev_a14f77266402338b57266c4676088bae77a8ca7ed2187792d23c249d49f1e6cd",
+    "subject": {
+      "name": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\GameAssembly.dll",
+      "digest": {
+        "sha256": "de2c120d90e757916d74c298f264040df0cda1ddaa8c412e438aeee72eb4dc3f"
+      },
+      "format": "pe",
+      "architecture": "x86_64",
+      "local_path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\GameAssembly.dll"
+    },
+    "provider": {
+      "id": "rea-dotnet-static",
+      "name": "REA managed static analysis provider",
+      "version": "1"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "inspect_managed_artifact",
+    "parameters": {
+      "path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\GameAssembly.dll"
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "artifact": {
+        "path": "D:\\NoImNotAHuman-Research\\Analysis\\Inputs\\GameCopy\\GameAssembly.dll",
+        "sha256": "de2c120d90e757916d74c298f264040df0cda1ddaa8c412e438aeee72eb4dc3f",
+        "byte_length": 81678336,
+        "format": "pe"
+      },
+      "pe": {
+        "machine": 34404,
+        "machine_hex": "0x8664",
+        "architecture": "x86_64",
+        "optional_header": "pe32-plus",
+        "section_count": 7,
+        "characteristics": 8226,
+        "cli": null
+      },
+      "classification": {
+        "status": "not-managed",
+        "container": "pe",
+        "runtime_family": "unknown",
+        "implementation": "not-managed",
+        "managed_architecture": "unknown",
+        "evidence": [
+          {
+            "code": "cli-directory-absent",
+            "detail": "The PE has no CLI data directory; managed metadata and CIL are unavailable.",
+            "file_offset": null
+          }
+        ]
+      },
+      "metadata": {
+        "status": "absent",
+        "version": null,
+        "stream_names": [],
+        "table_row_counts": {}
+      },
+      "module": null,
+      "assembly": null,
+      "target_frameworks": [],
+      "references": [],
+      "resources": [],
+      "attributes": [],
+      "coverage": {
+        "state": "unavailable",
+        "issues": []
+      },
+      "limitations": [
+        "The PE has no CLI data directory; managed metadata and CIL are unavailable."
+      ]
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "The PE has no CLI data directory; managed metadata and CIL are unavailable."
+    ],
+    "locations": [
+      {
+        "kind": "file-offset",
+        "offset": 0
+      }
+    ],
+    "evidence_links": []
+  }
+}

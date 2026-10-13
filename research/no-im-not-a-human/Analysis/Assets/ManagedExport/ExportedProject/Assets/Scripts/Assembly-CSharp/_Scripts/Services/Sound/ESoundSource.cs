@@ -1,0 +1,43 @@
+namespace _Scripts.Services.Sound
+{
+	public enum ESoundSource
+	{
+		s4_StrangeMorning_S4_3DSFXFootstepSoundSource = 578314952,
+		s0_MainMenuScene_MusicSource = 1632259724,
+		s0_MainMenuScene_SoundSource = 1287935428,
+		s0_MainMenuScene_Cartoons = 1,
+		s1_GameScene_2DMusicSourceAmbient = 1763428490,
+		s1_GameScene_3DWindow3SoundSource = 157410684,
+		s1_GameScene_Pantry = 2136692726,
+		s1_GameScene_Bathroom = -1323021644,
+		s1_GameScene_2DSFXSource = -1769271858,
+		s1_GameScene_2DMusicSourceNight = 483952940,
+		s1_GameScene_3DRandomEmitter = -1217201928,
+		s1_GameScene_PlayerFearAudioSource = 565266062,
+		s1_GameScene_DoorAudioSource = 1680388321,
+		s1_GameScene_SuperStepsAudioSource = -109563409,
+		s1_GameScene_GrabAudioSource = 1696244745,
+		s1_GameScene_2DSFXSourceExtra = -1707507672,
+		s1_GameScene_3DWindow1SoundSource = 235402554,
+		s1_GameScene_2DMusicSourceEnding = 1086707589,
+		s1_GameScene_BreakNeckAudioSource = -1536960813,
+		s1_GameScene_WhispersSoundSourcePantry = -1316680689,
+		s1_GameScene_WhispersSoundSourceBathroom = 1109288107,
+		s1_GameScene_KnockSource = -1441499213,
+		s1_GameScene_Kitchen = 1656430254,
+		s1_GameScene_2DMusicSourceDay = -2046028180,
+		s1_GameScene_2DMusicSourceExtra = -43323168,
+		s1_GameScene_WhispersSoundSourceOffice = -1760253049,
+		s1_GameScene_WhispersSoundSourceBigroom = -342716946,
+		s1_GameScene_2DSFXSourceExtra2 = -1397274090,
+		s1_GameScene_MusicAudioSource = -1470355480,
+		s1_GameScene_Bedroom = -1340080014,
+		s1_GameScene_2DMusicSourceNoise = -866804624,
+		s1_GameScene_Radio = -166006211,
+		s1_GameScene_WhispersSoundSourceKitchen = -1521077451,
+		s1_GameScene_3DWindow2SoundSource = 191808667,
+		s1_GameScene_LivingRoom = -486654132,
+		s1_GameScene_Office = 275231482,
+		s1_GameScene_3DSFXFootstepSoundSource = 414780336
+	}
+}

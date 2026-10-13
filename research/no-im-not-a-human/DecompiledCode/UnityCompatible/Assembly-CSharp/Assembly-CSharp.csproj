@@ -1,0 +1,115 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net40</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.DOTween">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UniTask.DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="RTLTMPro">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\RTLTMPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="YarnSpinner.Unity">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\YarnSpinner.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="AYellowpaper.SerializedCollections">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\AYellowpaper.SerializedCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Zenject-usage.dll</HintPath>
+    </Reference>
+    <Reference Include="ECM2">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\ECM2.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Cinemachine">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Zenject.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="NaughtyAttributes.Core">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\NaughtyAttributes.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="YarnSpinner">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\YarnSpinner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>..\..\..\Analysis\Inputs\GameCopy\NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame\Managed\System.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

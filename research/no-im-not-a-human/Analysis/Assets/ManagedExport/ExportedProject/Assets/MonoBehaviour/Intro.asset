@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5660d166e538661cb93e233cff01d6, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier:
+  _endingType: 10
+  _videoClip: {fileID: 32900000, guid: 689f35fd37322214ba632bc741da0304, type: 3}
+  _subtitles:
+    _endingSubtitles:
+    - _nodeName: Intro_1
+      _duration: 8
+      _beforeNodeDelay: 10
+    - _nodeName: Intro_2
+      _duration: 3
+      _beforeNodeDelay: 2
+    - _nodeName: Intro_3
+      _duration: 6
+      _beforeNodeDelay: 5
+    - _nodeName: Intro_4
+      _duration: 9
+      _beforeNodeDelay: 9
+    - _nodeName: Intro_5
+      _duration: 13
+      _beforeNodeDelay: 7
+  _music: 696029164
+  _slides: []
+  _gachaData:
+    <SpoilerImages>k__BackingField:
+    - {fileID: 21300000, guid: 68b747341ee0e2147a7ca6ac4c6dec16, type: 2}
+    - {fileID: 21300000, guid: 2f7e9b9cfc76cfd49a0803a46fcd0416, type: 2}
+    - {fileID: 21300000, guid: 88cbcc911a0bc7245b03168abe5d9124, type: 2}
+    _description:
+      m_TableReference:
+        m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+      m_TableEntryReference:
+        m_KeyId: 109486460518277120
+        m_Key:
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

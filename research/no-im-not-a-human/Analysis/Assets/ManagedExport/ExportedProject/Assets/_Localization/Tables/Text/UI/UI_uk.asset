@@ -1,0 +1,1055 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_uk
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: uk
+  m_SharedData: {fileID: 11400000, guid: 2c9f148e973fd914eb8426fb4d22c384, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16302985216
+    m_Localized: Вхід
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Ванна
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Вітальня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Спальня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Кабінет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Кухня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Комора
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Вікно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: Не хочу зараз спати. Я сповнений енергії!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: Я не можу зараз спати. А що як хтось прийде сюди шукати притулок?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Здається, більше ніхто цієї ночі не прийде.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: Щось мертвечиною тхне…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Мова
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Гучність
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Вийти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: Зберегтися та вийти зі гри
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Вийти у меню без збереження
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Відкрити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Вийти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Старт
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: Ні, я не людина, я {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: Ох і розморило мене від пива. Краще вже лягти спати.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Бобер Черні
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: Навіть у зруйнованному світі холодне пиво може підняти настрій.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: Знижує   <sprite=0> до 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: Енержека
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: Чиста хімія. Але якщо треба підзарядитись, згодиться.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Кава
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: Гарячу каву більше не п'ю. Та й ніхто, мабуть, не п'є.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1   <sprite=1> на кілька днів
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Дякуємо, що зіграли!\nДодавайте у бажане… якщо ви людина!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Відкрити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Увійти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Скористатись
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: Подивитись
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Підвал
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: Дім
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Телефон
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Радіо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Сигарети ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: Покурити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Забити вікно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Загальна
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Музика
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: Звуки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Зберегти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: Нова гра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Продовжити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: ЙЦУКЕНГҐШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮйцукенгґшщзхїфівапролджєячсмитьбю
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Взяти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Гриб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Копати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Діра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Погладити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Кіт
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Налаштування
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Назад
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Екран
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Говорити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Смерть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Текст
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Ефект друкування
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Пауза
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Чайний гриб (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Залишити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: Повністю відновлює   <sprite=0>, але забирає   <sprite=1> наступного дня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: Давно я вже не курив. Востаннє, мабуть... коли всі поїхали.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Сигарети
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: "Зберігає гру. Збереження залишається навіть після повного прохождення.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: Мій улюблений напій. Піднімає настрій, прочищає голову. Нагадує про кращі часи.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Чайний гриб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Шахтар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Повний екран
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Вікно без рамки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Розгорнуте вікно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Вікно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Вийти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Покласти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Закрити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Поставити [затиснути]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Закрити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Бігти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Треба захиститись, хоч якось.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: Цей світ проклятий... Але надія вижити ще є...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: Треба позабивати вікна. Далі буде тільки гірше, але не можна опускати руки.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Використати [затиснути]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: «ForRest»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: Сусід
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: КНС
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: Екстрасенси
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Номера телефонів
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: Енержека
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Кава
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Здається, сьогодні більше передач по радіо не зловити.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Інструкція
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Краще зараз туди не заходити. Перевірю вдень.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: Зараз можна осліпнути від сонця. Краще визирну вночі.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: Зараз мені не до цього
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: Зараз мені не до цього
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: Ніхто не буде у цей час ходити по вулицях.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: Зараз мені не до цього
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: Мабуть, на сьогодні досить.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: "Щоб піймати сигнал, поверніть праву ручку. Для цього натисніть ЛКМ на ручці і, не відпускаючи, рухайте курсор ліворуч чи праворуч.\n\nЛіва ручка регулює гучність.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: "я витяг глушилку з приймача\nнехай ідуть у сраку!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: бля, більше не ловить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: Якщо зловити сигнал не вдається, спробуйте змінити діапазон. Для цього натисніть ЛКМ на перемикач посередині і продовжуйте правою ручкою шукати потрібну хвилю.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Ви впевнені, що хочете вийти?\nВесь незбережений прогрес гри буде втрачено."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Ви впевнені, що хочете вийти?\nПрогрес гри буде збережено."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Так
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: Ні
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: психований роздертий дядько
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: похмура дівчина
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: страшна бабка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: Телефонний зв'язок накрився до осені. Доведеться чекати…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Відповісти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Слухати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Шукати частоту [крутити]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: Змінити діапазон на FM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: Змінити діапазон на AM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Вібрація геймпаду
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Чутливість геймпаду
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Чутливість геймпаду у кімнатах
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Чутливість миші
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Управління
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Календар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: День пива
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: День огірка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: День родини
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: День боротьби з кон'юнктивітом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: День захисту дітей
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: День касира
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: День селища міського типу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: День гостинності
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: Всесвітній день «Дякую»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: День дипломатії
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: День злагоди
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: Національний день вітряка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Святкування кінця літа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: День
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Пліткодення
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#444444>Отримав:</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#444444>Віддав:</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Пропустити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: великий бородай
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: безокий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: ворожка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: тип у футболці amogus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: пихатий з великим кумполом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: вусач в окулярах
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: плаксуха
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: дівчина у кепці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: парочка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: лисий бандит у костюмі
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: жінка з котом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: сварлива монашка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: довготелесий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: тип у чорній футболці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: таксист у кепці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: мерзляк у куртці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: тип у фіолетовій бандані
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: жінка з сигаретою
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: повна жінка з чубчиком
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: чоловік у худі з капюшоном
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: чоловік у зеленій кепці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: страшидло
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: горбань
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: нафарбоване базікало
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: сектант
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: охайний чоловік з гангреною
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: жінка у светрі та окулярах
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: сектант
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: тип з раною у животі
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: мати з дитиною
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: жінка з трупом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: голий пузань
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: тип у костюмі КНС
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: жовтяничний нехлюй
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: растаман з дредами
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: скособочена жінка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: бомж
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: хлопець з зашитим ротом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: смутна жінка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: Всі зникли. Це що… через той сон?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: Шматочок спокійного життя, коли нічого не передвіщало біди.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Колекція
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: У молоці туману пролунав постріл, і над натовпом піднялися крила, що тхнули попелом.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: Підвал став всесвітом — вікна замуровані, голоси зливаються з цоканням годинника. Сонце згасає... та чи скінчаться так просто муки?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: 'Гості були поряд увесь цей час: теплий подих у темряві, злісний шепіт і смішки за спиною. Світло тобі вже не побачити, навіть якщо його ввімкнуть.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: Вони молилися за вічну тишу. Можливо, їхні благання нарешті почули — тиша настала.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: Тебе відвезли під сирени, і всі спогади залишлись у старому домі. Ще б тільки плакат якось звідти забрати...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: Його тінь перетнула поріг — і все в будинку раптом вщухло. Тепер від тебе не залишилось нічого, крім чуток.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: У кожному мешканці ти бачив ворога. Страх засліпив тебе, а інші лише довели те, що ти розпочав, до кінця.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: З-під землі піднялися гриби, будуючи чужинні міста. Ти спішив, але двері в їхній світ вже зачинились.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: Один суд закінчився, щоб розпочався інший. Тепер в очах людей ти — той, кого мають боятись.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: Один важкий крок за межу — і все, чого ти боявся, втратило вагу. Час зник, залишивши лише холод, схожий на втіху.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: Від ворожки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: Сестра «матусиного синка»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: Чоловік непутящої матері
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: Чоловік однієї з близнючок
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: Телефонна рулетка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: Дружина психованого
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: Від дружини КНС-ника
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: Іноземне посольство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: Подруга дівчинки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "<b><size=40><align=center>-1-</align=center></size></b>\nСьогодні світ звели новий,\nВ підвалі виріс гриб живий.\nНа нього довго не дивись,\nА краще, друже, пригостись.\n\n\n\n<b><size=40><align=center>-2-</align=center></size></b>\nГостинність — це талан слабких.\nРосте гриб вище справ людських,\nЛиш яблуня притулок дасть\nІ смачно нагодує вас.\n\n\n\n<b><size=40><align=center>-3-</align=center></size></b>\nНастане день — перед його\nВеличчям схилять всі чоло.\nДванадцята, годинник б'є,\nПоквапся, друже, час ще є!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: Покладу його у холодильник. Хоча я б з'їв одразу.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: Дивний гриб. Як він взагалі проріс у картоплі?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Ненадовго відправляє вас до країни грибів.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: З'їв яблуко. Кисле та водночас солодке…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: Виставив 12, як сказано у «Підручнику посмішок».
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: Повістка до КНС
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Пиво
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Котячий корм
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Не відкрито
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Прискорити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: Поки світ нагорі вмирає, ти лишаєшся наодинці з уламками власного життя. Те, що зруйнувалося, поховане назавжди — разом з тобою.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: оцей засмиканий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: музикант якийсь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: голий дядько
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: хлопчина в куртці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: дівчина в топіку
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: лисий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: дивак у майці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: мужик із висипом на шкірі
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: мрійливий студентик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: волохатий здоровило
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: дівчина з тату
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: засмаглий тип
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: сектант
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: доктор
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: безногий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: Щоб піймати сигнал, поверніть праву ручку. Для цього крутіть правий стік геймпада за чи проти годинникової стрілки. Зліва — ручка для регулювання гучности.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: Якщо зловити сигнал не вдається, спробуйте змінити діапазон. Для цього натисніть лівий чи правий бампер і продовжуйте правим стіком шукати потрібну хвилю.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: "Iнвертувати Y (миша)\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Iнвертувати Y (геймпад)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

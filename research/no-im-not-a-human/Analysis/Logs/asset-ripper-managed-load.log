@@ -1,0 +1,84 @@
+General : Data was reset.
+General : Configuration Settings:
+General : ExportRootPath: D:\NoImNotAHuman-Research\RecoveredUnityProject
+General : ScriptContentLevel: Level2
+General : StreamingAssetsMode: Extract
+General : DefaultVersion: 0.0.0a0
+General : TargetVersion: 0.0.0a0
+General : EnablePrefabOutlining: False
+General : EnableStaticMeshSeparation: True
+General : EnableAssetDeduplication: False
+General : BundledAssetsExportMode: DirectExport
+General : AudioExportFormat: Default
+General : ImageExportFormat: Png
+General : LightmapTextureExportFormat: Yaml
+General : ScriptExportMode: Hybrid
+General : ScriptLanguageVersion: AutoSafe
+General : ShaderExportMode: Dummy
+General : SpriteExportMode: Yaml
+General : TextExportMode: Parse
+General : ExportUnreadableAssets: False
+General : PreferOriginalTextureExtension: True
+Import : Attempting to read files from D:\NoImNotAHuman-Research\Analysis\Assets\ManagedRecoveryInput\NoImNotAHuman_Data
+Import : Game file 'globalgamemanagers' has been found
+Import : Game file 'globalgamemanagers.assets' has been found
+Import : Game file 'level0' has been found
+Import : Game file 'level1' has been found
+Import : Game file 'level2' has been found
+Import : Game file 'level3' has been found
+Import : Game file 'level4' has been found
+Import : Game file 'level5' has been found
+Import : Game file 'level6' has been found
+Import : Game file 'resources.assets' has been found
+Import : Game file 'sharedassets0.assets' has been found
+Import : Game file 'sharedassets1.assets' has been found
+Import : Game file 'sharedassets2.assets' has been found
+Import : Game file 'sharedassets3.assets' has been found
+Import : Game file 'sharedassets4.assets' has been found
+Import : Game file 'sharedassets5.assets' has been found
+Import : Game file 'sharedassets6.assets' has been found
+Import : Game file 'unity default resources' has been found
+Import : Game file 'unity_builtin_extra' has been found
+Import : Asset bundle '9a17e3bc9c88d5dbf05599198328cd4b_monoscripts_96c551a337b7b5747299e190aa6e6c24' has been found
+Import : Asset bundle 'localization-asset-tables-chinese(simplified)(zh)_assets_all' has been found
+Import : Asset bundle 'localization-asset-tables-chinese(traditional)(zh-hant)_assets_all' has been found
+Import : Asset bundle 'localization-asset-tables-english(en)_assets_all' has been found
+Import : Asset bundle 'localization-asset-tables-japanese(ja)_assets_all' has been found
+Import : Asset bundle 'localization-asset-tables-russian(ru)_assets_all' has been found
+Import : Asset bundle 'localization-assets-shared_assets_all' has been found
+Import : Asset bundle 'localization-locales_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-arabic(ar)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-chinese(simplified)(zh)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-chinese(traditional)(zh-hant)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-english(en)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-french(fr)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-german(de)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-italian(it)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-japanese(ja)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-korean(ko)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-polish(pl)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-portuguese(brazil)(pt-br)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-portuguese(portugal)(pt-pt)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-russian(ru)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-spanish(argentina)(es-ar)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-spanish(es)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-turkish(tr)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-ukrainian(uk)_assets_all' has been found
+Import : Asset bundle 'localization-string-tables-vietnamese(vi)_assets_all' has been found
+Import : Mixed game structure has been found at D:\NoImNotAHuman-Research\Analysis\Assets\ManagedRecoveryInput\NoImNotAHuman_Data
+Import : Files use the 'Mono' scripting backend.
+Import : During Mono initialization, found 110 assemblies
+Import : Skipping native assembly: lib_burst_generated.dll
+Import : Skipping native assembly: steam_api64.dll
+Import [Error] : Read 900 but expected 904 for asset type 129. V: 6000.3.10f1 P: StandaloneWin64Player N: globalgamemanagers Path: 
+Import : Finished reading files
+Processing : Processing loaded assets...
+Processing : Creating Scene Definitions
+Processing : Main Asset Pairing
+Processing : Reconstruct AnimatorController Assets
+Processing : Reconstruct AudioMixer Assets
+Processing : Editor Format Conversion
+Processing : Lighting Data Assets
+Processing : Processing Scriptable Object Groups
+Processing : Finished processing assets
+Import [Error] : Unable to read MonoBehaviour Structure, because script _Code.Characters.CharacterSOData layout mismatched binary content (ArgumentOutOfRangeException).

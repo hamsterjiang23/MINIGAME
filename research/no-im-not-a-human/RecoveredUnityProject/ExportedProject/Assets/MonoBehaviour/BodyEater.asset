@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 250344640, guid: 57c9a3e5193e26c4b968cc86e528416d, type: 3}
+  m_Name: BodyEater
+  m_EditorClassIdentifier:
+  components:
+  - {fileID: 11400000, guid: bd05c7e2e3377b046816ef68ce65044d, type: 2}
+  - {fileID: 11400000, guid: 6b6728e5f8295fa468d6a2742b60d4bc, type: 2}
+  - {fileID: 11400000, guid: e7726b2537dcb554ca3071acc5458e4a, type: 2}
+  - {fileID: 11400000, guid: 368d774c2b5f7e94ab5bd51d380cd4e4, type: 2}
+  - {fileID: 11400000, guid: cd3f622b4cb5eb9449e2c9cf1f519691, type: 2}
+  - {fileID: 11400000, guid: 6eb6df9bec4e9c84982c66f1292ae1f5, type: 2}
+  - {fileID: 11400000, guid: f3e175d550dbbea40a6dc3b36bb447bc, type: 2}
+  - {fileID: 11400000, guid: 57bc80fd6fe104b4183dc5389a92d60b, type: 2}

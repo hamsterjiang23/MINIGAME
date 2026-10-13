@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/s0_MainMenuScene.unity
+    guid: 237890e9705b4bc449ecad8a87d08672
+  - enabled: 1
+    path: Assets/_Scenes/s1_GameScene.unity
+    guid: 92b6307153d1aa540ab027ae5605fda6
+  - enabled: 1
+    path: Assets/_Scenes/s2_Loading.unity
+    guid: a030456cf52d23e44bb1334d04082be2
+  - enabled: 1
+    path: Assets/_Scenes/Dreams/Ball/s3_Ball.unity
+    guid: 39c995a2f78a4ba4299971debf0ad701
+  - enabled: 1
+    path: Assets/_Scenes/Dreams/StrangeMorning/s4_StrangeMorning.unity
+    guid: aec7b3eb11cbcb84c9f90892e1f6cea0
+  - enabled: 1
+    path: Assets/_Scenes/s5_Titery.unity
+    guid: d8143c8fb7b58ef4a8acefd0f75852f9
+  - enabled: 1
+    path: Assets/_Scenes/s6_MushroomDream.unity
+    guid: 5794695569d37d94ea443ec9fe217628
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

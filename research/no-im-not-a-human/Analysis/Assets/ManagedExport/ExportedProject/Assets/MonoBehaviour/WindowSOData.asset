@@ -1,0 +1,641 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a89fda7298439ff6f55afb5d029189, type: 3}
+  m_Name: WindowSOData
+  m_EditorClassIdentifier:
+  _blindsBedroomData:
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: e5d9bb3fcbc2e64448965ceb2bd361d2, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 8, y: -140}
+      <ScaleShift>k__BackingField: {x: 10.700005, y: 10.700005}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 2e4783eec998fce4eaf464cc299fdc75, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 10.5, y: -137.5}
+      <ScaleShift>k__BackingField: {x: 10.500027, y: 10.500027}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 31bf7aa112fc8f64fb211756fea939a1, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 200, y: -248}
+      <ScaleShift>k__BackingField: {x: 4.8999977, y: 4.8999977}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 2e4783eec998fce4eaf464cc299fdc75, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 10, y: -135}
+      <ScaleShift>k__BackingField: {x: 11.100006, y: 11.100006}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 74081ed7a3dd8e4409f36914587e7ed7, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 204, y: -235}
+      <ScaleShift>k__BackingField: {x: 12.20001, y: 12.20001}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: e5d9bb3fcbc2e64448965ceb2bd361d2, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 7, y: -134}
+      <ScaleShift>k__BackingField: {x: 11.2000065, y: 11.2000065}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 6c3287be2d9bc184d94d31a410893c3a, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 11, y: -93}
+      <ScaleShift>k__BackingField: {x: 11.100006, y: 11.100006}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: -102, y: 261}
+      <ScaleShift>k__BackingField: {x: -45.99987, y: -45.99987}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 2dde17b8e64f93c4eb60c6b3f1461535, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 273, y: -223}
+      <ScaleShift>k__BackingField: {x: 3.3999991, y: 3.3999991}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8f871450fbd57114eb775d36525a6d4a, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 220, y: -227}
+      <ScaleShift>k__BackingField: {x: 8.499996, y: 8.499996}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 3b07c808cc0d92f4db4c19d8e4c7a8da, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 96, y: -164}
+      <ScaleShift>k__BackingField: {x: 1.7000004, y: 1.7000004}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 54db6d6313c829f4c8ab2fa880c93be8, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 288, y: -227}
+      <ScaleShift>k__BackingField: {x: 8.899998, y: 8.899998}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 896b4d13ce446a14fa7ffa2cc82fe767, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 236, y: -232}
+      <ScaleShift>k__BackingField: {x: 7.1999955, y: 7.1999955}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 220bb9f8502974845ac53aa0d847a225, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 260, y: -242}
+      <ScaleShift>k__BackingField: {x: 6.899996, y: 6.899996}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 951a0a51853335a4d9346b99a7ab3f93, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 267, y: -238}
+      <ScaleShift>k__BackingField: {x: 7.699995, y: 7.699995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 951a0a51853335a4d9346b99a7ab3f93, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 267, y: -238}
+      <ScaleShift>k__BackingField: {x: 7.699995, y: 7.699995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 951a0a51853335a4d9346b99a7ab3f93, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 267, y: -238}
+      <ScaleShift>k__BackingField: {x: 7.699995, y: 7.699995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 951a0a51853335a4d9346b99a7ab3f93, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 267, y: -238}
+      <ScaleShift>k__BackingField: {x: 7.699995, y: 7.699995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 9639bb18da2cd714aadd9dcf1a8decd9, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: -614, y: -355}
+      <ScaleShift>k__BackingField: {x: 11.600008, y: 11.600008}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 951a0a51853335a4d9346b99a7ab3f93, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 267, y: -238}
+      <ScaleShift>k__BackingField: {x: 7.699995, y: 7.699995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 951a0a51853335a4d9346b99a7ab3f93, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 267, y: -238}
+      <ScaleShift>k__BackingField: {x: 7.699995, y: 7.699995}
+  _blindsPantryData:
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 6abd0ae177faf1c4ba6e04a6ab615d5b, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 101, y: -309}
+      <ScaleShift>k__BackingField: {x: 6.0999966, y: 6.0999966}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 281e31ddc04201c40ab0c115f2bc744e, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: -77, y: -279}
+      <ScaleShift>k__BackingField: {x: 11.600008, y: 11.600008}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 6f7a10ca9a3fd2940a0bfd50eee30998, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: -28, y: -375}
+      <ScaleShift>k__BackingField: {x: 21.500046, y: 21.500046}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 74daddfb4c41aef43999eda8b0f3e0b8, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: -55, y: -273}
+      <ScaleShift>k__BackingField: {x: 29.600077, y: 29.600077}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0814487a78e40bd499c0b671d5d11830, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 108, y: -182}
+      <ScaleShift>k__BackingField: {x: 13.500015, y: 13.500015}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 37478469f98e7224592d408f4a7703ec, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 82, y: -189}
+      <ScaleShift>k__BackingField: {x: 10.500004, y: 10.500004}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 39b6746c99215d3478358944cf2b054f, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 81, y: -175}
+      <ScaleShift>k__BackingField: {x: 7.799995, y: 7.799995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 383493b301e662f41b2a0cf912e0d7ce, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 48, y: -192}
+      <ScaleShift>k__BackingField: {x: 8.499996, y: 8.499996}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 03ab5fb407672ba4d921561e81d56528, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 134, y: -348}
+      <ScaleShift>k__BackingField: {x: 19.100037, y: 19.100037}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 94, y: 359}
+      <ScaleShift>k__BackingField: {x: 47.29985, y: 47.29985}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: c4bac426d56f2f846ad768036d849162, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 171, y: -297}
+      <ScaleShift>k__BackingField: {x: 15.800024, y: 15.800024}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 190976fc2941ea049b91d25b9394a5a6, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 173, y: -159}
+      <ScaleShift>k__BackingField: {x: 18.100033, y: 18.100033}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 92f847a97cac81a408d6c0d786d36476, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 137, y: -157}
+      <ScaleShift>k__BackingField: {x: 19.700039, y: 19.700039}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: e2e95b481e598a84b858dd9f683a839d, type: 2}
+        - {fileID: 21300000, guid: e5f5ff6dab813844fb30d98df94e75e0, type: 2}
+        - {fileID: 21300000, guid: ceef151287f1422408a46ecf8a1b5f25, type: 2}
+        - {fileID: 21300000, guid: 71321acb91338eb4686058e14eaf72fb, type: 2}
+        - {fileID: 21300000, guid: 306707bb7072ce94e9d55f271d6d9f11, type: 2}
+        - {fileID: 21300000, guid: e73f4cdf51cdbea48b0b8cf73fcb8044, type: 2}
+        - {fileID: 21300000, guid: 9af9810bb53c6434dac7d57758e34f71, type: 2}
+        - {fileID: 21300000, guid: 8abb65cbdc50f744b847bf77964144bc, type: 2}
+        - {fileID: 21300000, guid: 2dfe3b9ed4e3ac54eaa87a6ecbdcc548, type: 2}
+        - {fileID: 21300000, guid: 2d9dc3a0e64fe614bb176e9798e27b82, type: 2}
+        - {fileID: 21300000, guid: 9904ade767823e04ebce8db099b7fdd8, type: 2}
+        - {fileID: 21300000, guid: 43d00422fdb06344296ea3b938545349, type: 2}
+        - {fileID: 21300000, guid: e4aeb572300349b4cb7c45973db6d066, type: 2}
+        - {fileID: 21300000, guid: e0038549874e54e4a977531a75d8a3f8, type: 2}
+        - {fileID: 21300000, guid: 0ccd23ac1c9724a4fb4a95d12b62c2e6, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 22, y: -165}
+      <ScaleShift>k__BackingField: {x: 42.499924, y: 42.499924}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8d99dcbd5379dc74ab5975822540c3e3, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 289, y: -280}
+      <ScaleShift>k__BackingField: {x: 15.500021, y: 15.500021}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 846f94688f3799b438c17027a258180a, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 140, y: -155}
+      <ScaleShift>k__BackingField: {x: 21.300045, y: 21.300045}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 92f847a97cac81a408d6c0d786d36476, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 137, y: -157}
+      <ScaleShift>k__BackingField: {x: 19.700039, y: 19.700039}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 92f847a97cac81a408d6c0d786d36476, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 137, y: -157}
+      <ScaleShift>k__BackingField: {x: 19.700039, y: 19.700039}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 92f847a97cac81a408d6c0d786d36476, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 137, y: -157}
+      <ScaleShift>k__BackingField: {x: 19.700039, y: 19.700039}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 92f847a97cac81a408d6c0d786d36476, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 137, y: -157}
+      <ScaleShift>k__BackingField: {x: 19.700039, y: 19.700039}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 92f847a97cac81a408d6c0d786d36476, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 137, y: -157}
+      <ScaleShift>k__BackingField: {x: 19.700039, y: 19.700039}
+  _curtainsData:
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 36727b4651779694db633646601436ee, type: 2}
+        <FramesPerSecond>k__BackingField: 6
+      <PositionShift>k__BackingField: {x: 36, y: -279}
+      <ScaleShift>k__BackingField: {x: 14.200016, y: 14.200016}
+  - <WindowImageData>k__BackingField: []
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 87cdf36b387976c4a8f28d3376bdc318, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 36, y: -89}
+      <ScaleShift>k__BackingField: {x: 8.099995, y: 8.099995}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: e6314f887711210469e5c621262ae425, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 219, y: -97}
+      <ScaleShift>k__BackingField: {x: 15.300022, y: 15.300022}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: d2c55e2504beb3f409b258d36f9cf24d, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 17, y: -289}
+      <ScaleShift>k__BackingField: {x: 27.90007, y: 27.90007}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: b4e4b241e922de04897e98d553f8f3e8, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 152, y: -195}
+      <ScaleShift>k__BackingField: {x: 21.000044, y: 21.000044}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: a79320ae7a8bbf340aced11d96c58fe6, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 184, y: -64}
+      <ScaleShift>k__BackingField: {x: 17.700031, y: 17.700031}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: a16fc075e3974bc45b28a740f5611b1a, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 130, y: 139}
+      <ScaleShift>k__BackingField: {x: 3.9999983, y: 3.9999983}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8c9afb64e8a65dc4e890e488481f745c, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 356, y: -48}
+      <ScaleShift>k__BackingField: {x: 11.900009, y: 11.900009}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: a16fc075e3974bc45b28a740f5611b1a, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 121, y: 141}
+      <ScaleShift>k__BackingField: {x: 3.9999986, y: 3.9999986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8d99dcbd5379dc74ab5975822540c3e3, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 300, y: -7}
+      <ScaleShift>k__BackingField: {x: 3.3999991, y: 3.3999991}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: a16fc075e3974bc45b28a740f5611b1a, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 125, y: 145}
+      <ScaleShift>k__BackingField: {x: 3.8999987, y: 3.8999987}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: a77cf651bbf4f9847aa81078d17b9e9a, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 260, y: -83}
+      <ScaleShift>k__BackingField: {x: 6.599996, y: 6.599996}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8942176592c073946a79b5ca3e1c34fc, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 0, y: 0}
+      <ScaleShift>k__BackingField: {x: 1, y: 1}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 707699e2a3b84e64f8aad076179cfa10, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 246, y: 184}
+      <ScaleShift>k__BackingField: {x: 53.099762, y: 53.099762}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8b61d2c31c6691b4596703b1021273f9, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 253, y: -14}
+      <ScaleShift>k__BackingField: {x: 40.69995, y: 40.69995}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8b61d2c31c6691b4596703b1021273f9, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 253, y: -14}
+      <ScaleShift>k__BackingField: {x: 40.69995, y: 40.69995}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8b61d2c31c6691b4596703b1021273f9, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 253, y: -14}
+      <ScaleShift>k__BackingField: {x: 40.69995, y: 40.69995}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 2
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 9639bb18da2cd714aadd9dcf1a8decd9, type: 2}
+        <FramesPerSecond>k__BackingField: 1
+      <PositionShift>k__BackingField: {x: 260, y: -172}
+      <ScaleShift>k__BackingField: {x: 5.9999948, y: 5.9999948}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8b61d2c31c6691b4596703b1021273f9, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 253, y: -14}
+      <ScaleShift>k__BackingField: {x: 40.69995, y: 40.69995}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8b61d2c31c6691b4596703b1021273f9, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 253, y: -14}
+      <ScaleShift>k__BackingField: {x: 40.69995, y: 40.69995}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}
+  - <WindowImageData>k__BackingField:
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 0
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 8b61d2c31c6691b4596703b1021273f9, type: 2}
+        <FramesPerSecond>k__BackingField: 0
+      <PositionShift>k__BackingField: {x: 253, y: -14}
+      <ScaleShift>k__BackingField: {x: 40.69995, y: 40.69995}
+    - <Animation>k__BackingField:
+        <CyclingType>k__BackingField: 1
+        <Frames>k__BackingField:
+        - {fileID: 21300000, guid: 0651c1b7a16cb564db7374eac553efc5, type: 2}
+        - {fileID: 21300000, guid: 23d0800ab4b574e439a84debccfc5934, type: 2}
+        - {fileID: 21300000, guid: ffaa31caee3768a46b0e0496824f5376, type: 2}
+        - {fileID: 21300000, guid: 1618eb5eba91b2b45ae486f2e7c9cee7, type: 2}
+        - {fileID: 21300000, guid: d7edb790ec87f4b43a778d8ededf2f00, type: 2}
+        - {fileID: 21300000, guid: c5bada75e02ff784996adaa4b858d260, type: 2}
+        - {fileID: 21300000, guid: 6c79616b6bf98114fa67c3303bc79ef4, type: 2}
+        - {fileID: 21300000, guid: 0f4393e61d0483040826e9491695065e, type: 2}
+        <FramesPerSecond>k__BackingField: 8
+      <PositionShift>k__BackingField: {x: 174, y: 600}
+      <ScaleShift>k__BackingField: {x: 46.79986, y: 46.79986}

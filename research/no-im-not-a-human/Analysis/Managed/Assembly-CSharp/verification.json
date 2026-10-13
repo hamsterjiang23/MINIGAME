@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "method_definition_tokens_unique": 5855,
+  "parsed_body_count": 5126,
+  "decoded_instruction_count": 96630,
+  "validated_il_bytes": 264858,
+  "raw_call_or_function_pointer_instruction_count": 19045,
+  "recorded_call_edges": 19045,
+  "operand_resolution_errors": 0,
+  "call_opcodes": {
+    "callvirt": 7190,
+    "call": 8913,
+    "ldftn": 898,
+    "newobj": 1864,
+    "ldvirtftn": 180
+  },
+  "dispatch_classification": {
+    "declared_target_only_runtime_receiver_unresolved": 7370,
+    "encoded_target": 11675
+  },
+  "scope_classification": {
+    "same_assembly_method_definition": 7119,
+    "external_or_unresolved_member_reference": 11926
+  },
+  "body_classification": {
+    "real_cil_body": 5077,
+    "no_rva": 729,
+    "real_cil_one_byte_ret_empty_candidate": 49
+  },
+  "native_mapping_status": {
+    "positional_table_and_symbol_definition": 4999,
+    "null_pointer_slot": 856
+  },
+  "assemblies_inventory_count": 108,
+  "call_csv_all_json_fields_parity": true,
+  "native_csv_source_range_and_hash_parity": true,
+  "previously_missing_assembly_edges_recovered": 2476,
+  "previously_missing_assembly_distinct_operands": 870,
+  "recovered_assembly_groups": {
+    "mscorlib": 2032,
+    "Unity.InputSystem": 9,
+    "System.Core": 15,
+    "com.rlabrecque.steamworks.net": 7,
+    "UniTask": 49,
+    "Assembly-CSharp": 268,
+    "AYellowpaper.SerializedCollections": 1,
+    "UnityEngine.CoreModule": 32,
+    "Unity.Localization": 7,
+    "Zenject": 26,
+    "DOTween": 22,
+    "Unity.RenderPipelines.Core.Runtime": 8
+  },
+  "newly_bound_local_generic_declaration_edges": 268,
+  "remaining_missing_callee_assembly_edges": 0,
+  "remaining_local_unresolved_declaration_edges": 0,
+  "check_scope": "Output structural invariants and raw-IL instruction boundaries/token bytes; not semantic C# recompilation or live runtime validation."
+}

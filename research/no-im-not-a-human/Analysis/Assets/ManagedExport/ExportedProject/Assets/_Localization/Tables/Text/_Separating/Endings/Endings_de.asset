@@ -1,0 +1,1659 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Endings_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 7b4f4e78e64dfb040bbc3d12a89cebe5, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 206681661440
+    m_Localized: Wir sind gerade von unserer Reise zurückgekehrt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632960
+    m_Localized: Bist du es nicht leid, zu Hause rumzusitzen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632961
+    m_Localized: Ja, ja, ich erinnere mich.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632962
+    m_Localized: Wir waren am Strand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632963
+    m_Localized: Aber gestern war es viel zu heiß, also sind wir früher abgereist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632964
+    m_Localized: Ja, wir machen sie für die Schule fertig.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632965
+    m_Localized: Sie will nicht, aber was soll man machen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632966
+    m_Localized: In Ordnung, ich komme später vorbei.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632967
+    m_Localized: Okay, wir sprechen uns später. Bis dann.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632968
+    m_Localized: Zusammen mit den Überlebenden begeben Sie sich in den Keller.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632969
+    m_Localized: Hier ist es kühler, aber die Luft ist immer noch schwer und unangenehm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632970
+    m_Localized: Wenn Sie sparsam sind, sollte das Essen für ein oder zwei Monate reichen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632971
+    m_Localized: Sie verschließen die Tür. Jetzt kann niemand mehr hereinkommen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632972
+    m_Localized: Sie zählen die Tage an der Kellerwand, um den Überblick zu behalten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632973
+    m_Localized: Das Warten auf das Ende zieht sich fast zwei Monate hin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632974
+    m_Localized: Einige hoffen, dass die Sonne den Boden in Asche verwandelt oder erlischt. Andere suchen das Ende auf eigene Faust.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632975
+    m_Localized: Das Unvermeidliche hinauszuzögern ist schmerzhafter als ein schnelles Ende. Niemand beneidet die Lebenden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632976
+    m_Localized: Eines Tages hören Sie eine Durchsage im Radio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632977
+    m_Localized: „... soll es in ein paar Tagen tagsüber sicher sein, rauszugehen.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632978
+    m_Localized: Sie fühlen ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632979
+    m_Localized: Enttäuschung?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632980
+    m_Localized: Ihnen wird klar, dass Sie dieses Jahr doch überleben werden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632981
+    m_Localized: Aber was dann? Wird der nächste Sommer der letzte sein? Oder nicht?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632982
+    m_Localized: Der Gedanke an die Warterei ist eine erdrückende Last.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632983
+    m_Localized: Aber zumindest eine der anderen Personen scheint glücklich zu sein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632984
+    m_Localized: Wer weiß ... vielleicht haben Sie noch ein Jahrzehnt vor sich?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632985
+    m_Localized: Zusammen mit den Überlebenden begeben Sie sich in den Keller.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632986
+    m_Localized: Hier ist es kühler, aber die Luft ist immer noch schwer und unangenehm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632987
+    m_Localized: Wenn Sie sparsam sind, sollte das Essen für ein oder zwei Monate reichen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632988
+    m_Localized: Sie verschließen die Tür. Jetzt kann niemand mehr hereinkommen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632989
+    m_Localized: Sie zählen die Tage an der Kellerwand, um den Überblick zu behalten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206702632990
+    m_Localized: Seit fast zwei Monaten warten alle auf das Ende.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827264
+    m_Localized: Die Sonne ist nicht die einzige Bedrohung.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827265
+    m_Localized: Die Paranoia wird von Tag zu Tag größer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827266
+    m_Localized: Kalt. Berechnend. Fremdartig.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827267
+    m_Localized: Alles steht kurz vor dem Ende.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827268
+    m_Localized: Es gibt keinen Ort mehr, an den Sie fliehen könnten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827269
+    m_Localized: Sie haben mehr als nur Menschen ins Haus gelassen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827270
+    m_Localized: Schmerz durchzuckt Ihren Körper.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827271
+    m_Localized: Sie hoffen, bald dort zu sein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827272
+    m_Localized: Der Schmerz lässt nach, als Sie immer weiter entschwinden ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827273
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827274
+    m_Localized: Heiße mich willkommen ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827275
+    m_Localized: Ich hoffe, du bereust nichts.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827276
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827277
+    m_Localized: Hast du dich jemals gefragt, was danach kommt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827278
+    m_Localized: Ich meine nach deinem Tod. Was dann?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827279
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827280
+    m_Localized: Wie ich sehe, hast du deinen Frieden gefunden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827281
+    m_Localized: Warum sollte man sich Gedanken darüber machen, was nach dem Tod kommt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827282
+    m_Localized: Es ist Zeit zu gehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827283
+    m_Localized: Auch Tage später steht das Haus noch leer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827284
+    m_Localized: Alle meiden es wie ein düsteres Omen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827285
+    m_Localized: Es gibt mehr Gerüchte über dieses Haus als Menschen, die es jemals ihr Zuhause nannten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827286
+    m_Localized: Das Haus – die letzte Spur seines Besitzers – ist mit der Zeit verwittert.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827287
+    m_Localized: Nie kamen Verwandte, um nachzusehen, was zurückgelassen wurde.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827288
+    m_Localized: Die Person verschwand, als hätte sie nie existiert.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827289
+    m_Localized: Alles, was ihr gehörte, ist verloren gegangen, abgenutzt oder vergessen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827290
+    m_Localized: Wie können Menschen so vollständig verschwinden?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827291
+    m_Localized: Sobald der Tod kommt, beginnen Ihre Spuren beinahe sofort zu verblassen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827292
+    m_Localized: ... alles löst sich in Nichts auf.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827293
+    m_Localized: Als ob Sie nie Teil dieser Welt gewesen wären.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827294
+    m_Localized: Wenn diese gefrorenen Hände mich nur lieben könnten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827295
+    m_Localized: Haben Sie das jemals geschafft?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827296
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827297
+    m_Localized: Glückwunsch!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827298
+    m_Localized: Sie betreten einen seltsamen Raum. Vor Ihnen erstreckt sich ein Flur, an dessen Ende sich eine Rezeption befindet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827299
+    m_Localized: Du ... was?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827300
+    m_Localized: Ich ... Wo bin ich?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827301
+    m_Localized: Diejenigen, die mich fürchten, könnten eine ganze Stadt füllen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827302
+    m_Localized: Aber es gibt keinen Grund, Angst zu haben. Hier gibt es nichts zu fürchten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827303
+    m_Localized: Hast du dich danach gesehnt, mich zu treffen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827304
+    m_Localized: Scheint so. Jetzt ist alles gut.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827305
+    m_Localized: Was jetzt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827306
+    m_Localized: Bin ich tot? Ist das das Ende?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827307
+    m_Localized: In dieser traurigen Gegend ist alles auf den Winter ausgerichtet – Träume, Hauswände, ein Kleiderständer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827308
+    m_Localized: Wie schön, dass diese Nacht zu Ende geht. Der Tag bricht an. Soll ich deinen Schatten behalten?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827309
+    m_Localized: Ich sehe doch, dass du das möchtest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827310
+    m_Localized: Du hast keinen Grund, Angst zu haben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827311
+    m_Localized: Es gibt nichts mehr, wovor du dich fürchten musst.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827312
+    m_Localized: Die Straße hat sich zu einem glitschigen Knoten gewunden und ist dann auseinandergebrochen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827313
+    m_Localized: Was jetzt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827314
+    m_Localized: Bin ich tot? Ist das das Ende?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827315
+    m_Localized: Von nun an erwartet dich ein langes, glückliches Leben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827316
+    m_Localized: Wie wunderbar, dass alles Leiden vorbei ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827317
+    m_Localized: Du wirst erfahren, was du wissen wolltest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827318
+    m_Localized: Aber du wirst kein Glück finden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827319
+    m_Localized: 'A: Und aus Gewohnheit wirst du das Mantra wiederholen:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827320
+    m_Localized: „Ich habe Angst.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206706827321
+    m_Localized: Gibt es ... irgendwo einen Ort, an den ich gehen kann?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021568
+    m_Localized: Zu viel Angst, um weiterzugehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021569
+    m_Localized: Bin ich tot?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021570
+    m_Localized: Was bedeutet es, „tot zu sein“?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021571
+    m_Localized: Vielleicht sind wir einfach müde geworden und ruhen uns in einem Traum aus.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021572
+    m_Localized: Wir sind uns in gewisser Weise ähnlich.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021573
+    m_Localized: Ich bin der verkannte Bruder, der Ausgestoßene der Familie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021574
+    m_Localized: Gibt es ... irgendwo einen Ort, an den ich gehen kann?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021575
+    m_Localized: Ich habe Angst, weiterzugehen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021576
+    m_Localized: Natürlich.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021577
+    m_Localized: So ein winziges Königreich hat so viel Schlaf verschlungen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021578
+    m_Localized: Wohin willst du gehen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021579
+    m_Localized: Zu denen, deren Augen Spuren in deinem Herzen hinterlassen haben?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021580
+    m_Localized: Nein, du willst sie nicht sehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021581
+    m_Localized: Du bist müde.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021582
+    m_Localized: Dort musst du sein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021583
+    m_Localized: In die armseligen Viertel, deren Motto Spiegel sind, die das Gefühl von Überfluss vermitteln.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021584
+    m_Localized: Keine Angst. Ich habe die Zeit erfunden. Hier kann dir nichts passieren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021585
+    m_Localized: Wie gut, dass im Dunkeln weder maskierte Männer noch sonst etwas zu sehen ist. Nur Schatten an meiner Backsteinmauer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021586
+    m_Localized: Du bist bereit, wie ich sehe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021587
+    m_Localized: Ich werde dich in die Nacht führen, wo die Kiefern bis zu den Sternen reichen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021588
+    m_Localized: Das wolltest du doch, oder?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021589
+    m_Localized: Das ist dein Platz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021590
+    m_Localized: "Mit seinen kurzen Straßen. Später wirst du sie\nseltsam breit finden. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021591
+    m_Localized: Sie werden dir groß erscheinen, staubig, übersät mit Kompromissen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021592
+    m_Localized: Viel Spaß.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021593
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021594
+    m_Localized: Bin ich tot?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021595
+    m_Localized: Bin ich für immer hier gefangen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021596
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021597
+    m_Localized: Kommt noch jemand?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021598
+    m_Localized: Kann ich einen Film schauen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021599
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021600
+    m_Localized: Kommt noch jemand?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021601
+    m_Localized: Kann ich einen Film schauen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021602
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021603
+    m_Localized: Ist hier jemand?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021604
+    m_Localized: Ich habe Angst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021605
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021606
+    m_Localized: Ist hier jemand?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021607
+    m_Localized: Ich habe Angst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021608
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021609
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021610
+    m_Localized: Tag und Nacht haben hier keine Bedeutung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021611
+    m_Localized: Ich weiß nicht, wie viel Zeit vergangen ist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206711021612
+    m_Localized: Aber jetzt ... fühle ich mich ruhig. Sehr ruhig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215872
+    m_Localized: Keine Schritte. Keine Stimmen. Keine Berührungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215873
+    m_Localized: Ich weiß nicht mehr, wie ich hergekommen bin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215874
+    m_Localized: Ich weiß nicht, wie ich hier wegkomme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215875
+    m_Localized: Aber ich will auch gar nicht weg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215876
+    m_Localized: Ich hoffe nur, dass es noch ein wenig länger dauert ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215877
+    m_Localized: Ich frage mich, was das alles bedeutet hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215878
+    m_Localized: Warum wurde ich hereingelassen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215879
+    m_Localized: Wird jemand kommen, um mich zu holen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215880
+    m_Localized: Ich wünschte, ich könnte sie wiedersehen. Die ganze Familie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215881
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215882
+    m_Localized: Aber das kann warten. Ich bin ... müde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215883
+    m_Localized: Ich werde mich eine Weile ausruhen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215884
+    m_Localized: Pilze, musst du wissen, sind etwas Besonderes!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215885
+    m_Localized: Sie können so schnell in die Höhe schießen wie eine Bohnenranke – direkt vor deinen Augen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215886
+    m_Localized: Da fragt man sich doch, was aus ihnen wird, wenn die Uhr Mitternacht schlägt ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215887
+    m_Localized: ... Desto mehr Bosheit sammelt sich im Myzel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215888
+    m_Localized: ... Bis nichts mehr übrig ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215889
+    m_Localized: Jetzt muss das Myzel einen Weg finden, all diese Wut zu entfesseln ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215890
+    m_Localized: Unser Ritual sollte es beruhigen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215891
+    m_Localized: Die Apfelkerne sollten es an die Verbindung zwischen Menschen und Pilzen erinnern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215892
+    m_Localized: Doch es scheint, als hätte das Myzel den Verstand verloren, geblendet von all dem Zorn, der in ihm gefangen ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215893
+    m_Localized: Das Land der Pilze ist irgendwo da draußen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215894
+    m_Localized: Wir müssen das Myzel aufhalten, bevor der Pilz zu groß wird!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215895
+    m_Localized: Auf in den Untergrund!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215896
+    m_Localized: Ah, sieht so aus, als kämen wir zu spät, mein Freund.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215897
+    m_Localized: Nun gut.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215898
+    m_Localized: Hey, äh ... hast du noch diesen Kombucha?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215903
+    m_Localized: Haben Sie bemerkt, dass das Tageslicht nicht mehr so hell ist?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215904
+    m_Localized: Ich habe das Gefühl, dass die Angriffe vorbei sind. Diese Zeit ist vorüber.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215905
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215906
+    m_Localized: Es gibt nichts mehr, worüber man sich Sorgen machen müsste. Meine Leute werden dafür sorgen, dass niemand mehr leiden muss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215907
+    m_Localized: Heute werden wir gerettet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215908
+    m_Localized: Wir müssen ein paar letzte Aufgaben erledigen, dann heißt es nur noch warten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215909
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215911
+    m_Localized: Wir geben den Toten Namen, damit wir wissen, dass ihr Tod nicht umsonst war. Sie werden aufgenommen, genauso wie wir.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215912
+    m_Localized: So haben wir Olun versorgt. Das ist jetzt sein Name.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215913
+    m_Localized: Auch wir werden Namen erhalten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215914
+    m_Localized: Das ist es. Die Zeit ist gekommen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215915
+    m_Localized: Freunde, lasst sie uns anrufen. Wir sind bereit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215916
+    m_Localized: Nicht, um im Nichts zu verschwinden, sondern um zum Tod zurückzukehren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215917
+    m_Localized: Wir haben gelernt, wie wir unsere Körper dem Tod zurückgeben, um im Jenseits Frieden zu finden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215918
+    m_Localized: Einst existierte dieses Wissen auf der Erde, doch dem großen Sterben fiel mehr zum Opfer als nur Leben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215919
+    m_Localized: 'Ending: Und nun haben wir endlich gelernt, wie wir den Tod hereinbitten.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215920
+    m_Localized: Eine Stimme hallt durch die Luft, scheinbar ohne Ursprung.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215921
+    m_Localized: 'Ending: Ich muss noch an vielen Orten die Stimmen finden.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215922
+    m_Localized: 'Ending: Sie wissen genauso wie ich, wohin dieser Weg führt.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215923
+    m_Localized: 'Ending: Von Anfang an war klar, wo wir uns treffen würden.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215924
+    m_Localized: 'Ending: Genau hier. In diesem Moment.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215925
+    m_Localized: 'Ending: Soll ich Sie verstecken, wie einen Hut, den man in den Mantelärmel steckt?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215926
+    m_Localized: 'Ending: Um Sie vor Fluten, Bränden und dem Lauf der Zeit zu schützen?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215927
+    m_Localized: 'Ending: Ist es nicht das, was Sie sich wünschen?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215928
+    m_Localized: 'Ending: Ich höre Ihr Heulen, Ihr Seufzen, Ihr Schluchzen. Würde Suspiriorum existieren, würde sie zu Ihnen kommen statt zu mir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215929
+    m_Localized: 'Ending: Warum den Ort verlassen, an den Sie nachts zurückkehren, unverändert, aber gebrochen?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215930
+    m_Localized: Ich werde Sie verstecken. Ich werde Sie dorthin zurückbringen, wo Sie von Anfang an hingehört haben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215931
+    m_Localized: 'Ending: Alles, was passiert ist, ist eine unglückliche Verkettung von Ereignissen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215932
+    m_Localized: 'Ending: Aber es ist besser, das Geschenkte mit seinen tiefen Gräbern zu verehren.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215933
+    m_Localized: Sie sind aus dem Nichts aufgetaucht und haben alle Blicke auf sich gezogen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215934
+    m_Localized: Manche Türen sollten lieber verschlossen bleiben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215935
+    m_Localized: 'Ending: Sie waren nie dazu bestimmt, den Wahnsinn des Kosmos zu überleben.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215936
+    m_Localized: 'Ending: ... Ich werde die Erinnerung an Sie bewahren.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215937
+    m_Localized: Hallo. Ich hatte nicht vor, vorbeizukommen, aber ich hatte eine Vision ... Hier geschieht etwas Seltsames.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215938
+    m_Localized: Wenn ich Ihr Haus ansehe, fällt mir immer wieder ein Satz ein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215939
+    m_Localized: Wenn man etwas so Dunklem gegenübersteht, dass man gar nichts mehr will, beobachtet einen die kalte Erde.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215940
+    m_Localized: Haben Sie ... etwas getan?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215941
+    m_Localized: Ich weiß nicht, was Sie meinen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215942
+    m_Localized: Ich töte die Besucher. Wie soll ich sonst überleben?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215943
+    m_Localized: Ich glaube, das wissen Sie sehr wohl.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215944
+    m_Localized: Da ist etwas hinter Ihnen – eine ganze Spur von Schatten. So sollte es bestimmt nicht sein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215945
+    m_Localized: Haben Sie Angst vor dem Tod? Das ist ganz natürlich.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215946
+    m_Localized: Aber Sie sind eindeutig auf dem falschen Weg. Sie haben den Tod nur näher herangeholt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215947
+    m_Localized: Ich glaube nicht, dass ich das wieder in Ordnung bringen kann. Es tut mir leid.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215948
+    m_Localized: Nein, da stimmt etwas ganz und gar nicht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206715215949
+    m_Localized: Warten Sie ... jetzt sehe ich es.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410176
+    m_Localized: Sie haben zu viel Angst. Oh nein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410177
+    m_Localized: Die Angst hat Sie blind gemacht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410178
+    m_Localized: Ich glaube wirklich nicht, dass ich das, was jetzt kommt, wieder in Ordnung bringen kann. Es tut mir leid.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410179
+    m_Localized: Das weiß ich nur zu gut.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410180
+    m_Localized: Sie zwingt einen zu schrecklichen Entscheidungen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410181
+    m_Localized: Doch zu sehen, was vor dir liegt, hat es nur noch schlimmer gemacht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410182
+    m_Localized: Was genau hat dir Angst gemacht?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410183
+    m_Localized: Der Schmerz?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410184
+    m_Localized: Die Angst, zu verschwinden?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410185
+    m_Localized: Früher oder später.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410186
+    m_Localized: Aber ... Du hast dich für früher entschieden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410187
+    m_Localized: Es tut mir wirklich leid.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410188
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410189
+    m_Localized: Unbewaffnet. Blutbefleckt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410190
+    m_Localized: Du hast keine Kraft mehr, um aus dem Sonnenlicht zu kriechen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410191
+    m_Localized: Keine Möglichkeit, dein Leiden selbst zu beenden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410192
+    m_Localized: Du wirst langsam verbrennen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410193
+    m_Localized: Außer vielleicht ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410194
+    m_Localized: 'Window: Sie finden das Kind wieder. Aber was macht es da?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410195
+    m_Localized: 'Window: Frisst es einen Hund? Nein ... Es scheint sich an die Brust des Tieres zu pressen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410196
+    m_Localized: 'Window: Wie erstarrt stehen Sie da und können sich nicht bewegen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410197
+    m_Localized: 'Window: Warum geht es nicht zu seiner Mutter?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410198
+    m_Localized: 'Window: War sie je wirklich schwanger?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410199
+    m_Localized: 'Window: Während Sie darüber nachdenken, wird die Welt draußen von einem dichten Nebel verschluckt.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410200
+    m_Localized: Sie spüren eine Präsenz in der Nähe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410201
+    m_Localized: Ja, Sie haben das Kind gesehen, aber darum geht es hier nicht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410202
+    m_Localized: Ein Nebel erstickt die Welt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410203
+    m_Localized: Der Nebel verschluckt jeden Ton.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410204
+    m_Localized: Stille hüllt die Welt wie Watte ein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410205
+    m_Localized: Es klingt, als würden diese Leute flüstern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410206
+    m_Localized: Sie rufen nach ihnen, aber sie verstummen sofort.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410207
+    m_Localized: Oder sind sie Vorboten des Unheils?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410208
+    m_Localized: Das Kind regt sich in ihren Armen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410209
+    m_Localized: Es kann kein Licht mehr in diese Welt bringen. Wahrscheinlich.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410210
+    m_Localized: Ist es unsere Rettung oder ein Fluch?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410211
+    m_Localized: Panik erfasst Sie. Sie wissen nicht, was Sie tun sollen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410212
+    m_Localized: Die drei zerren das Kind in verschiedene Richtungen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410213
+    m_Localized: Sie heben Ihre Waffe und schießen blindlings – irgendwohin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410214
+    m_Localized: Was ist hier los? Warum sind alle so angezogen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410215
+    m_Localized: Weitere Gestalten treten aus den Tiefen des Nebels hervor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410216
+    m_Localized: „Du bist der Prophet“, sagt eine Frau. „Siehst du das nicht?“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410217
+    m_Localized: „Du bist unsere Rettung.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410218
+    m_Localized: „Niemand ist vorbereitet.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410219
+    m_Localized: „Und die Ankunft des Paradieses einläuten.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410220
+    m_Localized: „Du wirst uns helfen, alles zu retten!“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410221
+    m_Localized: Was ist das für ein Wahnsinn?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410222
+    m_Localized: Wer weiß, was sie mit Ihnen machen werden?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410223
+    m_Localized: In einer Hand in der Menge sehen Sie Nägel glänzen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410224
+    m_Localized: Dieser Stadt steht etwas Schreckliches bevor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410225
+    m_Localized: 'Gasmask: Hallo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410226
+    m_Localized: 'Gasmask: Ihr Beitrag zu den Notfallmaßnahmen wurde zur Kenntnis genommen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410227
+    m_Localized: 'Gasmask: Wir brauchen Leute wie Sie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410228
+    m_Localized: Das kommt unerwartet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410229
+    m_Localized: Warum gerade ich?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410230
+    m_Localized: 'Gasmask: Wir verstehen Ihre Bedenken, aber keine Sorge. Sie werden gut bezahlt und erhalten selbstverständlich alle Sozialleistungen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410231
+    m_Localized: 'Gasmask: Machen Sie sich bereit. Wir bringen Sie jetzt hin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410232
+    m_Localized: Ich habe kein Interesse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410233
+    m_Localized: Ich bin bereit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410234
+    m_Localized: 'Gasmask: Sie sind einfallsreich und proaktiv. Genau das brauchen wir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410235
+    m_Localized: 'Gasmask: Rekruten helfen uns, Dinge zu erkennen, die wir selbst vielleicht übersehen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410236
+    m_Localized: 'Gasmask: Und im Moment brauchen wir neue Leute.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410237
+    m_Localized: Ich habe kein Interesse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410238
+    m_Localized: Ich bin bereit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410239
+    m_Localized: 'Gasmask: Das war keine Frage.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410240
+    m_Localized: 'Gasmask: Packen Sie Ihre Sachen oder wir laden Sie selbst in das Fahrzeug.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410241
+    m_Localized: 'Gasmask: Sie haben die Wahl.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410242
+    m_Localized: 'Gasmask: Gut. Nehmen Sie nur das Nötigste mit. Für Unterkunft wird gesorgt.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410243
+    m_Localized: 'Gasmask: Es hat keinen Sinn, hierher zurückzukommen. Zumindest nicht in nächster Zeit.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410244
+    m_Localized: 'Gasmask: Wir erwarten Sie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410245
+    m_Localized: Sie sind verwirrt. Werden Leute normalerweise so für die Behörde rekrutiert?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410246
+    m_Localized: Das ist eine große Organisation. Sie werden wahrscheinlich mit vielen Leuten zu tun haben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410247
+    m_Localized: Klingt nach langen Schichten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410248
+    m_Localized: Wie gefährlich ist dieser Job überhaupt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410249
+    m_Localized: Ehrlich gesagt ist es schon seltsam, Leute einfach so einzustellen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410250
+    m_Localized: Ist die Fluktuation wirklich so hoch? Warum ist die Rekrutierung so ... aggressiv?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410251
+    m_Localized: Leute in Quarantänezonen begleiten?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410252
+    m_Localized: Und dann?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410253
+    m_Localized: Oder mit denen, die mit Ihnen zusammengelebt haben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410254
+    m_Localized: Sie haben das Gefühl, dass Sie nicht mehr in Ihr altes Leben zurückkehren werden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410255
+    m_Localized: Aus den Briefings geht klar hervor, dass dieser Job nicht auf langfristiges Überleben ausgelegt ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410256
+    m_Localized: Sie bereuen nur, dass Sie das Poster nicht mitgenommen haben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410257
+    m_Localized: Sie hören einen Irren hinter der Tür, der aggressiv mit Worten um sich wirft.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410258
+    m_Localized: Aber Sie warten nur ab und hoffen, dass nichts passiert.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410259
+    m_Localized: Die Wut in den Augen eines bewaffneten Mannes ist furchterregender als jeder Besucher.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410260
+    m_Localized: Ich höre sein Keuchen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410261
+    m_Localized: Bastard. Er hat mich erwischt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410262
+    m_Localized: Er hat es mit mir ausgefochten, weil ich nicht so leicht kleinzukriegen bin. Aber was ist mit den anderen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410263
+    m_Localized: Er ist verstummt. Ich sollte nachsehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410264
+    m_Localized: Wegen solchem Abschaum mussten so viele sterben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410265
+    m_Localized: Leute wie du haben meinen Freund getötet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410266
+    m_Localized: Und Leute wie du werden andere niemals in Ruhe lassen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410267
+    m_Localized: Was, glaubst du etwa, dass niemand sich wehrt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410268
+    m_Localized: Ich mach dich platt!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410269
+    m_Localized: Einen Verstand, der vom Wahnsinn verdammt ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410270
+    m_Localized: Ich stampfe dich in den Boden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410271
+    m_Localized: Ich ertränke ALLES in deinem Blut.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410272
+    m_Localized: Heute stirbt jeder Mistkerl mit einer Waffe in der Hand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206719410273
+    m_Localized: JEDER EINZELNE.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836555284480
+    m_Localized: „Die Sonnenaktivität lässt nach ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836555284481
+    m_Localized: ... Laut den Wissenschaftlern soll es in ein paar Tagen ...“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478784
+    m_Localized: Das Vertrauen schwindet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478785
+    m_Localized: Sie spüren die Blicke.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478786
+    m_Localized: Die Angst vor dem Tod hat Sie gelähmt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478787
+    m_Localized: Flucht kommt Ihnen nicht einmal in den Sinn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478788
+    m_Localized: Die Angst macht Sie blind.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478789
+    m_Localized: Sie zerreißen Sie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478790
+    m_Localized: Dunkelheit überschwemmt Ihr Blickfeld.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478791
+    m_Localized: Ein kleines, einsames Haus nimmt in Ihrem Kopf Gestalt an.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478792
+    m_Localized: Es fällt Ihnen schwer, daran festzuhalten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478793
+    m_Localized: Ich freue mich, dass Sie sich uns angeschlossen haben. Der Tod hat Sie nicht umsonst ausgewählt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478794
+    m_Localized: Die alte Sicht auf den Tod hat uns von der wahren Art zu sterben abgehalten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478795
+    m_Localized: Aber jetzt wandeln wir auf dem vorgesehenen Pfad.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478796
+    m_Localized: Frieden will alles umhüllen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478797
+    m_Localized: Niemand wird zurückgelassen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478798
+    m_Localized: Vielleicht wird der Tod persönlich zu uns herabsteigen und ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478799
+    m_Localized: Spüren Sie es? Er ist hier.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478800
+    m_Localized: Ich muss umgehend handeln.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478801
+    m_Localized: Ich werde Sie verstecken.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478802
+    m_Localized: Ich werde Sie dorthin zurückbringen, wo Sie von Anfang an hingehört haben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478803
+    m_Localized: Ich werde Ihnen Frieden schenken.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478804
+    m_Localized: So, wie es sich die Menschheit schon immer gewünscht hat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478805
+    m_Localized: Sie waren nie dazu bestimmt, den Wahnsinn des Kosmos zu überleben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478806
+    m_Localized: Ich werde die Erinnerung an Sie bewahren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478807
+    m_Localized: 'Vigilante: Du Hurensohn! Verdammter Besucher, dachtest du, du könntest mich reinlegen?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478808
+    m_Localized: 'Vigilante: Zeit zu sterben, Bastard.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478809
+    m_Localized: 'Vigilante: Scheiße, du bist ein dreckiger Besucher!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478810
+    m_Localized: 'Vigilante: Das Spiel ist aus, du Stück Scheiße ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478811
+    m_Localized: 'Vigilante: Glaubst du, ich bin ein Idiot? Denkst du wirklich, ich würde darauf reinfallen?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478812
+    m_Localized: 'Vigilante: Du bist tot, Klugscheißer!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11636836559478813
+    m_Localized: Und wie viele hat er noch abgeschlachtet? Wie viele hat er verbrannt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062336
+    m_Localized: Es ist sehr still.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062337
+    m_Localized: Niemand stellt sich in den Weg.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062338
+    m_Localized: Aber das ist für später.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062339
+    m_Localized: Sie können sehr schnell wachsen, wenn die Dinge schiefgehen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062340
+    m_Localized: Und je größer die Pilze ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807458062341
+    m_Localized: Es sind so viele, dass der Pilzhut die ganze Erde bedecken könnte.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256640
+    m_Localized: Los, mir nach. Schnell.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256641
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256642
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256643
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256644
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256645
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256646
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256647
+    m_Localized: Sterben ist beängstigend.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256648
+    m_Localized: Die Angst allein kann einen in den Wahnsinn treiben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256649
+    m_Localized: Ich kann die Pläne sehen, die sie für dich hatten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256650
+    m_Localized: Es wird sowieso passieren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256651
+    m_Localized: Sie haben dich auf die Straße geworfen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256652
+    m_Localized: Und es gibt keinen Sündenbock mehr.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256653
+    m_Localized: Irgendetwas beobachtet dich?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256654
+    m_Localized: Ist es ein gutes Omen, ihnen zu begegnen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256655
+    m_Localized: Was passiert?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256656
+    m_Localized: „Du offenbarst die Sünden unserer Welt.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256657
+    m_Localized: „Das Kind hätte uns in ein schreckliches Reich geführt.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256658
+    m_Localized: „Aber du ... Du wirst die Hölle vertreiben.“
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256659
+    m_Localized: Ihre Worte sind lähmend.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256660
+    m_Localized: Wohin es auch führen mag, sie haben das Kind getötet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256661
+    m_Localized: 'Gasmask: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256662
+    m_Localized: 'Gasmask: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256663
+    m_Localized: 'Gasmask: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256664
+    m_Localized: 'Gasmask: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256665
+    m_Localized: Und es ist völlig unklar, wann sie Sie nach Hause lassen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256666
+    m_Localized: Es ist nicht einmal klar, was für eine Arbeit es sein wird.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256667
+    m_Localized: Sie wissen nicht, was aus Ihrem Haus geworden ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256668
+    m_Localized: 'Vigilante: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256669
+    m_Localized: 'Vigilante: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256670
+    m_Localized: 'Vigilante: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256671
+    m_Localized: 'Vigilante: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256672
+    m_Localized: 'Vigilante: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256673
+    m_Localized: 'Vigilante: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994807462256674
+    m_Localized: Ich habe schon alles verloren. Aber du ... Du hast noch was zu verlieren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884693868544
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884744200192
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884744200193
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3948884744200194
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361586487812096
+    m_Localized: Besitztümer, Kreationen, Arbeit, Gedanken, Emotionen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1361586487812097
+    m_Localized: Nichts bleibt von Ihnen übrig.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195392
+    m_Localized: Das war’s.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195393
+    m_Localized: Ich habe überlebt. Allein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195394
+    m_Localized: Es musste so sein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195395
+    m_Localized: Ich habe alles richtig gemacht.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195397
+    m_Localized: Wie viele Tage sind vergangen? Wie viele Stunden?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195399
+    m_Localized: Wenn jemand geblieben wäre ... hätte sich dann etwas geändert?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195400
+    m_Localized: Wenn ich meinem Vater gesagt hätte, wie sehr ich ihn hasse, hätte ich dann die Kraft gefunden zu gehen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195401
+    m_Localized: Wäre ... sie stolz gewesen auf das, was ich getan habe?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195402
+    m_Localized: Die Mauern sind gefallen. Es gibt keinen Ausweg.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195403
+    m_Localized: Aber vielleicht gibt es auch keinen Grund mehr zu gehen. Vielleicht ist das alles, was übrig ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195404
+    m_Localized: Was für eine Schande, mit all dieser Wut im Bauch zu sterben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195405
+    m_Localized: Auf meinen Vater. Auf mich selbst. Auf alle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195406
+    m_Localized: Niemand hat meiner Mutter geholfen, als sie es am dringendsten gebraucht hat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195407
+    m_Localized: Meine Hände zittern immer noch, wenn ich daran denke, durch dieses Fenster zu blicken.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195408
+    m_Localized: Meine Mauern sind eingestürzt und ich liege in den Trümmern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195409
+    m_Localized: Ich habe dieses Haus so sehr gehasst ... Vielleicht ist sein Verlust ja etwas Gutes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195410
+    m_Localized: Alles ist Staub. Und doch fühle ich mich irgendwie freier.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195411
+    m_Localized: Nichts erinnert mich mehr an mein altes Leben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195412
+    m_Localized: Ich wünschte, sie könnte das sehen ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195413
+    m_Localized: Warum fühle ich mich so leicht?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195414
+    m_Localized: Ich weiß nicht ... Ich ... Die Schwere ist verschwunden, zerbröckelt wie die Mauern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26768690107195415
+    m_Localized: Einfach weg.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38371868175048704
+    m_Localized: Ich habe alles richtig gemacht...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38371868175048705
+    m_Localized: 'Er hat sie an den Abgrund gedrängt. '
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,12 @@
+{
+  "record_kind": "operator_command_and_observed_output",
+  "tool": "D:\\NoImNotAHuman-Research\\Analysis\\Tools\\ILSpy\\ilspycmd.exe",
+  "tool_version_observed": "11.1.0.9782",
+  "arguments_supplied": ["--disable-updatecheck", "--project", "--nested-directories", "--languageversion", "CSharp9_0", "--referencepath", "Analysis/Inputs/GameCopy/NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame/Managed"],
+  "assemblies": ["Assembly-CSharp.dll", "Assembly-CSharp-firstpass.dll"],
+  "output_root": "D:\\NoImNotAHuman-Research\\DecompiledCode\\UnityCompatible",
+  "observed_command_exit_code": 0,
+  "observed_output": ["Assembly-CSharp CSharp9Files=587", "Assembly-CSharp-firstpass CSharp9Files=42"],
+  "independent_output_checks": ["Both exported csproj files declare LangVersion 9.0", "GameplayRandomizer namespace uses a brace-delimited declaration", "Roslyn parser results and feature scan are recorded separately"],
+  "limits": ["Arguments are an operator execution record; resulting csproj/source files provide independent evidence of output form", "Empty stdout logs alone do not prove language mode", "This record does not assert Unity import or semantic compilation success"]
+}

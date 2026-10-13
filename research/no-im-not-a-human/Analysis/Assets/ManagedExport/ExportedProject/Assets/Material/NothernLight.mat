@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NothernLight
+  m_Shader: {fileID: 4800000, guid: cf2e420664df14040a394b48a8e022a0, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _SampleTexture2D_b8c1e01382f34790b2593126b7a61e56_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3d1ea8a03ce140a4aa53095ce4759c44, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _SampleTexture2D_d8cbab5a498b429b8cea7038a22db34f_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3d1ea8a03ce140a4aa53095ce4759c44, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _DissolvePower: 1.5
+      _GradientIntensity: 0.03
+      _InnerMaskRadius: -0.2
+      _InnerRadius: 0
+      _OuterMaskRadius: 0.91
+      _OuterRadius: 1
+      _QueueControl: 0
+      _QueueOffset: 0
+      _WobbleAmount: 0.464
+      _WobbleDistance: 0.1
+      _WobbleFrequency: 0.07
+      _WobbleNoiseAmount: 1.76
+      _WobbleSpeed: 0.53
+    m_Colors:
+      _Color: {r: 2.9752429, g: 3.688605, b: 3.631174, a: 1}
+      _LerpTime: {r: 3.36, g: 0, b: 0, a: 0}
+      _NoiseSpeed: {r: 0, g: -0.01, b: 0, a: 0}
+      _NoiseTiling: {r: 3.33, g: 0.07, b: 0, a: 0}
+      _WobbleNoiseSpeed: {r: 0.05, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 0

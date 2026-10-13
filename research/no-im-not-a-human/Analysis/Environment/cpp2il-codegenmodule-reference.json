@@ -1,0 +1,15 @@
+{
+  "source_url": "https://raw.githubusercontent.com/SamboyCoding/Cpp2IL/development/LibCpp2IL/BinaryStructures/Il2CppCodeGenModule.cs",
+  "retrieved_date": "2026-10-13",
+  "observed_line_ranges": [
+    {
+      "lines": "4-6",
+      "text": "public ulong moduleName; //pointer\npublic long methodPointerCount; //ulong\npublic ulong methodPointers; //pointer"
+    },
+    {
+      "lines": "48-50",
+      "text": "moduleName = reader.ReadNUint();\nmethodPointerCount = reader.ReadNInt();\nmethodPointers = reader.ReadNUint();"
+    }
+  ],
+  "usage": "The first three native-sized fields guide a bounded candidate search; actual local PE count/adjustor/NULL-mask/section checks admit the result."
+}

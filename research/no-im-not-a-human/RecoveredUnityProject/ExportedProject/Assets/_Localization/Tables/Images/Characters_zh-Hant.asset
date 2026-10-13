@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -149288805, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Characters_zh-Hant
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-Hant
+  m_SharedData: {fileID: 11400000, guid: 2cf955adea53cb34f9f786c65d547049, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1422451789824
+    m_Localized: a1f20ef1eeec03442b86612c9a956eaa[fek_hands_tradupr]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7104876544
+    m_Localized: 516c58f7479792947b0b7af824f7a174[fek_teeth_trad]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6087011881443328
+    m_Localized: 80c7d102ae5a36640bea974ef5f4fd40[fek_eyes_trad]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6087378803351552
+    m_Localized: ea14876d82af0be408cd9d2288e24a44[fek_photo_trad]
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

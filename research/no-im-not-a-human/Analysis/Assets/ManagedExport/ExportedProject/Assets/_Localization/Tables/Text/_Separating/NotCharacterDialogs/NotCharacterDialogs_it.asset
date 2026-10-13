@@ -1,0 +1,4851 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NotCharacterDialogs_it
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: fdb5e7c1e1a06f94cb20bf63a5da666e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21953783779328
+    m_Localized: 'TV: Edizione straordinaria!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556544
+    m_Localized: 'TV: Alle 06:28 di oggi si è verificata una potente emissione di energia solare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556545
+    m_Localized: 'TV: L''intensità del fenomeno ha superato le previsioni degli esperti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556546
+    m_Localized: 'TV: Di conseguenza, le temperature esterne hanno raggiunto livelli critici.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556547
+    m_Localized: 'TV: Il governo ha proclamato ufficialmente lo stato di emergenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556548
+    m_Localized: 'TV: Si raccomanda alla popolazione di non uscire di casa durante il giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556549
+    m_Localized: 'TV: E ora, la linea a...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556550
+    m_Localized: 'TV: Un momento...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556551
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556552
+    m_Localized: 'TV: La nostra redazione ha appena ricevuto un aggiornamento importante riguardo ai cosiddetti "Visitatori".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556553
+    m_Localized: 'TV: Secondo alcuni testimoni, queste creature possono replicare sembianze e comportamenti umani.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556554
+    m_Localized: 'TV: Evitate ogni contatto. In un caso, un Visitatore è stato identificato grazie a un segno distintivo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556555
+    m_Localized: 'TV: Una dentatura perfettamente bianca.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556556
+    m_Localized: 'TV: I primi rapporti sembrano confermare questa notizia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556557
+    m_Localized: 'TV: Le nostre fonti riferiscono di un senzatetto dai denti bianchissimi, rivelatosi poi un Visitatore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556558
+    m_Localized: 'TV: Per ora è tutto. Mantenete la calma e restate al chiuso durante le ore diurne.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556559
+    m_Localized: 'TV: E ora, passiamo a qualcosa di più piacevole!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556560
+    m_Localized: 'TV: Buon pomeriggio. Diamo uno sguardo alle previsioni meteo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556561
+    m_Localized: 'TV: Un''ondata di calore investirà la regione, con temperature destinate a battere ogni record storico.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556562
+    m_Localized: 'TV: Secondo gli esperti, il caldo aumenterà ulteriormente nel corso della prossima settimana.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556563
+    m_Localized: 'TV: L''intensa attività solare comporterà una forte emissione di radiazioni ultraviolette.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556564
+    m_Localized: 'TV: Per la vostra incolumità, evitate di esporvi al sole.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556565
+    m_Localized: 'TV: Poiché le temperature elevate potrebbero aumentare drasticamente il rischio di insolazioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556566
+    m_Localized: 'TV: Al momento, le conseguenze a lungo termine dell''esposizione a un tale irraggiamento sono ancora ignote.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556567
+    m_Localized: 'TV: Ma per prevenire ustioni di terzo grado è consigliabile non uscire all''aperto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556568
+    m_Localized: 'TV: Purtroppo, le creme solari di qualsiasi fattore non sono più efficaci.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556569
+    m_Localized: 'TV: Per ora è tutto. A seguire, la Danza dei cigni...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556570
+    m_Localized: 'TV: Osservi le ballerine volteggiare sul palco, con salti decisi e al contempo delicati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556571
+    m_Localized: 'TV: Malgrado l''eleganza, il ballo ti suscita una profonda inquietudine.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556572
+    m_Localized: 'TV: Hai l''impressione che vogliano distrarti dagli eventi attuali.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556573
+    m_Localized: 'TV: Se solo qualcuno si degnasse di spiegare cosa sta succedendo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556574
+    m_Localized: 'TV: Buon pomeriggio con le ultime notizie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556575
+    m_Localized: 'TV: Mentre l''attività del sole aumenta senza sosta, anche la criminalità registra picchi allarmanti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556576
+    m_Localized: 'TV: Stando ai dati più recenti, il numero di omicidi nelle ultime notti ha superato le medie abituali.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556577
+    m_Localized: 'TV: Gli esperti ritengono che il fenomeno sia connesso alla sempre più diffusa paura dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556578
+    m_Localized: 'TV: Per fortuna, abbiamo ricevuto nuove informazioni su come identificare questi impostori...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556579
+    m_Localized: 'TV: Il fango sotto le unghie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556580
+    m_Localized: 'TV: Gli specialisti affermano che questo segno aiuti a individuare i Visitatori emersi dal sottosuolo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556581
+    m_Localized: 'TV: Per ora è tutto. Mantenete la calma e restate al chiuso durante le ore diurne.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556582
+    m_Localized: 'TV: A seguire, un servizio speciale sul maniaco pallido. Ma prima, la pubblicità...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556583
+    m_Localized: 'TV: Una volta, per fare acquisti, dovevi per forza recarti in negozio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556584
+    m_Localized: 'TV: Ma con ForRest, ti basta una telefonata per ottenere tutto ciò di cui hai bisogno!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556585
+    m_Localized: 'TV: Chiama il numero XXX‑XXX‑XXXX e riceverai la spesa a domicilio entro ventiquattro ore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556586
+    m_Localized: 'TV: ForRest. Il gusto del relax, tra le mura di casa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556587
+    m_Localized: 'TV: Fonti locali riferiscono di un assassino dalla carnagione pallida avvistato in città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556588
+    m_Localized: 'TV: Le indagini della polizia hanno stabilito che tutte le sue vittime condividevano un dettaglio: erano sole.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556589
+    m_Localized: 'TV: Inoltre, il criminale ama conversare con il bersaglio prima di ucciderlo brutalmente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556590
+    m_Localized: 'TV: La polizia ha elaborato il suo identikit basandosi sulle descrizioni dei testimoni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556591
+    m_Localized: 'TV: Il sospetto è un uomo molto pallido dai capelli neri, di corporatura magra. Indossa soltanto un paio di pantaloni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556592
+    m_Localized: 'TV: Secondo ulteriori rapporti, a volte si riveste con la pelle di un''altra persona.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556593
+    m_Localized: 'TV: Questa informazione non è stata ancora confermata.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556594
+    m_Localized: 'TV: Se vedete quest''uomo, non aprite la porta. Soprattutto, non fategli sapere che siete soli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556595
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556596
+    m_Localized: 'TV: Buon pomeriggio con le ultime notizie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556597
+    m_Localized: 'TV: Le temperature continuano a salire, mentre l''invasione dei Visitatori prosegue inarrestabile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750848
+    m_Localized: 'TV: Al riguardo, il governo ha istituito una nuova organizzazione per affrontare questa crisi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750849
+    m_Localized: 'TV: L''agenzia federale per la gestione delle emergenze, nota come FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750850
+    m_Localized: 'TV: Potrete riconoscere il personale della FEMA dalle tute protettive gialle e le maschere antigas.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750851
+    m_Localized: 'TV: A pochi giorni dalla sua fondazione, l''agenzia ha già scoperto un nuovo metodo per smascherare i Visitatori...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750852
+    m_Localized: 'TV: Gli occhi arrossati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750853
+    m_Localized: 'TV: Ci è stato riferito che la FEMA ha identificato questo segno dopo aver analizzato i Visitatori catturati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750854
+    m_Localized: 'TV: A quanto pare, la loro elevata fotosensibilità si manifesta con occhi arrossati e infiammati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750855
+    m_Localized: 'TV: Per ora è tutto. Mantenete la calma e restate al chiuso durante le ore diurne.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750856
+    m_Localized: 'TV: A seguire, un approfondimento sulla FEMA. Restate con noi dopo la pubblicità.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750857
+    m_Localized: 'TV: Caos, terrore e sofferenza. Tutto a causa dei Visitatori...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750858
+    m_Localized: 'TV: Ma nell''ora più buia, quando le nostre grida di aiuto sembravano cadere nel vuoto...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750859
+    m_Localized: 'TV: LA FEMA È GIUNTA A SALVARCI!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750860
+    m_Localized: 'TV: Gli impavidi eroi della FEMA sono in prima linea per difenderci dall''avanzata dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750861
+    m_Localized: 'TV: Finora, l''agenzia ha identificato oltre ventisettemila anomalie pericolose.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750862
+    m_Localized: 'TV: Il vostro contributo è cruciale. Aiutate l''agenzia segnalando qualunque attività sospetta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750863
+    m_Localized: 'TV: Vi basterà consegnare ai sospetti un mandato di comparizione affinché si rechino a un centro FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750864
+    m_Localized: 'TV: Temete di essere voi stessi un Visitatore? Chiamate il nostro numero d''emergenza: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750865
+    m_Localized: 'TV: Aiutateci ad aiutarvi. Sostenete la FEMA e unitevi alla lotta contro i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750866
+    m_Localized: 'TV: FEMA. Che cos''è? Perché è stata fondata?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750867
+    m_Localized: 'TV: La FEMA è un''agenzia governativa speciale, istituita con l''obiettivo di gestire e risolvere la crisi in corso.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750868
+    m_Localized: 'TV: Il suo compito è risolvere i numerosi problemi causati dall''invasione dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750869
+    m_Localized: 'TV: Nessuno sa di preciso quali contromisure siano state predisposte...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750870
+    m_Localized: 'TV: Ma di una cosa possiamo essere sicuri: il nostro futuro è in buone mani.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750871
+    m_Localized: 'TV: L''agenzia è composta da esperti di ogni settore, tra cui scienziati e ricercatori di fama mondiale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750872
+    m_Localized: 'TV: Se un agente FEMA dovesse bussare alla vostra porta, siete invitati a collaborare e a seguire le sue istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750873
+    m_Localized: 'TV: Aiutateci ad aiutarvi. Sostenete la FEMA e unitevi alla lotta contro i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750874
+    m_Localized: 'TV: Buon pomeriggio con le ultime notizie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750875
+    m_Localized: 'TV: La FEMA ha adottato nuove misure per contrastare la persistente invasione dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750876
+    m_Localized: 'TV: Sono state istituite diverse zone di quarantena per la detenzione di soggetti potenzialmente pericolosi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750877
+    m_Localized: 'TV: La FEMA ha inoltre identificato un nuovo segno dei Visitatori, dopo aver condotto esperimenti sui detenuti...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750878
+    m_Localized: 'TV: Le ascelle prive di peli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750879
+    m_Localized: 'TV: L''assenza di peli ascellari è un tratto distintivo dei Visitatori. Usatelo come parametro per identificarli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750880
+    m_Localized: 'TV: La FEMA invita la cittadinanza a collaborare ai test e ad assecondare il trasferimento in quarantena.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750881
+    m_Localized: 'TV: Per ora è tutto. Mantenete la calma e restate al chiuso durante le ore diurne.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750882
+    m_Localized: 'TV: A seguire, un servizio su come procedere se avvistate un Visitatore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750883
+    m_Localized: 'TV: La FEMA ipotizza che i Visitatori possano essere contagiosi o costituire un rischio biologico ancora ignoto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750884
+    m_Localized: 'TV: Data la situazione, è fondamentale denunciare eventuali soggetti sospetti e isolarli immediatamente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750885
+    m_Localized: 'TV: Se non potete consegnare un Visitatore, notificategli il mandato di comparizione al centro FEMA più vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750886
+    m_Localized: 'TV: Al successivo giro di raccolta, un addetto preleverà chiunque esibisca il mandato per sottoporlo ai test clinici.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750887
+    m_Localized: 'TV: Per ora è tutto. Pubblicità!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750888
+    m_Localized: 'TV: Affronta il caldo con grinta!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750889
+    m_Localized: 'TV: Con EnerJeka, vivi al massimo!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750890
+    m_Localized: 'TV: Wow! Una bevanda energetica rinvigorente che disseta più in fretta e meglio dell''acqua?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750891
+    m_Localized: 'TV: Disponibile con consegna a domicilio ForRest. Ordina al numero XXX‑XXX‑XXXX.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750892
+    m_Localized: 'Window: La casa del vicino si erge solitaria nel campo di fieno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750893
+    m_Localized: 'Window: Le luci sono spente. Probabilmente sta dormendo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750894
+    m_Localized: 'Window: Un cane scheletrico è immobile sul sentiero che attraversa il campo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750895
+    m_Localized: 'Window: Si guarda intorno con aria mesta. Forse è in cerca di cibo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750896
+    m_Localized: 'Window: Alcuni ubriachi giacciono accasciati in mezzo alla strada.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750897
+    m_Localized: 'Window: Sdraiati sul suolo duro e gelido, sembrano dormire profondamente. Beati loro...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750898
+    m_Localized: 'Window: Scorgi in lontananza la casa del tuo vicino, che al momento si trova da te.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750899
+    m_Localized: 'Window: Le finestre sono illuminate. Sembra che sua figlia lo stia aspettando.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750900
+    m_Localized: 'Window: Ci sono alcuni adolescenti nel cortile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750901
+    m_Localized: 'Window: Chiacchierano tra loro con aria disinvolta, ignorandoti completamente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750902
+    m_Localized: 'Window: All''esterno regna un silenzio tombale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750903
+    m_Localized: 'Window: Non c''è anima viva.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750904
+    m_Localized: 'Window: Neanche gli ubriachi si vedono più in giro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750905
+    m_Localized: 'Window: Che abbiano paura di qualcosa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750906
+    m_Localized: 'Window: Vedi il tuo vicino e sua figlia attraverso la finestra.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750907
+    m_Localized: 'Window: Giocano e si divertono, come per dimenticare l''orrore che li circonda...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750908
+    m_Localized: 'Window: Anche solo per un istante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750909
+    m_Localized: 'Window: I cadaveri degli adolescenti giacciono a terra.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750910
+    m_Localized: 'Window: Qualcuno li ha uccisi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750911
+    m_Localized: 'Window: Sembra sia successo da poco. Il sangue è ancora fresco.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750912
+    m_Localized: 'Window: Un uomo dal pallore cadaverico è in piedi sul marciapiede.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750913
+    m_Localized: 'Window: Strane grinze solcano la sua pelle.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750914
+    m_Localized: 'Window: È come se la sua carne non fosse della misura giusta per il corpo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750915
+    m_Localized: 'Window: Non riesci a scorgerne gli occhi, eppure senti che ti sta osservando.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750916
+    m_Localized: 'Window: Il panico ti avvinghia le viscere mentre preghi che quel Visitatore mostruoso se ne vada.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750917
+    m_Localized: 'Window: Alcuni uomini della FEMA presidiano l''ingresso della casa del tuo vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750918
+    m_Localized: 'Window: Ti chiedi di cosa stiano parlando.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750919
+    m_Localized: 'Window: Forse stanno prelevando dei campioni di terreno?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750920
+    m_Localized: 'Window: Oppure cercano un luogo per allestire una base?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750921
+    m_Localized: 'Window: I resti carbonizzati degli adolescenti sono disseminati a terra.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750922
+    m_Localized: 'Window: Sono rimasti lì tutto il giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750923
+    m_Localized: 'Window: Due addetti della FEMA sono in piedi accanto ai corpi e stanno scrivendo qualcosa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750924
+    m_Localized: 'Window: È un bene che siano arrivati a portar via i cadaveri.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750925
+    m_Localized: 'Window: Se dovessero marcire all''aperto, potrebbero diffondere malattie inimmaginabili.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750926
+    m_Localized: 'Window: Dalla finestra vedi un manipolo di soldati armati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750927
+    m_Localized: 'Window: Pare sia una piccola squadra inviata dalla città per proteggere il personale della FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750928
+    m_Localized: 'Window: Cogli qualche frammento dei loro discorsi. Parlano di un individuo pallido, a torso nudo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750929
+    m_Localized: 'Window: Forse stanno cercando di scovare quel Visitatore inquietante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750930
+    m_Localized: 'Window: La casa del vicino, che era stata appena dipinta di bianco, è ridotta a un tizzone di un nero innaturale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750931
+    m_Localized: 'Window: Le fiamme hanno smesso di divampare da poco.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750932
+    m_Localized: 'Window: E se si fosse trattato di un incendio doloso?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750933
+    m_Localized: 'Window: Cos''è successo ai vicini?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750934
+    m_Localized: 'Window: Qualcuno sarà sopravvissuto?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750935
+    m_Localized: 'Window: L''angoscia ti offusca i pensieri. Ti senti schiacciato da un''assoluta impotenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750936
+    m_Localized: 'Window: L''uomo pallido e sinistro è in mezzo alla strada. Sta sorridendo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750937
+    m_Localized: 'Window: Regge la testa decapitata di qualcuno, infilata in un elmetto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750938
+    m_Localized: 'Window: Si tratta di un soldato. I suoi lineamenti sono distorti in una smorfia di terrore cieco.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750939
+    m_Localized: 'Window: Difficile dire cosa lo abbia spaventato di più: il Visitatore pallido o la morte imminente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750940
+    m_Localized: 'Window: Della squadra giunta ieri... non è rimasto nessuno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750941
+    m_Localized: 'Window: È stata una vera e propria carneficina.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750942
+    m_Localized: 'Window: I loro corpi sono sparsi ovunque lungo la strada. A uno manca la testa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750943
+    m_Localized: 'Window: È stato quel pallido sconosciuto a ucciderli tutti?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750944
+    m_Localized: Salve, qui è il servizio d'emergenza, come posso aiutarla? "La gente... sta bruciando".
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750945
+    m_Localized: Può descrivere cosa vede? C'è un incendio? "N‑No, è il sole. Stanno... bruciando sotto il sole".
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750946
+    m_Localized: Non uscite di casa prima del tramonto. "No! Lui esce di notte! Quell'essere pallido... non è umano".
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750947
+    m_Localized: 'E ora il nostro nuovo programma: "Sì, sono un essere umano".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750948
+    m_Localized: 'È molto semplice: inviateci le vostre foto e noi scopriremo chi siete veramente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750949
+    m_Localized: Inviate il materiale a yesiam@humanverification.agency. Al resto penseremo noi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750950
+    m_Localized: Accettiamo solo occhi, denti e unghie. Qualsiasi altra parte del corpo non verrà considerata.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750951
+    m_Localized: I vostri occhi sono diventati rossi? I denti bianchi? È apparso dello sporco sotto le unghie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750952
+    m_Localized: Uno spirito maligno vi ha posseduto. Siete diventati Visitatori!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750953
+    m_Localized: Non permettete al male di consumarvi! Contattate al più presto i nostri esperti al numero 777‑460.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750954
+    m_Localized: Scacceranno lo spirito, purificheranno il vostro corpo e vi garantiranno una maggiore protezione.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750955
+    m_Localized: Benvenuti a "Voglio crederci", dove sveliamo misteri e cospirazioni governative.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750956
+    m_Localized: Oggi parleremo dei Visitatori con un ospite speciale, noto scienziato e rispettato membro del...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750957
+    m_Localized: Un attimo... Cosa? Non viene?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750958
+    m_Localized: Come hanno fatto a rubargli TUTTI i documenti? C'erano MONTAGNE di informazioni!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750959
+    m_Localized: Dannazione! Lo sapevo che ci avrebbero ostacolati. Brutti figli di...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415503822848
+    m_Localized: 'TV: Tanto tempo fa, due fratelli vivevano nei pressi di una diga.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182976
+    m_Localized: 'TV: Lo scorrere dell''acqua faceva schiumare il fiume come una bibita fresca in un giorno d''estate...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182977
+    m_Localized: 'TV: Anni dopo, ricordando la loro infanzia, i fratelli aprirono insieme il birrificio Bober.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182978
+    m_Localized: 'TV: Da allora, la Bober Černý è diventata una delle birre più apprezzate, sia a casa che al bar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182979
+    m_Localized: 'TV: Birra Bober Černý. Bevi quella giusta. Gustala fino in fondo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182980
+    m_Localized: 'Window: Osservi le rovine della casa del tuo vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182981
+    m_Localized: 'Window: Fino a ieri, ci viveva una famiglia felice. Ora resta solo un guscio vuoto e spettrale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182982
+    m_Localized: 'Window: Ti assale una strana sensazione. Come se, in fondo, avessi già capito come sarebbe finita...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182983
+    m_Localized: 'Window: Sentivi che la morte avrebbe bussato presto a quella porta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182984
+    m_Localized: 'Window: Vedi un teschio umano infilzato su un palo. Indossa ancora l''elmetto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182985
+    m_Localized: 'Window: Ha la pelle annerita dalle fiamme. I denti sembrano essere stati strappati via con violenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182986
+    m_Localized: 'Window: Dev''essere rimasto lì fuori tutto il giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182987
+    m_Localized: 'Window: Hai la sensazione che questa visione raccapricciante sia un avvertimento del Visitatore pallido.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182988
+    m_Localized: 'Window: Gli agenti della FEMA stanno ispezionando il luogo del recente massacro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182989
+    m_Localized: 'Window: Raccolgono le armi dei soldati caduti per prevenire il saccheggio dei corpi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182990
+    m_Localized: 'Window: Nessuno si aspettava che il Visitatore pallido potesse avere la meglio contro delle truppe armate.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182991
+    m_Localized: 'Window: Eppure, i sacchi per cadaveri continuano ad accumularsi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576140324864
+    m_Localized: 'TV: Buon pomeriggio. Diamo uno sguardo alle previsioni meteo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102080
+    m_Localized: 'TV: Un''ondata di calore investirà la regione, con temperature destinate a battere ogni record storico.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102081
+    m_Localized: 'TV: Secondo gli esperti, il caldo aumenterà ulteriormente nel corso della prossima settimana.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102082
+    m_Localized: 'TV: L''intensa attività solare comporterà una forte emissione di radiazioni ultraviolette.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102083
+    m_Localized: 'TV: Per la vostra incolumità, evitate di esporvi al sole.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102084
+    m_Localized: 'TV: Poiché le temperature elevate potrebbero aumentare drasticamente il rischio di insolazioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102085
+    m_Localized: 'TV: Al momento, le conseguenze a lungo termine dell''esposizione a un tale irraggiamento sono ancora ignote.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102086
+    m_Localized: 'TV: Ma per prevenire ustioni di terzo grado è consigliabile non uscire all''aperto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102087
+    m_Localized: 'TV: Purtroppo, le creme solari di qualsiasi fattore non sono più efficaci.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102088
+    m_Localized: 'TV: A seguire, dopo la pubblicità, nuovi aggiornamenti meteo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102089
+    m_Localized: 'TV: Osservi le ballerine volteggiare sul palco, con salti decisi e al contempo delicati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102090
+    m_Localized: 'TV: Malgrado l''eleganza, il ballo ti suscita una profonda inquietudine.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102091
+    m_Localized: 'TV: Come se servisse a distoglierti da ciò che sta accadendo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102092
+    m_Localized: 'TV: Se solo qualcuno si degnasse di spiegare cosa sta succedendo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102093
+    m_Localized: 'TV: Una volta, per fare acquisti, dovevi per forza recarti in negozio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102094
+    m_Localized: 'TV: Ma con ForRest, ti basta una telefonata per ottenere tutto ciò di cui hai bisogno!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102095
+    m_Localized: 'TV: Chiama il numero {0} e riceverai la spesa a domicilio entro ventiquattro ore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102096
+    m_Localized: 'TV: ForRest. Il gusto del relax, tra le mura di casa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102097
+    m_Localized: 'TV: Fonti locali riferiscono di un assassino dalla carnagione pallida avvistato in città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102098
+    m_Localized: 'TV: Le indagini della polizia hanno stabilito che tutte le sue vittime condividevano un dettaglio: erano sole.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102099
+    m_Localized: 'TV: Inoltre, il criminale ama conversare con il bersaglio prima di ucciderlo brutalmente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102100
+    m_Localized: 'TV: La polizia ha elaborato il suo identikit basandosi sulle descrizioni dei testimoni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102101
+    m_Localized: 'TV: Il sospetto è un uomo molto pallido dai capelli neri, di corporatura magra. Indossa soltanto un paio di pantaloni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102102
+    m_Localized: 'TV: Secondo ulteriori rapporti, a volte si riveste con la pelle di un''altra persona.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102103
+    m_Localized: 'TV: Questa informazione non è stata ancora confermata.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102104
+    m_Localized: 'TV: Se vedete quest''uomo, non aprite la porta. Soprattutto, non fategli sapere che siete soli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102105
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102106
+    m_Localized: 'TV: Caos, terrore e sofferenza. Tutto a causa dei Visitatori...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102107
+    m_Localized: 'TV: Ma nell''ora più buia, quando le nostre grida di aiuto sembravano cadere nel vuoto...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102108
+    m_Localized: 'TV: LA FEMA È GIUNTA A SALVARCI!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102109
+    m_Localized: 'TV: Gli impavidi eroi della FEMA sono in prima linea per difenderci dall''avanzata dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102110
+    m_Localized: 'TV: Finora, l''agenzia ha identificato oltre ventisettemila anomalie pericolose.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102111
+    m_Localized: 'TV: Il vostro contributo è cruciale. Aiutate l''agenzia segnalando qualunque attività sospetta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102112
+    m_Localized: 'TV: Vi basterà consegnare ai sospetti un mandato di comparizione affinché si rechino a un centro FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102113
+    m_Localized: 'TV: Temete di essere voi stessi un Visitatore? Chiamate il nostro numero d''emergenza: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102114
+    m_Localized: 'TV: Aiutateci ad aiutarvi. Sostenete la FEMA e unitevi alla lotta contro i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102115
+    m_Localized: 'TV: FEMA. Che cos''è? Perché è stata fondata?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102116
+    m_Localized: 'TV: La FEMA è un''agenzia governativa speciale, istituita con l''obiettivo di gestire e risolvere la crisi in corso.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102117
+    m_Localized: 'TV: Il suo compito è risolvere i numerosi problemi causati dall''invasione dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102118
+    m_Localized: 'TV: Nessuno sa di preciso quali contromisure siano state predisposte...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102119
+    m_Localized: 'TV: Ma di una cosa possiamo essere sicuri: il nostro futuro è in buone mani.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102120
+    m_Localized: 'TV: L''agenzia è composta da esperti di ogni settore, tra cui scienziati e ricercatori di fama mondiale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102121
+    m_Localized: 'TV: Se un agente FEMA dovesse bussare alla vostra porta, siete invitati a collaborare e a seguire le sue istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102122
+    m_Localized: 'TV: Aiutateci ad aiutarvi. Sostenete la FEMA e unitevi alla lotta contro i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102123
+    m_Localized: 'TV: La FEMA ipotizza che i Visitatori possano essere contagiosi o costituire un rischio biologico ancora ignoto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102124
+    m_Localized: 'TV: Data la situazione, è fondamentale denunciare eventuali soggetti sospetti e isolarli immediatamente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102125
+    m_Localized: 'TV: Se non potete consegnare un Visitatore, notificategli il mandato di comparizione al centro FEMA più vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102126
+    m_Localized: 'TV: Al successivo giro di raccolta, un addetto preleverà chiunque esibisca il mandato per sottoporlo ai test clinici.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102127
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102128
+    m_Localized: 'TV: Affronta il caldo con grinta!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102129
+    m_Localized: 'TV: Con EnerJeka, vivi al massimo!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102130
+    m_Localized: 'TV: Wow! Una bevanda energetica rinvigorente che disseta più in fretta e meglio dell''acqua?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102131
+    m_Localized: 'TV: Disponibile con consegna a domicilio ForRest. Ordina al numero {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102132
+    m_Localized: 'TV: Buon pomeriggio, e benvenuti al notiziario.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102133
+    m_Localized: 'TV: A causa del forte aumento degli avvistamenti di Visitatori, la FEMA ha annunciato nuove misure di sicurezza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102134
+    m_Localized: 'TV: È entrata in vigore, con effetto immediato, una quarantena totale in tutte le principali aree residenziali.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102135
+    m_Localized: 'TV: Gli spostamenti fuori città e verso i centri abitati limitrofi sono rigorosamente proibiti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102136
+    m_Localized: 'TV: Restate entro i confini della vostra area di appartenenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102137
+    m_Localized: 'TV: Inoltre, la FEMA ha reso nota una nuova procedura di identificazione dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102138
+    m_Localized: 'TV: La fotografia dell''aura.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102139
+    m_Localized: 'TV: La presenza di aree scure nella foto indica che il soggetto potrebbe essere, con elevata probabilità, un Visitatore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102140
+    m_Localized: 'TV: Per ora è tutto. Restate calmi e non lasciate le vostre abitazioni durante il giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102141
+    m_Localized: 'TV: Ora un breve messaggio dai nostri sponsor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102142
+    m_Localized: 'TV: Cosa sono i Visitatori? Fantasmi? O creature emerse dal sottosuolo?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102143
+    m_Localized: 'TV: No, questa non è fantascienza, o una trovata pubblicitaria.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102144
+    m_Localized: 'TV: È la nostra nuova realtà.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102145
+    m_Localized: 'TV: Continuano a circolare voci discordanti sulla reale origine dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102146
+    m_Localized: 'TV: Sono alieni? Morti viventi? Un esperimento scientifico finito male?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102147
+    m_Localized: 'TV: Secondo le autorità, sono tutte teorie prive di fondamento.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102148
+    m_Localized: 'TV: Le ricerche indicano che i Visitatori sono umani contaminati da un agente biologico non ancora identificato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102149
+    m_Localized: 'TV: Le modalità di trasmissione restano ignote. La FEMA esorta la popolazione a vigilare sui loro segni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102150
+    m_Localized: 'TV: In caso di esposizione o incertezza sulla vostra identità, chiamate il numero d''emergenza della FEMA:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102151
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102152
+    m_Localized: 'TV: Per ora è tutto. Rimanete con noi per saperne di più... dopo la pubblicità.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102153
+    m_Localized: 'TV: Identificare i Visitatori si fa ogni giorno più difficile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102154
+    m_Localized: 'TV: I segni sono un indicatore prezioso... ma se esistesse un metodo a prova di errore?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102155
+    m_Localized: 'TV: Vi presentiamo la nostra rivoluzionaria pellicola fotografica sensibile all''aura!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102156
+    m_Localized: 'TV: Rivela l''energia vitale, così che possiate distinguere tra un normale cittadino e un pericoloso Visitatore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102157
+    m_Localized: 'TV: Scattate una foto. Se compaiono chiazze scure, avrete trovato un Visitatore!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102158
+    m_Localized: 'TV: Chiamate ora per ricevere il kit di prova gratuito: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102159
+    m_Localized: 'TV: Bollettino di emergenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102160
+    m_Localized: 'TV: Estesi incendi si stanno propagando in tutte le aree boschive.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102161
+    m_Localized: 'TV: Gli esperti ritengono che la causa sia da attribuire all''intensa attività solare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102162
+    m_Localized: 'TV: L''entità della catastrofe resta incerta. Squadre di vigili del fuoco sono già operative per arginare le fiamme.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296384
+    m_Localized: 'TV: Restate calmi e non lasciate le vostre abitazioni durante il giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296385
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296386
+    m_Localized: 'TV: A seguire, un breve messaggio dai nostri sponsor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296387
+    m_Localized: 'TV: Tanto tempo fa, due fratelli vivevano nei pressi di una diga.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296388
+    m_Localized: 'TV: Lo scorrere dell''acqua faceva schiumare il fiume come una bibita fresca in un giorno d''estate...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296389
+    m_Localized: 'TV: Anni dopo, ricordando la loro infanzia, i fratelli aprirono insieme il birrificio Bober.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296390
+    m_Localized: 'TV: Da allora, la Bober Černý è diventata una delle birre più apprezzate, sia a casa che al bar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296391
+    m_Localized: 'TV: Birra Bober Černý. Bevi quella giusta. Gustala fino in fondo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296392
+    m_Localized: 'TV: Interrompiamo i programmi per un''edizione straordinaria.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296393
+    m_Localized: 'TV: Ci giungono segnalazioni di tumulti da una città vicina.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296394
+    m_Localized: 'TV: In seguito a circostanze non chiarite, la FEMA ha posto la città sotto cordone sanitario.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296395
+    m_Localized: 'TV: Non uscite dalle vostre abitazioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296396
+    m_Localized: 'TV: Restate dove siete e attendete ulteriori istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296397
+    m_Localized: 'TV: E ricordate... sostenete la FEMA e unitevi alla lotta contro i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296398
+    m_Localized: 'TV: Per ora è tutto. Pubblicità!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296399
+    m_Localized: 'TV: Anche i più instancabili hanno bisogno di una pausa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296400
+    m_Localized: 'TV: Sigarette Margoro: respira a fondo, ritrova la pace.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296401
+    m_Localized: 'TV: Margoro. Le sigarette per veri uomini.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296402
+    m_Localized: 'TV: (Avvertenza: l''azienda non è responsabile per danni alla salute o decesso. Consumare responsabilmente.)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296403
+    m_Localized: 'TV: Buon pomeriggio con le ultime notizie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296404
+    m_Localized: 'TV: Ci è giunto un aggiornamento importante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296405
+    m_Localized: 'TV: Nuovi particolari sono emersi in merito al recente incidente avvenuto in città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296406
+    m_Localized: 'TV: Un individuo armato avrebbe attaccato una delle zone di quarantena cittadine.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296407
+    m_Localized: 'TV: Restano incerti i motivi del gesto e se l''attentatore abbia agito con dei complici.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296408
+    m_Localized: 'TV: Inoltre, diverse persone non identificate sono riuscite a fuggire dalla zona di quarantena.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296409
+    m_Localized: 'TV: Il silenzio è l''araldo della morte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296410
+    m_Localized: 'TV: Una quiete sinistra che prosciuga l''anima.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296411
+    m_Localized: 'TV: Ma peggio ancora del vuoto... c''è quel suono.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296412
+    m_Localized: 'TV: Un lontano rintocco funebre, che risuona sempre più forte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296413
+    m_Localized: 'TV: Le campane suonano per tutti noi, riempiendoci le orecchie di un fragore incessante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296414
+    m_Localized: 'TV: Pensieri immondi intrappolati in ragnatele di cera.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296415
+    m_Localized: 'TV: Un nido infernale dove i Visitatori proliferano.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296416
+    m_Localized: 'TV: Intrappolati nel profondo di un viscido nutrimento.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296417
+    m_Localized: 'TV: Cerumen inundans. Cerumen inundans. Cerumen inundans.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296418
+    m_Localized: 'TV: L''incidente di oggi ha alimentato svariate ipotesi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296419
+    m_Localized: 'TV: C''è chi riferisce di un unico attentatore, altri di un gruppo armato e incappucciato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296420
+    m_Localized: 'TV: Ma per la città il peggio potrebbe non essere ancora passato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296421
+    m_Localized: 'TV: A causa del lockdown, la rimozione delle salme nelle aree vicine è stata temporaneamente sospesa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296422
+    m_Localized: 'TV: I controlli nelle abitazioni, tuttavia, proseguiranno come da programma.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296423
+    m_Localized: 'TV: Se vi è possibile cremare i defunti, procedete immediatamente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296424
+    m_Localized: 'TV: Altrimenti, attendete la fine dell''emergenza prima di consegnare eventuali resti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296425
+    m_Localized: 'TV: Per ora è tutto. Rimanete con noi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296426
+    m_Localized: 'TV: Buon pomeriggio, e benvenuti al notiziario.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296427
+    m_Localized: 'TV: La FEMA è al lavoro per soccorrere le vittime dell''attacco nella zona di quarantena.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296428
+    m_Localized: 'TV: Visto il sovraffollamento nella struttura, l''agenzia ha stabilito quanto segue.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296429
+    m_Localized: 'TV: I residenti evacuati saranno ospitati temporaneamente in edifici alla periferia della città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296430
+    m_Localized: 'TV: I residenti del luogo stanno collaborando con la FEMA per offrire un alloggio agli sfollati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296431
+    m_Localized: 'TV: Al momento, solo una parte degli individui fuggiti è stata rintracciata.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296432
+    m_Localized: 'TV: Fortunatamente, gli agenti hanno annunciato un nuovo metodo di identificazione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296433
+    m_Localized: 'TV: Le gengive sanguinanti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296434
+    m_Localized: 'TV: Se un soggetto con questo segno bussa alla vostra porta, non aprite ed evitate ogni contatto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296435
+    m_Localized: 'TV: Attendete l''arrivo delle pattuglie della FEMA e segnalate il sospetto alle autorità competenti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296436
+    m_Localized: 'TV: Ricordate, restate dove siete e attendete ulteriori istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296437
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296438
+    m_Localized: 'TV: A seguire, un reportage esclusivo su una nuova e pericolosa setta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296439
+    m_Localized: 'TV: I Visitatori non solo si nascondono tra noi, ma potrebbero aver già infettato la nostra mente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296440
+    m_Localized: 'TV: Questo nuovo culto si sta rapidamente diffondendo in numerose città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296441
+    m_Localized: 'TV: Le imputazioni contestate ai suoi membri includono...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296442
+    m_Localized: 'TV: Sacrifici rituali, venerazione di entità ignote e legami diretti con i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296443
+    m_Localized: 'TV: Stando agli ultimi rapporti, il culto si è schierato pubblicamente contro la FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296444
+    m_Localized: 'TV: Dopo una fase iniziale di innocuo proselitismo, l''organizzazione è passata ai fatti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296445
+    m_Localized: 'TV: Alcuni esperti ritengono che la setta sia responsabile dei recenti episodi di violenza in città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296446
+    m_Localized: 'TV: La popolazione è invitata a evitare qualsiasi interazione con i cosiddetti "nuovi credenti".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296447
+    m_Localized: 'TV: Qualunque forma di collaborazione con i cultisti comporterà serie conseguenze penali.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296448
+    m_Localized: 'TV: Per ora è tutto. Rimanete con noi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296449
+    m_Localized: 'TV: Buon pomeriggio. Ecco le notizie di oggi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296450
+    m_Localized: 'TV: La città sta tornando lentamente alla normalità, tuttavia alcuni fuggitivi sono ancora a piede libero.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296451
+    m_Localized: 'TV: Le operazioni di smaltimento delle salme sono riprese, ma sono sorti nuovi problemi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296452
+    m_Localized: 'TV: Secondo numerose testimonianze, branchi di cani randagi si aggirano per le strade.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296453
+    m_Localized: 'TV: La FEMA ha schierato una squadra per fronteggiare questa nuova minaccia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296454
+    m_Localized: 'TV: L''agenzia ha inoltre reso noto un nuovo segno distintivo per identificare i soggetti a rischio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296455
+    m_Localized: 'TV: Le irritazioni cutanee.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296456
+    m_Localized: 'TV: Le indagini sull''attacco sono tuttora in corso.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296457
+    m_Localized: 'TV: Non è ancora chiaro se l''attentatore abbia avuto dei complici.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296458
+    m_Localized: 'TV: La FEMA ha comunque assicurato che saprà gestire sia questa emergenza, sia l''invasione dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296459
+    m_Localized: 'TV: Se avete dubbi su come riconoscere un Visitatore, chiamate il numero d''emergenza della FEMA:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296460
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296461
+    m_Localized: 'TV: Come sempre, restate dove siete e attendete ulteriori istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296462
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296463
+    m_Localized: 'TV: Nel prossimo servizio, un aggiornamento sulla crisi in corso lungo la fascia equatoriale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296464
+    m_Localized: 'TV: Stiamo ricevendo notizie allarmanti dai paesi situati nelle aree dell''equatore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296465
+    m_Localized: 'TV: Le fiamme e il caldo torrido non danno tregua a diverse nazioni, mentre la siccità aggrava un quadro già critico.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296466
+    m_Localized: 'TV: Le temperature sono talmente elevate che il solo contatto con il suolo può causare ustioni di terzo grado.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296467
+    m_Localized: 'TV: Il bilancio dei morti è ancora incerto e ogni tentativo di evacuazione è al momento impraticabile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296468
+    m_Localized: 'TV: Il nostro governo non è ancora riuscito a contattare le autorità delle regioni colpite.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296469
+    m_Localized: 'TV: Tuttavia, non appena sarà possibile, la FEMA invierà personale per assistere nei soccorsi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296470
+    m_Localized: 'TV: Per ora è tutto. Rimanete con noi per gli aggiornamenti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296471
+    m_Localized: 'TV: Buon pomeriggio, e benvenuti al notiziario.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296472
+    m_Localized: 'TV: La situazione in città resta instabile, e le autorità hanno confermato che il lockdown non verrà revocato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296473
+    m_Localized: 'TV: Si delinea una nuova minaccia, dopo che diversi cultisti sono stati avvistati nelle periferie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296474
+    m_Localized: 'TV: A quanto pare, la setta starebbe pianificando un rituale con grandi roghi all''aperto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296475
+    m_Localized: 'TV: La FEMA ritiene che questo gruppo abbia avuto un ruolo centrale nei recenti attacchi contro le zone di quarantena.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296476
+    m_Localized: 'TV: Purtroppo, date le attuali circostanze, al momento né la FEMA né l''esercito possono schierare unità dedicate.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296477
+    m_Localized: 'TV: Se avvistate membri della setta presso la vostra abitazione, chiamate subito il numero d''emergenza della FEMA: {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296478
+    m_Localized: 'TV: L''agenzia ha appena annunciato un nuovo segno per il riconoscimento dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296479
+    m_Localized: 'TV: La micosi ascellare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296480
+    m_Localized: 'TV: Come sempre, restate dove siete e attendete ulteriori istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296481
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296482
+    m_Localized: 'TV: Tra poco, le ultime notizie sulla situazione climatica ai poli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296483
+    m_Localized: 'TV: Il sole colpisce senza lasciare scampo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296484
+    m_Localized: 'TV: Gli scienziati hanno pubblicato nuove e inquietanti proiezioni relative al clima globale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296485
+    m_Localized: 'TV: Senza un calo delle temperature, lo scioglimento delle calotte polari produrrà inondazioni catastrofiche.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296486
+    m_Localized: 'TV: Le indagini sull''attuale anomalia climatica proseguono, ma al momento senza risultati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296487
+    m_Localized: 'TV: Per ora è tutto. Rimanete con noi per gli aggiornamenti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296488
+    m_Localized: 'TV: Edizione straordinaria.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296489
+    m_Localized: 'TV: La crisi urbana è tutt''altro che risolta e la situazione globale continua a peggiorare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296490
+    m_Localized: 'TV: Lo scioglimento dei ghiacciai sta innalzando il livello dei mari a un ritmo allarmante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296491
+    m_Localized: 'TV: Le zone costiere di tutto il mondo, incluse molte grandi metropoli, sono a rischio di gravi inondazioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296492
+    m_Localized: 'TV: Anche diversi laghi, già contaminati da radiazioni, hanno iniziato a evaporare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296493
+    m_Localized: 'TV: Gli scienziati avvertono che questo potrebbe causare precipitazioni tossiche.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296494
+    m_Localized: 'TV: Se sentite dei tuoni, mettetevi al riparo per proteggervi dalle piogge acide.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296495
+    m_Localized: 'TV: Sfortunatamente, il lockdown cittadino resta ancora in vigore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296496
+    m_Localized: 'TV: La FEMA non ha ancora catturato tutti i fuggitivi e ha annunciato un nuovo segno per identificare i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296497
+    m_Localized: 'TV: I movimenti rapidi delle pupille.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296498
+    m_Localized: 'TV: BOLLETTINO DI EMERGENZA'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296499
+    m_Localized: 'TV: Siamo costretti a sospendere le trasmissioni per una minaccia alla sicurezza dei nostri studi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296500
+    m_Localized: 'TV: Se avete dubbi su come riconoscere i Visitatori, chiamate il numero d''emergenza: {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296501
+    m_Localized: 'TV: Fine delle trasmissioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296502
+    m_Localized: 'TV: Edizione straordinaria.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296503
+    m_Localized: 'TV: La FEMA ha appena arrestato gran parte dei dirigenti statali.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296504
+    m_Localized: 'TV: L''agenzia riferisce che alcuni membri del governo sono stati identificati come Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296505
+    m_Localized: 'TV: Considerata l''impossibilità del Parlamento di operare, la FEMA ha assunto le funzioni di governo provvisorio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296506
+    m_Localized: 'TV: In aggiunta...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296507
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296508
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296509
+    m_Localized: 'TV: Un momento...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296510
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296511
+    m_Localized: 'TV: Ci è appena giunto un comunicato dalla FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296512
+    m_Localized: 'TV: I fuggitivi hanno violato il lockdown della città.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296513
+    m_Localized: 'TV: Ripetiamo, i fuggitivi hanno forzato il blocco e si aggirano per le strade.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296514
+    m_Localized: 'TV: Barricate le finestre e chiudete a chiave le porte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296515
+    m_Localized: 'TV: Restate al chiuso e attendete ulteriori istruzioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296516
+    m_Localized: 'TV: Fine delle trasmissioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296517
+    m_Localized: 'Window: La casa del vicino si erge solitaria nel campo di fieno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296518
+    m_Localized: 'Window: Le luci sono spente. Probabilmente sta dormendo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296519
+    m_Localized: 'Window: Alcuni ubriachi giacciono accasciati in mezzo alla strada.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296520
+    m_Localized: 'Window: Sdraiati sul suolo duro e gelido, sembrano dormire profondamente. Beati loro...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296521
+    m_Localized: 'Window: Scorgi in lontananza la casa del tuo vicino, che al momento si trova da te.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296522
+    m_Localized: 'Window: Le finestre sono illuminate. Sembra che sua figlia lo stia aspettando.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296523
+    m_Localized: 'Window: All''esterno regna un silenzio tombale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296524
+    m_Localized: 'Window: Non c''è anima viva.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296525
+    m_Localized: 'Window: Neanche gli ubriachi si vedono più in giro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296526
+    m_Localized: 'Window: Che abbiano paura di qualcosa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296527
+    m_Localized: 'Window: Vedi il tuo vicino e sua figlia attraverso la finestra.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296528
+    m_Localized: 'Window: Giocano e si divertono, come per dimenticare l''orrore che li circonda...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296529
+    m_Localized: 'Window: Anche solo per un istante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296530
+    m_Localized: 'Window: Un uomo dal pallore cadaverico è in piedi sul marciapiede.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296531
+    m_Localized: 'Window: Strane grinze solcano la sua pelle.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296532
+    m_Localized: 'Window: È come se la sua carne non fosse della misura giusta per il corpo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296533
+    m_Localized: 'Window: Non riesci a scorgerne gli occhi, eppure senti che ti sta osservando.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296534
+    m_Localized: 'Window: Il panico ti avvinghia le viscere mentre preghi che quel Visitatore mostruoso se ne vada.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296535
+    m_Localized: 'Window: Alcuni uomini della FEMA presidiano l''ingresso della casa del tuo vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296536
+    m_Localized: 'Window: Ti chiedi di cosa stiano parlando.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296537
+    m_Localized: 'Window: Forse stanno prelevando dei campioni di terreno?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296538
+    m_Localized: 'Window: Oppure cercano un luogo per allestire una base?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296539
+    m_Localized: 'Window: Dalla finestra vedi un manipolo di soldati armati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296540
+    m_Localized: 'Window: Pare sia una piccola squadra inviata dalla città per proteggere il personale della FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296541
+    m_Localized: 'Window: Cogli qualche frammento dei loro discorsi. Parlano di un individuo pallido, a torso nudo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296542
+    m_Localized: 'Window: Forse stanno cercando di scovare quel Visitatore inquietante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296543
+    m_Localized: 'Window: La casa del vicino, che era stata appena dipinta di bianco, è ridotta a un tizzone di un nero innaturale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296544
+    m_Localized: 'Window: Le fiamme hanno smesso di divampare da poco.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296545
+    m_Localized: 'Window: E se si fosse trattato di un incendio doloso?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296546
+    m_Localized: 'Window: Cos''è successo ai vicini?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296547
+    m_Localized: 'Window: Qualcuno sarà sopravvissuto?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296548
+    m_Localized: 'Window: L''angoscia ti offusca i pensieri. Ti senti schiacciato da un''assoluta impotenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296549
+    m_Localized: 'Window: Della squadra giunta ieri... non è rimasto nessuno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296550
+    m_Localized: 'Window: È stata una vera e propria carneficina.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296551
+    m_Localized: 'Window: I loro corpi sono sparsi ovunque lungo la strada. A uno manca la testa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296552
+    m_Localized: 'Window: È stato quel pallido sconosciuto a ucciderli tutti?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296553
+    m_Localized: 'Window: Osservi le rovine della casa del tuo vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296554
+    m_Localized: 'Window: Fino a ieri, ci viveva una famiglia felice. Ora resta solo un guscio vuoto e spettrale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296555
+    m_Localized: 'Window: Ti assale una strana sensazione. Come se, in fondo, avessi già capito come sarebbe finita...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296556
+    m_Localized: 'Window: Sentivi che la morte avrebbe bussato presto a quella porta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296557
+    m_Localized: 'Window: Vedi un teschio umano infilzato su un palo. Indossa ancora l''elmetto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296558
+    m_Localized: 'Window: Ha la pelle annerita dalle fiamme. I denti sembrano essere stati strappati via con violenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296559
+    m_Localized: 'Window: Dev''essere rimasto lì fuori tutto il giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296560
+    m_Localized: 'Window: Hai la sensazione che questa visione raccapricciante sia un avvertimento del Visitatore pallido.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296561
+    m_Localized: 'Window: Gli agenti della FEMA stanno ispezionando il luogo del recente massacro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296562
+    m_Localized: 'Window: Raccolgono le armi dei soldati caduti per prevenire il saccheggio dei corpi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296563
+    m_Localized: 'Window: Nessuno si aspettava che il Visitatore pallido potesse avere la meglio contro delle truppe armate.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296564
+    m_Localized: 'Window: Eppure, i sacchi per cadaveri continuano ad accumularsi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296565
+    m_Localized: 'Window: Una donna piange sul corpo del marito ferito.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296566
+    m_Localized: 'Window: Non riesci a capire se sia vivo o morto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296567
+    m_Localized: 'Window: Tra i singhiozzi, tenta di trascinare quel peso inerte al riparo dagli spari.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296568
+    m_Localized: 'Window: Tutto lascia pensare che la situazione sia destinata a peggiorare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296569
+    m_Localized: 'Window: Il sentiero che costeggia il campo è disseminato dei corpi dei fuggitivi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296570
+    m_Localized: 'Window: A pochi passi dal massacro si staglia il colpevole: un agente della FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296571
+    m_Localized: 'Window: Impugna un fucile, con la canna ancora fumante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296572
+    m_Localized: 'Window: Persone in preda al panico corrono verso le case nei dintorni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296573
+    m_Localized: 'Window: Battono i pugni sulle porte, cercando disperatamente di entrare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296574
+    m_Localized: 'Window: Ma nessuno è disposto ad accoglierle.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296575
+    m_Localized: 'Window: Vicino alla casa bruciata del tuo vicino c''è un gruppo di sfollati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296576
+    m_Localized: 'Window: Sembrano stravolti e confabulano tra loro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296577
+    m_Localized: 'Window: Probabilmente, vogliono ripararsi in quel rudere.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296578
+    m_Localized: 'Window: Ma esiste ancora un luogo dove nascondersi? Un angolo di mondo al sicuro?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296579
+    m_Localized: 'Window: Sul sentiero c''è un uomo armato di fucile d''assalto. Il suo sguardo è quello di un folle.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296580
+    m_Localized: 'Window: La sua giacca è ricoperta di denti, occhi e chissà cos''altro. È difficile distinguere i dettagli da lontano.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296581
+    m_Localized: 'Window: Sono dei trofei? Quell''uomo non sta uccidendo per difendersi, ma per puro divertimento?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296582
+    m_Localized: 'Window: Comunque sia, speri di non attirare la sua attenzione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296583
+    m_Localized: 'Window: Da un lampione penzola un uomo, con un cartello al collo che recita "Mi avete tolto tutto".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296584
+    m_Localized: 'Window: È stato rapinato? O è stata la FEMA a portargli via la famiglia?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296585
+    m_Localized: 'Window: I pensieri si rincorrono, ma non hai risposte. Solo supposizioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296586
+    m_Localized: 'Window: Alcune persone evacuate dalla FEMA si sono stabilite nelle rovine della casa del tuo vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296587
+    m_Localized: 'Window: Sebbene sia rimasto ben poco, lo scantinato sembra essere intatto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296588
+    m_Localized: 'Window: Un piccolo lembo di sicurezza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296589
+    m_Localized: 'Window: Ma per quanto ancora riusciranno a nascondersi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296590
+    m_Localized: 'Window: Branchi di cani randagi vagano tra le case.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296591
+    m_Localized: 'Window: Sono ustionati e gravemente denutriti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296592
+    m_Localized: 'Window: Finché rimani in casa, non rappresentano un pericolo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296593
+    m_Localized: 'Window: E sei consapevole che, mai come ora, uscire all''esterno sarebbe un suicidio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296594
+    m_Localized: 'Window: Sparuti gruppi carichi di bagagli sussurrano nell''ombra, attenti a non farsi udire dalle pattuglie della FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296595
+    m_Localized: 'Window: Provengono dalle zone di quarantena e occupano le abitazioni di chi viveva qui prima.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296596
+    m_Localized: 'Window: L''uomo impiccato sembra ora un macabro cartello di benvenuto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296597
+    m_Localized: 'Window: Un cacciatore di Visitatori armato tiene sotto tiro un gruppo di sopravvissuti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296598
+    m_Localized: 'Window: Probabilmente li ha incontrati per caso.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296599
+    m_Localized: 'Window: Senti urla disperate e la sua voce sbraitante.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296600
+    m_Localized: 'Window: Chi potrà sopravvivere in questo muovo mondo? Certamente, non loro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296601
+    m_Localized: 'Window: Gli agenti della FEMA osservano i cani morti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296602
+    m_Localized: 'Window: Uno di loro sta prendendo appunti su un tablet.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296603
+    m_Localized: 'Window: Come può quello sparuto gruppetto di persone fermare un''orda di animali affamati?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296604
+    m_Localized: 'Window: Due agenti della FEMA osservano l''uomo impiccato al lampione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296605
+    m_Localized: 'Window: Alla fine, hanno deciso di occuparsi dell''attrazione principale del quartiere.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296606
+    m_Localized: 'Window: Sembrano investigatori alle prime armi. Probabilmente si chiedono come sia arrivato lassù senza una scala.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296607
+    m_Localized: 'Window: L''intero gruppo è morto. Cani affamati si avventano sui loro resti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296608
+    m_Localized: 'Window: I cadaveri sono circondati da bossoli. Il cacciatore deve averli uccisi per poi raccogliere dei trofei.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296609
+    m_Localized: 'Window: Ormai la follia si è impadronita di questo mondo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296610
+    m_Localized: 'Window: Alcuni cultisti stanno accatastando legna in una pira gigantesca.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296611
+    m_Localized: 'Window: Che abbiano in mente un rogo?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296612
+    m_Localized: 'Window: Temi che presto avrai modo di scoprirlo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296613
+    m_Localized: 'Window: Ma fino ad allora, quante vite innocenti andranno perdute in nome della loro causa delirante?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296614
+    m_Localized: 'Window: Un uomo impazzito è fermo sulla strada.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296615
+    m_Localized: 'Window: Stringe una tanica di benzina e una bottiglia incendiaria.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296616
+    m_Localized: 'Window: Ha intenzione di dare fuoco all''intero villaggio?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296617
+    m_Localized: 'Window: Non si rende conto che qui sono tutti in quarantena?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296618
+    m_Localized: 'Window: I corpi di coloro che si nascondevano nello scantinato del tuo vicino bruciano sotto il sole di mezzogiorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296619
+    m_Localized: 'Window: I cani che se ne nutrivano sono andati via. Erano spaventati?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296620
+    m_Localized: 'Window: E se a metterli in fuga non fosse stata la FEMA, ma qualcosa di peggio?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296621
+    m_Localized: 'Window: Alcuni cultisti sono legati nel luogo designato per il rogo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296622
+    m_Localized: 'Window: Vogliono offrirsi in sacrificio?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296623
+    m_Localized: 'Window: La tua mente si rifiuta di accettarlo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296624
+    m_Localized: 'Window: Il terrore della morte ha soppiantato la ragione. La gente è pronta a commettere innominabili atrocità.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296625
+    m_Localized: 'Window: Se sono state sufficienti poche settimane per giungere a questa follia, il futuro è un''incognita che mette i brividi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296626
+    m_Localized: 'Window: Le case in fiamme ardono luminose. Urla riecheggiano lontano...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296627
+    m_Localized: 'Window: Sai che il responsabile è quel pazzo che hai visto di fuori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490688
+    m_Localized: 'Window: E se toccasse anche alla tua casa? Tornerà domani? La settimana prossima?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490689
+    m_Localized: 'Window: Prima o poi, quello squilibrato verrà da te. È solo questione di tempo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490690
+    m_Localized: 'Window: Dei corpi bruciati non è rimasto nulla.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490691
+    m_Localized: 'Window: Solo una massa informe, simile a melma.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490692
+    m_Localized: 'Window: Ti sfiora il pensiero che qualcosa abbia liquefatto carne e ossa prima di divorare i resti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490693
+    m_Localized: 'Window: Preghi che quella creatura resti nell''ombra. Vederla significherebbe perdere per sempre il lume della ragione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490694
+    m_Localized: 'Window: Gli agenti della FEMA presidiano i corpi carbonizzati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490695
+    m_Localized: 'Window: Stanno documentando la morte dei cultisti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490696
+    m_Localized: 'Window: I volti dei cadaveri sono stravolti dal tormento, come se avessero visto qualcosa di orribile prima di morire.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490697
+    m_Localized: 'Window: Ogni casa nei paraggi è ridotta in macerie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490698
+    m_Localized: 'Window: La tua è l''unica rimasta in piedi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490699
+    m_Localized: 'Window: Non c''è nessun altro a fare da bersaglio a quel pazzo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490700
+    m_Localized: 'Window: Qualunque cosa stia per accadere, riguarderà soltanto te.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490701
+    m_Localized: Qui comando. Controllo perimetro zona di quarantena. Codice 51. Rilevate esplosioni alle ore 03:00.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490702
+    m_Localized: Unità 32‑8 a rapporto. Codice 60. Ingenti perdite civili, agenti a terra...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490703
+    m_Localized: Qui 28‑8. Codice 451. Serve una squadra per l'incenerimento dei cadaveri.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490704
+    m_Localized: Ricevuto. Avvio codice 984. Città in lockdown fino a nuovo ordine. Rinforzi in arrivo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490705
+    m_Localized: Se mi sentite, non avvicinatevi alla periferia della città.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490706
+    m_Localized: Gli agenti della FEMA sparano su chiunque tenti la fuga.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490707
+    m_Localized: NON SO COSA STIA SUCCEDENDO. VOGLIO SOLO ANDARMENE DA QUI!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490708
+    m_Localized: PER FAVORE, QUALCUNO MI AIU...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490709
+    m_Localized: Non sono stati loro ad attaccare la zona di quarantena.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490710
+    m_Localized: Io c'ero. L'ho visto...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490711
+    m_Localized: Quella... cosa... non era umana...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490712
+    m_Localized: Ehm... Questa è la testimonianza di un residente evacuato...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490713
+    m_Localized: Se siete stati sfrattati dalla FEMA, sappiate che siamo nascosti nello scantinato di una delle case bruciate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490714
+    m_Localized: È vicino alla casa dell'eremita.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490715
+    m_Localized: Abbiamo quasi esaurito il cibo. Senza rifornimenti, moriremo di fame.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490716
+    m_Localized: Se avete qualche scorta da parte, aiutateci. Siamo allo stremo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490717
+    m_Localized: A chiunque sia in ascolto...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490718
+    m_Localized: La FEMA sta bloccando tutte le frequenze. Non vuole che si sappia la verità.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490719
+    m_Localized: Vogliono nascondere quello che sta succedendo in città.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490720
+    m_Localized: Stanno cercando di scaricare la colpa su quel pazzo che ha fatto una strage nella zona di quarantena.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490721
+    m_Localized: Se siete ancora in città... andate...ene. Non è si...uro.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490722
+    m_Localized: Evi...te le pattuglie FEMA. Cercheranno di ucci...ervi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490723
+    m_Localized: FUG...TE FINCHÉ POT...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490724
+    m_Localized: Non dov...ano bruciare i c...pi, lo hanno att...rato.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490725
+    m_Localized: Se non... li avessero br...ati, non sarebbe venu...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490726
+    m_Localized: Com...azione... a tutte le unità FE...A...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490727
+    m_Localized: 'Nuova dir...tiva: il codice 451 è so...ti...ito dal codice 955.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490728
+    m_Localized: Non bru...ate i corpi. Usate la ca...ce.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490729
+    m_Localized: Rip...to. Il codice 451 è ann...lato. Incenerire i cad...eri non è più funz...ale al contenimento del sogg...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490730
+    m_Localized: Qui 18‑8. Il cont...mento è fallito.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490731
+    m_Localized: Il so...getto ha superato il pe...metro cittadino. Richiesto su...orto imm...iato.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490732
+    m_Localized: Servono r...forzi. Non po...amo trattenere il s...etto da soli.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490733
+    m_Localized: 'Phone: Ehi, vicino. Mi fa piacere risentirti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490734
+    m_Localized: 'Phone: Allora... hai fatto entrare qualcuno, alla fine?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490735
+    m_Localized: 'Phone: In caso contrario, dovresti proprio iniziare a pensarci.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490736
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490737
+    m_Localized: 'Phone: Hai qualche domanda?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490738
+    m_Localized: Anche tu stai accogliendo gente?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490739
+    m_Localized: Quanti segni servono per capire se qualcuno è un Visitatore?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490740
+    m_Localized: Come gestisci il cibo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490741
+    m_Localized: Ciao (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490742
+    m_Localized: 'Phone: Sì, per forza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490743
+    m_Localized: 'Phone: Mia figlia non è affatto d''accordo, ma che posso farci? Non ho scelta...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490744
+    m_Localized: 'Phone: Continua a implorarmi di portarla fuori, pur di allontanarsi da tutti questi sconosciuti che girano per casa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490745
+    m_Localized: 'Phone: Durante il giorno non se ne parla, quindi usciamo di notte. So che è rischioso, ma che alternative ho?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490746
+    m_Localized: 'Phone: Magari lo sapessi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490747
+    m_Localized: 'Phone: Nessuno sa quanti segni siano necessari per avere una conferma.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490748
+    m_Localized: 'Phone: Secondo me, la cosa migliore è non saltare subito alle conclusioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490749
+    m_Localized: 'Phone: Magari uno è solo andato dal dentista prima che finisse tutto a rotoli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490750
+    m_Localized: 'Phone: Io sono stato fortunato, mi sono rifornito in anticipo. Se non ricordo male, l''hai fatto anche tu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490751
+    m_Localized: 'Phone: Ma se cerchi qualcosa in particolare, c''è quel servizio di consegna a domicilio, "ForRest".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490752
+    m_Localized: 'Phone: Non ricordo il loro numero, ma puoi beccarlo nelle pubblicità in TV o alla radio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490753
+    m_Localized: 'Phone: Fai attenzione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490754
+    m_Localized: 'Phone: Ehi, vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490755
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490756
+    m_Localized: 'Phone: Hai visto cos''è successo lì fuori? Quei ragazzini sono stati uccisi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490757
+    m_Localized: 'Phone: Pensavo che le strade non fossero così pericolose. Evidentemente, mi sbagliavo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490758
+    m_Localized: 'Phone: Mia figlia mi ha convinto a portarla fuori a giocare. Non sembrava così male... finché non ho visto i cadaveri.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490759
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490760
+    m_Localized: 'Phone: È l''ultima volta che le faccio correre un rischio simile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490761
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490762
+    m_Localized: 'Phone: Non mi darei pace se le capitasse qualcosa. È la mia unica ragione di vita.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490763
+    m_Localized: Tua figlia sta bene?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490764
+    m_Localized: Chi li ha uccisi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490765
+    m_Localized: Stai attento (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490766
+    m_Localized: Non lo so.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490767
+    m_Localized: 'Phone: Con tutte quelle erbacce, speravo che non se ne accorgesse.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490768
+    m_Localized: 'Phone: Ma quando siamo rientrati, mi ha detto di aver visto un volto tra i cespugli...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490769
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490770
+    m_Localized: 'Phone: Sto tentando di convincerla che è stata solo la sua immaginazione, ma non credo l''abbia bevuta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490771
+    m_Localized: 'Phone: È stata quella creatura alta e pallida. Ero convinto che attaccasse solo quelli che sono soli in casa...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490772
+    m_Localized: 'Phone: Pensavo di avere la situazione sotto controllo. Se l''avessimo vista, saremmo tornati subito dentro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490773
+    m_Localized: 'Phone: Ma non avevo considerato che ci fosse anche dell''altro...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490774
+    m_Localized: 'Phone: Grazie. Sii prudente anche tu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490775
+    m_Localized: 'Phone: Ehi, vicino. Grazie per la chiamata.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490776
+    m_Localized: 'Phone: A dire il vero, sono ancora sconvolto da questa situazione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490777
+    m_Localized: 'Phone: Gli omicidi, i soldati, la FEMA...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490778
+    m_Localized: 'Phone: Hanno bussato anche da me, proprio ieri notte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490779
+    m_Localized: 'Phone: Mi hanno interrogato su chi alloggia qui, hanno annotato qualcosa su un tablet, e poi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490780
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490781
+    m_Localized: 'Phone: Uno di loro ha portato via una persona da casa mia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490782
+    m_Localized: Dove l'hanno portata?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490783
+    m_Localized: Meno male che non hanno preso tua figlia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490784
+    m_Localized: Ma esattamente, cos'è la FEMA?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490785
+    m_Localized: Ci sentiamo (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490786
+    m_Localized: 'Phone: Non ne ho idea. Hanno detto che dovevano svolgere degli "esami".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490787
+    m_Localized: 'Phone: Credevo che l''esercito e i pezzi grossi del governo avrebbero risolto tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490788
+    m_Localized: 'Phone: Dovevo immaginarlo che non ci avrebbero aiutati, figuriamoci condurci in salvo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490789
+    m_Localized: 'Phone: Non esiste al mondo che io lo permetta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490790
+    m_Localized: 'Phone: Dovranno passare sul mio corpo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490791
+    m_Localized: 'Phone: Se quei bastardi osano solo sfiorarla con un dito, giuro che li faccio a pezzi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490792
+    m_Localized: 'Phone: Non lo so. Nessuno sa veramente chi siano.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490793
+    m_Localized: 'Phone: Sono sbucati fuori dal nulla, comportandosi come se avessero la situazione in pugno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490794
+    m_Localized: 'Phone: Ma come sperano di riconoscere i segni, se sono identici a delle normali caratteristiche umane?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490795
+    m_Localized: 'Phone: Sento che non ce la stanno raccontando giusta...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490796
+    m_Localized: 'Phone: Grazie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490797
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490798
+    m_Localized: 'Phone: Chi l''avrebbe mai detto che saremmo finiti a vivere in tempi simili...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490799
+    m_Localized: 'Phone: Il sole, i Visitatori, e ora la FEMA...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490800
+    m_Localized: 'Phone: Così tante domande, e neanche una dannata risposta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490801
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490802
+    m_Localized: 'Phone: Vicino, devo chiederti un favore...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490803
+    m_Localized: 'Phone: Se dovesse succedermi qualcosa, promettimi che ti prenderai cura di mia figlia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490804
+    m_Localized: Lo prometto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490805
+    m_Localized: Non posso prometterti nulla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490806
+    m_Localized: 'Phone: Grazie. Sapevo di poter contare su di te.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490807
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490808
+    m_Localized: 'Phone: Bene, ora devo andare. Tieni duro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490809
+    m_Localized: 'Phone: Io...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490810
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490811
+    m_Localized: 'Phone: Non vuoi aiutarla? È solo una bambina! Non voglio che rimanga sola al mondo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490812
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490813
+    m_Localized: 'Phone: Dannazione, devo andare...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490814
+    m_Localized: 'Phone: Ciao, vicino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490815
+    m_Localized: 'Phone: Salve, risponde il servizio di consegne a domicilio ForRest.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490816
+    m_Localized: 'Phone: Desidera effettuare un ordine?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490817
+    m_Localized: Due lattine di EnerJeka.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490818
+    m_Localized: Una lattina di caffè.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490819
+    m_Localized: Ci ho ripensato, non mi serve niente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490820
+    m_Localized: 'Phone: Siamo spiacenti, non è possibile procedere. C''è già una consegna a suo carico nel sistema.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490821
+    m_Localized: 'Phone: A causa di un picco di richieste, siamo obbligati a imporre un limite temporaneo agli ordini giornalieri.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490822
+    m_Localized: 'Phone: Per inoltrare un ordine, la preghiamo di riprovare un altro giorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490823
+    m_Localized: 'Phone: Grazie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490824
+    m_Localized: 'Phone: Grazie. Il suo ordine è stato accettato. La consegna è prevista per domani notte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490825
+    m_Localized: 'Phone: Grazie. Il suo ordine è stato accettato. La consegna è prevista per domani notte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490826
+    m_Localized: 'Phone: Buongiorno, risponde il dipartimento medico dell''agenzia federale per la gestione delle emergenze.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490827
+    m_Localized: 'Phone: Possiamo fornire assistenza tecnica sulle procedure ufficiali di controllo per i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490829
+    m_Localized: 'Phone: Esponga la sua domanda.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490830
+    m_Localized: Cosa dovrei sapere sul segno dei denti?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490831
+    m_Localized: Cosa dovrei sapere sul segno delle unghie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490832
+    m_Localized: Cosa dovrei sapere sul segno degli occhi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490833
+    m_Localized: È tutto, grazie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490834
+    m_Localized: 'Phone: Per analisi attendibili, non utilizzi prodotti a base di tabacco.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490835
+    m_Localized: 'Phone: Il fumo può alterare le condizioni dentali, compromettendo i risultati dei test.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490836
+    m_Localized: 'Phone: Per una valutazione appropriata della sua condizione di Visitatore, eviti di lavarsi le mani prima del controllo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490837
+    m_Localized: 'Phone: L''acqua può eliminare i residui superficiali, con il rischio di generare errori o risultati falsati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490838
+    m_Localized: 'Phone: Per garantire l''accuratezza del test, eviti l''assunzione di caffè o bevande che contengono caffeina.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490839
+    m_Localized: 'Phone: La caffeina è una causa nota di insonnia e irritabilità, e può inoltre provocare l''arrossamento degli occhi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490840
+    m_Localized: 'Phone: Grazie per aver collaborato con l''agenzia federale per la gestione delle emergenze.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490841
+    m_Localized: 'Phone: La sua collaborazione è preziosa per gestire l''emergenza in corso.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490842
+    m_Localized: 'Phone: Ci aiuti ad aiutarla. Con i suoi test, contribuirà alla salvaguardia del genere umano.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490843
+    m_Localized: 'Phone: Salve. La preghiamo di attendere mentre la colleghiamo a uno specialista per la rimozione dei Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490844
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490845
+    m_Localized: 'Phone: Pronto? Chi sei?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490846
+    m_Localized: In che senso?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490847
+    m_Localized: Perché vuoi sapere chi sono?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490848
+    m_Localized: 'Phone: D''accordo, hai evitato la mia domanda... Lo spirito del Visitatore ha già cominciato a insediarsi nel tuo corpo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490849
+    m_Localized: 'Phone: Ora ascolta bene, non ti resta molto tempo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490850
+    m_Localized: 'Phone: Dimmi, hai mai lasciato una fetta di pane sul tavolo della cucina?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490851
+    m_Localized: No. Perché dovrei?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490852
+    m_Localized: Una fetta di pane?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490853
+    m_Localized: 'Phone: Per aiutarmi a bandire lo spirito del Visitatore che ti infesta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490854
+    m_Localized: 'Phone: D''accordo, non importa. Ascoltami attentamente, il tempo stringe.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490855
+    m_Localized: 'Phone: Dimmi, hai mai lasciato una fetta di pane sul tavolo della cucina?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490856
+    m_Localized: No. Perché dovrei?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490857
+    m_Localized: Una fetta di pane?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490858
+    m_Localized: 'Phone: Oh... Questo spiega tutto. Non sei in buoni rapporti con il tuo spirito domestico.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490859
+    m_Localized: 'Phone: Per questo è giunto lo spirito del Visitatore. Ma non temere, possiamo rimediare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490860
+    m_Localized: 'Phone: Hai un personal computer in casa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490861
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490862
+    m_Localized: Un personal... che?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490863
+    m_Localized: 'Phone: Non lasci mai offerte per il tuo spirito domestico?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490864
+    m_Localized: 'Phone: Per questo lo spirito del Visitatore ha messo gli occhi su di te.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490865
+    m_Localized: 'Phone: Hai un personal computer in casa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490866
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490867
+    m_Localized: Un personal... che?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490868
+    m_Localized: 'Phone: D''accordo, quindi dobbiamo escludere ALT+F4...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490869
+    m_Localized: 'Phone: Uhm... Ascolta, consumi prodotti a base di funghi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490870
+    m_Localized: Solo la kombucha, ogni tanto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490871
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490872
+    m_Localized: 'Phone: Dici sul serio? Non sai cos''è un computer?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490873
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490874
+    m_Localized: 'Phone: Ok, come non detto. Proseguiamo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490875
+    m_Localized: Solo la kombucha, ogni tanto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490876
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490877
+    m_Localized: 'Phone: Oh, no...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490878
+    m_Localized: 'Phone: Devi smettere subito! La kombucha è un male antico e conosciuto...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490879
+    m_Localized: 'Phone: Permette ai filamenti miceliali di crescerti dentro, così gli spiriti possono manovrarti come una marionetta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490880
+    m_Localized: 'Phone: Non hai idea di cosa ti aspetta se dovessero arrivare ai tuoi ricordi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490881
+    m_Localized: 'Phone: Potrebbero eliminarli completamente... O riprodurli all''infinito, alterandoli ogni volta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490882
+    m_Localized: 'Phone: E l''aspetto peggiore è che non saprai nemmeno di essere controllato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490883
+    m_Localized: 'Phone: D''accordo, un''ultima domanda. È stato versato del sangue in casa tua?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490884
+    m_Localized: Sì.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490885
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490886
+    m_Localized: 'Phone: Allora non iniziare! E niente kombucha! Altrimenti, per gli spiriti sarà più facile possedere il tuo corpo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490887
+    m_Localized: 'Phone: Un solo sorso e il micelio può svilupparsi dentro di te, controllandoti come una marionetta!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490888
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490889
+    m_Localized: 'Phone: Uff... Questo non è un caso semplice... Per niente...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490890
+    m_Localized: Sì.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490891
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490892
+    m_Localized: 'Phone: Ah, ora capisco...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490893
+    m_Localized: 'Phone: Non è lo spirito di un Visitatore. È un fantasma, l''anima di un defunto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490894
+    m_Localized: 'Phone: Purtroppo, i fantasmi non rientrano nelle mie competenze.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490895
+    m_Localized: 'Phone: Per la tua situazione, dovrai chiamare un esorcista.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490896
+    m_Localized: 'Phone: Temo non ci sia altro che io possa fare. Addio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490897
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490898
+    m_Localized: 'Phone: La sessione di rimozione Visitatori è terminata. Grazie per aver scelto i nostri servizi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490899
+    m_Localized: 'Phone: La tariffa del consulto verrà addebitata sul conto associato al suo account.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490900
+    m_Localized: Una tariffa?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490901
+    m_Localized: Credevo che la chiamata fosse gratuita.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490902
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490903
+    m_Localized: 'Phone: Ah, che peccato. Temo di non poter identificare questo tipo di spirito... E senza conoscerlo, non posso aiutarti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490904
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490905
+    m_Localized: 'Phone: Purtroppo, devo terminare qui la nostra conversazione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490906
+    m_Localized: 'Phone: Che le stelle ti proteggano.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490907
+    m_Localized: 'Phone: La sessione di rimozione Visitatori è terminata. Grazie per aver scelto i nostri servizi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490908
+    m_Localized: 'Phone: La tariffa del consulto verrà addebitata sul conto associato al suo account.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490909
+    m_Localized: Una tariffa?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490910
+    m_Localized: Credevo che la chiamata fosse gratuita.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490911
+    m_Localized: 'Phone: Esatto. Dopotutto, i nostri specialisti della rimozione Visitatori non possono lavorare gratis.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490912
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490913
+    m_Localized: 'Phone: Come giudica il servizio ricevuto oggi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490914
+    m_Localized: Cinque stelle!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684992
+    m_Localized: Un uno su dieci.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684993
+    m_Localized: Vaffanculo, ecco come!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684994
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684995
+    m_Localized: 'Phone: Se avesse guardato con attenzione l''annuncio, saprebbe che la chiamata iniziale prevede un piccolo costo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684996
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684997
+    m_Localized: 'Phone: Come giudica il servizio ricevuto oggi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684998
+    m_Localized: Cinque stelle!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684999
+    m_Localized: Un uno su dieci.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685000
+    m_Localized: Vaffanculo, ecco come!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685001
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685002
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685003
+    m_Localized: 'Phone: Grazie. La sua opinione è molto importante per noi. Arrivederci.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610048
+    m_Localized: 'TV: Per ora è tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610049
+    m_Localized: 'TV: Disponibile con la consegna a domicilio ForRest. Chiama ora il numero {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610050
+    m_Localized: 'TV: Buon pomeriggio, e benvenuti al notiziario.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610051
+    m_Localized: 'TV: Mentre divampano gli incendi, i Visitatori continuano a terrorizzare la nazione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610052
+    m_Localized: 'TV: La FEMA ha annunciato un nuovo segno per aiutare i cittadini a identificare i Visitatori...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610053
+    m_Localized: 'TV: A seguire, uno speciale su chi siano realmente i Visitatori.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113249218560
+    m_Localized: 'Phone: Eh? Sì? Chi è?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995776
+    m_Localized: Tua moglie mi ha dato questo numero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995777
+    m_Localized: Tua moglie ha bisogno di aiuto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995778
+    m_Localized: 'Phone: Ah‑ah... E quindi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995779
+    m_Localized: Non trova più i bambini.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995780
+    m_Localized: I bambini sono con te?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995781
+    m_Localized: 'Phone: La solita solfa. Tocca sempre a me sistemare i suoi casini.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995782
+    m_Localized: 'Phone: Non fa altro che piagnucolare e ripetermi quanto è stanca.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995783
+    m_Localized: 'Phone: Niente di nuovo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995784
+    m_Localized: Non trova più i bambini.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995785
+    m_Localized: I bambini sono con te?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995786
+    m_Localized: 'Phone: Già, come al solito. Dei suoi figli non le frega niente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995787
+    m_Localized: 'Phone: E indovina chi deve metterci una toppa? Sempre io. Figuriamoci...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995788
+    m_Localized: 'Phone: Hai controllato a casa di sua madre?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995789
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995790
+    m_Localized: Potresti venire a prenderla?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995791
+    m_Localized: 'Phone: No. Perché, non sono con lei?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995792
+    m_Localized: 'Phone: Non mi sorprende.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995793
+    m_Localized: 'Phone: Hai controllato a casa di sua madre?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995794
+    m_Localized: No.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995795
+    m_Localized: Potresti venire a prenderla?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995796
+    m_Localized: 'Phone: Ah‑ah.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995797
+    m_Localized: 'Phone: Beh, forse sono lì.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995798
+    m_Localized: 'Phone: Io non ci vado.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995799
+    m_Localized: 'Phone: Se la sbrighi lei. Chiedile che razza di madre perde i propri figli...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995800
+    m_Localized: Risolvete la faccenda tra di voi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995801
+    m_Localized: Comunque, le dirò che stai bene.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995802
+    m_Localized: 'Phone: Cos''è, la principessa non può muoversi? Può andarci da sola a casa della madre.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995803
+    m_Localized: 'Phone: Le gambe le funzionano, no? Quindi che problema c''è?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995804
+    m_Localized: Risolvete la faccenda tra di voi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995805
+    m_Localized: Comunque, le dirò che stai bene.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995806
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995807
+    m_Localized: 'Phone: Allora perché hai chiamato? Vuoi fare l''eroe con la damigella in difficoltà?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995808
+    m_Localized: 'Phone: Fai come vuoi. Tanto quella è una stronza indifferente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995809
+    m_Localized: 'Phone: Lasciatemi in pace, cazzo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995810
+    m_Localized: 'Phone: Comunque, le dirò che stai bene.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995811
+    m_Localized: 'Phone: Non sprecare il fiato. A che servirebbe?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995812
+    m_Localized: 'Phone: Ce ne freghiamo altamente l''uno dell''altra.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995813
+    m_Localized: 'Phone: Perché ti interessa tanto? Chi te lo fa fare?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995814
+    m_Localized: 'Phone: Come vuoi. Tanti auguri, a tutti e due.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995815
+    m_Localized: 'Phone: Dimmi, credi nella Morte?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995816
+    m_Localized: È stato tuo marito a dirmi di chiamare.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995817
+    m_Localized: Non ho chiamato per una predica. Si tratta di tuo marito.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995818
+    m_Localized: 'Phone: Cosa? Mio marito?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995819
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995820
+    m_Localized: 'Phone: Dopo tutto quello che ha fatto... non voglio neanche sentirlo nominare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995821
+    m_Localized: Mi ha chiesto di dirti che è pentito per ciò che è accaduto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995822
+    m_Localized: Mi ha chiesto di dirti di andare all'inferno.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995823
+    m_Localized: 'Phone: Mio marito?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995824
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995825
+    m_Localized: 'Phone: Dopo tutto quello che ha fatto... non voglio neanche sentirlo nominare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995826
+    m_Localized: Mi ha chiesto di dirti che è pentito per ciò che è accaduto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995827
+    m_Localized: Mi ha chiesto di dirti di andare all'inferno.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995828
+    m_Localized: 'Phone: Eh? Che cosa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995829
+    m_Localized: 'Phone: Di nuovo? Sul serio?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995830
+    m_Localized: 'Phone: Non sei il primo che manda a chiedere scusa, lo fa sempre.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995831
+    m_Localized: 'Phone: Vuoi sapere come mai non è lui a chiamarmi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995832
+    m_Localized: 'Phone: Perché è un codardo. Non ha il coraggio di affrontare le sue responsabilità.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995833
+    m_Localized: 'Phone: Spera ancora di poter rimediare, ma la vita non funziona così. Non è possibile tornare indietro.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995834
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995835
+    m_Localized: 'Phone: Ora sto bene. Ho trovato delle persone che mi capiscono.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995836
+    m_Localized: Credi sul serio che quei pazzi ti comprendano?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995837
+    m_Localized: Perché ti sei unita a una setta?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995838
+    m_Localized: Se lo dici tu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995839
+    m_Localized: 'Phone: Chiamali come vuoi. Adesso sono loro la mia famiglia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995840
+    m_Localized: 'Phone: Condividiamo la stessa fede. Sappiamo che la Morte è vicina.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995841
+    m_Localized: 'Phone: E che non porterà dolore, ma pace.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995842
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995843
+    m_Localized: 'Phone: Buona fortuna.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995844
+    m_Localized: 'Phone: Condividiamo la stessa visione sul futuro. L''arrivo della Morte.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995845
+    m_Localized: 'Phone: Ti sembrerà assurdo, lo capisco. Ma la Morte porta gioia, non sofferenza.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995846
+    m_Localized: 'Phone: La felicità è pace, assenza di dolore. Di sicuro, anche tu avrai sofferto molto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995847
+    m_Localized: 'Phone: Forse un giorno capirai, e inizierai a vedere il mondo attraverso i nostri occhi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995848
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995849
+    m_Localized: 'Phone: Buona fortuna.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995850
+    m_Localized: 'Phone: Grazie per aver capito.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995851
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995852
+    m_Localized: 'Phone: Buona fortuna.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995853
+    m_Localized: 'Phone: Pronto? Chi è?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995854
+    m_Localized: Salve. Tuo fratello mi ha dato il tuo numero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995855
+    m_Localized: Chiamo per conto di tuo fratello.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995856
+    m_Localized: 'Phone: Fratello? Ma io non ho...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995857
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995858
+    m_Localized: 'Phone: Ah, intendi il figlio di mio padre, giusto?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995859
+    m_Localized: 'Phone: Un momento... Ma tu chi sei? E cosa ci fa lui con te?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995860
+    m_Localized: I suoi genitori sono scomparsi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995861
+    m_Localized: È venuto da me in cerca di un riparo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995862
+    m_Localized: 'Phone: Scomparsi? Com''è potuto succedere?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995863
+    m_Localized: 'Phone: Non vorrai dire che loro...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995864
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995865
+    m_Localized: 'Phone: Dannazione... Non è possibile... Sono morti?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995866
+    m_Localized: Non lo so.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995867
+    m_Localized: È probabile.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995868
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995869
+    m_Localized: 'Phone: Un riparo? Ma lui vive con i suoi genitori, no?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995870
+    m_Localized: 'Phone: No, ti prego. Non dirmi che loro...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995871
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995872
+    m_Localized: 'Phone: Dannazione... Non è possibile... Sono morti?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995873
+    m_Localized: Non lo so.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995874
+    m_Localized: È probabile.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995875
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995876
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995877
+    m_Localized: 'Phone: Dio mio... Com''è potuto succedere?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995878
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995879
+    m_Localized: 'Phone: Digli che se vuole può stare da me. Sa dove vivo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995880
+    m_Localized: 'Phone: E... grazie per averlo aiutato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995881
+    m_Localized: 'Phone: A presto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995882
+    m_Localized: 'Phone: Sì? Chi è?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995883
+    m_Localized: Tua moglie e sua sorella sono qui con me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995884
+    m_Localized: Tua moglie mi ha dato questo numero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995885
+    m_Localized: 'Phone: Dal tono, sembra quasi che tu voglia chiedere un riscatto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995886
+    m_Localized: 'Phone: Ma temo di non avere più nulla da dare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995887
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995888
+    m_Localized: 'Phone: E comunque, presto non ci sarò più.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995889
+    m_Localized: In che senso? Che ti succede?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995890
+    m_Localized: Tua moglie è al sicuro.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995891
+    m_Localized: 'Phone: Ti prego, dimmi che lei sta bene.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995892
+    m_Localized: 'Phone: È una donna forte, sa come cavarsela ed è sempre pronta ad aiutare il prossimo!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995893
+    m_Localized: 'Phone: Ma per me... è troppo tardi. Ormai nessuno può aiutarmi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995894
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995895
+    m_Localized: 'Phone: Non mi resta più molto tempo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995896
+    m_Localized: In che senso? Che ti succede?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995897
+    m_Localized: Tua moglie è al sicuro.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995898
+    m_Localized: 'Phone: Io... non ce la faccio più. Il sole, i Visitatori... è un incubo. Sono paralizzato dal terrore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995899
+    m_Localized: 'Phone: Voglio solo che questo strazio finisca, ed esiste una sola via d''uscita... Mi capisci?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995900
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995901
+    m_Localized: 'Phone: Per favore, dille che la amo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995902
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995903
+    m_Localized: 'Phone: Anzi... no, non dirle niente. Assicurati solo che non venga a cercarmi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995904
+    m_Localized: 'Phone: Non deve sapere che ho lasciato questo mondo senza di lei...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995905
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995906
+    m_Localized: 'Phone: Grazie per aver chiamato... E per avermi ascoltato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995907
+    m_Localized: 'Phone: Addio...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995908
+    m_Localized: 'Phone: Starà ancora proteggendo sua sorella. Non è mai stata capace di abbandonare le persone...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995909
+    m_Localized: 'Phone: Poverina, sempre circondata da deboli e falliti. È per questo che ho deciso di lasciarla.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995910
+    m_Localized: 'Phone: Salve, qui l''ufficio ammissioni FEMA. In cosa posso esserle utile?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995911
+    m_Localized: Ho qui la moglie di un vostro agente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995912
+    m_Localized: C'è un'altruista che vorrebbe lavorare per voi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995913
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995914
+    m_Localized: 'Phone: Ok... Qual è la richiesta? Non ho ancora capito cosa posso fare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995915
+    m_Localized: 'Phone: Ammesso che non si tratti di una minaccia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995916
+    m_Localized: È una minaccia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995917
+    m_Localized: Vuole unirsi a voi, ha già prestato servizio alla frontiera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995918
+    m_Localized: 'Phone: (Senti la persona al telefono sospirare profondamente)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995919
+    m_Localized: 'Phone: Tu sei uno di quegli attivisti, giusto? Sempre a lamentarvi di qualcosa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995920
+    m_Localized: 'Phone: Non sprecare il nostro tempo. Lascia la linea libera per chi ha davvero bisogno di aiuto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995921
+    m_Localized: 'Phone: Mentre parli, un Visitatore potrebbe assalire qualcuno, o peggio. Morirà gente per colpa tua.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995922
+    m_Localized: 'Phone: Addio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995923
+    m_Localized: 'Phone: Uhm... È consapevole che questo è un lavoro difficile? Ne è sicura?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995924
+    m_Localized: 'Phone: Se lo è, riferiscile di compilare il modulo 31‑G in triplice copia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995925
+    m_Localized: 'Phone: Poi dovrà superare la visita medica, quindi firmare...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995926
+    m_Localized: 'Phone: (Riattacchi. Perché ti stai dando da fare per questa donna?)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995927
+    m_Localized: 'Phone: Per quale posizione si candida? E per favore, non dire "direttore".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995928
+    m_Localized: 'Phone: Saresti il terzo, oggi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995929
+    m_Localized: Direttore.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995930
+    m_Localized: Addetta al rilevamento. Insomma, per le ricognizioni.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995931
+    m_Localized: 'Phone: Ne ho abbastanza di questi scherzi idioti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995932
+    m_Localized: 'Phone: Mentre ti diverti, i Visitatori stanno ammazzando qualcuno. E sarà solo colpa tua.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995933
+    m_Localized: 'Phone: Vedi di crescere e falla finita con queste stronzate.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995934
+    m_Localized: 'Phone: (Ha riattaccato. Sul serio?)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995935
+    m_Localized: 'Phone: Non cerchiamo ricognitori. Ci servono esperti di epidemie e scienziati qualificati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995936
+    m_Localized: 'Phone: La tua amica non ha il curriculum adatto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995937
+    m_Localized: 'Phone: Ma al diavolo, sai che c''è? Le cose cambiano in fretta. Riprova tra una settimana.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995938
+    m_Localized: 'Phone: Vedrai che troveremo un posto per... come l''hai chiamata? Una "altruista".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995939
+    m_Localized: 'Phone: La mela è composta da sopramela, terra dei funghi e carta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995940
+    m_Localized: 'Phone: State attenti a... dei fun...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995941
+    m_Localized: 'Phone: Anche se vi attir... il campo sol...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995942
+    m_Localized: 'Phone: Colui che... vi trover...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995943
+    m_Localized: 'Phone: Solo pianto e commiato.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995944
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995945
+    m_Localized: 'Phone: Controlla se respira.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995946
+    m_Localized: 'Phone: Perché non rispondi? Voglio morire.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995947
+    m_Localized: 'Phone: (Ha riattaccato... Non è andata come ti aspettavi)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995948
+    m_Localized: 'Phone: La informiamo che al momento non è possibile raggiungere il nostro paese in aereo o in treno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995949
+    m_Localized: 'Phone: Come posso aiutarla?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995950
+    m_Localized: Devo rimandare a casa un turista.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995951
+    m_Localized: Perché non si può con il treno?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995952
+    m_Localized: 'Phone: Le conviene attendere che riprendano i collegamenti aerei.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995953
+    m_Localized: 'Phone: I traghetti sono attivi, ma è pericoloso. C''è un elevato rischio di tifoni notturni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995954
+    m_Localized: 'Phone: Inoltre, l''acqua riflette la luce solare sulle navi e rende il viaggio insostenibile per l''equipaggio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995955
+    m_Localized: E come faccio a rimandare a casa questo poveraccio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995956
+    m_Localized: Ora vive con me. Forse potreste accoglierlo voi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995957
+    m_Localized: 'Phone: Il calore ha deformato i binari. Di giorno, i treni non possono circolare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995958
+    m_Localized: 'Phone: Si può viaggiare solo di notte, per tratte brevi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995959
+    m_Localized: 'Phone: Troppi cambi. Meglio aspettare che i voli vengano ripristinati.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995960
+    m_Localized: E come faccio a rimandare a casa questo poveraccio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995961
+    m_Localized: Ora vive con me. Forse potreste accoglierlo voi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995962
+    m_Localized: 'Phone: Non resta che aspettare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995963
+    m_Localized: 'Phone: Ci dispiace, ma per ora non c''è altro che possiamo fare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995964
+    m_Localized: Non parla neanche la nostra lingua.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995965
+    m_Localized: State scherzando? Siete inutili!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995966
+    m_Localized: 'Phone: Non ci sono alberghi disponibili.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995967
+    m_Localized: 'Phone: Non possiamo farci nulla. Stiamo lavorando al problema, ma molti altri sono nella sua stessa situazione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995968
+    m_Localized: Non parla neanche la nostra lingua.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995969
+    m_Localized: State scherzando? Siete inutili!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995970
+    m_Localized: 'Phone: Senta, il nostro personale è sommerso di lavoro. Dopo i recenti tagli al budget, le ambasciate non hanno risorse.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995971
+    m_Localized: 'Phone: Stiamo facendo tutto il possibile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995972
+    m_Localized: Oh, wow, siete dei veri eroi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995973
+    m_Localized: Detesto gli scansafatiche.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995974
+    m_Localized: 'Phone: Non c''è bisogno di usare questo tono.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995975
+    m_Localized: 'Phone: Non possiamo assumercene la responsabilità. Se ci tiene tanto ad aiutarlo, se ne occupi personalmente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995976
+    m_Localized: 'Phone: Il nostro budget è estremamente limitato. Andiamo avanti solo con la forza di volontà.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995977
+    m_Localized: Oh, wow, siete dei veri eroi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995978
+    m_Localized: Detesto gli scansafatiche.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995979
+    m_Localized: 'Phone: Beh, se non le piace come lavoriamo, si arrangi da solo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995980
+    m_Localized: 'Phone: Buona fortuna a superare il confine, tra i controlli per i Visitatori e l''afa di mezzogiorno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995981
+    m_Localized: Ok, grazie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995982
+    m_Localized: Vaffanculo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995983
+    m_Localized: 'Phone: Allora perché lei è ancora a casa e non al lavoro?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995984
+    m_Localized: 'Phone: Perché non viene qui a mostrarci come si fa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995985
+    m_Localized: 'Phone: Saremmo lieti di imparare, visto che sembra saperne più di chiunque altro!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995986
+    m_Localized: Ok, grazie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995987
+    m_Localized: Vaffanculo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995988
+    m_Localized: 'Phone: Mi scusi... Non avrei dovuto alzare la voce.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995989
+    m_Localized: 'Phone: Non è il primo che chiama a essere così... furioso.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995990
+    m_Localized: 'Phone: Stia bene.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995991
+    m_Localized: 'Phone: Buona fortuna.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995992
+    m_Localized: 'Phone: Spero che un giorno si torni a viaggiare senza restrizioni.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995993
+    m_Localized: 'Phone: Allora sarò più che felice di aiutarla.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995994
+    m_Localized: Una finestra interna. In passato, serviva a risparmiare elettricità, facendo filtrare la luce tra due ambienti.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995995
+    m_Localized: Poi l'hanno sigillata... Ma solo da un lato.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995996
+    m_Localized: No, non voglio guardare da quella parte. Mai più.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995997
+    m_Localized: Odio dormire vicino al comodino. Troppi brutti ricordi...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995998
+    m_Localized: Non capisco perché non stia nell'angolo. Pensavo fosse la norma.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995999
+    m_Localized: D'altronde... papà non ha mai badato a queste formalità.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996000
+    m_Localized: Toto. In pratica, l'unico giocattolo della mia infanzia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996001
+    m_Localized: Beh, tranne i bastoncini che usavamo per battere l'erba.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996002
+    m_Localized: Eh... La nonna stipava ogni armadio di stoviglie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996003
+    m_Localized: Per le feste, tirava fuori il suo servizio più raffinato. A chi diavolo serve, ormai?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996004
+    m_Localized: Sinceramente, preferisco stare da solo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996005
+    m_Localized: Posso parlare a me stesso, se ne ho voglia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996006
+    m_Localized: Una di quelle riviste dove devi trovare qualcuno in mezzo alla folla...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996007
+    m_Localized: Perché mai dovrei? Ma lasciatemi in pace, una buona volta...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996008
+    m_Localized: 'All''epoca mi disse: "Quando non ci sarò più, dovrai decidere se aprire o meno quelle scatole".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996009
+    m_Localized: Sono passati quindici anni, eppure non so ancora cosa fare.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295719612416
+    m_Localized: Soffri la solitudine?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583936
+    m_Localized: L'ansia ti divora? Non hai nessuno con cui parlare?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583937
+    m_Localized: La roulette telefonica fa al caso tuo!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583938
+    m_Localized: Chiama subito il numero 891‑533 e ti troveremo la persona ideale per una conversazione.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583939
+    m_Localized: Tua figlia sta bene?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583940
+    m_Localized: Chi li ha uccisi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583941
+    m_Localized: Fai attenzione (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583942
+    m_Localized: Tua figlia sta bene?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583943
+    m_Localized: Chi li ha uccisi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583944
+    m_Localized: Fai attenzione (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583945
+    m_Localized: Dove hanno portato la persona che viveva con te?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583946
+    m_Localized: Meno male che non hanno preso tua figlia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583947
+    m_Localized: Cos'è la FEMA?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583948
+    m_Localized: A presto (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583949
+    m_Localized: Dove hanno portato la persona che viveva con te?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583950
+    m_Localized: Meno male che non hanno preso tua figlia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583951
+    m_Localized: Cos'è la FEMA?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583952
+    m_Localized: A presto (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583953
+    m_Localized: Dove hanno portato la persona che viveva con te?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583954
+    m_Localized: Meno male che non hanno preso tua figlia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583955
+    m_Localized: Cos'è la FEMA?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583956
+    m_Localized: A presto (riattacca).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583957
+    m_Localized: 'Phone: Salve, parla con il numero d''emergenza FEMA. Come posso aiutarla?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583958
+    m_Localized: FEMA? Che sarebbe?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583959
+    m_Localized: Di cosa stai parlando?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583960
+    m_Localized: 'Phone: (Prima che lei possa finire, viene interrotta da una forte voce maschile)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583961
+    m_Localized: 'Phone: TI HA DATO DI VOLTA IL CERVELLO? METTI GIÙ QUEL TELEFONO!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583962
+    m_Localized: Che dovrei fare con le ascelle?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583963
+    m_Localized: Che dovrei fare con le orecchie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583964
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583965
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583966
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583967
+    m_Localized: 'Phone: Per garantire la validità dei test, eviti qualsiasi contatto con l''acqua.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583968
+    m_Localized: 'Phone: Non faccia la doccia e non si lavi le mani.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583969
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583970
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583971
+    m_Localized: 'Phone: Le orecchie? Un momento...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583972
+    m_Localized: 'Phone: Mi lasci parlare con la direzione, la ricontatteremo a breve.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583973
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583974
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583975
+    m_Localized: 'Phone: Molto bene. Dimmi, consumi prodotti a base di funghi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583976
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583977
+    m_Localized: 'Phone: D''accordo, un''ultima domanda. È stato versato del sangue in casa tua?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583978
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583979
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778240
+    m_Localized: 'Phone: Salve, questa è la roulette telefonica. A breve la collegheremo con l''interlocutore più adatto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778241
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778242
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778243
+    m_Localized: 'Phone: Ehi, ciao.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778244
+    m_Localized: Ciao.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778245
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778246
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778247
+    m_Localized: 'Phone: Pronto?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778248
+    m_Localized: Ciao.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778249
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778250
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778251
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778252
+    m_Localized: 'Phone: C''è qualcuno?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778253
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778254
+    m_Localized: 'Phone: Io... ho bisogno di parlare. Stanno succedendo troppe cose...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778255
+    m_Localized: 'Phone: Ho provato a mettermi in contatto con amici e conoscenti, ma nessuno mi risponde...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778256
+    m_Localized: 'Phone: Poi ho scoperto la roulette telefonica.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778257
+    m_Localized: 'Phone: Magari non è il posto migliore per le confidenze, ma è comunque meglio di niente.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778258
+    m_Localized: 'Phone: So anche che non dovrei scaricare le mie paranoie su uno sconosciuto, però...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778259
+    m_Localized: 'Phone: Non puoi capire quanto mi aiuterebbe. Mi farebbe sentire... decisamente meglio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778260
+    m_Localized: 'Phone: Ti va di ascoltarmi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778261
+    m_Localized: D'accordo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778262
+    m_Localized: Non me la sento di fare conversazione.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778263
+    m_Localized: 'Phone: Ah...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778264
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778265
+    m_Localized: 'Phone: Sì, capisco. Scusa il disturbo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778266
+    m_Localized: 'Phone: Addio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778267
+    m_Localized: 'Phone: Oh, grazie! Grazie mille!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778268
+    m_Localized: 'Phone: Che ne dici se inizio parlandoti di me?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778269
+    m_Localized: 'Phone: C''è qualcosa in particolare che ti piacerebbe sapere?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778270
+    m_Localized: Dove vivi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778271
+    m_Localized: Perché i tuoi amici non rispondono?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778272
+    m_Localized: 'Phone: Lontano da casa, purtroppo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778273
+    m_Localized: 'Phone: Cercavo di sfuggire al caldo, così ho cercato il posto più freddo che potessi trovare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778274
+    m_Localized: 'Phone: Mi trovo nel nulla più totale, fa un freddo che gela le ossa. Non c''è vita qui, neanche un filo d''erba.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778275
+    m_Localized: 'Phone: Ma è un luogo piuttosto sicuro, a chilometri da tutto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778276
+    m_Localized: 'Phone: Non è così male. In fondo, persino nel nono cerchio dell''inferno c''è un angolo di gelo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778277
+    m_Localized: 'Phone: Sai la cosa buffa? Una volta odiavo il freddo... ma ora mi sembra una benedizione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778278
+    m_Localized: 'Phone: Continuo a ripetermi che prima o poi le temperature torneranno normali e questo incubo finirà.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778279
+    m_Localized: 'Phone: Ma sto perdendo le speranze. Cosa ne sarà di noi quando il sole smetterà di bruciare?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778280
+    m_Localized: 'Phone: E se i Visitatori non se ne andassero? Potrebbero sostituire i nostri cari, e noi non ce ne accorgeremmo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778281
+    m_Localized: Perché ti sei messa in viaggio da sola?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778282
+    m_Localized: Ti manca la tua città?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778283
+    m_Localized: 'Phone: Vorrei tanto sentirli, ma... non so proprio come fare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778284
+    m_Localized: 'Phone: Quando è iniziato il Cataclisma, ho lasciato la mia città. Volevo fuggire da quel caldo torrido.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778285
+    m_Localized: 'Phone: Promisi a tutti che mi sarei fatta sentire spesso, per sapere come se la passassero...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778286
+    m_Localized: 'Phone: Ma da quando sono qui, non sono più riuscita a contattarli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778287
+    m_Localized: 'Phone: In seguito, ho scoperto il motivo. Hanno interrotto le linee telefoniche.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778288
+    m_Localized: 'Phone: L''intera città è tagliata fuori dal mondo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778289
+    m_Localized: 'Phone: Ora io sono al sicuro, mentre i miei amici...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778290
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778291
+    m_Localized: 'Phone: Il pensiero di non rivederli mai più mi sconvolge.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778292
+    m_Localized: 'Phone: Quanto mi mancano i vecchi tempi, quando la vita era semplice e il futuro non faceva paura...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778293
+    m_Localized: Perché ti sei messa in viaggio da sola?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778294
+    m_Localized: Ti manca la tua città?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778295
+    m_Localized: 'Phone: Non doveva andare così. Il fatto è che...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778296
+    m_Localized: 'Phone: Il mio migliore amico voleva venire con me, ma non ha potuto...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778297
+    m_Localized: 'Phone: Non aveva i documenti necessari per poter viaggiare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778298
+    m_Localized: 'Phone: E quando il Cataclisma è arrivato, ottenerli è diventato impossibile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778299
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778300
+    m_Localized: 'Phone: Era così abbattuto... Rimpiangeva di non averli presi prima. Volevo aiutarlo, ma non sapevo come fare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778301
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778302
+    m_Localized: 'Phone: Sì. Non il luogo in sé, ma le persone che ci abitano ancora.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778303
+    m_Localized: 'Phone: Soprattutto, il mio migliore amico...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778304
+    m_Localized: 'Phone: Voleva seguirmi, ma non ha potuto. Gli avevo promesso che ci saremmo sentiti, e invece...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778305
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778306
+    m_Localized: 'Phone: Sai, credo fosse innamorato di me.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778307
+    m_Localized: 'Phone: Era così premuroso... Sempre presente per ascoltarmi e tirarmi su di morale.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778308
+    m_Localized: 'Phone: Alla fine ho capito che ci piacevamo a vicenda.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778309
+    m_Localized: 'Phone: Volevo che fosse lui a dichiararsi, ma immagino che non sia mai riuscito a trovare il momento giusto.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778310
+    m_Localized: 'Phone: E poi... con l''arrivo del Cataclisma, non abbiamo più avuto tempo per noi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778311
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778312
+    m_Localized: 'Phone: Avrei dovuto fare il primo passo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778313
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778314
+    m_Localized: 'Phone: Beh, ora conosci qualcosa della mia vita. Tocca a te.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778315
+    m_Localized: Non sono abituato a parlare di me...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778316
+    m_Localized: Non so nemmeno da dove cominciare...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778317
+    m_Localized: 'Phone: Non essere timido. Ti ascolto volentieri.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778318
+    m_Localized: Beh, io... non ho alcun legame.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778319
+    m_Localized: Sono... un solitario.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778320
+    m_Localized: 'Phone: Non sentirti in imbarazzo. Raccontami della tua vita.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972544
+    m_Localized: Beh, io... non ho alcun legame.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972545
+    m_Localized: Sono... un solitario.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972546
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972547
+    m_Localized: Io... avevo un rapporto difficile con mio padre.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972548
+    m_Localized: Odiavo mio padre.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972549
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972550
+    m_Localized: Ho chiuso da tempo con la mia famiglia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972551
+    m_Localized: E un giorno, ho smesso di essere suo figlio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972555
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972556
+    m_Localized: Mi è rimasta solo questa dannata casa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972557
+    m_Localized: Mi hanno lasciato solo questa casa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972558
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972559
+    m_Localized: 'Phone: Mi dispiace... Da come ne parli, non sembri molto contento di aver ereditato quella casa.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972560
+    m_Localized: Proprio così.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972561
+    m_Localized: Sarebbe stato meglio se fosse bruciata.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972562
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972563
+    m_Localized: 'Phone: Faccio fatica... a immaginare quello che hai vissuto...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972564
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972565
+    m_Localized: 'Phone: Devi odiare molto tuo padre... per voler vedere la casa ridotta in cenere.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972566
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972567
+    m_Localized: 'Phone: Ehi, grazie ancora per aver parlato con me.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972568
+    m_Localized: 'Phone: Spero di risentirti. Cerca di farti forza, ok?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972569
+    m_Localized: 'Phone: Pronto?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972570
+    m_Localized: Salve, posso parlare con sua figlia?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972571
+    m_Localized: Salve. Sua figlia potrebbe venire a giocare con la sua amica?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972572
+    m_Localized: 'Phone: Cosa? Perché vuoi parlare con lei?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972573
+    m_Localized: La sua amica ha chiesto se può venire da noi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972574
+    m_Localized: C'è una bambina qui... Suo padre è morto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972575
+    m_Localized: 'Phone: Era... un Visitatore anche lui?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972576
+    m_Localized: Come sarebbe "anche lui"?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972577
+    m_Localized: No, dei pazzi lo hanno dato alle fiamme senza alcun motivo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972578
+    m_Localized: 'Phone: Nessuno brucia le persone senza una ragione...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972579
+    m_Localized: 'Phone: Quindi era un Visitatore... proprio come la mia piccola.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972580
+    m_Localized: 'Phone: Hanno bruciato anche lei.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972581
+    m_Localized: 'Phone: Al suo asilo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972582
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972583
+    m_Localized: 'Phone: Ho pianto tanto, all''inizio. Volevo farla finita, non riuscivo a rassegnarmi alla sua perdita.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972584
+    m_Localized: 'Phone: Ma mio marito mi ha aiutata a farmene una ragione.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972585
+    m_Localized: 'Phone: E anche voi ce la farete... Tu e quella bambina.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972586
+    m_Localized: 'Phone: Il fatto è che...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972587
+    m_Localized: 'Phone: Tutto accade per un motivo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972588
+    m_Localized: 'Phone: Se hanno bruciato suo padre... evidentemente era destino.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972589
+    m_Localized: 'Phone: E disperarsi non cambierà nulla.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972590
+    m_Localized: 'Phone: Per favore, diglielo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972591
+    m_Localized: 'Phone: Addio.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972592
+    m_Localized: 'Phone: La nostra bambina... Lei...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972593
+    m_Localized: 'Phone: È morta...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972594
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972595
+    m_Localized: 'Phone: Noi abbiamo...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972596
+    m_Localized: 'Phone: Abbiamo dovuto ucciderla.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972597
+    m_Localized: Cosa?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972598
+    m_Localized: (Riattacca)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972599
+    m_Localized: 'Phone: L''abbiamo uccisa. Credimi, non c''era altra scelta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972600
+    m_Localized: 'Phone: Aveva tutti i segni... Mio marito è stato irremovibile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972601
+    m_Localized: Avete... ucciso vostra figlia?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972602
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972603
+    m_Localized: 'Phone: Non provare a giudicarmi!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972604
+    m_Localized: 'Phone: Era un Visitatore! I suoi segni corrispondevano, non c''erano dubbi!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972605
+    m_Localized: Cazzo...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972606
+    m_Localized: Capisco.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972607
+    m_Localized: 'Phone: Era un Visitatore, ti dico!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972608
+    m_Localized: 'Phone: Tutti i segni lo confermavano.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972609
+    m_Localized: 'Phone: Sono sua madre, la conoscevo bene.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972610
+    m_Localized: 'Phone: Per questo ho notato subito quelle strane anomalie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972611
+    m_Localized: 'Phone: E coincidevano. Una per una.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972612
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972613
+    m_Localized: 'Phone: Quando l''ho detto a mio marito, lui...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972614
+    m_Localized: 'Phone: Si è occupato subito del Visitatore.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972615
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972616
+    m_Localized: 'Phone: All''inizio, l''ho odiato e volevo ucciderlo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972617
+    m_Localized: 'Phone: Ma col tempo ho compreso... che quella non era più nostra figlia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972618
+    m_Localized: 'Phone: Mio marito me lo ha fatto capire.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972619
+    m_Localized: 'Phone: Il mio unico rimpianto è di non aver chiesto a quell''intruso cosa ne avesse fatto della mia piccina...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972620
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972621
+    m_Localized: 'Phone: Mi dispiace.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972622
+    m_Localized: 'Phone: Non chiamarci più...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972623
+    m_Localized: 'Phone: Per favore...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972624
+    m_Localized: 'Phone: Non devo giustificarmi con te!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972625
+    m_Localized: 'Phone: Vai all''inferno!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972626
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972627
+    m_Localized: 'Phone: Mi manca così tanto...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972628
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096192
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096193
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096194
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096195
+    m_Localized: 'TV: A seguire, uno speciale sulla sospensione temporanea dello smaltimento dei cadaveri.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803335401472
+    m_Localized: Due scatolette di cibo per gatti.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790080
+    m_Localized: Un pacchetto di sigarette.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790081
+    m_Localized: Un barattolo di kombucha.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58690054376120320
+    m_Localized: 'TV: Disponibile con la consegna a domicilio ForRest. Chiama ora il numero {0}.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

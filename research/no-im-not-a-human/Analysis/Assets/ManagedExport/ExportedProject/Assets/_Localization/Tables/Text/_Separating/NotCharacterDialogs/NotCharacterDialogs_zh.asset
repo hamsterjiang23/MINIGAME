@@ -1,0 +1,4851 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NotCharacterDialogs_zh
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh
+  m_SharedData: {fileID: 11400000, guid: fdb5e7c1e1a06f94cb20bf63a5da666e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21953783779328
+    m_Localized: 'TV: 突发新闻！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556544
+    m_Localized: 'TV: 今天早上6点28分，发生了一次强烈的太阳能量爆发。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556545
+    m_Localized: 'TV: 这次爆发的能量远超科学家预测。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556546
+    m_Localized: 'TV: 外界温度已达临界水平。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556547
+    m_Localized: 'TV: 当局已宣布进入紧急状态。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556548
+    m_Localized: 'TV: 各位市民，白天千万不要外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556549
+    m_Localized: 'TV: 接下来是新闻时间……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556550
+    m_Localized: 'TV: 请稍候……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556551
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556552
+    m_Localized: 'TV: 我们刚刚接到了一条紧急消息，有人声称自己接触到了“伪人”。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556553
+    m_Localized: 'TV: 据目击者称，“伪人”能够模仿人类外貌和行为。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556554
+    m_Localized: 'TV: 请避免与“伪人”接触。有一次，有人跟“伪人”接触后，发现了“伪人”的一个特征……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556555
+    m_Localized: 'TV: 那就是一口完美无瑕的大白牙。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556556
+    m_Localized: 'TV: 有位目击者的经历证实了这一点。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556557
+    m_Localized: 'TV: 这位目击者遇到了个无家可归的人，长了一口大白牙。那个人就是个“伪人”。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556558
+    m_Localized: 'TV: 目前情况就是这样。请各位保持冷静，白天尽量不要外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556559
+    m_Localized: 'TV: 接下来是有意思的节目！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556560
+    m_Localized: 'TV: 下午好，接下来是天气预报。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556561
+    m_Localized: 'TV: 有股暖锋正在向本地区移动，将会带来打破历史最高气温纪录的热浪。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556562
+    m_Localized: 'TV: 据气象学家说，接下来的气温可能还会更高。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556563
+    m_Localized: 'TV: 太阳活动逐渐增强，紫外线强度也会加大。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556564
+    m_Localized: 'TV: 请尽量不要晒太阳，否认可能会有生命危险。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556565
+    m_Localized: 'TV: 高温天气，容易中暑。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556566
+    m_Localized: 'TV: 直接暴露在阳光下是否会对人体造成负面影响，目前尚不确定……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556567
+    m_Localized: 'TV: 请不要随意外出，免得三度烧伤。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556568
+    m_Localized: 'TV: 很遗憾，防晒霜也防不了烧伤。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556569
+    m_Localized: 'TV: 以上就是最新的天气预报，接下来是娱乐节目。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556570
+    m_Localized: 'TV: 你看到芭蕾舞者们优雅地跳动，强而又精致的跃步穿过舞台。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556571
+    m_Localized: 'TV: 舞步优雅，却让你脑子里冒出了焦虑的念头。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556572
+    m_Localized: 'TV: 你觉得屏幕里的人是想用舞蹈来分散你的注意，让你暂时忘记当前的局势。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556573
+    m_Localized: 'TV: 有人能解释一下眼下的情况是怎么回事该有多好啊……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556574
+    m_Localized: 'TV: 下午好，欢迎收看最新的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556575
+    m_Localized: 'TV: 太阳的活动并没有减弱，犯罪率略有上升。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556576
+    m_Localized: 'TV: 根据最新的数据，过去几天的谋杀案数量已经超过了平均值。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556577
+    m_Localized: 'TV: 专家怀疑这与伪人的出现，以及社会中日益增长的焦虑情绪有关。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556578
+    m_Localized: 'TV: 接下来是新信息。有目击者报告了伪人的新特征。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556579
+    m_Localized: 'TV: 那就是指甲缝里有泥巴。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556580
+    m_Localized: 'TV: 根据专家的数据，看指甲缝里有没有泥巴，就能分辨出谁是人类，谁是从地底下爬出来的伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556581
+    m_Localized: 'TV: 以上就是最新的新闻。请各位保持冷静，尽量避免外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556582
+    m_Localized: 'TV: 接下来，我们将为大家带来一则有关白面疯子的报道。不过在此之前，先进一段广告。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556583
+    m_Localized: 'TV: 以前，买东西得去店里买。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556584
+    m_Localized: 'TV: 但现在，只要拿起电话按几下，就能买到想要的东西。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556585
+    m_Localized: 'TV: 安憩快送帮到你。拨打XXX-XXX-XXXX，一天之内，下单的商品准时送货上门。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556586
+    m_Localized: 'TV: 安憩，足不出户，轻松享受美味。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556587
+    m_Localized: 'TV: 市区街头出现了一名浑身苍白的杀人狂魔。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556588
+    m_Localized: 'TV: 警方搜集了目击者证词后发现，所有的受害人都有一个特点，那就是遇害时孤身一人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556589
+    m_Localized: 'TV: 此外，这名疯子在行凶前会跟受害人攀谈。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556590
+    m_Localized: 'TV: 警方根据目击者的描述绘制了嫌疑人的素描画像。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556591
+    m_Localized: 'TV: 嫌疑人是一名浑身异常苍白的中年男子。黑色头发，身材瘦弱，浑身上下只穿着一条裤子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556592
+    m_Localized: 'TV: 有多人报告称，这名男子身上套着剥下来的人皮。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556593
+    m_Localized: 'TV: 但这一信息尚未得到官方确认。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556594
+    m_Localized: 'TV: 如果遇到这名男子，请不要开门，更不要告诉他家里就一个人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556595
+    m_Localized: 'TV: 以上就是最新的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556596
+    m_Localized: 'TV: 下午好，欢迎收看最新的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556597
+    m_Localized: 'TV: 温度持续上升，伪人的入侵也还在继续。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750848
+    m_Localized: 'TV: 当局为了应对这一情况，成立了一个特殊机构。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750849
+    m_Localized: 'TV: 那就是联邦应急管理局，简称应急中心。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750850
+    m_Localized: 'TV: 应急中心的工作人员统一穿着黄色防护服，戴着防毒面具。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750851
+    m_Localized: 'TV: 这一机构才刚刚成立，但已经发现了伪人的新特征……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750852
+    m_Localized: 'TV: 那就是血红色的眼睛。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750853
+    m_Localized: 'TV: 根据我们的数据，应急中心观察了拘留的伪人，发现了这一新特征。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750854
+    m_Localized: 'TV: 伪人对光的敏感性有所增加，眼睛容易发炎变红。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750855
+    m_Localized: 'TV: 以上就是最新的新闻。请各位保持冷静，尽量避免外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750856
+    m_Localized: 'TV: 接下来，我们将为大家带来一则有关应急中心的报道。不过在此之前，先进一段广告。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750857
+    m_Localized: 'TV: 动荡、恐惧与痛苦……这一切都是因为伪人……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750858
+    m_Localized: 'TV: 我们眼泪快流成了河……但是，就在这个关键时刻——'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750859
+    m_Localized: 'TV: 应急中心的员工来到了我们的身边！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750860
+    m_Localized: 'TV: 他们各个英勇无畏，是这些英雄保护我们免受伪人的侵害！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750861
+    m_Localized: 'TV: 迄今为止，应急中心已经识别出了两万七千个危险生物。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750862
+    m_Localized: 'TV: 请记住，周围有任何可疑活动，请报告给应急中心，协助他们做好自己的工作。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750863
+    m_Localized: 'TV: 只要用应急中心的访问邀请，就能向他们报告可疑活动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750864
+    m_Localized: 'TV: 不确定身边的人是不是伪人？请拨打应急热线：{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750865
+    m_Localized: 'TV: 协助应急中心做好自己的工作，就是跟他们一起对抗伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750866
+    m_Localized: 'TV: 应急中心是什么？成立的目的又是什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750867
+    m_Localized: 'TV: 联邦应急管理局是一个特殊的政府服务机构，旨在应对当下的危机。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750868
+    m_Localized: 'TV: 他们正在解决伪人入侵的问题。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750869
+    m_Localized: 'TV: 目前还不清楚该机构具体在做什么……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750870
+    m_Localized: 'TV: 但我们可以自信地说，我们的命运掌握在可靠之人的手里……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750871
+    m_Localized: 'TV: 该机构由各个领域的专家组成，包括杰出的科学家。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750872
+    m_Localized: 'TV: 应急中心的工作人员若是上门，建议与他们合作，遵循他们的指示。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750873
+    m_Localized: 'TV: 请记住，协助应急中心做好自己的工作，就是支持他们对抗伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750874
+    m_Localized: 'TV: 下午好，欢迎收看最新的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750875
+    m_Localized: 'TV: 应急中心已采取新措施来应对伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750876
+    m_Localized: 'TV: 他们已经建立了专门隔离潜在危险人员的隔离区。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750877
+    m_Localized: 'TV: 应急中心还通过实验，识别出了伪人的新特征……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750878
+    m_Localized: 'TV: 那就是没有腋毛。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750879
+    m_Localized: 'TV: 应急中心报告称，伪人腋下这一部位没有毛发。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750880
+    m_Localized: 'TV: 他们恳请各位积极配合测试，以及送潜在危险人员去往隔离区的工作。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750881
+    m_Localized: 'TV: 以上就是最新的新闻。请各位保持冷静，尽量避免外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750882
+    m_Localized: 'TV: 接下来将为大家带来一则报告，告诉大家如果遇到了伪人，应该怎么做。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750883
+    m_Localized: 'TV: 应急中心认为，伪人可能具有传染性，或者构成其他生物威胁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750884
+    m_Localized: 'TV: 因此，报告可疑人物，送交隔离至关重要。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750885
+    m_Localized: 'TV: 你如果无法将伪人立即交给隔离区，请向应急中心发出特别请求。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750886
+    m_Localized: 'TV: 接下来，工作人员将会上门，带走持有此文件的人做检查。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750887
+    m_Localized: 'TV: 以上就是最新的新闻。接下来是广告时间。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750888
+    m_Localized: 'TV: 热浪阻挡不了你感受活力！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750889
+    m_Localized: 'TV: 选择劲能佳，让你重焕生机！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750890
+    m_Localized: 'TV: 一款能量饮料，比水更爽口，更解渴！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750891
+    m_Localized: 'TV: 安憩可配送。订购热线：XXX-XXX-XXXX。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750892
+    m_Localized: 'Window: 邻居的屋子就坐落在干草地里。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750893
+    m_Localized: 'Window: 窗户里黑漆漆一片，看来他的家人都睡着了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750894
+    m_Localized: 'Window: 有只瘦骨嶙峋的狗站在穿过田地的小路上，'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750895
+    m_Localized: 'Window: 它一副凄惨样，正四处张望，想找点儿吃的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750896
+    m_Localized: 'Window: 几个醉鬼躺倒在街上，'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750897
+    m_Localized: 'Window: 街道上冷冰冰的，但他们没多久就睡着了。对他们来说，现在一切都很好。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750898
+    m_Localized: 'Window: 远处是邻居家的房子。邻居现在正在你家做客。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750899
+    m_Localized: 'Window: 窗户里透出明亮的灯光，家里人似乎在等他回去吃晚饭。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750900
+    m_Localized: 'Window: 你看见几个十来岁的孩子在田野上打发时间。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750901
+    m_Localized: 'Window: 他们围在一起聊得热火朝天，没注意到你的存在。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750902
+    m_Localized: 'Window: 窗外死一般寂静。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750903
+    m_Localized: 'Window: 一个人影都没有。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750904
+    m_Localized: 'Window: 就连酒鬼都决定今晚不在街上扎堆。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750905
+    m_Localized: 'Window: 他们是在害怕什么吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750906
+    m_Localized: 'Window: 你望向窗外，看到了邻居和他的女儿。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750907
+    m_Localized: 'Window: 他们玩得很开心，努力忘记周围正发生恐怖的事情……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750908
+    m_Localized: 'Window: 哪怕只能忘记那么一小会儿也行。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750909
+    m_Localized: 'Window: 地上有几具十来岁的孩子的尸体。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750910
+    m_Localized: 'Window: 他们被杀了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750911
+    m_Localized: 'Window: 看起来刚死不久，地上的血都还没干。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750912
+    m_Localized: 'Window: 路上站着个人，苍白得如同死亡本身。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750913
+    m_Localized: 'Window: 那人的皮肤上有不少奇怪的皱褶。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750914
+    m_Localized: 'Window: 就像穿了套大得不合身的人皮一样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750915
+    m_Localized: 'Window: 你从这儿看不见他的眼睛，但你能感觉到他正死盯着你。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750916
+    m_Localized: 'Window: 恐惧涌上心头，你向上帝祈祷，希望伪人不要造访你的屋子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750917
+    m_Localized: 'Window: 有一小撮应急中心的人正站在邻居家门前。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750918
+    m_Localized: 'Window: 真想知道他们在说什么。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750919
+    m_Localized: 'Window: 说不定是在采集土壤样本？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750920
+    m_Localized: 'Window: 或者是在找可以建基地的地方？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750921
+    m_Localized: 'Window: 几具十来岁孩子焦黑的尸体。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750922
+    m_Localized: 'Window: 好像在那儿躺了一整天了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750923
+    m_Localized: 'Window: 两名应急中心的工作人员站在尸体旁边，埋头写着什么东西。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750924
+    m_Localized: 'Window: 他们能来搬走尸体真是太好了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750925
+    m_Localized: 'Window: 尸体就这么放那儿，腐烂了会引起什么样的传染病……你想都不敢想。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750926
+    m_Localized: 'Window: 窗外有一群全副武装的士兵。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750927
+    m_Localized: 'Window: 他们是市里派来的小分队，专门保护应急中心执行任务的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750928
+    m_Localized: 'Window: 你只能模糊听见一两个词。从这只言片语判断，他们在说一个浑身苍白，赤身裸体的人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750929
+    m_Localized: 'Window: 他们说不定是来追踪那个诡异的伪人的？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750930
+    m_Localized: 'Window: 邻居家。那栋房子最近才涂成的白色，可现在只剩一堆焦黑的残骸。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750931
+    m_Localized: 'Window: 火似乎是最近才扑灭的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750932
+    m_Localized: 'Window: 是不是有人故意纵火？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750933
+    m_Localized: 'Window: 邻居家到底发生了什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750934
+    m_Localized: 'Window: 还有活口吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750935
+    m_Localized: 'Window: 你的脑海中充斥着焦虑的念头，以及难以理解的无助感。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750936
+    m_Localized: 'Window: 有个浑身苍白，诡异渗人的男子正站在街上，面露笑容。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750937
+    m_Localized: 'Window: 他手里拿着个人头，那人头还戴着头盔。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750938
+    m_Localized: 'Window: 那分明是士兵的人头，仔细看，人头的脸上还是一副惊恐扭曲的表情。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750939
+    m_Localized: 'Window: 你不确定他害怕的是那个苍白的伪人，还是即将到来的死亡。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750940
+    m_Localized: 'Window: 昨天过来的那群士兵都死了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750941
+    m_Localized: 'Window: 外面像发生了一场大屠杀。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750942
+    m_Localized: 'Window: 街上到处都是他们的尸体，其中有具尸体的脑袋还不翼而飞了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750943
+    m_Localized: 'Window: 是那个苍白诡异的伪人杀了他们吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750944
+    m_Localized: "“你好，这里是应急中心，请问有什么可以帮到你的？”\n  “有人……烧起来了。”"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750945
+    m_Localized: “你能描述一下自己看到的情况吗？是哪儿起火了吗？”“不是，是太阳。他们……他们在太阳底下烧起来了。”
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750946
+    m_Localized: “天黑之前请不要外出。”“不行的，那家伙晚上会出来。那个又白又瘦的东西……不是人类。”
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750947
+    m_Localized: 现在播放的是我们的新节目，《没错，我是人类》。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750948
+    m_Localized: 我们的规则很简单。你把照片发过来，我们来检查判断你究竟是什么。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750949
+    m_Localized: 只要把照片通过邮箱发过来就行。邮箱地址：yesiam@humanverification.agency
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750950
+    m_Localized: 但是请不要发眼睛、牙齿和指甲照片以外的东西，我们不会收的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750951
+    m_Localized: 你眼睛发红了吗？牙齿变白了吗？指甲缝里有泥巴吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750952
+    m_Localized: 恶灵入侵了你的身体，你已经变成了伪人！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750953
+    m_Localized: 不要让这种异常吞噬你的身体！如有需要，请立即拨打777-460联系我们的专家。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750954
+    m_Localized: 他们会驱除恶灵，净化身体，强化防护，让你免受侵害。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750955
+    m_Localized: 欢迎收听《我想要相信》，这是一个揭露谜团和政府阴谋的节目。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750956
+    m_Localized: 今天，我们请来了一位特别嘉宾，与他一起讨论伪人的问题。他不仅是位科学家，还是某家机构受人尊敬的员工，那家机构就是——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750957
+    m_Localized: 等等，什么？！他不来了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750958
+    m_Localized: 他们怎么把他所有文件都偷走了？那里面可有一大堆的信息！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750959
+    m_Localized: 靠，我就知道不该揭露真相。完了，这下全完了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415503822848
+    m_Localized: 从前，有两兄弟住在水坝旁边。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182976
+    m_Localized: 飞溅的浪花让他们想起冰爽，容易起泡的饮品……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182977
+    m_Localized: 兄弟俩长大后，一起开了家波伯酿酒厂。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182978
+    m_Localized: 如今，波伯黑啤已成为酒吧和商店最受欢迎的酒精饮品之一。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182979
+    m_Localized: 波伯黑啤：畅饮佳酿，尽享欢愉。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182980
+    m_Localized: 'Window: 你正凝视着邻居家的废墟。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182981
+    m_Localized: 'Window: 那儿不久前还住着幸福的一家人，如今只剩个鬼魅般的空壳……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182982
+    m_Localized: 'Window: 诡异的感觉涌上心头，让你难以忍受，似乎你早就知道会发生什么……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182983
+    m_Localized: 'Window: 似乎……你早就知道，死亡会造访隔壁那家人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182984
+    m_Localized: 'Window: 你一看到了一根木桩，上面放着个戴了头盔的骷髅头。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182985
+    m_Localized: 'Window: 头骨上残留的皮肤有烧黑的痕迹，牙齿好像也让谁给拔光了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182986
+    m_Localized: 'Window: 这颗头在那儿放了一天了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182987
+    m_Localized: 'Window: 眼前残酷的场景像是恐吓。肯定是那个浑身苍白的伪人干的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182988
+    m_Localized: 'Window: 应急中心的工作人员正在勘察最近发生的屠杀的现场。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182989
+    m_Localized: 'Window: 他们一一收缴了死亡士兵的装备和武器，免得落入歹人之手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182990
+    m_Localized: 'Window: 他们大概没料到，那个伪人碰上了全副武装的小队，还能活下来。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182991
+    m_Localized: 'Window: 如今，窗外又多了几个裹尸袋。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576140324864
+    m_Localized: 'TV: 下午好，接下来是天气预报。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102080
+    m_Localized: 'TV: 有股暖锋正在向本地区移动，将会带来打破历史最高气温纪录的热浪。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102081
+    m_Localized: 'TV: 据气象学家说，接下来的气温可能还会更高。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102082
+    m_Localized: 'TV: 太阳活动逐渐增强，紫外线强度也会加大。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102083
+    m_Localized: 'TV: 请尽量不要晒太阳，否认可能会有生命危险。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102084
+    m_Localized: 'TV: 高温天气，容易中暑。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102085
+    m_Localized: 'TV: 暴露在阳光下会不会影响人体健康，目前尚不确定……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102086
+    m_Localized: 'TV: 请不要随意外出，免得三度烧伤。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102087
+    m_Localized: 'TV: 很遗憾，防晒霜也防不了烧伤。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102089
+    m_Localized: 'TV: 你看到芭蕾舞者们优雅地跳动，强而又精致的跃步穿过舞台。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102090
+    m_Localized: 'TV: 舞步优雅，却让你脑子里冒出了焦虑的念头。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102091
+    m_Localized: 'TV: 你觉得屏幕里的人是想用舞蹈来分散你的注意，让你暂时忘记当前的局势。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102092
+    m_Localized: 'TV: 有人能解释一下眼下的情况是怎么回事该有多好啊……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102093
+    m_Localized: 'TV: 以前，买菜就得去店里买。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102094
+    m_Localized: 'TV: 但现在，只要拿起电话按几下，就能买到菜。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102095
+    m_Localized: 'TV: 安憩的送货服务帮到你。拨打{0}，一天之内，下单的菜品准时送货上门。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102096
+    m_Localized: 'TV: 安憩，足不出户，轻松享受美味。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102097
+    m_Localized: 'TV: 市区街头出现了一名浑身苍白的杀人狂魔。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102098
+    m_Localized: 'TV: 警方搜集了目击者证词后发现，所有的受害人都有一个特点，那就是遇害时孤身一人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102099
+    m_Localized: 'TV: 此外，这名疯子在行凶前会跟受害人攀谈。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102100
+    m_Localized: 'TV: 警方根据目击者的描述绘制了嫌疑人的素描画像。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102101
+    m_Localized: 'TV: 嫌疑人是一名浑身异常苍白的中年男子。黑色头发，身材瘦弱，浑身上下只穿着一条裤子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102102
+    m_Localized: 'TV: 有多人报告称，这名男子身上套着剥下来的人皮。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102103
+    m_Localized: 'TV: 但这一信息尚未得到官方确认。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102104
+    m_Localized: 'TV: 如果遇到这名男子，请不要开门，更不要告诉他家里就一个人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102106
+    m_Localized: 'TV: 动荡、恐惧与痛苦……这一切都是因为伪人……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102107
+    m_Localized: 'TV: 我们眼泪快流成了河……但是，就在这个关键时刻——'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102108
+    m_Localized: 'TV: 应急中心的员工来到了我们的身边！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102109
+    m_Localized: 'TV: 他们各个英勇无畏，是这些英雄保护我们免受伪人的侵害！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102110
+    m_Localized: 'TV: 迄今为止，应急中心已经识别出了两万七千个危险生物。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102111
+    m_Localized: 'TV: 请记住，周围有任何可疑活动，请报告给应急中心，协助他们做好自己的工作。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102112
+    m_Localized: 'TV: 只要用应急中心的访问邀请，就能向他们报告可疑活动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102113
+    m_Localized: 'TV: 不确定身边的人是不是伪人？请拨打应急热线：{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102114
+    m_Localized: 'TV: 协助应急中心做好自己的工作，就是跟他们一起对抗伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102115
+    m_Localized: 'TV: 应急中心是什么？成立的目的又是什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102116
+    m_Localized: 'TV: 应急中心是一个特殊的政府服务机构，旨在应对当下的危机。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102117
+    m_Localized: 'TV: 他们正在解决伪人入侵的问题。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102118
+    m_Localized: 'TV: 目前还不清楚该机构具体在做什么……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102119
+    m_Localized: 'TV: 但我们可以自信地说，我们的命运掌握在可靠之人的手里……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102120
+    m_Localized: 'TV: 该机构由各个领域的专家组成，包括杰出的科学家。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102121
+    m_Localized: 'TV: 应急中心的工作人员若是上门，建议与他们合作，遵循他们的指示。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102122
+    m_Localized: 'TV: 请记住，协助应急中心做好自己的工作，就是支持他们对抗伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102123
+    m_Localized: 'TV: 应急中心认为，伪人可能具有传染性，或者构成其他生物威胁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102124
+    m_Localized: 'TV: 因此，报告可疑人物，送交隔离至关重要。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102125
+    m_Localized: 'TV: 你如果无法将伪人立即交给隔离区，请向应急中心发出特别请求。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102126
+    m_Localized: 'TV: 接下来，工作人员将会上门，带走持有此文件的人做检查。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102128
+    m_Localized: 'TV: 热浪阻挡不了你感受活力！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102129
+    m_Localized: 'TV: 选择劲能佳，让你重焕生机！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102130
+    m_Localized: 'TV: 一款能量饮料，比水更爽口，更解渴！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102131
+    m_Localized: 'TV: 安憩可配送。订购热线：{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296387
+    m_Localized: 'TV: 从前，有两兄弟住在水坝旁边。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296388
+    m_Localized: 'TV: 飞溅的浪花让他们想起冰爽，容易气泡的饮品……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296389
+    m_Localized: 'TV: 兄弟俩长大后，一起开了家波伯酿酒厂。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296390
+    m_Localized: 'TV: 如今，波伯黑啤已成为酒吧和商店最受欢迎的酒精饮品之一。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296391
+    m_Localized: 'TV: 波伯黑啤：畅饮佳酿，尽享欢愉。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296517
+    m_Localized: 'Window: 邻居的屋子就坐落在旷野里。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296518
+    m_Localized: 'Window: 窗户里黑漆漆一片，看来他的家人都睡着了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296519
+    m_Localized: 'Window: 几个醉鬼四仰八叉地躺在街道上。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296520
+    m_Localized: 'Window: 外面很冷，但他们早已不省人事。对他们来说，起码现在还有片刻的安宁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296521
+    m_Localized: 'Window: 远处是邻居家的房子。邻居现在正在你家做客。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296522
+    m_Localized: 'Window: 窗户里透出明亮的灯光，家里人似乎在等他回去吃晚饭。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296523
+    m_Localized: 'Window: 窗外死一般的寂静。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296524
+    m_Localized: Window:一个人影都没有。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296525
+    m_Localized: Window:就连酒鬼都决定今晚不在街上扎堆。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296526
+    m_Localized: Window:他们是在害怕什么吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296527
+    m_Localized: Window:你望向窗外，看到了邻居和他的女儿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296528
+    m_Localized: Window:他们玩得很开心，努力忘记周围正发生恐怖的事情……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296529
+    m_Localized: Window:哪怕只能忘记那么一小会儿也行。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296530
+    m_Localized: 'Window: 路上站着个人，苍白得如同死亡本身。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296531
+    m_Localized: 'Window: 那人的皮肤上有不少奇怪的皱褶。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296532
+    m_Localized: 'Window: 就像穿了套大得不合身的人皮一样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296533
+    m_Localized: 'Window: 你从这儿看不见他的眼睛，但你能感觉到他正死盯着你。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296534
+    m_Localized: 'Window: 恐惧涌上心头，你向上帝祈祷，希望伪人不要造访你的屋子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296535
+    m_Localized: 'Window: 有一小撮应急中心的人正站在邻居家门前。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296536
+    m_Localized: 'Window: 真想知道他们在说什么。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296537
+    m_Localized: 'Window: 说不定是在采集土壤样本？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296538
+    m_Localized: 'Window: 或者是在找可以建基地的地方？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296539
+    m_Localized: 'Window: 窗外有一群全副武装的士兵。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296540
+    m_Localized: 'Window: 他们是市里派来的小分队，专门保护应急中心执行任务的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296541
+    m_Localized: 'Window: 你只能模糊听见一两个词。从这只言片语判断，他们在说一个浑身苍白，赤身裸体的人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296542
+    m_Localized: 'Window: 他们说不定是来追踪那个诡异的伪人的？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296543
+    m_Localized: 'Window: 邻居家。那栋房子最近才涂成的白色，可现在只剩一堆焦黑的残骸。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296544
+    m_Localized: 'Window: 火似乎是最近才扑灭的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296545
+    m_Localized: 'Window: 是不是有人故意纵火？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296546
+    m_Localized: 'Window: 邻居家到底发生了什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296547
+    m_Localized: 'Window: 还有活口吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296548
+    m_Localized: 'Window: 你的脑海中充斥着焦虑的念头，以及难以理解的无助感。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296549
+    m_Localized: 'Window: 昨天过来的那群士兵都死了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296550
+    m_Localized: 'Window: 外面像发生了一场大屠杀。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296551
+    m_Localized: 'Window: 街上到处都是他们的尸体，其中有具尸体的脑袋还不翼而飞了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296552
+    m_Localized: 'Window: 是那个苍白诡异的伪人杀了他们吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296553
+    m_Localized: 'Window: 你正凝视着邻居家的废墟。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296554
+    m_Localized: 'Window: 那儿不久前还住着幸福的一家人，如今只剩个鬼魅般的空壳……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296555
+    m_Localized: 'Window: 诡异的感觉涌上心头，让你难以忍受，似乎你早就知道会发生什么……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296556
+    m_Localized: 'Window: 似乎……你早就知道，死亡会造访隔壁那家人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296557
+    m_Localized: 'Window: 你一看到了一根木桩，上面放着个戴了头盔的骷髅头。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296558
+    m_Localized: 'Window: 头骨上残留的皮肤有烧黑的痕迹，牙齿好像也让谁给拔光了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296559
+    m_Localized: 'Window: 这颗头在那儿放了一天了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296560
+    m_Localized: 'Window: 眼前残酷的场景像是恐吓。肯定是那个浑身苍白的伪人干的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296561
+    m_Localized: 'Window: 应急中心的工作人员正在勘察最近发生的屠杀的现场。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296562
+    m_Localized: 'Window: 他们一一收缴了死亡士兵的装备和武器，免得落入歹人之手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296563
+    m_Localized: 'Window: 他们大概没料到，那个伪人碰上了全副武装的小队，还能活下来。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296564
+    m_Localized: 'Window: 如今，窗外又多了几个裹尸袋。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296409
+    m_Localized: 'TV: 寂静，是死亡的信号。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296410
+    m_Localized: 'TV: 寂静，会抽干灵魂。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296411
+    m_Localized: 'TV: 但比虚无更糟的……是钟鸣。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296412
+    m_Localized: 'TV: 丧钟的鸣响。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296413
+    m_Localized: 'TV: 一旦钟鸣，耳中将滋生某种东西。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296414
+    m_Localized: 'TV: 最后只剩耳垢与糟糕的念头。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296415
+    m_Localized: 'TV: 伪人便靠此存活。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296416
+    m_Localized: 'TV: 伪人会陷入蛛丝般的思绪中难以挣脱。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296417
+    m_Localized: 'TV: 对它们而言，钟鸣更响亮——产生的耳垢也更多。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102088
+    m_Localized: 'TV: 接下来是天气预报。不过，先进一段广告'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102105
+    m_Localized: 'TV: 以上就是最新的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102127
+    m_Localized: 'TV: 以上是最新的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102132
+    m_Localized: 'TV: 中午好。您正在收看新闻播报。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102133
+    m_Localized: 'TV: 由于表现出伪人特征的市民人数急剧增长，应急中心决定采取全新措施。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102134
+    m_Localized: 'TV: 即日起将对所有主要城市实施全面隔离管制。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102135
+    m_Localized: 'TV: 禁止跨城、跨镇流动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102136
+    m_Localized: 'TV: 请大家留在各自指定区域内。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102137
+    m_Localized: 'TV: 同时，应急中心公布了一项新特征：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102138
+    m_Localized: 'TV: 灵光照片。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102139
+    m_Localized: 'TV: 若被摄对象的图像出现黑色斑点，极可能是伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102140
+    m_Localized: 'TV: 以上是当前最新资讯——请各位保持冷静，尽量白天留在室内，不要外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102141
+    m_Localized: 'TV: 现在是广告时间。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102142
+    m_Localized: 'TV: 神出鬼没的幽灵、来自地底的生物——伪人究竟是什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102143
+    m_Localized: 'TV: 既非科幻小说虚构，也非小报耸人听闻的标题。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102144
+    m_Localized: 'TV: 而是我们必须面对的现实。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102145
+    m_Localized: 'TV: 关于伪人的真实起源众说纷纭。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102146
+    m_Localized: 'TV: 外星来客？行尸走肉？或是某次实验失败的产物？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102147
+    m_Localized: 'TV: 据应急中心判断，以上观点均与事实不符。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102148
+    m_Localized: 'TV: 研究表明，伪人是接触了某种病毒或生物制剂的人类。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102149
+    m_Localized: 'TV: 虽传播方式尚不明确，但应急中心呼吁大家保持警惕，留意伪人特征。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102150
+    m_Localized: 'TV: 若怀疑自身感染或无法确认是否伪人，请拨打应急中心服务电话：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102151
+    m_Localized: '{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102152
+    m_Localized: 'TV: 如今辨别伪人难度与日俱增。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102153
+    m_Localized: 'TV: 虽能通过特征初步判断，但是否存在万无一失的方法？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102154
+    m_Localized: 'TV: 我们隆重推出革命性新型底片！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102155
+    m_Localized: 'TV: 其特殊之处在于能捕捉灵魂散发的能量，区分人类与危险的伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102156
+    m_Localized: 'TV: 若照片出现黑色斑点……对方就是伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102157
+    m_Localized: 'TV: 现免费发放新手套件。机不可失，请速拨打电话：{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102158
+    m_Localized: 'TV: 现免费发放新手套件。机不可失，请速拨打电话：{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102159
+    m_Localized: 'TV: 太阳活动加剧——野火在森林地带肆虐蔓延。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102160
+    m_Localized: 'TV: 专家称异常太阳活动是主要原因。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102161
+    m_Localized: 'TV: 灾害全貌尚未明朗，但邻近城市已紧急出动压制火势。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102162
+    m_Localized: 'TV: 以上是当前最新资讯——请各位保持冷静，尽量白天留在室内，不要外出。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296384
+    m_Localized: 'TV: 接下来是广告时间。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296385
+    m_Localized: 'TV: ……以上是最新消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296386
+    m_Localized: 'TV: 接下来是赞助商广告时间。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296392
+    m_Localized: 'TV: 现在插播紧急新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296393
+    m_Localized: 'TV: 我们收到连续报告——邻近城市正发生群众暴动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296394
+    m_Localized: 'TV: 由于局势未平息，应急中心人员已封锁该区域。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296395
+    m_Localized: 'TV: 请尽量留在室内不要外出，稍后将发布详细指示。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296396
+    m_Localized: 'TV: 记住——协助他们就是在拯救我们的世界。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296397
+    m_Localized: 'TV: 以上是当前最新资讯。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296398
+    m_Localized: 'TV: 请大家固守原处，耐心等待后续指令。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296399
+    m_Localized: 'TV: 就连机器也需要休息，何况是人类。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296400
+    m_Localized: 'TV: 只要抽上一口马尔戈罗香烟，即可尽情放松、摆脱压力。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296401
+    m_Localized: 'TV: 马尔戈罗香烟——专为男人而生。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296402
+    m_Localized: 'TV: （免责声明：对于因吸烟造成的生命健康损害，本公司概不负责）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296403
+    m_Localized: 'TV: 大家午安——您现在收看的是新闻报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296404
+    m_Localized: 'TV: 突发消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296405
+    m_Localized: 'TV: 城里最近事件浮出新细节。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296406
+    m_Localized: 'TV: 不久前某隔离区遭持械暴徒袭击。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296407
+    m_Localized: 'TV: 目前尚不清楚对方目的及是否存在共犯。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296408
+    m_Localized: 'TV: 数名身份不明的观察对象借机逃离。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296418
+    m_Localized: 'TV: 今日事件引发众多猜测，目击者描述也各不相同。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296419
+    m_Localized: 'TV: 既有报告称枪手单独行动，也有消息指是一群戴兜帽的武装分子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296420
+    m_Localized: 'TV: 但最严峻的挑战或许还在前方。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296421
+    m_Localized: 'TV: 由于城市已被封锁，附近区域的尸体处理工作不得不暂停。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296422
+    m_Localized: 'TV: 但对市民的常规检查仍将继续。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296423
+    m_Localized: 'TV: 若有条件火化遗体，请立即执行。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296424
+    m_Localized: 'TV: 否则请耐心等待。在局势解决前，请勿抛弃任何积压尸体。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296425
+    m_Localized: 'TV: 以上是当前最新资讯，敬请关注后续消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296426
+    m_Localized: 'TV: 大家午安，您现在收看的是新闻报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296427
+    m_Localized: 'TV: 目前应急中心正为受隔离区袭击事件影响的灾民提供援助。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296428
+    m_Localized: 'TV: 由于现有设施均已满员，经研讨后决定采取以下措施：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296429
+    m_Localized: 'TV: 疏散群众将被临时安置于城郊各栋房屋中。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296430
+    m_Localized: 'TV: 幸运的是，当地房主理解应急中心的难处，愿意配合提供庇护。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296431
+    m_Localized: 'TV: 但令人担心的是……目前仅找到部分流窜人员。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296432
+    m_Localized: 'TV: 此外，应急中心公布了一项新特征：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296433
+    m_Localized: 'TV: 牙龈出血。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296434
+    m_Localized: 'TV: 若出现此症状者来到门前，切勿与其接触。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296435
+    m_Localized: 'TV: 耐心等待定期巡逻人员到来后立即检举即可。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296436
+    m_Localized: 'TV: 以上是当前最新资讯。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296437
+    m_Localized: 'TV: 请大家固守原处，耐心等待后续指令。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296438
+    m_Localized: 'TV: 接下来是关于某新兴邪教的特别报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296439
+    m_Localized: 'TV: 伪人不仅伪装混于公众之间，甚至可能已渗透进我们的思绪。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296440
+    m_Localized: 'TV: 据报告，数座城市出现有组织、有预谋的邪教活动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296441
+    m_Localized: 'TV: 对其指控包括：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296442
+    m_Localized: 'TV: 活人献祭、敬拜未知神祇，及极可能与伪人存在关联。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296443
+    m_Localized: 'TV: 据最新报告，该团体现已公开表态坚决反对应急中心。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296444
+    m_Localized: 'TV: 起初仅口头骚扰、发布不当言论，如今已变得肆无忌惮直接采取行动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296445
+    m_Localized: 'TV: 最近城里发生的一系列事件恐都与他们有关。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296446
+    m_Localized: 'TV: 我们呼吁各位观众——切勿与这些"新兴信徒"接触。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296447
+    m_Localized: 'TV: 提供帮助——甚至对其行为表示赞同或共鸣，可能导致被捕。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296448
+    m_Localized: 'TV: 以上是当前最新资讯，敬请关注后续消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296449
+    m_Localized: 'TV: 大家午安——您现在收看的是新闻报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296450
+    m_Localized: 'TV: 虽然城里状况逐渐稳定，但仍未找到全部流窜人员。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296451
+    m_Localized: 'TV: 同时尸体处理工作已恢复正常，但新难题接踵而至。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296452
+    m_Localized: 'TV: 据最新报告，大街出现数批成群流浪犬只。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296453
+    m_Localized: 'TV: 应急中心已派遣人员处理此威胁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296454
+    m_Localized: 'TV: 此外公布了潜在危险人士的一项新特征：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296455
+    m_Localized: 'TV: 皮肤过敏。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296456
+    m_Localized: 'TV: 针对城市的袭击事件仍在调查中。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296457
+    m_Localized: 'TV: 虽尚不清楚是单独行动还是团伙作案……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296458
+    m_Localized: 'TV: 但应急中心必将遏止情况恶化，包括伪人造成的种种威胁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296459
+    m_Localized: 'TV: 若对识别伪人特征存有疑问，可随时拨打应急中心服务电话：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296460
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296461
+    m_Localized: 'TV: 请大家固守原处，耐心等待后续指令。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296462
+    m_Localized: 'TV: 以上是当前最新资讯。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296463
+    m_Localized: 'TV: 接下来是关于赤道一带各国现状的报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296464
+    m_Localized: 'TV: 今晚来自该处的消息令人无比担忧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296465
+    m_Localized: 'TV: 不断蔓延的野火、极端炎热天气及随之而来的干旱对各地造成近乎毁灭性打击。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296466
+    m_Localized: 'TV: 据最新报告，温度已飙升至难以置信水平，光接触地面就可能造成三度烧伤。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296467
+    m_Localized: 'TV: 目前尚不清楚具体伤亡人数，也无法进行疏散工作。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296468
+    m_Localized: 'TV: 至今政府未能与受灾地区当局取得联络。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296469
+    m_Localized: 'TV: 但一旦条件允许，应急中心将立即派遣人员前往协助救援。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296470
+    m_Localized: 'TV: 以上是当前最新资讯，敬请关注后续消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296471
+    m_Localized: 'TV: 大家午安，您现在收看的是新闻报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296472
+    m_Localized: 'TV: 城里状况依旧不容乐观，因此封锁并未解除。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296473
+    m_Localized: 'TV: 正所谓一波未平一波又起，我们收到目击报告——受取缔的邪教成员最近出现在城郊一带。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296474
+    m_Localized: 'TV: 据称他们正在筹备某种需用明火的仪式。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296475
+    m_Localized: 'TV: 应急中心相信该团体直接参与了针对隔离区的数次袭击。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296476
+    m_Localized: 'TV: 遗憾的是——鉴于城里局势……应急中心及军队目前均无余力派遣专门部队调查。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296477
+    m_Localized: 'TV: 若有邪教成员来到门前，请立即拨打应急中心服务电话：{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296478
+    m_Localized: 'TV: 此外他们公布了一项新特征：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296479
+    m_Localized: 'TV: 腋窝长出真菌。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296480
+    m_Localized: 'TV: 以上是当前最新资讯。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296481
+    m_Localized: 'TV: 请大家固守原处，耐心等待后续指令。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296482
+    m_Localized: 'TV: 接下来是关于两极地区的热点速递。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296483
+    m_Localized: 'TV: 太阳再次发威。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296484
+    m_Localized: 'TV: 科学家、研究者发布了令人担忧的最新预测。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296485
+    m_Localized: 'TV: 若当前热浪持续不退，极地冰盖将完全融化，进而引发严重洪灾。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296486
+    m_Localized: 'TV: 虽全国顶尖专家已殚精竭虑对当前气候异常进行探究解构，然而——至今仍未找到解决答案。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296487
+    m_Localized: 'TV: 以上是当前最新资讯，敬请关注后续消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296488
+    m_Localized: 'TV: 突发消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296489
+    m_Localized: 'TV: 城里状况毫无好转迹象。灾变仍在不断恶化。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296490
+    m_Localized: 'TV: 随着冰川融化，海平面迅速上升。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296491
+    m_Localized: 'TV: 沿海地区——及坐落其中的各大城市，可能被洪水淹没。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296492
+    m_Localized: 'TV: 几个受污染、含放射性物质的湖泊已开始蒸发。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296493
+    m_Localized: 'TV: 据科学家、研究者预测，此现象极可能导致酸雨。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296494
+    m_Localized: 'TV: 若听见雷声，请立即寻找躲避处以免遇害。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296495
+    m_Localized: 'TV: 此外遗憾的是……城里封锁仍未解除。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296496
+    m_Localized: 'TV: 目前应急中心尚未将所有流窜人员抓捕归案。同时他们公布了关于伪人的一项新特征：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296497
+    m_Localized: 'TV: 快速移动的瞳孔。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296498
+    m_Localized: 'TV: 以上是当前最新资讯……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296499
+    m_Localized: 'TV: 由于摄影棚可能遭袭击，我们不得不提前中止本次报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296500
+    m_Localized: 'TV: 若对识别伪人存有疑问，请拨打服务电话：{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296501
+    m_Localized: 'TV: 播报结束。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296502
+    m_Localized: 'TV: 重大事件。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296503
+    m_Localized: 'TV: 不久前，应急中心逮捕了绝大多数政府官员。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296504
+    m_Localized: 'TV: 据报告称，其中一些被认定为伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296505
+    m_Localized: 'TV: 由于国会已无法正常运作，应急中心将暂时接管政府职能。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296506
+    m_Localized: 'TV: 与此同时……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296507
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296508
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296509
+    m_Localized: 'TV: 稍等一下……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296510
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296511
+    m_Localized: 'TV: 刚刚收到应急中心讯息：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296512
+    m_Localized: 'TV: 针对城里隔离区发起数次袭击的暴徒已突破封锁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296513
+    m_Localized: 'TV: 重复——针对城里隔离区发起数次袭击的暴徒已突破封锁，现正四处逃遁。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296514
+    m_Localized: 'TV: 请大家封好窗户、锁紧大门。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296515
+    m_Localized: 'TV: 固守原处，耐心等待后续指令。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296516
+    m_Localized: 'TV: 播报结束。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296565
+    m_Localized: 'Window: 你看见一名女性伏在自己受了重伤的丈夫身上失声痛哭。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296566
+    m_Localized: 'Window: 你分辨不出这名男性是否还活着。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296567
+    m_Localized: 'Window: 她吃力地拖拽着他的躯体，试图远离炮火……脸庞早已被泪水打湿。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296568
+    m_Localized: 'Window: 你的脑海里盘踞着一个念头——恐怕，事情只会变得更加糟糕。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296569
+    m_Localized: 'Window: 田间小径之上，散落着一具又一具的尸体……全部都是想要逃跑的市民。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296570
+    m_Localized: 'Window: 附近站着一名应急中心的工作人员。看来，就是他做的好事。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296571
+    m_Localized: 'Window: 手里握着来福枪，炮管还在冒着烟。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296572
+    m_Localized: 'Window: 惊慌失措的民众如同无头苍蝇一般蜂拥至附近的房子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296573
+    m_Localized: 'Window: 不断捶打着大门，迫切地需要庇护。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296574
+    m_Localized: 'Window: 然而，看来……没人愿意让他们进去。毕竟，谁也不想自寻麻烦。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296575
+    m_Localized: 'Window: 一群遭到驱逐的市民站在邻居那栋早就已经变成废墟的房子旁边。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296576
+    m_Localized: 'Window: 看得出来，他们尚未从震惊之中缓过神来……正你一言、我一语地低声交谈着。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296577
+    m_Localized: 'Window: 似乎，想要在那里避难。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296578
+    m_Localized: 'Window: 只是，这个世界上真的还有能供人躲藏、保证安全的地方吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296579
+    m_Localized: 'Window: 路上站着一个拿着步枪的他，看着已经完全失去了理智。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296580
+    m_Localized: 'Window: 他的夹克上布满了拔下来的牙齿、挖出来的眼球，以及……无法辨认的残骸。从这里看不清楚。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296581
+    m_Localized: 'Window: 万一这个家伙杀人并非出于自卫，而是为了取乐、收集战利品——该怎么办？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296582
+    m_Localized: 'Window: 无论如何，你衷心希望自己不会成为他的敌人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296583
+    m_Localized: 'Window: 灯杆上吊着一个人，还挂了个牌子、上头写着——「你夺走了我的一切。」'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296584
+    m_Localized: 'Window: 难道，他遭遇了抢劫？抑或，自己的家人被应急中心给抓走了？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296585
+    m_Localized: 'Window: 思绪在脑海中狂奔，却还是得不到答案——唯有猜测。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296586
+    m_Localized: 'Window: 一群遭到应急中心驱逐的市民在邻居那栋早就已经成为废墟的房子里安顿了下来。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296587
+    m_Localized: 'Window: 虽然地上的部分几近全毁，不过……地下的空间却令人出乎意料地逃过了一劫。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296588
+    m_Localized: 'Window: 因此，成为了他们安全的港湾。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296589
+    m_Localized: 'Window: 然而，又能躲多久呢？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296590
+    m_Localized: 'Window: 野狗游荡在大街之上。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296591
+    m_Localized: 'Window: 躯体上布满了浅浅的灼痕，饥饿使它们变得瘦弱不堪。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296592
+    m_Localized: 'Window: 虽然，你待在自己的房子里面、根本就没有必要去害怕……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296593
+    m_Localized: 'Window: 不过，你的心头始终萦绕着一个挥之不去的想法——现在，还是不要到外面去为好。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296594
+    m_Localized: 'Window: 一群带着行李的市民聚集在了房子附近，正你一言、我一语地低声交谈着。似乎，是想要避免被应急中心的工作人员给听到。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296595
+    m_Localized: 'Window: 看来，他们来自隔离区——取代先前的房主、被安置于这一带。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296596
+    m_Localized: 'Window: 此刻，灯杆上吊着的家伙看着就像一个糟糕透顶的「欢迎」标志。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296597
+    m_Localized: 'Window: 一个全副武装、专门猎杀伪人的家伙正持枪胁迫一群幸存者。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296598
+    m_Localized: 'Window: 恐怕，是偶然之间发现的他们。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296599
+    m_Localized: 'Window: 你听到了断断续续的叫喊、一个疯狂的声音正在怒吼。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296600
+    m_Localized: 'Window: 到底，谁能活在这个新的世界之中？恐怕……并不会是人数占优的那一方。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296601
+    m_Localized: 'Window: 应急中心的工作人员站在死去的野狗旁边。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296602
+    m_Localized: 'Window: 其中一个正往平板电脑上记录着什么。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296603
+    m_Localized: 'Window: 只是……凭借在场屈指可数的几人，真的能阻挡一群如饥似渴的野兽吗？看着并不可能。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296604
+    m_Localized: 'Window: 两名工作人员站在灯杆旁边，盯着吊在上面的家伙。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296605
+    m_Localized: 'Window: 看来，他们终于发现了这一带“最惹眼”的东西。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296606
+    m_Localized: 'Window: 那两个人就跟找不到线索的侦探一样，搞不懂在没有梯子的情况下，他到底是怎么挂到上面去的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296607
+    m_Localized: 'Window: 一整群的人都已经死光了。饥饿的野狗正对着他们的尸体大快朵颐。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296608
+    m_Localized: 'Window: 附近散落着大量的弹壳。看来，是那个猎人下的手——甚至，还拿走了一些战利品。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296609
+    m_Localized: 'Window: 这个世界的疯狂已经远远地超出了我们的想象。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296610
+    m_Localized: 'Window: 邪教徒把柴火堆到了一起。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296611
+    m_Localized: 'Window: 难道，他们是想要烧死谁吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296612
+    m_Localized: 'Window: 答案很快就会自动揭晓。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296613
+    m_Localized: 'Window: 然而，为了完成他们所追求的事业、多少无辜的生命会因此牺牲？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296614
+    m_Localized: 'Window: 路上站着一个人，已经陷入了疯狂。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296615
+    m_Localized: Window:他 一手拎着汽油桶，一手拿着燃烧弹。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296616
+    m_Localized: 'Window: 难道，他是想要把整座小镇给烧成平地吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296617
+    m_Localized: 'Window: 没人告诉过他，这里住的都是受到疏散、来自隔离区的民众吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296618
+    m_Localized: 'Window: 之前躲在邻居那栋早就已经成为废墟的房子里的人、尸体正被中午的太阳不断灼烧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296619
+    m_Localized: 'Window: 以此为食的野狗已经落荒而逃——就好像是害怕着什么东西一样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296620
+    m_Localized: 'Window: 万一这个「东西」不是应急中心，而是其他的什么……该怎么办？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296621
+    m_Localized: 'Window: 邪教徒把自己绑在了篝火附近。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296622
+    m_Localized: 'Window: 难道，他们想进行活人献祭？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296623
+    m_Localized: 'Window: 一想到这个，你的思绪就变得无比混乱。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296624
+    m_Localized: 'Window: 对死亡的恐惧令人失去仅剩的理智，开始做出一些难以言喻的疯狂举动。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296625
+    m_Localized: 'Window: 只是经过短短数周，就已经出现了如此可怖的行径……你不完全敢想象接下来会变成什么样子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296626
+    m_Localized: 'Window: 熊熊燃烧的房子闪烁着诡谲的光芒，远处传来了阵阵尖叫、嘶吼……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296627
+    m_Localized: 'Window: 你很清楚——造成这一切的元凶就是那个想要把伪人给通通消灭殆尽的疯子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490688
+    m_Localized: 'Window: 你的房子是下一个目标吗？他会在什么时候动手——明天？下周？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490689
+    m_Localized: 'Window: 迟早，你得直接面对这个早就已经杀红了眼的家伙。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490690
+    m_Localized: 'Window: 焦黑的尸体已经消失不见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490691
+    m_Localized: 'Window: 只剩一团怪异、黏糊的物质，看起来……就跟淤泥没什么两样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490692
+    m_Localized: 'Window: 你很好奇。难道……有什么东西先是把残留的血肉给融化掉了，然后将其大口吞进肚子？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490693
+    m_Localized: 'Window: 要真是这样的话，你希望这个生物能一直躲在暗处。否则——在看到它的瞬间，你的心智……说不定会顷刻崩溃。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490694
+    m_Localized: 'Window: 应急中心的工作人员围在焦黑的尸体旁边。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490695
+    m_Localized: 'Window: 记录着这些邪教成员的死亡情况。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490696
+    m_Localized: 'Window: 因恐惧和痛苦而扭曲的表情永远凝固在了他们的脸上，就好像是在临终之前看到了什么毛骨悚然的东西一样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490697
+    m_Localized: 'Window: 附近的每栋房子都已经成为废墟。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490698
+    m_Localized: 'Window: 只剩你的房子。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490699
+    m_Localized: 'Window: 再也没有其他人可以阻止这个疯子的步伐。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490700
+    m_Localized: 'Window: 无论如何，都得鼓起勇气、好好面对了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490701
+    m_Localized: 这里是调度中心——呼叫隔离区，我们需要进行状况核查。代码51。请详细报告凌晨3点发生的爆炸事件。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490702
+    m_Localized: 编号32-8，正在回报。代码60。平民出现重大伤亡，工作人员受到波及……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490703
+    m_Localized: 编号28-8，正在回报。代码451。请求调派焚烧小组前来处理尸体。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490704
+    m_Localized: 收到。启动代码984。封锁整座城市，以待调查。请固守原处、等待增援。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490705
+    m_Localized: 如果你能听到这则广播——切记，千万不要靠近城郊。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490706
+    m_Localized: 应急中心的工作人员正在射杀任何试图离开的民众。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490707
+    m_Localized: 我不清楚发生了什么事……我只是想离开这里而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490708
+    m_Localized: 救命——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490709
+    m_Localized: 袭击了隔离区的并不是这些家伙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490710
+    m_Localized: 我看见了。我……亲眼看见了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490711
+    m_Localized: 罪魁祸首根本就不是人类。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490712
+    m_Localized: 我们是受到驱逐的市民。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490713
+    m_Localized: 现正躲在一栋烧毁房子的地下室里——如果你也被应急中心赶出了家门，不妨……到这里来避避风头。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490714
+    m_Localized: 距离隐士的住处很近。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490715
+    m_Localized: 我们已经不剩什么食物，很快就会开始饿肚子了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490716
+    m_Localized: 如果有人能伸出援手、分我们一点吃的，就太好了。还请帮帮我们。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490717
+    m_Localized: 致所有正在收听的民众……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490718
+    m_Localized: 应急中心正在试图干扰整座城市的通讯信号，以封锁消息。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490719
+    m_Localized: 他们想要隐瞒在这里发生的事情。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490720
+    m_Localized: 他们想要把一切都归咎于那个在隔离区大开杀戒的疯子身上。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490721
+    m_Localized: 如果你还待在城里——赶……紧逃跑，这里……并不安……全。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490722
+    m_Localized: 避……开应急中心的巡逻人员，他们会……毫不犹……豫地杀了……你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490723
+    m_Localized: 趁……还有机……会，赶紧……逃……跑——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490724
+    m_Localized: 他们……不应……该……把尸体……给……烧毁的。这样……做，会把……吸引过……来……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490725
+    m_Localized: 如果……他们把……尸体，会……把那……个东西给——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490726
+    m_Localized: 调……中心……呼叫所有……应……急中心……人员……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490727
+    m_Localized: 全新……指……令——停……用代码955，启……用代码451。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490728
+    m_Localized: 不要……烧……毁尸体。改用……进行处理。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490729
+    m_Localized: 重……复，启用代码451。如果烧……毁尸体，将会引……来威胁——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490730
+    m_Localized: 编……号18-8，正在……回报。我们……无法阻止……对方。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490731
+    m_Localized: 目……标离开了城市范……围，请……求立即……增援。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490732
+    m_Localized: 重……复：我们需要……增援。我们无法独自……阻止对方。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490733
+    m_Localized: 'Phone: 你好，邻居——很高兴能听到你的声音。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490734
+    m_Localized: 'Phone: 好了……你有让其他人进屋吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490735
+    m_Localized: 'Phone: 要是还没有的话，你就得抓紧时间、不能再拖下去了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490736
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490737
+    m_Localized: 'Phone: 你有什么想问的事情吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490738
+    m_Localized: 你也有让其他人进屋吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490739
+    m_Localized: 要判断某人是否伪人，到底得对上几项特征？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490740
+    m_Localized: 你是怎么解决食物问题的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490741
+    m_Localized: 再见（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490742
+    m_Localized: 'Phone: 是的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490743
+    m_Localized: 'Phone: 虽说，我的女儿讨厌这样。然而……又能怎么办呢，对吧？毕竟，除此以外、别无他法。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490744
+    m_Localized: 'Phone: 她一直跟我说要出门，因为——这样就能摆脱、远离待在家里的陌生人了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490745
+    m_Localized: 'Phone: 只是，白天没有办法出去。于是，我们就只好等到晚上。没错，的确非常危险……我也知道。不过，实在是禁不住她的死缠烂打。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490746
+    m_Localized: 'Phone: 我也想知道……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490747
+    m_Localized: 'Phone: 谁都不知道究竟得对上几项特征，才能心有成竹、盖棺定论地确定自己眼前的家伙是个伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490748
+    m_Localized: 'Phone: 我能说的，只有——如果只发现了一项，就不要急着下定论。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490749
+    m_Localized: 'Phone: 毕竟，有可能只是虚惊一场。譬如……对方刚好在这一系列的烂事开始之前去看了牙医，诸如此类。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490750
+    m_Localized: 'Phone: 我运气不错，灾难没降临之前，刚好囤了些货。要是没记错的话，你应该也囤了吧？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490751
+    m_Localized: 'Phone: 如果需要什么比较特殊的东西，我记得最近新出了个快送服务，买东西的，叫安憩快送。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490752
+    m_Localized: 'Phone: 我忘了号码是多少。不过，你可以留意一下电视，或者收音机里的广告，上面应该有说。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490753
+    m_Localized: 'Phone: 保重。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490754
+    m_Localized: 'Phone: 你好，邻居。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490755
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490756
+    m_Localized: 'Phone: 你看到外面的惨状了吗？好几个十来岁的孩子……被杀死了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490757
+    m_Localized: 'Phone: 我还以为街上并没有太过危险。看来，我错得离谱。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490758
+    m_Localized: 'Phone: 我的女儿一直想要出去玩。之前，我还觉得没什么……现在，看到这些尸体之后，我就不这么认为了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490759
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490760
+    m_Localized: 'Phone: 我绝对不会再像这样拿她的性命来冒险了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490761
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490762
+    m_Localized: 'Phone: 天啊……要是她出了什么事的话，我这辈子没有办法原谅自己。要知道，她——可是我的整个世界。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490763
+    m_Localized: 你的女儿还好吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490764
+    m_Localized: 是谁下的手？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490765
+    m_Localized: 一定要小心（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490766
+    m_Localized: 'Phone: 是谁下的手？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490767
+    m_Localized: 'Phone: 草丛长得很高、非常茂密，照理她应该是注意不到的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490768
+    m_Localized: 'Phone: 不过，到家之后……她却说，自己在里面看到了一张人脸。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490769
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490770
+    m_Localized: 'Phone: 我试着说服她，一切都只不过是错觉罢了。然而……她并不这么认为。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490771
+    m_Localized: 'Phone: 某个高高瘦瘦、通体苍白的……东西。要是我没记错的话，它不是只会袭击独自一人待在房子里的市民吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490772
+    m_Localized: 'Phone: 我还以为一切都在自己的掌握之中。心想——如果看到了那个家伙，我们就直接回家。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490773
+    m_Localized: 'Phone: 我根本就没想到她有可能会见到尸体……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490774
+    m_Localized: 'Phone: 谢谢。你也要小心。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490775
+    m_Localized: 'Phone: 你好，邻居。谢谢你打电话过来。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490776
+    m_Localized: 'Phone: 说实话，我直到现在还心有余悸。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490777
+    m_Localized: 'Phone: 杀人凶手、士兵，以及——应急中心……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490778
+    m_Localized: 'Phone: 昨晚，他们甚至找上门来了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490779
+    m_Localized: 'Phone: 先是一边问里面都住了什么人、一边在平板电脑上写着些东西，然后……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490780
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490781
+    m_Localized: 'Phone: 其中的一个家伙就把我的一个住客给从房子里揪了出来、带走了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490782
+    m_Localized: 他们把你的住客带到哪里去了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490783
+    m_Localized: 幸好他们没把你的女儿带走
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490784
+    m_Localized: 其实……应急中心到底是个什么机构？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490785
+    m_Localized: 保重（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490786
+    m_Localized: 'Phone: 我也不知道。他们只说，要把人带回去检查。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490787
+    m_Localized: 'Phone: 我还以为有了士兵和应急中心的工作人员出来干预，事情很快就会有所好转。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490788
+    m_Localized: 'Phone: 早该知道……他们根本就不会帮助我们，也不会护送大家前往安全的地方。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490789
+    m_Localized: 'Phone: 我是绝对不会让这种事情发生的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490790
+    m_Localized: 'Phone: 想都别想。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490791
+    m_Localized: 'Phone: 要是那群混蛋敢动她一根手指头的话，我对天发誓——绝对会把他们给煎皮拆骨。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490792
+    m_Localized: 'Phone: 我也不太清楚。说实话，大家都没怎么听说过他们的事情。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490793
+    m_Localized: 'Phone: 只知道，这些家伙突然之间就冒了出来、表现出一副……一切尽在自己掌控之中、居高临下的态度。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490794
+    m_Localized: 'Phone: 不过，他们到底是怎么察觉到这一系列特征的？毕竟，寻常人类同样也有相同、或是相似的特质。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490795
+    m_Localized: 'Phone: 我感觉，他们应该还有什么东西瞒着大家……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490796
+    m_Localized: 'Phone: 谢谢。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490797
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490798
+    m_Localized: 'Phone: 真是做梦都想不到，我们现在竟然会活在人间的炼狱之中。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490799
+    m_Localized: 'Phone: 不光有能活活晒死人的太阳、有会大开杀戒的伪人，现在——还得应付应急中心……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490800
+    m_Localized: 'Phone: 问题一个接着一个地冒出来，却从来没办法得到任何的解答。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490801
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490802
+    m_Localized: 'Phone: 听好，邻居……我想郑重地拜托你一件事情。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490803
+    m_Localized: 'Phone: 要是我有什么三长两短的话，答应我——一定要帮忙照顾好我的女儿。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490804
+    m_Localized: 我答应你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490805
+    m_Localized: 我无法做出任何承诺
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490806
+    m_Localized: 'Phone: 谢谢，邻居。我就知道，自己可以信任你。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490807
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490808
+    m_Localized: 'Phone: 好啦，我得挂断了。一定要坚持下去，好吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490809
+    m_Localized: 'Phone: 我……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490810
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490811
+    m_Localized: 'Phone: 你真的不愿意向她伸出援手？唉……她还小，我不想让她就这样孤单一人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490812
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490813
+    m_Localized: 'Phone: 该死，我得挂断了……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490814
+    m_Localized: 'Phone: 再见，邻居。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490815
+    m_Localized: 'Phone: 你好，这里是安憩快送服务。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490816
+    m_Localized: 'Phone: 需要什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490817
+    m_Localized: 两罐劲能佳，谢谢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490818
+    m_Localized: 一罐咖啡，谢谢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490819
+    m_Localized: 改主意了，不订了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490820
+    m_Localized: 'Phone: 抱歉，我们无法为你下单。系统显示你还有一个未处理的订单。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490821
+    m_Localized: 'Phone: 因需求过大，每天每人只能下一次订单。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490822
+    m_Localized: 'Phone: 如需订购，请明日再来电。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490823
+    m_Localized: 'Phone: 感谢来电，再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490824
+    m_Localized: 'Phone: 好的，已为你下单。明晚送达。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490825
+    m_Localized: 'Phone: 好的，已为你下单。明晚送达。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490826
+    m_Localized: 'Phone: 你好，这里是联邦应急管理局医疗分部。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490827
+    m_Localized: 'Phone: 现提供伪人筛查程序咨询。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490829
+    m_Localized: 'Phone: 有何疑问？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490830
+    m_Localized: 牙齿有什么要注意的地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490831
+    m_Localized: 指甲有什么要注意的地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490832
+    m_Localized: 眼睛有什么要注意的地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490833
+    m_Localized: 谢谢，没有别的问题了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490834
+    m_Localized: 'Phone: 为确保检查的准确程度，建议避免吸食烟草产品。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490835
+    m_Localized: 'Phone: 抽烟很有可能对牙齿的状态造成不良影响，导致结果不可靠。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490836
+    m_Localized: 'Phone: 为确保检查的准确程度，还请不要在检查前洗手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490837
+    m_Localized: 'Phone: 水会冲去表面污垢，导致结果出现错误。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490838
+    m_Localized: 'Phone: 为确保检查的准确程度，还请避免饮用咖啡或其他包含咖啡碱的饮品。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490839
+    m_Localized: 'Phone: 不仅会导致失眠、心神不宁，还会引起双眼红肿。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490840
+    m_Localized: 'Phone: 非常感谢你配合应急中心的工作。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490841
+    m_Localized: 'Phone: 我们会记住你为解决目前面临的这个危机所作出的一切努力。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490842
+    m_Localized: 'Phone: 确保检查的准确程度，不单是在帮你自己，更是在帮助全人类。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490843
+    m_Localized: 'Phone: 你好，正在为你转接伪人清除专家……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490844
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490845
+    m_Localized: 'Phone: 喂？你是谁？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490846
+    m_Localized: 什么意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490847
+    m_Localized: 为什么需要知道我的身份？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490848
+    m_Localized: 'Phone: 明白了……你无法立即承认自己是人类……说明伪人灵体已在你体内扎根'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490849
+    m_Localized: 'Phone: 仔细听，你时间不多了'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490850
+    m_Localized: 'Phone: 请告诉我：你是否常在厨房留一片面包？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490851
+    m_Localized: 没有？为什么这么做？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490852
+    m_Localized: 一片面包？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490853
+    m_Localized: 'Phone: 这是驱除你体内伪人灵的仪式'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490854
+    m_Localized: 'Phone: 好吧算了。仔细听，你时间不多了'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490855
+    m_Localized: 'Phone: 请告诉我：你是否常在厨房留一片面包？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490856
+    m_Localized: 没有？为什么这么做？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490857
+    m_Localized: 一片面包？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490858
+    m_Localized: 'Phone: 哦……难怪。你与家灵关系不佳'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490859
+    m_Localized: 'Phone: 所以伪人灵才趁虚而入。但有救'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490860
+    m_Localized: 'Phone: 你家有个人电脑吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490861
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490862
+    m_Localized: 个人什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490863
+    m_Localized: 'Phone: 你从不供奉家灵？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490864
+    m_Localized: 'Phone: 难怪被伪人灵盯上'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490865
+    m_Localized: 'Phone: 你家有电脑吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490866
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490867
+    m_Localized: 你说电什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490868
+    m_Localized: 'Phone: 明白了。看来Alt+F4方案行不通……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490869
+    m_Localized: 'Phone: 好吧，那你——有没有吃过蘑菇？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490870
+    m_Localized: 有时候会喝点儿康普茶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490871
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490872
+    m_Localized: 'Phone: 你真的不知道电脑是什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490873
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490874
+    m_Localized: 'Phone: 好吧。换个问题：你有没有服用药物？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490875
+    m_Localized: 有时候会喝点儿康普茶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490876
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490877
+    m_Localized: 'Phone: 糟糕……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490878
+    m_Localized: 'Phone: 不要再喝了！康普茶是种古老的邪恶之物……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490879
+    m_Localized: 'Phone: 喝了这种茶，菌丝体在你的体内生长。正因如此，伪人这种的邪灵才会有机可乘，把你当作傀儡来操控。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490880
+    m_Localized: 'Phone: 如果你的记忆被触及，将会造成无法挽救的后果。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490881
+    m_Localized: 'Phone: 它们不仅能消除记忆，甚至……还能一遍又一遍地读取、进而改变你作出的每一个抉择。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490882
+    m_Localized: 'Phone: 最可怕的是，你被控制了，自己还不知道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490883
+    m_Localized: 'Phone: 最后一个问题：你家中是否曾发生流血事件？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490884
+    m_Localized: 发生过
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490885
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490886
+    m_Localized: 'Phone: 不要再喝了！康普茶是种古老的邪恶之物……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490887
+    m_Localized: 'Phone: 喝了这种茶，菌丝体在你的体内生长。正因如此，伪人这种的邪灵才会有机可乘，把你当作傀儡来操控。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490888
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490889
+    m_Localized: 'Phone: 最后的问题：你家中是否曾发生流血事件？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490890
+    m_Localized: 发生过
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490891
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490892
+    m_Localized: 'Phone: 啊，这就说得通了……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490893
+    m_Localized: 'Phone: 并非伪人灵体，而是亡者的游魂。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490894
+    m_Localized: 'Phone: 驱逐游魂并非我的专业范畴。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490895
+    m_Localized: 'Phone: 你需要找驱魔师。他们会帮忙。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490896
+    m_Localized: 'Phone: 恐怕我无能为力了。再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490897
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490898
+    m_Localized: 'Phone: 你的伪人清除服务已完成。感谢使用。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490899
+    m_Localized: 'Phone: 稍后将收取咨询费用。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490900
+    m_Localized: 费用？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490901
+    m_Localized: 这不是免费的吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490902
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490903
+    m_Localized: 'Phone: 既然如此，我恐怕无法继续提供帮助。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490904
+    m_Localized: 'Phone: 本次服务即将终止。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490905
+    m_Localized: 'Phone: 请别忘了给予五星好评。保重。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490906
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490907
+    m_Localized: 'Phone: 你的伪人清除服务已完成。感谢使用。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490908
+    m_Localized: 'Phone: 稍后将收取咨询费用。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490909
+    m_Localized: 费用？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490910
+    m_Localized: 这不是免费的吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490911
+    m_Localized: 'Phone: 你没听错。我们的清除专家也要赚钱吃饭。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490912
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490913
+    m_Localized: 'Phone: 请为本次服务评分：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490914
+    m_Localized: 五星好评！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684992
+    m_Localized: 十分满意
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684993
+    m_Localized: 去你妈的诈骗犯
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684994
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684995
+    m_Localized: 'Phone: 广告细则已注明通话将产生费用，请你仔细阅读。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684996
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684997
+    m_Localized: 'Phone: 请为本次服务评分：'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684998
+    m_Localized: 五星好评！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684999
+    m_Localized: 十分满意
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685000
+    m_Localized: 去你妈的诈骗犯
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685001
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685002
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685003
+    m_Localized: 'Phone: 感谢你的反馈，这对我们非常重要。再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610048
+    m_Localized: 'TV: 以上是最新消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610049
+    m_Localized: 'TV: 安憩现已开通快送服务，致电请拨{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610050
+    m_Localized: 'TV: 下午好，你正在收看新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610051
+    m_Localized: 'TV: 不仅是不断蔓延的大火，伪人也在持续破坏着我们的国家。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610052
+    m_Localized: 'TV: 鉴此，应急中心公布了一项全新的特征……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610053
+    m_Localized: 'TV: 接下来是关于伪人本质的特别报道。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113249218560
+    m_Localized: 'Phone: 你好？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995776
+    m_Localized: 你的妻子给了我这个号码
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995777
+    m_Localized: 你的妻子需要帮助
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995778
+    m_Localized: 'Phone: 好吧，然后呢？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995779
+    m_Localized: 她把自己的孩子都弄丢了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995780
+    m_Localized: 他们和你在一起吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995781
+    m_Localized: 'Phone: 没完没了了，是吧？总是要我来收拾残局。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995782
+    m_Localized: 'Phone: 而她，就只是坐在一旁、嘴里念叨着——"哎哟，我好累喔。"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995783
+    m_Localized: 'Phone: 一点都不带变的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995784
+    m_Localized: 她把自己的孩子都弄丢了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995785
+    m_Localized: 他们和你在一起吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995786
+    m_Localized: 'Phone: 对的、对的——你猜怎么样？她根本就不关心自己的亲生骨肉。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995787
+    m_Localized: 'Phone: 然而，却要我来替她收拾残局……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995788
+    m_Localized: 'Phone: 你有去看过她妈妈家吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995789
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995790
+    m_Localized: 你可以过来接她离开吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995791
+    m_Localized: 'Phone: 没有。他们竟然没有跟她在一起？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995792
+    m_Localized: 'Phone: 不出所料。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995793
+    m_Localized: 'Phone: 你有去看过她妈妈家吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995794
+    m_Localized: 没有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995795
+    m_Localized: 你可以过来接她离开吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995796
+    m_Localized: 'Phone: 没有。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995797
+    m_Localized: 'Phone: 也许，的确会在那里。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995798
+    m_Localized: 'Phone: 不过，我可不会去看。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995799
+    m_Localized: 'Phone: 让她自己去吧。问问她——到底是什么样的母亲，才会把自己的亲生骨肉尽数抛下、不闻不问。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995800
+    m_Localized: 你们之间的事情，麻烦自己去解决
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995801
+    m_Localized: 总而言之，我会告诉她你还活着、并且在等她回去
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995802
+    m_Localized: 'Phone: 让她自己回来。搞什么鬼……整得自己像个公主一样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995803
+    m_Localized: 'Phone: 又不是瘸了，对吧？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995804
+    m_Localized: 你们之间的事情，麻烦自己去解决
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995805
+    m_Localized: 总而言之，我会告诉她你还活着、并且在等她回去
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995806
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995807
+    m_Localized: 'Phone: 既然如此，你又为何要拨打这通电话？难道，是想解救"某个"身处困境的女子？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995808
+    m_Localized: 'Phone: 爱怎样就怎样好了。不过，记好——无论你做了些什么，她都不会感恩戴德。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995809
+    m_Localized: 'Phone: 不要再来烦我了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995810
+    m_Localized: 'Phone: 总而言之，我会告诉她你还活着、并且在等她回去'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995811
+    m_Localized: 'Phone: 没有这个必要——半点意义没有。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995812
+    m_Localized: 'Phone: 我们根本就不在乎彼此的死活。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995813
+    m_Localized: 'Phone: 归根到底，我完全无法理解她为什么会把你给扯进来。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995814
+    m_Localized: 'Phone: 无所谓了……保重——希望你们过得开心。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995815
+    m_Localized: 'Phone: 你相信死亡吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995816
+    m_Localized: 你的丈夫要我打给你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995817
+    m_Localized: 不要再传教了，之所以会打给你、是因为你的丈夫
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995818
+    m_Localized: 'Phone: 蛤——我的丈夫？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995819
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995820
+    m_Localized: 'Phone: 他做了一些令我无法原谅的事情……我并不想听到关于他的任何消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995821
+    m_Localized: 他想让我转告你——他对自己的所作所为感到非常抱歉
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995822
+    m_Localized: 他想让我转告你——赶紧去死吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995823
+    m_Localized: 'Phone: 我的丈夫？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995824
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995825
+    m_Localized: 'Phone: 他做了一些令我无法原谅的事情……我并不想听到关于他的任何消息。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995826
+    m_Localized: 他想让我转告你——他对自己的所作所为感到非常抱歉
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995827
+    m_Localized: 他想让我转告你——赶紧去死吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995828
+    m_Localized: 'Phone: 哈……"感到非常抱歉"？！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995829
+    m_Localized: 'Phone: 真假？没完没了了是吧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995830
+    m_Localized: 'Phone: 你猜怎么样？他已经不是第一次去找别人来帮自己道歉了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995831
+    m_Localized: 'Phone: 你知道他为什么不敢亲自打电话给我吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995832
+    m_Localized: 'Phone: 非常简单……他根本就没有勇气去面对、去接受自己做出的事情。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995833
+    m_Localized: 'Phone: 他还在妄想自己能弥补一切、回到从前。然而，人生没有重演——谁也无法让时光倒流。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995834
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995835
+    m_Localized: 'Phone: 我现在过得快乐多了，有一群理解我、支持我的人陪在身边。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995836
+    m_Localized: 你……真的认为一群狂热分子能理解自己？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995837
+    m_Localized: 归根到底，你为什么选择加入一个邪教？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995838
+    m_Localized: 随你便吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995839
+    m_Localized: 'Phone: 不管你怎么称呼……现在，他们是我的家人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995840
+    m_Localized: 'Phone: 我们有共同的信仰——我们知道死亡将至。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995841
+    m_Localized: 'Phone: 为我们带来安宁、而非痛苦。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995842
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995843
+    m_Localized: 'Phone: 保重。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995844
+    m_Localized: 'Phone: 我们有一致的见解——我们深信死亡将至。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995845
+    m_Localized: 'Phone: 虽然听起来很奇怪，不过——死亡并不会带来悲伤、而是快乐。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995846
+    m_Localized: 'Phone: 终结世间一切疾苦，于安宁中收获幸福。相信……你也应该经历过一些劫难，对吧？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995847
+    m_Localized: 'Phone: 也许，总有一天你会明白、开始以与我们相同的方式看待万物。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995848
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995849
+    m_Localized: 'Phone: 保重。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995850
+    m_Localized: 'Phone: 非常感谢你的理解。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995851
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995852
+    m_Localized: 'Phone: 保重。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995853
+    m_Localized: 'Phone: 你好，请问哪位？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995854
+    m_Localized: 你好，你弟弟给了我这个号码
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995855
+    m_Localized: 你能不能帮帮你弟弟？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995856
+    m_Localized: 'Phone: 弟弟？我根本就没有……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995857
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995858
+    m_Localized: 'Phone: 我知道了——你是在说我爸那个儿子，对吧？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995859
+    m_Localized: 'Phone: 等等……既然如此，你又是谁，他为什么会和你在一起？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995860
+    m_Localized: 他的父母不知所踪了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995861
+    m_Localized: 他来我这里寻求庇护
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995862
+    m_Localized: 'Phone: 不知所踪？怎么会这样？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995863
+    m_Localized: 'Phone: 难道……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995864
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995865
+    m_Localized: 'Phone: 该死……怎么可能——他们死了？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995866
+    m_Localized: 我不知道
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995867
+    m_Localized: 极有可能
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995868
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995869
+    m_Localized: 'Phone: 寻求庇护？要是我没记错的话，他不是和自己的父母住在一起吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995870
+    m_Localized: 'Phone: 难道……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995871
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995872
+    m_Localized: 'Phone: 该死……怎么可能——他们死了？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995873
+    m_Localized: 我不知道
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995874
+    m_Localized: 极有可能
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995875
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995876
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995877
+    m_Localized: 'Phone: 天啊……到底出什么事了？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995878
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995879
+    m_Localized: 'Phone: 我可以收留他——就这么告诉他，他知道我住哪。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995880
+    m_Localized: 'Phone: 还有……非常感谢你向他伸出援手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995881
+    m_Localized: 'Phone: 再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995882
+    m_Localized: 'Phone: 你好，哪位？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995883
+    m_Localized: 你妻子和她的妹妹在我这里
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995884
+    m_Localized: 你的妻子给了我这个号码
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995885
+    m_Localized: 'Phone: 你……是想要索取赎金吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995886
+    m_Localized: 'Phone: 我本就已经一无所有。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995887
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995888
+    m_Localized: 'Phone: 看来，很快也会变成孤家寡人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995889
+    m_Localized: 你在说些什么？你怎么回事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995890
+    m_Localized: 你的妻子很好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995891
+    m_Localized: 'Phone: 求求你告诉我她没事。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995892
+    m_Localized: 'Phone: 我的妻子是个非常坚强的人、能克服万难，甚至还会尽己所能帮助沿途每一个有需要的人！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995893
+    m_Localized: 'Phone: 而我……大概没救了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995894
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995895
+    m_Localized: 'Phone: 恐怕……时日无多了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995896
+    m_Localized: 你在说些什么？你是怎么一回事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995897
+    m_Localized: 你的妻子很好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995898
+    m_Localized: 'Phone: 我……我已经再也没有办法继续承受下去了。灼热的太阳、狡诈的伪人、凶残的暴徒——太可怕了。我无法动弹。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995899
+    m_Localized: 'Phone: 我……我只想结束这一切。我只剩下一条出路了……你能明白我的意思吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995900
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995901
+    m_Localized: 'Phone: 告诉我的妻子——我很爱她。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995902
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995903
+    m_Localized: 'Phone: 等等……还是什么都别说吧。我不希望她来找我。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995904
+    m_Localized: 'Phone: 我不想让她知道——自己抛下她走了……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995905
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995906
+    m_Localized: 'Phone: 谢谢你能打给我……谢谢你能听下去。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995907
+    m_Localized: 'Phone: 再见……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995908
+    m_Localized: 'Phone: 她应该还在照顾自己的姊妹吧，总是不懂得什么时候该去放手……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995909
+    m_Localized: 'Phone: 她很不幸，身边尽是一些软弱、无能之人。因此，我选择了离开、不再去拖累她。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995910
+    m_Localized: 'Phone: 应急中心接待处——你好，请问有什么需要吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995911
+    m_Localized: 我这里住了一名女性……说自己的丈夫是应急中心的工作人员
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995912
+    m_Localized: 我这里住了一名利他主义者……说想要成为你们的一员
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995913
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995914
+    m_Localized: 'Phone: 好的，不过……这有什么问题吗？我不是很确定该如何帮你。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995915
+    m_Localized: 'Phone: 前提是……你没有威胁我的话。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995916
+    m_Localized: ……我就是在威胁你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995917
+    m_Localized: 她之前曾在边境工作，想要成为你们的一员
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995918
+    m_Localized: 'Phone: （你听到对方大声地叹了一口气）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995919
+    m_Localized: 'Phone: 你也是个激进分子，对吧？一天到晚抱怨这、抱怨那。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995920
+    m_Localized: 'Phone: 不要浪费我们的时间。此刻，真正有需要的市民可能正尝试接通、寻求帮助。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995921
+    m_Localized: 'Phone: 或许正有伪人试图闯进某人家里、甚至更糟——他们说不定会因为你的这通电话白白丧命。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995922
+    m_Localized: 'Phone: 再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995923
+    m_Localized: 'Phone: 好的。她应该知道这份工作……并不简单，对吧？她真的做好准备了吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995924
+    m_Localized: 'Phone: 要是没有问题的话，就先让她去填写31-G表格——一式三份。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995925
+    m_Localized: 'Phone: 然后，通过体检……接着，再去填写……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995926
+    m_Localized: 'Phone: （你挂断了电话——你也不知道自己为什么要帮这名女性做这些乱七八糟的事情）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995927
+    m_Localized: 'Phone: 她想要申请什么职位呢？希望不是主管之类的吧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995928
+    m_Localized: 'Phone: 今天已经有两个人这样说了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995929
+    m_Localized: 主管
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995930
+    m_Localized: 追踪者——或者，斥候兵之类的
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995931
+    m_Localized: 'Phone: 妈的……不要再打这些整人电话啦。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995932
+    m_Localized: 'Phone: 如果你占用着这条线路，其他有需要的人就无法接通，也许此刻正有人遭到伪人的毒手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995933
+    m_Localized: 'Phone: 为你愚蠢且又不合时宜的玩笑负起责任来吧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995934
+    m_Localized: 'Phone: （对方挂断了电话。真的假的？）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995935
+    m_Localized: 'Phone: 我们并没有这样的职位空缺。我们需要的是流行病学的专家以及具备资质的科学家、研究者。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995936
+    m_Localized: 'Phone: 你的这位好友……恐怕并不适合。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995937
+    m_Localized: 'Phone: 不如，这样好了——鉴于情况瞬息万变，一周之后再打来吧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995938
+    m_Localized: 'Phone: 我想，到时应该会有适合……怎么说来着？对了——利他主义者的职位。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995939
+    m_Localized: 'Phone: 苹果的构造——顶盖、蘑菇之地和纸张。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995940
+    m_Localized: 'Phone: 畏惧……蘑菇……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995941
+    m_Localized: 'Phone: 虽然如此……美妙……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995942
+    m_Localized: 'Phone: 它们……遇到……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995943
+    m_Localized: 'Phone: 只会剩下泪水，以及离别的厄运。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995944
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995945
+    m_Localized: 'Phone: 检查她的呼吸。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995946
+    m_Localized: 'Phone: 为何不予回复？我希望能死去。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995947
+    m_Localized: 'Phone: （对方挂断了电话。这……与你想的不太一样。）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995948
+    m_Localized: 'Phone: 还请注意，目前……不管是坐飞机、抑或是搭火车，都无法抵达我们的国家。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995949
+    m_Localized: 'Phone: 你好，请问有什么需要吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995950
+    m_Localized: 我想把一名游客给送回家
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995951
+    m_Localized: 为何不能搭火车？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995952
+    m_Localized: 'Phone: 建议等到航班恢复运营后再出发。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995953
+    m_Localized: 'Phone: 虽说渡轮还在正常行驶，然而并不安全——夜间台风来袭的风险太高了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995954
+    m_Localized: 'Phone: 再者，海水会将阳光反射到船上……水手无法坚持太久。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995955
+    m_Localized: 好吧……既然如此，我到底该怎么把这个可怜的家伙给送回家？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995956
+    m_Localized: 他现在住在我家。也许……你们可以接他过去？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995957
+    m_Localized: 'Phone: 轨道因受热而膨胀，白天行驶太过危险。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995958
+    m_Localized: 'Phone: 也就是说，火车只会在夜间运行——因此，根本走不了太远。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995959
+    m_Localized: 'Phone: 否则，就得进行数次转乘。建议等到航班恢复运营后再出发。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995960
+    m_Localized: 好吧……既然如此，我到底该怎么把这个可怜的家伙给送回家？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995961
+    m_Localized: 他现在住在我家。也许……你们可以接他过去？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995962
+    m_Localized: 'Phone: 只能继续耐心等待。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995963
+    m_Localized: 'Phone: 目前，我们也无能为力了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995964
+    m_Localized: 他甚至不会说我们的语言
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995965
+    m_Localized: 妈的，这也不行、那也不行——要你们来有什么用？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995966
+    m_Localized: 'Phone: 我们这里没有旅社。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995967
+    m_Localized: 'Phone: 我们也无能为力了。我们正在努力解决这个问题——现在，处于这种状况的人并不止他一个。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995968
+    m_Localized: 他甚至不会说我们的语言
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995969
+    m_Localized: 妈的，这也不行、那也不行——要你们来有什么用？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995970
+    m_Localized: 'Phone: 我们的员工已经忙得四脚朝天了。想必你也已经听说了，大使馆的预算遭到了大幅的削减。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995971
+    m_Localized: 'Phone: 我们已经在尽己所能了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995972
+    m_Localized: 哇哦，你们还真是一群英雄呢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995973
+    m_Localized: 我最讨厌浑水摸鱼的家伙了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995974
+    m_Localized: 'Phone: 没有必要出口成脏。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995975
+    m_Localized: 'Phone: 我们没有办法把他给背回去。如果你真心想要帮忙，就自己来吧。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995976
+    m_Localized: 'Phone: 预算遭到了大幅的削减，我们之所以还在工作、全靠一股热情在撑着。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995977
+    m_Localized: 哇哦，你们还真是一群英雄呢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995978
+    m_Localized: 我最讨厌浑水摸鱼的家伙了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995979
+    m_Localized: 'Phone: 不喜欢我们的处理方式？好啊，你自己来呗。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995980
+    m_Localized: 'Phone: 祝你能顶着中午炎热的太阳、顺利地通过边境的伪人检查。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995981
+    m_Localized: 好吧，谢谢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995982
+    m_Localized: 去你的吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995983
+    m_Localized: 'Phone: 既然如此——你为什么在家里待着、无所事事，而不是辛勤工作？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995984
+    m_Localized: 'Phone: 不如……亲自过来给我们示范一下该如何去解决现在这一棘手的局面，怎样？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995985
+    m_Localized: 'Phone: 要是有专家亲临指导的话，我们可是求之不得。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995986
+    m_Localized: 好吧，谢谢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995987
+    m_Localized: 去你的吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995988
+    m_Localized: 'Phone: 抱歉，向你发了牢骚。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995989
+    m_Localized: 'Phone: 来电倾泻怒火的人……并不是只有你一个。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995990
+    m_Localized: 'Phone: 祝你过得愉快。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995991
+    m_Localized: 'Phone: 祝你一路平安。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995992
+    m_Localized: 'Phone: 我真心希望你偶尔可以出门旅行一下。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995993
+    m_Localized: 'Phone: 绝对会有所帮助。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995994
+    m_Localized: 通往其他房间的窗户。以前，人们会为了省电而这样做——让一个房间的灯光流泻到其他房间里去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995995
+    m_Localized: 后来，又把它封了起来……不过，却只是封了一侧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995996
+    m_Localized: 我不会往那边看——再也不会。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995997
+    m_Localized: 我不喜欢睡在床头柜旁边，总会勾起一些糟糕的回忆……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995998
+    m_Localized: 不是很清楚为何不在角落——我记得好像是有规定的吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995999
+    m_Localized: 不过……爸爸从来都不会把这些东西放在眼里就对了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996000
+    m_Localized: 托托——这是我小时候拥有的唯一一件玩具。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996001
+    m_Localized: 非要说的话……还有我们以前拿来扑打草丛的树枝就是了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996002
+    m_Localized: 奶奶会把每个橱柜都塞得满满当当，全是餐具。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996003
+    m_Localized: 每逢假日、节日，就会把最好看的那一套给端出来。现在……谁还需要这种东西呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996004
+    m_Localized: 说实话，一个人待在家里反而会更加自在。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996005
+    m_Localized: 甚至可以毫无顾忌、大声地自言自语。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996006
+    m_Localized: 某种要读者在人群中找出某个特定角色的杂志……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996007
+    m_Localized: 又有什么意义呢？真心希望能放我一个人静一静……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996008
+    m_Localized: 以前，他这样说过——"等我死了之后，你就自己决定要不要打开这个盒子吧。"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996009
+    m_Localized: 一转眼已经过去了十五年，而我还是没办法拿定主意。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295719612416
+    m_Localized: 感到寂寞难耐？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583936
+    m_Localized: 没可以倾诉？总是心烦意乱？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583937
+    m_Localized: 既然如此——不妨来试试电话乐透吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583938
+    m_Localized: 只要拨打891-533，我们就会立即为你配对最为合适的聊天对象。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583939
+    m_Localized: 你的女儿还好吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583940
+    m_Localized: 是谁下的手？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583941
+    m_Localized: 一定要小心（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583942
+    m_Localized: 你的女儿还好吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583943
+    m_Localized: 是谁下的手？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583944
+    m_Localized: 一定要小心（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583945
+    m_Localized: 他们把你的住客带到哪里去了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583946
+    m_Localized: 幸好他们没把你的女儿带走
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583947
+    m_Localized: 应急中心是什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583948
+    m_Localized: 保重（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583949
+    m_Localized: 他们把你的住客带到哪里去了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583950
+    m_Localized: 幸好他们没把你的女儿带走
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583951
+    m_Localized: 应急中心是什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583952
+    m_Localized: 保重（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583953
+    m_Localized: 他们把你的住客带到哪里去了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583954
+    m_Localized: 幸好他们没把你的女儿带走
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583955
+    m_Localized: 应急中心是什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583956
+    m_Localized: 保重（挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583957
+    m_Localized: 'Phone: 你好。你已拨通应急中心的服务电话——请问有什么需要吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583958
+    m_Localized: 蛤——应急中心？什么东西？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583959
+    m_Localized: 你在说什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583960
+    m_Localized: 'Phone: （她还没来得及说完，电话的那头就传来了一股震耳欲聋的怒吼）'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583961
+    m_Localized: 'Phone: 你他妈是不是傻！赶紧把电话挂断！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583962
+    m_Localized: 我该如何……处理自己的腋窝？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583963
+    m_Localized: 我该如何……处理自己的耳朵？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583964
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583965
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583966
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583967
+    m_Localized: 'Phone: 为了确保检查的准确程度，一定要避免沾水。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583968
+    m_Localized: 'Phone: 既不能洗澡、也不能洗手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583969
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583970
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583971
+    m_Localized: 'Phone: 耳朵？等等……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583972
+    m_Localized: 'Phone: 我们需要与管理层进行讨论，稍后再告知你结果。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583973
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583974
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583975
+    m_Localized: 'Phone: 好吧。既然如此，请问——你有在食用菌类吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583976
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583977
+    m_Localized: 'Phone: 好了，接下来的将会是最后一个问题——你的家里……见过血吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583978
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583979
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778240
+    m_Localized: 'Phone: 你好。你已接通电话乐透。我们会立即为你配对最为合适的聊天对象。稍等。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778241
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778242
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778243
+    m_Localized: 'Phone: 你好。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778244
+    m_Localized: 你好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778245
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778246
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778247
+    m_Localized: 'Phone: 你好？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778248
+    m_Localized: 你好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778249
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778250
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778251
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778252
+    m_Localized: 'Phone: 好像……没人？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778253
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778254
+    m_Localized: 'Phone: 我……我想找人聊聊。最近，实在是发生了太多的事情……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778255
+    m_Localized: 'Phone: 我试过联络自己的好友还有认识的人，却都完全没有回应……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778256
+    m_Localized: 'Phone: 然后，就听到了电话乐透的广告。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778257
+    m_Localized: 'Phone: 虽然……也许并不是什么倾诉心事的最佳场所，不过也比没有要强。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778258
+    m_Localized: 'Phone: 我也知道，把自己的问题强加在一个陌生人的身上是不对的……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778259
+    m_Localized: 'Phone: 你应该无法想像吧——只要能与人说说话、聊聊天，对我来说就已经能有很大的帮助了。会让我感觉……好很多。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778260
+    m_Localized: 'Phone: 你愿意听我说说吗？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778261
+    m_Localized: 好吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778262
+    m_Localized: 我不想聊太多
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778263
+    m_Localized: 'Phone: 哎呀……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778264
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778265
+    m_Localized: 'Phone: 好吧。不好意思，打扰你了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778266
+    m_Localized: 'Phone: 再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778267
+    m_Localized: 'Phone: 谢谢——真的非常谢谢你！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778268
+    m_Localized: 'Phone: 我想……要是能先跟你介绍一下自己的话，应该会比较容易开启接下来的话题。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778269
+    m_Localized: 'Phone: 你想知道些什么？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778270
+    m_Localized: 你住在哪里？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778271
+    m_Localized: 你为什么选择打给电话乐透，而不是自己的亲朋、好友？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778272
+    m_Localized: 'Phone: 其实……我现在离家很远。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778273
+    m_Localized: 'Phone: 为了躲避这股异常的酷热，我找了个自己所能找到的、最为寒冷的地方。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778274
+    m_Localized: 'Phone: 这里非常偏僻，而且……寒风刺骨。几乎什么东西都长不出来，就连野草也不例外。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778275
+    m_Localized: 'Phone: 相对来说还是比较安全的，而且前不着村、后不着店。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778276
+    m_Localized: 'Phone: 话说回来，要是九层地狱里面有什么地方是比较凉快的话……也许，并不会差到哪里去。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778277
+    m_Localized: 'Phone: 说来也是有趣——我之前特别讨厌寒冷。然而，现在……感觉就像是一种恩赐。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778278
+    m_Localized: 'Phone: 虽说，我很想要相信太阳的温度会逐渐降低、一切终将会结束——'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778279
+    m_Localized: 'Phone: 然而，我却已经失去了对美好结局的希冀……如果太阳真的停止爆发了，之后又会发生什么事情呢？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778280
+    m_Localized: 'Phone: 譬如——伪人很有可能不会消失。它们很有可能会取代我们的亲朋好友，而我们却无从得知……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778281
+    m_Localized: 你为什么选择独自一人、踏上旅程？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778282
+    m_Localized: 你想念自己的家乡吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778283
+    m_Localized: 'Phone: 虽然我也很想打给大家，不过……根本就不知道该如何联络上他们……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778284
+    m_Localized: 'Phone: 事情是这样的——灾变开始之后，我就决定要离开自己的家乡、飞到一个热浪无法侵袭的地方。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778285
+    m_Localized: 'Phone: 我答应过大家，会定期打电话回去跟他们报告一下各自的近况、看看彼此过得还好不好……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778286
+    m_Localized: 'Phone: 然而，抵达之后……却无法联络上任何人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778287
+    m_Localized: 'Phone: 很快，我就得知了原因——他们的线路被切断了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778288
+    m_Localized: 'Phone: 整座城市都可以说是与世隔绝了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778289
+    m_Localized: 'Phone: 没错，我在这里是很安全。只是，我的亲朋、好友却……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778290
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778291
+    m_Localized: 'Phone: 一想到有可能再也见不到这些我在乎的人了，我就特别特别害怕。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778292
+    m_Localized: 'Phone: 我很怀念过去波澜不惊的日子——生活简单而美好，未来也充满期待。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778293
+    m_Localized: 你为什么一个人踏上旅程？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778294
+    m_Localized: 你想念自己的家乡吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778295
+    m_Localized: 'Phone: 其实，我也不想这样……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778296
+    m_Localized: 'Phone: 我的死党本来想要跟我一起出发。结果，却没办法……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778297
+    m_Localized: 'Phone: 因为，他没有出行所需的文件。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778298
+    m_Localized: 'Phone: 再说……灾变开始之后，就联络不上大家了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778299
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778300
+    m_Localized: 'Phone: 他特别崩溃……后悔没早点准备。我想帮却无能为力。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778301
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778302
+    m_Localized: 'Phone: 我想念他们。不是城市，是留在那里的人……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778303
+    m_Localized: 'Phone: 最想我最好的朋友……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778304
+    m_Localized: 'Phone: 他没能跟我走。我保证会常联系，可是……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778305
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778306
+    m_Localized: 'Phone: 我觉得他爱过我。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778307
+    m_Localized: 'Phone: 他那么在乎我，总是支持我，耐心听我说话。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778308
+    m_Localized: 'Phone: 后来发现我们互相喜欢。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778309
+    m_Localized: 'Phone: 我一直等他先表白，他却始终不敢开口。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778310
+    m_Localized: 'Phone: 再后来……灾难来了，再没时间说这些了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778311
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778312
+    m_Localized: 'Phone: 真该由我先说的啊……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778313
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778314
+    m_Localized: 'Phone: 现在你算了解我了。该你了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778315
+    m_Localized: 我不习惯跟人聊自己的事……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778316
+    m_Localized: 都不知道从哪儿说起……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778317
+    m_Localized: 'Phone: 不用害羞，说吧，我准备好听你讲了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778318
+    m_Localized: 其实……我没有什么亲近的人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778319
+    m_Localized: 我……很孤独。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778320
+    m_Localized: 'Phone: 没关系，聊聊自己没什么不好。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972544
+    m_Localized: 其实……我没有什么亲近的人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972545
+    m_Localized: 我……很孤独。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972546
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972547
+    m_Localized: 我……和父亲关系很差
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972548
+    m_Localized: 我……我恨他
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972549
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972550
+    m_Localized: 我早就不是这个家的一份子了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972551
+    m_Localized: 我从那天起，就不是他儿子了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972555
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972556
+    m_Localized: 我手里只剩下这栋该死的房子
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972557
+    m_Localized: 他们留给我的只有这栋该死的房子
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972558
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972559
+    m_Localized: 'Phone: 真为你难过……看来房子落到你手里了，你也不怎么高兴。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972560
+    m_Localized: 是啊
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972561
+    m_Localized: 不如当初一把火烧干净
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972562
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972563
+    m_Localized: 'Phone: 我……我无法想象你到底经历了什么……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972564
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972565
+    m_Localized: 'Phone: 我实在想象不出来你有多恨你父亲……竟然恨到想一把火烧了房子……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972566
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972567
+    m_Localized: 'Phone: 再次感谢你听我说这些。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972568
+    m_Localized: 'Phone: 再见。请保重。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972569
+    m_Localized: 'Phone: 喂？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972570
+    m_Localized: 你好，能请你女儿接电话吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972571
+    m_Localized: 你好，你女儿能来和她朋友玩吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972572
+    m_Localized: 'Phone: 什么？你找她有什么事？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972573
+    m_Localized: 她朋友邀请她过来玩……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972574
+    m_Localized: 有个女孩子在我这儿……她爸爸去世了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972575
+    m_Localized: 'Phone: 他……他也是个……伪人？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972576
+    m_Localized: 也？什么意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972577
+    m_Localized: 你误会了，她爸爸是被一群疯子无缘无故烧死的
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972578
+    m_Localized: 'Phone: ……谁会无缘无故把人烧死啊？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972579
+    m_Localized: 'Phone: 看来，他的确是个伪人……就跟我们的宝贝女儿一样。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972580
+    m_Localized: 'Phone: 她也被烧死了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972581
+    m_Localized: 'Phone: 就在自己的幼儿园里。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972582
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972583
+    m_Localized: 'Phone: 起初，我痛苦得要命，想着死了算了。没有了她，我根本就活不下去。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972584
+    m_Localized: 'Phone: 幸好，我还有我丈夫，他帮着我挺了过来。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972585
+    m_Localized: 'Phone: 你也能挺过来的……还有，你收留的那个女孩也是。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972586
+    m_Localized: 'Phone: 你也知道……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972587
+    m_Localized: 'Phone: 正所谓——事出必有因。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972588
+    m_Localized: 'Phone: 她爸爸让人给烧死了……肯定不会是无缘无故的。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972589
+    m_Localized: 'Phone: 再怎么哭也没用。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972590
+    m_Localized: 'Phone: 还请……将这些话转告给她。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972591
+    m_Localized: 'Phone: 再见。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972592
+    m_Localized: 'Phone: 我们的宝贝女儿……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972593
+    m_Localized: 'Phone: 已经不在了……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972594
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972595
+    m_Localized: 'Phone: 我们别无选择，只得……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972596
+    m_Localized: 'Phone: 只得杀了她。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972597
+    m_Localized: 什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972598
+    m_Localized: （挂断电话）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972599
+    m_Localized: 'Phone: 我们杀了她。相信我，我们也是逼不得已。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972600
+    m_Localized: 'Phone: 每项特征都能对上……我丈夫坚持要下手。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972601
+    m_Localized: 你……竟然决定要杀掉自己的亲生骨肉？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972602
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972603
+    m_Localized: 'Phone: 不要对我评头论足！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972604
+    m_Localized: 'Phone: 她是个伪人——全部特征都能对上，绝对不可能会搞错！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972605
+    m_Localized: 妈的……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972606
+    m_Localized: 我能理解
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972607
+    m_Localized: 'Phone: 她是个伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972608
+    m_Localized: 'Phone: 各个特征都对上了……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972609
+    m_Localized: 'Phone: 我对她了如指掌。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972610
+    m_Localized: 'Phone: 立马就注意到了她身上的异常。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972611
+    m_Localized: 'Phone: 全部都能对上。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972612
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972613
+    m_Localized: 'Phone: 我告诉了自己的丈夫之后，他……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972614
+    m_Localized: 'Phone: 立即就解决了这个伪人。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972615
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972616
+    m_Localized: 'Phone: 起初，我对他恨之入骨，想要把他给杀了。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972617
+    m_Localized: 'Phone: 后来，我终于醒悟了……它，根本就不是我们的宝贝女儿。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972618
+    m_Localized: 'Phone: 我的丈夫使我明白了这点。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972619
+    m_Localized: 'Phone: 唯一的遗憾就是没来得及问那个冒名顶替东西，它究竟对我们的小孩做了什么……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972620
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972621
+    m_Localized: 'Phone: 抱歉。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972622
+    m_Localized: 'Phone: 不要再打电话过来了……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972623
+    m_Localized: 'Phone: 拜托……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972624
+    m_Localized: 'Phone: 我为什么要跟你解释这些？'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972625
+    m_Localized: 'Phone: 见鬼去吧！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972626
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972627
+    m_Localized: 'Phone: 但是……我还是很想她……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972628
+    m_Localized: 'Phone: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096192
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096193
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096194
+    m_Localized: 'TV: ……'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096195
+    m_Localized: 'TV: 接下来：将发布一份关于暂时停止人体遗体处理工作的新闻。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58690054376120320
+    m_Localized: 'TV: 安憩快送可配送，致电请拨{0}。'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803335401472
+    m_Localized: 两个猫罐头，谢谢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790080
+    m_Localized: 一包烟，谢谢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790081
+    m_Localized: 一罐康普茶，谢谢
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

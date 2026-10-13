@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92478d09144a28174064c4be6e1f7af, type: 3}
+  m_Name: LeftBumper
+  m_EditorClassIdentifier:
+  <KeyType>k__BackingField: 16
+  <Sprites>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 21300000, guid: 2fd4bb031f9906a4ebbba4b0db835254, type: 2}
+    - Key: 1
+      Value: {fileID: 21300000, guid: 2fd4bb031f9906a4ebbba4b0db835254, type: 2}
+    - Key: 2
+      Value: {fileID: 21300000, guid: b5e9caef3dd54764f969f8c3f174b64f, type: 2}
+    - Key: 3
+      Value: {fileID: 21300000, guid: b5e9caef3dd54764f969f8c3f174b64f, type: 2}
+    - Key: 4
+      Value: {fileID: 21300000, guid: b5e9caef3dd54764f969f8c3f174b64f, type: 2}

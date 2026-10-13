@@ -1,0 +1,1055 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_vi
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: vi
+  m_SharedData: {fileID: 11400000, guid: 887365d10d50d8d4a969d13498591929, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16302985216
+    m_Localized: Cửa Ra Vào
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Phòng Tắm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Phòng Khách
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Phòng Ngủ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Phòng Làm Việc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Nhà Bếp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Kho Chứa Đồ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Cửa Sổ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: Mình còn sung lắm, chưa muốn ngủ đâu!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: Chưa ngủ được. Lỡ có người tới tìm chỗ trú ẩn thì sao?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Chắc đêm nay không còn ai gõ cửa nữa đâu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: Hình như có ai vừa chết đêm qua...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Ngôn Ngữ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Âm Lượng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Thoát
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: Lưu và thoát ra desktop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Thoát ra menu mà không lưu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Mở
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Thôi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Bắt Đầu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: Hồn Ma, Da Người, Cốt {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: Uống bia xong thấy buồn ngủ quá. Đi ngủ thôi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Hắc Hải Ly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: Xã hội tàn rồi, nhưng làm lon bia lạnh vẫn cứ là phê.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: Hóa chất không chứ bổ béo gì. Nhưng uống vào được cái tỉnh táo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Cà Phê
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: Dạo này mình chả uống cà phê nóng nữa. Mà chắc ai cũng vậy thôi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: Tiếng Anh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Mở cửa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Bước vào
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Dùng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: Xem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Tầng Hầm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: Trong Nhà
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Điện Thoại
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Thuốc Lá (còn {0} điếu)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: Hút thuốc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Đóng ván
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Âm Lượng Tổng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Âm Nhạc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: Hiệu Ứng Âm Thanh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Lưu Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: Chơi từ đầu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Chơi tiếp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Lấy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Nấm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Đào
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Cái Hố
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Nựng mèo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Mèo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Cài đặt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Quay lại
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Màn Hình
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Nói chuyện
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Tử Thần
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Văn Bản
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Tạm Dừng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Trà Kombucha (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: Lâu rồi mới hút lại. Lần cuối hình như là... sau khi mọi người đi mất.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Thuốc Lá
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: Lưu game. Bản lưu này có hiệu lực kể cả khi bạn kết thúc ván chơi hiện tại.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: Loại nước mình thích nhất. Uống vào thấy tinh thần sảng khoái, minh mẫn hẳn. Làm mình nhớ lại hồi xưa, lúc đời còn đẹp.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Trà Kombucha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Thợ Mỏ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Toàn Màn Hình
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Cửa Sổ Toàn Màn Hình
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Cửa Sổ Phóng To
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Cửa Sổ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Đi ra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Cúp máy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Đóng tủ lạnh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Bỏ xuống [giữ nút]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Chạy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Làm gì thì làm, phải ráng phòng thân bằng mọi giá.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: "Thế giới loạn quá rồi... Nhưng chưa phải là hết.\nBiết đâu vẫn sống được..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: "Để lấy mấy tấm ván đóng lên cho chắc. Tình hình chỉ có\ntệ đi thôi... nhưng đến đâu thì hay đến đấy."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: "Bác\nhàng xóm"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: "PCTH\n(Số tổng đài)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: "Thầy trừ\nDị Khách"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Cà Phê
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Chắc hôm nay không còn tín hiệu phát sóng radio nào nữa đâu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Xem hướng dẫn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Đêm rồi không nên vào làm gì. Để sáng ra hẵng tính.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: Giờ này mà nhìn ra ngoài trời khéo mù cả mắt. Để tối rồi hé màn ra xem.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: Không còn thời gian cho việc này nữa đâu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: Không còn thời gian cho việc này nữa đâu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: Giờ này chắc chả có ai lang thang ngoài đường đâu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: Không còn thời gian cho việc này nữa đâu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: Nay uống thế là đủ rồi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: Vặn núm bên phải để dò tín hiệu. Cách làm là nhấp giữ chuột trái ở núm phải, rồi di chuyển con trỏ sang trái hoặc phải. Núm bên trái dùng để điều chỉnh âm lượng.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: Gỡ được thiết bị chặn sóng radio rồi. Mẹ cha cái lũ phá bĩnh!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: Đệt... Hư bố nó rồi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: Nếu vẫn chưa bắt được tín hiệu, hãy thử chuyển sang dải sóng khác. Nhấp chuột trái vào thanh ở giữa, rồi tiếp tục dò sóng bạn cần bằng núm phải.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Bạn có chắc là muốn thoát game không?\nTất cả tiến trình chưa lưu sẽ bị mất."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Bạn có chắc là muốn thoát game không?\nTiến trình của bạn sẽ được lưu lại."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Có
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: Không
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: gã điên thích quát người
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: bà già thần kinh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: Đường dây điện thoại bị cắt rồi, tới mùa thu mới có lại. Đành phải đợi thôi...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Trả lời
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Nghe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Dò tần số [xoay]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: Chuyển sang sóng FM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: Chuyển sang sóng AM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Độ Rung Của Gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Độ Nhạy Của Gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Độ Nhạy Của Gamepad Trong Phòng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Độ Nhạy Của Chuột
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Điều Khiển
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Lịch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: Ngày Uống Bia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: Ngày Xực Dưa Leo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: Ngày Gia Đình
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: "Ngày Nhận Thức\nViêm Kết Mạc"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: Ngày Thiếu Nhi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: "Ngày Nhân Viên\nThu Ngân"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: "Ngày Thế Giới\nBiết Ơn"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: Ngày Ngoại Giao
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: Ngày Hòa Giải
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: "Ngày Cối Xay Gió\nQuốc Gia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Lễ Hội Cuối Hè
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: Ngày
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: bà thầy bói
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: gã mặc áo amogus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: bà chị cõng xác chết
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Bộ sưu tập
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: Dù cũng muốn ăn lắm nhưng... thôi tạm thời cất vào tủ lạnh.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: Nấm gì mà lạ vậy... Sao lại mọc lên từ khoai tây thế này?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: Ăn rồi, táo này có vị vừa ngọt vừa chua...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Bia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Thức Ăn Cho Mèo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: Giảm   <sprite=0> xuống còn 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: bà chị u sầu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: Ngày Hiếu Khách
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#444444>Đã nhận</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#444444>Đã cho</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: gã mất mắt kỳ dị
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: tên đầu to trán dô
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: gã đeo kính để ria mép
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: con bé khóc nhè
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: cặp vợ chồng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: nhóc mặc áo thể thao
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: bà chị nhả khói phì phèo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: bà mẹ đẫy đà
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: tên mặc hoodie đen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: tên đội nón xanh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: gã chằn tinh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: ông gù
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: bà cô đeo kính mặc áo len
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: gã phê cần
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: cô cột sống bất ổn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: ông già vô gia cư
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: anh bị khâu miệng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: bà chị trầm cảm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: "Chồng chị\nsinh đôi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: "Vợ ông\ncục súc"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: Bạn bé gái
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Đưa bạn đến Xứ Nấm trong thời gian ngắn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: Đặt thành 12, theo hướng dẫn của Sách Nụ Cười.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: Giấy Triệu Tập
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: ông bác sĩ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: thằng ngồi xe lăn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: Vặn núm bên phải để dò tín hiệu. Cách làm là xoay cần analog bên phải của tay cầm theo hoặc ngược chiều kim đồng hồ. Núm bên trái dùng để điều chỉnh âm lượng.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: Nếu vẫn chưa bắt được tín hiệu, hãy thử chuyển sang dải sóng khác. Nhấn nút vai bên phải hoặc trái của tay cầm, rồi tiếp tục dò sóng bằng cần analog bên phải.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1   <sprite=1> trong vài ngày
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Cảm ơn bạn đã chơi!\n Bạn là người chính hiệu? Vậy nhớ cho game vào danh sách chờ nhé!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Hiệu Ứng Chạy Chữ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Thôi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: Hồi toàn bộ   <sprite=0>, nhưng hôm sau sẽ mất một   <sprite=1>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Bỏ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Dùng [giữ nút]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: ForRest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Số Điện Thoại
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: Ngày Thị Trấn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Ngày Nghe Đồn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Bỏ qua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: ông râu rậm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: con nhỏ đội nón
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: ông trọc mặc vét
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: bà chị ôm mèo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: bà xơ già cáu kỉnh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: ông cao như cây sào
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: ông tài xế taxi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: tên da lạnh mặc áo khoác
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: thằng đội khăn tím lịm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: bà chị mồm to
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: tên tà đạo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: gã thư sinh bị hoại thư
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: tên tà đạo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: tên máu bê bết
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: hai mẹ con
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: gã mập trần như nhộng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: gã mặc áo cán bộ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: ông da vàng luộm thuộm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: Chẳng còn sót lại một ai. Không lẽ... là do giấc mơ ư?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: Một cuộc sống giản dị, bình yên, mà không hề nhận ra bóng đêm bao trùm trước mắt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: Tiếng nổ vang trời xé toạc màn sương trắng đục, rồi từ trên đầu đám đông, một đôi cánh ám mùi tàn tro trỗi dậy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: 'Tầng hầm trở thành một vũ trụ tách biệt: những viên gạch bịt kín ô cửa sổ, tiếng người hòa lẫn tiếng đồng hồ tích tắc. Mặt trời lặn dần... nhưng còn đó nỗi thống khổ, đâu dễ gì xua tan.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: Lũ Dị Khách vốn ở đây tự đó giờ, ẩn trong hơi thở ấm nóng phả ra trong đêm tối, hay lời thì thầm ác ý sau lưng. Dẫu ánh sáng có quay về, bạn cũng chẳng bao giờ thấy được nữa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: Họ cầu cho sự yên ắng vĩnh hằng. Có lẽ lời thỉnh cầu đó đã được đáp ứng, vì ngoài kia, vạn vật đều chìm trong tĩnh lặng.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: Họ đưa bạn đi giữa tiếng còi inh ỏi, bỏ lại sau lưng mọi ký ức xưa. Giá mà bạn có thể quay đầu lần cuối, lấy tấm áp phích đi cùng.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: 'Khoảnh khắc hắn bước qua ngưỡng cửa, căn nhà bỗng chốc lặng ngắt như tờ. Giờ bạn chỉ còn là dư âm, những tiếng thì thầm hư ảo. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: Gặp ai bạn cũng ngỡ như thù địch. Nỗi sợ hãi làm mù mắt bạn, và những kẻ còn lại chỉ làm cho trót mọi việc bạn đã khơi mào.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: Rừng nấm mọc lên từ đất mẹ, dựng nên những thành phố mới mẻ, lạ lùng. Bạn vội vã cất bước, nhưng cánh cổng dẫn vào xứ ấy đã đóng sập.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: Tránh vỏ dưa, lại gặp vỏ dừa. Giờ đây trong mắt mọi người, bạn đã trở thành kẻ gieo rắc nỗi sợ kinh thiên.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: Bước một bước trĩu nặng qua lằn ranh, rồi mọi nỗi sợ của bạn bỗng chốc nhẹ tựa lông hồng. Thời gian chợt tan biến, chỉ còn lại cơn buốt giá như đang xoa dịu cõi lòng bạn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: "Chuyên gia\nthanh tẩy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: "Chị của\ncon ngoan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: "Chồng\nbà mẹ tồi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: "Quay Số\nTâm Tình"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: "PCTH\n(Số nội bộ)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: "Đại Sứ Quán\nNước Ngoài"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "1. Nhân gian tái thiết buổi hôm nay\nTầng hầm mọc nấm cao thành bầy\nSinh sôi nảy nở, nguy ngập tợn\nPhải tiêu diệt gọn, mồm nhai ngay.\n\n2. Kẻ mạnh nào đâu cần đón khách\nNấm vút cao hiển hách ngời ngời\nDưới Cây Táo Mọng, ngồi ngơi nghỉ\nTrái ngon, trái ngọt luôn gọi mời.\n\n3. Sẽ đến ngày ngươi phải khuất phục\nDưới hào quang thần nấm oai hùng\nĐồng hồ mãi chạy, chẳng lung lay\nNhanh chân hỡi bạn, kẻo tiêu tùng!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Bị khóa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Tăng tốc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: Khi thế giới trên kia dần tàn lụi, chỉ còn mình bạn cô độc dưới đống đổ nát của cuộc đời. Mọi tàn tích sẽ bị chôn vùi vĩnh viễn... yên giấc ngàn thu cùng bạn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: thằng cha giật giật
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: anh cuồng rock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: ông mặc sịp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: nhóc mặc áo khoác
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: bà chị mặc áo ống
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: gã não nhăn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: tên kỳ dị mặc áo ba lỗ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: tên da nổi mẩn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: nhóc mộng mơ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: gã lắm lông
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: bà chị xăm hình
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: gã da rám nắng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: tên tà đạo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: "Đảo Chiều Dọc (Chuột)\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Đảo Chiều Dọc (Gamepad)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

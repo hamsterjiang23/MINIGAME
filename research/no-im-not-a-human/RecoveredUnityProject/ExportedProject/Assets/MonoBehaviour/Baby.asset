@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5660d166e538661cb93e233cff01d6, type: 3}
+  m_Name: Baby
+  m_EditorClassIdentifier:
+  _endingType: 4
+  _videoClip: {fileID: 32900000, guid: 17aefa541bb3c284db2b5e75ecd2187a, type: 3}
+  _subtitles:
+    _endingSubtitles:
+    - _nodeName: Rock_ending_1
+      _duration: 21
+      _beforeNodeDelay: 3
+    - _nodeName: Rock_ending_2
+      _duration: 18
+      _beforeNodeDelay: 2
+    - _nodeName: Rock_ending_3
+      _duration: 14
+      _beforeNodeDelay: 3
+    - _nodeName: Rock_ending_4
+      _duration: 8
+      _beforeNodeDelay: 0
+    - _nodeName: Rock_ending_5
+      _duration: 18
+      _beforeNodeDelay: 10
+    - _nodeName: Rock_ending_6
+      _duration: 20
+      _beforeNodeDelay: 4
+    - _nodeName: Rock_ending_7
+      _duration: 18
+      _beforeNodeDelay: 4
+  _music: -718864496
+  _slides:
+  - _animationData:
+      <CyclingType>k__BackingField: 2
+      <Frames>k__BackingField:
+      - {fileID: 0}
+      <FramesPerSecond>k__BackingField: 0
+    _textNodeName: Chmo_Eyes
+    _sound:
+      _useSound: 0
+      _isLooped: 0
+      _sound: 0
+  _gachaData:
+    <SpoilerImages>k__BackingField:
+    - {fileID: 21300000, guid: 77d8329291595984f8bc5a8b0d80e845, type: 2}
+    - {fileID: 21300000, guid: 0e1738f7f7de2294da27dcfa1f4511e2, type: 2}
+    - {fileID: 21300000, guid: 166f63e74c27504488fdd3eb941ea0f5, type: 2}
+    _description:
+      m_TableReference:
+        m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+      m_TableEntryReference:
+        m_KeyId: 118165490289352704
+        m_Key:
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

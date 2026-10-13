@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95acbde1c50c2048dcccb570ff8471b7, type: 3}
+  m_Name: _ControlsGaypadViewList
+  m_EditorClassIdentifier:
+  <ControlsData>k__BackingField:
+  - {fileID: 11400000, guid: 36954d7b453213a4a9211a2abbce941d, type: 2}
+  - {fileID: 11400000, guid: 48062a7b757793d4cabd0e63d38eb249, type: 2}
+  - {fileID: 11400000, guid: c6c1b5858409dcf4babcbf2c6250846d, type: 2}
+  - {fileID: 11400000, guid: f2a0fc27717a56142a9917fcb73b8490, type: 2}
+  - {fileID: 11400000, guid: 0e2c88fa4fb4d564ca96f9e21558420b, type: 2}
+  - {fileID: 11400000, guid: 7d64ff5de7742d541af93c96ea226703, type: 2}
+  - {fileID: 11400000, guid: e3bd4b197f6eb8a41812f17f95ef2d83, type: 2}
+  - {fileID: 11400000, guid: 3f2b96374d265c54ea7137b7b9a8cf84, type: 2}
+  - {fileID: 11400000, guid: 127c5bb106352884eace1dc6f8be5830, type: 2}

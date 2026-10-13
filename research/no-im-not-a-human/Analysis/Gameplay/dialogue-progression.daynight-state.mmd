@@ -1,0 +1,14 @@
+stateDiagram-v2
+  [*] --> Night
+  Night --> Night: unfinished dingdongs / cannot sleep
+  Night --> SleepTransition: all night events completed / Change
+  SleepTransition --> Day: InitNewDay / Day plus 1 / actions refill
+  Day --> Day: energy > 0 / cannot sleep
+  Day --> EnergySpent: energy-tagged option / Act
+  EnergySpent --> Day: actions remain
+  EnergySpent --> SleepTransition: actions <= 0 / Change
+  SleepTransition --> Night: InitNewNight / generate visitors
+  SleepTransition --> Dream: NeedToShowDream
+  Dream --> SleepTransition: dream ends
+%% States are conceptual reconstruction from code; ETimeOfDay itself has only Day/Night.
+%% Evidence: DayNightController.cs L267-363/L366-441; DayNightSaveData.cs L13-23.

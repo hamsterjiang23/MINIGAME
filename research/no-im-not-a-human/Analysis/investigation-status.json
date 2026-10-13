@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "source_game": "E:\\steam\\steamapps\\common\\No, I'm not a Human",
+  "game_copy": "F:\\AAMINIGAME\\MINIGAME\\research\\no-im-not-a-human\\Analysis\\Inputs\\GameCopy",
+  "unity_version": "6000.3.10f1",
+  "runtime_backend": "IL2CPP",
+  "managed_backup": "NoImNotAHuman_BackUpThisFolder_ButDontShipItWithYourGame/Managed/Assembly-CSharp.dll",
+  "code_recovery": "Main 943 types /5855 methods/5126 true CIL bodies; canonical and CSharp9 exports, 625 project implementations and53 matching plugins",
+  "rea_managed_members": "REA representation budget failure preserved; PEReader indexes completed and independently reviewed",
+  "asset_recovery": "AssetRipper exported project; serialization failures73 CharacterSOData/49 URP light/1 PlayerSettings remain; UnityPy raw-object recovery succeeded but field parse failed",
+  "source_policy": "Read only; no game execution; no DRM modifications or public distribution",
+  "requested_gameplay_modules": [
+    "visitors",
+    "identity",
+    "body_checks",
+    "dialogue",
+    "day_night_resources",
+    "player_decisions",
+    "npc_state",
+    "events_progression",
+    "save",
+    "endings"
+  ],
+  "completion_scope": "Requested static investigation and recovery attempt delivered with explicitly recorded limits; not full original-project or playability reconstruction",
+  "reports_entry": "Reports/overview.md",
+  "validation": "Analysis/deliverable-verification.json",
+  "original_research_root": "D:\\NoImNotAHuman-Research",
+  "current_research_root": "F:\\AAMINIGAME\\MINIGAME\\research\\no-im-not-a-human",
+  "relocation_record": "Analysis/Relocation/relocation.json"
+}

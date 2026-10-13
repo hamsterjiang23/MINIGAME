@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 250344640, guid: 57c9a3e5193e26c4b968cc86e528416d, type: 3}
+  m_Name: PreDeath
+  m_EditorClassIdentifier:
+  components:
+  - {fileID: 11400000, guid: ba0e53589a79f0543971bb45147d01a5, type: 2}
+  - {fileID: 11400000, guid: 6d6babde541c10c4a9739e3c4e4ad649, type: 2}
+  - {fileID: 11400000, guid: 96635606ae331ae48907a4d9ebdd3a68, type: 2}
+  - {fileID: 11400000, guid: bde06a8427da3b54391c1738838a423c, type: 2}
+  - {fileID: 11400000, guid: 9a2764f11e0fe7a42b46245c0e8b9cfd, type: 2}
+  - {fileID: 11400000, guid: 7da71ad5427e49f4093033f2d77a8cad, type: 2}

@@ -1,0 +1,30 @@
+{
+  "reports_checked": 17,
+  "local_links_checked": 114,
+  "missing_links": [],
+  "managed_index_checks_passed": true,
+  "managed_call_edges": 19045,
+  "native_slots": 5855,
+  "native_nonzero_pointer_entries": 4999,
+  "native_null_mask_matches_cpp": true,
+  "csharp_sources_parsed": 629,
+  "parser_diagnostics_errors": 0,
+  "comprehensive_language_feature_validation": false,
+  "unity_import_verified": false,
+  "source_files_checked": 965,
+  "source_files_changed": 0,
+  "exported_scenes": 7,
+  "exported_prefabs": 38,
+  "merged_csharp9_implementations": 625,
+  "script_source_and_meta_hashes_match": true,
+  "merged_plugins": 53,
+  "plugin_source_and_meta_hashes_match": true,
+  "yarn_nodes": 3255,
+  "yarn_instructions": 56585,
+  "yarn_missing_constant_targets": 1,
+  "yarn_unresolved_stack_jumps": 1868,
+  "limits": [
+    "This validator checks artifact existence and previously recorded invariants; it does not execute a game or prove Unity import/playability."
+  ],
+  "passed_with_recorded_limits": true
+}

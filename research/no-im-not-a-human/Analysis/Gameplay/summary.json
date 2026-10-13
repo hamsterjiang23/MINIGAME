@@ -1,0 +1,167 @@
+{
+  "input_asset": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\_NoImNotAHuman.asset",
+  "input_asset_line": 15,
+  "parser": "Original backup YarnSpinner.dll Yarn.Program.Parser.ParseFrom(byte[])",
+  "compiled_program_bytes": 2207477,
+  "compiled_program_sha256": "33de1e80e55e4eb8ec2093078028aa83fc45ac8b77acc05c5a4f9477ebe92827",
+  "nodes": 3255,
+  "initial_variables": 276,
+  "instructions": 56585,
+  "unique_line_ids": 15693,
+  "run_command_occurrences": 4043,
+  "unique_command_strings": 815,
+  "function_call_occurrences": 2821,
+  "unique_function_names": [
+    "Bool.And",
+    "Bool.Not",
+    "Bool.Or",
+    "CanOrderCourier",
+    "GetCharacterOnPlace",
+    "GetCourierOrder",
+    "GetEnergy",
+    "GetInnocentsCount",
+    "GetItemCount",
+    "GetPhoneNumber",
+    "HasCompletedMushroomCondition",
+    "HasSeenDream",
+    "IsAlive",
+    "IsCharacterPlaceEmpty",
+    "IsEverCompletedGame",
+    "IsImposter",
+    "IsNeedToGetDeficitItem",
+    "IsNobodyHome",
+    "LocalizeItem",
+    "Number.Add",
+    "Number.EqualTo",
+    "Number.GreaterThan",
+    "Number.GreaterThanOrEqualTo",
+    "Number.LessThan",
+    "PeekDeficitItem",
+    "TryGiveItem",
+    "TryGiveItemFor",
+    "dice",
+    "visited",
+    "visited_count"
+  ],
+  "resolved_constant_node_edges": 4570,
+  "local_control_edges": 10848,
+  "unresolved_stack_jump_records": 1868,
+  "missing_constant_node_targets": 1,
+  "invalid_local_label_targets": 0,
+  "opcode_counts": {
+    "ADD_OPTION": 4330,
+    "CALL_FUNC": 2821,
+    "JUMP": 1868,
+    "JUMP_IF_FALSE": 930,
+    "JUMP_TO": 5588,
+    "POP": 3588,
+    "PUSH_BOOL": 44,
+    "PUSH_FLOAT": 4326,
+    "PUSH_STRING": 6012,
+    "PUSH_VARIABLE": 1189,
+    "RUN_COMMAND": 4043,
+    "RUN_LINE": 11363,
+    "RUN_NODE": 4570,
+    "SHOW_OPTIONS": 1868,
+    "STOP": 3255,
+    "STORE_VARIABLE": 790
+  },
+  "artifact_status": "real compiled Yarn protobuf decoded; original authored .yarn text not recovered",
+  "boundaries": [
+    "Node existence and bytecode edges do not prove runtime reachability.",
+    "RUN_NODE with dynamic stack value is unresolved.",
+    "JUMP uses stack target; option selection/conditions are runtime data.",
+    "Instructions and variables retained exactly; no guessed C# or Yarn source generated.",
+    "Localization tables remain in recovered Unity project; text is not joined in this index.",
+    "C# host actions depend on scene bindings and interface/Unity/C# event initialization.",
+    "No game process, Steam cloud or original Steam files modified."
+  ],
+  "serialized_configs": {
+    "day_night": {
+      "_maxDayActionsByDays": {
+        "value": [
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\DayNightControllerData.asset",
+        "line": 28,
+        "encoding": "Unity YAML packed little-endian Int32 array"
+      },
+      "_lastDay": {
+        "value": 14,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\DayNightControllerData.asset",
+        "line": 37
+      },
+      "_babyEndingDay": {
+        "value": 16,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\DayNightControllerData.asset",
+        "line": 38
+      },
+      "_killerEndingDay": {
+        "value": 17,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\DayNightControllerData.asset",
+        "line": 39
+      },
+      "_femaEndingDay": {
+        "value": 15,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\DayNightControllerData.asset",
+        "line": 40
+      },
+      "_coffeeBoostDays": {
+        "value": 3,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\DayNightControllerData.asset",
+        "line": 41
+      }
+    },
+    "endings": {
+      "_killsCount": {
+        "value": 4,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\EndingsData.asset",
+        "line": 15
+      },
+      "_bodyEaterCount": {
+        "value": 4,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\EndingsData.asset",
+        "line": 16
+      },
+      "_prophetDontCheckSignsDaysNeeded": {
+        "value": 2,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\EndingsData.asset",
+        "line": 17
+      },
+      "_povistkasUsedCount": {
+        "value": 2,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\EndingsData.asset",
+        "line": 18
+      },
+      "_femaCallsCount": {
+        "value": 3,
+        "source": "D:\\NoImNotAHuman-Research\\RecoveredUnityProject\\ExportedProject\\Assets\\MonoBehaviour\\EndingsData.asset",
+        "line": 19
+      }
+    }
+  },
+  "validation": {
+    "json_parse": "passed",
+    "bytecode_node_integrity": "passed",
+    "all_constant_node_targets_exist": false,
+    "all_local_control_labels_exist": true
+  }
+}

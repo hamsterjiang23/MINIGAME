@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-13T04:49:37.2282619Z",
+  "status": "target-verified-old-source-retained-policy-block",
+  "original_research_root": "D:\\NoImNotAHuman-Research",
+  "current_research_root": "F:\\AAMINIGAME\\MINIGAME\\research\\no-im-not-a-human",
+  "source_game": "E:\\steam\\steamapps\\common\\No, I'm not a Human",
+  "git_scope": "Entire research tree ignored; repository README.md, AGENTS.md and .gitignore only; no stage, commit or push",
+  "historical_path_policy": "Original JSON/log evidence paths retained. Resolve a path beginning with original_research_root by replacing only that prefix with current_research_root. Active scripts derive roots from their own paths; report navigation uses relative links.",
+  "files_copied": 23961,
+  "directories_copied": 1218,
+  "original_bytes": 7004476419,
+  "source_manifest": "source-manifest.json",
+  "copy_verification": "copy-verification.json",
+  "changed_files": "changed-files.json",
+  "final_integrity_verification": "final-integrity-verification.json",
+  "acceptance": "acceptance.json",
+  "source_removed": false,
+  "verified_at_utc": "2026-10-13T04:56:55.0732485Z",
+  "cleanup_blocker": "Automatic execution policy rejected recursive deletion of the old research directory: blocked by policy. The rejected command did not execute. Original research root retained.",
+  "independent_reviews": "independent-reviews.json"
+}

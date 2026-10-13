@@ -1,0 +1,7283 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: TestDialogs_zh-Hant
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-Hant
+  m_SharedData: {fileID: 11400000, guid: 14fe5035ef9c9434b954918f4d36043a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 49635119156
+    m_Localized: 嗨！城裡有個朋友跟我說了最新消息。新聞應該很快就會報導這件事了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119157
+    m_Localized: 城裡的人都在往較小的社區跑。大家的變化……還真大。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119158
+    m_Localized: 要是有人跑到你這裡來，能收留的還是收留一下吧。雖說現在這個世道非常艱難，不過我們也不能見死不救。只是……記得留個心眼，好嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119159
+    m_Localized: 聽說有好些人被殺了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119160
+    m_Localized: 這種事情最近越來越常見了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119161
+    m_Localized: 大家說下手的生物長得就跟人一樣……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119162
+    m_Localized: 至於要如何區分正常人類和這東西，政府會告訴我們的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119163
+    m_Localized: 提醒一句，要是房子裡就只有你一個人……誰也不知道到底會有什麼東西找上門來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119164
+    m_Localized: 外面發生了什麼事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119165
+    m_Localized: 外面安全嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119166
+    m_Localized: 晚上可以往窗外看，不會有什麼問題。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119167
+    m_Localized: 記得保持警惕。相信不需要我說你也應該知道這附近都遊蕩著一些什麼東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119168
+    m_Localized: 白天就不要這樣做了，會把眼睛灼傷。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119169
+    m_Localized: 也就是說，現在最好不要出門？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119170
+    m_Localized: 等等，我們現在該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119171
+    m_Localized: 我給你簡單總結一下吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119172
+    m_Localized: 到了晚上，就會陸續有人來敲你的門。誰能進、誰不能，都由你說了算。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119173
+    m_Localized: 留意自己請進門的人。過幾天政府就會告訴我們應該如何辨別這東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119174
+    m_Localized: 晚上可以透過窗戶看看外面的情況。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119175
+    m_Localized: 還有，我建議你低調一點。現在沒有一個地方是安全的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119176
+    m_Localized: 我今晚就睡在這裡了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119177
+    m_Localized: 下午來找我吧，到時我再跟你仔細說說。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119178
+    m_Localized: 為了以防萬一，我先跟你說一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119179
+    m_Localized: 白天可以跟來客聊天，想聊什麼都可以。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119180
+    m_Localized: 與此同時，檢查一下這些人的特徵，看看他們到底是不是人類。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119181
+    m_Localized: 檢查完了，怎麼處置就看你的意思了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119182
+    m_Localized: 要是不想跟人聊天，又還剩點時間，就到廚房去喝點啤酒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119183
+    m_Localized: 就在冰箱裡，我專門買來給你放鬆的。喝了就會想要睡覺。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119184
+    m_Localized: 接著就老老實實等待救援。要是接到了疏散的通知，就緊跟我的家人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119185
+    m_Localized: 看來你也已經累壞了。去喝點啤酒，好好休息一下吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119186
+    m_Localized: 順便一提，聽說晚上會有人挨家挨戶地問是不是一個人在家。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119187
+    m_Localized: 要是開門了，就千萬不要說自己獨自在家。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119188
+    m_Localized: 看新聞了嗎？實在是太可怕了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119189
+    m_Localized: 氣溫實在太高了，就連張嘴說話都會耗費好些精力。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119190
+    m_Localized: 認真想好要找誰聊天再開口。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119191
+    m_Localized: 還有，檢查特徵也需要花費時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119192
+    m_Localized: 一天的時間有限，一定要好好安排。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119193
+    m_Localized: 要是覺得自己已經跟所有人都聊過了，卻還沒有睡意的話，就去喝點啤酒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119194
+    m_Localized: 就在廚房的冰箱裡，冰涼可口。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119195
+    m_Localized: 喝了之後就會消耗完剩餘的能量，讓你立即想睡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49614147584
+    m_Localized: 我的眼睛最近癢得難受。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119104
+    m_Localized: 這大概是太陽害的吧？還是說……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119105
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119106
+    m_Localized: 媽的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119107
+    m_Localized: 這只不過是普通的感染而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119108
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119109
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119110
+    m_Localized: 聽著，我有一個主意……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119111
+    m_Localized: 既然你手上有槍……要不乾脆去搶別人的錢，如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119112
+    m_Localized: 我們肯定會賺得盆滿缽滿，混蛋！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119113
+    m_Localized: 怎麼樣？好好想想吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119114
+    m_Localized: 混蛋，去你媽的……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119115
+    m_Localized: 啊——！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119116
+    m_Localized: 看吧，完全沒有任何問題。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119117
+    m_Localized: 看，我的指甲好得很。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119118
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119119
+    m_Localized: 看來你不這麼認為。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119120
+    m_Localized: 我今天已經洗漱完畢了，只是恰巧沒時間洗手罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119121
+    m_Localized: 我的指甲平時都乾淨得很，混蛋。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119122
+    m_Localized: 好傢伙。來一個就殺一個的話，怕是有多少運屍袋都不夠用。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119123
+    m_Localized: 順便一提，殺完人後你把屍體扔到什麼地方去了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119124
+    m_Localized: 就直接扔街上了還是怎樣，混蛋？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119125
+    m_Localized: 就因為指甲髒而開槍殺人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119126
+    m_Localized: 好吧，我從未想過自己會因為這樣荒唐的理由喪命。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119127
+    m_Localized: 想要給我拍一張照片？沒問題。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119128
+    m_Localized: 事先聲明，我對光線特別敏感。按下快門的一瞬間，我說不定會縮一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119129
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119130
+    m_Localized: （你覺得這張照片本身沒有什麼問題，只是上面的人臉……）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119131
+    m_Localized: （看起來很模糊）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119132
+    m_Localized: 我不是早就說了嗎，混蛋。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119133
+    m_Localized: 還要再拍一張嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119134
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119135
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119136
+    m_Localized: 這是在耍什麼花招，混蛋？找別人去，休想騙我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119137
+    m_Localized: 你得看好他們，知道不。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119138
+    m_Localized: 也不要讓他們洋洋自得。需要時刻提醒這些人——他們之所以還能活著，全仰仗你有一副好心腸。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119139
+    m_Localized: 等等！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119140
+    m_Localized: 媽的，去你個孬種還有這破爛房子。老子走了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119141
+    m_Localized: 我這就到太陽底下把自己曬成人乾，而這全都賴你，混蛋。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119142
+    m_Localized: 好好好，不就是牙齒嗎？給你看就是了，混蛋。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119143
+    m_Localized: 話說，我的連襟曾經去種過牙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119144
+    m_Localized: 這傢伙跟人打架，被人打掉了牙齒、一顆都沒剩下，哈哈哈哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119145
+    m_Localized: 噢，對。來，看吧。啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119146
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119147
+    m_Localized: 一點問題也沒有，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119148
+    m_Localized: 這是在做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119149
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119150
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119151
+    m_Localized: 我知道，都怪偽人還有這鬼天氣，讓你不堪重負。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119152
+    m_Localized: 這樣做也是為了大家好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119153
+    m_Localized: 我不會因此恨你，也沒有要跟你瞎掰的意思。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119154
+    m_Localized: 這他媽是在開什麼玩笑？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119155
+    m_Localized: 這他媽……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119196
+    m_Localized: 也就是說我只能待在房子裡，然後……設法活下去？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119197
+    m_Localized: 不覺得哪裡怪怪的嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119198
+    m_Localized: 電視裡的芭蕾舞伶正趾尖旋轉，舞姿優美。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119199
+    m_Localized: 古典的舞蹈讓兒時的溫馨回憶湧上心頭，令你想起了美好的事物。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119200
+    m_Localized: 親愛的觀眾朋友們，早安！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119201
+    m_Localized: 現在是晨間天氣預報時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119202
+    m_Localized: 這座溫馨小鎮依舊艷陽高照。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119203
+    m_Localized: 連日的高溫早已打破了金氏世界紀錄，而且這樣的好天氣甚至看起來完全沒有消停的跡象。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119204
+    m_Localized: 科學家正密切監測太陽活動、預測強度。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119205
+    m_Localized: 不過，他們向大家保證——沒有因此而感到擔憂的必要。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119206
+    m_Localized: 因此，各位可以盡情享受——戴上太陽眼鏡、換上自己最喜歡的泳裝，也不要忘記拿上遮陽帽！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119207
+    m_Localized: 最重要的是，千萬別中暑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119208
+    m_Localized: 近期有報告稱鎮上出現了可疑活動。難道是因為太陽實在過於猛烈，大家都沖昏頭了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119209
+    m_Localized: 嗨！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119210
+    m_Localized: 我爸爸在這裡嗎？能不能麻煩你去叫一下他？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119211
+    m_Localized: 白天還不怎麼嚇人，晚上就不一樣了——好些人趁著夜幕降臨跑到外面去……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119212
+    m_Localized: 你爸爸叫什麼名字？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119213
+    m_Localized: 跟我說說你爸爸的事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119214
+    m_Localized: 你忘了他叫什麼？噢，我知道了——這是在試我，想看看我是不是偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119215
+    m_Localized: 真是聰明！我也要開始試一試其他人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119216
+    m_Localized: 來的路上沒出什麼事吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119217
+    m_Localized: 你怕偽人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119218
+    m_Localized: 嗯，能說的可不止一星半點。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119219
+    m_Localized: 爸爸出門前喜歡喝一點啤酒，嘿嘿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119220
+    m_Localized: 還會給我留午餐、晚餐，和果汁。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119221
+    m_Localized: 今天，我偷偷嘗了嘗他平時喝的啤酒。噦，難喝得要死！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119222
+    m_Localized: 都有果汁了，為什麼還要喝這種東西？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119223
+    m_Localized: 噢，還請千萬不要把這件事情告訴他。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119224
+    m_Localized: 來的路上沒出什麼事吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119225
+    m_Localized: 你怕偽人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119226
+    m_Localized: 這個世界簡直亂了套。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119227
+    m_Localized: 大家白天都待在自己家裡，不然就是睡覺——直到晚上才出來活動。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119228
+    m_Localized: 我還是不太習慣黑暗，不過好像也沒什麼可怕的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119229
+    m_Localized: 還是說，我想錯了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119230
+    m_Localized: 我這就去叫你爸爸過來。祝你好運！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119231
+    m_Localized: 玩得開心！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119232
+    m_Localized: 我不知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119233
+    m_Localized: 大家都怕偽人。我也是。不過我還沒實際見過它們，我不知道……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119234
+    m_Localized: 它們是不是都很嚇人？而且，還會攻擊人類？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119235
+    m_Localized: 這樣的話，要是我同學打了我，是不是說明他也是偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119236
+    m_Localized: 爸爸叫我要小心點，因此我一直都非常謹慎！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119237
+    m_Localized: 我沒鬧出什麼動靜，誰也沒看見我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119238
+    m_Localized: 我這就去叫你爸爸過來。祝你好運！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119239
+    m_Localized: 玩得開心！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119240
+    m_Localized: 謝謝，也祝你好運！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119241
+    m_Localized: 我們走啦。我害怕晚上一個人待在外面。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119242
+    m_Localized: 到家之後，就跟爸爸一起玩遊戲、投骰子……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119243
+    m_Localized: 然後在諸如椅子、臥榻之類的家具上走來走去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119244
+    m_Localized: 接著在它們之間開闢一條道路！總之，回頭我再玩給你看。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119245
+    m_Localized: 再見！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119246
+    m_Localized: 能不能讓我進去？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119247
+    m_Localized: 我原本躲在酒吧裡，不過……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119248
+    m_Localized: 我被趕出來了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119249
+    m_Localized: 為什麼？嗯。不是每個人都受得了我這脾氣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119250
+    m_Localized: 不要誤會，我不是有意要冒犯他人。只是……日子總有過得不順心的時候。就是這麼回事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119251
+    m_Localized: 如何？能讓我進去嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119252
+    m_Localized: 你不是偽人吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119253
+    m_Localized: 你確定不會給我惹事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119254
+    m_Localized: 你該不會是覺得我也是個怪物吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119255
+    m_Localized: 我可以明確地告訴你——當然不是。話說回來，劈頭蓋臉就這樣問也太荒唐了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119256
+    m_Localized: 好吧，看來現在這個世道就是如此。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119257
+    m_Localized: 為什麼會被趕出來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119258
+    m_Localized: 為什麼覺得在我這裡就會有所不同？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119259
+    m_Localized: 惹事？惹什麼事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119260
+    m_Localized: 我沒有膽量去訴諸暴力。不過，我也不會讓任何人傷害我……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119261
+    m_Localized: 我最喜歡的就是吃喝玩樂。這有什麼問題嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119262
+    m_Localized: 為什麼會被趕出來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119263
+    m_Localized: 為什麼覺得在我這裡就會有所不同？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119264
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119265
+    m_Localized: 我腦子裡冒出來幾句不太好聽的話，就不說出來了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119266
+    m_Localized: 這麼說吧，大家有時候就是不太受得了我。這沒什麼不對。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119267
+    m_Localized: 一想到這個，就覺得趕我出來說不定是最好的選擇。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119268
+    m_Localized: 這樣比較安全。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119269
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119270
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119271
+    m_Localized: 怎麼，我就該曬死在太陽底下？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119272
+    m_Localized: 想都別想。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119273
+    m_Localized: 不讓我進，我就上別人家問去。總能遇到心腸比你好的人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119274
+    m_Localized: 要真遇不到……我也沒有要繼續留在這裡的理由了，不是嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119275
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119276
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119277
+    m_Localized: 嗯。我知道了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119278
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119279
+    m_Localized: 我知道了。一個個的全是膽小鬼，你也不例外。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119280
+    m_Localized: 祝你今晚睡個好覺。噢，對了——去你媽的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119281
+    m_Localized: 謝謝。如今這個世道，來自他人的信任可是千金難買。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119282
+    m_Localized: 非常感謝。我會盡可能不辜負你的信任……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119283
+    m_Localized: 你好！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119284
+    m_Localized: 對不起，這麼晚還來打擾你；沒辦法，白天實在是太熱了。電視裡說最好不要頂著太陽出來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119285
+    m_Localized: 能不能讓我在這裡待一待？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119286
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119287
+    m_Localized: 你是怎麼到這裡來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119288
+    m_Localized: 嗯，我以前住在市中心附近。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119289
+    m_Localized: 柏油馬路燙得要命，哈哈。唉。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119290
+    m_Localized: 我之前是個收銀員。沒錯，現在已經不是了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119291
+    m_Localized: 我被開除了，真是屋漏偏逢連夜雨……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119292
+    m_Localized: 你現在打算怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119293
+    m_Localized: 你覺得以後會怎麼樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119294
+    m_Localized: 我其實也沒打算要到這裡來——要知道，柏油馬路都快要被熱化了。然而如果不走，說不定還會碰上更倒楣的事情。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119295
+    m_Localized: 說出來你肯定會笑我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119296
+    m_Localized: 偽人霸佔了我的房子，把我給趕了出來。是不是很不可思議？它們竟然反客為主，把我給掃地出門了！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119297
+    m_Localized: 我只好四處遊蕩，找個能躲太陽的地方。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119298
+    m_Localized: 你現在打算怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119299
+    m_Localized: 你覺得以後會怎麼樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119300
+    m_Localized: 嗯。還是想辦法活下去吧。雖然不管是偽人、還是這熱得不像話的太陽都把我給嚇得夠嗆。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119301
+    m_Localized: 不過我真的不想死。嘿嘿、哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119302
+    m_Localized: 你就不害怕嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119303
+    m_Localized: 求求你告訴我這一切很快就會好起來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119304
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119305
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119306
+    m_Localized: 我不知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119307
+    m_Localized: 我能活下去嗎？誰會向我伸出援手？到底要到什麼時候才找得到願意幫我的人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119308
+    m_Localized: 我不知道以後會怎麼樣，甚至連猜都猜不出來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119309
+    m_Localized: 難道你就不害怕？我——我怕得要命。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119310
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119311
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119312
+    m_Localized: 哈，好吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119313
+    m_Localized: 不管怎樣，還是謝謝你願意聽我說話。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119314
+    m_Localized: 好了，看來我得繼續尋找了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119315
+    m_Localized: 再見……了？嗯、呃，再見了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119316
+    m_Localized: 謝謝！真的是太感謝了！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119317
+    m_Localized: 太好了，你就是我的大救星！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119318
+    m_Localized: 外面一片死寂。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119319
+    m_Localized: 闃無一人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119320
+    m_Localized: 今天，就連酒鬼都不想在街上扎堆。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119321
+    m_Localized: 難道是在懼怕著什麼嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119322
+    m_Localized: 透過窗戶，你看到幾個十來歲的孩子在田野上打發時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119323
+    m_Localized: 圍在一起聊得火熱，完全沒有注意到你的存在。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119324
+    m_Localized: 遠處是鄰居家的房子，而鄰居本人現正在你家做客。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119325
+    m_Localized: 透過他家的窗戶，你看到燈亮著。看來家裡人在等他回去吃晚餐。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119326
+    m_Localized: 我們得到的資訊是一樣的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119327
+    m_Localized: 偽人都長了一口潔白的牙齒……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119328
+    m_Localized: 胡說八道！只不過是想讓我們自相殘殺罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119329
+    m_Localized: 然而……為什麼要這樣做？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119330
+    m_Localized: 太陽正在不斷爆發。地球已然成為煉獄。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119331
+    m_Localized: 這不是比喻，也不會有什麼救世主。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119332
+    m_Localized: 人與人之間已經沒有任何信任。大家都快讓太陽給活生生地烤熟了，毫不誇張。只要能有個可以躲的地方，就連親媽都肯賣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119333
+    m_Localized: 我也想去相信別人，然而談何容易。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119334
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119335
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119336
+    m_Localized: 沒看新聞嗎？露出牙齒來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119337
+    m_Localized: 嗯？你想做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119338
+    m_Localized: 如何識別偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119339
+    m_Localized: 關於這次災變，你都知道些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119340
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119341
+    m_Localized: 氣溫太高？不成問題……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119342
+    m_Localized: 只要有安納傑卡！再怎麼熱也不怕！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119343
+    m_Localized: 清爽解渴的能量飲料，無懼此等殘酷高溫！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119344
+    m_Localized: 混合了酸柚與薄荷，炮製出獨一無二的口味，賦予您非凡的精力！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119345
+    m_Localized: 安納傑卡，各大商店均有銷售。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119346
+    m_Localized: 充滿活力的能量飲料廣告，於潛移默化中舒緩大家的飢渴。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119347
+    m_Localized: 稍微中斷一下晨間節目，在此插播一條緊急消息……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119348
+    m_Localized: 今早6點28分，出現了一次強烈的太陽能量爆發。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119349
+    m_Localized: 這次的耀斑遠超科學家預測。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119350
+    m_Localized: 氣溫已達臨界水平。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119351
+    m_Localized: 當局已宣布進入緊急狀態。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119352
+    m_Localized: 各位市民，還請千萬不要於白天外出。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119353
+    m_Localized: 接下來是新聞時間……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119354
+    m_Localized: 到底是異星來客，還是從地下爬出來的人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119355
+    m_Localized: 這可不是什麼憑空捏造的科幻小說，也不是聳人聽聞的小報頭條！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119356
+    m_Localized: 我們收到了目擊報告——有人在城裡接觸到了「偽人」……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119357
+    m_Localized: 其中一名目擊者稱自己碰到了一位中年男子……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119358
+    m_Localized: 長了一口潔白的牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119359
+    m_Localized: 而這位男子就是一個「偽人」。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119360
+    m_Localized: 於其他遭遇了「偽人」的類似事件中，也觀測到它們長了一口完美無瑕的牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119361
+    m_Localized: 因此，若想確保自身安全——就檢查他人的牙齒吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119362
+    m_Localized: 請不要放鬆警惕，務必保持冷靜。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119363
+    m_Localized: 接下來是其他新聞……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119364
+    m_Localized: 我倒是希望自己懂得如何去辨別。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119365
+    m_Localized: 我好害怕……要知道，誰都有可能是偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119366
+    m_Localized: 我只從收音機裡聽說偽人都長了一口完美無瑕的牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119367
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119368
+    m_Localized: 普通人就不能長著一口潔白的牙齒嗎？嘿嘿。嘿、嘿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119369
+    m_Localized: 啊——！噢——！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119370
+    m_Localized: 我都不知道該說什麼了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119371
+    m_Localized: 我決定透過窗戶看看外面的情況……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119372
+    m_Localized: 接著我就後悔了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119373
+    m_Localized: 我看到了幾具孩子的屍體，甚至已經被曬得發黑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119374
+    m_Localized: 真是可怕的死法……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119375
+    m_Localized: 如果真的在劫難逃，我希望自己可以死得痛快。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119376
+    m_Localized: 總比在街上被活生生地烤熟要來得好！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49635119377
+    m_Localized: 我知道情況只會越來越糟！我們全都會一命嗚呼！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313408
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313409
+    m_Localized: 對不起。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313410
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313411
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313412
+    m_Localized: 沒看新聞嗎？露出牙齒來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313413
+    m_Localized: 啊——嗯。希望這一切能快點結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313414
+    m_Localized: 如何識別偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313415
+    m_Localized: 關於這次災變，你都知道些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313416
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313417
+    m_Localized: 喂，人類。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313418
+    m_Localized: 我們真的是太走運了！能親眼見證人類犯下的愚行所帶來的後果。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313419
+    m_Localized: 太陽將會履行自己的職責，淨化地球上的一切汙穢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313420
+    m_Localized: 我們將會迎來潔淨的新世界！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313421
+    m_Localized: 真是天大的好消息。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313422
+    m_Localized: 蛤？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313423
+    m_Localized: 我被你嚇到了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313424
+    m_Localized: 這是在做什麼，人類？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313425
+    m_Localized: 我來簡單說明一下，仔細聽好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313426
+    m_Localized: 太陽之所以會像這樣灼燒我們，就是為了燃盡罪惡、給予救贖！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313427
+    m_Localized: 人類貪得無厭，惹怒了太陽！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313428
+    m_Localized: 這無比輝煌的高溫就是對我們的恩賜！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313429
+    m_Localized: 真是一份無與倫比的餽贈。滌蕩了罪惡，我們就能過上正常的生活了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313430
+    m_Localized: 意思是說，我們都得死？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313431
+    m_Localized: 這樣的話，你又會如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313432
+    m_Localized: 你瘋了吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313433
+    m_Localized: 我來簡單說明一下，仔細聽好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313434
+    m_Localized: 太陽之所以會像這樣灼燒我們，並非毫無緣由！就是為了燃盡罪惡！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313435
+    m_Localized: 人類作惡多端，惹怒了太陽！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313436
+    m_Localized: 這無比輝煌的高溫就是對我們的恩賜！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313437
+    m_Localized: 真是一份無與倫比的餽贈。滌蕩了罪惡，我們就能過上正常的生活了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313438
+    m_Localized: 意思是說，我們都得死？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313439
+    m_Localized: 這樣的話，你又會如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313440
+    m_Localized: 大錯特錯！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313441
+    m_Localized: 罪惡終將消逝，太陽或會死去。然而，我們會活下來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313442
+    m_Localized: 不會再有人死於非命，不會再有偷雞摸狗之事，不會再有貪得無厭的雜種來坑害我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313443
+    m_Localized: 能想像這是一幅什麼樣的光景嗎？知道這一切都意味著什麼嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313444
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313445
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313446
+    m_Localized: 我？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313447
+    m_Localized: 太陽履行完自己的職責之後，我們都會過上幸福的生活。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313448
+    m_Localized: 太陽會幫我們燃盡這一切罪惡，難道你不明白嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313449
+    m_Localized: 不，你當然明白——你還活著就是最好的證明！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313450
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313451
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313452
+    m_Localized: 我費盡口舌，而你卻還是裝作對太陽一無所知？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313453
+    m_Localized: 去你媽的吧，我救別人去！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313454
+    m_Localized: 好吧，再見、再見！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313455
+    m_Localized: 關於此事，我還可以再給你更詳細地展開！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313456
+    m_Localized: 對了，我都忘記問了——你這有啤酒嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313457
+    m_Localized: 你好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313458
+    m_Localized: 我其實並不太懼怕這高溫。不過，我還是得找個安靜的地方好好休息。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313459
+    m_Localized: 我是否能在此處找到片刻安寧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313460
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313461
+    m_Localized: 你像這樣四處尋找能躲的地方多久了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313462
+    m_Localized: 這不重要。我看你是想要確認我到底是不是偽人，沒錯吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313463
+    m_Localized: 我不是。不過，我也有幾個問題想要跟你確認。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313464
+    m_Localized: 晚點再問好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313465
+    m_Localized: 你不在意這高溫？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313466
+    m_Localized: 脫下你的外套。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313467
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313468
+    m_Localized: 我從未品嚐過哪怕只是片刻的寧靜。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313469
+    m_Localized: 也就是說……沒錯，找了很久、很久了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313470
+    m_Localized: 你不害怕這高溫？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313471
+    m_Localized: 脫下你的外套。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313472
+    m_Localized: 我總是覺得冷。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313473
+    m_Localized: 現在其他人都快要熱死了，而我卻甚至穿著外套都還覺得冷。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313474
+    m_Localized: 我是一件衣服都不敢脫。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313475
+    m_Localized: 要是脫了更難受該怎麼辦？要是沒死成的話該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313476
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313477
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313478
+    m_Localized: 好吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313479
+    m_Localized: 不讓我進去也沒關係。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313480
+    m_Localized: 我將繼續尋找。不會再來求你或打擾你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313481
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313482
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313483
+    m_Localized: 好的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313484
+    m_Localized: 再見。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313485
+    m_Localized: 我留意到你手上有好些火藥殘渣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313486
+    m_Localized: 能給我一槍嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313487
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313488
+    m_Localized: 好吧。看來你想要為自己留幾顆子彈。再見。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313489
+    m_Localized: 謝謝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313490
+    m_Localized: 雖然天花板有點低，不過也沒關係。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313491
+    m_Localized: 已有的事後必再有，已行的事後必再行。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313492
+    m_Localized: 何其不幸，我們都是見證人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313493
+    m_Localized: 說不定，還會參與其中。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313494
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313495
+    m_Localized: 你有什麼需要嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313496
+    m_Localized: 只是個無名小卒罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313497
+    m_Localized: 我什麼都不需要，也不會強迫他人做自己不想做的事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313498
+    m_Localized: 我自陰影中來，也將歸於其中。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313499
+    m_Localized: 你在說什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313500
+    m_Localized: 你……怪怪的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313501
+    m_Localized: 沒有，謝謝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313502
+    m_Localized: 我什麼都不缺。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313503
+    m_Localized: 我沒有的東西，你也給不了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313504
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313505
+    m_Localized: 能幫我算個命嗎？幫我挑個頁數和段落。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313506
+    m_Localized: 你在說什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313507
+    m_Localized: 你……怪怪的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313508
+    m_Localized: 於你眼裡是這樣的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313509
+    m_Localized: 我說的話對你而言究竟意味著什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313510
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313511
+    m_Localized: 能透過這本書幫我算個命嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313512
+    m_Localized: 第一頁的第一段。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313513
+    m_Localized: 靠近中間某一頁的最後一段。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313514
+    m_Localized: 這樣比較安全。主要是對我而言就是了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313515
+    m_Localized: 比起保護某些東西不受洪水、火災或時間的侵害要更加簡單。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313516
+    m_Localized: 並非每粒種子都能長成大樹，就是這樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313517
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313518
+    m_Localized: 能幫我算個命嗎？幫我挑個頁數和段落。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313519
+    m_Localized: 第一頁的第一段。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313520
+    m_Localized: 靠近中間某一頁的最後一段。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313521
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313522
+    m_Localized: 「死者將歸來，與我們講述。然則，無人相信其所言之事。」
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313523
+    m_Localized: 這是什麼意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313524
+    m_Localized: 現在，我需要好好思考。或許，之後還有機會再見。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313525
+    m_Localized: 路上站著個人，面無血色、如同死者。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313526
+    m_Localized: 這人的皮膚上有著奇怪的褶皺。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313527
+    m_Localized: 就像是披了一張對他而言太過於大的人皮一樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313528
+    m_Localized: 從這裡看不見他的雙眼，不過你能感覺到對方正在死死地盯著你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313529
+    m_Localized: 恐懼湧上心頭，你向上帝祈禱——希望偽人不要造訪自己的房子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313530
+    m_Localized: 地上有幾具十來歲孩子的屍體。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313531
+    m_Localized: 全都遭到了某人的毒手。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313532
+    m_Localized: 地上的血都還沒乾，看起來剛死不久。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313533
+    m_Localized: 眼前的這一幕不禁讓你直起雞皮疙瘩。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313534
+    m_Localized: 透過窗戶，你看見鄰居和他的女兒站在外面。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313535
+    m_Localized: 兩人玩得非常開心，以致於忘了目前正發生著恐怖的事情。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313536
+    m_Localized: 於這一瞬間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313537
+    m_Localized: 父女的嬉戲讓你想起了自己的童年，一股懷舊之情湧上心頭。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313538
+    m_Localized: 這是人類從未面對過的東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313539
+    m_Localized: 只不過是給自己不了解的事物粗暴地貼上了標籤而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313540
+    m_Localized: 就好像這樣的事情不曾發生過一般。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313541
+    m_Localized: 人類存在根本性的缺陷，對此我們也束手無策。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313542
+    m_Localized: 幾千人？幾萬人？還是好幾百萬人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313543
+    m_Localized: 說實話，我也不知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313544
+    m_Localized: 也不會有人告訴你，不然非把你嚇得尿褲子不可。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313545
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313546
+    m_Localized: 不管腦海中浮現的數字是什麼，都要乘以三。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313547
+    m_Localized: 最後得出來的結果也許會比較接近真實的受害人數。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313548
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313549
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313550
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313551
+    m_Localized: 嗯？你想做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313552
+    m_Localized: 偽人到底是什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313553
+    m_Localized: 究竟有多少人慘遭偽人的毒手？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313554
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313555
+    m_Localized: 我可不是胡亂猜測，我知道這一切背後的真相！！！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313556
+    m_Localized: 偽人到底是什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313557
+    m_Localized: 既然如此，我就告訴你吧……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313558
+    m_Localized: 聽好了，我的知心好友——偽人是來自其他行星的訪客！！！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313559
+    m_Localized: 這些異星來客抵達地球時，太陽還很年輕、地上的青草也要更有生機！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313560
+    m_Localized: 它們把自己的後裔——也就是偽人——埋進了大地。這些不詳的種子在地下長了整整八年！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313561
+    m_Localized: 現在，它們從地裡爬了出來，妄圖奪走我們的地球！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313562
+    m_Localized: 好在太陽決定向我們伸出援手，因其乃偽人的剋星！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313563
+    m_Localized: 不然它們為什麼整天都躲在地下？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313564
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313565
+    m_Localized: 媽的，要是能來點冰鎮啤酒就好了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313566
+    m_Localized: 數不勝數！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313567
+    m_Localized: 相信我，我的好友，這一切遠未結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313568
+    m_Localized: 現在僅僅只是開端！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313569
+    m_Localized: 就目前這個規模，還無法與宇宙之能達成平衡！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313570
+    m_Localized: 太陽所投下的正義之炎，還需要燒灼更多東西！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313571
+    m_Localized: 不過，我的好友，請你知曉——這些犧牲皆不會白費！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313572
+    m_Localized: 總有一天，我們都會領會偉大太陽的真正意圖……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313573
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313574
+    m_Localized: 媽的，夜深人靜的時候總會想起我的老婆……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313575
+    m_Localized: 她是個聖潔的女人……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313576
+    m_Localized: 不過也的確非常難搞就是了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313577
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313578
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313579
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313580
+    m_Localized: 我聽著呢，人類！有話就說！！！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313581
+    m_Localized: 如何識別偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313582
+    m_Localized: 關於這次災變，你都知道些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313583
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313584
+    m_Localized: 偽人就是突變後的人類，吸收了數千年來的憤怒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313585
+    m_Localized: 為我們的鏡像，與我們相反。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313586
+    m_Localized: 是我們永遠都不想看到或者知曉的東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313587
+    m_Localized: 然而，它們還是降臨了。現在，我們不得不與之共存。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313588
+    m_Localized: 數量之大，足以讓你想到世界末日。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313589
+    m_Localized: 既不高興，也不難過。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313590
+    m_Localized: 至於之後會如何，我一點都不在乎。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313591
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313592
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313593
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313594
+    m_Localized: 要是能暖和點的話就好了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313595
+    m_Localized: 如何識別偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313596
+    m_Localized: 關於這次災變，你都知道些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313597
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313598
+    m_Localized: 困難時期……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313599
+    m_Localized: 絕望將近……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313600
+    m_Localized: 相信他人，絕非易事……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313601
+    m_Localized: 不過，還是有可以倚靠的對象！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313602
+    m_Localized: 正是聯邦緊急事件管理局 (FEMA)。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313603
+    m_Localized: 若遇困難，請撥打服務電話：04-5-1。我們值得信賴！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313604
+    m_Localized: 觀眾朋友們，早安！現在是晨間新聞時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313605
+    m_Localized: 太陽活動依舊異常……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313606
+    m_Localized: ……據專家預測，甚至還會有所加劇。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313607
+    m_Localized: 與此同時，也不斷收到目擊報告說遭遇了「偽人」。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313608
+    m_Localized: 為了因應這一情況，當局緊急增加了FEMA的出勤次數。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313609
+    m_Localized: FEMA，也就是聯邦緊急事件管理局，是來幫助各位的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313610
+    m_Localized: 其工作人員穿著黃色的防護衣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313611
+    m_Localized: 最近成立的FEMA特別委員會發現了「偽人」的一項新特徵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313612
+    m_Localized: 專家指出，不光是牙齒，「偽人」的指甲也與人類不同——都比較髒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313613
+    m_Localized: FEMA的工作人員在某次常規檢查中發現了這一全新症狀。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313614
+    m_Localized: 當時遇到了一位自稱是當地護士的對象。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313615
+    m_Localized: 然而這位本應注重衛生的醫護人員卻無法解釋清楚自己的指甲為何如此髒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313616
+    m_Localized: 鑒於「偽人」是從地下爬出來的，就將她帶回檢測，結果顯示其的確是其中一員。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313617
+    m_Localized: 如若發現有人表現出了「偽人」的特徵，請立即聯絡FEMA的工作人員或撥打服務電話：04-5-1。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313618
+    m_Localized: 請務必保持警惕，不要於白天外出。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313619
+    m_Localized: 接下來是其他新聞……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313620
+    m_Localized: 偽人？！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313621
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313622
+    m_Localized: 它們是模仿人類的可怕怪物！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313623
+    m_Localized: 說不定是剝了人皮，然後披到自己身上。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313624
+    m_Localized: 而這樣做的目的僅僅只是為了接近我們……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313625
+    m_Localized: 天啊，希望我這輩子都不會有機會看見它們的真面目！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313626
+    m_Localized: 慘遭偽人的毒手？！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313627
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313628
+    m_Localized: 是被燒死了！全都是被燒死的！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313629
+    m_Localized: 都成了灰，無一例外！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313630
+    m_Localized: 因為他們於白天外出！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313631
+    m_Localized: 天啊，我們現在該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313632
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313633
+    m_Localized: 我們死定了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313634
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313635
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313636
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313637
+    m_Localized: 啊——嗯。希望這一切能快點結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313638
+    m_Localized: 如何識別偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313639
+    m_Localized: 關於這次災變，你都知道些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313640
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313641
+    m_Localized: 噢，嘿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313642
+    m_Localized: 看見外面的情況了嗎？真是活見鬼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313643
+    m_Localized: 這裡是否還好？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313644
+    m_Localized: 有什麼需要嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313645
+    m_Localized: 發生了什麼事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313646
+    m_Localized: 沒什麼，只是好奇問問罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313647
+    m_Localized: 是這樣的，我有個來錢快的法子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313648
+    m_Localized: 太陽這麼大，不需要費什麼工夫就能賺到盆滿缽滿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313649
+    m_Localized: 現在一群魯蛇被嚇得滿街跑，正好可以去唬弄他們掏錢！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313650
+    m_Localized: 為什麼來找我？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313651
+    m_Localized: 我有什麼好處？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313652
+    m_Localized: 新機遇來臨了——媽的，這你都看不出來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313653
+    m_Localized: 全世界都在哀怨、驚慌，庸人自擾。而你，卻能獨善其身。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313654
+    m_Localized: 我們都應該冷靜下來，好好享受一下。不是嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313655
+    m_Localized: 為什麼來找我？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313656
+    m_Localized: 我有什麼好處？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313657
+    m_Localized: 我看你這不是已經在做生意了嘛！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313658
+    m_Localized: 早就聚集了一群人，真是個不錯的開端。這事能成功。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313659
+    m_Localized: 我們來將其變成生命的慶典吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313660
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313661
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313662
+    m_Localized: 能活下去，不然呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313663
+    m_Localized: 我們需要抓緊時間制定計劃，讓太陽見鬼去吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313664
+    m_Localized: 一路直行，永不停歇。如何，要不要一起聯手？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313665
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313666
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313667
+    m_Localized: 真是個白癡。也罷，我不跟你這種人計較。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313668
+    m_Localized: 好，我找你的鄰居去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313669
+    m_Localized: 之後見。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313670
+    m_Localized: 嘿嘿嘿，這就對了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313671
+    m_Localized: 媽的，總算碰上個有腦子的人了！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313672
+    m_Localized: 噢，我還以為沒人在家。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313673
+    m_Localized: 晚上實在是太過安靜了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313674
+    m_Localized: 嗨！能不能讓我進去？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313675
+    m_Localized: 你一直在監視著我家？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313676
+    m_Localized: 你是在找什麼東西嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313677
+    m_Localized: 蛤？哈哈哈哈，當然不是。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313678
+    m_Localized: 只是覺得住滿了人的房子晚上卻這麼安靜，還挺稀奇的而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313679
+    m_Localized: 總有人會醉酒鬧事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313680
+    m_Localized: 抑或撞到自己的腳趾之後喊個不停。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313681
+    m_Localized: 不然就是無法承受內心的悲痛嚎啕大叫。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313682
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313683
+    m_Localized: 你是從哪裡來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313684
+    m_Localized: 為什麼會這樣覺得？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313685
+    m_Localized: 不——我跟其他人一樣，都是來尋求某物的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313686
+    m_Localized: 安全，以及消磨時間的辦法。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313687
+    m_Localized: 這裡晚上太過安靜了。說實話，我還以為沒人住。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313688
+    m_Localized: 我就想看看能不能進去，結果門是鎖住的。雖想將其破開，不過覺得還是先敲一敲門會比較好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313689
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313690
+    m_Localized: 你是從哪裡來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313691
+    m_Localized: 我是個醫生，而醫院已經人滿為患了——強烈建議你們不要前往該處。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313692
+    m_Localized: 我專攻心臟手術，不過……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49639313693
+    m_Localized: ……醫院資金不足，我只好身兼數職。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507712
+    m_Localized: 現在主要是四處走走，盡可能地向有需要的人提供幫助。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507713
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507714
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507715
+    m_Localized: 鎮中心有一家醫院。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507716
+    m_Localized: 裡面擠滿了病人，治都治不過來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507717
+    m_Localized: 其中甚至還有一些偽人……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507718
+    m_Localized: 情況急轉直下、失去了控制，整間醫院都關閉了、現在已經亂成一團。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507719
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507720
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507721
+    m_Localized: 我理解——如今這個世道，去相信一個陌生人並非什麼易事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507722
+    m_Localized: 要是運氣好的話，說不定當你需要幫忙的時候我剛好會在附近。到時不必有什麼顧忌，儘管聯絡我就好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507723
+    m_Localized: 希望能幫上忙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507724
+    m_Localized: 嗨！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507725
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507726
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507727
+    m_Localized: 來這裡做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507728
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507729
+    m_Localized: 這裡是否還好？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507730
+    m_Localized: 一切可好？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507731
+    m_Localized: 為什麼不回答我的問題？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507732
+    m_Localized: 先等一下，你想做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507733
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507734
+    m_Localized: 這裡是否還好？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507735
+    m_Localized: 一切可好？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507736
+    m_Localized: 為什麼不回答我的問題？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507737
+    m_Localized: 先等一下，你想做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507738
+    m_Localized: 是、是這樣的——這裡就你一個人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507739
+    m_Localized: 只是好奇問問罷了。知道嗎？現在你就跟一個預言家一樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507740
+    m_Localized: 對一些人伸出援手，卻也將一些人拒之門外。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507741
+    m_Localized: 這裡還有其他人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507742
+    m_Localized: 這裡就我一個人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507743
+    m_Localized: 看來，你今晚運氣不錯。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507744
+    m_Localized: 我能聽到房子裡有人竊竊私語。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507745
+    m_Localized: 然而明天會如何，誰也不好說……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507746
+    m_Localized: 哈哈哈哈蛤哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507747
+    m_Localized: 怎麼如此？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507748
+    m_Localized: 這種時候能一個人待著也是件難事。不是我說，你這是怎麼回事？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507749
+    m_Localized: 跟我來吧，年輕人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507750
+    m_Localized: 透過窗戶，你看到一群全副武裝的士兵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507751
+    m_Localized: 顯然，這是一支城裡派來的小型部隊，專門為FEMA提供安保。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507752
+    m_Localized: 只能聽見隻言片語的你，從中判斷他們正在談論某個渾身蒼白、赤身裸體的人物。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507753
+    m_Localized: 說不定他們是來追蹤那個笑面人的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507754
+    m_Localized: 想到終於有人來對付偽人了，你不由得鬆了一口氣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507755
+    m_Localized: 幾具十來歲孩子焦黑的屍體。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507756
+    m_Localized: 看起來好像已經在地上躺了一整天。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507757
+    m_Localized: 兩名聯邦緊急事件管理局的工作人員正站在一邊，埋頭寫著什麼東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507758
+    m_Localized: 當局能派人來搬走這些屍體真是太好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507759
+    m_Localized: 一旦腐爛，屍體將是傳播疾病的媒介……現在這個時候，沒有理由讓事情變得更糟。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507760
+    m_Localized: 一小群FEMA的工作人員正站在鄰居的房子外面。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507761
+    m_Localized: 真想知道他們究竟在說些什麼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507762
+    m_Localized: 莫非是在採集土壤樣本？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507763
+    m_Localized: 抑或是在找地方建基地？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507764
+    m_Localized: 一想到有人正盡己所能地搞清楚這場噩夢究竟是怎麼回事，你的心裡覺得好受了那麼一點。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507765
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507766
+    m_Localized: 我能在你這裡歇歇腳嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507767
+    m_Localized: 你是從哪裡來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507768
+    m_Localized: 你接著要去哪裡？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507769
+    m_Localized: 我已經不記得了，也不在乎。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507770
+    m_Localized: 我累壞了。再不休息就得倒在這裡了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507771
+    m_Localized: 請問你的夥伴是生病了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507772
+    m_Localized: 請問你的好友是否需要幫助？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507773
+    m_Localized: 我……我只想找個地方倒頭就睡，再不起來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507774
+    m_Localized: 至於這個地方是哪裡，我並不在意。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507775
+    m_Localized: 你的夥伴生病了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507776
+    m_Localized: 請問你的好友是否需要幫助？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507777
+    m_Localized: 這是我丈夫。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507778
+    m_Localized: 他已經過世了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507779
+    m_Localized: 我現在也沒辦法好好安葬他，就此撒手也不對。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507780
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507781
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507782
+    m_Localized: 已經不再需要了。需要的時候，也沒人幫他。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507783
+    m_Localized: 現在，他已經死了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507784
+    m_Localized: 要是真的有人在乎……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507785
+    m_Localized: 說不定他就能活下來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507786
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507787
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507788
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507789
+    m_Localized: 你……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507790
+    m_Localized: 我不會待太久的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507791
+    m_Localized: 只要喘口氣就行。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507792
+    m_Localized: 媽的，我怎麼可能會知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507793
+    m_Localized: 我還以為你知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507794
+    m_Localized: 管它呢，沒必要在意這個。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507795
+    m_Localized: 只要能賺錢，知不知道又有什麼區別？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507796
+    m_Localized: 媽的，真是太棒了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507797
+    m_Localized: 允許我進來真是太好了。對此，我非常感激。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507798
+    m_Localized: 不像這房子裡的其他白癡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507799
+    m_Localized: 真的，當時你就不應該讓這些人進門，而是讓他們滾蛋。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507800
+    m_Localized: 要我說，最好是把他們全部交給FEMA了事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507801
+    m_Localized: 不然，留在這裡也是霸佔空間、浪費糧食。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507802
+    m_Localized: 不過，說到底你才是這裡的老大。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507803
+    m_Localized: 正如俗話所說，跟著老大有出路。該如何處置，都由你做主。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507804
+    m_Localized: 嘿嘿嘿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507805
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507806
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507807
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507808
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507809
+    m_Localized: 嘿嘿。怎麼了，白癡？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507810
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507811
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507812
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507813
+    m_Localized: 問得好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507814
+    m_Localized: 我向來習慣透過科學的視角來看待一切。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507815
+    m_Localized: 然而遺憾的是，我們並沒有辦法知曉到底發生了什麼事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507816
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507817
+    m_Localized: 要是能知道偽人究竟是什麼，一定會很有意思。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507818
+    m_Localized: 前提是我們能活著看到這一真相。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507819
+    m_Localized: 沒錯，不過最好還是留個心眼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507820
+    m_Localized: 我忘不了醫院發生的事，再也不想重蹈覆轍了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507821
+    m_Localized: 單獨一人，是理性的生物；聚集起來……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507822
+    m_Localized: 則成了一群愚蠢的野獸。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507823
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507824
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507825
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507826
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507827
+    m_Localized: 嗯？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507828
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507829
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507830
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507831
+    m_Localized: 我毫無頭緒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507832
+    m_Localized: 不過……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507833
+    m_Localized: 我覺得太陽之所以會爆發跟偽人脫不了關係。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507834
+    m_Localized: 災變開始的同時，它們就從地下爬出來了——這絕無可能是巧合。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507835
+    m_Localized: 萬一偽人的目的是要取代我們呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507836
+    m_Localized: 萬一太陽爆發是為了消滅我們呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507837
+    m_Localized: 不過整體來說，這也已經不再重要。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507838
+    m_Localized: 取決於你如何看待這個問題。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507839
+    m_Localized: 如今這個世道，一人難以成事——不抱團取暖根本活不下去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507840
+    m_Localized: 只是話說回來，到處都是偽人的情況下，也無法去相信他人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507841
+    m_Localized: 誰都有可能是怪物的情況下，怎麼可能齊心協力得起來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507842
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507843
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507844
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507845
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507846
+    m_Localized: 嗯？你想做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507847
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507848
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507849
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507850
+    m_Localized: 數千年來，人類犯下的罪行罄竹難書。現在，太陽終於決定要降下懲罰！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507851
+    m_Localized: 而偽人這群混帳東西竟然向要染指太陽！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507852
+    m_Localized: 而太陽可不屬於這群流民，而是人類的！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507853
+    m_Localized: 太陽是我們的！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507854
+    m_Localized: 我們的救世主！光輝的守護神！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507855
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507856
+    m_Localized: 媽的，我的好友謝爾蓋喝醉之後倒在了外面，活生生地被太陽烤成了焦炭……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507857
+    m_Localized: 聖潔的太陽，請將他的靈魂擁進懷抱、令其安息。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507858
+    m_Localized: 還有就是，也請接納一下他種的無花果樹的靈魂。既然他已經過世了，就不會有人再給其澆水了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507859
+    m_Localized: 阿門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507860
+    m_Localized: 既然聚在了一起，就應該團結一致。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507861
+    m_Localized: 不然義者要如何指引大家走上正道？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507862
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507863
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507864
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507865
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507866
+    m_Localized: 我在聽，人類！有話就說！！！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507867
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507868
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507869
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507870
+    m_Localized: 因為人類。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507871
+    m_Localized: 我們就是導致這一切的罪魁禍首。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507872
+    m_Localized: 至於其他，就沒什麼好說的了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507873
+    m_Localized: 我想，沒有這個必要。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507874
+    m_Localized: 我被那些只懂得隨波逐流的傢伙傷得太深了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507875
+    m_Localized: 只是看到與眾不同的人，就會不假思索地拒絕、羞辱和迫害他們。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507876
+    m_Localized: 於我而言，這地方真的有那麼安全嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507877
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507878
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507879
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507880
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507881
+    m_Localized: 要是能暖和點就好了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507882
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507883
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507884
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507885
+    m_Localized: 注意！緊急警報！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507886
+    m_Localized: 由於強烈日照導致的兇猛高溫，我國大部分的草原和林地已遭野火吞沒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507887
+    m_Localized: 目前仍然難以確定其肆虐範圍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507888
+    m_Localized: 然而有一件事不言自明——規模如此之大的野火，放在整個人類歷史上也是絕無僅有。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507889
+    m_Localized: 能調動的消防隊都已經指派到受災區域了，然而由於遭遇了「偽人」的關係，大量的消防員遭到了撤職。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507890
+    m_Localized: 接下來是其他新聞……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507891
+    m_Localized: 觀眾朋友們，早安！現在是晨間新聞時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507892
+    m_Localized: FEMA英勇的工作人員已經建立起了隔離區。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507893
+    m_Localized: 如若表現出了「偽人」的特徵，無論是誰，都還請遵照指示前往最近的FEMA隔離區報到。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507894
+    m_Localized: 雖然「偽人」的真實身份究竟為何至今尚不得而知，一些民眾對此表達擔憂……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507895
+    m_Localized: 不過FEMA向我們保證，「偽人」只是一群需要幫助的病人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507896
+    m_Localized: 與此同時，FEMA也確定了「偽人」的一項新特徵——過度發紅、充滿血絲的眼睛。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507897
+    m_Localized: 透過對被扣留的「偽人」進行實驗確認了這一資訊。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507898
+    m_Localized: 根據FEMA專家的說法，這是由於長期暴露在強烈陽光之下導致的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507899
+    m_Localized: 務必保持警惕，不要於白天外出。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507900
+    m_Localized: 接下來是其他新聞……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507901
+    m_Localized: 為什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507902
+    m_Localized: 我……我不知道……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507903
+    m_Localized: 我真不知道！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507904
+    m_Localized: 我不知道！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507905
+    m_Localized: 主啊，為何要這樣對待我們！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507906
+    m_Localized: 我們因何要承受此等痛苦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507907
+    m_Localized: 請垂憐我們，毀滅太陽吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507908
+    m_Localized: 留下黑暗，以及寒冷！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507909
+    m_Localized: 我再也無法忍受了！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507910
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507911
+    m_Localized: 團、團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507912
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507913
+    m_Localized: 是的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507914
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507915
+    m_Localized: 沒錯！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507916
+    m_Localized: 我們應該一起祈禱！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507917
+    m_Localized: 這一定會管用，主肯定能聽見我們的聲音！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507918
+    m_Localized: 祈禱的人越多，聲音就越大。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507919
+    m_Localized: 主啊，請垂聽我們的禱告、回應我們的祈求。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507920
+    m_Localized: 望太陽先行燃盡自身。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507921
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507922
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507923
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507924
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507925
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507926
+    m_Localized: 噢、噢。希望能快點結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507927
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507928
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507929
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507930
+    m_Localized: 導致這次災變的原因？我不在乎。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507931
+    m_Localized: 我厭倦透了這一切……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507932
+    m_Localized: 不管是這該死的太陽。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507933
+    m_Localized: 還是這些該死的偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507934
+    m_Localized: 這無窮無盡的地獄到底什麼時候到頭？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507935
+    m_Localized: 望太陽將我們通通燒成灰燼！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507936
+    m_Localized: 希望這一切能快點結束……至於具體是如何收場，我已不再在乎。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507937
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507938
+    m_Localized: 抱歉，我不知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507939
+    m_Localized: 我現在根本沒有辦法思考。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507940
+    m_Localized: 只想休息一下，別無他求……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507941
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507942
+    m_Localized: 求求你了，讓我休息一下吧。我真的累壞了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507943
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507944
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507945
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507946
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507947
+    m_Localized: 我需要休息一下……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507948
+    m_Localized: 到底是什麼引發了這次災變？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507949
+    m_Localized: 我們是否應團結一致？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507950
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507951
+    m_Localized: 你、你好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507952
+    m_Localized: 讓我進去吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507953
+    m_Localized: 情緒為何如此激動？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507954
+    m_Localized: 是不是出什麼事了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507955
+    m_Localized: 我、我不知道該、該怎麼辦。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507956
+    m_Localized: 有人——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507957
+    m_Localized: 啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507958
+    m_Localized: 殺、殺、殺了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507959
+    m_Localized: 啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507960
+    m_Localized: 爸、爸爸。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507961
+    m_Localized: 是誰下的手？來，先喝口水再說。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507962
+    m_Localized: 為什麼要這樣做？來，先喝口水再說。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507963
+    m_Localized: 啊——啊——啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507964
+    m_Localized: 我、我爸、爸爸……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507965
+    m_Localized: 啊——啊——啊——啊——啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507966
+    m_Localized: 我爸、爸、爸爸被人殺了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507967
+    m_Localized: 是誰下的手？來，先喝口水再說。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507968
+    m_Localized: 為什麼要這樣做？來，先喝口水再說。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507969
+    m_Localized: 偽、偽人進到了我家，坐、坐在了裡頭。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507970
+    m_Localized: 爸爸跟它們說、說、說了幾句，然後就被殺死了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507971
+    m_Localized: 啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507972
+    m_Localized: 我家著、著火了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507973
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507974
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507975
+    m_Localized: 我不、我不知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507976
+    m_Localized: 本來它們跟我爸爸安安靜靜地坐、坐、坐在廚房裡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507977
+    m_Localized: 之後不知道做、做、做了什麼，接著就放、放、放火燒了我家。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507978
+    m_Localized: 我拚命逃、逃跑，而它們則不停地嗤笑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507979
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507980
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507981
+    m_Localized: 我還能去、去、去哪裡？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507982
+    m_Localized: 啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507983
+    m_Localized: 啊——！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507984
+    m_Localized: 我嚇、嚇、嚇壞了、了、了！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507985
+    m_Localized: 能、能、能不能幫、幫幫我？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507986
+    m_Localized: 我、我嚇壞了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507987
+    m_Localized: 晚安。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507988
+    m_Localized: 我隸屬於FEMA，是來幫助各位的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507989
+    m_Localized: 就你一個人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507990
+    m_Localized: 我憑什麼相信你？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507991
+    m_Localized: 當然不是。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507992
+    m_Localized: 我們正分頭挨家挨戶地進行拜訪，這樣效率會比較高。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507993
+    m_Localized: 我不會在這裡待太久。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507994
+    m_Localized: 為什麼穿著防護衣？難道是存在汙染嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507995
+    m_Localized: 具體要如何幫助我們？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507996
+    m_Localized: 相信你肯定已經看過新聞了，裡面就有報導過我們。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507997
+    m_Localized: 此外，我也可以給你看我的證件。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507998
+    m_Localized: 為什麼穿著防護衣？難道是存在汙染嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643507999
+    m_Localized: 具體要如何幫助我們？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508000
+    m_Localized: 不必害怕。之所以會穿著防護衣，只是擔心會碰上日出、被太陽找到而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508001
+    m_Localized: 一般平民暫時還用不著這個，只要待在家裡就不會有問題。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508002
+    m_Localized: 我們會照顧好各位的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508003
+    m_Localized: 接下來會怎樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508004
+    m_Localized: 是否有行動計劃？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508005
+    m_Localized: 首先，我們需要調查周邊區域。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508006
+    m_Localized: 然後，管理層會根據結果來決定之後的方案。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508007
+    m_Localized: 只需耐心等待即可。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508008
+    m_Localized: 接下來會怎樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508009
+    m_Localized: 是否有行動計劃？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508010
+    m_Localized: 我需要從你這裡帶走一人進行檢查。不會太久，結束之後就會送回。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508011
+    m_Localized: 根據結果，將能判斷你們是否有受到太陽的輻射。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508012
+    m_Localized: 至於具體要帶走誰，並不重要。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508013
+    m_Localized: 接下來會怎樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508014
+    m_Localized: 我也需要收拾行李跟你們走嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508015
+    m_Localized: 當然。我們並非無頭蒼蠅。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508016
+    m_Localized: 我們會從你這裡帶一個人回去做檢查。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508017
+    m_Localized: 太陽輻射的汙染擴散了，我們只需檢查這裡的其中一人即可。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508018
+    m_Localized: 根據結果，將能確認你們是否需要幫助。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508019
+    m_Localized: 至於具體要帶走誰，並不重要。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508020
+    m_Localized: 接下來會怎樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508021
+    m_Localized: 我也需要收拾行李跟你們走嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508022
+    m_Localized: 還請耐心等待。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508023
+    m_Localized: 接下來我們要嘛通知你們疏散，要嘛將被帶走之人送回此處。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508024
+    m_Localized: 無論如何，都會給出指示。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508025
+    m_Localized: 沒必要擔心，我們會保證被帶走之人的安全。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508026
+    m_Localized: 再見。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508027
+    m_Localized: 沒有這個必要，目前房主只要好好待在家裡就行。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508028
+    m_Localized: 我們會帶走一人進行檢查，然後將結果匯報給上級。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508029
+    m_Localized: 之後很快就會作出相應的指示。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508030
+    m_Localized: 沒必要擔心，我們會保證被帶走之人的安全。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508031
+    m_Localized: 再見。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508032
+    m_Localized: 喂！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508033
+    m_Localized: 有人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508034
+    m_Localized: 你是誰？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508035
+    m_Localized: 是來找人的嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508036
+    m_Localized: 我之前住在離這裡幾個街區的地方。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508037
+    m_Localized: 沒曾想來了幾個穿著黃色衣服的傢伙，把我們給驅逐了出去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508038
+    m_Localized: 說是需要疏散，卻又不告訴我們應往何處、該做什麼！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508039
+    m_Localized: 大家都還在思考接下來該去何方，我則跑到這裡來自救。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508040
+    m_Localized: 為什麼會被趕出來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508041
+    m_Localized: 你們還剩幾人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508042
+    m_Localized: 我沒有在尋人，只是想找個藏身之處。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508043
+    m_Localized: 整個鄰里都被穿著黃色衣服的傢伙給趕出來了，大家都不知道該去哪裡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508044
+    m_Localized: 現在，我正盡量讓自己能活著看到明天的日出。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508045
+    m_Localized: 為什麼會被趕出來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508046
+    m_Localized: 你們還剩幾人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508047
+    m_Localized: 這些穿著黃色衣服的傢伙聲稱我們這邊有巨大的太陽耀斑還是什麼東西來著。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508048
+    m_Localized: 然後就把我們給趕出來了。不僅如此，還抓走了幾個人，說是要帶回去檢查。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508049
+    m_Localized: 而被留下來的人……只能自己想辦法。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508050
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508051
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508052
+    m_Localized: 整個房子裡的人都一個不剩地被趕出來了！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508053
+    m_Localized: 雖說有人抵抗，然而並無用處。我們寡不敵眾……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508054
+    m_Localized: 我估計有一半的人都被抓走了。其餘的人逃了出來，不過他們也沒怎麼追。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508055
+    m_Localized: 唉，我要想辦法活下去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508056
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508057
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508058
+    m_Localized: 總而言之，不要給那些穿著黃色衣服的傢伙開門就對了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508059
+    m_Localized: 不過，看起來你應該也不會再給其他人開門了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508060
+    m_Localized: 哈哈哈哈哈哈哈哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508061
+    m_Localized: 我會把我們這邊的人給帶過來，好保護你的安全。哈哈哈哈哈哈哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508062
+    m_Localized: 太好了，非常感謝。千萬別給穿著黃色衣服的傢伙開門，好嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508063
+    m_Localized: 不然我們都會被抓走的……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508064
+    m_Localized: 嘿。這裡怎麼樣，還好吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508065
+    m_Localized: 我不是這裡的人，甚至也不能說是來自其他地方。我不喜歡在同一處待太久。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508066
+    m_Localized: 不過，我的年紀也很大了。沒辦法再像以前一樣到處跑了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508067
+    m_Localized: 為何四處旅行？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508068
+    m_Localized: 到這裡來是要找什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508069
+    m_Localized: 沒錯，就是這些傢伙。我來問問你——是否有見到過偽人都對我們做了些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508070
+    m_Localized: 一家人在自己的住處被撕成了碎片。受盡折磨之後，被殘忍地殺害。每個房間看起來都跟屠宰場一樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508071
+    m_Localized: 這群惡魔偽裝成我們的一份子，混進來之後把整間房子變成了人間煉獄。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508072
+    m_Localized: 我們得把偽人給趕盡殺絕。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508073
+    m_Localized: 難道，你想殺死偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508074
+    m_Localized: 要對付它們的話，武器又在哪裡呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508075
+    m_Localized: 這裡……指的是這座小鎮？我只是想歇歇腳，僅此而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508076
+    m_Localized: 自從這該死的太陽爆發以來，偽人就如雨後春筍一般出現、到處都是。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508077
+    m_Localized: 這麼說吧——這些傢伙都是天生壞種，我們得把它們通通殺掉、一個不留。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508078
+    m_Localized: 難道，你想殺死偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508079
+    m_Localized: 要對付它們的話，武器又在哪裡呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508080
+    m_Localized: 難道你不是這樣做的嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508081
+    m_Localized: 該不會只把它們給趕跑就完事了？看起來你也沒有蠢到這種程度，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508082
+    m_Localized: 即便攆走了，第二天它們還會折返、將你煎皮拆骨，而且是在甚至已經不記得你姓甚名誰的情況下。知道了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508083
+    m_Localized: 面對這些傢伙再怎麼小心也不為過，就是這樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508084
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508085
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508086
+    m_Localized: 我之前有把槍，不過也差點因此而死就是了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508087
+    m_Localized: 這些傢伙等我在帳篷裡睡著了之後偷走了它。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508088
+    m_Localized: 我只好逃跑，而它們則一邊追趕、一邊開槍，還非常享受這種「樂趣」。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508089
+    m_Localized: 偽人就是披著人皮的怪物，僅此而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508090
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508091
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508092
+    m_Localized: 好吧。或許，你就是個偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508093
+    m_Localized: 說不定等到夜幕降臨之後就會割斷我的喉嚨。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508094
+    m_Localized: 我絕對不會讓偽人好過，一定會令你驚嘆不已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508095
+    m_Localized: 我就知道你不會輕易屈服於這些傢伙、是一名硬漢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508096
+    m_Localized: 我們要與偽人開戰。這些傢伙該知曉我們並不好惹。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508097
+    m_Localized: 你好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508098
+    m_Localized: 看見了嗎？現在，到處都是一團糟。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508099
+    m_Localized: 這叫什麼社會？野獸一個接一個地露出了自己的真面目。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508100
+    m_Localized: 終於，人人都卸下了偽裝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508101
+    m_Localized: 這是什麼意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508102
+    m_Localized: 既然如此，你也是這群野獸中的一員嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508103
+    m_Localized: 先回答我的問題——是否有去過其他人的房子？又或者，是否曾經踏出過這個地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508104
+    m_Localized: 之前的文明體面，如今已一錢不值。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508105
+    m_Localized: 現在，人人都靠拳頭說話。想要建立秩序？只要把擋在面前的傢伙通通揍趴就好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508106
+    m_Localized: 之前你都待在哪裡？經常跑來跑去嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508107
+    m_Localized: 這段時間，你是怎麼熬過來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508108
+    m_Localized: 我們都是野獸。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508109
+    m_Localized: 要是一味否定這個事實，遲早會被生吞活剝，甚至連骨頭都不剩。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508110
+    m_Localized: 全新的秩序已然確立——誰拳頭大，誰就有理。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508111
+    m_Localized: 要是敢不認同，就再也見不到第二天的太陽。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508112
+    m_Localized: 之前你都待在哪裡？經常跑來跑去嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508113
+    m_Localized: 這段時間，你是怎麼熬過來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508114
+    m_Localized: 我不會在同一處待太久。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508115
+    m_Localized: 不管在何處，我都只能看見一片混亂。恐懼遮蔽了大家的雙眼，令他們看不清面前的種種。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508116
+    m_Localized: 不過，這裡竟然一絲秩序。真有意思，希望能就此維持下去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508117
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508118
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508119
+    m_Localized: 沒事不要瞎打聽。要知道，好奇心害死貓。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508120
+    m_Localized: 我不會去問你是如何活到現在的，因此也不要打聽我是怎麼熬過來的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508121
+    m_Localized: 重點是，我不會給你添任何麻煩。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508122
+    m_Localized: 進來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508123
+    m_Localized: 趕緊離開吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508124
+    m_Localized: 好吧。看來，就是這麼一回事了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508125
+    m_Localized: 我們走著瞧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508126
+    m_Localized: 嗯，理智的決定。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508127
+    m_Localized: 要是拳頭不大，就沒有話語權——這就是如今的世道。要嘛乖乖接受，要嘛滾一邊去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508128
+    m_Localized: 昨天過來的一整隊士兵都已經死了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508129
+    m_Localized: 滿街都是他們的屍體，其中一具的腦袋甚至還不翼而飛了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508130
+    m_Localized: 難道是之前那個面無血色的笑面人下的毒手？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508131
+    m_Localized: 眼前這副血腥屠殺的場景把你嚇得不輕，令你覺得自己正處於危險之中。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508132
+    m_Localized: 一個通體蒼白、詭異至極的人正站在路上，面露微笑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508133
+    m_Localized: 手裡還捧著某人的首級，而且還戴著頭盔。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508134
+    m_Localized: 這正是士兵的人頭，因恐懼而扭曲的表情永遠凝固在了他的臉上。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508135
+    m_Localized: 目之所及的一切都令你倍感不適。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508136
+    m_Localized: 鄰居家的房子剛剛塗成白色沒多久，就被燒為平地、只剩焦黑的殘骸。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508137
+    m_Localized: 看起來是最近熄滅的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508138
+    m_Localized: 難道有人故意縱火？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508139
+    m_Localized: 鄰居一家人到底怎樣了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508140
+    m_Localized: 是否還有人存活？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508141
+    m_Localized: 為什麼要把房子燒毀？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508142
+    m_Localized: 焦慮充斥著你的腦海，因無法理解這一切而產生的絕望佔據了你的軀體。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508143
+    m_Localized: 要我說，他們就是老大。怎麼了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508144
+    m_Localized: 我覺得FEMA是在做好事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508145
+    m_Localized: 被他們帶走的人全都該死。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508146
+    m_Localized: 前幾天，我透過窗戶看見他們把我的鄰居給帶走了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508147
+    m_Localized: 這混蛋跟我借了一大筆錢，而且一直都沒有要還的意思。就這點而言，我覺得他們是在做好事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508148
+    m_Localized: 媽的，要是能成為FEMA的一員就好了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508149
+    m_Localized: 噗、噗……哈哈哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508150
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508151
+    m_Localized: 不對，看來你說的並不是高潮？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508152
+    m_Localized: 我懂了，你是指現在的這些爛事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508153
+    m_Localized: 好吧……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508154
+    m_Localized: 媽的，誰知道呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508155
+    m_Localized: 沒錯，烈日正熊熊燃燒、引發致命熱浪，然而壞事總有到頭的一天，只是時間的問題而已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508156
+    m_Localized: 因此，我想太陽應該很快就會熄滅。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508157
+    m_Localized: 這樣一來，我們就不必面對此等高溫、又能像以前一樣安居樂業了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508158
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508159
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508160
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508161
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508162
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508163
+    m_Localized: 嘿嘿。怎麼了，白癡？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508164
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508165
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508166
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508167
+    m_Localized: 我、我不知道你、你說的是誰。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508168
+    m_Localized: 媽媽……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508169
+    m_Localized: 要、要不是因為那群壞人，這、這一切都不會發生。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508170
+    m_Localized: 啊——啊——啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508171
+    m_Localized: 快、快到了？末、末日嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508172
+    m_Localized: 我……我不想死！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508173
+    m_Localized: 啊——啊——啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508174
+    m_Localized: 媽、媽媽……啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508175
+    m_Localized: 啊——啊——啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508176
+    m_Localized: 媽媽，我想跟你在一起……啊——啊——啊
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508177
+    m_Localized: 啊——啊——啊——啊——啊——啊——啊——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508178
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508179
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508180
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508181
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508182
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508183
+    m_Localized: 我……我要媽、媽媽。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508184
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508185
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508186
+    m_Localized: 讓我檢查一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508187
+    m_Localized: 相對而言，我對他們懷抱比較積極的看法。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508188
+    m_Localized: 雖說，並非人人都贊同FEMA的行事作風。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508189
+    m_Localized: 然而，如今這個世道，能有組織出面維持秩序未免不是一件好事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508190
+    m_Localized: 末日？我不覺得。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508191
+    m_Localized: 人類面臨過無數次滅頂之災，總是在滅亡的邊緣不斷徘徊。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508192
+    m_Localized: 然而每次都是鼓起勇氣、持續鬥爭。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508193
+    m_Localized: 即便是在看似走投無路、末日將近的時刻，也是如此。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508194
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508195
+    m_Localized: 因此，我堅信這次災變並非不可戰勝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508196
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508197
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508198
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508199
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508200
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508201
+    m_Localized: 嗯？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508202
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508203
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508204
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508205
+    m_Localized: 是指穿著黃色衣服的混蛋？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508206
+    m_Localized: 就是一群毫無人性的野獸罷了，甚至沒有自己的主觀意志。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508207
+    m_Localized: 全都躲在黃色的繭中、戴著面罩，以為自己真的能說了算。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508208
+    m_Localized: 只要有一丁點疑似偽人的特徵，就會不由分說地將人帶走。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508209
+    m_Localized: 即便這群傢伙燒起來了，我甚至連給他們撒泡尿來滅火都不願意。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508210
+    m_Localized: 問這個有什麼意義？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508211
+    m_Localized: 難道是想要我安慰一下你？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508212
+    m_Localized: 不了——冷靜下來，好好看看現在是什麼情況吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508213
+    m_Localized: 即便不是末日，也起碼是一次非常嚴重的災變了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508214
+    m_Localized: 我們還能做什麼呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508215
+    m_Localized: 一切發生之前，是該做些什麼。然而時至今日，就已經太遲了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508216
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508217
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508218
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508219
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508220
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508221
+    m_Localized: 嗯？你想做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508222
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508223
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508224
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508225
+    m_Localized: 就是一群罪該萬死的異教徒！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508226
+    m_Localized: 這些傢伙想要干預我們人類無法控制的過程！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508227
+    m_Localized: 真是愛管閒事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508228
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508229
+    m_Localized: 就是這群混蛋把我媽扔到了水坑裡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508230
+    m_Localized: 是指末日？對誰來說？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508231
+    m_Localized: 我們？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508232
+    m_Localized: 哈哈哈！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508233
+    m_Localized: 不要引人發笑了，太陽是站在我們這邊的！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508234
+    m_Localized: 這是在向我們施以援手，難道你看不出來嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508235
+    m_Localized: 如此這般，就能把地下的這些傢伙給熏出來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508236
+    m_Localized: 我們應該對此感恩戴德，而非鼓吹什麼世界末日。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508237
+    m_Localized: 即便真的有，也是對罪該萬死的偽人而言！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508238
+    m_Localized: 這群自地下爬出的不速之客終將毀滅！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508239
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508240
+    m_Localized: 媽的，我已經很久沒吃過炸馬鈴薯了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508241
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508242
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508243
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508244
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508245
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508246
+    m_Localized: 我在聽，人類！有話就說！！！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508247
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508248
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508249
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508250
+    m_Localized: 我不相信他們。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508251
+    m_Localized: 這些傢伙手握大權，能隨心所欲地左右普通人的命運。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508252
+    m_Localized: 不管是誰，只要被他們認定是偽人，就會被帶走。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508253
+    m_Localized: 遲早，我們也會被帶走。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508254
+    m_Localized: 現在，只是在等待時機罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508255
+    m_Localized: 末日？沒錯，要比以往任何時候都更接近。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508256
+    m_Localized: 人類的歷史即將走向終結。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508257
+    m_Localized: 按照常理，末日將近應該會讓我感到害怕……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508258
+    m_Localized: 然而，我對其完全沒有任何概念、也並不害怕死亡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508259
+    m_Localized: 如若人類真的無法避免邁向滅亡，起碼給我們個痛快、而非像現在這樣拖泥帶水。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508260
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508261
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508262
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508263
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508264
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508265
+    m_Localized: 我就是暖和不起來……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508266
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508267
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508268
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508269
+    m_Localized: 對此，又能怎麼樣呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508270
+    m_Localized: 再說，也與我們無關。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508271
+    m_Localized: 殺人兇手是他們，就是這樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508272
+    m_Localized: 只要小心一點，不隨便放人進來就好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508273
+    m_Localized: 不然，說不定會把偽人給主動請進門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508274
+    m_Localized: 這又有什麼區別？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508275
+    m_Localized: 只要沒人來打擾我們——這不就好了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508276
+    m_Localized: 難道你真的會去擔心其他人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508277
+    m_Localized: 就讓偽人和那些穿著黃色衣服的傢伙在外面閒逛吧，一個也別放進來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508278
+    m_Localized: 能活著已經非常不錯了。至於還有無人性——誰會在乎呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508279
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508280
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508281
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508282
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508283
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508284
+    m_Localized: 千萬不要讓任何人進來，孩子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508285
+    m_Localized: 對於殺人，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508286
+    m_Localized: 我們還有人性嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508287
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508288
+    m_Localized: FEMA——一群好人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508289
+    m_Localized: 跟我們一樣——他們也在尋找偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508290
+    m_Localized: 不過，我覺得對偽人這麼客氣、把它們送進隔離區根本就是在浪費時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508291
+    m_Localized: 甚至只會讓事情變得更糟，因為這些傢伙可以就此聯合起來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508292
+    m_Localized: 最好是把它們給挨個消滅掉。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508293
+    m_Localized: 只有死的偽人，才是好的偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508294
+    m_Localized: 末日？沒錯，要是不阻止偽人的話，我看的確是快要到了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508295
+    m_Localized: 這群該死的野獸，想要欺騙我們、溜到我們的背後。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508296
+    m_Localized: 趁我們都安然入睡之後，於夜幕的掩護之下把我們給挨個殺死。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508297
+    m_Localized: 遲早也會輪到你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508298
+    m_Localized: 不過，只要先下手為強就好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508299
+    m_Localized: 進攻就是最好的防禦。要主動出擊，趕在它們行動之前先將其給揪出來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508300
+    m_Localized: 既然已經放了這麼多人進來，其中肯定有一個是偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508301
+    m_Localized: 不過，尚有一線生機！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508302
+    m_Localized: 現在就開始行動，把它給找出來。如此一來，說不定能打其一個措手不及。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508303
+    m_Localized: 最重要的是，千萬不能猶豫！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508304
+    m_Localized: 把它們都揪出來，挨個地給消滅掉！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508305
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508306
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508307
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508308
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508309
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508310
+    m_Localized: 擦亮眼睛，說不定偽人就在我們之中。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508311
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508312
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508313
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508314
+    m_Localized: 注意！緊急警報！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508315
+    m_Localized: 鑒於最近發生的一連串事件，一群富有同情心的市民們站了出來、自發提供人道主義援助。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508316
+    m_Localized: 志工正在給需要幫助的人派發食物、提供住處。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508317
+    m_Localized: 這些市民堅稱自己的行為與FEMA無關，只是想向他人伸出援手。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508319
+    m_Localized: 我們將持續為您報導，敬請關注最新消息。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508320
+    m_Localized: 觀眾朋友們，早安！現在是晨間新聞時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508321
+    m_Localized: FEMA再次確定了「偽人」的一項新特徵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508322
+    m_Localized: 數據表明，要是給「偽人」拍照的話，相片上的人像就會變得非常模糊。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508323
+    m_Localized: 不過，只有使用底片相機才會這樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508324
+    m_Localized: 遺憾的是，造成此現象的原因尚未查明。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508325
+    m_Localized: 雖說如此，FEMA還是鼓勵市民透過這一全新特徵來辨別「偽人」。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508326
+    m_Localized: 請務必保持警惕，不要於白天外出。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508327
+    m_Localized: 接下來是其他新聞……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508328
+    m_Localized: FEMA？！在哪裡？！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508329
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508330
+    m_Localized: 這些傢伙不在這裡，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508331
+    m_Localized: 千萬不要大聲說出這個名字，不然就會把他們給引過來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508332
+    m_Localized: 只要提起他們，我就不寒而慄。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508333
+    m_Localized: 我非常害怕自己有一天會被他們帶走。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508334
+    m_Localized: 我……我不想前往隔離區。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508335
+    m_Localized: 凡是去了的，都沒回來過。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508336
+    m_Localized: 光是想像這些穿著黃色衣服的傢伙都對他們做了些什麼事情，就令我頭皮發麻。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508337
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508338
+    m_Localized: 快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508339
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508340
+    m_Localized: 末日嗎？！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508341
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508342
+    m_Localized: 不！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508343
+    m_Localized: 千萬不要！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508344
+    m_Localized: 我們將會在無盡的痛苦中死去！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508345
+    m_Localized: 主啊，救救我們吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508346
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508347
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508348
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508349
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508350
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508351
+    m_Localized: 噢、噢。希望能快點結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508352
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508353
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508354
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508355
+    m_Localized: 就是一群嗜血的獵人，一心把我們當成牲口來驅趕。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508356
+    m_Localized: 千萬不要被他們的外表所欺騙——這就是群披著羊皮的狼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508357
+    m_Localized: 起初，只是四處打聽、裝作要些什麼該死的報告。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508358
+    m_Localized: 然而，一旦聞到了肉的味道，就會露出獠牙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508359
+    m_Localized: 到時人們就會像待宰的羔羊一樣，順從地隨其離去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508360
+    m_Localized: 千萬不要相信這群惡狼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508361
+    m_Localized: 是指……末日？照我看來，要是大家互相仇視，末日也就不會遠了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508362
+    m_Localized: 現在，我們基本上就是處於這種狀態。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508363
+    m_Localized: 因此，大家得聚在一起、形成集體——這將會是好事一件。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508364
+    m_Localized: 不過，也得擦亮眼睛。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508365
+    m_Localized: 如果沒有出色的領袖，任何集體都會分崩離析。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508366
+    m_Localized: 一名稱職的領袖必須願意為集體做出一切犧牲，包括殺人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508367
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508368
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508369
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508370
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508371
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508372
+    m_Localized: 是否有問題需要問我？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508373
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508374
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508375
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508376
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508377
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508378
+    m_Localized: 要不是因為FEMA……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508379
+    m_Localized: 我丈夫……也就不會死……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508380
+    m_Localized: 我已經再也不去思考任何事情了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508381
+    m_Localized: 嗯……是說末日？這個問題毫無意義。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508382
+    m_Localized: 沒錯，末日快到了——這點人人都知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508383
+    m_Localized: 無法改變，無法避免。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508384
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508385
+    m_Localized: 該死的太陽。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508386
+    m_Localized: 該死的偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508387
+    m_Localized: 你想檢查什麼地方？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508388
+    m_Localized: 牙齒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508389
+    m_Localized: 雙手
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508390
+    m_Localized: 眼睛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508391
+    m_Localized: 拍照
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508392
+    m_Localized: 我需要休息一下……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508393
+    m_Localized: 對於FEMA，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508394
+    m_Localized: 你說，是不是……快到了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508395
+    m_Localized: 讓我檢查一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508396
+    m_Localized: 晚安。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508397
+    m_Localized: 我們隸屬於FEMA，需要對住在這裡的人進行調查。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508398
+    m_Localized: 不是已經帶走過一個人了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508399
+    m_Localized: 關於之前的調查，結果如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508400
+    m_Localized: 帶走過一個人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508401
+    m_Localized: 想起來了——整個流程非常累人，之前帶走的人還在為此進行休養。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508402
+    m_Localized: 好了之後，就會把人給送回來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508403
+    m_Localized: 現在是又要再帶一個人走嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508404
+    m_Localized: 為什麼帶走了一個人還不夠？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508405
+    m_Localized: 結果比較複雜。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508406
+    m_Localized: 樣本相對不足。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508407
+    m_Localized: 現在是又要再帶一個人走嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508408
+    m_Localized: 為什麼帶走了一個人還不夠？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508409
+    m_Localized: 是的。只有一人的情況下，恐怕無法將現況給整理清楚。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508410
+    m_Localized: 因此，我們需要從這裡再帶走一人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508411
+    m_Localized: 不管誰都可以。謝謝配合。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508412
+    m_Localized: 要是別無他法的話，好吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508413
+    m_Localized: 不行，我對此不感興趣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508414
+    m_Localized: 我們手上的樣本不足。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508415
+    m_Localized: 起初，上頭說只要帶走一人即可。然而，現在看來根本就不夠。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508416
+    m_Localized: 因此，我們只能再來帶走一人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508417
+    m_Localized: 要是別無他法的話，好吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508418
+    m_Localized: 不行，我對此不感興趣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508419
+    m_Localized: 沒錯，的確別無他法。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508420
+    m_Localized: 這都是為了大家的安全著想。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508421
+    m_Localized: 不，我就直說了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508422
+    m_Localized: 這並非請求，而是命令。我們只是在履行自己的職責罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508423
+    m_Localized: 對此，你無權拒絕。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508424
+    m_Localized: 只要把工作做完，我們就會離開。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508425
+    m_Localized: 我們能活到今天屬實是個奇蹟。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508426
+    m_Localized: 不過接下來將要發生的事情，會是駭人的秘密。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508427
+    m_Localized: 歡迎回來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508428
+    m_Localized: 這段時間，你是怎麼熬過來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508429
+    m_Localized: 也並非一段很長的時間。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508430
+    m_Localized: 我也就四處走了走，看看都發生了什麼事、感受這個世界的變化。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508431
+    m_Localized: 我不認為冰川很快就會融化。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508432
+    m_Localized: 看來我們即將見證鳥兒如雨般從天而降了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508433
+    m_Localized: 這是什麼意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508434
+    m_Localized: 照你看來，事態還會繼續惡化？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508435
+    m_Localized: 這並非你該擔心的問題，不過還是說聲謝謝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508436
+    m_Localized: 我不認為冰川很快就會融化。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508437
+    m_Localized: 看來我們即將見證鳥兒如雨般從天而降了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508438
+    m_Localized: 這是什麼意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508439
+    m_Localized: 照你看來，事態還會繼續惡化？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508440
+    m_Localized: 末日？嗯……你說呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508441
+    m_Localized: 這當真就是一切的終結了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508442
+    m_Localized: 還是說情況將變得更加糟糕？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508443
+    m_Localized: 我已經無法看透將來，或許到頭來只是一場空。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508444
+    m_Localized: 我們該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508445
+    m_Localized: 其他人會如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508446
+    m_Localized: 思考這個又有何意義？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508447
+    m_Localized: 我認為沒有必要為此傷神。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508448
+    m_Localized: 繼續發聲也好、接著藏人也罷，皆毫無意義——結果都是一樣的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508449
+    m_Localized: 我也不知道該怎麼辦。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508450
+    m_Localized: 我們該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508451
+    m_Localized: 其他人會如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508452
+    m_Localized: 不清楚，我能做的也就只有繼續觀察一途。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508453
+    m_Localized: 你會怎麼做？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508454
+    m_Localized: 為什麼你會需要了解這一切？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508455
+    m_Localized: 不管我們如何看待彼此，最後得到的必然是一張扭曲的側寫。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508456
+    m_Localized: 又見面了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508457
+    m_Localized: 對於這個穿著制服的人，你有何看法？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508458
+    m_Localized: 照我看來，他只是在做好自己的分內工作。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508459
+    m_Localized: 我不知道該對他作何感受。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508460
+    m_Localized: 好吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508461
+    m_Localized: 如今這個世道就是這樣，一定得小心。這樣可以嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508462
+    m_Localized: 我現在有些忙，能不能稍後再來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508463
+    m_Localized: 能趕緊離開嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508464
+    m_Localized: 這有什麼好不知道的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508465
+    m_Localized: 也罷，我反正是無所謂。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508466
+    m_Localized: 我現在有些忙，能不能稍後再來？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508467
+    m_Localized: 能趕緊離開嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508468
+    m_Localized: 好的，我知道了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508469
+    m_Localized: 既然如此，我晚點再來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508470
+    m_Localized: 不過……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508471
+    m_Localized: 先回答我一個問題 —— 這裡就你一個人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508472
+    m_Localized: 這裡還有其他人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508473
+    m_Localized: 這裡就我一個人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508474
+    m_Localized: 好吧。我沒看出來你不喜歡跟我說話。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508475
+    m_Localized: 不過，先回答我一個問題……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508476
+    m_Localized: 現在，這裡就你一個人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508477
+    m_Localized: 這裡還有其他人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508478
+    m_Localized: 這裡就我一個人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508479
+    m_Localized: 是這樣嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508480
+    m_Localized: 太陽把你認識的人都燒成了焦炭，就剩下你一個。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508481
+    m_Localized: 裡面要嘛就沒有其他人，要嘛就都是跟我一樣的人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508482
+    m_Localized: 怎麼會這樣？難道你是什麼窮兇極惡的野獸？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508483
+    m_Localized: 好吧……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508484
+    m_Localized: 來吧，你將迎來適合自己的結局。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508485
+    m_Localized: 準備？知道自己是在為什麼進行準備嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508486
+    m_Localized: 末日——沒人告訴你嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508487
+    m_Localized: 狗狗已經統治了這個世界——當這一切都結束之後，也只有狗狗會存活下來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508488
+    m_Localized: 祝你過得愉快。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508489
+    m_Localized: 燈桿上掛著一具屍體，頸上掛著一面牌子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508490
+    m_Localized: 上頭寫著「不歡迎偽人」。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508491
+    m_Localized: 看起來其他人誤認為這個可憐蟲是偽人，對其處以了私刑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508492
+    m_Localized: 一想到這些暴行正在席捲往日平靜祥和的小鎮就令你覺得心碎，進而懷念起舊時的歲月靜好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508493
+    m_Localized: 你看到一根木樁，上面插著一個戴著頭盔的顱骨。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508494
+    m_Localized: 其上殘留的皮膚有被燒焦的痕跡，而且牙齒看起來像是被人拔光了一樣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508495
+    m_Localized: 這顆頭顱已經像這樣放了一整天了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508496
+    m_Localized: 眼前的這一景象就像是恐嚇，肯定是出自面無血色的笑面偽人之手。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508497
+    m_Localized: 你看向鄰居家的房子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508498
+    m_Localized: 該處只剩如同鬼魅一般的輪廓。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508499
+    m_Localized: 目之所及的一切都令你無比震驚。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508500
+    m_Localized: 意識到罪魁禍首可能不是窮兇極惡的偽人、而是妄想纏身的人類，這似乎讓你更加不安。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508501
+    m_Localized: 這令你焦慮不已。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508502
+    m_Localized: 地表世界危機四伏，不再宜居。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508503
+    m_Localized: 利用木板封死窗戶之後，你又搬來重物堵住了每一扇門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508504
+    m_Localized: 跟借住的大家討論過之後，你決定從此不再踏出家門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508505
+    m_Localized: 只是一味無助地祈禱，希望這一切總有一天能結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508506
+    m_Localized: 前提是，這場噩夢真的會有終結之時。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508507
+    m_Localized: 不過，希望尚未破滅…… 起碼，目前的確如此……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508508
+    m_Localized: 地表世界危機四伏，不再宜居。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508509
+    m_Localized: 利用木板封死窗戶之後，你又搬來重物堵住了每一扇門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508510
+    m_Localized: 跟借住的大家討論過之後，你決定從此不再踏出家門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508511
+    m_Localized: 只是一味無助地祈禱，希望這一切總有一天能結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508512
+    m_Localized: 前提是，這場噩夢真的會有終結之時。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508513
+    m_Localized: 起碼，房子裡的全是人類——一想到這點，你就放下了心。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508514
+    m_Localized: 地表世界危機四伏，不再宜居。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508515
+    m_Localized: 利用木板封死窗戶之後，你又搬來重物堵住了每一扇門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508516
+    m_Localized: 跟借住的大家討論過之後，你決定從此不再踏出家門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508517
+    m_Localized: 只是一味無助地祈禱，希望這一切總有一天能結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508518
+    m_Localized: 前提是，這場噩夢真的會有終結之時。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508519
+    m_Localized: 又或者，這只不過是在白日做夢罷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508520
+    m_Localized: 實際上，偽人早已將你給四分五裂。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508521
+    m_Localized: 即便處於這種狀態，也能體驗到情感，也可謂一種恩賜了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508522
+    m_Localized: 就只剩下一天了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508523
+    m_Localized: 地表世界危機四伏，不再宜居。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508524
+    m_Localized: 利用木板封死窗戶之後，你又搬來重物堵住了每一扇門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508525
+    m_Localized: 跟借住的大家討論過之後，你決定從此不再踏出家門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508526
+    m_Localized: 只是一味無助地祈禱，希望這一切總有一天能結束。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508527
+    m_Localized: 前提是，這場噩夢真的會有終結之時。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508528
+    m_Localized: 不過，希望尚未破滅…… 起碼，目前的確如此……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508529
+    m_Localized: 幸好，於要將誰放進房子的這件事情上，你慧眼如炬。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508530
+    m_Localized: 沒有一個偽人能矇混過關。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508531
+    m_Localized: 就目前的情況而言，這裡可謂一股清流。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508532
+    m_Localized: 地表世界危機四伏，不再宜居。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508533
+    m_Localized: 利用木板封死窗戶之後，你又搬來重物堵住了每一扇門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508534
+    m_Localized: 跟借住的大家討論過之後，你決定從此不再踏出家門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508535
+    m_Localized: 然而，他們開始以異樣的目光看待你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508536
+    m_Localized: 想要盡快熬過這場噩夢的你，每天都過得風風火火。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508537
+    m_Localized: 只顧著例行公事，好將自己從外面世界的恐怖之中抽離出來。這，真的值得嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508538
+    m_Localized: 或許吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508539
+    m_Localized: 最重要的，還是得好好地生活、去品味其中的美，然後試著去享受這一切。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508540
+    m_Localized: 雖說你盡己所能地去向每一個借住的人伸出援手。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508541
+    m_Localized: 然而還是出現了大量的傷亡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508542
+    m_Localized: 對於他人而言，你太過危險、已經不能再待在房子裡了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508543
+    m_Localized: 其他人擔心自己的安全受到威脅，將你趕了出去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508544
+    m_Localized: 甚至連一天的時間都不到，你就在大街上被烈日燒成了焦炭。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508545
+    m_Localized: 無人知曉最後一位來客到訪之後都發生了些什麼事情。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508546
+    m_Localized: 這棟房子在很長一段時間之內都再無他人居住。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508547
+    m_Localized: 自從你突然之間消失得無影無蹤之後，大家都心有餘悸、總會繞開這裡走。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508548
+    m_Localized: 難道你能透過我的眼睛讀取我的思緒？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508549
+    m_Localized: 難道你能看出我到底都在想著些什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508550
+    m_Localized: 沒事，既然如此，我會盡量不去胡思亂想。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508551
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508552
+    m_Localized: 為什麼你會是這副樣子？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508553
+    m_Localized: 你看、看、看那裡……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508554
+    m_Localized: 你…… 哇。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508555
+    m_Localized: 我、我、我、我想喝、喝點東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508556
+    m_Localized: 我早就知道該怎麼自己剪指甲了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508557
+    m_Localized: 只是不太擅長罷了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508558
+    m_Localized: 看看。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508559
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508560
+    m_Localized: 看看我的指甲。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508561
+    m_Localized: 這是我自己剪的。真的，沒騙你！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508562
+    m_Localized: 我想自己一個人坐一下子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508567
+    m_Localized: 拍照？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508568
+    m_Localized: 我不是很喜歡排…… 派…… 拍照！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508569
+    m_Localized: 拍完之後能給我看看嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508570
+    m_Localized: （你給女孩拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508571
+    m_Localized: （照片有點模糊）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508572
+    m_Localized: （女孩還沒等照片拍好，就向你跑來）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508573
+    m_Localized: 嗯。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508574
+    m_Localized: 謝謝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508575
+    m_Localized: 我不喜歡。千萬不要再給我拍照了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508576
+    m_Localized: 想看我的牙齒？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508577
+    m_Localized: 為什麼？爸爸說，我嘴裡的都還是乳牙……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508578
+    m_Localized: 我再也不會哭了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508579
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508580
+    m_Localized: 已經給你看過了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508581
+    m_Localized: 這是什麼意思？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508582
+    m_Localized: 沒什麼問題，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508583
+    m_Localized: 好的，我會讓你看看眼睛。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508584
+    m_Localized: 不知道你發現了沒有，我患有多瞳症。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508585
+    m_Localized: 也就是說，一個眼球裡有著複數瞳孔。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508586
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508587
+    m_Localized: 因此，我的視力也不太好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508588
+    m_Localized: 我想，你應該會覺得一個眼球裡有兩個瞳孔會非常方便吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508589
+    m_Localized: 然而…… 唉。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508590
+    m_Localized: 我這雙手給好些病患做過手術……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508591
+    m_Localized: 要是想聽的話，我有大把的故事可以說。不過，還是先留到下次吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508592
+    m_Localized: 好了，看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508593
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508594
+    m_Localized: 我一直都在堅持鍛鍊、盡可能地讓雙臂變得結實，好讓自己常備不懈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508595
+    m_Localized: 畢竟沒人知道明天會怎樣，不是嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508596
+    m_Localized: 好的，沒問題。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508597
+    m_Localized: 最好一一確認是否具有偽人的特徵——這我理解。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508598
+    m_Localized: （你給醫生拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508599
+    m_Localized: （照片一切正常）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508600
+    m_Localized: 曾經有人說過，我的相貌不俗。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508601
+    m_Localized: 不知你覺得如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508602
+    m_Localized: 謝謝關心，我的牙齒都很好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508603
+    m_Localized: 噢，你是想確認我是否具備偽人的特徵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508604
+    m_Localized: 好的，看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508605
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508606
+    m_Localized: 完美無瑕，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508607
+    m_Localized: 之前，有個好友幫我免費矯正過牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508608
+    m_Localized: 因為我給他做了手術。這已經是好久以前的事情了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508609
+    m_Localized: 不知道他現在怎麼樣了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508610
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508611
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508612
+    m_Localized: 要是有這個意思的話，我也可以幫你矯正牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508613
+    m_Localized: 當然，只會象徵性地收取一些費用，畢竟你幫了我很大的忙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508614
+    m_Localized: 這爛事結束之後，我就立即著手吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508615
+    m_Localized: 等等，這是要幹什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508616
+    m_Localized: 不，你搞錯了——我救死扶傷！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508617
+    m_Localized: 而你，卻想取人性命……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508618
+    m_Localized: 真是一天比一天離譜。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508619
+    m_Localized: 要是我沒睡好、抑或哭過的話，又該如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508620
+    m_Localized: 我是真的搞不懂這究竟是什麼原理。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508621
+    m_Localized: 萬一有一個或者數個特徵對上了，你打算怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508622
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508623
+    m_Localized: 看來，今晚我就要變成「偽人」了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508624
+    m_Localized: 我要狠狠地大哭一場、緬懷往日的平靜生活。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508625
+    m_Localized: 這群傢伙到底是從哪裡來的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508626
+    m_Localized: 指甲髒就是偽人？這也能叫特徵？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508627
+    m_Localized: 只要洗個手不就好了嗎？就是這麼簡單！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508628
+    m_Localized: 園丁的指甲不可避免地會在工作的過程中變髒，難道他們就全都是偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508629
+    m_Localized: 真是荒唐。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508630
+    m_Localized: 看吧，指甲。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508631
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508632
+    m_Localized: 如何，我是偽人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508633
+    m_Localized: 怎麼可能。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508634
+    m_Localized: 這群穿著黃色衣服的傢伙，還有這些亂七八糟的檢查……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508635
+    m_Localized: 我也說不清楚，總之這一切……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508636
+    m_Localized: 都太他媽該死了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508637
+    m_Localized: 難道你不覺得我們正在往地獄裡走嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508638
+    m_Localized: 都說一切井然有序，然而目之所及…… 卻非瘋即癲……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508639
+    m_Localized: 好吧，來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508640
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508641
+    m_Localized: （他靜靜地坐著，雖然沒有把整個人都拍進去，不過整體而言沒有什麼異常）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508642
+    m_Localized: 我只是很害怕接下來會發生什麼事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508643
+    m_Localized: 要看我的牙齒？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508644
+    m_Localized: 看吧，上面還沾著不幸與硝煙的餘韻。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508645
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508646
+    m_Localized: 是不是有點黃？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508647
+    m_Localized: 好了，不要再檢查來檢查去的了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508648
+    m_Localized: 我不是偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508649
+    m_Localized: 看看我這雙黝黑、深邃的眼睛吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508650
+    m_Localized: 它們吸收了來自陽光的祝福，將其轉化成了能量。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508651
+    m_Localized: 我的力量全都來自這雙眼睛！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508652
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508653
+    m_Localized: 看到洋溢於其中的太陽之力了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508654
+    m_Localized: 沒看見就是瞎了。要像我一樣，長時間盯著太陽看才行。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508655
+    m_Localized: 沒問題，我的好友！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508656
+    m_Localized: 想怎麼看都可以。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508657
+    m_Localized: 我專門練過，能以其採集陽光。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508658
+    m_Localized: 當然，還能開啤酒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508659
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508660
+    m_Localized: 你，呃，就只是看一眼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508661
+    m_Localized: 我還以為……呃，你是個邪惡的人！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508662
+    m_Localized: 拍照？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508663
+    m_Localized: 唔、唔、唔。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508664
+    m_Localized: 是否有人告訴過你，我跟太陽領袖本人打過招呼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508665
+    m_Localized: 沒錯，正是我教她如何直視太陽的。晚點，我也可以教你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508666
+    m_Localized: 來，拍吧！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508667
+    m_Localized: （你給邋遢的人拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508668
+    m_Localized: （照片裡的他，正如本人一樣蓬頭垢面）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508669
+    m_Localized: （沒發現有什麼異常）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508670
+    m_Localized: 拍得真好！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508671
+    m_Localized: 過來，我跟你說說自己的故事。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508672
+    m_Localized: 聽完之後，給我一些錢就好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508673
+    m_Localized: 我要說的，是拯救太陽能量的事情！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508674
+    m_Localized: 想看我的牙齒？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508675
+    m_Localized: 這可是我捍衛真理的武器！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508676
+    m_Localized: 我捍衛了自己的真理。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508677
+    m_Localized: 我在這裡到底都做了什麼，只管親眼瞧瞧就會知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508678
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508679
+    m_Localized: 啤酒能補鈣，我就靠它來保護自己的牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508680
+    m_Localized: 不然早就掉光了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508681
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508682
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508683
+    m_Localized: 當然，完全理解。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508684
+    m_Localized: 雖說發生了一連串的事情，然而我們還是得繼續過活。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508685
+    m_Localized: 我們還是得繼續過活。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508686
+    m_Localized: 我想，你該不會是在陰涼之處坐太久了吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508687
+    m_Localized: 躺下來歇一歇吧，我的好友。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508688
+    m_Localized: 現在，眼睛已經不是心靈的窗戶，而是地獄的大門。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508689
+    m_Localized: 我的靈魂早已燃盡。或許就是因為這個原因，我總感覺非常寒冷。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508690
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508691
+    m_Localized: 瞳孔收縮？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508692
+    m_Localized: 大概是因為我很冷吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508693
+    m_Localized: 遺憾的是，即便如此，被太陽照到還是會化為焦炭。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508694
+    m_Localized: 要不然，我還真的挺想去曬一曬、暖和暖和。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508695
+    m_Localized: 指甲？看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508696
+    m_Localized: 嗯，看來指甲好像都已經被我弄破了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508697
+    m_Localized: 罷了，看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508698
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508699
+    m_Localized: 如何，我的指甲符合偽人的特徵嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508700
+    m_Localized: 好吧，我知道了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508701
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508702
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508703
+    m_Localized: 其實，我早就活膩了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508704
+    m_Localized: 不過，你卻沒有殺我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508705
+    m_Localized: 我想，與其同時，於其他的房子裡，一定有人遭到了毒手。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508706
+    m_Localized: 是否有想過，到底為什麼會這樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508707
+    m_Localized: 我明白了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508708
+    m_Localized: 我好像知道自己為什麼總是會覺得渾身發冷了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508709
+    m_Localized: 光靠一張照片，能看出來什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508710
+    m_Localized: 難道你就不覺得奇怪嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508711
+    m_Localized: 不過，這也不是我能決定的事情。來，拍吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508712
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508713
+    m_Localized: （照片上的人不管是衣服還是身體都非常模糊，就好像在你按下快門的時候，打了個大大的冷顫一樣）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508714
+    m_Localized: 抱歉，我被閃光燈嚇得縮了一下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508715
+    m_Localized: 能不能再拍一次？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508716
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508717
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508718
+    m_Localized: 這些傢伙到底還要想出幾條特徵，才能意識到自己該做的是什麼？對此，你如何看待？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508719
+    m_Localized: 為什麼非得要殺人不可？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508720
+    m_Localized: 難道真的有必要去殺人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508721
+    m_Localized: 我沒什麼可失去的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508722
+    m_Localized: 不過，等等，我想讓你看看……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508723
+    m_Localized: 嗯，牙齒？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508724
+    m_Localized: 要是有必要的話，悉隨尊便。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508725
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508726
+    m_Localized: 現在該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508727
+    m_Localized: 我知道了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508728
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508729
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508730
+    m_Localized: 謝謝你的信任。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508731
+    m_Localized: 希望我能幫上忙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508732
+    m_Localized: 我感到有點心煩意亂，不過卻說不出所以然。抱歉。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508733
+    m_Localized: 難道，你要向我開槍？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508734
+    m_Localized: 等等，動手之前，先看看……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508735
+    m_Localized: 迎面撲來了腐爛與死亡的氣味。昨晚有人被殺了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508736
+    m_Localized: 聽起來，好像是有「偽人」混進了房子裡。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508737
+    m_Localized: 最好還是留個心眼，仔細查看一下借住的人有沒有「偽人」的特徵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508738
+    m_Localized: 我眼睛裡的毛細血管就沒好過，整天破裂。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508739
+    m_Localized: 不知道你到底要如憑此何判斷我是不是偽人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508740
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508741
+    m_Localized: 這是要做什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508742
+    m_Localized: 好吧……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508743
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508744
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508745
+    m_Localized: 沒錯，這根本就不能算作特徵——不是嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508746
+    m_Localized: 一不小心搞錯了、把人給殺死了，就太糟糕了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508747
+    m_Localized: 你到底搞錯過幾次了？你背得起這些人命嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508748
+    m_Localized: 來吧，對準我的眉心扣下扳機吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508749
+    m_Localized: 不過就算殺了我也沒有用。到了明天，它們就會來敲這裡的窗戶！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508750
+    m_Localized: 不然，你也會被太陽給燒死！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508751
+    m_Localized: 這樣的話，麻煩可就大了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508752
+    m_Localized: 我年紀大了，孩子。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508753
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508754
+    m_Localized: 我已經忘記這種病到底叫什麼名字了，只知道得了之後指甲就總是會脫落。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508755
+    m_Localized: 非常痛，也很不舒服。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508756
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508757
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508758
+    m_Localized: 我只不過是生病了，有必要向我開槍嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508759
+    m_Localized: 沒錯，你是可以給我個痛快。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508760
+    m_Localized: 不過，我還是想再活一段時間、再受一陣子苦，哈哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508761
+    m_Localized: 來，動手吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508762
+    m_Localized: 殺了我之後，它們就會光臨，把這一整棟房子的人都給殺個精光。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508763
+    m_Localized: 大家都會被你給害死，哈哈哈！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508764
+    m_Localized: 上次拍照都不知道是什麼時候的事情了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508765
+    m_Localized: 來吧，有何不可？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508766
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508767
+    m_Localized: （你特地站著不動，耐心地等待著照片顯影）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508768
+    m_Localized: （圖像出來了，非常模糊、完全看不清）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508769
+    m_Localized: 怎麼會模糊成這個樣子呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508770
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508771
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508772
+    m_Localized: 我能留著這照片嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508773
+    m_Localized: 我已經一張不剩了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508774
+    m_Localized: 來啊，到時其他人也會這樣抹黑你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508775
+    m_Localized: 就像你拿這張照片抹黑我一樣，哈哈哈哈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508776
+    m_Localized: 哈哈哈哈，想要看我的牙齒是吧，孩子？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508777
+    m_Localized: 來吧，絕對找不到任何特徵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508778
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508779
+    m_Localized: 如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508780
+    m_Localized: 我通過檢查了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508781
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508782
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508783
+    m_Localized: 最好小心對待你手上拿著的這個東西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508784
+    m_Localized: 手握這傢伙到處亂逛，兩三下就會把大家搞得如坐針氈。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508785
+    m_Localized: 該不會，你整整一天都槍不離手吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508786
+    m_Localized: 去你媽的！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508787
+    m_Localized: 一旦睡著，它們就會撲上來撕破你的喉嚨。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508788
+    m_Localized: 我的眼睛裡也曾有過光。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508789
+    m_Localized: 不過生活已然將其磨平。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508790
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508791
+    m_Localized: 我會把它們給通通拿下，親手將其一個個地撕碎。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508792
+    m_Localized: 如此一來，生活便能再次回歸平靜。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508793
+    m_Localized: 好的，來吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508794
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508795
+    m_Localized: 我的手之所以會這麼髒，是因為晚上都跑出去挖這群惡魔了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508796
+    m_Localized: 找到之後，還能趁機殺掉它們——這樣要更加簡單！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508797
+    m_Localized: 建議你也這樣做。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508798
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508799
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508800
+    m_Localized: 沒錯！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508801
+    m_Localized: 如何，今晚要不要跟我一起去勒死幾個偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508802
+    m_Localized: 我們一起去把它們給趕盡殺絕吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508803
+    m_Localized: 要是想將我趕出去的話，就把我扔到它們附近吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508804
+    m_Localized: 我害怕。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508805
+    m_Localized: 我不是很喜歡拍照。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508806
+    m_Localized: 閃光燈會讓我想到雷暴、引發恐慌。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508807
+    m_Localized: 不是，你沒搞懂——我是說，我不想拍照。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508808
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508809
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508810
+    m_Localized: 謝謝你的理解。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508811
+    m_Localized: 我不喜歡拍照。不管是完成之後得到的照片，還是按下快門之後的喀嚓一聲，抑或是隨之而來的閃光。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508812
+    m_Localized: 嗚——
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508813
+    m_Localized: 我沒興趣。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508814
+    m_Localized: 不要，等等！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508815
+    m_Localized: 媽的，我要走了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508816
+    m_Localized: 想看我的牙齒？沒問題，隨你便。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508817
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508818
+    m_Localized: 等等，這是要幹什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508819
+    m_Localized: 媽的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508820
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508821
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508822
+    m_Localized: 我知道你壓力很大。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508823
+    m_Localized: 不過，該殺的是偽人，而不是自己人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508824
+    m_Localized: 是時候清醒過來了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508825
+    m_Localized: 該死。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508826
+    m_Localized: 真是諷刺——不僅自己的槍沒了，還要死於你的槍下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508827
+    m_Localized: 要看我的眼睛？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508828
+    m_Localized: 不知道等待著我的會是什麼下場。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508829
+    m_Localized: 要是我符合特徵的話，會怎麼樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508830
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508831
+    m_Localized: 不出所料。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508832
+    m_Localized: 想殺了我？太可惜了，我永遠也無法知道這裡的人接下來將會如何了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508833
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508834
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508835
+    m_Localized: 難道，你真的認為我是個偽人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508836
+    m_Localized: 我自己怎麼不知道？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508837
+    m_Localized: 也許我們只是在說服自己本來就是怪物，然後就成為了怪物。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508838
+    m_Localized: 死亡是一件非常可怕的事情。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508839
+    m_Localized: 等等，能不能先給我戴個眼罩？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508840
+    m_Localized: 起碼，讓我再站一陣子吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508841
+    m_Localized: 指甲？不得不說，還真是個有意思的特徵……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508842
+    m_Localized: 來吧，看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508843
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508844
+    m_Localized: 指甲上的這些是什麼？絕對不可能會是泥巴。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508845
+    m_Localized: 我、我、我根本就不記得自己有挖過地……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508846
+    m_Localized: 也許是其他人把它們給弄髒的？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508847
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508848
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508849
+    m_Localized: 真是奇怪，為什麼會這麼髒？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508850
+    m_Localized: 我又不是好幾天沒洗澡。對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508851
+    m_Localized: 太過……詭異了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508852
+    m_Localized: 難道，我要死了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508853
+    m_Localized: 這也……太遺憾了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508854
+    m_Localized: 你改變主意了，是嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508855
+    m_Localized: 如果我真的是偽人，是不是就要開始殺人了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508856
+    m_Localized: 我會不會變得很危險？還是說，其實我一直都很危險？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508857
+    m_Localized: 或許，我真的會殺人？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508858
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508859
+    m_Localized: （圖像出來了，背景很清楚、人卻很模糊）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508860
+    m_Localized: （就好像在你按下快門的那一刻，眼前的人劇烈地抽搐了一下）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508861
+    m_Localized: 哈哈哈，真是難以置信。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508862
+    m_Localized: 接下來要怎麼做？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508863
+    m_Localized: 要讓我活下來嗎？又或者，最好還是殺了我？到底如何？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508864
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508865
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508866
+    m_Localized: 為什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508867
+    m_Localized: 直接一槍把我給打死不是更簡單嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508868
+    m_Localized: 我也不想再待在這裡了，不過卻提不起勇氣離開。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508869
+    m_Localized: 說不定……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508870
+    m_Localized: 我不知道。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508871
+    m_Localized: 要是開槍之後，我變成了某種更可怕的東西該怎麼辦？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508872
+    m_Localized: 也許我是該逃跑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508873
+    m_Localized: 不過，我也不確定。萬一開槍之後我也還是個人類呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49643508874
+    m_Localized: 我該如何是好？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284928
+    m_Localized: 也就是說，你想要根據牙齒的情況來做決定？哎呀。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284929
+    m_Localized: 我最近剛剛矯正過牙齒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284930
+    m_Localized: 不過，說實話……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284931
+    m_Localized: 我已經不記得自己什麼時候去看的牙醫了。我真的有去看過嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284932
+    m_Localized: 天啊，我甚至都已經想不起昨天吃過些什麼東西了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284933
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284934
+    m_Localized: 這…… 這是不是跟電視裡說的特徵對上了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284935
+    m_Localized: 這不可能……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284936
+    m_Localized: 我怎麼會是偽人呢，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284937
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284938
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284939
+    m_Localized: 不，這肯定只是巧合。我怎麼會是偽人呢，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284940
+    m_Localized: 這不可能……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284941
+    m_Localized: 絕無可能，對吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284942
+    m_Localized: 我還記得我迄今為止的人生，然而卻完全想不起……曾有過這樣的事情。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284943
+    m_Localized: 謝謝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284944
+    m_Localized: 不，求求你！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284945
+    m_Localized: 也就是說，我真的是個偽人？為什麼？到底為何會如此？不，不要這樣！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284946
+    m_Localized: 難道你是在尋找一個陌生的我嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284947
+    m_Localized: 難道，你就不怕在我的眼中看見自己的倒影？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284948
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284949
+    m_Localized: 了不起。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284950
+    m_Localized: 不是人人都能承受我的凝望。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284951
+    m_Localized: 想聽聽我最近都做了些什麼嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284952
+    m_Localized: 沒錯，我是親手殺了人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284953
+    m_Localized: 因為對方想要我的命，而我並不會坐以待斃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284954
+    m_Localized: 面對危機，有人會僵住，有人會逃跑。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284955
+    m_Localized: 而我會反擊。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284956
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284957
+    m_Localized: 怎麼，你要向我開槍？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284958
+    m_Localized: 真假？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284959
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284960
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284961
+    m_Localized: 說不定，我的動作比你想像中要快。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284962
+    m_Localized: 電光石火之間，就能把槍給搶過來。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284963
+    m_Localized: 混帳！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284964
+    m_Localized: 即便要死，我也得拉上你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284965
+    m_Localized: 我不喜歡拍照。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284966
+    m_Localized: 拍完以後，要是不把照片丟進垃圾桶裡的話，我就要採取相應的行動了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284967
+    m_Localized: 是否明白？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284968
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284969
+    m_Localized: （你甩了甩照片，想讓它快點顯影）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284970
+    m_Localized: （照片看起來沒什麼問題，不過一下子就被給搶走了）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284971
+    m_Localized: 拿來，我自己丟。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284972
+    m_Localized: 小心點。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284973
+    m_Localized: 要是敢對我動手動腳的話，就不要怪我咬斷你的喉嚨。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284974
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284975
+    m_Localized: 我一直都把牙齒保養得很好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284976
+    m_Localized: 至於缺了的幾顆……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284977
+    m_Localized: 就當作是送給躺在泥巴裡的這些傢伙好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284978
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284979
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284980
+    m_Localized: 不要再拿槍指著我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284981
+    m_Localized: 我知道你什麼時候睡，也知道你什麼時候醒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284982
+    m_Localized: 只要讓我逮到機會，就會把你生吞活剝。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284983
+    m_Localized: 千萬不要犯錯。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284984
+    m_Localized: 我也用過槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284985
+    m_Localized: 來看看誰快。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284986
+    m_Localized: 哈——！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284987
+    m_Localized: 想要檢查些什麼？看我眼睛紅不紅？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284988
+    m_Localized: 來吧，看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284989
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284990
+    m_Localized: 難道只要表現出情緒，就證明我是個偽人嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284991
+    m_Localized: 現在甚至都不允許笑了，接著是否連哭都不行了？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284992
+    m_Localized: 開槍。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284993
+    m_Localized: 聽對方說完。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284994
+    m_Localized: 現在能打開天窗說亮話了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284995
+    m_Localized: 笑也不能，哭也不准。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284996
+    m_Localized: 甚至，有時連話都不允許說。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284997
+    m_Localized: 只能呆呆坐著、以手捂臉。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284998
+    m_Localized: 這一切真的能如此簡單地結束嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660284999
+    m_Localized: 真的再也不會受罪了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285000
+    m_Localized: 不過，我也從來沒有阻止過你就是了。我的……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285001
+    m_Localized: 雙手，是嗎？等等……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285002
+    m_Localized: 我一直背著自己的丈夫，雙手又酸又累。這也無可奈何，沒人願意救他。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285003
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285004
+    m_Localized: 一定要這樣？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285005
+    m_Localized: 要是想開槍的話，就隨你的便好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285006
+    m_Localized: 我已經沒有力氣了……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285007
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285008
+    m_Localized: 不。抱歉，我太累了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285009
+    m_Localized: 難道你不覺得這很諷刺嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285010
+    m_Localized: 我丈夫還活著的時候，沒人肯向他伸出援手。這也就算了，然而……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285011
+    m_Localized: 現在他都已經死去了，你卻想褻瀆他的屍體？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285012
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285013
+    m_Localized: 我已經不知道該說什麼好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285014
+    m_Localized: 想做什麼都隨你，只要別碰我就好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285015
+    m_Localized: （你給談話對象拍了一張照片）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285016
+    m_Localized: （照片一切正常）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285017
+    m_Localized: （你把屍體也拍進去了，這讓你陷入了沉思）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285018
+    m_Localized: 好了的話，就趕緊走。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285019
+    m_Localized: 蛤？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285020
+    m_Localized: ……好吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285021
+    m_Localized: ……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285022
+    m_Localized: 就這樣嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49660285023
+    m_Localized: 能不能讓我一個人單獨待一陣子？
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab2ae270509514a1a73ed076419a685, type: 3}
+  m_Name: _ControlsViewList
+  m_EditorClassIdentifier:
+  <ControlsData>k__BackingField:
+  - {fileID: 11400000, guid: 5281b63156c930e408781b752f4e89fb, type: 2}
+  - {fileID: 11400000, guid: d713b87a1ed4d024295a361eef3743b4, type: 2}
+  - {fileID: 11400000, guid: 3d4eda9efe4bdf2439191e854e5c7052, type: 2}
+  - {fileID: 11400000, guid: 3280e37a8ee62974cb09647d22123243, type: 2}
+  - {fileID: 11400000, guid: 5855ddbe6347bc74fa4bd8c4261bd074, type: 2}
+  - {fileID: 11400000, guid: cb39ab32283645d4a9655943c05822a5, type: 2}
+  - {fileID: 11400000, guid: 2282cb50df5b01b468887e3d17f15529, type: 2}
+  - {fileID: 11400000, guid: 11e24908bb8839a4babaa416dc8a334c, type: 2}

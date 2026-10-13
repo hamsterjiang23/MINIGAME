@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5660d166e538661cb93e233cff01d6, type: 3}
+  m_Name: KilledBySuper
+  m_EditorClassIdentifier:
+  _endingType: 3
+  _videoClip: {fileID: 32900000, guid: 05315ea62a2e0d0499ceec9d9c7f2020, type: 3}
+  _subtitles:
+    _endingSubtitles:
+    - _nodeName: Ending_SuperComes_1
+      _duration: 19
+      _beforeNodeDelay: 6
+    - _nodeName: Ending_SuperComes_2
+      _duration: 27
+      _beforeNodeDelay: 4
+    - _nodeName: Ending_SuperComes_3
+      _duration: 28
+      _beforeNodeDelay: 5
+  _music: 696029164
+  _slides: []
+  _gachaData:
+    <SpoilerImages>k__BackingField:
+    - {fileID: 21300000, guid: 3270cdb26426d6042853f3fa1d09bfbe, type: 2}
+    - {fileID: 21300000, guid: c09eabd8643d5944e986dbf18272210a, type: 2}
+    - {fileID: 21300000, guid: e350b4de2ba018d4381dd70272ab80c2, type: 2}
+    _description:
+      m_TableReference:
+        m_TableCollectionName: GUID:0cbd8a7a4f543344bb95659de87f67a5
+      m_TableEntryReference:
+        m_KeyId: 118165680962412544
+        m_Key:
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

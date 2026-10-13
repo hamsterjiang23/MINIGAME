@@ -1,0 +1,23 @@
+Usage: AssetRipper.GUI.Free [--headless] [--help] [--local-web-file <string>...] [--log] [--log-path <string>] [--port <int32>] [--version]
+
+        --headless [<boolean>]
+            If true, a browser window will not be launched automatically. Default value: False.
+
+    -?, --help [<boolean>] (-h)
+            Displays this help message.
+
+        --local-web-file <string>
+            Files provided with this option will replace online sources.
+
+        --log [<boolean>]
+            If true, the application will log to a file. Default value: True.
+
+        --log-path <string>
+            The file location at which to save the log, or a sensible default if not provided.
+
+        --port <int32>
+            If nonzero, the application will attempt to host on this port, instead of finding a random unused port. Default value: 0.
+
+        --version [<boolean>]
+            Displays version information.
+

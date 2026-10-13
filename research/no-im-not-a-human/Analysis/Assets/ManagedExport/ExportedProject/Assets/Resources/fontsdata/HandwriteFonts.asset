@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e869603c4dad3a53fc5d6aa0aea69b3, type: 3}
+  m_Name: HandwriteFonts
+  m_EditorClassIdentifier:
+  <Fonts>k__BackingField:
+    _serializedList:
+    - Key: en
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: ru
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: fr
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: de
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: pt-BR
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: pt_PT
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: es
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: es-AR
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: zh
+      Value: {fileID: 11400000, guid: 776dd4f4a4f82154883d355409ec61e1, type: 2}
+    - Key: zh-Hant
+      Value: {fileID: 11400000, guid: 7d4dfa854f7d75e46b8ba5bc5d1b64b9, type: 2}
+    - Key: ja
+      Value: {fileID: 11400000, guid: 3142389dee00e584d9f7b29fc3d4d8e8, type: 2}
+    - Key: ko
+      Value: {fileID: 11400000, guid: 2907e751a83402f498acebf4565581e0, type: 2}
+    - Key: vi
+      Value: {fileID: 11400000, guid: 41d9da97c72afff4db033aeee85c871f, type: 2}
+    - Key: it
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: pl
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: uk
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: tr
+      Value: {fileID: 11400000, guid: f4ed184af1404e84783b874259d71e31, type: 2}
+    - Key: ar
+      Value: {fileID: 11400000, guid: b1df5976e2147f94cb3e93a1c39c3a20, type: 2}

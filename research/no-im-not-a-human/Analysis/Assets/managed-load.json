@@ -1,0 +1,18 @@
+{
+  "endpoint": "http://127.0.0.1:57941/LoadFolder",
+  "method": "POST",
+  "body": {
+    "path": "D:\\NoImNotAHuman-Research\\Analysis\\Assets\\ManagedRecoveryInput\\NoImNotAHuman_Data"
+  },
+  "startedUtc": "2026-10-13T03:02:51.0148103Z",
+  "stage": "finished",
+  "logStartLine": 4459,
+  "status": 200,
+  "elapsedSeconds": 4.8964726,
+  "process": {
+    "Id": 64400,
+    "WorkingSet64": 3767623680,
+    "PrivateMemorySize64": 3819614208,
+    "PeakWorkingSet64": 5888028672
+  }
+}

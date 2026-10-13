@@ -1,0 +1,1059 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: 2c9f148e973fd914eb8426fb4d22c384, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16302985216
+    m_Localized: Вход
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Ванная
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Спальня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Кабинет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Кухня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Кладовая
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Окно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Гостиная
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Выйти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Старт
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: Не хочу спать сейчас. Я полон энергии!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: Я не могу спать сейчас. Вдруг кто-то придёт сюда в поисках убежища?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Кажется, больше никто не придёт в эту ночь.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: Пахнет смертью. Кого-то убили.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Язык
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Громкость
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Выйти из игры
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Выход в меню без сохранения
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Открыть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: Нет, я не человек, я {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: Как же меня разморило от пива. Лучше всего сейчас лечь спать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Бобер Черни
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: Хоть что-то хорошее осталось в этом мире. Вкусное холодное пиво.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: Уменьшает   <sprite=0> до 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: Энержека
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: Сплошная химоза. Но почему иногда и не выпить, если нужно подольше не спать?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Кофе
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: Горячий больше не пью. Да и никто, наверно, не станет такой пить.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1   <sprite=1> на несколько дней
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Спасибо за игру!\nДобавляй в желаемое"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43618340848783360
+    m_Localized: NO SIGNAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Открыть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Войти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Использовать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: Посмотреть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Подвал
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: Дом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Телефон
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Радио
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Сигарета (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: Выкурить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Заколотить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Общий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Музыка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: Звуки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Сохранить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: Новая игра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Продолжить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁйцукенгшщзхъфывапролджэячсмитьбюё
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Взять
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Гриб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: Положу его в холодильник. Хотя я бы съел сейчас.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Копать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Дыра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "<b><size=40><align=center>-1-</align=center></size></b>\nСегодня город возвели,\nВ подвале гриб лез из земли.\nОн был велик, но был бы тот,\nКто поглотить бы его смог.\n\n\n\n<b><size=40><align=center>-2-</align=center></size></b>\nПринять гостей — удел для слабых.\nГриб выше нас, людей незваных,\nЛишь яблоня приют всем даст\nИ плодом сладким вскормит вас.\n\n\n\n<b><size=40><align=center>-3-</align=center></size></b>\nНастанет день, когда же он\nК грибам выходит на поклон,\nА стрелка устремится ввысь.\nСкорей, дружок, поторопись!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Кот
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Погладить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Настройки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Назад
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Экран
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Смерть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Говорить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Текст
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Эффект набора текста
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Чайный гриб (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Не использовать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: Полностью восстанавливает   <sprite=0>, но убирает один   <sprite=1> на следующий день
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: Давно я не курил. В последний раз… когда все уехали, наверно.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Сигареты
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Чайный гриб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: Сохраняет игру. Прогресс остаётся даже после завершения прохождения.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: Это вообще мой любимый гриб. От него я чувствую себя хорошо, лучше работает память. Напоминает о хороших временах.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Шахтёр
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Полноэкранный
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Безрамочный полноэкранный
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Развёрнутое окно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Оконный
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Выйти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Повесить трубку
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Закрыть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Положить [зажать]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Закрыть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Бежать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Использовать [зажать]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: «For Rest»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: Сосед
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: КЧС
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: Экстрасенсы
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Номера телефонов
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Кофе
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: Энержека
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Кажется, сегодня больше не поймать никаких радиопередач.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: страшная бабка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Инструкция
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Лучше не заходить туда сейчас. Проверю днём.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: Боюсь, я ослепну от такого. Лучше загляну ночью.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: Сегодня не до этого.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: Сегодня не до этого.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: Сегодня не до этого.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: Никто не будет в это время суток ходить по улице.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: Пожалуй, на сегодня с меня хватит.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: "Чтобы уловить сигнал, нужно крутить правую ручку. Для этого зажмите ЛКМ на правой ручке и передвигайте курсор влево или вправо.\n\nСлева — ручка для регулировки громкости.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: "я убрал блокатор волн с раций\nпошли они нахер!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Да
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: Нет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Вы уверены, что хотите выйти?\nВесь несохраненный прогресс будет потерян.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: злой толстяк с ранами
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: две сестры
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Пауза
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: Телефонные линии отрубило до осени. Остаётся ждать…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Ответить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Слушать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Искать частоту [крутить]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: Сменить диапазон волн на FM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: Сменить диапазон волн на AM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Вибрация геймпада
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Чувствительность геймпада
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Чувствительность геймпада в комнатах
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Чувствительность мыши
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Управление
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Календарь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: День пива
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: День огурца
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: День семьи
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#444444>Получено</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#444444>Отдано</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: огромный бородатый мужик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: безглазый
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: женщина с картами таро
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: парень в футболке amogus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: агрессивный чел с огромной башкой
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: этот в очках и с усами
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: плачущая девочка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: подросток в кепке
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: семейная пара
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: лысый бандит в костюме
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: женщина с котом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: верующая
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: длиннющий
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: парень в фиолетовой бандане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: мерзляк в куртке
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: таксист в кепке
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: парень в футболке с номером
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: курящая женщина
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: огромная женщина с чёлкой
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: здоровый гремлин
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: мужчина в зелёной кепке
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: мужчина в чёрном худи с капюшоном
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: горбатый мужик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: боевая баба с ярким макияжем
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: культист
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: опрятный мужчина с гангреной
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: женщина в вязаном свитере и очках
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: культист
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: мужчина с раной в животе
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: женщина с ребёнком
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: женщина с трупом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: голый жирдяй
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: мужчина в костюме КЧС
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: грязный жёлтый мужик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: растаман с дредами
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: девушка со скалиозом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: бомж
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: парень с зашитым ртом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: женщина в депрессии
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Пропустить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: Кусочек спокойной безмятежной жизни, не предвещавшей беды.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: День против конъюнктивита
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: День защиты детей
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: День кассира
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: День поселка городского типа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: День гостеприимства
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: Всемирный день «Спасибо»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: День дипломатии
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: День примирений
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: День ветряной мельницы
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Празднования ухода лета
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: 'День '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: Никого не осталось. Это... из-за сна?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: блять теперь не работает
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: Если поймать сигнал так и не удалось, попробуйте сменить диапазон волны. Для этого нажмите на отжатую кнопку с помощью ЛКМ и продолжайте правой ручкой искать нужную вам волну.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Коллекция
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: От гадалки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: Телефонная рулетка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: Сестра «лучшего сына»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: Муж непутёвой матери
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: Муж близняшки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: Жена злого толстяка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: От жены КЧС-ника
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: Иностранное посольство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: Подруга девочки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: Странный гриб. Как он вообще пророс в картошке?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Отправляет вас ненадолго в страну грибов
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: Съел яблоко. Кислое и сладкое одновременно...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: Выставил 12, как и сказано на страницах «Учебника улыбок»
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: "Выстрел прогремел в молоке тумана, и над толпой поднялись крылья, пахнущие пеплом.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: "Подвал стал вселенной: окна замурованы, голоса сливаются с тиканьем часов. Солнце угасает, но разве…это конец мучений?\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: "Гости были рядом с тобой всё это время: тёплое дыхание в темноте, шепот и злой смешок за спиной. Свет ты уже не увидишь, даже если его включат.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: "Они молились не о живых. Возможно, их мольба наконец нашла отклик, и мир стал тише.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: "Тебя увезли под сирены, оставив все воспоминания в старом доме. Вот бы вернуться, чтобы забрать плакат с собой. \r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: "Его тень только перешагнула порог, и дом опустел. Так бывает иногда в жизни: от тебя остаются только слухи. \r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: "Каждый встречный казался тебе врагом. Страх только ослеплял, а люди лишь довели начатое до конца.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: Грибы поднимались из земли, строя чужие города. Ты спешил, но двери в их мир уже закрылись.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: 'Один суд закончился, чтобы начался другой. Теперь в глазах толпы ты — тот, кого должны бояться. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: Только стоит сделать этот тяжёлый шаг за черту, и всё, чего ты боялся, перестало иметь вес. Время исчезло, оставив за собой лишь холод, похожий на утешение.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Сплетнославие
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Надо защититься. Все способы хороши.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: "Если приложить все усилия, выжить можно.\r\nЭтот мир уже проклят.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: Надо заколотить окна. Дальше только хуже, но надо попробовать спастись.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: Явка в КЧС
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Пиво
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Кошачий корм
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Концовка ещё не разблокирована
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Вы уверены, что хотите выйти?\nПрогресс будет сохранён.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: "Сохранение и выход на рабочий стол \n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Ускорить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: Пока мир наверху умирает, ты остался наедине с обломками собственной жизни. Разрушенное погребено навсегда, и ты — вместе с ним.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: дёрганый
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: музыкант какой-то
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: голый мужчина
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: паренёк в куртке
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: женщина в топике
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: лысый
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: чудной парень в майке
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: мужик с проблемами кожи
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: мечтательный студентик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: волосатый здоровяк
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: девушка с тату
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: парень с загаром
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: культист
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: доктор
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: парень без ног
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: "Чтобы уловить сигнал, нужно крутить правую ручку. Для этого крутите правый стик геймпада по или против часовой стрелки.\n\nСлева — ручка для регулировки громкости."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: Если поймать сигнал так и не удалось, попробуйте сменить диапазон волны. Для этого нажмите левый или правый бампер и продолжайте искать нужную вам волну с помощью правого стика.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: Инверс. Y (мышь)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Инверс. Y (геймпад)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

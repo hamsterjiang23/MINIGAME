@@ -1,0 +1,4086 @@
+:: StoryTitle
+FakePeople_EN
+
+
+:: StoryData
+{
+  "ifid": "2ba7efe2-3b2f-4e99-aeb5-462a75929d07",
+  "format": "Harlowe",
+  "format-version": "3.3.8",
+  "tag-colors": {
+    "Правка": "red",
+    "Нужно-править": "red",
+    "Review": "yellow",
+    "Don't-tuch": "red"
+  },
+  "zoom": 0.6
+}
+
+
+:: Chmo.Eyes {"position":"4100,425","size":"100,100"}
+Chmo @@ My eyes have been itchy these days.
+Chmo @@ Do you think it's from the sun? Or what?
+## IMAGE ## EYE ## Chmo
+Chmo @@ ...
+## TEXT
+Chmo @@ Fuck.
+## GUN ## SHOW
+Chmo @@ It's just some kind of disease.
+Shoot. [[Chmo.EyesShoot]]
+Hear out. [[Chmo.EyesDontShoot]]
+
+
+:: Chmo.EyesDontShoot {"position":"4200,525","size":"100,100"}
+Chmo @@ Listen, I've just came up with a scheme.
+## GUN ## HIDE
+Chmo @@ Let's take money from others so we don't shoot them in the face?
+Chmo @@ Imagine how much we'll make, bitch!
+Chmo @@ Whath? Should we think about it?
+
+
+:: Chmo.EyesShoot {"position":"4000,525","size":"100,100"}
+Chmo @@ Bitch you suck my d...
+## KILL ## Chmo
+Chmo @@ АААААААА.
+
+
+:: Chmo.Hands {"position":"4100,225","size":"100,100"}
+Chmo @@ Come on, I'm fine.
+Chmo @@ I don't do anything with my nails, look.
+## IMAGE ## HANDS ## Chmo
+Chmo @@ ...
+## TEXT
+Chmo @@ No, you don't think so.
+Chmo @@ I wash, I just didn't have time to rinse my hands today.
+Chmo @@ Usually, my nails are clean, bitch.
+
+
+:: Chmo.HandsDontShoot {"position":"4200,325","size":"100,100"}
+Chmo @@ Good for you, you'll never have enough bags to if you just whack everyone.
+Chmo @@ By the way, what happens to the bodies afterwards?
+Chmo @@ Bitch, you put them out on the street? Or what?
+
+
+:: Chmo.HandsShoot {"position":"4000,325","size":"100,100"}
+Chmo @@ You don’t kill a guy just for having dirty nails, right?
+Chmo @@ Come on. I never thought I’d die over something so stupid.
+
+
+:: Chmo.Personal {"position":"4100,825","size":"100,100"}
+Chmo @@ What a fuckin' hoot!
+Chmo @@ These scientists come up with all sorts of things, eh.
+Chmo @@ No, well, if necessary, look, of course.
+Chmo @@ Your interlocutor first looks in his own pants.
+Chmo @@ After a while, he pulls his pants down a bit, looking at the floor.
+Chmo @@ Uh, don't think so, I'm just being hygienic.
+## GUN ## SHOW
+Chmo @@ Fuck, really! Bitch!
+Shoot. [[Chmo.PersonalShoot]]
+Hear out. [[Chmo.PersonalDontShoot]]
+
+
+:: Chmo.PersonalDontShoot {"position":"4200,925","size":"100,100"}
+Chmo @@ Right. 
+Chmo @@ Or it's like I showed you my dick and you would have shot me, go figure.
+## GUN ## HIDE
+Chmo @@ AHAHAHAHAHAHAHA.
+Chmo @@ Don't tell anyone, okay?
+
+
+:: Chmo.PersonalShoot {"position":"4000,925","size":"100,100"}
+Chmo @@ Real fucker.
+## KILL ## Chmo
+Chmo @@ If the four-eyes told you to kill your mother, would you do that?
+
+
+:: Chmo.Photo {"position":"4100,625","size":"100,100"}
+Chmo @@ You want to take a picture with me? Let’s do it.
+Chmo @@ Only thing, I'm really sensitive to light. I might flinch.
+Chmo @@ (You're taking a picture of the person you're talking to)
+Chmo @@ (You think the picture is okay, but the face...)
+Chmo @@ (It looked very smudged)
+Chmo @@ That’s what I'm talking about, bitch.
+## GUN ## SHOW
+Chmo @@ Gonna take another shot?
+Shoot. [[Chmo.PhotoShoot]]
+Hear out. [[Chmo.PhotoDontShoot]]
+
+
+:: Chmo.PhotoDontShoot {"position":"4200,725","size":"100,100"}
+Chmo @@ What's the catch, bitch? Take these suckers for a ride, not me.
+Chmo @@ Let them keep in shape.
+## GUN ## HIDE
+Chmo @@ Otherwise they will relax, so they forget thanks to whom they are here and will not pay.
+
+
+:: Chmo.PhotoShoot {"position":"4000,725","size":"100,100"}
+Chmo @@ Wait!
+Chmo @@ Fuck you and your house, I'm leaving.
+## KILL ## Chmo
+Chmo @@ I'm gonna be right under the sun, and it’s gonna be on you, bitch.
+
+
+:: Chmo.Teeth {"position":"4100,25","size":"100,100"}
+Chmo @@ I can show you some teeth, bitch.
+Chmo @@ My brother-in-law got his teeth done.
+Chmo @@ He got smashed, guess what, lost all his fucking teeth HAHAHAHAHA.
+Chmo @@ Oh, I gotta show you. Uh-huh.
+## IMAGE ## TEETH ## Chmo
+Chmo @@ ...
+## TEXT
+Chmo @@ Good, huh?
+## GUN ## SHOW
+Chmo @@ What are you doing?
+Shoot. [[Chmo.TeethShoot]]
+Hear out. [[Chmo.TeethDontShoot]]
+
+
+:: Chmo.TeethDontShoot {"position":"4200,125","size":"100,100"}
+Chmo @@ I get it, of course, all this stress with the visitors and stuff.
+Chmo @@ But you're doing it all for us.
+## GUN ## HIDE
+Chmo @@ Anyway, I hold no grudges. Won’t tell you any bullshit.
+
+
+:: Chmo.TeethShoot {"position":"4000,125","size":"100,100"}
+Chmo @@ You fuckung kidding me?
+## KILL ## Chmo
+Chmo @@ What the...
+
+
+:: Day0.Night.Sosed.Entrance {"position":"400,100","size":"100,100"}
+## EMOTION ## BaseEntrance
+Sosed @@ Hi! I heard from someone I know. Something has happened and it will be announced soon.
+Sosed @@ People from the cities have already started coming to the neighbors. People... have changed a lot.
+Sosed @@ If they come to your place, you let them in. Just be careful, okay?
+Sosed @@ I've heard of people being killed by other people.
+Sosed @@ Now I hear these stories more and more often.
+Sosed @@ An acquaintance said that creatures that look like humans are coming.
+Sosed @@ In a few days they will tell me what signs can be used to distinguish them from humans.
+Sosed @@ You can't stay alone - something very evil will come and.... who knows what's next?
+What's going on out there? [[Day0.Night.Sosed.Entrance1]]
+Is it safe outside? [[Day0.Night.Sosed.Entrance1]]
+
+
+:: Day0.Night.Sosed.Entrance1 {"position":"400,225","size":"100,100"}
+Sosed @@ It's safe to look out the windows at night.
+Sosed @@ And I even recommend it. That way you at least realize what surrounds your house.
+Sosed @@ It's hard to look out during the day. It gets very hot, the light hurts my eyes.
+Is it better not to leave the house now? [[Day0.Night.Sosed.Entrance2]]
+Wait, what do we do now? [[Day0.Night.Sosed.Entrance2]]
+
+
+:: Day0.Night.Sosed.Entrance2 {"position":"400,350","size":"100,100"}
+Sosed @@ Let's summarize.
+Sosed @@ There's gonna be people coming in at night. You decide who to let in, who not.
+Sosed @@ It's hard to decide visually, we'll be told later by the authorities what to do.
+Sosed @@ Look in the windows. You don't know what's going on.
+Sosed @@ And keep your head down. It's dangerous everywhere now.
+Sosed @@ I'll sleep in your cabinet tonight. And tomorrow you can do it yourself.
+Sosed @@ Come and see me in the afternoon and we'll talk.
+## ENTRANCE ## ACCEPT ## Sosed
+
+
+:: Day1.Day.Sosed.Asking1 {"position":"550,225","size":"100,100"}
+Sosed @@ Let me preface this with a word just in case.
+Sosed @@ During the day, you can talk to your house guests about all sorts of things.
+Sosed @@ In dialog with them, you can check for signs of fake people.
+Sosed @@ Next, you can decide what to do with those who are not human in your opinion.
+Sosed @@ If you don't want to communicate with anyone else, but still have the strength, drink beer in the kitchen.
+Sosed @@ There's one in the fridge I brought you to chill. It'll make you so sleepy.
+Sosed @@ And wait for help. If they call an evacuation, stay close to my family.
+Sosed @@ Now have a beer and get some rest. You look tired.
+Sosed @@ By the way, I've heard that at night someone walks around asking if you're home alone. 
+Sosed @@ If you open the door, don't say that you're alone.
+
+
+:: Day1.Day.Sosed.Room2 {"position":"550,100","size":"100,100"}
+Sosed @@ Did you see the newscast? It's a nightmare....
+Sosed @@ Okay. In this heat, every dialog is going to waste your energy.
+Sosed @@ So think hard about who you want to talk to.
+Sosed @@ And one more thing: checking people for signs of “guest” should be in the dialog too.
+Sosed @@ So be careful how you spend your energies.
+Sosed @@ If you decide you've talked to everyone and you don't want to sleep, have a beer.
+Sosed @@ Go to the kitchen, have a cold one from the fridge.
+Sosed @@ It'll use up all your energy, and you'll want to sleep right away.
+So I'm just supposed to sit around and... survive? [[Day1.Day.Sosed.Asking1]]
+That's kind of weird. Don't you think? [[Day1.Day.Sosed.Asking1]]
+
+
+:: Day1.Day.TV.Bedroom.Extra1 {"position":"175,25","size":"100,100"}
+## EMOTION ## Sad
+TV @@ You watch graceful ballerinas gliding across the stage, performing beautiful pirouettes.
+TV @@ Classical dance brings back warm childhood memories and makes you think of beautiful things.
+
+
+:: Day1.Day.TV.Bedroom.Necessary {"position":"50,25","size":"100,100"}
+TV @@ Good morning, dear viewers!
+TV @@ It's the morning weather forecast.
+TV @@ The sun keeps shining and the summer heat persists in our town.
+TV @@ The duration of this heat has already broken a Guinness record, and it seems that the good weather isn't going anywhere.
+TV @@ Scientists are closely monitoring solar activity and predict its intensification.
+TV @@ But they assure us there's no need to worry.
+TV @@ So, grab your sunglasses, take your best swimsuits, and don't forget your hats!
+TV @@ And most importantly, make sure you don't get sunstroke.
+TV @@ Lately, there's been more weird behavior in the town, and experts think it's because of too much sun.
+
+
+:: Day1.Night.Doch.Entrance {"position":"1475,0","size":"100,100"}
+## EMOTION ## BaseEntrance
+Doch @@ Hi!
+Doch @@ Is my dad here? Can you call him?
+Doch @@ It wasn't scary during the day, but now it is — a lot of people went out at night...
+What's your father name? [[Day1.Night.Doch.Entrance1]]
+Tell me something about your dad. [[Day1.Night.Doch.Entrance2]]
+
+
+:: Day1.Night.Doch.Entrance1 {"position":"1375,100","size":"100,100"}
+Doch @@ Did you forget his name? Oh, you're checking to see if I'm a visitor.
+## EMOTION ## HappyEntrance
+Doch @@ You're smart! I'll start checking people now too.
+Did you get here safely? [[Day1.Night.Doch.Entrance3]]
+Are you afraid of visitors? [[Day1.Night.Doch.Entrance4]]
+
+
+:: Day1.Night.Doch.Entrance2 {"position":"1575,100","size":"100,100"}
+Doch @@ Hm, I can tell you a lot. 
+## EMOTION ## HappyEntrance
+Doch @@ Before he goes out, he likes to have a little beer, hehe.
+## EMOTION ## BaseEntrance
+Doch @@ He leaves me lunch, dinner, and juice.
+Doch @@ Today I tried the beer he drinks, ugh, it was awful!
+Doch @@ Why drink that when there's juice?
+Doch @@ Oh, please don't tell him.
+Did you get here safely? [[Day1.Night.Doch.Entrance3]]
+Are you afraid of visitors? [[Day1.Night.Doch.Entrance4]]
+
+
+:: Day1.Night.Doch.Entrance3 {"position":"1375,225","size":"100,100"}
+## EMOTION ## BaseEntrance
+Doch @@ You know, it's like everything has turned upside down.
+Doch @@ People now stay indoors or sleep during the day. At night — they go out and do things.
+Doch @@ I'm still not used to being afraid of the dark, but it seems like there's nothing to fear.
+Doch @@ Or is there?
+I'm calling dad for you. Good luck! [[Day1.Night.DochNoLet]]
+Have a good time! [[Day1.Night.DochNoLet]]
+
+
+:: Day1.Night.Doch.Entrance4 {"position":"1575,225","size":"100,100"}
+## EMOTION ## BaseEntrance
+Doch @@ I don't know.
+Doch @@ Everyone is scared of them, I'm scared of them too. I haven't seen one of them.
+Doch @@ Are they scary? Do they hurt?
+Doch @@ If my friend from school hit me hard — is he a visitor too?
+Doch @@ Daddy said to be careful, I'm very careful!
+Doch @@ I came here very quietly, no one saw me.
+I'm calling dad for you. Good luck! [[Day1.Night.DochNoLet]]
+Have a good time! [[Day1.Night.DochNoLet]]
+
+
+:: Day1.Night.DochNoLet {"position":"1475,375","size":"100,100"}
+## EMOTION ## HappyEntrance
+Doch @@ Thanks, good luck to you too!
+## EMOTION ## BaseEntrance
+Doch @@ We go now, I'm scared to be outside alone at night.
+## EMOTION ## HappyEntrance
+Doch @@ We're going to play a game, he made me some kind of game where you have to roll dice!
+Doch @@ And then walk on objects, I mean, like a chair or a couch.
+Doch @@ And then you have to build a road. Anyway, I'll show you later.
+## EXILE
+Doch @@ Goodbye!
+## ENTRANCE ## REFUSE ## Doch
+
+
+:: Day1.Night.Esenin.Entrance {"position":"800,0","size":"100,100"}
+## EMOTION ## BaseEntrance
+Esenin @@ Can I come in?
+Esenin @@ I was hiding in the pub, but...
+## EMOTION ## SadEntrance
+Esenin @@ I was kicked out.
+## EMOTION ## BaseEntrance
+Esenin @@ Why? Hmm. Not everyone can handle my temper.
+Esenin @@ But I don't mean to offend anyone, don't get me wrong. It's just... sometimes it gets sickening. You know how it is.
+Esenin @@ What do you think? Will you let me in?
+You're not a visitor, ain't you? [[Day1.Night.Esenin.Entrance1]]
+Are you sure there won't be any trouble with you? [[Day1.Night.Esenin.Entrance2]]
+
+
+:: Day1.Night.Esenin.Entrance1 {"position":"700,100","size":"100,100"}
+Esenin @@ You think I'm one of those monsters?
+Esenin @@ No, I'm no visitor. But asking everyone to their face about it is just crazy.
+Esenin @@ Anyway, it will be like that from now on.
+Why did they kick you out of your last shelter? [[Day1.Night.Esenin.Entrance3]]
+Why do you think it will be different here? [[Day1.Night.Esenin.Entrance4]]
+
+
+:: Day1.Night.Esenin.Entrance2 {"position":"900,100","size":"100,100"}
+Esenin @@ What do you mean by troubles, homeowener?
+Esenin @@ Murder and fights are against my soul. But I let no harm come to myself.
+Esenin @@ What I like is eating and drinking. And talking in a good mood. Is that a problem?
+Why did they kick you out of your last shelter? [[Day1.Night.Esenin.Entrance3]]
+Why do you think it will be different here? [[Day1.Night.Esenin.Entrance4]]
+
+
+:: Day1.Night.Esenin.Entrance3 {"position":"700,225","size":"100,100"}
+Esenin @@ …
+Esenin @@ I was thinking to tell you something offensive, but I changed my mind.
+Esenin @@ I told ya, people just felt uncomfortable with me. There were all sorts of weirdos.
+Esenin @@ When I think about it, maybe it was for the best that they kicked me out.
+Esenin @@ Those would've eaten me alive and not even noticed.
+Come in. [[Day1.Night.EseninYesLet]]
+You better leave. [[Day1.Night.EseninNoLet]]
+
+
+:: Day1.Night.Esenin.Entrance4 {"position":"900,225","size":"100,100"}
+Esenin @@ So what, am I supposed to die under the sun now?
+Esenin @@ No, homeowener, that's not for me.
+Esenin @@ As long as I'm alive, I'll keep looking for someone to talk to and something to talk about. If you don't let me in, I'll find luck somewhere else.
+Esenin @@ If there's any luck left in this new world and if not everyone is a jerk.
+Come in. [[Day1.Night.EseninYesLet]]
+You better leave. [[Day1.Night.EseninNoLet]]
+
+
+:: Day1.Night.EseninNoLet {"position":"900,350","size":"100,100"}
+## EMOTION ## SadEntrance
+Esenin @@ Hmm. I understand. 
+Esenin @@ … 
+## EMOTION ## BaseEntrance
+Esenin @@ I understand you, but I'm angry. You're just as much of a coward as everyone else here.
+Esenin @@ Sleep well at night, homeowener. And fuck you.
+## ENTRANCE ## REFUSE ## Esenin
+
+
+:: Day1.Night.EseninYesLet {"position":"700,350","size":"100,100"}
+## EMOTION ## HappyEntrance
+Esenin @@ Thanks. Trust in people nowadays is worth no more than a coin.
+## EMOTION ## BaseEntrance
+Esenin @@ That's why I appreciate your trust. Maybe... Alright, I can't promise anything.
+## ENTRANCE ## ACCEPT ## Esenin
+
+
+:: Day1.Night.Sanya.Entrance [Don't-tuch] {"position":"175,5525","size":"100,100"}
+Sanya @@ ЗДАРОВА! Я придрифтил к твоему дому от этой жары
+Sanya @@ Впустишь меня вовнутрь?
+
+Пашол нахуй! [[Day1.Night.SanyaNoLet]]
+Заходи, бобер! [[Day1.Night.SanyaYesLet]]
+Покажесь писюн? [[Day1.Night.SanyaPisun]]
+
+
+:: Day1.Night.SanyaNoLet [Don't-tuch] {"position":"75,5625","size":"100,100"}
+## TEXT
+## EMOTION ## Sad
+Sanya @@ Сам пошел! Уволен!
+## ENTRANCE ## REFUSE ## Sanya
+
+
+:: Day1.Night.SanyaPisun [Don't-tuch] {"position":"250,5650","size":"100,100"}
+Sanya @@ Хуй тебе, а не писюн
+Sanya @@ Очко покажу. Очки, если быть точным
+
+## IMAGE ## HANDS ## Sanya
+
+Пашол нахуй! [[Day1.Night.SanyaNoLet]]
+Заходи, бобер! [[Day1.Night.SanyaYesLet]]
+
+
+:: Day1.Night.SanyaYesLet [Don't-tuch] {"position":"300,5525","size":"100,100"}
+## TEXT
+## EMOTION ## Happy
+Sanya @@ Спасибо, дружище!
+## ENTRANCE ## ACCEPT ## Sanya
+
+
+:: Day1.Night.Trevoga.Entrance {"position":"1150,0","size":"100,100"}
+## EMOTION ## BaseEntrance
+Trevoga @@ Hello!
+Trevoga @@ Sorry for distubing you so late; it's just too hot during the day. The TV said it's better not to go out in the sun.
+## EMOTION ## SadEntrance
+Trevoga @@ Is there any corner for me?
+Who are you? [[Day1.Night.Trevoga.Entrance1]]
+How did you get here? [[Day1.Night.Trevoga.Entrance2]]
+
+
+:: Day1.Night.Trevoga.Entrance1 {"position":"1050,100","size":"100,100"}
+## EMOTION ## BaseEntrance
+Trevoga @@ Mmmm, I used to live closer to the town.
+Trevoga @@ The asphalt heats up pretty intensely out there, haha. Ugh.
+Trevoga @@ I used to work as a cashier. Not anymore, though.
+Trevoga @@ I got fired, just didn't have any luck with work...
+What are you gonna do now? [[Day1.Night.Trevoga.Entrance3]]
+What do you think will happen in the future? [[Day1.Night.Trevoga.Entrance4]]
+
+
+:: Day1.Night.Trevoga.Entrance2 {"position":"1250,100","size":"100,100"}
+## EMOTION ## BaseEntrance
+Trevoga @@ I didn't really intend to come. Yeah, the asphalt is already melting under my feet, but it's not that bad here yet.
+Trevoga @@ It will make you laugh.
+Trevoga @@ I've got visitors in my house. Huh, can you imagine? They kicked me out of my own house.
+Trevoga @@ Now I'm wandering around, looking for somewhere to hide from the sun.
+What are you gonna do now? [[Day1.Night.Trevoga.Entrance3]]
+What do you think will happen in the future? [[Day1.Night.Trevoga.Entrance4]]
+
+
+:: Day1.Night.Trevoga.Entrance3 {"position":"1050,225","size":"100,100"}
+## EMOTION ## BaseEntrance
+Trevoga @@ Mmmm. I'll try to survive somehow. It scares me, of course, with these visitors around and the sun blazing like just hell.
+Trevoga @@ I really want to live. Heheh. Oh-oh-oh.
+## EMOTION ## SadEntrance
+Trevoga @@ Ain't you scared?
+Trevoga @@ Please, tell me it's gonna be alright soon.
+Come in. [[Day1.Night.TrevogaYesLet]]
+You better leave. [[Day1.Night.TrevogaNoLet]]
+
+
+:: Day1.Night.Trevoga.Entrance4 {"position":"1250,225","size":"100,100"}
+## EMOTION ## BaseEntrance
+Trevoga @@ I don't know.
+Trevoga @@ Will I survive? Who will help me? How long will I have to search for help?
+Trevoga @@ I don’t know what will happen next. I can't even guess.
+## EMOTION ## SadEntrance
+Trevoga @@ Aren’t you scared by this? I am — very much so.
+Come in. [[Day1.Night.TrevogaYesLet]]
+You better leave. [[Day1.Night.TrevogaNoLet]]
+
+
+:: Day1.Night.TrevogaNoLet {"position":"1250,350","size":"100,100"}
+Trevoga @@ Huh, oh, yeah.
+Trevoga @@ Anyway, thanks for listening to me.
+Trevoga @@ M, okay, I guess I'll move on then.
+## EMOTION ## SadEntrance
+Trevoga @@ Bye? Yeah, uh, bye...
+## ENTRANCE ## REFUSE ## Trevoga
+
+
+:: Day1.Night.TrevogaYesLet {"position":"1050,350","size":"100,100"}
+## EMOTION ## HappyEntrance
+Trevoga @@ Thank you! Oh, thank you, really!
+Trevoga @@ Oh God, I'll live one more day!
+## ENTRANCE ## ACCEPT ## Trevoga
+
+
+:: Day1.Night.Window1 {"position":"1800,200","size":"100,100"}
+TV @@ It's dead quiet outside.
+TV @@ Nobody's there.
+TV @@ Even the alcoholics for some unknown reason decided not to show up on the street.
+TV @@ Are they afraid of someone?
+
+
+:: Day1.Night.Window2 {"position":"1800,100","size":"100,100"}
+TV @@ You see several teenagers spending time in a field outside the window.
+TV @@ They are sitting around chatting excitedly, not paying attention to you.
+
+
+:: Day1.Night.Window3 {"position":"1800,0","size":"100,100"}
+TV @@ In the distance is the neighbor's house. The neighbor is visiting you now.
+TV @@ The lights are on in the windows and the family seems to be waiting for him to leave you back home for dinner.
+
+
+:: Day2.Day.Esenin.Asking1 {"position":"50,1175","size":"100,100"}
+Esenin @@ I know no more than you. 
+Esenin @@ Visitors can be identified by perfectly white teeth.
+Esenin @@ This is fucking bullshit! They just want us to kill each other.
+Esenin @@ And it's not clear why.
+
+
+:: Day2.Day.Esenin.Asking2 {"position":"250,1175","size":"100,100"}
+Esenin @@ The sun is exploding. There is a real hell on earth. 
+Esenin @@ Without metaphors and purgatory.
+Esenin @@ No one trusts anyone, people are literally being burned alive during the day, and people are ready to sell their own mothers for shelter.
+Esenin @@ I want to believe in people, but it's hard to do so.
+
+
+:: Day2.Day.Esenin.Asking3 {"position":"150,1200","size":"100,100"}
+Esenin @@ What do you want to check?
+
+Teeth [[Esenin.Teeth]]
+Did you saw the news? Show your teth. [[Esenin.Teeth]]
+
+
+:: Day2.Day.Esenin.BigRoom {"position":"150,1075","size":"100,100"}
+Esenin @@ Yeah? Did you want something?
+
+How do you recognize a visitor? [[Day2.Day.Esenin.Asking1]]
+What do you know about the cataclysm? [[Day2.Day.Esenin.Asking2]]
+I need to check on you [[Day2.Day.Esenin.Asking3]]
+
+
+:: Day2.Day.Sanya.BadJoke [Don't-tuch] {"position":"600,5775","size":"100,100"}
+## EMOTION ## Base
+Sanya @@ Prijdti, kgda budeš gotov na takove šale, mlådec
+
+
+:: Day2.Day.Sanya.IsImposter [Don't-tuch] {"position":"400,5650","size":"100,100"}
+## EMOTION ## Sad
+Sanya @@ Ne
+## KILL ## Sanya
+Sanya @@ ...
+
+
+:: Day2.Day.Sanya.Joke [Don't-tuch] {"position":"600,5650","size":"100,100"}
+Sanya @@ Prihoduje mųž v publičny dom. 
+Sanya @@ - Hoćų, - govori on, - čego-nebųď kosmičnog, zemnogo!
+Sanya @@ - Ne imajemo ničto takogo.
+Sanya @@ - Plačuju jedinku zelene.
+Sanya @@ - Ne pyta. Tutčas vse organizujemo.
+Sanya @@ Zavoditi ga v temnu komorų. Na ležišču leži stogodišnja babica. Mųž jejny.
+pytaje:
+Sanya @@ - A ty čto tu dělaješ? - Ja jesm kosmičny zajęl!
+Sanya @@ - Spokojno, vse bųde kako by.
+## EMOTION ## Happy
+Sanya @@ Babka izvlěkne steklo oko: - Nu mųž, jeb mene v orbiti!
+
+Ух, бля... [[Day2.Day.Sanya.BadJoke]]
+Ахах. А ты импостер? [[Day2.Day.Sanya.IsImposter]]
+
+
+:: Day2.Day.Sanya.Room1 [Don't-tuch] {"position":"500,5550","size":"100,100"}
+Sanya @@ Ja mimohodom jesm govoril na međuslovjanskom języku
+Sanya @@ Ty čto-nebųď želal od mene?
+
+Ты импостер? [[Day2.Day.Sanya.IsImposter]]
+Межславянский анекдот [[Day2.Day.Sanya.Joke]]
+
+
+:: Day2.Day.TV.Bedroom.Extra1 {"position":"175,150","size":"100,100"}
+## EMOTION ## Sad
+TV @@ Heat outside? No problem...
+TV @@ When you have EnerJeka in hand!
+TV @@ This refreshing energy drink quenches thirst even in the hottest heat!
+TV @@ A unique blend of lime and mint gives extraordinary energy!
+TV @@ EnerJeka. Look for it in nearby stores.
+TV @@ Dynamic energy drink advertisement, subtly satisfying your thirst.
+
+
+:: Day2.Day.TV.Bedroom.Necessary {"position":"50,150","size":"100,100"}
+TV @@ We interrupt our morning show for an urgent message...
+TV @@ Today at 6:28 AM, there was a powerful solar energy eruption.
+TV @@ This flare was larger than scientists predicted.
+TV @@ The air temperature has reached a critical level.
+TV @@ Authorities have declared a state of emergency.
+TV @@ We urge all citizens to avoid going outside during daylight hours.
+TV @@ Now, on to the news...
+TV @@ Aliens? People emerging from underground?
+TV @@ No, this isn't a sci-fi story or a tabloid headline!
+TV @@ Eyewitnesses report contact with 'visitors' around the city..
+TV @@ One witness encountered a middle-aged man...
+TV @@ Who had perfectly white teeth.
+## EMOTION ## HappyEntrance
+TV @@ It turns out, he was one of these 'visitors'.
+TV @@ Similar incidents with 'visitors' sporting perfect teeth have been observed.
+TV @@ So, if you want to identify them – check their teeth.
+TV @@ Please stay alert and calm.
+TV @@ Now, let's move on to other news...
+
+
+:: Day2.Day.Trevoga.Asking1 {"position":"400,1175","size":"100,100"}
+Trevoga @@ I wish I knew how.
+Trevoga @@ I'm so scared that a visitor could be anyone.
+Trevoga @@ The only thing I heard on the radio was that their teeth are perfect, but...
+Trevoga @@ ...
+Trevoga @@ Do regular people not have good teeth? Heheh. Heh heh.
+
+
+:: Day2.Day.Trevoga.Asking2 {"position":"600,1175","size":"100,100"}
+Trevoga @@ Ahhhh, oh-oh-oh-oh.
+Trevoga @@ I don't even know what to say.
+Trevoga @@ I decided to look out the window, and...
+## EMOTION ## Sad
+Trevoga @@ I wish I hadn't looked out there.
+Trevoga @@ The sun just burned some kids.
+Trevoga @@ I don't want to die from the burning sun so badly.
+Trevoga @@ I'd rather die a quick and painless death than die from the sun in agony.
+Trevoga @@ I don't want to be burned to death! I don't! NO!
+Trevoga @@ It's only going to get worse, I know it! WE'RE ALL GONNA DIE!
+## EMOTION ## Base
+Trevoga @@ ...
+Trevoga @@ I'm sorry, I'm very worried.
+
+
+:: Day2.Day.Trevoga.Asking3 {"position":"500,1200","size":"100,100"}
+Trevoga @@ What do you want to check?
+
+Teeth [[Trevoga.Teeth]]
+Did you saw the news? Show your teth. [[Trevoga.Teeth]]
+
+
+:: Day2.Day.Trevoga.Pantry {"position":"500,1075","size":"100,100"}
+Trevoga @@ Uh-uh. Hopefully this will all be over soon.
+
+How do you recognize a visitor? [[Day2.Day.Trevoga.Asking1]]
+What do you know about the cataclysm? [[Day2.Day.Trevoga.Asking2]]
+I need to check on you [[Day2.Day.Trevoga.Asking3]]
+
+
+:: Day2.Night.Fan.Entrance {"position":"1200,575","size":"100,100"}
+## EMOTION ## BaseEntrance
+Fan @@ Hey HUMAN.
+## EMOTION ## HappyEntrance
+Fan @@ How fortunate we are! We've witnessed firsthand the consequences of human passions.
+## EMOTION ## BaseEntrance
+Fan @@ The earth will be cleansed, the sun will do its work.
+Fan @@ And we will go to a new clean world! 
+## EMOTION ## HappyEntrance
+Fan @@ That's the FUCKING GOOD NEWS.
+
+What? [[Day2.Night.Fan.Entrance1]]
+You're scaring me. [[Day2.Night.Fan.Entrance2]]
+
+
+:: Day2.Night.Fan.Entrance1 {"position":"1100,675","size":"100,100"}
+## EMOTION ## SadEntrance
+Fan @@ What are you doing, HUMAN? 
+## EMOTION ## BaseEntrance
+Fan @@ Listen to me, I'll give you a brief rundown.
+Fan @@ The sun burns and BURNS us for a reason! It bakes sins out of us!
+Fan @@ We've all done all sorts of things, and now the SUN is angry! 
+Fan @@ GIVES HIS HIT TO US!
+## EMOTION ## HappyEntrance
+Fan @@ And that's a good thing. All our sins will be over, we'll live our lives properly.
+
+You mean we all have to die? [[Day2.Night.Fan.Entrance3]]
+What's gonna happen to you then? [[Day2.Night.Fan.Entrance4]]
+
+
+:: Day2.Night.Fan.Entrance2 {"position":"1300,675","size":"100,100"}
+## EMOTION ## BaseEntrance
+Fan @@ Are you out of your mind?
+Fan @@ Listen to me, I'll give you a brief rundown.
+Fan @@ The sun burns and BURNS us for a reason! It bakes sins out of us!
+Fan @@ We've all done all sorts of things, and now the SUN is angry! 
+Fan @@ GIVES HIS HIT TO US!
+## EMOTION ## HappyEntrance
+Fan @@ And that's a good thing. All our sins will be over, we'll live our lives properly.
+
+You mean we all have to die? [[Day2.Night.Fan.Entrance3]]
+What's gonna happen to you then? [[Day2.Night.Fan.Entrance4]]
+
+
+:: Day2.Night.Fan.Entrance3 {"position":"1100,800","size":"100,100"}
+## EMOTION ## BaseEntrance
+Fan @@ Nah!
+Fan @@ Sins will fade away, the sun may die. BUT WE WILL LIVE.
+Fan @@ There will be no more deaths, no more stealing, no more greedy bastards who can't sell me what I want for a fair price.
+Fan @@ Can you imagine such a thing? Do you realize what this is all about?
+
+Come in. [[Day2.Night.FanYesLet]]
+You better leave. [[Day2.Night.FanNoLet]]
+
+
+:: Day2.Night.Fan.Entrance4 {"position":"1300,800","size":"100,100"}
+## EMOTION ## BaseEntrance
+Fan @@ What's it got to do with me?
+Fan @@ We're all going to LIVE WELL right after the sun helps.
+Fan @@ The sun will just help us get rid of all this stuff, you know? No?
+Fan @@ You understand everything, that's why you're alive!
+
+Come in. [[Day2.Night.FanYesLet]]
+You better leave. [[Day2.Night.FanNoLet]]
+
+
+:: Day2.Night.FanNoLet {"position":"1300,925","size":"100,100"}
+## EMOTION ## SadEntrance
+Fan @@ Did you pretend you didn't know anything about the sun?
+## EMOTION ## BaseEntrance
+Fan @@ Well fuck you then, I'll SAVE SOMEONE ELSE!
+Fan @@ All right, bye-bye, bye-bye!
+## ENTRANCE ## REFUSE ## Fan
+
+
+:: Day2.Night.FanYesLet {"position":"1100,925","size":"100,100"}
+## EMOTION ## HappyEntrance
+Fan @@ I can tell you a lot more about all this!
+Fan @@ Do you have any beer, I forgot to ask?
+## ENTRANCE ## ACCEPT ## Fan
+
+
+:: Day2.Night.Holod.Entrance {"position":"850,575","size":"100,100"}
+## EMOTION ## BaseEntrance
+Holod @@ Hello.
+Holod @@ Let me tell you right away, I'm not afraid of the heat. But I'm still looking for a quiet place.
+Holod @@ Can I find peace at your place?
+
+Who are you? [[Day2.Night.Holod.Entrance1]]
+How long have you been looking for a peaceful place? [[Day2.Night.Holod.Entrance2]]
+
+
+:: Day2.Night.Holod.Entrance1 {"position":"750,675","size":"100,100"}
+Holod @@ It doesn't matter anymore. You're asking if I'm a visitor, aren't you?
+Holod @@ No, I'm not a visitor. But there is something I would ask of you.
+Holod @@ Later. I'm not sure yet.
+
+You don't mind the heat? [[Day2.Night.Holod.Entrance3]]
+Take off your jacket. [[Day2.Night.Holod.Entrance4]]
+
+
+:: Day2.Night.Holod.Entrance2 {"position":"950,675","size":"100,100"}
+Holod @@ ...
+Holod @@ There's never been any peace for me.
+Holod @@ So... yeah, for a long time.
+
+Are you okay with the heat? [[Day2.Night.Holod.Entrance3]]
+Take off your jacket. [[Day2.Night.Holod.Entrance4]]
+
+
+:: Day2.Night.Holod.Entrance3 {"position":"750,800","size":"100,100"}
+Holod @@ I always feel cold.
+Holod @@ While some are burning up outside, I wrap myself in jackets and still feel cold.
+Holod @@ I'm scared to take off my clothes.
+Holod @@ What if it only brings more suffering? And what if I can't die from it?
+
+Come in. [[Day2.Night.HolodYesLet]]
+You better leave. [[Day2.Night.HolodNoLet]]
+
+
+:: Day2.Night.Holod.Entrance4 {"position":"950,800","size":"100,100"}
+Holod @@ No.
+Holod @@ It's okay if you don't let me in.
+Holod @@ I'll just keep moving. I'm not gonna beg or bother you.
+
+Come in. [[Day2.Night.HolodYesLet]]
+You better leave. [[Day2.Night.HolodNoLet]]
+
+
+:: Day2.Night.HolodNoLet {"position":"950,925","size":"100,100"}
+Holod @@ I get it.
+Holod @@ Okay, bye.
+Holod @@ I see you got a lot of gunpowder residue on your hands.
+Holod @@ Can you shoot me?
+Holod @@ ...
+Holod @@ Yeah. You need the bullets yourself. Bye.
+## ENTRANCE ## REFUSE ## Holod
+
+
+:: Day2.Night.HolodYesLet {"position":"750,925","size":"100,100"}
+Holod @@ Thank you. 
+Holod @@ The ceiling is a little low here. But I'll be fine.
+## ENTRANCE ## ACCEPT ## Holod
+
+
+:: Day2.Night.Prorok.Entrance {"position":"1550,600","size":"100,100"}
+## EMOTION ## Base
+Prorok @@ It happened once before and it will happen again later.
+Prorok @@ Too bad we are the witnesses.
+Prorok @@ Maybe we are participants too.
+
+Who are you? [[Day2.Night.Prorok.Entrance1]]
+Do you need anything? [[Day2.Night.Prorok.Entrance2]]
+
+
+:: Day2.Night.Prorok.Entrance1 {"position":"1450,700","size":"100,100"}
+Prorok @@ Just a person. 
+Prorok @@ I'm not looking for anything, I'm not forcing anyone to do anything.
+Prorok @@ I came out of the shadows, I'll stay in the shadows.
+
+What are you talking about? [[Day2.Night.Prorok.Entrance3]]
+You're... weird. [[Day2.Night.Prorok.Entrance4]]
+
+
+:: Day2.Night.Prorok.Entrance2 {"position":"1650,700","size":"100,100"}
+Prorok @@ No, thanks.
+Prorok @@ Everything I need is already there.
+Prorok @@ And what I don't have, you can't help me with.
+Prorok @@ ...
+Prorok @@ Will you read my fortune? Choose where I should open the book and read a line.
+
+What are you talking about? [[Day2.Night.Prorok.Entrance3]]
+You're... weird. [[Day2.Night.Prorok.Entrance4]]
+
+
+:: Day2.Night.Prorok.Entrance3 {"position":"1450,825","size":"100,100"}
+Prorok @@ That's how you look at it.
+Prorok @@ What do my words mean to you?
+Prorok @@ ...
+Prorok @@ Will you read my fortune from a book?
+
+Open at the beginning. Top paragraph. [[Day2.Night.ProrokNoLet]]
+Open near the middle. Last paragraph. [[Day2.Night.ProrokNoLet]]
+
+
+:: Day2.Night.Prorok.Entrance4 {"position":"1650,825","size":"100,100"}
+Prorok @@ It's even safer that way. For me, mostly, but still.
+Prorok @@ It's easier to preserve something from floods, fires, and time.
+Prorok @@ Not every seed becomes a tree, eh.
+Prorok @@ ...
+Prorok @@ Will you read my fortune? Choose where I should open the book and read a line.
+
+Open at the beginning. Top paragraph. [[Day2.Night.ProrokNoLet]]
+Open near the middle. Last paragraph. [[Day2.Night.ProrokNoLet]]
+
+
+:: Day2.Night.ProrokNoLet {"position":"1550,925","size":"100,100"}
+Prorok @@ ...
+Prorok @@ "The dead will come and tell. And he will not be believed."
+Prorok @@ What does that mean?
+Prorok @@ I need to think now. Maybe I'll see you later.
+## ENTRANCE ## REFUSE ## Prorok
+
+
+:: Day2.Night.Q.Entrance [Don't-tuch] {"position":"850,5525","size":"100,100"}
+Q @@ Нам надо забрать рандомного чела
+
+Ок [[Day2.Night.QES]]
+Нет [[Day2.Night.QNO]]
+
+
+:: Day2.Night.QES [Don't-tuch] {"position":"750,5625","size":"100,100"}
+## EXILE
+Q @@ Спасибо
+
+
+:: Day2.Night.QNO [Don't-tuch] {"position":"950,5625","size":"100,100"}
+Q @@ Ну и ладно...
+## DEATH
+Q @@ .....
+
+
+:: Day2.Night.Window1 {"position":"1900,800","size":"100,100"}
+TV @@ On the path stands a man as pale as death itself.
+TV @@ There are strange folds in his skin.
+TV @@ This skin seems to be too big for him.
+TV @@ You can't see his eyes from here, but you can feel him drilling you with his gaze.
+TV @@ You feel fear and pray to God that the creepy visitor will avoid the house.
+
+
+:: Day2.Night.Window2 {"position":"1900,700","size":"100,100"}
+TV @@ There are bodies of teenagers on the ground.
+TV @@ Someone killed them.
+TV @@ It seems to be recent, because the blood hasn't dried yet.
+TV @@ The picture gives you goosebumps and makes you feel a little uneasy.
+
+
+:: Day2.Night.Window3 {"position":"1900,600","size":"100,100"}
+TV @@ Outside the window stands a neighbor and his daughter.
+TV @@ They play happily together, forgetting the horror that is happening.
+TV @@ Just for a moment.
+TV @@ Watching this makes you remember your childhood and gives you a warm feeling of nostalgia.
+
+
+:: Day3.Day.Esenin.Asking1 {"position":"100,1600","size":"100,100"}
+Esenin @@ This is something humanity has never faced before.
+Esenin @@ They just slap a label on something unknown and hate it.
+Esenin @@ As if this has never happened before.
+Esenin @@ People are fundamentally flawed, what can you do.
+
+
+:: Day3.Day.Esenin.Asking2 {"position":"300,1600","size":"100,100"}
+Esenin @@ Thousands? Hundreds of thousands? Millions?
+Esenin @@ Honestly, I have absolutely no idea.
+Esenin @@ And no one will tell you, so you don't piss your pants in fear.
+Esenin @@ ...
+Esenin @@ No matter what number you come up with, triple it.
+Esenin @@ That's probably closer to the actual number of victims.
+
+
+:: Day3.Day.Esenin.Asking3 {"position":"200,1625","size":"100,100"}
+Esenin @@ What do you want to check?
+
+Teeth [[Esenin.Teeth]]
+Hands [[Esenin.Hands]]
+
+
+:: Day3.Day.Esenin.BigRoom {"position":"200,1500","size":"100,100"}
+Esenin @@ Yeah? Did you want something?
+
+Who are the visitors? [[Day3.Day.Esenin.Asking1]]
+How many victims are there? [[Day3.Day.Esenin.Asking2]]
+I need to check on you [[Day3.Day.Esenin.Asking3]]
+
+
+:: Day3.Day.Fan.Asking1 {"position":"1150,1600","size":"100,100"}
+Fan @@ I don't think, I KNOW THE PLAIN TRUTH!!!
+Fan @@ You ask me, who are the VISITORS?
+Fan @@ So here, I'll answer you...
+Fan @@ They are, my hearty friend, VISITORS FROM OTHER PLANETS!!!
+Fan @@ They are the descendants of aliens who came to Earth when the sun was younger and the grass was greener!
+Fan @@ They planted them in the soil like sprouts of evil, and they have been growing for EIGHT YEARS!
+Fan @@ And now they have crawled out and want to take OUR EARTH!
+Fan @@ But the Sun has decided to protect us, for the sun is UNMILITARY to visitors!
+Fan @@ Otherwise why have they been hiding underground all this time?
+Fan @@ ...
+## EMOTION ## Sad
+Fan @@ Fuck, I wish I had a cold beer...
+## EMOTION ## Base
+
+
+:: Day3.Day.Fan.Asking2 {"position":"1350,1600","size":"100,100"}
+Fan @@ A LOT!
+Fan @@ And believe me, my friend, this is FAR FROM OVER.
+Fan @@ THIS IS JUST THE BEGINNING!
+Fan @@ The scale has not yet been filled enough to balance the Universal Powers!
+Fan @@ It takes MORE to be BURNED in the righteous flames of the SUN!
+Fan @@ But know, my friend, these sacrifices will not be in vain!
+Fan @@ Someday, we will all understand the true intentions of the sun-faced one...
+Fan @@ ...
+## EMOTION ## Sad
+Fan @@ Fuck, sometimes at night I really miss my wife...
+Fan @@ She was a saintly woman...
+## EMOTION ## Base
+Fan @@ But a real piece of work.
+
+
+:: Day3.Day.Fan.Asking3 {"position":"1250,1625","size":"100,100"}
+Fan @@ What do you want to check?
+
+Teeth [[Fan.Teeth]]
+Hands [[Fan.Hands]]
+
+
+:: Day3.Day.Fan.Bathroom {"position":"1250,1500","size":"100,100"}
+Fan @@ I listen to your words human! SPEAK!!!
+
+How do you recognize a visitor? [[Day3.Day.Fan.Asking1]]
+What do you know about the cataclysm? [[Day3.Day.Fan.Asking2]]
+I need to check on you [[Day3.Day.Fan.Asking3]]
+
+
+:: Day3.Day.Holod.Asking1 {"position":"800,1600","size":"100,100"}
+Holod @@ Mutated humans who have absorbed the anger of thousands of years.
+Holod @@ They are our reflection.
+Holod @@ Our antipodes, whom we would never want to see or know.
+Holod @@ But they are there, and now we have to put up with them somehow.
+
+
+:: Day3.Day.Holod.Asking2 {"position":"1000,1600","size":"100,100"}
+Holod @@ Enough to make you think about the end of the world.
+Holod @@ I'm not happy about it, but I'm not sad about it either.
+Holod @@ I don't care what happens next.
+
+
+:: Day3.Day.Holod.Asking3 {"position":"900,1625","size":"100,100"}
+Holod @@ What do you want to check?
+
+Teeth [[Holod.Teeth]]
+Hands [[Holod.Hands]]
+
+
+:: Day3.Day.Holod.BigRoom {"position":"900,1500","size":"100,100"}
+Holod @@ I wish there was some warmth...
+
+How do you recognize a visitor? [[Day3.Day.Holod.Asking1]]
+What do you know about the cataclysm? [[Day3.Day.Holod.Asking2]]
+I need to check on you [[Day3.Day.Holod.Asking3]]
+
+
+:: Day3.Day.TV.Bedroom.Extra1 {"position":"175,275","size":"100,100"}
+## EMOTION ## Sad
+TV @@ In difficult times...
+TV @@ When the hour of despair is near...
+TV @@ And trust is hard to come by...
+TV @@ There are those you can rely on!
+TV @@ The Federal Emergency Management Agency (FEMA).
+TV @@ Hotline 04-5-1. You can trust us!
+
+
+:: Day3.Day.TV.Bedroom.Necessary {"position":"50,275","size":"100,100"}
+TV @@ Good morning, dear viewers! This is the morning news.
+TV @@ Solar activity remains abnormal...
+TV @@ ...and experts predict that it will continue to intensify.
+TV @@ There are continuing reports from eyewitnesses about encounters with 'visitors'.
+TV @@ In response to this situation, authorities urgently ramped up FEMA operations.
+TV @@ FEMA is an acronym for The Federal Emergency Management Agency.
+TV @@ FEMA stuff members wear yellow hazmat suit.
+TV @@ The FEMA special committee started functioning recently, but they have discovered a new indicator of 'visitors'.
+TV @@ The FEMA special committee experts believe that besides teeth, 'visitors' can be identified by dirt under their nails.
+## EMOTION ## BaseEntrance
+TV @@ As reported by FEMA, this was discovered during an inspection of one of the houses...
+TV @@ Employees encountered a woman who had worked as a nurse.
+TV @@ For some unknown reason, she had dirt under her nails.
+TV @@ Given that 'visitors' emerge from the ground, the woman was taken for testing, her dangerous status was confirmed.
+TV @@ If you notice anyone resembling a 'visitor', promptly contact FEMA members or call the hotline at 04-5-1.
+TV @@ Please stay alert and calm and avoid leaving your home during daylight hours.
+TV @@ Now, let's move on to other news...
+
+
+:: Day3.Day.Trevoga.Asking1 {"position":"450,1600","size":"100,100"}
+## EMOTION ## Sad
+Trevoga @@ Visitors?!
+Trevoga @@ ...
+Trevoga @@ They're terrifying, monstrous creatures that mimic humans!
+Trevoga @@ Or maybe they skin people and wear it like a suit.
+Trevoga @@ And all this just to seem more familiar to us...
+Trevoga @@ God, I hope I never see what they truly look like!
+## EMOTION ## Base
+
+
+:: Day3.Day.Trevoga.Asking2 {"position":"650,1600","size":"100,100"}
+## EMOTION ## Sad
+Trevoga @@ Victims?!
+Trevoga @@ ...
+Trevoga @@ No. NO!
+Trevoga @@ THEY BURNED! ALL OF THEM BURNED!
+Trevoga @@ TURNED TO ASH, EVERY SINGLE ONE!
+Trevoga @@ 'CAUSE THEY STAYED OUT IN THE SUN!
+Trevoga @@ GOD, WHAT DO WE DO NOW?
+## EMOTION ## Base
+Trevoga @@ ...
+Trevoga @@ We're all going to die...
+
+
+:: Day3.Day.Trevoga.Asking3 {"position":"550,1625","size":"100,100"}
+Trevoga @@ What do you want to check?
+
+Teeth [[Trevoga.Teeth]]
+Hands [[Trevoga.Hands]]
+
+
+:: Day3.Day.Trevoga.Pantry {"position":"550,1500","size":"100,100"}
+Trevoga @@ Uh-uh. Hopefully this will all be over soon.
+
+How do you recognize a visitor? [[Day3.Day.Trevoga.Asking1]]
+What do you know about the cataclysm? [[Day3.Day.Trevoga.Asking2]]
+I need to check on you [[Day3.Day.Trevoga.Asking3]]
+
+
+:: Day3.Night.Chmo.Entrance {"position":"2475,1500","size":"100,100"}
+## EMOTION ## BaseEntrance
+Chmo @@ Oh, hey.
+Chmo @@ You see what's going on? Fucking hell.
+Chmo @@ How's it going down here?
+
+What do you need? [[Day3.Night.Chmo.Entrance1]]
+What's going on? [[Day3.Night.Chmo.Entrance2]]
+
+
+:: Day3.Night.Chmo.Entrance1 {"position":"2375,1600","size":"100,100"}
+Chmo @@ Just curious, that's all.
+## EMOTION ## HappyEntrance
+Chmo @@ Actually, I've got a little scheme, you could easily make some money.
+Chmo @@ With the sun feeling so good, you can make money without even trying.
+## EMOTION ## BaseEntrance
+Chmo @@ And all the losers are scared of something, but you just need to hustle, bitch!
+
+Why did you come to me? [[Day3.Night.Chmo.Entrance3]]
+What are you offering? [[Day3.Night.Chmo.Entrance4]]
+
+
+:: Day3.Night.Chmo.Entrance2 {"position":"2575,1600","size":"100,100"}
+Chmo @@ New opportunities, can't you fucking see?
+Chmo @@ Everybody's whining, running around, fussing, but you can just do things from the heart, that's all.
+## EMOTION ## HappyEntrance
+Chmo @@ We should be happy, in short.
+
+Why did you come to me? [[Day3.Night.Chmo.Entrance3]]
+What are you offering? [[Day3.Night.Chmo.Entrance4]]
+
+
+:: Day3.Night.Chmo.Entrance3 {"position":"2375,1725","size":"100,100"}
+## EMOTION ## BaseEntrance
+Chmo @@ You're already in business!
+Chmo @@ You're gathering people, you're doing something here. You're making things happen.
+## EMOTION ## HappyEntrance
+Chmo @@ We'll turn this into a celebration of life!
+
+Come in. [[Day3.Night.ChmoYesLet]]
+You better leave. [[Day3.Night.ChmoNoLet]]
+
+
+:: Day3.Night.Chmo.Entrance4 {"position":"2575,1725","size":"100,100"}
+## EMOTION ## BaseEntrance
+Chmo @@ Survive, what else is there?
+Chmo @@ We gotta make plans while we can, to hell with the sun.
+Chmo @@ Keep moving, you know? Let's go, shall we?
+
+Come in. [[Day3.Night.ChmoYesLet]]
+You better leave. [[Day3.Night.ChmoNoLet]]
+
+
+:: Day3.Night.ChmoNoLet {"position":"2575,1850","size":"100,100"}
+## EMOTION ## SadEntrance
+Chmo @@ You're an idiot. But whatever, I don't give a shit about you, bitch.
+## EMOTION ## BaseEntrance
+Chmo @@ Fine, I'll go to your neighbors then.
+Chmo @@ Alright, see you later.
+
+
+:: Day3.Night.ChmoYesLet {"position":"2375,1850","size":"100,100"}
+## EMOTION ## HappyEntrance
+Chmo @@ Oh-oh-oh, now we're talking.
+Chmo @@ Finally, someone with some sense, bitch!
+## ENTRANCE ## ACCEPT ## Chmo
+
+
+:: Day3.Night.Doctor.Entrance {"position":"2825,1500","size":"100,100"}
+## EMOTION ## BaseEntrance
+Doctor @@ Oh, I thought no one was home.
+Doctor @@ It's so quiet at night. 
+Doctor @@ Hi! Can I come in?
+
+Have you been watching the house? [[Day3.Night.Doctor.Entrance1]]
+Are you looking for something? [[Day3.Night.Doctor.Entrance2]]
+
+
+:: Day3.Night.Doctor.Entrance1 {"position":"2725,1600","size":"100,100"}
+## EMOTION ## HappyEntrance
+Doctor @@ What? Ahahahaha, no, of course not.
+## EMOTION ## BaseEntrance
+Doctor @@ It’s rare for a house full of people to be so quiet at night.
+Doctor @@ Someone forgets themselves in alcohol and yells.
+Doctor @@ Someone screams in pain and burns.
+Doctor @@ Someone just screams with unbearable sorrow.
+
+Who are you? [[Day3.Night.Doctor.Entrance3]]
+Where did you come from? [[Day3.Night.Doctor.Entrance4]]
+
+
+:: Day3.Night.Doctor.Entrance2 {"position":"2925,1600","size":"100,100"}
+Doctor @@ Why would you think that?
+Doctor @@ No, I'm actually looking for something, but the same thing everyone else is.
+Doctor @@ Safety and a way to kill boredom.
+Doctor @@ And you guys are so quiet at night, I honestly didn’t think anyone slept here.
+Doctor @@ So I thought I’d check if it’s okay to come in, but it was locked. I was about to knock before I tried breaking the door down.
+
+Who are you? [[Day3.Night.Doctor.Entrance3]]
+Where did you come from? [[Day3.Night.Doctor.Entrance4]]
+
+
+:: Day3.Night.Doctor.Entrance3 {"position":"2725,1725","size":"100,100"}
+## EMOTION ## BaseEntrance
+Doctor @@ I’m a traveling doctor now. Hospitals are chaotic, I highly advise against going there.
+Doctor @@ I’ve operated on people. I’m a surgeon.
+Doctor @@ There wasn’t enough funding at our hospital, so I’ve done a lot of other jobs that aren’t typically mine.
+Doctor @@ Now I just go around helping whoever I can.
+
+Come in. [[Day3.Night.DoctorYesLet]]
+You better leave. [[Day3.Night.DoctorNoLet]]
+
+
+:: Day3.Night.Doctor.Entrance4 {"position":"2925,1725","size":"100,100"}
+## EMOTION ## BaseEntrance
+Doctor @@ There was a hospital in the center of town.
+## EMOTION ## SadEntrance
+Doctor @@ Yes, there was, but it became overwhelmed with patients, and we couldn’t cope.
+Doctor @@ The scariest part is that many ‘visitors’ infiltrated in such conditions.
+Doctor @@ The situation spiraled so out of control that the entire hospital was shut down. It’s pure chaos in there now.
+
+Come in. [[Day3.Night.DoctorYesLet]]
+You better leave. [[Day3.Night.DoctorNoLet]]
+
+
+:: Day3.Night.DoctorNoLet {"position":"2925,1850","size":"100,100"}
+## EMOTION ## SadEntrance
+Doctor @@ I know it’s not a good time to trust strangers.
+## EMOTION ## BaseEntrance
+Doctor @@ If you’re lucky, I’ll be around when you need me, so feel free to reach out.
+
+
+:: Day3.Night.DoctorYesLet {"position":"2725,1850","size":"100,100"}
+## EMOTION ## HappyEntrance
+Doctor @@ I hope I can help someone.
+## ENTRANCE ## ACCEPT ## Doctor
+
+
+:: Day3.Night.Super.Entrance {"position":"1800,1500","size":"100,100"}
+Super @@ Hi!
+Super @@ …
+
+Who are you? [[Day3.Night.Super.Entrance1]]
+Why are you here? [[Day3.Night.Super.Entrance2]]
+
+
+:: Day3.Night.Super.Entrance1 {"position":"1700,1600","size":"100,100"}
+Super @@ ...
+Super @@ How's it goin' here?
+## EMOTION ## Happy
+Super @@ Is everything okay?
+
+Why are you ignoring my question? [[Day3.Night.Super.Entrance3]]
+Wait, what do you want? [[Day3.Night.Super.Entrance3]]
+
+
+:: Day3.Night.Super.Entrance2 {"position":"1900,1600","size":"100,100"}
+Super @@ ...
+Super @@ How's it goin' here?
+## EMOTION ## Happy
+Super @@ Is everything okay?
+
+Why are you ignoring my question? [[Day3.Night.Super.Entrance3]]
+Wait, what do you want? [[Day3.Night.Super.Entrance3]]
+
+
+:: Day3.Night.Super.Entrance3 {"position":"1800,1700","size":"100,100"}
+## EMOTION ## Base
+Super @@ Listen-a-a-ay. Are you alone in the house?
+Super @@ Just curious. You're just reading someone's fortune.
+Super @@ Promising salvation to some, driving some away.
+
+I have other people taking shelter here. [[Day3.Night.Super.Entrance4]]
+I'm alone. [[Day3.Night.Super.Entrance5]]
+
+
+:: Day3.Night.Super.Entrance4 {"position":"1900,1800","size":"100,100"}
+## IF ## ALONE ## Day3.Night.Super.Entrance5
+## EMOTION ## Sad
+Super @@ You're lucky tonight.
+Super @@ I can hear someone whispering in your rooms.
+## EMOTION ## Base
+Super @@ But who knows what will happen tomorrow...
+## ENTRANCE ## REFUSE ## Super
+
+
+:: Day3.Night.Super.Entrance5 {"position":"1700,1800","size":"100,100"}
+## EMOTION ## Happy
+Super @@ Hahahahahaha.
+## EMOTION ## Base
+Super @@ How come?
+Super @@ It's hard to be alone, what's wrong with you?
+## EMOTION ## Happy
+Super @@ Come with me, young man.
+## DEATH
+
+
+:: Day3.Night.Window1 {"position":"3100,1700","size":"100,100"}
+TV @@ There is a group of armed soldiers outside the window.
+TV @@ Apparently they are a small unit sent here from the city to provide security for the EC.
+TV @@ You can only hear bits and pieces of phrases about a pale man with a bare torso.
+TV @@ Maybe they want to track down that creepy stranger?
+TV @@ You feel relieved that there are people ready to deal with a dangerous guest on the streets.
+
+
+:: Day3.Night.Window2 {"position":"3100,1600","size":"100,100"}
+TV @@ The bodies of teenagers burned to death on the ground.
+TV @@ They seem to have been lying here all day.
+TV @@ Two emergency workers are standing next to the bodies and writing something down.
+TV @@ It's good that there are those who can remove the bodies.
+TV @@ It's scary to imagine what kind of contagion could appear if the rotting bodies are not removed from the streets.
+
+
+:: Day3.Night.Window3 {"position":"3100,1500","size":"100,100"}
+TV @@ There is a small group of FEMA staff standing outside a neighbor's house.
+TV @@ I wonder what they are talking about?
+TV @@ Maybe they're taking soil samples?
+TV @@ Or are they looking for a place to set up base?
+TV @@ It makes you feel a little better to think that someone is trying to make sense of this nightmare.
+
+
+:: Day3.Night.Zhena.Entrance {"position":"2125,1500","size":"100,100"}
+## EMOTION ## BaseEntrance
+Zhena @@ ...
+Zhena @@ Can I rest at your place?
+
+Where did you come from? [[Day3.Night.Zhena.Entrance1]]
+Where are you heading next? [[Day3.Night.Zhena.Entrance2]]
+
+
+:: Day3.Night.Zhena.Entrance1 {"position":"2025,1600","size":"100,100"}
+Zhena @@ I don't remember anymore. I don't care about it.
+## EMOTION ## SadEntrance
+Zhena @@ I'm very tired. If I don't get some rest, I'll just collapse from exhaustion.
+
+Is your partner sick? [[Day3.Night.Zhena.Entrance3]]
+Does your friend need help? [[Day3.Night.Zhena.Entrance4]]
+
+
+:: Day3.Night.Zhena.Entrance2 {"position":"2225,1600","size":"100,100"}
+## EMOTION ## SadEntrance
+Zhena @@ I... I just want to fall down somewhere and never get up again.
+Zhena @@ I don't care where I end up.
+
+Is your partner sick? [[Day3.Night.Zhena.Entrance3]]
+Does your friend need help? [[Day3.Night.Zhena.Entrance4]]
+
+
+:: Day3.Night.Zhena.Entrance3 {"position":"2025,1725","size":"100,100"}
+## EMOTION ## BaseEntrance
+Zhena @@ That's my husband.
+## EMOTION ## SadEntrance
+Zhena @@ He died.
+## EMOTION ## BaseEntrance
+Zhena @@ I can't bury him properly now. It's pointless to let him go now.
+
+Come in. [[Day3.Night.ZhenaYesLet]]
+You better leave. [[Day3.Night.ZhenaNoLet]]
+
+
+:: Day3.Night.Zhena.Entrance4 {"position":"2225,1725","size":"100,100"}
+## EMOTION ## BaseEntrance
+Zhena @@ Not anymore. When he needed it, no one helped.
+Zhena @@ Now he's dead.
+## EMOTION ## SadEntrance
+Zhena @@ He might be alive if...
+Zhena @@ Anyone gave a shit.
+
+Come on in. [[Day3.Night.ZhenaYesLet]]
+You better leave. [[Day3.Night.ZhenaNoLet]]
+
+
+:: Day3.Night.ZhenaNoLet {"position":"2225,1850","size":"100,100"}
+## EMOTION ## BaseEntrance
+Zhena @@ …
+Zhena @@ You…
+
+
+:: Day3.Night.ZhenaYesLet {"position":"2025,1850","size":"100,100"}
+## EMOTION ## BaseEntrance
+Zhena @@ I don't think I'll stay long.
+Zhena @@ I just need a break.
+## ENTRANCE ## ACCEPT ## Zhena
+
+
+:: Day4.Day.Chmo.Asking1 {"position":"450,2350","size":"100,100"}
+## EMOTION ## Sad
+Chmo @@ I know fucking nothing.
+## EMOTION ## Base
+Chmo @@ I thought you know.
+Chmo @@ Yeah, maybe we shouldn't give a fuck.
+Chmo @@ What difference does it make if you can make money off of it?
+
+
+:: Day4.Day.Chmo.Asking2 {"position":"650,2350","size":"100,100"}
+## EMOTION ## Happy
+Chmo @@ Fuck, that's fucking awesome, no shit.
+Chmo @@ Like, I'm really glad you let me in, you're fucking awesome.
+## EMOTION ## Base
+Chmo @@ Not like every other motherfucker in this house.
+Chmo @@ You should have fucking told them to fuck off on the doorstep.
+Chmo @@ I think it's better to turn them in to the FEMA and be done with it.
+Chmo @@ You can't get fucked up with groceries like that.
+Chmo @@ But you're the boss anyway.
+## EMOTION ## Happy
+Chmo @@ And, as they say, the boss is the boss.
+Chmo @@ Heh-heh-heh.
+
+
+:: Day4.Day.Chmo.Asking3 {"position":"550,2375","size":"100,100"}
+Chmo @@ What do you want to check?
+
+Teeth [[Chmo.Teeth]]
+Hands [[Chmo.Hands]]
+Eyes [[Chmo.Eyes]]
+
+
+:: Day4.Day.Chmo.Room1 {"position":"550,2250","size":"100,100"}
+Chmo @@ He-he. What's up, bitch?
+
+What's causing the cataclysm? [[Day4.Day.Chmo.Asking1]]
+Do we need to stick together? [[Day4.Day.Chmo.Asking2]]
+I need to check on you [[Day4.Day.Chmo.Asking3]]
+
+
+:: Day4.Day.Doctor.Asking1 {"position":"800,2350","size":"100,100"}
+Doctor @@ A really good question.
+Doctor @@ I look at everything from a scientific point of view.
+## EMOTION ## Sad
+Doctor @@ But unfortunately we have no way of knowing what's really going on.
+Doctor @@ ...
+## EMOTION ## Base
+Doctor @@ It would be interesting to know who the visitors really are.
+## EMOTION ## Sad
+Doctor @@ If we live to see it.
+
+
+:: Day4.Day.Doctor.Asking2 {"position":"1000,2350","size":"100,100"}
+Doctor @@ I think so, but you can't be too careful.
+## EMOTION ## Sad
+Doctor @@ Remembering what happened in the hospital, I'd hate to see it happen again.
+## EMOTION ## Base
+Doctor @@ Man is a reasonable creature, but a crowd...
+Doctor @@ A crowd is a stupid beast.
+
+
+:: Day4.Day.Doctor.Asking3 {"position":"900,2375","size":"100,100"}
+Doctor @@ What do you want to check?
+
+Teeth [[Doctor.Teeth]]
+Hands [[Doctor.Hands]]
+Eyes [[Doctor.Eyes]]
+
+
+:: Day4.Day.Doctor.Pantry {"position":"900,2250","size":"100,100"}
+Doctor @@ M-m?
+
+What's causing the cataclysm? [[Day4.Day.Doctor.Asking1]]
+Do we need to stick together? [[Day4.Day.Doctor.Asking2]]
+I need to check on you [[Day4.Day.Doctor.Asking3]]
+
+
+:: Day4.Day.Esenin.Asking1 {"position":"100,2100","size":"100,100"}
+Esenin @@ I don't even have an idea.
+Esenin @@ Although...
+Esenin @@ I think the sun's bursting has something to do with the visitors.
+Esenin @@ It's no coincidence that they crawled out of the ground as soon as the cataclysm began.
+Esenin @@ What if the guests want to take our place, replace us?
+Esenin @@ And the burning sun is a way to get rid of us.
+Esenin @@ But on the whole, it doesn't matter anymore.
+
+
+:: Day4.Day.Esenin.Asking2 {"position":"300,2100","size":"100,100"}
+Esenin @@ Depends on your point of view.
+Esenin @@ It's hard to do it alone. You can't survive without a group now.
+Esenin @@ But on the other hand, you see it yourself, because of the visitors, it's hard to trust people.
+Esenin @@ How can you build a group if anyone can be a bastard?
+
+
+:: Day4.Day.Esenin.Asking3 {"position":"200,2125","size":"100,100"}
+Esenin @@ What do you want to check?
+
+Teeth [[Esenin.Teeth]]
+Hands [[Esenin.Hands]]
+Eyes [[Esenin.Eyes]]
+
+
+:: Day4.Day.Esenin.BigRoom {"position":"200,2000","size":"100,100"}
+Esenin @@ Yeah? Did you want something?
+
+What's causing the cataclysm? [[Day4.Day.Esenin.Asking1]]
+Do we need to stick together? [[Day4.Day.Esenin.Asking2]]
+I need to check on you [[Day4.Day.Esenin.Asking3]]
+
+
+:: Day4.Day.Fan.Asking1 {"position":"1150,2100","size":"100,100"}
+Fan @@ The Sun has decided to punish us ALL for the sins that humans have been committing for THOUSANDS of years!
+Fan @@ And the visitors, THEY FUCKING FUCKERS, began to reach out to the SUN!
+Fan @@ But the Sun is not for them, the migrants of the underground, but for us, the PEOPLE!
+Fan @@ It's OURS!
+Fan @@ FUCKING PEOPLE'S GOODNESS!
+Fan @@ ...
+## EMOTION ## Sad
+Fan @@ Fuck, my buddy Serega burned to death in the street because he was drunk and fell asleep outside... 
+Fan @@ Rest his soul, HOLY SUN, and accept him with open arms.
+## EMOTION ## Base
+Fan @@ And, perhaps, the soul of his ficus, which he will no longer be able to water...
+## EMOTION ## Sad
+Fan @@ Amen.
+## EMOTION ## Base
+
+
+:: Day4.Day.Fan.Asking2 {"position":"1350,2100","size":"100,100"}
+Fan @@ The flock must stick together.
+Fan @@ Otherwise how will the RIGHTEOUS ONE instruct everyone on the RIGHT path?
+
+
+:: Day4.Day.Fan.Asking3 {"position":"1250,2125","size":"100,100"}
+Fan @@ What do you want to check?
+
+Teeth [[Fan.Teeth]]
+Hands [[Fan.Hands]]
+Eyes [[Fan.Eyes]]
+
+
+:: Day4.Day.Fan.Bathroom {"position":"1250,2000","size":"100,100"}
+Fan @@ I'm listening to you, human! SPEAK!
+
+What's causing the cataclysm? [[Day4.Day.Fan.Asking1]]
+Do we need to stick together? [[Day4.Day.Fan.Asking2]]
+I need to check on you [[Day4.Day.Fan.Asking3]]
+
+
+:: Day4.Day.Holod.Asking1 {"position":"800,2100","size":"100,100"}
+Holod @@ Because of people.
+Holod @@ We are the only thing to blame for what's going on.
+Holod @@ I have nothing more to add, alas.
+
+
+:: Day4.Day.Holod.Asking2 {"position":"1000,2100","size":"100,100"}
+Holod @@ I think we shouldn't.
+Holod @@ I have been hurt so much by people who follow the herd...
+Holod @@ Who blindly see those who are different and then flatly reject them, persecute and humiliate them.
+Holod @@ Is it a good thing I'm in this asylum?
+
+
+:: Day4.Day.Holod.Asking3 {"position":"900,2125","size":"100,100"}
+Holod @@ What do you want to check?
+
+Teeth [[Holod.Teeth]]
+Hands [[Holod.Hands]]
+Eyes [[Holod.Eyes]]
+
+
+:: Day4.Day.Holod.BigRoom {"position":"900,2000","size":"100,100"}
+Holod @@ I wish there was some warmth...
+
+What's causing the cataclysm? [[Day4.Day.Holod.Asking1]]
+Do we need to stick together? [[Day4.Day.Holod.Asking2]]
+I need to check on you [[Day4.Day.Holod.Asking3]]
+
+
+:: Day4.Day.TV.Bedroom.Extra1 {"position":"175,400","size":"100,100"}
+## EMOTION ## Sad
+TV @@ Attention! Emergency alert!
+TV @@ Due to intense solar heat, wildfires are engulfing forests and fields.
+TV @@ The extent of the fires is still hard to determine.
+TV @@ However, it's already apparent that these are the largest fires humanity has ever faced.
+TV @@ All available fire crews have been deployed to the affected areas, but many firefighters have been pulled from duty due to encounters with "visitors."
+TV @@ Now, let's move on to other news...
+
+
+:: Day4.Day.TV.Bedroom.Necessary {"position":"50,400","size":"100,100"}
+TV @@ Good morning, dear viewers! This is the morning news.
+TV @@ The valiant FEMA staff members have organized quarantine zones.
+TV @@ Anyone showing signs of 'visitors' is directed there.
+TV @@ Some people express concern that the identity of 'visitors' remains unknown...
+TV @@ However, FEMA assures that they are merely ill individuals in need of assistance.
+TV @@ Additionally, FEMA has identified a new indicator of 'visitors' — intensely irritated blood-red eyes.
+TV @@ This information was discovered through experiments with detained 'guests'.
+TV @@ According to FEMA experts, the irritation is caused by exposure to bright sunlight.
+TV @@ Please stay alert and calm and avoid leaving your home during daylight hours.
+TV @@ Now, let's move on to other news...
+
+
+:: Day4.Day.Trevoga.Asking1 {"position":"450,2100","size":"100,100"}
+Trevoga @@ Why?
+Trevoga @@ I... I don't know...
+Trevoga @@ I really don't know!
+## EMOTION ## Sad
+Trevoga @@ I DON'T KNOW!
+Trevoga @@ GOD WHY ARE YOU DOING THIS TO US!
+Trevoga @@ WHY ARE WE SUFFERING ALL THIS PAIN?
+Trevoga @@ HAVE MERCY ON US, DESTROY THE SUN!
+Trevoga @@ LEAVE THE DARKNESS AND THE COLD, PLEASE!
+Trevoga @@ I CAN'T TAKE IT ANYMORE!
+Trevoga @@ ...
+## EMOTION ## Base
+
+
+:: Day4.Day.Trevoga.Asking2 {"position":"650,2100","size":"100,100"}
+Trevoga @@ T-together?
+Trevoga @@ ...
+Trevoga @@ Yeah.
+Trevoga @@ ...
+## EMOTION ## Happy
+Trevoga @@ Yes!
+Trevoga @@ WE ALL SHOULD PRAY!
+Trevoga @@ THIS WILL HELP, HE MUST HEAR US!
+Trevoga @@ THE MORE MOUTHS — THE LOUDER THE PRAYER.
+Trevoga @@ LORD HEAR US, WE WILL ALL PRAY TO YOU.
+Trevoga @@ ONLY STOP TREATING WITH THE SUN.
+Trevoga @@ ...
+## EMOTION ## Base
+
+
+:: Day4.Day.Trevoga.Asking3 {"position":"550,2125","size":"100,100"}
+Trevoga @@ What do you want to check?
+
+Teeth [[Trevoga.Teeth]]
+Hands [[Trevoga.Hands]]
+Eyes [[Trevoga.Eyes]]
+
+
+:: Day4.Day.Trevoga.Pantry {"position":"550,2000","size":"100,100"}
+Trevoga @@ O-o-oh. I hope it will be over soon.
+
+What's causing the cataclysm? [[Day4.Day.Trevoga.Asking1]]
+Do we need to stick together? [[Day4.Day.Trevoga.Asking2]]
+I need to check on you [[Day4.Day.Trevoga.Asking3]]
+
+
+:: Day4.Day.Zhena.Asking1 {"position":"100,2350","size":"100,100"}
+Zhena @@ I don't care why the cataclysm is happening.
+## EMOTION ## Sad
+Zhena @@ I'm so tired of it all...
+Zhena @@ Of this goddamn sun.
+Zhena @@ Of these fucking visitors.
+Zhena @@ When will this endless hell finally end?
+Zhena @@ May it burn us all to the ground!
+Zhena @@ II wish it would all end already... I don't care how, but over.
+
+
+:: Day4.Day.Zhena.Asking2 {"position":"300,2350","size":"100,100"}
+Zhena @@ ...
+Zhena @@ I don't know, I'm sorry.
+Zhena @@ It's hard for me to think right now.
+Zhena @@ I just want to take a little rest, that's all...
+Zhena @@ ...
+Zhena @@ Let me rest, please, I'm really tired.
+
+
+:: Day4.Day.Zhena.Asking3 {"position":"200,2375","size":"100,100"}
+Zhena @@ What do you want to check?
+
+Teeth [[Zhena.Teeth]]
+Hands [[Zhena.Hands]]
+Eyes [[Zhena.Eyes]]
+
+
+:: Day4.Day.Zhena.Bathroom {"position":"200,2250","size":"100,100"}
+Zhena @@ I need to get some rest...
+
+What's causing the cataclysm? [[Day4.Day.Zhena.Asking1]]
+Do we need to stick together? [[Day4.Day.Zhena.Asking2]]
+I need to check on you [[Day4.Day.Zhena.Asking3]]
+
+
+:: Day4.Night.Doch.Entrance {"position":"2450,2000","size":"100,100"}
+## EMOTION ## SadEntrance
+Doch @@ H-hello.
+Doch @@ Let me in.
+
+Are you hysterical? [[Day4.Night.Doch.Entrance1]]
+Did something happen? [[Day4.Night.Doch.Entrance2]]
+
+
+:: Day4.Night.Doch.Entrance1 {"position":"2350,2100","size":"100,100"}
+## EMOTION ## SadEntrance
+Doch @@ I-don't-know-what-to-do.
+Doch @@ People-ee-ee-ee-ee.
+Doch @@ A-a-a-a-a-a-a-a-a-a-a-a-a.
+Doch @@ Kill-lee-lee-da...
+Doch @@ A-a-a-a-a-a-a-a-a-a-a-a-a.
+Doch @@ Da-dad.
+
+Who did this? Drink some water. [[Day4.Night.Doch.Entrance3]]
+Why did they do that? Drink some water. [[Day4.Night.Doch.Entrance4]]
+
+
+:: Day4.Night.Doch.Entrance2 {"position":"2550,2100","size":"100,100"}
+## EMOTION ## SadEntrance
+Doch @@ Ah-ah-ah-ah-ah-ah-ah-ah.
+Doch @@ My-my- dad-dy....
+Doch @@ Ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah.
+Doch @@ Killed my d-d-dad.
+
+Who did this? Drink some water. [[Day4.Night.Doch.Entrance3]]
+Why did they do that? Drink some water. [[Day4.Night.Doch.Entrance4]]
+
+
+:: Day4.Night.Doch.Entrance3 {"position":"2350,2225","size":"100,100"}
+## EMOTION ## SadEntrance
+Doch @@ We had vi-visitors. They s-sat in our room. 
+Doch @@ Daddy was t-t-talking to them about something. And then they killed him.
+Doch @@ Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah.
+Doch @@ Our house is n-n-now on f-f-fire.
+
+Come in. [[Day4.Night.DochYesLet]]
+You better leave. [[Day4.Night.DochNoLet]]
+
+
+:: Day4.Night.Doch.Entrance4 {"position":"2550,2225","size":"100,100"}
+## EMOTION ## SadEntrance
+Doch @@ I don't-I don't know.
+Doch @@ They were quietly sit-t-t-ting with daddy in the kitchen.
+Doch @@ And then they d-d-d-did something, and then they s-s-s-set the house on fire.
+Doch @@ While I was r-r-running, they were just laughing.
+
+Come in. [[Day4.Night.DochYesLet]]
+You better leave. [[Day4.Night.DochNoLet]]
+
+
+:: Day4.Night.DochNoLet {"position":"2550,2350","size":"100,100"}
+## EMOTION ## SadEntrance
+Doch @@ Where am I gonna go-o-ooooo? 
+Doch @@ Aaaaaaaaaaaaaaah.
+Doch @@ AAAAAAAAAAAAAAAAAAAAAAAA!
+Doch @@ I'M SO SCA-A-ARE-E-E-ED!
+
+
+:: Day4.Night.DochYesLet {"position":"2350,2350","size":"100,100"}
+Doch @@ C-c-c-can you h-help me?
+Doch @@ I'm scared-d-d.
+## ENTRANCE ## ACCEPT ## Doch
+
+
+:: Day4.Night.Himoza.Entrance {"position":"1800,2000","size":"100,100"}
+Himoza @@ Good night.
+Himoza @@ I'm from the FEMA crew, we're here to help you.
+
+You came alone? [[Day4.Night.Himoza.Entrance1]]
+How can I trust you? [[Day4.Night.Himoza.Entrance2]]
+
+
+:: Day4.Night.Himoza.Entrance1 {"position":"1700,2100","size":"100,100"}
+Himoza @@ No, of course not. 
+Himoza @@ Our crew is going door-to-door in the neighborhood. We're splitting up to get the job done faster.
+Himoza @@ I won't be staying long.
+
+Why are you wearing a hazmat suit? Are we getting one of those? [[Day4.Night.Himoza.Entrance3]]
+How will you help us? [[Day4.Night.Himoza.Entrance4]]
+
+
+:: Day4.Night.Himoza.Entrance2 {"position":"1900,2100","size":"100,100"}
+Himoza @@ You must have seen the news. We were there.
+Himoza @@ I can also show you my ID. 
+
+Why are you wearing a hazmat suit? Are we getting one of those? [[Day4.Night.Himoza.Entrance3]]
+How will you help us?  [[Day4.Night.Himoza.Entrance4]]
+
+
+:: Day4.Night.Himoza.Entrance3 {"position":"1700,2225","size":"100,100"}
+Himoza @@ There's no reason to be afraid. The suit is in case we catch the sunrise.
+Himoza @@ Civilians don't need it now, just stay home.
+Himoza @@ We'll take care of you.
+
+What's next? [[Day4.Night.Himoza.Entrance5]]
+Do you have an action plan? [[Day4.Night.Himoza.Entrance6]]
+
+
+:: Day4.Night.Himoza.Entrance4 {"position":"1900,2225","size":"100,100"}
+Himoza @@ First we have to do some investigation.
+Himoza @@ Based on the results, I will be able to take further action by notifying the management.
+Himoza @@ You just need to wait a little.
+
+What's next? [[Day4.Night.Himoza.Entrance5]]
+Do you have an action plan? [[Day4.Night.Himoza.Entrance6]]
+
+
+:: Day4.Night.Himoza.Entrance5 {"position":"1700,2350","size":"100,100"}
+Himoza @@ I will take one man from you. I'll have him back soon, it's for examination.
+Himoza @@ You may have been exposed to solar radiation, we'll measure it on one person.
+Himoza @@ It can be anyone.
+
+What's next? [[Day4.Night.Himoza.Entrance7]]
+Do I have to pack too? [[Day4.Night.Himoza.Entrance8]]
+
+
+:: Day4.Night.Himoza.Entrance6 {"position":"1900,2350","size":"100,100"}
+Himoza @@ Of course. It's not like we can act spontaneously.
+Himoza @@ We'll take any one person with us for examination.
+Himoza @@ Since you may have been exposed to solar radiation, we'll check the health of one.
+Himoza @@ Based on that, we'll decide if you all need help.
+Himoza @@ It can be anyone.
+
+What's next? [[Day4.Night.Himoza.Entrance7]]
+Do I have to pack too? [[Day4.Night.Himoza.Entrance8]]
+
+
+:: Day4.Night.Himoza.Entrance7 {"position":"1700,2475","size":"100,100"}
+Himoza @@ Wait.
+Himoza @@ Either we will evacuate you from the dangerous area or we will bring the man back to you.
+Himoza @@ We will issue instructions either way.
+## EXILE
+Himoza @@ Now I'm taking the man from you, we'll go.
+Himoza @@ Goodbye.
+
+
+:: Day4.Night.Himoza.Entrance8 {"position":"1900,2475","size":"100,100"}
+Himoza @@ No, you are, as I understand it, the owner of the house. You stay here for now.
+Himoza @@ We'll take the man away for a while, then decide what to do next.
+Himoza @@ We'll issue instructions afterward.
+## EXILE
+Himoza @@ I'm now taking the man with us. We're leaving.
+Himoza @@ Goodbye.
+
+
+:: Day4.Night.Mama.Entrance {"position":"2825,2650","size":"100,100"}
+## EMOTION ## BaseEntrance
+Mama @@ Hey! 
+Mama @@ Anybody home?
+
+Who are you? [[Day4.Night.Mama.Entrance1]]
+Looking for someone? [[Day4.Night.Mama.Entrance2]]
+
+
+:: Day4.Night.Mama.Entrance1 {"position":"2725,2750","size":"100,100"}
+Mama @@ I used to live a couple of blocks away.
+Mama @@ We were evacuated from our home by those in yellow suits, but they didn't take us anywhere.
+Mama @@ They didn't provide us a place to live. Where should we go? What should we do?
+Mama @@ While everyone's figuring out where to go, I'm here trying to save myself.
+
+Why did they kick you out? [[Day4.Night.Mama.Entrance3]]
+How many of you left? [[Day4.Night.Mama.Entrance4]]
+
+
+:: Day4.Night.Mama.Entrance2 {"position":"2925,2750","size":"100,100"}
+Mama @@ I'm not looking for anyone. I just need a place to hide.
+Mama @@ The whole neighborhood has been kicked out, and no one knows where to go.
+Mama @@ Now I'm running around in shock, looking for a place to live.
+
+Why did they kick you out? [[Day4.Night.Mama.Entrance3]]
+How many of you left? [[Day4.Night.Mama.Entrance4]]
+
+
+:: Day4.Night.Mama.Entrance3 {"position":"2725,2875","size":"100,100"}
+Mama @@ They said there was a big sunstroke or something on our house. 
+Mama @@ Those in yellow suits kicked us out. Somebody was grabbed, taken for tests.
+Mama @@ Some were released.
+
+Come in. [[Day4.Night.MamaYesLet]]
+You better leave. [[Day4.Night.MamaNoLet]]
+
+
+:: Day4.Night.Mama.Entrance4 {"position":"2925,2875","size":"100,100"}
+Mama @@ I'm telling you, the whole house!
+Mama @@ Somebody didn't leave on their own: the yellows grabbed it like they didn't mean it and took them away for examination.
+Mama @@ It felt like half of them were grabbed. They didn't chase the others too much. 
+Mama @@ Well, now I have to survive somehow.
+
+Come in. [[Day4.Night.MamaYesLet]]
+You better leave. [[Day4.Night.MamaNoLet]]
+
+
+:: Day4.Night.MamaNoLet {"position":"2925,3000","size":"100,100"}
+## EMOTION ## SadEntrance
+Mama @@ Well, don't open the door to those yellow ones anyway.
+## EMOTION ## BaseEntrance
+Mama @@ Well you generally don't open the door anymore.
+## EMOTION ## HappyEntrance
+Mama @@ HAHAHAHAHAHAHAHAHA.
+## EMOTION ## BaseEntrance
+Mama @@ I'll bring my people over here and help you save yourself, ahahahahahahaha.
+
+
+:: Day4.Night.MamaYesLet {"position":"2725,3000","size":"100,100"}
+## EMOTION ## HappyEntrance
+Mama @@ Yeah, thanks. Don't open the door to those yellow ones, okay?
+Mama @@ They're gonna take us somewhere.
+## ENTRANCE ## ACCEPT ## Mama
+
+
+:: Day4.Night.Ohota.Entrance {"position":"2800,2000","size":"100,100"}
+## EMOTION ## BaseEntrance
+Ohota @@ Hey, how's it going around here?
+Ohota @@ I'm not from around here; I don't like staying in one place too long.
+Ohota @@ Can't roam around as much anymore — I'm getting too old for that.
+
+Why do you travel? [[Day4.Night.Ohota.Entrance1]]
+What are you looking for here? [[Day4.Night.Ohota.Entrance2]]
+
+
+:: Day4.Night.Ohota.Entrance1 {"position":"2700,2100","size":"100,100"}
+Ohota @@ Yeah, those very ones. Have you seen what the visitors are up to?
+Ohota @@ Every house, someone’s killed, someone else is torn apart.
+Ohota @@ They pretend to be one of us, then, man, all hell breaks loose.
+Ohota @@ We need to wipe out these visitors.
+
+Do you want to kill the visitors? [[Day4.Night.Ohota.Entrance3]]
+Where's your weapon against the visitors? [[Day4.Night.Ohota.Entrance4]]
+
+
+:: Day4.Night.Ohota.Entrance2 {"position":"2900,2100","size":"100,100"}
+Ohota @@ In town? I just want to rest.
+Ohota @@ After this damned sun, the visitors started popping up more, crawling everywhere.
+Ohota @@ I'm telling you: we need to snuff them out. They're trying to pull something on us.
+
+Do you want to kill the visitors? [[Day4.Night.Ohota.Entrance3]]
+Where's your weapon against the visitors? [[Day4.Night.Ohota.Entrance4]]
+
+
+:: Day4.Night.Ohota.Entrance3 {"position":"2700,2225","size":"100,100"}
+Ohota @@ Aren’t you doing the same thing?
+Ohota @@ Or do you just tell 'em to 'shoo'? You're not stupid, right?
+Ohota @@ You kick them out, but tomorrow they'll tear you apart and won’t even remember your name, get it?
+Ohota @@ You gotta be careful with 'em, that’s the thing.
+
+Come in. [[Day4.Night.OhotaYesLet]]
+You better leave. [[Day4.Night.OhotaNoLet]]
+
+
+:: Day4.Night.Ohota.Entrance4 {"position":"2900,2225","size":"100,100"}
+## EMOTION ## SadEntrance
+Ohota @@ I had a gun. I almost got myself killed.
+Ohota @@ They waited till I was asleep in the tent and just stole my gun!
+## EMOTION ## BaseEntrance
+Ohota @@ I was running, they were shooting. That's the kind of fun they have.
+Ohota @@ There's nothing human but a shell.
+
+Come in. [[Day4.Night.OhotaYesLet]]
+You better leave. [[Day4.Night.OhotaNoLet]]
+
+
+:: Day4.Night.OhotaNoLet {"position":"2900,2350","size":"100,100"}
+## EMOTION ## SadEntrance
+Ohota @@ And good. Maybe you're a visitor yourself.
+## EMOTION ## BaseEntrance
+Ohota @@ You could have slit my throat in the night.
+Ohota @@ You know, I’ll give these visitors a run for their money. You'll be amazed.
+
+
+:: Day4.Night.OhotaYesLet {"position":"2700,2350","size":"100,100"}
+## EMOTION ## HappyEntrance
+Ohota @@ I knew you weren’t a pushover. A real man.
+Ohota @@ We'll mix it up with these visitors; they won't come near us by a mile.
+## ENTRANCE ## ACCEPT ## Ohota
+
+
+:: Day4.Night.Volk.Entrance {"position":"2125,2000","size":"100,100"}
+## EMOTION ## BaseEntrance
+Volk @@ Hello.
+Volk @@ What a mess. Did you see that?
+Volk @@ What kind of society is this? The beasts around here are revealed.
+## EMOTION ## Happy
+Volk @@ Finally, nobody's pretending.
+
+What do you mean? [[Day4.Night.Volk.Entrance1]]
+Are you one of the beasts? [[Day4.Night.Volk.Entrance2]]
+
+
+:: Day4.Night.Volk.Entrance1 {"position":"2025,2100","size":"100,100"}
+## EMOTION ## BaseEntrance
+Volk @@ Haven't you been to other houses? Outside on the street?
+Volk @@ All those social norms and other crap don't work anymore.
+Volk @@ Might makes right now. If you can outfight others, you've won and established order.
+
+How many houses have you switched? [[Day4.Night.Volk.Entrance3]]
+How have you survived all this time? [[Day4.Night.Volk.Entrance4]]
+
+
+:: Day4.Night.Volk.Entrance2 {"position":"2225,2100","size":"100,100"}
+## EMOTION ## BaseEntrance
+Volk @@ We're all the same beast.
+Volk @@ If you deny it long enough, you'll be eaten alive. No bones left.
+Volk @@ Now the new order is whoever is the strongest is right.
+Volk @@ Whoever says he's not one of this kind of people will be dead tomorrow.
+
+How many houses have you switched? [[Day4.Night.Volk.Entrance3]]
+How have you survived all this time? [[Day4.Night.Volk.Entrance4]]
+
+
+:: Day4.Night.Volk.Entrance3 {"position":"2025,2225","size":"100,100"}
+Volk @@ I haven't been anywhere for a long time. 
+Volk @@ But everywhere I see chaos. Fear blinds people to so many things.
+Volk @@ You still have some order. That's interesting, I'd like to see you keep it.
+
+Come in. [[Day4.Night.VolkYesLet]]
+You better leave. [[Day4.Night.VolkNoLet]]
+
+
+:: Day4.Night.Volk.Entrance4 {"position":"2225,2225","size":"100,100"}
+Volk @@ You'll know too much, you'll soon grow old.
+Volk @@ I don't ask you how you live, you don't ask me how I live.
+Volk @@ The main thing is that I won't be a problem for you.
+
+Come in. [[Day4.Night.VolkYesLet]]
+You better leave. [[Day4.Night.VolkNoLet]]
+
+
+:: Day4.Night.VolkNoLet {"position":"2225,2350","size":"100,100"}
+## EMOTION ## SadEntrance
+Volk @@ Ahhhh. So that's how it is.
+## EMOTION ## BaseEntrance
+Volk @@ Wait for some news.
+
+
+:: Day4.Night.VolkYesLet {"position":"2025,2350","size":"100,100"}
+## EMOTION ## HappyEntrance
+Volk @@ An intelligent decision. 
+Volk @@ The Force now rules your life and you either accept it or get in trouble.
+## ENTRANCE ## ACCEPT ## Volk
+
+
+:: Day4.Night.Window1 {"position":"3100,2200","size":"100,100"}
+TV @@ The entire squad of soldiers who were here yesterday are dead.
+TV @@ The bodies are strewn all over the street, and one of the bodies is missing a head.
+TV @@ Did that pale, creepy stranger kill them all?
+TV @@ You are horrified by this picture of carnage, and you feel in danger.
+
+
+:: Day4.Night.Window2 {"position":"3100,2100","size":"100,100"}
+TV @@ A pale creepy man stands in the road and smiles.
+TV @@ He has someone's severed head in his hand, wearing a helmet.
+TV @@ It's a soldier's head with a grimace of horror frozen on his face.
+TV @@ You are very uncomfortable with what you see.
+
+
+:: Day4.Night.Window3 {"position":"3100,2000","size":"100,100"}
+TV @@ A neighbor's house, which was recently painted white, burned to the ground and is now completely black.
+TV @@ The fire seems to have died down recently.
+TV @@ Did someone set it on fire on purpose?
+TV @@ What happened to the neighbor's family?
+TV @@ Did anyone survive?
+TV @@ Why did they burn the house down?
+TV @@ Your head is filled with anxious thoughts and a feeling of incomprehension and helplessness.
+
+
+:: Day5.Day.Chmo.Asking1 {"position":"450,3000","size":"100,100"}
+## EMOTION ## Happy
+Chmo @@ They rule, what's the question?
+Chmo @@ I think the FEMA guys are doing the right thing.
+## EMOTION ## Base
+Chmo @@ Taking out the motherfuckers that deserve to die.
+Chmo @@ The other day I saw through the window they took my neighbor.
+Chmo @@ They did the right thing I reckon, that fucker borrowed a lot of money from me and never paid it back.
+## EMOTION ## Sad
+Chmo @@ Fuck, I wish I could join FEMA...
+## EMOTION ## Base
+
+
+:: Day5.Day.Chmo.Asking2 {"position":"650,3000","size":"100,100"}
+## EMOTION ## Happy
+Chmo @@ Pf-f-f-f-ha-ha-ha-ha.
+Chmo @@ ...
+## EMOTION ## Base
+Chmo @@ Wait, you don't mean cum?
+Chmo @@ Oh, you mean the fuckery going on.
+Chmo @@ Well...
+## EMOTION ## Sad
+Chmo @@ Fuck knows why?
+Chmo @@ Well, yeah, the sun's hot, it's blazing, but all bad things come to an end sooner or later.
+## EMOTION ## Base
+Chmo @@ So I think the sun's gonna run out soon.
+Chmo @@ And without it, it won't be hot outside anymore, and we can live peacefully as before.
+
+
+:: Day5.Day.Chmo.Asking3 {"position":"550,3025","size":"100,100"}
+Chmo @@ What do you want to check?
+
+Teeth [[Chmo.Teeth]]
+Hands [[Chmo.Hands]]
+Eyes [[Chmo.Eyes]]
+Photo [[Chmo.Photo]]
+
+
+:: Day5.Day.Chmo.Room1 {"position":"550,2900","size":"100,100"}
+Chmo @@ He-he. What's up, bitch?
+
+What do you think about FEMA? [[Day5.Day.Chmo.Asking1]]
+Is the end near? [[Day5.Day.Chmo.Asking2]]
+I need to check on you [[Day5.Day.Chmo.Asking3]]
+
+
+:: Day5.Day.Doch.Asking1 {"position":"100,3250","size":"100,100"}
+## EMOTION ## Sad
+Doch @@ I do-don't know-ow-ow who that is.
+Doch @@ Mommy...
+Doch @@ Thi-this wouldn't have happened if it weren't for those ev-evil people.
+Doch @@ Ah-ah-ah-ah-ah.
+
+
+:: Day5.Day.Doch.Asking2 {"position":"300,3250","size":"100,100"}
+## EMOTION ## Sad
+Doch @@ Th-the end?
+Doch @@ I... I don't wa-want to die!
+Doch @@ Ah-ah-ah-ah-ah.
+Doch @@ Mo-mommy-ah-ah-ah.
+Doch @@ Ah-ah-ah-ah-ah.
+Doch @@ I want to be with you, mom-ah-ah-ah.
+Doch @@ Ah-ah-ah-ah-ha-ah-ah.
+
+
+:: Day5.Day.Doch.Asking3 {"position":"200,3275","size":"100,100"}
+Doch @@ What do you want to check?
+
+Teeth [[Doch.Teeth]]
+Hands [[Doch.Hands]]
+Eyes [[Doch.Eyes]]
+Photo [[Doch.Photo]]
+
+
+:: Day5.Day.Doch.Room1 {"position":"200,3150","size":"100,100"}
+Doch @@ I... I want my mam-ma.
+
+What do you think about FEMA? [[Day5.Day.Doch.Asking1]]
+Is the end near? [[Day5.Day.Doch.Asking2]]
+I need to check on you [[Day5.Day.Doch.Asking3]]
+
+
+:: Day5.Day.Doctor.Asking1 {"position":"800,3000","size":"100,100"}
+Doctor @@ I have a more positive than negative view of them.
+Doctor @@ It's good that there’s an organization trying to manage the situation.
+Doctor @@ Even though not everyone agrees with FEMA’s methods.
+
+
+:: Day5.Day.Doctor.Asking2 {"position":"1000,3000","size":"100,100"}
+Doctor @@ I'd like to think not.
+Doctor @@ Humanity has faced numerous disasters, always teetering on the edge.
+Doctor @@ And each time, people have summoned the strength to keep fighting.
+Doctor @@ Even when all hope seemed lost and the end appeared imminent.
+## EMOTION ## Sad
+Doctor @@ ...
+Doctor @@ I'd like to believe that this time, too, humanity will overcome the calamity that has struck us.
+## EMOTION ## Base
+
+
+:: Day5.Day.Doctor.Asking3 {"position":"900,3025","size":"100,100"}
+Doctor @@ What do you want to check?
+
+Teeth [[Doctor.Teeth]]
+Hands [[Doctor.Hands]]
+Eyes [[Doctor.Eyes]]
+Photo [[Doctor.Photo]]
+
+
+:: Day5.Day.Doctor.Pantry {"position":"900,2900","size":"100,100"}
+Doctor @@ M-m?
+
+What do you think about FEMA? [[Day5.Day.Doctor.Asking1]]
+Is the end near? [[Day5.Day.Doctor.Asking2]]
+I need to check on you [[Day5.Day.Doctor.Asking3]]
+
+
+:: Day5.Day.Esenin.Asking1 {"position":"100,2750","size":"100,100"}
+Esenin @@ You mean the fuckers in yellow?
+Esenin @@ They are inhuman beasts with no will of their own.
+Esenin @@ They hide in yellow cocoons with masks and think they're in charge.
+Esenin @@ They take everyone who even slightly falls under the signs of a visitor.
+Esenin @@ In short, I would not drink from the same cup with them.
+
+
+:: Day5.Day.Esenin.Asking2 {"position":"300,2750","size":"100,100"}
+Esenin @@ What is the point of this question?
+Esenin @@ Do you want me to comfort you?
+Esenin @@ Nah, take a sober look at the situation.
+Esenin @@ If not the end, then fucking disaster is definitely very close.
+Esenin @@ Is there anything we can do?
+Esenin @@ I think we should have done something earlier, now it's over.
+
+
+:: Day5.Day.Esenin.Asking3 {"position":"200,2775","size":"100,100"}
+Esenin @@ What do you want to check?
+
+Teeth [[Esenin.Teeth]]
+Hands [[Esenin.Hands]]
+Eyes [[Esenin.Eyes]]
+Photo [[Esenin.Photo]]
+
+
+:: Day5.Day.Esenin.BigRoom {"position":"200,2650","size":"100,100"}
+Esenin @@ Yeah? Did you want something?
+
+What do you think about FEMA? [[Day5.Day.Esenin.Asking1]]
+Is the end near? [[Day5.Day.Esenin.Asking2]]
+I need to check on you [[Day5.Day.Esenin.Asking3]]
+
+
+:: Day5.Day.Fan.Asking1 {"position":"1150,2750","size":"100,100"}
+Fan @@ FEMA are the damned heretic!
+Fan @@ They interfere in processes that WE, THE PEOPLE, have no control over!
+Fan @@ They stick their noses where they don't belong.
+Fan @@ ...
+## EMOTION ## Sad
+Fan @@ Fucking damn those fuckers who threw my mother into a puddle.
+## EMOTION ## Base
+
+
+:: Day5.Day.Fan.Asking2 {"position":"1350,2750","size":"100,100"}
+Fan @@ The end for whom?
+Fan @@ For us?
+## EMOTION ## Happy
+Fan @@ Ha-ha-ha!
+Fan @@ Don't make me laugh, the SUN IS ON OUR SIDE! 
+## EMOTION ## Base
+Fan @@ It's helping us, can't you see that?
+Fan @@ It smokes out the visitors who try to get on the ground.
+Fan @@ We should thank it, not start trumpeting the end of the world.
+Fan @@ THIS IS THE END FOR THEM, THE FUCKING VISITORS!
+Fan @@ DESTROY THE IMMIGRANTS OF THE UNDERGROUND!!!
+Fan @@ ...
+## EMOTION ## Sad
+Fan @@ Fuck, it's been a long time since I've had fried potatoes...
+## EMOTION ## Base
+
+
+:: Day5.Day.Fan.Asking3 {"position":"1250,2775","size":"100,100"}
+Fan @@ What do you want to check?
+
+Teeth [[Fan.Teeth]]
+Hands [[Fan.Hands]]
+Eyes [[Fan.Eyes]]
+Photo [[Fan.Photo]]
+
+
+:: Day5.Day.Fan.Bathroom {"position":"1250,2650","size":"100,100"}
+Fan @@ I'm listening to you, human! SPEAK!
+
+What do you think about FEMA? [[Day5.Day.Fan.Asking1]]
+Is the end near? [[Day5.Day.Fan.Asking2]]
+I need to check on you [[Day5.Day.Fan.Asking3]]
+
+
+:: Day5.Day.Holod.Asking1 {"position":"800,2750","size":"100,100"}
+Holod @@ I don't trust them.
+Holod @@ They have so much power over people's lives.
+Holod @@ They can take anyone they see as a visitor.
+Holod @@ They'll take me too, sooner or later.
+Holod @@ All in good time.
+
+
+:: Day5.Day.Holod.Asking2 {"position":"1000,2750","size":"100,100"}
+Holod @@ Closer than ever.
+Holod @@ The last page in our story is almost turned.
+Holod @@ I suppose I should be scared that the end is near...
+Holod @@ But it's foreign to me, and I'm not afraid of death.
+Holod @@ But if it does decide to do the reaping, at least let it not delay it.
+
+
+:: Day5.Day.Holod.Asking3 {"position":"900,2775","size":"100,100"}
+Holod @@ What do you want to check?
+
+Teeth [[Holod.Teeth]]
+Hands [[Holod.Hands]]
+Eyes [[Holod.Eyes]]
+Holod [[Holod.Photo]]
+
+
+:: Day5.Day.Holod.BigRoom {"position":"900,2650","size":"100,100"}
+Holod @@ I wish there was some warmth...
+
+What do you think about FEMA? [[Day5.Day.Holod.Asking1]]
+Is the end near? [[Day5.Day.Holod.Asking2]]
+I need to check on you [[Day5.Day.Holod.Asking3]]
+
+
+:: Day5.Day.Mama.Asking1 {"position":"800,4150","size":"100,100"}
+Mama @@ What can we do about it?
+Mama @@ It's not our problem.
+Mama @@ They kill, and that's the end of it.
+Mama @@ You just have to be careful about who you let in.
+## EMOTION ## Happy
+Mama @@ You might accidentally let in a visitor.
+## EMOTION ## Base
+
+
+:: Day5.Day.Mama.Asking2 {"position":"1000,4150","size":"100,100"}
+Mama @@ What's the difference?
+Mama @@ As long as no one's bothering us — that's good enough.
+Mama @@ Do you really care about the rest?
+Mama @@ Let the visitors pass by. And those in yellow too. Don't let them in.
+## EMOTION ## Happy
+Mama @@ Being alive is good enough. And as for being human — who cares?
+## EMOTION ## Base
+
+
+:: Day5.Day.Mama.Asking3 {"position":"900,4175","size":"100,100"}
+Mama @@ What do you want to check?
+
+Teeth [[Mama.Teeth]]
+Hands [[Mama.Hands]]
+Eyes [[Mama.Eyes]]
+Photo [[Mama.Photo]]
+
+
+:: Day5.Day.Mama.Room2 {"position":"900,4050","size":"100,100"}
+Mama @@ Oh, son, please don't let anyone in.
+
+What do you think about killing? [[Day5.Day.Mama.Asking1]]
+Do we still have much humanity left? [[Day5.Day.Mama.Asking2]]
+I need to check on you [[Day5.Day.Mama.Asking3]]
+
+
+:: Day5.Day.Ohota.Asking1 {"position":"450,3250","size":"100,100"}
+Ohota @@ FEMA — they're nice fellas.
+Ohota @@ They do the same thing I do — track visitors.
+Ohota @@ But I think it's a waste of time to be gentle with 'em and put 'em in quarantine zones.
+Ohota @@ They're only making it worse, because they can band together.
+Ohota @@ Better to wipe 'em out one by one.
+Ohota @@ A good visitor is a dead visitor.
+
+
+:: Day5.Day.Ohota.Asking2 {"position":"650,3250","size":"100,100"}
+Ohota @@ I believe the end will come if we don't stop the visitors.
+Ohota @@ These damned beasts want to deceive us and sneak in behind our backs.
+Ohota @@ And slaughter us one by one, under cover of the night, while we sleep.
+Ohota @@ I think they might get to you sooner or later.
+Ohota @@ But that won't happen if you kill the visitor before he kills you.
+Ohota @@ That's why I advise you not to beat around the bush, but to look for visitors.
+Ohota @@ You've already let so many people in here, you'll never find visitors.
+Ohota @@ But all is not lost!
+Ohota @@ Start looking for 'em right now, and maybe you'll track someone down.
+Ohota @@ And most importantly, don't mess with 'em!
+Ohota @@ Track 'em down, finish 'em off!
+
+
+:: Day5.Day.Ohota.Asking3 {"position":"550,3275","size":"100,100"}
+Ohota @@ What do you want to check?
+
+Teeth [[Ohota.Teeth]]
+Hands [[Ohota.Hands]]
+Eyes [[Ohota.Eyes]]
+Photo [[Ohota.Photo]]
+
+
+:: Day5.Day.Ohota.Room1 {"position":"550,3150","size":"100,100"}
+Ohota @@ Keep your eyes open. The visitor could be any one of us.
+
+What do you think about FEMA? [[Day5.Day.Ohota.Asking1]]
+Is the end near? [[Day5.Day.Ohota.Asking2]]
+I need to check on you [[Day5.Day.Ohota.Asking3]]
+
+
+:: Day5.Day.TV.Bedroom.Extra1 {"position":"175,525","size":"100,100"}
+## EMOTION ## Sad
+TV @@ Attention! Emergency alert!
+TV @@ In light of recent events, compassionate individuals have stepped up to provide humanitarian aid.
+TV @@ Volunteers are distributing food and offering shelter to those in need.
+TV @@ They assert that their activities are completely independent of FEMA and are solely focused on helping others.
+TV @@ Stay tuned for updates.
+
+
+:: Day5.Day.TV.Bedroom.Necessary {"position":"50,525","size":"100,100"}
+TV @@ Good morning, dear viewers! This is the morning news.
+TV @@ FEMA continues to identify new signs of 'visitors'.
+TV @@ According to their data, attempts to photograph 'visitors' result in severe blurring in the photos.
+## EMOTION ## SadEntrance
+TV @@ This effect can only be observed with film cameras.
+TV @@ Unfortunately, the reasons for this phenomenon have not been determined yet.
+TV @@ However, FEMA urges citizens to use this new information to identify 'visitors'.
+TV @@ Please stay alert and calm and avoid leaving your home during daylight hours.
+TV @@ Now, let's move on to other news...
+
+
+:: Day5.Day.Trevoga.Asking1 {"position":"450,2750","size":"100,100"}
+## EMOTION ## Sad
+Trevoga @@ FEMA?! WHERE?!
+Trevoga @@ ...
+## EMOTION ## Base
+Trevoga @@ Are they not here?
+Trevoga @@ Please don't call them, or they hear and come.
+Trevoga @@ I shudder at the mention of them.
+Trevoga @@ I'm wildly afraid that one day they'll come for me and take me away.
+Trevoga @@ But I don't want... I don't want to be taken away to a quarantined area.
+Trevoga @@ No one ever came back from there.
+Trevoga @@ It's scary to imagine what the people in the yellow suits do to those taken away.
+
+
+:: Day5.Day.Trevoga.Asking2 {"position":"650,2750","size":"100,100"}
+Trevoga @@ ...
+Trevoga @@ The END?
+Trevoga @@ ...
+## EMOTION ## Sad
+Trevoga @@ THE END?!
+Trevoga @@ ...
+Trevoga @@ NO, IT CAN'T BE!
+Trevoga @@ ONLY NOT THE END!
+Trevoga @@ WE WILL ALL DIE IN SUFFERING AND AGONY!
+Trevoga @@ LORD SAVE US ALL!
+## EMOTION ## Base
+
+
+:: Day5.Day.Trevoga.Asking3 {"position":"550,2775","size":"100,100"}
+Trevoga @@ What do you want to check?
+
+Teeth [[Trevoga.Teeth]]
+Hands [[Trevoga.Hands]]
+Eyes [[Trevoga.Eyes]]
+Photo [[Trevoga.Photo]]
+
+
+:: Day5.Day.Trevoga.Pantry {"position":"550,2650","size":"100,100"}
+Trevoga @@ O-o-oh. I hope it will be over soon.
+
+What do you think about FEMA? [[Day5.Day.Trevoga.Asking1]]
+Is the end near? [[Day5.Day.Trevoga.Asking2]]
+I need to check on you [[Day5.Day.Trevoga.Asking3]]
+
+
+:: Day5.Day.Volk.Asking1 {"position":"1150,3000","size":"100,100"}
+Volk @@ They are bloodthirsty hunters, determined to herd us like sheep.
+Volk @@ Don't be fooled by their appearance — they are wolves in sheep's clothing.
+Volk @@ At first, they just ask you questions, pretending to fill out their damn reports.
+Volk @@ But the moment they smell the right kind of meat, they'll bite with their sharp teeth.
+Volk @@ And people, like naive sheep, obediently follow them.
+Volk @@ Don't trust these vicious wolves.
+
+
+:: Day5.Day.Volk.Asking2 {"position":"1350,3000","size":"100,100"}
+Volk @@ The end will come when every human being becomes an enemy of each other.
+Volk @@ We are not far from that fate.
+Volk @@ That's why we need to stay in the pack. A pack is a good thing.
+Volk @@ But keep your eyes open.
+Volk @@ Any pack will fall apart without a strong leader.
+Volk @@ A leader must be willing to make any sacrifice for his pack, including killing.
+
+
+:: Day5.Day.Volk.Asking3 {"position":"1250,3025","size":"100,100"}
+Volk @@ What do you want to check?
+
+Teeth [[Volk.Teeth]]
+Hands [[Volk.Hands]]
+Eyes [[Volk.Eyes]]
+Photo [[Volk.Photo]]
+
+
+:: Day5.Day.Volk.BigRoom {"position":"1250,2900","size":"100,100"}
+Volk @@ Do you have a question for me?
+
+What do you think about FEMA? [[Day5.Day.Volk.Asking1]]
+Is the end near? [[Day5.Day.Volk.Asking2]]
+I need to check on you [[Day5.Day.Volk.Asking3]]
+
+
+:: Day5.Day.Zhena.Asking1 {"position":"100,3000","size":"100,100"}
+Zhena @@ ...
+## EMOTION ## Sad
+Zhena @@ ...
+Zhena @@ If it weren't for FEMA...
+Zhena @@ My husband... He would still be alive...
+## EMOTION ## Base
+
+
+:: Day5.Day.Zhena.Asking2 {"position":"300,3000","size":"100,100"}
+Zhena @@ I don't think about anything anymore.
+Zhena @@ That's a pointless question.
+Zhena @@ Everyone already knows. Yes, it's the end.
+Zhena @@ And nothing can be changed, nothing can be fixed.
+## EMOTION ## Sad
+Zhena @@ ...
+Zhena @@ Damn the fucking sun.
+Zhena @@ And damn these fucking visitors.
+## EMOTION ## Base
+
+
+:: Day5.Day.Zhena.Asking3 {"position":"200,3025","size":"100,100"}
+Zhena @@ What do you want to check?
+
+Teeth [[Zhena.Teeth]]
+Hands [[Zhena.Hands]]
+Eyes [[Zhena.Eyes]]
+Photo [[Zhena.Photo]]
+
+
+:: Day5.Day.Zhena.Bathroom {"position":"200,2900","size":"100,100"}
+Zhena @@ I need to get some rest...
+
+What do you think about FEMA? [[Day5.Day.Zhena.Asking1]]
+Is the end near? [[Day5.Day.Zhena.Asking2]]
+I need to check on you [[Day5.Day.Zhena.Asking3]]
+
+
+:: Day5.Night.Himoza.Entrance {"position":"1800,2650","size":"100,100"}
+Himoza @@ Good evening.
+Himoza @@ We're with the FEMA team. We need to do a survey of your neighborhood.
+
+The man you took isn't enough? [[Day5.Night.Himoza.Entrance1]]
+What about the last survey? [[Day5.Night.Himoza.Entrance2]]
+
+
+:: Day5.Night.Himoza.Entrance1 {"position":"1700,2750","size":"100,100"}
+Himoza @@ Last one?
+Himoza @@ Oh, that. The examination procedure is quite exhausting, right now your man is in rehabilitation.
+Himoza @@ After he rests, we'll bring him back right away.
+
+Do you want to take someone else? [[Day5.Night.Himoza.Entrance3]]
+Why was one not enough? [[Day5.Night.Himoza.Entrance4]]
+
+
+:: Day5.Night.Himoza.Entrance2 {"position":"1900,2750","size":"100,100"}
+Himoza @@ The results are too mixed.
+Himoza @@ We are not sure of the results yet, the sample was too small.
+
+Do you want to take someone else? [[Day5.Night.Himoza.Entrance3]]
+Why was one not enough? [[Day5.Night.Himoza.Entrance4]]
+
+
+:: Day5.Night.Himoza.Entrance3 {"position":"1700,2875","size":"100,100"}
+Himoza @@ Yes. I'm afraid one person was not enough to understand the situation.
+Himoza @@ We'll need one more person from your house.
+Himoza @@ Anyone will do. Thank you for your cooperation.
+
+All right. If there's no other way. [[Day5.Night.Himoza.Entrance5]]
+No, I'm not interested in those examinations. [[Day5.Night.Himoza.Entrance6]]
+
+
+:: Day5.Night.Himoza.Entrance4 {"position":"1900,2875","size":"100,100"}
+Himoza @@ The sample is too small.
+Himoza @@ The boss first said to take one at a time. But now we can see that we need more.
+Himoza @@ So we went out again.
+
+All right. If there's no other way. [[Day5.Night.Himoza.Entrance5]]
+No, I'm not interested in those examinations. [[Day5.Night.Himoza.Entrance6]]
+
+
+:: Day5.Night.Himoza.Entrance5 {"position":"1700,3000","size":"100,100"}
+Himoza @@ Yeah, there's no other way.
+## EXILE
+Himoza @@ It's all for your own safety.
+
+
+:: Day5.Night.Himoza.Entrance6 {"position":"1900,3000","size":"100,100"}
+Himoza @@ You don't get it.
+Himoza @@ We didn't give give you a choice. We're just doing our job.
+Himoza @@ You can't say no.
+## EXILE
+Himoza @@ We'll do what we need to do and leave.
+
+
+:: Day5.Night.Prorok.Entrance {"position":"2475,2650","size":"100,100"}
+Prorok @@ It's a miracle we've lived to see this day.
+Prorok @@ But what comes next is a terrible secret.
+
+You're back. [[Day5.Night.Prorok.Entrance1]]
+How have you survived all this time? [[Day5.Night.Prorok.Entrance2]]
+
+
+:: Day5.Night.Prorok.Entrance1 {"position":"2375,2750","size":"100,100"}
+Prorok @@ It's not for long.
+Prorok @@ I just walk around and observe what's happening, how the world is changing.
+Prorok @@ And I don't yet feel that the glaciers are going to melt anytime soon.
+Prorok @@ Looks like we're in for birds raining from the sky.
+
+What does that mean? [[Day5.Night.Prorok.Entrance3]]
+Do you think things will get worse? [[Day5.Night.Prorok.Entrance4]]
+
+
+:: Day5.Night.Prorok.Entrance2 {"position":"2575,2750","size":"100,100"}
+Prorok @@ That's not the problem you should be worrying about. But thanks.
+Prorok @@ And I don't yet feel that the glaciers are going to melt anytime soon.
+Prorok @@ Looks like we're in for birds raining from the sky.
+
+What does that mean? [[Day5.Night.Prorok.Entrance3]]
+Do you think things will get worse? [[Day5.Night.Prorok.Entrance4]]
+
+
+:: Day5.Night.Prorok.Entrance3 {"position":"2375,2875","size":"100,100"}
+Prorok @@ You tell me.
+Prorok @@ Is this supposed to be the end?
+Prorok @@ Or are we yet to smell more gunpowder?
+Prorok @@ I can't see beyond my own nose anymore. Probably nothing to wait for.
+
+What should we do? [[Day5.Night.Prorok.Entrance5]]
+What about other people? [[Day5.Night.Prorok.Entrance6]]
+
+
+:: Day5.Night.Prorok.Entrance4 {"position":"2575,2875","size":"100,100"}
+Prorok @@ Is there any point in thinking?
+Prorok @@ I don't think we should bother our heads with it now.
+Prorok @@ Whether you keep talking or hide people, it's all the same.
+Prorok @@ I have no thoughts on what to do.
+
+What should we do? [[Day5.Night.Prorok.Entrance5]]
+What about other people? [[Day5.Night.Prorok.Entrance6]]
+
+
+:: Day5.Night.Prorok.Entrance5 {"position":"2575,3000","size":"100,100"}
+Prorok @@ I don't know. I'll just keep watching. That's all I can do.
+Prorok @@ What will you do?
+
+
+:: Day5.Night.Prorok.Entrance6 {"position":"2375,3000","size":"100,100"}
+Prorok @@ Why do you need this knowledge?
+Prorok @@ No matter how much we've looked at others, we've got nothing but caricatures.
+
+
+:: Day5.Night.Super.Entrance {"position":"2150,2650","size":"100,100"}
+Super @@ We meet again.
+Super @@ What do you think of that one in the suit?
+
+He's doing his job. [[Day5.Night.Super.Entrance1]]
+I don't know how to feel about him. [[Day5.Night.Super.Entrance2]]
+
+
+:: Day5.Night.Super.Entrance1 {"position":"2050,2750","size":"100,100"}
+Super @@ All right.
+Super @@ These are the times, aren't they? You've got to be careful. Is that okay?
+
+I'm kind of busy, so can you come back later? [[Day5.Night.Super.Entrance3]]
+Can you leave? [[Day5.Night.Super.Entrance4]]
+
+
+:: Day5.Night.Super.Entrance2 {"position":"2250,2750","size":"100,100"}
+Super @@ What's not to know?
+Super @@ Okay, anyway I don't care.
+
+I'm kind of busy, so can you come back later? [[Day5.Night.Super.Entrance3]]
+Can you leave? [[Day5.Night.Super.Entrance4]]
+
+
+:: Day5.Night.Super.Entrance3 {"position":"2050,2875","size":"100,100"}
+Super @@ I understand, of course.
+Super @@ I'll come back later.
+Super @@ Just...
+Super @@ Say, are you alone in the house?
+
+I have other people taking shelter here. [[Day5.Night.Super.Entrance6]]
+I'm alone. [[Day5.Night.Super.Entrance5]]
+
+
+:: Day5.Night.Super.Entrance4 {"position":"2250,2875","size":"100,100"}
+Super @@ Yeah, sure. I didn't think you had any trouble talking to me.
+Super @@ Just first...
+Super @@ Are you alone in the house right now?
+
+I have other people taking shelter here. [[Day5.Night.Super.Entrance6]]
+I'm alone. [[Day5.Night.Super.Entrance5]]
+
+
+:: Day5.Night.Super.Entrance5 {"position":"2250,3000","size":"100,100"}
+Super @@ That's it?
+Super @@ You're all alone, the sun has burned everyone you knew.
+Super @@ You've either got nobody at home or my boys.
+Super @@ How did this happen? Did you turn out to be the most vicious beast?
+Super @@ Well...
+## EMOTION ## Happy
+Super @@ Come here, you're gonna get what you deserve.
+## DEATH
+
+
+:: Day5.Night.Super.Entrance6 {"position":"2050,3000","size":"100,100"}
+## IF ## ALONE ## Day5.Night.Super.Entrance5
+Super @@ Getting ready? Do you know what you're getting ready for?
+Super @@ It's the last days. Didn't they tell you?
+Super @@ Dogs rule the world. And only dogs will be here.
+## EMOTION ## Sad
+Super @@ Have a good stay.
+## ENTRANCE ## REFUSE ## Super
+
+
+:: Day5.Night.Window1 {"position":"3100,2850","size":"100,100"}
+TV @@ There is a dead man hanging suspended from a lamppost with a sign around his neck.
+TV @@ It says, “Visitors are not welcome.”
+TV @@ Looks like the poor guy was mistaken for a guest and killed in a lynching.
+TV @@ The thought of violence engulfing a once peaceful and quiet town breaks your heart and makes you long for quieter times.
+
+
+:: Day5.Night.Window2 {"position":"3100,2750","size":"100,100"}
+TV @@ You see a stake with a helmeted skull on it.
+TV @@ There's some black burnt skin left on the skull, and the teeth look like someone pulled them out.
+TV @@ The head has been here all day.
+TV @@ The whole grim display looks like a threat, surely left by that creepy pale visitor.
+
+
+:: Day5.Night.Window3 {"position":"3100,2650","size":"100,100"}
+TV @@ You're looking at your neighbor's house.
+TV @@ Only a ghostly silhouette remains.
+TV @@ You're devastated by what you've seen.
+TV @@ It seems to disturb you even more to realize that it's not the evil guests who are to blame, but people with paranoia.
+TV @@ It brings you anxiety.
+
+
+:: Day6.Day.Chmo.Asking1 {"position":"450,3900","size":"100,100"}
+## EMOTION ## Base
+Chmo @@ What's there to think about?
+Chmo @@ It's good that people are killing the visitors and taking the initiative.
+## EMOTION ## Base
+Chmo @@ FEMA is cool too, but still people are uniting.
+## EMOTION ## Happy
+Chmo @@ I'm actually glad that neighbor from the house next door was burned alive.
+## EMOTION ## Base
+Chmo @@ And no doubt he was a visitor.
+Chmo @@ I hope you kept his daughter out of our house.
+Chmo @@ Let her die in the street, I'm pretty sure she's one of those too.
+Chmo @@ What's that saying?
+Chmo @@ Kill them all, God will sort it out later.
+
+
+:: Day6.Day.Chmo.Asking2 {"position":"650,3900","size":"100,100"}
+## EMOTION ## Sad
+Chmo @@ Uh, well...
+Chmo @@ Well...
+Chmo @@ ...
+## EMOTION ## Base
+Chmo @@ Look, you got a gun.
+Chmo @@ You decide who's humane and who's not.
+
+
+:: Day6.Day.Chmo.Asking3 {"position":"550,3925","size":"100,100"}
+Chmo @@ What do you want to check?
+
+Teeth [[Chmo.Teeth]]
+Hands [[Chmo.Hands]]
+Eyes [[Chmo.Eyes]]
+Photo [[Chmo.Photo]]
+Personal [[Chmo.Personal]]
+
+
+:: Day6.Day.Chmo.Room1 {"position":"550,3800","size":"100,100"}
+Chmo @@ He-he. What's up, bitch?
+
+What do you think about killing? [[Day6.Day.Chmo.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Chmo.Asking2]]
+I need to check on you [[Day6.Day.Chmo.Asking3]]
+
+
+:: Day6.Day.Doch.Asking1 {"position":"100,4150","size":"100,100"}
+Doch @@ I've been told that killing is bad.
+## EMOTION ## Sad
+Doch @@ But I've had family members killed. And people generally do it everywhere now.
+Doch @@ Why doesn't everyone do what they say?
+Doch @@ Are they all bad?
+Doch @@ Do we have to be bad too?
+## EMOTION ## Base
+
+
+:: Day6.Day.Doch.Asking2 {"position":"300,4150","size":"100,100"}
+Doch @@ I don't know what that is.
+Doch @@ I think we're all humans.
+Doch @@ In this house, those who are not — they're all bad.
+Doch @@ Should we kill the bad ones?
+## EMOTION ## Base
+
+
+:: Day6.Day.Doch.Asking3 {"position":"200,4175","size":"100,100"}
+Doch @@ What do you want to check?
+
+Teeth [[Doch.Teeth]]
+Hands [[Doch.Hands]]
+Eyes [[Doch.Eyes]]
+Photo [[Doch.Photo]]
+Personal [[Doch.Personal]]
+
+
+:: Day6.Day.Doch.Room1 {"position":"200,4050","size":"100,100"}
+Doch @@ I... I want my mam-ma.
+
+What do you think about killing? [[Day6.Day.Doch.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Doch.Asking2]]
+I need to check on you [[Day6.Day.Doch.Asking3]]
+
+
+:: Day6.Day.Doctor.Asking1 {"position":"800,3900","size":"100,100"}
+## EMOTION ## Sad
+Doctor @@ ...
+Doctor @@ It's a sensitive issue for me.
+Doctor @@ Every time I think about it...
+Doctor @@ It's frightening to imagine how many innocent people could've died by mistake.
+## EMOTION ## Base
+Doctor @@ My duty is to save the lives of the wounded and sick, not to rush at people with guns in an effort to stop them.
+Doctor @@ I can only say for myself that I took the Hippocratic Oath and will never intentionally cause harm to people.
+Doctor @@ So I will help everyone I can.
+
+
+:: Day6.Day.Doctor.Asking2 {"position":"1000,3900","size":"100,100"}
+Doctor @@ I don't think we could have become less human.
+Doctor @@ The question is different — can we consider visitors human if they look very much like us?
+Doctor @@ Can visitors also be humans, albeit a bit different?
+Doctor @@ What if they are our distant relatives?
+Doctor @@ ...
+Doctor @@ With the appearance of visitors, I've stopped understanding what humanity really is...
+## EMOTION ## Base
+
+
+:: Day6.Day.Doctor.Asking3 {"position":"900,3925","size":"100,100"}
+Doctor @@ What do you want to check?
+
+Teeth [[Doctor.Teeth]]
+Hands [[Doctor.Hands]]
+Eyes [[Doctor.Eyes]]
+Photo [[Doctor.Photo]]
+Personal [[Doctor.Personal]]
+
+
+:: Day6.Day.Doctor.Pantry {"position":"900,3800","size":"100,100"}
+Doctor @@ M-m?
+
+What do you think about killing? [[Day6.Day.Doctor.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Doctor.Asking2]]
+I need to check on you [[Day6.Day.Doctor.Asking3]]
+
+
+:: Day6.Day.Esenin.Asking1 {"position":"100,3650","size":"100,100"}
+Esenin @@ What is there to think about killing?
+Esenin @@ There's nothing good about it.
+Esenin @@ It’s all going to hell too fast.
+Esenin @@ Someone gets quarantined...
+Esenin @@ Someone gets killed on suspicion of being a visitor...
+Esenin @@ And someone starts a merciless lynching, burning down houses worse than the sun.
+Esenin @@ Paranoia and the burning sun make people crazy.
+
+
+:: Day6.Day.Esenin.Asking2 {"position":"300,3650","size":"100,100"}
+Esenin @@ What the fuck kind of humanity is that?
+Esenin @@ Do you even see what's happening?
+Esenin @@ Now it's just a matter of surviving somehow.
+Esenin @@ And it doesn't matter how human you are.
+Esenin @@ Well, it matters in a figurative sense, not in a literal one.
+
+
+:: Day6.Day.Esenin.Asking3 {"position":"200,3675","size":"100,100"}
+Esenin @@ What do you want to check?
+
+Teeth [[Esenin.Teeth]]
+Hands [[Esenin.Hands]]
+Eyes [[Esenin.Eyes]]
+Photo [[Esenin.Photo]]
+Personal [[Esenin.Personal]]
+
+
+:: Day6.Day.Esenin.BigRoom {"position":"200,3550","size":"100,100"}
+Esenin @@ Yeah? Did you want something?
+
+What do you think about killing? [[Day6.Day.Esenin.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Esenin.Asking2]]
+I need to check on you [[Day6.Day.Esenin.Asking3]]
+
+
+:: Day6.Day.Fan.Asking1 {"position":"1150,3650","size":"100,100"}
+Fan @@ Oh, I'm glad you asked that, HUMAN!
+Fan @@ You see, killing is a simple mechanism of the universe.
+Fan @@ It's like bloodletting.
+Fan @@ Blood... letting...
+Fan @@ BLOOD!
+Fan @@ We NEED TO SHED A LITTLE BLOOD TO SURVIVE!
+Fan @@ Kill a few people TO CLEANSE THE WORLD OF ROT!
+## EMOTION ## Happy
+Fan @@ Thank you, human, for enlightening me on why we really need to kill people!
+## EMOTION ## Base
+
+
+:: Day6.Day.Fan.Asking2 {"position":"1350,3650","size":"100,100"}
+Fan @@ What do you mean 'is there less humanity in us'?
+Fan @@ Are you saying there can be more or less humanity in someone?
+Fan @@ ...
+Fan @@ You're either A FUCKING HUMAN OR A FUCKING VISITOR!
+Fan @@ DO YOU REMEMBER MY WORDS, HUMAN?
+Fan @@ YOU CAN'T TAKE IT ANY OTHER WAY!
+## EMOTION ## Base
+
+
+:: Day6.Day.Fan.Asking3 {"position":"1250,3675","size":"100,100"}
+Fan @@ What do you want to check?
+
+Teeth [[Fan.Teeth]]
+Hands [[Fan.Hands]]
+Eyes [[Fan.Eyes]]
+Photo [[Fan.Photo]]
+Personal [[Fan.Personal]]
+
+
+:: Day6.Day.Fan.Bathroom {"position":"1250,3550","size":"100,100"}
+Fan @@ I'm listening to you, human! SPEAK!
+
+What do you think about killing? [[Day6.Day.Fan.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Fan.Asking2]]
+I need to check on you [[Day6.Day.Fan.Asking3]]
+
+
+:: Day6.Day.Holod.Asking1 {"position":"800,3650","size":"100,100"}
+Holod @@ People have stopped caring about killings.
+Holod @@ It's a time of discord when people are ready to kill even their own mother if she seems like a visitor.
+Holod @@ People... People never change.
+
+
+:: Day6.Day.Holod.Asking2 {"position":"1000,3650","size":"100,100"}
+Holod @@ When you talk about 'us,' do you mean both humans and visitors?
+Holod @@ ...
+Holod @@ You're wasting your time trying to find them.
+Holod @@ They are our reflection.
+Holod @@ A dark shadow of the human essence, chasing us relentlessly.
+Holod @@ Can one escape their shadow without plunging into darkness?
+Holod @@ The sun shines brighter only to plunge us completely into the dark.
+Holod @@ You can't get rid of them; they will never leave.
+Holod @@ Humanity must reunite with the visitors, or humanity will perish as a species.
+
+
+:: Day6.Day.Holod.Asking3 {"position":"900,3675","size":"100,100"}
+Holod @@ What do you want to check?
+
+Teeth [[Holod.Teeth]]
+Hands [[Holod.Hands]]
+Eyes [[Holod.Eyes]]
+Holod [[Holod.Photo]]
+Personal [[Holod.Personal]]
+
+
+:: Day6.Day.Holod.BigRoom {"position":"900,3550","size":"100,100"}
+Holod @@ I wish there was some warmth...
+
+What do you think about killing? [[Day6.Day.Holod.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Holod.Asking2]]
+I need to check on you [[Day6.Day.Holod.Asking3]]
+
+
+:: Day6.Day.Ohota.Asking1 {"position":"450,4150","size":"100,100"}
+Ohota @@ Visitors deserve to die.
+Ohota @@ There's no other way to deal with them.
+Ohota @@ Those sons of bitches deserve nothing else!
+Ohota @@ Let them die in a fire, whether it's from the sun they hate or from an actual fire.
+Ohota @@ Want to know how I know they hate the sun?
+Ohota @@ I caught one bastard, who turned out to be a visitor, and left him outside, tied him to a chair.
+Ohota @@ The next day the visitor was left a hell of a mess.
+Ohota @@ All I could make out on his body were horrible blisters, a grimace of terror and empty eye sockets.
+## EMOTION ## Happy
+Ohota @@ The creatures don't like the sun.
+## EMOTION ## Base
+Ohota @@ That's why they try to hide in houses, begging people to let them in.
+Ohota @@ I wouldn't let anyone else in if I were you.
+
+
+:: Day6.Day.Ohota.Asking2 {"position":"650,4150","size":"100,100"}
+Ohota @@ ...
+Ohota @@ Don't make things worse, buddy.
+Ohota @@ We don't even know who the damn visitors are.
+Ohota @@ And here you are, delving into questions about humanity?
+Ohota @@ ...
+Ohota @@ You know what? Why don't you go have a dialogue with these visitors?
+Ohota @@ No, really, why don't you try talking to them and find out what they want?
+Ohota @@ Maybe establish some diplomatic relations with them?
+Ohota @@ Or die trying!
+Ohota @@ You don't realize — it's pointless to talk to them!
+Ohota @@ They want us dead!
+Ohota @@ Otherwise, they wouldn't need to disguise themselves as humans.
+Ohota @@ I'll watch you die from your own curiosity.
+Ohota @@ Better not stick your nose where it doesn't belong, or you'll lose it!
+Ohota @@ Get useful and start looking for visitors!
+Ohota @@ Enough with the philosophical crap!
+## EMOTION ## Base
+
+
+:: Day6.Day.Ohota.Asking3 {"position":"550,4175","size":"100,100"}
+Ohota @@ What do you want to check?
+
+Teeth [[Ohota.Teeth]]
+Hands [[Ohota.Hands]]
+Eyes [[Ohota.Eyes]]
+Photo [[Ohota.Photo]]
+Personal [[Ohota.Personal]]
+
+
+:: Day6.Day.Ohota.Room1 {"position":"550,4050","size":"100,100"}
+Ohota @@ Keep your eyes open. The visitor could be any one of us.
+
+What do you think about killing? [[Day6.Day.Ohota.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Ohota.Asking2]]
+I need to check on you [[Day6.Day.Ohota.Asking3]]
+
+
+:: Day6.Day.TV.Bedroom.Extra1 {"position":"175,650","size":"100,100"}
+## EMOTION ## Sad
+TV @@ Attention! Emergency alert!
+TV @@ People in quarantine zones have gone on strike over the recently announced 'visitor' indicator.
+TV @@ There is widespread dissatisfaction with FEMA for invading personal space during inspections.
+TV @@ Many also believe FEMA is not detaining everyone who fits the 'visitor' criteria, as numerous individuals in quarantine do not match the descriptions.
+TV @@ Residents are complaining about the lack of food and water in the quarantine zones...
+TV @@ This comes after FEMA recently halted humanitarian aid operations and confiscated all food and water supplies.
+TV @@ Currently, people in the quarantine zones are shouting insults at FEMA and demanding their release.
+TV @@ Stay tuned for updates.
+
+
+:: Day6.Day.TV.Bedroom.Necessary {"position":"50,650","size":"100,100"}
+TV @@ Good morning, dear viewers! This is the morning news.
+TV @@ FEMA is embroiled in a scandal involving a recently identified 'visitor' indicator.
+TV @@ According to FEMA reports, detecting this requires examining the groin area.
+TV @@ The disclosure of this indicator has sparked outrage among citizens and criticism towards FEMA.
+TV @@ Some accuse FEMA of overstepping boundaries in quarantine zones during inspections.
+TV @@ However, authorities have not responded to these claims.
+TV @@ Nevertheless, we are obligated to report this information despite its sensitive nature.
+TV @@ 'Visitors' have a complete absence of body hair in the groin area.
+TV @@ Please stay alert and calm and avoid leaving your home during daylight hours.
+TV @@ Now, let's move on to other news...
+
+
+:: Day6.Day.Trevoga.Asking1 {"position":"450,3650","size":"100,100"}
+## EMOTION ## Sad
+Trevoga @@ MURDER?!
+Trevoga @@ NO!
+Trevoga @@ DON'T KILL THE VISITORS!
+Trevoga @@ THEY CAN BE GOOD.
+Trevoga @@ WHAT IF THE VISITORS ARE PEOPLE TOO.
+Trevoga @@ LET THEM IN, THEY'RE SUFFERING OUTSIDE.
+## EMOTION ## Base
+
+
+:: Day6.Day.Trevoga.Asking2 {"position":"650,3650","size":"100,100"}
+## EMOTION ## Sad
+Trevoga @@ HUMANITY!?
+Trevoga @@ THERE'S NO MORE HUMANITY LEFT!
+## EMOTION ## Base
+Trevoga @@ LOOK AT US.
+Trevoga @@ CLEAN TEETH, RED EYES, DIRT UNDER THE NAILS...
+Trevoga @@ THESE ARE ALL TRAITS OF THE VISITORS, BUT CAN'T THEY ALSO BE FOUND IN HUMANS?
+Trevoga @@ WE ALL NOW HAVE A BIT OF THE VISITOR, A BIT OF THE HUMAN IN US!
+Trevoga @@ WE JUST DON'T WANT TO ADMIT THAT WE'VE CHANGED.
+Trevoga @@ DO QUESTIONS OF HUMANITY MATTER IF VISITORS HAVE BECOME A PART OF SOCIETY, A PART OF US?
+## EMOTION ## Happy
+Trevoga @@ WE HAVE BECOME ONE!
+Trevoga @@ WE ARE BOTH HUMANS AND VISITORS.
+Trevoga @@ WE ARE NOW INSEPARABLE FROM THEM, AND THEY FROM US.
+Trevoga @@ LET THEM IN, THEY WANT TO MEET US.
+Trevoga @@ LET THEM DO WITH US AS THEY PLEASE.
+Trevoga @@ BE A GOOD HOST, BE MORE HOSPITABLE.
+Trevoga @@ WE MUST RESPECT OUR GUESTS, AND THEY WILL THANK US.
+## EMOTION ## Base
+
+
+:: Day6.Day.Trevoga.Asking3 {"position":"550,3675","size":"100,100"}
+Trevoga @@ What do you want to check?
+
+Teeth [[Trevoga.Teeth]]
+Hands [[Trevoga.Hands]]
+Eyes [[Trevoga.Eyes]]
+Photo [[Trevoga.Photo]]
+Personal [[Trevoga.Personal]]
+
+
+:: Day6.Day.Trevoga.Pantry {"position":"550,3550","size":"100,100"}
+Trevoga @@ O-o-oh. I hope it will be over soon.
+
+What do you think about killing? [[Day6.Day.Trevoga.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Trevoga.Asking2]]
+I need to check on you [[Day6.Day.Trevoga.Asking3]]
+
+
+:: Day6.Day.Volk.Asking1 {"position":"1150,3900","size":"100,100"}
+Volk @@ There's nothing wrong with killing.
+Volk @@ Animals kill too.
+Volk @@ True, there is a slight difference between us and animals...
+Volk @@ Humans can kill for fun.
+Volk @@ And even in that there's nothing wrong....
+Volk @@ But it's not even that thing that sucks, it's the other thing that sucks...
+Volk @@ Any bitch can call you a visitor and burn you down like a match.
+Volk @@ That's fucking out of line.
+Volk @@ I believe that if you do want to kill, you should just take a knife and slash it across someone's throat.
+## EMOTION ## Happy
+Volk @@ Heh-heh-heh.
+## EMOTION ## Base
+
+
+:: Day6.Day.Volk.Asking2 {"position":"1350,3900","size":"100,100"}
+Volk @@ "Human" is a very broad term.
+Volk @@ It could refer to an upright-walking Neanderthal or a bloodthirsty killer.
+Volk @@ Humanness is just a mask we've decided to put on everyone for some reason.
+Volk @@ At last, people have seen a different kind of beast...
+Volk @@ One that somewhat resembles us, but isn't truly human.
+Volk @@ They're easy to kill.
+Volk @@ People have been thirsty for blood for long, but society has muzzled this impulse in us.
+Volk @@ But now we have a good reason to awaken our primal instincts.
+## EMOTION ## Happy
+Volk @@ It's time to shed that lousy mask.
+## EMOTION ## Base
+
+
+:: Day6.Day.Volk.Asking3 {"position":"1250,3925","size":"100,100"}
+Volk @@ What do you want to check?
+
+Teeth [[Volk.Teeth]]
+Hands [[Volk.Hands]]
+Eyes [[Volk.Eyes]]
+Photo [[Volk.Photo]]
+Personal [[Volk.Personal]]
+
+
+:: Day6.Day.Volk.BigRoom {"position":"1250,3800","size":"100,100"}
+Volk @@ Do you have a question for me?
+
+What do you think about killing? [[Day6.Day.Volk.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Volk.Asking2]]
+I need to check on you [[Day6.Day.Volk.Asking3]]
+
+
+:: Day6.Day.Zhena.Asking1 {"position":"100,3900","size":"100,100"}
+Zhena @@ What do you think?
+Zhena @@ Kill, kill, kill.
+Zhena @@ Of course I think that, don't I?
+Zhena @@ You'll pardon me for the irony, but sometimes you ask weird questions.
+Zhena @@ Let's not piss each other off anymore.
+
+
+:: Day6.Day.Zhena.Asking2 {"position":"300,3900","size":"100,100"}
+Zhena @@ Were we human before the cataclysm?
+Zhena @@ Did people have a lot of compassion, empathy, sympathy?
+Zhena @@ Are some people even capable of human emotion?
+## EMOTION ## Sad
+Zhena @@ Sometimes I think the visitors were always among us.
+Zhena @@ It's just that we didn't notice them until the cataclysm began.
+
+
+:: Day6.Day.Zhena.Asking3 {"position":"200,3925","size":"100,100"}
+Zhena @@ What do you want to check?
+
+Teeth [[Zhena.Teeth]]
+Hands [[Zhena.Hands]]
+Eyes [[Zhena.Eyes]]
+Photo [[Zhena.Photo]]
+Personal [[Zhena.Personal]]
+
+
+:: Day6.Day.Zhena.Bathroom {"position":"200,3800","size":"100,100"}
+Zhena @@ I need to get some rest...
+
+What do you think about killing? [[Day6.Day.Zhena.Asking1]]
+Do we still have much humanity left? [[Day6.Day.Zhena.Asking2]]
+I need to check on you [[Day6.Day.Zhena.Asking3]]
+
+
+:: Death.7day {"position":"700,4500","size":"100,100"}
+Super @@ It is no longer safe to live on the surface of the earth. 
+Super @@ You board up all the windows and barricade the doors.
+Super @@ After conferring with your tenants, you decide not to go out into the outside world anymore.
+Super @@ You pray helplessly that someday this will all be over.
+Super @@ If this nightmare ever ends.
+Super @@ But hope is still alive.... At least for now...
+
+
+:: Death.7day1 {"position":"300,3150","size":"100,100"}
+Super @@ It is no longer safe to live on the surface of the earth. 
+Super @@ You board up all the windows and barricade the doors.
+Super @@ After conferring with your tenants, you decide not to go out into the outside world anymore.
+Super @@ You pray helplessly that someday this will all be over.
+Super @@ If this nightmare ever ends.
+Super @@ At the very least, you have peace of mind knowing that there are only humans under your roof.
+
+
+:: Death.7day2 {"position":"650,3150","size":"100,100"}
+Super @@ It is no longer safe to live on the surface of the earth. 
+Super @@ You board up all the windows and barricade the doors.
+Super @@ After conferring with your tenants, you decide not to go out into the outside world anymore.
+Super @@ You pray helplessly that someday this will all be over.
+Super @@ If this nightmare ever ends.
+Super @@ Or it's just a relatively oprimistic dream you're having
+Super @@ In fact, your body was mutilated by guests.
+Super @@ Who, given the opportunity to experience emotions, would only be glad to receive such a gift.
+Super @@ Just one day short of.....
+
+
+:: Death.7day3 {"position":"300,2650","size":"100,100"}
+Super @@ It is no longer safe to live on the surface of the earth. 
+Super @@ You board up all the windows and barricade the doors.
+Super @@ After conferring with your tenants, you decide not to go out into the outside world anymore.
+Super @@ You pray helplessly that someday this will all be over.
+Super @@ If this nightmare ever ends.
+Super @@ But hope is still alive.... At least for now...
+Super @@ Fortunately, you have a keen eye for guests.
+Super @@ Not one of them crossed the threshold of the refuge that could once have been called home sweet home.
+Super @@ At least a drop of honey in the barrel of tar of the current events.
+
+
+:: Death.7day4 {"position":"650,2650","size":"100,100"}
+Super @@ It is no longer safe to live on the surface of the earth. 
+Super @@ You board up all the windows and barricade the doors.
+Super @@ After conferring with your tenants, you decide not to go out into the outside world anymore.
+Super @@ However, they started looking at you strangely.
+Super @@ You live too fast, trying to get through this nightmare as quickly as possible.
+Super @@ Is it worth it to constantly rush somewhere, abstracting yourself from the horror of the outside world?
+Super @@ Perhaps.
+Super @@ The main thing is not to forget to live, to find the beauty in life and to enjoy it.
+
+
+:: Death.Killer {"position":"300,4500","size":"100,100"}
+Super @@ You've done a lot for those you let in.
+Super @@ But too much blood has been spilled.
+Super @@ You are too dangerous to stay in this house, you must leave.
+Super @@ You are being driven out of your own home by people fearing for their safety.
+Super @@ You didn't live one day, and burned by the scorching sun outside.
+
+
+:: Death.SuperImposter {"position":"500,4500","size":"100,100"}
+Super @@ No one will know what happened when the last guest arrived.
+Super @@ The house is left unoccupied for a long time. 
+Super @@ After your terrible disappearance, everyone avoids the abandoned house. Super @@ Now it's bad luck for the locals to come here.
+
+
+:: Doch.Eyes {"position":"2875,325","size":"100,100"}
+Doch @@ Can you look inside my eye?
+Doch @@ Will you see everything I'm thinking there?
+Doch @@ I'll be careful what I think then, don't worry.
+## IMAGE ## EYE ## Doch
+Doch @@ ...
+## TEXT
+Doch @@ Why did you look like that?
+Doch @@ You saw ooh-ooh-ooh there...
+Doch @@ You... waaaah.
+Doch @@ I-I-I-I wanna dri-ink.
+
+
+:: Doch.Hands {"position":"2875,225","size":"100,100"}
+Doch @@ And I know how to cut my own nails already.
+Doch @@ I'm not very good at it yet, I...
+I used to get better cuts. But I can do it myself now.
+Doch @@ Look.
+## IMAGE ## HANDS ## Doch
+Doch @@ ...
+## TEXT
+Doch @@ Look at those nails.
+Doch @@ I cut them myself. I did it. I did it!
+Doch @@ I'm going to go sit alone.
+
+
+:: Doch.Personal {"position":"2875,525","size":"100,100"}
+Doch @@ What do you need me to do?
+Doch @@ (You look at her and realize this is too much for you)
+Doch @@ Just want to know how I'm doing?
+Doch @@ I'm really tired, can I just stand here by myself?
+
+
+:: Doch.Photo {"position":"2875,425","size":"100,100"}
+Doch @@ Photo?
+Doch @@ I'm not really into photo... photougafy... photography!
+Doch @@ Will you show me a photo later?
+Doch @@ (You're taking a picture of a girl)
+Doch @@ (The photo came out a little blurry)
+Doch @@ (The girl ran up to you without waiting for the end of the photo shoot)
+Doch @@ Mmmm.
+Doch @@ Thank you. 
+Doch @@ I didn't like it. Don't ask me to take any more pictures.
+
+
+:: Doch.Teeth {"position":"2875,125","size":"100,100"}
+Doch @@ Teeth? Show you my teeth?
+Doch @@ Why? My teeth are still baby teeth. Daddy said...
+Doch @@ I won't cry anymore.
+## IMAGE ## TEETH ## Doch
+Doch @@ ...
+## TEXT
+Doch @@ This is what I have.
+Doch @@ What does that mean?
+Doch @@ It's all right, isn't it?
+
+
+:: Doctor.Eyes {"position":"4425,325","size":"100,100"}
+Doctor @@ Huh, yeah, I’ll show you my eyes.
+Doctor @@ Not sure if you’ve noticed, but I have polycoria.
+Doctor @@ That’s what it means.
+## IMAGE ## EYE ## Doctor
+Doctor @@ ...
+## TEXT
+Doctor @@ My vision is actually worse because of it.
+Doctor @@ You’d think having two pupils in one eye would be handy!
+Doctor @@ But... alas.
+
+
+:: Doctor.Hands {"position":"4425,225","size":"100,100"}
+Doctor @@ Yes, I've operated on so many people with these hands...
+Doctor @@ I could tell you so many stories, but maybe another time.
+Doctor @@ Now, please look.
+## IMAGE ## HANDS ## Doctor
+Doctor @@ ...
+## TEXT
+Doctor @@ I try to keep these arms toned so I don’t slack off.
+Doctor @@ Who knows what tomorrow might bring?
+
+
+:: Doctor.Personal {"position":"4425,525","size":"100,100"}
+Doctor @@ These checks are certainly interesting.
+Doctor @@ I’m not even sure how valid these tests are.
+Doctor @@ But I’ll show you.
+Doctor @@ (The doctor confidently pulled down his pants)
+Doctor @@ (After making sure you saw everything, he quickly pulled them back up)
+Doctor @@ I once got a free depilation from a friend.
+Doctor @@ But it's been so long...
+
+
+:: Doctor.Photo {"position":"4425,425","size":"100,100"}
+Doctor @@ Okay, no problem.
+Doctor @@ I understand that we need to check all the signs. Including this one.
+Doctor @@ (You're taking pictures of the doctor)
+Doctor @@ (Nothing out of the ordinary)
+Doctor @@ I've been told I have an unusual appearance.
+Doctor @@ What do you think?
+
+
+:: Doctor.Teeth {"position":"4425,25","size":"100,100"}
+Doctor @@ Thank you, my teeth are fine.
+Doctor @@ Ah, it's the visitor signs you're asking about. 
+Doctor @@ Sure, look.
+## IMAGE ## TEETH ## Doctor
+Doctor @@ ...
+## TEXT
+Doctor @@ Perfect, eh?
+Doctor @@ I had a friend of mine put them on for free.
+Doctor @@ And I operated on him a while ago.
+## GUN ## SHOW
+Doctor @@ I wonder how he is now?
+Shoot. [[Doctor.TeethShoot]]
+Hear out. [[Doctor.TeethDontShoot]]
+
+
+:: Doctor.TeethDontShoot {"position":"4525,125","size":"100,100"}
+Doctor @@ If you want, we can fix your teeth too.
+## GUN ## HIDE
+Doctor @@ For cheap, of course, since you helped me out.
+Doctor @@ Once all this sun madness is over, that is.
+
+
+:: Doctor.TeethShoot {"position":"4325,125","size":"100,100"}
+Doctor @@ Wait, what?
+Doctor @@ You're making a mistake, I heal people!
+## KILL ## Doctor
+Doctor @@ And you're about to kill a man...
+
+
+:: Esenin.Eyes {"position":"2400,325","size":"100,100"}
+Esenin @@ Every day gets more surreal.
+Esenin @@ What if I didn’t sleep well? Or if I cried?
+Esenin @@ I can’t make sense of how this all works anymore.
+Esenin @@ What do you do if one sign checks out? Or several?
+## IMAGE ## EYE ## Esenin
+Esenin @@ ...
+## TEXT
+Esenin @@ Now I’m going to be a 'visitor' tonight.
+Esenin @@ I’ll go and cry, I’ll reminisce about the peaceful times.
+
+
+:: Esenin.Hands {"position":"2400,225","size":"100,100"}
+Esenin @@ Where did they even come from?
+Esenin @@ Dirt under the fingernails? Is that supposed to be a sign?
+Esenin @@ They can just wash their hands! That’s all it takes!
+Esenin @@ So what, every gardener is a visitor now?
+Esenin @@ That’s ridiculous.
+Esenin @@ Look at the nails.
+## IMAGE ## HANDS ## Esenin
+Esenin @@ ...
+## TEXT
+Esenin @@ Well, am I a visitor?
+Esenin @@ Of course not.
+
+
+:: Esenin.Personal {"position":"2400,525","size":"100,100"}
+Esenin @@ Sure, it's a great fucking idea!
+Esenin @@ I might as well drop my pants and show you my ass, and you'll shiff it out like a dog.
+Esenin @@@ What, you’ll crawl into every crevice to make FEMA happy?
+Esenin @@ Well, look!
+Esenin @@ (He abruptly drops his pants nearly to the floor)
+Esenin @@ (You see his neglected groin area)
+Esenin @@ (Embarrassed, you ask him to pull up his pants, but he glares at you angrily)
+Esenin @@ What other ridiculous things are you going to ask me to do?
+
+
+:: Esenin.Photo {"position":"2400,425","size":"100,100"}
+Esenin @@ All these sign checks, guys in yellow jumpsuits...
+Esenin @@ All of this... somehow.
+Esenin @@ It's so fucked up. 
+Esenin @@ Don’t you get the feeling that we're headed towards some kind of terrifying hell?
+Esenin @@ Everything allegedly is controlled yet chaos is unfolding.
+Esenin @@ Well, take a picture, come on.
+Esenin @@ (You're taking a picture of the person you're talking to)
+Esenin @@ (He's sitting quietly, he doesn't fit in the frame, but you don't see anything unusual)
+Esenin @@ I'm just scared of what will happen next.
+
+
+:: Esenin.Teeth {"position":"2400,125","size":"100,100"}
+Esenin @@ Do you want to see my teeth?
+Esenin @@ Well, look at them. They still have the taste of unhappiness and smoke on them.
+## IMAGE ## TEETH ## Esenin
+Esenin @@ ...
+## TEXT
+Esenin @@ Yellowish, huh?
+Esenin @@ Well, don't fuck with me with your tests.
+Esenin @@ I'm not a visitor.
+
+
+:: Fan.Eyes {"position":"3100,325","size":"100,100"}
+Fan @@ LOOK INTO MY DARK EYES!
+Fan @@ I absorb all the blessings of light with them, transforming energy from them.
+Fan @@ I get all my strength from my EYES!
+## IMAGE ## EYE ## Fan
+Fan @@ ...
+## TEXT
+Fan @@ DID YOU SEE THE TRUE POWER OF THE SUN IN MY EYES?
+Fan @@ If not, you're just blind. Try looking at the sun for a longer time AS I do.
+
+
+:: Fan.Hands {"position":"3100,225","size":"100,100"}
+Fan @@ No taboo, my friend!
+Fan @@ Watch my nails as long as you like.
+Fan @@ I've trained myself to get useful sunlight with them.
+Fan @@ And open beer caps.
+## IMAGE ## HANDS ## Fan
+Fan @@ ...
+## TEXT
+Fan @@ Did you, uh, just want to check it out?
+Fan @@ I thought... uh, you're just an evil man!
+
+
+:: Fan.Personal {"position":"3100,525","size":"100,100"}
+Fan @@ Hmm-hmm.
+Fan @@ Well for the GOOD OF EVERYONE IN THIS HOUSE I WILL DO ANYTHING!
+Fan @@ (He has his pants off and is looking at you contentedly)
+Fan @@ (Messy pubic hair sticking out in all directions)
+Fan @@ (Realizing that you've seen everything, your interlocutor puts his pants back on)
+Fan @@ I hope this maneuver helped us all, my good friend.
+
+
+:: Fan.Photo {"position":"3100,425","size":"100,100"}
+Fan @@ Take a picture?
+Fan @@ Hm-hm-hm-hm-hm.
+Fan @@ Did someone tell you that I said hello to the SOLAR LEADER himself?
+Fan @@ Yes, I taught him how to look at the sun, but I'll tell you that sometime later.
+Fan @@ Come on, TAKE A PICTURE OF ME!
+Fan @@ (You're taking a picture of a sloppy man)
+Fan @@ (Just like in life, in the picture he is ungroomed and dirty)
+Fan @@ (You don't notice the distortion)
+Fan @@ What a great job you did!
+Fan @@ Come to me, I'll tell you about my life.
+Fan @@ And you will give me some money for it. 
+Fan @@ THIS IS FOR SAVING THE SUN'S ENERGY!
+
+
+:: Fan.Teeth {"position":"3100,25","size":"100,100"}
+Fan @@ Show you my teeth?
+Fan @@ AND I'VE STOOD UP FOR MY TRUTHS WITH THEM!
+Fan @@ I've defended all my truths.
+Fan @@ See for yourself what I'm really doing here.
+## IMAGE ## TEETH ## Fan
+Fan @@ ...
+## TEXT
+Fan @@ I save my teeth with beer, it's good for calcium.
+## GUN ## SHOW
+Fan @@ Without it, you'd have lost your teeth long ago.
+Shoot. [[Fan.TeethShoot]]
+Hear out. [[Fan.TeethDontShoot]]
+
+
+:: Fan.TeethDontShoot {"position":"3200,125","size":"100,100"}
+Fan @@ Understandable, of course.
+## GUN ## HIDE
+Fan @@ There's so much going on right now, but we live on. 
+Fan @@ We live on.
+
+
+:: Fan.TeethShoot {"position":"3000,125","size":"100,100"}
+Fan @@ Are you sitting in the shade too long?
+## KILL ## Fan
+Fan @@ Lay down and rest, my friend.
+
+
+:: Holod.Eyes {"position":"3425,425","size":"100,100"}
+Holod @@ Now the eyes are a window to hell, not the soul.
+Holod @@ My soul burned out long ago. That’s probably why I feel so cold.
+## IMAGE ## EYE ## Holod
+Holod @@ ...
+## TEXT
+Holod @@ Pupils constricted?
+Holod @@ I guess that’s because I’m cold.
+Holod @@ Too bad the sun scorches me like the others.
+Holod @@ I’d like to at least feel warmth from the sun.
+
+
+:: Holod.Hands {"position":"3425,225","size":"100,100"}
+Holod @@ Nails? I’ll show you.
+Holod @@ Hmm. Looks like I chipped them all or something.
+Holod @@ But take a look anyway.
+## IMAGE ## HANDS ## Holod
+Holod @@ ...
+## TEXT
+Holod @@ Do you think my fingernails fit the sign of a visitor?
+## GUN ## SHOW
+Holod @@ Got it.
+Shoot. [[Holod.HandsShoot]]
+Hear out. [[Holod.HandsDontShoot]]
+
+
+:: Holod.HandsDontShoot {"position":"3525,325","size":"100,100"}
+Holod @@ You know, I'm so tired of living.
+## KILL ## Holod
+Holod @@ But you decided not to kill me.
+Holod @@ Meanwhile, in the other houses, someone must have killed someone, I guess.
+Holod @@ Why is it like that? Ever wonder?
+
+
+:: Holod.HandsShoot {"position":"3325,325","size":"100,100"}
+Holod @@ You know what?
+## KILL ## Holod
+Holod @@ I think I've figured out why I always feel so cold.
+
+
+:: Holod.Personal {"position":"3425,725","size":"100,100"}
+Holod @@ No, I'm sorry, but I can't take off my clothes.
+Holod @@ I'm already too cold.
+## GUN ## SHOW
+Holod @@ Is there really no way I can go without getting naked?
+Shoot. [[Holod.PersonalShoot]]
+Hear out. [[Holod.PersonalDontShoot]]
+
+
+:: Holod.PersonalDontShoot {"position":"3525,825","size":"100,100"}
+Holod @@ It's weird to check how much pubic hair someone has.
+Holod @@ Can't people just shave?
+## GUN ## HIDE
+Holod @@ Oh, nobody has a razor? Now, that's where it gets... interesting.
+Holod @@ But sorry, I can't take my pants off.
+
+
+:: Holod.PersonalShoot {"position":"3325,825","size":"100,100"}
+Holod @@ Are you gonna shoot me because of this?
+Holod @@ Really?
+## KILL ## Holod
+Holod @@ Let me go then, right now. Maybe the sun will help me.
+
+
+:: Holod.Photo {"position":"3425,525","size":"100,100"}
+Holod @@ How can anything be detected by a photo?
+Holod @@ Don’t you find that odd?
+Holod @@ But it's not really up to me. Sure, go ahead and take a picture.
+Holod @@ (You're taking a picture of the person you're talking to)
+Holod @@ (The photo shows the body and clothing indistinctly, as if a large shiver went through the person during the photo shoot)
+Holod @@ Sorry, I flinched during the flash.
+## GUN ## SHOW
+Holod @@ Can we try that again?
+Shoot. [[Holod.PhotoShoot]]
+Hear out. [[Holod.PhotoDontShoot]]
+
+
+:: Holod.PhotoDontShoot {"position":"3525,625","size":"100,100"}
+Holod @@ What do you think, how many more signs will they come up with before they realize what needs to be done in the first place?
+## GUN ## HIDE
+Holod @@ Why is it absolutely necessary to kill someone?
+Holod @@ Or was it not necessary after all? Are we the only ones who understood it that way?
+
+
+:: Holod.PhotoShoot {"position":"3325,625","size":"100,100"}
+Holod @@ I have nothing to lose.
+## KILL ## Holod
+Holod @@ Although, wait, I want to show you...
+
+
+:: Holod.Teeth {"position":"3425,25","size":"100,100"}
+Holod @@ Mm, teeth? 
+Holod @@ If it helps in any way, sure, look.
+## IMAGE ## TEETH ## Holod
+Holod @@ ...
+## TEXT
+Holod @@ What do we do now? 
+## GUN ## SHOW
+Holod @@ I got it now.
+Shoot. [[Holod.TeethShoot]]
+Hear out. [[Holod.TeethDontShoot]]
+
+
+:: Holod.TeethDontShoot {"position":"3525,125","size":"100,100"}
+Holod @@ Thank you for your trust.
+## GUN ## HIDE
+Holod @@ I hope I can be of service.
+Holod @@ There's something eating me up, but I can't open up to you yet, sorry.
+
+
+:: Holod.TeethShoot {"position":"3325,125","size":"100,100"}
+Holod @@ Are you gonna shoot, though?
+## KILL ## Holod
+Holod @@ Wait, before you do that, I'll show you...
+
+
+:: Info.SomebodyWasMurdered {"position":"900,4500","size":"100,100"}
+Super @@ You smell rot and death. Someone was murdered last night.
+Super @@ It sounds like there are "guests" in the house.
+Super @@ Better be on the lookout and check people more carefully for signs of "guests".
+
+
+:: Mama.Eyes {"position":"5425,425","size":"100,100"}
+Mama @@ I always have burst blood vessels in my eyes.
+Mama @@ I don't know how you're going to determine if I'm a visitor.
+## IMAGE ## EYE ## Mama
+Mama @@ ...
+## TEXT
+Mama @@ What are you gonna do?
+## GUN ## SHOW
+Mama @@ Well...
+Shoot. [[Mama.EyesShoot]]
+Hear out. [[Mama.EyesDontShoot]]
+
+
+:: Mama.EyesDontShoot {"position":"5525,525","size":"100,100"}
+Mama @@ Of course, how could that be a sign?
+Mama @@ It would be terrible to make a mistake and accidentally kill someone.
+## GUN ## HIDE
+Mama @@ How many times have you been wrong? Do you take responsibility for such killings?
+
+
+:: Mama.EyesShoot {"position":"5325,525","size":"100,100"}
+Mama @@ Well, shoot me in the eyes.
+Mama @@ It won’t help you, tomorrow they will come knocking on your windows!
+## KILL ## Mama
+Mama @@ Or the sun will finally burn your eyes out!
+
+
+:: Mama.Hands {"position":"5425,225","size":"100,100"}
+Mama @@ That's where we're gonna have a problem.
+Mama @@ Old age, son.
+## IMAGE ## HANDS ## Mama
+Mama @@ ...
+## TEXT
+Mama @@ I don't remember what this disease is called, but my nails are coming off now.
+## GUN ## SHOW
+Mama @@ It's painful and unpleasant.
+Shoot. [[Mama.HandsShoot]]
+Hear out. [[Mama.HandsDontShoot]]
+
+
+:: Mama.HandsDontShoot {"position":"5525,325","size":"100,100"}
+Mama @@ What's the point of shooting a sick person?
+## GUN ## HIDE
+Mama @@ You could certainly put me out of my misery.
+Mama @@ But I'd still suffer for a while, hahaha.
+
+
+:: Mama.HandsShoot {"position":"5325,325","size":"100,100"}
+Mama @@ Go ahead, shoot.
+Mama @@ After me, they'll come and finish you and your whole crew.
+## KILL ## Mama
+Mama @@ You've doomed everyone to death, hahaha!
+
+
+:: Mama.Personal {"position":"5425,825","size":"100,100"}
+Mama @@ I’m too old for such requests.
+Mama @@ Or do you still want to see? HAHAHAHAHA!
+Mama @@ Well, look-look.
+Mama @@ (The old lady lifts her skirt)
+Mama @@ (You don’t see any hair down there)
+## GUN ## SHOW
+Mama @@ What hair? It all fell out long ago, hahaha!
+Shoot. [[Mama.PersonalShoot]]
+Hear out. [[Mama.PersonalDontShoot]]
+
+
+:: Mama.PersonalDontShoot {"position":"5525,925","size":"100,100"}
+Mama @@ Ahahaha. Now go rest.
+## GUN ## HIDE
+Mama @@ Or do something useful. I don’t really care.
+
+
+:: Mama.PersonalShoot {"position":"5325,925","size":"100,100"}
+Mama @@ What, you peeked, got what you wanted, now you shoot?
+## KILL ## Mama
+Mama @@ GO AHEAD, MY BOYS WILL BURY YOU ANYWAY.
+
+
+:: Mama.Photo {"position":"5425,625","size":"100,100"}
+Mama @@ It’s been a long time since I was last photographed.
+Mama @@ Go ahead, why not?
+Mama @@ (You're taking a picture of the person you're talking to)
+Mama @@ (You purposely hold still and wait for the moment)
+Mama @@ (When the photo shows up, you can see that it's blurry. Completely)
+## GUN ## SHOW
+Mama @@ Why can't you see me well?
+Shoot. [[Mama.PhotoShoot]]
+Hear out. [[Mama.PhotoDontShoot]]
+
+
+:: Mama.PhotoDontShoot {"position":"5525,725","size":"100,100"}
+Mama @@ Can I keep it to myself?
+## GUN ## HIDE
+Mama @@ I don’t even have any photos left.
+
+
+:: Mama.PhotoShoot {"position":"5325,725","size":"100,100"}
+Mama @@ Try it, they’ll smear you too.
+## KILL ## Mama
+Mama @@ Just like I'm smeared in the photo, HAHAHAHA.
+
+
+:: Mama.Teeth {"position":"5425,25","size":"100,100"}
+Mama @@ Hahahahaha, what teeth, son?
+Mama @@ Well, look what isn't there.
+## IMAGE ## TEETH ## Mama
+Mama @@ ...
+## TEXT
+Mama @@ So what?
+## GUN ## SHOW
+Mama @@ What conclusion shall we draw?
+Shoot. [[Mama.TeethShoot]]
+Hear out. [[Mama.TeethDontShoot]]
+
+
+:: Mama.TeethDontShoot {"position":"5525,125","size":"100,100"}
+Mama @@ You be careful with that stuff.
+Mama @@ Pointing it at everyone will make everyone look askance at you.
+## GUN ## HIDE
+Mama @@ You don't always have that gun in your hand, do you?
+
+
+:: Mama.TeethShoot {"position":"5325,125","size":"100,100"}
+Mama @@ And fuck you!
+## KILL ## Mama
+Mama @@ THEY'RE ALL GONNA BITE YOU AS SOON AS YOU SLEEP.
+
+
+:: Ohota.Eyes {"position":"5075,425","size":"100,100"}
+Ohota @@ You know, I once had color in my eyes.
+Ohota @@ Now, of course, this kind of life only gives us gray eyes.
+## IMAGE ## EYE ## Ohota
+Ohota @@ ...
+## TEXT
+Ohota @@ But I'll get them all. I'll tear them apart with my hands.
+Ohota @@ Then we'll live in peace again.
+
+
+:: Ohota.Hands {"position":"5075,225","size":"100,100"}
+Ohota @@ Okay, let's do it.
+## IMAGE ## HANDS ## Ohota
+Ohota @@ ...
+## TEXT
+Ohota @@ Of course my hands will be dirty, I go out at night to dig up these devils.
+## GUN ## SHOW
+Ohota @@ It's even easier to kill them that way!
+Ohota @@ I suggest you do the same.
+Shoot. [[Ohota.HandsShoot]]
+Hear out. [[Ohota.HandsDontShoot]]
+
+
+:: Ohota.HandsDontShoot {"position":"5175,325","size":"100,100"}
+Ohota @@ You bet!
+Ohota @@ Are you gonna go strangle the visitors tonight, too?
+## GUN ## HIDE
+Ohota @@ Let's go hunt them down.
+
+
+:: Ohota.HandsShoot {"position":"4975,325","size":"100,100"}
+Ohota @@ If you're going to throw me out, put me close to these.
+## KILL ## Ohota
+Ohota @@ I'm scared.
+
+
+:: Ohota.Personal {"position":"5075,725","size":"100,100"}
+Ohota @@ What you wouldn't do to stay out of the sun, eh?
+Ohota @@ Ahahahaha.
+Ohota @@ (The man in front of you takes off his pants) 
+Ohota @@ (You can see there's no hair. It's like it never grew)
+Ohota @@ Well, it's my little abnormality.
+Ohota @@ Nothing's grown here since I was a kid.
+## GUN ## SHOW
+Ohota @@ What's my fault?
+Shoot. [[Ohota.PersonalShoot]]
+Hear out. [[Ohota.PersonalDontShoot]]
+
+
+:: Ohota.PersonalDontShoot {"position":"5175,825","size":"100,100"}
+Ohota @@ You agree this is bullshit, don't you?
+Ohota @@ Checks and stuff.
+Ohota @@ The visitors are visible. Those assholes are scary.
+## GUN ## HIDE
+Ohota @@ That's who we should kill.
+
+
+:: Ohota.PersonalShoot {"position":"4975,825","size":"100,100"}
+Ohota @@ You're fighting the wrong war altogether.
+## KILL ## Ohota
+Ohota @@ Are you really gonna shoot me over something like that?
+
+
+:: Ohota.Photo {"position":"5075,525","size":"100,100"}
+Ohota @@ I don't really like taking pictures.
+Ohota @@ The flash reminds me of a thunderstorm, it makes me panic.
+## GUN ## SHOW
+Ohota @@ No, you didn't get it, I'm not taking pictures.
+Shoot. [[Ohota.PhotoShoot]]
+Hear out. [[Ohota.PhotoDontShoot]]
+
+
+:: Ohota.PhotoDontShoot {"position":"5175,625","size":"100,100"}
+Ohota @@ Thanks for understanding.
+Ohota @@ You know, I don't like that stuff. The pictures, the sudden flashes, the sounds.
+## GUN ## HIDE
+Ohota @@ Brrrrrrr.
+Ohota @@ I'm not interested.
+
+
+:: Ohota.PhotoShoot {"position":"4975,625","size":"100,100"}
+Ohota @@ No, wait!
+## KILL ## Ohota
+Ohota @@ Ay, fuck it, I'm running.
+
+
+:: Ohota.Teeth {"position":"5075,25","size":"100,100"}
+Ohota @@ Teeth? All right, let me show you.
+## IMAGE ## TEETH ## Ohota
+Ohota @@ ...
+## TEXT
+Ohota @@ Wait, now what?
+## GUN ## SHOW
+Ohota @@ God damn.
+Shoot. [[Ohota.TeethShoot]]
+Hear out. [[Ohota.TeethDontShoot]]
+
+
+:: Ohota.TeethDontShoot {"position":"5175,125","size":"100,100"}
+Ohota @@ I know, stress and all.
+## GUN ## HIDE
+Ohota @@ But it's the visitors we're supposed to be messing with, not each other.
+Ohota @@ It's about time you came to your senses.
+
+
+:: Ohota.TeethShoot {"position":"4975,125","size":"100,100"}
+Ohota @@ Holy shit.
+## KILL ## Ohota
+Ohota @@ That's the irony — the gun was taken away, now I'm gonna die from the gunshot.
+
+
+:: Trevoga.Eyes {"position":"2625,425","size":"100,100"}
+Trevoga @@ Do you want to check my eyes? 
+Trevoga @@ I'm guessing what the result will be.
+Trevoga @@ What would happen if I matched this sign?
+## IMAGE ## EYE ## Trevoga
+Trevoga @@ ...
+## TEXT
+Trevoga @@ You bet. Could it be otherwise.
+## GUN ## SHOW
+Trevoga @@ Are you gonna kill me? Too bad I'll never know what happens to us all.
+Shoot. [[Trevoga.EyesShoot]]
+Hear out. [[Trevoga.EyesDontShoot]]
+
+
+:: Trevoga.EyesDontShoot {"position":"2725,525","size":"100,100"}
+Trevoga @@ Am I really a visitor? What do you think?
+## GUN ## HIDE
+Trevoga @@ Why wouldn't I know that? Maybe that's how you become one?
+Trevoga @@ Maybe it's enough to think that you're different and here you are the worst person for society.
+
+
+:: Trevoga.EyesShoot {"position":"2525,525","size":"100,100"}
+Trevoga @@ It's scary to die.
+Trevoga @@ Wait, can I get a blindfold first? 
+## KILL ## Trevoga
+Trevoga @@ Or stand a little longer, at least.
+
+
+:: Trevoga.Hands {"position":"2625,225","size":"100,100"}
+Trevoga @@ Show you fingernails? An interesting sign, for sure...
+Trevoga @@ Yeah, let's see.
+## IMAGE ## HANDS ## Trevoga
+Trevoga @@ ...
+## TEXT
+Trevoga @@ What's on them? It can't be the ground.
+Trevoga @@ I-I-I don't even remember digging in the dirt.
+## GUN ## SHOW
+Trevoga @@ Maybe someone got me dirty?
+Shoot. [[Trevoga.HandsShoot]]
+Hear out. [[Trevoga.HandsDontShoot]]
+
+
+:: Trevoga.HandsDontShoot {"position":"2725,325","size":"100,100"}
+Trevoga @@ How did I get this dirt? 
+## GUN ## HIDE
+Trevoga @@ It's not like I haven't showered in days. Yes?
+Trevoga @@ That's... weird.
+
+
+:: Trevoga.HandsShoot {"position":"2525,325","size":"100,100"}
+Trevoga @@ Is this the end of my life?
+Trevoga @@ What a... shame.
+## KILL ## Trevoga
+Trevoga @@ You changed your mind, didn't you?
+
+
+:: Trevoga.Personal {"position":"2625,825","size":"100,100"}
+Trevoga @@ What?
+Trevoga @@ This is private space!
+Trevoga @@ You're not gonna kill me if I refuse, are you?
+## GUN ## SHOW
+Trevoga @@ WHAT? WILL YOU?
+Trevoga @@ God, why do I have to do this!
+Trevoga @@ Wait, I'll get myself together.
+Trevoga @@@ She pulls her clothes down a little.
+Trevoga @@ You can see there's no vegetation. None at all.
+Trevoga @@ What does that mean? You're still gonna kill me?
+Shoot. [[Trevoga.PersonalShoot]]
+Hear out. [[Trevoga.PersonalDontShoot]]
+
+
+:: Trevoga.PersonalDontShoot {"position":"2525,925","size":"100,100"}
+Trevoga @@ What was the point of all those tests?
+Trevoga @@ What's the point of being a man holding a gun?
+## KILL ## Trevoga
+Trevoga @@ You're gonna kill everyone anyway! AND DIE IN THE END!
+
+
+:: Trevoga.PersonalShoot {"position":"2725,925","size":"100,100"}
+Trevoga @@ I haven't felt so humiliated in a long time.
+## GUN ## HIDE
+Trevoga @@ Why are you doing this?
+Trevoga @@ Why am I saying yes? We all know what awaits us at the end...
+
+
+:: Trevoga.Photo {"position":"2625,625","size":"100,100"}
+Trevoga @@ If it turns out I'm a visitor, will I start killing people?
+Trevoga @@ Will I become dangerous? Or have I always been?
+Trevoga @@ Maybe I do kill people?
+Trevoga @@ (You're taking a picture of the person you're talking to)
+Trevoga @@ (When the photo shows up, you see a blurred body and a clear background)
+Trevoga @@ (It was as if at the moment of the photo, the person jerked violently)
+Trevoga @@ Hahaha, can you believe it?
+## GUN ## SHOW
+Trevoga @@ What's gonna happen now?
+Trevoga @@ Can I live? Or is it better to kill me? What are you gonna do?
+Shoot. [[Trevoga.PhotoShoot]]
+Hear out. [[Trevoga.PhotoDontShoot]]
+
+
+:: Trevoga.PhotoDontShoot {"position":"2725,725","size":"100,100"}
+Trevoga @@ Why?
+Trevoga @@ Wouldn't it be easier to shoot me already? 
+## GUN ## HIDE
+Trevoga @@ I want to leave, but I'm too scared. 
+Trevoga @@ Maybe...
+Trevoga @@ I don't know.
+
+
+:: Trevoga.PhotoShoot {"position":"2525,725","size":"100,100"}
+Trevoga @@ What if you shoot me and I actually become something even more horrible?
+Trevoga @@ Maybe I should run away. 
+Trevoga @@ But I don't know, what if I'm still a human being.
+## KILL ## Trevoga
+Trevoga @@ What should I do?
+
+
+:: Trevoga.Teeth {"position":"2625,25","size":"100,100"}
+Trevoga @@ Huh, are you going to make decisions based on teeth? Uh-oh.
+Trevoga @@ I've had my teeth fixed recently.
+Trevoga @@ Although, to be honest...
+Trevoga @@ I can't remember when I've been to the dentist. Have I even been to one?
+Trevoga @@ God, I can't even remember what I ate yesterday because of fear.
+## IMAGE ## TEETH ## Trevoga
+Trevoga @@ ...
+## TEXT
+Trevoga @@ Does that... Do I fit the description?
+## GUN ## SHOW
+Trevoga @@ That can't be...
+Trevoga @@ I can't be a visitor. Yes?
+Shoot. [[Trevoga.TeethShoot]]
+Hear out. [[Trevoga.TeethDontShoot]]
+
+
+:: Trevoga.TeethDontShoot {"position":"2725,125","size":"100,100"}
+Trevoga @@ No, it's just a coincidence, right? How can I be a visitor?
+Trevoga @@ It can't be...
+Trevoga @@ It can't be, can it?
+Trevoga @@ I remember my life, nothing in it ...nothing like that.
+## GUN ## HIDE
+Trevoga @@ Thank you.
+
+
+:: Trevoga.TeethShoot {"position":"2525,125","size":"100,100"}
+Trevoga @@ No, please don't!
+## KILL ## Trevoga
+Trevoga @@ So I'm a visitor? How? HOW? Don't do this!
+
+
+:: Volk.Eyes {"position":"4750,425","size":"100,100"}
+Volk @@ Are you looking for a stranger in me?
+Volk @@ Aren't you afraid to see your reflection in my eyes?
+## IMAGE ## EYE ## Volk
+Volk @@ ...
+## TEXT
+Volk @@ I'm impressed.
+Volk @@ Not everyone can stand my gaze.
+
+
+:: Volk.Hands {"position":"4750,225","size":"100,100"}
+Volk @@ Want to hear about my hands?
+Volk @@ Yeah, I've had to kill recently.
+Volk @@ They tried to kill me. I'm not just going to stand by and wait to be killed.
+Volk @@ Some people freeze in danger, others run.
+Volk @@ I'm the type who fights back.
+## IMAGE ## HANDS ## Volk
+Volk @@ ...
+## TEXT
+Volk @@ So, what now? You gonna shoot me?
+## GUN ## SHOW
+Volk @@ Really?
+Shoot. [[Volk.HandsShoot]]
+Hear out. [[Volk.HandsDontShoot]]
+
+
+:: Volk.HandsDontShoot {"position":"4850,325","size":"100,100"}
+Volk @@ I could be faster than you.
+## GUN ## HIDE
+Volk @@ And then I'll have the gun.
+
+
+:: Volk.HandsShoot {"position":"4650,325","size":"100,100"}
+Volk @@ BITCH!
+## KILL ## Volk
+Volk @@ I'M TAKING YOU WITH ME.
+
+
+:: Volk.Personal {"position":"4750,625","size":"100,100"}
+Volk @@ Hahahahaha.
+Volk @@ Isn't that a joke?
+## GUN ## SHOW
+Volk @@ Don't come at me with that shit. Make yourself useful.
+Shoot. [[Volk.PersonalShoot]]
+Hear out. [[Volk.PersonalDontShoot]]
+
+
+:: Volk.PersonalDontShoot {"position":"4850,725","size":"100,100"}
+Volk @@ Don't ask me that shit again.
+## GUN ## HIDE
+Volk @@ That's all?
+
+
+:: Volk.PersonalShoot {"position":"4650,725","size":"100,100"}
+Volk @@ Fuck, I'm gonna fuckin' TEAR YOU!
+## KILL ## Volk
+Volk @@ RRRRAAAAA.
+
+
+:: Volk.Photo {"position":"4750,525","size":"100,100"}
+Volk @@ I don't like having my picture taken.
+Volk @@ If those pictures don't end up in the trash later, I'll have to take action.
+Volk @@ Do you understand that?
+Volk @@ (You're taking a picture of the person you're talking to)
+Volk @@ (You wave the photo around to make it show up faster)
+Volk @@ (You notice that the picture seems fine, but it's being snatched out of your hands)
+Volk @@ Give it to me. I'll throw them out myself.
+
+
+:: Volk.Teeth {"position":"4750,25","size":"100,100"}
+Volk @@ Watch it.
+Volk @@ If you attack me, I'll bite your neck with these teeth.
+## IMAGE ## TEETH ## Volk
+Volk @@ ...
+## TEXT
+Volk @@ I take care of my teeth.
+Volk @@ And those that are missing...
+## GUN ## SHOW
+Volk @@ Well, let those bastards clench them tighter in the grave.
+Shoot. [[Volk.TeethShoot]]
+Hear out. [[Volk.TeethDontShoot]]
+
+
+:: Volk.TeethDontShoot {"position":"4850,125","size":"100,100"}
+Volk @@ Don't point that gun at me again.
+Volk @@ I know when and how much you sleep.
+## GUN ## HIDE
+Volk @@ And if I do, I'll eat you alive, kid.
+Volk @@ Don't make a mistake.
+
+
+:: Volk.TeethShoot {"position":"4650,125","size":"100,100"}
+Volk @@ I've been out of one of these before.
+Volk @@ Well, let's see who's faster.
+## KILL ## Volk
+Volk @@ HHAAAAA!
+
+
+:: Zayavlenie.Ob.Uvolnenii {"position":"1150,5150","size":"100,100"}
+I, Roman Kozubchenko, Uvolnyaus nahui.
+
+
+:: Zhena.Eyes {"position":"3750,325","size":"100,100"}
+Zhena @@ What do you want to check? Redness in the eyes?
+Zhena @@ Go ahead, try.
+## IMAGE ## EYE ## Zhena
+Zhena @@ ...
+## TEXT
+Zhena @@ If I show emotion, does that make me a visitor?
+## GUN ## SHOW
+Zhena @@ Can a person in this new world still cry? Apparently, laughing is already forbidden.
+Shoot. [[Zhena.EyesShoot]]
+Hear out. [[Zhena.EyesDontShoot]]
+
+
+:: Zhena.EyesDontShoot {"position":"3850,425","size":"100,100"}
+Zhena @@ Can we be frank now?
+## GUN ## HIDE
+Zhena @@ No joy allowed, no crying allowed.
+Zhena @@ Sometimes, speaking isn't allowed either.
+Zhena @@ We can only sit and cover our faces with our hands.
+
+
+:: Zhena.EyesShoot {"position":"3650,425","size":"100,100"}
+Zhena @@ Is it really going to end this easily?
+Zhena @@ No more pain?
+## KILL ## Zhena
+Zhena @@ But I never held you back, my...
+
+
+:: Zhena.Hands {"position":"3750,225","size":"100,100"}
+Zhena @@ Hands... wait a second.
+Zhena @@ My hands are tired from carrying the one they refused to save.
+## IMAGE ## HANDS ## Zhena
+Zhena @@ ...
+## TEXT
+Zhena @@ Must I even be asked to do this fucking thing?
+Zhena @@ If you want to shoot, just shoot.
+Zhena @@ I don't have the strength anymore...
+Zhena @@ ...
+Zhena @@ No, I'm sorry, I'm just really exhausted.
+
+
+:: Zhena.Personal {"position":"3750,625","size":"100,100"}
+Zhena @@ Are you kidding me?
+## GUN ## SHOW
+Zhena @@ Fuck you. Don't touch me.
+Shoot. [[Zhena.PersonalShoot]]
+Hear out. [[Zhena.PersonalDontShoot]]
+
+
+:: Zhena.PersonalDontShoot {"position":"3850,725","size":"100,100"}
+Zhena @@ Why don't you just shoot everyone?
+## GUN ## HIDE
+Zhena @@ Kill everyone already and end this suffering.
+
+
+:: Zhena.PersonalShoot {"position":"3650,725","size":"100,100"}
+Zhena @@ Just shoot me already. People like you make it impossible to live.
+## KILL ## Zhena
+Zhena @@ Not in this house. Not on this planet. Not anywhere.
+
+
+:: Zhena.Photo {"position":"3750,525","size":"100,100"}
+Zhena @@ Don’t you think this is a mockery?
+Zhena @@ No one helped save my husband, but now...
+Zhena @@ YOU WANT TO MARK HIS DEATH?
+Zhena @@ ...
+Zhena @@ I'm at a loss for words.
+Zhena @@ Do whatever you want and don't touch me.
+Zhena @@ (You take a picture of the person you're talking to)
+Zhena @@ (You don't see anything out of the ordinary)
+Zhena @@ (The dead man was in the frame, it makes you think)
+Zhena @@ Now just go away.
+
+
+:: Zhena.Teeth {"position":"3750,125","size":"100,100"}
+Zhena @@ What?
+Zhena @@ ...okay.
+## IMAGE ## TEETH ## Zhena
+Zhena @@ ...
+## TEXT
+Zhena @@ That's it?
+Zhena @@ Can I have some quiet time here alone?

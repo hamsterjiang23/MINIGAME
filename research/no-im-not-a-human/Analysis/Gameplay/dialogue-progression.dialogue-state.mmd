@@ -1,0 +1,10 @@
+stateDiagram-v2
+  [*] --> DialogueClosed
+  DialogueClosed --> NodeRunning: RunDialog(nodeName)
+  NodeRunning --> Options: Yarn presents available options
+  Options --> NodeRunning: chosen option / commands / functions
+  NodeRunning --> SignDisplay: ShowSign command
+  SignDisplay --> NodeRunning: StopShowingSign
+  NodeRunning --> DialogueClosed: onDialogueComplete / end actions
+%% Evidence: DialogView.cs L170-201/L237-245/L128-151; FakeOptionView.cs L23-100; DialogCommandsInstance.cs L269-285.
+

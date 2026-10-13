@@ -1,0 +1,4851 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NotCharacterDialogs_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: fdb5e7c1e1a06f94cb20bf63a5da666e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21953783779328
+    m_Localized: 'TV: Son dakika!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556544
+    m_Localized: 'TV: Bugün sabah 06.28''de güneşten güçlü bir enerji dalgası yayıldı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556545
+    m_Localized: 'TV: Bu enerji patlaması, bilim insanlarının tahmin ettiğinden çok daha büyüktü.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556546
+    m_Localized: 'TV: Bunun sonucunda dışarıdaki sıcaklık kritik seviyeye ulaştı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556547
+    m_Localized: 'TV: Hükûmet, bu olayın ardından olağanüstü hâl ilan etti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556548
+    m_Localized: 'TV: Seyircilerimizin gündüz vakti dışarı çıkmamasını temenni ediyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556549
+    m_Localized: 'TV: Şimdi sırada...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556550
+    m_Localized: 'TV: Bir saniye...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556551
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556552
+    m_Localized: 'TV: Stüdyomuza bir son dakika raporu geldi. Raporda "Ziyaretçi" adını verdiğimiz bir olgudan bahsediliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556553
+    m_Localized: 'TV: Görgü tanıkları, bu "Ziyaretçileri" insanların görünüşünü ve davranışını taklit edebilen yaratıklar olarak tanımlıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556554
+    m_Localized: 'TV: Ne olursa olsun bu yaratıklarla temasa geçmeyin. Geçecek olursanız Ziyaretçileri tek bir belirtiyle ayırt edebilirsiniz...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556555
+    m_Localized: 'TV: Bembeyaz dişlerinden.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556556
+    m_Localized: 'TV: İlk raporlarımız da bu bilgiyi doğruluyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556557
+    m_Localized: 'TV: Kaynaklarımız, dişleri bembeyaz olan bir evsiz vatandaşla karşılaştıklarını belirttiler. Şahsın sonradan Ziyaretçi olduğu öğrenildi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556558
+    m_Localized: 'TV: Şimdilik elimizdeki bilgiler bu kadar sayın seyirciler. Lütfen panik yapmayın ve gündüz saatlerinde evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556559
+    m_Localized: 'TV: Şimdi sırada daha iç açıcı bir haber var!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556560
+    m_Localized: 'TV: İyi günler, hava tahminleriyle sizlerleyiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556561
+    m_Localized: 'TV: Bölgeye yaklaşan sıcak hava dalgasının geçmişteki tüm sıcaklık rekorlarını kırması bekleniyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556562
+    m_Localized: 'TV: Meteoroloji uzmanları, önümüzdeki hafta sıcaklıkların daha da artacağını söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556563
+    m_Localized: 'TV: Güneş faaliyetinin artmasıyla birlikte UV ışınlarının da güçlenmesi bekleniyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556564
+    m_Localized: 'TV: Güvenliğiniz için lütfen güneşlenmekten kaçının sayın seyirciler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556565
+    m_Localized: 'TV: Yüksek sıcaklıklar, güneş çarpması ihtimalini de artırabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556566
+    m_Localized: 'TV: Bu noktada güneşe çıkmanın sağlığı olumsuz etkileyip etkilemeyeceği henüz bilinmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556567
+    m_Localized: 'TV: Ancak üçüncü derece yanıklardan kaçınmak adına lütfen dışarı çıkmaktan sakının.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556568
+    m_Localized: 'TV: Maalesef ki faktörü fark etmeksizin hiçbir güneş kremi sizi koruyamaz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556569
+    m_Localized: 'TV: Bugünlük bu kadar. Sırada Kuğularla Dans var...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556570
+    m_Localized: 'TV: Balerinlerin tüm zarafeti karşında; sahnede kuvvetli ama bir o kadar da narin sıçramalarla hareket ediyorlar...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556571
+    m_Localized: 'TV: Ne kadar şık bir dans olsa da insanı kaygılandırıyor desek yeridir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556572
+    m_Localized: 'TV: Sana olan biteni unutturmaya çalışıyorlar gibi hissediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556573
+    m_Localized: 'TV: Keşke birileri bir açıklama yapsa...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556574
+    m_Localized: 'TV: İyi günler, en güncel haberlerle karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556575
+    m_Localized: 'TV: Güneş faaliyetleri düzenli olarak artmaya devam ediyor, suç oranları da rekor seviyelere yükseldi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556576
+    m_Localized: 'TV: Güncel verilere göre son birkaç gecedeki cinayet sayısı ortalamanın üzerine çıktı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556577
+    m_Localized: 'TV: Uzmanlar, bunun Ziyaretçiler hakkında insanların giderek daha da endişelenmesine bağlı olduğunu düşünüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556578
+    m_Localized: 'TV: Neyse ki bu taklitçileri ayırt edebilmenize yarayacak yeni bir bilgi edindik...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556579
+    m_Localized: 'TV: Tırnaklarının altındaki toprak.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556580
+    m_Localized: 'TV: Uzmanlar, bu belirtinin yerin altından çıkan Ziyaretçileri tespit etmenizi kolaylaştıracağını söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556581
+    m_Localized: 'TV: Şimdilik elimizdeki bilgiler bu kadar sayın seyirciler. Lütfen panik yapmayın ve gündüz saatlerinde evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556582
+    m_Localized: 'TV: Sırada soluk tenli bir psikopat hakkında bir haberimiz var ama önce reklamlar...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556583
+    m_Localized: 'TV: Eskiden ev alışverişi yapmak için markete uğramak gerekirdi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556584
+    m_Localized: 'TV: Ancak KapımaGelsin sayesinde tek yapmanız gereken, telefondan bizi aramak!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556585
+    m_Localized: 'TV: XXX-XXX-XXXX numarasını arayın, siparişiniz bir gün içinde kapınıza gelsin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556586
+    m_Localized: 'TV: KapımaGelsin: Lezzet ve konfor, hemen kapınızda.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556587
+    m_Localized: 'TV: Raporlarımız, şehrin sokaklarında soluk tenli bir psikopat görüldüğünü söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556588
+    m_Localized: 'TV: Polisin görgü tanıklarından aldığı bilgilere göre tüm kurbanların tek bir ortak özelliği var... Yalnız olmaları.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556589
+    m_Localized: 'TV: Psikopatın buna ek olarak cinayetini işlemeden önce kurbanlarıyla konuşmaktan hoşlandığı bildirildi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556590
+    m_Localized: 'TV: Polis, görgü tanıklarının anlattıklarından yola çıkarak bir robot resim hazırladı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556591
+    m_Localized: 'TV: Zanlı; soluk tenli, orta yaşlı ve siyah saçlı. Uzun ve zayıf olmakla birlikte üzerinde yalnızca pantolon var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556592
+    m_Localized: 'TV: Bazen başka insanların derisini giydiğine dair iddialar da var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556593
+    m_Localized: 'TV: Bu bilgi henüz teyit edilmedi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556594
+    m_Localized: 'TV: Bu adamı görürseniz kapınızı açmayın. Ona yalnız olduğunuzu söylemeyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556595
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556596
+    m_Localized: 'TV: İyi günler, en güncel haberlerle karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953800556597
+    m_Localized: 'TV: Olağan dışı sıcaklıklar artmaya devam ederken Ziyaretçi istilası da tüm hızıyla sürüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750848
+    m_Localized: 'TV: Durumu kontrol altına almak için hükûmet tarafından yeni bir organizasyon kuruldu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750849
+    m_Localized: 'TV: Federal Emniyet ve Müdahale Ajansı, yani kısaca FEMA.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750850
+    m_Localized: 'TV: FEMA çalışanlarını sarı koruyucu elbiselerinden ve gaz maskelerinden tanıyabilirsiniz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750851
+    m_Localized: 'TV: Kurulalı daha birkaç gün olmasına rağmen ajans, Ziyaretçileri tespit etmenin yeni bir yolunu keşfettiğini açıkladı...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750852
+    m_Localized: 'TV: Kanlanmış gözler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750853
+    m_Localized: 'TV: FEMA, aldığımız raporlara göre belirtiyi tutukladıkları Ziyaretçileri yakından inceleyerek keşfetti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750854
+    m_Localized: 'TV: Kurumun açıklamasına göre yaratıkların ışığa duyarlı yapısı gözlerinin kızarıp iltihaplanmasına yol açıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750855
+    m_Localized: 'TV: Şimdilik elimizdeki bilgiler bu kadar sayın seyirciler. Lütfen panik yapmayın ve gündüz saatlerinde evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750856
+    m_Localized: 'TV: Sırada FEMA hakkında bir haber var fakat önce sponsorlarımızın mesajını sizlerle paylaşacağız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750857
+    m_Localized: 'TV: Telaşe, dehşet, acı... Hepsi Ziyaretçiler yüzünden...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750858
+    m_Localized: 'TV: Fakat tam bu zor zamanımızda, yardım çığlıklarımız duyulmaz gibi gelirken...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750859
+    m_Localized: 'TV: FEMA, YARDIMIMIZA KOŞTU!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750860
+    m_Localized: 'TV: Federal Emniyet ve Müdahale Ajansı''nın cesur kahramanları, bizi Ziyaretçi istilasından koruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750861
+    m_Localized: 'TV: Ajans, şu ana dek yirmi yedi binden fazla tehlikeli anomaliyi tespit etti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750862
+    m_Localized: 'TV: Unutmayın: Etrafınızda olup biten şüpheli faaliyetleri ajansa bildirerek onlara yardımcı olabilirsiniz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750863
+    m_Localized: 'TV: Şüphelilere FEMA''yı ziyaret etmeleri için bir ihbar kâğıdı vermeniz yeterli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750864
+    m_Localized: 'TV: Eğer siz de Ziyaretçi olduğunuzu düşünmeye başlarsanız {0} numarasından bize ulaşın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750865
+    m_Localized: 'TV: Siz bize yardımcı olun, biz de size. FEMA''yı destekleyin ve Ziyaretçilere karşı mücadelede bize katılın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750866
+    m_Localized: 'TV: FEMA nedir? Neden kuruldu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750867
+    m_Localized: 'TV: Federal Emniyet ve Müdahale Ajansı, mevcut krizi yönetmek amacıyla kurulan özel bir hükûmet branşıdır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750868
+    m_Localized: 'TV: Ziyaretçi istilası nedeniyle ortaya çıkan sorunları çözmeyi amaçlamaktadırlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750869
+    m_Localized: 'TV: Ajansın tam olarak ne üzerine çalıştığı bilinmiyor...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750870
+    m_Localized: 'TV: ...ama kaderimizi güvenilir ellere bıraktığımız aşikâr.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750871
+    m_Localized: 'TV: Ajansta birçok farklı alandan birçok uzman var. Aralarında meşhur bilim insanları ve araştırmacılar bile mevcut.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750872
+    m_Localized: 'TV: Bir FEMA çalışanı kapınızı çalarsa onlarla iş birliği yapmanızı ve talimatlarını dinlemenizi öneriyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750873
+    m_Localized: 'TV: Unutmayın: Siz bize yardımcı olun, biz de size. FEMA''yı destekleyin ve Ziyaretçilere karşı mücadelede bize katılın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750874
+    m_Localized: 'TV: İyi günler, en güncel haberlerle karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750875
+    m_Localized: 'TV: FEMA, süregelen Ziyaretçi istilasıyla başa çıkmak için yeni önlemler alıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750876
+    m_Localized: 'TV: Yakın zamanda tehlikeli olabilecek zanlıları tutuklamak adına karantina bölgeleri kurdular.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750877
+    m_Localized: 'TV: FEMA buna ek olarak tutukluların üzerinde yaptıkları deneyler sonucunda bir Ziyaretçi belirtisi daha keşfetti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750878
+    m_Localized: 'TV: Kılsız koltuk altları.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750879
+    m_Localized: 'TV: FEMA raporlarına göre Ziyaretçilerin koltuk altında hiçbir görünür kıl yok, bu da onları tespit etmeyi kolaylaştırıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750880
+    m_Localized: 'TV: Ajans, vatandaşların testlere ayak uydurmasını ve karantina bölgesine götürülmeyi reddetmemesini temenni ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750881
+    m_Localized: 'TV: Şimdilik elimizdeki bilgiler bu kadar sayın seyirciler. Lütfen panik yapmayın ve gündüz saatlerinde evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750882
+    m_Localized: 'TV: Şimdi bir Ziyaretçi tespit ederseniz neler yapabileceğinizden bahsedeceğiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750883
+    m_Localized: 'TV: FEMA, bu Ziyaretçi istilasının bulaşıcı olabileceğini veya henüz açıklanmamış biyolojik bir tehdit oluşturabileceğini öne sürüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750884
+    m_Localized: 'TV: Dolayısıyla Ziyaretçi olma potansiyeli olan herkesi rapor etmeniz ve bir an önce onları izole etmeniz son derece önemlidir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750885
+    m_Localized: 'TV: Ziyaretçileri hemen karantina bölgesine teslim edemiyorsanız da onlara FEMA''yı ziyaret etmeleri için özel bir ihbar verin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750886
+    m_Localized: 'TV: Bir sonraki toplama sırasında FEMA çalışanları elinde bu kâğıt olan herkesi götürüp muayene edecektir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750887
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler. Sırada reklamlar var...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750892
+    m_Localized: 'Window: Komşunun evini çayırın ötesinde görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750893
+    m_Localized: 'Window: İçeride hiç ışık yanmıyor. Belli ki uyuyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750894
+    m_Localized: 'Window: Çayırdan geçen patikanın başında cılız bir köpek duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750895
+    m_Localized: 'Window: Kederle etrafa bakıyor, muhtemelen yiyecek arıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750896
+    m_Localized: 'Window: Sokakta birkaç ayyaş yatıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750897
+    m_Localized: 'Window: Yer hem soğuk hem de sert ama nasıl olduysa uyuyakalmışlar. Herhâlde keyifleri yerinde.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750898
+    m_Localized: 'Window: Uzağa baktığında şu anda seni ziyaret eden komşunun evini görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750899
+    m_Localized: 'Window: Evin ışıkları açık, belli ki ailesi onun eve dönmesini bekliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750900
+    m_Localized: 'Window: Bahçede birkaç gencin takıldığını görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750901
+    m_Localized: 'Window: Dertsiz tasasız öylece oturuyorlar, sohbet ediyorlar. Seni hiç umursamıyorlar bile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750902
+    m_Localized: 'Window: Dışarıda ölüm sessizliği var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750903
+    m_Localized: 'Window: Kimse yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750904
+    m_Localized: 'Window: Ayyaşlar bile evden çıkmamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750905
+    m_Localized: 'Window: Bir şeyden mi korkuyorlar ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750906
+    m_Localized: 'Window: Komşunu ve kızını pencereden görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750907
+    m_Localized: 'Window: Neşeli neşeli oyun oynuyorlar, olan bitene aldırmamaya çalışıyorlar...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750908
+    m_Localized: 'Window: Bir geceliğine olsa dahi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750909
+    m_Localized: 'Window: Gençlerin cesetleri yerde duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750910
+    m_Localized: 'Window: Biri onları öldürmüş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750911
+    m_Localized: 'Window: Kan hâlâ kurumamış, belli ki üzerinden pek vakit geçmemiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750912
+    m_Localized: 'Window: Ölüm kadar soluk bir adam yolun kenarında dikiliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750913
+    m_Localized: 'Window: Derisinde tuhaf kıvrımlar var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750914
+    m_Localized: 'Window: Sanki eti vücuduna ait değil, orantısız duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750915
+    m_Localized: 'Window: Gözlerini bu mesafeden göremesen de bakışlarını üstünde hissediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750916
+    m_Localized: 'Window: Aniden derin bir korku içini kaplıyor ve dehşet verici Ziyaretçi''nin evine uğramaması için dua ediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750917
+    m_Localized: 'Window: Komşunun evinin önünde birkaç FEMA çalışanı duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750918
+    m_Localized: 'Window: Ne konuşuyorlar acaba?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750919
+    m_Localized: 'Window: Belki de topraktan numune alıyorlardır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750920
+    m_Localized: 'Window: Üs kuracak yer arıyor da olabilirler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750921
+    m_Localized: 'Window: Gençlerin yanmış cesetleri yerde duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750922
+    m_Localized: 'Window: Tüm gün orada kalmışlar gibi görünüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750923
+    m_Localized: 'Window: İki FEMA çalışanı cesetlerin yanında durmuş not alıyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750924
+    m_Localized: 'Window: Neyse ki cesetleri almaya gelmişler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750925
+    m_Localized: 'Window: Çürüyen cesetler orada öylece bırakılsaydı yayılabilecek hastalıkları düşünmek bile istemiyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750926
+    m_Localized: 'Window: Pencereden baktığında bir grup silahlı asker görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750927
+    m_Localized: 'Window: FEMA çalışanlarını korumak için şehirden gönderilen küçük bir mangaymış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750928
+    m_Localized: 'Window: Üstsüz gezen soluk tenli adam hakkında konuştuklarını ucundan duyuyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750929
+    m_Localized: 'Window: Belki de o korkunç Ziyaretçi''nin peşine düşeceklerdir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750930
+    m_Localized: 'Window: Komşunun yakın zamanda beyaza boyadığı evi, yanıp kül olmuş. Duvarları artık kapkara.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750931
+    m_Localized: 'Window: Yangın söneli çok olmamış belli ki.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750932
+    m_Localized: 'Window: Acaba birisi kundakladı mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750933
+    m_Localized: 'Window: Peki komşunun ailesine ne oldu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750934
+    m_Localized: 'Window: Hayatta kalan var mı ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750935
+    m_Localized: 'Window: Aklında binbir soru var. Olan bitenleri kavrayamıyorsun ve kendini çaresiz hissediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750936
+    m_Localized: 'Window: Soluk tenli korkunç adam sokakta durmuş gülümsüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750937
+    m_Localized: 'Window: Kasklı birinin kafasını koparmış, elinde tutuyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750938
+    m_Localized: 'Window: Bir askerin kafası. Suratı dehşet içinde kalakalmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750939
+    m_Localized: 'Window: Neyden daha çok korktu acaba? Soluk Ziyaretçi''den mi yoksa yaklaşan ölümünden mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750940
+    m_Localized: 'Window: Dün gelen asker mangası... Hepsi öldürülmüş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750941
+    m_Localized: 'Window: Katliam yaşanmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750942
+    m_Localized: 'Window: Sokağın her yerinde ceset var, birinin kafası ortalarda yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750943
+    m_Localized: 'Window: Acaba o soluk tenli yabancı mı öldürdü hepsini?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750944
+    m_Localized: Merhaba, acil durum hizmetlerine ulaştınız. Size nasıl yardımcı olabiliriz? "İnsanlar... yanıyorlar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750945
+    m_Localized: Ne gördüğünüzü anlatır mısınız? Yangın mı var? "Y.. Yok, güneş. Güneşin altında yanıyorlar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750946
+    m_Localized: Gece vaktine kadar evden çıkmayın. "Hayır, o herif gece vakti ava çıkıyor. Soluk tenli olan... O, insan değil."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750947
+    m_Localized: '...ve şimdi yeni bir programla karşınızdayız: "Evet, Ben İnsanım"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750948
+    m_Localized: 'Gayet basit: Siz bize fotoğraf yolluyorsunuz, biz de ne olduğunuza bakıyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750949
+    m_Localized: Fotoğraflarınızı evetinsanim@insantey.it adresine göndermeniz yeterli, gerisini biz hallederiz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750950
+    m_Localized: Lütfen gözünüz, dişiniz ve tırnaklarınız dışında bir şey göndermeyin. Başka hiçbir fotoğraf kabul etmiyoruz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750951
+    m_Localized: Gözleriniz mi kızardı? Dişleriniz mi beyazladı? Tırnaklarınızın altında toprak mı var?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750952
+    m_Localized: O zaman içinize kötü ruh girmiş. Siz, Ziyaretçi'siniz!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750953
+    m_Localized: Bu hastalığın bedeninizi ele geçirmesine izin vermeyin! 777-460 numarasından hemen uzmanlarımıza ulaşın.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750954
+    m_Localized: Bu kötü ruhu çıkarır, bedeninizin lekelenmiş aurasını temizler ve size gelişmiş koruma sağlarlar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750955
+    m_Localized: Herkese merhaba. Esrarengiz vakaları ve hükûmet komplolarını tartıştığımız "İnanmak İstiyorum" programına hoş geldiniz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750956
+    m_Localized: Bugün özel misafirimizle Ziyaretçilerin gerçeklerini konuşacağız. Kendisi bir fen bilimleri doktoru ve saygın bir...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750957
+    m_Localized: Ne? Ne demek gelmiyor?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750958
+    m_Localized: BÜTÜN belgelerini nasıl çalmış olabilirler ya? Orada ne kadar bilgi saklıydı sen farkında mısın?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750959
+    m_Localized: Hay ben böyle işin... Gerçeği öğrenmemize engel olacakları belliydi. Hepsinin ta...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182980
+    m_Localized: 'Window: Komşunun evinin kalıntılarını görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182981
+    m_Localized: 'Window: Daha dün orada mutlu bir aile yaşıyordu. Şimdi geriye sadece kof bir kabuk kaldı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182982
+    m_Localized: 'Window: İçine garip bir his doğuyor. Bunun olacağı belliydi sanki...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182983
+    m_Localized: 'Window: ...Sanki ölüm, bu evi kısa vakitte ele geçirecekti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182984
+    m_Localized: 'Window: Kazığa geçirilmiş bir insan kafatası görüyorsun. Kaskı hâlâ duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182985
+    m_Localized: 'Window: Derisi yanmaktan kapkara olmuş, bir de dişlerini sökmüşler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182986
+    m_Localized: 'Window: Tüm gündür orada duruyor belli ki.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182987
+    m_Localized: 'Window: Bu karşındaki eserin bir tehdit olduğunu düşünmeden edemiyorsun. O soluk tenli, ürkünç Ziyaretçi''nin bir eseri...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182988
+    m_Localized: 'Window: FEMA yetkilileri, katliam mahalini inceliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182989
+    m_Localized: 'Window: Ölü askerlerin teçhizatını başkası çalmasın diye topluyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182990
+    m_Localized: 'Window: O soluk tenli Ziyaretçi''nin bir grup silahlı askere karşı koyabileceğini düşünmemişler herhâlde.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182991
+    m_Localized: 'Window: Artık daha çok ceset torbası var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576140324864
+    m_Localized: 'TV: İyi günler, hava tahminleriyle sizlerleyiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102080
+    m_Localized: 'TV: Bölgeye yaklaşan sıcak hava dalgasının geçmişteki tüm sıcaklık rekorlarını kırması bekleniyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102081
+    m_Localized: 'TV: Meteoroloji uzmanları, önümüzdeki hafta sıcaklıkların daha da artacağını söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102082
+    m_Localized: 'TV: Güneş faaliyetinin artmasıyla birlikte UV ışınlarının da güçlenmesi bekleniyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102083
+    m_Localized: 'TV: Güvenliğiniz için lütfen güneşlenmekten kaçının sayın seyirciler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102084
+    m_Localized: 'TV: Yüksek sıcaklıklar, güneş çarpması ihtimalini de artırabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102085
+    m_Localized: 'TV: Bu noktada güneşe çıkmanın sağlığı olumsuz etkileyip etkilemeyeceği henüz bilinmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102086
+    m_Localized: 'TV: Ancak üçüncü derece yanıklardan kaçınmak adına lütfen dışarı çıkmaktan sakının.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102087
+    m_Localized: 'TV: Maalesef ki faktörü fark etmeksizin hiçbir güneş kremi sizi koruyamaz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102089
+    m_Localized: 'TV: Balerinlerin tüm zarafeti karşında; sahnede kuvvetli ama bir o kadar da narin sıçramalarla hareket ediyorlar...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102090
+    m_Localized: 'TV: Ne kadar şık bir dans olsa da insanı kaygılandırıyor desek yeridir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102091
+    m_Localized: 'TV: Odağımızı gerçeklikten uzaklaştırmaya çalışıyormuş gibi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102092
+    m_Localized: 'TV: Keşke birileri bir açıklama yapsa...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102093
+    m_Localized: 'TV: Eskiden ev alışverişi yapmak için markete uğramak gerekirdi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102094
+    m_Localized: 'TV: Ancak KapımaGelsin sayesinde tek yapmanız gereken, telefondan bizi aramak!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102095
+    m_Localized: 'TV: {0} numarasını arayın, siparişiniz bir gün içinde kapınıza gelsin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102096
+    m_Localized: 'TV: KapımaGelsin: Lezzet ve konfor, hemen kapınızda.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102097
+    m_Localized: 'TV: Raporlarımız, şehrin sokaklarında soluk tenli bir psikopat görüldüğünü söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102098
+    m_Localized: 'TV: Polisin görgü tanıklarından aldığı bilgilere göre tüm kurbanların tek bir ortak özelliği var... Yalnız olmaları.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102099
+    m_Localized: 'TV: Psikopatın buna ek olarak cinayetini işlemeden önce kurbanlarıyla konuşmaktan hoşlandığı bildirildi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102100
+    m_Localized: 'TV: Polis, görgü tanıklarının anlattıklarından yola çıkarak bir robot resim hazırladı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102101
+    m_Localized: 'TV: Zanlı; soluk tenli, orta yaşlı ve siyah saçlı. Uzun ve zayıf olmakla birlikte üzerinde yalnızca pantolon var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102102
+    m_Localized: 'TV: Bazen başka insanların derisini giydiğine dair iddialar da var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102103
+    m_Localized: 'TV: Bu bilgi henüz teyit edilmedi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102104
+    m_Localized: 'TV: Bu adamı görürseniz kapınızı açmayın. Ona yalnız olduğunuzu söylemeyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102106
+    m_Localized: 'TV: Telaşe, dehşet, acı... Hepsi Ziyaretçiler yüzünden...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102107
+    m_Localized: 'TV: Fakat tam bu zor zamanımızda, yardım çığlıklarımız duyulmaz gibi gelirken...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102108
+    m_Localized: 'TV: FEMA, YARDIMIMIZA KOŞTU!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102109
+    m_Localized: 'TV: Federal Emniyet ve Müdahale Ajansı''nın cesur kahramanları, bizi Ziyaretçi istilasından koruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102110
+    m_Localized: 'TV: Ajans, şu ana dek yirmi yedi binden fazla tehlikeli anomaliyi tespit etti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102111
+    m_Localized: 'TV: Unutmayın: Etrafınızda olup biten şüpheli faaliyetleri ajansa bildirerek onlara yardımcı olabilirsiniz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102112
+    m_Localized: 'TV: Şüphelilere FEMA''yı ziyaret etmeleri için bir ihbar kâğıdı vermeniz yeterli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102113
+    m_Localized: 'TV: Eğer siz de Ziyaretçi olduğunuzu düşünmeye başlarsanız {0} numarasından bize ulaşın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102114
+    m_Localized: 'TV: Siz bize yardımcı olun, biz de size. FEMA''yı destekleyin ve Ziyaretçilere karşı mücadelede bize katılın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102115
+    m_Localized: 'TV: FEMA nedir? Neden kuruldu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102116
+    m_Localized: 'TV: Federal Emniyet ve Müdahale Ajansı, mevcut krizi yönetmek amacıyla kurulan özel bir hükûmet branşıdır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102117
+    m_Localized: 'TV: Ziyaretçi istilası nedeniyle ortaya çıkan sorunları çözmeyi amaçlamaktadırlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102118
+    m_Localized: 'TV: Ajansın tam olarak ne üzerine çalıştığı bilinmiyor...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102119
+    m_Localized: 'TV: ...ama kaderimizi güvenilir ellere bıraktığımız aşikâr.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102120
+    m_Localized: 'TV: Ajansta birçok farklı alandan birçok uzman var. Aralarında meşhur bilim insanları ve araştırmacılar bile mevcut.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102121
+    m_Localized: 'TV: Bir FEMA çalışanı kapınızı çalarsa onlarla iş birliği yapmanızı ve talimatlarını dinlemenizi öneriyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102122
+    m_Localized: 'TV: Unutmayın: Siz bize yardımcı olun, biz de size. FEMA''yı destekleyin ve Ziyaretçilere karşı mücadelede bize katılın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102123
+    m_Localized: 'TV: FEMA, bu Ziyaretçi istilasının bulaşıcı olabileceğini veya henüz açıklanmamış biyolojik bir tehdit oluşturabileceğini öne sürüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102124
+    m_Localized: 'TV: Dolayısıyla Ziyaretçi olma potansiyeli olan herkesi rapor etmeniz ve bir an önce onları izole etmeniz son derece önemlidir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102125
+    m_Localized: 'TV: Ziyaretçileri hemen karantina bölgesine teslim edemiyorsanız da onlara FEMA''yı ziyaret etmeleri için özel bir ihbar verin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102126
+    m_Localized: 'TV: Bir sonraki toplama sırasında FEMA çalışanları elinde bu kâğıt olan herkesi götürüp muayene edecektir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102132
+    m_Localized: 'TV: İyi günler, güncel haberlerle birlikte karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102133
+    m_Localized: 'TV: Ziyaretçi vakaları giderek arttığı için FEMA yeni önlemler aldığını duyurdu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102134
+    m_Localized: 'TV: Bugünden itibaren tüm kentsel alanlar karantinaya alınacaktır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102135
+    m_Localized: 'TV: Şehrin dışına veya yakındaki köylere seyahat etmek kesinlikle yasaktır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102136
+    m_Localized: 'TV: Lütfen evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102137
+    m_Localized: 'TV: FEMA, buna ek olarak yeni bir Ziyaretçi tespit yöntemi keşfettiğini açıkladı:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102138
+    m_Localized: 'TV: Aura fotoğrafları.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102139
+    m_Localized: 'TV: Şüphelinin fotoğrafında karanlık lekelerin çıkması, Ziyaretçi olabileceğini gösteriyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102140
+    m_Localized: 'TV: Şimdilik bu kadar. Lütfen panik yapmayın ve gündüz vakti evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102141
+    m_Localized: 'TV: Sırada bilim var!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102142
+    m_Localized: 'TV: Bu Ziyaretçiler neyin nesi? Hayalet mi? Yer altından çıkan yaratıklar mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102143
+    m_Localized: 'TV: Hayır. Bu ne bir bilim kurgu romanı ne de ucuz gazete başlığı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102144
+    m_Localized: 'TV: Bu, bizim yeni gerçekliğimiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102145
+    m_Localized: 'TV: Ziyaretçilerin gerçek kökenine dair birçok söylenti var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102146
+    m_Localized: 'TV: Bunlar uzaylı mı? Yürüyen ölüler mi? Felaketle sonuçlanan bir laboratuvar deneyi mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102147
+    m_Localized: 'TV: Yetkililer, tüm bunların asılsız iddialar olduğunu söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102148
+    m_Localized: 'TV: Araştırmalar, Ziyaretçilerin henüz tespit edilemeyen biyolojik bir unsurla temasa giren insanlar olduğunu gösteriyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102149
+    m_Localized: 'TV: Bu unsurun nasıl bulaştığı henüz kesin değil ve FEMA, herkesin Ziyaretçi belirtilerine karşı tetikte olmasını temenni ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102150
+    m_Localized: 'TV: Bu hastalığın size de bulaşmış olabileceğinden veya Ziyaretçi olduğunuzdan şüpheleniyorsanız bu numaradan FEMA''ya ulaşın:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102151
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102159
+    m_Localized: 'TV: Bir acil durum yayınıyla karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102160
+    m_Localized: 'TV: Durmak bilmeyen alevler, ormanlık alanlara yayılmaya başladı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102161
+    m_Localized: 'TV: Uzmanlar, buna sıra dışı güneş faaliyeti yoğunluğunun sebep olduğunu öne sürüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102162
+    m_Localized: 'TV: Felaketin boyutu henüz netleşmese de yangınları kontrol altına almak üzere yakın şehirlerden itfaiye ekipleri seferber edildi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296384
+    m_Localized: 'TV: Lütfen panik yapmayın ve gündüz vakti evinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296392
+    m_Localized: 'TV: Son dakika haberleriyle programımızı bölüyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296393
+    m_Localized: 'TV: Komşu şehirde sivil itaatsizlik yaşandığına dair raporlar aldık.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296394
+    m_Localized: 'TV: FEMA kuvvetleri, devam eden sorunlardan ötürü bölgeyi karantinaya aldı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296395
+    m_Localized: 'TV: Lütfen evlerinizi terk etmeyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296396
+    m_Localized: 'TV: Olduğunuz yerde kalın ve yetkililerden talimat bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296397
+    m_Localized: 'TV: FEMA''ya destek olmayı ve Ziyaretçilere karşı mücadeleye katkı sağlamayı da unutmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296398
+    m_Localized: 'TV: Şimdilik bu kadar. Sırada reklamlar var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296517
+    m_Localized: 'Window: Komşunun evini çayırın ötesinde görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296518
+    m_Localized: 'Window: İçeride hiç ışık yanmıyor. Belli ki uyuyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296519
+    m_Localized: 'Window: Sokakta birkaç ayyaş yatıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296520
+    m_Localized: 'Window: Yer hem soğuk hem de sert ama nasıl olduysa uyuyakalmışlar. Herhâlde keyifleri yerinde.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296521
+    m_Localized: 'Window: Uzağa baktığında şu anda seni ziyaret eden komşunun evini görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296522
+    m_Localized: 'Window: Evin ışıkları açık, belli ki ailesi onun eve dönmesini bekliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296523
+    m_Localized: 'Window: Dışarıda ölüm sessizliği var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296524
+    m_Localized: 'Window: Kimse yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296525
+    m_Localized: 'Window: Ayyaşlar bile evden çıkmamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296526
+    m_Localized: 'Window: Bir şeyden mi korkuyorlar ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296527
+    m_Localized: 'Window: Komşunu ve kızını pencereden görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296528
+    m_Localized: 'Window: Neşeli neşeli oyun oynuyorlar, olan bitene aldırmamaya çalışıyorlar...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296529
+    m_Localized: 'Window: Bir geceliğine olsa dahi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296530
+    m_Localized: 'Window: Ölüm kadar soluk bir adam yolun kenarında dikiliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296531
+    m_Localized: 'Window: Derisinde tuhaf kıvrımlar var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296532
+    m_Localized: 'Window: Sanki eti vücuduna ait değil, orantısız duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296533
+    m_Localized: 'Window: Gözlerini bu mesafeden göremesen de bakışlarını üstünde hissediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296534
+    m_Localized: 'Window: Aniden derin bir korku içini kaplıyor ve dehşet verici Ziyaretçi''nin evine uğramaması için dua ediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296535
+    m_Localized: 'Window: Komşunun evinin önünde birkaç FEMA çalışanı duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296536
+    m_Localized: 'Window: Ne konuşuyorlar acaba?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296537
+    m_Localized: 'Window: Belki de topraktan numune alıyorlardır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296538
+    m_Localized: 'Window: Üs kuracak yer arıyor da olabilirler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296539
+    m_Localized: 'Window: Pencereden baktığında bir grup silahlı asker görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296540
+    m_Localized: 'Window: FEMA çalışanlarını korumak için şehirden gönderilen küçük bir mangaymış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296541
+    m_Localized: 'Window: Üstsüz gezen soluk tenli adam hakkında konuştuklarını ucundan duyuyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296542
+    m_Localized: 'Window: Belki de o korkunç Ziyaretçi''nin peşine düşeceklerdir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296543
+    m_Localized: 'Window: Komşunun yakın zamanda beyaza boyadığı evinin duvarları artık kapkara.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296544
+    m_Localized: 'Window: Sanki yangın hâlâ devam ediyor gibi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296545
+    m_Localized: 'Window: Acaba birisi kundakladı mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296546
+    m_Localized: 'Window: Peki komşunun ailesine ne oldu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296547
+    m_Localized: 'Window: Hayatta kalan var mı ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296548
+    m_Localized: 'Window: Aklında binbir soru var. Olan bitenleri kavrayamıyorsun ve kendini çaresiz hissediyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296549
+    m_Localized: 'Window: Dün gelen asker mangası... Hepsi öldürülmüş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296550
+    m_Localized: 'Window: Katliam yaşanmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296551
+    m_Localized: 'Window: Sokağın her yerinde ceset var, birinin kafası ortalarda yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296552
+    m_Localized: 'Window: Acaba o soluk tenli yabancı mı öldürdü hepsini?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296553
+    m_Localized: 'Window: Komşunun evinin kalıntılarını görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296554
+    m_Localized: 'Window: Daha dün orada mutlu bir aile yaşıyordu. Şimdi geriye sadece kof bir kabuk kaldı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296555
+    m_Localized: 'Window: İçine garip bir his doğuyor. Bunun olacağı belliydi sanki...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296556
+    m_Localized: 'Window: ...Sanki ölüm, bu evi kısa vakitte ele geçirecekti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296557
+    m_Localized: 'Window: Kazığa geçirilmiş bir insan kafatası görüyorsun. Kaskı hâlâ duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296558
+    m_Localized: 'Window: Derisi yanmaktan kapkara olmuş, bir de dişlerini sökmüşler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296559
+    m_Localized: 'Window: Tüm gündür orada duruyor belli ki.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296560
+    m_Localized: 'Window: Bu karşındaki eserin bir tehdit olduğunu düşünmeden edemiyorsun. O soluk tenli, ürkünç Ziyaretçi''nin bir eseri...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296561
+    m_Localized: 'Window: FEMA yetkilileri, katliam mahalini inceliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296562
+    m_Localized: 'Window: Ölü askerlerin teçhizatını başkası çalmasın diye topluyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296563
+    m_Localized: 'Window: O soluk tenli Ziyaretçi''nin bir grup silahlı askere karşı koyabileceğini düşünmemişler herhâlde.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296564
+    m_Localized: 'Window: Artık daha çok ceset torbası var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296565
+    m_Localized: 'Window: Yaralı kocasının başında ağlayan bir kadın görüyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296566
+    m_Localized: 'Window: Adam yaşıyor mu, ölü mü belli değil.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296567
+    m_Localized: 'Window: Gözü yaşlı bir şekilde kocasının ağır bedenini silah ateşinden uzağa sürüklüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296568
+    m_Localized: 'Window: Aklında tek bir düşünce var: Belli ki işler daha da kötüye gidecek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296569
+    m_Localized: 'Window: Çayırdan geçen yol, kaçmaya çalışanların cesetleriyle kaplı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296570
+    m_Localized: 'Window: Yakında da cesetlerin sorumlusu duruyor. Bir FEMA yetkilisi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296571
+    m_Localized: 'Window: Elindeki tüfeğin namlusundan duman yükseliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296572
+    m_Localized: 'Window: Panik olan halk, yakındaki evlere koşuşturuyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296573
+    m_Localized: 'Window: Çaresizce sığınak arıyor, kapılara gümbür gümbür vuruyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296574
+    m_Localized: 'Window: Ancak kimse onları evine almaya niyetli değil.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296575
+    m_Localized: 'Window: Evinden kovulan bir grup insan, komşunun harap olan evinin etrafında toplanmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296576
+    m_Localized: 'Window: Şok içindeler, kendi aralarında fısıldaşıyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296577
+    m_Localized: 'Window: Herhâlde oraya sığınmak istiyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296578
+    m_Localized: 'Window: Gerçi dünyada yaşanan tüm bu olaylardan saklanılacak herhangi bir yer kaldı mı ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296579
+    m_Localized: 'Window: Yolun başında elinde taarruz tüfeği taşıyan bir adam duruyor. Belli ki kafayı yemiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296580
+    m_Localized: 'Window: Montu cesetlerden kopardığı dişlerle, gözlerle ve kim bilir başka nelerle kaplı. Buradan pek anlaşılmıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296581
+    m_Localized: 'Window: Acaba öldürdüğü insanlardan hatıra olarak mı topluyor? Ya kendini savunmak için değil, zevk için insanları vuruyorsa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296582
+    m_Localized: 'Window: İki durumda da senin düşmanın olmadığını umuyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296583
+    m_Localized: 'Window: Bir adam, kendini direkten asmış. Üzerinde "Her şeyimi aldınız." yazan bir tabela var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296584
+    m_Localized: 'Window: Acaba soyuldu mu? Yoksa FEMA, ailesini mi götürdü?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296585
+    m_Localized: 'Window: Kafanda sorular yankılanıyor fakat bir cevap bulamıyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296586
+    m_Localized: 'Window: FEMA''nın evinden kovduğu bir grup, komşunun evinin kalıntılarını sığınak edinmiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296587
+    m_Localized: 'Window: Geriye pek bir şey kalmamış olsa da bodrum katı hâlâ sağlam.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296588
+    m_Localized: 'Window: Az da olsa güvenlik sağlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296589
+    m_Localized: 'Window: Peki daha ne kadar saklanabilecekler?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296590
+    m_Localized: 'Window: Sokakta başıboş köpekler geziniyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296591
+    m_Localized: 'Window: Gövdelerinde yüzeysel yanıkların izleri var, açlıktan bir deri bir kemik kalmışlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296592
+    m_Localized: 'Window: Evinin içinde onlardan pek korkmuyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296593
+    m_Localized: 'Window: Fakat şu an dışarı çıkmamanın daha iyi olacağını düşünmeden edemiyorsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296594
+    m_Localized: 'Window: Eşya taşıyan küçük insan grupları yakınlarda toplanıyor. FEMA yetkilileri duymasın diye aralarında fısıldaşıyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296595
+    m_Localized: 'Window: Belli ki karantina bölgelerinden gelmişler, eski ev sahiplerinin evlerine taşınıyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296596
+    m_Localized: 'Window: Asılı adam, artık korkunç bir "Hoş geldiniz" tabelasını andırıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296597
+    m_Localized: 'Window: Silahlı bir Ziyaretçi avcısı, bir grup insanı rehin almış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296598
+    m_Localized: 'Window: Muhtemelen şans eseri onlarla karşılaşmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296599
+    m_Localized: 'Window: Arada bağırış çağırış sesleri geliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296600
+    m_Localized: 'Window: Bu dünyada kim hayatta kalabilir ki? Bu elemanlar kalmayacak, orası kesin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296601
+    m_Localized: 'Window: FEMA yetkilileri, ölü köpeklerin başında duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296602
+    m_Localized: 'Window: Birisi elindeki kâğıda bir şeyler yazıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296603
+    m_Localized: 'Window: Bir grup insan, bir sürü aç hayvanı durdurabilir mi ki? Zor...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296604
+    m_Localized: 'Window: İki FEMA yetkilisi direğin dibinde duruyor, asılı adamı seyrediyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296605
+    m_Localized: 'Window: Bölgenin cazibe merkezini sonunda keşfetmişler belli ki.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296606
+    m_Localized: 'Window: Ne yaptığını hiç bilmeyen dedektiflere benziyorlar. Merdivensiz nasıl tırmandığını düşünüyorlar muhtemelen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296607
+    m_Localized: 'Window: Grup tamamen ölmüş. Aç köpekler, kalıntılarını kemiriyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296608
+    m_Localized: 'Window: Cesetlerin yanında mermi kovanları var. Belli ki avcı hepsini vurup hepsinden yadigâr toplamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296609
+    m_Localized: 'Window: Dünya iyice kafayı sıyırdı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296610
+    m_Localized: 'Window: Kültistler, koca bir odun yığını hazırlamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296611
+    m_Localized: 'Window: Acaba bir şeyi mi yakacaklar?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296612
+    m_Localized: 'Window: Bu çılgın planları yakında belli olur muhtemelen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296613
+    m_Localized: 'Window: Peki o zamana dek daha kaç masum kişi onlar yüzünden hayatını kaybedecek?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296614
+    m_Localized: 'Window: Yolda deli bir adam duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296615
+    m_Localized: 'Window: Elinde benzin bidonu ve molotof kokteyli var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296616
+    m_Localized: 'Window: Acaba köyü mü yakacak?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296617
+    m_Localized: 'Window: Bu insanların karantinada olduğunu bilmiyor mu ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296618
+    m_Localized: 'Window: Komşunun bodrumunda saklananların cesetleri, öğlen güneşinin altında kavrulmuş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296619
+    m_Localized: 'Window: Cesetleri kemiren köpekler kaçmış. Acaba korktular mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296620
+    m_Localized: 'Window: Ya FEMA''dan değil, daha beter bir şeyden kaçtılarsa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296621
+    m_Localized: 'Window: Kültistler, ateşin etrafında kendilerini bağlamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296622
+    m_Localized: 'Window: Kendilerini kurban etmeye mi karar verdiler?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296623
+    m_Localized: 'Window: Hiç hoş bir düşünce değil.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296624
+    m_Localized: 'Window: İnsanlar ölüm korkusundan tüm mantığını yitirdi. Akla alınmaz şeyleri yapmaya gönüllüler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296625
+    m_Localized: 'Window: Daha sadece birkaç hafta oldu, kim bilir önümüzdeki günlerde ne tür deliliklere tanıklık edeceksin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296626
+    m_Localized: 'Window: Yanan evler gökyüzünü aydınlatıyor. Uzaklarda çığlık sesleri yankılanıyor...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296627
+    m_Localized: 'Window: Bunun suçlusu o delidir kesin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490688
+    m_Localized: 'Window: Acaba sırada senin evin mi var? Yarın mı gelecek? Önümüzdeki hafta mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490689
+    m_Localized: 'Window: Muhtemelen önünde sonunda o manyakla yüz yüze karşılaşacaksın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490690
+    m_Localized: 'Window: Yanan cesetlerden geriye hiçbir şey kalmamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490691
+    m_Localized: 'Window: Yalnızca tuhaf, şekilsiz bir kütle... Bulamaç gibi duruyor hatta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490692
+    m_Localized: 'Window: Acaba bir şey eti de kemiği de eritip kalıntıları yuttu mu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490693
+    m_Localized: 'Window: Duaların bir işe yarıyorsa o yaratık gölgelerde kalacaktır. Böyle bir mahluku görüp aklına mukayyet olamamak seni korkutuyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490694
+    m_Localized: 'Window: Yanan cesetlerin etrafında FEMA yetkilileri duruyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490695
+    m_Localized: 'Window: Kültistlerin ölümünü belgeliyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490696
+    m_Localized: 'Window: Yüzleri, sanki ölmeden önce korkunç bir şey görmüşler gibi dehşet içerisinde kalmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490697
+    m_Localized: 'Window: Yakınlardaki tüm evler harap olmuş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490698
+    m_Localized: 'Window: Sadece senin evin hâlâ ayakta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490699
+    m_Localized: 'Window: Seni o manyaktan koruyabilecek başka kimse kalmamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490700
+    m_Localized: 'Window: Sırada ne varsa elbet seni de etkileyecek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490701
+    m_Localized: Burası merkez. Karantina bölgesinin durumunu kontrol edin. Kod 51. Saat 03.00'te patlama raporu verildi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490702
+    m_Localized: 'Burası 32-8 birimi. Kod 60: Sivil zayiat yüksek, ölen yetkililer var...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490703
+    m_Localized: Burası 28-8. Kod 451. Ceset imha için alev ekibi gönderin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490704
+    m_Localized: Onaylandı. Kod 984 başlatılıyor. Şehir, soruşturma sonuçlanana kadar karantinaya alınacak. Takviye kuvvetler yola çıktı.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490705
+    m_Localized: Bunu duyabilen varsa... şehrin eteklerinden uzak dursun.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490706
+    m_Localized: FEMA yetkilileri, çıkmaya çalışan herkesi vuruyor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490707
+    m_Localized: NE OLUP BİTTİĞİNİ BİLMİYORUM. SADECE GİTMEK İSTİYORUM.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490708
+    m_Localized: LÜTFEN BİRİSİ YA...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490709
+    m_Localized: Bunlar, karantina bölgesine saldıranlar değildi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490710
+    m_Localized: Bizzat kendi gözlerimle gördüm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490711
+    m_Localized: İnsan değildi...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490712
+    m_Localized: Öhöm... Evinden kovulanlardan biri olarak konuşuyorum.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490713
+    m_Localized: FEMA sizi de evinizden kovduysa yanmış bir evin bodrumunda saklanıyoruz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490714
+    m_Localized: Münzevinin evine yakın.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490715
+    m_Localized: Pek yiyeceğimiz kalmadı. Daha fazlasını bulamazsak aç kalacağız.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490716
+    m_Localized: Yedek yiyeceğiniz varsa lütfen bize yardım edin. Çok ihtiyacımız var.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490717
+    m_Localized: Dinleyen herkese sesleniyorum...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490718
+    m_Localized: FEMA, bilgi sızmasın diye sinyalleri bozmaya çalışıyor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490719
+    m_Localized: Şehirde olup biteni gizlemek istiyorlar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490720
+    m_Localized: Her şeyi o karantina bölgesindekileri öldüren psikopatın üstüne atmak istiyorlar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490721
+    m_Localized: Hâlâ şehirdeyseniz... bir an ön.. ce kaçın. Gü... venli değil.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490722
+    m_Localized: FEMA devriyelerinden ka... çının. Sizi öl... dürmeye ça... lışacaklar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490723
+    m_Localized: HÂLÂ ŞAN... SINIZ VAR... KEN KAÇ... IN...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490724
+    m_Localized: Cesetleri ya... mamalılardı. Bu y... den...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490725
+    m_Localized: Kalıntıları... salardı bu... ye gelmez...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490726
+    m_Localized: Burası mer... Tüm F... MA birimlerine...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490727
+    m_Localized: Yeni y... ön... ge... Kod 451 y... ri... Kod 955 geç... or.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490728
+    m_Localized: Cesetleri ya... ayın. Onun yerine li... gulayın.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490729
+    m_Localized: Tekrar e... um, Kod 451... Ortadaki teh... i kaldırmak için ce... kmak...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490730
+    m_Localized: Bu... sı 18-8. Kontrol alt... lamadık.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490731
+    m_Localized: Şehir sınırla... an çıktı. Derhâl des... k gönd... in.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490732
+    m_Localized: Derhâl yar... gerek. Tek başımıza o... edemeyiz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490733
+    m_Localized: 'Phone: Selam komşu. Sesini duymak güzel.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490734
+    m_Localized: 'Phone: Evine misafir alabildin mi hiç?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490735
+    m_Localized: 'Phone: Almadıysan da yavaştan alsan iyi edersin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490736
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490737
+    m_Localized: 'Phone: Başka sorun var mıydı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490738
+    m_Localized: Sen de misafir alıyor musun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490739
+    m_Localized: Birinin Ziyaretçi olduğunu anlamak için kaç belirti lazım?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490740
+    m_Localized: Yiyecek sorununu nasıl çözdün?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490741
+    m_Localized: Görüşürüz (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490742
+    m_Localized: 'Phone: Evet, almak zorundayım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490743
+    m_Localized: 'Phone: Kızım pek sevmiyor ama elim kolum bağlı. Başka yolu yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490744
+    m_Localized: 'Phone: "Beni dışarı götür," diye yalvarıp duruyor. Evdeki yabancılardan kaçmak için.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490745
+    m_Localized: 'Phone: Gündüz vakti çıkamadığımız için geceleri yürüyüşe çıkıyoruz. Biliyorum, tehlikeli ama... elimden bir şey gelmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490746
+    m_Localized: 'Phone: Bilseydim böyle olacağını...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490747
+    m_Localized: 'Phone: Kaç belirti gerektiğini kimse bilmiyor açıkçası.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490748
+    m_Localized: 'Phone: Hemen bir karar vermemek en iyisi ama bana sorarsan.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490749
+    m_Localized: 'Phone: Bu mevzu patlamadan önce dişçiye gitmiş de olabilir örneğin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490750
+    m_Localized: 'Phone: Şansım yaver gitti, önceden zula hazırlamıştım. Yanlış hatırlamıyorsam sen de hazırlamıştın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490751
+    m_Localized: 'Phone: Özel bir ihtiyacın varsa KapımaBırak''tan sipariş verebilirsin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490752
+    m_Localized: 'Phone: Şimdi numarasını hatırlamıyorum ama ya televizyondan ya da radyodaki reklamlardan öğrenirsin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490753
+    m_Localized: 'Phone: Kendine dikkat et.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490754
+    m_Localized: 'Phone: Selam komşu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490755
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490756
+    m_Localized: 'Phone: Dışarıda olanları gördün mü? Gençleri öldürmüşler...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490757
+    m_Localized: 'Phone: Sokaklar çok da tehlikeli değil sanıyordum... Yanılmışım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490758
+    m_Localized: 'Phone: Kızım yine inat etmişti, ben de onu oynamaya çıkarmıştım. Bir sorun olmaz sandım... ama sonra cesetleri gördüm.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490759
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490760
+    m_Localized: 'Phone: Bir daha asla kızımın hayatını riske atamam.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490761
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490762
+    m_Localized: 'Phone: Ona bir şey olursa kendimi nasıl affedebilirim ki? O benim her şeyim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490763
+    m_Localized: Kızın iyi mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490764
+    m_Localized: Gençleri kim öldürdü?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490765
+    m_Localized: Dikkatli ol (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490766
+    m_Localized: Bilmiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490767
+    m_Localized: 'Phone: Otların arasından görememiştir diye umuyordum...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490768
+    m_Localized: 'Phone: ...ama eve gelince yerde birinin yüzünü gördüğünü söyledi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490769
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490770
+    m_Localized: 'Phone: Onu hayal gördüğüne ikna etmeye çalışıyorum ama... pek de işe yaramıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490771
+    m_Localized: 'Phone: O uzun, soluk tenli yaratık yaptı bunu kesin. Ben sadece içeride kalan insanları öldürdüğünü sanıyordum...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490772
+    m_Localized: 'Phone: Kontrolüm altında sanmıştım. O silüeti görürsem hemen eve koşarız diye düşünmüştüm.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490773
+    m_Localized: 'Phone: Kızımın başka neler görebileceğini düşünememişim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490774
+    m_Localized: 'Phone: Sağ olasın, sen de dikkat et.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490775
+    m_Localized: 'Phone: Selam komşu. Aradığın iyi oldu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490776
+    m_Localized: 'Phone: Hâlâ kendime gelemedim açıkçası.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490777
+    m_Localized: 'Phone: Yok cinayet, yok askerler, yok FEMA...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490778
+    m_Localized: 'Phone: Daha geçen gece kapıma dayandılar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490779
+    m_Localized: 'Phone: Bizde kalanlar hakkında sorular sordular, birkaç not aldılar ve...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490780
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490781
+    m_Localized: 'Phone: Evimde kalan birini alıp götürdüler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490782
+    m_Localized: Nereye götürdüler?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490783
+    m_Localized: Neyse ki kızını almamışlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490784
+    m_Localized: Kim ki bu FEMA?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490785
+    m_Localized: Dikkat et kendine (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490786
+    m_Localized: 'Phone: İnan bilmiyorum. "Test" içinmiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490787
+    m_Localized: 'Phone: Bunca asker, bunca yetkili bir şeyleri çözebilir sanmıştım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490788
+    m_Localized: 'Phone: Bize yardım edeceklerini sanmam benim hatam.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490789
+    m_Localized: 'Phone: Bir daha asla buna izin vermem.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490790
+    m_Localized: 'Phone: Cesedimi çiğnemeleri lazım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490791
+    m_Localized: 'Phone: O şerefsizler kızıma ellerini sürerlerse parmaklarını tek tek kırarım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490792
+    m_Localized: 'Phone: Bilmiyorum. Kimse pek bir şey bilmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490793
+    m_Localized: 'Phone: Birden belirdiler, her şey kontrol altındaymış gibi davranmaya başladılar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490794
+    m_Localized: 'Phone: Bu belirtileri nereden anlıyorlar ki? Her insanda olan şeyler bunlar!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490795
+    m_Localized: 'Phone: Bana sorarsan bize gerçeği söylemiyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490796
+    m_Localized: 'Phone: Sağ olasın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490797
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490798
+    m_Localized: 'Phone: Bu kadar ilginç bir dönemde yaşayacağımı hiç düşünmezdim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490799
+    m_Localized: 'Phone: Yok güneş, yok Ziyaretçiler... Şimdi de başımıza FEMA çıktı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490800
+    m_Localized: 'Phone: Çok soru var ama bir tane bile cevap yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490801
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490802
+    m_Localized: 'Phone: Komşum, senden bir şey istemem lazım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490803
+    m_Localized: 'Phone: Bana bir şey olursa kızıma bakacağına söz ver.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490804
+    m_Localized: Söz veriyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490805
+    m_Localized: Söz veremem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490806
+    m_Localized: 'Phone: Sağ ol komşum. Sana güvenebileceğimi biliyordum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490807
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490808
+    m_Localized: 'Phone: Pekâlâ, kapatmam lazım. Kendine dikkat et.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490809
+    m_Localized: 'Phone: Ama...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490810
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490811
+    m_Localized: 'Phone: Ona bakmaz mısın sahiden? Küçücük çocuk yalnız başına mı kalsın?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490812
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490813
+    m_Localized: 'Phone: Ah be, kapatmam lazım...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490814
+    m_Localized: 'Phone: Görüşürüz komşu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490843
+    m_Localized: 'Phone: Merhaba. Sizi müsait bir Ziyaretçi Çıkarma Uzmanı''na bağlayacağız, lütfen hattan ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490844
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490845
+    m_Localized: 'Phone: Merhaba? Kiminle görüşüyorum?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490846
+    m_Localized: Nasıl yani?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490847
+    m_Localized: Kim olduğumu niye merak ediyorsun ki?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490848
+    m_Localized: 'Phone: Anlaşıldı... Sorumu cevaplamadın... Demek ki Ziyaretçi ruhu içinde kök salmış bile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490849
+    m_Localized: 'Phone: Dikkatli dinle, fazla vaktin kalmamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490850
+    m_Localized: 'Phone: Söyle bakalım, mutfakta hiç bir dilim ekmek bıraktığın oldu mu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490851
+    m_Localized: Olmadı, niye olsun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490852
+    m_Localized: Bir dilim ekmek mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490853
+    m_Localized: 'Phone: İçindeki Ziyaretçi ruhunu bedeninden kovmam için.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490854
+    m_Localized: 'Phone: Neyse, boş ver. Dikkatli dinle, fazla vaktin kalmamış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490855
+    m_Localized: 'Phone: Söyle bakalım, mutfakta hiç bir dilim ekmek bıraktığın oldu mu?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490856
+    m_Localized: Olmadı, niye olsun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490857
+    m_Localized: Bir dilim ekmek mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490858
+    m_Localized: 'Phone: Ha, anlaşıldı... Evinin ruhuyla pek iyi anlaşmıyorsunuz belli ki.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490859
+    m_Localized: 'Phone: Ziyaretçi ruhu bu yüzden sana musallat olmuş ama merak etme. Bir şekilde çözeriz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490860
+    m_Localized: 'Phone: Evinde masaüstü bilgisayar var mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490861
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490862
+    m_Localized: Masaüstü ne?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490863
+    m_Localized: 'Phone: Ev ruhuna hiç adak sunmuyor musun?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490864
+    m_Localized: 'Phone: Ziyaretçi ruhu sana musallat olur tabii.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490865
+    m_Localized: 'Phone: Evinde masaüstü bilgisayar var mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490866
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490867
+    m_Localized: Masaüstü ne?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490868
+    m_Localized: 'Phone: Pekâlâ. Alt+F4 planı yattı belli ki...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490869
+    m_Localized: 'Phone: Hım... Peki, mantar tüketiyor musun?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490870
+    m_Localized: Ara sıra kombuça içiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490871
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490872
+    m_Localized: 'Phone: Hiç mi duymadın bilgisayarı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490873
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490874
+    m_Localized: 'Phone: Neyse, boş ver. Devam edelim...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490875
+    m_Localized: Ara sıra kombuça içiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490876
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490877
+    m_Localized: 'Phone: Olamaz...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490878
+    m_Localized: 'Phone: Hemen durman gerek! Kombuça kadim bir kötülüktür, bu bilinir...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490879
+    m_Localized: 'Phone: İçinde emeç bitmesine sebep olur. Böylelikle ruhlar seni kukla gibi oynatır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490880
+    m_Localized: 'Phone: Anılarına ulaşırsa neler yapar kim bilir...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490881
+    m_Localized: 'Phone: Hafızan sonsuza dek silinebilir veyahut anıların tekrar tekrar baştan oynatılır ve her seferinde verdiğin kararlar değişir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490882
+    m_Localized: 'Phone: En kötüsü de kontrol edildiğinin farkında bile olmazsın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490883
+    m_Localized: 'Phone: Pekâlâ, son bir soru. Evinde hiç kan döküldü mü?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490884
+    m_Localized: Evet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490885
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490886
+    m_Localized: 'Phone: Öyleyse başlama! Kombuça bile içme! Yoksa ruhlar hemen bedenini ele geçirir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490887
+    m_Localized: 'Phone: Tek bir yudum bile alırsan içinde emeç yetişmeye başlayabilir. Sonra bedenini kukla gibi oynatır!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490888
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490889
+    m_Localized: 'Phone: Hof, bunu çözmek hiç kolay olmayacak...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490890
+    m_Localized: Evet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490891
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490892
+    m_Localized: 'Phone: Ha, şimdi anlaşıldı...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490893
+    m_Localized: 'Phone: Ziyaretçi ruhu değil, Hayalet ruhu. Ölü bir insanın ruhu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490894
+    m_Localized: 'Phone: Maalesef hayaletler benim uzmanlık alanıma girmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490895
+    m_Localized: 'Phone: Bunun için üfürükçü bulman lazım. Sana yardımcı olur.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490896
+    m_Localized: 'Phone: Maalesef elimden bu kadarı geliyor. Elveda.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490897
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490898
+    m_Localized: 'Phone: Ziyaretçi Çıkarma seansı tamamlandı. Hizmetimizden faydalandığınız için teşekkürler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490899
+    m_Localized: 'Phone: Bağlı olan banka hesabınızdan danışma ücreti alınacaktır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490900
+    m_Localized: Ücret mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490901
+    m_Localized: Aramak ücretsiz sanmıştım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490902
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490903
+    m_Localized: 'Phone: Tüh... Korkarım ki bu tür ruhları ben tespit edemiyorum. Dolayısıyla elimden bir şey gelmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490904
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490905
+    m_Localized: 'Phone: Maalesef ki seansı burada bitirmek durumundayım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490906
+    m_Localized: 'Phone: Umarım şansın yaver gider.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490907
+    m_Localized: 'Phone: Ziyaretçi Çıkarma seansı tamamlandı. Hizmetimizden faydalandığınız için teşekkürler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490908
+    m_Localized: 'Phone: Bağlı olan banka hesabınızdan danışma ücreti alınacaktır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490909
+    m_Localized: Ücret mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490910
+    m_Localized: Aramak ücretsiz sanmıştım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490911
+    m_Localized: 'Phone: Evet, ücret. Ziyaretçi Çıkarma Uzmanlarımızın da evine ekmek götürmesi lazım ya hani.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490912
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490913
+    m_Localized: 'Phone: Bugünkü deneyiminizi nasıl değerlendirirsiniz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490914
+    m_Localized: On numara beş yıldız!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684992
+    m_Localized: On üzerinden bir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684993
+    m_Localized: Siktirin gidin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684994
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684995
+    m_Localized: 'Phone: Reklamı dikkatlice izleseydiniz dipnotlarda ilk aramadan bir danışma ücreti alınacağını görürdünüz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684996
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684997
+    m_Localized: 'Phone: Bugünkü deneyiminizi nasıl değerlendirirsiniz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684998
+    m_Localized: On numara beş yıldız!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169684999
+    m_Localized: On üzerinden bir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685000
+    m_Localized: Siktirin gidin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685001
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685002
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576169685003
+    m_Localized: 'Phone: Teşekkür ederiz. Geri bildiriminiz bizim için son derece değerlidir. Hoşça kalın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995815
+    m_Localized: 'Phone: Ölüm''e inanır mısın?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995816
+    m_Localized: Kocan seni aramamı istedi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995817
+    m_Localized: Vaazı atla, kocan için aradım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995818
+    m_Localized: 'Phone: Ne? Kocam mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995819
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995820
+    m_Localized: 'Phone: Yaptığı onca şeyden sonra... adını bile duymak istemiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995821
+    m_Localized: Senden her şey için özür dilemek istedi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995822
+    m_Localized: Sana "siktir git" dememi söyledi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995823
+    m_Localized: 'Phone: Kocam mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995824
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995825
+    m_Localized: 'Phone: Yaptığı onca şeyden sonra... adını bile duymak istemiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995826
+    m_Localized: Senden her şey için özür dilemek istedi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995827
+    m_Localized: Sana "siktir git" dememi söyledi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995828
+    m_Localized: 'Phone: Ne, ne?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995829
+    m_Localized: 'Phone: Ciddi misin sen? Yine mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995830
+    m_Localized: 'Phone: Onun yerine özür dileyen ilk kişi sen değilsin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995831
+    m_Localized: 'Phone: Niye beni bizzat arayamıyor, biliyor musun?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995832
+    m_Localized: 'Phone: Yaptıklarıyla yüzleşemiyor da ondan. Kabullenemiyor herif.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995833
+    m_Localized: 'Phone: Her şeyi düzeltip geçmişteki hâlimize dönmek istiyor ama yok öyle bir dünya. Kimse zamanı geri alamaz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995834
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995835
+    m_Localized: 'Phone: Ben artık daha iyiyim. Beni anlayan insanlarlayım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995836
+    m_Localized: Bir avuç manyağın seni anladığını mı sanıyorsun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995837
+    m_Localized: Niye külte girdin ki?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995838
+    m_Localized: Öyle diyorsan öyledir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995839
+    m_Localized: 'Phone: Sen istediğin kadar hakaret et, onlar benim ailem.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995840
+    m_Localized: 'Phone: Aynı şeye inanıyoruz. Ölüm''ün yakında geleceğini biliyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995841
+    m_Localized: 'Phone: Bu bize acı değil, huzur getirecek. Bunu da biliyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995842
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995843
+    m_Localized: 'Phone: Kendine dikkat et.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995844
+    m_Localized: 'Phone: Yakında neler olacağına dair hepimiz hemfikiriz. Ölüm gelecek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995845
+    m_Localized: 'Phone: Sana garip gelebilir ama Ölüm keder değil, neşe getirir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995846
+    m_Localized: 'Phone: Huzurlu bir neşe, acıların sonu... Eminim sen de çok zorluk çekmişsindir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995847
+    m_Localized: 'Phone: Belki sen de bir gün anlarsın ve bize katılırsın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995848
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995849
+    m_Localized: 'Phone: Kendine dikkat et.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995850
+    m_Localized: 'Phone: Anlayışın için teşekkürler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995851
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995852
+    m_Localized: 'Phone: Kendine dikkat et.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995853
+    m_Localized: 'Phone: Alo? Kiminle görüşüyorum?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995854
+    m_Localized: Merhaba. Numaranı kardeşinden aldım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995855
+    m_Localized: Kardeşin için arıyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995856
+    m_Localized: 'Phone: Ne kardeşi ya? Benim kardeşim yok ki...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995857
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995858
+    m_Localized: 'Phone: Ha, babamın oğlunu mu diyorsun?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995859
+    m_Localized: 'Phone: Dur bir saniye, sen kimsin ki? Senin yanında ne arıyor o?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995860
+    m_Localized: Anne babası kaybolmuş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995861
+    m_Localized: Benim evimde sığınıyor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995862
+    m_Localized: 'Phone: Kayıp mı olmuş? Nasıl yani?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995863
+    m_Localized: 'Phone: Yoksa?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995864
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995866
+    m_Localized: Bilmiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995867
+    m_Localized: Muhtemelen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995868
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995869
+    m_Localized: 'Phone: Sığınıyor derken? Anne babasıyla yaşamıyor muydu o?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995870
+    m_Localized: 'Phone: Dur bir saniye. Yoksa...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995871
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995873
+    m_Localized: Bilmiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995874
+    m_Localized: Muhtemelen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995875
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995876
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995878
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995879
+    m_Localized: 'Phone: Onu evime alabilirim. Ona bunu söyle. Evimin adresini biliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995880
+    m_Localized: 'Phone: Ona yardımcı olduğun için teşekkür ederim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995881
+    m_Localized: 'Phone: Hoşça kal.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995939
+    m_Localized: 'Phone: Bir elmanın yapısı: Üst elma, mantar diyarı ve kâğıt.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995941
+    m_Localized: 'Phone: Sandım ki o ka... Büyüle...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995943
+    m_Localized: 'Phone: Yalnızca gözyaşı ve vedanın kederi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995944
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995946
+    m_Localized: 'Phone: Sen niye cevap vermiyorsun? Ölmek istiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995947
+    m_Localized: 'Phone: (Kapattı. Bu konuşmanın böyle gideceğini düşünmüyordun...)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995994
+    m_Localized: Odaların arasında pencere var. Eskiden insanlar bir odanın lambası diğerini de aydınlatsın da fatura az gelsin diye böyle yaparmış.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995995
+    m_Localized: Sonra kapattılar ama sadece bir tarafını.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995996
+    m_Localized: Olmaz, artık o tarafa bakmıyorum ben.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995997
+    m_Localized: Komodinin yanında yatmayı hiç sevmiyorum. Kötü anılarım depreşiyor...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995998
+    m_Localized: Niye köşeye koymadık onu da bilmiyorum. Ben hep köşede olur sanıyordum.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995999
+    m_Localized: Gerçi... babamın mantıklı bir iş yaptığını hiç görmedim zaten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996000
+    m_Localized: Toto. Çocukken başka hiç oyuncağım yoktu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996001
+    m_Localized: Otlara vurmak için kullandığımız dalları saymazsak.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996002
+    m_Localized: Heh. Ninem dolapların hepsini tabak çanakla doldurdu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996003
+    m_Localized: Kaliteli olanları sadece bayramlarda çıkarırdık. Şimdi bir boka yaradıkları yok.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996004
+    m_Localized: Açıkçası yalnız olmak daha iyi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996005
+    m_Localized: Evde kendi kendine konuşabiliyorsun, kimse de bir şey demiyor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996007
+    m_Localized: Çok sinir bozucu. Keşke millet beni bir salsa artık...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996008
+    m_Localized: Ölmeden önce "Ben gidince bu kutuyu açmak isteyip istemediğine kendin karar verirsin," demişti.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996009
+    m_Localized: On beş senedir düşünüyorum, hâlâ karar veremedim.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295719612416
+    m_Localized: Yalnız mı hissediyorsunuz?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583936
+    m_Localized: Kaygılı mısınız? Konuşacak kimseniz yok mu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583938
+    m_Localized: 891-533 numarasından bizi arayın, sizi bir konuşma partnerine bağlayalım.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583939
+    m_Localized: Kızın iyi mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583940
+    m_Localized: Gençleri kim öldürdü?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583941
+    m_Localized: Dikkatli ol (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583942
+    m_Localized: Kızın iyi mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583943
+    m_Localized: Gençleri kim öldürdü?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583944
+    m_Localized: Dikkatli ol (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583945
+    m_Localized: Misafirini nereye götürdüler?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583946
+    m_Localized: Neyse ki kızını almamışlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583947
+    m_Localized: FEMA kim yahu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583948
+    m_Localized: Kendine iyi bak (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583949
+    m_Localized: Misafirini nereye götürdüler?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583950
+    m_Localized: Neyse ki kızını almamışlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583951
+    m_Localized: FEMA kim yahu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583952
+    m_Localized: Kendine iyi bak (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583953
+    m_Localized: Misafirini nereye götürdüler?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583954
+    m_Localized: Neyse ki kızını almamışlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583955
+    m_Localized: FEMA kim yahu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583956
+    m_Localized: Kendine iyi bak (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583974
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583975
+    m_Localized: 'Phone: Peki, öyleyse hiç mantar tükettiniz mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583976
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583977
+    m_Localized: 'Phone: Pekâlâ, son bir soru. Evinde hiç kan döküldü mü?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583978
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583979
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778241
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778242
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778244
+    m_Localized: Merhaba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778245
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778246
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778247
+    m_Localized: 'Phone: Merhaba...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778248
+    m_Localized: Merhaba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778249
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778250
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778251
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778252
+    m_Localized: 'Phone: Kimse yok galiba...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778253
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778254
+    m_Localized: 'Phone: Konuşacak birine ihtiyacım var. Çok şey yaşadım...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778255
+    m_Localized: 'Phone: Dostlarıma ve tanıdıklarıma ulaşmaya çalıştım ama kimse cevap vermedi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778256
+    m_Localized: 'Phone: Sonra bu Telefon Ruleti olayını öğrendim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778263
+    m_Localized: 'Phone: Hım...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778264
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778265
+    m_Localized: 'Phone: Tabii, anlıyorum. Kusura bakma, rahatsız ettim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778266
+    m_Localized: 'Phone: Hoşça kal.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778270
+    m_Localized: Nerede yaşıyorsun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778272
+    m_Localized: 'Phone: Evimden uzağım maalesef.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778282
+    m_Localized: Evini özlüyor musun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778290
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778293
+    m_Localized: Niye yalnız başına gittin?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778294
+    m_Localized: Evini özlüyor musun?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778295
+    m_Localized: 'Phone: Aslında bunu ben istemedim...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778296
+    m_Localized: 'Phone: En iyi arkadaşım da benimle gelmek istedi ama...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778297
+    m_Localized: 'Phone: Evrakları eksikti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778298
+    m_Localized: 'Phone: Kıyamet kopunca da evraklarını tamamlayacak fırsatı olmadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778299
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778301
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778305
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778311
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778313
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972546
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972548
+    m_Localized: Babamdan... nefret ederdim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972549
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972551
+    m_Localized: Bir gün oğlu olmaktan vazgeçtim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972555
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972558
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972562
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972564
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972566
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972569
+    m_Localized: 'Phone: Merhaba...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972570
+    m_Localized: Merhaba, kızınızla görüşebilir miyim?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972572
+    m_Localized: 'Phone: Ne? Bir sorun mu var?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972573
+    m_Localized: Arkadaşı onunla oynamak istiyor da
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972575
+    m_Localized: 'Phone: Yoksa... O da mı Ziyaretçi''ydi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972576
+    m_Localized: O da derken?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972577
+    m_Localized: Hayır, bir grup manyak gereksiz yere adamı yaktı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972578
+    m_Localized: 'Phone: Kimse gereksiz yere başkasını yakmaz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972579
+    m_Localized: 'Phone: Demek o da Ziyaretçi''ydi... Bizim minik kızımız gibi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972580
+    m_Localized: 'Phone: Onu da yaktılar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972581
+    m_Localized: 'Phone: Anaokulundayken hem de.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972582
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972583
+    m_Localized: 'Phone: Başta çok ağladım. İntihar edecektim. Onsuz yaşayamazdım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972584
+    m_Localized: 'Phone: Sonra kocam sayesinde kendime geldim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972585
+    m_Localized: 'Phone: Siz de iyileşeceksiniz. O minik kız da aynı şekilde.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972586
+    m_Localized: 'Phone: Anlatabildim mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972587
+    m_Localized: 'Phone: Her şeyin bir sebebi var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972588
+    m_Localized: 'Phone: Babasını yaktılarsa... yazgısında bu varmış demek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972589
+    m_Localized: 'Phone: Ağlayarak hiçbir şeyi çözemeyiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972590
+    m_Localized: 'Phone: Lütfen bunu ona söyleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972591
+    m_Localized: 'Phone: Hoşça kalın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972592
+    m_Localized: 'Phone: Kızımız...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972593
+    m_Localized: 'Phone: Öldü...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972594
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972595
+    m_Localized: 'Phone: Onu...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972596
+    m_Localized: 'Phone: Öldürmek zorunda kaldık...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972597
+    m_Localized: Ne?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972598
+    m_Localized: (Kapat)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972599
+    m_Localized: 'Phone: Öldürdük onu. İnanın bana, başka seçeneğimiz yoktu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972601
+    m_Localized: Kendi evladınızı mı öldürdünüz?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972602
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972603
+    m_Localized: 'Phone: Beni yargılamayın!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972605
+    m_Localized: Hay sikeyim...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972606
+    m_Localized: Anlıyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972607
+    m_Localized: 'Phone: Ziyaretçi''ydi o, duydunuz mu beni?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972608
+    m_Localized: 'Phone: Tüm belirtiler bunu gösteriyordu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972609
+    m_Localized: 'Phone: Ben onun içini dışını bilirdim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972610
+    m_Localized: 'Phone: Bu yüzden belirtileri hemen gördüm.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972611
+    m_Localized: 'Phone: Her şey uyuyordu...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972612
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972613
+    m_Localized: 'Phone: Kocama söyler söylemez...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972614
+    m_Localized: 'Phone: Ziyaretçi''nin icabına baktı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972615
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972616
+    m_Localized: 'Phone: Başta kocamı öldürmek istedim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972617
+    m_Localized: 'Phone: Sonra fark ettim ki... öldürdüğü şey, bizim kızımız değilmiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972618
+    m_Localized: 'Phone: Kocam sayesinde bunu anladım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972620
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972621
+    m_Localized: 'Phone: Kusura bakmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972622
+    m_Localized: 'Phone: Bir daha bu numarayı aramayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972623
+    m_Localized: 'Phone: Lütfen...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972624
+    m_Localized: 'Phone: Ben niye sana hesap veriyorum ki?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972625
+    m_Localized: 'Phone: Cehenneme kadar yolun var!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972626
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972627
+    m_Localized: 'Phone: Onu hâlâ özlüyorum...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972628
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096192
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096193
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096194
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750888
+    m_Localized: 'TV: Bu sıcaklık kimi durdurur?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750889
+    m_Localized: 'TV: EnerJeka, insanı yaşamla doldurur!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750890
+    m_Localized: 'TV: İnanılmaz! Susuzluğunuzu sudan daha hızlı gideren ve sudan daha lezzetli bir içecek mi? Bu nasıl olabilir?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21953804750891
+    m_Localized: 'TV: Şimdi KapımaGelsin''de. Sipariş için: XXX-XXX-XXXX.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415503822848
+    m_Localized: 'TV: Bir zamanlar bir barajın yakınında yaşayan iki kardeş varmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182976
+    m_Localized: 'TV: Su durmadan baraja çarpar, yaz akşamı insanın hararetini alan içecekler gibi köpürürmüş...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182977
+    m_Localized: 'TV: Bu iki kardeş, büyüdükleri zaman çocukluklarından ilham alarak Bober Bira Fabrikası''nı açmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182978
+    m_Localized: 'TV: Tabii, o günden sonra Bober Černý hem evde hem de barlarda en çok içilen biralardan biri hâline geldi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17738415533182979
+    m_Localized: 'TV: Bober Černý bira: İyi için, bol bol için.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102088
+    m_Localized: 'TV: Sırada yine hava durumu var ama önce sponsorlarımızın mesajını dinleyelim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102105
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102127
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102128
+    m_Localized: 'TV: Bu sıcaklık kimi durdurur?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102129
+    m_Localized: 'TV: EnerJeka, insanı yaşamla doldurur!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102130
+    m_Localized: 'TV: İnanılmaz! Susuzluğunuzu sudan daha hızlı gideren ve sudan daha lezzetli bir içecek mi? Bu nasıl olabilir?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102131
+    m_Localized: 'TV: Şimdi KapımaGelsin''de. Sipariş için: {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102152
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler. Haberler kısa bir aradan sonra devam edecek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102153
+    m_Localized: 'TV: Ziyaretçileri tespit etmek her geçen gün zorlaşıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102154
+    m_Localized: 'TV: Belirtiler işimize yarıyor... ama sizi asla yanıltmayacak bir yöntem aradığınız oldu mu hiç?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102155
+    m_Localized: 'TV: Karşınızda yepyeni, devrimsel, auralara duyarlı fotoğraf makinemiz!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102156
+    m_Localized: 'TV: Ruhun enerjisini ifşa eder ve böylelikle insanları Ziyaretçilerden kolaylıkla ayırt edebilmenizi sağlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102157
+    m_Localized: 'TV: Kullanması gayet basit: Şüphelinin fotoğrafını çekin. Eğer kara leke görüyorsanız karşınızda bir Ziyaretçi var!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576157102158
+    m_Localized: 'TV: Ücretsiz başlangıç setini almak için bizi arayın: {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296385
+    m_Localized: 'TV: Şimdilik bu kadar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296386
+    m_Localized: 'TV: Sırada sponsorlarımızdan bir mesaj var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296387
+    m_Localized: 'TV: Bir zamanlar bir barajın yakınında yaşayan iki kardeş varmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296388
+    m_Localized: 'TV: Su durmadan baraja çarpar, yaz akşamı insanın hararetini alan içecekler gibi köpürürmüş...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296389
+    m_Localized: 'TV: Bu iki kardeş, büyüdükleri zaman çocukluklarından ilham alarak Bober Bira Fabrikası''nı açmış.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296390
+    m_Localized: 'TV: Tabii, o günden sonra Bober Černý hem evde hem de barlarda en çok içilen biralardan biri hâline geldi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296391
+    m_Localized: 'TV: Bober Černý bira: İyi için, bol bol için.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296399
+    m_Localized: 'TV: Sıkı çalışanlar da ara vermeyi hak eder.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296400
+    m_Localized: 'TV: Margoro Sigara''yla derin bir nefes alın ve geriye yaslanın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296401
+    m_Localized: 'TV: Margoro. Adam gibi adamların sigarası.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296402
+    m_Localized: 'TV: (Uyarı: Şirket, akciğerlerinizde veya yaşam sürenizde oluşabilecek herhangi bir hasardan sorumlu tutulamaz.)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296403
+    m_Localized: 'TV: İyi günler, en güncel haberlerle karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296404
+    m_Localized: 'TV: Sizler için önemli bir güncellememiz var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296405
+    m_Localized: 'TV: Şehirde yakın zamanda yaşanan bir hadiseye dair yeni bilgiler aldık.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296406
+    m_Localized: 'TV: Şehirdeki karantina bölgelerinden birisi, silahlı bir şahsın saldırısına uğradı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296407
+    m_Localized: 'TV: Zanlının amacı henüz belli değil ve herhangi bir suç ortağı olup olmadığı bilinmiyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296408
+    m_Localized: 'TV: Buna ek olarak henüz kimliği belirlenmemiş birkaç şahıs karantina bölgesinden kaçtı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296409
+    m_Localized: 'TV: Sessizlik, ölümün elçisidir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296410
+    m_Localized: 'TV: Ruhu tüketen menfur bir sükûnet...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296411
+    m_Localized: 'TV: Ancak bu boşluktan daha beter olan tek şey... çınlamadır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296412
+    m_Localized: 'TV: Giderek sesi artan, ırak bir cenaze çanı...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296413
+    m_Localized: 'TV: Çan, hepimiz için çalar; kulaklarımızı bitmek bilmeyen bir gürültüyle doldurur.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296414
+    m_Localized: 'TV: Kulak pasının altına gömülen pis düşünceler...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296415
+    m_Localized: 'TV: Ziyaretçilerin yuva edindiği cehennem gibi bir sığınak...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296416
+    m_Localized: 'TV: Yapış yapış kirlerin arasında saklanan ruhlar...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296417
+    m_Localized: 'TV: Cerumen inundans. Cerumen inundans. Cerumen inundans.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296418
+    m_Localized: 'TV: Bugün yaşanan hadisenin ardından farklı teoriler ortaya çıktı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296419
+    m_Localized: 'TV: Bazı görgü tanıkları tek bir zanlıdan bahsederken diğerleri kukuleta giyen silahlı bir grup gördüğünü iddia ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296420
+    m_Localized: 'TV: Ancak şehrin yaşayacağı en büyük zorluk, henüz kapımıza dayanmadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296421
+    m_Localized: 'TV: Alınan karantina önlemlerinden ötürü çevre bölgelerdeki ceset imha faaliyetleri geçici olarak durduruldu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296422
+    m_Localized: 'TV: Ancak konut teftişleri sürdürülecek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296423
+    m_Localized: 'TV: Ölüleri yakma fırsatınız varsa en kısa sürede yakın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296424
+    m_Localized: 'TV: Böyle bir imkânınız yoksa biriktirdiğiniz kalıntıları teslim etmeden önce lütfen durumun çözüme kavuşmasını bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296425
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler. Bizi izlemeye devam edin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296426
+    m_Localized: 'TV: İyi günler, güncel haberlerle birlikte karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296427
+    m_Localized: 'TV: FEMA, şu anda karantina bölgesi saldırısının mağdurlarına destek sunuyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296428
+    m_Localized: 'TV: Mevcut tesislerin kontenjanı dolduğu için ajans yeni bir karar aldı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296429
+    m_Localized: 'TV: Tahliye edilen sakinler, geçici olarak şehrin dışındaki binalarda kalacaklar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296430
+    m_Localized: 'TV: Neyse ki yerel ev sahipleri FEMA ile iş birliği yapmayı kabul etti ve bu sakinlere sığınak sundu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296431
+    m_Localized: 'TV: Bu haberin yapıldığı tarih itibarıyla karantina bölgesi firarilerinin yalnızca bir kısmı yakalanabildi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296432
+    m_Localized: 'TV: Ancak iyi bir haberimiz de var: Yetkililer, bugün yeni bir belirti tespit etti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296433
+    m_Localized: 'TV: Kanayan diş etleri.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296434
+    m_Localized: 'TV: Bu belirtiyi gösteren bir şahıs kapınızı çalarsa asla onunla iletişime geçmeyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296435
+    m_Localized: 'TV: FEMA devriyesinin kapınıza gelmesini bekleyin ve şüpheliyi yetkililere bildirin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296436
+    m_Localized: 'TV: Ve unutmayın: Olduğunuz yerde kalın ve yetkililerden talimat bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296437
+    m_Localized: 'TV: Şimdilik bu kadar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296438
+    m_Localized: 'TV: Sırada tehlikeli bir külte dair özel bir haberimiz var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296439
+    m_Localized: 'TV: Ziyaretçiler, aramızda saklanmakla kalmıyor. Bizzat düşüncelerimizi işgal ediyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296440
+    m_Localized: 'TV: Birçok şehirde organize kült faaliyetleri başladığına dair haber alındı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296441
+    m_Localized: 'TV: Bu kültlere karşı birçok farklı suçlama var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296442
+    m_Localized: 'TV: Kurban törenleri, bilinmeyen bir tanrıya tapmak ve hatta Ziyaretçilerle bizzat bağlantıları olması bunların arasında.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296443
+    m_Localized: 'TV: Bu yeni raporlara göre kült, FEMA''ya karşı geldiğini dile getiriyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296444
+    m_Localized: 'TV: Zararsız bir din olarak başlayan faaliyet, doğrudan yetkililere karşı gelmekle sonuçlandı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296445
+    m_Localized: 'TV: Bazı uzmanlar, bu kültün şehirde yaşanan cinayetlerden sorumlu olabileceğine inanıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296446
+    m_Localized: 'TV: Seyircilerimizin bu sözde "yeni inananlarla" temasa geçmekten kaçınmasını temenni ediyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296447
+    m_Localized: 'TV: Kültistlere yardım ve yataklık etmek, tutuklanma ve cezai kovuşturmayla sonuçlanabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296448
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler. Bizi izlemeye devam edin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296449
+    m_Localized: 'TV: İyi günler, en güncel haberlerle karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296450
+    m_Localized: 'TV: Şehirdeki durum giderek normale dönüyor ancak bazı firariler henüz yakalanamadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296451
+    m_Localized: 'TV: Ceset imha faaliyetleri tekrar başladı ancak karşımızda yeni zorluklar var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296452
+    m_Localized: 'TV: Aldığımız son raporlara göre sokaklarda başıboş köpekler gezinmeye başladı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296453
+    m_Localized: 'TV: FEMA, bu tehdidi ortadan kaldırmak için bir ekip seferber etti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296454
+    m_Localized: 'TV: Ajans, bunun yanı sıra tehlikeli olabilecek şahısları tespit edebileceğiniz yeni bir belirti duyurdu:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296455
+    m_Localized: 'TV: Ciltte tahriş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296456
+    m_Localized: 'TV: Saldırıya dair soruşturma hâlâ devam ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296457
+    m_Localized: 'TV: Saldırganın yalnız olup olmadığı hâlâ tespit edilemedi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296458
+    m_Localized: 'TV: Ancak FEMA''nın bu saldırıyı ve süregelen Ziyaretçi tehdidini kontrol altına alacağı şüphesizdir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296459
+    m_Localized: 'TV: Ziyaretçileri tespit etmeye dair herhangi bir sorunuz varsa FEMA hattına bu numaradan ulaşabilirsiniz:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296460
+    m_Localized: 'TV: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296461
+    m_Localized: 'TV: Her zamanki gibi olduğunuz yerde kalın ve yetkililerden talimat bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296462
+    m_Localized: 'TV: Şimdilik bu kadar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296463
+    m_Localized: 'TV: Sıradaki haber, ekvatorda yaşanan hadiseler hakkında.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296464
+    m_Localized: 'TV: Bu gece ekvator bölgesinde bulunan ülkelerden rahatsız edici raporlar alındı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296465
+    m_Localized: 'TV: Orman yangınları, aşırı sıcaklar ve kuraklıklar birden fazla ulusu etkiliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296466
+    m_Localized: 'TV: Son raporlara göre yükselen sıcaklıklar yüzünden zemine temas etmek dahi üçüncü derece yanıklara yol açabiliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296467
+    m_Localized: 'TV: Ölenlerin sayısı henüz bilinmese de an itibarıyla bir tahliye harekâtı mümkün değil.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296468
+    m_Localized: 'TV: Hükûmetimiz, etkilenen bölgelerdeki yetkililerle henüz iletişim kuramadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296469
+    m_Localized: 'TV: Ancak şartlar el verdikçe FEMA yetkilileri afet yardımı için bu ülkelere konuşlandırılacaktır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296470
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler. Gelişmeler için bizi izlemeye devam edin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296471
+    m_Localized: 'TV: İyi günler, en güncel haberlerle karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296472
+    m_Localized: 'TV: Şehirdeki durum henüz çözülemedi ve karantina hâlen devam ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296473
+    m_Localized: 'TV: Ancak karşımızda yeni bir tehdit var. Kült üyeleri, şehrin dış bölgelerinde görüldü.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296474
+    m_Localized: 'TV: Açık alevlerle bir tören yapmaya hazırlandıkları iddia ediliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296475
+    m_Localized: 'TV: FEMA, bu grubun yakın zamanda karantina bölgelerinde gerçekleşen saldırılarda doğrudan parmağı olduğunu öne sürüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296476
+    m_Localized: 'TV: Maalesef ki süregelen zorluklardan ötürü ne FEMA ne de ordu bu külte karşı mücadele verebilecek bir timi seferber edebiliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296477
+    m_Localized: 'TV: Bir kült üyesi kapınıza gelirse en kısa sürede {0} numarasından FEMA hattını arayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296478
+    m_Localized: 'TV: Ajans, bu zorlu dönemde bizlere yardımcı olabilmek için yeni bir belirti duyurdu:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296479
+    m_Localized: 'TV: Koltuk altı mantarı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296480
+    m_Localized: 'TV: Her zamanki gibi olduğunuz yerde kalın ve yetkililerden talimat bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296481
+    m_Localized: 'TV: Şimdilik bu kadar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296482
+    m_Localized: 'TV: Sıradaki haber, kutuplardaki durum üzerine.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296483
+    m_Localized: 'TV: Güneş bir kez daha yapacağını yapıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296484
+    m_Localized: 'TV: Bilim insanları, küresel iklime dair endişe verici tahminler paylaştı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296485
+    m_Localized: 'TV: Mevcut sıcaklık dalgası etkisini sürdürürse kutuplarda eriyen buz kütleleri, felaket seviyesinde sellere sebep olabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296486
+    m_Localized: 'TV: Araştırmacılar bu sıra dışı iklim koşullarının sebebini incelemeye devam ediyor fakat henüz bir yanıt bulunamadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296487
+    m_Localized: 'TV: Şimdilik bu kadar sayın seyirciler. Güncel haberler için takipte kalın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296488
+    m_Localized: 'TV: Son dakika.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296489
+    m_Localized: 'TV: Şehirdeki durum giderek istikrarsızlaşıyor ve felaket giderek büyüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296490
+    m_Localized: 'TV: Buzulların erimesiyle birlikte deniz seviyeleri endişe verici bir hızla yükseliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296491
+    m_Localized: 'TV: Dünyanın dört bir yanındaki kıyı bölgeleri, birçok büyük şehir dâhil olmak üzere sel tehdidi altında.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296492
+    m_Localized: 'TV: Bunun yanı sıra radyoaktif materyallerle kontamine olduğu bilinen birden fazla göl buharlaşmaya başladı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296493
+    m_Localized: 'TV: Dünyanın dört bir yanındaki bilim insanları, bunun zehirli yağmurlara yol açabileceğini söylüyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296494
+    m_Localized: 'TV: Yıldırım sesi duyarsanız bir an önce bir sığınak bulun ve maruziyetten kaçının.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296495
+    m_Localized: 'TV: Maalesef ki şehirdeki karantina devam ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296496
+    m_Localized: 'TV: FEMA henüz tüm firarileri yakalayamadı ancak Ziyaretçileri tespit edebilmemiz için yeni bir belirti duyurdu:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296497
+    m_Localized: 'TV: Göz bebeklerinin seri hareketi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296498
+    m_Localized: 'TV: ACİL DURUM YAYINI'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296499
+    m_Localized: 'TV: Stüdyomuz saldırı riski altında olduğu için bu haberi yarıda kesmek durumundayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296500
+    m_Localized: 'TV: Ziyaretçileri nasıl tespit edebileceğinize dair herhangi bir sorunuz olursa {0} numarasından FEMA hattını arayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296501
+    m_Localized: 'TV: Yayın sona erdi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296502
+    m_Localized: 'TV: Son dakika.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296503
+    m_Localized: 'TV: FEMA, az önce birçok devlet memurunu tutukladı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296504
+    m_Localized: 'TV: Ajans, idari yetkililerin bir kısmının Ziyaretçi olduğunu tespit ettiğini bildirdi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296505
+    m_Localized: 'TV: Bakanlık artık faaliyet gösteremediği için FEMA geçici hükûmet olarak görev alacak.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296506
+    m_Localized: 'TV: Buna ek olarak...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296507
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296508
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296509
+    m_Localized: 'TV: Affınızı rica ediyorum...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296510
+    m_Localized: 'TV: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296511
+    m_Localized: 'TV: FEMA''dan son dakika haberi:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296512
+    m_Localized: 'TV: Firariler, karantina altındaki şehre sızdı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296513
+    m_Localized: 'TV: Tekrar ediyoruz, firariler şehre sızdı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296514
+    m_Localized: 'TV: Pencerelerinize barikat kurun. Kapılarınızı kilitleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296515
+    m_Localized: 'TV: Talimatları beklemeye devam edin ve evlerinizden ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576161296516
+    m_Localized: 'TV: Yayın sona erdi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490815
+    m_Localized: 'Phone: Merhaba, KapımaGelsin sipariş hattı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490816
+    m_Localized: 'Phone: Sipariş vermek mi istemiştiniz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490817
+    m_Localized: İki kutu EnerJeka isteyecektim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490818
+    m_Localized: Bir kutu kahve isteyecektim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490819
+    m_Localized: Vazgeçtim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490820
+    m_Localized: 'Phone: Kusura bakmayın, siparişinizi alamıyoruz. Sistemimizde sizin adresinizden önceden verilmiş bir sipariş görüyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490821
+    m_Localized: 'Phone: Beklenmedik bir yoğunluk nedeniyle günlük verilebilecek sipariş sayımızı geçici olarak sınırlandırmak zorunda kaldık.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490822
+    m_Localized: 'Phone: Sipariş vermek istiyorsanız lütfen başka bir gün arayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490823
+    m_Localized: 'Phone: Teşekkür ederiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490824
+    m_Localized: 'Phone: Teşekkür ederiz. Siparişiniz alındı. Yarın gece kapınıza teslim edilecektir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490825
+    m_Localized: 'Phone: Teşekkür ederiz. Siparişiniz alındı. Yarın gece kapınıza teslim edilecektir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490826
+    m_Localized: 'Phone: Merhaba. Federal Emniyet ve Müdahale Ajansı tıbbi birimi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490827
+    m_Localized: 'Phone: Artık resmî Ziyaretçi tespit prosedürleri hakkında danışmanlık hizmeti sunuyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490829
+    m_Localized: 'Phone: Lütfen sorunuzu sorun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490830
+    m_Localized: Diş belirtisi hakkında bilmem gereken ne var?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490831
+    m_Localized: Tırnak belirtisi hakkında bilmem gereken ne var?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490832
+    m_Localized: Göz belirtisi hakkında bilmem gereken ne var?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490833
+    m_Localized: Teşekkür ederim, bu kadardı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490834
+    m_Localized: 'Phone: Testlerin hatalı sonuç vermemesi için tütün ürünlerinden kaçınılmasını öneririz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490835
+    m_Localized: 'Phone: Sigara içmek dişleri etkileyebilir ve dolayısıyla yanlış sonuçlara yol açabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490836
+    m_Localized: 'Phone: Ziyaretçi durumunu uygun bir şekilde tespit edebilmek için lütfen muayeneden önce ellerinizi yıkamayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490837
+    m_Localized: 'Phone: Su, yüzeyde kalan artıkları temizleyebilir ve dolayısıyla hatalara ve/veya yanlış sonuçlara yol açabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490838
+    m_Localized: 'Phone: Testten doğru sonuçlar almak için lütfen kahve ve/veya kafeinli içeceklerden kaçının.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490839
+    m_Localized: 'Phone: Kafein hem uykusuzluğa hem de gerginliğe yol açtığı için gözlerin kızarmasına da sebep olabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490840
+    m_Localized: 'Phone: Federal Emniyet ve Müdahale Ajansı''na destek olduğunuz için teşekkür ederiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490841
+    m_Localized: 'Phone: Katkılarınız, mevcut durumu çözme çabalarımıza yardımcı olacaktır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40147576165490842
+    m_Localized: 'Phone: Siz bize yardımcı olun, biz de size. Doğru testler yaparak insanlığın geleceğini korumuş oluyorsunuz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610048
+    m_Localized: 'TV: Şimdilik bu kadar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610049
+    m_Localized: 'TV: Şimdi KapımaGelsin''de. Bizi {0} numarasından arayabilirsiniz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610050
+    m_Localized: 'TV: İyi günler, güncel haberlerle birlikte karşınızdayız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610051
+    m_Localized: 'TV: Ziyaretçiler, ortaya çıkan yangınlara rağmen ulusumuza dehşet saçmaya devam ediyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610052
+    m_Localized: 'TV: FEMA, halkın Ziyaretçilere karşı kendini savunmasına yardımcı olmak için yeni bir belirti duyurdu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41583254820610053
+    m_Localized: 'TV: Sıradaki haber, Ziyaretçilerin doğasına dair bir bilgilendirme olacak.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113249218560
+    m_Localized: 'Phone: Ha? Alo, buyur?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995776
+    m_Localized: Bu numarayı bana karın verdi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995777
+    m_Localized: Karının yardıma ihtiyacı var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995778
+    m_Localized: 'Phone: He? Ee?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995779
+    m_Localized: Çocukları kaybetmiş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995780
+    m_Localized: Yanındalar mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995781
+    m_Localized: 'Phone: Hep aynı terane. Düzeltmek de hep bana kalıyor tabii.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995782
+    m_Localized: 'Phone: Neymiş efendim, "Ama ben çok yoruldum"muş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995783
+    m_Localized: 'Phone: Biz alıştık bunlara.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995784
+    m_Localized: Çocukları kaybetmiş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995785
+    m_Localized: Yanındalar mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995786
+    m_Localized: 'Phone: Şaşırmadım. Kendi çocuklarını bile umursamıyor ki kadın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995787
+    m_Localized: 'Phone: Her şeyi çözmek de bana kaldı tabii.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995788
+    m_Localized: 'Phone: Kayınvalidemin evine baktın mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995789
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995790
+    m_Localized: Gelip onu alsan olmaz mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995791
+    m_Localized: 'Phone: Yok. Onun yanında değiller mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995792
+    m_Localized: 'Phone: Hiç şaşırmadım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995793
+    m_Localized: 'Phone: Kayınvalidemin evine baktın mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995794
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995795
+    m_Localized: Gelip onu alsan olmaz mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995796
+    m_Localized: 'Phone: He.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995797
+    m_Localized: 'Phone: Oradalardır belki.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995798
+    m_Localized: 'Phone: Ben gitmem.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995799
+    m_Localized: 'Phone: O gidiyorsa gitsin. "Çocuğunu kaybeden anne mi olur?" diye sor bir bakalım ona.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995800
+    m_Localized: Siz bunu aranızda halledin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995801
+    m_Localized: Neyse, hâlâ yaşadığını söylerim ona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995802
+    m_Localized: 'Phone: Bırak kendi gitsin. Prenses değil, bir şey değil.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995803
+    m_Localized: 'Phone: Götünü kaldırıp yürüyecek işte, derdi ne bunun?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995804
+    m_Localized: Siz bunu aranızda halledin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995805
+    m_Localized: Neyse, hâlâ yaşadığını söylerim ona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995806
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995807
+    m_Localized: 'Phone: E niye aradın o zaman? Yavşaklık mı yapıyorsun?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995808
+    m_Localized: 'Phone: Ne bok yiyorsan ye. Karının umurunda değil zaten.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995809
+    m_Localized: 'Phone: Beni sal yeter.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995810
+    m_Localized: 'Phone: Neyse, hâlâ yaşadığını söylerim ona'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995811
+    m_Localized: 'Phone: Hiç uğraşma, ne gerek var?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995812
+    m_Localized: 'Phone: Birbirimizin sikinde değiliz bile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995813
+    m_Localized: 'Phone: Sen niye araya girdin, onu da anlamadım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995814
+    m_Localized: 'Phone: Neyse, umarım mutlu mesut yaşarsınız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995865
+    m_Localized: 'Phone: İnanamıyorum ya... Ölmüşler mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995872
+    m_Localized: 'Phone: İnanamıyorum ya... Ölmüşler mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995877
+    m_Localized: 'Phone: Of ya... Bu nasıl olabilir?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995882
+    m_Localized: 'Phone: Alo? Kiminle görüşüyorum?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995883
+    m_Localized: Karın ve baldızın benimleler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995884
+    m_Localized: Bu numarayı bana karın verdi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995885
+    m_Localized: 'Phone: Fidye mi isteyeceksin benden?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995886
+    m_Localized: 'Phone: Korkarım ki verecek hiçbir şeyim kalmadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995887
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995888
+    m_Localized: 'Phone: Zaten yakında hepimiz öleceğiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995889
+    m_Localized: Nasıl yani? İyi misin sen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995890
+    m_Localized: Karının durumu iyi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995891
+    m_Localized: 'Phone: Lütfen bana karımın iyi olduğunu söyle.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995892
+    m_Localized: 'Phone: Güçlü biridir, çözemeyeceği sıkıntı yoktur. Bir de üstüne yardımseverdir!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995893
+    m_Localized: 'Phone: Fakat beni hiçbir yardım kurtaramaz artık.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995894
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995895
+    m_Localized: 'Phone: Fazla vaktim kalmadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995896
+    m_Localized: Nasıl yani? İyi misin sen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995897
+    m_Localized: Karının durumu iyi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995898
+    m_Localized: 'Phone: Yapamıyorum artık... Güneş, Ziyaretçiler... Çok korkuyorum. Felç olmuş gibiyim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995899
+    m_Localized: 'Phone: Artık... bitsin istiyorum. Her şeyden kurtulmamın tek bir yolu var. Bilmem anlatabildim mi?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995900
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995901
+    m_Localized: 'Phone: Lütfen karıma onu sevdiğimi söyle.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995902
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995903
+    m_Localized: 'Phone: Gerçi... vazgeçtim, hiçbir şey söyleme. Beni aramaya gelmesin de yeter.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995904
+    m_Localized: 'Phone: Onu da yanımda götürmediğimi bilmesini istemiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995905
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995906
+    m_Localized: 'Phone: Aradığın... ve dinlediğin için teşekkür ederim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995907
+    m_Localized: 'Phone: Elveda...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995908
+    m_Localized: 'Phone: Hâlâ kardeşini yanında taşıyordur muhtemelen. İnsanları bırakmayı bir türlü beceremezdi...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995909
+    m_Localized: 'Phone: Çok da talihsizdir, etrafı hep zayıf insanlarla doluydu. Zaten bu yüzden onu terk ettim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995910
+    m_Localized: 'Phone: Merhaba, FEMA Kabul Bürosu. Size nasıl yardımcı olabilirim?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995911
+    m_Localized: Yanımda bir FEMA yetkilisinin karısı var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995912
+    m_Localized: Yanımda aranıza katılmak isteyen bir hayırsever var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995913
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995914
+    m_Localized: 'Phone: Peki... Sorunuz nedir? Size nasıl yardımcı olabileceğimi anlayamadım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995915
+    m_Localized: 'Phone: Bizi tehdit etmiyorsanız yani.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995916
+    m_Localized: ...Sizi tehdit ediyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995917
+    m_Localized: Sizinle çalışmak istiyor. Eskiden gümrük memuruymuş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995918
+    m_Localized: 'Phone: (Karşıdaki insan, derin bir iç çekiyor)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995919
+    m_Localized: 'Phone: Sen de şu aktivistlerden misin yoksa? Ha bire şikâyet ediyorsunuz siz de.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995920
+    m_Localized: 'Phone: Vaktimizi boşa harcama. Şu an gerçekten ihtiyacı olan biri hatta bağlanmaya çalışıyor olabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995921
+    m_Localized: 'Phone: Ziyaretçiler bir yere sızmaya çalışıyor olabilir, daha kötüsü de olabilir. Senin yüzünden insanlar ölebilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995922
+    m_Localized: 'Phone: Hoşça kal.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995923
+    m_Localized: 'Phone: Hım... Bu kolay bir iş değildir ama. Hazır olduğundan emin misiniz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995924
+    m_Localized: 'Phone: Hazırsa 31-G numaralı formu doldurup üç nüshasını alsın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995925
+    m_Localized: 'Phone: Sonra da sağlık kontrolünden geçecek. Ardından da...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995926
+    m_Localized: 'Phone: (Telefonu kapatıyorsun. Bu kadın için niye onları aramakla uğraştın ki?)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995927
+    m_Localized: 'Phone: Hangi pozisyona başvuracak? Rica ediyorum "müdür" demeyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995928
+    m_Localized: 'Phone: Bugün iki kişi müdürlüğe başvurdu bile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995929
+    m_Localized: Müdür
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995930
+    m_Localized: İzci, gözcü falan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995931
+    m_Localized: 'Phone: Sikeceğim artık şu şakalarınızı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995932
+    m_Localized: 'Phone: Millet muhtaç, muhtaç! Siz böyle hattı meşgul ederken birisi Ziyaretçilerin yemi olmuş olabilir.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995933
+    m_Localized: 'Phone: Şu saçma sapan şakalarınızın sorumluluğunu kabul etseniz bari.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995934
+    m_Localized: 'Phone: (Telefonu kapattı. Bunu beklemiyordun.)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995935
+    m_Localized: 'Phone: Böyle bir pozisyonumuz yok. Bizim epidemi uzmanlarına ve nitelikli bilim insanlarına ihtiyacımız var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995936
+    m_Localized: 'Phone: Anladığım kadarıyla arkadaşınız bu ihtiyacı karşılamıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995937
+    m_Localized: 'Phone: Ama her geçen güç durum değişiyor. Bir hafta sonra tekrar aramayı deneyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995938
+    m_Localized: 'Phone: Belki bu... Ne demiştiniz? Hayırsever miydi? Belki bu "hayırsevere" uygun bir pozisyon açılır.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995940
+    m_Localized: 'Phone: Mant... kork...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995942
+    m_Localized: 'Phone: Orada... bulaca...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995945
+    m_Localized: 'Phone: Nefes alış verişine bak.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995948
+    m_Localized: 'Phone: Unutmayınız, ülkemize an itibarıyla uçakla veya trenle ulaşmanın bir yolu yoktur.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995949
+    m_Localized: 'Phone: Size nasıl yardımcı olabiliriz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995950
+    m_Localized: Bir turisti memleketine göndermem gerek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995951
+    m_Localized: Tren niye yok?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995952
+    m_Localized: 'Phone: En iyisi uçuşların tekrar başlamasını bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995953
+    m_Localized: 'Phone: Vapurlar hâlâ faal ama güvenli değiller. Gece vakti tayfun çıkma olasılığı çok yüksek.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995954
+    m_Localized: 'Phone: Bir de deniz, güneşi gemilere yansıttığı için mürettebat uzun süre gemide kalamıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995955
+    m_Localized: O zaman zavallı adamı nasıl evine yollayacağım?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995956
+    m_Localized: Şu an benim yanımda kalıyor. Onu siz alamaz mısınız?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995957
+    m_Localized: 'Phone: Raylar sıcaklıktan genleşti, gündüz vakti trenler için çok tehlikeli.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995958
+    m_Localized: 'Phone: Sadece gece faaliyet gösteriyorlar, dolayısıyla pek uzağa gidemiyorlar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995959
+    m_Localized: 'Phone: Çok transfer yapılması gerekiyor. En iyisi hava seyahatinin yeniden başlamasını bekleyin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995960
+    m_Localized: O zaman zavallı adamı nasıl evine yollayacağım?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995961
+    m_Localized: Şu an benim yanımda kalıyor. Onu siz götüremez misiniz?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995962
+    m_Localized: 'Phone: Beklemeniz gerek maalesef.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995963
+    m_Localized: 'Phone: Şu anda elimiz kolumuz bağlı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995964
+    m_Localized: Bizim dilimizi bilmiyor bile adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995965
+    m_Localized: Dalga mı geçiyorsunuz siz? Bir boka yaradığınız yok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995966
+    m_Localized: 'Phone: Kalabileceği bir otelimiz yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995967
+    m_Localized: 'Phone: Elimizden bir şey gelmiyor. Sorunu çözmeye çalışıyoruz fakat bu durumda olan birçok insan var.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995968
+    m_Localized: Bizim dilimizi bilmiyor bile adam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995969
+    m_Localized: Dalga mı geçiyorsunuz siz? Bir boka yaradığınız yok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995970
+    m_Localized: 'Phone: Bakın, zaten personelimizin işi başından aşkın. Elçilik bütçelerinde azalmaya gittiler, duymuşsunuzdur.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995971
+    m_Localized: 'Phone: Elimizden geleni yapıyoruz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995972
+    m_Localized: Vay be, siz de ne mertmişsiniz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995973
+    m_Localized: Hadi oradan tembel herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995974
+    m_Localized: 'Phone: Bu üslubun bir manası yok.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995975
+    m_Localized: 'Phone: Onu sırtımızda taşıyamayız sonuçta. Madem arkadaşınıza bu kadar yardım etmek istiyorsunuz, onu kendiniz götürün.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995976
+    m_Localized: 'Phone: Zaten bütçelerimiz kısıldı, bildiğiniz gönüllü çalışıyoruz şu an.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995977
+    m_Localized: Vay be, siz de ne mertmişsiniz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995978
+    m_Localized: Hadi oradan tembel herif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995979
+    m_Localized: 'Phone: Madem bizi beğenmiyorsunuz, buyurun kendiniz halledin.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995980
+    m_Localized: 'Phone: Gündüz sıcağında Ziyaretçi testleriyle uğraşıp sınırı geçebilirseniz tabii.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995981
+    m_Localized: Peki, sağ olun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995982
+    m_Localized: Siktirin gidin lan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995983
+    m_Localized: 'Phone: Madem öyle, niye evdesiniz? Siz niye çalışmıyorsunuz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995984
+    m_Localized: 'Phone: Bu kadar iyi biliyorsanız gelip bize gösterin nasıl yapılacağını.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995985
+    m_Localized: 'Phone: İşi herkesten iyi bilen birinin yardımını seve seve kabul ederiz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995986
+    m_Localized: Peki, sağ olun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995987
+    m_Localized: Siktirin gidin lan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995988
+    m_Localized: 'Phone: Kusura bakmayın, kendimi kaybettim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995989
+    m_Localized: 'Phone: Arayıp böyle... agresif davranan ilk kişi siz değilsiniz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995990
+    m_Localized: 'Phone: İyi günler.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995991
+    m_Localized: 'Phone: Yolunuz açık olsun.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995992
+    m_Localized: 'Phone: Umarım bir gün tatile gidecek olursunuz.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265995993
+    m_Localized: 'Phone: O zaman size seve seve yardımcı olurum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43887113265996006
+    m_Localized: Kalabalığın arasında belirli bir karakteri bulman gereken bulmacalar var ya, ondan...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583937
+    m_Localized: O zaman Telefon Ruleti tam sizlik.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583957
+    m_Localized: 'Phone: Merhaba, FEMA hattını aradınız. Size nasıl yardımcı olabiliriz?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583958
+    m_Localized: FEMA mı? O ne ya?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583959
+    m_Localized: Anlamadım?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583960
+    m_Localized: 'Phone: (Operatör cümlesini bitiremeden bir adam ona bağırıyor)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583961
+    m_Localized: 'Phone: APTAL MISIN SEN? KAPAT HEMEN TELEFONU!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583962
+    m_Localized: Koltuk altlarının neyine bakacağım?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583963
+    m_Localized: Kulaklarının neyine bakacağım?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583964
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583965
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583966
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583967
+    m_Localized: 'Phone: Koltuk altı testlerinin doğru sonuç vermesi için suyla temastan kaçınmalısınız.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583968
+    m_Localized: 'Phone: Duş almaktan ve yıkanmaktan kaçının.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583969
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583970
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583971
+    m_Localized: 'Phone: Kulak mı? Bir saniye...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583972
+    m_Localized: 'Phone: Yönetime danışıp size geri dönüş sağlayacağım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295740583973
+    m_Localized: 'Phone: ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778240
+    m_Localized: 'Phone: Merhaba, Telefon Ruleti''ni aradınız. En kısa sürede sizi bir konuşma partnerine bağlayacağız, lütfen hattan ayrılmayın.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778243
+    m_Localized: 'Phone: Şey, merhaba.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778257
+    m_Localized: 'Phone: İçimi dökmek için ideal bir yer olmayabilir ama başka seçeneğim kalmadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778258
+    m_Localized: 'Phone: Dertlerimi bir yabancıya anlatmak doğru olmayabilir ama...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778259
+    m_Localized: 'Phone: En azından birinin beni dinlemesi bana ne kadar iyi gelirdi anlatamam. Kendimi çok daha iyi hissederdim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778260
+    m_Localized: 'Phone: Rica etsem beni dinler miydin?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778261
+    m_Localized: Peki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778262
+    m_Localized: Uzun bir konuşmaya pek hazır değilim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778267
+    m_Localized: 'Phone: Çok teşekkürler! Teşekkür ederim!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778268
+    m_Localized: 'Phone: Önce biraz kendimden bahsedeyim, daha iyi olur.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778269
+    m_Localized: 'Phone: Öğrenmek istediğin bir şey var mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778271
+    m_Localized: Dostların telefonlarını açmadı mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778273
+    m_Localized: 'Phone: Sıcaklıktan kaçmak için bulabildiğim en soğuk yere yerleştim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778274
+    m_Localized: 'Phone: Hiçliğin ortasındayım, soğuk iliklerime işliyor. Çim bile bitmeyen bir yere gelmişim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778275
+    m_Localized: 'Phone: Görece güvenli bir yer, herkesten kilometrelerce uzakta.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778276
+    m_Localized: 'Phone: Cehennemin dokuzuncu katmanı bile soğuksa burası oraya kıyasla günlük güneşlik kalıyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778277
+    m_Localized: 'Phone: Komik aslında, eskiden soğuktan nefret ederdim ama... şimdi lütuf gibi geliyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778278
+    m_Localized: 'Phone: Güneşin sakinleşeceğine ve her şeyin normale döneceğine inanmak istiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778279
+    m_Localized: 'Phone: Fakat mutlu bir sonun geleceğine dair inancımı kaybediyorum. Güneş, kavurmayı bırakınca ne olacak?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778280
+    m_Localized: 'Phone: Ziyaretçilerden asla kurtulamayabiliriz. Dostlarımızın ve sevdiklerimizin yerine geçebilirler, hiç fark etmeyiz bile...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778281
+    m_Localized: Niye yalnız başına gittin?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778283
+    m_Localized: 'Phone: Onları tekrar aramak isterdim ama nasıl yapacağımı bilmiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778284
+    m_Localized: 'Phone: Kıyamet kopunca memleketimi terk etmeye karar verdim. Sıcaklıktan olabildiğince uzağa kaçtım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778285
+    m_Localized: 'Phone: İnsanlara onları düzenli arayacağıma, hepsinin tek tek hâlini hatırını soracağıma söz verdim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778286
+    m_Localized: 'Phone: Fakat buraya geldikten sonra hiçbirine ulaşamadım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778287
+    m_Localized: 'Phone: Sonra sebebini öğrendim, telefon hatları kesilmiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778288
+    m_Localized: 'Phone: Şehir, dünyanın geri kalanından izole edilmiş.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778289
+    m_Localized: 'Phone: Şimdi ben burada güvendeyim ama dostlarım...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778291
+    m_Localized: 'Phone: Sevdiklerimi bir daha asla göremeyeceğim düşüncesi beni çok korkutuyor.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778292
+    m_Localized: 'Phone: O sessiz günleri, hayatın kolay olduğu, geleceği iple çektiğimiz zamanları özledim...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778300
+    m_Localized: 'Phone: Çok üzülmüştü çok... Önceden tamamlamadığı için pişman oldu. Ona yardım etmek istedim ama ne yapacağımı bilemedim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778302
+    m_Localized: 'Phone: Onları çok özlüyorum. Şehri değil ama geride bıraktığım insanları.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778303
+    m_Localized: 'Phone: En çok da en yakın arkadaşımı...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778304
+    m_Localized: 'Phone: O da benimle gelmek istedi ama gelemedi. Aramızı açmayacağıma söz vermiştim, onu arayacağımı söylemiştim ama...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778306
+    m_Localized: 'Phone: Biliyor musun? Galiba bana âşıktı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778307
+    m_Localized: 'Phone: Benimle çok ilgilenirdi. Hep desteklerdi, dinlerdi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778308
+    m_Localized: 'Phone: Nihayetinde birbirimizden hoşlandığımızı fark ettim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778309
+    m_Localized: 'Phone: Önce onun bana açılmasını bekledim ama sanırım doğru anı bulamadı.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778310
+    m_Localized: 'Phone: Sonra da kıyamet koptu, ona fırsat kalmadı işte...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778312
+    m_Localized: 'Phone: Keşke ilk ben söyleseydim...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778314
+    m_Localized: 'Phone: Evet, sen artık beni biraz tanıdın. Sıra sende.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778315
+    m_Localized: Ben kendimden bahsetmeye pek alışkın değilim...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778316
+    m_Localized: Nereden başlayacağımı bile bilmiyorum...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778317
+    m_Localized: 'Phone: Utanma, ben dinlemeye hazırım.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778318
+    m_Localized: Yani, yakınım diyeceğim kimse yok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778319
+    m_Localized: Çok... yalnızım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295744778320
+    m_Localized: 'Phone: Merak etme. Kendinden bahsetmek gayet normal bir şey.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972544
+    m_Localized: Yani, yakınım diyeceğim kimse yok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972545
+    m_Localized: Çok... yalnızım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972547
+    m_Localized: Babamla... aramız pek iyi değildi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972550
+    m_Localized: Artık o ailenin ferdi değilim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972556
+    m_Localized: Artık bu evden başka hiçbir şeyim yok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972557
+    m_Localized: Artık onlardan geriye sadece bu ev kaldı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972559
+    m_Localized: 'Phone: Üzgünüm... Evin sana kalması seni pek mutlu etmemiş gibi.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972560
+    m_Localized: Yani, evet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972561
+    m_Localized: Keşke yanıp kül olsaydı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972563
+    m_Localized: 'Phone: Neler yaşadığını hayal bile edemiyorum.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972565
+    m_Localized: 'Phone: Evinin yanmasını istiyorsan kim bilir babandan ne kadar nefret ediyorsundur...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972567
+    m_Localized: 'Phone: Benimle konuştuğun için tekrar teşekkür ederim.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972568
+    m_Localized: 'Phone: Elveda. Gücünü kaybetme, tamam mı?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972571
+    m_Localized: Merhaba, kızınızı arkadaşıyla oynamaya gönderseniz sorun olur muydu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972574
+    m_Localized: Yanımda küçük bir kız var... Babası öldü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972600
+    m_Localized: 'Phone: Tüm belirtiler bize söylenenlere uyuyordu. Kocam ısrar etti.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972604
+    m_Localized: 'Phone: Bir Ziyaretçi''ydi! Tüm belirtiler uyuyordu, hiçbir şüphe yoktu!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48219295748972619
+    m_Localized: 'Phone: Tek pişmanlığım, o yaratığa kızımıza ne yaptığını sormamak.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53574325721096195
+    m_Localized: 'TV: Sıradaki haber, ceset imha hizmetlerinin geçici olarak askıya alınmasına dair.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803335401472
+    m_Localized: İki kutu kedi maması isteyecektim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790080
+    m_Localized: Bir paket sigara isteyecektim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58231803343790081
+    m_Localized: Bir kavanoz kombuça isteyecektim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58690054376120320
+    m_Localized: 'TV: Şimdi KapımaGelsin''de. Bizi {0} numarasından arayabilirsiniz.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

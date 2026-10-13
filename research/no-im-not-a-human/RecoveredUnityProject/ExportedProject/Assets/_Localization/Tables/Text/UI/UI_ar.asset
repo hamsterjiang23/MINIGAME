@@ -1,0 +1,1055 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_ar
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ar
+  m_SharedData: {fileID: 11400000, guid: 887365d10d50d8d4a969d13498591929, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55224523648913408
+    m_Localized: لعبة جديدة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: استمرار
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: الإعدادات
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: المقتنيات
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: خروج
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: الخروج إلى القائمة دون حفظ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: حفظ وخروج إلى سطح المكتب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: إيقاف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16302985216
+    m_Localized: المدخل
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: الحمام
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: الصالة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: غرفة النوم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: المكتب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: المطبخ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: غرفة التخزين
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: نافذة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: لا أريد أن أنام الآن. كلي طاقة وحيوية!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: لا أستطيع النوم الآن. ماذا لو جاء أحدهم إلى هنا بحثًا عن مأوى؟
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: يبدو أنه لن يأتي أحد آخر الليلة.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: تبدو رائحة المكان وكأن أحدهم مات الليلة...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: اللغة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: مستوى الصوت
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: فتح
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: ترك
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: بدء
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: لا، لستُ بشريًا، أنا {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: جعلتني تلك الجعة أشعر بالنعاس. عليّ الذهاب إلى الفراش.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: جعة بوبير
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: العالم أصبح مزريًا، لكن الجعة الباردة لا تزال لذيذة.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: تقلل <sprite=0>    إلى 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: إنيرجيكا
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: مشروب مصنوع من مواد كيميائية وحسب، ولكنه سيبقيك مستيقظًا.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=1>   لبضعة أيام
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: قهوة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: لم أعد أشرب القهوة الساخنة. ربما لم يعد أحد يشربها.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1  <sprite=1>    لبضعة أيام
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "شكرًا لك على اللعب!\n  تأكد من وضع اللعبة في قائمة الرغبات... إذا كنت بشريًا!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: فتح
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: دخول
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: استخدام
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: عرض
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: القبو
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: المنزل
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: الهاتف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: المذياع
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: سجائر (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: تدخين
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: تثبيت
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: الرئيسي
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: الموسيقى
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: المؤثرات الصوتية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: حفظ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: التقاط
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: فطر
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: حفر
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: حفرة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: مداعبة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: قط
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: رجوع
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: الشاشة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: تحدث
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: الموت
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: النص
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: تأثير الكتابة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: شاي الكمبوتشا (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: لا تستخدم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: تستعيد  <sprite=0>    بالكامل، ولكنها تكلف  <sprite=1>    في اليوم التالي
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: لقد مر وقت طويل منذ أن دخنت. آخر مرة كانت على الأرجح... بعد أن غادر الجميع، على ما أعتقد.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: سجائر
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: يحفظ تقدمك. يستمر هذا الحفظ حتى بعد الانتهاء من لعبتك الحالية.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: مشروبي المفضل الذي يُسعدني ويُصفّي ذهني، ويعيدني إلى الأيام الخوالي.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: شاي الكمبوتشا
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: عامل منجم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: ملء الشاشة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: بدء
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: نافذة مكبرة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: داخل نافذة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: خروج
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: إغلاق الخط
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: مغادرة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: ترك [hold]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: مغادرة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: جري
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: يجب أن أدافع عن نفسي. بأي طريقة ممكنة.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: هذا العالم ملعون... لكن ربما لا تزال هناك فرصة للنجاة...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: يجب أن أغلقها. الأمور ستزداد سوءًا من الآن فصاعدًا... لكن يجب أن أحاول.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: استخدام العنصر [hold]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: خدمة توصيل راحتك تهمنا
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: الجار
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: الوكالة الفيدرالية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: الوسطاء الروحانيون
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: أرقام الهاتف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: إنيرجيكا
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: قهوة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: يبدو أنني لن أستقبل أي بث إذاعي آخر اليوم.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: الإرشادات
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: من الأفضل ألا أدخل هناك الآن. سأتحقق من الأمر نهارًا.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: التطلع للخارج الآن قد يُذهب بصري. الأفضل أن أختلس نظرة بعد حلول الظلام.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: ليس هناك وقت لهذا اليوم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: ليس هناك وقت لهذا اليوم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: لن يكون هناك أحد في الشارع في هذا الوقت من اليوم.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: ليس هناك وقت لهذا اليوم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: أعتقد أن يومي قد انتهى.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: لالتقاط إشارة، أدر المفتاح الأيمن. للقيام بذلك، انقر بزر الماوس الأيسر مع الاستمرار على المفتاح الأيمن وحرك المؤشر إلى اليسار أو اليمين. مفتاح ضبط مستوى الصوت على اليسار.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: أزلتُ حاجز الموجات من أجهزة المذياع. سحقًا لهم!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: اللعنة... لم يعد يعمل
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: إذا كنت لا تزال غير قادر على تلقي إشارة، فجرب تغيير نطاق الموجة عبر النقر بزر الماوس الأيسر على المقابض في المنتصف واستمر في البحث عن الموجة التي تريدها عبر المفتاح الأيمن.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "هل أنت متأكد من أنك تريد الخروج؟\n ستفقد جميع التقدم غير المحفوظ."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "هل أنت متأكد من أنك تريد الخروج؟\n سيتم حفظ تقدمك."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: نعم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: لا
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: الرجل الصاخب المضطرب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: الفتاة الكئيبة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: الجدة المجنونة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: خطوط الهاتف معطلة حتى الخريف. علينا الانتظار...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: رد
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: استماع
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: البحث عن التردد [rotate]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: تغيير نطاق التردد إلى FM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: تغيير نطاق التردد إلى AM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: اهتزاز وحدة التحكم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: حساسية وحدة التحكم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: حساسية وحدة التحكم في الغرف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: حساسية الماوس
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: عناصر التحكم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: التقويم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: يوم الجعة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: يوم الخيار
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: يوم العائلة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: يوم التوعية بالتهاب الملتحمة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: يوم الطفل
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: يوم الصرّاف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: يوم البلدة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: يوم الضيافة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: يوم الشكر العالمي
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: يوم الدبلوماسية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: يوم التصالح
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: يوم الطاحونة الهوائية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: مهرجان نهاية الصيف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: يوم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: يوم الشائعات
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#444444>استلمت</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#444444>سلّمت</color> x{0} <color=#225555>{1}</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: تخطٍ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: الرجل الضخم ذو اللحية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: الأعمى الغريب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: سيدة الأبراج
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: النصّاب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: المتكبر المتعجرف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: الرجل ذو الشارب والنظارات
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: الفتاة الباكية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: الفتى ذو القبعة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: الزوجان
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: الأصلع المجرم ذو البدلة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: صاحبة القطة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: المتدينة العجوز
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: النحيف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: الرجل ذو القميص
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: الرجل ذو قبعة سيارة الأجرة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: الرجل البارد ذو المعطف
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: الرجل ذو المنديل الأرجواني
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: المرأة المدخّنة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: المرأة المترهلة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: الرجل ذو القلنسوة السوداء
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: الرجل ذو القبعة الخضراء
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: الغول الكبير
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: الأحدب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: الثرثارة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: عضو الطائفة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: الرجل الأنيق المصاب بالغرغرينا
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: السيدة ذات النظارات والسترة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: عضو الطائفة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: الرجل ذو الأحشاء المتدلية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: الأم والطفلة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: المرأة صاحبة الجثة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: الرجل السمين العاري
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: رجل بدلة الوكالة الفيدرالية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: الساخط المصاب باليرقان
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: الفتى الطائش
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: الفتاة الملتوية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: الرجل المشرد
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: الرجل ذو الفم المخيط
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: المرأة المكتئبة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: لم يبقَ أحد. هل هذا... بسبب الحلم؟
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: جزء هادئ من الحياة، لم تمسه يد التغيير ولا الظلام الذي يلوح في الأفق.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: ؟؟؟
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: دوى صوت طلقة نارية عبر الضباب، وارتفعت فوق الحشود أجنحة تفوح منها رائحة الرماد.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: أصبح القبو عالمًا بحد ذاته... نوافذ مغلقة بالطوب، وأصوات تمتزج مع دقات الساعة. تغيب الشمس فيه... لكن العذاب لا ينتهي.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: كان الزوار هنا طوال الوقت... في نفحة دافئة في الظلام، وهمسة قاسية في ظهرك. لن ترى النور مجددًا أبدًا، حتى لو عاد.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: لقد دعوا لأجل الصمت. ربما تمت الاستجابة أخيرًا... فالأجواء هادئة الآن.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: لقد أخذوك بعيدًا تحت صوت صفارات الإنذار، تاركين كل ذكرياتك خلفك. لو كان بإمكانك العودة، لتأخذ الملصق معك.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: في اللحظة التي عبر فيها ظله العتبة، ساد الصمت على المنزل. والآن كل ما تبقى منك هو الهمسات.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: كل من قابلته بدا لك عدوًا. أعمى الخوف بصيرتك، والآخرون أنجزوا ما بدأته أنت بالفعل.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: نبت الفطر من التربة، وبنا مدنًا من جديد. أسرعت إليه، لكن أبواب عالمه كانت قد أُغلقت بالفعل.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: انتهى اختبار، ليبدأ آخر. والآن، في عيون الجماهير، أنت الشخص الذي يجب أن يخشاه الجميع.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: خطوة ثقيلة واحدة فوق الخط، وكل ما كنت تخشاه يفقد قيمته. الوقت قد تلاشى، ولم يتبقَ سوى برودة تشعرك بالراحة.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: ؟؟؟
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: من السيدة الروحانية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: أخت الفتى المدلل
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: زوج الأم المرهقة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: زوج التوأم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: خدمة المكالمات العشوائية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: زوجة الغاضب السمين
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: من زوجة الرجل الذي يعمل لدى الوكالة الفيدرالية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: السفارة الأجنبية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: صديقة تلك الفتاة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "1. اليوم بُعِثَ العالمُ من جديدْ،\n وفي القبو الفطرُ نما وحيدْ.\n شَمَخَ عاليًا، والوقتُ أزفا\n لأكله كاملًا، لمن تجرّأ وما ارتجفا.\n \n 2. استقبالُ الضيوف ليس للأقوياءْ،\n والفطرُ شامخٌ طويلٌ بإباءْ.\n تحت شجرة التفاح استرحْ مُطمئنّا،\n ستُطعمكَ من أحلى ثمارها يقينا.\n \n \n 3. سيأتي اليوم الذي يخضع فيه الناس\n أمام رهبة صوت الفطر بلا التباس\n مع كل حركة لأعلى لعقارب ساعتك.\n أسرع، فالوقت لن ينتظر تقاعسك!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: سأضعه في الثلاجة... على الرغم من أنني أرغب في تناوله الآن.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: يا له من فطر غريب... كيف نما في حبة بطاطس؟
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: يرسلك مؤقتًا إلى أرض الفطر.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: أكلت التفاحة. حلوة وحامضة في الوقت ذاته...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: اضبطها على 12، تمامًا كما يقول دليل الابتسام.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: إشعار الوكالة الفيدرالية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: جعة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: طعام قطط
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: مقفل
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: تسريع
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: ينهار العالم فوق رأسك، فتبقى وحيدًا بين أشلاء ماضيك. كل ما تحطّم يُدفن للأبد، وأنت مدفون معه.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: المهزوز
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: عازف الروك
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: الرجل العاري
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: الفتى ذو السترة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: الفتاة ذات القميص القصير
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: الأصلع
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: المريب الذي يرتدي قميصًا دون أكمام
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: المصاب بالطفح
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: الحالم
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: الرجل الضخم المشعر
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: الفتاة الموشومة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: الرجل المصاب بحروق الشمس
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: عضو الطائفة
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: الطبيب
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: القعيد
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: لالتقاط إشارة، أدر المفتاح الأيمن. للقيام بذلك، أدر عصا التحكم اليمنى في وحدة التحكم في اتجاه عقارب الساعة أو عكس اتجاه عقارب الساعة. مفتاح ضبط مستوى الصوت على اليسار.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: إذا كنت لا تزال غير قادر على تلقي إشارة، فجرب تغيير نطاق الموجة عبر الضغط على أزرار المصدات اليسرى أو اليمنى واستمر في البحث عن الموجة التي تريدها عبر عصا التحكم اليمنى.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: عكس الاتجاه العمودي (الفأرة)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: عكس الاتجاه العمودي (وحدة التحكم)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,1060 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: UI
+  m_TableCollectionNameGuidString: 0cbd8a7a4f543344bb95659de87f67a5
+  m_Entries:
+  - m_Id: 16302985216
+    m_Key: RoomName_Entrance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Key: RoomName_Bathroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Key: RoomName_BigRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Key: RoomName_BedRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Key: RoomName_Office
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Key: RoomName_Kitchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Key: RoomName_Pantry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Key: RoomName_Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Key: Message_CantSleepDay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Key: Message_CantSleepNight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Key: Message_NoOneElseWillCome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Key: Message_SomebodyWasMurdered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Key: Pause_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Key: Pause_Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Key: Common_Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Key: Common_SaveAndQuit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Key: Common_Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Key: UI_Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Key: Common_Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Key: Common_Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Key: Common_GameName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Key: Fridge_Bobeer_Used
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Key: FridgeItem_Bobeer_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Key: FridgeItem_Bobeer_NarrativeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Key: FridgeItem_Bobeer_GameplayDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Key: FridgeItem_Enerjeka_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Key: FridgeItem_Enerjeka_NarrativeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Key: FridgeItem_Enerjeka_GameplayDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Key: FridgeItem_Coffee_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Key: FridgeItem_Coffee_NarrativeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Key: FridgeItem_Coffee_GameplayDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Key: Common_LanguageName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Key: Ending_ThanksWishlist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Key: Action_Open
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Key: Action_Enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Key: Action_Use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Key: Action_Look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Key: Location_Basement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Key: Location_HouseInterior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Key: Objects_Phone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Key: Objects_Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Key: Objects_Cigarettes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Key: Action_Smoke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Key: Actions_NailDown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Key: AudioGroup_Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Key: AudioGroup_Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Key: AudioGroup_SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Key: Action_Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Key: Common_NewGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Key: Common_ContinueGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Key: Radio_NoiseCharacters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Key: Action_Take
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Key: Object_Mushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Key: Action_Dig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Key: Object_TheHole
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Key: Action_Pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Key: Object_Cat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Key: Common_Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Key: Common_Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Key: Settings_Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450728108675072
+    m_Key: language_ru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Key: language_en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Key: language_be
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Key: language_zh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Key: language_zh-Hant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Key: language_fr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Key: language_de
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Key: language_it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Key: language_ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Key: language_ko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Key: language_pt-PT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Key: language_pt-BR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Key: language_es
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Key: language_es-AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Key: language_tr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Key: language_uk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Key: language_vi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Key: language_pl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Key: language_ar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Key: Action_talk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Key: Object_Death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Key: Common_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Key: settings_typewriter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Key: common_pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Key: object_kombucha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Key: action_dont_use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Key: consumable_cigarette_gameplayDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Key: consumable_cigarette_narrativeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Key: consumable_cigarette_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Key: consumable_kombucha_gameplayDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Key: consumable_kombucha_narrativeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Key: consumable_kombucha_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Key: character_Podvalny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Key: fullscreen_settings_ExclusiveFullScreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Key: fullscreen_settings_FullScreenWindow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Key: fullscreen_settings_MaximizedWindow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Key: fullscreen_settings_Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Key: control_key_ExitRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Key: control_key_HangPhone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Key: control_key_CloseFridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Key: control_key_PutRadio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Key: control_key_Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Key: control_key_Run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Key: message_nail_up_window_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Key: message_nail_up_window_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Key: message_need_to_nail_up_windows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Key: control_key_UseFridgeItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Key: phone_sub_Forrest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Key: phone_sub_Neighbour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Key: phone_sub_FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Key: phone_sub_Psychics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Key: Object_PhoneNumbers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Key: consumable_enerjeka_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Key: consumable_coffee_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Key: Message_NoMoreRadio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Key: control_key_ShowTutor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Key: cant_open_door_timeOfDay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Key: cant_open_window_timeOfDay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Key: cant_open_door_day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Key: cant_open_window_day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Key: cant_open_peephole_timeOfDay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Key: cant_open_peephole_day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Key: message_noMoreBeerToday
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Key: radio_instruction_main
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Key: radio_instruction_pencil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Key: radio_instruction_pencil2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Key: radio_instruction_main2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Key: common_sureToClose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Key: common_sureToCloseSave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Key: common_yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Key: common_no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Key: characterName_Anger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Key: characterName_Sirin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Key: characterName_NotTrue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Key: message_demo_phone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Key: control_key_Answer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Key: control_key_Listen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Key: control_key_RotateHandle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Key: control_key_SwitchToFM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Key: control_key_SwitchToAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Key: settings_vibrator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Key: settings_gamepad_sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Key: settings_room_gamepad_sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Key: settings_mouse_sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Key: settings_controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Key: objects_calendar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Key: calendar_day_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Key: calendar_day_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Key: calendar_day_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Key: calendar_day_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Key: calendar_day_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Key: calendar_day_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Key: calendar_day_6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Key: calendar_day_7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Key: calendar_day_8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Key: calendar_day_9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Key: calendar_day_10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Key: calendar_day_11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Key: calendar_day_12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Key: calendar_day_13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Key: calendar_day_31
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Key: message_got_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Key: message_given_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Key: common_skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Key: characterName_Hunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Key: characterName_Blind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Key: characterName_FortuneTeller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Key: characterName_Scammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Key: characterName_Provocateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Key: characterName_Theorist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Key: characterName_Daughter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Key: characterName_BigLebowski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Key: characterName_Couple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Key: characterName_WolfHound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Key: characterName_Ballerina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Key: characterName_Nun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Key: characterName_Esenin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Key: characterName_Bestson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Key: characterName_TaxiDriver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Key: characterName_Cold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Key: characterName_Raskolnikov
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Key: characterName_AlkonostTwins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Key: characterName_Greatmother
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Key: characterName_Intruder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Key: characterName_Luka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Key: characterName_Buddy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Key: characterName_GraveDigger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Key: characterName_Wifefema
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Key: characterName_CultistOne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Key: characterName_Edgar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Key: characterName_Teacher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Key: characterName_CultistThree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Key: characterName_Fugitive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Key: characterName_Mother
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Key: characterName_Widow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Key: characterName_Fatman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Key: characterName_FormerFema
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Key: characterName_Fan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Key: characterName_Dude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Key: characterName_Anxiety
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Key: characterName_Marauder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Key: characterName_Foreigner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Key: characterName_SirinTwins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Key: message_bodyEaterVisit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Key: gacha_intro_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Key: question_marks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Key: mainMenu_collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Key: gacha_baby_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Key: gacha_basement_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Key: gacha_basementWitThem_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Key: gacha_cult_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Key: gacha_fema_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Key: gacha_super_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Key: gacha_killer_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Key: gacha_mushroom_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Key: gacha_rage_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Key: gacha_death_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Key: gacha_select_character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Key: phone_sub_Extrasens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Key: phone_sub_BestSonFamily
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Key: phone_sub_MothersHusband
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Key: phone_sub_AlkonostsHusband
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Key: phone_sub_PhoneRoulette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Key: phone_sub_AngersWife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Key: phone_sub_FEMARecruiter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Key: phone_sub_ForeignEmbassy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Key: phone_sub_DaughtersFriend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Key: Game_MushroomList
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Key: Message_TakeMushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Key: FridgeItem_Mushroom_NarrativeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Key: FridgeItem_Mushroom_GameplayDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Key: Message_EatApple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Key: Message_LookClocks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Key: consumable_povistka_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Key: consumable_bobeer_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Key: consumable_catfood_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Key: gacha_locked_ending
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Key: control_key_SpeedUp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Key: gacha_alone_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Key: characterName_Unstable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Key: characterName_Rocker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Key: characterName_Experienced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Key: characterName_Jacket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Key: characterName_Tough
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Key: characterName_Bald
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Key: characterName_Nervous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Key: characterName_Leper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Key: characterName_Fairytaller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Key: characterName_FunnyGuy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Key: characterName_Alt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Key: characterName_Tourist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Key: characterName_Doc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Key: characterName_Wheelchair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Key: characterName_CultistTwo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Key: radio_instruction_main_gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Key: radio_instruction_main2_gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Key: settings_invertYMouse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Key: settings_invertYGamepad
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4563506956686327833
+  references:
+    version: 2
+    RefIds:
+    - rid: 4563506956686327833
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1726735569874

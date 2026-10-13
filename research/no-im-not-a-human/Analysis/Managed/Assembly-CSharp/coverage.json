@@ -1,0 +1,19 @@
+﻿{
+  "type_rows": 943,
+  "method_rows": 5855,
+  "field_rows": 5291,
+  "call_edges": 19045,
+  "type_call_edges": 2026,
+  "assembly_references": 35,
+  "body_errors": 0,
+  "read_target_execution": false,
+  "target_assembly_loaded_via_reflection": false,
+  "decoder": "System.Reflection.Metadata PEReader with framework opcode table",
+  "limitations": [
+    "callvirt/ldvirtftn targets are declared methods, not a points-to or virtual-dispatch analysis.",
+    "Unity serialization/events, reflection, native callbacks and dynamically loaded dependencies are not resolved by this graph.",
+    "ldftn/ldvirtftn are function-pointer references, not evidence the pointed-to function was called.",
+    "IL2CPP runtime equivalence with shipped native implementation requires C\u002B\u002B/native correlation.",
+    "No-RVA and one-byte-ret entries are explicitly distinguished; no inferred C# implementation generated."
+  ]
+}

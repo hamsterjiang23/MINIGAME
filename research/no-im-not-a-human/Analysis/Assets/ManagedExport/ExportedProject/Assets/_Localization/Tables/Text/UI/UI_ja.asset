@@ -1,0 +1,1063 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 2c9f148e973fd914eb8426fb4d22c384, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국인
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16302985216
+    m_Localized: 玄関
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: 浴室
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: 居間
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: 寝室
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: 書斎
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: 台所
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: 物置
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: 窓
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: "まだ寝たくない\n元気いっぱいだ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: "今は眠れない\n誰か避難してくるかもしれない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: 今夜は誰も来そうにない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: 今夜ここで誰か死んだ臭いがする
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: 言語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: 音量
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: 終了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: セーブせずメニューへ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: 開く
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: 終了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: 開始
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: No, I’m Not a Human, I’m {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: "あのビールでぐったりだ\n横になって寝ないと"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Bober黒ビール
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: "もう世界はすっかり肥溜め\n冷えたビールやっぱりこれだね"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: '   <sprite=0> を 0 へ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: エナジェカ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: "純然たる化学物質\nでも徹夜するなら飲むしかない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: '   <sprite=0> +1'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: コーヒー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: "もうホットコーヒーなんて飲めない\nきっと誰もが皆そのはず"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: 数日間   <sprite=1> +1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "プレイありがとう！\nWishlist登録お願い"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: 開ける
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: 入る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: 使う
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: 見る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: 地下室
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: 家
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: 電話
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: ラジオ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: タバコ（残り {0} 本）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: 吸う
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: 打ちつける
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: 主音量
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: 音楽
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: 効果音
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: セーブ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: 新規
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: 続行
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: '!\"#$%&''()*+, -./:;<=>?@[\\]^_`{|}~'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: 取る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: キノコ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: "冷蔵庫に入れておこう…\n今すぐ食べたい気もするが"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: 掘る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: 穴
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "<b><size=40><align=center>-1-</align=center></size></b>\n今日は世界の 誕生日\n地下の部屋にて キノコ生え\n高くそびえる その威容\n誰が丸ごと 食べられる？\n\n\n\n<b><size=40><align=center>-2-</align=center></size></b>\n客を迎える 弱き者\n大きなキノコ 高く立つ\nリンゴの木陰 安らいで\n甘き果実を 享受する\n\n\n\n<b><size=40><align=center>-3-</align=center></size></b>\nやがてその日は 訪れる\n巨大キノコに ひざまずく\n時計の針が 昇る間に\n急げや友よ 時はなし！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: なでる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: 猫
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: 設定
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: 戻る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: 画面
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: 話す
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: 死
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: テキスト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: タイプ音
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: 一時停止
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: フルスクリーン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: ボーダーレスウィンドウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: 最大化ウィンドウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: ウィンドウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: 離れる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: 電話を切る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: 離れる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: 置く［長押し］
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: 離れる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: 走る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: 使う［長押し］
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: エナジェカ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: コーヒー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: 今日は もうラジオ放送は受信できないようだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: 操作説明
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: "今は入らないほうがいい\n昼にしよう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: "目が潰れそうだ\n夜にしよう"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: 今日は それどころじゃない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: 今日は それどころじゃない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: 日中は通りに誰もいない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: 今日は それどころじゃない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: 今日は もう充分だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: "信号を受信するには右ダイヤルを回します。\n左クリックを押しながら、左右に動かしてください。\n\n左ダイヤルは音量調整用です。"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: "ラジオから電波抑止装置を外してやった\nクソ食らえ！"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: クソ 今は動かない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: "信号が拾えないなら、周波数帯を変えてみましょう。\n中央スイッチを左クリックし、\n右ダイヤルで調整してください。"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86605930199502848
+    m_Localized: Wishlist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86608835057012736
+    m_Localized: "通りはどんどん来訪者で溢れていく。太陽はますます地球を焼いていく。\n死は玄関先まで迫っている。\n\n死を欲する者など誰もいない。だが、自分は生き延びなければならない。\n誰よりも生きたいと願っている。または生への渇望ではなく、未知への恐怖か。\n死の先に、なにがあるというのか。\n\n我々には分からない。だが、来訪者なら知っているかもしれない。\n夏を生き延びれば、秋には見つかるかもしれない。最も恐ろしい問いの答えが。\n\nあと少し耐えればいい。夏の暑さを生き延びればいい。来訪者を中へ入れずに。"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "本当に終了する？\n未セーブの進捗は喪失する"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: 怒鳴り散らす男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: 陰気な女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: 狂った老婆
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: "電話線は秋まで直らない\n待つしかない…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: 応える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: 聞く
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: 周波数を探る［回す］
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: FMに切り替える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: AMに切り替える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: パッド振動
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: パッド感度
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: 室内でのパッド感度
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: マウス感度
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: 操作
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: ？？？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: コンブチャ（x{0}）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: 使わない
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: "   <sprite=0> を全回復するが\n翌日   <sprite=1> 1つ消費"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: "久々の喫煙だ\n最後に吸ったのは…\n誰もが去ったときかな"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: タバコ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: "セーブ\nクリア後も進捗は継続"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: "一番お気に入りの飲料\n気分が良くなり 頭も冴える\n良かった時代を思い出す"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: コンブチャ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: 穴掘り
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: For Rest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: 隣人
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: 霊能力者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: 電話番号
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: カレンダー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: ビールの日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: キュウリの日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: 家族の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: 結膜炎闘争記念日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: 子供の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: レジ係の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: 街の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: おもてなしの日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: 世界ありがとうの日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: 外交の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: 和解の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: 国民風車の日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: 終夏祭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: 日
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: 噂祭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#225555>{1}</color> x{0} <color=#444444>受け取った</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#225555>{1}</color> x{0} <color=#444444>手渡した</color>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: スキップ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: 髭面の大男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: 目なし
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: タロット女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: amogus Tシャツ男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: 頭でっかちの理屈屋
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: 口ヒゲのメガネ男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: 泣く少女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: 帽子の子供
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: カップル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: ハゲたスーツの悪党
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: 猫女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: 信仰者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: ノッポ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: ジャージ男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: 帽子の運転中
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: 寒がりのコート男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: 紫バンダナ男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: タバコ女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: たるんだ前髪女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: 黒パーカー男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: 緑帽子男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: 大鬼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: 腰曲がり
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: ホラ吹き
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: カルト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: 壊死のきれい好き男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: セーターにメガネの女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: カルト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: 腹を撃たれた男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: 母と子
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: 死体を抱く女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: 全裸の大男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: FEMA防護服の男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: 黄疸のある怠け者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: キマってる男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: 曲がった少女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: 浮浪者男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: 口縫いの男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: 鬱女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: "誰も残ってない\nこれは…夢の仕業なのか？"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: 静かなる日常の断片。迫りくる闇に気付きもせず。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: 記録
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: 乳白色の霧を裂いて一発の銃声が轟き、群衆の頭上に灰の臭いを放って翼が舞い上がった。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: 地下室は一つの宇宙と化し、窓は煉瓦で塞がれて、声は時計の音と溶け合った。日は陰り…これで本当に苦痛は終わるのか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: 来訪者は絶えず傍らにいた。闇の息づかいに、背後の残酷な囁きに。二度と見ることはない。光が戻って来ようとも。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: 生者へ向けた祈りではなかった。ついに嘆願が聞き届いたのか、世界は静けさを増した。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: 警笛の下、運び去られ、記憶はみな古き家に取り残された。せめて戻れたなら、あのポスターだけでも持って行けたのに。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: 男の影が敷居を越えた瞬間、家は沈黙に包まれた。時として、残されるのは囁きだけ。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: 出会った者すべてが敵に見えた。恐怖に目を閉ざしている間に、人々はただやり遂げた。己が始めたことを。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: 土から茸が生え、異国の街を築いた。急いだが、その世界への扉はすでに閉ざされていた。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: 一つの裁きが終わったとて、次が始まるに過ぎない。今や群衆の目に映るのは、恐るべき存在となった己のみ。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: 重い足取りで一線を越えた途端、あらゆる恐怖は重みを失う。時は消え去り、残るは慰めに似た冷たさだけ。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: ？？？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: 占星術師から
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: マザコンの姉
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: ろくでなし母の夫
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: 双子の夫
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: 電話ルーレット
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: 太った短気男の妻
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: FEMA職員の妻から
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: 外国公館
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: あの娘の友達
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: "すこぶる奇妙なキノコ\nなぜかジャガイモから生えた"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: 一時的にキノコランドへ行ける
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: "リンゴを食べた\n甘味と酸味が同時に広がる…"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: "十二時に合わせた\nスマイルガイドのとおり"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: "自分の身を守らないと\nなんとしてでも"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: "全力を尽くせば 生き延びられるかもしれない\nこの世界は もう呪われている"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: "窓を板で塞がないと\n今より酷くなる一方だが やるしかない"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: FEMA通知書
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: ビール
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: 猫缶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: エンディング未解放
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: セーブしてゲーム終了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "本当に終了する？\n進捗はセーブされる"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: 早送り
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: 世界は滅び、人生の残骸に囲まれ一人。破片は永遠に葬られる。己もろとも。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: 多動男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: ロック野郎
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: 裸の男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: ジャケット小僧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: チューブトップ女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: ハゲ頭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: タンクトップの変人
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: 皮膚荒れ男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: 空想癖
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: 毛深い大男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: 入れ墨女
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: 日焼け男
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: カルト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: 医者
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: 足なし
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: "信号を受信するには右ダイヤルを回します。\n右スティックを回してください。\n\n左ダイヤルは音量調整用です。"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: "信号が拾えないなら、周波数帯を変えてみましょう。\n左右のバンパーで切替、\n右スティックで調整してください。"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: "垂直反転（マウス）\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: 垂直反転（ゲームパッド）
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

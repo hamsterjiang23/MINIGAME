@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd18013e1530d6ee2594d3454f9b000, type: 3}
+  m_Name: Give
+  m_EditorClassIdentifier:
+  <Style>k__BackingField: 4
+  <BaseImage>k__BackingField:
+    <CyclingType>k__BackingField: 1
+    <Frames>k__BackingField:
+    - {fileID: 21300000, guid: 5311db1006eaa0a48b7ecfc8e3e96996, type: 2}
+    - {fileID: 21300000, guid: 6b5397c13b9ad5149b59af389e07bd37, type: 2}
+    - {fileID: 21300000, guid: 78af60356d4fa27498e112d7f3f662ad, type: 2}
+    - {fileID: 21300000, guid: ff2856c04d3c4f84ca0c6c5be23c9d3b, type: 2}
+    - {fileID: 21300000, guid: 7f88167d413993249a75972a60c2cd6a, type: 2}
+    - {fileID: 21300000, guid: c6d23d687e3b90f479e3a72396de8f77, type: 2}
+    <FramesPerSecond>k__BackingField: 12
+  <HoveredImage>k__BackingField:
+    <CyclingType>k__BackingField: 1
+    <Frames>k__BackingField:
+    - {fileID: 21300000, guid: 61634e19634fc8f42a4aa3588ef12d75, type: 2}
+    - {fileID: 21300000, guid: 7f05c615cdc90a844a37ff36a9944127, type: 2}
+    - {fileID: 21300000, guid: ba2adeb14dd8d1342acfb258d415b400, type: 2}
+    - {fileID: 21300000, guid: 5d339ac4309a9c64b93cdcd593322e45, type: 2}
+    - {fileID: 21300000, guid: 917f69986f1c04446a40dce8fb41d2e6, type: 2}
+    - {fileID: 21300000, guid: 1740f8017c6812d4aa7a7ccaad4727f5, type: 2}
+    <FramesPerSecond>k__BackingField: 12
+  <BaseColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+  <HoveredColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <BasePaddings>k__BackingField: {x: 90, y: 10, z: 20, w: 30}
+  <HoveredPaddings>k__BackingField: {x: 90, y: 25, z: 20, w: 15}

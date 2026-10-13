@@ -1,0 +1,34 @@
+{
+  "stage": "target-verified-old-source-retained-policy-block",
+  "root_local_links_checked": 25,
+  "missing_root_links": [],
+  "diff_check_exit": 0,
+  "diff_check_output": "",
+  "ignored_paths": [
+    "research/no-im-not-a-human/README.md",
+    "research/no-im-not-a-human/Analysis/Inputs/GameCopy/GameAssembly.dll",
+    "research/no-im-not-a-human/DecompiledCode/Assembly-CSharp/Assembly-CSharp.csproj",
+    "research/no-im-not-a-human/RecoveredUnityProject/ExportedProject/ProjectSettings/ProjectVersion.txt"
+  ],
+  "tracked_research_paths": [],
+  "changed_repository_paths": [
+    ".gitignore",
+    "AGENTS.md",
+    "README.md"
+  ],
+  "expected_repository_paths": [
+    ".gitignore",
+    "AGENTS.md",
+    "README.md"
+  ],
+  "root_documentation_passed": true,
+  "research_validation": "passed: 17 reports, 113 local links, 0 missing",
+  "final_integrity": "passed: 23961 original files /1218 directories; original source unchanged; 14 approved destination changes",
+  "source_removal": "blocked by automatic policy; old research directory retained",
+  "core_tests_this_turn": "not run; no core behavior changes",
+  "unity_import_or_runtime_this_turn": "not performed",
+  "source_removed": false,
+  "independent_reviews_passed": true,
+  "target_acceptance_passed": true,
+  "complete_move": false
+}

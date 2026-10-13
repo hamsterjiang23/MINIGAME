@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73316d8377ebe65b6e6e2df9ebef0d8, type: 3}
+  m_Name: EndingsData
+  m_EditorClassIdentifier:
+  _killsCount: 4
+  _bodyEaterCount: 4
+  _prophetDontCheckSignsDaysNeeded: 2
+  _povistkasUsedCount: 2
+  _femaCallsCount: 3

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6448f72ef0b139ed0968f7f586280b6d, type: 3}
+  m_Name: CursorData
+  m_EditorClassIdentifier:
+  _textureByType:
+  - <Type>k__BackingField: 1
+    <Sprite>k__BackingField: {fileID: 2800000, guid: 077d8ca27aaaefe44b6db80893833333, type: 3}
+  - <Type>k__BackingField: 0
+    <Sprite>k__BackingField: {fileID: 2800000, guid: 4e41a986705dbb1479e97d1344422cf9, type: 3}

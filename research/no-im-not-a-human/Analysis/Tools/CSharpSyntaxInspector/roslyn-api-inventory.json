@@ -1,0 +1,37 @@
+{
+  "common_assembly": "Microsoft.CodeAnalysis, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+  "csharp_assembly": "Microsoft.CodeAnalysis.CSharp, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+  "parse_text_signatures": [
+    "Microsoft.CodeAnalysis.SyntaxTree ParseText(System.String, Microsoft.CodeAnalysis.CSharp.CSharpParseOptions, System.String, System.Text.Encoding, System.Threading.CancellationToken)",
+    "Microsoft.CodeAnalysis.SyntaxTree ParseText(System.String, Microsoft.CodeAnalysis.CSharp.CSharpParseOptions, System.String, System.Text.Encoding, System.Collections.Immutable.ImmutableDictionary\u00602[System.String,Microsoft.CodeAnalysis.ReportDiagnostic], System.Nullable\u00601[System.Boolean], System.Threading.CancellationToken)",
+    "Microsoft.CodeAnalysis.SyntaxTree ParseText(Microsoft.CodeAnalysis.Text.SourceText, Microsoft.CodeAnalysis.CSharp.CSharpParseOptions, System.String, System.Threading.CancellationToken)",
+    "Microsoft.CodeAnalysis.SyntaxTree ParseText(Microsoft.CodeAnalysis.Text.SourceText, Microsoft.CodeAnalysis.CSharp.CSharpParseOptions, System.String, System.Collections.Immutable.ImmutableDictionary\u00602[System.String,Microsoft.CodeAnalysis.ReportDiagnostic], System.Nullable\u00601[System.Boolean], System.Threading.CancellationToken)",
+    "Microsoft.CodeAnalysis.SyntaxTree ParseText(Microsoft.CodeAnalysis.Text.SourceText, Microsoft.CodeAnalysis.CSharp.CSharpParseOptions, System.String, System.Collections.Immutable.ImmutableDictionary\u00602[System.String,Microsoft.CodeAnalysis.ReportDiagnostic], System.Threading.CancellationToken)",
+    "Microsoft.CodeAnalysis.SyntaxTree ParseText(System.String, Microsoft.CodeAnalysis.CSharp.CSharpParseOptions, System.String, System.Text.Encoding, System.Collections.Immutable.ImmutableDictionary\u00602[System.String,Microsoft.CodeAnalysis.ReportDiagnostic], System.Threading.CancellationToken)"
+  ],
+  "parse_options_constructors": [
+    "Void .ctor(Microsoft.CodeAnalysis.CSharp.LanguageVersion, Microsoft.CodeAnalysis.DocumentationMode, Microsoft.CodeAnalysis.SourceCodeKind, System.Collections.Generic.IEnumerable\u00601[System.String])"
+  ],
+  "get_diagnostics_signatures": [
+    "System.Collections.Generic.IEnumerable\u00601[Microsoft.CodeAnalysis.Diagnostic] GetDiagnostics(Microsoft.CodeAnalysis.SyntaxNode)",
+    "System.Collections.Generic.IEnumerable\u00601[Microsoft.CodeAnalysis.Diagnostic] GetDiagnostics(Microsoft.CodeAnalysis.SyntaxToken)",
+    "System.Collections.Generic.IEnumerable\u00601[Microsoft.CodeAnalysis.Diagnostic] GetDiagnostics(Microsoft.CodeAnalysis.SyntaxTrivia)",
+    "System.Collections.Generic.IEnumerable\u00601[Microsoft.CodeAnalysis.Diagnostic] GetDiagnostics(Microsoft.CodeAnalysis.SyntaxNodeOrToken)",
+    "System.Collections.Generic.IEnumerable\u00601[Microsoft.CodeAnalysis.Diagnostic] GetDiagnostics(System.Threading.CancellationToken)"
+  ],
+  "language_version_has_csharp9": true,
+  "diagnostic_properties": [
+    "Microsoft.CodeAnalysis.DiagnosticDescriptor Descriptor",
+    "System.String Id",
+    "Microsoft.CodeAnalysis.DiagnosticSeverity DefaultSeverity",
+    "Microsoft.CodeAnalysis.DiagnosticSeverity Severity",
+    "Int32 WarningLevel",
+    "Boolean IsSuppressed",
+    "Boolean IsWarningAsError",
+    "Microsoft.CodeAnalysis.Location Location",
+    "System.Collections.Generic.IReadOnlyList\u00601[Microsoft.CodeAnalysis.Location] AdditionalLocations",
+    "System.Collections.Immutable.ImmutableDictionary\u00602[System.String,System.String] Properties"
+  ],
+  "scope": "Public signatures of SDK Roslyn assemblies in isolated .NET10 process; no target game assembly loaded or executed.",
+  "initial_powershell_probe": "Assembly.LoadFrom in PowerShell failed with manifest mismatch 0x80131040; isolated .NET10 process is used instead."
+}

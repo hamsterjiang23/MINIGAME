@@ -1,0 +1,16 @@
+{
+  "endpoint": "http://127.0.0.1:57941/Export/UnityProject",
+  "method": "POST",
+  "body": {
+    "path": "D:\\NoImNotAHuman-Research\\Analysis\\Assets\\SmokeProject"
+  },
+  "startedUtc": "2026-10-13T02:59:37.5760644Z",
+  "status": 200,
+  "elapsedSeconds": 0.233902,
+  "process": {
+    "Id": 64400,
+    "WorkingSet64": 197992448,
+    "PrivateMemorySize64": 188022784,
+    "PeakWorkingSet64": 197996544
+  }
+}

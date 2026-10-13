@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 250344640, guid: 57c9a3e5193e26c4b968cc86e528416d, type: 3}
+  m_Name: Day
+  m_EditorClassIdentifier:
+  components:
+  - {fileID: 11400000, guid: 24a7f151b2131d04287ddfca728616e5, type: 2}
+  - {fileID: 11400000, guid: 73380fcc3ddf56d4fa07310c1f734bdc, type: 2}
+  - {fileID: 11400000, guid: 4599485eac1570541bdadf90e165e24b, type: 2}
+  - {fileID: 11400000, guid: 0852d0df115a9a04798de26a58e02d64, type: 2}
+  - {fileID: 11400000, guid: aa1f04ebda24abd41a08e0ad42fc8c00, type: 2}
+  - {fileID: 11400000, guid: af5292a5f14a3b540bf0060bab0ca84c, type: 2}
+  - {fileID: 11400000, guid: 7180fba3d9e1c77438dc96592b783a17, type: 2}
+  - {fileID: 11400000, guid: 1847e9024664a5243a99f87944132952, type: 2}

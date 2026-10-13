@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0ffa9692e52bfb38ab43e66b4591cb, type: 3}
+  m_Name: OtherGameData
+  m_EditorClassIdentifier:
+  _tvReportageCountByDay: 00000000010000000200000002000000020000000100000002000000020000000100000001000000010000000100000000000000000000000000000000000000000000000000000000000000
+  _startKnockTime: {x: 7, y: 12}
+  _endKnockTime: {x: 4, y: 8}
+  _knockTimeProgressDuration: 90
+  _radioDelta: 0.05
+  _radioThresholdStart: 0.2
+  _wrongStateMultiplier: 0
+  _screamerOnImposterChance: 0.75
+  _daysRange: {x: 2, y: 3}
+  _deficitConsumables:
+    _serializedList:
+    - Key: 3
+      Value: 2
+    - Key: 1
+      Value: 0
+    - Key: 2
+      Value: 1
+    - Key: 6
+      Value: 0
+    - Key: 8
+      Value: 1
+    - Key: 7
+      Value: 0
+  _badFemaRatingChance: 0.13
+  _takeGunAfterCheck: -0.7
+  _notTakeGunAfterCheck: 0.5
+  _isHuman: 0.2
+  _listenDialogFirstTime: 0.3
+  _listenDialogRepeat: 0.1
+  _everyDayIncrement: 0.1
+  _dreams:
+  - <Dream>k__BackingField: 1
+    <SceneIndex>k__BackingField: 4
+    <HasMusic>k__BackingField: 0
+    <Music>k__BackingField: 0
+  - <Dream>k__BackingField: 2
+    <SceneIndex>k__BackingField: 4
+    <HasMusic>k__BackingField: 1
+    <Music>k__BackingField: -1802906290
+  - <Dream>k__BackingField: 3
+    <SceneIndex>k__BackingField: 6
+    <HasMusic>k__BackingField: 1
+    <Music>k__BackingField: -1666089960
+  _phoneNumbers:
+    _serializedList:
+    - Key: 2
+      Value: 000451
+    - Key: 4
+      Value: 777460
+    - Key: 11
+      Value: 891533

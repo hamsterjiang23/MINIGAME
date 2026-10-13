@@ -1,0 +1,1055 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: UI_it
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: 2c9f148e973fd914eb8426fb4d22c384, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 66450728108675072
+    m_Localized: Русский
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66450829002657792
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452242680238080
+    m_Localized: Беларуская
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452260287926272
+    m_Localized: 简体中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452283474038784
+    m_Localized: 繁體中文
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452325719068672
+    m_Localized: Français
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452351388209152
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452370216439808
+    m_Localized: Italiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452396246290432
+    m_Localized: 日本語
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452407965175808
+    m_Localized: 한국어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452438688452608
+    m_Localized: Tiếng Việt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452479591305216
+    m_Localized: Português (Brasil)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452522465480704
+    m_Localized: Español (Latinoamericano)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452549913006080
+    m_Localized: Español (España)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452582032986112
+    m_Localized: Türkçe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66452592023818240
+    m_Localized: Українська
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93637984313397248
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16302985216
+    m_Localized: Ingresso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131918974976
+    m_Localized: Bagno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 153125376000
+    m_Localized: Soggiorno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187787104256
+    m_Localized: Camera da letto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224126554112
+    m_Localized: Ufficio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270666551296
+    m_Localized: Cucina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 299816964096
+    m_Localized: Ripostiglio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350756786176
+    m_Localized: Finestra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656455089278980
+    m_Localized: Non mi va di dormire. Sono pieno di energie!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656498731012100
+    m_Localized: Non riesco a dormire. E se arrivasse qualcuno in cerca di rifugio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656533392740350
+    m_Localized: Non dovrebbe arrivare più nessuno, per questa notte.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3656689349545980
+    m_Localized: A giudicare dall'odore, questa notte è morto qualcuno...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660792356130820
+    m_Localized: Lingua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660864884035580
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660989769437180
+    m_Localized: Esci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131613735687020544
+    m_Localized: Salva e torna al desktop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3661098318024700
+    m_Localized: Torna al menu senza salvare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663275547676670
+    m_Localized: Apri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3663488060477440
+    m_Localized: Abbandona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3667991568568320
+    m_Localized: Avvia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3668215154331650
+    m_Localized: No, non sono un essere umano, sono {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124127443537900
+    m_Localized: La birra mi ha messo sonno. Meglio andare a dormire.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12124292694921200
+    m_Localized: Bober Černý
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164343885287400
+    m_Localized: Il mondo è andato in malora, ma una birra ghiacciata è sempre un piacere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13164348633239600
+    m_Localized: Riduce  <sprite=0> a 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170518181793800
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170520799039500
+    m_Localized: È piena di sostanze chimiche. Ma perché non berla, se comunque devo restare sveglio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13170523483394000
+    m_Localized: +1   <sprite=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176150536474600
+    m_Localized: Caffè
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176152247750700
+    m_Localized: Non bevo più caffè caldo. Come tutti, direi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13176153497653300
+    m_Localized: +1   <sprite=0> per qualche giorno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35317810561011700
+    m_Localized: Inglese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36029840414724100
+    m_Localized: "Grazie per aver giocato!\nAggiungi il gioco alla Lista dei desideri... se sei un essere umano!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739963133480960
+    m_Localized: Apri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739981814910976
+    m_Localized: Entra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40739999804280832
+    m_Localized: Usa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40740647467732992
+    m_Localized: Guarda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741524173737984
+    m_Localized: Scantinato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40741558088880128
+    m_Localized: Casa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45436991704911872
+    m_Localized: Telefono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45437056263639040
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458898076553216
+    m_Localized: Sigarette (ancora {0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45458932218187776
+    m_Localized: Fuma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49667052037459968
+    m_Localized: Barrica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377425445216256
+    m_Localized: Principale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377521738047488
+    m_Localized: Musica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53377553434402816
+    m_Localized: Suoni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55219394371637248
+    m_Localized: Salva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224523648913408
+    m_Localized: Nuova partita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55224549817176064
+    m_Localized: Continua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56531188432228352
+    m_Localized: QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941361121218560
+    m_Localized: Prendi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941413084450816
+    m_Localized: Fungo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946729964556288
+    m_Localized: Scava
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59946749677785088
+    m_Localized: Buca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450821383311360
+    m_Localized: Accarezza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62450848965054464
+    m_Localized: Gatto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66090579946885120
+    m_Localized: Impostazioni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66343298049757184
+    m_Localized: Indietro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66346014109061120
+    m_Localized: Schermo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632767213568
+    m_Localized: Polski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179147632809156608
+    m_Localized: العربية
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269633731022848
+    m_Localized: Parla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68269655268773888
+    m_Localized: Morte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69257185275400192
+    m_Localized: Testo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69259143700795392
+    m_Localized: Effetto battitura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89138519934226432
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73342396577599488
+    m_Localized: Kombucha (x{0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77551641594417152
+    m_Localized: Non usare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560897118916608
+    m_Localized: Ripristina completamente  <sprite=0>, ma consuma un  <sprite=1> il giorno seguente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77560970431156224
+    m_Localized: Non fumo da tempo. L'ultima volta è stata... quando se ne sono andati tutti, direi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77562143573790720
+    m_Localized: Pacchetto di sigarette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572482784808960
+    m_Localized: Salva la partita. I progressi vengono mantenuti anche dopo il completamento della partita.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572547771355136
+    m_Localized: La mia bevanda preferita. Mi fa sentire bene, mi schiarisce le idee. E mi ricorda i giorni felici.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77572569351049216
+    m_Localized: Kombucha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77614048173871104
+    m_Localized: Minatore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326529556992000
+    m_Localized: Schermo intero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326756594667520
+    m_Localized: Finestra a schermo intero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326760352763904
+    m_Localized: Finestra ingrandita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78326850240892928
+    m_Localized: Finestra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78385109777764352
+    m_Localized: Esci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616001506955264
+    m_Localized: Riattacca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616142859194368
+    m_Localized: Abbandona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616236836769792
+    m_Localized: Riponi [tieni premuto]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78616429665701888
+    m_Localized: Abbandona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78722207886069760
+    m_Localized: Corri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987670541029376
+    m_Localized: Devo difendermi. In tutti i modi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78987749125509120
+    m_Localized: Questo mondo è maledetto... Ma forse si può ancora sopravvivere...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78988993487425536
+    m_Localized: Dovrei coprirle con delle assi. La situazione può solo peggiorare... ma devo tentare.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78999771271647232
+    m_Localized: Usa oggetto [tieni premuto]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109195730079744
+    m_Localized: ForRest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109268786466816
+    m_Localized: Vicino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109308955316224
+    m_Localized: FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80109359555399680
+    m_Localized: Ufficio del paranormale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80130372527706112
+    m_Localized: Numeri telefonici
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208385776799744
+    m_Localized: EnerJeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80208677444505600
+    m_Localized: Caffè
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80910065015181312
+    m_Localized: Per oggi non credo di trovare altre trasmissioni radio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83008742139613184
+    m_Localized: Istruzioni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079022971179008
+    m_Localized: Meglio di no. Controllerò di giorno.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079056223621120
+    m_Localized: Se guardo ora, rischio di restare cieco. Darò un'occhiata di notte.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079087727038464
+    m_Localized: Oggi non ho tempo per questo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079202038599680
+    m_Localized: Oggi non ho tempo per questo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079223148531712
+    m_Localized: Non c'è nessuno in giro, a quest'ora del giorno.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83079270019878912
+    m_Localized: Oggi non ho tempo per questo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83741359755481088
+    m_Localized: Per oggi può bastare.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609794512867328
+    m_Localized: Per ricevere un segnale, ruota la manopola destra. Per ruotarla, tieni premuto il pulsante sinistro del mouse sulla manopola destra e muovi il cursore a sinistra o destra. La manopola sinistra regola il volume.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85609992173637632
+    m_Localized: Ho rimosso la schermatura dalle radio. Che si fottano!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85988737455738880
+    m_Localized: Merda, non funziona...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85989059582480384
+    m_Localized: Se non ricevi segnale, prova a cambiare l'intervallo di frequenza. Per cambiarlo, fai clic con il pulsante sinistro del mouse sugli interruttori al centro e continua a cercare le frequenze con la manopola destra.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075013436723200
+    m_Localized: "Uscire?\nTutti i progressi non salvati andranno persi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131611744537665536
+    m_Localized: "Uscire?\nI progressi saranno salvati."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075038585769984
+    m_Localized: Sì
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88075057707601920
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538115846144
+    m_Localized: il tizio schizzato che urla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88154538132623360
+    m_Localized: la ragazza triste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81558843359481856
+    m_Localized: la nonna mezza matta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93159162333093888
+    m_Localized: Le linee telefoniche sono fuori uso fino all'autunno. Possiamo solo aspettare...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358144
+    m_Localized: Rispondi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358145
+    m_Localized: Ascolta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358146
+    m_Localized: Cerca frequenza [ruota]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358147
+    m_Localized: Passa alla banda FM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93160860036358148
+    m_Localized: Passa alla banda AM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216557715456
+    m_Localized: Vibrazione gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075584
+    m_Localized: Sensibilità gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075585
+    m_Localized: Sensibilità gamepad nelle stanze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94373216587075586
+    m_Localized: Sensibilità mouse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 94374215708037120
+    m_Localized: Comandi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101498826102919168
+    m_Localized: Calendario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499529651277824
+    m_Localized: Giornata della birra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499572638699520
+    m_Localized: Giornata del cetriolo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499586869972992
+    m_Localized: Giornata della famiglia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499609678598144
+    m_Localized: Giornata per la sensibilizzazione sulla congiuntivite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499620114026496
+    m_Localized: Giornata dell'infanzia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499628875927552
+    m_Localized: Giornata dei cassieri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499641635000320
+    m_Localized: Giornata della città
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499651860713472
+    m_Localized: Giornata dell'ospitalità
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499664099692544
+    m_Localized: Giornata mondiale della riconoscenza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499674375737344
+    m_Localized: Giornata della diplomazia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499685037658112
+    m_Localized: Giornata della riconciliazione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499700946653184
+    m_Localized: Giornata nazionale dei mulini a vento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499724829020160
+    m_Localized: Festa di fine estate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101499734798880768
+    m_Localized: Giornata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124348878002024448
+    m_Localized: Spettegolando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527090041180160
+    m_Localized: '<color=#444444>Hai ricevuto:</color> <color=#225555>{1}</color> x{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101527150292357120
+    m_Localized: '<color=#444444>Hai consegnato:</color> <color=#225555>{1}</color> x{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103649253699342336
+    m_Localized: Salta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102986315954982912
+    m_Localized: il tizio barbuto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046912809275392
+    m_Localized: lo strambo senza occhi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046924544937984
+    m_Localized: la signora dei tarocchi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046925161500672
+    m_Localized: il tizio con la maglietta amogus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046926415597568
+    m_Localized: il testone saccente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046927208321024
+    m_Localized: il tizio occhialuto con i baffi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104046928026210304
+    m_Localized: la ragazzina piagnucolante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054037149192192
+    m_Localized: la ragazzina con il cappellino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054039049211904
+    m_Localized: la coppia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040013901824
+    m_Localized: il delinquente pelato elegante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054040768876544
+    m_Localized: la gattara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054041620320256
+    m_Localized: la credente burbera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054042379489280
+    m_Localized: lo smilzo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043079938048
+    m_Localized: il tizio in maglietta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054043927187456
+    m_Localized: il tassista con il cappello
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054044770242560
+    m_Localized: il freddoloso con il cappotto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054045562966016
+    m_Localized: il tizio con la bandana viola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054046376660992
+    m_Localized: la fumatrice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054558484402176
+    m_Localized: la donnona con la frangia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054559545561088
+    m_Localized: il tizio con il cappuccio nero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560250204160
+    m_Localized: il tipo con il cappellino verde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054560921292800
+    m_Localized: il grosso orco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054561768542208
+    m_Localized: il gobbo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054562557071360
+    m_Localized: la sbruffona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054563320434688
+    m_Localized: il membro della setta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564108963840
+    m_Localized: il signore elegante in cancrena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054564863938560
+    m_Localized: la signora con maglione e occhiali
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054565543415808
+    m_Localized: il membro della setta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054566503911424
+    m_Localized: il tizio ferito alla pancia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054567439241216
+    m_Localized: la madre con la bambina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054914303987712
+    m_Localized: la donna con il cadavere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054917168697344
+    m_Localized: il ciccione nudo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054919215517696
+    m_Localized: il tizio in tuta FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054920968736768
+    m_Localized: lo sciattone itterico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104054924097687552
+    m_Localized: il tipo strafatto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055100333953024
+    m_Localized: la ragazza storta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055102674374656
+    m_Localized: il senzatetto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055103697784832
+    m_Localized: il tizio con la bocca cucita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 104055636873515008
+    m_Localized: la donna depressa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 108827407107739648
+    m_Localized: Non c'è più nessuno. Che sia colpa... del sogno?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109486460518277120
+    m_Localized: Un frammento di vita serena, ancora ignara dell'orrore incombente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118142792813256704
+    m_Localized: Raccolta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165490289352704
+    m_Localized: Un boato ha squarciato la densa nebbia e sopra la folla si sono levate ali dal sentore di cenere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165494445907968
+    m_Localized: 'Il seminterrato è diventato un universo: finestre murate, voci che si sovrapponevano al ticchettio dell''orologio... Il sole si è spento... ma il tormento non è altrettanto facile da placare.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165596245860352
+    m_Localized: 'I Visitatori sono sempre stati qui: un caldo afflato nel buio, un crudele sibilo alle spalle. Non vedrai mai più la luce, che torni o meno.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165625647931392
+    m_Localized: Hanno pregato per il silenzio ultimo. Forse la loro preghiera è stata infine udita. Fuori tutto tace.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165663648325632
+    m_Localized: Ti hanno portato via a sirene spiegate, strappandoti ai tuoi ricordi. Se potessi tornare, anche solo per recuperare il poster...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165680962412544
+    m_Localized: Quando la sua ombra ha varcato la soglia, la casa è sprofondata nel silenzio. Di te non restano che i bisbigli.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165713078198272
+    m_Localized: Chiunque incontrassi ti appariva ostile. La paura ti ha offuscato e altri hanno finito ciò che tu avevi cominciato.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165741096148992
+    m_Localized: I funghi sono emersi dal terreno, ricostruendo città aliene. Ti sei affannato, ma le porte del loro mondo erano già chiuse.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165774780604416
+    m_Localized: Un processo si è chiuso e subito ne è seguito un altro. Agli occhi della folla, ora sei tu la minaccia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118165792199548928
+    m_Localized: Una volta varcata la linea, tutto ciò che temevi ha perso consistenza. Il tempo è svanito, lasciandosi alle spalle un gelo che infonde conforto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118498831341461504
+    m_Localized: '???'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119628010817052672
+    m_Localized: Sensitiva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630426442555392
+    m_Localized: Sorella del mammone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630501872918528
+    m_Localized: Marito della madre assente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630550598148096
+    m_Localized: Marito della gemella
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630628608008192
+    m_Localized: Roulette telefonica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630801698545664
+    m_Localized: Moglie del grasso iroso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630847580037120
+    m_Localized: Moglie tizio FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630891322433536
+    m_Localized: Ambasciata straniera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 119630935152910336
+    m_Localized: Amica della ragazzina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63931917744721920
+    m_Localized: "1. Oggi il mondo si è rifondato\nIn cantina un fungo è sbocciato\nImponente s'erge come un torrione\nÈ tempo di farne un solo boccone.\n\n2. Solo il debole l'ospite accetta\nSempre più in alto il Fungo svetta\nSotto il melo troverai ristoro\nI suoi dolci frutti sono un tesoro.\n\n\n3. Perché infine il giorno giungerà\nIn cui al Fungo giurare fedeltà\nSul quadrante la lancetta sale\nAgisci subito, amico, non rimandare!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59941615140851712
+    m_Localized: Penso che lo riporrò nel frigorifero... anche se sarei tentato di mangiarlo ora.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715969077248
+    m_Localized: Che strano fungo... Come è cresciuto su una patata?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243072
+    m_Localized: Ti trasporta brevemente nel Paese dei Funghi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243073
+    m_Localized: Ho assaggiato la mela. Ha un sapore agrodolce...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121836715994243074
+    m_Localized: L'ho impostato alle 12, come dice il Libro dei Sorrisi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 127250467119947776
+    m_Localized: Mandato FEMA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128370639113281536
+    m_Localized: Birra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128372071870750720
+    m_Localized: Cibo per gatti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 128645536196583424
+    m_Localized: Bloccato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 139881039264735232
+    m_Localized: Accelera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 164644497961066496
+    m_Localized: Mentre il mondo in superficie collassa, resti solo tra le macerie della tua vita. Ciò che è stato distrutto rimarrà sepolto per sempre... insieme a te.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134476406784
+    m_Localized: il ragazzo nervoso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766912
+    m_Localized: il rocker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766913
+    m_Localized: il tizio nudo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766914
+    m_Localized: il ragazzo con la giacca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766915
+    m_Localized: la ragazza con il top
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766916
+    m_Localized: il tizio pelato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766917
+    m_Localized: lo svitato in canottiera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766918
+    m_Localized: il tizio con lo sfogo cutaneo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766919
+    m_Localized: il sognatore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766920
+    m_Localized: il gigante peloso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766921
+    m_Localized: la ragazza tatuata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167520134505766922
+    m_Localized: il tipo ustionato dal sole
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179157896413650944
+    m_Localized: Português (Portugal)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193168367047221248
+    m_Localized: il membro della setta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167011389448192
+    m_Localized: il medico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 193167156193599488
+    m_Localized: il tizio senza gambe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009390581719040
+    m_Localized: Per captare un segnale, ruota la manopola destra. Per farlo, ruota la levetta analogica destra del controller in senso orario o antiorario. La manopola per regolare il volume si trova a sinistra.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 203009496299151360
+    m_Localized: Se non ricevi alcun segnale, prova a cambiare la banda di frequenza. Per farlo, premi il pulsante dorsale sinistro o destro e continua a cercare l'onda desiderata usando la levetta destra.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762759966924800
+    m_Localized: "Inverti Asse Y (Mouse)\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229762825867829248
+    m_Localized: Inverti Asse Y (Controller)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
