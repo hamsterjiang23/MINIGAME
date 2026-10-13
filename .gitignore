@@ -6,6 +6,15 @@ Desktop.ini
 **/obj/
 **/TestResults/
 .dotnet/
+**/.codegraph/
+src/.cursor/rules/codegraph.mdc
+UnityProject/Library/
+UnityProject/Temp/
+UnityProject/Logs/
+UnityProject/Obj/
+UnityProject/UserSettings/
+Builds/
+Artifacts/
 
 # Include the complete research snapshot in this private repository.
 !/research/no-im-not-a-human/

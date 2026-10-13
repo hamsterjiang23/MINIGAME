@@ -37,6 +37,13 @@
 *.nupkg filter=lfs diff=lfs merge=lfs -text
 # Preserve research evidence bytes, including original line endings.
 research/no-im-not-a-human/** -text
+# Preserve the embedded upstream package bytes and Unity-generated YAML whitespace.
+UnityProject/Packages/dev.yarnspinner.unity/** -text -whitespace
+UnityProject/**/*.meta whitespace=-blank-at-eol
+UnityProject/ProjectSettings/*.asset whitespace=-blank-at-eol
+UnityProject/Assets/**/*.unity whitespace=-blank-at-eol
+UnityProject/Assets/**/*.mat whitespace=-blank-at-eol
+UnityProject/Assets/**/*.yarn whitespace=-blank-at-eof
 # Binary files without a common extension and other files >= 1 MiB.
 research/no-im-not-a-human/Analysis/Assets/ManagedExport/ExportedProject/Assets/_Localization/Tables/Text/_Separating/DayDialogs/DayDialogs[[:space:]]Shared[[:space:]]Data.asset filter=lfs diff=lfs merge=lfs -text
 research/no-im-not-a-human/Analysis/Assets/ManagedExport/ExportedProject/Assets/_Localization/Tables/Text/DemoDialogs/DemoDialogs[[:space:]]Shared[[:space:]]Data.asset filter=lfs diff=lfs merge=lfs -text

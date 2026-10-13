@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "checkedAtUtc": "2026-10-13T08:56:23.7255654Z",
+  "sdk": "8.0.424",
+  "dotnet": {
+    "lockedRestore": "passed",
+    "releaseBuild": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "core": {
+      "Total": 73,
+      "Passed": 73,
+      "Failed": 0
+    },
+    "presentation": {
+      "Total": 77,
+      "Passed": 77,
+      "Failed": 0
+    },
+    "finalTrx": [
+      "nullable-final_net8.0_20261013164129.trx",
+      "nullable-final_net8.0_20261013164131.trx"
+    ]
+  },
+  "yarnCompiler": {
+    "version": "3.2.8",
+    "coreNodes": 322,
+    "yarnNodes": 327,
+    "strings": 536,
+    "errors": 0,
+    "diagnostics": 0
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "rendering": "Built-in",
+    "normalUpmImport": "blocked: path argument undefined, also reproduced in minimal project",
+    "offlineFlags": "-noUpm",
+    "sceneGeneration": "passed",
+    "playMode": {
+      "result": "Passed",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "seconds": 18.7843932,
+      "tests": [
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.ActualYarnButtonsCompleteThreeDaysAndReturnToApartmentBetweenPatients",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoredEffectsClearOverlaysSnapTerminalAndPauseAtFinalSleepFrame",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoreInvalidatesOldContinueAndReplyCallbacksWhileFreshYarnRemainsUsable",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.SceneBootsWithOneRuntimeAndOriginalInteractionTargets"
+      ]
+    },
+    "sourceComparison": {
+      "files": 145,
+      "mismatches": 0
+    },
+    "windowsMonoBuild": {
+      "result": "Succeeded",
+      "errors": 0,
+      "warnings": 1,
+      "bytes": 98241435,
+      "path": "Builds/MiniGame/MiniGame.exe",
+      "warningDetail": {
+        "count": 1,
+        "warnings": [
+          "GfxDevice renderer is null. Unity cannot update the Ambient Probe and Reflection Probes that the SkyManager generates. Run the Editor without the -nographics argument or generate lighting for your scene."
+        ]
+      }
+    },
+    "playerStartup": {
+      "ready": true,
+      "unexpectedEarlyExit": false,
+      "exceptions": 0,
+      "seconds": 10,
+      "scope": "Built Mono Windows player startup in batch/nographics; not rendered player interaction",
+      "hostAssemblySha256": "C8CEE472EBC66957263A4685B353BB80D330BE4AE1B8DFC4EEE50CE782F6A49B"
+    },
+    "visuals": [
+      "world.png",
+      "terminal.png",
+      "eyes.png",
+      "pause-sleep.png"
+    ],
+    "il2cpp": "not run"
+  },
+  "limits": [
+    "Formal content and numeric balance remain development placeholders",
+    "Source-game random visitor identities, inventory and killings are not migrated requirements",
+    "Normal UPM import remains unresolved; offline success is separately scoped",
+    "Player startup was batch/nographics; rendered interaction was verified in Editor PlayMode"
+  ],
+  "artifactsRoot": "Artifacts/",
+  "buildPath": "Builds/MiniGame/MiniGame.exe"
+}

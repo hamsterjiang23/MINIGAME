@@ -1,6 +1,6 @@
 # 游戏核心逻辑源码
 
-这里实现五位病人、三天流程和三种结局的**纯C#规则库**。当前交付为逻辑代码、开发配置、JSON存档与自动化测试；没有Unity场景、UI、美术或可玩的macOS应用，Unity／Yarn接入仍待下一阶段验证。
+这里实现五位病人、三天流程和三种结局的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。新建的[Unity开发原型](../UnityProject/README.md)接入房间、观察、Yarn会谈、处置反应和睡眠跨日；正式对白、美术与结局演出仍为后续制作内容。[verified: MiniGame.Presentation/GameRuntime.cs；../UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate] [opinion]
 
 [实现说明：文件职责、设计理由与借鉴来源](architecture-and-rationale.md)解释代码为什么这样组织；[研究路线](../research/unity-2022-roadmap.md)和[游戏设计](../docs/game-overview.md)提供需求背景。
 
@@ -10,6 +10,8 @@
 | --- | --- |
 | [MiniGame.Core](MiniGame.Core) | `.NET Standard 2.1`、C#9的逻辑库，运行依赖Newtonsoft.Json13.0.3 |
 | [MiniGame.Core.Tests](MiniGame.Core.Tests) | `net8.0`测试，NUnit3.14.0、Adapter4.6.0、Test SDK17.11.1 |
+| [MiniGame.Presentation](MiniGame.Presentation) | `.NET Standard 2.1`宿主生命周期、观察记录、原创占位内容、Yarn节点生成与检查点 |
+| [MiniGame.Presentation.Tests](MiniGame.Presentation.Tests) | 输入门控、回调失效、三天流程、内容与存档验证 |
 | [MiniGame.sln](MiniGame.sln) | 逻辑库与测试工程的解决方案 |
 | [global.json](global.json) | 固定SDK8.0.424，不自动切换到其他SDK |
 | [Directory.Build.props](Directory.Build.props) | 统一C#9、可空检查、确定性构建和警告视为错误 |
@@ -111,11 +113,13 @@ SchemaVersion、规则名称和完整规则指纹必须匹配；非法命令、�
 
 文件保存先写同目录临时文件并刷新，再原子替换目标；替换前失败不会先删旧存档。逻辑库不自动选择保存目录，也不自动在每次命令后写盘。宿主应在回答结算、处置提交和跨日前保存检查点。
 
-## 后续接入Unity／Yarn
+## Unity／Yarn接入
 
-核心库按.NET Standard2.1编译，以支持Unity2022.3的API兼容方向；实际Unity导入、Mono／IL2CPP、JSON依赖接入尚未验证。
+两个库通过本地UPM包供Unity2022.3使用；宿主读取 `GameRuntime.GetView()`，提交交互、回答或处置，按回调token通知演出完成。存档由 `RuntimeFileSaveStore` 保存完整核心与宿主检查点。实际Editor/Player验证范围见[玩法迁移记录](../docs/reference-gameplay-migration.md)，IL2CPP未验证。[verified: MiniGame.Core/package.json；MiniGame.Presentation/package.json；MiniGame.Presentation/GameRuntime.cs Save/CompleteCue；MiniGame.Presentation/RuntimeFileSaveStore.cs] [opinion]
 
-后续适配器负责节点文本、最多四个选项的呈现、事件演出、中文字体、输入上下文以及文件目录。它查询核心资格并提交命令；不得让UI按钮或Yarn变量直接成为配额、治疗次数、病人去留的另一份权威状态。
+适配器负责节点文本、选项呈现、事件演出、中文字体、输入上下文以及文件目录。它查询核心资格并提交命令；不得让UI按钮或Yarn变量直接成为配额、治疗次数、病人去留的另一份权威状态。[verified: ../UnityProject/Assets/MiniGame/Yarn/MiniGameYarnBridge.cs；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs] [opinion]
+
+2026-10-13在Windows使用仓库内 `.dotnet/dotnet.exe` SDK8.0.424，完成锁定恢复、Release构建（0警告、0错误）、Core73项及Presentation77项测试，全部通过。当前结果在忽略目录 `Artifacts/Tests/`，[汇总记录](../Artifacts/Tests/migration-verification-report.json)区分纯.NET验证与Unity验证。[verified: ../Artifacts/Tests/migration-verification-report.json Sdk/Core/Presentation/Scope；../Artifacts/Tests/migration-build.log]
 
 完整设计理由与逐文件导航见[实现说明](architecture-and-rationale.md)。正式规则缺口继续见[设计待定项](../docs/open-questions.md)。
 

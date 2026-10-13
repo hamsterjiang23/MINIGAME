@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniGame.Core", "MiniGame.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniGame.Core.Tests", "MiniGame.Core.Tests\MiniGame.Core.Tests.csproj", "{26F20EB6-30E7-4E54-963A-C7A9199DE22A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniGame.Presentation", "MiniGame.Presentation\MiniGame.Presentation.csproj", "{B8382732-623F-43BB-A4A5-6FAF8EEB56CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniGame.Presentation.Tests", "MiniGame.Presentation.Tests\MiniGame.Presentation.Tests.csproj", "{CEF2D272-709F-4212-B7CC-3206BFA67D6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26F20EB6-30E7-4E54-963A-C7A9199DE22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8382732-623F-43BB-A4A5-6FAF8EEB56CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8382732-623F-43BB-A4A5-6FAF8EEB56CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8382732-623F-43BB-A4A5-6FAF8EEB56CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8382732-623F-43BB-A4A5-6FAF8EEB56CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF2D272-709F-4212-B7CC-3206BFA67D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF2D272-709F-4212-B7CC-3206BFA67D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF2D272-709F-4212-B7CC-3206BFA67D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF2D272-709F-4212-B7CC-3206BFA67D6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

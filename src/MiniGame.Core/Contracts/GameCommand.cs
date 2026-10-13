@@ -1,3 +1,5 @@
+#nullable enable
+
 namespace MiniGame.Core
 {
     public abstract class GameCommand { }

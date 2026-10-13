@@ -1,0 +1,1294 @@
+{
+    "revision": "original-zh-placeholder-v1:500e6dbf2fac9f7da1c6ed75fa596afc2b642e064a8800f791a03f66f8ef5706",
+    "rulesFingerprint": "500e6dbf2fac9f7da1c6ed75fa596afc2b642e064a8800f791a03f66f8ef5706",
+    "nodes": [
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.1",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.2",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.3",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.4",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.reaction.purify",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.reaction.release",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.reaction.treat",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.special",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7370656369616c"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.special.branch.empathize",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.special.branch.neutral",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.battlefield-doctor.special.branch.pressure",
+            "yarnNodeName": "Core_646179312e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.child.normal.1",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day1.child.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.child.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.child.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.child.normal.2",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day1.child.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.child.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.child.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.child.normal.3",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day1.child.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.child.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.child.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.child.normal.4",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day1.child.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.child.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.child.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179312e6368696c642e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.child.reaction.purify",
+            "yarnNodeName": "Core_646179312e6368696c642e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day1.child.reaction.release",
+            "yarnNodeName": "Core_646179312e6368696c642e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day1.child.reaction.treat",
+            "yarnNodeName": "Core_646179312e6368696c642e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day1.child.special",
+            "yarnNodeName": "Core_646179312e6368696c642e7370656369616c"
+        },
+        {
+            "coreNodeId": "day1.child.special.branch.empathize",
+            "yarnNodeName": "Core_646179312e6368696c642e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.child.special.branch.neutral",
+            "yarnNodeName": "Core_646179312e6368696c642e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.child.special.branch.pressure",
+            "yarnNodeName": "Core_646179312e6368696c642e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.1",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.2",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.3",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.4",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.diplomat.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.diplomat.reaction.purify",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day1.diplomat.reaction.release",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day1.diplomat.reaction.treat",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day1.diplomat.special",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7370656369616c"
+        },
+        {
+            "coreNodeId": "day1.diplomat.special.branch.empathize",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.diplomat.special.branch.neutral",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.diplomat.special.branch.pressure",
+            "yarnNodeName": "Core_646179312e6469706c6f6d61742e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.1",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.2",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.3",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.4",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.reaction.purify",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.reaction.release",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.reaction.treat",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.special",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7370656369616c"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.special.branch.empathize",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.special.branch.neutral",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day1.former-ruler.special.branch.pressure",
+            "yarnNodeName": "Core_646179312e666f726d65722d72756c65722e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.1",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.2",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.3",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.4",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.reaction.purify",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.reaction.release",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.reaction.treat",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.special",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7370656369616c"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.special.branch.empathize",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.special.branch.neutral",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.battlefield-doctor.special.branch.pressure",
+            "yarnNodeName": "Core_646179322e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.child.normal.1",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day2.child.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.child.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.child.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.child.normal.2",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day2.child.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.child.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.child.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.child.normal.3",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day2.child.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.child.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.child.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.child.normal.4",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day2.child.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.child.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.child.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179322e6368696c642e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.child.reaction.purify",
+            "yarnNodeName": "Core_646179322e6368696c642e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day2.child.reaction.release",
+            "yarnNodeName": "Core_646179322e6368696c642e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day2.child.reaction.treat",
+            "yarnNodeName": "Core_646179322e6368696c642e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day2.child.special",
+            "yarnNodeName": "Core_646179322e6368696c642e7370656369616c"
+        },
+        {
+            "coreNodeId": "day2.child.special.branch.empathize",
+            "yarnNodeName": "Core_646179322e6368696c642e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.child.special.branch.neutral",
+            "yarnNodeName": "Core_646179322e6368696c642e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.child.special.branch.pressure",
+            "yarnNodeName": "Core_646179322e6368696c642e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.1",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.2",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.3",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.4",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.diplomat.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.diplomat.reaction.purify",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day2.diplomat.reaction.release",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day2.diplomat.reaction.treat",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day2.diplomat.special",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7370656369616c"
+        },
+        {
+            "coreNodeId": "day2.diplomat.special.branch.empathize",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.diplomat.special.branch.neutral",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.diplomat.special.branch.pressure",
+            "yarnNodeName": "Core_646179322e6469706c6f6d61742e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.1",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.2",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.3",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.4",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.reaction.purify",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.reaction.release",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.reaction.treat",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.special",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7370656369616c"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.special.branch.empathize",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.special.branch.neutral",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.former-ruler.special.branch.pressure",
+            "yarnNodeName": "Core_646179322e666f726d65722d72756c65722e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.1",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.2",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.3",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.4",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.priest.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179322e7072696573742e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day2.priest.reaction.purify",
+            "yarnNodeName": "Core_646179322e7072696573742e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day2.priest.reaction.release",
+            "yarnNodeName": "Core_646179322e7072696573742e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day2.priest.reaction.treat",
+            "yarnNodeName": "Core_646179322e7072696573742e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day2.priest.special",
+            "yarnNodeName": "Core_646179322e7072696573742e7370656369616c"
+        },
+        {
+            "coreNodeId": "day2.priest.special.branch.empathize",
+            "yarnNodeName": "Core_646179322e7072696573742e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day2.priest.special.branch.neutral",
+            "yarnNodeName": "Core_646179322e7072696573742e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day2.priest.special.branch.pressure",
+            "yarnNodeName": "Core_646179322e7072696573742e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.1",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.2",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.3",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.4",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.reaction.purify",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.reaction.release",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.reaction.treat",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.special",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7370656369616c"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.special.branch.empathize",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.special.branch.neutral",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.battlefield-doctor.special.branch.pressure",
+            "yarnNodeName": "Core_646179332e626174746c656669656c642d646f63746f722e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.child.normal.1",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day3.child.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.child.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.child.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.child.normal.2",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day3.child.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.child.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.child.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.child.normal.3",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day3.child.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.child.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.child.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.child.normal.4",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day3.child.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.child.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.child.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179332e6368696c642e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.child.reaction.purify",
+            "yarnNodeName": "Core_646179332e6368696c642e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day3.child.reaction.release",
+            "yarnNodeName": "Core_646179332e6368696c642e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day3.child.reaction.treat",
+            "yarnNodeName": "Core_646179332e6368696c642e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day3.child.special",
+            "yarnNodeName": "Core_646179332e6368696c642e7370656369616c"
+        },
+        {
+            "coreNodeId": "day3.child.special.branch.empathize",
+            "yarnNodeName": "Core_646179332e6368696c642e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.child.special.branch.neutral",
+            "yarnNodeName": "Core_646179332e6368696c642e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.child.special.branch.pressure",
+            "yarnNodeName": "Core_646179332e6368696c642e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.1",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.2",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.3",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.4",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.diplomat.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.diplomat.reaction.purify",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day3.diplomat.reaction.release",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day3.diplomat.reaction.treat",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day3.diplomat.special",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7370656369616c"
+        },
+        {
+            "coreNodeId": "day3.diplomat.special.branch.empathize",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.diplomat.special.branch.neutral",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.diplomat.special.branch.pressure",
+            "yarnNodeName": "Core_646179332e6469706c6f6d61742e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.1",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.2",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.3",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.4",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.reaction.purify",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.reaction.release",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.reaction.treat",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.special",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7370656369616c"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.special.branch.empathize",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.special.branch.neutral",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.former-ruler.special.branch.pressure",
+            "yarnNodeName": "Core_646179332e666f726d65722d72756c65722e7370656369616c2e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.1",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e31"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.1.branch.empathize",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e312e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.1.branch.neutral",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e312e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.1.branch.pressure",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e312e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.2",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e32"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.2.branch.empathize",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e322e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.2.branch.neutral",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e322e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.2.branch.pressure",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e322e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.3",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e33"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.3.branch.empathize",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e332e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.3.branch.neutral",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e332e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.3.branch.pressure",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e332e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.4",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e34"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.4.branch.empathize",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e342e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.4.branch.neutral",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e342e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.priest.normal.4.branch.pressure",
+            "yarnNodeName": "Core_646179332e7072696573742e6e6f726d616c2e342e6272616e63682e7072657373757265"
+        },
+        {
+            "coreNodeId": "day3.priest.reaction.purify",
+            "yarnNodeName": "Core_646179332e7072696573742e7265616374696f6e2e707572696679"
+        },
+        {
+            "coreNodeId": "day3.priest.reaction.release",
+            "yarnNodeName": "Core_646179332e7072696573742e7265616374696f6e2e72656c65617365"
+        },
+        {
+            "coreNodeId": "day3.priest.reaction.treat",
+            "yarnNodeName": "Core_646179332e7072696573742e7265616374696f6e2e7472656174"
+        },
+        {
+            "coreNodeId": "day3.priest.special",
+            "yarnNodeName": "Core_646179332e7072696573742e7370656369616c"
+        },
+        {
+            "coreNodeId": "day3.priest.special.branch.empathize",
+            "yarnNodeName": "Core_646179332e7072696573742e7370656369616c2e6272616e63682e656d70617468697a65"
+        },
+        {
+            "coreNodeId": "day3.priest.special.branch.neutral",
+            "yarnNodeName": "Core_646179332e7072696573742e7370656369616c2e6272616e63682e6e65757472616c"
+        },
+        {
+            "coreNodeId": "day3.priest.special.branch.pressure",
+            "yarnNodeName": "Core_646179332e7072696573742e7370656369616c2e6272616e63682e7072657373757265"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+# MiniGame integration patch
+
+Source: `YarnSpinnerTool/YarnSpinner-Unity`, commit `478309e5e70a1d88e94be47c65c793b851d35f56`, package version `3.2.8`. The upstream MIT license and third-party notices are retained. [verified: package.json version; LICENSE.md; docs/source-lock.md YarnSpinner-Unity row]
+
+Only the Runtime and Editor asmdef reference lists are changed: remove references to the optional Addressables, Input System, Localization and UniTask assemblies. Their upstream version defines and conditional source remain intact. This prototype uses uGUI, legacy input and YarnTask's built-in Task implementation; TextMeshPro remains installed because the upstream fallback shim does not compile against this Unity API. Installing an optional integration requires restoring its assembly references and verifying it in Unity. [verified: Runtime/YarnSpinner.Unity.asmdef references/versionDefines; Editor/YarnSpinner.Unity.Editor.asmdef references/versionDefines; ../../../Artifacts/Unity/offline-create-tmp.log L1021–L1029 CS1061] [opinion]
+
+The pinned `references/YarnSpinner-Unity` submodule is unchanged. This embedded copy makes the integration patch explicit rather than changing the shared reference checkout. [verified: git status --short in references/YarnSpinner-Unity returned no changes] [opinion]

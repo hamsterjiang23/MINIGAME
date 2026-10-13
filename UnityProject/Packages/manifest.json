@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "com.hamster.minigame.core": "file:../../src/MiniGame.Core",
+    "com.hamster.minigame.presentation": "file:../../src/MiniGame.Presentation",
+    "dev.yarnspinner.unity": "file:dev.yarnspinner.unity",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.test-framework": "1.1.33",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.textmeshpro": "3.0.7"
+  },
+  "testables": [
+    "com.hamster.minigame.core",
+    "com.hamster.minigame.presentation"
+  ]
+}

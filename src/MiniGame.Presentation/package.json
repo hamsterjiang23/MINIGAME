@@ -1,0 +1,11 @@
+{
+  "name": "com.hamster.minigame.presentation",
+  "version": "0.1.0",
+  "displayName": "MiniGame Presentation",
+  "description": "Reference-driven room, dialogue and presentation coordinator.",
+  "unity": "2022.3",
+  "dependencies": {
+    "com.hamster.minigame.core": "0.1.0",
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  }
+}
