@@ -4,6 +4,8 @@
 
 ## 建议阅读顺序
 
+当前研发完成度先看[当前完成情况与待补项](project-status.md)；下列文档保留设计来源与尚待裁决的规则。[opinion]
+
 1. [我们要完成什么游戏](game-overview.md)：目标、日循环、选择、五位病人、结局与资产。
 2. [程序需求v0.1](sources/program-requirements-v0-1.md)：交互与对话机制的原始要求。
 3. [设计冲突与待定问题](open-questions.md)：需要确认后才能具体开发的规则。
@@ -26,7 +28,7 @@
 - 多层引用只覆盖本游戏。脑暴收集池只提取方案15，其他团队及往届作品记录为范围外。
 - 不同来源的背景、处置、神父和结局差异分开保留，不自行消除矛盾；示例阈值保留示例身份。
 - [原有研究资料](../Dependency)保留，提供源码与Unity候选技术参考；其中的原创机制建议不直接变成项目需求。
-- 这是设计资料整理，尚未创建或验证可运行的游戏工程。
+- 本目录保留设计资料整理口径；当前已有Unity开发原型及验证记录，研发状态见[当前完成情况与待补项](project-status.md)。[verified: gameplay-migration-verification.json unity.sceneGeneration/playMode/windowsMonoBuild]
 
 ## 参考源码仓库
 

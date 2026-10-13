@@ -1,6 +1,6 @@
 # 我们要完成什么游戏
 
-> 本文是飞书资料的综合解读与开发阅读入口。当前交付物是设计文档和参考仓库；本游戏尚未建立自研工程或验证可运行版本。来源逐篇保存在 [sources](source-index.md)，互相矛盾的设计列在[待定问题](open-questions.md)，参考代码版本见[仓库记录](source-lock.md)。
+> 本文保留飞书设计资料的综合解读；当前已建立Unity开发原型，完成情况与待补项见[研发状态](project-status.md)，验证范围见[验证汇总](gameplay-migration-verification.json)。来源逐篇保存在 [sources](source-index.md)，互相矛盾的设计列在[待定问题](open-questions.md)，参考代码版本见[仓库记录](source-lock.md)。[verified: gameplay-migration-verification.json unity.sceneGeneration/playMode/windowsMonoBuild]
 
 ## 1. 一句话定位
 

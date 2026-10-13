@@ -46,8 +46,8 @@
 
 ## 4. 工程与制作缺口
 
-- 3D到2D的摄像机移动、开机遮挡与输入切换只是程序提案；尚无实现或验证。鼠标、退出电脑和返回房间的具体操作未给定。
-- 引擎、版本、渲染管线、对话工具、存档、AI管线未确定。既有研究报告只能提供候选方案。
+- 原文没有确定摄像机与输入的完整方案；当前开发原型已实现电脑镜头进出、输入切换和反应后回房，正式演出仍需制作与验收。[verified: ../UnityProject/README.md「运行与操作」；gameplay-migration-verification.json unity.playMode.tests]
+- 原文没有确定技术选型；当前开发基线为Unity2022.3.23f1c1、Built-in、Yarn3.2.8及JSON存档。正常UPM导入仍受阻，AI制作管线与最终发布配置未定。[verified: gameplay-migration-verification.json unity.version/rendering/normalUpmImport/yarnCompiler.version；../src/README.md「保存与恢复」] [opinion]
 - 正式资产清单尚缺：监督员、教学病人、角色差分、三天梦境、日记/任务单、结局演出与实际UI数量。
 - 音乐与外部媒体是参考链接；能否用于成品及最终素材替换仍需确认。
 - 发布平台、目标设备、性能预算与工期未明确承诺。早期Steam发行与DLC方向留作长线规划。

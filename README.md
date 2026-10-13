@@ -43,6 +43,7 @@ Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式Pl
 
 ## 阅读入口
 
+- [当前完成情况与待补项](docs/project-status.md)：开发原型、验证范围、正式内容缺口和后续交付顺序。
 - [核心逻辑源码](src/README.md)与[实现说明](src/architecture-and-rationale.md)。
 - [Unity开发原型](UnityProject/README.md)与[寻找伪人玩法迁移](docs/reference-gameplay-migration.md)。
 - [游戏总览](docs/game-overview.md)、[设计文档入口](docs/README.md)与[设计待定项](docs/open-questions.md)。
