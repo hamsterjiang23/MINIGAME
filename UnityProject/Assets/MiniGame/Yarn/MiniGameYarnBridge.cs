@@ -26,6 +26,7 @@ namespace MiniGame.UnityHost
         private string _completedKey = "";
 
         public bool IsRunning => _run != null || _stopping || !_nodeTask.IsCompleted();
+        public YarnProject? Project => project;
         public string Diagnostics => $"bound={_runtime != null}; project={project != null}; enabled={isActiveAndEnabled}; "
             + $"epoch={_epoch}; pump={_pumpRequested}; stopping={_stopping}; run={_run?.Key ?? "none"}; "
             + $"nodeTaskComplete={_nodeTask.IsCompleted()}; presenterPending={(_presenter != null ? _presenter.PendingPresentationCount : 0)}; "
@@ -201,12 +202,18 @@ namespace MiniGame.UnityHost
             var run = _run;
             var screen = _screen;
             if (run == null || screen == null) return;
+            while (IsCurrent(run) && !CanInteract(run)) await YarnTask.Yield();
+            if (!IsCurrent(run)) return;
             var advanced = false;
             screen.ShowCueText(line.TextWithoutCharacterName.Text, () =>
             {
                 if (CanInteract(run)) advanced = true;
             });
-            screen.SetDialogueText(line.CharacterName ?? "终端", line.TextWithoutCharacterName.Text);
+            var source = line.Metadata.FirstOrDefault(metadata => metadata.StartsWith("source:", StringComparison.Ordinal));
+            var portrait = line.Metadata.FirstOrDefault(metadata => metadata.StartsWith("portrait:", StringComparison.Ordinal));
+            screen.SetDialogueLine(line.CharacterName ?? "终端", line.TextWithoutCharacterName.Text,
+                source != null ? source.Substring("source:".Length) : (run.NodeId ?? run.Key),
+                portrait != null ? portrait.Substring("portrait:".Length) : "");
             screen.SetDialogueInteractable(CanInteract(run));
             while (!advanced && !token.IsNextContentRequested && IsCurrent(run)) await YarnTask.Yield();
             if (IsCurrent(run)) screen.HideDialogueActions();

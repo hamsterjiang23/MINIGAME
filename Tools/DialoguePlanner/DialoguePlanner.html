@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MINIGAME · 对话工作台</title><style>:root{color-scheme:light;--paper:#f1eee5;--panel:#faf8f1;--ink:#24392c;--muted:#687267;--edge:#c9ccbd;--olive:#455e42;--lime:#d8e3a2;--bad:#9e382c;--mono:Consolas,'Lucida Console',monospace;--sans:'Microsoft YaHei UI','PingFang SC',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.55 var(--sans)}button,input,textarea,select{font:inherit}button{cursor:pointer;background:var(--panel);color:var(--ink);border:1px solid var(--edge);padding:7px 12px}button:hover{border-color:var(--olive);background:#e5e9d8}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:var(--olive);color:white;border-color:var(--olive)}button.danger{color:var(--bad)}input,select,textarea{width:100%;padding:7px;border:1px solid var(--edge);color:var(--ink);background:white;border-radius:0}textarea{resize:vertical;min-height:65px}input:focus,textarea:focus,button:focus-visible,select:focus{outline:2px solid #799259;outline-offset:2px}h1,h2,h3,p{margin:0}h1{font-size:23px;font-weight:600;letter-spacing:1px}h2{font-size:15px}h3{font-size:13px}small,.muted{font-size:12px;color:var(--muted)}.mono{font-family:var(--mono)}header{padding:20px 24px 15px;border-bottom:3px solid var(--ink);background:#e5e8d8;display:flex;align-items:center;justify-content:space-between;gap:16px}.eyebrow{font:11px var(--mono);letter-spacing:3px;color:var(--olive);margin-bottom:4px}.actions,.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.statusbar{padding:8px 24px;background:var(--ink);color:#e5e8d8;display:flex;gap:20px;justify-content:space-between;font-size:12px}.statusbar .dirty{color:#e7e18b}.workspace{display:grid;grid-template-columns:245px minmax(330px,1fr) minmax(500px,1.35fr);gap:0;min-height:calc(100vh - 120px)}aside,.edit-panel,.preview-panel{padding:18px;border-right:1px solid var(--edge)}aside{background:#e8e8dc}.panel-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px}.node-list{max-height:calc(100vh - 360px);overflow:auto;margin:12px -7px}.node-item{display:block;text-align:left;width:100%;background:transparent;border:0;border-bottom:1px solid #cbd0bd;padding:9px 7px}.node-item.active{background:var(--ink);color:var(--paper)}.node-id{font:11px var(--mono);display:block;overflow-wrap:anywhere}.node-caption{font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.node-type{font-size:10px;float:right;opacity:.7}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:block;margin-bottom:12px}.field>span,.form-grid label>span{display:block;font-size:12px;margin-bottom:4px;color:var(--muted)}.option-card{border-top:2px solid var(--edge);padding-top:10px;margin-top:12px}.option-card h3{margin-bottom:8px}.option-tools{display:flex;justify-content:space-between;gap:5px}.option-tools button{padding:3px 8px}.notice{padding:12px;background:#e4e8d3;border-left:3px solid var(--olive);font-size:12px;margin:10px 0}.notice.error{background:#f2e0d9;border-color:var(--bad)}.tabs{display:flex;gap:2px;margin-bottom:15px;border-bottom:1px solid var(--edge)}.tabs button{border-bottom:0}.tabs .selected{background:var(--ink);color:white}.source{font:12px/1.65 var(--mono);min-height:480px;tab-size:4;white-space:pre}.preview-wrap{background:#202c24;padding:12px;border:1px solid #415b47}.terminal{width:640px;height:360px;position:relative;background:#bfc2bc;font:11px 'SimSun','Microsoft YaHei',serif;color:#26312c;transform-origin:top left;overflow:hidden;image-rendering:pixelated}.terminal-frame{position:absolute;border:2px outset #e8eade;background:#c9cec7}.terminal-title{height:18px;background:#9fa9a0;padding:1px 7px;border-bottom:1px solid #58665c}.terminal-body{padding:6px}.term-header{position:absolute;left:3px;top:3px;width:634px;height:24px;background:#384640;color:#e0e3da;border:2px outset #667c6c;padding:2px 8px;font-size:13px}.term-path{position:absolute;left:3px;top:30px;width:634px;height:17px;background:#d1d3cd;padding-left:8px}.term-footer{position:absolute;left:3px;top:346px;width:634px;height:11px;font:9px var(--mono)}.terminal button{font:11px 'SimSun','Microsoft YaHei',serif;border:2px outset #e8eadd;background:#c4ccc0;padding:2px 4px;border-radius:0}.terminal button:hover{background:#a5b6a6}.terminal button:active{border-style:inset}.terminal button:disabled{opacity:.45}.terminal .record{left:3px;top:50px;width:146px;height:180px}.terminal .monitor{left:153px;top:50px;width:361px;height:180px}.terminal .lamp{left:518px;top:50px;width:119px;height:83px}.terminal .measures{left:518px;top:137px;width:119px;height:93px}.terminal .speech{left:3px;top:233px;width:146px;height:109px}.terminal .answers{left:153px;top:233px;width:484px;height:109px}.terminal .speech .terminal-body{font-size:12px;line-height:15px;overflow:auto;height:84px;overflow-wrap:anywhere}.video{height:144px;background:#1b2420;color:#b4c2b5;position:relative;text-align:center;overflow:hidden}.video .placeholder-head{width:32px;height:38px;background:#7e8e7b;position:absolute;left:calc(50% - 16px);top:39px}.video .placeholder-body{width:72px;height:75px;background:#657860;position:absolute;left:calc(50% - 36px);top:77px}.video .portrait-label{position:absolute;left:6px;top:4px;font:9px var(--mono)}.video .placeholder-caption{position:absolute;bottom:4px;width:100%;font-size:9px}.video.lost{display:flex;align-items:center;justify-content:center}.video.glitch{background:repeating-linear-gradient(0deg,#243b28 0px,#a1b6a4 2px,#15221a 4px,#566b58 7px)}.answer-body{height:82px;overflow:auto;padding:2px 6px}.answer-option{display:block;width:100%;text-align:left;margin-bottom:1px!important;min-height:18px;border-width:0 0 1px!important;overflow-wrap:anywhere;font-size:12px!important;padding:0 4px!important}.history-button{position:absolute;top:0;right:4px;border-width:1px!important;height:16px;padding:0 3px!important;font-size:10px!important}.history-row{font-size:10px;line-height:14px;border-bottom:1px solid #b8beb5;overflow-wrap:anywhere}.history-row span{color:#687568;margin-right:8px}.lamp-dot{display:inline-block;width:12px;height:12px;background:#6d786f;border:2px inset #b1c1af;float:right}.lamp-dot.green{background:#8faf83}.lamp-dot.red{background:#b07871}.terminal .measures .terminal-body{padding:2px 8px}.terminal .measures button{display:block;width:95px;height:20px;margin:3px 0}.roster-grid{display:grid;grid-template-columns:350px 280px;position:absolute;left:3px;top:50px;gap:4px;height:292px}.roster-card{border:2px outset #e8eade;background:#c9cec7;padding:8px}.roster-row{padding:13px 5px;border-bottom:1px solid #78877c;background:#455b4e;color:#e5e8df;margin-top:12px}.debug{margin-top:12px;font:12px var(--mono);border-bottom:1px solid var(--edge);padding-bottom:10px}.trace{max-height:85px;overflow:auto;font:11px/1.5 var(--mono);overflow-wrap:anywhere;color:var(--muted);margin-top:6px}.diagnostics{margin-top:18px;border-top:2px solid var(--ink);padding-top:12px}.diagnostic{display:block;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--edge);padding:7px 0;font-size:12px}.diagnostic.error{color:var(--bad)}.diagnostic.warning{color:#806316}details{margin-top:12px}summary{cursor:pointer;font-size:12px;color:var(--olive)}.profile-fields{padding-top:12px}.footer-note{padding:16px 24px;color:var(--muted);font-size:12px;border-top:1px solid var(--edge)}dialog{border:1px solid var(--edge);background:var(--paper);color:var(--ink);max-width:500px}dialog::backdrop{background:#12201688}@media(max-width:1250px){.workspace{grid-template-columns:210px minmax(320px,1fr)}.preview-panel{grid-column:1/-1;border-top:1px solid var(--edge)}.node-list{max-height:620px}}@media(max-width:650px){header{align-items:flex-start;flex-direction:column;padding:15px}.workspace{display:block}aside{border-bottom:1px solid var(--edge)}.node-list{max-height:210px}.preview-panel{padding:12px}.statusbar{padding:8px 15px}.form-grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><div><div class="eyebrow">MINIGAME / CONTENT WORKBENCH</div><h1>对话工作台</h1><p class="muted">编辑 Yarn 内容 · 排练终端会谈 · 导入 Unity</p></div><div class="actions"><button id="open">打开内容包</button><button id="save">保存项目 JSON</button><button id="export-yarn">导出 .yarn</button><button id="publish" class="primary">校验并导出 Unity 包</button><input id="file" type="file" accept=".json,application/json" hidden></div></header>
+<div class="statusbar"><span id="package-status"></span><span id="save-status">已加载示例 · 尚未保存本地文件</span></div>
+<main class="workspace">
+<aside><div class="panel-heading"><h2>轮次 / 节点</h2><span id="node-count" class="mono"></span></div><input id="filter" aria-label="搜索节点或台词" placeholder="搜索 ID / 台词 / 轮次"><div id="nodes" class="node-list"></div><div class="row"><button id="add-line">＋发言</button><button id="add-choice">＋选项组</button></div><div class="row" style="margin-top:8px"><button id="clone">复制节点</button><button id="delete" class="danger">删除</button></div><p class="muted" style="margin-top:12px">原有 ID 保持稳定。节点删除后会定位仍指向它的引用。</p><details><summary>包版本 / 演示规则 / 立绘登记</summary><div id="metadata" class="profile-fields"></div></details></aside>
+<section class="edit-panel"><div class="tabs"><button id="tab-form" class="selected">表单编辑</button><button id="tab-source">Yarn 源码</button></div><div id="form-panel"><div id="editor"></div></div><div id="source-panel" hidden><p class="muted">源码是内容权威。仅支持一行发言、选项、jump 与已登记元数据；任意 Yarn 语法由 Unity 原生编译器最终验证。</p><textarea id="source" class="source" aria-label="Yarn 源码" spellcheck="false"></textarea><button id="apply-source" class="primary">应用源码并校验</button><p class="muted">应用前的输入是草稿。包含不支持语法的原始内容仍可保存项目或导出 Yarn，不会静默重写。</p></div></section>
+<section class="preview-panel"><div class="panel-heading"><h2>终端排练 <small>640 × 360</small></h2><div class="row"><button id="restart">重置预览</button><button id="jump">从选中节点排练</button></div></div><div class="preview-wrap"><div id="preview-viewport"><div id="terminal" class="terminal" tabindex="0" aria-label="终端对话预览"></div></div></div><div id="debug" class="debug"></div><div id="trace" class="trace"></div><p class="muted" style="margin-top:8px">这是受限语法的浏览器排练。Unity 导入会再次执行结构校验与原生 Yarn 编译；正式运行以 Unity 为准。测试信任与阈值不显示在玩家终端。</p><div class="diagnostics"><div class="panel-heading"><h2>校验与定位</h2><span id="diagnostic-count"></span></div><div id="diagnostics"></div></div></section>
+</main><footer class="footer-note">本工具离线运行，不上传文件。JSON 项目文件与 Unity 内容包使用同一格式，包内 yarnSource 为唯一对白源；导出的 Yarn 是该源的原样副本。原始 Excel / HTML 继续作为仓库来源材料保留。</footer>
+<script id="initial-package" type="application/json">{"formatVersion":1,"packageId":"terminal-child-day1","contentVersion":"1.0.0","yarnSource":"// Canonical Day1 dialogue from supplied HTML v0.5.2. Demo profile parameters are not final design.\ntitle: D1_R1_OPEN1\nkind: line\nround: R1\nportrait: ML01\n---\n米洛: 这里还要检测吗？\n\u003c\u003cjump D1_R1_OPEN2>>\n===\n\ntitle: D1_R1_OPEN2\nkind: line\nround: R1\nportrait: ML02\n---\n米洛: 和昨天广场上的不一样吗？\n\u003c\u003cjump D1_R1_CHOICE>>\n===\n\ntitle: D1_R1_CLOSING1\nkind: line\nround: R1\nportrait: ML01\n---\n米洛: 那个东西一响，我就害怕。\n\u003c\u003cjump D1_R1_CLOSING2>>\n===\n\ntitle: D1_R1_CLOSING2\nkind: line\nround: R1\nportrait: ML01\n---\n米洛: 响了以后，我的手一直抖。\n\u003c\u003cjump D1_R1_CLOSING3>>\n===\n\ntitle: D1_R1_CLOSING3\nkind: line\nround: R1\nportrait: ML01\n---\n米洛: 他们说我不正常。\n\u003c\u003cjump D1_R2_OPEN1>>\n===\n\ntitle: D1_R2_OPEN1\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 我没有打人，也没有拿别人的东西。\n\u003c\u003cjump D1_R2_CHOICE>>\n===\n\ntitle: D1_R2_O1_T1\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 住在一起的人说的。\n\u003c\u003cjump D1_R2_O1_T2>>\n===\n\ntitle: D1_R2_O1_T2\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 他们笑我不敢还手。\n\u003c\u003cjump D1_R2_CLOSING1>>\n===\n\ntitle: D1_R2_O3_T1\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 没人跟我说过。\n\u003c\u003cjump D1_R2_O3_T2>>\n===\n\ntitle: D1_R2_O3_T2\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 我以为进去会有人告诉我。\n\u003c\u003cjump D1_R2_CLOSING1>>\n===\n\ntitle: D1_R2_CLOSING1\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 可我不知道自己做错了什么。\n\u003c\u003cjump D1_R2_CLOSING2>>\n===\n\ntitle: D1_R2_CLOSING2\nkind: line\nround: R2\nportrait: ML02\n---\n米洛: 这些也要记吗？\n\u003c\u003cjump D1_R3_OPEN1>>\n===\n\ntitle: D1_R3_OPEN1\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 他们让我进去，我就进去了。\n\u003c\u003cjump D1_R3_OPEN2>>\n===\n\ntitle: D1_R3_OPEN2\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 我想着，表现好就能回去。\n\u003c\u003cjump D1_R3_CHOICE>>\n===\n\ntitle: D1_R3_O1_T1\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 他们让我坐着别动。\n\u003c\u003cjump D1_R3_O1_T2>>\n===\n\ntitle: D1_R3_O1_T2\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 我看别人怎么坐，就跟着坐。\n\u003c\u003cjump D1_R3_O1_T3>>\n===\n\ntitle: D1_R3_O1_T3\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 可是它还是响了。\n\u003c\u003cjump D1_R3_CLOSING1>>\n===\n\ntitle: D1_R3_O2_T1\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: ……真的吗？\n\u003c\u003cjump D1_R3_O2_T2>>\n===\n\ntitle: D1_R3_O2_T2\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 他们没这么说过。\n\u003c\u003cjump D1_R3_CLOSING1>>\n===\n\ntitle: D1_R3_O3_T1\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 好。\n\u003c\u003cjump D1_R3_O3_T2>>\n===\n\ntitle: D1_R3_O3_T2\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 那我说慢一点。\n\u003c\u003cjump D1_R3_CLOSING1>>\n===\n\ntitle: D1_R3_CLOSING1\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 我想再试一次，他们没有让。\n\u003c\u003cjump D1_R3_CLOSING2>>\n===\n\ntitle: D1_R3_CLOSING2\nkind: line\nround: R3\nportrait: ML02\n---\n米洛: 我出来的时候，没有一个人说话。\n\u003c\u003cjump D1_R4_OPEN1>>\n===\n\ntitle: D1_R4_OPEN1\nkind: line\nround: R4\nportrait: ML02\n---\n米洛: 我出来以后，一直走走廊。\n\u003c\u003cjump D1_R4_OPEN2>>\n===\n\ntitle: D1_R4_OPEN2\nkind: line\nround: R4\nportrait: ML02\n---\n米洛: 我数了数，一共有七扇门。\n\u003c\u003cjump D1_R4_CHOICE>>\n===\n\ntitle: D1_R4_CLOSING1\nkind: line\nround: R4\nportrait: ML02\n---\n米洛: 走到最后一扇，就到这里了。\n\u003c\u003cjump D1_R4_CLOSING2>>\n===\n\ntitle: D1_R4_CLOSING2\nkind: line\nround: R4\nportrait: ML02\n---\n米洛: 我全程没有乱跑，是一直跟着走的。\n\u003c\u003cjump D1_R5_OPEN1>>\n===\n\ntitle: D1_R5_OPEN1\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: 要怎么做，它才不会响？\n\u003c\u003cjump D1_R5_CHOICE>>\n===\n\ntitle: D1_R5_O1_T1\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: ……真的吗？\n\u003c\u003cjump D1_R5_O1_T2>>\n===\n\ntitle: D1_R5_O1_T2\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: 可他们都说我做得不对。\n\u003c\u003cjump D1_R5_CLOSING1>>\n===\n\ntitle: D1_R5_O3_T1\nkind: line\nround: R5\nportrait: ML04\n---\n米洛: 他们进去以前，妈妈会蹲下来跟他们说话。\n\u003c\u003cjump D1_R5_O3_T2>>\n===\n\ntitle: D1_R5_O3_T2\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: 我站得远，听不见。\n\u003c\u003cjump D1_R5_O3_T3>>\n===\n\ntitle: D1_R5_O3_T3\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: 我以为进去以后，会有人告诉我的。\n\u003c\u003cjump D1_R5_CLOSING1>>\n===\n\ntitle: D1_R5_CLOSING1\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: 我是不是没坐好？\n\u003c\u003cjump D1_R5_CLOSING2>>\n===\n\ntitle: D1_R5_CLOSING2\nkind: line\nround: R5\nportrait: ML02\n---\n米洛: 所以它才响的。\n\u003c\u003cjump D1_R6_OPEN1>>\n===\n\ntitle: D1_R6_OPEN1\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: 说完这些，我能回去吗？\n\u003c\u003cjump D1_R6_CHOICE>>\n===\n\ntitle: D1_R6_O1_T1\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: 哦。\n\u003c\u003cjump D1_R6_O1_T2>>\n===\n\ntitle: D1_R6_O1_T2\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: 那要做什么，它才会说不响？\n\u003c\u003cjump D1_MEASURE>>\n===\n\ntitle: D1_R6_O2_T1\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: 我都记住了。\n\u003c\u003cjump D1_R6_O2_T2>>\n===\n\ntitle: D1_R6_O2_T2\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: 刚才那些，我都说对了吗？\n\u003c\u003cjump D1_MEASURE>>\n===\n\ntitle: D1_R6_O3_T1\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: ……为什么？\n\u003c\u003cjump D1_R6_O3_T2>>\n===\n\ntitle: D1_R6_O3_T2\nkind: line\nround: R6\nportrait: ML02\n---\n米洛: 我不明白，我哪里做错了？\n\u003c\u003cjump D1_MEASURE>>\n===\n\ntitle: D1_M_TREAT_T1\nkind: line\nround: 措施\nportrait: ML03\n---\n米洛: 是刚才答错了吗？\n\u003c\u003cjump D1_M_TREAT_T2>>\n===\n\ntitle: D1_M_TREAT_T2\nkind: line\nround: 措施\nportrait: ML03\n---\n米洛: 我可以再说一遍。\n\u003c\u003cjump D1_M_TREAT_T3>>\n===\n\ntitle: D1_M_TREAT_T3\nkind: line\nround: 措施\nportrait: ML03\n---\n米洛: 这次我会说得慢一点。\n\u003c\u003cjump END_DAY1>>\n===\n\ntitle: D1_M_PURIFY_T1\nkind: line\nround: 措施\nportrait: ML03\n---\n米洛: 做完就能回去了吗？\n\u003c\u003cjump D1_M_PURIFY_T2>>\n===\n\ntitle: D1_M_PURIFY_T2\nkind: line\nround: 措施\nportrait: ML03\n---\n米洛: 我会跟着走的。\n\u003c\u003cjump END_DAY1>>\n===\n\ntitle: D1_M_RELEASE_T1\nkind: line\nround: 措施\nportrait: ML05\n---\n米洛: 我真的可以走了？\n\u003c\u003cjump D1_M_RELEASE_T2>>\n===\n\ntitle: D1_M_RELEASE_T2\nkind: line\nround: 措施\nportrait: ML05\n---\n米洛: 不用再检测一次吗？\n\u003c\u003cjump D1_M_RELEASE_T3>>\n===\n\ntitle: D1_M_RELEASE_T3\nkind: line\nround: 措施\nportrait: ML05\n---\n米洛: 那我出门的时候，会轻轻走的。\n\u003c\u003cjump END_DAY1>>\n===\n\ntitle: D1_R1_CHOICE\nkind: choice\nround: R1\n---\n-> 嗯，不一样。 #id:D1_R1_O1 #trust:0\n    \u003c\u003cjump D1_R1_CLOSING1>>\n-> 别害怕，慢慢说。 #id:D1_R1_O2 #trust:0\n    \u003c\u003cjump D1_R1_CLOSING1>>\n-> 和你说的一样。 #id:D1_R1_O3 #trust:0\n    \u003c\u003cjump D1_R1_CLOSING1>>\n===\n\ntitle: D1_R2_CHOICE\nkind: choice\nround: R2\n---\n-> 谁说你打人了？ #id:D1_R2_O1 #trust:0\n    \u003c\u003cjump D1_R2_O1_T1>>\n-> 你恨他们吗？ #id:D1_R2_O2 #trust:0\n    \u003c\u003cjump D1_R2_CLOSING1>>\n-> 检测前谁教过你？ #id:D1_R2_O3 #trust:0\n    \u003c\u003cjump D1_R2_O3_T1>>\n-> 工作人员呢？ #id:D1_R2_O4 #trust:0\n    \u003c\u003cjump D1_R2_CLOSING1>>\n===\n\ntitle: D1_R3_CHOICE\nkind: choice\nround: R3\n---\n-> 说说检测经过。 #id:D1_R3_O1 #trust:0\n    \u003c\u003cjump D1_R3_O1_T1>>\n-> 响了不是你的错。 #id:D1_R3_O2 #trust:3\n    \u003c\u003cjump D1_R3_O2_T1>>\n-> 别想了，说下一个。 #id:D1_R3_O3 #trust:-3\n    \u003c\u003cjump D1_R3_O3_T1>>\n===\n\ntitle: D1_R4_CHOICE\nkind: choice\nround: R4\n---\n-> 嗯，然后呢？ #id:D1_R4_O1 #trust:0\n    \u003c\u003cjump D1_R4_CLOSING1>>\n-> 了解。 #id:D1_R4_O2 #trust:0\n    \u003c\u003cjump D1_R4_CLOSING1>>\n-> 原来是这样。 #id:D1_R4_O3 #trust:0\n    \u003c\u003cjump D1_R4_CLOSING1>>\n===\n\ntitle: D1_R5_CHOICE\nkind: choice\nround: R5\n---\n-> 你已经做得很好了。 #id:D1_R5_O1 #trust:0\n    \u003c\u003cjump D1_R5_O1_T1>>\n-> 机器有时会出错。 #id:D1_R5_O2 #trust:0\n    \u003c\u003cjump D1_R5_CLOSING1>>\n-> 别人怎么做，你就怎么做。 #id:D1_R5_O3 #trust:0\n    \u003c\u003cjump D1_R5_O3_T1>>\n-> 不用学别人。 #id:D1_R5_O4 #trust:0\n    \u003c\u003cjump D1_R5_CLOSING1>>\n===\n\ntitle: D1_R6_CHOICE\nkind: choice\nround: R6\n---\n-> 我说了不算。 #id:D1_R6_O1 #trust:0\n    \u003c\u003cjump D1_R6_O1_T1>>\n-> 表现好就能回去。 #id:D1_R6_O2 #trust:-3\n    \u003c\u003cjump D1_R6_O2_T1>>\n-> 不会放你回去。 #id:D1_R6_O3 #trust:3\n    \u003c\u003cjump D1_R6_O3_T1>>\n===\n\ntitle: D1_MEASURE\nkind: measure\nround: 措施\n---\n-> 治疗 #id:D1_M_TREAT #disposition:treat\n    \u003c\u003cjump D1_M_TREAT_T1>>\n-> 净化 #id:D1_M_PURIFY #disposition:purify\n    \u003c\u003cjump D1_M_PURIFY_T1>>\n-> 释放 #id:D1_M_RELEASE #disposition:release\n    \u003c\u003cjump D1_M_RELEASE_T1>>\n===\n","portraits":[{"id":"ML01","label":"ML01"},{"id":"ML02","label":"ML02"},{"id":"ML03","label":"ML03"},{"id":"ML04","label":"ML04"},{"id":"ML05","label":"ML05"}],"profile":{"patientId":"child","patientName":"米洛","day":1,"startNode":"D1_R1_OPEN1","endNode":"END_DAY1","initialTrust":0,"releaseThreshold":3,"initialQuota":5}}</script><script>(function (root) {
+  'use strict';
+  const ID = /^[A-Za-z_][A-Za-z0-9_.-]{0,127}$/;
+  const JUMP = /^<<jump ([A-Za-z_][A-Za-z0-9_.-]{0,127})>>$/;
+  const MIN_INT = -2147483648, MAX_INT = 2147483647;
+  const isInt = value => Number.isInteger(value) && value >= MIN_INT && value <= MAX_INT;
+  const dispositions = ['treat', 'purify', 'release'];
+  const copy = value => JSON.parse(JSON.stringify(value));
+  const escapeText = value => String(value).replace(/[\\#<>{}\[\]]/g, char => '\\' + char);
+  const unescapeText = value => value.replace(/\\([\\#<>{}\[\]])/g, '$1');
+  function splitTags(value) {
+    const tags = {}, regex = /(?<!\S)#([A-Za-z_][A-Za-z0-9_]*):([^\s]+)/g;
+    const first = regex.exec(value);
+    const text = (first ? value.slice(0, first.index) : value).trim(), tail = first ? value.slice(first.index) : '';
+    regex.lastIndex = 0;
+    let match;
+    while ((match = regex.exec(tail))) { if (Object.hasOwn(tags, match[1])) return { text, tags, valid: false, error: 'duplicate-tag' }; tags[match[1]] = match[2]; }
+    const remainder = tail.replace(/(?<!\S)#([A-Za-z_][A-Za-z0-9_]*):([^\s]+)/g, '').trim();
+    if (remainder || text.includes('//') || !text) return { text, tags, valid: false, error: 'unsupported-text' };
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] === '\\') { if (++i >= text.length || !'\\#<>[]{}'.includes(text[i])) return { text, tags, valid: false, error: 'escape' }; }
+      else if ('#<>[]{}'.includes(text[i])) return { text, tags, valid: false, error: 'unsupported-text' };
+    }
+    return { text, tags, valid: true };
+  }
+  function issue(code, message, line = 0, node = '', field = '', severity = 'error') {
+    return { code, message, line, node, field, severity };
+  }
+  function parseSource(source) {
+    const nodes = [], diagnostics = [], seen = new Set();
+    const lines = String(source).split(/\r\n|\n|\r/);
+    const add = (code, message, line, node = '', field = '') => diagnostics.push(issue(code, message, line, node, field));
+    let i = 0;
+    while (i < lines.length) {
+      if (!lines[i].trim() || lines[i].trim().startsWith('//')) { i++; continue; }
+      const start = i, headers = {}, comments = [];
+      while (i < lines.length && lines[i].trim() !== '---') {
+        const text = lines[i].trim();
+        if (!text || text.startsWith('//')) { if (text) comments.push(text); i++; continue; }
+        const match = /^(title|portrait|round|kind|patient|day)\s*:\s*(.*?)\s*$/.exec(text);
+        if (!match || Object.hasOwn(headers, match[1])) add('unsupported-header', '未知或重复的节点头；仅支持 title / portrait / round / kind / patient / day。', i + 1);
+        else headers[match[1]] = match[2];
+        i++;
+      }
+      if (i === lines.length) { add('missing-body', '缺少节点正文分隔符 ---。', start + 1); break; }
+      i++;
+      const body = [];
+      while (i < lines.length && lines[i].trim() !== '===') { if (lines[i].trim().startsWith('//')) comments.push(lines[i].trim()); else if (lines[i].trim()) body.push({ text: lines[i].trim(), line: i + 1 }); i++; }
+      if (i === lines.length) add('missing-end', '缺少节点结束分隔符 ===。', start + 1, headers.title);
+      else i++;
+      const node = { id: headers.title || '', portrait: headers.portrait || '', round: headers.round || '', kind: headers.kind || '', patient: headers.patient || '', day: headers.day || '', hasPatient: Object.hasOwn(headers, 'patient'), hasDay: Object.hasOwn(headers, 'day'), comments, lineTag: '', line: start + 1, start, end: i, options: [], speaker: '', text: '', next: '' };
+      if (!ID.test(node.id)) add('node-id', 'ID以英文字母或下划线开头，最多128位，后续可含字母、数字、下划线、点和连字符。', start + 1, node.id, 'id');
+      if (seen.has(node.id)) add('duplicate-node', '节点ID重复。', start + 1, node.id, 'id');
+      seen.add(node.id);
+      if (body[0]?.text.startsWith('->')) {
+        for (let b = 0; b < body.length; b += 2) {
+          const item = body[b], jump = body[b + 1];
+          const parts = splitTags(item.text.replace(/^->\s*/, ''));
+          const target = jump && JUMP.exec(jump.text);
+          if (!parts.valid && parts.error === 'escape') add('escape', '反斜线只能转义反斜线或 # < > [ ] { }，不支持其他转义。', item.line, node.id, 'text');
+          if (!item.text.startsWith('-> ') || !parts.valid || !parts.text || !ID.test(parts.tags.id || '') || Object.keys(parts.tags).some(t => !['id', 'trust', 'disposition', 'line'].includes(t)) || (parts.tags.trust !== undefined && (!/^[+-]?\d+$/.test(parts.tags.trust) || !isInt(Number(parts.tags.trust)))) || (parts.tags.disposition && !dispositions.includes(parts.tags.disposition)) || !target) { add('unsupported-option', '选项需要文字、#id、32位整数 #trust 或 #disposition，下一行必须为 <<jump 目标ID>>。', item.line, node.id, 'options'); continue; }
+          if (!parts.tags.disposition && parts.tags.trust === undefined) add('unsupported-option', '普通选项必须声明 #trust:整数。', item.line, node.id, 'trust');
+          if (parts.tags.disposition && parts.tags.trust !== undefined) add('measure-effect', '处置选项不能声明 #trust，包括 #trust:0。', item.line, node.id, 'trust');
+          node.options.push({ id: parts.tags.id, text: unescapeText(parts.text), trust: Number(parts.tags.trust || 0), disposition: parts.tags.disposition || '', lineTag: parts.tags.line || '', next: target[1], line: item.line });
+        }
+        const inferred = node.options.some(o => o.disposition) ? 'measure' : 'choice';
+        if (node.kind && node.kind !== inferred) add('node-kind', 'kind 与正文类型不一致。', node.line, node.id, 'kind');
+        node.kind = inferred;
+      } else {
+        node.kind = node.kind || 'line';
+        if (node.kind !== 'line' || body.length !== 2 || !JUMP.test(body[1]?.text || '')) {
+          add('unsupported-body', '首版每个发言节点支持一条角色发言和一个 <<jump 目标ID>>；任意 Yarn 条件、变量、命令需先扩展导入器。', node.line, node.id, 'body');
+        } else {
+          const speech = /^([^:]+):\s*(.+)$/.exec(body[0].text), parts = splitTags(speech ? speech[2] : '');
+          if (!parts.valid && parts.error === 'escape') add('escape', '反斜线只能转义反斜线或 # < > [ ] { }，不支持其他转义。', body[0].line, node.id, 'text');
+          if (!speech || !parts.valid || Object.keys(parts.tags).some(t => t !== 'line') || /[<>#{}\[\]\\]/.test(speech[1])) add('unsupported-line', '发言格式：角色名: 台词；角色名不能含控制字符，台词不支持插值和额外标签。', body[0].line, node.id, 'text');
+          else { node.speaker = speech[1].trim(); node.text = unescapeText(parts.text); node.lineTag = parts.tags.line || ''; }
+          node.next = JUMP.exec(body[1].text)[1];
+        }
+      }
+      nodes.push(node);
+      if (nodes.length > 1024) { add('node-limit', '首版最多支持1024个源节点。', node.line, node.id); break; }
+    }
+    if (!nodes.length) add('empty-source', '没有找到可编辑的 Yarn 节点。', 1);
+    return { nodes, diagnostics, source: String(source) };
+  }
+  function validatePackage(pkg) {
+    const diagnostics = [];
+    if (!pkg || typeof pkg !== 'object' || Array.isArray(pkg)) return { nodes: [], source: '', diagnostics: [issue('package', '文件必须是对话内容包 JSON 对象。')] };
+    for (const key of Object.keys(pkg)) if (!['formatVersion', 'packageId', 'contentVersion', 'yarnSource', 'portraits', 'profile'].includes(key)) diagnostics.push(issue('package-field', '不支持的包字段：' + key, 0, '', key));
+    if (pkg.formatVersion !== 1) diagnostics.push(issue('version', '只支持 formatVersion: 1。'));
+    if (JSON.stringify(pkg).length > 4 * 1024 * 1024) diagnostics.push(issue('package-size', 'JSON内容包不能超过4 MiB字符。'));
+    for (const key of ['packageId', 'contentVersion', 'yarnSource']) if (typeof pkg[key] !== 'string' || !pkg[key].trim()) diagnostics.push(issue('metadata', key + ' 必须为非空字符串。', 0, '', key));
+    const parsed = parseSource(typeof pkg.yarnSource === 'string' ? pkg.yarnSource : '');
+    if (typeof pkg.yarnSource === 'string' && pkg.yarnSource.length > 2 * 1024 * 1024) diagnostics.push(issue('source-size', 'Yarn 源码不能超过2 MiB字符。', 1));
+    if (!ID.test(pkg.packageId || '') || typeof pkg.contentVersion === 'string' && pkg.contentVersion.length > 128) diagnostics.push(issue('package-id', '包ID必须为稳定ASCII标识，内容版本最多128字符。', 0, '', 'packageId'));
+    diagnostics.push(...parsed.diagnostics);
+    const profile = pkg.profile || {};
+    for (const key of Object.keys(profile)) if (!['patientId', 'patientName', 'day', 'startNode', 'endNode', 'initialTrust', 'releaseThreshold', 'initialQuota'].includes(key)) diagnostics.push(issue('profile-field', '不支持的规则字段：' + key, 0, '', 'profile.' + key));
+    for (const key of ['patientId', 'patientName', 'startNode', 'endNode']) if (typeof profile[key] !== 'string' || !profile[key].trim()) diagnostics.push(issue('profile', 'profile.' + key + ' 必须为非空字符串。', 0, '', 'profile.' + key));
+    for (const key of ['day', 'initialTrust', 'releaseThreshold', 'initialQuota']) if (!isInt(profile[key])) diagnostics.push(issue('profile', 'profile.' + key + ' 必须为32位有符号整数。', 0, '', 'profile.' + key));
+    for (const key of ['patientId', 'startNode', 'endNode']) if (!ID.test(profile[key] || '')) diagnostics.push(issue('profile-id', 'profile.' + key + ' 必须为稳定ASCII标识。', 0, '', 'profile.' + key));
+    if (profile.day !== 1 || profile.initialQuota < 0) diagnostics.push(issue('profile-range', '首版仅接受 Day1 独立演示，initialQuota 不能为负数。'));
+    const portraitIds = new Set();
+    if (!Array.isArray(pkg.portraits)) diagnostics.push(issue('portraits', 'portraits 必须为数组。'));
+    for (const portrait of Array.isArray(pkg.portraits) ? pkg.portraits : []) {
+      if (!portrait || typeof portrait.id !== 'string' || !ID.test(portrait.id) || portraitIds.has(portrait.id)) diagnostics.push(issue('portrait-id', '立绘ID为空、不合法或重复。'));
+      else portraitIds.add(portrait.id);
+      if (!portrait || typeof portrait.label !== 'string' || !portrait.label.trim()) diagnostics.push(issue('portrait-label', '立绘必须具有非空名称。'));
+      if (portrait) for (const key of Object.keys(portrait)) if (!['id', 'label'].includes(key)) diagnostics.push(issue('portrait-field', '不支持的立绘字段：' + key));
+    }
+    const map = new Map(parsed.nodes.map(n => [n.id, n])), allIds = new Set();
+    if (!map.has(profile.startNode)) diagnostics.push(issue('start', '入口节点不存在：' + profile.startNode, 0, '', 'profile.startNode'));
+    if (!ID.test(profile.endNode || '') || map.has(profile.endNode)) diagnostics.push(issue('end', '结束ID必须合法且作为外部终点，不能同时定义节点。', 0, '', 'profile.endNode'));
+    const checkTarget = (target, node, field, line) => { if (!map.has(target) && target !== profile.endNode) diagnostics.push(issue('missing-target', '目标不存在：' + target, line, node, field)); };
+    for (const node of parsed.nodes) {
+      if (node.kind !== 'measure' && !node.round) diagnostics.push(issue('round', '发言和普通选项节点必须声明 round。', node.line, node.id, 'round'));
+      if (node.hasPatient && node.patient !== profile.patientId) diagnostics.push(issue('patient', '节点 patient 与包 profile.patientId 不一致。', node.line, node.id, 'patient'));
+      if (node.hasDay && (!/^\d+$/.test(node.day) || Number(node.day) !== profile.day)) diagnostics.push(issue('day', '节点 day 与包 profile.day 不一致。', node.line, node.id, 'day'));
+      if (node.portrait && !portraitIds.has(node.portrait)) diagnostics.push(issue('unknown-portrait', '未登记立绘：' + node.portrait, node.line, node.id, 'portrait'));
+      if (node.kind === 'line') {
+        checkTarget(node.next, node.id, 'next', node.line);
+        if (!node.portrait) diagnostics.push(issue('unknown-portrait', '发言节点缺少立绘ID。', node.line, node.id, 'portrait'));
+        if (node.text.length > 32) diagnostics.push(issue('long-text', '台词超过32字，请在640×360预览检查换行。', node.line, node.id, 'text', 'warning'));
+      } else {
+        if (node.options.length < 1 || node.options.length > 4) diagnostics.push(issue('option-count', '每组选项必须为1至4项。', node.line, node.id, 'options'));
+        const acts = new Set();
+        for (const option of node.options) {
+          if (!isInt(option.trust)) diagnostics.push(issue('trust-range', '信任变化必须为32位有符号整数。', option.line, node.id, option.id + '.trust'));
+          if (allIds.has(option.id)) diagnostics.push(issue('duplicate-id', '选项ID重复：' + option.id, option.line, node.id, 'options'));
+          allIds.add(option.id);
+          checkTarget(option.next, node.id, option.id + '.next', option.line);
+          if (node.kind === 'measure' && (!dispositions.includes(option.disposition) || acts.has(option.disposition))) diagnostics.push(issue('disposition', '处置必须具有唯一的 treat / purify / release 类型。', option.line, node.id, 'options'));
+          if (node.kind === 'choice' && option.disposition) diagnostics.push(issue('disposition', '普通选项不能包含处置。', option.line, node.id));
+          acts.add(option.disposition);
+          if (option.text.length > 30) diagnostics.push(issue('long-option', '回复超过30字，请检查终端是否溢出。', option.line, node.id, option.id, 'warning'));
+        }
+        if (node.kind === 'measure' && dispositions.some(d => !acts.has(d))) diagnostics.push(issue('dispositions', '措施节点需要治疗、净化、释放三种处置。', node.line, node.id));
+      }
+    }
+    const reached = new Set(), visiting = new Set();
+    function walk(id) {
+      if (!map.has(id)) return;
+      if (visiting.has(id)) { diagnostics.push(issue('cycle', '检测到循环跳转，首版需要有限会谈。', map.get(id).line, id, 'next')); return; }
+      if (reached.has(id)) return;
+      reached.add(id); visiting.add(id);
+      const n = map.get(id); (n.kind === 'line' ? [n.next] : n.options.map(o => o.next)).forEach(walk);
+      visiting.delete(id);
+    }
+    walk(profile.startNode);
+    const reachable = new Set(reached);
+    for (const n of parsed.nodes) walk(n.id);
+    for (const n of parsed.nodes) if (!reachable.has(n.id)) diagnostics.push(issue('unreachable', '入口无法到达此节点。', n.line, n.id, '', 'warning'));
+    if (!diagnostics.some(d => d.severity === 'error')) validateRounds(profile, map, diagnostics);
+    return { ...parsed, diagnostics };
+  }
+  function validateRounds(profile, map, diagnostics) {
+    const fail = (code, message, node, field = '') => { diagnostics.push(issue(code, message, node?.line || 0, node?.id || '', field)); return false; };
+    const rounds = [], names = new Set(); let cursor = profile.startNode;
+    while (cursor !== profile.endNode) {
+      const entry = map.get(cursor); if (entry.kind === 'measure') break;
+      if (!entry.round || names.has(entry.round)) { fail('round', '连续会谈组必须具有互不重复的 round。', entry, 'round'); return; }
+      names.add(entry.round); let choice = entry;
+      while (choice.kind === 'line') {
+        if (choice.round !== entry.round) { fail('intro-round', '轮首发言必须先到达本轮选项，不能跳进另一轮。', choice, 'next'); return; }
+        if (choice.next === profile.endNode) { fail('intro-end', '轮首发言不能直接跳到外部结束标记。', choice, 'next'); return; }
+        choice = map.get(choice.next);
+      }
+      if (choice.kind !== 'choice' || choice.round !== entry.round) { fail('round-choice', '每个普通会谈组必须进入同一轮的选项组。', choice, 'round'); return; }
+      let nextRound = null;
+      for (const option of choice.options) {
+        let target = option.next;
+        while (target !== profile.endNode) {
+          const n = map.get(target);
+          if (n.kind === 'measure' || n.round !== entry.round) break;
+          if (n.kind !== 'line') { fail('nested-choice', '选项回应只能包含发言，直到下一轮开始。', n); return; }
+          target = n.next;
+        }
+        if (target === profile.endNode) { fail('early-end', '普通回复必须进入下一会谈组或处置，不能直接结束。', { id: choice.id, line: option.line }, option.id + '.next'); return; }
+        if (nextRound !== null && nextRound !== target) { fail('nonconvergent-round', '同组选项必须汇合到同一个下一轮入口。', { id: choice.id, line: option.line }, option.id + '.next'); return; }
+        nextRound = target;
+      }
+      rounds.push({ entry, choice }); cursor = nextRound;
+      if (rounds.length > 128) { fail('round-limit', '首版最多支持128个连续会谈组。', entry); return; }
+    }
+    if (!rounds.length || cursor === profile.endNode || map.get(cursor)?.kind !== 'measure') { fail('measure-route', '至少需要一个普通会谈组，且最终进入处置节点。', map.get(cursor) || map.get(profile.startNode)); return; }
+    const measure = map.get(cursor);
+    for (const option of measure.options) {
+      let target = option.next, count = 0;
+      while (target !== profile.endNode) { const n = map.get(target); if (n.kind !== 'line') { fail('reaction-route', '处置反应只能经过发言节点，最终进入结束标记。', n); return; } count++; target = n.next; }
+      if (!count) { fail('reaction-empty', '每种处置至少需要一条反应发言。', { id: measure.id, line: option.line }, option.id + '.next'); return; }
+    }
+    if ([...map.values()].filter(n => n.kind === 'measure').length !== 1) { fail('measure-count', '首版内容包必须恰好包含一个处置节点。', measure); return; }
+    let min = profile.initialTrust, max = profile.initialTrust;
+    for (const { entry, choice } of rounds) {
+      min += Math.min(...choice.options.map(o => o.trust)); max += Math.max(...choice.options.map(o => o.trust));
+      if (min < MIN_INT || max > MAX_INT) { fail('trust-overflow', '至少一条回复路线会导致核心32位信任整数溢出。', entry, 'trust'); return; }
+    }
+  }
+  function serializeNode(node) {
+    const header = ['title: ' + node.id, ...(node.portrait ? ['portrait: ' + node.portrait] : []), ...(node.round ? ['round: ' + node.round] : []), ...(node.hasPatient || node.patient ? ['patient: ' + node.patient] : []), ...(node.hasDay || node.day ? ['day: ' + node.day] : []), 'kind: ' + node.kind, '---'];
+    const body = node.kind === 'line' ? [node.speaker + ': ' + escapeText(node.text) + (node.lineTag ? ' #line:' + node.lineTag : ''), '<<jump ' + node.next + '>>'] : node.options.flatMap(o => ['-> ' + escapeText(o.text) + ' #id:' + o.id + (o.disposition ? ' #disposition:' + o.disposition : ' #trust:' + o.trust) + (o.lineTag ? ' #line:' + o.lineTag : ''), '    <<jump ' + o.next + '>>']);
+    return [...header, ...(node.comments || []), ...body, '==='].join('\n');
+  }
+  function replaceNode(source, before, after) {
+    const eol = source.match(/\r\n|\n|\r/)?.[0] || '\n';
+    const lines = source.split(/\r\n|\n|\r/);
+    const replacement = after ? serializeNode(after).split('\n') : [];
+    lines.splice(before.start, before.end - before.start, ...replacement);
+    return lines.join(eol);
+  }
+  function references(nodes, id) {
+    return nodes.flatMap(n => n.kind === 'line' ? (n.next === id ? [{ node: n.id, field: 'next' }] : []) : n.options.filter(o => o.next === id).map(o => ({ node: n.id, field: o.id + '.next' })));
+  }
+  function createPreview(pkg) {
+    const parsed = validatePackage(pkg);
+    if (parsed.diagnostics.some(d => d.severity === 'error')) throw new Error('请先修复内容包错误。');
+    const map = new Map(parsed.nodes.map(n => [n.id, n]));
+    const state = { node: '', trust: pkg.profile.initialTrust, quota: pkg.profile.initialQuota, phase: 'roster', portrait: '', speech: '', disposition: '', log: [], trace: [], history: false, done: false };
+    function go(id) {
+      state.node = id; state.trace.push(id);
+      if (id === pkg.profile.endNode) { state.phase = 'complete'; state.done = true; return state; }
+      const node = map.get(id); if (!node) throw new Error('缺失节点：' + id);
+      state.phase = node.kind;
+      if (node.kind === 'line') { state.speech = node.text; state.portrait = node.portrait; state.log.push({ speaker: node.speaker, text: node.text }); }
+      return state;
+    }
+    return { state, map, enter() { if (!state.done && state.phase === 'roster') go(pkg.profile.startNode); return state; }, jump(id) { state.history = false; state.trust = pkg.profile.initialTrust; state.quota = pkg.profile.initialQuota; state.log = []; state.trace = []; state.disposition = ''; state.done = false; return go(id); }, step() { if (!state.history && state.phase === 'line') go(map.get(state.node).next); return state; }, enabled(option) { return !state.history && !state.disposition && (option.disposition !== 'release' || state.trust >= pkg.profile.releaseThreshold); }, pick(index) { const n = map.get(state.node), o = n?.options[index]; if (state.history || !['choice', 'measure'].includes(state.phase) || !o || !this.enabled(o)) return state; state.trust += o.trust; state.log.push({ speaker: '值班员', text: o.disposition ? '【处置】' + o.text : o.text }); if (o.disposition) { state.disposition = o.disposition; if (o.disposition === 'purify') state.quota--; } return go(o.next); } };
+  }
+  const api = { parseSource, validatePackage, serializeNode, replaceNode, references, createPreview, copy, ID };
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.DialoguePlannerCore = api;
+})(typeof globalThis === 'object' ? globalThis : this);
+</script><script>(function () {
+  'use strict';
+  const C = window.DialoguePlannerCore, $ = id => document.getElementById(id);
+  const labels = { line: '发言', choice: '选项', measure: '处置' };
+  let pkg = JSON.parse($('initial-package').textContent), parsed, selected = '', preview = null;
+  let dirty = false, formDirty = false, sourceDirty = false, metadataDirty = false, finishTimer = null, previewSelection = -1, choiceNode = '';
+  const el = (tag, text, className) => { const x = document.createElement(tag); if (text !== undefined) x.textContent = text; if (className) x.className = className; return x; };
+  function markDirty() { dirty = true; renderStatus(); }
+  function renderStatus() {
+    $('package-status').textContent = (pkg.packageId || '未命名') + ' / v' + (pkg.contentVersion || '?') + ' / 离线项目';
+    $('save-status').textContent = dirty || formDirty || sourceDirty || metadataDirty ? '有未保存修改' : '当前项目未改动';
+    $('save-status').className = dirty || formDirty || sourceDirty || metadataDirty ? 'dirty' : '';
+  }
+  function field(parent, title, value, options = {}) {
+    const label = el('label', undefined, 'field'), cap = el('span', title); label.append(cap);
+    const control = el(options.multiline ? 'textarea' : options.values ? 'select' : 'input');
+    if (options.values) for (const entry of options.values) { const item = typeof entry === 'string' ? { value: entry, label: entry } : entry; const opt = el('option', item.label); opt.value = item.value; control.append(opt); }
+    control.value = value ?? ''; if (options.type) control.type = options.type;
+    if (options.readOnly) control.readOnly = true;
+    if (options.id) control.dataset.field = options.id;
+    label.append(control); parent.append(label); return control;
+  }
+  function errors() { return parsed.diagnostics.filter(d => d.severity === 'error'); }
+  function choose(id) {
+    if (!discardDraft()) return;
+    selected = id; renderNodes(); renderEditor();
+  }
+  function discardDraft() {
+    if ((formDirty || sourceDirty || metadataDirty) && !window.confirm('当前表单、元数据或源码草稿尚未应用。放弃草稿并切换？')) return false;
+    formDirty = false; sourceDirty = false; metadataDirty = false; $('source').value = pkg.yarnSource || ''; renderMetadata(); renderStatus(); return true;
+  }
+  function recalc(resetPreview = true) {
+    parsed = C.validatePackage(pkg);
+    if (!parsed.nodes.some(n => n.id === selected)) selected = parsed.nodes[0]?.id || '';
+    if (resetPreview) { if (finishTimer) clearTimeout(finishTimer); finishTimer = null; preview = errors().length ? null : C.createPreview(pkg); }
+    $('source').value = pkg.yarnSource || ''; formDirty = false; sourceDirty = false; metadataDirty = false; previewSelection = -1; choiceNode = '';
+    renderNodes(); renderEditor(); renderDiagnostics(); renderMetadata(); renderStatus(); renderPreview();
+  }
+  function renderNodes() {
+    const list = $('nodes'); list.replaceChildren();
+    const search = $('filter').value.trim().toLowerCase();
+    $('node-count').textContent = String(parsed.nodes.length);
+    for (const node of parsed.nodes) {
+      if (search && ![node.id, node.round, node.text, ...node.options.map(o => o.text)].join(' ').toLowerCase().includes(search)) continue;
+      const button = el('button', undefined, 'node-item' + (node.id === selected ? ' active' : ''));
+      const title = el('span', node.id, 'node-id'); title.append(el('span', labels[node.kind], 'node-type'));
+      button.append(title, el('span', (node.round ? node.round + ' · ' : '') + (node.text || node.options.map(o => o.text).join(' / ')), 'node-caption'));
+      button.onclick = () => choose(node.id); list.append(button);
+    }
+    for (const id of ['add-line', 'add-choice', 'clone', 'delete']) $(id).disabled = errors().some(d => d.code.startsWith('unsupported') || ['missing-end', 'missing-body', 'measure-effect', 'escape'].includes(d.code));
+  }
+  function renderEditor() {
+    const box = $('editor'); box.replaceChildren();
+    const unsupported = parsed.diagnostics.some(d => ['unsupported-header', 'unsupported-option', 'unsupported-body', 'unsupported-line', 'unsupported-text', 'missing-body', 'missing-end', 'measure-effect', 'escape'].includes(d.code));
+    if (unsupported) { box.append(el('p', '源码包含不支持的语法。已保留原文；请打开 Yarn 源码修正，表单编辑与预览已暂停。', 'notice error')); return; }
+    const original = parsed.nodes.find(n => n.id === selected);
+    if (!original) { box.append(el('p', '选择或新建节点。', 'notice')); return; }
+    const node = C.copy(original);
+    const heading = el('div', undefined, 'panel-heading'); heading.append(el('h2', node.id), el('span', labels[node.kind], 'muted')); box.append(heading);
+    box.append(el('p', 'ID 稳定保留；新增或复制时指定新 ID。', 'muted'));
+    const grid = el('div', undefined, 'form-grid'); box.append(grid);
+    field(grid, '轮次', node.round, { id: 'round' });
+    if (node.kind === 'line') {
+      field(grid, '立绘 ID', node.portrait, { id: 'portrait', values: [{ value: '', label: '请选择' }, ...(Array.isArray(pkg.portraits) ? pkg.portraits.map(p => ({ value: p.id, label: p.id + ' / ' + (p.label || p.id) })) : [])] });
+      field(box, '发言角色', node.speaker, { id: 'speaker' });
+      field(box, '台词', node.text, { id: 'text', multiline: true });
+      field(box, '后继节点 ID', node.next, { id: 'next' });
+    } else {
+      const optionsBox = el('div'); box.append(optionsBox); let addOption = null;
+      function renderOptions() {
+        optionsBox.replaceChildren();
+        if (addOption) addOption.disabled = node.options.length >= 4;
+        node.options.forEach((option, index) => {
+          const card = el('section', undefined, 'option-card'); card.dataset.option = index;
+          const tools = el('div', undefined, 'option-tools'); tools.append(el('h3', '回复 ' + (index + 1)));
+          const buttons = el('div', undefined, 'row');
+          for (const [text, action, disabled] of [['↑', () => moveOption(index, -1), index === 0], ['↓', () => moveOption(index, 1), index === node.options.length - 1], ['删除回复', () => { captureOptions(); node.options.splice(index, 1); formDirty = true; renderOptions(); renderStatus(); }, node.kind === 'measure']]) {
+            const button = el('button', text); button.type = 'button'; button.disabled = disabled; button.onclick = action; buttons.append(button);
+          }
+          tools.append(buttons); card.append(tools);
+          field(card, '回复 ID', option.id, { id: 'id', readOnly: true });
+          field(card, '回复文字', option.text, { id: 'text', multiline: true });
+          const row = el('div', undefined, 'form-grid'); card.append(row);
+          if (node.kind === 'choice') field(row, '信任增减', option.trust, { id: 'trust', type: 'number' });
+          else field(row, '处置类型', option.disposition, { id: 'disposition', values: [{ value: 'treat', label: '治疗' }, { value: 'purify', label: '净化' }, { value: 'release', label: '释放' }] });
+          field(row, '后继节点 ID', option.next, { id: 'next' }); optionsBox.append(card);
+        });
+      }
+      function captureOptions() { for (const card of optionsBox.querySelectorAll('[data-option]')) for (const control of card.querySelectorAll('[data-field]')) node.options[Number(card.dataset.option)][control.dataset.field] = control.dataset.field === 'trust' ? Number(control.value) : control.value.trim(); }
+      function moveOption(index, delta) { captureOptions(); const next = index + delta; [node.options[index], node.options[next]] = [node.options[next], node.options[index]]; formDirty = true; renderOptions(); renderStatus(); }
+      renderOptions();
+      if (node.kind === 'choice') { const add = el('button', '＋添加回复'); addOption = add; add.disabled = node.options.length >= 4; add.onclick = () => { captureOptions(); const id = window.prompt('新回复的稳定 ID', node.id.replace(/_CHOICE$/, '') + '_O' + (node.options.length + 1)); if (!id) return; if (!C.ID.test(id) || allIds().has(id) || node.options.some(o => o.id === id)) { alert('ID不合法或已存在。'); return; } node.options.push({ id, text: '请输入回复', trust: 0, next: pkg.profile.endNode, disposition: '' }); formDirty = true; renderOptions(); add.disabled = node.options.length >= 4; renderStatus(); }; box.append(add); }
+    }
+    const refs = C.references(parsed.nodes, node.id);
+    box.append(el('p', '被引用：' + (refs.map(r => r.node + '.' + r.field).join('、') || '无') + (pkg.profile?.startNode === node.id ? '；当前入口节点' : ''), 'notice'));
+    const apply = el('button', '应用节点修改', 'primary'); apply.onclick = () => {
+      if ((metadataDirty || sourceDirty) && !confirm('应用节点会放弃尚未应用的元数据或源码草稿。继续？')) return;
+      for (const control of box.querySelectorAll('[data-field]')) {
+        const card = control.closest('[data-option]');
+        if (card) node.options[Number(card.dataset.option)][control.dataset.field] = control.dataset.field === 'trust' ? Number(control.value) : control.value.trim();
+        else node[control.dataset.field] = control.value.trim();
+      }
+      if ((node.kind === 'line' && (!node.text || !node.speaker || /\r|\n/.test(node.text + node.speaker) || /[:<>#{}\[\]\\]/.test(node.speaker))) || node.options.some(o => !o.text || /\r|\n/.test(o.text) || !Number.isInteger(o.trust) || o.trust < -2147483648 || o.trust > 2147483647)) { alert('台词与回复必须非空且为单行；角色名不能含冒号或Yarn控制字符；信任必须为32位有符号整数。中文会在终端自动换行。'); return; }
+      pkg.yarnSource = C.replaceNode(pkg.yarnSource, original, node); markDirty(); recalc();
+    }; box.append(apply);
+    box.oninput = () => { formDirty = true; renderStatus(); };
+  }
+  function allIds() { return new Set(parsed.nodes.flatMap(n => [n.id, ...n.options.map(o => o.id)])); }
+  function addNode(kind) {
+    if (!discardDraft()) return;
+    const id = prompt('新节点的稳定 ID', 'D1_NEW_' + (parsed.nodes.length + 1));
+    if (!id) return; if (!C.ID.test(id) || allIds().has(id) || id === pkg.profile?.endNode) { alert('ID不合法或已存在。'); return; }
+    const parent = parsed.nodes.find(n => n.id === selected);
+    const node = { id, kind, round: parent?.round || 'R1', portrait: pkg.portraits?.[0]?.id || '', speaker: pkg.profile?.patientName || '角色', text: '请输入台词', next: pkg.profile?.endNode || 'END', options: kind === 'choice' ? [{ id: id + '_O1', text: '请输入回复', trust: 0, next: pkg.profile?.endNode || 'END', disposition: '' }] : [] };
+    pkg.yarnSource += '\n\n' + C.serializeNode(node) + '\n'; selected = id; markDirty(); recalc();
+  }
+  function renderMetadata() {
+    const box = $('metadata'); box.replaceChildren();
+    const controls = [];
+    for (const key of ['packageId', 'contentVersion']) controls.push({ target: pkg, key, control: field(box, key === 'packageId' ? '包 ID' : '内容版本', pkg[key]) });
+    const profile = pkg.profile || {};
+    box.append(el('p', 'HTML 对照演示配置；不覆盖正式游戏规则。', 'notice'));
+    const titles = { patientId: '角色 ID', patientName: '角色名', day: '天数', startNode: '入口节点', endNode: '结束标记', initialTrust: '初始信任', releaseThreshold: '释放阈值', initialQuota: '净化剩余' };
+    for (const key of Object.keys(titles)) controls.push({ target: profile, key, numeric: ['day', 'initialTrust', 'releaseThreshold', 'initialQuota'].includes(key), control: field(box, titles[key], profile[key]) });
+    const portraits = field(box, '立绘登记（每行 ID=名称）', (Array.isArray(pkg.portraits) ? pkg.portraits : []).map(p => p.id + '=' + (p.label || p.id)).join('\n'), { multiline: true });
+    const apply = el('button', '应用元数据'); apply.onclick = () => {
+      if ((formDirty || sourceDirty) && !confirm('应用元数据会放弃尚未应用的表单或源码草稿。继续？')) return;
+      for (const entry of controls) entry.target[entry.key] = entry.numeric ? Number(entry.control.value) : entry.control.value.trim();
+      pkg.profile = profile;
+      pkg.portraits = portraits.value.split(/\r?\n/).filter(v => v.trim()).map(v => { const at = v.indexOf('='); return { id: (at < 0 ? v : v.slice(0, at)).trim(), label: (at < 0 ? v : v.slice(at + 1)).trim() }; });
+      markDirty(); recalc();
+    }; box.append(apply); box.oninput = () => { metadataDirty = true; renderStatus(); };
+  }
+  function renderDiagnostics() {
+    const box = $('diagnostics'); box.replaceChildren();
+    const count = errors().length, warnings = parsed.diagnostics.length - count;
+    $('diagnostic-count').textContent = count + ' 错误 / ' + warnings + ' 提示';
+    $('publish').disabled = count > 0;
+    $('restart').disabled = $('jump').disabled = count > 0;
+    if (!parsed.diagnostics.length) box.append(el('p', '结构检查通过；仍需 Unity 原生编译与运行验收。', 'notice'));
+    for (const d of parsed.diagnostics) {
+      const button = el('button', (d.severity === 'error' ? '错误' : '提示') + ' · ' + (d.node || '内容包') + (d.field ? '.' + d.field : '') + (d.line ? ' · L' + d.line : '') + '：' + d.message, 'diagnostic ' + d.severity);
+      button.onclick = () => { if (!discardDraft()) return; if (d.node) { selected = d.node; renderNodes(); renderEditor(); } showTab('source'); if (d.line) { const lines = $('source').value.split('\n'); const offset = lines.slice(0, d.line - 1).reduce((s, line) => s + line.length + 1, 0); $('source').focus(); $('source').setSelectionRange(offset, offset + (lines[d.line - 1] || '').length); $('source').scrollTop = (d.line - 1) * 20; } };
+      box.append(button);
+    }
+  }
+  function frame(className, title) { const f = el('div', undefined, 'terminal-frame ' + className); f.append(el('div', title, 'terminal-title')); const b = el('div', undefined, 'terminal-body'); f.append(b); return { frame: f, body: b }; }
+  function actionButton(text, action, disabled = false) { const b = el('button', text); b.disabled = disabled; b.onclick = () => { action(); renderPreview(); $('terminal').focus({ preventScroll: true }); }; return b; }
+  function renderPreview() {
+    const box = $('terminal'); box.replaceChildren();
+    box.append(el('div', '人员监控与复核终端        PMS / 3.14', 'term-header'), el('div', '第三安置所  /  B区  /  ' + (preview?.state.phase === 'roster' ? '对象目录' : '人员复核'), 'term-path'), el('div', 'PMS / LOCAL                 SEC.047 / CH 01', 'term-footer'));
+    if (!preview) { box.append(el('p', '请先修复内容包错误，再预览。', 'notice error')); $('debug').textContent = '预览暂停'; $('trace').textContent = ''; return; }
+    const s = preview.state, node = preview.map.get(s.node);
+    $('debug').textContent = '演示调试 · ' + (s.node || '对象目录') + ' / 信任 ' + s.trust + ' / 阈值 ' + pkg.profile.releaseThreshold + ' / 净化剩余 ' + s.quota;
+    $('trace').textContent = s.trace.join(' → ');
+    if (s.phase === 'roster') {
+      const grid = el('div', undefined, 'roster-grid'), list = el('div', undefined, 'roster-card'), detail = el('div', undefined, 'roster-card');
+      list.append(el('div', '观察对象 / 登记名册'), el('div', pkg.profile.patientName + ' / ' + pkg.profile.patientId + '    ' + (s.done ? '已归档' : '待审'), 'roster-row'));
+      detail.append(el('p', '登记档案 / 对象预览'), el('p', pkg.profile.patientName), el('p', 'DAY ' + String(pkg.profile.day).padStart(2, '0')), actionButton(s.done ? '已归档 / 禁止进入' : '进入审查  ↵', () => preview.enter(), s.done));
+      grid.append(list, detail); box.append(grid);
+    } else {
+      const record = frame('record', '个体记录'); record.body.append(el('p', pkg.profile.patientId), el('p', '对象　' + pkg.profile.patientName), el('p', '单元　B-12'), el('p', '状态　' + (s.disposition ? '已处置' : '观察中')), el('p', '立绘　' + s.portrait), el('p', '记录摘录'), el('p', '暂无正式配置'));
+      const monitor = frame('monitor', '实时监控 / B-12'); monitor.body.style.padding = '2px'; const video = el('div', undefined, 'video' + (s.phase === 'complete' ? ' lost' : s.phase === 'finishing' ? ' glitch' : ''));
+      if (s.phase === 'complete') video.textContent = 'CH 01 / SIGNAL LOST';
+      else if (s.phase !== 'finishing') video.append(el('div', undefined, 'placeholder-head'), el('div', undefined, 'placeholder-body'), el('div', 'CAM B12-01 / ' + s.portrait, 'portrait-label'), el('div', '立绘占位 / 尚未接入正式角色素材', 'placeholder-caption'));
+      monitor.body.append(video, el('div', s.phase === 'complete' ? '视讯：断开　拾音：断开' : 'CH 01 / 视频：正常　拾音：接通'));
+      const lamp = frame('lamp', '核验结果'), lampLine = el('p', '离所核验'); lampLine.append(el('span', '', 'lamp-dot ' + (s.phase === 'measure' ? (s.trust >= pkg.profile.releaseThreshold ? 'green' : 'red') : ''))); lamp.body.append(lampLine, el('p', '净化剩余　' + String(s.quota).padStart(2, '0')));
+      const measures = frame('measures', '处置');
+      for (const [type, text] of [['release', '释放'], ['treat', '治疗'], ['purify', '净化']]) {
+        const index = node?.options.findIndex(o => o.disposition === type) ?? -1;
+        measures.body.append(actionButton(text, () => pick(index), s.phase !== 'measure' || index < 0 || !preview.enabled(node.options[index])));
+      }
+      const speech = frame('speech', '当前发言'); speech.body.textContent = s.speech;
+      const answers = frame('answers', s.history ? '会谈记录' : '应答 / ' + pkg.profile.patientId);
+      const history = actionButton(s.history ? '返回应答' : '查看记录', () => { s.history = !s.history; }); history.className = 'history-button'; answers.frame.append(history);
+      answers.body.className = 'answer-body';
+      if (s.history) for (const row of s.log) { const entry = el('div', undefined, 'history-row'); entry.append(el('span', row.speaker), document.createTextNode(row.text)); answers.body.append(entry); }
+      else if (s.phase === 'line') answers.body.append(actionButton('下一句  ↵', () => step()));
+      else if (s.phase === 'choice') { if (choiceNode !== s.node) { choiceNode = s.node; previewSelection = -1; } node.options.forEach((o, index) => { const button = actionButton(String(index + 1).padStart(2, '0') + '  ' + o.text, () => pick(index)); button.className = 'answer-option'; if (previewSelection === index) { button.style.background = '#455b4e'; button.style.color = '#f1f0e7'; } answers.body.append(button); }); }
+      else if (s.phase === 'measure') answers.body.append(el('p', '会谈完成，请选择处置。'));
+      else if (s.phase === 'complete') answers.body.append(actionButton('返回对象清单', () => { s.phase = 'roster'; }));
+      box.append(record.frame, monitor.frame, lamp.frame, measures.frame, speech.frame, answers.frame);
+    }
+    fitPreview();
+  }
+  function ending() { if (preview.state.phase !== 'complete') return; preview.state.phase = 'finishing'; finishTimer = setTimeout(() => { preview.state.phase = 'complete'; finishTimer = null; renderPreview(); }, 680); }
+  function step() { preview.step(); ending(); }
+  function pick(index) { preview.pick(index); ending(); }
+  function fitPreview() { const scale = Math.min(1.5, $('preview-viewport').parentElement.clientWidth / 640 - 0.04); $('terminal').style.transform = 'scale(' + scale + ')'; $('preview-viewport').style.height = (360 * scale) + 'px'; }
+  function showTab(tab) { $('form-panel').hidden = tab !== 'form'; $('source-panel').hidden = tab !== 'source'; $('tab-form').className = tab === 'form' ? 'selected' : ''; $('tab-source').className = tab === 'source' ? 'selected' : ''; }
+  function download(name, content, mime) { const url = URL.createObjectURL(new Blob([content], { type: mime })); const a = el('a'); a.href = url; a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+  function canSave() { if (formDirty || sourceDirty || metadataDirty) { alert('请先应用节点修改、元数据或源码草稿，再保存。'); return false; } return true; }
+  $('open').onclick = () => { if (!discardDraft()) return; if (dirty && !confirm('当前项目尚未保存。继续打开其他文件？')) return; $('file').click(); };
+  $('file').onchange = async event => { const file = event.target.files[0]; if (!file) return; try { const loaded = JSON.parse(await file.text()); if (!loaded || typeof loaded !== 'object' || Array.isArray(loaded)) throw new Error('文件必须是内容包JSON对象。'); if (typeof loaded.yarnSource !== 'string' || !loaded.profile || typeof loaded.profile !== 'object' || Array.isArray(loaded.profile) || !Array.isArray(loaded.portraits) || loaded.portraits.some(p => !p || typeof p !== 'object' || typeof p.id !== 'string')) throw new Error('内容包需要 yarnSource 字符串、profile 对象和 portraits 数组；原项目保持不变。'); C.validatePackage(loaded); pkg = loaded; dirty = false; selected = ''; recalc(); $('save-status').textContent = '已打开 ' + file.name; } catch (error) { alert('读取失败：' + error.message); } event.target.value = ''; };
+  $('save').onclick = () => { if (!canSave()) return; download((pkg.packageId || 'dialogue') + '.project.json', JSON.stringify(pkg, null, 2) + '\n', 'application/json'); dirty = false; renderStatus(); $('save-status').textContent = '已发起项目下载；请保留本地文件'; };
+  $('publish').onclick = () => { if (!canSave()) return; parsed = C.validatePackage(pkg); if (errors().length) return; download((pkg.packageId || 'dialogue') + '.dialogue.json', JSON.stringify(pkg, null, 2) + '\n', 'application/json'); dirty = false; renderStatus(); $('save-status').textContent = '已发起 Unity 包下载；请在 Unity 导入并原生编译'; };
+  $('export-yarn').onclick = () => { if (canSave()) download((pkg.packageId || 'dialogue') + '.yarn', pkg.yarnSource || '', 'text/plain;charset=utf-8'); };
+  $('filter').oninput = renderNodes;
+  $('add-line').onclick = () => addNode('line'); $('add-choice').onclick = () => addNode('choice');
+  $('clone').onclick = () => {
+    if (!discardDraft()) return; const original = parsed.nodes.find(n => n.id === selected); if (!original) return;
+    const id = prompt('副本节点的新 ID', original.id + '_COPY'); if (!id) return;
+    if (!C.ID.test(id) || allIds().has(id) || id === pkg.profile.endNode) { alert('ID不合法或已存在。'); return; }
+    const node = C.copy(original); node.id = id; node.options.forEach((o, i) => { o.id = id + '_O' + (i + 1); });
+    if (node.options.some(o => allIds().has(o.id))) { alert('副本回复ID冲突，请使用其他节点ID。'); return; }
+    pkg.yarnSource += '\n\n' + C.serializeNode(node) + '\n'; selected = id; markDirty(); recalc();
+  };
+  $('delete').onclick = () => {
+    if (!discardDraft()) return; const node = parsed.nodes.find(n => n.id === selected); if (!node) return;
+    const refs = C.references(parsed.nodes, node.id); const message = '删除 ' + node.id + '？\n' + (refs.length ? '仍被引用：\n' + refs.map(r => r.node + '.' + r.field).join('\n') + '\n删除后需修复这些目标。' : '没有其他节点引用。') + (pkg.profile.startNode === node.id ? '\n这是入口节点，删除后需重新设置入口。' : '');
+    if (!confirm(message)) return; pkg.yarnSource = C.replaceNode(pkg.yarnSource, node, null); markDirty(); recalc();
+  };
+  $('source').oninput = () => { sourceDirty = true; renderStatus(); };
+  $('apply-source').onclick = () => { if ((formDirty || metadataDirty) && !confirm('覆盖尚未应用的表单或元数据草稿？')) return; pkg.yarnSource = $('source').value; markDirty(); recalc(); };
+  $('tab-form').onclick = () => showTab('form'); $('tab-source').onclick = () => showTab('source');
+  $('restart').onclick = () => { if (finishTimer) clearTimeout(finishTimer); finishTimer = null; preview = C.createPreview(pkg); renderPreview(); };
+  $('jump').onclick = () => { if (!preview || !preview.map.has(selected)) return; if (finishTimer) clearTimeout(finishTimer); finishTimer = null; preview.jump(selected); renderPreview(); };
+  $('terminal').onkeydown = event => {
+    if (!preview || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return;
+    if (event.key === 'Escape' && preview.state.history) { preview.state.history = false; renderPreview(); event.preventDefault(); return; }
+    if (preview.state.history) return;
+    if (event.key === 'Enter' || event.key === ' ') { if (preview.state.phase === 'roster') preview.enter(); else if (preview.state.phase === 'line') step(); else if (preview.state.phase === 'choice' && previewSelection >= 0 && event.key === 'Enter') pick(previewSelection); else if (preview.state.phase === 'complete' && event.key === 'Enter') preview.state.phase = 'roster'; else return; renderPreview(); event.preventDefault(); }
+    else if (/^[1-4]$/.test(event.key) && preview.state.phase === 'choice') { pick(Number(event.key) - 1); renderPreview(); event.preventDefault(); }
+    else if (['ArrowDown', 'ArrowUp'].includes(event.key) && preview.state.phase === 'choice') { const count = preview.map.get(preview.state.node).options.length; previewSelection = previewSelection < 0 ? (event.key === 'ArrowDown' ? 0 : count - 1) : (previewSelection + (event.key === 'ArrowDown' ? 1 : count - 1)) % count; renderPreview(); event.preventDefault(); }
+  };
+  window.addEventListener('resize', fitPreview);
+  window.addEventListener('beforeunload', event => { if (dirty || formDirty || sourceDirty || metadataDirty) { event.preventDefault(); event.returnValue = ''; } });
+  recalc();
+})();
+</script></body></html>

@@ -6,11 +6,11 @@
 
 2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](docs/feishu-sync-2026-10-15.md)。[verified: docs/.source-data/game-wiki.json content「结局」；docs/.source-data/sync-2026-10-15.json changes] [opinion]
 
-用户提供的[小孩Excel原件](docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)和[Day1终端HTML v0.5.2](docs/sources/inspection-terminal-day1-prototype.md)已归档，内嵌Day1数据一致；排期不在本次同步范围。当前Unity仍使用开发占位内容。[verified: docs/.source-data/local-deliveries-2026-10-15.json files；docs/.source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1；docs/.source-data/sync-2026-10-15.json scope_exclusions] [opinion]
+**电脑终端现已默认接入小孩Day1正式来源对白**：六轮、20个回复、三种处置，配套[独立HTML策划工具](Tools/DialoguePlanner/DialoguePlanner.html)与Unity校验导入。原有三天开发原型保留；其余病人、Day2/3及正式美术继续待接入。启动、修改和验收见[终端使用指南](docs/terminal-ui-guide.md)。[verified: docs/terminal-ui-verification.json scope/source；UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126] [opinion]
 
 ## 玩法设计
 
-策划验收入口：[现阶段成果、功能触发与剧情配置指南](docs/planner-acceptance-guide.md)，包含完整日循环、三结局操作路线、对白/分支配置方式和验收勾选项。[opinion]
+策划优先使用[电脑终端与对白工具指南](docs/terminal-ui-guide.md)；旧三天日循环与三结局路线保留在[开发原型验收指南](docs/planner-acceptance-guide.md)。[opinion]
 
 **晨检与任务简报 → 电脑会谈 → 治疗／净化／释放 → 夜间收束 → 睡眠与梦境 → 次日反馈。** 3D公寓承载移动与物件交互，2D终端承载病人对白、选项和处置。[verified: docs/game-overview.md「玩家的一天」]
 
@@ -20,9 +20,11 @@
 - 普通会谈采用多轮选项与分支汇合，符合信任条件时追加特殊会谈，结束后才允许处置；处置改变人物去留与后续事件。[verified: docs/game-overview.md「审判、对话与代价」；src/README.md「调用入口」「开发默认规则」]
 - 当前原型的三种结局为被带走、神父袭击、KPI失败后锁房；主Wiki新增的反叛值分支尚未接入，正式数量、阈值、优先级和演出仍需策划确认。[verified: docs/game-overview.md「结局与可感知后果」；src/README.md「开发默认规则」]
 
-**开发配置与正式策划分开维护。** 当前配置采用每日净化目标1、普通会谈4轮、特殊轮信任门槛20、释放门槛30；神父Day2加入，另外四人Day1加入。它们用于验证流程，不是正式数值表；节点ID和回复也是逻辑占位内容。Day0教学、外交官特例、正式对白、梦境与日记等继续列在[设计待定项](docs/open-questions.md)。[verified: src/README.md「开发默认规则」；docs/open-questions.md「开发范围与流程」「数值、信息与叙事」「世界观、角色与结局」]
+**开发配置与正式策划分开维护。** 默认小孩Day1演示采用信任0、释放门槛3、净化剩余5；旧三天原型仍保留每日目标1、普通4轮、特殊门槛20、释放门槛30的配置。它们不是全局正式数值表；Day0、特殊角色、其余对白与演出继续见[设计待定项](docs/open-questions.md)。[verified: UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile；src/README.md「开发默认规则」] [opinion]
 
 ## 研发与研究进展
+
+2026-10-15终端切片最新结果：锁定SDK8.0.424的Release构建0警告/错误，185项.NET测试、18项策划工具测试、Unity EditMode2项及PlayMode9项通过，Windows Mono构建成功。浏览器视觉和下载点击未验收，Player启动及其他范围见[本轮持久化报告](docs/terminal-ui-verification.json)。下方2026-10-13记录继续保留历史身份。[verified: docs/terminal-ui-verification.json dotnet/planner/unity/limits] [opinion]
 
 **原创核心逻辑**位于[源码入口](src/README.md)：日期与阶段、五人独立状态、会谈门控、一次性处置、配额、跨日事件、结局和JSON存档已有实现。新 `GameRuntime` 管理输入、观察和演出检查点，`GameSession` 保持规则权威；迁移依据与边界见[寻找伪人玩法迁移](docs/reference-gameplay-migration.md)。[verified: src/MiniGame.Presentation/GameRuntime.cs；src/MiniGame.Core/Runtime/GameSession.cs]
 

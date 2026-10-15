@@ -24,6 +24,7 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("InspectionApartment");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.StartLegacyPrototype();
             Assert.That(host, Is.Not.Null);
             Assert.That(Object.FindObjectsOfType<MiniGameBootstrap>(), Has.Length.EqualTo(1));
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
@@ -48,6 +49,7 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("InspectionApartment");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.StartLegacyPrototype();
             var runtime = host.Runtime;
             int frames = 0;
             float deadline = Time.realtimeSinceStartup + 90f;
@@ -185,6 +187,7 @@ namespace MiniGame.UnityHost.Tests
                 yield return SceneManager.LoadSceneAsync("InspectionApartment");
                 yield return null;
                 var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.StartLegacyPrototype();
                 Assert.That(host.Runtime.TryInteract(InteractionTarget.Door).Accepted, Is.True);
                 yield return WaitForButton(host, "Continue");
                 if (replies)
@@ -254,7 +257,7 @@ namespace MiniGame.UnityHost.Tests
                 + " encounter=" + view.Game.CurrentEncounterId + " node=" + view.Game.CurrentNodeId + " yarn=" + bridge.Diagnostics + " buttons=" + buttons);
         }
 
-        private static IEnumerator CaptureIfRequested(MiniGameBootstrap host, string name)
+        internal static IEnumerator CaptureIfRequested(MiniGameBootstrap host, string name)
         {
             var directory = Environment.GetEnvironmentVariable("MINIGAME_CAPTURE_DIR");
             if (string.IsNullOrEmpty(directory)) yield break;
@@ -270,10 +273,14 @@ namespace MiniGame.UnityHost.Tests
             var pixels = new Texture2D(1600, 900, TextureFormat.RGB24, false);
             try
             {
+                LogTerminalBounds(host, "overlay");
                 target.Create(); camera.targetTexture = target;
                 canvas.renderMode = RenderMode.ScreenSpaceCamera; canvas.worldCamera = camera; canvas.planeDistance = .1f;
-                yield return null;
+                yield return null; yield return null; yield return null;
                 Canvas.ForceUpdateCanvases();
+                host.Screen.ReflowTerminal();
+                Canvas.ForceUpdateCanvases();
+                LogTerminalBounds(host, "capture");
                 camera.Render(); RenderTexture.active = target;
                 pixels.ReadPixels(new Rect(0, 0, 1600, 900), 0, 0); pixels.Apply();
                 File.WriteAllBytes(Path.Combine(directory, name + ".png"), pixels.EncodeToPNG());
@@ -288,12 +295,27 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
+        private static void LogTerminalBounds(MiniGameBootstrap host, string context)
+        {
+            var logical = host.Screen.GetComponentsInChildren<RectTransform>(true).FirstOrDefault(item => item.name == "TerminalLogical640x360");
+            if (logical == null) return;
+            var corners = new Vector3[4]; logical.GetWorldCorners(corners);
+            var canvas = host.Screen.Canvas;
+            var camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+            Debug.Log("MINIGAME_TERMINAL_BOUNDS " + context + " screen=" + Screen.width + "x" + Screen.height
+                + " canvas=" + ((RectTransform)canvas.transform).rect + " viewport=" + ((RectTransform)logical.parent).rect
+                + " logical=" + logical.rect + " scale=" + logical.localScale + " lossy=" + logical.lossyScale
+                + " bottomLeft=" + RectTransformUtility.WorldToScreenPoint(camera, corners[0])
+                + " topRight=" + RectTransformUtility.WorldToScreenPoint(camera, corners[2]));
+        }
+
         [UnityTest]
         public IEnumerator RestoredEffectsClearOverlaysSnapTerminalAndPauseAtFinalSleepFrame()
         {
             yield return SceneManager.LoadSceneAsync("InspectionApartment");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.StartLegacyPrototype();
             var initial = host.Runtime.Save();
             host.Screen.SetFade(.8f); host.Screen.SetGlitch(.7f);
             host.RestoreCheckpoint(initial);

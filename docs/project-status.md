@@ -1,6 +1,6 @@
 # 当前完成情况与待补项
 
-状态更新日期：**2026-10-15，Asia/Shanghai**。核心与 Player 构建结果保留2026-10-13记录；本次新增正常 UPM 工程导入、主场景打开和四项图形 PlayMode 验证，没有重新构建 Player。详见[持久化汇总](gameplay-migration-verification.json)。[verified: gameplay-migration-verification.json checkedAtUtc/unity.normalUpmRecovery]
+状态更新日期：**2026-10-15，Asia/Shanghai**。最新为小孩Day1终端、Yarn内容包、离线策划编辑器与Unity导入；默认演示采用该包，旧三天原型保留。见[使用指南](terminal-ui-guide.md)和[本轮报告](terminal-ui-verification.json)，历史结果仍在[原汇总](gameplay-migration-verification.json)。[verified: terminal-ui-verification.json scope；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126]
 
 **当前交付是可以运行流程的开发原型。** 已有“三天、五病人、三结局”的规则、存档和 Unity/Yarn 宿主，也已生成 Windows Mono 开发程序；正式叙事、美术、音频和发布验收尚需补齐。[verified: ../src/README.md「开发默认规则」；../UnityProject/README.md「运行与操作」；gameplay-migration-verification.json unity.windowsMonoBuild] [opinion]
 
@@ -8,15 +8,20 @@
 
 ## 最新来源同步与实现边界
 
-2026-10-15已同步主Wiki608版、主角6版、梦场景191版和小孩v1.1对白31版；来源已有正式小孩对白和四天梦场景描述，当前原型仍用开发占位，没有在本次文档同步中接入新表或改变游戏行为。[verified: .source-data/manifest.json documents/workbooks；../src/README.md「开发默认规则」] [opinion]
+2026-10-15已同步主Wiki608版、主角6版、梦场景191版和小孩v1.1对白31版；随后已接入小孩Day1六轮、20回复及三种处置。其余角色和小孩Day2/3仍待接入，四天梦场景保持来源身份。[verified: .source-data/manifest.json documents/workbooks；terminal-ui-verification.json source/scope] [opinion]
 
-新来源新增反叛值自我净化分支、每日开始前结局/KPI检查，小孩表的六轮对话及−3/0/+3信任也不同于现有原型。交付标准仍为3结局，正文列4条；先裁决数量、阈值、KPI去向和导入模型，再调整实现与验收。[verified: .source-data/game-wiki.json content「结局」；.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14；.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第10–11、20、30–33行] [opinion]
+新来源新增反叛值自我净化分支与每日开始前结局/KPI检查；交付标准3结局与正文4条的冲突继续裁决。小孩Day1六轮和−3/0/+3已采用独立包接入，不据此改变旧三天的KPI、结局和正式全局数值。[verified: .source-data/game-wiki.json content「结局」；terminal-ui-verification.json scope/source] [opinion]
 
-小孩Excel原件与[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)现已归档，HTML内嵌数据与Excel主表Day1一致；Unity接入仍未完成，浏览器原型也未在本轮运行验收。[verified: .source-data/local-deliveries-2026-10-15.json files；.source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1/runtime_browser_test]
+小孩Excel原件与[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)已归档，Day1数据一致；Unity原生Yarn与终端UI已通过测试，HTML浏览器视觉与下载点击未验收。[verified: .source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1；terminal-ui-verification.json source/planner.browserVisualVerified/unity]
 
 排期已按用户要求排除。同步范围、完整下载入口和获取限制见[飞书同步记录](feishu-sync-2026-10-15.md)。[verified: .source-data/sync-2026-10-15.json access_gaps]
 
 ## 已经完成什么
+
+### 默认小孩Day1终端与策划工具
+
+- 目录、审查、发言、回复、实际记录、核验灯、三种处置、反应花屏、断信号与归档返回已接通；恢复与连点由核心和宿主门控，当前段可重播。[verified: terminal-ui-verification.json scope/unity/limits]
+- [离线HTML工具](../Tools/DialoguePlanner/DialoguePlanner.html)提供节点/表单/源码编辑、分支排练、保存打开与导出；Unity校验并原生编译后激活，失败保留旧内容。[verified: ../Tools/DialoguePlanner/README.md「策划使用」；terminal-ui-verification.json scope]
 
 ### 规则与存档
 
@@ -39,6 +44,8 @@
 
 ## 已验证到什么程度
 
+最新终端结果：SDK8.0.424锁定恢复、Release构建0警告/错误，Core75＋Presentation110＝185项通过；Node工具18项及1296条选择组合通过。真实Unity2022.3.23f1c1隔离工程EditMode2项、PlayMode9项通过；Windows Mono构建成功，0错误/1警告。四种比例、截图、Player启动与源码哈希比较范围见[本轮报告](terminal-ui-verification.json)。浏览器视觉与下载点击不在已通过范围。[verified: terminal-ui-verification.json dotnet/planner/unity/limits] [opinion]
+
 以下是 **2026-10-13 保存的验证结果**，不是本次文档整理重新执行的测试。[verified: gameplay-migration-verification.json checkedAtUtc]
 
 - .NET SDK 8.0.424：锁定恢复和 Release 构建通过，0警告、0错误；Core 73项与 Presentation 77项测试全部通过。[verified: gameplay-migration-verification.json sdk/dotnet]
@@ -60,7 +67,7 @@
 
 ### 正式叙事与观察内容
 
-需要将已提供的小孩对白表接入原型，并补齐其余病人的逐日普通/特殊对白、回复分支、三种处置反馈、晨检与简报，以及已给出场景方向的梦境和经裁决后的结局演出。观察内容要补角色/日期/状态对应的画面和证据，说明能查询什么、哪些信息会互相矛盾，以及如何向玩家展示后果。[verified: open-questions.md Q11–Q14、Q25；../UnityProject/README.md「运行与操作」] [opinion]
+小孩Day1来源对白已接入；还需接入Day2/3与跨日后果，补齐其他病人、晨检简报、梦境及经裁决的结局。观察画面与证据仍需按角色、日期和状态制作。[verified: terminal-ui-verification.json scope/limits；open-questions.md Q11–Q14、Q25] [opinion]
 
 主角新专篇已明确举报妹妹与记忆断层背景；姓名/机构名称、Mini内揭露程度、神父背景和净化真实去向仍有来源冲突；监督员交互、日记、档案/新闻范围与疯狂值等变量是否采用，仍需裁决。占位文本不承担这些裁决。[verified: open-questions.md Q10–Q11、Q13、Q16–Q21；../src/MiniGame.Presentation/PrototypeContent.cs L11–L16]
 

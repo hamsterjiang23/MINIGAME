@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MiniGame.Core;
 using MiniGame.Presentation;
 using UnityEngine;
@@ -21,6 +20,7 @@ namespace MiniGame.UnityHost
         private Font font;
         private RectTransform canvasRoot;
         private GameObject terminal;
+        private TerminalView terminalView;
         private GameObject conversation;
         private GameObject inspection;
         private GameObject pause;
@@ -28,8 +28,6 @@ namespace MiniGame.UnityHost
         private Image fade;
         private Image glitch;
         private Text header;
-        private Text patientList;
-        private Text patientName;
         private Text speaker;
         private Text body;
         private Text worldPrompt;
@@ -37,19 +35,17 @@ namespace MiniGame.UnityHost
         private Text inspectionTitle;
         private Text inspectionSummary;
         private Text worldHelp;
-        private Text observationLog;
         private Button continueButton;
         private Button closeInspection;
         private RectTransform choiceRoot;
         private RectTransform conversationRect;
         private readonly List<Button> choices = new List<Button>();
-        private readonly List<Button> checkButtons = new List<Button>();
-        private readonly Dictionary<Disposition, Button> dispositionButtons = new Dictionary<Disposition, Button>();
         private bool yarnBound;
         private bool dialogueInteractable = true;
         private bool transitionLocked;
         private string fallbackKey;
         private float notificationEnd;
+        private int selectedResponse;
         public event Action SaveRequested;
         public event Action LoadRequested;
         public event Action RestartRequested;
@@ -62,8 +58,10 @@ namespace MiniGame.UnityHost
             runtime = game;
             fallbackKey = null;
             transitionLocked = false;
+            HideDialogueActions();
             runtime.Changed += Render;
             Render(runtime.GetView());
+            terminalView.ResetNavigation();
         }
 
         public void UseYarnPresentation() => yarnBound = true;
@@ -85,7 +83,14 @@ namespace MiniGame.UnityHost
         public void SetTransitionLocked(bool locked) { transitionLocked = locked; ApplyInputGate(); }
 
         public void SetDialogueText(string displaySpeaker, string text)
-        { EnsureBuilt(); speaker.text = displaySpeaker; body.text = text; }
+        { EnsureBuilt(); speaker.text = displaySpeaker; body.text = text; terminalView.SetLine(displaySpeaker, text, null); }
+
+        public void SetDialogueLine(string displaySpeaker, string text, string sourceNodeId, string portraitId)
+        {
+            SetDialogueText(displaySpeaker, text);
+            terminalView.SetLine(displaySpeaker, text, portraitId);
+            runtime?.RecordDialogueLine(displaySpeaker, text, sourceNodeId, portraitId);
+        }
 
         public void ShowResponseButtons(IReadOnlyList<ResponseContent> responses, Action<string> selected)
         {
@@ -94,12 +99,19 @@ namespace MiniGame.UnityHost
             foreach (var response in responses.Take(4))
             {
                 var id = response.Id;
-                var button = MakeButton(choiceRoot, "Reply-" + id, response.Text, () => selected(id));
-                var element = button.gameObject.AddComponent<LayoutElement>();
-                element.preferredHeight = 64f;
-                element.minHeight = 54f;
+                var button = current != null && current.TerminalOpen
+                    ? terminalView.AddResponse(id, response.Text, choices.Count, () => { if (CanAdvanceDialogue()) selected(id); })
+                    : MakeButton(choiceRoot, "Reply-" + id, response.Text, () => { if (CanAdvanceDialogue()) selected(id); });
+                if (current == null || !current.TerminalOpen)
+                {
+                    var element = button.gameObject.AddComponent<LayoutElement>();
+                    element.preferredHeight = 64f;
+                    element.minHeight = 54f;
+                }
                 choices.Add(button);
             }
+            selectedResponse = 0;
+            terminalView.HighlightResponse(selectedResponse);
             dialogueInteractable = true;
             ApplyInputGate();
         }
@@ -108,11 +120,13 @@ namespace MiniGame.UnityHost
         {
             EnsureBuilt(); HideDialogueActions();
             body.text = text;
-            continueButton.gameObject.SetActive(complete != null);
-            continueButton.onClick.RemoveAllListeners();
-            if (complete != null) continueButton.onClick.AddListener(() => complete());
-            continueButton.GetComponentInChildren<Text>().text = current?.Cue?.Kind == PresentationKind.Reaction
-                ? "完成处置并返回房间 [空格]" : "继续 [空格]";
+            terminalView.Body.text = text;
+            var next = ActiveContinue;
+            next.gameObject.SetActive(complete != null);
+            next.onClick.RemoveAllListeners();
+            if (complete != null) next.onClick.AddListener(() => { if (CanAdvanceDialogue()) complete(); });
+            next.GetComponentInChildren<Text>().text = current?.Cue?.Kind == PresentationKind.Reaction && !current.UsesTerminalDirectory
+                ? "完成处置并返回房间 [空格]" : current != null && current.TerminalOpen ? "下一句  ↵" : "继续 [空格]";
             dialogueInteractable = true;
             ApplyInputGate();
         }
@@ -122,6 +136,8 @@ namespace MiniGame.UnityHost
             EnsureBuilt();
             continueButton.gameObject.SetActive(false);
             continueButton.onClick.RemoveAllListeners();
+            terminalView.Continue.gameObject.SetActive(false);
+            terminalView.Continue.onClick.RemoveAllListeners();
             foreach (var choice in choices) if (choice != null) { choice.gameObject.SetActive(false); Destroy(choice.gameObject); }
             choices.Clear();
         }
@@ -129,51 +145,77 @@ namespace MiniGame.UnityHost
         public void SetDialogueInteractable(bool enabled)
         { dialogueInteractable = enabled; ApplyInputGate(); }
 
+        public bool TryCloseHistory()
+        {
+            if (current == null || current.Paused || !current.TerminalOpen || !terminalView.HistoryOpen) return false;
+            terminalView.SetHistory(false);
+            ApplyInputGate();
+            return true;
+        }
+
         private void Update()
         {
             if (notice != null && Time.unscaledTime > notificationEnd) notice.text = string.Empty;
-            if (Input.GetKeyDown(KeyCode.Space) && continueButton != null && continueButton.gameObject.activeInHierarchy && continueButton.interactable)
-                continueButton.onClick.Invoke();
-            if (current == null || current.Input != InputContext.Dialogue) return;
+            if (current == null || current.Paused || current.Inspection != null || transitionLocked) return;
+            if (current.TerminalOpen)
+            {
+                foreach (var key in new[] { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.Return, KeyCode.KeypadEnter })
+                    if (Input.GetKeyDown(key) && terminalView.HandleDirectoryKey(key)) return;
+                if (terminalView.HistoryOpen)
+                {
+                    if (Input.GetKeyDown(KeyCode.UpArrow)) terminalView.ScrollHistory(1);
+                    if (Input.GetKeyDown(KeyCode.DownArrow)) terminalView.ScrollHistory(-1);
+                    if (Input.mouseScrollDelta.y != 0) terminalView.ScrollHistory((int)Mathf.Sign(Input.mouseScrollDelta.y));
+                    return;
+                }
+            }
+            if (!CanAdvanceDialogue()) return;
+            bool confirm = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space);
+            var next = ActiveContinue;
+            if (confirm && next != null && next.gameObject.activeInHierarchy && next.interactable)
+            { next.onClick.Invoke(); return; }
+            if (choices.Count > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow)) selectedResponse = Mathf.Max(0, selectedResponse - 1);
+                if (Input.GetKeyDown(KeyCode.DownArrow)) selectedResponse = Mathf.Min(choices.Count - 1, selectedResponse + 1);
+                terminalView.HighlightResponse(selectedResponse);
+                if (confirm && choices[selectedResponse].interactable) { choices[selectedResponse].onClick.Invoke(); return; }
+            }
             for (int index = 0; index < choices.Count; index++)
                 if (Input.GetKeyDown(KeyCode.Alpha1 + index) && choices[index].interactable) choices[index].onClick.Invoke();
         }
 
-        private void OnDestroy() { if (runtime != null) runtime.Changed -= Render; if (font != null) Destroy(font); }
+        private void LateUpdate() => terminalView?.Fit();
+        public void ReflowTerminal() => terminalView?.Fit();
+        private Button ActiveContinue => current != null && current.TerminalOpen ? terminalView.Continue : continueButton;
+        private bool CanAdvanceDialogue() => current != null && dialogueInteractable && !transitionLocked && !current.Paused && current.Inspection == null
+            && (!current.TerminalOpen || (terminalView.IsReview && !terminalView.HistoryOpen));
+
+        private void OnDestroy()
+        {
+            UnityEngine.Canvas.willRenderCanvases -= ReflowTerminal;
+            Font.textureRebuilt -= RefreshFontTexture;
+            if (runtime != null) runtime.Changed -= Render;
+            if (font != null) Destroy(font);
+        }
+
+        private void RefreshFontTexture(Font rebuilt)
+        {
+            if (rebuilt == font && font != null && font.material != null && font.material.mainTexture != null)
+                font.material.mainTexture.filterMode = FilterMode.Point;
+        }
 
         private void Render(RuntimeView view)
         {
             EnsureBuilt(); current = view;
-            header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     净化配额剩余 " + view.Game.RemainingPurificationQuota + "     " + PhaseName(view.Game.Phase);
+            header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     " + PhaseName(view.Game.Phase);
+            header.gameObject.SetActive(!view.TerminalOpen);
             terminal.SetActive(view.TerminalOpen);
-            conversation.SetActive(view.TerminalOpen || view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending);
-            SetRect(conversationRect, view.TerminalOpen ? new Vector2(.36f, .115f) : new Vector2(.17f, .19f),
-                view.TerminalOpen ? new Vector2(.955f, .65f) : new Vector2(.83f, .74f));
-            patientName.text = view.Game.CurrentPatientName ?? "线路待机";
-            var roster = new StringBuilder("病人记录\n\n");
-            foreach (var patient in view.Patients)
-            {
-                roster.Append(patient.IsCurrent ? "▶ " : "  ").Append(patient.Name).Append('\n');
-                roster.Append("    ").Append(PresenceName(patient.Presence)).Append(" · 治疗 ").Append(patient.TreatmentCount);
-                if (patient.HasMetToday) roster.Append(" · 今日已会谈");
-                roster.Append("\n\n");
-            }
-            patientList.text = roster.ToString();
-            string prefix = view.Game.Day + ":" + view.Game.CurrentPatientId + ":";
-            var observations = view.ObservedSigns.Where(sign => sign.StartsWith(prefix, StringComparison.Ordinal))
-                .Select(sign => Enum.TryParse(sign.Substring(prefix.Length), out InspectionKind kind) ? InspectionName(kind) : sign).ToArray();
-            observationLog.text = "本会谈观察记录 " + observations.Length + " / 6\n" + string.Join(" · ", observations);
+            terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
+            conversation.SetActive(!view.TerminalOpen && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending));
+            SetRect(conversationRect, new Vector2(.17f, .19f), new Vector2(.83f, .74f));
             worldHelp.gameObject.SetActive(view.Input == InputContext.World);
             worldHelp.text = "WASD 移动 / 鼠标观察 / E 操作\n" + WorldInstruction(view.Game.Phase) + "\nESC 暂停 · F5 保存 · F9 恢复";
-            foreach (var pair in dispositionButtons)
-            {
-                bool available = view.Game.AvailableDispositions.Contains(pair.Key);
-                pair.Value.gameObject.SetActive(available && view.Input == InputContext.Dialogue
-                    && view.Game.EncounterStage == EncounterStage.AwaitingDisposition);
-                pair.Value.interactable = available && view.Input == InputContext.Dialogue;
-            }
-            foreach (var button in checkButtons)
-                button.interactable = view.Input == InputContext.Dialogue && view.Game.CurrentPatientId != null;
             inspection.SetActive(view.Inspection != null);
             if (view.Inspection != null)
             {
@@ -187,7 +229,7 @@ namespace MiniGame.UnityHost
                 RenderFallback(view);
             if (view.Game.Phase == GamePhase.Ending && view.Cue == null)
             {
-                SetDialogueText("检查期结束", EndingName(view.Game.Ending) + "\n\n按 ESC 可保存、恢复或开始新的检查期。\n开发占位结局，条件来自核心规则。");
+                SetDialogueText("检查期结束", EndingName(view.Game.Ending) + "\n\n按 ESC 可保存、恢复或开始新的检查期。");
                 HideDialogueActions();
             }
             ApplyInputGate();
@@ -202,7 +244,7 @@ namespace MiniGame.UnityHost
             {
                 var token = view.Cue.Token;
                 bool automatic = view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep;
-                speaker.text = "系统演出";
+                SetDialogueText("和平仪", view.Cue.Text);
                 ShowCueText(view.Cue.Text, automatic ? null : (Action)(() => Check(runtime.CompleteCue(token))));
             }
             else if (view.Dialogue != null)
@@ -218,9 +260,11 @@ namespace MiniGame.UnityHost
         private void ApplyInputGate()
         {
             if (current == null) return;
-            bool enabled = dialogueInteractable && !transitionLocked && !current.Paused && current.Inspection == null;
+            bool enabled = CanAdvanceDialogue();
             if (continueButton != null) continueButton.interactable = enabled;
-            foreach (var button in choices) if (button != null) button.interactable = enabled && current.Input == InputContext.Dialogue;
+            if (terminalView != null) terminalView.Continue.interactable = enabled;
+            foreach (var button in choices) if (button != null) button.interactable = enabled;
+            terminalView?.Render(current, transitionLocked || current.Paused || current.Inspection != null);
             if (closeInspection != null) closeInspection.interactable = !current.Paused;
         }
 
@@ -229,7 +273,9 @@ namespace MiniGame.UnityHost
         private void EnsureBuilt()
         {
             if (canvasRoot != null) return;
-            font = Font.CreateDynamicFontFromOSFont(new[] { "Microsoft YaHei", "SimHei", "PingFang SC", "Noto Sans CJK SC", "Arial" }, 24);
+            font = Font.CreateDynamicFontFromOSFont(new[] { "SimSun", "Noto Serif CJK SC", "Microsoft YaHei", "SimHei", "PingFang SC", "Arial" }, 24);
+            Font.textureRebuilt += RefreshFontTexture;
+            RefreshFontTexture(font);
             var go = new GameObject("Prototype UI", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             go.transform.SetParent(transform, false);
             Canvas = go.GetComponent<Canvas>();
@@ -247,39 +293,16 @@ namespace MiniGame.UnityHost
             worldHelp = MakeText(canvasRoot, "WorldInstructions", "", 24, TextAnchor.LowerLeft, new Vector2(.03f, .04f), new Vector2(.57f, .19f));
             worldPrompt = MakeText(canvasRoot, "InteractionPrompt", "", 32, TextAnchor.MiddleCenter, new Vector2(.25f, .4f), new Vector2(.75f, .47f));
             MakeText(canvasRoot, "Reticle", "·", 32, TextAnchor.MiddleCenter, new Vector2(.49f, .485f), new Vector2(.51f, .515f));
-            terminal = MakePanel(canvasRoot, "Terminal", Dark, new Vector2(.015f, .025f), new Vector2(.985f, .91f)).gameObject;
-            var tr = terminal.GetComponent<RectTransform>();
-            MakeText(tr, "TerminalTitle", "和平仪 · 远程会谈线路", 29, TextAnchor.MiddleLeft, new Vector2(.03f, .92f), new Vector2(.7f, .98f));
-            var portrait = MakePanel(tr, "OriginalPlaceholderPortrait", new Color(.08f, .11f, .10f), new Vector2(.03f, .37f), new Vector2(.32f, .9f));
-            MakePanel(portrait, "Shoulders", new Color(.2f, .27f, .23f), new Vector2(.15f, .04f), new Vector2(.85f, .43f));
-            MakePanel(portrait, "Head", new Color(.37f, .43f, .38f), new Vector2(.34f, .38f), new Vector2(.66f, .79f));
-            MakePanel(portrait, "EyeLeft", new Color(.04f, .05f, .045f), new Vector2(.37f, .62f), new Vector2(.46f, .65f));
-            MakePanel(portrait, "EyeRight", new Color(.04f, .05f, .045f), new Vector2(.54f, .62f), new Vector2(.63f, .65f));
-            patientName = MakeText(portrait, "PatientName", "", 30, TextAnchor.MiddleCenter, new Vector2(.02f, .81f), new Vector2(.98f, .99f));
-            MakeText(portrait, "PortraitDisclaimer", "原创灰盒肖像 / 开发占位", 17, TextAnchor.MiddleCenter, new Vector2(.03f, .01f), new Vector2(.97f, .08f));
-            patientList = MakeText(tr, "PatientRoster", "", 20, TextAnchor.UpperLeft, new Vector2(.03f, .015f), new Vector2(.32f, .35f));
-            observationLog = MakeText(tr, "ObservationHistory", "", 20, TextAnchor.MiddleLeft, new Vector2(.36f, .73f), new Vector2(.97f, .82f));
-            var kinds = (InspectionKind[])Enum.GetValues(typeof(InspectionKind));
-            for (int index = 0; index < kinds.Length; index++)
-            {
-                var kind = kinds[index];
-                var button = MakeButton(tr, "Inspect-" + kind, InspectionName(kind), () => Check(runtime.Inspect(kind)));
-                SetRect(button.GetComponent<RectTransform>(), new Vector2(.36f + index * .102f, .83f), new Vector2(.455f + index * .102f, .905f));
-                checkButtons.Add(button);
-            }
-            var dispositions = new[] { Disposition.Treat, Disposition.Purify, Disposition.Release };
-            for (int index = 0; index < dispositions.Length; index++)
-            {
-                var disposition = dispositions[index];
-                var button = MakeButton(tr, "Disposition-" + disposition, DispositionName(disposition), () =>
+            terminal = MakePanel(canvasRoot, "Terminal", Color.black, Vector2.zero, Vector2.one).gameObject;
+            terminalView = new TerminalView(terminal.GetComponent<RectTransform>(), font,
+                id => Check(runtime.EnterSelectedPatient(id)), () => Check(runtime.ReturnToDirectory()),
+                () => Check(runtime.LeaveTerminal()), disposition =>
                 {
                     var view = runtime.GetView();
                     Check(runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition));
-                });
-                SetRect(button.GetComponent<RectTransform>(), new Vector2(.36f + index * .205f, .01f), new Vector2(.55f + index * .205f, .09f));
-                button.GetComponent<Image>().color = disposition == Disposition.Purify ? new Color(.42f, .2f, .18f) : disposition == Disposition.Release ? new Color(.14f, .34f, .23f) : new Color(.29f, .29f, .15f);
-                dispositionButtons.Add(disposition, button);
-            }
+                }, kind => Check(runtime.Inspect(kind)));
+            terminalView.HistoryChanged = ApplyInputGate;
+            UnityEngine.Canvas.willRenderCanvases += ReflowTerminal;
             conversationRect = MakePanel(canvasRoot, "Conversation", new Color(.045f, .07f, .06f, .98f), new Vector2(.36f, .115f), new Vector2(.955f, .65f));
             conversation = conversationRect.gameObject;
             speaker = MakeText(conversationRect, "Speaker", "", 26, TextAnchor.MiddleLeft, new Vector2(.03f, .875f), new Vector2(.97f, .98f));
@@ -311,7 +334,7 @@ namespace MiniGame.UnityHost
                 var button = MakeButton(pr, "PauseAction" + index, labels[index], actions[index]);
                 SetRect(button.GetComponent<RectTransform>(), new Vector2(.12f, .62f - index * .145f), new Vector2(.88f, .735f - index * .145f));
             }
-            MakeText(pr, "PauseHint", "存档包含当前会谈和演出检查点。\n开发配置：三天 / 五病人 / 三结局。", 23, TextAnchor.MiddleCenter, new Vector2(.04f, .035f), new Vector2(.96f, .16f));
+            MakeText(pr, "PauseHint", "存档保留当前会谈与演出检查点。", 23, TextAnchor.MiddleCenter, new Vector2(.04f, .035f), new Vector2(.96f, .16f));
             fade = MakePanel(canvasRoot, "PresentationFade", Color.clear, Vector2.zero, Vector2.one).GetComponent<Image>();
             fade.raycastTarget = false;
             // Several narrow stripes provide a generated signal-loss effect, without a recovered shader.
@@ -324,7 +347,7 @@ namespace MiniGame.UnityHost
             }
             glitch.gameObject.SetActive(false);
             notice = MakeText(canvasRoot, "Notification", "", 24, TextAnchor.MiddleCenter, new Vector2(.08f, .865f), new Vector2(.92f, .925f));
-            MakeText(canvasRoot, "PrototypeDisclaimer", "开发占位：对白、肖像、检查线索和梦境均非正式策划；不提供真假 / 善恶标准答案。", 17, TextAnchor.MiddleCenter, new Vector2(.08f, 0f), new Vector2(.92f, .025f));
+
         }
 
         private void BuildInspectionDrawing(InspectionKind kind)
@@ -402,17 +425,6 @@ namespace MiniGame.UnityHost
         }
         private static void SetRect(RectTransform rect, Vector2 minimum, Vector2 maximum)
         { rect.anchorMin = minimum; rect.anchorMax = maximum; rect.offsetMin = Vector2.zero; rect.offsetMax = Vector2.zero; }
-        private static string DispositionName(Disposition disposition) => disposition == Disposition.Treat ? "治疗" : disposition == Disposition.Purify ? "净化" : "释放";
-        private static string InspectionName(InspectionKind kind)
-        {
-            switch (kind) { case InspectionKind.Eyes: return "眼睛"; case InspectionKind.Hands: return "手部"; case InspectionKind.Teeth: return "牙齿";
-                case InspectionKind.Photo: return "照片"; case InspectionKind.DailySigns: return "当日通知"; default: return "档案"; }
-        }
-        private static string PresenceName(PatientPresence presence)
-        {
-            switch (presence) { case PatientPresence.Released: return "已释放"; case PatientPresence.Purified: return "已净化";
-                case PatientPresence.Deceased: return "已死亡"; case PatientPresence.TreatmentEnded: return "治疗终止"; default: return "在册"; }
-        }
         private static string EndingName(EndingType ending)
         {
             switch (ending) { case EndingType.TakenAway: return "结局：被带走"; case EndingType.LockedInRoom: return "结局：锁在房间";

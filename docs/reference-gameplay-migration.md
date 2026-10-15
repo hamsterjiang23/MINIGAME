@@ -1,12 +1,14 @@
 # 《寻找伪人》玩法结构迁移
 
-新增[Day1终端交互参考](sources/inspection-terminal-day1-prototype.md)及小孩Excel原件已同步；HTML只配置一位病人的Day1，不等同于Unity完成迁移，测试阈值与配额也不覆盖正式规则。[verified: .source-data/inspection-terminal-day1-v0.5.2.json configured_patients/default_test_threshold/default_test_quota] [opinion]
+小孩Day1已按[HTML参考](sources/inspection-terminal-day1-prototype.md)接入Unity终端与原生Yarn，并提供[离线策划编辑器](../Tools/DialoguePlanner/DialoguePlanner.html)和导入器；六轮、20回复、三种处置使用独立演示配置，旧三天原型保留。操作与范围见[终端指南](terminal-ui-guide.md)。[verified: terminal-ui-verification.json scope/source/unity] [opinion]
 
 2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](feishu-sync-2026-10-15.md)。[verified: .source-data/game-wiki.json content「结局」；.source-data/sync-2026-10-15.json changes] [opinion]
 
 《寻找伪人》是本项目重要玩法参考。本次按真实恢复代码中的“房间交互 → 对话与观察 → 条件选项 → 决策 → 反应 → 返回房间 → 睡眠与次日后果”连接原创检定员框架；权威规则仍由 `GameSession` 执行。[verified: ../research/no-im-not-a-human/Reports/gameplay-dialogue-progression.md「对话系统与条件触发」「玩家决策与NPC状态」「昼夜循环、行动与物资」；../src/MiniGame.Presentation/GameRuntime.cs TryInteract/CompleteCue] [opinion]
 
 ## 已实现的对应关系
+
+- **节点与显示分离、稳定元数据与命令桥接**：参考研究记录了 `DialogView` 按节点启动、`CustomYarnReader` 通过line ID取显示文本、选项可用性和 `DialogCommandsInstance` 把Yarn命令桥接到宿主。新实现按该边界保存来源节点/选项ID，把受限源编译为显示内容和运行时Yarn，回复与处置仍提交GameSession；没有复制原游戏对白、代码或美术作为本终端实现。[verified: ../research/no-im-not-a-human/Reports/gameplay-dialogue-progression.md L10–L19；../src/MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L20–L93；../UnityProject/Assets/MiniGame/Yarn/MiniGameYarnBridge.cs SelectResponse] [opinion]
 
 - **房间与会谈互斥**：参考 `CharacterRoomObjectView.TryStartDialog` 的对话打开门控、`DialogView.StartDialog/EndDialog` 的进入和结束回调。新 `GameRuntime.GetView().Input` 统一门控移动、选项、观察、暂停和演出；电脑每次只开启当前病人的会谈。[verified: ../research/no-im-not-a-human/DecompiledCode/Assembly-CSharp/_Code/Rooms/CharacterRoomObjectView.cs L38–L47；../research/no-im-not-a-human/DecompiledCode/Assembly-CSharp/_Code/DialogSystem/DialogView.cs L128–L197；../src/MiniGame.Presentation/GameRuntime.cs GetView/TryInteract]
 - **Yarn 负责呈现，命令进入规则服务**：参考 `DialogCommandsInstance` 的命令桥接与 `FakeOptionView.Option` 的可用条件。新桥捕获会面ID、节点ID与回调代次，选项必须同时符合 Yarn 可用条件和核心资格；选项与处置不直接改配额或患者状态。[verified: ../research/no-im-not-a-human/DecompiledCode/Assembly-CSharp/_Code/DialogSystem/Commands/DialogCommandsInstance.cs L145–L199；../research/no-im-not-a-human/DecompiledCode/Assembly-CSharp/_Code/DialogSystem/FakeOptionView.cs L23–L100；../UnityProject/Assets/MiniGame/Yarn/MiniGameYarnBridge.cs SelectResponse/PresentOptionsAsync]
@@ -20,6 +22,8 @@
 范围仍为3天、5病人、3结局；每日净化目标、信任阈值与对白是开发配置。原作的随机访客池、真假身份、能量与物品库存、夜间谋杀、FEMA及原作结局没有移植成新的已确认需求。当前资源压力显示既有净化配额；终止或退出病人由核心排除出后续队列。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs Create；../src/README.md「开发默认规则」；../docs/open-questions.md Q07–Q15、Q25] [opinion]
 
 ## 工程与验证入口
+
+- 默认小孩Day1最新验证：SDK8.0.424锁定恢复/Release构建0警告错误，185项.NET、18项Node及1296条路线，Unity EditMode2项/PlayMode9项通过；Windows Mono构建成功。浏览器视觉与下载点击未验收，Player启动和源码哈希范围见[本轮报告](terminal-ui-verification.json)。以下327节点及旧四项测试保留三天原型的历史范围。[verified: terminal-ui-verification.json dotnet/planner/unity/limits] [opinion]
 
 - [Presentation](../src/MiniGame.Presentation/)：不依赖 Unity 的输入生命周期、公开玩家视图与宿主检查点；[77项测试](../src/MiniGame.Presentation.Tests/)。核心73项测试保持通过。[verified: ../Artifacts/Tests/migration-verification-report.json Core/Presentation]
 - [Unity 工程](../UnityProject/README.md)：原创公寓、中文uGUI、六类观察、镜头过渡、夜间床引导、真实 Yarn 桥及 PlayMode 测试源码。[verified: ../UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate；../UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs]

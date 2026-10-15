@@ -26,7 +26,7 @@
 - 已提供Day1初见、Day2一次治疗后、Day3两次治疗后的内容；每一天为R1–R6对话及R7措施轮。[verified: ../.source-data/workbook-cells/dialogue-child-v1-1.0ADfgL.json data.ranges A:C；dialogue-child-v1-1.X84Zd2.json data.ranges 第9–11、33行]
 - 捧哏与半分支选项信任变化为0；真分支为−3、0、+3；处置信任变化为0。不能用原型的±10替代这份表的实际值。[verified: ../.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第20、30–33行] [opinion]
 - J列节点/选项ID唯一；K列目标需存在，允许终点为`END_DAY1/2/3`、`END_CHARACTER`；M列立绘ID引用独立的立绘表。[verified: ../.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第18–21、28、43–44行]
-- 这份来源有实际对白与配置规则；当前原型仍使用C#生成的占位对白，没有因下载表格自动完成导入。[verified: ../planner-acceptance-guide.md「验收前先读这几条」；../.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第2行] [opinion]
+- Day1已通过对应HTML整理为Yarn内容包并进入Unity终端，保留来源ID、立绘ID、台词与信任变化；Day2/3待接入。后续编辑包内Yarn，通过[HTML工具与Unity导入](../terminal-ui-guide.md)交付，没有改写Excel原件或派生表。[verified: ../terminal-ui-verification.json source/scope；../../Tools/DialoguePlanner/README.md「策划使用」] [opinion]
 
 ## 配置说明原文
 

@@ -49,8 +49,8 @@ namespace MiniGame.Core
         {
             PatientId = RuleGuard.Identifier(patientId, nameof(patientId));
             var rounds = RuleGuard.Copy(normalRounds, nameof(normalRounds));
-            if (rounds.Count < 4 || rounds.Count > 5)
-                throw new ArgumentException("Normal dialogue must contain 4-5 rounds.", nameof(normalRounds));
+            if (rounds.Count == 0)
+                throw new ArgumentException("Normal dialogue must contain at least one round.", nameof(normalRounds));
             var nodeIds = rounds.Select(r => r.NodeId).ToList();
             if (specialRound != null) nodeIds.Add(specialRound.NodeId);
             if (nodeIds.Distinct().Count() != nodeIds.Count)

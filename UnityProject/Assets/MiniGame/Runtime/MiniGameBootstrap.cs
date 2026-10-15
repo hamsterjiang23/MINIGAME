@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using MiniGame.Core;
 using MiniGame.Presentation;
+using MiniGame.Presentation.Authoring;
 using UnityEngine;
+using Yarn.Unity;
 
 namespace MiniGame.UnityHost
 {
@@ -13,26 +15,42 @@ namespace MiniGame.UnityHost
         [SerializeField] private ApartmentPlayer player;
         [SerializeField] private PresentationEffects effects;
         [SerializeField] private MiniGameYarnBridge yarn;
+        [SerializeField] private bool useTerminalDemo = true;
+        [SerializeField] private DialoguePackageAsset dialoguePackage;
         private GameRules rules;
         private IGameContent content;
+        private YarnProject legacyProject;
+        private bool terminalDemoActive;
         public GameRuntime Runtime { get; private set; }
         public MiniGameScreen Screen => screen;
         public ApartmentPlayer Player => player;
         public PresentationEffects Effects => effects;
-        public string SavePath => Path.Combine(Application.persistentDataPath, "prototype-save.json");
+        public bool TerminalDemoActive => terminalDemoActive;
+        public string SavePath => Path.Combine(Application.persistentDataPath,
+            terminalDemoActive ? "terminal-demo-save.json" : "prototype-save.json");
 
         public void Configure(MiniGameScreen ui, ApartmentPlayer worldPlayer, PresentationEffects presentation, MiniGameYarnBridge bridge)
         { screen = ui; player = worldPlayer; effects = presentation; yarn = bridge; }
 
         private void Awake()
         {
-            rules = PrototypeRules.Create();
-            content = new PrototypeContent(rules);
-            InstallRuntime(new GameRuntime(rules, content));
+            legacyProject = yarn.Project;
+            if (useTerminalDemo)
+            {
+                try { StartTerminalDemo(); }
+                catch (Exception exception)
+                {
+                    Debug.LogWarning("Terminal demo unavailable: " + exception.Message);
+                    StartLegacyPrototype();
+                    screen.Notify("终端内容包未就绪，请使用 MiniGame 菜单导入；当前为原三天开发配置。", true);
+                }
+            }
+            else StartLegacyPrototype();
             screen.SaveRequested += Save;
             screen.LoadRequested += Load;
             screen.RestartRequested += Restart;
-            Debug.Log("MINIGAME_PLAYER_READY unity=" + Application.unityVersion + " phase=" + Runtime.GetView().Game.Phase);
+            Debug.Log("MINIGAME_PLAYER_READY unity=" + Application.unityVersion + " phase=" + Runtime.GetView().Game.Phase
+                + " profile=" + (terminalDemoActive ? "terminal-demo" : "legacy-three-day") + " rules=" + rules.RulesId);
         }
 
         private void OnDestroy()
@@ -50,6 +68,7 @@ namespace MiniGame.UnityHost
             {
                 var view = Runtime.GetView();
                 if (view.Paused) Runtime.SetPaused(false);
+                else if (screen.TryCloseHistory()) { }
                 else if (view.Inspection != null) Runtime.CloseInspection();
                 else Runtime.SetPaused(true);
             }
@@ -90,7 +109,29 @@ namespace MiniGame.UnityHost
             { screen.Notify("恢复失败：" + exception.Message, true); Debug.LogWarning(exception.Message); }
         }
 
-        public void Restart() => InstallRuntime(new GameRuntime(rules, content));
+        public void StartTerminalDemo(DialoguePackageAsset package = null)
+        {
+            var selected = package != null ? package : dialoguePackage != null ? dialoguePackage
+                : Resources.Load<DialoguePackageAsset>("MiniGame/ActiveDialoguePackage");
+            if (selected == null || selected.PackageSource == null || selected.Project == null)
+                throw new InvalidOperationException("No validated terminal dialogue package is active.");
+            var compiled = DialoguePackageCompiler.Compile(selected.PackageSource.text);
+            if (compiled.SourceHash != selected.SourceHash || selected.Project.Program == null)
+                throw new InvalidOperationException("The active dialogue source and compiled Yarn project do not match.");
+            rules = compiled.Rules; content = compiled.Content; terminalDemoActive = true;
+            yarn.Configure(selected.Project);
+            InstallRuntime(new GameRuntime(rules, content, useTerminalDirectory: true));
+        }
+
+        public void StartLegacyPrototype()
+        {
+            if (legacyProject == null) legacyProject = yarn.Project;
+            rules = PrototypeRules.Create(); content = new PrototypeContent(rules); terminalDemoActive = false;
+            if (legacyProject != null) yarn.Configure(legacyProject);
+            InstallRuntime(new GameRuntime(rules, content));
+        }
+
+        public void Restart() => InstallRuntime(new GameRuntime(rules, content, terminalDemoActive));
         public void RestoreCheckpoint(string json) => InstallRuntime(GameRuntime.Restore(json, rules, content));
     }
 }

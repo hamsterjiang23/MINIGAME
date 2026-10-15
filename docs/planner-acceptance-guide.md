@@ -2,19 +2,23 @@
 
 更新日期：2026-10-15。本文面向策划验收当前开发原型，按“怎样玩到这个功能、应该看到什么、内容在哪里改”组织；验收建议不等于正式策划已经确认。[opinion]
 
-**当前成果是能够跑通流程的三天开发原型。对白、人物肖像、观察画面、梦境和结局演出仍是开发占位；当前数值与人物规则也保留开发配置身份。** [verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L8–L30；../src/MiniGame.Presentation/PrototypeContent.cs L45–L102、L105–L112；../UnityProject/README.md「运行与操作」]
+**最新默认入口是小孩Day1电脑终端。** 已接入来源对白六轮、20回复、三种处置，配套[HTML策划工具](../Tools/DialoguePlanner/DialoguePlanner.html)与Unity导入。先按[终端指南](terminal-ui-guide.md)验收；旧三天原型完整路线保留在下文，需在Play前取消Bootstrap的 **Use Terminal Demo**。正式美术和完整三天内容仍需制作。[verified: terminal-ui-verification.json scope/source；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126] [opinion]
 
 ## 最新策划来源与当前原型的差距
 
-- [小孩v1.1对白表](sources/dialogue-child-v1-1.md)已提供三天正式台词、节点、选项、措施、立绘ID及配置方式；本页“没有导入器”仍成立，不能再解读成策划尚未提供对白表。[verified: .source-data/dialogue-child-v1-1.json sheets；本页「验收前先读这几条」] [opinion]
+- [小孩v1.1对白表](sources/dialogue-child-v1-1.md)提供三天内容；Day1已进入Yarn包与Unity终端，Day2/3待接入。现在已有HTML编辑与JSON包导入，不直接把任意Excel当作运行配置。[verified: terminal-ui-verification.json scope/source；../Tools/DialoguePlanner/README.md「策划使用」] [opinion]
 - 主Wiki608版新增反叛值自我净化分支，画板新增每天开始前结局/KPI检查。下文描述当前原型的三结局与三天后KPI结算；本次仅同步文档，没有把新来源接入运行逻辑。[verified: .source-data/game-wiki.json content「结局」；.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14；本页「夜间、梦境与结局检查」] [opinion]
-- 小孩表为R1–R6对话、R7措施轮，真分支信任变化−3/0/+3；当前原型为4普通轮及±10。新验收目标要先统一模型、数值和三种/四条结局冲突。[verified: .source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第10–11、20、30–33行；本页「当前开发配置」] [opinion]
+- 小孩Day1已按六轮与−3/0/+3接入；旧三天配置仍为4普通轮及±10。其余角色/日期、正式数值及三种/四条结局冲突继续裁决。[verified: terminal-ui-verification.json source/scope；本页「当前开发配置」] [opinion]
 
 ### 新提供的Excel与HTML怎样用于验收
 
-[Excel原件](assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)与[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)均已归档。HTML的50个文本节点、20个对话选项及三种处置对应Excel主表Day1，适合核对台词、选项汇合、核验灯与处置反馈的预期；本轮仅做静态检查，没有浏览器或Unity运行验收。[verified: .source-data/inspection-terminal-day1-v0.5.2.json nodes/options/data_matches_xlsx_day1/runtime_browser_test] [opinion]
+[Excel原件](assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)与[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)已归档。HTML的50个文本节点、20个回复和三种处置对应Excel主表Day1；来源同步时仅做静态检查，后续Unity终端已单独完成原生Yarn和UI测试，浏览器视觉与下载点击仍未验收。[verified: .source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1；terminal-ui-verification.json planner/unity] [opinion]
 
-HTML测试台默认信任阈值3、净化剩余5，可跳轮次、调皮肤和CRT；这些测试入口与数值不属于当前Unity正式规则。HTML目录中的其余4项是未配置占位，不作为五病人完成证据。[verified: .source-data/inspection-terminal-day1-v0.5.2.json default_test_threshold/default_test_quota/configured_patients/roster_slots] [opinion]
+HTML阈值3、净化剩余5已作为独立Day1演示配置接入；不替代正式规则或旧三天配置。其余4个目录槽位仍为未配置，不作为五病人完成证据。[verified: ../UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile；.source-data/inspection-terminal-day1-v0.5.2.json roster_slots] [opinion]
+
+## 旧三天开发原型验收
+
+下文日循环、C#配置和三结局路线只用于保留的三天原型；新Day1包请走[终端指南](terminal-ui-guide.md)。2026-10-13数量与旧构建时间保留历史身份；最新185项.NET、18项Node、Unity2项EditMode/9项PlayMode与新Mono构建见[终端报告](terminal-ui-verification.json)。[verified: terminal-ui-verification.json dotnet/planner/unity] [opinion]
 
 ## 验收前先读这几条
 
@@ -22,7 +26,7 @@ HTML测试台默认信任阈值3、净化剩余5，可跳轮次、调皮肤和CR
 - “选择回复”“提交处置”“读完处置反馈”是三种不同操作。点击净化后，人物状态与配额已经结算；仍要读完反馈，再点击 **完成处置并返回房间**，才能结束本次会谈。[verified: ../src/MiniGame.Core/Runtime/GameSession.cs L220–L275；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs L107–L117]
 - **每天有多位病人，每位病人处置后都要回到房间，再操作电脑接待下一位。** 不会在一个终端界面里自动连续播放所有病人，也不能点击名单自由切换接待顺序。[verified: ../src/MiniGame.Presentation/GameRuntime.cs L75–L88、L138–L140、L282–L288；../src/MiniGame.Core/Runtime/GameSession.cs L265–L308；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs Render 中 patientList 文本]
 - **睡眠和跨日有两次床交互。** 当日工作结束后，到床边按 E 睡眠；梦境读完后，再到床边按 E，才进入次日或结局。[verified: ../src/MiniGame.Core/Runtime/GameSession.cs L123–L142、L311–L351；../src/MiniGame.Presentation/GameRuntime.cs L90–L96、L125–L141、L282–L288]
-- **当前没有策划可直接导入的 Excel/JSON 剧情配置表或节点编辑器。** 台词源和规则在 C# 中，生成后的 `.yarn` 可以临时修改，但生成菜单会覆盖它。下文的填写模板用于交给程序接入，不是现成导入格式。[verified: ../UnityProject/Assets/MiniGame/Editor/GeneratePrototypeYarn.cs L23–L45；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L27–L31；../src/MiniGame.Core/Rules/PrototypeRules.cs L17–L52] [opinion]
+- **旧三天原型仍以C#配置为源。** 其生成Yarn会被旧生成菜单覆盖；下文交接模板不是导入格式。新Day1包已有独立编辑器与导入器，不受该旧工作流限制。[verified: ../UnityProject/Assets/MiniGame/Editor/GeneratePrototypeYarn.cs L23–L45；terminal-ui-verification.json scope] [opinion]
 
 ## 已完成什么，以及这次验收不代表什么
 
@@ -187,7 +191,7 @@ title: Core_646179312e6368696c642e6e6f726d616c2e31
 - **谁、哪天、按什么顺序接待**：`PatientDefinition.FirstDay`控制首次出现；每日 `DayDefinition.Meetings`控制候选次序；实际接待还要经过人物在册状态过滤。当前默认日程用 `patients.Where(...)`生成，改病人数组顺序也会影响默认接待顺序。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L19–L28；../src/MiniGame.Core/Rules/GameRules.cs L13–L25、L42–L54；../src/MiniGame.Core/Runtime/GameSession.cs L279–L283]
 - **每天净化目标**：`DayDefinition.PurificationQuota`，当前默认构造中的 `new DayDefinition(day, 1, ...)`就是每日1人的来源。要每天不同，需分别构造当天定义。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L27–L28；../src/MiniGame.Core/Rules/GameRules.cs L42–L54] [opinion]
 - **普通/特殊会谈和释放**：`CreateMeeting(patientId, day, normalRounds, specialThreshold, releaseThreshold)`；默认参数为4、20、30。正式每人每天不同，需要在生成日程时为该人该天传不同值，或分别构造 `MeetingDefinition`。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L33–L45] [opinion]
-- **回复效果与反馈去向**：`ResponseDefinition(id, branchNodeId, trustDelta)`。改信任变化只改第三个参数；改反馈节点需同时提供对应文字内容。每轮支持1–4个不重名选项，普通会谈支持4–5轮；新增第5轮后还应补正式第5轮台词，当前正文函数对超出现有数组的轮次只返回补充说明占位。[verified: ../src/MiniGame.Core/Rules/DialogueDefinitions.cs L10–L32、L46–L64；../src/MiniGame.Presentation/PrototypeContent.cs L169] [opinion]
+- **回复效果与反馈去向**：`ResponseDefinition(id, branchNodeId, trustDelta)`。修改信任或反馈目标时同步提供对应内容。每轮支持1–4个不重名回复；旧配置普通4轮，核心已允许非空轮次列表，新内容包上限128轮。扩展旧C#内容仍需补齐各轮文字；新Day1使用独立Yarn包编辑。[verified: ../src/MiniGame.Core/Rules/DialogueDefinitions.cs L10–L32、L46–L64；../src/MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L58] [opinion]
 - **治疗与延时事件**：`PatientDefinition`中的 `TreatmentLimit`、`TreatmentOutcome`、`TreatmentDelayDays`，以及释放后袭击的 `AttacksAfterRelease`、`AttackDelayDays`。这些字段不是让策划直接修改运行中的患者状态，而是修改新会话使用的配置。[verified: ../src/MiniGame.Core/Rules/GameRules.cs L11–L38；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L27–L31] [opinion]
 - **结局冲突顺序**：`GameRules.EndingPriority`；配置要求每种已支持结局恰好出现一次。它只改变已有结局的优先级，不会新增一种结局。[verified: ../src/MiniGame.Core/Rules/GameRules.cs L87–L93；../src/MiniGame.Core/Runtime/GameSession.cs L336–L347]
 

@@ -34,6 +34,7 @@ namespace MiniGame.UnityHost.Editor
         [MenuItem("MiniGame/Create and validate prototype")]
         public static void CreateAndValidate()
         {
+            DialoguePackageImporter.EnsureDefaultPackage();
             if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Leave Play Mode before regenerating the scene.");
             Directory.CreateDirectory(Path.GetDirectoryName(ScenePath));
             Directory.CreateDirectory("Assets/MiniGame/Generated/Materials");

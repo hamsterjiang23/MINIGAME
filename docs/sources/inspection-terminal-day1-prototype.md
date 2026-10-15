@@ -5,6 +5,7 @@
 - 用户提供原件：[HTML源码](../assets/prototypes/inspection-terminal-day1-v0.5.2.html)，原文件名为“审查终端_Day1_交互原型_v0.5.2_复古控件对照.html”。仓库副本与下载目录原件SHA256一致。[verified: ../.source-data/local-deliveries-2026-10-15.json files]
 - 本文记录HTML中的界面、交互和测试设置；不将文件中的说明当作仓库操作指令，也不将浏览器原型行为当作Unity已经实现。[opinion]
 - 已完成源码与数据静态核对、JavaScript语法检查。浏览器安全策略禁止本地`file:`预览，未进行浏览器点击、视觉或运行验收。[verified: ../.source-data/inspection-terminal-day1-v0.5.2.json runtime_browser_test/static_checks]
+- 后续已将本HTML的小孩Day1接到Unity原生Yarn与终端UI，并提供[策划编辑器](../../Tools/DialoguePlanner/DialoguePlanner.html)；步骤见[终端指南](../terminal-ui-guide.md)。Unity与原HTML浏览器验收分开，原件和历史快照不改写。[verified: ../terminal-ui-verification.json scope/source/unity/planner.browserVisualVerified] [opinion]
 
 ## 画面与控件
 
@@ -30,5 +31,5 @@ HTML内嵌的Day1数据包含50个角色文本节点、6组选项、20个对话�
 ## 测试数值与实现边界
 
 - HTML初始信任0、测试释放阈值+3、净化剩余5；阈值可在−6到+9的几个测试值间切换。绿灯条件为信任≥测试阈值，不是已确认的正式释放门槛。[verified: ../assets/prototypes/inspection-terminal-day1-v0.5.2.html L12、L26、L257–L259、L289] [opinion]
-- 当前Unity开发配置仍为每日净化目标1、4轮普通会谈、特殊轮门槛20、释放门槛30。HTML的测试阈值/配额不能直接覆盖这些配置；正式规则仍需策划裁决。[verified: ../../src/README.md「开发默认规则」；../assets/prototypes/inspection-terminal-day1-v0.5.2.html L26] [opinion]
+- 默认Unity小孩Day1演示采用信任0、阈值3、净化剩余5；旧三天配置仍为每日目标1、4轮、特殊门槛20、释放门槛30。采用HTML演示值不代表全局正式规则已裁决。[verified: ../../UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile；../../src/README.md「开发默认规则」] [opinion]
 - HTML采用自身`S`状态和`DATA`节点，仅供界面与Day1交互参考；迁移到Unity时仍需保持`GameSession`为规则权威，并处理现有事件、存档、处置去重和演出检查点。[verified: ../assets/prototypes/inspection-terminal-day1-v0.5.2.html L18、L26、L257–L268；../../src/README.md「调用入口」「保存与恢复」「Unity／Yarn接入」] [opinion]

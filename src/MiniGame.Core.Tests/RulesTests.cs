@@ -37,10 +37,20 @@ namespace MiniGame.Core.Tests
             => Assert.Throws<ArgumentException>(() => new RoundDefinition("round", Enumerable.Range(0, count)
                 .Select(i => new ResponseDefinition("r" + i, "branch" + i, 0))));
 
-        [TestCase(3)]
-        [TestCase(6)]
+        [TestCase(0)]
         public void InvalidNormalRoundCountsAreRejected(int count)
             => Assert.Throws<ArgumentException>(() => PrototypeRules.CreateMeeting("patient", 1, count));
+
+        [TestCase(1)]
+        [TestCase(3)]
+        [TestCase(6)]
+        public void RoundCountComesFromContentInsteadOfThePrototypeFourToFiveRoundConvention(int count)
+        {
+            var session = new GameSession(Scenario.SinglePatient(normalRounds: count));
+            Scenario.EnterWork(session);
+            Scenario.ReachDisposition(session);
+            Assert.That(session.CreateSnapshot().State.Encounters.Single().Responses.Count, Is.EqualTo(count));
+        }
 
         [Test]
         public void DuplicateResponseAndDialogueNodeIdsAreRejected()

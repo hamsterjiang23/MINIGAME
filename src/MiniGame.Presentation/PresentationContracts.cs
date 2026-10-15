@@ -7,7 +7,8 @@ using MiniGame.Core;
 
 namespace MiniGame.Presentation
 {
-    public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending }
+    public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory }
+    public enum TerminalPage { Closed, Directory, Review, Archive }
     public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending }
     public enum InspectionKind { Eyes, Hands, Teeth, Photo, DailySigns, Records }
 
@@ -81,15 +82,43 @@ namespace MiniGame.Presentation
         public IReadOnlyList<PatientView> Patients { get; }
         public IReadOnlyList<InteractionTarget> AllowedInteractions { get; }
         public IReadOnlyList<string> ObservedSigns { get; }
+        public TerminalPage TerminalPage { get; }
+        public bool UsesTerminalDirectory { get; }
+        public bool LeavingTerminal { get; }
+        public bool ArchiveDirectoryVisible { get; }
+        public IReadOnlyList<TranscriptEntry> Transcript { get; }
         internal RuntimeView(PlayerView game, InputContext input, bool terminalOpen, bool paused,
             PresentationCue? cue, DialogueContent? dialogue, InspectionContent? inspection,
-            IEnumerable<PatientView> patients, IEnumerable<InteractionTarget> interactions, IEnumerable<string> observedSigns)
+            IEnumerable<PatientView> patients, IEnumerable<InteractionTarget> interactions, IEnumerable<string> observedSigns,
+            TerminalPage terminalPage = TerminalPage.Closed, bool usesTerminalDirectory = false,
+            bool leavingTerminal = false, IEnumerable<TranscriptEntry>? transcript = null, bool archiveDirectoryVisible = false)
         {
             Game = game; Input = input; TerminalOpen = terminalOpen; Paused = paused;
             Cue = cue; Dialogue = dialogue; Inspection = inspection;
             Patients = new ReadOnlyCollection<PatientView>(new List<PatientView>(patients));
             AllowedInteractions = new ReadOnlyCollection<InteractionTarget>(new List<InteractionTarget>(interactions));
             ObservedSigns = new ReadOnlyCollection<string>(new List<string>(observedSigns));
+            TerminalPage = terminalPage; UsesTerminalDirectory = usesTerminalDirectory; LeavingTerminal = leavingTerminal;
+            ArchiveDirectoryVisible = archiveDirectoryVisible;
+            Transcript = new ReadOnlyCollection<TranscriptEntry>(new List<TranscriptEntry>(transcript ?? Array.Empty<TranscriptEntry>()));
+        }
+    }
+
+    public sealed class TranscriptEntry
+    {
+        public string Key { get; }
+        public string EncounterId { get; }
+        public string CoreNodeId { get; }
+        public string Speaker { get; }
+        public string Text { get; }
+        public string SourceNodeId { get; }
+        public string PortraitId { get; }
+        public bool IsPlayer { get; }
+        internal TranscriptEntry(string key, string encounterId, string coreNodeId, string speaker,
+            string text, string sourceNodeId, string portraitId, bool isPlayer)
+        {
+            Key = key; EncounterId = encounterId; CoreNodeId = coreNodeId; Speaker = speaker;
+            Text = text; SourceNodeId = sourceNodeId; PortraitId = portraitId; IsPlayer = isPlayer;
         }
     }
 

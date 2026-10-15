@@ -69,7 +69,9 @@ namespace MiniGame.UnityHost
                     playing = StartCoroutine(CameraTransition(cue.Token, terminalCameraPose.position, terminalCameraPose.rotation, false));
                     break;
                 case PresentationKind.ExitTerminal:
-                    playing = StartCoroutine(CameraTransition(cue.Token, hasRoomPose ? roomPosition : viewCamera.transform.position, hasRoomPose ? roomRotation : viewCamera.transform.rotation, true));
+                    playing = view.UsesTerminalDirectory && !view.LeavingTerminal
+                        ? StartCoroutine(TerminalSignalLoss(cue.Token))
+                        : StartCoroutine(CameraTransition(cue.Token, hasRoomPose ? roomPosition : viewCamera.transform.position, hasRoomPose ? roomRotation : viewCamera.transform.rotation, true));
                     break;
                 case PresentationKind.Sleep: playing = StartCoroutine(SleepTransition(cue.Token)); break;
                 case PresentationKind.Reaction: playing = StartCoroutine(ReactionSignal(cue.Token)); break;
@@ -130,6 +132,24 @@ namespace MiniGame.UnityHost
                 }
                 yield return null;
             }
+        }
+
+        private IEnumerator TerminalSignalLoss(string token)
+        {
+            screen.SetTransitionLocked(true);
+            float elapsed = 0f;
+            while (elapsed < .68f && activeToken == token)
+            {
+                if (runtime.GetView().Paused) { yield return null; continue; }
+                elapsed += Time.unscaledDeltaTime;
+                screen.SetGlitch(.85f);
+                yield return null;
+            }
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken != token) yield break;
+            screen.SetGlitch(0f); screen.SetTransitionLocked(false);
+            playing = null;
+            runtime.CompleteCue(token);
         }
     }
 }

@@ -1,0 +1,106 @@
+{
+  "checkedAtUtc": "2026-10-15T13:01:32.269961Z",
+  "scope": "Child Day1 native terminal, canonical Yarn package, standalone planner, importer and preserved legacy three-day prototype. Isolated real Unity Editor and Windows Mono player validation.",
+  "source": {
+    "html": "docs/assets/prototypes/inspection-terminal-day1-v0.5.2.html",
+    "workbook": "docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx",
+    "package": "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json",
+    "packageSha256": "e538e0d856c4d4b0d8d691723e807ba90edc70e02511cac9da673b4d217a1d83",
+    "packageId": "terminal-child-day1",
+    "contentVersion": "1.0.0",
+    "profile": {
+      "patientId": "child",
+      "patientName": "米洛",
+      "day": 1,
+      "startNode": "D1_R1_OPEN1",
+      "endNode": "END_DAY1",
+      "initialTrust": 0,
+      "releaseThreshold": 3,
+      "initialQuota": 5
+    }
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "restore": "dotnet restore MiniGame.sln --locked-mode: passed",
+    "build": "dotnet build MiniGame.sln -c Release --no-restore: passed, 0 warnings, 0 errors",
+    "corePassed": 75,
+    "presentationPassed": 110,
+    "totalPassed": 185,
+    "results": [
+      "src/MiniGame.Core.Tests/TestResults/terminal-final.trx",
+      "src/MiniGame.Presentation.Tests/TestResults/terminal-final.trx"
+    ]
+  },
+  "planner": {
+    "testsPassed": 18,
+    "conversationRoutes": 1296,
+    "sourceMatchesHtml": true,
+    "lineNodes": 50,
+    "choiceGroups": 6,
+    "dispositionGroups": 1,
+    "generatedHtmlMatchesSources": true,
+    "javaScriptSyntax": "passed",
+    "browserVisualVerified": false,
+    "log": "Artifacts/Unity/TerminalDemo/planner-tests.log"
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "isolatedImport": true,
+    "editModePassed": 2,
+    "playModePassed": 9,
+    "checkReport": "Artifacts/Unity/TerminalDemo/verification.json",
+    "checks": [
+      {
+        "name": "terminal-editmode",
+        "passed": 2,
+        "failed": 0,
+        "xml": "Artifacts/Unity/TerminalDemo/terminal-editmode-results.xml",
+        "log": "Artifacts/Unity/TerminalDemo/terminal-editmode.log",
+        "graphics": false
+      },
+      {
+        "name": "terminal-playmode",
+        "passed": 9,
+        "failed": 0,
+        "xml": "Artifacts/Unity/TerminalDemo/terminal-playmode-results.xml",
+        "log": "Artifacts/Unity/TerminalDemo/terminal-playmode.log",
+        "graphics": true
+      }
+    ],
+    "windowsMonoBuild": {
+      "result": "Succeeded",
+      "errors": 0,
+      "warnings": 1,
+      "path": "Builds/MiniGame/MiniGame.exe",
+      "report": "Artifacts/Unity/unity-windows-build.json"
+    },
+    "playerStartup": {
+      "verified": true,
+      "profile": "terminal-demo",
+      "readyLine": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=MorningInspection profile=terminal-demo rules=terminal-demo:terminal-child-day1:1.0.0",
+      "observedSeconds": 10,
+      "startupExceptions": 0,
+      "log": "Artifacts/Unity/TerminalDemo/player-startup.log"
+    },
+    "visualsReviewed": [
+      "Artifacts/Unity/TerminalDemo/Visuals/terminal-directory.png",
+      "Artifacts/Unity/TerminalDemo/Visuals/terminal-review.png",
+      "Artifacts/Unity/TerminalDemo/Visuals/terminal-signal-lost.png",
+      "Artifacts/Unity/TerminalDemo/Visuals/terminal-archived-directory.png"
+    ],
+    "sourceHashComparison": {
+      "files": 36,
+      "differences": 0,
+      "report": "Artifacts/Unity/TerminalDemo/source-hashes.json"
+    }
+  },
+  "limits": [
+    "HTML browser visual and download-click QA was not run; browser policy rejected file protocol and no workaround was attempted.",
+    "Current Unity tests use an isolated project with pinned package source copies; this run does not claim a fresh normal UPM import.",
+    "Windows Mono player startup was checked headlessly; graphics dialogue and input were exercised in Editor PlayMode. IL2CPP is unverified.",
+    "Portraits, room geometry and some staging remain developer placeholders; the supplied child Day1 dialogue is imported.",
+    "A restored checkpoint may replay the current pure dialogue segment; transcript deduplication and once-only commands are tested. Exact per-line cursor restoration is not implemented.",
+    "One null-renderer ambient/reflection warning is recorded by the headless Windows build.",
+    "Artifacts, player binaries and test result files are local ignored outputs; this tracked summary records their scope and results."
+  ]
+}

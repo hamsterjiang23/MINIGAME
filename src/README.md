@@ -6,7 +6,7 @@
 
 2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](../docs/feishu-sync-2026-10-15.md)。[verified: ../docs/.source-data/game-wiki.json content「结局」；../docs/.source-data/sync-2026-10-15.json changes] [opinion]
 
-用户提供的[小孩Excel原件](../docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)和[Day1终端HTML v0.5.2](../docs/sources/inspection-terminal-day1-prototype.md)已归档，内嵌Day1数据一致；排期不在本次同步范围。当前Unity仍使用开发占位内容。[verified: ../docs/.source-data/local-deliveries-2026-10-15.json files；../docs/.source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1；../docs/.source-data/sync-2026-10-15.json scope_exclusions] [opinion]
+默认Unity终端已接入小孩Day1来源对白及独立演示配置；`MiniGame.Presentation/Authoring` 将受限Yarn内容包编译为核心规则、显示内容和运行时Yarn。台词源为包内 `yarnSource`，GameSession仍裁决信任与处置。策划入口见[终端指南](../docs/terminal-ui-guide.md)，旧三天 `PrototypeRules` 继续独立保留。[verified: MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L20-L93；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126]
 
 ## 目录与技术基线
 
@@ -84,10 +84,12 @@ game.Execute(new CompleteResponseBranch(
 
 ## 开发默认规则
 
+本节描述保留的旧三天 `PrototypeRules`。默认小孩Day1内容包另采用六轮、实际回复ID与−3/0/+3、初始信任0、释放阈值3、净化剩余5；它不把Day2/3正式对白或全局正式数值自动接入。核心允许非空普通轮列表，内容包导入上限为128轮；旧配置仍为4轮。[verified: ../UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile/yarnSource；MiniGame.Core/Rules/DialogueDefinitions.cs L51–L58；MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L58] [opinion]
+
 这些是用户采纳的**首轮开发配置**，不是已确认的正式策划参数；集中在[PrototypeRules.cs](MiniGame.Core/Rules/PrototypeRules.cs)。
 
 - Day1–3，神父Day2加入，另外四人Day1加入；退出或终止的人不再进入后续常规队列。
-- 每日净化目标1；普通会谈4轮，配置允许4–5轮，每轮1–4个回复。
+- 每日净化目标1；旧配置普通会谈4轮，每轮1–4个回复；核心不再限制为4–5轮。[verified: MiniGame.Core/Rules/DialogueDefinitions.cs L31、L51–L58]
 - 初始信任0；`empathize`／`neutral`／`pressure`的测试变化为+10／0／−10；特殊轮门槛20，释放门槛30。信任没有0–100钳制，整数溢出会拒绝操作。
 - 每场最多一轮特殊会谈，满足条件也要等待普通轮全部完成；反馈分支完成后才进入下一阶段。
 - 小孩、执政者、医生第三次治疗终止并记录死亡；外交官第三次治疗退出，实际死亡、撤离或保护不做判断。
@@ -119,6 +121,8 @@ SchemaVersion、规则名称和完整规则指纹必须匹配；非法命令、�
 
 ## Unity／Yarn接入
 
+新策划包先做结构与路径校验，再在Unity原生编译，成功后才更新活动内容资源；输入、台词与选项显示继续走宿主/桥接，处置仍由核心结算。目录、归档状态与实际会谈记录随存档恢复；当前恢复粒度为对话段，可以重播段内台词。[verified: ../docs/terminal-ui-verification.json scope/unity/limits；MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L20-L93] [opinion]
+
 两个库通过本地UPM包供Unity2022.3使用；宿主读取 `GameRuntime.GetView()`，提交交互、回答或处置，按回调token通知演出完成。存档由 `RuntimeFileSaveStore` 保存完整核心与宿主检查点。实际Editor/Player验证范围见[玩法迁移记录](../docs/reference-gameplay-migration.md)，IL2CPP未验证。[verified: MiniGame.Core/package.json；MiniGame.Presentation/package.json；MiniGame.Presentation/GameRuntime.cs Save/CompleteCue；MiniGame.Presentation/RuntimeFileSaveStore.cs] [opinion]
 
 适配器负责节点文本、选项呈现、事件演出、中文字体、输入上下文以及文件目录。它查询核心资格并提交命令；不得让UI按钮或Yarn变量直接成为配额、治疗次数、病人去留的另一份权威状态。[verified: ../UnityProject/Assets/MiniGame/Yarn/MiniGameYarnBridge.cs；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs] [opinion]
@@ -127,7 +131,9 @@ SchemaVersion、规则名称和完整规则指纹必须匹配；非法命令、�
 
 完整设计理由与逐文件导航见[实现说明](architecture-and-rationale.md)。正式规则缺口继续见[设计待定项](../docs/open-questions.md)。
 
-## 本轮验证结果
+## 最新终端验证与历史记录
+
+2026-10-15使用固定SDK8.0.424完成锁定恢复、Release构建（0警告/错误），Core75与Presentation110共185项测试通过；策划工具18项测试及1296条选择组合通过。Unity原生导入、EditMode2项、PlayMode9项与Windows Mono构建另见[终端验证报告](../docs/terminal-ui-verification.json)。下方2026-10-12/13数据保留历史身份。[verified: ../docs/terminal-ui-verification.json dotnet/planner/unity]
 
 2026-10-12，在这台macOS ARM64上使用.NET SDK8.0.424完成：
 

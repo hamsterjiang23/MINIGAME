@@ -88,9 +88,22 @@ function Prepare-OfflineProject {
 function Publish-GeneratedAssets {
     $offlineAssets = Join-Path $offlineProject 'Assets/MiniGame'
     $mainAssets = Join-Path $mainProject 'Assets/MiniGame'
-    foreach ($folder in @('Scenes','Generated','Content')) {
+    foreach ($folder in @('Scenes','Generated','Content','ImportedDialogue')) {
         $source = Join-Path $offlineAssets $folder
         if (Test-Path -LiteralPath $source) { Copy-Item -LiteralPath $source -Destination $mainAssets -Recurse -Force }
+    }
+    $offlineResources = Join-Path $offlineProject 'Assets/Resources'
+    $mainResources = Join-Path $mainProject 'Assets/Resources'
+    if (Test-Path -LiteralPath (Join-Path $offlineResources 'MiniGame')) {
+        New-Item -ItemType Directory -Force -Path $mainResources | Out-Null
+        Copy-Item -LiteralPath (Join-Path $offlineResources 'MiniGame') -Destination $mainResources -Recurse -Force
+        foreach ($folderMeta in @('Assets/Resources.meta','Assets/Resources/MiniGame.meta')) {
+            $sourceMeta = Join-Path $offlineProject $folderMeta
+            $targetMeta = Join-Path $mainProject $folderMeta
+            if ((Test-Path -LiteralPath $sourceMeta) -and -not (Test-Path -LiteralPath $targetMeta)) {
+                Copy-Item -LiteralPath $sourceMeta -Destination $targetMeta
+            }
+        }
     }
     # MonoBehaviour scene references must retain the same GUIDs in the normal project.
     Get-ChildItem -LiteralPath $offlineAssets -Recurse -File -Filter '*.meta' | ForEach-Object {

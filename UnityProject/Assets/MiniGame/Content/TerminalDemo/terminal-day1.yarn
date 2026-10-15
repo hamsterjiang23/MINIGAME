@@ -1,0 +1,538 @@
+// Canonical Day1 dialogue from supplied HTML v0.5.2. Demo profile parameters are not final design.
+title: D1_R1_OPEN1
+kind: line
+round: R1
+portrait: ML01
+---
+米洛: 这里还要检测吗？
+<<jump D1_R1_OPEN2>>
+===
+
+title: D1_R1_OPEN2
+kind: line
+round: R1
+portrait: ML02
+---
+米洛: 和昨天广场上的不一样吗？
+<<jump D1_R1_CHOICE>>
+===
+
+title: D1_R1_CLOSING1
+kind: line
+round: R1
+portrait: ML01
+---
+米洛: 那个东西一响，我就害怕。
+<<jump D1_R1_CLOSING2>>
+===
+
+title: D1_R1_CLOSING2
+kind: line
+round: R1
+portrait: ML01
+---
+米洛: 响了以后，我的手一直抖。
+<<jump D1_R1_CLOSING3>>
+===
+
+title: D1_R1_CLOSING3
+kind: line
+round: R1
+portrait: ML01
+---
+米洛: 他们说我不正常。
+<<jump D1_R2_OPEN1>>
+===
+
+title: D1_R2_OPEN1
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 我没有打人，也没有拿别人的东西。
+<<jump D1_R2_CHOICE>>
+===
+
+title: D1_R2_O1_T1
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 住在一起的人说的。
+<<jump D1_R2_O1_T2>>
+===
+
+title: D1_R2_O1_T2
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 他们笑我不敢还手。
+<<jump D1_R2_CLOSING1>>
+===
+
+title: D1_R2_O3_T1
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 没人跟我说过。
+<<jump D1_R2_O3_T2>>
+===
+
+title: D1_R2_O3_T2
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 我以为进去会有人告诉我。
+<<jump D1_R2_CLOSING1>>
+===
+
+title: D1_R2_CLOSING1
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 可我不知道自己做错了什么。
+<<jump D1_R2_CLOSING2>>
+===
+
+title: D1_R2_CLOSING2
+kind: line
+round: R2
+portrait: ML02
+---
+米洛: 这些也要记吗？
+<<jump D1_R3_OPEN1>>
+===
+
+title: D1_R3_OPEN1
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 他们让我进去，我就进去了。
+<<jump D1_R3_OPEN2>>
+===
+
+title: D1_R3_OPEN2
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 我想着，表现好就能回去。
+<<jump D1_R3_CHOICE>>
+===
+
+title: D1_R3_O1_T1
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 他们让我坐着别动。
+<<jump D1_R3_O1_T2>>
+===
+
+title: D1_R3_O1_T2
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 我看别人怎么坐，就跟着坐。
+<<jump D1_R3_O1_T3>>
+===
+
+title: D1_R3_O1_T3
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 可是它还是响了。
+<<jump D1_R3_CLOSING1>>
+===
+
+title: D1_R3_O2_T1
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: ……真的吗？
+<<jump D1_R3_O2_T2>>
+===
+
+title: D1_R3_O2_T2
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 他们没这么说过。
+<<jump D1_R3_CLOSING1>>
+===
+
+title: D1_R3_O3_T1
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 好。
+<<jump D1_R3_O3_T2>>
+===
+
+title: D1_R3_O3_T2
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 那我说慢一点。
+<<jump D1_R3_CLOSING1>>
+===
+
+title: D1_R3_CLOSING1
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 我想再试一次，他们没有让。
+<<jump D1_R3_CLOSING2>>
+===
+
+title: D1_R3_CLOSING2
+kind: line
+round: R3
+portrait: ML02
+---
+米洛: 我出来的时候，没有一个人说话。
+<<jump D1_R4_OPEN1>>
+===
+
+title: D1_R4_OPEN1
+kind: line
+round: R4
+portrait: ML02
+---
+米洛: 我出来以后，一直走走廊。
+<<jump D1_R4_OPEN2>>
+===
+
+title: D1_R4_OPEN2
+kind: line
+round: R4
+portrait: ML02
+---
+米洛: 我数了数，一共有七扇门。
+<<jump D1_R4_CHOICE>>
+===
+
+title: D1_R4_CLOSING1
+kind: line
+round: R4
+portrait: ML02
+---
+米洛: 走到最后一扇，就到这里了。
+<<jump D1_R4_CLOSING2>>
+===
+
+title: D1_R4_CLOSING2
+kind: line
+round: R4
+portrait: ML02
+---
+米洛: 我全程没有乱跑，是一直跟着走的。
+<<jump D1_R5_OPEN1>>
+===
+
+title: D1_R5_OPEN1
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: 要怎么做，它才不会响？
+<<jump D1_R5_CHOICE>>
+===
+
+title: D1_R5_O1_T1
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: ……真的吗？
+<<jump D1_R5_O1_T2>>
+===
+
+title: D1_R5_O1_T2
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: 可他们都说我做得不对。
+<<jump D1_R5_CLOSING1>>
+===
+
+title: D1_R5_O3_T1
+kind: line
+round: R5
+portrait: ML04
+---
+米洛: 他们进去以前，妈妈会蹲下来跟他们说话。
+<<jump D1_R5_O3_T2>>
+===
+
+title: D1_R5_O3_T2
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: 我站得远，听不见。
+<<jump D1_R5_O3_T3>>
+===
+
+title: D1_R5_O3_T3
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: 我以为进去以后，会有人告诉我的。
+<<jump D1_R5_CLOSING1>>
+===
+
+title: D1_R5_CLOSING1
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: 我是不是没坐好？
+<<jump D1_R5_CLOSING2>>
+===
+
+title: D1_R5_CLOSING2
+kind: line
+round: R5
+portrait: ML02
+---
+米洛: 所以它才响的。
+<<jump D1_R6_OPEN1>>
+===
+
+title: D1_R6_OPEN1
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: 说完这些，我能回去吗？
+<<jump D1_R6_CHOICE>>
+===
+
+title: D1_R6_O1_T1
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: 哦。
+<<jump D1_R6_O1_T2>>
+===
+
+title: D1_R6_O1_T2
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: 那要做什么，它才会说不响？
+<<jump D1_MEASURE>>
+===
+
+title: D1_R6_O2_T1
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: 我都记住了。
+<<jump D1_R6_O2_T2>>
+===
+
+title: D1_R6_O2_T2
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: 刚才那些，我都说对了吗？
+<<jump D1_MEASURE>>
+===
+
+title: D1_R6_O3_T1
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: ……为什么？
+<<jump D1_R6_O3_T2>>
+===
+
+title: D1_R6_O3_T2
+kind: line
+round: R6
+portrait: ML02
+---
+米洛: 我不明白，我哪里做错了？
+<<jump D1_MEASURE>>
+===
+
+title: D1_M_TREAT_T1
+kind: line
+round: 措施
+portrait: ML03
+---
+米洛: 是刚才答错了吗？
+<<jump D1_M_TREAT_T2>>
+===
+
+title: D1_M_TREAT_T2
+kind: line
+round: 措施
+portrait: ML03
+---
+米洛: 我可以再说一遍。
+<<jump D1_M_TREAT_T3>>
+===
+
+title: D1_M_TREAT_T3
+kind: line
+round: 措施
+portrait: ML03
+---
+米洛: 这次我会说得慢一点。
+<<jump END_DAY1>>
+===
+
+title: D1_M_PURIFY_T1
+kind: line
+round: 措施
+portrait: ML03
+---
+米洛: 做完就能回去了吗？
+<<jump D1_M_PURIFY_T2>>
+===
+
+title: D1_M_PURIFY_T2
+kind: line
+round: 措施
+portrait: ML03
+---
+米洛: 我会跟着走的。
+<<jump END_DAY1>>
+===
+
+title: D1_M_RELEASE_T1
+kind: line
+round: 措施
+portrait: ML05
+---
+米洛: 我真的可以走了？
+<<jump D1_M_RELEASE_T2>>
+===
+
+title: D1_M_RELEASE_T2
+kind: line
+round: 措施
+portrait: ML05
+---
+米洛: 不用再检测一次吗？
+<<jump D1_M_RELEASE_T3>>
+===
+
+title: D1_M_RELEASE_T3
+kind: line
+round: 措施
+portrait: ML05
+---
+米洛: 那我出门的时候，会轻轻走的。
+<<jump END_DAY1>>
+===
+
+title: D1_R1_CHOICE
+kind: choice
+round: R1
+---
+-> 嗯，不一样。 #id:D1_R1_O1 #trust:0
+    <<jump D1_R1_CLOSING1>>
+-> 别害怕，慢慢说。 #id:D1_R1_O2 #trust:0
+    <<jump D1_R1_CLOSING1>>
+-> 和你说的一样。 #id:D1_R1_O3 #trust:0
+    <<jump D1_R1_CLOSING1>>
+===
+
+title: D1_R2_CHOICE
+kind: choice
+round: R2
+---
+-> 谁说你打人了？ #id:D1_R2_O1 #trust:0
+    <<jump D1_R2_O1_T1>>
+-> 你恨他们吗？ #id:D1_R2_O2 #trust:0
+    <<jump D1_R2_CLOSING1>>
+-> 检测前谁教过你？ #id:D1_R2_O3 #trust:0
+    <<jump D1_R2_O3_T1>>
+-> 工作人员呢？ #id:D1_R2_O4 #trust:0
+    <<jump D1_R2_CLOSING1>>
+===
+
+title: D1_R3_CHOICE
+kind: choice
+round: R3
+---
+-> 说说检测经过。 #id:D1_R3_O1 #trust:0
+    <<jump D1_R3_O1_T1>>
+-> 响了不是你的错。 #id:D1_R3_O2 #trust:3
+    <<jump D1_R3_O2_T1>>
+-> 别想了，说下一个。 #id:D1_R3_O3 #trust:-3
+    <<jump D1_R3_O3_T1>>
+===
+
+title: D1_R4_CHOICE
+kind: choice
+round: R4
+---
+-> 嗯，然后呢？ #id:D1_R4_O1 #trust:0
+    <<jump D1_R4_CLOSING1>>
+-> 了解。 #id:D1_R4_O2 #trust:0
+    <<jump D1_R4_CLOSING1>>
+-> 原来是这样。 #id:D1_R4_O3 #trust:0
+    <<jump D1_R4_CLOSING1>>
+===
+
+title: D1_R5_CHOICE
+kind: choice
+round: R5
+---
+-> 你已经做得很好了。 #id:D1_R5_O1 #trust:0
+    <<jump D1_R5_O1_T1>>
+-> 机器有时会出错。 #id:D1_R5_O2 #trust:0
+    <<jump D1_R5_CLOSING1>>
+-> 别人怎么做，你就怎么做。 #id:D1_R5_O3 #trust:0
+    <<jump D1_R5_O3_T1>>
+-> 不用学别人。 #id:D1_R5_O4 #trust:0
+    <<jump D1_R5_CLOSING1>>
+===
+
+title: D1_R6_CHOICE
+kind: choice
+round: R6
+---
+-> 我说了不算。 #id:D1_R6_O1 #trust:0
+    <<jump D1_R6_O1_T1>>
+-> 表现好就能回去。 #id:D1_R6_O2 #trust:-3
+    <<jump D1_R6_O2_T1>>
+-> 不会放你回去。 #id:D1_R6_O3 #trust:3
+    <<jump D1_R6_O3_T1>>
+===
+
+title: D1_MEASURE
+kind: measure
+round: 措施
+---
+-> 治疗 #id:D1_M_TREAT #disposition:treat
+    <<jump D1_M_TREAT_T1>>
+-> 净化 #id:D1_M_PURIFY #disposition:purify
+    <<jump D1_M_PURIFY_T1>>
+-> 释放 #id:D1_M_RELEASE #disposition:release
+    <<jump D1_M_RELEASE_T1>>
+===

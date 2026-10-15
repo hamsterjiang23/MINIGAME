@@ -22,7 +22,7 @@
 | Q09 | 信任如何决定释放 | HTML用信任≥可调测试阈值亮绿灯，默认3，只有处置阶段且绿灯允许释放；原型门槛30，正式值未定。[verified: sources/inspection-terminal-day1-prototype.md「测试数值与实现边界」；../src/README.md「开发默认规则」] | 确认正式阈值、灯色/按键表现与代价，不直接采用测试值。[opinion] |
 | Q10 | 疯狂、偏离、狂热与反叛值 | 前三种仍来自程序需求、梳理与名词表；主Wiki608版新增反叛值max，画板写大于阈值。[verified: .source-data/game-wiki.json content「结局」；.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14] | 需定义是否相关、取值范围、累积规则及max/阈值关系，不自行合并。[opinion] |
 | Q11 | 档案、新闻与信息屏蔽的Mini范围 | 梳理提供多种档案与证据；程序未给这些模块完整规格 | 需要确认界面、资产量与哪些信息可查询 |
-| Q12 | 对话表与现有轮次模型 | [小孩v1.1](sources/dialogue-child-v1-1.md)已给三天R1–R6对话与R7措施轮、实际ID及信任−3/0/+3；与程序需求4–5轮、原型4轮及±10不同。[verified: .source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第10–11、20、30–33行] | 已有来源表，尚未自动接入；确认轮次、跳转与数值兼容方式。[opinion] |
+| Q12 | 对话表与现有轮次模型 | [小孩v1.1](sources/dialogue-child-v1-1.md)三天R1–R6与措施轮已有来源；Day1六轮、实际ID与−3/0/+3已接入独立Yarn包、HTML编辑器和Unity终端，旧三天4轮配置保留。[verified: terminal-ui-verification.json scope/source；.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第10–11、20、30–33行] | Day2/3与其他角色、跨日及正式阈值仍需统一；新包使用128轮上限和分支汇合校验，不等同任意Yarn语法支持。[verified: ../src/MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L34–L81] [opinion] |
 | Q13 | 日记是否为必需系统 | 方案15与白皮书有日记；主Wiki日流程未写 | 要确认是否纳入3天与文本生成方法 |
 | Q14 | 梦境素材与记忆叙事如何统一 | [梦场景](sources/dream-scenes.md)已有Day0–3四种场景及图/音乐；主角专篇要求记忆回流且非超自然线索；主Wiki第四结局另写超自然场景。[verified: .source-data/dream-scenes.json content；.source-data/player-character.json content「梦境与情绪表现」；.source-data/game-wiki.json content「结局」] | 需完成交互、揭露顺序及分支边界；不能再写全部梦境未提供。[opinion] |
 | Q15 | 随机性实现范围 | 早期方案强调叙事约束随机；正式事件表未填 | 不能将随机病人、事件、物件全部计为已承诺功能 |
