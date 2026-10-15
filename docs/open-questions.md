@@ -46,6 +46,29 @@
 
 ## 4. 工程与制作缺口
 
+### 场景灯光、开场与梦境待办（2026-10-15聊天补充）
+
+来源：[用户提供的聊天截图](assets/room-lighting-and-dream-chat-2026-10-15.png)。以下记录已讨论的表现方向与待制作事项，不代表现有Unity原型已经完成。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 灰色回复及下方梦境讨论] [opinion]
+
+- [ ] **补齐开场介绍**：开场介绍已被提问，但截图未给出具体内容与播放安排，继续作为待定项。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 顶部「游戏开始的开场介绍」提问] [opinion]
+- [ ] **确认场景物件交互信息**：逐物件确认可交互内容、提示及反馈；截图明确表示此项还未确认。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png「场景物体交互信息这个还没确认」] [opinion]
+- [ ] **制作并切换下列五种房间灯光状态**：聊天原话称“四种”，实际列了1–5；此处保留全部五项，不擅自合并。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 灰色回复的编号1–5] [opinion]
+
+| 房间状态 | 截图中的表现与用途 |
+| --- | --- |
+| 日常 | 日常情况下的房间。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 第1项] |
+| 工作结束后的夜晚 | 工作结束后进入晚上，窗户外侧光源熄灭。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 第2项] |
+| 全黑 | 所有地方都压黑，用于播放梦场景。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 第3项] |
+| 仅床被聚光灯照亮 | 房间几乎不可见，仅高强度舞台聚光灯照床，可从窗外射入；用于梦场景及游戏开始的Day0场景。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 第4项] |
+| 仅电脑屏幕亮起 | 其他地方全部压黑，仅电脑屏幕亮起，用于特殊结局。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 第5项] |
+
+- [ ] **制作闭眼到2D梦境的演出**：先将主场景压黑，模拟闭眼，再播放2D梦境动画；不将聊天补充解读为新增可探索3D梦境关卡。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png「闭上眼睛然后2D做梦」「然后就做梦动画」] [opinion]
+- [ ] **落实房间内的梦境投影与输入锁定**：按聊天描述，将电脑另一侧的墙面用作屏幕，锁住玩家视角和操作，呈现如同播放2D动画的效果。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png「把电脑另一侧的墙变成屏幕」「视角和操作都锁住」] [opinion]
+- [ ] **完成梦醒后的房间揭示**：动画结束后亮灯，让玩家发现自己一直在同一个房间；恢复阶段允许的视角与操作，并按当前流程开放交互。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png「播完灯亮让玩家发现自己其实还是在这个房间内」] [opinion]
+- [ ] **核对普通梦境、Day0与特殊结局的触发和衔接**：把上述灯光状态与既有梦后床交互、反叛值结局电脑引导分别对应，补齐转换时机及验收路线；截图未决定完整状态转换表。[verified: .source-data/game-wiki.json content「结局」；.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o1:12/o43:14；assets/room-lighting-and-dream-chat-2026-10-15.png 第3–5项] [opinion]
+
+### 其他工程与制作缺口
+
 - 原文没有确定摄像机与输入的完整方案；当前开发原型已实现电脑镜头进出、输入切换和反应后回房，正式演出仍需制作与验收。[verified: ../UnityProject/README.md「运行与操作」；gameplay-migration-verification.json unity.playMode.tests]
 - 原文没有确定技术选型；当前开发基线为Unity2022.3.23f1c1、Built-in、Yarn3.2.8及JSON存档。本机正常UPM导入已于2026-10-15修复；新机器环境、AI制作管线与最终发布配置仍需验证或裁决。[verified: gameplay-migration-verification.json unity.version/rendering/normalUpmRecovery、yarnCompiler.version；../src/README.md「保存与恢复」] [opinion]
 - [梦场景](sources/dream-scenes.md)已提供Day0–3的12张图片与四条音乐参考，主Wiki已有病房及主角场景概念图、六条音效链接；来源已提供不等于成品资产已制作或接入。[verified: .source-data/dream-scenes.json content；.source-data/game-wiki.json content「美术」] [opinion]

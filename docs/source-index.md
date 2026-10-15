@@ -33,6 +33,7 @@
 | [【对话】小孩v1.1](sources/dialogue-child-v1-1.md) | [工作簿](https://moonton.feishu.cn/sheets/FUlBs4PJYhiOoftbZ0mcj1Myn1e) | 31 | `FUlBs4PJYhiOoftbZ0mcj1Myn1e` | 5个子表已读；用户提供Excel原件已归档 |
 | [minigame排期表](sources/minigame-schedule.md) | [飞书原文](https://moonton.feishu.cn/wiki/Bg8EwuBeMirJBbkmPbucpSmNn6b) | 本次排除 | 底层类型为sheet | 按用户要求不读取/同步 |
 | [Day1终端交互原型](sources/inspection-terminal-day1-prototype.md) | [用户提供HTML原件](assets/prototypes/inspection-terminal-day1-v0.5.2.html) | 0.5.2 | 本地原件 | 源码、语法及Excel数据对应已核对；未做浏览器运行验收 |
+| [场景灯光、开场与梦境待办](open-questions.md#场景灯光开场与梦境待办2026-10-15聊天补充) | [用户提供聊天截图](assets/room-lighting-and-dream-chat-2026-10-15.png) | 2026-10-15 | 本地截图 | 已转录；物件交互与开场仍待确认，其余表现待制作/验收 |
 
 ## 多层引用关系
 
