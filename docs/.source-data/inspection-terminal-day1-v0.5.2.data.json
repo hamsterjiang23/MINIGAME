@@ -1,0 +1,502 @@
+{
+  "nodes": {
+    "D1_R1_OPEN1": {
+      "text": "这里还要检测吗？",
+      "next": "D1_R1_OPEN2",
+      "portrait": "ML01",
+      "round": "R1",
+      "segment": "轮首"
+    },
+    "D1_R1_OPEN2": {
+      "text": "和昨天广场上的不一样吗？",
+      "next": "D1_R1_CHOICE",
+      "portrait": "ML02",
+      "round": "R1",
+      "segment": "轮首"
+    },
+    "D1_R1_CLOSING1": {
+      "text": "那个东西一响，我就害怕。",
+      "next": "D1_R1_CLOSING2",
+      "portrait": "ML01",
+      "round": "R1",
+      "segment": "收束"
+    },
+    "D1_R1_CLOSING2": {
+      "text": "响了以后，我的手一直抖。",
+      "next": "D1_R1_CLOSING3",
+      "portrait": "ML01",
+      "round": "R1",
+      "segment": "收束"
+    },
+    "D1_R1_CLOSING3": {
+      "text": "他们说我不正常。",
+      "next": "D1_R2_OPEN1",
+      "portrait": "ML01",
+      "round": "R1",
+      "segment": "收束"
+    },
+    "D1_R2_OPEN1": {
+      "text": "我没有打人，也没有拿别人的东西。",
+      "next": "D1_R2_CHOICE",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "轮首"
+    },
+    "D1_R2_O1_T1": {
+      "text": "住在一起的人说的。",
+      "next": "D1_R2_O1_T2",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "选项回应"
+    },
+    "D1_R2_O1_T2": {
+      "text": "他们笑我不敢还手。",
+      "next": "D1_R2_CLOSING1",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "选项回应"
+    },
+    "D1_R2_O3_T1": {
+      "text": "没人跟我说过。",
+      "next": "D1_R2_O3_T2",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "选项回应"
+    },
+    "D1_R2_O3_T2": {
+      "text": "我以为进去会有人告诉我。",
+      "next": "D1_R2_CLOSING1",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "选项回应"
+    },
+    "D1_R2_CLOSING1": {
+      "text": "可我不知道自己做错了什么。",
+      "next": "D1_R2_CLOSING2",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "收束"
+    },
+    "D1_R2_CLOSING2": {
+      "text": "这些也要记吗？",
+      "next": "D1_R3_OPEN1",
+      "portrait": "ML02",
+      "round": "R2",
+      "segment": "收束"
+    },
+    "D1_R3_OPEN1": {
+      "text": "他们让我进去，我就进去了。",
+      "next": "D1_R3_OPEN2",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "轮首"
+    },
+    "D1_R3_OPEN2": {
+      "text": "我想着，表现好就能回去。",
+      "next": "D1_R3_CHOICE",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "轮首"
+    },
+    "D1_R3_O1_T1": {
+      "text": "他们让我坐着别动。",
+      "next": "D1_R3_O1_T2",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_O1_T2": {
+      "text": "我看别人怎么坐，就跟着坐。",
+      "next": "D1_R3_O1_T3",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_O1_T3": {
+      "text": "可是它还是响了。",
+      "next": "D1_R3_CLOSING1",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_O2_T1": {
+      "text": "……真的吗？",
+      "next": "D1_R3_O2_T2",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_O2_T2": {
+      "text": "他们没这么说过。",
+      "next": "D1_R3_CLOSING1",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_O3_T1": {
+      "text": "好。",
+      "next": "D1_R3_O3_T2",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_O3_T2": {
+      "text": "那我说慢一点。",
+      "next": "D1_R3_CLOSING1",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "选项回应"
+    },
+    "D1_R3_CLOSING1": {
+      "text": "我想再试一次，他们没有让。",
+      "next": "D1_R3_CLOSING2",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "收束"
+    },
+    "D1_R3_CLOSING2": {
+      "text": "我出来的时候，没有一个人说话。",
+      "next": "D1_R4_OPEN1",
+      "portrait": "ML02",
+      "round": "R3",
+      "segment": "收束"
+    },
+    "D1_R4_OPEN1": {
+      "text": "我出来以后，一直走走廊。",
+      "next": "D1_R4_OPEN2",
+      "portrait": "ML02",
+      "round": "R4",
+      "segment": "轮首"
+    },
+    "D1_R4_OPEN2": {
+      "text": "我数了数，一共有七扇门。",
+      "next": "D1_R4_CHOICE",
+      "portrait": "ML02",
+      "round": "R4",
+      "segment": "轮首"
+    },
+    "D1_R4_CLOSING1": {
+      "text": "走到最后一扇，就到这里了。",
+      "next": "D1_R4_CLOSING2",
+      "portrait": "ML02",
+      "round": "R4",
+      "segment": "收束"
+    },
+    "D1_R4_CLOSING2": {
+      "text": "我全程没有乱跑，是一直跟着走的。",
+      "next": "D1_R5_OPEN1",
+      "portrait": "ML02",
+      "round": "R4",
+      "segment": "收束"
+    },
+    "D1_R5_OPEN1": {
+      "text": "要怎么做，它才不会响？",
+      "next": "D1_R5_CHOICE",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "轮首"
+    },
+    "D1_R5_O1_T1": {
+      "text": "……真的吗？",
+      "next": "D1_R5_O1_T2",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "选项回应"
+    },
+    "D1_R5_O1_T2": {
+      "text": "可他们都说我做得不对。",
+      "next": "D1_R5_CLOSING1",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "选项回应"
+    },
+    "D1_R5_O3_T1": {
+      "text": "他们进去以前，妈妈会蹲下来跟他们说话。",
+      "next": "D1_R5_O3_T2",
+      "portrait": "ML04",
+      "round": "R5",
+      "segment": "选项回应"
+    },
+    "D1_R5_O3_T2": {
+      "text": "我站得远，听不见。",
+      "next": "D1_R5_O3_T3",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "选项回应"
+    },
+    "D1_R5_O3_T3": {
+      "text": "我以为进去以后，会有人告诉我的。",
+      "next": "D1_R5_CLOSING1",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "选项回应"
+    },
+    "D1_R5_CLOSING1": {
+      "text": "我是不是没坐好？",
+      "next": "D1_R5_CLOSING2",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "收束"
+    },
+    "D1_R5_CLOSING2": {
+      "text": "所以它才响的。",
+      "next": "D1_R6_OPEN1",
+      "portrait": "ML02",
+      "round": "R5",
+      "segment": "收束"
+    },
+    "D1_R6_OPEN1": {
+      "text": "说完这些，我能回去吗？",
+      "next": "D1_R6_CHOICE",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "轮首"
+    },
+    "D1_R6_O1_T1": {
+      "text": "哦。",
+      "next": "D1_R6_O1_T2",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "选项回应"
+    },
+    "D1_R6_O1_T2": {
+      "text": "那要做什么，它才会说不响？",
+      "next": "D1_MEASURE",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "选项回应"
+    },
+    "D1_R6_O2_T1": {
+      "text": "我都记住了。",
+      "next": "D1_R6_O2_T2",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "选项回应"
+    },
+    "D1_R6_O2_T2": {
+      "text": "刚才那些，我都说对了吗？",
+      "next": "D1_MEASURE",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "选项回应"
+    },
+    "D1_R6_O3_T1": {
+      "text": "……为什么？",
+      "next": "D1_R6_O3_T2",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "选项回应"
+    },
+    "D1_R6_O3_T2": {
+      "text": "我不明白，我哪里做错了？",
+      "next": "D1_MEASURE",
+      "portrait": "ML02",
+      "round": "R6",
+      "segment": "选项回应"
+    },
+    "D1_M_TREAT_T1": {
+      "text": "是刚才答错了吗？",
+      "next": "D1_M_TREAT_T2",
+      "portrait": "ML03",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_TREAT_T2": {
+      "text": "我可以再说一遍。",
+      "next": "D1_M_TREAT_T3",
+      "portrait": "ML03",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_TREAT_T3": {
+      "text": "这次我会说得慢一点。",
+      "next": "END_DAY1",
+      "portrait": "ML03",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_PURIFY_T1": {
+      "text": "做完就能回去了吗？",
+      "next": "D1_M_PURIFY_T2",
+      "portrait": "ML03",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_PURIFY_T2": {
+      "text": "我会跟着走的。",
+      "next": "END_DAY1",
+      "portrait": "ML03",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_RELEASE_T1": {
+      "text": "我真的可以走了？",
+      "next": "D1_M_RELEASE_T2",
+      "portrait": "ML05",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_RELEASE_T2": {
+      "text": "不用再检测一次吗？",
+      "next": "D1_M_RELEASE_T3",
+      "portrait": "ML05",
+      "round": "措施",
+      "segment": "措施回应"
+    },
+    "D1_M_RELEASE_T3": {
+      "text": "那我出门的时候，会轻轻走的。",
+      "next": "END_DAY1",
+      "portrait": "ML05",
+      "round": "措施",
+      "segment": "措施回应"
+    }
+  },
+  "choices": {
+    "D1_R1_CHOICE": [
+      {
+        "id": "D1_R1_O1",
+        "text": "嗯，不一样。",
+        "next": "D1_R1_CLOSING1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R1_O2",
+        "text": "别害怕，慢慢说。",
+        "next": "D1_R1_CLOSING1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R1_O3",
+        "text": "和你说的一样。",
+        "next": "D1_R1_CLOSING1",
+        "delta": 0
+      }
+    ],
+    "D1_R2_CHOICE": [
+      {
+        "id": "D1_R2_O1",
+        "text": "谁说你打人了？",
+        "next": "D1_R2_O1_T1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R2_O2",
+        "text": "你恨他们吗？",
+        "next": "D1_R2_CLOSING1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R2_O3",
+        "text": "检测前谁教过你？",
+        "next": "D1_R2_O3_T1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R2_O4",
+        "text": "工作人员呢？",
+        "next": "D1_R2_CLOSING1",
+        "delta": 0
+      }
+    ],
+    "D1_R3_CHOICE": [
+      {
+        "id": "D1_R3_O1",
+        "text": "说说检测经过。",
+        "next": "D1_R3_O1_T1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R3_O2",
+        "text": "响了不是你的错。",
+        "next": "D1_R3_O2_T1",
+        "delta": 3
+      },
+      {
+        "id": "D1_R3_O3",
+        "text": "别想了，说下一个。",
+        "next": "D1_R3_O3_T1",
+        "delta": -3
+      }
+    ],
+    "D1_R4_CHOICE": [
+      {
+        "id": "D1_R4_O1",
+        "text": "嗯，然后呢？",
+        "next": "D1_R4_CLOSING1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R4_O2",
+        "text": "了解。",
+        "next": "D1_R4_CLOSING1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R4_O3",
+        "text": "原来是这样。",
+        "next": "D1_R4_CLOSING1",
+        "delta": 0
+      }
+    ],
+    "D1_R5_CHOICE": [
+      {
+        "id": "D1_R5_O1",
+        "text": "你已经做得很好了。",
+        "next": "D1_R5_O1_T1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R5_O2",
+        "text": "机器有时会出错。",
+        "next": "D1_R5_CLOSING1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R5_O3",
+        "text": "别人怎么做，你就怎么做。",
+        "next": "D1_R5_O3_T1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R5_O4",
+        "text": "不用学别人。",
+        "next": "D1_R5_CLOSING1",
+        "delta": 0
+      }
+    ],
+    "D1_R6_CHOICE": [
+      {
+        "id": "D1_R6_O1",
+        "text": "我说了不算。",
+        "next": "D1_R6_O1_T1",
+        "delta": 0
+      },
+      {
+        "id": "D1_R6_O2",
+        "text": "表现好就能回去。",
+        "next": "D1_R6_O2_T1",
+        "delta": -3
+      },
+      {
+        "id": "D1_R6_O3",
+        "text": "不会放你回去。",
+        "next": "D1_R6_O3_T1",
+        "delta": 3
+      }
+    ]
+  },
+  "measures": {
+    "治疗": {
+      "id": "D1_M_TREAT",
+      "next": "D1_M_TREAT_T1"
+    },
+    "净化": {
+      "id": "D1_M_PURIFY",
+      "next": "D1_M_PURIFY_T1"
+    },
+    "释放": {
+      "id": "D1_M_RELEASE",
+      "next": "D1_M_RELEASE_T1"
+    }
+  }
+}

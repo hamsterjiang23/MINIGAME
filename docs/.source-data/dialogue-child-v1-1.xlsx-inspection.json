@@ -1,0 +1,94 @@
+{
+  "path": "docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx",
+  "sheet_count": 5,
+  "sheets": [
+    {
+      "sheet": "对话流程",
+      "sheet_id": "0ADfgL",
+      "dimension": "A1",
+      "cached_values_match_api": true,
+      "comparable_values_match_api": true,
+      "uncached_formula_anchors": [],
+      "differences": [],
+      "formula_cells": [],
+      "cached_errors": [],
+      "state": "visible"
+    },
+    {
+      "sheet": "角色文本表",
+      "sheet_id": "1ArAxd",
+      "dimension": "A1",
+      "cached_values_match_api": false,
+      "comparable_values_match_api": true,
+      "uncached_formula_anchors": [
+        {
+          "cell": "A2",
+          "api_value": "D1_R1_OPEN1",
+          "xlsx_value": ""
+        }
+      ],
+      "differences": [],
+      "formula_cells": [
+        "A2"
+      ],
+      "cached_errors": [],
+      "state": "visible"
+    },
+    {
+      "sheet": "玩家选项表",
+      "sheet_id": "2OkNPz",
+      "dimension": "A1",
+      "cached_values_match_api": false,
+      "comparable_values_match_api": true,
+      "uncached_formula_anchors": [
+        {
+          "cell": "A2",
+          "api_value": "D1_R1_O1",
+          "xlsx_value": ""
+        }
+      ],
+      "differences": [],
+      "formula_cells": [
+        "A2"
+      ],
+      "cached_errors": [],
+      "state": "visible"
+    },
+    {
+      "sheet": "立绘ID",
+      "sheet_id": "3yaslJ",
+      "dimension": "A1",
+      "cached_values_match_api": true,
+      "comparable_values_match_api": true,
+      "uncached_formula_anchors": [],
+      "differences": [],
+      "formula_cells": [],
+      "cached_errors": [],
+      "state": "visible"
+    },
+    {
+      "sheet": "配置方式",
+      "sheet_id": "X84Zd2",
+      "dimension": "A1",
+      "cached_values_match_api": false,
+      "comparable_values_match_api": true,
+      "uncached_formula_anchors": [
+        {
+          "cell": "A1",
+          "api_value": "对话配置方式",
+          "xlsx_value": ""
+        }
+      ],
+      "differences": [],
+      "formula_cells": [
+        "A1"
+      ],
+      "cached_errors": [],
+      "state": "visible"
+    }
+  ],
+  "all_cached_values_match_api": false,
+  "all_comparable_values_match_api": true,
+  "zip_crc_pass": true,
+  "formula_recalculation_run": false
+}

@@ -3,8 +3,8 @@
 ## 来源与状态
 
 - 来源：[《一个无敌的名字》梳理](https://moonton.feishu.cn/wiki/ZNB2wgII0ioqNbkz2rHcfQwhnKU)
-- 读取时间：2026-10-12T17:28:52+08:00（Asia/Shanghai）
-- 文档版本：3633；底层文档：`M6SNd81CXoct4ixz4xmcGzEgnuf`
+- 读取时间：2026-10-15T19:49:52+08:00（Asia/Shanghai）
+- 文档版本：3638；底层文档：`M6SNd81CXoct4ixz4xmcGzEgnuf`
 - 正文已读取；画板与工作簿的读取状态单独列在来源索引中。
 
 ## 内容概述
@@ -36,7 +36,7 @@ Steve入职、和平保障总署、战争倾向因子和凝视反转的整合提
 > [【人物】女性执政者](patient-former-ruler.md)
 > [【人物】战场医生](patient-battlefield-doctor.md)
 > [【人物】外交官](patient-diplomat.md)
-> [P01  神父 设计文档](patient-priest.md)
+> [【人物】神父](patient-priest.md)
 
 
 《一个无敌的名字》中，玩家扮演检定员Steve，需要不断判断被观察对象是否“异常”、具有社会危险性，并对其进行治疗或净化。
@@ -216,7 +216,7 @@ F的声音总是一会清晰，一会又模糊。
 
 一个刚刚失去亲人的人会得到高风险读数，一个长期遭受创伤的人会得到高风险读数，一个因为不公而愤怒的人同样会得到高风险读数。相反，一个缺乏正常情感反应、极其冷静的杀人犯反而可能获得最漂亮的数据。
 
-和平保障总署的高层已经意识到这种局限，但制度并没有因此停止。因为这套系统虽然无法找到所有“坏人”，却能够非常有效地找到另一类人：情绪激烈的人、不容易被安抚的人、公开表达不满的人、不服从既定规则的人，以及难以被控制的人。
+和平保障总署的高层明知这种局限，但并没有因此停止。这套系统虽然无法找到所有“坏人”，却能够非常有效地找到另一类人：情绪激烈的人、不容易被安抚的人、公开表达不满的人、不服从既定规则的人，以及难以被控制的人。
 
 如果社会确实因此获得了多年的和平，那么为了维持这种和平，它究竟有权要求人放弃多少东西？
 
@@ -231,7 +231,7 @@ F的声音总是一会清晰，一会又模糊。
 - [【人物】女性执政者](patient-former-ruler.md)：https://moonton.feishu.cn/wiki/Fkq1wdjODiwex7k2j4bcJrxcnEf
 - [【人物】战场医生](patient-battlefield-doctor.md)：https://moonton.feishu.cn/wiki/WWqCwCFwxisowlklgA0cnwtGnBf
 - [【人物】外交官](patient-diplomat.md)：https://moonton.feishu.cn/wiki/HwQNwN2fgiQoIrkEiLjc82S8ncg
-- [P01  神父 设计文档](patient-priest.md)：https://moonton.feishu.cn/wiki/A5XuwDTTWijkGGkFhqUcxg8qnSg
+- [【人物】神父](patient-priest.md)：https://moonton.feishu.cn/wiki/A5XuwDTTWijkGGkFhqUcxg8qnSg
 
 ## 本篇待定与版本差异
 

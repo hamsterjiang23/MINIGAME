@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "approx_char_count": 90,
+    "has_more": false,
+    "ranges": [
+      {
+        "actual_range": "A1:B5",
+        "cells": [
+          [
+            {
+              "value": "阶段"
+            },
+            {
+              "value": "表演要求"
+            }
+          ],
+          [
+            {
+              "value": "初次出现"
+            },
+            {}
+          ],
+          [
+            {
+              "value": "治疗后1"
+            },
+            {}
+          ],
+          [
+            {
+              "value": "治疗后2"
+            },
+            {}
+          ],
+          [
+            {
+              "value": "特殊状态"
+            },
+            {}
+          ]
+        ],
+        "col_indices": [
+          "A",
+          "B"
+        ],
+        "range": "A1:B5",
+        "row_indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "truncated": false
+      }
+    ],
+    "returned_cell_count": 10,
+    "revision": 25,
+    "warning_message": "处理 ranges[n].cells 之前，必须先查看顶层 has_more，以及每个 range 的 actual_range / row_indices / col_indices。定位真实行号时用 row_indices[i]，定位真实列字母时用 col_indices[j]，不要按二维数组下标自己数行列；skip_hidden=true、skip_filter=true 或结果被截断时，这样会错位。"
+  },
+  "_notice": {
+    "update": {
+      "command": "lark-cli update",
+      "current": "1.0.77",
+      "latest": "1.0.98",
+      "message": "lark-cli 1.0.98 available, current 1.0.77, run: lark-cli update"
+    }
+  }
+}

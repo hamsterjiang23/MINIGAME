@@ -1,22 +1,26 @@
 # MINIGAME
 
-本仓库用于开发一款原创的**第一人称、2D/3D混合心理恐怖叙事游戏**。玩家扮演检定员，在员工公寓中通过电脑与病人交流，在制度配额与个人判断之间选择治疗、净化或释放。Mini Game目标为 **3天、5位病人、3种结局**，原创项目研究基线为 **Unity 2022.3 LTS**。[verified: docs/game-overview.md L7–L23；research/README.md L3–L7]
+本仓库用于开发一款原创的**第一人称、2D/3D混合心理恐怖叙事游戏**。玩家扮演检定员，在员工公寓中通过电脑与病人交流，在制度配额与个人判断之间选择治疗、净化或释放。Mini Game目标为 **3天、5位病人、3种结局**，原创项目研究基线为 **Unity 2022.3 LTS**。[verified: docs/game-overview.md「一句话定位」「这次要交付的范围」；research/README.md L3–L7]
 
 目前已有设计资料、15个固定版本的参考仓库、纯C#规则与存档，以及[Unity开发原型](UnityProject/README.md)源码：原创公寓、中文界面、观察、Yarn会谈、处置反应、回房和睡眠跨日。正式资源、对白与演出尚未完成；原创原型和恢复的参考游戏工程分别验证。[verified: docs/source-lock.md L11–L25；UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate；docs/reference-gameplay-migration.md] [opinion]
+
+2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](docs/feishu-sync-2026-10-15.md)。[verified: docs/.source-data/game-wiki.json content「结局」；docs/.source-data/sync-2026-10-15.json changes] [opinion]
+
+用户提供的[小孩Excel原件](docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)和[Day1终端HTML v0.5.2](docs/sources/inspection-terminal-day1-prototype.md)已归档，内嵌Day1数据一致；排期不在本次同步范围。当前Unity仍使用开发占位内容。[verified: docs/.source-data/local-deliveries-2026-10-15.json files；docs/.source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1；docs/.source-data/sync-2026-10-15.json scope_exclusions] [opinion]
 
 ## 玩法设计
 
 策划验收入口：[现阶段成果、功能触发与剧情配置指南](docs/planner-acceptance-guide.md)，包含完整日循环、三结局操作路线、对白/分支配置方式和验收勾选项。[opinion]
 
-**晨检与任务简报 → 电脑会谈 → 治疗／净化／释放 → 夜间收束 → 睡眠与梦境 → 次日反馈。** 3D公寓承载移动与物件交互，2D终端承载病人对白、选项和处置。[verified: docs/game-overview.md L39–L49]
+**晨检与任务简报 → 电脑会谈 → 治疗／净化／释放 → 夜间收束 → 睡眠与梦境 → 次日反馈。** 3D公寓承载移动与物件交互，2D终端承载病人对白、选项和处置。[verified: docs/game-overview.md「玩家的一天」]
 
 **《寻找伪人》（No, I'm not a Human）是本项目重要的玩法参考。**[verified: 用户确认“寻找伪人为重要的玩法参考”] 重点借鉴观察与信息核对、对话中的不确定性、决策后果、昼夜节奏和资源压力，并结合检定员与病人的原创设定改造。[opinion]
 
-- 五位病人为神父、小孩、女性执政者、战场医生和外交官；角色经历与跨日变化见[游戏总览](docs/game-overview.md)。[verified: docs/game-overview.md L19、L84–L88]
-- 普通会谈采用多轮选项与分支汇合，符合信任条件时追加特殊会谈，结束后才允许处置；处置改变人物去留与后续事件。[verified: docs/game-overview.md L57–L74；src/README.md L68–L73、L83–L89]
-- 三种结局目标是被带走、神父袭击、KPI失败后锁房；当前代码已有开发配置下的判定，正式阈值、优先级和演出仍需策划确认。[verified: docs/game-overview.md L94–L100；src/README.md L83、L91]
+- 五位病人为神父、小孩、女性执政者、战场医生和外交官；角色经历与跨日变化见[游戏总览](docs/game-overview.md)。[verified: docs/game-overview.md「五位病人分别承担什么体验」]
+- 普通会谈采用多轮选项与分支汇合，符合信任条件时追加特殊会谈，结束后才允许处置；处置改变人物去留与后续事件。[verified: docs/game-overview.md「审判、对话与代价」；src/README.md「调用入口」「开发默认规则」]
+- 当前原型的三种结局为被带走、神父袭击、KPI失败后锁房；主Wiki新增的反叛值分支尚未接入，正式数量、阈值、优先级和演出仍需策划确认。[verified: docs/game-overview.md「结局与可感知后果」；src/README.md「开发默认规则」]
 
-**开发配置与正式策划分开维护。** 当前配置采用每日净化目标1、普通会谈4轮、特殊轮信任门槛20、释放门槛30；神父Day2加入，另外四人Day1加入。它们用于验证流程，不是正式数值表；节点ID和回复也是逻辑占位内容。Day0教学、外交官特例、正式对白、梦境与日记等继续列在[设计待定项](docs/open-questions.md)。[verified: src/README.md L81–L95；docs/open-questions.md「开发范围与流程」「数值、信息与叙事」「世界观、角色与结局」]
+**开发配置与正式策划分开维护。** 当前配置采用每日净化目标1、普通会谈4轮、特殊轮信任门槛20、释放门槛30；神父Day2加入，另外四人Day1加入。它们用于验证流程，不是正式数值表；节点ID和回复也是逻辑占位内容。Day0教学、外交官特例、正式对白、梦境与日记等继续列在[设计待定项](docs/open-questions.md)。[verified: src/README.md「开发默认规则」；docs/open-questions.md「开发范围与流程」「数值、信息与叙事」「世界观、角色与结局」]
 
 ## 研发与研究进展
 
@@ -32,7 +36,7 @@ Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式Pl
 - 已导出7个场景、38个Prefab、1003张PNG和359份OGG，以及动画、UI与文件级GUID引用索引；编译对白索引包含3255个Yarn节点。[verified: research/no-im-not-a-human/Reports/unity-recovery.md L17–L22、L32；research/no-im-not-a-human/Analysis/deliverable-verification.json exported_scenes/exported_prefabs/yarn_nodes]
 - 73份角色配置、49份URP灯光与1份PlayerSettings仍有序列化问题；自定义Shader存在占位，准确版本Editor导入、语义编译和运行尚未验证。导出文件与语法解析成功不能证明原游戏已完整复原。[verified: research/no-im-not-a-human/Reports/unity-recovery.md L52–L68；research/no-im-not-a-human/Analysis/deliverable-verification.json comprehensive_language_feature_validation=false/unity_import_verified=false/limits]
 
-参考游戏使用 **Unity 6000.3.10f1、IL2CPP**；它与原创项目的Unity 2022.3基线分别记录。访客身份判定、身体检查和生存资源等是玩法研究与借鉴重点，具体采用方式结合本项目设计确定；原创规则不引入真假／善恶标准答案。受版权保护的原游戏代码和资产不公开分发。[verified: research/no-im-not-a-human/Analysis/investigation-status.json unity_version/runtime_backend；research/README.md L74；src/README.md L93] [opinion]
+参考游戏使用 **Unity 6000.3.10f1、IL2CPP**；它与原创项目的Unity 2022.3基线分别记录。访客身份判定、身体检查和生存资源等是玩法研究与借鉴重点，具体采用方式结合本项目设计确定；原创规则不引入真假／善恶标准答案。受版权保护的原游戏代码和资产不公开分发。[verified: research/no-im-not-a-human/Analysis/investigation-status.json unity_version/runtime_backend；research/README.md L74；src/README.md「开发默认规则」] [opinion]
 
 ## 后续方向
 
@@ -41,7 +45,7 @@ Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式Pl
 3. 制作三天梦境和三种结局演出；确认配置、日记与特殊角色规则后再扩展随机事件或物资。[opinion]
 4. 参考研究继续从缺失角色字段、准确Editor导入和未解析动态调用入手。[opinion]
 
-具体切片与验收场景见[Unity开发路线](research/unity-2022-roadmap.md)；该路线中的尚未实施项结合[当前核心实现](src/README.md)阅读，避免把早期研究状态当作最新代码状态。[verified: research/unity-2022-roadmap.md「按验证切片推进」；src/README.md L3] [opinion]
+具体切片与验收场景见[Unity开发路线](research/unity-2022-roadmap.md)；该路线中的尚未实施项结合[当前核心实现](src/README.md)阅读，避免把早期研究状态当作最新代码状态。[verified: research/unity-2022-roadmap.md「按验证切片推进」；src/README.md 开篇说明] [opinion]
 
 ## 阅读入口
 
@@ -55,9 +59,9 @@ Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式Pl
 
 ## 目录
 
-- `src/`：原创纯C#核心逻辑、测试和实现说明。[verified: src/README.md L3、L11–L15]
+- `src/`：原创纯C#核心逻辑、测试和实现说明。[verified: src/README.md 开篇说明及「目录与技术基线」]
 - `UnityProject/`：Unity 2022.3原创公寓、输入/UI、Yarn桥、场景生成器和PlayMode测试源码。[verified: UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate；UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs]
-- `docs/`：游戏设计整理、逐篇来源与待定问题。[verified: docs/game-overview.md L3]
+- `docs/`：游戏设计整理、逐篇来源与待定问题。[verified: docs/game-overview.md 开篇来源说明]
 - `research/`：第三方源码借鉴与开发路线；其中 `no-im-not-a-human/` 为完整逆向资料，按私有Git／Git LFS规则同步。[verified: research/README.md L11–L16；用户确认“改为private”] [opinion]
 - `Dependency/`：早期技术研究材料。[verified: research/README.md L80]
 - `references/`：15个固定提交的第三方Git子模块。[verified: docs/source-lock.md L11–L25、L49]

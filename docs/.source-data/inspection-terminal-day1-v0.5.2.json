@@ -1,0 +1,62 @@
+{
+  "source_path": "docs/assets/prototypes/inspection-terminal-day1-v0.5.2.html",
+  "version": "0.5.2",
+  "native_canvas": [
+    640,
+    360
+  ],
+  "configured_patients": 1,
+  "roster_slots": 5,
+  "default_test_threshold": 3,
+  "default_test_quota": 5,
+  "nodes": 50,
+  "choice_groups": 6,
+  "options": 20,
+  "dispositions": [
+    "治疗",
+    "净化",
+    "释放"
+  ],
+  "data_matches_xlsx_day1": true,
+  "comparison_basis": "对话流程 primary source; not uncached derived formula cells",
+  "differences": [],
+  "missing_targets": [],
+  "static_graph_check": {
+    "conversation_routes": 1296,
+    "reachable_trust_values": [
+      -6,
+      -3,
+      0,
+      3,
+      6
+    ],
+    "release_eligible_routes_at_default_test_threshold": 432,
+    "cycles": false,
+    "browser_runtime_test": false
+  },
+  "external_script_resources": [],
+  "runtime_browser_test": {
+    "status": "not_run",
+    "reason": "browser security policy rejected file protocol; only static source/data/syntax checks used"
+  },
+  "line_regions": {
+    "const DATA=": 18,
+    "const S=": 26,
+    "function rosters(": 122,
+    "function review(": 168,
+    "function displayNode(": 257,
+    "function pick(": 265,
+    "function disposition(": 266,
+    "function finish(": 267,
+    "function reset(": 268,
+    "$('threshold').onchange": 289,
+    "$('skin').onchange": 291,
+    "$('debugTrust').onchange": 293
+  },
+  "static_checks": {
+    "javascript_syntax": "pass",
+    "command": "node --check inspection-terminal-day1-v0.5.2.js",
+    "graph_and_xlsx_comparison": "pass",
+    "html_original_unchanged": true
+  }
+}

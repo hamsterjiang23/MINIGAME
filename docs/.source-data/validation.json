@@ -1,23 +1,259 @@
 {
-  "checked_at": "2026-10-12T17:55:34+08:00",
-  "source_files": 13,
-  "body_sources_read": 11,
-  "workbooks_read": 2,
-  "sheets_read": 7,
+  "checked_at": "2026-10-15T20:11:43+08:00",
+  "source_files": 18,
+  "body_sources_read": 13,
+  "workbooks_read": 3,
+  "sheets_read": 12,
   "whiteboards_read": 6,
-  "whiteboard_nodes": 167,
-  "source_files_total": 13,
-  "markdown_files_total": 17,
-  "local_links_checked": 234,
+  "whiteboard_nodes": 169,
+  "json_files_parsed": 48,
+  "markdown_files_checked": 32,
+  "local_links_checked": 458,
   "broken_links_or_errors": [],
-  "assets_saved": 18,
-  "assets_decoded": 18,
-  "reference_images_visually_checked": 12,
-  "whiteboard_images_visually_checked": 6,
-  "new_unresolved_document_references": 0,
+  "sheets": [
+    {
+      "workbook": "priest-character-workbook",
+      "sheet_id": "Zl7v08",
+      "range": "A1:B7",
+      "rows": 7,
+      "columns": 2,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "priest-character-workbook",
+      "sheet_id": "uCxhWZ",
+      "range": "A1:B5",
+      "rows": 5,
+      "columns": 2,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "priest-character-workbook",
+      "sheet_id": "RrqUWL",
+      "range": "A1:B5",
+      "rows": 5,
+      "columns": 2,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "priest-character-workbook",
+      "sheet_id": "jhiGax",
+      "range": "A1:C6",
+      "rows": 6,
+      "columns": 3,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "priest-character-workbook",
+      "sheet_id": "vpZ2a1",
+      "range": "A1:C3",
+      "rows": 3,
+      "columns": 3,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "priest-character-workbook",
+      "sheet_id": "46644e",
+      "range": "A1:T200",
+      "rows": 200,
+      "columns": 20,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "world-terminology",
+      "sheet_id": "f00ecc",
+      "range": "A1:P182",
+      "rows": 182,
+      "columns": 16,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "dialogue-child-v1-1",
+      "sheet_id": "0ADfgL",
+      "range": "A1:T500",
+      "rows": 500,
+      "columns": 20,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "dialogue-child-v1-1",
+      "sheet_id": "1ArAxd",
+      "range": "A1:T500",
+      "rows": 500,
+      "columns": 20,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "dialogue-child-v1-1",
+      "sheet_id": "2OkNPz",
+      "range": "A1:T500",
+      "rows": 500,
+      "columns": 20,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "dialogue-child-v1-1",
+      "sheet_id": "3yaslJ",
+      "range": "A1:T200",
+      "rows": 200,
+      "columns": 20,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    },
+    {
+      "workbook": "dialogue-child-v1-1",
+      "sheet_id": "X84Zd2",
+      "range": "A1:T200",
+      "rows": 200,
+      "columns": 20,
+      "csv_matches": true,
+      "has_more": false,
+      "truncated": false
+    }
+  ],
+  "csv_value_comparison_pass": true,
+  "source_dialogue_graph": {
+    "node_or_option_ids": 230,
+    "duplicate_ids": [],
+    "implicit_choice_groups_from_options_sheet": [
+      "D1_MEASURE",
+      "D1_R1_CHOICE",
+      "D1_R2_CHOICE",
+      "D1_R3_CHOICE",
+      "D1_R4_CHOICE",
+      "D1_R5_CHOICE",
+      "D1_R6_CHOICE",
+      "D2_MEASURE",
+      "D2_R1_CHOICE",
+      "D2_R2_CHOICE",
+      "D2_R3_CHOICE",
+      "D2_R4_CHOICE",
+      "D2_R5_CHOICE",
+      "D2_R6_CHOICE",
+      "D3_MEASURE",
+      "D3_R1_CHOICE",
+      "D3_R2_CHOICE",
+      "D3_R3_CHOICE",
+      "D3_R4_CHOICE",
+      "D3_R5_CHOICE",
+      "D3_R6_CHOICE"
+    ],
+    "missing_jump_targets": [],
+    "allowed_endpoints": [
+      "END_CHARACTER",
+      "END_DAY1",
+      "END_DAY2",
+      "END_DAY3"
+    ]
+  },
+  "workbook_document_links": [],
+  "reference_images_decoded": 26,
+  "new_images_hash_checked": 14,
+  "new_whiteboard_image_decoded": true,
   "project_reference_chain_complete": true,
   "whole_wiki_space_audited": false,
+  "native_xlsx_exported": 0,
   "overall_complete": true,
-  "scope": "三个入口的本游戏相关引用链；全空间目录和其他团队方案不纳入",
-  "pass": true
+  "access_gaps": [
+    {
+      "resource": "Wiki space directory",
+      "space_id": "7669636464455535881",
+      "operation": "list",
+      "code": 131006,
+      "effect": "整个空间未盘点；不影响已知引用链内容同步"
+    },
+    {
+      "resource": "神父工作簿及世界观名词表原始Excel",
+      "operation": "native_xlsx_export",
+      "code": 1069902,
+      "effect": "内容已完整保存CSV和公式JSON；这两份原始xlsx仍未取得"
+    }
+  ],
+  "local_validation_pass": true,
+  "pass": true,
+  "scope": "三个入口的已知游戏引用链及用户提供的Excel/HTML；排期排除，不含整空间盘点、全部工作簿原件或游戏运行验收",
+  "completion_scope": "三个入口的本游戏已知引用链及本轮本地附件；排期按用户要求排除，不含整个知识空间目录",
+  "scope_exclusions": [
+    {
+      "resource": "minigame排期表",
+      "url": "https://moonton.feishu.cn/wiki/Bg8EwuBeMirJBbkmPbucpSmNn6b",
+      "status": "excluded_by_user",
+      "reason": "用户明确要求“排期表不需要”",
+      "excluded_at": "2026-10-15T20:00:45+08:00"
+    }
+  ],
+  "all_native_workbook_originals_available": false,
+  "xlsx_originals_available": 1,
+  "local_originals": [
+    {
+      "path": "docs/assets/prototypes/inspection-terminal-day1-v0.5.2.html",
+      "sha256": "c33faf5b09572a39e0559ab57007e510fc6b42210f544803abd76139fd667db2",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx",
+      "sha256": "d0deb4f24a328dee32ca6a58fb2663a27b3d5a8974d0a82d08e9f931a19242f9",
+      "byte_identical": true
+    }
+  ],
+  "xlsx_comparable_values_match_api": true,
+  "xlsx_uncached_formula_anchors": [
+    {
+      "sheet": "角色文本表",
+      "cells": [
+        "A2"
+      ]
+    },
+    {
+      "sheet": "玩家选项表",
+      "cells": [
+        "A2"
+      ]
+    },
+    {
+      "sheet": "配置方式",
+      "cells": [
+        "A1"
+      ]
+    }
+  ],
+  "xlsx_recalculated": false,
+  "html_data_matches_xlsx_day1": true,
+  "html_static_graph": {
+    "conversation_routes": 1296,
+    "reachable_trust_values": [
+      -6,
+      -3,
+      0,
+      3,
+      6
+    ],
+    "release_eligible_routes_at_default_test_threshold": 432,
+    "cycles": false,
+    "browser_runtime_test": false
+  },
+  "html_javascript_syntax": "pass",
+  "html_browser_runtime_tested": false,
+  "game_runtime_tests_run": false
 }

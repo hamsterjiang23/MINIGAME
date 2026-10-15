@@ -1,0 +1,243 @@
+{
+  "retrieved_at": "2026-10-15T19:49:52+08:00",
+  "changes": [
+    {
+      "slug": "game-wiki",
+      "previous_revision": 481,
+      "revision": 608
+    },
+    {
+      "slug": "game-concept-outline",
+      "previous_revision": 3633,
+      "revision": 3638
+    },
+    {
+      "slug": "patient-priest",
+      "previous_revision": 797,
+      "revision": 800
+    },
+    {
+      "slug": "player-character",
+      "previous_revision": null,
+      "revision": 6
+    },
+    {
+      "slug": "dream-scenes",
+      "previous_revision": null,
+      "revision": 191
+    }
+  ],
+  "body_sources_read": 13,
+  "workbooks_read": 3,
+  "sheets_read": 12,
+  "whiteboards_read": 6,
+  "whiteboard_nodes": 169,
+  "media": [
+    {
+      "path": "docs/assets/image-AiiUbPoksoyQ3axW6h6cluW2nJc.png",
+      "sha256": "96ed5c269c2411b82be8b2ebcff7b9870bf2a769c70c48d8af28532b1b897566",
+      "size_bytes": 3248618,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-BPxhbw2lToSdXhx8g2NcA7QCnuk.png",
+      "sha256": "376a63bb24df18bc19f29f197f15bd1b43593742a33a3cf1cc3a34ffa813c49e",
+      "size_bytes": 3183120,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-FfmSbnPX2oD3G7x2lRqcknc9nac.png",
+      "sha256": "1a9b2393870380c4f237a66b79cebc4e252cd4ceb8a8aa3991a11e12f68f03e7",
+      "size_bytes": 3126918,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-Fq5IbxLw9oNNWyxJ14rcyxFPnmc.png",
+      "sha256": "dd8f0a7ddde9dd6d10ab02192f4dd5cb16f80d0b17b5896d9750a4b654bfc8b3",
+      "size_bytes": 3308508,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-GfEbblzC3oA0XMxgDiocT5ksn9d.png",
+      "sha256": "bf66894a6e7e4b6f4fc203f5126ef6859f263dd0ae0b0bf0b910f39448c5b760",
+      "size_bytes": 3187407,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-IrGYb0QEYouFzgxUaptcdPQonLg.png",
+      "sha256": "3d4d6ccece63ceb889d164584bb81883da70ed07d419628cd399178e10d7db41",
+      "size_bytes": 3340065,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-KJDObSLgpo8mLfx6PlCc9hdxnpb.png",
+      "sha256": "d477a9d8513d3ae27bad27405410e838f1645b644fd5639e6b3a308361010df1",
+      "size_bytes": 1305231,
+      "kind": "download"
+    },
+    {
+      "path": "docs/assets/image-KNVFbtwraoYV5hxDfiWctgAVnke.png",
+      "sha256": "40867e84c8b67bdb123e871711f8f7364f652540a21ff3e256802bb07b8a15c5",
+      "size_bytes": 3480060,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-Mw8MbsR8DonMi6x8rRlcjDrene3.png",
+      "sha256": "afb64a2f9f39eeee849b0c770662c24d08c6ce81bc79f03bac5f250d62a66f06",
+      "size_bytes": 3069807,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-NA5obAmOzoXC8nxgKWDc6oV3nve.png",
+      "sha256": "72a1601461e30766653a4cb8d9df6ba9d29f323653987c2e4195584426c99d44",
+      "size_bytes": 3207736,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-NoSjbfFzwohWqxxzXrmc2jNGnOc.png",
+      "sha256": "8b01d675c1e849e76a641f46b8b08ac7536f80164ff034cb05cf04c74f4218e5",
+      "size_bytes": 318559,
+      "kind": "download"
+    },
+    {
+      "path": "docs/assets/image-XyhRbEgKHopbsCxWsMcc0Pzonhd.png",
+      "sha256": "313302a6a0f0786f63aec226da2efd94aff6e514522a2dfdbd25ad62b2396349",
+      "size_bytes": 3258127,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-ZHVCbbgZtoSHN1x5bbAcbsf2ndr.png",
+      "sha256": "93337a74c97cbe8fabccfffaef7a3265454845a8c80ad489da8625fa14297e16",
+      "size_bytes": 3089950,
+      "kind": "preview"
+    },
+    {
+      "path": "docs/assets/image-Zruvb1ufkoz4N3xzz9jc5jTEnof.png",
+      "sha256": "89e3f9f81f76518d3878c57845a04fd253d7b52235cdd1be92d01cb409be688f",
+      "size_bytes": 2955336,
+      "kind": "preview"
+    }
+  ],
+  "native_xlsx_exported": 0,
+  "access_gaps": [
+    {
+      "resource": "Wiki space directory",
+      "space_id": "7669636464455535881",
+      "operation": "list",
+      "code": 131006,
+      "effect": "整个空间未盘点；不影响已知引用链内容同步"
+    },
+    {
+      "resource": "神父工作簿及世界观名词表原始Excel",
+      "operation": "native_xlsx_export",
+      "code": 1069902,
+      "effect": "内容已完整保存CSV和公式JSON；这两份原始xlsx仍未取得"
+    }
+  ],
+  "project_reference_chain_complete": true,
+  "whole_wiki_space_audited": false,
+  "table_get_observation": {
+    "source": "dialogue-child-v1-1",
+    "sheet": "对话流程",
+    "reported_range": "A1:M231",
+    "returned_rows": 11,
+    "authoritative_snapshot": "workbook-cells/dialogue-child-v1-1.0ADfgL.json",
+    "authoritative_physical_range": "A1:T500",
+    "authoritative_nonempty_rows": 231
+  },
+  "doc_review": {
+    "mode": "review documentation",
+    "initial_findings": [
+      "D1 shifted evidence line references",
+      "D2 old priest image caption"
+    ],
+    "confirmed_fixed": [
+      "D1",
+      "D2"
+    ],
+    "recheck": "No doc issues found",
+    "followup": {
+      "scope": "用户Excel/HTML归档、排期排除及多层文档同步",
+      "findings": [
+        "D3 HTML citation offsets"
+      ],
+      "confirmed_fixed": [
+        "D3"
+      ],
+      "verification": "HTML lines 259 and 274 read directly; citations corrected"
+    }
+  },
+  "validation": {
+    "record": "docs/.source-data/validation.json",
+    "command": "bundled Python validate_sync.py",
+    "git_diff_check": "pass",
+    "binary_attributes": "new png/jpg resolve to filter=lfs",
+    "game_tests_run": false,
+    "local_original_hashes": "pass: 2 files byte-identical",
+    "xlsx_comparison": "pass: comparable values match; three uncached formula anchors recorded",
+    "html_data_comparison": "pass: Day1 primary table",
+    "html_javascript_syntax": "pass: node --check",
+    "html_static_graph": "pass: 1296 conversation paths, no unresolved targets/cycles",
+    "html_browser_runtime": "not run: file-protocol security policy"
+  },
+  "historical_access_gaps_before_local_delivery": [
+    {
+      "resource": "minigame排期表",
+      "url": "https://moonton.feishu.cn/wiki/Bg8EwuBeMirJBbkmPbucpSmNn6b",
+      "operation": "read",
+      "code": 131006
+    },
+    {
+      "resource": "Wiki space directory",
+      "space_id": "7669636464455535881",
+      "operation": "list",
+      "code": 131006
+    },
+    {
+      "resource": "3 readable workbooks",
+      "operation": "native_xlsx_export",
+      "code": 1069902
+    }
+  ],
+  "scope_exclusions": [
+    {
+      "resource": "minigame排期表",
+      "url": "https://moonton.feishu.cn/wiki/Bg8EwuBeMirJBbkmPbucpSmNn6b",
+      "status": "excluded_by_user",
+      "reason": "用户明确要求“排期表不需要”",
+      "excluded_at": "2026-10-15T20:00:45+08:00"
+    }
+  ],
+  "local_deliveries": [
+    {
+      "original_filename": "审查终端_Day1_交互原型_v0.5.2_复古控件对照.html",
+      "source_path": "C:\\Users\\admin\\Downloads\\审查终端_Day1_交互原型_v0.5.2_复古控件对照.html",
+      "path": "docs/assets/prototypes/inspection-terminal-day1-v0.5.2.html",
+      "size_bytes": 35994,
+      "sha256": "c33faf5b09572a39e0559ab57007e510fc6b42210f544803abd76139fd667db2",
+      "source_sha256": "c33faf5b09572a39e0559ab57007e510fc6b42210f544803abd76139fd667db2",
+      "byte_identical": true,
+      "imported_at": "2026-10-15T20:00:45+08:00"
+    },
+    {
+      "original_filename": "【对话】小孩v1.1.xlsx",
+      "source_path": "C:\\Users\\admin\\Downloads\\【对话】小孩v1.1.xlsx",
+      "path": "docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx",
+      "size_bytes": 74861,
+      "sha256": "d0deb4f24a328dee32ca6a58fb2663a27b3d5a8974d0a82d08e9f931a19242f9",
+      "source_sha256": "d0deb4f24a328dee32ca6a58fb2663a27b3d5a8974d0a82d08e9f931a19242f9",
+      "byte_identical": true,
+      "imported_at": "2026-10-15T20:00:45+08:00"
+    }
+  ],
+  "local_attachments_synced": true,
+  "xlsx_originals_available": 1,
+  "content_sync_complete": true,
+  "completion_scope": "三个入口的本游戏已知引用链及本轮本地附件；排期按用户要求排除，不含整个知识空间目录",
+  "remaining_limitations": [
+    "知识空间目录权限未通，不能保证发现未链接来源",
+    "神父工作簿与名词表的原始Excel导出仍受限；完整值和公式已同步",
+    "HTML未做浏览器运行验收；没有把原型接入Unity",
+    "Excel三个公式锚点缺少导出缓存；未重算或改写原件"
+  ]
+}

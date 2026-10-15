@@ -54,3 +54,10 @@
 候选用词尚未裁定。本文的和平部/和平仪/评估员/狂热值，与游戏梳理的和平保障总署/战争倾向检定仪/和平检定员/偏离指数不同；狂热值、疯狂值与偏离指数是否同一变量需确认。年度检定与每日广场筛查、净化后的去向也需区分来源版本。
 
 关联：[叙事白皮书](narrative-whitepaper.md)、[游戏梳理](game-concept-outline.md)、[待定问题](../open-questions.md)。
+
+
+## 2026-10-15复查与完整下载
+
+全部1个子表按物理行列上界读取，值与公式保存在单元格JSON，CSV为值快照。原始Excel导出返回1069902，尚未取得原件。[verified: ../.source-data/world-terminology.json sheets/native_export_error_code] [opinion]
+
+- [名词表完整CSV](../assets/workbooks/world-terminology/f00ecc.csv)：`f00ecc!A1:P182`，非空行18。[verified: ../.source-data/world-terminology.json sheets f00ecc]

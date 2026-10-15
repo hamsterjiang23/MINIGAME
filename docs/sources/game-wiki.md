@@ -3,19 +3,21 @@
 ## 来源与状态
 
 - 来源：[心理恐怖叙事游戏Wiki](https://moonton.feishu.cn/wiki/SBq3wnQOqifGkHk5h8gcXPV0nb3)
-- 读取时间：2026-10-12T17:28:52+08:00（Asia/Shanghai）
-- 文档版本：481；底层文档：`COEBdbgoSohH7TxIEsecNU5DnoO`
-- 正文已读取；画板与工作簿的读取状态单独列在来源索引中。
+- 读取时间：2026-10-15T19:49:52+08:00（Asia/Shanghai）
+- 文档版本：608；底层文档：`COEBdbgoSohH7TxIEsecNU5DnoO`
+- 正文已读取；图片、画板和工作簿状态见[来源索引](../source-index.md)。[verified: ../.source-data/game-wiki.json revision_id/content]
 
 ## 内容概述
 
-Mini Game交付标准、日流程、三种结局和资产分类。
+Mini交付标准、日流程、四条结局描述及主角、梦境、对白表、排期和音效引用。[verified: ../.source-data/game-wiki.json content]
 
 ## 设计重点
 
-3天内容、5位病人、3种结局；Day0教学与Day4失败收束；监督员、检测、审判、睡眠与梦境。
+交付标准仍为3天、5位病人、3种结局；正文第四条已改为反叛值触发的自我净化分支。数量、阈值和流程冲突不自行裁决。[verified: ../.source-data/game-wiki.json content「Mini Game交付标准」「结局」] [opinion]
 
 ## 完整设计信息（保留本篇口径）
+
+## 心理恐怖叙事游戏Wiki
 
 ## Mini Game交付标准
 
@@ -26,14 +28,19 @@ Mini Game交付标准、日流程、三种结局和资产分类。
 
 ## 概念
 
-![图片为一张白板，记录了关于心理恐怖叙事游戏的DEMO标准内容。白板上用不同颜色的笔标注了“3天”“5位病人”“3种结局”等关键信息。还详细列出了“时代”“世界观”“病人设定”等板块，如时代为“科技性中下”，世界观为“现实世界+一场离奇死亡”，病人设定有“小孩”“神父”等。此外，还涉及“解密”“治疗”“潜行”等游戏机制，以及“1个主创”“1个监督”等团队配置。该图片与文档中Mini Game交付标准部分紧密相关，直观呈现了相关内容。](../assets/image-LDkCbIILPoTYjJxKTP6ciaaGn5b.jpg)
+![概念参考图1](../assets/image-LDkCbIILPoTYjJxKTP6ciaaGn5b.jpg)
 
 #### 世界观
 
+[《微恐剧情》叙事白皮书【施工中】](narrative-whitepaper.md)
+
+#### 通用名词
+
+[《微恐剧情》世界观名词表](world-terminology.md)
 
 #### 病人设定
 
-[P01  神父 设计文档](patient-priest.md)
+[【人物】神父](patient-priest.md)
 
 [【人物】小孩](patient-child.md)
 
@@ -45,15 +52,13 @@ Mini Game交付标准、日流程、三种结局和资产分类。
 
 #### 主角设定
 
-#### 玩家设定
+[【人物】主角](player-character.md)
 
 ## 玩法
 
 细致全流程：
 
-
-> 画板 `IykwwdNvihVgabb0wfKctsnOnJd`：已读取，文本与连线详见下方画板补充。
-
+画板 `IykwwdNvihVgabb0wfKctsnOnJd`：节点与连线见下方画板补充。
 
 #### 全流程（特殊分支不在讨论范畴里）
 
@@ -79,12 +84,14 @@ Day4
 
 #### 对话分支
 
+[【对话】小孩v1.1](dialogue-child-v1-1.md)
+
 #### 结局
 
-1. 正常全流程，玩家被带走
-2. 神父来杀人
-3. 没有完成KPI，跳转到Day４
-4. r
+1. 正常全流程，Day4起床玩家被带走（条件：无）
+2. 神父来杀人（条件：释放神父）
+3. 没有完成KPI，跳转到Day４（条件：没有完成任意一天KPI）
+4. day3梦境结束后，床不亮，电脑亮，玩家交互发现监控里正是自己，最后选项只有“净化”，执行之后进入超自然场景（条件：反叛值max）
 
 ## 程序
 
@@ -98,17 +105,25 @@ Day4
 
 #### 2D
 
+###### 病房场景
+
+![概念参考图2](../assets/image-NoSjbfFzwohWqxxzXrmc2jNGnOc.png)
+
 ###### 病人立绘
 
-###### 梦境画面
+###### 梦境
+
+[梦场景](dream-scenes.md)
 
 ###### UI
 
 #### 3D
 
-###### 场景
+###### 主角场景
 
-###### 物件
+![概念参考图3](../assets/image-KJDObSLgpo8mLfx6PlCc9hdxnpb.png)
+
+###### 主角场景物件
 
 #### 音乐&音效马步庭(Mcqueen)
 
@@ -117,17 +132,17 @@ Day4
 1. 开始菜单 https://suno.com/s/DEJdjK3NLSIzuZD1
 2. 主Gameplay https://suno.com/song/fbb6233d-b8f0-4b16-8143-93716f8d1490
 3. 电脑噪音 https://freesound.org/people/8bitmyketison/sounds/699726/
-4. 做梦场景
+4. 做梦场景（详见**美术--2D--梦境**）
 5. 不同分支结局
 
 音效需求：
 
-1. 检测仪扫描
-2. 检测仪亮灯
-3. 对话弹出
-4. 放映机
-5. 3D场景按键交互
-6.  监控画面按键交互 
+1. 检测仪扫描https://freesound.org/people/pyth0n11/sounds/706447/
+2. 检测仪亮灯https://freesound.org/people/jobro/sounds/33789/
+3. 对话弹出https://freesound.org/people/el_boss/sounds/788611/
+4. 放映机https://freesound.org/people/juanicotolengo/sounds/265144/
+5. 3D场景按键交互https://freesound.org/people/crash_358/sounds/615543/
+6.  监控画面按键交互 https://freesound.org/people/Coral_Island_Studios/sounds/277669/
 
 ## 参考
 
@@ -135,59 +150,39 @@ Day4
 |-|-|-|
 |  |  |  |
 
-## 下级引用
+## 排期
 
-- [P01  神父 设计文档](patient-priest.md)：https://moonton.feishu.cn/wiki/A5XuwDTTWijkGGkFhqUcxg8qnSg
-- [【人物】小孩](patient-child.md)：https://moonton.feishu.cn/wiki/DiI4weVOxiAknuku0uzchcf5nyc
-- [【人物】女性执政者](patient-former-ruler.md)：https://moonton.feishu.cn/wiki/Fkq1wdjODiwex7k2j4bcJrxcnEf
-- [【人物】战场医生](patient-battlefield-doctor.md)：https://moonton.feishu.cn/wiki/WWqCwCFwxisowlklgA0cnwtGnBf
-- [【人物】外交官](patient-diplomat.md)：https://moonton.feishu.cn/wiki/HwQNwN2fgiQoIrkEiLjc82S8ncg
-- 画板：`IykwwdNvihVgabb0wfKctsnOnJd`（已读取，见下方画板补充）。
+[minigame排期表](minigame-schedule.md)
+
+本节保留飞书原文引用；用户已明确本次不需要同步排期。[verified: ../.source-data/sync-2026-10-15.json scope_exclusions]
 
 ## 本篇待定与版本差异
 
-世界观、主角、玩家、对话分支、程序、美术多处空白；结局第四条只有r；病人0身份与人数计数待定。
+- 交付标准3种结局与正文四条结局描述并存；正文反叛值写max，画板写大于阈值。[verified: ../.source-data/game-wiki.json content「结局」；../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14]
+- 正文Day4含检测不通过锁房，结局第一条却是正常Day4被带走；画板将前一天KPI失败称为常规结局。保留差异，见[待定问题](../open-questions.md)。[verified: ../.source-data/game-wiki.json content「全流程」「结局」；../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14]
+- 程序三栏仍空；主角、梦场景和对白现在通过下级来源给出内容，不能再归为全部空白。[verified: ../.source-data/game-wiki.json content「程序」「主角设定」「对话分支」「梦境」]
 
-跨文档比较见[待定问题](../open-questions.md)；不能用本文的提案与示例覆盖其他来源的交付承诺。
+## 画板补充（2026-10-15重读）
 
-## 画板补充（已读取）
+共14个节点；新节点在每天开始前检查结局，梦后阶段增加场景压暗与床聚光灯。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14/o1:12]
 
-画板是所属文档的内嵌素材。下列概述用于阅读，节点文本与连线保留用于核对；节点清单的位置顺序不替代流程箭头。
+![最新流程画板](../assets/board-IykwwdNvihVgabb0wfKctsnOnJd-2026-10-15.jpg)
 
-### 画板 `IykwwdNvihVgabb0wfKctsnOnJd`
+### 节点文字
 
-- 读取时间：2026-10-12T17:44:47+08:00；共12个节点。
-- 文本、节点关系和图片节点均已读取；画板图像已本地保存并检查。
+- `o1:13`：开始菜单——系统加载界面——直接进入审判系统——和特殊npc对话——“净化”该npc——关机进入房间——舞台聚光灯打向床，引导交互——按E上床——醒来。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o1:13]
+- `o1:12`：在梦播完之后，恢复自由移动，场景压暗，给床打舞台聚光灯，只能和床交互。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o1:12]
+- `o1:1`：开始菜单。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o1:1]
+- `o1:11`：开始一天，开门和监督员对话、操作电脑工作。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o1:11]
+- `o43:14`：每天开始前，读取条件检测是否进结局。；若释放神父：神父结局；若天数大于等于4且反叛值不足：常规结局；若天数大于等于4且反叛值大于阈值：梦结局；若未完成前一天kpi：常规结局。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14]
+- `o1:3`：Intro。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o1:3]
 
-主流程：开始菜单→Intro→黑屏敲门→开门/监督员/电脑工作→与床交互进入梦境→梦后恢复移动但只能与床交互→黑屏敲门按E起床→下一天。教学分支另写系统加载、特殊NPC、净化、关机回房和聚光灯引导上床。
+### 连线
 
-![画板参考：IykwwdNvihVgabb0wfKctsnOnJd](../assets/board-IykwwdNvihVgabb0wfKctsnOnJd.jpg)
-
-节点文字：
-
-| 节点 | 类型 | 原文 |
-| --- | --- | --- |
-| o1:12 | composite_shape | 在梦播完之后，恢复自由移动，但是只能和床交互 |
-| o1:1 | composite_shape | 开始菜单 |
-| o1:3 | composite_shape | Intro |
-| o1:11 | composite_shape | 开始一天，开门和监督员对话、操作电脑工作 |
-| o1:13 | composite_shape | 开始菜单——系统加载界面——直接进入审判系统——和特殊npc对话——“净化”该npc——关机进入房间——舞台聚光灯打向床，引导交互——按E上床——醒来 |
-
-连线关系：
-
-| 起点 | 终点 | 箭头文字 |
-| --- | --- | --- |
-| 在梦播完之后，恢复自由移动，但是只能和床交互 | 开始一天，开门和监督员对话、操作电脑工作 | 和床交互后，进入黑屏，敲门声响起，按E起床 |
-| 开始菜单 | Intro |  |
-| 开始一天，开门和监督员对话、操作电脑工作 | 在梦播完之后，恢复自由移动，但是只能和床交互 | 和床交互，进入梦场景 |
-| 开始菜单 | 开始菜单——系统加载界面——直接进入审判系统——和特殊npc对话——“净化”该npc——关机进入房间——舞台聚光灯打向床，引导交互——按E上床——醒来 |  |
-| Intro | 开始一天，开门和监督员对话、操作电脑工作 | 黑屏、敲门 |
-| Intro | 未连接到可解析节点（无节点ID） |  |
-
-图片节点清单（图像包含于上方画板截图，原始token保留）：
-
-| 节点 | 图片token |
-| --- | --- |
-| d1:1 | SLsVbBPP9o2EDIxYkvccG2Grnjg |
-
-下级文档引用：未在节点文字、链接字段及文档提及字段中发现新的飞书文档引用。
+- `c1:16`：`o1:3` → `无节点ID`。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c1:16.connector]
+- `c1:14`：`o1:11` → `o1:12`：和床交互，进入梦场景。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c1:14.connector]
+- `c1:17`：`o1:1` → `o1:13`。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c1:17.connector]
+- `c1:1`：`o1:1` → `o1:3`。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c1:1.connector]
+- `c1:13`：`o1:3` → `o1:11`：黑屏、敲门。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c1:13.connector]
+- `c43:20`：`o43:14` → `o1:11`。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c43:20.connector]
+- `c1:15`：`o1:12` → `o1:11`：和床交互后，进入黑屏，敲门声响起，按E起床。[verified: ../.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes c1:15.connector]

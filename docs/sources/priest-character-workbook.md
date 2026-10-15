@@ -80,3 +80,15 @@
 状态差分、表演要求的具体单元格未填；人物关系只有表头。六个子表在读取响应中全部保留，包括空白Sheet1。文档正文与表格的神父设定一起核对，不能据模板空白推断没有需求。
 
 关联：[神父设计文档](patient-priest.md)。
+
+
+## 2026-10-15复查与完整下载
+
+全部6个子表按物理行列上界读取，值与公式保存在单元格JSON，CSV为值快照。原始Excel导出返回1069902，尚未取得原件。[verified: ../.source-data/priest-character-workbook.json sheets/native_export_error_code] [opinion]
+
+- [Zl7v08完整CSV](../assets/workbooks/priest-character-workbook/Zl7v08.csv)：`Zl7v08!A1:B7`，非空行7。[verified: ../.source-data/priest-character-workbook.json sheets Zl7v08]
+- [uCxhWZ完整CSV](../assets/workbooks/priest-character-workbook/uCxhWZ.csv)：`uCxhWZ!A1:B5`，非空行5。[verified: ../.source-data/priest-character-workbook.json sheets uCxhWZ]
+- [RrqUWL完整CSV](../assets/workbooks/priest-character-workbook/RrqUWL.csv)：`RrqUWL!A1:B5`，非空行5。[verified: ../.source-data/priest-character-workbook.json sheets RrqUWL]
+- [jhiGax完整CSV](../assets/workbooks/priest-character-workbook/jhiGax.csv)：`jhiGax!A1:C6`，非空行0。[verified: ../.source-data/priest-character-workbook.json sheets jhiGax]
+- [vpZ2a1完整CSV](../assets/workbooks/priest-character-workbook/vpZ2a1.csv)：`vpZ2a1!A1:C3`，非空行1。[verified: ../.source-data/priest-character-workbook.json sheets vpZ2a1]
+- [Sheet1完整CSV](../assets/workbooks/priest-character-workbook/46644e.csv)：`46644e!A1:T200`，非空行0。[verified: ../.source-data/priest-character-workbook.json sheets 46644e]

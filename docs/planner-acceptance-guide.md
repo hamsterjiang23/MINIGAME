@@ -4,6 +4,18 @@
 
 **当前成果是能够跑通流程的三天开发原型。对白、人物肖像、观察画面、梦境和结局演出仍是开发占位；当前数值与人物规则也保留开发配置身份。** [verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L8–L30；../src/MiniGame.Presentation/PrototypeContent.cs L45–L102、L105–L112；../UnityProject/README.md「运行与操作」]
 
+## 最新策划来源与当前原型的差距
+
+- [小孩v1.1对白表](sources/dialogue-child-v1-1.md)已提供三天正式台词、节点、选项、措施、立绘ID及配置方式；本页“没有导入器”仍成立，不能再解读成策划尚未提供对白表。[verified: .source-data/dialogue-child-v1-1.json sheets；本页「验收前先读这几条」] [opinion]
+- 主Wiki608版新增反叛值自我净化分支，画板新增每天开始前结局/KPI检查。下文描述当前原型的三结局与三天后KPI结算；本次仅同步文档，没有把新来源接入运行逻辑。[verified: .source-data/game-wiki.json content「结局」；.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14；本页「夜间、梦境与结局检查」] [opinion]
+- 小孩表为R1–R6对话、R7措施轮，真分支信任变化−3/0/+3；当前原型为4普通轮及±10。新验收目标要先统一模型、数值和三种/四条结局冲突。[verified: .source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第10–11、20、30–33行；本页「当前开发配置」] [opinion]
+
+### 新提供的Excel与HTML怎样用于验收
+
+[Excel原件](assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)与[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)均已归档。HTML的50个文本节点、20个对话选项及三种处置对应Excel主表Day1，适合核对台词、选项汇合、核验灯与处置反馈的预期；本轮仅做静态检查，没有浏览器或Unity运行验收。[verified: .source-data/inspection-terminal-day1-v0.5.2.json nodes/options/data_matches_xlsx_day1/runtime_browser_test] [opinion]
+
+HTML测试台默认信任阈值3、净化剩余5，可跳轮次、调皮肤和CRT；这些测试入口与数值不属于当前Unity正式规则。HTML目录中的其余4项是未配置占位，不作为五病人完成证据。[verified: .source-data/inspection-terminal-day1-v0.5.2.json default_test_threshold/default_test_quota/configured_patients/roster_slots] [opinion]
+
 ## 验收前先读这几条
 
 - 当前验收入口建议使用 **Unity Editor 的主场景**。仓库内旧 `Builds/MiniGame/MiniGame.exe` 最后写入时间为2026-10-13；2026-10-15的启动修复没有重新构建 Player，不应用旧程序验收最新按钮文案。[verified: 本次读取的 MiniGame.exe LastWriteTime=2026-10-13T16:35:11+08:00；gameplay-migration-verification.json unity.normalUpmRecovery.playerRebuilt] [opinion]
@@ -208,6 +220,8 @@ PrototypeRules.CreateMeeting(
 - [ ] **鼠标与快捷键**：对白继续、选项、净化后的返回分别用鼠标与键盘走通；出现鼠标异常时记录是否失焦、是否只有首次点击失败，以及空格是否仍可用，不将能按空格等同于鼠标验收通过。[verified: ../UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs ClickThroughPointer；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs L132–L139] [opinion]
 
 ## 策划怎样交付下一批内容
+
+小孩已有的正式来源优先从[完整对白表](sources/dialogue-child-v1-1.md)交接，遵循原表“只编辑对话流程、派生表由公式生成”的约定；下方模板继续用于未覆盖内容和程序接入沟通，不要求策划重复抄写已交付的表。[verified: .source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第2、5–6行] [opinion]
 
 下面是建议的最小交接模板。按病人和日期分别填写，保留逻辑ID；尚未决定的数值/设定标“待定”，不要用临时台词替代正式裁决。**当前程序不直接导入此模板。** [opinion]
 

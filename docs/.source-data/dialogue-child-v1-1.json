@@ -1,0 +1,176 @@
+{
+  "source_url": "https://moonton.feishu.cn/sheets/FUlBs4PJYhiOoftbZ0mcj1Myn1e",
+  "retrieved_at": "2026-10-15T19:49:52+08:00",
+  "structure": {
+    "ok": true,
+    "identity": "user",
+    "data": {
+      "create_time": "2026-10-10T12:10:04.000Z",
+      "modified_time": "2026-10-10T12:35:42.000Z",
+      "revision": 31,
+      "sheets": [
+        {
+          "chart_count": 0,
+          "column_count": 20,
+          "float_image_count": 0,
+          "frozen_rows": 1,
+          "index": 0,
+          "is_hidden": false,
+          "merged_cells_count": 0,
+          "pivot_table_count": 0,
+          "resource_type": "sheet",
+          "row_count": 500,
+          "sheet_id": "0ADfgL",
+          "sheet_name": "对话流程"
+        },
+        {
+          "chart_count": 0,
+          "column_count": 20,
+          "float_image_count": 0,
+          "frozen_rows": 1,
+          "index": 1,
+          "is_hidden": false,
+          "merged_cells_count": 0,
+          "pivot_table_count": 0,
+          "resource_type": "sheet",
+          "row_count": 500,
+          "sheet_id": "1ArAxd",
+          "sheet_name": "角色文本表"
+        },
+        {
+          "chart_count": 0,
+          "column_count": 20,
+          "float_image_count": 0,
+          "frozen_rows": 1,
+          "index": 2,
+          "is_hidden": false,
+          "merged_cells_count": 0,
+          "pivot_table_count": 0,
+          "resource_type": "sheet",
+          "row_count": 500,
+          "sheet_id": "2OkNPz",
+          "sheet_name": "玩家选项表"
+        },
+        {
+          "chart_count": 0,
+          "column_count": 20,
+          "float_image_count": 0,
+          "frozen_rows": 1,
+          "index": 3,
+          "is_hidden": false,
+          "merged_cells_count": 0,
+          "pivot_table_count": 0,
+          "resource_type": "sheet",
+          "row_count": 200,
+          "sheet_id": "3yaslJ",
+          "sheet_name": "立绘ID"
+        },
+        {
+          "chart_count": 0,
+          "column_count": 20,
+          "float_image_count": 0,
+          "index": 4,
+          "is_hidden": false,
+          "merged_cells_count": 0,
+          "pivot_table_count": 0,
+          "resource_type": "sheet",
+          "row_count": 200,
+          "sheet_id": "X84Zd2",
+          "sheet_name": "配置方式"
+        }
+      ],
+      "title": "【对话】小孩v1.1",
+      "token": "FUlBs4PJYhiOoftbZ0mcj1Myn1e"
+    },
+    "_notice": {
+      "update": {
+        "command": "lark-cli update",
+        "current": "1.0.77",
+        "latest": "1.0.98",
+        "message": "lark-cli 1.0.98 available, current 1.0.77, run: lark-cli update"
+      }
+    }
+  },
+  "sheets": [
+    {
+      "sheet_id": "0ADfgL",
+      "name": "对话流程",
+      "range": "A1:T500",
+      "physical_rows": 500,
+      "physical_columns": 20,
+      "nonempty_rows": 231,
+      "last_nonempty_row": 231,
+      "formulas": 0,
+      "csv": "docs/assets/workbooks/dialogue-child-v1-1/0ADfgL.csv",
+      "cells_snapshot": "docs/.source-data/workbook-cells/dialogue-child-v1-1.0ADfgL.json",
+      "truncated": false
+    },
+    {
+      "sheet_id": "1ArAxd",
+      "name": "角色文本表",
+      "range": "A1:T500",
+      "physical_rows": 500,
+      "physical_columns": 20,
+      "nonempty_rows": 162,
+      "last_nonempty_row": 162,
+      "formulas": 1,
+      "csv": "docs/assets/workbooks/dialogue-child-v1-1/1ArAxd.csv",
+      "cells_snapshot": "docs/.source-data/workbook-cells/dialogue-child-v1-1.1ArAxd.json",
+      "truncated": false
+    },
+    {
+      "sheet_id": "2OkNPz",
+      "name": "玩家选项表",
+      "range": "A1:T500",
+      "physical_rows": 500,
+      "physical_columns": 20,
+      "nonempty_rows": 70,
+      "last_nonempty_row": 70,
+      "formulas": 1,
+      "csv": "docs/assets/workbooks/dialogue-child-v1-1/2OkNPz.csv",
+      "cells_snapshot": "docs/.source-data/workbook-cells/dialogue-child-v1-1.2OkNPz.json",
+      "truncated": false
+    },
+    {
+      "sheet_id": "3yaslJ",
+      "name": "立绘ID",
+      "range": "A1:T200",
+      "physical_rows": 200,
+      "physical_columns": 20,
+      "nonempty_rows": 6,
+      "last_nonempty_row": 6,
+      "formulas": 0,
+      "csv": "docs/assets/workbooks/dialogue-child-v1-1/3yaslJ.csv",
+      "cells_snapshot": "docs/.source-data/workbook-cells/dialogue-child-v1-1.3yaslJ.json",
+      "truncated": false
+    },
+    {
+      "sheet_id": "X84Zd2",
+      "name": "配置方式",
+      "range": "A1:T200",
+      "physical_rows": 200,
+      "physical_columns": 20,
+      "nonempty_rows": 47,
+      "last_nonempty_row": 48,
+      "formulas": 1,
+      "csv": "docs/assets/workbooks/dialogue-child-v1-1/X84Zd2.csv",
+      "cells_snapshot": "docs/.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json",
+      "truncated": false
+    }
+  ],
+  "native_export_status": "permission_denied",
+  "native_export_error_code": 1069902,
+  "original_file": {
+    "original_filename": "【对话】小孩v1.1.xlsx",
+    "source_path": "C:\\Users\\admin\\Downloads\\【对话】小孩v1.1.xlsx",
+    "path": "docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx",
+    "size_bytes": 74861,
+    "sha256": "d0deb4f24a328dee32ca6a58fb2663a27b3d5a8974d0a82d08e9f931a19242f9",
+    "source_sha256": "d0deb4f24a328dee32ca6a58fb2663a27b3d5a8974d0a82d08e9f931a19242f9",
+    "byte_identical": true,
+    "imported_at": "2026-10-15T20:00:45+08:00"
+  },
+  "original_file_status": "available_user_supplied",
+  "original_file_comparison": "docs/.source-data/dialogue-child-v1-1.xlsx-inspection.json",
+  "original_file_compared_against_api_revision": 31
+}

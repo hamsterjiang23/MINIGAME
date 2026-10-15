@@ -1,5 +1,9 @@
 # 《寻找伪人》玩法结构迁移
 
+新增[Day1终端交互参考](sources/inspection-terminal-day1-prototype.md)及小孩Excel原件已同步；HTML只配置一位病人的Day1，不等同于Unity完成迁移，测试阈值与配额也不覆盖正式规则。[verified: .source-data/inspection-terminal-day1-v0.5.2.json configured_patients/default_test_threshold/default_test_quota] [opinion]
+
+2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](feishu-sync-2026-10-15.md)。[verified: .source-data/game-wiki.json content「结局」；.source-data/sync-2026-10-15.json changes] [opinion]
+
 《寻找伪人》是本项目重要玩法参考。本次按真实恢复代码中的“房间交互 → 对话与观察 → 条件选项 → 决策 → 反应 → 返回房间 → 睡眠与次日后果”连接原创检定员框架；权威规则仍由 `GameSession` 执行。[verified: ../research/no-im-not-a-human/Reports/gameplay-dialogue-progression.md「对话系统与条件触发」「玩家决策与NPC状态」「昼夜循环、行动与物资」；../src/MiniGame.Presentation/GameRuntime.cs TryInteract/CompleteCue] [opinion]
 
 ## 已实现的对应关系

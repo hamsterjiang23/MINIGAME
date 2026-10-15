@@ -2,6 +2,8 @@
 
 我们要完成一款第一人称、2D/3D混合的心理恐怖叙事Mini Game：玩家在员工公寓中通过电脑审查病人，在治疗、净化和释放之间作选择，同时逐渐发现自己也受到审查。当前主Wiki交付目标是**3天内容、5位病人、3种结局**。
 
+2026-10-15已复查来源并同步新增的[主角](sources/player-character.md)、[梦场景](sources/dream-scenes.md)、[小孩完整对白表](sources/dialogue-child-v1-1.md)以及用户提供的[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)与小孩Excel原件。排期按用户要求排除；四条结局描述与3结局交付标准仍有冲突。[同步记录](feishu-sync-2026-10-15.md)列明变动、下载和边界。[verified: .source-data/game-wiki.json content；.source-data/sync-2026-10-15.json scope_exclusions/local_deliveries]
+
 ## 建议阅读顺序
 
 策划验收先看[策划验收指南：成果、触发与剧情配置](planner-acceptance-guide.md)，包含日循环、三结局路线、对白配置和验收勾选项；研发完成度另见[当前完成情况与待补项](project-status.md)。下列文档保留设计来源与尚待裁决的规则。[opinion]
@@ -17,10 +19,12 @@
 | --- | --- |
 | 三个入口 | [主Wiki](sources/game-wiki.md)、[程序需求](sources/program-requirements-v0-1.md)、[游戏梳理](sources/game-concept-outline.md) |
 | 五位病人 | [神父](sources/patient-priest.md)、[小孩](sources/patient-child.md)、[女性执政者](sources/patient-former-ruler.md)、[战场医生](sources/patient-battlefield-doctor.md)、[外交官](sources/patient-diplomat.md) |
+| 新增主角与梦境 | [主角](sources/player-character.md)、[梦场景](sources/dream-scenes.md) |
+| 对白与终端原型 | [小孩v1.1完整对白表](sources/dialogue-child-v1-1.md)、[Day1终端HTML](sources/inspection-terminal-day1-prototype.md) |
 | 背景与叙事 | [叙事白皮书](sources/narrative-whitepaper.md)、[灵感墙](sources/inspiration-wall.md)、[脑暴方案15](sources/brainstorm-proposal-15.md) |
 | 引用工作簿 | [神父人物工作簿](sources/priest-character-workbook.md)、[世界观名词表](sources/world-terminology.md)（两份均已读取并整理） |
 
-各篇保留出处、读取时间、版本、内容概述、完整设计信息、下级引用与待定项。原始读取响应与引用清单保存在 `.source-data` 中；图片在 `assets` 中。两份工作簿和六块画板均已补齐；原文未填的设计明确标记。
+各篇保留出处、读取时间、版本、内容概述、完整设计信息、下级引用与待定项。原始读取响应与引用清单保存在 `.source-data` 中；图片在 `assets` 中。现有3份工作簿的12个子表与6块画板已复查，小孩Excel与Day1 HTML原件已归档。排期不在本次范围；已知引用链与提供附件完成同步，整个知识空间未盘点、另两份工作簿原始Excel未取得。[verified: .source-data/sync-2026-10-15.json sheets_read/local_deliveries/completion_scope/remaining_limitations]
 
 ## 整理口径
 

@@ -4,6 +4,10 @@
 
 [实现说明：文件职责、设计理由与借鉴来源](architecture-and-rationale.md)解释代码为什么这样组织；[研究路线](../research/unity-2022-roadmap.md)和[游戏设计](../docs/game-overview.md)提供需求背景。
 
+2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](../docs/feishu-sync-2026-10-15.md)。[verified: ../docs/.source-data/game-wiki.json content「结局」；../docs/.source-data/sync-2026-10-15.json changes] [opinion]
+
+用户提供的[小孩Excel原件](../docs/assets/workbooks/dialogue-child-v1-1/dialogue-child-v1-1.xlsx)和[Day1终端HTML v0.5.2](../docs/sources/inspection-terminal-day1-prototype.md)已归档，内嵌Day1数据一致；排期不在本次同步范围。当前Unity仍使用开发占位内容。[verified: ../docs/.source-data/local-deliveries-2026-10-15.json files；../docs/.source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1；../docs/.source-data/sync-2026-10-15.json scope_exclusions] [opinion]
+
 ## 目录与技术基线
 
 | 位置 | 内容 |

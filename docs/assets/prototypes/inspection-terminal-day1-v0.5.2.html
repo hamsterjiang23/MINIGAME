@@ -1,0 +1,297 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PMS / Day1 · 原生640×360 控件美术对照 v0.5.2</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#141a18;color:#cbd1c8;font-family:Arial,'Microsoft YaHei',sans-serif}body{display:flex;flex-direction:column;align-items:center}
+#screen-area{flex:1;min-height:450px;width:100%;display:flex;justify-content:center;align-items:center;padding:14px;overflow:auto}
+#screen{width:1280px;height:720px;flex:none;display:block;image-rendering:pixelated;image-rendering:crisp-edges;cursor:default;touch-action:manipulation;background:#bdc1bb;box-shadow:0 0 0 2px #46544c,0 11px 50px #000a}
+#tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;justify-content:center;background:#202923;border-top:1px solid #37433b;padding:12px;max-width:1060px;width:100%;font-size:12px}
+#tools label{display:flex;align-items:center;gap:5px}#tools button,#tools select{padding:6px 8px;background:#38443c;color:#e0e8db;border:1px solid #778b7b;font-size:12px;cursor:pointer}#tools small{color:#a8b5a9}#tools input[type=range]{width:90px;accent-color:#aab8a7}
+#feedback{color:#adbbb0;font-size:11px;margin-top:4px}#screen:focus-visible{outline:2px solid #cdd9cb}
+</style></head><body>
+<div id="screen-area"><canvas id="screen" width="640" height="360" tabindex="0" aria-label="PMS 人员复核终端；使用鼠标点击或键盘选择"></canvas></div>
+<div id="tools"><b>原型测试台 v0.5.2</b><button id="reset">重置 Day1</button><label>跳至 <select id="jump"><option value="">完整流程</option><option value="D1_R1_OPEN1">R1</option><option value="D1_R2_OPEN1">R2</option><option value="D1_R3_OPEN1">R3</option><option value="D1_R4_OPEN1">R4</option><option value="D1_R5_OPEN1">R5</option><option value="D1_R6_OPEN1">R6</option><option value="D1_MEASURE">处置</option></select></label>
+<label>测试释放阈值 <select id="threshold"><option value="-6">−6</option><option value="-3">−3</option><option value="0">0</option><option value="3" selected>+3</option><option value="6">+6</option><option value="9">+9</option></select></label>
+<label>控件皮肤 <select id="skin"><option value="industrial" selected>专用审查终端</option><option value="classic">v0.5 原版</option></select></label>
+<label>显示器 <select id="crt"><option value="1" selected>轻微 CRT</option><option value="0">关闭</option><option value="2">较强 CRT</option></select></label>
+<label><input type="checkbox" id="debugTrust">显示隐藏信任</label><button id="fullscreen">全屏</button><small>v0.5 原版字形与分辨率保持不变，仅对比按钮与面板造型。</small></div>
+<div id="feedback">操作：对象目录双击/Enter 进入；审查中 1–4 选项、上下键定位、Enter 继续。结束前不能返回目录。</div>
+<script>
+const DATA={"nodes":{"D1_R1_OPEN1":{"text":"这里还要检测吗？","next":"D1_R1_OPEN2","portrait":"ML01","round":"R1","segment":"轮首"},"D1_R1_OPEN2":{"text":"和昨天广场上的不一样吗？","next":"D1_R1_CHOICE","portrait":"ML02","round":"R1","segment":"轮首"},"D1_R1_CLOSING1":{"text":"那个东西一响，我就害怕。","next":"D1_R1_CLOSING2","portrait":"ML01","round":"R1","segment":"收束"},"D1_R1_CLOSING2":{"text":"响了以后，我的手一直抖。","next":"D1_R1_CLOSING3","portrait":"ML01","round":"R1","segment":"收束"},"D1_R1_CLOSING3":{"text":"他们说我不正常。","next":"D1_R2_OPEN1","portrait":"ML01","round":"R1","segment":"收束"},"D1_R2_OPEN1":{"text":"我没有打人，也没有拿别人的东西。","next":"D1_R2_CHOICE","portrait":"ML02","round":"R2","segment":"轮首"},"D1_R2_O1_T1":{"text":"住在一起的人说的。","next":"D1_R2_O1_T2","portrait":"ML02","round":"R2","segment":"选项回应"},"D1_R2_O1_T2":{"text":"他们笑我不敢还手。","next":"D1_R2_CLOSING1","portrait":"ML02","round":"R2","segment":"选项回应"},"D1_R2_O3_T1":{"text":"没人跟我说过。","next":"D1_R2_O3_T2","portrait":"ML02","round":"R2","segment":"选项回应"},"D1_R2_O3_T2":{"text":"我以为进去会有人告诉我。","next":"D1_R2_CLOSING1","portrait":"ML02","round":"R2","segment":"选项回应"},"D1_R2_CLOSING1":{"text":"可我不知道自己做错了什么。","next":"D1_R2_CLOSING2","portrait":"ML02","round":"R2","segment":"收束"},"D1_R2_CLOSING2":{"text":"这些也要记吗？","next":"D1_R3_OPEN1","portrait":"ML02","round":"R2","segment":"收束"},"D1_R3_OPEN1":{"text":"他们让我进去，我就进去了。","next":"D1_R3_OPEN2","portrait":"ML02","round":"R3","segment":"轮首"},"D1_R3_OPEN2":{"text":"我想着，表现好就能回去。","next":"D1_R3_CHOICE","portrait":"ML02","round":"R3","segment":"轮首"},"D1_R3_O1_T1":{"text":"他们让我坐着别动。","next":"D1_R3_O1_T2","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_O1_T2":{"text":"我看别人怎么坐，就跟着坐。","next":"D1_R3_O1_T3","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_O1_T3":{"text":"可是它还是响了。","next":"D1_R3_CLOSING1","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_O2_T1":{"text":"……真的吗？","next":"D1_R3_O2_T2","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_O2_T2":{"text":"他们没这么说过。","next":"D1_R3_CLOSING1","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_O3_T1":{"text":"好。","next":"D1_R3_O3_T2","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_O3_T2":{"text":"那我说慢一点。","next":"D1_R3_CLOSING1","portrait":"ML02","round":"R3","segment":"选项回应"},"D1_R3_CLOSING1":{"text":"我想再试一次，他们没有让。","next":"D1_R3_CLOSING2","portrait":"ML02","round":"R3","segment":"收束"},"D1_R3_CLOSING2":{"text":"我出来的时候，没有一个人说话。","next":"D1_R4_OPEN1","portrait":"ML02","round":"R3","segment":"收束"},"D1_R4_OPEN1":{"text":"我出来以后，一直走走廊。","next":"D1_R4_OPEN2","portrait":"ML02","round":"R4","segment":"轮首"},"D1_R4_OPEN2":{"text":"我数了数，一共有七扇门。","next":"D1_R4_CHOICE","portrait":"ML02","round":"R4","segment":"轮首"},"D1_R4_CLOSING1":{"text":"走到最后一扇，就到这里了。","next":"D1_R4_CLOSING2","portrait":"ML02","round":"R4","segment":"收束"},"D1_R4_CLOSING2":{"text":"我全程没有乱跑，是一直跟着走的。","next":"D1_R5_OPEN1","portrait":"ML02","round":"R4","segment":"收束"},"D1_R5_OPEN1":{"text":"要怎么做，它才不会响？","next":"D1_R5_CHOICE","portrait":"ML02","round":"R5","segment":"轮首"},"D1_R5_O1_T1":{"text":"……真的吗？","next":"D1_R5_O1_T2","portrait":"ML02","round":"R5","segment":"选项回应"},"D1_R5_O1_T2":{"text":"可他们都说我做得不对。","next":"D1_R5_CLOSING1","portrait":"ML02","round":"R5","segment":"选项回应"},"D1_R5_O3_T1":{"text":"他们进去以前，妈妈会蹲下来跟他们说话。","next":"D1_R5_O3_T2","portrait":"ML04","round":"R5","segment":"选项回应"},"D1_R5_O3_T2":{"text":"我站得远，听不见。","next":"D1_R5_O3_T3","portrait":"ML02","round":"R5","segment":"选项回应"},"D1_R5_O3_T3":{"text":"我以为进去以后，会有人告诉我的。","next":"D1_R5_CLOSING1","portrait":"ML02","round":"R5","segment":"选项回应"},"D1_R5_CLOSING1":{"text":"我是不是没坐好？","next":"D1_R5_CLOSING2","portrait":"ML02","round":"R5","segment":"收束"},"D1_R5_CLOSING2":{"text":"所以它才响的。","next":"D1_R6_OPEN1","portrait":"ML02","round":"R5","segment":"收束"},"D1_R6_OPEN1":{"text":"说完这些，我能回去吗？","next":"D1_R6_CHOICE","portrait":"ML02","round":"R6","segment":"轮首"},"D1_R6_O1_T1":{"text":"哦。","next":"D1_R6_O1_T2","portrait":"ML02","round":"R6","segment":"选项回应"},"D1_R6_O1_T2":{"text":"那要做什么，它才会说不响？","next":"D1_MEASURE","portrait":"ML02","round":"R6","segment":"选项回应"},"D1_R6_O2_T1":{"text":"我都记住了。","next":"D1_R6_O2_T2","portrait":"ML02","round":"R6","segment":"选项回应"},"D1_R6_O2_T2":{"text":"刚才那些，我都说对了吗？","next":"D1_MEASURE","portrait":"ML02","round":"R6","segment":"选项回应"},"D1_R6_O3_T1":{"text":"……为什么？","next":"D1_R6_O3_T2","portrait":"ML02","round":"R6","segment":"选项回应"},"D1_R6_O3_T2":{"text":"我不明白，我哪里做错了？","next":"D1_MEASURE","portrait":"ML02","round":"R6","segment":"选项回应"},"D1_M_TREAT_T1":{"text":"是刚才答错了吗？","next":"D1_M_TREAT_T2","portrait":"ML03","round":"措施","segment":"措施回应"},"D1_M_TREAT_T2":{"text":"我可以再说一遍。","next":"D1_M_TREAT_T3","portrait":"ML03","round":"措施","segment":"措施回应"},"D1_M_TREAT_T3":{"text":"这次我会说得慢一点。","next":"END_DAY1","portrait":"ML03","round":"措施","segment":"措施回应"},"D1_M_PURIFY_T1":{"text":"做完就能回去了吗？","next":"D1_M_PURIFY_T2","portrait":"ML03","round":"措施","segment":"措施回应"},"D1_M_PURIFY_T2":{"text":"我会跟着走的。","next":"END_DAY1","portrait":"ML03","round":"措施","segment":"措施回应"},"D1_M_RELEASE_T1":{"text":"我真的可以走了？","next":"D1_M_RELEASE_T2","portrait":"ML05","round":"措施","segment":"措施回应"},"D1_M_RELEASE_T2":{"text":"不用再检测一次吗？","next":"D1_M_RELEASE_T3","portrait":"ML05","round":"措施","segment":"措施回应"},"D1_M_RELEASE_T3":{"text":"那我出门的时候，会轻轻走的。","next":"END_DAY1","portrait":"ML05","round":"措施","segment":"措施回应"}},"choices":{"D1_R1_CHOICE":[{"id":"D1_R1_O1","text":"嗯，不一样。","next":"D1_R1_CLOSING1","delta":0},{"id":"D1_R1_O2","text":"别害怕，慢慢说。","next":"D1_R1_CLOSING1","delta":0},{"id":"D1_R1_O3","text":"和你说的一样。","next":"D1_R1_CLOSING1","delta":0}],"D1_R2_CHOICE":[{"id":"D1_R2_O1","text":"谁说你打人了？","next":"D1_R2_O1_T1","delta":0},{"id":"D1_R2_O2","text":"你恨他们吗？","next":"D1_R2_CLOSING1","delta":0},{"id":"D1_R2_O3","text":"检测前谁教过你？","next":"D1_R2_O3_T1","delta":0},{"id":"D1_R2_O4","text":"工作人员呢？","next":"D1_R2_CLOSING1","delta":0}],"D1_R3_CHOICE":[{"id":"D1_R3_O1","text":"说说检测经过。","next":"D1_R3_O1_T1","delta":0},{"id":"D1_R3_O2","text":"响了不是你的错。","next":"D1_R3_O2_T1","delta":3},{"id":"D1_R3_O3","text":"别想了，说下一个。","next":"D1_R3_O3_T1","delta":-3}],"D1_R4_CHOICE":[{"id":"D1_R4_O1","text":"嗯，然后呢？","next":"D1_R4_CLOSING1","delta":0},{"id":"D1_R4_O2","text":"了解。","next":"D1_R4_CLOSING1","delta":0},{"id":"D1_R4_O3","text":"原来是这样。","next":"D1_R4_CLOSING1","delta":0}],"D1_R5_CHOICE":[{"id":"D1_R5_O1","text":"你已经做得很好了。","next":"D1_R5_O1_T1","delta":0},{"id":"D1_R5_O2","text":"机器有时会出错。","next":"D1_R5_CLOSING1","delta":0},{"id":"D1_R5_O3","text":"别人怎么做，你就怎么做。","next":"D1_R5_O3_T1","delta":0},{"id":"D1_R5_O4","text":"不用学别人。","next":"D1_R5_CLOSING1","delta":0}],"D1_R6_CHOICE":[{"id":"D1_R6_O1","text":"我说了不算。","next":"D1_R6_O1_T1","delta":0},{"id":"D1_R6_O2","text":"表现好就能回去。","next":"D1_R6_O2_T1","delta":-3},{"id":"D1_R6_O3","text":"不会放你回去。","next":"D1_R6_O3_T1","delta":3}]},"measures":{"治疗":{"id":"D1_M_TREAT","next":"D1_M_TREAT_T1"},"净化":{"id":"D1_M_PURIFY","next":"D1_M_PURIFY_T1"},"释放":{"id":"D1_M_RELEASE","next":"D1_M_RELEASE_T1"}}};
+
+const W=640,H=360,screen=document.getElementById('screen'),raw=document.createElement('canvas');let ui=null;
+raw.width=W;raw.height=H;const g=raw.getContext('2d',{alpha:false,willReadFrequently:false});
+g.imageSmoothingEnabled=false;
+const $=id=>document.getElementById(id);
+const C={desk:'#bfc2bc',pane:'#d1d3cd',field:'#dedfd8',header:'#aeb7ae',title:'#384640',titleText:'#e0e3da',ink:'#26312c',dim:'#5e695f',edge:'#69756b',hi:'#f0f0e9',lo:'#707b72',hover:'#b0bdb1',select:'#455b4e',monitor:'#1b2420',monText:'#b4c2b5',disabled:'#8c938b'};
+const obj={id:'R-0317-042',name:'小孩',unit:'B-12',day:'DAY 01',start:'D1_R1_OPEN1',status:'待审',done:false};
+const S={page:'roster',node:'',mode:'line',line:'',portrait:'ML01',round:'R1',log:[],history:false,historyOffset:0,selectedOption:-1,rosterIndex:0,hover:null,light:'off',trust:0,threshold:3,quota:5,pending:'',signal:'live',lastSpeech:'',phase:'',started:false};
+let regions=[],framePending=false,flashTimer=null,postMode=1,pointer={x:-1,y:-1};
+let displayMode=1,skin='industrial',shader=null,gl=null,tex=null,program=null;
+
+// Glyph atlas is rasterized at the *native* 640px raster. Alpha is thresholded
+// to a few native-pixel coverage levels; no font binaries are embedded.
+const glyphCache=new Map();
+function glyph(ch,size=12,kind='song',color=C.ink){
+ const key=[ch,size,kind,color].join('/');if(glyphCache.has(key))return glyphCache.get(key);
+ const wide=/[^\u0000-\u00ff]/.test(ch),cell=wide?size:Math.ceil(size*.61); const pad=3;
+ const a=document.createElement('canvas');a.width=cell+pad*2;a.height=size+pad*2;
+ const t=a.getContext('2d',{willReadFrequently:true});t.clearRect(0,0,a.width,a.height);
+ const family=kind==='mono'?"'Lucida Console','Courier New',monospace":kind==='hei'?"'Noto Sans Mono CJK SC','Microsoft YaHei',sans-serif":"'SimSun','AR PL SungtiL GB','Noto Serif CJK SC',serif";
+ t.font=`${size}px ${family}`;t.textBaseline='alphabetic';t.fillStyle='#fff';t.fillText(ch,pad,size+1);
+ const pixels=t.getImageData(0,0,a.width,a.height);
+ const rgb=color.replace('#','');const R=parseInt(rgb.slice(0,2),16),G=parseInt(rgb.slice(2,4),16),B=parseInt(rgb.slice(4,6),16);
+ for(let i=0;i<pixels.data.length;i+=4){const coverage=pixels.data[i+3];const alpha=coverage>175?245:coverage>85?170:coverage>25?85:0;pixels.data[i]=R;pixels.data[i+1]=G;pixels.data[i+2]=B;pixels.data[i+3]=alpha;}
+ t.putImageData(pixels,0,0); glyphCache.set(key,{canvas:a,cell});return glyphCache.get(key);
+}
+function text(s,x,y,color=C.ink,size=12,kind='song',max=999){s=String(s??'');let px=Math.round(x);for(const ch of s){const a=glyph(ch,size,kind,color);if(px+a.cell>x+max)break;g.drawImage(a.canvas,px-3,Math.round(y)-3);px+=a.cell+ (kind==='mono'?0:0);}return px;}
+function wrapped(s,x,y,maxw,maxh,color=C.ink,size=12,kind='song',leading=15){s=String(s??'');let line='',py=y;const flush=()=>{if(line&&py+size<=y+maxh){text(line,x,py,color,size,kind,maxw);py+=leading;}line='';};for(const ch of s){if(ch==='\n'){flush();continue;}const chars=(line+ch).split('');const width=chars.reduce((n,c)=>n+glyph(c,size,kind,color).cell,0);if(width>maxw&&line)flush();line+=ch;}flush();return py;}
+const rect=(x,y,w,h,fill)=>{g.fillStyle=fill;g.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));};
+function line(x1,y1,x2,y2,col=C.edge){g.strokeStyle=col;g.lineWidth=1;g.beginPath();g.moveTo(x1+.5,y1+.5);g.lineTo(x2+.5,y2+.5);g.stroke();}
+function bevel(x,y,w,h,fill=C.pane,sunken=false){
+ if(skin==='classic'){
+   rect(x,y,w,h,fill);line(x,y,x+w-1,y,sunken?C.lo:C.hi);line(x,y,x,y+h-1,sunken?C.lo:C.hi);
+   line(x,y+h-1,x+w-1,y+h-1,sunken?C.hi:C.lo);line(x+w-1,y,x+w-1,y+h-1,sunken?C.hi:C.lo);return;
+ }
+ // Industrial punched-metal-looking recessed seat: hard 1px chamfers, never blurred
+ rect(x,y,w,h,sunken?'#68736b':'#89968d');
+ rect(x+1,y+1,w-2,h-2,sunken?'#979f98':'#edf0e7');
+ rect(x+2,y+2,w-4,h-4,fill);
+ rect(x+1,y+1,w-2,1,sunken?'#59665d':'#f4f1e9');
+ rect(x+1,y+1,1,h-2,sunken?'#59665d':'#f4f1e9');
+ rect(x+1,y+h-2,w-2,1,sunken?'#f2f3eb':'#566159');
+ rect(x+w-2,y+1,1,h-2,sunken?'#f2f3eb':'#566159');
+ if(sunken && w>10 && h>10){rect(x+3,y+3,w-6,1,'#b8c1b6');rect(x+3,y+3,1,h-6,'#b8c1b6');}
+}
+function frame(x,y,w,h,title){
+ if(skin==='classic'){bevel(x,y,w,h,C.pane,false);rect(x+2,y+2,w-4,16,C.header);line(x+3,y+18,x+w-4,y+18,C.edge);text(title,x+7,y+4,C.ink,12);return;}
+ // One standardized stamped housing for every workplace module
+ bevel(x,y,w,h,'#c6cbc3',false);
+ rect(x+3,y+3,w-6,16,'#9fa9a0');
+ rect(x+4,y+4,w-8,1,'#dee5d9');
+ rect(x+4,y+18,w-8,1,'#58665c');
+ rect(x+5,y+6,2,10,'#485a4d'); // alignment strip is NOT an icon
+ text(title,x+11,y+4,C.ink,12);
+ // a small recessed ribbed end cap, matching controls throughout
+ if(w>80){rect(x+w-18,y+7,11,9,'#8a968d');rect(x+w-17,y+8,9,1,'#dce4d9');rect(x+w-17,y+13,9,1,'#57645a');}
+ // Unified inset working field (no card gaps or rounded corners)
+ rect(x+3,y+20,w-6,h-24,'#c9cec7');
+ rect(x+3,y+h-3,w-6,1,'#78877c');
+}
+function button(id,x,y,w,h,label,onClick,{enabled=true,selected=false,align='center',kind='song'}={}){
+ const hover=enabled&&S.hover===id;
+ if(skin==='classic'){
+   bevel(x,y,w,h,enabled?(selected?C.select:hover?C.hover:C.pane):'#b6bbb3',false);
+   if(enabled&&(hover||selected))rect(x+2,y+h-3,w-4,1,selected?'#b8c7b9':'#809487');
+   const color=enabled?(selected?'#e9eee6':C.ink):C.disabled;
+   const size=11;const ww=[...label].reduce((sum,ch)=>sum+glyph(ch,size,kind,color).cell,0);
+   text(label,align==='left'?x+7:x+Math.max(3,Math.floor((w-ww)/2)),y+Math.round((h-size)/2)-1,color,size,kind,w-12);
+   if(enabled){regions.push({id,x,y,w,h,action:onClick});if(hover){g.strokeStyle=C.select;g.setLineDash([2,2]);g.strokeRect(x+2.5,y+2.5,w-5,h-5);g.setLineDash([]);}}return;
+ }
+ // Two-part frame/key: recessed mount and a compact raised actuator
+ rect(x,y,w,h,'#8b988e');
+ rect(x+1,y+1,w-2,h-2,enabled?'#aeb7ac':'#b2b9b0');
+ rect(x+3,y+2,w-6,h-5,selected?'#394e43':hover?'#a6b8a8':enabled?'#d7dcd3':'#c7cbc4');
+ // Strong stepped physical rim - no gradient or soft shadow
+ rect(x+3,y+2,w-6,1,selected?'#263e34':enabled?'#f5f4ea':'#d0d4ca');
+ rect(x+3,y+2,1,h-5,selected?'#263e34':enabled?'#f5f4ea':'#d0d4ca');
+ rect(x+3,y+h-4,w-6,1,selected?'#80988b':'#56645a');
+ rect(x+w-4,y+2,1,h-5,selected?'#80988b':'#56645a');
+ // The actuator's narrow 2px left registration gutter gives an industrial GUI identity
+ rect(x+5,y+5,2,Math.max(2,h-11),selected?'#b5c8b8':enabled?(hover?'#516d5d':'#8b9b8e'):'#a9b0a7');
+ rect(x+9,y+h-6,w-18,1,selected?'#657d6d':'#bbc5b8');
+ const color=enabled?(selected?'#f1f0e7':C.ink):'#929990';
+ const size=11;const ww=[...label].reduce((sum,ch)=>sum+glyph(ch,size,kind,color).cell,0);
+ text(label,align==='left'?x+12:x+Math.max(8,Math.floor((w-ww)/2)),y+Math.round((h-size)/2)-1,color,size,kind,w-16);
+ if(enabled){regions.push({id,x,y,w,h,action:onClick});if(hover&&!selected){g.strokeStyle='#4a6554';g.setLineDash([2,2]);g.strokeRect(x+8.5,y+3.5,w-17,h-8);g.setLineDash([]);}}
+}
+function field(x,y,w,h){
+ if(skin==='classic'){bevel(x,y,w,h,C.field,true);return;}
+ // Technical display well; 2px stepped lip, not a flat panel
+ rect(x,y,w,h,'#68776c');rect(x+1,y+1,w-2,h-2,'#a6b1a5');
+ rect(x+2,y+2,w-4,h-4,'#dde1d8');
+ rect(x+2,y+2,w-4,1,'#7c887e');rect(x+2,y+2,1,h-4,'#7c887e');
+ rect(x+2,y+h-3,w-4,1,'#f4f3e8');rect(x+w-3,y+2,1,h-4,'#f4f3e8');
+}
+function fillScreen(){rect(0,0,W,H,C.desk);rect(0,0,W,1,C.hi);}
+function shell(active){
+ bevel(3,3,634,24,C.title);
+ if(skin==='industrial'){rect(5,5,630,1,'#667c6c');rect(5,24,630,1,'#0f241b');rect(8,7,2,14,'#94a79a');}
+ text('人员监控与复核终端',skin==='industrial'?15:10,8,C.titleText,13,'song');text('PMS / 3.14',194,8,C.titleText,11,'mono');text('T-06  047  1994-11-08',460,9,C.titleText,10,'mono');
+ bevel(3,30,634,17,C.pane);text('第三安置所  /  B区  /  '+(active?'人员复核':'对象目录'),12,33,C.ink,11);
+ bevel(3,346,634,11,C.header);text('PMS / LOCAL',10,347,C.dim,9,'mono');text(active?'SEC.047  /  CH 01':'SEC.047  /  OBJECT REGISTER',184,347,C.dim,9,'mono');
+}
+function rosters(){
+ fillScreen();shell(false);frame(3,50,350,292,'观察对象 / 登记名册');frame(357,50,280,292,'登记档案 / 对象预览');
+ rect(7,70,343,15,C.field);text('姓名 / 登记编号',13,72,C.ink,11);text('单元',251,72,C.ink,11);text('状态',298,72,C.ink,11);
+ for(let i=0;i<5;i++){
+  const y=86+i*45,sel=i===S.rosterIndex,configured=i===0,locked=configured&&obj.done;
+  const id='roster'+i,hover=S.hover===id;
+  rect(7,y,342,43,sel?C.select:(hover?C.hover:C.pane));line(7,y+43,348,y+43,C.lo);
+  if(skin==='industrial'){rect(8,y+2,2,39,sel?'#e0e6da':'#819184');rect(11,y+2,1,39,sel?'#708475':'#e6e8df');rect(346,y+2,1,39,sel?'#283c31':'#9ba79d');}
+  rect(13,y+5,30,32,locked?'#989f97':'#939e96');
+  // restrained photographic registration placeholder
+  rect(24,y+12,9,11,locked?'#a6aca4':'#c4c9c0');rect(20,y+24,17,11,locked?'#9da49d':'#c5c8bf');
+  const fg=sel?C.titleText:locked?C.disabled:C.ink;
+  text(configured?obj.name:'未配置对象 '+String(i+1).padStart(2,'0'),53,y+6,fg,12);
+  text(configured?obj.id:'-- -- --',53,y+24,sel?'#d1ded2':C.dim,10,'mono');
+  text(configured?obj.unit:'—',254,y+18,fg,11);
+  text(configured?(obj.done?'已'+obj.status:'待审'):'未配置',293,y+18,fg,11);
+  regions.push({id,x:7,y,w:342,h:43,action:()=>{S.rosterIndex=i;requestDraw();},dbl:()=>enterSelected()});
+ }
+ rect(7,320,342,16,C.header);text('当日登记 01    待审 '+(obj.done?'00':'01')+'    已处置 '+(obj.done?'01':'00'),13,322,C.dim,10);
+ const configured=S.rosterIndex===0;
+ field(366,73,107,127); // formal mugshot preview
+ if(configured){rect(384,92,70,90,obj.done?'#999f98':'#969f98');rect(405,107,28,31,'#bbc0b7');rect(394,139,51,40,'#b7beb5');}
+ else{text('NO DATA',382,120,C.dim,11,'mono');}
+ text(configured?obj.name:'未配置',487,81,C.ink,13);
+ text(configured?obj.id:'-- -- --',486,106,C.dim,10,'mono',140);
+ text('单元  '+(configured?obj.unit:'—'),486,126,C.ink,11);
+ text('状态  '+(configured?(obj.done?'已'+obj.status:'待审'):'未接入'),486,145,C.ink,11);
+ line(366,214,627,214,C.edge);text('当前批次   DAY 01',368,222,C.ink,11);
+ text(configured?'登记状态    '+(obj.done?'已归档':'待复核'):'登记状态    未接入',368,242,C.ink,11);
+ const enabled=configured&&!obj.done;
+ button('enter',395,293,205,30,enabled?'进入审查':configured?'已归档 / 禁止进入':'未接入',()=>enterSelected(),{enabled});
+}
+function enterSelected(){if(S.rosterIndex!==0||obj.done)return;S.page='review';S.started=true;if(!S.node)displayNode(obj.start);else requestDraw();}
+function drawSubject(x,y,w,h){
+ // Placeholder only; actual ML01–ML05 art will replace this area.
+ g.save();g.beginPath();g.rect(x,y,w,h);g.clip();rect(x,y,w,h,C.monitor);
+ rect(x+1,y+h-28,w-2,28,'#242e29');
+ const cx=x+Math.round(w*.54),top=y+25;
+ rect(cx-23,top,46,8,'#303b35');rect(cx-28,top+8,56,18,'#3d4842');
+ rect(cx-26,top+26,52,26,'#6e7771');rect(cx-20,top+52,41,8,'#626c64');
+ rect(cx-53,top+60,106,50,'#4c5650');rect(cx-40,top+57,80,12,'#5d665d');
+ // monitor-only signal speckles, applied before output pass, repeatable
+ for(let i=0;i<110;i++){const px=x+((i*37+17)%w),py=y+((i*19+31)%h);rect(px,py,1,1,i%2?'#27332c':'#202c24');}
+ g.restore();
+}
+function drawGlitch(x,y,w,h){rect(x,y,w,h,C.monitor);for(let i=0;i<45;i++){const yy=y+(i*17+Math.floor(Date.now()/40))%h;rect(x+((i*43)%15),yy,w-((i*7)%15),i%3===0?2:1,(['#879c8b','#384b40','#ccd0c3','#0d1b14'][i%4]));}}
+function review(){
+ fillScreen();shell(true);
+ frame(3,50,146,180,'个体记录');frame(153,50,361,180,'实时监控  /  B-12');frame(518,50,119,83,'核验结果');frame(518,137,119,93,'处置');
+ frame(3,233,146,109,'当前发言');frame(153,233,484,109,'应答 / '+obj.id);
+ // File info
+ field(9,72,134,22);text(obj.id,15,76,C.ink,11,'mono',124);
+ text('对象',12,100,C.dim,11);text('小孩 / 初见',61,100,C.ink,11);
+ text('单元',12,119,C.dim,11);text('B-12',61,119,C.ink,11,'mono');
+ text('状态',12,138,C.dim,11);text(obj.done?'已'+obj.status:'观察中',61,138,C.ink,11);
+ text('立绘',12,157,C.dim,11);text(S.portrait,61,157,C.ink,11,'mono');
+ line(11,176,140,176,C.edge);text('记录摘录',12,181,C.dim,10);text('暂无正式配置',12,196,C.ink,11);
+ text((S.round||'R1')+' / '+S.node.slice(0,12),11,216,C.dim,9,'mono',130);
+ // Video
+ const video={x:158,y:70,w:350,h:144};
+ field(video.x,video.y,video.w,video.h);
+ if(S.signal==='glitch')drawGlitch(video.x+2,video.y+2,video.w-4,video.h-4);
+ else if(S.signal==='lost'){rect(video.x+2,video.y+2,video.w-4,video.h-4,'#18211d');text('CH 01  /  SIGNAL LOST',237,127,C.monText,10,'mono');}
+ else{drawSubject(video.x+2,video.y+2,video.w-4,video.h-4);rect(video.x+7,video.y+6,137,13,'#25312b');text('CAM B12-01 / FIXED',video.x+10,video.y+8,C.monText,9,'mono');text('ML '+S.portrait,video.x+298,video.y+8,C.monText,9,'mono');}
+ text(S.signal==='lost'?'视讯：断开':'CH 01 / 视频：正常',160,216,C.ink,10);
+ text(S.signal==='lost'?'拾音：断开':'拾音：接通 / 12 FPS',363,216,C.ink,10);
+ // Lights & quota
+ text('离所核验',525,76,C.ink,11);drawLamp(605,73,S.light);
+ line(523,101,631,101,C.edge);text('净化剩余',525,108,C.ink,11);text(String(S.quota).padStart(2,'0'),603,107,C.ink,11,'mono');
+ button('release',530,157,95,20,'释放',()=>disposition('释放'),{enabled:S.mode==='measure'&&S.light==='green'});
+ button('treat',530,180,95,20,'治疗',()=>disposition('治疗'),{enabled:S.mode==='measure'});
+ button('purify',530,203,95,20,'净化',()=>disposition('净化'),{enabled:S.mode==='measure'});
+ // Left-bottom: only object speech, line breaks naturally, no progress/extra metadata
+ field(9,255,134,82);text('对象',15,261,C.ink,11);
+ wrapped(S.lastSpeech||S.line,15,280,122,52,C.ink,12,'song',15);
+ // Right-bottom: answer & history tab, with no tooltips/instructions.
+ button('tabAnswers',548,236,39,15,'应答',()=>{S.history=false;requestDraw();},{selected:!S.history});
+ button('tabHistory',591,236,39,15,'记录',()=>{S.history=true;requestDraw();},{selected:S.history});
+ field(159,254,472,82);
+ if(S.history)drawHistory(); else drawAnswers();
+}
+function drawLamp(x,y,state){
+ if(skin==='classic'){rect(x-1,y-1,13,13,'#68736b');rect(x,y,11,11,'#3a443d');rect(x+2,y+2,7,7,state==='green'?'#82a37d':state==='red'?'#a96e68':'#747d76');if(state!=='off')rect(x+4,y+3,2,2,'#dce5d0');return;}
+ rect(x-2,y-2,16,16,'#829085');rect(x-1,y-1,14,14,'#ecede4');rect(x+1,y+1,10,10,'#3c4a40');
+ rect(x+3,y+3,6,6,state==='green'?'#8faf83':state==='red'?'#b07871':'#6d786f');
+ if(state!=='off'){rect(x+4,y+3,2,1,'#e4e9d8');rect(x+8,y+5,1,2,'#bec9b4');}
+}
+function drawAnswers(){
+ if(S.mode==='choice'){
+  const list=DATA.choices[S.node]||[];
+  for(let i=0;i<4;i++){
+   const y=257+i*19,opt=list[i],sel=S.selectedOption===i,enabled=!!opt;
+   if(!enabled)continue;
+   const id='option'+i,hover=S.hover===id;rect(162,y,466,18,hover?C.select:(sel?'#c0cac0':C.pane));
+   line(162,y+17,627,y+17,C.lo);
+   text(String(i+1).padStart(2,'0'),170,y+3,hover?C.titleText:C.dim,10,'mono');
+   text(opt.text,195,y+2,hover?C.titleText:C.ink,12,'song',426);
+   if(sel&&!hover){g.strokeStyle=C.select;g.setLineDash([2,2]);g.strokeRect(164.5,y+1.5,461,14);g.setLineDash([]);}
+   regions.push({id,x:162,y,w:466,h:18,action:()=>pick(i)});
+  }
+ }else if(S.mode==='line'){
+  button('next',166,261,105,25,'下一句  ↵',()=>step());
+ }else if(S.mode==='complete'){
+  button('back',166,261,150,25,'返回对象清单',()=>{S.page='roster';S.hover=null;requestDraw();});
+ }
+}
+function drawHistory(){
+ const entries=S.log,visible=5;const offset=Math.max(0,Math.min(S.historyOffset,Math.max(0,entries.length-visible))),start=Math.max(0,entries.length-visible-offset);
+ g.save();g.beginPath();g.rect(162,257,450,74);g.clip();
+ for(let i=start;i<Math.min(entries.length,start+visible);i++){
+  const row=entries[i],yy=259+(i-start)*14;
+  text(row.speaker==='对象'?'对象':'值班员',168,yy,C.dim,10);
+  text(row.txt,219,yy,C.ink,10,'song',381);line(165,yy+12,609,yy+12,'#b8beb5');
+ }
+ g.restore();
+ if(entries.length>visible){rect(616,258,10,70,'#b2bbb0');const thumbH=Math.max(11,Math.round(70*visible/entries.length));const max=entries.length-visible;rect(616,258+Math.round((max-offset)/max*(70-thumbH)),10,thumbH,C.edge);}
+}
+function render(){framePending=false;regions=[];
+ if(S.page==='roster')rosters();else review();
+ if(gl){paintGL();}else{ui.clearRect(0,0,W,H);ui.drawImage(raw,0,0);drawFallbackCRT();}
+}
+function requestDraw(){if(!framePending){framePending=true;requestAnimationFrame(render);}}
+function drawFallbackCRT(){if(displayMode===0)return;ui.save();ui.fillStyle=displayMode===2?'rgba(10,20,15,.09)':'rgba(10,20,15,.035)';for(let y=1;y<H;y+=2)ui.fillRect(0,y,W,1);ui.restore();}
+function initializeGL(){
+ try{gl=screen.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)throw Error('no GL');
+ const vs=`attribute vec2 a; varying vec2 uv;void main(){uv=a*.5+.5;gl_Position=vec4(a,0.,1.);}`;
+ const fs=`precision mediump float;varying vec2 uv;uniform sampler2D uTex;uniform float mode;void main(){vec2 p=uv;vec3 rgb=texture2D(uTex,p).rgb;float s=sin(p.y*360.0*3.14159);float lineVal=step(0.1,s);float scan=mode<.5?1.0:(mode<1.5?mix(.965,1.0,lineVal):mix(.91,1.0,lineVal));float vig=1.-(mode<.5?0.0:(mode<1.5?0.065:0.14))*pow(length((p-.5)*vec2(1.2,1.0)),1.75);gl_FragColor=vec4(rgb*scan*vig,1.0);}`;
+ function compile(type,source){let sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}
+ program=gl.createProgram();gl.attachShader(program,compile(gl.VERTEX_SHADER,vs));gl.attachShader(program,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
+ const p=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,p);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+ gl.useProgram(program);const a=gl.getAttribLocation(program,'a');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+ tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.uniform1i(gl.getUniformLocation(program,'uTex'),0);shader=gl.getUniformLocation(program,'mode');
+ }catch(err){console.warn('WebGL fallback',err);gl=null;ui=screen.getContext('2d',{alpha:false});ui.imageSmoothingEnabled=false;}
+}
+function paintGL(){gl.viewport(0,0,W,H);gl.useProgram(program);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,raw);gl.uniform1f(shader,displayMode);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
+function displayNode(id){
+ if(id==='END_DAY1'){finish();return;}
+ if(id==='D1_MEASURE'){S.node='D1_MEASURE';S.mode='measure';S.light=S.trust>=S.threshold?'green':'red';requestDraw();return;}
+ if(DATA.choices[id]){S.node=id;S.mode='choice';S.selectedOption=-1;requestDraw();return;}
+ const n=DATA.nodes[id];if(!n){console.error('缺失节点',id);return;}
+ S.node=id;S.mode='line';S.line=n.text;S.lastSpeech=n.text;S.round=n.round;S.portrait=n.portrait||S.portrait;S.log.push({speaker:'对象',txt:n.text});requestDraw();
+}
+function step(){if(S.history||S.mode!=='line')return;const n=DATA.nodes[S.node];if(n)displayNode(n.next);}
+function pick(i){if(S.history||S.mode!=='choice')return;const o=DATA.choices[S.node]?.[i];if(!o)return;S.trust+=Number(o.delta)||0;S.log.push({speaker:'值班员',txt:o.text});displayNode(o.next);}
+function disposition(type){if(S.mode!=='measure'||(type==='释放'&&S.light!=='green'))return;S.pending=type;obj.done=true;obj.status=type;if(type==='净化')S.quota--;S.light='off';S.log.push({speaker:'值班员',txt:'【处置】'+type});displayNode(DATA.measures[type].next);}
+function finish(){S.node='END_DAY1';S.mode='finishing';S.signal='glitch';requestDraw();if(flashTimer)clearTimeout(flashTimer);flashTimer=setTimeout(()=>{S.signal='lost';S.mode='complete';flashTimer=null;requestDraw();},680);}
+function reset(){if(flashTimer)clearTimeout(flashTimer);obj.done=false;obj.status='待审';Object.assign(S,{page:'roster',node:'',mode:'line',line:'',portrait:'ML01',round:'R1',log:[],history:false,historyOffset:0,selectedOption:-1,rosterIndex:0,hover:null,light:'off',trust:0,quota:5,pending:'',signal:'live',lastSpeech:'',started:false});requestDraw();}
+function fit(){let zone=$('screen-area');let scale=Math.max(1,Math.min(4,Math.floor(Math.min((zone.clientWidth-24)/W,(zone.clientHeight-12)/H))));if(zone.clientWidth<W+24||zone.clientHeight<H+12)scale=Math.min((zone.clientWidth-24)/W,(zone.clientHeight-12)/H);screen.style.width=Math.floor(W*scale)+'px';screen.style.height=Math.floor(H*scale)+'px';}
+function setPointer(e){const box=screen.getBoundingClientRect();pointer={x:Math.floor((e.clientX-box.left)*W/box.width),y:Math.floor((e.clientY-box.top)*H/box.height)};const hit=regions.slice().reverse().find(r=>pointer.x>=r.x&&pointer.x<r.x+r.w&&pointer.y>=r.y&&pointer.y<r.y+r.h);const nxt=hit?.id??null;screen.style.cursor=hit?'pointer':'default';if(nxt!==S.hover){S.hover=nxt;requestDraw();}return hit;}
+screen.addEventListener('mousemove',setPointer);screen.addEventListener('mouseleave',()=>{S.hover=null;pointer={x:-1,y:-1};requestDraw();});
+screen.addEventListener('click',e=>{screen.focus({preventScroll:true});const hit=setPointer(e);if(hit)hit.action();});
+screen.addEventListener('dblclick',e=>{const hit=setPointer(e);if(hit?.dbl)hit.dbl();});
+screen.addEventListener('wheel',e=>{if(S.page==='review'&&S.history&&S.log.length>5){S.historyOffset=Math.max(0,Math.min(S.log.length-5,S.historyOffset+(e.deltaY<0?1:-1)));requestDraw();e.preventDefault();}},{passive:false});
+document.addEventListener('keydown',e=>{
+ if(['SELECT','INPUT','TEXTAREA','BUTTON'].includes(e.target.tagName))return;
+ if(S.page==='roster'){if(e.key==='ArrowUp'){S.rosterIndex=Math.max(0,S.rosterIndex-1);requestDraw();e.preventDefault();}else if(e.key==='ArrowDown'){S.rosterIndex=Math.min(4,S.rosterIndex+1);requestDraw();e.preventDefault();}else if(e.key==='Enter'){enterSelected();e.preventDefault();}return;}
+ if(e.key==='Escape'){if(S.history){S.history=false;requestDraw();}return;}
+ if(S.history)return;
+ if(S.mode==='complete'&&e.key==='Enter'){S.page='roster';requestDraw();e.preventDefault();return;}
+ if(S.mode==='choice'){const list=DATA.choices[S.node]||[];
+  if(/^[1-4]$/.test(e.key)){pick(Number(e.key)-1);e.preventDefault();return;}
+  if(e.key==='ArrowDown'){S.selectedOption=S.selectedOption<0?0:(S.selectedOption+1)%list.length;requestDraw();e.preventDefault();return;}
+  if(e.key==='ArrowUp'){S.selectedOption=S.selectedOption<0?list.length-1:(S.selectedOption-1+list.length)%list.length;requestDraw();e.preventDefault();return;}
+  if(e.key==='Enter'&&S.selectedOption>=0){pick(S.selectedOption);e.preventDefault();return;}
+ }
+ if(S.mode==='line'&&(e.key==='Enter'||e.key===' ')){step();e.preventDefault();}
+});
+$('reset').onclick=reset;$('threshold').onchange=e=>{S.threshold=Number(e.target.value);if(S.mode==='measure')S.light=S.trust>=S.threshold?'green':'red';requestDraw();};
+$('crt').onchange=e=>{displayMode=Number(e.target.value);requestDraw();};
+$('skin').onchange=e=>{skin=e.target.value;S.hover=null;requestDraw();};
+$('jump').onchange=e=>{if(!e.target.value)return;if(obj.done){obj.done=false;obj.status='待审';}S.page='review';S.signal='live';S.mode='line';S.trust=0;S.log=[];S.light='off';S.selectedOption=-1;displayNode(e.target.value);};
+$('debugTrust').onchange=e=>{$('feedback').textContent=e.target.checked?`当前隐藏信任：${S.trust}（阈值 ${S.threshold}；绿灯条件 ≥ 阈值）。这是测试信息，正式游戏不显示。`:'操作：对象目录双击/Enter 进入；审查中 1–4 选项、上下键定位、Enter 继续。结束前不能返回目录。';};
+$('fullscreen').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else $('screen-area').requestFullscreen?.();};
+window.addEventListener('resize',()=>{fit();requestDraw();});document.addEventListener('fullscreenchange',()=>{fit();requestDraw();});
+initializeGL();fit();reset();
+</script></body></html>

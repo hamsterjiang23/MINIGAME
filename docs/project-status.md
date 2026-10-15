@@ -6,6 +6,16 @@
 
 《寻找伪人》是重要玩法参考。现已借鉴其“房间交互 → 观察与会谈 → 条件选项 → 决策 → 反应 → 回房 → 睡眠与次日后果”的结构，迁移依据和具体代码对应见[玩法迁移说明](reference-gameplay-migration.md)。[verified: reference-gameplay-migration.md「已实现的对应关系」]
 
+## 最新来源同步与实现边界
+
+2026-10-15已同步主Wiki608版、主角6版、梦场景191版和小孩v1.1对白31版；来源已有正式小孩对白和四天梦场景描述，当前原型仍用开发占位，没有在本次文档同步中接入新表或改变游戏行为。[verified: .source-data/manifest.json documents/workbooks；../src/README.md「开发默认规则」] [opinion]
+
+新来源新增反叛值自我净化分支、每日开始前结局/KPI检查，小孩表的六轮对话及−3/0/+3信任也不同于现有原型。交付标准仍为3结局，正文列4条；先裁决数量、阈值、KPI去向和导入模型，再调整实现与验收。[verified: .source-data/game-wiki.json content「结局」；.source-data/board-IykwwdNvihVgabb0wfKctsnOnJd.json data.nodes o43:14；.source-data/workbook-cells/dialogue-child-v1-1.X84Zd2.json data.ranges 第10–11、20、30–33行] [opinion]
+
+小孩Excel原件与[Day1终端HTML](sources/inspection-terminal-day1-prototype.md)现已归档，HTML内嵌数据与Excel主表Day1一致；Unity接入仍未完成，浏览器原型也未在本轮运行验收。[verified: .source-data/local-deliveries-2026-10-15.json files；.source-data/inspection-terminal-day1-v0.5.2.json data_matches_xlsx_day1/runtime_browser_test]
+
+排期已按用户要求排除。同步范围、完整下载入口和获取限制见[飞书同步记录](feishu-sync-2026-10-15.md)。[verified: .source-data/sync-2026-10-15.json access_gaps]
+
 ## 已经完成什么
 
 ### 规则与存档
@@ -42,7 +52,7 @@
 
 ### 正式玩法与数值裁决
 
-需要确认逐日病人日程与退出条件、每日 KPI 与失败时点、信任/特殊会谈/释放门槛、三结局条件与冲突优先级，以及神父和外交官的特殊处置。Day0教学和Day4演出的制作范围也需要确定。[verified: open-questions.md Q02–Q09、Q22、Q24–Q25]
+需要确认逐日病人日程与退出条件、每日KPI数值与失败去向/检查时点、信任/特殊会谈/释放门槛、交付3结局与新增第四条分支的范围及冲突优先级，以及神父和外交官的特殊处置。Day0教学和Day4演出的制作范围也需要确定。[verified: open-questions.md Q02–Q09、Q22、Q24–Q25]
 
 目前可执行配置为：三天、每日净化目标1、普通会谈4轮、特殊轮门槛20、释放门槛30；神父Day2加入，其他四人Day1加入；默认结局优先级为袭击→锁房→被带走。这些继续保留开发配置身份，不能当作正式策划已确认。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L17–L52；../src/README.md「开发默认规则」]
 
@@ -50,17 +60,17 @@
 
 ### 正式叙事与观察内容
 
-需要替换五位病人逐日普通/特殊对白、回复分支、三种处置反馈、晨检与简报、三天梦境和三结局演出。观察内容要补角色/日期/状态对应的画面和证据，说明能查询什么、哪些信息会互相矛盾，以及如何向玩家展示后果。[verified: open-questions.md Q11–Q14、Q25；../UnityProject/README.md「运行与操作」] [opinion]
+需要将已提供的小孩对白表接入原型，并补齐其余病人的逐日普通/特殊对白、回复分支、三种处置反馈、晨检与简报，以及已给出场景方向的梦境和经裁决后的结局演出。观察内容要补角色/日期/状态对应的画面和证据，说明能查询什么、哪些信息会互相矛盾，以及如何向玩家展示后果。[verified: open-questions.md Q11–Q14、Q25；../UnityProject/README.md「运行与操作」] [opinion]
 
-主角过去、机构名称、神父背景和净化真实去向仍有来源冲突；监督员交互、日记、档案/新闻范围与疯狂值等变量是否采用，仍需裁决。占位文本不承担这些裁决。[verified: open-questions.md Q10–Q11、Q13、Q16–Q21；../src/MiniGame.Presentation/PrototypeContent.cs L11–L16]
+主角新专篇已明确举报妹妹与记忆断层背景；姓名/机构名称、Mini内揭露程度、神父背景和净化真实去向仍有来源冲突；监督员交互、日记、档案/新闻范围与疯狂值等变量是否采用，仍需裁决。占位文本不承担这些裁决。[verified: open-questions.md Q10–Q11、Q13、Q16–Q21；../src/MiniGame.Presentation/PrototypeContent.cs L11–L16]
 
 交付建议：先完成一位病人的正式完整流程，覆盖普通与特殊会谈、六类观察、三种处置及次日后果；再按确认的日程扩展至五人三天。正式线索应支持有信息依据的判断，具体判定规则由策划定义。[opinion]
 
 ### 美术、音频与演出
 
-公寓和患者肖像目前是灰盒/示意。需要正式场景与物件、五位病人的表情和状态差分、检查近景、任务单与档案、UI视觉、梦境画面及结局演出。监督员、教学病人、日记等资产按确认的制作范围列入清单。[verified: ../UnityProject/README.md「运行与操作」；game-overview.md L104–L110；open-questions.md L51]
+公寓和患者肖像目前是灰盒/示意。需要正式场景与物件、五位病人的表情和状态差分、检查近景、任务单与档案、UI视觉、梦境画面及结局演出。监督员、教学病人、日记等资产按确认的制作范围列入清单。[verified: ../UnityProject/README.md「运行与操作」；game-overview.md「表现与制作内容」；open-questions.md「工程与制作缺口」]
 
-音乐、环境声、门/仪器/终端/按键反馈及状态切换需要制作与接入；原设计中的外部音乐和媒体链接保持参考身份，正式使用与素材来源需要确认。[verified: game-overview.md L109–L110；open-questions.md L52] [opinion]
+音乐、环境声、门/仪器/终端/按键反馈及状态切换需要制作与接入；原设计中的外部音乐和媒体链接保持参考身份，正式使用与素材来源需要确认。[verified: game-overview.md「表现与制作内容」；open-questions.md「工程与制作缺口」] [opinion]
 
 交付建议：逐项记录资产用途、状态差分、格式、制作来源、使用许可和接入位置，完成正式的一位病人流程后检查画面、声音与选择后果能否同时理解。[opinion]
 
@@ -68,7 +78,7 @@
 
 正常 UPM 工程导入已于2026-10-15修复；仓库根 `Open-Unity.cmd` 可直接打开主场景。仍需验证新机器依赖获取与复现步骤；离线脚本依赖本机 Editor 与包缓存，不能视为跨机器部署已完成。渲染基线为 Built-in；URP 切换仍是后续选择。[verified: gameplay-migration-verification.json unity.normalUpmImport/rendering；../UnityProject/README.md「可重放的本机验证路线」「技术与来源边界」] [opinion]
 
-需要补已打包 Player 的图形交互全流程，以及正式内容下的三结局、存档恢复、输入/画面/声音和性能验收。发布平台、目标设备、性能预算、工期与交付方式需确定；IL2CPP按目标平台决定并实际验证。[verified: gameplay-migration-verification.json unity.playerStartup.scope/il2cpp；open-questions.md L53] [opinion]
+需要补已打包 Player 的图形交互全流程，以及正式内容下的三结局、存档恢复、输入/画面/声音和性能验收。发布平台、目标设备、性能预算、工期与交付方式需确定；IL2CPP按目标平台决定并实际验证。[verified: gameplay-migration-verification.json unity.playerStartup.scope/il2cpp；open-questions.md「工程与制作缺口」] [opinion]
 
 交付建议：在干净环境重建并运行正式切片，留存版本、依赖、测试与性能记录；按最终发布目标完成三结局回归及分发包检查，再认定达到发布交付。[opinion]
 

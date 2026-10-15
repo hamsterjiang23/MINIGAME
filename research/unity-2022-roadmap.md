@@ -1,5 +1,9 @@
 # Unity 2022借鉴与开发路线图
 
+新增[Day1终端交互参考](../docs/sources/inspection-terminal-day1-prototype.md)及小孩Excel原件已同步；HTML只配置一位病人的Day1，不等同于Unity完成迁移，测试阈值与配额也不覆盖正式规则。[verified: ../docs/.source-data/inspection-terminal-day1-v0.5.2.json configured_patients/default_test_threshold/default_test_quota] [opinion]
+
+2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](../docs/feishu-sync-2026-10-15.md)。[verified: ../docs/.source-data/game-wiki.json content「结局」；../docs/.source-data/sync-2026-10-15.json changes] [opinion]
+
 > 研究日期：2026-10-12。本文件是后续开发建议，没有创建游戏工程或导入任何第三方包。用户指定Unity2022，默认按2022.3 LTS研究；具体补丁版本与目标平台仍需在建工程时记录。
 
 ## 1. 技术选择与责任边界

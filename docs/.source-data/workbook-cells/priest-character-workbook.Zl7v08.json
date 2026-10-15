@@ -1,0 +1,95 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "approx_char_count": 187,
+    "has_more": false,
+    "ranges": [
+      {
+        "actual_range": "A1:B7",
+        "cells": [
+          [
+            {
+              "value": "项目"
+            },
+            {
+              "value": "内容"
+            }
+          ],
+          [
+            {
+              "value": "姓名"
+            },
+            {
+              "value": " 乔纳"
+            }
+          ],
+          [
+            {
+              "value": "年龄"
+            },
+            {
+              "value": "48"
+            }
+          ],
+          [
+            {
+              "value": "性别"
+            },
+            {
+              "value": "男"
+            }
+          ],
+          [
+            {
+              "value": "职业 / 身份"
+            },
+            {
+              "value": "神父"
+            }
+          ],
+          [
+            {
+              "value": "入住原因 / 官方记录"
+            },
+            {
+              "value": "检测数据异常/极端暴力行为"
+            }
+          ],
+          [
+            {
+              "value": "其他必要信息"
+            },
+            {}
+          ]
+        ],
+        "col_indices": [
+          "A",
+          "B"
+        ],
+        "range": "A1:B7",
+        "row_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "truncated": false
+      }
+    ],
+    "returned_cell_count": 14,
+    "revision": 25,
+    "warning_message": "处理 ranges[n].cells 之前，必须先查看顶层 has_more，以及每个 range 的 actual_range / row_indices / col_indices。定位真实行号时用 row_indices[i]，定位真实列字母时用 col_indices[j]，不要按二维数组下标自己数行列；skip_hidden=true、skip_filter=true 或结果被截断时，这样会错位。"
+  },
+  "_notice": {
+    "update": {
+      "command": "lark-cli update",
+      "current": "1.0.77",
+      "latest": "1.0.98",
+      "message": "lark-cli 1.0.98 available, current 1.0.77, run: lark-cli update"
+    }
+  }
+}
