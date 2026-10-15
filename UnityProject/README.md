@@ -4,6 +4,12 @@
 
 ## 运行与操作
 
+策划验收的步骤、剧情分支条件与对白配置方式见[策划验收指南](../docs/planner-acceptance-guide.md)。[opinion]
+
+在 Windows 双击仓库根的 [Open-Unity.cmd](../Open-Unity.cmd)，或在仓库根执行 `./UnityProject/Tools/Open-Project.ps1`。启动器核对 Editor 版本，只为子进程补齐缺失的 `ALLUSERSPROFILE`，并在编译后调用 `OpenPrototype` 打开主场景；已有该工程 Editor 时先提示关闭。日志写到 `Artifacts/Unity/editor.log`。`[verified: Tools/Open-Project.ps1; Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs OpenPrototype]`
+
+已有 Editor 可用菜单 `MiniGame/Open prototype scene` 打开主场景，再按 Play。Build Settings 的首场景用于构建，单独打开工程目录不会保证 Editor 当前场景是主场景；此前实际停留在 `Untitled`。`[verified: ProjectSettings/EditorBuildSettings.asset m_Scenes; ../Artifacts/Unity/EditorRepair/before-editor.log; Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs OpenPrototype]` `[opinion]`
+
 Windows 成品路径为仓库根 `Builds/MiniGame/MiniGame.exe`；构建须在 `unity-windows-build.json` 报告 `Succeeded` 后使用。主场景为 `Assets/MiniGame/Scenes/InspectionApartment.unity`。`[verified: Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs BuildWindows/ScenePath]`
 
 - WASD 移动，鼠标观察；瞄准门、电脑或床，在提示出现时按 E。晨检到门，工作到电脑，夜间及梦后到床。`[verified: Assets/MiniGame/Runtime/ApartmentPlayer.cs Update/RefreshFocus；Assets/MiniGame/Runtime/MiniGameScreen.cs WorldInstruction]`
@@ -15,7 +21,9 @@ Windows 成品路径为仓库根 `Builds/MiniGame/MiniGame.exe`；构建须在 `
 
 ## 可重放的本机验证路线
 
-本机正常 UPM 导入失败，日志记录 `path undefined`；本轮实际验证采用隔离的 `Artifacts/Unity/OfflineProject` 和 `-noUpm`。离线成功不能写成正常 UPM 导入通过。`[verified: ../Artifacts/Unity/editor-create.log "Failed to resolve packages"；Tools/Invoke-OfflineValidation.ps1 Invoke-OfflineEditor]`
+2026-10-15 已修复正常 UPM 启动：缺失的 `ALLUSERSPROFILE` 使 UPM 的 `getGlobalConfigRoot` 收到无效路径；启动器提供 Windows 公共数据目录后，正常工程登记14个包。另补图片编码模块，并将内嵌 Yarn 测试的包查询改为 Unity 2022 支持的 API。正常工程四项图形 PlayMode 测试通过；最新范围见[验证汇总](../docs/gameplay-migration-verification.json)的 `unity.normalUpmRecovery`。`[verified: ../Artifacts/Unity/EditorRepair/trace-upm-stderr.log L3-L10; ../Artifacts/Unity/editor.log; ../Artifacts/Unity/EditorRepair/normal-playmode-results.xml test-run]`
+
+以下离线路线保留为历史验证和备用入口；它依赖本机缓存，不能据此推导新机器已可直接运行。`[verified: Tools/Invoke-OfflineValidation.ps1 Prepare-OfflineProject]` `[opinion]`
 
 ```powershell
 # 在仓库根运行；只启动隔离工程的 Editor，并等待准确退出码。
@@ -30,7 +38,7 @@ Windows 成品路径为仓库根 `Builds/MiniGame/MiniGame.exe`；构建须在 `
 
 四项 PlayMode 测试覆盖场景、中文字体、输入排他，真实 Yarn 按钮完成三天与六类观察，旧 Continue/Reply 回调失效，以及视觉恢复、终端镜头、睡眠最终帧暂停和暂停遮挡层。`[verified: Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs 四项UnityTest定义]`
 
-正常 Editor 菜单为 `MiniGame/Create and validate prototype`；公开批处理方法为 `MiniGame.UnityHost.Editor.ReferencePrototypeBuilder.CreateAndValidate` / `BuildWindows`。正常 UPM 环境修复后需要另行验证该路线。`[verified: Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs 对应公开方法]` `[opinion]`
+正常 Editor 菜单 `MiniGame/Create and validate prototype` 会重新生成原型资源；仅打开现有场景请用 `MiniGame/Open prototype scene`。公开批处理方法为 `MiniGame.UnityHost.Editor.ReferencePrototypeBuilder.CreateAndValidate` / `BuildWindows`；本次未重新构建 Player。`[verified: Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs 对应公开方法; ../docs/gameplay-migration-verification.json unity.normalUpmRecovery]`
 
 ## 技术与来源边界
 

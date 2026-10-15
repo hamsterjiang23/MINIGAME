@@ -97,15 +97,22 @@ namespace MiniGame.UnityHost.Tests
                     {
                         string name = "Disposition-" + (view.Game.RemainingPurificationQuota > 0 ? Disposition.Purify : Disposition.Treat);
                         var decision = buttons.Single(button => button.name == name && button.interactable);
-                        AssertPointerCanReach(decision);
-                        decision.onClick.Invoke();
+                        yield return ClickThroughPointer(decision);
                     }
                     else
                     {
                         var reply = buttons.FirstOrDefault(button => button.name.StartsWith("Reply-") && button.interactable);
                         var next = buttons.FirstOrDefault(button => button.name == "Continue" && button.interactable);
-                        if (reply != null) reply.onClick.Invoke();
-                        else if (next != null) next.onClick.Invoke();
+                        if (reply != null) yield return ClickThroughPointer(reply);
+                        else if (next != null)
+                        {
+                            if (view.Cue?.Kind == PresentationKind.Reaction)
+                            {
+                                Assert.That(next.GetComponentInChildren<Text>().text, Does.Contain("返回房间"));
+                                Assert.That(buttons.Any(button => button.name.StartsWith("Disposition-")), Is.False);
+                            }
+                            yield return ClickThroughPointer(next);
+                        }
                     }
                 }
                 yield return null;
@@ -128,13 +135,45 @@ namespace MiniGame.UnityHost.Tests
             var pointer = new PointerEventData(EventSystem.current)
             { position = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center)) };
             var hits = new List<RaycastResult>();
-            button.GetComponentInParent<GraphicRaycaster>().Raycast(pointer, hits);
+            EventSystem.current.RaycastAll(pointer, hits);
             Debug.Log("MINIGAME_RAYCAST button=" + button.name + " pointer=" + pointer.position + " rect=" + rect.rect
                 + " hits=" + string.Join(";", hits.Select(hit => hit.gameObject.name + " depth=" + hit.depth))
                 + " rendererDepth=" + button.GetComponent<CanvasRenderer>().absoluteDepth + " culled=" + button.GetComponent<CanvasRenderer>().cull);
-            Assert.That(hits, Is.Not.Empty, "The visible disposition button must receive a uGUI raycast.");
+            Assert.That(hits, Is.Not.Empty, "The visible button must receive a uGUI raycast.");
             Assert.That(hits[0].gameObject.GetComponentInParent<Button>(), Is.EqualTo(button),
-                "A later modal or conversation panel must not intercept the disposition click.");
+                "A later modal or conversation panel must not intercept the button click.");
+        }
+
+        private static IEnumerator ClickThroughPointer(Button button)
+        {
+            // Let the newly enabled graphic reach the Canvas render pass before a user click.
+            yield return null;
+            Assert.That(button != null && button.IsActive() && button.IsInteractable(), Is.True);
+            AssertPointerCanReach(button);
+            var rect = button.GetComponent<RectTransform>();
+            var pointer = new PointerEventData(EventSystem.current)
+            {
+                position = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center)),
+                button = PointerEventData.InputButton.Left,
+                clickCount = 1
+            };
+            var hits = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, hits);
+            var target = hits[0].gameObject;
+            var pressed = ExecuteEvents.ExecuteHierarchy(target, pointer, ExecuteEvents.pointerDownHandler);
+            var clickTarget = ExecuteEvents.GetEventHandler<IPointerClickHandler>(target);
+            yield return null;
+            ExecuteEvents.Execute(pressed, pointer, ExecuteEvents.pointerUpHandler);
+            hits.Clear();
+            EventSystem.current.RaycastAll(pointer, hits);
+            Assert.That(hits, Is.Not.Empty);
+            Assert.That(ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject), Is.EqualTo(clickTarget));
+            int clicks = 0;
+            UnityEngine.Events.UnityAction countClick = () => clicks++;
+            button.onClick.AddListener(countClick);
+            try { ExecuteEvents.Execute(clickTarget, pointer, ExecuteEvents.pointerClickHandler); }
+            finally { button.onClick.RemoveListener(countClick); }
+            Assert.That(clicks, Is.EqualTo(1), "One pointer press/release must invoke the button exactly once.");
         }
 
         [UnityTest]

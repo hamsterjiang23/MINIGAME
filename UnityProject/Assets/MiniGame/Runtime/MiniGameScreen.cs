@@ -111,6 +111,8 @@ namespace MiniGame.UnityHost
             continueButton.gameObject.SetActive(complete != null);
             continueButton.onClick.RemoveAllListeners();
             if (complete != null) continueButton.onClick.AddListener(() => complete());
+            continueButton.GetComponentInChildren<Text>().text = current?.Cue?.Kind == PresentationKind.Reaction
+                ? "完成处置并返回房间 [空格]" : "继续 [空格]";
             dialogueInteractable = true;
             ApplyInputGate();
         }
@@ -166,7 +168,8 @@ namespace MiniGame.UnityHost
             foreach (var pair in dispositionButtons)
             {
                 bool available = view.Game.AvailableDispositions.Contains(pair.Key);
-                pair.Value.gameObject.SetActive(pair.Key != Disposition.Release || available);
+                pair.Value.gameObject.SetActive(available && view.Input == InputContext.Dialogue
+                    && view.Game.EncounterStage == EncounterStage.AwaitingDisposition);
                 pair.Value.interactable = available && view.Input == InputContext.Dialogue;
             }
             foreach (var button in checkButtons)

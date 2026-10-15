@@ -4,7 +4,7 @@
 
 ## 建议阅读顺序
 
-当前研发完成度先看[当前完成情况与待补项](project-status.md)；下列文档保留设计来源与尚待裁决的规则。[opinion]
+策划验收先看[策划验收指南：成果、触发与剧情配置](planner-acceptance-guide.md)，包含日循环、三结局路线、对白配置和验收勾选项；研发完成度另见[当前完成情况与待补项](project-status.md)。下列文档保留设计来源与尚待裁决的规则。[opinion]
 
 1. [我们要完成什么游戏](game-overview.md)：目标、日循环、选择、五位病人、结局与资产。
 2. [程序需求v0.1](sources/program-requirements-v0-1.md)：交互与对话机制的原始要求。

@@ -40,6 +40,7 @@ research/no-im-not-a-human/** -text
 # Preserve the embedded upstream package bytes and Unity-generated YAML whitespace.
 UnityProject/Packages/dev.yarnspinner.unity/** -text -whitespace
 UnityProject/**/*.meta whitespace=-blank-at-eol
+src/**/*.meta whitespace=-blank-at-eol
 UnityProject/ProjectSettings/*.asset whitespace=-blank-at-eol
 UnityProject/Assets/**/*.unity whitespace=-blank-at-eol
 UnityProject/Assets/**/*.mat whitespace=-blank-at-eol

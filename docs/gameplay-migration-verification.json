@@ -33,7 +33,7 @@
   "unity": {
     "version": "2022.3.23f1c1",
     "rendering": "Built-in",
-    "normalUpmImport": "blocked: path argument undefined, also reproduced in minimal project",
+    "normalUpmImport": "passed on 2026-10-15 using Open-Unity.cmd; see normalUpmRecovery",
     "offlineFlags": "-noUpm",
     "sceneGeneration": "passed",
     "playMode": {
@@ -80,12 +80,46 @@
       "eyes.png",
       "pause-sleep.png"
     ],
-    "il2cpp": "not run"
+    "il2cpp": "not run",
+    "normalUpmRecovery": {
+      "checkedAtUtc": "2026-10-15T11:06:44.9329635Z",
+      "project": "UnityProject",
+      "normalUpm": true,
+      "offlineFlags": [],
+      "rootCause": "Missing ALLUSERSPROFILE passed undefined to UPM getGlobalConfigRoot",
+      "launchEnvironmentFix": "Child process ALLUSERSPROFILE falls back to Windows CommonApplicationData; no global environment or Editor installation changes",
+      "launcher": "Open-Unity.cmd",
+      "registeredPackages": 14,
+      "compilerErrors": 0,
+      "packageResolutionFailures": 0,
+      "scene": "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "mainSceneOpened": true,
+      "playMode": {
+        "result": "Passed",
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "seconds": 18.9683519,
+        "exitCode": 0
+      },
+      "evidence": [
+        "Artifacts/Unity/editor.log",
+        "Artifacts/Unity/EditorRepair/trace-upm-stderr.log",
+        "Artifacts/Unity/EditorRepair/normal-playmode-results.xml",
+        "Artifacts/Unity/EditorRepair/Visuals"
+      ],
+      "remainingDiagnostics": [
+        "Licensing Client signature validation and unavailable online access-token messages, followed by successful license/entitlement resolution",
+        "Editor update check HTTP 404"
+      ],
+      "playerRebuilt": false,
+      "il2cppRun": false
+    }
   },
   "limits": [
     "Formal content and numeric balance remain development placeholders",
     "Source-game random visitor identities, inventory and killings are not migrated requirements",
-    "Normal UPM import remains unresolved; offline success is separately scoped",
+    "Normal UPM recovery is verified locally on 2026-10-15; fresh-machine setup and IL2CPP remain unverified",
     "Player startup was batch/nographics; rendered interaction was verified in Editor PlayMode"
   ],
   "artifactsRoot": "Artifacts/",

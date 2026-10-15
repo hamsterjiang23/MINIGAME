@@ -1,6 +1,6 @@
 # 当前完成情况与待补项
 
-状态日期：**2026-10-13，Asia/Shanghai**。本文对应已合并到 `main` 的代码基线 `dd4eb4a8`；验证结果来自[持久化汇总](gameplay-migration-verification.json)，本次整理没有重新运行游戏或构建。[verified: Git log HEAD=dd4eb4a8；gameplay-migration-verification.json checkedAtUtc]
+状态更新日期：**2026-10-15，Asia/Shanghai**。核心与 Player 构建结果保留2026-10-13记录；本次新增正常 UPM 工程导入、主场景打开和四项图形 PlayMode 验证，没有重新构建 Player。详见[持久化汇总](gameplay-migration-verification.json)。[verified: gameplay-migration-verification.json checkedAtUtc/unity.normalUpmRecovery]
 
 **当前交付是可以运行流程的开发原型。** 已有“三天、五病人、三结局”的规则、存档和 Unity/Yarn 宿主，也已生成 Windows Mono 开发程序；正式叙事、美术、音频和发布验收尚需补齐。[verified: ../src/README.md「开发默认规则」；../UnityProject/README.md「运行与操作」；gameplay-migration-verification.json unity.windowsMonoBuild] [opinion]
 
@@ -36,7 +36,7 @@
 - 真实 Unity 2022.3.23f1c1：隔离离线工程场景生成通过，图形模式 PlayMode 四项通过。验证副本与145份源码哈希一致，0差异。[verified: gameplay-migration-verification.json unity.version/sceneGeneration/playMode/sourceComparison]
 - Windows Mono 开发构建成功，0错误、1警告；警告来自 `-nographics` 下无法更新环境与反射探针。Player 无图形启动10秒进入晨检阶段，无启动异常。[verified: gameplay-migration-verification.json unity.windowsMonoBuild.warningDetail/unity.playerStartup]
 - 三种结局有规则与宿主测试；图形 PlayMode 完整流程走的是“被带走”结局，不能将其写成三种结局演出全部通过。[verified: ../src/MiniGame.Presentation.Tests/RuntimeEndingTests.cs PriestAttack/LockedInRoom/TakenAway；../UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs ActualYarnButtonsCompleteThreeDaysAndReturnToApartmentBetweenPatients]
-- **正常 UPM 导入仍未通过**；实际验证使用 `Artifacts/Unity/OfflineProject` 与 `-noUpm`。IL2CPP 未验证，已打包 Player 的图形交互全流程、性能和最终发布版本也尚未形成验收记录。[verified: gameplay-migration-verification.json unity.normalUpmImport/offlineFlags/il2cpp/limits] [opinion]
+- **2026-10-15 正常 UPM 工程导入及四项图形 PlayMode 测试通过**；启动器补齐缺失环境并打开主场景。IL2CPP、已打包 Player 的图形交互全流程、性能和最终发布版本仍需独立验收。[verified: gameplay-migration-verification.json unity.normalUpmRecovery/il2cpp/limits] [opinion]
 
 ## 必须填补的工作
 
@@ -66,7 +66,7 @@
 
 ### 工程、测试与发布
 
-需要修复并验证正常 UPM 工程导入，明确新机器依赖获取和复现步骤；当前离线脚本依赖本机 Editor 与包缓存，不能直接视为跨机器部署已完成。渲染基线为 Built-in；URP 切换仍是后续选择。[verified: gameplay-migration-verification.json unity.normalUpmImport/rendering；../UnityProject/README.md「可重放的本机验证路线」「技术与来源边界」] [opinion]
+正常 UPM 工程导入已于2026-10-15修复；仓库根 `Open-Unity.cmd` 可直接打开主场景。仍需验证新机器依赖获取与复现步骤；离线脚本依赖本机 Editor 与包缓存，不能视为跨机器部署已完成。渲染基线为 Built-in；URP 切换仍是后续选择。[verified: gameplay-migration-verification.json unity.normalUpmImport/rendering；../UnityProject/README.md「可重放的本机验证路线」「技术与来源边界」] [opinion]
 
 需要补已打包 Player 的图形交互全流程，以及正式内容下的三结局、存档恢复、输入/画面/声音和性能验收。发布平台、目标设备、性能预算、工期与交付方式需确定；IL2CPP按目标平台决定并实际验证。[verified: gameplay-migration-verification.json unity.playerStartup.scope/il2cpp；open-questions.md L53] [opinion]
 
@@ -87,7 +87,7 @@
 ## 接下来按什么顺序推进
 
 1. **确认规则**：收敛日程、KPI、信任/释放、三结局与特殊角色条件，形成正式配置基线。[opinion]
-2. **制作正式完整流程**：替换一位病人的对白、观察、差分、声音与处置后果，同时处理正常UPM环境。[opinion]
+2. **制作正式完整流程**：替换一位病人的对白、观察、差分、声音与处置后果，并验证新机器的UPM依赖获取。[opinion]
 3. **补齐三天五病人**：按日程加入其他角色、跨日变化、梦境和结局演出，完成对应内容回归。[opinion]
 4. **完成发布验收**：在目标设备验证图形Player、三结局、存档、性能与发布包；按需验证IL2CPP。[opinion]
 

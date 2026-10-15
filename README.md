@@ -6,6 +6,8 @@
 
 ## 玩法设计
 
+策划验收入口：[现阶段成果、功能触发与剧情配置指南](docs/planner-acceptance-guide.md)，包含完整日循环、三结局操作路线、对白/分支配置方式和验收勾选项。[opinion]
+
 **晨检与任务简报 → 电脑会谈 → 治疗／净化／释放 → 夜间收束 → 睡眠与梦境 → 次日反馈。** 3D公寓承载移动与物件交互，2D终端承载病人对白、选项和处置。[verified: docs/game-overview.md L39–L49]
 
 **《寻找伪人》（No, I'm not a Human）是本项目重要的玩法参考。**[verified: 用户确认“寻找伪人为重要的玩法参考”] 重点借鉴观察与信息核对、对话中的不确定性、决策后果、昼夜节奏和资源压力，并结合检定员与病人的原创设定改造。[opinion]
@@ -22,7 +24,7 @@
 
 2026-10-13在Windows重新完成SDK8.0.424锁定恢复、Release构建（0警告、0错误）与150项测试：Core73、Presentation77。固定Yarn编译器验证327个生成节点、536条文本且无诊断。Unity导入、PlayMode与Player构建另行记录，不从这些结果推导可玩结论。[verified: Artifacts/Tests/migration-verification-report.json；Artifacts/Tests/migration-build.log；Artifacts/YarnSmoke/compiler-report.json] [opinion]
 
-Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式PlayMode测试和Windows Mono开发构建（0错误、1警告）；构建产物位于 `Builds/MiniGame/MiniGame.exe`，启动检查通过。正常UPM导入仍被本机路径错误阻断，离线验证不等于正常导入成功；IL2CPP尚未验证。完整结果保存在[验证汇总](docs/gameplay-migration-verification.json)，可重放入口见[工程说明](UnityProject/README.md)。[verified: docs/gameplay-migration-verification.json unity；Artifacts/Unity/player-startup.json Ready/StartupExceptions] [opinion]
+Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式PlayMode测试和Windows Mono开发构建（0错误、1警告）；构建产物位于 `Builds/MiniGame/MiniGame.exe`，启动检查通过。2026-10-15通过仓库根 `Open-Unity.cmd` 修复缺失启动环境后，正常UPM工程导入、主场景打开及四项图形PlayMode测试已通过；IL2CPP尚未验证。完整结果保存在[验证汇总](docs/gameplay-migration-verification.json)，可重放入口见[工程说明](UnityProject/README.md)。[verified: docs/gameplay-migration-verification.json unity；Artifacts/Unity/player-startup.json Ready/StartupExceptions] [opinion]
 
 **《No, I'm not a Human》参考研究**位于 `research/no-im-not-a-human/`，入口为[逆向总报告](research/no-im-not-a-human/Reports/overview.md)和[交付检查记录](research/no-im-not-a-human/Analysis/deliverable-verification.json)。用户已确认将仓库改为private，完整研究目录按私有仓库同步规则纳入Git与Git LFS，包括游戏工作副本、恢复代码、资源、工具、索引和报告；访问与克隆需要仓库授权。[verified: 用户确认“改为private”] [opinion]
 
@@ -34,7 +36,7 @@ Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式Pl
 
 ## 后续方向
 
-1. 修复本机正常UPM环境，并另行验证正常工程导入与IL2CPP构建。[opinion]
+1. 复核新机器依赖获取，并另行验证IL2CPP构建。[opinion]
 2. 用正式台词、人物差分和观察线索替换占位内容，确认线索如何影响判断及每日资源压力。[opinion]
 3. 制作三天梦境和三种结局演出；确认配置、日记与特殊角色规则后再扩展随机事件或物资。[opinion]
 4. 参考研究继续从缺失角色字段、准确Editor导入和未解析动态调用入手。[opinion]

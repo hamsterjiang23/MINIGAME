@@ -21,6 +21,16 @@ namespace MiniGame.UnityHost.Editor
         private static string RepositoryRoot => Path.GetFullPath(
             Environment.GetEnvironmentVariable("MINIGAME_REPOSITORY_ROOT") ?? Path.Combine(Application.dataPath, "../.."));
 
+        [MenuItem("MiniGame/Open prototype scene")]
+        public static void OpenPrototype()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Leave Play Mode before opening the prototype.");
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+            ValidateScene(scene);
+            Debug.Log("MINIGAME_MAIN_SCENE_OPENED " + scene.path);
+        }
+
         [MenuItem("MiniGame/Create and validate prototype")]
         public static void CreateAndValidate()
         {

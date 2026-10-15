@@ -91,7 +91,7 @@ namespace Yarn.Unity.Tests
         public IEnumerator LineProvider_CorrectLineID_FetchesLineContent() => YarnTask.ToCoroutine(async () =>
         {
 #if UNITY_EDITOR
-            var package = UnityEditor.PackageManager.PackageInfo.FindForPackageName("dev.yarnspinner.unity");
+            var package = UnityEditor.PackageManager.PackageInfo.FindForAssetPath("Packages/dev.yarnspinner.unity/package.json");
             package.source.Should().NotBeEqualTo(UnityEditor.PackageManager.PackageSource.Local, "This test cannot be run as a local package, please symlink the package.");
 #endif
 
@@ -125,7 +125,7 @@ namespace Yarn.Unity.Tests
         public IEnumerator LineProvider_ShadowLineID_FetchesSourceContent() => YarnTask.ToCoroutine(async () =>
         {
 #if UNITY_EDITOR
-            var package = UnityEditor.PackageManager.PackageInfo.FindForPackageName("dev.yarnspinner.unity");
+            var package = UnityEditor.PackageManager.PackageInfo.FindForAssetPath("Packages/dev.yarnspinner.unity/package.json");
             package.source.Should().NotBeEqualTo(UnityEditor.PackageManager.PackageSource.Local, "This test cannot be run as a local package, please symlink the package.");
 #endif
             lineProvider.LocaleCode = "en";
