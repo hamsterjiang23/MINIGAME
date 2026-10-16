@@ -1,0 +1,23 @@
+BlenderMCP: cannot start server in background mode (blender -b) - commands would never execute
+BlenderMCP: run Blender with a GUI, or use a virtual display: xvfb-run -a blender
+BlenderMCP addon registered
+BlenderMCP server stopped
+BlenderMCP addon unregistered
+17:45:04 | INFO: Data are loaded, start creating Blender stuff
+17:45:04 | INFO: Blender create Mesh node meshes[0]
+17:45:06 | INFO: glTF import finished in 1.64s
+/Users/mt/hamster/MINIGAEM/Art/MainRoom/scripts/prepare_tripo.py:34: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m.use_nodes:
+Info: Saved as "CRT-Monitor.blend"
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+17:45:19 | INFO: Starting glTF 2.0 export
+17:45:19 | INFO: Extracting primitive: meshes[0]
+17:45:19 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+17:45:19 | INFO: Primitives created: 1
+17:45:19 | INFO: Finished glTF 2.0 export in 0.03902101516723633 s
+
+{"source": "https://studio.tripo3d.ai/workspace/generate/42a8bc2c-ded5-4055-a2d0-b0b5664b3865", "objects": [{"name": "CRT_Monitor_Tripo", "triangles_before": 1906894, "polygons_after": 20000, "original_bbox": [[-0.4906599819660187, -0.4596884250640869, -0.00023735917056910694], [0.4907675087451935, 0.46035677194595337, 0.8836246728897095]], "dimensions_m": [0.405, 0.37966972426973755, 0.36473822709511283]}]}
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

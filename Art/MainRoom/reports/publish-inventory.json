@@ -1,0 +1,459 @@
+{
+  "snapshot_date": "2026-10-16",
+  "root": "Art/MainRoom",
+  "file_count_excluding_this_manifest": 88,
+  "total_bytes_excluding_this_manifest": 254026638,
+  "manifest_excludes_itself": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 173,
+      "sha256": "f635139681ea9878cb7bb261d0de10fdd9169f154575d56c7622fb3352444740"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 60,
+      "sha256": "021c23c7e3afd80058c20773b7a1e634c58611818e4a18dcf3a6b5f361c34131"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4221,
+      "sha256": "8d0c2545902aef4d774cd2841009853b2d9b76edd625c29ef3e8b72b525deab6"
+    },
+    {
+      "path": "concepts/crt-monitor-concept.png",
+      "bytes": 1949032,
+      "sha256": "967bcbf130ef94c92e7bdd9a40ffd90ff31a183f000a532cf9bd472b11f80ead"
+    },
+    {
+      "path": "concepts/crt-monitor-prompt.txt",
+      "bytes": 1376,
+      "sha256": "f12bc93ac81fc95a9e33da5a28dc460a6c5ce210d4c3b5d474dc36833437f7ad"
+    },
+    {
+      "path": "concepts/desk-concept.png",
+      "bytes": 1957461,
+      "sha256": "6ebf0b992057bc9126f765076df1ce74171debdaab5e775e66e9f7f9741e1732"
+    },
+    {
+      "path": "concepts/desk-prompt.txt",
+      "bytes": 1342,
+      "sha256": "9d897fccea7478865a2bc9f48977bc66963bce97741bc5b9ee8cac3062ac681f"
+    },
+    {
+      "path": "concepts/iron-bed-concept.png",
+      "bytes": 2067373,
+      "sha256": "a80288e318ad56a3bcb47a3aa664ebc6bc3b9cbf29b15bb1a2ed12c0afb9ad97"
+    },
+    {
+      "path": "concepts/iron-bed-prompt.txt",
+      "bytes": 1465,
+      "sha256": "cc6da35912deccbf3365a144a455911dfcb89256e56cc634bbd0f8558659d88c"
+    },
+    {
+      "path": "exports/01_RoomShell.glb",
+      "bytes": 2854560,
+      "sha256": "70220931b58a05a31d949e4825743ef4a1b09a1107f4ecf1257c7cf8dc4d8b0e"
+    },
+    {
+      "path": "exports/02_ParquetFloor.glb",
+      "bytes": 773312,
+      "sha256": "e8d0d9a09c436b739337b47ba3d2157d267075a63ceba831157aaf5613ba0427"
+    },
+    {
+      "path": "exports/03_WritingDesk.glb",
+      "bytes": 785732,
+      "sha256": "931b27c8a367489c75e43edf67858e8c68362d5ba557829c3e5da3c8ce2a5dd9"
+    },
+    {
+      "path": "exports/04_WoodenChair.glb",
+      "bytes": 747380,
+      "sha256": "fc44c7d5090cfb3edc402bf70cafff6a2fdceea7815a3f6b8aa15cd318cebdef"
+    },
+    {
+      "path": "exports/05_Computer.glb",
+      "bytes": 24915344,
+      "sha256": "6a20b66248a2496e555d2d1f9e3ecc3078a008e8bc2a17dd99067ccab725481a"
+    },
+    {
+      "path": "exports/06_IronBed.glb",
+      "bytes": 1451004,
+      "sha256": "9a047a38fec3b4e1dec9392cf5adec48d9842af1555a0f74fe4117be01994075"
+    },
+    {
+      "path": "exports/07_WindowAndCurtain.glb",
+      "bytes": 2212696,
+      "sha256": "9292fa40b4b8d0e6dd1ffe6148ce86e76c9427c3387c7f77a1c167064f8a76ce"
+    },
+    {
+      "path": "exports/08_RadiatorAndPipes.glb",
+      "bytes": 991148,
+      "sha256": "e22c53890b19fc92b1b423659f36f772c3f0c10f8a933f7051936adc85f16db1"
+    },
+    {
+      "path": "exports/09_Rug.glb",
+      "bytes": 3452824,
+      "sha256": "ecc09666d3c835659c6152f95eb4e4d17ee27484551d9fd34089ea33c743e202"
+    },
+    {
+      "path": "exports/10_SideCabinet.glb",
+      "bytes": 1959176,
+      "sha256": "518b5c595043a5f18664c88d30cbd5ceff57b355228496bbbfe07a3535576e63"
+    },
+    {
+      "path": "exports/11_PendantLight.glb",
+      "bytes": 55736,
+      "sha256": "bca73c15cd8c536c5bce58d9670ed0d9a8e4b392416448e9b348de8e26b649ef"
+    },
+    {
+      "path": "exports/12_PostersAndPaper.glb",
+      "bytes": 1779120,
+      "sha256": "d66408d6b415a09573810c3b91fc56964e5e476937a70345c516c6ef4629873d"
+    },
+    {
+      "path": "exports/13_SmallProps.glb",
+      "bytes": 812580,
+      "sha256": "3b279e9505cffc82c811c075f1b566ebc0df7f2df5c2d02cdb90c0375c124fbd"
+    },
+    {
+      "path": "exports/14_FrontWallAndDoor.glb",
+      "bytes": 2514144,
+      "sha256": "32115e8a71918ab0a658af19057ea47e0d003f4789fbd155dfb41bd280dc985f"
+    },
+    {
+      "path": "exports/MainRoom.glb",
+      "bytes": 35988860,
+      "sha256": "8cb01954ddd45de6498b152ff4eb8c344912ccf1d193446c0b4486b347774114"
+    },
+    {
+      "path": "models/01_RoomShell.blend",
+      "bytes": 2887680,
+      "sha256": "47040530bdeaa81038927d1e3161be6a6f9d1541f6158bd192487be87360bec2"
+    },
+    {
+      "path": "models/02_ParquetFloor.blend",
+      "bytes": 813679,
+      "sha256": "281cc140a61ebb5ecc20438120826d6a14e4dbaebb62a626cd7e2f856ebcfb5f"
+    },
+    {
+      "path": "models/03_WritingDesk.blend",
+      "bytes": 782373,
+      "sha256": "eceb8c706ff0070c78ad7357fd625f0d48f4937786982924d15551f9a83da098"
+    },
+    {
+      "path": "models/04_WoodenChair.blend",
+      "bytes": 780811,
+      "sha256": "bb9d92cfdbb1581eb701349c0b5505b7c007aa5663c1dcca166e3df7fdf7ca06"
+    },
+    {
+      "path": "models/05_Computer.blend",
+      "bytes": 7697461,
+      "sha256": "05e58ab09eb2a53c13dfc1f04f186667c42e7f429b7567da2fceb43f579f6d4d"
+    },
+    {
+      "path": "models/06_IronBed.blend",
+      "bytes": 1336100,
+      "sha256": "cf8ca8feb9eeafe4545ff7ace230d9bf91a2b33635faa772bc37336721876b41"
+    },
+    {
+      "path": "models/07_WindowAndCurtain.blend",
+      "bytes": 2152977,
+      "sha256": "3156ef43780e85fe7c3a1793c61b0a7c317d3213ff4f9e931d4422f730aa3321"
+    },
+    {
+      "path": "models/08_RadiatorAndPipes.blend",
+      "bytes": 965247,
+      "sha256": "068808a1bcfda498556f2b21e5ffa87fa8e80d5e4c329176ec3ecdfc40450b66"
+    },
+    {
+      "path": "models/09_Rug.blend",
+      "bytes": 3228500,
+      "sha256": "b441b253aec2e9b33687d65553cdc796bc5944268badfa492fd7d3c5d4d19997"
+    },
+    {
+      "path": "models/10_SideCabinet.blend",
+      "bytes": 1972823,
+      "sha256": "b14bc3d7ae18bb183bceccf0bf6f6e477448f0322e8b99ba8a70943ae9912964"
+    },
+    {
+      "path": "models/11_PendantLight.blend",
+      "bytes": 74090,
+      "sha256": "a11d4f242efd7efe6254f9a771d6b0354c1b5e99758c16fcd218fdae1ab08179"
+    },
+    {
+      "path": "models/12_PostersAndPaper.blend",
+      "bytes": 1841771,
+      "sha256": "9f0f4548d83be245fb566c4804ce39189650510f0414b122b0c5b31b86f89719"
+    },
+    {
+      "path": "models/13_SmallProps.blend",
+      "bytes": 796229,
+      "sha256": "f86c6805941e9225dd5f2258cec6a2a81a213ce570f79d21d1a9efebc1cc66fb"
+    },
+    {
+      "path": "models/14_FrontWallAndDoor.blend",
+      "bytes": 2555753,
+      "sha256": "1bcc3d5240f749a5939a5ae1abce2c106ba6c163e559d560457a85589fcfffdc"
+    },
+    {
+      "path": "models/CRT-Monitor.blend",
+      "bytes": 11414368,
+      "sha256": "401aa3d6cc2342f7130c522e94b0bbb1e01b8706e1de49cf0c68af1f332c3ddd"
+    },
+    {
+      "path": "models/CRT-Monitor.glb",
+      "bytes": 11068700,
+      "sha256": "c8d35a1d8d9824c8d8e3837d388c3d5cd1225db677cba99f35d78106d154ce11"
+    },
+    {
+      "path": "models/crt-monitor-tripo-original.glb",
+      "bytes": 64868452,
+      "sha256": "da727aa77a83e6bb838b038b789b96b6ea7aaaf4985f22a065269f920cbc728a"
+    },
+    {
+      "path": "previews/bed-window-detail.png",
+      "bytes": 1101523,
+      "sha256": "ece5da8ce4656fa34362b79157662226810ec248255251a5a9a8dcd15620ce40"
+    },
+    {
+      "path": "previews/blender-live-scene.png",
+      "bytes": 218879,
+      "sha256": "dc88f04107f8e0d0fb9439d5db3cb3ec421db4922077e6a68990ef451877b3f1"
+    },
+    {
+      "path": "previews/desk-detail.png",
+      "bytes": 1136328,
+      "sha256": "49ee79564cafc4cdab59b303e0ebbd1b7d421c7e8c4bdbffe0703536f99eb143"
+    },
+    {
+      "path": "previews/main-room-preview.png",
+      "bytes": 1906891,
+      "sha256": "8cf06ffe94c9c78f94a2d229d7a17b2d34c844c1f0a84c5da40727949eb7e222"
+    },
+    {
+      "path": "previews/tripo-crt-result.png",
+      "bytes": 171409,
+      "sha256": "7cb2846a40803561d259717bfc9f85df008eb314038b4cd274fe258109405f6f"
+    },
+    {
+      "path": "references/main-room-material-reference.png",
+      "bytes": 4772717,
+      "sha256": "72fb824861b8f1613d569154a7f4cb90d5924da12502656587fa4c7f0f844144"
+    },
+    {
+      "path": "references/main-room-style-reference.png",
+      "bytes": 3246705,
+      "sha256": "b19146e0d38796017f978c0308b93697641e2968685b2a311e8c1c0c0d3b8d1a"
+    },
+    {
+      "path": "reports/asset-manifest.json",
+      "bytes": 7424,
+      "sha256": "cdea52c3fa1e5f2a9576dd3e712f760cd7f459163678c1e8551d33a2ff2e5312"
+    },
+    {
+      "path": "reports/build-room.log",
+      "bytes": 996,
+      "sha256": "d096c5741dda12f54c1aae86ad150d0ceed835b06a2c2793908d80238e2db103"
+    },
+    {
+      "path": "reports/export-parts.log",
+      "bytes": 100259,
+      "sha256": "6ecad8fd96ea47af6da0759d944c481be3bd98001ae13ec6aa3290ab0a18efff"
+    },
+    {
+      "path": "reports/finalize-room.log",
+      "bytes": 824,
+      "sha256": "06956fa2f3604465f0766a15591b362944dbf5808ea0ab047505642814d812f2"
+    },
+    {
+      "path": "reports/module-validation.json",
+      "bytes": 1851,
+      "sha256": "8cbadd545abcdc9f459b64d1c09b46ccc9f5bd5a45ef4491aa07256043d49d1c"
+    },
+    {
+      "path": "reports/prepare-tripo.log",
+      "bytes": 1790,
+      "sha256": "337006c6de139ee0283a938da36e53090cd018fca4676ce47c778ae9622c760b"
+    },
+    {
+      "path": "reports/refine-room.log",
+      "bytes": 950,
+      "sha256": "8fdc23c5044c8a70c401cf85d0d8815d6232d32d53a071e8063dfc7b61666241"
+    },
+    {
+      "path": "reports/render-previews.log",
+      "bytes": 790,
+      "sha256": "b8f287099fb0acabb998303ad970322c7c7fef5a4fc824c4538a5841a8013eff"
+    },
+    {
+      "path": "reports/scene-validation.json",
+      "bytes": 6535,
+      "sha256": "5db3d0a23a83e0dfdbcae39d10c9df2d75c42187fb48774a6ad5268b57df0b66"
+    },
+    {
+      "path": "reports/source-provenance.json",
+      "bytes": 6054,
+      "sha256": "f506dae622248e4ee98e0f4967fa61728bf71254cc5600a1938350cb9111abe9"
+    },
+    {
+      "path": "reports/tripo-crt-validation.json",
+      "bytes": 597,
+      "sha256": "78f4340234904ca94812904231b6271f19b6f805c7a083a7a6682b640c0bff78"
+    },
+    {
+      "path": "reports/validate-delivery.log",
+      "bytes": 30506,
+      "sha256": "869e4b01c0b0f4ed92d0b45ad5582de2b4d0aa1d43f59fd323222f8060c2cf70"
+    },
+    {
+      "path": "scene/MainRoom.blend",
+      "bytes": 17794422,
+      "sha256": "55f140cd7b1e10e86d667505a1c0e386a0c490ac77c06929d1bad66c4184cf3b"
+    },
+    {
+      "path": "scripts/build_room.py",
+      "bytes": 25448,
+      "sha256": "9de97ac45e43acaf6dcebbcf9f2cbc00293da7b358dd061b500ac5e8e9433e09"
+    },
+    {
+      "path": "scripts/export_parts.py",
+      "bytes": 4099,
+      "sha256": "5fc781f72f6065c9474b2e0a989878ffa1d7b8042f57196660a5ea97a8c6d76c"
+    },
+    {
+      "path": "scripts/finalize_room.py",
+      "bytes": 3178,
+      "sha256": "824846f7e14ed7eb10a923732d611a695d0ec576065d926e75759016fa8b57d0"
+    },
+    {
+      "path": "scripts/make_textures.py",
+      "bytes": 6672,
+      "sha256": "d586bea7792e6a9172feb9e7e279319a612b9fa7fddc42598fbe7f870425fccd"
+    },
+    {
+      "path": "scripts/prepare_tripo.py",
+      "bytes": 2470,
+      "sha256": "3a3e5369ae4309a4e48f3ec1cdb2c14d69ab298456bb4b96fe651f5337175b64"
+    },
+    {
+      "path": "scripts/refine_room.py",
+      "bytes": 5130,
+      "sha256": "f8faafd9b0863133e5117129669be0a9d445018ffb44b99f83b31ef2c7885ef2"
+    },
+    {
+      "path": "scripts/render_previews.py",
+      "bytes": 1145,
+      "sha256": "a706db4efaa102feb1eddbc41502174f88a38650a86cec14b632ff64f06edc45"
+    },
+    {
+      "path": "scripts/set_lighting.py",
+      "bytes": 1686,
+      "sha256": "7469327fc6e43ed9a3d9cdfc62b18fcc4312802ba3ae3e9477a004a3926f95ba"
+    },
+    {
+      "path": "scripts/validate_delivery.py",
+      "bytes": 2520,
+      "sha256": "54a826735282babb8f3b5e90ff613266fb97c9ac2ad0dbb393890955face2365"
+    },
+    {
+      "path": "textures/cloth-basecolor.png",
+      "bytes": 1186357,
+      "sha256": "78aba5f04fcb0008bd26a3a27817a022daed41959ffae54ce17970d450d81b93"
+    },
+    {
+      "path": "textures/crt-screen-basecolor.png",
+      "bytes": 1740,
+      "sha256": "6b45329b73684feb79c0c0d94079f0631c474280380b6006256931aa16750954"
+    },
+    {
+      "path": "textures/curtain-basecolor.png",
+      "bytes": 1138256,
+      "sha256": "f064cd54715817d1ae1d4974f03a95f1094bdcef9efa8706b1ea5ff193c1dc1f"
+    },
+    {
+      "path": "textures/newspaper-basecolor.png",
+      "bytes": 319240,
+      "sha256": "9b08ca3fd5817abc270d309d17d61cd7d26a4492b499a88ebe58519cecf6e599"
+    },
+    {
+      "path": "textures/paint-basecolor.png",
+      "bytes": 884410,
+      "sha256": "1928b81230286d8104dd310efd50530d6dfb042b867cb9bc90f7a5b080608916"
+    },
+    {
+      "path": "textures/paper-basecolor.png",
+      "bytes": 1008474,
+      "sha256": "71a9977dfd765a496bb7ae0577e318a749a16d9fce318484ee0256f243f88c1a"
+    },
+    {
+      "path": "textures/plaster-basecolor.png",
+      "bytes": 887335,
+      "sha256": "fcb929bd4be57055225845c475aefe71deb5bfef15eee4e038881636be784c4c"
+    },
+    {
+      "path": "textures/poster-1-basecolor.png",
+      "bytes": 478723,
+      "sha256": "2130d334385e8e999ace6bd7f14e1b0a6f91623e8b721d0c5911cd731f662e9d"
+    },
+    {
+      "path": "textures/poster-2-basecolor.png",
+      "bytes": 474355,
+      "sha256": "91e9177308a1b0c5283c0868aaf954d9d364ee244afec13653c58f7a756b0999"
+    },
+    {
+      "path": "textures/poster-3-basecolor.png",
+      "bytes": 497706,
+      "sha256": "bcb3b5fcb8840143e99df1b13f38159f609a9a703923d817be3d6cd36713b51e"
+    },
+    {
+      "path": "textures/rug-woven-basecolor.png",
+      "bytes": 1944003,
+      "sha256": "1ecbcc9364a8c3fe8f0c4b1e269fa8b210bc2555e7d02e5354d600478c063340"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_basecolor.jpg",
+      "bytes": 1376767,
+      "sha256": "d646b0fe0b63d106ed8a47d6fa4054af6ca07f66bf029c4e445f6cfba6929ed0"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_basecolor.png",
+      "bytes": 1376767,
+      "sha256": "d646b0fe0b63d106ed8a47d6fa4054af6ca07f66bf029c4e445f6cfba6929ed0"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_normal.png",
+      "bytes": 6418968,
+      "sha256": "d5f7a6ca4433b44cdada5dc21f65645494f14f507fdc29e0f0f26c56a9ef9ad2"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_rm.jpg",
+      "bytes": 518872,
+      "sha256": "70b79532ba7df553f3b1f70f1baa1fb3bac2206e70c4adc52bde168b71819c7a"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_rm.png",
+      "bytes": 518872,
+      "sha256": "70b79532ba7df553f3b1f70f1baa1fb3bac2206e70c4adc52bde168b71819c7a"
+    },
+    {
+      "path": "textures/wallpaper-olive-basecolor.png",
+      "bytes": 1213478,
+      "sha256": "5ce14dad18e752ffaefa7feeac00e901d2d269520d33d9cbc3d1f5bf4fab9047"
+    },
+    {
+      "path": "textures/wood-worn-basecolor.png",
+      "bytes": 709384,
+      "sha256": "34ad0a5ce72fa120bc01125107db3b629ac5ea747cc126c0d0c063da607d9b7b"
+    }
+  ],
+  "validation": {
+    "scene": "reports/scene-validation.json",
+    "modules": "reports/module-validation.json",
+    "source_provenance": "reports/source-provenance.json"
+  },
+  "local_only": [
+    ".DS_Store",
+    "*.blend[0-9]",
+    "scene/previous-blender-session.blend"
+  ]
+}

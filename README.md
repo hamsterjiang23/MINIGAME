@@ -54,12 +54,15 @@ Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式Pl
 - [当前完成情况与待补项](docs/project-status.md)：开发原型、验证范围、正式内容缺口和后续交付顺序。
 - [核心逻辑源码](src/README.md)与[实现说明](src/architecture-and-rationale.md)。
 - [Unity开发原型](UnityProject/README.md)与[寻找伪人玩法迁移](docs/reference-gameplay-migration.md)。
+- [主场景美术资源](Art/MainRoom/README.md)：完整Blender场景、3张部件概念图、14组独立部件、Tripo原件、贴图、预览与GLB导出；Unity导入尚未验证。[verified: Art/MainRoom/reports/asset-manifest.json parts；Art/MainRoom/reports/scene-validation.json scope]
 - [游戏总览](docs/game-overview.md)、[设计文档入口](docs/README.md)与[设计待定项](docs/open-questions.md)。
 - [源码借鉴研究](research/README.md)、[需求借鉴矩阵](research/reuse-matrix.md)、[Unity开发路线](research/unity-2022-roadmap.md)与[研究风险](research/risks-and-gaps.md)。
 - [逆向总报告](research/no-im-not-a-human/Reports/overview.md)与[交付检查记录](research/no-im-not-a-human/Analysis/deliverable-verification.json)。
 - [仓库协作规则](AGENTS.md)。
 
 ## 目录
+
+- Art/MainRoom/：参考图指导下的主场景美术第一版，全部制作物料集中存放，二进制通过Git LFS保存。[verified: Art/MainRoom/README.md；Art/MainRoom/.gitattributes]
 
 - `src/`：原创纯C#核心逻辑、测试和实现说明。[verified: src/README.md 开篇说明及「目录与技术基线」]
 - `UnityProject/`：Unity 2022.3原创公寓、输入/UI、Yarn桥、场景生成器和PlayMode测试源码。[verified: UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate；UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs]

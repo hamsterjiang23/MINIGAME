@@ -1,0 +1,16 @@
+00:00.860  blend            | Read blend: "/Users/mt/hamster/MINIGAEM/Art/MainRoom/scene/MainRoom.blend"
+/Users/mt/hamster/MINIGAEM/Art/MainRoom/scripts/refine_room.py:60: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+00:23.462  render           | Saved: '/Users/mt/hamster/MINIGAEM/Art/MainRoom/previews/main-room-preview.png'
+00:36.670  render           | Saved: '/Users/mt/hamster/MINIGAEM/Art/MainRoom/previews/desk-detail.png'
+BlenderMCP: cannot start server in background mode (blender -b) - commands would never execute
+BlenderMCP: run Blender with a GUI, or use a virtual display: xvfb-run -a blender
+BlenderMCP addon registered
+Info: Saved as "MainRoom.blend"
+REFINEMENT_AND_CRT_IMPORT_COMPLETE
+BlenderMCP server stopped
+BlenderMCP addon unregistered
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+ERROR: Image "" not available. Keeping packed image
+
+Blender quit

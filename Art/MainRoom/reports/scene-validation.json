@@ -1,0 +1,260 @@
+{
+  "blender_version": "5.2.1 LTS",
+  "scene": "MainRoom_ReferenceReconstruction",
+  "unit_system": "METRIC",
+  "unit_scale": 1.0,
+  "objects": 530,
+  "collections": [
+    {
+      "name": "01_RoomShell",
+      "objects": 14,
+      "description": "Room 5.6 x 6.4 x 3.0 m; front access door is inferred beyond reference view."
+    },
+    {
+      "name": "02_ParquetFloor",
+      "objects": 1,
+      "description": "Individual parquet polygons with seams and varied timber tones."
+    },
+    {
+      "name": "03_WritingDesk",
+      "objects": 14,
+      "description": "Based on generated desk concept; drawers remain separate objects."
+    },
+    {
+      "name": "04_WoodenChair",
+      "objects": 12,
+      "description": "A separate worn timber chair with curved slat back."
+    },
+    {
+      "name": "05_Computer",
+      "objects": 87,
+      "description": "CRT concept / Tripo mesh imported later; keyboard, mouse, system unit and wiring are individual objects."
+    },
+    {
+      "name": "06_IronBed",
+      "objects": 23,
+      "description": "Tubular frame; mattress, pillow and crumpled blanket are modeled separately."
+    },
+    {
+      "name": "07_WindowAndCurtain",
+      "objects": 13,
+      "description": "Four pane dirty window, wall recess, sill, one pulled-aside hanging curtain."
+    },
+    {
+      "name": "08_RadiatorAndPipes",
+      "objects": 40,
+      "description": "Twelve distinct cast iron fins, wall brackets, valve and exposed supply pipe."
+    },
+    {
+      "name": "09_Rug",
+      "objects": 261,
+      "description": "Original faded geometric carpet and separate ragged fringe."
+    },
+    {
+      "name": "10_SideCabinet",
+      "objects": 11,
+      "description": "Low rough wooden cabinet on the right; stacked books are separate."
+    },
+    {
+      "name": "11_PendantLight",
+      "objects": 3,
+      "description": "Blackened green enamel hanging shade, white interior and exposed cord."
+    },
+    {
+      "name": "12_PostersAndPaper",
+      "objects": 8,
+      "description": "Original fictional graphics follow the reference's placement. Text is decorative, not final narrative."
+    },
+    {
+      "name": "13_SmallProps",
+      "objects": 26,
+      "description": "Bottles, enamel mug, storage cases, loose cans and wiring."
+    },
+    {
+      "name": "14_FrontWallAndDoor",
+      "objects": 8,
+      "description": "Inferred off-camera closure, removable to inspect the room. Not visible in reference."
+    },
+    {
+      "name": "15_LightingAndCameras",
+      "objects": 9,
+      "description": "Five switchable reference-discussed lighting states; artistic, not gameplay implementation."
+    }
+  ],
+  "images": [
+    {
+      "name": "cloth-basecolor.png",
+      "path": "//../textures/cloth-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "crt-screen-basecolor.png",
+      "path": "//../textures/crt-screen-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        512,
+        384
+      ]
+    },
+    {
+      "name": "curtain-basecolor.png",
+      "path": "//../textures/curtain-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "main-room-crt-monitor-tripo_normal.png",
+      "path": "//../textures/tripo-crt-main-room-crt-monitor-tripo_normal.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "newspaper-basecolor.png",
+      "path": "//../textures/newspaper-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "paint-basecolor.png",
+      "path": "//../textures/paint-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "plaster-basecolor.png",
+      "path": "//../textures/plaster-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "poster-1-basecolor.png",
+      "path": "//../textures/poster-1-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        512,
+        768
+      ]
+    },
+    {
+      "name": "poster-2-basecolor.png",
+      "path": "//../textures/poster-2-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        512,
+        768
+      ]
+    },
+    {
+      "name": "poster-3-basecolor.png",
+      "path": "//../textures/poster-3-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        512,
+        768
+      ]
+    },
+    {
+      "name": "rug-woven-basecolor.png",
+      "path": "//../textures/rug-woven-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "name": "tripo-crt-main-room-crt-monitor-tripo_basecolor.png",
+      "path": "//../textures/tripo-crt-main-room-crt-monitor-tripo_basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "tripo-crt-main-room-crt-monitor-tripo_rm.png",
+      "path": "//../textures/tripo-crt-main-room-crt-monitor-tripo_rm.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "wallpaper-olive-basecolor.png",
+      "path": "//../textures/wallpaper-olive-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "wood-worn-basecolor.png",
+      "path": "//../textures/wood-worn-basecolor.png",
+      "packed": true,
+      "sidecar_exists": true,
+      "size": [
+        1024,
+        512
+      ]
+    }
+  ],
+  "errors": [],
+  "previews": [
+    "previews/bed-window-detail.png",
+    "previews/tripo-crt-result.png",
+    "previews/blender-live-scene.png",
+    "previews/main-room-preview.png",
+    "previews/desk-detail.png"
+  ],
+  "scope": "Art asset generation, Blender rendering and GLB roundtrip only; no Unity/gameplay verification.",
+  "lighting_presets": [
+    "daily",
+    "night",
+    "blackout",
+    "bed_spot",
+    "screen_only"
+  ],
+  "glb_roundtrip": {
+    "objects": 521,
+    "meshes": 521,
+    "polygons": 62778,
+    "materials": 36,
+    "images": 15
+  },
+  "passed": true
+}

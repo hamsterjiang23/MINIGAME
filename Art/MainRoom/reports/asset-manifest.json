@@ -1,0 +1,264 @@
+{
+  "blender_version": "5.2.1 LTS",
+  "units": "metres",
+  "parts": [
+    {
+      "name": "01_RoomShell",
+      "description": "Room 5.6 x 6.4 x 3.0 m; front access door is inferred beyond reference view.",
+      "blend": "models/01_RoomShell.blend",
+      "glb": "exports/01_RoomShell.glb",
+      "triangles": 684,
+      "dimensions_m": [
+        5.75,
+        6.550000190734863,
+        3.179999828338623
+      ],
+      "origin_in_room_m": [
+        0.0,
+        -0.20000004768371582,
+        -0.10000000149011612
+      ],
+      "bytes": 2854560
+    },
+    {
+      "name": "02_ParquetFloor",
+      "description": "Individual parquet polygons with seams and varied timber tones.",
+      "blend": "models/02_ParquetFloor.blend",
+      "glb": "exports/02_ParquetFloor.glb",
+      "triangles": 792,
+      "dimensions_m": [
+        5.599999904632568,
+        6.400000095367432,
+        0.0
+      ],
+      "origin_in_room_m": [
+        0.0,
+        -0.20000004768371582,
+        0.004000000189989805
+      ],
+      "bytes": 773312
+    },
+    {
+      "name": "03_WritingDesk",
+      "description": "Based on generated desk concept; drawers remain separate objects.",
+      "blend": "models/03_WritingDesk.blend",
+      "glb": "exports/03_WritingDesk.glb",
+      "triangles": 1512,
+      "dimensions_m": [
+        0.6625001430511475,
+        1.5799999237060547,
+        0.7724999785423279
+      ],
+      "origin_in_room_m": [
+        -2.4237499237060547,
+        -1.25,
+        0.009999990463256836
+      ],
+      "bytes": 785732
+    },
+    {
+      "name": "04_WoodenChair",
+      "description": "A separate worn timber chair with curved slat back.",
+      "blend": "models/04_WoodenChair.blend",
+      "glb": "exports/04_WoodenChair.glb",
+      "triangles": 656,
+      "dimensions_m": [
+        0.4713139533996582,
+        0.44469308853149414,
+        0.979324460029602
+      ],
+      "origin_in_room_m": [
+        -1.5933103561401367,
+        -1.2699998617172241,
+        0.013215484097599983
+      ],
+      "bytes": 747380
+    },
+    {
+      "name": "05_Computer",
+      "description": "CRT concept / Tripo mesh imported later; keyboard, mouse, system unit and wiring are individual objects.",
+      "blend": "models/05_Computer.blend",
+      "glb": "exports/05_Computer.glb",
+      "triangles": 29038,
+      "dimensions_m": [
+        0.6509997844696045,
+        1.1289124488830566,
+        0.3647381663322449
+      ],
+      "origin_in_room_m": [
+        -2.4095001220703125,
+        -1.2705438137054443,
+        0.7900000214576721
+      ],
+      "bytes": 24915344
+    },
+    {
+      "name": "06_IronBed",
+      "description": "Tubular frame; mattress, pillow and crumpled blanket are modeled separately.",
+      "blend": "models/06_IronBed.blend",
+      "glb": "exports/06_IronBed.glb",
+      "triangles": 12344,
+      "dimensions_m": [
+        2.0460000038146973,
+        0.9000000953674316,
+        0.9086183309555054
+      ],
+      "origin_in_room_m": [
+        -1.6099998950958252,
+        2.1500000953674316,
+        0.059999994933605194
+      ],
+      "bytes": 1451004
+    },
+    {
+      "name": "07_WindowAndCurtain",
+      "description": "Four pane dirty window, wall recess, sill, one pulled-aside hanging curtain.",
+      "blend": "models/07_WindowAndCurtain.blend",
+      "glb": "exports/07_WindowAndCurtain.glb",
+      "triangles": 7528,
+      "dimensions_m": [
+        2.0299999713897705,
+        0.45378565788269043,
+        1.7160015106201172
+      ],
+      "origin_in_room_m": [
+        0.9650000333786011,
+        2.8781070709228516,
+        1.019998550415039
+      ],
+      "bytes": 2212696
+    },
+    {
+      "name": "08_RadiatorAndPipes",
+      "description": "Twelve distinct cast iron fins, wall brackets, valve and exposed supply pipe.",
+      "blend": "models/08_RadiatorAndPipes.blend",
+      "glb": "exports/08_RadiatorAndPipes.glb",
+      "triangles": 2520,
+      "dimensions_m": [
+        2.166454553604126,
+        0.14700007438659668,
+        2.6317102909088135
+      ],
+      "origin_in_room_m": [
+        1.4132272005081177,
+        2.8365001678466797,
+        0.2982897162437439
+      ],
+      "bytes": 991148
+    },
+    {
+      "name": "09_Rug",
+      "description": "Original faded geometric carpet and separate ragged fringe.",
+      "blend": "models/09_Rug.blend",
+      "glb": "exports/09_Rug.glb",
+      "triangles": 3132,
+      "dimensions_m": [
+        2.5761001110076904,
+        2.752263069152832,
+        0.008050345815718174
+      ],
+      "origin_in_room_m": [
+        -0.060449957847595215,
+        0.22004538774490356,
+        0.007974826730787754
+      ],
+      "bytes": 3452824
+    },
+    {
+      "name": "10_SideCabinet",
+      "description": "Low rough wooden cabinet on the right; stacked books are separate.",
+      "blend": "models/10_SideCabinet.blend",
+      "glb": "exports/10_SideCabinet.glb",
+      "triangles": 1188,
+      "dimensions_m": [
+        0.5999999046325684,
+        0.6649999618530273,
+        0.9424999952316284
+      ],
+      "origin_in_room_m": [
+        2.4600000381469727,
+        0.8174999952316284,
+        0.0
+      ],
+      "bytes": 1959176
+    },
+    {
+      "name": "11_PendantLight",
+      "description": "Blackened green enamel hanging shade, white interior and exposed cord.",
+      "blend": "models/11_PendantLight.blend",
+      "glb": "exports/11_PendantLight.glb",
+      "triangles": 888,
+      "dimensions_m": [
+        0.4152063727378845,
+        0.41520625352859497,
+        0.4856438636779785
+      ],
+      "origin_in_room_m": [
+        0.3499999940395355,
+        -0.8500000238418579,
+        2.5149998664855957
+      ],
+      "bytes": 55736
+    },
+    {
+      "name": "12_PostersAndPaper",
+      "description": "Original fictional graphics follow the reference's placement. Text is decorative, not final narrative.",
+      "blend": "models/12_PostersAndPaper.blend",
+      "glb": "exports/12_PostersAndPaper.glb",
+      "triangles": 16,
+      "dimensions_m": [
+        3.1639952659606934,
+        4.469729423522949,
+        1.9830000400543213
+      ],
+      "origin_in_room_m": [
+        -1.2010023593902588,
+        -0.17513537406921387,
+        0.012000000104308128
+      ],
+      "bytes": 1779120
+    },
+    {
+      "name": "13_SmallProps",
+      "description": "Bottles, enamel mug, storage cases, loose cans and wiring.",
+      "blend": "models/13_SmallProps.blend",
+      "glb": "exports/13_SmallProps.glb",
+      "triangles": 1904,
+      "dimensions_m": [
+        5.492500305175781,
+        4.132599830627441,
+        1.1399999856948853
+      ],
+      "origin_in_room_m": [
+        -0.03624999523162842,
+        0.2536999583244324,
+        0.0
+      ],
+      "bytes": 812580
+    },
+    {
+      "name": "14_FrontWallAndDoor",
+      "description": "Inferred off-camera closure, removable to inspect the room. Not visible in reference.",
+      "blend": "models/14_FrontWallAndDoor.blend",
+      "glb": "exports/14_FrontWallAndDoor.glb",
+      "triangles": 576,
+      "dimensions_m": [
+        2.700000047683716,
+        0.11999999731779099,
+        3.0
+      ],
+      "origin_in_room_m": [
+        0.0,
+        0.0,
+        -1.5
+      ],
+      "bytes": 2514144
+    }
+  ],
+  "limits": [
+    "GLB uses ordinary UV image mappings for box-projected Blender materials.",
+    "Unity import, colliders, gameplay and target-platform performance are not verified."
+  ],
+  "combined_triangles": 62778,
+  "combined_glb_bytes": 35988860
+}

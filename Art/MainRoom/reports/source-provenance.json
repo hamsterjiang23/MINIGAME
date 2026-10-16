@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-16",
+  "references": [
+    {
+      "path": "references/main-room-material-reference.png",
+      "bytes": 4772717,
+      "sha256": "72fb824861b8f1613d569154a7f4cb90d5924da12502656587fa4c7f0f844144"
+    },
+    {
+      "path": "references/main-room-style-reference.png",
+      "bytes": 3246705,
+      "sha256": "b19146e0d38796017f978c0308b93697641e2968685b2a311e8c1c0c0d3b8d1a"
+    }
+  ],
+  "concepts": [
+    {
+      "path": "concepts/crt-monitor-concept.png",
+      "bytes": 1949032,
+      "sha256": "967bcbf130ef94c92e7bdd9a40ffd90ff31a183f000a532cf9bd472b11f80ead",
+      "method": "Built-in image generation, using the two supplied room references",
+      "prompt": "concepts/crt-monitor-prompt.txt"
+    },
+    {
+      "path": "concepts/desk-concept.png",
+      "bytes": 1957461,
+      "sha256": "6ebf0b992057bc9126f765076df1ce74171debdaab5e775e66e9f7f9741e1732",
+      "method": "Built-in image generation, using the two supplied room references",
+      "prompt": "concepts/desk-prompt.txt"
+    },
+    {
+      "path": "concepts/iron-bed-concept.png",
+      "bytes": 2067373,
+      "sha256": "a80288e318ad56a3bcb47a3aa664ebc6bc3b9cbf29b15bb1a2ed12c0afb9ad97",
+      "method": "Built-in image generation, using the two supplied room references",
+      "prompt": "concepts/iron-bed-prompt.txt"
+    }
+  ],
+  "tripo": {
+    "url": "https://studio.tripo3d.ai/workspace/generate/42a8bc2c-ded5-4055-a2d0-b0b5664b3865",
+    "model": "H3.1",
+    "privacy": "Private as shown at generation time",
+    "input": "concepts/crt-monitor-concept.png",
+    "original": {
+      "path": "models/crt-monitor-tripo-original.glb",
+      "bytes": 64868452,
+      "sha256": "da727aa77a83e6bb838b038b789b96b6ea7aaaf4985f22a065269f920cbc728a"
+    },
+    "optimized": "models/CRT-Monitor.glb"
+  },
+  "textures": [
+    {
+      "path": "textures/cloth-basecolor.png",
+      "bytes": 1186357,
+      "sha256": "78aba5f04fcb0008bd26a3a27817a022daed41959ffae54ce17970d450d81b93",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/crt-screen-basecolor.png",
+      "bytes": 1740,
+      "sha256": "6b45329b73684feb79c0c0d94079f0631c474280380b6006256931aa16750954",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/curtain-basecolor.png",
+      "bytes": 1138256,
+      "sha256": "f064cd54715817d1ae1d4974f03a95f1094bdcef9efa8706b1ea5ff193c1dc1f",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/newspaper-basecolor.png",
+      "bytes": 319240,
+      "sha256": "9b08ca3fd5817abc270d309d17d61cd7d26a4492b499a88ebe58519cecf6e599",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/paint-basecolor.png",
+      "bytes": 884410,
+      "sha256": "1928b81230286d8104dd310efd50530d6dfb042b867cb9bc90f7a5b080608916",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/paper-basecolor.png",
+      "bytes": 1008474,
+      "sha256": "71a9977dfd765a496bb7ae0577e318a749a16d9fce318484ee0256f243f88c1a",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/plaster-basecolor.png",
+      "bytes": 887335,
+      "sha256": "fcb929bd4be57055225845c475aefe71deb5bfef15eee4e038881636be784c4c",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/poster-1-basecolor.png",
+      "bytes": 478723,
+      "sha256": "2130d334385e8e999ace6bd7f14e1b0a6f91623e8b721d0c5911cd731f662e9d",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/poster-2-basecolor.png",
+      "bytes": 474355,
+      "sha256": "91e9177308a1b0c5283c0868aaf954d9d364ee244afec13653c58f7a756b0999",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/poster-3-basecolor.png",
+      "bytes": 497706,
+      "sha256": "bcb3b5fcb8840143e99df1b13f38159f609a9a703923d817be3d6cd36713b51e",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/rug-woven-basecolor.png",
+      "bytes": 1944003,
+      "sha256": "1ecbcc9364a8c3fe8f0c4b1e269fa8b210bc2555e7d02e5354d600478c063340",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_basecolor.jpg",
+      "bytes": 1376767,
+      "sha256": "d646b0fe0b63d106ed8a47d6fa4054af6ca07f66bf029c4e445f6cfba6929ed0",
+      "method": "Tripo generated"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_basecolor.png",
+      "bytes": 1376767,
+      "sha256": "d646b0fe0b63d106ed8a47d6fa4054af6ca07f66bf029c4e445f6cfba6929ed0",
+      "method": "Tripo generated"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_normal.png",
+      "bytes": 6418968,
+      "sha256": "d5f7a6ca4433b44cdada5dc21f65645494f14f507fdc29e0f0f26c56a9ef9ad2",
+      "method": "Tripo generated"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_rm.jpg",
+      "bytes": 518872,
+      "sha256": "70b79532ba7df553f3b1f70f1baa1fb3bac2206e70c4adc52bde168b71819c7a",
+      "method": "Tripo generated"
+    },
+    {
+      "path": "textures/tripo-crt-main-room-crt-monitor-tripo_rm.png",
+      "bytes": 518872,
+      "sha256": "70b79532ba7df553f3b1f70f1baa1fb3bac2206e70c4adc52bde168b71819c7a",
+      "method": "Tripo generated"
+    },
+    {
+      "path": "textures/wallpaper-olive-basecolor.png",
+      "bytes": 1213478,
+      "sha256": "5ce14dad18e752ffaefa7feeac00e901d2d269520d33d9cbc3d1f5bf4fab9047",
+      "method": "Original procedural texture"
+    },
+    {
+      "path": "textures/wood-worn-basecolor.png",
+      "bytes": 709384,
+      "sha256": "34ad0a5ce72fa120bc01125107db3b629ac5ea747cc126c0d0c063da607d9b7b",
+      "method": "Original procedural texture"
+    }
+  ],
+  "notes": [
+    "No reference-game recovered assets were used.",
+    "Geometry, materials and graphics are a reference-guided first art pass, not a final art-direction signoff.",
+    "Source script, concepts, original downloaded model and editable scene remain together under this folder."
+  ]
+}

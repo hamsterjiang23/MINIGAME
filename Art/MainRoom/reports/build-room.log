@@ -1,0 +1,16 @@
+/Users/mt/hamster/MINIGAEM/Art/MainRoom/scripts/build_room.py:34: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.use_nodes=True
+/Users/mt/hamster/MINIGAEM/Art/MainRoom/scripts/build_room.py:427: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world=bpy.data.worlds.new("Room ambient");scene.world=world;world.use_nodes=True
+BlenderMCP: cannot start server in background mode (blender -b) - commands would never execute
+BlenderMCP: run Blender with a GUI, or use a virtual display: xvfb-run -a blender
+BlenderMCP addon registered
+BlenderMCP server stopped
+BlenderMCP addon unregistered
+Info: Saved as "MainRoom.blend"
+SAVED_ROOM /Users/mt/hamster/MINIGAEM/Art/MainRoom/scene/MainRoom.blend
+00:13.863  render           | Saved: '/Users/mt/hamster/MINIGAEM/Art/MainRoom/previews/main-room-preview.png'
+RENDER_COMPLETE
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit
