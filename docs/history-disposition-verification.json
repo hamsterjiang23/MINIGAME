@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-18",
+  "change": "Allow an already available disposition from the terminal history tab; return to live answers after acceptance",
+  "coreRulesChanged": false,
+  "day0": "Five introduction lines complete before Purify becomes available; history does not block an available Purify action",
+  "inputGates": "History still blocks continuing dialogue and selecting answers. Pause, transitions, unfinished dialogue and disposition availability remain enforced.",
+  "reaction": "Accepted disposition closes history; two native Day0 reaction lines then archive; repeated click does not resettle trust or quota",
+  "unity": {
+    "playMode": {
+      "passed": 10,
+      "failed": 0,
+      "report": "Artifacts/HistoryDisposition/playmode.xml",
+      "regressions": [
+        "Day0 history purification with actual pointer and native Yarn",
+        "Typing and history pause gates",
+        "HTML terminal history and input parity",
+        "Directory selection and viewport fitting"
+      ]
+    },
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "errors": 0,
+      "warnings": 0,
+      "sizeBytes": 195557554,
+      "seconds": 3.9686220999999997
+    },
+    "playerStartup": {
+      "ready": true,
+      "runtimeErrors": 0,
+      "log": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\HistoryDisposition\\player-startup.log",
+      "scope": "Windows development player startup"
+    },
+    "preview": {
+      "processId": 3240,
+      "log": "Artifacts/HistoryDisposition/editor-preview.log",
+      "ready": true,
+      "scope": "Fresh actual campaign preview advanced to Day0 history after native introduction; no player save written"
+    }
+  },
+  "screenshot": "Artifacts/HistoryDisposition/Visuals/history-day0-purify-ready.png",
+  "sourceHashes": [
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+      "sha256": "64f3d14826f5e00cd1e553417cd3beb7572bbdd82b8f2da0dd5d09e2e84fb914"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "67099b6c1e52b7f95c01fef460b4f1c1a9488b76c67fd7514188796f73d1794c"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Tests/PlayMode/HistoryDispositionPlayModeTests.cs",
+      "sha256": "89c8fdbead0d8170eec4dcb736b19906ede6f77fcb43381470621a2ab866dc1e"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Editor/HistoryDispositionPreview.cs",
+      "sha256": "2b2053da1c6e96912e182fd32d62cbce6d974083ba03b4a7e0d06fba06bd539e"
+    }
+  ]
+}

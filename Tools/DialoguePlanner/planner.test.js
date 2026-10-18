@@ -8,6 +8,21 @@ const root = path.resolve(__dirname, '../..');
 const sample = JSON.parse(fs.readFileSync(path.join(root, 'UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json'), 'utf8'));
 const original = JSON.parse(fs.readFileSync(path.join(root, 'docs/.source-data/inspection-terminal-day1-v0.5.2.data.json'), 'utf8'));
 const errors = pkg => C.validatePackage(pkg).diagnostics.filter(d => d.severity === 'error');
+
+test('V2 campaigns are rejected before parsing or replacing the current V1 document', () => {
+  const campaign = JSON.parse(fs.readFileSync(path.join(root, 'UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json'), 'utf8'));
+  const before = JSON.stringify(campaign), current = C.copy(sample);
+  const result = C.validatePackage(campaign);
+  assert.deepEqual(result.nodes, []);
+  assert.equal(result.diagnostics.length, 1);
+  assert.equal(result.diagnostics[0].code, 'campaign-read-only');
+  assert.match(result.diagnostics[0].message, /Tools\/DialogueCampaign/);
+  assert.throws(() => C.assertEditablePackage(campaign), /V2 全流程/);
+  assert.throws(() => C.createPreview(campaign), /V2 全流程/);
+  assert.equal(JSON.stringify(campaign), before);
+  assert.deepEqual(current, sample);
+  assert.doesNotThrow(() => C.assertEditablePackage(sample));
+});
 test('canonical package parses 50 lines, 6 choices, one measure and no errors', () => {
   const parsed = C.validatePackage(sample);
   assert.equal(parsed.nodes.filter(n => n.kind === 'line').length, 50);

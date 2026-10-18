@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-18T15:59:47.2441809+08:00",
+  "status": "implemented and verified",
+  "scope": "Day0 plus five patients over three days; existing three endings; all six source workbooks; original portraits; preserved room and terminal transitions",
+  "defaults": {
+    "initialTrust": 0,
+    "releaseThreshold": 3,
+    "dailyPurificationTarget": 1,
+    "priestFirstDay": 1,
+    "patientOrder": [
+      "child",
+      "former-ruler",
+      "battlefield-doctor",
+      "diplomat",
+      "priest"
+    ],
+    "endingPriority": [
+      "PriestAttack",
+      "LockedInRoom",
+      "TakenAway"
+    ],
+    "kpiResolution": "formal three-day completion; excludesDay0",
+    "status": "development defaults approved for this implementation"
+  },
+  "content": {
+    "sourceRows": 994,
+    "meetings": 16,
+    "sourceNodes": 978,
+    "nativeYarnNodes": 454,
+    "sourceHash": "e4e237fc63048b93411c22831ec4d7682b6f9671249a163f611f4f63bdee2218",
+    "rulesFingerprint": "479198ead3a1619c614d946a1d6101749ef7a60e976f306feab38a4cf83e8513",
+    "package": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json",
+    "provenance": "UnityProject/Assets/MiniGame/Content/Campaign/provenance.json",
+    "sourceConfiguration": "Tools/DialogueCampaign/conversion-config.json",
+    "textVariants": "Tools/DialogueCampaign/text-variants.json",
+    "sourceChecks": [
+      "deterministic regeneration --check passed",
+      "all994rows andfilledsourcecells retained",
+      "all sourced dialogue/choices/trust mapped",
+      "crossday links end encounter rather than advance date in Yarn",
+      "per-role namespaces prevent ID collision"
+    ]
+  },
+  "portraits": {
+    "count": 27,
+    "identities": 6,
+    "generationTool": "image_gen.imagegen",
+    "generationCalls": 27,
+    "requestedSize": [
+      1024,
+      1024
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "unityMaxTextureSize": 1024,
+    "allHaveTransparency": true,
+    "copyHashMismatches": 0,
+    "manifest": "Art/Characters/manifest.json",
+    "prompts": "Art/Characters/*/*.prompt.txt",
+    "catalog": "Assets/Resources/MiniGame/PortraitCatalog.asset",
+    "usedIds": 24,
+    "reservedIds": [
+      "AD04",
+      "ED02",
+      "ED03"
+    ]
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "sdkPath": ".dotnet/dotnet.exe",
+    "lockedRestore": "passed",
+    "releaseBuild": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "coreTests": 93,
+    "presentationTests": 131,
+    "total": 224,
+    "failed": 0,
+    "results": [
+      "Artifacts/Tests/Campaign/campaign-reviewed_net8.0_20261018153436.trx",
+      "Artifacts/Tests/Campaign/campaign-reviewed_net8.0_20261018153440.trx"
+    ],
+    "buildLog": "Artifacts/Tests/Campaign/build-final.log"
+  },
+  "tools": {
+    "pythonTests": 3,
+    "plannerTests": 19,
+    "plannerV1Routes": 1296,
+    "generatedHtmlCheck": "passed",
+    "deterministicCampaignCheck": "passed"
+  },
+  "unity": {
+    "editor": "2022.3.23f1c1",
+    "graphics": "Direct3D11",
+    "nativeImport": {
+      "packageId": "inspection-campaign",
+      "sourceHash": "e4e237fc63048b93411c22831ec4d7682b6f9671249a163f611f4f63bdee2218",
+      "rulesFingerprint": "479198ead3a1619c614d946a1d6101749ef7a60e976f306feab38a4cf83e8513",
+      "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "catalog": "Assets/Resources/MiniGame/PortraitCatalog.asset",
+      "sourceNodes": 978,
+      "nativeNodes": 454,
+      "portraits": 27
+    },
+    "playMode": {
+      "result": "Passed",
+      "total": 21,
+      "passed": 21,
+      "failed": 0,
+      "duration": 130.6901586,
+      "filter": "MiniGame.UnityHost.Tests",
+      "results": "Artifacts/Campaign/game-playmode-final.xml",
+      "log": "Artifacts/Campaign/game-playmode-final.log",
+      "tests": [
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignAllTreatmentRouteVisitsEveryMeetingThenLocksTheRoom",
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignNormalRouteShowsSixActorsAndAllDaysThenTakenAway",
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignReleasedPriestAttacksOnTheFollowingMorning",
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce",
+        "MiniGame.UnityHost.Tests.CampaignPresentationPlayModeTests.HistoryAndPauseFreezeTypingAndBlockContinueUntilTheyClose",
+        "MiniGame.UnityHost.Tests.CampaignPresentationPlayModeTests.LongUnicodeDialogueRevealsThenPagesWithoutLosingTextOrRepeatingCompletion",
+        "MiniGame.UnityHost.Tests.CampaignPresentationPlayModeTests.NarrationKeepsActorSpeechAndRealPortraitWhileEmptyPortraitIdsInheritTheirState",
+        "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalComputerEntryPausesRestoresAndReturnsToTheSameRoomPose",
+        "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalRoomAndNativeYarnCompleteSixRoundsOneDispositionAndBed",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.ActualYarnButtonsCompleteThreeDaysAndReturnToApartmentBetweenPatients",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoredEffectsClearOverlaysSnapTerminalAndPauseAtFinalSleepFrame",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoreInvalidatesOldContinueAndReplyCallbacksWhileFreshYarnRemainsUsable",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.SceneBootsWithOneRuntimeAndOriginalInteractionTargets",
+        "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.NativeYarnDrivesSixRoundsAndAllThreeDispositionReactions",
+        "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.PausingImmediatelyAfterContinueDoesNotLoseTheNextTranscriptLine",
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ChoiceKeysRequireSelectionWrapAndSupportAllFourNumberShortcuts",
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DispositionKeepsLastSpeechAndLocalSignalLossThenReturnsToDirectoryBeforeRoomExit",
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.HistoryShowsFiveClippedRowsAndBlocksDialogueKeyboardInput",
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.DirectorySelectionAndDoubleClickOnlyEnterTheCurrentPatient",
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.HistoryBlocksLineAndReplyCallbacksWithoutChangingQuotaAndReopensCleanly",
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.OverlayTerminalFitsActualScreenAndDifferentViewportAspectRatios"
+      ]
+    },
+    "routes": [
+      "MINIGAME_CAMPAIGN_ROUTE_PASSED ending=LockedInRoom meetings=16 sourceLines=446 actors=6",
+      "MINIGAME_CAMPAIGN_ROUTE_PASSED ending=TakenAway meetings=13 sourceLines=352 actors=6",
+      "MINIGAME_CAMPAIGN_ROUTE_PASSED ending=PriestAttack meetings=6 sourceLines=150 actors=6"
+    ],
+    "captures": "Artifacts/Campaign/Visuals",
+    "visualsReviewed": [
+      "campaign-actor-tutorial.png",
+      "campaign-actor-child.png",
+      "campaign-actor-former-ruler.png",
+      "campaign-actor-battlefield-doctor.png",
+      "campaign-actor-diplomat.png",
+      "campaign-actor-priest.png",
+      "campaign-conclusion-LockedInRoom.png",
+      "campaign-tutorial-restored-page.png",
+      "campaign-ending-TakenAway.png",
+      "campaign-ending-LockedInRoom.png",
+      "campaign-ending-PriestAttack.png"
+    ],
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "errors": 0,
+      "warnings": 9,
+      "sizeBytes": 195513434,
+      "seconds": 13.1815357
+    },
+    "buildWarningDetail": "9 CS0414 unused legacy fields in embedded Yarn LineAdvancer; Artifacts/Campaign/build-warnings.json",
+    "playerStartup": {
+      "ProcessId": 41012,
+      "Ready": true,
+      "HasExited": false,
+      "Log": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\Campaign\\player-startup.log",
+      "Scope": "Windows Mono graphics player startup only; full routes verified separately in Editor PlayMode",
+      "StoppedAfterCheck": true
+    }
+  },
+  "preservedTransitions": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "E8A668A7F5054CBBCF7D1ABD6AC240FC62FB724A5043B112291E1953E8FE65DD",
+      "unchanged": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalTransitionView.cs",
+      "sha256": "9289B68B4C425339D992ACCBCCF669D1CBD827E833FC2638687A44C456068061",
+      "unchanged": true
+    }
+  ],
+  "review": {
+    "fixed": [
+      "Narration applies its own portrait without replacing actor speech",
+      "Restore inherits last nonempty portrait",
+      "Per-round Int32 trust-prefix validation",
+      "Immutable imports include emitted runtime Yarn hash",
+      "History waits before presenting options and before submitting a pending selected option"
+    ],
+    "unresolved": 0
+  },
+  "sourceValidation": {
+    "testedFiles": 43,
+    "mismatches": 0,
+    "manifest": "Artifacts/Campaign/tested-source-hashes.json"
+  },
+  "limits": [
+    "Settings and two diplomat interpretation groups are documented development choices, not final authored rules",
+    "Morning inspection, briefing, dream and ending staging retain existing developer placeholders",
+    "All content has structural/source coverage; Unity runs representative complete routes, not every combinatorial answer path",
+    "Windows standalone checked startup; complete routes were exercised in Editor PlayMode",
+    "IL2CPP not built; Windows development player uses Mono",
+    "Ending captures include the existing opening fade; no new ending artwork was produced",
+    "No browser-based HTML visual comparison was performed"
+  ],
+  "liveEditor": {
+    "processId": 37228,
+    "scene": "MainRoomCombined",
+    "playModeReady": true,
+    "profile": "campaign",
+    "initialPhase": "Apartment",
+    "initialDay": 0,
+    "log": "Artifacts/Unity/editor.log:395"
+  },
+  "finalChecks": {
+    "gitDiffCheck": "passed",
+    "markdownMissingLinks": 0,
+    "testedSourceHashMismatches": 0,
+    "workingTreePreserved": "existing uncommitted room work retained; no commit or push"
+  }
+}

@@ -29,10 +29,18 @@ namespace MiniGame.UnityHost.Tests
                 int replies = 0;
                 bool submitted = false;
                 bool capturedReview = false;
+                bool capturedGlitch = false;
                 float deadline = Time.realtimeSinceStartup + 35f;
                 while (runtime.GetView().TerminalPage != TerminalPage.Archive && Time.realtimeSinceStartup < deadline)
                 {
                     var view = runtime.GetView();
+                    if (disposition == Disposition.Treat && !capturedGlitch
+                        && view.Cue?.Kind == PresentationKind.ExitTerminal && !view.LeavingTerminal
+                        && host.Screen.GetComponentsInChildren<Transform>(false).Any(item => item.name == "MonitorSignalLoss"))
+                    {
+                        capturedGlitch = true;
+                        yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-glitch");
+                    }
                     if (view.Input == InputContext.World)
                         Assert.That(runtime.TryInteract(view.AllowedInteractions.First()).Accepted, Is.True);
                     else if (view.Input == InputContext.TerminalDirectory)
@@ -45,6 +53,7 @@ namespace MiniGame.UnityHost.Tests
                         Assert.That(replies, Is.EqualTo(6));
                         if (disposition == Disposition.Release)
                             Assert.That(view.Game.AvailableDispositions, Does.Contain(Disposition.Release));
+                        if (disposition == Disposition.Treat) yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-measure");
                         var button = Find(host, "Disposition-" + disposition);
                         Click(button); Click(button); // The stale second pointer click must not submit twice.
                         submitted = true;
@@ -66,7 +75,13 @@ namespace MiniGame.UnityHost.Tests
                                 if (!capturedReview)
                                 {
                                     capturedReview = true;
-                                    if (disposition == Disposition.Treat) yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-review");
+                                    if (disposition == Disposition.Treat)
+                                    {
+                                        yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-review");
+                                        Click(Find(host, "HistoryTab"));
+                                        yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-history");
+                                        Click(Find(host, "AnswersTab"));
+                                    }
                                 }
                                 Click(option); replies++;
                             }
@@ -122,8 +137,21 @@ namespace MiniGame.UnityHost.Tests
             while (!runtime.GetView().Transcript.Any(entry => entry.SourceNodeId == "D1_R1_OPEN2") && Time.realtimeSinceStartup < deadline)
                 yield return null;
             Assert.That(runtime.GetView().Transcript.Count(entry => entry.SourceNodeId == "D1_R1_OPEN2"), Is.EqualTo(1));
+            Click(Find(host, "Continue"));
             Click(Find(host, "HistoryTab"));
+            yield return null; yield return null; yield return null;
+            Assert.That(Find(host, "Reply-D1_R1_O1"), Is.Null, "Choice presentation waits behind the history overlay.");
             Assert.That(host.Screen.TryCloseHistory(), Is.True);
+            while (Find(host, "Reply-D1_R1_O1") == null && Time.realtimeSinceStartup < deadline) yield return null;
+            Click(Find(host, "Reply-D1_R1_O1"));
+            Click(Find(host, "HistoryTab"));
+            yield return null; yield return null; yield return null;
+            Assert.That(runtime.GetView().Transcript.Any(entry => entry.SourceNodeId == "D1_R1_CLOSING1"), Is.False,
+                "The next Yarn line must wait while history covers the conversation.");
+            Assert.That(host.Screen.TryCloseHistory(), Is.True);
+            while (!runtime.GetView().Transcript.Any(entry => entry.SourceNodeId == "D1_R1_CLOSING1") && Time.realtimeSinceStartup < deadline)
+                yield return null;
+            Assert.That(runtime.GetView().Transcript.Count(entry => entry.SourceNodeId == "D1_R1_CLOSING1"), Is.EqualTo(1));
             Assert.That(runtime.GetView().Paused, Is.False);
         }
 

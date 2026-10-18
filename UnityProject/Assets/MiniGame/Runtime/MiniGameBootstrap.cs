@@ -16,18 +16,21 @@ namespace MiniGame.UnityHost
         [SerializeField] private PresentationEffects effects;
         [SerializeField] private MiniGameYarnBridge yarn;
         [SerializeField] private bool useTerminalDemo = true;
+        [SerializeField] private bool useCampaign;
         [SerializeField] private DialoguePackageAsset dialoguePackage;
         private GameRules rules;
         private IGameContent content;
         private YarnProject legacyProject;
         private bool terminalDemoActive;
+        private bool campaignActive;
         public GameRuntime Runtime { get; private set; }
         public MiniGameScreen Screen => screen;
         public ApartmentPlayer Player => player;
         public PresentationEffects Effects => effects;
         public bool TerminalDemoActive => terminalDemoActive;
+        public bool CampaignActive => campaignActive;
         public string SavePath => Path.Combine(Application.persistentDataPath,
-            terminalDemoActive ? "terminal-demo-save.json" : "prototype-save.json");
+            campaignActive ? "campaign-save.json" : terminalDemoActive ? "terminal-demo-save.json" : "prototype-save.json");
 
         public void Configure(MiniGameScreen ui, ApartmentPlayer worldPlayer, PresentationEffects presentation, MiniGameYarnBridge bridge)
         { screen = ui; player = worldPlayer; effects = presentation; yarn = bridge; }
@@ -35,7 +38,8 @@ namespace MiniGame.UnityHost
         private void Awake()
         {
             legacyProject = yarn.Project;
-            if (useTerminalDemo)
+            if (useCampaign) StartCampaign();
+            else if (useTerminalDemo)
             {
                 try { StartTerminalDemo(); }
                 catch (Exception exception)
@@ -50,7 +54,7 @@ namespace MiniGame.UnityHost
             screen.LoadRequested += Load;
             screen.RestartRequested += Restart;
             Debug.Log("MINIGAME_PLAYER_READY unity=" + Application.unityVersion + " phase=" + Runtime.GetView().Game.Phase
-                + " profile=" + (terminalDemoActive ? "terminal-demo" : "legacy-three-day") + " rules=" + rules.RulesId);
+                + " profile=" + (campaignActive ? "campaign" : terminalDemoActive ? "terminal-demo" : "legacy-three-day") + " rules=" + rules.RulesId);
         }
 
         private void OnDestroy()
@@ -119,6 +123,7 @@ namespace MiniGame.UnityHost
             if (compiled.SourceHash != selected.SourceHash || selected.Project.Program == null)
                 throw new InvalidOperationException("The active dialogue source and compiled Yarn project do not match.");
             rules = compiled.Rules; content = compiled.Content; terminalDemoActive = true;
+            campaignActive = compiled.Package.FormatVersion == 2;
             yarn.Configure(selected.Project);
             InstallRuntime(new GameRuntime(rules, content, useTerminalDirectory: true));
         }
@@ -127,11 +132,20 @@ namespace MiniGame.UnityHost
         {
             if (legacyProject == null) legacyProject = yarn.Project;
             rules = PrototypeRules.Create(); content = new PrototypeContent(rules); terminalDemoActive = false;
+            campaignActive = false;
             if (legacyProject != null) yarn.Configure(legacyProject);
             InstallRuntime(new GameRuntime(rules, content));
         }
 
         public void Restart() => InstallRuntime(new GameRuntime(rules, content, terminalDemoActive));
         public void RestoreCheckpoint(string json) => InstallRuntime(GameRuntime.Restore(json, rules, content));
+
+        public void StartCampaign()
+        {
+            var package = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+            if (package == null) throw new InvalidOperationException("Import the full campaign with MiniGame/Campaign/Import and activate first.");
+            StartTerminalDemo(package);
+            if (!campaignActive) throw new InvalidOperationException("The campaign resource must contain a validated V2 package.");
+        }
     }
 }

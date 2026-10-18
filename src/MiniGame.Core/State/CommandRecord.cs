@@ -14,6 +14,7 @@ namespace MiniGame.Core
         [JsonProperty(Required = Required.AllowNull)] public string? NodeId { get; set; }
         [JsonProperty(Required = Required.AllowNull)] public string? ResponseId { get; set; }
         [JsonProperty(Required = Required.AllowNull)] public Disposition? Disposition { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? PatientId { get; set; }
 
         internal static CommandRecord From(GameCommand command)
         {
@@ -24,6 +25,7 @@ namespace MiniGame.Core
                 case CompleteSleep _: return new CommandRecord { Kind = CommandKind.CompleteSleep };
                 case CompleteDream _: return new CommandRecord { Kind = CommandKind.CompleteDream };
                 case Interact c: return new CommandRecord { Kind = CommandKind.Interact, Target = c.Target };
+                case SelectPatient c: return new CommandRecord { Kind = CommandKind.SelectPatient, PatientId = c.PatientId };
                 case SelectResponse c: return new CommandRecord
                     { Kind = CommandKind.SelectResponse, EncounterId = c.EncounterId, NodeId = c.NodeId, ResponseId = c.ResponseId };
                 case CompleteResponseBranch c: return new CommandRecord
@@ -32,6 +34,8 @@ namespace MiniGame.Core
                     { Kind = CommandKind.SubmitDisposition, EncounterId = c.EncounterId, Disposition = c.Disposition };
                 case CompleteReaction c: return new CommandRecord
                     { Kind = CommandKind.CompleteReaction, EncounterId = c.EncounterId };
+                case CompleteIntroduction c: return new CommandRecord
+                    { Kind = CommandKind.CompleteIntroduction, EncounterId = c.EncounterId, NodeId = c.NodeId };
                 default: throw new ArgumentException("Unsupported command.", nameof(command));
             }
         }
@@ -46,6 +50,7 @@ namespace MiniGame.Core
                 case CommandKind.CompleteSleep: command = new CompleteSleep(); break;
                 case CommandKind.CompleteDream: command = new CompleteDream(); break;
                 case CommandKind.Interact when Target.HasValue: command = new Interact(Target.Value); break;
+                case CommandKind.SelectPatient when PatientId != null: command = new SelectPatient(PatientId); break;
                 case CommandKind.SelectResponse when EncounterId != null && NodeId != null && ResponseId != null:
                     command = new SelectResponse(EncounterId, NodeId, ResponseId); break;
                 case CommandKind.CompleteResponseBranch when EncounterId != null && NodeId != null:
@@ -54,6 +59,8 @@ namespace MiniGame.Core
                     command = new SubmitDisposition(EncounterId, Disposition.Value); break;
                 case CommandKind.CompleteReaction when EncounterId != null:
                     command = new CompleteReaction(EncounterId); break;
+                case CommandKind.CompleteIntroduction when EncounterId != null && NodeId != null:
+                    command = new CompleteIntroduction(EncounterId, NodeId); break;
                 default: throw new SnapshotValidationException("Invalid command record.");
             }
             if (SnapshotCodec.Canonical(From(command)) != SnapshotCodec.Canonical(this))

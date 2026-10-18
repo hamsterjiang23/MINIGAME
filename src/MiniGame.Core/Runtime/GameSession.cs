@@ -22,7 +22,8 @@ namespace MiniGame.Core
             _rules = rules ?? throw new ArgumentNullException(nameof(rules));
             _state = new GameStateSnapshot
             {
-                Day = 1, Phase = GamePhase.MorningInspection, Ending = EndingType.None,
+                Day = rules.StartDay, Phase = rules.StartDay == 0 ? GamePhase.Apartment : GamePhase.MorningInspection,
+                Ending = EndingType.None,
                 Patients = rules.Patients.Select(p => new PatientSnapshot
                     { Id = p.Id, Trust = p.InitialTrust, Presence = PatientPresence.Active }).ToList()
             };
@@ -42,10 +43,12 @@ namespace MiniGame.Core
                 case CompleteSleep _: reason = AdvancePhase(GamePhase.Sleeping, GamePhase.Dream, events); break;
                 case CompleteDream _: reason = AdvancePhase(GamePhase.Dream, GamePhase.AfterDream, events); break;
                 case Interact c: reason = InteractWith(c, events); break;
+                case SelectPatient c: reason = SelectPatientForToday(c, events); break;
                 case SelectResponse c: reason = Select(c, events); break;
                 case CompleteResponseBranch c: reason = FinishBranch(c, events); break;
                 case SubmitDisposition c: reason = Dispose(c, events); break;
                 case CompleteReaction c: reason = FinishReaction(c, events); break;
+                case CompleteIntroduction c: reason = FinishIntroduction(c, events); break;
                 default: reason = RejectionReason.InvalidCommand; break;
             }
             if (reason == RejectionReason.None) _history.Add(CommandRecord.From(command));
@@ -65,8 +68,8 @@ namespace MiniGame.Core
                     responses.AddRange(CurrentRound(encounter).Responses.Select(r => r.Id));
                 if (encounter.Stage == EncounterStage.AwaitingDisposition)
                 {
-                    dispositions.Add(Disposition.Treat); dispositions.Add(Disposition.Purify);
-                    if (CanRelease(encounter)) dispositions.Add(Disposition.Release);
+                    dispositions.AddRange(Meeting(encounter).ReactionNodes.Keys.OrderBy(d => d)
+                        .Where(d => d != Disposition.Release || CanRelease(encounter)));
                 }
             }
             return new PlayerView(_state.Day, _state.Phase, _state.Ending, remaining,
@@ -81,6 +84,50 @@ namespace MiniGame.Core
             RulesId = _rules.RulesId, RulesFingerprint = _rules.Fingerprint,
             State = _state, CommandHistory = _history
         });
+
+        // Read-only facts from accepted commands, for content that refers to previous choices.
+        public bool HasResponse(string patientId, int day, string responseId)
+            => _state.Encounters.Any(e => e.PatientId == patientId && e.Day == day &&
+                e.Responses.Any(r => r.ResponseId == responseId));
+
+        public bool HasDispositionOtherThan(string patientId, int day, Disposition disposition)
+            => _state.Encounters.Any(e => e.PatientId != patientId && e.Day == day && e.Disposition == disposition);
+
+        public bool CanReceiveToday(string patientId)
+            => CanSelectPendingEncounter() && _state.Queue.Skip(_state.QueueIndex).Contains(patientId)
+                && Patient(patientId).Presence == PatientPresence.Active
+                && !_state.Encounters.Any(e => e.Day == _state.Day && e.PatientId == patientId
+                    && e.Stage == EncounterStage.Completed);
+
+        private bool CanSelectPendingEncounter()
+        {
+            var current = CurrentEncounter();
+            if (_state.Phase != GamePhase.Work || current == null || current.ExplicitlySelected
+                || current.NormalRoundIndex != 0 || current.Responses.Count != 0 || current.Disposition.HasValue)
+                return false;
+            var initialStage = Meeting(current).IntroNodeId == null
+                ? EncounterStage.NormalDialogue : EncounterStage.Introduction;
+            return current.Stage == initialStage;
+        }
+
+        private RejectionReason SelectPatientForToday(SelectPatient command, List<GameEvent> events)
+        {
+            if (_state.Phase != GamePhase.Work) return RejectionReason.WrongPhase;
+            if (!CanReceiveToday(command.PatientId)) return RejectionReason.PatientUnavailable;
+            var current = CurrentEncounter()!;
+            if (current.PatientId != command.PatientId)
+            {
+                // Only an unpresented, untouched reservation can be replaced. Completed records stay in place.
+                _state.Encounters.Remove(current);
+                var selectedIndex = _state.Queue.IndexOf(command.PatientId, _state.QueueIndex);
+                _state.Queue.RemoveAt(selectedIndex);
+                _state.Queue.Insert(_state.QueueIndex, command.PatientId);
+                StartNextEncounterOrEndWork(events);
+                current = CurrentEncounter()!;
+            }
+            current.ExplicitlySelected = true;
+            return RejectionReason.None;
+        }
 
         public static GameSession Restore(GameSnapshot snapshot, GameRules rules)
         {
@@ -194,21 +241,37 @@ namespace MiniGame.Core
             else
             {
                 encounter.NormalRoundIndex++;
-                var meeting = Meeting(encounter);
-                if (encounter.NormalRoundIndex < meeting.NormalRounds.Count)
-                {
-                    encounter.Stage = EncounterStage.NormalDialogue;
-                    Emit(events, GameEventKind.DialogueNodeStarted, encounter, CurrentNode(encounter));
-                }
-                else if (meeting.SpecialRound != null && Patient(encounter.PatientId).Trust >= meeting.SpecialTrustThreshold)
-                {
-                    encounter.SpecialStarted = true;
-                    encounter.Stage = EncounterStage.SpecialDialogue;
-                    Emit(events, GameEventKind.DialogueNodeStarted, encounter, meeting.SpecialRound.NodeId);
-                }
-                else AwaitDisposition(encounter, events);
+                StartDialogueOrDisposition(encounter, events);
             }
             return RejectionReason.None;
+        }
+
+        private RejectionReason FinishIntroduction(CompleteIntroduction command, List<GameEvent> events)
+        {
+            var reason = MatchEncounter(command.EncounterId, out var current);
+            if (reason != RejectionReason.None) return reason;
+            var encounter = current!;
+            if (encounter.Stage != EncounterStage.Introduction) return RejectionReason.WrongStage;
+            if (command.NodeId != Meeting(encounter).IntroNodeId) return RejectionReason.WrongNode;
+            StartDialogueOrDisposition(encounter, events);
+            return RejectionReason.None;
+        }
+
+        private void StartDialogueOrDisposition(EncounterSnapshot encounter, List<GameEvent> events)
+        {
+            var meeting = Meeting(encounter);
+            if (encounter.NormalRoundIndex < meeting.NormalRounds.Count)
+            {
+                encounter.Stage = EncounterStage.NormalDialogue;
+                Emit(events, GameEventKind.DialogueNodeStarted, encounter, CurrentNode(encounter));
+            }
+            else if (meeting.SpecialRound != null && Patient(encounter.PatientId).Trust >= meeting.SpecialTrustThreshold)
+            {
+                encounter.SpecialStarted = true;
+                encounter.Stage = EncounterStage.SpecialDialogue;
+                Emit(events, GameEventKind.DialogueNodeStarted, encounter, meeting.SpecialRound.NodeId);
+            }
+            else AwaitDisposition(encounter, events);
         }
 
         private void AwaitDisposition(EncounterSnapshot encounter, List<GameEvent> events)
@@ -225,12 +288,22 @@ namespace MiniGame.Core
             if (!Enum.IsDefined(typeof(Disposition), command.Disposition)) return RejectionReason.InvalidCommand;
             if (encounter.Disposition.HasValue) return RejectionReason.AlreadyDisposed;
             if (encounter.Stage != EncounterStage.AwaitingDisposition) return RejectionReason.WrongStage;
+            var meeting = Meeting(encounter);
+            if (!meeting.ReactionNodes.ContainsKey(command.Disposition)) return RejectionReason.DispositionUnavailable;
             if (command.Disposition == Disposition.Release && !CanRelease(encounter)) return RejectionReason.ReleaseUnavailable;
 
             var patient = Patient(encounter.PatientId);
             var profile = _rules.Patient(patient.Id);
             if (command.Disposition == Disposition.Treat && patient.TreatmentCount == int.MaxValue)
                 return RejectionReason.NumericOverflow;
+            if (command.Disposition == Disposition.Purify && CurrentDay().Purifications == int.MaxValue)
+                return RejectionReason.NumericOverflow;
+            int trust;
+            meeting.DispositionTrustDeltas.TryGetValue(command.Disposition, out var delta);
+            try { trust = checked(patient.Trust + delta); }
+            catch (OverflowException) { return RejectionReason.NumericOverflow; }
+
+            patient.Trust = trust;
             encounter.Disposition = command.Disposition;
             encounter.Stage = EncounterStage.Reaction;
             if (command.Disposition == Disposition.Purify)
@@ -301,11 +374,15 @@ namespace MiniGame.Core
             var encounter = new EncounterSnapshot
             {
                 Id = $"day{_state.Day}:{patientId}", Day = _state.Day,
-                PatientId = patientId, Stage = EncounterStage.NormalDialogue
+                PatientId = patientId,
+                Stage = _rules.Meeting(_state.Day, patientId).IntroNodeId == null
+                    ? EncounterStage.NormalDialogue : EncounterStage.Introduction
             };
             _state.Encounters.Add(encounter);
             _state.CurrentEncounterId = encounter.Id;
             Emit(events, GameEventKind.EncounterStarted, encounter, CurrentNode(encounter));
+            if (encounter.Stage == EncounterStage.Introduction)
+                Emit(events, GameEventKind.IntroductionStarted, encounter, CurrentNode(encounter));
         }
 
         private void AdvanceDay(List<GameEvent> events)
@@ -333,8 +410,8 @@ namespace MiniGame.Core
                 events.Add(new GameEvent(GameEventKind.ScheduledEventExecuted, _state.Day,
                     scheduled.PatientId, referenceId: scheduled.Id));
             }
-            var finished = _state.Day > _rules.Days.Count;
-            var quotaFailure = finished && _state.Days.Any(d => d.QuotaMet == false);
+            var finished = _state.Day > _rules.EndDay;
+            var quotaFailure = finished && _state.Days.Any(d => d.Day > 0 && d.QuotaMet == false);
             var eligible = new HashSet<EndingType>();
             if (priestAttack) eligible.Add(EndingType.PriestAttack);
             if (quotaFailure) eligible.Add(EndingType.LockedInRoom);
@@ -381,6 +458,7 @@ namespace MiniGame.Core
         {
             switch (encounter.Stage)
             {
+                case EncounterStage.Introduction: return Meeting(encounter).IntroNodeId;
                 case EncounterStage.NormalDialogue: return Meeting(encounter).NormalRounds[encounter.NormalRoundIndex].NodeId;
                 case EncounterStage.SpecialDialogue: return Meeting(encounter).SpecialRound!.NodeId;
                 case EncounterStage.ResponseBranch: return encounter.PendingBranchNodeId;

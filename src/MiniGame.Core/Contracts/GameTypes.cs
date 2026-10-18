@@ -10,7 +10,7 @@ namespace MiniGame.Core
 
     public enum EncounterStage
     {
-        NormalDialogue, ResponseBranch, SpecialDialogue, AwaitingDisposition, Reaction, Completed
+        NormalDialogue, ResponseBranch, SpecialDialogue, AwaitingDisposition, Reaction, Completed, Introduction
     }
 
     public enum Disposition { Treat, Purify, Release }
@@ -22,14 +22,14 @@ namespace MiniGame.Core
     {
         CompleteMorningInspection, CompleteBriefing, Interact,
         CompleteSleep, CompleteDream, SelectResponse, CompleteResponseBranch,
-        SubmitDisposition, CompleteReaction
+        SubmitDisposition, CompleteReaction, CompleteIntroduction, SelectPatient
     }
 
     public enum RejectionReason
     {
         None, InvalidCommand, GameEnded, WrongPhase, InteractionUnavailable,
         WrongEncounter, WrongStage, WrongNode, UnknownResponse,
-        ReleaseUnavailable, AlreadyDisposed, NumericOverflow
+        ReleaseUnavailable, AlreadyDisposed, NumericOverflow, DispositionUnavailable, PatientUnavailable
     }
 
     public enum GameEventKind
@@ -37,6 +37,6 @@ namespace MiniGame.Core
         PhaseChanged, EncounterStarted, DialogueNodeStarted, ResponseSelected,
         ResponseBranchStarted, DispositionAvailable, DispositionCommitted,
         ReactionRequested, EncounterCompleted, DayCompleted,
-        PatientTerminated, ScheduledEventExecuted, GameEnded
+        PatientTerminated, ScheduledEventExecuted, GameEnded, IntroductionStarted
     }
 }

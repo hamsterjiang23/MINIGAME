@@ -47,6 +47,8 @@ namespace MiniGame.Core.Tests
                 if (view.EncounterStage == EncounterStage.AwaitingDisposition) return;
                 if (view.EncounterStage == EncounterStage.ResponseBranch)
                     Accept(session, new CompleteResponseBranch(view.CurrentEncounterId!, view.CurrentNodeId!));
+                else if (view.EncounterStage == EncounterStage.Introduction)
+                    Accept(session, new CompleteIntroduction(view.CurrentEncounterId!, view.CurrentNodeId!));
                 else Reply(session, response);
             }
             Assert.Fail("Dialogue did not reach disposition.");
@@ -82,6 +84,8 @@ namespace MiniGame.Core.Tests
                 case GamePhase.Work:
                     switch (view.EncounterStage)
                     {
+                        case EncounterStage.Introduction:
+                            Accept(session, new CompleteIntroduction(view.CurrentEncounterId!, view.CurrentNodeId!)); break;
                         case EncounterStage.NormalDialogue:
                         case EncounterStage.SpecialDialogue:
                             Accept(session, new SelectResponse(view.CurrentEncounterId!, view.CurrentNodeId!, response)); break;

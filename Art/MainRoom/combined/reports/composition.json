@@ -1,0 +1,475 @@
+{
+  "inputs": [
+    {
+      "path": "Art\\MainRoom\\exports\\MainRoom.glb",
+      "sha256": "8cb01954ddd45de6498b152ff4eb8c344912ccf1d193446c0b4486b347774114"
+    },
+    {
+      "path": "Art\\MainRoom2\\minigame员工宿舍.blend",
+      "sha256": "a0ff5836d10c188f8fac7496772762ed745ac5a2e1aff2c073ec6a3b45b2dd35"
+    }
+  ],
+  "source_a_retained": [
+    "room shell and original poster graphics",
+    "window/curtain and heating",
+    "CRT and low-poly input peripherals",
+    "central rug and loose newspaper"
+  ],
+  "source_b_retained": {
+    "Bed": [
+      "SM_bed_1",
+      "SM_mattress_1",
+      "SM_pillow_1",
+      "SM_rug_2",
+      "SM_cardboard_box_5"
+    ],
+    "WorkFurniture": [
+      "obj_01",
+      "HT01",
+      "HT01.001"
+    ],
+    "WorkProps": [
+      "SM_cup_2",
+      "SM_CigaretteBox02",
+      "SM_CigaretteBox01",
+      "SM_Bottle_Set1.002",
+      "SM_MERGED_SM_book_16.002",
+      "SM_MERGED_SM_book_16.004"
+    ],
+    "Cabinet": [
+      "SM_CupboardChunk",
+      "SM_MERGED_SM_book_16.001",
+      "SM_Bottle_Set1",
+      "SM_Bottle_Set1.003",
+      "SM_SingleBox",
+      "SM_MovingBoxes"
+    ],
+    "ExteriorConcrete": [
+      "Wall__3_.003",
+      "立方体.003"
+    ]
+  },
+  "source_b_relocated_to_a_layout": true,
+  "source_b_frozen_object_animations": [
+    "HT01",
+    "SM_MERGED_SM_book_16.004",
+    "SM_cup_2",
+    "SM_CigaretteBox02",
+    "SM_CigaretteBox01",
+    "SM_Bottle_Set1",
+    "SM_SingleBox",
+    "SM_cardboard_box_5",
+    "HT01.001",
+    "SM_Bottle_Set1.002",
+    "SM_Bottle_Set1.003",
+    "SM_MERGED_SM_book_16.001",
+    "SM_MERGED_SM_book_16.002"
+  ],
+  "source_b_placement_checks": [
+    {
+      "object": "B_ExteriorConcrete_Wall__3_.003",
+      "bounds_min": [
+        -3.9146323204040527,
+        6.623961925506592,
+        -3.4686999320983887
+      ],
+      "bounds_max": [
+        6.085366725921631,
+        6.823962688446045,
+        6.948385715484619
+      ],
+      "exterior": true
+    },
+    {
+      "object": "B_ExteriorConcrete_立方体.003",
+      "bounds_min": [
+        -4.054443836212158,
+        5.5389404296875,
+        0.719845712184906
+      ],
+      "bounds_max": [
+        6.54348611831665,
+        7.538941383361816,
+        1.1692266464233398
+      ],
+      "exterior": true
+    },
+    {
+      "object": "B_obj_01",
+      "bounds_min": [
+        -2.7809956073760986,
+        -1.4937883615493774,
+        0.0004063844680786133
+      ],
+      "bounds_max": [
+        -1.998759150505066,
+        0.09318532049655914,
+        0.7833139896392822
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_HT01",
+      "bounds_min": [
+        -1.9082138538360596,
+        -1.103359341621399,
+        -0.0004886984825134277
+      ],
+      "bounds_max": [
+        -1.2865132093429565,
+        -0.4857337772846222,
+        0.9594997763633728
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_MERGED_SM_book_16.004",
+      "bounds_min": [
+        -2.693319320678711,
+        -0.30434849858283997,
+        0.7819543480873108
+      ],
+      "bounds_max": [
+        -2.3970768451690674,
+        0.022692633792757988,
+        0.8563493490219116
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_rug_2",
+      "bounds_min": [
+        -2.102060556411743,
+        1.6677305698394775,
+        0.5470446944236755
+      ],
+      "bounds_max": [
+        -0.754902184009552,
+        2.498525619506836,
+        0.7263664603233337
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_pillow_1",
+      "bounds_min": [
+        -2.6440348625183105,
+        1.7954931259155273,
+        0.6096972227096558
+      ],
+      "bounds_max": [
+        -2.2310009002685547,
+        2.444493293762207,
+        0.7545472383499146
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_mattress_1",
+      "bounds_min": [
+        -2.6077568531036377,
+        1.6884289979934692,
+        0.49242496490478516
+      ],
+      "bounds_max": [
+        -0.6922455430030823,
+        2.5515575408935547,
+        0.6137879490852356
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_bed_1",
+      "bounds_min": [
+        -2.6441657543182373,
+        1.660072922706604,
+        0.003499269485473633
+      ],
+      "bounds_max": [
+        -0.6558365821838379,
+        2.579913377761841,
+        1.0014612674713135
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_cup_2",
+      "bounds_min": [
+        -2.678450584411621,
+        -0.5230817198753357,
+        0.7829999923706055
+      ],
+      "bounds_max": [
+        -2.5215489864349365,
+        -0.3769182562828064,
+        0.8703259825706482
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_CigaretteBox02",
+      "bounds_min": [
+        -2.19795560836792,
+        -1.3832746744155884,
+        0.7829999923706055
+      ],
+      "bounds_max": [
+        -2.042044162750244,
+        -1.21672523021698,
+        0.8094599843025208
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_CigaretteBox01",
+      "bounds_min": [
+        -2.7282702922821045,
+        -1.4535789489746094,
+        0.7829999923706055
+      ],
+      "bounds_max": [
+        -2.6317298412323,
+        -1.3464211225509644,
+        0.8378899097442627
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_Bottle_Set1",
+      "bounds_min": [
+        2.5542094707489014,
+        0.7454923391342163,
+        0.6761290431022644
+      ],
+      "bounds_max": [
+        2.646027088165283,
+        0.8400411009788513,
+        1.0306620597839355
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_SingleBox",
+      "bounds_min": [
+        2.114474296569824,
+        -0.6791142225265503,
+        -0.0060686469078063965
+      ],
+      "bounds_max": [
+        2.3696277141571045,
+        -0.4231400489807129,
+        0.13498267531394958
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_MovingBoxes",
+      "bounds_min": [
+        2.262861728668213,
+        -0.1419985443353653,
+        -0.0071489810943603516
+      ],
+      "bounds_max": [
+        2.7519803047180176,
+        0.3806682825088501,
+        0.4988567531108856
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_cardboard_box_5",
+      "bounds_min": [
+        -1.2928448915481567,
+        2.0960285663604736,
+        -0.001524507999420166
+      ],
+      "bounds_max": [
+        -0.9502414464950562,
+        2.496183156967163,
+        0.30223560333251953
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_HT01.001",
+      "bounds_min": [
+        -1.8957396745681763,
+        -1.0850681066513062,
+        0.39229899644851685
+      ],
+      "bounds_max": [
+        -1.3399767875671387,
+        -0.5249198079109192,
+        0.45278114080429077
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_CupboardChunk",
+      "bounds_min": [
+        2.0349390506744385,
+        0.3448711335659027,
+        0.0007606176659464836
+      ],
+      "bounds_max": [
+        2.745319128036499,
+        1.4130761623382568,
+        0.6787957549095154
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_Bottle_Set1.002",
+      "bounds_min": [
+        -2.302668333053589,
+        -0.13837435841560364,
+        0.7829999923706055
+      ],
+      "bounds_max": [
+        -2.0973317623138428,
+        0.038374464958906174,
+        1.138725996017456
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_Bottle_Set1.003",
+      "bounds_min": [
+        2.5492255687713623,
+        0.8823198080062866,
+        0.6761290431022644
+      ],
+      "bounds_max": [
+        2.6385867595672607,
+        0.9757516980171204,
+        0.8830708265304565
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_MERGED_SM_book_16.001",
+      "bounds_min": [
+        2.186178684234619,
+        0.9257198572158813,
+        0.6707578897476196
+      ],
+      "bounds_max": [
+        2.6541359424591064,
+        1.3734467029571533,
+        0.7810999751091003
+      ],
+      "exterior": false
+    },
+    {
+      "object": "B_SM_MERGED_SM_book_16.002",
+      "bounds_min": [
+        -2.7639851570129395,
+        -0.2206968069076538,
+        0.7808186411857605
+      ],
+      "bounds_max": [
+        -2.6971075534820557,
+        -0.0594957135617733,
+        0.9800959229469299
+      ],
+      "exterior": false
+    }
+  ],
+  "window_exterior": "Original MainRoom2 concrete wall and ledge, outside the window; transparent glass preserves depth",
+  "work_surface_adjustment": "Bottle, cup and packets repositioned to keep the retained CRT visible",
+  "source_a_replaced_objects": [
+    "Back cross slat.003",
+    "Back cross slat.004",
+    "Back cross slat.005",
+    "Back upright.002",
+    "Back upright.003",
+    "Bed end cross rail.002",
+    "Bed end cross rail.003",
+    "Bed rounded end frame.002",
+    "Bed rounded end frame.003",
+    "Bed side rail.002",
+    "Bed side rail.003",
+    "Bed vertical end bar.006",
+    "Bed vertical end bar.007",
+    "Bed vertical end bar.008",
+    "Bed vertical end bar.009",
+    "Bed vertical end bar.010",
+    "Bed vertical end bar.011",
+    "Book page block.003",
+    "Book page block.004",
+    "Book page block.005",
+    "Cabinet bottle body.001",
+    "Cabinet bottle cap.001",
+    "Cabinet bottle label.001",
+    "Cabinet bottle neck.001",
+    "Cabinet bottle shoulder.001",
+    "Cabinet inset panel.001",
+    "Cabinet small handle.001",
+    "Chair leg.004",
+    "Chair leg.005",
+    "Chair leg.006",
+    "Chair leg.007",
+    "Chair seat.001",
+    "Chair side stretcher.002",
+    "Chair side stretcher.003",
+    "Desk bottle body.001",
+    "Desk bottle cap.001",
+    "Desk bottle label.001",
+    "Desk bottle neck.001",
+    "Desk bottle shoulder.001",
+    "Desk pedestal.001",
+    "Desk rear modesty panel.001",
+    "Desk right support.001",
+    "Desk shallow drawer.001",
+    "Desk top.001",
+    "Drawer 1 handle.001",
+    "Drawer 1.001",
+    "Drawer 2 handle.001",
+    "Drawer 2.001",
+    "Drawer 3 handle.001",
+    "Drawer 3.001",
+    "Drawer 4 handle.001",
+    "Drawer 4.001",
+    "Flattened pillow.001",
+    "Mattress stitched piping.002",
+    "Mattress stitched piping.003",
+    "Mattress support.006",
+    "Mattress support.007",
+    "Mattress support.008",
+    "Mattress support.009",
+    "Mattress support.010",
+    "Mattress support.011",
+    "Mug body.001",
+    "Mug dark opening.001",
+    "Mug handle.001",
+    "Rumpled blanket.001",
+    "Shallow drawer pull.001",
+    "Side cabinet body.001",
+    "Side cabinet door.001",
+    "Side cabinet top.001",
+    "Stacked book.003",
+    "Stacked book.004",
+    "Stacked book.005",
+    "Storage box lid.004",
+    "Storage box lid.005",
+    "Storage box lid.006",
+    "Storage box lid.007",
+    "Storage box.004",
+    "Storage box.005",
+    "Storage box.006",
+    "Storage box.007",
+    "Thin mattress.001"
+  ],
+  "static_detail_groups": [
+    "A_TerminalAccessories",
+    "A_Heating",
+    "A_Rug",
+    "A_Window",
+    "Front closure"
+  ],
+  "wood_surface_source": "MainRoom2: Lime._-_019 / KB3D_GAE_WoodA",
+  "mesh_objects": 61,
+  "triangles": 66185,
+  "scope": "Combined editable art and Unity preview; no gameplay/collider/performance acceptance",
+  "render_preview_front_closure_hidden": true
+}

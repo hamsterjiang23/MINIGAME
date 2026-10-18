@@ -2,6 +2,10 @@
 
 所有本次制作的资源集中在本文件夹内。打开[完整场景](scene/MainRoom.blend)查看房间；[主视角预览](previews/main-room-preview.png)用于核对构图。[opinion]
 
+当前融合版入口见 [combined](combined/README.md)：结合本版布局、原创图形和窗暖，与第二版家具、床品和生活道具；窗外水泥墙及台沿保留。[verified: combined/reports/composition.json source_a_retained/source_b_retained/window_exterior]
+
+2026-10-18 首版导入预览保留在 [MainRoomPreview.unity](../../UnityProject/Assets/MiniGame/Scenes/MainRoomPreview.unity)，菜单 `MiniGame/Room Art/Import and open preview` 可重建。后续可玩融合版入口是 `MainRoomCombined.unity`，门、电脑与床的接入范围见[玩法报告](../../docs/main-room-gameplay-verification.json)。[verified: ../../docs/main-room-import-verification.json scene；../../docs/main-room-gameplay-verification.json scene/interactions]
+
 ## 文件入口
 
 - references：用户提供的两张主场景参考图；第一张核对形体、摆放和材质，第二张核对粗粝、低清的效果。[verified: reports/source-provenance.json references]
@@ -29,7 +33,7 @@ models 中按编号保存的Blender部件是集合库：在Blender使用 File �
 
 这是依据两张图搭建的可编辑场景第一版。图片没有尺寸和背面信息，房间尺寸、未入镜的入口和遮挡细节按制作需要推定；墙上图形为原创占位，不是已确认叙事文案。[opinion]
 
-GLB以普通UV贴图表达Blender中的盒状投射材质，局部纹理朝向可能有差异；以Blender文件和实际渲染为美术核对依据。Unity导入、碰撞、互动、性能和正式发布构建均未在本次美术制作中验证。[opinion]
+GLB以普通UV贴图表达Blender中的盒状投射材质，局部纹理朝向可能有差异；以Blender文件和实际渲染为美术核对依据。美术制作时尚未验证 Unity；后续导入预览已单独记录，碰撞、互动、性能和正式发布构建仍未在本次导入中验证。[verified: ../../docs/main-room-import-verification.json scope/limits] [opinion]
 
 本目录的二进制资源沿用仓库LFS要求；参考图、概念图、Tripo原件、可编辑场景、独立部件、贴图、预览、导出、脚本和验证记录一起纳入版本管理。Blender自动备份和此前会话备份保留在本地，不作为交付资产。[opinion]
 
@@ -40,4 +44,6 @@ GLB以普通UV贴图表达Blender中的盒状投射材质，局部纹理朝向�
     git lfs install
     git lfs pull --include="Art/MainRoom/**" --exclude=""
 
-随后打开 scene/MainRoom.blend。完整原始文件的大小与SHA256见[物料同步清单](reports/publish-inventory.json)，场景和GLB核验见[验证记录](reports/scene-validation.json)。Unity适配仍待完成，不将GitHub同步视为Unity导入成功。[verified: reports/scene-validation.json scope]
+随后打开 scene/MainRoom.blend。完整原始文件的大小与SHA256见[物料同步清单](reports/publish-inventory.json)，场景和GLB核验见[验证记录](reports/scene-validation.json)；后续 Unity 导入范围见[导入记录](../../docs/main-room-import-verification.json)。[verified: reports/scene-validation.json scope；../../docs/main-room-import-verification.json scope]
+
+重做 Unity 交换资源时，在仓库根运行 `blender --background --threads 2 --python Art/MainRoom/scripts/export_unity.py`，随后在 Unity 执行导入预览菜单。脚本使用现有 GLB，保留原始美术文件；预览灯光为实时近似，未承诺还原 Blender 的 Cycles 渲染。[verified: scripts/export_unity.py main；../../UnityProject/Assets/MiniGame/Editor/MainRoomPreviewBuilder.cs ImportAndOpen] [opinion]

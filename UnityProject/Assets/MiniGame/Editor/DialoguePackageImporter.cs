@@ -64,7 +64,7 @@ namespace MiniGame.UnityHost.Editor
             var json = File.ReadAllText(sourcePath, Encoding.UTF8);
             var compiled = ValidatePackage(json);
             // The identity includes JSON metadata as well as Yarn and rules. Short hashes keep Windows paths usable.
-            var identity = Hash(compiled.SourceHash + ":" + compiled.Rules.Fingerprint + ":" + Hash(json));
+            var identity = Hash(compiled.SourceHash + ":" + compiled.Rules.Fingerprint + ":" + Hash(json) + ":" + Hash(compiled.RuntimeYarn));
             var packageId = new string(compiled.Package.PackageId.Select(c => char.IsLetterOrDigit(c) || c == '-' || c == '_' ? c : '_').ToArray());
             var directory = ImportedDirectory + "/" + packageId + "/" + identity.Substring(0, 32);
             EnsureFolder(directory);
@@ -283,6 +283,13 @@ namespace MiniGame.UnityHost.Editor
             {
                 validatedJson = File.ReadAllText(selectedPath, Encoding.UTF8);
                 var result = DialoguePackageImporter.ValidatePackage(validatedJson);
+                if (result.Package.FormatVersion == 2)
+                {
+                    summary = "全流程内容包：" + result.Package.PackageId + "\n对象：" + result.Rules.Patients.Count
+                        + "  会谈：" + result.Rules.Days.Sum(day => day.Meetings.Count)
+                        + "\n请使用 MiniGame/Campaign/Import and activate，将全流程与立绘一起导入。\n单日演示的活动内容保持独立。";
+                    return;
+                }
                 var active = AssetDatabase.LoadAssetAtPath<DialoguePackageAsset>(DialoguePackageImporter.ActiveAssetPath);
                 var old = active != null && active.PackageSource != null ? DialoguePackageCompiler.Compile(active.PackageSource.text) : null;
                 var previousIds = old?.SourceNodes.Select(node => node.Id).ToArray() ?? Array.Empty<string>();

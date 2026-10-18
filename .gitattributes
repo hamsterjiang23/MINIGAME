@@ -20,6 +20,7 @@
 *.ttf filter=lfs diff=lfs merge=lfs -text
 *.otf filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
 *.pdb filter=lfs diff=lfs merge=lfs -text
@@ -44,6 +45,7 @@ src/**/*.meta whitespace=-blank-at-eol
 UnityProject/ProjectSettings/*.asset whitespace=-blank-at-eol
 UnityProject/Assets/**/*.unity whitespace=-blank-at-eol
 UnityProject/Assets/**/*.mat whitespace=-blank-at-eol
+UnityProject/Assets/**/*.asset whitespace=-blank-at-eol
 UnityProject/Assets/**/*.yarn whitespace=-blank-at-eof
 # Binary files without a common extension and other files >= 1 MiB.
 research/no-im-not-a-human/Analysis/Assets/ManagedExport/ExportedProject/Assets/_Localization/Tables/Text/_Separating/DayDialogs/DayDialogs[[:space:]]Shared[[:space:]]Data.asset filter=lfs diff=lfs merge=lfs -text

@@ -5,7 +5,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $projectPath = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$scenePath = Join-Path $projectPath 'Assets/MiniGame/Scenes/InspectionApartment.unity'
+$scenePath = Join-Path $projectPath 'Assets/MiniGame/Scenes/MainRoomCombined.unity'
 $artifactPath = [IO.Path]::GetFullPath((Join-Path $projectPath '../Artifacts/Unity'))
 foreach ($requiredPath in @($EditorPath, $scenePath)) {
     if (-not (Test-Path -LiteralPath $requiredPath -PathType Leaf)) {
@@ -28,7 +28,7 @@ $startInfo = New-Object System.Diagnostics.ProcessStartInfo
 $startInfo.FileName = [IO.Path]::GetFullPath($EditorPath)
 $startInfo.UseShellExecute = $false
 $startInfo.WorkingDirectory = $projectPath
-$startInfo.Arguments = '-projectPath "{0}" -executeMethod MiniGame.UnityHost.Editor.ReferencePrototypeBuilder.OpenPrototype -logFile "{1}"' -f $projectPath, (Join-Path $artifactPath 'editor.log')
+$startInfo.Arguments = '-projectPath "{0}" -executeMethod MiniGame.UnityHost.Editor.MainRoomGameplayBuilder.OpenAndPlay -logFile "{1}"' -f $projectPath, (Join-Path $artifactPath 'editor.log')
 if ([string]::IsNullOrWhiteSpace($startInfo.EnvironmentVariables['ALLUSERSPROFILE'])) {
     $commonDataPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::CommonApplicationData)
     if ([string]::IsNullOrWhiteSpace($commonDataPath) -or -not (Test-Path -LiteralPath $commonDataPath -PathType Container)) {

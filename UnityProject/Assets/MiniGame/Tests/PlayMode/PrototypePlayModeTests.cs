@@ -211,17 +211,21 @@ namespace MiniGame.UnityHost.Tests
                 staleCallback.Invoke();
                 for (int index = 0; index < 8; index++) yield return null;
                 Assert.That(fresh.Save(), Is.EqualTo(before), "An old UI callback must not advance a restored runtime.");
-                yield return WaitForButton(host, "Continue");
-                FindActiveButton(host, "Continue").onClick.Invoke();
                 if (replies)
                 {
+                    // Completed actor lines resume at the outstanding choices instead of replaying the introduction.
                     yield return WaitForButton(host, "Reply-", true);
                     FindActiveButton(host, "Reply-", true).onClick.Invoke();
                     for (int index = 0; index < 4; index++) yield return null;
                     Assert.That(fresh.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.ResponseBranch));
                     Assert.That(fresh.GetView().Cue.Kind, Is.EqualTo(PresentationKind.ResponseBranch));
                 }
-                else yield return WaitForPhase(host, GamePhase.Briefing);
+                else
+                {
+                    yield return WaitForButton(host, "Continue");
+                    FindActiveButton(host, "Continue").onClick.Invoke();
+                    yield return WaitForPhase(host, GamePhase.Briefing);
+                }
             }
         }
 

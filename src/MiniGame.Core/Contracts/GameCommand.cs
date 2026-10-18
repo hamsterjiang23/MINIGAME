@@ -14,6 +14,12 @@ namespace MiniGame.Core
         public Interact(InteractionTarget target) { Target = target; }
     }
 
+    public sealed class SelectPatient : GameCommand
+    {
+        public string PatientId { get; }
+        public SelectPatient(string patientId) { PatientId = patientId; }
+    }
+
     public sealed class SelectResponse : GameCommand
     {
         public string EncounterId { get; }
@@ -43,5 +49,13 @@ namespace MiniGame.Core
     {
         public string EncounterId { get; }
         public CompleteReaction(string encounterId) { EncounterId = encounterId; }
+    }
+
+    public sealed class CompleteIntroduction : GameCommand
+    {
+        public string EncounterId { get; }
+        public string NodeId { get; }
+        public CompleteIntroduction(string encounterId, string nodeId)
+        { EncounterId = encounterId; NodeId = nodeId; }
     }
 }

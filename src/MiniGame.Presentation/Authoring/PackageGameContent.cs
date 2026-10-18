@@ -16,13 +16,18 @@ namespace MiniGame.Presentation.Authoring
         public string Revision { get; }
         public IReadOnlyList<DialogueContent> Nodes { get; }
         public IReadOnlyDictionary<string, DialogueSegment> Segments { get; }
+        public IReadOnlyDictionary<string, DialogueTextVariant> TextVariants { get; }
+        private readonly HashSet<string> _narration;
 
-        internal PackageGameContent(GameRules rules, string revision, Dictionary<string, DialogueSegment> segments)
+        internal PackageGameContent(GameRules rules, string revision, Dictionary<string, DialogueSegment> segments,
+            IEnumerable<DialogueTextVariant>? variants = null)
         {
             Revision = revision;
             _fallback = new PrototypeContent(rules);
             _segments = new Dictionary<string, DialogueSegment>(segments, StringComparer.Ordinal);
             Segments = new ReadOnlyDictionary<string, DialogueSegment>(_segments);
+            TextVariants = new ReadOnlyDictionary<string, DialogueTextVariant>((variants ?? Array.Empty<DialogueTextVariant>()).ToDictionary(v => v.SourceId, StringComparer.Ordinal));
+            _narration = new HashSet<string>(segments.Values.SelectMany(s => s.Lines).Where(l => l.IsNarration).Select(l => l.SourceNodeId), StringComparer.Ordinal);
             _nodes = _fallback.Nodes.ToDictionary(n => n.NodeId, StringComparer.Ordinal);
             foreach (var segment in _segments.Values)
             {
@@ -35,6 +40,14 @@ namespace MiniGame.Presentation.Authoring
 
         public DialogueSegment GetSegment(string coreNodeId) => _segments.TryGetValue(coreNodeId, out var segment)
             ? segment : throw new InvalidOperationException("The core node has no imported dialogue segment: " + coreNodeId);
+
+        public string ResolveText(string sourceId, string original, Func<string, bool> predicate)
+        {
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+            return TextVariants.TryGetValue(sourceId, out var variant) && !predicate(variant.Predicate) ? variant.FallbackText : original;
+        }
+
+        public bool IsNarration(string sourceId) => _narration.Contains(sourceId);
 
         public bool TryGetSegment(string coreNodeId, out DialogueSegment? segment)
         {

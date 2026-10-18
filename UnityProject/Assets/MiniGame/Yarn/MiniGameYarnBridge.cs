@@ -90,7 +90,7 @@ namespace MiniGame.UnityHost
                     _screen.HideDialogueActions();
                     return; // These are camera/room transitions completed by the host effects.
                 }
-                if (cue.Kind == PresentationKind.ResponseBranch || cue.Kind == PresentationKind.Reaction)
+                if (cue.Kind == PresentationKind.ResponseBranch || cue.Kind == PresentationKind.Reaction || cue.Kind == PresentationKind.Introduction)
                 {
                     if (view.Game.CurrentNodeId == null) throw new InvalidOperationException("A branch/reaction cue requires a core node.");
                     nodeName = PrototypeYarnSource.NodeName(view.Game.CurrentNodeId);
@@ -204,16 +204,19 @@ namespace MiniGame.UnityHost
             if (run == null || screen == null) return;
             while (IsCurrent(run) && !CanInteract(run)) await YarnTask.Yield();
             if (!IsCurrent(run)) return;
-            var advanced = false;
-            screen.ShowCueText(line.TextWithoutCharacterName.Text, () =>
-            {
-                if (CanInteract(run)) advanced = true;
-            });
             var source = line.Metadata.FirstOrDefault(metadata => metadata.StartsWith("source:", StringComparison.Ordinal));
             var portrait = line.Metadata.FirstOrDefault(metadata => metadata.StartsWith("portrait:", StringComparison.Ordinal));
-            screen.SetDialogueLine(line.CharacterName ?? "终端", line.TextWithoutCharacterName.Text,
-                source != null ? source.Substring("source:".Length) : (run.NodeId ?? run.Key),
-                portrait != null ? portrait.Substring("portrait:".Length) : "");
+            string sourceId = source != null ? source.Substring("source:".Length) : (run.NodeId ?? run.Key);
+            if (run.Runtime.IsDialogueLineComplete(sourceId)) return;
+            var advanced = false;
+            string text = run.Runtime.ResolveDialogueText(sourceId, line.TextWithoutCharacterName.Text);
+            screen.PresentDialogueLine(line.CharacterName ?? "终端", text, sourceId,
+                portrait != null ? portrait.Substring("portrait:".Length) : "", run.Runtime.IsNarration(sourceId), () =>
+                {
+                    if (!CanInteract(run)) return;
+                    run.Runtime.CompleteDialogueLine(sourceId);
+                    advanced = true;
+                });
             screen.SetDialogueInteractable(CanInteract(run));
             while (!advanced && !token.IsNextContentRequested && IsCurrent(run)) await YarnTask.Yield();
             if (IsCurrent(run)) screen.HideDialogueActions();
@@ -224,6 +227,8 @@ namespace MiniGame.UnityHost
             var run = _run;
             var screen = _screen;
             if (run?.Dialogue == null || screen == null) return null;
+            while (IsCurrent(run) && !CanInteract(run)) await YarnTask.Yield();
+            if (!IsCurrent(run)) return null;
             var choices = new Dictionary<string, DialogueOption>(StringComparer.Ordinal);
             var labels = new List<ResponseContent>();
             foreach (var option in options.Where(o => o.IsAvailable))
@@ -234,7 +239,7 @@ namespace MiniGame.UnityHost
                 var response = run.Dialogue.Responses.SingleOrDefault(r => PrototypeYarnSource.EncodeIdentifier(r.Id) == code);
                 if (response == null) continue;
                 choices.Add(response.Id, option);
-                labels.Add(new ResponseContent(response.Id, option.Line.TextWithoutCharacterName.Text));
+                labels.Add(new ResponseContent(response.Id, run.Runtime.ResolveDialogueText(response.Id, option.Line.TextWithoutCharacterName.Text)));
             }
             if (labels.Count == 0)
             {
@@ -249,6 +254,8 @@ namespace MiniGame.UnityHost
             });
             screen.SetDialogueInteractable(CanInteract(run));
             while (selected == null && !token.IsNextContentRequested && IsCurrent(run)) await YarnTask.Yield();
+            // A choice already clicked waits through a pause/history overlay before its Yarn command runs.
+            while (selected != null && IsCurrent(run) && !CanInteract(run)) await YarnTask.Yield();
             if (IsCurrent(run)) screen.HideDialogueActions();
             return IsCurrent(run) && !token.IsNextContentRequested ? selected : null;
         }
@@ -259,7 +266,8 @@ namespace MiniGame.UnityHost
         {
             if (!IsCurrent(run)) return false;
             var view = run.Runtime.GetView();
-            return !view.Paused && view.Inspection == null && Matches(run, view);
+            return !view.Paused && view.Inspection == null && _screen != null && !_screen.HistoryOpen
+                && !_screen.TransitionLocked && Matches(run, view);
         }
 
         private static bool Matches(NodeRun run, RuntimeView view) => run.CueToken != null

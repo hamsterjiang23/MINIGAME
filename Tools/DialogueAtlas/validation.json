@@ -1,0 +1,85 @@
+{
+  "source_rows": 994,
+  "books": [
+    {
+      "file": "【对话】Day0引导角色v1.0.xlsx",
+      "source_rows": 8,
+      "nodes": 10,
+      "edges": 9,
+      "explicit_edges": 8,
+      "inferred_edges": 1,
+      "document_edges": 0,
+      "missing_targets": [],
+      "unreachable_source_rows": [],
+      "sha256": "81a3a8b60e5914939757c83f8cffec96e783a2bc7553c9aef9ff3f736f9763a0"
+    },
+    {
+      "file": "【对话】外交官·阿德里安v1.0.xlsx",
+      "source_rows": 99,
+      "nodes": 123,
+      "edges": 168,
+      "explicit_edges": 72,
+      "inferred_edges": 96,
+      "document_edges": 0,
+      "missing_targets": [],
+      "unreachable_source_rows": [],
+      "sha256": "9ee6267edf96be508244d5d66a813c936b203fd3833d6a059f54048dd39f9ce0"
+    },
+    {
+      "file": "【对话】女性执政者·薇拉v1.0.xlsx",
+      "source_rows": 170,
+      "nodes": 195,
+      "edges": 241,
+      "explicit_edges": 170,
+      "inferred_edges": 69,
+      "document_edges": 2,
+      "missing_targets": [],
+      "unreachable_source_rows": [],
+      "sha256": "8c020551eb4443e1836c01eaa253edc7d660929ee7c82bd105557778165d73aa"
+    },
+    {
+      "file": "【对话】小孩v1.1.xlsx",
+      "source_rows": 230,
+      "nodes": 255,
+      "edges": 301,
+      "explicit_edges": 230,
+      "inferred_edges": 69,
+      "document_edges": 2,
+      "missing_targets": [],
+      "unreachable_source_rows": [],
+      "sha256": "7d773bd667e5cdf6bab996468e2612684ac143131f540714aeac65a0e7645de0"
+    },
+    {
+      "file": "【对话】战场医生·埃德温v1.0.xlsx",
+      "source_rows": 315,
+      "nodes": 339,
+      "edges": 384,
+      "explicit_edges": 288,
+      "inferred_edges": 96,
+      "document_edges": 0,
+      "missing_targets": [],
+      "unreachable_source_rows": [],
+      "sha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac"
+    },
+    {
+      "file": "【对话】神父·乔纳v1.0.xlsx",
+      "source_rows": 172,
+      "nodes": 197,
+      "edges": 243,
+      "explicit_edges": 172,
+      "inferred_edges": 69,
+      "document_edges": 2,
+      "missing_targets": [],
+      "unreachable_source_rows": [],
+      "sha256": "16be5694157205e14b535430178d8fa05d6890f290e7497c78fff3f45de24eb7"
+    }
+  ],
+  "checks": [
+    "unique_namespaced_ids",
+    "every_source_cell_preserved",
+    "every_K_link_preserved",
+    "all_edge_endpoints_exist",
+    "all_source_rows_reachable"
+  ],
+  "scope": "Spreadsheet graph validation; inferred connections are not runtime verification."
+}

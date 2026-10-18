@@ -26,7 +26,7 @@ namespace MiniGame.Core
         {
             Id = RuleGuard.Identifier(id, nameof(id));
             DisplayName = RuleGuard.Identifier(displayName, nameof(displayName));
-            if (firstDay < 1) throw new ArgumentOutOfRangeException(nameof(firstDay));
+            if (firstDay < 0) throw new ArgumentOutOfRangeException(nameof(firstDay));
             if (treatmentLimit.HasValue && treatmentLimit.Value < 1)
                 throw new ArgumentOutOfRangeException(nameof(treatmentLimit));
             if (treatmentOutcome != PatientPresence.Deceased && treatmentOutcome != PatientPresence.TreatmentEnded)
@@ -46,7 +46,7 @@ namespace MiniGame.Core
         public IReadOnlyList<MeetingDefinition> Meetings { get; }
         public DayDefinition(int day, int purificationQuota, IEnumerable<MeetingDefinition> meetings)
         {
-            if (day < 1) throw new ArgumentOutOfRangeException(nameof(day));
+            if (day < 0) throw new ArgumentOutOfRangeException(nameof(day));
             if (purificationQuota < 0) throw new ArgumentOutOfRangeException(nameof(purificationQuota));
             var list = RuleGuard.Copy(meetings, nameof(meetings));
             if (list.Select(m => m.PatientId).Distinct().Count() != list.Count)
@@ -62,6 +62,8 @@ namespace MiniGame.Core
         public IReadOnlyList<PatientDefinition> Patients { get; }
         public IReadOnlyList<DayDefinition> Days { get; }
         public IReadOnlyList<EndingType> EndingPriority { get; }
+        public int StartDay => Days[0].Day;
+        public int EndDay => Days[Days.Count - 1].Day;
 
         public GameRules(string rulesId, IEnumerable<PatientDefinition> patients,
             IEnumerable<DayDefinition> days, IEnumerable<EndingType> endingPriority)
@@ -71,9 +73,10 @@ namespace MiniGame.Core
             var calendar = RuleGuard.Copy(days, nameof(days));
             if (profiles.Count == 0 || profiles.Select(p => p.Id).Distinct().Count() != profiles.Count)
                 throw new ArgumentException("Patients must have unique identifiers.", nameof(patients));
-            if (calendar.Count == 0 || !calendar.Select(d => d.Day).SequenceEqual(Enumerable.Range(1, calendar.Count)))
-                throw new ArgumentException("Days must be ordered and consecutive, starting at day 1.", nameof(days));
-            if (profiles.Any(p => p.FirstDay > calendar.Count))
+            if (calendar.Count == 0 || calendar[0].Day > 1 ||
+                !calendar.Select(d => d.Day).SequenceEqual(Enumerable.Range(calendar[0].Day, calendar.Count)))
+                throw new ArgumentException("Days must be ordered and consecutive, starting at day 0 or 1.", nameof(days));
+            if (profiles.Any(p => p.FirstDay > calendar[calendar.Count - 1].Day))
                 throw new ArgumentException("Patient debut is outside the playable calendar.", nameof(patients));
             foreach (var day in calendar)
             foreach (var meeting in day.Meetings)
@@ -94,7 +97,7 @@ namespace MiniGame.Core
         }
 
         internal PatientDefinition Patient(string id) => Patients.Single(p => p.Id == id);
-        internal DayDefinition Day(int day) => Days[day - 1];
+        internal DayDefinition Day(int day) => Days[day - StartDay];
         internal MeetingDefinition Meeting(int day, string patientId) => Day(day).Meetings.Single(m => m.PatientId == patientId);
 
         private string ComputeFingerprint()
@@ -116,7 +119,16 @@ namespace MiniGame.Core
                 EndingPriority
             };
             using var hash = SHA256.Create();
-            var bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(SnapshotCodec.Canonical(canonical)));
+            // Keep the original serialization byte-for-byte for legacy rules and saves.
+            var extensions = Days.SelectMany(d => d.Meetings.Where(m => m.IntroNodeId != null || m.DispositionTrustDeltas.Count != 0)
+                .Select(m => new
+                {
+                    d.Day, m.PatientId, m.IntroNodeId,
+                    TrustDeltas = m.DispositionTrustDeltas.OrderBy(p => p.Key).Select(p => new { p.Key, p.Value })
+                })).ToList();
+            var serialized = extensions.Count == 0 ? SnapshotCodec.Canonical(canonical)
+                : SnapshotCodec.Canonical(new { Rules = canonical, MeetingExtensions = extensions });
+            var bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(serialized));
             return string.Concat(bytes.Select(b => b.ToString("x2", System.Globalization.CultureInfo.InvariantCulture)));
         }
     }

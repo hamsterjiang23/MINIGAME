@@ -1,0 +1,177 @@
+{
+  "date": "2026-10-18",
+  "request": "First-person seated terminal entry and free daily patient selection",
+  "changes": {
+    "computerInput": "Focused computer accepts left click or E; world input gate remains",
+    "entrySeconds": {
+      "sit": 0.65,
+      "align": 0.65,
+      "push": 1.15,
+      "fadeWorld": 0.2,
+      "revealUI": 0.35
+    },
+    "physicalCoverage": "Actual transformed screen bounds, fixed48 degree FOV during dolly, destination recalculated during push/fade/reveal for window aspect changes",
+    "exit": "Existing1.2 second camera curve and handoff preserved; original actor pose and capsule restored",
+    "roster": "Any active scheduled remaining patient can be selected; entering locks encounter; completed patients cannot repeat that day",
+    "compatibility": "Optional selected flag and PatientId command field omit defaults; old V1/V2 checkpoints and rule fingerprints preserved",
+    "bedtime": "Existing spotlight, insect movement, pause, dream and day restoration covered by regression tests"
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "lockedRestore": "passed",
+    "releaseBuild": "passed",
+    "errors": 0,
+    "warnings": 0,
+    "coreTests": 99,
+    "presentationTests": 137,
+    "testReports": [
+      "Artifacts/ComputerInteraction/Dotnet/core-tests.trx",
+      "Artifacts/ComputerInteraction/Dotnet/presentation-tests.trx"
+    ]
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "setupReport": "Artifacts/TerminalSeating/gameplay-setup.json",
+    "focusedUI": {
+      "passed": 2,
+      "report": "Artifacts/TerminalSeating/focused-playmode.xml"
+    },
+    "seatedMotion": {
+      "passed": 2,
+      "report": "Artifacts/TerminalSeating/seating-playmode.xml"
+    },
+    "fullProjectPlayMode": {
+      "passed": 26,
+      "failed": 0,
+      "seconds": 163.1145875,
+      "report": "Artifacts/TerminalSeating/full-playmode.xml",
+      "endings": [
+        "LockedInRoom:16 meetings",
+        "TakenAway:13 meetings",
+        "PriestAttack:6 meetings"
+      ]
+    },
+    "strengthenedAspectRegression": {
+      "passed": 1,
+      "report": "Artifacts/TerminalSeating/aspect-regression.xml",
+      "scope": "Same-entry window aspect change checked before restore; test-only assertion strengthened after full run"
+    },
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "errors": 0,
+      "warnings": 0,
+      "sizeBytes": 195557521,
+      "seconds": 6.611657699999999
+    },
+    "playerStartup": {
+      "ready": true,
+      "processId": 50916,
+      "runtimeErrors": 0,
+      "log": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\TerminalSeating\\player-startup.log",
+      "scope": "Windows development player startup only; gameplay verified separately in graphical PlayMode",
+      "observation": "Player log confirmed ready after owned smoke process stopped; live ReadAllText polling failed because the file was open for writing."
+    },
+    "visibleEditor": {
+      "processId": 45444,
+      "ready": true,
+      "runtimeErrors": 0,
+      "log": "Artifacts/Unity/editor.log"
+    }
+  },
+  "visuals": {
+    "sequence": "Artifacts/TerminalSeating/terminal-entry-motion.mp4",
+    "timeline": "Artifacts/TerminalSeating/Visuals/terminal-motion-timeline.json",
+    "frames": 31,
+    "captures": [
+      "terminal-motion-000.png",
+      "terminal-motion-008.png",
+      "terminal-motion-016.png",
+      "terminal-motion-023.png",
+      "terminal-motion-027.png",
+      "free-roster-priest-first.png",
+      "free-roster-doctor-selected.png"
+    ],
+    "review": "Viewed standing/seating, alignment, forward push, full physical coverage, UI reveal and arbitrary-order portrait/roster captures",
+    "recording": "Actual Unity test captures sampled about10fps; encoded with captured progress timing"
+  },
+  "review": [
+    {
+      "id": "C1",
+      "result": "fixed",
+      "issue": "Aspect change during dolly reused initial destination",
+      "fix": "Recompute destination each push/fade/reveal frame"
+    },
+    {
+      "id": "C2",
+      "result": "fixed",
+      "issue": "Restore masked aspect regression test",
+      "fix": "Assert coverage on same entry before restoring"
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+      "sha256": "c7603c721692ff4e01d90bb8298fa85705e556564c804148f1a40cfb76484732"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "a69ed47df66cc3b0cfce0344741a1dc9445be0c3449b7f12584b1f604bcafc89"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+      "sha256": "9da22b450c5a889fe263c6f3529c436709f9a2f7213796b466935f871e73d2e7"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "3fa0fa87705588acb144317908b74d214f4db9f3569c47b9e6ca5178a5626b7b"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSeating.cs",
+      "sha256": "55e569a3466d6043d217841a9a068c546f751b9c75f66482b0a3cd1e4e02f7dc"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/MainRoomGameplayBuilder.cs",
+      "sha256": "bc3e12d64f5bcbf123c5e323c76c9276b896548478f999b2f619a7636e47343b"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "92ccb1943d8327507f4a57faef9707e49cfd7c99c0ca3c21090af4f06fba0951"
+    },
+    {
+      "path": "src/MiniGame.Core/Runtime/GameSession.cs",
+      "sha256": "337e47462d4570ace72e29d2e43d512fd64352ef157b825c965169c8889a3663"
+    },
+    {
+      "path": "src/MiniGame.Core/Contracts/GameCommand.cs",
+      "sha256": "f5367780048fb7299598f8944ee335e3f6bb3a6303ff5c3009fae126c46989ed"
+    },
+    {
+      "path": "src/MiniGame.Core/Contracts/GameTypes.cs",
+      "sha256": "154e0b2f636e6be168bca7d45d3bf3d80c622f8ec59f06c4ee0e0711fe4f3acd"
+    },
+    {
+      "path": "src/MiniGame.Core/State/GameSnapshot.cs",
+      "sha256": "e5e237e259eace5cf905103afce62be26eac4a74da52ba299e4fd1e7e1b6cfd4"
+    },
+    {
+      "path": "src/MiniGame.Core/State/CommandRecord.cs",
+      "sha256": "f17eefe8f9aff3b3b62ca8def143163d9bd72fb22e20c2f5789d9a29b7611753"
+    },
+    {
+      "path": "src/MiniGame.Presentation/GameRuntime.cs",
+      "sha256": "0b4581b6cb9d11b8a72bfe932257920f17b3b493561e817c67cb2e91f0c4f01a"
+    },
+    {
+      "path": "src/MiniGame.Presentation/PresentationContracts.cs",
+      "sha256": "a524f7f1456196fa5980e1753223cc3f68cbab32c4ffcaf9c289b407ea55a8e2"
+    }
+  ],
+  "sourceHashMismatches": 0,
+  "limits": [
+    "First-person body/camera seating; player has no third-person avatar mesh or skeletal sit animation.",
+    "Windows player check covers startup; full gameplay validation is graphical Editor PlayMode.",
+    "Left-click legacy Input is wired in Update; automated tests exercise focused interaction and real roster pointer events, not OS-level mouse injection."
+  ]
+}

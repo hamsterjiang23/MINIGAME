@@ -5,6 +5,10 @@
   const MIN_INT = -2147483648, MAX_INT = 2147483647;
   const isInt = value => Number.isInteger(value) && value >= MIN_INT && value <= MAX_INT;
   const dispositions = ['treat', 'purify', 'release'];
+  const campaignMessage = '这是 V2 全流程内容包，包含多角色、跨日规则和历史条件。此工作台仅编辑 V1 单日内容；请使用 Tools/DialogueCampaign 转换工具与 Unity 的 MiniGame/Campaign 导入入口。当前项目保持不变。';
+  function assertEditablePackage(pkg) {
+    if (pkg?.formatVersion === 2) throw new Error(campaignMessage);
+  }
   const copy = value => JSON.parse(JSON.stringify(value));
   const escapeText = value => String(value).replace(/[\\#<>{}\[\]]/g, char => '\\' + char);
   const unescapeText = value => value.replace(/\\([\\#<>{}\[\]])/g, '$1');
@@ -87,6 +91,7 @@
   function validatePackage(pkg) {
     const diagnostics = [];
     if (!pkg || typeof pkg !== 'object' || Array.isArray(pkg)) return { nodes: [], source: '', diagnostics: [issue('package', '文件必须是对话内容包 JSON 对象。')] };
+    if (pkg.formatVersion === 2) return { nodes: [], source: pkg.yarnSource || '', diagnostics: [issue('campaign-read-only', campaignMessage)] };
     for (const key of Object.keys(pkg)) if (!['formatVersion', 'packageId', 'contentVersion', 'yarnSource', 'portraits', 'profile'].includes(key)) diagnostics.push(issue('package-field', '不支持的包字段：' + key, 0, '', key));
     if (pkg.formatVersion !== 1) diagnostics.push(issue('version', '只支持 formatVersion: 1。'));
     if (JSON.stringify(pkg).length > 4 * 1024 * 1024) diagnostics.push(issue('package-size', 'JSON内容包不能超过4 MiB字符。'));
@@ -213,6 +218,7 @@
     return nodes.flatMap(n => n.kind === 'line' ? (n.next === id ? [{ node: n.id, field: 'next' }] : []) : n.options.filter(o => o.next === id).map(o => ({ node: n.id, field: o.id + '.next' })));
   }
   function createPreview(pkg) {
+    assertEditablePackage(pkg);
     const parsed = validatePackage(pkg);
     if (parsed.diagnostics.some(d => d.severity === 'error')) throw new Error('请先修复内容包错误。');
     const map = new Map(parsed.nodes.map(n => [n.id, n]));
@@ -227,7 +233,7 @@
     }
     return { state, map, enter() { if (!state.done && state.phase === 'roster') go(pkg.profile.startNode); return state; }, jump(id) { state.history = false; state.trust = pkg.profile.initialTrust; state.quota = pkg.profile.initialQuota; state.log = []; state.trace = []; state.disposition = ''; state.done = false; return go(id); }, step() { if (!state.history && state.phase === 'line') go(map.get(state.node).next); return state; }, enabled(option) { return !state.history && !state.disposition && (option.disposition !== 'release' || state.trust >= pkg.profile.releaseThreshold); }, pick(index) { const n = map.get(state.node), o = n?.options[index]; if (state.history || !['choice', 'measure'].includes(state.phase) || !o || !this.enabled(o)) return state; state.trust += o.trust; state.log.push({ speaker: '值班员', text: o.disposition ? '【处置】' + o.text : o.text }); if (o.disposition) { state.disposition = o.disposition; if (o.disposition === 'purify') state.quota--; } return go(o.next); } };
   }
-  const api = { parseSource, validatePackage, serializeNode, replaceNode, references, createPreview, copy, ID };
+  const api = { parseSource, validatePackage, assertEditablePackage, serializeNode, replaceNode, references, createPreview, copy, ID };
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.DialoguePlannerCore = api;
 })(typeof globalThis === 'object' ? globalThis : this);

@@ -17,6 +17,7 @@ namespace MiniGame.Presentation.Authoring
         [JsonProperty("yarnSource", Required = Required.Always)] public string YarnSource { get; set; } = "";
         [JsonProperty("portraits", Required = Required.Always)] public List<PortraitDefinition> Portraits { get; set; } = new List<PortraitDefinition>();
         [JsonProperty("profile", Required = Required.Always)] public DialogueProfile Profile { get; set; } = new DialogueProfile();
+        [JsonProperty("campaign")] public CampaignDefinition? Campaign { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
@@ -98,8 +99,9 @@ namespace MiniGame.Presentation.Authoring
         public string Speaker { get; }
         public string Text { get; }
         public string PortraitId { get; }
+        public bool IsNarration { get; }
         internal DialogueLine(AuthoringNode node)
-        { SourceNodeId = node.Id; Speaker = node.Speaker; Text = node.Text; PortraitId = node.PortraitId; }
+        { SourceNodeId = node.Id; Speaker = node.Speaker; Text = node.Text; PortraitId = node.PortraitId; IsNarration = node.Kind == "narration"; }
     }
 
     public sealed class DialogueSegment

@@ -1,0 +1,815 @@
+{
+  "source": "Art/MainRoom/combined/exports/MainRoomCombined.glb",
+  "sourceSha256": "bfd53860c8f9242b1c6001e197212dced70454594cd7bd4125b7f1c5066c804c",
+  "meshCount": 61,
+  "materials": [
+    {
+      "name": "MainRoom_00",
+      "label": "Wallpaper | faded olive stripes | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/00_wallpaper-olive-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_01",
+      "label": "Poster | fictional institution 3 | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/01_poster-3-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_02",
+      "label": "Linen | dingy taupe | UV interchange.003",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/02_cloth-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_03",
+      "label": "Carpet | faded geometric weave | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/03_rug-woven-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_04",
+      "label": "Plaster | stained ceiling | UV interchange.002",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/04_plaster-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_05",
+      "label": "Rubber | cable and dark gaps | UV interchange.004",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.017999999225139618,
+        0.020999999716877937,
+        0.017999999225139618,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.8999999761581421,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_06",
+      "label": "CRT | desaturated green phosphor | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.30000001192092896,
+      "baseTexture": "Textures/05_crt-screen-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0.2239999920129776,
+        0.36399999260902405,
+        0.2800000011920929
+      ]
+    },
+    {
+      "name": "MainRoom_07",
+      "label": "tripo_material_b15bcb83-baeb-4f30-b75d-1fd91994be0d | UV interc",
+      "doubleSided": false,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/07_tripo-crt-main-room-crt-monitor-tripo_basecolor.png",
+      "normalTexture": "Textures/06_tripo-crt-main-room-crt-monitor-tripo_normal.png",
+      "normalScale": 0.3499999940395355,
+      "metallicRoughnessTexture": "Textures/08_tripo-crt-main-room-crt-monitor-tripo_rm.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_08",
+      "label": "Can | tarnished tin | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.2199999988079071,
+        0.2800000011920929,
+        0.27000001072883606,
+        1
+      ],
+      "metallic": 0.6499999761581421,
+      "roughness": 0.44999998807907104,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_09",
+      "label": "Hardware | dull iron | UV interchange.004",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.2199999988079071,
+        0.23000000417232513,
+        0.18000000715255737,
+        1
+      ],
+      "metallic": 0.699999988079071,
+      "roughness": 0.550000011920929,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_10",
+      "label": "Timber | worn dark walnut | UV interchange.006",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/09_wood-worn-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_11",
+      "label": "Paint | aged grey-green | UV interchange.003",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/10_paint-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_12",
+      "label": "CombinedWindowGlass",
+      "doubleSided": true,
+      "windowGlass": true,
+      "color": [
+        0.1599999964237213,
+        0.20000000298023224,
+        0.1899999976158142,
+        0.11999999731779099
+      ],
+      "metallic": 0,
+      "roughness": 0.3499999940395355,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_13",
+      "label": "Steel | dark oxidized frame | UV interchange.006",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.07000000029802322,
+        0.0949999988079071,
+        0.08500000089406967,
+        1
+      ],
+      "metallic": 0.6000000238418579,
+      "roughness": 0.7300000190734863,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_14",
+      "label": "Curtain | coarse faded green-grey | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/11_curtain-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_15",
+      "label": "Keys | ivory worn caps | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.5,
+        0.49000000953674316,
+        0.3700000047683716,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.7799999713897705,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_16",
+      "label": "Plastic | yellowed beige | UV interchange.002",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.41999998688697815,
+        0.4000000059604645,
+        0.30000001192092896,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.699999988079071,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_17",
+      "label": "Poster | fictional institution 1 | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/12_poster-1-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_18",
+      "label": "Paper | old bulletin | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/13_newspaper-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_19",
+      "label": "Poster | fictional institution 2 | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.800000011920929,
+      "baseTexture": "Textures/14_poster-2-basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_20",
+      "label": "B | Lime._-_019",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/15_KB3D_GAE_WoodA_basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "Textures/16_KB3D_GAE_WoodA_roughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_21",
+      "label": "Bulb | pale green white | UV interchange.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        0.800000011920929,
+        0.8500000238418579,
+        0.7200000286102295,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.30000001192092896,
+      "baseTexture": "",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        3.0000000852949142,
+        3.559999942779541,
+        3.0399998629227127
+      ]
+    },
+    {
+      "name": "MainRoom_22",
+      "label": "B | MI_bed_1_SM_bed_1",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/18_MI_bed_1_SM_bed_1_BaseColor.png",
+      "normalTexture": "Textures/17_MI_bed_1_SM_bed_1_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/19_MI_bed_1_SM_bed_1_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_23",
+      "label": "B | KB3D_WAR_FabricWoolBrown",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/21_KB3D_WAR_FabricWoolBrown_basecolor.png",
+      "normalTexture": "Textures/20_KB3D_WAR_FabricWoolBrown_normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/22_KB3D_WAR_FabricWoolBrown_metallic-KB3D_WAR_FabricWoolBrown_roughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_24",
+      "label": "B | KB3D_ENC_FabricB",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/24_KB3D_ENC_FabricB_basecolor.png",
+      "normalTexture": "Textures/23_KB3D_ENC_FabricB_normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/25_KB3D_ENC_FabricB_metallic-KB3D_ENC_FabricB_roughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_25",
+      "label": "B | MI_cardboard_box_1_SM_cardboard_box_5",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/27_MI_cardboard_box_1_SM_cardboard_box_5_BaseColor.png",
+      "normalTexture": "Textures/26_MI_cardboard_box_1_SM_cardboard_box_5_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/28_MI_cardboard_box_1_SM_cardboard_box_5_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_26",
+      "label": "B | KB3D_IRF_FabricOldBright",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 1,
+      "baseTexture": "Textures/29_KB3D_IRF_FabricOldBright_basecolor.png",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "Textures/30_KB3D_IRF_FabricOldBright_roughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_27",
+      "label": "B | MI_dishes_1_SM_cup_2",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/32_MI_dishes_1_SM_cup_2_BaseColor.png",
+      "normalTexture": "Textures/31_MI_dishes_1_SM_cup_2_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/33_MI_dishes_1_SM_cup_2_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_28",
+      "label": "B | MI_CigaretteBox.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/35_MI_CigaretteBox_BaseColor.png",
+      "normalTexture": "Textures/34_MI_CigaretteBox_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/36_MI_CigaretteBox_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_29",
+      "label": "B | MI_CigaretteBox",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/35_MI_CigaretteBox_BaseColor.png",
+      "normalTexture": "Textures/34_MI_CigaretteBox_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/36_MI_CigaretteBox_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_30",
+      "label": "B | MI_Bottles.002",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/38_MI_Bottles_BaseColor.png",
+      "normalTexture": "Textures/37_MI_Bottles_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/39_MI_Bottles_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_31",
+      "label": "B | MI_book_1_SM_MERGED_SM_book_16",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/41_MI_book_1_SM_MERGED_SM_book_16_BaseColor.png",
+      "normalTexture": "Textures/40_MI_book_1_SM_MERGED_SM_book_16_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/42_MI_book_1_SM_MERGED_SM_book_16_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_32",
+      "label": "B | MI_CardboardBoxesPack.001",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/44_MI_CardboardBoxesPack_BaseColor.png",
+      "normalTexture": "Textures/43_MI_CardboardBoxesPack_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/45_MI_CardboardBoxesPack_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_33",
+      "label": "B | MI_CardboardBoxesPack",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/44_MI_CardboardBoxesPack_BaseColor.png",
+      "normalTexture": "Textures/43_MI_CardboardBoxesPack_Normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/45_MI_CardboardBoxesPack_MetallicRoughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_34",
+      "label": "B | KB3D_HAN_ConcreteB",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/47_KB3D_HAN_ConcreteB_basecolor.png",
+      "normalTexture": "Textures/46_KB3D_HAN_ConcreteB_normal.png",
+      "normalScale": 0.550000011920929,
+      "metallicRoughnessTexture": "Textures/48_KB3D_HAN_ConcreteB_metallic-KB3D_HAN_ConcreteB_roughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "omittedNonNormalBumpInputs": 0,
+  "hasExteriorConcrete": true,
+  "scope": "Art preview; no gameplay integration, colliders or performance acceptance"
+}

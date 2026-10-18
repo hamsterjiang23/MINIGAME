@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-18T16:51:34.228838+08:00",
+  "status": "implemented; technical and agent visual checks passed; user visual acceptance pending",
+  "scope": "Bedtime ceiling spotlight with winged insect motion; room outside the bed becomes black; visual sleep-only guidance replaces unavailable interaction prompts",
+  "scene": "MainRoomCombined",
+  "trigger": {
+    "guidePhases": [
+      "Evening",
+      "AfterDream"
+    ],
+    "terminalRule": "Begins when terminal is closed or LeavingTerminal; archive remains lit until departure",
+    "sleepAndDream": "Room stays black; beam and insects fade out",
+    "morning": "Restores saved scene lights, environment, renderer material-slot property blocks and camera depth settings",
+    "pause": "Freezes light transition and insect clock",
+    "restore": "Snaps to phase-appropriate presentation without daylight flash"
+  },
+  "controls": {
+    "roomFadeSeconds": 1.1,
+    "beamFadeInSeconds": 0.85,
+    "beamFadeOutSeconds": 0.45,
+    "ceilingHeightMetres": 2.94,
+    "spotIntensity": 8,
+    "spotRangeMetres": 3.6,
+    "spotOuterDegrees": 56,
+    "spotInnerDegrees": 36,
+    "litLayer": "BedtimeLit",
+    "litLayerIndex": 28,
+    "litMeshes": [
+      "B_SM_bed_1",
+      "B_SM_mattress_1",
+      "B_SM_pillow_1",
+      "B_SM_rug_2"
+    ],
+    "beamDensity": 0.18,
+    "beamSteps": 24,
+    "insects": 30,
+    "insectSizeMetres": [
+      0.014,
+      0.035
+    ],
+    "beamFootprintRadiusMetres": 1.12
+  },
+  "visuals": {
+    "reviewed": [
+      "bedtime-before.png",
+      "bedtime-spotlight.png",
+      "bedtime-insects-later.png",
+      "bedtime-after-dream.png",
+      "bedtime-restored-morning.png"
+    ],
+    "directory": "Artifacts/Bedtime/Visuals",
+    "initialComparison": "Artifacts/Bedtime/Visuals-v1",
+    "motionFrames": 16,
+    "motionPreview": "Artifacts/Bedtime/bedtime-motion.mp4",
+    "findings": [
+      "Only bed and bed linens remain visible outside the light volume",
+      "Warm downward shaft readable against black room",
+      "Insects show different positions across frames inside the beam",
+      "Window exterior wall and original room appearance return in morning"
+    ],
+    "revision": "Raised density .075 to .18 and intensity5.5 to8 after reviewing initial captures"
+  },
+  "verification": {
+    "focused": {
+      "passed": 2,
+      "failed": 0,
+      "results": "Artifacts/Bedtime/bedtime-playmode-final.xml"
+    },
+    "projectPlayMode": {
+      "result": "Passed",
+      "passed": 23,
+      "total": 23,
+      "failed": 0,
+      "durationSeconds": 134.9443904,
+      "results": "Artifacts/Bedtime/game-playmode.xml",
+      "log": "Artifacts/Bedtime/game-playmode.log"
+    },
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "errors": 0,
+      "warnings": 0,
+      "sizeBytes": 195545642,
+      "seconds": 6.3989259999999994
+    },
+    "playerStartup": {
+      "ready": true,
+      "processId": 46992,
+      "scope": "Windows Mono player startup, complete sleep cycle checked separately in Editor PlayMode",
+      "log": "Artifacts/Bedtime/player-startup.log"
+    },
+    "reviewFix": "Removed competing legacy ceiling-light dimming for guidance-equipped rooms; tested archive dwell and continuous fade"
+  },
+  "preservedTransitions": {
+    "CameraTransitionUnchanged": true,
+    "TerminalTransitionViewUnchanged": true
+  },
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+      "sha256": "1240BA6EA2517F0395BC35AF58AA9AD405F5160671F434BD1970529E1EC6B53D"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeAtmosphere.cs",
+      "sha256": "80725773B71E4115D477F9FE7D846DEDFE24741E342BAF2DAC6B1009AC97D0FB"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "24E24CE0F3AEBDD90ED4CE96C8550EA4AF9F8D8CE88966C68A75C523DDD349B3"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+      "sha256": "755809B25266A727C956161B1A624F8A3A47A818337BEF0DF50B25849339A11F"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "88F05BE033732A3905EFABDCD61CAF3DB8D6F6FA5387FB09A407448930634EB6"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/BedtimeBeam.shader",
+      "sha256": "4C8894284CE637BBDCC58BD3BBCEBE175FA15207EEEAA07CA8F46CDD7C5179C2"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/BedtimeInsect.shader",
+      "sha256": "55972D12AF8CDD081684C50F325950613BFE8E74DAE55F5CEE8C848EF56A7D0A"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/MainRoomGameplayBuilder.cs",
+      "sha256": "4113655788B0573D5966EAF4CAA7C6597BC1B04EBBD8902E6BA9502046C8068B"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/BedtimePreview.cs",
+      "sha256": "5C645B676B3F9207A47E9866E3C22714E4B99928FEDD8935F10CDF83DFEBC4C9"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/BedtimeGuidancePlayModeTests.cs",
+      "sha256": "114A4F3055D4162CFF68F275EBE4ECC972DBE73A3D1D4C4F02C924EB7BF10C2D"
+    }
+  ],
+  "limits": [
+    "Performance budget not specified; standalone GPU timings not measured",
+    "Windows player smoke verifies startup; phase flow and VFX rendered in Editor graphics PlayMode",
+    "No core rule changes or new dialogue content in this task",
+    "Preview uses legal tutorial commands and does not write a player save"
+  ],
+  "finalChecks": {
+    "diffCheck": "passed",
+    "missingLocalLinks": 0,
+    "testedSourceHashMismatches": 0,
+    "previewEditorProcess": 44460,
+    "previewReadyLog": "Artifacts/Bedtime/editor-preview.log:409",
+    "previewPhase": "Evening",
+    "previewWritesPlayerSave": false
+  }
+}

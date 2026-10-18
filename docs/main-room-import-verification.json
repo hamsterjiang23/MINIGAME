@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-18",
+  "unity": "2022.3.23f1c1",
+  "blender": "4.5.11 LTS",
+  "source": "Art/MainRoom/exports/MainRoom.glb",
+  "sourceSha256": "8cb01954ddd45de6498b152ff4eb8c344912ccf1d193446c0b4486b347774114",
+  "model": "UnityProject/Assets/MiniGame/Art/MainRoom/MainRoom.fbx",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomPreview.unity",
+  "gameplayScene": "UnityProject/Assets/MiniGame/Scenes/InspectionApartment.unity",
+  "scope": "Independent imported room art preview; gameplay scene and build settings preserved",
+  "import": {
+    "meshRenderers": 521,
+    "materials": 36,
+    "sourceTextures": 15,
+    "triangles": 62778,
+    "missingMaterials": 0,
+    "unsupportedShaders": 0,
+    "doubleSidedMaterials": 35,
+    "omittedNonNormalBumpInputs": 16,
+    "linearSourceColorFactorsConvertedForGammaProject": true,
+    "metallicRoughnessConvertedToUnityMetallicSmoothness": true
+  },
+  "evidence": {
+    "exportLog": "Artifacts/Unity/main-room-export.log",
+    "editorLog": "Artifacts/Unity/main-room-editor-verified.log",
+    "report": "Artifacts/Unity/MainRoom/import-report.json",
+    "screenshot": "Artifacts/Unity/MainRoom/main-room-unity.png",
+    "screenshotReviewed": true,
+    "editorOpened": true
+  },
+  "limits": [
+    "Realtime point lights approximate the source lighting; no Cycles image parity claim",
+    "Procedural Blender bump inputs that exported albedo images as normal maps were omitted",
+    "The removable front closure is retained with renderers disabled for the reference camera",
+    "No room gameplay integration, colliders, performance test or target-platform build"
+  ]
+}

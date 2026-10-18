@@ -1,13 +1,15 @@
 # 电脑终端与策划对白工具
 
-当前默认入口是**小孩 Day1 独立演示**：按用户提供HTML接入六轮会谈、20个回复、三种处置及对应反应。原有三天开发原型继续保留。人物立绘、档案内容和场景美术仍有占位，本切片不代表五病人三天正式内容完成。[verified: terminal-ui-verification.json scope/source；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126] [opinion]
+本页说明保留的**V1小孩Day1独立演示**与单日策划工具。主场景现在默认使用Day0＋五人三天的V2全流程，启动、对白转换及27张原创立绘见[全流程指南](campaign-guide.md)和[验收报告](campaign-verification.json)。[verified: campaign-verification.json content/portraits/unity；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs Awake/StartCampaign]
 
 ## 在 Unity 运行
 
-1. 双击仓库根 [Open-Unity.cmd](../Open-Unity.cmd)，通过 `MiniGame/Open prototype scene` 打开主场景，按 Play。[verified: ../UnityProject/README.md「运行与操作」] [opinion]
+1. 单日演示使用 `InspectionApartment.unity`：退出Play后通过 `MiniGame/Open prototype scene` 打开，再进入Play。先到门口按E完成晨检与简报，再到电脑开始小孩Day1。仓库根 [Open-Unity.cmd](../Open-Unity.cmd) 则启动融合房间的V2全流程。[verified: ../UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs OpenPrototype；../UnityProject/Tools/Open-Project.ps1；campaign-verification.json unity]
 2. 默认启用 Bootstrap 的 **Use Terminal Demo**，从 `Resources/MiniGame/ActiveDialoguePackage` 取得当前内容包。按现有房间交互进入电脑，在对象目录选择小孩开始审查。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L38、L115；terminal-ui-verification.json scope]
-3. 发言用继续按钮、Enter或空格推进；回复用鼠标、数字1–4或上下键选择后确认。「记录」只展示实际走过的发言、回复和处置。六轮完成后才允许处置，释放还需要绿灯。[verified: terminal-ui-verification.json unity.playModePassed/source；../Tools/DialoguePlanner/planner-app.js `renderPreview`]
+3. 发言用继续按钮、Enter或空格推进；回复用鼠标、数字1–4，或上下键定位后Enter确认。新选项默认不选中，上下键循环，空格不选答案。「记录」每屏五行、长句单行裁切，滚轮翻阅，打开时阻挡对话按键；ESC先关闭记录。六轮完成后才允许处置，释放还需要绿灯。[verified: terminal-alignment-verification.json changes/unity.playMode；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs HandleTerminalKey]
 4. 处置只结算一次；读完反应、花屏与断信号后返回目录，已归档对象不能再次接待。F5保存、F9读取；终端演示使用 `terminal-demo-save.json`。恢复可能重播当前对话段，不承诺逐行/逐字位置恢复。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L29-L30；terminal-ui-verification.json scope/limits] [opinion]
+
+界面按v0.5.2默认工业皮肤调整，保留原有推镜、开机和退出回位。处置反应完成后只在监控窗口花屏，当前发言保留对象最后一句；归档页Enter回目录，再点「返回房间」退出电脑。[verified: terminal-alignment-verification.json changes/preservedSources/unity.playMode]
 
 若需验收旧三天流程，在 Play 前取消 Bootstrap 的 **Use Terminal Demo**；开发API为 `StartLegacyPrototype()`。旧流程使用独立的 `prototype-save.json`，操作见[三天开发原型验收](planner-acceptance-guide.md#旧三天开发原型验收)。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L29-L30、L126]
 
@@ -24,6 +26,6 @@
 
 首版支持带稳定ID的发言、选项、jump、立绘和整数信任变化；普通选项使用 `#id/#trust`，处置使用 `#id/#disposition`。不支持的任意条件、变量和命令必须先扩展导入器；未知语法会报错且保留原文。轮次汇合、循环、目标、立绘、处置反应与32位信任溢出均参与校验；Unity原生编译是最终检查。[verified: ../Tools/DialoguePlanner/planner-core.js `parseSource`、`validateRounds`；../src/MiniGame.Presentation/Authoring/RestrictedYarnParser.cs L128-L164] [opinion]
 
-最新[验证报告](terminal-ui-verification.json)：SDK8.0.424锁定恢复与Release构建通过，0警告/错误；Core75与Presentation110共185项测试通过；策划工具18项测试覆盖1296条选择组合；真实Unity2022.3.23f1c1隔离工程EditMode2项、PlayMode9项通过，Windows Mono构建成功（0错误、1个无图形环境探针警告）。[verified: terminal-ui-verification.json dotnet/planner/unity]
+2026-10-18 [终端对齐验证](terminal-alignment-verification.json)：正常Unity2022.3.23f1c1工程的14项项目PlayMode测试全部通过，包含房间实体交互、六轮Yarn对白与三种处置、新增键盘/历史/归档恢复检查。九张实际Unity截图已检查；进出动画两份源码SHA256保持不变。HTML浏览器视觉仍受本地文件URL策略限制，本轮未重建Player。[verified: terminal-alignment-verification.json unity/preservedSources/reference/limits]
 
-PlayMode包含旧流程4项、终端UI3项、原生对白2项，另检查四种画面比例并审阅捕获图。HTML浏览器视觉、文件下载点击验收仍受本地文件预览策略限制；未据Node测试宣称浏览器验收通过。Player启动结果、源码哈希一致性与其余限制以报告对应字段为准。[verified: terminal-ui-verification.json unity.playModePassed/visualsReviewed/sourceHashComparison/planner.browserVisualVerified/limits] [opinion]
+2026-10-15 [历史验证报告](terminal-ui-verification.json)保留SDK构建、185项核心/适配测试、18项策划工具测试、隔离工程EditMode2/PlayMode9及旧Windows Mono构建结果；这些不代表本轮重新执行了上述检查。[verified: terminal-ui-verification.json dotnet/planner/unity；terminal-alignment-verification.json limits]

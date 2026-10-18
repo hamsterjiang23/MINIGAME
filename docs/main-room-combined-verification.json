@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-18",
+  "gameplayFollowUp": "docs/main-room-gameplay-verification.json",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "scope": "Combined editable art and Unity preview; no gameplay integration, collider, performance or platform-build acceptance",
+  "sources": [
+    {
+      "path": "Art/MainRoom/exports/MainRoom.glb",
+      "sha256": "8cb01954ddd45de6498b152ff4eb8c344912ccf1d193446c0b4486b347774114",
+      "unchanged": true
+    },
+    {
+      "path": "Art/MainRoom2/minigame员工宿舍.blend",
+      "sha256": "a0ff5836d10c188f8fac7496772762ed745ac5a2e1aff2c073ec6a3b45b2dd35",
+      "unchanged": true
+    },
+    {
+      "path": "Art/MainRoom2/minigame员工宿舍.fbx",
+      "sha256": "1e1fde82af3c363d461f8f2ca300645a0a68fb89badc713e63460a0f938f619d",
+      "unchanged": true
+    }
+  ],
+  "combinedBlend": "Art/MainRoom/combined/scene/MainRoomCombined.blend",
+  "combinedGlb": "Art/MainRoom/combined/exports/MainRoomCombined.glb",
+  "combinedSourceSha256": "bfd53860c8f9242b1c6001e197212dced70454594cd7bd4125b7f1c5066c804c",
+  "unity": "2022.3.23f1c1",
+  "meshRenderers": 61,
+  "materials": 35,
+  "triangles": 66185,
+  "missingMaterials": 0,
+  "unsupportedShaders": 0,
+  "sourceBObjects": 22,
+  "sourceBPlacementChecksPassed": 22,
+  "frozenAnimatedObjects": 13,
+  "windowExterior": {
+    "source": "MainRoom2 original concrete wall and ledge",
+    "actualGeometry": true,
+    "outsideRoomBounds": true,
+    "transparentGlass": true,
+    "detailScreenshotReviewed": true
+  },
+  "evidence": {
+    "composition": "Art/MainRoom/combined/reports/composition.json",
+    "editorLog": "Artifacts/Unity/RoomMerge/unity-combined-window.log",
+    "importReport": "Artifacts/Unity/MainRoomCombined/import-report.json",
+    "fullScreenshot": "Artifacts/Unity/MainRoomCombined/main-room-unity.png",
+    "windowScreenshot": "Artifacts/Unity/MainRoomCombined/window-detail.png",
+    "screenshotsReviewed": true
+  },
+  "checks": {
+    "csharpCompilerErrors": 0,
+    "shaderErrors": 0,
+    "pythonFunctionAnnotations": "passed",
+    "sourceHashes": "passed"
+  },
+  "limits": [
+    "Realtime preview lighting approximates Blender lighting",
+    "No gameplay, collider, performance or target-platform build acceptance",
+    "SourceB furniture uses portable image-based materials; Blender displacement and volume are excluded"
+  ]
+}

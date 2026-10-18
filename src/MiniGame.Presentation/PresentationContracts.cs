@@ -9,7 +9,7 @@ namespace MiniGame.Presentation
 {
     public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory }
     public enum TerminalPage { Closed, Directory, Review, Archive }
-    public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending }
+    public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction }
     public enum InspectionKind { Eyes, Hands, Teeth, Photo, DailySigns, Records }
 
     public interface IGameContent
@@ -66,8 +66,14 @@ namespace MiniGame.Presentation
         public int TreatmentCount { get; }
         public bool IsCurrent { get; }
         public bool HasMetToday { get; }
-        internal PatientView(string id, string name, PatientPresence presence, int treatmentCount, bool current, bool metToday)
-        { Id = id; Name = name; Presence = presence; TreatmentCount = treatmentCount; IsCurrent = current; HasMetToday = metToday; }
+        public bool CanReceiveToday { get; }
+        public Disposition? LastDisposition { get; }
+        internal PatientView(string id, string name, PatientPresence presence, int treatmentCount, bool current, bool metToday,
+            Disposition? lastDisposition = null, bool canReceiveToday = false)
+        {
+            Id = id; Name = name; Presence = presence; TreatmentCount = treatmentCount; IsCurrent = current;
+            HasMetToday = metToday; LastDisposition = lastDisposition; CanReceiveToday = canReceiveToday;
+        }
     }
 
     public sealed class RuntimeView
@@ -87,11 +93,18 @@ namespace MiniGame.Presentation
         public bool LeavingTerminal { get; }
         public bool ArchiveDirectoryVisible { get; }
         public IReadOnlyList<TranscriptEntry> Transcript { get; }
+        public string? PresentedPatientId { get; }
+        public string? PresentedPatientName { get; }
+        public string? PresentedEncounterId { get; }
+        public Disposition? PresentedDisposition { get; }
+        public IReadOnlyList<Disposition> ConfiguredDispositions { get; }
         internal RuntimeView(PlayerView game, InputContext input, bool terminalOpen, bool paused,
             PresentationCue? cue, DialogueContent? dialogue, InspectionContent? inspection,
             IEnumerable<PatientView> patients, IEnumerable<InteractionTarget> interactions, IEnumerable<string> observedSigns,
             TerminalPage terminalPage = TerminalPage.Closed, bool usesTerminalDirectory = false,
-            bool leavingTerminal = false, IEnumerable<TranscriptEntry>? transcript = null, bool archiveDirectoryVisible = false)
+            bool leavingTerminal = false, IEnumerable<TranscriptEntry>? transcript = null, bool archiveDirectoryVisible = false,
+            string? presentedPatientId = null, string? presentedPatientName = null, string? presentedEncounterId = null,
+            Disposition? presentedDisposition = null, IEnumerable<Disposition>? configuredDispositions = null)
         {
             Game = game; Input = input; TerminalOpen = terminalOpen; Paused = paused;
             Cue = cue; Dialogue = dialogue; Inspection = inspection;
@@ -101,6 +114,10 @@ namespace MiniGame.Presentation
             TerminalPage = terminalPage; UsesTerminalDirectory = usesTerminalDirectory; LeavingTerminal = leavingTerminal;
             ArchiveDirectoryVisible = archiveDirectoryVisible;
             Transcript = new ReadOnlyCollection<TranscriptEntry>(new List<TranscriptEntry>(transcript ?? Array.Empty<TranscriptEntry>()));
+            PresentedPatientId = presentedPatientId; PresentedPatientName = presentedPatientName;
+            PresentedEncounterId = presentedEncounterId; PresentedDisposition = presentedDisposition;
+            ConfiguredDispositions = new ReadOnlyCollection<Disposition>(new List<Disposition>(configuredDispositions ??
+                new[] { Disposition.Release, Disposition.Treat, Disposition.Purify }));
         }
     }
 
@@ -114,11 +131,14 @@ namespace MiniGame.Presentation
         public string SourceNodeId { get; }
         public string PortraitId { get; }
         public bool IsPlayer { get; }
+        public bool IsNarration { get; }
+        public bool Completed { get; internal set; }
         internal TranscriptEntry(string key, string encounterId, string coreNodeId, string speaker,
-            string text, string sourceNodeId, string portraitId, bool isPlayer)
+            string text, string sourceNodeId, string portraitId, bool isPlayer, bool isNarration = false, bool completed = false)
         {
             Key = key; EncounterId = encounterId; CoreNodeId = coreNodeId; Speaker = speaker;
             Text = text; SourceNodeId = sourceNodeId; PortraitId = portraitId; IsPlayer = isPlayer;
+            IsNarration = isNarration; Completed = completed;
         }
     }
 

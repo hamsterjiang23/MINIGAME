@@ -8,6 +8,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using MiniGame.Core;
+using MiniGame.Presentation.Authoring;
 
 namespace MiniGame.Presentation
 {
@@ -31,6 +32,7 @@ namespace MiniGame.Presentation
         private readonly List<TranscriptEntry> _transcript = new List<TranscriptEntry>();
 
         public event Action<RuntimeView>? Changed;
+        public bool IsCampaign => _rules.StartDay == 0;
 
         public GameRuntime(GameRules rules, IGameContent content, bool useTerminalDirectory = false)
             : this(new GameSession(rules), rules, content, useTerminalDirectory) { }
@@ -54,22 +56,34 @@ namespace MiniGame.Presentation
                 : _inspection != null ? InputContext.Inspection : _cue != null ? InputContext.Presentation
                 : _terminalOpen && (_terminalPage == TerminalPage.Directory || _terminalPage == TerminalPage.Archive)
                     ? InputContext.TerminalDirectory : _terminalOpen ? InputContext.Dialogue : InputContext.World;
-            var patients = _rules.Patients.Where(profile => profile.FirstDay <= game.Day).Select(profile =>
+            var day = _rules.Days.FirstOrDefault(item => item.Day == game.Day);
+            var patients = _rules.Patients.Where(profile => profile.FirstDay <= game.Day
+                && (!IsCampaign || day == null || day.Meetings.Any(meeting => meeting.PatientId == profile.Id))).Select(profile =>
             {
                 var state = snapshot.Patients.Single(patient => patient.Id == profile.Id);
                 return new PatientView(state.Id, profile.DisplayName, state.Presence, state.TreatmentCount,
                     game.CurrentPatientId == state.Id,
                     snapshot.Encounters.Any(encounter => encounter.Day == game.Day && encounter.PatientId == state.Id
-                        && encounter.Stage == EncounterStage.Completed));
+                        && encounter.Stage == EncounterStage.Completed),
+                    snapshot.Encounters.LastOrDefault(encounter => encounter.PatientId == state.Id && encounter.Disposition.HasValue)?.Disposition,
+                    _session.CanReceiveToday(state.Id));
             });
             var dialogue = _terminalOpen && _terminalPage == TerminalPage.Review && _cue == null && _inspection == null
                 && (game.EncounterStage == EncounterStage.NormalDialogue || game.EncounterStage == EncounterStage.SpecialDialogue)
                 ? _content.GetDialogue(game) : null;
+            if (dialogue != null)
+                dialogue = new DialogueContent(dialogue.NodeId, dialogue.Speaker, ResolveSegmentText(dialogue.NodeId, dialogue.Text),
+                    dialogue.Responses.Select(response => new ResponseContent(response.Id, ResolveDialogueText(response.Id, response.Text))));
+            var presented = snapshot.Encounters.SingleOrDefault(encounter => encounter.Id == _historyEncounterId);
+            var presentedProfile = _rules.Patients.SingleOrDefault(patient => patient.Id == presented?.PatientId);
+            var presentedMeeting = presented == null ? null : _rules.Days.Single(item => item.Day == presented.Day)
+                .Meetings.Single(meeting => meeting.PatientId == presented.PatientId);
             _cachedView = new RuntimeView(game, input, _terminalOpen, _paused, _cue, dialogue, _inspection,
                 patients, input == InputContext.World ? WorldInteractions(game) : Array.Empty<InteractionTarget>(),
                 _observations.Select(observation => $"{observation.Day}:{observation.PatientId}:{observation.Kind}"),
                 _terminalPage, _useTerminalDirectory, _leavingDirectory,
-                _transcript.Where(entry => entry.EncounterId == _historyEncounterId), _archiveDirectoryVisible);
+                _transcript.Where(entry => entry.EncounterId == _historyEncounterId), _archiveDirectoryVisible,
+                presented?.PatientId, presentedProfile?.DisplayName, presented?.Id, presented?.Disposition, presentedMeeting?.ReactionNodes.Keys);
             return _cachedView;
         }
 
@@ -145,6 +159,7 @@ namespace MiniGame.Presentation
                 PresentationKind.Briefing => new CompleteBriefing(),
                 PresentationKind.ResponseBranch => new CompleteResponseBranch(game.CurrentEncounterId!, game.CurrentNodeId!),
                 PresentationKind.Reaction => new CompleteReaction(game.CurrentEncounterId!),
+                PresentationKind.Introduction => new CompleteIntroduction(game.CurrentEncounterId!, game.CurrentNodeId!),
                 PresentationKind.Sleep => new CompleteSleep(),
                 PresentationKind.Dream => new CompleteDream(),
                 _ => null
@@ -154,6 +169,10 @@ namespace MiniGame.Presentation
             _cue = null;
             switch (kind)
             {
+                case PresentationKind.EnterTerminal:
+                    if (!_useTerminalDirectory && game.EncounterStage == EncounterStage.Introduction)
+                        SetCue(PresentationKind.Introduction);
+                    break;
                 case PresentationKind.MorningInspection: SetCue(PresentationKind.Briefing); break;
                 case PresentationKind.Reaction: SetCue(PresentationKind.ExitTerminal); break;
                 case PresentationKind.ExitTerminal:
@@ -171,11 +190,15 @@ namespace MiniGame.Presentation
         {
             var view = GetView();
             if (!_useTerminalDirectory || view.Input != InputContext.TerminalDirectory
-                || _terminalPage != TerminalPage.Directory || view.Game.CurrentPatientId != patientId)
+                || _terminalPage != TerminalPage.Directory)
                 return Reject("PatientUnavailable");
+            var result = _session.Execute(new SelectPatient(patientId));
+            if (!result.Accepted) return Reject(result.Reason.ToString());
+            var game = _session.GetPlayerView();
             _terminalPage = TerminalPage.Review;
-            _historyEncounterId = view.Game.CurrentEncounterId;
-            return Accept();
+            _historyEncounterId = game.CurrentEncounterId;
+            if (game.EncounterStage == EncounterStage.Introduction) SetCue(PresentationKind.Introduction);
+            return Accept(result.Events);
         }
 
         public RuntimeResult ReturnToDirectory()
@@ -183,7 +206,15 @@ namespace MiniGame.Presentation
             var view = GetView();
             if (!_useTerminalDirectory || view.Input != InputContext.TerminalDirectory)
                 return Reject("EncounterInProgress");
-            if (_terminalPage == TerminalPage.Archive) _archiveDirectoryVisible = true;
+            if (_terminalPage == TerminalPage.Archive)
+            {
+                if (view.Game.CurrentEncounterId != null)
+                {
+                    _terminalPage = TerminalPage.Directory;
+                    _archiveDirectoryVisible = false;
+                }
+                else _archiveDirectoryVisible = true;
+            }
             return Accept();
         }
 
@@ -197,22 +228,65 @@ namespace MiniGame.Presentation
             return Accept();
         }
 
-        public void RecordDialogueLine(string speaker, string text, string sourceNodeId, string portraitId)
+        public string ResolveDialogueText(string sourceId, string original) => _content is PackageGameContent package
+            ? package.ResolveText(sourceId, original, EvaluateDialoguePredicate) : original;
+
+        public bool IsNarration(string sourceId) => _content is PackageGameContent package && package.IsNarration(sourceId);
+
+        private string ResolveSegmentText(string nodeId, string fallback)
+            => _content is PackageGameContent package && package.TryGetSegment(nodeId, out var segment)
+                ? string.Join("\n", segment!.Lines.Select(line => ResolveDialogueText(line.SourceNodeId, line.Text))) : fallback;
+
+        private bool EvaluateDialoguePredicate(string predicate)
+        {
+            int yesterday = _session.GetPlayerView().Day - 1;
+            return predicate switch
+            {
+                "other_patient_exited_yesterday" => _session.HasDispositionOtherThan("diplomat", yesterday, Disposition.Purify)
+                    || _session.HasDispositionOtherThan("diplomat", yesterday, Disposition.Release),
+                "asked_diplomat_for_evidence_yesterday" => _session.HasResponse("diplomat", yesterday, "diplomat__AD_D1_R2_O2"),
+                _ => throw new InvalidOperationException("Unknown dialogue predicate: " + predicate)
+            };
+        }
+
+        public bool IsDialogueLineComplete(string sourceId)
+        {
+            var game = _session.GetPlayerView();
+            return _transcript.Any(entry => entry.EncounterId == game.CurrentEncounterId && entry.CoreNodeId == game.CurrentNodeId
+                && entry.SourceNodeId == sourceId && !entry.IsPlayer && entry.Completed);
+        }
+
+        public void CompleteDialogueLine(string sourceId)
         {
             var view = GetView();
-            if (!_terminalOpen || _terminalPage != TerminalPage.Review || view.Paused || view.Inspection != null
-                || view.Game.CurrentEncounterId == null || view.Game.CurrentNodeId == null
+            if (!CanRecordDialogue(view)) return;
+            var entry = _transcript.SingleOrDefault(item => item.EncounterId == view.Game.CurrentEncounterId
+                && item.CoreNodeId == view.Game.CurrentNodeId && item.SourceNodeId == sourceId && !item.IsPlayer);
+            if (entry != null && !entry.Completed) { entry.Completed = true; Accept(); }
+        }
+
+        public void RecordDialogueLine(string speaker, string text, string sourceNodeId, string portraitId, bool narration = false)
+        {
+            var view = GetView();
+            if (!CanRecordDialogue(view)
                 || string.IsNullOrWhiteSpace(text) || string.IsNullOrWhiteSpace(sourceNodeId)) return;
-            if (AddTranscript(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, speaker, text, sourceNodeId, portraitId, false))
+            if (AddTranscript(view.Game.CurrentEncounterId!, view.Game.CurrentNodeId!, speaker, text, sourceNodeId, portraitId, false, narration))
                 Accept();
         }
 
+        private bool CanRecordDialogue(RuntimeView view)
+            => _terminalOpen && _terminalPage == TerminalPage.Review && !view.Paused && view.Inspection == null
+                && view.Game.CurrentEncounterId != null && view.Game.CurrentNodeId != null
+                && view.Game.CurrentEncounterId == _historyEncounterId
+                && (view.Input == InputContext.Dialogue || view.Cue?.Kind == PresentationKind.Introduction
+                    || view.Cue?.Kind == PresentationKind.ResponseBranch || view.Cue?.Kind == PresentationKind.Reaction);
+
         private bool AddTranscript(string encounterId, string coreNodeId, string speaker, string text,
-            string sourceNodeId, string portraitId, bool isPlayer)
+            string sourceNodeId, string portraitId, bool isPlayer, bool narration = false)
         {
             var key = encounterId + ":" + (isPlayer ? "player:" + coreNodeId + ":" : "actor:") + sourceNodeId;
             if (_transcript.Any(entry => entry.Key == key)) return false;
-            _transcript.Add(new TranscriptEntry(key, encounterId, coreNodeId, speaker, text, sourceNodeId, portraitId, isPlayer));
+            _transcript.Add(new TranscriptEntry(key, encounterId, coreNodeId, speaker, text, sourceNodeId, portraitId, isPlayer, narration));
             _historyEncounterId = encounterId;
             return true;
         }
@@ -247,7 +321,7 @@ namespace MiniGame.Presentation
         {
             var checkpoint = new RuntimeCheckpoint
             {
-                Version = 1, ContentRevision = _content.Revision, CoreJson = SnapshotCodec.Serialize(_session),
+                Version = IsCampaign ? 2 : 1, ContentRevision = _content.Revision, CoreJson = SnapshotCodec.Serialize(_session),
                 TerminalOpen = _terminalOpen, Paused = _paused, CueKind = _cue?.Kind,
                 OpenInspectionKind = _inspection?.Kind, UseTerminalDirectory = _useTerminalDirectory,
                 Page = _terminalPage, LeavingDirectory = _leavingDirectory, HistoryEncounterId = _historyEncounterId,
@@ -256,7 +330,7 @@ namespace MiniGame.Presentation
                 {
                     Key = entry.Key, EncounterId = entry.EncounterId, CoreNodeId = entry.CoreNodeId,
                     Speaker = entry.Speaker, Text = entry.Text, SourceNodeId = entry.SourceNodeId,
-                    PortraitId = entry.PortraitId, IsPlayer = entry.IsPlayer
+                    PortraitId = entry.PortraitId, IsPlayer = entry.IsPlayer, IsNarration = entry.IsNarration, Completed = entry.Completed
                 }).ToList(),
                 Observations = _observations.Select(item => new ObservationRecord
                     { Day = item.Day, PatientId = item.PatientId, Kind = item.Kind }).ToList()
@@ -279,7 +353,7 @@ namespace MiniGame.Presentation
                 var checkpoint = JsonSerializer.Create(JsonSettings()).Deserialize<RuntimeCheckpoint>(reader)
                     ?? throw new SnapshotValidationException("Runtime checkpoint must be an object.");
                 if (reader.Read()) throw new SnapshotValidationException("Runtime checkpoint contains additional JSON.");
-                if (checkpoint.Version != 1 || checkpoint.ContentRevision != content.Revision)
+                if (checkpoint.Version != (rules.StartDay == 0 ? 2 : 1) || checkpoint.ContentRevision != content.Revision)
                     throw new SnapshotValidationException("Runtime checkpoint version or content revision does not match.");
                 var session = SnapshotCodec.Deserialize(checkpoint.CoreJson, rules);
                 ValidateCheckpoint(checkpoint, session, rules);
@@ -291,7 +365,8 @@ namespace MiniGame.Presentation
                     _archiveDirectoryVisible = checkpoint.ArchiveDirectoryVisible
                 };
                 runtime._transcript.AddRange(checkpoint.Transcript.Select(entry => new TranscriptEntry(entry.Key,
-                    entry.EncounterId, entry.CoreNodeId, entry.Speaker, entry.Text, entry.SourceNodeId, entry.PortraitId, entry.IsPlayer)));
+                    entry.EncounterId, entry.CoreNodeId, entry.Speaker, entry.Text, entry.SourceNodeId, entry.PortraitId, entry.IsPlayer,
+                    entry.IsNarration, entry.Completed)));
                 runtime._observations.AddRange(checkpoint.Observations);
                 if (checkpoint.CueKind.HasValue) runtime.SetCue(checkpoint.CueKind.Value);
                 if (checkpoint.OpenInspectionKind.HasValue)
@@ -314,7 +389,8 @@ namespace MiniGame.Presentation
             var open = checkpoint.TerminalOpen;
             var snapshot = session.CreateSnapshot();
             var current = snapshot.State.Encounters.SingleOrDefault(item => item.Id == game.CurrentEncounterId);
-            var firstRound = current != null && current.NormalRoundIndex == 0 && current.Responses.Count == 0;
+            var firstRound = current != null && current.NormalRoundIndex == 0 && current.Responses.Count == 0
+                && (current.Stage == EncounterStage.Introduction || current.Stage == EncounterStage.NormalDialogue);
             var afterReaction = snapshot.CommandHistory.LastOrDefault()?.Kind == CommandKind.CompleteReaction;
             var page = checkpoint.Page ?? (open ? TerminalPage.Review : TerminalPage.Closed);
             if (!Enum.IsDefined(typeof(TerminalPage), page) || (page != TerminalPage.Closed) != open
@@ -331,6 +407,9 @@ namespace MiniGame.Presentation
                 GamePhase.Apartment => !open && cue == null,
                 GamePhase.Work => game.EncounterStage switch
                 {
+                    EncounterStage.Introduction => (open && cue == PresentationKind.Introduction)
+                        || (firstRound && open && cue == PresentationKind.EnterTerminal)
+                        || (firstRound && afterReaction && ((!open && cue == null) || (open && cue == PresentationKind.ExitTerminal))),
                     EncounterStage.NormalDialogue => (open && cue == null)
                         || (firstRound && open && cue == PresentationKind.EnterTerminal)
                         || (firstRound && afterReaction && ((!open && cue == null) || (open && cue == PresentationKind.ExitTerminal))),
@@ -349,14 +428,17 @@ namespace MiniGame.Presentation
             };
             if (checkpoint.UseTerminalDirectory)
             {
-                var directoryPage = page == TerminalPage.Directory && firstRound && game.Phase == GamePhase.Work;
+                var unselected = firstRound && !current!.ExplicitlySelected;
+                var directoryPage = page == TerminalPage.Directory && unselected && game.Phase == GamePhase.Work;
                 var archivePage = page == TerminalPage.Archive && afterReaction
                     && (game.Phase == GamePhase.Evening || (firstRound && game.Phase == GamePhase.Work));
                 if (open && (directoryPage || archivePage)
                     && (cue == null || cue == PresentationKind.EnterTerminal || cue == PresentationKind.ExitTerminal)) valid = true;
-                if (!open && page == TerminalPage.Closed && firstRound && game.Phase == GamePhase.Work && cue == null) valid = true;
-                if (page == TerminalPage.Directory && !directoryPage) valid = false;
-                if (page == TerminalPage.Archive && !archivePage) valid = false;
+                if (!open && page == TerminalPage.Closed && unselected && game.Phase == GamePhase.Work && cue == null) valid = true;
+                if (page == TerminalPage.Directory && (!directoryPage
+                    || (cue != null && cue != PresentationKind.EnterTerminal && !(cue == PresentationKind.ExitTerminal && checkpoint.LeavingDirectory)))) valid = false;
+                if (page == TerminalPage.Archive && (!archivePage
+                    || (cue != null && !(cue == PresentationKind.ExitTerminal && checkpoint.LeavingDirectory)))) valid = false;
             }
             if (!valid) throw new SnapshotValidationException("Presentation checkpoint does not match the core phase.");
             if (checkpoint.Transcript == null || checkpoint.Transcript.Any(entry => entry == null))
@@ -379,19 +461,26 @@ namespace MiniGame.Presentation
             }
             if (checkpoint.HistoryEncounterId != null && !snapshot.State.Encounters.Any(item => item.Id == checkpoint.HistoryEncounterId))
                 throw new SnapshotValidationException("Transcript encounter does not exist.");
+            if (checkpoint.UseTerminalDirectory && (page == TerminalPage.Archive
+                || (page == TerminalPage.Review && cue == PresentationKind.ExitTerminal && !checkpoint.LeavingDirectory))
+                && checkpoint.HistoryEncounterId != snapshot.CommandHistory.LastOrDefault()?.EncounterId)
+                throw new SnapshotValidationException("Archived transcript does not match the completed encounter.");
+            if (checkpoint.UseTerminalDirectory && page == TerminalPage.Review && cue != PresentationKind.ExitTerminal
+                && checkpoint.HistoryEncounterId != game.CurrentEncounterId)
+                throw new SnapshotValidationException("Review transcript does not match the current encounter.");
             if (checkpoint.Observations == null || checkpoint.Observations.Any(item => item == null))
                 throw new SnapshotValidationException("Observation records are required.");
             var state = snapshot.State;
             var unique = new HashSet<(int Day, string PatientId, InspectionKind Kind)>();
             foreach (var item in checkpoint.Observations)
             {
-                if (item.Day < 1 || item.Day > game.Day || !Enum.IsDefined(typeof(InspectionKind), item.Kind)
+                if (item.Day < rules.StartDay || item.Day > game.Day || !Enum.IsDefined(typeof(InspectionKind), item.Kind)
                     || !rules.Patients.Any(profile => profile.Id == item.PatientId && profile.FirstDay <= item.Day)
                     || !state.Encounters.Any(encounter => encounter.Day == item.Day && encounter.PatientId == item.PatientId)
                     || !unique.Add((item.Day, item.PatientId, item.Kind)))
                     throw new SnapshotValidationException("Invalid or duplicate observation record.");
             }
-            if (checkpoint.OpenInspectionKind.HasValue && (!open || cue != null || game.Phase != GamePhase.Work
+            if (checkpoint.OpenInspectionKind.HasValue && (!open || page != TerminalPage.Review || cue != null || game.Phase != GamePhase.Work
                 || !Enum.IsDefined(typeof(InspectionKind), checkpoint.OpenInspectionKind.Value)
                 || !checkpoint.Observations.Any(item => item.Day == game.Day && item.PatientId == game.CurrentPatientId
                     && item.Kind == checkpoint.OpenInspectionKind.Value)))
@@ -418,8 +507,12 @@ namespace MiniGame.Presentation
         private void SetCue(PresentationKind kind)
         {
             // Fresh tokens invalidate callbacks from prior loads or abandoned host instances.
-            _cue = new PresentationCue(Guid.NewGuid().ToString("N"), kind,
-                _content.GetPresentation(kind, _session.GetPlayerView()));
+            var view = _session.GetPlayerView();
+            var text = kind == PresentationKind.Introduction ? _content.GetDialogue(view).Text : _content.GetPresentation(kind, view);
+            if (view.CurrentNodeId != null && (kind == PresentationKind.Introduction
+                || kind == PresentationKind.ResponseBranch || kind == PresentationKind.Reaction))
+                text = ResolveSegmentText(view.CurrentNodeId, text);
+            _cue = new PresentationCue(Guid.NewGuid().ToString("N"), kind, text);
         }
 
         private RuntimeResult Accept(IEnumerable<GameEvent>? events = null)
@@ -462,6 +555,8 @@ namespace MiniGame.Presentation
         [JsonProperty(Required = Required.Always)] public string SourceNodeId { get; set; } = "";
         [JsonProperty(Required = Required.Always)] public string PortraitId { get; set; } = "";
         [JsonProperty(Required = Required.Always)] public bool IsPlayer { get; set; }
+        [JsonProperty] public bool IsNarration { get; set; }
+        [JsonProperty] public bool Completed { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]

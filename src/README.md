@@ -1,12 +1,12 @@
 # 游戏核心逻辑源码
 
-这里实现五位病人、三天流程和三种结局的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。新建的[Unity开发原型](../UnityProject/README.md)接入房间、观察、Yarn会谈、处置反应和睡眠跨日；正式对白、美术与结局演出仍为后续制作内容。[verified: MiniGame.Presentation/GameRuntime.cs；../UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate] [opinion]
+这里实现Day0教学、五位病人三天流程和三种结局的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。Unity已接入六份Excel来源对白和首版原创人物立绘；晨检、梦境和全局结局演出仍沿用开发占位。[verified: ../docs/campaign-verification.json content/portraits/limits；MiniGame.Presentation/GameRuntime.cs]
 
 [实现说明：文件职责、设计理由与借鉴来源](architecture-and-rationale.md)解释代码为什么这样组织；[研究路线](../research/unity-2022-roadmap.md)和[游戏设计](../docs/game-overview.md)提供需求背景。
 
 2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](../docs/feishu-sync-2026-10-15.md)。[verified: ../docs/.source-data/game-wiki.json content「结局」；../docs/.source-data/sync-2026-10-15.json changes] [opinion]
 
-默认Unity终端已接入小孩Day1来源对白及独立演示配置；`MiniGame.Presentation/Authoring` 将受限Yarn内容包编译为核心规则、显示内容和运行时Yarn。台词源为包内 `yarnSource`，GameSession仍裁决信任与处置。策划入口见[终端指南](../docs/terminal-ui-guide.md)，旧三天 `PrototypeRules` 继续独立保留。[verified: MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L20-L93；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126]
+默认融合场景使用V2全流程包，V1小孩Day1和旧三天 `PrototypeRules` 继续独立保留。`MiniGame.Presentation/Authoring` 将受限Yarn及会谈日程编译为核心规则、显示内容和运行时Yarn；GameSession仍裁决信任与处置。内容修改见[全流程指南](../docs/campaign-guide.md)。[verified: MiniGame.Presentation/Authoring/CampaignPackageCompiler.cs Compile；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs StartCampaign/StartTerminalDemo/StartLegacyPrototype]
 
 ## 目录与技术基线
 
@@ -84,7 +84,7 @@ game.Execute(new CompleteResponseBranch(
 
 ## 开发默认规则
 
-本节描述保留的旧三天 `PrototypeRules`。默认小孩Day1内容包另采用六轮、实际回复ID与−3/0/+3、初始信任0、释放阈值3、净化剩余5；它不把Day2/3正式对白或全局正式数值自动接入。核心允许非空普通轮列表，内容包导入上限为128轮；旧配置仍为4轮。[verified: ../UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile/yarnSource；MiniGame.Core/Rules/DialogueDefinitions.cs L51–L58；MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs L58] [opinion]
+本节下列清单描述保留的旧三天 `PrototypeRules`。当前V2另采用Day0＋五人三天、信任0／释放3／每日目标1及源表增量；普通会谈为6或7轮，Day0允许只有介绍与净化。`MeetingDefinition.IntroNodeId` 对应 `CompleteIntroduction`，`ReactionNodes` 定义允许的处置，`DispositionTrustDeltas` 只在处置提交时结算；旧构造参数与V1语义保持兼容。[verified: MiniGame.Core/Rules/DialogueDefinitions.cs MeetingDefinition；MiniGame.Core/Runtime/GameSession.cs CompleteIntroduction/Dispose；../Tools/DialogueCampaign/conversion-config.json]
 
 这些是用户采纳的**首轮开发配置**，不是已确认的正式策划参数；集中在[PrototypeRules.cs](MiniGame.Core/Rules/PrototypeRules.cs)。
 
@@ -95,7 +95,7 @@ game.Execute(new CompleteResponseBranch(
 - 小孩、执政者、医生第三次治疗终止并记录死亡；外交官第三次治疗退出，实际死亡、撤离或保护不做判断。
 - 神父第三次治疗后的次日终止是可配置规则；从Day2开始的默认三天日程只会治疗两次，不强行压缩长期剧情。
 - 神父释放次日袭击；三天结束后，存在未达标日则锁房，否则被带走。默认冲突优先级为袭击→锁房→被带走。
-- Day4只用于结局收束，不生成第四天工作；Day0教学未实现。
+- 旧配置的Day4只用于结局收束，不生成第四天工作；V2在三天工作前另有Day0教学。[verified: MiniGame.Core/Rules/PrototypeRules.cs Create；../Tools/DialogueCampaign/conversion-config.json]
 - 保存真实回答、处置和每日指标，不合并疯狂值、偏离指数与狂热值，也不引入真假／善恶标准答案。
 
 可以构造自己的`GameRules`并注入会话。配置在创建时校验，集合被复制并只读暴露；规则指纹覆盖所有影响运行的配置。更改数值或日程后，旧规则存档会被拒绝，不自动迁移。

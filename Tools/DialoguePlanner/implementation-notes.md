@@ -17,3 +17,5 @@ Most revisitable: add richer graph editing only after the list/form workflow is 
 Edge cases found: unsupported source preservation, escaped markup, source comments, dangling references, unapplied drafts.
 Next read: README.md, then planner-core.js and planner.test.js.
 Validation: 18 Node tests pass, including strict native-contract edge cases, all 1296 reply routes and three disposition reactions; browser acceptance remains separate.
+
+V2 guard: full campaign JSON is rejected before parsing or replacing the current V1 document, with a direct conversion/import instruction. Save, export, and preview also guard V2. Node tests now 19/19; rebuilt offline HTML matches its sources.

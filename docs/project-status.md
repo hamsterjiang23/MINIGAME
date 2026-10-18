@@ -1,6 +1,10 @@
 # 当前完成情况与待补项
 
-状态更新日期：**2026-10-15，Asia/Shanghai**。最新为小孩Day1终端、Yarn内容包、离线策划编辑器与Unity导入；默认演示采用该包，旧三天原型保留。见[使用指南](terminal-ui-guide.md)和[本轮报告](terminal-ui-verification.json)，历史结果仍在[原汇总](gameplay-migration-verification.json)。[verified: terminal-ui-verification.json scope；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L126]
+2026-10-18 电脑交互更新：鼠标左键或 E 进入后先落座、对齐屏幕、推进铺满视野，再淡入终端；正式三天可自由选择当天待审角色。236项.NET、26项项目PlayMode及补强后的窗口比例回归通过，Windows开发构建0错误/0警告且启动通过。原退出演出、睡前床位聚光灯与三结局流程保留。操作与边界见[电脑与名册指南](terminal-entry-and-roster.md)，证据见[本轮验收](terminal-entry-verification.json)。[verified: terminal-entry-verification.json changes/dotnet/unity]
+
+2026-10-18：默认入口已升级为Day0＋五人三天的全流程，接入六份Excel共994行来源与27张原创立绘，保留融合房间和进出电脑演出。224项.NET、21项项目PlayMode全部通过，Windows Mono开发版构建及启动通过。范围与限制见[全流程验收](campaign-verification.json)，操作见[全流程指南](campaign-guide.md)。[verified: campaign-verification.json content/portraits/dotnet/unity]
+
+2026-10-15的小孩Day1终端、离线单日策划工具与旧三天原型继续保留为独立入口，原验证结果保持历史身份。见[V1指南](terminal-ui-guide.md)、[V1报告](terminal-ui-verification.json)和[原汇总](gameplay-migration-verification.json)。[verified: campaign-verification.json scope；terminal-ui-verification.json scope]
 
 **当前交付是可以运行流程的开发原型。** 已有“三天、五病人、三结局”的规则、存档和 Unity/Yarn 宿主，也已生成 Windows Mono 开发程序；正式叙事、美术、音频和发布验收尚需补齐。[verified: ../src/README.md「开发默认规则」；../UnityProject/README.md「运行与操作」；gameplay-migration-verification.json unity.windowsMonoBuild] [opinion]
 
@@ -8,7 +12,7 @@
 
 ## 最新来源同步与实现边界
 
-2026-10-15已同步主Wiki608版、主角6版、梦场景191版和小孩v1.1对白31版；随后已接入小孩Day1六轮、20回复及三种处置。其余角色和小孩Day2/3仍待接入，四天梦场景保持来源身份。[verified: .source-data/manifest.json documents/workbooks；terminal-ui-verification.json source/scope] [opinion]
+2026-10-15同步主Wiki608版、主角6版、梦场景191版和小孩v1.1对白31版；2026-10-18以六份本地Excel接入全部角色的三天内容和Day0。晨检、简报、梦境与全局结局演出仍沿用开发占位，四天梦场景资料保持来源身份。[verified: .source-data/manifest.json documents/workbooks；campaign-verification.json content/limits]
 
 新来源新增反叛值自我净化分支与每日开始前结局/KPI检查；交付标准3结局与正文4条的冲突继续裁决。小孩Day1六轮和−3/0/+3已采用独立包接入，不据此改变旧三天的KPI、结局和正式全局数值。[verified: .source-data/game-wiki.json content「结局」；terminal-ui-verification.json scope/source] [opinion]
 
@@ -18,7 +22,7 @@
 
 ## 已经完成什么
 
-### 默认小孩Day1终端与策划工具
+### 保留的小孩Day1终端与策划工具
 
 - 目录、审查、发言、回复、实际记录、核验灯、三种处置、反应花屏、断信号与归档返回已接通；恢复与连点由核心和宿主门控，当前段可重播。[verified: terminal-ui-verification.json scope/unity/limits]
 - [离线HTML工具](../Tools/DialoguePlanner/DialoguePlanner.html)提供节点/表单/源码编辑、分支排练、保存打开与导出；Unity校验并原生编译后激活，失败保留旧内容。[verified: ../Tools/DialoguePlanner/README.md「策划使用」；terminal-ui-verification.json scope]
@@ -61,13 +65,13 @@
 
 需要确认逐日病人日程与退出条件、每日KPI数值与失败去向/检查时点、信任/特殊会谈/释放门槛、交付3结局与新增第四条分支的范围及冲突优先级，以及神父和外交官的特殊处置。Day0教学和Day4演出的制作范围也需要确定。[verified: open-questions.md Q02–Q09、Q22、Q24–Q25]
 
-目前可执行配置为：三天、每日净化目标1、普通会谈4轮、特殊轮门槛20、释放门槛30；神父Day2加入，其他四人Day1加入；默认结局优先级为袭击→锁房→被带走。这些继续保留开发配置身份，不能当作正式策划已确认。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs L17–L52；../src/README.md「开发默认规则」]
+旧三天配置保留每日目标1、普通4轮、特殊门槛20、释放门槛30和神父Day2加入。当前V2按本轮授权采用信任0、释放3、每日目标1、全部源表轮次和神父Day1加入；两套配置均保留开发默认值身份。[verified: ../src/MiniGame.Core/Rules/PrototypeRules.cs Create；campaign-verification.json defaults]
 
 交付建议：形成带版本的正式日程、数值与事件配置；每项变更写清玩家可见后果，并补相应跨日、处置和结局验收。验收应覆盖“退出的人不会再进常规队列”“读档不重复结算”“结局冲突结果明确”。[opinion]
 
 ### 正式叙事与观察内容
 
-小孩Day1来源对白已接入；还需接入Day2/3与跨日后果，补齐其他病人、晨检简报、梦境及经裁决的结局。观察画面与证据仍需按角色、日期和状态制作。[verified: terminal-ui-verification.json scope/limits；open-questions.md Q11–Q14、Q25] [opinion]
+六份Excel对白、跨日后果和首版人物立绘已接入。后续继续制作晨检简报、梦境与结局演出，以及按角色和日期区分的观察画面与证据；本轮已采用的暂定解释和参数见全流程指南。[verified: campaign-verification.json content/portraits/limits；campaign-guide.md「当前流程与开发默认值」] [opinion]
 
 主角新专篇已明确举报妹妹与记忆断层背景；姓名/机构名称、Mini内揭露程度、神父背景和净化真实去向仍有来源冲突；监督员交互、日记、档案/新闻范围与疯狂值等变量是否采用，仍需裁决。占位文本不承担这些裁决。[verified: open-questions.md Q10–Q11、Q13、Q16–Q21；../src/MiniGame.Presentation/PrototypeContent.cs L11–L16]
 

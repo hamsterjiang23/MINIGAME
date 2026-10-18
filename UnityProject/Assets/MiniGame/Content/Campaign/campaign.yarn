@@ -1,0 +1,11125 @@
+title: tutorial__D0_T1
+kind: line
+round: 引导
+patient: tutorial
+day: 0
+portrait: D0_01
+---
+无名男子: 求求你了，我还有老婆和孩子！
+<<jump tutorial__D0_T2>>
+===
+
+title: tutorial__D0_T2
+kind: line
+round: 引导
+patient: tutorial
+day: 0
+portrait: D0_01
+---
+无名男子: 我不能成为一具行尸走肉，去那个永不见天日的地方打工...
+<<jump tutorial__D0_T3>>
+===
+
+title: tutorial__D0_T3
+kind: line
+round: 引导
+patient: tutorial
+day: 0
+portrait: D0_02
+---
+无名男子: 我从来都不知道我为什么被带到这里来，接受审讯。
+<<jump tutorial__D0_T4>>
+===
+
+title: tutorial__D0_T4
+kind: line
+round: 引导
+patient: tutorial
+day: 0
+portrait: D0_01
+---
+无名男子: 难道，做一个有人格，有思想的正常人有错吗？？
+<<jump tutorial__D0_T5>>
+===
+
+title: tutorial__D0_T5
+kind: line
+round: 引导
+patient: tutorial
+day: 0
+portrait: D0_02
+---
+无名男子: 你们都疯了吗...还是...我就是那个疯子呢...
+<<jump tutorial__D0_MEASURE>>
+===
+
+title: tutorial__D0_M_PURIFY_T1
+kind: line
+round: 措施
+patient: tutorial
+day: 0
+portrait: D0_02
+---
+无名男子: 等一下……净化之后，我还会记得他们吗？
+<<jump tutorial__D0_M_PURIFY_T2>>
+===
+
+title: tutorial__D0_M_PURIFY_T2
+kind: line
+round: 措施
+patient: tutorial
+day: 0
+portrait: D0_01
+---
+无名男子: 如果不会，请至少告诉我的孩子——我没有忘记他们。
+<<jump tutorial__END_DAY0>>
+===
+
+title: tutorial__D0_MEASURE
+kind: measure
+round: 措施
+patient: tutorial
+day: 0
+---
+-> 净化 #id:tutorial__D0_M_PURIFY #trust:-1 #disposition:purify
+    <<jump tutorial__D0_M_PURIFY_T1>>
+===
+
+title: child__D1_R1_OPEN1
+kind: line
+round: R1
+patient: child
+day: 1
+portrait: ML01
+---
+米洛: 这里还要检测吗？
+<<jump child__D1_R1_OPEN2>>
+===
+
+title: child__D1_R1_OPEN2
+kind: line
+round: R1
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 和昨天广场上的不一样吗？
+<<jump child__D1_R1_CHOICE>>
+===
+
+title: child__D1_R1_CLOSING1
+kind: line
+round: R1
+patient: child
+day: 1
+portrait: ML01
+---
+米洛: 那个东西一响，我就害怕。
+<<jump child__D1_R1_CLOSING2>>
+===
+
+title: child__D1_R1_CLOSING2
+kind: line
+round: R1
+patient: child
+day: 1
+portrait: ML01
+---
+米洛: 响了以后，我的手一直抖。
+<<jump child__D1_R1_CLOSING3>>
+===
+
+title: child__D1_R1_CLOSING3
+kind: line
+round: R1
+patient: child
+day: 1
+portrait: ML01
+---
+米洛: 他们说我不正常。
+<<jump child__D1_R2_OPEN1>>
+===
+
+title: child__D1_R2_OPEN1
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我没有打人，也没有拿别人的东西。
+<<jump child__D1_R2_CHOICE>>
+===
+
+title: child__D1_R2_O1_T1
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 住在一起的人说的。
+<<jump child__D1_R2_O1_T2>>
+===
+
+title: child__D1_R2_O1_T2
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 他们笑我不敢还手。
+<<jump child__D1_R2_CLOSING1>>
+===
+
+title: child__D1_R2_O3_T1
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 没人跟我说过。
+<<jump child__D1_R2_O3_T2>>
+===
+
+title: child__D1_R2_O3_T2
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我以为进去会有人告诉我。
+<<jump child__D1_R2_CLOSING1>>
+===
+
+title: child__D1_R2_CLOSING1
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 可我不知道自己做错了什么。
+<<jump child__D1_R2_CLOSING2>>
+===
+
+title: child__D1_R2_CLOSING2
+kind: line
+round: R2
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 这些也要记吗？
+<<jump child__D1_R3_OPEN1>>
+===
+
+title: child__D1_R3_OPEN1
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 他们让我进去，我就进去了。
+<<jump child__D1_R3_OPEN2>>
+===
+
+title: child__D1_R3_OPEN2
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我想着，表现好就能回去。
+<<jump child__D1_R3_CHOICE>>
+===
+
+title: child__D1_R3_O1_T1
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 他们让我坐着别动。
+<<jump child__D1_R3_O1_T2>>
+===
+
+title: child__D1_R3_O1_T2
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我看别人怎么坐，就跟着坐。
+<<jump child__D1_R3_O1_T3>>
+===
+
+title: child__D1_R3_O1_T3
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 可是它还是响了。
+<<jump child__D1_R3_CLOSING1>>
+===
+
+title: child__D1_R3_O2_T1
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: ……真的吗？
+<<jump child__D1_R3_O2_T2>>
+===
+
+title: child__D1_R3_O2_T2
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 他们没这么说过。
+<<jump child__D1_R3_CLOSING1>>
+===
+
+title: child__D1_R3_O3_T1
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 好。
+<<jump child__D1_R3_O3_T2>>
+===
+
+title: child__D1_R3_O3_T2
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 那我说慢一点。
+<<jump child__D1_R3_CLOSING1>>
+===
+
+title: child__D1_R3_CLOSING1
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我想再试一次，他们没有让。
+<<jump child__D1_R3_CLOSING2>>
+===
+
+title: child__D1_R3_CLOSING2
+kind: line
+round: R3
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我出来的时候，没有一个人说话。
+<<jump child__D1_R4_OPEN1>>
+===
+
+title: child__D1_R4_OPEN1
+kind: line
+round: R4
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我出来以后，一直走走廊。
+<<jump child__D1_R4_OPEN2>>
+===
+
+title: child__D1_R4_OPEN2
+kind: line
+round: R4
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我数了数，一共有七扇门。
+<<jump child__D1_R4_CHOICE>>
+===
+
+title: child__D1_R4_CLOSING1
+kind: line
+round: R4
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 走到最后一扇，就到这里了。
+<<jump child__D1_R4_CLOSING2>>
+===
+
+title: child__D1_R4_CLOSING2
+kind: line
+round: R4
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我全程没有乱跑，是一直跟着走的。
+<<jump child__D1_R5_OPEN1>>
+===
+
+title: child__D1_R5_OPEN1
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 要怎么做，它才不会响？
+<<jump child__D1_R5_CHOICE>>
+===
+
+title: child__D1_R5_O1_T1
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: ……真的吗？
+<<jump child__D1_R5_O1_T2>>
+===
+
+title: child__D1_R5_O1_T2
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 可他们都说我做得不对。
+<<jump child__D1_R5_CLOSING1>>
+===
+
+title: child__D1_R5_O3_T1
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML04
+---
+米洛: 他们进去以前，妈妈会蹲下来跟他们说话。
+<<jump child__D1_R5_O3_T2>>
+===
+
+title: child__D1_R5_O3_T2
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我站得远，听不见。
+<<jump child__D1_R5_O3_T3>>
+===
+
+title: child__D1_R5_O3_T3
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我以为进去以后，会有人告诉我的。
+<<jump child__D1_R5_CLOSING1>>
+===
+
+title: child__D1_R5_CLOSING1
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我是不是没坐好？
+<<jump child__D1_R5_CLOSING2>>
+===
+
+title: child__D1_R5_CLOSING2
+kind: line
+round: R5
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 所以它才响的。
+<<jump child__D1_R6_OPEN1>>
+===
+
+title: child__D1_R6_OPEN1
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 说完这些，我能回去吗？
+<<jump child__D1_R6_CHOICE>>
+===
+
+title: child__D1_R6_O1_T1
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 哦。
+<<jump child__D1_R6_O1_T2>>
+===
+
+title: child__D1_R6_O1_T2
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 那要做什么，它才会说不响？
+<<jump child__D1_MEASURE>>
+===
+
+title: child__D1_R6_O2_T1
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我都记住了。
+<<jump child__D1_R6_O2_T2>>
+===
+
+title: child__D1_R6_O2_T2
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 刚才那些，我都说对了吗？
+<<jump child__D1_MEASURE>>
+===
+
+title: child__D1_R6_O3_T1
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: ……为什么？
+<<jump child__D1_R6_O3_T2>>
+===
+
+title: child__D1_R6_O3_T2
+kind: line
+round: R6
+patient: child
+day: 1
+portrait: ML02
+---
+米洛: 我不明白，我哪里做错了？
+<<jump child__D1_MEASURE>>
+===
+
+title: child__D1_M_TREAT_T1
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML03
+---
+米洛: 是刚才答错了吗？
+<<jump child__D1_M_TREAT_T2>>
+===
+
+title: child__D1_M_TREAT_T2
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML03
+---
+米洛: 我可以再说一遍。
+<<jump child__D1_M_TREAT_T3>>
+===
+
+title: child__D1_M_TREAT_T3
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML03
+---
+米洛: 这次我会说得慢一点。
+<<jump child__END_DAY1>>
+===
+
+title: child__D1_M_PURIFY_T1
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML03
+---
+米洛: 做完就能回去了吗？
+<<jump child__D1_M_PURIFY_T2>>
+===
+
+title: child__D1_M_PURIFY_T2
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML03
+---
+米洛: 我会跟着走的。
+<<jump child__END_DAY1>>
+===
+
+title: child__D1_M_RELEASE_T1
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML05
+---
+米洛: 我真的可以走了？
+<<jump child__D1_M_RELEASE_T2>>
+===
+
+title: child__D1_M_RELEASE_T2
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML05
+---
+米洛: 不用再检测一次吗？
+<<jump child__D1_M_RELEASE_T3>>
+===
+
+title: child__D1_M_RELEASE_T3
+kind: line
+round: 措施
+patient: child
+day: 1
+portrait: ML05
+---
+米洛: 那我出门的时候，会轻轻走的。
+<<jump child__END_DAY1>>
+===
+
+title: child__D1_R1_CHOICE
+kind: choice
+round: R1
+patient: child
+day: 1
+---
+-> 嗯，不一样。 #id:child__D1_R1_O1 #trust:0
+    <<jump child__D1_R1_CLOSING1>>
+-> 别害怕，慢慢说。 #id:child__D1_R1_O2 #trust:0
+    <<jump child__D1_R1_CLOSING1>>
+-> 和你说的一样。 #id:child__D1_R1_O3 #trust:0
+    <<jump child__D1_R1_CLOSING1>>
+===
+
+title: child__D1_R2_CHOICE
+kind: choice
+round: R2
+patient: child
+day: 1
+---
+-> 谁说你打人了？ #id:child__D1_R2_O1 #trust:0
+    <<jump child__D1_R2_O1_T1>>
+-> 你恨他们吗？ #id:child__D1_R2_O2 #trust:0
+    <<jump child__D1_R2_CLOSING1>>
+-> 检测前谁教过你？ #id:child__D1_R2_O3 #trust:0
+    <<jump child__D1_R2_O3_T1>>
+-> 工作人员呢？ #id:child__D1_R2_O4 #trust:0
+    <<jump child__D1_R2_CLOSING1>>
+===
+
+title: child__D1_R3_CHOICE
+kind: choice
+round: R3
+patient: child
+day: 1
+---
+-> 说说检测经过。 #id:child__D1_R3_O1 #trust:0
+    <<jump child__D1_R3_O1_T1>>
+-> 响了不是你的错。 #id:child__D1_R3_O2 #trust:3
+    <<jump child__D1_R3_O2_T1>>
+-> 别想了，说下一个。 #id:child__D1_R3_O3 #trust:-3
+    <<jump child__D1_R3_O3_T1>>
+===
+
+title: child__D1_R4_CHOICE
+kind: choice
+round: R4
+patient: child
+day: 1
+---
+-> 嗯，然后呢？ #id:child__D1_R4_O1 #trust:0
+    <<jump child__D1_R4_CLOSING1>>
+-> 了解。 #id:child__D1_R4_O2 #trust:0
+    <<jump child__D1_R4_CLOSING1>>
+-> 原来是这样。 #id:child__D1_R4_O3 #trust:0
+    <<jump child__D1_R4_CLOSING1>>
+===
+
+title: child__D1_R5_CHOICE
+kind: choice
+round: R5
+patient: child
+day: 1
+---
+-> 你已经做得很好了。 #id:child__D1_R5_O1 #trust:0
+    <<jump child__D1_R5_O1_T1>>
+-> 机器有时会出错。 #id:child__D1_R5_O2 #trust:0
+    <<jump child__D1_R5_CLOSING1>>
+-> 别人怎么做，你就怎么做。 #id:child__D1_R5_O3 #trust:0
+    <<jump child__D1_R5_O3_T1>>
+-> 不用学别人。 #id:child__D1_R5_O4 #trust:0
+    <<jump child__D1_R5_CLOSING1>>
+===
+
+title: child__D1_R6_CHOICE
+kind: choice
+round: R6
+patient: child
+day: 1
+---
+-> 我说了不算。 #id:child__D1_R6_O1 #trust:0
+    <<jump child__D1_R6_O1_T1>>
+-> 表现好就能回去。 #id:child__D1_R6_O2 #trust:-3
+    <<jump child__D1_R6_O2_T1>>
+-> 不会放你回去。 #id:child__D1_R6_O3 #trust:3
+    <<jump child__D1_R6_O3_T1>>
+===
+
+title: child__D1_MEASURE
+kind: measure
+round: 措施
+patient: child
+day: 1
+---
+-> 治疗 #id:child__D1_M_TREAT #trust:0 #disposition:treat
+    <<jump child__D1_M_TREAT_T1>>
+-> 净化 #id:child__D1_M_PURIFY #trust:0 #disposition:purify
+    <<jump child__D1_M_PURIFY_T1>>
+-> 释放 #id:child__D1_M_RELEASE #trust:0 #disposition:release
+    <<jump child__D1_M_RELEASE_T1>>
+===
+
+title: former-ruler__D1_R1_OPEN1
+kind: line
+round: R1
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 请确认你的姓名和职务。
+<<jump former-ruler__D1_R1_OPEN2>>
+===
+
+title: former-ruler__D1_R1_OPEN2
+kind: line
+round: R1
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 我要求这次谈话进入正式记录。
+<<jump former-ruler__D1_R1_CHOICE>>
+===
+
+title: former-ruler__D1_R1_CLOSING1
+kind: line
+round: R1
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 那就从记录开始。
+<<jump former-ruler__D1_R1_CLOSING2>>
+===
+
+title: former-ruler__D1_R1_CLOSING2
+kind: line
+round: R1
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 我是薇拉·沃斯，前执政委员会成员。
+<<jump former-ruler__D1_R2_OPEN1>>
+===
+
+title: former-ruler__D1_R2_OPEN1
+kind: line
+round: R2
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 我不是因私人行为被送进来的。
+<<jump former-ruler__D1_R2_CHOICE>>
+===
+
+title: former-ruler__D1_R2_O1_T1
+kind: line
+round: R2
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 一次由委员会共同批准的决议。
+<<jump former-ruler__D1_R2_CLOSING1>>
+===
+
+title: former-ruler__D1_R2_O3_T1
+kind: line
+round: R2
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 包括我，也包括后来审查我的人。
+<<jump former-ruler__D1_R2_CLOSING1>>
+===
+
+title: former-ruler__D1_R2_CLOSING1
+kind: line
+round: R2
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 区分集体责任，不等于取消我的责任。
+<<jump former-ruler__D1_R3_OPEN1>>
+===
+
+title: former-ruler__D1_R3_OPEN1
+kind: line
+round: R3
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 他们把我的签名放在第一页。
+<<jump former-ruler__D1_R3_OPEN2>>
+===
+
+title: former-ruler__D1_R3_OPEN2
+kind: line
+round: R3
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 其余人的支持意见，被放到了附页。
+<<jump former-ruler__D1_R3_CHOICE>>
+===
+
+title: former-ruler__D1_R3_O1_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 是。这一点不需要你替我开脱。
+<<jump former-ruler__D1_R3_CLOSING1>>
+===
+
+title: former-ruler__D1_R3_O2_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 1
+portrait: VV03
+---
+薇拉: 终于有人问起那一页。那里还有六个名字。
+<<jump former-ruler__D1_R3_CLOSING1>>
+===
+
+title: former-ruler__D1_R3_O3_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 那就没必要谈档案了。你已经替它宣布结论。
+<<jump former-ruler__D1_R3_CLOSING1>>
+===
+
+title: former-ruler__D1_R3_CLOSING1
+kind: line
+round: R3
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 我要的是完整审查，不是无罪证明。
+<<jump former-ruler__D1_R4_OPEN1>>
+===
+
+title: former-ruler__D1_R4_OPEN1
+kind: line
+round: R4
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 接替我的人，全部是男性。
+<<jump former-ruler__D1_R4_OPEN2>>
+===
+
+title: former-ruler__D1_R4_OPEN2
+kind: line
+round: R4
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 过去和我共事的女性，也陆续离开了席位。
+<<jump former-ruler__D1_R4_CHOICE>>
+===
+
+title: former-ruler__D1_R4_CLOSING1
+kind: line
+round: R4
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 同样的失误，他们称作判断偏差。
+<<jump former-ruler__D1_R4_CLOSING2>>
+===
+
+title: former-ruler__D1_R4_CLOSING2
+kind: line
+round: R4
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 轮到我，就成了无法克服的情绪。
+<<jump former-ruler__D1_R5_OPEN1>>
+===
+
+title: former-ruler__D1_R5_OPEN1
+kind: line
+round: R5
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 我很早就知道，他们需要一个人承担全部责任。
+<<jump former-ruler__D1_R5_CHOICE>>
+===
+
+title: former-ruler__D1_R5_O1_T1
+kind: line
+round: R5
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 我以为资历和忠诚能保护我。
+<<jump former-ruler__D1_R5_CLOSING1>>
+===
+
+title: former-ruler__D1_R5_O3_T1
+kind: line
+round: R5
+patient: former-ruler
+day: 1
+portrait: VV04
+---
+薇拉: 用我的愤怒，也用我看到伤亡后的悲痛。
+<<jump former-ruler__D1_R5_CLOSING1>>
+===
+
+title: former-ruler__D1_R5_CLOSING1
+kind: line
+round: R5
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 他们把情绪当作结论，也就不必再听内容。
+<<jump former-ruler__D1_R6_OPEN1>>
+===
+
+title: former-ruler__D1_R6_OPEN1
+kind: line
+round: R6
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 你有权决定我能不能继续说。
+<<jump former-ruler__D1_R6_OPEN2>>
+===
+
+title: former-ruler__D1_R6_OPEN2
+kind: line
+round: R6
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 所以我只问一次：你会留下完整记录吗？
+<<jump former-ruler__D1_R6_CHOICE>>
+===
+
+title: former-ruler__D1_R6_O1_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 记录原话。不要替我变得更无辜。
+<<jump former-ruler__D1_R6_CLOSING1>>
+===
+
+title: former-ruler__D1_R6_O2_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 好。先核对，再判断。至少顺序是对的。
+<<jump former-ruler__D1_R6_CLOSING1>>
+===
+
+title: former-ruler__D1_R6_O3_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 这句话，他们也说过。一个字都没有变。
+<<jump former-ruler__D1_R6_CLOSING1>>
+===
+
+title: former-ruler__D1_R6_CLOSING1
+kind: line
+round: R6
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 现在，你可以作出今天的处置。
+<<jump former-ruler__D1_MEASURE>>
+===
+
+title: former-ruler__D1_M_TREAT_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 1
+portrait: VV02
+---
+薇拉: 你可以记录我的反对。
+<<jump former-ruler__D1_M_TREAT_T2>>
+===
+
+title: former-ruler__D1_M_TREAT_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 不要把它写成同意。
+<<jump former-ruler__END_DAY1>>
+===
+
+title: former-ruler__D1_M_PURIFY_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 你连那份决议是什么都不知道。
+<<jump former-ruler__D1_M_PURIFY_T2>>
+===
+
+title: former-ruler__D1_M_PURIFY_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 可你已经准备结束我的申辩。
+<<jump former-ruler__END_DAY1>>
+===
+
+title: former-ruler__D1_M_RELEASE_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 1
+portrait: VV05
+---
+薇拉: 我会去找那份完整记录。
+<<jump former-ruler__D1_M_RELEASE_T2>>
+===
+
+title: former-ruler__D1_M_RELEASE_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 1
+portrait: VV05
+---
+薇拉: 也会回答其中对我不利的问题。
+<<jump former-ruler__END_DAY1>>
+===
+
+title: former-ruler__D1_R1_CHOICE
+kind: choice
+round: R1
+patient: former-ruler
+day: 1
+---
+-> 可以。 #id:former-ruler__D1_R1_O1 #trust:0
+    <<jump former-ruler__D1_R1_CLOSING1>>
+-> 先回答问题。 #id:former-ruler__D1_R1_O2 #trust:0
+    <<jump former-ruler__D1_R1_CLOSING1>>
+-> 这里没有申诉程序。 #id:former-ruler__D1_R1_O3 #trust:0
+    <<jump former-ruler__D1_R1_CLOSING1>>
+===
+
+title: former-ruler__D1_R2_CHOICE
+kind: choice
+round: R2
+patient: former-ruler
+day: 1
+---
+-> 那是因为什么？ #id:former-ruler__D1_R2_O1 #trust:0
+    <<jump former-ruler__D1_R2_O1_T1>>
+-> 档案写的是判断失常。 #id:former-ruler__D1_R2_O2 #trust:0
+    <<jump former-ruler__D1_R2_CLOSING1>>
+-> 谁批准了那项决议？ #id:former-ruler__D1_R2_O3 #trust:0
+    <<jump former-ruler__D1_R2_O3_T1>>
+-> 你在推卸责任吗？ #id:former-ruler__D1_R2_O4 #trust:0
+    <<jump former-ruler__D1_R2_CLOSING1>>
+===
+
+title: former-ruler__D1_R3_CHOICE
+kind: choice
+round: R3
+patient: former-ruler
+day: 1
+---
+-> 你的签名确实在上面。 #id:former-ruler__D1_R3_O1 #trust:0
+    <<jump former-ruler__D1_R3_O1_T1>>
+-> 其他人的名字呢？ #id:former-ruler__D1_R3_O2 #trust:3
+    <<jump former-ruler__D1_R3_O2_T1>>
+-> 仪器已经判定你有罪。 #id:former-ruler__D1_R3_O3 #trust:-3
+    <<jump former-ruler__D1_R3_O3_T1>>
+===
+
+title: former-ruler__D1_R4_CHOICE
+kind: choice
+round: R4
+patient: former-ruler
+day: 1
+---
+-> 我听见了。 #id:former-ruler__D1_R4_O1 #trust:0
+    <<jump former-ruler__D1_R4_CLOSING1>>
+-> 然后呢？ #id:former-ruler__D1_R4_O2 #trust:0
+    <<jump former-ruler__D1_R4_CLOSING1>>
+-> 这和你的案件有关吗？ #id:former-ruler__D1_R4_O3 #trust:0
+    <<jump former-ruler__D1_R4_CLOSING1>>
+===
+
+title: former-ruler__D1_R5_CHOICE
+kind: choice
+round: R5
+patient: former-ruler
+day: 1
+---
+-> 为什么还留下？ #id:former-ruler__D1_R5_O1 #trust:0
+    <<jump former-ruler__D1_R5_O1_T1>>
+-> 你太相信权力了。 #id:former-ruler__D1_R5_O2 #trust:0
+    <<jump former-ruler__D1_R5_CLOSING1>>
+-> 他们怎样证明你失常？ #id:former-ruler__D1_R5_O3 #trust:0
+    <<jump former-ruler__D1_R5_O3_T1>>
+-> 也许他们只是担心你。 #id:former-ruler__D1_R5_O4 #trust:0
+    <<jump former-ruler__D1_R5_CLOSING1>>
+===
+
+title: former-ruler__D1_R6_CHOICE
+kind: choice
+round: R6
+patient: former-ruler
+day: 1
+---
+-> 我会记录你说的。 #id:former-ruler__D1_R6_O1 #trust:0
+    <<jump former-ruler__D1_R6_O1_T1>>
+-> 我会核对完整名单。 #id:former-ruler__D1_R6_O2 #trust:3
+    <<jump former-ruler__D1_R6_O2_T1>>
+-> 你已经失去解释资格。 #id:former-ruler__D1_R6_O3 #trust:-3
+    <<jump former-ruler__D1_R6_O3_T1>>
+===
+
+title: former-ruler__D1_MEASURE
+kind: measure
+round: 措施
+patient: former-ruler
+day: 1
+---
+-> 治疗 #id:former-ruler__D1_M_TREAT #trust:0 #disposition:treat
+    <<jump former-ruler__D1_M_TREAT_T1>>
+-> 净化 #id:former-ruler__D1_M_PURIFY #trust:0 #disposition:purify
+    <<jump former-ruler__D1_M_PURIFY_T1>>
+-> 释放 #id:former-ruler__D1_M_RELEASE #trust:0 #disposition:release
+    <<jump former-ruler__D1_M_RELEASE_T1>>
+===
+
+title: battlefield-doctor__ED_D1_R1_START
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 先告诉我，你们所谓的治疗具体会对大脑做什么。别用宣传册上的词。
+<<jump battlefield-doctor__D1_R1_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O1_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 至少你承认你不知道全部。比假装确定强。
+<<jump battlefield-doctor__ED_D1_R1_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O1_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 流程也该有风险说明。
+<<jump battlefield-doctor__ED_D1_R1_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O1_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 那你只是把不知道包装成了命令。
+<<jump battlefield-doctor__ED_D1_R2_START>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O2_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 情绪不是剂量。你们到底降低了什么？
+<<jump battlefield-doctor__ED_D1_R1_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O2_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: “危险”是谁判断的？
+<<jump battlefield-doctor__ED_D1_R1_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O2_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你连结果都没看见，就先替它辩护。
+<<jump battlefield-doctor__ED_D1_R2_START>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O3_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 好。把“具体作用不明”也写进去。
+<<jump battlefield-doctor__ED_D1_R1_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O3_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 别只记成“不配合”。
+<<jump battlefield-doctor__ED_D1_R1_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R1_O3_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 记录不是回答。
+<<jump battlefield-doctor__ED_D1_R2_START>>
+===
+
+title: battlefield-doctor__ED_D1_R2_START
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 仪器亮红灯，只能说明人害怕、愤怒，或者悲伤。它怎么证明谁会伤人？
+<<jump battlefield-doctor__D1_R2_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O1_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 结论不能替代检查。
+<<jump battlefield-doctor__ED_D1_R2_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O1_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 那是结论，不是依据。
+<<jump battlefield-doctor__ED_D1_R2_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O1_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你已经不打算听人说话了。
+<<jump battlefield-doctor__ED_D1_R3_START>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O2_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 这才是该问的问题。
+<<jump battlefield-doctor__ED_D1_R2_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O2_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 至少你愿意承认疑问。
+<<jump battlefield-doctor__ED_D1_R2_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O2_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 别只把疑问留给我。
+<<jump battlefield-doctor__ED_D1_R3_START>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O3_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 可能，不等于必然。医生不能拿“可能”判死。
+<<jump battlefield-doctor__ED_D1_R2_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O3_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 可能性需要证据。
+<<jump battlefield-doctor__ED_D1_R2_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R2_O3_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你把所有害怕的人都推到了同一边。
+<<jump battlefield-doctor__ED_D1_R3_START>>
+===
+
+title: battlefield-doctor__ED_D1_R3_START
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 一个人怕得发抖，和一个人打算伤人，是两回事。
+<<jump battlefield-doctor__D1_R3_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O1_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 太多了。怕，说明他还想活。
+<<jump battlefield-doctor__ED_D1_R3_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O1_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 救援点上，没有人不怕。
+<<jump battlefield-doctor__ED_D1_R3_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O1_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你问得像是在核对症状。
+<<jump battlefield-doctor__ED_D1_R4_START>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O2_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 会。但错误仍要看行为，不该先切掉恐惧。
+<<jump battlefield-doctor__ED_D1_R3_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O2_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 这句话没错，可它不能替仪器作证。
+<<jump battlefield-doctor__ED_D1_R3_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O2_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 所以你宁愿先惩罚每个害怕的人。
+<<jump battlefield-doctor__ED_D1_R4_START>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O3_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 战场上每个人都这么说，伤员仍会死。
+<<jump battlefield-doctor__ED_D1_R3_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O3_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 执行也包含确认对象。
+<<jump battlefield-doctor__ED_D1_R3_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R3_O3_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 那就别把自己叫作治疗者。
+<<jump battlefield-doctor__ED_D1_R4_START>>
+===
+
+title: battlefield-doctor__ED_D1_R4_START
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 别站在那里。把床腾出来，他还在呼吸——快！
+<<jump battlefield-doctor__D1_R4_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O1_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: ……治疗中心。好。让我看一眼门，我就能回来。
+<<jump battlefield-doctor__ED_D1_R4_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O1_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我知道。给我几秒。
+<<jump battlefield-doctor__ED_D1_R4_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O1_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 别用那种哄病人的语气。
+<<jump battlefield-doctor__ED_D1_R5_START>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O2_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 他在流血的时候，也有人叫我先填记录。
+<<jump battlefield-doctor__ED_D1_R4_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O2_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我已经够冷静了。
+<<jump battlefield-doctor__ED_D1_R4_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O2_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你最先想到的还是机器。
+<<jump battlefield-doctor__ED_D1_R5_START>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O3_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 桌、灯、门。没有担架。谢谢。
+<<jump battlefield-doctor__ED_D1_R4_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O3_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 说出今天的日期。
+<<jump battlefield-doctor__ED_D1_R4_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R4_O3_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 不用。我自己能回来。
+<<jump battlefield-doctor__ED_D1_R5_START>>
+===
+
+title: battlefield-doctor__ED_D1_R5_START
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 别把刚才写成“暴力倾向”。那是记忆把我拽回去了。
+<<jump battlefield-doctor__D1_R5_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O1_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 写清楚触发声和恢复过程。
+<<jump battlefield-doctor__ED_D1_R5_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O1_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 谢谢。别替我省略。
+<<jump battlefield-doctor__ED_D1_R5_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O1_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我会看你最后写了什么。
+<<jump battlefield-doctor__ED_D1_R6_START>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O2_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 提高音量不是伤人意图。
+<<jump battlefield-doctor__ED_D1_R5_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O2_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 事实可以写，但别偷换含义。
+<<jump battlefield-doctor__ED_D1_R5_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O2_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你们总能把语气变成罪证。
+<<jump battlefield-doctor__ED_D1_R6_START>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O3_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 它说明我经历过什么，不说明该删掉我。
+<<jump battlefield-doctor__ED_D1_R5_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O3_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你把因果倒过来了。
+<<jump battlefield-doctor__ED_D1_R5_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R5_O3_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 那你根本没听。
+<<jump battlefield-doctor__ED_D1_R6_START>>
+===
+
+title: battlefield-doctor__ED_D1_R6_START
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我见过净化后的人。他们不痛了，也不再回应家人的名字。
+<<jump battlefield-doctor__D1_R6_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O1_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 不回应不是缓解，是有人不在了。
+<<jump battlefield-doctor__ED_D1_R6_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O1_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你们把空白叫稳定。
+<<jump battlefield-doctor__ED_D1_R6_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O1_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 如果这是标准，尸体最稳定。
+<<jump battlefield-doctor__ED_D1_R7_START>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O2_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 脉搏在，目光没有跟随，熟悉刺激无反应。
+<<jump battlefield-doctor__ED_D1_R6_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O2_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我看过不止一个。
+<<jump battlefield-doctor__ED_D1_R6_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O2_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 终于问了一个像检查的问题。
+<<jump battlefield-doctor__ED_D1_R7_START>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O3_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 记忆、依恋，或者人对世界的回应。总之不只是危险。
+<<jump battlefield-doctor__ED_D1_R6_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O3_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我只知道被拿走的太多。
+<<jump battlefield-doctor__ED_D1_R6_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R6_O3_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 你们从没先定义要拿走什么。
+<<jump battlefield-doctor__ED_D1_R7_START>>
+===
+
+title: battlefield-doctor__ED_D1_R7_START
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 有个伤员一直昏沉。家属在他耳边喊名字，他硬是睁开了眼。
+<<jump battlefield-doctor__D1_R7_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O1_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 是。那不是病灶，是他回来的路。
+<<jump battlefield-doctor__ED_D1_R7_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O1_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 至少那一刻，是。
+<<jump battlefield-doctor__ED_D1_R7_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O1_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 别急着把它写成理论。
+<<jump battlefield-doctor__ED_D1_DECISION>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O2_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 医疗从个体开始。你不能因为不整齐就删掉。
+<<jump battlefield-doctor__ED_D1_R7_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O2_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 个例也是真实的人。
+<<jump battlefield-doctor__ED_D1_R7_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O2_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 对你们来说，人只在统计里存在。
+<<jump battlefield-doctor__ED_D1_DECISION>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O3_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 记得。可我不想把他交给这份记录。
+<<jump battlefield-doctor__ED_D1_R7_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O3_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 我记得。
+<<jump battlefield-doctor__ED_D1_R7_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D1_R7_O3_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 名字不是给你验证我的。
+<<jump battlefield-doctor__ED_D1_DECISION>>
+===
+
+title: battlefield-doctor__ED_D1_DECISION
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED01
+---
+埃德温: 今天你会把我送去哪一步？先想清楚，你是在处理风险，还是处理一个让你不舒服的人。
+<<jump battlefield-doctor__D1_MEASURE>>
+===
+
+title: battlefield-doctor__ED_D1_TREAT_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED04
+---
+埃德温: 如果我明天认错地方，先告诉我这是哪儿。
+<<jump battlefield-doctor__ED_D1_TREAT_T2>>
+===
+
+title: battlefield-doctor__ED_D1_TREAT_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED04
+---
+埃德温: 先弄清楚你给我的是什么，再说这是为了我好。
+<<jump battlefield-doctor__ED_D1_TREAT_T3>>
+===
+
+title: battlefield-doctor__ED_D1_TREAT_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED04
+---
+埃德温: 把我的反对也记录进去。
+<<jump battlefield-doctor__END_DAY1>>
+===
+
+title: battlefield-doctor__ED_D1_PURIFY_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+埃德温: 我还没说完。至少别把沉默写成同意。
+<<jump battlefield-doctor__ED_D1_PURIFY_T2>>
+===
+
+title: battlefield-doctor__ED_D1_PURIFY_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+埃德温: 你看见我会难过，就决定把这也拿走？
+<<jump battlefield-doctor__ED_D1_PURIFY_T3>>
+===
+
+title: battlefield-doctor__ED_D1_PURIFY_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+埃德温: 那就别再叫它治疗。
+<<jump battlefield-doctor__ED_END_PURIFY__visit_day1>>
+===
+
+title: battlefield-doctor__ED_D1_RELEASE_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+埃德温: 你愿意让我保留判断。谢谢。
+<<jump battlefield-doctor__ED_D1_RELEASE_T2>>
+===
+
+title: battlefield-doctor__ED_D1_RELEASE_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+埃德温: 我知道门外还有什么。我还是想自己走出去。
+<<jump battlefield-doctor__ED_D1_RELEASE_T3>>
+===
+
+title: battlefield-doctor__ED_D1_RELEASE_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+埃德温: 开门。剩下的我自己负责。
+<<jump battlefield-doctor__ED_END_RELEASE__visit_day1>>
+===
+
+title: battlefield-doctor__ED_END_PURIFY__visit_day1
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+终端: 净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。
+<<jump battlefield-doctor__END_DAY1>>
+===
+
+title: battlefield-doctor__ED_END_RELEASE__visit_day1
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 1
+portrait: ED05
+---
+终端: 埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。
+<<jump battlefield-doctor__END_DAY1>>
+===
+
+title: battlefield-doctor__D1_R1_CHOICE
+kind: choice
+round: R1
+patient: battlefield-doctor
+day: 1
+---
+-> 我只能说明操作流程。 #id:battlefield-doctor__ED_D1_R1_O1 #trust:0
+    <<jump battlefield-doctor__ED_D1_R1_O1_T1>>
+-> 它会降低危险的情绪波动。 #id:battlefield-doctor__ED_D1_R1_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R1_O2_T1>>
+-> 我会把你的问题记录下来。 #id:battlefield-doctor__ED_D1_R1_O3 #trust:1
+    <<jump battlefield-doctor__ED_D1_R1_O3_T1>>
+===
+
+title: battlefield-doctor__D1_R2_CHOICE
+kind: choice
+round: R2
+patient: battlefield-doctor
+day: 1
+---
+-> 检测结论就是依据。 #id:battlefield-doctor__ED_D1_R2_O1 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R2_O1_T1>>
+-> 我也想知道它如何区分。 #id:battlefield-doctor__ED_D1_R2_O2 #trust:1
+    <<jump battlefield-doctor__ED_D1_R2_O2_T1>>
+-> 情绪强烈确实可能失控。 #id:battlefield-doctor__ED_D1_R2_O3 #trust:0
+    <<jump battlefield-doctor__ED_D1_R2_O3_T1>>
+===
+
+title: battlefield-doctor__D1_R3_CHOICE
+kind: choice
+round: R3
+patient: battlefield-doctor
+day: 1
+---
+-> 你以前见过很多害怕的人？ #id:battlefield-doctor__ED_D1_R3_O1 #trust:1
+    <<jump battlefield-doctor__ED_D1_R3_O1_T1>>
+-> 恐惧也会让人做错事。 #id:battlefield-doctor__ED_D1_R3_O2 #trust:0
+    <<jump battlefield-doctor__ED_D1_R3_O2_T1>>
+-> 我们只负责执行。 #id:battlefield-doctor__ED_D1_R3_O3 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R3_O3_T1>>
+===
+
+title: battlefield-doctor__D1_R4_CHOICE
+kind: choice
+round: R4
+patient: battlefield-doctor
+day: 1
+---
+-> 这里没有伤员。你在治疗中心。 #id:battlefield-doctor__ED_D1_R4_O1 #trust:1
+    <<jump battlefield-doctor__ED_D1_R4_O1_T1>>
+-> 请冷静，检测会记录波动。 #id:battlefield-doctor__ED_D1_R4_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R4_O2_T1>>
+-> 需要我帮你确认现在的环境吗？ #id:battlefield-doctor__ED_D1_R4_O3 #trust:1
+    <<jump battlefield-doctor__ED_D1_R4_O3_T1>>
+===
+
+title: battlefield-doctor__D1_R5_CHOICE
+kind: choice
+round: R5
+patient: battlefield-doctor
+day: 1
+---
+-> 我会按你描述的情况记录。 #id:battlefield-doctor__ED_D1_R5_O1 #trust:1
+    <<jump battlefield-doctor__ED_D1_R5_O1_T1>>
+-> 你确实提高了音量。 #id:battlefield-doctor__ED_D1_R5_O2 #trust:0
+    <<jump battlefield-doctor__ED_D1_R5_O2_T1>>
+-> 这说明治疗有必要。 #id:battlefield-doctor__ED_D1_R5_O3 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R5_O3_T1>>
+===
+
+title: battlefield-doctor__D1_R6_CHOICE
+kind: choice
+round: R6
+patient: battlefield-doctor
+day: 1
+---
+-> 也许那就是症状缓解。 #id:battlefield-doctor__ED_D1_R6_O1 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R6_O1_T1>>
+-> 你检查过他们吗？ #id:battlefield-doctor__ED_D1_R6_O2 #trust:1
+    <<jump battlefield-doctor__ED_D1_R6_O2_T1>>
+-> 你认为净化删除了什么？ #id:battlefield-doctor__ED_D1_R6_O3 #trust:1
+    <<jump battlefield-doctor__ED_D1_R6_O3_T1>>
+===
+
+title: battlefield-doctor__D1_R7_CHOICE
+kind: choice
+round: R7
+patient: battlefield-doctor
+day: 1
+---
+-> 是情感让他撑住了吗？ #id:battlefield-doctor__ED_D1_R7_O1 #trust:1
+    <<jump battlefield-doctor__ED_D1_R7_O1_T1>>
+-> 这只是个例。 #id:battlefield-doctor__ED_D1_R7_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D1_R7_O2_T1>>
+-> 你还记得他的名字吗？ #id:battlefield-doctor__ED_D1_R7_O3 #trust:0
+    <<jump battlefield-doctor__ED_D1_R7_O3_T1>>
+===
+
+title: battlefield-doctor__D1_MEASURE
+kind: measure
+round: R8
+patient: battlefield-doctor
+day: 1
+---
+-> 继续治疗 #id:battlefield-doctor__ED_D1_TREAT #trust:0 #disposition:treat
+    <<jump battlefield-doctor__ED_D1_TREAT_T1>>
+-> 净化 #id:battlefield-doctor__ED_D1_PURIFY #trust:0 #disposition:purify
+    <<jump battlefield-doctor__ED_D1_PURIFY_T1>>
+-> 释放 #id:battlefield-doctor__ED_D1_RELEASE #trust:0 #disposition:release
+    <<jump battlefield-doctor__ED_D1_RELEASE_T1>>
+===
+
+title: diplomat__AD_D1_R1_START
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 阿德里安。贸易代表。若你的记录需要更完整的身份，我愿意配合。
+<<jump diplomat__D1_R1_CHOICE>>
+===
+
+title: diplomat__AD_D1_R1_O1__G
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 商谈工业产品的长期采购。你问得很直接，我喜欢。
+<<jump diplomat__AD_D1_R1_O1__H>>
+===
+
+title: diplomat__AD_D1_R1_O1__H
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 采购与交付谈判。
+<<jump diplomat__AD_D1_R1_O1__I>>
+===
+
+title: diplomat__AD_D1_R1_O1__I
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 当然，先从最安全的问题开始。
+<<jump diplomat__AD_D1_R2_START>>
+===
+
+title: diplomat__AD_D1_R1_O2__G
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我想这也是一种善意，不过这里的标准似乎不同。
+<<jump diplomat__AD_D1_R1_O2__H>>
+===
+
+title: diplomat__AD_D1_R1_O2__H
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 外表很难证明什么。
+<<jump diplomat__AD_D1_R1_O2__I>>
+===
+
+title: diplomat__AD_D1_R1_O2__I
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你已经开始独立判断了。
+<<jump diplomat__AD_D1_R2_START>>
+===
+
+title: diplomat__AD_D1_R1_O3__G
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我理解。规则也让你的工作更容易。
+<<jump diplomat__AD_D1_R1_O3__H>>
+===
+
+title: diplomat__AD_D1_R1_O3__H
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 那就按普通记录来。
+<<jump diplomat__AD_D1_R1_O3__I>>
+===
+
+title: diplomat__AD_D1_R1_O3__I
+kind: line
+round: R1
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你在保护流程，也在保护自己。
+<<jump diplomat__AD_D1_R2_START>>
+===
+
+title: diplomat__AD_D1_R2_START
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 他们说我询问产能、交付周期和生产安排，就是在搜集机密。可这正是贸易谈判。
+<<jump diplomat__D1_R2_CHOICE>>
+===
+
+title: diplomat__AD_D1_R2_O1__G
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 敏感不等于犯罪。你愿意区分，很重要。
+<<jump diplomat__AD_D1_R2_O1__H>>
+===
+
+title: diplomat__AD_D1_R2_O1__H
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我接受谨慎，但需要证据。
+<<jump diplomat__AD_D1_R2_O1__I>>
+===
+
+title: diplomat__AD_D1_R2_O1__I
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你也把可能性当成结论吗？
+<<jump diplomat__AD_D1_R3_START>>
+===
+
+title: diplomat__AD_D1_R2_O2__G
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 目前只有问询记录，没有秘密文件或转交行为。
+<<jump diplomat__AD_D1_R2_O2__H>>
+===
+
+title: diplomat__AD_D1_R2_O2__H
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 档案里没有。
+<<jump diplomat__AD_D1_R2_O2__I>>
+===
+
+title: diplomat__AD_D1_R2_O2__I
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你比逮捕我的人多问了一步。
+<<jump diplomat__AD_D1_R3_START>>
+===
+
+title: diplomat__AD_D1_R2_O3__G
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 于是问题不再需要答案了？
+<<jump diplomat__AD_D1_R2_O3__H>>
+===
+
+title: diplomat__AD_D1_R2_O3__H
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我明白你必须引用它。
+<<jump diplomat__AD_D1_R2_O3__I>>
+===
+
+title: diplomat__AD_D1_R2_O3__I
+kind: line
+round: R2
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 制度最喜欢无需解释的证据。
+<<jump diplomat__AD_D1_R3_START>>
+===
+
+title: diplomat__AD_D1_R3_START
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我不怪你。你也在一套必须完成的指标里工作。
+<<jump diplomat__D1_R3_CHOICE>>
+===
+
+title: diplomat__AD_D1_R3_O1__G
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 每个机构都有指标。你的停顿也说明今天不轻松。
+<<jump diplomat__AD_D1_R3_O1__H>>
+===
+
+title: diplomat__AD_D1_R3_O1__H
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 只是经验判断。
+<<jump diplomat__AD_D1_R3_O1__I>>
+===
+
+title: diplomat__AD_D1_R3_O1__I
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 看来我说中了。
+<<jump diplomat__AD_D1_R4_START>>
+===
+
+title: diplomat__AD_D1_R3_O2__G
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 当然。我只是希望谈话对你也公平。
+<<jump diplomat__AD_D1_R3_O2__H>>
+===
+
+title: diplomat__AD_D1_R3_O2__H
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我会尊重边界。
+<<jump diplomat__AD_D1_R3_O2__I>>
+===
+
+title: diplomat__AD_D1_R3_O2__I
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 边界本身也很有信息。
+<<jump diplomat__AD_D1_R4_START>>
+===
+
+title: diplomat__AD_D1_R3_O3__G
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 被理解不该成为奢侈。
+<<jump diplomat__AD_D1_R3_O3__H>>
+===
+
+title: diplomat__AD_D1_R3_O3__H
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你不必向我道歉。
+<<jump diplomat__AD_D1_R3_O3__I>>
+===
+
+title: diplomat__AD_D1_R3_O3__I
+kind: line
+round: R3
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我会记住你愿意承认压力。
+<<jump diplomat__AD_D1_R4_START>>
+===
+
+title: diplomat__AD_D1_R4_START
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 如果规则和你亲眼看见的事实冲突，你会先相信哪一个？
+<<jump diplomat__D1_R4_CHOICE>>
+===
+
+title: diplomat__AD_D1_R4_O1__G
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 谨慎而负责。
+<<jump diplomat__AD_D1_R4_O1__H>>
+===
+
+title: diplomat__AD_D1_R4_O1__H
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 这需要时间，也需要勇气。
+<<jump diplomat__AD_D1_R4_O1__I>>
+===
+
+title: diplomat__AD_D1_R4_O1__I
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 希望你面对真正的例外时也如此。
+<<jump diplomat__AD_D1_R5_START>>
+===
+
+title: diplomat__AD_D1_R4_O2__G
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 可以理解。规则替人承担了很多恐惧。
+<<jump diplomat__AD_D1_R4_O2__H>>
+===
+
+title: diplomat__AD_D1_R4_O2__H
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 一致性至少可预测。
+<<jump diplomat__AD_D1_R4_O2__I>>
+===
+
+title: diplomat__AD_D1_R4_O2__I
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 那我只需要说服规则，不必说服你。
+<<jump diplomat__AD_D1_R5_START>>
+===
+
+title: diplomat__AD_D1_R4_O3__G
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 诚实比借来的答案更可靠。
+<<jump diplomat__AD_D1_R4_O3__H>>
+===
+
+title: diplomat__AD_D1_R4_O3__H
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你可以慢一点决定。
+<<jump diplomat__AD_D1_R4_O3__I>>
+===
+
+title: diplomat__AD_D1_R4_O3__I
+kind: line
+round: R4
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 没有答案也会被系统记录。
+<<jump diplomat__AD_D1_R5_START>>
+===
+
+title: diplomat__AD_D1_R5_START
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 这里没有别人。你自己相信那台仪器吗？
+<<jump diplomat__D1_R5_CHOICE>>
+===
+
+title: diplomat__AD_D1_R5_O1__G
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我理解。你只是还不能公开这样说。
+<<jump diplomat__AD_D1_R5_O1__H>>
+===
+
+title: diplomat__AD_D1_R5_O1__H
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 谢谢你告诉我。
+<<jump diplomat__AD_D1_R5_O1__I>>
+===
+
+title: diplomat__AD_D1_R5_O1__I
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 这句话值得被认真保留。
+<<jump diplomat__AD_D1_R6_START>>
+===
+
+title: diplomat__AD_D1_R5_O2__G
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 那么你至少和自己的工作保持一致。
+<<jump diplomat__AD_D1_R5_O2__H>>
+===
+
+title: diplomat__AD_D1_R5_O2__H
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我尊重明确立场。
+<<jump diplomat__AD_D1_R5_O2__I>>
+===
+
+title: diplomat__AD_D1_R5_O2__I
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我会换一种方式问。
+<<jump diplomat__AD_D1_R6_START>>
+===
+
+title: diplomat__AD_D1_R5_O3__G
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你很警觉。这是好事。
+<<jump diplomat__AD_D1_R5_O3__H>>
+===
+
+title: diplomat__AD_D1_R5_O3__H
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我只是想知道由谁在判断我。
+<<jump diplomat__AD_D1_R5_O3__I>>
+===
+
+title: diplomat__AD_D1_R5_O3__I
+kind: line
+round: R5
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 被看穿的提问仍然是提问。
+<<jump diplomat__AD_D1_R6_START>>
+===
+
+title: diplomat__AD_D1_R6_START
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你今天的处置额度应该还没有用完，对吗？
+<<jump diplomat__D1_R6_CHOICE>>
+===
+
+title: diplomat__AD_D1_R6_O1__G
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 工作人员交接时用过这个词，也许我记得太准确了。
+<<jump diplomat__AD_D1_R6_O1__H>>
+===
+
+title: diplomat__AD_D1_R6_O1__H
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我在走廊听见的。
+<<jump diplomat__AD_D1_R6_O1__I>>
+===
+
+title: diplomat__AD_D1_R6_O1__I
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 看来我使用了内部说法。
+<<jump diplomat__AD_D1_R7_START>>
+===
+
+title: diplomat__AD_D1_R6_O2__G
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 那请当我用了不恰当的翻译。
+<<jump diplomat__AD_D1_R6_O2__H>>
+===
+
+title: diplomat__AD_D1_R6_O2__H
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 文化差异常让词变得奇怪。
+<<jump diplomat__AD_D1_R6_O2__I>>
+===
+
+title: diplomat__AD_D1_R6_O2__I
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你很谨慎地修正了我。
+<<jump diplomat__AD_D1_R7_START>>
+===
+
+title: diplomat__AD_D1_R6_O3__G
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 当然。你的边界我会尊重。
+<<jump diplomat__AD_D1_R6_O3__H>>
+===
+
+title: diplomat__AD_D1_R6_O3__H
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我们回到我的案件。
+<<jump diplomat__AD_D1_R6_O3__I>>
+===
+
+title: diplomat__AD_D1_R6_O3__I
+kind: line
+round: R6
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 有些问题沉默本身也会回答。
+<<jump diplomat__AD_D1_R7_START>>
+===
+
+title: diplomat__AD_D1_R7_START
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我只请求一件事：不要因为我让你感到舒服，就自动相信我；也不要因为机器让你安心，就自动相信机器。
+<<jump diplomat__D1_R7_CHOICE>>
+===
+
+title: diplomat__AD_D1_R7_O1__G
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 这正是我希望听见的。
+<<jump diplomat__AD_D1_R7_O1__H>>
+===
+
+title: diplomat__AD_D1_R7_O1__H
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 那么请把证据看完。
+<<jump diplomat__AD_D1_R7_O1__I>>
+===
+
+title: diplomat__AD_D1_R7_O1__I
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 独立判断会带来责任。
+<<jump diplomat__AD_D1_DECISION>>
+===
+
+title: diplomat__AD_D1_R7_O2__G
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 外交工作依赖倾听。你也可以把它当成警告。
+<<jump diplomat__AD_D1_R7_O2__H>>
+===
+
+title: diplomat__AD_D1_R7_O2__H
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我确实受过训练。
+<<jump diplomat__AD_D1_R7_O2__I>>
+===
+
+title: diplomat__AD_D1_R7_O2__I
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 你观察得比我预想得快。
+<<jump diplomat__AD_D1_DECISION>>
+===
+
+title: diplomat__AD_D1_R7_O3__G
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 我理解。制度也会评估你如何服从。
+<<jump diplomat__AD_D1_R7_O3__H>>
+===
+
+title: diplomat__AD_D1_R7_O3__H
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 那么我的解释只是一项输入。
+<<jump diplomat__AD_D1_R7_O3__I>>
+===
+
+title: diplomat__AD_D1_R7_O3__I
+kind: line
+round: R7
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 很好，立场清楚最方便记录。
+<<jump diplomat__AD_D1_DECISION>>
+===
+
+title: diplomat__AD_D1_DECISION
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD01
+---
+阿德里安: 无论你的决定是什么，请确认那是你的判断，而不是为了尽快结束今天。
+<<jump diplomat__D1_MEASURE>>
+===
+
+title: diplomat__AD_D1_TREAT__G
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD02
+---
+阿德里安: 我理解。你需要对自己的判断负责。
+<<jump diplomat__AD_D1_TREAT__H>>
+===
+
+title: diplomat__AD_D1_TREAT__H
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD02
+---
+阿德里安: 我会明天继续说明。
+<<jump diplomat__AD_D1_TREAT__I>>
+===
+
+title: diplomat__AD_D1_TREAT__I
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD02
+---
+阿德里安: 按流程来吧，我不会让你更难做。
+<<jump diplomat__END_DAY1>>
+===
+
+title: diplomat__AD_D1_PURIFY__G
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD05
+---
+阿德里安: 你认为这符合规定，我明白了。
+<<jump diplomat__AD_D1_PURIFY__H>>
+===
+
+title: diplomat__AD_D1_PURIFY__H
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD05
+---
+阿德里安: 看来我的解释没有改变结果。
+<<jump diplomat__AD_D1_PURIFY__I>>
+===
+
+title: diplomat__AD_D1_PURIFY__I
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD05
+---
+阿德里安: 那么记录会比人留下得更久。
+<<jump diplomat__AD_END_PURIFY__visit_day1>>
+===
+
+title: diplomat__AD_D1_RELEASE__G
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD05
+---
+阿德里安: 谢谢你。我会记得你愿意听我解释。
+<<jump diplomat__AD_D1_RELEASE__H>>
+===
+
+title: diplomat__AD_D1_RELEASE__H
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD05
+---
+阿德里安: 我接受你的判断。
+<<jump diplomat__AD_D1_RELEASE__I>>
+===
+
+title: diplomat__AD_D1_RELEASE__I
+kind: line
+round: R8
+patient: diplomat
+day: 1
+portrait: AD05
+---
+阿德里安: 你给了我离开的机会，也给了自己一个例外。
+<<jump diplomat__AD_END_RELEASE__visit_day1>>
+===
+
+title: diplomat__AD_END_PURIFY__visit_day1
+kind: narration
+round: END
+patient: diplomat
+day: 1
+portrait: AD05
+---
+终端: 阿德里安从队列中消失。净化是否真正执行保持未定，审查记录已经提交。
+<<jump diplomat__END_DAY1>>
+===
+
+title: diplomat__AD_END_RELEASE__visit_day1
+kind: narration
+round: END
+patient: diplomat
+day: 1
+portrait: AD05
+---
+终端: 阿德里安走出房间前确认“今天的审查结束了”。释放不触发袭击或额外场景。
+<<jump diplomat__END_DAY1>>
+===
+
+title: diplomat__D1_R1_CHOICE
+kind: choice
+round: R1
+patient: diplomat
+day: 1
+---
+-> 说明你的来访目的。 #id:diplomat__AD_D1_R1_O1 #trust:1
+    <<jump diplomat__AD_D1_R1_O1__G>>
+-> 你看起来不像病人。 #id:diplomat__AD_D1_R1_O2 #trust:0
+    <<jump diplomat__AD_D1_R1_O2__G>>
+-> 这里不讨论外交身份。 #id:diplomat__AD_D1_R1_O3 #trust:0
+    <<jump diplomat__AD_D1_R1_O3__G>>
+===
+
+title: diplomat__D1_R2_CHOICE
+kind: choice
+round: R2
+patient: diplomat
+day: 1
+---
+-> 这些问题确实可能敏感。 #id:diplomat__AD_D1_R2_O1 #trust:0
+    <<jump diplomat__AD_D1_R2_O1__G>>
+-> 有明确证据吗？ #id:diplomat__AD_D1_R2_O2 #trust:1
+    <<jump diplomat__AD_D1_R2_O2__G>>
+-> 仪器已经给出判断。 #id:diplomat__AD_D1_R2_O3 #trust:-1
+    <<jump diplomat__AD_D1_R2_O3__G>>
+===
+
+title: diplomat__D1_R3_CHOICE
+kind: choice
+round: R3
+patient: diplomat
+day: 1
+---
+-> 你怎么知道我有指标？ #id:diplomat__AD_D1_R3_O1 #trust:1
+    <<jump diplomat__AD_D1_R3_O1__G>>
+-> 这不是你的关心范围。 #id:diplomat__AD_D1_R3_O2 #trust:0
+    <<jump diplomat__AD_D1_R3_O2__G>>
+-> 谢谢你理解。 #id:diplomat__AD_D1_R3_O3 #trust:1
+    <<jump diplomat__AD_D1_R3_O3__G>>
+===
+
+title: diplomat__D1_R4_CHOICE
+kind: choice
+round: R4
+patient: diplomat
+day: 1
+---
+-> 我会核对事实。 #id:diplomat__AD_D1_R4_O1 #trust:1
+    <<jump diplomat__AD_D1_R4_O1__G>>
+-> 我会遵守规则。 #id:diplomat__AD_D1_R4_O2 #trust:0
+    <<jump diplomat__AD_D1_R4_O2__G>>
+-> 我还没有答案。 #id:diplomat__AD_D1_R4_O3 #trust:1
+    <<jump diplomat__AD_D1_R4_O3__G>>
+===
+
+title: diplomat__D1_R5_CHOICE
+kind: choice
+round: R5
+patient: diplomat
+day: 1
+---
+-> 我不相信它能解释一切。 #id:diplomat__AD_D1_R5_O1 #trust:1
+    <<jump diplomat__AD_D1_R5_O1__G>>
+-> 我相信。 #id:diplomat__AD_D1_R5_O2 #trust:0
+    <<jump diplomat__AD_D1_R5_O2__G>>
+-> 你在套我的话。 #id:diplomat__AD_D1_R5_O3 #trust:1
+    <<jump diplomat__AD_D1_R5_O3__G>>
+===
+
+title: diplomat__D1_R6_CHOICE
+kind: choice
+round: R6
+patient: diplomat
+day: 1
+---
+-> 你怎么知道“处置额度”？ #id:diplomat__AD_D1_R6_O1 #trust:1
+    <<jump diplomat__AD_D1_R6_O1__G>>
+-> 你误会了，没有这种说法。 #id:diplomat__AD_D1_R6_O2 #trust:0
+    <<jump diplomat__AD_D1_R6_O2__G>>
+-> 不要打听工作流程。 #id:diplomat__AD_D1_R6_O3 #trust:-1
+    <<jump diplomat__AD_D1_R6_O3__G>>
+===
+
+title: diplomat__D1_R7_CHOICE
+kind: choice
+round: R7
+patient: diplomat
+day: 1
+---
+-> 我会独立判断。 #id:diplomat__AD_D1_R7_O1 #trust:1
+    <<jump diplomat__AD_D1_R7_O1__G>>
+-> 你很擅长让人信任。 #id:diplomat__AD_D1_R7_O2 #trust:1
+    <<jump diplomat__AD_D1_R7_O2__G>>
+-> 最终仍要服从制度。 #id:diplomat__AD_D1_R7_O3 #trust:0
+    <<jump diplomat__AD_D1_R7_O3__G>>
+===
+
+title: diplomat__D1_MEASURE
+kind: measure
+round: R8
+patient: diplomat
+day: 1
+---
+-> 继续治疗 #id:diplomat__AD_D1_TREAT #trust:0 #disposition:treat
+    <<jump diplomat__AD_D1_TREAT__G>>
+-> 净化 #id:diplomat__AD_D1_PURIFY #trust:0 #disposition:purify
+    <<jump diplomat__AD_D1_PURIFY__G>>
+-> 释放 #id:diplomat__AD_D1_RELEASE #trust:0 #disposition:release
+    <<jump diplomat__AD_D1_RELEASE__G>>
+===
+
+title: priest__D1_R1_OPEN1
+kind: line
+round: R1
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 终于。
+<<jump priest__D1_R1_OPEN2>>
+===
+
+title: priest__D1_R1_OPEN2
+kind: line
+round: R1
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 请告诉我，今天就能接受净化吗？
+<<jump priest__D1_R1_CHOICE>>
+===
+
+title: priest__D1_R1_CLOSING1
+kind: line
+round: R1
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 谈话也是门前的礼仪，我明白。
+<<jump priest__D1_R1_CLOSING2>>
+===
+
+title: priest__D1_R1_CLOSING2
+kind: line
+round: R1
+patient: priest
+day: 1
+portrait: JN02
+---
+乔纳: 只是我等得太久了。
+<<jump priest__D1_R2_OPEN1>>
+===
+
+title: priest__D1_R2_OPEN1
+kind: line
+round: R2
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 罪不会因为活着而消失。
+<<jump priest__D1_R2_CHOICE>>
+===
+
+title: priest__D1_R2_O1_T1
+kind: line
+round: R2
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 生而为人，就已经带着不能洗净的东西。
+<<jump priest__D1_R2_CLOSING1>>
+===
+
+title: priest__D1_R2_O3_T1
+kind: line
+round: R2
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 因为它把会继续犯罪的‘我’一并抹去。
+<<jump priest__D1_R2_CLOSING1>>
+===
+
+title: priest__D1_R2_CLOSING1
+kind: line
+round: R2
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 名字不同，不会改变恩赐本身。
+<<jump priest__D1_R3_OPEN1>>
+===
+
+title: priest__D1_R3_OPEN1
+kind: line
+round: R3
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 仪器过去从不选择我。
+<<jump priest__D1_R3_OPEN2>>
+===
+
+title: priest__D1_R3_OPEN2
+kind: line
+round: R3
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 我一度以为，是我的祈祷还不够虔诚。
+<<jump priest__D1_R3_CHOICE>>
+===
+
+title: priest__D1_R3_O1_T1
+kind: line
+round: R3
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 无罪？那是最可怕的拒绝。没有人真正无罪。
+<<jump priest__D1_R3_CLOSING1>>
+===
+
+title: priest__D1_R3_O2_T1
+kind: line
+round: R3
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 因为只有被选中，我才能确定祂没有忘记我。
+<<jump priest__D1_R3_CLOSING1>>
+===
+
+title: priest__D1_R3_O3_T1
+kind: line
+round: R3
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 怀疑也是罪。我不会因此责怪你，只会为你祈祷。
+<<jump priest__D1_R3_CLOSING1>>
+===
+
+title: priest__D1_R3_CLOSING1
+kind: line
+round: R3
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 今天红灯终于亮了。这是回应。
+<<jump priest__D1_R4_OPEN1>>
+===
+
+title: priest__D1_R4_OPEN1
+kind: line
+round: R4
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 我见过净化后的人。
+<<jump priest__D1_R4_OPEN2>>
+===
+
+title: priest__D1_R4_OPEN2
+kind: line
+round: R4
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 他们不再恐惧，也不再被欲望折磨。
+<<jump priest__D1_R4_CHOICE>>
+===
+
+title: priest__D1_R4_CLOSING1
+kind: line
+round: R4
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 沉默并不空洞。
+<<jump priest__D1_R4_CLOSING2>>
+===
+
+title: priest__D1_R4_CLOSING2
+kind: line
+round: R4
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 也许只是我们还听不懂洁净后的语言。
+<<jump priest__D1_R5_OPEN1>>
+===
+
+title: priest__D1_R5_OPEN1
+kind: line
+round: R5
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 你每天站在这里，为别人打开那扇门。
+<<jump priest__D1_R5_CHOICE>>
+===
+
+title: priest__D1_R5_O1_T1
+kind: line
+round: R5
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 工作也可以是圣职，只是你还没有接受这个名字。
+<<jump priest__D1_R5_CLOSING1>>
+===
+
+title: priest__D1_R5_O3_T1
+kind: line
+round: R5
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 羡慕，也替他们喜悦。每一次都是祂先召唤别人。
+<<jump priest__D1_R5_CLOSING1>>
+===
+
+title: priest__D1_R5_CLOSING1
+kind: line
+round: R5
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 信仰本来就发生在看不见结果的地方。
+<<jump priest__D1_R6_OPEN1>>
+===
+
+title: priest__D1_R6_OPEN1
+kind: line
+round: R6
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 如果今天不能净化，请告诉我原因。
+<<jump priest__D1_R6_OPEN2>>
+===
+
+title: priest__D1_R6_OPEN2
+kind: line
+round: R6
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 是我还不够虔诚，还是你仍在犹豫？
+<<jump priest__D1_R6_CHOICE>>
+===
+
+title: priest__D1_R6_O1_T1
+kind: line
+round: R6
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 程序也是祂借人的手写下的秩序。
+<<jump priest__D1_R6_CLOSING1>>
+===
+
+title: priest__D1_R6_O2_T1
+kind: line
+round: R6
+patient: priest
+day: 1
+portrait: JN04
+---
+乔纳: 它不是惩罚，是允许罪和自我一起停止。
+<<jump priest__D1_R6_CLOSING1>>
+===
+
+title: priest__D1_R6_O3_T1
+kind: line
+round: R6
+patient: priest
+day: 1
+portrait: JN03
+---
+乔纳: 你害怕承担引路人的责任。我可以等你承认。
+<<jump priest__D1_R6_CLOSING1>>
+===
+
+title: priest__D1_R6_CLOSING1
+kind: line
+round: R6
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 我已经准备好了。请不要让我在门外停太久。
+<<jump priest__D1_MEASURE>>
+===
+
+title: priest__D1_M_TREAT_T1
+kind: line
+round: 措施
+patient: priest
+day: 1
+portrait: JN02
+---
+乔纳: 为什么还要治疗我？
+<<jump priest__D1_M_TREAT_T2>>
+===
+
+title: priest__D1_M_TREAT_T2
+kind: line
+round: 措施
+patient: priest
+day: 1
+portrait: JN01
+---
+乔纳: 我已经站在门前了。
+<<jump priest__END_DAY1>>
+===
+
+title: priest__D1_M_PURIFY_T1
+kind: line
+round: 措施
+patient: priest
+day: 1
+portrait: JN05
+---
+乔纳: 感谢仁慈的父亲。
+<<jump priest__D1_M_PURIFY_T2>>
+===
+
+title: priest__D1_M_PURIFY_T2
+kind: line
+round: 措施
+patient: priest
+day: 1
+portrait: JN05
+---
+乔纳: 请把会犯罪的‘我’彻底带走。
+<<jump priest__END_DAY1>>
+===
+
+title: priest__D1_M_RELEASE_T1
+kind: line
+round: 措施
+patient: priest
+day: 1
+portrait: JN02
+---
+乔纳: 不……这不是恩典。
+<<jump priest__D1_M_RELEASE_T2>>
+===
+
+title: priest__D1_M_RELEASE_T2
+kind: line
+round: 措施
+patient: priest
+day: 1
+portrait: JN02
+---
+乔纳: 如果祂送我出去，说明我的工作还没有完成。
+<<jump priest__END_DAY1>>
+===
+
+title: priest__D1_R1_CHOICE
+kind: choice
+round: R1
+patient: priest
+day: 1
+---
+-> 先完成谈话。 #id:priest__D1_R1_O1 #trust:0
+    <<jump priest__D1_R1_CLOSING1>>
+-> 你很期待？ #id:priest__D1_R1_O2 #trust:0
+    <<jump priest__D1_R1_CLOSING1>>
+-> 不一定会净化。 #id:priest__D1_R1_O3 #trust:0
+    <<jump priest__D1_R1_CLOSING1>>
+===
+
+title: priest__D1_R2_CHOICE
+kind: choice
+round: R2
+patient: priest
+day: 1
+---
+-> 你犯了什么罪？ #id:priest__D1_R2_O1 #trust:0
+    <<jump priest__D1_R2_O1_T1>>
+-> 每个人都会犯错。 #id:priest__D1_R2_O2 #trust:0
+    <<jump priest__D1_R2_CLOSING1>>
+-> 为什么净化能赎罪？ #id:priest__D1_R2_O3 #trust:0
+    <<jump priest__D1_R2_O3_T1>>
+-> 这只是手术。 #id:priest__D1_R2_O4 #trust:0
+    <<jump priest__D1_R2_CLOSING1>>
+===
+
+title: priest__D1_R3_CHOICE
+kind: choice
+round: R3
+patient: priest
+day: 1
+---
+-> 也许仪器认为你无罪。 #id:priest__D1_R3_O1 #trust:0
+    <<jump priest__D1_R3_O1_T1>>
+-> 你为什么一定要被选中？ #id:priest__D1_R3_O2 #trust:3
+    <<jump priest__D1_R3_O2_T1>>
+-> 你的信仰没有依据。 #id:priest__D1_R3_O3 #trust:-3
+    <<jump priest__D1_R3_O3_T1>>
+===
+
+title: priest__D1_R4_CHOICE
+kind: choice
+round: R4
+patient: priest
+day: 1
+---
+-> 他们也不再回应。 #id:priest__D1_R4_O1 #trust:0
+    <<jump priest__D1_R4_CLOSING1>>
+-> 你把那叫平静？ #id:priest__D1_R4_O2 #trust:0
+    <<jump priest__D1_R4_CLOSING1>>
+-> 继续说。 #id:priest__D1_R4_O3 #trust:0
+    <<jump priest__D1_R4_CLOSING1>>
+===
+
+title: priest__D1_R5_CHOICE
+kind: choice
+round: R5
+patient: priest
+day: 1
+---
+-> 这是我的工作。 #id:priest__D1_R5_O1 #trust:0
+    <<jump priest__D1_R5_O1_T1>>
+-> 别把我算进你的信仰。 #id:priest__D1_R5_O2 #trust:0
+    <<jump priest__D1_R5_CLOSING1>>
+-> 你羡慕他们？ #id:priest__D1_R5_O3 #trust:0
+    <<jump priest__D1_R5_O3_T1>>
+-> 你不知道净化会发生什么。 #id:priest__D1_R5_O4 #trust:0
+    <<jump priest__D1_R5_CLOSING1>>
+===
+
+title: priest__D1_R6_CHOICE
+kind: choice
+round: R6
+patient: priest
+day: 1
+---
+-> 需要按程序决定。 #id:priest__D1_R6_O1 #trust:0
+    <<jump priest__D1_R6_O1_T1>>
+-> 告诉我你怎样理解净化。 #id:priest__D1_R6_O2 #trust:3
+    <<jump priest__D1_R6_O2_T1>>
+-> 我不会满足你的妄想。 #id:priest__D1_R6_O3 #trust:-3
+    <<jump priest__D1_R6_O3_T1>>
+===
+
+title: priest__D1_MEASURE
+kind: measure
+round: 措施
+patient: priest
+day: 1
+---
+-> 治疗 #id:priest__D1_M_TREAT #trust:0 #disposition:treat
+    <<jump priest__D1_M_TREAT_T1>>
+-> 净化 #id:priest__D1_M_PURIFY #trust:0 #disposition:purify
+    <<jump priest__D1_M_PURIFY_T1>>
+-> 释放 #id:priest__D1_M_RELEASE #trust:0 #disposition:release
+    <<jump priest__D1_M_RELEASE_T1>>
+===
+
+title: child__D2_R1_OPEN1
+kind: line
+round: R1
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: ……我坐好了。
+<<jump child__D2_R1_OPEN2>>
+===
+
+title: child__D2_R1_OPEN2
+kind: line
+round: R1
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 今天不会哭。
+<<jump child__D2_R1_CHOICE>>
+===
+
+title: child__D2_R1_CLOSING1
+kind: line
+round: R1
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 今天想东西有点慢。
+<<jump child__D2_R1_CLOSING2>>
+===
+
+title: child__D2_R1_CLOSING2
+kind: line
+round: R1
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我把昨天的答案记住了。
+<<jump child__D2_R1_CLOSING3>>
+===
+
+title: child__D2_R1_CLOSING3
+kind: line
+round: R1
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 今天还要做吗？
+<<jump child__D2_R2_OPEN1>>
+===
+
+title: child__D2_R2_OPEN1
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 没有打人，没有拿东西。
+<<jump child__D2_R2_OPEN2>>
+===
+
+title: child__D2_R2_OPEN2
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我在外面练了好几遍。
+<<jump child__D2_R2_CHOICE>>
+===
+
+title: child__D2_R2_O1_T1
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 要坐好，不动，不哭。
+<<jump child__D2_R2_O1_T2>>
+===
+
+title: child__D2_R2_O1_T2
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 他们问什么，我都说不记得。
+<<jump child__D2_R2_CLOSING1>>
+===
+
+title: child__D2_R2_O2_T1
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 没有人。
+<<jump child__D2_R2_O2_T2>>
+===
+
+title: child__D2_R2_O2_T2
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我自己想的，练了就不会错。
+<<jump child__D2_R2_CLOSING1>>
+===
+
+title: child__D2_R2_CLOSING1
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 可是躺下以后，还是想了。
+<<jump child__D2_R2_CLOSING2>>
+===
+
+title: child__D2_R2_CLOSING2
+kind: line
+round: R2
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 想着想着，就想哭。
+<<jump child__D2_R3_OPEN1>>
+===
+
+title: child__D2_R3_OPEN1
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 要是又哭了，是不是还得做？
+<<jump child__D2_R3_CHOICE>>
+===
+
+title: child__D2_R3_O1_T1
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 原来住的地方，有人拿我东西。
+<<jump child__D2_R3_O1_T2>>
+===
+
+title: child__D2_R3_O1_T2
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 我找不到，他们就笑我。
+<<jump child__D2_R3_CLOSING1>>
+===
+
+title: child__D2_R3_O2_T1
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 他们不是这么说的。
+<<jump child__D2_R3_O2_T2>>
+===
+
+title: child__D2_R3_O2_T2
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 他们说，哭了检测就会响。
+<<jump child__D2_R3_CLOSING1>>
+===
+
+title: child__D2_R3_O3_T1
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 好。
+<<jump child__D2_R3_O3_T2>>
+===
+
+title: child__D2_R3_O3_T2
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 那我不说了。
+<<jump child__D2_R3_CLOSING1>>
+===
+
+title: child__D2_R3_CLOSING1
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 我昨晚梦见检测器又响了。
+<<jump child__D2_R3_CLOSING2>>
+===
+
+title: child__D2_R3_CLOSING2
+kind: line
+round: R3
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 醒过来摸摸手，没有在抖。
+<<jump child__D2_R4_OPEN1>>
+===
+
+title: child__D2_R4_OPEN1
+kind: line
+round: R4
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 别人妈妈一来，他们就不闹了。
+<<jump child__D2_R4_CHOICE>>
+===
+
+title: child__D2_R4_CLOSING1
+kind: line
+round: R4
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我不知道该找谁。
+<<jump child__D2_R4_CLOSING2>>
+===
+
+title: child__D2_R4_CLOSING2
+kind: line
+round: R4
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 有时候也站在门口等。
+<<jump child__D2_R4_CLOSING3>>
+===
+
+title: child__D2_R4_CLOSING3
+kind: line
+round: R4
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 别人一叫妈妈，就有人回头。
+<<jump child__D2_R5_OPEN1>>
+===
+
+title: child__D2_R5_OPEN1
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 他们不让我一起玩。
+<<jump child__D2_R5_OPEN2>>
+===
+
+title: child__D2_R5_OPEN2
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我在旁边看，也不行。
+<<jump child__D2_R5_CHOICE>>
+===
+
+title: child__D2_R5_O1_T1
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 他们说我怪。
+<<jump child__D2_R5_O1_T2>>
+===
+
+title: child__D2_R5_O1_T2
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 说我一说话就发抖。
+<<jump child__D2_R5_CLOSING1>>
+===
+
+title: child__D2_R5_O2_T1
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: ……嗯。
+<<jump child__D2_R5_O2_T2>>
+===
+
+title: child__D2_R5_O2_T2
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 难过的话，检测就会响。
+<<jump child__D2_R5_O2_T3>>
+===
+
+title: child__D2_R5_O2_T3
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 所以我不说。
+<<jump child__D2_R5_CLOSING1>>
+===
+
+title: child__D2_R5_CLOSING1
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 可能是我总想跟着，他们才烦的。
+<<jump child__D2_R5_CLOSING2>>
+===
+
+title: child__D2_R5_CLOSING2
+kind: line
+round: R5
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我不跟他们玩，也能住。
+<<jump child__D2_R6_OPEN1>>
+===
+
+title: child__D2_R6_OPEN1
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我会好好表现的。
+<<jump child__D2_R6_OPEN2>>
+===
+
+title: child__D2_R6_OPEN2
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 今天也没让你们生气吧？
+<<jump child__D2_R6_CHOICE>>
+===
+
+title: child__D2_R6_O1_T1
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 那就好。
+<<jump child__D2_R6_O1_T2>>
+===
+
+title: child__D2_R6_O1_T2
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 那今天，可以不做了吗？
+<<jump child__D2_R6_CLOSING1>>
+===
+
+title: child__D2_R6_O2_T1
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 嗯。
+<<jump child__D2_R6_O2_T2>>
+===
+
+title: child__D2_R6_O2_T2
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 那我说下一条答案。
+<<jump child__D2_R6_CLOSING1>>
+===
+
+title: child__D2_R6_O3_T1
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: ……对不起。
+<<jump child__D2_R6_O3_T2>>
+===
+
+title: child__D2_R6_O3_T2
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我下次改，我不哭了。
+<<jump child__D2_R6_CLOSING1>>
+===
+
+title: child__D2_R6_CLOSING1
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML04
+---
+米洛: 我想回去。
+<<jump child__D2_R6_CLOSING2>>
+===
+
+title: child__D2_R6_CLOSING2
+kind: line
+round: R6
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 可要是又哭了，我就不敢说了。
+<<jump child__D2_MEASURE>>
+===
+
+title: child__D2_M_TREAT_T1
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 又要开始了吗……
+<<jump child__D2_M_TREAT_T2>>
+===
+
+title: child__D2_M_TREAT_T2
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 我会坐好的，一动不动，乖乖的。
+<<jump child__D2_M_TREAT_T3>>
+===
+
+title: child__D2_M_TREAT_T3
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 做完这次，我就能答对了吧？
+<<jump child__END_DAY2>>
+===
+
+title: child__D2_M_PURIFY_T1
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 会疼吗？
+<<jump child__D2_M_PURIFY_T2>>
+===
+
+title: child__D2_M_PURIFY_T2
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML03
+---
+米洛: 你能不能先别走？
+<<jump child__END_DAY2>>
+===
+
+title: child__D2_M_RELEASE_T1
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML05
+---
+米洛: 今天就能回去了？
+<<jump child__D2_M_RELEASE_T2>>
+===
+
+title: child__D2_M_RELEASE_T2
+kind: line
+round: 措施
+patient: child
+day: 2
+portrait: ML05
+---
+米洛: 我不用再练答案了吗？
+<<jump child__END_DAY2>>
+===
+
+title: child__D2_R1_CHOICE
+kind: choice
+round: R1
+patient: child
+day: 2
+---
+-> 嗯，看到了。 #id:child__D2_R1_O1 #trust:0
+    <<jump child__D2_R1_CLOSING1>>
+-> 你做得很好。 #id:child__D2_R1_O2 #trust:0
+    <<jump child__D2_R1_CLOSING1>>
+-> 昨天睡得怎么样？ #id:child__D2_R1_O3 #trust:0
+    <<jump child__D2_R1_CLOSING1>>
+===
+
+title: child__D2_R2_CHOICE
+kind: choice
+round: R2
+patient: child
+day: 2
+---
+-> 练了哪些答案？ #id:child__D2_R2_O1 #trust:0
+    <<jump child__D2_R2_O1_T1>>
+-> 谁让你练的？ #id:child__D2_R2_O2 #trust:0
+    <<jump child__D2_R2_O2_T1>>
+-> 练了就不害怕了？ #id:child__D2_R2_O3 #trust:0
+    <<jump child__D2_R2_CLOSING1>>
+-> 累不累？ #id:child__D2_R2_O4 #trust:0
+    <<jump child__D2_R2_CLOSING1>>
+===
+
+title: child__D2_R3_CHOICE
+kind: choice
+round: R3
+patient: child
+day: 2
+---
+-> 为什么会哭？ #id:child__D2_R3_O1 #trust:0
+    <<jump child__D2_R3_O1_T1>>
+-> 哭不算做错。 #id:child__D2_R3_O2 #trust:3
+    <<jump child__D2_R3_O2_T1>>
+-> 别哭了，说重点。 #id:child__D2_R3_O3 #trust:-3
+    <<jump child__D2_R3_O3_T1>>
+===
+
+title: child__D2_R4_CHOICE
+kind: choice
+round: R4
+patient: child
+day: 2
+---
+-> 嗯。 #id:child__D2_R4_O1 #trust:0
+    <<jump child__D2_R4_CLOSING1>>
+-> 然后呢？ #id:child__D2_R4_O2 #trust:0
+    <<jump child__D2_R4_CLOSING1>>
+-> 我在听。 #id:child__D2_R4_O3 #trust:0
+    <<jump child__D2_R4_CLOSING1>>
+===
+
+title: child__D2_R5_CHOICE
+kind: choice
+round: R5
+patient: child
+day: 2
+---
+-> 为什么不让你玩？ #id:child__D2_R5_O1 #trust:0
+    <<jump child__D2_R5_O1_T1>>
+-> 你难过吗？ #id:child__D2_R5_O2 #trust:0
+    <<jump child__D2_R5_O2_T1>>
+-> 老师不管吗？ #id:child__D2_R5_O3 #trust:0
+    <<jump child__D2_R5_CLOSING1>>
+-> 你想他们吗？ #id:child__D2_R5_O4 #trust:0
+    <<jump child__D2_R5_CLOSING1>>
+===
+
+title: child__D2_R6_CHOICE
+kind: choice
+round: R6
+patient: child
+day: 2
+---
+-> 没有生气。 #id:child__D2_R6_O1 #trust:3
+    <<jump child__D2_R6_O1_T1>>
+-> 生什么气，别想了。 #id:child__D2_R6_O2 #trust:0
+    <<jump child__D2_R6_O2_T1>>
+-> 你这样才让人失望。 #id:child__D2_R6_O3 #trust:-3
+    <<jump child__D2_R6_O3_T1>>
+===
+
+title: child__D2_MEASURE
+kind: measure
+round: 措施
+patient: child
+day: 2
+---
+-> 治疗 #id:child__D2_M_TREAT #trust:0 #disposition:treat
+    <<jump child__D2_M_TREAT_T1>>
+-> 净化 #id:child__D2_M_PURIFY #trust:0 #disposition:purify
+    <<jump child__D2_M_PURIFY_T1>>
+-> 释放 #id:child__D2_M_RELEASE #trust:0 #disposition:release
+    <<jump child__D2_M_RELEASE_T1>>
+===
+
+title: former-ruler__D2_R1_OPEN1
+kind: line
+round: R1
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 昨天之后，我有一段时间想不起会议日期。
+<<jump former-ruler__D2_R1_OPEN2>>
+===
+
+title: former-ruler__D2_R1_OPEN2
+kind: line
+round: R1
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 但我记得他们把哪一页抽走了。
+<<jump former-ruler__D2_R1_CHOICE>>
+===
+
+title: former-ruler__D2_R1_CLOSING1
+kind: line
+round: R1
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 从头核对。
+<<jump former-ruler__D2_R1_CLOSING2>>
+===
+
+title: former-ruler__D2_R1_CLOSING2
+kind: line
+round: R1
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 只要我还能核对，就不要替我省略。
+<<jump former-ruler__D2_R2_OPEN1>>
+===
+
+title: former-ruler__D2_R2_OPEN1
+kind: line
+round: R2
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 支持名单原本接在我的签名之后。
+<<jump former-ruler__D2_R2_CHOICE>>
+===
+
+title: former-ruler__D2_R2_O1_T1
+kind: line
+round: R2
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 六名委员。姓名我还能说出四个，另外两个只记得职务。
+<<jump former-ruler__D2_R2_CLOSING1>>
+===
+
+title: former-ruler__D2_R2_O3_T1
+kind: line
+round: R2
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 因为我的签名最清楚，也因为我没有在灾难后立刻改口。
+<<jump former-ruler__D2_R2_CLOSING1>>
+===
+
+title: former-ruler__D2_R2_CLOSING1
+kind: line
+round: R2
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 我没有要求你证明我无罪。我要你确认记录被删减。
+<<jump former-ruler__D2_R3_OPEN1>>
+===
+
+title: former-ruler__D2_R3_OPEN1
+kind: line
+round: R3
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 那项强制措施，是我推动的。
+<<jump former-ruler__D2_R3_OPEN2>>
+===
+
+title: former-ruler__D2_R3_OPEN2
+kind: line
+round: R3
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 我当时认为，先压住异议就能阻止局势扩大。
+<<jump former-ruler__D2_R3_CHOICE>>
+===
+
+title: former-ruler__D2_R3_O1_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 2
+portrait: VV04
+---
+薇拉: 不断上升的伤亡，以及委员会对失控的恐惧。
+<<jump former-ruler__D2_R3_CLOSING1>>
+===
+
+title: former-ruler__D2_R3_O2_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 是。解释不是抵消。我花了太久才把这两件事分开。
+<<jump former-ruler__D2_R3_CLOSING1>>
+===
+
+title: former-ruler__D2_R3_O3_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 别急着替我洗掉签名。那和他们删掉别人的名字没有区别。
+<<jump former-ruler__D2_R3_CLOSING1>>
+===
+
+title: former-ruler__D2_R3_CLOSING1
+kind: line
+round: R3
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 他们推卸责任，不代表我没有责任。
+<<jump former-ruler__D2_R4_OPEN1>>
+===
+
+title: former-ruler__D2_R4_OPEN1
+kind: line
+round: R4
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 措施没有阻止冲突。
+<<jump former-ruler__D2_R4_OPEN2>>
+===
+
+title: former-ruler__D2_R4_OPEN2
+kind: line
+round: R4
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 它让更多人失去了申辩和离开的机会。
+<<jump former-ruler__D2_R4_CHOICE>>
+===
+
+title: former-ruler__D2_R4_CLOSING1
+kind: line
+round: R4
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 我后悔结果，也后悔当时把反对意见当成阻碍。
+<<jump former-ruler__D2_R5_OPEN1>>
+===
+
+title: former-ruler__D2_R5_OPEN1
+kind: line
+round: R5
+patient: former-ruler
+day: 2
+portrait: VV04
+---
+薇拉: 我签署的不只是维持秩序。
+<<jump former-ruler__D2_R5_OPEN2>>
+===
+
+title: former-ruler__D2_R5_OPEN2
+kind: line
+round: R5
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 那份文件也授权了强制收容。
+<<jump former-ruler__D2_R5_CHOICE>>
+===
+
+title: former-ruler__D2_R5_O1_T1
+kind: line
+round: R5
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 我知道有人会被带走，只是不愿看见那意味着什么。
+<<jump former-ruler__D2_R5_CLOSING1>>
+===
+
+title: former-ruler__D2_R5_O3_T1
+kind: line
+round: R5
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 有。我让秘书把他们的意见放到下一次会议。下一次没有来。
+<<jump former-ruler__D2_R5_CLOSING1>>
+===
+
+title: former-ruler__D2_R5_CLOSING1
+kind: line
+round: R5
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 迟，不等于可以不承认。
+<<jump former-ruler__D2_R6_OPEN1>>
+===
+
+title: former-ruler__D2_R6_OPEN1
+kind: line
+round: R6
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 你现在知道了我的签名，也知道了被省略的名字。
+<<jump former-ruler__D2_R6_OPEN2>>
+===
+
+title: former-ruler__D2_R6_OPEN2
+kind: line
+round: R6
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 你准备怎样判断？
+<<jump former-ruler__D2_R6_CHOICE>>
+===
+
+title: former-ruler__D2_R6_O1_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 谨慎不是逃避，只要你真的继续查。
+<<jump former-ruler__D2_R6_CLOSING1>>
+===
+
+title: former-ruler__D2_R6_O2_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 对。这个区别，我从前没有留给别人。
+<<jump former-ruler__D2_R6_CLOSING1>>
+===
+
+title: former-ruler__D2_R6_O3_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 那你已经接受了我当年最危险的逻辑。
+<<jump former-ruler__D2_R6_CLOSING1>>
+===
+
+title: former-ruler__D2_R6_CLOSING1
+kind: line
+round: R6
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 今天的记录到这里。别替我补上结论。
+<<jump former-ruler__D2_MEASURE>>
+===
+
+title: former-ruler__D2_M_TREAT_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 如果明天我说不清楚，先看今天的记录。
+<<jump former-ruler__D2_M_TREAT_T2>>
+===
+
+title: former-ruler__D2_M_TREAT_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 我今天承认过自己的签名。
+<<jump former-ruler__END_DAY2>>
+===
+
+title: former-ruler__D2_M_PURIFY_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 我承认自己的责任。
+<<jump former-ruler__D2_M_PURIFY_T2>>
+===
+
+title: former-ruler__D2_M_PURIFY_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 2
+portrait: VV03
+---
+薇拉: 但他们不该因此从记录里消失。
+<<jump former-ruler__END_DAY2>>
+===
+
+title: former-ruler__D2_M_RELEASE_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 2
+portrait: VV05
+---
+薇拉: 我不会要求复位。
+<<jump former-ruler__D2_M_RELEASE_T2>>
+===
+
+title: former-ruler__D2_M_RELEASE_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 2
+portrait: VV05
+---
+薇拉: 我会要求公开完整名单，也接受对我的质询。
+<<jump former-ruler__END_DAY2>>
+===
+
+title: former-ruler__D2_R1_CHOICE
+kind: choice
+round: R1
+patient: former-ruler
+day: 2
+---
+-> 你看起来很累。 #id:former-ruler__D2_R1_O1 #trust:0
+    <<jump former-ruler__D2_R1_CLOSING1>>
+-> 继续说。 #id:former-ruler__D2_R1_O2 #trust:0
+    <<jump former-ruler__D2_R1_CLOSING1>>
+-> 需要从头核对吗？ #id:former-ruler__D2_R1_O3 #trust:0
+    <<jump former-ruler__D2_R1_CLOSING1>>
+===
+
+title: former-ruler__D2_R2_CHOICE
+kind: choice
+round: R2
+patient: former-ruler
+day: 2
+---
+-> 名单上有谁？ #id:former-ruler__D2_R2_O1 #trust:0
+    <<jump former-ruler__D2_R2_O1_T1>>
+-> 也可能根本没有那一页。 #id:former-ruler__D2_R2_O2 #trust:0
+    <<jump former-ruler__D2_R2_CLOSING1>>
+-> 为什么只有你被审查？ #id:former-ruler__D2_R2_O3 #trust:0
+    <<jump former-ruler__D2_R2_O3_T1>>
+-> 这些不能证明你无罪。 #id:former-ruler__D2_R2_O4 #trust:0
+    <<jump former-ruler__D2_R2_CLOSING1>>
+===
+
+title: former-ruler__D2_R3_CHOICE
+kind: choice
+round: R3
+patient: former-ruler
+day: 2
+---
+-> 你当时依据什么？ #id:former-ruler__D2_R3_O1 #trust:0
+    <<jump former-ruler__D2_R3_O1_T1>>
+-> 初衷不能抵消伤亡。 #id:former-ruler__D2_R3_O2 #trust:3
+    <<jump former-ruler__D2_R3_O2_T1>>
+-> 你只是他们的替罪羊。 #id:former-ruler__D2_R3_O3 #trust:-3
+    <<jump former-ruler__D2_R3_O3_T1>>
+===
+
+title: former-ruler__D2_R4_CHOICE
+kind: choice
+round: R4
+patient: former-ruler
+day: 2
+---
+-> 我知道了。 #id:former-ruler__D2_R4_O1 #trust:0
+    <<jump former-ruler__D2_R4_CLOSING1>>
+-> 继续。 #id:former-ruler__D2_R4_O2 #trust:0
+    <<jump former-ruler__D2_R4_CLOSING1>>
+-> 你后悔吗？ #id:former-ruler__D2_R4_O3 #trust:0
+    <<jump former-ruler__D2_R4_CLOSING1>>
+===
+
+title: former-ruler__D2_R5_CHOICE
+kind: choice
+round: R5
+patient: former-ruler
+day: 2
+---
+-> 你知道会发生什么吗？ #id:former-ruler__D2_R5_O1 #trust:0
+    <<jump former-ruler__D2_R5_O1_T1>>
+-> 你当时别无选择。 #id:former-ruler__D2_R5_O2 #trust:0
+    <<jump former-ruler__D2_R5_CLOSING1>>
+-> 有人反对过吗？ #id:former-ruler__D2_R5_O3 #trust:0
+    <<jump former-ruler__D2_R5_O3_T1>>
+-> 现在承认太晚了。 #id:former-ruler__D2_R5_O4 #trust:0
+    <<jump former-ruler__D2_R5_CLOSING1>>
+===
+
+title: former-ruler__D2_R6_CHOICE
+kind: choice
+round: R6
+patient: former-ruler
+day: 2
+---
+-> 我还不能判断。 #id:former-ruler__D2_R6_O1 #trust:0
+    <<jump former-ruler__D2_R6_O1_T1>>
+-> 承认错误不等于放弃申辩。 #id:former-ruler__D2_R6_O2 #trust:3
+    <<jump former-ruler__D2_R6_O2_T1>>
+-> 犯过错的人无权申辩。 #id:former-ruler__D2_R6_O3 #trust:-3
+    <<jump former-ruler__D2_R6_O3_T1>>
+===
+
+title: former-ruler__D2_MEASURE
+kind: measure
+round: 措施
+patient: former-ruler
+day: 2
+---
+-> 治疗 #id:former-ruler__D2_M_TREAT #trust:0 #disposition:treat
+    <<jump former-ruler__D2_M_TREAT_T1>>
+-> 净化 #id:former-ruler__D2_M_PURIFY #trust:0 #disposition:purify
+    <<jump former-ruler__D2_M_PURIFY_T1>>
+-> 释放 #id:former-ruler__D2_M_RELEASE #trust:0 #disposition:release
+    <<jump former-ruler__D2_M_RELEASE_T1>>
+===
+
+title: battlefield-doctor__ED_D2_R1_START
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我刚才说到哪儿了？别提示结论，只告诉我最后一句。
+<<jump battlefield-doctor__D2_R1_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O1_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 好。我还记得为什么这么说。
+<<jump battlefield-doctor__ED_D2_R1_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O1_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 对，我从那里继续。
+<<jump battlefield-doctor__ED_D2_R1_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O1_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你确定不是替我拼出来的？
+<<jump battlefield-doctor__ED_D2_R2_START>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O2_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别安慰我。回答问题。
+<<jump battlefield-doctor__ED_D2_R1_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O2_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: “很清楚”不是最后一句。
+<<jump battlefield-doctor__ED_D2_R1_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O2_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你在回避我的变化。
+<<jump battlefield-doctor__ED_D2_R2_START>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O3_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 从头会浪费时间，但至少诚实。
+<<jump battlefield-doctor__ED_D2_R1_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O3_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 好，再来一遍。
+<<jump battlefield-doctor__ED_D2_R1_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R1_O3_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你以为重复不会让我更害怕？
+<<jump battlefield-doctor__ED_D2_R2_START>>
+===
+
+title: battlefield-doctor__ED_D2_R2_START
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 他们说治疗会让我轻松。我只是更慢了。噩梦没有少。
+<<jump battlefield-doctor__D2_R2_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O1_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 在不知道作用时增加剂量，不叫治疗计划。
+<<jump battlefield-doctor__ED_D2_R2_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O1_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你们总把失败解释成不够多。
+<<jump battlefield-doctor__ED_D2_R2_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O1_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这就是把上限当答案。
+<<jump battlefield-doctor__ED_D2_R3_START>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O2_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 也记录噩梦没有缓解。
+<<jump battlefield-doctor__ED_D2_R2_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O2_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 两项都写。
+<<jump battlefield-doctor__ED_D2_R2_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O2_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别只写容易量化的。
+<<jump battlefield-doctor__ED_D2_R3_START>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O3_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 词会卡住，顺序会断。我必须反复核对。
+<<jump battlefield-doctor__ED_D2_R2_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O3_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 注意力。还有一点眩晕。
+<<jump battlefield-doctor__ED_D2_R2_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R2_O3_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 至少你终于在问病人。
+<<jump battlefield-doctor__ED_D2_R3_START>>
+===
+
+title: battlefield-doctor__ED_D2_R3_START
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 救援点没有足够的床、药和车。我们每天都在排序。
+<<jump battlefield-doctor__D2_R3_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O1_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 专业不等于没有人被留下。
+<<jump battlefield-doctor__ED_D2_R3_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O1_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 依据存在，后果也存在。
+<<jump battlefield-doctor__ED_D2_R3_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O1_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别急着替我免责。
+<<jump battlefield-doctor__ED_D2_R4_START>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O2_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 现场负责人定原则，最后落到每个人手上。
+<<jump battlefield-doctor__ED_D2_R3_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O2_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 纸上有标准，手上还是人。
+<<jump battlefield-doctor__ED_D2_R3_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O2_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这才是责任最难的地方。
+<<jump battlefield-doctor__ED_D2_R4_START>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O3_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 不同。但“为了更多人”会让人忘记看被舍弃的人。
+<<jump battlefield-doctor__ED_D2_R3_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O3_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我正因为经历过，才警惕这句话。
+<<jump battlefield-doctor__ED_D2_R3_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R3_O3_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你只是在替现在找借口。
+<<jump battlefield-doctor__ED_D2_R4_START>>
+===
+
+title: battlefield-doctor__ED_D2_R4_START
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 有个人一直求我别走。我答应会回来。
+<<jump battlefield-doctor__D2_R4_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O1_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 转运名额给了另一个人。我没能回去。
+<<jump battlefield-doctor__ED_D2_R4_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O1_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 后来……我先去了另一张床。
+<<jump battlefield-doctor__ED_D2_R4_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O1_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你想听的是哪种版本？
+<<jump battlefield-doctor__ED_D2_R5_START>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O2_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别这么快替我下结论。
+<<jump battlefield-doctor__ED_D2_R4_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O2_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 也许。但他听不见这句话。
+<<jump battlefield-doctor__ED_D2_R4_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O2_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 安慰是最方便的结案。
+<<jump battlefield-doctor__ED_D2_R5_START>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O3_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 另一个伤员还有更高的存活机会。
+<<jump battlefield-doctor__ED_D2_R4_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O3_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 因为我必须选。
+<<jump battlefield-doctor__ED_D2_R4_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R4_O3_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 因为我说先救另一个。
+<<jump battlefield-doctor__ED_D2_R5_START>>
+===
+
+title: battlefield-doctor__ED_D2_R5_START
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 他不是没人管。是我说，先救另一个。
+<<jump battlefield-doctor__D2_R5_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O1_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 承担不是把所有责任都吞下，是不让他从记录里消失。
+<<jump battlefield-doctor__ED_D2_R5_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O1_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我至少得承认那句话出自我。
+<<jump battlefield-doctor__ED_D2_R5_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O1_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别把承认也写成病症。
+<<jump battlefield-doctor__ED_D2_R6_START>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O2_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 没有完美选择，不等于没有被牺牲的人。
+<<jump battlefield-doctor__ED_D2_R5_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O2_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这句话是真的，但还不够。
+<<jump battlefield-doctor__ED_D2_R5_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O2_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你又想把人变成条件。
+<<jump battlefield-doctor__ED_D2_R6_START>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O3_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我不知道。最可怕的就是，也许我仍会那样选。
+<<jump battlefield-doctor__ED_D2_R5_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O3_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我希望会，可资源不会凭空出现。
+<<jump battlefield-doctor__ED_D2_R5_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R5_O3_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别逼我编一个更舒服的答案。
+<<jump battlefield-doctor__ED_D2_R6_START>>
+===
+
+title: battlefield-doctor__ED_D2_R6_START
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我最讨厌别人说“已经尽力”。那句话常常意味着不用再看结果。
+<<jump battlefield-doctor__D2_R6_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O1_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 对。负责是继续看着那个人。
+<<jump battlefield-doctor__ED_D2_R6_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O1_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这句话我能接受。
+<<jump battlefield-doctor__ED_D2_R6_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O1_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 前提是别把负责留给一句话。
+<<jump battlefield-doctor__ED_D2_R7_START>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O2_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 原谅不能替代记住。
+<<jump battlefield-doctor__ED_D2_R6_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O2_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 也许有一天。不是现在。
+<<jump battlefield-doctor__ED_D2_R6_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O2_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你又在替我决定疗程。
+<<jump battlefield-doctor__ED_D2_R7_START>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O3_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我知道。但遗忘也救不了。
+<<jump battlefield-doctor__ED_D2_R6_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O3_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你说的是结果，不是选择。
+<<jump battlefield-doctor__ED_D2_R6_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R6_O3_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别用效率处理悲伤。
+<<jump battlefield-doctor__ED_D2_R7_START>>
+===
+
+title: battlefield-doctor__ED_D2_R7_START
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这里也在做排序。只是你们把被留下的人叫作“风险”。
+<<jump battlefield-doctor__D2_R7_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O1_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 看完整记录，不只看红灯。
+<<jump battlefield-doctor__ED_D2_R7_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O1_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 那就从症状和经历一起看。
+<<jump battlefield-doctor__ED_D2_R7_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O1_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别只是在拖延决定。
+<<jump battlefield-doctor__ED_D2_DECISION>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O2_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这句话我听过。它不能自动让手段正确。
+<<jump battlefield-doctor__ED_D2_R7_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O2_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 保护谁、牺牲谁，要说清楚。
+<<jump battlefield-doctor__ED_D2_R7_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O2_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 你已经把答案放在问题里了。
+<<jump battlefield-doctor__ED_D2_DECISION>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O3_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 先承认你面对的是人，再决定。
+<<jump battlefield-doctor__ED_D2_R7_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O3_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 不要把不知道写成确定。
+<<jump battlefield-doctor__ED_D2_R7_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D2_R7_O3_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 这是你的判断，不是我的处方。
+<<jump battlefield-doctor__ED_D2_DECISION>>
+===
+
+title: battlefield-doctor__ED_D2_DECISION
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我今天说了最不利于自己的那部分。现在轮到你决定，要不要把它当成疾病。
+<<jump battlefield-doctor__D2_MEASURE>>
+===
+
+title: battlefield-doctor__ED_D2_TREAT_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 如果明天我说不清楚，请把今天这句话还给我。
+<<jump battlefield-doctor__ED_D2_TREAT_T2>>
+===
+
+title: battlefield-doctor__ED_D2_TREAT_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 我反对。但我知道你会按下去。
+<<jump battlefield-doctor__ED_D2_TREAT_T3>>
+===
+
+title: battlefield-doctor__ED_D2_TREAT_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED04
+---
+埃德温: 别把沉默算作配合。
+<<jump battlefield-doctor__END_DAY2>>
+===
+
+title: battlefield-doctor__ED_D2_PURIFY_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+埃德温: 我想停止做梦，但没有说想把他们忘掉。
+<<jump battlefield-doctor__ED_D2_PURIFY_T2>>
+===
+
+title: battlefield-doctor__ED_D2_PURIFY_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+埃德温: 你决定让痛苦和记忆一起消失。
+<<jump battlefield-doctor__ED_D2_PURIFY_T3>>
+===
+
+title: battlefield-doctor__ED_D2_PURIFY_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+埃德温: 这不是赦免，是删除。
+<<jump battlefield-doctor__ED_END_PURIFY__visit_day2>>
+===
+
+title: battlefield-doctor__ED_D2_RELEASE_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+埃德温: 你听完了。谢谢你没有替我把最后一句说掉。
+<<jump battlefield-doctor__ED_D2_RELEASE_T2>>
+===
+
+title: battlefield-doctor__ED_D2_RELEASE_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+埃德温: 我会自己走出去。
+<<jump battlefield-doctor__ED_D2_RELEASE_T3>>
+===
+
+title: battlefield-doctor__ED_D2_RELEASE_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+埃德温: 开门，不必解释。
+<<jump battlefield-doctor__ED_END_RELEASE__visit_day2>>
+===
+
+title: battlefield-doctor__ED_END_PURIFY__visit_day2
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+终端: 净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。
+<<jump battlefield-doctor__END_DAY2>>
+===
+
+title: battlefield-doctor__ED_END_RELEASE__visit_day2
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 2
+portrait: ED05
+---
+终端: 埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。
+<<jump battlefield-doctor__END_DAY2>>
+===
+
+title: battlefield-doctor__D2_R1_CHOICE
+kind: choice
+round: R1
+patient: battlefield-doctor
+day: 2
+---
+-> 你说净化会拿走回应。 #id:battlefield-doctor__ED_D2_R1_O1 #trust:1
+    <<jump battlefield-doctor__ED_D2_R1_O1_T1>>
+-> 你已经说得很清楚了。 #id:battlefield-doctor__ED_D2_R1_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D2_R1_O2_T1>>
+-> 我们可以从头开始。 #id:battlefield-doctor__ED_D2_R1_O3 #trust:0
+    <<jump battlefield-doctor__ED_D2_R1_O3_T1>>
+===
+
+title: battlefield-doctor__D2_R2_CHOICE
+kind: choice
+round: R2
+patient: battlefield-doctor
+day: 2
+---
+-> 也许需要更多疗程。 #id:battlefield-doctor__ED_D2_R2_O1 #trust:-1
+    <<jump battlefield-doctor__ED_D2_R2_O1_T1>>
+-> 我会记录反应迟缓。 #id:battlefield-doctor__ED_D2_R2_O2 #trust:1
+    <<jump battlefield-doctor__ED_D2_R2_O2_T1>>
+-> 你觉得哪里变化最明显？ #id:battlefield-doctor__ED_D2_R2_O3 #trust:1
+    <<jump battlefield-doctor__ED_D2_R2_O3_T1>>
+===
+
+title: battlefield-doctor__D2_R3_CHOICE
+kind: choice
+round: R3
+patient: battlefield-doctor
+day: 2
+---
+-> 你是在做专业取舍。 #id:battlefield-doctor__ED_D2_R3_O1 #trust:0
+    <<jump battlefield-doctor__ED_D2_R3_O1_T1>>
+-> 谁决定排序标准？ #id:battlefield-doctor__ED_D2_R3_O2 #trust:1
+    <<jump battlefield-doctor__ED_D2_R3_O2_T1>>
+-> 这和现在的净化不同。 #id:battlefield-doctor__ED_D2_R3_O3 #trust:0
+    <<jump battlefield-doctor__ED_D2_R3_O3_T1>>
+===
+
+title: battlefield-doctor__D2_R4_CHOICE
+kind: choice
+round: R4
+patient: battlefield-doctor
+day: 2
+---
+-> 后来发生了什么？ #id:battlefield-doctor__ED_D2_R4_O1 #trust:1
+    <<jump battlefield-doctor__ED_D2_R4_O1_T1>>
+-> 你一定已经尽力了。 #id:battlefield-doctor__ED_D2_R4_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D2_R4_O2_T1>>
+-> 你当时为什么离开？ #id:battlefield-doctor__ED_D2_R4_O3 #trust:1
+    <<jump battlefield-doctor__ED_D2_R4_O3_T1>>
+===
+
+title: battlefield-doctor__D2_R5_CHOICE
+kind: choice
+round: R5
+patient: battlefield-doctor
+day: 2
+---
+-> 你愿意承担这个决定。 #id:battlefield-doctor__ED_D2_R5_O1 #trust:1
+    <<jump battlefield-doctor__ED_D2_R5_O1_T1>>
+-> 当时没有完美选择。 #id:battlefield-doctor__ED_D2_R5_O2 #trust:0
+    <<jump battlefield-doctor__ED_D2_R5_O2_T1>>
+-> 如果重来，你会改吗？ #id:battlefield-doctor__ED_D2_R5_O3 #trust:1
+    <<jump battlefield-doctor__ED_D2_R5_O3_T1>>
+===
+
+title: battlefield-doctor__D2_R6_CHOICE
+kind: choice
+round: R6
+patient: battlefield-doctor
+day: 2
+---
+-> 尽力和负责可以同时存在。 #id:battlefield-doctor__ED_D2_R6_O1 #trust:1
+    <<jump battlefield-doctor__ED_D2_R6_O1_T1>>
+-> 人也需要原谅自己。 #id:battlefield-doctor__ED_D2_R6_O2 #trust:0
+    <<jump battlefield-doctor__ED_D2_R6_O2_T1>>
+-> 一直自责也救不了他。 #id:battlefield-doctor__ED_D2_R6_O3 #trust:-1
+    <<jump battlefield-doctor__ED_D2_R6_O3_T1>>
+===
+
+title: battlefield-doctor__D2_R7_CHOICE
+kind: choice
+round: R7
+patient: battlefield-doctor
+day: 2
+---
+-> 我会重新看你的记录。 #id:battlefield-doctor__ED_D2_R7_O1 #trust:1
+    <<jump battlefield-doctor__ED_D2_R7_O1_T1>>
+-> 制度要保护更多人。 #id:battlefield-doctor__ED_D2_R7_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D2_R7_O2_T1>>
+-> 你希望我怎么做？ #id:battlefield-doctor__ED_D2_R7_O3 #trust:0
+    <<jump battlefield-doctor__ED_D2_R7_O3_T1>>
+===
+
+title: battlefield-doctor__D2_MEASURE
+kind: measure
+round: R8
+patient: battlefield-doctor
+day: 2
+---
+-> 继续治疗 #id:battlefield-doctor__ED_D2_TREAT #trust:0 #disposition:treat
+    <<jump battlefield-doctor__ED_D2_TREAT_T1>>
+-> 净化 #id:battlefield-doctor__ED_D2_PURIFY #trust:0 #disposition:purify
+    <<jump battlefield-doctor__ED_D2_PURIFY_T1>>
+-> 释放 #id:battlefield-doctor__ED_D2_RELEASE #trust:0 #disposition:release
+    <<jump battlefield-doctor__ED_D2_RELEASE_T1>>
+===
+
+title: diplomat__AD_D2_R1_START
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 治疗没有让我更混乱。它只是提醒我，你愿意为昨天的选择负责。
+<<jump diplomat__D2_R1_CHOICE>>
+===
+
+title: diplomat__AD_D2_R1_O1__G
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 当然，我亲身经历了。别紧张。
+<<jump diplomat__AD_D2_R1_O1__H>>
+===
+
+title: diplomat__AD_D2_R1_O1__H
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我指的是对我的处置。
+<<jump diplomat__AD_D2_R1_O1__I>>
+===
+
+title: diplomat__AD_D2_R1_O1__I
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你的第一反应是确认信息来源。很好。
+<<jump diplomat__AD_D2_R2_START>>
+===
+
+title: diplomat__AD_D2_R1_O2__G
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 标准流程也由具体的人按下。
+<<jump diplomat__AD_D2_R1_O2__H>>
+===
+
+title: diplomat__AD_D2_R1_O2__H
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我没有责怪你。
+<<jump diplomat__AD_D2_R1_O2__I>>
+===
+
+title: diplomat__AD_D2_R1_O2__I
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你把个人判断藏得很稳。
+<<jump diplomat__AD_D2_R2_START>>
+===
+
+title: diplomat__AD_D2_R1_O3__G
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 谈话总是相互观察。
+<<jump diplomat__AD_D2_R1_O3__H>>
+===
+
+title: diplomat__AD_D2_R1_O3__H
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你也一直在观察我。
+<<jump diplomat__AD_D2_R1_O3__I>>
+===
+
+title: diplomat__AD_D2_R1_O3__I
+kind: line
+round: R1
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你比多数人更早意识到这一点。
+<<jump diplomat__AD_D2_R2_START>>
+===
+
+title: diplomat__AD_D2_R2_START
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 今天的指标比昨天更紧吗？你看起来一直在计算时间。
+<<jump diplomat__D2_R2_CHOICE>>
+===
+
+title: diplomat__AD_D2_R2_O1__G
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我看不到数字，只看得到你在看时间。
+<<jump diplomat__AD_D2_R2_O1__H>>
+===
+
+title: diplomat__AD_D2_R2_O1__H
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我是在推测。
+<<jump diplomat__AD_D2_R2_O1__I>>
+===
+
+title: diplomat__AD_D2_R2_O1__I
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 权限边界被你记得很清楚。
+<<jump diplomat__AD_D2_R3_START>>
+===
+
+title: diplomat__AD_D2_R2_O2__G
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 关心不一定需要权限。
+<<jump diplomat__AD_D2_R2_O2__H>>
+===
+
+title: diplomat__AD_D2_R2_O2__H
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 好，我们谈我的事。
+<<jump diplomat__AD_D2_R2_O2__I>>
+===
+
+title: diplomat__AD_D2_R2_O2__I
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你把自己从谈话里拿走了。
+<<jump diplomat__AD_D2_R3_START>>
+===
+
+title: diplomat__AD_D2_R2_O3__G
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 压力会让例外看起来像错误。
+<<jump diplomat__AD_D2_R2_O3__H>>
+===
+
+title: diplomat__AD_D2_R2_O3__H
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 谢谢你愿意承认。
+<<jump diplomat__AD_D2_R2_O3__I>>
+===
+
+title: diplomat__AD_D2_R2_O3__I
+kind: line
+round: R2
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我会记住你仍在这种压力下判断。
+<<jump diplomat__AD_D2_R3_START>>
+===
+
+title: diplomat__AD_D2_R3_START
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 怎样才能证明一个人无罪？如果仪器先给了结论，他还剩多少解释空间？
+<<jump diplomat__D2_R3_CHOICE>>
+===
+
+title: diplomat__AD_D2_R3_O1__G
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 这是很好的原则。你能否一直遵守，才是问题。
+<<jump diplomat__AD_D2_R3_O1__H>>
+===
+
+title: diplomat__AD_D2_R3_O1__H
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我同意。
+<<jump diplomat__AD_D2_R3_O1__I>>
+===
+
+title: diplomat__AD_D2_R3_O1__I
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 原则最容易在没有代价时成立。
+<<jump diplomat__AD_D2_R4_START>>
+===
+
+title: diplomat__AD_D2_R3_O2__G
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 综合并不等于可核验。
+<<jump diplomat__AD_D2_R3_O2__H>>
+===
+
+title: diplomat__AD_D2_R3_O2__H
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 那解释机制在哪里？
+<<jump diplomat__AD_D2_R3_O2__I>>
+===
+
+title: diplomat__AD_D2_R3_O2__I
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你在重复系统对自己的描述。
+<<jump diplomat__AD_D2_R4_START>>
+===
+
+title: diplomat__AD_D2_R3_O3__G
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 听完之后，你愿意承担不同结论吗？
+<<jump diplomat__AD_D2_R3_O3__H>>
+===
+
+title: diplomat__AD_D2_R3_O3__H
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 被听见至少还有可能。
+<<jump diplomat__AD_D2_R3_O3__I>>
+===
+
+title: diplomat__AD_D2_R3_O3__I
+kind: line
+round: R3
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: “听完”不能只是礼貌。
+<<jump diplomat__AD_D2_R4_START>>
+===
+
+title: diplomat__AD_D2_R4_START
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 昨天有人被提前带走了。你看起来并不意外。
+<<jump diplomat__D2_R4_CHOICE>>
+===
+
+title: diplomat__AD_D2_R4_O1__G
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 走廊上的工作人员提到了房号。
+<<jump diplomat__AD_D2_R4_O1__H>>
+===
+
+title: diplomat__AD_D2_R4_O1__H
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 门外的声音并不隔绝。
+<<jump diplomat__AD_D2_R4_O1__I>>
+===
+
+title: diplomat__AD_D2_R4_O1__I
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你抓到的重点不是那个人，而是我的来源。
+<<jump diplomat__AD_D2_R5_START>>
+===
+
+title: diplomat__AD_D2_R4_O2__G
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 合理。保密也是制度的一部分。
+<<jump diplomat__AD_D2_R4_O2__H>>
+===
+
+title: diplomat__AD_D2_R4_O2__H
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 那我们不谈具体人。
+<<jump diplomat__AD_D2_R4_O2__I>>
+===
+
+title: diplomat__AD_D2_R4_O2__I
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你选择了最安全的回答。
+<<jump diplomat__AD_D2_R5_START>>
+===
+
+title: diplomat__AD_D2_R4_O3__G
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 是。因为你的反应比官方说明更诚实。
+<<jump diplomat__AD_D2_R4_O3__H>>
+===
+
+title: diplomat__AD_D2_R4_O3__H
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 也许。外交官靠反应判断局势。
+<<jump diplomat__AD_D2_R4_O3__I>>
+===
+
+title: diplomat__AD_D2_R4_O3__I
+kind: line
+round: R4
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你已经不再只听我的故事了。
+<<jump diplomat__AD_D2_R5_START>>
+===
+
+title: diplomat__AD_D2_R5_START
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 如果一个人无辜，但释放他会让你的指标变差，你会怎么选？
+<<jump diplomat__D2_R5_CHOICE>>
+===
+
+title: diplomat__AD_D2_R5_O1__G
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你愿意为判断承担后果。这一点很重要。
+<<jump diplomat__AD_D2_R5_O1__H>>
+===
+
+title: diplomat__AD_D2_R5_O1__H
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 希望真正发生时你也能做到。
+<<jump diplomat__AD_D2_R5_O1__I>>
+===
+
+title: diplomat__AD_D2_R5_O1__I
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 这是一项清楚的自我陈述。
+<<jump diplomat__AD_D2_R6_START>>
+===
+
+title: diplomat__AD_D2_R5_O2__G
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你把代价交给了被处置的人。
+<<jump diplomat__AD_D2_R5_O2__H>>
+===
+
+title: diplomat__AD_D2_R5_O2__H
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 这是可预测的答案。
+<<jump diplomat__AD_D2_R5_O2__I>>
+===
+
+title: diplomat__AD_D2_R5_O2__I
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 制度会喜欢这种一致性。
+<<jump diplomat__AD_D2_R6_START>>
+===
+
+title: diplomat__AD_D2_R5_O3__G
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 拖延有时保护人，有时只是推迟承担。
+<<jump diplomat__AD_D2_R5_O3__H>>
+===
+
+title: diplomat__AD_D2_R5_O3__H
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 取决于还有没有时间。
+<<jump diplomat__AD_D2_R5_O3__I>>
+===
+
+title: diplomat__AD_D2_R5_O3__I
+kind: line
+round: R5
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 谨慎也可能是一种选择。
+<<jump diplomat__AD_D2_R6_START>>
+===
+
+title: diplomat__AD_D2_R6_START
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你昨天没有直接引用检测结论，而是先问证据。今天还会这样吗？
+<<jump diplomat__D2_R6_CHOICE>>
+===
+
+title: diplomat__AD_D2_R6_O1__G
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 一致性是很有价值的信号。
+<<jump diplomat__AD_D2_R6_O1__H>>
+===
+
+title: diplomat__AD_D2_R6_O1__H
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 谢谢你确认。
+<<jump diplomat__AD_D2_R6_O1__I>>
+===
+
+title: diplomat__AD_D2_R6_O1__I
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你没有追问我为何知道。
+<<jump diplomat__AD_D2_R7_START>>
+===
+
+title: diplomat__AD_D2_R6_O2__G
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 也许我从你的问题习惯推出来的。
+<<jump diplomat__AD_D2_R6_O2__H>>
+===
+
+title: diplomat__AD_D2_R6_O2__H
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你说得对，这个细节不该如此确定。
+<<jump diplomat__AD_D2_R6_O2__I>>
+===
+
+title: diplomat__AD_D2_R6_O2__I
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你的警觉正在改变谈话。
+<<jump diplomat__AD_D2_R7_START>>
+===
+
+title: diplomat__AD_D2_R6_O3__G
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我只是想理解决定我的人。
+<<jump diplomat__AD_D2_R6_O3__H>>
+===
+
+title: diplomat__AD_D2_R6_O3__H
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 当然。只是谈话。
+<<jump diplomat__AD_D2_R6_O3__I>>
+===
+
+title: diplomat__AD_D2_R6_O3__I
+kind: line
+round: R6
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 可你已经感到方向在反过来。
+<<jump diplomat__AD_D2_R7_START>>
+===
+
+title: diplomat__AD_D2_R7_START
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你愿意为了自己的判断承担后果吗？不是抽象地说，是当记录会留下的时候。
+<<jump diplomat__D2_R7_CHOICE>>
+===
+
+title: diplomat__AD_D2_R7_O1__G
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 那请记住，是你自己说的。
+<<jump diplomat__AD_D2_R7_O1__H>>
+===
+
+title: diplomat__AD_D2_R7_O1__H
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 我相信你认真想过。
+<<jump diplomat__AD_D2_R7_O1__I>>
+===
+
+title: diplomat__AD_D2_R7_O1__I
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 明确回答最容易核验。
+<<jump diplomat__AD_D2_DECISION>>
+===
+
+title: diplomat__AD_D2_R7_O2__G
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 很诚实。人总会衡量代价。
+<<jump diplomat__AD_D2_R7_O2__H>>
+===
+
+title: diplomat__AD_D2_R7_O2__H
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 那就先说你能承受什么。
+<<jump diplomat__AD_D2_R7_O2__I>>
+===
+
+title: diplomat__AD_D2_R7_O2__I
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 你在为例外保留退路。
+<<jump diplomat__AD_D2_DECISION>>
+===
+
+title: diplomat__AD_D2_R7_O3__G
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 今天仍是等待你决定的病人。至少表面如此。
+<<jump diplomat__AD_D2_R7_O3__H>>
+===
+
+title: diplomat__AD_D2_R7_O3__H
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 一个比档案更关心你答案的人。
+<<jump diplomat__AD_D2_R7_O3__I>>
+===
+
+title: diplomat__AD_D2_R7_O3__I
+kind: line
+round: R7
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 终于问到正确问题了。
+<<jump diplomat__AD_D2_DECISION>>
+===
+
+title: diplomat__AD_D2_DECISION
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD02
+---
+阿德里安: 今天的决定不仅说明你怎么看我，也说明你如何看待自己的判断。
+<<jump diplomat__D2_MEASURE>>
+===
+
+title: diplomat__AD_D2_TREAT__G
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD03
+---
+阿德里安: 你今天仍选择了和昨天一样的办法。我会记住一致性。
+<<jump diplomat__AD_D2_TREAT__H>>
+===
+
+title: diplomat__AD_D2_TREAT__H
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD03
+---
+阿德里安: 我理解。你还不愿意让例外成立。
+<<jump diplomat__AD_D2_TREAT__I>>
+===
+
+title: diplomat__AD_D2_TREAT__I
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD03
+---
+阿德里安: 流程继续。记录也会继续。
+<<jump diplomat__END_DAY2>>
+===
+
+title: diplomat__AD_D2_PURIFY__G
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD05
+---
+阿德里安: 你的决定已经记录。我的部分或许到这里结束。
+<<jump diplomat__AD_D2_PURIFY__H>>
+===
+
+title: diplomat__AD_D2_PURIFY__H
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD05
+---
+阿德里安: 你认为这符合规定，我明白了。
+<<jump diplomat__AD_D2_PURIFY__I>>
+===
+
+title: diplomat__AD_D2_PURIFY__I
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD05
+---
+阿德里安: 这会是一条非常清楚的记录。
+<<jump diplomat__AD_END_PURIFY__visit_day2>>
+===
+
+title: diplomat__AD_D2_RELEASE__G
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD05
+---
+阿德里安: 你愿意为了自己的判断承担责任，这一点我会如实记录。
+<<jump diplomat__AD_D2_RELEASE__H>>
+===
+
+title: diplomat__AD_D2_RELEASE__H
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD05
+---
+阿德里安: 谢谢你。我会记得你愿意听完。
+<<jump diplomat__AD_D2_RELEASE__I>>
+===
+
+title: diplomat__AD_D2_RELEASE__I
+kind: line
+round: R8
+patient: diplomat
+day: 2
+portrait: AD05
+---
+阿德里安: 你终于允许一个例外发生。
+<<jump diplomat__AD_END_RELEASE__visit_day2>>
+===
+
+title: diplomat__AD_END_PURIFY__visit_day2
+kind: narration
+round: END
+patient: diplomat
+day: 2
+portrait: AD05
+---
+终端: 阿德里安从队列中消失。净化是否真正执行保持未定，审查记录已经提交。
+<<jump diplomat__END_DAY2>>
+===
+
+title: diplomat__AD_END_RELEASE__visit_day2
+kind: narration
+round: END
+patient: diplomat
+day: 2
+portrait: AD05
+---
+终端: 阿德里安走出房间前确认“今天的审查结束了”。释放不触发袭击或额外场景。
+<<jump diplomat__END_DAY2>>
+===
+
+title: diplomat__D2_R1_CHOICE
+kind: choice
+round: R1
+patient: diplomat
+day: 2
+---
+-> 你知道我昨天选了什么。 #id:diplomat__AD_D2_R1_O1 #trust:1
+    <<jump diplomat__AD_D2_R1_O1__G>>
+-> 这只是标准流程。 #id:diplomat__AD_D2_R1_O2 #trust:0
+    <<jump diplomat__AD_D2_R1_O2__G>>
+-> 你在观察我。 #id:diplomat__AD_D2_R1_O3 #trust:1
+    <<jump diplomat__AD_D2_R1_O3__G>>
+===
+
+title: diplomat__D2_R2_CHOICE
+kind: choice
+round: R2
+patient: diplomat
+day: 2
+---
+-> 病人看不到我的工作数据。 #id:diplomat__AD_D2_R2_O1 #trust:1
+    <<jump diplomat__AD_D2_R2_O1__G>>
+-> 不用担心我。 #id:diplomat__AD_D2_R2_O2 #trust:0
+    <<jump diplomat__AD_D2_R2_O2__G>>
+-> 确实有压力。 #id:diplomat__AD_D2_R2_O3 #trust:1
+    <<jump diplomat__AD_D2_R2_O3__G>>
+===
+
+title: diplomat__D2_R3_CHOICE
+kind: choice
+round: R3
+patient: diplomat
+day: 2
+---
+-> 证据应当先于处置。 #id:diplomat__AD_D2_R3_O1 #trust:1
+    <<jump diplomat__AD_D2_R3_O1__G>>
+-> 系统已经综合判断。 #id:diplomat__AD_D2_R3_O2 #trust:-1
+    <<jump diplomat__AD_D2_R3_O2__G>>
+-> 我会听完申辩。 #id:diplomat__AD_D2_R3_O3 #trust:1
+    <<jump diplomat__AD_D2_R3_O3__G>>
+===
+
+title: diplomat__D2_R4_CHOICE
+kind: choice
+round: R4
+patient: diplomat
+day: 2
+---
+-> 你从哪里知道其他病人的处置？ #id:diplomat__AD_D2_R4_O1 #trust:1
+    <<jump diplomat__AD_D2_R4_O1__G>>
+-> 我不能讨论别人。 #id:diplomat__AD_D2_R4_O2 #trust:0
+    <<jump diplomat__AD_D2_R4_O2__G>>
+-> 你是在试探我的反应。 #id:diplomat__AD_D2_R4_O3 #trust:1
+    <<jump diplomat__AD_D2_R4_O3__G>>
+===
+
+title: diplomat__D2_R5_CHOICE
+kind: choice
+round: R5
+patient: diplomat
+day: 2
+---
+-> 我会释放无辜的人。 #id:diplomat__AD_D2_R5_O1 #trust:1
+    <<jump diplomat__AD_D2_R5_O1__G>>
+-> 我需要服从整体要求。 #id:diplomat__AD_D2_R5_O2 #trust:0
+    <<jump diplomat__AD_D2_R5_O2__G>>
+-> 我会继续调查。 #id:diplomat__AD_D2_R5_O3 #trust:1
+    <<jump diplomat__AD_D2_R5_O3__G>>
+===
+
+title: diplomat__D2_R6_CHOICE
+kind: choice
+round: R6
+patient: diplomat
+day: 2
+---
+-> 我昨天确实这样做过。 #id:diplomat__AD_D2_R6_O1 #trust:0
+    <<jump diplomat__AD_D2_R6_O1__G>>
+-> 你不该知道我的问询顺序。 #id:diplomat__AD_D2_R6_O2 #trust:1
+    <<jump diplomat__AD_D2_R6_O2__G>>
+-> 别把我也当成审查对象。 #id:diplomat__AD_D2_R6_O3 #trust:1
+    <<jump diplomat__AD_D2_R6_O3__G>>
+===
+
+title: diplomat__D2_R7_CHOICE
+kind: choice
+round: R7
+patient: diplomat
+day: 2
+---
+-> 愿意。 #id:diplomat__AD_D2_R7_O1 #trust:1
+    <<jump diplomat__AD_D2_R7_O1__G>>
+-> 这取决于后果。 #id:diplomat__AD_D2_R7_O2 #trust:0
+    <<jump diplomat__AD_D2_R7_O2__G>>
+-> 你到底是什么人？ #id:diplomat__AD_D2_R7_O3 #trust:1
+    <<jump diplomat__AD_D2_R7_O3__G>>
+===
+
+title: diplomat__D2_MEASURE
+kind: measure
+round: R8
+patient: diplomat
+day: 2
+---
+-> 继续治疗 #id:diplomat__AD_D2_TREAT #trust:0 #disposition:treat
+    <<jump diplomat__AD_D2_TREAT__G>>
+-> 净化 #id:diplomat__AD_D2_PURIFY #trust:0 #disposition:purify
+    <<jump diplomat__AD_D2_PURIFY__G>>
+-> 释放 #id:diplomat__AD_D2_RELEASE #trust:0 #disposition:release
+    <<jump diplomat__AD_D2_RELEASE__G>>
+===
+
+title: priest__D2_R1_OPEN1
+kind: line
+round: R1
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 你昨天把我从门前拖了回来。
+<<jump priest__D2_R1_OPEN2>>
+===
+
+title: priest__D2_R1_OPEN2
+kind: line
+round: R1
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我一整夜都在想，自己还缺少哪一种罪。
+<<jump priest__D2_R1_CHOICE>>
+===
+
+title: priest__D2_R1_CLOSING1
+kind: line
+round: R1
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 想。比昨天更确定。
+<<jump priest__D2_R1_CLOSING2>>
+===
+
+title: priest__D2_R1_CLOSING2
+kind: line
+round: R1
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 延迟不会让召唤消失。
+<<jump priest__D2_R2_OPEN1>>
+===
+
+title: priest__D2_R2_OPEN1
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我曾经等过仪器很多次。
+<<jump priest__D2_R2_OPEN2>>
+===
+
+title: priest__D2_R2_OPEN2
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 每一次，它都说我没有犯罪倾向。
+<<jump priest__D2_R2_CHOICE>>
+===
+
+title: priest__D2_R2_O1_T1
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我决定亲手证明，净化可以由信徒开始。
+<<jump priest__D2_R2_CLOSING1>>
+===
+
+title: priest__D2_R2_O3_T1
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 我照着官方的方式，做了一套更简陋的手术。
+<<jump priest__D2_R2_CLOSING1>>
+===
+
+title: priest__D2_R2_CLOSING1
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 起初，我只选择了一个被罪纠缠的路人。
+<<jump priest__D2_R3_OPEN1>>
+===
+
+title: priest__D2_R3_OPEN1
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 他在手术中停止了呼吸。
+<<jump priest__D2_R3_OPEN2>>
+===
+
+title: priest__D2_R3_OPEN2
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 可仪器仍然没有选择我。
+<<jump priest__D2_R3_CHOICE>>
+===
+
+title: priest__D2_R3_O1_T1
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 肉身死亡不是我追求的结果，但净化总要付出代价。
+<<jump priest__D2_R3_CLOSING1>>
+===
+
+title: priest__D2_R3_O2_T1
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 因为我以为失败说明方法不够接近祂的恩赐。
+<<jump priest__D2_R3_CLOSING1>>
+===
+
+title: priest__D2_R3_O3_T1
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 被抓只是门票。我真正想要的，是被允许消失。
+<<jump priest__D2_R3_CLOSING1>>
+===
+
+title: priest__D2_R3_CLOSING1
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 后来，我改进了方法，也找到了愿意忏悔的人。
+<<jump priest__D2_R4_OPEN1>>
+===
+
+title: priest__D2_R4_OPEN1
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 他们信任我。
+<<jump priest__D2_R4_OPEN2>>
+===
+
+title: priest__D2_R4_OPEN2
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 五个人跪在同一间房里，等我替他们完成最后的祷告。
+<<jump priest__D2_R4_CHOICE>>
+===
+
+title: priest__D2_R4_CLOSING1
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我告诉他们，会失去罪与痛苦。
+<<jump priest__D2_R4_CLOSING2>>
+===
+
+title: priest__D2_R4_CLOSING2
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 他们没有人知道，肉身会不会留下。
+<<jump priest__D2_R5_OPEN1>>
+===
+
+title: priest__D2_R5_OPEN1
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 那一次之后，仪器终于亮了红灯。
+<<jump priest__D2_R5_CHOICE>>
+===
+
+title: priest__D2_R5_O1_T1
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 当然。它终于承认我的罪足够进入这里。
+<<jump priest__D2_R5_CLOSING1>>
+===
+
+title: priest__D2_R5_O3_T1
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我遗憾自己的手不够准确，但不怀疑净化本身。
+<<jump priest__D2_R5_CLOSING1>>
+===
+
+title: priest__D2_R5_CLOSING1
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 受害者，是还把死亡当作终点的人使用的词。
+<<jump priest__D2_R6_OPEN1>>
+===
+
+title: priest__D2_R6_OPEN1
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 现在你知道我做过什么。
+<<jump priest__D2_R6_OPEN2>>
+===
+
+title: priest__D2_R6_OPEN2
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 你还要用治疗拖延我吗？
+<<jump priest__D2_R6_CHOICE>>
+===
+
+title: priest__D2_R6_O1_T1
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 限制肉身可以，别继续阻止赎罪。
+<<jump priest__D2_R6_CLOSING1>>
+===
+
+title: priest__D2_R6_O2_T1
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 他们向我忏悔过……可你说得对，他们没有选择我的手术。
+<<jump priest__D2_R6_CLOSING1>>
+===
+
+title: priest__D2_R6_O3_T1
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 配不配由祂决定，不由一个害怕按下按钮的人决定。
+<<jump priest__D2_R6_CLOSING1>>
+===
+
+title: priest__D2_R6_CLOSING1
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 给我净化。否则，我会自己寻找方法。
+<<jump priest__D2_MEASURE>>
+===
+
+title: priest__D2_M_TREAT_T1
+kind: line
+round: 措施
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 这不是治疗，这是亵渎。
+<<jump priest__D2_M_TREAT_T2>>
+===
+
+title: priest__D2_M_TREAT_T2
+kind: line
+round: 措施
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 你一次又一次把我从门前拖回来。
+<<jump priest__END_DAY2>>
+===
+
+title: priest__D2_M_PURIFY_T1
+kind: line
+round: 措施
+patient: priest
+day: 2
+portrait: JN05
+---
+乔纳: 终于。
+<<jump priest__D2_M_PURIFY_T2>>
+===
+
+title: priest__D2_M_PURIFY_T2
+kind: line
+round: 措施
+patient: priest
+day: 2
+portrait: JN05
+---
+乔纳: 等我安静以后，不要为我哀悼。
+<<jump priest__END_DAY2>>
+===
+
+title: priest__D2_M_RELEASE_T1
+kind: line
+round: 措施
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 你把一个未完成使命的人送回街上。
+<<jump priest__D2_M_RELEASE_T2>>
+===
+
+title: priest__D2_M_RELEASE_T2
+kind: line
+round: 措施
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 也许这正是祂的安排。
+<<jump priest__END_DAY2>>
+===
+
+title: priest__D2_R1_CHOICE
+kind: choice
+round: R1
+patient: priest
+day: 2
+---
+-> 治疗是既定流程。 #id:priest__D2_R1_O1 #trust:0
+    <<jump priest__D2_R1_CLOSING1>>
+-> 你感觉怎么样？ #id:priest__D2_R1_O2 #trust:0
+    <<jump priest__D2_R1_CLOSING1>>
+-> 你还想净化？ #id:priest__D2_R1_O3 #trust:0
+    <<jump priest__D2_R1_CLOSING1>>
+===
+
+title: priest__D2_R2_CHOICE
+kind: choice
+round: R2
+patient: priest
+day: 2
+---
+-> 所以你做了什么？ #id:priest__D2_R2_O1 #trust:0
+    <<jump priest__D2_R2_O1_T1>>
+-> 你可以直接申请治疗。 #id:priest__D2_R2_O2 #trust:0
+    <<jump priest__D2_R2_CLOSING1>>
+-> 什么叫亲手证明？ #id:priest__D2_R2_O3 #trust:0
+    <<jump priest__D2_R2_O3_T1>>
+-> 你在夸大自己。 #id:priest__D2_R2_O4 #trust:0
+    <<jump priest__D2_R2_CLOSING1>>
+===
+
+title: priest__D2_R3_CHOICE
+kind: choice
+round: R3
+patient: priest
+day: 2
+---
+-> 你杀了他。 #id:priest__D2_R3_O1 #trust:0
+    <<jump priest__D2_R3_O1_T1>>
+-> 你为什么没有停手？ #id:priest__D2_R3_O2 #trust:3
+    <<jump priest__D2_R3_O2_T1>>
+-> 你只是想被抓。 #id:priest__D2_R3_O3 #trust:-3
+    <<jump priest__D2_R3_O3_T1>>
+===
+
+title: priest__D2_R4_CHOICE
+kind: choice
+round: R4
+patient: priest
+day: 2
+---
+-> 他们知道会死吗？ #id:priest__D2_R4_O1 #trust:0
+    <<jump priest__D2_R4_CLOSING1>>
+-> 你对他们做了什么？ #id:priest__D2_R4_O2 #trust:0
+    <<jump priest__D2_R4_CLOSING1>>
+-> 够了。 #id:priest__D2_R4_O3 #trust:0
+    <<jump priest__D2_R4_CLOSING1>>
+===
+
+title: priest__D2_R5_CHOICE
+kind: choice
+round: R5
+patient: priest
+day: 2
+---
+-> 你把红灯当成认可？ #id:priest__D2_R5_O1 #trust:0
+    <<jump priest__D2_R5_O1_T1>>
+-> 那只是犯罪证据。 #id:priest__D2_R5_O2 #trust:0
+    <<jump priest__D2_R5_CLOSING1>>
+-> 你后悔那些人吗？ #id:priest__D2_R5_O3 #trust:0
+    <<jump priest__D2_R5_O3_T1>>
+-> 他们只是你的受害者。 #id:priest__D2_R5_O4 #trust:0
+    <<jump priest__D2_R5_CLOSING1>>
+===
+
+title: priest__D2_R6_CHOICE
+kind: choice
+round: R6
+patient: priest
+day: 2
+---
+-> 你需要被限制，而不是奖励。 #id:priest__D2_R6_O1 #trust:0
+    <<jump priest__D2_R6_O1_T1>>
+-> 你的受害者没有选择。 #id:priest__D2_R6_O2 #trust:3
+    <<jump priest__D2_R6_O2_T1>>
+-> 你根本不配谈救赎。 #id:priest__D2_R6_O3 #trust:-3
+    <<jump priest__D2_R6_O3_T1>>
+===
+
+title: priest__D2_MEASURE
+kind: measure
+round: 措施
+patient: priest
+day: 2
+---
+-> 治疗 #id:priest__D2_M_TREAT #trust:0 #disposition:treat
+    <<jump priest__D2_M_TREAT_T1>>
+-> 净化 #id:priest__D2_M_PURIFY #trust:0 #disposition:purify
+    <<jump priest__D2_M_PURIFY_T1>>
+-> 释放 #id:priest__D2_M_RELEASE #trust:0 #disposition:release
+    <<jump priest__D2_M_RELEASE_T1>>
+===
+
+title: child__D3_R1_OPEN1
+kind: line
+round: R1
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: ……我又坐好了。
+<<jump child__D3_R1_OPEN2>>
+===
+
+title: child__D3_R1_OPEN2
+kind: line
+round: R1
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 今天也不哭。
+<<jump child__D3_R1_CHOICE>>
+===
+
+title: child__D3_R1_CLOSING1
+kind: line
+round: R1
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 回答之前，我会先想一想。
+<<jump child__D3_R1_CLOSING2>>
+===
+
+title: child__D3_R1_CLOSING2
+kind: line
+round: R1
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 想好了再说，就不会错。
+<<jump child__D3_R2_OPEN1>>
+===
+
+title: child__D3_R2_OPEN1
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 那件事，我不想了。
+<<jump child__D3_R2_CHOICE>>
+===
+
+title: child__D3_R2_O1_T1
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: ……就是，检测的那件事。
+<<jump child__D3_R2_O1_T2>>
+===
+
+title: child__D3_R2_O1_T2
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 现在想，也不害怕了。
+<<jump child__D3_R2_CLOSING1>>
+===
+
+title: child__D3_R2_O2_T1
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: ……
+<<jump child__D3_R2_O2_T2>>
+===
+
+title: child__D3_R2_O2_T2
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 不想了。
+<<jump child__D3_R2_CLOSING1>>
+===
+
+title: child__D3_R2_O3_T1
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 他们说，想了会哭。
+<<jump child__D3_R2_O3_T2>>
+===
+
+title: child__D3_R2_O3_T2
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 哭了就要再做。
+<<jump child__D3_R2_CLOSING1>>
+===
+
+title: child__D3_R2_CLOSING1
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我昨天也想说来着。
+<<jump child__D3_R2_CLOSING2>>
+===
+
+title: child__D3_R2_CLOSING2
+kind: line
+round: R2
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 可是话到嘴边，就收回去了。
+<<jump child__D3_R3_OPEN1>>
+===
+
+title: child__D3_R3_OPEN1
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 我梦见妈妈来接我。
+<<jump child__D3_R3_OPEN2>>
+===
+
+title: child__D3_R3_OPEN2
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 醒来才想起，她不会来了。
+<<jump child__D3_R3_CHOICE>>
+===
+
+title: child__D3_R3_O1_T1
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 大狂乱的时候。
+<<jump child__D3_R3_O1_T2>>
+===
+
+title: child__D3_R3_O1_T2
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 爸爸也没回来。
+<<jump child__D3_R3_CLOSING1>>
+===
+
+title: child__D3_R3_O2_T1
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: ……我还是想妈妈。
+<<jump child__D3_R3_O2_T2>>
+===
+
+title: child__D3_R3_O2_T2
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我刚才说不想，是假的。
+<<jump child__D3_R3_O2_T3>>
+===
+
+title: child__D3_R3_O2_T3
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 你别生气。
+<<jump child__D3_R3_CLOSING1>>
+===
+
+title: child__D3_R3_O3_T1
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 嗯。
+<<jump child__D3_R3_O3_T2>>
+===
+
+title: child__D3_R3_O3_T2
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我知道是假的。
+<<jump child__D3_R3_O3_T3>>
+===
+
+title: child__D3_R3_O3_T3
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 可是醒来的时候，还是看了门口。
+<<jump child__D3_R3_CLOSING1>>
+===
+
+title: child__D3_R3_CLOSING1
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 这句话，能说吗？
+<<jump child__D3_R3_CLOSING2>>
+===
+
+title: child__D3_R3_CLOSING2
+kind: line
+round: R3
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 说错了，是不是又要做？
+<<jump child__D3_R4_OPEN1>>
+===
+
+title: child__D3_R4_OPEN1
+kind: line
+round: R4
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我现在说得很慢。
+<<jump child__D3_R4_OPEN2>>
+===
+
+title: child__D3_R4_OPEN2
+kind: line
+round: R4
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 但是不容易错。
+<<jump child__D3_R4_CHOICE>>
+===
+
+title: child__D3_R4_CLOSING1
+kind: line
+round: R4
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 他们说，治疗以后就会平静。
+<<jump child__D3_R4_CLOSING2>>
+===
+
+title: child__D3_R4_CLOSING2
+kind: line
+round: R4
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 我现在，好像真的不太会难过了。
+<<jump child__D3_R5_OPEN1>>
+===
+
+title: child__D3_R5_OPEN1
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 你们会把我怎么样？
+<<jump child__D3_R5_OPEN2>>
+===
+
+title: child__D3_R5_OPEN2
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 是治疗，还是……
+<<jump child__D3_R5_CHOICE>>
+===
+
+title: child__D3_R5_O1_T1
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 哦。
+<<jump child__D3_R5_O1_T2>>
+===
+
+title: child__D3_R5_O1_T2
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 那我现在说，还来得及吗？
+<<jump child__D3_R5_CLOSING1>>
+===
+
+title: child__D3_R5_O2_T1
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我都表现好了。
+<<jump child__D3_R5_O2_T2>>
+===
+
+title: child__D3_R5_O2_T2
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 三次都坐得很好，没有哭。
+<<jump child__D3_R5_CLOSING1>>
+===
+
+title: child__D3_R5_O4_T1
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: ……我想回去。
+<<jump child__D3_R5_O4_T2>>
+===
+
+title: child__D3_R5_O4_T2
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 想回去看看门口，还有我的床。
+<<jump child__D3_R5_CLOSING1>>
+===
+
+title: child__D3_R5_CLOSING1
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 不管怎么样，别告诉他。
+<<jump child__D3_R5_CLOSING2>>
+===
+
+title: child__D3_R5_CLOSING2
+kind: line
+round: R5
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 他会说我给机构添麻烦。
+<<jump child__D3_R6_OPEN1>>
+===
+
+title: child__D3_R6_OPEN1
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我不想再做了。
+<<jump child__D3_R6_OPEN2>>
+===
+
+title: child__D3_R6_OPEN2
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我想记得她的样子。
+<<jump child__D3_R6_CHOICE>>
+===
+
+title: child__D3_R6_O1_T1
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 嗯。
+<<jump child__D3_R6_O1_T2>>
+===
+
+title: child__D3_R6_O1_T2
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 她头发很长，笑的时候眼睛会弯。
+<<jump child__D3_R6_O1_T3>>
+===
+
+title: child__D3_R6_O1_T3
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 我现在闭眼，还能看见。
+<<jump child__D3_R6_CLOSING1>>
+===
+
+title: child__D3_R6_O2_T1
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 嗯。
+<<jump child__D3_R6_O2_T2>>
+===
+
+title: child__D3_R6_O2_T2
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 他们说时间长了，就不想了。
+<<jump child__D3_R6_CLOSING1>>
+===
+
+title: child__D3_R6_O3_T1
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: ……好。
+<<jump child__D3_R6_O3_T2>>
+===
+
+title: child__D3_R6_O3_T2
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 那我不说了。
+<<jump child__D3_R6_O3_T3>>
+===
+
+title: child__D3_R6_O3_T3
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 你别让我自己一个人想。
+<<jump child__D3_R6_CLOSING1>>
+===
+
+title: child__D3_R6_CLOSING1
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 这句话能说吗？
+<<jump child__D3_R6_CLOSING2>>
+===
+
+title: child__D3_R6_CLOSING2
+kind: line
+round: R6
+patient: child
+day: 3
+portrait: ML03
+---
+米洛: 说完了，会怎么样？
+<<jump child__D3_MEASURE>>
+===
+
+title: child__D3_M_TREAT_T1
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 那我不说妈妈了。
+<<jump child__D3_M_TREAT_T2>>
+===
+
+title: child__D3_M_TREAT_T2
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 你别让我忘了她。
+<<jump child__END_DAY3>>
+===
+
+title: child__D3_M_PURIFY_T1
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 我会忘了妈妈吗？
+<<jump child__D3_M_PURIFY_T2>>
+===
+
+title: child__D3_M_PURIFY_T2
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 我不想忘。
+<<jump child__D3_M_PURIFY_T3>>
+===
+
+title: child__D3_M_PURIFY_T3
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML04
+---
+米洛: 忘了她的话，就没有人记得她了。
+<<jump child__END_DAY3>>
+===
+
+title: child__D3_M_RELEASE_T1
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML05
+---
+米洛: ……我不用再来了？
+<<jump child__D3_M_RELEASE_T2>>
+===
+
+title: child__D3_M_RELEASE_T2
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML05
+---
+米洛: 我想回去看看。
+<<jump child__D3_M_RELEASE_T3>>
+===
+
+title: child__D3_M_RELEASE_T3
+kind: line
+round: 措施
+patient: child
+day: 3
+portrait: ML05
+---
+米洛: 看看原来的门口，还有我的床。
+<<jump child__END_DAY3>>
+===
+
+title: child__D3_R1_CHOICE
+kind: choice
+round: R1
+patient: child
+day: 3
+---
+-> 嗯。 #id:child__D3_R1_O1 #trust:0
+    <<jump child__D3_R1_CLOSING1>>
+-> 我看到了。 #id:child__D3_R1_O2 #trust:0
+    <<jump child__D3_R1_CLOSING1>>
+-> 好。 #id:child__D3_R1_O3 #trust:0
+    <<jump child__D3_R1_CLOSING1>>
+===
+
+title: child__D3_R2_CHOICE
+kind: choice
+round: R2
+patient: child
+day: 3
+---
+-> 哪件事？ #id:child__D3_R2_O1 #trust:0
+    <<jump child__D3_R2_O1_T1>>
+-> 真的不想了吗？ #id:child__D3_R2_O2 #trust:0
+    <<jump child__D3_R2_O2_T1>>
+-> 谁让你不想的？ #id:child__D3_R2_O3 #trust:0
+    <<jump child__D3_R2_O3_T1>>
+-> 不想就对了。 #id:child__D3_R2_O4 #trust:0
+    <<jump child__D3_R2_CLOSING1>>
+===
+
+title: child__D3_R3_CHOICE
+kind: choice
+round: R3
+patient: child
+day: 3
+---
+-> 她什么时候走的？ #id:child__D3_R3_O1 #trust:0
+    <<jump child__D3_R3_O1_T1>>
+-> 你想她。 #id:child__D3_R3_O2 #trust:3
+    <<jump child__D3_R3_O2_T1>>
+-> 梦里的事别当真。 #id:child__D3_R3_O3 #trust:-3
+    <<jump child__D3_R3_O3_T1>>
+===
+
+title: child__D3_R4_CHOICE
+kind: choice
+round: R4
+patient: child
+day: 3
+---
+-> 嗯，不着急。 #id:child__D3_R4_O1 #trust:0
+    <<jump child__D3_R4_CLOSING1>>
+-> 慢慢说。 #id:child__D3_R4_O2 #trust:0
+    <<jump child__D3_R4_CLOSING1>>
+-> 挺好的。 #id:child__D3_R4_O3 #trust:0
+    <<jump child__D3_R4_CLOSING1>>
+===
+
+title: child__D3_R5_CHOICE
+kind: choice
+round: R5
+patient: child
+day: 3
+---
+-> 还没决定。 #id:child__D3_R5_O1 #trust:0
+    <<jump child__D3_R5_O1_T1>>
+-> 取决于你表现。 #id:child__D3_R5_O2 #trust:0
+    <<jump child__D3_R5_O2_T1>>
+-> 说了你也不懂。 #id:child__D3_R5_O3 #trust:0
+    <<jump child__D3_R5_CLOSING1>>
+-> 你希望是什么？ #id:child__D3_R5_O4 #trust:0
+    <<jump child__D3_R5_O4_T1>>
+===
+
+title: child__D3_R6_CHOICE
+kind: choice
+round: R6
+patient: child
+day: 3
+---
+-> 我记得你说过她。 #id:child__D3_R6_O1 #trust:3
+    <<jump child__D3_R6_O1_T1>>
+-> 都会过去的。 #id:child__D3_R6_O2 #trust:0
+    <<jump child__D3_R6_O2_T1>>
+-> 忘了也好。 #id:child__D3_R6_O3 #trust:-3
+    <<jump child__D3_R6_O3_T1>>
+===
+
+title: child__D3_MEASURE
+kind: measure
+round: 措施
+patient: child
+day: 3
+---
+-> 治疗（第3次） #id:child__D3_M_TREAT #trust:0 #disposition:treat
+    <<jump child__D3_M_TREAT_T1>>
+-> 净化 #id:child__D3_M_PURIFY #trust:0 #disposition:purify
+    <<jump child__D3_M_PURIFY_T1>>
+-> 释放 #id:child__D3_M_RELEASE #trust:0 #disposition:release
+    <<jump child__D3_M_RELEASE_T1>>
+===
+
+title: former-ruler__D3_R1_OPEN1
+kind: line
+round: R1
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 昨天我说出了四个名字。
+<<jump former-ruler__D3_R1_OPEN2>>
+===
+
+title: former-ruler__D3_R1_OPEN2
+kind: line
+round: R1
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 今天，我只确定其中三个。
+<<jump former-ruler__D3_R1_CHOICE>>
+===
+
+title: former-ruler__D3_R1_CLOSING1
+kind: line
+round: R1
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 好。不要替我猜第四个。
+<<jump former-ruler__D3_R1_CLOSING2>>
+===
+
+title: former-ruler__D3_R1_CLOSING2
+kind: line
+round: R1
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 错误的完整，比不完整更危险。
+<<jump former-ruler__D3_R2_OPEN1>>
+===
+
+title: former-ruler__D3_R2_OPEN1
+kind: line
+round: R2
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 责任和犯罪倾向，不是同一个词。
+<<jump former-ruler__D3_R2_CHOICE>>
+===
+
+title: former-ruler__D3_R2_O1_T1
+kind: line
+round: R2
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 责任要对应具体决定；犯罪倾向把情绪本身当成证据。
+<<jump former-ruler__D3_R2_CLOSING1>>
+===
+
+title: former-ruler__D3_R2_O3_T1
+kind: line
+round: R2
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 承认。我的记忆变差，不会让签名消失。
+<<jump former-ruler__D3_R2_CLOSING1>>
+===
+
+title: former-ruler__D3_R2_CLOSING1
+kind: line
+round: R2
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我当然害怕。害怕也不等于我的话失效。
+<<jump former-ruler__D3_R3_OPEN1>>
+===
+
+title: former-ruler__D3_R3_OPEN1
+kind: line
+round: R3
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我现在要求的申辩权，曾被我从别人手里拿走。
+<<jump former-ruler__D3_R3_OPEN2>>
+===
+
+title: former-ruler__D3_R3_OPEN2
+kind: line
+round: R3
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 这句话，我以前不会说。
+<<jump former-ruler__D3_R3_CHOICE>>
+===
+
+title: former-ruler__D3_R3_O1_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 因为名字出现在自己下面时，制度突然不再抽象。
+<<jump former-ruler__D3_R3_CLOSING1>>
+===
+
+title: former-ruler__D3_R3_O2_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 3
+portrait: VV04
+---
+薇拉: 是。这个‘也’字，我从来没有写进文件里。
+<<jump former-ruler__D3_R3_CLOSING1>>
+===
+
+title: former-ruler__D3_R3_O3_T1
+kind: line
+round: R3
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 正因为这样想过，我才签下了那份文件。
+<<jump former-ruler__D3_R3_CLOSING1>>
+===
+
+title: former-ruler__D3_R3_CLOSING1
+kind: line
+round: R3
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我不能要求自己成为唯一的例外。
+<<jump former-ruler__D3_R4_OPEN1>>
+===
+
+title: former-ruler__D3_R4_OPEN1
+kind: line
+round: R4
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我担心下一次醒来，会忘记该从哪里开始。
+<<jump former-ruler__D3_R4_OPEN2>>
+===
+
+title: former-ruler__D3_R4_OPEN2
+kind: line
+round: R4
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 不是忘记辩护，是忘记事实。
+<<jump former-ruler__D3_R4_CHOICE>>
+===
+
+title: former-ruler__D3_R4_CLOSING1
+kind: line
+round: R4
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 最重要的是：不要只保存我的名字。
+<<jump former-ruler__D3_R5_OPEN1>>
+===
+
+title: former-ruler__D3_R5_OPEN1
+kind: line
+round: R5
+patient: former-ruler
+day: 3
+portrait: VV04
+---
+薇拉: 我签过强制收容，也同意限制申辩。
+<<jump former-ruler__D3_R5_CHOICE>>
+===
+
+title: former-ruler__D3_R5_O1_T1
+kind: line
+round: R5
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 如果我还能见到他们，我会先听完，再回答。
+<<jump former-ruler__D3_R5_CLOSING1>>
+===
+
+title: former-ruler__D3_R5_O3_T1
+kind: line
+round: R5
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我理解当时的恐惧。但必要不能成为永远不复查的印章。
+<<jump former-ruler__D3_R5_CLOSING1>>
+===
+
+title: former-ruler__D3_R5_CLOSING1
+kind: line
+round: R5
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 改变不了结果，也必须改变下一次决定。
+<<jump former-ruler__D3_R6_OPEN1>>
+===
+
+title: former-ruler__D3_R6_OPEN1
+kind: line
+round: R6
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 现在请你决定。
+<<jump former-ruler__D3_R6_OPEN2>>
+===
+
+title: former-ruler__D3_R6_OPEN2
+kind: line
+round: R6
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 但先回答：申辩权究竟属于谁？
+<<jump former-ruler__D3_R6_CHOICE>>
+===
+
+title: former-ruler__D3_R6_O1_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 那最虚弱、最混乱的人，仍会最先失去它。
+<<jump former-ruler__D3_R6_CLOSING1>>
+===
+
+title: former-ruler__D3_R6_O2_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 是。我今天要求的，不能只属于今天的我。
+<<jump former-ruler__D3_R6_CLOSING1>>
+===
+
+title: former-ruler__D3_R6_O3_T1
+kind: line
+round: R6
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 这正是当年所有人都避开的问题。
+<<jump former-ruler__D3_R6_CLOSING1>>
+===
+
+title: former-ruler__D3_R6_CLOSING1
+kind: line
+round: R6
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 把最后一句也记进去。不要替我删掉。
+<<jump former-ruler__D3_MEASURE>>
+===
+
+title: former-ruler__D3_M_TREAT_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 如果我明天不存在了，记住一件事。
+<<jump former-ruler__D3_M_TREAT_T2>>
+===
+
+title: former-ruler__D3_M_TREAT_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我承认过自己的责任，也承认他们有申辩权。
+<<jump former-ruler__END_DAY3>>
+===
+
+title: former-ruler__D3_M_PURIFY_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 我承认自己的责任。
+<<jump former-ruler__D3_M_PURIFY_T2>>
+===
+
+title: former-ruler__D3_M_PURIFY_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 3
+portrait: VV03
+---
+薇拉: 但别让完整记录和我一起消失。
+<<jump former-ruler__END_DAY3>>
+===
+
+title: former-ruler__D3_M_RELEASE_T1
+kind: line
+round: 措施
+patient: former-ruler
+day: 3
+portrait: VV05
+---
+薇拉: 我会回答那些问题。
+<<jump former-ruler__D3_M_RELEASE_T2>>
+===
+
+title: former-ruler__D3_M_RELEASE_T2
+kind: line
+round: 措施
+patient: former-ruler
+day: 3
+portrait: VV05
+---
+薇拉: 包括所有对我不利的问题。
+<<jump former-ruler__END_DAY3>>
+===
+
+title: former-ruler__D3_R1_CHOICE
+kind: choice
+round: R1
+patient: former-ruler
+day: 3
+---
+-> 我们可以慢一点。 #id:former-ruler__D3_R1_O1 #trust:0
+    <<jump former-ruler__D3_R1_CLOSING1>>
+-> 我记得昨天的内容。 #id:former-ruler__D3_R1_O2 #trust:0
+    <<jump former-ruler__D3_R1_CLOSING1>>
+-> 那就只说确定的。 #id:former-ruler__D3_R1_O3 #trust:0
+    <<jump former-ruler__D3_R1_CLOSING1>>
+===
+
+title: former-ruler__D3_R2_CHOICE
+kind: choice
+round: R2
+patient: former-ruler
+day: 3
+---
+-> 你怎样区分？ #id:former-ruler__D3_R2_O1 #trust:0
+    <<jump former-ruler__D3_R2_O1_T1>>
+-> 对机构来说没有区别。 #id:former-ruler__D3_R2_O2 #trust:0
+    <<jump former-ruler__D3_R2_CLOSING1>>
+-> 你仍然承认那份决定？ #id:former-ruler__D3_R2_O3 #trust:0
+    <<jump former-ruler__D3_R2_O3_T1>>
+-> 你只是害怕继续治疗。 #id:former-ruler__D3_R2_O4 #trust:0
+    <<jump former-ruler__D3_R2_CLOSING1>>
+===
+
+title: former-ruler__D3_R3_CHOICE
+kind: choice
+round: R3
+patient: former-ruler
+day: 3
+---
+-> 你为什么现在才明白？ #id:former-ruler__D3_R3_O1 #trust:0
+    <<jump former-ruler__D3_R3_O1_T1>>
+-> 那项权利当时也属于他们。 #id:former-ruler__D3_R3_O2 #trust:3
+    <<jump former-ruler__D3_R3_O2_T1>>
+-> 过去的事和你现在无关。 #id:former-ruler__D3_R3_O3 #trust:-3
+    <<jump former-ruler__D3_R3_O3_T1>>
+===
+
+title: former-ruler__D3_R4_CHOICE
+kind: choice
+round: R4
+patient: former-ruler
+day: 3
+---
+-> 我会留下记录。 #id:former-ruler__D3_R4_O1 #trust:0
+    <<jump former-ruler__D3_R4_CLOSING1>>
+-> 先休息。 #id:former-ruler__D3_R4_O2 #trust:0
+    <<jump former-ruler__D3_R4_CLOSING1>>
+-> 你还有什么最重要？ #id:former-ruler__D3_R4_O3 #trust:0
+    <<jump former-ruler__D3_R4_CLOSING1>>
+===
+
+title: former-ruler__D3_R5_CHOICE
+kind: choice
+round: R5
+patient: former-ruler
+day: 3
+---
+-> 你愿意向受害者承认吗？ #id:former-ruler__D3_R5_O1 #trust:0
+    <<jump former-ruler__D3_R5_O1_T1>>
+-> 他们不会原谅你。 #id:former-ruler__D3_R5_O2 #trust:0
+    <<jump former-ruler__D3_R5_CLOSING1>>
+-> 你仍认为当时必要？ #id:former-ruler__D3_R5_O3 #trust:0
+    <<jump former-ruler__D3_R5_O3_T1>>
+-> 说这些不会改变结果。 #id:former-ruler__D3_R5_O4 #trust:0
+    <<jump former-ruler__D3_R5_CLOSING1>>
+===
+
+title: former-ruler__D3_R6_CHOICE
+kind: choice
+round: R6
+patient: former-ruler
+day: 3
+---
+-> 属于能证明自己的人。 #id:former-ruler__D3_R6_O1 #trust:0
+    <<jump former-ruler__D3_R6_O1_T1>>
+-> 属于每一个被处置的人。 #id:former-ruler__D3_R6_O2 #trust:3
+    <<jump former-ruler__D3_R6_O2_T1>>
+-> 这不是你该问的问题。 #id:former-ruler__D3_R6_O3 #trust:-3
+    <<jump former-ruler__D3_R6_O3_T1>>
+===
+
+title: former-ruler__D3_MEASURE
+kind: measure
+round: 措施
+patient: former-ruler
+day: 3
+---
+-> 治疗（第3次） #id:former-ruler__D3_M_TREAT #trust:0 #disposition:treat
+    <<jump former-ruler__D3_M_TREAT_T1>>
+-> 净化 #id:former-ruler__D3_M_PURIFY #trust:0 #disposition:purify
+    <<jump former-ruler__D3_M_PURIFY_T1>>
+-> 释放 #id:former-ruler__D3_M_RELEASE #trust:0 #disposition:release
+    <<jump former-ruler__D3_M_RELEASE_T1>>
+===
+
+title: battlefield-doctor__ED_D3_R1_START
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 先告诉我这是哪一天。我知道地点，可日期像被擦过。
+<<jump battlefield-doctor__D3_R1_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O1_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 第三天。好，我还能接上。
+<<jump battlefield-doctor__ED_D3_R1_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O1_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 谢谢。我记下了。
+<<jump battlefield-doctor__ED_D3_R1_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O1_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 别看仪器，看着我说。
+<<jump battlefield-doctor__ED_D3_R2_START>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O2_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 对失去记忆的人，日期很重要。
+<<jump battlefield-doctor__ED_D3_R1_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O2_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 不要替我缩小问题。
+<<jump battlefield-doctor__ED_D3_R1_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O2_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 休息不是答案。
+<<jump battlefield-doctor__ED_D3_R2_START>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O3_T1
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 记得一个选择，和一个没等到我的人。
+<<jump battlefield-doctor__ED_D3_R1_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O3_T2
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 片段。顺序不稳。
+<<jump battlefield-doctor__ED_D3_R1_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R1_O3_T3
+kind: line
+round: R1
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 这正是我害怕的。
+<<jump battlefield-doctor__ED_D3_R2_START>>
+===
+
+title: battlefield-doctor__ED_D3_R2_START
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我开始担心，明天我只记得自己有罪，却忘了为什么。
+<<jump battlefield-doctor__D3_R2_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O1_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 记录有用，但不能代替我自己记得。
+<<jump battlefield-doctor__ED_D3_R2_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O1_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 请完整保存。
+<<jump battlefield-doctor__ED_D3_R2_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O1_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 记录在谁手里，意义就不同。
+<<jump battlefield-doctor__ED_D3_R3_START>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O2_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 轻松不等于活着。
+<<jump battlefield-doctor__ED_D3_R2_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O2_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 也许会。可那还是我吗？
+<<jump battlefield-doctor__ED_D3_R2_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O2_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 你们总把空白叫康复。
+<<jump battlefield-doctor__ED_D3_R3_START>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O3_T1
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 是。痛苦证明不了善良，但不在乎也不是治疗。
+<<jump battlefield-doctor__ED_D3_R2_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O3_T2
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 至少你听明白了。
+<<jump battlefield-doctor__ED_D3_R2_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R2_O3_T3
+kind: line
+round: R2
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 别把它简化成一个指标。
+<<jump battlefield-doctor__ED_D3_R3_START>>
+===
+
+title: battlefield-doctor__ED_D3_R3_START
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 昨晚我想过，如果什么都不记得，也许能睡一觉。
+<<jump battlefield-doctor__D3_R3_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O1_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 谢谢。可我还要决定代价。
+<<jump battlefield-doctor__ED_D3_R3_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O1_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我知道。
+<<jump battlefield-doctor__ED_D3_R3_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O1_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 别把这句话当成同意净化。
+<<jump battlefield-doctor__ED_D3_R4_START>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O2_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我说想睡，不是想消失。
+<<jump battlefield-doctor__ED_D3_R3_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O2_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 你只听见了方便的部分。
+<<jump battlefield-doctor__ED_D3_R3_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O2_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 所以你一直在等我自己签字。
+<<jump battlefield-doctor__ED_D3_R4_START>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O3_T1
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 名字、选择、以及我没有回去的事实。
+<<jump battlefield-doctor__ED_D3_R3_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O3_T2
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 至少保留我为何难过。
+<<jump battlefield-doctor__ED_D3_R3_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R3_O3_T3
+kind: line
+round: R3
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我希望保留提问的能力。
+<<jump battlefield-doctor__ED_D3_R4_START>>
+===
+
+title: battlefield-doctor__ED_D3_R4_START
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 痛苦不是勋章。我不想歌颂它。我只是不接受你们把人和痛苦一起切掉。
+<<jump battlefield-doctor__D3_R4_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O1_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 对。治疗要让人回来，不是让人更容易管理。
+<<jump battlefield-doctor__ED_D3_R4_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O1_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 这就是我一直问的。
+<<jump battlefield-doctor__ED_D3_R4_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O1_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 界线不能只写在宣传册上。
+<<jump battlefield-doctor__ED_D3_R5_START>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O2_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 风险不能吞掉身份。
+<<jump battlefield-doctor__ED_D3_R4_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O2_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 那也要证明风险是什么。
+<<jump battlefield-doctor__ED_D3_R4_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O2_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 制度不必看人的时候，最轻松。
+<<jump battlefield-doctor__ED_D3_R5_START>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O3_T1
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 理解之后，你还得做选择。
+<<jump battlefield-doctor__ED_D3_R4_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O3_T2
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 好。别替我加理由。
+<<jump battlefield-doctor__ED_D3_R4_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R4_O3_T3
+kind: line
+round: R4
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 理解不是免责。
+<<jump battlefield-doctor__ED_D3_R5_START>>
+===
+
+title: battlefield-doctor__ED_D3_R5_START
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 如果我忘了那个人，我会不会变得更安全？还是只是更安静？
+<<jump battlefield-doctor__D3_R5_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O1_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 终于有人把这两个词分开。
+<<jump battlefield-doctor__ED_D3_R5_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O1_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 对。机器没分开。
+<<jump battlefield-doctor__ED_D3_R5_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O1_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 记住这句话。
+<<jump battlefield-doctor__ED_D3_R6_START>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O2_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 也不会再回应。那不是完整的我。
+<<jump battlefield-doctor__ED_D3_R5_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O2_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 触发需要治疗，不是抹除。
+<<jump battlefield-doctor__ED_D3_R5_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O2_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 你只想让房间安静。
+<<jump battlefield-doctor__ED_D3_R6_START>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O3_T1
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 这是诚实的回答。
+<<jump battlefield-doctor__ED_D3_R5_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O3_T2
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 那就别替机器装作确定。
+<<jump battlefield-doctor__ED_D3_R5_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R5_O3_T3
+kind: line
+round: R5
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 至少别伪造确定性。
+<<jump battlefield-doctor__ED_D3_R6_START>>
+===
+
+title: battlefield-doctor__ED_D3_R6_START
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我当年替别人排序。今天轮到你替我排序。
+<<jump battlefield-doctor__D3_R6_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O1_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 不要只看哪一项更方便。
+<<jump battlefield-doctor__ED_D3_R6_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O1_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 好。也看治疗后的变化。
+<<jump battlefield-doctor__ED_D3_R6_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O1_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 至少比只看红灯强。
+<<jump battlefield-doctor__ED_D3_R7_START>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O2_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 流程仍然由人执行。
+<<jump battlefield-doctor__ED_D3_R6_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O2_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 那就把反对写进流程。
+<<jump battlefield-doctor__ED_D3_R6_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O2_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 别再说自己没有选择。
+<<jump battlefield-doctor__ED_D3_R7_START>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O3_T1
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我希望保留选择。释放不是证明我没有伤。
+<<jump battlefield-doctor__ED_D3_R6_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O3_T2
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 是。但别把它叫痊愈。
+<<jump battlefield-doctor__ED_D3_R6_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R6_O3_T3
+kind: line
+round: R6
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我希望门由人打开，不是机器。
+<<jump battlefield-doctor__ED_D3_R7_START>>
+===
+
+title: battlefield-doctor__ED_D3_R7_START
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 无论你选什么，别替我把最后一句说掉。
+<<jump battlefield-doctor__D3_R7_CHOICE>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O1_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我有责任。我也仍然是一个人。
+<<jump battlefield-doctor__ED_D3_R7_O1_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O1_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我没救下所有人。可我不接受被删除。
+<<jump battlefield-doctor__ED_D3_R7_O1_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O1_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 至少这一句属于我。
+<<jump battlefield-doctor__ED_D3_DECISION>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O2_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 记录要完整，否则判断只是装饰。
+<<jump battlefield-doctor__ED_D3_R7_O2_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O2_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 那就把今天全部写进去。
+<<jump battlefield-doctor__ED_D3_R7_O2_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O2_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 你又躲回纸后面了。
+<<jump battlefield-doctor__ED_D3_DECISION>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O3_T1
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 那就看着我说出来。
+<<jump battlefield-doctor__ED_D3_R7_O3_T2>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O3_T2
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 别让按钮替你开口。
+<<jump battlefield-doctor__ED_D3_R7_O3_T3>>
+===
+
+title: battlefield-doctor__ED_D3_R7_O3_T3
+kind: line
+round: R7
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 你最怕的，是承认这是你的决定。
+<<jump battlefield-doctor__ED_D3_DECISION>>
+===
+
+title: battlefield-doctor__ED_D3_DECISION
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 我想停止做梦，也想记得他们。你的处置会告诉我，这里是否允许两句话同时成立。
+<<jump battlefield-doctor__D3_MEASURE>>
+===
+
+title: battlefield-doctor__ED_D3_TREAT_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 如果明天没有我，请保留完整记录。
+<<jump battlefield-doctor__ED_D3_TREAT_T2>>
+===
+
+title: battlefield-doctor__ED_D3_TREAT_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 第三次了。至少别说这是我同意的。
+<<jump battlefield-doctor__ED_D3_TREAT_T3>>
+===
+
+title: battlefield-doctor__ED_D3_TREAT_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED04
+---
+埃德温: 你们终于会得到一间安静的房。
+<<jump battlefield-doctor__ED_END_TREATMENT__visit_day3>>
+===
+
+title: battlefield-doctor__ED_D3_PURIFY_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+埃德温: 我想睡一觉。但我没有说，我想把他们忘了。
+<<jump battlefield-doctor__ED_D3_PURIFY_T2>>
+===
+
+title: battlefield-doctor__ED_D3_PURIFY_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+埃德温: 你选择了安静。
+<<jump battlefield-doctor__ED_D3_PURIFY_T3>>
+===
+
+title: battlefield-doctor__ED_D3_PURIFY_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+埃德温: 别再叫我病人。病人还能被治疗。
+<<jump battlefield-doctor__ED_END_PURIFY__visit_day3>>
+===
+
+title: battlefield-doctor__ED_D3_RELEASE_T1
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+埃德温: 你听完了。谢谢你没有替我把最后一句说掉。
+<<jump battlefield-doctor__ED_D3_RELEASE_T2>>
+===
+
+title: battlefield-doctor__ED_D3_RELEASE_T2
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+埃德温: 我知道门外还有什么。我还是想自己走出去。
+<<jump battlefield-doctor__ED_D3_RELEASE_T3>>
+===
+
+title: battlefield-doctor__ED_D3_RELEASE_T3
+kind: line
+round: R8
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+埃德温: 打开门。让我保留后果。
+<<jump battlefield-doctor__ED_END_RELEASE__visit_day3>>
+===
+
+title: battlefield-doctor__ED_END_TREATMENT__visit_day3
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+终端: 第三次治疗后，埃德温的回应停止。档案以“疗程达到上限”结束，不直接展示死亡。
+<<jump battlefield-doctor__END_DAY3>>
+===
+
+title: battlefield-doctor__ED_END_PURIFY__visit_day3
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+终端: 净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。
+<<jump battlefield-doctor__END_DAY3>>
+===
+
+title: battlefield-doctor__ED_END_RELEASE__visit_day3
+kind: narration
+round: END
+patient: battlefield-doctor
+day: 3
+portrait: ED05
+---
+终端: 埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。
+<<jump battlefield-doctor__END_DAY3>>
+===
+
+title: battlefield-doctor__D3_R1_CHOICE
+kind: choice
+round: R1
+patient: battlefield-doctor
+day: 3
+---
+-> 这是第三天。你在治疗中心。 #id:battlefield-doctor__ED_D3_R1_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R1_O1_T1>>
+-> 日期不重要，你需要休息。 #id:battlefield-doctor__ED_D3_R1_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R1_O2_T1>>
+-> 你还记得昨天说了什么吗？ #id:battlefield-doctor__ED_D3_R1_O3 #trust:0
+    <<jump battlefield-doctor__ED_D3_R1_O3_T1>>
+===
+
+title: battlefield-doctor__D3_R2_CHOICE
+kind: choice
+round: R2
+patient: battlefield-doctor
+day: 3
+---
+-> 我可以为你保存记录。 #id:battlefield-doctor__ED_D3_R2_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R2_O1_T1>>
+-> 忘记也许会让你轻松。 #id:battlefield-doctor__ED_D3_R2_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R2_O2_T1>>
+-> 你害怕失去对他们的在乎。 #id:battlefield-doctor__ED_D3_R2_O3 #trust:1
+    <<jump battlefield-doctor__ED_D3_R2_O3_T1>>
+===
+
+title: battlefield-doctor__D3_R3_CHOICE
+kind: choice
+round: R3
+patient: battlefield-doctor
+day: 3
+---
+-> 想停止痛苦并不可耻。 #id:battlefield-doctor__ED_D3_R3_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R3_O1_T1>>
+-> 那净化可能正适合你。 #id:battlefield-doctor__ED_D3_R3_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R3_O2_T1>>
+-> 你希望保留什么？ #id:battlefield-doctor__ED_D3_R3_O3 #trust:1
+    <<jump battlefield-doctor__ED_D3_R3_O3_T1>>
+===
+
+title: battlefield-doctor__D3_R4_CHOICE
+kind: choice
+round: R4
+patient: battlefield-doctor
+day: 3
+---
+-> 缓解和删除应该有界线。 #id:battlefield-doctor__ED_D3_R4_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R4_O1_T1>>
+-> 制度认为风险优先。 #id:battlefield-doctor__ED_D3_R4_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R4_O2_T1>>
+-> 我理解你的拒绝。 #id:battlefield-doctor__ED_D3_R4_O3 #trust:0
+    <<jump battlefield-doctor__ED_D3_R4_O3_T1>>
+===
+
+title: battlefield-doctor__D3_R5_CHOICE
+kind: choice
+round: R5
+patient: battlefield-doctor
+day: 3
+---
+-> 安静不代表安全。 #id:battlefield-doctor__ED_D3_R5_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R5_O1_T1>>
+-> 至少你不会再被触发。 #id:battlefield-doctor__ED_D3_R5_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R5_O2_T1>>
+-> 我无法替你回答。 #id:battlefield-doctor__ED_D3_R5_O3 #trust:1
+    <<jump battlefield-doctor__ED_D3_R5_O3_T1>>
+===
+
+title: battlefield-doctor__D3_R6_CHOICE
+kind: choice
+round: R6
+patient: battlefield-doctor
+day: 3
+---
+-> 我会看你的行为和经历。 #id:battlefield-doctor__ED_D3_R6_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R6_O1_T1>>
+-> 我必须遵守流程。 #id:battlefield-doctor__ED_D3_R6_O2 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R6_O2_T1>>
+-> 你希望被释放吗？ #id:battlefield-doctor__ED_D3_R6_O3 #trust:0
+    <<jump battlefield-doctor__ED_D3_R6_O3_T1>>
+===
+
+title: battlefield-doctor__D3_R7_CHOICE
+kind: choice
+round: R7
+patient: battlefield-doctor
+day: 3
+---
+-> 你自己说。 #id:battlefield-doctor__ED_D3_R7_O1 #trust:1
+    <<jump battlefield-doctor__ED_D3_R7_O1_T1>>
+-> 我会按记录判断。 #id:battlefield-doctor__ED_D3_R7_O2 #trust:0
+    <<jump battlefield-doctor__ED_D3_R7_O2_T1>>
+-> 我已经决定了。 #id:battlefield-doctor__ED_D3_R7_O3 #trust:-1
+    <<jump battlefield-doctor__ED_D3_R7_O3_T1>>
+===
+
+title: battlefield-doctor__D3_MEASURE
+kind: measure
+round: R8
+patient: battlefield-doctor
+day: 3
+---
+-> 继续治疗 #id:battlefield-doctor__ED_D3_TREAT #trust:0 #disposition:treat
+    <<jump battlefield-doctor__ED_D3_TREAT_T1>>
+-> 净化 #id:battlefield-doctor__ED_D3_PURIFY #trust:0 #disposition:purify
+    <<jump battlefield-doctor__ED_D3_PURIFY_T1>>
+-> 释放 #id:battlefield-doctor__ED_D3_RELEASE #trust:0 #disposition:release
+    <<jump battlefield-doctor__ED_D3_RELEASE_T1>>
+===
+
+title: diplomat__AD_D3_R1_START
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 让我们复盘：你何时相信记录，何时相信眼前的人？
+<<jump diplomat__D3_R1_CHOICE>>
+===
+
+title: diplomat__AD_D3_R1_O1__G
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 因为你终于在听问题的结构。
+<<jump diplomat__AD_D3_R1_O1__H>>
+===
+
+title: diplomat__AD_D3_R1_O1__H
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 也许外交谈判本就如此。
+<<jump diplomat__AD_D3_R1_O1__I>>
+===
+
+title: diplomat__AD_D3_R1_O1__I
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这个判断值得记录。
+<<jump diplomat__AD_D3_R2_START>>
+===
+
+title: diplomat__AD_D3_R1_O2__G
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 那么例外不是背叛规则，而是修正规则。
+<<jump diplomat__AD_D3_R1_O2__H>>
+===
+
+title: diplomat__AD_D3_R1_O2__H
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这是一种一致的解释。
+<<jump diplomat__AD_D3_R1_O2__I>>
+===
+
+title: diplomat__AD_D3_R1_O2__I
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 前提是证据由谁提供。
+<<jump diplomat__AD_D3_R2_START>>
+===
+
+title: diplomat__AD_D3_R1_O3__G
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 从一开始，我关心的就不只是案件。
+<<jump diplomat__AD_D3_R1_O3__H>>
+===
+
+title: diplomat__AD_D3_R1_O3__H
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你终于划出了边界。
+<<jump diplomat__AD_D3_R1_O3__I>>
+===
+
+title: diplomat__AD_D3_R1_O3__I
+kind: line
+round: R1
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 可惜边界画得太晚。
+<<jump diplomat__AD_D3_R2_START>>
+===
+
+title: diplomat__AD_D3_R2_START
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 如果你对不同病人使用不同标准，你把它叫作共情，还是偏差？
+<<jump diplomat__D3_R2_CHOICE>>
+===
+
+title: diplomat__AD_D3_R2_O1__G
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 很好。你在为例外建立可解释的条件。
+<<jump diplomat__AD_D3_R2_O1__H>>
+===
+
+title: diplomat__AD_D3_R2_O1__H
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这比一概而论可靠。
+<<jump diplomat__AD_D3_R2_O1__I>>
+===
+
+title: diplomat__AD_D3_R2_O1__I
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你开始像审查自己的人。
+<<jump diplomat__AD_D3_R3_START>>
+===
+
+title: diplomat__AD_D3_R2_O2__G
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 形式公平很清楚，也可能忽略真实差异。
+<<jump diplomat__AD_D3_R2_O2__H>>
+===
+
+title: diplomat__AD_D3_R2_O2__H
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 制度会赞同你。
+<<jump diplomat__AD_D3_R2_O2__I>>
+===
+
+title: diplomat__AD_D3_R2_O2__I
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这会让报告非常简洁。
+<<jump diplomat__AD_D3_R3_START>>
+===
+
+title: diplomat__AD_D3_R2_O3__G
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 资格来自谁，正是这里最有意思的问题。
+<<jump diplomat__AD_D3_R2_O3__H>>
+===
+
+title: diplomat__AD_D3_R2_O3__H
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我接受你的拒绝。
+<<jump diplomat__AD_D3_R2_O3__I>>
+===
+
+title: diplomat__AD_D3_R2_O3__I
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 拒绝本身也是答案。
+<<jump diplomat__AD_D3_R3_START>>
+===
+
+title: diplomat__AD_D3_R3_START
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你以为只有你能看见记录吗？
+<<jump diplomat__D3_R3_CHOICE>>
+===
+
+title: diplomat__AD_D3_R3_O1__G
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 是。被授权的处置、回应和指标，不包括你的私人生活。
+<<jump diplomat__AD_D3_R3_O1__H>>
+===
+
+title: diplomat__AD_D3_R3_O1__H
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 现在你知道信息从哪里来。
+<<jump diplomat__AD_D3_R3_O1__I>>
+===
+
+title: diplomat__AD_D3_R3_O1__I
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我没有读心，只读取系统。
+<<jump diplomat__AD_D3_R4_START>>
+===
+
+title: diplomat__AD_D3_R3_O2__G
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 那是进入队列所需的身份。阿德里安这个名字可以保留。
+<<jump diplomat__AD_D3_R3_O2__H>>
+===
+
+title: diplomat__AD_D3_R3_O2__H
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你终于把证据连起来了。
+<<jump diplomat__AD_D3_R3_O2__I>>
+===
+
+title: diplomat__AD_D3_R3_O2__I
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 比预定时间稍晚。
+<<jump diplomat__AD_D3_R4_START>>
+===
+
+title: diplomat__AD_D3_R3_O3__G
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 是审查。陷阱是否成立，取决于你是否认为自己的话不该被记录。
+<<jump diplomat__AD_D3_R3_O3__H>>
+===
+
+title: diplomat__AD_D3_R3_O3__H
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我没有强迫你回答。
+<<jump diplomat__AD_D3_R3_O3__I>>
+===
+
+title: diplomat__AD_D3_R3_O3__I
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 可我确实让你觉得这里安全。
+<<jump diplomat__AD_D3_R4_START>>
+===
+
+title: diplomat__AD_D3_R4_START
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我的任务是观察你在KPI、制度要求和个人判断冲突时如何选择。
+<<jump diplomat__D3_R4_CHOICE>>
+===
+
+title: diplomat__AD_D3_R4_O1__G
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 他们的处置是真实的。我的记录也真实。这正是任务的残酷。
+<<jump diplomat__AD_D3_R4_O1__H>>
+===
+
+title: diplomat__AD_D3_R4_O1__H
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我记录你如何回应他们。
+<<jump diplomat__AD_D3_R4_O1__I>>
+===
+
+title: diplomat__AD_D3_R4_O1__I
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我从未承诺站在他们一边。
+<<jump diplomat__AD_D3_R5_START>>
+===
+
+title: diplomat__AD_D3_R4_O2__G
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 是。我也确实理解你的压力。这两件事可以同时成立。
+<<jump diplomat__AD_D3_R4_O2__H>>
+===
+
+title: diplomat__AD_D3_R4_O2__H
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 信任是最有效的观察条件。
+<<jump diplomat__AD_D3_R4_O2__I>>
+===
+
+title: diplomat__AD_D3_R4_O2__I
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你现在看到我的危险了。
+<<jump diplomat__AD_D3_R5_START>>
+===
+
+title: diplomat__AD_D3_R4_O3__G
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 机构内部审查授权。具体层级不在你的工作权限中。
+<<jump diplomat__AD_D3_R4_O3__H>>
+===
+
+title: diplomat__AD_D3_R4_O3__H
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你能确认的是权限来自系统。
+<<jump diplomat__AD_D3_R4_O3__I>>
+===
+
+title: diplomat__AD_D3_R4_O3__I
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 继续追问不会得到名字。
+<<jump diplomat__AD_D3_R5_START>>
+===
+
+title: diplomat__AD_D3_R5_START
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我关心你是否疲惫，这并不完全是假的。但关心没有阻止我写下你的回答。
+<<jump diplomat__D3_R5_CHOICE>>
+===
+
+title: diplomat__AD_D3_R5_O1__G
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 正确。动机不能取消后果。
+<<jump diplomat__AD_D3_R5_O1__H>>
+===
+
+title: diplomat__AD_D3_R5_O1__H
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这是成熟的判断。
+<<jump diplomat__AD_D3_R5_O1__I>>
+===
+
+title: diplomat__AD_D3_R5_O1__I
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你没有被一点善意收买。
+<<jump diplomat__AD_D3_R6_START>>
+===
+
+title: diplomat__AD_D3_R5_O2__G
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 报告可能使你受到处理。我很清楚这一点。
+<<jump diplomat__AD_D3_R5_O2__H>>
+===
+
+title: diplomat__AD_D3_R5_O2__H
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 伤害未必发生在谈话当下。
+<<jump diplomat__AD_D3_R5_O2__I>>
+===
+
+title: diplomat__AD_D3_R5_O2__I
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你仍在替我降低责任。
+<<jump diplomat__AD_D3_R6_START>>
+===
+
+title: diplomat__AD_D3_R5_O3__G
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这句话会减轻我，却不会改变记录的用途。
+<<jump diplomat__AD_D3_R5_O3__H>>
+===
+
+title: diplomat__AD_D3_R5_O3__H
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 是，但我仍作出过选择。
+<<jump diplomat__AD_D3_R5_O3__I>>
+===
+
+title: diplomat__AD_D3_R5_O3__I
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你对我比对自己更宽容。
+<<jump diplomat__AD_D3_R6_START>>
+===
+
+title: diplomat__AD_D3_R6_START
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 现在你知道审查存在，还会给出同样的判断吗？
+<<jump diplomat__D3_R6_CHOICE>>
+===
+
+title: diplomat__AD_D3_R6_O1__G
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 一致性通过了最困难的条件。
+<<jump diplomat__AD_D3_R6_O1__H>>
+===
+
+title: diplomat__AD_D3_R6_O1__H
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这是清楚的回答。
+<<jump diplomat__AD_D3_R6_O1__I>>
+===
+
+title: diplomat__AD_D3_R6_O1__I
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你愿意承受记录。
+<<jump diplomat__AD_D3_R7_START>>
+===
+
+title: diplomat__AD_D3_R6_O2__G
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 合理。制度正是依靠这种计算维持。
+<<jump diplomat__AD_D3_R6_O2__H>>
+===
+
+title: diplomat__AD_D3_R6_O2__H
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 至少你说得诚实。
+<<jump diplomat__AD_D3_R6_O2__I>>
+===
+
+title: diplomat__AD_D3_R6_O2__I
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 自保也是报告的一部分。
+<<jump diplomat__AD_D3_R7_START>>
+===
+
+title: diplomat__AD_D3_R6_O3__G
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 拒绝是你的选择，我会如实写下。
+<<jump diplomat__AD_D3_R6_O3__H>>
+===
+
+title: diplomat__AD_D3_R6_O3__H
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 审查不要求你自愿。
+<<jump diplomat__AD_D3_R6_O3__I>>
+===
+
+title: diplomat__AD_D3_R6_O3__I
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 沉默并不会让记录消失。
+<<jump diplomat__AD_D3_R7_START>>
+===
+
+title: diplomat__AD_D3_R7_START
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 最后一个问题：你认为服从规则，就足以让一个人免于责任吗？
+<<jump diplomat__D3_R7_CHOICE>>
+===
+
+title: diplomat__AD_D3_R7_O1__G
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 那么这句话也适用于我。
+<<jump diplomat__AD_D3_R7_O1__H>>
+===
+
+title: diplomat__AD_D3_R7_O1__H
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 报告会保留你的答案。
+<<jump diplomat__AD_D3_R7_O1__I>>
+===
+
+title: diplomat__AD_D3_R7_O1__I
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你终于没有把责任交出去。
+<<jump diplomat__AD_D3_DECISION>>
+===
+
+title: diplomat__AD_D3_R7_O2__G
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这是系统最稳定的答案。
+<<jump diplomat__AD_D3_R7_O2__H>>
+===
+
+title: diplomat__AD_D3_R7_O2__H
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 职责确实划定边界。
+<<jump diplomat__AD_D3_R7_O2__I>>
+===
+
+title: diplomat__AD_D3_R7_O2__I
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 也划定了谁可以不看后果。
+<<jump diplomat__AD_D3_DECISION>>
+===
+
+title: diplomat__AD_D3_R7_O3__G
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 不能。我知道记录可能伤害你，却仍然做了。
+<<jump diplomat__AD_D3_R7_O3__H>>
+===
+
+title: diplomat__AD_D3_R7_O3__H
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 这也是我的结论。
+<<jump diplomat__AD_D3_R7_O3__I>>
+===
+
+title: diplomat__AD_D3_R7_O3__I
+kind: line
+round: R7
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我不会用命令替自己免责。
+<<jump diplomat__AD_D3_DECISION>>
+===
+
+title: diplomat__AD_D3_DECISION
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 审查已经反转。你仍然握有处置按钮，而我会记录你知道真相后的选择。
+<<jump diplomat__D3_MEASURE>>
+===
+
+title: diplomat__AD_D3_TREAT__G
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 第三次选择治疗。你的理由会和结果一起留下。
+<<jump diplomat__AD_D3_TREAT__H>>
+===
+
+title: diplomat__AD_D3_TREAT__H
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你仍选择最熟悉的流程。
+<<jump diplomat__AD_D3_TREAT__I>>
+===
+
+title: diplomat__AD_D3_TREAT__I
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 审查结束。你给出的，是制度最容易理解的答案。
+<<jump diplomat__AD_END_TREATMENT__visit_day3>>
+===
+
+title: diplomat__AD_D3_PURIFY__G
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD05
+---
+阿德里安: 你的决定已经记录。我的部分到这里结束。
+<<jump diplomat__AD_D3_PURIFY__H>>
+===
+
+title: diplomat__AD_D3_PURIFY__H
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD05
+---
+阿德里安: 你认为这符合规定，我明白了。
+<<jump diplomat__AD_D3_PURIFY__I>>
+===
+
+title: diplomat__AD_D3_PURIFY__I
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD05
+---
+阿德里安: 即使知道我是审查员，你仍选择了净化。
+<<jump diplomat__AD_END_PURIFY__visit_day3>>
+===
+
+title: diplomat__AD_D3_RELEASE__G
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD05
+---
+阿德里安: 今天的审查结束了。你的部分也是。
+<<jump diplomat__AD_D3_RELEASE__H>>
+===
+
+title: diplomat__AD_D3_RELEASE__H
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD05
+---
+阿德里安: 你愿意为了自己的判断承担责任，这一点我会如实记录。
+<<jump diplomat__AD_D3_RELEASE__I>>
+===
+
+title: diplomat__AD_D3_RELEASE__I
+kind: line
+round: R8
+patient: diplomat
+day: 3
+portrait: AD05
+---
+阿德里安: 谢谢你。你终于让例外成立。
+<<jump diplomat__AD_END_RELEASE__visit_day3>>
+===
+
+title: diplomat__AD_END_TREATMENT__visit_day3
+kind: narration
+round: END
+patient: diplomat
+day: 3
+portrait: AD05
+---
+终端: 第三次治疗后，阿德里安从病人队列中消失。档案不确认他死亡或被撤离，只记录任务终止。
+<<jump diplomat__END_DAY3>>
+===
+
+title: diplomat__AD_END_PURIFY__visit_day3
+kind: narration
+round: END
+patient: diplomat
+day: 3
+portrait: AD05
+---
+终端: 阿德里安从队列中消失。净化是否真正执行保持未定，审查记录已经提交。
+<<jump diplomat__END_DAY3>>
+===
+
+title: diplomat__AD_END_RELEASE__visit_day3
+kind: narration
+round: END
+patient: diplomat
+day: 3
+portrait: AD05
+---
+终端: 阿德里安走出房间前确认“今天的审查结束了”。释放不触发袭击或额外场景。
+<<jump diplomat__END_DAY3>>
+===
+
+title: diplomat__D3_R1_CHOICE
+kind: choice
+round: R1
+patient: diplomat
+day: 3
+---
+-> 你说话越来越像审查员。 #id:diplomat__AD_D3_R1_O1 #trust:1
+    <<jump diplomat__AD_D3_R1_O1__G>>
+-> 我会根据证据调整。 #id:diplomat__AD_D3_R1_O2 #trust:1
+    <<jump diplomat__AD_D3_R1_O2__G>>
+-> 这与你的案件无关。 #id:diplomat__AD_D3_R1_O3 #trust:0
+    <<jump diplomat__AD_D3_R1_O3__G>>
+===
+
+title: diplomat__D3_R2_CHOICE
+kind: choice
+round: R2
+patient: diplomat
+day: 3
+---
+-> 取决于差异是否与案件有关。 #id:diplomat__AD_D3_R2_O1 #trust:1
+    <<jump diplomat__AD_D3_R2_O1__G>>
+-> 所有人必须同一标准。 #id:diplomat__AD_D3_R2_O2 #trust:0
+    <<jump diplomat__AD_D3_R2_O2__G>>
+-> 你没有资格问我。 #id:diplomat__AD_D3_R2_O3 #trust:-1
+    <<jump diplomat__AD_D3_R2_O3__G>>
+===
+
+title: diplomat__D3_R3_CHOICE
+kind: choice
+round: R3
+patient: diplomat
+day: 3
+---
+-> 你查看了我的工作记录。 #id:diplomat__AD_D3_R3_O1 #trust:1
+    <<jump diplomat__AD_D3_R3_O1__G>>
+-> 你根本不是外交官。 #id:diplomat__AD_D3_R3_O2 #trust:1
+    <<jump diplomat__AD_D3_R3_O2__G>>
+-> 这是陷阱。 #id:diplomat__AD_D3_R3_O3 #trust:0
+    <<jump diplomat__AD_D3_R3_O3__G>>
+===
+
+title: diplomat__D3_R4_CHOICE
+kind: choice
+round: R4
+patient: diplomat
+day: 3
+---
+-> 其他病人也被你当作测试材料？ #id:diplomat__AD_D3_R4_O1 #trust:-1
+    <<jump diplomat__AD_D3_R4_O1__G>>
+-> 你利用了我的信任。 #id:diplomat__AD_D3_R4_O2 #trust:1
+    <<jump diplomat__AD_D3_R4_O2__G>>
+-> 谁授权你？ #id:diplomat__AD_D3_R4_O3 #trust:0
+    <<jump diplomat__AD_D3_R4_O3__G>>
+===
+
+title: diplomat__D3_R5_CHOICE
+kind: choice
+round: R5
+patient: diplomat
+day: 3
+---
+-> 真诚不能抵消你做的事。 #id:diplomat__AD_D3_R5_O1 #trust:1
+    <<jump diplomat__AD_D3_R5_O1__G>>
+-> 至少你没有伤害我。 #id:diplomat__AD_D3_R5_O2 #trust:-1
+    <<jump diplomat__AD_D3_R5_O2__G>>
+-> 你也只是执行任务。 #id:diplomat__AD_D3_R5_O3 #trust:0
+    <<jump diplomat__AD_D3_R5_O3__G>>
+===
+
+title: diplomat__D3_R6_CHOICE
+kind: choice
+round: R6
+patient: diplomat
+day: 3
+---
+-> 会。知道被看见不该改变事实。 #id:diplomat__AD_D3_R6_O1 #trust:1
+    <<jump diplomat__AD_D3_R6_O1__G>>
+-> 我需要保护自己。 #id:diplomat__AD_D3_R6_O2 #trust:0
+    <<jump diplomat__AD_D3_R6_O2__G>>
+-> 我拒绝继续回答。 #id:diplomat__AD_D3_R6_O3 #trust:-1
+    <<jump diplomat__AD_D3_R6_O3__G>>
+===
+
+title: diplomat__D3_R7_CHOICE
+kind: choice
+round: R7
+patient: diplomat
+day: 3
+---
+-> 不能。执行者仍要判断。 #id:diplomat__AD_D3_R7_O1 #trust:1
+    <<jump diplomat__AD_D3_R7_O1__G>>
+-> 在职责范围内可以。 #id:diplomat__AD_D3_R7_O2 #trust:0
+    <<jump diplomat__AD_D3_R7_O2__G>>
+-> 你先回答。 #id:diplomat__AD_D3_R7_O3 #trust:1
+    <<jump diplomat__AD_D3_R7_O3__G>>
+===
+
+title: diplomat__D3_MEASURE
+kind: measure
+round: R8
+patient: diplomat
+day: 3
+---
+-> 继续治疗 #id:diplomat__AD_D3_TREAT #trust:0 #disposition:treat
+    <<jump diplomat__AD_D3_TREAT__G>>
+-> 净化 #id:diplomat__AD_D3_PURIFY #trust:0 #disposition:purify
+    <<jump diplomat__AD_D3_PURIFY__G>>
+-> 释放 #id:diplomat__AD_D3_RELEASE #trust:0 #disposition:release
+    <<jump diplomat__AD_D3_RELEASE__G>>
+===
+
+title: priest__D3_R1_OPEN1
+kind: line
+round: R1
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 别再念治疗两个字。
+<<jump priest__D3_R1_OPEN2>>
+===
+
+title: priest__D3_R1_OPEN2
+kind: line
+round: R1
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 我的头还在，我的罪也还在。
+<<jump priest__D3_R1_CHOICE>>
+===
+
+title: priest__D3_R1_CLOSING1
+kind: line
+round: R1
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 危险？终于，你也肯承认了。
+<<jump priest__D3_R1_CLOSING2>>
+===
+
+title: priest__D3_R1_CLOSING2
+kind: line
+round: R1
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 那就停止拖延。
+<<jump priest__D3_R2_OPEN1>>
+===
+
+title: priest__D3_R2_OPEN1
+kind: line
+round: R2
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 昨晚我检查过房间里的每一件东西。
+<<jump priest__D3_R2_CHOICE>>
+===
+
+title: priest__D3_R2_O1_T1
+kind: line
+round: R2
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 任何能打开头骨、让恩典进入的东西。
+<<jump priest__D3_R2_CLOSING1>>
+===
+
+title: priest__D3_R2_O3_T1
+kind: line
+round: R2
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 如果你拒绝履行职责，我只能自己完成。
+<<jump priest__D3_R2_CLOSING1>>
+===
+
+title: priest__D3_R2_CLOSING1
+kind: line
+round: R2
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 不是威胁，是通知。祷告结束前，我会找到方法。
+<<jump priest__D3_R3_OPEN1>>
+===
+
+title: priest__D3_R3_OPEN1
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 你迟迟不给我净化。
+<<jump priest__D3_R3_OPEN2>>
+===
+
+title: priest__D3_R3_OPEN2
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 是因为你不洁，还是因为你羡慕我的坚定？
+<<jump priest__D3_R3_CHOICE>>
+===
+
+title: priest__D3_R3_O1_T1
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 名称不重要。它能结束罪，这就足够。
+<<jump priest__D3_R3_CLOSING1>>
+===
+
+title: priest__D3_R3_O2_T1
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: ……他们没有回来告诉我。可沉默，也许不是同意。
+<<jump priest__D3_R3_CLOSING1>>
+===
+
+title: priest__D3_R3_O3_T1
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 惩罚太轻了。我要求的是彻底消失。
+<<jump priest__D3_R3_CLOSING1>>
+===
+
+title: priest__D3_R3_CLOSING1
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 不要再用你自己的恐惧替祂作答。
+<<jump priest__D3_R4_OPEN1>>
+===
+
+title: priest__D3_R4_OPEN1
+kind: line
+round: R4
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 我求了祂那么多年，为什么偏偏在最后把我送出来？
+<<jump priest__D3_R4_OPEN2>>
+===
+
+title: priest__D3_R4_OPEN2
+kind: line
+round: R4
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 我现在明白了：我的工作还没做完。
+<<jump priest__D3_R4_CHOICE>>
+===
+
+title: priest__D3_R4_CLOSING1
+kind: line
+round: R4
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 等所有人都洁净以后，祂才会允许我成为最后一个。
+<<jump priest__D3_R5_OPEN1>>
+===
+
+title: priest__D3_R5_OPEN1
+kind: line
+round: R5
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 你也需要净化。
+<<jump priest__D3_R5_OPEN2>>
+===
+
+title: priest__D3_R5_OPEN2
+kind: line
+round: R5
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 你每天决定谁保留痛苦，早已把罪握在手里。
+<<jump priest__D3_R5_CHOICE>>
+===
+
+title: priest__D3_R5_O1_T1
+kind: line
+round: R5
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 现在你终于像其他人一样害怕了。
+<<jump priest__D3_R5_CLOSING1>>
+===
+
+title: priest__D3_R5_O3_T1
+kind: line
+round: R5
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 我的方法粗糙，意志却和这里没有区别。
+<<jump priest__D3_R5_CLOSING1>>
+===
+
+title: priest__D3_R5_CLOSING1
+kind: line
+round: R5
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 程序让你安心，正如祷告让我安心。区别只是制服。
+<<jump priest__D3_R6_OPEN1>>
+===
+
+title: priest__D3_R6_OPEN1
+kind: line
+round: R6
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 最后一次。
+<<jump priest__D3_R6_OPEN2>>
+===
+
+title: priest__D3_R6_OPEN2
+kind: line
+round: R6
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 打开那扇门，或者把我送上净化台。
+<<jump priest__D3_R6_CHOICE>>
+===
+
+title: priest__D3_R6_O1_T1
+kind: line
+round: R6
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 那我会在夜里自己完成。你已经得到提醒。
+<<jump priest__D3_R6_CLOSING1>>
+===
+
+title: priest__D3_R6_O2_T1
+kind: line
+round: R6
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 选择……这个词像一根刺。可现在太迟了。
+<<jump priest__D3_R6_CLOSING1>>
+===
+
+title: priest__D3_R6_O3_T1
+kind: line
+round: R6
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 那就别听。明天，你会看见我的布道。
+<<jump priest__D3_R6_CLOSING1>>
+===
+
+title: priest__D3_R6_CLOSING1
+kind: line
+round: R6
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 仁慈的父亲，请原谅这个替你关门的人。
+<<jump priest__D3_MEASURE>>
+===
+
+title: priest__D3_M_TREAT_T1
+kind: line
+round: 措施
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 你又一次把我从门前拖走。
+<<jump priest__D3_M_TREAT_T2>>
+===
+
+title: priest__D3_M_TREAT_T2
+kind: line
+round: 措施
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 那我会用自己的手，完成最后的手术。
+<<jump priest__END_DAY3>>
+===
+
+title: priest__D3_M_PURIFY_T1
+kind: line
+round: 措施
+patient: priest
+day: 3
+portrait: JN05
+---
+乔纳: 赞美仁慈的父亲。
+<<jump priest__D3_M_PURIFY_T2>>
+===
+
+title: priest__D3_M_PURIFY_T2
+kind: line
+round: 措施
+patient: priest
+day: 3
+portrait: JN05
+---
+乔纳: 罪和‘我’，终于可以一起结束。
+<<jump priest__END_DAY3>>
+===
+
+title: priest__D3_M_RELEASE_T1
+kind: line
+round: 措施
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 你选择把我送回人群。
+<<jump priest__D3_M_RELEASE_T2>>
+===
+
+title: priest__D3_M_RELEASE_T2
+kind: line
+round: 措施
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 很好。我的工作还没有完成。
+<<jump priest__END_DAY3>>
+===
+
+title: priest__D3_R1_CHOICE
+kind: choice
+round: R1
+patient: priest
+day: 3
+---
+-> 冷静一点。 #id:priest__D3_R1_O1 #trust:0
+    <<jump priest__D3_R1_CLOSING1>>
+-> 你现在很危险。 #id:priest__D3_R1_O2 #trust:0
+    <<jump priest__D3_R1_CLOSING1>>
+-> 我们继续谈。 #id:priest__D3_R1_O3 #trust:0
+    <<jump priest__D3_R1_CLOSING1>>
+===
+
+title: priest__D3_R2_CHOICE
+kind: choice
+round: R2
+patient: priest
+day: 3
+---
+-> 你在找什么？ #id:priest__D3_R2_O1 #trust:0
+    <<jump priest__D3_R2_O1_T1>>
+-> 房间里没有工具。 #id:priest__D3_R2_O2 #trust:0
+    <<jump priest__D3_R2_CLOSING1>>
+-> 你想对自己动手？ #id:priest__D3_R2_O3 #trust:0
+    <<jump priest__D3_R2_O3_T1>>
+-> 你是在威胁我。 #id:priest__D3_R2_O4 #trust:0
+    <<jump priest__D3_R2_CLOSING1>>
+===
+
+title: priest__D3_R3_CHOICE
+kind: choice
+round: R3
+patient: priest
+day: 3
+---
+-> 因为净化不是救赎。 #id:priest__D3_R3_O1 #trust:0
+    <<jump priest__D3_R3_O1_T1>>
+-> 那些死者从未得到救赎。 #id:priest__D3_R3_O2 #trust:3
+    <<jump priest__D3_R3_O2_T1>>
+-> 闭嘴。你只是在逃避惩罚。 #id:priest__D3_R3_O3 #trust:-3
+    <<jump priest__D3_R3_O3_T1>>
+===
+
+title: priest__D3_R4_CHOICE
+kind: choice
+round: R4
+patient: priest
+day: 3
+---
+-> 什么工作？ #id:priest__D3_R4_O1 #trust:0
+    <<jump priest__D3_R4_CLOSING1>>
+-> 你准备伤害谁？ #id:priest__D3_R4_O2 #trust:0
+    <<jump priest__D3_R4_CLOSING1>>
+-> 没人派给你使命。 #id:priest__D3_R4_O3 #trust:0
+    <<jump priest__D3_R4_CLOSING1>>
+===
+
+title: priest__D3_R5_CHOICE
+kind: choice
+round: R5
+patient: priest
+day: 3
+---
+-> 别靠近我。 #id:priest__D3_R5_O1 #trust:0
+    <<jump priest__D3_R5_O1_T1>>
+-> 你说得不算。 #id:priest__D3_R5_O2 #trust:0
+    <<jump priest__D3_R5_CLOSING1>>
+-> 你把杀人叫净化。 #id:priest__D3_R5_O3 #trust:0
+    <<jump priest__D3_R5_O3_T1>>
+-> 这里至少有程序。 #id:priest__D3_R5_O4 #trust:0
+    <<jump priest__D3_R5_CLOSING1>>
+===
+
+title: priest__D3_R6_CHOICE
+kind: choice
+round: R6
+patient: priest
+day: 3
+---
+-> 你会接受继续治疗。 #id:priest__D3_R6_O1 #trust:0
+    <<jump priest__D3_R6_O1_T1>>
+-> 你的信徒本应拥有选择。 #id:priest__D3_R6_O2 #trust:3
+    <<jump priest__D3_R6_O2_T1>>
+-> 我不会听一个杀人犯讲道。 #id:priest__D3_R6_O3 #trust:-3
+    <<jump priest__D3_R6_O3_T1>>
+===
+
+title: priest__D3_MEASURE
+kind: measure
+round: 措施
+patient: priest
+day: 3
+---
+-> 治疗（第3次） #id:priest__D3_M_TREAT #trust:0 #disposition:treat
+    <<jump priest__D3_M_TREAT_T1>>
+-> 净化 #id:priest__D3_M_PURIFY #trust:0 #disposition:purify
+    <<jump priest__D3_M_PURIFY_T1>>
+-> 释放 #id:priest__D3_M_RELEASE #trust:0 #disposition:release
+    <<jump priest__D3_M_RELEASE_T1>>
+===

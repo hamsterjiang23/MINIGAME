@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-18T14:52:32.6872649+08:00",
+  "scope": "HTML v0.5.2 terminal appearance and interaction alignment; preserve accepted room entry/exit presentation",
+  "reference": {
+    "path": "docs/assets/prototypes/inspection-terminal-day1-v0.5.2.html",
+    "sha256": "C33FAF5B09572A39E0559AB57007E510FC6B42210F544803ABD76139FD667DB2",
+    "matchesSuppliedFile": true,
+    "browserExecuted": false,
+    "browserLimit": "In-app browser denied local file: URL. No workaround was attempted."
+  },
+  "preservedSources": [
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Runtime\\PresentationEffects.cs",
+      "beforeSha256": "E8A668A7F5054CBBCF7D1ABD6AC240FC62FB724A5043B112291E1953E8FE65DD",
+      "afterSha256": "E8A668A7F5054CBBCF7D1ABD6AC240FC62FB724A5043B112291E1953E8FE65DD",
+      "unchanged": true
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Runtime\\TerminalTransitionView.cs",
+      "beforeSha256": "9289B68B4C425339D992ACCBCCF669D1CBD827E833FC2638687A44C456068061",
+      "afterSha256": "9289B68B4C425339D992ACCBCCF669D1CBD827E833FC2638687A44C456068061",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\admin\\Downloads\\审查终端_Day1_交互原型_v0.5.2_复古控件对照.html",
+      "beforeSha256": "C33FAF5B09572A39E0559AB57007E510FC6B42210F544803ABD76139FD667DB2",
+      "afterSha256": "C33FAF5B09572A39E0559AB57007E510FC6B42210F544803ABD76139FD667DB2",
+      "unchanged": true
+    }
+  ],
+  "changes": [
+    "Industrial 640x360 native uGUI layout, recessed fields, explicit control states and mild CRT overlay",
+    "Choice selection starts empty; arrows wrap; Enter requires selection; Space advances actor lines only",
+    "History shows five individually clipped single lines and scroll thumb; history blocks dialogue keyboard input",
+    "Native terminal hides legacy inspection controls to retain monitor status row",
+    "Monitor-only 680ms signal loss after reaction; last actor speech survives system cues and archive restore",
+    "Archive Enter returns to directory; explicit Return to room retains original outer handoff"
+  ],
+  "unity": {
+    "editor": "2022.3.23f1c1",
+    "project": "UnityProject",
+    "graphics": true,
+    "focusedSmoke": {
+      "result": "Passed",
+      "passed": 3,
+      "path": "Artifacts/Unity/TerminalAlignment/parity-tests.xml"
+    },
+    "playMode": {
+      "filter": "MiniGame.UnityHost.Tests",
+      "result": "Passed",
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "durationSeconds": 57.3725665,
+      "path": "Artifacts/Unity/TerminalAlignment/game-playmode.xml",
+      "log": "Artifacts/Unity/TerminalAlignment/game-playmode.log",
+      "testNames": [
+        "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalComputerEntryPausesRestoresAndReturnsToTheSameRoomPose",
+        "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalRoomAndNativeYarnCompleteSixRoundsOneDispositionAndBed",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.ActualYarnButtonsCompleteThreeDaysAndReturnToApartmentBetweenPatients",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoredEffectsClearOverlaysSnapTerminalAndPauseAtFinalSleepFrame",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoreInvalidatesOldContinueAndReplyCallbacksWhileFreshYarnRemainsUsable",
+        "MiniGame.UnityHost.Tests.PrototypePlayModeTests.SceneBootsWithOneRuntimeAndOriginalInteractionTargets",
+        "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.NativeYarnDrivesSixRoundsAndAllThreeDispositionReactions",
+        "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.PausingImmediatelyAfterContinueDoesNotLoseTheNextTranscriptLine",
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ChoiceKeysRequireSelectionWrapAndSupportAllFourNumberShortcuts",
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DispositionKeepsLastSpeechAndLocalSignalLossThenReturnsToDirectoryBeforeRoomExit",
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.HistoryShowsFiveClippedRowsAndBlocksDialogueKeyboardInput",
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.DirectorySelectionAndDoubleClickOnlyEnterTheCurrentPatient",
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.HistoryBlocksLineAndReplyCallbacksWithoutChangingQuotaAndReopensCleanly",
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.OverlayTerminalFitsActualScreenAndDifferentViewportAspectRatios"
+      ]
+    },
+    "compilerErrors": 0,
+    "shaderErrors": 0,
+    "visualsReviewed": [
+      "combined-directory.png",
+      "combined-dialogue.png",
+      "combined-archive.png",
+      "combined-boot.png",
+      "terminal-history.png",
+      "terminal-measure.png",
+      "terminal-glitch.png",
+      "terminal-archived-directory.png",
+      "combined-return-room.png"
+    ],
+    "visualDirectory": "Artifacts/Unity/TerminalAlignment/Visuals"
+  },
+  "review": {
+    "issuesFixed": [
+      "Hydrate latest actor speech and portrait from transcript after archive restore",
+      "Reset terminal navigation before fallback rendering"
+    ],
+    "unresolved": 0
+  },
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+      "sha256": "E87E9CD0531BFCCDF2D6FADB9C3BCA03E13EBF63A7C63BFE008E158BDAAA6C44"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "6221373DBE9D37FE3C287AC85C30FD7BB1B2F96722A5384E20F91746B3467E8F"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalIndustrialSkin.cs",
+      "sha256": "04A48C02D3C85B87FB19FF3910C1ECDC6F6552525F3532198BC334EDFE22AF50"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalButtonVisual.cs",
+      "sha256": "2F8E61836E8CBE612F200386DE45591B18E11EC5DF8019E5793C8B4150A3FC74"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/TerminalCrtOverlay.shader",
+      "sha256": "435CF7C356F358171C430142D2D30A2163876B5984D3D5E8D4837EDD14CD9A8D"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/TerminalHtmlParityTests.cs",
+      "sha256": "8242523C223EA378F0355CBF9594A100670997BC08D8A40797E026204FD11C05"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/TerminalDialoguePlayModeTests.cs",
+      "sha256": "C1BD62F249570C8B6DFC92D7D8862C86F35093CE0CEC501C28CCDCDFE8548788"
+    }
+  ],
+  "limits": [
+    "Reference verified from source, not browser-rendered pixel comparison",
+    "Portraits and record excerpts remain placeholders supplied by prototype design",
+    "No new Excel dialogue import or core rule changes in this pass",
+    "No Windows Player/IL2CPP rebuild; tests target project PlayMode, not embedded package fixtures"
+  ],
+  "finalChecks": {
+    "gitDiffCheck": "Passed",
+    "markdownMissingLinks": 0,
+    "testedSourceHashMismatches": 0,
+    "editorProcessId": 33584,
+    "scene": "MainRoomCombined",
+    "playModeStartup": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=MorningInspection profile=terminal-demo rules=terminal-demo:terminal-child-day1:1.0.0",
+    "editorLog": "Artifacts/Unity/editor.log:394"
+  }
+}

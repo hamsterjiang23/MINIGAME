@@ -18,6 +18,7 @@ namespace MiniGame.Presentation.Authoring
     {
         public static CompiledDialoguePackage Compile(string json)
         {
+            if (CampaignPackageCompiler.IsCampaign(json)) return CampaignPackageCompiler.Compile(json);
             var package = ReadPackage(json);
             var nodes = RestrictedYarnParser.Parse(package.YarnSource);
             var diagnostics = new List<DialogueDiagnostic>();
@@ -252,7 +253,7 @@ namespace MiniGame.Presentation.Authoring
             segments.Add(segment.CoreNodeId, segment);
         }
 
-        private static string BuildRuntimeYarn(PackageGameContent content)
+        internal static string BuildRuntimeYarn(PackageGameContent content)
         {
             var source = new StringBuilder();
             source.AppendLine("// Derived from the canonical package Yarn; edit the authoring source, not this file.");
@@ -268,7 +269,8 @@ namespace MiniGame.Presentation.Authoring
                         var line = segment.Lines[index];
                         source.AppendLine(Escape(line.Speaker) + ": " + Escape(line.Text)
                             + " #line:mg_" + PrototypeYarnSource.EncodeIdentifier(node.NodeId) + "_" + index.ToString(CultureInfo.InvariantCulture)
-                            + " #source:" + line.SourceNodeId + " #portrait:" + line.PortraitId);
+                            + " #source:" + line.SourceNodeId + (line.PortraitId.Length == 0 ? "" : " #portrait:" + line.PortraitId)
+                            + (line.IsNarration ? " #kind:narration" : ""));
                     }
                 }
                 else source.AppendLine(Escape(node.Speaker) + ": " + Escape(node.Text));
@@ -299,7 +301,7 @@ namespace MiniGame.Presentation.Authoring
             return result.ToString();
         }
 
-        private static string Hash(string source)
+        internal static string Hash(string source)
         {
             using var hash = SHA256.Create();
             return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(source)).Select(b => b.ToString("x2", CultureInfo.InvariantCulture)));

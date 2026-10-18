@@ -15,6 +15,8 @@
 
 ## 范围与演示规则
 
+V2 全流程包包含多角色、日程和历史条件，此工作台在打开时明确拒绝编辑并保留当前项目；请使用 [全流程转换工具](../DialogueCampaign/README.md) 与 Unity 的 `MiniGame/Campaign` 导入入口。V1 编辑和导出流程继续可用。`[verified: planner-core.js assertEditablePackage/validatePackage；planner-app.js file.onchange/canSave]`
+
 首版为一个病人的独立 Day1 演示。初始信任0、释放阈值3、净化剩余5随示例包保存；它们是已选定的 HTML 对照演示配置。右侧额外显示的信任、阈值、路径属于策划调试信息。[verified: ../../UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json `profile`；planner-app.js L149-L157]
 
 预览覆盖目录、发言、最多四个回复、实际记录、处置门槛、处置反应、680毫秒花屏、断信号和返回目录；立绘使用标明用途的占位，不代表角色美术已经完成。浏览器预览是受限语法的排练，不能代替 Unity 原生编译、存档恢复及运行验收。[verified: planner-app.js L149-L186；planner.template.html L9] [opinion]

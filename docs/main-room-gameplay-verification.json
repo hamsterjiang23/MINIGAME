@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-18",
+  "checkedAtUtc": "2026-10-18T06:05:30.820901+00:00",
+  "unity": "2022.3.23f1c1",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "scope": "Playable fused room in Unity Editor using existing single GameRuntime/GameSession and native Yarn; current content remains child Day1",
+  "interactions": {
+    "targets": [
+      "Door",
+      "Computer",
+      "Bed"
+    ],
+    "colliders": 23,
+    "standPositionsChecked": 4,
+    "interactionRaysChecked": 3,
+    "exteriorConcreteRenderers": 2,
+    "flow": [
+      "door morning inspection",
+      "briefing",
+      "physical computer E interaction",
+      "terminal directory",
+      "native six-round dialogue",
+      "one disposition",
+      "archive",
+      "room return",
+      "physical bed interaction"
+    ]
+  },
+  "presentation": {
+    "entrySeconds": 1.65,
+    "exitSeconds": 1.2,
+    "features": [
+      "focus prompt fade",
+      "smooth camera approach and FOV change",
+      "CRT power glow",
+      "letterbox and boot readout",
+      "terminal UI reveal",
+      "camera and FOV return",
+      "pause-aware transitions"
+    ],
+    "restoredEntryAndExitVerified": true,
+    "staleCueRejectionVerified": true
+  },
+  "projectPlayMode": {
+    "filter": "MiniGame.UnityHost.Tests",
+    "result": "Passed",
+    "passed": 11,
+    "failed": 0,
+    "durationSeconds": 56.0421173,
+    "cases": [
+      "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalComputerEntryPausesRestoresAndReturnsToTheSameRoomPose",
+      "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalRoomAndNativeYarnCompleteSixRoundsOneDispositionAndBed",
+      "MiniGame.UnityHost.Tests.PrototypePlayModeTests.ActualYarnButtonsCompleteThreeDaysAndReturnToApartmentBetweenPatients",
+      "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoredEffectsClearOverlaysSnapTerminalAndPauseAtFinalSleepFrame",
+      "MiniGame.UnityHost.Tests.PrototypePlayModeTests.RestoreInvalidatesOldContinueAndReplyCallbacksWhileFreshYarnRemainsUsable",
+      "MiniGame.UnityHost.Tests.PrototypePlayModeTests.SceneBootsWithOneRuntimeAndOriginalInteractionTargets",
+      "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.NativeYarnDrivesSixRoundsAndAllThreeDispositionReactions",
+      "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.PausingImmediatelyAfterContinueDoesNotLoseTheNextTranscriptLine",
+      "MiniGame.UnityHost.Tests.TerminalPlayModeTests.DirectorySelectionAndDoubleClickOnlyEnterTheCurrentPatient",
+      "MiniGame.UnityHost.Tests.TerminalPlayModeTests.HistoryBlocksLineAndReplyCallbacksWithoutChangingQuotaAndReopensCleanly",
+      "MiniGame.UnityHost.Tests.TerminalPlayModeTests.OverlayTerminalFitsActualScreenAndDifferentViewportAspectRatios"
+    ],
+    "xml": "Artifacts/Unity/CombinedGameplay/game-playmode.xml",
+    "log": "Artifacts/Unity/CombinedGameplay/game-playmode.log"
+  },
+  "extendedScan": {
+    "xml": "Artifacts/Unity/CombinedGameplay/all-playmode.xml",
+    "total": 71,
+    "passed": 40,
+    "failed": 31,
+    "applicationFailure": "One sleep-final-frame opacity rounding failure; corrected and passed in projectPlayMode",
+    "dependencyFailed": 30,
+    "dependencyFailureNames": [
+      "Yarn.Unity.Tests.CommandDispatchTests.CommandDispatch_Passes",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchedCommands_StartCoroutines",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandInteger DialogueRunner 1 2\",\"3\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandString DialogueRunner a b\",\"ab\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandString DialogueRunner \\\"a b\\\" \\\"c d\\\"\",\"a bc d\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandGameObject DialogueRunner Sphere\",\"Sphere\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandComponent DialogueRunner Sphere\",\"Sphere's MeshRenderer\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandGameObject DialogueRunner DoesNotExist\",\"(null)\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandComponent DialogueRunner DoesNotExist\",\"(null)\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandNoParameters DialogueRunner\",\"success\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandOptionalParams DialogueRunner 1\",\"3\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandOptionalParams DialogueRunner 1 3\",\"4\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testCommandDefaultName DialogueRunner\",\"success\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommands(\"testStaticCommand\",\"success\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommandsWithVariadicParameters(\"testInstanceVariadic DialogueRunner 1\",\"Variadic instance function: 1, ()\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommandsWithVariadicParameters(\"testInstanceVariadic DialogueRunner 1 true\",\"Variadic instance function: 1, (True)\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommandsWithVariadicParameters(\"testInstanceVariadic DialogueRunner 1 true false\",\"Variadic instance function: 1, (True, False)\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommandsWithVariadicParameters(\"testStaticVariadic 1\",\"Variadic static function: 1, ()\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommandsWithVariadicParameters(\"testStaticVariadic 1 true\",\"Variadic static function: 1, (True)\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_DispatchesCommandsWithVariadicParameters(\"testStaticVariadic 1 true false\",\"Variadic static function: 1, (True, False)\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_FailsWhenParameterCountNotCorrect(\"testCommandOptionalParams DialogueRunner\",\"requires between 1 and 2 parameters, but 0 were provided\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_FailsWhenParameterCountNotCorrect(\"testCommandOptionalParams DialogueRunner 1 2 3\",\"requires between 1 and 2 parameters, but 3 were provided\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_FailsWhenParameterTypesNotValid(\"testCommandInteger DialogueRunner 1 not_an_integer\",\"Can't convert the given parameter\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_InvalidVariadicParameters_ShouldFail(\"testInstanceVariadic DialogueRunner 1 one\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_InvalidVariadicParameters_ShouldFail(\"testInstanceVariadic DialogueRunner 1 true too\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_InvalidVariadicParameters_ShouldFail(\"testStaticVariadic 1 one\")",
+      "Yarn.Unity.Tests.DialogueRunnerTests.HandleCommand_InvalidVariadicParameters_ShouldFail(\"testStaticVariadic 1 true too\")",
+      "Yarn.Unity.Tests.LineViewTests.LineView_TextEffects_RenderTextGradually",
+      "Yarn.Unity.Tests.LineViewTests.LineView_WhenLineRun_ShowsLine",
+      "Yarn.Unity.Tests.LineViewTests.LineView_WhenManuallyAdvancingLine_CompletesLineTask"
+    ],
+    "scope": "Yarn package command-registration and legacy LineView fixtures; cause and baseline not established, not claimed passing"
+  },
+  "visuals": {
+    "directory": "Artifacts/Unity/CombinedGameplay/Visuals",
+    "reviewed": [
+      "combined-approach.png",
+      "combined-boot.png",
+      "combined-dialogue.png"
+    ],
+    "captured": [
+      "combined-approach.png",
+      "combined-boot.png",
+      "combined-boot-paused.png",
+      "combined-directory.png",
+      "combined-dialogue.png",
+      "combined-archive.png",
+      "combined-return-room.png",
+      "combined-bed.png"
+    ]
+  },
+  "editorStartup": {
+    "log": "Artifacts/Unity/editor.log",
+    "ready": true,
+    "phase": "MorningInspection",
+    "profile": "terminal-demo"
+  },
+  "limits": [
+    "Windows Player and IL2CPP were not rebuilt",
+    "No performance benchmark or complete final-art acceptance",
+    "OS cursor capture is conditional on a focused interactive window and is not asserted in batch mode",
+    "The extended dependency fixture scan was not re-run after the project-specific regression fix",
+    "Portraits, other patient/day content and narrative staging retain prior prototype limits"
+  ]
+}

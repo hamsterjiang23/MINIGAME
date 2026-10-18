@@ -21,7 +21,7 @@ namespace MiniGame.Presentation.Authoring
 
         internal static bool IsIdentifier(string value) => value != null && Identifier.IsMatch(value);
 
-        internal static List<AuthoringNode> Parse(string source)
+        internal static List<AuthoringNode> Parse(string source, bool campaign = false)
         {
             var sourceLines = source.Replace("\r\n", "\n").Replace('\r', '\n').Split('\n');
             var result = new List<AuthoringNode>();
@@ -89,7 +89,10 @@ namespace MiniGame.Presentation.Authoring
                                 _ => (MiniGame.Core.Disposition?)null
                             };
                             if (!disposition.HasValue) Fail("disposition", "Use treat, purify or release.", line.Number, id);
-                            if (tags.ContainsKey("trust")) Fail("measure-effect", "Disposition options cannot also mutate trust.", line.Number, id);
+                            if (tags.ContainsKey("trust") && !campaign) Fail("measure-effect", "Disposition options cannot also mutate trust.", line.Number, id);
+                            if (campaign && tags.TryGetValue("trust", out var measureDelta) &&
+                                !int.TryParse(measureDelta, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out delta))
+                                Fail("trust-delta", "Disposition trust must be an integer.", line.Number, id);
                         }
                         else if (!tags.TryGetValue("trust", out var deltaText) ||
                             !int.TryParse(deltaText, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out delta))
@@ -102,13 +105,14 @@ namespace MiniGame.Presentation.Authoring
                     if (options.Count > 4) Fail("option-count", "A choice supports one to four options.", startLine, id);
                     if (options.Any(o => o.Disposition.HasValue != measure))
                         Fail("mixed-options", "A node cannot mix normal and disposition options.", startLine, id);
-                    if (measure && (options.Count != 3 || options.Select(o => o.Disposition).Distinct().Count() != 3))
+                    if (measure && ((!campaign && options.Count != 3) || options.Select(o => o.Disposition).Distinct().Count() != options.Count))
                         Fail("measure-options", "A measure node must offer treat, purify and release exactly once.", startLine, id);
                     result.Add(new AuthoringNode(id, kind, round, portrait, "", "", "", startLine, options, headers));
                 }
                 else
                 {
-                    CheckKind(declaredKind, "line", startLine, id);
+                    var lineKind = campaign && declaredKind == "narration" ? "narration" : "line";
+                    CheckKind(declaredKind, lineKind, startLine, id);
                     if (body.Count != 2) Fail("line-body", "A line node contains one speaker: text line and one jump.", startLine, id);
                     var colon = body[0].Text.IndexOf(':');
                     if (colon <= 0) Fail("speaker", "A line must begin with speaker: text.", body[0].Number, id);
@@ -116,7 +120,7 @@ namespace MiniGame.Presentation.Authoring
                     var (text, _) = ParseTags(body[0].Text.Substring(colon + 1).Trim(), body[0].Number, id, new[] { "line" });
                     if (speaker.IndexOfAny(new[] { '<', '>', '#', '{', '}', '[', ']', '\\' }) >= 0)
                         Fail("speaker", "Speaker names cannot contain Yarn control characters.", body[0].Number, id);
-                    result.Add(new AuthoringNode(id, "line", round, portrait, speaker, text,
+                    result.Add(new AuthoringNode(id, lineKind, round, portrait, speaker, text,
                         ParseJump(body[1], id), startLine, new List<AuthoringOption>(), headers));
                 }
                 if (result.Count > 1024) Fail("node-limit", "At most 1024 source nodes are supported.", startLine, id);

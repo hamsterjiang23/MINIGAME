@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace MiniGame.UnityHost
 {
+    public enum TerminalEntryPhase { None, Sitting, Aligning, Pushing, FadingWorld, RevealingInterface, Active }
+
     /// <summary>Visual completion is acknowledged with the captured runtime cue token.</summary>
     public sealed class PresentationEffects : MonoBehaviour
     {
@@ -12,66 +14,139 @@ namespace MiniGame.UnityHost
         [SerializeField] private Transform terminalCameraPose;
         [SerializeField] private Light apartmentLight;
         [SerializeField] private Light bedGuide;
+        [SerializeField] private Renderer terminalSurface;
+        [SerializeField] private BedtimeGuidance bedtimeGuidance;
+        [SerializeField] private ApartmentPlayer seatedPlayer;
+        [SerializeField] private Transform seatEyePose;
+        [SerializeField] private Transform screenAlignPose;
+        [SerializeField] private float daylightIntensity = 1.8f;
+        [SerializeField] private Color daylightColor = new Color(.89f, .91f, .74f);
         private GameRuntime runtime;
         private MiniGameScreen screen;
         private Coroutine playing;
         private string activeToken;
         private Vector3 roomPosition;
         private Quaternion roomRotation;
+        private float roomFieldOfView;
         private bool hasRoomPose;
+        private bool night;
+        private MaterialPropertyBlock surfaceProperties;
+        private Color surfaceEmission;
+        private bool surfaceReady;
+        private TerminalSeating seating;
+        public float TerminalTransitionProgress { get; private set; }
+        public bool IsTransitioning => screen != null && screen.TransitionLocked;
+        public TerminalEntryPhase EntryPhase { get; private set; }
+        public bool IsSeated => seating != null && seating.IsSeated;
+        private bool HasSeatedEntry => seatedPlayer != null && seatEyePose != null && screenAlignPose != null && terminalSurface != null;
+
         public void Configure(Camera camera, Transform terminalPose, Light ceilingLight, Light sleepGuide)
-        { viewCamera = camera; terminalCameraPose = terminalPose; apartmentLight = ceilingLight; bedGuide = sleepGuide; }
+        {
+            viewCamera = camera; terminalCameraPose = terminalPose; apartmentLight = ceilingLight; bedGuide = sleepGuide;
+            if (ceilingLight != null) { daylightIntensity = ceilingLight.intensity; daylightColor = ceilingLight.color; }
+        }
+        public void ConfigureTerminalSurface(Renderer surface) { terminalSurface = surface; surfaceReady = false; }
+        public void ConfigureBedtime(BedtimeGuidance guidance) => bedtimeGuidance = guidance;
+        public void ConfigureSeatedEntry(ApartmentPlayer player, Transform seatEyes, Transform alignment, Renderer surface)
+        {
+            seatedPlayer = player; seatEyePose = seatEyes; screenAlignPose = alignment;
+            ConfigureTerminalSurface(surface);
+        }
+
         public void Bind(GameRuntime game, MiniGameScreen ui)
         {
             if (runtime != null) runtime.Changed -= Present;
             if (playing != null) StopCoroutine(playing);
             playing = null;
             runtime = game; screen = ui; activeToken = null;
-            screen.SetTransitionLocked(false); screen.SetFade(0f); screen.SetGlitch(0f);
-            if (hasRoomPose && !game.GetView().TerminalOpen)
-            { viewCamera.transform.SetPositionAndRotation(roomPosition, roomRotation); hasRoomPose = false; }
-            if (game.GetView().TerminalOpen)
+            screen.SetTransitionLocked(false); screen.SetFade(0); screen.SetGlitch(0);
+            screen.SetTerminalHandoff(0, false, false);
+            var view = game.GetView();
+            if (HasSeatedEntry && seating == null) seating = new TerminalSeating(seatedPlayer, viewCamera);
+            EntryPhase = TerminalEntryPhase.None;
+            if (hasRoomPose && !view.TerminalOpen)
             {
-                if (!hasRoomPose)
-                { roomPosition = viewCamera.transform.position; roomRotation = viewCamera.transform.rotation; hasRoomPose = true; }
-                var kind = game.GetView().Cue?.Kind;
-                if (kind != PresentationKind.EnterTerminal && kind != PresentationKind.ExitTerminal)
-                    viewCamera.transform.SetPositionAndRotation(terminalCameraPose.position, terminalCameraPose.rotation);
+                seating?.Restore(true);
+                viewCamera.transform.SetPositionAndRotation(roomPosition, roomRotation);
+                viewCamera.fieldOfView = roomFieldOfView;
+                hasRoomPose = false;
             }
+            if (view.TerminalOpen)
+            {
+                RememberRoomPose();
+                var kind = view.Cue?.Kind;
+                if (HasSeatedEntry)
+                {
+                    seating.Capture();
+                    UpdateScreenDestination();
+                    if (kind == PresentationKind.EnterTerminal)
+                    {
+                        seating.Restore(false);
+                        viewCamera.transform.SetPositionAndRotation(roomPosition, roomRotation);
+                        viewCamera.fieldOfView = roomFieldOfView;
+                    }
+                    else { seating.SetPose(seatEyePose, 1); EntryPhase = TerminalEntryPhase.Active; }
+                }
+                if (kind != PresentationKind.EnterTerminal)
+                {
+                    viewCamera.transform.SetPositionAndRotation(terminalCameraPose.position, terminalCameraPose.rotation);
+                    viewCamera.fieldOfView = 48;
+                }
+            }
+            screen.SetTerminalReveal(view.TerminalOpen && view.Cue?.Kind != PresentationKind.EnterTerminal ? 1 : 0);
+            SetSurfaceGlow(view.TerminalOpen ? 1 : .18f);
+            if (bedtimeGuidance != null) bedtimeGuidance.Bind(game);
             runtime.Changed += Present;
-            Present(runtime.GetView());
+            Present(view);
         }
+
+        private void RememberRoomPose()
+        {
+            if (hasRoomPose) return;
+            roomPosition = viewCamera.transform.position;
+            roomRotation = viewCamera.transform.rotation;
+            roomFieldOfView = viewCamera.fieldOfView;
+            hasRoomPose = true;
+        }
+
+        private void Update()
+        {
+            if (runtime == null || runtime.GetView().Paused || apartmentLight == null
+                || (bedtimeGuidance != null && bedtimeGuidance.isActiveAndEnabled)) return;
+            float blend = 1 - Mathf.Exp(-Time.unscaledDeltaTime * 3);
+            apartmentLight.intensity = Mathf.Lerp(apartmentLight.intensity, daylightIntensity * (night ? .32f : 1), blend);
+            apartmentLight.color = Color.Lerp(apartmentLight.color,
+                night ? Color.Lerp(daylightColor, new Color(.43f, .54f, .67f), .65f) : daylightColor, blend);
+        }
+
         private void OnDestroy() { if (runtime != null) runtime.Changed -= Present; }
 
         private void Present(RuntimeView view)
         {
-            bool night = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.Sleeping
+            night = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.Sleeping
                 || view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.AfterDream;
-            if (apartmentLight != null)
-            {
-                apartmentLight.intensity = night ? .6f : 1.8f;
-                apartmentLight.color = night ? new Color(.43f, .54f, .67f) : new Color(.89f, .91f, .74f);
-            }
-            if (bedGuide != null) bedGuide.enabled = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream;
+            if (bedGuide != null && (bedtimeGuidance == null || !bedtimeGuidance.isActiveAndEnabled))
+                bedGuide.enabled = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream;
             var cue = view.Cue;
             string token = cue?.Token;
             if (activeToken == token) return;
             activeToken = token;
             if (playing != null) { StopCoroutine(playing); playing = null; }
             screen.SetTransitionLocked(false);
-            screen.SetFade(0f); screen.SetGlitch(0f);
-            if (cue == null) return;
+            screen.SetFade(0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
+            if (cue == null) { screen.SetTerminalReveal(view.TerminalOpen ? 1 : 0); return; }
             switch (cue.Kind)
             {
                 case PresentationKind.EnterTerminal:
-                    if (!hasRoomPose)
-                    { roomPosition = viewCamera.transform.position; roomRotation = viewCamera.transform.rotation; hasRoomPose = true; }
-                    playing = StartCoroutine(CameraTransition(cue.Token, terminalCameraPose.position, terminalCameraPose.rotation, false));
+                    RememberRoomPose();
+                    playing = HasSeatedEntry ? StartCoroutine(SeatedEntry(cue.Token))
+                        : StartCoroutine(CameraTransition(cue.Token, terminalCameraPose.position, terminalCameraPose.rotation, false));
                     break;
                 case PresentationKind.ExitTerminal:
                     playing = view.UsesTerminalDirectory && !view.LeavingTerminal
                         ? StartCoroutine(TerminalSignalLoss(cue.Token))
-                        : StartCoroutine(CameraTransition(cue.Token, hasRoomPose ? roomPosition : viewCamera.transform.position, hasRoomPose ? roomRotation : viewCamera.transform.rotation, true));
+                        : StartCoroutine(CameraTransition(cue.Token, hasRoomPose ? roomPosition : viewCamera.transform.position,
+                            hasRoomPose ? roomRotation : viewCamera.transform.rotation, true));
                     break;
                 case PresentationKind.Sleep: playing = StartCoroutine(SleepTransition(cue.Token)); break;
                 case PresentationKind.Reaction: playing = StartCoroutine(ReactionSignal(cue.Token)); break;
@@ -82,53 +157,188 @@ namespace MiniGame.UnityHost
         {
             var source = viewCamera.transform.position;
             var sourceRotation = viewCamera.transform.rotation;
+            float sourceFov = viewCamera.fieldOfView;
+            float targetFov = exiting ? roomFieldOfView : 48;
+            float duration = exiting ? 1.2f : 1.65f;
+            var controlA = source + (exiting ? -viewCamera.transform.forward * .12f : viewCamera.transform.forward * .20f);
+            var controlB = destination - rotation * Vector3.forward * .15f + Vector3.up * .025f;
             screen.SetTransitionLocked(true);
-            float elapsed = 0f;
-            while (elapsed < .65f && activeToken == token)
+            screen.SetTerminalReveal(exiting ? 1 : 0);
+            TerminalTransitionProgress = 0;
+            float elapsed = 0;
+            while (elapsed < duration && activeToken == token)
             {
                 if (runtime.GetView().Paused) { yield return null; continue; }
                 elapsed += Time.unscaledDeltaTime;
-                float progress = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / .65f));
-                viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(source, destination, progress), Quaternion.Slerp(sourceRotation, rotation, progress));
-                screen.SetGlitch(exiting ? 1f - progress : Mathf.Sin(progress * Mathf.PI) * .45f);
+                float p = Mathf.Clamp01(elapsed / duration);
+                TerminalTransitionProgress = p;
+                float move = Ease(Mathf.InverseLerp(exiting ? .28f : 0, exiting ? 1 : .68f, p));
+                float inverse = 1 - move;
+                if (exiting && HasSeatedEntry) seating.SetPose(seatEyePose, 1 - move);
+                viewCamera.transform.position = inverse * inverse * inverse * source
+                    + 3 * inverse * inverse * move * controlA + 3 * inverse * move * move * controlB + move * move * move * destination;
+                viewCamera.transform.rotation = Quaternion.Slerp(sourceRotation, rotation, move);
+                viewCamera.fieldOfView = Mathf.Lerp(sourceFov, targetFov, move);
+                screen.SetTerminalReveal(exiting ? 1 - Ease(Mathf.InverseLerp(0, .24f, p)) : Ease(Mathf.InverseLerp(.82f, 1, p)));
+                screen.SetTerminalHandoff(p, exiting, true);
+                SetSurfaceGlow(exiting ? Mathf.Lerp(1, .18f, Mathf.InverseLerp(.1f, .55f, p)) : Mathf.Lerp(.18f, 1, Mathf.InverseLerp(.15f, .7f, p)));
                 yield return null;
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
             viewCamera.transform.SetPositionAndRotation(destination, rotation);
-            if (exiting) hasRoomPose = false;
-            screen.SetTransitionLocked(false); screen.SetGlitch(0f);
+            viewCamera.fieldOfView = targetFov;
+            if (exiting)
+            {
+                seating?.Restore(true);
+                viewCamera.transform.SetPositionAndRotation(destination, rotation);
+                hasRoomPose = false;
+                EntryPhase = TerminalEntryPhase.None;
+            }
+            screen.SetTerminalReveal(exiting ? 0 : 1);
+            screen.SetTerminalHandoff(1, exiting, false);
+            screen.SetTransitionLocked(false); screen.SetGlitch(0);
             playing = null;
             runtime.CompleteCue(token);
+        }
+
+        private void UpdateScreenDestination()
+        {
+            // Project the actual mesh bounds onto the aligned camera axes rather than relying on world AABB size.
+            var filter = terminalSurface.GetComponent<MeshFilter>();
+            Bounds bounds = filter != null && filter.sharedMesh != null ? filter.sharedMesh.bounds : terminalSurface.localBounds;
+            var center = terminalSurface.transform.TransformPoint(bounds.center);
+            var normal = -screenAlignPose.forward;
+            float halfWidth = 0, halfHeight = 0, halfDepth = 0;
+            for (int x = -1; x <= 1; x += 2)
+                for (int y = -1; y <= 1; y += 2)
+                    for (int z = -1; z <= 1; z += 2)
+                    {
+                        var corner = terminalSurface.transform.TransformPoint(bounds.center + Vector3.Scale(bounds.extents, new Vector3(x, y, z))) - center;
+                        halfWidth = Mathf.Max(halfWidth, Mathf.Abs(Vector3.Dot(corner, screenAlignPose.right)));
+                        halfHeight = Mathf.Max(halfHeight, Mathf.Abs(Vector3.Dot(corner, screenAlignPose.up)));
+                        halfDepth = Mathf.Max(halfDepth, Mathf.Abs(Vector3.Dot(corner, normal)));
+                    }
+            float tangent = Mathf.Tan(48 * .5f * Mathf.Deg2Rad);
+            float distance = Mathf.Min(halfWidth / (tangent * Mathf.Max(viewCamera.aspect, 16f / 9f)), halfHeight / tangent) * .88f;
+            distance = Mathf.Max(viewCamera.nearClipPlane * 1.25f, distance);
+            terminalCameraPose.SetPositionAndRotation(center + normal * (halfDepth + distance), screenAlignPose.rotation);
+        }
+
+        private IEnumerator SeatedEntry(string token)
+        {
+            seating.Capture();
+            UpdateScreenDestination();
+            var source = viewCamera.transform.position;
+            var sourceRotation = viewCamera.transform.rotation;
+            float sourceFov = viewCamera.fieldOfView;
+            var seatedRotation = Quaternion.Slerp(sourceRotation, seatEyePose.rotation, .3f);
+            const float sitEnd = .65f, alignEnd = 1.30f, pushEnd = 2.45f, fadeEnd = 2.65f, duration = 3f;
+            screen.SetTransitionLocked(true);
+            screen.SetTerminalReveal(0);
+            screen.SetTerminalHandoff(0, false, false);
+            TerminalTransitionProgress = 0;
+            float elapsed = 0;
+            while (elapsed < duration && activeToken == token)
+            {
+                if (runtime.GetView().Paused) { yield return null; continue; }
+                elapsed += Time.unscaledDeltaTime;
+                TerminalTransitionProgress = Mathf.Clamp01(elapsed / duration);
+                if (elapsed < sitEnd)
+                {
+                    EntryPhase = TerminalEntryPhase.Sitting;
+                    float p = Ease(elapsed / sitEnd);
+                    seating.SetPose(seatEyePose, p);
+                    viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(source, seatEyePose.position, p)
+                        - Vector3.up * (.025f * Mathf.Sin(p * Mathf.PI)), Quaternion.Slerp(sourceRotation, seatedRotation, p));
+                }
+                else if (elapsed < alignEnd)
+                {
+                    EntryPhase = TerminalEntryPhase.Aligning;
+                    seating.SetPose(seatEyePose, 1);
+                    float p = Ease(Mathf.InverseLerp(sitEnd, alignEnd, elapsed));
+                    viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(seatEyePose.position, screenAlignPose.position, p),
+                        Quaternion.Slerp(seatedRotation, screenAlignPose.rotation, p));
+                    viewCamera.fieldOfView = Mathf.Lerp(sourceFov, 48, p);
+                }
+                else
+                {
+                    seating.SetPose(seatEyePose, 1);
+                    UpdateScreenDestination();
+                    viewCamera.fieldOfView = 48;
+                    float p = Ease(Mathf.InverseLerp(alignEnd, pushEnd, elapsed));
+                    viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(screenAlignPose.position, terminalCameraPose.position, p), screenAlignPose.rotation);
+                    if (elapsed < pushEnd) EntryPhase = TerminalEntryPhase.Pushing;
+                    else if (elapsed < fadeEnd)
+                    {
+                        EntryPhase = TerminalEntryPhase.FadingWorld;
+                        screen.SetFade(Ease(Mathf.InverseLerp(pushEnd, fadeEnd, elapsed)));
+                    }
+                    else
+                    {
+                        EntryPhase = TerminalEntryPhase.RevealingInterface;
+                        float reveal = Ease(Mathf.InverseLerp(fadeEnd, duration, elapsed));
+                        screen.SetTerminalReveal(reveal);
+                        screen.SetFade(1 - reveal);
+                    }
+                }
+                SetSurfaceGlow(Mathf.Lerp(.18f, 1, Mathf.Clamp01(elapsed / alignEnd)));
+                yield return null;
+            }
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken != token) yield break;
+            viewCamera.transform.SetPositionAndRotation(terminalCameraPose.position, terminalCameraPose.rotation);
+            EntryPhase = TerminalEntryPhase.Active;
+            screen.SetFade(0); screen.SetTerminalReveal(1); screen.SetTransitionLocked(false);
+            playing = null;
+            runtime.CompleteCue(token);
+        }
+
+        private static float Ease(float value) => value * value * value * (value * (value * 6 - 15) + 10);
+
+        private void SetSurfaceGlow(float amount)
+        {
+            if (terminalSurface == null || terminalSurface.sharedMaterial == null) return;
+            if (!surfaceReady)
+            {
+                surfaceProperties = new MaterialPropertyBlock();
+                surfaceEmission = terminalSurface.sharedMaterial.HasProperty("_EmissionColor")
+                    ? terminalSurface.sharedMaterial.GetColor("_EmissionColor") : new Color(.38f, .65f, .46f);
+                surfaceReady = true;
+            }
+            terminalSurface.GetPropertyBlock(surfaceProperties);
+            surfaceProperties.SetColor("_EmissionColor", surfaceEmission * amount);
+            terminalSurface.SetPropertyBlock(surfaceProperties);
         }
 
         private IEnumerator SleepTransition(string token)
         {
             screen.SetTransitionLocked(true);
-            float elapsed = 0f;
+            float elapsed = 0;
             while (elapsed < .8f && activeToken == token)
             {
                 if (runtime.GetView().Paused) { yield return null; continue; }
                 elapsed += Time.unscaledDeltaTime;
-                screen.SetFade(Mathf.Clamp01(elapsed / .8f));
+                // Keep opacity 1 reserved for the final yielded frame, including float rounding near the endpoint.
+                screen.SetFade(elapsed >= .8f ? 1 : Mathf.Min(.9999f, Ease(Mathf.Clamp01(elapsed / .8f))));
                 yield return null;
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
-            screen.SetTransitionLocked(false); screen.SetFade(0f);
+            screen.SetTransitionLocked(false); screen.SetFade(0);
             playing = null;
             runtime.CompleteCue(token);
         }
 
         private IEnumerator ReactionSignal(string token)
         {
-            float elapsed = 0f;
+            float elapsed = 0;
             while (activeToken == token)
             {
                 if (!runtime.GetView().Paused)
                 {
                     elapsed += Time.unscaledDeltaTime;
-                    screen.SetGlitch(elapsed < .45f ? .9f * (1f - elapsed / .45f) : .035f);
+                    screen.SetGlitch(elapsed < .45f ? .45f * (1 - elapsed / .45f) : .02f);
                 }
                 yield return null;
             }
@@ -137,17 +347,17 @@ namespace MiniGame.UnityHost
         private IEnumerator TerminalSignalLoss(string token)
         {
             screen.SetTransitionLocked(true);
-            float elapsed = 0f;
+            float elapsed = 0;
             while (elapsed < .68f && activeToken == token)
             {
                 if (runtime.GetView().Paused) { yield return null; continue; }
                 elapsed += Time.unscaledDeltaTime;
-                screen.SetGlitch(.85f);
+                screen.SetGlitch(.55f);
                 yield return null;
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
-            screen.SetGlitch(0f); screen.SetTransitionLocked(false);
+            screen.SetGlitch(0); screen.SetTransitionLocked(false);
             playing = null;
             runtime.CompleteCue(token);
         }

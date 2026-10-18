@@ -1,4 +1,5 @@
 using System.Linq;
+using MiniGame.Core;
 using MiniGame.Presentation;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace MiniGame.UnityHost
         private float pitch;
         private float downwardSpeed;
         public Camera ViewCamera => viewCamera;
+        public WorldInteraction FocusedInteraction => focused;
         public void Configure(Camera camera) => viewCamera = camera;
         private void Awake() => controller = GetComponent<CharacterController>();
         public void Bind(GameRuntime game, MiniGameScreen ui)
@@ -47,11 +49,44 @@ namespace MiniGame.UnityHost
             downwardSpeed = controller.isGrounded ? -1f : downwardSpeed - 9.81f * Time.deltaTime;
             controller.Move((motion.normalized * walkSpeed + Vector3.up * downwardSpeed) * Time.deltaTime);
             RefreshFocus();
-            if (Input.GetKeyDown(KeyCode.E) && focused != null)
+            bool computerClick = Input.GetMouseButtonDown(0) && focused != null
+                && focused.Target == InteractionTarget.Computer;
+            if (Input.GetKeyDown(KeyCode.E) || computerClick) InteractFocused();
+        }
+
+        public void FacePoint(Vector3 worldPoint)
+        {
+            var direction = worldPoint - viewCamera.transform.position;
+            if (direction.sqrMagnitude < .0001f) return;
+            var rotation = Quaternion.LookRotation(direction).eulerAngles;
+            transform.rotation = Quaternion.Euler(0, rotation.y, 0);
+            pitch = Mathf.Clamp(Mathf.DeltaAngle(0, rotation.x), -75, 75);
+            viewCamera.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        }
+
+        public void RefreshInteractionFocus()
+        {
+            if (runtime == null || runtime.GetView().Input != InputContext.World) { ClearFocus(); return; }
+            RefreshFocus();
+        }
+
+        public bool InteractFocused()
+        {
+            RefreshInteractionFocus();
+            if (focused == null) return false;
+            var view = runtime.GetView();
+            if (BedtimeGuidance.IsSleepOnly(view) && !view.AllowedInteractions.Contains(focused.Target))
             {
-                var result = runtime.TryInteract(focused.Target);
-                if (!result.Accepted) screen.Notify("此时无法操作：" + result.Reason, true);
+                screen.ClearNotification();
+                return false;
             }
+            var result = runtime.TryInteract(focused.Target);
+            if (!result.Accepted)
+                screen.Notify(runtime.GetView().Game.Phase == GamePhase.MorningInspection
+                    ? "请先到门口完成晨检。" : focused.Target == InteractionTarget.Bed
+                        ? "今天的工作尚未结束。" : "请先完成当前的对话或演出。", true);
+            else screen.ClearNotification();
+            return result.Accepted;
         }
 
         private void RefreshFocus()
@@ -67,7 +102,10 @@ namespace MiniGame.UnityHost
             var view = runtime.GetView();
             bool allowed = focused != null && view.AllowedInteractions.Contains(focused.Target);
             if (focused != null) focused.Highlight(allowed);
-            screen.SetWorldPrompt(focused == null ? string.Empty : (allowed ? "[E] " : "暂不可用 · ") + focused.Label);
+            bool bedtime = BedtimeGuidance.IsSleepOnly(view);
+            screen.SetWorldFocus(focused == null || (bedtime && !allowed) ? string.Empty
+                : bedtime ? "躺下休息" : focused.Label, allowed,
+                focused != null && focused.Target == InteractionTarget.Computer ? "E / 鼠标左键" : "E");
         }
 
         private void ClearFocus()

@@ -42,26 +42,35 @@ namespace MiniGame.Core
         public int SpecialTrustThreshold { get; }
         public int ReleaseTrustThreshold { get; }
         public IReadOnlyDictionary<Disposition, string> ReactionNodes { get; }
+        public string? IntroNodeId { get; }
+        public IReadOnlyDictionary<Disposition, int> DispositionTrustDeltas { get; }
 
         public MeetingDefinition(string patientId, IEnumerable<RoundDefinition> normalRounds,
             RoundDefinition? specialRound, int specialTrustThreshold, int releaseTrustThreshold,
-            IDictionary<Disposition, string> reactionNodes)
+            IDictionary<Disposition, string> reactionNodes, string? introNodeId = null,
+            IDictionary<Disposition, int>? dispositionTrustDeltas = null)
         {
             PatientId = RuleGuard.Identifier(patientId, nameof(patientId));
             var rounds = RuleGuard.Copy(normalRounds, nameof(normalRounds));
-            if (rounds.Count == 0)
-                throw new ArgumentException("Normal dialogue must contain at least one round.", nameof(normalRounds));
+            IntroNodeId = introNodeId == null ? null : RuleGuard.Identifier(introNodeId, nameof(introNodeId));
+            if (rounds.Count == 0 && IntroNodeId == null)
+                throw new ArgumentException("A meeting requires normal dialogue or an introduction.", nameof(normalRounds));
             var nodeIds = rounds.Select(r => r.NodeId).ToList();
+            if (IntroNodeId != null) nodeIds.Add(IntroNodeId);
             if (specialRound != null) nodeIds.Add(specialRound.NodeId);
             if (nodeIds.Distinct().Count() != nodeIds.Count)
                 throw new ArgumentException("Dialogue node identifiers must be unique within a meeting.");
             NormalRounds = rounds.AsReadOnly(); SpecialRound = specialRound;
             SpecialTrustThreshold = specialTrustThreshold; ReleaseTrustThreshold = releaseTrustThreshold;
             if (reactionNodes == null) throw new ArgumentNullException(nameof(reactionNodes));
-            if (reactionNodes.Count != 3 || Enum.GetValues(typeof(Disposition)).Cast<Disposition>().Any(d => !reactionNodes.ContainsKey(d)))
-                throw new ArgumentException("A reaction node is required for each disposition.", nameof(reactionNodes));
+            if (reactionNodes.Count == 0 || reactionNodes.Keys.Any(d => !Enum.IsDefined(typeof(Disposition), d)))
+                throw new ArgumentException("At least one supported disposition reaction is required.", nameof(reactionNodes));
             ReactionNodes = new ReadOnlyDictionary<Disposition, string>(reactionNodes.ToDictionary(
                 pair => pair.Key, pair => RuleGuard.Identifier(pair.Value, nameof(reactionNodes))));
+            var deltas = dispositionTrustDeltas ?? new Dictionary<Disposition, int>();
+            if (deltas.Keys.Any(d => !ReactionNodes.ContainsKey(d)))
+                throw new ArgumentException("Trust changes require an allowed disposition.", nameof(dispositionTrustDeltas));
+            DispositionTrustDeltas = new ReadOnlyDictionary<Disposition, int>(deltas.ToDictionary(p => p.Key, p => p.Value));
         }
     }
 

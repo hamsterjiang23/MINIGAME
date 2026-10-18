@@ -8,8 +8,10 @@ namespace MiniGame.UnityHost
         [SerializeField] private InteractionTarget target;
         [SerializeField] private string label;
         [SerializeField] private Renderer indicator;
-        private Material material;
+        private MaterialPropertyBlock properties;
         private Color baseColor;
+        private float highlight;
+        private bool requested;
         public InteractionTarget Target => target;
         public string Label => label;
         public void Configure(InteractionTarget interaction, string displayName, Renderer surface)
@@ -17,13 +19,27 @@ namespace MiniGame.UnityHost
         private void Awake()
         {
             if (indicator == null) return;
-            material = indicator.material;
-            baseColor = material.color;
+            if (indicator.sharedMaterial == null || !indicator.sharedMaterial.HasProperty("_Color")) return;
+            properties = new MaterialPropertyBlock();
+            baseColor = indicator.sharedMaterial.color;
         }
         public void Highlight(bool enabled)
         {
-            if (material != null) material.color = enabled ? Color.Lerp(baseColor, new Color(.56f, .88f, .7f), .5f) : baseColor;
+            requested = enabled;
         }
-        private void OnDestroy() { if (material != null) Destroy(material); }
+        private void LateUpdate()
+        {
+            if (properties == null || indicator == null) return;
+            highlight = Mathf.MoveTowards(highlight, requested ? 1 : 0, Time.unscaledDeltaTime * 5);
+            indicator.GetPropertyBlock(properties);
+            properties.SetColor("_Color", Color.Lerp(baseColor, new Color(.56f, .88f, .7f), highlight * .12f));
+            indicator.SetPropertyBlock(properties);
+        }
+        private void OnDisable()
+        {
+            requested = false; highlight = 0;
+            if (properties == null || indicator == null) return;
+            indicator.GetPropertyBlock(properties); properties.SetColor("_Color", baseColor); indicator.SetPropertyBlock(properties);
+        }
     }
 }

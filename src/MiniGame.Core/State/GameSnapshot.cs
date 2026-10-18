@@ -65,6 +65,7 @@ namespace MiniGame.Core
         [JsonProperty(Required = Required.Always)] public bool SpecialCompleted { get; set; }
         [JsonProperty(Required = Required.AllowNull)] public Disposition? Disposition { get; set; }
         [JsonProperty(Required = Required.Always)] public List<ResponseRecord> Responses { get; set; } = new List<ResponseRecord>();
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool ExplicitlySelected { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]

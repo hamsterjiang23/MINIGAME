@@ -1,0 +1,16 @@
+{
+  "route_scenarios": 144,
+  "display_views": 151,
+  "source_rows": 994,
+  "checks": [
+    "terminal_dispositions_do_not_return",
+    "three_treatments_reach_termination",
+    "path_delta_equals_source_L_cells",
+    "missing_delta_stays_unknown",
+    "tutorial_single_choice_is_explicit",
+    "display_edges_and_layout_valid",
+    "embedded_snapshot_equal",
+    "no_external_scripts_or_styles"
+  ],
+  "browser_visual_verification": false
+}

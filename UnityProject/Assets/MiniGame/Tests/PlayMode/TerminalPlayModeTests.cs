@@ -69,7 +69,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator DirectorySelectionAndDoubleClickOnlyEnterTheCurrentPatient()
+        public IEnumerator DirectoryRejectsUnscheduledPatientAndDoubleClickSelectsAnyAvailablePatient()
         {
             var rules = PrototypeRules.Create();
             var runtime = new GameRuntime(rules, new PrototypeContent(rules), useTerminalDirectory: true);
@@ -90,10 +90,11 @@ namespace MiniGame.UnityHost.Tests
                 unavailable.GetComponent<TerminalRosterPointer>().OnPointerClick(new PointerEventData(EventSystem.current)
                 { button = PointerEventData.InputButton.Left, clickCount = 2 });
                 Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
-                var first = buttons.Single(button => button.name == "Roster-0");
-                first.GetComponent<TerminalRosterPointer>().OnPointerClick(new PointerEventData(EventSystem.current)
+                var doctor = buttons.Single(button => button.name == "Roster-2");
+                doctor.GetComponent<TerminalRosterPointer>().OnPointerClick(new PointerEventData(EventSystem.current)
                 { button = PointerEventData.InputButton.Left, clickCount = 2 });
                 Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
+                Assert.That(runtime.GetView().Game.CurrentPatientId, Is.EqualTo(PrototypeRules.Doctor));
             }
             finally { Object.Destroy(owner); }
             yield return null;
