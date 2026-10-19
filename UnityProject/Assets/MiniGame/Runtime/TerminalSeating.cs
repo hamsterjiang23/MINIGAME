@@ -15,6 +15,8 @@ namespace MiniGame.UnityHost
         private bool controllerWasEnabled;
         private bool captured;
         public bool IsSeated { get; private set; }
+        public bool TryGetStandingPose(out Vector3 position, out Quaternion rotation)
+        { position = standingPosition; rotation = standingRotation; return captured; }
 
         public TerminalSeating(ApartmentPlayer player, Camera viewCamera)
         {

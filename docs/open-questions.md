@@ -91,3 +91,12 @@
 - 主Wiki知识空间全目录此前返回131006资源访问不足；已知单篇文档与直接引用都可读取。本次已覆盖三个入口的本游戏相关引用链，没有宣称盘点整个企业知识库。
 - 12张正文参考图片、6张画板图像均已保存并检查。画板图像中的参考作品保持素材身份，不宣称为本项目资产或实机。
 - 无权限、原文未填和范围外是不同状态；不把任何一种缺口自行补成已定设计。
+
+## 6. 本轮已确认范围：梦境与反叛值结局（2026-10-19）
+
+以下为用户接受本轮实施计划后的范围裁决；上方历史问题与来源原文保留，不回写成当时已决定。具体来源见[梦境来源说明](dreams/source-notes.md)，使用入口见[调参指南](dreams/guide.md)；运行验收仍为 **PENDING**，待[验证记录](dreams/verification.json)填写。`[verified: 本轮已接受的梦境／反叛／海滩实施范围与文档交付约定]`
+
+- **Q14 在本轮范围内已解决**：最新《梦场景.docx》的 Day1 鲸尸海滩、Day2 无尽长路、Day3 受缚待审作为制作来源；Day0 教学结束后直接引导床，不放映。Day1–3 退出终端后自动墙面放映，再引导床或特殊分支电脑。旧四梦境资料保留，枯花田曲目转为备用；不据此补写更长线的记忆揭露。`[verified: Art/Dreams/Reference/梦场景.docx P2–19；DreamSequenceProfile.cs Days；GameSession.cs StartNightDream；本轮范围确认]`
+- **Q26 在本轮范围内已解决**：获用户授权新增海上梦结局分支，保留自我净化入口。Day3 达到玩家反叛阈值且没有神父袭击／KPI 失败优先条件时，梦后仅电脑亮起；本人监控中唯一“净化”操作确认后进入海滩。该确认不消耗患者配额、不创建虚构患者会谈。`[verified: 本轮范围确认；GameRules.cs WithDreamFlow；GameSession.cs FinishDream/SelfPurify；GameRuntime.cs ConfirmSelfPurification]`
+- **Q10 仅明确此次反叛值机制**：新增的是玩家全局计数，初始 0、上限 100、阈值 100；普通及特殊对白回答按稳定选项 ID 调整，缺省 0，处置不另加。它与 NPC 信任及历史疯狂／偏离／狂热指标保持独立；配置修改对下一次新游戏生效。`[verified: PlayerRebellion.asset InitialValue/Maximum/Threshold/Choices；GameSession.cs Select；DreamSettingsWindow.cs DrawRebellion/Save；本轮数值确认]`
+- **结局同时命中顺序已确认**：神父袭击 → KPI 失败 → 海上梦结局 → 普通结局；本轮没有据此改写历史 Q07 中所有 KPI 检查时点争议。海滩采用一张床、W 前进／E 躺下／Esc 暂停、仰看流云漂流及五句可选配音字幕；终局歌曲保留待选槽，海浪使用已提供文件。`[verified: GameRules.cs WithDreamFlow；GameSession.cs ResolveEnding；DreamEndingController.cs Update/AdvanceSubtitles；AudioDefault.asset Sounds Id13/Id14；本轮范围确认]`

@@ -5,7 +5,7 @@ namespace MiniGame.Core
     public enum GamePhase
     {
         MorningInspection, Briefing, Apartment, Work, Evening,
-        Sleeping, Dream, AfterDream, Ending
+        Sleeping, Dream, AfterDream, Ending, SelfReview
     }
 
     public enum EncounterStage
@@ -15,14 +15,14 @@ namespace MiniGame.Core
 
     public enum Disposition { Treat, Purify, Release }
     public enum PatientPresence { Active, Released, Purified, Deceased, TreatmentEnded }
-    public enum EndingType { None, TakenAway, LockedInRoom, PriestAttack }
+    public enum EndingType { None, TakenAway, LockedInRoom, PriestAttack, DreamSea }
     public enum InteractionTarget { Door, Computer, Bed }
     public enum ScheduledEventKind { PriestAttack, TreatmentTermination }
     public enum CommandKind
     {
         CompleteMorningInspection, CompleteBriefing, Interact,
         CompleteSleep, CompleteDream, SelectResponse, CompleteResponseBranch,
-        SubmitDisposition, CompleteReaction, CompleteIntroduction, SelectPatient
+        SubmitDisposition, CompleteReaction, CompleteIntroduction, SelectPatient, BeginNightDream, ConfirmSelfPurification
     }
 
     public enum RejectionReason

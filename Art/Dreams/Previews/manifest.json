@@ -1,0 +1,63 @@
+{
+  "formatVersion": 1,
+  "purpose": "Tracked delivery copies; media and sidecar contents are byte-identical to original verified artifacts. Raw capture provenance inside sidecars is preserved.",
+  "rawFramesIncluded": false,
+  "files": [
+    {
+      "file": "day1-whale-beach.mp4",
+      "bytes": 6787224,
+      "sha256": "8afbeedba2f5ed4509263f6c37cfc009f6c6f1dee2c43506396ae87e3d70aa35",
+      "metadata": "day1-whale-beach.video-metadata.json",
+      "verificationLog": "day1-verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/day1-whale-beach.mp4"
+    },
+    {
+      "file": "day2-endless-road.mp4",
+      "bytes": 3479815,
+      "sha256": "3ee5239d876ea0b4eaac59cba6be8c0368ad1491591f7e716d66763362d29f03",
+      "metadata": "day2-endless-road.video-metadata.json",
+      "verificationLog": "day2-endless-road.verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/day2-endless-road.mp4"
+    },
+    {
+      "file": "day3-bound-judgment.mp4",
+      "bytes": 7656430,
+      "sha256": "af0f6de401858fec1e5ed7085ad4e38027c7d66251a7210ad472f84cffd88d22",
+      "metadata": "day3-bound-judgment.video-metadata.json",
+      "verificationLog": "day3-bound-judgment.verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/day3-bound-judgment.mp4"
+    },
+    {
+      "file": "beach-ending.mp4",
+      "bytes": 5167776,
+      "sha256": "45359b02fc76434def022a50fba6e52772fe19d2af4d0d096b9fa03d395320b7",
+      "metadata": "beach-ending.video-metadata.json",
+      "verificationLog": "beach-ending.verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/beach-ending.mp4"
+    },
+    {
+      "file": "beach-waves-preview.mp4",
+      "bytes": 1093868,
+      "sha256": "aac7b160e7b70b96fd3ad546506240f1d4722d9424bc09a4a2c91c6f80b6937e",
+      "metadata": "beach-waves-preview.mp4.video-metadata.json",
+      "verificationLog": "beach-waves-preview.mp4.verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/beach-waves-preview.mp4"
+    },
+    {
+      "file": "beach-waves-preview.gif",
+      "bytes": 4162470,
+      "sha256": "141396534e174e8c63a803daf59d93438f177a30855c451eaae69230f4aae98f",
+      "metadata": "beach-waves-preview.gif.video-metadata.json",
+      "verificationLog": "beach-waves-preview.gif.verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/beach-waves-preview.gif"
+    },
+    {
+      "file": "beach-clouds-preview.mp4",
+      "bytes": 330544,
+      "sha256": "0dd831607b6f24d7da8d0b5e79e95bbccf6367b796f5070cede84e19850d5b7a",
+      "metadata": "beach-clouds-preview.video-metadata.json",
+      "verificationLog": "beach-clouds-preview.verification.log",
+      "originalArtifact": "Artifacts/Dreams/videos/beach-clouds-preview.mp4"
+    }
+  ]
+}

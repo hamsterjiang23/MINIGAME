@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "duration": 0.14,
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingCheckpointRestoresExactCameraPoseAndRejectsInvalidNumbers",
+      "Status": "Passed",
+      "Duration": 0.0680608,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingLocksUpwardAndCameraFollowsFloatingBed",
+      "Status": "Passed",
+      "Duration": 0.0111477,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.PauseFreezesPresentationAndSubtitlesThenResumeContinues",
+      "Status": "Passed",
+      "Duration": 0.0067333,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.RestoringSubtitleSeeksVoiceAndCompletedLinesNeverRestart",
+      "Status": "Passed",
+      "Duration": 0.0152426,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.SeaAndWetSandShareLiveParametersPausedClockAndRestoredCheckpoint",
+      "Status": "Passed",
+      "Duration": 0.0077754,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.WOnlyMovesForwardAndCannotOvershootBed",
+      "Status": "Passed",
+      "Duration": 0.0046092,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

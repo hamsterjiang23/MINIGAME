@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "auditedOn": "2026-10-19",
+  "repositoryAcquisition": {
+    "method": "git-lfs",
+    "commit": "a50abea8ae33c058d4ac20faed960708c046a4cd",
+    "localContentVerifiedAgainst": "git show <commit>:<asset.local.path> Git LFS oid sha256 and size",
+    "verifiedAssetCount": 12,
+    "originalExternalDownloadRecord": "not-available"
+  },
+  "evidenceBoundaries": {
+    "localFilenameToExternalSource": "design-inference: role names in design documents matched to local filenames; not external audio identity verification",
+    "externalWaveformOrByteIdentity": "not-verified",
+    "externalConversionOrModificationHistory": "unknown",
+    "sourceMetadata": "verified from anonymously accessible primary page HTML during this task",
+    "publicPlaybackAvailability": "anonymous HEAD HTTP 200; not proof of original-file identity or reuse permission",
+    "publicPlaybackFilesDownloadedDuringAudit": false,
+    "existingWavFilesReplacedOrTranscodedDuringAudit": false
+  },
+  "licenseNotes": {
+    "sunoStatus": "rights-unverified for all five listed songs; no Creative Commons license established",
+    "sunoPolicySources": [
+      {
+        "url": "https://help.suno.com/en/articles/9601665",
+        "observedRevision": "2026-09-03",
+        "summary": "Official page says songs downloaded while subscribed are granted commercial use rights. This policy observation does not establish this project's entitlement."
+      },
+      {
+        "url": "https://help.suno.com/en/articles/9601601",
+        "observedRevision": "2025-12-17",
+        "summary": "Official page limits the free-plan material described there to personal non-commercial use."
+      }
+    ],
+    "attributionSources": [
+      "https://creativecommons.org/licenses/by/3.0/",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "attributionScope": "CC BY credit records describe the linked sources. Conversion/modification of local files remains unknown and must not be represented as unchanged originals."
+  },
+  "assets": [
+    {
+      "role": "StartMenu",
+      "designLabel": "开始菜单",
+      "local": {
+        "path": "Art/Audio/Music/StartMenu.wav",
+        "bytes": 11457040,
+        "sha256": "17cb20cc43a2c3326134ac7d4daa07f3d9272a8e305d04486fc1e413e7c256ed",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 132
+      },
+      "source": {
+        "pageUrl": "https://suno.com/s/DEJdjK3NLSIzuZD1",
+        "canonicalPageUrl": "https://suno.com/song/f9f62719-46e7-4b2b-afcd-66eb3a26f14a",
+        "title": "Five Second Loop",
+        "creator": "htftzcfu",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": null,
+          "url": null,
+          "status": "rights-unverified"
+        },
+        "publicPlayback": {
+          "url": "https://d2lwuy8qc234o3.cloudfront.net/1/clip/f9f62719-46e7-4b2b-afcd-66eb3a26f14a.m4a",
+          "format": "m4a-opus",
+          "delivery": "progressive",
+          "headHttpStatus": 200,
+          "contentType": "audio/mp4",
+          "bytes": 906872
+        },
+        "originalDownloadStatus": "not-verified; public playback is not an original WAV download",
+        "notes": [
+          "Page audio_url points to https://studio-api.prod.suno.com/api/forbidden; playback is explicitly exposed in media_urls.",
+          "Track-specific commercial permission, account relationship and permitted download entitlement were not established."
+        ]
+      }
+    },
+    {
+      "role": "Gameplay",
+      "designLabel": "房间主音乐",
+      "local": {
+        "path": "Art/Audio/Music/BGMGameplay.wav",
+        "bytes": 23046154,
+        "sha256": "2815accb41696f210c28e06b7e98a84e0c1c9eff8065aa28f2af3ef37615edc0",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 133
+      },
+      "source": {
+        "pageUrl": "https://suno.com/song/fbb6233d-b8f0-4b16-8143-93716f8d1490",
+        "canonicalPageUrl": "https://suno.com/song/fbb6233d-b8f0-4b16-8143-93716f8d1490",
+        "title": "Numb Daytime Unease",
+        "creator": "htftzcfu",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": null,
+          "url": null,
+          "status": "rights-unverified"
+        },
+        "publicPlayback": {
+          "url": "https://d2lwuy8qc234o3.cloudfront.net/1/clip/fbb6233d-b8f0-4b16-8143-93716f8d1490.m4a",
+          "format": "m4a-opus",
+          "delivery": "progressive",
+          "headHttpStatus": 200,
+          "contentType": "audio/mp4",
+          "bytes": 1948558
+        },
+        "originalDownloadStatus": "not-verified; public playback is not an original WAV download",
+        "notes": [
+          "Page audio_url points to https://studio-api.prod.suno.com/api/forbidden; playback is explicitly exposed in media_urls.",
+          "Track-specific commercial permission, account relationship and permitted download entitlement were not established."
+        ]
+      }
+    },
+    {
+      "role": "Dream0",
+      "designLabel": "梦境 Day0",
+      "local": {
+        "path": "Art/Audio/Music/Dream0.wav",
+        "bytes": 38951452,
+        "sha256": "c998b27fa4f4039f83e32b750a1ea08ea1dcafa284be5d330df2a934161d960e",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/dream-scenes.md",
+        "line": 26
+      },
+      "source": {
+        "pageUrl": "https://suno.com/s/L9fXP1ssVbkmuoiF",
+        "canonicalPageUrl": "https://suno.com/song/58cbbcc8-19ce-4058-8434-56797c0198d4",
+        "title": "Wrong Underneath",
+        "creator": "htftzcfu",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": null,
+          "url": null,
+          "status": "rights-unverified"
+        },
+        "publicPlayback": {
+          "url": "https://d2lwuy8qc234o3.cloudfront.net/1/clip/58cbbcc8-19ce-4058-8434-56797c0198d4.m4a",
+          "format": "m4a-opus",
+          "delivery": "progressive",
+          "headHttpStatus": 200,
+          "contentType": "audio/mp4",
+          "bytes": 3426455
+        },
+        "originalDownloadStatus": "not-verified; public playback is not an original WAV download",
+        "notes": [
+          "Page audio_url points to https://studio-api.prod.suno.com/api/forbidden; playback is explicitly exposed in media_urls.",
+          "Track-specific commercial permission, account relationship and permitted download entitlement were not established."
+        ]
+      }
+    },
+    {
+      "role": "Dream1",
+      "designLabel": "梦境 Day1",
+      "local": {
+        "path": "Art/Audio/Music/Dream1.wav",
+        "bytes": 25511452,
+        "sha256": "4180f0a30f20e9a47b052b4286dd065cfd5a2e9c3f0e694dec8e6d74a13f9b17",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/dream-scenes.md",
+        "line": 38
+      },
+      "source": {
+        "pageUrl": "https://suno.com/s/zubUB9ako0L0s8rD",
+        "canonicalPageUrl": "https://suno.com/song/4a435fb5-4cc5-47b5-9f4f-3f5527f313c1",
+        "title": "Gold Horizon",
+        "creator": "htftzcfu",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": null,
+          "url": null,
+          "status": "rights-unverified"
+        },
+        "publicPlayback": {
+          "url": "https://d2lwuy8qc234o3.cloudfront.net/1/clip/4a435fb5-4cc5-47b5-9f4f-3f5527f313c1.m4a",
+          "format": "m4a-opus",
+          "delivery": "progressive",
+          "headHttpStatus": 200,
+          "contentType": "audio/mp4",
+          "bytes": 2500000
+        },
+        "originalDownloadStatus": "not-verified; public playback is not an original WAV download",
+        "notes": [
+          "Page audio_url points to https://studio-api.prod.suno.com/api/forbidden; playback is explicitly exposed in media_urls.",
+          "Track-specific commercial permission, account relationship and permitted download entitlement were not established."
+        ]
+      }
+    },
+    {
+      "role": "Dream2",
+      "designLabel": "梦境 Day2",
+      "local": {
+        "path": "Art/Audio/Music/Dream2.wav",
+        "bytes": 25949212,
+        "sha256": "f9a7a049685f8079fe3895ce8a7f6964c9217be8fcad4684e652a6dd10152f5a",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/dream-scenes.md",
+        "line": 50
+      },
+      "source": {
+        "pageUrl": "https://suno.com/s/ilRv377x8Ef1WzMa",
+        "canonicalPageUrl": "https://suno.com/song/1e555fe6-08a6-4886-9206-a213ff83b7ad",
+        "title": "Bowed Sunflowers",
+        "creator": "htftzcfu",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": null,
+          "url": null,
+          "status": "rights-unverified"
+        },
+        "publicPlayback": {
+          "url": "https://d2lwuy8qc234o3.cloudfront.net/1/clip/1e555fe6-08a6-4886-9206-a213ff83b7ad.m4a",
+          "format": "m4a-opus",
+          "delivery": "progressive",
+          "headHttpStatus": 200,
+          "contentType": "audio/mp4",
+          "bytes": 2460859
+        },
+        "originalDownloadStatus": "not-verified; public playback is not an original WAV download",
+        "notes": [
+          "Page audio_url points to https://studio-api.prod.suno.com/api/forbidden; playback is explicitly exposed in media_urls.",
+          "Track-specific commercial permission, account relationship and permitted download entitlement were not established."
+        ]
+      }
+    },
+    {
+      "role": "PCNoise",
+      "designLabel": "电脑底噪",
+      "local": {
+        "path": "Art/Audio/SFX/PCNoise.wav",
+        "bytes": 8802196,
+        "sha256": "e887bc8b12d09c59e8a65cb47dd5c363bc683f7cb8c4b84c9e2208a065fc92fc",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 134
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/8bitmyketison/sounds/699726/",
+        "canonicalPageUrl": "https://freesound.org/people/8bitmyketison/sounds/699726/",
+        "title": "Computer Noise 09 - Soft, Rhythmic.wav",
+        "creator": "8bitmyketison",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/699/699726_15173053-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 766336
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "wav"
+      }
+    },
+    {
+      "role": "Scan",
+      "designLabel": "检测仪扫描",
+      "local": {
+        "path": "Art/Audio/SFX/Scan.wav",
+        "bytes": 352844,
+        "sha256": "318d98391faaeb99fec5f95ddf984470c44278cc3a3db26e09aea5031cf30fd0",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 140
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/pyth0n11/sounds/706447/",
+        "canonicalPageUrl": "https://freesound.org/people/pyth0n11/sounds/706447/",
+        "title": "sci-fi long scan",
+        "creator": "pyth0n11",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/706/706447_10485202-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 65098
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "wav"
+      }
+    },
+    {
+      "role": "LightBeep",
+      "designLabel": "检测仪亮灯",
+      "local": {
+        "path": "Art/Audio/SFX/LightBeep.wav",
+        "bytes": 302594,
+        "sha256": "de37b28629380d91c9197cbb166ceff28c75d60cc5638e686b08d6a4b2637734",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 141
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/jobro/sounds/33789/",
+        "canonicalPageUrl": "https://freesound.org/people/jobro/sounds/33789/",
+        "title": "5 beep c.wav",
+        "creator": "jobro",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC-BY-3.0",
+          "url": "https://creativecommons.org/licenses/by/3.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/33/33789_35187-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 13284
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "wav",
+        "attribution": {
+          "required": true,
+          "title": "5 beep c.wav",
+          "creator": "jobro",
+          "sourceUrl": "https://freesound.org/people/jobro/sounds/33789/",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "conversionOrModification": "unknown; do not claim unchanged original"
+        }
+      }
+    },
+    {
+      "role": "DialoguePop",
+      "designLabel": "对话弹出",
+      "local": {
+        "path": "Art/Audio/SFX/DialoguePop.wav",
+        "bytes": 40848,
+        "sha256": "213075f9affee1e263b39c675cff5bec5287135cef2010eb0a99abccef188a70",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 142
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/el_boss/sounds/788611/",
+        "canonicalPageUrl": "https://freesound.org/people/el_boss/sounds/788611/",
+        "title": "UI Button Press",
+        "creator": "el_boss",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/788/788611_9129912-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 8455
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "wav"
+      }
+    },
+    {
+      "role": "Projector",
+      "designLabel": "放映机",
+      "local": {
+        "path": "Art/Audio/SFX/Projector.wav",
+        "bytes": 362456,
+        "sha256": "c7f5154c12398163c1b4a789f6a3b28cbda7d93ab1edd5ec1714e4772efd238d",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 143
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/juanicotolengo/sounds/265144/",
+        "canonicalPageUrl": "https://freesound.org/people/juanicotolengo/sounds/265144/",
+        "title": "19 - Manipulating knobs off a 16mm projector",
+        "creator": "juanicotolengo",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC-BY-4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/265/265144_1275751-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 50985
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "wav",
+        "attribution": {
+          "required": true,
+          "title": "19 - Manipulating knobs off a 16mm projector",
+          "creator": "juanicotolengo",
+          "sourceUrl": "https://freesound.org/people/juanicotolengo/sounds/265144/",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "conversionOrModification": "unknown; do not claim unchanged original"
+        }
+      }
+    },
+    {
+      "role": "WorldInteraction",
+      "designLabel": "3D 场景按键交互",
+      "local": {
+        "path": "Art/Audio/SFX/3DSceneInteraction.wav",
+        "bytes": 75870,
+        "sha256": "2b62018662a850c6c5e4a7522c73a88ddb2ba5c27247eb693918d0bbd2636832",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 144
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/crash_358/sounds/615543/",
+        "canonicalPageUrl": "https://freesound.org/people/crash_358/sounds/615543/",
+        "title": "Sci Fi UI Button Sound 019.wav",
+        "creator": "crash_358",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/615/615543_9855733-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 12891
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "wav"
+      }
+    },
+    {
+      "role": "UIInteraction",
+      "designLabel": "监控画面按键交互",
+      "local": {
+        "path": "Art/Audio/SFX/UIInteraction.wav",
+        "bytes": 12304,
+        "sha256": "6b3a985c9e98902785bb6a16f16e23c8316807a4392488e8cde9a9738071574a",
+        "matchesRepositoryLfsObject": true
+      },
+      "designReference": {
+        "path": "docs/sources/game-wiki.md",
+        "line": 145
+      },
+      "source": {
+        "pageUrl": "https://freesound.org/people/Coral_Island_Studios/sounds/277669/",
+        "canonicalPageUrl": "https://freesound.org/people/Coral_Island_Studios/sounds/277669/",
+        "title": "Buttons Multiple 3.mp3",
+        "creator": "Coral_Island_Studios",
+        "pageHttpStatus": 200,
+        "license": {
+          "id": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "verified-on-source-page"
+        },
+        "publicPlayback": {
+          "url": "https://cdn.freesound.org/previews/277/277669_5324256-hq.mp3",
+          "format": "mp3",
+          "headHttpStatus": 200,
+          "contentType": "audio/mpeg",
+          "bytes": 19776
+        },
+        "originalDownloadStatus": "source page displays Login to download",
+        "originalFileFormat": "mp3"
+      }
+    }
+  ]
+}

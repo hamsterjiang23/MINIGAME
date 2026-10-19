@@ -1,6 +1,6 @@
 Shader "MiniGame/Readable Prop Outline"
 {
-    Properties { _Color ("Color", Color) = (.76,.85,.68,.95) }
+    Properties { _Color ("Color", Color) = (1,1,1,1) }
     SubShader
     {
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }

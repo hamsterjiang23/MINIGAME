@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -64,6 +65,13 @@ namespace MiniGame.Core
         public IReadOnlyList<EndingType> EndingPriority { get; }
         public int StartDay => Days[0].Day;
         public int EndDay => Days[Days.Count - 1].Day;
+        public bool DreamFlowEnabled { get; }
+        public int InitialRebellion { get; }
+        public int MaximumRebellion { get; } = 100;
+        public int DreamSeaThreshold { get; } = 100;
+        public IReadOnlyDictionary<string, int> RebellionOptionDeltas { get; }
+            = new ReadOnlyDictionary<string, int>(new Dictionary<string, int>(StringComparer.Ordinal));
+        private readonly GameRules? _originalRules;
 
         public GameRules(string rulesId, IEnumerable<PatientDefinition> patients,
             IEnumerable<DayDefinition> days, IEnumerable<EndingType> endingPriority)
@@ -90,9 +98,39 @@ namespace MiniGame.Core
             if (endingPriority == null) throw new ArgumentNullException(nameof(endingPriority));
             var priority = endingPriority.ToList();
             if (priority.Count != 3 || priority.Distinct().Count() != 3 ||
-                priority.Any(e => e == EndingType.None || !Enum.IsDefined(typeof(EndingType), e)))
+                priority.Any(e => e != EndingType.PriestAttack && e != EndingType.LockedInRoom && e != EndingType.TakenAway))
                 throw new ArgumentException("Every supported ending must appear exactly once.", nameof(endingPriority));
             Patients = profiles.AsReadOnly(); Days = calendar.AsReadOnly(); EndingPriority = priority.AsReadOnly();
+            Fingerprint = ComputeFingerprint();
+        }
+
+        public GameRules WithDreamFlow(int initial, int maximum, int threshold, IReadOnlyDictionary<string, int> optionDeltas)
+            => new GameRules(_originalRules ?? this, initial, maximum, threshold, optionDeltas);
+
+        private GameRules(GameRules original, int initial, int maximum, int threshold, IReadOnlyDictionary<string, int> optionDeltas)
+            : this(original.RulesId, original.Patients, original.Days, original.EndingPriority)
+        {
+            if (maximum < 1) throw new ArgumentOutOfRangeException(nameof(maximum));
+            if (initial < 0 || initial > maximum) throw new ArgumentOutOfRangeException(nameof(initial));
+            if (threshold < 1 || threshold > maximum) throw new ArgumentOutOfRangeException(nameof(threshold));
+            if (optionDeltas == null) throw new ArgumentNullException(nameof(optionDeltas));
+            var knownOptions = new HashSet<string>(Days.SelectMany(day => day.Meetings)
+                .SelectMany(meeting => meeting.SpecialRound == null ? meeting.NormalRounds
+                    : meeting.NormalRounds.Concat(new[] { meeting.SpecialRound }))
+                .SelectMany(round => round.Responses).Select(response => response.Id), StringComparer.Ordinal);
+            if (optionDeltas.Keys.Any(key => string.IsNullOrWhiteSpace(key) || !knownOptions.Contains(key)))
+                throw new ArgumentException("Rebellion changes must reference a configured response identifier.", nameof(optionDeltas));
+            _originalRules = original;
+            DreamFlowEnabled = true;
+            InitialRebellion = initial; MaximumRebellion = maximum; DreamSeaThreshold = threshold;
+            RebellionOptionDeltas = new ReadOnlyDictionary<string, int>(optionDeltas.ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal));
+            EndingPriority = Array.AsReadOnly(new[] { EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.DreamSea, EndingType.TakenAway });
+            var settings = SnapshotCodec.Canonical(new { initial, maximum, threshold,
+                Deltas = RebellionOptionDeltas.OrderBy(pair => pair.Key, StringComparer.Ordinal).Select(pair => new { pair.Key, pair.Value }) });
+            using var hash = SHA256.Create();
+            var suffix = string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(settings))
+                .Select(value => value.ToString("x2", System.Globalization.CultureInfo.InvariantCulture)));
+            RulesId = original.RulesId + ":dream-flow:" + suffix;
             Fingerprint = ComputeFingerprint();
         }
 
@@ -128,6 +166,10 @@ namespace MiniGame.Core
                 })).ToList();
             var serialized = extensions.Count == 0 ? SnapshotCodec.Canonical(canonical)
                 : SnapshotCodec.Canonical(new { Rules = canonical, MeetingExtensions = extensions });
+            if (DreamFlowEnabled)
+                serialized = SnapshotCodec.Canonical(new { Rules = serialized, DreamFlowEnabled, InitialRebellion, MaximumRebellion,
+                    DreamSeaThreshold, RebellionOptions = RebellionOptionDeltas.OrderBy(pair => pair.Key, StringComparer.Ordinal)
+                        .Select(pair => new { pair.Key, pair.Value }) });
             var bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(serialized));
             return string.Concat(bytes.Select(b => b.ToString("x2", System.Globalization.CultureInfo.InvariantCulture)));
         }

@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "duration": 13.95,
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile",
+      "Status": "Passed",
+      "Duration": 0.7506963,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign",
+      "Status": "Passed",
+      "Duration": 3.5331726,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneAutomaticallyProjectsOnTheAuthoredWallAndReturnsBeforeBedUnlocks",
+      "Status": "Passed",
+      "Duration": 0.4206298,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroAutomaticallySkipsVideoAndOneBedInteractionAdvancesExactlyOneDay",
+      "Status": "Passed",
+      "Duration": 0.276664,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamAudioDisabledSourcesStayStoppedAndReenableSynchronizesActualPlayback",
+      "Status": "Passed",
+      "Duration": 0.3984932,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamPreviewStopRebindAndDisableRestoreExistingRetroFlags",
+      "Status": "Passed",
+      "Duration": 0.2578439,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.HighRebellionSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress",
+      "Status": "Passed",
+      "Duration": 3.3344543,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.WorldSavePoseOverridesLaterTerminalDoorAndDreamReturnCaches",
+      "Status": "Passed",
+      "Duration": 4.9531267,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

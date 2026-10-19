@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5458643e50ad40a5bf50a2cb99ac0471, type: 3}
+  m_Name: AudioDefault
+  m_EditorClassIdentifier: 
+  MasterVolume: 1
+  MusicVolume: 0.5
+  AmbienceVolume: 0.45
+  SfxVolume: 0.7
+  UIVolume: 0.65
+  FadeSeconds: 1
+  Mixer: {fileID: 24100000, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  MusicGroup: {fileID: 1262981951554267822, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  AmbienceGroup: {fileID: 730996643271804801, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  SfxGroup: {fileID: 1737182478048270975, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  UIGroup: {fileID: -5151451268429435789, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  Sounds:
+  - Id: 0
+    Clip: {fileID: 8300000, guid: 4f7edba9139377348aaf81cc3ac1fb93, type: 3}
+    Volume: 1
+  - Id: 1
+    Clip: {fileID: 8300000, guid: 3c32dd70dff6acc4e900f467a4aef2c9, type: 3}
+    Volume: 1
+  - Id: 2
+    Clip: {fileID: 8300000, guid: 6baa0adb28b55fc43ae086aaad252982, type: 3}
+    Volume: 1
+  - Id: 3
+    Clip: {fileID: 8300000, guid: 1205d5a92d3f06545b700a530ecf027a, type: 3}
+    Volume: 1
+  - Id: 4
+    Clip: {fileID: 8300000, guid: e19f97704bc494745b9e3473e77b0276, type: 3}
+    Volume: 1
+  - Id: 5
+    Clip: {fileID: 8300000, guid: ebc4306a0482a5e4386d8bfb2b2c6679, type: 3}
+    Volume: 1
+  - Id: 6
+    Clip: {fileID: 8300000, guid: c0a4508344adde44dad8dde1c30783e4, type: 3}
+    Volume: 1
+  - Id: 7
+    Clip: {fileID: 8300000, guid: dfcf4e0720ec30649b99054ce0fa2b0e, type: 3}
+    Volume: 1
+  - Id: 8
+    Clip: {fileID: 8300000, guid: 885ca0a5decfcfd4aac5370251f202da, type: 3}
+    Volume: 1
+  - Id: 9
+    Clip: {fileID: 8300000, guid: a18346e6a69d93f40a28ddb54a21eccb, type: 3}
+    Volume: 1
+  - Id: 10
+    Clip: {fileID: 8300000, guid: a4d031d4bd34af840ba6263107bcc038, type: 3}
+    Volume: 1
+  - Id: 11
+    Clip: {fileID: 8300000, guid: 38fa224ee3ac52442a1a47f3b2f4ae08, type: 3}
+    Volume: 1
+  - Id: 12
+    Clip: {fileID: 8300000, guid: 0dd5d8561d1d957419d2edf6bbb5f90c, type: 3}
+    Volume: 1
+  - Id: 13
+    Clip: {fileID: 0}
+    Volume: 1
+  - Id: 14
+    Clip: {fileID: 8300000, guid: 33b326b9812eee64e9d0cef3f8237422, type: 3}
+    Volume: 1

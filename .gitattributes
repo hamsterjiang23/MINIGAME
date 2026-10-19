@@ -16,11 +16,13 @@
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.m4v filter=lfs diff=lfs merge=lfs -text
+*.m4a filter=lfs diff=lfs merge=lfs -text
 *.webm filter=lfs diff=lfs merge=lfs -text
 *.ttf filter=lfs diff=lfs merge=lfs -text
 *.otf filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
 *.blend filter=lfs diff=lfs merge=lfs -text
+UnityProject/Assets/MiniGame/Art/DreamEnding/SeaGrid.asset filter=lfs diff=lfs merge=lfs -text
 Art/MainRoom/reference/MainRoomReference.glb filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
@@ -46,7 +48,13 @@ src/**/*.meta whitespace=-blank-at-eol
 UnityProject/ProjectSettings/*.asset whitespace=-blank-at-eol
 UnityProject/Assets/**/*.unity whitespace=-blank-at-eol
 UnityProject/Assets/**/*.mat whitespace=-blank-at-eol
+UnityProject/Assets/**/*.prefab whitespace=-blank-at-eol
+UnityProject/Assets/**/*.mixer whitespace=-blank-at-eol
 UnityProject/Assets/**/*.asset whitespace=-blank-at-eol
+# Preserve exported verification bytes and tool log formatting.
+Art/Dreams/Previews/** -text
+Art/Dreams/Previews/*.log -whitespace
+docs/dreams/evidence/** -text
 UnityProject/Assets/**/*.yarn whitespace=-blank-at-eof
 # Binary files without a common extension and other files >= 1 MiB.
 research/no-im-not-a-human/Analysis/Assets/ManagedExport/ExportedProject/Assets/_Localization/Tables/Text/_Separating/DayDialogs/DayDialogs[[:space:]]Shared[[:space:]]Data.asset filter=lfs diff=lfs merge=lfs -text

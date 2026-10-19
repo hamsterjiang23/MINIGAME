@@ -24,6 +24,7 @@ namespace MiniGame.Core
             {
                 Day = rules.StartDay, Phase = rules.StartDay == 0 ? GamePhase.Apartment : GamePhase.MorningInspection,
                 Ending = EndingType.None,
+                Rebellion = rules.DreamFlowEnabled ? rules.InitialRebellion : 0,
                 Patients = rules.Patients.Select(p => new PatientSnapshot
                     { Id = p.Id, Trust = p.InitialTrust, Presence = PatientPresence.Active }).ToList()
             };
@@ -41,7 +42,9 @@ namespace MiniGame.Core
                 case CompleteMorningInspection _: reason = AdvancePhase(GamePhase.MorningInspection, GamePhase.Briefing, events); break;
                 case CompleteBriefing _: reason = AdvancePhase(GamePhase.Briefing, GamePhase.Apartment, events); break;
                 case CompleteSleep _: reason = AdvancePhase(GamePhase.Sleeping, GamePhase.Dream, events); break;
-                case CompleteDream _: reason = AdvancePhase(GamePhase.Dream, GamePhase.AfterDream, events); break;
+                case CompleteDream _: reason = FinishDream(events); break;
+                case BeginNightDream _: reason = StartNightDream(events); break;
+                case ConfirmSelfPurification _: reason = SelfPurify(events); break;
                 case Interact c: reason = InteractWith(c, events); break;
                 case SelectPatient c: reason = SelectPatientForToday(c, events); break;
                 case SelectResponse c: reason = Select(c, events); break;
@@ -75,7 +78,7 @@ namespace MiniGame.Core
             return new PlayerView(_state.Day, _state.Phase, _state.Ending, remaining,
                 encounter?.PatientId, encounter == null ? null : _rules.Patient(encounter.PatientId).DisplayName,
                 encounter?.Id, encounter == null ? null : CurrentNode(encounter), encounter?.Stage,
-                responses, dispositions, AllowedInteractions());
+                responses, dispositions, AllowedInteractions(), _state.Rebellion);
         }
 
         public GameSnapshot CreateSnapshot() => SnapshotCodec.Copy(new GameSnapshot
@@ -167,6 +170,59 @@ namespace MiniGame.Core
             return RejectionReason.None;
         }
 
+        private RejectionReason StartNightDream(List<GameEvent> events)
+        {
+            if (!_rules.DreamFlowEnabled || _state.Phase != GamePhase.Evening) return RejectionReason.WrongPhase;
+            SetPhase(_state.Day == 0 ? GamePhase.AfterDream : GamePhase.Dream, events);
+            return RejectionReason.None;
+        }
+
+        private RejectionReason FinishDream(List<GameEvent> events)
+        {
+            if (_state.Phase != GamePhase.Dream) return RejectionReason.WrongPhase;
+            bool selfReview = _rules.DreamFlowEnabled && _state.Day == 3
+                && NextDawnEnding(true) == EndingType.DreamSea;
+            SetPhase(selfReview ? GamePhase.SelfReview : GamePhase.AfterDream, events);
+            return RejectionReason.None;
+        }
+
+        private RejectionReason SelfPurify(List<GameEvent> events)
+        {
+            if (!_rules.DreamFlowEnabled || _state.Phase != GamePhase.SelfReview
+                || NextDawnEnding(true) != EndingType.DreamSea) return RejectionReason.WrongPhase;
+            // This is the player's ending decision, not a patient disposition or a new work day.
+            _state.Day++;
+            EndGame(EndingType.DreamSea, events);
+            return RejectionReason.None;
+        }
+
+        private EndingType NextDawnEnding(bool includeDreamSea)
+        {
+            int nextDay = _state.Day + 1;
+            bool priestAttack = _state.PendingEvents.Any(item => item.DueDay <= nextDay
+                && item.Kind == ScheduledEventKind.PriestAttack && !_state.ExecutedEventIds.Contains(item.Id));
+            return ResolveEnding(nextDay, priestAttack, includeDreamSea);
+        }
+
+        private EndingType ResolveEnding(int day, bool priestAttack, bool includeDreamSea)
+        {
+            bool finished = day > _rules.EndDay;
+            var eligible = new HashSet<EndingType>();
+            if (priestAttack) eligible.Add(EndingType.PriestAttack);
+            if (finished && _state.Days.Any(item => item.Day > 0 && item.QuotaMet == false)) eligible.Add(EndingType.LockedInRoom);
+            if (finished) eligible.Add(EndingType.TakenAway);
+            if (finished && _rules.DreamFlowEnabled && includeDreamSea && _state.Rebellion >= _rules.DreamSeaThreshold)
+                eligible.Add(EndingType.DreamSea);
+            return _rules.EndingPriority.FirstOrDefault(eligible.Contains);
+        }
+
+        private void EndGame(EndingType ending, List<GameEvent> events)
+        {
+            _state.Ending = ending;
+            SetPhase(GamePhase.Ending, events);
+            events.Add(new GameEvent(GameEventKind.GameEnded, _state.Day, referenceId: ending.ToString()));
+        }
+
         private RejectionReason InteractWith(Interact command, List<GameEvent> events)
         {
             if (!Enum.IsDefined(typeof(InteractionTarget), command.Target)) return RejectionReason.InvalidCommand;
@@ -184,7 +240,7 @@ namespace MiniGame.Core
         private IEnumerable<InteractionTarget> AllowedInteractions()
         {
             if (_state.Phase == GamePhase.Apartment) return new[] { InteractionTarget.Computer };
-            if (_state.Phase == GamePhase.Evening || _state.Phase == GamePhase.AfterDream)
+            if ((_state.Phase == GamePhase.Evening && !_rules.DreamFlowEnabled) || _state.Phase == GamePhase.AfterDream)
                 return new[] { InteractionTarget.Bed };
             return Array.Empty<InteractionTarget>();
         }
@@ -214,6 +270,11 @@ namespace MiniGame.Core
             catch (OverflowException) { return RejectionReason.NumericOverflow; }
 
             patient.Trust = trust;
+            if (_rules.DreamFlowEnabled)
+            {
+                _rules.RebellionOptionDeltas.TryGetValue(response.Id, out var rebellionDelta);
+                _state.Rebellion = (int)Math.Max(0L, Math.Min(_rules.MaximumRebellion, (long)_state.Rebellion + rebellionDelta));
+            }
             encounter.BranchIsSpecial = encounter.Stage == EncounterStage.SpecialDialogue;
             encounter.PendingBranchNodeId = response.BranchNodeId;
             encounter.Stage = EncounterStage.ResponseBranch;
@@ -410,18 +471,10 @@ namespace MiniGame.Core
                 events.Add(new GameEvent(GameEventKind.ScheduledEventExecuted, _state.Day,
                     scheduled.PatientId, referenceId: scheduled.Id));
             }
-            var finished = _state.Day > _rules.EndDay;
-            var quotaFailure = finished && _state.Days.Any(d => d.Day > 0 && d.QuotaMet == false);
-            var eligible = new HashSet<EndingType>();
-            if (priestAttack) eligible.Add(EndingType.PriestAttack);
-            if (quotaFailure) eligible.Add(EndingType.LockedInRoom);
-            if (finished) eligible.Add(EndingType.TakenAway);
-            var ending = _rules.EndingPriority.FirstOrDefault(eligible.Contains);
+            var ending = ResolveEnding(_state.Day, priestAttack, false);
             if (ending != EndingType.None)
             {
-                _state.Ending = ending;
-                SetPhase(GamePhase.Ending, events);
-                events.Add(new GameEvent(GameEventKind.GameEnded, _state.Day, referenceId: ending.ToString()));
+                EndGame(ending, events);
                 return;
             }
             PrepareDay();

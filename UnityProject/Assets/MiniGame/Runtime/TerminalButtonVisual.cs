@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace MiniGame.UnityHost
 {
     /// <summary>Explicit color states avoid uGUI ColorTint multiplying the physical rim.</summary>
-    internal sealed class TerminalButtonVisual : Button
+    internal sealed class TerminalButtonVisual : MiniGameAudioButton
     {
         private Image mount;
         private Image face;

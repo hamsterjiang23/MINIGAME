@@ -1,0 +1,161 @@
+{
+  "verifiedAt": "2026-10-19T17:13:48.7714013+08:00",
+  "unityVersion": "2022.3.23f1c1",
+  "control": "Unity CLI through the existing embedded Pipeline connection",
+  "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "ui": {
+    "menu": "MiniGame/音频设置",
+    "externalFolderPicker": true,
+    "importOnlyAssignedFiles": true,
+    "supportedFormats": [
+      "wav",
+      "mp3",
+      "ogg",
+      "aif",
+      "aiff"
+    ],
+    "inspectorSharesLabels": true,
+    "undoRedoAndSavedReload": "passed",
+    "preview": "Editor raw clip preview; runtime mixing checked in Play Mode",
+    "screenshot": "Artifacts/Audio/audio-settings.png",
+    "visualInspection": "400x880 live Editor panel inspected; folder selector, volume sliders, role selectors, preview controls and pinned save button legible"
+  },
+  "imports": {
+    "clipCount": 12,
+    "unchangedCopies": 12,
+    "hashes": "Artifacts/Audio/imported-file-hashes.json",
+    "sourceManifest": "Art/Audio/source-manifest.json"
+  },
+  "tests": {
+    "editor": {
+      "filter": "MiniGameAudioSettingsEditorTests",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "report": "Artifacts/Audio/editor-tests.json"
+    },
+    "audioPlayMode": {
+      "filter": "MiniGameAudio",
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "report": "Artifacts/Audio/playmode-tests.json"
+    },
+    "combinedRoomPlayMode": {
+      "filter": "CombinedRoomPlayModeTests",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "report": "Artifacts/Audio/combined-room-tests.json"
+    },
+    "totalPassed": 18,
+    "totalFailed": 0
+  },
+  "playModeSave": {
+    "passed": true,
+    "savedValueAfterLeavingPlay": 0.314,
+    "restoredOriginalValue": 0.5
+  },
+  "realEditorAudioOutput": {
+    "phase": "Apartment",
+    "day": 0,
+    "clip": "BGMGameplay",
+    "isPlaying": true,
+    "time": 12.373333,
+    "listenerPeak": 0.127368644,
+    "listenerRms": 0.06006312415167927,
+    "volume": 1.0,
+    "pause": false
+  },
+  "windowsBuild": {
+    "result": "Succeeded",
+    "options": [
+      "CleanBuildCache",
+      "DetailedBuildReport"
+    ],
+    "errors": 0,
+    "warnings": 10,
+    "warningDetails": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpLineAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.hasTransferredLegacyMapping' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyNextLineAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyCancelDialogueKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpOptionsKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpLineKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpOptionsAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyNextLineKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyCancelDialogueAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      }
+    ],
+    "output": "Builds/AudioConfigured/MiniGame.exe",
+    "packedAudioClipCount": 12,
+    "packedAudioConfigurationAndMixer": [
+      "Assets/MiniGame/Audio/MiniGame.mixer",
+      "Assets/MiniGame/Resources/MiniGame/AudioDefault.asset"
+    ],
+    "report": "Artifacts/Audio/windows-build.json",
+    "packedAssetReport": "Artifacts/Audio/packed-audio-assets.json",
+    "startupSmoke": {
+      "processId": 59920,
+      "ready": true,
+      "exitedBeforeClose": false,
+      "executable": "F:\\AAMINIGAME\\MINIGAME\\Builds\\AudioConfigured\\MiniGame.exe",
+      "log": "Artifacts/Audio/player-final.log",
+      "errors": []
+    },
+    "playerAudioOutputMeasurement": "not measured in Player; startup and packaging verified, nonzero mixed output measured in Editor"
+  },
+  "finalEditor": {
+    "playMode": "stopped",
+    "sceneDirty": false,
+    "window": "音频设置",
+    "originalMusicVolumeRestored": 0.5
+  },
+  "remaining": {
+    "artisticAudioMix": "human listening acceptance pending",
+    "mainMenu": "clip configured and service entry point present; Combined has no start-menu flow",
+    "dream3AndEndings": "no provided clips, no invented mappings",
+    "externalSourceIdentity": "filename-to-link mapping follows design; original external waveform or byte identity unverified"
+  }
+}

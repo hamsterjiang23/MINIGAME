@@ -1,0 +1,93 @@
+{
+  "role": "Day3_BoundJudgment",
+  "title": "Red Glitch Slices",
+  "author": "htftzcfu",
+  "requestedSource": "https://suno.com/s/Nkn1pOBzMuGpyA1N",
+  "canonicalSource": "https://suno.com/song/a9c378c3-27d0-4436-878a-94868515ffb9",
+  "observedOn": "2026-10-19",
+  "sourceMetadata": {
+    "titleElement": "Red Glitch Slices by htftzcfu | Suno",
+    "mediaUrl": "https://d2lwuy8qc234o3.cloudfront.net/1/clip/a9c378c3-27d0-4436-878a-94868515ffb9.m4a",
+    "contentType": "m4a-opus",
+    "delivery": "progressive",
+    "encoding": "1.0.0",
+    "declaredDurationSeconds": 177.6,
+    "originalAudioUrl": "https://studio-api.prod.suno.com/api/forbidden"
+  },
+  "download": {
+    "path": "Art/Dreams/Audio/Day3_BoundJudgment.public.m4a.bin",
+    "bytes": 2816347,
+    "sha256": "bf81416f647c8242ebe90b9a845e87936cecdd922bf17a12617fd618948e8c0d",
+    "responseContentType": "audio/mp4",
+    "first16BytesHex": "53522395116168f4b626de6f5022cd6d",
+    "status": "downloaded_encoded_payload_not_playable_audio",
+    "isOriginalWav": false
+  },
+  "rights": "unverified; public page access does not verify track-specific reuse rights",
+  "nextAction": "Import the converted WAV with streaming music settings and assign MiniGameSound.Dream3.",
+  "notes": "This is the public playback stream converted to WAV, not the creator original master WAV. Ordinary anonymous playback authorization succeeded. No login credentials, alternate URL guessing or forbidden original-download endpoint was used. No playback grant or key is retained in this repository.",
+  "initialDirectDecodeAttempt": {
+    "status": "blocked_no_standard_audio_container",
+    "blenderVersion": "4.5.11 LTS",
+    "blenderResult": "aud.error: The file couldn't be read with any installed file reader.",
+    "ffmpegDistribution": "imageio-ffmpeg==0.6.0 via temporary uv environment",
+    "ffmpegVersion": "7.1",
+    "ffmpegExitCode": 1,
+    "ffmpegResult": "moov atom not found; Invalid data found when processing input",
+    "playableWavCreated": false,
+    "durationChannelsAndSampleRateVerifiedFromDecodedAudio": false
+  },
+  "conversion": {
+    "status": "complete",
+    "procedure": "Normal anonymous playback grant accepted by Suno HTTP 200; decode the downloaded stream using the public player playback path, then transcode MP4/Opus to PCM16 WAV with FFmpeg. No audio normalization, cropping or substitution.",
+    "playbackGrantEndpoint": "https://studio-api-prod.suno.com/api/mango/rights",
+    "playbackGrantHttpStatus": 200,
+    "accountCredentialsUsed": false,
+    "temporaryPlaybackGrantRemoved": true,
+    "forbiddenOriginalEndpointRequested": false,
+    "ffmpegDistribution": "imageio-ffmpeg==0.6.0 via temporary uv environment",
+    "ffmpegVersion": "7.1",
+    "ffmpegExitCode": 0,
+    "sourceCodec": "Opus in MP4",
+    "playableWavCreated": true,
+    "isOriginalWav": false,
+    "durationChannelsAndSampleRateVerifiedFromDecodedAudio": true,
+    "outputPath": "UnityProject/Assets/MiniGame/Audio/Music/Day3_BoundJudgment.wav",
+    "output": {
+      "bytes": 34101964,
+      "sha256": "3e797e90a232ce1cd8c82e1e778fbc175133c339d6fb8199a524e32d22e6dcb8",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "frames": 8525448,
+      "durationSeconds": 177.6135,
+      "containerHeader": "52494646c45a080257415645",
+      "peak": 0.8616943359375,
+      "rms": 0.209044624337609
+    }
+  },
+  "decodedPlayback": {
+    "path": "Art/Dreams/Audio/Day3_BoundJudgment.playback.m4a",
+    "bytes": 2816347,
+    "sha256": "0eff5f13aa4378be6fa3271688633184ac2547113a34b494778f30da7f1fa849",
+    "headerHex": "0000001c6674797069736f6d00000200"
+  },
+  "playerSourceEvidence": [
+    {
+      "url": "https://suno.com/_next/static/immutable/chunks/1acqvrioijv85.js",
+      "sha256": "7473eb89fb9f4ba4a137587c64f658551a59ee7ff2817095bdc05b02f998d4a8",
+      "bytes": 25489
+    },
+    {
+      "url": "https://suno.com/_next/static/immutable/chunks/3w1p_8p7q7ofo.js",
+      "sha256": "d52339e3d78ca19db5364445184080d318abac44be0d8bfe52188492ed2eacda",
+      "bytes": 24151
+    },
+    {
+      "url": "https://suno.com/_next/static/immutable/chunks/049j6wg9rdfpv.js",
+      "sha256": "e27046d9863fc63169908adb6c0a1ec1a7ad6ef38bf4ee233163a5748b01032d",
+      "bytes": 45156
+    }
+  ],
+  "reaEvidenceId": "ev_70023dde782f144a37fef704323cd1e91bd7a031731d829a6a891c28ce9c639f"
+}

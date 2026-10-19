@@ -7,9 +7,9 @@ using MiniGame.Core;
 
 namespace MiniGame.Presentation
 {
-    public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory }
-    public enum TerminalPage { Closed, Directory, Review, Archive }
-    public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction, DoorMotion }
+    public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory, DoorView }
+    public enum TerminalPage { Closed, Directory, Review, Archive, SelfReview }
+    public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction, DoorMotion, DoorViewReturn }
     public enum InspectionKind { Eyes, Hands, Teeth, Photo, DailySigns, Records }
 
     public interface IGameContent
@@ -93,6 +93,9 @@ namespace MiniGame.Presentation
         public bool LeavingTerminal { get; }
         public bool ArchiveDirectoryVisible { get; }
         public bool RoomDoorOpen { get; }
+        public bool DoorViewActive { get; }
+        public bool UsesDreamFlow { get; }
+        public bool DreamTraversal { get; }
         public IReadOnlyList<TranscriptEntry> Transcript { get; }
         public string? PresentedPatientId { get; }
         public string? PresentedPatientName { get; }
@@ -106,7 +109,7 @@ namespace MiniGame.Presentation
             bool leavingTerminal = false, IEnumerable<TranscriptEntry>? transcript = null, bool archiveDirectoryVisible = false,
             string? presentedPatientId = null, string? presentedPatientName = null, string? presentedEncounterId = null,
             Disposition? presentedDisposition = null, IEnumerable<Disposition>? configuredDispositions = null,
-            bool roomDoorOpen = false)
+            bool roomDoorOpen = false, bool doorViewActive = false, bool usesDreamFlow = false)
         {
             Game = game; Input = input; TerminalOpen = terminalOpen; Paused = paused;
             Cue = cue; Dialogue = dialogue; Inspection = inspection;
@@ -116,6 +119,9 @@ namespace MiniGame.Presentation
             TerminalPage = terminalPage; UsesTerminalDirectory = usesTerminalDirectory; LeavingTerminal = leavingTerminal;
             ArchiveDirectoryVisible = archiveDirectoryVisible;
             RoomDoorOpen = roomDoorOpen;
+            DoorViewActive = doorViewActive;
+            UsesDreamFlow = usesDreamFlow;
+            DreamTraversal = usesDreamFlow && !terminalOpen && (game.Phase == GamePhase.AfterDream || game.Phase == GamePhase.SelfReview);
             Transcript = new ReadOnlyCollection<TranscriptEntry>(new List<TranscriptEntry>(transcript ?? Array.Empty<TranscriptEntry>()));
             PresentedPatientId = presentedPatientId; PresentedPatientName = presentedPatientName;
             PresentedEncounterId = presentedEncounterId; PresentedDisposition = presentedDisposition;

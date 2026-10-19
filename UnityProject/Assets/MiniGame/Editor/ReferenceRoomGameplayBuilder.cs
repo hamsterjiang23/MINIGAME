@@ -60,7 +60,7 @@ namespace MiniGame.UnityHost.Editor
             var targets = Child(root, "World interaction targets");
             var computerBounds = monitor.bounds; computerBounds.Encapsulate(screen.bounds); computerBounds.Expand(.02f);
             var computer = BoundsBox(targets, "Computer interaction", computerBounds);
-            computer.AddComponent<WorldInteraction>().Configure(InteractionTarget.Computer, "和平仪 / 打开终端", screen);
+            computer.AddComponent<WorldInteraction>().Configure(InteractionTarget.Computer, "和平仪 / 打开终端", monitor);
             var bedBounds = bed.bounds; bedBounds.Expand(new Vector3(.04f, .08f, .04f));
             BoundsBox(targets, "Bed interaction", bedBounds).AddComponent<WorldInteraction>()
                 .Configure(InteractionTarget.Bed, "床 / 休息", bed);
@@ -78,7 +78,7 @@ namespace MiniGame.UnityHost.Editor
             leaf.AddComponent<WorldInteraction>().Configure(InteractionTarget.Door, "门", leaf.GetComponent<Renderer>());
             var handle = Cube(hinge, "Entrance handle", new Vector3(1.27f, 1.12f, ReferenceDoorFrameBuilder.HingeOutset + .075f), new Vector3(.16f, .035f, .045f), metal);
             UnityEngine.Object.DestroyImmediate(handle.GetComponent<Collider>());
-            hinge.gameObject.AddComponent<HingedDoor>().Configure(hinge);
+            var door = hinge.gameObject.AddComponent<HingedDoor>(); door.Configure(hinge);
             var frame = Child(root, "Entrance frame"); frame.position = doorwayFloor; frame.rotation = Quaternion.LookRotation(right, Vector3.up);
             ReferenceDoorFrameBuilder.Build(frame, paint);
             ReferenceCorridorBuilder.Build(root, doorwayFloor, right, depth, Height);
@@ -103,6 +103,7 @@ namespace MiniGame.UnityHost.Editor
             camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = new Color(.045f, .05f, .045f);
             eye.gameObject.AddComponent<ReferenceCameraProjection>().Configure(61.9275f);
             var player = playerObject.gameObject.AddComponent<ApartmentPlayer>(); player.Configure(camera);
+            CombinedInteractionSetup.ConfigureDoorCamera(camera, player, door);
             var destination = Child(root, "Terminal camera destination");
             destination.position = Marker(room, "TerminalAlign"); destination.rotation = Quaternion.LookRotation(-depth, Vector3.up);
             var alignment = Child(root, "Terminal screen alignment"); alignment.SetPositionAndRotation(destination.position, destination.rotation);
@@ -127,6 +128,7 @@ namespace MiniGame.UnityHost.Editor
             var legacy = AssetDatabase.LoadAssetAtPath<YarnProject>(GeneratePrototypeYarn.ProjectPath);
             var bridge = host.AddComponent<MiniGameYarnBridge>(); bridge.Configure(legacy);
             var bootstrap = host.AddComponent<MiniGameBootstrap>(); bootstrap.Configure(ui, player, effects, bridge);
+            host.AddComponent<MiniGameAudioDirector>().Configure(MiniGameAudioSetup.EnsureAssets());
             var serialized = new SerializedObject(bootstrap); serialized.FindProperty("useCampaign").boolValue = true; serialized.ApplyModifiedPropertiesWithoutUndo();
             host.SetActive(true);
             Physics.SyncTransforms();

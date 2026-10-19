@@ -54,6 +54,8 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            var doorCamera = host.Player.ViewCamera.GetComponent<DoorViewCamera>();
+            if (doorCamera != null) doorCamera.enabled = false; // Keep this geometry fixture on manual hinge movement.
             var door = Object.FindObjectOfType<HingedDoor>();
             var frame = GameObject.Find("Entrance frame");
             Assert.That(host, Is.Not.Null);

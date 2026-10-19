@@ -158,7 +158,7 @@ namespace MiniGame.UnityHost.Editor
             terminalBounds.Encapsulate(screenSurface.bounds);
             terminalBounds.Expand(.035f);
             var terminal = BoundsCollider(interactionRoot.transform, "Computer interaction", terminalBounds, .04f);
-            terminal.gameObject.AddComponent<WorldInteraction>().Configure(InteractionTarget.Computer, "和平仪 / 打开终端", screenSurface);
+            terminal.gameObject.AddComponent<WorldInteraction>().Configure(InteractionTarget.Computer, "和平仪 / 打开终端", monitor);
             var bedBounds = bed.bounds;
             bedBounds.Expand(new Vector3(.04f, .08f, .04f));
             var bedHit = BoundsCollider(interactionRoot.transform, "Bed interaction", bedBounds, .04f);
@@ -236,6 +236,7 @@ namespace MiniGame.UnityHost.Editor
             effects.ConfigureBedtime(bedtime);
             var bridge = host.AddComponent<MiniGameYarnBridge>(); bridge.Configure(legacyYarn);
             var bootstrap = host.AddComponent<MiniGameBootstrap>(); bootstrap.Configure(ui, player, effects, bridge);
+            host.AddComponent<MiniGameAudioDirector>().Configure(MiniGameAudioSetup.EnsureAssets());
             var serializedHost = new SerializedObject(bootstrap);
             serializedHost.FindProperty("useTerminalDemo").boolValue = true;
             serializedHost.FindProperty("dialoguePackage").objectReferenceValue = package;
@@ -260,6 +261,7 @@ namespace MiniGame.UnityHost.Editor
                 .Concat(EditorBuildSettings.scenes.Where(entry => entry.path != ScenePath && entry.path != ReferencePrototypeBuilder.ScenePath)).ToArray();
             EditorSceneManager.MarkSceneDirty(scene);
             CampaignBuilder.EnableCampaignInOpenScene();
+            DreamSequenceSetup.ConfigureOpenScene(DreamSequenceSetup.EnsureProfile(), DreamSequenceSetup.EnsureRebellionProfile());
             EditorSceneManager.SaveScene(scene, ScenePath);
             AssetDatabase.SaveAssets();
             var report = new SetupReport

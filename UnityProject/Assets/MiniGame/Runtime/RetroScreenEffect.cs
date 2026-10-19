@@ -12,6 +12,7 @@ namespace MiniGame.UnityHost
         public RetroScreenProfile Profile { get => profile; set => profile = value; }
         // Comparison is transient and never serialized into the scene/profile or included in saves.
         public bool PreviewOriginal { get; set; }
+        public bool PresentationBypass { get; set; }
 
         public void Configure(RetroScreenProfile settings, Shader shader)
         {
@@ -24,7 +25,7 @@ namespace MiniGame.UnityHost
 
         public void Render(RenderTexture source, RenderTexture destination)
         {
-            if (!enabled || PreviewOriginal || profile == null || !profile.EffectEnabled || profile.Strength <= 0
+            if (!enabled || PreviewOriginal || PresentationBypass || profile == null || !profile.EffectEnabled || profile.Strength <= 0
                 || effectShader == null || !effectShader.isSupported)
             {
                 Graphics.Blit(source, destination);

@@ -29,11 +29,13 @@ namespace MiniGame.Presentation
         private bool _leavingDirectory;
         private bool _archiveDirectoryVisible;
         private bool _roomDoorOpen;
+        private bool _doorViewActive;
         private string? _historyEncounterId;
         private readonly List<TranscriptEntry> _transcript = new List<TranscriptEntry>();
 
         public event Action<RuntimeView>? Changed;
         public bool IsCampaign => _rules.StartDay == 0;
+        public bool UsesDreamFlow => _rules.DreamFlowEnabled;
 
         public GameRuntime(GameRules rules, IGameContent content, bool useTerminalDirectory = false)
             : this(new GameSession(rules), rules, content, useTerminalDirectory) { }
@@ -55,7 +57,8 @@ namespace MiniGame.Presentation
             var snapshot = _session.CreateSnapshot().State;
             var input = _paused ? InputContext.Paused : game.Phase == GamePhase.Ending ? InputContext.Ending
                 : _inspection != null ? InputContext.Inspection : _cue != null ? InputContext.Presentation
-                : _terminalOpen && (_terminalPage == TerminalPage.Directory || _terminalPage == TerminalPage.Archive)
+                : _doorViewActive ? InputContext.DoorView
+                : _terminalOpen && (_terminalPage == TerminalPage.Directory || _terminalPage == TerminalPage.Archive || _terminalPage == TerminalPage.SelfReview)
                     ? InputContext.TerminalDirectory : _terminalOpen ? InputContext.Dialogue : InputContext.World;
             var day = _rules.Days.FirstOrDefault(item => item.Day == game.Day);
             var patients = _rules.Patients.Where(profile => profile.FirstDay <= game.Day
@@ -85,7 +88,7 @@ namespace MiniGame.Presentation
                 _terminalPage, _useTerminalDirectory, _leavingDirectory,
                 _transcript.Where(entry => entry.EncounterId == _historyEncounterId), _archiveDirectoryVisible,
                 presented?.PatientId, presentedProfile?.DisplayName, presented?.Id, presented?.Disposition, presentedMeeting?.ReactionNodes.Keys,
-                _roomDoorOpen);
+                _roomDoorOpen, _doorViewActive, UsesDreamFlow);
             return _cachedView;
         }
 
@@ -101,6 +104,15 @@ namespace MiniGame.Presentation
             }
             if (target == InteractionTarget.Computer)
             {
+                if (view.Game.Phase == GamePhase.SelfReview && UsesDreamFlow)
+                {
+                    _terminalOpen = true;
+                    _terminalPage = TerminalPage.SelfReview;
+                    _archiveDirectoryVisible = false;
+                    _historyEncounterId = null;
+                    SetCue(PresentationKind.EnterTerminal);
+                    return Accept();
+                }
                 CommandResult? result = null;
                 if (view.Game.Phase == GamePhase.Apartment)
                 {
@@ -127,6 +139,33 @@ namespace MiniGame.Presentation
             return Accept(bedResult.Events);
         }
 
+        public RuntimeResult BeginNightDream()
+        {
+            var view = GetView();
+            if (!UsesDreamFlow || view.Input != InputContext.World || view.TerminalOpen || view.Game.Phase != GamePhase.Evening)
+                return Reject("NightDreamUnavailable");
+            var result = _session.Execute(new BeginNightDream());
+            if (!result.Accepted) return Reject(result.Reason.ToString());
+            if (_session.GetPlayerView().Phase == GamePhase.Dream) SetCue(PresentationKind.Dream);
+            return Accept(result.Events);
+        }
+
+        public RuntimeResult ConfirmSelfPurification()
+        {
+            var view = GetView();
+            if (!UsesDreamFlow || view.Input != InputContext.TerminalDirectory || !view.TerminalOpen
+                || view.TerminalPage != TerminalPage.SelfReview || view.Game.Phase != GamePhase.SelfReview)
+                return Reject("SelfPurificationUnavailable");
+            var result = _session.Execute(new ConfirmSelfPurification());
+            if (!result.Accepted) return Reject(result.Reason.ToString());
+            _terminalOpen = false;
+            _terminalPage = TerminalPage.Closed;
+            _leavingDirectory = false;
+            _archiveDirectoryVisible = false;
+            SetCue(PresentationKind.Ending);
+            return Accept(result.Events);
+        }
+
         public RuntimeResult ToggleRoomDoor()
         {
             var view = GetView();
@@ -135,6 +174,26 @@ namespace MiniGame.Presentation
                 && view.Game.Phase != GamePhase.Work) return Reject("InteractionUnavailable");
             _roomDoorOpen = !_roomDoorOpen;
             SetCue(PresentationKind.DoorMotion);
+            return Accept();
+        }
+
+        public RuntimeResult EnterDoorView()
+        {
+            var view = GetView();
+            if (view.Input != InputContext.World) return Reject("InputLocked");
+            if (view.Game.Phase != GamePhase.MorningInspection && view.Game.Phase != GamePhase.Apartment
+                && view.Game.Phase != GamePhase.Work) return Reject("InteractionUnavailable");
+            _doorViewActive = true;
+            _roomDoorOpen = true;
+            SetCue(PresentationKind.DoorMotion);
+            return Accept();
+        }
+
+        public RuntimeResult ExitDoorView()
+        {
+            if (GetView().Input != InputContext.DoorView) return Reject("InputLocked");
+            // The host returns the camera before acknowledging this cue; only then may the door close.
+            SetCue(PresentationKind.DoorViewReturn);
             return Accept();
         }
 
@@ -187,6 +246,11 @@ namespace MiniGame.Presentation
                     if (game.Phase == GamePhase.MorningInspection && _roomDoorOpen)
                         SetCue(PresentationKind.MorningInspection);
                     break;
+                case PresentationKind.DoorViewReturn:
+                    _doorViewActive = false;
+                    _roomDoorOpen = false;
+                    SetCue(PresentationKind.DoorMotion);
+                    break;
                 case PresentationKind.EnterTerminal:
                     if (!_useTerminalDirectory && game.EncounterStage == EncounterStage.Introduction)
                         SetCue(PresentationKind.Introduction);
@@ -222,7 +286,7 @@ namespace MiniGame.Presentation
         public RuntimeResult ReturnToDirectory()
         {
             var view = GetView();
-            if (!_useTerminalDirectory || view.Input != InputContext.TerminalDirectory)
+            if (!_useTerminalDirectory || view.Input != InputContext.TerminalDirectory || _terminalPage == TerminalPage.SelfReview)
                 return Reject("EncounterInProgress");
             if (_terminalPage == TerminalPage.Archive)
             {
@@ -239,7 +303,7 @@ namespace MiniGame.Presentation
         public RuntimeResult LeaveTerminal()
         {
             var view = GetView();
-            if (!_useTerminalDirectory || view.Input != InputContext.TerminalDirectory)
+            if (!_useTerminalDirectory || view.Input != InputContext.TerminalDirectory || _terminalPage == TerminalPage.SelfReview)
                 return Reject("EncounterInProgress");
             _leavingDirectory = true;
             SetCue(PresentationKind.ExitTerminal);
@@ -345,6 +409,7 @@ namespace MiniGame.Presentation
                 Page = _terminalPage, LeavingDirectory = _leavingDirectory, HistoryEncounterId = _historyEncounterId,
                 ArchiveDirectoryVisible = _archiveDirectoryVisible,
                 RoomDoorOpen = _roomDoorOpen,
+                DoorViewActive = _doorViewActive,
                 Transcript = _transcript.Select(entry => new TranscriptRecord
                 {
                     Key = entry.Key, EncounterId = entry.EncounterId, CoreNodeId = entry.CoreNodeId,
@@ -382,7 +447,8 @@ namespace MiniGame.Presentation
                     _terminalPage = checkpoint.Page ?? (checkpoint.TerminalOpen ? TerminalPage.Review : TerminalPage.Closed),
                     _leavingDirectory = checkpoint.LeavingDirectory, _historyEncounterId = checkpoint.HistoryEncounterId,
                     _archiveDirectoryVisible = checkpoint.ArchiveDirectoryVisible,
-                    _roomDoorOpen = checkpoint.RoomDoorOpen
+                    _roomDoorOpen = checkpoint.RoomDoorOpen,
+                    _doorViewActive = checkpoint.DoorViewActive
                 };
                 runtime._transcript.AddRange(checkpoint.Transcript.Select(entry => new TranscriptEntry(entry.Key,
                     entry.EncounterId, entry.CoreNodeId, entry.Speaker, entry.Text, entry.SourceNodeId, entry.PortraitId, entry.IsPlayer,
@@ -393,6 +459,12 @@ namespace MiniGame.Presentation
                     // The host snaps the physical door to its persisted target. Continue only the required story cue.
                     if (session.GetPlayerView().Phase == GamePhase.MorningInspection)
                         runtime.SetCue(PresentationKind.MorningInspection);
+                }
+                else if (checkpoint.CueKind == PresentationKind.DoorViewReturn)
+                {
+                    // There is no persisted camera pose. Restore directly to the room instead of replaying a return.
+                    runtime._doorViewActive = false;
+                    runtime._roomDoorOpen = false;
                 }
                 else if (checkpoint.CueKind.HasValue) runtime.SetCue(checkpoint.CueKind.Value);
                 if (checkpoint.OpenInspectionKind.HasValue)
@@ -412,10 +484,20 @@ namespace MiniGame.Presentation
         {
             var game = session.GetPlayerView();
             var doorMotion = checkpoint.CueKind == PresentationKind.DoorMotion;
-            var cue = doorMotion ? null : checkpoint.CueKind;
+            var doorReturn = checkpoint.CueKind == PresentationKind.DoorViewReturn;
+            var cue = doorMotion || doorReturn ? null : checkpoint.CueKind;
             var open = checkpoint.TerminalOpen;
             if (checkpoint.RoomDoorOpen && !DoorCanRemainOpen(game.Phase))
                 throw new SnapshotValidationException("The room door must be closed outside the working day.");
+            if (checkpoint.DoorViewActive && (!checkpoint.RoomDoorOpen || open || checkpoint.OpenInspectionKind.HasValue
+                || !DoorCanRemainOpen(game.Phase)
+                || (checkpoint.CueKind.HasValue && !doorMotion && !doorReturn
+                    && checkpoint.CueKind != PresentationKind.MorningInspection && checkpoint.CueKind != PresentationKind.Briefing)
+                || (game.Phase == GamePhase.MorningInspection && !doorMotion && checkpoint.CueKind != PresentationKind.MorningInspection)))
+                throw new SnapshotValidationException("Door view does not match an open room door and its presentation checkpoint.");
+            if (doorReturn && (!checkpoint.DoorViewActive
+                || (game.Phase != GamePhase.Apartment && game.Phase != GamePhase.Work)))
+                throw new SnapshotValidationException("Door view return requires a completed outside-door presentation.");
             if (doorMotion && (open || checkpoint.OpenInspectionKind.HasValue || !DoorCanRemainOpen(game.Phase)
                 || game.Phase == GamePhase.Briefing
                 || (game.Phase == GamePhase.MorningInspection && !checkpoint.RoomDoorOpen)))
@@ -426,8 +508,10 @@ namespace MiniGame.Presentation
                 && (current.Stage == EncounterStage.Introduction || current.Stage == EncounterStage.NormalDialogue);
             var afterReaction = snapshot.CommandHistory.LastOrDefault()?.Kind == CommandKind.CompleteReaction;
             var page = checkpoint.Page ?? (open ? TerminalPage.Review : TerminalPage.Closed);
+            if (page == TerminalPage.SelfReview && (!rules.DreamFlowEnabled || game.Phase != GamePhase.SelfReview))
+                throw new SnapshotValidationException("Self review requires its dream-flow checkpoint.");
             if (!Enum.IsDefined(typeof(TerminalPage), page) || (page != TerminalPage.Closed) != open
-                || (!checkpoint.UseTerminalDirectory && page != (open ? TerminalPage.Review : TerminalPage.Closed))
+                || (!checkpoint.UseTerminalDirectory && page != TerminalPage.SelfReview && page != (open ? TerminalPage.Review : TerminalPage.Closed))
                 || (checkpoint.LeavingDirectory && (!checkpoint.UseTerminalDirectory || cue != PresentationKind.ExitTerminal
                     || (page != TerminalPage.Directory && page != TerminalPage.Archive))))
                 throw new SnapshotValidationException("Terminal page does not match the presentation checkpoint.");
@@ -456,6 +540,8 @@ namespace MiniGame.Presentation
                 GamePhase.Sleeping => !open && cue == PresentationKind.Sleep,
                 GamePhase.Dream => !open && cue == PresentationKind.Dream,
                 GamePhase.AfterDream => !open && cue == null,
+                GamePhase.SelfReview => rules.DreamFlowEnabled && ((!open && cue == null)
+                    || (open && page == TerminalPage.SelfReview && (cue == null || cue == PresentationKind.EnterTerminal))),
                 GamePhase.Ending => !open && (cue == null || cue == PresentationKind.Ending),
                 _ => false
             };
@@ -530,9 +616,10 @@ namespace MiniGame.Presentation
         private IEnumerable<InteractionTarget> WorldInteractions(PlayerView view)
         {
             if (view.Phase == GamePhase.MorningInspection) return new[] { InteractionTarget.Door };
+            if (view.Phase == GamePhase.SelfReview && UsesDreamFlow) return new[] { InteractionTarget.Computer };
             if (view.Phase == GamePhase.Apartment || (view.Phase == GamePhase.Work && !_terminalOpen))
                 return new[] { InteractionTarget.Computer, InteractionTarget.Door };
-            if (view.Phase == GamePhase.Evening || view.Phase == GamePhase.AfterDream)
+            if ((view.Phase == GamePhase.Evening && !UsesDreamFlow) || view.Phase == GamePhase.AfterDream)
                 return new[] { InteractionTarget.Bed };
             return Array.Empty<InteractionTarget>();
         }
@@ -541,7 +628,8 @@ namespace MiniGame.Presentation
         {
             // Fresh tokens invalidate callbacks from prior loads or abandoned host instances.
             var view = _session.GetPlayerView();
-            var text = kind == PresentationKind.DoorMotion ? ""
+            var text = kind == PresentationKind.DoorMotion || kind == PresentationKind.DoorViewReturn
+                || (kind == PresentationKind.Ending && view.Ending == EndingType.DreamSea) ? ""
                 : kind == PresentationKind.Introduction ? _content.GetDialogue(view).Text : _content.GetPresentation(kind, view);
             if (view.CurrentNodeId != null && (kind == PresentationKind.Introduction
                 || kind == PresentationKind.ResponseBranch || kind == PresentationKind.Reaction))
@@ -551,7 +639,11 @@ namespace MiniGame.Presentation
 
         private RuntimeResult Accept(IEnumerable<GameEvent>? events = null)
         {
-            if (!DoorCanRemainOpen(_session.GetPlayerView().Phase)) _roomDoorOpen = false;
+            if (!DoorCanRemainOpen(_session.GetPlayerView().Phase))
+            {
+                _roomDoorOpen = false;
+                _doorViewActive = false;
+            }
             _cachedView = null;
             Changed?.Invoke(GetView());
             return new RuntimeResult("", events);
@@ -579,6 +671,7 @@ namespace MiniGame.Presentation
         [JsonProperty] public bool LeavingDirectory { get; set; }
         [JsonProperty] public bool ArchiveDirectoryVisible { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool RoomDoorOpen { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool DoorViewActive { get; set; }
         [JsonProperty] public string? HistoryEncounterId { get; set; }
         [JsonProperty] public List<TranscriptRecord> Transcript { get; set; } = new List<TranscriptRecord>();
     }

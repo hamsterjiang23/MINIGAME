@@ -47,6 +47,32 @@ namespace MiniGame.UnityHost
         }
         public void ConfigureTerminalSurface(Renderer surface) { terminalSurface = surface; surfaceReady = false; }
         public void ConfigureBedtime(BedtimeGuidance guidance) => bedtimeGuidance = guidance;
+        public void PrepareForRuntimeChange()
+        {
+            if (runtime != null) runtime.Changed -= Present;
+            if (playing != null) StopCoroutine(playing);
+            playing = null;
+            seating?.Restore(true);
+            if (hasRoomPose)
+            {
+                viewCamera.transform.SetPositionAndRotation(roomPosition, roomRotation);
+                viewCamera.fieldOfView = roomFieldOfView;
+            }
+            hasRoomPose = false;
+            activeToken = null;
+            EntryPhase = TerminalEntryPhase.None;
+        }
+
+        public bool TryGetRoomReturnPose(out Vector3 actorPosition, out Quaternion actorRotation,
+            out Vector3 cameraPosition, out Quaternion cameraRotation, out float fieldOfView)
+        {
+            actorPosition = seatedPlayer != null ? seatedPlayer.transform.position : Vector3.zero;
+            actorRotation = seatedPlayer != null ? seatedPlayer.transform.rotation : Quaternion.identity;
+            if (seating != null && seating.TryGetStandingPose(out var position, out var rotation))
+            { actorPosition = position; actorRotation = rotation; }
+            cameraPosition = roomPosition; cameraRotation = roomRotation; fieldOfView = roomFieldOfView;
+            return hasRoomPose && seatedPlayer != null;
+        }
         public void ConfigureSeatedEntry(ApartmentPlayer player, Transform seatEyes, Transform alignment, Renderer surface)
         {
             seatedPlayer = player; seatEyePose = seatEyes; screenAlignPose = alignment;

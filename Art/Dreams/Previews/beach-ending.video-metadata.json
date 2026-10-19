@@ -1,0 +1,87 @@
+{
+  "formatVersion": 1,
+  "video": "beach-ending.mp4",
+  "bytes": 5167776,
+  "sha256": "45359b02fc76434def022a50fba6e52772fe19d2af4d0d096b9fa03d395320b7",
+  "capture": {
+    "path": "Artifacts/Dreams/beach-frames/capture.json",
+    "sha256": "17b028a6dfc1cbe799b0cc55581b0ddb4a996d6eed449a3e7913601d5b10100b",
+    "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "scene": "DreamEndingBeach",
+    "simulatedInput": true,
+    "completed": true,
+    "frames": 960,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "durationSeconds": 40,
+    "phaseEvents": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "phase": "Walking",
+        "detail": "Simulate held W until in bed range, then submit one E-equivalent command."
+      },
+      {
+        "frame": 221,
+        "seconds": 9.208333969116211,
+        "phase": "Lying",
+        "detail": "Accepted one simulated bed interaction."
+      },
+      {
+        "frame": 258,
+        "seconds": 10.75,
+        "phase": "Drifting",
+        "detail": ""
+      }
+    ]
+  },
+  "audio": {
+    "liveCapture": false,
+    "method": "Postmixed original synthesized ocean ambience from the same configured clip and ambience gain; not a recording of Unity audio output. No replacement music or generated voice is added.",
+    "tracks": [
+      {
+        "path": "Art/DreamEnding/OceanWaves.wav",
+        "sha256": "305f61cef4e14b26fc3cc76ac8c9dbc8451f7281d96246a09d7901ef2bf06585",
+        "gain": 0.45,
+        "loop": true
+      }
+    ],
+    "sampleRate": 48000,
+    "channels": 2,
+    "startSeconds": 0,
+    "endSeconds": 40,
+    "fadeInSeconds": 2,
+    "fadeShape": "linear",
+    "fadeOutSeconds": 0,
+    "musicSlotEmpty": true,
+    "voiceSlotsEmpty": true,
+    "limiter": {
+      "linearPeakLimit": 0.95,
+      "autoLevel": false,
+      "latencyCompensated": true
+    }
+  },
+  "encoding": {
+    "ffmpegVersion": "7.1",
+    "codec": "libx264",
+    "threads": 2,
+    "preset": "fast",
+    "crf": 20,
+    "pixelFormat": "yuv420p",
+    "faststart": true,
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "exitCode": 0
+  },
+  "verification": {
+    "fullDecodeExitCode": 0,
+    "decodedFrames": 960,
+    "reportedContainerDuration": "00:00:40.00",
+    "audioPeakDb": -17.753948,
+    "audioRmsDb": -36.690001,
+    "sourcePngsRetained": true,
+    "log": "beach-ending.verification.log"
+  }
+}
