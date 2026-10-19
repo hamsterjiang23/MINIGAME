@@ -96,7 +96,13 @@ namespace MiniGame.UnityHost.Editor
             var scene = SceneManager.GetActiveScene();
             if (scene.path != ScenePath) throw new InvalidOperationException("Open MainRoomCombined before configuring its gameplay.");
             var room = scene.GetRootGameObjects().Single(root => root.name == "MainRoomCombined");
+            if (room.GetComponentsInChildren<Transform>(true).Any(item => item.name == "Unity_ReferenceOrigin"))
+            {
+                ReferenceRoomGameplayBuilder.Configure(room);
+                return;
+            }
             var frame = new RoomFrame(room);
+            var retroProfile = RetroScreenSetup.FindProfile(scene);
             var screenSurface = Surface(room, "CRT screen emission");
             var monitor = Surface(room, "CRT_Monitor_Tripo");
             var floor = Surface(room, "Floor substrate");
@@ -187,6 +193,7 @@ namespace MiniGame.UnityHost.Editor
             camera.fieldOfView = 63f; camera.nearClipPlane = .025f; camera.farClipPlane = 40f;
             camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = new Color(.045f, .05f, .045f);
             camera.allowHDR = true;
+            RetroScreenSetup.Attach(camera, retroProfile);
             var player = playerObject.AddComponent<ApartmentPlayer>(); player.Configure(camera);
 
             var terminalPose = Child(gameplay.transform, "Terminal camera destination");

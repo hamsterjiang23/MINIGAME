@@ -40,6 +40,8 @@ namespace MiniGame.UnityHost
         private Text speaker;
         private Text body;
         private Text worldPrompt;
+        private Text roomCaption;
+        private float roomCaptionRemaining;
         private Text notice;
         private Text inspectionTitle;
         private Text inspectionSummary;
@@ -67,12 +69,15 @@ namespace MiniGame.UnityHost
         public float TerminalReveal => terminalReveal;
         public bool TransitionLocked => transitionLocked;
         public bool HistoryOpen => terminalView != null && terminalView.HistoryOpen;
+        public string CurrentRoomCaption => roomCaption != null ? roomCaption.text : string.Empty;
+        public bool RoomCaptionVisible => roomCaption != null && roomCaption.gameObject.activeSelf && roomCaptionRemaining > 0;
 
         public void Bind(GameRuntime game)
         {
             if (runtime != null) runtime.Changed -= Render;
             EnsureBuilt();
             runtime = game;
+            ClearRoomCaption();
             fallbackKey = null;
             transitionLocked = false;
             SetTerminalReveal(1);
@@ -91,6 +96,18 @@ namespace MiniGame.UnityHost
         {
             focusAllowed = allowed;
             SetWorldPrompt(string.IsNullOrEmpty(label) ? string.Empty : allowed ? "[ " + shortcut + " ]   " + label : label + "  ·  暂不可用");
+        }
+        public void ShowRoomCaption(string text, float seconds = 4)
+        {
+            EnsureBuilt();
+            roomCaption.text = text;
+            roomCaptionRemaining = Mathf.Max(0, seconds);
+            roomCaption.gameObject.SetActive(roomCaptionRemaining > 0 && !string.IsNullOrEmpty(text));
+        }
+        public void ClearRoomCaption()
+        {
+            roomCaptionRemaining = 0;
+            if (roomCaption != null) { roomCaption.text = string.Empty; roomCaption.gameObject.SetActive(false); }
         }
         public void SetTerminalReveal(float amount)
         {
@@ -236,6 +253,11 @@ namespace MiniGame.UnityHost
 
         private void Update()
         {
+            if (roomCaptionRemaining > 0 && current != null && !current.Paused)
+            {
+                roomCaptionRemaining -= Time.unscaledDeltaTime;
+                if (roomCaptionRemaining <= 0) ClearRoomCaption();
+            }
             if (promptGroup != null)
             {
                 bool world = current != null && current.Input == InputContext.World;
@@ -296,6 +318,7 @@ namespace MiniGame.UnityHost
         public void ReflowTerminal() => terminalView?.Fit();
         private Button ActiveContinue => current != null && current.TerminalOpen ? terminalView.Continue : continueButton;
         private bool CanAdvanceDialogue() => current != null && dialogueInteractable && !transitionLocked && !current.Paused && current.Inspection == null
+            && current.Cue?.Kind != PresentationKind.DoorMotion
             && (!current.TerminalOpen || terminalReveal >= .999f)
             && (!current.TerminalOpen || (terminalView.IsReview && !terminalView.HistoryOpen));
 
@@ -318,12 +341,14 @@ namespace MiniGame.UnityHost
             EnsureBuilt();
             if (current != null && current.Game.Phase != view.Game.Phase) ClearNotification();
             current = view;
+            if (!view.Paused && (view.Input != InputContext.World || BedtimeGuidance.IsSleepOnly(view))) ClearRoomCaption();
             header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     " + PhaseName(view.Game.Phase);
             bool bedtime = BedtimeGuidance.IsSleepOnly(view);
             header.gameObject.SetActive(!view.TerminalOpen && !bedtime);
             terminal.SetActive(view.TerminalOpen);
             terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
-            conversation.SetActive(!view.TerminalOpen && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending));
+            conversation.SetActive(!view.TerminalOpen && view.Cue?.Kind != PresentationKind.DoorMotion
+                && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending));
             SetRect(conversationRect, new Vector2(.17f, .19f), new Vector2(.83f, .74f));
             worldHelp.gameObject.SetActive(view.Input == InputContext.World && !bedtime);
             worldHelp.text = (view.Game.Day == 0 && view.Game.Phase == GamePhase.Apartment
@@ -338,7 +363,7 @@ namespace MiniGame.UnityHost
             }
             pause.SetActive(view.Paused);
             if (view.Paused) pause.transform.SetAsLastSibling();
-            if (!yarnBound || (view.Cue != null && (view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep)))
+            if (!yarnBound || (view.Cue != null && (view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion)))
                 RenderFallback(view);
             if (view.Game.Phase == GamePhase.Ending && view.Cue == null)
             {
@@ -356,7 +381,7 @@ namespace MiniGame.UnityHost
             if (view.Cue != null)
             {
                 var token = view.Cue.Token;
-                bool automatic = view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep;
+                bool automatic = view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion;
                 SetDialogueText("和平仪", view.Cue.Text);
                 ShowCueText(view.Cue.Text, automatic ? null : (Action)(() => Check(runtime.CompleteCue(token))));
             }
@@ -407,6 +432,9 @@ namespace MiniGame.UnityHost
             header = MakeText(canvasRoot, "ShiftHeader", "", 22, TextAnchor.MiddleLeft, new Vector2(.03f, .925f), new Vector2(.97f, .98f));
             worldHelp = MakeText(canvasRoot, "WorldInstructions", "", 19, TextAnchor.LowerLeft, new Vector2(.03f, .04f), new Vector2(.57f, .16f));
             worldPrompt = MakeText(canvasRoot, "InteractionPrompt", "", 26, TextAnchor.MiddleCenter, new Vector2(.25f, .25f), new Vector2(.75f, .31f));
+            roomCaption = MakeText(canvasRoot, "RoomPropCaption", "", 26, TextAnchor.MiddleCenter, new Vector2(.12f, .12f), new Vector2(.88f, .21f));
+            roomCaption.raycastTarget = false;
+            roomCaption.gameObject.SetActive(false);
             promptGroup = worldPrompt.gameObject.AddComponent<CanvasGroup>(); promptGroup.blocksRaycasts = false;
             focusMark = MakePanel(worldPrompt.rectTransform, "FocusUnderline", Accent, new Vector2(.35f, .02f), new Vector2(.65f, .04f)).GetComponent<Image>();
             focusMark.raycastTarget = false;

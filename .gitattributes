@@ -21,6 +21,7 @@
 *.otf filter=lfs diff=lfs merge=lfs -text
 *.fbx filter=lfs diff=lfs merge=lfs -text
 *.blend filter=lfs diff=lfs merge=lfs -text
+Art/MainRoom/reference/MainRoomReference.glb filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
 *.pdb filter=lfs diff=lfs merge=lfs -text
@@ -831,3 +832,4 @@ research/no-im-not-a-human/RecoveredUnityProject/ExportedProject/Assets/MonoBeha
 research/no-im-not-a-human/RecoveredUnityProject/ExportedProject/Assets/_Localization/Tables/Text/Dialogs/Dialogs_vi.asset filter=lfs diff=lfs merge=lfs -text
 research/no-im-not-a-human/RecoveredUnityProject/ExportedProject/Assets/MonoBehaviour/NotoSansSC-Medium[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
 research/no-im-not-a-human/RecoveredUnityProject/ExportedProject/Assets/_Localization/Tables/Text/Dialogs/Dialogs_pl.asset filter=lfs diff=lfs merge=lfs -text
+UnityProject/Packages/com.unity.pipeline/.attestation.p7m filter=lfs diff=lfs merge=lfs -text

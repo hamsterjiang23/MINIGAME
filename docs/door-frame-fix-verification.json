@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-19",
+  "issue": "Entrance frame flickers as the viewpoint changes while the door is open",
+  "cause": "Three-cube casing shares positive-area coplanar triangles at corners and with source-doorway reveal faces",
+  "baseline": {
+    "frameTriangles": 36,
+    "coplanarOverlapPairs": 34,
+    "report": "Artifacts/DoorFrameFix/baseline.xml",
+    "log": "Artifacts/DoorFrameFix/baseline.log"
+  },
+  "fix": {
+    "geometry": "Single continuous U-shaped casing;14quads/28triangles; no internal corner faces",
+    "liningMillimetres": 25,
+    "frontBackProjectionMillimetres": 35,
+    "buriedFootMillimetres": 10,
+    "openingMetres": [
+      1.5,
+      2.5
+    ],
+    "clearOpeningMetres": [
+      1.45,
+      2.475
+    ],
+    "leafMetres": [
+      1.43,
+      2.45
+    ],
+    "hingeOutsetMillimetres": 55,
+    "defaultOpenDegrees": 60,
+    "viewOnlyThresholdRetained": true
+  },
+  "checks": {
+    "frameTriangles": 28,
+    "coplanarOverlapPairs": 0,
+    "cameraViews": 8,
+    "anglesDegrees": [
+      0,
+      30,
+      60,
+      90
+    ],
+    "frameWorldVerticesStationary": true,
+    "leafFramePenetrations": 0,
+    "playMode": {
+      "passed": 7,
+      "failed": 0,
+      "seconds": 38.1302499,
+      "report": "Artifacts/DoorFrameFix/final-playmode.xml"
+    },
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "errors": 0,
+      "warnings": 0,
+      "sizeBytes": 237896310,
+      "seconds": 4.0925597
+    },
+    "delivery": {
+      "zip": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Releases\\MiniGame-Windows-x64-20261019-doorframe-fixed.zip",
+      "exe": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "zipBytes": 107396015,
+      "zipSha256": "d0fe9685f9d62c73f288a7b370af9579c778584c53f43fff98faf0fa08e3edd2",
+      "payloadFiles": 227,
+      "payloadHashMismatches": 0,
+      "ready": true,
+      "runtimeErrors": 0,
+      "log": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\DoorFrameFix\\Packaged-20261019-124522\\player.log"
+    },
+    "staticReview": "No additional bug found in mesh winding/coverage and0–90degree clearances",
+    "visibleEditor": {
+      "processId": 25292,
+      "ready": true
+    }
+  },
+  "visuals": "Artifacts/DoorFrameFix/Visuals/door-frame-*.png",
+  "sourceHashes": [
+    {
+      "file": "UnityProject/Assets/MiniGame/Editor/ReferenceDoorFrameBuilder.cs",
+      "sha256": "0dc0bdc11f32d13f4353e4a463d0b4d46fbe8edf419f38a9ad2c693959da19aa"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Editor/ReferenceRoomGameplayBuilder.cs",
+      "sha256": "22a78c1fbf8104edd643080d9515bd1c38ddb0e91c050006a9850be84585c608"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Tests/PlayMode/DoorFrameRenderingPlayModeTests.cs",
+      "sha256": "02dc25ddc3ae0522a4be84570bc854d230e2ab39b1bf3c4ce47aa02468d971ac"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "12f7633ec3473e541ad9e01b07a5e055ce23db0cec85968c504723c9c7f2aa0d"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Generated/ReferenceRoom/Entrance frame.asset",
+      "sha256": "f448f8e412638f67edfe1abdd4e01d3eda0b59f027ca464430bbf99b1ef216eb"
+    }
+  ],
+  "limits": [
+    "Rendering and physical motion checks ran in graphical UnityEditorPlayMode. Packaged Windows validation covers archive integrity and startup.",
+    "Dialogue/core rules were unchanged by this rendering fix; no new .NET rule test run was required."
+  ]
+}

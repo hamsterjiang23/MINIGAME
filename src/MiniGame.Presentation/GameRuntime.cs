@@ -28,6 +28,7 @@ namespace MiniGame.Presentation
         private TerminalPage _terminalPage;
         private bool _leavingDirectory;
         private bool _archiveDirectoryVisible;
+        private bool _roomDoorOpen;
         private string? _historyEncounterId;
         private readonly List<TranscriptEntry> _transcript = new List<TranscriptEntry>();
 
@@ -83,7 +84,8 @@ namespace MiniGame.Presentation
                 _observations.Select(observation => $"{observation.Day}:{observation.PatientId}:{observation.Kind}"),
                 _terminalPage, _useTerminalDirectory, _leavingDirectory,
                 _transcript.Where(entry => entry.EncounterId == _historyEncounterId), _archiveDirectoryVisible,
-                presented?.PatientId, presentedProfile?.DisplayName, presented?.Id, presented?.Disposition, presentedMeeting?.ReactionNodes.Keys);
+                presented?.PatientId, presentedProfile?.DisplayName, presented?.Id, presented?.Disposition, presentedMeeting?.ReactionNodes.Keys,
+                _roomDoorOpen);
             return _cachedView;
         }
 
@@ -93,6 +95,7 @@ namespace MiniGame.Presentation
             if (!view.AllowedInteractions.Contains(target)) return Reject("InteractionUnavailable");
             if (target == InteractionTarget.Door)
             {
+                if (view.Game.Phase != GamePhase.MorningInspection) return Reject("InteractionUnavailable");
                 SetCue(PresentationKind.MorningInspection);
                 return Accept();
             }
@@ -122,6 +125,17 @@ namespace MiniGame.Presentation
             if (phase == GamePhase.Sleeping) SetCue(PresentationKind.Sleep);
             else if (phase == GamePhase.Ending) SetCue(PresentationKind.Ending);
             return Accept(bedResult.Events);
+        }
+
+        public RuntimeResult ToggleRoomDoor()
+        {
+            var view = GetView();
+            if (view.Input != InputContext.World) return Reject("InputLocked");
+            if (view.Game.Phase != GamePhase.MorningInspection && view.Game.Phase != GamePhase.Apartment
+                && view.Game.Phase != GamePhase.Work) return Reject("InteractionUnavailable");
+            _roomDoorOpen = !_roomDoorOpen;
+            SetCue(PresentationKind.DoorMotion);
+            return Accept();
         }
 
         public RuntimeResult SelectResponse(string encounterId, string nodeId, string responseId)
@@ -169,6 +183,10 @@ namespace MiniGame.Presentation
             _cue = null;
             switch (kind)
             {
+                case PresentationKind.DoorMotion:
+                    if (game.Phase == GamePhase.MorningInspection && _roomDoorOpen)
+                        SetCue(PresentationKind.MorningInspection);
+                    break;
                 case PresentationKind.EnterTerminal:
                     if (!_useTerminalDirectory && game.EncounterStage == EncounterStage.Introduction)
                         SetCue(PresentationKind.Introduction);
@@ -326,6 +344,7 @@ namespace MiniGame.Presentation
                 OpenInspectionKind = _inspection?.Kind, UseTerminalDirectory = _useTerminalDirectory,
                 Page = _terminalPage, LeavingDirectory = _leavingDirectory, HistoryEncounterId = _historyEncounterId,
                 ArchiveDirectoryVisible = _archiveDirectoryVisible,
+                RoomDoorOpen = _roomDoorOpen,
                 Transcript = _transcript.Select(entry => new TranscriptRecord
                 {
                     Key = entry.Key, EncounterId = entry.EncounterId, CoreNodeId = entry.CoreNodeId,
@@ -362,13 +381,20 @@ namespace MiniGame.Presentation
                     _terminalOpen = checkpoint.TerminalOpen, _paused = checkpoint.Paused,
                     _terminalPage = checkpoint.Page ?? (checkpoint.TerminalOpen ? TerminalPage.Review : TerminalPage.Closed),
                     _leavingDirectory = checkpoint.LeavingDirectory, _historyEncounterId = checkpoint.HistoryEncounterId,
-                    _archiveDirectoryVisible = checkpoint.ArchiveDirectoryVisible
+                    _archiveDirectoryVisible = checkpoint.ArchiveDirectoryVisible,
+                    _roomDoorOpen = checkpoint.RoomDoorOpen
                 };
                 runtime._transcript.AddRange(checkpoint.Transcript.Select(entry => new TranscriptEntry(entry.Key,
                     entry.EncounterId, entry.CoreNodeId, entry.Speaker, entry.Text, entry.SourceNodeId, entry.PortraitId, entry.IsPlayer,
                     entry.IsNarration, entry.Completed)));
                 runtime._observations.AddRange(checkpoint.Observations);
-                if (checkpoint.CueKind.HasValue) runtime.SetCue(checkpoint.CueKind.Value);
+                if (checkpoint.CueKind == PresentationKind.DoorMotion)
+                {
+                    // The host snaps the physical door to its persisted target. Continue only the required story cue.
+                    if (session.GetPlayerView().Phase == GamePhase.MorningInspection)
+                        runtime.SetCue(PresentationKind.MorningInspection);
+                }
+                else if (checkpoint.CueKind.HasValue) runtime.SetCue(checkpoint.CueKind.Value);
                 if (checkpoint.OpenInspectionKind.HasValue)
                 {
                     var view = session.GetPlayerView();
@@ -385,8 +411,15 @@ namespace MiniGame.Presentation
         private static void ValidateCheckpoint(RuntimeCheckpoint checkpoint, GameSession session, GameRules rules)
         {
             var game = session.GetPlayerView();
-            var cue = checkpoint.CueKind;
+            var doorMotion = checkpoint.CueKind == PresentationKind.DoorMotion;
+            var cue = doorMotion ? null : checkpoint.CueKind;
             var open = checkpoint.TerminalOpen;
+            if (checkpoint.RoomDoorOpen && !DoorCanRemainOpen(game.Phase))
+                throw new SnapshotValidationException("The room door must be closed outside the working day.");
+            if (doorMotion && (open || checkpoint.OpenInspectionKind.HasValue || !DoorCanRemainOpen(game.Phase)
+                || game.Phase == GamePhase.Briefing
+                || (game.Phase == GamePhase.MorningInspection && !checkpoint.RoomDoorOpen)))
+                throw new SnapshotValidationException("Door motion does not match an available room interaction.");
             var snapshot = session.CreateSnapshot();
             var current = snapshot.State.Encounters.SingleOrDefault(item => item.Id == game.CurrentEncounterId);
             var firstRound = current != null && current.NormalRoundIndex == 0 && current.Responses.Count == 0
@@ -498,7 +531,7 @@ namespace MiniGame.Presentation
         {
             if (view.Phase == GamePhase.MorningInspection) return new[] { InteractionTarget.Door };
             if (view.Phase == GamePhase.Apartment || (view.Phase == GamePhase.Work && !_terminalOpen))
-                return new[] { InteractionTarget.Computer };
+                return new[] { InteractionTarget.Computer, InteractionTarget.Door };
             if (view.Phase == GamePhase.Evening || view.Phase == GamePhase.AfterDream)
                 return new[] { InteractionTarget.Bed };
             return Array.Empty<InteractionTarget>();
@@ -508,7 +541,8 @@ namespace MiniGame.Presentation
         {
             // Fresh tokens invalidate callbacks from prior loads or abandoned host instances.
             var view = _session.GetPlayerView();
-            var text = kind == PresentationKind.Introduction ? _content.GetDialogue(view).Text : _content.GetPresentation(kind, view);
+            var text = kind == PresentationKind.DoorMotion ? ""
+                : kind == PresentationKind.Introduction ? _content.GetDialogue(view).Text : _content.GetPresentation(kind, view);
             if (view.CurrentNodeId != null && (kind == PresentationKind.Introduction
                 || kind == PresentationKind.ResponseBranch || kind == PresentationKind.Reaction))
                 text = ResolveSegmentText(view.CurrentNodeId, text);
@@ -517,12 +551,16 @@ namespace MiniGame.Presentation
 
         private RuntimeResult Accept(IEnumerable<GameEvent>? events = null)
         {
+            if (!DoorCanRemainOpen(_session.GetPlayerView().Phase)) _roomDoorOpen = false;
             _cachedView = null;
             Changed?.Invoke(GetView());
             return new RuntimeResult("", events);
         }
 
         private static RuntimeResult Reject(string reason) => new RuntimeResult(reason);
+
+        private static bool DoorCanRemainOpen(GamePhase phase) => phase == GamePhase.MorningInspection
+            || phase == GamePhase.Briefing || phase == GamePhase.Apartment || phase == GamePhase.Work;
     }
 
     [JsonObject(MemberSerialization.OptIn)]
@@ -540,6 +578,7 @@ namespace MiniGame.Presentation
         [JsonProperty] public TerminalPage? Page { get; set; }
         [JsonProperty] public bool LeavingDirectory { get; set; }
         [JsonProperty] public bool ArchiveDirectoryVisible { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool RoomDoorOpen { get; set; }
         [JsonProperty] public string? HistoryEncounterId { get; set; }
         [JsonProperty] public List<TranscriptRecord> Transcript { get; set; } = new List<TranscriptRecord>();
     }

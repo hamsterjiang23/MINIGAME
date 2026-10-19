@@ -1,0 +1,235 @@
+{
+  "date": "2026-10-19",
+  "scope": "Reference apartment layout, Word poster derivatives and reading interaction, configurable hinged door, view-only 3D exterior corridor",
+  "source": {
+    "reference": "Art/MainRoom2/minigame员工宿舍.blend",
+    "frame": 133,
+    "interiorMetres": [
+      9.70078,
+      4.41176,
+      3.12066
+    ],
+    "horizontalFovDegrees": 61.9275,
+    "originalBlendSha256": "a0ff5836d10c188f8fac7496772762ed745ac5a2e1aff2c073ec6a3b45b2dd35",
+    "originalFbxSha256": "1e1fde82af3c363d461f8f2ca300645a0a68fb89badc713e63460a0f938f619d",
+    "originalReferencesUnchanged": true,
+    "artVerification": "Art/MainRoom/reference/verification.json",
+    "layout": "Art/MainRoom/reference/layout.json"
+  },
+  "room": {
+    "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "furniture": "Original major B furniture world bounds retained; accepted A CRT and peripherals replace original computer. Two small desk props move clear of CRT.",
+    "exteriorConcreteObjects": 2,
+    "standingCapsulesValidated": 6,
+    "camera": "Horizontal FOV matched across aspect ratios; terminal FOV remains48 during aligned physical dolly"
+  },
+  "posters": {
+    "count": 2,
+    "sourceDocument": "Art/Interactions/Sources/交互物.docx",
+    "assetManifest": "Art/Interactions/manifest.json",
+    "tool": "builtin image_gen.imagegen",
+    "assets": [
+      "Art/Interactions/Posters/beach.png",
+      "Art/Interactions/Posters/instrument.png"
+    ],
+    "sizePixels": [
+      1086,
+      1448
+    ],
+    "input": "Mouse left button only; two metres; collider occlusion; focus outline",
+    "captionSeconds": 4,
+    "pause": "Timer freezes and repeat click refreshes",
+    "phaseGate": "Clear on terminal/story transitions; disabled during sleep-only phases",
+    "captions": [
+      "这里是我的故乡…但我从没去过海边",
+      "新一代手持仪器引领我们走向未来！"
+    ]
+  },
+  "door": {
+    "hierarchy": "MainRoom Gameplay/Entrance hinge",
+    "component": "HingedDoor",
+    "defaults": {
+      "enableToggle": true,
+      "openAngleDegrees": 60,
+      "animationSeconds": 0.6,
+      "initiallyOpen": false
+    },
+    "opening": "Outward rotation around side hinge; leaf/handle/collider move together",
+    "morning": "Opening completes before existing MorningInspection and Briefing; ordinary toggles do not replay inspection",
+    "sleep": "Automatic closed target, no manual use during sleep-only phase",
+    "persistence": "Optional omitted-default target in V1/V2 host checkpoint; loading snaps target; old callback tokens rejected",
+    "disabled": "Fixed closed while original morning interaction remains available"
+  },
+  "exterior": {
+    "lengthMetres": 6,
+    "depthMetres": 2.2,
+    "viewOnly": true,
+    "playerCanExit": false,
+    "userClarification": "Open door does not permit leaving the room; outside gameplay is deferred",
+    "contents": [
+      "Real3D daylight window and lightwell",
+      "Neighbor room doors and numbers",
+      "Closed fire door",
+      "Delivery cabinet and tray",
+      "Lit-geometry 禁止离岗 sign",
+      "IgnoreRaycast-layer solid threshold boundary"
+    ],
+    "asset": "Art/Exterior/corridor-surfaces.png",
+    "assetManifest": "Art/Exterior/manifest.json",
+    "sizePixels": [
+      1254,
+      1254
+    ],
+    "night": "Room and corridor light sources disabled outside bed spotlight"
+  },
+  "verification": {
+    "dotnet": {
+      "sdk": "8.0.424",
+      "lockedRestore": "passed",
+      "releaseBuild": "passed",
+      "errors": 0,
+      "warnings": 0,
+      "corePassed": 99,
+      "presentationPassed": 150,
+      "reports": "Artifacts/ReferenceRoom/Dotnet/*.trx"
+    },
+    "unity": {
+      "version": "2022.3.23f1c1",
+      "import": "Artifacts/ReferenceRoom/import-batch-verified.log",
+      "walkability": "Artifacts/ReferenceRoom/walkability-final.log",
+      "fullPlayMode": {
+        "passed": 30,
+        "failed": 0,
+        "seconds": 187.8834542,
+        "report": "Artifacts/ReferenceRoom/final-playmode.xml"
+      },
+      "focusedIntegration": {
+        "passed": 5,
+        "report": "Artifacts/ReferenceRoom/integration-playmode.xml"
+      },
+      "endings": [
+        "LockedInRoom",
+        "TakenAway",
+        "PriestAttack"
+      ],
+      "historicalFailure": "Initial full run28/30: two old CombinedRoom fixture assumptions depended on old object names and immediate door inspection; assertions updated for physical door timing and reference floor, then final full30/30 passed."
+    },
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign\\MiniGame.exe",
+      "errors": 0,
+      "warnings": 0,
+      "sizeBytes": 237895161,
+      "seconds": 8.5923527
+    },
+    "playerStartup": {
+      "ready": true,
+      "runtimeErrors": 0,
+      "log": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\ReferenceRoom\\player-startup.log",
+      "scope": "Windows development player startup; full gameplay checked in graphical Editor PlayMode"
+    },
+    "visibleEditor": {
+      "processId": 38188,
+      "ready": true,
+      "runtimeErrors": 0,
+      "log": "Artifacts/Unity/editor.log"
+    },
+    "review": [
+      {
+        "id": "C1",
+        "result": "fixed",
+        "detail": "Corridor lintel raised from2.25m to source-matching2.5m"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "src/MiniGame.Presentation/GameRuntime.cs",
+        "sha256": "f5c189cd21ad4b0130d8597ec4745bfe8aeb0e63e7dd438a0d181b435045cfc1"
+      },
+      {
+        "path": "src/MiniGame.Presentation/PresentationContracts.cs",
+        "sha256": "63358528e8e58bd7fea522d614131a1bded70ba3aae7c9daa0e23ce132760cb0"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Editor/MainRoomGameplayBuilder.cs",
+        "sha256": "45a8336db1dec1f13e20ad885e7a221af99c542ed6fda04862b5b0923eea9886"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Editor/MainRoomPreviewBuilder.cs",
+        "sha256": "5f89a7d8e5e5dcec60e1e02c1e05a773667f2d3bc9471167cfb5a4c5791ec9dc"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Editor/ReferenceCorridorBuilder.cs",
+        "sha256": "0c7c3702eff0c361300ba3fdfda345454647c85bd42ae25996814b70f34ca21a"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Editor/ReferenceRoomGameplayBuilder.cs",
+        "sha256": "0edcb0a97af66f299e31b1fd27927ffda22b5fe18d9f8575fb6f37516f81d418"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Resources/ReadablePropOutline.shader",
+        "sha256": "0304a5a78fca457b5df05e71cfcafdfa30c44b6e5cb42835d9eaf3c748149037"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+        "sha256": "0efc8bd363f163abaa6621f384dc203e2433d3e1ccb97e6a56fa1ff2dc03d1d5"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/CorridorSurface.shader",
+        "sha256": "e5ecfd93f342af28b0366e4138c95fac24803286274ac308082044780f3fd3d2"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/HingedDoor.cs",
+        "sha256": "4b3c81c32144fe32d38cda570d5027115491456e224723c2862d5c0b0becfdbc"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs",
+        "sha256": "6b78b804618260008a91a1105fd05742efec7d88d22065b96363f25bac58c528"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+        "sha256": "f4938fe5218b51b25c220d2f87a8cabcbecdfe50d308375f96a81a0979ccc287"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/ReadableProp.cs",
+        "sha256": "731ed036aa7550f462f3d82bec80307c92a498abb74c2c665831fa6f1005bbdf"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/ReferenceCameraProjection.cs",
+        "sha256": "bb6628c8e50584e0f74d6285b32a4dcb03306746ddde95ce79bb98631c2dd59d"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/CombinedRoomPlayModeTests.cs",
+        "sha256": "dc5e9d69a832a34108a8f154d25ec7570a9bfa6c5aead70edd3c5c8c2cbb1cba"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/ReferenceRoomPlayModeTests.cs",
+        "sha256": "a320a2fc9febf508e4dd71144e0884317fcc9558d530b76dc5e73a27261e0ad4"
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Yarn/MiniGameYarnBridge.cs",
+        "sha256": "505f54c766fbf905bc398a82ee9885ad0b44f56d0c5d08c5287139d7f76b643d"
+      }
+    ],
+    "sourceHashMismatches": 0
+  },
+  "visuals": {
+    "directory": "Artifacts/ReferenceRoom/Visuals",
+    "reviewed": [
+      "reference-room-wide.png",
+      "reference-poster-beach.png",
+      "reference-poster-instrument.png",
+      "reference-door-60-corridor.png",
+      "reference-room-night-only-bed.png",
+      "combined-directory.png"
+    ],
+    "window": "Artifacts/Unity/MainRoomCombined/window-detail.png"
+  },
+  "limits": [
+    "Real gameplay verification is graphical Editor PlayMode; Windows player verification covers build and startup.",
+    "Exterior remains view-only, with no new NPC or outside exploration logic.",
+    "Poster graphics reconstruct visible source designs; unreadable printed glyphs were not invented. Interaction captions use exact Word text.",
+    "Generated surface atlas has no exact pixel-periodicity guarantee; shader tiles inside padded quadrant bounds."
+  ],
+  "latestDoorFrameRenderingFix": "door-frame-fix-verification.json"
+}

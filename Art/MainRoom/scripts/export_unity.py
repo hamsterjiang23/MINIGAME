@@ -23,8 +23,11 @@ def main() -> None:
     parser.add_argument("--source", default="Art/MainRoom/exports/MainRoom.glb")
     parser.add_argument("--output", default="UnityProject/Assets/MiniGame/Art/MainRoom")
     parser.add_argument("--evidence-dir", default="Artifacts/Unity/MainRoom")
+    parser.add_argument("--layout-json", default="",
+                        help="Optional reference-layout metadata and Blender-world marker overrides")
     options = parser.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else [])
     source = root / options.source
+    layout = json.loads((root / options.layout_json).read_text(encoding="utf-8")) if options.layout_json else None
     output = root / options.output
     scratch = root / options.evidence_dir
     (output / "Textures").mkdir(parents=True, exist_ok=True)
@@ -63,8 +66,8 @@ def main() -> None:
         pbr = material.get("pbrMetallicRoughness", {})
         normal = texture_path(material.get("normalTexture"))
         # Several source bump nodes exported their albedo image as a normal map.
-        # Preserve albedo; only the actual Tripo tangent-space normal is portable.
-        if normal and "normal" not in normal.lower():
+        # Preserve albedo; accept explicit tangent-space normal and Poliigon NRM names.
+        if normal and not any(token in normal.lower() for token in ("normal", "_nrm_")):
             material.pop("normalTexture", None)
             normal = ""
             omitted_bump_inputs += 1
@@ -109,6 +112,8 @@ def main() -> None:
         "ExteriorLight": (1.1, 4.7, 3.0),
         "WindowDetailPosition": (1.1, 1.9, 1.85), "WindowDetailTarget": (1.1, 6.7, 1.85),
     }
+    if layout is not None:
+        markers = layout["markers"]
     for name, location in markers.items():
         marker = bpy.data.objects.new("Unity_" + name, None)
         bpy.context.scene.collection.objects.link(marker)
@@ -126,6 +131,8 @@ def main() -> None:
         "hasExteriorConcrete": any(node.get("name", "").startswith("B_ExteriorConcrete_") for node in doc["nodes"]),
         "scope": "Art preview; no gameplay integration, colliders or performance acceptance",
     }
+    if layout is not None:
+        manifest["referenceLayout"] = layout
     (output / "materials.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print("MINIGAME_UNITY_FBX_EXPORTED", json.dumps({
         "meshes": manifest["meshCount"], "materials": len(materials),

@@ -1,5 +1,7 @@
 # 融合主房间
 
+此目录保留2026-10-18的A布局融合美术。2026-10-19默认Unity房间改用[reference](../reference/README.md)目录中的原宿舍尺寸与摆位，现行操作见[参考房间指南](../../../docs/reference-room-guide.md)。[verified: ../reference/README.md；../../../docs/reference-room-guide.md]
+
 融合 `Art/MainRoom` 与 `Art/MainRoom2`，源文件保留；新的可编辑房间为 [MainRoomCombined.blend](scene/MainRoomCombined.blend)，交换资源为 [MainRoomCombined.glb](exports/MainRoomCombined.glb)。[verified: reports/composition.json inputs]
 
 Unity 入口：[MainRoomCombined.unity](../../../UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity)。门、电脑和床已接入现有游戏逻辑，默认体验为小孩 Day1；电脑提供推镜、开机、UI渐显和返回房间过渡，操作与验证见[玩法接入报告](../../../docs/main-room-gameplay-verification.json)。[verified: ../../../docs/main-room-gameplay-verification.json scene/interactions/presentation]

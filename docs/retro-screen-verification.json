@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-19",
+  "project": "UnityProject",
+  "unity": "2022.3.23f1c1",
+  "pipeline": "Built-in",
+  "graphics": "Direct3D11",
+  "colorSpace": "Gamma",
+  "tests": [
+    {
+      "name": "main-editmode",
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "evidence": "Artifacts/Unity/RetroScreen/main-editmode.json"
+    },
+    {
+      "name": "main-playmode",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "evidence": "Artifacts/Unity/RetroScreen/main-playmode.json"
+    },
+    {
+      "name": "combined-playmode",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "evidence": "Artifacts/Unity/RetroScreen/combined-playmode.json"
+    },
+    {
+      "name": "bedtime-playmode",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "evidence": "Artifacts/Unity/RetroScreen/bedtime-playmode.json"
+    }
+  ],
+  "visuals": [
+    {
+      "name": "day",
+      "on": "Artifacts/Unity/RetroScreen/Visuals/day-on.png",
+      "off": "Artifacts/Unity/RetroScreen/Visuals/day-off.png",
+      "onSha256": "180BBBC20D22960F360DE38DD31A455DF71486EEF3E4A5836D41B8711F78405B",
+      "offSha256": "28D502B9B9EE226671209AA84255CE5F5DBC9810C96E2571E6D0CE972CB45169",
+      "identical": false,
+      "resolution": "2560x1440",
+      "capture": "Unity ScreenCapture in current Editor Play Mode, including Overlay UI"
+    },
+    {
+      "name": "boot",
+      "on": "Artifacts/Unity/RetroScreen/Visuals/boot-on.png",
+      "off": "Artifacts/Unity/RetroScreen/Visuals/boot-off.png",
+      "onSha256": "970EB1863B43B1C9193DAEC43FB3DC03DF931895FB72FDE004F6F5F26C5D182E",
+      "offSha256": "D4C5076EBBEDFBAE70B07624ECBAE5A80FD17B146417D696F0028562949BDC57",
+      "identical": false,
+      "resolution": "2560x1440",
+      "capture": "Unity ScreenCapture in current Editor Play Mode, including Overlay UI"
+    },
+    {
+      "name": "terminal",
+      "on": "Artifacts/Unity/RetroScreen/Visuals/terminal-on.png",
+      "off": "Artifacts/Unity/RetroScreen/Visuals/terminal-off.png",
+      "onSha256": "913EAF282747F29E41DACAA3C8356D74BA4D30F9E890AF3E62EC73723C2323D8",
+      "offSha256": "913EAF282747F29E41DACAA3C8356D74BA4D30F9E890AF3E62EC73723C2323D8",
+      "identical": true,
+      "resolution": "2560x1440",
+      "capture": "Unity ScreenCapture in current Editor Play Mode, including Overlay UI"
+    },
+    {
+      "name": "night",
+      "on": "Artifacts/Unity/RetroScreen/Visuals/night-on.png",
+      "off": "Artifacts/Unity/RetroScreen/Visuals/night-off.png",
+      "onSha256": "3CE464943532998F9494C25E7545A3C02E8250C6A3D05A4AF9DC49B36F50D2F3",
+      "offSha256": "5BDD9F1500D9C7B385E57D67279934DD9E8ED2138B8FF6A97A8D97F2E40742B7",
+      "identical": false,
+      "resolution": "2560x1440",
+      "capture": "Unity ScreenCapture in current Editor Play Mode, including Overlay UI"
+    }
+  ],
+  "visualReview": "Inspected day, boot, terminal and night ON screenshots and night OFF. Chinese dialogue remains readable; night bed, pillows and insects remain visible. Boot/night pairs contain advancing animation and are not pixel-exact temporal comparisons.",
+  "profilePersistence": {
+    "persistedAfterPlay": 0.64,
+    "restoredDefault": 0.65
+  },
+  "review": {
+    "fixed": [
+      "Reference camera regeneration attachment",
+      "Custom profile retention through gameplay and art regeneration",
+      "Tuning window follows active profile"
+    ],
+    "final": "No bugs found in follow-up static review"
+  },
+  "build": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      }
+    ],
+    "bytes": 213892290,
+    "output": "Builds/RetroScreen/MiniGame.exe",
+    "includedRetroAssets": [
+      "Assets/MiniGame/Runtime/RetroScreenProfile.cs",
+      "Assets/MiniGame/Runtime/RetroScreenEffect.cs",
+      "Assets/MiniGame/Resources/RetroScreen.shader",
+      "Assets/MiniGame/Resources/RetroScreenDefault.asset"
+    ],
+    "evidence": "Artifacts/Unity/RetroScreen/build-status.json"
+  },
+  "playerSmoke": {
+    "ready": true,
+    "exceptionsOrShaderErrors": 0,
+    "log": "Artifacts/Unity/RetroScreen/player.log",
+    "scope": "Launched built Player and checked startup logs; full standalone playthrough not performed"
+  },
+  "editor": {
+    "playing": true,
+    "hosts": 1,
+    "effects": 1,
+    "profile": "RetroScreenDefault",
+    "strength": 0.65,
+    "originalPreview": false,
+    "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity"
+  },
+  "cli": {
+    "version": "0.4.0-exp.1",
+    "editorOnly": true,
+    "officialArchiveSha1": "f49636739437acc8a1b6120b491338e352808553",
+    "integrityChecksUnchanged": true
+  },
+  "limits": [
+    "Visual acceptance by the user remains separate from automated checks.",
+    "Current-project Gamma/D3D11 verified; other graphics APIs and Linear project mode not executed.",
+    "No GPU performance benchmark conducted."
+  ]
+}

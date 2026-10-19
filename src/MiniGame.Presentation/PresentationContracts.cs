@@ -9,7 +9,7 @@ namespace MiniGame.Presentation
 {
     public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory }
     public enum TerminalPage { Closed, Directory, Review, Archive }
-    public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction }
+    public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction, DoorMotion }
     public enum InspectionKind { Eyes, Hands, Teeth, Photo, DailySigns, Records }
 
     public interface IGameContent
@@ -92,6 +92,7 @@ namespace MiniGame.Presentation
         public bool UsesTerminalDirectory { get; }
         public bool LeavingTerminal { get; }
         public bool ArchiveDirectoryVisible { get; }
+        public bool RoomDoorOpen { get; }
         public IReadOnlyList<TranscriptEntry> Transcript { get; }
         public string? PresentedPatientId { get; }
         public string? PresentedPatientName { get; }
@@ -104,7 +105,8 @@ namespace MiniGame.Presentation
             TerminalPage terminalPage = TerminalPage.Closed, bool usesTerminalDirectory = false,
             bool leavingTerminal = false, IEnumerable<TranscriptEntry>? transcript = null, bool archiveDirectoryVisible = false,
             string? presentedPatientId = null, string? presentedPatientName = null, string? presentedEncounterId = null,
-            Disposition? presentedDisposition = null, IEnumerable<Disposition>? configuredDispositions = null)
+            Disposition? presentedDisposition = null, IEnumerable<Disposition>? configuredDispositions = null,
+            bool roomDoorOpen = false)
         {
             Game = game; Input = input; TerminalOpen = terminalOpen; Paused = paused;
             Cue = cue; Dialogue = dialogue; Inspection = inspection;
@@ -113,6 +115,7 @@ namespace MiniGame.Presentation
             ObservedSigns = new ReadOnlyCollection<string>(new List<string>(observedSigns));
             TerminalPage = terminalPage; UsesTerminalDirectory = usesTerminalDirectory; LeavingTerminal = leavingTerminal;
             ArchiveDirectoryVisible = archiveDirectoryVisible;
+            RoomDoorOpen = roomDoorOpen;
             Transcript = new ReadOnlyCollection<TranscriptEntry>(new List<TranscriptEntry>(transcript ?? Array.Empty<TranscriptEntry>()));
             PresentedPatientId = presentedPatientId; PresentedPatientName = presentedPatientName;
             PresentedEncounterId = presentedEncounterId; PresentedDisposition = presentedDisposition;

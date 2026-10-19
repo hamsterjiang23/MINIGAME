@@ -84,7 +84,7 @@ namespace MiniGame.UnityHost
             DialogueContent? dialogue = null;
             if (cue != null)
             {
-                if (cue.Kind == PresentationKind.EnterTerminal || cue.Kind == PresentationKind.ExitTerminal || cue.Kind == PresentationKind.Sleep)
+                if (cue.Kind == PresentationKind.EnterTerminal || cue.Kind == PresentationKind.ExitTerminal || cue.Kind == PresentationKind.Sleep || cue.Kind == PresentationKind.DoorMotion)
                 {
                     _screen.SetDialogueText("终端", cue.Text);
                     _screen.HideDialogueActions();

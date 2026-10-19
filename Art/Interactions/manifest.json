@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "tool": "builtin image_gen.imagegen",
+  "createdDate": "2026-10-19",
+  "useCase": "precise-object-edit",
+  "mode": "local-image-reference edit",
+  "transparentBackground": false,
+  "sourceDocument": {
+    "path": "Sources/交互物.docx",
+    "originalPath": "E:/Downloads/交互物.docx",
+    "sha256": "BBE87540723FECB7419F8623B68CB3ABCF4264770449EC22658644C5C1ED03EF"
+  },
+  "assets": [
+    {
+      "id": "beach",
+      "path": "Posters/beach.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "ABE6B9C7DBEFC0E49BF0EDEFC61FFAAFB7FBAF784FA19A763CD0D7DE878E3ACA",
+      "sourceReference": "Sources/beach-reference.png",
+      "wordMediaEntry": "word/media/image2.png",
+      "sourceSha256": "7E86D1A079406DFDB577AF07699A94D544878DB9766066B2E77A8954EAB915BA",
+      "generatedOriginal": "C:/Users/admin/.codex/generated_images/01a1521b-ce44-70e3-8c75-a6f1418683b2/exec-87c6e9ac-6fa1-452f-80e4-6a992edb0501.png",
+      "prompt": "Use case: precise-object-edit. Asset type: a printable game poster texture, portrait 3:4 rectangle, approximately 1024x1365, fully opaque. Input image 1 is the EDIT TARGET and sole artwork reference: a screenshot of a weathered beach travel poster on an interior wall. Reconstruct JUST THE POSTER as an isolated perfectly straight-on flat full-bleed rectangular printed paper texture. Preserve the reference's actual artwork composition: hazy desaturated blue-grey sky filling the upper half, large cream-white clouds rising up on the left, low straight dark-blue sea horizon just below the middle, horizontal small surf bands, pale sandy beach below, an off-white bottom caption band with the SAME abstract unreadable block letter shapes. Keep its faded late twentieth century institutional travel advert and low-resolution / pixelated old game aesthetic. Keep paper speckling, creases and subdued aged cream edges but do not add new tears. Do not infer or invent readable words; reproduce only the rough unreadable caption glyph silhouettes from the screenshot. Critical: remove all room/wall, tape, bed, boxes, perspective distortion, cast shadows and scene lighting. The poster edges meet all four image boundaries with no margin, no frame, no drop shadow. Even flat neutral illumination suitable for physically lit game material. No additional subject, no people, no sun disc, no brand, no watermark, no new slogans. This is extraction and front-facing reconstruction of the pictured poster, not a scene render.",
+      "interactionText": "这里是我的故乡…但我从没去过海边",
+      "review": {
+        "posterOnly": true,
+        "frontFacing": true,
+        "roomAndTapeRemoved": true,
+        "readableTextInvented": false,
+        "notes": "Observed in generated output: blue sky, cream cloud at left, straight sea horizon, surf and sand, low-resolution abstract caption glyphs, weathered paper. Unreadable source typography was not decoded."
+      }
+    },
+    {
+      "id": "instrument",
+      "path": "Posters/instrument.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "5477AFA4C9E8DB84C8141CFF0C676D11D4EF77FA28F7297930274772BA3DE08F",
+      "sourceReference": "Sources/instrument-reference.png",
+      "wordMediaEntry": "word/media/image4.png",
+      "sourceSha256": "B86E3D3DACDBBFB0E2926CBA362EB89AA415C31BBFFFE6453307C6F18E10EAD2",
+      "generatedOriginal": "C:/Users/admin/.codex/generated_images/01a1521b-ce44-70e3-8c75-a6f1418683b2/exec-c908c03d-837e-467c-824c-7abfca6428e2.png",
+      "prompt": "Use case: precise-object-edit. Asset type: flat printed poster texture for a Unity game, portrait 3:4 rectangle, approximately 1024x1365, opaque. Input image 1 is the EDIT TARGET. Extract and reconstruct ONLY the old equipment-promotion paper poster from the room screenshot into a clean straight-on full-bleed RECTANGLE. Preserve the actual composition, subject and graphic shapes visible in the reference: dark faded teal-blue upper poster, large cream unreadable block headline at the top and two small illegible block-glyph lines under it; a large cream circular backdrop on the right behind a late-1990s handheld inspection camcorder/device shown in three-quarter view, round black lens pointing left, beige/grey blocky upright body with top controls, rectangular flip-out LCD extending to the right, small control buttons near bottom; light cream caption band along the lower fifth with unreadable block text shapes and a small simple circle with cross symbol at lower right exactly as reference. This is a peaceful institutional handheld inspection apparatus advertisement, NOT A GUN or weapon. Maintain the pixelated, low-resolution, worn printed-paper aesthetic, faded ink, fine mottling and visible fold line. Do not decode or invent readable typography: preserve coarse abstract unreadable glyph silhouettes only. Remove room, wall, tape, bed, boxes, frame, perspective distortion, cast shadows and directional scene lighting. The poster image must reach all four image edges with no exterior margin or drop shadow. Even neutral lighting suitable for a physically lit game material. No new slogans, no additional branding, no watermark, no added props, no new symbols.",
+      "interactionText": "新一代手持仪器引领我们走向未来！",
+      "review": {
+        "posterOnly": true,
+        "frontFacing": true,
+        "roomAndTapeRemoved": true,
+        "readableTextInvented": false,
+        "notes": "Observed in generated output: cream handheld inspection/camcorder device, round lens at left, flip-out display at right, teal field and cream circle backdrop, abstract headline/caption and source circle-cross motif."
+      }
+    }
+  ],
+  "notes": [
+    "Source screenshots contain perspective and scene lighting. Outputs reconstruct the pictured poster artwork rather than claim pixel-exact extraction.",
+    "Generated originals copied unchanged. Both outputs are RGB opaque PNGs at 3:4 aspect; actual dimensions measured with System.Drawing.",
+    "Interaction subtitles are game data and were intentionally not painted into the poster images."
+  ]
+}

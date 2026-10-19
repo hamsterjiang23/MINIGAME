@@ -53,6 +53,7 @@ namespace MiniGame.UnityHost.Editor
             if (EditorApplication.isPlayingOrWillChangePlaymode)
                 throw new InvalidOperationException("Leave Play Mode before importing the room preview.");
             if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            var retroProfile = installGameplay ? RetroScreenSetup.FindSavedProfile(scenePath) : null;
             var evidencePath = Path.GetFullPath(Path.Combine(Application.dataPath, "../../Artifacts/Unity", evidenceName));
             var modelPath = artPath + "MainRoom.fbx";
             var source = JsonUtility.FromJson<SourceManifest>(File.ReadAllText(artPath + "materials.json"));
@@ -87,7 +88,8 @@ namespace MiniGame.UnityHost.Editor
             }
             var bounds = renderers[0].bounds;
             foreach (var renderer in renderers) bounds.Encapsulate(renderer.bounds);
-            if (Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) > 12f || bounds.size.y < 2f)
+            bool referenceLayout = room.GetComponentsInChildren<Transform>(true).Any(item => item.name == "Unity_ReferenceOrigin");
+            if (Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) > (referenceLayout ? 22f : 12f) || bounds.size.y < 2f)
                 throw new InvalidOperationException("Unexpected room scale: " + bounds.size);
 
             RenderSettings.skybox = null;
@@ -130,7 +132,7 @@ namespace MiniGame.UnityHost.Editor
                 SceneView.lastActiveSceneView.LookAt(camera.transform.position + camera.transform.forward * 3, camera.transform.rotation, 3, false, true);
             EditorApplication.ExecuteMenuItem("Window/General/Game");
             DynamicGI.UpdateEnvironment();
-            var readyAt = EditorApplication.timeSinceStartup + 1;
+            var readyAt = EditorApplication.timeSinceStartup + (Application.isBatchMode ? 0 : 1);
             EditorApplication.CallbackFunction finish = null;
             finish = () =>
             {
@@ -155,9 +157,14 @@ namespace MiniGame.UnityHost.Editor
                 }
                 File.WriteAllText(Path.Combine(evidencePath, "import-report.json"), JsonUtility.ToJson(report, true));
                 Debug.Log("MINIGAME_ROOM_PREVIEW_READY " + JsonUtility.ToJson(report));
-                if (installGameplay) MainRoomGameplayBuilder.ConfigureOpenScene();
+                if (installGameplay)
+                {
+                    RetroScreenSetup.Attach(camera, retroProfile);
+                    MainRoomGameplayBuilder.ConfigureOpenScene();
+                }
             };
-            EditorApplication.update += finish;
+            if (Application.isBatchMode) finish();
+            else EditorApplication.update += finish;
         }
 
         private static Vector3 Marker(GameObject room, string name) => room.GetComponentsInChildren<Transform>(true)

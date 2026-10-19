@@ -34,7 +34,7 @@ namespace MiniGame.UnityHost.Tests
                 .Where(renderer => renderer.name.StartsWith("B_ExteriorConcrete_", StringComparison.Ordinal)).ToArray();
             Assert.That(exterior, Has.Length.EqualTo(2), "The window must retain its actual exterior wall and ledge.");
             Assert.That(exterior.All(renderer => renderer.enabled), Is.True);
-            var restoredDoor = GameObject.Find("Entrance closure restored from source layout");
+            var restoredDoor = Object.FindObjectOfType<HingedDoor>();
             Assert.That(restoredDoor, Is.Not.Null);
             Assert.That(restoredDoor.GetComponentsInChildren<Renderer>().All(renderer => renderer.enabled), Is.True);
 
@@ -182,7 +182,8 @@ namespace MiniGame.UnityHost.Tests
         {
             yield return StageAt(host, InteractionTarget.Door);
             Assert.That(host.Player.InteractFocused(), Is.True);
-            Assert.That(host.Runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.MorningInspection));
+            yield return Until(host, () => host.Runtime.GetView().Cue?.Kind == PresentationKind.MorningInspection,
+                "door opens fully before morning inspection");
             yield return ClickNamed(host, "Continue");
             yield return Until(host, () => host.Runtime.GetView().Game.Phase == GamePhase.Briefing, "morning inspection UI completion");
             yield return ClickNamed(host, "Continue");
@@ -202,7 +203,7 @@ namespace MiniGame.UnityHost.Tests
             Physics.SyncTransforms();
             Assert.That(Physics.Raycast(player.transform.position + Vector3.up * .1f, Vector3.down, out var floor, .3f), Is.True,
                 "A real floor collider must support the standing position.");
-            Assert.That(floor.collider.name, Does.Contain("Floor substrate"));
+            Assert.That(floor.collider.name.IndexOf("floor", StringComparison.OrdinalIgnoreCase), Is.GreaterThanOrEqualTo(0));
             Assert.That(Physics.OverlapCapsule(player.transform.position + Vector3.up * .27f,
                 player.transform.position + Vector3.up * 1.48f, .23f, ~0, QueryTriggerInteraction.Ignore)
                 .Where(collider => collider != controller), Is.Empty, "The standing capsule must not start inside furniture or walls.");

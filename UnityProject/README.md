@@ -1,5 +1,9 @@
 # Unity 检定员开发原型
 
+复古画面通过 **MiniGame → 画面 → 复古效果** 调整像素尺寸、色阶和明暗，支持 Game 视图预览、原图对比与配置保存。操作见[复古效果调参](../docs/retro-screen-guide.md)。`[verified: Assets/MiniGame/Editor/RetroScreenEditor.cs Open/OnInspectorGUI]`
+
+2026-10-19 默认房间改为参考宿舍的9.70078×4.41176×3.12066米布局，加入Word参考的两张交互海报、可配置60°房门与只能从房内观看的3D连廊。操作与配置见[参考房间指南](../docs/reference-room-guide.md)，验收见[参考房间报告](../docs/reference-room-verification.json)。[verified: ../docs/reference-room-guide.md；../docs/reference-room-verification.json]
+
 当前游戏入口为 [MainRoomCombined.unity](Assets/MiniGame/Scenes/MainRoomCombined.unity)：融合房间已接入门、电脑和床的实体交互，保留窗外水泥墙与台沿。电脑有推镜、CRT开机、UI渐显和退出回位；交互与验证见[本轮报告](../docs/main-room-gameplay-verification.json)，源文件和取舍见[融合说明](../Art/MainRoom/combined/README.md)。[verified: ../docs/main-room-gameplay-verification.json scene/interactions/presentation]
 
 第一版美术预览保留在 [MainRoomPreview.unity](Assets/MiniGame/Scenes/MainRoomPreview.unity)，原灰盒玩法场景保留在 `InspectionApartment.unity`。融合版美术重建菜单 `MiniGame/Room Art/Import and open combined room` 会恢复玩法装配。[verified: Assets/MiniGame/Editor/MainRoomPreviewBuilder.cs ImportCombinedAndOpen/Build；Assets/MiniGame/Editor/MainRoomGameplayBuilder.cs ConfigureOpenScene]

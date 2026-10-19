@@ -16,10 +16,12 @@ namespace MiniGame.UnityHost
         private GameRuntime runtime;
         private MiniGameScreen screen;
         private WorldInteraction focused;
+        private ReadableProp focusedReadable;
         private float pitch;
         private float downwardSpeed;
         public Camera ViewCamera => viewCamera;
         public WorldInteraction FocusedInteraction => focused;
+        public ReadableProp FocusedReadable => focusedReadable;
         public void Configure(Camera camera) => viewCamera = camera;
         private void Awake() => controller = GetComponent<CharacterController>();
         public void Bind(GameRuntime game, MiniGameScreen ui)
@@ -49,9 +51,8 @@ namespace MiniGame.UnityHost
             downwardSpeed = controller.isGrounded ? -1f : downwardSpeed - 9.81f * Time.deltaTime;
             controller.Move((motion.normalized * walkSpeed + Vector3.up * downwardSpeed) * Time.deltaTime);
             RefreshFocus();
-            bool computerClick = Input.GetMouseButtonDown(0) && focused != null
-                && focused.Target == InteractionTarget.Computer;
-            if (Input.GetKeyDown(KeyCode.E) || computerClick) InteractFocused();
+            if (Input.GetKeyDown(KeyCode.E)) InteractFocused();
+            else if (Input.GetMouseButtonDown(0)) InteractSecondaryFocused();
         }
 
         public void FacePoint(Vector3 worldPoint)
@@ -80,7 +81,8 @@ namespace MiniGame.UnityHost
                 screen.ClearNotification();
                 return false;
             }
-            var result = runtime.TryInteract(focused.Target);
+            var door = focused.GetComponentInParent<HingedDoor>();
+            var result = door != null ? door.TryInteract() : runtime.TryInteract(focused.Target);
             if (!result.Accepted)
                 screen.Notify(runtime.GetView().Game.Phase == GamePhase.MorningInspection
                     ? "请先到门口完成晨检。" : focused.Target == InteractionTarget.Bed
@@ -89,29 +91,64 @@ namespace MiniGame.UnityHost
             return result.Accepted;
         }
 
+        public bool InteractSecondaryFocused()
+        {
+            RefreshInteractionFocus();
+            if (focusedReadable != null && CanRead(runtime.GetView()))
+            {
+                screen.ShowRoomCaption(focusedReadable.Caption, focusedReadable.CaptionSeconds);
+                return true;
+            }
+            return focused != null && focused.Target == InteractionTarget.Computer && InteractFocused();
+        }
+
+        private static bool CanRead(RuntimeView view) => view.Input == InputContext.World && !BedtimeGuidance.IsSleepOnly(view);
+
         private void RefreshFocus()
         {
             WorldInteraction next = null;
+            ReadableProp readable = null;
             if (Physics.Raycast(viewCamera.transform.position, viewCamera.transform.forward, out var hit, reach))
-                next = hit.collider.GetComponentInParent<WorldInteraction>();
+            {
+                readable = hit.collider.GetComponentInParent<ReadableProp>();
+                if (readable != null && (hit.distance > readable.InteractionDistance || !CanRead(runtime.GetView()))) readable = null;
+                if (readable == null) next = hit.collider.GetComponentInParent<WorldInteraction>();
+            }
+            if (focusedReadable != readable)
+            {
+                if (focusedReadable != null) focusedReadable.Highlight(false);
+                focusedReadable = readable;
+            }
             if (next != focused)
             {
                 if (focused != null) focused.Highlight(false);
                 focused = next;
             }
             var view = runtime.GetView();
+            if (focusedReadable != null)
+            {
+                bool canRead = CanRead(view);
+                focusedReadable.Highlight(canRead);
+                screen.SetWorldFocus(canRead ? "查看海报" : string.Empty, canRead, "鼠标左键");
+                return;
+            }
             bool allowed = focused != null && view.AllowedInteractions.Contains(focused.Target);
+            var hingedDoor = focused != null ? focused.GetComponentInParent<HingedDoor>() : null;
+            if (focused != null && focused.Target == InteractionTarget.Door)
+                allowed = !BedtimeGuidance.IsSleepOnly(view) && (view.Game.Phase == GamePhase.MorningInspection || hingedDoor != null && hingedDoor.EnableToggle);
             if (focused != null) focused.Highlight(allowed);
             bool bedtime = BedtimeGuidance.IsSleepOnly(view);
             screen.SetWorldFocus(focused == null || (bedtime && !allowed) ? string.Empty
-                : bedtime ? "躺下休息" : focused.Label, allowed,
+                : bedtime ? "躺下休息" : hingedDoor != null ? hingedDoor.IsOpen ? "关门" : "开门" : focused.Label, allowed,
                 focused != null && focused.Target == InteractionTarget.Computer ? "E / 鼠标左键" : "E");
         }
 
         private void ClearFocus()
         {
             if (focused != null) focused.Highlight(false);
+            if (focusedReadable != null) focusedReadable.Highlight(false);
             focused = null;
+            focusedReadable = null;
             if (screen != null) screen.SetWorldPrompt(string.Empty);
         }
         private void OnDisable() { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; ClearFocus(); }

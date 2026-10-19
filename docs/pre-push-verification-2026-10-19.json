@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-19",
+  "scope": "All staged workspace changes, plus one existing unpushed commit",
+  "repository": "hamsterjiang23/MINIGAME",
+  "visibilityVerified": "private",
+  "branch": "main",
+  "dotnet": {
+    "sdk": "8.0.424",
+    "restore": "dotnet restore MiniGame.sln --locked-mode",
+    "build": "dotnet build MiniGame.sln -c Release --no-restore",
+    "warnings": 0,
+    "errors": 0,
+    "tests": {
+      "corePassed": 99,
+      "presentationPassed": 150,
+      "failed": 0
+    }
+  },
+  "unity": {
+    "referenceRoom": {
+      "status": "completed",
+      "duration": 19.02,
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.DoorMovesItsHandleAndColliderRestoresTargetsAndRunsMorningOnlyAfterOpening",
+          "Status": "Passed",
+          "Duration": 3.8910497,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.PostersUseSecondaryInputDistanceOcclusionAndPausedRefreshableCaptions",
+          "Status": "Passed",
+          "Duration": 13.0585403,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.ReferenceEnvelopeAndCameraMatchTheSourceAndNightHidesTheCorridor",
+          "Status": "Passed",
+          "Duration": 2.0475988,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "doorFrame": {
+      "status": "completed",
+      "duration": 4.18,
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.DoorFrameHasNoPositiveAreaCoplanarOverlapWithItselfOrEntranceWalls",
+          "Status": "Passed",
+          "Duration": 0.3946386,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.OpenDoorKeepsFrameFixedAndClearAcrossConfiguredAnglesAndRoomSideViews",
+          "Status": "Passed",
+          "Duration": 3.7628328,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "priorRetroEvidence": "docs/retro-screen-verification.json"
+  },
+  "testFixtureChange": "Initial poster test failed at repeated click, then diagnostic rerun passed. Fixture now disables live ApartmentPlayer hardware input while explicitly positioning the camera and invoking interactions; final three reference-room tests passed. Production gameplay code unchanged by this test-stability fix.",
+  "secretScan": {
+    "tool": "gitleaks 8.30.1",
+    "stagedFindings": 0,
+    "existingUnpushedCommitFindings": 0
+  },
+  "pythonSyntax": "Six changed Python scripts parsed successfully; Blender execution not repeated",
+  "diffCheck": "git diff --cached --check passed after whitespace-only normalization of six vendor text files",
+  "lfs": "Existing binary and >=1MiB rules audited; added Pipeline .attestation.p7m coverage. Post-commit object check and remote push are recorded separately in the chat."
+}

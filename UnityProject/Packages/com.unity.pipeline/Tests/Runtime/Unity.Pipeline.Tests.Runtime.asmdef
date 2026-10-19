@@ -1,0 +1,31 @@
+{
+    "name":  "Unity.Pipeline.Tests.Runtime",
+    "rootNamespace":  "Unity.Pipeline.Tests.Runtime",
+    "references":  [
+                       "Unity.Pipeline"
+                   ],
+    "includePlatforms":  [
+
+                         ],
+    "excludePlatforms":  [
+
+                         ],
+    "allowUnsafeCode":  false,
+    "overrideReferences":  false,
+    "precompiledReferences":  [
+                                  "nunit.framework.dll",
+                                  "Newtonsoft.Json.dll"
+                              ],
+    "autoReferenced":  true,
+    "defineConstraints":  [
+                              "UNITY_INCLUDE_TESTS",
+                              "UNITY_6000_0_OR_NEWER"
+                          ],
+    "versionDefines":  [
+
+                       ],
+    "noEngineReferences":  false,
+    "optionalUnityReferences":  [
+                                    "TestAssemblies"
+                                ]
+}

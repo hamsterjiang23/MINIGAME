@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "coordinateConvention": "Blender world XYZ, Z up; exported FBX converts to Unity Y up",
+  "sourceFrame": 133,
+  "interiorMinimum": [
+    -2.05606,
+    -0.69033,
+    -0.72788
+  ],
+  "interiorMaximum": [
+    7.64472,
+    3.72143,
+    2.39278
+  ],
+  "interiorSize": [
+    9.70078,
+    4.41176,
+    3.12066
+  ],
+  "horizontalFieldOfView": 61.9275,
+  "door": {
+    "width": 1.5,
+    "height": 2.5,
+    "thickness": 0.08,
+    "outwardAxis": [
+      1,
+      0,
+      0
+    ]
+  },
+  "markers": {
+    "ReferenceOrigin": [
+      -2.05606,
+      -0.69033,
+      -0.72788
+    ],
+    "ReferenceRight": [
+      -1.05606,
+      -0.69033,
+      -0.72788
+    ],
+    "ReferenceDepth": [
+      -2.05606,
+      0.30967,
+      -0.72788
+    ],
+    "ReferenceUp": [
+      -2.05606,
+      -0.69033,
+      0.27212000000000003
+    ],
+    "DoorCentre": [
+      7.74472,
+      2.82488,
+      0.52212
+    ],
+    "DoorHinge": [
+      7.74472,
+      3.57488,
+      -0.72788
+    ],
+    "DoorApproach": [
+      6.594720000000001,
+      2.82488,
+      -0.6728799999999999
+    ],
+    "ScreenCentre": [
+      3.003999710083008,
+      -0.16099999845027924,
+      0.31849995255470276
+    ],
+    "ComputerApproach": [
+      3.004,
+      1.15,
+      -0.6728799999999999
+    ],
+    "SeatEye": [
+      3.004,
+      0.8890000015497208,
+      0.49849995255470275
+    ],
+    "TerminalAlign": [
+      3.004,
+      0.45900000154972076,
+      0.31849995255470276
+    ],
+    "BedCentre": [
+      -0.8358,
+      0.3634,
+      -0.11411
+    ],
+    "BedApproach": [
+      0.25,
+      0.45,
+      -0.6728799999999999
+    ],
+    "Spawn": [
+      5.9,
+      1.75,
+      -0.6728799999999999
+    ],
+    "PosterBeach": [
+      -0.8358,
+      -0.66533,
+      0.9
+    ],
+    "PosterDevice": [
+      4.25,
+      -0.66533,
+      0.9
+    ],
+    "CeilingLight": [
+      2.26,
+      1.71,
+      2.15
+    ],
+    "WindowLight": [
+      -1.75,
+      1.55,
+      1.52
+    ],
+    "MonitorLight": [
+      3.003999710083008,
+      -0.04099999845027924,
+      0.31849995255470276
+    ],
+    "FillLight": [
+      5.7,
+      2.2,
+      1.65
+    ],
+    "ExteriorLight": [
+      -3.8,
+      1.55,
+      2.0
+    ],
+    "PreviewPosition": [
+      7.1,
+      2.9,
+      0.89
+    ],
+    "PreviewTarget": [
+      0.1,
+      0.6,
+      0.35
+    ],
+    "WindowDetailPosition": [
+      -0.4,
+      1.55,
+      1.15
+    ],
+    "WindowDetailTarget": [
+      -5.8,
+      1.55,
+      1.15
+    ]
+  }
+}

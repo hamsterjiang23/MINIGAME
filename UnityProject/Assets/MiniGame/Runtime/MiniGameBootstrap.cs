@@ -86,6 +86,10 @@ namespace MiniGame.UnityHost
             screen.Bind(runtime);
             player.Bind(runtime, screen);
             effects.Bind(runtime, screen);
+            foreach (var door in FindObjectsOfType<HingedDoor>())
+                if (door.gameObject.scene == gameObject.scene) door.Bind(runtime);
+            var projection = player.ViewCamera.GetComponent<ReferenceCameraProjection>();
+            if (projection != null) projection.Bind(runtime);
             screen.UseYarnPresentation();
             yarn.Bind(runtime, screen);
         }

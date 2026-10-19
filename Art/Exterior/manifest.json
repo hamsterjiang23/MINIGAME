@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "tool": "builtin image_gen.imagegen",
+  "createdDate": "2026-10-19",
+  "useCase": "stylized-concept",
+  "transparentBackground": false,
+  "path": "corridor-surfaces.png",
+  "width": 1254,
+  "height": 1254,
+  "sha256": "FB8A7826F1F5F943EA8C471F834C6D4EE2539D93DF16C8964C0A250486296CED",
+  "generatedOriginal": "C:/Users/admin/.codex/generated_images/01a1521b-ce44-70e3-8c75-a6f1418683b2/exec-df6692a7-99b7-46ff-af42-64d724e47f5e.png",
+  "prompt": "Use case: stylized-concept. Asset type: ONE square PBR-style albedo material atlas for a real-time 3D institutional apartment corridor in an original psychological horror game. Request 2048x2048 square. Exact layout: FOUR equal square quadrants in a 2x2 grid meeting directly at x=50%, y=50%, with ZERO gutter, ZERO outline, ZERO labels. TOP LEFT quadrant: warm off-white painted plaster, subtly aged, fine low-contrast mottling and sparse faint brush texture. TOP RIGHT: desaturated pale sage green painted plaster wall, subtle wear, smooth diffuse paint texture. BOTTOM LEFT: fine grey-beige terrazzo floor, small sparse dark and cream aggregate chips in uniform mid-light stone binder; consistent micro-pattern all through quadrant. BOTTOM RIGHT: old cream institutional painted metal, matte enamel finish with extremely fine shallow wear and tiny occasional paint flecks, no rust streaks. This is four raw flat surface texture swatches, camera exactly orthographic frontal, no 3D object. Each individual quadrant is seamlessly tileable horizontally and vertically by itself, with consistent colors and pattern density at its edges. Uniform neutral shadowless lighting, no baked ambient occlusion, no highlights or large gradients; materials must accept lighting in Unity. Corridor style is orderly, clean, gently old, not abandoned. Keep realistic subtle textures; no dramatic grunge. No text, no symbols, no objects, no panels or borders, no perspective, no shadows, no lighting vignette, no cracks, no gore, no political marks, no background. All four swatches fill the entire square image edge-to-edge.",
+  "quadrants": [
+    {
+      "id": "warm-plaster",
+      "imageRegion": "top-left",
+      "unityUvRect": [
+        0,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "sage-plaster",
+      "imageRegion": "top-right",
+      "unityUvRect": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "terrazzo",
+      "imageRegion": "bottom-left",
+      "unityUvRect": [
+        0,
+        0,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "cream-metal",
+      "imageRegion": "bottom-right",
+      "unityUvRect": [
+        0.5,
+        0,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "review": {
+    "fourEqualQuadrants": true,
+    "noTextSymbolsObjects": true,
+    "noPerspective": true,
+    "noBakedDirectionalLighting": true,
+    "notes": "Requested 2048 square, actual unchanged output is 1254 square. Tileable appearance requested; exact pixel-periodic seam identity is not guaranteed by image generation. Use each quadrant as its own albedo region; avoid cross-quadrant texture filtering at UV borders."
+  }
+}

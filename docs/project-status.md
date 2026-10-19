@@ -1,5 +1,7 @@
 # 当前完成情况与待补项
 
+2026-10-19：默认房间按员工宿舍参考净尺寸9.70078×4.41176×3.12066米重建，加入Word参考的两张左键海报、默认60°可配置房门，以及只能在房内观看的3D连廊。门槛阻止出门，后续外部玩法尚未设计。.NET249项、Unity30项全部通过，Windows开发构建0错误/0警告且启动通过。见[配置指南](reference-room-guide.md)与[验收记录](reference-room-verification.json)。[verified: reference-room-verification.json source/posters/door/exterior/verification]
+
 2026-10-18 电脑交互更新：鼠标左键或 E 进入后先落座、对齐屏幕、推进铺满视野，再淡入终端；正式三天可自由选择当天待审角色。236项.NET、26项项目PlayMode及补强后的窗口比例回归通过，Windows开发构建0错误/0警告且启动通过。原退出演出、睡前床位聚光灯与三结局流程保留。操作与边界见[电脑与名册指南](terminal-entry-and-roster.md)，证据见[本轮验收](terminal-entry-verification.json)。[verified: terminal-entry-verification.json changes/dotnet/unity]
 
 2026-10-18：默认入口已升级为Day0＋五人三天的全流程，接入六份Excel共994行来源与27张原创立绘，保留融合房间和进出电脑演出。224项.NET、21项项目PlayMode全部通过，Windows Mono开发版构建及启动通过。范围与限制见[全流程验收](campaign-verification.json)，操作见[全流程指南](campaign-guide.md)。[verified: campaign-verification.json content/portraits/dotnet/unity]

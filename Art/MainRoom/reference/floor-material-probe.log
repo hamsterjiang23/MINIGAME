@@ -1,0 +1,183 @@
+ Frame FRAME None  []
+ Texture Coordinate TEX_COORD None  []
+ LINK Texture Coordinate UV -> SimpleUVMapping UV
+ WoodFlooring14_6K GROUP None  [('Roughness Adj.', '-0.29999998211860657'), ('Normal Strength', '0.9999999403953552'), ('Displacement Strength', '0.0'), ('Displacement Mid-Level', '0.0'), ('Hue', '0.5'), ('Saturation', '0.5999999046325684'), ('Value', '0.2999999225139618')]
+ LINK WoodFlooring14_6K Base Color -> Principled BSDF Base Color
+ LINK WoodFlooring14_6K Roughness -> Principled BSDF Roughness
+ LINK WoodFlooring14_6K Normal -> Principled BSDF Normal
+ LINK WoodFlooring14_6K Displacement -> Displacement Height
+   Basic Adjustments Frame FRAME None  []
+   Bright/Contrast BRIGHTCONTRAST None  [('Bright', '0.0'), ('Contrast', '0.0')]
+   LINK Bright/Contrast Color -> Reroute.036 Input
+   COLOR TEX_IMAGE <bpy_struct, Image("WoodFlooring14_COL_VAR1_6K.jpg") at 0x00000151EB3C4F20>  []
+   LINK COLOR Color -> Reroute.COLOR Input
+   COLOR Adjust HUE_SAT None  [('Fac', '1.0')]
+   LINK COLOR Adjust Color -> Reroute.010 Input
+   DISPLACEMENT TEX_IMAGE <bpy_struct, Image("WoodFlooring14_DISP_6K.jpg") at 0x00000151EB3CB920>  []
+   LINK DISPLACEMENT Color -> Reroute.032 Input
+   DISPLACEMENT Adjust MATH None MULTIPLY [('Value', '0.5')]
+   LINK DISPLACEMENT Adjust Value -> DISPLACEMENT Height Value
+   DISPLACEMENT Height MATH None ADD [('Value', '0.5')]
+   LINK DISPLACEMENT Height Value -> Disp Fix Value
+   Disp Fix MATH None ADD [('Value', '0.5')]
+   LINK Disp Fix Value -> Reroute.039 Input
+   Disp Fix Invert INVERT None  [('Fac', '1.0')]
+   LINK Disp Fix Invert Color -> Disp Fix Mult Value
+   Disp Fix Mult MATH None MULTIPLY [('Value', '0.5'), ('Value', '0.5')]
+   LINK Disp Fix Mult Value -> Disp Fix Value
+   GLOSS TEX_IMAGE <bpy_struct, Image("WoodFlooring14_GLOSS_6K.jpg") at 0x00000151EB3CA420>  []
+   LINK GLOSS Color -> InvertGloss Color
+   Group Input GROUP_INPUT None  []
+   LINK Group Input Vector -> Reroute.109 Input
+   LINK Group Input Roughness Adj. -> Reroute.027 Input
+   LINK Group Input Normal Strength -> Reroute.107 Input
+   LINK Group Input Displacement Strength -> Reroute.070 Input
+   LINK Group Input Displacement Mid-Level -> Reroute.066 Input
+   LINK Group Input Hue -> Reroute.002 Input
+   LINK Group Input Saturation -> Reroute.003 Input
+   LINK Group Input Value -> Reroute.005 Input
+   Group Output GROUP_OUTPUT None  []
+   Input Adj. Frame FRAME None  []
+   InvertGloss INVERT None  [('Fac', '1.0')]
+   LINK InvertGloss Color -> Reroute.ROUGH Input
+   MapsFrame FRAME None  []
+   NORMAL TEX_IMAGE <bpy_struct, Image("WoodFlooring14_NRM_6K.jpg") at 0x00000151EB3C8F20>  []
+   LINK NORMAL Color -> Reroute.030 Input
+   Normal Map NORMAL_MAP None  []
+   LINK Normal Map Normal -> Reroute.normal Input
+   Output Frame FRAME None  []
+   Poliigon Mapping Node Frame FRAME None  []
+   ROUGHNESS Fix Pre MATH None SUBTRACT [('Value', '1.0'), ('Value', '0.5')]
+   LINK ROUGHNESS Fix Pre Value -> Roughness Fix Value
+   ROUGHNESS Multiply MATH None MULTIPLY [('Value', '0.5')]
+   LINK ROUGHNESS Multiply Value -> Roughness Fix Value
+   Reroute REROUTE None  []
+   LINK Reroute Output -> GLOSS Vector
+   LINK Reroute Output -> COLOR Vector
+   LINK Reroute Output -> NORMAL Vector
+   LINK Reroute Output -> DISPLACEMENT Vector
+   Reroute.001 REROUTE None  []
+   LINK Reroute.001 Output -> DISPLACEMENT Adjust Value
+   Reroute.002 REROUTE None  []
+   LINK Reroute.002 Output -> Reroute.008 Input
+   Reroute.003 REROUTE None  []
+   LINK Reroute.003 Output -> Reroute.007 Input
+   Reroute.004 REROUTE None  []
+   LINK Reroute.004 Output -> ROUGHNESS Fix Pre Value
+   Reroute.005 REROUTE None  []
+   LINK Reroute.005 Output -> Reroute.006 Input
+   Reroute.006 REROUTE None  []
+   LINK Reroute.006 Output -> COLOR Adjust Value
+   Reroute.007 REROUTE None  []
+   LINK Reroute.007 Output -> COLOR Adjust Saturation
+   Reroute.008 REROUTE None  []
+   LINK Reroute.008 Output -> COLOR Adjust Hue
+   Reroute.010 REROUTE None  []
+   LINK Reroute.010 Output -> Reroute.011 Input
+   Reroute.011 REROUTE None  []
+   LINK Reroute.011 Output -> Bright/Contrast Color
+   Reroute.024 REROUTE None  []
+   LINK Reroute.024 Output -> Reroute.004 Input
+   LINK Reroute.024 Output -> ROUGHNESS Multiply Value
+   Reroute.026 REROUTE None  []
+   LINK Reroute.026 Output -> Roughness Value
+   Reroute.027 REROUTE None  []
+   LINK Reroute.027 Output -> Reroute.026 Input
+   Reroute.028 REROUTE None  []
+   LINK Reroute.028 Output -> Reroute.029 Input
+   Reroute.029 REROUTE None  []
+   LINK Reroute.029 Output -> Reroute.024 Input
+   Reroute.030 REROUTE None  []
+   LINK Reroute.030 Output -> Normal Map Color
+   Reroute.032 REROUTE None  []
+   LINK Reroute.032 Output -> DISPLACEMENT Adjust Value
+   Reroute.035 REROUTE None  []
+   LINK Reroute.035 Output -> Group Output Base Color
+   Reroute.036 REROUTE None  []
+   LINK Reroute.036 Output -> Reroute.035 Input
+   Reroute.037 REROUTE None  []
+   LINK Reroute.037 Output -> Reroute.038 Input
+   Reroute.038 REROUTE None  []
+   LINK Reroute.038 Output -> Group Output Roughness
+   Reroute.039 REROUTE None  []
+   LINK Reroute.039 Output -> Reroute.112 Input
+   Reroute.062 REROUTE None  []
+   LINK Reroute.062 Output -> DISPLACEMENT Height Value
+   Reroute.063 REROUTE None  []
+   LINK Reroute.063 Output -> Reroute.062 Input
+   Reroute.065 REROUTE None  []
+   LINK Reroute.065 Output -> Reroute.063 Input
+   Reroute.066 REROUTE None  []
+   LINK Reroute.066 Output -> Reroute.065 Input
+   Reroute.068 REROUTE None  []
+   LINK Reroute.068 Output -> Reroute.001 Input
+   LINK Reroute.068 Output -> Disp Fix Invert Color
+   Reroute.069 REROUTE None  []
+   LINK Reroute.069 Output -> Reroute.068 Input
+   Reroute.070 REROUTE None  []
+   LINK Reroute.070 Output -> Reroute.071 Input
+   Reroute.071 REROUTE None  []
+   LINK Reroute.071 Output -> Reroute.069 Input
+   Reroute.091 REROUTE None  []
+   LINK Reroute.091 Output -> Reroute Input
+   Reroute.106 REROUTE None  []
+   LINK Reroute.106 Output -> Normal Map Strength
+   Reroute.107 REROUTE None  []
+   LINK Reroute.107 Output -> Reroute.108 Input
+   Reroute.108 REROUTE None  []
+   LINK Reroute.108 Output -> Reroute.106 Input
+   Reroute.109 REROUTE None  []
+   LINK Reroute.109 Output -> Reroute.091 Input
+   Reroute.112 REROUTE None  []
+   LINK Reroute.112 Output -> Group Output Displacement
+   Reroute.AO_MULT REROUTE None  []
+   LINK Reroute.AO_MULT Output -> Reroute.color_adj_input Input
+   Reroute.COLOR REROUTE None  []
+   LINK Reroute.COLOR Output -> Reroute.AO_MULT Input
+   Reroute.ROUGH REROUTE None  []
+   LINK Reroute.ROUGH Output -> ROUGHNESS Multiply Value
+   Reroute.color_adj_input REROUTE None  []
+   LINK Reroute.color_adj_input Output -> COLOR Adjust Color
+   Reroute.normal REROUTE None  []
+   LINK Reroute.normal Output -> Group Output Normal
+   Roughness MATH None ADD [('Value', '1.0'), ('Value', '0.5')]
+   LINK Roughness Value -> Reroute.028 Input
+   Roughness Fix MATH None ADD [('Value', '0.5')]
+   LINK Roughness Fix Value -> Reroute.037 Input
+ Principled BSDF BSDF_PRINCIPLED None  [('Metallic', '0.0'), ('IOR', '1.4500000476837158'), ('Alpha', '1.0'), ('Weight', '0.0'), ('Diffuse Roughness', '0.0'), ('Subsurface Weight', '0.0'), ('Subsurface Radius', '<bpy_float[3], NodeSocketVector.default_value>'), ('Subsurface Scale', '0.05000000074505806'), ('Subsurface IOR', '1.399999976158142'), ('Subsurface Anisotropy', '0.0'), ('Specular IOR Level', '0.15000000596046448'), ('Specular Tint', '<bpy_float[4], NodeSocketColor.default_value>'), ('Anisotropic', '0.0'), ('Anisotropic Rotation', '0.0'), ('Tangent', '<bpy_float[3], NodeSocketVector.default_value>'), ('Transmission Weight', '0.0'), ('Coat Weight', '0.0'), ('Coat Roughness', '0.029999999329447746'), ('Coat IOR', '1.5'), ('Coat Tint', '<bpy_float[4], NodeSocketColor.default_value>'), ('Coat Normal', '<bpy_float[3], NodeSocketVector.default_value>'), ('Sheen Weight', '0.0'), ('Sheen Roughness', '0.5'), ('Sheen Tint', '<bpy_float[4], NodeSocketColor.default_value>'), ('Emission Color', '<bpy_float[4], NodeSocketColor.default_value>'), ('Emission Strength', '1.0'), ('Thin Film Thickness', '0.0'), ('Thin Film IOR', '1.3300000429153442')]
+ LINK Principled BSDF BSDF -> Material Output Surface
+ Displacement DISPLACEMENT None  [('Midlevel', '0.5'), ('Scale', '1.0'), ('Normal', '<bpy_float[3], NodeSocketVector.default_value>')]
+ LINK Displacement Displacement -> Material Output Displacement
+ Material Output OUTPUT_MATERIAL None  [('Thickness', '0.0')]
+ SimpleUVMapping GROUP None  [('Scale', '1.9800000190734863'), ('Aspect Ratio', '0.7242838740348816'), ('Translate X', '0.0'), ('Translate Y', '0.0'), ('Rotation', '0.0')]
+ LINK SimpleUVMapping UV -> WoodFlooring14_6K Vector
+   Combine XYZ COMBXYZ None  [('Z', '0.0')]
+   LINK Combine XYZ Vector -> Vector Math.001 Vector
+   Combine XYZ.001 COMBXYZ None  [('X', '1.0'), ('Z', '1.0')]
+   LINK Combine XYZ.001 Vector -> Vector Math.002 Vector
+   Frame FRAME None  []
+   Frame.001 FRAME None  []
+   Frame.002 FRAME None  []
+   Frame.003 FRAME None  []
+   Group Input GROUP_INPUT None  []
+   LINK Group Input UV -> Vector Math Vector
+   LINK Group Input Scale -> Vector Math Vector
+   LINK Group Input Aspect Ratio -> Combine XYZ.001 Y
+   LINK Group Input Translate X -> Combine XYZ X
+   LINK Group Input Translate Y -> Combine XYZ Y
+   LINK Group Input Rotation -> Math Value
+   Group Output GROUP_OUTPUT None  []
+   Math MATH None RADIANS [('Value', '0.5'), ('Value', '0.5')]
+   LINK Math Value -> Vector Rotate Angle
+   Vector Math VECT_MATH None MULTIPLY [('Vector', '<bpy_float[3], NodeSocketVector.default_value>'), ('Scale', '1.0')]
+   LINK Vector Math Vector -> Vector Math.002 Vector
+   Vector Math.001 VECT_MATH None ADD [('Vector', '<bpy_float[3], NodeSocketVector.default_value>'), ('Scale', '1.0')]
+   LINK Vector Math.001 Vector -> Vector Rotate Vector
+   Vector Math.002 VECT_MATH None MULTIPLY [('Vector', '<bpy_float[3], NodeSocketVector.default_value>'), ('Scale', '1.0')]
+   LINK Vector Math.002 Vector -> Vector Math.001 Vector
+   Vector Rotate VECTOR_ROTATE None  [('Center', '<bpy_float[3], NodeSocketVector.default_value>'), ('Axis', '<bpy_float[3], NodeSocketVector.default_value>'), ('Rotation', "<Euler (x=0.0000, y=0.0000, z=0.0000), order='XYZ'>")]
+   LINK Vector Rotate Vector -> Group Output UV
+Blender 4.5.11 LTS (hash 4db51e9d1e1e built 2026-06-23 01:33:52)
+Read blend: "F:\AAMINIGAME\MINIGAME\Art\MainRoom2\minigame员工宿舍.blend"
+
+Blender quit
