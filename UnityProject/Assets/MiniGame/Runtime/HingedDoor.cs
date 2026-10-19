@@ -35,6 +35,7 @@ namespace MiniGame.UnityHost
             set => animationSeconds = IsFinite(value) ? Mathf.Max(0, value) : .6f;
         }
         public bool IsMoving { get; private set; }
+        public bool MotionCompletionBlocked { get; set; }
         public float CurrentAngle { get; private set; }
         public bool IsOpen => enableToggle && (runtime != null ? runtime.GetView().RoomDoorOpen : Mathf.Abs(CurrentAngle) > .01f);
 
@@ -152,7 +153,7 @@ namespace MiniGame.UnityHost
                     IsMoving = false;
                 }
             }
-            if (IsMoving || pendingToken == null) return;
+            if (IsMoving || pendingToken == null || MotionCompletionBlocked) return;
             var token = pendingToken;
             pendingToken = null;
             if (view.Cue?.Kind == PresentationKind.DoorMotion && view.Cue.Token == token)

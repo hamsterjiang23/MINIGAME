@@ -1,0 +1,28 @@
+{
+    "mode": "sea-preview",
+    "scene": "DreamEndingBeach",
+    "outputDirectory": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\Dreams\\water-revision\\sea-frames",
+    "status": "completed",
+    "startedUtc": "2026-10-19T12:47:47.5213326Z",
+    "finishedUtc": "2026-10-19T12:47:57.6364786Z",
+    "error": "",
+    "day": 0,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "frames": 288,
+    "plannedFrames": 288,
+    "completed": true,
+    "simulatedInput": true,
+    "audioCaptured": false,
+    "captureMethod": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "phaseEvents": [
+        {
+            "frame": 0,
+            "seconds": 0.0,
+            "phase": "Walking",
+            "detail": "Stationary production camera; advance only the presentation clock."
+        }
+    ]
+}

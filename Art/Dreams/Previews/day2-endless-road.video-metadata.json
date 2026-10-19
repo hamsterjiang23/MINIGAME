@@ -1,0 +1,101 @@
+{
+  "formatVersion": 1,
+  "video": "day2-endless-road.mp4",
+  "bytes": 3479815,
+  "sha256": "3ee5239d876ea0b4eaac59cba6be8c0368ad1491591f7e716d66763362d29f03",
+  "capture": {
+    "path": "Artifacts/Dreams/day2-frames/capture.json",
+    "sha256": "d28babb8d9d0ca1fe36910f262a8ccf4f2c2338f5b271d88b1d551c9689ac9cc",
+    "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "scene": "MainRoomCombined",
+    "day": 2,
+    "simulatedInput": true,
+    "completed": true,
+    "frames": 557,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "durationSeconds": 23.208333333333332,
+    "phaseEvents": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "phase": "Aligning",
+        "detail": "Formal session; automatic presentation stepping."
+      },
+      {
+        "frame": 28,
+        "seconds": 1.1666667461395264,
+        "phase": "Playing",
+        "detail": ""
+      },
+      {
+        "frame": 509,
+        "seconds": 21.20833396911621,
+        "phase": "Returning",
+        "detail": ""
+      },
+      {
+        "frame": 533,
+        "seconds": 22.20833396911621,
+        "phase": "None",
+        "detail": ""
+      }
+    ]
+  },
+  "audio": {
+    "liveCapture": false,
+    "method": "Postmixed from the same configured game music and projector clips; not a recording of Unity audio output.",
+    "tracks": [
+      {
+        "path": "Art/Audio/Music/Dream1.wav",
+        "sha256": "4180f0a30f20e9a47b052b4286dd065cfd5a2e9c3f0e694dec8e6d74a13f9b17",
+        "gain": 0.5,
+        "loop": false
+      },
+      {
+        "path": "Art/Audio/SFX/Projector.wav",
+        "sha256": "c7f5154c12398163c1b4a789f6a3b28cbda7d93ab1edd5ec1714e4772efd238d",
+        "gain": 0.45,
+        "loop": true
+      }
+    ],
+    "sampleRate": 48000,
+    "channels": 2,
+    "startFrame": 28,
+    "endFrame": 509,
+    "startSeconds": 1.1666666666666667,
+    "endSeconds": 21.208333333333332,
+    "fadeInSeconds": 1,
+    "fadeOutSeconds": 1,
+    "amixNormalize": false,
+    "limiter": {
+      "linearPeakLimit": 0.95,
+      "autoLevel": false,
+      "latencyCompensated": true
+    },
+    "noAudioOutsidePlaying": true
+  },
+  "encoding": {
+    "ffmpegVersion": "7.1",
+    "codec": "libx264",
+    "threads": 2,
+    "preset": "fast",
+    "crf": 20,
+    "pixelFormat": "yuv420p",
+    "faststart": true,
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "exitCode": 0
+  },
+  "verification": {
+    "fullDecodeExitCode": 0,
+    "decodedFrames": 557,
+    "reportedContainerDuration": "00:00:23.21",
+    "audioPeakDb": -4.246535,
+    "audioRmsDb": -24.166396,
+    "sourcePngsRetained": true,
+    "log": "day2-endless-road.verification.log"
+  }
+}

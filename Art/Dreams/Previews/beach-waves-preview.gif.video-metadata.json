@@ -1,0 +1,58 @@
+{
+  "formatVersion": 1,
+  "video": "beach-waves-preview.gif",
+  "bytes": 4162470,
+  "sha256": "141396534e174e8c63a803daf59d93438f177a30855c451eaae69230f4aae98f",
+  "capture": {
+    "path": "Artifacts/Dreams/water-revision/sea-frames/capture.json",
+    "sha256": "741c796fde0ade27e28a99b1b8b1998d4c35d202db6c8aeab922bd5fe1aaf1a2",
+    "mode": "sea-preview",
+    "scene": "DreamEndingBeach",
+    "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "simulatedInput": true,
+    "stationaryCamera": true,
+    "completed": true,
+    "durationSeconds": 12.0,
+    "sourceFrames": 288,
+    "sourceFps": 24,
+    "frames": 96,
+    "fps": 8,
+    "width": 960,
+    "height": 540,
+    "phaseEvents": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "phase": "Walking",
+        "detail": "Stationary production camera; advance only the presentation clock."
+      }
+    ]
+  },
+  "audio": {
+    "present": false,
+    "liveCapture": false,
+    "method": "Silent preview. No live recording or postmixed audio."
+  },
+  "loop": {
+    "infinitePlayback": true,
+    "seamlessMotion": false,
+    "note": "GIF repeats the captured interval; no seamless boundary or reverse-time synthesis is claimed."
+  },
+  "encoding": {
+    "ffmpegVersion": "7.1",
+    "threads": 2,
+    "videoCodec": "gif",
+    "crf": null,
+    "preset": null,
+    "gifPaletteColors": 96,
+    "exitCode": 0
+  },
+  "verification": {
+    "fullDecodeExitCode": 0,
+    "decodedFrames": 96,
+    "reportedContainerDuration": "00:00:12.01",
+    "log": "beach-waves-preview.gif.verification.log",
+    "sourcePngsRetained": true
+  }
+}

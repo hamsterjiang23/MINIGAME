@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-19",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "behavior": {
+    "door": "Align at the fixed door-front point facing perpendicular to the closed doorway plane, then push straight along its outward normal without sideways yaw; hold until E returns and closes the leaf",
+    "bodyRemainsInside": true,
+    "doorAndBedOutline": false,
+    "otherInteractions": "White depth-tested silhouette/border, width adapted to active pixelation",
+    "interactionDistance": "Per WorldInteraction/ReadableProp, metres from camera to first collider hit; same gate for focus and interaction",
+    "defaultsMetres": {
+      "world": 3.2,
+      "poster": 2
+    }
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "lockedRestorePassed": true,
+    "releaseBuildErrors": 0,
+    "releaseBuildWarnings": 0,
+    "coreTestsPassed": 99,
+    "presentationTestsPassed": 175
+  },
+  "playMode": {
+    "passed": 26.0,
+    "failed": 0,
+    "groups": [
+      {
+        "group": "door-view",
+        "summary": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/CombinedInteractions/door-view-tests.json"
+      },
+      {
+        "group": "outline",
+        "summary": {
+          "total": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/CombinedInteractions/outline-tests.json"
+      },
+      {
+        "group": "distance",
+        "summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/CombinedInteractions/distance-tests.json"
+      },
+      {
+        "group": "combined-room",
+        "summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/CombinedInteractions/combined-room-tests.json"
+      },
+      {
+        "group": "reference-room",
+        "summary": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/CombinedInteractions/reference-room-tests.json"
+      },
+      {
+        "group": "door-frame",
+        "summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/CombinedInteractions/door-frame-tests.json"
+      }
+    ]
+  },
+  "build": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      }
+    ],
+    "output": "Builds/CombinedInteractions/MiniGame.exe",
+    "includedAssets": [
+      "Assets/MiniGame/Runtime/DoorViewCamera.cs",
+      "Assets/MiniGame/Runtime/InteractionFocusOutline.cs",
+      "Assets/MiniGame/Resources/InteractionFocusOutline.shader"
+    ]
+  },
+  "playerSmoke": {
+    "ready": true,
+    "errors": 0,
+    "scope": "Startup smoke only; full playthrough tested in Editor"
+  },
+  "visual": {
+    "directory": "Artifacts/CombinedInteractions/Visuals",
+    "reviewed": [
+      "door-focused.png",
+      "door-outside.png",
+      "computer-white-outline.png",
+      "poster-white-outline.png",
+      "bed-no-outline.png"
+    ],
+    "bodyDeltaDuringOutside": 0,
+    "cameraPositionDeltaAfterReturn": 0,
+    "bodyPositionDeltaAfterReturn": 0,
+    "corrections": [
+      "Offset camera path .35m toward latch side to clear open leaf",
+      "Adapt outline width for live 8px full-strength retro effect"
+    ],
+    "currentRetroProfile": {
+      "pixelSize": 8,
+      "strength": 1,
+      "levels": 23
+    }
+  },
+  "review": {
+    "camera": "C1-C3 fixed and statically re-reviewed",
+    "outlines": "Adaptive width and lifecycle reviewed; no remaining static findings"
+  },
+  "editor": {
+    "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "playing": false,
+    "input": "EditMode",
+    "doorOpen": false,
+    "viewActive": false,
+    "inside": "(-6.89, 0.89, -3.17)",
+    "outside": "(-8.89, 0.89, -3.17)",
+    "outsideForward": "(-1.00, 0.00, 0.00)",
+    "PixelSize": 8,
+    "Strength": 1,
+    "Levels": 23
+  },
+  "limits": [
+    "Fresh-session saves do not contain player world coordinates; returning uses the available room pose. In-session restores preserve the captured original pose.",
+    "Outline stencil bit0 is used transiently before transparent rendering; transparent surfaces without depth writes cannot occlude the outline.",
+    "No new performance benchmark; static review and tests are separate from final human visual acceptance."
+  ],
+  "editorPanel": {
+    "menu": "MiniGame/交互设置",
+    "tests": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "evidence": "Artifacts/CombinedInteractions/interaction-panel-tests.json",
+    "live": {
+      "menu": "MiniGame/交互设置",
+      "playing": false,
+      "editable": true,
+      "targetCount": 5,
+      "rows": [
+        {
+          "name": "Bed interaction collider",
+          "distance": 3.2
+        },
+        {
+          "name": "Readable poster beach",
+          "distance": 2
+        },
+        {
+          "name": "Readable poster instrument",
+          "distance": 2
+        },
+        {
+          "name": "Computer interaction collider",
+          "distance": 3.2
+        },
+        {
+          "name": "Entrance door",
+          "distance": 3.2
+        }
+      ]
+    },
+    "capabilities": [
+      "Per-object interaction distances",
+      "Locate object",
+      "Undo/Redo",
+      "Save only MainRoomCombined",
+      "Editing disabled in Play Mode",
+      "Exact-path protection after Save As"
+    ]
+  },
+  "normalCameraCheck": {
+    "phase": "Viewing",
+    "normalDot": 1.00000012,
+    "pathCross": 0
+  }
+}

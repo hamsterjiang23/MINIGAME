@@ -1,0 +1,76 @@
+{
+  "status": "completed",
+  "duration": 34.04,
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.CameraPathAndOutsideSightlineClearTheOpenDoorLeaf",
+      "Status": "Passed",
+      "Duration": 3.6838922,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.EntryAlignsBeforePushingAndEPathReturnsBeforeClosingWithoutMovingTheBody",
+      "Status": "Passed",
+      "Duration": 3.4027462,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.FixedDoorAlignmentFacesOutwardAndPushesStraightAlongTheClosedDoorNormal",
+      "Status": "Passed",
+      "Duration": 3.4033381,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.ImmediateDisableAndReenableDuringReturnDoesNotTrapPresentationInput",
+      "Status": "Passed",
+      "Duration": 3.3978477,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.OutsideHoldShowsTheReturnPromptThroughItsCanvasGroup",
+      "Status": "Passed",
+      "Duration": 3.5526454,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.PauseFreezesPushAndReturnAndResumesTheSameCue",
+      "Status": "Passed",
+      "Duration": 4.0026808,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringMidReturnCancelsToTheRoomAndRejectsItsOldToken",
+      "Status": "Passed",
+      "Duration": 3.2447944,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringOutsideKeepsTheOriginalRoomPoseAcrossRepeatedRebinds",
+      "Status": "Passed",
+      "Duration": 3.4123051,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom",
+      "Status": "Passed",
+      "Duration": 5.9203034,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

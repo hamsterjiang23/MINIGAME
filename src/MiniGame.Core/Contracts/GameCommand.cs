@@ -7,6 +7,8 @@ namespace MiniGame.Core
     public sealed class CompleteBriefing : GameCommand { }
     public sealed class CompleteSleep : GameCommand { }
     public sealed class CompleteDream : GameCommand { }
+    public sealed class BeginNightDream : GameCommand { }
+    public sealed class ConfirmSelfPurification : GameCommand { }
 
     public sealed class Interact : GameCommand
     {

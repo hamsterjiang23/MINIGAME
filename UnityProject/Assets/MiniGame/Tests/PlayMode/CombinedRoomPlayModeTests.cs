@@ -23,6 +23,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             host.StartTerminalDemo(); // Keep this regression fixture on its original one-patient content.
+            host.Player.enabled = false; // Drive pose and clicks explicitly, without desktop mouse drift after returning control.
             Assert.That(host, Is.Not.Null);
             Assert.That(Object.FindObjectsOfType<MiniGameBootstrap>(), Has.Length.EqualTo(1));
             Assert.That(Object.FindObjectsOfType<Camera>(), Has.Length.EqualTo(1));
@@ -100,7 +101,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.TerminalReveal, Is.LessThan(.01f));
             Assert.That(host.Screen.TransitionLocked, Is.False);
             // Batch-mode windows cannot capture an OS cursor; the world ray is checked below in both modes.
-            if (!Application.isBatchMode && Application.isFocused)
+            if (host.Player.enabled && !Application.isBatchMode && Application.isFocused)
                 Assert.That(Cursor.lockState, Is.EqualTo(CursorLockMode.Locked));
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedInteraction?.Target, Is.EqualTo(InteractionTarget.Computer));
@@ -114,6 +115,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             host.StartTerminalDemo();
+            host.Player.enabled = false;
             yield return FinishMorningThroughDoor(host);
             yield return StageAt(host, InteractionTarget.Computer);
             Assert.That(host.Player.InteractFocused(), Is.True);
@@ -187,6 +189,10 @@ namespace MiniGame.UnityHost.Tests
             yield return ClickNamed(host, "Continue");
             yield return Until(host, () => host.Runtime.GetView().Game.Phase == GamePhase.Briefing, "morning inspection UI completion");
             yield return ClickNamed(host, "Continue");
+            yield return Until(host, () => host.Runtime.GetView().Input == InputContext.DoorView
+                || host.Runtime.GetView().Input == InputContext.World, "briefing UI completion");
+            if (host.Runtime.GetView().Input == InputContext.DoorView)
+                Assert.That(host.Player.InteractFocused(), Is.True, "E returns from the door observation before using the computer.");
             yield return Until(host, () => host.Runtime.GetView().Input == InputContext.World
                 && host.Runtime.GetView().Game.Phase == GamePhase.Apartment, "briefing UI completion");
         }

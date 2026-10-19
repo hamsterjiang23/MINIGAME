@@ -290,6 +290,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host, Is.Not.Null);
             Assert.That(host.CampaignActive, Is.True);
             Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
+            // These tests isolate physical hinge/poster rules; camera travel has its own regression fixture.
+            var doorCamera = host.Player.ViewCamera.GetComponent<DoorViewCamera>();
+            if (doorCamera != null) doorCamera.enabled = false;
             return host;
         }
 

@@ -10,6 +10,8 @@
 
 ## 玩法设计
 
+2026-10-19 的 Combined 正式 Campaign 已接入墙面梦境、玩家全局反叛值、自我审查净化及独立海滩终局；中文调参、音频选取和动态海浪说明见[梦境与结局指南](docs/dreams/guide.md)，录制视频随仓库保存。`[verified: docs/dreams/verification.json；docs/dreams/water-verification.json；Art/Dreams/Previews/manifest.json]`
+
 全量对白使用[全流程指南](docs/campaign-guide.md)；V1小孩Day1使用[电脑终端与对白工具指南](docs/terminal-ui-guide.md)，旧三天开发配置见[原型验收指南](docs/planner-acceptance-guide.md)。`[opinion]`
 
 **晨检与任务简报 → 电脑会谈 → 治疗／净化／释放 → 夜间收束 → 睡眠与梦境 → 次日反馈。** 3D公寓承载移动与物件交互，2D终端承载病人对白、选项和处置。[verified: docs/game-overview.md「玩家的一天」]
@@ -18,7 +20,7 @@
 
 - 五位病人为神父、小孩、女性执政者、战场医生和外交官；角色经历与跨日变化见[游戏总览](docs/game-overview.md)。[verified: docs/game-overview.md「五位病人分别承担什么体验」]
 - 普通会谈采用多轮选项与分支汇合，符合信任条件时追加特殊会谈，结束后才允许处置；处置改变人物去留与后续事件。[verified: docs/game-overview.md「审判、对话与代价」；src/README.md「调用入口」「开发默认规则」]
-- 当前原型的三种结局为被带走、神父袭击、KPI失败后锁房；主Wiki新增的反叛值分支尚未接入，正式数量、阈值、优先级和演出仍需策划确认。[verified: docs/game-overview.md「结局与可感知后果」；src/README.md「开发默认规则」]
+- 旧原型保留被带走、神父袭击、KPI失败后三种结局；Combined 新增反叛梦结局，优先级为神父袭击、KPI失败、反叛梦结局、普通结局。全局反叛值的缺省选项增减为0，需策划配置后自然积累。[verified: docs/dreams/guide.md「玩家全局反叛值」「正式流程与操作」]
 
 **开发配置与正式策划分开维护。** 全流程暂用信任0、释放门槛3、每日净化目标1，按实际表格增量结算，特殊轮次暂按普通轮次播放；参数及解释集中在[转换配置](Tools/DialogueCampaign/conversion-config.json)。V1小孩Day1仍为净化剩余5，旧三天原型保持原配置；这些不是全局正式数值表，未裁定事项仍见[设计待定项](docs/open-questions.md)。`[verified: Tools/DialogueCampaign/conversion-config.json；UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile；src/MiniGame.Core/Rules/PrototypeRules.cs Create]` `[opinion]`
 
@@ -34,19 +36,19 @@
 
 Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式PlayMode测试和Windows Mono开发构建（0错误、1警告）；构建产物位于 `Builds/MiniGame/MiniGame.exe`，启动检查通过。2026-10-15通过仓库根 `Open-Unity.cmd` 修复缺失启动环境后，正常UPM工程导入、主场景打开及四项图形PlayMode测试已通过；IL2CPP尚未验证。完整结果保存在[验证汇总](docs/gameplay-migration-verification.json)，可重放入口见[工程说明](UnityProject/README.md)。[verified: docs/gameplay-migration-verification.json unity；Artifacts/Unity/player-startup.json Ready/StartupExceptions] [opinion]
 
-**《No, I'm not a Human》参考研究**位于 `research/no-im-not-a-human/`，入口为[逆向总报告](research/no-im-not-a-human/Reports/overview.md)和[交付检查记录](research/no-im-not-a-human/Analysis/deliverable-verification.json)。用户已确认将仓库改为private，完整研究目录按私有仓库同步规则纳入Git与Git LFS，包括游戏工作副本、恢复代码、资源、工具、索引和报告；访问与克隆需要仓库授权。[verified: 用户确认“改为private”] [opinion]
+**《No, I'm not a Human》参考研究**位于 `research/no-im-not-a-human/`，入口为[逆向总报告](research/no-im-not-a-human/Reports/overview.md)和[交付检查记录](research/no-im-not-a-human/Analysis/deliverable-verification.json)。完整研究目录纳入 Git 与 Git LFS，包括工作副本、恢复代码、资源、工具、索引和报告。2026-10-19 推送前，GitHub 实时接口返回 Public，用户明确确认“不改私有，仍然全部推送”；本次保持该可见性。第三方内容的权利不因仓库可见性而改变。`[verified: 本轮 GitHub API private=false；用户本轮确认]` [opinion]
 
 - 已从真实备份程序集恢复主程序集943个类型、5855个方法索引与5126个真实CIL方法体，并建立静态调用及CIL／生成C++关系；恢复工程合并625份真实实现和53个匹配插件。[verified: research/no-im-not-a-human/Reports/code-recovery.md L5、L37、L59；research/no-im-not-a-human/Analysis/deliverable-verification.json merged_csharp9_implementations/merged_plugins]
 - 已导出7个场景、38个Prefab、1003张PNG和359份OGG，以及动画、UI与文件级GUID引用索引；编译对白索引包含3255个Yarn节点。[verified: research/no-im-not-a-human/Reports/unity-recovery.md L17–L22、L32；research/no-im-not-a-human/Analysis/deliverable-verification.json exported_scenes/exported_prefabs/yarn_nodes]
 - 73份角色配置、49份URP灯光与1份PlayerSettings仍有序列化问题；自定义Shader存在占位，准确版本Editor导入、语义编译和运行尚未验证。导出文件与语法解析成功不能证明原游戏已完整复原。[verified: research/no-im-not-a-human/Reports/unity-recovery.md L52–L68；research/no-im-not-a-human/Analysis/deliverable-verification.json comprehensive_language_feature_validation=false/unity_import_verified=false/limits]
 
-参考游戏使用 **Unity 6000.3.10f1、IL2CPP**；它与原创项目的Unity 2022.3基线分别记录。访客身份判定、身体检查和生存资源等是玩法研究与借鉴重点，具体采用方式结合本项目设计确定；原创规则不引入真假／善恶标准答案。受版权保护的原游戏代码和资产不公开分发。[verified: research/no-im-not-a-human/Analysis/investigation-status.json unity_version/runtime_backend；research/README.md L74；src/README.md「开发默认规则」] [opinion]
+参考游戏使用 **Unity 6000.3.10f1、IL2CPP**；它与原创项目的Unity 2022.3基线分别记录。访客身份判定、身体检查和生存资源等是玩法研究与借鉴重点，具体采用方式结合本项目设计确定；原创规则不引入真假／善恶标准答案。第三方代码和资产的来源与许可单独记录，本仓库不重新授予其权利。[verified: research/no-im-not-a-human/Analysis/investigation-status.json unity_version/runtime_backend；research/README.md L74；src/README.md「开发默认规则」] [opinion]
 
 ## 后续方向
 
 1. 复核新机器依赖获取，并另行验证IL2CPP构建。[opinion]
 2. 用正式台词、人物差分和观察线索替换占位内容，确认线索如何影响判断及每日资源压力。[opinion]
-3. 制作三天梦境和三种结局演出；确认配置、日记与特殊角色规则后再扩展随机事件或物资。[opinion]
+3. 打磨已接入的梦境与海滩终局表现；确认配置、日记与特殊角色规则后再扩展随机事件或物资。[opinion]
 4. 参考研究继续从缺失角色字段、准确Editor导入和未解析动态调用入手。[opinion]
 
 具体切片与验收场景见[Unity开发路线](research/unity-2022-roadmap.md)；该路线中的尚未实施项结合[当前核心实现](src/README.md)阅读，避免把早期研究状态当作最新代码状态。[verified: research/unity-2022-roadmap.md「按验证切片推进」；src/README.md 开篇说明] [opinion]

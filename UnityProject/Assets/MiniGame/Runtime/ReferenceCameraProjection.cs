@@ -7,10 +7,12 @@ namespace MiniGame.UnityHost
     public sealed class ReferenceCameraProjection : MonoBehaviour
     {
         [SerializeField, Range(20, 120)] private float horizontalFieldOfView = 61.9275f;
+        [SerializeField] private DreamSequenceDirector dreamDirector;
         private Camera view;
         private GameRuntime runtime;
         public float HorizontalFieldOfView { get => horizontalFieldOfView; set => horizontalFieldOfView = Mathf.Clamp(value, 20, 120); }
         public void Configure(float angle) { HorizontalFieldOfView = angle; Apply(); }
+        public void ConfigureDreams(DreamSequenceDirector director) => dreamDirector = director;
         public void Bind(GameRuntime game) { runtime = game; if (!game.GetView().TerminalOpen) Apply(); }
         private void Awake() => view = GetComponent<Camera>();
         private void LateUpdate()
@@ -19,6 +21,7 @@ namespace MiniGame.UnityHost
         }
         private void Apply()
         {
+            if (dreamDirector != null && dreamDirector.OwnsCamera) return;
             if (view == null) view = GetComponent<Camera>();
             view.fieldOfView = 2 * Mathf.Atan(Mathf.Tan(horizontalFieldOfView * .5f * Mathf.Deg2Rad) / view.aspect) * Mathf.Rad2Deg;
         }

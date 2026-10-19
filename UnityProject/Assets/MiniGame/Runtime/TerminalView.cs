@@ -22,6 +22,9 @@ namespace MiniGame.UnityHost
         private readonly RectTransform logical;
         private readonly GameObject directory;
         private readonly GameObject review;
+        private readonly GameObject selfReview;
+        private readonly RawImage selfMonitor;
+        private readonly Button selfPurify;
         private readonly GameObject answers;
         private readonly GameObject history;
         private readonly Text breadcrumb;
@@ -77,7 +80,7 @@ namespace MiniGame.UnityHost
 
         public TerminalView(RectTransform parent, Font terminalFont, Action<string> enterSelected,
             Action returnDirectoryAction, Action leaveAction, Action<Disposition> dispositionAction,
-            Action<InspectionKind> inspectionAction)
+            Action<InspectionKind> inspectionAction, Action selfPurifyAction = null)
         {
             font = terminalFont;
             portraits = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
@@ -264,6 +267,22 @@ namespace MiniGame.UnityHost
             }
             Continue.gameObject.SetActive(false);
             returnDirectory.gameObject.SetActive(false);
+            selfReview = Panel(logical, "SelfReview", Color.clear, 0, 0, 640, 360).gameObject;
+            selfReview.GetComponent<Image>().raycastTarget = false;
+            var selfReviewRect = selfReview.GetComponent<RectTransform>();
+            Frame(selfReviewRect, "SelfMonitorFrame", "实时监控 / 检定室 07", 3, 50, 457, 292);
+            var feed = new GameObject("SelfMonitorFeed", typeof(RectTransform), typeof(CanvasRenderer), typeof(RawImage));
+            feed.transform.SetParent(selfReviewRect, false);
+            Position(feed.GetComponent<RectTransform>(), 11, 76, 441, 248);
+            selfMonitor = feed.GetComponent<RawImage>();
+            selfMonitor.color = Color.white;
+            selfMonitor.raycastTarget = false;
+            Label(selfReviewRect, "SelfCameraLabel", "CAM 07 / LIVE", 12, 326, 420, 11, 9, Dim);
+            Frame(selfReviewRect, "SelfDispositionFrame", "本人复核", 464, 50, 173, 292);
+            Label(selfReviewRect, "SelfSubject", "值班审查员", 479, 88, 142, 22, 16, Ink);
+            Label(selfReviewRect, "SelfStatus", "处置待确认", 479, 119, 142, 18, 11, Dim);
+            selfPurify = Button(selfReviewRect, "SelfPurify", "净化", 480, 270, 140, 36, () => selfPurifyAction?.Invoke(), 16);
+            selfReview.SetActive(false);
             TerminalIndustrialSkin.AddCrtOverlay(logical);
             SetHistory(false);
             Fit();
@@ -295,6 +314,21 @@ namespace MiniGame.UnityHost
             bool newEncounter = current == null || view.PresentedEncounterId != current.PresentedEncounterId;
             bool enteringDirectory = view.TerminalPage == TerminalPage.Directory && current?.TerminalPage != TerminalPage.Directory;
             current = view;
+            bool isSelfReview = view.UsesDreamFlow && view.Game.Phase == GamePhase.SelfReview && view.TerminalPage == TerminalPage.SelfReview;
+            selfReview.SetActive(isSelfReview);
+            selfPurify.interactable = isSelfReview && !inputLocked && view.Input == InputContext.TerminalDirectory && view.Cue == null;
+            if (isSelfReview)
+            {
+                locked = inputLocked;
+                historyOpen = false;
+                directory.SetActive(false);
+                review.SetActive(false);
+                Continue.gameObject.SetActive(false);
+                returnDirectory.gameObject.SetActive(false);
+                breadcrumb.text = "第三安置所 / B区 / 本人复核";
+                Fit();
+                return;
+            }
             if (newEncounter)
             {
                 Body.text = string.Empty;
@@ -355,6 +389,15 @@ namespace MiniGame.UnityHost
             RenderRoster();
             RenderHistory();
             Fit();
+        }
+
+        public void SetSelfMonitor(Texture texture) => selfMonitor.texture = texture;
+
+        public bool HandleSelfReviewKey(KeyCode key)
+        {
+            if (!selfReview.activeInHierarchy || locked || current?.TerminalPage != TerminalPage.SelfReview) return false;
+            if (key != KeyCode.Return && key != KeyCode.KeypadEnter) return false;
+            return MiniGameAudioButton.Activate(selfPurify);
         }
 
         public void SetLine(string displaySpeaker, string text, string portrait, string nodeId = null)
@@ -454,7 +497,7 @@ namespace MiniGame.UnityHost
             if (current == null || !directory.activeSelf || locked) return false;
             if (key == KeyCode.UpArrow) SelectRoster(Mathf.Max(0, rosterIndex - 1));
             else if (key == KeyCode.DownArrow) SelectRoster(Mathf.Min(4, rosterIndex + 1));
-            else if (key == KeyCode.Return || key == KeyCode.KeypadEnter) EnterSelected();
+            else if (key == KeyCode.Return || key == KeyCode.KeypadEnter) return MiniGameAudioButton.Activate(enter);
             else return false;
             return true;
         }
@@ -463,8 +506,7 @@ namespace MiniGame.UnityHost
         {
             if (locked || historyOpen || !returnDirectory.gameObject.activeInHierarchy || !returnDirectory.interactable) return false;
             if (key != KeyCode.Return && key != KeyCode.KeypadEnter) return false;
-            returnDirectory.onClick.Invoke();
-            return true;
+            return MiniGameAudioButton.Activate(returnDirectory);
         }
 
         public void ScrollHistory(int amount)

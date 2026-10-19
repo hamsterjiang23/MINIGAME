@@ -1,0 +1,40 @@
+{
+    "mode": "ending",
+    "scene": "DreamEndingBeach",
+    "outputDirectory": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\Dreams\\beach-frames",
+    "status": "completed",
+    "startedUtc": "2026-10-19T12:07:41.2384050Z",
+    "finishedUtc": "2026-10-19T12:08:14.3577488Z",
+    "error": "",
+    "day": 0,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "frames": 960,
+    "plannedFrames": 960,
+    "completed": true,
+    "simulatedInput": true,
+    "audioCaptured": false,
+    "captureMethod": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "phaseEvents": [
+        {
+            "frame": 0,
+            "seconds": 0.0,
+            "phase": "Walking",
+            "detail": "Simulate held W until in bed range, then submit one E-equivalent command."
+        },
+        {
+            "frame": 221,
+            "seconds": 9.208333969116211,
+            "phase": "Lying",
+            "detail": "Accepted one simulated bed interaction."
+        },
+        {
+            "frame": 258,
+            "seconds": 10.75,
+            "phase": "Drifting",
+            "detail": ""
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+  "formatVersion": 1,
+  "video": "beach-clouds-preview.mp4",
+  "bytes": 330544,
+  "sha256": "0dd831607b6f24d7da8d0b5e79e95bbccf6367b796f5070cede84e19850d5b7a",
+  "capture": {
+    "path": "Artifacts/Dreams/beach-frames/capture.json",
+    "sha256": "17b028a6dfc1cbe799b0cc55581b0ddb4a996d6eed449a3e7913601d5b10100b",
+    "scene": "DreamEndingBeach",
+    "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "sourceStartFrame": 792,
+    "sourceEndFrameInclusive": 959,
+    "sourceStartSeconds": 33,
+    "sourceEndSeconds": 40,
+    "durationSeconds": 7,
+    "simulatedInput": true,
+    "completed": true,
+    "frames": 168,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "subtitleFree": true
+  },
+  "audio": {
+    "liveCapture": false,
+    "present": false,
+    "method": "Silent excerpt after all five captions finish."
+  },
+  "loop": {
+    "infinitePlayback": false,
+    "seamlessMotion": false,
+    "note": "Forward-time excerpt repeated; the loop boundary is not claimed to be a seamless continuation."
+  },
+  "verification": {
+    "fullDecodeExitCode": 0,
+    "decodedFrames": 168,
+    "reportedContainerDuration": "00:00:07.00",
+    "log": "beach-clouds-preview.verification.log",
+    "sourcePngsRetained": true
+  }
+}

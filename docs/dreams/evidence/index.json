@@ -1,0 +1,96 @@
+{
+  "formatVersion": 1,
+  "purpose": "Byte-identical selected capture/test/build reports promoted for repository delivery; internal original paths and historical results are unchanged.",
+  "files": [
+    {
+      "file": "day1-capture.json",
+      "originalArtifact": "Artifacts/Dreams/day1-frames/capture.json",
+      "sha256": "b75829569debfafba6ba90e9a8114aefc29538be685bf5e0c2728379905692e1",
+      "bytes": 1414
+    },
+    {
+      "file": "day2-capture.json",
+      "originalArtifact": "Artifacts/Dreams/day2-frames/capture.json",
+      "sha256": "d28babb8d9d0ca1fe36910f262a8ccf4f2c2338f5b271d88b1d551c9689ac9cc",
+      "bytes": 1414
+    },
+    {
+      "file": "day3-capture.json",
+      "originalArtifact": "Artifacts/Dreams/day3-frames/capture.json",
+      "sha256": "caf25e06cc25841014f605b4b798cbd2e2796468b70efed59042fbd3b9f8214e",
+      "bytes": 1414
+    },
+    {
+      "file": "beach-capture.json",
+      "originalArtifact": "Artifacts/Dreams/beach-frames/capture.json",
+      "sha256": "17b028a6dfc1cbe799b0cc55581b0ddb4a996d6eed449a3e7913601d5b10100b",
+      "bytes": 1321
+    },
+    {
+      "file": "sea-capture.json",
+      "originalArtifact": "Artifacts/Dreams/water-revision/sea-frames/capture.json",
+      "sha256": "741c796fde0ade27e28a99b1b8b1998d4c35d202db6c8aeab922bd5fe1aaf1a2",
+      "bytes": 1015
+    },
+    {
+      "file": "dream-playmode-tests.json",
+      "originalArtifact": "Artifacts/Dreams/dream-playmode-tests.json",
+      "sha256": "3a48d1ae842622690295fbd35b280eab092c61678498fced40a3bc06fd6409e5",
+      "bytes": 5053
+    },
+    {
+      "file": "campaign-integration-tests.json",
+      "originalArtifact": "Artifacts/Dreams/campaign-integration-tests.json",
+      "sha256": "4c98b9a58a1c1fcd451bb5868fc140795e8198242df3ed5e3dc7075cd628b3bb",
+      "bytes": 2334
+    },
+    {
+      "file": "self-review-tests.json",
+      "originalArtifact": "Artifacts/Dreams/self-review-tests.json",
+      "sha256": "5962fb778d0ce59a47f750f5ae39ae10aa81fc04f0a2f4fc234e0dbaa0b6bee6",
+      "bytes": 1204
+    },
+    {
+      "file": "audio-regression-tests.json",
+      "originalArtifact": "Artifacts/Dreams/audio-regression-tests.json",
+      "sha256": "dcfb5e7000eecfdeb5450a3be4d7dc549cd18dc17df5f018aac04f6332656df0",
+      "bytes": 3292
+    },
+    {
+      "file": "door-regression-tests.json",
+      "originalArtifact": "Artifacts/Dreams/door-regression-tests.json",
+      "sha256": "5c631b92a5982d917e74817f4ddd29924e96b60e7fcba3370f59cbc10ad4239e",
+      "bytes": 2461
+    },
+    {
+      "file": "combined-room-tests.json",
+      "originalArtifact": "Artifacts/Dreams/combined-room-tests.json",
+      "sha256": "0dc4fa786a1f7f7c37d5eaa8bf7c613e263f083e67d9687029a23dd67dff59cc",
+      "bytes": 706
+    },
+    {
+      "file": "water-ending-tests.json",
+      "originalArtifact": "Artifacts/Dreams/water-revision/ending-tests.json",
+      "sha256": "405f100cabbe9b4094df683bb8d86beb23ca468efa41395f70bd7e5d7f8ec67a",
+      "bytes": 1676
+    },
+    {
+      "file": "water-cross-scene-tests.json",
+      "originalArtifact": "Artifacts/Dreams/water-revision/cross-scene-tests.json",
+      "sha256": "55ab7a633652559952a0f0f765045845e36bd74cc9314de022a04d142cd930de",
+      "bytes": 460
+    },
+    {
+      "file": "water-editor-tests.json",
+      "originalArtifact": "Artifacts/Dreams/water-revision/editor-tests.json",
+      "sha256": "7d711c298f4121256c9d4446ed9e860e30c04ba325746e2e03998aa5dd61b024",
+      "bytes": 951
+    },
+    {
+      "file": "water-build-status.json",
+      "originalArtifact": "Artifacts/Dreams/water-revision/build-status.json",
+      "sha256": "13d0bfaa6c5d8f3d3d219551bd2fe29fb5a035d51c21bc6550b16344723e58ae",
+      "bytes": 238047
+    }
+  ]
+}

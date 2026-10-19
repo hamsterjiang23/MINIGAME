@@ -68,6 +68,7 @@ namespace MiniGame.Presentation
                         case EndingType.PriestAttack: return "【开发占位】来访者没有携带晨检设备。乔纳站在门外，重复着他对净化的理解。画面在你后退时中断。";
                         case EndingType.LockedInRoom: return "【开发占位】未完成的配额留在工作单上。门锁转动，终端通知你等待复检。房间从此没有新的开门提示。";
                         case EndingType.TakenAway: return "【开发占位】三天工作记录已归档。门外要求你接受下一轮审查。你离开座位，监控仍对准空椅子。";
+                        case EndingType.DreamSea: return ""; // The dream-ending scene supplies its own presentation.
                         default: throw new InvalidOperationException("An ending presentation requires a resolved ending.");
                     }
                 default: throw new ArgumentOutOfRangeException(nameof(kind));

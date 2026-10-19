@@ -1,0 +1,146 @@
+{
+  "status": "completed",
+  "duration": 14.54,
+  "summary": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneAutomaticallyProjectsOnTheAuthoredWallAndReturnsBeforeBedUnlocks",
+      "Status": "Passed",
+      "Duration": 0.7223216,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroAutomaticallySkipsVideoAndOneBedInteractionAdvancesExactlyOneDay",
+      "Status": "Passed",
+      "Duration": 0.2652978,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.HighRebellionSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress",
+      "Status": "Passed",
+      "Duration": 3.400875,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.WorldSavePoseOverridesLaterTerminalDoorAndDreamReturnCaches",
+      "Status": "Passed",
+      "Duration": 4.9382371,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingCheckpointRestoresExactCameraPoseAndRejectsInvalidNumbers",
+      "Status": "Passed",
+      "Duration": 0.0076788,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingLocksUpwardAndCameraFollowsFloatingBed",
+      "Status": "Passed",
+      "Duration": 0.0039882,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.PauseFreezesPresentationAndSubtitlesThenResumeContinues",
+      "Status": "Passed",
+      "Duration": 0.010574,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.RestoringSubtitleSeeksVoiceAndCompletedLinesNeverRestart",
+      "Status": "Passed",
+      "Duration": 0.0069936,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.WOnlyMovesForwardAndCannotOvershootBed",
+      "Status": "Passed",
+      "Duration": 0.0044134,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.PreviewFramesWallPausesAndRestoresCameraAndProjection",
+      "Status": "Passed",
+      "Duration": 1.7228397,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.RuntimeCheckpointKeepsPlaybackTimeAndCompletesOnlyAfterReturn",
+      "Status": "Passed",
+      "Duration": 1.6765371,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.ThreeDreamsHaveDeterministicMovingPixelsAndAnOffscreenOnlyCamera",
+      "Status": "Passed",
+      "Duration": 1.1917831,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.AfterDreamPassesFurnitureClampsTheFloorAndWakesSafelyAfterBed",
+      "Status": "Passed",
+      "Duration": 0.015484,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.BedLightingStartsAfterDreamAndSelfReviewKeepsOnlyTheTerminalGlow",
+      "Status": "Passed",
+      "Duration": 0.0257573,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DisableAndRebindRestoreThePreviousControllerState(True)",
+      "Status": "Passed",
+      "Duration": 0.0053197,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DisableAndRebindRestoreThePreviousControllerState(False)",
+      "Status": "Passed",
+      "Duration": 0.004785,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.SelfReviewOffersOnlyComputerAndDoesNotTeleportOnTerminalEntry",
+      "Status": "Passed",
+      "Duration": 0.020375,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DreamUsesDayMusicAndProjectorUntilDreamEnds",
+      "Status": "Passed",
+      "Duration": 0.3439221,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.DreamProjectionHasNoConversationContinueHeaderOrKeyboardSkip",
+      "Status": "Passed",
+      "Duration": 0.1486197,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

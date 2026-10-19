@@ -24,6 +24,8 @@ namespace MiniGame.Core
                 case CompleteBriefing _: return new CommandRecord { Kind = CommandKind.CompleteBriefing };
                 case CompleteSleep _: return new CommandRecord { Kind = CommandKind.CompleteSleep };
                 case CompleteDream _: return new CommandRecord { Kind = CommandKind.CompleteDream };
+                case BeginNightDream _: return new CommandRecord { Kind = CommandKind.BeginNightDream };
+                case ConfirmSelfPurification _: return new CommandRecord { Kind = CommandKind.ConfirmSelfPurification };
                 case Interact c: return new CommandRecord { Kind = CommandKind.Interact, Target = c.Target };
                 case SelectPatient c: return new CommandRecord { Kind = CommandKind.SelectPatient, PatientId = c.PatientId };
                 case SelectResponse c: return new CommandRecord
@@ -49,6 +51,8 @@ namespace MiniGame.Core
                 case CommandKind.CompleteBriefing: command = new CompleteBriefing(); break;
                 case CommandKind.CompleteSleep: command = new CompleteSleep(); break;
                 case CommandKind.CompleteDream: command = new CompleteDream(); break;
+                case CommandKind.BeginNightDream: command = new BeginNightDream(); break;
+                case CommandKind.ConfirmSelfPurification: command = new ConfirmSelfPurification(); break;
                 case CommandKind.Interact when Target.HasValue: command = new Interact(Target.Value); break;
                 case CommandKind.SelectPatient when PatientId != null: command = new SelectPatient(PatientId); break;
                 case CommandKind.SelectResponse when EncounterId != null && NodeId != null && ResponseId != null:

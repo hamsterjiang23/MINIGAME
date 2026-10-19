@@ -18,6 +18,7 @@ namespace MiniGame.UnityHost
         [SerializeField] private float beamRadius = 1.12f;
         [SerializeField] private float fadeSeconds = 1.1f;
         [SerializeField] private float spotIntensity = 8f;
+        [SerializeField] private Renderer selfReviewSurface;
         private GameRuntime runtime;
         private BedtimeAtmosphere atmosphere;
         private readonly List<LightState> lights = new List<LightState>();
@@ -32,6 +33,9 @@ namespace MiniGame.UnityHost
         private SphericalHarmonicsL2 ambientProbe;
         private CameraClearFlags clearFlags;
         private DepthTextureMode depthMode;
+        private Light selfReviewGlow;
+        private bool selfReviewTarget;
+        private Color selfReviewEmission = new Color(.38f, .65f, .46f);
 
         public float Isolation { get; private set; }
         public float BeamStrength { get; private set; }
@@ -39,8 +43,18 @@ namespace MiniGame.UnityHost
         public Light Spotlight => spotlight;
         public BedtimeAtmosphere Atmosphere => atmosphere;
         public Renderer[] BedRenderers => bedRenderers;
-        public static bool IsSleepOnly(RuntimeView view) => view != null &&
-            (view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream);
+        public static bool IsSleepOnly(RuntimeView view) => view != null && (view.Game.Phase == GamePhase.AfterDream
+            || (!view.UsesDreamFlow && view.Game.Phase == GamePhase.Evening));
+
+        public void ConfigureSelfReview(Renderer terminalScreen)
+        {
+            selfReviewSurface = terminalScreen;
+            if (terminalScreen != null && terminalScreen.sharedMaterial != null && terminalScreen.sharedMaterial.HasProperty("_EmissionColor"))
+            {
+                var color = terminalScreen.sharedMaterial.GetColor("_EmissionColor");
+                if (color.maxColorComponent > .01f) selfReviewEmission = color;
+            }
+        }
 
         public void Configure(Camera camera, Light light, Renderer[] targets, Vector3 surfaceCenter, float radius)
         {
@@ -52,6 +66,7 @@ namespace MiniGame.UnityHost
         {
             if (runtime != null) runtime.Changed -= SetTargets;
             CaptureRoom();
+            EnsureSelfReviewGlow();
             if (atmosphere == null)
             {
                 atmosphere = gameObject.AddComponent<BedtimeAtmosphere>();
@@ -103,7 +118,9 @@ namespace MiniGame.UnityHost
         {
             bool inDream = view.Game.Phase == GamePhase.Sleeping || view.Game.Phase == GamePhase.Dream;
             bool guide = IsSleepOnly(view) && (!view.TerminalOpen || view.LeavingTerminal);
-            isolationTarget = guide || inDream ? 1 : 0;
+            bool beforeDream = view.UsesDreamFlow && view.Game.Phase == GamePhase.Evening && (!view.TerminalOpen || view.LeavingTerminal);
+            selfReviewTarget = view.UsesDreamFlow && view.Game.Phase == GamePhase.SelfReview;
+            isolationTarget = guide || inDream || beforeDream || selfReviewTarget ? 1 : 0;
             beamTarget = guide ? 1 : 0;
         }
 
@@ -125,6 +142,7 @@ namespace MiniGame.UnityHost
             {
                 if (!restored) RestoreRoom();
                 spotlight.enabled = false;
+                if (selfReviewGlow != null) selfReviewGlow.enabled = false;
                 return;
             }
             restored = false;
@@ -155,11 +173,38 @@ namespace MiniGame.UnityHost
             {
                 if (state.Renderer == null) continue;
                 state.Renderer.GetPropertyBlock(state.Working, state.Slot);
-                state.Working.SetColor(state.Property, new Color(state.Color.r * (1 - amount), state.Color.g * (1 - amount), state.Color.b * (1 - amount), state.Color.a));
+                var color = new Color(state.Color.r * (1 - amount), state.Color.g * (1 - amount), state.Color.b * (1 - amount), state.Color.a);
+                if (selfReviewTarget && state.Renderer == selfReviewSurface && state.Property == Shader.PropertyToID("_EmissionColor"))
+                    color = Color.Lerp(state.Color, selfReviewEmission, amount);
+                state.Working.SetColor(state.Property, color);
                 state.Renderer.SetPropertyBlock(state.Working, state.Slot);
             }
             spotlight.enabled = BeamStrength > .001f;
             spotlight.intensity = spotIntensity * Mathf.SmoothStep(0, 1, BeamStrength);
+            if (selfReviewGlow != null)
+            {
+                selfReviewGlow.enabled = selfReviewTarget && amount > .001f && selfReviewSurface != null && selfReviewSurface.enabled;
+                selfReviewGlow.intensity = .55f * amount;
+                if (selfReviewSurface != null)
+                {
+                    var center = selfReviewSurface.bounds.center;
+                    var towardRoom = viewCamera != null ? (viewCamera.transform.position - center).normalized : Vector3.forward;
+                    selfReviewGlow.transform.position = center + towardRoom * .08f;
+                }
+            }
+        }
+
+        private void EnsureSelfReviewGlow()
+        {
+            if (selfReviewSurface == null || selfReviewGlow != null) return;
+            var root = new GameObject("Self-review terminal glow") { hideFlags = HideFlags.DontSave };
+            root.transform.SetParent(transform, false);
+            selfReviewGlow = root.AddComponent<Light>();
+            selfReviewGlow.type = LightType.Point;
+            selfReviewGlow.range = 1.2f;
+            selfReviewGlow.color = new Color(.42f, .72f, .54f);
+            selfReviewGlow.shadows = LightShadows.None;
+            selfReviewGlow.enabled = false;
         }
 
         private void RestoreRoom()
@@ -180,6 +225,7 @@ namespace MiniGame.UnityHost
             }
             if (viewCamera != null) { viewCamera.backgroundColor = background; viewCamera.clearFlags = clearFlags; viewCamera.depthTextureMode = depthMode; }
             if (spotlight != null) spotlight.enabled = false;
+            if (selfReviewGlow != null) selfReviewGlow.enabled = false;
             restored = true;
         }
 
@@ -187,6 +233,7 @@ namespace MiniGame.UnityHost
         {
             if (runtime != null) runtime.Changed -= SetTargets;
             if (!restored) RestoreRoom();
+            if (selfReviewGlow != null) Destroy(selfReviewGlow.gameObject);
         }
 
         private void OnDisable()

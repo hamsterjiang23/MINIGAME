@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 10.0,
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.DreamProjectionHasNoConversationContinueHeaderOrKeyboardSkip",
+      "Status": "Passed",
+      "Duration": 0.4992998,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.EnterPurifiesOnceAndHidesNormalEndingUiBeforeTheSceneHandoff",
+      "Status": "Passed",
+      "Duration": 3.1661212,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.PointerPurificationRespectsTransitionAndPauseAndCommitsOnce",
+      "Status": "Passed",
+      "Duration": 3.1498883,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.SelfReviewShowsTheLiveSeatedPlayerAndOnlyPurification",
+      "Status": "Passed",
+      "Duration": 3.1606464,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

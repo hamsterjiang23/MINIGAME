@@ -71,6 +71,10 @@ namespace MiniGame.UnityHost
         public bool HistoryOpen => terminalView != null && terminalView.HistoryOpen;
         public string CurrentRoomCaption => roomCaption != null ? roomCaption.text : string.Empty;
         public bool RoomCaptionVisible => roomCaption != null && roomCaption.gameObject.activeSelf && roomCaptionRemaining > 0;
+        public MiniGameAudioDirector Audio { get; private set; }
+
+        public void BindAudio(MiniGameAudioDirector value) => Audio = value;
+        public void BindSelfMonitor(Texture texture) { EnsureBuilt(); terminalView.SetSelfMonitor(texture); }
 
         public void Bind(GameRuntime game)
         {
@@ -261,7 +265,8 @@ namespace MiniGame.UnityHost
             if (promptGroup != null)
             {
                 bool world = current != null && current.Input == InputContext.World;
-                promptGroup.alpha = Mathf.MoveTowards(promptGroup.alpha, world ? promptTarget : 0, Time.unscaledDeltaTime * 6);
+                bool showPrompt = world || (current != null && current.Input == InputContext.DoorView);
+                promptGroup.alpha = Mathf.MoveTowards(promptGroup.alpha, showPrompt ? promptTarget : 0, Time.unscaledDeltaTime * 6);
                 worldPrompt.color = focusAllowed ? Ink : new Color(.52f, .57f, .54f);
                 focusMark.color = new Color(.58f, .84f, .66f, world && focusAllowed ? .5f + Mathf.Sin(Time.unscaledTime * 2.4f) * .15f : 0);
                 reticle.gameObject.SetActive(world && (!BedtimeGuidance.IsSleepOnly(current) || focusAllowed));
@@ -288,13 +293,14 @@ namespace MiniGame.UnityHost
             if (current.TerminalOpen)
             {
                 if (terminalReveal < .999f || terminalView.HistoryOpen) return false;
+                if (current.TerminalPage == TerminalPage.SelfReview) return terminalView.HandleSelfReviewKey(key);
                 if (terminalView.HandleDirectoryKey(key) || terminalView.HandleArchiveKey(key)) return true;
             }
             if (!CanAdvanceDialogue()) return false;
             bool confirm = key == KeyCode.Return || key == KeyCode.KeypadEnter;
             var next = ActiveContinue;
             if ((confirm || key == KeyCode.Space) && next != null && next.gameObject.activeInHierarchy && next.interactable)
-            { next.onClick.Invoke(); return true; }
+                return MiniGameAudioButton.Activate(next);
             if (choices.Count > 0)
             {
                 if (key == KeyCode.UpArrow || key == KeyCode.DownArrow)
@@ -306,11 +312,11 @@ namespace MiniGame.UnityHost
                     return true;
                 }
                 if (confirm && selectedResponse >= 0 && selectedResponse < choices.Count && choices[selectedResponse].interactable)
-                { choices[selectedResponse].onClick.Invoke(); return true; }
+                    return MiniGameAudioButton.Activate(choices[selectedResponse]);
             }
             for (int index = 0; index < choices.Count; index++)
                 if (key == KeyCode.Alpha1 + index && choices[index].interactable)
-                { choices[index].onClick.Invoke(); return true; }
+                    return MiniGameAudioButton.Activate(choices[index]);
             return false;
         }
 
@@ -318,7 +324,9 @@ namespace MiniGame.UnityHost
         public void ReflowTerminal() => terminalView?.Fit();
         private Button ActiveContinue => current != null && current.TerminalOpen ? terminalView.Continue : continueButton;
         private bool CanAdvanceDialogue() => current != null && dialogueInteractable && !transitionLocked && !current.Paused && current.Inspection == null
+            && !HasDedicatedDreamPresentation(current)
             && current.Cue?.Kind != PresentationKind.DoorMotion
+            && current.Cue?.Kind != PresentationKind.DoorViewReturn && current.Input != InputContext.DoorView
             && (!current.TerminalOpen || terminalReveal >= .999f)
             && (!current.TerminalOpen || (terminalView.IsReview && !terminalView.HistoryOpen));
 
@@ -344,13 +352,15 @@ namespace MiniGame.UnityHost
             if (!view.Paused && (view.Input != InputContext.World || BedtimeGuidance.IsSleepOnly(view))) ClearRoomCaption();
             header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     " + PhaseName(view.Game.Phase);
             bool bedtime = BedtimeGuidance.IsSleepOnly(view);
-            header.gameObject.SetActive(!view.TerminalOpen && !bedtime);
+            bool dedicatedDream = HasDedicatedDreamPresentation(view);
+            header.gameObject.SetActive(!view.TerminalOpen && !bedtime && !dedicatedDream);
             terminal.SetActive(view.TerminalOpen);
             terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
-            conversation.SetActive(!view.TerminalOpen && view.Cue?.Kind != PresentationKind.DoorMotion
+            conversation.SetActive(!dedicatedDream && !view.TerminalOpen && view.Cue?.Kind != PresentationKind.DoorMotion
+                && view.Cue?.Kind != PresentationKind.DoorViewReturn
                 && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending));
             SetRect(conversationRect, new Vector2(.17f, .19f), new Vector2(.83f, .74f));
-            worldHelp.gameObject.SetActive(view.Input == InputContext.World && !bedtime);
+            worldHelp.gameObject.SetActive(view.Input == InputContext.World && !bedtime && !dedicatedDream);
             worldHelp.text = (view.Game.Day == 0 && view.Game.Phase == GamePhase.Apartment
                 ? "终端已启动。到电脑完成首次审查。" : WorldInstruction(view.Game.Phase))
                 + "\nWASD 移动   ·   E 操作 / 左键使用电脑   ·   ESC 暂停\nF5 保存   /   F9 恢复";
@@ -363,15 +373,20 @@ namespace MiniGame.UnityHost
             }
             pause.SetActive(view.Paused);
             if (view.Paused) pause.transform.SetAsLastSibling();
-            if (!yarnBound || (view.Cue != null && (view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion)))
+            if (dedicatedDream) HideDialogueActions();
+            else if (!yarnBound || (view.Cue != null && (view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion || view.Cue.Kind == PresentationKind.DoorViewReturn)))
                 RenderFallback(view);
-            if (view.Game.Phase == GamePhase.Ending && view.Cue == null)
+            if (view.Game.Phase == GamePhase.Ending && view.Cue == null && !dedicatedDream)
             {
                 SetDialogueText("检查期结束", EndingName(view.Game.Ending) + "\n\n按 ESC 可保存、恢复或开始新的检查期。");
                 HideDialogueActions();
             }
             ApplyInputGate();
         }
+
+        private static bool HasDedicatedDreamPresentation(RuntimeView view)
+            => view.UsesDreamFlow && (view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.SelfReview
+                || view.Game.Ending == EndingType.DreamSea);
 
         private void RenderFallback(RuntimeView view)
         {
@@ -381,7 +396,7 @@ namespace MiniGame.UnityHost
             if (view.Cue != null)
             {
                 var token = view.Cue.Token;
-                bool automatic = view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion;
+                bool automatic = view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion || view.Cue.Kind == PresentationKind.DoorViewReturn;
                 SetDialogueText("和平仪", view.Cue.Text);
                 ShowCueText(view.Cue.Text, automatic ? null : (Action)(() => Check(runtime.CompleteCue(token))));
             }
@@ -449,7 +464,7 @@ namespace MiniGame.UnityHost
                     var result = runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition);
                     if (result.Accepted) terminalView.SetHistory(false);
                     Check(result);
-                }, kind => Check(runtime.Inspect(kind)));
+                }, kind => Check(runtime.Inspect(kind)), () => Check(runtime.ConfirmSelfPurification()));
             terminalView.HistoryChanged = ApplyInputGate;
             UnityEngine.Canvas.willRenderCanvases += ReflowTerminal;
             conversationRect = MakePanel(canvasRoot, "Conversation", new Color(.045f, .07f, .06f, .98f), new Vector2(.36f, .115f), new Vector2(.955f, .65f));
@@ -568,7 +583,7 @@ namespace MiniGame.UnityHost
         private Button MakeButton(Transform parent, string name, string label, Action action)
         {
             var rect = MakePanel(parent, name, new Color(.11f, .20f, .15f), Vector2.zero, Vector2.one);
-            var button = rect.gameObject.AddComponent<Button>();
+            var button = rect.gameObject.AddComponent<MiniGameAudioButton>();
             var colors = button.colors; colors.normalColor = Color.white; colors.highlightedColor = new Color(.72f, .95f, .8f);
             colors.pressedColor = Accent; colors.disabledColor = new Color(.32f, .36f, .33f); button.colors = colors;
             var text = MakeText(rect, "Label", label, 24, TextAnchor.MiddleLeft, new Vector2(.04f, .02f), new Vector2(.97f, .98f));
@@ -581,7 +596,8 @@ namespace MiniGame.UnityHost
         private static string EndingName(EndingType ending)
         {
             switch (ending) { case EndingType.TakenAway: return "结局：被带走"; case EndingType.LockedInRoom: return "结局：锁在房间";
-                case EndingType.PriestAttack: return "结局：神父袭击"; default: return "检查期结束"; }
+                case EndingType.PriestAttack: return "结局：神父袭击"; case EndingType.DreamSea: return "结局：海上之梦";
+                default: return "检查期结束"; }
         }
         private static string PhaseName(GamePhase phase)
         {

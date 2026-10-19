@@ -1,0 +1,101 @@
+{
+  "formatVersion": 1,
+  "video": "day1-whale-beach.mp4",
+  "bytes": 6787224,
+  "sha256": "8afbeedba2f5ed4509263f6c37cfc009f6c6f1dee2c43506396ae87e3d70aa35",
+  "capture": {
+    "path": "Artifacts/Dreams/day1-frames/capture.json",
+    "sha256": "b75829569debfafba6ba90e9a8114aefc29538be685bf5e0c2728379905692e1",
+    "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+    "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+    "scene": "MainRoomCombined",
+    "day": 1,
+    "simulatedInput": true,
+    "completed": true,
+    "frames": 557,
+    "fps": 24,
+    "width": 1280,
+    "height": 720,
+    "durationSeconds": 23.208333333333332,
+    "phaseEvents": [
+      {
+        "frame": 0,
+        "seconds": 0.0,
+        "phase": "Aligning",
+        "detail": "Formal session; automatic presentation stepping."
+      },
+      {
+        "frame": 28,
+        "seconds": 1.1666667461395264,
+        "phase": "Playing",
+        "detail": ""
+      },
+      {
+        "frame": 509,
+        "seconds": 21.20833396911621,
+        "phase": "Returning",
+        "detail": ""
+      },
+      {
+        "frame": 533,
+        "seconds": 22.20833396911621,
+        "phase": "None",
+        "detail": ""
+      }
+    ]
+  },
+  "audio": {
+    "liveCapture": false,
+    "method": "Postmixed from the same configured game music and projector clips; not a recording of Unity audio output.",
+    "tracks": [
+      {
+        "path": "Art/Audio/Music/Dream0.wav",
+        "sha256": "c998b27fa4f4039f83e32b750a1ea08ea1dcafa284be5d330df2a934161d960e",
+        "gain": 0.5,
+        "loop": false
+      },
+      {
+        "path": "Art/Audio/SFX/Projector.wav",
+        "sha256": "c7f5154c12398163c1b4a789f6a3b28cbda7d93ab1edd5ec1714e4772efd238d",
+        "gain": 0.45,
+        "loop": true
+      }
+    ],
+    "sampleRate": 48000,
+    "channels": 2,
+    "startFrame": 28,
+    "endFrame": 509,
+    "startSeconds": 1.1666666666666667,
+    "endSeconds": 21.208333333333332,
+    "fadeInSeconds": 1,
+    "fadeOutSeconds": 1,
+    "amixNormalize": false,
+    "limiter": {
+      "linearPeakLimit": 0.95,
+      "autoLevel": false,
+      "latencyCompensated": true
+    },
+    "noAudioOutsidePlaying": true
+  },
+  "encoding": {
+    "ffmpegVersion": "7.1",
+    "codec": "libx264",
+    "threads": 2,
+    "preset": "fast",
+    "crf": 20,
+    "pixelFormat": "yuv420p",
+    "faststart": true,
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "exitCode": 0
+  },
+  "verification": {
+    "fullDecodeExitCode": 0,
+    "decodedFrames": 557,
+    "reportedContainerDuration": "00:00:23.21",
+    "audioPeakDb": -4.381481,
+    "audioRmsDb": -24.452937,
+    "sourcePngsRetained": true,
+    "log": "day1-verification.log"
+  }
+}

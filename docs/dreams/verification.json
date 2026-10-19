@@ -1,0 +1,1096 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-19T20:18:59.7949007+08:00",
+  "unity": "2022.3.23f1c1",
+  "pipeline": "Built-in",
+  "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "core": {
+    "sdk": "8.0.424",
+    "workingDirectory": "src",
+    "commands": [
+      "../.dotnet/dotnet.exe restore MiniGame.sln --locked-mode",
+      "../.dotnet/dotnet.exe build MiniGame.sln --configuration Release --no-restore -m:1",
+      "../.dotnet/dotnet.exe test MiniGame.sln --configuration Release --no-build --no-restore -m:1"
+    ],
+    "exitCodes": [
+      0,
+      0,
+      0
+    ],
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "corePassed": 113,
+    "presentationPassed": 180,
+    "totalPassed": 293,
+    "evidence": "Worker observed tool chunks caa18e, 0da36b, e09512 in this implementation session; no standalone TRX was requested."
+  },
+  "editor": {
+    "shaderErrors": 0,
+    "checkedShaders": [
+      "DreamCloud",
+      "DreamProjectionAnimation",
+      "DreamProjectionSurface",
+      "DreamSea",
+      "DreamSeaSand",
+      "SelfReviewMonitor"
+    ],
+    "editMode": {
+      "status": "completed",
+      "duration": 1.23,
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamSettingsEditorTests.DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign",
+          "Status": "Passed",
+          "Duration": 0.3369471,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamSettingsEditorTests.SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey",
+          "Status": "Passed",
+          "Duration": 0.2100353,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamSettingsEditorTests.WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults",
+          "Status": "Passed",
+          "Duration": 0.3474178,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "playModeUniquePassed": 49,
+    "playModeGroups": [
+      {
+        "path": "Artifacts/Dreams/dream-playmode-final.json",
+        "summary": {
+          "total": 24,
+          "passed": 24,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "durationSeconds": 26.32
+      },
+      {
+        "path": "Artifacts/Dreams/door-regression-final.json",
+        "summary": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "durationSeconds": 34.22
+      },
+      {
+        "path": "Artifacts/Dreams/audio-regression-tests.json",
+        "summary": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "durationSeconds": 3.12
+      },
+      {
+        "path": "Artifacts/Dreams/combined-room-tests.json",
+        "summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "durationSeconds": 19.67
+      },
+      {
+        "path": "Artifacts/Dreams/self-review-tests.json",
+        "summary": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "durationSeconds": 10.0
+      },
+      {
+        "path": "Artifacts/Dreams/prefab-cross-scene-final.json",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "durationSeconds": 3.98
+      }
+    ],
+    "playModeResults": [
+      {
+        "FullName": "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalComputerEntryPausesRestoresAndReturnsToTheSameRoomPose",
+        "Status": "Passed",
+        "Duration": 10.2845454,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalRoomAndNativeYarnCompleteSixRoundsOneDispositionAndBed",
+        "Status": "Passed",
+        "Duration": 9.3632828,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.CameraPathAndOutsideSightlineClearTheOpenDoorLeaf",
+        "Status": "Passed",
+        "Duration": 3.8001961,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.EntryAlignsBeforePushingAndEPathReturnsBeforeClosingWithoutMovingTheBody",
+        "Status": "Passed",
+        "Duration": 3.4104364,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.FixedDoorAlignmentFacesOutwardAndPushesStraightAlongTheClosedDoorNormal",
+        "Status": "Passed",
+        "Duration": 3.4229926,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.ImmediateDisableAndReenableDuringReturnDoesNotTrapPresentationInput",
+        "Status": "Passed",
+        "Duration": 3.3996251,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.OutsideHoldShowsTheReturnPromptThroughItsCanvasGroup",
+        "Status": "Passed",
+        "Duration": 3.5580717,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.PauseFreezesPushAndReturnAndResumesTheSameCue",
+        "Status": "Passed",
+        "Duration": 4.0013021,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringMidReturnCancelsToTheRoomAndRejectsItsOldToken",
+        "Status": "Passed",
+        "Duration": 3.266848,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringOutsideKeepsTheOriginalRoomPoseAcrossRepeatedRebinds",
+        "Status": "Passed",
+        "Duration": 3.4141921,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom",
+        "Status": "Passed",
+        "Duration": 5.9210674,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile",
+        "Status": "Passed",
+        "Duration": 0.8493039,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign",
+        "Status": "Passed",
+        "Duration": 3.9617372,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneAutomaticallyProjectsOnTheAuthoredWallAndReturnsBeforeBedUnlocks",
+        "Status": "Passed",
+        "Duration": 0.452884,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroAutomaticallySkipsVideoAndOneBedInteractionAdvancesExactlyOneDay",
+        "Status": "Passed",
+        "Duration": 0.2806789,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamAudioDisabledSourcesStayStoppedAndReenableSynchronizesActualPlayback",
+        "Status": "Passed",
+        "Duration": 0.4083751,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamPreviewStopRebindAndDisableRestoreExistingRetroFlags",
+        "Status": "Passed",
+        "Duration": 0.2724091,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.HighRebellionSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress",
+        "Status": "Passed",
+        "Duration": 3.3523163,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.OutsideDoorSaveReplacesLaterDoorCaptureButRuntimeOnlyRebindPreservesIt",
+        "Status": "Passed",
+        "Duration": 6.8195151,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.WorldSavePoseOverridesLaterTerminalDoorAndDreamReturnCaches",
+        "Status": "Passed",
+        "Duration": 4.9001719,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingCheckpointRestoresExactCameraPoseAndRejectsInvalidNumbers",
+        "Status": "Passed",
+        "Duration": 0.0077988,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingLocksUpwardAndCameraFollowsFloatingBed",
+        "Status": "Passed",
+        "Duration": 0.0053049,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.PauseFreezesPresentationAndSubtitlesThenResumeContinues",
+        "Status": "Passed",
+        "Duration": 0.0051338,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.RestoringSubtitleSeeksVoiceAndCompletedLinesNeverRestart",
+        "Status": "Passed",
+        "Duration": 0.0079695,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.WOnlyMovesForwardAndCannotOvershootBed",
+        "Status": "Passed",
+        "Duration": 0.0042922,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.PreviewFramesWallPausesAndRestoresCameraAndProjection",
+        "Status": "Passed",
+        "Duration": 1.796749,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.RuntimeCheckpointKeepsPlaybackTimeAndCompletesOnlyAfterReturn",
+        "Status": "Passed",
+        "Duration": 1.7259824,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.ThreeDreamsHaveDeterministicMovingPixelsAndAnOffscreenOnlyCamera",
+        "Status": "Passed",
+        "Duration": 1.1977567,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.AfterDreamPassesFurnitureClampsTheFloorAndWakesSafelyAfterBed",
+        "Status": "Passed",
+        "Duration": 0.0118745,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.BedLightingStartsAfterDreamAndSelfReviewKeepsOnlyTheTerminalGlow",
+        "Status": "Passed",
+        "Duration": 0.0267948,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DisableAndRebindRestoreThePreviousControllerState(False)",
+        "Status": "Passed",
+        "Duration": 0.0076301,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DisableAndRebindRestoreThePreviousControllerState(True)",
+        "Status": "Passed",
+        "Duration": 0.0052282,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.SelfReviewOffersOnlyComputerAndDoesNotTeleportOnTerminalEntry",
+        "Status": "Passed",
+        "Duration": 0.0183384,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.NativeSubmitThenRawKeyboardInOneFramePlaysAndActsOnce",
+        "Status": "Passed",
+        "Duration": 0.4241475,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.PointerActivationPlaysOnceButRightClickAndDisabledControlsStaySilent",
+        "Status": "Passed",
+        "Duration": 0.151422,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.RawKeyboardThenNativeSubmitInOneFramePlaysAndActsOnce",
+        "Status": "Passed",
+        "Duration": 0.1444216,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.ReplacingContinueListenersPreservesSoundAcrossPointerSubmitAndKeyboard",
+        "Status": "Passed",
+        "Duration": 0.149332,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.AllTwelveClipsAndMixerGroupsArePresentAndVolumesApply",
+        "Status": "Passed",
+        "Duration": 0.0239824,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp",
+        "Status": "Passed",
+        "Duration": 0.1940008,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.ClearingAPlayingClipStopsItsSourceAndDestroyUnsubscribesRuntime",
+        "Status": "Passed",
+        "Duration": 0.3193891,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DisabledDirectorCannotBeRevivedByCallbacksOrRuntimeReplacement",
+        "Status": "Passed",
+        "Duration": 0.1731266,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DreamUsesDayMusicAndProjectorUntilDreamEnds",
+        "Status": "Passed",
+        "Duration": 0.3367164,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.NewLoopRequestCancelsOldFadeOutWithoutRestartingOrStoppingLater",
+        "Status": "Passed",
+        "Duration": 0.4998426,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.RepeatedViewsDoNotRestartMusicAndComputerNoiseLayersOverGameplay",
+        "Status": "Passed",
+        "Duration": 0.5214688,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.SerializedCombinedSceneStartsBackgroundMusicWithoutPlayerInput",
+        "Status": "Passed",
+        "Duration": 0.1473667,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.DreamProjectionHasNoConversationContinueHeaderOrKeyboardSkip",
+        "Status": "Passed",
+        "Duration": 0.4992998,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.EnterPurifiesOnceAndHidesNormalEndingUiBeforeTheSceneHandoff",
+        "Status": "Passed",
+        "Duration": 3.1661212,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.PointerPurificationRespectsTransitionAndPauseAndCommitsOnce",
+        "Status": "Passed",
+        "Duration": 3.1498883,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.SelfReviewShowsTheLiveSeatedPlayerAndOnlyPurification",
+        "Status": "Passed",
+        "Duration": 3.1606464,
+        "Message": null,
+        "StackTrace": null
+      }
+    ]
+  },
+  "player": {
+    "buildId": "build_e6d5b6542dee",
+    "result": "Succeeded",
+    "target": "StandaloneWindows64",
+    "output": "Builds/DreamFlow/MiniGame.exe",
+    "sizeBytes": 261925182,
+    "buildTimeMs": 9615,
+    "errors": 0,
+    "warnings": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpOptionsAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpOptionsKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyCancelDialogueKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpLineAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyCancelDialogueAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyNextLineKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyNextLineAxis' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.hasTransferredLegacyMapping' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      },
+      {
+        "message": "warning CS0414: The field 'LineAdvancer.legacyHurryUpLineKeyCode' is assigned but its value is never used",
+        "file": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs"
+      }
+    ],
+    "packedAssetCount": 571,
+    "requiredMissing": [],
+    "packedList": "Artifacts/Dreams/player-packed-assets.txt",
+    "startup": {
+      "executable": "F:\\AAMINIGAME\\MINIGAME\\Builds\\DreamFlow\\MiniGame.exe",
+      "processId": 64176,
+      "startupReady": true,
+      "readyLine": [
+        "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Apartment profile=campaign rules=campaign:inspection-campaign:1.0.0-development:dream-flow:15a1efedbc05a600a9c5ee80619e0c32bff47a77f736b57d540bb97b92796e7c"
+      ],
+      "errorLines": [],
+      "scope": "Bounded Windows Player startup only; gameplay and scene transition exercised separately in Editor PlayMode."
+    },
+    "scope": "Windows build, packed-resource inspection and bounded startup smoke. Full interactive campaign in standalone Player was not manually replayed."
+  },
+  "visual": {
+    "method": "Production camera fixed-step RenderTexture recordings and actual Game-view screenshots; not real-time performance evidence.",
+    "screenshots": [
+      "Artifacts/Dreams/day1-frames/frame_00200.png",
+      "Artifacts/Dreams/day2-frames/frame_00200.png",
+      "Artifacts/Dreams/day3-frames/frame_00200.png",
+      "Artifacts/Dreams/self-review-terminal.png",
+      "Artifacts/Dreams/beach-walking-fixed.png",
+      "Artifacts/Dreams/beach-frames/frame_00400.png",
+      "Artifacts/Dreams/beach-frames/frame_00700.png"
+    ],
+    "observed": [
+      "Wall films upright and framed; foreground lamp no longer obscures image.",
+      "Retro shader bypassed only during film playback; profile and manual comparison state restored.",
+      "Self-review monitor shows seated proxy and sole purification button.",
+      "Beach sea is beyond the bed after correcting imported terrain slope.",
+      "After lying down only sky/clouds and scheduled subtitles remain; later frames show cloud movement."
+    ],
+    "humanArtApproval": "not claimed",
+    "videos": [
+      {
+        "formatVersion": 1,
+        "video": "day1-whale-beach.mp4",
+        "bytes": 6787224,
+        "sha256": "8afbeedba2f5ed4509263f6c37cfc009f6c6f1dee2c43506396ae87e3d70aa35",
+        "capture": {
+          "path": "Artifacts/Dreams/day1-frames/capture.json",
+          "sha256": "b75829569debfafba6ba90e9a8114aefc29538be685bf5e0c2728379905692e1",
+          "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+          "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+          "scene": "MainRoomCombined",
+          "day": 1,
+          "simulatedInput": true,
+          "completed": true,
+          "frames": 557,
+          "fps": 24,
+          "width": 1280,
+          "height": 720,
+          "durationSeconds": 23.208333333333332,
+          "phaseEvents": [
+            {
+              "frame": 0,
+              "seconds": 0.0,
+              "phase": "Aligning",
+              "detail": "Formal session; automatic presentation stepping."
+            },
+            {
+              "frame": 28,
+              "seconds": 1.1666667461395264,
+              "phase": "Playing",
+              "detail": ""
+            },
+            {
+              "frame": 509,
+              "seconds": 21.20833396911621,
+              "phase": "Returning",
+              "detail": ""
+            },
+            {
+              "frame": 533,
+              "seconds": 22.20833396911621,
+              "phase": "None",
+              "detail": ""
+            }
+          ]
+        },
+        "audio": {
+          "liveCapture": false,
+          "method": "Postmixed from the same configured game music and projector clips; not a recording of Unity audio output.",
+          "tracks": [
+            {
+              "path": "Art/Audio/Music/Dream0.wav",
+              "sha256": "c998b27fa4f4039f83e32b750a1ea08ea1dcafa284be5d330df2a934161d960e",
+              "gain": 0.5,
+              "loop": false
+            },
+            {
+              "path": "Art/Audio/SFX/Projector.wav",
+              "sha256": "c7f5154c12398163c1b4a789f6a3b28cbda7d93ab1edd5ec1714e4772efd238d",
+              "gain": 0.45,
+              "loop": true
+            }
+          ],
+          "sampleRate": 48000,
+          "channels": 2,
+          "startFrame": 28,
+          "endFrame": 509,
+          "startSeconds": 1.1666666666666667,
+          "endSeconds": 21.208333333333332,
+          "fadeInSeconds": 1,
+          "fadeOutSeconds": 1,
+          "amixNormalize": false,
+          "limiter": {
+            "linearPeakLimit": 0.95,
+            "autoLevel": false,
+            "latencyCompensated": true
+          },
+          "noAudioOutsidePlaying": true
+        },
+        "encoding": {
+          "ffmpegVersion": "7.1",
+          "codec": "libx264",
+          "threads": 2,
+          "preset": "fast",
+          "crf": 20,
+          "pixelFormat": "yuv420p",
+          "faststart": true,
+          "audioCodec": "aac",
+          "audioBitrate": "192k",
+          "exitCode": 0
+        },
+        "verification": {
+          "fullDecodeExitCode": 0,
+          "decodedFrames": 557,
+          "reportedContainerDuration": "00:00:23.21",
+          "audioPeakDb": -4.381481,
+          "audioRmsDb": -24.452937,
+          "sourcePngsRetained": true,
+          "log": "day1-verification.log"
+        }
+      },
+      {
+        "formatVersion": 1,
+        "video": "day2-endless-road.mp4",
+        "bytes": 3479815,
+        "sha256": "3ee5239d876ea0b4eaac59cba6be8c0368ad1491591f7e716d66763362d29f03",
+        "capture": {
+          "path": "Artifacts/Dreams/day2-frames/capture.json",
+          "sha256": "d28babb8d9d0ca1fe36910f262a8ccf4f2c2338f5b271d88b1d551c9689ac9cc",
+          "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+          "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+          "scene": "MainRoomCombined",
+          "day": 2,
+          "simulatedInput": true,
+          "completed": true,
+          "frames": 557,
+          "fps": 24,
+          "width": 1280,
+          "height": 720,
+          "durationSeconds": 23.208333333333332,
+          "phaseEvents": [
+            {
+              "frame": 0,
+              "seconds": 0.0,
+              "phase": "Aligning",
+              "detail": "Formal session; automatic presentation stepping."
+            },
+            {
+              "frame": 28,
+              "seconds": 1.1666667461395264,
+              "phase": "Playing",
+              "detail": ""
+            },
+            {
+              "frame": 509,
+              "seconds": 21.20833396911621,
+              "phase": "Returning",
+              "detail": ""
+            },
+            {
+              "frame": 533,
+              "seconds": 22.20833396911621,
+              "phase": "None",
+              "detail": ""
+            }
+          ]
+        },
+        "audio": {
+          "liveCapture": false,
+          "method": "Postmixed from the same configured game music and projector clips; not a recording of Unity audio output.",
+          "tracks": [
+            {
+              "path": "Art/Audio/Music/Dream1.wav",
+              "sha256": "4180f0a30f20e9a47b052b4286dd065cfd5a2e9c3f0e694dec8e6d74a13f9b17",
+              "gain": 0.5,
+              "loop": false
+            },
+            {
+              "path": "Art/Audio/SFX/Projector.wav",
+              "sha256": "c7f5154c12398163c1b4a789f6a3b28cbda7d93ab1edd5ec1714e4772efd238d",
+              "gain": 0.45,
+              "loop": true
+            }
+          ],
+          "sampleRate": 48000,
+          "channels": 2,
+          "startFrame": 28,
+          "endFrame": 509,
+          "startSeconds": 1.1666666666666667,
+          "endSeconds": 21.208333333333332,
+          "fadeInSeconds": 1,
+          "fadeOutSeconds": 1,
+          "amixNormalize": false,
+          "limiter": {
+            "linearPeakLimit": 0.95,
+            "autoLevel": false,
+            "latencyCompensated": true
+          },
+          "noAudioOutsidePlaying": true
+        },
+        "encoding": {
+          "ffmpegVersion": "7.1",
+          "codec": "libx264",
+          "threads": 2,
+          "preset": "fast",
+          "crf": 20,
+          "pixelFormat": "yuv420p",
+          "faststart": true,
+          "audioCodec": "aac",
+          "audioBitrate": "192k",
+          "exitCode": 0
+        },
+        "verification": {
+          "fullDecodeExitCode": 0,
+          "decodedFrames": 557,
+          "reportedContainerDuration": "00:00:23.21",
+          "audioPeakDb": -4.246535,
+          "audioRmsDb": -24.166396,
+          "sourcePngsRetained": true,
+          "log": "day2-endless-road.verification.log"
+        }
+      },
+      {
+        "formatVersion": 1,
+        "video": "day3-bound-judgment.mp4",
+        "bytes": 7656430,
+        "sha256": "af0f6de401858fec1e5ed7085ad4e38027c7d66251a7210ad472f84cffd88d22",
+        "capture": {
+          "path": "Artifacts/Dreams/day3-frames/capture.json",
+          "sha256": "caf25e06cc25841014f605b4b798cbd2e2796468b70efed59042fbd3b9f8214e",
+          "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+          "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+          "scene": "MainRoomCombined",
+          "day": 3,
+          "simulatedInput": true,
+          "completed": true,
+          "frames": 557,
+          "fps": 24,
+          "width": 1280,
+          "height": 720,
+          "durationSeconds": 23.208333333333332,
+          "phaseEvents": [
+            {
+              "frame": 0,
+              "seconds": 0.0,
+              "phase": "Aligning",
+              "detail": "Formal session; automatic presentation stepping."
+            },
+            {
+              "frame": 28,
+              "seconds": 1.1666667461395264,
+              "phase": "Playing",
+              "detail": ""
+            },
+            {
+              "frame": 509,
+              "seconds": 21.20833396911621,
+              "phase": "Returning",
+              "detail": ""
+            },
+            {
+              "frame": 533,
+              "seconds": 22.20833396911621,
+              "phase": "None",
+              "detail": ""
+            }
+          ]
+        },
+        "audio": {
+          "liveCapture": false,
+          "method": "Postmixed from the same configured game music and projector clips; not a recording of Unity audio output.",
+          "tracks": [
+            {
+              "path": "UnityProject/Assets/MiniGame/Audio/Music/Day3_BoundJudgment.wav",
+              "sha256": "3e797e90a232ce1cd8c82e1e778fbc175133c339d6fb8199a524e32d22e6dcb8",
+              "gain": 0.5,
+              "loop": false
+            },
+            {
+              "path": "Art/Audio/SFX/Projector.wav",
+              "sha256": "c7f5154c12398163c1b4a789f6a3b28cbda7d93ab1edd5ec1714e4772efd238d",
+              "gain": 0.45,
+              "loop": true
+            }
+          ],
+          "sampleRate": 48000,
+          "channels": 2,
+          "startFrame": 28,
+          "endFrame": 509,
+          "startSeconds": 1.1666666666666667,
+          "endSeconds": 21.208333333333332,
+          "fadeInSeconds": 1,
+          "fadeOutSeconds": 1,
+          "amixNormalize": false,
+          "limiter": {
+            "linearPeakLimit": 0.95,
+            "autoLevel": false,
+            "latencyCompensated": true
+          },
+          "noAudioOutsidePlaying": true
+        },
+        "encoding": {
+          "ffmpegVersion": "7.1",
+          "codec": "libx264",
+          "threads": 2,
+          "preset": "fast",
+          "crf": 20,
+          "pixelFormat": "yuv420p",
+          "faststart": true,
+          "audioCodec": "aac",
+          "audioBitrate": "192k",
+          "exitCode": 0
+        },
+        "verification": {
+          "fullDecodeExitCode": 0,
+          "decodedFrames": 557,
+          "reportedContainerDuration": "00:00:23.21",
+          "audioPeakDb": -1.957946,
+          "audioRmsDb": -22.760292,
+          "sourcePngsRetained": true,
+          "log": "day3-bound-judgment.verification.log"
+        }
+      },
+      {
+        "formatVersion": 1,
+        "video": "beach-ending.mp4",
+        "bytes": 5167776,
+        "sha256": "45359b02fc76434def022a50fba6e52772fe19d2af4d0d096b9fa03d395320b7",
+        "capture": {
+          "path": "Artifacts/Dreams/beach-frames/capture.json",
+          "sha256": "17b028a6dfc1cbe799b0cc55581b0ddb4a996d6eed449a3e7913601d5b10100b",
+          "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+          "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+          "scene": "DreamEndingBeach",
+          "simulatedInput": true,
+          "completed": true,
+          "frames": 960,
+          "fps": 24,
+          "width": 1280,
+          "height": 720,
+          "durationSeconds": 40,
+          "phaseEvents": [
+            {
+              "frame": 0,
+              "seconds": 0.0,
+              "phase": "Walking",
+              "detail": "Simulate held W until in bed range, then submit one E-equivalent command."
+            },
+            {
+              "frame": 221,
+              "seconds": 9.208333969116211,
+              "phase": "Lying",
+              "detail": "Accepted one simulated bed interaction."
+            },
+            {
+              "frame": 258,
+              "seconds": 10.75,
+              "phase": "Drifting",
+              "detail": ""
+            }
+          ]
+        },
+        "audio": {
+          "liveCapture": false,
+          "method": "Postmixed original synthesized ocean ambience from the same configured clip and ambience gain; not a recording of Unity audio output. No replacement music or generated voice is added.",
+          "tracks": [
+            {
+              "path": "Art/DreamEnding/OceanWaves.wav",
+              "sha256": "305f61cef4e14b26fc3cc76ac8c9dbc8451f7281d96246a09d7901ef2bf06585",
+              "gain": 0.45,
+              "loop": true
+            }
+          ],
+          "sampleRate": 48000,
+          "channels": 2,
+          "startSeconds": 0,
+          "endSeconds": 40,
+          "fadeInSeconds": 2,
+          "fadeShape": "linear",
+          "fadeOutSeconds": 0,
+          "musicSlotEmpty": true,
+          "voiceSlotsEmpty": true,
+          "limiter": {
+            "linearPeakLimit": 0.95,
+            "autoLevel": false,
+            "latencyCompensated": true
+          }
+        },
+        "encoding": {
+          "ffmpegVersion": "7.1",
+          "codec": "libx264",
+          "threads": 2,
+          "preset": "fast",
+          "crf": 20,
+          "pixelFormat": "yuv420p",
+          "faststart": true,
+          "audioCodec": "aac",
+          "audioBitrate": "192k",
+          "exitCode": 0
+        },
+        "verification": {
+          "fullDecodeExitCode": 0,
+          "decodedFrames": 960,
+          "reportedContainerDuration": "00:00:40.00",
+          "audioPeakDb": -17.753948,
+          "audioRmsDb": -36.690001,
+          "sourcePngsRetained": true,
+          "log": "beach-ending.verification.log"
+        }
+      },
+      {
+        "formatVersion": 1,
+        "video": "beach-clouds-preview.mp4",
+        "bytes": 330544,
+        "sha256": "0dd831607b6f24d7da8d0b5e79e95bbccf6367b796f5070cede84e19850d5b7a",
+        "capture": {
+          "path": "Artifacts/Dreams/beach-frames/capture.json",
+          "sha256": "17b028a6dfc1cbe799b0cc55581b0ddb4a996d6eed449a3e7913601d5b10100b",
+          "scene": "DreamEndingBeach",
+          "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+          "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+          "sourceStartFrame": 792,
+          "sourceEndFrameInclusive": 959,
+          "sourceStartSeconds": 33,
+          "sourceEndSeconds": 40,
+          "durationSeconds": 7,
+          "simulatedInput": true,
+          "completed": true,
+          "frames": 168,
+          "fps": 24,
+          "width": 1280,
+          "height": 720,
+          "subtitleFree": true
+        },
+        "audio": {
+          "liveCapture": false,
+          "present": false,
+          "method": "Silent excerpt after all five captions finish."
+        },
+        "loop": {
+          "infinitePlayback": false,
+          "seamlessMotion": false,
+          "note": "Forward-time excerpt repeated; the loop boundary is not claimed to be a seamless continuation."
+        },
+        "verification": {
+          "fullDecodeExitCode": 0,
+          "decodedFrames": 168,
+          "reportedContainerDuration": "00:00:07.00",
+          "log": "beach-clouds-preview.verification.log",
+          "sourcePngsRetained": true
+        }
+      },
+      {
+        "formatVersion": 1,
+        "video": "beach-clouds-loop.gif",
+        "bytes": 4910120,
+        "sha256": "dd64c09ee48cf98f2e88c50f36f1c69b1103a709f675ca2d28ec890c2b5c48af",
+        "capture": {
+          "path": "Artifacts/Dreams/beach-frames/capture.json",
+          "sha256": "17b028a6dfc1cbe799b0cc55581b0ddb4a996d6eed449a3e7913601d5b10100b",
+          "scene": "DreamEndingBeach",
+          "method": "Production camera RenderTexture with existing post effects. Root Overlay canvases temporarily use ScreenSpaceCamera, then restore.",
+          "clock": "Explicit 1/24 second presentation steps per Editor update; not a recording of real keyboard input or real-time frame pacing.",
+          "sourceStartFrame": 792,
+          "sourceEndFrameInclusive": 959,
+          "sourceStartSeconds": 33,
+          "sourceEndSeconds": 40,
+          "durationSeconds": 7,
+          "simulatedInput": true,
+          "completed": true,
+          "frames": 84,
+          "fps": 12,
+          "width": 640,
+          "height": 360,
+          "subtitleFree": true
+        },
+        "audio": {
+          "liveCapture": false,
+          "present": false,
+          "method": "Silent excerpt after all five captions finish."
+        },
+        "loop": {
+          "infinitePlayback": true,
+          "seamlessMotion": false,
+          "note": "Forward-time excerpt repeated; the loop boundary is not claimed to be a seamless continuation."
+        },
+        "verification": {
+          "fullDecodeExitCode": 0,
+          "decodedFrames": 84,
+          "reportedContainerDuration": "00:00:07.00",
+          "log": "beach-clouds-loop.verification.log",
+          "sourcePngsRetained": true
+        }
+      }
+    ]
+  },
+  "audio": {
+    "day3Converted": true,
+    "day3Path": "UnityProject/Assets/MiniGame/Audio/Music/Day3_BoundJudgment.wav",
+    "day3Seconds": 177.6135,
+    "day3Rate": 48000,
+    "day3Channels": 2,
+    "day3PcmBits": 16,
+    "day3Sha256": "3e797e90a232ce1cd8c82e1e778fbc175133c339d6fb8199a524e32d22e6dcb8",
+    "videoSound": "Postmixed from configured source tracks; not live Unity audio capture.",
+    "independentListeningAcceptance": "not performed",
+    "intentionalEmptySlots": [
+      "EndingMusic / An Ending (Ascent)",
+      "Five optional ending voices"
+    ]
+  },
+  "authoring": {
+    "menu": "MiniGame → 梦境与结局",
+    "audioMenu": "MiniGame → 音频设置",
+    "profile": "Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset",
+    "rebellion": "Assets/MiniGame/Resources/MiniGame/PlayerRebellion.asset",
+    "rebellionDefaults": {
+      "configuredDeltas": 0,
+      "maximum": 100,
+      "initial": 0,
+      "threshold": 100
+    },
+    "beachPrefab": "Assets/MiniGame/Art/DreamEnding/DreamEndingStage.prefab",
+    "blender": "Art/DreamEnding/DreamEndingBeach.blend",
+    "dailyFilmImplementation": "Supplied illustrated artwork with Unity procedural motion rendered by an isolated camera; not fully modeled Blender dream scenes."
+  },
+  "review": {
+    "fixed": [
+      "Outgoing camera owners overriding explicit saved pose",
+      "Disabled dream audio resynchronization",
+      "JsonUtility default nested DTOs misclassified as ending state",
+      "Outgoing beach checkpoint overwriting incoming room checkpoint",
+      "Door outside save retaining a later return capture",
+      "Blender FBX sea-side slope reversed",
+      "Projection lamp occlusion"
+    ],
+    "unresolvedReportedDefects": []
+  },
+  "finalWorkspaceState": "MainRoomCombined only, Edit Mode, dream settings window open",
+  "git": {
+    "diffCheckPassed": true,
+    "largeAssetLfsAttributesChecked": true,
+    "committed": false,
+    "pushed": false
+  },
+  "latestWaterRevision": "water-verification.json"
+}

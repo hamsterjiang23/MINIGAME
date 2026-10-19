@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "duration": 19.67,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalComputerEntryPausesRestoresAndReturnsToTheSameRoomPose",
+      "Status": "Passed",
+      "Duration": 10.2845454,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.CombinedRoomPlayModeTests.PhysicalRoomAndNativeYarnCompleteSixRoundsOneDispositionAndBed",
+      "Status": "Passed",
+      "Duration": 9.3632828,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec34cd9a4e24ad4fb7e2f81bb0e0409, type: 3}
+  m_Name: DreamSequenceDefault
+  m_EditorClassIdentifier: 
+  EnableDreamFlow: 1
+  AlignSeconds: 1.2
+  ReturnSeconds: 1
+  ProjectionInset: 0.15
+  Days:
+  - Day: 1
+    Duration: 20
+    Artwork: {fileID: 2800000, guid: 19bca5eaf6a8eec45b1b27fc87b0c4c4, type: 3}
+    Music: 2
+    MotionIntensity: 1
+  - Day: 2
+    Duration: 20
+    Artwork: {fileID: 2800000, guid: fee4866fa08fb644b818b358ca689723, type: 3}
+    Music: 3
+    MotionIntensity: 1
+  - Day: 3
+    Duration: 20
+    Artwork: {fileID: 2800000, guid: 9d5f9bb7ac008854cb508d3f2b5a5ca6, type: 3}
+    Music: 12
+    MotionIntensity: 1
+  WalkSpeed: 1.2
+  BedInteractionDistance: 1.5
+  LieDownSeconds: 1.5
+  FloatAmplitude: 0.08
+  FloatPeriod: 8
+  FloatTiltDegrees: 1.5
+  DriftSpeed: 0.04
+  CloudSpeed: 0.006
+  SeaWaveHeight: 0.24
+  SeaWavePeriod: 6
+  SeaWaveLength: 7
+  ShoreWashDistance: 1.8
+  SeaFoamAmount: 0.85
+  SubtitleDelay: 2
+  Audio: {fileID: 11400000, guid: 3e7cf040c14680542b4958add4222b4c, type: 2}
+  EndingLines:
+  - Text: "\u8FD9\u5C31\u662F\u65B0\u6765\u7684\u5BA1\u67E5\u5458\uFF1F"
+    Voice: {fileID: 0}
+    Duration: 4
+  - Text: "\u4ED6\u770B\u8D77\u6765\u5DF2\u7ECF\u5F7B\u5E95\u505C\u6B62\u5DE5\u4F5C\u4E86"
+    Voice: {fileID: 0}
+    Duration: 4
+  - Text: "\u8FD9\u79CD\u86C0\u866B\u2026\u2026"
+    Voice: {fileID: 0}
+    Duration: 4
+  - Text: "\u8D25\u7C7B"
+    Voice: {fileID: 0}
+    Duration: 4
+  - Text: "\u6765\u5427\uFF0C\u6211\u4EEC\u628A\u4ED6\u9001\u5230\u4E0B\u9762\u53BB"
+    Voice: {fileID: 0}
+    Duration: 4

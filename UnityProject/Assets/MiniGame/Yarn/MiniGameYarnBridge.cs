@@ -70,6 +70,14 @@ namespace MiniGame.UnityHost
         {
             if (!_pumpRequested || _runtime == null || _screen == null || project == null || _stopping) return;
             var view = _runtime.GetView();
+            if (view.UsesDreamFlow && (view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.SelfReview
+                || view.Game.Ending == EndingType.DreamSea))
+            {
+                if (_run != null) InvalidateRun();
+                _pumpRequested = false;
+                _screen.HideDialogueActions();
+                return; // Projection and self review own their presentation and never map to patient Yarn nodes.
+            }
             if (_run != null)
             {
                 // A successful response changes core to its branch while the current runner finishes.
@@ -84,7 +92,7 @@ namespace MiniGame.UnityHost
             DialogueContent? dialogue = null;
             if (cue != null)
             {
-                if (cue.Kind == PresentationKind.EnterTerminal || cue.Kind == PresentationKind.ExitTerminal || cue.Kind == PresentationKind.Sleep || cue.Kind == PresentationKind.DoorMotion)
+                if (cue.Kind == PresentationKind.EnterTerminal || cue.Kind == PresentationKind.ExitTerminal || cue.Kind == PresentationKind.Sleep || cue.Kind == PresentationKind.DoorMotion || cue.Kind == PresentationKind.DoorViewReturn)
                 {
                     _screen.SetDialogueText("终端", cue.Text);
                     _screen.HideDialogueActions();

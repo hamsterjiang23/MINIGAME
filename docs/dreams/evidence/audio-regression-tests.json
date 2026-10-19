@@ -1,0 +1,97 @@
+{
+  "status": "completed",
+  "duration": 3.12,
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.NativeSubmitThenRawKeyboardInOneFramePlaysAndActsOnce",
+      "Status": "Passed",
+      "Duration": 0.4241475,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.PointerActivationPlaysOnceButRightClickAndDisabledControlsStaySilent",
+      "Status": "Passed",
+      "Duration": 0.151422,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.RawKeyboardThenNativeSubmitInOneFramePlaysAndActsOnce",
+      "Status": "Passed",
+      "Duration": 0.1444216,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioButtonPlayModeTests.ReplacingContinueListenersPreservesSoundAcrossPointerSubmitAndKeyboard",
+      "Status": "Passed",
+      "Duration": 0.149332,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.AllTwelveClipsAndMixerGroupsArePresentAndVolumesApply",
+      "Status": "Passed",
+      "Duration": 0.0239824,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp",
+      "Status": "Passed",
+      "Duration": 0.1940008,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.ClearingAPlayingClipStopsItsSourceAndDestroyUnsubscribesRuntime",
+      "Status": "Passed",
+      "Duration": 0.3193891,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DisabledDirectorCannotBeRevivedByCallbacksOrRuntimeReplacement",
+      "Status": "Passed",
+      "Duration": 0.1731266,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DreamUsesDayMusicAndProjectorUntilDreamEnds",
+      "Status": "Passed",
+      "Duration": 0.3421142,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.NewLoopRequestCancelsOldFadeOutWithoutRestartingOrStoppingLater",
+      "Status": "Passed",
+      "Duration": 0.4998426,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.RepeatedViewsDoNotRestartMusicAndComputerNoiseLayersOverGameplay",
+      "Status": "Passed",
+      "Duration": 0.5214688,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.SerializedCombinedSceneStartsBackgroundMusicWithoutPlayerInput",
+      "Status": "Passed",
+      "Duration": 0.1473667,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
