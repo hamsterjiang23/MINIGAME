@@ -29,9 +29,8 @@ namespace MiniGame.UnityHost.Tests
             host.Screen.DialogueCharactersPerSecond = 0;
             Assert.That(host.CampaignActive, Is.True);
             Assert.That(host.SavePath, Does.EndWith("campaign-save.json"));
-            Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
-            yield return Until(host, () => Find(host, "EnterReview") != null, "tutorial directory");
-            yield return Click(Find(host, "EnterReview"));
+            yield return Until(host, () => host.Screen.DayZeroOpeningWaiting, "supervisor opening");
+            Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
             yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_T1"), "first tutorial line");
             host.Screen.DialogueCharactersPerSecond = 30;
             yield return Click(Find(host, "Continue"));
@@ -45,6 +44,8 @@ namespace MiniGame.UnityHost.Tests
             string checkpoint = host.Runtime.Save();
             host.RestoreCheckpoint(checkpoint);
             Assert.That(host.Runtime.GetView().Paused, Is.True);
+            Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False, "A running tutorial checkpoint must not replay the opening.");
+            Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.EqualTo(1));
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T1"), Is.True);
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T2"), Is.False);
             Assert.That(host.Runtime.GetView().Transcript.Count(line => line.SourceNodeId == "tutorial__D0_T2"), Is.EqualTo(1));
@@ -134,9 +135,18 @@ namespace MiniGame.UnityHost.Tests
                     var latest = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration && line.PortraitId.Length > 0);
                     if (latest != null && photographed.Add(view.PresentedPatientId))
                     {
-                        var portrait = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait");
-                        Assert.That(portrait.enabled && portrait.gameObject.activeInHierarchy, Is.True);
-                        Assert.That(portrait.sprite, Is.EqualTo(catalog.Find(latest.PortraitId)));
+                        if (view.Game.Day == 0)
+                        {
+                            var supervisor = host.Screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "Day0SupervisorFeed");
+                            Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
+                            Assert.That(supervisor.texture, Is.Not.Null);
+                        }
+                        else
+                        {
+                            var portrait = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait");
+                            Assert.That(portrait.enabled && portrait.gameObject.activeInHierarchy, Is.True);
+                            Assert.That(portrait.sprite, Is.EqualTo(catalog.Find(latest.PortraitId)));
+                        }
                         yield return new WaitForSecondsRealtime(.14f);
                         if (expected == EndingType.TakenAway)
                             yield return PrototypePlayModeTests.CaptureIfRequested(host, "campaign-actor-" + view.PresentedPatientId);
@@ -154,7 +164,7 @@ namespace MiniGame.UnityHost.Tests
                 {
                     Assert.That(view.PresentedPatientId, Is.EqualTo(pendingActor), "Core may advance, but the archive must retain the last patient.");
                     Assert.That(view.PresentedPatientName, Is.EqualTo(pendingName));
-                    Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "IndividualRecord").text, Is.EqualTo(pendingName));
+                    Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "RecordRegistration").text, Is.EqualTo(PortraitCatalog.Registration(pendingActor)));
                     Assert.That(view.Transcript.Count(line => line.SourceNodeId.StartsWith("disposition:", StringComparison.Ordinal)), Is.EqualTo(1));
                     archived.Add(view.Game.Day + ":" + pendingActor);
                 }
@@ -178,6 +188,11 @@ namespace MiniGame.UnityHost.Tests
         private static IEnumerator Step(MiniGameBootstrap host, CompiledDialoguePackage package, EndingType ending)
         {
             var view = host.Runtime.GetView();
+            if (host.Screen.DayZeroOpeningWaiting)
+            {
+                Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
+                yield break;
+            }
             if (host.Screen.TransitionLocked) yield break;
             if (view.Input == InputContext.World)
             {
@@ -240,8 +255,7 @@ namespace MiniGame.UnityHost.Tests
             var pointer = new PointerEventData(EventSystem.current)
             {
                 button = PointerEventData.InputButton.Left, clickCount = 1,
-                position = RectTransformUtility.WorldToScreenPoint(canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
-                    rectangle.TransformPoint(rectangle.rect.center))
+                position = button.GetComponentInParent<MiniGameScreen>().TerminalDisplay.ScreenPointFor(rectangle)
             };
             var hits = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointer, hits);

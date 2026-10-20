@@ -77,6 +77,7 @@ namespace MiniGame.UnityHost.Editor
 
         private static PortraitCatalog ImportPortraits(CompiledDialoguePackage compiled)
         {
+            PatientMonitorAssets.ImportArtwork(false);
             string originals = Path.Combine(Repository, "Art", "Characters");
             var files = Directory.GetFiles(originals, "*.png", SearchOption.AllDirectories)
                 .ToDictionary(Path.GetFileNameWithoutExtension, StringComparer.Ordinal);
@@ -86,6 +87,8 @@ namespace MiniGame.UnityHost.Editor
             EnsureFolder(destination);
             var entries = compiled.Package.Portraits.Select(portrait =>
             {
+                var remade = PatientMonitorAssets.FindRemadeSprite(portrait.Id);
+                if (remade != null) return new PortraitCatalog.Entry { id = portrait.Id, sprite = remade };
                 string path = destination + "/" + portrait.Id + ".png";
                 File.Copy(files[portrait.Id], path, true);
                 AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);

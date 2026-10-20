@@ -29,6 +29,7 @@ namespace MiniGame.UnityHost.Tests
             host = Object.FindObjectOfType<MiniGameBootstrap>();
             Assert.That(host, Is.Not.Null, "MainRoomCombined must contain its configured runtime host.");
             Assert.That(host.CampaignActive, Is.True, "Door camera regression uses the actual Day0 campaign.");
+            CampaignWorldFixture.Restore(host);
             Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Apartment));
             player = host.Player;
@@ -325,7 +326,7 @@ namespace MiniGame.UnityHost.Tests
             // Construct a real terminal checkpoint through accepted commands and the normal camera presentation.
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
             yield return Until(() => host.Runtime.GetView().Input == InputContext.TerminalDirectory
-                && !host.Effects.IsTransitioning && !host.Screen.TransitionLocked, "legal terminal entry used to prepare a checkpoint");
+                && !host.Effects.IsTransitioning && !host.Screen.TransitionLocked, "legal terminal entry used to prepare a checkpoint", 20);
             string terminalCheckpoint = host.Runtime.Save();
             host.RestoreCheckpoint(roomCheckpoint);
             AssertReturned(room);
@@ -432,9 +433,9 @@ namespace MiniGame.UnityHost.Tests
             AssertCameraAt(room.CameraPosition, room.CameraRotation, room.FieldOfView);
         }
 
-        private IEnumerator Until(Func<bool> condition, string expectation)
+        private IEnumerator Until(Func<bool> condition, string expectation, float seconds = 10)
         {
-            float deadline = Time.realtimeSinceStartup + 10f;
+            float deadline = Time.realtimeSinceStartup + seconds;
             while (!condition() && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.That(condition(), Is.True, expectation + ": " + Describe());
         }

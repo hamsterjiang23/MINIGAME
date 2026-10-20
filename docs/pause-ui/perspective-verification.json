@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-20",
+  "scope": "Pause menu perspective and screen-space soft focus; room idle UI is title plus four actions",
+  "implemented": [
+    "Removed date/location and persistent bottom hint",
+    "Projected glyphs and focus frames; inverse-projected pointer targets",
+    "Frozen soft-focus scene with vignette and mild lens curve",
+    "Unscaled capture timeout, batch-mode fallback, paused resize recapture",
+    "Original actions, shortcuts and transient action feedback preserved"
+  ],
+  "tests": {
+    "beach": {
+      "status": "completed",
+      "duration": 0.19,
+      "summary": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingCheckpointRestoresExactCameraPoseAndRejectsInvalidNumbers",
+          "Status": "Passed",
+          "Duration": 0.0681644,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.LyingLocksUpwardAndCameraFollowsFloatingBed",
+          "Status": "Passed",
+          "Duration": 0.0222151,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.PauseFreezesPresentationAndSubtitlesThenResumeContinues",
+          "Status": "Passed",
+          "Duration": 0.0185459,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.RestoringSubtitleSeeksVoiceAndCompletedLinesNeverRestart",
+          "Status": "Passed",
+          "Duration": 0.0290456,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.SeaAndWetSandShareLiveParametersPausedClockAndRestoredCheckpoint",
+          "Status": "Passed",
+          "Duration": 0.0164723,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamEndingPlayModeTests.WOnlyMovesForwardAndCannotOvershootBed",
+          "Status": "Passed",
+          "Duration": 0.0130379,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "menu": {
+      "status": "completed",
+      "duration": 0.81,
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.DisabledActionsStaySilentAndPointerSubmitPairsInvokeEachActionOnce",
+          "Status": "Passed",
+          "Duration": 0.0660461,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.FullscreenModalInterceptsClicksAndFadesWhileTimeIsStopped",
+          "Status": "Passed",
+          "Duration": 0.2561969,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.KeyboardFocusSkipsDisabledRowsSurvivesUpdatesAndRestoresPreviousSelection",
+          "Status": "Passed",
+          "Duration": 0.0197296,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.PerspectiveHitAreasFollowTheVisibleRowsAcrossTheirWidth",
+          "Status": "Passed",
+          "Duration": 0.132676,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.ResumeSubmitCannotAlsoChooseAResponseOrAdvanceDialogueInTheSameFrame",
+          "Status": "Passed",
+          "Duration": 0.3143917,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "scope": "Native graphical Unity Editor PlayMode; deprecated always-true check removed after tests and final build rerun"
+  },
+  "build": {
+    "errors": 0,
+    "warnings": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      }
+    ],
+    "buildId": "build_478912062826",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/PausePerspective/MiniGame.exe",
+    "evidence": "Artifacts/PausePerspective/windows-build.json",
+    "result": "Succeeded"
+  },
+  "visual": {
+    "capture": "Native ScreenCapture including overlay UI",
+    "inspected": [
+      {
+        "path": "Artifacts/PausePerspective/room-native.png",
+        "sha256": "511A594C23631C315C7776537A4AEAE148141E6399CB0A5DD244A1126E70BE6B"
+      },
+      {
+        "path": "Artifacts/PausePerspective/room-1080p.png",
+        "sha256": "C0882C46307677FB182B8EE1F8A97E88C0AE7263728D1143DEB9D8239B9E1F05"
+      },
+      {
+        "path": "Artifacts/PausePerspective/room-4by3.png",
+        "sha256": "CB1BD00FC341014EA2081C3CB6FBFDA8637C3C196584B0ECFC3A4FF6848A595D"
+      }
+    ],
+    "userAcceptance": "pending",
+    "resolutions": [
+      "2560x1440",
+      "1920x1080",
+      "1024x768"
+    ]
+  },
+  "review": {
+    "C1": "Fixed stalled end-of-frame capture blocking menu fade; reviewed after fix"
+  },
+  "limitations": [
+    "No standalone gameplay replay",
+    "No headless PlayMode execution",
+    "Paused resolution recapture added; cross-size screenshots inspected",
+    "Unrelated existing working tree changes preserved",
+    "Initial final-test dispatch cancelled after no completion; retried successfully; initial build Unknown retried successfully"
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "checkedAt": "2026-10-20T18:48:20.0337503+08:00",
+  "unity": "2022.3.23f1c1",
+  "scope": "Fresh MainRoomCombined campaign opening and affected terminal, campaign, dream and room regressions",
+  "behavior": {
+    "freshStart": "Supervisor monitor close view; fresh click starts a continuous 2.2-second pullback to the native 800x600 terminal",
+    "input": "Locked through pullback; only Continue or Purify actionable during Day0; footer passive; F2/F3 remain removed",
+    "tutorial": "Five introduction and two reaction source lines; one purification; automatic power off",
+    "bedtime": "Furniture, computer and poster collision disabled; floor/walls/player/solid door preserved; bed remains a trigger ray target",
+    "dawn": "One sleep with 0.8-second eye-close fade; safe wake pose before restoring furniture; then Day1 morning",
+    "restore": "Unfinished opening replays from waiting view; running dialogue resumes current source page; stale tokens and duplicate dispositions rejected",
+    "supervisorArt": "User-provided still reference, unchanged; later patients retain dynamic surveillance rooms"
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "commands": [
+      "dotnet restore MiniGame.sln --locked-mode",
+      "dotnet build MiniGame.sln -c Release --no-restore",
+      "dotnet test MiniGame.sln -c Release --no-build --no-restore"
+    ],
+    "result": "passed",
+    "core": 113,
+    "presentation": 183,
+    "total": 296,
+    "buildWarnings": 0,
+    "buildErrors": 0
+  },
+  "playMode": {
+    "result": "passed",
+    "passed": 51,
+    "failed": 0,
+    "method": "Latest execution per full case name; earlier failing reports are preserved for diagnostics",
+    "reports": [
+      "slice-results.xml",
+      "opening-results.xml",
+      "regression-results.xml",
+      "door-restore-results.xml",
+      "compatibility-results.xml",
+      "compatibility-repair-results.xml"
+    ],
+    "cases": [
+      {
+        "name": "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.EveryCampaignPortraitRemainsVisibleInItsOwnDynamicRoom",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.LongNarrationPagesMatchActualWrappedLabelsAndNewestSpeechRemainsVisible",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.NativeCompositeRendersAndWarpedPickingMatchesEveryDisplayMode",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.PowerTimelineCanBeSkippedPausedRestoredAndManualShutdownReturnsToWorld",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.BedtimeCollisionGatePlayModeTests.DisableRebindAndReloadRestoreOriginalEnabledAndTriggerStates",
+        "result": "Passed",
+        "report": "Artifacts/Opening/slice-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.BedtimeCollisionGatePlayModeTests.MainRoomDayZeroLeavesTheBedTouchableAndRestoresFurnitureAfterOneSleep",
+        "result": "Passed",
+        "report": "Artifacts/Opening/slice-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent",
+        "result": "Passed",
+        "report": "Artifacts/Opening/slice-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom",
+        "result": "Passed",
+        "report": "Artifacts/Opening/slice-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignAllTreatmentRouteVisitsEveryMeetingThenLocksTheRoom",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignNormalRouteShowsSixActorsAndAllDaysThenTakenAway",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignReleasedPriestAttacksOnTheFollowingMorning",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.PausedPullbackFreezesAndUnfinishedOpeningRestoresAtItsWaitingStart",
+        "result": "Passed",
+        "report": "Artifacts/Opening/opening-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.SupervisorPullsBackIntoTheSameMonitorThenOneButtonTutorialAndOneSleepStartDayOne",
+        "result": "Passed",
+        "report": "Artifacts/Opening/opening-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.DoorFrameHasNoPositiveAreaCoplanarOverlapWithItselfOrEntranceWalls",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.OpenDoorKeepsFrameFixedAndClearAcrossConfiguredAnglesAndRoomSideViews",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.CameraPathAndOutsideSightlineClearTheOpenDoorLeaf",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.EntryAlignsBeforePushingAndEPathReturnsBeforeClosingWithoutMovingTheBody",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.FixedDoorAlignmentFacesOutwardAndPushesStraightAlongTheClosedDoorNormal",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.ImmediateDisableAndReenableDuringReturnDoesNotTrapPresentationInput",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.OutsideHoldShowsTheReturnPromptThroughItsCanvasGroup",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.PauseFreezesPushAndReturnAndResumesTheSameCue",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringMidReturnCancelsToTheRoomAndRejectsItsOldToken",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringOutsideKeepsTheOriginalRoomPoseAcrossRepeatedRebinds",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-repair-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneAutomaticallyProjectsOnTheAuthoredWallAndReturnsBeforeBedUnlocks",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroAutomaticallySkipsVideoAndOneBedInteractionAdvancesExactlyOneDay",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamAudioDisabledSourcesStayStoppedAndReenableSynchronizesActualPlayback",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamPreviewStopRebindAndDisableRestoreExistingRetroFlags",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.HighRebellionSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.OutsideDoorSaveReplacesLaterDoorCaptureButRuntimeOnlyRebindPreservesIt",
+        "result": "Passed",
+        "report": "Artifacts/Opening/door-restore-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.WorldSavePoseOverridesLaterTerminalDoorAndDreamReturnCaches",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.FreePatientSelectionPlayModeTests.DailyRosterCanReceivePriestThenDoctorAndRestoreTheChosenConversation",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-repair-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.HistoryDispositionPlayModeTests.DayZeroPassiveRecordKeepsPurificationLockedUntilDialogueThenPlaysBothReactionsOnce",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.InteractionDistancePlayModeTests.PerObjectDistancesControlFocusAndUseBeyondTheFormerGlobalCap",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.InteractionDistancePlayModeTests.PosterDistanceAlsoControlsFocusAndCaptionWithoutASeparateGlobalLimit",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.LongParagraphRemainsCompleteAcrossReadablePages",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingOwnsInputPagesAndPauseWithoutChangingGameState",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.RestoreDisableAndTargetRemovalReleaseNarrationAndCameraOwnership",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.DoorMovesItsHandleAndColliderRestoresTargetsAndRunsMorningOnlyAfterOpening",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-repair-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.PostersUseSecondaryInputDistanceOcclusionAndManualSpatialNarration",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.ReferenceEnvelopeAndCameraMatchTheSourceAndNightHidesTheCorridor",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-repair-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.LiveProfileChangesReachTheCameraAndNeutralSettingsMatchOriginal",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.MainRoomUsesProfileAndKeepsOverlayUiOutsideTheEffect",
+        "result": "Passed",
+        "report": "Artifacts/Opening/compatibility-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.ActorSitsBeforeAlignedDollyAndPhysicalCoveragePrecedesInterface",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ChoiceKeysDefaultToFirstWrapAndSupportAllFourNumberShortcuts",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DispositionKeepsLastSpeechAndLocalSignalLossThenReturnsToDirectoryBeforeRoomExit",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.RemovedFunctionKeysLeavePassiveTranscriptAndDialogueAvailable",
+        "result": "Passed",
+        "report": "Artifacts/Opening/regression-results.xml"
+      }
+    ]
+  },
+  "windowsMono": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\TerminalAmber\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 4.0846494
+  },
+  "player": {
+    "result": "passed",
+    "sourceLines": 7,
+    "day": 1,
+    "singlePurification": true,
+    "bedOnly": true,
+    "furnitureRestored": true,
+    "seconds": 13.422574996948242,
+    "raw": "Artifacts/Opening/Player/verification.json"
+  },
+  "review": {
+    "result": "No remaining findings",
+    "fixed": "Relocate player to authored wake pose before re-enabling furniture collision"
+  },
+  "media": {
+    "movie": "docs/opening/previews/opening-pullback.mp4",
+    "frameCount": 36,
+    "timing": "Measured Player frame timestamps, with initial/final hold",
+    "source": "Native UI camera RenderTexture and the displayed CRT material; room capture uses the actual room camera",
+    "stills": [
+      "monitor",
+      "pullback",
+      "terminal",
+      "bed-only",
+      "day1"
+    ]
+  },
+  "sourceHashes": {
+    "src/MiniGame.Presentation/GameRuntime.cs": "0a796d1e8940dfe78659b34d382f3c38680759cc7bfa231a1076162d29c029cb",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs": "6ba116cb555e6f72a7e37871f58c4713d923743d91d3a9a490b9c9366a7fcc70",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs": "6bb6536bbe48aa24324a875f43d9e78cd7eb60d4c1cc8f004c1a9e1d41a61f55",
+    "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs": "283b09e688ee2522803d85a7e12539ff79b8019f77fd0f1a2684e5a80c125108",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalDisplay.cs": "217c80c91d9c182bbedbb52db91f66d81bec8de3207bed3a430eeace236e49a0",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs": "547f3e74293a022bbeffea19ede06d2a5475b5c64569f6cabaa2cb6214eeaa14",
+    "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs": "f43c157567284271f894c594138ee1fb7a374dd6683e5f47fa5c1bbb264d0b2b",
+    "UnityProject/Assets/MiniGame/Runtime/BedtimeCollisionGate.cs": "2c558b4086afc720510651ab1fa8a0f0ca4e4461f6c614e713587d553747e1e5",
+    "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs": "2585c48b30250b037ade53be7e493981e37e8d459ecd2b974dc02dadd69c613e",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Day0Supervisor.jpg": "129997aaea6f3a33f724b6f253bf6bd544cc98a29eb77b1fbdf67fdcd6a6bffa"
+  },
+  "binaryHashes": {
+    "exe": "55ab99c1b6d2d954f3ce377fe0fcd5fbcf6b38b59dcf4aaae7ad66bd13786150",
+    "hostAssembly": "15e46eca21235b9222f69e8c0cad85d51b3036ee743724691c14e449dfaada4e",
+    "presentationAssembly": "cd9d875460fcbd0b471e723739e02a58adff1b995194f1eac59143a2e817b706"
+  },
+  "limits": [
+    "Delivered terminal movie/stills are native UI camera GPU composites with the actual display material, not desktop backbuffer captures.",
+    "Standalone automated operation covers Day0 through Day1 morning. Three campaign ending routes and later dream/self-review checks ran in PlayMode.",
+    "This is scoped automated and visual inspection evidence; human interactive acceptance and other platforms are not established."
+  ],
+  "staticChecks": {
+    "diffCheck": "passed",
+    "newSourceWhitespace": "passed",
+    "localMarkdownLinks": 60,
+    "missingLinks": 0,
+    "movieDecode": "passed"
+  },
+  "currentRendererFollowUp": "smoothness-verification.json",
+  "originalMovieArchive": "Artifacts/Opening/Smooth/legacy-pullback.mp4"
+}

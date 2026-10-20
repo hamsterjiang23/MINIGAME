@@ -16,7 +16,7 @@ namespace MiniGame.UnityHost.Tests
     public sealed class ReferenceRoomPlayModeTests
     {
         [UnityTest, Timeout(90000)]
-        public IEnumerator PostersUseSecondaryInputDistanceOcclusionAndPausedRefreshableCaptions()
+        public IEnumerator PostersUseSecondaryInputDistanceOcclusionAndManualSpatialNarration()
         {
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
@@ -68,41 +68,38 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.Save(), Is.EqualTo(checkpoint), "Reading a poster must not change authoritative gameplay or save data.");
             if (material.HasProperty("_Color")) Assert.That(material.color, Is.EqualTo(materialColor), "The poster itself must not be tinted for focus.");
             yield return Capture(host, "reference-poster-beach");
-            var captionCameraPosition = host.Player.ViewCamera.transform.position;
-            var captionCameraRotation = host.Player.ViewCamera.transform.rotation;
             yield return new WaitForSecondsRealtime(1.9f);
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+            Assert.That(host.Screen.PropNarration.IsOpen, Is.True);
+            Assert.That(host.Screen.RoomCaptionVisible, Is.False, "Pause hides the spatial lettering under the menu.");
             yield return new WaitForSecondsRealtime(2.3f);
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
+            Assert.That(host.Screen.AdvancePropNarration(), Is.False, "The resume input cannot also advance reading.");
             yield return null;
             Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo(beach.Caption));
-            Assert.That(host.Screen.RoomCaptionVisible, Is.True, "The paused interval must not consume the caption's four seconds.");
+            Assert.That(host.Screen.RoomCaptionVisible, Is.True);
             yield return new WaitForSecondsRealtime(1.6f);
-            Assert.That(host.Screen.RoomCaptionVisible, Is.True);
-            bool repeatedClick = host.Player.InteractSecondaryFocused();
-            Physics.Raycast(host.Player.ViewCamera.transform.position, host.Player.ViewCamera.transform.forward, out var captionHit, 3.2f);
-            Assert.That(repeatedClick, Is.True, "A repeated click should restart the subtitle lifetime. Camera drift: position="
-                + Vector3.Distance(captionCameraPosition, host.Player.ViewCamera.transform.position)
-                + " rotation=" + Quaternion.Angle(captionCameraRotation, host.Player.ViewCamera.transform.rotation)
-                + " hit=" + (captionHit.collider != null ? captionHit.collider.name : "none") + " distance=" + captionHit.distance);
-            yield return new WaitForSecondsRealtime(.6f);
-            Assert.That(host.Screen.RoomCaptionVisible, Is.True);
-            yield return new WaitForSecondsRealtime(3.5f);
-            Assert.That(host.Screen.RoomCaptionVisible, Is.False, "A refreshed caption should eventually expire after four active seconds.");
+            Assert.That(host.Screen.RoomCaptionVisible, Is.True, "The page waits for confirmation instead of expiring.");
+            Assert.That(host.Player.InteractSecondaryFocused(), Is.False, "Reading owns input until its fade finishes.");
+            Assert.That(host.Screen.AdvancePropNarration(), Is.True);
+            Assert.That(host.Player.InteractSecondaryFocused(), Is.False, "The closing click cannot reopen the poster.");
+            yield return new WaitForSecondsRealtime(.35f);
+            yield return null;
+            Assert.That(host.Screen.RoomCaptionVisible, Is.False);
 
             yield return StageAtPoster(host, instrument);
             Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
             Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo(instrument.Caption));
             yield return Capture(host, "reference-poster-instrument");
-            yield return StageAt(host, InteractionTarget.Computer);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True,
+                "A host-driven transition must cancel local narration.");
             yield return null;
             Assert.That(host.Screen.RoomCaptionVisible, Is.False, "The room subtitle must clear when computer entry begins.");
             Assert.That(host.Screen.CurrentRoomCaption, Is.Empty);
             Assert.That(posters.All(poster => !poster.IsHighlighted), Is.True);
             yield return Until(host, () => host.Runtime.GetView().Input == InputContext.TerminalDirectory
                 && !host.Screen.TransitionLocked, "the physical computer entry still completes");
-            Debug.Log("MINIGAME_REFERENCE_POSTERS_PASSED actual textures; two metres; collider occlusion; left-click only; pause and refresh; terminal clears subtitle");
+            Debug.Log("MINIGAME_REFERENCE_POSTERS_PASSED actual textures; two metres; collider occlusion; left-click; manual spatial reading; pause; terminal clears narration");
         }
 
         [UnityTest, Timeout(90000)]
@@ -256,8 +253,6 @@ namespace MiniGame.UnityHost.Tests
             yield return Until(host, () => !door.IsMoving && host.Runtime.GetView().TerminalPage == TerminalPage.Archive,
                 "night closes the door while the terminal finishes its existing signal loss");
             Assert.That(door.CurrentAngle, Is.Zero.Within(.001f));
-            Assert.That(host.Runtime.ReturnToDirectory().Accepted, Is.True);
-            Assert.That(host.Runtime.LeaveTerminal().Accepted, Is.True);
             var guidance = Object.FindObjectOfType<BedtimeGuidance>();
             yield return Until(host, () => host.Runtime.GetView().Input == InputContext.World
                 && guidance.Isolation > .999f && guidance.BeamStrength > .999f, "the reference room isolates around the bed");
@@ -289,6 +284,7 @@ namespace MiniGame.UnityHost.Tests
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             Assert.That(host, Is.Not.Null);
             Assert.That(host.CampaignActive, Is.True);
+            CampaignWorldFixture.Restore(host);
             Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
             // These tests isolate physical hinge/poster rules; camera travel has its own regression fixture.
             var doorCamera = host.Player.ViewCamera.GetComponent<DoorViewCamera>();
@@ -372,10 +368,9 @@ namespace MiniGame.UnityHost.Tests
 
         private static GameRuntime TutorialReaction(bool openDoor)
         {
-            var asset = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
-            Assert.That(asset, Is.Not.Null);
-            var package = DialoguePackageCompiler.Compile(asset.PackageSource.text);
-            var runtime = new GameRuntime(package.Rules, package.Content, true);
+            var session = MiniGameSessionHost.Current;
+            Assert.That(session, Is.Not.Null);
+            var runtime = new GameRuntime(session.Rules, session.Content, true);
             if (openDoor)
             {
                 Assert.That(runtime.ToggleRoomDoor().Accepted, Is.True);
@@ -394,13 +389,11 @@ namespace MiniGame.UnityHost.Tests
             var runtime = TutorialReaction(false);
             Complete(runtime, PresentationKind.Reaction);
             Complete(runtime, PresentationKind.ExitTerminal);
-            Assert.That(runtime.ReturnToDirectory().Accepted, Is.True);
-            Assert.That(runtime.LeaveTerminal().Accepted, Is.True);
             Complete(runtime, PresentationKind.ExitTerminal);
+            Assert.That(runtime.BeginNightDream().Accepted, Is.True);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
             Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
             Complete(runtime, PresentationKind.Sleep);
-            Complete(runtime, PresentationKind.Dream);
-            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
             return runtime.Save();
         }

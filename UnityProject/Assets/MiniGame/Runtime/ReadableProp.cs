@@ -7,12 +7,15 @@ namespace MiniGame.UnityHost
     public sealed class ReadableProp : MonoBehaviour
     {
         [SerializeField] private string id = "";
-        [SerializeField, TextArea] private string caption = "";
+        [SerializeField, TextArea, InspectorName("阅读文案")]
+        [Tooltip("换行开始下一段；长段落自动分页，阅读等待玩家确认。")]
+        private string caption = "";
         [SerializeField] private Renderer surface;
         [SerializeField, Min(.1f), InspectorName("交互距离（米）")]
         [Tooltip("从玩家镜头到鼠标命中的海报表面的最大距离；距离内才会显示白色描边并允许阅读。")]
         private float interactionDistance = 2f;
-        [SerializeField, Min(.1f)] private float captionSeconds = 4f;
+        // Retain the old serialized value for existing scenes; spatial narration is manually advanced.
+        [SerializeField, HideInInspector] private float captionSeconds = 4f;
         private LineRenderer outline;
         private Material outlineMaterial;
         private bool preparingCameras;

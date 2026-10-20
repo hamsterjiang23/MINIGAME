@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6309601729941842391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5668487723368245794}
+  - component: {fileID: 8929046350457030627}
+  m_Layer: 0
+  m_Name: PMSAmberTerminal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5668487723368245794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309601729941842391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8929046350457030627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309601729941842391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539d1a0ef057eee49be2da02b1a9cedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Typeface: {fileID: 12800000, guid: 440f83b51e28c474980344a00764d2f6, type: 3}
+  Ward: {fileID: 2800000, guid: 6a41dc6751bfddc4c8f0361a5dcf2d5b, type: 3}
+  GlowLine: {fileID: 2800000, guid: d43bd2c370dfcbb4abb06468aa28a458, type: 3}
+  GlowDot: {fileID: 2800000, guid: 8c065de3230e02e43bbfd12cc7cf1872, type: 3}
+  DisplayShader: {fileID: 4800000, guid: 4f76ee4630439c645b4d77db99dee5d2, type: 3}
+  AutoBoot: 1
+  ReadKeyboardAndMouse: 1
+  ShowOverlay: 1
+  QuotaDisplay: 05
+  CrtMode: 1
+  SourceLayer: 27
+  EnterRequested:
+    m_PersistentCalls:
+      m_Calls: []
+  ContinueRequested:
+    m_PersistentCalls:
+      m_Calls: []
+  ReplyRequested:
+    m_PersistentCalls:
+      m_Calls: []
+  DispositionRequested:
+    m_PersistentCalls:
+      m_Calls: []
+  ShutdownCompleted:
+    m_PersistentCalls:
+      m_Calls: []

@@ -30,6 +30,10 @@
 - Capture from a stationary production camera to separate wave motion from camera travel. Runtime time remains pauseable and saved; Editor material time may animate independently outside play.
 - First GPU pass exposed faint foam and distant horizontal bands. A second pass treats foam as white coverage and filters distant geometric normals; the 12-second fixed-camera recording and water-verification.json preserve the result and technical checks.
 
+# Beach scene opening
+
+- Pausing Unity still leaves Play Mode active, so disabling the scene button trapped designers without an explanation. The window now offers "退出播放并打开海滩" and queues opening until Edit Mode, retaining the request across assembly reloads with SessionState. The shortcut is also visible in the top toolbar.
+
 # Handoff
 
 - Deviations: three production/evidence choices, plus the Combined-only opt-in compatibility boundary.

@@ -1,0 +1,55 @@
+{
+  "package": "PMS Amber Terminal Resources v0.8.12",
+  "referenceHTML": "Reference/PMS_v0.8.12.html",
+  "unityEditorImport": {
+    "unity": "2022.3.62f3c1",
+    "font": true,
+    "ward": true,
+    "shaderErrors": false,
+    "prefab": true,
+    "demoScene": true
+  },
+  "unityPlayMode": {
+    "unity": "2022.3.62f3c1",
+    "playMode": true,
+    "bootAndRegionalLoading": true,
+    "normalSwitchNoLoading": true,
+    "nativeChineseText": true,
+    "demoEvents": true,
+    "shutdown": true,
+    "reopenBoot": true,
+    "runtimeErrors": 0
+  },
+  "validationEnvironment": {
+    "project": "isolated Unity project; original working project untouched",
+    "renderPipeline": "Built-in",
+    "platform": "Windows Editor",
+    "input": "Legacy Input Manager; optional new Input System branch supplied but not tested"
+  },
+  "assets": {
+    "referenceResolution": [
+      800,
+      600
+    ],
+    "monitor": [
+      464,
+      261
+    ],
+    "monitorAspect": "16:9",
+    "font": "Noto Sans Mono CJK SC, SIL OFL 1.1",
+    "shader": "PMS/Amber CRT"
+  },
+  "limits": [
+    "No target-platform Player build was performed.",
+    "URP/HDRP and new Input System were not runtime-tested.",
+    "This is a presentation resource pack. Existing GameSession/Yarn integration is documented, not automatically installed.",
+    "Preview driver demonstrates UI interactions and is not the complete Day1 rules/dialogue.",
+    "Open-source font replaces Windows system fonts; glyph outlines differ slightly."
+  ],
+  "evidence": [
+    "Preview/Unity_Directory.png",
+    "Preview/Unity_Review.png",
+    "Preview/Unity_PowerOff.png"
+  ],
+  "workingProjectModified": false
+}

@@ -1,0 +1,59 @@
+{
+  "result": "Succeeded",
+  "unity": "2022.3.23f1c1",
+  "target": "StandaloneWindows64",
+  "backend": "Mono2x",
+  "development": false,
+  "errors": 0,
+  "warnings": 10,
+  "seconds": 5.2728091,
+  "sizeBytes": 302914618,
+  "scenes": [
+    "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "Assets/MiniGame/Scenes/InspectionApartment.unity",
+    "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+  ],
+  "output": "F:/AAMINIGAME/MINIGAME/Builds/Deliverables/MiniGame-Windows-x64-Mono-20261020-PlaytestFix\\MiniGame.exe",
+  "messages": [
+    {
+      "type": "Warning",
+      "content": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(722,34): warning CS0414: The field 'LineAdvancer.legacyHurryUpLineAxis' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(765,34): warning CS0414: The field 'LineAdvancer.legacyNextLineKeyCode' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(731,34): warning CS0414: The field 'LineAdvancer.legacyNextLineAxis' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(739,34): warning CS0414: The field 'LineAdvancer.legacyHurryUpOptionsAxis' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(748,34): warning CS0414: The field 'LineAdvancer.legacyCancelDialogueAxis' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(665,31): warning CS0414: The field 'LineAdvancer.hasTransferredLegacyMapping' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(782,34): warning CS0414: The field 'LineAdvancer.legacyCancelDialogueKeyCode' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(773,34): warning CS0414: The field 'LineAdvancer.legacyHurryUpOptionsKeyCode' is assigned but its value is never used"
+    },
+    {
+      "type": "Warning",
+      "content": "Packages\\dev.yarnspinner.unity\\Runtime\\Views\\LineAdvancer.cs(756,34): warning CS0414: The field 'LineAdvancer.legacyHurryUpLineKeyCode' is assigned but its value is never used"
+    }
+  ]
+}

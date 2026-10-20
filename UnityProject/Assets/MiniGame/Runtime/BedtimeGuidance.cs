@@ -21,6 +21,7 @@ namespace MiniGame.UnityHost
         [SerializeField] private Renderer selfReviewSurface;
         private GameRuntime runtime;
         private BedtimeAtmosphere atmosphere;
+        private BedtimeCollisionGate collisionGate;
         private readonly List<LightState> lights = new List<LightState>();
         private readonly List<SurfaceState> surfaces = new List<SurfaceState>();
         private bool captured, restored = true;
@@ -44,7 +45,7 @@ namespace MiniGame.UnityHost
         public BedtimeAtmosphere Atmosphere => atmosphere;
         public Renderer[] BedRenderers => bedRenderers;
         public static bool IsSleepOnly(RuntimeView view) => view != null && (view.Game.Phase == GamePhase.AfterDream
-            || (!view.UsesDreamFlow && view.Game.Phase == GamePhase.Evening));
+            || view.Game.Phase == GamePhase.Evening);
 
         public void ConfigureSelfReview(Renderer terminalScreen)
         {
@@ -73,6 +74,9 @@ namespace MiniGame.UnityHost
                 atmosphere.Initialize(spotlight.transform, bedSurfaceCenter, beamRadius);
             }
             runtime = game;
+            if (collisionGate == null) collisionGate = GetComponent<BedtimeCollisionGate>() ?? gameObject.AddComponent<BedtimeCollisionGate>();
+            collisionGate.enabled = isActiveAndEnabled;
+            collisionGate.Bind(game);
             runtime.Changed += SetTargets;
             SetTargets(game.GetView());
             // Checkpoint restoration derives presentation from the saved phase, without a flash of daylight.
@@ -103,13 +107,14 @@ namespace MiniGame.UnityHost
                     var material = materials[slot];
                     if (material == null) continue;
                     bool glass = material.shader != null && material.shader.name == "MiniGame/Room Window Glass";
-                    if (!glass && (!material.HasProperty("_EmissionColor") || material.GetColor("_EmissionColor").maxColorComponent <= 0)) continue;
+                    if (!glass && !material.HasProperty("_EmissionColor")) continue;
                     int property = Shader.PropertyToID(glass ? "_Color" : "_EmissionColor");
                     var original = new MaterialPropertyBlock(); renderer.GetPropertyBlock(original, slot);
                     Color value = original.HasProperty(property) ? original.GetColor(property)
                         : global.HasProperty(property) ? global.GetColor(property) : material.GetColor(property);
+                    if (!glass && value.maxColorComponent <= 0) continue;
                     surfaces.Add(new SurfaceState { Renderer = renderer, Slot = slot, Property = property, Color = value,
-                        Original = original, Working = new MaterialPropertyBlock() });
+                        Working = new MaterialPropertyBlock() });
                 }
             }
         }
@@ -123,6 +128,39 @@ namespace MiniGame.UnityHost
             isolationTarget = guide || inDream || beforeDream || selfReviewTarget ? 1 : 0;
             beamTarget = guide ? 1 : 0;
         }
+
+        // The room profile can change during Play Mode, including while daylight is faded out.
+        // Update the retained day state without recapturing the currently darkened scene.
+        public void UpdateDaylightLight(Light source, bool dayEnabled, float intensity, Color color)
+        {
+            if (!captured || source == null || source == spotlight) return;
+            var state = lights.Find(item => item.Light == source);
+            if (state == null) { state = new LightState { Light = source }; lights.Add(state); }
+            state.Enabled = dayEnabled; state.Intensity = intensity; state.Color = color;
+        }
+
+        public void UpdateDaylightAmbient(Color color, SphericalHarmonicsL2 probe, float reflections)
+        {
+            if (!captured) return;
+            ambientMode = AmbientMode.Flat; ambient = sky = equator = ground = color;
+            ambientIntensity = 1; ambientProbe = probe; reflectionIntensity = reflections;
+        }
+
+        public void UpdateDaylightEmission(Renderer renderer, int slot, Color color)
+        {
+            if (!captured || renderer == null) return;
+            int property = Shader.PropertyToID("_EmissionColor");
+            var state = surfaces.Find(item => item.Renderer == renderer && item.Slot == slot && item.Property == property);
+            if (state == null)
+            {
+                state = new SurfaceState { Renderer = renderer, Slot = slot, Property = property,
+                    Working = new MaterialPropertyBlock() };
+                surfaces.Add(state);
+            }
+            state.Color = color;
+        }
+
+        public void ReapplyLighting() => ApplyRoom();
 
         private void LateUpdate()
         {
@@ -213,7 +251,13 @@ namespace MiniGame.UnityHost
             foreach (var state in lights)
                 if (state.Light != null) { state.Light.enabled = state.Enabled; state.Light.intensity = state.Intensity; state.Light.color = state.Color; }
             foreach (var state in surfaces)
-                if (state.Renderer != null) state.Renderer.SetPropertyBlock(state.Original.isEmpty ? null : state.Original, state.Slot);
+                if (state.Renderer != null)
+                {
+                    // Own only this colour; retain live band/floor settings written by other presenters.
+                    state.Renderer.GetPropertyBlock(state.Working, state.Slot);
+                    state.Working.SetColor(state.Property, state.Color);
+                    state.Renderer.SetPropertyBlock(state.Working, state.Slot);
+                }
             // Unloading an old room must not replace a newly activated scene's global environment.
             if (gameObject.scene == SceneManager.GetActiveScene())
             {
@@ -238,6 +282,7 @@ namespace MiniGame.UnityHost
 
         private void OnDisable()
         {
+            if (collisionGate != null) collisionGate.enabled = false;
             if (!restored) RestoreRoom();
             Isolation = BeamStrength = 0;
             if (atmosphere != null) atmosphere.SetVisualState(0, 0, true);
@@ -246,6 +291,7 @@ namespace MiniGame.UnityHost
         private void OnEnable()
         {
             if (runtime == null) return;
+            if (collisionGate != null) collisionGate.enabled = true;
             SetTargets(runtime.GetView());
             Isolation = isolationTarget; BeamStrength = beamTarget;
             ApplyRoom();
@@ -256,7 +302,7 @@ namespace MiniGame.UnityHost
         private sealed class SurfaceState
         {
             public Renderer Renderer; public int Slot, Property; public Color Color;
-            public MaterialPropertyBlock Original, Working;
+            public MaterialPropertyBlock Working;
         }
     }
 }

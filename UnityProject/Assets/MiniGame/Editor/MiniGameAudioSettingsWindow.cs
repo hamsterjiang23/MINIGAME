@@ -202,6 +202,8 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.Dream3: return "Day3 受缚待审";
                 case MiniGameSound.EndingMusic: return "海滩终局音乐";
                 case MiniGameSound.OceanWaves: return "海浪环境声";
+                case MiniGameSound.TerminalPowerOn: return "电脑开机";
+                case MiniGameSound.TerminalPowerOff: return "电脑关机";
                 case MiniGameSound.PCNoise: return "电脑底噪";
                 case MiniGameSound.Projector: return "放映机";
                 case MiniGameSound.Scan: return "扫描";
@@ -225,7 +227,9 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.Dream3: return "正式流程 Day3 受缚待审投影期间播放。";
                 case MiniGameSound.EndingMusic: return "海滩终局循环音乐；留空时只播放海浪。";
                 case MiniGameSound.OceanWaves: return "海滩终局循环环境声。";
-                case MiniGameSound.PCNoise: return "打开电脑后叠加循环，退出电脑后淡出。";
+                case MiniGameSound.PCNoise: return "当天开机后持续循环；退出操作界面保持底噪，全部会谈完成关机后淡出。";
+                case MiniGameSound.TerminalPowerOn: return "当天第一次开机时播放一次；再次打开操作界面不重播。";
+                case MiniGameSound.TerminalPowerOff: return "当天全部会谈完成后，关闭会话并熄屏时播放一次。";
                 case MiniGameSound.Projector: return "梦境期间叠加放映机循环声。";
                 case MiniGameSound.Scan: return "进入审查或打开检查时播放。";
                 case MiniGameSound.LightBeep: return "检定仪的可处置指示灯亮起时播放。";

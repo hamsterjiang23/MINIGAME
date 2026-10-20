@@ -10,6 +10,8 @@
 
 ## 玩法设计
 
+电脑终端现采用用户提供的v0.8.12琥珀资源包，支持开机自检、分区加载和动态人物监控。每天仅首次交互开机，中途退出操作保持亮屏，再次进入继续；当日全部会谈与反应结束后自动关机，开关机各有专用音效；F2／F3功能已移除。物理CRT覆盖面按真实玻璃曲率贴合。Day0启动显示监管者监控，点击后连续拉远进入教学，关机后睡一次进入Day1，起床不重设视角；海报正文改为白框。最新运行版与验证见[CRT指南](docs/crt-screen-fit/guide.md)，开场和操作见[开场指南](docs/opening/guide.md)与[琥珀终端指南](docs/terminal-amber/guide.md)。`[verified: MiniGameBootstrap.StartTerminalDemo；PresentationEffects.DayZeroOpening/PowerOn/PowerOff；GameRuntime.CompleteCue/LeaveTerminal；docs/crt-screen-fit/verification.json]`
+
 2026-10-19 的 Combined 正式 Campaign 已接入墙面梦境、玩家全局反叛值、自我审查净化及独立海滩终局；中文调参、音频选取和动态海浪说明见[梦境与结局指南](docs/dreams/guide.md)，录制视频随仓库保存。`[verified: docs/dreams/verification.json；docs/dreams/water-verification.json；Art/Dreams/Previews/manifest.json]`
 
 全量对白使用[全流程指南](docs/campaign-guide.md)；V1小孩Day1使用[电脑终端与对白工具指南](docs/terminal-ui-guide.md)，旧三天开发配置见[原型验收指南](docs/planner-acceptance-guide.md)。`[opinion]`

@@ -35,9 +35,23 @@ namespace MiniGame.UnityHost
                 material = new Material(effectShader) { hideFlags = HideFlags.HideAndDontSave };
             material.SetFloat("_Strength", profile.Strength);
             material.SetFloat("_PixelSize", profile.PixelSize);
+            material.SetFloat("_FullscreenQuantization", profile.FullscreenQuantization ? 1 : 0);
             material.SetFloat("_Levels", profile.Levels);
             material.SetFloat("_GammaBefore", profile.GammaBefore);
             material.SetFloat("_GammaAfter", profile.GammaAfter);
+            material.SetFloat("_ColorGradingEnabled", profile.ColorGradingEnabled ? 1 : 0);
+            material.SetVector("_ColorAdjustments", new Vector4(profile.PostExposure, profile.Contrast, profile.Saturation, 0));
+            material.SetColor("_ShadowTint", profile.ShadowTint);
+            material.SetColor("_MidtoneTint", profile.MidtoneTint);
+            material.SetColor("_HighlightTint", profile.HighlightTint);
+            material.SetVector("_ToneExposures", new Vector4(profile.ShadowExposure, profile.MidtoneExposure, profile.HighlightExposure, 0));
+            material.SetVector("_ToneRanges", new Vector4(profile.ShadowEnd, profile.HighlightStart, 0, 0));
+            material.SetFloat("_NeutralTonemapping", profile.ColorGradingEnabled && profile.NeutralTonemapping ? 1 : 0);
+            material.SetFloat("_PerceptualQuantization", profile.PerceptualQuantization ? 1 : 0);
+            material.SetFloat("_QuantizationStrength", profile.QuantizationStrength);
+            material.SetFloat("_DitherStrength", profile.DitherStrength);
+            material.SetFloat("_UseVirtualResolution", profile.UseVirtualResolution ? 1 : 0);
+            material.SetFloat("_VirtualHeight", profile.VirtualHeight);
             Graphics.Blit(source, destination, material);
         }
 

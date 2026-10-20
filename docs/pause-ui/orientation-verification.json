@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-20",
+  "issue": "Paused background displayed vertically inverted in the standalone Windows player",
+  "fix": {
+    "file": "UnityProject/Assets/MiniGame/Runtime/PauseMenuBackdrop.cs",
+    "orientation": "Correct RawImage vertical UV once at output when SystemInfo.graphicsUVStartsAtTop is true",
+    "state": "Restore RenderTexture.active in finally before returning temporary textures"
+  },
+  "beforeVisualEvidence": [
+    "Artifacts/Unity/PauseOrientation20261020/BeforeVisible/before-pause.png",
+    "Artifacts/Unity/PauseOrientation20261020/BeforeVisible/paused.png"
+  ],
+  "graphicsRegression": {
+    "artifact": "Artifacts/Unity/PauseOrientation20261020/AfterSizesVisible/verification.json",
+    "passed": true,
+    "backend": "Direct3D11",
+    "sizes": ["1280x720", "1024x768"],
+    "checks": ["before-pause", "paused", "resumed", "paused-again", "paused-resized"],
+    "method": "Visible standalone development Player, real pause/backdrop capture path, top-red/bottom-blue pixel checks",
+    "pauseTrigger": "GameRuntime.SetPaused, the same call used by the Escape handler; not synthesized physical keyboard input",
+    "renderTargetRestoredInAllSamples": true
+  },
+  "releaseBuild": {
+    "backend": "Mono",
+    "target": "Windows x64",
+    "development": false,
+    "verification": "Artifacts/Unity/PauseOrientation20261020/release-verification.json",
+    "artifact": "Artifacts/Unity/PauseOrientation20261020/ReleaseBuild/build-report.json",
+    "archive": "Builds/Deliverables/MiniGame-Windows-x64-Mono-20261020-PauseFix.zip"
+  },
+  "regressionSource": "UnityProject/Assets/MiniGame/Runtime/PauseBackdropPlayerProbe.cs",
+  "limits": ["Graphics regression exercised Direct3D11 only", "Not a full game walkthrough"]
+}

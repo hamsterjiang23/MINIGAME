@@ -1,0 +1,431 @@
+{
+  "date": "2026-10-20T15:09:17.973169+08:00",
+  "scope": "Combined patient surveillance rooms, exaggerated seated character art, editable Chinese panel",
+  "implemented": [
+    "Six separate 3D padded isolation cells with steel door, bed, vent, ceiling light, desk/chair, basin and intercom",
+    "Six original transparent image sheets with27 stable dialogue expressions; old art retained",
+    "Manual layer31 camera, current-room-only rendering and camera/actor/texture cleanup",
+    "CCTV lens distortion, scanlines, noise, vignette, CAM/REC timecode and wide/close toggle",
+    "Upright actors in front of bed; breathing anchored at feet",
+    "Chinese settings panel, isolated editor preview, Undo/Redo through SerializedObject and explicit asset save"
+  ],
+  "art": {
+    "sheets": 6,
+    "expressions": 27,
+    "tool": "built-in image_gen",
+    "path": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance",
+    "prompts": "docs/patient-monitor/art-generation.json",
+    "import": {
+      "count": 27,
+      "stable": true,
+      "changed": [],
+      "paths": [
+        {
+          "id": "ML01",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png"
+        },
+        {
+          "id": "ML02",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png"
+        },
+        {
+          "id": "ML03",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png"
+        },
+        {
+          "id": "ML04",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png"
+        },
+        {
+          "id": "ML05",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png"
+        },
+        {
+          "id": "VV01",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+        },
+        {
+          "id": "VV02",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+        },
+        {
+          "id": "VV03",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+        },
+        {
+          "id": "VV04",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+        },
+        {
+          "id": "VV05",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+        },
+        {
+          "id": "ED01",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png"
+        },
+        {
+          "id": "ED02",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png"
+        },
+        {
+          "id": "ED03",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png"
+        },
+        {
+          "id": "ED04",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png"
+        },
+        {
+          "id": "ED05",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png"
+        },
+        {
+          "id": "AD01",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png"
+        },
+        {
+          "id": "AD02",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png"
+        },
+        {
+          "id": "AD03",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png"
+        },
+        {
+          "id": "AD04",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png"
+        },
+        {
+          "id": "AD05",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png"
+        },
+        {
+          "id": "JN01",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png"
+        },
+        {
+          "id": "JN02",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png"
+        },
+        {
+          "id": "JN03",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png"
+        },
+        {
+          "id": "JN04",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png"
+        },
+        {
+          "id": "JN05",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png"
+        },
+        {
+          "id": "D0_01",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/D0-sheet.png"
+        },
+        {
+          "id": "D0_02",
+          "path": "Assets/MiniGame/Art/Characters/Surveillance/D0-sheet.png"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "passed": 15,
+    "failed": 0,
+    "unique": 15,
+    "runs": [
+      {
+        "file": "Artifacts/PatientMonitor/monitor-tests-final.json",
+        "summary": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.DestroyReleasesStageTexturesMeshesAndMaterialsWithoutChangingHostRendering",
+            "Status": "Passed",
+            "Duration": 0.0764292,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.ExternalClockLimitsFramesAndPauseAndDisableSuspendPresentation",
+            "Status": "Passed",
+            "Duration": 0.0543547,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.MissingPortraitUnknownPatientAndDisabledProfileNeverExposeStaleFootage",
+            "Status": "Passed",
+            "Duration": 0.0312514,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.SwitchingPatientsUsesDistinctOccupiedRoomsAndRendersRealPixels",
+            "Status": "Passed",
+            "Duration": 0.0280723,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      },
+      {
+        "file": "Artifacts/PatientMonitor/presentation-tests.json",
+        "summary": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.CampaignPresentationPlayModeTests.HistoryAndPauseFreezeTypingAndBlockContinueUntilTheyClose",
+            "Status": "Passed",
+            "Duration": 0.8736532,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.CampaignPresentationPlayModeTests.LongUnicodeDialogueRevealsThenPagesWithoutLosingTextOrRepeatingCompletion",
+            "Status": "Passed",
+            "Duration": 0.1407124,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.CampaignPresentationPlayModeTests.NarrationKeepsActorSpeechAndRealPortraitWhileEmptyPortraitIdsInheritTheirState",
+            "Status": "Passed",
+            "Duration": 0.1523029,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      },
+      {
+        "file": "Artifacts/PatientMonitor/self-review-tests.json",
+        "summary": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.DreamProjectionHasNoConversationContinueHeaderOrKeyboardSkip",
+            "Status": "Passed",
+            "Duration": 0.4491583,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.EnterPurifiesOnceAndHidesNormalEndingUiBeforeTheSceneHandoff",
+            "Status": "Passed",
+            "Duration": 3.1491801,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.PointerPurificationRespectsTransitionAndPauseAndCommitsOnce",
+            "Status": "Passed",
+            "Duration": 3.1457915,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SelfReviewUIPlayModeTests.SelfReviewShowsTheLiveSeatedPlayerAndOnlyPurification",
+            "Status": "Passed",
+            "Duration": 3.1547208,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      },
+      {
+        "file": "Artifacts/PatientMonitor/pause-tests.json",
+        "summary": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.DisabledActionsStaySilentAndPointerSubmitPairsInvokeEachActionOnce",
+            "Status": "Passed",
+            "Duration": 0.0630014,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.FullscreenModalInterceptsClicksAndFadesWhileTimeIsStopped",
+            "Status": "Passed",
+            "Duration": 0.2509613,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.KeyboardFocusSkipsDisabledRowsSurvivesUpdatesAndRestoresPreviousSelection",
+            "Status": "Passed",
+            "Duration": 0.0182546,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.ResumeSubmitCannotAlsoChooseAResponseOrAdvanceDialogueInTheSameFrame",
+            "Status": "Passed",
+            "Duration": 0.2899498,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      }
+    ],
+    "scope": "Graphical Unity Editor PlayMode; no player save files written"
+  },
+  "occlusion": {
+    "evidence": "Artifacts/PatientMonitor/occlusion.json",
+    "passed": true,
+    "views": 54,
+    "portraits": 27,
+    "rooms": 6,
+    "renderWidth": 745,
+    "renderHeight": 420,
+    "displayAspect": 2.47142863,
+    "requiredVisibility": 0.985,
+    "minimumMeasuredVisibility": 0.99862660944206,
+    "wideFramingFailures": 0,
+    "method": "GPU depth-tested sprite alpha silhouette: opaque black room versus actor-only, alpha >= 0.1",
+    "scope": "Current configured poses/cameras; tiny foot/floor contact antialiasing allowed, not a guarantee for arbitrary future offsets"
+  },
+  "visual": {
+    "captures": [
+      {
+        "path": "Artifacts/PatientMonitor/terminal-wide.png",
+        "sha256": "D38D73E6AAEA6DB9F7EC89D18F93FD308A1E5931A066D824FC8237AA66410FAC"
+      },
+      {
+        "path": "Artifacts/PatientMonitor/terminal-close.png",
+        "sha256": "F6225E4811B4EFE2E6F5E015397E33AA1C15B36A17ABFD19111B423583476CBA"
+      },
+      {
+        "path": "Artifacts/PatientMonitor/room-preview.png",
+        "sha256": "C73A7A8E863E030A9346A2FAC08626B47704F3A9638A3D8D2150B094889DA5E0"
+      }
+    ],
+    "terminal": "Native2560x1440 Game screenshots in MainRoomCombined, via Computer then EnterReview",
+    "pointerZoom": "EventSystem raycast reaches MonitorZoom and native pointerClick toggles close-up",
+    "editorPreview": "Native camera.scene preview scene render verified with varied non-black pixels",
+    "inspection": "All6 final character sheets inspected; wide/close terminal screenshots inspected"
+  },
+  "build": {
+    "evidence": "Artifacts/PatientMonitor/windows-build.json",
+    "buildId": "build_97d3552ed6c3",
+    "result": "Succeeded",
+    "platform": "StandaloneWindows64",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/PatientMonitor/MiniGame.exe",
+    "errors": 0,
+    "warnings": 1,
+    "warningMessages": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      }
+    ],
+    "requiredAssets": [
+      "Assets/MiniGame/Resources/PatientMonitorRoom.shader",
+      "Assets/MiniGame/Resources/PatientMonitorActor.shader",
+      "Assets/MiniGame/Resources/PatientMonitorSignal.shader",
+      "Assets/MiniGame/Resources/MiniGame/PatientMonitorDefault.asset",
+      "Assets/Resources/MiniGame/PortraitCatalog.asset",
+      "Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png",
+      "Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png",
+      "Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png",
+      "Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png",
+      "Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png",
+      "Assets/MiniGame/Art/Characters/Surveillance/D0-sheet.png"
+    ],
+    "missingAssets": null,
+    "editorProbeIncluded": null,
+    "scope": "Windows compile/package and dependency inclusion; standalone interactive play not replayed",
+    "packedAssetDetailsAvailable": false,
+    "earlierFullBuildInspection": {
+      "buildId": "build_5801e12de594",
+      "required": 11,
+      "missing": 0,
+      "editorProbeIncluded": false,
+      "source": "Earlier full build report inspection in this session; final incremental report omits packedAssets"
+    },
+    "resourceMarkerCheck": {
+      "file": "Builds/PatientMonitor/MiniGame_Data/resources.assets",
+      "markers": [
+        {
+          "marker": "Patient Monitor Room",
+          "present": true
+        },
+        {
+          "marker": "Patient Monitor Actor",
+          "present": true
+        },
+        {
+          "marker": "Patient Monitor Signal",
+          "present": true
+        },
+        {
+          "marker": "PatientMonitorDefault",
+          "present": true
+        },
+        {
+          "marker": "ML-sheet",
+          "present": true
+        },
+        {
+          "marker": "VV-sheet",
+          "present": true
+        },
+        {
+          "marker": "ED-sheet",
+          "present": true
+        },
+        {
+          "marker": "AD-sheet",
+          "present": true
+        },
+        {
+          "marker": "JN-sheet",
+          "present": true
+        },
+        {
+          "marker": "D0-sheet",
+          "present": true
+        }
+      ],
+      "scope": "Serialized binary marker presence; not standalone interactive validation"
+    }
+  },
+  "review": [
+    "Paused rebuild renders one frozen frame",
+    "Editor camera binds preview scene and matches current preview dimensions",
+    "Masked focus graphic explicitly creates CanvasRenderer"
+  ],
+  "limits": [
+    "User art acceptance remains separate from agent visual inspection",
+    "Core rules unchanged and dotnet not rerun",
+    "GPU visibility probe covers current poses and both views; later arbitrary placement needs rechecking"
+  ],
+  "editorUndoRedo": {
+    "method": "SerializedObject edit on a cloned configuration, Undo.FlushUndoRecordObjects, PerformUndo/PerformRedo",
+    "undo": true,
+    "redo": true,
+    "sourceUnchanged": true,
+    "scope": "Clone only; no changes to current designer configuration"
+  }
+}

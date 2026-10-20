@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 0.34,
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingShaderTests.DisablingFullscreenQuantizationPreservesFineColoursAndHdr",
+      "Status": "Passed",
+      "Duration": 0.0109312,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingShaderTests.LegacyRetroProfileKeepsQuantizationUntilExplicitlyDisabled",
+      "Status": "Passed",
+      "Duration": 0.0003813,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingShaderTests.RoomShaderCompilesAndDefaultsToUnmodifiedStandardLighting",
+      "Status": "Passed",
+      "Duration": 0.0046646,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingShaderTests.TwoLightingBandsStillPreserveContinuousAlbedoDetail",
+      "Status": "Passed",
+      "Duration": 0.0037428,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

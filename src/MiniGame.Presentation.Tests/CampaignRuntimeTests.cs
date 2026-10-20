@@ -11,6 +11,46 @@ namespace MiniGame.Presentation.Tests
 {
     public sealed class CampaignRuntimeTests
     {
+        [Test]
+        public void DayZeroOpeningUsesReviewCueAndRestoresWithoutDuplicatingSelectionOrDisposition()
+        {
+            var rules = Rules().WithDreamFlow(0, 100, 80, new Dictionary<string, int>());
+            var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            Assert.That(runtime.BeginDayZeroOpening().Accepted, Is.True);
+            var opening = runtime.GetView();
+            Assert.That(opening.Game.Day, Is.Zero);
+            Assert.That(opening.TerminalPage, Is.EqualTo(TerminalPage.Review));
+            Assert.That(opening.Cue!.Kind, Is.EqualTo(PresentationKind.EnterTerminal));
+            Assert.That(opening.Transcript, Is.Empty);
+            string staleToken = opening.Cue.Token;
+            Assert.That(runtime.BeginDayZeroOpening().Accepted, Is.False);
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            Assert.That(runtime.CompleteCue(staleToken).Accepted, Is.False);
+            RuntimeScenario.Complete(runtime, PresentationKind.EnterTerminal);
+            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Introduction));
+            RuntimeScenario.Complete(runtime, PresentationKind.Introduction);
+            Assert.That(runtime.GetView().Game.AvailableDispositions, Is.EqualTo(new[] { Disposition.Purify }));
+            string encounter = runtime.GetView().Game.CurrentEncounterId!;
+            Assert.That(runtime.SubmitDisposition(encounter, Disposition.Purify).Accepted, Is.True);
+            Assert.That(runtime.SubmitDisposition(encounter, Disposition.Purify).Accepted, Is.False);
+            RuntimeScenario.Complete(runtime, PresentationKind.Reaction);
+            RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
+            RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
+            Assert.That(runtime.GetView().TerminalOpen, Is.False);
+            Assert.That(runtime.BeginNightDream().Accepted, Is.True);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
+            Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
+            Assert.That(runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.False);
+            Assert.That(runtime.ToggleRoomDoor().Accepted, Is.False);
+            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
+            Assert.That(runtime.GetView().Game.Day, Is.Zero);
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+        }
+
         [TestCase(EndingType.TakenAway)]
         [TestCase(EndingType.LockedInRoom)]
         [TestCase(EndingType.PriestAttack)]
@@ -319,7 +359,7 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Accept(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId!, Disposition.Purify));
             RuntimeScenario.Complete(runtime, PresentationKind.Reaction);
             RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
-            RuntimeScenario.Accept(runtime.LeaveTerminal());
+            Assert.That(runtime.GetView().LeavingTerminal, Is.True);
             RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
             RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
             RuntimeScenario.Complete(runtime, PresentationKind.Sleep);

@@ -32,7 +32,7 @@ namespace MiniGame.UnityHost
         private TerminalView terminalView;
         private GameObject conversation;
         private GameObject inspection;
-        private GameObject pause;
+        private PauseMenuView pauseMenu;
         private GameObject inspectionDrawing;
         private Image fade;
         private Image glitch;
@@ -42,6 +42,7 @@ namespace MiniGame.UnityHost
         private Text worldPrompt;
         private Text roomCaption;
         private float roomCaptionRemaining;
+        private PropNarrationView propNarration;
         private Text notice;
         private Text inspectionTitle;
         private Text inspectionSummary;
@@ -56,7 +57,16 @@ namespace MiniGame.UnityHost
         private bool transitionLocked;
         private string fallbackKey;
         private float notificationEnd;
+        private int pauseClosedFrame = -1;
         private int selectedResponse;
+        private bool skipBootRequested;
+        private bool openingClickRequested;
+        public bool DayZeroOpeningWaiting { get; private set; }
+        public TerminalPowerPhase PowerPhase { get; private set; } = TerminalPowerPhase.Running;
+        public string TerminalConsoleText => handoff?.ConsoleText ?? "";
+        public TerminalDisplay TerminalDisplay => terminalView?.Display;
+        internal bool TerminalPointerAllowed => current != null && current.TerminalOpen && !current.Paused
+            && current.Inspection == null && !transitionLocked && PowerPhase == TerminalPowerPhase.Running && terminalReveal >= .999f;
         private readonly DialogueTextPlayback linePlayback = new DialogueTextPlayback();
         [SerializeField] private float dialogueCharactersPerSecond = 30;
         public float DialogueCharactersPerSecond { get => dialogueCharactersPerSecond; set => dialogueCharactersPerSecond = Mathf.Max(0, value); }
@@ -69,8 +79,12 @@ namespace MiniGame.UnityHost
         public float TerminalReveal => terminalReveal;
         public bool TransitionLocked => transitionLocked;
         public bool HistoryOpen => terminalView != null && terminalView.HistoryOpen;
-        public string CurrentRoomCaption => roomCaption != null ? roomCaption.text : string.Empty;
-        public bool RoomCaptionVisible => roomCaption != null && roomCaption.gameObject.activeSelf && roomCaptionRemaining > 0;
+        public string CurrentRoomCaption => propNarration != null && propNarration.IsOpen ? propNarration.CurrentText
+            : roomCaption != null ? roomCaption.text : string.Empty;
+        public bool RoomCaptionVisible => propNarration != null && propNarration.Visible
+            || roomCaption != null && roomCaption.gameObject.activeSelf && roomCaptionRemaining > 0;
+        public PropNarrationView PropNarration => propNarration;
+        public bool PropNarrationBlocksWorld => propNarration != null && propNarration.BlocksWorldInput;
         public MiniGameAudioDirector Audio { get; private set; }
 
         public void BindAudio(MiniGameAudioDirector value) => Audio = value;
@@ -84,13 +98,14 @@ namespace MiniGame.UnityHost
             ClearRoomCaption();
             fallbackKey = null;
             transitionLocked = false;
+            EndDayZeroOpening();
             SetTerminalReveal(1);
             SetTerminalHandoff(0, false, false);
             HideDialogueActions();
-            current = runtime.GetView();
-            terminalView.ResetNavigation(current);
+            var boundView = runtime.GetView();
+            terminalView.ResetNavigation(boundView);
             runtime.Changed += Render;
-            Render(current);
+            Render(boundView);
         }
 
         public void UseYarnPresentation() => yarnBound = true;
@@ -110,9 +125,33 @@ namespace MiniGame.UnityHost
         }
         public void ClearRoomCaption()
         {
+            propNarration?.CloseImmediately();
             roomCaptionRemaining = 0;
             if (roomCaption != null) { roomCaption.text = string.Empty; roomCaption.gameObject.SetActive(false); }
         }
+        public bool ShowPropNarration(ReadableProp prop, Camera camera)
+        {
+            EnsureBuilt();
+            if (current == null || current.Paused || current.Input != InputContext.World || transitionLocked
+                || BedtimeGuidance.IsSleepOnly(current) || current.DreamTraversal || PropNarrationBlocksWorld) return false;
+            if (propNarration == null)
+            {
+                var root = new GameObject("Prop narration presentation", typeof(PropNarrationView));
+                root.transform.SetParent(transform, false);
+                propNarration = root.GetComponent<PropNarrationView>();
+            }
+            if (!propNarration.Show(prop, camera, font)) return false;
+            roomCaptionRemaining = 0; roomCaption.gameObject.SetActive(false);
+            SetWorldPrompt(string.Empty);
+            return true;
+        }
+        public bool AdvancePropNarration()
+        {
+            if (current == null || current.Paused || pauseClosedFrame == Time.frameCount || transitionLocked) return false;
+            return propNarration != null && propNarration.Advance();
+        }
+        public bool TryClosePropNarration() => current != null && !current.Paused
+            && propNarration != null && propNarration.Dismiss();
         public void SetTerminalReveal(float amount)
         {
             EnsureBuilt();
@@ -124,13 +163,44 @@ namespace MiniGame.UnityHost
         }
         public void SetTerminalHandoff(float progress, bool exiting, bool active)
         { EnsureBuilt(); handoff.SetFrame(progress, exiting, active); }
+
+        public void SetTerminalPowerFrame(TerminalPowerFrame frame)
+        {
+            EnsureBuilt(); PowerPhase = frame.Phase; handoff.SetPowerFrame(frame);
+            terminalView.Display.SetCollapse(frame.Phase == TerminalPowerPhase.Collapse ? frame.Collapse : frame.Phase == TerminalPowerPhase.Off ? 1 : -1);
+        }
+        public void BeginTerminalBoot() { skipBootRequested = false; SetTerminalPowerFrame(TerminalPowerTimeline.Boot(0)); }
+        public bool ConsumeBootSkip() { bool value = skipBootRequested; skipBootRequested = false; return value; }
+        public void BeginDayZeroOpening()
+        {
+            openingClickRequested = false; DayZeroOpeningWaiting = true;
+            SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
+            SetTerminalReveal(1); SetTransitionLocked(true);
+            terminalView.Display.SetOpeningProgress(0);
+        }
+        public bool RequestDayZeroOpening()
+        {
+            if (!DayZeroOpeningWaiting || current == null || current.Paused || pauseClosedFrame == Time.frameCount) return false;
+            openingClickRequested = true; DayZeroOpeningWaiting = false; return true;
+        }
+        public bool ConsumeOpeningClick() { bool clicked = openingClickRequested; openingClickRequested = false; return clicked; }
+        public void EndDayZeroOpening()
+        {
+            DayZeroOpeningWaiting = false; openingClickRequested = false;
+            terminalView?.Display.SetOpeningProgress(1);
+        }
         public void Notify(string text, bool error)
         {
             EnsureBuilt(); notice.text = text;
             notice.color = error ? new Color(1f, .58f, .42f) : Ink;
             notificationEnd = Time.unscaledTime + 5f;
+            pauseMenu?.SetStatus(text, error);
         }
-        public void ClearNotification() { if (notice != null) notice.text = string.Empty; }
+        public void ClearNotification()
+        {
+            if (notice != null) notice.text = string.Empty;
+            pauseMenu?.SetStatus(string.Empty);
+        }
         public void SetFade(float amount) { EnsureBuilt(); fade.color = new Color(0f, 0f, 0f, Mathf.Clamp01(amount)); }
         public void SetGlitch(float amount)
         {
@@ -146,7 +216,8 @@ namespace MiniGame.UnityHost
             glitch.color = new Color(.35f, .65f, .45f, Mathf.Clamp01(amount) * .32f);
             glitch.rectTransform.anchoredPosition = amount > 0f ? new Vector2(Mathf.Sin(Time.unscaledTime * 73f) * 22f, 0f) : Vector2.zero;
         }
-        public void SetTransitionLocked(bool locked) { transitionLocked = locked; ApplyInputGate(); }
+        public void SetTransitionLocked(bool locked)
+        { transitionLocked = locked; if (locked) ClearRoomCaption(); ApplyInputGate(); }
 
         public void SetDialogueText(string displaySpeaker, string text)
         {
@@ -209,7 +280,7 @@ namespace MiniGame.UnityHost
                 }
                 choices.Add(button);
             }
-            selectedResponse = -1;
+            selectedResponse = current != null && current.TerminalOpen && choices.Count > 0 ? 0 : -1;
             terminalView.HighlightResponse(selectedResponse);
             dialogueInteractable = true;
             ApplyInputGate();
@@ -247,13 +318,7 @@ namespace MiniGame.UnityHost
         public void SetDialogueInteractable(bool enabled)
         { dialogueInteractable = enabled; ApplyInputGate(); }
 
-        public bool TryCloseHistory()
-        {
-            if (current == null || current.Paused || !current.TerminalOpen || !terminalView.HistoryOpen) return false;
-            terminalView.SetHistory(false);
-            ApplyInputGate();
-            return true;
-        }
+        public bool TryCloseHistory() => false;
 
         private void Update()
         {
@@ -264,8 +329,9 @@ namespace MiniGame.UnityHost
             }
             if (promptGroup != null)
             {
-                bool world = current != null && current.Input == InputContext.World;
+                bool world = current != null && current.Input == InputContext.World && !PropNarrationBlocksWorld;
                 bool showPrompt = world || (current != null && current.Input == InputContext.DoorView);
+                worldHelp.gameObject.SetActive(world && !BedtimeGuidance.IsSleepOnly(current) && !HasDedicatedDreamPresentation(current));
                 promptGroup.alpha = Mathf.MoveTowards(promptGroup.alpha, showPrompt ? promptTarget : 0, Time.unscaledDeltaTime * 6);
                 worldPrompt.color = focusAllowed ? Ink : new Color(.52f, .57f, .54f);
                 focusMark.color = new Color(.58f, .84f, .66f, world && focusAllowed ? .5f + Mathf.Sin(Time.unscaledTime * 2.4f) * .15f : 0);
@@ -273,11 +339,20 @@ namespace MiniGame.UnityHost
                 if (conversation.activeSelf) conversationGroup.alpha = Mathf.MoveTowards(conversationGroup.alpha, 1, Time.unscaledDeltaTime * 6);
                 else conversationGroup.alpha = 0;
             }
-            if (notice != null && Time.unscaledTime > notificationEnd) notice.text = string.Empty;
-            if (current == null || current.Paused || current.Inspection != null || transitionLocked) return;
-            if (!terminalView.HistoryOpen) linePlayback.Tick(Time.unscaledDeltaTime);
-            if (current.TerminalOpen && terminalReveal >= .999f && terminalView.HistoryOpen && Input.mouseScrollDelta.y != 0)
-                terminalView.ScrollHistory((int)Mathf.Sign(Input.mouseScrollDelta.y));
+            if (notice != null && notice.text.Length > 0 && Time.unscaledTime > notificationEnd) ClearNotification();
+            if (DayZeroOpeningWaiting && Input.GetMouseButtonDown(0)) { RequestDayZeroOpening(); return; }
+            if (current != null && !current.Paused && pauseClosedFrame != Time.frameCount && current.TerminalOpen && PowerPhase == TerminalPowerPhase.Boot)
+            {
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) HandleTerminalKey(KeyCode.Return);
+                return;
+            }
+            if (current == null || current.Paused || pauseClosedFrame == Time.frameCount || current.Inspection != null || transitionLocked) return;
+            if (PropNarrationBlocksWorld)
+            {
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) AdvancePropNarration();
+                return;
+            }
+            linePlayback.Tick(Time.unscaledDeltaTime);
             foreach (var key in DialogueKeys)
                 if (Input.GetKeyDown(key) && HandleTerminalKey(key)) return;
         }
@@ -286,15 +361,19 @@ namespace MiniGame.UnityHost
             KeyCode.KeypadEnter, KeyCode.Space, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4 };
 
         // The same input path is used by live keyboard input and PlayMode checks.
-        // Escape stays in MiniGameBootstrap so one press cannot close history and pause as well.
+        // Escape stays in MiniGameBootstrap; the terminal exposes no settings/history input modes.
         public bool HandleTerminalKey(KeyCode key)
         {
-            if (current == null || current.Paused || current.Inspection != null || transitionLocked) return false;
+            if (current != null && !current.Paused && pauseClosedFrame != Time.frameCount && current.TerminalOpen && PowerPhase == TerminalPowerPhase.Boot
+                && (key == KeyCode.Return || key == KeyCode.KeypadEnter)) { skipBootRequested = true; return true; }
+            if (current == null || current.Paused || pauseClosedFrame == Time.frameCount || current.Inspection != null || transitionLocked
+                || PropNarrationBlocksWorld) return false;
             if (current.TerminalOpen)
             {
-                if (terminalReveal < .999f || terminalView.HistoryOpen) return false;
+                if (terminalReveal < .999f || PowerPhase != TerminalPowerPhase.Running) return false;
                 if (current.TerminalPage == TerminalPage.SelfReview) return terminalView.HandleSelfReviewKey(key);
                 if (terminalView.HandleDirectoryKey(key) || terminalView.HandleArchiveKey(key)) return true;
+                if (terminalView.HandleDispositionKey(key)) return true;
             }
             if (!CanAdvanceDialogue()) return false;
             bool confirm = key == KeyCode.Return || key == KeyCode.KeypadEnter;
@@ -328,15 +407,17 @@ namespace MiniGame.UnityHost
             && current.Cue?.Kind != PresentationKind.DoorMotion
             && current.Cue?.Kind != PresentationKind.DoorViewReturn && current.Input != InputContext.DoorView
             && (!current.TerminalOpen || terminalReveal >= .999f)
-            && (!current.TerminalOpen || (terminalView.IsReview && !terminalView.HistoryOpen));
+            && (!current.TerminalOpen || (PowerPhase == TerminalPowerPhase.Running && terminalView.IsReview && !terminalView.HistoryOpen));
 
         private void OnDestroy()
         {
+            propNarration?.CloseImmediately();
             UnityEngine.Canvas.willRenderCanvases -= ReflowTerminal;
             Font.textureRebuilt -= RefreshFontTexture;
             if (runtime != null) runtime.Changed -= Render;
             if (font != null) Destroy(font);
         }
+        private void OnDisable() => ClearRoomCaption();
 
         private void RefreshFontTexture(Font rebuilt)
         {
@@ -347,13 +428,16 @@ namespace MiniGame.UnityHost
         private void Render(RuntimeView view)
         {
             EnsureBuilt();
+            // Submit can close the pause menu before this frame's dialogue input is polled.
+            if (current != null && current.Paused && !view.Paused) pauseClosedFrame = Time.frameCount;
             if (current != null && current.Game.Phase != view.Game.Phase) ClearNotification();
             current = view;
             if (!view.Paused && (view.Input != InputContext.World || BedtimeGuidance.IsSleepOnly(view))) ClearRoomCaption();
+            propNarration?.SetPaused(view.Paused);
             header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     " + PhaseName(view.Game.Phase);
             bool bedtime = BedtimeGuidance.IsSleepOnly(view);
             bool dedicatedDream = HasDedicatedDreamPresentation(view);
-            header.gameObject.SetActive(!view.TerminalOpen && !bedtime && !dedicatedDream);
+            header.gameObject.SetActive(!view.Paused && !view.TerminalOpen && !bedtime && !dedicatedDream);
             terminal.SetActive(view.TerminalOpen);
             terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
             conversation.SetActive(!dedicatedDream && !view.TerminalOpen && view.Cue?.Kind != PresentationKind.DoorMotion
@@ -371,8 +455,8 @@ namespace MiniGame.UnityHost
                 inspectionSummary.text = view.Inspection.Summary + "\n\n这份观察仅是线索。处置由你决定。";
                 BuildInspectionDrawing(view.Inspection.Kind);
             }
-            pause.SetActive(view.Paused);
-            if (view.Paused) pause.transform.SetAsLastSibling();
+            pauseMenu.SetContext("第 " + view.Game.Day + " 天  /  " + PhaseName(view.Game.Phase));
+            pauseMenu.SetVisible(view.Paused);
             if (dedicatedDream) HideDialogueActions();
             else if (!yarnBound || (view.Cue != null && (view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion || view.Cue.Kind == PresentationKind.DoorViewReturn)))
                 RenderFallback(view);
@@ -455,6 +539,7 @@ namespace MiniGame.UnityHost
             focusMark.raycastTarget = false;
             reticle = MakeText(canvasRoot, "Reticle", "·", 28, TextAnchor.MiddleCenter, new Vector2(.49f, .485f), new Vector2(.51f, .515f));
             terminal = MakePanel(canvasRoot, "Terminal", Color.black, Vector2.zero, Vector2.one).gameObject;
+            terminal.GetComponent<Image>().raycastTarget = false;
             terminalGroup = terminal.AddComponent<CanvasGroup>();
             terminalView = new TerminalView(terminal.GetComponent<RectTransform>(), font,
                 id => Check(runtime.EnterSelectedPatient(id)), () => Check(runtime.ReturnToDirectory()),
@@ -462,10 +547,9 @@ namespace MiniGame.UnityHost
                 {
                     var view = runtime.GetView();
                     var result = runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition);
-                    if (result.Accepted) terminalView.SetHistory(false);
                     Check(result);
                 }, kind => Check(runtime.Inspect(kind)), () => Check(runtime.ConfirmSelfPurification()));
-            terminalView.HistoryChanged = ApplyInputGate;
+            terminalView.ConfirmRequested = () => HandleTerminalKey(KeyCode.Return);
             UnityEngine.Canvas.willRenderCanvases += ReflowTerminal;
             conversationRect = MakePanel(canvasRoot, "Conversation", new Color(.045f, .07f, .06f, .98f), new Vector2(.36f, .115f), new Vector2(.955f, .65f));
             conversation = conversationRect.gameObject;
@@ -491,17 +575,11 @@ namespace MiniGame.UnityHost
             closeInspection = MakeButton(ir, "CloseInspection", "记录并返回 [ESC]", () => runtime.CloseInspection());
             SetRect(closeInspection.GetComponent<RectTransform>(), new Vector2(.58f, .04f), new Vector2(.95f, .15f));
 
-            pause = MakePanel(canvasRoot, "PauseModal", new Color(.015f, .025f, .025f, .995f), new Vector2(.27f, .12f), new Vector2(.73f, .88f)).gameObject;
-            var pr = pause.GetComponent<RectTransform>();
-            MakeText(pr, "PauseTitle", "暂停 / 检查点", 38, TextAnchor.MiddleCenter, new Vector2(.04f, .81f), new Vector2(.96f, .96f));
-            var labels = new[] { "返回 [ESC]", "保存 [F5]", "恢复 [F9]", "开始新检查期" };
-            Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(), () => RestartRequested?.Invoke() };
-            for (int index = 0; index < labels.Length; index++)
-            {
-                var button = MakeButton(pr, "PauseAction" + index, labels[index], actions[index]);
-                SetRect(button.GetComponent<RectTransform>(), new Vector2(.12f, .62f - index * .145f), new Vector2(.88f, .735f - index * .145f));
-            }
-            MakeText(pr, "PauseHint", "存档保留当前会谈与演出检查点。", 23, TextAnchor.MiddleCenter, new Vector2(.04f, .035f), new Vector2(.96f, .16f));
+            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期", "退出游戏" };
+            Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(),
+                () => RestartRequested?.Invoke(), () => Application.Quit() };
+            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "" }, actions);
+            pauseMenu.SetHint("保存当前进度，下次可从这里继续检查。");
             fade = MakePanel(canvasRoot, "PresentationFade", Color.clear, Vector2.zero, Vector2.one).GetComponent<Image>();
             fade.raycastTarget = false;
             // Several narrow stripes provide a generated signal-loss effect, without a recovered shader.
@@ -513,7 +591,7 @@ namespace MiniGame.UnityHost
                 stripe.GetComponent<Image>().raycastTarget = false;
             }
             glitch.gameObject.SetActive(false);
-            handoff = new TerminalTransitionView(canvasRoot, font);
+            handoff = new TerminalTransitionView(terminalView.Logical, terminalView.Typeface);
             notice = MakeText(canvasRoot, "Notification", "", 24, TextAnchor.MiddleCenter, new Vector2(.08f, .865f), new Vector2(.92f, .925f));
 
         }

@@ -20,7 +20,7 @@ namespace MiniGame.UnityHost.Tests
         [Serializable] private sealed class SaveEnvelope { public string CoreJson = ""; }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator DayZeroCanPurifyFromHistoryAfterDialogueThenPlaysBothReactionsOnlyOnce()
+        public IEnumerator DayZeroPassiveRecordKeepsPurificationLockedUntilDialogueThenPlaysBothReactionsOnce()
         {
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
@@ -28,27 +28,23 @@ namespace MiniGame.UnityHost.Tests
             host.StartCampaign();
             host.Screen.DialogueCharactersPerSecond = 0;
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(0));
-            Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
-            yield return Until(host, () => Find(host, "EnterReview") != null, "tutorial directory");
-            yield return Click(Find(host, "EnterReview"));
+            yield return Until(host, () => host.Screen.DayZeroOpeningWaiting, "supervisor opening");
+            Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
             yield return Until(host, () => Find(host, "Continue") != null
                 && host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_T1"), "first native tutorial line");
 
-            var retainedContinue = Find(host, "Continue").onClick;
-            yield return Click(Find(host, "HistoryTab"));
-            Assert.That(host.Screen.HistoryOpen, Is.True);
+            Assert.That(ActiveButton(host, "HistoryTab"), Is.Null);
             var introKeys = host.Runtime.GetView().Transcript.Select(line => line.Key).ToArray();
-            retainedContinue.Invoke();
-            Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
+            Assert.That(host.Screen.HandleTerminalKey(KeyCode.F3), Is.False);
+            Assert.That(host.Screen.HistoryOpen, Is.False);
             yield return null;
             Assert.That(host.Runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.Introduction));
             Assert.That(host.Runtime.GetView().Transcript.Select(line => line.Key), Is.EqualTo(introKeys));
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T1"), Is.False,
-                "History must still block continuing unfinished dialogue.");
+                "Removed record browsing must not complete unfinished dialogue.");
             Assert.That(Find(host, "Disposition-Purify"), Is.Null,
-                "Opening history must not enable purification before the tutorial finishes.");
+                "Purification stays locked until the tutorial finishes.");
             Assert.That(host.Runtime.GetView().Game.RemainingPurificationQuota, Is.EqualTo(1));
-            yield return Click(Find(host, "AnswersTab"));
 
             yield return AdvanceUntil(host, () => host.Runtime.GetView().Game.EncounterStage == EncounterStage.AwaitingDisposition,
                 "all five tutorial lines complete");
@@ -56,10 +52,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(ready.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(5));
             Assert.That(ready.Transcript.Where(line => !line.IsPlayer).All(line => line.Completed), Is.True);
             Assert.That(ready.Game.AvailableDispositions, Is.EqualTo(new[] { Disposition.Purify }));
-            yield return Click(Find(host, "HistoryTab"));
-            Assert.That(host.Screen.HistoryOpen, Is.True);
+            Assert.That(host.Screen.HistoryOpen, Is.False);
             var purify = Find(host, "Disposition-Purify");
-            Assert.That(purify, Is.Not.Null, "Completed dialogue must allow purification from the records tab.");
+            Assert.That(purify, Is.Not.Null, "Completed dialogue must allow the unique purification action.");
             Assert.That(ActiveButton(host, "Disposition-Treat"), Is.Null);
             Assert.That(ActiveButton(host, "Disposition-Release"), Is.Null);
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "history-day0-purify-ready");
@@ -68,13 +63,12 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(purify.IsInteractable(), Is.False, "Pause still locks disposition controls.");
             Assert.That(host.Runtime.GetView().Game.RemainingPurificationQuota, Is.EqualTo(1));
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
-            Assert.That(host.Screen.HistoryOpen, Is.True);
+            Assert.That(host.Screen.HistoryOpen, Is.False);
             Assert.That(purify.IsInteractable(), Is.True);
             var repeatedClick = purify.onClick;
             yield return Click(purify);
             repeatedClick.Invoke();
-            Assert.That(host.Screen.HistoryOpen, Is.False,
-                "An accepted disposition must return to the live response so the reaction can advance.");
+            Assert.That(host.Screen.HistoryOpen, Is.False);
             Assert.That(host.Runtime.GetView().Transcript.Count(line => line.SourceNodeId == "disposition:Purify"), Is.EqualTo(1));
             yield return Until(host, () => Find(host, "Continue") != null
                 && host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_M_PURIFY_T1"), "first native purification reaction");
@@ -93,15 +87,13 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(archived.Transcript.Where(line => !line.IsPlayer).All(line => line.Completed), Is.True);
             Assert.That(archived.Transcript.Count(line => line.SourceNodeId == "disposition:Purify"), Is.EqualTo(1));
             Assert.That(archived.Game.RemainingPurificationQuota, Is.Zero);
-            var packageAsset = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
-            var package = DialoguePackageCompiler.Compile(packageAsset.PackageSource.text);
             var saved = JsonUtility.FromJson<SaveEnvelope>(host.Runtime.Save());
-            var snapshot = SnapshotCodec.Deserialize(saved.CoreJson, package.Rules).CreateSnapshot();
+            var snapshot = SnapshotCodec.Deserialize(saved.CoreJson, MiniGameSessionHost.Current.Rules).CreateSnapshot();
             Assert.That(snapshot.State.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.EqualTo(-1));
             Assert.That(snapshot.State.Days.Single(day => day.Day == 0).Purifications, Is.EqualTo(1));
             Assert.That(snapshot.CommandHistory.Count(command => command.Kind == CommandKind.SubmitDisposition), Is.EqualTo(1));
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "history-day0-purify-archive");
-            Debug.Log("MINIGAME_HISTORY_DISPOSITION_PASSED day=0; history blocks unfinished dialogue; completed dialogue permits pointer purification; pause locks; history closes; two native reactions; one disposition; trust=-1");
+            Debug.Log("MINIGAME_HISTORY_DISPOSITION_PASSED day=0; passive transcript; F3 removed; purification waits for dialogue; pause locks; two native reactions; one disposition; trust=-1");
         }
 
         private static Button ActiveButton(MiniGameBootstrap host, string name) => host.Screen.GetComponentsInChildren<Button>(false)
@@ -119,12 +111,10 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(button, Is.Not.Null);
             Canvas.ForceUpdateCanvases();
             var rectangle = (RectTransform)button.transform;
-            var canvas = button.GetComponentInParent<Canvas>();
             var pointer = new PointerEventData(EventSystem.current)
             {
                 button = PointerEventData.InputButton.Left, clickCount = 1,
-                position = RectTransformUtility.WorldToScreenPoint(canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
-                    rectangle.TransformPoint(rectangle.rect.center))
+                position = button.GetComponentInParent<MiniGameScreen>().TerminalDisplay.ScreenPointFor(rectangle)
             };
             var hits = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointer, hits);

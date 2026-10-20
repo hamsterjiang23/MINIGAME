@@ -29,7 +29,9 @@ namespace MiniGame.UnityHost.Editor
             (MiniGameSound.LightBeep, "SFX/LightBeep.wav", false),
             (MiniGameSound.WorldInteraction, "SFX/3DSceneInteraction.wav", false),
             (MiniGameSound.UIInteraction, "SFX/UIInteraction.wav", false),
-            (MiniGameSound.DialoguePop, "SFX/DialoguePop.wav", false)
+            (MiniGameSound.DialoguePop, "SFX/DialoguePop.wav", false),
+            (MiniGameSound.TerminalPowerOn, "SFX/TerminalPowerOn.wav", false),
+            (MiniGameSound.TerminalPowerOff, "SFX/TerminalPowerOff.wav", false)
         };
 
         public static MiniGameAudioProfile EnsureAssets()

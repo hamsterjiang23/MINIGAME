@@ -32,7 +32,7 @@ namespace MiniGame.UnityHost
         private MiniGameAudioService audioService;
         private Canvas canvas;
         private Text hint, caption;
-        private GameObject pauseMenu;
+        private PauseMenuView pauseMenu;
         private Font font;
         private int voiceIndex = -1;
         public BeachEndingPhase Phase => state.Phase;
@@ -320,7 +320,9 @@ namespace MiniGame.UnityHost
                     if (paused) audioService.Pause(channel); else audioService.Resume(channel);
                 audioPaused = paused;
             }
-            if (pauseMenu != null) pauseMenu.SetActive(paused);
+            pauseMenu?.SetVisible(paused);
+            if (hint != null) hint.gameObject.SetActive(!paused);
+            if (caption != null) caption.gameObject.SetActive(!paused);
             Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = paused;
         }
@@ -346,7 +348,7 @@ namespace MiniGame.UnityHost
 
         private void BuildInterface()
         {
-            font = Font.CreateDynamicFontFromOSFont(new[] { "Microsoft YaHei", "SimSun", "Noto Sans CJK SC", "Arial" }, 26);
+            font = Font.CreateDynamicFontFromOSFont(new[] { "SimSun", "Noto Serif CJK SC", "Microsoft YaHei", "SimHei", "PingFang SC", "Arial" }, 26);
             var go = new GameObject("海滩字幕与暂停", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             go.transform.SetParent(transform, false);
             canvas = go.GetComponent<Canvas>();
@@ -358,34 +360,36 @@ namespace MiniGame.UnityHost
             scaler.matchWidthOrHeight = .5f;
             hint = Label(go.transform, "提示", new Vector2(.5f, .12f), new Vector2(700, 54), 24);
             caption = Label(go.transform, "字幕", new Vector2(.5f, .12f), new Vector2(1600, 90), 28);
-            pauseMenu = new GameObject("暂停", typeof(RectTransform), typeof(Image));
-            pauseMenu.transform.SetParent(go.transform, false);
-            var rect = (RectTransform)pauseMenu.transform;
-            rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.offsetMin = rect.offsetMax = Vector2.zero;
-            pauseMenu.GetComponent<Image>().color = new Color(.02f, .07f, .09f, .82f);
-            Label(pauseMenu.transform, "标题", new Vector2(.5f, .77f), new Vector2(700, 70), 32).text = "暂停";
-            string[] names = { "继续", "保存", "读取", "重新开始", "退出" };
-            Action[] actions = { () => SetPaused(false), () => MiniGameSessionHost.Current?.Save(),
-                () => MiniGameSessionHost.Current?.Load(), Restart, Quit };
-            for (int i = 0; i < names.Length; i++)
-            {
-                var buttonGo = new GameObject(names[i], typeof(RectTransform), typeof(Image), typeof(Button));
-                buttonGo.transform.SetParent(pauseMenu.transform, false);
-                var buttonRect = (RectTransform)buttonGo.transform;
-                buttonRect.anchorMin = buttonRect.anchorMax = new Vector2(.5f, .65f - i * .09f);
-                buttonRect.sizeDelta = new Vector2(320, 64);
-                buttonGo.GetComponent<Image>().color = new Color(.14f, .25f, .28f, 1);
-                var button = buttonGo.GetComponent<Button>();
-                var action = actions[i]; button.onClick.AddListener(() => action());
-                button.interactable = (i != 1 && i != 2) || MiniGameSessionHost.Current != null;
-                Label(buttonGo.transform, "文字", Vector2.one * .5f, new Vector2(320, 64), 24).text = names[i];
-            }
+            string[] names = { "继续", "保存进度", "读取存档", "重新开始", "退出游戏" };
+            Action[] actions = { () => SetPaused(false), SaveFromPause, LoadFromPause, Restart, Quit };
+            pauseMenu = PauseMenuView.Create(go.transform, font, "EndingPauseModal", names,
+                new[] { "ESC", "", "", "", "" }, actions);
+            pauseMenu.SetContext("海上之梦");
+            pauseMenu.SetHint("海浪会在继续后流动。");
+            pauseMenu.Buttons[1].interactable = MiniGameSessionHost.Current != null;
+            pauseMenu.Buttons[2].interactable = MiniGameSessionHost.Current != null;
             if (FindObjectOfType<EventSystem>() == null)
             {
                 var events = new GameObject("Ending EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
                 events.transform.SetParent(transform, false);
             }
-            pauseMenu.SetActive(false);
+            pauseMenu.SetVisible(false);
+        }
+
+        private void SaveFromPause()
+        {
+            var session = MiniGameSessionHost.Current;
+            if (session == null) return;
+            session.Save();
+            pauseMenu.SetStatus(session.LastMessage);
+        }
+
+        private void LoadFromPause()
+        {
+            var session = MiniGameSessionHost.Current;
+            if (session == null) return;
+            session.Load();
+            if (pauseMenu != null) pauseMenu.SetStatus(session.LastMessage);
         }
 
         private Text Label(Transform parent, string name, Vector2 anchor, Vector2 size, int fontSize)

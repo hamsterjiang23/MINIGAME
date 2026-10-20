@@ -24,27 +24,25 @@ namespace MiniGame.UnityHost.Tests
             var guidance = Object.FindObjectOfType<BedtimeGuidance>();
             Assert.That(host.CampaignActive, Is.True);
             Assert.That(guidance, Is.Not.Null);
+            host.RestoreCheckpoint(CreateCampaign(host.Runtime.UsesDreamFlow).Save());
+            yield return null;
             var daylight = new LightingState(host.Player.ViewCamera, guidance.Spotlight);
             yield return CaptureWide(host, "bedtime-before");
 
             // Advance a separate real runtime through the tutorial. Loading its checkpoint exercises
             // the same public restore path as a player save without editing authoritative state.
-            var archived = TutorialArchive();
+            var archived = TutorialSignalLoss(host.Runtime.UsesDreamFlow);
             host.RestoreCheckpoint(archived.Save());
             yield return null;
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening));
             Assert.That(host.Runtime.GetView().TerminalOpen, Is.True);
-            Assert.That(guidance.Isolation, Is.LessThan(.001f), "The archive remains readable before returning to the room.");
-            yield return new WaitForSecondsRealtime(1.3f);
+            Assert.That(guidance.Isolation, Is.LessThan(.001f), "Patient signal loss precedes the automatic terminal departure.");
             var archiveLights = Object.FindObjectsOfType<Light>().Where(light => light != guidance.Spotlight).ToArray();
             var archiveIntensities = archiveLights.Select(light => light.intensity).ToArray();
-            Assert.That(host.Runtime.ReturnToDirectory().Accepted, Is.True);
-            Assert.That(host.Runtime.LeaveTerminal().Accepted, Is.True);
-            yield return null;
+            yield return Until(host, () => guidance.Isolation > .15f, "automatic terminal departure begins the bedroom transition");
             for (int index = 0; index < archiveLights.Length; index++)
                 Assert.That(archiveLights[index].intensity, Is.LessThanOrEqualTo(archiveIntensities[index] + .01f),
                     archiveLights[index].name + " must dim continuously from the archive lighting, without a brightness jump.");
-            yield return Until(host, () => guidance.Isolation > .15f, "bedroom light transition begins");
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             float pausedIsolation = guidance.Isolation;
             float pausedBeam = guidance.BeamStrength;
@@ -75,16 +73,17 @@ namespace MiniGame.UnityHost.Tests
             yield return StageAt(host, InteractionTarget.Bed);
             Assert.That(host.Player.InteractFocused(), Is.True, "The physical bed ray must remain usable in the darkness.");
             Assert.That(host.Runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Sleep));
-            yield return Until(host, () => host.Runtime.GetView().Cue?.Kind == PresentationKind.Dream
-                && guidance.BeamStrength < .001f, "sleep fades the beam before dream");
+            bool dreamObserved = false;
+            Action<RuntimeView> observe = view => dreamObserved |= view.Cue?.Kind == PresentationKind.Dream;
+            host.Runtime.Changed += observe;
+            yield return new WaitForSecondsRealtime(.2f);
+            Assert.That(host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade").color.a,
+                Is.GreaterThan(0), "The single Day0 sleep plays its actual fade.");
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero, "The day advances after the sleep fade.");
             Assert.That(guidance.Isolation, Is.GreaterThan(.999f), "Sleep must not bring ordinary room lights back.");
-            Assert.That(host.Runtime.CompleteCue(host.Runtime.GetView().Cue.Token).Accepted, Is.True);
-            yield return Until(host, () => host.Runtime.GetView().Game.Phase == GamePhase.AfterDream
-                && guidance.BeamStrength > .999f, "after-dream bed guidance returns");
-            AssertNight(host, guidance);
-            yield return CaptureWide(host, "bedtime-after-dream");
-            yield return StageAt(host, InteractionTarget.Bed);
-            Assert.That(host.Player.InteractFocused(), Is.True);
+            yield return Until(host, () => host.Runtime.GetView().Game.Day == 1, "one sleep completes Day0");
+            host.Runtime.Changed -= observe;
+            Assert.That(dreamObserved, Is.False, "Day0 has no dream video or second bed interaction.");
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
             yield return Until(host, () => !guidance.OwnsLighting && guidance.Isolation < .001f,
@@ -92,7 +91,7 @@ namespace MiniGame.UnityHost.Tests
             daylight.AssertRestored(host.Player.ViewCamera);
             Assert.That(guidance.Spotlight.enabled, Is.False);
             yield return CaptureWide(host, "bedtime-restored-morning");
-            Debug.Log("MINIGAME_BEDTIME_CYCLE_PASSED archive exit; ceiling spotlight; moving insects; pause; physical bed; dream; morning lighting restore");
+            Debug.Log("MINIGAME_BEDTIME_CYCLE_PASSED automatic terminal exit; ceiling spotlight; moving insects; pause; physical bed trigger; one sleep; morning lighting restore");
         }
 
         [UnityTest, Timeout(30000)]
@@ -103,12 +102,15 @@ namespace MiniGame.UnityHost.Tests
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             var guidance = Object.FindObjectOfType<BedtimeGuidance>();
             Assert.That(guidance, Is.Not.Null);
+            host.RestoreCheckpoint(CreateCampaign(host.Runtime.UsesDreamFlow).Save());
+            yield return null;
             string apartment = host.Runtime.Save();
             var daylight = new LightingState(host.Player.ViewCamera, guidance.Spotlight);
-            var evening = TutorialArchive();
-            Assert.That(evening.ReturnToDirectory().Accepted, Is.True);
-            Assert.That(evening.LeaveTerminal().Accepted, Is.True);
-            Assert.That(evening.CompleteCue(evening.GetView().Cue.Token).Accepted, Is.True);
+            var evening = TutorialSignalLoss(host.Runtime.UsesDreamFlow);
+            for (int step = 0; evening.GetView().Cue != null && step < 4; step++)
+                Assert.That(evening.CompleteCue(evening.GetView().Cue.Token).Accepted, Is.True);
+            if (evening.UsesDreamFlow && evening.GetView().Game.Phase == GamePhase.Evening)
+                Assert.That(evening.BeginNightDream().Accepted, Is.True);
             Assert.That(evening.SetPaused(true).Accepted, Is.True);
             host.RestoreCheckpoint(evening.Save());
             Assert.That(guidance.Isolation, Is.EqualTo(1).Within(.00001f), "A restored bedtime must not flash the daylight room.");
@@ -129,12 +131,12 @@ namespace MiniGame.UnityHost.Tests
                 "The spotlight replaces the list of unavailable world interactions.");
             foreach (var target in new[] { InteractionTarget.Computer, InteractionTarget.Door })
             {
-                yield return StageAt(host, target);
+                yield return StageAt(host, target, expectHit: target == InteractionTarget.Door);
                 host.Screen.ClearNotification();
                 Assert.That(Text(host, "InteractionPrompt").text, Is.Empty, "Blocked furniture must not show a 'temporarily unavailable' prompt.");
                 Assert.That(host.Player.InteractFocused(), Is.False);
                 Assert.That(Text(host, "Notification").text, Is.Empty, "Pressing E on blocked furniture must not add a rejection toast.");
-                Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening));
+                Assert.That(BedtimeGuidance.IsSleepOnly(host.Runtime.GetView()), Is.True);
             }
             yield return StageAt(host, InteractionTarget.Bed);
             Assert.That(Text(host, "InteractionPrompt").text, Does.Contain("[ E ]"));
@@ -145,12 +147,24 @@ namespace MiniGame.UnityHost.Tests
             Debug.Log("MINIGAME_BEDTIME_RESTORE_PASSED paused checkpoint snap; frozen insects; blocked furniture silent; original lighting restored");
         }
 
-        private static GameRuntime TutorialArchive()
+        private static GameRuntime CreateCampaign(bool dreamFlow)
         {
             var asset = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
             Assert.That(asset, Is.Not.Null);
             var package = DialoguePackageCompiler.Compile(asset.PackageSource.text);
-            var runtime = new GameRuntime(package.Rules, package.Content, useTerminalDirectory: true);
+            var rules = package.Rules;
+            if (dreamFlow)
+            {
+                var rebellion = Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion");
+                Assert.That(rebellion, Is.Not.Null);
+                rules = rules.WithDreamFlow(rebellion.InitialValue, rebellion.Maximum, rebellion.Threshold, rebellion.CreateDeltas());
+            }
+            return new GameRuntime(rules, package.Content, useTerminalDirectory: true);
+        }
+
+        private static GameRuntime TutorialSignalLoss(bool dreamFlow)
+        {
+            var runtime = CreateCampaign(dreamFlow);
             Assert.That(runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
             Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
             Assert.That(runtime.EnterSelectedPatient(runtime.GetView().Game.CurrentPatientId).Accepted, Is.True);
@@ -158,8 +172,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
             Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, Disposition.Purify).Accepted, Is.True);
             Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
-            Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
-            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Archive));
+            Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.ExitTerminal));
+            Assert.That(runtime.GetView().LeavingTerminal, Is.False, "Patient signal loss precedes whole-terminal shutdown.");
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening));
             return runtime;
         }
@@ -199,7 +213,7 @@ namespace MiniGame.UnityHost.Tests
                 "The beam must illuminate only the bed's dedicated rendering layer.");
         }
 
-        private static IEnumerator StageAt(MiniGameBootstrap host, InteractionTarget target)
+        private static IEnumerator StageAt(MiniGameBootstrap host, InteractionTarget target, bool expectHit = true)
         {
             var marker = GameObject.Find(target + " approach");
             Assert.That(marker, Is.Not.Null);
@@ -210,9 +224,14 @@ namespace MiniGame.UnityHost.Tests
             Physics.SyncTransforms();
             yield return null;
             var interaction = Object.FindObjectsOfType<WorldInteraction>().Single(item => item.Target == target);
-            host.Player.FacePoint(interaction.GetComponent<Collider>().bounds.center);
+            var collider = interaction.GetComponent<Collider>();
+            var center = collider is BoxCollider box ? box.transform.TransformPoint(box.center) : interaction.Surface.bounds.center;
+            host.Player.FacePoint(center);
             host.Player.RefreshInteractionFocus();
-            Assert.That(host.Player.FocusedInteraction, Is.EqualTo(interaction), "The camera must hit the physical " + target + " object.");
+            if (expectHit)
+                Assert.That(host.Player.FocusedInteraction, Is.EqualTo(interaction), "The camera must hit the physical " + target + " object.");
+            else
+                Assert.That(host.Player.FocusedInteraction, Is.Not.EqualTo(interaction), "The disabled " + target + " collider must not remain focusable.");
         }
 
         private static IEnumerator Until(MiniGameBootstrap host, Func<bool> condition, string expectation)
@@ -227,7 +246,8 @@ namespace MiniGame.UnityHost.Tests
         private static IEnumerator Capture(MiniGameBootstrap host, string name) => PrototypePlayModeTests.CaptureIfRequested(host, name);
         private static IEnumerator CaptureWide(MiniGameBootstrap host, string name)
         {
-            yield return StageAt(host, InteractionTarget.Computer);
+            var computer = Object.FindObjectsOfType<WorldInteraction>().Single(item => item.Target == InteractionTarget.Computer);
+            yield return StageAt(host, InteractionTarget.Computer, expectHit: computer.GetComponent<Collider>().enabled);
             var bed = Object.FindObjectsOfType<WorldInteraction>().Single(item => item.Target == InteractionTarget.Bed);
             host.Player.FacePoint(bed.GetComponent<Collider>().bounds.center + Vector3.up * .9f);
             host.Player.RefreshInteractionFocus();
@@ -266,9 +286,7 @@ namespace MiniGame.UnityHost.Tests
             private readonly float[] intensity;
             private readonly Color[] colors;
             private readonly SurfaceSlot[] surfaces;
-            private readonly bool[] emptyProperties;
             private readonly Color[] emission;
-            private readonly Color[] globalEmission;
 
             public LightingState(Camera camera, Light spotlight)
             {
@@ -279,19 +297,9 @@ namespace MiniGame.UnityHost.Tests
                 intensity = lights.Select(light => light.intensity).ToArray();
                 colors = lights.Select(light => light.color).ToArray();
                 surfaces = SelfLitSlots();
-                emptyProperties = new bool[surfaces.Length];
                 emission = new Color[surfaces.Length];
-                globalEmission = new Color[surfaces.Length];
                 for (int index = 0; index < surfaces.Length; index++)
-                {
-                    var surface = surfaces[index];
-                    var properties = new MaterialPropertyBlock();
-                    surface.Renderer.GetPropertyBlock(properties, surface.Slot);
-                    emptyProperties[index] = properties.isEmpty;
-                    emission[index] = properties.GetColor(surface.Property);
-                    surface.Renderer.GetPropertyBlock(properties);
-                    globalEmission[index] = properties.GetColor(surface.Property);
-                }
+                    emission[index] = EffectiveColor(surfaces[index]);
             }
 
             public void AssertRestored(Camera camera)
@@ -313,13 +321,18 @@ namespace MiniGame.UnityHost.Tests
                 {
                     var surface = surfaces[index];
                     string context = surface.Renderer.name + " material " + surface.Slot;
-                    var properties = new MaterialPropertyBlock();
-                    surface.Renderer.GetPropertyBlock(properties, surface.Slot);
-                    Assert.That(properties.isEmpty, Is.EqualTo(emptyProperties[index]), context);
-                    Assert.That(properties.GetColor(surface.Property), Is.EqualTo(emission[index]), context);
-                    surface.Renderer.GetPropertyBlock(properties);
-                    Assert.That(properties.GetColor(surface.Property), Is.EqualTo(globalEmission[index]), context + " renderer override");
+                    Assert.That(EffectiveColor(surface), Is.EqualTo(emission[index]), context + " effective emission/glass colour");
                 }
+            }
+
+            private static Color EffectiveColor(SurfaceSlot surface)
+            {
+                var properties = new MaterialPropertyBlock();
+                surface.Renderer.GetPropertyBlock(properties, surface.Slot);
+                if (properties.HasProperty(surface.Property)) return properties.GetColor(surface.Property);
+                surface.Renderer.GetPropertyBlock(properties);
+                if (properties.HasProperty(surface.Property)) return properties.GetColor(surface.Property);
+                return surface.Renderer.sharedMaterials[surface.Slot].GetColor(surface.Property);
             }
         }
     }

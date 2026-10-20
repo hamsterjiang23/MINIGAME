@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MiniGame.UnityHost
 {
-    public enum TerminalEntryPhase { None, Sitting, Aligning, Pushing, FadingWorld, RevealingInterface, Active }
+    public enum TerminalEntryPhase { None, Sitting, Aligning, Pushing, FadingWorld, RevealingInterface, Active, OpeningMonitor, OpeningPullback }
 
     /// <summary>Visual completion is acknowledged with the captured runtime cue token.</summary>
     public sealed class PresentationEffects : MonoBehaviour
@@ -52,6 +52,7 @@ namespace MiniGame.UnityHost
             if (runtime != null) runtime.Changed -= Present;
             if (playing != null) StopCoroutine(playing);
             playing = null;
+            screen?.EndDayZeroOpening();
             seating?.Restore(true);
             if (hasRoomPose)
             {
@@ -85,7 +86,9 @@ namespace MiniGame.UnityHost
             if (playing != null) StopCoroutine(playing);
             playing = null;
             runtime = game; screen = ui; activeToken = null;
+            screen.EndDayZeroOpening();
             screen.SetTransitionLocked(false); screen.SetFade(0); screen.SetGlitch(0);
+            screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
             screen.SetTerminalHandoff(0, false, false);
             var view = game.GetView();
             if (HasSeatedEntry && seating == null) seating = new TerminalSeating(seatedPlayer, viewCamera);
@@ -120,7 +123,7 @@ namespace MiniGame.UnityHost
                 }
             }
             screen.SetTerminalReveal(view.TerminalOpen && view.Cue?.Kind != PresentationKind.EnterTerminal ? 1 : 0);
-            SetSurfaceGlow(view.TerminalOpen ? 1 : .18f);
+            SetSurfaceGlow(view.TerminalPowered ? 1 : 0);
             if (bedtimeGuidance != null) bedtimeGuidance.Bind(game);
             runtime.Changed += Present;
             Present(view);
@@ -155,16 +158,32 @@ namespace MiniGame.UnityHost
                 bedGuide.enabled = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream;
             var cue = view.Cue;
             string token = cue?.Token;
-            if (activeToken == token) return;
+            if (activeToken == token)
+            {
+                if (cue == null) SetSurfaceGlow(view.TerminalPowered ? 1 : 0);
+                return;
+            }
             activeToken = token;
             if (playing != null) { StopCoroutine(playing); playing = null; }
             screen.SetTransitionLocked(false);
+            screen.EndDayZeroOpening();
             screen.SetFade(0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
-            if (cue == null) { screen.SetTerminalReveal(view.TerminalOpen ? 1 : 0); return; }
+            screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
+            if (cue == null)
+            {
+                SetSurfaceGlow(view.TerminalPowered ? 1 : 0);
+                screen.SetTerminalReveal(view.TerminalOpen ? 1 : 0); return;
+            }
             switch (cue.Kind)
             {
                 case PresentationKind.EnterTerminal:
                     RememberRoomPose();
+                    if (view.Game.Day == 0 && view.TerminalPage == TerminalPage.Review && view.TerminalBootRequired)
+                    {
+                        playing = StartCoroutine(DayZeroOpening(cue.Token));
+                        break;
+                    }
+                    if (view.TerminalBootRequired) screen.BeginTerminalBoot();
                     playing = HasSeatedEntry ? StartCoroutine(SeatedEntry(cue.Token))
                         : StartCoroutine(CameraTransition(cue.Token, terminalCameraPose.position, terminalCameraPose.rotation, false));
                     break;
@@ -179,8 +198,59 @@ namespace MiniGame.UnityHost
             }
         }
 
+        private IEnumerator DayZeroOpening(string token)
+        {
+            SetSurfaceGlow(1);
+            if (HasSeatedEntry)
+            {
+                seating.Capture(); seating.SetPose(seatEyePose, 1); UpdateScreenDestination();
+            }
+            if (terminalCameraPose != null)
+            {
+                viewCamera.transform.SetPositionAndRotation(terminalCameraPose.position, terminalCameraPose.rotation);
+                viewCamera.fieldOfView = 48;
+            }
+            screen.BeginDayZeroOpening(); EntryPhase = TerminalEntryPhase.OpeningMonitor;
+            TerminalTransitionProgress = 0;
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken != token) yield break;
+            screen.Audio?.PlayTerminalPowerOn();
+            // Keep the first view visible until a fresh click; the reveal never advances tutorial dialogue.
+            yield return null;
+            while (activeToken == token)
+            {
+                if (!runtime.GetView().Paused && screen.ConsumeOpeningClick()) break;
+                yield return null;
+            }
+            if (activeToken != token) yield break;
+            EntryPhase = TerminalEntryPhase.OpeningPullback;
+            const float duration = 2.2f;
+            float elapsed = 0;
+            while (elapsed < duration && activeToken == token)
+            {
+                if (runtime.GetView().Paused) { yield return null; continue; }
+                elapsed += Time.unscaledDeltaTime;
+                TerminalTransitionProgress = Mathf.Clamp01(elapsed / duration);
+                screen.TerminalDisplay.SetOpeningProgress(Ease(TerminalTransitionProgress));
+                yield return null;
+            }
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken != token) yield break;
+            screen.EndDayZeroOpening(); EntryPhase = TerminalEntryPhase.Active;
+            screen.SetTransitionLocked(false); playing = null;
+            runtime.CompleteCue(token);
+        }
+
         private IEnumerator CameraTransition(string token, Vector3 destination, Quaternion rotation, bool exiting)
         {
+            bool shuttingDown = exiting && runtime.GetView().TerminalShuttingDown;
+            bool booting = !exiting && runtime.GetView().TerminalBootRequired;
+            float idleGlow = shuttingDown || booting ? 0 : 1;
+            if (shuttingDown)
+            {
+                yield return PowerOff(token);
+                if (activeToken != token) yield break;
+            }
             var source = viewCamera.transform.position;
             var sourceRotation = viewCamera.transform.rotation;
             float sourceFov = viewCamera.fieldOfView;
@@ -189,7 +259,7 @@ namespace MiniGame.UnityHost
             var controlA = source + (exiting ? -viewCamera.transform.forward * .12f : viewCamera.transform.forward * .20f);
             var controlB = destination - rotation * Vector3.forward * .15f + Vector3.up * .025f;
             screen.SetTransitionLocked(true);
-            screen.SetTerminalReveal(exiting ? 1 : 0);
+            screen.SetTerminalReveal(0);
             TerminalTransitionProgress = 0;
             float elapsed = 0;
             while (elapsed < duration && activeToken == token)
@@ -205,15 +275,20 @@ namespace MiniGame.UnityHost
                     + 3 * inverse * inverse * move * controlA + 3 * inverse * move * move * controlB + move * move * move * destination;
                 viewCamera.transform.rotation = Quaternion.Slerp(sourceRotation, rotation, move);
                 viewCamera.fieldOfView = Mathf.Lerp(sourceFov, targetFov, move);
-                screen.SetTerminalReveal(exiting ? 1 - Ease(Mathf.InverseLerp(0, .24f, p)) : Ease(Mathf.InverseLerp(.82f, 1, p)));
+                screen.SetTerminalReveal(exiting ? 0 : Ease(Mathf.InverseLerp(.82f, 1, p)));
                 screen.SetTerminalHandoff(p, exiting, true);
-                SetSurfaceGlow(exiting ? Mathf.Lerp(1, .18f, Mathf.InverseLerp(.1f, .55f, p)) : Mathf.Lerp(.18f, 1, Mathf.InverseLerp(.15f, .7f, p)));
+                SetSurfaceGlow(exiting ? idleGlow : Mathf.Lerp(idleGlow, 1, Mathf.InverseLerp(.15f, .7f, p)));
                 yield return null;
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
             viewCamera.transform.SetPositionAndRotation(destination, rotation);
             viewCamera.fieldOfView = targetFov;
+            if (booting)
+            {
+                yield return PowerOn(token);
+                if (activeToken != token) yield break;
+            }
             if (exiting)
             {
                 seating?.Restore(true);
@@ -253,13 +328,14 @@ namespace MiniGame.UnityHost
 
         private IEnumerator SeatedEntry(string token)
         {
+            bool booting = runtime.GetView().TerminalBootRequired;
             seating.Capture();
             UpdateScreenDestination();
             var source = viewCamera.transform.position;
             var sourceRotation = viewCamera.transform.rotation;
             float sourceFov = viewCamera.fieldOfView;
             var seatedRotation = Quaternion.Slerp(sourceRotation, seatEyePose.rotation, .3f);
-            const float sitEnd = .65f, alignEnd = 1.30f, pushEnd = 2.45f, fadeEnd = 2.65f, duration = 3f;
+            const float sitEnd = .65f, alignEnd = 1.30f, pushEnd = 2.45f, duration = 3f;
             screen.SetTransitionLocked(true);
             screen.SetTerminalReveal(0);
             screen.SetTerminalHandoff(0, false, false);
@@ -294,26 +370,19 @@ namespace MiniGame.UnityHost
                     viewCamera.fieldOfView = 48;
                     float p = Ease(Mathf.InverseLerp(alignEnd, pushEnd, elapsed));
                     viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(screenAlignPose.position, terminalCameraPose.position, p), screenAlignPose.rotation);
-                    if (elapsed < pushEnd) EntryPhase = TerminalEntryPhase.Pushing;
-                    else if (elapsed < fadeEnd)
-                    {
-                        EntryPhase = TerminalEntryPhase.FadingWorld;
-                        screen.SetFade(Ease(Mathf.InverseLerp(pushEnd, fadeEnd, elapsed)));
-                    }
-                    else
-                    {
-                        EntryPhase = TerminalEntryPhase.RevealingInterface;
-                        float reveal = Ease(Mathf.InverseLerp(fadeEnd, duration, elapsed));
-                        screen.SetTerminalReveal(reveal);
-                        screen.SetFade(1 - reveal);
-                    }
+                    EntryPhase = elapsed < pushEnd ? TerminalEntryPhase.Pushing : TerminalEntryPhase.RevealingInterface;
+                    screen.SetTerminalReveal(Ease(Mathf.InverseLerp(pushEnd - .2f, duration, elapsed)));
+                    screen.SetFade(0);
                 }
-                SetSurfaceGlow(Mathf.Lerp(.18f, 1, Mathf.Clamp01(elapsed / alignEnd)));
+                SetSurfaceGlow(booting ? Mathf.Clamp01(elapsed / alignEnd) : 1);
                 yield return null;
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
             viewCamera.transform.SetPositionAndRotation(terminalCameraPose.position, terminalCameraPose.rotation);
+            screen.SetFade(0); screen.SetTerminalReveal(1);
+            if (booting) yield return PowerOn(token);
+            if (activeToken != token) yield break;
             EntryPhase = TerminalEntryPhase.Active;
             screen.SetFade(0); screen.SetTerminalReveal(1); screen.SetTransitionLocked(false);
             playing = null;
@@ -321,6 +390,48 @@ namespace MiniGame.UnityHost
         }
 
         private static float Ease(float value) => value * value * value * (value * (value * 6 - 15) + 10);
+
+        private IEnumerator PowerOn(string token)
+        {
+            screen.SetTransitionLocked(true); screen.SetTerminalReveal(1); screen.SetTerminalPowerFrame(TerminalPowerTimeline.Boot(0));
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken != token) yield break;
+            screen.Audio?.PlayTerminalPowerOn();
+            float elapsed = 0;
+            while (elapsed < TerminalPowerTimeline.BootDuration + TerminalPowerTimeline.LoadingDuration && activeToken == token)
+            {
+                if (runtime.GetView().Paused) { yield return null; continue; }
+                if (elapsed < TerminalPowerTimeline.BootDuration && screen.ConsumeBootSkip()) elapsed = TerminalPowerTimeline.BootDuration;
+                screen.SetTerminalPowerFrame(TerminalPowerTimeline.Boot(elapsed));
+                elapsed += Time.unscaledDeltaTime; yield return null;
+            }
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken == token) screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
+        }
+
+        private IEnumerator PowerOff(string token)
+        {
+            screen.SetTransitionLocked(true); screen.SetTerminalReveal(1);
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken != token) yield break;
+            screen.Audio?.PlayTerminalPowerOff();
+            float elapsed = 0;
+            while (elapsed < TerminalPowerTimeline.ShutdownDuration && activeToken == token)
+            {
+                if (runtime.GetView().Paused) { yield return null; continue; }
+                screen.SetTerminalPowerFrame(TerminalPowerTimeline.Shutdown(elapsed));
+                yield return null;
+                while (activeToken == token && runtime.GetView().Paused) yield return null;
+                if (activeToken != token) yield break;
+                elapsed = TerminalPowerTimeline.AdvanceShutdown(elapsed, Time.unscaledDeltaTime);
+            }
+            while (activeToken == token && runtime.GetView().Paused) yield return null;
+            if (activeToken == token)
+            {
+                SetSurfaceGlow(0);
+                screen.SetTerminalPowerFrame(TerminalPowerTimeline.Shutdown(TerminalPowerTimeline.ShutdownDuration)); screen.SetTerminalReveal(0);
+            }
+        }
 
         private void SetSurfaceGlow(float amount)
         {
@@ -333,8 +444,26 @@ namespace MiniGame.UnityHost
                 surfaceReady = true;
             }
             terminalSurface.GetPropertyBlock(surfaceProperties);
+            SetLiveDisplay(surfaceProperties);
             surfaceProperties.SetColor("_EmissionColor", surfaceEmission * amount);
+            surfaceProperties.SetFloat("_CrtPower", amount);
             terminalSurface.SetPropertyBlock(surfaceProperties);
+            // Room lighting uses material-slot blocks, which take precedence over renderer-wide values.
+            for (int slot = 0; slot < terminalSurface.sharedMaterials.Length; slot++)
+            {
+                terminalSurface.GetPropertyBlock(surfaceProperties, slot);
+                SetLiveDisplay(surfaceProperties);
+                surfaceProperties.SetColor("_EmissionColor", surfaceEmission * amount);
+                surfaceProperties.SetFloat("_CrtPower", amount);
+                terminalSurface.SetPropertyBlock(surfaceProperties, slot);
+            }
+        }
+
+        private void SetLiveDisplay(MaterialPropertyBlock properties)
+        {
+            bool live = runtime != null && runtime.GetView().TerminalOpen && screen != null && screen.TerminalDisplay != null;
+            properties.SetFloat("_LiveDisplay", live ? 1 : 0);
+            if (live) properties.SetTexture("_LiveDisplayTex", screen.TerminalDisplay.Texture);
         }
 
         private IEnumerator SleepTransition(string token)

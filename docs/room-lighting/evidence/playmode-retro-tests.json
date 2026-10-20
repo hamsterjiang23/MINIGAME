@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "duration": 1.09,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.LiveProfileChangesReachTheCameraAndNeutralSettingsMatchOriginal",
+      "Status": "Passed",
+      "Duration": 0.7815796,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.MainRoomUsesProfileAndKeepsOverlayUiOutsideTheEffect",
+      "Status": "Passed",
+      "Duration": 0.2862528,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

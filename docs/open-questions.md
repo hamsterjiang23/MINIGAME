@@ -50,7 +50,7 @@
 
 来源：[用户提供的聊天截图](assets/room-lighting-and-dream-chat-2026-10-15.png)。以下记录已讨论的表现方向与待制作事项，不代表现有Unity原型已经完成。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 灰色回复及下方梦境讨论] [opinion]
 
-- [ ] **补齐开场介绍**：开场介绍已被提问，但截图未给出具体内容与播放安排，继续作为待定项。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 顶部「游戏开始的开场介绍」提问] [opinion]
+- [x] **补齐开场介绍**：2026-10-20确认监管者监控近景启动，点击后连续拉远进入Day0唯一按钮教学；自动关机后床聚光灯引导，家具取消碰撞而地面、墙、玩家保留，一次睡眠进入Day1。实现及验证见[开场指南](opening/guide.md)。`[verified: 本轮用户确认「OK的，就按照这个效果进行实现」及此前镜头、碰撞范围说明；opening/guide.md]`
 - [ ] **确认场景物件交互信息**：逐物件确认可交互内容、提示及反馈；截图明确表示此项还未确认。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png「场景物体交互信息这个还没确认」] [opinion]
 - [ ] **制作并切换下列五种房间灯光状态**：聊天原话称“四种”，实际列了1–5；此处保留全部五项，不擅自合并。[verified: assets/room-lighting-and-dream-chat-2026-10-15.png 灰色回复的编号1–5] [opinion]
 

@@ -12,6 +12,7 @@ namespace MiniGame.UnityHost.Editor
     {
         public const string RootName = "Reference exterior corridor";
         public const string ThresholdName = "Corridor no-exit threshold";
+        public const string RedSpotlightName = "Corridor red spotlight";
         private const string Generated = "Assets/MiniGame/Generated/ReferenceRoom";
         private const string TexturePath = "Assets/MiniGame/Art/Exterior/corridor-surfaces.png";
         private const float Length = 6f, Depth = 2.2f, SkirtHeight = 1.05f;
@@ -109,11 +110,61 @@ namespace MiniGame.UnityHost.Editor
             threshold.AddComponent<BoxCollider>().size = new Vector3(1.5f, height, .12f);
             frame.Box("Corridor threshold strip", 0, .12f, .012f, new Vector3(1.5f, .024f, .16f), dark, false);
 
-            Light(frame, "Corridor daylight", frame.Point(0, 1.78f, 2.5f), new Color(.84f, .91f, 1f), .8f, 5.4f);
+            Light(frame, "Corridor daylight", frame.Point(0, 1.78f, 2.5f), new Color(.84f, .91f, 1f), .35f, 5.4f);
             frame.Box("Corridor ceiling fixture", -1.1f, 1.1f, height - .065f,
                 new Vector3(1.0f, .08f, .21f), metal, false);
-            Light(frame, "Corridor ceiling fill", frame.Point(-1.1f, 1.1f, height - .18f), new Color(1f, .94f, .82f), .48f, 4.5f);
+            Light(frame, "Corridor ceiling fill", frame.Point(-1.1f, 1.1f, height - .18f), new Color(1f, .94f, .82f), .16f, 4.5f);
+            EnsureRedSpotlight(root, height);
             AssetDatabase.SaveAssets();
+        }
+
+        [MenuItem("MiniGame/Main Room/Install corridor red spotlight")]
+        public static void InstallRedSpotlightInOpenScene()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                throw new InvalidOperationException("请退出播放模式后安装走廊红色聚光灯。");
+            var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            var root = Array.Find(UnityEngine.Object.FindObjectsOfType<Transform>(true),
+                item => item.gameObject.scene == scene && item.name == RootName);
+            if (root == null) throw new InvalidOperationException("请先打开带门外走廊的 Combined 场景。");
+            var ceiling = root.Find("Corridor ceiling");
+            float height = ceiling != null ? ceiling.localPosition.y - .06f : 3.12066f;
+            var light = EnsureRedSpotlight(root, height);
+            Selection.activeGameObject = light.gameObject;
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(scene);
+        }
+
+        public static UnityEngine.Light EnsureRedSpotlight(Transform corridor, float height)
+        {
+            var centre = EnsureCeilingRedSpotlight(corridor, RedSpotlightName, 0, height);
+            EnsureCeilingRedSpotlight(corridor, RedSpotlightName + " B-18", -1.93f, height);
+            EnsureCeilingRedSpotlight(corridor, RedSpotlightName + " B-16", 1.93f, height);
+            return centre;
+        }
+
+        private static UnityEngine.Light EnsureCeilingRedSpotlight(Transform corridor, string name, float x, float height)
+        {
+            var existing = corridor.Find(name);
+            var obj = existing != null ? existing.gameObject : new GameObject(name);
+            obj.transform.SetParent(corridor, false);
+            float depth = Mathf.Abs(x) < .01f ? 1.4f : 1.82f;
+            obj.transform.localPosition = new Vector3(x, height - .18f, depth);
+            obj.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            if (obj.TryGetComponent<UnityEngine.Light>(out var saved)) return saved;
+            var light = obj.AddComponent<UnityEngine.Light>();
+            light.type = LightType.Spot;
+            light.lightmapBakeType = LightmapBakeType.Realtime;
+            light.color = new Color(1f, .025f, .015f);
+            light.intensity = 4.5f;
+            light.range = 4.8f;
+            light.spotAngle = 60;
+            light.innerSpotAngle = 38;
+            light.renderMode = LightRenderMode.ForcePixel;
+            light.shadows = LightShadows.Soft;
+            light.shadowStrength = .85f;
+            light.shadowBias = .025f;
+            light.shadowNormalBias = .15f;
+            return light;
         }
 
         private static void BuildWindow(Frame frame, Material metal, Material sky)

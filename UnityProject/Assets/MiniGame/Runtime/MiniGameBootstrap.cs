@@ -83,6 +83,7 @@ namespace MiniGame.UnityHost
             {
                 var view = Runtime.GetView();
                 if (view.Paused) Runtime.SetPaused(false);
+                else if (screen.TryClosePropNarration()) { }
                 else if (screen.TryCloseHistory()) { }
                 else if (view.Inspection != null) Runtime.CloseInspection();
                 else Runtime.SetPaused(true);
@@ -90,10 +91,6 @@ namespace MiniGame.UnityHost
             if (Input.GetKeyDown(KeyCode.F5)) Save();
             if (Input.GetKeyDown(KeyCode.F9)) Load();
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
-            var state = Runtime.GetView();
-            if (Runtime.UsesDreamFlow && state.Game.Phase == GamePhase.Evening && !state.TerminalOpen
-                && state.Cue == null && !state.Paused && !effects.IsTransitioning)
-                Runtime.BeginNightDream();
         }
 
         private void InstallRuntime(GameRuntime runtime, bool installSession = true, bool prepared = false)
@@ -201,6 +198,7 @@ namespace MiniGame.UnityHost
             }
             yarn.Configure(selected.Project);
             InstallRuntime(new GameRuntime(rules, content, useTerminalDirectory: true));
+            if (campaignActive) Runtime.BeginDayZeroOpening();
         }
 
         public void StartLegacyPrototype()
@@ -215,7 +213,11 @@ namespace MiniGame.UnityHost
         public void Restart()
         {
             if (Runtime.UsesDreamFlow && MiniGameSessionHost.Current != null) MiniGameSessionHost.Current.RestartToCombined();
-            else InstallRuntime(new GameRuntime(rules, content, terminalDemoActive));
+            else
+            {
+                InstallRuntime(new GameRuntime(rules, content, terminalDemoActive));
+                if (campaignActive) Runtime.BeginDayZeroOpening();
+            }
         }
         public void RestoreCheckpoint(string json) => InstallRuntime(GameRuntime.Restore(json, rules, content));
 

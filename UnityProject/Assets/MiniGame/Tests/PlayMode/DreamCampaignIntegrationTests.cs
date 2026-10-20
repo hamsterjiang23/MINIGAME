@@ -108,6 +108,11 @@ namespace MiniGame.UnityHost.Tests
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedInteraction, Is.SameAs(bed));
             Assert.That(host.Player.InteractFocused(), Is.True);
+            Assert.That(host.Runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.Sleep));
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero, "Sleep advances the day after its fade completes.");
+            Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
+            yield return Until(() => host.Runtime.GetView().Game.Day == 1 && host.Runtime.GetView().Cue == null,
+                "one sleep completes into the first morning", 5);
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
             host.Player.InteractFocused();
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1), "Repeated E must not advance past the first morning.");
@@ -168,6 +173,15 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(fixture.GetView().Game.Rebellion, Is.EqualTo(100), "Accepted real campaign choices must build the global counter.");
             host.RestoreCheckpoint(fixture.Save());
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Computer }));
+            Assert.That(host.Runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Running));
+            Assert.That(host.Runtime.GetView().TerminalBootRequired, Is.False);
+            var physicalScreen = Object.FindObjectsOfType<MeshRenderer>().Single(item => item.name.StartsWith("CRT screen emission", StringComparison.Ordinal));
+            var screenProperties = new MaterialPropertyBlock(); physicalScreen.GetPropertyBlock(screenProperties, 0);
+            Assert.That(screenProperties.HasProperty(Shader.PropertyToID("_CrtPower")), Is.True);
+            Assert.That(screenProperties.GetFloat("_CrtPower"), Is.EqualTo(1).Within(.001f), "The real CRT surface must guide the player before self-review interaction.");
+            yield return null;
+            physicalScreen.GetPropertyBlock(screenProperties, 0);
+            Assert.That(screenProperties.GetFloat("_CrtPower"), Is.EqualTo(1).Within(.001f), "Bedtime and room lighting must preserve the safety screen power.");
             var computer = Interaction(InteractionTarget.Computer);
             TeleportTo("Computer approach", computer.GetComponent<Collider>().bounds.center);
             host.Player.RefreshInteractionFocus();
@@ -178,7 +192,7 @@ namespace MiniGame.UnityHost.Tests
             var selfReview = host.Screen.GetComponentsInChildren<Transform>(true).Single(item => item.name == "SelfReview");
             var buttons = selfReview.GetComponentsInChildren<Button>().Where(item => item.IsActive() && item.IsInteractable()).ToArray();
             Assert.That(buttons.Select(item => item.name), Is.EqualTo(new[] { "SelfPurify" }));
-            Assert.That(buttons[0].GetComponentInChildren<Text>().text, Is.EqualTo("净化"));
+            Assert.That(buttons[0].GetComponentInChildren<Text>().text, Does.Contain("净化"));
             var sameRuntime = host.Runtime;
             var session = MiniGameSessionHost.Current;
             Assert.That(buttons[0], Is.InstanceOf<MiniGameAudioButton>());
@@ -227,6 +241,9 @@ namespace MiniGame.UnityHost.Tests
         [UnityTest, Timeout(90000)]
         public IEnumerator WorldSavePoseOverridesLaterTerminalDoorAndDreamReturnCaches()
         {
+            // This case exercises world-pose caches independently of the new-game monitor gate.
+            host.RestoreCheckpoint(Fixture().Save());
+            yield return null;
             var session = MiniGameSessionHost.Current;
             var original = Pose.Capture(host.Player);
             string saved = Save(session);
@@ -269,6 +286,7 @@ namespace MiniGame.UnityHost.Tests
         [UnityTest, Timeout(60000)]
         public IEnumerator OutsideDoorSaveReplacesLaterDoorCaptureButRuntimeOnlyRebindPreservesIt()
         {
+            host.RestoreCheckpoint(Fixture().Save());
             var session = MiniGameSessionHost.Current;
             var door = Interaction(InteractionTarget.Door);
             var doorCamera = host.Player.ViewCamera.GetComponent<DoorViewCamera>();

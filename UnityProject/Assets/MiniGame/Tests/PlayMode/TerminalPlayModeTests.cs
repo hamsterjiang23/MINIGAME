@@ -28,7 +28,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(screen.Canvas.renderMode, Is.EqualTo(RenderMode.ScreenSpaceOverlay));
                 Canvas.ForceUpdateCanvases();
                 screen.ReflowTerminal();
-                var logical = screen.GetComponentsInChildren<RectTransform>(false).Single(rect => rect.name == "TerminalLogical640x360");
+                var logical = screen.TerminalDisplay.OutputRect;
                 var viewport = screen.GetComponentsInChildren<RectTransform>(false).Single(rect => rect.name == "Terminal");
                 AssertOverlayBounds(logical, new Rect(0, 0, Screen.width, Screen.height));
                 foreach (var size in new[] { new Vector2(640, 360), new Vector2(640, 480), new Vector2(960, 360), new Vector2(360, 640) })
@@ -43,7 +43,7 @@ namespace MiniGame.UnityHost.Tests
                     var lower = RectTransformUtility.WorldToScreenPoint(null, viewportCorners[0]);
                     var upper = RectTransformUtility.WorldToScreenPoint(null, viewportCorners[2]);
                     AssertOverlayBounds(logical, Rect.MinMaxRect(lower.x, lower.y, upper.x, upper.y));
-                    Assert.That(logical.localScale.x, Is.EqualTo(Mathf.Min(size.x / 640f, size.y / 360f)).Within(.001f));
+                    Assert.That(logical.rect.width / 800f, Is.EqualTo(Mathf.Min(size.x / 800f, size.y / 600f)).Within(.001f));
                 }
             }
             finally { Object.Destroy(owner); }
@@ -65,7 +65,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(bottom, Is.GreaterThanOrEqualTo(expectedBounds.yMin - 1));
             Assert.That(top, Is.LessThanOrEqualTo(expectedBounds.yMax + 1));
             Assert.That(right - left, Is.GreaterThan(1));
-            Assert.That((right - left) / (top - bottom), Is.EqualTo(640f / 360f).Within(.005f));
+            Assert.That((right - left) / (top - bottom), Is.EqualTo(4f / 3).Within(.005f));
         }
 
         [UnityTest]
@@ -101,52 +101,23 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator HistoryBlocksLineAndReplyCallbacksWithoutChangingQuotaAndReopensCleanly()
+        public IEnumerator PassiveTranscriptDoesNotTakeKeyboardFocus()
         {
-            var rules = PrototypeRules.Create();
-            var runtime = new GameRuntime(rules, new PrototypeContent(rules), useTerminalDirectory: true);
-            var owner = new GameObject("Terminal History Test");
-            var screen = owner.AddComponent<MiniGameScreen>();
+            var rules=PrototypeRules.Create();var runtime=new GameRuntime(rules,new PrototypeContent(rules),true);
+            var owner=new GameObject("Passive transcript test");var screen=owner.AddComponent<MiniGameScreen>();
             try
             {
-                screen.Bind(runtime);
-                OpenComputer(runtime);
-                Assert.That(runtime.EnterSelectedPatient(runtime.GetView().Game.CurrentPatientId).Accepted, Is.True);
-                var view = runtime.GetView();
-                if (view.Cue != null) Assert.That(runtime.CompleteCue(view.Cue.Token).Accepted, Is.True);
-                screen.UseYarnPresentation();
-                int advanced = 0;
-                screen.SetDialogueLine("对象", "我数了数，一共有七扇门。", "terminal-test-line", "ML02");
-                screen.SetDialogueLine("对象", "我数了数，一共有七扇门。", "terminal-test-line", "ML02");
-                Assert.That(runtime.GetView().Transcript.Count(entry => entry.SourceNodeId == "terminal-test-line"), Is.EqualTo(1));
-                screen.ShowCueText("我数了数，一共有七扇门。", () => advanced++);
-                yield return null;
-                var next = screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "Continue");
-                int quota = runtime.GetView().Game.RemainingPurificationQuota;
-                screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "HistoryTab").onClick.Invoke();
-                next.onClick.Invoke();
-                Assert.That(advanced, Is.Zero, "A retained callback must not advance while reading history.");
-                Assert.That(runtime.GetView().Game.RemainingPurificationQuota, Is.EqualTo(quota));
-                Assert.That(screen.GetComponentsInChildren<Text>(false).Single(text => text.name == "TranscriptText").text,
-                    Does.Contain("一共有七扇门"));
-                screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "AnswersTab").onClick.Invoke();
-                next.onClick.Invoke();
-                Assert.That(advanced, Is.EqualTo(1));
-                screen.ShowResponseButtons(new[] { new ResponseContent("test-response", "了解。") }, _ => advanced++);
-                var reply = screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "Reply-test-response");
-                screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "HistoryTab").onClick.Invoke();
-                reply.onClick.Invoke();
-                Assert.That(advanced, Is.EqualTo(1));
-                screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "AnswersTab").onClick.Invoke();
-                reply.onClick.Invoke();
-                Assert.That(advanced, Is.EqualTo(2));
-                var disps = screen.GetComponentsInChildren<Button>(false).Where(button => button.name.StartsWith("Disposition-")).ToArray();
-                Assert.That(disps, Has.Length.EqualTo(3));
-                Assert.That(disps.All(button => !button.interactable), Is.True, "Disposition controls stay visible but disabled during dialogue.");
-                var logical = screen.GetComponentsInChildren<RectTransform>(false).Single(rect => rect.name == "TerminalLogical640x360");
-                Assert.That(logical.sizeDelta, Is.EqualTo(new Vector2(640, 360)));
+                screen.Bind(runtime);OpenComputer(runtime);runtime.EnterSelectedPatient(runtime.GetView().Game.CurrentPatientId);
+                if(runtime.GetView().Cue!=null)runtime.CompleteCue(runtime.GetView().Cue.Token);
+                screen.UseYarnPresentation();int advanced=0;
+                screen.SetDialogueLine("对象","我数了数，一共有七扇门。","terminal-test-line","ML02");
+                screen.ShowCueText("继续",()=>advanced++);
+                screen.HandleTerminalKey(KeyCode.F2);screen.HandleTerminalKey(KeyCode.F3);
+                Assert.That(screen.HistoryOpen,Is.False);
+                screen.HandleTerminalKey(KeyCode.Space);Assert.That(advanced,Is.EqualTo(1));
+                Assert.That(screen.GetComponentsInChildren<Transform>(true).Any(t=>t.name=="TerminalSettings"||t.name=="HistoryTab"),Is.False);
             }
-            finally { Object.Destroy(owner); }
+            finally {Object.Destroy(owner);}
             yield return null;
         }
 

@@ -262,6 +262,9 @@ namespace MiniGame.UnityHost.Editor
             EditorSceneManager.MarkSceneDirty(scene);
             CampaignBuilder.EnableCampaignInOpenScene();
             DreamSequenceSetup.ConfigureOpenScene(DreamSequenceSetup.EnsureProfile(), DreamSequenceSetup.EnsureRebellionProfile());
+            // Reference-layout rooms return through ReferenceRoomGameplayBuilder, which installs the same profile.
+            // Legacy geometry has no B_Floor/lamp names and keeps its existing compatible lighting.
+            if (room.GetComponentsInChildren<Transform>(true).Any(item => item.name == "B_Floor")) RoomLightingSetup.EnsureInScene(scene);
             EditorSceneManager.SaveScene(scene, ScenePath);
             AssetDatabase.SaveAssets();
             var report = new SetupReport

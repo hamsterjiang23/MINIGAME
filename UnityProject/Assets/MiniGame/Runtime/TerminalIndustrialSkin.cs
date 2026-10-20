@@ -11,6 +11,7 @@ namespace MiniGame.UnityHost
             float x, float y, float width, float height)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image));
+            go.layer = parent.gameObject.layer;
             go.transform.SetParent(parent, false);
             var rect = (RectTransform)go.transform;
             Position(rect, x, y, width, height);
@@ -118,6 +119,7 @@ namespace MiniGame.UnityHost
             float x, float y, float width, float height, int size, Color color)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Text));
+            go.layer = parent.gameObject.layer;
             go.transform.SetParent(parent, false);
             Position((RectTransform)go.transform, x, y, width, height);
             var label = go.GetComponent<Text>();
@@ -127,7 +129,7 @@ namespace MiniGame.UnityHost
             label.color = color;
             label.alignment = TextAnchor.MiddleLeft;
             label.horizontalOverflow = HorizontalWrapMode.Overflow;
-            label.verticalOverflow = VerticalWrapMode.Truncate;
+            label.verticalOverflow = VerticalWrapMode.Overflow;
             label.supportRichText = false;
             label.raycastTarget = false;
             return label;

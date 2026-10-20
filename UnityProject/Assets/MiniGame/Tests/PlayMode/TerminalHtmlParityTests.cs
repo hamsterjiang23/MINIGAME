@@ -14,7 +14,7 @@ namespace MiniGame.UnityHost.Tests
     public sealed class TerminalHtmlParityTests
     {
         [UnityTest]
-        public IEnumerator ChoiceKeysRequireSelectionWrapAndSupportAllFourNumberShortcuts()
+        public IEnumerator ChoiceKeysDefaultToFirstWrapAndSupportAllFourNumberShortcuts()
         {
             var runtime = CreateRuntime();
             var owner = new GameObject("HTML Choice Input Test");
@@ -28,20 +28,20 @@ namespace MiniGame.UnityHost.Tests
                 screen.HandleTerminalKey(KeyCode.Return);
                 screen.HandleTerminalKey(KeyCode.KeypadEnter);
                 screen.HandleTerminalKey(KeyCode.Space);
-                Assert.That(selected, Is.Empty, "A new choice has no selection; Enter and Space cannot silently choose it.");
+                Assert.That(selected, Is.EqualTo(new[] { "choice-1", "choice-1" }), "Enter confirms the initial first choice; Space never chooses.");
 
                 screen.HandleTerminalKey(KeyCode.UpArrow);
                 screen.HandleTerminalKey(KeyCode.Space);
-                Assert.That(selected, Is.Empty, "Space cannot commit even when a choice has been highlighted.");
+                Assert.That(selected, Has.Count.EqualTo(2), "Space cannot confirm a response.");
                 screen.HandleTerminalKey(KeyCode.Return);
                 Assert.That(selected.Last(), Is.EqualTo("choice-4"), "Up from no selection starts at the last choice.");
 
                 screen.ShowResponseButtons(responses, selected.Add);
                 screen.HandleTerminalKey(KeyCode.Return);
-                Assert.That(selected, Has.Count.EqualTo(1), "Replacing the choices clears the previous selection.");
+                Assert.That(selected, Has.Count.EqualTo(4), "Replacing choices selects the first item.");
                 screen.HandleTerminalKey(KeyCode.DownArrow);
                 screen.HandleTerminalKey(KeyCode.KeypadEnter);
-                Assert.That(selected.Last(), Is.EqualTo("choice-1"), "Down from no selection starts at the first choice.");
+                Assert.That(selected.Last(), Is.EqualTo("choice-2"), "Down from the default first item chooses the second.");
 
                 screen.ShowResponseButtons(responses, selected.Add);
                 screen.HandleTerminalKey(KeyCode.UpArrow);
@@ -50,7 +50,6 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(selected.Last(), Is.EqualTo("choice-1"), "Down wraps from the last choice to the first.");
 
                 screen.ShowResponseButtons(responses, selected.Add);
-                screen.HandleTerminalKey(KeyCode.DownArrow);
                 screen.HandleTerminalKey(KeyCode.UpArrow);
                 screen.HandleTerminalKey(KeyCode.Return);
                 Assert.That(selected.Last(), Is.EqualTo("choice-4"), "Up wraps from the first choice to the last.");
@@ -63,68 +62,32 @@ namespace MiniGame.UnityHost.Tests
                     Assert.That(selected.Count, Is.EqualTo(before + 1));
                     Assert.That(selected.Last(), Is.EqualTo(responses[index].Id));
                 }
-                Assert.That(selected, Has.Count.EqualTo(8), "Each confirmation invokes exactly one response callback.");
+                Assert.That(selected, Has.Count.EqualTo(11), "Each confirmation invokes exactly one response callback.");
             }
             finally { Object.Destroy(owner); }
             yield return null;
         }
 
         [UnityTest]
-        public IEnumerator HistoryShowsFiveClippedRowsAndBlocksDialogueKeyboardInput()
+        public IEnumerator RemovedFunctionKeysLeavePassiveTranscriptAndDialogueAvailable()
         {
-            var runtime = CreateRuntime();
-            var owner = new GameObject("HTML History Test");
+            var runtime = CreateRuntime(); var owner = new GameObject("Passive transcript test");
             var screen = owner.AddComponent<MiniGameScreen>();
             try
             {
                 OpenReview(screen, runtime);
-                for (int index = 0; index < 8; index++)
-                    screen.SetDialogueLine("对象", "记录" + index + "：" + new string('长', 80) + "\n第二行",
-                        "html-history-" + index, "ML01");
-                int advanced = 0;
-                screen.ShowResponseButtons(Responses(), _ => advanced++);
-                ButtonNamed(screen, "HistoryTab").onClick.Invoke();
-                yield return null;
-                Canvas.ForceUpdateCanvases();
-
-                var rows = screen.GetComponentsInChildren<Text>(false)
-                    .Where(text => text.name == "TranscriptText" || Enumerable.Range(1, 4).Any(index => text.name == "TranscriptText" + index))
-                    .OrderBy(text => text.name).ToArray();
-                Assert.That(rows, Has.Length.EqualTo(5));
-                Assert.That(rows.Select(row => row.GetComponentInParent<RectMask2D>()).All(mask => mask != null), Is.True,
-                    "Long transcript lines need a clipping viewport for every fixed row.");
-                Assert.That(rows.Select(row => row.GetComponentInParent<RectMask2D>()).Distinct().Count(), Is.EqualTo(5),
-                    "Each row must clip independently so a long line cannot consume the following row.");
-                for (int index = 0; index < rows.Length; index++)
-                {
-                    Assert.That(rows[index].text, Does.Contain("记录" + (index + 3)));
-                    Assert.That(rows[index].text, Does.Not.Contain("\n"));
-                    Assert.That(rows[index].horizontalOverflow, Is.EqualTo(HorizontalWrapMode.Overflow));
-                    Assert.That(rows[index].verticalOverflow, Is.EqualTo(VerticalWrapMode.Truncate));
-                }
-                Assert.That(ObjectNamed(screen, "HistoryThumb").activeInHierarchy, Is.True);
-                var beforeRows = rows.Select(row => row.text).ToArray();
-                int quota = runtime.GetView().Game.RemainingPurificationQuota;
-                foreach (var key in new[] { KeyCode.Return, KeyCode.KeypadEnter, KeyCode.Space, KeyCode.Alpha1,
-                    KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.UpArrow, KeyCode.DownArrow })
-                {
-                    screen.HandleTerminalKey(key);
-                    Assert.That(rows.Select(row => row.text), Is.EqualTo(beforeRows), "History content changed for " + key);
-                }
-                Assert.That(advanced, Is.Zero);
-                Assert.That(runtime.GetView().Game.RemainingPurificationQuota, Is.EqualTo(quota));
-                Assert.That(screen.TryCloseHistory(), Is.True);
-                screen.HandleTerminalKey(KeyCode.Alpha2);
-                Assert.That(advanced, Is.EqualTo(1));
-
-                screen.ShowCueText("系统提示", () => advanced++);
-                ButtonNamed(screen, "HistoryTab").onClick.Invoke();
-                screen.HandleTerminalKey(KeyCode.Return);
-                screen.HandleTerminalKey(KeyCode.Space);
-                Assert.That(advanced, Is.EqualTo(1), "History also blocks line continuation.");
-                Assert.That(screen.TryCloseHistory(), Is.True);
-                screen.HandleTerminalKey(KeyCode.Space);
-                Assert.That(advanced, Is.EqualTo(2), "Space still advances a line after history closes.");
+                for (int i=0;i<8;i++) screen.SetDialogueLine("对象", "记录"+i+"：审查对话", "passive-"+i,"ML01");
+                int advanced=0, quota=runtime.GetView().Game.RemainingPurificationQuota;
+                screen.ShowResponseButtons(Responses(),_=>advanced++); yield return null;
+                Assert.That(screen.HandleTerminalKey(KeyCode.F2),Is.False);
+                Assert.That(screen.HandleTerminalKey(KeyCode.F3),Is.False);
+                Assert.That(screen.HistoryOpen,Is.False);
+                Assert.That(screen.TryCloseHistory(),Is.False);
+                Assert.That(screen.GetComponentsInChildren<Transform>(true).Any(t=>t.name=="TerminalSettings"||t.name=="HistoryTab"),Is.False);
+                var rows=screen.GetComponentsInChildren<Text>(false).Where(t=>t.name.StartsWith("TranscriptText")).ToArray();
+                Assert.That(rows,Has.Length.EqualTo(5)); Assert.That(rows.Last().text,Does.Contain("记录7"));
+                screen.HandleTerminalKey(KeyCode.Return); Assert.That(advanced,Is.EqualTo(1));
+                Assert.That(runtime.GetView().Game.RemainingPurificationQuota,Is.EqualTo(quota));
             }
             finally { Object.Destroy(owner); }
             yield return null;
@@ -171,7 +134,9 @@ namespace MiniGame.UnityHost.Tests
                     dispositionView.Game.AvailableDispositions.First()).Accepted, Is.True);
                 Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Reaction));
                 lastSpeech = "我知道了。这是我的最后一句话。";
-                screen.SetDialogueLine("对象", lastSpeech, "html-final-speech", "ML03");
+                screen.SetDialogueLine("对象", lastSpeech, "D1_M_TREAT_T1", "ML03");
+                screen.SetDialogueInteractable(true);
+                Assert.That(TextNamed(screen, "RecordNode").text, Is.EqualTo("人员复核 / 措施"));
                 screen.SetGlitch(.55f);
                 Assert.That(ObjectNamed(screen, "GeneratedSignalLoss").activeSelf, Is.False);
                 Assert.That(ObjectNamed(screen, "MonitorSignalLoss").activeSelf, Is.False,

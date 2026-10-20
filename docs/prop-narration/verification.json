@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-20",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "scope": "Object-anchored translucent narration for existing ReadableProp posters; Unity presentation only",
+  "presentation": {
+    "placement": "World-space plane beside the source renderer, with viewport-aware side selection",
+    "appearance": "Translucent ivory text, softened glyph edges, feathered shadow, perspective, fade in/out",
+    "depthBoundary": "Spatial perspective and softened text; no room-wide depth-of-field pass",
+    "compositing": "Dedicated layer 31 and disabled render camera, composited after the room retro effect",
+    "controls": "Left click to read; left click/Space/Enter to advance; Escape to dismiss",
+    "pagination": "Measured text capacity; newline paragraphs; balanced short paragraphs",
+    "lifecycle": "Pause retains the page; restore, disabled source/host and gameplay transitions cancel reading"
+  },
+  "tests": [
+    { "artifact": "Artifacts/Unity/PropNarration/prop-narration-tests.json", "passed": 3, "failed": 0 },
+    { "artifact": "Artifacts/Unity/PropNarration/reference-poster-tests.json", "passed": 1, "failed": 0 },
+    { "artifact": "Artifacts/Unity/PropNarration/interaction-distance-tests.json", "passed": 2, "failed": 0 }
+  ],
+  "visualEvidence": [
+    "Artifacts/Unity/PropNarration/beach-final.png",
+    "Artifacts/Unity/PropNarration/instrument-final.png"
+  ],
+  "newFiles": [
+    "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs.meta",
+    "UnityProject/Assets/MiniGame/Runtime/PropNarrationComposite.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PropNarrationComposite.cs.meta",
+    "UnityProject/Assets/MiniGame/Resources/PropNarration.shader",
+    "UnityProject/Assets/MiniGame/Resources/PropNarration.shader.meta",
+    "UnityProject/Assets/MiniGame/Resources/PropNarrationComposite.shader",
+    "UnityProject/Assets/MiniGame/Resources/PropNarrationComposite.shader.meta",
+    "UnityProject/Assets/MiniGame/Tests/PlayMode/PropNarrationPlayModeTests.cs",
+    "UnityProject/Assets/MiniGame/Tests/PlayMode/PropNarrationPlayModeTests.cs.meta",
+    "docs/prop-narration/implementation-notes.md",
+    "docs/prop-narration/verification.json"
+  ],
+  "limits": ["Target-platform build and full game walkthrough not run"]
+}

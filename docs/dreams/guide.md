@@ -9,6 +9,7 @@
 - **动画播放时保持原画清晰**：墙面动画实际播放期间临时跳过房间复古效果，进入镜头返回或停止预览后恢复原状态；无需到复古面板改参数，也不改动原图预览或组件启用选择。投影矩形内采用前景优先显示，避免吊灯等房间物体盖住动画；正常房间继续使用原复古设置。`[verified: DreamSequenceDirector.cs L151–173、L270–308；RetroScreenEffect.cs L14–28；DreamProjectionSurface.shader L6–8]`
 - “Combined 场景定位”可指定投影墙面、显示面、观影点及其位置朝向；用 **保存场景定位** 保存这些场景修改。播放模式和预览期间定位只读。`[verified: DreamSettingsWindow.cs L176–218]`
 - **海滩终局**：调整前进速度、床交互距离、躺下、漂流、流云及字幕。默认前进 **1.2 米/秒**、交互距离 **1.5 米**、躺下 **1.5 秒**；起伏幅度 **0.08 米**、周期 **8 秒**、摇摆 **1.5°**、漂流 **0.04 米/秒**、流云速度 **0.006**。点击 **打开海滩终局场景** 检查场景。`[verified: DreamSettingsWindow.cs L143–173；DreamSequenceDefault.asset WalkSpeed–CloudSpeed]`
+- 播放或暂停时，场景按钮显示 **退出播放并打开海滩**；点击后先结束播放，再打开场景。暂停本身不会退出 Play Mode。窗口顶部也提供同一快捷按钮，正常的场景保存提示仍会保留。`[verified: DreamSettingsWindow.cs RequestOpenBeach/CompletePendingBeachOpen/OpenBeach]`
 - **海浪与岸边**：默认海浪高度 **0.24 米**、周期 **6 秒**、波长 **7 米**、冲刷距离 **1.8 米**、泡沫强度 **0.85**。海水起伏、冲岸白沫与湿沙使用同一时间轴，暂停会冻结，读取存档恢复该时间。设置入口在“海滩终局”页；[新版动态海浪预览](../../Art/Dreams/Previews/beach-waves-preview.mp4)与[实现参考](water-revision.md)单独保留。`[verified: DreamSequenceDefault.asset SeaWaveHeight–SeaFoamAmount；DreamEndingController.cs ApplyWaterParameters/RestoreCheckpoint]`
 - 五句终局字幕默认在躺稳后 **2 秒**开始，每句无配音时显示 **4 秒**；可以逐句填写文字、选择可选配音并试听。有配音时按音频长度推进，留空仍显示字幕。`[verified: DreamSequenceDefault.asset SubtitleDelay/EndingLines；DreamSettingsWindow.cs L150–171；DreamEndingController.cs AdvanceSubtitles]`
 - 在 **音频设置** 中为“海滩终局音乐”选择文件；该槽目前留空，“海浪环境声”已绑定提供的海浪文件。音频槽留空即不播放，不会自动借用别的梦境曲目。`[verified: MiniGameAudioProfile.cs MiniGameSound/声音条目说明；AudioDefault.asset Sounds Id13/Id14]`
@@ -25,8 +26,8 @@
 
 ## 正式流程与操作
 
-- **Day0**：完成教学、退出电脑后直接亮床引导，不播放墙面梦境；与床交互后进入下一天。`[verified: MiniGameBootstrap.cs Update；GameSession.cs StartNightDream/AllowedInteractions]`
-- **Day1–3**：工作结束并退出电脑后，房间压黑，镜头自动定位到墙面播放对应梦境；播放期间没有 Continue，不能用空格或 E 跳过。结束后再亮床引导。`[verified: MiniGameBootstrap.cs Update；DreamSequenceDirector.cs StartDay/Advance；MiniGameScreen.cs HasDedicatedDreamPresentation；MiniGameYarnBridge.cs Update]`
+- **Day0**：启动显示监管者监控，点击拉远后完成教学；自动关机后直接亮床引导，不播放墙面梦境。关闭家具碰撞，保留地面、墙、玩家及床触发器；一次床交互播放闭眼后进入Day1，恢复碰撞前回到安全起床点。详见[开场指南](../opening/guide.md)。`[verified: PresentationEffects.DayZeroOpening/SleepTransition；GameRuntime.BeginNightDream/CompleteCue；BedtimeCollisionGate.Apply]`
+- **Day1–3**：工作结束并退出电脑后，亮床引导；玩家与床交互，完成闭眼过渡后才播放对应梦境。播放期间没有 Continue，不能用空格或 E 跳过；结束后自动推进到次日，或进入既有自我审查／结局分支。睡眠与梦境中的存档保留这次床交互，恢复不会要求重复上床。梦境素材后续继续由美术补充。`[verified: GameRuntime.TryInteract/CompleteCue/Save/Restore；DreamSequenceDirector.StartDay/Advance；DreamFlowRuntimeTests.BedStartsSleepBeforeAnyDreamAndRestoresAcrossBothPresentations]`
 - **Day3 特殊分支**：优先级为**神父袭击 → KPI 失败 → 海上梦结局 → 普通结局**。达到反叛阈值且没有更高优先级条件时，梦后改为仅电脑引导；终端显示审查员本人实时监控，只有“净化”一个行动按钮。鼠标点击或 Enter 确认一次后进入海滩，不消耗患者净化配额，也不新建患者会谈。`[verified: GameRules.cs WithDreamFlow；GameSession.cs FinishDream/SelfPurify/ResolveEnding；TerminalView.cs HandleSelfReviewKey；SelfReviewMonitor.cs ApplyView]`
 - **海滩**：按 **W** 向床前进，到交互距离后按 **E** 躺下，之后仰看流云，随床缓慢漂流起伏并显示五句字幕；按 **Esc** 暂停。这个场景不提供横移或后退输入。`[verified: DreamEndingController.cs L93–113、RefreshInterface、AdvanceSubtitles；DreamSequenceProfile.cs EndingLines]`
 

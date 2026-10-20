@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:59:01Z" duration="14.9661212">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="182" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:59:01Z" duration="14.966121" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1159" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="122" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:59:01Z" duration="14.955210" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85016" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1160" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="122" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:59:01Z" duration="14.923969" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1161" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="122" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:59:01Z" duration="14.890623" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1162" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="122" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:59:01Z" duration="14.857227" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1114" name="PlaytestFeedbackPlayModeTests" fullname="MiniGame.UnityHost.Tests.PlaytestFeedbackPlayModeTests" classname="MiniGame.UnityHost.Tests.PlaytestFeedbackPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:58:47Z" duration="1.206490" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1115" name="CompletedParagraphsStayWholeAndWheelScrollRetainsTheReadingPosition" fullname="MiniGame.UnityHost.Tests.PlaytestFeedbackPlayModeTests.CompletedParagraphsStayWholeAndWheelScrollRetainsTheReadingPosition" methodname="CompletedParagraphsStayWholeAndWheelScrollRetainsTheReadingPosition" classname="MiniGame.UnityHost.Tests.PlaytestFeedbackPlayModeTests" runstate="Runnable" seed="523439270" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:58:46Z" duration="0.135493" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1116" name="PlayerUsesThirtyFrameLimitLowerSensitivityAndAnExitAction" fullname="MiniGame.UnityHost.Tests.PlaytestFeedbackPlayModeTests.PlayerUsesThirtyFrameLimitLowerSensitivityAndAnExitAction" methodname="PlayerUsesThirtyFrameLimitLowerSensitivityAndAnExitAction" classname="MiniGame.UnityHost.Tests.PlaytestFeedbackPlayModeTests" runstate="Runnable" seed="1169205338" result="Passed" start-time="2026-10-20 12:58:46Z" end-time="2026-10-20 12:58:47Z" duration="1.033353" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.0.0-development:dream-flow:bfddf90d880b0b193481fe2c1a266c43bdd4396440aac97f8da0549362b1b3ca
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1138" name="SeatedTerminalEntryPlayModeTests" fullname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" classname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 12:58:47Z" end-time="2026-10-20 12:59:01Z" duration="13.616609" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1139" name="ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover" fullname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover" methodname="ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover" classname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" runstate="Runnable" seed="447943199" result="Passed" start-time="2026-10-20 12:58:47Z" end-time="2026-10-20 12:59:01Z" duration="13.584678" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.0.0-development:dream-flow:bfddf90d880b0b193481fe2c1a266c43bdd4396440aac97f8da0549362b1b3ca
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

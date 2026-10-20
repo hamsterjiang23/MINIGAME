@@ -16,6 +16,7 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            CampaignWorldFixture.Restore(host);
             host.Player.enabled = false;
             var controller = host.Player.GetComponent<CharacterController>();
             controller.enabled = false;
@@ -56,6 +57,7 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            CampaignWorldFixture.Restore(host);
             host.Player.enabled = false;
             var controller = host.Player.GetComponent<CharacterController>();
             controller.enabled = false; host.Player.transform.position = new Vector3(0, 50, 0);

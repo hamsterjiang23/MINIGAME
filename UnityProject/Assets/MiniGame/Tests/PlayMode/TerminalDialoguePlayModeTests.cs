@@ -78,9 +78,7 @@ namespace MiniGame.UnityHost.Tests
                                     if (disposition == Disposition.Treat)
                                     {
                                         yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-review");
-                                        Click(Find(host, "HistoryTab"));
                                         yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-history");
-                                        Click(Find(host, "AnswersTab"));
                                     }
                                 }
                                 Click(option); replies++;
@@ -99,14 +97,13 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(quota.text, Is.EqualTo(runtime.GetView().Game.RemainingPurificationQuota.ToString("00")));
                 Assert.That(quota.preferredWidth, Is.LessThanOrEqualTo(((RectTransform)quota.transform).rect.width));
                 if (disposition == Disposition.Treat) yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-signal-lost");
-                Click(Find(host, "ReturnDirectory"));
-                Assert.That(runtime.GetView().ArchiveDirectoryVisible, Is.True);
+                Assert.That(runtime.GetView().LeavingTerminal, Is.True);
                 Assert.That(Find(host, "EnterReview"), Is.Null);
                 var checkpoint = runtime.Save();
                 host.RestoreCheckpoint(checkpoint);
-                Assert.That(host.Runtime.GetView().ArchiveDirectoryVisible, Is.True);
+                Assert.That(host.Runtime.GetView().LeavingTerminal, Is.True);
                 Assert.That(host.Runtime.GetView().Game.RemainingPurificationQuota, Is.EqualTo(disposition == Disposition.Purify ? 4 : 5));
-                if (disposition == Disposition.Treat) yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-archived-directory");
+                if (disposition == Disposition.Treat) yield return PrototypePlayModeTests.CaptureIfRequested(host, "terminal-auto-shutdown");
             }
         }
 
@@ -138,17 +135,19 @@ namespace MiniGame.UnityHost.Tests
                 yield return null;
             Assert.That(runtime.GetView().Transcript.Count(entry => entry.SourceNodeId == "D1_R1_OPEN2"), Is.EqualTo(1));
             Click(Find(host, "Continue"));
-            Click(Find(host, "HistoryTab"));
+            runtime.SetPaused(true);
             yield return null; yield return null; yield return null;
-            Assert.That(Find(host, "Reply-D1_R1_O1"), Is.Null, "Choice presentation waits behind the history overlay.");
-            Assert.That(host.Screen.TryCloseHistory(), Is.True);
+            Assert.That(Find(host, "Reply-D1_R1_O1"), Is.Null, "Choice presentation waits while paused.");
+            Assert.That(host.Screen.TryCloseHistory(), Is.False);
+            runtime.SetPaused(false);
             while (Find(host, "Reply-D1_R1_O1") == null && Time.realtimeSinceStartup < deadline) yield return null;
             Click(Find(host, "Reply-D1_R1_O1"));
-            Click(Find(host, "HistoryTab"));
+            runtime.SetPaused(true);
             yield return null; yield return null; yield return null;
             Assert.That(runtime.GetView().Transcript.Any(entry => entry.SourceNodeId == "D1_R1_CLOSING1"), Is.False,
-                "The next Yarn line must wait while history covers the conversation.");
-            Assert.That(host.Screen.TryCloseHistory(), Is.True);
+                "The next Yarn line must wait while paused.");
+            Assert.That(host.Screen.TryCloseHistory(), Is.False);
+            runtime.SetPaused(false);
             while (!runtime.GetView().Transcript.Any(entry => entry.SourceNodeId == "D1_R1_CLOSING1") && Time.realtimeSinceStartup < deadline)
                 yield return null;
             Assert.That(runtime.GetView().Transcript.Count(entry => entry.SourceNodeId == "D1_R1_CLOSING1"), Is.EqualTo(1));
