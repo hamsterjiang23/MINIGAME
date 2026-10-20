@@ -37,7 +37,7 @@ namespace MiniGame.UnityHost.Editor
             var markers = screen.transform.root.GetComponentsInChildren<Transform>(true);
             Vector3 origin = markers.Single(node => node.name == "Unity_ReferenceOrigin").position;
             Vector3 right = (markers.Single(node => node.name == "Unity_ReferenceRight").position - origin).normalized;
-            Vector3 front = -(markers.Single(node => node.name == "Unity_ReferenceDepth").position - origin).normalized;
+            Vector3 front = (markers.Single(node => node.name == "Unity_ReferenceDepth").position - origin).normalized;
             Vector3 center = screen.bounds.center;
             string[] names = { "front.png", "left.png", "right.png" };
             Vector3[] positions = { center + front * .7f + Vector3.up * .03f,

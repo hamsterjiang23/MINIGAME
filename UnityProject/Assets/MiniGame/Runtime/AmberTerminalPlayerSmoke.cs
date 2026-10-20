@@ -43,6 +43,7 @@ namespace MiniGame.UnityHost
             host.StartTerminalDemo();
             physicalScreen=FindObjectsOfType<MeshRenderer>().SingleOrDefault(item=>item.name.StartsWith("CRT screen emission",StringComparison.Ordinal));
             initiallyOff=PhysicalPower(false);Require(initiallyOff,"The working day must begin with the physical CRT off");
+            CapturePhysical("physical-off");
             observedAudio=host.Audio.Service;observedAudio.SoundPlayed+=ObserveSound;
         }
         private void Update()
@@ -81,6 +82,7 @@ namespace MiniGame.UnityHost
                 if(cycle==1)
                 {
                     middayLit=view.TerminalPowered&&PhysicalPower(true);Require(middayLit,"Midday UI exit must keep the physical CRT lit");
+                    CapturePhysical("physical-midday-on");
                     Require(powerOnSounds==1&&powerOffSounds==0,"Midday UI exit must not replay power sounds");
                     cycle=2;Require(runtime.TryInteract(InteractionTarget.Computer).Accepted,"Reopen during the same work day");
                     reopenedWithoutBoot=!runtime.GetView().TerminalBootRequired;Require(reopenedWithoutBoot,"Reentry must resume the powered session without boot");return;
@@ -140,6 +142,27 @@ namespace MiniGame.UnityHost
             finally {RenderTexture.active=previous;target.Release();Destroy(target);Destroy(image);}
         }
         private static void Require(bool accepted,string message){if(!accepted)throw new InvalidOperationException(message);}
+        private void CapturePhysical(string name)
+        {
+            var markers=physicalScreen.transform.root.GetComponentsInChildren<Transform>(true);
+            var origin=markers.Single(t=>t.name=="Unity_ReferenceOrigin").position;
+            var front=(markers.Single(t=>t.name=="Unity_ReferenceDepth").position-origin).normalized;
+            var right=(markers.Single(t=>t.name=="Unity_ReferenceRight").position-origin).normalized;
+            var cameraObject=new GameObject("Physical CRT smoke capture");
+            var camera=cameraObject.AddComponent<Camera>();camera.CopyFrom(host.Player.ViewCamera);camera.enabled=false;
+            camera.fieldOfView=45;camera.nearClipPlane=.01f;
+            camera.transform.position=physicalScreen.bounds.center+front*.58f+right*.5f+Vector3.up*.18f;
+            camera.transform.LookAt(physicalScreen.bounds.center);
+            var target=RenderTexture.GetTemporary(1280,960,24,RenderTextureFormat.ARGB32);
+            var previous=RenderTexture.active;var image=new Texture2D(1280,960,TextureFormat.RGBA32,false);
+            try
+            {
+                camera.targetTexture=target;camera.Render();RenderTexture.active=target;
+                image.ReadPixels(new Rect(0,0,1280,960),0,0);image.Apply();
+                File.WriteAllBytes(Path.Combine(folder,name+".png"),image.EncodeToPNG());
+            }
+            finally {camera.targetTexture=null;RenderTexture.active=previous;RenderTexture.ReleaseTemporary(target);Destroy(image);Destroy(cameraObject);}
+        }
         private void ObserveSound(MiniGameAudioChannel channel,MiniGameSound sound)
         {
             if(sound==MiniGameSound.TerminalPowerOn)powerOnSounds++;

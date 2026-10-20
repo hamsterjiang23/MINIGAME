@@ -48,6 +48,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(textPoint.x, Is.InRange(.1f, .9f));
             Assert.That(textPoint.y, Is.InRange(.15f, .85f));
             Assert.That(narration.Opacity, Is.InRange(.1f, .99f), "Lettering must remain translucent.");
+            yield return PrototypePlayModeTests.CaptureIfRequested(host, "poster-white-frame");
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             Assert.That(host.Screen.AdvancePropNarration(), Is.False);
             Assert.That(narration.IsOpen, Is.True);

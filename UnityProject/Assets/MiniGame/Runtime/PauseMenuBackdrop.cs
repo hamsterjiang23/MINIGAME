@@ -59,6 +59,7 @@ namespace MiniGame.UnityHost
             image.enabled = false;
             yield return new WaitForEndOfFrame();
             RenderTexture full = null, scratch = null;
+            var previousTarget = RenderTexture.active;
             try
             {
                 int width = Mathf.Max(1, Screen.width), height = Mathf.Max(1, Screen.height);
@@ -83,10 +84,14 @@ namespace MiniGame.UnityHost
                 material.SetFloat("_Finish", 1);
                 Graphics.Blit(scratch, blurred, material);
                 image.texture = blurred;
+                // ScreenCapture uses the graphics backend's framebuffer orientation.
+                // RawImage expects bottom-up UVs; correct once, after all blur passes.
+                image.uvRect = SystemInfo.graphicsUVStartsAtTop ? new Rect(0, 1, 1, -1) : new Rect(0, 0, 1, 1);
                 image.enabled = true;
             }
             finally
             {
+                RenderTexture.active = previousTarget;
                 if (full != null) RenderTexture.ReleaseTemporary(full);
                 if (scratch != null) RenderTexture.ReleaseTemporary(scratch);
                 Capturing = false;

@@ -11,7 +11,7 @@
 3. 发言用继续按钮、Enter或空格推进；回复用鼠标、数字1–4，或上下键定位后Enter确认。新选项默认高亮第一项，空格不选择答案。左下显示最近对话；Esc使用暂停菜单。处置权限继续读取会话规则。`[verified: terminal-amber/verification.json ui；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs HandleTerminalKey]`
 4. 处置只结算一次；读完反应与断信号后，有后续待审对象时返回目录，最后一位完成后自动关机。已归档对象不能再次接待。F5保存、F9读取；终端演示使用 `terminal-demo-save.json`。`[verified: terminal-amber/verification.json ui/checks；../src/MiniGame.Presentation/GameRuntime.cs CompleteCue]`
 
-界面当前采用v0.8.12琥珀资源，保留坐下和镜头衔接。处置反应完成后局部断信号，有后续对象时回目录；当天最后一位完成后自动关机。目录也可手动关机回房。`[verified: terminal-amber/verification.json ui；../src/MiniGame.Presentation/GameRuntime.cs CompleteCue]`
+界面当前采用v0.8.12琥珀资源，保留坐下和镜头衔接。每天首次进入才开机；目录可返回房间，电脑保持亮屏，再次进入继续当天进度。处置反应完成后局部断信号，有后续对象时回目录；当天最后一位完成后才自动关机。物理屏幕已按真实玻璃曲率贴合，开关机各有专用音效；本轮运行版与验证见[CRT指南](crt-screen-fit/guide.md)。`[verified: ../src/MiniGame.Presentation/GameRuntime.cs CompleteCue/LeaveTerminal；crt-screen-fit/verification.json]`
 
 若需验收旧三天流程，在 Play 前取消 Bootstrap 的 **Use Terminal Demo**；开发API为 `StartLegacyPrototype()`。旧流程使用独立的 `prototype-save.json`，操作见[三天开发原型验收](planner-acceptance-guide.md#旧三天开发原型验收)。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L29-L30、L126]
 

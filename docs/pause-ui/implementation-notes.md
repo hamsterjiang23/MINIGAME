@@ -8,6 +8,8 @@
 
 # Discovered edge cases
 
+- 2026-10-20 Mono Player 修复：可见 Direct3D11 窗口中确认暂停背景上下颠倒；在 RawImage 输出端统一纵向 UV，并在模糊完成后恢复原 RenderTexture.active。图形回归包含暂停／恢复／重复暂停及分辨率切换。
+
 - Perspective changes actual pointer bounds: projected hit rectangles enclose the trapezoid, then inverse projection rejects empty corners. `[verified: ../../UnityProject/Assets/MiniGame/Runtime/PauseMenuHitArea.cs Configure/Raycast]`
 - Background capture must exclude the pause overlay. Its fade waits for one end-of-frame capture; batch mode skips capture and a 0.5-second unscaled watchdog releases rendering stalls. `[verified: ../../UnityProject/Assets/MiniGame/Runtime/PauseMenuBackdrop.cs Capture/CaptureFrame/Update]`
 
