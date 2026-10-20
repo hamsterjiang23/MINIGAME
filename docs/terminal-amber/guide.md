@@ -19,7 +19,7 @@
 
 ## 验证与运行
 
-本轮实际检查结果、运行版本路径与截图见[验证记录](verification.json)。原始HTML固定在[参考快照](reference-v0.8.12.html)；包内旧验证记录仅代表导入方原版，不覆盖本轮改造。`[verified: verification.json；package-original-verification.json]`
+最新CRT曲面、每日电源、起床视角与海报改造的运行版和结果见[最新验证](../crt-screen-fit/verification.json)。初次琥珀界面结果保留在[早期验证记录](verification.json)。原始HTML固定在[参考快照](reference-v0.8.12.html)；包内旧验证记录仅代表导入方原版。`[verified: ../crt-screen-fit/verification.json；verification.json；package-original-verification.json]`
 
 可查看[独立Player的GPU终端预览](previews/review.png)。这是原生UI纹理经过实际CRT材质的离屏输出；隐藏窗口整屏截取不作为画面验收证据。`[verified: verification.json previews/limits]`
 

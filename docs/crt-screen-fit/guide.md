@@ -2,6 +2,8 @@
 
 物理显示器使用原模型玻璃曲率生成的覆盖网格，替换原先悬浮的四顶点矩形；原屏幕对象、材质和场景交互引用继续使用。正面与左右侧预览见 [front.png](previews/front.png)、[left.png](previews/left.png)、[right.png](previews/right.png)。`[verified: CrtScreenFitPostprocessor.Apply；../../Art/MainRoom/screen-fit/report.json vertices/triangles；verification.json geometry]`
 
+实际Windows Player同机位的[每日首次开机前](previews/physical-off.png)与[中途退出后持续亮屏](previews/physical-midday-on.png)可直接对照；截图使用当时运行中的场景和材质电源状态。`[verified: daily-player.json initiallyOff/middayLit；AmberTerminalPlayerSmoke.CapturePhysical]`
+
 覆盖面有3,191顶点、6,153三角形，玻璃前后深度变化36.87毫米。采样实际模型表面后沿观察轴向前偏移0.65毫米，圆角边界收在玻璃内；四处源网格缺口使用附近有效采样补齐。深度变化表示玻璃曲率，不是覆盖面浮起的距离。`[verified: ../../Art/MainRoom/screen-fit/report.json depthVariationMillimetres/method/scanHoleFallbackCount]`
 
 生成脚本为 [fit_screen.py](../../Art/MainRoom/screen-fit/fit_screen.py)，源模型、资源和脚本SHA256保存在同目录 [report.json](../../Art/MainRoom/screen-fit/report.json)。Unity导入器通过四个参考标记转换坐标，并校验实际显示器包围盒；源模型移动或改变后应重新采样。FBX开启Read/Write，让导入阶段可以原位修改屏幕子网格，保留其文件标识；源FBX几何文件未改写。`[verified: CrtScreenFitPostprocessor.OnPreprocessModel/Apply；report.json sourceSha256/resourceSha256/generatorSha256]`
