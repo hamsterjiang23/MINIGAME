@@ -89,10 +89,9 @@ namespace MiniGame.UnityHost.Tests
 
         private static string DayOneDirectory()
         {
-            var asset = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
-            Assert.That(asset, Is.Not.Null);
-            var package = DialoguePackageCompiler.Compile(asset.PackageSource.text);
-            var runtime = new GameRuntime(package.Rules, package.Content, useTerminalDirectory: true);
+            var session = MiniGameSessionHost.Current;
+            Assert.That(session, Is.Not.Null);
+            var runtime = new GameRuntime(session.Rules, session.Content, useTerminalDirectory: true);
             Assert.That(runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
             Complete(runtime, PresentationKind.EnterTerminal);
             Assert.That(runtime.EnterSelectedPatient("tutorial").Accepted, Is.True);
@@ -100,13 +99,11 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, Disposition.Purify).Accepted, Is.True);
             Complete(runtime, PresentationKind.Reaction);
             Complete(runtime, PresentationKind.ExitTerminal);
-            Assert.That(runtime.ReturnToDirectory().Accepted, Is.True);
-            Assert.That(runtime.LeaveTerminal().Accepted, Is.True);
             Complete(runtime, PresentationKind.ExitTerminal);
+            Assert.That(runtime.BeginNightDream().Accepted, Is.True);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
             Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
             Complete(runtime, PresentationKind.Sleep);
-            Complete(runtime, PresentationKind.Dream);
-            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
             Assert.That(runtime.TryInteract(InteractionTarget.Door).Accepted, Is.True);
             Complete(runtime, PresentationKind.MorningInspection);
             Complete(runtime, PresentationKind.Briefing);
@@ -142,8 +139,8 @@ namespace MiniGame.UnityHost.Tests
             var portrait = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait");
             Assert.That(portrait.enabled && portrait.gameObject.activeInHierarchy, Is.True);
             Assert.That(portrait.sprite, Is.EqualTo(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find(latest.PortraitId)));
-            Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "IndividualRecord").text,
-                Is.EqualTo(view.PresentedPatientName));
+            Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "RecordRegistration").text,
+                Is.EqualTo(PortraitCatalog.Registration(actor)));
         }
 
         private static IEnumerator CompleteWithTreatment(MiniGameBootstrap host)
@@ -175,12 +172,10 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(button, Is.Not.Null);
             Canvas.ForceUpdateCanvases();
             var rectangle = (RectTransform)button.transform;
-            var canvas = button.GetComponentInParent<Canvas>();
             var pointer = new PointerEventData(EventSystem.current)
             {
                 button = PointerEventData.InputButton.Left, clickCount = clickCount,
-                position = RectTransformUtility.WorldToScreenPoint(canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
-                    rectangle.TransformPoint(rectangle.rect.center))
+                position = button.GetComponentInParent<MiniGameScreen>().TerminalDisplay.ScreenPointFor(rectangle)
             };
             var hits = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointer, hits);

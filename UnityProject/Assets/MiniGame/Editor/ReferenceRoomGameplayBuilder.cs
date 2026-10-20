@@ -142,6 +142,7 @@ namespace MiniGame.UnityHost.Editor
             controller.enabled = true;
             if (renderers.Count(item => item.name.StartsWith("B_ExteriorConcrete_", StringComparison.Ordinal)) != 2)
                 throw new InvalidOperationException("Both original exterior concrete objects must be retained.");
+            RoomLightingSetup.EnsureInScene(scene);
             AssetDatabase.SaveAssets(); EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene, MainRoomGameplayBuilder.ScenePath);
             var report = new { width = Width, depth = Depth, height = Height, horizontalFov = 61.9275f, frame133 = true,
                 doorWidth = 1.5, doorHeight = 2.5, posters = 2, exteriorConcrete = 2, source = "Art/MainRoom2/minigame员工宿舍.blend" };

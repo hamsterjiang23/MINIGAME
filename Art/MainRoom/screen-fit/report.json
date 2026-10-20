@@ -1,0 +1,108 @@
+{
+  "source": "Art\\MainRoom\\reference\\MainRoomReference.glb",
+  "sourceSha256": "52b1445d26361105229fe2204b6e236a1636d7f8b7d8cd6e54079512cd7359e0",
+  "resource": "UnityProject\\Assets\\MiniGame\\Resources\\MiniGame\\CrtScreenFit.json",
+  "resourceSha256": "496668d757433940d041b011c11d4bc61d5dbc413193acaa0d1b27f2cc028413",
+  "generatorSha256": "b6e8ea0e7fd051964d1ac8242ecf009a7e7a2d411d877f5ffbb40935999124a1",
+  "method": "Continuous filled aperture silhouette; conservative inset rounded rectangle; actual front mesh ray depths with 0.65mm front/view-axis offset, preserving the projected aperture edge. Only scan holes interpolate nearby valid surface samples (global measured quadratic is emergency fallback).",
+  "vertices": 3191,
+  "triangles": 6153,
+  "apertureBoundsGltfXY": [
+    2.855,
+    0.216,
+    3.158,
+    0.42100000000000004
+  ],
+  "cornerRadiusMetres": 0.012,
+  "surfaceDepthRangeGltfZ": [
+    0.17633390657469952,
+    0.21320453948229395
+  ],
+  "depthVariationMillimetres": 36.870632907594434,
+  "sourceHelperGltfWorldBounds": [
+    [
+      2.8559994058017772,
+      0.21649998426437378,
+      0.16100033434172056
+    ],
+    [
+      3.151999409616458,
+      0.42049992084503174,
+      0.1610004341454605
+    ]
+  ],
+  "quadraticFitCenterGltfXY": [
+    3.004,
+    0.315
+  ],
+  "quadraticFitCoefficientsXX_XY_YY_X_Y_Constant": [
+    0.7549621605780682,
+    -0.008251662619315564,
+    1.0451817509630683,
+    -0.0005429570567102638,
+    0.041637511271521425,
+    0.17649912090018435
+  ],
+  "sourceFitTriangles": 863,
+  "adaptiveRefinements": [
+    {
+      "faces": 0,
+      "edges": 2
+    },
+    {
+      "faces": 0,
+      "edges": 1
+    }
+  ],
+  "scanHoleFallbackCount": 4,
+  "scanHoleFallbackLocationsGltfXY": [
+    {
+      "x": 3.0065,
+      "y": 0.2544375
+    },
+    {
+      "x": 3.0065,
+      "y": 0.2800625
+    },
+    {
+      "x": 3.0065,
+      "y": 0.28860416666666666
+    },
+    {
+      "x": 3.0775156249999998,
+      "y": 0.40818750000000004
+    }
+  ],
+  "boundaryBrightBezelViolations": [],
+  "boundarySamples": 224,
+  "triangleCenterGapMillimetresQuantiles0_1_50_99_100": [
+    0.41103295935841305,
+    0.5339666706185219,
+    0.6334610864875214,
+    0.6845814730030614,
+    6.261130351579493
+  ],
+  "triangleCentersBelowSource": 0,
+  "triangleCenterSourceScanHoles": 9,
+  "edgeMidpointGapMillimetresQuantiles0_1_50_99_100": [
+    0.3520290898275267,
+    0.5338374803929146,
+    0.6356640754832412,
+    0.6882264006221852,
+    5.030340850873101
+  ],
+  "edgeMidpointsBelowSource": 0,
+  "edgeMidpointsSourceScanHoles": 14,
+  "edgeMidpoints": 9343,
+  "penetrations": [],
+  "frameMapping": {
+    "gltfWorldToBlenderWorld": "(X,Y,Z)->(X,-Z,Y)",
+    "referenceMinimumBlender": [
+      -2.05606,
+      -0.69033,
+      -0.72788
+    ],
+    "normalDirection": "Original monitor local +Z / reference glTF world -Z",
+    "triangles": "Right handed glTF outward winding; reverse each triangle if target conversion reflects handedness."
+  }
+}

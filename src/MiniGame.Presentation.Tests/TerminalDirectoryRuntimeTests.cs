@@ -79,7 +79,7 @@ namespace MiniGame.Presentation.Tests
         [TestCase(Disposition.Treat, 5)]
         [TestCase(Disposition.Purify, 4)]
         [TestCase(Disposition.Release, 5)]
-        public void ReactionArchiveAndReturnNavigationSurviveRestoreWithoutRepeatingDisposition(Disposition disposition, int remaining)
+        public void FinalPatientAutomaticallyShutsDownAndRestoreNeverRepeatsDisposition(Disposition disposition, int remaining)
         {
             var package = Package();
             var runtime = Open(package);
@@ -104,13 +104,15 @@ namespace MiniGame.Presentation.Tests
             Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Archive));
             Assert.That(runtime.GetView().ArchiveDirectoryVisible, Is.False);
             Assert.That(runtime.GetView().TerminalOpen, Is.True);
-            Assert.That(runtime.ReturnToDirectory().Accepted, Is.True);
+            Assert.That(runtime.GetView().LeavingTerminal, Is.True);
+            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.ExitTerminal));
+            Assert.That(runtime.ReturnToDirectory().Accepted, Is.False);
             runtime = GameRuntime.Restore(runtime.Save(), package.Rules, package.Content);
-            Assert.That(runtime.GetView().ArchiveDirectoryVisible, Is.True);
+            Assert.That(runtime.GetView().ArchiveDirectoryVisible, Is.False);
             Assert.That(runtime.EnterSelectedPatient("child").Accepted, Is.False);
             Assert.That(runtime.GetView().Game.RemainingPurificationQuota, Is.EqualTo(remaining));
             Assert.That(runtime.GetView().Transcript.Count(entry => entry.SourceNodeId.StartsWith("disposition:", StringComparison.Ordinal)), Is.EqualTo(1));
-            Assert.That(runtime.LeaveTerminal().Accepted, Is.True);
+            Assert.That(runtime.LeaveTerminal().Accepted, Is.False);
             runtime = GameRuntime.Restore(runtime.Save(), package.Rules, package.Content);
             Complete(runtime);
             Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Closed));

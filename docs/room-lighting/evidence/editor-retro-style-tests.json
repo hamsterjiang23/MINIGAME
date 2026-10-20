@@ -1,0 +1,132 @@
+{
+  "status": "completed",
+  "duration": 1.12,
+  "summary": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.BayerDitherIsRepeatableAndUsesTheSamePixelBlocks",
+      "Status": "Passed",
+      "Duration": 0.0246489,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.DisablingColorGradingAlsoBypassesItsNeutralTonemapping",
+      "Status": "Passed",
+      "Duration": 0.003244,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.ExposureAndToneExposuresUseEvAndNeutralCurveStaysFinite",
+      "Status": "Passed",
+      "Duration": 0.0043262,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.NaturalDefaultsAreExactBypassIncludingNegativeAndHdrChannels",
+      "Status": "Passed",
+      "Duration": 0.0023719,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.PerceptualQuantizationUsesLuminanceAndExactlyNLevels",
+      "Status": "Passed",
+      "Duration": 0.0017854,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.PresetsResetPreviouslyEditedControlsAndRangesCannotOverlap",
+      "Status": "Passed",
+      "Duration": 0.0015723,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.ToneTintSlotsAffectTheirOwnLuminanceZones",
+      "Status": "Passed",
+      "Duration": 0.0016667,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.VirtualGridPreservesAspectOrientationBordersAndActualTexelCentres(641,361,180)",
+      "Status": "Passed",
+      "Duration": 0.0616761,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.VirtualGridPreservesAspectOrientationBordersAndActualTexelCentres(1279,719,540)",
+      "Status": "Passed",
+      "Duration": 0.1789263,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenGradingTests.VirtualGridPreservesAspectOrientationBordersAndActualTexelCentres(127,71,1080)",
+      "Status": "Passed",
+      "Duration": 0.0676605,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.BlackAndHdrRemainFiniteAndColorRatiosSurviveQuantization",
+      "Status": "Passed",
+      "Duration": 0.0391763,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.BypassAndOriginalPreviewPreserveSourceAndSettings",
+      "Status": "Passed",
+      "Duration": 0.0065548,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.InvalidValuesAreSanitizedAndProfileSupportsUndoSaveReload",
+      "Status": "Passed",
+      "Duration": 0.0932298,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.PixelBlocksKeepOrientationAndPartialEdges(1280,720)",
+      "Status": "Passed",
+      "Duration": 0.0391274,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.PixelBlocksKeepOrientationAndPartialEdges(1920,1080)",
+      "Status": "Passed",
+      "Duration": 0.2349637,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.PixelBlocksKeepOrientationAndPartialEdges(1279,719)",
+      "Status": "Passed",
+      "Duration": 0.1202489,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RetroScreenTests.ReplacementCameraAndSavedSceneKeepCustomProfile",
+      "Status": "Passed",
+      "Duration": 0.1509027,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

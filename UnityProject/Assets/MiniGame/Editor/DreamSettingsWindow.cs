@@ -12,6 +12,32 @@ namespace MiniGame.UnityHost.Editor
 {
     public sealed class DreamSettingsWindow : EditorWindow
     {
+        private const string PendingBeachOpenKey = "MiniGame.DreamSettings.OpenBeachAfterPlay";
+
+        [InitializeOnLoadMethod]
+        private static void ResumePendingBeachOpen()
+        {
+            EditorApplication.playModeStateChanged -= OnBeachOpenPlayModeChanged;
+            EditorApplication.playModeStateChanged += OnBeachOpenPlayModeChanged;
+            if (SessionState.GetBool(PendingBeachOpenKey, false) && !EditorApplication.isPlayingOrWillChangePlaymode)
+                EditorApplication.delayCall += CompletePendingBeachOpen;
+        }
+
+        private static void OnBeachOpenPlayModeChanged(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.EnteredEditMode)
+                EditorApplication.delayCall += CompletePendingBeachOpen;
+        }
+
+        private static void CompletePendingBeachOpen()
+        {
+            if (!SessionState.GetBool(PendingBeachOpenKey, false) || EditorApplication.isPlayingOrWillChangePlaymode) return;
+            SessionState.EraseBool(PendingBeachOpenKey);
+            var window = GetWindow<DreamSettingsWindow>("梦境与结局");
+            window.Run(window.OpenBeach);
+            window.Repaint();
+        }
+
         private sealed class ChoiceRow
         {
             public int Day;
@@ -103,6 +129,8 @@ namespace MiniGame.UnityHost.Editor
                 if (GUILayout.Button("定位配置", EditorStyles.toolbarButton, GUILayout.Width(80)))
                     EditorGUIUtility.PingObject(tab == 2 ? (UnityEngine.Object)rebellion : profile);
                 GUILayout.FlexibleSpace();
+                if (tab == 1 && GUILayout.Button(BeachOpenLabel, EditorStyles.toolbarButton, GUILayout.Width(160)))
+                    Run(RequestOpenBeach);
                 if (GUILayout.Button("音频设置", EditorStyles.toolbarButton, GUILayout.Width(80))) MiniGameAudioSettingsWindow.Open();
                 if (preview != null && preview.IsPreview)
                     preview.PreviewPaused = GUILayout.Toggle(preview.PreviewPaused, "暂停预览", EditorStyles.toolbarButton, GUILayout.Width(80));
@@ -173,8 +201,9 @@ namespace MiniGame.UnityHost.Editor
                 }
             }
             EditorGUILayout.HelpBox("有配音时按音频长度推进字幕；留空时使用显示秒数。终局歌曲与海浪循环在“音频设置”中选择文件。", MessageType.None);
-            using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
-                if (GUILayout.Button("打开海滩终局场景")) Run(OpenBeach);
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                EditorGUILayout.HelpBox("暂停仍属于播放模式。点击下方按钮可退出播放，再打开海滩场景。", MessageType.Info);
+            if (GUILayout.Button(BeachOpenLabel)) Run(RequestOpenBeach);
         }
 
         private void DrawSceneBindings()
@@ -342,6 +371,18 @@ namespace MiniGame.UnityHost.Editor
             if (preview != null) preview.StopPreview();
             preview = null;
             MiniGameAudioSettingsWindow.StopPreview();
+        }
+
+        private static string BeachOpenLabel => EditorApplication.isPlayingOrWillChangePlaymode
+            ? "退出播放并打开海滩" : "打开海滩终局场景";
+
+        private void RequestOpenBeach()
+        {
+            if (!EditorApplication.isPlayingOrWillChangePlaymode) { OpenBeach(); return; }
+            StopPreview(); settings.ApplyModifiedProperties(); rules.ApplyModifiedProperties();
+            SessionState.SetBool(PendingBeachOpenKey, true);
+            EditorApplication.isPaused = false;
+            EditorApplication.isPlaying = false;
         }
 
         private void OpenBeach()

@@ -5,13 +5,13 @@
 ## 启动与操作
 
 1. 在非 Play 状态运行 Unity 菜单 **MiniGame/Campaign/Import and activate**，校验全流程包、原生编译 Yarn、导入27张立绘，并把融合房间设为全流程入口；再用 **MiniGame/Main Room/Open and play**。缺少图片或编译失败会报错。`[verified: ../UnityProject/Assets/MiniGame/Editor/CampaignBuilder.cs ImportAndActivate/ImportPortraits；../UnityProject/Assets/MiniGame/Editor/MainRoomGameplayBuilder.cs OpenAndPlay]`
-2. Day0 从电脑开始：瞄准电脑按 E 或鼠标左键，经过落座、对齐屏幕、向前推进与淡入后，进入名册开始审查；五句开场后只能净化，播放两句反应。返回房间、操作床，梦境结束后再次操作床进入 Day1。Day1–3 先完成门口晨检和简报，再到电脑自由选择当天待审角色。`[verified: ../src/MiniGame.Core/Runtime/GameSession.cs constructor/Execute/InteractWith；../UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json campaign.days；../UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs Update；../UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs SeatedEntry]`
-3. 发言默认每秒30字。点击继续、Enter或空格，先补全当前页，再次操作翻页或推进；长句自动分页，历史保存完整原文。鼠标或数字1–4直接选择回复；上下键定位后按 Enter 确认。查看记录时阻挡推进与选择，ESC先关闭记录。`[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs PresentDialogueLine/HandleTerminalKey；../UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs Advance/Paginate；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs Update]`
-4. 处置反应及结案文字结束后，监控断信号并归档；**返回对象清单**接待下一人，**返回房间**才执行离开电脑的演出。归档继续显示刚结束会谈的角色。当天队列完成后进入夜间流程。`[verified: ../src/MiniGame.Presentation/GameRuntime.cs ReturnToDirectory/LeaveTerminal/GetView；../UnityProject/Assets/MiniGame/Runtime/TerminalView.cs Render/HandleArchiveKey]`
+2. Day0启动直接显示监管者监控，点击屏幕后连续拉远到完整终端；五段教学后仅可净化，播放两段反应并自动关机。回房后聚光灯照床，关闭家具碰撞，保留地面、墙和玩家；床交互一次播放闭眼后进入Day1。Day1–3完成门口晨检和简报后，到电脑自由选择当天待审角色。详见[开场指南](opening/guide.md)。`[verified: MiniGameBootstrap.StartTerminalDemo；PresentationEffects.DayZeroOpening/SleepTransition；GameRuntime.CompleteCue；BedtimeCollisionGate.Apply]`
+3. 发言默认每秒30字。点击继续、Enter或空格，先补全当前页，再次操作翻页或推进；长句自动分页，历史保存完整原文。应答默认首项，上下键循环，Enter、数字1–4或鼠标确认。F2/F3已移除，Esc暂停；Day0命令条为被动提示，只有当前继续或净化按钮可操作。`[verified: MiniGameScreen.HandleTerminalKey/ShowResponseButtons；TerminalView.Render]`
+4. 处置反应及结案文字结束后，监控断信号并归档；还有待审对象时返回目录继续。当天全部对象完成后自动关机；目录也可手动关机，再开机保留进度。`[verified: GameRuntime.CompleteCue/ReturnToDirectory/LeaveTerminal]`
 
 F5保存、F9恢复、ESC暂停。全流程单独使用 `Application.persistentDataPath/campaign-save.json`；读档从当前未完成的一句重新显示，页数回到该句第一页，已完成的句子跳过，已提交的回答和处置不重复结算。`[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs SavePath/Save/Load；../UnityProject/Assets/MiniGame/Yarn/MiniGameYarnBridge.cs PresentLineAsync；../UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs Begin]`
 
-记录页阻挡对白推进和选项输入，但会谈已经结束、进入处置阶段时，可以直接点击当前允许的处置。Day0只显示净化；提交后自动回到应答页播放人物反应。暂停仍锁住处置按钮。[verified: ../UnityProject/Assets/MiniGame/Runtime/TerminalView.cs Render；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs 处置回调；../UnityProject/Assets/MiniGame/Tests/PlayMode/HistoryDispositionPlayModeTests.cs DayZeroCanPurifyFromHistoryAfterDialogueThenPlaysBothReactionsOnlyOnce]
+左下自动显示最近对话，没有可切换的记录模式。Day0仅显示净化处置；提交后播放人物反应，暂停锁定所有处置按钮。`[verified: TerminalView.Render；MiniGameScreen.HandleTerminalKey]`
 
 睡前与梦后仅能操作床时，房间渐暗，只留下床上方的聚光灯和飞舞的小虫，以亮区引导玩家休息；门与电脑不再弹出不可用提示。效果预览、参数与恢复行为见[睡前床位聚光灯](bedtime-guidance.md)。[verified: ../UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs SetTargets；../UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs RefreshFocus/InteractFocused]
 

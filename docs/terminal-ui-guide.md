@@ -2,14 +2,16 @@
 
 本页说明保留的**V1小孩Day1独立演示**与单日策划工具。主场景现在默认使用Day0＋五人三天的V2全流程，启动、对白转换及27张原创立绘见[全流程指南](campaign-guide.md)和[验收报告](campaign-verification.json)。[verified: campaign-verification.json content/portraits/unity；../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs Awake/StartCampaign]
 
+当前终端已迁移到[琥珀终端指南](terminal-amber/guide.md)：v0.8.12资产包、800×600显示、开关机与动态监控；F2／F3功能已移除。`[verified: terminal-amber/verification.json ui/resources]`
+
 ## 在 Unity 运行
 
 1. 单日演示使用 `InspectionApartment.unity`：退出Play后通过 `MiniGame/Open prototype scene` 打开，再进入Play。先到门口按E完成晨检与简报，再到电脑开始小孩Day1。仓库根 [Open-Unity.cmd](../Open-Unity.cmd) 则启动融合房间的V2全流程。[verified: ../UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs OpenPrototype；../UnityProject/Tools/Open-Project.ps1；campaign-verification.json unity]
 2. 默认启用 Bootstrap 的 **Use Terminal Demo**，从 `Resources/MiniGame/ActiveDialoguePackage` 取得当前内容包。按现有房间交互进入电脑，在对象目录选择小孩开始审查。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L18、L38、L115；terminal-ui-verification.json scope]
-3. 发言用继续按钮、Enter或空格推进；回复用鼠标、数字1–4，或上下键定位后Enter确认。新选项默认不选中，上下键循环，空格不选答案。「记录」每屏五行、长句单行裁切，滚轮翻阅，打开时阻挡对话按键；ESC先关闭记录。六轮完成后才允许处置，释放还需要绿灯。[verified: terminal-alignment-verification.json changes/unity.playMode；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs HandleTerminalKey]
-4. 处置只结算一次；读完反应、花屏与断信号后返回目录，已归档对象不能再次接待。F5保存、F9读取；终端演示使用 `terminal-demo-save.json`。恢复可能重播当前对话段，不承诺逐行/逐字位置恢复。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L29-L30；terminal-ui-verification.json scope/limits] [opinion]
+3. 发言用继续按钮、Enter或空格推进；回复用鼠标、数字1–4，或上下键定位后Enter确认。新选项默认高亮第一项，空格不选择答案。左下显示最近对话；Esc使用暂停菜单。处置权限继续读取会话规则。`[verified: terminal-amber/verification.json ui；../UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs HandleTerminalKey]`
+4. 处置只结算一次；读完反应与断信号后，有后续待审对象时返回目录，最后一位完成后自动关机。已归档对象不能再次接待。F5保存、F9读取；终端演示使用 `terminal-demo-save.json`。`[verified: terminal-amber/verification.json ui/checks；../src/MiniGame.Presentation/GameRuntime.cs CompleteCue]`
 
-界面按v0.5.2默认工业皮肤调整，保留原有推镜、开机和退出回位。处置反应完成后只在监控窗口花屏，当前发言保留对象最后一句；归档页Enter回目录，再点「返回房间」退出电脑。[verified: terminal-alignment-verification.json changes/preservedSources/unity.playMode]
+界面当前采用v0.8.12琥珀资源，保留坐下和镜头衔接。处置反应完成后局部断信号，有后续对象时回目录；当天最后一位完成后自动关机。目录也可手动关机回房。`[verified: terminal-amber/verification.json ui；../src/MiniGame.Presentation/GameRuntime.cs CompleteCue]`
 
 若需验收旧三天流程，在 Play 前取消 Bootstrap 的 **Use Terminal Demo**；开发API为 `StartLegacyPrototype()`。旧流程使用独立的 `prototype-save.json`，操作见[三天开发原型验收](planner-acceptance-guide.md#旧三天开发原型验收)。[verified: ../UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs L29-L30、L126]
 

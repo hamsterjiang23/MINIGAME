@@ -68,6 +68,13 @@ namespace MiniGame.UnityHost
             }
             var doorCamera = viewCamera.GetComponent<DoorViewCamera>();
             if (doorCamera != null) doorCamera.RecoverDisabledView();
+            if (screen != null && screen.PropNarrationBlocksWorld)
+            {
+                ClearFocus();
+                Cursor.visible = current.Paused;
+                Cursor.lockState = current.Paused ? CursorLockMode.None : CursorLockMode.Locked;
+                return;
+            }
             if (runtime.GetView().Input == InputContext.DoorView)
             {
                 ClearFocus();
@@ -116,6 +123,7 @@ namespace MiniGame.UnityHost
         public void RefreshInteractionFocus()
         {
             if (runtime == null || runtime.GetView().Input != InputContext.World
+                || (screen != null && screen.PropNarrationBlocksWorld)
                 || (dreamDirector != null && dreamDirector.OwnsCamera)) { ClearFocus(); return; }
             UpdateDreamTraversal(runtime.GetView());
             RefreshFocus();
@@ -123,6 +131,7 @@ namespace MiniGame.UnityHost
 
         public bool InteractFocused()
         {
+            if (screen != null && screen.PropNarrationBlocksWorld) return false;
             var doorView = viewCamera.GetComponent<DoorViewCamera>();
             if (runtime.GetView().Input == InputContext.DoorView)
                 return CompleteWorldInteraction(doorView != null && doorView.TryReturn());
@@ -148,11 +157,13 @@ namespace MiniGame.UnityHost
 
         public bool InteractSecondaryFocused()
         {
+            if (screen != null && screen.PropNarrationBlocksWorld) return false;
             RefreshInteractionFocus();
             if (focusedReadable != null && CanRead(runtime.GetView()))
             {
-                if (screen != null) screen.ShowRoomCaption(focusedReadable.Caption, focusedReadable.CaptionSeconds);
-                return CompleteWorldInteraction(true);
+                bool shown = screen != null && screen.ShowPropNarration(focusedReadable, viewCamera);
+                if (shown) ClearFocus();
+                return CompleteWorldInteraction(shown);
             }
             return focused != null && focused.Target == InteractionTarget.Computer && InteractFocused();
         }
@@ -172,7 +183,8 @@ namespace MiniGame.UnityHost
             var view = runtime.GetView();
             if (dreamTraversalActive) next = FindDreamTarget(view);
             else if (Physics.Raycast(viewCamera.transform.position, viewCamera.transform.forward, out var hit, Mathf.Infinity,
-                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+                Physics.DefaultRaycastLayers, view.Game.Day == 0 && BedtimeGuidance.IsSleepOnly(view)
+                    ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore))
             {
                 readable = hit.collider.GetComponentInParent<ReadableProp>();
                 if (readable != null && (hit.distance > readable.InteractionDistance || !CanRead(runtime.GetView()))) readable = null;
@@ -224,7 +236,7 @@ namespace MiniGame.UnityHost
 
         private void UpdateDreamTraversal(RuntimeView view)
         {
-            bool requested = dreamTraversalConfigured && view.DreamTraversal;
+            bool requested = dreamTraversalConfigured && view.Game.Day > 0 && view.DreamTraversal;
             if (requested == dreamTraversalActive) return;
             if (!requested)
             {
@@ -281,16 +293,32 @@ namespace MiniGame.UnityHost
             if (!dreamTraversalActive) return;
             dreamTraversalActive = false;
             if (controller != null) controller.enabled = false;
-            if (wake && dreamWakePose != null)
-            {
-                transform.SetPositionAndRotation(dreamWakePose.position, Quaternion.Euler(0, dreamWakePose.eulerAngles.y, 0));
-                pitch = 0;
-                if (viewCamera != null) viewCamera.transform.localRotation = Quaternion.identity;
-            }
+            if (wake) PlaceAtWakePose();
             if (controller != null) controller.enabled = controllerBeforeDream;
             downwardSpeed = 0;
             dreamTargets = new WorldInteraction[0];
             ClearFocus();
+        }
+
+        // Called before the Day0 furniture solids return, including while player input is disabled.
+        public void RestoreDayZeroWakePose()
+        {
+            if (dreamWakePose == null) return;
+            if (controller == null) controller = GetComponent<CharacterController>();
+            bool wasEnabled = controller.enabled;
+            controller.enabled = false;
+            PlaceAtWakePose();
+            controller.enabled = wasEnabled;
+            downwardSpeed = 0;
+            ClearFocus();
+        }
+
+        private void PlaceAtWakePose()
+        {
+            if (dreamWakePose == null) return;
+            // The authored anchor is a safe position before furniture becomes solid again.
+            // Waking does not replace the player's chosen heading or camera look angles.
+            transform.position = dreamWakePose.position;
         }
 
         private void OnDisable()

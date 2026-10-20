@@ -106,6 +106,8 @@ namespace MiniGame.UnityHost
             previous = view;
             menuMusic = false;
             SynchronizeLoops(view);
+            if (view.Paused) service.Pause(MiniGameAudioChannel.TerminalPower);
+            else service.Resume(MiniGameAudioChannel.TerminalPower);
             bool reviewing = view.TerminalOpen && view.TerminalPage == TerminalPage.Review;
             if (before != null && !view.Paused)
             {
@@ -139,7 +141,7 @@ namespace MiniGame.UnityHost
                 ? dreamProfile != null ? dreamProfile.GetDay(dreamDay)?.Music : DreamSound(dreamDay - 1)
                 : DreamSound(view.Game.Day);
             service.SetLoop(MiniGameAudioChannel.DreamMusic, music, fade);
-            service.SetLoop(MiniGameAudioChannel.ComputerNoise, view.TerminalOpen && !dream && !ending ? MiniGameSound.PCNoise : (MiniGameSound?)null, fade);
+            service.SetLoop(MiniGameAudioChannel.ComputerNoise, view.TerminalPowered && !dream && !ending ? MiniGameSound.PCNoise : (MiniGameSound?)null, fade);
             service.SetLoop(MiniGameAudioChannel.Projector, projecting ? MiniGameSound.Projector : (MiniGameSound?)null, fade);
             if (runtime.UsesDreamFlow) SetDreamPaused(view.Paused);
         }
@@ -179,6 +181,15 @@ namespace MiniGame.UnityHost
         {
             if (isActiveAndEnabled && runtime != null && !runtime.GetView().Paused)
                 service.PlayOneShot(MiniGameAudioChannel.Dialogue, MiniGameSound.DialoguePop);
+        }
+
+        public void PlayTerminalPowerOn() => PlayTerminalPower(MiniGameSound.TerminalPowerOn);
+        public void PlayTerminalPowerOff() => PlayTerminalPower(MiniGameSound.TerminalPowerOff);
+
+        private void PlayTerminalPower(MiniGameSound sound)
+        {
+            if (isActiveAndEnabled && runtime != null && !runtime.GetView().Paused)
+                service?.PlayOneShot(MiniGameAudioChannel.TerminalPower, sound);
         }
 
         private void OnDisable()

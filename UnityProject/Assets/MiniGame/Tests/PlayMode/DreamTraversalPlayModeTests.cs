@@ -64,11 +64,41 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(player.transform.position.y, Is.EqualTo(origin.y));
             player.TryMoveDreamTraversal(origin - player.transform.position);
             player.FacePoint(bed.GetComponent<Collider>().bounds.center);
+            Quaternion bodyRotationBeforeSleep = player.transform.rotation;
+            Quaternion cameraRotationBeforeSleep = camera.transform.rotation;
+            camera.fieldOfView = 72;
+            wake.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y + 135, 0);
             Assert.That(player.InteractFocused(), Is.True);
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
             Assert.That(player.DreamTraversalActive, Is.False);
             Assert.That(controller.enabled, Is.True);
             Assert.That(player.transform.position, Is.EqualTo(wake.position), "Returning to daytime must use the safe authored wake position.");
+            Assert.That(Quaternion.Angle(player.transform.rotation, bodyRotationBeforeSleep), Is.LessThan(.01f), "Waking must preserve heading instead of turning toward the wall-facing anchor.");
+            Assert.That(Quaternion.Angle(camera.transform.rotation, cameraRotationBeforeSleep), Is.LessThan(.01f), "Waking must preserve the player's vertical look angle.");
+            Assert.That(camera.fieldOfView, Is.EqualTo(72));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void DayZeroWakeRepositionsSafelyWithoutChangingLookOrControllerState(bool initiallyEnabled)
+        {
+            CreateRig();
+            controller.enabled = initiallyEnabled;
+            wake.rotation = Quaternion.Euler(0, 180, 0);
+            player.FacePoint(camera.transform.position + Quaternion.Euler(-24, 131, 0) * Vector3.forward);
+            camera.fieldOfView = 68;
+            Quaternion bodyRotation = player.transform.rotation;
+            Quaternion cameraRotation = camera.transform.rotation;
+            Vector3 cameraLocalPosition = camera.transform.localPosition;
+
+            player.RestoreDayZeroWakePose();
+
+            Assert.That(player.transform.position, Is.EqualTo(wake.position));
+            Assert.That(controller.enabled, Is.EqualTo(initiallyEnabled));
+            Assert.That(Quaternion.Angle(player.transform.rotation, bodyRotation), Is.LessThan(.01f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, cameraRotation), Is.LessThan(.01f));
+            Assert.That(camera.transform.localPosition, Is.EqualTo(cameraLocalPosition));
+            Assert.That(camera.fieldOfView, Is.EqualTo(68));
         }
 
         [UnityTest]

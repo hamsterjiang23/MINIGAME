@@ -94,7 +94,8 @@ namespace MiniGame.UnityHost.Editor
 
             RenderSettings.skybox = null;
             RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color(.18f, .20f, .17f);
+            // The combined room uses the warm ochre palette selected from reference 4.
+            RenderSettings.ambientLight = installGameplay ? new Color(.23f, .195f, .105f) : new Color(.18f, .20f, .17f);
             RenderSettings.fog = false;
             var camera = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener)).GetComponent<Camera>();
             camera.tag = "MainCamera";
@@ -106,12 +107,16 @@ namespace MiniGame.UnityHost.Editor
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(.045f, .05f, .045f);
             camera.allowHDR = true;
-            AddLight(room, "CeilingLight", new Color(.70f, .82f, .69f), 1.3f, 8, true);
-            AddLight(room, "WindowLight", new Color(.47f, .58f, .72f), 1.1f, 7, true);
-            AddLight(room, "MonitorLight", new Color(.48f, .76f, .61f), .35f, 2, false);
-            AddLight(room, "FillLight", new Color(.66f, .69f, .60f), .45f, 7, false);
+            AddLight(room, "CeilingLight", installGameplay ? new Color(1f, .84f, .43f) : new Color(.70f, .82f, .69f),
+                installGameplay ? 1.6f : 1.3f, 8, true);
+            AddLight(room, "WindowLight", installGameplay ? new Color(.63f, .70f, .67f) : new Color(.47f, .58f, .72f),
+                installGameplay ? .55f : 1.1f, 7, true);
+            AddLight(room, "MonitorLight", installGameplay ? new Color(.72f, .77f, .50f) : new Color(.48f, .76f, .61f),
+                installGameplay ? .22f : .35f, 2, false);
+            AddLight(room, "FillLight", installGameplay ? new Color(.88f, .70f, .37f) : new Color(.66f, .69f, .60f),
+                installGameplay ? .50f : .45f, 7, false);
             if (source.hasExteriorConcrete)
-                AddLight(room, "ExteriorLight", new Color(.62f, .68f, .72f), .85f, 10, true);
+                AddLight(room, "ExteriorLight", installGameplay ? new Color(.69f, .74f, .72f) : new Color(.62f, .68f, .72f), .85f, 10, true);
             AssetDatabase.SaveAssets();
             EditorSceneManager.SaveScene(scene, scenePath);
             var report = new ImportReport

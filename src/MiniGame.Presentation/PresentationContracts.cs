@@ -9,6 +9,7 @@ namespace MiniGame.Presentation
 {
     public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory, DoorView }
     public enum TerminalPage { Closed, Directory, Review, Archive, SelfReview }
+    public enum TerminalPowerState { Off, Booting, Running, ShuttingDown }
     public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction, DoorMotion, DoorViewReturn }
     public enum InspectionKind { Eyes, Hands, Teeth, Photo, DailySigns, Records }
 
@@ -91,6 +92,10 @@ namespace MiniGame.Presentation
         public TerminalPage TerminalPage { get; }
         public bool UsesTerminalDirectory { get; }
         public bool LeavingTerminal { get; }
+        public TerminalPowerState TerminalPower { get; }
+        public bool TerminalPowered => TerminalPower != TerminalPowerState.Off;
+        public bool TerminalBootRequired => TerminalPower == TerminalPowerState.Booting;
+        public bool TerminalShuttingDown => TerminalPower == TerminalPowerState.ShuttingDown;
         public bool ArchiveDirectoryVisible { get; }
         public bool RoomDoorOpen { get; }
         public bool DoorViewActive { get; }
@@ -109,7 +114,8 @@ namespace MiniGame.Presentation
             bool leavingTerminal = false, IEnumerable<TranscriptEntry>? transcript = null, bool archiveDirectoryVisible = false,
             string? presentedPatientId = null, string? presentedPatientName = null, string? presentedEncounterId = null,
             Disposition? presentedDisposition = null, IEnumerable<Disposition>? configuredDispositions = null,
-            bool roomDoorOpen = false, bool doorViewActive = false, bool usesDreamFlow = false)
+            bool roomDoorOpen = false, bool doorViewActive = false, bool usesDreamFlow = false,
+            TerminalPowerState terminalPower = TerminalPowerState.Off)
         {
             Game = game; Input = input; TerminalOpen = terminalOpen; Paused = paused;
             Cue = cue; Dialogue = dialogue; Inspection = inspection;
@@ -117,6 +123,7 @@ namespace MiniGame.Presentation
             AllowedInteractions = new ReadOnlyCollection<InteractionTarget>(new List<InteractionTarget>(interactions));
             ObservedSigns = new ReadOnlyCollection<string>(new List<string>(observedSigns));
             TerminalPage = terminalPage; UsesTerminalDirectory = usesTerminalDirectory; LeavingTerminal = leavingTerminal;
+            TerminalPower = terminalPower;
             ArchiveDirectoryVisible = archiveDirectoryVisible;
             RoomDoorOpen = roomDoorOpen;
             DoorViewActive = doorViewActive;

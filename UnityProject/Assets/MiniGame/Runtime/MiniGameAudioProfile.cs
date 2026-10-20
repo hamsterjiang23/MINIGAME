@@ -20,7 +20,9 @@ namespace MiniGame.UnityHost
         [InspectorName("对话弹出")] DialoguePop = 11,
         [InspectorName("Day3 受缚待审")] Dream3 = 12,
         [InspectorName("海滩终局音乐")] EndingMusic = 13,
-        [InspectorName("海浪环境声")] OceanWaves = 14
+        [InspectorName("海浪环境声")] OceanWaves = 14,
+        [InspectorName("电脑开机")] TerminalPowerOn = 15,
+        [InspectorName("电脑关机")] TerminalPowerOff = 16
     }
 
     [Serializable]

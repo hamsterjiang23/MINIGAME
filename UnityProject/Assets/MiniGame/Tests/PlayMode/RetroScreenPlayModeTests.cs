@@ -17,7 +17,8 @@ namespace MiniGame.UnityHost.Tests
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             var effect = host.Player.ViewCamera.GetComponent<RetroScreenEffect>();
             Assert.That(effect, Is.Not.Null);
-            Assert.That(effect.Profile, Is.SameAs(Resources.Load<RetroScreenProfile>("RetroScreenDefault")));
+            Assert.That(effect.Profile, Is.SameAs(Resources.Load<RetroScreenProfile>("RoomLightingReferenceRetro")));
+            Assert.That(effect.Profile.FullscreenQuantization, Is.False);
             Assert.That(host.Screen.Canvas.renderMode, Is.EqualTo(RenderMode.ScreenSpaceOverlay));
             string profileBefore = JsonUtility.ToJson(effect.Profile);
             effect.PreviewOriginal = true;
@@ -38,6 +39,7 @@ namespace MiniGame.UnityHost.Tests
         {
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
+            CampaignWorldFixture.Restore(Object.FindObjectOfType<MiniGameBootstrap>());
             var effect = Object.FindObjectOfType<RetroScreenEffect>();
             var camera = effect.GetComponent<Camera>();
             var originalProfile = effect.Profile;
@@ -53,7 +55,7 @@ namespace MiniGame.UnityHost.Tests
                 effect.PreviewOriginal = true;
                 var before = Capture(camera, target, texture);
                 effect.PreviewOriginal = false;
-                settings.Strength = 1; settings.PixelSize = 8; settings.Levels = 4;
+                settings.Strength = 1; settings.PixelSize = 8; settings.FullscreenQuantization = true; settings.Levels = 4;
                 var stylized = Capture(camera, target, texture);
                 Assert.That(Difference(before, stylized), Is.GreaterThan(.0001f), "The actual camera must execute the post-process shader.");
                 settings.Strength = 0;

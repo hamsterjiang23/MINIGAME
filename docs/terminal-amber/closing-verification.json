@@ -1,0 +1,115 @@
+{
+  "checkedAt": "2026-10-20T19:33:16.9712505+08:00",
+  "scope": "HTML Closing session console on full terminal shutdown",
+  "reference": {
+    "zip": "C:/Users/admin/Downloads/PMS_Unity_Resources_v0.8.12.zip",
+    "sha256": "9510cbab30da31ae8f7e2e3ae741a54045269c2d73297a54364318b0a420a5af",
+    "html": "docs/terminal-amber/reference-v0.8.12.html",
+    "sequence": [
+      "blank 375ms",
+      "Closing session... 875ms",
+      "Session closed. 500ms",
+      "Session closed. + System halted. + >>> cursor 750ms",
+      "System halted. + frozen >>> cursor 625ms",
+      "CRT collapse 760ms"
+    ]
+  },
+  "changes": [
+    "Console uses fixed upper-left x28/y24, 20px rows instead of a large middle-aligned text label",
+    "Known console glyphs prewarmed before output",
+    "Delayed-frame catch-up is clamped at the next text-stage boundary; output cannot be skipped before being shown",
+    "Closing precedes camera retreat; pause and restored closing checkpoints retain token safeguards"
+  ],
+  "dotnet": {
+    "sdk": "8.0.424",
+    "restore": "dotnet restore MiniGame.sln --locked-mode",
+    "build": "dotnet build MiniGame.sln -c Release --no-restore",
+    "test": "dotnet test MiniGame.sln -c Release --no-build --no-restore",
+    "result": "passed",
+    "core": 113,
+    "presentation": 184,
+    "total": 297,
+    "warnings": 0,
+    "errors": 0
+  },
+  "playMode": {
+    "result": "Passed",
+    "passed": 5,
+    "failed": 0,
+    "raw": "Artifacts/TerminalClosing/results.xml",
+    "coverage": "Manual and Day0 automatic Closing text at upper-left GPU pixels, pause/restore/stale token, opening and seated entry"
+  },
+  "windowsMono": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\TerminalClosing\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 7.1280098999999995
+  },
+  "capture": {
+    "result": "passed",
+    "capturedFrames": 228,
+    "closingFrames": 50,
+    "visibleClosingFrames": 50,
+    "minimumClosingPixels": 598,
+    "maximumClosingPixels": 598,
+    "closingTextSeconds": 0.8891009000000007,
+    "inputLocked": true,
+    "minimumReveal": 1.0,
+    "safe": true,
+    "collapse": true,
+    "off": true,
+    "droppedBusy": 0,
+    "droppedCapacity": 0,
+    "raw": "Artifacts/TerminalClosing/Player/verification.json"
+  },
+  "fullPlayer": {
+    "result": "passed",
+    "detail": "Fresh campaign opening, native UI tutorial and one sleep completed",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Native UI camera RenderTexture and the displayed CRT material; room capture uses the actual room camera",
+    "sourceLines": 7,
+    "day": 1,
+    "singlePurification": true,
+    "bedOnly": true,
+    "furnitureRestored": true,
+    "seconds": 17.276805877685547
+  },
+  "movie": {
+    "path": "docs/terminal-amber/previews/closing-session-60fps.mp4",
+    "metadata": {
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "60/1",
+      "duration": "4.683333",
+      "nb_read_frames": "281"
+    },
+    "source": "Actual standalone native UI render texture plus CRT material; asynchronous readback, preserved sample timestamps, 60fps encoding with frame holds"
+  },
+  "sourceHashes": {
+    "src/MiniGame.Presentation/TerminalPowerTimeline.cs": "2615797edefffcb16c0820892cd1aa58061b0b51345e482e9f364bd169f8db49",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalTransitionView.cs": "8573ca89d5cb331596eec94ec4c379a024fd86b79c4111839a32bf652e68b3d3",
+    "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs": "4287b201c2e60b24292cef73ff1149c32d034928a73667375330be414426642e",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs": "bd1f7c36c4fb469865de2643a301626f15927be79129473bf8ce836443b5d2d2",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalClosingRecorder.cs": "3d334f207b6bcdff3eb2991608772277b7913527009b7ff8d7e0a3c1753b36d7"
+  },
+  "assemblySha256": "fdbaf4ec3800dce50a6d79afe645cfd4bec1cfb7af7e9c1995b3d8ce085953bd",
+  "limits": [
+    "The recorder runs only under an explicit development flag and exports after Off. This is a GPU UI capture rather than a desktop backbuffer recording.",
+    "Existing user-running TerminalAmber Player was left running; the updated binary is under Builds/TerminalClosing/MiniGame.exe.",
+    "Large-frame non-skipping is a deterministic timeline test; the cause of the user-observed missing phase was not independently recorded from their running process."
+  ],
+  "staticChecks": {
+    "diff": "passed",
+    "newSourceWhitespace": "passed",
+    "guideLinks": 8,
+    "missingLinks": 0,
+    "movieDecode": "passed"
+  }
+}

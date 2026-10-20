@@ -1,0 +1,76 @@
+{
+  "recordedAt": "2026-10-20T10:52:40.4725569+08:00",
+  "request": "Entire exterior corridor uses red ceiling spotlights shining vertically down",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "lightCount": 3,
+  "lightNames": [
+    "Corridor red spotlight",
+    "Corridor red spotlight B-18",
+    "Corridor red spotlight B-16"
+  ],
+  "worldDirection": [
+    0,
+    -1,
+    0
+  ],
+  "allDirectionsVerified": true,
+  "light": {
+    "softShadows": true,
+    "range": 4.8,
+    "outerAngle": 60,
+    "color": [
+      1,
+      0.025,
+      0.015
+    ],
+    "type": "Spot",
+    "intensity": 4.5,
+    "innerAngle": 38
+  },
+  "corridorFill": {
+    "daylight": 0.35,
+    "ceilingFill": 0.16
+  },
+  "visual": {
+    "status": "Actual scene render inspected",
+    "after": "Artifacts/CorridorRed/downward-overview.png",
+    "before": "Artifacts/CorridorRed/overview.png",
+    "method": "Temporary perspective camera renders scene lighting without player retro post effect",
+    "coverage": "Both neighbor doors and the full corridor floor receive ceiling red light"
+  },
+  "night": {
+    "count": 3,
+    "allOff": true,
+    "bedOn": true
+  },
+  "doorRegression": {
+    "status": "completed",
+    "duration": 3.66,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "results": [
+      {
+        "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.EntryAlignsBeforePushingAndEPathReturnsBeforeClosingWithoutMovingTheBody",
+        "Status": "Passed",
+        "Duration": 3.6343835,
+        "Message": null,
+        "StackTrace": null
+      }
+    ]
+  },
+  "rebuild": {
+    "preservesExistingLightValues": true,
+    "generator": "ReferenceCorridorBuilder.Build -> EnsureRedSpotlight",
+    "incrementalMenu": "MiniGame/Main Room/Install corridor red spotlight",
+    "duplicateInstallCount": 3
+  },
+  "limits": [
+    "No new Player build for this lighting-only revision",
+    "Performance not benchmarked"
+  ]
+}

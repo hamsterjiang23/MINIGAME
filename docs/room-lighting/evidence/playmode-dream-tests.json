@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "duration": 4.84,
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.PreviewFramesWallPausesAndRestoresCameraAndProjection",
+      "Status": "Passed",
+      "Duration": 1.8543932,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.RuntimeCheckpointKeepsPlaybackTimeAndCompletesOnlyAfterReturn",
+      "Status": "Passed",
+      "Duration": 1.7606748,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.ThreeDreamsHaveDeterministicMovingPixelsAndAnOffscreenOnlyCamera",
+      "Status": "Passed",
+      "Duration": 1.2009724,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

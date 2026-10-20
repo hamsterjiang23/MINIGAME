@@ -20,6 +20,8 @@ namespace MiniGame.Presentation
         private readonly IGameContent _content;
         private readonly List<ObservationRecord> _observations = new List<ObservationRecord>();
         private bool _terminalOpen;
+        private int _terminalPowerDay;
+        private TerminalPowerState _terminalPower;
         private bool _paused;
         private PresentationCue? _cue;
         private InspectionContent? _inspection;
@@ -46,6 +48,7 @@ namespace MiniGame.Presentation
             _rules = rules ?? throw new ArgumentNullException(nameof(rules));
             _content = content ?? throw new ArgumentNullException(nameof(content));
             _useTerminalDirectory = useTerminalDirectory;
+            _terminalPowerDay = session.GetPlayerView().Day;
             if (string.IsNullOrWhiteSpace(content.Revision))
                 throw new ArgumentException("Content requires a stable revision.", nameof(content));
         }
@@ -88,7 +91,7 @@ namespace MiniGame.Presentation
                 _terminalPage, _useTerminalDirectory, _leavingDirectory,
                 _transcript.Where(entry => entry.EncounterId == _historyEncounterId), _archiveDirectoryVisible,
                 presented?.PatientId, presentedProfile?.DisplayName, presented?.Id, presented?.Disposition, presentedMeeting?.ReactionNodes.Keys,
-                _roomDoorOpen, _doorViewActive, UsesDreamFlow);
+                _roomDoorOpen, _doorViewActive, UsesDreamFlow, _terminalPower);
             return _cachedView;
         }
 
@@ -106,6 +109,8 @@ namespace MiniGame.Presentation
             {
                 if (view.Game.Phase == GamePhase.SelfReview && UsesDreamFlow)
                 {
+                    // The post-dream self review is a live safety display, not another daily work boot.
+                    _terminalPower = TerminalPowerState.Running;
                     _terminalOpen = true;
                     _terminalPage = TerminalPage.SelfReview;
                     _archiveDirectoryVisible = false;
@@ -121,6 +126,7 @@ namespace MiniGame.Presentation
                 }
                 if (_session.GetPlayerView().Phase == GamePhase.Work)
                 {
+                    if (_terminalPower == TerminalPowerState.Off) _terminalPower = TerminalPowerState.Booting;
                     _terminalOpen = true;
                     _terminalPage = _useTerminalDirectory ? TerminalPage.Directory : TerminalPage.Review;
                     _archiveDirectoryVisible = false;
@@ -128,6 +134,11 @@ namespace MiniGame.Presentation
                     SetCue(PresentationKind.EnterTerminal);
                 }
                 return Accept(result?.Events);
+            }
+            if (UsesDreamFlow && target == InteractionTarget.Bed && view.Game.Day == 0 && view.Game.Phase == GamePhase.AfterDream)
+            {
+                SetCue(PresentationKind.Sleep);
+                return Accept();
             }
             var bedResult = _session.Execute(new Interact(target));
             if (!bedResult.Accepted) return Reject(bedResult.Reason.ToString());
@@ -137,6 +148,26 @@ namespace MiniGame.Presentation
             if (phase == GamePhase.Sleeping) SetCue(PresentationKind.Sleep);
             else if (phase == GamePhase.Ending) SetCue(PresentationKind.Ending);
             return Accept(bedResult.Events);
+        }
+
+        /// <summary>Fresh campaign opening using the normal authoritative interaction and patient selection.</summary>
+        public RuntimeResult BeginDayZeroOpening()
+        {
+            var view = GetView();
+            if (!IsCampaign || !_useTerminalDirectory || view.Game.Day != 0 || view.Game.Phase != GamePhase.Apartment
+                || view.Input != InputContext.World) return Reject("OpeningUnavailable");
+            var entered = _session.Execute(new Interact(InteractionTarget.Computer));
+            if (!entered.Accepted) return Reject(entered.Reason.ToString());
+            var game = _session.GetPlayerView();
+            var selected = _session.Execute(new SelectPatient(game.CurrentPatientId!));
+            if (!selected.Accepted) throw new InvalidOperationException("The Day0 tutorial could not be selected.");
+            _terminalOpen = true;
+            _terminalPower = TerminalPowerState.Booting;
+            _terminalPage = TerminalPage.Review;
+            _archiveDirectoryVisible = false;
+            _historyEncounterId = game.CurrentEncounterId;
+            SetCue(PresentationKind.EnterTerminal);
+            return Accept(entered.Events.Concat(selected.Events));
         }
 
         public RuntimeResult BeginNightDream()
@@ -159,6 +190,7 @@ namespace MiniGame.Presentation
             var result = _session.Execute(new ConfirmSelfPurification());
             if (!result.Accepted) return Reject(result.Reason.ToString());
             _terminalOpen = false;
+            _terminalPower = TerminalPowerState.Off;
             _terminalPage = TerminalPage.Closed;
             _leavingDirectory = false;
             _archiveDirectoryVisible = false;
@@ -233,7 +265,8 @@ namespace MiniGame.Presentation
                 PresentationKind.ResponseBranch => new CompleteResponseBranch(game.CurrentEncounterId!, game.CurrentNodeId!),
                 PresentationKind.Reaction => new CompleteReaction(game.CurrentEncounterId!),
                 PresentationKind.Introduction => new CompleteIntroduction(game.CurrentEncounterId!, game.CurrentNodeId!),
-                PresentationKind.Sleep => new CompleteSleep(),
+                PresentationKind.Sleep => game.Day == 0 && game.Phase == GamePhase.AfterDream
+                    ? (GameCommand)new Interact(InteractionTarget.Bed) : new CompleteSleep(),
                 PresentationKind.Dream => new CompleteDream(),
                 _ => null
             };
@@ -252,18 +285,40 @@ namespace MiniGame.Presentation
                     SetCue(PresentationKind.DoorMotion);
                     break;
                 case PresentationKind.EnterTerminal:
-                    if (!_useTerminalDirectory && game.EncounterStage == EncounterStage.Introduction)
+                    _terminalPower = TerminalPowerState.Running;
+                    if ((!_useTerminalDirectory || _terminalPage == TerminalPage.Review) && game.EncounterStage == EncounterStage.Introduction)
                         SetCue(PresentationKind.Introduction);
                     break;
                 case PresentationKind.MorningInspection: SetCue(PresentationKind.Briefing); break;
-                case PresentationKind.Reaction: SetCue(PresentationKind.ExitTerminal); break;
+                case PresentationKind.Reaction:
+                    if (!_useTerminalDirectory && _session.GetPlayerView().Phase == GamePhase.Evening)
+                        _terminalPower = TerminalPowerState.ShuttingDown;
+                    SetCue(PresentationKind.ExitTerminal);
+                    break;
                 case PresentationKind.ExitTerminal:
-                    if (_useTerminalDirectory && !_leavingDirectory) _terminalPage = TerminalPage.Archive;
-                    else { _terminalOpen = false; _terminalPage = TerminalPage.Closed; }
+                    if (_useTerminalDirectory && !_leavingDirectory)
+                    {
+                        _terminalPage = TerminalPage.Archive;
+                        if (game.Phase == GamePhase.Evening && game.CurrentEncounterId == null)
+                        {
+                            _terminalPower = TerminalPowerState.ShuttingDown;
+                            _leavingDirectory = true;
+                            _archiveDirectoryVisible = false;
+                            SetCue(PresentationKind.ExitTerminal);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (_terminalPower == TerminalPowerState.ShuttingDown) _terminalPower = TerminalPowerState.Off;
+                        _terminalOpen = false; _terminalPage = TerminalPage.Closed;
+                    }
                     _leavingDirectory = false;
                     _archiveDirectoryVisible = false;
                     break;
-                case PresentationKind.Sleep: SetCue(PresentationKind.Dream); break;
+                case PresentationKind.Sleep:
+                    if (_session.GetPlayerView().Phase == GamePhase.Dream) SetCue(PresentationKind.Dream);
+                    break;
             }
             return Accept(result?.Events);
         }
@@ -407,6 +462,7 @@ namespace MiniGame.Presentation
                 TerminalOpen = _terminalOpen, Paused = _paused, CueKind = _cue?.Kind,
                 OpenInspectionKind = _inspection?.Kind, UseTerminalDirectory = _useTerminalDirectory,
                 Page = _terminalPage, LeavingDirectory = _leavingDirectory, HistoryEncounterId = _historyEncounterId,
+                TerminalPowerDay = _terminalPowerDay, TerminalPower = _terminalPower,
                 ArchiveDirectoryVisible = _archiveDirectoryVisible,
                 RoomDoorOpen = _roomDoorOpen,
                 DoorViewActive = _doorViewActive,
@@ -446,6 +502,9 @@ namespace MiniGame.Presentation
                     _terminalOpen = checkpoint.TerminalOpen, _paused = checkpoint.Paused,
                     _terminalPage = checkpoint.Page ?? (checkpoint.TerminalOpen ? TerminalPage.Review : TerminalPage.Closed),
                     _leavingDirectory = checkpoint.LeavingDirectory, _historyEncounterId = checkpoint.HistoryEncounterId,
+                    _terminalPowerDay = session.GetPlayerView().Day,
+                    _terminalPower = rules.DreamFlowEnabled && session.GetPlayerView().Phase == GamePhase.SelfReview
+                        ? TerminalPowerState.Running : checkpoint.TerminalPower ?? InferLegacyTerminalPower(checkpoint, session),
                     _archiveDirectoryVisible = checkpoint.ArchiveDirectoryVisible,
                     _roomDoorOpen = checkpoint.RoomDoorOpen,
                     _doorViewActive = checkpoint.DoorViewActive
@@ -487,6 +546,20 @@ namespace MiniGame.Presentation
             var doorReturn = checkpoint.CueKind == PresentationKind.DoorViewReturn;
             var cue = doorMotion || doorReturn ? null : checkpoint.CueKind;
             var open = checkpoint.TerminalOpen;
+            if (checkpoint.TerminalPower.HasValue != checkpoint.TerminalPowerDay.HasValue)
+                throw new SnapshotValidationException("Terminal power and day must be saved together.");
+            if (checkpoint.TerminalPower.HasValue)
+            {
+                var power = checkpoint.TerminalPower.Value;
+                if (!Enum.IsDefined(typeof(TerminalPowerState), power) || checkpoint.TerminalPowerDay != game.Day
+                    || (power == TerminalPowerState.Booting && (!open || cue != PresentationKind.EnterTerminal))
+                    || (power == TerminalPowerState.ShuttingDown && (!open || cue != PresentationKind.ExitTerminal
+                        || game.Phase != GamePhase.Evening || checkpoint.UseTerminalDirectory && !checkpoint.LeavingDirectory))
+                    || (power == TerminalPowerState.Off && (open || game.Phase == GamePhase.Work))
+                    || (power == TerminalPowerState.Running && (game.Phase == GamePhase.MorningInspection
+                        || game.Phase == GamePhase.Briefing || game.Phase == GamePhase.Apartment)))
+                    throw new SnapshotValidationException("Terminal power does not match the daily presentation checkpoint.");
+            }
             if (checkpoint.RoomDoorOpen && !DoorCanRemainOpen(game.Phase))
                 throw new SnapshotValidationException("The room door must be closed outside the working day.");
             if (checkpoint.DoorViewActive && (!checkpoint.RoomDoorOpen || open || checkpoint.OpenInspectionKind.HasValue
@@ -539,7 +612,7 @@ namespace MiniGame.Presentation
                 GamePhase.Evening => (!open && cue == null) || (afterReaction && open && cue == PresentationKind.ExitTerminal),
                 GamePhase.Sleeping => !open && cue == PresentationKind.Sleep,
                 GamePhase.Dream => !open && cue == PresentationKind.Dream,
-                GamePhase.AfterDream => !open && cue == null,
+                GamePhase.AfterDream => !open && (cue == null || rules.DreamFlowEnabled && game.Day == 0 && cue == PresentationKind.Sleep),
                 GamePhase.SelfReview => rules.DreamFlowEnabled && ((!open && cue == null)
                     || (open && page == TerminalPage.SelfReview && (cue == null || cue == PresentationKind.EnterTerminal))),
                 GamePhase.Ending => !open && (cue == null || cue == PresentationKind.Ending),
@@ -639,6 +712,14 @@ namespace MiniGame.Presentation
 
         private RuntimeResult Accept(IEnumerable<GameEvent>? events = null)
         {
+            var game = _session.GetPlayerView();
+            if (_terminalPowerDay != game.Day)
+            {
+                _terminalPowerDay = game.Day;
+                _terminalPower = TerminalPowerState.Off;
+            }
+            if (UsesDreamFlow && game.Phase == GamePhase.SelfReview)
+                _terminalPower = TerminalPowerState.Running;
             if (!DoorCanRemainOpen(_session.GetPlayerView().Phase))
             {
                 _roomDoorOpen = false;
@@ -650,6 +731,18 @@ namespace MiniGame.Presentation
         }
 
         private static RuntimeResult Reject(string reason) => new RuntimeResult(reason);
+
+        private static TerminalPowerState InferLegacyTerminalPower(RuntimeCheckpoint checkpoint, GameSession session)
+        {
+            var game = session.GetPlayerView();
+            if (checkpoint.TerminalOpen && checkpoint.CueKind == PresentationKind.EnterTerminal) return TerminalPowerState.Booting;
+            if (checkpoint.TerminalOpen && checkpoint.CueKind == PresentationKind.ExitTerminal
+                && game.Phase == GamePhase.Evening && (!checkpoint.UseTerminalDirectory || checkpoint.LeavingDirectory))
+                return TerminalPowerState.ShuttingDown;
+            if (checkpoint.TerminalOpen || game.Phase == GamePhase.Work || game.Phase == GamePhase.SelfReview)
+                return TerminalPowerState.Running;
+            return TerminalPowerState.Off;
+        }
 
         private static bool DoorCanRemainOpen(GamePhase phase) => phase == GamePhase.MorningInspection
             || phase == GamePhase.Briefing || phase == GamePhase.Apartment || phase == GamePhase.Work;
@@ -668,6 +761,8 @@ namespace MiniGame.Presentation
         [JsonProperty(Required = Required.Always)] public List<ObservationRecord> Observations { get; set; } = new List<ObservationRecord>();
         [JsonProperty] public bool UseTerminalDirectory { get; set; }
         [JsonProperty] public TerminalPage? Page { get; set; }
+        [JsonProperty] public int? TerminalPowerDay { get; set; }
+        [JsonProperty] public TerminalPowerState? TerminalPower { get; set; }
         [JsonProperty] public bool LeavingDirectory { get; set; }
         [JsonProperty] public bool ArchiveDirectoryVisible { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool RoomDoorOpen { get; set; }

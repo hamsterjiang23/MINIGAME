@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 2.21,
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug",
+      "Status": "Passed",
+      "Duration": 0.7132272,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.EditingTheProfileAtBedtimeKeepsTheRoomDarkAndUpdatesTheNextMorning",
+      "Status": "Passed",
+      "Duration": 1.2255889,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset",
+      "Status": "Passed",
+      "Duration": 0.1296705,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.TerminalGlowUpdatesMaterialSlotsWithoutDiscardingTheirLightingBands",
+      "Status": "Passed",
+      "Duration": 0.1265192,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

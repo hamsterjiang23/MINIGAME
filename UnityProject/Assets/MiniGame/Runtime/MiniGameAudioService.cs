@@ -8,7 +8,7 @@ namespace MiniGame.UnityHost
     public enum MiniGameAudioChannel
     {
         MenuMusic = 0, GameplayMusic = 1, DreamMusic = 2, ComputerNoise = 3, Projector = 4,
-        World = 5, UI = 6, Dialogue = 7, Scanner = 8, Lamp = 9, EndingMusic = 10, Ocean = 11, Voice = 12
+        World = 5, UI = 6, Dialogue = 7, Scanner = 8, Lamp = 9, EndingMusic = 10, Ocean = 11, Voice = 12, TerminalPower = 13
     }
 
     /// <summary>Scene-owned named sources, sound-bank lookup and interruptible fades.</summary>

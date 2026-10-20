@@ -25,7 +25,7 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
             Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Archive));
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.BeginNightDream);
-            RuntimeScenario.Accept(runtime.LeaveTerminal());
+            Assert.That(runtime.GetView().LeavingTerminal, Is.True);
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.BeginNightDream);
             RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
             Assert.That(runtime.GetView().AllowedInteractions, Is.Empty);
@@ -42,6 +42,8 @@ namespace MiniGame.Presentation.Tests
             var restored = GameRuntime.Restore(runtime.Save(), rules, content);
             Assert.That(restored.Save(), Is.EqualTo(runtime.Save()));
             RuntimeScenario.Accept(restored.TryInteract(InteractionTarget.Bed));
+            Assert.That(restored.GetView().Game.Day, Is.Zero);
+            RuntimeScenario.Complete(restored, PresentationKind.Sleep);
             Assert.That(restored.GetView().Game.Day, Is.EqualTo(1));
             Assert.That(restored.GetView().DreamTraversal, Is.False);
         }
@@ -84,11 +86,14 @@ namespace MiniGame.Presentation.Tests
             Assert.That(runtime.GetView().Game.Rebellion, Is.EqualTo(100));
             Assert.That(runtime.GetView().DreamTraversal, Is.True);
             Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Computer }));
+            Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Running), "The self-review safety screen must already guide the player before computer interaction.");
+            Assert.That(runtime.GetView().TerminalBootRequired, Is.False);
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.ConfirmSelfPurification);
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
             runtime = GameRuntime.Restore(runtime.Save(), rules, content);
             RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Computer));
             Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.SelfReview));
+            Assert.That(runtime.GetView().TerminalBootRequired, Is.False, "Self review does not start another daily boot.");
             Assert.That(runtime.GetView().DreamTraversal, Is.False);
             Assert.That(runtime.GetView().Game.CurrentEncounterId, Is.Null);
             Assert.That(runtime.GetView().PresentedPatientId, Is.Null);
@@ -148,6 +153,26 @@ namespace MiniGame.Presentation.Tests
             Assert.That(legacy.GetView().DreamTraversal, Is.False);
             RuntimeScenario.RejectWithoutMutation(legacy, legacy.BeginNightDream);
             RuntimeScenario.RejectWithoutMutation(legacy, legacy.ConfirmSelfPurification);
+        }
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void RestoringUnpoweredSelfReviewEnablesItsSafetyScreenWithoutBootOrCoreChanges(bool missingPowerFields)
+        {
+            var rules = Rules(100); var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            DriveTo(runtime, view => view.Game.Phase == GamePhase.SelfReview);
+            var saved = JObject.Parse(runtime.Save());
+            if (missingPowerFields) { saved.Remove("TerminalPower"); saved.Remove("TerminalPowerDay"); }
+            else saved["TerminalPower"] = "Off";
+            var core = saved["CoreJson"]!.Value<string>();
+            runtime = GameRuntime.Restore(saved.ToString(), rules, content);
+            Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Running));
+            Assert.That(runtime.GetView().TerminalBootRequired, Is.False);
+            Assert.That(runtime.GetView().TerminalOpen, Is.False);
+            Assert.That(runtime.GetView().Cue, Is.Null);
+            Assert.That(JObject.Parse(runtime.Save())["CoreJson"]!.Value<string>(), Is.EqualTo(core));
+            Assert.That(GameRuntime.Restore(runtime.Save(), rules, content).Save(), Is.EqualTo(runtime.Save()));
         }
 
         private static JObject Core(GameRuntime runtime) => JObject.Parse(JObject.Parse(runtime.Save())["CoreJson"]!.Value<string>()!);

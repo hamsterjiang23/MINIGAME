@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab636d95ae600ee4694999e94e4dd153, type: 3}
+  m_Name: PatientMonitorDefault
+  m_EditorClassIdentifier: 
+  Enabled: 1
+  Width: 928
+  Height: 522
+  FramesPerSecond: 24
+  Exposure: 1.7
+  Saturation: 0.874
+  Noise: 0.0088
+  IdleMotion: 0.00392
+  Rooms:
+  - PatientId: child
+    Label: B-12
+    Seed: 12
+    WallTint: {r: 0.5167506, g: 0.8773585, b: 0.0041384934, a: 1}
+    LightTint: {r: 0.82, g: 0.91, b: 0.88, a: 1}
+    Grime: 0.16
+    ActorHeight: 1.32
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40
+  - PatientId: former-ruler
+    Label: B-13
+    Seed: 13
+    WallTint: {r: 0.74, g: 0.76, b: 0.69, a: 1}
+    LightTint: {r: 0.82, g: 0.91, b: 0.88, a: 1}
+    Grime: 0.34
+    ActorHeight: 1.63
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40
+  - PatientId: battlefield-doctor
+    Label: B-14
+    Seed: 14
+    WallTint: {r: 0.74, g: 0.77, b: 0.72, a: 1}
+    LightTint: {r: 0.82, g: 0.91, b: 0.88, a: 1}
+    Grime: 0.4
+    ActorHeight: 1.58
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40
+  - PatientId: diplomat
+    Label: B-15
+    Seed: 15
+    WallTint: {r: 0.74, g: 0.77, b: 0.72, a: 1}
+    LightTint: {r: 0.77, g: 0.86, b: 0.89, a: 1}
+    Grime: 0.2
+    ActorHeight: 1.68
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40
+  - PatientId: priest
+    Label: B-16
+    Seed: 16
+    WallTint: {r: 0.74, g: 0.77, b: 0.72, a: 1}
+    LightTint: {r: 0.82, g: 0.91, b: 0.88, a: 1}
+    Grime: 0.46
+    ActorHeight: 1.73
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40
+  - PatientId: tutorial
+    Label: B-17
+    Seed: 17
+    WallTint: {r: 0.74, g: 0.77, b: 0.72, a: 1}
+    LightTint: {r: 0.82, g: 0.91, b: 0.88, a: 1}
+    Grime: 0.24
+    ActorHeight: 1.57
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40

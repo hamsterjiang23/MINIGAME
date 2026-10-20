@@ -1,0 +1,444 @@
+{
+  "checkedAt": "2026-10-20T18:04:16.840797+08:00",
+  "scope": "Native amber terminal v0.8.12 in existing campaign and Day1 demo; latest user steering removes F2/F3 features",
+  "ui": {
+    "logicalResolution": [
+      800,
+      600
+    ],
+    "aspect": "4:3",
+    "monitorRect": [
+      30,
+      92,
+      464,
+      261
+    ],
+    "disabledFunctions": [
+      "F2 display settings",
+      "F3 history browser"
+    ],
+    "transcript": "passive latest conversation entries, wrapped; newest entry kept inside the viewport",
+    "input": "default first reply; arrows/Enter/1-4/mouse; Space advances speech only",
+    "power": "7.5s self-test +1.48s partition load; directory-only manual shutdown; final actual patient after reaction triggers automatic shutdown",
+    "save": "Existing runtime cue checkpoint; in-progress power segment replays on restore, side effects stay idempotent"
+  },
+  "resources": {
+    "source": "User-supplied PMS_Unity_Resources_v0.8.12",
+    "importedPath": "UnityProject/Assets/PMSAmberTerminal",
+    "reused": [
+      "Noto Sans Mono CJK SC font",
+      "directory/review frame artwork",
+      "PMS Amber CRT shader extended with optical collapse"
+    ],
+    "adapter": "Existing native host controls and GameRuntime/GameSession authority; independent PMS demo remains separate",
+    "sourceManifest": "docs/terminal-amber/package-source-manifest.json",
+    "sourceReferenceSha256": "8d102a75618fa02b7b3c6ceac0609cb3f6e66521c8e62f00499bfaf11d57aadb",
+    "fontSha256": "ec04cc376b34887cedbdf84074e2e226ed2761eeabdcb9173fc1dd7bfd153ef7",
+    "fontLicense": "UnityProject/Assets/PMSAmberTerminal/Fonts/OFL.txt",
+    "guidBindings": "verified font/shader/frame GUID references",
+    "sourceLayer": 27,
+    "patientLayer": 31
+  },
+  "monitor": {
+    "rooms": 6,
+    "portraits": 27,
+    "mode": "dynamic fixed wide camera, warm-gray signal; close-up retained in Editor preview",
+    "visibility": [
+      {
+        "portrait": "ML01",
+        "visibleFraction": 0.9990323,
+        "silhouettePixels": 12401
+      },
+      {
+        "portrait": "ML02",
+        "visibleFraction": 0.9992019,
+        "silhouettePixels": 12530
+      },
+      {
+        "portrait": "ML03",
+        "visibleFraction": 0.9994338,
+        "silhouettePixels": 12363
+      },
+      {
+        "portrait": "ML04",
+        "visibleFraction": 0.9991202,
+        "silhouettePixels": 12503
+      },
+      {
+        "portrait": "ML05",
+        "visibleFraction": 0.9991272,
+        "silhouettePixels": 12603
+      },
+      {
+        "portrait": "VV01",
+        "visibleFraction": 0.9998966,
+        "silhouettePixels": 19339
+      },
+      {
+        "portrait": "VV02",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19500
+      },
+      {
+        "portrait": "VV03",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19695
+      },
+      {
+        "portrait": "VV04",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19575
+      },
+      {
+        "portrait": "VV05",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19312
+      },
+      {
+        "portrait": "ED01",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19568
+      },
+      {
+        "portrait": "ED02",
+        "visibleFraction": 0.9994261,
+        "silhouettePixels": 19166
+      },
+      {
+        "portrait": "ED03",
+        "visibleFraction": 0.9996352,
+        "silhouettePixels": 19191
+      },
+      {
+        "portrait": "ED04",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19353
+      },
+      {
+        "portrait": "ED05",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19213
+      },
+      {
+        "portrait": "AD01",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 19387
+      },
+      {
+        "portrait": "AD02",
+        "visibleFraction": 0.9994795,
+        "silhouettePixels": 19213
+      },
+      {
+        "portrait": "AD03",
+        "visibleFraction": 0.9996321,
+        "silhouettePixels": 19026
+      },
+      {
+        "portrait": "AD04",
+        "visibleFraction": 0.9995316,
+        "silhouettePixels": 19214
+      },
+      {
+        "portrait": "AD05",
+        "visibleFraction": 0.999532,
+        "silhouettePixels": 19229
+      },
+      {
+        "portrait": "JN01",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 23007
+      },
+      {
+        "portrait": "JN02",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 23153
+      },
+      {
+        "portrait": "JN03",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 23216
+      },
+      {
+        "portrait": "JN04",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 23170
+      },
+      {
+        "portrait": "JN05",
+        "visibleFraction": 1.0,
+        "silhouettePixels": 23061
+      },
+      {
+        "portrait": "D0_01",
+        "visibleFraction": 0.999833,
+        "silhouettePixels": 23960
+      },
+      {
+        "portrait": "D0_02",
+        "visibleFraction": 0.9997951,
+        "silhouettePixels": 24400
+      }
+    ],
+    "minimumVisibleFraction": 0.9990323,
+    "evidence": "Artifacts/TerminalAmber/color.log",
+    "scope": "GPU depth comparison of current sprites and room configuration, not arbitrary future placements"
+  },
+  "checks": {
+    "dotnet": {
+      "sdk": "8.0.424",
+      "commands": [
+        "../.dotnet/dotnet.exe restore MiniGame.sln --locked-mode",
+        "../.dotnet/dotnet.exe build MiniGame.sln -c Release --no-restore",
+        "../.dotnet/dotnet.exe test MiniGame.sln -c Release --no-build --no-restore"
+      ],
+      "workdir": "src",
+      "buildErrors": 0,
+      "buildWarnings": 0,
+      "passed": 295,
+      "failed": 0,
+      "results": [
+        {
+          "passed": 113,
+          "failed": 0,
+          "evidence": "Artifacts/TerminalAmber/Dotnet/terminal-amber_net8.0_20261020173241.trx"
+        },
+        {
+          "passed": 182,
+          "failed": 0,
+          "evidence": "Artifacts/TerminalAmber/Dotnet/terminal-amber_net8.0_20261020173247.trx"
+        }
+      ]
+    },
+    "playmode": {
+      "passed": 32,
+      "failed": 0,
+      "aggregation": "latest result for each distinct test fullname across scoped staged runs; earlier corrected failures remain in raw reports",
+      "cases": {
+        "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.NativeCompositeRendersAndWarpedPickingMatchesEveryDisplayMode": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/final-input-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.PowerTimelineCanBeSkippedPausedRestoredAndManualShutdownReturnsToWorld": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.NativeYarnDrivesSixRoundsAndAllThreeDispositionReactions": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/terminal-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalDialoguePlayModeTests.PausingImmediatelyAfterContinueDoesNotLoseTheNextTranscriptLine": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/terminal-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ChoiceKeysDefaultToFirstWrapAndSupportAllFourNumberShortcuts": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/final-input-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DispositionKeepsLastSpeechAndLocalSignalLossThenReturnsToDirectoryBeforeRoomExit": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/final-input-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.RemovedFunctionKeysLeavePassiveTranscriptAndDialogueAvailable": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/final-input-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.DirectoryRejectsUnscheduledPatientAndDoubleClickSelectsAnyAvailablePatient": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/interaction-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.OverlayTerminalFitsActualScreenAndDifferentViewportAspectRatios": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/interaction-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.TerminalPlayModeTests.PassiveTranscriptDoesNotTakeKeyboardFocus": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/interaction-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.LongNarrationPagesMatchActualWrappedLabelsAndNewestSpeechRemainsVisible": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.ActorSitsBeforeAlignedDollyAndPhysicalCoveragePrecedesInterface": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.EveryCampaignPortraitRemainsVisibleInItsOwnDynamicRoom": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/color-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignAllTreatmentRouteVisitsEveryMeetingThenLocksTheRoom": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/campaign-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignNormalRouteShowsSixActorsAndAllDaysThenTakenAway": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/campaign-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignReleasedPriestAttacksOnTheFollowingMorning": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/campaign-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/campaign-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneAutomaticallyProjectsOnTheAuthoredWallAndReturnsBeforeBedUnlocks": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroAutomaticallySkipsVideoAndOneBedInteractionAdvancesExactlyOneDay": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamAudioDisabledSourcesStayStoppedAndReenableSynchronizesActualPlayback": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamPreviewStopRebindAndDisableRestoreExistingRetroFlags": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.HighRebellionSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.OutsideDoorSaveReplacesLaterDoorCaptureButRuntimeOnlyRebindPreservesIt": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.WorldSavePoseOverridesLaterTerminalDoorAndDreamReturnCaches": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.DestroyReleasesStageTexturesMeshesAndMaterialsWithoutChangingHostRendering": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.ExternalClockLimitsFramesAndPauseAndDisableSuspendPresentation": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.MissingPortraitUnknownPatientAndDisabledProfileNeverExposeStaleFootage": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.SwitchingPatientsUsesDistinctOccupiedRoomsAndRendersRealPixels": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/regression-results.xml"
+        },
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.SaturationControlChangesWarmGrayTintWithoutChangingPatient": {
+          "result": "Passed",
+          "evidence": "Artifacts/TerminalAmber/final-input-results.xml"
+        }
+      }
+    },
+    "campaignRoutes": {
+      "LockedInRoom": {
+        "meetings": 16,
+        "sourceLines": 446,
+        "actors": 6
+      },
+      "TakenAway": {
+        "meetings": 13,
+        "sourceLines": 352,
+        "actors": 6
+      },
+      "PriestAttack": {
+        "meetings": 6,
+        "sourceLines": 150,
+        "actors": 6
+      },
+      "evidence": "Artifacts/TerminalAmber/campaign-results.xml"
+    },
+    "windowsMonoBuild": {
+      "result": "Succeeded",
+      "output": "F:/AAMINIGAME/MINIGAME\\Builds\\TerminalAmber\\MiniGame.exe",
+      "unity": "2022.3.23f1c1",
+      "scenes": [
+        "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+        "Assets/MiniGame/Scenes/InspectionApartment.unity",
+        "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+      ],
+      "errors": 0,
+      "warnings": 0,
+      "seconds": 4.963983499999999
+    },
+    "player": {
+      "result": "Passed",
+      "detail": "Mapped UI clicks completed manual shutdown/reopen and the native six-round child encounter, reaction and automatic shutdown.",
+      "unity": "2022.3.23f1c1",
+      "captureMode": "Standalone GPU native UI RenderTexture + actual CRT material; hidden-window backbuffer is not used",
+      "replies": 6,
+      "quota": 5,
+      "manualReopen": true,
+      "automaticShutdown": true,
+      "removedFunctionKeys": true,
+      "directoryPixels": true,
+      "reviewPixels": true,
+      "seconds": 38.87577819824219
+    },
+    "referenceBrowser": {
+      "result": "Rendered",
+      "engine": "local headless Chrome",
+      "source": "reference-v0.8.12.html",
+      "capture": "docs/terminal-amber/previews/reference-directory.png"
+    },
+    "gitDiffCheck": "Passed (task tracked paths)",
+    "documentLinks": {
+      "checked": 55,
+      "missing": 0
+    },
+    "review": {
+      "scope": "turn-only runtime diff, using saved pre-turn baselines for previously modified files",
+      "fixed": [
+        "live boot-key routing",
+        "pause-resume Enter isolation",
+        "EventSystem top hit and modal priority",
+        "consistent wrapped text and newest transcript visibility"
+      ]
+    }
+  },
+  "previews": {
+    "source": "actual standalone Player native UI RenderTexture + actual CRT material",
+    "paths": [
+      "docs/terminal-amber/previews/boot.png",
+      "docs/terminal-amber/previews/loading.png",
+      "docs/terminal-amber/previews/directory.png",
+      "docs/terminal-amber/previews/review.png",
+      "docs/terminal-amber/previews/measure.png",
+      "docs/terminal-amber/previews/shutdown.png",
+      "docs/terminal-amber/previews/collapse.png"
+    ]
+  },
+  "limits": [
+    "Standalone Player automated operation covers the child Day1 slice plus manual shutdown/reopen; full campaign ending routes were tested in Unity PlayMode, not replayed in standalone Player.",
+    "Hidden-window whole-backbuffer screenshots are black; delivered UI previews are explicit offscreen GPU captures using the same native UI and CRT material.",
+    "Human interactive acceptance, IL2CPP, and other platforms are not established by these checks."
+  ],
+  "sourceHashes": {
+    "src/MiniGame.Presentation/GameRuntime.cs": "1de3039110f6c12a1ffd1b9c896958bbd66bb7fca02ee00f301eccf4162b2bd0",
+    "src/MiniGame.Presentation/TerminalPowerTimeline.cs": "724c3609ff69248755b15da7ef539632973a6f9fea0d8864a2b8297bd22cea15",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs": "6a11e3c6a28cae4755a88fb20b8f8cca43601d9e4cc0dd6ef966a7441fe2b13e",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalDisplay.cs": "522cdf4cd7eeef73391439c50c9b2ef3f99fc31fdcc7d9b7cd18ec5cfe014e87",
+    "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs": "86c739671587420bfb8978bada8b8ae8cbb5f07701621c361cae2d57642cc5c9",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs": "473097f2c4744faf54e4c1dfd2f1871432e9b134dddb811ddd7a0a79f4565263",
+    "UnityProject/Assets/MiniGame/Runtime/AmberTerminalPlayerSmoke.cs": "3856f3d3111e034d1e756fb5a34000a9f53f49044e7662126c55503b150e5743",
+    "UnityProject/Assets/MiniGame/Resources/PatientMonitorSignal.shader": "af03cee3b3308bb3b49fad804a6a66e6483874d56c9af987d996906566cfb605",
+    "UnityProject/Assets/PMSAmberTerminal/Shaders/PMSAmberCRT.shader": "0e3debdd6a1c677b355e150b5a7f6b09efac32c44e3907ccdf9134f5c0aa44e9",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/TerminalAssets.asset": "59bc69adb3f08bd14d8a14c212e84c49a7963275357f93e53d931dd3166d3db1"
+  },
+  "executableSha256": "55ab99c1b6d2d954f3ce377fe0fcd5fbcf6b38b59dcf4aaae7ad66bd13786150"
+}

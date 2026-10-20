@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-20",
+  "unity": "2022.3.23f1c1",
+  "pipeline": "Built-in / Gamma",
+  "default": "Natural downward spotlight; material banding, grading, fullscreen quantization and extra pixelation disabled",
+  "automatedTests": [
+    {
+      "file": "evidence/editor-shader-tests.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "file": "evidence/editor-retro-style-tests.json",
+      "summary": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "file": "evidence/playmode-lighting-tests.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "file": "evidence/playmode-retro-tests.json",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "file": "evidence/playmode-dream-tests.json",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    }
+  ],
+  "configurationChecks": {
+    "roomProfileUndo": true,
+    "roomProfileRedo": true,
+    "savedInPlayMode": true,
+    "survivedPlayExit": true,
+    "sceneReopen": true,
+    "source": "Unity CLI eval: isolated Undo/Redo + actual Play save/exit/reopen, final lamp intensity restored to 4.8"
+  },
+  "visual": {
+    "fixedCameraPosition": [
+      -7.1,
+      0.89,
+      -2.9
+    ],
+    "target": [
+      -0.1,
+      0.35,
+      -0.6
+    ],
+    "verticalFov": 58.2,
+    "resolutions": [
+      "1280x720",
+      "1920x1080",
+      "1279x719"
+    ],
+    "comparison": [
+      "evidence/style-base.png",
+      "evidence/style-grade.png",
+      "evidence/style-grade-quantize.png",
+      "evidence/style-full.png"
+    ],
+    "scope": "Agent inspected fixed-camera captures and actual D3D11 Player captures; user aesthetic acceptance is separate"
+  },
+  "build": {
+    "status": "completed",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 1,
+    "sizeBytes": 322832075,
+    "seconds": 7.569259499999999,
+    "development": true,
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/RoomLighting/MiniGame.exe"
+  },
+  "player": {
+    "unity": "2022.3.23f1c1",
+    "graphics": "Direct3D11",
+    "shader": "MiniGame/Room Art Standard",
+    "error": "",
+    "passed": true,
+    "cookie": true,
+    "materialBanding": false,
+    "fullscreenBanding": false,
+    "gradingChangesPixels": true,
+    "gradingDifference": 0.03994579240679741,
+    "lightPosition": {
+      "x": -2.261151075363159,
+      "y": 2.0053954124450684,
+      "z": -1.7078781127929688
+    }
+  },
+  "hashes": {
+    "roomProfile": "859D26A7B807675AAF60B3FD1D142A27F526C9F4BDE75FDA27190677280E82B9",
+    "styleProfile": "E2FB7E2C330D33F8FB29E0E05BFD6FAEFAEFF6E87461D1BDE10E05F545F36CB0",
+    "screenShader": "B779404718BABF8464C888637A5215E9E18B11B2F08EE4F4E1CDEB436581B212"
+  }
+}

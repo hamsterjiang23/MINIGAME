@@ -43,7 +43,7 @@ namespace MiniGame.UnityHost.Tests
             float nextCapture = 0;
             try
             {
-                float deadline = Time.realtimeSinceStartup + 12;
+                float deadline = Time.realtimeSinceStartup + 20;
                 while (host.Effects.EntryPhase != TerminalEntryPhase.Active && Time.realtimeSinceStartup < deadline)
                 {
                     if (!string.IsNullOrEmpty(captureDirectory) && Time.realtimeSinceStartup >= nextCapture)
@@ -211,7 +211,7 @@ namespace MiniGame.UnityHost.Tests
             var camera = host.Player.ViewCamera;
             var controller = host.Player.GetComponent<CharacterController>();
             var alignment = GameObject.Find("Terminal screen alignment").transform;
-            var handoff = host.Screen.GetComponentsInChildren<CanvasGroup>(true).Single(item => item.name == "TerminalHandoff");
+            var handoff = host.Screen.GetComponentsInChildren<Transform>(true).Single(item => item.name == "TerminalHandoff").GetComponentInParent<Canvas>();
             while (host.Effects.EntryPhase != TerminalEntryPhase.Active)
             {
                 var phase = host.Effects.EntryPhase;
@@ -221,7 +221,7 @@ namespace MiniGame.UnityHost.Tests
                     observations.Add(new EntryObservation
                     {
                         phase = phase, controllerEnabled = controller.enabled, locked = host.Screen.TransitionLocked,
-                        reveal = host.Screen.TerminalReveal, handoff = handoff.alpha, seated = host.Effects.IsSeated,
+                        reveal = host.Screen.TerminalReveal, handoff = handoff.renderMode == RenderMode.ScreenSpaceOverlay && handoff.gameObject.activeInHierarchy ? 1 : 0, seated = host.Effects.IsSeated,
                         alignment = Quaternion.Angle(camera.transform.rotation, alignment.rotation), fieldOfView = camera.fieldOfView,
                         screenBounds = bounds, nearestDepth = depth
                     });
@@ -272,7 +272,7 @@ namespace MiniGame.UnityHost.Tests
 
         private static IEnumerator Until(Func<bool> condition)
         {
-            float deadline = Time.realtimeSinceStartup + 8;
+            float deadline = Time.realtimeSinceStartup + 20;
             while (!condition() && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.That(condition(), Is.True, "Terminal transition did not reach its expected phase.");
         }

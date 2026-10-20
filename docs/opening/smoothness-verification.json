@@ -1,0 +1,128 @@
+{
+  "checkedAt": "2026-10-20T19:07:18.7879558+08:00",
+  "issue": "Opening pullback felt stepped",
+  "oldRecording": {
+    "frames": 36,
+    "observedMeanFps": 7.4496765253418955,
+    "source": "Artifacts/Opening/Smooth/legacy-recording.json",
+    "cause": "Synchronous ReadPixels, PNG encoding and disk writes inside the movement sequence"
+  },
+  "changes": [
+    "Bilinear texture sampling across the whole pullback and settled interface; no endpoint filter switch",
+    "Cache unchanged viewport/camera framing and source-layer walks",
+    "Inherit native UI parent layers and invalidate on reply construction, including equal-sized replacement",
+    "Remove motion screenshots from the full Day0 smoke driver",
+    "Record with preallocated native memory and asynchronous GPU readback; encode/write only after movement"
+  ],
+  "capture": {
+    "result": "passed",
+    "renderedMotionFrames": 132,
+    "capturedFrames": 134,
+    "medianMs": 16.667200088500977,
+    "p95Ms": 17.045909881591797,
+    "maximumMs": 17.262300491333008,
+    "over33ms": 0,
+    "over50ms": 0,
+    "droppedBusy": 0,
+    "droppedCapacity": 0,
+    "targetFrameRate": 60,
+    "vSyncCount": 0,
+    "originalTargetFrameRate": -1,
+    "originalVSyncCount": 1,
+    "raw": "Artifacts/Opening/Smooth/smooth-60/verification.json"
+  },
+  "video": {
+    "path": "docs/opening/previews/opening-pullback-60fps.mp4",
+    "properties": {
+      "width": 1280,
+      "height": 720,
+      "r_frame_rate": "60/1",
+      "avg_frame_rate": "60/1",
+      "duration": "3.733333",
+      "nb_read_frames": "224"
+    },
+    "realSourceFrames": 134,
+    "holdFrames": 90,
+    "encoding": "One recorded frame per 60fps source frame, with 0.75s cloned endpoints; no optical-flow frame generation",
+    "provenance": "Actual native UI render texture and actual CRT material, captured in the standalone Player"
+  },
+  "playMode": {
+    "result": "Passed",
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "raw": "Artifacts/Opening/Smooth/playmode-results.xml",
+    "cases": [
+      {
+        "name": "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.NativeCompositeRendersAndWarpedPickingMatchesEveryDisplayMode",
+        "result": "Passed"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.PowerTimelineCanBeSkippedPausedRestoredAndManualShutdownReturnsToWorld",
+        "result": "Passed"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.PausedPullbackFreezesAndUnfinishedOpeningRestoresAtItsWaitingStart",
+        "result": "Passed"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.SupervisorPullsBackIntoTheSameMonitorThenOneButtonTutorialAndOneSleepStartDayOne",
+        "result": "Passed"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.ActorSitsBeforeAlignedDollyAndPhysicalCoveragePrecedesInterface",
+        "result": "Passed"
+      },
+      {
+        "name": "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose",
+        "result": "Passed"
+      }
+    ]
+  },
+  "windowsMono": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\TerminalAmber\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 3.9676242999999998
+  },
+  "player": {
+    "result": "passed",
+    "detail": "Fresh campaign opening, native UI tutorial and one sleep completed",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Native UI camera RenderTexture and the displayed CRT material; room capture uses the actual room camera",
+    "sourceLines": 7,
+    "day": 1,
+    "singlePurification": true,
+    "bedOnly": true,
+    "furnitureRestored": true,
+    "seconds": 13.345996856689453
+  },
+  "sourceHashes": {
+    "UnityProject/Assets/MiniGame/Runtime/TerminalDisplay.cs": "16fdd2023d93d5ba9cc5927d82bd2f43432edcd7b93f0b386f4475dc3a21eb99",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalIndustrialSkin.cs": "1a6b8bdc2611635f83927e055f80574983401e2e910057012869ceb7f2e6fef0",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs": "29504c4b967ae6130acec7907274f4a5d07f902dfbf8cf5b14670e1a2243290b",
+    "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs": "fb0f40fdfe2c5e5a4fb0df79e7d3659be960110d474b7ab7f3d30eb90658a272",
+    "UnityProject/Assets/MiniGame/Runtime/OpeningMotionProbe.cs": "761cf82b5faa6cbbd7d703da913a494b11a82b08783a8730f9ebec950a630728",
+    "UnityProject/Assets/MiniGame/Tests/PlayMode/AmberTerminalPlayModeTests.cs": "5db9ddd3ac5f369a1cb9e0bfbf4cf0c1a2072a2374b9a744fc7e6226e885040c"
+  },
+  "hostAssemblySha256": "c06573d43c3c9de509eac992f5c3a3f7940921becb6b9f07dfeb00f02ec8a6f8",
+  "limits": [
+    "The 60fps pacing override applies only to the opt-in recorder; normal game quality/frame cap settings are unchanged.",
+    "Hidden batch timing-only runs do not establish on-screen presentation FPS; no visible-FPS or cross-device performance claim is made.",
+    "This pass reran six affected PlayMode cases and the standalone Day0 flow. The previous full campaign and .NET results remain historical in verification.json."
+  ],
+  "staticChecks": {
+    "diffCheck": "passed",
+    "newSourceWhitespace": "passed",
+    "guideLinks": 7,
+    "missingLinks": 0,
+    "movieDecode": "passed"
+  }
+}

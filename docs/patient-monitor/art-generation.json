@@ -1,0 +1,250 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "purpose": "Original exaggerated seated characters for surveillance interrogation rooms",
+  "oldArt": "Assets/MiniGame/Art/Characters/*.png retained",
+  "stableIds": "ML01-05,VV01-05,ED01-05,AD01-05,JN01-05,D0_01-02",
+  "artA": {
+    "manifest.json": [
+      {
+        "character": "ML",
+        "path": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png",
+        "sha256": "8a452f881e0600e3fd15a9fe839fffe263e7cb5ff0a046d81bfc9a5f178bc328",
+        "width": 1983,
+        "height": 793,
+        "pixelFormat": "RGBA 32-bit",
+        "gridColumns": 5,
+        "gridRows": 1,
+        "sliceXBoundaries": [
+          0,
+          397,
+          793,
+          1190,
+          1586,
+          1983
+        ],
+        "stateOrder": [
+          "ML01",
+          "ML02",
+          "ML03",
+          "ML04",
+          "ML05"
+        ],
+        "generationMode": "built-in image_gen",
+        "alphaSource": "preserved generated alpha",
+        "metadataOnlySlicing": "not baked or cropped",
+        "qualityVerdict": "Accepted visually: full seated figures including shoes; clearly distorted asymmetrical human expressions; threshold16 silhouettes stay within equal cells.",
+        "knownLimitation": "Near-transparent generator speckles alpha<=16 may occur in gutters; do not interpret strict alpha>0 bounds as silhouette bounds."
+      },
+      {
+        "character": "VV",
+        "path": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png",
+        "sha256": "bcd3c97c2d9d8897c7834f99822301a9d700f498d02dbea8be3e7ccdced1a649",
+        "width": 1983,
+        "height": 793,
+        "pixelFormat": "RGBA 32-bit",
+        "gridColumns": 5,
+        "gridRows": 1,
+        "sliceXBoundaries": [
+          0,
+          397,
+          793,
+          1190,
+          1586,
+          1983
+        ],
+        "stateOrder": [
+          "VV01",
+          "VV02",
+          "VV03",
+          "VV04",
+          "VV05"
+        ],
+        "generationMode": "built-in image_gen",
+        "alphaSource": "preserved generated alpha",
+        "metadataOnlySlicing": "not baked or cropped",
+        "qualityVerdict": "Accepted visually: full seated figures including shoes; clearly distorted asymmetrical human expressions; threshold16 silhouettes stay within equal cells.",
+        "knownLimitation": "Near-transparent generator speckles alpha<=16 may occur in gutters; do not interpret strict alpha>0 bounds as silhouette bounds."
+      },
+      {
+        "character": "ED",
+        "path": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png",
+        "sha256": "1a5737d2b95a8877e1f70cce59070f228dee550dd717b042c6c85f824375d0a7",
+        "width": 1983,
+        "height": 793,
+        "pixelFormat": "RGBA 32-bit",
+        "gridColumns": 5,
+        "gridRows": 1,
+        "sliceXBoundaries": [
+          0,
+          397,
+          793,
+          1190,
+          1586,
+          1983
+        ],
+        "stateOrder": [
+          "ED01",
+          "ED02",
+          "ED03",
+          "ED04",
+          "ED05"
+        ],
+        "generationMode": "built-in image_gen",
+        "alphaSource": "preserved generated alpha",
+        "metadataOnlySlicing": "not baked or cropped",
+        "qualityVerdict": "Accepted visually: full seated figures including shoes; clearly distorted asymmetrical human expressions; threshold16 silhouettes stay within equal cells.",
+        "knownLimitation": "Near-transparent generator speckles alpha<=16 may occur in gutters; do not interpret strict alpha>0 bounds as silhouette bounds."
+      }
+    ],
+    "VV-repaint.json": {
+      "mode": "built-in",
+      "prompt": "Edit target: five-cell woman sprite sheet. Keep exact FIVE cells, all bodies seated, all outfits and all expression order. Only role/hair/clothing matter, photoreal identity is NOT locked. User specifically wants grotesquely DISTORTED and EXAGGERATED expressions inspired by No, I'm not a Human interrogation faces.\nMAJOR REPAINT into warped expressionist horror photocollage, not realistic portraiture. REDESIGN HEADS: stretched long narrow face, too-large unequal sunken eyes with mismatched eyelid heights, elongated bent nose, hollow bony cheeks, crooked misaligned mouth, skewed jaw and subtly tilted head. Draw huge flat black under-eye shadows and sharp dirty ivory cheek planes. Rough charcoal broken outlines and scraped gouache ink brush texture, sickly dirty cyan gray olive desaturation, no smooth skin, no glossy realistic render, not anime or rounded cartoon. Mundane HUMAN woman but very unsettling. Grey swept-back hair with white streak and long gray skirt and high-collared button jacket over ivory shirt. Keep hands clasped in lap, feet together in dark shoes.\nLEFT TO RIGHT exaggerated states: 1 cold vacant suspicious stare with one eye larger and low uneven lids, tightly closed crooked lips; 2 accusatory stern speaking, mouth pulled downward to one side, one eyebrow arched disproportionately; 3 exhausted SAD, head drooping and very long sagging mouth, eyes lost under dark lids; 4 furious grotesquely tense face, one eye glaring huge, other squinted, baring clenched uneven teeth, brows pinched; 5 relieved sinister ambiguous over-wide closed-mouth crooked smile, eyelids low, one cheek pulled upward. No gore or monster anatomy. Same body silhouette and scale across five, only head/face changes.\nLayout: one wide transparent canvas roughly5:2, exactly five equal-width invisible cells, centers10%,30%,50%,70%,90%. Each ENTIRE seated woman INCLUDING BOTH SHOES must fit comfortably within own cell with clear alpha padding above hair and below shoes. NARROW figure width (70%of cell), height85%of canvas. No overlaps/cropping. NO chair/props/background/floor/shadow/text/labels/borders/watermark. GENUINE alpha.\nUse thick angular DRAWN facial planes; distortion should be unmistakable at small CCTV size.",
+      "input": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png (first pass)",
+      "output": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-e19ee053-4f9d-4e58-9eb6-818e8a949b93.png",
+      "selected": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+    },
+    "ML-repaint.json": {
+      "mode": "built-in",
+      "passes": [
+        {
+          "prompt": "Edit target: attached five-cell boy sprite sheet. Keep EXACTLY FIVE CELLS and five expressions in order. This is a MAJOR STYLE REPAINT, not color grading. Preserve role, hair, clothes and emotion semantics, but photographic identity is NOT locked.\nEntirely redraw all five as an unsettling expressionist 2D hand-drawn photocollage psychological horror character, like No I'm not a Human interrogation aesthetics. Push non-photographic anatomy PROPORTIONS: a long thin bony seated silhouette, too-large tired sunken eyes in angular asymmetrical face, long narrow nose, slightly skewed small head, long thin hands. Human child, ordinary and ambiguous, NOT a monster. Face must look hand-drawn in gouache and charcoal, rough coarse black broken outlines, big flat dark gray-green facial shadow shapes, paper grain, scratched dry brush texture, dirty cyan/gray-olive near monochrome and old ivory shirt, gray trousers and dark worn shoes. NO smooth photorealistic skin shading, NO realistic photograph cutouts, NO soft glossy portrait rendering, NO modern cartoon, NO anime. Make the coarse irregular brush marks and distorted drawn shapes unmissable.\nComposition: one wide roughly5:2 transparent canvas, EXACTLY five evenly spaced invisible equal-width cells across one row. Each is SAME character, SAME front-facing seated body pose with hands on knees, slight above-eye CCTV view. ENTIRE PERSON hair to BOTH feet inside each cell, INCLUDING SHOES, with clear transparent margins all around. Target total person height85% of canvas to ensure alpha padding above hair and below shoes. Body must be narrow enough to stay within each cell with8% empty side margins. No chair, no props, no ground shadow, no background, no labels or text, no visible separators. True transparent alpha.\nExpressions LEFT TO RIGHT: wary neutral sideways glance; curious mouth-parted speaking; withdrawn sad down-gaze; frightened anxious raised inner brows; relieved tentative half smile upward glance. No change to outfit or pose between cells.",
+          "input": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png (first pass)",
+          "output": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-4b4f2c60-67cb-4b3e-b368-4ea4b6591396.png"
+        },
+        {
+          "prompt": "Edit the attached five-cell sprite sheet. IMPORTANT USER CORRECTION: current face is TOO NORMAL. We need grotesquely exaggerated and distorted HUMAN facial proportions like No, I'm not a Human. This is an expressionist horror game, NOT a pretty children's story illustration.\nREDESIGN FACES visibly: long stretched narrow jaw and hollow cheeks; enormously sunken eyes that are noticeably unequal size and not level, one eyelid hanging lower; elongated bent nose, crooked offset mouth, large dark under-eye bags; pale sickly gray cyan skin with harsh black cutout shadows. The overall skull may be subtly stretched and tilted, features slightly displaced. NO bloody wounds, no monster anatomy, no extra body parts. Keep him recognizably a HUMAN CHILD wearing a white shirt and gray trousers, with tousled brown hair. Hand painted rough ink, gouache photocollage with broken thick charcoal contours, coarse scraped paper surface, cold desaturated olive-gray/dirty cyan values and dirty ivory.\nFIVE expressions left to right with strong facial acting: 1 paranoid sideways eye stare, one eyebrow much higher, jaw clenched; 2 odd wide-eyed talking, mouth pulled sideways open; 3 sunken eyes looking down, stretched sagging sad mouth; 4 terrified huge unequal staring eyes, extremely high pinched brows, mouth small and tense; 5 unsettling RELIEVED smile pulled much wider and crooked to one side, one eye half closed, still ambiguous not monstrous. Expressions must be readable at small surveillance-monitor scale.\nKeep EXACTLY FIVE equal-width cells across a SINGLE ROW and keep identical outfit/full seated pose. Body remains same with hands on thighs and shoes on floor/invisible seat, WHOLE BODY visible INCLUDING shoes and every fingertip. Retain transparent background, no chair, floor, props, labels, frames or watermark. Ensure every body is contained with generous alpha padding inside its own cell, centered at10%,30%,50%,70%,90%. At least5% clear top/bottom/side margin, nothing cropped.",
+          "input": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-4b4f2c60-67cb-4b3e-b368-4ea4b6591396.png",
+          "output": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-683454d0-4d88-4091-a561-ac9ba7090efe.png"
+        }
+      ],
+      "selected": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/ML-sheet.png"
+    },
+    "ED-repaint.json": {
+      "mode": "built-in",
+      "prompt": "Edit attached elderly doctor five-cell sprite sheet. User correction: expression and facial structure must be strongly TWISTED and EXAGGERATED like No, I'm not a Human's interrogation characters. New original character; preserve only age, hair, beard, outfit, role and five emotional meanings, NOT realistic identity.\nMAJOR REPAINT of heads: LONG narrow stretched bony face; hugely sunken eyes that are noticeably unequal size and misaligned, one eye bulging within socket and other pinched; long bent nose, skinny jaw and hollow cheeks, crooked thin mouth pulled offset. Clearly grotesque expressionist HUMAN, no monsters, no gore. Coarse broken dark charcoal outlines, simplified angular black shadow shapes, rough scraped paper/gouache photocollage textures, gray-olive and dirty cyan near-monochrome skin, ivory flashes, brown cardigan, ivory shirt, gray trousers and dark worn shoes. Wispy thinning white hair and white short beard. NO photographic smooth skin or realistic digital portrait, no glossy finish or anime.\nFIVE very strong expressions LEFT TO RIGHT: 1 stern guarded vacant stare with one eyebrow arched and tightly clenched crooked lips; 2 concerned speaking with disproportionately raised inner brow and mouth awkwardly stretched open; 3 startled panicked grotesquely huge unequal staring eyes, crooked jaw hanging slightly open; 4 defeated exhausted down-gaze with eyes almost shut and severely sagging mouth; 5 grave sad calm, long thin frown and staring hollow asymmetric tired eyes, NOT smile. Same hands on thighs, same body seated pose and outfit in all five.\nCRITICAL ATLAS FIX: current bodies too wide and crossing invisible column boundaries. Shrink each complete body UNIFORMLY to75% of current size, center at10%,30%,50%,70%,90%of total width and55%of height. Canvas still5:2, one horizontal row of five equal-width cells. Figure1 ENTIRELY inside x3%-17%; figure2 x23%-37%; figure3 x43%-57%; figure4 x63%-77%; figure5 x83%-97%. Large transparent gutters between figures, absolutely no hair/finger/shoe crossing20/40/60/80%canvas. Hair starts near15%height and shoes end near90%height. Full head to toe INCLUDING both SHOES. No chair, no floor/shadow, no props, no scenery, NO background. Transparent alpha. NO labels, lines, text or watermark.",
+      "input": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png (first pass)",
+      "output": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-46da4c73-6212-44c7-bf5e-1b54ee35a19d.png",
+      "selected": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/ED-sheet.png"
+    },
+    "VV-layout.json": {
+      "mode": "built-in",
+      "prompt": "TARGETED PRODUCTION CORRECTION for attached transparent five-character expression sprite sheet. The new distorted faces/style are APPROVED: keep each face expression, hair, outfit, body anatomy and all brush rendering EXACTLY AS THEY ARE. Change ONLY layout to make the sprite atlas safely sliceable.\nCritical issue: skirt of first/second characters crosses cell boundaries. Re-compose the five complete cutout seated figures into EXACT equal5-column grid with HUGE alpha gutters. Each character must be scaled down UNIFORMLY to75% of previous height and width, without distorting aspect. Center each complete figure exactly at10%,30%,50%,70%,90% of canvas width, and55% of canvas height. This creates much larger empty alpha margins around every figure. Keep full shoes.\nExact grid: first entirely inside x3%-17%, second23%-37%, third43%-57%, fourth63%-77%, fifth83%-97%. DO NOT LET A SINGLE HAIR, SKIRT EDGE, HAND OR SHOE TOUCH THE boundaries at20%,40%,60%,80%. There must be at least6% of canvas width completely empty alpha between any neighboring figures. Hair should start no higher than15%height and shoes end no lower than90%height.\nONE ROW of exactly5 individual figures, not panels. Full body each INCLUDING shoes. Pure transparent alpha, no background, no chair, no ground shadow, no separator lines, no labels or text. Maintain same wide5:2canvas. Layout-only correction, do not soften the grotesque asymmetrical eyes or faces.",
+      "input": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-e19ee053-4f9d-4e58-9eb6-818e8a949b93.png",
+      "output": "C:/Users/admin/.codex/generated_images/01a157c3-c961-75c3-b767-83f3d52254dc/exec-f485ae0a-5ede-4122-8640-2a5075319648.png",
+      "selected": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/VV-sheet.png"
+    }
+  },
+  "artB": {
+    "tool": "built-in image_gen.imagegen",
+    "mode": "identity cues and expression-preserving style redesign",
+    "transparent_background": true,
+    "inspectedSources": [
+      "UnityProject/Assets/MiniGame/Art/Characters/AD01.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/AD02.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/AD03.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/AD04.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/AD05.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/JN01.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/JN02.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/JN03.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/JN04.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/JN05.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/D0_01.png",
+      "UnityProject/Assets/MiniGame/Art/Characters/D0_02.png"
+    ],
+    "selected": [
+      {
+        "id": "AD",
+        "output": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/AD-sheet.png",
+        "generation": "C:/Users/admin/.codex/generated_images/01a157c4-78b6-7f60-8f94-dc01e7945bc7/exec-6f06002d-6e77-49dc-8baa-acf1855913ca.png",
+        "references": [
+          "AD01.png"
+        ],
+        "prompt": "USER'S KEY ART DIRECTION: FACIAL DISTORTION AND EXTREME EXPRESSION, not merely texture. Draw a creepy grotesque HUMAN CARICATURE with a dramatically elongated lopsided head, very large unequal deep-set eyes, one eye visibly higher, a crooked long nose, a too-narrow chin, huge strained eyebrows, and a warped thin crooked mouth. Exaggerate emotions 3 times beyond realistic acting. Distort facial structure boldly in every cell while keeping recognizable shared character identity and ordinary human anatomy. Forced smiles should be visibly overpulled crooked grins; anxiety should have mismatched wide eyes and a strained stretched mouth; anger has sharply tilted eyes and pinched long angular face. Large stiff eyes stare from black sockets. Imagine crude cut-paper photographic features painted over with coarse charcoal: flat high-contrast painted planes, minimal fine realism. NOT conventional realistic human portrait, NOT gentle storybook illustration. IMPORTANT: REDESIGN THE ART STYLE RADICALLY; the input is ONLY age, hairstyle and costume reference, NOT a rendering reference and NOT a face likeness lock. Create ORIGINAL ART in the 2D expressionist horror interrogation aesthetic of No, I'm not a Human: conspicuously DRAWN photomontage paper-doll characters, exaggerated elongated gaunt heads and thin bony bodies, large deep-set staring eyes with tiny pupils, uneven facial features, coarse irregular black ink contours, flat geometric harsh shadows, dry scratchy brushstrokes over stained paper, dirty cyan-gray olive and sickly ivory palette. Deliberately strange awkward proportions and hand-painted angular planes; clearly game illustration, NOT a photograph, NOT a 3D render, NOT realistic polished portrait art. Human, no monster anatomy. Strong drawn visual style more important than matching source face. Use case: stylized-concept. Asset type: transparent 5-by-1 equal-cell game character sprite sheet for a fixed CCTV room feed. The five supplied reference images are identity/expression references for AD01 through AD05, left-to-right. Remake this original middle-aged male diplomat in an unsettling rough hand-painted photographic collage aesthetic inspired by No, I'm not a Human interrogation characters. Keep as broad costume/age cues his swept side-part brown hair, long narrow face, gray high Mandarin-collar jacket over an ivory shirt, gray trousers. Full seated body INCLUDING BOTH FEET in dark worn shoes, viewed from slightly above seated eyelevel, almost frontal. Same seated stance, head size, body position, and clothing silhouette in all five cells; hands rest on thighs. NO CHAIR or support visible. Expression cells, exactly left-to-right: 1 composed restrained half smile, 2 uneasy pleading faint open mouth, 3 stern skeptical with furrowed brow, 4 startled worried with wide eyes and slightly open mouth, 5 severe guarded frown with narrowed eyes. Visibly stylized unsettling mundane human ambiguity, hollow tired eyes, subtly asymmetrical gaunt face, rough dry paper brush marks and charcoal edges, desaturated ash gray/dirty ivory/muted olive/brown, harsh overhead fluorescent lighting and deep under-eye shadows. NOT polished photoreal or glossy, NOT anime or cartoon, NOT a monster. Single HORIZONTAL row of exactly FIVE figures on a genuinely TRANSPARENT background. Wide 5:2 aspect image. Imagine an exact 5-column grid; each figure centered at 10%,30%,50%,70%,90% of image width, each isolated inside its equal-width cell, same top and foot baseline with 8% transparent padding. Entire head, fingers, legs, and shoes fit inside each cell. No crossing of cell boundaries, no overlap, no frames, labels, text, watermark, room, chair, props or ground shadow.",
+        "frames": [
+          "composed crooked half smile",
+          "uneasy pleading",
+          "stern skeptical",
+          "startled worried",
+          "severe guarded frown"
+        ],
+        "layoutEdit": {
+          "prompt": "Edit this sprite sheet only to fix the 5-column layout. Keep ALL existing strongly exaggerated skewed faces, clothing, colors, rough drawn style and the exact five expressions left-to-right unchanged. Do NOT make faces more realistic. Re-layout the five seated full-body people into EXACTLY FIVE EQUAL-WIDTH CELLS on one horizontal row. Each figure narrower than its cell: maximum figure width 76% of cell width, both knees closer together, with at least12% TRANSPARENT EMPTY SPACE on both left and right sides within everycell. Figure centers exactly at10%,30%,50%,70%,90% oftotalwidth. All figures same headheight and footbaseline; include whole shoes, hands, all limbs. Do not cut or cross anyequalcellboundary. Keep figures separated from EVERY cell boundary by transparent margin, no stray pixels. Genuinely transparent background, no room, no chair, no text, no grids or borders. Wide 5:2 image.",
+          "reference": "exec-df54397c-9bd1-4813-8c13-720d06d4203a.png"
+        }
+      },
+      {
+        "id": "JN",
+        "output": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/JN-sheet.png",
+        "generation": "C:/Users/admin/.codex/generated_images/01a157c4-78b6-7f60-8f94-dc01e7945bc7/exec-d8bdee16-2e0e-49a3-b9c2-062f1be6c61e.png",
+        "references": [
+          "JN01.png"
+        ],
+        "prompt": "USER'S KEY ART DIRECTION: FACIAL DISTORTION AND EXTREME EXPRESSION, not merely texture. Draw a creepy grotesque HUMAN CARICATURE with a dramatically elongated lopsided head, very large unequal deep-set eyes, one eye visibly higher, a crooked long nose, a too-narrow chin, huge strained eyebrows, and a warped thin crooked mouth. Exaggerate emotions 3 times beyond realistic acting. Distort facial structure boldly in every cell while keeping recognizable shared character identity and ordinary human anatomy. Forced smiles should be visibly overpulled crooked grins; anxiety should have mismatched wide eyes and a strained stretched mouth; anger has sharply tilted eyes and pinched long angular face. Large stiff eyes stare from black sockets. Imagine crude cut-paper photographic features painted over with coarse charcoal: flat high-contrast painted planes, minimal fine realism. NOT conventional realistic human portrait, NOT gentle storybook illustration. IMPORTANT: REDESIGN THE ART STYLE RADICALLY; the input is ONLY age, hairstyle and costume reference, NOT a rendering reference and NOT a face likeness lock. Create ORIGINAL ART in the 2D expressionist horror interrogation aesthetic of No, I'm not a Human: conspicuously DRAWN photomontage paper-doll characters, exaggerated elongated gaunt heads and thin bony bodies, large deep-set staring eyes with tiny pupils, uneven facial features, coarse irregular black ink contours, flat geometric harsh shadows, dry scratchy brushstrokes over stained paper, dirty cyan-gray olive and sickly ivory palette. Deliberately strange awkward proportions and hand-painted angular planes; clearly game illustration, NOT a photograph, NOT a 3D render, NOT realistic polished portrait art. Human, no monster anatomy. Strong drawn visual style more important than matching source face. Use case: stylized-concept. Asset type: transparent 5-by-1 equal-cell game character sprite sheet for a fixed CCTV room feed. The five supplied references are identity/expression references for JN01 through JN05, left-to-right. Remake this original middle-aged male priest in an unsettling rough hand-painted photographic collage aesthetic inspired by No, I'm not a Human interrogation characters. Keep as broad costume/age cues dark receding hair with gray temples, lean deeply lined angular face, black clerical cassock and coat, small white clerical collar. Full seated body INCLUDING BOTH FEET in worn black shoes, viewed from slightly above seated eyelevel, almost frontal. Same seated stance, head size, body position and clothing silhouette in all five cells; fingers interlaced in lap. NO CHAIR or support visible. Expression cells exactly left-to-right: 1 weary reserved neutral concern, 2 forced reassuring slightly toothy smile, 3 anxious sorrowful pleading with raised inner brows and slightly open mouth, 4 angry confrontational glare with teeth visible, 5 composed faint calculating closed-mouth smile. Visibly stylized unsettling mundane human ambiguity, hollow tired eyes, asymmetrical gaunt face, rough dry paper brush marks and charcoal edges, desaturated ash/dirty ivory/muted olive/black/brown, harsh overhead fluorescent light with deep under-eye shadows. NOT polished photoreal, NOT glossy, NOT anime or cartoon, NOT monster anatomy. Single HORIZONTAL row of exactly FIVE figures on a genuinely TRANSPARENT background. Wide 5:2 aspect image. Imagine an exact 5-column grid; each figure centered at 10%,30%,50%,70%,90% image width, each isolated inside its equal-width cell, same top and foot baseline with 8% transparent padding. Entire head, fingers, legs and shoes fit each cell. No boundary crossing or overlap. No frames, labels, text, watermark, room, chair, props or ground shadow.",
+        "frames": [
+          "weary concern",
+          "forced overpulled grin",
+          "anxious sorrowful",
+          "angry confrontational",
+          "calculating faint smile"
+        ]
+      },
+      {
+        "id": "D0",
+        "output": "UnityProject/Assets/MiniGame/Art/Characters/Surveillance/D0-sheet.png",
+        "generation": "C:/Users/admin/.codex/generated_images/01a157c4-78b6-7f60-8f94-dc01e7945bc7/exec-e1b96622-ec5f-4478-ad51-46037f03840c.png",
+        "references": [
+          "D0_01.png",
+          "D0_02.png"
+        ],
+        "prompt": "USER'S KEY ART DIRECTION: FACIAL DISTORTION AND EXTREME EXPRESSION, not merely texture. Draw a creepy grotesque HUMAN CARICATURE with a dramatically elongated lopsided head, very large unequal deep-set eyes, one eye visibly higher, a crooked long nose, a too-narrow chin, huge strained eyebrows, and a warped thin crooked mouth. Exaggerate emotions 3 times beyond realistic acting. Distort facial structure boldly in every cell while keeping recognizable shared character identity and ordinary human anatomy. Forced smiles should be visibly overpulled crooked grins; anxiety should have mismatched wide eyes and a strained stretched mouth; anger has sharply tilted eyes and pinched long angular face. Large stiff eyes stare from black sockets. Imagine crude cut-paper photographic features painted over with coarse charcoal: flat high-contrast painted planes, minimal fine realism. NOT conventional realistic human portrait, NOT gentle storybook illustration. IMPORTANT: REDESIGN THE ART STYLE RADICALLY; the input is ONLY age, hairstyle and costume reference, NOT a rendering reference and NOT a face likeness lock. Create ORIGINAL ART in the 2D expressionist horror interrogation aesthetic of No, I'm not a Human: conspicuously DRAWN photomontage paper-doll characters, exaggerated elongated gaunt heads and thin bony bodies, large deep-set staring eyes with tiny pupils, uneven facial features, coarse irregular black ink contours, flat geometric harsh shadows, dry scratchy brushstrokes over stained paper, dirty cyan-gray olive and sickly ivory palette. Deliberately strange awkward proportions and hand-painted angular planes; clearly game illustration, NOT a photograph, NOT a 3D render, NOT realistic polished portrait art. Human, no monster anatomy. Strong drawn visual style more important than matching source face. Use case: stylized-concept. Asset type: transparent 2-by-1 equal-cell game character sprite sheet for a fixed CCTV room feed. Two supplied references are identity/expression references for D0_01 and D0_02, left-to-right. Remake this original worried working-class middle-aged man in an unsettling rough hand-painted photographic collage aesthetic inspired by No, I'm not a Human interrogation characters. Keep as broad costume/age cues short curly thinning dark-gray hair, short dark stubble beard, broad weathered face, worn olive-gray open-collar work shirt with rolled sleeves, pale gray trousers. Full seated body INCLUDING BOTH FEET in worn dark shoes, viewed from slightly above seated eyelevel, almost frontal. Same seated stance, head size, body position and clothing silhouette in both cells. Palms held open in a helpless pleading gesture, elbows close to his torso. NO CHAIR or support visible. Expression cells exactly left-to-right: 1 distressed pleading, inner eyebrows raised, mouth open looking toward viewer; 2 defeated ashamed sad, eyes looking down, mouth closed. Visibly stylized unsettling mundane human ambiguity, hollow tired eyes, asymmetrical face, rough dry paper brush marks and charcoal edges, desaturated ash/dirty ivory/muted olive/brown, harsh overhead fluorescent light, deep under-eye shadows. NOT polished photoreal, NOT glossy, NOT anime or cartoon, NOT monster anatomy. Single HORIZONTAL row of exactly TWO figures on genuinely TRANSPARENT background, square image. Exact two equal columns; each figure centered at 25% and 75% image width, fully isolated within its cell, same top and foot baseline, 8% transparent padding. Entire head, fingers, legs, and shoes fit inside each cell. No overlap, frames, labels, text, watermark, room, chair, props or ground shadow.",
+        "frames": [
+          "distressed pleading",
+          "defeated ashamed"
+        ],
+        "layoutEdit": {
+          "prompt": "Re-layout this existing sprite sheet into a very WIDE 2:1 overall transparent canvas, exactly TWO EQUAL SQUARE CELLS. Preserve the same two original human figures, same distorted expressionist faces, same costumes and rough painted paper-collage textures. No realism change. Leftframe distressed pleading; rightframe defeated looking down. All head-to-shoe full seated body present. Correct horizontal registration: put first pelvis at25% oftotalcanvaswidth and second pelvis at75%. Both figures SAMEscale andsamepose, sameheadheight and footbaseline. Every figure occupies atmost65%of itscellwidth, leaving at least17% transparent paddingbothleftandright; do NOT fill thewholecellwidth. Sit kneescloser together ifnecessary. In each squarecell the headcenter shouldalignverticallywiththepelvis; no leaningoff-center. TWO FULL ISOLATED figures in ONE HORIZONTAL ROW; no overlap, no chair, no support, no text, grid orborder. Background actualtransparent. Entire widecanvas aspect TWO TOONE, NOTsquare.",
+          "reference": "exec-3f59ad28-827a-400f-929f-a7a6d0925f02.png"
+        }
+      }
+    ],
+    "rejected": [
+      {
+        "id": "AD",
+        "generation": "exec-453c5ec3-bef6-4178-9ff4-8c6dc3e1152d.png",
+        "reason": "Too photorealistic; stronger drawn distortion required",
+        "prompt": "Use case: stylized-concept. Asset type: transparent 5-by-1 equal-cell game character sprite sheet for a fixed CCTV room feed. The five supplied reference images are identity/expression references for AD01 through AD05, left-to-right. Remake this original middle-aged male diplomat in an unsettling rough hand-painted photographic collage aesthetic inspired by No, I'm not a Human interrogation characters. Preserve his swept side-part brown hair, long narrow face, gray high Mandarin-collar jacket over an ivory shirt, gray trousers. Full seated body INCLUDING BOTH FEET in dark worn shoes, viewed from slightly above seated eyelevel, almost frontal. Same seated stance, head size, body position, and clothing silhouette in all five cells; hands rest on thighs. NO CHAIR or support visible. Expression cells, exactly left-to-right: 1 composed restrained half smile, 2 uneasy pleading faint open mouth, 3 stern skeptical with furrowed brow, 4 startled worried with wide eyes and slightly open mouth, 5 severe guarded frown with narrowed eyes. Mundane human ambiguity, hollow tired eyes, subtly asymmetrical gaunt face, rough dry paper brush marks and charcoal edges, desaturated ash gray/dirty ivory/muted olive/brown, harsh overhead fluorescent lighting and deep under-eye shadows. NOT polished photoreal or glossy, NOT anime or cartoon, NOT a monster. Single HORIZONTAL row of exactly FIVE figures on a genuinely TRANSPARENT background. Wide 5:2 aspect image. Imagine an exact 5-column grid; each figure centered at 10%,30%,50%,70%,90% of image width, each isolated inside its equal-width cell, same top and foot baseline with 8% transparent padding. Entire head, fingers, legs, and shoes fit inside each cell. No crossing of cell boundaries, no overlap, no frames, labels, text, watermark, room, chair, props or ground shadow."
+      },
+      {
+        "id": "JN",
+        "generation": "exec-5d5b0e56-47b8-42dc-9994-72d640216cfd.png",
+        "reason": "Too photorealistic; stronger drawn distortion required",
+        "prompt": "Use case: stylized-concept. Asset type: transparent 5-by-1 equal-cell game character sprite sheet for a fixed CCTV room feed. The five supplied references are identity/expression references for JN01 through JN05, left-to-right. Remake this original middle-aged male priest in an unsettling rough hand-painted photographic collage aesthetic inspired by No, I'm not a Human interrogation characters. Preserve dark receding hair with gray temples, lean deeply lined angular face, black clerical cassock and coat, small white clerical collar. Full seated body INCLUDING BOTH FEET in worn black shoes, viewed from slightly above seated eyelevel, almost frontal. Same seated stance, head size, body position and clothing silhouette in all five cells; fingers interlaced in lap. NO CHAIR or support visible. Expression cells exactly left-to-right: 1 weary reserved neutral concern, 2 forced reassuring slightly toothy smile, 3 anxious sorrowful pleading with raised inner brows and slightly open mouth, 4 angry confrontational glare with teeth visible, 5 composed faint calculating closed-mouth smile. Mundane human ambiguity, hollow tired eyes, asymmetrical gaunt face, rough dry paper brush marks and charcoal edges, desaturated ash/dirty ivory/muted olive/black/brown, harsh overhead fluorescent light with deep under-eye shadows. NOT polished photoreal, NOT glossy, NOT anime or cartoon, NOT monster anatomy. Single HORIZONTAL row of exactly FIVE figures on a genuinely TRANSPARENT background. Wide 5:2 aspect image. Imagine an exact 5-column grid; each figure centered at 10%,30%,50%,70%,90% image width, each isolated inside its equal-width cell, same top and foot baseline with 8% transparent padding. Entire head, fingers, legs and shoes fit each cell. No boundary crossing or overlap. No frames, labels, text, watermark, room, chair, props or ground shadow."
+      },
+      {
+        "id": "AD",
+        "generation": "exec-d5419e04-2ecb-4639-a126-2566ffc690e7.png",
+        "reason": "Style improved but user requested stronger expression distortion"
+      },
+      {
+        "id": "AD",
+        "generation": "exec-df54397c-9bd1-4813-8c13-720d06d4203a.png",
+        "reason": "Selected style but first cell knee pixels crossed rounded crop boundary; layout-only revision fixed this"
+      },
+      {
+        "id": "D0",
+        "generation": "exec-ce0d03d6-9110-4437-91ce-b1d1cb166258.png",
+        "reason": "Square registration revision filled each half too widely, would touch boundary",
+        "prompt": "Edit this sprite sheet only to fix its TWO-COLUMN REGISTRATION. Preserve these exact two strongly grotesque drawn faces and emotions, clothes, palette and scratchy expressionist paper-collage rendering. Do NOT make faces realistic or reduce distorted eyes. Left character is worried pleading with mouth open, right character ashamed looking down. Reposition them in EXACTLY TWO equal cells so their pelvises are exactly at25% and75% of totalwidth. Same seatedpose/bodybounds/headheight/footbaseline and same width in bothframes; make the firstcharacter slide LEFT until its body center is in the center of itscell. Same workshirt, pants, palms open. Each entire figure from head to shoes must fit inside its equalcell with transparent margin on ALLsides; no overlap or support/chair. Output square1:1 overallsheet with eachcolumn halfwidth; make bodies narrow enough tofit, with entirefeetvisible. Genuine transparent background, no border, grid, labels, text, watermark orgroundshadow."
+      }
+    ],
+    "qualityReview": {
+      "medium": "Visibly angular hand-painted horror collage with exaggerated gaunt heads and asymmetric facial expressions",
+      "body": "Full seated figures including feet; no chair, room, labels or props",
+      "sourcePreservation": "All original source PNGs left unchanged",
+      "limits": "Image generator returned 1983x793 for five-column sheets and1774x887 for two-column. Rounded integer boundaries recorded; no extraction/cropping/pixel editing performed. Unity import and actual monitor composition remain root responsibility.",
+      "alphaBoundaryCheck": "All selected sheets: eight-pixel-wide bands at rounded cell cuts contain zero pixels with alpha above 16; metadata.json records exact max alpha and dimensions.",
+      "registration": "Generative layout has small horizontal registration differences in AD and larger differences in D0. metadata.json records per-frame suggestedBottomCenterPivot to align visible sprite body centers without modifying pixels."
+    }
+  }
+}
