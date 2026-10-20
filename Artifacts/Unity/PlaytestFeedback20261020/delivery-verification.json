@@ -1,0 +1,39 @@
+{
+  "archive": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-PlaytestFix.zip",
+  "bytes": 165778043,
+  "sizeMiB": 158.1,
+  "sha256": "C81E3F983E78B861086396F0EFDEA12E688052BFEAA9F3F266417EDC4EFB8338",
+  "target": "Windows x64 Mono, nondevelopment",
+  "build": "Succeeded, 0 errors, 10 warnings",
+  "dotnet": {
+    "failed": 0,
+    "corePassed": 113,
+    "presentationPassed": 191,
+    "sdk": "8.0.424"
+  },
+  "unity": {
+    "failed": 0,
+    "passed": 3,
+    "artifact": "playtest-regression.xml"
+  },
+  "native": {
+    "pauseOrientationAndQuit": "PauseAndQuitRelease/verification.json",
+    "terminal": "NativeRun/Artifacts/TerminalAmber/Player/verification.json",
+    "dayZero": "NativeRun/Artifacts/Opening/Player/verification.json"
+  },
+  "archiveIntegrity": {
+    "allSha256Match": true,
+    "files": 158
+  },
+  "extractedStartup": {
+    "alive": true,
+    "errorMatches": 0,
+    "campaignReady": true,
+    "ownedProcessStoppedAfterCheck": true,
+    "responding": true
+  },
+  "deferred": [
+    "Room/corridor lighting awaiting user reference",
+    "Dream content assets in production"
+  ]
+}

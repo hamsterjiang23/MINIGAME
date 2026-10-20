@@ -1,0 +1,34 @@
+{
+  "sourceScan": {
+    "mode": "git --pre-commit --staged",
+    "findings": 0,
+    "tool": "gitleaks 8.30.1"
+  },
+  "packageScan": {
+    "mode": "dir extracted release",
+    "reason": "Mono machine.config strong-name public key mappings, exact token and public-key prefix restricted to three Mono machine.config paths",
+    "tool": "gitleaks 8.30.1",
+    "findingsAfterReview": 0,
+    "reviewedFalsePositives": 3
+  },
+  "dotnet": {
+    "failed": 0,
+    "corePassed": 113,
+    "build": "Release passed, 0 warnings, 0 errors",
+    "restore": "locked-mode passed",
+    "presentationPassed": 191
+  },
+  "unityPreviousRun": {
+    "failed": 0,
+    "artifact": "playtest-regression.xml",
+    "rerunForPush": false,
+    "passed": 3
+  },
+  "documents": "Changed Markdown local links and git diff --cached --check passed",
+  "archive": {
+    "lfsObjectSha256Matches": true,
+    "sha256": "c81e3f983e78b861086396f0efdea12e688052bfeaa9f3f266417edc4efb8338"
+  },
+  "temporaryTestScene": "Moved Unity test-runner generated scene and meta into ignored Artifacts backup",
+  "remoteVisibility": "public; user explicitly confirmed direct push after visibility was reported"
+}

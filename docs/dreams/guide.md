@@ -27,7 +27,7 @@
 ## 正式流程与操作
 
 - **Day0**：启动显示监管者监控，点击拉远后完成教学；自动关机后直接亮床引导，不播放墙面梦境。关闭家具碰撞，保留地面、墙、玩家及床触发器；一次床交互播放闭眼后进入Day1，恢复碰撞前回到安全起床点。详见[开场指南](../opening/guide.md)。`[verified: PresentationEffects.DayZeroOpening/SleepTransition；GameRuntime.BeginNightDream/CompleteCue；BedtimeCollisionGate.Apply]`
-- **Day1–3**：工作结束并退出电脑后，房间压黑，镜头自动定位到墙面播放对应梦境；播放期间没有 Continue，不能用空格或 E 跳过。结束后再亮床引导。`[verified: MiniGameBootstrap.cs Update；DreamSequenceDirector.cs StartDay/Advance；MiniGameScreen.cs HasDedicatedDreamPresentation；MiniGameYarnBridge.cs Update]`
+- **Day1–3**：工作结束并退出电脑后，亮床引导；玩家与床交互，完成闭眼过渡后才播放对应梦境。播放期间没有 Continue，不能用空格或 E 跳过；结束后自动推进到次日，或进入既有自我审查／结局分支。睡眠与梦境中的存档保留这次床交互，恢复不会要求重复上床。梦境素材后续继续由美术补充。`[verified: GameRuntime.TryInteract/CompleteCue/Save/Restore；DreamSequenceDirector.StartDay/Advance；DreamFlowRuntimeTests.BedStartsSleepBeforeAnyDreamAndRestoresAcrossBothPresentations]`
 - **Day3 特殊分支**：优先级为**神父袭击 → KPI 失败 → 海上梦结局 → 普通结局**。达到反叛阈值且没有更高优先级条件时，梦后改为仅电脑引导；终端显示审查员本人实时监控，只有“净化”一个行动按钮。鼠标点击或 Enter 确认一次后进入海滩，不消耗患者净化配额，也不新建患者会谈。`[verified: GameRules.cs WithDreamFlow；GameSession.cs FinishDream/SelfPurify/ResolveEnding；TerminalView.cs HandleSelfReviewKey；SelfReviewMonitor.cs ApplyView]`
 - **海滩**：按 **W** 向床前进，到交互距离后按 **E** 躺下，之后仰看流云，随床缓慢漂流起伏并显示五句字幕；按 **Esc** 暂停。这个场景不提供横移或后退输入。`[verified: DreamEndingController.cs L93–113、RefreshInterface、AdvanceSubtitles；DreamSequenceProfile.cs EndingLines]`
 

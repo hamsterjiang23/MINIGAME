@@ -11,6 +11,56 @@ namespace MiniGame.Presentation.Tests
     public sealed class DreamFlowRuntimeTests
     {
         [Test]
+        public void FinalBedStartedDreamStillQueuesTheOrdinaryEndingPresentation()
+        {
+            var rules = Rules(0); var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            DriveTo(runtime, view => view.Game.Day == 3 && view.Game.Phase == GamePhase.Evening
+                && !view.TerminalOpen && view.Cue == null);
+            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
+            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
+            RuntimeScenario.Complete(runtime, PresentationKind.Dream);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Ending));
+            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Ending));
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            RuntimeScenario.Complete(runtime, PresentationKind.Ending);
+            Assert.That(runtime.GetView().Cue, Is.Null);
+        }
+
+        [Test]
+        public void BedStartsSleepBeforeAnyDreamAndRestoresAcrossBothPresentations()
+        {
+            var rules = Rules(0); var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            DriveTo(runtime, view => view.Game.Day == 0 && view.Game.Phase == GamePhase.Evening
+                && !view.TerminalOpen && view.Cue == null);
+            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
+            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Sleep));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening));
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
+            Assert.That(runtime.GetView().Cue, Is.Null, "Day0 has no dream video.");
+            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Evening
+                && !view.TerminalOpen && view.Cue == null);
+            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
+            string sleepToken = runtime.GetView().Cue!.Token;
+            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Sleep));
+            RuntimeScenario.Accept(runtime.SetPaused(true));
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(sleepToken));
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            RuntimeScenario.Accept(runtime.SetPaused(false));
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(sleepToken));
+            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
+            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Dream));
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            RuntimeScenario.Complete(runtime, PresentationKind.Dream);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
+        }
+
+        [Test]
         public void NightCannotStartUntilTerminalExitCompletesAndDayZeroSkipsItsVideo()
         {
             var rules = Rules(0);
@@ -28,8 +78,7 @@ namespace MiniGame.Presentation.Tests
             Assert.That(runtime.GetView().LeavingTerminal, Is.True);
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.BeginNightDream);
             RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
-            Assert.That(runtime.GetView().AllowedInteractions, Is.Empty);
-            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
+            Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
             RuntimeScenario.Accept(runtime.SetPaused(true));
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.BeginNightDream);
             RuntimeScenario.Accept(runtime.SetPaused(false));

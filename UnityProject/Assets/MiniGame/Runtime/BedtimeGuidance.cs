@@ -45,7 +45,7 @@ namespace MiniGame.UnityHost
         public BedtimeAtmosphere Atmosphere => atmosphere;
         public Renderer[] BedRenderers => bedRenderers;
         public static bool IsSleepOnly(RuntimeView view) => view != null && (view.Game.Phase == GamePhase.AfterDream
-            || (!view.UsesDreamFlow && view.Game.Phase == GamePhase.Evening));
+            || view.Game.Phase == GamePhase.Evening);
 
         public void ConfigureSelfReview(Renderer terminalScreen)
         {

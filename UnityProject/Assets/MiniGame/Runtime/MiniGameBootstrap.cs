@@ -91,10 +91,6 @@ namespace MiniGame.UnityHost
             if (Input.GetKeyDown(KeyCode.F5)) Save();
             if (Input.GetKeyDown(KeyCode.F9)) Load();
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
-            var state = Runtime.GetView();
-            if (Runtime.UsesDreamFlow && state.Game.Phase == GamePhase.Evening && !state.TerminalOpen
-                && state.Cue == null && !state.Paused && !effects.IsTransitioning)
-                Runtime.BeginNightDream();
         }
 
         private void InstallRuntime(GameRuntime runtime, bool installSession = true, bool prepared = false)

@@ -32,6 +32,7 @@ namespace MiniGame.Presentation
         private bool _archiveDirectoryVisible;
         private bool _roomDoorOpen;
         private bool _doorViewActive;
+        private bool _dreamFromBed;
         private string? _historyEncounterId;
         private readonly List<TranscriptEntry> _transcript = new List<TranscriptEntry>();
 
@@ -134,6 +135,12 @@ namespace MiniGame.Presentation
                     SetCue(PresentationKind.EnterTerminal);
                 }
                 return Accept(result?.Events);
+            }
+            if (UsesDreamFlow && target == InteractionTarget.Bed && view.Game.Phase == GamePhase.Evening)
+            {
+                _dreamFromBed = true;
+                SetCue(PresentationKind.Sleep);
+                return Accept();
             }
             if (UsesDreamFlow && target == InteractionTarget.Bed && view.Game.Day == 0 && view.Game.Phase == GamePhase.AfterDream)
             {
@@ -265,14 +272,26 @@ namespace MiniGame.Presentation
                 PresentationKind.ResponseBranch => new CompleteResponseBranch(game.CurrentEncounterId!, game.CurrentNodeId!),
                 PresentationKind.Reaction => new CompleteReaction(game.CurrentEncounterId!),
                 PresentationKind.Introduction => new CompleteIntroduction(game.CurrentEncounterId!, game.CurrentNodeId!),
-                PresentationKind.Sleep => game.Day == 0 && game.Phase == GamePhase.AfterDream
+                PresentationKind.Sleep => _dreamFromBed && game.Phase == GamePhase.Evening
+                    ? (GameCommand)new BeginNightDream() : game.Day == 0 && game.Phase == GamePhase.AfterDream
                     ? (GameCommand)new Interact(InteractionTarget.Bed) : new CompleteSleep(),
                 PresentationKind.Dream => new CompleteDream(),
                 _ => null
             };
             CommandResult? result = command == null ? null : _session.Execute(command);
             if (result != null && !result.Accepted) return Reject(result.Reason.ToString());
+            IEnumerable<GameEvent>? events = result?.Events;
             _cue = null;
+            if (_dreamFromBed && (kind == PresentationKind.Sleep || kind == PresentationKind.Dream)
+                && _session.GetPlayerView().Phase == GamePhase.AfterDream)
+            {
+                var wake = _session.Execute(new Interact(InteractionTarget.Bed));
+                if (!wake.Accepted) throw new InvalidOperationException("Completed bed dream could not advance the night.");
+                events = (events ?? Array.Empty<GameEvent>()).Concat(wake.Events);
+                _dreamFromBed = false;
+                if (_session.GetPlayerView().Phase == GamePhase.Ending) SetCue(PresentationKind.Ending);
+            }
+            else if (_dreamFromBed && kind == PresentationKind.Dream) _dreamFromBed = false;
             switch (kind)
             {
                 case PresentationKind.DoorMotion:
@@ -320,7 +339,7 @@ namespace MiniGame.Presentation
                     if (_session.GetPlayerView().Phase == GamePhase.Dream) SetCue(PresentationKind.Dream);
                     break;
             }
-            return Accept(result?.Events);
+            return Accept(events);
         }
 
         public RuntimeResult EnterSelectedPatient(string patientId)
@@ -466,6 +485,7 @@ namespace MiniGame.Presentation
                 ArchiveDirectoryVisible = _archiveDirectoryVisible,
                 RoomDoorOpen = _roomDoorOpen,
                 DoorViewActive = _doorViewActive,
+                DreamFromBed = _dreamFromBed,
                 Transcript = _transcript.Select(entry => new TranscriptRecord
                 {
                     Key = entry.Key, EncounterId = entry.EncounterId, CoreNodeId = entry.CoreNodeId,
@@ -507,7 +527,8 @@ namespace MiniGame.Presentation
                         ? TerminalPowerState.Running : checkpoint.TerminalPower ?? InferLegacyTerminalPower(checkpoint, session),
                     _archiveDirectoryVisible = checkpoint.ArchiveDirectoryVisible,
                     _roomDoorOpen = checkpoint.RoomDoorOpen,
-                    _doorViewActive = checkpoint.DoorViewActive
+                    _doorViewActive = checkpoint.DoorViewActive,
+                    _dreamFromBed = checkpoint.DreamFromBed
                 };
                 runtime._transcript.AddRange(checkpoint.Transcript.Select(entry => new TranscriptEntry(entry.Key,
                     entry.EncounterId, entry.CoreNodeId, entry.Speaker, entry.Text, entry.SourceNodeId, entry.PortraitId, entry.IsPlayer,
@@ -546,6 +567,10 @@ namespace MiniGame.Presentation
             var doorReturn = checkpoint.CueKind == PresentationKind.DoorViewReturn;
             var cue = doorMotion || doorReturn ? null : checkpoint.CueKind;
             var open = checkpoint.TerminalOpen;
+            if (checkpoint.DreamFromBed && (!rules.DreamFlowEnabled || open
+                || !((game.Phase == GamePhase.Evening && cue == PresentationKind.Sleep)
+                    || (game.Phase == GamePhase.Dream && cue == PresentationKind.Dream))))
+                throw new SnapshotValidationException("Bed-started dream does not match its presentation checkpoint.");
             if (checkpoint.TerminalPower.HasValue != checkpoint.TerminalPowerDay.HasValue)
                 throw new SnapshotValidationException("Terminal power and day must be saved together.");
             if (checkpoint.TerminalPower.HasValue)
@@ -609,7 +634,8 @@ namespace MiniGame.Presentation
                     EncounterStage.Reaction => open && cue == PresentationKind.Reaction,
                     _ => false
                 },
-                GamePhase.Evening => (!open && cue == null) || (afterReaction && open && cue == PresentationKind.ExitTerminal),
+                GamePhase.Evening => (!open && (cue == null || checkpoint.DreamFromBed && cue == PresentationKind.Sleep))
+                    || (afterReaction && open && cue == PresentationKind.ExitTerminal),
                 GamePhase.Sleeping => !open && cue == PresentationKind.Sleep,
                 GamePhase.Dream => !open && cue == PresentationKind.Dream,
                 GamePhase.AfterDream => !open && (cue == null || rules.DreamFlowEnabled && game.Day == 0 && cue == PresentationKind.Sleep),
@@ -692,7 +718,7 @@ namespace MiniGame.Presentation
             if (view.Phase == GamePhase.SelfReview && UsesDreamFlow) return new[] { InteractionTarget.Computer };
             if (view.Phase == GamePhase.Apartment || (view.Phase == GamePhase.Work && !_terminalOpen))
                 return new[] { InteractionTarget.Computer, InteractionTarget.Door };
-            if ((view.Phase == GamePhase.Evening && !UsesDreamFlow) || view.Phase == GamePhase.AfterDream)
+            if (view.Phase == GamePhase.Evening || view.Phase == GamePhase.AfterDream)
                 return new[] { InteractionTarget.Bed };
             return Array.Empty<InteractionTarget>();
         }
@@ -767,6 +793,7 @@ namespace MiniGame.Presentation
         [JsonProperty] public bool ArchiveDirectoryVisible { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool RoomDoorOpen { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool DoorViewActive { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public bool DreamFromBed { get; set; }
         [JsonProperty] public string? HistoryEncounterId { get; set; }
         [JsonProperty] public List<TranscriptRecord> Transcript { get; set; } = new List<TranscriptRecord>();
     }

@@ -17,7 +17,7 @@ namespace MiniGame.UnityHost.Tests
     public sealed class SeatedTerminalEntryPlayModeTests
     {
         [UnityTest, Timeout(60000)]
-        public IEnumerator ActorSitsBeforeAlignedDollyAndPhysicalCoveragePrecedesInterface()
+        public IEnumerator ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover()
         {
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
@@ -77,7 +77,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(phases, Does.Contain(TerminalEntryPhase.Sitting));
             Assert.That(phases, Does.Contain(TerminalEntryPhase.Aligning));
             Assert.That(phases, Does.Contain(TerminalEntryPhase.Pushing));
-            Assert.That(phases, Does.Contain(TerminalEntryPhase.FadingWorld));
+            Assert.That(phases.Contains(TerminalEntryPhase.FadingWorld), Is.False);
             Assert.That(phases, Does.Contain(TerminalEntryPhase.RevealingInterface));
             Assert.That(host.Effects.EntryPhase, Is.EqualTo(TerminalEntryPhase.Active));
             Assert.That(host.Effects.IsSeated, Is.True);
@@ -218,12 +218,15 @@ namespace MiniGame.UnityHost.Tests
                 if (phase != TerminalEntryPhase.None)
                 {
                     var bounds = ProjectScreen(camera, surface, out float depth);
+                    var block = new MaterialPropertyBlock();
+                    surface.GetPropertyBlock(block, 0);
                     observations.Add(new EntryObservation
                     {
                         phase = phase, controllerEnabled = controller.enabled, locked = host.Screen.TransitionLocked,
                         reveal = host.Screen.TerminalReveal, handoff = handoff.renderMode == RenderMode.ScreenSpaceOverlay && handoff.gameObject.activeInHierarchy ? 1 : 0, seated = host.Effects.IsSeated,
                         alignment = Quaternion.Angle(camera.transform.rotation, alignment.rotation), fieldOfView = camera.fieldOfView,
-                        screenBounds = bounds, nearestDepth = depth
+                        screenBounds = bounds, nearestDepth = depth,
+                        miniature = block.GetFloat("_LiveDisplay") > .5f && block.GetTexture("_LiveDisplayTex") == host.Screen.TerminalDisplay.Texture
                     });
                 }
                 yield return null;
@@ -235,10 +238,11 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(observation.controllerEnabled, Is.False, "The actor capsule must not fight the seated motion.");
             Assert.That(observation.locked, Is.True);
             Assert.That(observation.handoff, Is.Zero, "The original boot card must not hide the physical screen approach.");
-            if (observation.phase <= TerminalEntryPhase.FadingWorld)
-                Assert.That(observation.reveal, Is.Zero, "UI cannot cover the room before the physical display fills the view.");
+            if (observation.phase == TerminalEntryPhase.Sitting || observation.phase == TerminalEntryPhase.Aligning)
+                Assert.That(observation.reveal, Is.Zero, "The physical miniature remains visible during the initial approach.");
             if (observation.phase == TerminalEntryPhase.Pushing || observation.phase == TerminalEntryPhase.FadingWorld)
             {
+                Assert.That(observation.miniature, Is.True, "The physical CRT must already carry the live terminal texture.");
                 Assert.That(observation.seated, Is.True);
                 Assert.That(observation.alignment, Is.LessThan(.01f));
                 Assert.That(observation.fieldOfView, Is.EqualTo(48).Within(.001f));
@@ -254,7 +258,7 @@ namespace MiniGame.UnityHost.Tests
         private sealed class EntryObservation
         {
             public TerminalEntryPhase phase;
-            public bool controllerEnabled, locked, seated;
+            public bool controllerEnabled, locked, seated, miniature;
             public float reveal, handoff, alignment, fieldOfView, nearestDepth;
             public Vector4 screenBounds;
         }

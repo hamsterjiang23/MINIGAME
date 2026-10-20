@@ -12,6 +12,8 @@ Shader "MiniGame/Room Art Standard"
         _BumpScale ("Normal Scale", Float) = 1
         [HDR] _EmissionColor ("Emission", Color) = (0, 0, 0, 1)
         _CrtPower ("CRT Power", Range(0, 1)) = 1
+        [HideInInspector] _LiveDisplay ("Live terminal display", Float) = 0
+        [HideInInspector] _LiveDisplayTex ("Native terminal frame", 2D) = "black" {}
         [Toggle] _LightingBandsEnabled ("Lighting Bands Enabled", Float) = 0
         _LightingBands ("Lighting Bands", Range(2, 32)) = 8
         _LightingBandsStrength ("Lighting Bands Strength", Range(0, 1)) = 1
@@ -32,6 +34,8 @@ Shader "MiniGame/Room Art Standard"
         #include "UnityPBSLighting.cginc"
 
         sampler2D _MainTex, _BumpMap, _MetallicGlossMap;
+        sampler2D _LiveDisplayTex;
+        half _LiveDisplay;
         fixed4 _Color;
         half _Metallic, _Glossiness, _GlossMapScale, _BumpScale;
         half4 _EmissionColor;
@@ -117,6 +121,12 @@ Shader "MiniGame/Room Art Standard"
             #endif
             output.Normal *= input.facing >= 0 ? 1 : -1;
             output.Emission = _EmissionColor.rgb * saturate(_CrtPower);
+            if (_LiveDisplay > .5)
+            {
+                output.Albedo = 0;
+                output.Metallic = 0;
+                output.Emission = tex2D(_LiveDisplayTex, input.uv_MainTex).rgb * saturate(_CrtPower);
+            }
             output.Occlusion = 1;
             // World-anchored noise is stable as the camera moves, unlike temporal film grain.
             float3 noiseCell = floor(input.worldPos * 200);

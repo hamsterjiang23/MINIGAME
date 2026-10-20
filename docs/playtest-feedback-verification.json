@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-20",
+  "reportedBuild": "PauseFix",
+  "feedbackImage": "Artifacts/Unity/PlaytestFeedback20261020/user-feedback.png",
+  "implemented": {
+    "frameLimit": "30 target FPS with vSyncCount=0; observed in the nondevelopment Player",
+    "longDialogue": "Completed transcript entries retain every paragraph, with measured uncapped row heights",
+    "quit": "Pause menu includes Exit Game; verified to exit the standalone process",
+    "pauseOrientation": "Nondevelopment Direct3D11 Player checked in terminal and room views at 1280x720 and 1024x768",
+    "mouseSensitivity": "Combined scene default reduced from 2 to 0.7",
+    "dialogueWheel": "Scrollable transcript, stable reading position, follow latest only when already at bottom",
+    "sleepBeforeDream": "Bed interaction starts Sleep presentation before the Dream command; Day0 sleeps once without a dream video",
+    "bootHandoff": "Physical CRT samples the current terminal texture during the camera approach; UI crossfade uses no black world cover"
+  },
+  "deferredByUser": {
+    "lighting": "Awaiting new reference or specific visual corrections",
+    "dreamContent": "Assets still in production; no replacement dream content authored"
+  },
+  "tests": {
+    "dotnet": { "sdk": "8.0.424", "corePassed": 113, "presentationPassed": 191, "failed": 0 },
+    "unity": { "artifact": "Artifacts/Unity/PlaytestFeedback20261020/playtest-regression.xml", "passed": 3, "failed": 0 },
+    "pauseAndQuit": "Artifacts/Unity/PlaytestFeedback20261020/PauseAndQuitRelease/verification.json",
+    "dayZero": "Artifacts/Unity/PlaytestFeedback20261020/NativeRun/Artifacts/Opening/Player/verification.json",
+    "terminal": "Artifacts/Unity/PlaytestFeedback20261020/NativeRun/Artifacts/TerminalAmber/Player/verification.json",
+    "review": "CLEAN after adding the missing ordinary Ending cue to the automatic post-dream wake path"
+  },
+  "delivery": {
+    "target": "Windows x64 Mono, nondevelopment",
+    "archive": "Builds/Deliverables/MiniGame-Windows-x64-Mono-20261020-PlaytestFix.zip",
+    "verification": "Artifacts/Unity/PlaytestFeedback20261020/delivery-verification.json"
+  },
+  "limits": [
+    "30 FPS is the configured upper target, not a guarantee against slower hardware frames",
+    "Graphics pause checks exercised Direct3D11; trigger calls share the Escape handler's runtime path rather than injecting physical keyboard input",
+    "Lighting and dream asset feedback remain open"
+  ]
+}

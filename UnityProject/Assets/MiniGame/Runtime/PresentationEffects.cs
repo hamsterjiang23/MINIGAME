@@ -335,7 +335,7 @@ namespace MiniGame.UnityHost
             var sourceRotation = viewCamera.transform.rotation;
             float sourceFov = viewCamera.fieldOfView;
             var seatedRotation = Quaternion.Slerp(sourceRotation, seatEyePose.rotation, .3f);
-            const float sitEnd = .65f, alignEnd = 1.30f, pushEnd = 2.45f, fadeEnd = 2.65f, duration = 3f;
+            const float sitEnd = .65f, alignEnd = 1.30f, pushEnd = 2.45f, duration = 3f;
             screen.SetTransitionLocked(true);
             screen.SetTerminalReveal(0);
             screen.SetTerminalHandoff(0, false, false);
@@ -370,19 +370,9 @@ namespace MiniGame.UnityHost
                     viewCamera.fieldOfView = 48;
                     float p = Ease(Mathf.InverseLerp(alignEnd, pushEnd, elapsed));
                     viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(screenAlignPose.position, terminalCameraPose.position, p), screenAlignPose.rotation);
-                    if (elapsed < pushEnd) EntryPhase = TerminalEntryPhase.Pushing;
-                    else if (elapsed < fadeEnd)
-                    {
-                        EntryPhase = TerminalEntryPhase.FadingWorld;
-                        screen.SetFade(Ease(Mathf.InverseLerp(pushEnd, fadeEnd, elapsed)));
-                    }
-                    else
-                    {
-                        EntryPhase = TerminalEntryPhase.RevealingInterface;
-                        float reveal = Ease(Mathf.InverseLerp(fadeEnd, duration, elapsed));
-                        screen.SetTerminalReveal(reveal);
-                        screen.SetFade(1 - reveal);
-                    }
+                    EntryPhase = elapsed < pushEnd ? TerminalEntryPhase.Pushing : TerminalEntryPhase.RevealingInterface;
+                    screen.SetTerminalReveal(Ease(Mathf.InverseLerp(pushEnd - .2f, duration, elapsed)));
+                    screen.SetFade(0);
                 }
                 SetSurfaceGlow(booting ? Mathf.Clamp01(elapsed / alignEnd) : 1);
                 yield return null;
@@ -454,6 +444,7 @@ namespace MiniGame.UnityHost
                 surfaceReady = true;
             }
             terminalSurface.GetPropertyBlock(surfaceProperties);
+            SetLiveDisplay(surfaceProperties);
             surfaceProperties.SetColor("_EmissionColor", surfaceEmission * amount);
             surfaceProperties.SetFloat("_CrtPower", amount);
             terminalSurface.SetPropertyBlock(surfaceProperties);
@@ -461,10 +452,18 @@ namespace MiniGame.UnityHost
             for (int slot = 0; slot < terminalSurface.sharedMaterials.Length; slot++)
             {
                 terminalSurface.GetPropertyBlock(surfaceProperties, slot);
+                SetLiveDisplay(surfaceProperties);
                 surfaceProperties.SetColor("_EmissionColor", surfaceEmission * amount);
                 surfaceProperties.SetFloat("_CrtPower", amount);
                 terminalSurface.SetPropertyBlock(surfaceProperties, slot);
             }
+        }
+
+        private void SetLiveDisplay(MaterialPropertyBlock properties)
+        {
+            bool live = runtime != null && runtime.GetView().TerminalOpen && screen != null && screen.TerminalDisplay != null;
+            properties.SetFloat("_LiveDisplay", live ? 1 : 0);
+            if (live) properties.SetTexture("_LiveDisplayTex", screen.TerminalDisplay.Texture);
         }
 
         private IEnumerator SleepTransition(string token)

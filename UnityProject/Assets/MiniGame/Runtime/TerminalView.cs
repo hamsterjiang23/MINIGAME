@@ -17,8 +17,7 @@ namespace MiniGame.UnityHost
         private readonly GameObject directory, review, selfReview, history, answers;
         private readonly Text date, day, count, previewName, previewId, previewStatus, previewUnit, quota;
         private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, commandStatus, footerText, footerHelp, pageLabel;
-        private readonly Text[] historyRows = new Text[6], historySpeakers = new Text[6];
-        private readonly RectTransform historyThumb;
+        private readonly TerminalTranscriptView transcriptView;
         private readonly Button enter, leave, returnDirectory, selfPurify, footer;
         private readonly RawImage selfMonitor;
         private readonly RawImage supervisor;
@@ -38,7 +37,7 @@ namespace MiniGame.UnityHost
         private readonly Text historyHeading;
         private readonly RawImage packageFrame;
         private readonly TerminalAssetSet assets;
-        private int rosterIndex, historyOffset, selectedDisposition;
+        private int rosterIndex, selectedDisposition;
         private string portraitId = "ML01", sourceNodeId = "";
         public RectTransform ChoiceRoot { get; }
         public Text Speaker { get; }
@@ -134,18 +133,8 @@ namespace MiniGame.UnityHost
             signalLostMessage = Label(video, "SignalLostMessage", "SIGNAL LOST", 176, 123, 200, 25, 13, Dim).gameObject;
             historyHeading = Label(rr, "DialogueHeading", "对话 / R1", 26, 368, 470, 20, 13, Dim);
             Rule(rr, 22, 388, 480);
-            history = Panel(rr, "TranscriptPanel", Color.clear, 23, 395, 478, 135).gameObject;
-            history.AddComponent<RectMask2D>();
-            for (int i = 0; i < 6; i++)
-            {
-                historySpeakers[i] = Label(history.transform, "TranscriptSpeaker" + i, "", 3, 4 + i * 22, 52, 18, 11, Dim);
-                var clip = Panel(history.transform, "TranscriptRow" + i, Color.clear, 56, 4 + i * 22, 415, 32);
-                clip.gameObject.AddComponent<RectMask2D>();
-                historyRows[i] = Label(clip, i == 0 ? "TranscriptText" : "TranscriptText" + i, "", 0, 0, 415, 32, 14, Ink);
-                historyRows[i].horizontalOverflow = HorizontalWrapMode.Wrap;
-                historyRows[i].alignment = TextAnchor.UpperLeft;
-            }
-            historyThumb = Panel(rr, "HistoryThumb", Dim, 500, 396, 2, 131);
+            transcriptView = new TerminalTranscriptView(rr, font);
+            history = transcriptView.GameObject;
             roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 242, 19, 13, Dim);
             commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 46, 12, Dim);
             Label(rr, "DispositionHeading", "处置命令", 534, 173, 240, 19, 13, Dim); Rule(rr, 530, 194, 248);
@@ -197,7 +186,8 @@ namespace MiniGame.UnityHost
         public void Fit() => display.Fit();
         public void ResetNavigation(RuntimeView view)
         {
-            current = view; rosterIndex = historyOffset = 0;
+            current = view; rosterIndex = 0;
+            transcriptView.Reset();
             sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId ?? view.Game.CurrentPatientId);
             ClearNarration(); RestorePresentation(view); SetSignalDistortion(0); Render(view, false);
         }
@@ -206,7 +196,7 @@ namespace MiniGame.UnityHost
             bool nextEncounter = current == null || current.PresentedEncounterId != view.PresentedEncounterId;
             bool enteringDirectory = view.TerminalPage == TerminalPage.Directory && current?.TerminalPage != TerminalPage.Directory;
             current = view; locked = inputLocked;
-            if (nextEncounter) { sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId); historyOffset = 0; RestorePresentation(view); }
+            if (nextEncounter) { sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId); transcriptView.Reset(); RestorePresentation(view); }
             if (enteringDirectory) { int next = view.Patients.ToList().FindIndex(p => p.IsCurrent); if (next >= 0) rosterIndex = next; }
             bool self = view.TerminalPage == TerminalPage.SelfReview;
             bool dir = view.TerminalPage == TerminalPage.Directory || view.ArchiveDirectoryVisible;
@@ -329,7 +319,7 @@ namespace MiniGame.UnityHost
             return true;
         }
         public bool HandleArchiveKey(KeyCode key) => !locked && returnDirectory.gameObject.activeInHierarchy && (key == KeyCode.Return || key == KeyCode.KeypadEnter) && MiniGameAudioButton.Activate(returnDirectory);
-        public void ScrollHistory(int amount) { if (current == null) return; historyOffset = Mathf.Clamp(historyOffset + amount, 0, Mathf.Max(0, current.Transcript.Count - 5)); RenderHistory(); }
+        public void ScrollHistory(int amount) { if (current != null) transcriptView.Scroll(amount); }
         private void SelectRoster(int index) { if (locked) return; rosterIndex = index; RenderRoster(); }
         private void EnterSelected() { if (current == null || locked || !enter.interactable || rosterIndex >= current.Patients.Count) return; enterPatient(current.Patients[rosterIndex].Id); }
         private void RenderRoster()
@@ -359,39 +349,7 @@ namespace MiniGame.UnityHost
         private void RenderHistory()
         {
             if (current == null) return;
-            int count = current.Transcript.Count, start = count;
-            float used = 0;
-            var measure = historyRows[0];
-            var generation = measure.GetGenerationSettings(new Vector2(415, 0));
-            generation.verticalOverflow = VerticalWrapMode.Overflow;
-            float Height(string value) => Mathf.Max(25, Mathf.Min(42,
-                measure.cachedTextGeneratorForLayout.GetPreferredHeight(value, generation) / measure.pixelsPerUnit) + 2);
-            string DisplayText(int index)
-            {
-                var entry = current.Transcript[index];
-                return index == count - 1 && !entry.IsPlayer && !entry.IsNarration && entry.SourceNodeId == sourceNodeId ? Body.text : entry.Text;
-            }
-            // Fit backwards from the newest line so a wrapped older entry cannot push the current page offscreen.
-            while (start > 0 && count - start < 5)
-            {
-                float height = Height(DisplayText(start - 1));
-                if (used + height > 131 && start < count) break;
-                used += height; start--;
-            }
-            float y = 4;
-            for (int i = 0; i < 6; i++)
-            {
-                bool show = start + i < count; historyRows[i].transform.parent.gameObject.SetActive(show); historySpeakers[i].gameObject.SetActive(show);
-                if (!show) continue;
-                var entry = current.Transcript[start + i];
-                string text = DisplayText(start + i); float height = Height(text);
-                historyRows[i].text = text.Replace("\r", " "); historyRows[i].color = start + i == count - 1 ? Bright : Ink;
-                historySpeakers[i].text = entry.IsPlayer ? "值班员" : entry.IsNarration ? "终端" : "对象";
-                Position(historySpeakers[i].rectTransform, 3, y, 52, 18); Position((RectTransform)historyRows[i].transform.parent, 56, y, 415, height - 2);
-                Position(historyRows[i].rectTransform, 0, 0, 415, height - 2);
-                y += height;
-            }
-            historyThumb.gameObject.SetActive(false);
+            transcriptView.Render(current.Transcript, sourceNodeId, Body.text);
         }
         private void Footer(string text, string help) { footerText.text = text; footerHelp.text = help; }
         private Text Field(Transform parent, string label, string value, float y) { Label(parent, label + "Label", label, 24, y, 110, 20, 14, Ink); return Label(parent, "Preview" + label, value, 138, y, 440, 20, 14, Ink); }

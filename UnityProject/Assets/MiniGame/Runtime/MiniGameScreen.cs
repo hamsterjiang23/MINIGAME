@@ -575,9 +575,10 @@ namespace MiniGame.UnityHost
             closeInspection = MakeButton(ir, "CloseInspection", "记录并返回 [ESC]", () => runtime.CloseInspection());
             SetRect(closeInspection.GetComponent<RectTransform>(), new Vector2(.58f, .04f), new Vector2(.95f, .15f));
 
-            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期" };
-            Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(), () => RestartRequested?.Invoke() };
-            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "" }, actions);
+            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期", "退出游戏" };
+            Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(),
+                () => RestartRequested?.Invoke(), () => Application.Quit() };
+            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "" }, actions);
             pauseMenu.SetHint("保存当前进度，下次可从这里继续检查。");
             fade = MakePanel(canvasRoot, "PresentationFade", Color.clear, Vector2.zero, Vector2.one).GetComponent<Image>();
             fade.raycastTarget = false;

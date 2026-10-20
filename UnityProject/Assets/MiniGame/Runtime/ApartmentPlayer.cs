@@ -10,7 +10,7 @@ namespace MiniGame.UnityHost
     {
         [SerializeField] private Camera viewCamera;
         [SerializeField] private float walkSpeed = 2.4f;
-        [SerializeField] private float lookSensitivity = 2f;
+        [SerializeField, Range(.1f, 4f)] private float lookSensitivity = PlayerRuntimeSettings.DefaultMouseSensitivity;
         [Header("梦后行走"), SerializeField] private bool dreamTraversalConfigured;
         [SerializeField, InspectorName("行走区域中心")] private Vector3 dreamTraversalCenter;
         [SerializeField, InspectorName("行走区域尺寸")] private Vector3 dreamTraversalSize = new Vector3(9, 3, 4);

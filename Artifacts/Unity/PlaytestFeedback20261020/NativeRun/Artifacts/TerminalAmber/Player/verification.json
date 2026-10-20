@@ -1,0 +1,20 @@
+{
+    "result": "Passed",
+    "detail": "Mapped UI clicks completed midday UI exit/reentry with the physical CRT lit, then the six-round child encounter, reaction and final daily shutdown; power sounds played once each.",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Standalone GPU native UI RenderTexture + actual CRT material; physical CRT power property blocks and real audio service events; hidden-window backbuffer is not used",
+    "replies": 6,
+    "quota": 5,
+    "powerOnSounds": 1,
+    "powerOffSounds": 1,
+    "manualReopen": true,
+    "automaticShutdown": true,
+    "removedFunctionKeys": true,
+    "directoryPixels": true,
+    "reviewPixels": true,
+    "initiallyOff": true,
+    "middayLit": true,
+    "reopenedWithoutBoot": true,
+    "finallyDark": true,
+    "seconds": 29.11138916015625
+}

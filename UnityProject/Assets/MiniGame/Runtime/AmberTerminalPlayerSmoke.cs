@@ -1,4 +1,4 @@
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
+#if DEVELOPMENT_BUILD || UNITY_EDITOR || MINIGAME_FEEDBACK_PROBE
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,8 +1,9 @@
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#if UNITY_EDITOR || DEVELOPMENT_BUILD || MINIGAME_FEEDBACK_PROBE
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,8 @@ namespace MiniGame.UnityHost
         private string folder;
         private float began;
         private bool finished;
+        private Button quitAction;
+        private float finishedAt;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
@@ -71,10 +74,29 @@ namespace MiniGame.UnityHost
             yield return new WaitForEndOfFrame();
             Capture("paused-resized");
             host.Runtime.SetPaused(false);
+            host.StartLegacyPrototype();
+            yield return new WaitForSecondsRealtime(.35f);
+            yield return new WaitForEndOfFrame();
+            Capture("room-before-pause");
+            host.Runtime.SetPaused(true);
+            yield return WaitForPause(host);
+            yield return new WaitForEndOfFrame();
+            Capture("room-paused");
+            host.Runtime.SetPaused(false);
+            yield return new WaitForSecondsRealtime(.3f);
+            yield return new WaitForEndOfFrame();
+            Capture("room-resumed");
             Destroy(markers);
+            host.Runtime.SetPaused(true);
+            yield return WaitForPause(host);
+            var menu = host.Screen.GetComponentInChildren<PauseMenuView>(true);
+            var quitLabel = menu.GetComponentsInChildren<Text>(false).FirstOrDefault(text => text.text == "退出游戏");
+            quitAction = quitLabel != null ? quitLabel.GetComponentInParent<Button>() : null;
             bool resized = samples[0].width == 1280 && samples[0].height == 720
                 && samples[samples.Count - 1].width == 1024 && samples[samples.Count - 1].height == 768;
-            Finish(resized && samples.TrueForAll(sample => sample.passed), "Top red and bottom blue must retain their positions at 1280x720 and 1024x768");
+            Finish(resized && Application.targetFrameRate == 30 && QualitySettings.vSyncCount == 0
+                && quitAction != null && quitAction.IsInteractable()
+                && samples.TrueForAll(sample => sample.passed), "Terminal/room orientation, two sizes, frame cap and real quit action");
         }
 
         private static IEnumerator Resize(int width, int height)
@@ -125,18 +147,22 @@ namespace MiniGame.UnityHost
 
         private void Update()
         {
+            if (finished && Time.realtimeSinceStartup - finishedAt > 2) Application.Quit(1);
             if (!finished && began > 0 && Time.realtimeSinceStartup - began > 35) Finish(false, "Capture timed out");
         }
 
         private void Finish(bool passed, string detail)
         {
-            finished = true;
+            finished = true; finishedAt = Time.realtimeSinceStartup;
             var report = new { passed, detail, graphics = SystemInfo.graphicsDeviceType.ToString(),
-                graphicsUVStartsAtTop = SystemInfo.graphicsUVStartsAtTop, samples = samples.ToArray() };
+                graphicsUVStartsAtTop = SystemInfo.graphicsUVStartsAtTop, targetFrameRate = Application.targetFrameRate,
+                vSyncCount = QualitySettings.vSyncCount, developmentBuild = Debug.isDebugBuild,
+                quitViaMenu = passed && quitAction != null, samples = samples.ToArray() };
             File.WriteAllText(Path.Combine(folder, "verification.json"),
                 Newtonsoft.Json.JsonConvert.SerializeObject(report, Newtonsoft.Json.Formatting.Indented));
             Debug.Log("MINIGAME_PAUSE_ORIENTATION_" + (passed ? "PASSED" : "FAILED"));
-            Application.Quit(passed ? 0 : 1);
+            if (passed && quitAction != null) quitAction.onClick.Invoke();
+            else Application.Quit(passed ? 0 : 1);
         }
     }
 }
