@@ -14,5 +14,5 @@
 偏差数：0，按用户要求调整起床视角和海报文本边框。`[opinion]`
 复核重点：安全锚点只用于位置，不用于每日强制朝向。`[verified: UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs PlaceAtWakePose]`
 边界记录：控制器原启用状态、Day0／普通夜晚入口、海报分页与暂停。`[verified: UnityProject/Assets/MiniGame/Tests/PlayMode/DreamTraversalPlayModeTests.cs DayZeroWakeRepositionsSafelyWithoutChangingLookOrControllerState；PropNarrationPlayModeTests.cs ReadingOwnsInputPagesAndPauseWithoutChangingGameState]`
-验证：新增和修改测试已提交宿主统一执行，此处不声明运行结果。`[opinion]`
+验证：本轮起床、碰撞与海报PlayMode批次12项通过，实际场景白框截图已检查；结果与证据见[统一验证](../crt-screen-fit/verification.json)。`[verified: Artifacts/CrtScreenFit/wake-poster.xml passed=12/failed=0；Artifacts/CrtScreenFit/gameplay/poster-white-frame.png]`
 后续入口：上述两份 PlayMode 测试。`[opinion]`

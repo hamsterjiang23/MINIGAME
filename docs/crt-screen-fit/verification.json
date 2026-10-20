@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-20",
+  "scope": [
+    "Model-measured curved CRT overlay",
+    "Daily persistent power and power audio",
+    "Wake look preservation",
+    "White-framed poster narration"
+  ],
+  "geometry": {
+    "originalFbxUnchanged": true,
+    "vertices": 3191,
+    "unityImport": "Artifacts/CrtScreenFit/import.log",
+    "triangles": 6153,
+    "curvatureDepthMm": 36.87063980102539,
+    "result": "passed",
+    "sourceResourceGeneratorHashesVerified": true,
+    "calibration": "Art/MainRoom/screen-fit/report.json",
+    "unityGeometry": "Artifacts/CrtScreenFit/unity-geometry.json"
+  },
+  "dotnet": {
+    "total": 302,
+    "restore": "dotnet restore MiniGame.sln --locked-mode",
+    "build": "dotnet build MiniGame.sln -c Release --no-restore",
+    "sdk": "8.0.424",
+    "test": "dotnet test MiniGame.sln -c Release --no-build --no-restore",
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "result": "Passed",
+    "presentation": 189,
+    "trx": [
+      "src/MiniGame.Core.Tests/TestResults/crt-daily_net8.0_20261020202106.trx",
+      "src/MiniGame.Presentation.Tests/TestResults/crt-daily_net8.0_20261020202112.trx"
+    ],
+    "core": 113
+  },
+  "unity": {
+    "failed": 0,
+    "inconclusiveAttemptsExcluded": true,
+    "version": "2022.3.23f1c1",
+    "inconclusiveAttempts": [
+      "playmode.log: mixed run left PlayMode without RunFinished/XML",
+      "entry-terminal.log: mixed run left PlayMode without RunFinished/XML"
+    ],
+    "environment": "Artifacts/Unity/OfflineProject; source synchronized; GPU enabled; -noUpm",
+    "batches": [
+      {
+        "seconds": 13.9834346,
+        "passed": 1,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/daily-power.xml",
+        "name": "daily-power",
+        "failed": 0
+      },
+      {
+        "seconds": 4.4458322,
+        "passed": 12,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/wake-poster.xml",
+        "name": "wake-poster",
+        "failed": 0
+      },
+      {
+        "seconds": 29.9522992,
+        "passed": 2,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/seated-entry.xml",
+        "name": "seated-entry",
+        "failed": 0
+      },
+      {
+        "seconds": 13.9566222,
+        "passed": 2,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/day0.xml",
+        "name": "day0",
+        "failed": 0
+      },
+      {
+        "seconds": 6.9587968,
+        "passed": 4,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/amber.xml",
+        "name": "amber",
+        "failed": 0
+      },
+      {
+        "seconds": 2.9556638,
+        "passed": 8,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/audio.xml",
+        "name": "audio",
+        "failed": 0
+      },
+      {
+        "seconds": 4.084126,
+        "passed": 1,
+        "result": "Passed",
+        "evidence": "Artifacts/CrtScreenFit/self-review.xml",
+        "name": "self-review",
+        "failed": 0
+      }
+    ],
+    "passed": 30,
+    "result": "Passed"
+  },
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\TerminalScreenFit\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 10.162414
+  },
+  "player": {
+    "opening": {
+      "log": "Artifacts/CrtScreenFit/player-day0.log",
+      "furnitureRestored": true,
+      "detail": "Fresh campaign opening, native UI tutorial and one sleep completed",
+      "day": 1,
+      "result": "passed",
+      "sourceLines": 7,
+      "singlePurification": true,
+      "bedOnly": true,
+      "evidence": "opening-player.json"
+    },
+    "amber": {
+      "log": "Artifacts/CrtScreenFit/player-amber.log",
+      "detail": "Mapped UI clicks completed midday UI exit/reentry with the physical CRT lit, then the six-round child encounter, reaction and final daily shutdown; power sounds played once each.",
+      "middayLit": true,
+      "initiallyOff": true,
+      "result": "Passed",
+      "finallyDark": true,
+      "reopenedWithoutBoot": true,
+      "powerOffSounds": 1,
+      "powerOnSounds": 1,
+      "evidence": "daily-player.json"
+    },
+    "binarySha256": "55ab99c1b6d2d954f3ce377fe0fcd5fbcf6b38b59dcf4aaae7ad66bd13786150"
+  },
+  "previews": [
+    "previews/front.png",
+    "previews/left.png",
+    "previews/right.png",
+    "previews/physical-off.png",
+    "previews/physical-midday-on.png",
+    "previews/poster.png"
+  ],
+  "limits": [
+    "Unity source primary UPM project was not opened; isolated source copy imported and tested.",
+    "Windows Mono development build; IL2CPP was not run.",
+    "GPU camera/CRT texture captures and scripted UI pointer dispatch; no claim of human audio listening or manual desktop testing.",
+    "Source scan holes use local interpolation; maximum source pit clearance is 6.26mm.",
+    "Full campaign ending matrix was not rerun; selected three-day self-review integration and full .NET tests passed."
+  ]
+}

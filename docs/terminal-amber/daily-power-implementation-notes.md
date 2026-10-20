@@ -20,4 +20,4 @@
 最可能复查项：本人复核的安全画面通电显示。`[opinion]`
 边界项：6。`[verified: Discovered edge cases 六项]`
 后续先读：GameRuntime 的电源字段、CompleteCue 与 InferLegacyTerminalPower。`[opinion]`
-继续验证：TerminalDailyPowerPlayModeTests，以及实际 Player 音效次数与物理 CRT 亮灭。`[opinion]`
+最终验证：每日通电专项PlayMode通过；实际Player确认初始熄屏、中途保持亮屏、免开机重进及最终熄屏，开关机音效各一次；本人复核实际场景回归通过。总计302项.NET、30项PlayMode及两项Player检查，见[统一验证](../crt-screen-fit/verification.json)。`[verified: Artifacts/CrtScreenFit/daily-power.xml；Artifacts/CrtScreenFit/self-review.xml；../crt-screen-fit/verification.json]`
