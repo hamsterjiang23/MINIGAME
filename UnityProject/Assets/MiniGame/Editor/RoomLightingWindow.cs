@@ -12,11 +12,11 @@ namespace MiniGame.UnityHost.Editor
     [CustomEditor(typeof(RoomLightingProfile))]
     public sealed class RoomLightingProfileEditor : UnityEditor.Editor
     {
-        private RoomLightingPeriod editingPeriod;
         public override void OnInspectorGUI()
         {
-            editingPeriod = (RoomLightingPeriod)GUILayout.Toolbar((int)editingPeriod, new[] { "编辑白天", "编辑夜晚" });
-            serializedObject.Update(); DrawSettings(serializedObject, editingPeriod);
+            EditorGUILayout.HelpBox("每份资产保存一个时段的完整参数。白天／夜晚的绑定与切换请使用房间灯光窗口。", MessageType.Info);
+            serializedObject.Update(); DrawSettings(serializedObject);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("SceneLights"), new GUIContent("逐灯完整配置"), true);
             if (serializedObject.ApplyModifiedProperties()) ApplyInspectorChanges((RoomLightingProfile)target);
             if (!EditorUtility.IsPersistent(target))
                 EditorGUILayout.HelpBox("这是临时运行配置。修改仅影响当前实例；要退出播放后保留，请在房间灯光窗口编辑 Project 配置资产。", MessageType.Info);
@@ -32,18 +32,10 @@ namespace MiniGame.UnityHost.Editor
         internal static void DrawSettings(SerializedObject settings) => DrawSettings(settings, RoomLightingPeriod.Day);
         internal static void DrawSettings(SerializedObject settings, RoomLightingPeriod period)
         {
-            if (period == RoomLightingPeriod.Night)
-            {
-                EditorGUILayout.LabelField("夜间环境与默认衰减", EditorStyles.boldLabel);
-                var night = settings.FindProperty("night");
-                EditorGUILayout.PropertyField(night.FindPropertyRelative("ambientColor"), new GUIContent("夜间环境色"));
-                EditorGUILayout.PropertyField(night.FindPropertyRelative("reflectionIntensity"), new GUIContent("夜间反射强度"));
-                EditorGUILayout.PropertyField(night.FindPropertyRelative("lightMultiplier"), new GUIContent("未覆盖灯光倍率", "没有单独设置的普通灯相对白天的强度倍率；床引导灯有独立基准。"));
-                EditorGUILayout.PropertyField(night.FindPropertyRelative("emissionMultiplier"), new GUIContent("夜间自发光倍率"));
-                EditorGUILayout.PropertyField(night.FindPropertyRelative("fadeSeconds"), new GUIContent("昼夜过渡时间（秒）"));
-                EditorGUILayout.HelpBox("夜间每盏灯可在下方选择后单独调整。已单独设置的灯使用自己的强度，不再叠加默认灯光倍率。", MessageType.None);
-                return;
-            }
+            EditorGUILayout.LabelField("当前时段整体控制", EditorStyles.boldLabel);
+            Draw(settings, "lightMultiplier", "整体灯光倍率");
+            Draw(settings, "emissionMultiplier", "整体自发光倍率");
+            Draw(settings, "fadeSeconds", "切换到此时段的过渡时间（秒）");
             EditorGUILayout.LabelField("吊灯聚光灯", EditorStyles.boldLabel);
             Draw(settings, "lampOffset", "灯罩开口偏移（米）", "Y 保持负值，防止光源进入灯罩产生椭圆投影。");
             Draw(settings, "lampEulerAngles", "吊灯世界旋转（度）");
@@ -156,8 +148,9 @@ namespace MiniGame.UnityHost.Editor
             { EndSceneHandleInteraction(); SetToolsHidden(false); ReleaseController(controller); selectedPath = ""; }
             controller = next;
             RoomLightingAuthoring.SetEditingPeriod(controller, editingPeriod);
-            profile = controller != null ? controller.Profile : RoomLightingAuthoring.GetLoadedControllers().Length == 0
-                ? AssetDatabase.LoadAssetAtPath<RoomLightingProfile>(RoomLightingSetup.ProfilePath) : null;
+            profile = controller != null ? controller.GetProfile(editingPeriod) : RoomLightingAuthoring.GetLoadedControllers().Length == 0
+                ? AssetDatabase.LoadAssetAtPath<RoomLightingProfile>(editingPeriod == RoomLightingPeriod.Day
+                    ? RoomLightingSetup.DayProfilePath : RoomLightingSetup.NightProfilePath) : null;
         }
         private void ReleaseController(RoomLightingController room)
         {
@@ -187,8 +180,8 @@ namespace MiniGame.UnityHost.Editor
             Resolve();
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar))
             {
-                using (new EditorGUI.DisabledScope(profile == null || !EditorUtility.IsPersistent(profile)))
-                    if (GUILayout.Button("保存配置", EditorStyles.toolbarButton)) RoomLightingAuthoring.SaveProfile(profile);
+                using (new EditorGUI.DisabledScope(!CanEditProfile))
+                    if (GUILayout.Button("保存" + PeriodLabel + "配置", EditorStyles.toolbarButton)) RoomLightingAuthoring.SaveProfile(profile);
                 if (GUILayout.Button("定位配置", EditorStyles.toolbarButton) && profile != null) { Selection.activeObject = profile; EditorGUIUtility.PingObject(profile); }
                 if (GUILayout.Button("场景真实预览", EditorStyles.toolbarButton)) EnableScenePreview();
                 if (GUILayout.Button("调色与像素风格", EditorStyles.toolbarButton)) RetroScreenWindow.Open();
@@ -196,16 +189,21 @@ namespace MiniGame.UnityHost.Editor
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar))
             {
                 GUILayout.Label("保存与分享", EditorStyles.miniLabel);
-                using (new EditorGUI.DisabledScope(profile == null || !EditorUtility.IsPersistent(profile)))
+                using (new EditorGUI.DisabledScope(!CanEditProfile))
                 {
-                    if (GUILayout.Button(new GUIContent("导出 JSON", "导出完整白天与夜晚配置，发送此文件即可分享。"), EditorStyles.toolbarButton)) ExportPreset();
-                    if (GUILayout.Button(new GUIContent("导入 JSON", "读取分享文件，替换当前房间的白天与夜晚配置；支持一次撤销。"), EditorStyles.toolbarButton)) ImportPreset();
+                    if (GUILayout.Button(new GUIContent("导出" + PeriodLabel + " JSON", "导出当前编辑时段的完整独立配置。"), EditorStyles.toolbarButton)) ExportPreset();
+                    if (GUILayout.Button(new GUIContent("导入" + PeriodLabel + " JSON", "仅替换当前编辑时段的配置；支持一次撤销。"), EditorStyles.toolbarButton)) ImportPreset();
                 }
             }
             if (!string.IsNullOrEmpty(presetMessage)) EditorGUILayout.HelpBox(presetMessage, presetMessageType);
             EditorGUILayout.LabelField("房间灯光 · " + (EditorApplication.isPlaying ? EditorApplication.isPaused ? "播放已暂停" : "播放中" : "编辑模式"), EditorStyles.boldLabel);
             EditorGUILayout.HelpBox("可停靠在 Scene 或 Game 旁直接调灯，播放和暂停时都可编辑。修改写入配置资产，支持撤销/重做，退出播放前自动保存。", MessageType.Info);
             DrawTargetAndPeriod();
+            if (controller != null && !controller.HasIndependentProfiles)
+            {
+                EditorGUILayout.HelpBox("请绑定两份不同的 Project 配置资产。白天和夜晚必须分别保存完整参数，不能共用同一资产。", MessageType.Warning);
+                return;
+            }
             if (profile == null)
             {
                 if (RoomLightingAuthoring.GetLoadedControllers().Length > 0)
@@ -216,7 +214,7 @@ namespace MiniGame.UnityHost.Editor
                 return;
             }
             using (new EditorGUI.DisabledScope(true)) EditorGUILayout.ObjectField("实际配置资产", profile, typeof(RoomLightingProfile), false);
-            if (RoomLightingAuthoring.GetLoadedControllers().Count(room => room.Profile == profile) > 1)
+            if (RoomLightingAuthoring.GetLoadedControllers().Count(room => room.Profile == profile || room.NightProfile == profile) > 1)
                 EditorGUILayout.HelpBox("多个已加载房间共用这份配置，修改会同步到这些房间。需要独立效果时请为目标房间绑定独立配置资产。", MessageType.Info);
             if (!EditorUtility.IsPersistent(profile))
             { EditorGUILayout.HelpBox("当前是临时配置，请先绑定 Project 中的房间灯光配置资产。", MessageType.Warning); return; }
@@ -225,8 +223,7 @@ namespace MiniGame.UnityHost.Editor
                 scroll = scrolling.scrollPosition;
                 DrawSceneLights();
                 EditorGUILayout.Space();
-                showBaseSettings = EditorGUILayout.Foldout(showBaseSettings, editingPeriod == RoomLightingPeriod.Day
-                    ? "白天基础光、共用地板与地毯" : "夜间环境与过渡", true);
+                showBaseSettings = EditorGUILayout.Foldout(showBaseSettings, PeriodLabel + "完整基础光、环境、地板与地毯", true);
                 if (showBaseSettings)
                 {
                     var settings = new SerializedObject(profile); settings.Update(); RoomLightingProfileEditor.DrawSettings(settings, editingPeriod);
@@ -244,17 +241,21 @@ namespace MiniGame.UnityHost.Editor
             }
         }
 
+        private string PeriodLabel => editingPeriod == RoomLightingPeriod.Day ? "白天" : "夜晚";
+        private bool CanEditProfile => profile != null && EditorUtility.IsPersistent(profile)
+            && (controller == null || controller.HasIndependentProfiles);
+
         private void ExportPreset()
         {
             var source = profile;
             if (source == null) return;
-            string path = EditorUtility.SaveFilePanel("导出白天与夜晚灯光配置", presetFolder, source.name + "-lighting.json", "json");
+            string path = EditorUtility.SaveFilePanel("导出" + PeriodLabel + "灯光配置", presetFolder, source.name + "-lighting.json", "json");
             if (string.IsNullOrEmpty(path)) return;
             try
             {
                 RoomLightingPresetIO.SaveFile(source, path);
                 presetFolder = Path.GetDirectoryName(path) ?? "";
-                presetMessage = "已导出完整白天与夜晚灯光配置，可分享此 JSON 文件：\n" + path;
+                presetMessage = "已导出" + PeriodLabel + "完整灯光配置，可分享此 JSON 文件：\n" + path;
                 presetMessageType = MessageType.Info;
             }
             catch (Exception exception)
@@ -265,13 +266,13 @@ namespace MiniGame.UnityHost.Editor
         {
             var destination = profile;
             if (destination == null || !EditorUtility.IsPersistent(destination)) return;
-            string path = EditorUtility.OpenFilePanel("导入白天与夜晚灯光配置", presetFolder, "json");
+            string path = EditorUtility.OpenFilePanel("导入" + PeriodLabel + "灯光配置", presetFolder, "json");
             if (string.IsNullOrEmpty(path)) return;
             EndSceneHandleInteraction();
             Undo.IncrementCurrentGroup();
             int group = Undo.GetCurrentGroup();
-            Undo.SetCurrentGroupName("导入昼夜灯光配置");
-            Undo.RecordObject(destination, "导入昼夜灯光配置");
+            Undo.SetCurrentGroupName("导入" + PeriodLabel + "灯光配置");
+            Undo.RecordObject(destination, "导入" + PeriodLabel + "灯光配置");
             try
             {
                 if (!RoomLightingPresetIO.TryLoadFile(path, destination, out string message))
@@ -279,7 +280,7 @@ namespace MiniGame.UnityHost.Editor
                 // The authoring gateway marks dirty, queues saving and refreshes every room sharing this profile.
                 RoomLightingAuthoring.ProfileEdited(destination);
                 presetFolder = Path.GetDirectoryName(path) ?? "";
-                presetMessage = message + " 可撤销；点击“保存配置”写入工程。";
+                presetMessage = message + " 可撤销；点击“保存" + PeriodLabel + "配置”写入工程。";
                 presetMessageType = MessageType.Info;
             }
             catch (Exception exception)
@@ -304,6 +305,7 @@ namespace MiniGame.UnityHost.Editor
                 EditorGUILayout.LabelField("当前目标", controller.gameObject.scene.name + " / " + controller.name);
             else if (rooms.Length > 1)
                 EditorGUILayout.HelpBox("已加载多个房间。选中目标房间内的灯或物件，或取消跟随后显式指定目标房间。", MessageType.Warning);
+            DrawProfileBindings();
             int period = GUILayout.Toolbar((int)editingPeriod, new[] { "编辑白天", "编辑夜晚" });
             if (period != (int)editingPeriod)
             {
@@ -312,6 +314,7 @@ namespace MiniGame.UnityHost.Editor
                 if (controller != null) controller.SetPreviewMode(editingPeriod == RoomLightingPeriod.Day
                     ? RoomLightingPreviewMode.Day : RoomLightingPreviewMode.Night);
                 SetToolsHidden(false);
+                Resolve();
             }
             if (controller == null) return;
             var mode = (RoomLightingPreviewMode)EditorGUILayout.Popup("画面预览", (int)controller.PreviewMode,
@@ -322,9 +325,37 @@ namespace MiniGame.UnityHost.Editor
                 EditorGUILayout.HelpBox("当前画面与编辑时段不同。切换画面预览可立即检查这一时段的修改。", MessageType.Info);
         }
 
+        private void DrawProfileBindings()
+        {
+            if (controller == null) return;
+            EditorGUI.BeginChangeCheck();
+            var day = (RoomLightingProfile)EditorGUILayout.ObjectField("白天配置", controller.Profile, typeof(RoomLightingProfile), false);
+            var night = (RoomLightingProfile)EditorGUILayout.ObjectField("夜晚配置", controller.NightProfile, typeof(RoomLightingProfile), false);
+            if (!EditorGUI.EndChangeCheck()) return;
+            if (day != null && day == night)
+            {
+                presetMessage = "白天与夜晚不能绑定同一份配置，请选择两份独立资产。";
+                presetMessageType = MessageType.Warning;
+                return;
+            }
+            if (day != null && !EditorUtility.IsPersistent(day) || night != null && !EditorUtility.IsPersistent(night))
+            {
+                presetMessage = "请选择 Project 中的配置资产，不能绑定临时运行配置。";
+                presetMessageType = MessageType.Warning;
+                return;
+            }
+            EndSceneHandleInteraction();
+            Undo.RecordObject(controller, "绑定独立昼夜灯光配置");
+            controller.ConfigureProfiles(day, night);
+            EditorUtility.SetDirty(controller);
+            if (!EditorApplication.isPlaying) EditorSceneManager.MarkSceneDirty(controller.gameObject.scene);
+            presetMessage = "";
+            Resolve();
+        }
+
         private void DrawSceneLights()
         {
-            EditorGUILayout.LabelField(editingPeriod == RoomLightingPeriod.Day ? "白天场景补光灯" : "夜间场景灯与床引导灯", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(PeriodLabel + "全部场景灯（含吊灯、窗光、电脑与床灯）", EditorStyles.boldLabel);
             if (controller == null)
             { EditorGUILayout.HelpBox("当前场景没有房间灯光控制器。打开主场景后会自动连接。", MessageType.Info); return; }
             var lights = RoomLightingAuthoring.GetEditableLights(controller, editingPeriod);
@@ -340,7 +371,7 @@ namespace MiniGame.UnityHost.Editor
                 SetToolsHidden(false);
                 if (selected != null) RoomLightingAuthoring.SelectLight(controller, selected, editingPeriod);
             }
-            if (lights.Length == 0) { EditorGUILayout.HelpBox("此时段没有可编辑的场景灯。白天主吊灯等托管灯使用基础配置。", MessageType.Info); return; }
+            if (lights.Length == 0) { EditorGUILayout.HelpBox("此房间没有可编辑的场景灯。", MessageType.Info); return; }
             if (selected == null) return;
             using (new EditorGUILayout.HorizontalScope())
             {
@@ -391,7 +422,7 @@ namespace MiniGame.UnityHost.Editor
         {
             Resolve();
             var light = RoomLightingAuthoring.ResolveLight(controller, selectedPath, editingPeriod);
-            bool owns = sceneHandles && light != null && controller.EffectivePeriod == editingPeriod
+            bool owns = sceneHandles && light != null && controller.HasIndependentProfiles && controller.EffectivePeriod == editingPeriod
                 && Selection.activeGameObject == light.gameObject;
             SetToolsHidden(owns);
             if (!owns) { EndSceneHandleInteraction(); return; }

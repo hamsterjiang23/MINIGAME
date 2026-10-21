@@ -71,6 +71,10 @@ namespace MiniGame.UnityHost
     [CreateAssetMenu(menuName = "MiniGame/画面/房间灯光配置", fileName = "RoomLightingProfile")]
     public sealed class RoomLightingProfile : ScriptableObject
     {
+        [Header("当前时段整体控制")]
+        [Range(0, 4)] public float lightMultiplier = 1;
+        [Range(0, 4)] public float emissionMultiplier = 1;
+        [Range(.01f, 10)] public float fadeSeconds = 1.1f;
         [Header("吊灯聚光灯")]
         [Tooltip("相对灯罩开口的位置；Y 负值表示向下。")]
         public Vector3 lampOffset = new Vector3(0, -.04f, 0);
@@ -110,7 +114,8 @@ namespace MiniGame.UnityHost
 
         [Header("场景补光（未添加的灯保持场景原值）")]
         public List<SceneLightSettings> SceneLights = new List<SceneLightSettings>();
-        [Header("夜间环境和灯光（与白天独立）")]
+        [HideInInspector] public List<SceneLightSettings> SceneLightDefaults = new List<SceneLightSettings>();
+        [HideInInspector]
         public RoomNightLightingSettings night = new RoomNightLightingSettings();
 
         public int Revision { get; private set; }
@@ -119,6 +124,9 @@ namespace MiniGame.UnityHost
 
         private void ValidateValues()
         {
+            lightMultiplier = Safe(lightMultiplier, 0, 4, 1);
+            emissionMultiplier = Safe(emissionMultiplier, 0, 4, 1);
+            fadeSeconds = Safe(fadeSeconds, .01f, 10, 1.1f);
             lampOffset = SafeVector(lampOffset, new Vector3(0, -.04f, 0));
             lampEulerAngles = SafeEuler(lampEulerAngles, new Vector3(90, 0, 0));
             // Never place the effective light back inside the shade.
@@ -141,6 +149,8 @@ namespace MiniGame.UnityHost
             windowColor = SafeColor(windowColor, new Color(.62f, .72f, .8f)); rugTint = SafeColor(rugTint, Color.white);
             SceneLights ??= new List<SceneLightSettings>();
             foreach (var light in SceneLights) light?.ValidateValues();
+            SceneLightDefaults ??= new List<SceneLightSettings>();
+            foreach (var light in SceneLightDefaults) light?.ValidateValues();
             night ??= new RoomNightLightingSettings();
             night.ValidateValues();
         }

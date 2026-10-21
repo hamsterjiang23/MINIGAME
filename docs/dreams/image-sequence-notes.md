@@ -8,7 +8,7 @@
 - Day2 倒悬花海：采用最新素材替换旧长路画面，以缓慢倾斜、镜头呼吸和偏移重影制造重力失常感。[opinion]
 - Day3 红黑审视：逐步增强 CRT 扫描线、RGB 分离和局部水平撕裂，在段落后半段加入短暂压暗与重影。[opinion]
 
-每晚保留 20 秒与原有音乐，10 张图均分时长；叠化默认依次为 0.65、0.85、0.4 秒。最后一张保持到结束，不回跳第一张。素材本身已经包含浪、海鸥、花田、拳影与 CRT 痕迹，序列模式不再绘制旧版的额外飞鸟、公路线条或链条。[verified: DreamImageSequenceSetup.Import；DreamAnimationStage.Render；DreamProjectionAnimation.shader 的 memorySequence]
+三晚正式采用每秒 1 张图播放，10 张图共 10 秒，每张占 1 秒；保留原有音乐，叠化默认依次为 0.15、0.2、0.1 秒。最后一张保持到结束，不回跳第一张。素材本身已经包含浪、海鸥、花田、拳影与 CRT 痕迹，序列模式不再绘制旧版的额外飞鸟、公路线条或链条。[verified: 用户确认“就用这个1fp的替代”；DreamImageSequenceSetup.Import；DreamAnimationStage.Render；DreamProjectionAnimation.shader 的 memorySequence]
 
 ## 调节与预览
 
@@ -29,3 +29,4 @@
 - 新增序列字段，单张 Artwork 保留为回退；仅三个普通梦境使用新序列，门口固定海滩结局的配置独立保留。
 - 图像按原始尺寸导入，不做额外 NPOT 缩放；原始 PNG 与 Unity 副本保持字节一致。
 - 所有动态效果使用 PlaybackSeconds，避免系统时间让暂停和存档恢复出现不同画面。
+- 已确认正式播放速度为 1 张/秒；10 秒指图片序列本身，进入与返回镜头仍沿用独立时长。预览视频保持 24 fps 来呈现连续后处理，图片更新率为 1 张/秒。[verified: 用户确认“就用这个1fp的替代”；DreamSequenceDefault.asset Days/AlignSeconds/ReturnSeconds；DreamImageSequencePreviewExporter.Fps]

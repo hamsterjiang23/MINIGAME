@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "command": "command eval_file",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "F:/AAMINIGAME/MINIGAME/Artifacts/IndependentLighting20261021/export-presets.cs"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "command": null,
+      "result": {
+        "version": 2,
+        "paths": [
+          "F:/AAMINIGAME/MINIGAME/docs/lighting-tools/presets/RoomLightingDay.json",
+          "F:/AAMINIGAME/MINIGAME/docs/lighting-tools/presets/RoomLightingNight.json"
+        ],
+        "independent": true,
+        "roundtrip": true,
+        "sourceAssetsUnchanged": true,
+        "dayLights": 8,
+        "nightLights": 8
+      },
+      "executionTimeMs": 838,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "0001-01-01T00:00:00"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

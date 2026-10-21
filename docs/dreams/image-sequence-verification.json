@@ -5,11 +5,11 @@
   "importedFrames": 30,
   "sourceHashVerification": "All imported PNGs match the remote LFS SHA-256",
   "orderedFramesPerDay": 10,
-  "durationSeconds": 20,
+  "durationSeconds": 10,
   "crossfadeSeconds": [
-    0.65,
-    0.85,
-    0.4
+    0.15,
+    0.2,
+    0.1
   ],
   "postIntensity": [
     0.8,
@@ -19,69 +19,72 @@
   "scope": "Daily dreams only. Existing music and hidden doorway ending settings preserved.",
   "effects": "Explicit-time lens warp, RGB fringing, shifted ghost image, highlight glow, grain and Day3 rolling CRT tear; tunable per day",
   "unityTests": {
-    "evidence": "Artifacts/Unity/DreamImageSequence20261021/playmode.xml",
+    "evidence": "Artifacts/Unity/DreamSequence1Fps20261021/playmode.xml",
     "failed": 0,
     "passed": 5
   },
   "videos": [
     {
-      "duration": "20.000000",
-      "path": "Art/Dreams/Previews/day1-sequence.mp4",
+      "duration": "10.000000",
+      "path": "Art/Dreams/Previews/day1-sequence-1fps.mp4",
       "streams": [
         {
           "codec_name": "h264",
           "codec_type": "video",
           "width": 960,
           "height": 540,
-          "nb_frames": "480"
+          "nb_frames": "240"
         },
         {
           "codec_name": "aac",
           "codec_type": "audio",
-          "nb_frames": "939"
+          "nb_frames": "470"
         }
       ],
-      "sha256": "FE8054981C6768E442CDED7506F7D43640692B0F507C91259475155739A7F469"
+      "sha256": "57335772048945138E14627502529A6CF6F38F0F619597BC7CFFF46ECB3D5935"
     },
     {
-      "duration": "20.000000",
-      "path": "Art/Dreams/Previews/day2-sequence.mp4",
+      "duration": "10.000000",
+      "path": "Art/Dreams/Previews/day2-sequence-1fps.mp4",
       "streams": [
         {
           "codec_name": "h264",
           "codec_type": "video",
           "width": 960,
           "height": 540,
-          "nb_frames": "480"
+          "nb_frames": "240"
         },
         {
           "codec_name": "aac",
           "codec_type": "audio",
-          "nb_frames": "939"
+          "nb_frames": "470"
         }
       ],
-      "sha256": "ECEAA5E2BC0B86C6C4A63FD5C23E81C00C40CE85059031D9A4AE04E352C82CCB"
+      "sha256": "ADB17975F33D713B926691F78EFCBE6C74ECC3B296C8321DB57A34AD550B3EBE"
     },
     {
-      "duration": "20.000000",
-      "path": "Art/Dreams/Previews/day3-sequence.mp4",
+      "duration": "10.000000",
+      "path": "Art/Dreams/Previews/day3-sequence-1fps.mp4",
       "streams": [
         {
           "codec_name": "h264",
           "codec_type": "video",
           "width": 960,
           "height": 540,
-          "nb_frames": "480"
+          "nb_frames": "240"
         },
         {
           "codec_name": "aac",
           "codec_type": "audio",
-          "nb_frames": "939"
+          "nb_frames": "470"
         }
       ],
-      "sha256": "DA8A0FAC8CBC121BB597C6B8C73F836DF576DBD5D417D524BC3E3FE8809D8634"
+      "sha256": "21551B055816C9820C55E7F76CE2F6464FACFF7D1DB5192CBFA1F279622B9C8F"
     }
   ],
   "previewScope": "Unity fixed-step GPU rendering at 960x540/24fps; audio mixed offline from profile. No target-Player performance benchmark.",
-  "delivery": "Unity assets/code/default configuration and three MP4 previews; no new executable build"
+  "delivery": "Unity assets/code/default configuration and three MP4 previews; no new executable build",
+  "imagesPerSecond": 1,
+  "secondsPerImage": 1,
+  "timingRevision": "User approved 1fps as the production replacement: 1 image each second, 10 images in 10 seconds; previous 2fps previews retained as historical comparison only."
 }

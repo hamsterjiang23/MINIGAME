@@ -11,6 +11,8 @@ namespace MiniGame.UnityHost.Editor
     public static class RoomLightingSetup
     {
         public const string ProfilePath = "Assets/MiniGame/Resources/RoomLightingDefault.asset";
+        public const string DayProfilePath = "Assets/MiniGame/Resources/RoomLightingDay.asset";
+        public const string NightProfilePath = "Assets/MiniGame/Resources/RoomLightingNight.asset";
         public const string RetroPath = "Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset";
         public const string BackupRetroPath = "Assets/MiniGame/Resources/RetroScreenBeforeRoomLighting.asset";
 
@@ -21,6 +23,22 @@ namespace MiniGame.UnityHost.Editor
             profile = ScriptableObject.CreateInstance<RoomLightingProfile>();
             AssetDatabase.CreateAsset(profile, ProfilePath);
             return profile;
+        }
+
+        public static (RoomLightingProfile Day, RoomLightingProfile Night) EnsureIndependentProfiles(RoomLightingProfile source = null)
+        {
+            source = source != null ? source : EnsureProfile();
+            return (EnsurePeriodProfile(DayProfilePath, source), EnsurePeriodProfile(NightProfilePath, source));
+        }
+
+        private static RoomLightingProfile EnsurePeriodProfile(string path, RoomLightingProfile source)
+        {
+            var result = AssetDatabase.LoadAssetAtPath<RoomLightingProfile>(path);
+            if (result != null) return result;
+            result = UnityEngine.Object.Instantiate(source);
+            result.name = Path.GetFileNameWithoutExtension(path);
+            AssetDatabase.CreateAsset(result, path);
+            return result;
         }
 
         public static RoomLightingController FindController(Scene scene) => scene.IsValid() && scene.isLoaded
@@ -56,6 +74,24 @@ namespace MiniGame.UnityHost.Editor
                 lights.FirstOrDefault(item => item.name == "WindowLight"), lights.FirstOrDefault(item => item.name == "FillLight"),
                 lights.FirstOrDefault(item => item.name == "ExteriorLight"), lights.FirstOrDefault(item => item.name == "MonitorLight"),
                 floor, lamp, 0, surfaces, rug, guidance);
+            if (!controller.HasIndependentProfiles)
+            {
+                var previousMode = controller.PreviewMode;
+                controller.SetPreviewMode(RoomLightingPreviewMode.Day);
+                // Both periods begin from the visible daytime baseline. Existing period assets are never overwritten during installation.
+                bool dayExists = AssetDatabase.LoadAssetAtPath<RoomLightingProfile>(DayProfilePath) != null;
+                bool nightExists = AssetDatabase.LoadAssetAtPath<RoomLightingProfile>(NightProfilePath) != null;
+                var profiles = EnsureIndependentProfiles(profile);
+                var baseline = lights.Select(light => new SceneLightSettings { HierarchyPath = controller.GetHierarchyPath(light),
+                    dayEnabled = light.enabled, localPosition = light.transform.localPosition, localEuler = light.transform.localEulerAngles,
+                    color = light.color, intensity = light.intensity, range = light.range, type = light.type,
+                    spotAngle = light.spotAngle, innerSpotAngle = light.innerSpotAngle, shadows = light.shadows,
+                    shadowStrength = light.shadowStrength, shadowBias = light.shadowBias, shadowNormalBias = light.shadowNormalBias }).ToArray();
+                if (!dayExists) { profiles.Day.SceneLightDefaults = baseline.Select(value => value.Copy()).ToList(); EditorUtility.SetDirty(profiles.Day); }
+                if (!nightExists) { profiles.Night.SceneLightDefaults = baseline.Select(value => value.Copy()).ToList(); EditorUtility.SetDirty(profiles.Night); }
+                controller.ConfigureProfiles(profiles.Day, profiles.Night);
+                controller.SetPreviewMode(previousMode);
+            }
             var camera = scene.GetRootGameObjects().SelectMany(item => item.GetComponentsInChildren<ApartmentPlayer>(true))
                 .Select(item => item.ViewCamera).FirstOrDefault();
             if (camera != null)

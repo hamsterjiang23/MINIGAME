@@ -46,6 +46,10 @@ namespace MiniGame.UnityHost
         private SceneLightSettings spotlightDay;
         private bool specialIsolation;
         private RuntimeView lastView;
+        private RoomLightingProfile fullDayProfile, fullNightProfile;
+        private readonly Dictionary<Light, SceneLightSettings> fullDayLights = new Dictionary<Light, SceneLightSettings>();
+        private readonly Dictionary<Light, SceneLightSettings> fullNightLights = new Dictionary<Light, SceneLightSettings>();
+        private bool UsesFullProfiles => fullDayProfile != null && fullNightProfile != null;
 
         public float Isolation { get; private set; }
         public float BeamStrength { get; private set; }
@@ -100,7 +104,7 @@ namespace MiniGame.UnityHost
             Isolation = isolationTarget;
             BeamStrength = beamTarget;
             ApplyRoom();
-            atmosphere.SetVisualState(BeamStrength, 0, game.GetView().Paused);
+            atmosphere.SetVisualState(VisibleBeamStrength(), 0, game.GetView().Paused);
         }
 
         private void CaptureRoom()
@@ -176,6 +180,7 @@ namespace MiniGame.UnityHost
         {
             if (!isActiveAndEnabled) return;
             CaptureRoom();
+            fullDayProfile = fullNightProfile = null; fullDayLights.Clear(); fullNightLights.Clear();
             lightingController = controller; nightSettings = settings ?? new RoomNightLightingSettings();
             nightSettings.ValidateValues();
             foreach (var item in daylight) UpdateDaylightSettings(item.Key, item.Value);
@@ -197,9 +202,33 @@ namespace MiniGame.UnityHost
             ApplyRoom();
         }
 
+        public void ConfigureFullLighting(RoomLightingController controller, RoomLightingProfile day, RoomLightingProfile night,
+            RoomLightingPreviewMode preview, IReadOnlyDictionary<Light, SceneLightSettings> daylight,
+            IReadOnlyDictionary<Light, SceneLightSettings> nightlight)
+        {
+            if (!isActiveAndEnabled) return;
+            CaptureRoom();
+            lightingController = controller; fullDayProfile = day; fullNightProfile = night;
+            fullDayLights.Clear(); fullNightLights.Clear();
+            foreach (var item in daylight)
+            {
+                fullDayLights.Add(item.Key, item.Value.Copy());
+                if (item.Key == spotlight) spotlightDay = item.Value.Copy();
+                else UpdateDaylightSettings(item.Key, item.Value);
+            }
+            foreach (var item in nightlight) fullNightLights.Add(item.Key, item.Value.Copy());
+            bool changed = previewMode != preview;
+            previewMode = preview;
+            if (lastView != null) SetTargets(lastView);
+            else { isolationTarget = beamTarget = 0; specialIsolation = selfReviewTarget = false; ApplyPreviewTargets(); }
+            if (changed || !Application.isPlaying) { Isolation = isolationTarget; BeamStrength = beamTarget; }
+            ApplyRoom();
+        }
+
         public void ClearLightingPreview(RoomLightingController controller)
         {
             if (lightingController != controller) return;
+            fullDayProfile = fullNightProfile = null; fullDayLights.Clear(); fullNightLights.Clear();
             nightSettings = new RoomNightLightingSettings(); nightLights.Clear();
             previewMode = RoomLightingPreviewMode.Automatic;
             if (lastView != null) SetTargets(lastView);
@@ -272,16 +301,18 @@ namespace MiniGame.UnityHost
             if (runtime == null) return;
             bool paused = runtime.GetView().Paused;
             float delta = paused ? 0 : Time.unscaledDeltaTime;
-            float duration = lightingController != null ? nightSettings.fadeSeconds : fadeSeconds;
+            float duration = UsesFullProfiles ? (isolationTarget > Isolation ? fullNightProfile.fadeSeconds : fullDayProfile.fadeSeconds)
+                : lightingController != null ? nightSettings.fadeSeconds : fadeSeconds;
             Isolation = Mathf.MoveTowards(Isolation, isolationTarget, delta / Mathf.Max(.01f, duration));
             BeamStrength = Mathf.MoveTowards(BeamStrength, beamTarget, delta / (beamTarget > BeamStrength ? .85f : .45f));
             ApplyRoom();
-            if (atmosphere != null) atmosphere.SetVisualState(BeamStrength, delta, paused);
+            if (atmosphere != null) atmosphere.SetVisualState(VisibleBeamStrength(), delta, paused);
         }
 
         private void ApplyRoom()
         {
             if (!captured) return;
+            if (UsesFullProfiles) { ApplyFullRoom(); return; }
             if (Isolation <= 0 && isolationTarget <= 0)
             {
                 if (!restored) RestoreRoom();
@@ -358,6 +389,86 @@ namespace MiniGame.UnityHost
             }
         }
 
+        private float VisibleBeamStrength()
+        {
+            if (UsesFullProfiles)
+                return spotlight != null && spotlight.enabled && spotlight.intensity > .001f && !specialIsolation ? 1 : 0;
+            if (spotlight != null && (!spotlight.enabled || spotlight.intensity <= .001f)) return 0;
+            return BeamStrength;
+        }
+
+        private void ApplyFullRoom()
+        {
+            float amount = Mathf.SmoothStep(0, 1, Isolation);
+            restored = false;
+            foreach (var item in fullDayLights)
+            {
+                if (item.Key == null) continue;
+                var day = item.Value;
+                var night = fullNightLights.TryGetValue(item.Key, out var configured) ? configured : day;
+                var target = amount < .5f ? day : night;
+                var blended = target.Copy();
+                blended.localPosition = Vector3.Lerp(day.localPosition, night.localPosition, amount);
+                blended.localEuler = Quaternion.Slerp(Quaternion.Euler(day.localEuler), Quaternion.Euler(night.localEuler), amount).eulerAngles;
+                blended.range = Mathf.Lerp(day.range, night.range, amount);
+                blended.spotAngle = Mathf.Lerp(day.spotAngle, night.spotAngle, amount);
+                blended.innerSpotAngle = Mathf.Lerp(day.innerSpotAngle, night.innerSpotAngle, amount);
+                blended.shadowStrength = Mathf.Lerp(day.shadowStrength, night.shadowStrength, amount);
+                blended.shadowBias = Mathf.Lerp(day.shadowBias, night.shadowBias, amount);
+                blended.shadowNormalBias = Mathf.Lerp(day.shadowNormalBias, night.shadowNormalBias, amount);
+                blended.color = Color.Lerp(day.color, night.color, amount);
+                float nightIntensity = specialIsolation ? 0 : night.dayEnabled ? night.intensity : 0;
+                blended.intensity = Mathf.Lerp(day.dayEnabled ? day.intensity : 0, nightIntensity, amount);
+                blended.dayEnabled = blended.intensity > 0 && (amount < .9999f && day.dayEnabled || amount > .0001f && !specialIsolation && night.dayEnabled);
+                lightingController.ApplyPresentedLight(item.Key, blended);
+            }
+            var dayAmbient = fullDayProfile.ambientColor;
+            var nightAmbient = specialIsolation ? Color.black : fullNightProfile.ambientColor;
+            if (gameObject.scene == SceneManager.GetActiveScene())
+            {
+                var color = Color.Lerp(dayAmbient, nightAmbient, amount);
+                RenderSettings.ambientMode = AmbientMode.Flat;
+                RenderSettings.ambientLight = RenderSettings.ambientSkyColor = RenderSettings.ambientEquatorColor = RenderSettings.ambientGroundColor = color;
+                RenderSettings.ambientIntensity = specialIsolation ? 1 - amount : 1;
+                RenderSettings.reflectionIntensity = Mathf.Lerp(fullDayProfile.reflectionIntensity, specialIsolation ? 0 : fullNightProfile.reflectionIntensity, amount);
+                var probe = new SphericalHarmonicsL2(); probe.AddAmbientLight(color); RenderSettings.ambientProbe = probe;
+                RenderSettings.skybox = specialIsolation && amount >= .9999f ? null : skybox;
+                RenderSettings.fog = !specialIsolation && fog;
+                RenderSettings.fogColor = specialIsolation ? Color.Lerp(fogColor, Color.black, amount) : fogColor;
+            }
+            if (viewCamera != null)
+            {
+                viewCamera.clearFlags = specialIsolation ? CameraClearFlags.SolidColor : clearFlags;
+                viewCamera.backgroundColor = specialIsolation ? Color.Lerp(background, Color.black, amount) : background;
+                viewCamera.depthTextureMode = depthMode | (VisibleBeamStrength() > 0 ? DepthTextureMode.Depth : DepthTextureMode.None);
+            }
+            foreach (var state in surfaces)
+            {
+                if (state.Renderer == null) continue;
+                state.Renderer.GetPropertyBlock(state.Working, state.Slot);
+                float emission = Mathf.Lerp(fullDayProfile.emissionMultiplier,
+                    specialIsolation ? 0 : fullNightProfile.emissionMultiplier, amount);
+                var color = new Color(state.Color.r * emission, state.Color.g * emission, state.Color.b * emission, state.Color.a);
+                if (selfReviewTarget && state.Renderer == selfReviewSurface && state.Property == Shader.PropertyToID("_EmissionColor"))
+                    color = Color.Lerp(state.Color * fullDayProfile.emissionMultiplier, selfReviewEmission, amount);
+                state.Working.SetColor(state.Property, color); state.Renderer.SetPropertyBlock(state.Working, state.Slot);
+            }
+            lightingController.ApplyFullSurfaceBlend(amount, specialIsolation ? 1 - amount : 1);
+            if (selfReviewGlow != null)
+            {
+                selfReviewGlow.enabled = selfReviewTarget && amount > .001f && selfReviewSurface != null && selfReviewSurface.enabled;
+                selfReviewGlow.intensity = .55f * amount;
+                if (selfReviewSurface != null)
+                {
+                    var center = selfReviewSurface.bounds.center;
+                    var towardRoom = viewCamera != null ? (viewCamera.transform.position - center).normalized : Vector3.forward;
+                    selfReviewGlow.transform.position = center + towardRoom * .08f;
+                }
+            }
+            // Explicitly disabled bed lighting also suppresses its beam and particles in edit-mode previews.
+            if (atmosphere != null) atmosphere.SetVisualState(VisibleBeamStrength(), 0, true);
+        }
+
         private void EnsureSelfReviewGlow()
         {
             if (selfReviewSurface == null || selfReviewGlow != null) return;
@@ -427,7 +538,7 @@ namespace MiniGame.UnityHost
             SetTargets(runtime.GetView());
             Isolation = isolationTarget; BeamStrength = beamTarget;
             ApplyRoom();
-            atmosphere.SetVisualState(BeamStrength, 0, runtime.GetView().Paused);
+            if (atmosphere != null) atmosphere.SetVisualState(VisibleBeamStrength(), 0, runtime.GetView().Paused);
         }
 
         private static SceneLightSettings ReadLight(Light source) => new SceneLightSettings

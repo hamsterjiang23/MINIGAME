@@ -11,6 +11,7 @@ namespace MiniGame.UnityHost.Editor
     public static class DreamImageSequenceSetup
     {
         public const string Destination = "Assets/MiniGame/Art/Dreams/Sequences";
+        private const float ImagesPerSecond = 1f;
 
         [MenuItem("MiniGame/梦境/导入 McQueen 每日图片序列")]
         public static void Import()
@@ -54,7 +55,7 @@ namespace MiniGame.UnityHost.Editor
                 }
             }
             Undo.RecordObject(profile, "绑定每日梦境图片序列");
-            float[] fades = { .65f, .85f, .4f };
+            float[] fades = { .15f, .2f, .1f };
             float[] motion = { .8f, .7f, .65f };
             float[] post = { .8f, 1f, 1.2f };
             for (int day = 1; day <= 3; day++)
@@ -63,13 +64,14 @@ namespace MiniGame.UnityHost.Editor
                 if (settings == null) throw new InvalidOperationException("默认配置缺少 Day" + day);
                 settings.Frames = imported[day - 1];
                 settings.Artwork = settings.Frames[0];
+                settings.Duration = settings.Frames.Length / ImagesPerSecond;
                 settings.CrossfadeSeconds = fades[day - 1];
                 settings.MotionIntensity = motion[day - 1];
                 settings.PostIntensity = post[day - 1];
             }
             EditorUtility.SetDirty(profile);
             AssetDatabase.SaveAssetIfDirty(profile);
-            Debug.Log("DREAM_SEQUENCE_IMPORTED days=3 frames=30 order=1..10; existing durations, music and ending settings preserved");
+            Debug.Log("DREAM_SEQUENCE_IMPORTED days=3 frames=30 order=1..10 imagesPerSecond=1 duration=10; music and ending settings preserved");
         }
 
         public static int FrameNumber(string path)

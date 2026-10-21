@@ -17,9 +17,10 @@ namespace MiniGame.UnityHost.Tests
             source = ScriptableObject.CreateInstance<RoomLightingProfile>(); source.name = "Alice room";
             target = ScriptableObject.CreateInstance<RoomLightingProfile>(); target.name = "Bob room";
             source.lampIntensity = 2.3f; source.windowColor = Color.cyan;
-            source.night.ambientColor = new Color(.05f, .1f, .2f); source.night.lightMultiplier = .4f;
+            source.ambientColor = new Color(.05f, .1f, .2f); source.lightMultiplier = .4f;
+            source.emissionMultiplier = .7f; source.fadeSeconds = 2;
             source.SceneLights.Add(new SceneLightSettings { HierarchyPath = "Room#0/Lamp#0", intensity = 1.7f });
-            source.night.SceneLights.Add(new SceneLightSettings { HierarchyPath = "Room#0/Lamp#0", intensity = 3.6f,
+            source.SceneLightDefaults.Add(new SceneLightSettings { HierarchyPath = "Room#0/Lamp#0", intensity = 3.6f,
                 color = Color.red, localPosition = new Vector3(1, 2, 3), shadowStrength = .7f });
             source.NotifyChanged();
             path = Path.Combine(Path.GetTempPath(), "minigame-lighting-preset-" + Guid.NewGuid().ToString("N") + ".json");
@@ -35,7 +36,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [Test]
-        public void ShareFileImportsBothPeriodsUnderAnotherProfilesName()
+        public void ShareFileImportsACompletePeriodUnderAnotherProfilesName()
         {
             string original = JsonUtility.ToJson(source);
             RoomLightingPresetIO.SaveFile(source, path);
@@ -44,10 +45,13 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(target.name, Is.EqualTo("Bob room"));
             Assert.That(target.lampIntensity, Is.EqualTo(2.3f).Within(.0001f));
             Assert.That(target.windowColor, Is.EqualTo(Color.cyan));
-            Assert.That(target.night.ambientColor, Is.EqualTo(source.night.ambientColor));
+            Assert.That(target.ambientColor, Is.EqualTo(source.ambientColor));
+            Assert.That(target.lightMultiplier, Is.EqualTo(.4f));
+            Assert.That(target.emissionMultiplier, Is.EqualTo(.7f));
+            Assert.That(target.fadeSeconds, Is.EqualTo(2));
             Assert.That(target.SceneLights[0].intensity, Is.EqualTo(1.7f).Within(.0001f));
-            Assert.That(target.night.SceneLights[0].intensity, Is.EqualTo(3.6f).Within(.0001f));
-            Assert.That(target.night.SceneLights[0].localPosition, Is.EqualTo(new Vector3(1, 2, 3)));
+            Assert.That(target.SceneLightDefaults[0].intensity, Is.EqualTo(3.6f).Within(.0001f));
+            Assert.That(target.SceneLightDefaults[0].localPosition, Is.EqualTo(new Vector3(1, 2, 3)));
             Assert.That(JsonUtility.ToJson(source), Is.EqualTo(original), "Export cannot alter the author's current configuration.");
             Assert.That(File.ReadAllText(path), Does.Not.Contain(Application.dataPath));
         }
@@ -62,7 +66,8 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(JsonUtility.ToJson(target), Is.EqualTo(before));
             }
             string valid = RoomLightingPresetIO.ExportJson(source);
-            string unknown = valid.Replace("\"version\": 1", "\"version\": 999").Replace("\"version\":1", "\"version\":999");
+            string unknown = valid.Replace("\"version\": " + RoomLightingPresetIO.Version, "\"version\": 999")
+                .Replace("\"version\":" + RoomLightingPresetIO.Version, "\"version\":999");
             Assert.That(unknown, Is.Not.EqualTo(valid));
             Assert.That(RoomLightingPresetIO.TryImportJson(unknown, target, out _), Is.False);
             Assert.That(JsonUtility.ToJson(target), Is.EqualTo(before));

@@ -17,8 +17,8 @@ namespace MiniGame.UnityHost.Tests
     {
         private MiniGameBootstrap host;
         private RoomLightingController controller;
-        private RoomLightingProfile source, working;
-        private string sourceJson;
+        private RoomLightingProfile source, working, sourceNight, workingNight;
+        private string sourceJson, sourceNightJson;
         private string sharedFile;
 
         [UnitySetUp]
@@ -34,10 +34,11 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.CompleteCue(host.Runtime.GetView().Cue.Token).Accepted, Is.True);
             controller = Object.FindObjectsOfType<RoomLightingController>().Single(item => item.gameObject.scene == host.gameObject.scene);
             source = controller.Profile; sourceJson = JsonUtility.ToJson(source);
+            sourceNight = controller.NightProfile; sourceNightJson = JsonUtility.ToJson(sourceNight);
             working = Object.Instantiate(source); working.name = "Day night lighting isolated test";
+            workingNight = Object.Instantiate(sourceNight); workingNight.name = "Independent night isolated test";
             // Only fixture wiring is replaced; the shared designer asset must remain byte-for-byte unedited.
-            typeof(RoomLightingController).GetField("profile", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(controller, working);
-            controller.ApplyFromProfile();
+            controller.ConfigureProfiles(working, workingNight);
             host.Screen.LightingTuning.Bind(host.Runtime, controller, host.Screen.SignalTuning);
         }
 
@@ -48,10 +49,10 @@ namespace MiniGame.UnityHost.Tests
             if (controller != null)
             {
                 controller.SetPreviewMode(RoomLightingPreviewMode.Automatic);
-                typeof(RoomLightingController).GetField("profile", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(controller, source);
-                controller.ApplyFromProfile();
+                controller.ConfigureProfiles(source, sourceNight);
             }
             if (working != null) Object.Destroy(working);
+            if (workingNight != null) Object.Destroy(workingNight);
             if (!string.IsNullOrEmpty(sharedFile))
             {
                 Assert.That(Path.GetFileName(sharedFile), Does.StartWith("minigame-lighting-panel-"));
@@ -60,6 +61,22 @@ namespace MiniGame.UnityHost.Tests
             MiniGameSessionHost.Release();
             yield return null;
             Assert.That(JsonUtility.ToJson(source), Is.EqualTo(sourceJson));
+            Assert.That(JsonUtility.ToJson(sourceNight), Is.EqualTo(sourceNightJson));
+        }
+
+        [UnityTest, Timeout(20000)]
+        public IEnumerator BothEditingPeriodsExposeTheSameCompleteControls()
+        {
+            var panel = host.Screen.LightingTuning;
+            panel.SetPanelOpen(true); panel.SelectPeriod(RoomLightingPeriod.Day);
+            yield return null;
+            var dayRows = panel.GetComponentsInChildren<Slider>(true).Select(value => value.transform.parent.name).OrderBy(value => value).ToArray();
+            panel.SelectPeriod(RoomLightingPeriod.Night);
+            yield return null;
+            var nightRows = panel.GetComponentsInChildren<Slider>(true).Select(value => value.transform.parent.name).OrderBy(value => value).ToArray();
+            Assert.That(nightRows, Is.EqualTo(dayRows));
+            Assert.That(panel.Profile, Is.SameAs(workingNight));
+            Assert.That(panel.Profile, Is.Not.SameAs(working));
         }
 
         [UnityTest, Timeout(20000)]
@@ -69,13 +86,15 @@ namespace MiniGame.UnityHost.Tests
             panel.SetPanelOpen(true); panel.SelectPeriod(RoomLightingPeriod.Night);
             string game = host.Runtime.Save();
             sharedFile = Path.Combine(Path.GetTempPath(), "minigame-lighting-panel-" + Guid.NewGuid().ToString("N") + ".json");
-            working.lampIntensity = 2.1f; working.night.lightMultiplier = .35f; working.NotifyChanged();
+            string dayBefore = JsonUtility.ToJson(working);
+            workingNight.lampIntensity = 2.1f; workingNight.lightMultiplier = .35f; workingNight.NotifyChanged();
             Assert.That(panel.ExportPreset(sharedFile), Is.True);
-            working.lampIntensity = 7; working.night.lightMultiplier = 1.5f; working.NotifyChanged(); controller.ApplyFromProfile();
+            workingNight.lampIntensity = 7; workingNight.lightMultiplier = 1.5f; workingNight.NotifyChanged(); controller.ApplyFromProfile();
             Assert.That(panel.ImportPreset(sharedFile), Is.True);
             yield return null;
-            Assert.That(working.lampIntensity, Is.EqualTo(2.1f).Within(.001f));
-            Assert.That(working.night.lightMultiplier, Is.EqualTo(.35f).Within(.001f));
+            Assert.That(workingNight.lampIntensity, Is.EqualTo(2.1f).Within(.001f));
+            Assert.That(workingNight.lightMultiplier, Is.EqualTo(.35f).Within(.001f));
+            Assert.That(JsonUtility.ToJson(working), Is.EqualTo(dayBefore));
             Assert.That(panel.SelectedPeriod, Is.EqualTo(RoomLightingPeriod.Night));
             Assert.That(host.Runtime.Save(), Is.EqualTo(game));
         }
@@ -129,7 +148,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(panel.SelectLight(path), Is.True);
             var night = controller.CaptureSceneLight(selected, RoomLightingPeriod.Night);
             night.dayEnabled = true; night.intensity = 1.2f;
-            working.night.SceneLights.Add(night); working.NotifyChanged(); controller.ApplyFromProfile();
+            workingNight.SceneLights.Add(night); workingNight.NotifyChanged(); controller.ApplyFromProfile();
             panel.SetPreview(RoomLightingPreviewMode.Night); panel.Refresh();
             yield return null; // Rebuilt uGUI rows release their previous GameObjects at end of frame.
             var intensity = panel.GetComponentsInChildren<InputField>(true).Single(field => field.transform.parent.name == "灯光强度");
@@ -138,8 +157,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(selected.intensity, Is.EqualTo(2.6f).Within(.001f));
             Assert.That(controller.CaptureSceneLight(selected, RoomLightingPeriod.Day).intensity, Is.EqualTo(day.intensity).Within(.001f));
             Assert.That(controller.CaptureSceneLight(selected, RoomLightingPeriod.Night).intensity, Is.EqualTo(2.6f).Within(.001f));
-            var record = working.night.SceneLights.Single(item => item.HierarchyPath == path);
-            record.intensity = 3.4f; working.NotifyChanged(); controller.ApplyFromProfile();
+            var record = workingNight.SceneLights.Single(item => item.HierarchyPath == path);
+            record.intensity = 3.4f; workingNight.NotifyChanged(); controller.ApplyFromProfile();
             panel.Refresh();
             Assert.That(float.Parse(intensity.text, System.Globalization.CultureInfo.InvariantCulture), Is.EqualTo(3.4f).Within(.001f),
                 "A Scene-side update must refresh the same Game-side controls.");

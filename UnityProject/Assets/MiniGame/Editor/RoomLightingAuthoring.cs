@@ -229,7 +229,7 @@ namespace MiniGame.UnityHost.Editor
         {
             var profiles = Resources.FindObjectsOfTypeAll<RoomLightingController>().Where(room => room != null
                 && room.gameObject.scene.IsValid() && room.gameObject.scene.isLoaded && room.Profile != null)
-                .Select(room => room.Profile).Distinct().ToArray();
+                .SelectMany(room => new[] { room.Profile, room.NightProfile }).Where(profile => profile != null).Distinct().ToArray();
             foreach (var profile in profiles) ApplyProfile(profile);
         }
 
@@ -298,7 +298,7 @@ namespace MiniGame.UnityHost.Editor
         {
             ValidateLight(controller, light, period);
             if (settings == null) throw new ArgumentNullException(nameof(settings));
-            var profile = controller.Profile;
+            var profile = controller.GetProfile(period);
             RequirePersistent(profile);
             var value = settings.Copy(); value.HierarchyPath = controller.GetHierarchyPath(light);
             var entries = controller.GetSceneLightSettingsList(period);
@@ -344,7 +344,8 @@ namespace MiniGame.UnityHost.Editor
             try
             {
                 foreach (var room in Resources.FindObjectsOfTypeAll<RoomLightingController>().Where(room => room != null
-                    && room.gameObject.scene.IsValid() && room.gameObject.scene.isLoaded && room.Profile == profile)) room.ApplyFromProfile();
+                    && room.gameObject.scene.IsValid() && room.gameObject.scene.isLoaded
+                    && (room.Profile == profile || room.NightProfile == profile))) room.ApplyFromProfile();
             }
             finally { IsApplying = previous; }
             SceneView.RepaintAll(); EditorApplication.QueuePlayerLoopUpdate();
@@ -353,7 +354,7 @@ namespace MiniGame.UnityHost.Editor
         {
             var profiles = Resources.FindObjectsOfTypeAll<RoomLightingController>().Where(room => room != null
                 && room.gameObject.scene.IsValid() && room.gameObject.scene.isLoaded && room.Profile != null)
-                .Select(room => room.Profile).Distinct().ToArray();
+                .SelectMany(room => new[] { room.Profile, room.NightProfile }).Where(profile => profile != null).Distinct().ToArray();
             foreach (var profile in profiles)
             {
                 if (EditorUtility.IsPersistent(profile) && EditorUtility.IsDirty(profile)) Pending.Add(profile);
@@ -368,6 +369,7 @@ namespace MiniGame.UnityHost.Editor
             foreach (var pair in FirstOverrides.Where(pair => pair.Value.Profile == profile))
             {
                 var baseline = pair.Value;
+                if (baseline.Controller != null && baseline.Controller.HasIndependentProfiles) continue;
                 if (baseline.Controller == null || baseline.Controller.GetSceneLightSettingsList(baseline.Period)
                     .Any(item => item != null && item.HierarchyPath == baseline.Value.HierarchyPath)) continue;
                 if (baseline.Period != RoomLightingPeriod.Day) continue;
@@ -448,10 +450,13 @@ namespace MiniGame.UnityHost.Editor
                 foreach (var light in lights)
                 {
                     var room = FindControllerForObject(light);
-                    if (room == null || room.Profile == null || !EditorUtility.IsPersistent(room.Profile)) continue;
-                    // Our own profile changes also record the Light for first-entry Undo. Do not feed them back.
-                    if (modifications.Any(item => item.currentValue != null && item.currentValue.target == room.Profile)) continue;
+                    if (room == null) continue;
                     var period = EditingPeriods.TryGetValue(room, out var editing) ? editing : room.EffectivePeriod;
+                    var profile = room.GetProfile(period);
+                    if (profile == null || !EditorUtility.IsPersistent(profile)) continue;
+                    // Our own profile changes also record the Light for first-entry Undo. Do not feed them back.
+                    if (modifications.Any(item => item.currentValue != null
+                        && (item.currentValue.target == room.Profile || item.currentValue.target == room.NightProfile))) continue;
                     if (!room.IsEditableSceneLight(light, period)) continue;
                     var relevant = modifications.Where(item => item.currentValue != null
                         && (item.currentValue.target == light || item.currentValue.target == light.transform)).ToArray();

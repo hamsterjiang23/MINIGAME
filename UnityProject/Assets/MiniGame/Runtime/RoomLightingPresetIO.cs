@@ -13,7 +13,7 @@ namespace MiniGame.UnityHost
     public static class RoomLightingPresetIO
     {
         public const string Format = "NORM.RoomLightingPreset";
-        public const int Version = 1;
+        public const int Version = 2;
         private const int MaximumJsonLength = 2 * 1024 * 1024;
         private static readonly Encoding Utf8 = new UTF8Encoding(false, true);
         private static readonly FieldInfo[] DataFields = typeof(ProfileData).GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -41,7 +41,8 @@ namespace MiniGame.UnityHost
             public Vector2 rugSize;
             public float rugYaw;
             public List<SceneLightSettings> SceneLights;
-            public RoomNightLightingSettings night;
+            public List<SceneLightSettings> SceneLightDefaults;
+            public float lightMultiplier, emissionMultiplier, fadeSeconds;
         }
 #pragma warning restore CS0649
 
@@ -75,23 +76,25 @@ namespace MiniGame.UnityHost
                     RequireFields(json, "format", "version", "profileName", "profileJson");
                     var envelope = JsonUtility.FromJson<Envelope>(json);
                     if (envelope == null || envelope.format != Format) throw new InvalidDataException("不是 NORM 房间灯光配置格式。");
-                    if (envelope.version != Version) throw new InvalidDataException("不支持此灯光配置版本。");
+                    if (envelope.version != Version && envelope.version != 1) throw new InvalidDataException("不支持此灯光配置版本。");
+                    legacy = envelope.version == 1;
                     if (envelope.profileName == null) throw new InvalidDataException("缺少配置名称。");
                     profileJson = envelope.profileJson;
                 }
                 RequireObject(profileJson);
                 foreach (var field in DataFields)
-                    if (!legacy || field.Name != "night" && field.Name != "SceneLights" && field.Name != "lampEulerAngles") RequireFields(profileJson, field.Name);
+                    if (!legacy || field.Name != "SceneLights" && field.Name != "SceneLightDefaults" && field.Name != "lampEulerAngles"
+                        && field.Name != "lightMultiplier" && field.Name != "emissionMultiplier" && field.Name != "fadeSeconds") RequireFields(profileJson, field.Name);
                 temporary = ScriptableObject.CreateInstance<RoomLightingProfile>();
                 var data = ReadData(temporary);
                 JsonUtility.FromJsonOverwrite(profileJson, data);
-                if (data.SceneLights == null || data.night == null || data.night.SceneLights == null)
-                    throw new InvalidDataException("灯光列表或夜间配置不完整。");
+                if (data.SceneLights == null || data.SceneLightDefaults == null)
+                    throw new InvalidDataException("灯光列表或默认灯光快照不完整。");
                 WriteData(data, temporary); temporary.NotifyChanged();
                 var backup = ReadData(target);
                 try { WriteData(ReadData(temporary), target); target.NotifyChanged(); }
                 catch { WriteData(backup, target); throw; }
-                message = legacy ? "已导入旧版白天灯光配置，缺失参数使用默认值。" : "已导入白天与夜间灯光配置。";
+                message = legacy ? "已导入旧版的完整白天基准，当前配置与另一时段独立。" : "已导入当前时段的完整灯光配置。";
                 return true;
             }
             catch (Exception exception) { message = "导入失败：" + exception.Message; return false; }

@@ -58,6 +58,9 @@ namespace MiniGame.UnityHost.Tests
                 settings.Frames = profile.GetDay(day).Frames;
                 settings.Artwork = profile.GetDay(day).Artwork;
                 Assert.That(settings.Frames.Length, Is.EqualTo(10));
+                Assert.That(settings.Duration / settings.Frames.Length, Is.EqualTo(1f).Within(.0001f),
+                    "The production sequence must advance one image per second.");
+                Assert.That(settings.CrossfadeSeconds, Is.LessThan(1f));
                 Assert.That(settings.Frames.Select(frame => frame.name),
                     Is.EqualTo(Enumerable.Range(1, 10).Select(index => "Frame" + index.ToString("00"))));
                 Assert.That(settings.Frames.All(frame => frame.width >= 1600 && frame.height >= 900), Is.True);
@@ -65,7 +68,9 @@ namespace MiniGame.UnityHost.Tests
                 {
                     for (int index = 0; index < 10; index++)
                     {
-                        stage.Render(settings, (index + .2f) * settings.Duration / 10);
+                        stage.Render(settings, index);
+                        Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index));
+                        stage.Render(settings, index + .999f);
                         Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index));
                     }
                     float time = settings.Duration * .66f;

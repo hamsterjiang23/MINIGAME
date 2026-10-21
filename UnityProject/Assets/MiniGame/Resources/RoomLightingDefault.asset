@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoomLightingDefault
   m_EditorClassIdentifier: 
   lampOffset: {x: 0, y: -0.04, z: 0}
+  lampEulerAngles: {x: 90, y: 0, z: 0}
   lampColor: {r: 1, g: 0.84, b: 0.62, a: 1}
   lampIntensity: 4.8
   lampRange: 7
@@ -40,3 +41,11 @@ MonoBehaviour:
   rugSize: {x: 3.4, y: 2}
   rugYaw: 0
   rugTint: {r: 0.82, g: 0.74, b: 0.6, a: 1}
+  SceneLights: []
+  night:
+    ambientColor: {r: 0.22904919, g: 0.23584908, b: 0.18578678, a: 1}
+    reflectionIntensity: 1
+    lightMultiplier: 0.18
+    emissionMultiplier: 1.18
+    fadeSeconds: 10
+    SceneLights: []

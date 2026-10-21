@@ -85,8 +85,8 @@ namespace MiniGame.UnityHost.Editor
                                     readback.ReadPixels(new Rect(0, 0, Width, Height), 0, 0, false);
                                     readback.GetRawTextureData<byte>().CopyTo(bytes);
                                     encoder.StandardInput.BaseStream.Write(bytes, 0, bytes.Length);
-                                    if (frame == Fps * 3 || frame == Fps * 13)
-                                        File.WriteAllBytes(Path.Combine(output, "day" + day + "-" + frame / Fps + "s.png"), readback.EncodeToPNG());
+                                    if (frame == Mathf.FloorToInt(frames * .15f) || frame == Mathf.FloorToInt(frames * .65f))
+                                        File.WriteAllBytes(Path.Combine(output, "day" + day + "-" + Number(frame / (float)Fps) + "s.png"), readback.EncodeToPNG());
                                 }
                                 encoder.StandardInput.Close();
                                 if (!encoder.WaitForExit(30000)) throw new TimeoutException("视频编码超时。");

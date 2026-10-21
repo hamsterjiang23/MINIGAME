@@ -25,18 +25,21 @@ namespace MiniGame.UnityHost
         private Font font;
         private RectTransform modal, panel, content;
         private ScrollRect scroll;
-        private Text status, selection;
+        private Text status, selection, editingAsset;
         private Button dayButton, nightButton, automaticButton, previewDayButton, previewNightButton;
+        private Button saveButton, exportButton, importButton;
         private Material overlayMaterial;
         private bool refreshing, previousPaused, previousCursor;
         private CursorLockMode previousLock;
         private int blockedFrame = -1, rowIndex;
         private string selectedPath = "";
-        private RoomLightingProfile loadedPlayerProfile;
+        private RoomLightingProfile rowsProfile;
+        private readonly HashSet<RoomLightingProfile> loadedPlayerProfiles = new HashSet<RoomLightingProfile>();
 
         [Serializable] private sealed class SavedSettings
         {
-            public int Version = 1;
+            public int Version = 2;
+            public string Period;
             public string ProfileName;
             public string ProfileJson;
         }
@@ -47,13 +50,22 @@ namespace MiniGame.UnityHost
 #endif
         public RoomLightingController Controller => controller;
         public event Action VisibilityChanged;
-        public RoomLightingProfile Profile => controller != null ? controller.Profile : null;
+        public RoomLightingProfile Profile => controller != null ? controller.GetProfile(SelectedPeriod) : null;
         public bool IsPanelOpen { get; private set; }
         public bool BlocksInput => IsPanelOpen || blockedFrame == Time.frameCount;
         public RoomLightingPeriod SelectedPeriod { get; private set; }
         public string SelectedLightPath => selectedPath;
         public static string SettingsPath => Path.Combine(Application.persistentDataPath, "room-lighting-settings.json");
         public static string SharedPresetPath => Path.Combine(Application.persistentDataPath, "room-lighting-preset.json");
+        public static string NightSettingsPath => Path.Combine(Application.persistentDataPath, "room-lighting-night-settings.json");
+        public static string NightSharedPresetPath => Path.Combine(Application.persistentDataPath, "room-lighting-night-preset.json");
+        public string CurrentSettingsPath => SettingsPathFor(SelectedPeriod);
+        public string CurrentSharedPresetPath => SelectedPeriod == RoomLightingPeriod.Day ? SharedPresetPath : NightSharedPresetPath;
+        private string PeriodLabel => SelectedPeriod == RoomLightingPeriod.Day ? "白天" : "夜晚";
+        private static string MissingProfileMessage(RoomLightingPeriod period) => period == RoomLightingPeriod.Night
+            ? "夜晚需要独立配置资产，请在 Scene 灯光工具中指定。" : "白天需要配置资产，请在 Scene 灯光工具中指定。";
+
+        private static string SettingsPathFor(RoomLightingPeriod period) => period == RoomLightingPeriod.Day ? SettingsPath : NightSettingsPath;
 
         public void Initialize(RectTransform parent, Font uiFont)
         {
@@ -78,7 +90,8 @@ namespace MiniGame.UnityHost
         public bool SetPanelOpen(bool open)
         {
             if (IsPanelOpen == open) return IsPanelOpen;
-            if (open && (modal == null || runtime == null || Profile == null
+            if (open && Profile == null) { SetStatus(MissingProfileMessage(SelectedPeriod), true); return false; }
+            if (open && (modal == null || runtime == null
                 || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning)) return false;
             blockedFrame = Time.frameCount;
             if (open)
@@ -92,7 +105,7 @@ namespace MiniGame.UnityHost
                 modal.gameObject.SetActive(true);
                 modal.SetAsLastSibling();
                 RebuildRows(); LayoutPanel();
-                status.text = "F7 / Esc 关闭。调整实时预览；保存保留白天与夜晚两组。";
+                SetStatus("F7 / Esc 关闭。编辑" + PeriodLabel + "独立配置；保存仅保留当前时段。", false);
             }
             else
             {
@@ -124,26 +137,41 @@ namespace MiniGame.UnityHost
 
         public void SelectPeriod(RoomLightingPeriod period)
         {
+            if (period != RoomLightingPeriod.Day && period != RoomLightingPeriod.Night) return;
+            if (controller == null || controller.GetProfile(period) == null)
+            { SetStatus(MissingProfileMessage(period), true); return; }
             SelectedPeriod = period;
             selectedPath = "";
             RebuildRows();
+            SetStatus("正在编辑" + PeriodLabel + "配置；预览时段由上方预览按钮独立控制。", false);
         }
 
         public bool SelectLight(string path)
         {
-            if (controller == null || controller.ResolveSceneLight(path, SelectedPeriod) == null) return false;
+            if (Profile == null || controller.ResolveSceneLight(path, SelectedPeriod) == null) return false;
             selectedPath = path; RebuildRows(); return true;
         }
 
         public void SetPreview(RoomLightingPreviewMode mode)
         {
+            if (mode == RoomLightingPreviewMode.Night && (controller == null || controller.GetProfile(RoomLightingPeriod.Night) == null))
+            { SetStatus(MissingProfileMessage(RoomLightingPeriod.Night), true); return; }
             controller?.SetPreviewMode(mode);
             Refresh();
         }
 
         public void Refresh()
         {
-            if (Profile == null || dayButton == null) return;
+            if (dayButton == null) return;
+            if (rowsProfile != Profile) { RebuildRows(); return; }
+            bool available = Profile != null;
+            saveButton.interactable = exportButton.interactable = importButton.interactable = available;
+            if (!available)
+            {
+                editingAsset.text = MissingProfileMessage(SelectedPeriod);
+                SetStatus(MissingProfileMessage(SelectedPeriod), true);
+                return;
+            }
             LayoutPanel();
             refreshing = true;
             try
@@ -153,6 +181,15 @@ namespace MiniGame.UnityHost
                 Highlight(automaticButton, controller.PreviewMode == RoomLightingPreviewMode.Automatic);
                 Highlight(previewDayButton, controller.PreviewMode == RoomLightingPreviewMode.Day);
                 Highlight(previewNightButton, controller.PreviewMode == RoomLightingPreviewMode.Night);
+                editingAsset.text = "正在编辑：" + PeriodLabel + " · " + Profile.name;
+#if UNITY_EDITOR
+                editingAsset.text += "\n" + UnityEditor.AssetDatabase.GetAssetPath(Profile);
+#else
+                editingAsset.text += "\n分享文件：" + CurrentSharedPresetPath;
+#endif
+                saveButton.GetComponentInChildren<Text>().text = "保存" + PeriodLabel + "配置";
+                exportButton.GetComponentInChildren<Text>().text = "导出" + PeriodLabel + " JSON";
+                importButton.GetComponentInChildren<Text>().text = "导入" + PeriodLabel + " JSON";
                 foreach (var refresh in refreshers) refresh();
             }
             finally { refreshing = false; }
@@ -169,16 +206,17 @@ namespace MiniGame.UnityHost
                     throw new InvalidOperationException("当前灯光配置不是工程资产，请先在 Scene 工具中指定配置资产。");
                 UnityEditor.EditorUtility.SetDirty(Profile);
                 ProfileEditedInEditor?.Invoke(Profile);
-                UnityEditor.AssetDatabase.SaveAssets();
-                SetStatus("已保存到工程灯光配置资产，退出播放后仍保留。", false);
+                UnityEditor.AssetDatabase.SaveAssetIfDirty(Profile);
+                SetStatus("已保存" + PeriodLabel + "配置：" + UnityEditor.AssetDatabase.GetAssetPath(Profile) + "\n退出播放后仍保留。", false);
 #else
                 Directory.CreateDirectory(Application.persistentDataPath);
-                var saved = new SavedSettings { ProfileName = Profile.name, ProfileJson = JsonUtility.ToJson(Profile) };
-                string temporary = SettingsPath + ".tmp";
+                var saved = new SavedSettings { Period = SelectedPeriod.ToString(), ProfileName = Profile.name, ProfileJson = JsonUtility.ToJson(Profile) };
+                string path = CurrentSettingsPath;
+                string temporary = path + ".tmp";
                 File.WriteAllText(temporary, JsonUtility.ToJson(saved, true));
-                if (File.Exists(SettingsPath)) File.Replace(temporary, SettingsPath, null);
-                else File.Move(temporary, SettingsPath);
-                SetStatus("已保存独立灯光配置：" + SettingsPath, false);
+                if (File.Exists(path)) File.Replace(temporary, path, null);
+                else File.Move(temporary, path);
+                SetStatus("已保存" + PeriodLabel + "独立配置：" + path, false);
 #endif
                 return true;
             }
@@ -196,7 +234,7 @@ namespace MiniGame.UnityHost
             try
             {
                 RoomLightingPresetIO.SaveFile(Profile, path);
-                SetStatus("已导出白天与夜晚配置，可将此 JSON 发给他人：\n" + Path.GetFullPath(path), false);
+                SetStatus("已导出" + PeriodLabel + "完整配置，可将此 JSON 发给他人：\n" + Path.GetFullPath(path), false);
                 return true;
             }
             catch (Exception exception)
@@ -224,7 +262,7 @@ namespace MiniGame.UnityHost
                 controller.ApplyFromProfile();
                 // Keep the editing period and the selected light when its scene path still exists.
                 RebuildRows();
-                SetStatus("已导入并实时应用；点击保存保留。\n" + Path.GetFullPath(path), false);
+                SetStatus("已导入" + PeriodLabel + "配置并实时应用；点击保存保留。\n" + Path.GetFullPath(path), false);
                 return true;
             }
             catch (Exception exception)
@@ -238,9 +276,10 @@ namespace MiniGame.UnityHost
         private void ChooseExportPreset()
         {
 #if UNITY_EDITOR
-            string path = UnityEditor.EditorUtility.SaveFilePanel("导出白天与夜晚灯光配置", "", "room-lighting-preset", "json");
+            string filename = SelectedPeriod == RoomLightingPeriod.Day ? "room-lighting-day-preset" : "room-lighting-night-preset";
+            string path = UnityEditor.EditorUtility.SaveFilePanel("导出" + PeriodLabel + "灯光配置", "", filename, "json");
 #else
-            string path = SharedPresetPath;
+            string path = CurrentSharedPresetPath;
 #endif
             if (!string.IsNullOrWhiteSpace(path)) ExportPreset(path);
         }
@@ -248,9 +287,9 @@ namespace MiniGame.UnityHost
         private void ChooseImportPreset()
         {
 #if UNITY_EDITOR
-            string path = UnityEditor.EditorUtility.OpenFilePanel("导入他人的灯光配置", "", "json");
+            string path = UnityEditor.EditorUtility.OpenFilePanel("导入" + PeriodLabel + "灯光配置", "", "json");
 #else
-            string path = SharedPresetPath;
+            string path = CurrentSharedPresetPath;
 #endif
             if (!string.IsNullOrWhiteSpace(path)) ImportPreset(path);
         }
@@ -258,26 +297,40 @@ namespace MiniGame.UnityHost
         private void LoadPlayerSettings()
         {
 #if !UNITY_EDITOR
-            if (Profile == null || loadedPlayerProfile == Profile) return;
-            loadedPlayerProfile = Profile;
-            if (!File.Exists(SettingsPath)) return;
+            if (controller == null) return;
+            LoadPlayerSettings(RoomLightingPeriod.Day);
+            // Legacy single-profile controllers must never receive two files into the same object.
+            if (controller.HasIndependentProfiles) LoadPlayerSettings(RoomLightingPeriod.Night);
+#endif
+        }
+
+#if !UNITY_EDITOR
+        private void LoadPlayerSettings(RoomLightingPeriod period)
+        {
+            var target = controller.GetProfile(period);
+            if (target == null || !loadedPlayerProfiles.Add(target)) return;
+            string path = SettingsPathFor(period);
+            if (!File.Exists(path)) return;
             RoomLightingProfile validated = null;
             try
             {
-                var saved = JsonUtility.FromJson<SavedSettings>(File.ReadAllText(SettingsPath));
-                if (saved == null || saved.Version != 1 || string.IsNullOrEmpty(saved.ProfileJson))
+                var saved = JsonUtility.FromJson<SavedSettings>(File.ReadAllText(path));
+                if (saved == null || saved.Version < 1 || saved.Version > 2 || string.IsNullOrEmpty(saved.ProfileJson))
                     throw new InvalidDataException("灯光配置版本或内容无效。");
-                if (saved.ProfileName != Profile.name) return;
+                if (saved.Version == 1 && period != RoomLightingPeriod.Day
+                    || saved.Version == 2 && saved.Period != period.ToString())
+                    throw new InvalidDataException("灯光配置时段与保存位置不一致。");
+                if (saved.ProfileName != target.name) return;
                 validated = ScriptableObject.CreateInstance<RoomLightingProfile>();
                 JsonUtility.FromJsonOverwrite(saved.ProfileJson, validated);
                 validated.NotifyChanged();
-                JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(validated), Profile);
-                Profile.NotifyChanged(); controller.ApplyFromProfile();
+                JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(validated), target);
+                target.NotifyChanged(); controller.ApplyFromProfile();
             }
             catch (Exception exception) { Debug.LogWarning("自定义房间灯光未载入：" + exception.Message, this); }
             finally { if (validated != null) Destroy(validated); }
-#endif
         }
+#endif
 
         private void BeginEdit()
         {
@@ -294,7 +347,7 @@ namespace MiniGame.UnityHost
             ProfileEditedInEditor?.Invoke(Profile);
 #endif
             controller.ApplyFromProfile();
-            SetStatus("已实时应用；Scene 和 Game 共用当前配置。点击保存保留。", false);
+            SetStatus("已实时应用" + PeriodLabel + "配置；Scene 和 Game 共用此资产。点击保存保留。", false);
             Refresh();
         }
 
@@ -307,14 +360,14 @@ namespace MiniGame.UnityHost
             foreach (Transform child in content)
             { child.gameObject.SetActive(false); Destroy(child.gameObject); }
             refreshing = wasRefreshing;
+            rowsProfile = Profile;
             if (Profile == null)
             {
-                AddHeading("此场景没有房间灯光控制器。请在 Scene 灯光工具中接入。");
+                AddHeading(MissingProfileMessage(SelectedPeriod));
             }
             else
             {
-                if (SelectedPeriod == RoomLightingPeriod.Day) BuildDayRows();
-                else BuildNightRows();
+                BuildDayRows();
                 BuildLightRows();
             }
             content.sizeDelta = new Vector2(-14, rowIndex * 60 + 10);
@@ -324,10 +377,13 @@ namespace MiniGame.UnityHost
 
         private void BuildDayRows()
         {
-            AddHeading("白天 · 环境");
+            AddHeading(PeriodLabel + " · 环境与整体控制");
             AddColor("环境光", () => Profile.ambientColor, value => Profile.ambientColor = value);
             AddNumber("反射强度", 0, 1, () => Profile.reflectionIntensity, value => Profile.reflectionIntensity = value);
-            AddHeading("白天 · 吊灯（位置相对灯罩开口）");
+            AddNumber("灯光整体倍率", 0, 4, () => Profile.lightMultiplier, value => Profile.lightMultiplier = value);
+            AddNumber("自发光整体倍率", 0, 4, () => Profile.emissionMultiplier, value => Profile.emissionMultiplier = value);
+            AddNumber("时段渐变秒数", .01f, 10, () => Profile.fadeSeconds, value => Profile.fadeSeconds = value);
+            AddHeading(PeriodLabel + " · 吊灯（位置相对灯罩开口）");
             AddColor("吊灯颜色", () => Profile.lampColor, value => Profile.lampColor = value);
             AddNumber("吊灯强度", 0, 8, () => Profile.lampIntensity, value => Profile.lampIntensity = value);
             AddNumber("吊灯范围", 1, 12, () => Profile.lampRange, value => Profile.lampRange = value);
@@ -339,26 +395,33 @@ namespace MiniGame.UnityHost
             AddNumber("吊灯阴影偏差", 0, .1f, () => Profile.shadowBias, value => Profile.shadowBias = value);
             AddNumber("吊灯法线偏差", 0, 1, () => Profile.shadowNormalBias, value => Profile.shadowNormalBias = value);
             AddNumber("灯泡自发光", 0, 4, () => Profile.bulbEmission, value => Profile.bulbEmission = value);
-            AddHeading("白天 · 窗边与显示器");
+            AddHeading(PeriodLabel + " · 窗边与显示器");
             AddColor("窗光颜色", () => Profile.windowColor, value => Profile.windowColor = value);
             AddNumber("窗光强度", 0, 2, () => Profile.windowIntensity, value => Profile.windowIntensity = value);
             AddNumber("窗光范围", 1, 8, () => Profile.windowRange, value => Profile.windowRange = value);
             AddNumber("显示器光强度", 0, 1, () => Profile.monitorIntensity, value => Profile.monitorIntensity = value);
-        }
-
-        private void BuildNightRows()
-        {
-            AddHeading("夜晚 · 环境和默认衰减");
-            AddColor("夜晚环境光", () => Profile.night.ambientColor, value => Profile.night.ambientColor = value);
-            AddNumber("夜晚反射强度", 0, 1, () => Profile.night.reflectionIntensity, value => Profile.night.reflectionIntensity = value);
-            AddNumber("未覆盖灯光倍率", 0, 4, () => Profile.night.lightMultiplier, value => Profile.night.lightMultiplier = value);
-            AddNumber("夜晚自发光倍率", 0, 4, () => Profile.night.emissionMultiplier, value => Profile.night.emissionMultiplier = value);
-            AddNumber("关灯渐变秒数", .01f, 10, () => Profile.night.fadeSeconds, value => Profile.night.fadeSeconds = value);
+            AddHeading(PeriodLabel + " · 照明分层");
+            AddAction("启用照明分层", () => Profile.lightingBandsEnabled ? "已启用" : "已关闭", () =>
+            { BeginEdit(); Profile.lightingBandsEnabled = !Profile.lightingBandsEnabled; Changed(); });
+            AddNumber("照明分层数", 2, 32, () => Profile.lightingBands, value => Profile.lightingBands = Mathf.RoundToInt(value));
+            AddNumber("照明分层强度", 0, 1, () => Profile.lightingBandsStrength, value => Profile.lightingBandsStrength = value);
+            AddNumber("照明抖动", 0, 1, () => Profile.lightingDither, value => Profile.lightingDither = value);
+            AddHeading(PeriodLabel + " · 地板与地毯");
+            AddNumber("地板亮度", .25f, 3, () => Profile.floorGain, value => Profile.floorGain = value);
+            AddNumber("地板对比度", .25f, 2, () => Profile.floorContrast, value => Profile.floorContrast = value);
+            AddNumber("地板光滑度", 0, 1, () => Profile.floorSmoothness, value => Profile.floorSmoothness = value);
+            AddAction("显示地毯", () => Profile.rugVisible ? "已显示" : "已隐藏", () =>
+            { BeginEdit(); Profile.rugVisible = !Profile.rugVisible; Changed(); });
+            AddVector("地毯偏移", -20, 20, () => Profile.rugOffset, value => Profile.rugOffset = value);
+            AddNumber("地毯宽度", .2f, 8, () => Profile.rugSize.x, value => Profile.rugSize = new Vector2(value, Profile.rugSize.y));
+            AddNumber("地毯长度", .2f, 6, () => Profile.rugSize.y, value => Profile.rugSize = new Vector2(Profile.rugSize.x, value));
+            AddNumber("地毯旋转", -180, 180, () => Profile.rugYaw, value => Profile.rugYaw = value);
+            AddColor("地毯颜色", () => Profile.rugTint, value => Profile.rugTint = value);
         }
 
         private void BuildLightRows()
         {
-            AddHeading(SelectedPeriod == RoomLightingPeriod.Day ? "白天 · 场景补光" : "夜晚 · 独立灯光覆盖（含床灯）");
+            AddHeading(PeriodLabel + " · 场景灯光（含吊灯、窗光、电脑、床灯）");
             var lights = controller.GetEditableSceneLights(SelectedPeriod);
             if (lights.Length == 0) { AddHeading("此时段没有可编辑的场景灯。"); return; }
             if (lights.All(light => controller.GetHierarchyPath(light) != selectedPath))
@@ -502,7 +565,7 @@ namespace MiniGame.UnityHost
             var row = NewRow(label);
             var text = MakeText(row, "Label", label, 15, Paper);
             Position(text.rectTransform, 0, .1f, 0, 0, .47f, .9f);
-            var button = MakeButton(row, "Change", "", action);
+            var button = MakeButton(row, "Change", "", () => { if (Profile != null) action(); });
             Position(button.GetComponent<RectTransform>(), .5f, .1f, 0, 0, 1, .9f);
             refreshers.Add(() => button.GetComponentInChildren<Text>().text = read());
         }
@@ -552,8 +615,11 @@ namespace MiniGame.UnityHost
             Top(automaticButton.GetComponent<RectTransform>(), 20, 110, 150, 34);
             Top(previewDayButton.GetComponent<RectTransform>(), 180, 110, 150, 34);
             Top(previewNightButton.GetComponent<RectTransform>(), 340, 110, 150, 34);
+            editingAsset = MakeText(panel, "EditingAsset", "", 12, Amber);
+            Top(editingAsset.rectTransform, 20, 152, 470, 46);
+            editingAsset.alignment = TextAnchor.MiddleLeft;
             var viewport = NewRect(panel, "Viewport"); Stretch(viewport);
-            viewport.offsetMin = new Vector2(20, 196); viewport.offsetMax = new Vector2(-20, -158);
+            viewport.offsetMin = new Vector2(20, 196); viewport.offsetMax = new Vector2(-20, -208);
             AddImage(viewport, Color.clear); viewport.gameObject.AddComponent<RectMask2D>();
             scroll = viewport.gameObject.AddComponent<ScrollRect>(); scroll.viewport = viewport;
             scroll.horizontal = false; scroll.vertical = true;
@@ -565,21 +631,21 @@ namespace MiniGame.UnityHost
             status = MakeText(panel, "Status", "F7 打开灯光配置", 13, Quiet);
             status.rectTransform.anchorMin = Vector2.zero; status.rectTransform.anchorMax = new Vector2(1, 0);
             status.rectTransform.offsetMin = new Vector2(20, 96); status.rectTransform.offsetMax = new Vector2(-20, 188);
-            var save = MakeButton(panel, "Save", "保存白天与夜晚配置", () => SaveSettings());
-            save.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-            save.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
-            save.GetComponent<RectTransform>().offsetMin = new Vector2(20, 54);
-            save.GetComponent<RectTransform>().offsetMax = new Vector2(-20, 88);
-            var export = MakeButton(panel, "ExportPreset", "导出分享 JSON", ChooseExportPreset);
-            export.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-            export.GetComponent<RectTransform>().anchorMax = new Vector2(.5f, 0);
-            export.GetComponent<RectTransform>().offsetMin = new Vector2(20, 14);
-            export.GetComponent<RectTransform>().offsetMax = new Vector2(-5, 48);
-            var import = MakeButton(panel, "ImportPreset", "导入他人 JSON", ChooseImportPreset);
-            import.GetComponent<RectTransform>().anchorMin = new Vector2(.5f, 0);
-            import.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
-            import.GetComponent<RectTransform>().offsetMin = new Vector2(5, 14);
-            import.GetComponent<RectTransform>().offsetMax = new Vector2(-20, 48);
+            saveButton = MakeButton(panel, "Save", "保存白天配置", () => SaveSettings());
+            saveButton.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            saveButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+            saveButton.GetComponent<RectTransform>().offsetMin = new Vector2(20, 54);
+            saveButton.GetComponent<RectTransform>().offsetMax = new Vector2(-20, 88);
+            exportButton = MakeButton(panel, "ExportPreset", "导出白天 JSON", ChooseExportPreset);
+            exportButton.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            exportButton.GetComponent<RectTransform>().anchorMax = new Vector2(.5f, 0);
+            exportButton.GetComponent<RectTransform>().offsetMin = new Vector2(20, 14);
+            exportButton.GetComponent<RectTransform>().offsetMax = new Vector2(-5, 48);
+            importButton = MakeButton(panel, "ImportPreset", "导入白天 JSON", ChooseImportPreset);
+            importButton.GetComponent<RectTransform>().anchorMin = new Vector2(.5f, 0);
+            importButton.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
+            importButton.GetComponent<RectTransform>().offsetMin = new Vector2(5, 14);
+            importButton.GetComponent<RectTransform>().offsetMax = new Vector2(-20, 48);
             overlayMaterial = new Material(Graphic.defaultGraphicMaterial)
             { name = "Room lighting tuning overlay", hideFlags = HideFlags.HideAndDontSave, renderQueue = 4100 };
             ApplyOverlayMaterials(); LayoutPanel(); modal.gameObject.SetActive(false);

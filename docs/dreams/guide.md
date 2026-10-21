@@ -2,15 +2,15 @@
 
 ## 当前每日梦境：McQueen 图片序列
 
-当前三晚已接入 McQueen 最新的 30 张画面，每晚按编号播放 10 张、时长 20 秒。Day1 鲸滩、Day2 倒悬花海、Day3 红黑审视分别使用递进的折射、畸变重影、CRT 撕裂与色差；可在“每日梦境”页调整“顺序画面”“画面叠化时长”“运动强度”“梦境后处理强度”。制作细节与资料来源见[图片序列说明](image-sequence-notes.md)。[verified: DreamSequenceDefault.asset Days；DreamSettingsWindow.DrawDailyDreams；DreamProjectionAnimation.shader]
+当前三晚已接入 McQueen 最新的 30 张画面，每晚按编号播放 10 张、每秒 1 张、时长 10 秒。Day1 鲸滩、Day2 倒悬花海、Day3 红黑审视分别使用递进的折射、畸变重影、CRT 撕裂与色差；可在“每日梦境”页调整“顺序画面”“画面叠化时长”“运动强度”“梦境后处理强度”。制作细节与资料来源见[图片序列说明](image-sequence-notes.md)。[verified: DreamSequenceDefault.asset Days；DreamSettingsWindow.DrawDailyDreams；DreamProjectionAnimation.shader]
 
-本轮预览：[Day1](../../Art/Dreams/Previews/day1-sequence.mp4)、[Day2](../../Art/Dreams/Previews/day2-sequence.mp4)、[Day3](../../Art/Dreams/Previews/day3-sequence.mp4)。下文较早的单图制作与视频记录保留历史身份；隐藏海滩结局的当前实现以[固定门口布景指南](cubemap-guide.md)为准。[verified: Previews/daily-sequences-manifest.json；cubemap-guide.md]
+本轮预览：[Day1](../../Art/Dreams/Previews/day1-sequence-1fps.mp4)、[Day2](../../Art/Dreams/Previews/day2-sequence-1fps.mp4)、[Day3](../../Art/Dreams/Previews/day3-sequence-1fps.mp4)。下文较早的单图制作与视频记录保留历史身份；隐藏海滩结局的当前实现以[固定门口布景指南](cubemap-guide.md)为准。[verified: Previews/daily-sequences-manifest.json；cubemap-guide.md]
 
 从 [MainRoomCombined](../../UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity) 开始正式游戏；隐藏海上梦结局默认在房间内显示动态全景，原 [DreamEndingBeach](../../UnityProject/Assets/MiniGame/Scenes/DreamEndingBeach.unity) 保留为捕获源制作场景及兼容模式。菜单 **MiniGame → 梦境与结局** 分为“每日梦境”“海滩终局”“玩家反叛值”三个页签；音频文件和音量在 **MiniGame → 音频设置** 中选择。全景操作与更新流程见[动态全景指南](cubemap-guide.md)。`[verified: DreamSettingsWindow.cs DrawEnding；MiniGameSessionHost.cs LateUpdate；DreamCubemapSetup.cs BuildSource]`
 
 ## 策划操作
 
-- **每日梦境**：按 Day1 鲸尸海滩、Day2 无尽长路、Day3 受缚待审配置画面、音乐用途、播放时长与运动强度。默认每段 **20 秒**、运动强度 **1**，镜头定位 **1.2 秒**、返回 **1 秒**、投影边缘留白 **0.15 米**。`[verified: DreamSettingsWindow.cs L114–140；DreamSequenceDefault.asset AlignSeconds/ReturnSeconds/ProjectionInset/Days]`
+- **每日梦境**：按 Day1 鲸滩、Day2 倒悬花海、Day3 红黑审视配置画面、音乐用途、播放时长与运动强度。当前序列每段 **10 秒**、每秒 **1 张图**，运动强度依次 **0.8/0.7/0.65**；镜头定位 **1.2 秒**、返回 **1 秒**、投影边缘留白 **0.15 米**。`[verified: DreamSequenceDefault.asset AlignSeconds/ReturnSeconds/ProjectionInset/Days]`
 - 点击 **预览 Day1/2/3 梦境** 查看墙面效果；工具栏可以暂停、停止预览。预览不推进剧情，停止后恢复镜头；正式演出进行中不会被预览替换。若没有接入，先打开 Combined，退出播放模式，再点击 **更新 Combined 梦境接入与墙面定位**。`[verified: DreamSettingsWindow.cs L102–110、L134–139、L320–340；DreamSequenceDirector.cs PreviewDay/StopInternal]`
 - **动画播放时保持原画清晰**：墙面动画实际播放期间临时跳过房间复古效果，进入镜头返回或停止预览后恢复原状态；无需到复古面板改参数，也不改动原图预览或组件启用选择。投影矩形内采用前景优先显示，避免吊灯等房间物体盖住动画；正常房间继续使用原复古设置。`[verified: DreamSequenceDirector.cs L151–173、L270–308；RetroScreenEffect.cs L14–28；DreamProjectionSurface.shader L6–8]`
 - “Combined 场景定位”可指定投影墙面、显示面、观影点及其位置朝向；用 **保存场景定位** 保存这些场景修改。播放模式和预览期间定位只读。`[verified: DreamSettingsWindow.cs L176–218]`

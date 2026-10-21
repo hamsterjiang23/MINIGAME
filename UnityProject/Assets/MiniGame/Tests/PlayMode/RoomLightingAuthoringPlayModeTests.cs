@@ -44,7 +44,7 @@ namespace MiniGame.UnityHost.Tests
             source = Resources.Load<RoomLightingProfile>("RoomLightingDefault");
             Assert.That(source, Is.Not.Null);
             sourceJson = JsonUtility.ToJson(source);
-            settings = Object.Instantiate(source); settings.SceneLights.Clear(); settings.NotifyChanged();
+            settings = Object.Instantiate(source); settings.SceneLights.Clear(); settings.night = new RoomNightLightingSettings(); settings.NotifyChanged();
             var cameraObject = new GameObject("Camera", typeof(Camera)); cameraObject.transform.SetParent(owner.transform);
             var camera = cameraObject.GetComponent<Camera>(); camera.enabled = false;
             var bedObject = new GameObject("Bed guide", typeof(Light)); bedObject.transform.SetParent(owner.transform);

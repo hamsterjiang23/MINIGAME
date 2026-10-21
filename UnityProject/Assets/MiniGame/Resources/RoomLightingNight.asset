@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e7c270605d801499af9ef1c38e1454, type: 3}
+  m_Name: RoomLightingNight
+  m_EditorClassIdentifier: 
+  lightMultiplier: 1
+  emissionMultiplier: 1
+  fadeSeconds: 1.1
+  lampOffset: {x: 0, y: -0.04, z: 0}
+  lampEulerAngles: {x: 90, y: 0, z: 0}
+  lampColor: {r: 1, g: 0.84, b: 0.62, a: 1}
+  lampIntensity: 4.8
+  lampRange: 7
+  outerAngle: 125
+  innerAngle: 70
+  shadowStrength: 1
+  shadowBias: 0.015
+  shadowNormalBias: 0.08
+  bulbEmission: 1.4
+  ambientColor: {r: 0.22, g: 0.205, b: 0.155, a: 1}
+  reflectionIntensity: 0.15
+  windowColor: {r: 0.62, g: 0.72, b: 0.8, a: 1}
+  windowIntensity: 0.18
+  windowRange: 4.5
+  monitorIntensity: 0.12
+  lightingBandsEnabled: 0
+  lightingBands: 8
+  lightingBandsStrength: 0.4
+  lightingDither: 0
+  floorGain: 1.65
+  floorContrast: 1.08
+  floorSmoothness: 0.13
+  rugVisible: 1
+  rugOffset: {x: 1.09, y: 0.008, z: -0.23}
+  rugSize: {x: 3.4, y: 2}
+  rugYaw: 0
+  rugTint: {r: 0.82, g: 0.74, b: 0.6, a: 1}
+  SceneLights: []
+  SceneLightDefaults:
+  - HierarchyPath: CeilingLight#0
+    dayEnabled: 1
+    localPosition: {x: -2.261151, y: 2.0053954, z: -1.7078781}
+    localEuler: {x: 90, y: 0, z: 0}
+    color: {r: 1, g: 0.84, b: 0.62, a: 1}
+    intensity: 4.8
+    range: 7
+    type: 0
+    spotAngle: 125
+    innerSpotAngle: 70
+    shadows: 2
+    shadowStrength: 1
+    shadowBias: 0.015
+    shadowNormalBias: 0.08
+  - HierarchyPath: MainRoom%20Gameplay#0/Night%20bed%20guidance#0
+    dayEnabled: 0
+    localPosition: {x: 0.83579326, y: 2.21278, z: -0.36339885}
+    localEuler: {x: 90, y: 0, z: 0}
+    color: {r: 0.94, g: 0.93, b: 0.79, a: 1}
+    intensity: 8
+    range: 3.6
+    type: 0
+    spotAngle: 56
+    innerSpotAngle: 36
+    shadows: 2
+    shadowStrength: 1
+    shadowBias: 0.05
+    shadowNormalBias: 0.4
+  - HierarchyPath: MainRoom%20Gameplay#0/Reference%20exterior%20corridor#0/Corridor%20red%20spotlight#0
+    dayEnabled: 1
+    localPosition: {x: 0, y: 2.94066, z: 1.4}
+    localEuler: {x: 90, y: 0, z: 0}
+    color: {r: 1, g: 0.025, b: 0.015, a: 1}
+    intensity: 4.5
+    range: 4.8
+    type: 0
+    spotAngle: 163.1
+    innerSpotAngle: 38
+    shadows: 2
+    shadowStrength: 0.85
+    shadowBias: 0.025
+    shadowNormalBias: 0.15
+  - HierarchyPath: MonitorLight%20%281%29#0
+    dayEnabled: 1
+    localPosition: {x: -2.833, y: 0.99, z: -0.572}
+    localEuler: {x: 29.564606, y: -7.539795, z: -88.11224}
+    color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
+    intensity: 3.11
+    range: 2.37
+    type: 2
+    spotAngle: 74.4
+    innerSpotAngle: 21.80208
+    shadows: 0
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.4
+  - HierarchyPath: MonitorLight%20%282%29#0
+    dayEnabled: 1
+    localPosition: {x: -2.288, y: 1.022, z: -2.994}
+    localEuler: {x: 30.085556, y: 18.406403, z: -89.90143}
+    color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
+    intensity: 1.05
+    range: 3.26
+    type: 2
+    spotAngle: 30
+    innerSpotAngle: 21.80208
+    shadows: 0
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.4
+  - HierarchyPath: MonitorLight%20%283%29#0
+    dayEnabled: 1
+    localPosition: {x: 0.008, y: 0.406, z: -1.618}
+    localEuler: {x: 30.085556, y: 18.406403, z: -89.90143}
+    color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
+    intensity: 2.08
+    range: 4.27
+    type: 2
+    spotAngle: 30
+    innerSpotAngle: 21.80208
+    shadows: 0
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.4
+  - HierarchyPath: MonitorLight%20%284%29#0
+    dayEnabled: 1
+    localPosition: {x: -4.154, y: 0.872, z: -1.588}
+    localEuler: {x: 30.085556, y: 18.406403, z: -89.90143}
+    color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
+    intensity: 2.89
+    range: 4.27
+    type: 2
+    spotAngle: 30
+    innerSpotAngle: 21.80208
+    shadows: 0
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.4
+  - HierarchyPath: MonitorLight%20%285%29#0
+    dayEnabled: 1
+    localPosition: {x: -1.51, y: 1.04, z: -0.364}
+    localEuler: {x: 30.085556, y: 18.406403, z: -89.90143}
+    color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
+    intensity: 0.85
+    range: 4.27
+    type: 2
+    spotAngle: 30
+    innerSpotAngle: 21.80208
+    shadows: 0
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.4
+  night:
+    ambientColor: {r: 0.22904919, g: 0.23584908, b: 0.18578678, a: 1}
+    reflectionIntensity: 1
+    lightMultiplier: 0.18
+    emissionMultiplier: 1.18
+    fadeSeconds: 10
+    SceneLights: []

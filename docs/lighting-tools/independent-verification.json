@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-21",
+  "unity": "2022.3.23f1c1",
+  "migration": {
+    "day": "UnityProject/Assets/MiniGame/Resources/RoomLightingDay.asset",
+    "night": "UnityProject/Assets/MiniGame/Resources/RoomLightingNight.asset",
+    "dayGuid": "ad0232a6895ab214b957e5d20e75e1bd",
+    "nightGuid": "31176d38455a0ca4081b39a398a78724",
+    "source": "Unchanged day appearance captured before migration",
+    "legacyUserDefaultPreserved": true,
+    "legacyDefaultSha256": "FD37F0C7CE9B66F7CB53759E65BF9ADBACE8F308ADB3D5950FAD4836A9E12044"
+  },
+  "baseline": {
+    "independentAssets": true,
+    "initiallyEqualCompleteData": true,
+    "sourceDayLightsRetained": true,
+    "lights": 8,
+    "errors": [],
+    "meanAbsoluteRgbDifference": 1.134713144517066E-08,
+    "maximumChannelDifference": 1
+  },
+  "presets": {
+    "version": 2,
+    "day": "presets/RoomLightingDay.json",
+    "night": "presets/RoomLightingNight.json",
+    "nativeRoundtripPassed": true,
+    "sourceAssetsUnchanged": true
+  },
+  "tests": [
+    {
+      "report": "reports/independent/editor-independent.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "report": "reports/independent/playmode-full.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "report": "reports/independent/editor-presets.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "report": "reports/independent/playmode-authoring.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "report": "reports/independent/editor-legacy.json",
+      "summary": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    }
+  ],
+  "totalPassed": 19.0,
+  "review": "CLEAN after shared-asset alias protection",
+  "packaged": false,
+  "pushed": false,
+  "staticChecks": {
+    "compilation": "up_to_date; failed=false; errors=[]",
+    "scopedGitDiffCheck": "passed",
+    "guideLinks": 7
+  }
+}
