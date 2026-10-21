@@ -43,9 +43,9 @@ MonoBehaviour:
   rugTint: {r: 0.82, g: 0.74, b: 0.6, a: 1}
   SceneLights: []
   night:
-    ambientColor: {r: 0.22904919, g: 0.23584908, b: 0.18578678, a: 1}
-    reflectionIntensity: 1
-    lightMultiplier: 0.18
-    emissionMultiplier: 1.18
-    fadeSeconds: 10
+    ambientColor: {r: 0, g: 0, b: 0, a: 1}
+    reflectionIntensity: 0
+    lightMultiplier: 0
+    emissionMultiplier: 0
+    fadeSeconds: 1.1
     SceneLights: []
