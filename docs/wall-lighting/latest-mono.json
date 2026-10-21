@@ -1,0 +1,37 @@
+{
+  "completedAt": "2026-10-21T11:14:37.7580354+08:00",
+  "platform": "Windows x64",
+  "backend": "Mono",
+  "developmentBuild": false,
+  "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-LightingFixed-20261021-111105.zip",
+  "zipBytes": 176656879,
+  "zipSha256": "859d1c81c156e9a971c60348cec55fad7fabcd6e7422bb5b712eab0eb618ab61",
+  "exePath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\LightingContinuity\\MiniGame.exe",
+  "includes": [
+    "Wallpaper depth repair",
+    "Five supplemental lights set to ForcePixel",
+    "Uploaded RoomLightingReferenceRetro colour profile",
+    "Latest primary prop narration and view controls",
+    "Latest portrait catalog"
+  ],
+  "build": "reports/latest-mono-windows-build.json",
+  "native": {
+    "doorway": "reports/latest-mono-native-doorway.json",
+    "opening": "reports/latest-mono-native-opening.json",
+    "terminal": "reports/latest-mono-native-terminal.json",
+    "lighting": "reports/latest-mono-native-wall-lighting.json",
+    "allPassed": true
+  },
+  "package": "reports/latest-mono-package.json",
+  "cleanup": "reports/latest-mono-cleanup.json",
+  "limits": [
+    "Automated EXE operations and captured camera/UI validation are not manual player acceptance.",
+    "No remote upload, commit or push performed.",
+    "Old timestamp archives and checksums were removed; 20 previous unpacked build directories remain because recursive deletion was rejected by automatic approval."
+  ],
+  "finalChecks": {
+    "diffCheck": "PASS",
+    "reportLinksPresent": true,
+    "latestZipAndExePresent": true
+  }
+}

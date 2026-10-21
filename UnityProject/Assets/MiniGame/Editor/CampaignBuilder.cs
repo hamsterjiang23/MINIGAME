@@ -78,14 +78,21 @@ namespace MiniGame.UnityHost.Editor
         private static PortraitCatalog ImportPortraits(CompiledDialoguePackage compiled)
         {
             PatientMonitorAssets.ImportArtwork(false);
+            // The campaign and the retained single-day demo share this catalog.
+            var legacyAsset = AssetDatabase.LoadAssetAtPath<DialoguePackageAsset>(DialoguePackageImporter.ActiveAssetPath);
+            string legacyJson = legacyAsset != null && legacyAsset.PackageSource != null
+                ? legacyAsset.PackageSource.text : File.ReadAllText(DialoguePackageImporter.DefaultPackagePath);
+            var legacyPortraits = DialoguePackageCompiler.Compile(legacyJson).Package.Portraits;
+            var requiredPortraits = compiled.Package.Portraits.Concat(legacyPortraits)
+                .GroupBy(portrait => portrait.Id, StringComparer.Ordinal).Select(group => group.First()).ToArray();
             string originals = Path.Combine(Repository, "Art", "Characters");
             var files = Directory.GetFiles(originals, "*.png", SearchOption.AllDirectories)
                 .ToDictionary(Path.GetFileNameWithoutExtension, StringComparer.Ordinal);
-            var missing = compiled.Package.Portraits.Where(portrait => !files.ContainsKey(portrait.Id)).Select(portrait => portrait.Id).ToArray();
+            var missing = requiredPortraits.Where(portrait => !files.ContainsKey(portrait.Id)).Select(portrait => portrait.Id).ToArray();
             if (missing.Length > 0) throw new InvalidOperationException("Missing campaign portraits: " + string.Join(", ", missing));
             const string destination = "Assets/MiniGame/Art/Characters";
             EnsureFolder(destination);
-            var entries = compiled.Package.Portraits.Select(portrait =>
+            var entries = requiredPortraits.Select(portrait =>
             {
                 var remade = PatientMonitorAssets.FindRemadeSprite(portrait.Id);
                 if (remade != null) return new PortraitCatalog.Entry { id = portrait.Id, sprite = remade };

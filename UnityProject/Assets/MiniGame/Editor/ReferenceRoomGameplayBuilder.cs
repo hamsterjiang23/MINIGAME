@@ -87,7 +87,7 @@ namespace MiniGame.UnityHost.Editor
             Anchor(anchors, "Door approach", Marker(room, "DoorApproach"));
             Anchor(anchors, "Computer approach", Marker(room, "ComputerApproach"));
             Anchor(anchors, "Bed approach", Marker(room, "BedApproach"));
-            var beach = Poster(root, room, "Beach", "poster-beach", "beach", "这里是我的故乡…但我从没去过海边", depth);
+            var beach = Poster(root, room, "Beach", "poster-beach", "beach", "海报里的小镇是我的故乡...但我从没去过海边", depth);
             var instrument = Poster(root, room, "Device", "poster-instrument", "instrument", "新一代手持仪器引领我们走向未来！", depth);
             Anchor(anchors, "Poster beach approach", Marker(room, "BedApproach"));
             Anchor(anchors, "Poster device approach", instrument.position + depth * 1.25f + Vector3.up * (origin.y + .055f - instrument.position.y));

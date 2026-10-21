@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-21",
+  "sourceManifest": "source-manifest.json",
+  "indicator": {
+    "label": "当日指标 / 净化剩余",
+    "source": "GameSession PlayerView.RemainingPurificationQuota",
+    "format": "00",
+    "keepsExistingProgress": true,
+    "regressions": [
+      "treat",
+      "release",
+      "purify",
+      "duplicate disposition",
+      "restore",
+      "nonnegative excess purification",
+      "new day reset"
+    ]
+  },
+  "typing": {
+    "pool": [
+      "UIType1",
+      "UIType2",
+      "UIType3",
+      "UIType4"
+    ],
+    "completeBootCharacterEvents": 322,
+    "redrawDuplicates": 0,
+    "fourRealAudioClipsLoaded": true,
+    "sourceHashesVerified": 4
+  },
+  "playMode": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "reports": [
+      "indicator-tests.json",
+      "typing-tests.json",
+      "progress-tests.json"
+    ]
+  },
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/TerminalDailyWork/MiniGame.exe",
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 6.862901,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "playerStartup": {
+    "ready": true,
+    "log": "Artifacts/TerminalDailyWork20261021/player.log",
+    "errorsObserved": 0
+  },
+  "screenshots": [
+    "Artifacts/TerminalDailyWork20261021/Visuals/daily-work-indicator-review-01.png",
+    "Artifacts/TerminalDailyWork20261021/Visuals/daily-work-indicator-purified-00.png"
+  ],
+  "codeReview": "CLEAN",
+  "limits": [
+    "Ten selected related PlayMode tests, not the complete Unity suite.",
+    "Screenshots are rendered UI from a controlled quota fixture, not a full campaign gameplay capture.",
+    "Audio checks validate imported clips and emitted playback events; no subjective speaker/listener acceptance claimed."
+  ],
+  "diffCheck": "passed",
+  "linksCheck": "passed"
+}

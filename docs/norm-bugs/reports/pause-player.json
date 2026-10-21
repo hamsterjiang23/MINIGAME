@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "detail": "Terminal/room orientation, two sizes, frame cap and real quit action",
+  "graphics": "Direct3D11",
+  "graphicsUVStartsAtTop": true,
+  "targetFrameRate": 30,
+  "vSyncCount": 0,
+  "developmentBuild": false,
+  "quitViaMenu": true,
+  "samples": [
+    {
+      "name": "before-pause",
+      "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+      "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1280,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "name": "paused",
+      "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+      "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1280,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "name": "resumed",
+      "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+      "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1280,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "name": "paused-again",
+      "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+      "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1280,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "name": "paused-resized",
+      "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+      "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1024,
+      "height": 768,
+      "passed": true
+    },
+    {
+      "name": "room-before-pause",
+      "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+      "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1024,
+      "height": 768,
+      "passed": true
+    },
+    {
+      "name": "room-paused",
+      "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+      "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1024,
+      "height": 768,
+      "passed": true
+    },
+    {
+      "name": "room-resumed",
+      "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+      "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+      "activeTargetWidth": 0,
+      "width": 1024,
+      "height": 768,
+      "passed": true
+    }
+  ]
+}

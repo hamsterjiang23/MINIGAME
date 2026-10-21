@@ -77,7 +77,7 @@ namespace MiniGame.UnityHost.Tests
                 var replaced = Read(display.Texture);
                 try
                 {
-                    Assert.That(replaced.GetPixels(1060, 396, 496, 56).Count(pixel => pixel.r > .3f && pixel.g > .12f),
+                    Assert.That(LogicalPixels(replaced, new Rect(530, 374, 248, 28)).Count(pixel => pixel.r > .3f && pixel.g > .12f),
                         Is.GreaterThan(1000), "The replacement's selected reply must render, not disappear behind the layer mask.");
                 }
                 finally { Object.Destroy(replaced); }
@@ -87,6 +87,155 @@ namespace MiniGame.UnityHost.Tests
             finally { Object.Destroy(owner); }
             yield return null; yield return null;
             Assert.That(Object.FindObjectsOfType<TerminalDisplay>().Any(d => d.name == "Terminal"), Is.False);
+        }
+
+        [UnityTest, Timeout(30000)]
+        public IEnumerator HtmlBitmapGlyphsAndHighlightStatesRenderOnActualNativeSource()
+        {
+            var rules = PrototypeRules.Create();
+            var runtime = new GameRuntime(rules, new PrototypeContent(rules), true);
+            var owner = new GameObject("HTML font and highlight GPU test");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            var highlight = new Color32(238, 180, 48, 255);
+            var desk = new Color32(11, 8, 3, 255);
+            Texture2D selectedImage = null, hoverImage = null, pressedImage = null;
+            try
+            {
+                screen.Bind(runtime); screen.UseYarnPresentation(); OpenDirectory(runtime);
+                yield return null;
+                var display = screen.TerminalDisplay;
+                Assert.That(display.Texture.width, Is.EqualTo(800));
+                Assert.That(display.Texture.height, Is.EqualTo(600));
+                Assert.That(display.Texture.filterMode, Is.EqualTo(FilterMode.Point));
+                ClearTerminalFontReferences(screen);
+                var first = NativeButton(screen, "Roster-0");
+                var second = NativeButton(screen, "Roster-1");
+                display.RenderFrame(); selectedImage = Read(display.Texture);
+                AssertButtonFill(screen, selectedImage, first, highlight, "Initial keyboard selection");
+                AssertButtonFill(screen, selectedImage, second, desk, "Other directory row");
+                CaptureTexture(display.Texture, "html-font-directory-selected-source");
+                CaptureComposite(display, "html-font-directory-selected");
+
+                // Compare a real label against the same live frame with that component disabled, so a
+                // pre-rendered package background cannot make an empty font renderer pass this test.
+                var heading = screen.GetComponentsInChildren<TerminalBitmapText>(true).Single(t => t.name == "RosterHeading");
+                heading.enabled = false; display.RenderFrame();
+                var withoutHeading = Read(display.Texture);
+                try
+                {
+                    var withText = LogicalPixels(selectedImage, new Rect(23, 51, 490, 20));
+                    var withoutText = LogicalPixels(withoutHeading, new Rect(23, 51, 490, 20));
+                    Assert.That(withText.Zip(withoutText, (a, b) => Mathf.Abs(a.r - b.r) + Mathf.Abs(a.g - b.g) + Mathf.Abs(a.b - b.b))
+                        .Count(delta => delta > .05f), Is.GreaterThan(100), "The null-Font bitmap label must contribute real GPU pixels.");
+                }
+                finally { Object.Destroy(withoutHeading); heading.enabled = true; }
+
+                var pointer = new PointerEventData(EventSystem.current)
+                {
+                    button = PointerEventData.InputButton.Left,
+                    position = display.ScreenPointFor((RectTransform)second.transform)
+                };
+                ExecuteEvents.Execute(second.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                display.RenderFrame(); hoverImage = Read(display.Texture);
+                AssertButtonFill(screen, hoverImage, first, desk, "Hover suppresses the keyboard selection");
+                AssertButtonFill(screen, hoverImage, second, highlight, "Only the hovered row is reversed");
+                CaptureTexture(display.Texture, "html-font-directory-hover-source");
+                CaptureComposite(display, "html-font-directory-hover");
+
+                var name = second.GetComponentsInChildren<TerminalBitmapText>().Single(t => t.name == "Label");
+                Vector2 resting = name.rectTransform.anchoredPosition;
+                ExecuteEvents.Execute(second.gameObject, pointer, ExecuteEvents.pointerDownHandler);
+                Assert.That(name.rectTransform.anchoredPosition, Is.EqualTo(resting + new Vector2(1, -1)));
+                display.RenderFrame(); pressedImage = Read(display.Texture);
+                AssertButtonFill(screen, pressedImage, second, highlight, "Pointer down retains the reversed face");
+                AssertDarkGlyphShift(hoverImage, pressedImage, new Rect(64, 142, 158, 20));
+                CaptureTexture(display.Texture, "html-font-directory-pressed-source");
+                CaptureComposite(display, "html-font-directory-pressed");
+                ExecuteEvents.Execute(second.gameObject, pointer, ExecuteEvents.pointerUpHandler);
+                Assert.That(name.rectTransform.anchoredPosition, Is.EqualTo(resting));
+                ExecuteEvents.Execute(second.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+
+                Assert.That(runtime.EnterSelectedPatient(runtime.GetView().Game.CurrentPatientId).Accepted, Is.True);
+                if (runtime.GetView().Cue != null) runtime.CompleteCue(runtime.GetView().Cue.Token);
+                screen.SetDialogueLine("对象", "请继续审查。", "font-gpu-line", "ML01");
+                ClearTerminalFontReferences(screen);
+                var lockedDisposition = NativeButton(screen, "Disposition-Release");
+                Assert.That(lockedDisposition.gameObject.activeInHierarchy, Is.True);
+                Assert.That(lockedDisposition.IsInteractable(), Is.False);
+                ExecuteEvents.Execute(lockedDisposition.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                ExecuteEvents.Execute(lockedDisposition.gameObject, pointer, ExecuteEvents.pointerDownHandler);
+                display.RenderFrame();
+                var disabled = Read(display.Texture);
+                try { AssertButtonFill(screen, disabled, lockedDisposition, desk, "Locked disposition cannot acquire hover or press fill"); }
+                finally { Object.Destroy(disabled); }
+                CaptureTexture(display.Texture, "html-font-disposition-disabled-source");
+                CaptureComposite(display, "html-font-disposition-disabled");
+
+                screen.ShowResponseButtons(new[]
+                {
+                    new ResponseContent("gpu-one", new string('选', 30)),
+                    new ResponseContent("gpu-two", "继续审查")
+                }, _ => { });
+                ClearTerminalFontReferences(screen);
+                var firstReply = NativeButton(screen, "Reply-gpu-one");
+                var secondReply = NativeButton(screen, "Reply-gpu-two");
+                display.RenderFrame();
+                var choices = Read(display.Texture);
+                try
+                {
+                    AssertButtonFill(screen, choices, firstReply, highlight, "First response starts selected");
+                    AssertButtonFill(screen, choices, secondReply, desk, "Other response remains dark");
+                    Assert.That(firstReply.GetComponentsInChildren<TerminalBitmapText>().Single(t => t.name == "Label")
+                        .GetComponentInParent<RectMask2D>(), Is.Not.Null);
+                    foreach (var pixel in LogicalPixels(choices, new Rect(773, 379, 4, 18)))
+                        AssertColor(pixel, highlight, "Long response text must stop at its real RectMask2D viewport.");
+                }
+                finally { Object.Destroy(choices); }
+                CaptureTexture(display.Texture, "html-font-choices-selected-source");
+                CaptureComposite(display, "html-font-choices-selected");
+                ExecuteEvents.Execute(secondReply.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                display.RenderFrame();
+                var hoveredChoice = Read(display.Texture);
+                try
+                {
+                    AssertButtonFill(screen, hoveredChoice, firstReply, desk, "Choice hover suppresses the selected response");
+                    AssertButtonFill(screen, hoveredChoice, secondReply, highlight, "Hovered response is the only reversed response");
+                }
+                finally { Object.Destroy(hoveredChoice); }
+                CaptureTexture(display.Texture, "html-font-choices-hover-source");
+                CaptureComposite(display, "html-font-choices-hover");
+                ExecuteEvents.Execute(secondReply.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+                screen.HideDialogueActions();
+
+                // Reach the real core's disposition stage, rather than merely enabling a synthetic button.
+                for (int step = 0; step < 32 && runtime.GetView().Game.EncounterStage != EncounterStage.AwaitingDisposition; step++)
+                {
+                    var view = runtime.GetView();
+                    if (view.Cue != null) Assert.That(runtime.CompleteCue(view.Cue.Token).Accepted, Is.True);
+                    else
+                    {
+                        Assert.That(view.Dialogue, Is.Not.Null);
+                        Assert.That(runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId,
+                            view.Dialogue.Responses[0].Id).Accepted, Is.True);
+                    }
+                }
+                Assert.That(runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition));
+                ClearTerminalFontReferences(screen);
+                var availableDisposition = screen.GetComponentsInChildren<Button>(false)
+                    .First(b => b.name.StartsWith("Disposition-", StringComparison.Ordinal) && b.IsInteractable());
+                display.RenderFrame();
+                var ready = Read(display.Texture);
+                try { AssertButtonFill(screen, ready, availableDisposition, highlight, "The first available real disposition is selected"); }
+                finally { Object.Destroy(ready); }
+                CaptureTexture(display.Texture, "html-font-disposition-ready-source");
+                CaptureComposite(display, "html-font-disposition-ready");
+            }
+            finally
+            {
+                Object.Destroy(selectedImage); Object.Destroy(hoverImage); Object.Destroy(pressedImage);
+                Object.Destroy(owner);
+            }
+            yield return null;
         }
 
         [UnityTest, Timeout(45000)]
@@ -174,11 +323,28 @@ namespace MiniGame.UnityHost.Tests
                 if(runtime.GetView().Cue!=null)runtime.CompleteCue(runtime.GetView().Cue.Token);
                 for(int i=0;i<8;i++) screen.SetDialogueLine("对象",new string('长',70)+"当前"+i,"wrap-speech-"+i,"D0_01");
                 yield return null;
-                var last=screen.GetComponentsInChildren<Text>(false).Where(t=>t.name.StartsWith("TranscriptText")).LastOrDefault();
+                screen.TerminalDisplay.RenderFrame();
+                var rows=screen.GetComponentsInChildren<Text>(false).Where(t=>t.name.StartsWith("TranscriptText")).ToArray();
+                Assert.That(rows,Has.Length.EqualTo(8),"Scrolling must retain every speech row instead of discarding older records.");
+                Assert.That(rows.First().text,Does.EndWith("当前0"));
+                var last=rows.LastOrDefault();
                 Assert.That(last,Is.Not.Null);
                 {
                     Assert.That(last.horizontalOverflow,Is.EqualTo(HorizontalWrapMode.Wrap));
-                    var clip=(RectTransform)last.transform.parent;Assert.That(-clip.anchoredPosition.y+clip.rect.height,Is.LessThanOrEqualTo(135));
+                    Assert.That(last.text,Does.EndWith("当前7"));
+                    var scroll=last.GetComponentInParent<ScrollRect>();
+                    Assert.That(scroll,Is.Not.Null);
+                    Assert.That(scroll.viewport.GetComponent<RectMask2D>(),Is.Not.Null);
+                    Assert.That(scroll.content.rect.height,Is.GreaterThan(scroll.viewport.rect.height));
+                    Assert.That(scroll.verticalNormalizedPosition,Is.LessThanOrEqualTo(.01f),"New speech must follow the bottom when the reader has not scrolled away.");
+                    var row=(RectTransform)last.transform.parent;
+                    var corners=new Vector3[4];row.GetWorldCorners(corners);
+                    float bottom=scroll.viewport.InverseTransformPoint(corners[0]).y;
+                    float top=scroll.viewport.InverseTransformPoint(corners[1]).y;
+                    Assert.That(bottom,Is.InRange(scroll.viewport.rect.yMin-.5f,scroll.viewport.rect.yMin+5),
+                        "The newest row must finish inside the clipped viewport with the four-pixel bottom padding.");
+                    Assert.That(top,Is.GreaterThan(scroll.viewport.rect.yMin+1),"The newest wrapped speech must overlap the visible viewport.");
+                    Assert.That(last.canvasRenderer.cull,Is.False,"RectMask2D must leave the newest speech visible.");
                 }
             }
             finally {Object.Destroy(owner);}
@@ -199,6 +365,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(diagnosticShader,Is.Not.Null);
             var diagnostic=new Material(diagnosticShader);
             int checkedPortraits=0;
+            var checkedIds=new HashSet<string>();
             try
             {
                 foreach(var room in configuration.Rooms)
@@ -236,10 +403,13 @@ namespace MiniGame.UnityHost.Tests
                         float fraction=(float)visible/silhouette;
                         Assert.That(fraction,Is.GreaterThanOrEqualTo(.97f),item.Id+" furniture occlusion");
                         Debug.Log("MINIGAME_AMBER_MONITOR_VISIBILITY "+item.Id+" visible="+fraction+" silhouette="+silhouette);
-                        checkedPortraits++;yield return null;
+                        checkedPortraits++;checkedIds.Add(item.Id);yield return null;
                     }
                 }
-                Assert.That(checkedPortraits,Is.EqualTo(27));
+                Assert.That(package.Package.Portraits,Is.Not.Empty);
+                Assert.That(checkedPortraits,Is.EqualTo(package.Package.Portraits.Count));
+                Assert.That(checkedIds,Is.EquivalentTo(package.Package.Portraits.Select(item=>item.Id)),
+                    "Every portrait declared by the active campaign must have been rendered.");
             }
             finally {Object.Destroy(owner);Object.Destroy(configuration);Object.Destroy(diagnostic);}
             yield return null;
@@ -262,6 +432,52 @@ namespace MiniGame.UnityHost.Tests
             Texture2D image = Read(source);
             try { var pixels = image.GetPixels32(); int lit = pixels.Count(p => p.r > 80 && p.r > p.g && p.g > p.b); Assert.That(lit, Is.GreaterThan(1000), "Native UI must render amber text and rows, not an empty clear color."); }
             finally { Object.Destroy(image); }
+        }
+        private static Button NativeButton(MiniGameScreen screen, string name) =>
+            screen.GetComponentsInChildren<Button>(true).Single(button => button.name == name);
+        private static void ClearTerminalFontReferences(MiniGameScreen screen)
+        {
+            foreach (var label in screen.GetComponentsInChildren<TerminalBitmapText>(true)) label.font = null;
+        }
+        private static Color[] LogicalPixels(Texture2D image, Rect topOriginRect)
+        {
+            int x = Mathf.RoundToInt(topOriginRect.x * image.width / 800f);
+            int width = Mathf.RoundToInt(topOriginRect.width * image.width / 800f);
+            int height = Mathf.RoundToInt(topOriginRect.height * image.height / 600f);
+            int y = image.height - Mathf.RoundToInt(topOriginRect.yMax * image.height / 600f);
+            return image.GetPixels(x, y, width, height);
+        }
+        private static Color TopPixel(Texture2D image, int x, int y) => image.GetPixel(
+            Mathf.FloorToInt(x * image.width / 800f), image.height - 1 - Mathf.FloorToInt(y * image.height / 600f));
+        private static void AssertButtonFill(MiniGameScreen screen, Texture2D image, Button button, Color32 expected, string reason)
+        {
+            var logical = screen.GetComponentsInChildren<RectTransform>(true).Single(rect => rect.name == "TerminalLogical800x600");
+            var rect = (RectTransform)button.transform;
+            Vector3 local = logical.InverseTransformPoint(rect.TransformPoint(new Vector3(rect.rect.xMin + 4, rect.rect.center.y)));
+            AssertColor(TopPixel(image, Mathf.RoundToInt(local.x - logical.rect.xMin),
+                Mathf.RoundToInt(logical.rect.yMax - local.y)), expected, reason);
+        }
+        private static void AssertColor(Color actual, Color32 expected, string reason)
+        {
+            Color32 bytes = actual;
+            Assert.That(Mathf.Abs(bytes.r - expected.r), Is.LessThanOrEqualTo(2), reason + " (red)");
+            Assert.That(Mathf.Abs(bytes.g - expected.g), Is.LessThanOrEqualTo(2), reason + " (green)");
+            Assert.That(Mathf.Abs(bytes.b - expected.b), Is.LessThanOrEqualTo(2), reason + " (blue)");
+        }
+        private static void AssertDarkGlyphShift(Texture2D before, Texture2D after, Rect textArea)
+        {
+            int dark = 0, shifted = 0;
+            for (int y = (int)textArea.yMin; y < textArea.yMax; y++)
+                for (int x = (int)textArea.xMin; x < textArea.xMax; x++)
+                {
+                    Color pixel = TopPixel(before, x, y);
+                    if (pixel.r > .3f || pixel.g > .3f) continue;
+                    dark++;
+                    Color next = TopPixel(after, x + 1, y + 1);
+                    if (next.r <= .3f && next.g <= .3f) shifted++;
+                }
+            Assert.That(dark, Is.GreaterThan(30), "The actual hovered roster name must have visible inverse glyph pixels.");
+            Assert.That((float)shifted / dark, Is.GreaterThan(.97f), "Pointer down must move the rendered glyph pixels right and down by one native pixel.");
         }
         private static Texture2D Read(RenderTexture source)
         { var before = RenderTexture.active; var image = new Texture2D(source.width, source.height, TextureFormat.RGBA32, false); try { RenderTexture.active = source; image.ReadPixels(new Rect(0, 0, source.width, source.height), 0, 0); image.Apply(); return image; } finally { RenderTexture.active = before; } }

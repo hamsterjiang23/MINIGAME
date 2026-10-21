@@ -1,0 +1,55 @@
+{
+  "result": "Succeeded",
+  "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "totalProps": 5,
+  "selected": [
+    {
+      "Id": "family-letter",
+      "rendererCount": 2,
+      "collider": "MeshCollider",
+      "shader": "MiniGame/Room Readable Cutout",
+      "supported": true,
+      "cutoff": 0.5,
+      "texture": "Assets/MiniGame/Generated/RoomReadables/family-letter.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaSource": "FromInput",
+      "npot": "None",
+      "sourceSizeLimit": 2048,
+      "currentDay0Readable": true,
+      "day1Readable": true
+    },
+    {
+      "Id": "daily-newspaper",
+      "rendererCount": 2,
+      "collider": "MeshCollider",
+      "shader": "MiniGame/Room Readable Cutout",
+      "supported": true,
+      "cutoff": 0.5,
+      "texture": "Assets/MiniGame/Generated/RoomReadables/daily-newspaper.png",
+      "width": 1226,
+      "height": 1283,
+      "alphaSource": "FromInput",
+      "npot": "None",
+      "sourceSizeLimit": 2048,
+      "currentDay0Readable": false,
+      "day1Readable": true
+    },
+    {
+      "Id": "employment-notice",
+      "rendererCount": 2,
+      "collider": "MeshCollider",
+      "shader": "MiniGame/Room Readable Cutout",
+      "supported": true,
+      "cutoff": 0.5,
+      "texture": "Assets/MiniGame/Generated/RoomReadables/employment-notice.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaSource": "FromInput",
+      "npot": "None",
+      "sourceSizeLimit": 2048,
+      "currentDay0Readable": true,
+      "day1Readable": true
+    }
+  ]
+}

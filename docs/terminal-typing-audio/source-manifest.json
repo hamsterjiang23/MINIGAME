@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/hamsterjiang23/MINIGAME",
+  "fetchedRef": "origin/main",
+  "fetchedCommit": "c28a44c0213172e4e464c3d9fc7027b325568c31",
+  "introducedBy": "073bdb123625f39ec8edb4b7267357648f615326",
+  "sourceAssets": [
+    {
+      "source": "Art/Audio/SFX/UIType/UIType1.wav",
+      "sha256": "d3eca03853cc22c51da11c0aecad1ace7f58286d79ebdf225cee1f7695ce58d6",
+      "bytes": 3660,
+      "format": 1,
+      "channels": 1,
+      "sampleRate": 44100,
+      "bits": 16,
+      "seconds": 0.040997732426303855
+    },
+    {
+      "source": "Art/Audio/SFX/UIType/UIType2.wav",
+      "sha256": "6c8341c55e71bbdadfd9cfc6d8f7e954a19387326c7c35a501b7b14d5a023c40",
+      "bytes": 4540,
+      "format": 1,
+      "channels": 1,
+      "sampleRate": 44100,
+      "bits": 16,
+      "seconds": 0.0509750566893424
+    },
+    {
+      "source": "Art/Audio/SFX/UIType/UIType3.wav",
+      "sha256": "6938c1994924e0c5a819b764a9df4aee675acae7d0700a67a9042f07e9a6717b",
+      "bytes": 4566,
+      "format": 1,
+      "channels": 1,
+      "sampleRate": 44100,
+      "bits": 16,
+      "seconds": 0.05126984126984127
+    },
+    {
+      "source": "Art/Audio/SFX/UIType/UIType4.wav",
+      "sha256": "22cae098bdb05e2d44dba5ce98c08244d11a1842f1a348aefa54866ec780e72c",
+      "bytes": 4742,
+      "format": 1,
+      "channels": 1,
+      "sampleRate": 44100,
+      "bits": 16,
+      "seconds": 0.05326530612244898
+    },
+    {
+      "source": "Art/Audio/SFX/OptionPopSound.wav",
+      "sha256": "d19b32e6da46f885965361a22e2dac548c08cd7309ba4e993d6f8f5e2b8e79c1",
+      "bytes": 88244,
+      "format": 1,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bits": 16,
+      "seconds": 0.5
+    }
+  ],
+  "unityImports": [
+    {
+      "source": "Art/Audio/SFX/UIType/UIType1.wav",
+      "unity": "UnityProject/Assets/MiniGame/Audio/SFX/UIType/UIType1.wav",
+      "guid": "d1902ad9bdff40bcac02a7b3763ec326",
+      "id": 17,
+      "volume": 0.18,
+      "sha256": "d3eca03853cc22c51da11c0aecad1ace7f58286d79ebdf225cee1f7695ce58d6"
+    },
+    {
+      "source": "Art/Audio/SFX/UIType/UIType2.wav",
+      "unity": "UnityProject/Assets/MiniGame/Audio/SFX/UIType/UIType2.wav",
+      "guid": "021820b964c3437e9e341a9203f7bbcd",
+      "id": 18,
+      "volume": 0.18,
+      "sha256": "6c8341c55e71bbdadfd9cfc6d8f7e954a19387326c7c35a501b7b14d5a023c40"
+    },
+    {
+      "source": "Art/Audio/SFX/UIType/UIType3.wav",
+      "unity": "UnityProject/Assets/MiniGame/Audio/SFX/UIType/UIType3.wav",
+      "guid": "ea09ea20ca764850bceeef16da23ca46",
+      "id": 19,
+      "volume": 0.18,
+      "sha256": "6938c1994924e0c5a819b764a9df4aee675acae7d0700a67a9042f07e9a6717b"
+    },
+    {
+      "source": "Art/Audio/SFX/UIType/UIType4.wav",
+      "unity": "UnityProject/Assets/MiniGame/Audio/SFX/UIType/UIType4.wav",
+      "guid": "de335580072546b988fe0b5bb8bfccf1",
+      "id": 20,
+      "volume": 0.18,
+      "sha256": "22cae098bdb05e2d44dba5ce98c08244d11a1842f1a348aefa54866ec780e72c"
+    }
+  ],
+  "sourceBytesPreserved": true,
+  "typingPool": [
+    "UIType1",
+    "UIType2",
+    "UIType3",
+    "UIType4"
+  ],
+  "optionPopSound": "Source synced; not assigned to the per-character pool.",
+  "existingPowerSounds": "TerminalPowerOn and TerminalPowerOff remain independent once-per-day sounds."
+}

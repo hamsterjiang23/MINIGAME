@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-21T01:04:31.4579979+08:00",
+  "sourceManifest": "source-manifest.json",
+  "scope": "Terminal boot and closing-console per-visible-character random audio from four supplied UIType clips.",
+  "behavior": {
+    "randomPool": [
+      "UIType1",
+      "UIType2",
+      "UIType3",
+      "UIType4"
+    ],
+    "uniformIndependentSelection": true,
+    "repeatedChoicesAllowed": true,
+    "excludedCharacters": "Whitespace and cursor blink",
+    "defaultClipVolume": 0.18,
+    "typingChannel": 14,
+    "stableSoundIds": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "bootSeconds": 7.5,
+    "loadingSeconds": 1.48,
+    "shutdownTimelineSeconds": 3.885,
+    "skippingQueuesNoOmittedCharacters": true,
+    "pauseDiscardsTypingTail": true,
+    "dailyPowerSoundsIndependent": true
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "workingDirectory": "src",
+    "restoreCommand": "dotnet restore MiniGame.sln --locked-mode",
+    "restore": "Passed",
+    "buildCommand": "dotnet build MiniGame.sln -c Release --no-restore",
+    "build": "Passed",
+    "warnings": 0,
+    "errors": 0,
+    "testCommand": "dotnet test MiniGame.sln -c Release --no-build --no-restore",
+    "corePassed": 114,
+    "presentationPassed": 218,
+    "totalPassed": 332,
+    "failed": 0,
+    "reports": [
+      "reports/core.trx",
+      "reports/presentation.trx"
+    ]
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "selectedPlayModeTests": 23,
+    "passed": 23,
+    "failed": 0,
+    "seconds": 58.1241848,
+    "report": "reports/playmode.xml",
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:/AAMINIGAME/MINIGAME\\Builds\\TerminalTypingAudio\\MiniGame.exe",
+      "unity": "2022.3.23f1c1",
+      "scenes": [
+        "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+        "Assets/MiniGame/Scenes/InspectionApartment.unity",
+        "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+      ],
+      "errors": 0,
+      "warnings": 0,
+      "seconds": 7.810804
+    },
+    "platform": "Windows x64",
+    "backend": "Mono",
+    "developmentBuild": false,
+    "changedSourceSnapshot": "reports/changed-source-snapshot.json",
+    "testedSourceHashMismatches": 0
+  },
+  "nativePlayer": {
+    "result": "Passed",
+    "detail": "Mapped UI clicks verified live nonuniform UI for at least two seconds after world exit, pause/resume and checkpoint restore, with hidden UI picking blocked; then completed six replies and final shutdown with source rendering stopped and one sound per power sequence.",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Standalone GPU native UI RenderTexture + actual CRT material; persistent source frames and UI pixels, asymmetric source-canvas markers through physical CRT shader, pause/restore, raycast isolation, power blocks and audio events",
+    "replies": 6,
+    "quota": 5,
+    "powerOnSounds": 1,
+    "powerOffSounds": 1,
+    "bootTypingSounds": 322,
+    "shutdownTypingSounds": 47,
+    "invalidTypingSounds": 0,
+    "typingVariants": 4,
+    "manualReopen": true,
+    "automaticShutdown": true,
+    "removedFunctionKeys": true,
+    "directoryPixels": true,
+    "reviewPixels": true,
+    "initiallyOff": true,
+    "middayLit": true,
+    "reopenedWithoutBoot": true,
+    "finallyDark": true,
+    "middayLiveUi": true,
+    "middaySourceUpdating": true,
+    "middayPixels": true,
+    "middayWorldPickingBlocked": true,
+    "liveAfterPause": true,
+    "liveAfterRestore": true,
+    "sourceStoppedAfterShutdown": true,
+    "orientationAfterExit": true,
+    "orientationAfterRestore": true,
+    "typingSourceObservedPlaying": true,
+    "seconds": 36.145835876464844,
+    "middayPersistenceSeconds": 2.0042572021484375
+  },
+  "nativePlayerReport": "reports/player.json",
+  "package": {
+    "path": "Builds/Deliverables/NORM-Windows-x64-Mono-TypingAudio-20261021-010327.zip",
+    "bytes": 213806107,
+    "sha256": "e334c15d94528bc06b17e222822cd9be8cf866b272b767aa9f8dc9f0fe528c34",
+    "payloadFilesVerified": 161,
+    "zipEntryHashesVerified": true,
+    "manifest": "Builds/TerminalTypingAudio/package-manifest.json"
+  },
+  "gitDiffCheck": {
+    "command": "git diff --check",
+    "exitCode": 0,
+    "log": "Artifacts/TerminalTypingAudio/diff-check.log"
+  },
+  "codeReview": "No bugs found",
+  "limits": [
+    "23 selected related PlayMode tests, not the complete Unity test suite.",
+    "An initial regression failure was an obsolete hardcoded 27-portrait assertion. Current campaign declares 22; the test now verifies every declared portrait ID and keeps GPU visibility/occlusion checks.",
+    "The native Player measured emitted character sound events and an actually playing audio source. It does not establish listener preference, speaker audibility on every device, or acoustic quality.",
+    "GitHub scene and lighting changes were not merged into this dirty worktree; only new audio source paths were restored.",
+    "OptionPopSound.wav was synced as source material and is not part of the four-clip typing pool."
+  ]
+}

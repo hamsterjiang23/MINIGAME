@@ -26,6 +26,7 @@ namespace MiniGame.UnityHost
         private YarnProject legacyProject;
         private bool terminalDemoActive;
         private bool campaignActive;
+        private RoomInteractionSettings interactionSettings;
         public GameRuntime Runtime { get; private set; }
         public MiniGameScreen Screen => screen;
         public ApartmentPlayer Player => player;
@@ -43,6 +44,19 @@ namespace MiniGame.UnityHost
         { screen = ui; player = worldPlayer; effects = presentation; yarn = bridge; }
         public void ConfigureDreams(DreamSequenceProfile profile, PlayerRebellionProfile rebellion)
         { enableDreamSequence = true; dreamProfile = profile; rebellionProfile = rebellion; }
+        public void ConfigureRoomInteractions(RoomInteractionSettings settings)
+        {
+            interactionSettings = settings;
+            ApplyRoomInteractionSettings();
+        }
+
+        private void ApplyRoomInteractionSettings()
+        {
+            if (Runtime == null) return;
+            if (interactionSettings == null)
+                interactionSettings = Resources.Load<RoomInteractionSettings>(RoomInteractionSettings.ResourcePath);
+            Runtime.ConfigureDoorLockAfterSupervisor(interactionSettings == null || interactionSettings.LockDoorAfterSupervisor);
+        }
 
         private void Awake()
         {
@@ -79,27 +93,38 @@ namespace MiniGame.UnityHost
         private void Update()
         {
             if (Runtime == null || (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning)) return;
+            ApplyRoomInteractionSettings();
+            if (screen != null && screen.PresentationToolsBlockInput) return;
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                var view = Runtime.GetView();
-                if (view.Paused) Runtime.SetPaused(false);
-                else if (screen.TryClosePropNarration()) { }
-                else if (screen.TryCloseHistory()) { }
-                else if (view.Inspection != null) Runtime.CloseInspection();
-                else Runtime.SetPaused(true);
+                HandleEscape(); return;
             }
-            if (Input.GetKeyDown(KeyCode.F5)) Save();
-            if (Input.GetKeyDown(KeyCode.F9)) Load();
+            if (!screen.PauseManualVisible && Input.GetKeyDown(KeyCode.F5)) Save();
+            if (!screen.PauseManualVisible && Input.GetKeyDown(KeyCode.F9)) Load();
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
+        }
+
+        public void HandleEscape()
+        {
+            if (Runtime == null || screen.PresentationToolsBlockInput
+                || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
+            var view = Runtime.GetView();
+            if (view.Paused) { if (!screen.TryClosePauseManual()) Runtime.SetPaused(false); }
+            else if (screen.TryClosePropNarration()) { }
+            else if (screen.TryCloseHistory()) { }
+            else if (view.Inspection != null) Runtime.CloseInspection();
+            else Runtime.SetPaused(true);
         }
 
         private void InstallRuntime(GameRuntime runtime, bool installSession = true, bool prepared = false)
         {
+            GetComponent<SupervisorDoorwayView>()?.PrepareForRuntimeChange();
             Dreams = GetComponent<DreamSequenceDirector>();
             if (!prepared && Dreams != null) Dreams.PrepareForRuntimeChange();
             var doorView = player.ViewCamera.GetComponent<DoorViewCamera>();
             if (!prepared && doorView != null) doorView.PrepareForRuntimeChange(runtime);
             Runtime = runtime;
+            ApplyRoomInteractionSettings();
             if (installSession)
             {
                 if (runtime.UsesDreamFlow) MiniGameSessionHost.Install(runtime, rules, content, dreamProfile);
@@ -111,6 +136,11 @@ namespace MiniGame.UnityHost
             Audio.Bind(runtime);
             screen.BindAudio(Audio);
             screen.Bind(runtime);
+            var roomLighting = GetComponent<RoomLightingController>();
+            if (roomLighting == null)
+                foreach (var candidate in FindObjectsOfType<RoomLightingController>())
+                    if (candidate.gameObject.scene == gameObject.scene) { roomLighting = candidate; break; }
+            screen.BindLighting(runtime, roomLighting);
             player.Bind(runtime, screen);
             effects.Bind(runtime, screen);
             var monitor = GetComponent<SelfReviewMonitor>();
@@ -124,9 +154,12 @@ namespace MiniGame.UnityHost
             if (doorView != null) doorView.Bind(runtime);
             var projection = player.ViewCamera.GetComponent<ReferenceCameraProjection>();
             if (projection != null) projection.Bind(runtime);
+            var supervisor = GetComponent<SupervisorDoorwayView>();
+            if (supervisor == null) supervisor = gameObject.AddComponent<SupervisorDoorwayView>();
+            supervisor.Bind(runtime, player, doorView);
             if (Dreams != null) Dreams.Bind(runtime, screen, player, Audio, dreamProfile);
             screen.UseYarnPresentation();
-            yarn.Bind(runtime, screen);
+            yarn.Bind(runtime, screen, supervisor);
         }
 
         public void RestoreFromSession(MiniGameSessionHost session)
@@ -134,12 +167,14 @@ namespace MiniGame.UnityHost
             rules = session.Rules; content = session.Content; dreamProfile = session.DreamProfile;
             campaignActive = terminalDemoActive = true;
             var package = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+            GetComponent<SupervisorDoorwayView>()?.PrepareForRuntimeChange();
             yarn.Configure(package.Project);
             GetComponent<DreamSequenceDirector>()?.PrepareForRuntimeChange();
             player.ViewCamera.GetComponent<DoorViewCamera>()?.PrepareForRuntimeChange(session.Runtime);
             effects.PrepareForRuntimeChange();
             session.RestoreRoomPose(player);
             InstallRuntime(session.Runtime, false, true);
+            yarn.RestoreSupervisorCheckpoint(session.SupervisorCheckpoint);
             if (Dreams != null && session.DreamCheckpoint != null) Dreams.RestoreCheckpoint(session.DreamCheckpoint);
         }
 

@@ -4,11 +4,10 @@ using UnityEngine.Rendering;
 
 namespace MiniGame.UnityHost
 {
-    /// <summary>Presentation-only ceiling haze and insects, advanced by the room controller's clock.</summary>
+    /// <summary>Presentation-only ceiling haze and floating glow particles, advanced by the room controller's clock.</summary>
     public sealed class BedtimeAtmosphere : MonoBehaviour
     {
-        private const int SwarmCount = 30;
-        private const int QuadsPerInsect = 9;
+        private const int ParticleTotal = 36;
         private const int ConeSegments = 48;
         private static readonly int StrengthId = Shader.PropertyToID("_Strength");
         private static readonly int EmitterId = Shader.PropertyToID("_EmitterWS");
@@ -27,20 +26,21 @@ namespace MiniGame.UnityHost
         private Vector3 radialForward;
         private Camera viewingCamera;
         private Mesh beamMesh;
-        private Mesh insectsMesh;
+        private Mesh particleMesh;
         private Material beamMaterial;
-        private Material insectsMaterial;
+        private Material particleMaterial;
         private MeshRenderer beamRenderer;
-        private MeshRenderer insectsRenderer;
+        private MeshRenderer particleRenderer;
         private GameObject beamObject;
-        private GameObject insectsObject;
-        private Vector3[] insectVertices;
-        private readonly Vector3[] insectPositions = new Vector3[SwarmCount];
+        private GameObject particleObject;
+        private Vector3[] particleVertices;
+        private readonly Vector3[] particlePositions = new Vector3[ParticleTotal];
         private bool initialized;
 
         public float VisualTime { get; private set; }
-        public int InsectCount => initialized ? SwarmCount : 0;
+        public int ParticleCount => initialized ? ParticleTotal : 0;
         public Renderer BeamRenderer => beamRenderer;
+        public Renderer ParticleRenderer => particleRenderer;
 
         /// <summary>World-space bed surface and ceiling emitter. Radius is the light footprint in metres.</summary>
         public void Initialize(Transform ceilingEmitter, Vector3 bedSurfaceCenter, float footprintRadius)
@@ -54,18 +54,20 @@ namespace MiniGame.UnityHost
             UpdateFrame();
 
             var beamShader = Resources.Load<Shader>("BedtimeBeam");
-            var insectShader = Resources.Load<Shader>("BedtimeInsect");
-            if (beamShader == null || insectShader == null)
+            // Keep the legacy resource filename and asset GUID so existing builds resolve the same shader asset.
+            var particleShader = Resources.Load<Shader>("BedtimeInsect");
+            if (beamShader == null || particleShader == null)
                 throw new InvalidOperationException("Bedtime atmosphere shaders are missing from MiniGame/Resources.");
             beamMaterial = new Material(beamShader) { name = "Bedtime Beam (Runtime)" };
-            insectsMaterial = new Material(insectShader) { name = "Bedtime Insects (Runtime)" };
+            particleMaterial = new Material(particleShader) { name = "Bedtime GlowParticles (Runtime)" };
             beamObject = CreateRenderer("BedtimeCeilingHaze", beamMaterial, out beamRenderer);
-            insectsObject = CreateRenderer("BedtimeFlyingInsects", insectsMaterial, out insectsRenderer);
+            particleObject = CreateRenderer("BedtimeGlowParticles", particleMaterial, out particleRenderer);
             BuildCone();
-            BuildInsects();
+            BuildParticles();
             beamObject.GetComponent<MeshFilter>().sharedMesh = beamMesh;
-            insectsObject.GetComponent<MeshFilter>().sharedMesh = insectsMesh;
+            particleObject.GetComponent<MeshFilter>().sharedMesh = particleMesh;
             initialized = true;
+            BindRenderingCamera();
             SetVisualState(0, 0, true);
         }
 
@@ -76,9 +78,9 @@ namespace MiniGame.UnityHost
             float amount = Mathf.Clamp01(strength);
             bool visible = amount > .0001f;
             beamRenderer.enabled = visible;
-            insectsRenderer.enabled = visible;
+            particleRenderer.enabled = visible;
             beamMaterial.SetFloat(StrengthId, amount);
-            insectsMaterial.SetFloat(StrengthId, amount);
+            particleMaterial.SetFloat(StrengthId, amount);
             if (!visible) return;
 
             if (!paused && deltaSeconds > 0 && !float.IsInfinity(deltaSeconds) && !float.IsNaN(deltaSeconds))
@@ -95,13 +97,13 @@ namespace MiniGame.UnityHost
             beamMaterial.SetFloat(HeightId, height);
             beamMaterial.SetFloat(RadiusId, radius);
             beamMaterial.SetFloat(VisualTimeId, VisualTime);
-            UpdateInsects();
+            UpdateParticles();
         }
 
-        public Vector3 GetInsectPosition(int index)
+        public Vector3 GetParticlePosition(int index)
         {
-            if (index < 0 || index >= InsectCount) throw new ArgumentOutOfRangeException(nameof(index));
-            return insectPositions[index];
+            if (index < 0 || index >= ParticleCount) throw new ArgumentOutOfRangeException(nameof(index));
+            return particlePositions[index];
         }
 
         private void UpdateFrame()
@@ -157,94 +159,68 @@ namespace MiniGame.UnityHost
             beamMesh.RecalculateBounds();
         }
 
-        private void BuildInsects()
+        private void BuildParticles()
         {
-            insectsMesh = new Mesh { name = "Bedtime Winged Swarm" };
-            insectsMesh.MarkDynamic();
-            int quadCount = SwarmCount * QuadsPerInsect;
-            insectVertices = new Vector3[quadCount * 4];
-            var uv = new Vector2[quadCount * 4];
-            var colors = new Color[quadCount * 4];
-            var triangles = new int[quadCount * 6];
-            for (int q = 0; q < quadCount; q++)
+            particleMesh = new Mesh { name = "Bedtime GlowParticles" };
+            particleMesh.MarkDynamic();
+            particleVertices = new Vector3[ParticleTotal * 4];
+            var uv = new Vector2[ParticleTotal * 4];
+            var colors = new Color[ParticleTotal * 4];
+            var triangles = new int[ParticleTotal * 6];
+            for (int q = 0; q < ParticleTotal; q++)
             {
                 int v = q * 4;
                 uv[v] = new Vector2(-1, -1); uv[v + 1] = new Vector2(1, -1);
                 uv[v + 2] = new Vector2(1, 1); uv[v + 3] = new Vector2(-1, 1);
-                bool wing = q % QuadsPerInsect == 1 || q % QuadsPerInsect == 2;
-                var tint = wing ? new Color(.48f, .46f, .37f, .72f) : new Color(.17f, .15f, .10f, .92f);
+                var tint = Color.Lerp(new Color(1, .95f, .84f), new Color(1, .98f, .91f), Seed(q, 6));
+                tint.a = Mathf.Lerp(.25f, .44f, Seed(q, 8));
                 for (int c = 0; c < 4; c++) colors[v + c] = tint;
                 int t = q * 6;
                 triangles[t] = v; triangles[t + 1] = v + 1; triangles[t + 2] = v + 2;
                 triangles[t + 3] = v; triangles[t + 4] = v + 2; triangles[t + 5] = v + 3;
             }
-            insectsMesh.vertices = insectVertices;
-            insectsMesh.uv = uv;
-            insectsMesh.colors = colors;
-            insectsMesh.triangles = triangles;
-            UpdateInsects();
+            particleMesh.vertices = particleVertices;
+            particleMesh.uv = uv;
+            particleMesh.colors = colors;
+            particleMesh.triangles = triangles;
+            UpdateParticles();
         }
 
-        private void UpdateInsects()
+        private void UpdateParticles(Camera camera = null)
         {
             if (viewingCamera == null || !viewingCamera.isActiveAndEnabled) viewingCamera = Camera.main;
-            Vector3 cameraForward = viewingCamera != null ? viewingCamera.transform.forward : Vector3.forward;
-            Vector3 cameraUp = viewingCamera != null ? viewingCamera.transform.up : Vector3.up;
-            for (int i = 0; i < SwarmCount; i++)
+            var facingCamera = camera != null ? camera : viewingCamera;
+            Vector3 cameraRight = facingCamera != null ? facingCamera.transform.right : Vector3.right;
+            Vector3 cameraUp = facingCamera != null ? facingCamera.transform.up : Vector3.up;
+            for (int i = 0; i < ParticleTotal; i++)
             {
-                Vector3 p = FlightPosition(i, VisualTime);
-                insectPositions[i] = p;
-                Vector3 velocity = FlightPosition(i, VisualTime + .015f) - p;
-                Vector3 bodyAxis = Vector3.ProjectOnPlane(velocity, cameraForward).normalized;
-                if (bodyAxis.sqrMagnitude < .1f) bodyAxis = cameraUp;
-                Vector3 side = Vector3.Cross(cameraForward, bodyAxis).normalized;
-                float size = Mathf.Lerp(.014f, .035f, Seed(i, 7));
-                float wingSpread = .28f + .72f * Mathf.Abs(Mathf.Sin(VisualTime * (31 + 13 * Seed(i, 3)) + i * 2.31f));
-                int quad = i * QuadsPerInsect;
-                SetQuad(quad, p, side * size * .075f, bodyAxis * size * .26f);
-                for (int wing = 0; wing < 2; wing++)
-                {
-                    float sign = wing == 0 ? -1 : 1;
-                    Vector3 direction = (side * sign * wingSpread + bodyAxis * .30f).normalized;
-                    Vector3 cross = Vector3.Cross(cameraForward, direction).normalized;
-                    Vector3 center = p + direction * size * .22f;
-                    SetQuad(quad + 1 + wing, center, cross * size * .11f, direction * size * .23f);
-                }
-                // Three pairs of fine legs keep close silhouettes insect-like, without particle streaks.
-                for (int leg = 0; leg < 6; leg++)
-                {
-                    float sign = leg % 2 == 0 ? -1 : 1;
-                    float offset = (leg / 2 - 1) * .15f;
-                    Vector3 from = p + bodyAxis * size * offset;
-                    Vector3 to = from + side * sign * size * .23f - bodyAxis * size * (.10f - offset);
-                    Vector3 legAxis = (to - from) * .5f;
-                    Vector3 legWidth = Vector3.Cross(cameraForward, legAxis).normalized * size * .009f;
-                    SetQuad(quad + 3 + leg, (from + to) * .5f, legWidth, legAxis);
-                }
+                Vector3 position = DriftPosition(i, VisualTime);
+                particlePositions[i] = position;
+                float halfSize = Mathf.Lerp(.0075f, .015f, Seed(i, 7));
+                SetQuad(i, position, cameraRight * halfSize, cameraUp * halfSize);
             }
-            insectsMesh.vertices = insectVertices;
-            insectsMesh.RecalculateBounds();
+            particleMesh.vertices = particleVertices;
+            particleMesh.RecalculateBounds();
         }
 
-        private Vector3 FlightPosition(int index, float seconds)
+        private Vector3 DriftPosition(int index, float seconds)
         {
             float phase = Seed(index, 1) * Mathf.PI * 2;
-            float t = seconds * Mathf.Lerp(.62f, 1.42f, Seed(index, 2));
-            float h = Mathf.Clamp(.38f + .36f * Seed(index, 4) + .09f * Mathf.Sin(t * .79f + phase)
-                + .028f * Mathf.Sin(t * 3.7f + phase * 1.3f), .24f, .86f);
-            float x = .51f * Mathf.Sin(t * 1.13f + phase) + .20f * Mathf.Sin(t * 3.9f + phase * 2.7f);
-            float z = .49f * Mathf.Cos(t * .91f + phase * 1.6f) + .19f * Mathf.Sin(t * 4.7f + phase * .7f);
-            float orbit = radius * h * Mathf.Lerp(.52f, .91f, Seed(index, 5));
+            float t = seconds * Mathf.Lerp(.16f, .28f, Seed(index, 2));
+            float h = Mathf.Clamp(.31f + .44f * Seed(index, 4) + .035f * Mathf.Sin(t * .58f + phase), .24f, .86f);
+            float x = .48f * Mathf.Sin(t * .64f + phase) + .14f * Mathf.Sin(t * .29f + phase * 2.7f);
+            float z = .44f * Mathf.Cos(t * .53f + phase * 1.6f) + .15f * Mathf.Sin(t * .33f + phase * .7f);
+            float orbit = radius * h * Mathf.Lerp(.62f, .95f, Seed(index, 5));
             return origin + axis * (height * h) + radialRight * (x * orbit) + radialForward * (z * orbit);
         }
 
         private void SetQuad(int quad, Vector3 center, Vector3 halfWidth, Vector3 halfHeight)
         {
             int first = quad * 4;
-            insectVertices[first] = transform.InverseTransformPoint(center - halfWidth - halfHeight);
-            insectVertices[first + 1] = transform.InverseTransformPoint(center + halfWidth - halfHeight);
-            insectVertices[first + 2] = transform.InverseTransformPoint(center + halfWidth + halfHeight);
-            insectVertices[first + 3] = transform.InverseTransformPoint(center - halfWidth + halfHeight);
+            particleVertices[first] = transform.InverseTransformPoint(center - halfWidth - halfHeight);
+            particleVertices[first + 1] = transform.InverseTransformPoint(center + halfWidth - halfHeight);
+            particleVertices[first + 2] = transform.InverseTransformPoint(center + halfWidth + halfHeight);
+            particleVertices[first + 3] = transform.InverseTransformPoint(center - halfWidth + halfHeight);
         }
 
         private static float Seed(int index, int channel)
@@ -255,19 +231,35 @@ namespace MiniGame.UnityHost
             return (value & 0x00ffffffu) / 16777215f;
         }
 
-        private void OnDestroy() => ReleaseOwnedResources();
+        private void OnEnable() => BindRenderingCamera();
+        private void OnDisable() => Camera.onPreCull -= FaceRenderingCamera;
+        private void BindRenderingCamera()
+        {
+            Camera.onPreCull -= FaceRenderingCamera;
+            if (initialized && isActiveAndEnabled) Camera.onPreCull += FaceRenderingCamera;
+        }
+        private void FaceRenderingCamera(Camera camera)
+        {
+            if (!initialized || !isActiveAndEnabled || particleRenderer == null || !particleRenderer.enabled || camera == null
+                || (camera.cullingMask & (1 << particleObject.layer)) == 0) return;
+            // Orient for the actual render camera, including Scene/capture cameras. Rendering never advances VisualTime.
+            UpdateParticles(camera);
+        }
+        private void OnDestroy() { Camera.onPreCull -= FaceRenderingCamera; ReleaseOwnedResources(); }
 
         private void ReleaseOwnedResources()
         {
+            Camera.onPreCull -= FaceRenderingCamera;
             initialized = false;
             if (beamRenderer != null) beamRenderer.enabled = false;
-            if (insectsRenderer != null) insectsRenderer.enabled = false;
-            DestroyOwned(beamObject); DestroyOwned(insectsObject);
-            DestroyOwned(beamMesh); DestroyOwned(insectsMesh);
-            DestroyOwned(beamMaterial); DestroyOwned(insectsMaterial);
-            beamObject = null; insectsObject = null;
-            beamMesh = null; insectsMesh = null;
-            beamMaterial = null; insectsMaterial = null;
+            if (particleRenderer != null) particleRenderer.enabled = false;
+            DestroyOwned(beamObject); DestroyOwned(particleObject);
+            DestroyOwned(beamMesh); DestroyOwned(particleMesh);
+            DestroyOwned(beamMaterial); DestroyOwned(particleMaterial);
+            beamObject = null; particleObject = null;
+            beamMesh = null; particleMesh = null;
+            beamMaterial = null; particleMaterial = null;
+            viewingCamera = null;
         }
 
         private static void DestroyOwned(UnityEngine.Object value)

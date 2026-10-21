@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539d1a0ef057eee49be2da02b1a9cedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Typeface: {fileID: 12800000, guid: 440f83b51e28c474980344a00764d2f6, type: 3}
+  Glyphs: {fileID: 11400000, guid: 4a8ec10f085c1b34b97a1cbd6b706da4, type: 2}
   Ward: {fileID: 2800000, guid: 6a41dc6751bfddc4c8f0361a5dcf2d5b, type: 3}
   GlowLine: {fileID: 2800000, guid: d43bd2c370dfcbb4abb06468aa28a458, type: 3}
   GlowDot: {fileID: 2800000, guid: 8c065de3230e02e43bbfd12cc7cf1872, type: 3}
@@ -54,7 +54,7 @@ MonoBehaviour:
   ShowOverlay: 1
   QuotaDisplay: 05
   CrtMode: 1
-  SourceLayer: 27
+  SourceLayer: 31
   EnterRequested:
     m_PersistentCalls:
       m_Calls: []

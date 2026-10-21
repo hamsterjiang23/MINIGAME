@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-21",
+  "scope": "Supervisor workbook import, exact source portraits, native Yarn presentation, pause/save/restore, doorway and Day0/campaign regressions",
+  "sourceManifest": "source-manifest.json",
+  "importSmoke": "reports/import-smoke.json",
+  "compile": "reports/compile.json",
+  "python": {
+    "command": "python Tools/DialogueCampaign/test_supervisor.py",
+    "passed": 5,
+    "failed": 0,
+    "report": "reports/python-tests.log"
+  },
+  "playMode": [
+    {
+      "report": "reports/supervisor-playmode.json",
+      "status": "completed",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 8.98
+    },
+    {
+      "report": "reports/doorway-regression.json",
+      "status": "completed",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 3.87
+    },
+    {
+      "report": "reports/opening-regression.json",
+      "status": "completed",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 15.22
+    },
+    {
+      "report": "reports/campaign-regression.json",
+      "status": "completed",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 135.14
+    }
+  ],
+  "sourceCopies": "reports/source-copy-verification.json",
+  "review": {
+    "result": "CLEAN",
+    "fixedFinding": "Bind ReferenceCameraProjection before supervisor to preserve ending camera FOV on restore."
+  },
+  "limitations": [
+    "Native end-to-end gameplay and screenshots were checked in Editor PlayMode. The packaged player receives a separate startup smoke, not a second full campaign playthrough."
+  ]
+}

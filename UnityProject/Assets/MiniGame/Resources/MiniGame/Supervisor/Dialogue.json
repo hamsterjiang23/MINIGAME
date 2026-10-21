@@ -1,0 +1,423 @@
+{
+  "revision": "supervisor-v1:33174f1f81d31ad36675fa59649f2cff7d288da43a0acf4fd03f85d4003f64bb",
+  "conversations": [
+    {
+      "day": 1,
+      "morningCount": 14,
+      "lines": [
+        {
+          "id": "P02_D1_R1_COMMON_001",
+          "day": 1,
+          "text": "你就是新来的审查员？",
+          "next": "P02_D1_R1_COMMON_002",
+          "portraitId": "JD_01",
+          "sourceRow": 2
+        },
+        {
+          "id": "P02_D1_R1_COMMON_002",
+          "day": 1,
+          "text": "现在他们招人的标准都这么低了吗？",
+          "next": "P02_D1_R1_COMMON_003",
+          "portraitId": "JD_01",
+          "sourceRow": 3
+        },
+        {
+          "id": "P02_D1_R1_COMMON_003",
+          "day": 1,
+          "text": "哈哈哈哈哈，你这是什么表情？",
+          "next": "P02_D1_R1_COMMON_004",
+          "portraitId": "JD_03",
+          "sourceRow": 4
+        },
+        {
+          "id": "P02_D1_R1_COMMON_004",
+          "day": 1,
+          "text": "别介意嘛，开个小玩笑。",
+          "next": "P02_D1_R1_COMMON_005",
+          "portraitId": "JD_03",
+          "sourceRow": 5
+        },
+        {
+          "id": "P02_D1_R1_COMMON_005",
+          "day": 1,
+          "text": "你应该很清楚每天的工作流程吧？",
+          "next": "P02_D1_R1_COMMON_006",
+          "portraitId": "JD_01",
+          "sourceRow": 6
+        },
+        {
+          "id": "P02_D1_R1_COMMON_006",
+          "day": 1,
+          "text": "总之，就是好好教育一下那些社会的蛀虫们。",
+          "next": "P02_D1_R1_COMMON_007",
+          "portraitId": "JD_01",
+          "sourceRow": 7
+        },
+        {
+          "id": "P02_D1_R1_COMMON_007",
+          "day": 1,
+          "text": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
+          "next": "P02_D1_R1_COMMON_008",
+          "portraitId": "JD_01",
+          "sourceRow": 8
+        },
+        {
+          "id": "P02_D1_R1_COMMON_008",
+          "day": 1,
+          "text": "实在没法教育的，就直接选择“净化”吧，让他们去建设我们的伟大祖国。",
+          "next": "P02_D1_R1_COMMON_009",
+          "portraitId": "JD_01",
+          "sourceRow": 9
+        },
+        {
+          "id": "P02_D1_R1_COMMON_009",
+          "day": 1,
+          "text": "对了，还有个释放按钮。那个按钮能点击的前提是，经过你的教育，仪器检测到他们悔改了。",
+          "next": "P02_D1_R1_COMMON_010",
+          "portraitId": "JD_01",
+          "sourceRow": 10
+        },
+        {
+          "id": "P02_D1_R1_COMMON_010",
+          "day": 1,
+          "text": "要我说，还是别释放他们吧，好不容易抓进来你又给放了，这不是打上头的脸吗？",
+          "next": "P02_D1_R1_COMMON_011",
+          "portraitId": "JD_03",
+          "sourceRow": 11
+        },
+        {
+          "id": "P02_D1_R1_COMMON_011",
+          "day": 1,
+          "text": "我每天都会来看望你的，这样你就不会太孤单了嘛。",
+          "next": "P02_D1_R1_COMMON_012",
+          "portraitId": "JD_03",
+          "sourceRow": 12
+        },
+        {
+          "id": "P02_D1_R1_COMMON_012",
+          "day": 1,
+          "text": "好了，检测时间到。",
+          "next": "P02_D1_R1_COMMON_013",
+          "portraitId": "JD_01",
+          "sourceRow": 13
+        },
+        {
+          "id": "P02_D1_R1_COMMON_013",
+          "day": 1,
+          "text": "身为公务员，你一定能通过仪器检测吧？",
+          "next": "P02_D1_R1_COMMON_014",
+          "portraitId": "JD_01",
+          "sourceRow": 14
+        },
+        {
+          "id": "P02_D1_R1_COMMON_014",
+          "day": 1,
+          "text": "这玩意真方便，以前抓人还需要证据，现在让他扫一下就行了。",
+          "next": "P02_D1_R1_COMMON_015",
+          "portraitId": "JD_04",
+          "sourceRow": 15
+        },
+        {
+          "id": "P02_D1_R1_COMMON_015",
+          "day": 1,
+          "text": "不错嘛，你通过了检测。",
+          "next": "P02_D1_R1_COMMON_016",
+          "portraitId": "JD_05",
+          "sourceRow": 16
+        },
+        {
+          "id": "P02_D1_R1_COMMON_016",
+          "day": 1,
+          "text": "好好干，我还会再来的。",
+          "next": "",
+          "portraitId": "JD_05",
+          "sourceRow": 17
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "morningCount": 10,
+      "lines": [
+        {
+          "id": "P02_D2_R1_COMMON_001",
+          "day": 2,
+          "text": "又见面了。",
+          "next": "P02_D2_R1_COMMON_002",
+          "portraitId": "JD_01",
+          "sourceRow": 18
+        },
+        {
+          "id": "P02_D2_R1_COMMON_002",
+          "day": 2,
+          "text": "据我所知，你的活干的还不错嘛。",
+          "next": "P02_D2_R1_COMMON_003",
+          "portraitId": "JD_03",
+          "sourceRow": 19
+        },
+        {
+          "id": "P02_D2_R1_COMMON_003",
+          "day": 2,
+          "text": "让我听那些蛀虫说话，我可没那么多耐心。",
+          "next": "P02_D2_R1_COMMON_004",
+          "portraitId": "JD_03",
+          "sourceRow": 20
+        },
+        {
+          "id": "P02_D2_R1_COMMON_004",
+          "day": 2,
+          "text": "喂，我说。",
+          "next": "P02_D2_R1_COMMON_005",
+          "portraitId": "JD_01",
+          "sourceRow": 21
+        },
+        {
+          "id": "P02_D2_R1_COMMON_005",
+          "day": 2,
+          "text": "他们说的话，你不会真听了吧？",
+          "next": "P02_D2_R1_COMMON_006",
+          "portraitId": "JD_02",
+          "sourceRow": 22
+        },
+        {
+          "id": "P02_D2_R1_COMMON_006",
+          "day": 2,
+          "text": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+          "next": "P02_D2_R1_COMMON_007",
+          "portraitId": "JD_02",
+          "sourceRow": 23
+        },
+        {
+          "id": "P02_D2_R1_COMMON_007",
+          "day": 2,
+          "text": "他自然也成为了里面的一员。",
+          "next": "P02_D2_R1_COMMON_008",
+          "portraitId": "JD_03",
+          "sourceRow": 24
+        },
+        {
+          "id": "P02_D2_R1_COMMON_008",
+          "day": 2,
+          "text": "如果你不想重蹈覆辙，那我劝你少搭理他们。",
+          "next": "P02_D2_R1_COMMON_009",
+          "portraitId": "JD_03",
+          "sourceRow": 25
+        },
+        {
+          "id": "P02_D2_R1_COMMON_009",
+          "day": 2,
+          "text": "闲聊就到这吧。",
+          "next": "P02_D2_R1_COMMON_010",
+          "portraitId": "JD_03",
+          "sourceRow": 26
+        },
+        {
+          "id": "P02_D2_R1_COMMON_010",
+          "day": 2,
+          "text": "让我看看你是不是真的过关。",
+          "next": "P02_D2_R1_COMMON_011",
+          "portraitId": "JD_05",
+          "sourceRow": 27
+        },
+        {
+          "id": "P02_D2_R1_COMMON_011",
+          "day": 2,
+          "text": "不错嘛。",
+          "next": "P02_D2_R1_COMMON_012",
+          "portraitId": "JD_04",
+          "sourceRow": 28
+        },
+        {
+          "id": "P02_D2_R1_COMMON_012",
+          "day": 2,
+          "text": "你最好继续保持。",
+          "next": "",
+          "portraitId": "JD_04",
+          "sourceRow": 29
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "morningCount": 9,
+      "lines": [
+        {
+          "id": "P02_D3_R1_COMMON_001",
+          "day": 3,
+          "text": "我又来了。",
+          "next": "P02_D3_R1_COMMON_002",
+          "portraitId": "JD_01",
+          "sourceRow": 30
+        },
+        {
+          "id": "P02_D3_R1_COMMON_002",
+          "day": 3,
+          "text": "你还真是厉害啊。",
+          "next": "P02_D3_R1_COMMON_003",
+          "portraitId": "JD_01",
+          "sourceRow": 31
+        },
+        {
+          "id": "P02_D3_R1_COMMON_003",
+          "day": 3,
+          "text": "我们都在关注你，搞不好你很快就能升职了。",
+          "next": "P02_D3_R1_COMMON_004",
+          "portraitId": "JD_01",
+          "sourceRow": 32
+        },
+        {
+          "id": "P02_D3_R1_COMMON_004",
+          "day": 3,
+          "text": "开玩笑的。",
+          "next": "P02_D3_R1_COMMON_005",
+          "portraitId": "JD_03",
+          "sourceRow": 33
+        },
+        {
+          "id": "P02_D3_R1_COMMON_005",
+          "day": 3,
+          "text": "你还真信了？",
+          "next": "P02_D3_R1_COMMON_006",
+          "portraitId": "JD_03",
+          "sourceRow": 34
+        },
+        {
+          "id": "P02_D3_R1_COMMON_006",
+          "day": 3,
+          "text": "路要一步一步走，孩子。",
+          "next": "P02_D3_R1_COMMON_007",
+          "portraitId": "JD_03",
+          "sourceRow": 35
+        },
+        {
+          "id": "P02_D3_R1_COMMON_007",
+          "day": 3,
+          "text": "升职可没那么容易，更没那么快。",
+          "next": "P02_D3_R1_COMMON_008",
+          "portraitId": "JD_03",
+          "sourceRow": 36
+        },
+        {
+          "id": "P02_D3_R1_COMMON_008",
+          "day": 3,
+          "text": "顺带一提，你刚才的表情也被我记录下来了。",
+          "next": "P02_D3_R1_COMMON_009",
+          "portraitId": "JD_01",
+          "sourceRow": 37
+        },
+        {
+          "id": "P02_D3_R1_COMMON_009",
+          "day": 3,
+          "text": "好了，笑一个。",
+          "next": "P02_D3_R1_COMMON_010",
+          "portraitId": "JD_04",
+          "sourceRow": 38
+        },
+        {
+          "id": "P02_D3_R1_COMMON_010",
+          "day": 3,
+          "text": "哦哦，你又一次通过了啊。",
+          "next": "P02_D3_R1_COMMON_011",
+          "portraitId": "JD_05",
+          "sourceRow": 39
+        },
+        {
+          "id": "P02_D3_R1_COMMON_011",
+          "day": 3,
+          "text": "明天也许就没那么好运了。",
+          "next": "P02_D4_R1_COMMON_002",
+          "portraitId": "JD_05",
+          "sourceRow": 40
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "morningCount": 0,
+      "lines": [
+        {
+          "id": "P02_D4_R1_COMMON_001",
+          "day": 4,
+          "text": "惊——喜。",
+          "next": "P02_D4_R1_COMMON_002",
+          "portraitId": "JD_06",
+          "sourceRow": 41
+        },
+        {
+          "id": "P02_D4_R1_COMMON_002",
+          "day": 4,
+          "text": "做过什么你自己清楚。",
+          "next": "P02_D4_R1_COMMON_003",
+          "portraitId": "JD_06",
+          "sourceRow": 42
+        },
+        {
+          "id": "P02_D4_R1_COMMON_003",
+          "day": 4,
+          "text": "看来你要跟我走一趟了。",
+          "next": "P02_D4_R1_COMMON_004",
+          "portraitId": "JD_06",
+          "sourceRow": 43
+        },
+        {
+          "id": "P02_D4_R1_COMMON_004",
+          "day": 4,
+          "text": "进去之后，记得好好表现。",
+          "next": "P02_D4_R1_COMMON_005",
+          "portraitId": "JD_06",
+          "sourceRow": 44
+        },
+        {
+          "id": "P02_D4_R1_COMMON_005",
+          "day": 4,
+          "text": "也许就不会那么早迎来净化。",
+          "next": "P02_D4_R1_COMMON_006",
+          "portraitId": "JD_06",
+          "sourceRow": 45
+        },
+        {
+          "id": "P02_D4_R1_COMMON_006",
+          "day": 4,
+          "text": "我们之间也能多玩一会，不是吗？",
+          "next": "P02_D4_R1_COMMON_007",
+          "portraitId": "JD_06",
+          "sourceRow": 46
+        },
+        {
+          "id": "P02_D4_R1_COMMON_007",
+          "day": 4,
+          "text": "走吧。",
+          "next": "",
+          "portraitId": "JD_06",
+          "sourceRow": 47
+        }
+      ]
+    }
+  ],
+  "portraits": [
+    {
+      "id": "JD_01",
+      "description": "猥琐的站着"
+    },
+    {
+      "id": "JD_02",
+      "description": "露出愤怒的表情"
+    },
+    {
+      "id": "JD_03",
+      "description": "咧嘴笑"
+    },
+    {
+      "id": "JD_04",
+      "description": "拿起仪器"
+    },
+    {
+      "id": "JD_05",
+      "description": "仪器亮起绿灯"
+    },
+    {
+      "id": "JD_06",
+      "description": "仪器亮起红灯"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ namespace MiniGame.UnityHost
         [SerializeField] private HingedDoor door;
         [SerializeField] private ApartmentPlayer player;
         [SerializeField, InspectorName("门内对齐点")] private Transform insidePose;
-        [SerializeField, InspectorName("门外观察点")] private Transform outsidePose;
+        [SerializeField, InspectorName("门口观察点")] private Transform outsidePose;
         [SerializeField, Min(.01f), InspectorName("定位时长（秒）")] private float alignSeconds = .65f;
         [SerializeField, Min(.01f), InspectorName("推进时长（秒）")] private float pushSeconds = .9f;
         [SerializeField, Min(.01f), InspectorName("返回时长（秒）")] private float returnSeconds = 1.1f;
@@ -144,8 +144,14 @@ namespace MiniGame.UnityHost
                 ApplyPose(insidePose.position, insidePose.rotation);
                 if (!door.IsMoving)
                 {
-                    Phase = DoorCameraPhase.Pushing; elapsed = 0;
-                    sourcePosition = insidePose.position; sourceRotation = insidePose.rotation;
+                    if (Vector3.SqrMagnitude(outsidePose.position - insidePose.position) < .000001f
+                        && Quaternion.Angle(outsidePose.rotation, insidePose.rotation) < .01f)
+                        FinishEntry();
+                    else
+                    {
+                        Phase = DoorCameraPhase.Pushing; elapsed = 0;
+                        sourcePosition = insidePose.position; sourceRotation = insidePose.rotation;
+                    }
                 }
             }
             else if (Phase == DoorCameraPhase.Pushing)
@@ -153,16 +159,19 @@ namespace MiniGame.UnityHost
                 MoveTo(outsidePose.position, outsidePose.rotation, pushSeconds);
                 if (elapsed >= Duration(pushSeconds))
                 {
-                    ApplyPose(outsidePose.position, outsidePose.rotation);
-                    Phase = DoorCameraPhase.Viewing;
-                    door.MotionCompletionBlocked = false;
+                    FinishEntry();
                 }
             }
             else if (Phase == DoorCameraPhase.Returning)
             {
-                // Retrace through the doorway before restoring the original room pose.
+                // A threshold hold has no outward leg to retrace before returning to the room.
                 float progress = Mathf.Clamp01(elapsed / Duration(returnSeconds));
-                if (progress < .5f)
+                if (Vector3.SqrMagnitude(sourcePosition - insidePose.position) < .000001f)
+                {
+                    float p = Smooth(progress);
+                    ApplyPose(Vector3.Lerp(sourcePosition, roomPosition, p), Quaternion.Slerp(sourceRotation, roomRotation, p));
+                }
+                else if (progress < .5f)
                 {
                     float p = Smooth(progress * 2);
                     ApplyPose(Vector3.Lerp(sourcePosition, insidePose.position, p), Quaternion.Slerp(sourceRotation, insidePose.rotation, p));
@@ -180,6 +189,13 @@ namespace MiniGame.UnityHost
                     runtime.CompleteCue(token);
                 }
             }
+        }
+
+        private void FinishEntry()
+        {
+            ApplyPose(outsidePose.position, outsidePose.rotation);
+            Phase = DoorCameraPhase.Viewing;
+            door.MotionCompletionBlocked = false;
         }
 
         private void MoveTo(Vector3 destination, Quaternion rotation, float seconds)

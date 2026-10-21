@@ -41,6 +41,9 @@ namespace MiniGame.Presentation.Authoring
         [JsonProperty("startNode", Required = Required.Always)] public string StartNode { get; set; } = "";
         [JsonProperty("endNode", Required = Required.Always)] public string EndNode { get; set; } = "";
         [JsonProperty("yarnSource", Required = Required.Always)] public string YarnSource { get; set; } = "";
+        [JsonProperty("specialRoundStartNode", NullValueHandling = NullValueHandling.Ignore)] public string? SpecialRoundStartNode { get; set; }
+        [JsonProperty("specialTrustThreshold", NullValueHandling = NullValueHandling.Ignore)] public int? SpecialTrustThreshold { get; set; }
+        [JsonProperty("releaseThreshold", NullValueHandling = NullValueHandling.Ignore)] public int? ReleaseThreshold { get; set; }
     }
 
     /// <summary>Original text remains canonical; only the presentation wording changes when the historical fact is absent.</summary>

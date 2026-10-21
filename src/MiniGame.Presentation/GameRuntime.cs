@@ -39,6 +39,24 @@ namespace MiniGame.Presentation
         public event Action<RuntimeView>? Changed;
         public bool IsCampaign => _rules.StartDay == 0;
         public bool UsesDreamFlow => _rules.DreamFlowEnabled;
+        public bool LockDoorAfterSupervisor { get; private set; }
+        public bool IsDoorLockedAfterSupervisor
+        {
+            get
+            {
+                var game = _session.GetPlayerView();
+                return LockDoorAfterSupervisor && game.Day > 0
+                    && (game.Phase == GamePhase.Apartment || game.Phase == GamePhase.Work);
+            }
+        }
+
+        /// <summary>Applies the host's global door policy without changing campaign or saved progress.</summary>
+        public void ConfigureDoorLockAfterSupervisor(bool enabled)
+        {
+            if (LockDoorAfterSupervisor == enabled) return;
+            LockDoorAfterSupervisor = enabled;
+            Accept();
+        }
 
         public GameRuntime(GameRules rules, IGameContent content, bool useTerminalDirectory = false)
             : this(new GameSession(rules), rules, content, useTerminalDirectory) { }
@@ -211,6 +229,7 @@ namespace MiniGame.Presentation
             if (view.Input != InputContext.World) return Reject("InputLocked");
             if (view.Game.Phase != GamePhase.MorningInspection && view.Game.Phase != GamePhase.Apartment
                 && view.Game.Phase != GamePhase.Work) return Reject("InteractionUnavailable");
+            if (!_roomDoorOpen && IsDoorLockedAfterSupervisor) return Reject("DoorLockedAfterSupervisor");
             _roomDoorOpen = !_roomDoorOpen;
             SetCue(PresentationKind.DoorMotion);
             return Accept();
@@ -222,6 +241,7 @@ namespace MiniGame.Presentation
             if (view.Input != InputContext.World) return Reject("InputLocked");
             if (view.Game.Phase != GamePhase.MorningInspection && view.Game.Phase != GamePhase.Apartment
                 && view.Game.Phase != GamePhase.Work) return Reject("InteractionUnavailable");
+            if (!_roomDoorOpen && IsDoorLockedAfterSupervisor) return Reject("DoorLockedAfterSupervisor");
             _doorViewActive = true;
             _roomDoorOpen = true;
             SetCue(PresentationKind.DoorMotion);
@@ -717,7 +737,9 @@ namespace MiniGame.Presentation
             if (view.Phase == GamePhase.MorningInspection) return new[] { InteractionTarget.Door };
             if (view.Phase == GamePhase.SelfReview && UsesDreamFlow) return new[] { InteractionTarget.Computer };
             if (view.Phase == GamePhase.Apartment || (view.Phase == GamePhase.Work && !_terminalOpen))
-                return new[] { InteractionTarget.Computer, InteractionTarget.Door };
+                return IsDoorLockedAfterSupervisor && !_roomDoorOpen
+                    ? new[] { InteractionTarget.Computer }
+                    : new[] { InteractionTarget.Computer, InteractionTarget.Door };
             if (view.Phase == GamePhase.Evening || view.Phase == GamePhase.AfterDream)
                 return new[] { InteractionTarget.Bed };
             return Array.Empty<InteractionTarget>();

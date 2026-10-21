@@ -164,6 +164,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(guidance.Spotlight.enabled, Is.True);
 
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
+            float sleepDeadline = Time.realtimeSinceStartup + 6;
+            while (host.Runtime.GetView().Game.Day == 0 && Time.realtimeSinceStartup < sleepDeadline) yield return null;
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
             float deadline = Time.realtimeSinceStartup + 4;
             while (guidance.OwnsLighting && Time.realtimeSinceStartup < deadline) yield return null;

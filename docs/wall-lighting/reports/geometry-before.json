@@ -1,0 +1,4998 @@
+{
+    "result": "passed",
+    "unity": "2022.3.23f1c1",
+    "project": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\Unity\\OfflineProject",
+    "sourceScene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "outputFolder": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\WallLighting\\geometry-before",
+    "graphics": "Direct3D11",
+    "colorSpace": "Gamma",
+    "sourceSceneSha256Before": "d80addd6e4fec8daaffcc5dda67ed38bfce7f3264afaff9d5e58e9fc6aa9ff86",
+    "sourceSceneSha256After": "d80addd6e4fec8daaffcc5dda67ed38bfce7f3264afaff9d5e58e9fc6aa9ff86",
+    "captureScope": "EditMode raw world Camera.Render; no Bootstrap, UI, gameplay or camera post-effects. Unlit/Texture uses its own depth/cull/queue pass. Surface-ID is opaque ZWrite On, ZTest LEqual, Cull Off with the scene geometry/depth unchanged. No scene or asset is saved.",
+    "surfaceIdLegend": "red: exact MainRoom_30/MainRoom_30_B material slots; blue: non-wallpaper Wall renderer slots; dark gray: other geometry",
+    "floorPath": "MainRoomCombined/B_Floor",
+    "floorBounds": {
+        "m_Center": {
+            "x": -2.79433012008667,
+            "y": -0.7278817892074585,
+            "z": -1.5155500173568726
+        },
+        "m_Extent": {
+            "x": 4.8503899574279789,
+            "y": 2.086162567138672e-7,
+            "z": 2.2058801651000978
+        }
+    },
+    "eye": {
+        "x": -2.79433012008667,
+        "y": 0.9221184253692627,
+        "z": -1.5155500173568726
+    },
+    "temporaryStatesRestored": true,
+    "materialsRestored": true,
+    "sourceSceneFileUnchanged": true,
+    "repairPreview": false,
+    "renderers": [
+        {
+            "name": "B_Awal",
+            "path": "MainRoomCombined/B_Awal",
+            "type": "MeshRenderer",
+            "meshName": "B_Awal",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.79433012008667,
+                    "y": 2.392777681350708,
+                    "z": -1.5155500173568726
+                },
+                "m_Extent": {
+                    "x": 4.8503899574279789,
+                    "y": 2.384185791015625e-7,
+                    "z": 2.2058801651000978
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 94,
+            "subMeshes": 1,
+            "normalCount": 94,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                384
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Awall2",
+            "path": "MainRoomCombined/B_Awall2",
+            "type": "MeshRenderer",
+            "meshName": "B_Awall2",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.817969799041748,
+                    "y": 0.8324500322341919,
+                    "z": -3.831432819366455
+                },
+                "m_Extent": {
+                    "x": 4.999999523162842,
+                    "y": 1.5603300333023072,
+                    "z": 0.08999717235565186
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.3333333432674408
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 18,
+            "subMeshes": 1,
+            "normalCount": 18,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_02_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_02_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "05_KB3D_BRK_ConcreteBeige_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/05_KB3D_BRK_ConcreteBeige_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_ExteriorConcrete_Wall__3_.003",
+            "path": "MainRoomCombined/B_ExteriorConcrete_Wall__3_.003",
+            "type": "MeshRenderer",
+            "meshName": "B_ExteriorConcrete_Wall__3_.003",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 5.87396240234375,
+                    "y": 1.0118428468704224,
+                    "z": -1.5363671779632569
+                },
+                "m_Extent": {
+                    "x": 0.1000007688999176,
+                    "y": 5.208542823791504,
+                    "z": 4.999999523162842
+                }
+            },
+            "localScale": {
+                "x": 0.09999999403953552,
+                "y": 0.0020000000949949028,
+                "z": 0.10417085886001587
+            },
+            "lossyScale": {
+                "x": 0.09999999403953552,
+                "y": 0.0020000000949949028,
+                "z": 0.10417085886001587
+            },
+            "averageWorldNormal": {
+                "x": -9.934107758624578e-9,
+                "y": 1.9868215517249156e-8,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.000020834171664319,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_03_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_03_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "08_KB3D_HAN_ConcreteB_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/08_KB3D_HAN_ConcreteB_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Floor",
+            "path": "MainRoomCombined/B_Floor",
+            "type": "MeshRenderer",
+            "meshName": "B_Floor",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.79433012008667,
+                    "y": -0.7278817892074585,
+                    "z": -1.5155500173568726
+                },
+                "m_Extent": {
+                    "x": 4.8503899574279789,
+                    "y": 2.086162567138672e-7,
+                    "z": 2.2058801651000978
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 94,
+            "subMeshes": 1,
+            "normalCount": 94,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                384
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_01_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_01_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "03_WoodFlooring14_COL_VAR1_6K",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/03_WoodFlooring14_COL_VAR1_6K.jpg",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_ReferenceDoorWallLintel",
+            "path": "MainRoomCombined/B_ReferenceDoorWallLintel",
+            "type": "MeshRenderer",
+            "meshName": "B_ReferenceDoorWallLintel",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.744719982147217,
+                    "y": 2.0824499130249025,
+                    "z": -2.8248798847198488
+                },
+                "m_Extent": {
+                    "x": 0.10000000149011612,
+                    "y": 0.31033000349998476,
+                    "z": 0.75
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_02_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_02_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "05_KB3D_BRK_ConcreteBeige_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/05_KB3D_BRK_ConcreteBeige_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_ReferenceDoorWallLowerSide",
+            "path": "MainRoomCombined/B_ReferenceDoorWallLowerSide",
+            "type": "MeshRenderer",
+            "meshName": "B_ReferenceDoorWallLowerSide",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.744719982147217,
+                    "y": 0.8324499726295471,
+                    "z": -0.6922749876976013
+                },
+                "m_Extent": {
+                    "x": 0.10000000149011612,
+                    "y": 1.5603300333023072,
+                    "z": 1.382604956626892
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_02_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_02_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "05_KB3D_BRK_ConcreteBeige_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/05_KB3D_BRK_ConcreteBeige_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_ReferenceDoorWallUpperSide",
+            "path": "MainRoomCombined/B_ReferenceDoorWallUpperSide",
+            "type": "MeshRenderer",
+            "meshName": "B_ReferenceDoorWallUpperSide",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.744719982147217,
+                    "y": 0.8324499726295471,
+                    "z": -3.6481549739837648
+                },
+                "m_Extent": {
+                    "x": 0.10000000149011612,
+                    "y": 1.5603300333023072,
+                    "z": 0.07327499985694885
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_02_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_02_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "05_KB3D_BRK_ConcreteBeige_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/05_KB3D_BRK_ConcreteBeige_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Wall__2_",
+            "path": "MainRoomCombined/B_Wall__2_",
+            "type": "MeshRenderer",
+            "meshName": "B_Wall__2_",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.1560568809509279,
+                    "y": -0.18750184774398805,
+                    "z": -1.515550136566162
+                },
+                "m_Extent": {
+                    "x": 0.10000026226043701,
+                    "y": 0.540378212928772,
+                    "z": 2.4058799743652345
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.3333333432674408,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 18,
+            "subMeshes": 1,
+            "normalCount": 18,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Wall__2_.001",
+            "path": "MainRoomCombined/B_Wall__2_.001",
+            "type": "MeshRenderer",
+            "meshName": "B_Wall__2_.001",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.1560568809509279,
+                    "y": 2.1853246688842775,
+                    "z": -1.515549898147583
+                },
+                "m_Extent": {
+                    "x": 0.10000026226043701,
+                    "y": 0.20745545625686646,
+                    "z": 2.4058802127838136
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": -0.3333333432674408,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 18,
+            "subMeshes": 1,
+            "normalCount": 18,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Wall__2_.002",
+            "path": "MainRoomCombined/B_Wall__2_.002",
+            "type": "MeshRenderer",
+            "meshName": "B_Wall__2_.002",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.1616413593292238,
+                    "y": 1.0807591676712037,
+                    "z": -0.020786285400390626
+                },
+                "m_Extent": {
+                    "x": 0.09441852569580078,
+                    "y": 0.9868210554122925,
+                    "z": 0.911116361618042
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.2380952388048172,
+                "y": 0.0476190485060215,
+                "z": -0.2380952388048172
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.7001400589942932,
+                "y": 0.14002801477909089,
+                "z": -0.7001400589942932
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 21,
+            "subMeshes": 1,
+            "normalCount": 21,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                39
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Wall__2_.003",
+            "path": "MainRoomCombined/B_Wall__2_.003",
+            "type": "MeshRenderer",
+            "meshName": "B_Wall__2_.003",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.158466339111328,
+                    "y": 1.0807592868804932,
+                    "z": -3.04876708984375
+                },
+                "m_Extent": {
+                    "x": 0.09759342670440674,
+                    "y": 0.9868211150169373,
+                    "z": 0.8726630210876465
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.2380952388048172,
+                "y": -0.0476190485060215,
+                "z": 0.2380952388048172
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.7001400589942932,
+                "y": -0.14002801477909089,
+                "z": 0.7001400589942932
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 21,
+            "subMeshes": 1,
+            "normalCount": 21,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                39
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Wall__3_",
+            "path": "MainRoomCombined/B_Wall__3_",
+            "type": "MeshRenderer",
+            "meshName": "B_Wall__3_",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.817969560623169,
+                    "y": 0.8324500322341919,
+                    "z": 0.7903317213058472
+                },
+                "m_Extent": {
+                    "x": 5.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.10000014305114746
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                48
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_Wall__3_.001",
+            "path": "MainRoomCombined/B_Wall__3_.001",
+            "type": "MeshRenderer",
+            "meshName": "B_Wall__3_.001",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.817969560623169,
+                    "y": 0.8324500322341919,
+                    "z": -3.8214340209960939
+                },
+                "m_Extent": {
+                    "x": 5.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.10000014305114746
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                48
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_00_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_00_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "00_KB3D_MIL_ConcreteA_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/00_KB3D_MIL_ConcreteA_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面",
+            "path": "MainRoomCombined/B_平面",
+            "type": "MeshRenderer",
+            "meshName": "B_平面",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.817969799041748,
+                    "y": 0.8324500322341919,
+                    "z": 0.7105637788772583
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.04287523031234741
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.008883525617420674,
+                "y": -0.015145118348300457,
+                "z": 0.9995460510253906
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.008886189199984074,
+                "y": -0.015149659477174282,
+                "z": 0.9998457431793213
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 36,
+            "subMeshes": 1,
+            "normalCount": 36,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                150
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.001",
+            "path": "MainRoomCombined/B_平面.001",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.001",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -4.816384315490723,
+                    "y": 0.8324500322341919,
+                    "z": 0.6713889837265015
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.014474421739578247
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.001803266117349267,
+                "y": -0.0021030381321907045,
+                "z": 0.9999557137489319
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0018033391097560526,
+                "y": -0.0021031233482062818,
+                "z": 0.9999961853027344
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 30,
+            "subMeshes": 1,
+            "normalCount": 30,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                120
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.002",
+            "path": "MainRoomCombined/B_平面.002",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.002",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -6.729381084442139,
+                    "y": 0.8324500322341919,
+                    "z": 0.6858633160591126
+                },
+                "m_Extent": {
+                    "x": 0.9153389930725098,
+                    "y": 1.5603300333023072,
+                    "z": 5.960464477539063e-8
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 4,
+            "subMeshes": 1,
+            "normalCount": 4,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                6
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.003",
+            "path": "MainRoomCombined/B_平面.003",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.003",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.817969799041748,
+                    "y": 0.8324500322341919,
+                    "z": -3.7079615592956545
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.01991879940032959
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.010509919375181198,
+                "y": -0.007579541299492121,
+                "z": 0.9993998408317566
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.010515347123146057,
+                "y": -0.00758345564827323,
+                "z": 0.9999159574508667
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 59,
+            "subMeshes": 1,
+            "normalCount": 59,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                228
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.004",
+            "path": "MainRoomCombined/B_平面.004",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.004",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -4.816384315490723,
+                    "y": 0.8324500322341919,
+                    "z": -3.7209014892578127
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.0
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 4,
+            "subMeshes": 1,
+            "normalCount": 4,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                6
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.005",
+            "path": "MainRoomCombined/B_平面.005",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.005",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 1.1711015701293946,
+                    "y": 0.8214888572692871,
+                    "z": -3.7056150436401369
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5493688583374024,
+                    "z": 0.015286445617675782
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0020289276726543905,
+                "y": -0.0026892279274761678,
+                "z": 0.9999441504478455
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.002029029419645667,
+                "y": -0.002689362969249487,
+                "z": 0.9999943375587463
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 42,
+            "subMeshes": 1,
+            "normalCount": 42,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                180
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.006",
+            "path": "MainRoomCombined/B_平面.006",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.006",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -0.8273129463195801,
+                    "y": 0.8324500322341919,
+                    "z": -3.7238545417785646
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.0029529333114624025
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.00027857275563292205,
+                "y": 0.0010328731732442976,
+                "z": 0.999996542930603
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.0002785735414363444,
+                "y": 0.0010328760836273432,
+                "z": 0.9999994039535523
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 42,
+            "subMeshes": 1,
+            "normalCount": 42,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                180
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.007",
+            "path": "MainRoomCombined/B_平面.007",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.007",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.1227688789367677,
+                    "y": 0.8324500322341919,
+                    "z": -3.047590494155884
+                },
+                "m_Extent": {
+                    "x": 0.07056057453155518,
+                    "y": 1.5603300333023072,
+                    "z": 0.8738396167755127
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.9975190758705139,
+                "y": 0.030723685398697854,
+                "z": 0.025674745440483094
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.999195396900177,
+                "y": 0.030775316059589387,
+                "z": 0.02571789175271988
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 31,
+            "subMeshes": 1,
+            "normalCount": 31,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                96
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.008",
+            "path": "MainRoomCombined/B_平面.008",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.008",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.125563621520996,
+                    "y": 0.8324500322341919,
+                    "z": -0.01804491877555847
+                },
+                "m_Extent": {
+                    "x": 0.07335507869720459,
+                    "y": 1.5603300333023072,
+                    "z": 0.9083749055862427
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.9963141679763794,
+                "y": 0.001201041042804718,
+                "z": -0.038934871554374698
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.9992365837097168,
+                "y": 0.001204563886858523,
+                "z": -0.03904907405376434
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 42,
+            "subMeshes": 1,
+            "normalCount": 42,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                120
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.009",
+            "path": "MainRoomCombined/B_平面.009",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.009",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -0.8364940881729126,
+                    "y": 0.8324500322341919,
+                    "z": 0.6984108090400696
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.5603300333023072,
+                    "z": 0.012547552585601807
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -0.004873592872172594,
+                "y": -0.002190198516473174,
+                "z": 0.9999023675918579
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.004873998928815126,
+                "y": -0.0021903810556977989,
+                "z": 0.9999856948852539
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 30,
+            "subMeshes": 1,
+            "normalCount": 30,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                120
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.010",
+            "path": "MainRoomCombined/B_平面.010",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.010",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 1.1625676155090333,
+                    "y": 0.5875256657600403,
+                    "z": 0.6317956447601318
+                },
+                "m_Extent": {
+                    "x": 1.0,
+                    "y": 1.3154056072235108,
+                    "z": 0.08422401547431946
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0418776273727417,
+                "y": 0.018077567219734193,
+                "z": 0.9948296546936035
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.04205109924077988,
+                "y": 0.018152451142668725,
+                "z": 0.9989505410194397
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 34,
+            "subMeshes": 1,
+            "normalCount": 34,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                90
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.011",
+            "path": "MainRoomCombined/B_平面.011",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.011",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 2.052208423614502,
+                    "y": -0.2060343623161316,
+                    "z": -1.5545698404312134
+                },
+                "m_Extent": {
+                    "x": 0.0,
+                    "y": 0.5218456387519836,
+                    "z": 0.6384569406509399
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": -1.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": -1.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": true,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 4,
+            "subMeshes": 1,
+            "normalCount": 4,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.0,
+            "subMeshIndexCounts": [
+                6
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_30_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_30_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "57_20261014-001403",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/57_20261014-001403.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "B_平面.012",
+            "path": "MainRoomCombined/B_平面.012",
+            "type": "MeshRenderer",
+            "meshName": "B_平面.012",
+            "meshAsset": "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": 1.9213242530822755,
+                    "y": 1.190099835395813,
+                    "z": -0.8283712267875671
+                },
+                "m_Extent": {
+                    "x": 0.12282516062259674,
+                    "y": 0.9983267784118652,
+                    "z": 0.3734116852283478
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 0.37135058641433718
+            },
+            "lossyScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 0.37135058641433718
+            },
+            "averageWorldNormal": {
+                "x": -0.6669885516166687,
+                "y": 0.010103883221745491,
+                "z": -0.034224819391965869
+            },
+            "averageWorldNormalDirection": {
+                "x": -0.9985718727111816,
+                "y": 0.015126876533031464,
+                "z": -0.051239173859357837
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 112,
+            "subMeshes": 1,
+            "normalCount": 112,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.37135058641433718,
+            "subMeshIndexCounts": [
+                525
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "MainRoom_09_B",
+                    "asset": "Assets/MiniGame/Art/MainRoom/Combined/Materials/MainRoom_09_B.mat",
+                    "shader": "MiniGame/Room Art Standard",
+                    "renderType": "Opaque",
+                    "mainTextureName": "17_KB3D_HAN_FabricTentBrightM_basecolor",
+                    "mainTextureAsset": "Assets/MiniGame/Art/MainRoom/Combined/Textures/17_KB3D_HAN_FabricTentBrightM_basecolor.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": true,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": true,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Corridor ceiling",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor ceiling",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -8.844719886779786,
+                    "y": 2.45278000831604,
+                    "z": -2.8248798847198488
+                },
+                "m_Extent": {
+                    "x": 1.2100005149841309,
+                    "y": 0.05999999865889549,
+                    "z": 3.1000006198883058
+                }
+            },
+            "localScale": {
+                "x": 6.199999809265137,
+                "y": 0.11999999731779099,
+                "z": 2.4200000762939455
+            },
+            "lossyScale": {
+                "x": 6.2000017166137699,
+                "y": 0.11999999731779099,
+                "z": 2.4200005531311037
+            },
+            "averageWorldNormal": {
+                "x": -5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 1.8004803657531739,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor warm plaster",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_warm_plaster.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Entrance wall upper -1",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Entrance wall upper -1",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.689720153808594,
+                    "y": 1.357450008392334,
+                    "z": -0.9498794078826904
+                },
+                "m_Extent": {
+                    "x": 0.060000140219926837,
+                    "y": 1.035330057144165,
+                    "z": 1.1250001192092896
+                }
+            },
+            "localScale": {
+                "x": 2.25,
+                "y": 2.07066011428833,
+                "z": 0.11999999731779099
+            },
+            "lossyScale": {
+                "x": 2.250000476837158,
+                "y": 2.07066011428833,
+                "z": 0.12000002712011337
+            },
+            "averageWorldNormal": {
+                "x": 5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.5590783357620239,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor warm plaster",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_warm_plaster.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Entrance wall skirt -1",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Entrance wall skirt -1",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.6997199058532719,
+                    "y": -0.20288002490997315,
+                    "z": -0.9498794078826904
+                },
+                "m_Extent": {
+                    "x": 0.07000014185905457,
+                    "y": 0.5249999761581421,
+                    "z": 1.1250001192092896
+                }
+            },
+            "localScale": {
+                "x": 2.25,
+                "y": 1.0499999523162842,
+                "z": 0.14000000059604646
+            },
+            "lossyScale": {
+                "x": 2.250000476837158,
+                "y": 1.0499999523162842,
+                "z": 0.14000003039836884
+            },
+            "averageWorldNormal": {
+                "x": -5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.330750048160553,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor sage skirt",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_sage_skirt.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Entrance wall upper 1",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Entrance wall upper 1",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.689720153808594,
+                    "y": 1.357450008392334,
+                    "z": -4.699880123138428
+                },
+                "m_Extent": {
+                    "x": 0.060000140219926837,
+                    "y": 1.035330057144165,
+                    "z": 1.1250001192092896
+                }
+            },
+            "localScale": {
+                "x": 2.25,
+                "y": 2.07066011428833,
+                "z": 0.11999999731779099
+            },
+            "lossyScale": {
+                "x": 2.250000476837158,
+                "y": 2.07066011428833,
+                "z": 0.12000002712011337
+            },
+            "averageWorldNormal": {
+                "x": 5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.5590783357620239,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor warm plaster",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_warm_plaster.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Entrance wall skirt 1",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Entrance wall skirt 1",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -7.6997199058532719,
+                    "y": -0.20288002490997315,
+                    "z": -4.699880123138428
+                },
+                "m_Extent": {
+                    "x": 0.07000014185905457,
+                    "y": 0.5249999761581421,
+                    "z": 1.1250001192092896
+                }
+            },
+            "localScale": {
+                "x": 2.25,
+                "y": 1.0499999523162842,
+                "z": 0.14000000059604646
+            },
+            "lossyScale": {
+                "x": 2.250000476837158,
+                "y": 1.0499999523162842,
+                "z": 0.14000003039836884
+            },
+            "averageWorldNormal": {
+                "x": -5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.330750048160553,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor sage skirt",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_sage_skirt.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Outer lower wall",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Outer lower wall",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -10.004720687866211,
+                    "y": -0.20288002490997315,
+                    "z": -2.8248798847198488
+                },
+                "m_Extent": {
+                    "x": 0.06000036373734474,
+                    "y": 0.5249999761581421,
+                    "z": 3.000000476837158
+                }
+            },
+            "localScale": {
+                "x": 6.0,
+                "y": 1.0499999523162842,
+                "z": 0.11999999731779099
+            },
+            "lossyScale": {
+                "x": 6.000001907348633,
+                "y": 1.0499999523162842,
+                "z": 0.12000002712011337
+            },
+            "averageWorldNormal": {
+                "x": 5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.7560001611709595,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor sage skirt",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_sage_skirt.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Outer window sill wall",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Outer window sill wall",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -10.004720687866211,
+                    "y": 0.38712000846862795,
+                    "z": -2.8248798847198488
+                },
+                "m_Extent": {
+                    "x": 0.06000036373734474,
+                    "y": 0.06499999761581421,
+                    "z": 3.000000476837158
+                }
+            },
+            "localScale": {
+                "x": 6.0,
+                "y": 0.12999999523162843,
+                "z": 0.11999999731779099
+            },
+            "lossyScale": {
+                "x": 6.000001907348633,
+                "y": 0.12999999523162843,
+                "z": 0.12000002712011337
+            },
+            "averageWorldNormal": {
+                "x": 5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.09360001981258393,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor warm plaster",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_warm_plaster.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Outer upper wall -1",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Outer upper wall -1",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -10.004720687866211,
+                    "y": 1.2121200561523438,
+                    "z": -0.9498794078826904
+                },
+                "m_Extent": {
+                    "x": 0.060000140219926837,
+                    "y": 0.7599999904632568,
+                    "z": 1.1250001192092896
+                }
+            },
+            "localScale": {
+                "x": 2.25,
+                "y": 1.5199999809265137,
+                "z": 0.11999999731779099
+            },
+            "lossyScale": {
+                "x": 2.250000476837158,
+                "y": 1.5199999809265137,
+                "z": 0.12000002712011337
+            },
+            "averageWorldNormal": {
+                "x": 5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.4104000926017761,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor warm plaster",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_warm_plaster.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Outer upper wall 1",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Outer upper wall 1",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -10.004720687866211,
+                    "y": 1.2121200561523438,
+                    "z": -4.699880123138428
+                },
+                "m_Extent": {
+                    "x": 0.060000140219926837,
+                    "y": 0.7599999904632568,
+                    "z": 1.1250001192092896
+                }
+            },
+            "localScale": {
+                "x": 2.25,
+                "y": 1.5199999809265137,
+                "z": 0.11999999731779099
+            },
+            "lossyScale": {
+                "x": 2.250000476837158,
+                "y": 1.5199999809265137,
+                "z": 0.12000002712011337
+            },
+            "averageWorldNormal": {
+                "x": 5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.4104000926017761,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor warm plaster",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_warm_plaster.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Corridor ceiling fixture",
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor ceiling fixture",
+            "type": "MeshRenderer",
+            "meshName": "Cube",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -8.844719886779786,
+                    "y": 2.32778000831604,
+                    "z": -1.7248796224594117
+                },
+                "m_Extent": {
+                    "x": 0.1050000712275505,
+                    "y": 0.03999999910593033,
+                    "z": 0.5000000596046448
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 0.07999999821186066,
+                "z": 0.20999999344348908
+            },
+            "lossyScale": {
+                "x": 1.000000238418579,
+                "y": 0.07999999821186066,
+                "z": 0.21000005304813386
+            },
+            "averageWorldNormal": {
+                "x": -5.921189641132699e-16,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "enabled": true,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": false,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 24,
+            "subMeshes": 1,
+            "normalCount": 24,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 0.01680000312626362,
+            "subMeshIndexCounts": [
+                36
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "Corridor cream metal",
+                    "asset": "Assets/MiniGame/Generated/ReferenceRoom/Corridor_cream_metal.mat",
+                    "shader": "MiniGame/Corridor Surface",
+                    "renderType": "Opaque",
+                    "mainTextureName": "corridor-surfaces",
+                    "mainTextureAsset": "Assets/MiniGame/Art/Exterior/corridor-surfaces.png",
+                    "slot": 0,
+                    "queue": 2000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": true,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dream wall projection",
+            "path": "MainRoom Gameplay/MiniGame Bootstrap/Dream wall projection",
+            "type": "MeshRenderer",
+            "meshName": "Quad",
+            "meshAsset": "Library/unity default resources",
+            "shadowCasting": "On",
+            "sortingLayer": "Default",
+            "normalStatus": "readable",
+            "bounds": {
+                "m_Center": {
+                    "x": -2.817969560623169,
+                    "y": 0.8324500322341919,
+                    "z": -3.7064337730407717
+                },
+                "m_Extent": {
+                    "x": 2.4000000953674318,
+                    "y": 1.350000023841858,
+                    "z": 3.0616168005906749e-17
+                }
+            },
+            "localScale": {
+                "x": 4.800000190734863,
+                "y": 2.700000047683716,
+                "z": 1.0
+            },
+            "lossyScale": {
+                "x": 4.800000190734863,
+                "y": 2.700000047683716,
+                "z": 1.0
+            },
+            "averageWorldNormal": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "averageWorldNormalDirection": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "enabled": false,
+            "activeInHierarchy": true,
+            "forceRenderingOff": false,
+            "receiveShadows": true,
+            "wallpaperTarget": false,
+            "wallShellTarget": true,
+            "meshReadable": true,
+            "normalsFinite": true,
+            "layer": 0,
+            "sortingOrder": 0,
+            "vertices": 4,
+            "subMeshes": 1,
+            "normalCount": 4,
+            "nonFiniteNormals": 0,
+            "transformDeterminant": 12.960000991821289,
+            "subMeshIndexCounts": [
+                6
+            ],
+            "subMeshTopology": [
+                "Triangles"
+            ],
+            "materials": [
+                {
+                    "name": "WallProjection",
+                    "asset": "Assets/MiniGame/Art/Dreams/WallProjection.mat",
+                    "shader": "MiniGame/Dream Projection Surface",
+                    "renderType": "Transparent",
+                    "mainTextureName": "",
+                    "mainTextureAsset": "",
+                    "slot": 0,
+                    "queue": 4000,
+                    "supported": true,
+                    "hasMode": false,
+                    "hasCull": false,
+                    "hasZWrite": false,
+                    "hasColor": false,
+                    "slotPropertyBlockPresent": false,
+                    "mode": 0.0,
+                    "cull": 0.0,
+                    "zWrite": 0.0,
+                    "color": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 0.0
+                    },
+                    "mainTextureScale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "mainTextureOffset": {
+                        "x": 0.0,
+                        "y": 0.0
+                    }
+                }
+            ]
+        }
+    ],
+    "lights": [
+        {
+            "path": "CeilingLight",
+            "type": "Spot",
+            "shadows": "Soft",
+            "cookie": "Room spotlight inner cone",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -2.261151075363159,
+                "y": 2.0053954124450685,
+                "z": -1.7078781127929688
+            },
+            "rotation": {
+                "x": 90.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 0.8399999737739563,
+                "b": 0.6200000047683716,
+                "a": 1.0
+            },
+            "intensity": 4.800000190734863,
+            "range": 7.0,
+            "spotAngle": 125.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.014999999664723874,
+            "shadowNormalBias": 0.07999999821186066,
+            "cullingMask": -1
+        },
+        {
+            "path": "WindowLight",
+            "type": "Point",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": 1.75,
+                "y": 1.5199999809265137,
+                "z": -1.5499999523162842
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 0.6200000047683716,
+                "g": 0.7200000286102295,
+                "b": 0.800000011920929,
+                "a": 1.0
+            },
+            "intensity": 0.18000000715255738,
+            "range": 4.5,
+            "spotAngle": 30.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.019999999552965165,
+            "shadowNormalBias": 0.4000000059604645,
+            "cullingMask": -1
+        },
+        {
+            "path": "MonitorLight",
+            "type": "Point",
+            "shadows": "None",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -3.003999710083008,
+                "y": 0.31849995255470278,
+                "z": 0.04099999740719795
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 0.7200000286102295,
+                "g": 0.7699999809265137,
+                "b": 0.5,
+                "a": 1.0
+            },
+            "intensity": 0.11999999731779099,
+            "range": 2.0,
+            "spotAngle": 30.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.019999999552965165,
+            "shadowNormalBias": 0.4000000059604645,
+            "cullingMask": -1
+        },
+        {
+            "path": "FillLight",
+            "type": "Point",
+            "shadows": "None",
+            "cookie": "",
+            "enabled": false,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -5.699999809265137,
+                "y": 1.649999976158142,
+                "z": -2.200000047683716
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 0.8799999952316284,
+                "g": 0.699999988079071,
+                "b": 0.3700000047683716,
+                "a": 1.0
+            },
+            "intensity": 0.0,
+            "range": 7.0,
+            "spotAngle": 30.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.019999999552965165,
+            "shadowNormalBias": 0.4000000059604645,
+            "cullingMask": -1
+        },
+        {
+            "path": "ExteriorLight",
+            "type": "Point",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": false,
+            "activeInHierarchy": true,
+            "position": {
+                "x": 3.799999952316284,
+                "y": 2.0,
+                "z": -1.5499999523162842
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 0.6899999976158142,
+                "g": 0.7400000095367432,
+                "b": 0.7200000286102295,
+                "a": 1.0
+            },
+            "intensity": 0.0,
+            "range": 10.0,
+            "spotAngle": 30.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.019999999552965165,
+            "shadowNormalBias": 0.4000000059604645,
+            "cullingMask": -1
+        },
+        {
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor daylight",
+            "type": "Point",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -9.524721145629883,
+                "y": 1.7721199989318848,
+                "z": -2.8248798847198488
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 0.8399999737739563,
+                "g": 0.9100000262260437,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "intensity": 0.3499999940395355,
+            "range": 5.400000095367432,
+            "spotAngle": 30.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.029999999329447748,
+            "shadowNormalBias": 0.20000000298023225,
+            "cullingMask": -1
+        },
+        {
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor ceiling fill",
+            "type": "Point",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -8.844719886779786,
+                "y": 2.212779998779297,
+                "z": -1.7248796224594117
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 0.9399999976158142,
+                "b": 0.8199999928474426,
+                "a": 1.0
+            },
+            "intensity": 0.1599999964237213,
+            "range": 4.5,
+            "spotAngle": 30.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.029999999329447748,
+            "shadowNormalBias": 0.20000000298023225,
+            "cullingMask": -1
+        },
+        {
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor red spotlight",
+            "type": "Spot",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -9.144720077514649,
+                "y": 2.212779998779297,
+                "z": -2.8248801231384279
+            },
+            "rotation": {
+                "x": 90.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 0.02500000037252903,
+                "b": 0.014999999664723874,
+                "a": 1.0
+            },
+            "intensity": 4.5,
+            "range": 4.800000190734863,
+            "spotAngle": 60.0,
+            "shadowStrength": 0.8500000238418579,
+            "shadowBias": 0.02500000037252903,
+            "shadowNormalBias": 0.15000000596046449,
+            "cullingMask": -1
+        },
+        {
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor red spotlight B-18",
+            "type": "Spot",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -9.564720153808594,
+                "y": 2.212779998779297,
+                "z": -4.754880428314209
+            },
+            "rotation": {
+                "x": 90.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 0.02500000037252903,
+                "b": 0.014999999664723874,
+                "a": 1.0
+            },
+            "intensity": 4.5,
+            "range": 4.800000190734863,
+            "spotAngle": 60.0,
+            "shadowStrength": 0.8500000238418579,
+            "shadowBias": 0.02500000037252903,
+            "shadowNormalBias": 0.15000000596046449,
+            "cullingMask": -1
+        },
+        {
+            "path": "MainRoom Gameplay/Reference exterior corridor/Corridor red spotlight B-16",
+            "type": "Spot",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": true,
+            "activeInHierarchy": true,
+            "position": {
+                "x": -9.564720153808594,
+                "y": 2.212779998779297,
+                "z": -0.894879937171936
+            },
+            "rotation": {
+                "x": 90.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 0.02500000037252903,
+                "b": 0.014999999664723874,
+                "a": 1.0
+            },
+            "intensity": 4.5,
+            "range": 4.800000190734863,
+            "spotAngle": 60.0,
+            "shadowStrength": 0.8500000238418579,
+            "shadowBias": 0.02500000037252903,
+            "shadowNormalBias": 0.15000000596046449,
+            "cullingMask": -1
+        },
+        {
+            "path": "MainRoom Gameplay/Night bed guidance",
+            "type": "Spot",
+            "shadows": "Soft",
+            "cookie": "",
+            "enabled": false,
+            "activeInHierarchy": true,
+            "position": {
+                "x": 0.8357932567596436,
+                "y": 2.212779998779297,
+                "z": -0.36339884996414187
+            },
+            "rotation": {
+                "x": 90.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 0.9399999976158142,
+                "g": 0.9300000071525574,
+                "b": 0.7900000214576721,
+                "a": 1.0
+            },
+            "intensity": 8.0,
+            "range": 3.5999999046325685,
+            "spotAngle": 56.0,
+            "shadowStrength": 1.0,
+            "shadowBias": 0.05000000074505806,
+            "shadowNormalBias": 0.4000000059604645,
+            "cullingMask": 268435456
+        }
+    ],
+    "wallpaperTargets": [
+        "MainRoomCombined/B_平面",
+        "MainRoomCombined/B_平面.001",
+        "MainRoomCombined/B_平面.002",
+        "MainRoomCombined/B_平面.003",
+        "MainRoomCombined/B_平面.004",
+        "MainRoomCombined/B_平面.005",
+        "MainRoomCombined/B_平面.006",
+        "MainRoomCombined/B_平面.007",
+        "MainRoomCombined/B_平面.008",
+        "MainRoomCombined/B_平面.009",
+        "MainRoomCombined/B_平面.010",
+        "MainRoomCombined/B_平面.011"
+    ],
+    "wallShellTargets": [
+        "MainRoomCombined/B_Awall2",
+        "MainRoomCombined/B_ExteriorConcrete_Wall__3_.003",
+        "MainRoomCombined/B_ReferenceDoorWallLintel",
+        "MainRoomCombined/B_ReferenceDoorWallLowerSide",
+        "MainRoomCombined/B_ReferenceDoorWallUpperSide",
+        "MainRoomCombined/B_Wall__2_",
+        "MainRoomCombined/B_Wall__2_.001",
+        "MainRoomCombined/B_Wall__2_.002",
+        "MainRoomCombined/B_Wall__2_.003",
+        "MainRoomCombined/B_Wall__3_",
+        "MainRoomCombined/B_Wall__3_.001",
+        "MainRoom Gameplay/Reference exterior corridor/Entrance wall upper -1",
+        "MainRoom Gameplay/Reference exterior corridor/Entrance wall skirt -1",
+        "MainRoom Gameplay/Reference exterior corridor/Entrance wall upper 1",
+        "MainRoom Gameplay/Reference exterior corridor/Entrance wall skirt 1",
+        "MainRoom Gameplay/Reference exterior corridor/Outer lower wall",
+        "MainRoom Gameplay/Reference exterior corridor/Outer window sill wall",
+        "MainRoom Gameplay/Reference exterior corridor/Outer upper wall -1",
+        "MainRoom Gameplay/Reference exterior corridor/Outer upper wall 1",
+        "MainRoom Gameplay/MiniGame Bootstrap/Dream wall projection"
+    ],
+    "warnings": [],
+    "failures": [],
+    "captures": [
+        {
+            "mode": "lit",
+            "view": "positive-x",
+            "file": "lit-positive-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "lit",
+            "view": "negative-x",
+            "file": "lit-negative-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": -1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "lit",
+            "view": "positive-z",
+            "file": "lit-positive-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "lit",
+            "view": "negative-z",
+            "file": "lit-negative-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "lit",
+            "view": "desk-bed-rear",
+            "file": "lit-desk-bed-rear.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.7487884759902954,
+                "y": 0.0,
+                "z": 0.6628091335296631
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 48.48553466796875,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.41060376167297366,
+                "z": 0.0,
+                "w": 0.9118139147758484
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "shadows-none",
+            "view": "positive-x",
+            "file": "shadows-none-positive-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "shadows-none",
+            "view": "negative-x",
+            "file": "shadows-none-negative-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": -1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "shadows-none",
+            "view": "positive-z",
+            "file": "shadows-none-positive-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "shadows-none",
+            "view": "negative-z",
+            "file": "shadows-none-negative-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "shadows-none",
+            "view": "desk-bed-rear",
+            "file": "shadows-none-desk-bed-rear.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.7487884759902954,
+                "y": 0.0,
+                "z": 0.6628091335296631
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 48.48553466796875,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.41060376167297366,
+                "z": 0.0,
+                "w": 0.9118139147758484
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "unlit-texture",
+            "view": "positive-x",
+            "file": "unlit-texture-positive-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "unlit-texture",
+            "view": "negative-x",
+            "file": "unlit-texture-negative-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": -1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "unlit-texture",
+            "view": "positive-z",
+            "file": "unlit-texture-positive-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "unlit-texture",
+            "view": "negative-z",
+            "file": "unlit-texture-negative-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "unlit-texture",
+            "view": "desk-bed-rear",
+            "file": "unlit-texture-desk-bed-rear.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.7487884759902954,
+                "y": 0.0,
+                "z": 0.6628091335296631
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 48.48553466796875,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.41060376167297366,
+                "z": 0.0,
+                "w": 0.9118139147758484
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "hide-wall-shell",
+            "view": "positive-x",
+            "file": "hide-wall-shell-positive-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "hide-wall-shell",
+            "view": "negative-x",
+            "file": "hide-wall-shell-negative-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": -1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "hide-wall-shell",
+            "view": "positive-z",
+            "file": "hide-wall-shell-positive-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "hide-wall-shell",
+            "view": "negative-z",
+            "file": "hide-wall-shell-negative-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "wallpaper-no-cast",
+            "view": "positive-x",
+            "file": "wallpaper-no-cast-positive-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "wallpaper-no-cast",
+            "view": "negative-x",
+            "file": "wallpaper-no-cast-negative-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": -1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "wallpaper-no-cast",
+            "view": "positive-z",
+            "file": "wallpaper-no-cast-positive-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "wallpaper-no-cast",
+            "view": "negative-z",
+            "file": "wallpaper-no-cast-negative-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "surface-id",
+            "view": "positive-x",
+            "file": "surface-id-positive-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "surface-id",
+            "view": "negative-x",
+            "file": "surface-id-negative-x.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": -1.0000001192092896,
+                "y": 0.0,
+                "z": -1.1920928955078126e-7
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -0.7071068286895752,
+                "z": 0.0,
+                "w": 0.7071068286895752
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "surface-id",
+            "view": "positive-z",
+            "file": "surface-id-positive-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "surface-id",
+            "view": "negative-z",
+            "file": "surface-id-negative-z.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        },
+        {
+            "mode": "surface-id",
+            "view": "desk-bed-rear",
+            "file": "surface-id-desk-bed-rear.png",
+            "result": "passed",
+            "error": "",
+            "position": {
+                "x": -2.79433012008667,
+                "y": 0.9221184253692627,
+                "z": -1.5155500173568726
+            },
+            "forward": {
+                "x": 0.7487884759902954,
+                "y": 0.0,
+                "z": 0.6628091335296631
+            },
+            "euler": {
+                "x": 0.0,
+                "y": 48.48553466796875,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.41060376167297366,
+                "z": 0.0,
+                "w": 0.9118139147758484
+            },
+            "verticalFieldOfView": 80.0,
+            "aspect": 1.7777777910232545,
+            "nearClip": 0.019999999552965165,
+            "farClip": 45.0,
+            "width": 960,
+            "height": 540
+        }
+    ]
+}

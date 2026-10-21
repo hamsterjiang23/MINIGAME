@@ -5,6 +5,7 @@
 // and Roystan's depth-masked, moving/distorted foam. This fixed beach uses its
 // authored analytical seabed instead of a screen-space scene-depth texture.
 float _DreamTime, _UseDreamTime;
+float4 _DreamOrigin;
 float _WaveHeight, _WavePeriod, _WaveLength, _ShoreWash, _FoamAmount;
 static const float DREAM_SEA_LEVEL = -.03;
 static const float DREAM_TAU = 6.28318530718;
@@ -85,7 +86,7 @@ void DreamOceanSurface(float2 anchor, float t, out float3 position, out float3 n
     float u = saturate(depth/.45);
     float attenuation = u*u*(3-2*u);
     float2 attenuationGradient = -DreamSandGradient(anchor)*(6*u*(1-u)/.45);
-    float distanceToEye = distance(anchor,_WorldSpaceCameraPos.xz);
+    float distanceToEye = distance(anchor,(_WorldSpaceCameraPos-_DreamOrigin.xyz).xz);
     float height = max(0,_WaveHeight);
     float length = max(1,_WaveLength), period = max(.5,_WavePeriod);
     position = float3(anchor.x,DREAM_SEA_LEVEL,anchor.y);

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39979c7b591244c7a61c2731d6b79398, type: 3}
+  m_Name: DailyNewspaper
+  m_EditorClassIdentifier:
+  id: daily-newspaper
+  title: "报纸"
+  interactionLabel: "阅读报纸"
+  text: ""
+  changesWithDay: 1
+  dailyTexts:
+  - day: 1
+    text: "本市治安水平再创历史新高\n\n据和平部最新公布的统计数据，本市犯罪案件数量已连续六个月下降，社会治安状况持续向好。\n\n和平部发言人表示，这一成果得益于全民健康监测制度的全面落实，以及广大市民对预防性治疗工作的积极配合。\n\n“和平是每一位公民共同努力的成果。”"
+  - day: 2
+    text: "东三区集中健康检查圆满结束\n\n昨日，东三区顺利完成本月第二次集中健康检查。\n\n检查期间，共有14名市民被建议前往和平院接受进一步治疗。相关部门表示，所有人员均已得到妥善安置。\n\n值得一提的是，本次检查期间，辖区内未发生任何犯罪案件。"
+  - day: 3
+    text: "和平部回应东三区居民去向问题\n\n近日，部分市民对东三区集中健康检查后的人员安置情况表示关切。\n\n和平部今日回应称，相关人员均已依照规定完成统一安置，不存在所谓的“居民失踪”情况。\n\n有关部门同时提醒，未经许可传播其他公民的个人信息，可能对社会秩序造成不良影响。"

@@ -1,6 +1,12 @@
 # 梦境、反叛值与海滩终局调参
 
-从 [MainRoomCombined](../../UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity) 开始正式游戏；海滩结局使用独立场景 [DreamEndingBeach](../../UnityProject/Assets/MiniGame/Scenes/DreamEndingBeach.unity)。菜单 **MiniGame → 梦境与结局** 分为“每日梦境”“海滩终局”“玩家反叛值”三个页签；音频文件和音量在 **MiniGame → 音频设置** 中选择。`[verified: DreamSettingsWindow.cs L35、L83、L106；MiniGameAudioSettingsWindow.cs MenuItem；MiniGameSessionHost.cs TransitionTo]`
+## 当前每日梦境：McQueen 图片序列
+
+当前三晚已接入 McQueen 最新的 30 张画面，每晚按编号播放 10 张、时长 20 秒。Day1 鲸滩、Day2 倒悬花海、Day3 红黑审视分别使用递进的折射、畸变重影、CRT 撕裂与色差；可在“每日梦境”页调整“顺序画面”“画面叠化时长”“运动强度”“梦境后处理强度”。制作细节与资料来源见[图片序列说明](image-sequence-notes.md)。[verified: DreamSequenceDefault.asset Days；DreamSettingsWindow.DrawDailyDreams；DreamProjectionAnimation.shader]
+
+本轮预览：[Day1](../../Art/Dreams/Previews/day1-sequence.mp4)、[Day2](../../Art/Dreams/Previews/day2-sequence.mp4)、[Day3](../../Art/Dreams/Previews/day3-sequence.mp4)。下文较早的单图制作与视频记录保留历史身份；隐藏海滩结局的当前实现以[固定门口布景指南](cubemap-guide.md)为准。[verified: Previews/daily-sequences-manifest.json；cubemap-guide.md]
+
+从 [MainRoomCombined](../../UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity) 开始正式游戏；隐藏海上梦结局默认在房间内显示动态全景，原 [DreamEndingBeach](../../UnityProject/Assets/MiniGame/Scenes/DreamEndingBeach.unity) 保留为捕获源制作场景及兼容模式。菜单 **MiniGame → 梦境与结局** 分为“每日梦境”“海滩终局”“玩家反叛值”三个页签；音频文件和音量在 **MiniGame → 音频设置** 中选择。全景操作与更新流程见[动态全景指南](cubemap-guide.md)。`[verified: DreamSettingsWindow.cs DrawEnding；MiniGameSessionHost.cs LateUpdate；DreamCubemapSetup.cs BuildSource]`
 
 ## 策划操作
 
@@ -29,7 +35,7 @@
 - **Day0**：启动显示监管者监控，点击拉远后完成教学；自动关机后直接亮床引导，不播放墙面梦境。关闭家具碰撞，保留地面、墙、玩家及床触发器；一次床交互播放闭眼后进入Day1，恢复碰撞前回到安全起床点。详见[开场指南](../opening/guide.md)。`[verified: PresentationEffects.DayZeroOpening/SleepTransition；GameRuntime.BeginNightDream/CompleteCue；BedtimeCollisionGate.Apply]`
 - **Day1–3**：工作结束并退出电脑后，亮床引导；玩家与床交互，完成闭眼过渡后才播放对应梦境。播放期间没有 Continue，不能用空格或 E 跳过；结束后自动推进到次日，或进入既有自我审查／结局分支。睡眠与梦境中的存档保留这次床交互，恢复不会要求重复上床。梦境素材后续继续由美术补充。`[verified: GameRuntime.TryInteract/CompleteCue/Save/Restore；DreamSequenceDirector.StartDay/Advance；DreamFlowRuntimeTests.BedStartsSleepBeforeAnyDreamAndRestoresAcrossBothPresentations]`
 - **Day3 特殊分支**：优先级为**神父袭击 → KPI 失败 → 海上梦结局 → 普通结局**。达到反叛阈值且没有更高优先级条件时，梦后改为仅电脑引导；终端显示审查员本人实时监控，只有“净化”一个行动按钮。鼠标点击或 Enter 确认一次后进入海滩，不消耗患者净化配额，也不新建患者会谈。`[verified: GameRules.cs WithDreamFlow；GameSession.cs FinishDream/SelfPurify/ResolveEnding；TerminalView.cs HandleSelfReviewKey；SelfReviewMonitor.cs ApplyView]`
-- **海滩**：按 **W** 向床前进，到交互距离后按 **E** 躺下，之后仰看流云，随床缓慢漂流起伏并显示五句字幕；按 **Esc** 暂停。这个场景不提供横移或后退输入。`[verified: DreamEndingController.cs L93–113、RefreshInterface、AdvanceSubtitles；DreamSequenceProfile.cs EndingLines]`
+- **隐藏海上梦结局**：房间内仅显示床，使用 **WASD** 自由行走、鼠标转头；到床边按 **E** 躺下，之后仰看流云，随床缓慢漂流起伏并显示字幕；按 **Esc** 暂停。动态海滩全景包围玩家；普通三天梦境仍采用各自的插画演出。关闭全景模式时保留原海滩场景只向前行走的兼容路径。`[verified: RoomDreamEnding.cs AdvanceExploration；DreamEndingController.cs Update/AdvanceSubtitles；MiniGameSessionHost.cs LateUpdate]`
 
 ## 保存与验收
 

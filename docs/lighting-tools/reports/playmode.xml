@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="10" result="Passed" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:14Z" duration="7.2427631">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:14Z" duration="7.242763" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1198" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:14Z" duration="7.234910" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35148" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1199" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:14Z" duration="7.203572" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1200" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:14Z" duration="7.170225" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1201" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:14Z" duration="7.136813" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1144" name="RetroScreenFilmGrainPlayModeTests" fullname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests" classname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:07Z" duration="0.149295" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1146" name="GrainAddsMonochromeDetailWithoutChangingAlphaOrMeanBrightness" fullname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests.GrainAddsMonochromeDetailWithoutChangingAlphaOrMeanBrightness" methodname="GrainAddsMonochromeDetailWithoutChangingAlphaOrMeanBrightness" classname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests" runstate="Runnable" seed="238139249" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:07Z" duration="0.040750" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1147" name="GrainChangesBetweenFramesAndBypassesPreserveTheSource" fullname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests.GrainChangesBetweenFramesAndBypassesPreserveTheSource" methodname="GrainChangesBetweenFramesAndBypassesPreserveTheSource" classname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests" runstate="Runnable" seed="1315553523" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:07Z" duration="0.071077" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1145" name="GrainIsOptionalBoundedAndResetsWithoutEnablingQuantization" fullname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests.GrainIsOptionalBoundedAndResetsWithoutEnablingQuantization" methodname="GrainIsOptionalBoundedAndResetsWithoutEnablingQuantization" classname="MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests" runstate="Runnable" seed="754222941" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:07Z" duration="0.001628" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1148" name="RetroScreenPlayModeTests" fullname="MiniGame.UnityHost.Tests.RetroScreenPlayModeTests" classname="MiniGame.UnityHost.Tests.RetroScreenPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:09Z" duration="1.845898" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1150" name="LiveProfileChangesReachTheCameraAndNeutralSettingsMatchOriginal" fullname="MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.LiveProfileChangesReachTheCameraAndNeutralSettingsMatchOriginal" methodname="LiveProfileChangesReachTheCameraAndNeutralSettingsMatchOriginal" classname="MiniGame.UnityHost.Tests.RetroScreenPlayModeTests" runstate="Runnable" seed="328238067" result="Passed" start-time="2026-10-20 18:45:07Z" end-time="2026-10-20 18:45:09Z" duration="1.296898" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1149" name="MainRoomUsesProfileAndKeepsOverlayUiOutsideTheEffect" fullname="MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.MainRoomUsesProfileAndKeepsOverlayUiOutsideTheEffect" methodname="MainRoomUsesProfileAndKeepsOverlayUiOutsideTheEffect" classname="MiniGame.UnityHost.Tests.RetroScreenPlayModeTests" runstate="Runnable" seed="892154172" result="Passed" start-time="2026-10-20 18:45:09Z" end-time="2026-10-20 18:45:09Z" duration="0.520878" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1151" name="RoomLightingAuthoringPlayModeTests" fullname="MiniGame.UnityHost.Tests.RoomLightingAuthoringPlayModeTests" classname="MiniGame.UnityHost.Tests.RoomLightingAuthoringPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-20 18:45:09Z" end-time="2026-10-20 18:45:11Z" duration="1.363553" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1152" name="EmptyListPreservesSceneLightsAndNightEditsRestoreTheNewDaylightWithoutAFlash" fullname="MiniGame.UnityHost.Tests.RoomLightingAuthoringPlayModeTests.EmptyListPreservesSceneLightsAndNightEditsRestoreTheNewDaylightWithoutAFlash" methodname="EmptyListPreservesSceneLightsAndNightEditsRestoreTheNewDaylightWithoutAFlash" classname="MiniGame.UnityHost.Tests.RoomLightingAuthoringPlayModeTests" runstate="Runnable" seed="1801543308" result="Passed" start-time="2026-10-20 18:45:09Z" end-time="2026-10-20 18:45:11Z" duration="1.333228" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1153" name="RoomLightingPlayModeTests" fullname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests" classname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-20 18:45:11Z" end-time="2026-10-20 18:45:14Z" duration="3.743449" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1154" name="CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug" fullname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug" methodname="CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug" classname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests" runstate="Runnable" seed="1582502838" result="Passed" start-time="2026-10-20 18:45:11Z" end-time="2026-10-20 18:45:11Z" duration="0.429696" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1156" name="EditingTheProfileAtBedtimeKeepsTheRoomDarkAndUpdatesTheNextMorning" fullname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.EditingTheProfileAtBedtimeKeepsTheRoomDarkAndUpdatesTheNextMorning" methodname="EditingTheProfileAtBedtimeKeepsTheRoomDarkAndUpdatesTheNextMorning" classname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests" runstate="Runnable" seed="392677429" result="Passed" start-time="2026-10-20 18:45:11Z" end-time="2026-10-20 18:45:13Z" duration="2.383640" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1155" name="LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset" fullname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset" methodname="LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset" classname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests" runstate="Runnable" seed="1356208480" result="Passed" start-time="2026-10-20 18:45:13Z" end-time="2026-10-20 18:45:14Z" duration="0.481003" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1157" name="TerminalGlowUpdatesMaterialSlotsWithoutDiscardingTheirLightingBands" fullname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.TerminalGlowUpdatesMaterialSlotsWithoutDiscardingTheirLightingBands" methodname="TerminalGlowUpdatesMaterialSlotsWithoutDiscardingTheirLightingBands" classname="MiniGame.UnityHost.Tests.RoomLightingPlayModeTests" runstate="Runnable" seed="1243147868" result="Passed" start-time="2026-10-20 18:45:14Z" end-time="2026-10-20 18:45:14Z" duration="0.415323" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

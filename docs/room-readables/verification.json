@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-21",
+  "sourceManifest": "source-manifest.json",
+  "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "objects": [
+    "family-letter",
+    "daily-newspaper",
+    "employment-notice"
+  ],
+  "originalPostersRetained": true,
+  "newspaperDays": [
+    1,
+    2,
+    3
+  ],
+  "undefinedNewspaperDay": "unavailable",
+  "reader": {
+    "background": "opaque black",
+    "frame": "none",
+    "text": "white bold",
+    "fontSize": 48,
+    "rightViewportMargin": 0.015,
+    "followsCamera": true,
+    "avoidsCurrentSource": true,
+    "completePagination": true,
+    "readingDoesNotMutateSave": true
+  },
+  "artwork": {
+    "source": "user-provided",
+    "originalPngBytesPreserved": true,
+    "generatedCopiesMatchSourceSha256": true,
+    "alphaCutoff": 0.5,
+    "installation": {
+      "result": "Succeeded",
+      "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "totalProps": 5,
+      "selected": [
+        {
+          "Id": "family-letter",
+          "rendererCount": 2,
+          "collider": "MeshCollider",
+          "shader": "MiniGame/Room Readable Cutout",
+          "supported": true,
+          "cutoff": 0.5,
+          "texture": "Assets/MiniGame/Generated/RoomReadables/family-letter.png",
+          "width": 1536,
+          "height": 1024,
+          "alphaSource": "FromInput",
+          "npot": "None",
+          "sourceSizeLimit": 2048,
+          "currentDay0Readable": true,
+          "day1Readable": true
+        },
+        {
+          "Id": "daily-newspaper",
+          "rendererCount": 2,
+          "collider": "MeshCollider",
+          "shader": "MiniGame/Room Readable Cutout",
+          "supported": true,
+          "cutoff": 0.5,
+          "texture": "Assets/MiniGame/Generated/RoomReadables/daily-newspaper.png",
+          "width": 1226,
+          "height": 1283,
+          "alphaSource": "FromInput",
+          "npot": "None",
+          "sourceSizeLimit": 2048,
+          "currentDay0Readable": false,
+          "day1Readable": true
+        },
+        {
+          "Id": "employment-notice",
+          "rendererCount": 2,
+          "collider": "MeshCollider",
+          "shader": "MiniGame/Room Readable Cutout",
+          "supported": true,
+          "cutoff": 0.5,
+          "texture": "Assets/MiniGame/Generated/RoomReadables/employment-notice.png",
+          "width": 1024,
+          "height": 1536,
+          "alphaSource": "FromInput",
+          "npot": "None",
+          "sourceSizeLimit": 2048,
+          "currentDay0Readable": true,
+          "day1Readable": true
+        }
+      ]
+    },
+    "coverageReport": "reports/silhouette-source-coverage.json"
+  },
+  "tests": [
+    {
+      "mode": "EditMode",
+      "report": "reports/document-tests.json",
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "mode": "PlayMode",
+      "report": "reports/room-readables-tests.json",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "mode": "PlayMode",
+      "report": "reports/narration-tests.json",
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "mode": "PlayMode",
+      "report": "reports/lighting-tests.json",
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "mode": "PlayMode",
+      "report": "reports/poster-regression-tests.json",
+      "passed": 1,
+      "failed": 0
+    }
+  ],
+  "editModePassed": 15,
+  "playModePassed": 13,
+  "totalPassed": 28,
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/RoomReadables/MiniGame.exe",
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 12.4940263,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "visualEvidence": [
+    "images/family-letter-black-reading.png",
+    "images/daily-newspaper-black-reading.png",
+    "images/employment-notice-black-reading.png"
+  ],
+  "codeReview": "CLEAN",
+  "limits": [
+    "Selected related Unity tests; the complete Unity and dotnet test suites were not rerun.",
+    "PlayMode screenshots use the real room and supplied art with controlled rules to exercise days and reading; they are not a full campaign walkthrough.",
+    "Physical mouse axes were inspected in source; automated checks invoke the shared player interaction paths."
+  ],
+  "playerStartup": {
+    "ready": true,
+    "report": "reports/player-startup.log",
+    "readyLine": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56"
+  },
+  "diffCheck": "passed",
+  "artifactsCheck": "passed"
+}

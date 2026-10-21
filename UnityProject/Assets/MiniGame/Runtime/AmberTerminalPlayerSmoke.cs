@@ -19,14 +19,22 @@ namespace MiniGame.UnityHost
         private int cycle;
         private bool submitted, finished, removedKeysVerified, directoryPixels, reviewPixels;
         private bool initiallyOff, middayLit, reopenedWithoutBoot, finallyDark;
+        private bool middayLiveUi, middaySourceUpdating, middayPixels, middayWorldPickingBlocked;
+        private bool liveAfterPause, liveAfterRestore, sourceStoppedAfterShutdown;
+        private bool orientationAfterExit, orientationAfterRestore;
+        private int middayStage, middayFrameCount, shutdownFrameCount;
+        private float middayStageStarted, middayPersistenceSeconds, shutdownStarted = -1;
         private int powerOnSounds, powerOffSounds;
+        private int bootTypingSounds, shutdownTypingSounds, invalidTypingSounds;
+        private bool typingSourceObservedPlaying;
+        private readonly HashSet<MiniGameSound> typingVariants = new HashSet<MiniGameSound>();
         private Renderer physicalScreen;
         private MiniGameAudioService observedAudio;
         private Button pendingButton;
         private int pendingFrame;
         private string folder;
         private readonly HashSet<string> captures=new HashSet<string>();
-        [Serializable] private sealed class Report {public string result,detail,unity,captureMode;public int replies,quota,powerOnSounds,powerOffSounds;public bool manualReopen,automaticShutdown,removedFunctionKeys,directoryPixels,reviewPixels,initiallyOff,middayLit,reopenedWithoutBoot,finallyDark;public float seconds;}
+        [Serializable] private sealed class Report {public string result,detail,unity,captureMode;public int replies,quota,powerOnSounds,powerOffSounds,bootTypingSounds,shutdownTypingSounds,invalidTypingSounds,typingVariants;public bool manualReopen,automaticShutdown,removedFunctionKeys,directoryPixels,reviewPixels,initiallyOff,middayLit,reopenedWithoutBoot,finallyDark,middayLiveUi,middaySourceUpdating,middayPixels,middayWorldPickingBlocked,liveAfterPause,liveAfterRestore,sourceStoppedAfterShutdown,orientationAfterExit,orientationAfterRestore,typingSourceObservedPlaying;public float seconds,middayPersistenceSeconds;}
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
@@ -65,6 +73,7 @@ namespace MiniGame.UnityHost
             }
             if(Time.realtimeSinceStartup<nextClick)return;
             nextClick=Time.realtimeSinceStartup+.045f;
+            if(cycle==1&&!view.TerminalOpen){VerifyMiddayPersistence();return;}
             if(view.Input==InputContext.World)
             {
                 if(submitted&&view.Game.Phase==GamePhase.Evening&&!view.TerminalOpen)
@@ -75,17 +84,15 @@ namespace MiniGame.UnityHost
                     Require(directoryPixels&&reviewPixels,"Player GPU output must contain the actual terminal directory and monitor UI");
                     Require(view.TerminalPower==TerminalPowerState.Off,"Final daily shutdown must persist Off");
                     finallyDark=PhysicalPower(false);Require(finallyDark,"Final daily shutdown must darken the physical CRT");
+                    if(shutdownStarted<0){shutdownStarted=Time.realtimeSinceStartup;shutdownFrameCount=host.Screen.TerminalDisplay.RenderedFrameCount;return;}
+                    if(Time.realtimeSinceStartup-shutdownStarted<.3f)return;
+                    sourceStoppedAfterShutdown=!SourceIsActive()&&host.Screen.TerminalDisplay.RenderedFrameCount==shutdownFrameCount;
+                    Require(sourceStoppedAfterShutdown,"Final shutdown must disable the source and stop rendering new terminal frames");
                     Require(powerOnSounds==1&&powerOffSounds==1,"Exactly one boot sound and one shutdown sound must play in the day");
+                    Require(bootTypingSounds>250&&shutdownTypingSounds==47&&typingVariants.Count==4&&invalidTypingSounds==0,
+                        "Both power consoles must type through the four uploaded variants without paused or unrelated sounds");
                     Require(middayLit&&reopenedWithoutBoot,"Midday UI exit/reentry must preserve the powered session");
-                    cycle=3;Capture("completed-world");Finish(true,"Mapped UI clicks completed midday UI exit/reentry with the physical CRT lit, then the six-round child encounter, reaction and final daily shutdown; power sounds played once each.");return;
-                }
-                if(cycle==1)
-                {
-                    middayLit=view.TerminalPowered&&PhysicalPower(true);Require(middayLit,"Midday UI exit must keep the physical CRT lit");
-                    CapturePhysical("physical-midday-on");
-                    Require(powerOnSounds==1&&powerOffSounds==0,"Midday UI exit must not replay power sounds");
-                    cycle=2;Require(runtime.TryInteract(InteractionTarget.Computer).Accepted,"Reopen during the same work day");
-                    reopenedWithoutBoot=!runtime.GetView().TerminalBootRequired;Require(reopenedWithoutBoot,"Reentry must resume the powered session without boot");return;
+                    cycle=3;Capture("completed-world");Finish(true,"Mapped UI clicks verified live nonuniform UI for at least two seconds after world exit, pause/resume and checkpoint restore, with hidden UI picking blocked; then completed six replies and final shutdown with source rendering stopped and one sound per power sequence.");return;
                 }
                 if(view.Game.Phase==GamePhase.MorningInspection)Require(runtime.TryInteract(InteractionTarget.Door).Accepted,"Morning door");
                 else if(view.AllowedInteractions.Contains(InteractionTarget.Computer))Require(runtime.TryInteract(InteractionTarget.Computer).Accepted,"Computer entry");
@@ -106,6 +113,84 @@ namespace MiniGame.UnityHost
             if(next!=null){Click(next);return;}
             var reply=host.Screen.GetComponentsInChildren<Button>(true).FirstOrDefault(b=>b.name.StartsWith("Reply-",StringComparison.Ordinal)&&b.IsActive()&&b.IsInteractable());
             if(reply!=null){Capture("review");Click(reply);}
+        }
+        private void VerifyMiddayPersistence()
+        {
+            var display=host.Screen.TerminalDisplay;
+            float elapsed=Time.realtimeSinceStartup-middayStageStarted;
+            if(middayStage==0)
+            {
+                middayStageStarted=Time.realtimeSinceStartup;middayFrameCount=display.RenderedFrameCount;middayStage=1;return;
+            }
+            if(middayStage==2)
+            {
+                if(elapsed<.3f)return;
+                Require(LivePhysicalUi()&&SourceIsActive(),"Pausing in world must preserve the live physical UI source");
+                Require(host.Runtime.SetPaused(false).Accepted,"Resume the world");
+                middayStageStarted=Time.realtimeSinceStartup;middayFrameCount=display.RenderedFrameCount;middayStage=3;return;
+            }
+            if(elapsed<2)return;
+            Require(display.RenderedFrameCount>middayFrameCount+2,"Powered world CRT source must continue rendering over two seconds");
+            Require(LivePhysicalUi()&&SourceIsActive(),"Powered world CRT must retain the live UI texture and active source");
+            Require(HasUiPixels(),"Powered CRT texture must contain nonuniform amber UI pixels, not a flat emissive color");
+            Require(WorldPickingBlocked(),"World mode must not pick hidden terminal UI");
+            if(middayStage==1)
+            {
+                middayPersistenceSeconds=elapsed;
+                middayLit=host.Runtime.GetView().TerminalPowered&&PhysicalPower(true);Require(middayLit,"Midday UI exit must keep the physical CRT lit");
+                middayLiveUi=middaySourceUpdating=middayPixels=middayWorldPickingBlocked=true;
+                CapturePhysical("physical-midday-on");
+                orientationAfterExit=CrtUiOrientationProbe.CaptureAndVerify(host,physicalScreen,Path.Combine(folder,"physical-orientation-midday.png"));
+                Require(orientationAfterExit,"Physical CRT must preserve top/bottom and left/right UI orientation after exit");
+                Require(host.Runtime.SetPaused(true).Accepted,"Pause in world after terminal exit");
+                middayStageStarted=Time.realtimeSinceStartup;middayStage=2;return;
+            }
+            if(middayStage==3)
+            {
+                liveAfterPause=true;
+                host.RestoreCheckpoint(host.Runtime.Save());
+                middayStageStarted=Time.realtimeSinceStartup;middayFrameCount=display.RenderedFrameCount;middayStage=4;return;
+            }
+            liveAfterRestore=true;
+            CapturePhysical("physical-midday-restored");
+            orientationAfterRestore=CrtUiOrientationProbe.CaptureAndVerify(host,physicalScreen,Path.Combine(folder,"physical-orientation-restored.png"));
+            Require(orientationAfterRestore,"Physical CRT must preserve top/bottom and left/right UI orientation after restore");
+            Require(powerOnSounds==1&&powerOffSounds==0,"Midday exit, pause and restore must not replay power sounds");
+            cycle=2;Require(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted,"Reopen during the same work day");
+            reopenedWithoutBoot=!host.Runtime.GetView().TerminalBootRequired;Require(reopenedWithoutBoot,"Reentry must resume the powered session without boot");
+        }
+        private bool SourceIsActive()
+        {
+            var camera=host.Screen.GetComponentsInChildren<Camera>(true).Single(item=>item.name=="Terminal UI camera");
+            return camera.gameObject.activeInHierarchy&&camera.targetTexture==host.Screen.TerminalDisplay.Texture;
+        }
+        private bool LivePhysicalUi()
+        {
+            var properties=new MaterialPropertyBlock();physicalScreen.GetPropertyBlock(properties,0);
+            return properties.GetFloat("_LiveDisplay")>.99f&&properties.GetTexture("_LiveDisplayTex")==host.Screen.TerminalDisplay.Texture
+                &&!host.Screen.TerminalDisplay.OutputRect.gameObject.activeInHierarchy
+                &&host.Screen.GetComponentsInChildren<Transform>(true).Single(item=>item.name=="ObjectDirectory").gameObject.activeInHierarchy;
+        }
+        private bool HasUiPixels()
+        {
+            var texture=host.Screen.TerminalDisplay.Texture;
+            var image=new Texture2D(texture.width,texture.height,TextureFormat.RGBA32,false);
+            var previous=RenderTexture.active;
+            try
+            {
+                RenderTexture.active=texture;image.ReadPixels(new Rect(0,0,texture.width,texture.height),0,0);image.Apply();
+                var pixels=image.GetPixels32();
+                return pixels.Count(p=>p.r>80&&p.r>p.b+20)>1000&&pixels.Count(p=>p.r<40&&p.g<40&&p.b<40)>1000;
+            }
+            finally{RenderTexture.active=previous;Destroy(image);}
+        }
+        private bool WorldPickingBlocked()
+        {
+            var button=host.Screen.GetComponentsInChildren<Button>(true).Single(item=>item.name=="EnterReview");
+            var pointer=new PointerEventData(EventSystem.current){position=host.Screen.TerminalDisplay.ScreenPointFor((RectTransform)button.transform)};
+            var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(pointer,hits);
+            var source=host.Screen.GetComponentsInChildren<Camera>(true).Single(item=>item.name=="Terminal UI camera").transform.parent;
+            return !hits.Any(hit=>hit.gameObject.transform.IsChildOf(source));
         }
         private Button Find(string name)=>host.Screen.GetComponentsInChildren<Button>(true).FirstOrDefault(b=>b.name==name&&b.IsActive()&&b.IsInteractable());
         private bool Click(Button button)
@@ -167,6 +252,13 @@ namespace MiniGame.UnityHost
         {
             if(sound==MiniGameSound.TerminalPowerOn)powerOnSounds++;
             if(sound==MiniGameSound.TerminalPowerOff)powerOffSounds++;
+            if(channel!=MiniGameAudioChannel.TerminalTyping)return;
+            typingVariants.Add(sound);
+            if(host.Runtime.GetView().Paused||sound<MiniGameSound.TerminalType1||sound>MiniGameSound.TerminalType4)invalidTypingSounds++;
+            if(host.Screen.PowerPhase==TerminalPowerPhase.Boot)bootTypingSounds++;
+            else if(host.Screen.PowerPhase==TerminalPowerPhase.Shutdown)shutdownTypingSounds++;
+            else invalidTypingSounds++;
+            typingSourceObservedPlaying|=observedAudio.GetSource(MiniGameAudioChannel.TerminalTyping).isPlaying;
         }
         private bool PhysicalPower(bool lit)
         {
@@ -181,10 +273,11 @@ namespace MiniGame.UnityHost
         private void Finish(bool success,string detail)
         {
             var view=host!=null?host.Runtime.GetView():null;
-            var report=new Report{result=success?"Passed":"Failed",detail=detail,unity=Application.unityVersion,captureMode="Standalone GPU native UI RenderTexture + actual CRT material; physical CRT power property blocks and real audio service events; hidden-window backbuffer is not used",directoryPixels=directoryPixels,reviewPixels=reviewPixels,manualReopen=cycle>=2,automaticShutdown=success,removedFunctionKeys=removedKeysVerified,replies=view?.Transcript.Count(t=>t.IsPlayer&&!t.SourceNodeId.StartsWith("disposition:",StringComparison.Ordinal))??0,quota=view?.Game.RemainingPurificationQuota??-1,powerOnSounds=powerOnSounds,powerOffSounds=powerOffSounds,initiallyOff=initiallyOff,middayLit=middayLit,reopenedWithoutBoot=reopenedWithoutBoot,finallyDark=finallyDark,seconds=Time.realtimeSinceStartup-began};
+            var report=new Report{result=success?"Passed":"Failed",detail=detail,unity=Application.unityVersion,captureMode="Standalone GPU native UI RenderTexture + actual CRT material; persistent source frames and UI pixels, asymmetric source-canvas markers through physical CRT shader, pause/restore, raycast isolation, power blocks and audio events",directoryPixels=directoryPixels,reviewPixels=reviewPixels,manualReopen=cycle>=2,automaticShutdown=success,removedFunctionKeys=removedKeysVerified,replies=view?.Transcript.Count(t=>t.IsPlayer&&!t.SourceNodeId.StartsWith("disposition:",StringComparison.Ordinal))??0,quota=view?.Game.RemainingPurificationQuota??-1,powerOnSounds=powerOnSounds,powerOffSounds=powerOffSounds,bootTypingSounds=bootTypingSounds,shutdownTypingSounds=shutdownTypingSounds,invalidTypingSounds=invalidTypingSounds,typingVariants=typingVariants.Count,typingSourceObservedPlaying=typingSourceObservedPlaying,initiallyOff=initiallyOff,middayLit=middayLit,reopenedWithoutBoot=reopenedWithoutBoot,finallyDark=finallyDark,middayLiveUi=middayLiveUi,middaySourceUpdating=middaySourceUpdating,middayPixels=middayPixels,middayWorldPickingBlocked=middayWorldPickingBlocked,liveAfterPause=liveAfterPause,liveAfterRestore=liveAfterRestore,sourceStoppedAfterShutdown=sourceStoppedAfterShutdown,orientationAfterExit=orientationAfterExit,orientationAfterRestore=orientationAfterRestore,middayPersistenceSeconds=middayPersistenceSeconds,seconds=Time.realtimeSinceStartup-began};
             File.WriteAllText(Path.Combine(folder,"verification.json"),JsonUtility.ToJson(report,true));
             Debug.Log("MINIGAME_AMBER_PLAYER_"+report.result.ToUpperInvariant()+" "+detail);
-            if(!success)cycle=-1;finished=true;quitAt=Time.realtimeSinceStartup+.4f;
+            if(!success)cycle=-1;finished=true;quitAt=Time.realtimeSinceStartup+
+                (Environment.GetCommandLineArgs().Contains("--wall-lighting-smoke")?2f:.4f);
         }
     }
 }

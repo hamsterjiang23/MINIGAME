@@ -28,13 +28,19 @@ namespace PMSAmber.Editor
             try
             {
                 AssetDatabase.Refresh();ConfigureImports();
-                var font=AssetDatabase.LoadAssetAtPath<Font>(Root+"/Fonts/NotoSansMonoCJKsc-Regular.otf");
+                var font=AssetDatabase.LoadAssetAtPath<PMSBitmapFont>(Root+"/Art/FontAtlas/HTMLBitmapFont.asset");
+                if(!font){font=ScriptableObject.CreateInstance<PMSBitmapFont>();AssetDatabase.CreateAsset(font,Root+"/Art/FontAtlas/HTMLBitmapFont.asset");}
+                font.Atlas=AssetDatabase.LoadAssetAtPath<Texture2D>(Root+"/Art/FontAtlas/HTML_SimSun_Lucida.png");
+                font.Metrics=AssetDatabase.LoadAssetAtPath<TextAsset>(Root+"/Art/FontAtlas/HTML_FontMetrics.json");EditorUtility.SetDirty(font);
+                var fallback=AssetDatabase.LoadAssetAtPath<PMSBitmapFont>(Root+"/Resources/PMSAmberTerminal/HTMLBitmapFont.asset");
+                if(!fallback){fallback=ScriptableObject.CreateInstance<PMSBitmapFont>();AssetDatabase.CreateAsset(fallback,Root+"/Resources/PMSAmberTerminal/HTMLBitmapFont.asset");}
+                fallback.Atlas=font.Atlas;fallback.Metrics=font.Metrics;EditorUtility.SetDirty(fallback);
                 var shader=AssetDatabase.LoadAssetAtPath<Shader>(Root+"/Shaders/PMSAmberCRT.shader");
                 var ward=AssetDatabase.LoadAssetAtPath<Texture2D>(Root+"/Art/Ward_WarmGray.png");
                 if(!font||!shader||!ward)throw new Exception("Missing font, shader or monitor texture.");
                 if(ShaderUtil.ShaderHasError(shader))throw new Exception("CRT shader has compiler errors.");
                 var go=new GameObject("PMS Amber Terminal");var view=go.AddComponent<PMSTerminalView>();
-                view.Typeface=font;view.DisplayShader=shader;view.Ward=ward;
+                view.Glyphs=font;view.DisplayShader=shader;view.Ward=ward;
                 view.GlowLine=AssetDatabase.LoadAssetAtPath<Texture2D>(Root+"/Art/Phosphor_Line.png");view.GlowDot=AssetDatabase.LoadAssetAtPath<Texture2D>(Root+"/Art/Phosphor_Dot.png");
                 PrefabUtility.SaveAsPrefabAsset(go,Root+"/Prefabs/PMSAmberTerminal.prefab");UnityEngine.Object.DestroyImmediate(go);
                 var material=AssetDatabase.LoadAssetAtPath<Material>(Root+"/Art/PMSAmberCRT.mat");
@@ -56,9 +62,10 @@ namespace PMSAmber.Editor
                 bool sprite=Path.GetFileName(importer.assetPath).StartsWith("UI_");
                 importer.textureType=sprite?TextureImporterType.Sprite:TextureImporterType.Default;
                 if(sprite){importer.spriteImportMode=SpriteImportMode.Single;importer.spriteBorder=new Vector4(1,1,1,1);}
-                importer.mipmapEnabled=false;importer.wrapMode=TextureWrapMode.Clamp;
+                importer.npotScale=TextureImporterNPOTScale.None;importer.sRGBTexture=false;importer.mipmapEnabled=false;importer.wrapMode=TextureWrapMode.Clamp;
+                if(importer.assetPath.Contains("FontAtlas"))importer.maxTextureSize=8192;
                 importer.filterMode=importer.assetPath.Contains("Phosphor")?FilterMode.Bilinear:FilterMode.Point;
-                importer.textureCompression=TextureImporterCompression.Uncompressed;importer.alphaIsTransparency=true;importer.SaveAndReimport();
+                importer.textureCompression=TextureImporterCompression.Uncompressed;importer.alphaIsTransparency=!importer.assetPath.Contains("FontAtlas");importer.SaveAndReimport();
             }
         }
     }

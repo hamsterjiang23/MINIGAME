@@ -1,6 +1,6 @@
 {
   "name": "MiniGame.UnityHost",
   "rootNamespace": "MiniGame.UnityHost",
-  "references": ["MiniGame.Core", "MiniGame.Presentation", "UnityEngine.UI", "YarnSpinner.Unity"],
+  "references": ["MiniGame.Core", "MiniGame.Presentation", "UnityEngine.UI", "YarnSpinner.Unity", "PMSAmberTerminal.Runtime"],
   "autoReferenced": true
 }

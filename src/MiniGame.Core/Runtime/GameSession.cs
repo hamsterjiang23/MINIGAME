@@ -78,7 +78,8 @@ namespace MiniGame.Core
             return new PlayerView(_state.Day, _state.Phase, _state.Ending, remaining,
                 encounter?.PatientId, encounter == null ? null : _rules.Patient(encounter.PatientId).DisplayName,
                 encounter?.Id, encounter == null ? null : CurrentNode(encounter), encounter?.Stage,
-                responses, dispositions, AllowedInteractions(), _state.Rebellion);
+                responses, dispositions, AllowedInteractions(), _state.Rebellion,
+                record?.Purifications ?? 0, record?.PurificationQuota ?? 0);
         }
 
         public GameSnapshot CreateSnapshot() => SnapshotCodec.Copy(new GameSnapshot

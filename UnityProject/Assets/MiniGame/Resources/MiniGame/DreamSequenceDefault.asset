@@ -19,19 +19,65 @@ MonoBehaviour:
   Days:
   - Day: 1
     Duration: 20
-    Artwork: {fileID: 2800000, guid: 19bca5eaf6a8eec45b1b27fc87b0c4c4, type: 3}
+    Artwork: {fileID: 2800000, guid: 915a5d46376483b469b786e1bb458d9b, type: 3}
+    Frames:
+    - {fileID: 2800000, guid: 915a5d46376483b469b786e1bb458d9b, type: 3}
+    - {fileID: 2800000, guid: eeb19dc0accfa26498e2106173799fc8, type: 3}
+    - {fileID: 2800000, guid: ac7d9a4bc4553bd46ac3dfcbd9e56994, type: 3}
+    - {fileID: 2800000, guid: df828cd4b5a6fa54f810ff606ed2be8e, type: 3}
+    - {fileID: 2800000, guid: c598564a663ba9548b3a9f14c75975f9, type: 3}
+    - {fileID: 2800000, guid: a7db5d6ff0c5e354eb96bbb2175862f7, type: 3}
+    - {fileID: 2800000, guid: dbc5f33e08516ba47b84f7959b9555c1, type: 3}
+    - {fileID: 2800000, guid: 91d4f7f474b1fbb4ca5d65593d1a36d5, type: 3}
+    - {fileID: 2800000, guid: 1f45752789866bd41bdde987bd2fcb15, type: 3}
+    - {fileID: 2800000, guid: e9dd80d31a7c9f64ea1c65f6d5796279, type: 3}
+    CrossfadeSeconds: 0.65
     Music: 2
-    MotionIntensity: 1
+    MotionIntensity: 0.8
+    PostIntensity: 0.8
   - Day: 2
     Duration: 20
-    Artwork: {fileID: 2800000, guid: fee4866fa08fb644b818b358ca689723, type: 3}
+    Artwork: {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
+    Frames:
+    - {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
+    - {fileID: 2800000, guid: 38d063b1806b36344ac9ded34787f0b3, type: 3}
+    - {fileID: 2800000, guid: 2935e80307013c448b58465fddbd3432, type: 3}
+    - {fileID: 2800000, guid: f94a2029b28de8c4e99c7bd207e44edc, type: 3}
+    - {fileID: 2800000, guid: 2bc45a1d271f6f440899633e4a792c8c, type: 3}
+    - {fileID: 2800000, guid: f05b74a660adbae4b8f57ecb07683d72, type: 3}
+    - {fileID: 2800000, guid: 04e78aaa34c35df49975b5432db8d60c, type: 3}
+    - {fileID: 2800000, guid: 7dbcab28fab7dae49ad3c176435d93be, type: 3}
+    - {fileID: 2800000, guid: f892b3f391662a84ba319c8d943f3919, type: 3}
+    - {fileID: 2800000, guid: b326627087b7a804ab8c3401d955bfde, type: 3}
+    CrossfadeSeconds: 0.85
     Music: 3
-    MotionIntensity: 1
+    MotionIntensity: 0.7
+    PostIntensity: 1
   - Day: 3
     Duration: 20
-    Artwork: {fileID: 2800000, guid: 9d5f9bb7ac008854cb508d3f2b5a5ca6, type: 3}
+    Artwork: {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}
+    Frames:
+    - {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}
+    - {fileID: 2800000, guid: 5bb5fcae9531d3c4785df06246d25c39, type: 3}
+    - {fileID: 2800000, guid: 81a15098c00f1ce4cb42ab1d33bc6439, type: 3}
+    - {fileID: 2800000, guid: c2664419ae8c66340a7cec5ad5dfe8ef, type: 3}
+    - {fileID: 2800000, guid: 9e4bb224887cd7e4ab070ed7b418c805, type: 3}
+    - {fileID: 2800000, guid: f7c3785706dcae8489a2a67146b76d86, type: 3}
+    - {fileID: 2800000, guid: 7beaaa2a0ffdc9e4ca937dbc5c45a7fd, type: 3}
+    - {fileID: 2800000, guid: 7110690a89464644995127a0fec3cf2a, type: 3}
+    - {fileID: 2800000, guid: be747b7141958cc4f8cc95636c71c405, type: 3}
+    - {fileID: 2800000, guid: bfbb4bfcd16810043b1825c9eb477f80, type: 3}
+    CrossfadeSeconds: 0.4
     Music: 12
-    MotionIntensity: 1
+    MotionIntensity: 0.65
+    PostIntensity: 1.2
+  UseRoomCubemapEnding: 1
+  RoomPanoramaSkybox: {fileID: 2100000, guid: 28710663e0cb0824aae1a55bcd58c552, type: 2}
+  ShowRoomOutline: 0
+  CubemapSourcePrefab: {fileID: 6476519832283112598, guid: d34e39ae5cb8652499a1acc1a1219781, type: 3}
+  CubemapFaceSize: 1024
+  CubemapRefreshRate: 10
+  CubemapYaw: 0
   WalkSpeed: 1.2
   BedInteractionDistance: 1.5
   LieDownSeconds: 1.5

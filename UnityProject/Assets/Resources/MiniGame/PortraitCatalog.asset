@@ -23,10 +23,6 @@ MonoBehaviour:
     sprite: {fileID: -5363424984641003367, guid: f97dcc49f114f0d4886897611dd237bf, type: 3}
   - id: ML03
     sprite: {fileID: 4062342549313528233, guid: f97dcc49f114f0d4886897611dd237bf, type: 3}
-  - id: ML04
-    sprite: {fileID: -8237667391796049481, guid: f97dcc49f114f0d4886897611dd237bf, type: 3}
-  - id: ML05
-    sprite: {fileID: 572039543690778391, guid: f97dcc49f114f0d4886897611dd237bf, type: 3}
   - id: VV01
     sprite: {fileID: -4251690762081293732, guid: 71319b390e8238045a12a21ba7a07cd3, type: 3}
   - id: VV02
@@ -35,8 +31,6 @@ MonoBehaviour:
     sprite: {fileID: 1851738557787277598, guid: 71319b390e8238045a12a21ba7a07cd3, type: 3}
   - id: VV04
     sprite: {fileID: -1524625319015845169, guid: 71319b390e8238045a12a21ba7a07cd3, type: 3}
-  - id: VV05
-    sprite: {fileID: 1396251149959245570, guid: 71319b390e8238045a12a21ba7a07cd3, type: 3}
   - id: ED01
     sprite: {fileID: 6201131202350719663, guid: e80f0201d929a534fa7c6ee570196b3a, type: 3}
   - id: ED02
@@ -45,8 +39,6 @@ MonoBehaviour:
     sprite: {fileID: 3719255476967525262, guid: e80f0201d929a534fa7c6ee570196b3a, type: 3}
   - id: ED04
     sprite: {fileID: 6580995375468469594, guid: e80f0201d929a534fa7c6ee570196b3a, type: 3}
-  - id: ED05
-    sprite: {fileID: -6717324617130358475, guid: e80f0201d929a534fa7c6ee570196b3a, type: 3}
   - id: AD01
     sprite: {fileID: 207259636472296890, guid: 83d4d3b5608c47449b12db790b3d495b, type: 3}
   - id: AD02
@@ -55,8 +47,6 @@ MonoBehaviour:
     sprite: {fileID: 8021775188483447626, guid: 83d4d3b5608c47449b12db790b3d495b, type: 3}
   - id: AD04
     sprite: {fileID: 8462397602045430511, guid: 83d4d3b5608c47449b12db790b3d495b, type: 3}
-  - id: AD05
-    sprite: {fileID: 6026953989424631363, guid: 83d4d3b5608c47449b12db790b3d495b, type: 3}
   - id: JN01
     sprite: {fileID: 190960298854878762, guid: 9aae9b0df73fc5243a543ead88afc05f, type: 3}
   - id: JN02
@@ -67,3 +57,7 @@ MonoBehaviour:
     sprite: {fileID: -8616957767942294393, guid: 9aae9b0df73fc5243a543ead88afc05f, type: 3}
   - id: JN05
     sprite: {fileID: 6946421938236321570, guid: 9aae9b0df73fc5243a543ead88afc05f, type: 3}
+  - id: ML04
+    sprite: {fileID: -8237667391796049481, guid: f97dcc49f114f0d4886897611dd237bf, type: 3}
+  - id: ML05
+    sprite: {fileID: 572039543690778391, guid: f97dcc49f114f0d4886897611dd237bf, type: 3}

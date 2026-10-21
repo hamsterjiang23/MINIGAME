@@ -1,0 +1,39 @@
+{
+  "completedAt": "2026-10-21T14:57:15.6555849+08:00",
+  "name": "NORM-Windows-x64-Mono-20261021-144903",
+  "platform": "Windows x64",
+  "backend": "Mono",
+  "developmentBuild": false,
+  "exePath": "F:/AAMINIGAME/MINIGAME/Builds/NORM-Windows-x64-Mono-20261021-144903/MiniGame.exe",
+  "zipPath": "F:/AAMINIGAME/MINIGAME/Builds/Deliverables/NORM-Windows-x64-Mono-20261021-144903.zip",
+  "zipBytes": 188570196,
+  "zipSha256": "ade00e4aa151986ee3c95f8aa1fea58707c5417297cc48cd8e6a6ca5ca8682a1",
+  "checksumPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-20261021-144903.sha256",
+  "build": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 1,
+    "backend": "Mono2x",
+    "buildOptions": "None",
+    "sourceFilesUnchangedDuringBuild": true,
+    "report": "reports/camera-seams/mono-release-build.json"
+  },
+  "package": {
+    "files": 160,
+    "allExtractedFileHashesMatch": true,
+    "payloadChecks": {
+      "monoRuntimePresent": true,
+      "managedGameAssemblyPresent": true,
+      "il2cppGameAssemblyAbsent": true
+    },
+    "report": "reports/camera-seams/mono-release-package.json"
+  },
+  "nativeStartup": {
+    "ready": true,
+    "marker": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56",
+    "startedFromExtractedZip": true,
+    "log": "reports/camera-seams/mono-release-player.log",
+    "scope": "Standalone startup; gameplay and camera checks are recorded separately."
+  },
+  "relatedVerification": "camera-seam-verification.json"
+}

@@ -1,0 +1,367 @@
+{
+  "result": "Succeeded",
+  "output": "F:/AAMINIGAME/MINIGAME/Builds/NORM-Windows-x64-Mono-20261021-144903/MiniGame.exe",
+  "backend": "Mono2x",
+  "developmentBuild": false,
+  "buildOptions": "None",
+  "errors": 0,
+  "warnings": 1,
+  "seconds": 8.3417047,
+  "scenes": [
+    "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "Assets/MiniGame/Scenes/InspectionApartment.unity",
+    "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+  ],
+  "project": "F:\\AAMINIGAME\\MINIGAME\\UnityProject",
+  "unity": "2022.3.23f1c1",
+  "sourceFilesUnchangedDuringBuild": true,
+  "changed": [],
+  "sourceSnapshot": [
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_001_-4043127826428628215.asset",
+      "sha256": "82556e269df25f68dad54bd88527caf31b44f519bda0bb4879f3e50477fac92e"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_002_1091224107525181009.asset",
+      "sha256": "d134c70129e6a959a9f2240aa7306ff8859a5a8c584e0dd9bba674195dcba180"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_003_7527258002745046323.asset",
+      "sha256": "7feaa3ec2da1456ebcb0194873dc841a09b99ba6b86ab8edfc7bde9e59196f6d"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_004_7294289259420279284.asset",
+      "sha256": "25e6f88a104328296f7d2539bbc3582f23fe5e7e26740e9e46d08321612da62e"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_005_-1672925723338815221.asset",
+      "sha256": "0e147c9008dad621993e06107ed0254be5fd77080294bc86e5d198997cc6a8e7"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_006_-4123773509398720473.asset",
+      "sha256": "7a0bc3e20a0d869391ecf1d9063a99a318b735103fd2c36dcd802309d78fd24b"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_007_-1243411915737478160.asset",
+      "sha256": "5dba12a6400d8408c6ff3f4811b4cac28c9da221c785df24ad1f9817050ce837"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_008_8896106778504898485.asset",
+      "sha256": "c8477f9f0a6d44231eb63b9ca2a43a34e83f2d5400eb3cf7c75fec65b87be410"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_009_6419006254901402695.asset",
+      "sha256": "c886a0e2c5fc225ebb80854e1cfc27bed653deefd0d7a63e5105fbb744d45678"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_010_2275747457975706330.asset",
+      "sha256": "646d7f5ed37ff5f9c615f4371ab758c5c5334e151b8ccc766e1e8f5d238c4d74"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_011_-6971972543358434274.asset",
+      "sha256": "3c93f6c41ad1c360cfe3993758afae9310aff6dcdcd35852e79145da0d168eff"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Generated/WallSurfaceRepair\\B_平面_-7951886638913546258.asset",
+      "sha256": "e7cfb51eec96b94cdcb33bfe5190443cdb9851342567692f2811022fb9932f04"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\AmberTerminalPlayerSmoke.cs",
+      "sha256": "49ba73e7fd963575d9aa286e73bfe56b26f77f47911b90d887db8d0418510100"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\ApartmentPlayer.cs",
+      "sha256": "51ecaecd5bc8697defd9d695c5999a87edeba4fc266fb19196f9d8b9ef94fb5e"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\BedtimeAtmosphere.cs",
+      "sha256": "80725773b71e4115d477f9fe7d846dedfe24741e342baf2dac6b1009ac97d0fb"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\BedtimeCollisionGate.cs",
+      "sha256": "2c558b4086afc720510651ab1fa8a0f0ca4e4461f6c614e713587d553747e1e5"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\BedtimeGuidance.cs",
+      "sha256": "0c8b8ca1606ba408b19bd7afd21f8004a789590ed744f622109b06bca1592567"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\CrtUiOrientationProbe.cs",
+      "sha256": "4af3fcc7e90f9aac9f5b0fc8876a5986add47fc2b3e3511ecafd1290aad23d18"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DayZeroOpeningPlayerSmoke.cs",
+      "sha256": "318f61b817ec70d5ddaece6c8e90e51386eda095184253b23dd3f206c42a3011"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DialoguePackageAsset.cs",
+      "sha256": "44f27590db473dc2010fd3dc047507ca62d651eeaca076d8ecd01405654d28a4"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DialogueTextPlayback.cs",
+      "sha256": "b3cae6bd665ed523fcc68f84a064571d4ac395240330ccabc8ec4deaaf583acf"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DoorViewCamera.cs",
+      "sha256": "024f8b12b51eff20c50bf52591fbcf54077532fba07ffb816e4454b533606713"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DreamAnimationStage.cs",
+      "sha256": "481adf45fec8baefcefefe68dfe04064587abe54dd01b6c46c0d8fc12d6c0e8a"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DreamEndingController.cs",
+      "sha256": "f1ccf903960be7d9b39fcc6a47ab5653a630a2b93d9cfe037cb6e5a1e5eea7da"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DreamSequenceDirector.cs",
+      "sha256": "f99a07bd5ee90215892f46aec27b1f491c9b86782c8249d4696c6e6fcd978c98"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\DreamSequenceProfile.cs",
+      "sha256": "4e7782c02d0e083ae8bd8c74473d77d3d43ad3a6e81c4279768fd4bd507699c1"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\HingedDoor.cs",
+      "sha256": "7e9e7645bd4ef51a257e661b1ce21635fbced0a2e2680e16e490211952e5343e"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\InteractionFocusOutline.cs",
+      "sha256": "2b8681703801a5531a1f914429e3e20be58cd3bdc50de0e4cf3180ec1252c192"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameAudioButton.cs",
+      "sha256": "8e24e39235d764b7c2b18dfb3598124a759f2afc25e91587ae8c80816798ee22"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameAudioDirector.cs",
+      "sha256": "439792f9a0323ad506db4fa5eceeb027fb025dfe52ce15a386a7b667638fe0ca"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameAudioProfile.cs",
+      "sha256": "bf4261a63f655858a0ccae9988ce1b46da499fcd556d4919bb50cc7e84254477"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameAudioService.cs",
+      "sha256": "64f2326814ea899c2d84634052fabab660a5af82ee5a0975fb86ab5d67e97473"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameBootstrap.cs",
+      "sha256": "b0b5ec35a7add80a9f7c3e894503b88ccefe6a91bb6e9c64fea29c695749fcd4"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameScreen.cs",
+      "sha256": "db50d7e844f74b8ac0833433e84b0c8bda2d98cc2ca739405f79052d9d116cb1"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\MiniGameSessionHost.cs",
+      "sha256": "d27cf85a603bf7a24aab19c6860845737d2bb5697f98094052867664aab5bb8f"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\NormBugPlayerProbe.cs",
+      "sha256": "46b129510cdfa48792ddfab0b40b826f1e841ae2fcd0c924303100349d788ba2"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\OpeningMotionProbe.cs",
+      "sha256": "761cf82b5faa6cbbd7d703da913a494b11a82b08783a8730f9ebec950a630728"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PatientMonitorProfile.cs",
+      "sha256": "4874198c8d4255e0b328223126538ffecea1a3829fe35d4de8f282824c3278ef"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PatientMonitorRoom.cs",
+      "sha256": "19ba2e445c53d0c07fcdfbf9ed191a4d44de81d9fda9f86e00f89cf935459310"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PatientSurveillanceFeed.cs",
+      "sha256": "a2ba6238aae0edf38a0ab85e06762124e14ef2048ba062d53fddbbae260833ad"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PauseBackdropPlayerProbe.cs",
+      "sha256": "e8e98d209f9ddf25c0392479ac37e0e42d9dfbda9bfddd13f21357483fc8a54b"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PauseMenuBackdrop.cs",
+      "sha256": "c9ffdf82690acb6e1bc5ebe2097ff56c106f8cafdcf82408726688786596d302"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PauseMenuButton.cs",
+      "sha256": "ee183ce25e056e286dc0073da486b071000376707be6004dd34f4eb122e6c01c"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PauseMenuHitArea.cs",
+      "sha256": "847a9280c00a5d55b5e622131006705af5dd983d6f90966bda43f35f25c2af43"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PauseMenuPerspective.cs",
+      "sha256": "8f14557cfe5b0469fc146a43d58b8005040acf285c0973fe2e8b04bb62284467"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PauseMenuView.cs",
+      "sha256": "df4572c0e882252a10a6588f8a08d5563d590f4c147952d417f636df95e4f136"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PlayerRebellionProfile.cs",
+      "sha256": "c35c88442357b09f8e3151cab0ba18cd8515bc98c3ee42c3eb0ff591885816f5"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PlayerRuntimeSettings.cs",
+      "sha256": "b296423d6b370d036b3e0df57217020d1969e9221f5f65eedda87807eeaaa2ef"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PortraitCatalog.cs",
+      "sha256": "4d928dafd43005181bc4eadff06708d290cf647ca748367e868a6a49c1b141a7"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PresentationEffects.cs",
+      "sha256": "fcd8eeaf29c903e8974288422ae7c79a4b792a70e574bbd6df09e83dddcee988"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PropNarrationComposite.cs",
+      "sha256": "33027db594dfd4c4fdefd03b51f8db071f520b7780058cb08ea30be61f620210"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\PropNarrationView.cs",
+      "sha256": "7c8d5c584aa9eec6ac88c160ca64e6200ee6a48ae528bda9215233cebcbe6748"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\ReadableProp.cs",
+      "sha256": "fe8e1476b55242ba48a0f02afeeec3fa9cfe7218d9fc0272e7569a6780022000"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\ReferenceCameraProjection.cs",
+      "sha256": "6f282a584a8d11b9a64f4b3c249c4f8512a07735b1c10734fb4bce1c364c4ddf"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\RetroScreenEffect.cs",
+      "sha256": "88964112e8890ecd7320131bffa7134e2b7727879dff76d544cb78d98274ab27"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\RetroScreenProfile.cs",
+      "sha256": "597e8f8b5ede0dce46bdbd00680cfbd0c618074c5922d88f7ff87c4d06e258ec"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\RoomLightingController.cs",
+      "sha256": "b6c4669b775e2a65e34d78d8a1b67aa045d242d7df5d9943c945c3709f6b6339"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\RoomLightingPlayerProbe.cs",
+      "sha256": "5b68ee5b6867c6ef06312a737a4dbd1f253643a4a9176790be6b0b9f69887768"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\RoomLightingProfile.cs",
+      "sha256": "cedb0c3229982a7fdeb9fa879d570d9c55f925faab6ac703b3d3944056940a88"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\RoomReadableDocument.cs",
+      "sha256": "cc2b39c1aa24445efd3b72064fc69b627316b4eef69164fbe603e6d9731db260"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\SelfReviewMonitor.cs",
+      "sha256": "15db0cdc30ad82cee51e86d788c9cde7a79594f40e232ea59b715c6c9bca25ba"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\SupervisorDoorwayView.cs",
+      "sha256": "a607b1928d3e961babd24c5f47752303c2c58839cdeeb8219483239de98ecece"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalAssetSet.cs",
+      "sha256": "42ac84d34aba7c8c1198dce6df1c91cc2b9126c8bebcad8d30db0fea002754dd"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalBitmapText.cs",
+      "sha256": "8f2f4c62f5665afe54219ae7b8f0dbb7c5317c1e1b77a01cbbf491aad8ebd931"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalButtonVisual.cs",
+      "sha256": "419d518d42f7032985d3357d5cf10ad62224b441f7f42edbacbcf60e1b16b7b5"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalClosingRecorder.cs",
+      "sha256": "3d334f207b6bcdff3eb2991608772277b7913527009b7ff8d7e0a3c1753b36d7"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalDisplay.cs",
+      "sha256": "8d16fdf4ab6509d768e3915b735c42c39d3cf167f0fe4a7ba618c43b874f6a23"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalHighlightGroup.cs",
+      "sha256": "98c4d74096761110bbbfcc778a8813243bae18c81c31a64bbd73864b27d270a7"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalIndustrialSkin.cs",
+      "sha256": "c10b4e4097009ec9d21539aea7311c009ac4e3f5cca9c1339057c0d425900795"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalPortraitPresenter.cs",
+      "sha256": "874cd6777edf0490cc1b13a3efc262be921320ac9cf2daf06b963e29f00c198f"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalRosterPointer.cs",
+      "sha256": "d489835ed3ad0d13136d33b24fbebf3993f9afa91a2faaef285443c30f1ab12f"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalSeating.cs",
+      "sha256": "088a164d0aa7f5dac449fa669ea4c51e716ffc0e2eb7e24e085ab57819f4507f"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalSignalController.cs",
+      "sha256": "2b5004248f3566a3bc1fb24020b20e92d3575893d6e553176f0566250507d12b"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalSignalEffect.cs",
+      "sha256": "d97280b1618a21ec601172505997f9e1434d2698f413711ab53df04dc8bc8637"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalSignalProfile.cs",
+      "sha256": "790c05372cbb19258533da2417fc172e8d0ae34b3ea6bba330d5a659a7ddddd4"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalSignalTuningPanel.cs",
+      "sha256": "c051e03b28db57df4e037e0ecae13e8d7ccace6d1152b8eb911727c28e21b8f6"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalTextMetrics.cs",
+      "sha256": "dc811d8bf4d1e812d7c77970f2d093350a3825cfeed3419037da3f226115d555"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalTranscriptView.cs",
+      "sha256": "a3cbe8a15bac2d965e01b14f36efcd4496cf1c7cbcd236cf1735bdb8a6dea84e"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalTransitionView.cs",
+      "sha256": "eade8c6038ab9ac7890b378616480fd1c15f920d87e2916ad92246e666576033"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\TerminalView.cs",
+      "sha256": "8d956b91bc69184d3e2d8f3c3031c026fe306039aaf92301545a4a6f816c3c2c"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\WallLightingPlayerProbe.cs",
+      "sha256": "341a81505bdd679bb65e45e9510375e98e42dc8887f43978a0daf7549867dcc9"
+    },
+    {
+      "path": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets/MiniGame/Runtime\\WorldInteraction.cs",
+      "sha256": "17fe79413745fd4d784f695a4b621c34a454e64e6c34ead9b459ea795b9b1ca5"
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets/MiniGame/Scenes/DreamEndingBeach.unity",
+      "sha256": "3bb67c0c2ca69a67d89aeadcb9f43ae34f1428f06ff820305209f0b4c22a7c97"
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "sha256": "a69aeffe3701e3fc76027aa421e4c28d41e1fc07edd8f56fdc46b742d0193daa"
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "1c67cd4252ea4edb12ce6903b29b1df8b4aaefa9b4177df17302497ec8762488"
+    }
+  ],
+  "messages": [
+    {
+      "type": "Warning",
+      "content": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+    }
+  ]
+}

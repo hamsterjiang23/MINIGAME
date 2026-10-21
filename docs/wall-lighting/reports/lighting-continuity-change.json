@@ -1,0 +1,46 @@
+{
+  "appliedAt": "2026-10-21T10:44:17.360527+08:00",
+  "scene": "UnityProject\\Assets\\MiniGame\\Scenes\\MainRoomCombined.unity",
+  "beforeSha256": "b327ed5bf5265de6fed2b7f32ca8bc807078aceb2b8260b30b18d3a6305e568e",
+  "afterSha256": "b29331ae8dbad4adaf61b8e2afb1be22d598c8d71dacd63cdcb296a45e232e11",
+  "changedLights": [
+    {
+      "fileID": "709709736",
+      "name": "MonitorLight (1)",
+      "before": "Auto",
+      "after": "ForcePixel"
+    },
+    {
+      "fileID": "1127447290",
+      "name": "MonitorLight (2)",
+      "before": "Auto",
+      "after": "ForcePixel"
+    },
+    {
+      "fileID": "529657926",
+      "name": "MonitorLight (3)",
+      "before": "Auto",
+      "after": "ForcePixel"
+    },
+    {
+      "fileID": "620645195",
+      "name": "MonitorLight (4)",
+      "before": "Auto",
+      "after": "ForcePixel"
+    },
+    {
+      "fileID": "1920014243",
+      "name": "MonitorLight (5)",
+      "before": "Auto",
+      "after": "ForcePixel"
+    }
+  ],
+  "onlyChangedField": "Light.m_RenderMode",
+  "allOtherSceneBlocksUnchanged": true,
+  "uploadedColourProfileUnchanged": true,
+  "lightTransformsColoursIntensitiesRangesUnchanged": true,
+  "qualitySettingsUnchanged": true,
+  "geometryMaterialsGameplayAndBedGuideUnchanged": true,
+  "diagnosticControlA": "Artifacts/WallLighting/wall-continuity-force-pixel/diagnostics.json",
+  "diagnosticControlB": "Artifacts/WallLighting/wall-continuity-larger-pixel-budget/diagnostics.json"
+}

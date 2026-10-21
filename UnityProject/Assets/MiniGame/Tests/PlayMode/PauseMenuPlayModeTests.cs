@@ -86,7 +86,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(15000)]
-        public IEnumerator PerspectiveHitAreasFollowTheVisibleRowsAcrossTheirWidth()
+        public IEnumerator FlatAmberCommandsHaveMatchingPointerTargetsAcrossTheirWidth()
         {
             view.SetVisible(true);
             yield return WaitForFade(true);
@@ -98,16 +98,87 @@ namespace MiniGame.UnityHost.Tests
                 foreach (float x in new[] { .08f, .5f, .92f })
                 {
                     var local = new Vector2(Mathf.Lerp(row.rect.xMin, row.rect.xMax, x), row.rect.center.y);
-                    Vector2 projected = PauseMenuPerspective.Project(column.InverseTransformPoint(row.TransformPoint(local)));
-                    var screen = RectTransformUtility.WorldToScreenPoint(null, column.TransformPoint(projected));
+                    var screen = RectTransformUtility.WorldToScreenPoint(null, row.TransformPoint(local));
                     var hit = FirstHit(screen);
                     Assert.That(hit.GetComponentInParent<PauseMenuButton>(), Is.SameAs(button),
-                        "The rendered trapezoid and pointer target must agree, including the receding edge.");
+                        "Each amber command and its pointer target must agree across the complete row.");
                 }
             }
+            Assert.That(column.GetComponentsInChildren<PauseMenuPerspective>(true), Is.Empty,
+                "The terminal-themed pause commands must stay flat rather than skewing text away from its hit rectangle.");
+            var selectedFill = view.Buttons[0].transform.Find("FocusFrame").GetComponent<Image>();
+            Assert.That(selectedFill.color, Is.EqualTo(new Color(239f / 255, 184f / 255, 63f / 255, 1)));
+            var unselectedLabel = view.Buttons[2].transform.Find("Label").GetComponent<Text>();
+            Assert.That(unselectedLabel.color.r, Is.GreaterThan(unselectedLabel.color.g));
+            Assert.That(unselectedLabel.color.g, Is.GreaterThan(unselectedLabel.color.b),
+                "Unselected commands must use the same amber family as the terminal, without ivory or green UI text.");
             Assert.That(view.transform.Find("PauseColumn/PauseContext"), Is.Null);
             Assert.That(view.transform.Find("PauseColumn/PauseHint"), Is.Null);
             Assert.That(view.GetComponentsInChildren<Text>(false).Any(text => text.name == "PauseStatus"), Is.False);
+        }
+
+        [UnityTest, Timeout(15000)]
+        public IEnumerator OperationManualKeepsTheGamePausedAndBlocksMainMenuCallbacksUntilReturn()
+        {
+            view.ShowManual();
+            Assert.That(view.ManualVisible, Is.False, "A hidden pause menu cannot open a detached manual.");
+            Time.timeScale = 0;
+            view.SetVisible(true);
+            yield return WaitForFade(true);
+            events.SetSelectedGameObject(view.Buttons[2].gameObject);
+            view.ShowManual();
+            Assert.That(view.ManualVisible, Is.True);
+            Assert.That(view.transform.Find("PauseColumn").gameObject.activeSelf, Is.False);
+            var manual = view.transform.Find("PauseOperationManual");
+            var close = manual.Find("ManualReturn").GetComponent<Button>();
+            Assert.That(events.currentSelectedGameObject, Is.SameAs(close.gameObject));
+            Canvas.ForceUpdateCanvases();
+            yield return null;
+
+            foreach (var action in view.Buttons)
+            {
+                Submit(action);
+                action.onClick.Invoke(); // Owner callbacks must also reject an already queued action from the hidden column.
+            }
+            Assert.That(activations, Is.All.EqualTo(0), "Reading controls cannot continue, save, load or invoke another pause action.");
+            Assert.That(Time.timeScale, Is.Zero);
+            Assert.That(view.GetComponent<CanvasGroup>().blocksRaycasts, Is.True);
+            var center = RectTransformUtility.WorldToScreenPoint(null, ((RectTransform)manual).TransformPoint(Vector3.zero));
+            Assert.That(FirstHit(center).transform.IsChildOf(manual), Is.True,
+                "Clicks over the manual must be captured by its own panel, never by the world or hidden menu.");
+
+            Submit(close);
+            Assert.That(view.ManualVisible, Is.False);
+            Assert.That(Time.timeScale, Is.Zero, "Returning from the manual must retain the pause; Continue owns resuming.");
+            Assert.That(events.currentSelectedGameObject, Is.SameAs(view.Buttons[2].gameObject));
+            Assert.That(view.TryCloseManual(), Is.False, "A second close request must not resume or perform another action.");
+            yield return null;
+            Submit(view.Buttons[2]);
+            Assert.That(activations[2], Is.EqualTo(1), "The original menu action must still work after returning from its manual.");
+        }
+
+        [UnityTest, Timeout(15000)]
+        public IEnumerator ManualListsLiveControlsAndResetsWhenThePauseCloses()
+        {
+            view.SetVisible(true);
+            view.ShowManual();
+            var manual = view.transform.Find("PauseOperationManual");
+            string text = string.Join("\n", manual.GetComponentsInChildren<Text>(true).Select(label => label.text));
+            foreach (string binding in new[] { "WASD", "鼠标左键", "E    ", "Enter", "空格", "1–4", "Esc", "F5", "F9" })
+                Assert.That(text, Does.Contain(binding));
+            Assert.That(text, Does.Not.Contain("F2"));
+            Assert.That(text, Does.Not.Contain("F3"));
+            Assert.That(text, Does.Not.Contain("鼠标右键"), "The manual must describe the current left-click readable-prop binding.");
+            Assert.That(manual.GetComponentsInChildren<Button>(true), Has.Length.EqualTo(1),
+                "The manual has one return action and no gameplay or settings controls.");
+            view.SetVisible(false);
+            Assert.That(view.ManualVisible, Is.False);
+            Assert.That(events.currentSelectedGameObject, Is.SameAs(underlying.gameObject));
+            yield return WaitForFade(false);
+            view.SetVisible(true);
+            Assert.That(view.ManualVisible, Is.False);
+            Assert.That(view.transform.Find("PauseColumn").gameObject.activeSelf, Is.True);
+            Assert.That(events.currentSelectedGameObject, Is.SameAs(view.Buttons[0].gameObject));
         }
 
         [UnityTest, Timeout(15000)]

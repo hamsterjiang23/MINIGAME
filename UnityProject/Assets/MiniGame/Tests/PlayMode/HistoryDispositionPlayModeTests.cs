@@ -31,7 +31,7 @@ namespace MiniGame.UnityHost.Tests
             yield return Until(host, () => host.Screen.DayZeroOpeningWaiting, "supervisor opening");
             Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
             yield return Until(host, () => Find(host, "Continue") != null
-                && host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_T1"), "first native tutorial line");
+                && host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__P00_D0_R1_COMMON_001"), "first native tutorial line");
 
             Assert.That(ActiveButton(host, "HistoryTab"), Is.Null);
             var introKeys = host.Runtime.GetView().Transcript.Select(line => line.Key).ToArray();
@@ -40,7 +40,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             Assert.That(host.Runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.Introduction));
             Assert.That(host.Runtime.GetView().Transcript.Select(line => line.Key), Is.EqualTo(introKeys));
-            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T1"), Is.False,
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.False,
                 "Removed record browsing must not complete unfinished dialogue.");
             Assert.That(Find(host, "Disposition-Purify"), Is.Null,
                 "Purification stays locked until the tutorial finishes.");
@@ -71,7 +71,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.HistoryOpen, Is.False);
             Assert.That(host.Runtime.GetView().Transcript.Count(line => line.SourceNodeId == "disposition:Purify"), Is.EqualTo(1));
             yield return Until(host, () => Find(host, "Continue") != null
-                && host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_M_PURIFY_T1"), "first native purification reaction");
+                && host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__P00_D0_R1_ACTION_001"), "first native purification reaction");
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "history-day0-purify-reaction");
             yield return AdvanceUntil(host, () => host.Runtime.GetView().TerminalPage == TerminalPage.Archive,
                 "both native reactions finish before signal loss and archive");
@@ -81,19 +81,20 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(archived.PresentedDisposition, Is.EqualTo(Disposition.Purify));
             Assert.That(archived.Transcript.Where(line => !line.IsPlayer).Select(line => line.SourceNodeId), Is.EqualTo(new[]
             {
-                "tutorial__D0_T1", "tutorial__D0_T2", "tutorial__D0_T3", "tutorial__D0_T4", "tutorial__D0_T5",
-                "tutorial__D0_M_PURIFY_T1", "tutorial__D0_M_PURIFY_T2"
+                "tutorial__P00_D0_R1_COMMON_001", "tutorial__P00_D0_R1_COMMON_002", "tutorial__P00_D0_R1_COMMON_003",
+                "tutorial__P00_D0_R1_COMMON_004", "tutorial__P00_D0_R1_COMMON_005",
+                "tutorial__P00_D0_R1_ACTION_001", "tutorial__P00_D0_R1_ACTION_002"
             }));
             Assert.That(archived.Transcript.Where(line => !line.IsPlayer).All(line => line.Completed), Is.True);
             Assert.That(archived.Transcript.Count(line => line.SourceNodeId == "disposition:Purify"), Is.EqualTo(1));
             Assert.That(archived.Game.RemainingPurificationQuota, Is.Zero);
             var saved = JsonUtility.FromJson<SaveEnvelope>(host.Runtime.Save());
             var snapshot = SnapshotCodec.Deserialize(saved.CoreJson, MiniGameSessionHost.Current.Rules).CreateSnapshot();
-            Assert.That(snapshot.State.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.EqualTo(-1));
+            Assert.That(snapshot.State.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.Zero);
             Assert.That(snapshot.State.Days.Single(day => day.Day == 0).Purifications, Is.EqualTo(1));
             Assert.That(snapshot.CommandHistory.Count(command => command.Kind == CommandKind.SubmitDisposition), Is.EqualTo(1));
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "history-day0-purify-archive");
-            Debug.Log("MINIGAME_HISTORY_DISPOSITION_PASSED day=0; passive transcript; F3 removed; purification waits for dialogue; pause locks; two native reactions; one disposition; trust=-1");
+            Debug.Log("MINIGAME_HISTORY_DISPOSITION_PASSED day=0; passive transcript; F3 removed; purification waits for dialogue; pause locks; two native reactions; one disposition; trust=0");
         }
 
         private static Button ActiveButton(MiniGameBootstrap host, string name) => host.Screen.GetComponentsInChildren<Button>(false)

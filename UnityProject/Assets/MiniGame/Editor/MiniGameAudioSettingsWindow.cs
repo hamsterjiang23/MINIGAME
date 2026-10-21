@@ -197,13 +197,19 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.StartMenu: return "主菜单音乐";
                 case MiniGameSound.Gameplay: return "房间音乐";
                 case MiniGameSound.Dream0: return "Day1 鲸尸海滩";
-                case MiniGameSound.Dream1: return "Day2 无尽长路";
+                case MiniGameSound.Dream1: return "Day2 倒悬花海";
                 case MiniGameSound.Dream2: return "备用：枯花田";
                 case MiniGameSound.Dream3: return "Day3 受缚待审";
                 case MiniGameSound.EndingMusic: return "海滩终局音乐";
                 case MiniGameSound.OceanWaves: return "海浪环境声";
                 case MiniGameSound.TerminalPowerOn: return "电脑开机";
                 case MiniGameSound.TerminalPowerOff: return "电脑关机";
+                case MiniGameSound.TerminalType1: return "终端打字 1";
+                case MiniGameSound.TerminalType2: return "终端打字 2";
+                case MiniGameSound.TerminalType3: return "终端打字 3";
+                case MiniGameSound.TerminalType4: return "终端打字 4";
+                case MiniGameSound.DoorOpen: return "开门";
+                case MiniGameSound.DoorShut: return "关门";
                 case MiniGameSound.PCNoise: return "电脑底噪";
                 case MiniGameSound.Projector: return "放映机";
                 case MiniGameSound.Scan: return "扫描";
@@ -230,8 +236,14 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.PCNoise: return "当天开机后持续循环；退出操作界面保持底噪，全部会谈完成关机后淡出。";
                 case MiniGameSound.TerminalPowerOn: return "当天第一次开机时播放一次；再次打开操作界面不重播。";
                 case MiniGameSound.TerminalPowerOff: return "当天全部会谈完成后，关闭会话并熄屏时播放一次。";
+                case MiniGameSound.DoorOpen: return "门开始打开时播放一次；锁门拒绝操作或读档定位不播放。";
+                case MiniGameSound.DoorShut: return "门开始关闭时播放一次；暂停恢复不会重复播放。";
+                case MiniGameSound.TerminalType1:
+                case MiniGameSound.TerminalType2:
+                case MiniGameSound.TerminalType3:
+                case MiniGameSound.TerminalType4: return "开机和 Closing session 关机文字每新增一个字符时，从已配置的四段打字声中等概率随机播放一段，允许重复；留空的片段不参与。";
                 case MiniGameSound.Projector: return "梦境期间叠加放映机循环声。";
-                case MiniGameSound.Scan: return "进入审查或打开检查时播放。";
+                case MiniGameSound.Scan: return "每天早上仪器扫描时播放一次；应答选项和病人检查页不播放。";
                 case MiniGameSound.LightBeep: return "检定仪的可处置指示灯亮起时播放。";
                 case MiniGameSound.WorldInteraction: return "有效的场景交互发生时播放。";
                 case MiniGameSound.UIInteraction: return "按钮点击或键盘确认触发时播放。";

@@ -1,0 +1,38 @@
+{
+  "asset": "NORM opening logo",
+  "provenance": "user-provided original PNG; copied unchanged",
+  "sourceAbsolutePath": "C:/Users/admin/AppData/Roaming/LarkShell/sdk_storage/78f034e755d6027faf7872f34bc06316/resources/images/img_v3_0216m_f82b1d76-fcff-44d1-9c3e-9ae43ab0725g.png",
+  "sourceSha256": "a9aff5f795d307b1560b65c925401c69b32d97656d3dc00a555cf5aa760ebe23",
+  "sourceBytes": 1689580,
+  "image": {
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "alphaChannel": true,
+    "topLeftAlpha": 1
+  },
+  "destinations": [
+    {
+      "path": "Art/Branding/NormLogo.png",
+      "sha256": "a9aff5f795d307b1560b65c925401c69b32d97656d3dc00a555cf5aa760ebe23",
+      "byteIdenticalToSource": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/NormLogo.png",
+      "sha256": "a9aff5f795d307b1560b65c925401c69b32d97656d3dc00a555cf5aa760ebe23",
+      "byteIdenticalToSource": true
+    }
+  ],
+  "unityImport": {
+    "textureType": "Default (RawImage)",
+    "sRGB": true,
+    "mipmaps": false,
+    "compression": "None",
+    "maxTextureSize": 4096,
+    "npotScale": "None",
+    "filterMode": "Bilinear",
+    "wrapMode": "Clamp",
+    "alphaSource": "Input",
+    "alphaIsTransparency": true
+  }
+}

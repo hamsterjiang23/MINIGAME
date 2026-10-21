@@ -1,0 +1,75 @@
+{
+  "workbook": "Art/chat_excel/【对话】监督员.xlsx",
+  "sha256": "33174f1f81d31ad36675fa59649f2cff7d288da43a0acf4fd03f85d4003f64bb",
+  "portraitArchive": {
+    "path": "Art/Characters/Supervisor/Source/监督员立绘.rar",
+    "sha256": "bc3c552cc341032d05be361f46071ed0b275ece35cc16a46b77813273f26b781"
+  },
+  "sheet": "对话流程",
+  "sourceRows": 46,
+  "images": [
+    {
+      "id": "JD_01",
+      "source": "Art/Characters/Supervisor/Expressions/JD01.png",
+      "resource": "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorPortrait.png",
+      "sha256": "c10d63b3361232d9d74697c33e2ff9ccf48e5e4f25f839e62296e927e79fd735",
+      "byteIdentical": true
+    },
+    {
+      "id": "JD_02",
+      "source": "Art/Characters/Supervisor/Expressions/JD02.png",
+      "resource": "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/JD02.png",
+      "sha256": "3ffe0e509c5194a1ec7fd089530c25e1b0c098b59a76f97a5545c36a210d31e0",
+      "byteIdentical": true
+    },
+    {
+      "id": "JD_03",
+      "source": "Art/Characters/Supervisor/Expressions/JD03.png",
+      "resource": "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/JD03.png",
+      "sha256": "3a97e7d5159a1a0c20e1e80a81b42b84d6664fc54691dc6418073c032e605b10",
+      "byteIdentical": true
+    },
+    {
+      "id": "JD_04",
+      "source": "Art/Characters/Supervisor/Expressions/JD04.png",
+      "resource": "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/JD04.png",
+      "sha256": "69d43fa215b57fa749e1d131b6534eca64c4a336e6cbf5308938c7e566754089",
+      "byteIdentical": true
+    },
+    {
+      "id": "JD_05",
+      "source": "Art/Characters/Supervisor/Expressions/JD05.png",
+      "resource": "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/JD05.png",
+      "sha256": "36937b1b75bc517bdd18c0c5ed7a9bb1643d4d50c6490e994034b1aa63914af8",
+      "byteIdentical": true
+    },
+    {
+      "id": "JD_06",
+      "source": "Art/Characters/Supervisor/Expressions/JD06.png",
+      "resource": "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/JD06.png",
+      "sha256": "8fc21a8662f6081026ff7cb58322e3da705935533d9dea87b93d19c8ba917a0d",
+      "byteIdentical": true
+    }
+  ],
+  "adaptations": [
+    {
+      "cell": "L20",
+      "kind": "inherit-portrait",
+      "value": "JD_03"
+    },
+    {
+      "cell": "J40",
+      "kind": "day-boundary",
+      "originalNext": "P02_D4_R1_COMMON_002",
+      "policy": "End this day's presentation; Day4 starts at its own root in the TakenAway ending."
+    },
+    {
+      "kind": "literal-array-recovered",
+      "sheet": "立绘ID",
+      "cell": "A2",
+      "formulaCell": "A2",
+      "value": "JD_01"
+    }
+  ],
+  "stagePolicy": "For Day1-3, the final two authored lines use the existing Briefing cue; preceding lines use MorningInspection. Day4 is TakenAway ending content."
+}

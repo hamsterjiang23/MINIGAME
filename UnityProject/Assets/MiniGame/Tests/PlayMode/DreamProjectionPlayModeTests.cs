@@ -158,7 +158,14 @@ namespace MiniGame.UnityHost.Tests
             viewingPose = Track(new GameObject("Dream test viewing pose")).transform;
             viewingPose.position = origin + new Vector3(0, 1, -4);
             profile = Track(ScriptableObject.CreateInstance<DreamSequenceProfile>());
-            foreach (var day in profile.Days) day.Artwork = Artwork(day.Day);
+            foreach (var day in profile.Days)
+            {
+                day.Artwork = Artwork(day.Day);
+                var production = Resources.Load<DreamSequenceProfile>("MiniGame/DreamSequenceDefault").GetDay(day.Day);
+                day.Frames = production.Frames;
+                day.CrossfadeSeconds = production.CrossfadeSeconds;
+                day.PostIntensity = production.PostIntensity;
+            }
             director = Track(new GameObject("Dream test director")).AddComponent<DreamSequenceDirector>();
             director.Configure(wall, viewingPose, projection, camera, profile);
         }

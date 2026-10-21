@@ -1,0 +1,59 @@
+[
+  {
+    "name": "family-letter",
+    "vertices": 12,
+    "sourceSha256": "ecdb8e8b1339c441785c73a1dee4ad1af3dafcdeb61ed8cf956a9569a43ef90d",
+    "visibleAlphaThreshold": 128,
+    "visiblePixelsOutsideMesh": 0,
+    "outsideBounds": null,
+    "edgeSamplePixel": [
+      320,
+      650
+    ],
+    "edgeSampleRgba": [
+      166,
+      134,
+      93,
+      253
+    ],
+    "edgeMinimumAlpha5x5": 253
+  },
+  {
+    "name": "daily-newspaper",
+    "vertices": 8,
+    "sourceSha256": "a8d8009fcf161662df41d9c42194bb8ca7f032709618b309013a2deb49af466d",
+    "visibleAlphaThreshold": 128,
+    "visiblePixelsOutsideMesh": 0,
+    "outsideBounds": null,
+    "edgeSamplePixel": [
+      130,
+      600
+    ],
+    "edgeSampleRgba": [
+      58,
+      42,
+      27,
+      252
+    ],
+    "edgeMinimumAlpha5x5": 252
+  },
+  {
+    "name": "employment-notice",
+    "vertices": 4,
+    "sourceSha256": "e28f776c969d16ec3516bbed37afb0edb6418b1ef29d1cdeb575ea15d11e215c",
+    "visibleAlphaThreshold": 128,
+    "visiblePixelsOutsideMesh": 0,
+    "outsideBounds": null,
+    "edgeSamplePixel": [
+      60,
+      750
+    ],
+    "edgeSampleRgba": [
+      98,
+      64,
+      35,
+      252
+    ],
+    "edgeMinimumAlpha5x5": 252
+  }
+]

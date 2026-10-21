@@ -1,6 +1,6 @@
 {
   "name": "MiniGame.UnityHost.Editor",
   "rootNamespace": "MiniGame.UnityHost.Editor",
-  "references": ["MiniGame.Core", "MiniGame.Presentation", "MiniGame.UnityHost", "YarnSpinner.Unity", "YarnSpinner.Unity.Editor"],
+  "references": ["MiniGame.Core", "MiniGame.Presentation", "MiniGame.UnityHost", "YarnSpinner.Unity", "YarnSpinner.Unity.Editor", "PMSAmberTerminal.Runtime"],
   "includePlatforms": ["Editor"]
 }

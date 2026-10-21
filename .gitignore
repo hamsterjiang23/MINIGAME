@@ -17,6 +17,10 @@ UnityProject/UserSettings/
 UnityProject/ProjectSettings/Packages/dev.yarnspinner/*-generated.ysls.json
 Builds/
 Artifacts/
+Tools/**/__pycache__/
+UnityProject/Assets/InitTestScene*.unity
+UnityProject/Assets/InitTestScene*.unity.meta
+UnityProject/ProjectSettings/TagManagerV2.asset
 
 # Include the complete research snapshot in this private repository.
 !/research/no-im-not-a-human/

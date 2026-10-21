@@ -189,7 +189,7 @@ namespace MiniGame.UnityHost
         private void RenderStage()
         {
             var day = profile.GetDay(ActiveDay);
-            stage.Render(ActiveDay, day.Artwork, PlaybackSeconds, PlaybackDuration, day.MotionIntensity);
+            stage.Render(day, PlaybackSeconds);
             if (projectionMaterial != null)
                 projectionMaterial.SetFloat("_Opacity", Mathf.Min(1, PlaybackSeconds / .35f, (PlaybackDuration - PlaybackSeconds) / .45f));
         }

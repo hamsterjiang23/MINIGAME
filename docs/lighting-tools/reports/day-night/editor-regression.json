@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 0.86,\r\n  \"summary\": {\r\n    \"total\": 6,\r\n    \"passed\": 6,\r\n    \"failed\": 0,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.LightingDesignerToolsTests.PlayModeWritesAndProfileInspectorEditsSurviveReturningToEditMode\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 1.544554,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.LightingDesignerToolsTests.SavingTheTemporaryAssetReappliesItsValuesAfterARealSceneReload\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.2157934,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.LightingDesignerToolsTests.SceneViewCameraHasTheExistingRetroImageEffectEnabled\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.0002833,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

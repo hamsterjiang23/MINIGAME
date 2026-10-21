@@ -1,0 +1,258 @@
+// Derived from the canonical package Yarn; edit the authoring source, not this file.
+title: RuntimeDeclarations
+---
+<<declare $minigame_cue_text = "">>
+===
+
+title: Core_44315f4d5f5055524946592e7265616374696f6e
+---
+米洛: 做完就能回去了吗？ #line:mg_44315f4d5f5055524946592e7265616374696f6e_0 #source:D1_M_PURIFY_T1 #portrait:ML03
+米洛: 我会跟着走的。 #line:mg_44315f4d5f5055524946592e7265616374696f6e_1 #source:D1_M_PURIFY_T2 #portrait:ML03
+===
+
+title: Core_44315f4d5f52454c454153452e7265616374696f6e
+---
+米洛: 我真的可以走了？ #line:mg_44315f4d5f52454c454153452e7265616374696f6e_0 #source:D1_M_RELEASE_T1 #portrait:ML05
+米洛: 不用再检测一次吗？ #line:mg_44315f4d5f52454c454153452e7265616374696f6e_1 #source:D1_M_RELEASE_T2 #portrait:ML05
+米洛: 那我出门的时候，会轻轻走的。 #line:mg_44315f4d5f52454c454153452e7265616374696f6e_2 #source:D1_M_RELEASE_T3 #portrait:ML05
+===
+
+title: Core_44315f4d5f54524541542e7265616374696f6e
+---
+米洛: 是刚才答错了吗？ #line:mg_44315f4d5f54524541542e7265616374696f6e_0 #source:D1_M_TREAT_T1 #portrait:ML03
+米洛: 我可以再说一遍。 #line:mg_44315f4d5f54524541542e7265616374696f6e_1 #source:D1_M_TREAT_T2 #portrait:ML03
+米洛: 这次我会说得慢一点。 #line:mg_44315f4d5f54524541542e7265616374696f6e_2 #source:D1_M_TREAT_T3 #portrait:ML03
+===
+
+title: Core_44315f52315f4f312e6272616e6368
+---
+米洛: 那个东西一响，我就害怕。 #line:mg_44315f52315f4f312e6272616e6368_0 #source:D1_R1_CLOSING1 #portrait:ML01
+米洛: 响了以后，我的手一直抖。 #line:mg_44315f52315f4f312e6272616e6368_1 #source:D1_R1_CLOSING2 #portrait:ML01
+米洛: 他们说我不正常。 #line:mg_44315f52315f4f312e6272616e6368_2 #source:D1_R1_CLOSING3 #portrait:ML01
+===
+
+title: Core_44315f52315f4f322e6272616e6368
+---
+米洛: 那个东西一响，我就害怕。 #line:mg_44315f52315f4f322e6272616e6368_0 #source:D1_R1_CLOSING1 #portrait:ML01
+米洛: 响了以后，我的手一直抖。 #line:mg_44315f52315f4f322e6272616e6368_1 #source:D1_R1_CLOSING2 #portrait:ML01
+米洛: 他们说我不正常。 #line:mg_44315f52315f4f322e6272616e6368_2 #source:D1_R1_CLOSING3 #portrait:ML01
+===
+
+title: Core_44315f52315f4f332e6272616e6368
+---
+米洛: 那个东西一响，我就害怕。 #line:mg_44315f52315f4f332e6272616e6368_0 #source:D1_R1_CLOSING1 #portrait:ML01
+米洛: 响了以后，我的手一直抖。 #line:mg_44315f52315f4f332e6272616e6368_1 #source:D1_R1_CLOSING2 #portrait:ML01
+米洛: 他们说我不正常。 #line:mg_44315f52315f4f332e6272616e6368_2 #source:D1_R1_CLOSING3 #portrait:ML01
+===
+
+title: Core_44315f52315f4f50454e31
+---
+米洛: 这里还要检测吗？ #line:mg_44315f52315f4f50454e31_0 #source:D1_R1_OPEN1 #portrait:ML01
+米洛: 和昨天广场上的不一样吗？ #line:mg_44315f52315f4f50454e31_1 #source:D1_R1_OPEN2 #portrait:ML02
+-> 嗯，不一样。 #response_44315f52315f4f31 #source:D1_R1_O1
+    <<select_response "44315f52315f4f50454e31" "44315f52315f4f31">>
+-> 别害怕，慢慢说。 #response_44315f52315f4f32 #source:D1_R1_O2
+    <<select_response "44315f52315f4f50454e31" "44315f52315f4f32">>
+-> 和你说的一样。 #response_44315f52315f4f33 #source:D1_R1_O3
+    <<select_response "44315f52315f4f50454e31" "44315f52315f4f33">>
+===
+
+title: Core_44315f52325f4f312e6272616e6368
+---
+米洛: 住在一起的人说的。 #line:mg_44315f52325f4f312e6272616e6368_0 #source:D1_R2_O1_T1 #portrait:ML02
+米洛: 他们笑我不敢还手。 #line:mg_44315f52325f4f312e6272616e6368_1 #source:D1_R2_O1_T2 #portrait:ML02
+米洛: 可我不知道自己做错了什么。 #line:mg_44315f52325f4f312e6272616e6368_2 #source:D1_R2_CLOSING1 #portrait:ML02
+米洛: 这些也要记吗？ #line:mg_44315f52325f4f312e6272616e6368_3 #source:D1_R2_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52325f4f322e6272616e6368
+---
+米洛: 可我不知道自己做错了什么。 #line:mg_44315f52325f4f322e6272616e6368_0 #source:D1_R2_CLOSING1 #portrait:ML02
+米洛: 这些也要记吗？ #line:mg_44315f52325f4f322e6272616e6368_1 #source:D1_R2_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52325f4f332e6272616e6368
+---
+米洛: 没人跟我说过。 #line:mg_44315f52325f4f332e6272616e6368_0 #source:D1_R2_O3_T1 #portrait:ML02
+米洛: 我以为进去会有人告诉我。 #line:mg_44315f52325f4f332e6272616e6368_1 #source:D1_R2_O3_T2 #portrait:ML02
+米洛: 可我不知道自己做错了什么。 #line:mg_44315f52325f4f332e6272616e6368_2 #source:D1_R2_CLOSING1 #portrait:ML02
+米洛: 这些也要记吗？ #line:mg_44315f52325f4f332e6272616e6368_3 #source:D1_R2_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52325f4f342e6272616e6368
+---
+米洛: 可我不知道自己做错了什么。 #line:mg_44315f52325f4f342e6272616e6368_0 #source:D1_R2_CLOSING1 #portrait:ML02
+米洛: 这些也要记吗？ #line:mg_44315f52325f4f342e6272616e6368_1 #source:D1_R2_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52325f4f50454e31
+---
+米洛: 我没有打人，也没有拿别人的东西。 #line:mg_44315f52325f4f50454e31_0 #source:D1_R2_OPEN1 #portrait:ML02
+-> 谁说你打人了？ #response_44315f52325f4f31 #source:D1_R2_O1
+    <<select_response "44315f52325f4f50454e31" "44315f52325f4f31">>
+-> 你恨他们吗？ #response_44315f52325f4f32 #source:D1_R2_O2
+    <<select_response "44315f52325f4f50454e31" "44315f52325f4f32">>
+-> 检测前谁教过你？ #response_44315f52325f4f33 #source:D1_R2_O3
+    <<select_response "44315f52325f4f50454e31" "44315f52325f4f33">>
+-> 工作人员呢？ #response_44315f52325f4f34 #source:D1_R2_O4
+    <<select_response "44315f52325f4f50454e31" "44315f52325f4f34">>
+===
+
+title: Core_44315f52335f4f312e6272616e6368
+---
+米洛: 他们让我坐着别动。 #line:mg_44315f52335f4f312e6272616e6368_0 #source:D1_R3_O1_T1 #portrait:ML02
+米洛: 我看别人怎么坐，就跟着坐。 #line:mg_44315f52335f4f312e6272616e6368_1 #source:D1_R3_O1_T2 #portrait:ML02
+米洛: 可是它还是响了。 #line:mg_44315f52335f4f312e6272616e6368_2 #source:D1_R3_O1_T3 #portrait:ML02
+米洛: 我想再试一次，他们没有让。 #line:mg_44315f52335f4f312e6272616e6368_3 #source:D1_R3_CLOSING1 #portrait:ML02
+米洛: 我出来的时候，没有一个人说话。 #line:mg_44315f52335f4f312e6272616e6368_4 #source:D1_R3_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52335f4f322e6272616e6368
+---
+米洛: ……真的吗？ #line:mg_44315f52335f4f322e6272616e6368_0 #source:D1_R3_O2_T1 #portrait:ML02
+米洛: 他们没这么说过。 #line:mg_44315f52335f4f322e6272616e6368_1 #source:D1_R3_O2_T2 #portrait:ML02
+米洛: 我想再试一次，他们没有让。 #line:mg_44315f52335f4f322e6272616e6368_2 #source:D1_R3_CLOSING1 #portrait:ML02
+米洛: 我出来的时候，没有一个人说话。 #line:mg_44315f52335f4f322e6272616e6368_3 #source:D1_R3_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52335f4f332e6272616e6368
+---
+米洛: 好。 #line:mg_44315f52335f4f332e6272616e6368_0 #source:D1_R3_O3_T1 #portrait:ML02
+米洛: 那我说慢一点。 #line:mg_44315f52335f4f332e6272616e6368_1 #source:D1_R3_O3_T2 #portrait:ML02
+米洛: 我想再试一次，他们没有让。 #line:mg_44315f52335f4f332e6272616e6368_2 #source:D1_R3_CLOSING1 #portrait:ML02
+米洛: 我出来的时候，没有一个人说话。 #line:mg_44315f52335f4f332e6272616e6368_3 #source:D1_R3_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52335f4f50454e31
+---
+米洛: 他们让我进去，我就进去了。 #line:mg_44315f52335f4f50454e31_0 #source:D1_R3_OPEN1 #portrait:ML02
+米洛: 我想着，表现好就能回去。 #line:mg_44315f52335f4f50454e31_1 #source:D1_R3_OPEN2 #portrait:ML02
+-> 说说检测经过。 #response_44315f52335f4f31 #source:D1_R3_O1
+    <<select_response "44315f52335f4f50454e31" "44315f52335f4f31">>
+-> 响了不是你的错。 #response_44315f52335f4f32 #source:D1_R3_O2
+    <<select_response "44315f52335f4f50454e31" "44315f52335f4f32">>
+-> 别想了，说下一个。 #response_44315f52335f4f33 #source:D1_R3_O3
+    <<select_response "44315f52335f4f50454e31" "44315f52335f4f33">>
+===
+
+title: Core_44315f52345f4f312e6272616e6368
+---
+米洛: 走到最后一扇，就到这里了。 #line:mg_44315f52345f4f312e6272616e6368_0 #source:D1_R4_CLOSING1 #portrait:ML02
+米洛: 我全程没有乱跑，是一直跟着走的。 #line:mg_44315f52345f4f312e6272616e6368_1 #source:D1_R4_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52345f4f322e6272616e6368
+---
+米洛: 走到最后一扇，就到这里了。 #line:mg_44315f52345f4f322e6272616e6368_0 #source:D1_R4_CLOSING1 #portrait:ML02
+米洛: 我全程没有乱跑，是一直跟着走的。 #line:mg_44315f52345f4f322e6272616e6368_1 #source:D1_R4_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52345f4f332e6272616e6368
+---
+米洛: 走到最后一扇，就到这里了。 #line:mg_44315f52345f4f332e6272616e6368_0 #source:D1_R4_CLOSING1 #portrait:ML02
+米洛: 我全程没有乱跑，是一直跟着走的。 #line:mg_44315f52345f4f332e6272616e6368_1 #source:D1_R4_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52345f4f50454e31
+---
+米洛: 我出来以后，一直走走廊。 #line:mg_44315f52345f4f50454e31_0 #source:D1_R4_OPEN1 #portrait:ML02
+米洛: 我数了数，一共有七扇门。 #line:mg_44315f52345f4f50454e31_1 #source:D1_R4_OPEN2 #portrait:ML02
+-> 嗯，然后呢？ #response_44315f52345f4f31 #source:D1_R4_O1
+    <<select_response "44315f52345f4f50454e31" "44315f52345f4f31">>
+-> 了解。 #response_44315f52345f4f32 #source:D1_R4_O2
+    <<select_response "44315f52345f4f50454e31" "44315f52345f4f32">>
+-> 原来是这样。 #response_44315f52345f4f33 #source:D1_R4_O3
+    <<select_response "44315f52345f4f50454e31" "44315f52345f4f33">>
+===
+
+title: Core_44315f52355f4f312e6272616e6368
+---
+米洛: ……真的吗？ #line:mg_44315f52355f4f312e6272616e6368_0 #source:D1_R5_O1_T1 #portrait:ML02
+米洛: 可他们都说我做得不对。 #line:mg_44315f52355f4f312e6272616e6368_1 #source:D1_R5_O1_T2 #portrait:ML02
+米洛: 我是不是没坐好？ #line:mg_44315f52355f4f312e6272616e6368_2 #source:D1_R5_CLOSING1 #portrait:ML02
+米洛: 所以它才响的。 #line:mg_44315f52355f4f312e6272616e6368_3 #source:D1_R5_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52355f4f322e6272616e6368
+---
+米洛: 我是不是没坐好？ #line:mg_44315f52355f4f322e6272616e6368_0 #source:D1_R5_CLOSING1 #portrait:ML02
+米洛: 所以它才响的。 #line:mg_44315f52355f4f322e6272616e6368_1 #source:D1_R5_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52355f4f332e6272616e6368
+---
+米洛: 他们进去以前，妈妈会蹲下来跟他们说话。 #line:mg_44315f52355f4f332e6272616e6368_0 #source:D1_R5_O3_T1 #portrait:ML04
+米洛: 我站得远，听不见。 #line:mg_44315f52355f4f332e6272616e6368_1 #source:D1_R5_O3_T2 #portrait:ML02
+米洛: 我以为进去以后，会有人告诉我的。 #line:mg_44315f52355f4f332e6272616e6368_2 #source:D1_R5_O3_T3 #portrait:ML02
+米洛: 我是不是没坐好？ #line:mg_44315f52355f4f332e6272616e6368_3 #source:D1_R5_CLOSING1 #portrait:ML02
+米洛: 所以它才响的。 #line:mg_44315f52355f4f332e6272616e6368_4 #source:D1_R5_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52355f4f342e6272616e6368
+---
+米洛: 我是不是没坐好？ #line:mg_44315f52355f4f342e6272616e6368_0 #source:D1_R5_CLOSING1 #portrait:ML02
+米洛: 所以它才响的。 #line:mg_44315f52355f4f342e6272616e6368_1 #source:D1_R5_CLOSING2 #portrait:ML02
+===
+
+title: Core_44315f52355f4f50454e31
+---
+米洛: 要怎么做，它才不会响？ #line:mg_44315f52355f4f50454e31_0 #source:D1_R5_OPEN1 #portrait:ML02
+-> 你已经做得很好了。 #response_44315f52355f4f31 #source:D1_R5_O1
+    <<select_response "44315f52355f4f50454e31" "44315f52355f4f31">>
+-> 机器有时会出错。 #response_44315f52355f4f32 #source:D1_R5_O2
+    <<select_response "44315f52355f4f50454e31" "44315f52355f4f32">>
+-> 别人怎么做，你就怎么做。 #response_44315f52355f4f33 #source:D1_R5_O3
+    <<select_response "44315f52355f4f50454e31" "44315f52355f4f33">>
+-> 不用学别人。 #response_44315f52355f4f34 #source:D1_R5_O4
+    <<select_response "44315f52355f4f50454e31" "44315f52355f4f34">>
+===
+
+title: Core_44315f52365f4f312e6272616e6368
+---
+米洛: 哦。 #line:mg_44315f52365f4f312e6272616e6368_0 #source:D1_R6_O1_T1 #portrait:ML02
+米洛: 那要做什么，它才会说不响？ #line:mg_44315f52365f4f312e6272616e6368_1 #source:D1_R6_O1_T2 #portrait:ML02
+===
+
+title: Core_44315f52365f4f322e6272616e6368
+---
+米洛: 我都记住了。 #line:mg_44315f52365f4f322e6272616e6368_0 #source:D1_R6_O2_T1 #portrait:ML02
+米洛: 刚才那些，我都说对了吗？ #line:mg_44315f52365f4f322e6272616e6368_1 #source:D1_R6_O2_T2 #portrait:ML02
+===
+
+title: Core_44315f52365f4f332e6272616e6368
+---
+米洛: ……为什么？ #line:mg_44315f52365f4f332e6272616e6368_0 #source:D1_R6_O3_T1 #portrait:ML02
+米洛: 我不明白，我哪里做错了？ #line:mg_44315f52365f4f332e6272616e6368_1 #source:D1_R6_O3_T2 #portrait:ML02
+===
+
+title: Core_44315f52365f4f50454e31
+---
+米洛: 说完这些，我能回去吗？ #line:mg_44315f52365f4f50454e31_0 #source:D1_R6_OPEN1 #portrait:ML02
+-> 我说了不算。 #response_44315f52365f4f31 #source:D1_R6_O1
+    <<select_response "44315f52365f4f50454e31" "44315f52365f4f31">>
+-> 表现好就能回去。 #response_44315f52365f4f32 #source:D1_R6_O2
+    <<select_response "44315f52365f4f50454e31" "44315f52365f4f32">>
+-> 不会放你回去。 #response_44315f52365f4f33 #source:D1_R6_O3
+    <<select_response "44315f52365f4f50454e31" "44315f52365f4f33">>
+===
+
+title: Cue_MorningInspection
+---
+终端: {$minigame_cue_text}
+===
+
+title: Cue_Briefing
+---
+终端: {$minigame_cue_text}
+===
+
+title: Cue_Dream
+---
+终端: {$minigame_cue_text}
+===
+
+title: Cue_Ending
+---
+终端: {$minigame_cue_text}
+===
+

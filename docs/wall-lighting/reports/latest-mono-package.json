@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "packagedAt": "2026-10-21T11:11:05.920876+08:00",
+  "timezone": "Asia/Shanghai",
+  "buildDirectory": "F:\\AAMINIGAME\\MINIGAME\\Builds\\LightingContinuity",
+  "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-LightingFixed-20261021-111105.zip",
+  "zipBytes": 176656879,
+  "zipSha256": "859d1c81c156e9a971c60348cec55fad7fabcd6e7422bb5b712eab0eb618ab61",
+  "sha256Path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-LightingFixed-20261021-111105.sha256",
+  "exe": {
+    "path": "MiniGame.exe",
+    "bytes": 666624,
+    "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+  },
+  "sourceScene": {
+    "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "bytes": 297873,
+    "sha256": "b29331ae8dbad4adaf61b8e2afb1be22d598c8d71dacd63cdcb296a45e232e11"
+  },
+  "manifest": {
+    "path": "package-manifest.json",
+    "bytes": 29812,
+    "sha256": "9d0f14c7e33590a7e8dea78c7805b2d3cbb28393be537183fc3b5f3fdc3da836"
+  },
+  "payloadFiles": 158,
+  "verifiedZipEntries": 174,
+  "verifiedZipFileEntries": 159,
+  "verifiedZipDirectoryEntries": 15,
+  "validation": {
+    "windowsX64Exe": true,
+    "monoBleedingEdgeIncluded": true,
+    "dataDirectoryIncluded": true,
+    "safePaths": true,
+    "allEntrySha256Matched": true,
+    "fileAndDirectoryInventoryMatched": true,
+    "sourceBuildUnchangedDuringPackaging": true,
+    "sourceSceneUnchangedDuringPackaging": true
+  }
+}

@@ -18,7 +18,7 @@ namespace MiniGame.UnityHost
         private string folder;
         private float began, nextAction, pullbackStart = -1;
         private int lines;
-        private bool submitted, slept, done, success;
+        private bool submitted, slept, done, success, normLogoPresent;
         private Button pendingButton;
         private int pendingFrame;
         private readonly HashSet<string> captures = new HashSet<string>();
@@ -28,7 +28,7 @@ namespace MiniGame.UnityHost
             public string result, detail, unity;
             public string captureMode = "Native UI camera RenderTexture and the displayed CRT material; room capture uses the actual room camera";
             public int sourceLines, day;
-            public bool singlePurification, bedOnly, furnitureRestored;
+            public bool singlePurification, bedOnly, furnitureRestored, normLogoPresent;
             public float seconds;
         }
 
@@ -64,6 +64,9 @@ namespace MiniGame.UnityHost
             if (host.Screen.DayZeroOpeningWaiting)
             {
                 Require(view.Game.Day == 0 && view.Cue?.Kind == PresentationKind.EnterTerminal, "Fresh opening checkpoint");
+                var logo = host.Screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "Day0SupervisorFeed");
+                normLogoPresent = logo.texture != null && logo.texture == Resources.Load<Texture2D>("MiniGame/NormLogo");
+                Require(normLogoPresent, "The opening terminal must display the supplied NORM logo");
                 Capture("monitor");
                 if (Time.realtimeSinceStartup - began < 1) return;
                 Require(host.Screen.RequestDayZeroOpening(), "Opening screen click");
@@ -175,7 +178,7 @@ namespace MiniGame.UnityHost
             var view = host != null ? host.Runtime.GetView() : null;
             var report = new Report { result = passed ? "passed" : "failed", detail = detail, unity = Application.unityVersion,
                 sourceLines = lines, day = view?.Game.Day ?? -1, singlePurification = submitted, bedOnly = slept,
-                furnitureRestored = passed, seconds = Time.realtimeSinceStartup - began };
+                furnitureRestored = passed, normLogoPresent = normLogoPresent, seconds = Time.realtimeSinceStartup - began };
             File.WriteAllText(Path.Combine(folder, "verification.json"), JsonUtility.ToJson(report, true));
             Debug.Log("MINIGAME_OPENING_PLAYER_" + (passed ? "PASSED " : "FAILED ") + detail);
         }

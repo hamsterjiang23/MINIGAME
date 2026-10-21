@@ -1,0 +1,180 @@
+{
+  "checkedAt": "2026-10-21T11:14:37.5427117+08:00",
+  "authorization": "User explicitly requested removing old timestamp game package caches.",
+  "removedTargets": [
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-CRTUiFix.zip",
+      "isDirectory": false,
+      "bytes": 165912906
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-CRTUiFix.zip.sha256",
+      "isDirectory": false,
+      "bytes": 115
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-PauseFix.zip",
+      "isDirectory": false,
+      "bytes": 165767854
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-PauseFix.zip.sha256",
+      "isDirectory": false,
+      "bytes": 115
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-PlaytestFix.zip",
+      "isDirectory": false,
+      "bytes": 165778043
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020-PlaytestFix.zip.sha256",
+      "isDirectory": false,
+      "bytes": 118
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020.zip",
+      "isDirectory": false,
+      "bytes": 164915360
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\MiniGame-Windows-x64-Mono-20261020.zip.sha256",
+      "isDirectory": false,
+      "bytes": 106
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-BugFix-20261021-003722.zip",
+      "isDirectory": false,
+      "bytes": 213782810
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-TypingAudio-20261021-010327.zip",
+      "isDirectory": false,
+      "bytes": 213806107
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-WallLighting-20261021-020030.zip",
+      "isDirectory": false,
+      "bytes": 213809076
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Releases\\MiniGame-Windows-x64-20261019-doorframe-fixed.zip",
+      "isDirectory": false,
+      "bytes": 107396015
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Releases\\MiniGame-Windows-x64-20261019.zip",
+      "isDirectory": false,
+      "bytes": 107396007
+    }
+  ],
+  "removedPackageFiles": 13,
+  "removedBuildDirectories": 0,
+  "removedBytes": 1518564632,
+  "remainingOldBuildDirectories": [
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\AudioConfigured",
+      "isDirectory": true,
+      "bytes": 233942070
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Campaign",
+      "isDirectory": true,
+      "bytes": 237896310
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\CombinedInteractions",
+      "isDirectory": true,
+      "bytes": 213912350
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\DialogueUpdated",
+      "isDirectory": true,
+      "bytes": 413024650
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\DreamFlow",
+      "isDirectory": true,
+      "bytes": 262274722
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\HTMLMatched",
+      "isDirectory": true,
+      "bytes": 405897545
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\MiniGame",
+      "isDirectory": true,
+      "bytes": 98368834
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\NormBugFix",
+      "isDirectory": true,
+      "bytes": 388776663
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\NormOpening",
+      "isDirectory": true,
+      "bytes": 405783647
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\PatientMonitor",
+      "isDirectory": true,
+      "bytes": 272006790
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\PausePerspective",
+      "isDirectory": true,
+      "bytes": 272031974
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\PauseUI",
+      "isDirectory": true,
+      "bytes": 262545790
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\RetroScreen",
+      "isDirectory": true,
+      "bytes": 213892290
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\RoomLighting",
+      "isDirectory": true,
+      "bytes": 322832075
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\TerminalAmber",
+      "isDirectory": true,
+      "bytes": 325677216
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\TerminalClosing",
+      "isDirectory": true,
+      "bytes": 325690959
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\TerminalScreenFit",
+      "isDirectory": true,
+      "bytes": 327322763
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\TerminalSignal",
+      "isDirectory": true,
+      "bytes": 405898525
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\TerminalTypingAudio",
+      "isDirectory": true,
+      "bytes": 388801329
+    },
+    {
+      "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\WallLighting",
+      "isDirectory": true,
+      "bytes": 388822380
+    }
+  ],
+  "remainingReason": "Automatic approval rejected both dynamic and explicit-path recursive directory removal with blocked by policy; no detailed reason supplied.",
+  "keptArchive": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-LightingFixed-20261021-111105.zip",
+  "keptBuild": "F:\\AAMINIGAME\\MINIGAME\\Builds\\LightingContinuity",
+  "latestArchiveHashVerified": true
+}

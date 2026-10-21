@@ -1,0 +1,56 @@
+{
+  "word": {
+    "path": "Art/RoomReadables/Source/交互物.docx",
+    "sha256": "e63176bfd031e8ff5fe06ce7a1668e9e5e1c83a5332922b081bbb488d8bb72ec"
+  },
+  "documents": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/Readables/FamilyLetter.asset",
+      "sha256": "fb1f60ecffdf2f8c3ba27a21ca707b3b06a38c5013df7a65b1317b336667fbff"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/Readables/DailyNewspaper.asset",
+      "sha256": "4781766921f94bc9a870172b7e9fddb8724a77ee429413149358a4b766c0ba96"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/Readables/EmploymentNotice.asset",
+      "sha256": "7d864826b998aa8cfd9de13f5e5d9e81ac12c623098e2de4b3df0065d683ac16"
+    }
+  ],
+  "textures": {
+    "kind": "user-provided",
+    "preserveOriginalPixels": true,
+    "assets": [
+      {
+        "id": "family-letter",
+        "source": "C:/Users/admin/AppData/Roaming/LarkShell/sdk_storage/78f034e755d6027faf7872f34bc06316/resources/images/img_v3_0216m_c6c84d49-2e28-4e1c-bbde-bef5b590ca8g.png",
+        "target": "Art\\RoomReadables\\Textures\\family-letter.png",
+        "width": 1536,
+        "height": 1024,
+        "pngColorType": 6,
+        "bytes": 1631760,
+        "sha256": "ecdb8e8b1339c441785c73a1dee4ad1af3dafcdeb61ed8cf956a9569a43ef90d"
+      },
+      {
+        "id": "daily-newspaper",
+        "source": "C:/Users/admin/AppData/Roaming/LarkShell/sdk_storage/78f034e755d6027faf7872f34bc06316/resources/images/img_v3_0216m_b296245b-9ea5-4c23-aef8-2e865a2c086g.png",
+        "target": "Art\\RoomReadables\\Textures\\daily-newspaper.png",
+        "width": 1226,
+        "height": 1283,
+        "pngColorType": 6,
+        "bytes": 1879715,
+        "sha256": "a8d8009fcf161662df41d9c42194bb8ca7f032709618b309013a2deb49af466d"
+      },
+      {
+        "id": "employment-notice",
+        "source": "C:/Users/admin/AppData/Roaming/LarkShell/sdk_storage/78f034e755d6027faf7872f34bc06316/resources/images/img_v3_0216m_9a3c8b01-2b66-4f06-a284-6bb465fc8cag.png",
+        "target": "Art\\RoomReadables\\Textures\\employment-notice.png",
+        "width": 1024,
+        "height": 1536,
+        "pngColorType": 6,
+        "bytes": 2853432,
+        "sha256": "e28f776c969d16ec3516bbed37afb0edb6418b1ef29d1cdeb575ea15d11e215c"
+      }
+    ]
+  }
+}

@@ -75,10 +75,15 @@ namespace MiniGame.UnityHost
         {
             var result = new List<string>();
             string remaining = source ?? string.Empty;
-            var settings = label.GetGenerationSettings(new Vector2(Mathf.Max(1, label.rectTransform.rect.width), 0));
-            settings.verticalOverflow = VerticalWrapMode.Overflow;
-            settings.horizontalOverflow = HorizontalWrapMode.Wrap;
-            using var generator = new TextGenerator();
+            var bitmap = label as TerminalBitmapText;
+            var settings = default(TextGenerationSettings);
+            if (bitmap == null)
+            {
+                settings = label.GetGenerationSettings(new Vector2(Mathf.Max(1, label.rectTransform.rect.width), 0));
+                settings.verticalOverflow = VerticalWrapMode.Overflow;
+                settings.horizontalOverflow = HorizontalWrapMode.Wrap;
+            }
+            using var generator = bitmap == null ? new TextGenerator() : null;
             float height = Mathf.Max(1, label.rectTransform.rect.height);
             while (remaining.Length > 0)
             {
@@ -88,7 +93,9 @@ namespace MiniGame.UnityHost
                 {
                     int count = (low + high) / 2;
                     int end = count == boundaries.Length ? remaining.Length : boundaries[count];
-                    float measured = generator.GetPreferredHeight(remaining.Substring(0, end), settings) / label.pixelsPerUnit;
+                    string candidate = remaining.Substring(0, end);
+                    float measured = bitmap != null ? BitmapHeight(bitmap, candidate) :
+                        generator.GetPreferredHeight(candidate, settings) / label.pixelsPerUnit;
                     if (measured <= height + .01f) { fit = count; low = count + 1; }
                     else high = count - 1;
                 }
@@ -98,6 +105,17 @@ namespace MiniGame.UnityHost
             }
             if (result.Count == 0) result.Add(string.Empty);
             return result;
+        }
+
+        private static float BitmapHeight(TerminalBitmapText label, string value)
+        {
+            var lines = TerminalTextMetrics.Layout(value, label.fontSize, label.rectTransform.rect.width,
+                label.horizontalOverflow == HorizontalWrapMode.Wrap);
+            int count = lines.Count;
+            // Keep the separator on the preceding page without reserving space for its empty trailing row.
+            // Interior blank rows still consume their normal line pitch, and the source is never rewritten.
+            if (count > 1 && lines[count - 1].Length == 0) count--;
+            return count == 0 ? 0 : label.fontSize + (count - 1) * label.LinePitch * Mathf.Max(.01f, label.lineSpacing);
         }
     }
 }

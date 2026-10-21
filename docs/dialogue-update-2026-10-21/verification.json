@@ -1,0 +1,247 @@
+{
+  "date": "2026-10-21",
+  "status": "implemented-and-verified",
+  "contentVersion": "1.1.0-development",
+  "sourceFiles": 6,
+  "sourceCopiesByteIdentical": true,
+  "sourceImports": "source-imports.json",
+  "approvedRepairPolicy": "Prioritize earlier complete branches, keep appended conflicting blocks inactive, restore doctor missing links using the old corresponding dialogue.",
+  "counts": {
+    "rawRows": 1437,
+    "activeRows": 1295,
+    "excludedRows": 142,
+    "repairs": 115,
+    "meetings": 16,
+    "declaredPortraits": 22,
+    "referencedPortraits": 16
+  },
+  "sourceRepairManifest": "Tools/DialogueCampaign/source-repairs.json",
+  "provenance": "UnityProject/Assets/MiniGame/Content/Campaign/provenance.json",
+  "nativeImport": {
+    "packageId": "inspection-campaign",
+    "sourceHash": "177dde5ab92c79f7ad2678114e4233cc62693a602d3fd2c1feffa85c19a13f8d",
+    "rulesFingerprint": "7f113af600496c85c27c309f70e00d56b956296362281f3c796678206cdec3f4",
+    "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "catalog": "Assets/Resources/MiniGame/PortraitCatalog.asset",
+    "sourceNodes": 1088,
+    "nativeNodes": 429,
+    "portraits": 22
+  },
+  "conditions": {
+    "specialMeetings": 9,
+    "specialTrustThreshold": 3,
+    "explicitReleaseThreshold": 5,
+    "otherMeetingsUseDefaultReleaseThreshold": 3,
+    "oldDiplomatVariants": 0
+  },
+  "dependentIdMigration": "dependent-id-migrations.json",
+  "python": {
+    "testsPassed": 12,
+    "deterministicRegeneration": "passed",
+    "syntax": "passed",
+    "requiredAnnotations": "passed"
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "lockedRestore": "passed",
+    "releaseBuild": "passed",
+    "buildErrors": 0,
+    "buildWarnings": 0,
+    "passed": 328.0,
+    "runs": [
+      {
+        "report": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\DialogueUpdate20261020\\Tests\\FinalSilentNodes\\admin_SK-20260401PDYS_2026-10-21_00_33_34.trx",
+        "total": 114,
+        "passed": 114,
+        "failed": 0
+      },
+      {
+        "report": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\DialogueUpdate20261020\\Tests\\FinalSilentNodes\\admin_SK-20260401PDYS_2026-10-21_00_33_35.trx",
+        "total": 214,
+        "passed": 214,
+        "failed": 0
+      }
+    ]
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject",
+    "passed": 27.0,
+    "runs": [
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-importer-tests.json",
+        "summary": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn",
+          "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.RejectedPackagePreservesActiveSourceProjectAndAssetBytes",
+          "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo",
+          "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches"
+        ]
+      },
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-font-tests.json",
+        "summary": {
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.AlignmentWrapAndTruncationUseTheSameFixedMetrics",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CenteredLabelsUseIntegerHtmlCoordinatesAtOddWidths",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CommandRowsKeepTheOriginalValueAndUseSeparateTwelveAndFourteenPixelRuns",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(10)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(11)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(12)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(13)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(14)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(18)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(19)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(239,184,63)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(255,207,104)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(167,125,45)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(103,75,25)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(23,14,2)",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.GeometryUpdatesWithoutFontAndParticipatesInRectMaskClipping",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines",
+          "MiniGame.UnityHost.Tests.TerminalBitmapTextTests.NonExportedColorsReuseCoveredGlyphsRatherThanFallbackQuestionMarks"
+        ]
+      },
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-priest-tests.json",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignReleasedPriestAttacksOnTheFollowingMorning"
+        ]
+      },
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-normal-route-tests.json",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignNormalRouteShowsSixActorsAndAllDaysThenTakenAway"
+        ]
+      },
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-treatment-route-tests.json",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignAllTreatmentRouteVisitsEveryMeetingThenLocksTheRoom"
+        ]
+      },
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-history-tests.json",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.HistoryDispositionPlayModeTests.DayZeroPassiveRecordKeepsPurificationLockedUntilDialogueThenPlaysBothReactionsOnce"
+        ]
+      },
+      {
+        "report": "Artifacts/DialogueUpdate20261020/unity-checkpoint-tests.json",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "tests": [
+          "MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce"
+        ]
+      }
+    ],
+    "nativeRoutes": [
+      {
+        "ending": "PriestAttack",
+        "meetings": 6,
+        "sourceLines": 193,
+        "actors": 6
+      },
+      {
+        "ending": "TakenAway",
+        "meetings": 13,
+        "sourceLines": 423,
+        "actors": 6
+      },
+      {
+        "ending": "LockedInRoom",
+        "meetings": 16,
+        "sourceLines": 551,
+        "actors": 6
+      }
+    ],
+    "routeClock": "Native Yarn, core commands and UI clicks exercised; existing dream presentation clock advanced deterministically in test driver."
+  },
+  "glyphs": {
+    "report": "Art/TerminalHtmlMatched/glyph-coverage.json",
+    "codepoints": 1487,
+    "glyphs": 52045,
+    "missing": 0,
+    "originalPixelsChanged": 0
+  },
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/DialogueUpdated/MiniGame.exe",
+    "errors": 0,
+    "warnings": 2,
+    "seconds": 9.7095968,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "playerStartup": {
+    "pid": 36192,
+    "ready": true,
+    "updatedContentVersion": true,
+    "startupErrorCount": 0,
+    "responding": true,
+    "scope": "Windows Player startup; full dialogue routes were verified separately in Unity PlayMode."
+  },
+  "saveCompatibility": "Previous dialogue content revision saves are not compatible. Start a new inspection period; existing save files were not deleted.",
+  "evidenceRoot": "Artifacts/DialogueUpdate20261020",
+  "visuals": [
+    "Visuals/campaign-actor-child.png",
+    "Visuals/campaign-actor-diplomat.png",
+    "Visuals/campaign-conclusion-TakenAway.png"
+  ],
+  "review": "Independent source audit and code review found no remaining issue; doctor107 old-link repairs independently compared.",
+  "limits": [
+    "Three selected ending routes ran natively; not every possible player choice permutation.",
+    "Player was startup-smoked; detailed interaction checks ran in Unity PlayMode.",
+    "The older DialogueAtlas HTML remains explicitly labelled as a historical snapshot."
+  ]
+}

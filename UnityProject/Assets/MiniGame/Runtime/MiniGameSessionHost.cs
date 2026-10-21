@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Text;
 using MiniGame.Core;
@@ -20,10 +21,14 @@ namespace MiniGame.UnityHost
         public DreamSequenceProfile DreamProfile { get; private set; }
         public BeachEndingCheckpoint EndingCheckpoint { get; set; }
         public DreamPlaybackCheckpoint DreamCheckpoint { get; private set; }
+        public SupervisorDialogueCheckpoint SupervisorCheckpoint { get; private set; }
         public bool PendingCombinedRestore { get; private set; }
         public bool IsTransitioning { get; private set; }
         public string SavePath => Path.Combine(Application.persistentDataPath, "campaign-dream-save.json");
         public string LastMessage { get; private set; }
+        private RoomDreamEnding roomEnding;
+        private bool roomEndingFailed;
+        private bool UsesRoomEnding => DreamProfile != null && DreamProfile.UseRoomCubemapEnding;
 
         public static MiniGameSessionHost Install(GameRuntime runtime, GameRules rules, IGameContent content, DreamSequenceProfile profile)
         {
@@ -34,9 +39,12 @@ namespace MiniGame.UnityHost
                 DontDestroyOnLoad(owner);
             }
             var host = Current;
+            host.StopRoomEnding();
             host.Runtime = runtime; host.Rules = rules; host.Content = content; host.DreamProfile = profile;
             host.DreamCheckpoint = null; host.EndingCheckpoint = null;
+            host.SupervisorCheckpoint = null;
             host.PendingCombinedRestore = false;
+            host.roomEndingFailed = false;
             return host;
         }
 
@@ -45,6 +53,7 @@ namespace MiniGame.UnityHost
             if (Current == null) return;
             var previous = Current;
             Current = null;
+            previous.StopRoomEnding();
             Destroy(previous.gameObject);
         }
 
@@ -52,8 +61,49 @@ namespace MiniGame.UnityHost
         {
             if (Runtime == null || IsTransitioning) return;
             var view = Runtime.GetView();
-            if (view.Game.Phase == GamePhase.Ending && view.Game.Ending == EndingType.DreamSea
-                && SceneManager.GetActiveScene().name != BeachScene) TransitionTo(BeachScene);
+            if (view.Game.Phase != GamePhase.Ending || view.Game.Ending != EndingType.DreamSea) return;
+            if (UsesRoomEnding)
+            {
+                if (roomEndingFailed || roomEnding != null) return;
+                if (SceneManager.GetActiveScene().name != CombinedScene)
+                {
+                    PendingCombinedRestore = true;
+                    TransitionTo(CombinedScene);
+                    return;
+                }
+                var room = FindObjectOfType<MiniGameBootstrap>();
+                if (room != null) StartCoroutine(BeginRoomEnding(room));
+            }
+            else if (SceneManager.GetActiveScene().name != BeachScene) TransitionTo(BeachScene);
+        }
+
+        private IEnumerator BeginRoomEnding(MiniGameBootstrap room)
+        {
+            IsTransitioning = true;
+            try { roomEnding = RoomDreamEnding.Begin(room, this); }
+            catch (Exception exception)
+            {
+                IsTransitioning = false; roomEndingFailed = true;
+                LastMessage = "隐藏梦结局未能开始：" + exception.Message;
+                Debug.LogException(exception);
+                yield break;
+            }
+            while (roomEnding != null && !roomEnding.Ready && string.IsNullOrEmpty(roomEnding.FailureReason)) yield return null;
+            IsTransitioning = false;
+            if (roomEnding == null || !string.IsNullOrEmpty(roomEnding.FailureReason))
+            {
+                roomEndingFailed = true;
+                LastMessage = roomEnding != null ? roomEnding.FailureReason : "隐藏梦结局已中止。";
+            }
+        }
+
+        private void StopRoomEnding(bool restoreRoom = true)
+        {
+            var owner = roomEnding != null ? roomEnding : FindObjectOfType<RoomDreamEnding>();
+            roomEnding = null;
+            if (owner == null) return;
+            if (restoreRoom) owner.StopAndRestore();
+            else owner.CleanupForDestruction();
         }
 
         private void TransitionTo(string sceneName)
@@ -82,6 +132,8 @@ namespace MiniGame.UnityHost
                     FormatVersion = 1, Runtime = Runtime.Save(), Dream = DreamCheckpoint,
                     Ending = Runtime.GetView().Game.Ending == EndingType.DreamSea ? EndingCheckpoint : null
                 };
+                SupervisorCheckpoint = FindObjectOfType<MiniGameYarnBridge>()?.CaptureSupervisorCheckpoint();
+                saved.Supervisor = SupervisorCheckpoint;
                 var player = FindObjectOfType<ApartmentPlayer>();
                 if (player != null)
                 {
@@ -101,6 +153,9 @@ namespace MiniGame.UnityHost
                     var door = player.ViewCamera.GetComponent<DoorViewCamera>();
                     if (door != null && door.HasRoomPose)
                     { saved.CameraPosition = door.ReturnPosition; saved.CameraRotation = door.ReturnRotation; saved.FieldOfView = door.ReturnFieldOfView; }
+                    var supervisor = FindObjectOfType<SupervisorDoorwayView>();
+                    if (supervisor != null && supervisor.TryGetRoomReturnPose(out var returnPosition, out var returnRotation, out var returnFov))
+                    { saved.CameraPosition = returnPosition; saved.CameraRotation = returnRotation; saved.FieldOfView = returnFov; }
                     if (DreamCheckpoint != null && DreamCheckpoint.Phase != DreamPlaybackPhase.None)
                     { saved.CameraPosition = DreamCheckpoint.CameraPosition; saved.CameraRotation = DreamCheckpoint.CameraRotation; saved.FieldOfView = DreamCheckpoint.FieldOfView; }
                 }
@@ -121,6 +176,8 @@ namespace MiniGame.UnityHost
                     throw new InvalidDataException("存档版本不兼容；旧存档文件已保留，请开始新的梦境流程。");
                 var restored = GameRuntime.Restore(envelope.Runtime, Rules, Content);
                 Runtime = restored;
+                SupervisorCheckpoint = envelope.Supervisor;
+                roomEndingFailed = false;
                 // JsonUtility materializes null nested serializable classes as default objects.
                 // Core phase, rather than the presence of a visual DTO, decides which state is meaningful.
                 var phase = restored.GetView().Game;
@@ -128,17 +185,39 @@ namespace MiniGame.UnityHost
                     && envelope.Dream.Day == phase.Day && envelope.Dream.Phase != DreamPlaybackPhase.None
                     && Enum.IsDefined(typeof(DreamPlaybackPhase), envelope.Dream.Phase) ? envelope.Dream : null;
                 EndingCheckpoint = restored.GetView().Game.Ending == EndingType.DreamSea ? envelope.Ending : null;
-                pendingRoomPose = envelope;
                 bool beach = restored.GetView().Game.Ending == EndingType.DreamSea;
+                // Room endings restore their own exploration/lie pose. Replaying the
+                // generic pillow camera first would corrupt the authored doorway eye.
+                pendingRoomPose = beach && UsesRoomEnding ? null : envelope;
                 if (beach)
                 {
-                    PendingCombinedRestore = false;
-                    var controller = FindObjectOfType<DreamEndingController>();
-                    if (controller != null) controller.RestoreCheckpoint(EndingCheckpoint ?? new BeachEndingCheckpoint());
-                    else TransitionTo(BeachScene);
+                    if (UsesRoomEnding)
+                    {
+                        if (roomEnding != null && roomEnding.Ready)
+                            roomEnding.Ending.RestoreCheckpoint(EndingCheckpoint ?? new BeachEndingCheckpoint());
+                        else if (SceneManager.GetActiveScene().name != CombinedScene)
+                        {
+                            PendingCombinedRestore = true;
+                            TransitionTo(CombinedScene);
+                        }
+                        else
+                        {
+                            PendingCombinedRestore = false;
+                            var room = FindObjectOfType<MiniGameBootstrap>();
+                            if (room != null) StartCoroutine(BeginRoomEnding(room));
+                        }
+                    }
+                    else
+                    {
+                        PendingCombinedRestore = false;
+                        var controller = FindObjectOfType<DreamEndingController>();
+                        if (controller != null) controller.RestoreCheckpoint(EndingCheckpoint ?? new BeachEndingCheckpoint());
+                        else TransitionTo(BeachScene);
+                    }
                 }
                 else
                 {
+                    StopRoomEnding();
                     PendingCombinedRestore = true;
                     var bootstrap = FindObjectOfType<MiniGameBootstrap>();
                     if (bootstrap != null) bootstrap.RestoreFromSession(this);
@@ -178,7 +257,7 @@ namespace MiniGame.UnityHost
             SceneManager.LoadSceneAsync(CombinedScene, LoadSceneMode.Single);
         }
 
-        private void OnDestroy() { if (Current == this) Current = null; }
+        private void OnDestroy() { StopRoomEnding(false); if (Current == this) Current = null; }
 
         private static void WriteAtomically(string path, string json)
         {
@@ -202,6 +281,7 @@ namespace MiniGame.UnityHost
             public string Runtime;
             public DreamPlaybackCheckpoint Dream;
             public BeachEndingCheckpoint Ending;
+            public SupervisorDialogueCheckpoint Supervisor;
             public bool HasRoomPose;
             public Vector3 PlayerPosition;
             public Quaternion PlayerRotation;

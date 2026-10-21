@@ -21,11 +21,13 @@ namespace MiniGame.UnityHost
         private int dreamDay;
         private DreamSequenceProfile dreamProfile;
         private readonly HashSet<string> transcriptKeys = new HashSet<string>();
+        private readonly List<HingedDoor> doors = new List<HingedDoor>();
         public MiniGameAudioService Service => service;
         public MiniGameAudioProfile Profile => profile;
 
         public void Bind(GameRuntime game)
         {
+            UnsubscribeDoors();
             if (runtime != null) runtime.Changed -= Present;
             runtime = game;
             menuMusic = false;
@@ -40,6 +42,24 @@ namespace MiniGame.UnityHost
             if (!isActiveAndEnabled) return;
             SynchronizeLoops(previous);
             runtime.Changed += Present;
+            foreach (var root in gameObject.scene.GetRootGameObjects())
+                foreach (var door in root.GetComponentsInChildren<HingedDoor>(true))
+                {
+                    doors.Add(door);
+                    door.MotionStarted += PlayDoorMotion;
+                }
+        }
+
+        private void PlayDoorMotion(HingedDoor door, bool opening)
+        {
+            if (isActiveAndEnabled && runtime != null && door.IsBoundTo(runtime) && !runtime.GetView().Paused)
+                service.PlayOneShot(MiniGameAudioChannel.Door, opening ? MiniGameSound.DoorOpen : MiniGameSound.DoorShut);
+        }
+
+        private void UnsubscribeDoors()
+        {
+            foreach (var door in doors) if (door != null) door.MotionStarted -= PlayDoorMotion;
+            doors.Clear();
         }
 
         public void Configure(MiniGameAudioProfile value)
@@ -106,15 +126,23 @@ namespace MiniGame.UnityHost
             previous = view;
             menuMusic = false;
             SynchronizeLoops(view);
-            if (view.Paused) service.Pause(MiniGameAudioChannel.TerminalPower);
-            else service.Resume(MiniGameAudioChannel.TerminalPower);
+            if (view.Paused)
+            {
+                service.Pause(MiniGameAudioChannel.TerminalPower);
+                service.Pause(MiniGameAudioChannel.Door);
+                service.Stop(MiniGameAudioChannel.TerminalTyping);
+            }
+            else
+            {
+                service.Resume(MiniGameAudioChannel.TerminalPower);
+                service.Resume(MiniGameAudioChannel.Door);
+            }
             bool reviewing = view.TerminalOpen && view.TerminalPage == TerminalPage.Review;
             if (before != null && !view.Paused)
             {
-                bool enteredReview = reviewing && (!before.TerminalOpen || before.TerminalPage != TerminalPage.Review
-                    || before.Game.CurrentEncounterId != view.Game.CurrentEncounterId);
-                bool openedInspection = view.Inspection != null && !ReferenceEquals(before.Inspection, view.Inspection);
-                if (enteredReview || openedInspection)
+                bool beganMorningScan = view.Cue?.Kind == PresentationKind.MorningInspection
+                    && before.Cue?.Token != view.Cue.Token;
+                if (beganMorningScan)
                     service.PlayOneShot(MiniGameAudioChannel.Scanner, MiniGameSound.Scan);
                 if (reviewing && view.Game.EncounterStage == EncounterStage.AwaitingDisposition
                     && (before.Game.EncounterStage != EncounterStage.AwaitingDisposition
@@ -186,6 +214,12 @@ namespace MiniGame.UnityHost
         public void PlayTerminalPowerOn() => PlayTerminalPower(MiniGameSound.TerminalPowerOn);
         public void PlayTerminalPowerOff() => PlayTerminalPower(MiniGameSound.TerminalPowerOff);
 
+        public void PlayTerminalTyping()
+        {
+            if (isActiveAndEnabled && runtime != null && !runtime.GetView().Paused)
+                service?.PlayTerminalTyping();
+        }
+
         private void PlayTerminalPower(MiniGameSound sound)
         {
             if (isActiveAndEnabled && runtime != null && !runtime.GetView().Paused)
@@ -194,6 +228,7 @@ namespace MiniGame.UnityHost
 
         private void OnDisable()
         {
+            UnsubscribeDoors();
             if (runtime != null) runtime.Changed -= Present;
             if (service != null) service.StopAll();
         }

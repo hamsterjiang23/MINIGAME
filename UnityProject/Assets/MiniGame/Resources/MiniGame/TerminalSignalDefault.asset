@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd688f2852382b419eb2f9ec9a881ed, type: 3}
+  m_Name: TerminalSignalDefault
+  m_EditorClassIdentifier:
+  Logo:
+    Enabled: 1
+    Intensity: 0.95
+    Tear: 0.06
+    RgbSplit: 0.012
+    Noise: 0.04
+    ScanlineStrength: 0.12
+    ScanlineDensity: 55
+    ScanlineSpeed: 1.2
+    RollStrength: 0
+    RollSpeed: 0.3
+    Rate: 18
+    BurstFrequency: 0.8
+    BurstDuration: 0.26
+  Monitor:
+    Enabled: 1
+    Intensity: 0.8
+    Tear: 0.025
+    RgbSplit: 0.004
+    Noise: 0.025
+    ScanlineStrength: 0.22
+    ScanlineDensity: 100
+    ScanlineSpeed: 0.65
+    RollStrength: 0.012
+    RollSpeed: 0.18
+    Rate: 12
+    BurstFrequency: 0.65
+    BurstDuration: 0.2

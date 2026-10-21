@@ -145,7 +145,7 @@ namespace MiniGame.UnityHost.Editor
             Draw(settings, "EnableDreamFlow");
             Draw(settings, "AlignSeconds"); Draw(settings, "ReturnSeconds"); Draw(settings, "ProjectionInset");
             Draw(settings, "Audio");
-            EditorGUILayout.HelpBox("Day0 完成教学后只开启床引导。Day1–3 工作结束、退出电脑后自动播放对应梦境，播放完成再引导床或特殊分支电脑。", MessageType.None);
+            EditorGUILayout.HelpBox("Day0 完成教学后只开启床引导。Day1–3 上床闭眼后播放对应梦境；顺序画面按编号均分播放时长，末段保持最后一张。", MessageType.None);
             var entries = settings.FindProperty("Days");
             for (int i = 0; i < entries.arraySize; i++)
             {
@@ -153,12 +153,15 @@ namespace MiniGame.UnityHost.Editor
                 int number = day.FindPropertyRelative("Day").intValue;
                 using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
                 {
-                    string title = number == 1 ? "鲸尸海滩" : number == 2 ? "无尽长路" : number == 3 ? "受缚待审" : "梦境";
+                    string title = number == 1 ? "鲸尸海滩" : number == 2 ? "倒悬花海" : number == 3 ? "受缚待审" : "梦境";
                     EditorGUILayout.LabelField("Day" + number + " · " + title, EditorStyles.boldLabel);
                     Relative(day, "Duration", "播放时长（秒）");
                     Relative(day, "Artwork", "画面资源");
+                    Relative(day, "Frames", "顺序画面（按编号）");
+                    Relative(day, "CrossfadeSeconds", "画面叠化时长（秒）");
                     Relative(day, "Music", "音乐用途");
                     Relative(day, "MotionIntensity", "运动强度");
+                    Relative(day, "PostIntensity", "梦境后处理强度");
                     if (GUILayout.Button("预览 Day" + number + " 梦境")) StartPreview(number);
                 }
             }
@@ -170,6 +173,44 @@ namespace MiniGame.UnityHost.Editor
 
         private void DrawEnding()
         {
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
+                    if (GUILayout.Button("预览房间全景结局")) Run(DreamCubemapPreview.Open);
+                using (new EditorGUI.DisabledScope(!DreamCubemapPreview.IsActive))
+                    if (GUILayout.Button("停止全景预览")) Run(DreamCubemapPreview.Stop);
+            }
+            EditorGUILayout.LabelField("房门视点 · 固定全景墙纸", EditorStyles.boldLabel);
+            Draw(settings, "UseRoomCubemapEnding");
+            Draw(settings, "RoomPanoramaSkybox");
+            Draw(settings, "ShowRoomOutline");
+            Draw(settings, "CubemapYaw");
+            EditorGUILayout.HelpBox("墙纸以 Combined 房门的 Player spawn 视点对齐：站在门口看起来是海滩天空盒，向床走近后会看出房间墙面。图像只烘焙一次，走动、暂停或躺下都不会重新捕获。", MessageType.None);
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("固定海滩图的烘焙来源", EditorStyles.boldLabel);
+            Draw(settings, "CubemapSourcePrefab");
+            EditorGUILayout.IntPopup(settings.FindProperty("CubemapFaceSize"),
+                new[] { new GUIContent("256"), new GUIContent("512"), new GUIContent("1024"), new GUIContent("2048") },
+                new[] { 256, 512, 1024, 2048 }, new GUIContent("每面分辨率"));
+            using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
+                if (GUILayout.Button("烘焙 / 更新固定海滩天空盒"))
+                    Run(() =>
+                    {
+                        StopPreview(); settings.ApplyModifiedProperties();
+                        DreamDoorwayPanoramaBaker.Bake();
+                        settings.Update();
+                        savedMessage = "固定海滩天空盒已烘焙并绑定；可在天空盒字段替换为其他全景材质。";
+                    });
+            using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
+                if (GUILayout.Button("从海滩场景生成 / 更新全景捕获源"))
+                    Run(() =>
+                    {
+                        StopPreview(); settings.ApplyModifiedProperties();
+                        DreamCubemapSetup.BuildSource();
+                        settings.Update();
+                        savedMessage = "全景捕获源已更新，已绑定到默认梦境配置。";
+                    });
+            EditorGUILayout.Space();
             EditorGUILayout.LabelField("移动与躺下", EditorStyles.boldLabel);
             Draw(settings, "WalkSpeed"); Draw(settings, "BedInteractionDistance"); Draw(settings, "LieDownSeconds");
             EditorGUILayout.Space(); EditorGUILayout.LabelField("漂流与天空", EditorStyles.boldLabel);
@@ -178,7 +219,9 @@ namespace MiniGame.UnityHost.Editor
             EditorGUILayout.Space(); EditorGUILayout.LabelField("海浪与岸边", EditorStyles.boldLabel);
             Draw(settings, "SeaWaveHeight"); Draw(settings, "SeaWavePeriod"); Draw(settings, "SeaWaveLength");
             Draw(settings, "ShoreWashDistance"); Draw(settings, "SeaFoamAmount");
-            EditorGUILayout.HelpBox("海面和湿沙共用同一演出时钟；暂停会停止波浪，读档恢复当时的浪形。播放中调整参数会实时更新。", MessageType.None);
+            EditorGUILayout.HelpBox(settings.FindProperty("UseRoomCubemapEnding").boolValue
+                ? "固定海滩图取海浪时钟的第 0 秒。调整海浪参数后需重新烘焙；游戏内墙纸不随时间变化。"
+                : "海面和湿沙共用同一演出时钟；暂停会停止波浪，读档恢复当时的浪形。播放中调整参数会实时更新。", MessageType.None);
             EditorGUILayout.Space(); EditorGUILayout.LabelField("字幕与配音", EditorStyles.boldLabel);
             Draw(settings, "SubtitleDelay");
             var lines = settings.FindProperty("EndingLines");
@@ -420,7 +463,7 @@ namespace MiniGame.UnityHost.Editor
 
         private static void Draw(SerializedObject value, string property) => EditorGUILayout.PropertyField(value.FindProperty(property));
         private static void Relative(SerializedProperty value, string property, string label) =>
-            EditorGUILayout.PropertyField(value.FindPropertyRelative(property), new GUIContent(label));
+            EditorGUILayout.PropertyField(value.FindPropertyRelative(property), new GUIContent(label), true);
         private void OnUndo() { settings?.Update(); rules?.Update(); Repaint(); }
         private void OnPlayModeChanged(PlayModeStateChange value) => StopPreview();
         private void OnSceneClosing(Scene scene, bool removingScene) => StopPreview();

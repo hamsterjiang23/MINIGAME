@@ -31,29 +31,38 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.SavePath, Does.EndWith("campaign-save.json"));
             yield return Until(host, () => host.Screen.DayZeroOpeningWaiting, "supervisor opening");
             Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
-            yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_T1"), "first tutorial line");
-            host.Screen.DialogueCharactersPerSecond = 30;
+            yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__P00_D0_R1_COMMON_001"), "first tutorial line");
             yield return Click(Find(host, "Continue"));
-            yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__D0_T2"), "long second tutorial line");
-            yield return new WaitForSecondsRealtime(.08f);
+            yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__P00_D0_R1_COMMON_002"), "second tutorial line");
+            yield return Click(Find(host, "Continue"));
+            yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == "tutorial__P00_D0_R1_COMMON_003"), "third tutorial line");
+            host.Screen.DialogueCharactersPerSecond = 12;
+            yield return Click(Find(host, "Continue"));
+            const string checkpointLine = "tutorial__P00_D0_R1_COMMON_004";
+            yield return Until(host, () => host.Runtime.GetView().Transcript.Any(line => line.SourceNodeId == checkpointLine), "long fourth tutorial line");
+            var body = host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "TerminalDialogueBody");
+            yield return Until(host, () => body.text.Length > 0, "first characters of the checkpoint line");
             Assert.That(host.Screen.LineIsRevealed, Is.False, "Save while the source line is still being revealed.");
-            Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "TerminalDialogueBody").text, Is.Not.Empty);
-            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T1"), Is.True);
-            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T2"), Is.False);
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.True);
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_002"), Is.True);
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_003"), Is.True);
+            Assert.That(host.Runtime.IsDialogueLineComplete(checkpointLine), Is.False);
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             string checkpoint = host.Runtime.Save();
             host.RestoreCheckpoint(checkpoint);
             Assert.That(host.Runtime.GetView().Paused, Is.True);
             Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False, "A running tutorial checkpoint must not replay the opening.");
             Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.EqualTo(1));
-            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T1"), Is.True);
-            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T2"), Is.False);
-            Assert.That(host.Runtime.GetView().Transcript.Count(line => line.SourceNodeId == "tutorial__D0_T2"), Is.EqualTo(1));
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.True);
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_002"), Is.True);
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_003"), Is.True);
+            Assert.That(host.Runtime.IsDialogueLineComplete(checkpointLine), Is.False);
+            Assert.That(host.Runtime.GetView().Transcript.Count(line => line.SourceNodeId == checkpointLine), Is.EqualTo(1));
             host.Screen.DialogueCharactersPerSecond = 0;
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
             yield return Until(host, () => Find(host, "Continue") != null && host.Screen.CurrentLinePageCount >= 1, "restored source line starts at page one");
             var restoredBody = host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "TerminalDialogueBody");
-            var currentLine = host.Runtime.GetView().Transcript.Single(line => line.SourceNodeId == "tutorial__D0_T2");
+            var currentLine = host.Runtime.GetView().Transcript.Single(line => line.SourceNodeId == checkpointLine);
             Assert.That(restoredBody.text, Is.Not.Empty);
             Assert.That(currentLine.Text.StartsWith(restoredBody.text, StringComparison.Ordinal), Is.True);
             var pageIndicator = host.Screen.GetComponentsInChildren<Text>(true).Single(label => label.name == "SpeechPage");
@@ -85,10 +94,10 @@ namespace MiniGame.UnityHost.Tests
             var package = Campaign();
             var saved = JsonUtility.FromJson<SaveEnvelope>(host.Runtime.Save());
             var core = SnapshotCodec.Deserialize(saved.CoreJson, package.Rules).CreateSnapshot().State;
-            Assert.That(core.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.EqualTo(-1));
+            Assert.That(core.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.Zero);
             Assert.That(view.Game.RemainingPurificationQuota, Is.EqualTo(0));
             Assert.That(view.PresentedPatientId, Is.EqualTo("tutorial"));
-            Debug.Log("MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; five intro and two reaction lines; page checkpoint; one -1 purification");
+            Debug.Log("MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; five intro and two reaction lines; page checkpoint; one purification; trust=0");
         }
 
         [UnityTest, Timeout(240000)]
@@ -110,6 +119,8 @@ namespace MiniGame.UnityHost.Tests
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             Assert.That(host.CampaignActive, Is.True, "The combined room must default to the imported full campaign.");
             host.Screen.DialogueCharactersPerSecond = 0;
+            // Dialogue routing is under test; advance the existing dream presentation clock deterministically.
+            if (host.Dreams != null) host.Dreams.UseExternalClock = true;
             var package = Campaign();
             var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
             Assert.That(catalog, Is.Not.Null);
@@ -132,20 +143,32 @@ namespace MiniGame.UnityHost.Tests
                     visited.Add(view.Game.Day + ":" + view.PresentedPatientId);
                     pendingActor = view.PresentedPatientId;
                     pendingName = view.PresentedPatientName;
-                    var latest = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration && line.PortraitId.Length > 0);
+                    var latest = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration);
                     if (latest != null && photographed.Add(view.PresentedPatientId))
                     {
                         if (view.Game.Day == 0)
                         {
                             var supervisor = host.Screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "Day0SupervisorFeed");
                             Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
-                            Assert.That(supervisor.texture, Is.Not.Null);
+                            Assert.That(supervisor.texture, Is.SameAs(Resources.Load<Texture2D>("MiniGame/Day0Supervisor")));
                         }
                         else
                         {
+                            string portraitId = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration && line.PortraitId.Length > 0)?.PortraitId
+                                ?? PortraitCatalog.BasePortrait(view.PresentedPatientId);
+                            var expectedSprite = catalog.Find(portraitId);
+                            Assert.That(expectedSprite, Is.Not.Null, "No displayed portrait for " + view.PresentedPatientId);
                             var portrait = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait");
                             Assert.That(portrait.enabled && portrait.gameObject.activeInHierarchy, Is.True);
-                            Assert.That(portrait.sprite, Is.EqualTo(catalog.Find(latest.PortraitId)));
+                            Assert.That(portrait.sprite, Is.SameAs(expectedSprite));
+                            var feed = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
+                            var feedImage = feed.GetComponent<RawImage>();
+                            Assert.That(feedImage.enabled && feedImage.gameObject.activeInHierarchy, Is.True);
+                            Assert.That(feed.PatientId, Is.EqualTo(view.PresentedPatientId));
+                            Assert.That(feed.CurrentSprite, Is.SameAs(expectedSprite));
+                            Assert.That(feed.Output, Is.Not.Null);
+                            Assert.That(feedImage.texture, Is.SameAs(feed.Output));
+                            Assert.That(feed.RenderedFrames, Is.GreaterThan(0));
                         }
                         yield return new WaitForSecondsRealtime(.14f);
                         if (expected == EndingType.TakenAway)
@@ -193,7 +216,17 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
                 yield break;
             }
+            if (host.Dreams != null && host.Dreams.OwnsCamera)
+            {
+                host.Dreams.Advance(1f);
+                yield break;
+            }
             if (host.Screen.TransitionLocked) yield break;
+            if (view.Input == InputContext.DoorView)
+            {
+                Assert.That(host.Runtime.ExitDoorView().Accepted, Is.True);
+                yield break;
+            }
             if (view.Input == InputContext.World)
             {
                 Assert.That(view.AllowedInteractions, Is.Not.Empty, Describe(host));
@@ -216,6 +249,7 @@ namespace MiniGame.UnityHost.Tests
             {
                 Disposition disposition = Disposition.Treat;
                 if (view.Game.Day == 0) disposition = Disposition.Purify;
+                // Revised priest source: 对话流程!G64 is the Day1 release action.
                 else if (ending == EndingType.PriestAttack && view.Game.Day == 1 && view.Game.CurrentPatientId == "priest") disposition = Disposition.Release;
                 else if (ending == EndingType.TakenAway && (view.Game.Day == 1 && view.Game.CurrentPatientId == "child"
                     || view.Game.Day == 2 && view.Game.CurrentPatientId == "former-ruler"
@@ -230,7 +264,10 @@ namespace MiniGame.UnityHost.Tests
             var options = host.Screen.GetComponentsInChildren<Button>(false).Where(button => button.name.StartsWith("Reply-", StringComparison.Ordinal) && button.IsInteractable()).ToArray();
             if (options.Length == 0) yield break;
             var meeting = package.Rules.Days.Single(day => day.Day == view.Game.Day).Meetings.Single(item => item.PatientId == view.Game.CurrentPatientId);
-            var round = meeting.NormalRounds.Single(item => item.NodeId == view.Game.CurrentNodeId);
+            var round = view.Game.EncounterStage == EncounterStage.SpecialDialogue
+                ? meeting.SpecialRound
+                : meeting.NormalRounds.Single(item => item.NodeId == view.Game.CurrentNodeId);
+            Assert.That(round, Is.Not.Null, Describe(host));
             var preferred = round.Responses.OrderByDescending(response => response.TrustDelta).First().Id;
             yield return Click(options.Single(button => button.name == "Reply-" + preferred));
         }

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="23" result="Passed" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:59:10Z" duration="58.1241848">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="149" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:59:10Z" duration="58.124185" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1196" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="149" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:59:10Z" duration="58.110686" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="75860" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1197" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="149" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:59:10Z" duration="58.081018" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1198" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="149" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:59:10Z" duration="58.047595" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1199" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="149" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:59:10Z" duration="58.014216" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="AmberTerminalPlayModeTests" fullname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" classname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:58:20Z" duration="8.324373" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1004" name="BootCanBeSkippedPausedRestoredAndLeavingKeepsTheDailySessionPowered" fullname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.BootCanBeSkippedPausedRestoredAndLeavingKeepsTheDailySessionPowered" methodname="BootCanBeSkippedPausedRestoredAndLeavingKeepsTheDailySessionPowered" classname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" runstate="Runnable" seed="1822656576" result="Passed" start-time="2026-10-20 16:58:12Z" end-time="2026-10-20 16:58:18Z" duration="6.445176" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="EveryCampaignPortraitRemainsVisibleInItsOwnDynamicRoom" fullname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.EveryCampaignPortraitRemainsVisibleInItsOwnDynamicRoom" methodname="EveryCampaignPortraitRemainsVisibleInItsOwnDynamicRoom" classname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" runstate="Runnable" seed="1684646114" result="Passed" start-time="2026-10-20 16:58:18Z" end-time="2026-10-20 16:58:19Z" duration="0.983273" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <output><![CDATA[MINIGAME_AMBER_MONITOR_VISIBILITY ML01 visible=0.9990323 silhouette=12401
+MINIGAME_AMBER_MONITOR_VISIBILITY ML02 visible=0.9992019 silhouette=12530
+MINIGAME_AMBER_MONITOR_VISIBILITY ML03 visible=0.9994338 silhouette=12363
+MINIGAME_AMBER_MONITOR_VISIBILITY VV01 visible=0.9998966 silhouette=19339
+MINIGAME_AMBER_MONITOR_VISIBILITY VV02 visible=1 silhouette=19500
+MINIGAME_AMBER_MONITOR_VISIBILITY VV03 visible=1 silhouette=19695
+MINIGAME_AMBER_MONITOR_VISIBILITY VV04 visible=1 silhouette=19575
+MINIGAME_AMBER_MONITOR_VISIBILITY ED01 visible=1 silhouette=19568
+MINIGAME_AMBER_MONITOR_VISIBILITY ED02 visible=0.9994261 silhouette=19166
+MINIGAME_AMBER_MONITOR_VISIBILITY ED03 visible=0.9996352 silhouette=19191
+MINIGAME_AMBER_MONITOR_VISIBILITY ED04 visible=1 silhouette=19353
+MINIGAME_AMBER_MONITOR_VISIBILITY AD01 visible=1 silhouette=19387
+MINIGAME_AMBER_MONITOR_VISIBILITY AD02 visible=0.9994795 silhouette=19213
+MINIGAME_AMBER_MONITOR_VISIBILITY AD03 visible=0.9996321 silhouette=19026
+MINIGAME_AMBER_MONITOR_VISIBILITY AD04 visible=0.9995316 silhouette=19214
+MINIGAME_AMBER_MONITOR_VISIBILITY JN01 visible=1 silhouette=23007
+MINIGAME_AMBER_MONITOR_VISIBILITY JN02 visible=1 silhouette=23153
+MINIGAME_AMBER_MONITOR_VISIBILITY JN03 visible=1 silhouette=23216
+MINIGAME_AMBER_MONITOR_VISIBILITY JN04 visible=1 silhouette=23170
+MINIGAME_AMBER_MONITOR_VISIBILITY JN05 visible=1 silhouette=23061
+MINIGAME_AMBER_MONITOR_VISIBILITY D0_01 visible=0.999833 silhouette=23960
+MINIGAME_AMBER_MONITOR_VISIBILITY D0_02 visible=0.9997951 silhouette=24400
+]]></output>
+              </test-case>
+              <test-case id="1003" name="HtmlBitmapGlyphsAndHighlightStatesRenderOnActualNativeSource" fullname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.HtmlBitmapGlyphsAndHighlightStatesRenderOnActualNativeSource" methodname="HtmlBitmapGlyphsAndHighlightStatesRenderOnActualNativeSource" classname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" runstate="Runnable" seed="648159905" result="Passed" start-time="2026-10-20 16:58:19Z" end-time="2026-10-20 16:58:20Z" duration="0.262683" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="LongNarrationPagesMatchActualWrappedLabelsAndNewestSpeechRemainsVisible" fullname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.LongNarrationPagesMatchActualWrappedLabelsAndNewestSpeechRemainsVisible" methodname="LongNarrationPagesMatchActualWrappedLabelsAndNewestSpeechRemainsVisible" classname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" runstate="Runnable" seed="1358825805" result="Passed" start-time="2026-10-20 16:58:20Z" end-time="2026-10-20 16:58:20Z" duration="0.266538" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+              </test-case>
+              <test-case id="1002" name="NativeCompositeRendersAndWarpedPickingMatchesEveryDisplayMode" fullname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests.NativeCompositeRendersAndWarpedPickingMatchesEveryDisplayMode" methodname="NativeCompositeRendersAndWarpedPickingMatchesEveryDisplayMode" classname="MiniGame.UnityHost.Tests.AmberTerminalPlayModeTests" runstate="Runnable" seed="1382641849" result="Passed" start-time="2026-10-20 16:58:20Z" end-time="2026-10-20 16:58:20Z" duration="0.319607" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1094" name="MiniGameAudioPlayModeTests" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-20 16:58:20Z" end-time="2026-10-20 16:58:24Z" duration="4.173374" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1096" name="AllTwelveClipsAndMixerGroupsArePresentAndVolumesApply" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.AllTwelveClipsAndMixerGroupsArePresentAndVolumesApply" methodname="AllTwelveClipsAndMixerGroupsArePresentAndVolumesApply" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="966112807" result="Passed" start-time="2026-10-20 16:58:20Z" end-time="2026-10-20 16:58:20Z" duration="0.166449" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1100" name="CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp" methodname="CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="854575339" result="Passed" start-time="2026-10-20 16:58:20Z" end-time="2026-10-20 16:58:21Z" duration="0.299769" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1103" name="ClearingAPlayingClipStopsItsSourceAndDestroyUnsubscribesRuntime" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.ClearingAPlayingClipStopsItsSourceAndDestroyUnsubscribesRuntime" methodname="ClearingAPlayingClipStopsItsSourceAndDestroyUnsubscribesRuntime" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="404830226" result="Passed" start-time="2026-10-20 16:58:21Z" end-time="2026-10-20 16:58:21Z" duration="0.499931" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1102" name="DisabledDirectorCannotBeRevivedByCallbacksOrRuntimeReplacement" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DisabledDirectorCannotBeRevivedByCallbacksOrRuntimeReplacement" methodname="DisabledDirectorCannotBeRevivedByCallbacksOrRuntimeReplacement" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="2139146431" result="Passed" start-time="2026-10-20 16:58:21Z" end-time="2026-10-20 16:58:21Z" duration="0.333223" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1101" name="DreamUsesDayMusicAndProjectorUntilDreamEnds" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.DreamUsesDayMusicAndProjectorUntilDreamEnds" methodname="DreamUsesDayMusicAndProjectorUntilDreamEnds" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="1295716698" result="Passed" start-time="2026-10-20 16:58:21Z" end-time="2026-10-20 16:58:22Z" duration="0.499965" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1098" name="NewLoopRequestCancelsOldFadeOutWithoutRestartingOrStoppingLater" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.NewLoopRequestCancelsOldFadeOutWithoutRestartingOrStoppingLater" methodname="NewLoopRequestCancelsOldFadeOutWithoutRestartingOrStoppingLater" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="235954997" result="Passed" start-time="2026-10-20 16:58:22Z" end-time="2026-10-20 16:58:23Z" duration="0.666515" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1097" name="RepeatedViewsDoNotRestartMusicAndComputerNoiseLayersOverGameplay" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.RepeatedViewsDoNotRestartMusicAndComputerNoiseLayersOverGameplay" methodname="RepeatedViewsDoNotRestartMusicAndComputerNoiseLayersOverGameplay" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="2001346016" result="Passed" start-time="2026-10-20 16:58:23Z" end-time="2026-10-20 16:58:23Z" duration="0.733244" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1099" name="ScannerOnlyPlaysForNewMorningInstrumentCuesAcrossDays" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.ScannerOnlyPlaysForNewMorningInstrumentCuesAcrossDays" methodname="ScannerOnlyPlaysForNewMorningInstrumentCuesAcrossDays" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="1507252810" result="Passed" start-time="2026-10-20 16:58:23Z" end-time="2026-10-20 16:58:24Z" duration="0.166581" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+              </test-case>
+              <test-case id="1095" name="SerializedCombinedSceneStartsBackgroundMusicWithoutPlayerInput" fullname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests.SerializedCombinedSceneStartsBackgroundMusicWithoutPlayerInput" methodname="SerializedCombinedSceneStartsBackgroundMusicWithoutPlayerInput" classname="MiniGame.UnityHost.Tests.MiniGameAudioPlayModeTests" runstate="Runnable" seed="1959239540" result="Passed" start-time="2026-10-20 16:58:24Z" end-time="2026-10-20 16:58:24Z" duration="0.774511" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1156" name="SeatedTerminalEntryPlayModeTests" fullname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" classname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 16:58:24Z" end-time="2026-10-20 16:58:54Z" duration="29.751594" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1157" name="ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover" fullname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover" methodname="ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover" classname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" runstate="Runnable" seed="598518632" result="Passed" start-time="2026-10-20 16:58:24Z" end-time="2026-10-20 16:58:38Z" duration="13.556303" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1158" name="SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose" fullname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose" methodname="SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose" classname="MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests" runstate="Runnable" seed="1780264693" result="Passed" start-time="2026-10-20 16:58:38Z" end-time="2026-10-20 16:58:54Z" duration="16.161683" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1168" name="TerminalDailyPowerPlayModeTests" fullname="MiniGame.UnityHost.Tests.TerminalDailyPowerPlayModeTests" classname="MiniGame.UnityHost.Tests.TerminalDailyPowerPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-20 16:58:54Z" end-time="2026-10-20 16:59:09Z" duration="14.437917" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1169" name="OneDailyBootKeepsPhysicalScreenLitUntilFinalAutomaticClosingWithSounds" fullname="MiniGame.UnityHost.Tests.TerminalDailyPowerPlayModeTests.OneDailyBootKeepsPhysicalScreenLitUntilFinalAutomaticClosingWithSounds" methodname="OneDailyBootKeepsPhysicalScreenLitUntilFinalAutomaticClosingWithSounds" classname="MiniGame.UnityHost.Tests.TerminalDailyPowerPlayModeTests" runstate="Runnable" seed="2038906966" result="Passed" start-time="2026-10-20 16:58:54Z" end-time="2026-10-20 16:59:09Z" duration="14.405169" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1188" name="TerminalTypingAudioPlayModeTests" fullname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests" classname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:09Z" duration="0.865880" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1189" name="EachCharacterChoosesOneOfFourClipsWithNaturalRepeatsAndIndependentRandomness" fullname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.EachCharacterChoosesOneOfFourClipsWithNaturalRepeatsAndIndependentRandomness" methodname="EachCharacterChoosesOneOfFourClipsWithNaturalRepeatsAndIndependentRandomness" classname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests" runstate="Runnable" seed="215263664" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:09Z" duration="0.166112" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1190" name="EmptyPoolsStaySilentAndMissingClipsAreExcluded" fullname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.EmptyPoolsStaySilentAndMissingClipsAreExcluded" methodname="EmptyPoolsStaySilentAndMissingClipsAreExcluded" classname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests" runstate="Runnable" seed="489653273" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:09Z" duration="0.166745" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1191" name="PauseRestoreAndDisableStopOldTypingWithoutReplayingIt" fullname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.PauseRestoreAndDisableStopOldTypingWithoutReplayingIt" methodname="PauseRestoreAndDisableStopOldTypingWithoutReplayingIt" classname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests" runstate="Runnable" seed="576931980" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:09Z" duration="0.299938" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1192" name="TypingDoesNotReplaceOrRestartTheSeparatePowerSound" fullname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.TypingDoesNotReplaceOrRestartTheSeparatePowerSound" methodname="TypingDoesNotReplaceOrRestartTheSeparatePowerSound" classname="MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests" runstate="Runnable" seed="1044469953" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:09Z" duration="0.199876" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1193" name="TerminalTypingRevealPlayModeTests" fullname="MiniGame.UnityHost.Tests.TerminalTypingRevealPlayModeTests" classname="MiniGame.UnityHost.Tests.TerminalTypingRevealPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:10Z" duration="0.437308" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1194" name="EachNewVisibleGlyphSoundsOnceWhileWhitespaceCursorAndPowerStagesStaySilent" fullname="MiniGame.UnityHost.Tests.TerminalTypingRevealPlayModeTests.EachNewVisibleGlyphSoundsOnceWhileWhitespaceCursorAndPowerStagesStaySilent" methodname="EachNewVisibleGlyphSoundsOnceWhileWhitespaceCursorAndPowerStagesStaySilent" classname="MiniGame.UnityHost.Tests.TerminalTypingRevealPlayModeTests" runstate="Runnable" seed="906325954" result="Passed" start-time="2026-10-20 16:59:09Z" end-time="2026-10-20 16:59:10Z" duration="0.200637" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1195" name="PauseSkipAndRebindDoNotQueueOrReplayOldLetters" fullname="MiniGame.UnityHost.Tests.TerminalTypingRevealPlayModeTests.PauseSkipAndRebindDoNotQueueOrReplayOldLetters" methodname="PauseSkipAndRebindDoNotQueueOrReplayOldLetters" classname="MiniGame.UnityHost.Tests.TerminalTypingRevealPlayModeTests" runstate="Runnable" seed="1669010868" result="Passed" start-time="2026-10-20 16:59:10Z" end-time="2026-10-20 16:59:10Z" duration="0.203278" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

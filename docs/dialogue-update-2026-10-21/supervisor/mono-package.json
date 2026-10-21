@@ -1,0 +1,32 @@
+{
+  "name": "NORM-Windows-x64-Mono-20261021-165304",
+  "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-20261021-165304.zip",
+  "zipBytes": 197775283,
+  "zipSha256": "ba96e4f13d65fd9c7e19f2251eb7717abde1b17f3002fcd5f72d2cfc415c6b20",
+  "checksumPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-20261021-165304.sha256",
+  "backend": "Mono",
+  "platform": "Windows x64",
+  "developmentBuild": false,
+  "files": 159,
+  "allExtractedFileHashesMatch": true,
+  "build": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 9.990586799999999,
+    "sourceFilesUnchangedDuringBuild": true,
+    "messages": [
+      {
+        "type": "Warning",
+        "content": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      }
+    ]
+  },
+  "nativeStartup": {
+    "passed": true,
+    "readyLine": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56",
+    "errorMatches": 0,
+    "log": "F:/AAMINIGAME/MINIGAME/Artifacts/MonoDelivery-20261021-165304/extracted-player.log"
+  },
+  "artifact": "F:/AAMINIGAME/MINIGAME/Artifacts/MonoDelivery-20261021-165304"
+}

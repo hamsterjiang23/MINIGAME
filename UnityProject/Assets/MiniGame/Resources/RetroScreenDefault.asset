@@ -13,8 +13,27 @@ MonoBehaviour:
   m_Name: RetroScreenDefault
   m_EditorClassIdentifier: 
   effectEnabled: 1
-  strength: 1
+  strength: 0.505
   pixelSize: 8
+  fullscreenQuantization: 1
   levels: 23
   gammaBefore: 0.59
   gammaAfter: 1.25
+  colorGradingEnabled: 0
+  postExposure: 0
+  contrast: 0
+  saturation: 0
+  shadowTint: {r: 1, g: 1, b: 1, a: 1}
+  midtoneTint: {r: 1, g: 1, b: 1, a: 1}
+  highlightTint: {r: 1, g: 1, b: 1, a: 1}
+  shadowExposure: 0
+  midtoneExposure: 0
+  highlightExposure: 0
+  shadowEnd: 0.35
+  highlightStart: 0.65
+  neutralTonemapping: 0
+  perceptualQuantization: 0
+  quantizationStrength: 1
+  ditherStrength: 0
+  useVirtualResolution: 0
+  virtualHeight: 540

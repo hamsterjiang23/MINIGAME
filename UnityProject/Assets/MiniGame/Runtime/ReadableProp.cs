@@ -10,6 +10,9 @@ namespace MiniGame.UnityHost
         [SerializeField, TextArea, InspectorName("阅读文案")]
         [Tooltip("换行开始下一段；长段落自动分页，阅读等待玩家确认。")]
         private string caption = "";
+        [SerializeField, InspectorName("阅读文档")]
+        [Tooltip("可引用静态全文或按天切换的文档；未指定时使用原阅读文案。")]
+        private RoomReadableDocument document;
         [SerializeField] private Renderer surface;
         [SerializeField, Min(.1f), InspectorName("交互距离（米）")]
         [Tooltip("从玩家镜头到鼠标命中的海报表面的最大距离；距离内才会显示白色描边并允许阅读。")]
@@ -20,8 +23,10 @@ namespace MiniGame.UnityHost
         private Material outlineMaterial;
         private bool preparingCameras;
 
-        public string Id => id;
-        public string Caption => caption;
+        public string Id => document != null ? document.Id : id;
+        public string Caption => CaptionForDay(0);
+        public RoomReadableDocument Document => document;
+        public string InteractionLabel => document != null ? document.InteractionLabel : "查看海报";
         public Texture Texture => surface != null && surface.sharedMaterial != null ? surface.sharedMaterial.mainTexture : null;
         public Renderer Surface => surface;
         public float InteractionDistance
@@ -32,10 +37,16 @@ namespace MiniGame.UnityHost
         public float CaptionSeconds => captionSeconds;
         public bool IsHighlighted => outline != null && outline.enabled;
 
+        public string CaptionForDay(int day) => document != null ? document.GetText(day) : caption;
+        public bool IsReadableOnDay(int day) => !string.IsNullOrWhiteSpace(CaptionForDay(day));
+
+        public void ConfigureDocument(RoomReadableDocument readableDocument) => document = readableDocument;
+
         public void Configure(string stableId, string text, Renderer posterSurface, float distance = 2f, float seconds = 4f)
         {
             id = stableId ?? "";
             caption = text ?? "";
+            document = null;
             surface = posterSurface;
             InteractionDistance = distance;
             captionSeconds = ValidPositive(seconds, 4f);

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "packagedAt": "2026-10-21T14:52:59.620167+08:00",
+  "timezone": "Asia/Shanghai",
+  "buildDirectory": "F:\\AAMINIGAME\\MINIGAME\\Builds\\WorldDialogue",
+  "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-WorldInteraction-20261021-145259.zip",
+  "zipBytes": 188585102,
+  "zipSha256": "666d63820183b864a080f9340649ac724e19aa616dabbce3361fa3be759f858a",
+  "sha256Path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-WorldInteraction-20261021-145259.sha256",
+  "exe": {
+    "path": "MiniGame.exe",
+    "bytes": 666624,
+    "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+  },
+  "sourceScene": {
+    "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "bytes": 322057,
+    "sha256": "1c67cd4252ea4edb12ce6903b29b1df8b4aaefa9b4177df17302497ec8762488"
+  },
+  "manifest": {
+    "path": "package-manifest.json",
+    "bytes": 29808,
+    "sha256": "51c8ae9ec032a6d8b5a335562545d7fc06e08d94ed035c7236febe6bc4de13ee"
+  },
+  "payloadFiles": 158,
+  "verifiedZipEntries": 174,
+  "verifiedZipFileEntries": 159,
+  "verifiedZipDirectoryEntries": 15,
+  "validation": {
+    "windowsX64Exe": true,
+    "monoBleedingEdgeIncluded": true,
+    "dataDirectoryIncluded": true,
+    "safePaths": true,
+    "allEntrySha256Matched": true,
+    "fileAndDirectoryInventoryMatched": true,
+    "sourceBuildUnchangedDuringPackaging": true,
+    "sourceSceneUnchangedDuringPackaging": true
+  }
+}

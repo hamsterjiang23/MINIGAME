@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "E:/Downloads/NORM调整建议.docx",
+    "sha256": "92365ccd272ffaa496597d93b71fcdce2c8b2053c333b753de6c0c2a29c0e639",
+    "extracted": "Artifacts/NormBugs/docx-20261020/content.json"
+  },
+  "updated": "2026-10-21",
+  "scope": "按用户选择暂缓灯光和新梦境素材；截图红字并入对应条目，保留最新监督员只能在门外的约束。",
+  "statusCounts": {
+    "existing-fix-revalidated": 8,
+    "implemented-verified": 9,
+    "deferred-by-user": 2
+  },
+  "verification": {
+    "playmode": {
+      "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+      "result": "Passed",
+      "passed": 47,
+      "failed": 0
+    },
+    "player": {
+      "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+      "result": "PASSED",
+      "developmentBuild": false
+    },
+    "pausePlayer": {
+      "path": "Artifacts/NormBugs/Validation/PausePlayer/verification.json",
+      "passed": true
+    },
+    "dotnet": {
+      "path": "Artifacts/NormBugs/Validation/dotnet-test.log",
+      "corePassed": 114,
+      "presentationPassed": 213,
+      "failed": 0
+    }
+  },
+  "issues": [
+    {
+      "id": "NORM-001",
+      "title": "锁定30 FPS并关闭垂直同步",
+      "sourceParagraphs": [
+        2
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "保留加载前设置目标30 FPS、vSyncCount=0；本轮非开发版Player读回同样设置。目标值不保证慢帧硬件持续达到30 FPS。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PlayerRuntimeSettings.cs",
+          "symbol": "FrameLimit / Apply"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "targetFrameRate",
+          "value": 30
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "vSyncCount",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "NORM-002",
+      "title": "选择应答时长对白丢失第一行",
+      "sourceParagraphs": [
+        3,
+        4,
+        5
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "已完成对白显示完整entry.Text和段落，未完成条目才显示当前打字页；位图行高按全部文字测量。附件指向左侧对白记录，未扩大右侧单行命令布局。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/TerminalTranscriptView.cs",
+          "symbol": "Render / EnsureRow"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs",
+          "symbol": "Paginate / BitmapHeight"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "NormExistingRegressionPlayModeTests",
+          "testMethod": "CompletedBitmapSpeechShowsItsFirstLineWhenReplyCommandsAppear",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "NORM-003",
+      "title": "Esc菜单缺少退出游戏",
+      "sourceParagraphs": [
+        7
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "保留暂停菜单真实Application.Quit回调；本轮非开发版Player从菜单退出进程。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+          "symbol": "Build pause labels/actions"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/PausePlayer/verification.json",
+          "jsonKey": "quitViaMenu",
+          "value": true
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/PausePlayer/verification.json",
+          "jsonKey": "passed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-004",
+      "title": "暂停后画面翻转180度",
+      "sourceParagraphs": [
+        8
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "保留暂停抓图在模糊后依据图形后端进行一次UV修正；不旋转世界相机。D3D11 Player的终端、房间及1280x720/1024x768样本均通过。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuBackdrop.cs",
+          "symbol": "CaptureFrame image.uvRect"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/PausePlayer/verification.json",
+          "jsonKey": "graphics",
+          "value": "Direct3D11"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/PausePlayer/verification.json",
+          "jsonKey": "samples[*].passed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-005",
+      "title": "房间与走廊灯光不符",
+      "sourceParagraphs": [
+        9
+      ],
+      "status": "deferred-by-user",
+      "implementation": "按用户选择暂缓灯光调整，留待后续单独处理；本轮完成项不包含灯光效果验收。",
+      "evidence": [
+        {
+          "kind": "user-decision",
+          "quote": "先修其余问题，灯光和新素材暂缓"
+        }
+      ]
+    },
+    {
+      "id": "NORM-006",
+      "title": "新梦境素材未实装",
+      "sourceParagraphs": [
+        10
+      ],
+      "status": "deferred-by-user",
+      "implementation": "按用户选择暂缓新梦境素材；保留已有睡眠与梦境逻辑，不把现有占位内容计为新素材交付。",
+      "evidence": [
+        {
+          "kind": "user-decision",
+          "quote": "先修其余问题，灯光和新素材暂缓"
+        }
+      ]
+    },
+    {
+      "id": "NORM-007",
+      "title": "鼠标灵敏度过高",
+      "sourceParagraphs": [
+        11
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "默认值与正式MainRoomCombined场景为0.7；本轮同步仍被打包的旧InspectionApartment场景，消除其残留值2。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PlayerRuntimeSettings.cs",
+          "symbol": "DefaultMouseSensitivity"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+          "symbol": "lookSensitivity"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Scenes/InspectionApartment.unity",
+          "symbol": "ApartmentPlayer.lookSensitivity = 0.7"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "PlaytestFeedbackPlayModeTests",
+          "testMethod": "PlayerUsesThirtyFrameLimitLowerSensitivityAndAnExitAction",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "NORM-008",
+      "title": "对白记录缺少滚轮与稳定阅读位置",
+      "sourceParagraphs": [
+        12
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "记录区域接收滚轮；上翻后按像素保存当前阅读位置，追加与打字更新不强制跳到底部；回到底部后继续跟随新内容。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/TerminalTranscriptView.cs",
+          "symbol": "constructor ScrollRect / Render follow-offset / Scroll"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "NormExistingRegressionPlayModeTests",
+          "testMethod": "WheelReadingOffsetSurvivesAnAppendedTypingRowAndCanReturnToLatest",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "NORM-009",
+      "title": "净化后未睡觉就进入梦境",
+      "sourceParagraphs": [
+        13
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "夜间床交互先进入Sleep演出，完成后才进入Dream；Day0单次睡眠直接进入Day1。处置或关机本身不代替床交互。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/MiniGame.Presentation/GameRuntime.cs",
+          "symbol": "TryInteract Bed / CompleteCue Sleep / _dreamFromBed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "DayZeroOpeningPlayModeTests",
+          "testMethod": "NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne",
+          "result": "Passed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "NormPurificationKpiPlayModeTests",
+          "testMethod": "DirectoryAndReviewShowAuthoritativeProgressAfterDispositionRestoreAndANewDay",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "dayZeroSlept",
+          "value": true
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "campaignStart",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-010",
+      "title": "物理CRT亮屏需要显示实时缩小UI",
+      "sourceParagraphs": [
+        14
+      ],
+      "status": "existing-fix-revalidated",
+      "implementation": "通电期间物理曲面屏持续采样当前原生UI纹理；退出全屏交互时只隐藏全屏输出，保留渲染源，再次进入接续进度，最终关机停止渲染。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+          "symbol": "Render terminal.SetActive / Display.SetOutputVisible"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+          "symbol": "SetSurfaceGlow / SetLiveDisplay"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Art/MainRoom/RoomArtStandard.shader",
+          "symbol": "surf _LiveDisplay / _LiveDisplayTex"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "PoweredTerminalDisplayPlayModeTests",
+          "testMethod": "WorldExitPauseAndRestoreKeepLiveUiUntilTheDailyShutdown",
+          "result": "Passed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "SeatedTerminalEntryPlayModeTests",
+          "testMethod": "ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "NORM-011",
+      "title": "暂停菜单风格与交互文字底框",
+      "sourceParagraphs": [
+        15
+      ],
+      "status": "implemented-verified",
+      "implementation": "暂停菜单改为平面琥珀命令条和反白焦点；当前物件交互提示有暗色底板及白色细框，去掉旧装饰横线。保留原菜单动作与背景方向修复。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
+          "symbol": "Build / LayoutColumn"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuButton.cs",
+          "symbol": "DoStateTransition"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+          "symbol": "Build InteractionFrame / AddWhiteFrame"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "PauseMenuPlayModeTests",
+          "testMethod": "FlatAmberCommandsHaveMatchingPointerTargetsAcrossTheirWidth",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "manualOpenedByPointer",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-012",
+      "title": "界面文字统一暖黄色",
+      "sourceParagraphs": [
+        16
+      ],
+      "status": "implemented-verified",
+      "implementation": "房间状态、交互提示、对白、检查页和暂停文字使用终端暖黄配色；叙述与交互边框按截图要求保留白色。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+          "symbol": "Ink / MakeText / AddWhiteFrame"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
+          "symbol": "Build"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+          "symbol": "Build body.color"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "NormWorldPresentationPlayModeTests",
+          "testMethod": "MorningUsesSupervisorAndAWhiteFrameWithoutDeveloperLabelsOrWorldInstructions",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "headerAmber",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-013",
+      "title": "场景胶片颗粒不可见",
+      "sourceParagraphs": [
+        17
+      ],
+      "status": "implemented-verified",
+      "implementation": "新增独立于量化抖动的单色动态胶片颗粒；主场景强度0.05，可调至0关闭，保留现有调色与灯光。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/RetroScreenProfile.cs",
+          "symbol": "FilmGrainStrength"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/RetroScreenEffect.cs",
+          "symbol": "Render _FilmGrainStrength / _FilmGrainFrame"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Resources/RetroScreen.shader",
+          "symbol": "FilmGrain / frag"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset",
+          "symbol": "filmGrainStrength = 0.05"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "RetroScreenFilmGrainPlayModeTests",
+          "testMethod": "GrainAddsMonochromeDetailWithoutChangingAlphaOrMeanBrightness",
+          "result": "Passed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "RetroScreenFilmGrainPlayModeTests",
+          "testMethod": "GrainChangesBetweenFramesAndBypassesPreserveTheSource",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "NORM-014",
+      "title": "缺少当日净化要求KPI",
+      "sourceParagraphs": [
+        18
+      ],
+      "status": "implemented-verified",
+      "implementation": "目录和复核页显示净化要求n/m，直接读取当日实际净化数与要求；治疗不计数，重复提交不重复结算，读档与跨日更新，超额保留真实数值。原剩余额度显示继续保留。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/MiniGame.Core/Runtime/GameSession.cs",
+          "symbol": "GetPlayerView current DaySnapshot.Purifications / PurificationQuota"
+        },
+        {
+          "kind": "source",
+          "path": "src/MiniGame.Core/Contracts/GameResult.cs",
+          "symbol": "PlayerView.PurificationsToday / PurificationRequirement"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+          "symbol": "directoryRequirement / reviewRequirement / Render"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "NormPurificationKpiPlayModeTests",
+          "testMethod": "DirectoryAndReviewShowAuthoritativeProgressAfterDispositionRestoreAndANewDay",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "directoryKpi",
+          "value": "净化要求：0/1"
+        }
+      ]
+    },
+    {
+      "id": "NORM-015",
+      "title": "选择选项错误播放扫描音效",
+      "sourceParagraphs": [
+        19
+      ],
+      "status": "implemented-verified",
+      "implementation": "扫描声仅在进入新的MorningInspection演出令牌时播放一次；复核、查看线索、选择应答、暂停恢复和读档不再触发扫描声。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs",
+          "symbol": "Present beganMorningScan / Bind"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "MiniGameAudioPlayModeTests",
+          "testMethod": "ScannerOnlyPlaysForNewMorningInstrumentCuesAcrossDays",
+          "result": "Passed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "MiniGameAudioPlayModeTests",
+          "testMethod": "CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "scanSounds",
+          "value": 1
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "terminalDirectoryReached",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-016",
+      "title": "开门镜头不应继续前推",
+      "sourceParagraphs": [
+        20,
+        21
+      ],
+      "status": "implemented-verified",
+      "implementation": "门口观察锚点与门内对齐锚点重合，位于门平面内0.85米；开门后停在该处，不再额外前推2米。重合锚点直接进入观察，返回时不增加原地等待。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/DoorViewCamera.cs",
+          "symbol": "LateUpdate / FinishEntry / Returning"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Editor/CombinedInteractionSetup.cs",
+          "symbol": "ConfigureDoorCamera"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "DoorViewPlayModeTests",
+          "testMethod": "FixedDoorAlignmentFacesOutwardAndHoldsInsideTheThresholdWithoutForwardDrift",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "cameraInsideDistance",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "NORM-017",
+      "title": "海报边框与文字风格统一",
+      "sourceParagraphs": [
+        23,
+        24
+      ],
+      "status": "implemented-verified",
+      "implementation": "海报与物品叙述使用白色细框、暗色垫底及暖黄正文；保留分页和阅读输入锁，去掉原底部横线与常驻操作文字。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+          "symbol": "Build / FrameEdge"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "PropNarrationPlayModeTests",
+          "testMethod": "LongParagraphRemainsCompleteAcrossReadablePages",
+          "result": "Passed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "PropNarrationPlayModeTests",
+          "testMethod": "ReadingOwnsInputPagesAndPauseWithoutChangingGameState",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "NORM-018",
+      "title": "顶部状态改黄色并将底部操作移入暂停手册",
+      "sourceParagraphs": [
+        26
+      ],
+      "status": "implemented-verified",
+      "implementation": "顶部状态文字改为暖黄；底部WASD/E/F5/F9等常驻说明移入暂停菜单操作手册。Esc先关闭手册并保持暂停，再按Esc恢复游戏；手册内禁用全局存读档快捷键。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+          "symbol": "Render worldHelp / Build pause labels-actions"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
+          "symbol": "BuildManual / ShowManual / TryCloseManual"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs",
+          "symbol": "HandleEscape / Update"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "PauseMenuPlayModeTests",
+          "testMethod": "OperationManualKeepsTheGamePausedAndBlocksMainMenuCallbacksUntilReturn",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "worldInstructionsHidden",
+          "value": true
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "escapeClosesManualOnly",
+          "value": true
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "escapeResumes",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "NORM-019",
+      "title": "晨检采用门外监督员立绘与白框对白并移除开发占位",
+      "sourceParagraphs": [
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "status": "implemented-verified",
+      "implementation": "监督员仅为门外世界空间立绘，不作为室内或Canvas人物覆盖；固定站在真实门平面外约0.9米，受门体与门框遮挡。隐藏转为显现时重新读取站立玩家地面高度，避免沿用Day0坐姿胶囊高度；显现后不跟随玩家移动，暂停保持位置，晨检和简报结束后隐藏。对白改为监督员称谓、下方白框及暖黄文字，移除开发占位标记。",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/SupervisorDoorwayView.cs",
+          "symbol": "EnsureSurface / PlaceAtDoorway / Present / ShouldShow"
+        },
+        {
+          "kind": "source",
+          "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+          "symbol": "IsSupervisorCue / WorldCueText / AddWhiteFrame"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "SupervisorDoorwayPlayModeTests",
+          "testMethod": "FirstMorningRegroundsSupervisorAfterAnInitiallySeatedBind",
+          "result": "Passed"
+        },
+        {
+          "kind": "playmode",
+          "path": "Artifacts/NormBugs/Validation/final-playmode.xml",
+          "testClass": "SupervisorDoorwayPlayModeTests",
+          "testMethod": "MorningSupervisorIsGroundedOutsideTheDoorAndHiddenWhenClosedOrWorking",
+          "result": "Passed"
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "supervisorWorldObject",
+          "value": true
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "noSupervisorIndoors",
+          "value": true
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "supervisorBeyondDoorMetres",
+          "value": 0.900000036
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "supervisorFeetGapFromStandingPlayer",
+          "value": 0
+        },
+        {
+          "kind": "player",
+          "path": "Artifacts/NormBugs/Validation/Player/verification.json",
+          "jsonKey": "supervisorHiddenAfterBriefing",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

@@ -116,22 +116,33 @@ namespace MiniGame.Presentation.Authoring
             var map = nodes.ToDictionary(n => n.Id, StringComparer.Ordinal);
             if (!map.ContainsKey(meeting.StartNode) || map.ContainsKey(meeting.EndNode) || !RestrictedYarnParser.IsIdentifier(meeting.EndNode))
                 RestrictedYarnParser.Fail("meeting-boundary", "Each meeting needs a valid start and a distinct external end.");
+            if ((meeting.SpecialRoundStartNode != null) != meeting.SpecialTrustThreshold.HasValue)
+                RestrictedYarnParser.Fail("special-metadata", "A special round requires both an entry node and a trust threshold.");
+            if (meeting.SpecialRoundStartNode != null &&
+                (!map.TryGetValue(meeting.SpecialRoundStartNode, out var specialEntry) || specialEntry.Kind == "measure"))
+                RestrictedYarnParser.Fail("special-entry", "The special round must start at an existing line or choice node.");
             var active = new HashSet<string>(StringComparer.Ordinal);
             var visited = new HashSet<string>(StringComparer.Ordinal);
             Visit(meeting.StartNode, meeting.EndNode, map, active, visited);
             if (visited.Count != nodes.Count) RestrictedYarnParser.Fail("unreachable", "Every V2 source node must be reachable within its meeting.");
             if (nodes.Count(n => n.Kind == "measure") != 1) RestrictedYarnParser.Fail("measure-count", "Each meeting requires exactly one measure node.");
             var rounds = new List<RoundDefinition>();
+            RoundDefinition? specialRound = null;
             var roundNames = new HashSet<string>(StringComparer.Ordinal);
             var cursor = meeting.StartNode;
             string? introNodeId = null;
             while (map[cursor].Kind != "measure")
             {
                 var entry = map[cursor];
+                var isSpecial = entry.Id == meeting.SpecialRoundStartNode;
+                if (isSpecial && rounds.Count == 0)
+                    RestrictedYarnParser.Fail("special-position", "The special round must follow ordinary dialogue.", entry.SourceLine, entry.Id);
                 var intro = new List<DialogueLine>();
                 var choice = entry;
                 while (IsLine(choice))
                 {
+                    if (choice.Id == meeting.SpecialRoundStartNode && !isSpecial)
+                        RestrictedYarnParser.Fail("special-entry", "The special entry must begin its own choice group.", choice.SourceLine, choice.Id);
                     intro.Add(new DialogueLine(choice));
                     if (!map.TryGetValue(choice.Next, out var next)) RestrictedYarnParser.Fail("intro-end", "An introduction must reach a choice or measure gate.", choice.SourceLine, choice.Id);
                     choice = next!;
@@ -144,7 +155,8 @@ namespace MiniGame.Presentation.Authoring
                     cursor = choice.Id;
                     break;
                 }
-                if (choice.Kind != "choice" || entry.Round.Length == 0 || !roundNames.Add(entry.Round) || choice.Round != entry.Round)
+                if (choice.Kind != "choice" || entry.Round.Length == 0 ||
+                    (!isSpecial && !roundNames.Add(entry.Round)) || choice.Round != entry.Round)
                     RestrictedYarnParser.Fail("round-choice", "Each distinct round must lead to one choice in the same round.", entry.SourceLine, entry.Id);
                 var responses = new List<ResponseDefinition>();
                 var labels = new List<ResponseContent>();
@@ -152,7 +164,7 @@ namespace MiniGame.Presentation.Authoring
                 foreach (var option in choice.Options)
                 {
                     var lines = new List<DialogueLine>();
-                    var next = FollowBranch(option.Next, entry.Round, meeting.EndNode, map, lines);
+                    var next = FollowBranch(option.Next, entry.Round, meeting.EndNode, meeting.SpecialRoundStartNode, map, lines);
                     if (next == meeting.EndNode || (boundary != null && boundary != next))
                         RestrictedYarnParser.Fail("nonconvergent-round", "All options must converge at the same subsequent choice group or measure.", option.SourceLine, choice.Id);
                     boundary = next;
@@ -161,11 +173,21 @@ namespace MiniGame.Presentation.Authoring
                     responses.Add(new ResponseDefinition(option.Id, id, option.TrustDelta));
                     labels.Add(new ResponseContent(option.Id, option.Text));
                 }
-                rounds.Add(new RoundDefinition(entry.Id, responses));
+                var round = new RoundDefinition(entry.Id, responses);
+                if (isSpecial)
+                {
+                    if (map[boundary!].Kind != "measure")
+                        RestrictedYarnParser.Fail("special-position", "The special round must follow ordinary dialogue and converge directly at the measure gate.", entry.SourceLine, entry.Id);
+                    specialRound = round;
+                }
+                else rounds.Add(round);
                 Add(segments, new DialogueSegment(entry.Id, intro, labels));
                 cursor = boundary!;
-                if (rounds.Count > 128) RestrictedYarnParser.Fail("round-limit", "A meeting exceeds 128 choice groups.");
+                if (rounds.Count + (specialRound == null ? 0 : 1) > 128)
+                    RestrictedYarnParser.Fail("round-limit", "A meeting exceeds 128 choice groups.");
             }
+            if (meeting.SpecialRoundStartNode != null && specialRound == null)
+                RestrictedYarnParser.Fail("special-entry", "The configured special entry was not compiled as a choice group.");
             var reactions = new Dictionary<Disposition, string>();
             var deltas = new Dictionary<Disposition, int>();
             foreach (var option in map[cursor].Options)
@@ -184,17 +206,20 @@ namespace MiniGame.Presentation.Authoring
                 deltas.Add(option.Disposition.Value, option.TrustDelta);
                 Add(segments, new DialogueSegment(id, lines, new List<ResponseContent>()));
             }
-            return new MeetingDefinition(meeting.PatientId, rounds, null, int.MaxValue, releaseThreshold,
+            return new MeetingDefinition(meeting.PatientId, rounds, specialRound, meeting.SpecialTrustThreshold ?? int.MaxValue,
+                meeting.ReleaseThreshold ?? releaseThreshold,
                 reactions, introNodeId: introNodeId, dispositionTrustDeltas: deltas);
         }
 
         private static bool IsLine(AuthoringNode node) => node.Kind == "line" || node.Kind == "narration";
 
-        private static string FollowBranch(string cursor, string round, string end, Dictionary<string, AuthoringNode> map, List<DialogueLine> lines)
+        private static string FollowBranch(string cursor, string round, string end, string? specialEntry,
+            Dictionary<string, AuthoringNode> map, List<DialogueLine> lines)
         {
             while (cursor != end)
             {
                 var node = map[cursor];
+                if (cursor == specialEntry) return cursor;
                 if (node.Kind == "measure") return cursor;
                 if (node.Round != round)
                 {
@@ -237,6 +262,25 @@ namespace MiniGame.Presentation.Authoring
                         maximum += round.Responses.Max(r => r.TrustDelta);
                         if (minimum < int.MinValue || maximum > int.MaxValue)
                             RestrictedYarnParser.Fail("trust-overflow", "A campaign response would overflow Int32 before a later response can offset it.", nodeId: round.NodeId);
+                    }
+                    if (meeting.SpecialRound != null && maximum >= meeting.SpecialTrustThreshold)
+                    {
+                        var round = meeting.SpecialRound;
+                        var specialMinimum = Math.Max(minimum, meeting.SpecialTrustThreshold) + round.Responses.Min(r => r.TrustDelta);
+                        var specialMaximum = maximum + round.Responses.Max(r => r.TrustDelta);
+                        if (specialMinimum < int.MinValue || specialMaximum > int.MaxValue)
+                            RestrictedYarnParser.Fail("trust-overflow", "A campaign special response would overflow Int32.", nodeId: round.NodeId);
+                        if (minimum < meeting.SpecialTrustThreshold)
+                        {
+                            // Low-trust paths skip the special round and keep their previous value.
+                            maximum = Math.Max((long)meeting.SpecialTrustThreshold - 1, specialMaximum);
+                            minimum = Math.Min(minimum, specialMinimum);
+                        }
+                        else
+                        {
+                            minimum = specialMinimum;
+                            maximum = specialMaximum;
+                        }
                     }
                     minimum += meeting.DispositionTrustDeltas.Values.Min(); maximum += meeting.DispositionTrustDeltas.Values.Max();
                     if (minimum < int.MinValue || maximum > int.MaxValue)

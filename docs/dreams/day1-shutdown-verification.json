@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-21",
+  "reproduction": {
+    "trigger": "Day1 final patient reaction followed by native automatic terminal shutdown, with room return pose at Computer approach facing the computer",
+    "runtimeState": "Evening / World / no cue / unlocked",
+    "visual": "Black room with the illuminated bed outside the old return heading",
+    "beforeImage": "evidence/day1-shutdown/before-black.png"
+  },
+  "fix": {
+    "behavior": "Only the final daily power-off return pans toward the illuminated bed; first-person look angles synchronize after standing is restored",
+    "afterImage": "evidence/day1-shutdown/after-bed-visible.png",
+    "dreamImage": "evidence/day1-shutdown/natural-dream.png",
+    "coreRulesChanged": false
+  },
+  "playMode": [
+    {
+      "report": "evidence/day1-shutdown/after-fix.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 30.84
+    },
+    {
+      "report": "evidence/day1-shutdown/opening-regression.json",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 14.93
+    },
+    {
+      "report": "evidence/day1-shutdown/seated-regression.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 17.0
+    }
+  ],
+  "limitations": [
+    "The normal-clock route uses the actual native shutdown, bed input, complete authored-duration Day1 dream and Day2 transition. Earlier patient conversations are legally fast-forwarded in an independent fixture and restored as a real checkpoint.",
+    "Packaged player startup is checked separately; it is not another full native campaign playthrough."
+  ]
+}

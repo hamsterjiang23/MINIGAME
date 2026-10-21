@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using MiniGame.Presentation.Authoring;
 using MiniGame.UnityHost.Editor;
 using NUnit.Framework;
@@ -9,6 +10,33 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class DialoguePackageImporterTests
     {
+        [Test]
+        public void SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo()
+        {
+            var legacy = DialoguePackageImporter.EnsureDefaultPackage();
+            var legacyPackage = DialoguePackageCompiler.Compile(legacy.PackageSource.text);
+            var catalog = AssetDatabase.LoadAssetAtPath<PortraitCatalog>(CampaignBuilder.PortraitPath);
+            Assert.That(catalog, Is.Not.Null);
+            foreach (var portrait in legacyPackage.Package.Portraits)
+                Assert.That(catalog.Find(portrait.Id), Is.Not.Null, portrait.Id);
+        }
+
+        [Test]
+        public void UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches()
+        {
+            var imported = DialoguePackageImporter.ImportPackage(Path.GetFullPath(CampaignBuilder.PackagePath), false);
+            var compiled = DialoguePackageCompiler.Compile(imported.PackageSource.text);
+            var empty = compiled.Content.Segments.Values
+                .Where(segment => segment.Lines.Count == 0 && segment.Responses.Count == 0).ToArray();
+            Assert.That(empty, Is.Not.Empty, "The updated campaign exercises silent response branches.");
+            foreach (var node in compiled.Content.Nodes)
+                Assert.That(imported.Project.NodeNames,
+                    Does.Contain(MiniGame.Presentation.PrototypeYarnSource.NodeName(node.NodeId)), node.NodeId);
+            foreach (var segment in empty)
+                Assert.That(imported.Project.NodeNames, Does.Contain(
+                    MiniGame.Presentation.PrototypeYarnSource.NodeName(segment.CoreNodeId)), segment.CoreNodeId);
+        }
+
         [Test]
         public void RejectedPackagePreservesActiveSourceProjectAndAssetBytes()
         {

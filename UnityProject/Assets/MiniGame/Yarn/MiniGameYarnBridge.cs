@@ -24,6 +24,11 @@ namespace MiniGame.UnityHost
         private bool _stopping;
         private bool _pumpRequested;
         private string _completedKey = "";
+        private SupervisorDoorwayView? _supervisor;
+        private SupervisorDialogueContent? _supervisorContent;
+        private YarnProject? _supervisorProject;
+        private SupervisorDialogueCheckpoint? _supervisorCursor, _resumeSupervisor;
+        public string SupervisorSourceId => _supervisorCursor?.sourceId ?? "";
 
         public bool IsRunning => _run != null || _stopping || !_nodeTask.IsCompleted();
         public YarnProject? Project => project;
@@ -41,7 +46,7 @@ namespace MiniGame.UnityHost
         }
 
         // Call again after Restore, even when its encounter and node identifiers equal the previous view.
-        public void Bind(GameRuntime runtime, MiniGameScreen screen)
+        public void Bind(GameRuntime runtime, MiniGameScreen screen, SupervisorDoorwayView? supervisor = null)
         {
             if (runtime == null) throw new ArgumentNullException(nameof(runtime));
             if (screen == null) throw new ArgumentNullException(nameof(screen));
@@ -49,9 +54,29 @@ namespace MiniGame.UnityHost
             InvalidateRun();
             _runtime = runtime;
             _screen = screen;
+            _supervisor = supervisor;
+            _supervisorContent = SupervisorDialogueContent.Load();
+            _supervisorProject = Resources.Load<YarnProject>("MiniGame/Supervisor/DialogueProject");
             screen.UseYarnPresentation();
             _runtime.Changed += OnRuntimeChanged;
             PresentCurrent();
+        }
+
+        public SupervisorDialogueCheckpoint? CaptureSupervisorCheckpoint()
+        {
+            var cursor = _supervisorCursor ?? _resumeSupervisor;
+            return cursor == null ? null : new SupervisorDialogueCheckpoint {
+                revision = cursor.revision, sourceId = cursor.sourceId, day = cursor.day, cue = cursor.cue };
+        }
+
+        public void RestoreSupervisorCheckpoint(SupervisorDialogueCheckpoint? checkpoint)
+        {
+            if (checkpoint == null || _runtime == null || _supervisorContent == null
+                || checkpoint.revision != _supervisorContent.revision || checkpoint.day != _runtime.GetView().Game.Day
+                || checkpoint.cue != _runtime.GetView().Cue?.Kind
+                || !_supervisorContent.TryGetCue(_runtime.GetView(), out _, out var lines)
+                || !lines.Any(line => SupervisorDialogueContent.SourcePrefix + line.id == checkpoint.sourceId)) return;
+            _resumeSupervisor = checkpoint;
         }
 
         private void OnRuntimeChanged(RuntimeView view) => PresentCurrent();
@@ -120,17 +145,25 @@ namespace MiniGame.UnityHost
                 return;
             }
             if (key == _completedKey) return;
+            var nodeProject = project;
+            if (_runtime.IsCampaign && _supervisor != null && _supervisorContent != null
+                && _supervisorContent.TryGetCue(view, out var supervisorNode, out _))
+            {
+                nodeName = supervisorNode;
+                nodeProject = _supervisorProject;
+            }
+            if (nodeProject == null) throw new InvalidOperationException("The supervisor Yarn project has not been imported.");
             EnsureRunner();
             if (_runner == null) return;
-            if (!project.NodeNames.Contains(nodeName))
+            if (!nodeProject.NodeNames.Contains(nodeName))
             {
                 Debug.LogError("The configured Yarn Project is missing the mapped node: " + nodeName, this);
                 _screen.SetDialogueText("内容错误", "当前节点不在生成的Yarn工程中。请重新生成原创开发内容。");
                 _screen.HideDialogueActions();
                 return;
             }
-            if (_runner.YarnProject != project) _runner.SetProject(project);
-            _runner.VariableStorage.SetValue(PrototypeYarnSource.CueTextVariable, cue?.Text ?? "");
+            if (_runner.YarnProject != nodeProject) _runner.SetProject(nodeProject);
+            if (nodeProject == project) _runner.VariableStorage.SetValue(PrototypeYarnSource.CueTextVariable, cue?.Text ?? "");
             var run = new NodeRun(_epoch, _runtime, key, view.Game.CurrentEncounterId,
                 view.Game.CurrentNodeId, cue?.Token, dialogue);
             _run = run;
@@ -172,10 +205,14 @@ namespace MiniGame.UnityHost
                 while (IsCurrent(run) && Matches(run, run.Runtime.GetView()) && !CanInteract(run))
                     await YarnTask.Yield();
                 if (!IsCurrent(run)) return;
+                bool supervisor = _supervisorCursor != null;
+                _supervisorCursor = null;
                 _run = null;
                 _completedKey = run.CueToken != null || run.ResponseSubmitted ? run.Key : "";
                 if (run.CueToken != null && Matches(run, run.Runtime.GetView()))
                     run.Runtime.CompleteCue(run.CueToken);
+                if (supervisor && run.Runtime.GetView().Game.Ending != EndingType.TakenAway
+                    && run.Runtime.GetView().Cue?.Kind != PresentationKind.Briefing) _supervisor?.SetPortrait("JD_01");
                 _pumpRequested = true;
             }
             catch (Exception exception)
@@ -215,14 +252,27 @@ namespace MiniGame.UnityHost
             var source = line.Metadata.FirstOrDefault(metadata => metadata.StartsWith("source:", StringComparison.Ordinal));
             var portrait = line.Metadata.FirstOrDefault(metadata => metadata.StartsWith("portrait:", StringComparison.Ordinal));
             string sourceId = source != null ? source.Substring("source:".Length) : (run.NodeId ?? run.Key);
-            if (run.Runtime.IsDialogueLineComplete(sourceId)) return;
+            bool supervisor = sourceId.StartsWith(SupervisorDialogueContent.SourcePrefix, StringComparison.Ordinal);
+            if (supervisor)
+            {
+                if (_resumeSupervisor != null && _resumeSupervisor.sourceId != sourceId) return;
+                _resumeSupervisor = null;
+                string portraitId = portrait != null ? portrait.Substring("portrait:".Length) : "JD_01";
+                if (_supervisor == null || !_supervisor.SetPortrait(portraitId))
+                    throw new InvalidOperationException("Missing supervisor portrait: " + portraitId);
+                if (run.Runtime.GetView().Cue?.Kind == PresentationKind.Ending) _supervisor.ShowEndingAtDoorway();
+                _supervisorCursor = new SupervisorDialogueCheckpoint {
+                    revision = _supervisorContent!.revision, sourceId = sourceId,
+                    day = run.Runtime.GetView().Game.Day, cue = run.Runtime.GetView().Cue!.Kind };
+            }
+            else if (run.Runtime.IsDialogueLineComplete(sourceId)) return;
             var advanced = false;
             string text = run.Runtime.ResolveDialogueText(sourceId, line.TextWithoutCharacterName.Text);
             screen.PresentDialogueLine(line.CharacterName ?? "终端", text, sourceId,
                 portrait != null ? portrait.Substring("portrait:".Length) : "", run.Runtime.IsNarration(sourceId), () =>
                 {
                     if (!CanInteract(run)) return;
-                    run.Runtime.CompleteDialogueLine(sourceId);
+                    if (!supervisor) run.Runtime.CompleteDialogueLine(sourceId);
                     advanced = true;
                 });
             screen.SetDialogueInteractable(CanInteract(run));
@@ -288,6 +338,8 @@ namespace MiniGame.UnityHost
             _epoch++;
             _run = null;
             _completedKey = "";
+            _supervisorCursor = null;
+            _resumeSupervisor = null;
             if (_screen != null) _screen.HideDialogueActions();
             if (_runner != null && !_stopping && (_runner.IsDialogueRunning || !_nodeTask.IsCompleted()
                 || (_presenter != null && _presenter.HasPendingPresentations))) StopRunnerAsync().Forget();

@@ -5,7 +5,7 @@
 # Discovered edge cases
 
 - Day0 起床使用独立碰撞恢复入口，普通夜晚使用梦后行走恢复入口；两个入口共用只修改位置的安全锚点处理。`[verified: UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs RestoreDayZeroWakePose/RestoreDreamTraversal]`
-- 海报阅读仍在世界空间显示，白框与正文一同参与透明合成；底部提示和装饰横线不再创建。分页、暂停与关闭输入沿用原处理。`[verified: UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs Build/Advance/SetPaused]`
+- 海报阅读仍在世界空间显示，边框与正文统一使用白色，一同参与透明合成；底部提示和装饰横线不再创建。分页、暂停与关闭输入沿用原处理。`[verified: UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs Build/Advance/SetPaused]`
 
 # Questions for review
 

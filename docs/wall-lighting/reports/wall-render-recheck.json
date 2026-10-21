@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-21T10:38:34.2676858+08:00",
+  "scope": "Recheck user screenshots of wallpaper occlusion and the upper bed corner using the current saved scene.",
+  "userScreenshot": {
+    "file": "C:/Users/admin/AppData/Local/Temp/codex-clipboard-82f4d1e4-0ec8-44f5-8174-7d8da708a13f.png",
+    "sha256": "b01d14f1a5dc4aa42da09bf33914b3a8dd088220736b092c2ac6050ee3794026",
+    "matchesOriginalFeishuIssue20": true
+  },
+  "scene": {
+    "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "sha256": "b327ed5bf5265de6fed2b7f32ca8bc807078aceb2b8260b30b18d3a6305e568e",
+    "generatedWallpaperMeshes": 12,
+    "productionSceneOrAssetChangesThisRecheck": false
+  },
+  "observations": [
+    "Current computer-wall view no longer contains the original broad wall occlusion polygons.",
+    "The upper bed corner retains a textured dark wedge where wallpaper does not cover the base wall; surface-ID shows wall material at the exposed region.",
+    "Disabling shadows does not remove that wedge. Disabling the metallic map or recalculating wall normals does not remove it.",
+    "Unlit and no-wallpaper variants show that the remaining outline coincides with the preserved torn wallpaper boundary and base-wall lighting; no additional production material or geometry change was made."
+  ],
+  "diagnostics": {
+    "graphics": "Direct3D11",
+    "scope": "Saved scene rendered in EditMode through raw Camera.Render; 5 poses with lit, shadow-disabled, unlit, wall-hidden, wallpaper-no-cast and opaque depth-tested surface-ID comparisons.",
+    "current": "Artifacts/WallLighting/wall-recheck-20261021/diagnostics.json",
+    "noMetal": "Artifacts/WallLighting/wall-recheck-no-metal/diagnostics.json",
+    "recalculatedNormals": "Artifacts/WallLighting/wall-recheck-recalculate-normals/diagnostics.json",
+    "noPaper": "Artifacts/WallLighting/wall-recheck-no-paper/diagnostics.json",
+    "scenePreview": "../previews/current-scene-bed-corner.png"
+  },
+  "gameView": {
+    "scope": "Actual playing host ViewCamera.Render with its live RetroScreenEffect and current configured profile; temporary poses restored; no manual Editor GUI claim.",
+    "passed": 1,
+    "failed": 0,
+    "report": "wall-render-recheck-playmode.xml",
+    "log": "wall-render-recheck-playmode.log",
+    "preview": "../previews/current-game-bed-corner.png",
+    "liveProfile": "Artifacts/WallLighting/wall-recheck-game/live-profile.json",
+    "checks": [
+      "12 saved generated wallpaper mesh identities",
+      "Actual camera uses RoomLightingReferenceRetro with effect enabled and neither preview nor presentation bypass",
+      "Three nonempty rendered room views",
+      "Gameplay checkpoint unchanged by captures"
+    ]
+  },
+  "github": {
+    "commit": "c28a44c0213172e4e464c3d9fc7027b325568c31",
+    "generatedRepairMeshesPresentInRemote": false,
+    "repairSetupPresentInRemote": false,
+    "status": "Local wall repair is not present in origin/main; no commit or push requested or performed in this recheck."
+  },
+  "cleanup": {
+    "isolatedDiagnosticSourceRestored": true,
+    "temporaryTestSourceRetained": "Artifacts/LightingTools/WallRenderingRecheckEvidenceTests.cs.txt",
+    "temporaryEditorAndTestScriptsRemoved": true
+  }
+}

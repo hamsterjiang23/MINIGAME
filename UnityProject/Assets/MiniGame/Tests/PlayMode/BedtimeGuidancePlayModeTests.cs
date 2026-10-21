@@ -62,13 +62,13 @@ namespace MiniGame.UnityHost.Tests
                     yield return new WaitForSecondsRealtime(.1f);
                 }
             }
-            var insectPositions = Enumerable.Range(0, guidance.Atmosphere.InsectCount)
-                .Select(guidance.Atmosphere.GetInsectPosition).ToArray();
+            var particlePositions = Enumerable.Range(0, guidance.Atmosphere.ParticleCount)
+                .Select(guidance.Atmosphere.GetParticlePosition).ToArray();
             yield return new WaitForSecondsRealtime(.25f);
-            Assert.That(Enumerable.Range(0, guidance.Atmosphere.InsectCount).Count(index =>
-                Vector3.Distance(guidance.Atmosphere.GetInsectPosition(index), insectPositions[index]) > .005f), Is.GreaterThan(1),
-                "Several insects must actually fly within the lit volume.");
-            yield return Capture(host, "bedtime-insects-later");
+            Assert.That(Enumerable.Range(0, guidance.Atmosphere.ParticleCount).Count(index =>
+                Vector3.Distance(guidance.Atmosphere.GetParticlePosition(index), particlePositions[index]) > .005f), Is.GreaterThan(1),
+                "Several particles must actually drift within the lit volume.");
+            yield return Capture(host, "bedtime-particles-later");
 
             yield return StageAt(host, InteractionTarget.Bed);
             Assert.That(host.Player.InteractFocused(), Is.True, "The physical bed ray must remain usable in the darkness.");
@@ -91,7 +91,7 @@ namespace MiniGame.UnityHost.Tests
             daylight.AssertRestored(host.Player.ViewCamera);
             Assert.That(guidance.Spotlight.enabled, Is.False);
             yield return CaptureWide(host, "bedtime-restored-morning");
-            Debug.Log("MINIGAME_BEDTIME_CYCLE_PASSED automatic terminal exit; ceiling spotlight; moving insects; pause; physical bed trigger; one sleep; morning lighting restore");
+            Debug.Log("MINIGAME_BEDTIME_CYCLE_PASSED automatic terminal exit; ceiling spotlight; moving particles; pause; physical bed trigger; one sleep; morning lighting restore");
         }
 
         [UnityTest, Timeout(30000)]
@@ -115,14 +115,14 @@ namespace MiniGame.UnityHost.Tests
             host.RestoreCheckpoint(evening.Save());
             Assert.That(guidance.Isolation, Is.EqualTo(1).Within(.00001f), "A restored bedtime must not flash the daylight room.");
             Assert.That(guidance.BeamStrength, Is.EqualTo(1).Within(.00001f));
-            Assert.That(guidance.Atmosphere.InsectCount, Is.GreaterThan(1));
-            var positions = Enumerable.Range(0, guidance.Atmosphere.InsectCount)
-                .Select(guidance.Atmosphere.GetInsectPosition).ToArray();
+            Assert.That(guidance.Atmosphere.ParticleCount, Is.GreaterThan(1));
+            var positions = Enumerable.Range(0, guidance.Atmosphere.ParticleCount)
+                .Select(guidance.Atmosphere.GetParticlePosition).ToArray();
             float visualTime = guidance.Atmosphere.VisualTime;
             yield return new WaitForSecondsRealtime(.2f);
             for (int index = 0; index < positions.Length; index++)
-                Assert.That(Vector3.Distance(positions[index], guidance.Atmosphere.GetInsectPosition(index)), Is.LessThan(.00001f),
-                    "Paused insects must not advance their visual clock.");
+                Assert.That(Vector3.Distance(positions[index], guidance.Atmosphere.GetParticlePosition(index)), Is.LessThan(.00001f),
+                    "Paused particles must not advance their visual clock.");
             Assert.That(guidance.Atmosphere.VisualTime, Is.EqualTo(visualTime));
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
             yield return null;
@@ -144,7 +144,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(guidance.Isolation, Is.Zero);
             Assert.That(guidance.OwnsLighting, Is.False);
             daylight.AssertRestored(host.Player.ViewCamera);
-            Debug.Log("MINIGAME_BEDTIME_RESTORE_PASSED paused checkpoint snap; frozen insects; blocked furniture silent; original lighting restored");
+            Debug.Log("MINIGAME_BEDTIME_RESTORE_PASSED paused checkpoint snap; frozen particles; blocked furniture silent; original lighting restored");
         }
 
         private static GameRuntime CreateCampaign(bool dreamFlow)

@@ -1,6 +1,10 @@
 # Unity 检定员开发原型
 
-复古画面通过 **MiniGame → 画面 → 复古效果** 调整像素尺寸、色阶和明暗，支持 Game 视图预览、原图对比与配置保存。操作见[复古效果调参](../docs/retro-screen-guide.md)。`[verified: Assets/MiniGame/Editor/RetroScreenEditor.cs Open/OnInspectorGUI]`
+海报、物件与门口监督员的最新输入规则见[世界阅读与监督员交互](../docs/world-dialogue/guide.md)：保留现有美术，采用专注阅读、单次推进和结束恢复；电脑角色对话继续使用原交互。当前测试及Mono体验包见[验证记录](../docs/world-dialogue/verification.json)。`[verified: ../docs/world-dialogue/guide.md；../docs/world-dialogue/verification.json]`
+
+策划灯光入口为 **MiniGame → 画面 → 房间灯光**：可在 Scene／Game 旁直接编辑，支持场景手柄、播放／暂停调参、撤销与退出播放自动保存。操作见[灯光编辑指南](../docs/lighting-tools/guide.md)。调色入口为 **MiniGame → 画面 → 调色与像素风格**，Scene／Game 均可预览。`[verified: Assets/MiniGame/Editor/RoomLightingWindow.cs Open/OnGUI/DuringSceneGUI；Assets/MiniGame/Editor/RoomLightingAuthoring.cs OnPlayModeChanged；Assets/MiniGame/Runtime/RetroScreenEffect.cs ImageEffectAllowedInSceneView]`
+
+Norm 标志与监控局部扰动通过游戏内 **F6** 调参，支持两组独立参数、冻结预览、重置和保存；编辑器入口为 **MiniGame → 画面 → 标志与监控扰动**。操作及验证见[扰动指南](../docs/terminal-signal/guide.md)。`[verified: Assets/MiniGame/Runtime/TerminalSignalController.cs Update/SaveSettings；Assets/MiniGame/Editor/TerminalSignalWindow.cs Open]`
 
 2026-10-19 默认房间改为参考宿舍的9.70078×4.41176×3.12066米布局，加入Word参考的两张交互海报、可配置60°房门与只能从房内观看的3D连廊。操作与配置见[参考房间指南](../docs/reference-room-guide.md)，验收见[参考房间报告](../docs/reference-room-verification.json)。[verified: ../docs/reference-room-guide.md；../docs/reference-room-verification.json]
 

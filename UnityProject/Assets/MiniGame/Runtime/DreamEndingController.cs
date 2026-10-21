@@ -35,6 +35,11 @@ namespace MiniGame.UnityHost
         private PauseMenuView pauseMenu;
         private Font font;
         private int voiceIndex = -1;
+        private RoomDreamEnding roomEnding;
+        private bool previewMode;
+        public bool IsPreview => previewMode;
+        public bool IsRoomCubemapEnding => roomEnding != null;
+        public float WorldTime => worldTime;
         public BeachEndingPhase Phase => state.Phase;
         public Camera ViewCamera => viewCamera;
         public DreamSequenceProfile Profile => profile;
@@ -44,7 +49,8 @@ namespace MiniGame.UnityHost
         public bool Paused => MiniGameSessionHost.Current?.Runtime?.GetView().Paused ?? localPaused;
         public string CurrentSubtitle => caption != null ? caption.text : string.Empty;
         public bool CanLieDown => initialized && !Paused && state.Phase == BeachEndingPhase.Walking
-            && pathLength - state.WalkDistance <= Safe(profile.BedInteractionDistance, 1.5f, .1f);
+            && (roomEnding != null ? roomEnding.IsNearBed(Safe(profile.BedInteractionDistance, 1.5f, .1f))
+                : pathLength - state.WalkDistance <= Safe(profile.BedInteractionDistance, 1.5f, .1f));
         private float MaximumWalkDistance => Mathf.Max(0, pathLength
             - Mathf.Min(.65f, Safe(profile.BedInteractionDistance, 1.5f, .1f) * .8f));
 
@@ -61,6 +67,14 @@ namespace MiniGame.UnityHost
         }
 
         private void Start() => Initialize();
+
+        public void ConfigureRoom(DreamSequenceProfile settings, Camera camera, Transform bedRoot,
+            Transform pillowPose, Transform startingPose, RoomDreamEnding owner)
+        {
+            roomEnding = owner ?? throw new ArgumentNullException(nameof(owner));
+            previewMode = owner.IsPreview;
+            Configure(settings, camera, bedRoot, pillowPose, startingPose);
+        }
 
         private void Initialize()
         {
@@ -83,12 +97,12 @@ namespace MiniGame.UnityHost
             pillowLocal = bed.InverseTransformPoint(pillow.position);
             pathLength = Mathf.Max(0, Vector3.Dot(bed.position - startPosition, walkDirection));
             originalSky = RenderSettings.skybox;
-            if (originalSky != null)
+            if (roomEnding == null && originalSky != null)
             {
                 skyMaterial = new Material(originalSky);
                 RenderSettings.skybox = skyMaterial;
             }
-            CreateWaterMaterials();
+            if (roomEnding == null) CreateWaterMaterials();
             audioService = gameObject.AddComponent<MiniGameAudioService>();
             audioService.Configure(profile.Audio);
             audioService.SetLoop(MiniGameAudioChannel.EndingMusic, MiniGameSound.EndingMusic, 2);
@@ -99,8 +113,11 @@ namespace MiniGame.UnityHost
 
         private void Update()
         {
-            if (!initialized || UseExternalClock) return;
+            if (!initialized || UseExternalClock || roomEnding != null && !roomEnding.Ready) return;
             if (Input.GetKeyDown(KeyCode.Escape)) SetPaused(!Paused);
+            if (roomEnding != null && state.Phase == BeachEndingPhase.Walking)
+                roomEnding.AdvanceExploration(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
+                    new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")), Time.unscaledDeltaTime);
             AdvanceForTests(Input.GetKey(KeyCode.W) ? 1 : 0, Time.unscaledDeltaTime);
             if (Input.GetKeyDown(KeyCode.E)) TryLieDown();
         }
@@ -115,14 +132,14 @@ namespace MiniGame.UnityHost
         /// <summary>Forward is clamped to [0,1]; reverse and lateral input have no route.</summary>
         public void AdvanceForTests(float forward, float dt)
         {
-            if (!initialized) return;
+            if (!initialized || roomEnding != null && !roomEnding.Ready) return;
             ApplyPause();
             if (Paused) { ApplyWaterParameters(); return; }
             dt = Finite(dt) ? Mathf.Max(0, dt) : 0;
             worldTime += dt;
             if (state.Phase == BeachEndingPhase.Walking)
             {
-                float input = Finite(forward) ? Mathf.Clamp01(forward) : 0;
+                float input = roomEnding == null && Finite(forward) ? Mathf.Clamp01(forward) : 0;
                 state.WalkDistance = Mathf.Min(MaximumWalkDistance,
                     state.WalkDistance + input * Safe(profile.WalkSpeed, 1.2f, .01f) * dt);
             }
@@ -154,6 +171,11 @@ namespace MiniGame.UnityHost
         {
             if (!CanLieDown) return false;
             state.Phase = BeachEndingPhase.Lying;
+            if (roomEnding != null)
+            {
+                state.LieStartPosition = viewCamera.transform.position;
+                state.LieStartRotation = viewCamera.transform.rotation;
+            }
             state.PhaseElapsed = 0;
             state.SubtitleIndex = 0;
             state.SubtitleElapsed = -Safe(profile.SubtitleDelay, 2, 0);
@@ -200,13 +222,14 @@ namespace MiniGame.UnityHost
             var walking = startPosition + walkDirection * state.WalkDistance;
             if (state.Phase == BeachEndingPhase.Walking)
             {
-                viewCamera.transform.SetPositionAndRotation(walking, standingRotation);
+                if (roomEnding == null) viewCamera.transform.SetPositionAndRotation(walking, standingRotation);
             }
             else if (state.Phase == BeachEndingPhase.Lying)
             {
                 float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f)));
-                viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(walking, bed.TransformPoint(pillowLocal), t),
-                    Quaternion.Slerp(standingRotation, bedBaseRotation * Quaternion.LookRotation(Vector3.up, Vector3.forward), t));
+                viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(roomEnding != null ? state.LieStartPosition : walking, bed.TransformPoint(pillowLocal), t),
+                    Quaternion.Slerp(roomEnding != null ? state.LieStartRotation : standingRotation,
+                        bedBaseRotation * Quaternion.LookRotation(Vector3.up, Vector3.forward), t));
             }
             else
             {
@@ -217,6 +240,7 @@ namespace MiniGame.UnityHost
                 bed.position += Vector3.up * (Mathf.Sin(phase) * amplitude)
                     + Vector3.forward * (state.DriftElapsed * drift);
                 bed.rotation = bedBaseRotation * Quaternion.Euler(Mathf.Sin(phase * .7f) * tilt, 0, Mathf.Sin(phase) * tilt * .7f);
+                roomEnding?.KeepBedInsideRoom();
                 viewCamera.transform.SetPositionAndRotation(bed.TransformPoint(pillowLocal),
                     bed.rotation * Quaternion.LookRotation(Vector3.up, Vector3.forward));
             }
@@ -226,6 +250,17 @@ namespace MiniGame.UnityHost
                 skyMaterial.SetFloat("_DreamTime", worldTime);
                 skyMaterial.SetFloat("_CloudSpeed", Safe(profile.CloudSpeed, .006f, 0));
             }
+            RenderRoomCubemap();
+        }
+
+        private void RenderRoomCubemap()
+        {
+            if (roomEnding?.Cubemap == null) return;
+            // One image per room entry, including restores into lying or drifting.
+            // Camera movement, pause and the ending timeline never repaint the scenery.
+            if (!roomEnding.Cubemap.IsReady)
+                roomEnding.Cubemap.Render(0, BeachEndingPhase.Walking, 0, 0, true);
+            roomEnding.UpdateRoomSurface();
         }
 
         private void CreateWaterMaterials()
@@ -283,12 +318,18 @@ namespace MiniGame.UnityHost
             waterSurfaces.Clear();
         }
 
-        public BeachEndingCheckpoint CaptureCheckpoint() => new BeachEndingCheckpoint
+        public BeachEndingCheckpoint CaptureCheckpoint()
         {
-            Phase = state.Phase, WorldTime = worldTime, WalkDistance = state.WalkDistance, PhaseElapsed = state.PhaseElapsed,
-            DriftElapsed = state.DriftElapsed, SubtitleElapsed = state.SubtitleElapsed,
-            SubtitleIndex = state.SubtitleIndex, SubtitlesComplete = state.SubtitlesComplete
-        };
+            var saved = new BeachEndingCheckpoint
+            {
+                Phase = state.Phase, WorldTime = worldTime, WalkDistance = state.WalkDistance, PhaseElapsed = state.PhaseElapsed,
+                DriftElapsed = state.DriftElapsed, SubtitleElapsed = state.SubtitleElapsed,
+                SubtitleIndex = state.SubtitleIndex, SubtitlesComplete = state.SubtitlesComplete,
+                LieStartPosition = state.LieStartPosition, LieStartRotation = state.LieStartRotation
+            };
+            roomEnding?.CapturePose(saved);
+            return saved;
+        }
 
         public void RestoreCheckpoint(BeachEndingCheckpoint value)
         {
@@ -299,13 +340,27 @@ namespace MiniGame.UnityHost
                 WalkDistance = Mathf.Clamp(Safe(value.WalkDistance, 0, 0), 0, MaximumWalkDistance),
                 PhaseElapsed = Safe(value.PhaseElapsed, 0, 0), DriftElapsed = Safe(value.DriftElapsed, 0, 0),
                 SubtitleElapsed = Finite(value.SubtitleElapsed) ? value.SubtitleElapsed : 0,
-                SubtitleIndex = Mathf.Max(0, value.SubtitleIndex), SubtitlesComplete = value.SubtitlesComplete
+                SubtitleIndex = Mathf.Max(0, value.SubtitleIndex), SubtitlesComplete = value.SubtitlesComplete,
+                LieStartPosition = value.LieStartPosition, LieStartRotation = value.LieStartRotation
             };
+            if (roomEnding != null)
+            {
+                bed.SetPositionAndRotation(bedBasePosition, bedBaseRotation);
+                roomEnding.RestorePose(value);
+                if (!value.HasRoomPose || !Finite(state.LieStartPosition.x) || !Finite(state.LieStartPosition.y)
+                    || !Finite(state.LieStartPosition.z) || !ValidRotation(state.LieStartRotation))
+                {
+                    state.LieStartPosition = viewCamera.transform.position;
+                    state.LieStartRotation = viewCamera.transform.rotation;
+                }
+                else state.LieStartRotation = Quaternion.Normalize(state.LieStartRotation);
+            }
             worldTime = Safe(value.WorldTime, state.DriftElapsed + state.PhaseElapsed, 0);
             voiceIndex = -1;
             audioService.Stop(MiniGameAudioChannel.Voice);
             if (state.Phase == BeachEndingPhase.Drifting) AdvanceSubtitles(0);
             ApplyPose();
+            RenderRoomCubemap();
             ApplyPause(true);
             RefreshInterface();
             PublishCheckpoint();
@@ -338,7 +393,7 @@ namespace MiniGame.UnityHost
         private void RefreshInterface()
         {
             if (hint != null) hint.text = state.Phase != BeachEndingPhase.Walking ? string.Empty
-                : CanLieDown ? "E  躺下" : "W  走向床";
+                : CanLieDown ? "E  躺下" : roomEnding != null ? "WASD 移动  ·  鼠标转头  ·  到床边按 E 躺下" : "W  走向床";
             if (caption == null) return;
             var lines = profile.EndingLines;
             caption.text = state.Phase == BeachEndingPhase.Drifting && !state.SubtitlesComplete
@@ -366,8 +421,14 @@ namespace MiniGame.UnityHost
                 new[] { "ESC", "", "", "", "" }, actions);
             pauseMenu.SetContext("海上之梦");
             pauseMenu.SetHint("海浪会在继续后流动。");
-            pauseMenu.Buttons[1].interactable = MiniGameSessionHost.Current != null;
-            pauseMenu.Buttons[2].interactable = MiniGameSessionHost.Current != null;
+            pauseMenu.Buttons[1].interactable = !previewMode && MiniGameSessionHost.Current != null;
+            pauseMenu.Buttons[2].interactable = !previewMode && MiniGameSessionHost.Current != null;
+            if (previewMode)
+            {
+                pauseMenu.SetContext("海上之梦 · 预览");
+                pauseMenu.SetHint("预览不保存进度；停止 Unity 播放可返回编辑。");
+                pauseMenu.Buttons[3].interactable = false;
+            }
             if (FindObjectOfType<EventSystem>() == null)
             {
                 var events = new GameObject("Ending EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
@@ -378,6 +439,7 @@ namespace MiniGame.UnityHost
 
         private void SaveFromPause()
         {
+            if (previewMode) return;
             var session = MiniGameSessionHost.Current;
             if (session == null) return;
             session.Save();
@@ -386,6 +448,7 @@ namespace MiniGame.UnityHost
 
         private void LoadFromPause()
         {
+            if (previewMode) return;
             var session = MiniGameSessionHost.Current;
             if (session == null) return;
             session.Load();
@@ -423,6 +486,8 @@ namespace MiniGame.UnityHost
         }
 
         private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
+        private static bool ValidRotation(Quaternion value) => Finite(value.x) && Finite(value.y) && Finite(value.z)
+            && Finite(value.w) && value.x * value.x + value.y * value.y + value.z * value.z + value.w * value.w > .0001f;
         private static float Safe(float value, float fallback, float minimum) => Finite(value) ? Mathf.Max(minimum, value) : fallback;
 
         private void OnDestroy()

@@ -1,0 +1,114 @@
+{
+    "samples": [
+        {
+            "yaw": -20,
+            "baselineExcess": 0.01792234182357788,
+            "fixedExcess": 0.024365514516830446
+        },
+        {
+            "yaw": -18,
+            "baselineExcess": 0.018624722957611085,
+            "fixedExcess": 0.018207848072052003
+        },
+        {
+            "yaw": -16,
+            "baselineExcess": 0.03528863191604614,
+            "fixedExcess": 0.034038037061691287
+        },
+        {
+            "yaw": -14,
+            "baselineExcess": 0.042146265506744388,
+            "fixedExcess": 0.042146265506744388
+        },
+        {
+            "yaw": -12,
+            "baselineExcess": 0.3496137261390686,
+            "fixedExcess": 0.017497628927230836
+        },
+        {
+            "yaw": -10,
+            "baselineExcess": 0.018349409103393556,
+            "fixedExcess": 0.042146265506744388
+        },
+        {
+            "yaw": -8,
+            "baselineExcess": 0.013869404792785645,
+            "fixedExcess": 0.03627413511276245
+        },
+        {
+            "yaw": -6,
+            "baselineExcess": 0.025474488735198976,
+            "fixedExcess": 0.025474488735198976
+        },
+        {
+            "yaw": -4,
+            "baselineExcess": 0.41877609491348269,
+            "fixedExcess": 0.03878319263458252
+        },
+        {
+            "yaw": -2,
+            "baselineExcess": 0.3951207995414734,
+            "fixedExcess": 0.019316881895065309
+        },
+        {
+            "yaw": 0,
+            "baselineExcess": 0.4008435308933258,
+            "fixedExcess": 0.023655325174331666
+        },
+        {
+            "yaw": 2,
+            "baselineExcess": 0.020294517278671266,
+            "fixedExcess": 0.025474488735198976
+        },
+        {
+            "yaw": 4,
+            "baselineExcess": 0.20722901821136475,
+            "fixedExcess": 0.021552950143814088
+        },
+        {
+            "yaw": 6,
+            "baselineExcess": 0.019733726978302003,
+            "fixedExcess": 0.019733726978302003
+        },
+        {
+            "yaw": 8,
+            "baselineExcess": 0.017780780792236329,
+            "fixedExcess": 0.03653919696807861
+        },
+        {
+            "yaw": 10,
+            "baselineExcess": 0.021987855434417726,
+            "fixedExcess": 0.021987855434417726
+        },
+        {
+            "yaw": 12,
+            "baselineExcess": 0.029130995273590089,
+            "fixedExcess": 0.029130995273590089
+        },
+        {
+            "yaw": 14,
+            "baselineExcess": 0.03501331806182861,
+            "fixedExcess": 0.0319254994392395
+        },
+        {
+            "yaw": 16,
+            "baselineExcess": 0.016805499792099,
+            "fixedExcess": 0.03332787752151489
+        },
+        {
+            "yaw": 18,
+            "baselineExcess": 0.029130995273590089,
+            "fixedExcess": 0.029130995273590089
+        },
+        {
+            "yaw": 20,
+            "baselineExcess": 0.018900007009506227,
+            "fixedExcess": 0.025909423828125
+        }
+    ],
+    "baselineMaximum": 0.41877609491348269,
+    "fixedMaximum": 0.042146265506744388,
+    "cameraScope": "Actual player ViewCamera; raw world preview, grading/grain bypassed for measurement",
+    "width": 1280,
+    "height": 720
+}

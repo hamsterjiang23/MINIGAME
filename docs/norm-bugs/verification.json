@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-21T00:38:28.4054007+08:00",
+  "source": {
+    "path": "E:/Downloads/NORM调整建议.docx",
+    "sha256": "92365ccd272ffaa496597d93b71fcdce2c8b2053c333b753de6c0c2a29c0e639",
+    "extracted": "Artifacts/NormBugs/docx-20261020/content.json"
+  },
+  "issueLedger": "docs/norm-bugs/issues.json",
+  "statusCounts": {
+    "existing-fix-revalidated": 8,
+    "implemented-verified": 9,
+    "deferred-by-user": 2
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "restoreCommand": "dotnet restore MiniGame.sln --locked-mode",
+    "restore": "passed",
+    "buildCommand": "dotnet build MiniGame.sln -c Release --no-restore",
+    "build": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "testCommand": "dotnet test MiniGame.sln -c Release --no-build --no-restore",
+    "corePassed": 114,
+    "presentationPassed": 213,
+    "totalPassed": 327,
+    "failed": 0,
+    "reports": [
+      "reports/core.trx",
+      "reports/presentation.trx"
+    ]
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "playMode": {
+      "passed": 47,
+      "failed": 0,
+      "seconds": 146.8217252,
+      "report": "reports/final-playmode.xml",
+      "scope": "14 related fixtures, not the complete historical Unity suite"
+    },
+    "fontEditMode": {
+      "passed": 28,
+      "failed": 0,
+      "report": "reports/font-editmode.xml",
+      "scope": "Bitmap font, pagination and highlight tests after atlas extension"
+    },
+    "windowsBuild": {
+      "result": "Succeeded",
+      "output": "F:/AAMINIGAME/MINIGAME\\Builds\\NormBugFix\\MiniGame.exe",
+      "unity": "2022.3.23f1c1",
+      "scenes": [
+        "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+        "Assets/MiniGame/Scenes/InspectionApartment.unity",
+        "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+      ],
+      "errors": 0,
+      "warnings": 0,
+      "seconds": 7.5775337
+    },
+    "platform": "Windows x64",
+    "backend": "Mono",
+    "developmentBuild": false,
+    "optInProbeDefine": "MINIGAME_FEEDBACK_PROBE"
+  },
+  "sourceSnapshot": {
+    "files": 1293,
+    "isolatedSourceHashMismatches": 0,
+    "primaryFilesChangedSinceSnapshot": [
+      "src/MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs",
+      "UnityProject/Assets/MiniGame/Editor/DialoguePackageImporter.cs",
+      "UnityProject/Assets/MiniGame/Tests/EditMode/DialoguePackageImporterTests.cs",
+      "UnityProject/Assets/Resources/MiniGame/ActiveCampaignPackage.asset"
+    ],
+    "report": "reports/tested-source-snapshot.json",
+    "note": "Final snapshot includes the simultaneous Campaign 1.1 update; only atlas PNG/JSON changed after the 47-case run, followed by 28 EditMode and final Player checks."
+  },
+  "glyphCoverage": {
+    "codepoints": 1487,
+    "glyphs": 52045,
+    "missingGlyphs": 0,
+    "preservedVendorGlyphs": 18795,
+    "changedVendorPixels": 0,
+    "changedVendorMetrics": 0,
+    "report": "reports/glyph-coverage.json",
+    "generatorSha256": "7ba0beca850bc0edbd99b04ec9ccdcdec37bcaa00602ed3098652a971776a21f"
+  },
+  "nativePlayers": {
+    "campaign": {
+      "passed": true,
+      "developmentBuild": false,
+      "supervisorWorldObject": true,
+      "noSupervisorIndoors": true,
+      "supervisorHiddenAfterBriefing": true,
+      "headerAmber": true,
+      "worldInstructionsHidden": true,
+      "manualOpenedByPointer": true,
+      "escapeClosesManualOnly": true,
+      "escapeResumes": true,
+      "terminalDirectoryReached": true,
+      "campaignStart": true,
+      "dayZeroLogoRequested": true,
+      "dayZeroSlept": true,
+      "result": "PASSED",
+      "detail": "Real doorway morning, outside supervisor, amber UI, pointer manual, two Escape stages and morning-only scanner sound.",
+      "unity": "2022.3.23f1c1",
+      "graphics": "Direct3D11",
+      "captureMode": "Actual room Camera + native UI Canvas to 1280x720 RenderTexture; no window backbuffer capture",
+      "targetFrameRate": 30,
+      "vSyncCount": 0,
+      "scanSounds": 1,
+      "morningClicks": 1,
+      "briefingClicks": 1,
+      "dayZeroPurificationClicks": 1,
+      "directoryKpi": "净化要求：0/1",
+      "seconds": 19.71814,
+      "supervisorBeyondDoorMetres": 0.900000036,
+      "cameraInsideDistance": 0.0,
+      "supervisorFeetGapFromStandingPlayer": 0.0,
+      "captures": [
+        "supervisor-outside.png",
+        "pause.png",
+        "manual.png",
+        "terminal-directory.png"
+      ],
+      "pointerChecks": [
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "Disposition-Purify -> Disposition-Purify",
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "Continue -> Continue",
+        "PauseAction4 -> PauseAction4"
+      ]
+    },
+    "pause": {
+      "passed": true,
+      "detail": "Terminal/room orientation, two sizes, frame cap and real quit action",
+      "graphics": "Direct3D11",
+      "graphicsUVStartsAtTop": true,
+      "targetFrameRate": 30,
+      "vSyncCount": 0,
+      "developmentBuild": false,
+      "quitViaMenu": true,
+      "samples": [
+        {
+          "name": "before-pause",
+          "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+          "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1280,
+          "height": 720,
+          "passed": true
+        },
+        {
+          "name": "paused",
+          "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+          "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1280,
+          "height": 720,
+          "passed": true
+        },
+        {
+          "name": "resumed",
+          "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+          "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1280,
+          "height": 720,
+          "passed": true
+        },
+        {
+          "name": "paused-again",
+          "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+          "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1280,
+          "height": 720,
+          "passed": true
+        },
+        {
+          "name": "paused-resized",
+          "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+          "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1024,
+          "height": 768,
+          "passed": true
+        },
+        {
+          "name": "room-before-pause",
+          "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+          "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1024,
+          "height": 768,
+          "passed": true
+        },
+        {
+          "name": "room-paused",
+          "top": "RGBA(0.298, 0.024, 0.024, 1.000)",
+          "bottom": "RGBA(0.008, 0.008, 0.302, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1024,
+          "height": 768,
+          "passed": true
+        },
+        {
+          "name": "room-resumed",
+          "top": "RGBA(1.000, 0.000, 0.000, 1.000)",
+          "bottom": "RGBA(0.000, 0.000, 1.000, 1.000)",
+          "activeTargetWidth": 0,
+          "width": 1024,
+          "height": 768,
+          "passed": true
+        }
+      ]
+    },
+    "terminal": {
+      "result": "Passed",
+      "detail": "Mapped UI clicks verified live nonuniform UI for at least two seconds after world exit, pause/resume and checkpoint restore, with hidden UI picking blocked; then completed six replies and final shutdown with source rendering stopped and one sound per power sequence.",
+      "unity": "2022.3.23f1c1",
+      "captureMode": "Standalone GPU native UI RenderTexture + actual CRT material; persistent source frames and UI pixels, asymmetric source-canvas markers through physical CRT shader, pause/restore, raycast isolation, power blocks and audio events",
+      "replies": 6,
+      "quota": 5,
+      "powerOnSounds": 1,
+      "powerOffSounds": 1,
+      "manualReopen": true,
+      "automaticShutdown": true,
+      "removedFunctionKeys": true,
+      "directoryPixels": true,
+      "reviewPixels": true,
+      "initiallyOff": true,
+      "middayLit": true,
+      "reopenedWithoutBoot": true,
+      "finallyDark": true,
+      "middayLiveUi": true,
+      "middaySourceUpdating": true,
+      "middayPixels": true,
+      "middayWorldPickingBlocked": true,
+      "liveAfterPause": true,
+      "liveAfterRestore": true,
+      "sourceStoppedAfterShutdown": true,
+      "orientationAfterExit": true,
+      "orientationAfterRestore": true,
+      "seconds": 36.00945281982422,
+      "middayPersistenceSeconds": 2.004509925842285
+    },
+    "reports": [
+      "reports/campaign-player.json",
+      "reports/pause-player.json",
+      "reports/terminal-player.json"
+    ],
+    "nativeMissingGlyphWarnings": 0
+  },
+  "previews": [
+    "previews/supervisor-outside.png",
+    "previews/pause.png",
+    "previews/manual.png",
+    "previews/terminal-directory.png"
+  ],
+  "package": {
+    "path": "Builds/Deliverables/NORM-Windows-x64-Mono-BugFix-20261021-003722.zip",
+    "bytes": 213782810,
+    "sha256": "20a3c38d7cb7c700e315502c509bee679f3ece7f674f1f111c8bd413b713ca9a",
+    "filesVerified": 162,
+    "zipEntriesSha256Verified": true,
+    "manifest": "Builds/NormBugFix/package-manifest.json"
+  },
+  "binaryHashes": [
+    {
+      "path": "Builds/NormBugFix/MiniGame.exe",
+      "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+    },
+    {
+      "path": "Builds/NormBugFix/UnityPlayer.dll",
+      "sha256": "5ab3374b61e59c8c81c048688a64a7875fde2b116772a9b4ea63fa51b58615f5"
+    },
+    {
+      "path": "Builds/NormBugFix/MiniGame_Data/Managed/MiniGame.Core.dll",
+      "sha256": "4cb450065006a84a526c93cae33b6f9d072c3ae5b6c2d0e4860a061d5a391b32"
+    },
+    {
+      "path": "Builds/NormBugFix/MiniGame_Data/Managed/MiniGame.Presentation.dll",
+      "sha256": "28ede365f1d3e572c57a0a6bed299a7e7ed7993f670904fd87683c2cde1f4385"
+    },
+    {
+      "path": "Builds/NormBugFix/MiniGame_Data/Managed/MiniGame.UnityHost.dll",
+      "sha256": "98a652be618f7e267c3a6e3b1b32ea5878de7d222a4223147ee1ae4f11809143"
+    }
+  ],
+  "limits": [
+    "Lighting and new dream assets remain deferred by the user. Existing dream timing is retained and tested.",
+    "47 selected PlayMode tests were run, not the complete Unity suite. The historical CampaignPresentation HistoryTab test still targets a removed UI and was excluded.",
+    "Native checks use actual GPU cameras, UI canvases and mapped pointer targets through opt-in probes; they do not claim exhaustive manual playthrough of every campaign branch.",
+    "The 30 FPS target and vSync=0 were read back; this does not guarantee hardware performance.",
+    "Supervisor background extraction used the built-in image edit tool; original art and provenance are preserved, but foreground pixels are not guaranteed identical."
+  ],
+  "excludedAttempts": [
+    "Initial KPI fixture failure was corrected and passed on subsequent runs.",
+    "An isolated Editor hung after a script reload; a concurrent build was rejected because that project was open. Only the verified isolated Editor was stopped; clean serial reruns passed.",
+    "An initial pause backbuffer capture was empty; a real resolution change initialized the swapchain and all eight final orientation samples passed.",
+    "An initial EditMode filter used the wrong namespace and selected zero tests; corrected filtering ran and passed 28 tests."
+  ],
+  "documentChecks": {
+    "gitDiffCheckCommand": "git diff --check",
+    "gitDiffCheckExitCode": 0,
+    "localGuideLinksChecked": 9,
+    "brokenLocalLinks": 0
+  }
+}

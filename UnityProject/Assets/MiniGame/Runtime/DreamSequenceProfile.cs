@@ -9,8 +9,11 @@ namespace MiniGame.UnityHost
         [InspectorName("日期")] public int Day;
         [Range(5, 180), InspectorName("播放时长（秒）")] public float Duration = 20;
         [InspectorName("梦境画面")] public Texture2D Artwork;
+        [InspectorName("顺序画面（按编号）")] public Texture2D[] Frames = Array.Empty<Texture2D>();
+        [Range(0, 2), InspectorName("画面叠化时长（秒）")] public float CrossfadeSeconds = .6f;
         [InspectorName("梦境音乐")] public MiniGameSound Music;
         [Range(0, 2), InspectorName("运动强度")] public float MotionIntensity = 1;
+        [Range(0, 2), InspectorName("梦境后处理强度")] public float PostIntensity = 1;
     }
 
     [Serializable]
@@ -34,7 +37,14 @@ namespace MiniGame.UnityHost
             new DreamDaySettings { Day = 2, Music = MiniGameSound.Dream1 },
             new DreamDaySettings { Day = 3, Music = MiniGameSound.Dream3 }
         };
-        [Header("海滩终局"), Range(.1f, 4), InspectorName("前进速度（米/秒）")] public float WalkSpeed = 1.2f;
+        [Header("海滩终局"), InspectorName("使用门口固定全景布景")] public bool UseRoomCubemapEnding = true;
+        [InspectorName("门口固定天空盒")] public Material RoomPanoramaSkybox;
+        [InspectorName("显示房间白色边框")] public bool ShowRoomOutline;
+        [InspectorName("全景捕获源")] public GameObject CubemapSourcePrefab;
+        [InspectorName("全景每面分辨率")] public int CubemapFaceSize = 1024;
+        [Range(1, 30), InspectorName("全景每秒更新次数")] public float CubemapRefreshRate = 10;
+        [Range(-180, 180), InspectorName("全景水平方向（度）")] public float CubemapYaw;
+        [Range(.1f, 4), InspectorName("前进速度（米/秒）")] public float WalkSpeed = 1.2f;
         [Range(.5f, 4), InspectorName("床交互距离（米）")] public float BedInteractionDistance = 1.5f;
         [Range(.2f, 5), InspectorName("躺下时间（秒）")] public float LieDownSeconds = 1.5f;
         [Range(0, .3f), InspectorName("床起伏幅度（米）")] public float FloatAmplitude = .08f;
@@ -74,6 +84,9 @@ namespace MiniGame.UnityHost
             AlignSeconds = Valid(AlignSeconds, .1f, 10, 1.2f);
             ReturnSeconds = Valid(ReturnSeconds, .1f, 10, 1);
             ProjectionInset = Valid(ProjectionInset, 0, .5f, .15f);
+            CubemapFaceSize = Mathf.ClosestPowerOfTwo(Mathf.Clamp(CubemapFaceSize, 256, 2048));
+            CubemapRefreshRate = Valid(CubemapRefreshRate, 1, 30, 10);
+            CubemapYaw = Valid(CubemapYaw, -180, 180, 0);
             WalkSpeed = Valid(WalkSpeed, .1f, 4, 1.2f);
             BedInteractionDistance = Valid(BedInteractionDistance, .5f, 4, 1.5f);
             LieDownSeconds = Valid(LieDownSeconds, .2f, 5, 1.5f);
@@ -89,7 +102,12 @@ namespace MiniGame.UnityHost
             SeaFoamAmount = Valid(SeaFoamAmount, 0, 1.5f, .85f);
             SubtitleDelay = Valid(SubtitleDelay, 0, 15, 2);
             if (Days != null) foreach (var day in Days) if (day != null)
-            { day.Duration = Valid(day.Duration, 5, 180, 20); day.MotionIntensity = Valid(day.MotionIntensity, 0, 2, 1); }
+            {
+                day.Duration = Valid(day.Duration, 5, 180, 20);
+                day.MotionIntensity = Valid(day.MotionIntensity, 0, 2, 1);
+                day.CrossfadeSeconds = Valid(day.CrossfadeSeconds, 0, 2, .6f);
+                day.PostIntensity = Valid(day.PostIntensity, 0, 2, 1);
+            }
             if (EndingLines != null) foreach (var line in EndingLines) if (line != null)
                 line.Duration = Valid(line.Duration, 1, 30, 4);
         }
@@ -123,5 +141,11 @@ namespace MiniGame.UnityHost
         public float SubtitleElapsed;
         public int SubtitleIndex;
         public bool SubtitlesComplete;
+        public bool HasRoomPose;
+        public Vector3 RoomPosition;
+        public float RoomYaw;
+        public float RoomPitch;
+        public Vector3 LieStartPosition;
+        public Quaternion LieStartRotation = Quaternion.identity;
     }
 }

@@ -28,6 +28,7 @@ namespace MiniGame.UnityHost
         [SerializeField] private bool perceptualQuantization;
         [SerializeField, Range(0, 1)] private float quantizationStrength = 1;
         [SerializeField, Range(0, 1)] private float ditherStrength;
+        [SerializeField, Range(0, .15f)] private float filmGrainStrength;
         [SerializeField] private bool useVirtualResolution;
         [SerializeField, Range(180, 1080)] private int virtualHeight = 540;
 
@@ -58,6 +59,7 @@ namespace MiniGame.UnityHost
         public bool PerceptualQuantization { get => perceptualQuantization; set => perceptualQuantization = value; }
         public float QuantizationStrength { get => Safe(quantizationStrength, 0, 1, 1); set => quantizationStrength = Safe(value, 0, 1, 1); }
         public float DitherStrength { get => Safe(ditherStrength, 0, 1, 0); set => ditherStrength = Safe(value, 0, 1, 0); }
+        public float FilmGrainStrength { get => Safe(filmGrainStrength, 0, .15f, 0); set => filmGrainStrength = Safe(value, 0, .15f, 0); }
         public bool UseVirtualResolution { get => useVirtualResolution; set => useVirtualResolution = value; }
         public int VirtualHeight { get => Mathf.Clamp(virtualHeight, 180, 1080); set => virtualHeight = Mathf.Clamp(value, 180, 1080); }
 
@@ -94,6 +96,7 @@ namespace MiniGame.UnityHost
             shadowExposure = midtoneExposure = highlightExposure = 0;
             shadowEnd = .35f; highlightStart = .65f; neutralTonemapping = false;
             perceptualQuantization = false; quantizationStrength = 1; ditherStrength = 0;
+            filmGrainStrength = 0;
             useVirtualResolution = false; virtualHeight = 540;
         }
 
@@ -106,6 +109,7 @@ namespace MiniGame.UnityHost
             ShadowExposure = shadowExposure; MidtoneExposure = midtoneExposure; HighlightExposure = highlightExposure;
             ShadowEnd = shadowEnd; HighlightStart = highlightStart;
             QuantizationStrength = quantizationStrength; DitherStrength = ditherStrength; VirtualHeight = virtualHeight;
+            FilmGrainStrength = filmGrainStrength;
         }
 
         private static Color SafeTint(Color value) => new Color(

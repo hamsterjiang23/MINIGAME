@@ -16,10 +16,18 @@ Shader "Hidden/MiniGame/RetroScreen"
             float _Strength, _PixelSize, _Levels, _GammaBefore, _GammaAfter, _FullscreenQuantization;
             float _ColorGradingEnabled, _NeutralTonemapping, _PerceptualQuantization;
             float _QuantizationStrength, _DitherStrength, _UseVirtualResolution, _VirtualHeight;
+            float _FilmGrainStrength, _FilmGrainFrame;
             float4 _ColorAdjustments, _ToneExposures, _ToneRanges;
             float4 _ShadowTint, _MidtoneTint, _HighlightTint;
 
             float Luminance709(float3 color) { return dot(color, float3(.2126, .7152, .0722)); }
+
+            float FilmGrain(float2 pixel)
+            {
+                float3 seed = frac(float3(pixel.x, pixel.y, _FilmGrainFrame) * .1031);
+                seed += dot(seed, seed.yzx + 33.33);
+                return frac((seed.x + seed.y) * seed.z) - .5;
+            }
 
             float Bayer2(float2 cell)
             {
@@ -96,7 +104,7 @@ Shader "Hidden/MiniGame/RetroScreen"
                 float4 original = tex2D(_MainTex, input.uv);
                 float3 color = tex2D(_MainTex, uv).rgb;
                 bool quantize = _FullscreenQuantization > .5 && _QuantizationStrength > 0;
-                if (!quantize && _ColorGradingEnabled < .5 && _NeutralTonemapping < .5)
+                if (!quantize && _ColorGradingEnabled < .5 && _NeutralTonemapping < .5 && _FilmGrainStrength <= 0)
                     return float4(lerp(original.rgb, color, _Strength), original.a);
                 color = max(color, 0);
                 // Operate on display-like values in both Gamma and Linear projects.
@@ -120,6 +128,11 @@ Shader "Hidden/MiniGame/RetroScreen"
                     quantized *= level / max(value, 1e-6);
                     quantized = pow(max(quantized, 0), _GammaAfter) * hdr;
                     color = lerp(color, quantized, _QuantizationStrength);
+                }
+                if (_FilmGrainStrength > 0)
+                {
+                    float response = 1 - .5 * saturate(Luminance709(color));
+                    color = max(0, color + FilmGrain(pixel) * _FilmGrainStrength * response);
                 }
                 #ifndef UNITY_COLORSPACE_GAMMA
                     color = GammaToLinearSpace(color);

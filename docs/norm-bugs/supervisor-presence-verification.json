@@ -1,0 +1,177 @@
+{
+  "date": "2026-10-21",
+  "scope": "Keep the supervisor permanently outside the doorway; raise his position by 0.1 metres.",
+  "behavior": {
+    "presence": "World SpriteRenderer is enabled on binding, independently of door state, dialogue cues, pause and work.",
+    "verticalOffsetMetres": 0.1,
+    "outsideDoorMetres": 0.9,
+    "portraitHeightMetres": 1.8,
+    "placement": "Uses captured standing return position during seated opening, otherwise controller floor; remains fixed through transitions.",
+    "occlusion": "The physical door and frame still occlude the world actor."
+  },
+  "tests": [
+    {
+      "report": "reports/supervisor-presence/supervisor-tests.json",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.PauseAndCheckpointRebindKeepTheOutsideWorldPose",
+          "Status": "Passed",
+          "Duration": 0.917556,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.PlayerMovementAndDoorEntryDoNotMoveThePermanentSupervisor",
+          "Status": "Passed",
+          "Duration": 0.83106,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.SupervisorAlreadyStandsOutsideClosedDoorAndRemainsThroughMorningAndWork",
+          "Status": "Passed",
+          "Duration": 1.9997708,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/supervisor-presence/world-presentation-tests.json",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests.MorningUsesSupervisorAndAWhiteFrameWithoutDeveloperLabelsOrWorldInstructions",
+          "Status": "Passed",
+          "Duration": 0.6545846,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests.RealRoomManualKeepsPauseUntilTheSecondEscapeAndMorningCanBeRead",
+          "Status": "Passed",
+          "Duration": 3.2025524,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/supervisor-presence/door-entry-tests.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DoorViewPlayModeTests.EntryStopsAtThresholdAndEPathReturnsBeforeClosingWithoutMovingTheBody",
+          "Status": "Passed",
+          "Duration": 4.0247251,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    }
+  ],
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/SupervisorPresence/MiniGame.exe",
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 4.9295991,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "buildReport": "reports/supervisor-presence/windows-build.json",
+  "buildWarning": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds.",
+  "nativePlayer": {
+    "passed": true,
+    "developmentBuild": true,
+    "supervisorWorldObject": true,
+    "noSupervisorIndoors": true,
+    "supervisorPresentBeforeDoor": true,
+    "supervisorRemainsAfterBriefing": true,
+    "headerAmber": true,
+    "worldInstructionsHidden": true,
+    "manualOpenedByPointer": true,
+    "escapeClosesManualOnly": true,
+    "escapeResumes": true,
+    "terminalDirectoryReached": true,
+    "campaignStart": false,
+    "dayZeroLogoRequested": false,
+    "dayZeroSlept": false,
+    "result": "PASSED",
+    "detail": "Real doorway morning, outside supervisor, amber UI, pointer manual, two Escape stages and morning-only scanner sound.",
+    "unity": "2022.3.23f1c1",
+    "graphics": "Direct3D11",
+    "captureMode": "Actual room Camera + native UI Canvas to 1280x720 RenderTexture; no window backbuffer capture",
+    "targetFrameRate": 30,
+    "vSyncCount": 0,
+    "scanSounds": 1,
+    "morningClicks": 1,
+    "briefingClicks": 1,
+    "dayZeroPurificationClicks": 0,
+    "directoryKpi": "净化要求：0/5",
+    "seconds": 8.019693,
+    "supervisorBeyondDoorMetres": 0.900000036,
+    "cameraInsideDistance": 0.0,
+    "supervisorFeetGapFromStandingPlayer": 0.100000024,
+    "captures": [
+      "supervisor-outside.png",
+      "pause.png",
+      "manual.png",
+      "terminal-directory.png"
+    ],
+    "pointerChecks": [
+      "Continue -> Continue",
+      "Continue -> Continue",
+      "PauseAction4 -> PauseAction4"
+    ]
+  },
+  "nativeReport": "reports/supervisor-presence/native-player.json",
+  "preview": "previews/supervisor-always-outside-raised.png",
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/SupervisorDoorwayView.cs",
+      "sha256": "a607b1928d3e961babd24c5f47752303c2c58839cdeeb8219483239de98ecece"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/NormBugPlayerProbe.cs",
+      "sha256": "46b129510cdfa48792ddfab0b40b826f1e841ae2fcd0c924303100349d788ba2"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/SupervisorDoorwayPlayModeTests.cs",
+      "sha256": "89502addd9163edeebf207256ba79c352d8d558c71af7933fe60f451fafed7d9"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/NormWorldPresentationPlayModeTests.cs",
+      "sha256": "b18725939c9cf444ac22b5da316e4aa5e14c75701b5922ff43951e9523202140"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "1c67cd4252ea4edb12ce6903b29b1df8b4aaefa9b4177df17302497ec8762488"
+    }
+  ],
+  "validationScope": "Six Unity Play Mode regressions; actual native Player pointer flow and camera captures. No human playthrough claim."
+}

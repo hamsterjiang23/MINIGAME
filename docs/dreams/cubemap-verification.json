@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-21",
+  "scope": "Hidden DreamSea ending only. Existing daily artwork and ordinary dream flow unchanged.",
+  "implementation": {
+    "room": "Static anamorphic scenery calibrated at Player spawn eye, selected skybox captured exactly once per entry; off-axis walking reveals room surfaces; optional white outline defaults off",
+    "capture": {
+      "capturesPerEntry": 1,
+      "faceSize": 1024,
+      "sixFacesBeforeSwap": true,
+      "source": "DoorwayBeachSkybox.mat -> DoorwayBeachPanorama.asset"
+    },
+    "legacy": "Ordinary three-day dreams unchanged. Older dynamic revisions remain below as historical evidence."
+  },
+  "checks": {
+    "native": {
+      "result": "Passed",
+      "detail": "Hidden ending route, live panorama, room exploration, six-face orientation, pause and checkpoint lifecycle verified.",
+      "unity": "2022.3.23f1c1",
+      "graphics": "Direct3D11",
+      "scope": "Historical skybox build before finite-room correction. Legal-command fast-forward of earlier days, actual self-review and hidden-ending host route, native GPU room captures and six-face markers; no claim of visually replaying three earlier days. Capture timings are CPU call durations, not GPU queries.",
+      "nondevelopment": true,
+      "actualEndingRoute": true,
+      "stayedInCombined": true,
+      "sixDirections": true,
+      "orientation24": true,
+      "onlyBedVisible": true,
+      "paused": true,
+      "walkingSaveRestore": true,
+      "ordinaryRestore": true,
+      "reentry": true,
+      "lyingRestore": true,
+      "driftingRestore": true,
+      "subtitlesComplete": true,
+      "sourceFaceSize": 1024,
+      "sourceCaptures": 13,
+      "renderedFrames": 91,
+      "refreshRate": 10.0,
+      "measuredSeconds": 3.0115890502929688,
+      "averageFramesPerSecond": 30.21660614013672,
+      "meanCaptureCpuMs": 1.0781030654907227,
+      "peakCaptureCpuMs": 1.2346999645233154
+    },
+    "dotnet": {
+      "presentationPassed": 218,
+      "sdk": "8.0.424",
+      "corePassed": 114,
+      "failed": 0
+    },
+    "unity": {
+      "cubemap": "Artifacts/Unity/DreamCubemap20261021/cubemap-verified.xml",
+      "cubemapPassed": 3,
+      "legacyEvidence": "Artifacts/Unity/DreamCubemap20261021/playmode.xml",
+      "legacyEndingAndDailyProjectionPassed": 9
+    },
+    "review": "Static independent code review: no bugs found; subsequent lifecycle controller-state correction verified dynamically"
+  },
+  "evidence": {
+    "sixDirections": "Artifacts/Unity/DreamCubemap20261021/NativeRun/Artifacts/DreamCubemap/Player/room-direction-0.png through room-direction-5.png",
+    "native": "Artifacts/Unity/DreamCubemap20261021/NativeRun/Artifacts/DreamCubemap/Player/verification.json",
+    "drift": "Artifacts/Unity/DreamCubemap20261021/NativeRun/Artifacts/DreamCubemap/Player/drifting.png",
+    "orientation": "orientation-0.png through orientation-5.png in native evidence folder; all 24 quadrant samples passed"
+  },
+  "delivery": {
+    "integrityAndStartup": "Artifacts/Unity/DreamCubemap20261021/delivery-verification.json",
+    "build": "Artifacts/Unity/DreamCubemap20261021/DeliveryBuild/build-report.json",
+    "archive": "Builds/Deliverables/MiniGame-Windows-x64-Mono-20261021-DreamCubemap.zip",
+    "scope": "Historical skybox build; does not include finiteRoomRevision."
+  },
+  "limitations": [
+    "Native fixture fast-forwards earlier days using accepted runtime commands; this is not a visual three-day playthrough",
+    "Performance is a short local smoke at 30 FPS cap; CPU RenderToCubemap call time is not GPU timing",
+    "The feature was built from an isolated snapshot of the working tree at task start; unrelated later concurrent changes are outside this build"
+  ],
+  "finiteRoomRevision": {
+    "date": "2026-10-21",
+    "implementation": "Cubemap sampled from six finite room surfaces: four walls, floor, ceiling. Original 3D bed remains; translated camera sees perspective changes.",
+    "playMode": "Artifacts/Unity/DreamRoomSurfaces20261021/playmode-final.xml",
+    "passed": 4,
+    "failed": 0,
+    "preview": "Artifacts/Unity/DreamRoomSurfaces20261021/verification.json",
+    "screenshots": "Artifacts/Unity/DreamRoomSurfaces20261021/room-preview.png and front/back/left/right/ceiling/floor.png",
+    "delivery": "Editor preview only; earlier Mono ZIP and native timing evidence predate this finite-room correction.",
+    "visiblePreview": {
+      "pid": 34652,
+      "project": "Artifacts/DreamCubeWork/UnityProject",
+      "readyLog": "Artifacts/Unity/DreamRoomSurfaces20261021/visible-preview.log:442",
+      "responding": true
+    },
+    "review": "Independent review identified unloading behaviour restoration; fixed with destruction-only resource cleanup, then re-reviewed with no bugs found."
+  },
+  "stablePanoramaRevision": {
+    "date": "2026-10-21",
+    "acceptedRequirement": "Panorama remains coherent and stable while walking; real 3D bed retains distance and perspective changes.",
+    "mapping": "All six room meshes sample the same Cubemap using world-space viewing direction, not wall coordinates or normalized room dimensions.",
+    "capture": "Unchanged offshore source, one capture position for all six directions; fixed while walking.",
+    "playMode": "Artifacts/Unity/DreamPanoramaStable20261021/playmode.xml",
+    "passed": 4,
+    "failed": 0,
+    "coverage": "24 quadrant samples; 10 viewing rotations x 6 translations in rectangular room; rendered real-bed silhouette grows on approach; pause/checkpoint/unload lifecycle",
+    "preview": "Artifacts/Unity/DreamPanoramaStable20261021/verification.json",
+    "screenshots": [
+      "Artifacts/Unity/DreamPanoramaStable20261021/room-preview.png",
+      "Artifacts/Unity/DreamPanoramaStable20261021/room-near-bed.png"
+    ],
+    "renderedBackgroundComparison": "Artifacts/Unity/DreamPanoramaStable20261021/background-comparison.json",
+    "package": "Editor preview revision; prior Mono ZIP does not include this change."
+  },
+  "parallaxRevision": {
+    "date": "2026-10-21",
+    "reason": "Player feedback: stationary beach made WASD appear to move only the bed. Stable panorama means coherent projection with environmental parallax.",
+    "implementation": "Source viewpoint follows viewer displacement from a fixed room anchor with matching yaw. Six faces use one position and animation time. A changed viewpoint bypasses stationary 10Hz refresh. Lying starts from the saved translated eye origin.",
+    "playMode": "Artifacts/Unity/DreamParallax20261021/playmode.xml",
+    "passed": 5,
+    "failed": 0,
+    "coverage": "Six directions with yaw 0/90; source markers match geometric projection after translation; stationary throttle and same-time moving recapture; real WASD changes beach-only pixels with waves/clouds frozen and bed pose unchanged; lie interpolation, pause and save/load",
+    "preview": "Artifacts/Unity/DreamParallax20261021/verification.json",
+    "screenshotFar": "Artifacts/Unity/DreamParallax20261021/room-preview.png",
+    "screenshotNear": "Artifacts/Unity/DreamParallax20261021/room-near-bed.png",
+    "timingScope": "Single Editor capture CPU call timing only; no new native build or GPU performance measurement.",
+    "delivery": "Updated Unity source and live Editor preview; earlier Mono ZIP does not contain this revision."
+  },
+  "outlineRevision": {
+    "date": "2026-10-21",
+    "implementation": "White physical-room boundary overlay on the existing dynamic Cubemap shader. Twelve edges only, normal depth occlusion, no source/camera changes.",
+    "edgeWidthMeters": 0.015,
+    "batchingFix": "Derive boundary coordinate from world position minus explicit room center so dynamic batching cannot whiten face interiors.",
+    "playMode": "Artifacts/Unity/DreamRoomOutline20261021/playmode-final.xml",
+    "passed": 6,
+    "failed": 0,
+    "coverage": "12 edge midpoints white; 18 face-interior samples preserve cube color; foreground occlusion; existing walking parallax, pause, save/load and cleanup",
+    "preview": "Artifacts/Unity/DreamRoomOutline20261021/verification.json",
+    "roomImage": "Artifacts/Unity/DreamRoomOutline20261021/room-preview.png",
+    "export": "Artifacts/Unity/DreamRoomOutline20261021/cubemap-cross.png",
+    "exportManifest": "Artifacts/Unity/DreamRoomOutline20261021/cubemap-files.json",
+    "exportSource": "Same complete live Cube RenderTexture sampled into six 90-degree views at 1024px each; horizontal cross 4096x3072. No beach scene recapture for export.",
+    "delivery": "Unity implementation and preview updated; prior Mono ZIP not rebuilt."
+  },
+  "doorwayStaticRevision": {
+    "date": "2026-10-21",
+    "acceptedRequirement": "Fixed scenery looks like a real beach at the doorway spawn, then reveals its flat room surfaces as the player walks toward the bed.",
+    "bake": "Artifacts/Unity/DreamDoorwayStatic20261021/bake.log",
+    "bakeMaxSixViewError": 0,
+    "selectedSkybox": "UnityProject/Assets/MiniGame/Art/DreamEnding/DoorwayBeachSkybox.mat",
+    "bakedCubemap": "UnityProject/Assets/MiniGame/Art/DreamEnding/DoorwayBeachPanorama.asset",
+    "playMode": "Artifacts/Unity/DreamDoorwayStatic20261021/doorway-final.xml",
+    "passed": 8,
+    "failed": 0,
+    "preview": "Artifacts/Unity/DreamDoorwayStatic20261021/verification.json",
+    "captureCountBefore": 1,
+    "captureCountAfter": 1,
+    "sourceTextureUnchanged": true,
+    "doorwayRgbError": 1.71058E-05,
+    "offAxisRgbError": 0.0558825135,
+    "doorImage": "Artifacts/Unity/DreamDoorwayStatic20261021/room-preview.png",
+    "nearBedImage": "Artifacts/Unity/DreamDoorwayStatic20261021/room-near-bed.png",
+    "outlineImage": "Artifacts/Unity/DreamDoorwayStatic20261021/room-outline.png",
+    "delivery": "Unity source, selectable baked skybox and live Editor preview. No new Mono ZIP in this revision.",
+    "calibrationRestore": "Standing eye is remembered before terminal/dream presentation; DreamSea room loads skip redundant generic pillow pose. Actual fresh self-review route and cross-scene lying/drifting loads passed.",
+    "broaderRegression": {
+      "evidence": "Artifacts/Unity/DreamDoorwayStatic20261021/playmode-final.xml",
+      "note": "Five older automatic-dream workflow tests timed out waiting for automatic dream after work; current GameRuntime enters dream through Bed interaction (GameRuntime.cs:139-143). No ordinary-flow production code changed in this task.",
+      "automaticDreamTimeouts": 5,
+      "legacyEndingDoorAndRestorePassed": 4,
+      "initialDoorwayRestoreFailure": "Fixed; the final dedicated suite passes 8/8."
+    },
+    "review": "Independent review identified camera-pose contamination; addressed by authored eye capture and ending-specific pose restore, with an actual cross-scene save/load regression."
+  }
+}

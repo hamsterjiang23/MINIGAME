@@ -6,6 +6,7 @@ Shader "MiniGame/Dream Sea"
         _Deep ("Deep water", Color) = (0.035,0.29,0.45,1)
         _DreamTime ("Playback time", Float) = 0
         _UseDreamTime ("Use explicit playback time", Float) = 0
+        _DreamOrigin ("Isolated source origin", Vector) = (0,0,0,0)
         _WaveHeight ("Wave height (m)", Float) = .24
         _WavePeriod ("Wave period (s)", Float) = 6
         _WaveLength ("Wave length (m)", Float) = 7
@@ -30,9 +31,9 @@ Shader "MiniGame/Dream Sea"
             v2f vert(appdata_base v)
             {
                 v2f o;
-                o.anchor = mul(unity_ObjectToWorld,v.vertex).xz;
+                o.anchor = (mul(unity_ObjectToWorld,v.vertex).xyz-_DreamOrigin.xyz).xz;
                 DreamOceanSurface(o.anchor,DreamOceanTime(),o.world,o.normal,o.crest);
-                o.vertex = mul(UNITY_MATRIX_VP,float4(o.world,1));
+                o.vertex = mul(UNITY_MATRIX_VP,float4(o.world+_DreamOrigin.xyz,1));
                 return o;
             }
             fixed4 frag(v2f i):SV_Target
@@ -44,12 +45,13 @@ Shader "MiniGame/Dream Sea"
                 float footprint = max(length(ddx(i.world.xz)),length(ddy(i.world.xz)));
                 float detail = (1-smoothstep(.08,.35,footprint))*saturate(_WaveHeight/.24);
                 float ripple = sin(i.world.x*2.2+i.world.z*3.9+t*2.1);
-                float distanceToEye = distance(i.world,_WorldSpaceCameraPos);
+                float3 eye = _WorldSpaceCameraPos-_DreamOrigin.xyz;
+                float distanceToEye = distance(i.world,eye);
                 float resolvedWaves = (1-smoothstep(22,70,distanceToEye))
                     * (1-smoothstep(max(1,_WaveLength)*.10,max(1,_WaveLength)*.42,footprint));
                 float3 n = normalize(lerp(float3(0,1,0),i.normal,resolvedWaves)
                     + float3(ripple*.035,0,cos(i.world.z*4.3+t*2.6)*.025)*detail*resolvedWaves);
-                float3 view = normalize(_WorldSpaceCameraPos-i.world);
+                float3 view = normalize(eye-i.world);
                 float fresnel = .04+.96*pow(1-saturate(dot(n,view)),5);
                 float3 c = lerp(_Shallow.rgb,_Deep.rgb,1-exp(-depth*.45));
                 float lighting = .78+.22*saturate(dot(n,normalize(float3(-.45,.8,.3))));

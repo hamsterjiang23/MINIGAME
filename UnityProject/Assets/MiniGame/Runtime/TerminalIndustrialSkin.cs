@@ -118,7 +118,7 @@ namespace MiniGame.UnityHost
         internal static Text Label(Transform parent, Font font, string name, string value,
             float x, float y, float width, float height, int size, Color color)
         {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Text));
+            var go = new GameObject(name, typeof(RectTransform), typeof(TerminalBitmapText));
             go.layer = parent.gameObject.layer;
             go.transform.SetParent(parent, false);
             Position((RectTransform)go.transform, x, y, width, height);
@@ -127,7 +127,7 @@ namespace MiniGame.UnityHost
             label.text = value;
             label.fontSize = size;
             label.color = color;
-            label.alignment = TextAnchor.MiddleLeft;
+            label.alignment = TextAnchor.UpperLeft;
             label.horizontalOverflow = HorizontalWrapMode.Overflow;
             label.verticalOverflow = VerticalWrapMode.Overflow;
             label.supportRichText = false;

@@ -1,6 +1,6 @@
 {
   "name": "MiniGame.UnityHost.EditorTests",
-  "references": ["MiniGame.Core", "MiniGame.Presentation", "MiniGame.UnityHost", "MiniGame.UnityHost.Editor", "YarnSpinner.Unity"],
+  "references": ["MiniGame.Core", "MiniGame.Presentation", "MiniGame.UnityHost", "MiniGame.UnityHost.Editor", "YarnSpinner.Unity", "UnityEngine.UI", "PMSAmberTerminal.Runtime"],
   "includePlatforms": ["Editor"],
   "optionalUnityReferences": ["TestAssemblies"],
   "autoReferenced": false

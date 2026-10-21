@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-20",
+  "sourceBase": "8930af6ede738b8dff446cfc230e24d77ca99f70",
+  "snapshot": "Artifacts/CrtFix",
+  "fixes": [
+    "Powered physical CRT continues rendering native terminal UI after leaving fullscreen interaction",
+    "Closed powered directory mode shows the object directory",
+    "Calibrated CRT import flips U once; importer version 3 refreshes existing meshes"
+  ],
+  "playmode": {
+    "failed": 0,
+    "finalDirectoryRetest": "Artifacts/Unity/CRTUiPersistence20261020/persistence-final.xml",
+    "passed": 3,
+    "originalRegression": "Artifacts/Unity/CRTUiPersistence20261020/playmode.xml",
+    "finalRetestPassed": 1
+  },
+  "native": {
+    "nondevelopment": true,
+    "persistentUiAfterExit": true,
+    "artifact": "Artifacts/Unity/CRTUiPersistence20261020/NativeRunFinal/Artifacts/TerminalAmber/Player/verification.json",
+    "worldPickingBlocked": true,
+    "sixReplyFlow": true,
+    "graphics": "Direct3D11",
+    "orientationAfterExitAndRestore": "8 of 8 corners passed using Images on the real native UI canvas through the physical CRT shader",
+    "sourceStopsOnShutdown": true,
+    "pauseAndRestore": true
+  },
+  "screenshot": "Artifacts/Unity/CRTUiPersistence20261020/NativeRunFinal/Artifacts/TerminalAmber/Player/physical-midday-restored.png",
+  "delivery": {
+    "startupVerification": "Artifacts/Unity/CRTUiPersistence20261020/delivery-verification.json",
+    "archive": "Builds/Deliverables/MiniGame-Windows-x64-Mono-20261020-CRTUiFix.zip",
+    "target": "Windows x64 Mono, nondevelopment",
+    "buildReport": "Artifacts/Unity/CRTUiPersistence20261020/DeliveryBuild/build-report.json"
+  },
+  "scope": "Snapshot excludes concurrent unfinished bitmap-font and highlight work. No new dream or lighting content."
+}

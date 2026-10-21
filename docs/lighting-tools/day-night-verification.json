@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-21",
+  "unity": "2022.3.23f1c1",
+  "scope": "Day/night light authoring in Scene and Game, portable presets, old tool regression fixes",
+  "editorPassed": 16,
+  "playModePassed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "editor-new",
+      "report": "reports/day-night/editor-new.json",
+      "summary": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 1.1
+    },
+    {
+      "name": "editor-regression",
+      "report": "reports/day-night/editor-regression.json",
+      "summary": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 0.86
+    },
+    {
+      "name": "preset-io",
+      "report": "reports/day-night/preset-io.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 0.05
+    },
+    {
+      "name": "playmode-new",
+      "report": "reports/day-night/playmode-new.json",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 3.51
+    },
+    {
+      "name": "playmode-regression",
+      "report": "reports/day-night/playmode-regression.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 4.92
+    },
+    {
+      "name": "playmode-authoring-regression",
+      "report": "reports/day-night/playmode-authoring-regression.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "seconds": 1.6
+    }
+  ],
+  "sharing": {
+    "format": "NORM.RoomLightingPreset",
+    "version": 1,
+    "example": "presets/RoomLightingDefault.json",
+    "roundTripReport": "reports/day-night/share-roundtrip.json",
+    "atomicOverwriteVerified": true
+  },
+  "visuals": [
+    "reports/day-night/lighting-game-panel-day.png",
+    "reports/day-night/lighting-game-panel-night.png"
+  ],
+  "review": {
+    "result": "CLEAN",
+    "fixed": [
+      "Frozen ordinary pause backdrop over live Game lighting",
+      "Night preview saved into daylight scene baselines, including inactive rooms",
+      "Legacy day presets missing the new lamp rotation field"
+    ]
+  },
+  "coreGameplayRulesChanged": false,
+  "packaged": false,
+  "limitations": [
+    "Native Unity Editor/EditMode and PlayMode verified. No new Player build or Player execution was requested or performed.",
+    "Shared per-light overrides match scene-relative hierarchy paths; recipients need the same scene structure.",
+    "Tests use API and native uGUI controls; F7 keyboard shortcut is verified in source, not by external physical keyboard automation."
+  ]
+}

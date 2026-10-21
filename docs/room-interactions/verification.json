@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21",
+  "request": "Global switch, default lock door after supervisor dialogue",
+  "defaultLock": true,
+  "menu": "MiniGame/全局交互/监督员对话后锁门",
+  "asset": "UnityProject/Assets/MiniGame/Resources/MiniGame/RoomInteractionSettings.asset",
+  "policy": "Block reopening a closed door after Day1+ supervisor briefing; allow existing outside return/close, Day0 and next morning; disabling restores reopening without repeated conversation",
+  "configuration": "Reapplied from current global asset on install/load and live Update; not persisted per-game-save",
+  "dotnet": {
+    "evidence": "Artifacts/Unity/SupervisorDoorLock20261021/DotNet",
+    "presentationPassed": 229,
+    "restore": "locked-mode passed",
+    "sdk": "8.0.424",
+    "corePassed": 114,
+    "build": "Release, 0 warnings, 0 errors"
+  },
+  "unity": {
+    "failed": 0,
+    "isolation": "Primary project was occupied by an unrelated Unity validation; tested an updated isolated snapshot with matching feature file hashes",
+    "evidence": "Artifacts/Unity/SupervisorDoorLock20261021/playmode-verified.xml",
+    "project": "Artifacts/DreamCubeWork/UnityProject",
+    "passed": 13,
+    "scope": "Real supervisor dialogue and physical door lifecycle, live cloned settings, return/close, load, next morning; existing supervisor and door regressions"
+  },
+  "review": "Independent read-only review found no actionable issues",
+  "delivery": "Source and default global asset updated; no new executable package built"
+}

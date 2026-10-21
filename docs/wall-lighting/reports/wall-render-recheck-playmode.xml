@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.7650663">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="151" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.765066" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1200" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="151" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.756854" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="71568" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1201" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="151" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.725527" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1202" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="151" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.692186" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1203" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="151" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.658792" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1198" name="WallRenderingRecheckEvidenceTests" fullname="MiniGame.UnityHost.Tests.WallRenderingRecheckEvidenceTests" classname="MiniGame.UnityHost.Tests.WallRenderingRecheckEvidenceTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.624711" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1199" name="ActualWorldCameraShowsTheSavedWallRepairWithTheCurrentRetroProfile" fullname="MiniGame.UnityHost.Tests.WallRenderingRecheckEvidenceTests.ActualWorldCameraShowsTheSavedWallRepairWithTheCurrentRetroProfile" methodname="ActualWorldCameraShowsTheSavedWallRepairWithTheCurrentRetroProfile" classname="MiniGame.UnityHost.Tests.WallRenderingRecheckEvidenceTests" runstate="Runnable" seed="1950170717" result="Passed" start-time="2026-10-21 02:36:34Z" end-time="2026-10-21 02:36:36Z" duration="1.588686" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

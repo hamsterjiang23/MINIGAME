@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -44,6 +45,9 @@ namespace MiniGame.UnityHost.Editor
                 Draw("gammaAfter", "输出明暗（后置 Gamma）", "调整分档后的明暗；大于 1 通常使中间调变暗。");
             }
             EditorGUILayout.Space();
+            EditorGUILayout.LabelField("胶片颗粒", EditorStyles.boldLabel);
+            Draw("filmGrainStrength", "颗粒强度", "0 关闭；建议 0.03～0.06。单色颗粒随帧变化，暗部稍强；独立于量化抖动，仅作用于场景画面，Overlay UI 保持清晰。");
+            EditorGUILayout.Space();
             EditorGUILayout.LabelField("像素化", EditorStyles.boldLabel);
             Draw("useVirtualResolution", "按虚拟分辨率像素化", "宽度根据画面比例计算；不会把小窗口放大成更多虚拟像素。");
             if (serializedObject.FindProperty("useVirtualResolution").boolValue)
@@ -51,8 +55,8 @@ namespace MiniGame.UnityHost.Editor
                 Draw("virtualHeight", "虚拟画面高度", "16:9 时：540 对应 960×540；360 对应 640×360。");
             }
             else Draw("pixelSize", "像素尺寸", "单位为输出像素。1 不额外像素化；越大，颗粒越粗。");
-            if (serializedObject.ApplyModifiedProperties()) RetroScreenPreview.Refresh();
-            EditorGUILayout.HelpBox("Game 视图实时预览，支持撤销/重做。播放期间编辑的是配置资产，保存后退出仍保留。Overlay UI 保持清晰；梦境播放继续自动旁路。", MessageType.Info);
+            if (serializedObject.ApplyModifiedProperties()) RetroScreenPreview.ProfileEdited((RetroScreenProfile)target);
+            EditorGUILayout.HelpBox("Scene 与 Game 视图实时预览，支持撤销/重做。播放期间编辑的是配置资产，保存后退出仍保留。Scene 请开启场景灯光与 Effects。", MessageType.Info);
             var profile = (RetroScreenProfile)target;
             bool original = RetroScreenPreview.IsOriginal(profile);
             bool next = GUILayout.Toggle(original, original ? "正在查看原图 · 点击返回效果" : "临时查看原图", "Button");
@@ -62,12 +66,12 @@ namespace MiniGame.UnityHost.Editor
                 if (GUILayout.Button("自然画面预设"))
                 {
                     Undo.RecordObject(profile, "恢复自然画面"); profile.ResetToNaturalDefaults();
-                    EditorUtility.SetDirty(profile); RetroScreenPreview.Refresh();
+                    RetroScreenPreview.ProfileEdited(profile);
                 }
                 if (GUILayout.Button("参考调色起点"))
                 {
                     Undo.RecordObject(profile, "应用参考调色起点"); profile.ResetToReferenceStyle();
-                    EditorUtility.SetDirty(profile); RetroScreenPreview.Refresh();
+                    RetroScreenPreview.ProfileEdited(profile);
                 }
             }
             using (new EditorGUILayout.HorizontalScope())
@@ -76,8 +80,7 @@ namespace MiniGame.UnityHost.Editor
                 {
                     Undo.RecordObject(profile, "恢复复古效果默认值");
                     profile.ResetToLightDefaults();
-                    EditorUtility.SetDirty(profile);
-                    RetroScreenPreview.Refresh();
+                    RetroScreenPreview.ProfileEdited(profile);
                 }
                 if (GUILayout.Button("保存配置"))
                 {
@@ -142,12 +145,37 @@ namespace MiniGame.UnityHost.Editor
     internal static class RetroScreenPreview
     {
         private static RetroScreenProfile originalProfile;
+        private static readonly HashSet<RetroScreenProfile> EditedProfiles = new HashSet<RetroScreenProfile>();
         static RetroScreenPreview()
         {
             Undo.undoRedoPerformed += Refresh;
-            AssemblyReloadEvents.beforeAssemblyReload += Clear;
-            EditorApplication.playModeStateChanged += _ => Clear();
+            AssemblyReloadEvents.beforeAssemblyReload += SaveAndClear;
+            EditorApplication.playModeStateChanged += state =>
+            {
+                if (state == PlayModeStateChange.ExitingPlayMode || state == PlayModeStateChange.ExitingEditMode) SaveEditedProfiles();
+                Clear();
+            };
+            EditorApplication.quitting += SaveEditedProfiles;
+            Camera.onPreCull += SynchronizeSceneCamera;
         }
+        public static void ProfileEdited(RetroScreenProfile profile)
+        {
+            if (profile != null)
+            {
+                EditorUtility.SetDirty(profile);
+                if (EditorUtility.IsPersistent(profile)) EditedProfiles.Add(profile);
+            }
+            Refresh();
+        }
+        private static void SaveEditedProfiles()
+        {
+            foreach (var profile in EditedProfiles.ToArray())
+            {
+                if (profile == null) EditedProfiles.Remove(profile);
+                else if (EditorUtility.IsPersistent(profile)) AssetDatabase.SaveAssetIfDirty(profile);
+            }
+        }
+        private static void SaveAndClear() { SaveEditedProfiles(); Clear(); }
         public static bool IsOriginal(RetroScreenProfile profile) => originalProfile == profile;
         public static void SetOriginal(RetroScreenProfile profile, bool original)
         {
@@ -167,6 +195,12 @@ namespace MiniGame.UnityHost.Editor
         {
             EditorApplication.QueuePlayerLoopUpdate();
             UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+        }
+        private static void SynchronizeSceneCamera(Camera camera)
+        {
+            if (camera == null || camera.cameraType != CameraType.SceneView) return;
+            foreach (var effect in camera.GetComponents<RetroScreenEffect>())
+                effect.PreviewOriginal = originalProfile != null && effect.Profile == originalProfile;
         }
     }
 

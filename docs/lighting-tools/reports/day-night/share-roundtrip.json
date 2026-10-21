@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "command": "command eval_file",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "F:/AAMINIGAME/MINIGAME/Artifacts/DayNightLighting20261021/export-default-preset.cs"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "command": null,
+      "result": {
+        "path": "F:/AAMINIGAME/MINIGAME/docs/lighting-tools/presets/RoomLightingDefault.json",
+        "bytes": 1638,
+        "roundTripIdentical": true,
+        "overwriteSucceeded": true,
+        "sourceUnchanged": true
+      },
+      "executionTimeMs": 749,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "0001-01-01T00:00:00"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

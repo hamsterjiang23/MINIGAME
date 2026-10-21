@@ -5,26 +5,32 @@ using UnityEngine.UI;
 
 namespace MiniGame.UnityHost
 {
-    /// <summary>Presentation-only, object-anchored reading. Never changes the game session.</summary>
+    /// <summary>Focused, camera-following reading with a visible page throughout the interaction. Never changes the game session.</summary>
     public sealed class PropNarrationView : MonoBehaviour
     {
         private const int Layer = 31;
         private const float FadeSeconds = .24f;
+        private const float MaximumViewportWidth = .37f, MinimumViewportWidth = .24f, SourceGap = .015f;
+        private const float RightViewportMargin = .015f;
+        private const float MaximumTextWidth = 560, MaximumTextHeight = 360, TextPadding = 22;
+        private const float ContinueHintHeight = 40;
         private Camera viewCamera, textCamera;
         private PropNarrationComposite composite;
         private RectTransform panel;
         private CanvasGroup group;
-        private Text body;
-        private Material textMaterial, backdropMaterial, compositeMaterial;
+        private Text body, continueHint;
+        private Material textMaterial, compositeMaterial;
         private ReadableProp prop;
         private string[] pages = Array.Empty<string>();
         private int page, previousLayerBit, openedFrame;
+        private int lastAcceptedFrame = -1, blockedInputFrame = -1;
         private float opacity, settleTime;
-        private bool closing, paused;
-        private Vector3 anchorOffset;
+        private bool closing, paused, hasSpace, placementChosen;
+        private float viewportY, placementAspect;
+        private UnityEngine.Rect readingViewport;
 
         public bool IsOpen { get; private set; }
-        public bool Visible => IsOpen && !paused;
+        public bool Visible => IsOpen && !paused && hasSpace;
         public bool BlocksWorldInput => IsOpen || ClosedFrame == Time.frameCount;
         public int ClosedFrame { get; private set; } = -1;
         public string CurrentText => IsOpen && page < pages.Length ? pages[page] : string.Empty;
@@ -33,10 +39,11 @@ namespace MiniGame.UnityHost
         public int PageCount => pages.Length;
         public Camera ViewCamera => viewCamera;
 
-        public bool Show(ReadableProp source, Camera camera, Font font)
+        public bool Show(ReadableProp source, Camera camera, Font font, int day = 0)
         {
-            if (IsOpen || source == null || !source.isActiveAndEnabled || source.Surface == null || camera == null) return false;
-            var nextPages = source.Caption.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+            if (IsOpen || ClosedFrame == Time.frameCount || blockedInputFrame == Time.frameCount
+                || source == null || !source.isActiveAndEnabled || source.Surface == null || camera == null) return false;
+            var nextPages = source.CaptionForDay(day).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(line => line.Trim()).Where(line => line.Length > 0).ToArray();
             if (nextPages.Length == 0) return false;
             var shader = Resources.Load<Shader>("PropNarration");
@@ -54,10 +61,10 @@ namespace MiniGame.UnityHost
             IsOpen = true; closing = false; paused = false; opacity = 0; settleTime = 0;
             openedFrame = Time.frameCount;
             group.alpha = 0;
-            PlaceBesideProp();
-            body.rectTransform.offsetMin = body.rectTransform.offsetMax = Vector2.zero;
+            panel.sizeDelta = new Vector2(MaximumTextWidth, MaximumTextHeight);
+            SetContinueHint(false);
+            viewportY = Mathf.Clamp(camera.WorldToViewportPoint(source.Surface.bounds.center).y, .30f, .76f);
             body.rectTransform.ForceUpdateRectTransforms();
-            BalanceShortParagraphs(nextPages);
             pages = nextPages.SelectMany(paragraph => DialogueTextPlayback.Paginate(body, paragraph)).ToArray();
             panel.gameObject.SetActive(true);
             SetPage();
@@ -67,7 +74,9 @@ namespace MiniGame.UnityHost
 
         public bool Advance()
         {
-            if (!IsOpen || paused || closing || Time.frameCount == openedFrame || settleTime < .18f) return false;
+            if (IsOpen && !paused) UpdatePlacement();
+            if (!Visible || !CanAcceptInput() || settleTime < .18f) return false;
+            lastAcceptedFrame = Time.frameCount;
             if (page + 1 < pages.Length)
             {
                 page++;
@@ -81,21 +90,27 @@ namespace MiniGame.UnityHost
 
         public bool Dismiss()
         {
-            if (!IsOpen || paused) return false;
+            if (!CanAcceptInput()) return false;
+            lastAcceptedFrame = Time.frameCount;
             closing = true;
             return true;
         }
 
+        private bool CanAcceptInput() => IsOpen && !paused && !closing && Time.frameCount != openedFrame
+            && Time.frameCount != lastAcceptedFrame && Time.frameCount != blockedInputFrame && Time.frameCount != ClosedFrame;
+
         public void SetPaused(bool value)
         {
+            if (paused == value) return;
             paused = value;
+            blockedInputFrame = Time.frameCount;
             if (panel != null) panel.gameObject.SetActive(IsOpen && !paused);
         }
 
         public void CloseImmediately()
         {
-            if (IsOpen) ClosedFrame = Time.frameCount;
-            IsOpen = false; closing = false; opacity = 0;
+            if (IsOpen) ClosedFrame = blockedInputFrame = Time.frameCount;
+            IsOpen = false; closing = false; hasSpace = false; placementChosen = false; opacity = 0;
             if (panel != null) panel.gameObject.SetActive(false);
             if (viewCamera != null)
                 viewCamera.cullingMask = (viewCamera.cullingMask & ~(1 << Layer)) | previousLayerBit;
@@ -111,87 +126,161 @@ namespace MiniGame.UnityHost
             { CloseImmediately(); return; }
             if (paused) return;
             settleTime += Time.unscaledDeltaTime;
-            opacity = Mathf.MoveTowards(opacity, closing ? 0 : .86f, Time.unscaledDeltaTime / FadeSeconds);
+            opacity = Mathf.MoveTowards(opacity, closing ? 0 : 1f, Time.unscaledDeltaTime / FadeSeconds);
             group.alpha = opacity;
-            panel.position = prop.Surface.bounds.center + anchorOffset;
             if (closing && opacity <= 0) CloseImmediately();
         }
 
-        private void PlaceBesideProp()
+        private void LateUpdate()
+        {
+            if (IsOpen && !paused) UpdatePlacement();
+        }
+
+        private void UpdatePlacement()
+        {
+            if (panel == null || viewCamera == null || prop == null || prop.Surface == null) return;
+            if (!placementChosen || !Mathf.Approximately(placementAspect, viewCamera.aspect))
+            {
+                bool sourceOnScreen = TryGetSourceViewport(out var occupied);
+                ChoosePlacement(sourceOnScreen, occupied);
+            }
+            // A chosen reading page stays visible even if its source subsequently crosses that rectangle.
+            hasSpace = placementChosen;
+            group.alpha = hasSpace ? opacity : 0;
+
+            float depth = Mathf.Max(.6f, viewCamera.nearClipPlane + .1f);
+            float visibleHeight = viewCamera.orthographic ? viewCamera.orthographicSize * 2
+                : 2 * depth * Mathf.Tan(viewCamera.fieldOfView * .5f * Mathf.Deg2Rad);
+            var anchor = viewCamera.ViewportToWorldPoint(new Vector3(readingViewport.center.x, readingViewport.center.y, depth));
+            panel.SetPositionAndRotation(anchor, viewCamera.transform.rotation);
+            panel.localScale = Vector3.one * (visibleHeight * viewCamera.aspect * readingViewport.width / panel.rect.width);
+        }
+
+        private void ChoosePlacement(bool sourceOnScreen, UnityEngine.Rect occupied)
+        {
+            float ratio = viewCamera.aspect * panel.rect.height / panel.rect.width;
+            float width = Mathf.Min(MaximumViewportWidth * panel.rect.width / MaximumTextWidth, 1f / ratio);
+            float minimumWidth = MinimumViewportWidth * panel.rect.width / MaximumTextWidth;
+            float height = width * ratio;
+            float y = Mathf.Clamp(viewportY, height * .5f, 1 - height * .5f);
+            // Retain a valid camera-relative pose even when no readable gap exists on opening.
+            readingViewport = new UnityEngine.Rect(1 - RightViewportMargin - width, y - height * .5f, width, height);
+            placementChosen = true;
+            placementAspect = viewCamera.aspect;
+            if (sourceOnScreen)
+            {
+                float sideWidth = Mathf.Min(width, 1 - RightViewportMargin - occupied.xMax);
+                if (sideWidth >= minimumWidth)
+                {
+                    width = sideWidth; height = width * ratio;
+                    y = Mathf.Clamp(viewportY, height * .5f, 1 - height * .5f);
+                }
+                else
+                {
+                    float aboveWidth = Mathf.Min(width, Mathf.Clamp01(1 - occupied.yMax) / ratio);
+                    float belowWidth = Mathf.Min(width, Mathf.Clamp01(occupied.yMin) / ratio);
+                    bool above = aboveWidth > belowWidth || (Mathf.Approximately(aboveWidth, belowWidth) && viewportY >= occupied.center.y);
+                    width = above ? aboveWidth : belowWidth;
+                    height = width * ratio;
+                    placementChosen = width >= minimumWidth;
+                    y = above ? occupied.yMax + height * .5f : occupied.yMin - height * .5f;
+                }
+            }
+            if (placementChosen)
+                readingViewport = new UnityEngine.Rect(1 - RightViewportMargin - width, y - height * .5f, width, height);
+            else
+                // No side/upper/lower gap fits: keep the existing right-side rectangle instead of locking input behind invisible text.
+                placementChosen = true;
+        }
+
+        private bool TryGetSourceViewport(out UnityEngine.Rect occupied)
         {
             var bounds = prop.Surface.bounds;
-            var center = viewCamera.WorldToViewportPoint(bounds.center);
-            float depth = Mathf.Max(.35f, center.z - .16f);
-            float visibleHeight = 2 * depth * Mathf.Tan(viewCamera.fieldOfView * .5f * Mathf.Deg2Rad);
-            float visibleWidth = visibleHeight * viewCamera.aspect;
-            float width = Mathf.Min(.96f, visibleWidth * .37f);
-            float posterHalfWidth = Mathf.Abs(viewCamera.transform.right.x) * bounds.extents.x
-                + Mathf.Abs(viewCamera.transform.right.y) * bounds.extents.y
-                + Mathf.Abs(viewCamera.transform.right.z) * bounds.extents.z;
-            float side = center.x <= .5f ? 1 : -1;
-            float x = center.x + side * (posterHalfWidth + width * .5f + .075f) / visibleWidth;
-            float halfViewportWidth = width / visibleWidth * .5f;
-            x = Mathf.Clamp(x, .045f + halfViewportWidth, .955f - halfViewportWidth);
-            var anchor = viewCamera.ViewportToWorldPoint(new Vector3(x, Mathf.Clamp(center.y, .30f, .76f), depth));
-            panel.SetPositionAndRotation(anchor, viewCamera.transform.rotation);
-            // Slight obliqueness gives the text an actual spatial plane while preserving legibility.
-            panel.Rotate(0, -side * 7, 0, Space.Self);
-            panel.localScale = Vector3.one * (width / 560f);
-            anchorOffset = anchor - bounds.center;
+            var minimum = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+            var maximum = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+            bool inFront = false, behind = false;
+            for (int corner = 0; corner < 8; corner++)
+            {
+                var world = bounds.center + Vector3.Scale(bounds.extents, new Vector3(
+                    (corner & 1) == 0 ? -1 : 1, (corner & 2) == 0 ? -1 : 1, (corner & 4) == 0 ? -1 : 1));
+                var point = viewCamera.WorldToViewportPoint(world);
+                if (point.z <= viewCamera.nearClipPlane) { behind = true; continue; }
+                inFront = true;
+                minimum = Vector2.Min(minimum, point); maximum = Vector2.Max(maximum, point);
+            }
+            occupied = new UnityEngine.Rect(0, 0, 1, 1);
+            if (!inFront) return false;
+            if (behind) return true;
+            occupied = UnityEngine.Rect.MinMaxRect(minimum.x - SourceGap, minimum.y - SourceGap,
+                maximum.x + SourceGap, maximum.y + SourceGap);
+            return occupied.xMax > 0 && occupied.xMin < 1 && occupied.yMax > 0 && occupied.yMin < 1;
         }
 
         private void SetPage()
         {
+            bool morePages = page + 1 < pages.Length;
+            float hintHeight = morePages ? ContinueHintHeight : 0;
+            SetContinueHint(morePages);
+            panel.sizeDelta = new Vector2(MaximumTextWidth, MaximumTextHeight + hintHeight);
             body.text = pages[page];
+            body.rectTransform.ForceUpdateRectTransforms();
+            float preferredWidth = body.preferredWidth;
+            // Balance short paragraphs so a final punctuation mark does not occupy a row by itself.
+            using (var generator = new TextGenerator())
+            {
+                var settings = body.GetGenerationSettings(body.rectTransform.rect.size);
+                settings.verticalOverflow = VerticalWrapMode.Overflow;
+                generator.Populate(body.text, settings);
+                if (generator.lineCount >= 2 && generator.lineCount <= 3)
+                    preferredWidth = Mathf.Min(preferredWidth, preferredWidth / generator.lineCount + body.fontSize);
+            }
+            if (morePages) preferredWidth = Mathf.Max(preferredWidth, continueHint.preferredWidth);
+            panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+                Mathf.Clamp(preferredWidth + TextPadding * 2, TextPadding * 2 + body.fontSize, MaximumTextWidth));
+            body.rectTransform.ForceUpdateRectTransforms();
+            panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                Mathf.Clamp(body.preferredHeight + TextPadding * 2 + hintHeight,
+                    TextPadding * 2 + body.fontSize + hintHeight, MaximumTextHeight + hintHeight));
+            placementChosen = false;
+            UpdatePlacement();
         }
 
-        private void BalanceShortParagraphs(string[] paragraphs)
+        private void SetContinueHint(bool visible)
         {
-            float maximum = body.rectTransform.rect.width;
-            var settings = body.GetGenerationSettings(Vector2.zero);
-            using var generator = new TextGenerator();
-            float longest = paragraphs.Max(text => generator.GetPreferredWidth(text, settings) / body.pixelsPerUnit);
-            if (longest <= maximum || longest > maximum * 3) return;
-            int lines = Mathf.CeilToInt(longest / maximum);
-            float width = Mathf.Min(maximum, longest / lines + body.fontSize);
-            body.rectTransform.offsetMax = new Vector2(width - maximum, 0);
-            body.rectTransform.ForceUpdateRectTransforms();
+            continueHint.gameObject.SetActive(visible);
+            body.rectTransform.offsetMin = new Vector2(TextPadding, TextPadding + (visible ? ContinueHintHeight : 0));
         }
 
         private void Build(Font font, Shader shader, Shader compositor)
         {
             textMaterial = new Material(shader) { name = "Soft spatial narration", hideFlags = HideFlags.HideAndDontSave };
-            backdropMaterial = new Material(shader) { name = "Feathered narration shadow", hideFlags = HideFlags.HideAndDontSave };
-            backdropMaterial.SetFloat("_Backdrop", 1);
             compositeMaterial = new Material(compositor) { hideFlags = HideFlags.HideAndDontSave };
             var cameraObject = new GameObject("Prop narration rendering", typeof(Camera));
             cameraObject.transform.SetParent(transform, false);
             textCamera = cameraObject.GetComponent<Camera>(); textCamera.enabled = false;
             var root = new GameObject("Spatial prop narration", typeof(RectTransform), typeof(Canvas), typeof(CanvasGroup));
             root.layer = Layer; root.transform.SetParent(transform, false);
-            panel = root.GetComponent<RectTransform>(); panel.sizeDelta = new Vector2(560, 230);
+            panel = root.GetComponent<RectTransform>(); panel.sizeDelta = new Vector2(MaximumTextWidth, MaximumTextHeight);
             var canvas = root.GetComponent<Canvas>(); canvas.renderMode = RenderMode.WorldSpace;
             canvas.worldCamera = textCamera;
             group = root.GetComponent<CanvasGroup>(); group.interactable = false; group.blocksRaycasts = false;
-            var backdrop = Rect("Atmosphere", panel, new Vector2(-.15f, -.18f), new Vector2(1.15f, 1.18f)).gameObject.AddComponent<Image>();
-            backdrop.material = backdropMaterial; backdrop.color = new Color(.035f, .035f, .021f, .42f); backdrop.raycastTarget = false;
-            body = MakeText("Narration", font, 34, new Vector2(.06f, .10f), new Vector2(.94f, .90f));
-            body.color = new Color(.87f, .87f, .71f, 1);
-            body.alignment = TextAnchor.MiddleLeft; body.lineSpacing = 1.24f;
+            var backdrop = Rect("Reading background", panel, Vector2.zero, Vector2.one).gameObject.AddComponent<Image>();
+            backdrop.color = Color.black; backdrop.raycastTarget = false;
+            body = MakeText("Narration", font, 48, Vector2.zero, Vector2.one);
+            body.color = Color.white;
+            body.fontStyle = FontStyle.Bold;
+            body.rectTransform.offsetMin = Vector2.one * TextPadding;
+            body.rectTransform.offsetMax = -Vector2.one * TextPadding;
+            body.alignment = TextAnchor.MiddleLeft; body.lineSpacing = 1.18f;
             body.resizeTextForBestFit = false;
-            FrameEdge("Frame top", Vector2.up, Vector2.one, new Vector2(0, -2), Vector2.zero);
-            FrameEdge("Frame bottom", Vector2.zero, Vector2.right, Vector2.zero, new Vector2(0, 2));
-            FrameEdge("Frame left", Vector2.zero, Vector2.up, Vector2.zero, new Vector2(2, 0));
-            FrameEdge("Frame right", Vector2.right, Vector2.one, new Vector2(-2, 0), Vector2.zero);
+            continueHint = MakeText("Continue reading", font, 22, Vector2.zero, new Vector2(1, 0));
+            continueHint.text = "点击继续阅读";
+            continueHint.color = Color.white;
+            continueHint.alignment = TextAnchor.MiddleRight;
+            continueHint.rectTransform.offsetMin = new Vector2(TextPadding, TextPadding);
+            continueHint.rectTransform.offsetMax = new Vector2(-TextPadding, TextPadding + ContinueHintHeight);
+            continueHint.gameObject.SetActive(false);
             root.SetActive(false);
-        }
-
-        private void FrameEdge(string name, Vector2 min, Vector2 max, Vector2 offsetMin, Vector2 offsetMax)
-        {
-            var edge = Rect(name, panel, min, max);
-            edge.offsetMin = offsetMin; edge.offsetMax = offsetMax;
-            var image = edge.gameObject.AddComponent<Image>();
-            image.color = Color.white; image.raycastTarget = false;
         }
 
         private Text MakeText(string name, Font font, int size, Vector2 min, Vector2 max)
@@ -214,6 +303,7 @@ namespace MiniGame.UnityHost
         // Render the world-space lettering after the room's coarse retro filter, including camera captures.
         public void Composite(RenderTexture source, RenderTexture destination)
         {
+            if (IsOpen && !paused) UpdatePlacement();
             if (!Visible || textCamera == null || viewCamera == null)
             { Graphics.Blit(source, destination); return; }
             var target = RenderTexture.GetTemporary(source.width, source.height, 24, RenderTextureFormat.ARGB32);
@@ -242,7 +332,6 @@ namespace MiniGame.UnityHost
         {
             CloseImmediately();
             if (textMaterial != null) Destroy(textMaterial);
-            if (backdropMaterial != null) Destroy(backdropMaterial);
             if (compositeMaterial != null) Destroy(compositeMaterial);
         }
     }

@@ -1,0 +1,119 @@
+{
+  "completedAt": "2026-10-21T14:59:01.1325414+08:00",
+  "scope": "Posters, readable objects and doorway supervisor interaction only; existing visual design and computer dialogue input are retained.",
+  "reference": {
+    "workflow": "reference-hunt",
+    "source": "research/no-im-not-a-human/DecompiledCode/Assembly-CSharp",
+    "verifiedSemantics": [
+      "Narrative objects use a subtitle route distinct from NPC dialogue.",
+      "NPC interaction captures movement/look and enables UI input, then restores them after completion.",
+      "Original runner delegates skip to LineView and reads a configurable typewriter setting."
+    ],
+    "adaptations": [
+      "NORM 3D readable objects use focused reading with movement/look stopped and UI cursor available.",
+      "Existing full-page object text is retained; existing supervisor typewriter/page player is retained.",
+      "Same-frame frame guards and Escape consumption prevent duplicate actions and input leakage."
+    ],
+    "unknown": "Original LineView internals, narrative-object look policy and exact skip/exit bindings were not established; no claim of a literal control clone."
+  },
+  "behaviour": {
+    "artAssetsOrVisualBuildChangedByThisTask": false,
+    "objects": "Focused whole-page reading; visible page remains available under source overlap; repeat/open/closing/pause gates; restore exploration after fade.",
+    "supervisor": "Background left click and existing Continue/Space/Enter share a frame gate; incomplete page reveals before progression; line-start frame blocked.",
+    "computer": "World API rejects terminal boot/directory/review states; terminal route retains its previous callbacks."
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "graphics": "Direct3D11",
+    "playModePassed": 18,
+    "playModeFailed": 0,
+    "reports": [
+      "reports/regression.xml",
+      "reports/supervisor.xml"
+    ],
+    "build": "reports/windows-build.json",
+    "native": [
+      {
+        "report": "reports/native-supervisor-final.json",
+        "result": "PASSED"
+      },
+      {
+        "report": "reports/native-opening.json",
+        "result": "passed"
+      },
+      {
+        "report": "reports/native-terminal-final.json",
+        "result": "Passed"
+      },
+      {
+        "report": "reports/native-lighting-final.json",
+        "result": "PASSED"
+      }
+    ]
+  },
+  "sourceFiles": [
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+      "sha256": "51ecaecd5bc8697defd9d695c5999a87edeba4fc266fb19196f9d8b9ef94fb5e",
+      "testedCopyMatches": true
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+      "sha256": "7c8d5c584aa9eec6ac88c160ca64e6200ee6a48ae528bda9215233cebcbe6748",
+      "testedCopyMatches": true
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "db50d7e844f74b8ac0833433e84b0c8bda2d98cc2ca739405f79052d9d116cb1",
+      "testedCopyMatches": true
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/WallLightingPlayerProbe.cs",
+      "sha256": "341a81505bdd679bb65e45e9510375e98e42dc8887f43978a0daf7549867dcc9",
+      "testedCopyMatches": true
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Editor/AmberTerminalValidation.cs",
+      "sha256": "18288b58a551a220ccfa20c0568be7250669ae4e426ac5a9fdd3813330bdff6f",
+      "testedCopyMatches": true
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Tests/PlayMode/PropNarrationPlayModeTests.cs",
+      "sha256": "6d19d071cc1fe986b2275d40f486df4fd8163621baa68cf182bc5a28948c621b",
+      "testedCopyMatches": true
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Tests/PlayMode/WorldDialogueInputPlayModeTests.cs",
+      "sha256": "32779289c6aeb72591985d9bbec250461ec68c8d6aa2fedda75c52615b64e8e7",
+      "testedCopyMatches": true
+    }
+  ],
+  "package": {
+    "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-WorldInteraction-20261021-145259.zip",
+    "bytes": 188585102,
+    "sha256": "666d63820183b864a080f9340649ac724e19aa616dabbce3361fa3be759f858a",
+    "report": "reports/package.json",
+    "verifiedFileEntries": 159
+  },
+  "visualEvidence": [
+    "Artifacts/WorldDialogue/screenshots/poster-borderless-black-reading.png",
+    "Artifacts/WorldDialogue/screenshots/poster-following-camera-right-edge.png",
+    "Artifacts/WorldDialogue/screenshots/poster-initial-vertical-dock.png"
+  ],
+  "review": "Read-only code review found no bugs in the three world interaction scripts.",
+  "limits": [
+    "The inactive batch Editor does not physically capture the OS cursor. Logical ownership, visibility and state restoration were asserted; actual Locked is required only with application focus.",
+    "Native operations and render captures are automated; no manual player acceptance or hardware mouse-motion claim.",
+    "Core rule source was not changed by this task; no new .NET core test run.",
+    "No remote upload, commit or push was performed."
+  ],
+  "finalChecks": {
+    "diffCheck": "PASS",
+    "markdownLinksChecked": 23,
+    "brokenLinks": 0,
+    "zipSha256Verified": true,
+    "priorOwnTimestampPackageFilesRemoved": 4,
+    "cleanupReport": "reports/package-cleanup.json"
+  }
+}

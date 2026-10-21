@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 16.33,\r\n  \"summary\": {\r\n    \"total\": 7,\r\n    \"passed\": 7,\r\n    \"failed\": 0,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ContinuousCameraTurnsKeepReadingViewportBoundsStableEvenWhileHidden\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 8.0026582,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.InitiallyRightSidePropChoosesClearVerticalDockOnlyOnce\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 1.0696956,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.LongParagraphRemainsCompleteAcrossReadablePages\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 2.0669019,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.PinnedReadingHidesForNewObstructionAndRecoversSamePageAfterCameraMotion\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 1.3037862,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingOwnsInputPagesAndPauseWithoutChangingGameState\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 2.06804,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingPanelKeepsSmallRightMarginAndFollowsCameraYawAndPitch\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 1.1351294,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.RestoreDisableAndTargetRemovalReleaseNarrationAndCameraOwnership\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.5057529,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

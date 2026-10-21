@@ -1,0 +1,195 @@
+{
+  "Unity": "2022.3.23f1c1",
+  "ColorSpace": "Gamma",
+  "SourceZipSHA256": "2a25e6d9dca0fcf68b43b765967373355ca5a50d483baf0d33169e221e560619",
+  "EditorTests": {
+    "DialogueBitmapPaginationTests": {
+      "Total": 7,
+      "Passed": 7,
+      "Failed": 0,
+      "Skipped": 0,
+      "Inconclusive": 0
+    },
+    "TerminalHighlightTests": {
+      "Total": 3,
+      "Passed": 3,
+      "Failed": 0,
+      "Skipped": 0,
+      "Inconclusive": 0
+    },
+    "TerminalBitmapTextTests": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "PlayModeTests": {
+    "AmberTerminalPlayModeTests": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "LatestAtlasGpuStates": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "PoweredTerminalDisplayPlayModeTests": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "TerminalHtmlParityTests": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "UniqueEditorAndPlayModeTests": 37,
+  "FontCoverage": {
+    "width": 4096,
+    "height": 4096,
+    "usedHeight": 2671,
+    "codepoints": 1339,
+    "glyphs": 46865,
+    "addedGlyphs": 28070,
+    "pngBytes": 12407603,
+    "metricsBytes": 5027509,
+    "pngSha256": "f33e68842216a7e9b4a72b11f11c63a37c2ce132bf5a345677ed370b125ef18e",
+    "metricsSha256": "f8f22a73acb86daeeabb384175529fb5e0d8695400f0c06c66191440f58e59ac"
+  },
+  "OriginalGlyphPreservation": {
+    "preservedGlyphs": 18795,
+    "changedOriginalGlyphRgba": 0,
+    "changedOriginalGlyphMetrics": 0,
+    "packingCoordinatesMayChange": true,
+    "note": "Original glyphs are copied byte-for-byte from the vendor PNG, never re-rasterized.",
+    "roundTripPngAndJsonVerified": true
+  },
+  "MissingGlyphs": 0,
+  "RawReferenceComparison": {
+    "reference": "Calibration/HTML_Choice_Raw.png",
+    "actual": "captures/html-font-choices-selected-source.png",
+    "scope": "Identical static labels only; monitor, game content and responses intentionally differ",
+    "results": [
+      {
+        "name": "header",
+        "x": 9,
+        "y": 9,
+        "width": 782,
+        "height": 27,
+        "differentPixels": 421,
+        "totalPixels": 21114,
+        "maxChannelDifference": 1,
+        "meanAbsoluteChannelDifference": 0.009093492469451549
+      },
+      {
+        "name": "facility",
+        "x": 532,
+        "y": 51,
+        "width": 245,
+        "height": 20,
+        "differentPixels": 255,
+        "totalPixels": 4900,
+        "maxChannelDifference": 1,
+        "meanAbsoluteChannelDifference": 0.023537414965986395
+      },
+      {
+        "name": "disposition-title",
+        "x": 534,
+        "y": 173,
+        "width": 240,
+        "height": 19,
+        "differentPixels": 159,
+        "totalPixels": 4560,
+        "maxChannelDifference": 1,
+        "meanAbsoluteChannelDifference": 0.013523391812865496
+      },
+      {
+        "name": "disabled-commands",
+        "x": 530,
+        "y": 204,
+        "width": 248,
+        "height": 102,
+        "differentPixels": 775,
+        "totalPixels": 25296,
+        "maxChannelDifference": 1,
+        "meanAbsoluteChannelDifference": 0.013045540796963948
+      },
+      {
+        "name": "response-title",
+        "x": 534,
+        "y": 346,
+        "width": 240,
+        "height": 19,
+        "differentPixels": 157,
+        "totalPixels": 4560,
+        "maxChannelDifference": 1,
+        "meanAbsoluteChannelDifference": 0.01381578947368421
+      }
+    ]
+  },
+  "WindowsBuild": {
+    "warningMessages": [
+      "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds.",
+      "You are building a player, but you have uncompiled code changes. This means that any post-processing or importing code you may have changed will not affect this player build."
+    ],
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "bytes": 405897545,
+    "seconds": 7.5185176,
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/HTMLMatched/MiniGame.exe",
+    "unity": "2022.3.23f1c1"
+  },
+  "Player": {
+    "result": "Passed",
+    "detail": "Mapped UI clicks verified live nonuniform UI for at least two seconds after world exit, pause/resume and checkpoint restore, with hidden UI picking blocked; then completed six replies and final shutdown with source rendering stopped and one sound per power sequence.",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Standalone GPU native UI RenderTexture + actual CRT material; persistent source frames and UI pixels, asymmetric source-canvas markers through physical CRT shader, pause/restore, raycast isolation, power blocks and audio events",
+    "replies": 6,
+    "quota": 5,
+    "powerOnSounds": 1,
+    "powerOffSounds": 1,
+    "manualReopen": true,
+    "automaticShutdown": true,
+    "removedFunctionKeys": true,
+    "directoryPixels": true,
+    "reviewPixels": true,
+    "initiallyOff": true,
+    "middayLit": true,
+    "reopenedWithoutBoot": true,
+    "finallyDark": true,
+    "middayLiveUi": true,
+    "middaySourceUpdating": true,
+    "middayPixels": true,
+    "middayWorldPickingBlocked": true,
+    "liveAfterPause": true,
+    "liveAfterRestore": true,
+    "sourceStoppedAfterShutdown": true,
+    "orientationAfterExit": true,
+    "orientationAfterRestore": true,
+    "seconds": 36.001129150390625,
+    "middayPersistenceSeconds": 2.004124641418457
+  },
+  "Review": "No outstanding findings; bitmap pagination and atlas hot-import cache fixed",
+  "Limitations": [
+    "Pixel comparison covers identical static labels only; live monitor and campaign content have independent visuals.",
+    "Two build warnings are retained verbatim in WindowsBuild.warningMessages. The Player probe verifies the terminal interaction path, not every scene or effect."
+  ],
+  "EvidenceDirectory": "Artifacts/HTMLMatched",
+  "Preview": [
+    "directory-preview.png",
+    "highlight-preview.png"
+  ]
+}

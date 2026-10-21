@@ -1,0 +1,95 @@
+{
+  "success": true,
+  "command": "command eval_file",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "F:/AAMINIGAME/MINIGAME/Artifacts/SupervisorContent20261021/smoke-content.cs"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "command": null,
+      "result": {
+        "revision": "supervisor-v1:33174f1f81d31ad36675fa59649f2cff7d288da43a0acf4fd03f85d4003f64bb",
+        "days": [
+          {
+            "day": 1,
+            "lines": 16,
+            "morningCount": 14
+          },
+          {
+            "day": 2,
+            "lines": 12,
+            "morningCount": 10
+          },
+          {
+            "day": 3,
+            "lines": 11,
+            "morningCount": 9
+          },
+          {
+            "day": 4,
+            "lines": 7,
+            "morningCount": 0
+          }
+        ],
+        "nodes": [
+          "Supervisor_D1_MorningInspection",
+          "Supervisor_D1_Briefing",
+          "Supervisor_D2_MorningInspection",
+          "Supervisor_D2_Briefing",
+          "Supervisor_D3_MorningInspection",
+          "Supervisor_D3_Briefing",
+          "Supervisor_D4_Ending"
+        ],
+        "portraits": [
+          {
+            "id": "JD_01",
+            "width": 1024,
+            "height": 1536
+          },
+          {
+            "id": "JD_02",
+            "width": 1024,
+            "height": 1536
+          },
+          {
+            "id": "JD_03",
+            "width": 1024,
+            "height": 1536
+          },
+          {
+            "id": "JD_04",
+            "width": 1024,
+            "height": 1536
+          },
+          {
+            "id": "JD_05",
+            "width": 1024,
+            "height": 1536
+          },
+          {
+            "id": "JD_06",
+            "width": 1024,
+            "height": 1536
+          }
+        ]
+      },
+      "executionTimeMs": 795,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "0001-01-01T00:00:00"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

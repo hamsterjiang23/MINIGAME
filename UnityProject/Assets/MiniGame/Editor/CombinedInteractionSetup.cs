@@ -44,7 +44,7 @@ namespace MiniGame.UnityHost.Editor
             var pathCentre = eye + latchSide * .35f;
             var observationRotation = Quaternion.LookRotation(outward);
             var inside = Pose(root, "Door camera alignment", pathCentre - outward * .85f, observationRotation);
-            var outside = Pose(root, "Door camera outside", pathCentre + outward * 1.15f, observationRotation);
+            var outside = Pose(root, "Door camera outside", inside.position, observationRotation);
             var controller = camera.GetComponent<DoorViewCamera>();
             if (controller == null) controller = camera.gameObject.AddComponent<DoorViewCamera>();
             controller.Configure(door, player, inside, outside);

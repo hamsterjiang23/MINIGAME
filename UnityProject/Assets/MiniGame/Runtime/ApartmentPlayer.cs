@@ -6,6 +6,7 @@ using UnityEngine;
 namespace MiniGame.UnityHost
 {
     [RequireComponent(typeof(CharacterController))]
+    [DefaultExecutionOrder(-100)]
     public sealed class ApartmentPlayer : MonoBehaviour
     {
         [SerializeField] private Camera viewCamera;
@@ -17,6 +18,8 @@ namespace MiniGame.UnityHost
         [SerializeField] private Transform dreamWakePose;
         [SerializeField] private DreamSequenceDirector dreamDirector;
         private CharacterController controller;
+        private Vector3 standingEyeLocalPosition;
+        private bool standingEyeCaptured;
         private GameRuntime runtime;
         private MiniGameScreen screen;
         private WorldInteraction focused;
@@ -28,10 +31,15 @@ namespace MiniGame.UnityHost
         private float dreamFloorY;
         private WorldInteraction[] dreamTargets = new WorldInteraction[0];
         public Camera ViewCamera => viewCamera;
+        public Vector3 StandingEyeLocalPosition => standingEyeLocalPosition;
         public WorldInteraction FocusedInteraction => focused;
         public ReadableProp FocusedReadable => focusedReadable;
         public bool DreamTraversalActive => dreamTraversalActive;
-        public void Configure(Camera camera) => viewCamera = camera;
+        public void Configure(Camera camera)
+        {
+            viewCamera = camera;
+            RememberStandingEye();
+        }
         public void ConfigureDreamTraversal(Bounds bounds, Transform wakePose, DreamSequenceDirector director)
         {
             RestoreDreamTraversal(false);
@@ -39,9 +47,20 @@ namespace MiniGame.UnityHost
             dreamWakePose = wakePose; dreamDirector = director; dreamTraversalConfigured = true;
             if (runtime != null && isActiveAndEnabled) UpdateDreamTraversal(runtime.GetView());
         }
-        private void Awake() => controller = GetComponent<CharacterController>();
+        private void Awake()
+        {
+            controller = GetComponent<CharacterController>();
+            RememberStandingEye();
+        }
+        private void RememberStandingEye()
+        {
+            if (standingEyeCaptured || viewCamera == null) return;
+            standingEyeLocalPosition = viewCamera.transform.localPosition;
+            standingEyeCaptured = true;
+        }
         public void Bind(GameRuntime game, MiniGameScreen ui)
         {
+            RememberStandingEye();
             if (runtime != null) runtime.Changed -= OnRuntimeViewChanged;
             RestoreDreamTraversal(false);
             runtime = game; screen = ui;
@@ -56,6 +75,12 @@ namespace MiniGame.UnityHost
         private void Update()
         {
             if (runtime == null || viewCamera == null) return;
+            if (screen != null && screen.PresentationToolsBlockInput)
+            {
+                ClearFocus();
+                Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
+                return;
+            }
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) { ClearFocus(); return; }
             var current = runtime.GetView();
             UpdateDreamTraversal(current);
@@ -71,8 +96,8 @@ namespace MiniGame.UnityHost
             if (screen != null && screen.PropNarrationBlocksWorld)
             {
                 ClearFocus();
-                Cursor.visible = current.Paused;
-                Cursor.lockState = current.Paused ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 return;
             }
             if (runtime.GetView().Input == InputContext.DoorView)
@@ -88,11 +113,7 @@ namespace MiniGame.UnityHost
             Cursor.lockState = world ? CursorLockMode.Locked : CursorLockMode.None;
             if (!world) { ClearFocus(); return; }
 
-            // Mouse axes are pinned in ProjectSettings/InputManager.asset.
-            float yaw = Input.GetAxisRaw("Mouse X") * lookSensitivity;
-            pitch = Mathf.Clamp(pitch - Input.GetAxisRaw("Mouse Y") * lookSensitivity, -75f, 75f);
-            transform.Rotate(0f, yaw, 0f);
-            viewCamera.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+            UpdateLook();
             var motion = Vector3.zero;
             if (Input.GetKey(KeyCode.W)) motion += transform.forward;
             if (Input.GetKey(KeyCode.S)) motion -= transform.forward;
@@ -109,6 +130,15 @@ namespace MiniGame.UnityHost
             else if (Input.GetMouseButtonDown(0)) InteractSecondaryFocused();
         }
 
+        private void UpdateLook()
+        {
+            // Mouse axes are pinned in ProjectSettings/InputManager.asset.
+            float yaw = Input.GetAxisRaw("Mouse X") * lookSensitivity;
+            pitch = Mathf.Clamp(pitch - Input.GetAxisRaw("Mouse Y") * lookSensitivity, -75f, 75f);
+            transform.Rotate(0f, yaw, 0f);
+            viewCamera.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        }
+
         public void FacePoint(Vector3 worldPoint)
         {
             if (viewCamera == null || (dreamDirector != null && dreamDirector.OwnsCamera)) return;
@@ -123,6 +153,7 @@ namespace MiniGame.UnityHost
         public void RefreshInteractionFocus()
         {
             if (runtime == null || runtime.GetView().Input != InputContext.World
+                || (screen != null && screen.PresentationToolsBlockInput)
                 || (screen != null && screen.PropNarrationBlocksWorld)
                 || (dreamDirector != null && dreamDirector.OwnsCamera)) { ClearFocus(); return; }
             UpdateDreamTraversal(runtime.GetView());
@@ -131,7 +162,7 @@ namespace MiniGame.UnityHost
 
         public bool InteractFocused()
         {
-            if (screen != null && screen.PropNarrationBlocksWorld) return false;
+            if (screen != null && (screen.PresentationToolsBlockInput || screen.PropNarrationBlocksWorld)) return false;
             var doorView = viewCamera.GetComponent<DoorViewCamera>();
             if (runtime.GetView().Input == InputContext.DoorView)
                 return CompleteWorldInteraction(doorView != null && doorView.TryReturn());
@@ -157,12 +188,17 @@ namespace MiniGame.UnityHost
 
         public bool InteractSecondaryFocused()
         {
+            if (screen != null && screen.PresentationToolsBlockInput) return false;
             if (screen != null && screen.PropNarrationBlocksWorld) return false;
             RefreshInteractionFocus();
-            if (focusedReadable != null && CanRead(runtime.GetView()))
+            if (focusedReadable != null && CanRead(runtime.GetView()) && focusedReadable.IsReadableOnDay(runtime.GetView().Game.Day))
             {
                 bool shown = screen != null && screen.ShowPropNarration(focusedReadable, viewCamera);
-                if (shown) ClearFocus();
+                if (shown)
+                {
+                    ClearFocus();
+                    Cursor.visible = true; Cursor.lockState = CursorLockMode.None;
+                }
                 return CompleteWorldInteraction(shown);
             }
             return focused != null && focused.Target == InteractionTarget.Computer && InteractFocused();
@@ -187,7 +223,7 @@ namespace MiniGame.UnityHost
                     ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore))
             {
                 readable = hit.collider.GetComponentInParent<ReadableProp>();
-                if (readable != null && (hit.distance > readable.InteractionDistance || !CanRead(runtime.GetView()))) readable = null;
+                if (readable != null && (hit.distance > readable.InteractionDistance || !CanRead(view) || !readable.IsReadableOnDay(view.Game.Day))) readable = null;
                 if (readable == null) next = hit.collider.GetComponentInParent<WorldInteraction>();
                 if (next != null && hit.distance > next.InteractionDistance) next = null;
             }
@@ -203,19 +239,22 @@ namespace MiniGame.UnityHost
             }
             if (focusedReadable != null)
             {
-                bool canRead = CanRead(view);
+                bool canRead = CanRead(view) && focusedReadable.IsReadableOnDay(view.Game.Day);
                 focusedReadable.Highlight(canRead);
-                if (screen != null) screen.SetWorldFocus(canRead ? "查看海报" : string.Empty, canRead, "鼠标左键");
+                if (screen != null) screen.SetWorldFocus(canRead ? focusedReadable.InteractionLabel : string.Empty, canRead, "鼠标左键");
                 return;
             }
             bool allowed = focused != null && view.AllowedInteractions.Contains(focused.Target);
             var hingedDoor = focused != null ? focused.GetComponentInParent<HingedDoor>() : null;
             if (focused != null && focused.Target == InteractionTarget.Door)
-                allowed = !BedtimeGuidance.IsSleepOnly(view) && (view.Game.Phase == GamePhase.MorningInspection || hingedDoor != null && hingedDoor.EnableToggle);
+                allowed = allowed && !BedtimeGuidance.IsSleepOnly(view)
+                    && (view.Game.Phase == GamePhase.MorningInspection || hingedDoor != null && hingedDoor.EnableToggle);
             if (focused != null) focused.Highlight(allowed);
             bool bedtime = BedtimeGuidance.IsSleepOnly(view);
+            bool doorLocked = focused != null && focused.Target == InteractionTarget.Door
+                && runtime.IsDoorLockedAfterSupervisor && !view.RoomDoorOpen;
             if (screen != null) screen.SetWorldFocus(focused == null || (bedtime && !allowed) ? string.Empty
-                : bedtime ? "躺下休息" : hingedDoor != null ? hingedDoor.IsOpen ? "关门" : "开门" : focused.Label, allowed,
+                : bedtime ? "躺下休息" : doorLocked ? "门已锁" : hingedDoor != null ? hingedDoor.IsOpen ? "关门" : "开门" : focused.Label, allowed,
                 focused != null && focused.Target == InteractionTarget.Computer ? "E / 鼠标左键" : "E");
         }
 

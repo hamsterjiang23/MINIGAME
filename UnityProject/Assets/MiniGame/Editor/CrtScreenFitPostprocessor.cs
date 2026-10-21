@@ -12,7 +12,7 @@ namespace MiniGame.UnityHost.Editor
     {
         internal const string ModelPath = "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx";
         internal const string DataPath = "Assets/MiniGame/Resources/MiniGame/CrtScreenFit.json";
-        public override uint GetVersion() => 2;
+        public override uint GetVersion() => 3;
 
         private void OnPreprocessModel()
         {
@@ -90,7 +90,8 @@ namespace MiniGame.UnityHost.Editor
             {
                 vertices[i] = local.MultiplyPoint3x4(new Vector3(fit.vertices[i * 3], fit.vertices[i * 3 + 1], fit.vertices[i * 3 + 2]));
                 normals[i] = normalMap.MultiplyVector(new Vector3(fit.normals[i * 3], fit.normals[i * 3 + 1], fit.normals[i * 3 + 2])).normalized;
-                uv[i] = new Vector2(fit.uv[i * 2], fit.uv[i * 2 + 1]);
+                // The calibrated surface's U axis runs right-to-left from the seated camera.
+                uv[i] = new Vector2(1 - fit.uv[i * 2], fit.uv[i * 2 + 1]);
             }
             var triangles = (int[])fit.triangles.Clone();
             for (int i = 0; i < triangles.Length; i += 3)

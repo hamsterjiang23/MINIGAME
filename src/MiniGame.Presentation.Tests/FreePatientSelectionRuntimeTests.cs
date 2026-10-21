@@ -11,15 +11,17 @@ namespace MiniGame.Presentation.Tests
 {
     public sealed class FreePatientSelectionRuntimeTests
     {
-        [TestCase(EndingType.TakenAway)]
-        [TestCase(EndingType.LockedInRoom)]
-        [TestCase(EndingType.PriestAttack)]
-        public void ImportedCampaignAllowsDifferentDailyOrdersThroughAllEndingsAndRestores(EndingType expected)
+        [TestCase(EndingType.TakenAway, 3)]
+        [TestCase(EndingType.LockedInRoom, 3)]
+        [TestCase(EndingType.PriestAttack, 3)]
+        [TestCase(EndingType.PriestAttack, 1)]
+        public void ImportedCampaignAllowsDifferentDailyOrdersThroughAllEndingsAndRestores(EndingType expected, int releaseDay)
         {
             var package = Campaign();
             var runtime = new GameRuntime(package.Rules, package.Content, true);
             var selected = new List<string>();
-            var checkedVariants = new HashSet<string>();
+            var dayTwoDiplomatLines = new HashSet<string>();
+            Assert.That(package.Content.TextVariants, Is.Empty, "The revised source no longer uses the old historical wording.");
             var orders = new[]
             {
                 new[] { "tutorial" },
@@ -37,12 +39,10 @@ namespace MiniGame.Presentation.Tests
                     foreach (var line in package.Content.GetSegment(view.Game.CurrentNodeId).Lines)
                     {
                         var resolved = runtime.ResolveDialogueText(line.SourceNodeId, line.Text);
-                        if (view.Game.Day == 2 && view.Game.CurrentPatientId == "diplomat"
-                            && package.Content.TextVariants.TryGetValue(line.SourceNodeId, out var variant)
-                            && variant.Predicate == "other_patient_exited_yesterday")
+                        Assert.That(resolved, Is.EqualTo(line.Text), line.SourceNodeId);
+                        if (view.Game.Day == 2 && view.Game.CurrentPatientId == "diplomat")
                         {
-                            checkedVariants.Add(line.SourceNodeId);
-                            Assert.That(resolved, Is.EqualTo(expected == EndingType.TakenAway ? line.Text : variant.FallbackText));
+                            dayTwoDiplomatLines.Add(line.SourceNodeId);
                         }
                         runtime.RecordDialogueLine(line.Speaker, resolved, line.SourceNodeId, line.PortraitId, line.IsNarration);
                         runtime.CompleteDialogueLine(line.SourceNodeId);
@@ -85,14 +85,16 @@ namespace MiniGame.Presentation.Tests
                     var disposition = view.Game.Day == 0 ? Disposition.Purify : Disposition.Treat;
                     if (view.Game.Day > 0 && expected == EndingType.TakenAway)
                         disposition = RuntimeScenario.NormalPolicy(view.Game.Day, view.Game.CurrentPatientId!);
-                    if (expected == EndingType.PriestAttack && view.Game.Day == 3 && view.Game.CurrentPatientId == "priest")
+                    if (expected == EndingType.PriestAttack && view.Game.Day == releaseDay && view.Game.CurrentPatientId == "priest")
                         disposition = Disposition.Release;
                     RuntimeScenario.Accept(runtime.SubmitDisposition(view.Game.CurrentEncounterId!, disposition));
                 }
                 else if (view.TerminalOpen)
                 {
                     var meeting = package.Rules.Days.Single(day => day.Day == view.Game.Day).Meetings.Single(item => item.PatientId == view.Game.CurrentPatientId);
-                    var round = meeting.NormalRounds.Single(item => item.NodeId == view.Game.CurrentNodeId);
+                    var round = view.Game.EncounterStage == EncounterStage.SpecialDialogue
+                        ? meeting.SpecialRound!
+                        : meeting.NormalRounds.Single(item => item.NodeId == view.Game.CurrentNodeId);
                     var response = round.Responses.OrderByDescending(item => item.TrustDelta).First();
                     RuntimeScenario.Accept(runtime.SelectResponse(view.Game.CurrentEncounterId!, view.Game.CurrentNodeId!, response.Id));
                 }
@@ -100,14 +102,16 @@ namespace MiniGame.Presentation.Tests
                 else RuntimeScenario.Accept(runtime.TryInteract(view.Game.Phase == GamePhase.Apartment ? InteractionTarget.Computer : InteractionTarget.Bed));
             }
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(expected));
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(4));
-            Assert.That(checkedVariants, Is.Not.Empty);
+            var earlyAttack = expected == EndingType.PriestAttack && releaseDay == 1;
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(earlyAttack ? 2 : 4));
+            Assert.That(dayTwoDiplomatLines.Count, earlyAttack ? Is.Zero : Is.GreaterThan(0));
+            if (earlyAttack) Assert.That(selected.Count, Is.EqualTo(6));
             Assert.That(selected.Where(id => id.StartsWith("1:", StringComparison.Ordinal)), Is.EqualTo(orders[1].Select(id => "1:" + id)));
             Assert.That(selected.Distinct().Count(), Is.EqualTo(selected.Count));
             var state = Core(runtime)["State"]!;
             Assert.That(state["Encounters"]!.Count(), Is.EqualTo(selected.Count));
             Assert.That(state["Encounters"]!.All(encounter => encounter["Stage"]!.Value<string>() == "Completed"), Is.True);
-            Assert.That(state["Patients"]!.Single(patient => patient["Id"]!.Value<string>() == "tutorial")["Trust"]!.Value<int>(), Is.EqualTo(-1));
+            Assert.That(state["Patients"]!.Single(patient => patient["Id"]!.Value<string>() == "tutorial")["Trust"]!.Value<int>(), Is.EqualTo(0));
             Assert.That(GameRuntime.Restore(runtime.Save(), package.Rules, package.Content).Save(), Is.EqualTo(runtime.Save()));
         }
 

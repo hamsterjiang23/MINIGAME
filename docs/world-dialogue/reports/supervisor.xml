@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="10.0432773">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="10.043277" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1216" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="10.034655" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="65528" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1217" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="10.003494" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1218" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="9.970150" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1219" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="9.936777" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1213" name="WorldDialogueInputPlayModeTests" fullname="MiniGame.UnityHost.Tests.WorldDialogueInputPlayModeTests" classname="MiniGame.UnityHost.Tests.WorldDialogueInputPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:57Z" duration="9.902594" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1214" name="SupervisorPointerKeyboardAndBackgroundShareRevealAndAdvanceGuard" fullname="MiniGame.UnityHost.Tests.WorldDialogueInputPlayModeTests.SupervisorPointerKeyboardAndBackgroundShareRevealAndAdvanceGuard" methodname="SupervisorPointerKeyboardAndBackgroundShareRevealAndAdvanceGuard" classname="MiniGame.UnityHost.Tests.WorldDialogueInputPlayModeTests" runstate="Runnable" seed="848980524" result="Passed" start-time="2026-10-21 06:29:47Z" end-time="2026-10-21 06:29:49Z" duration="2.348162" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1215" name="WorldContinueFinishesTheDoorConversationAndCannotOperateComputerDialogue" fullname="MiniGame.UnityHost.Tests.WorldDialogueInputPlayModeTests.WorldContinueFinishesTheDoorConversationAndCannotOperateComputerDialogue" methodname="WorldContinueFinishesTheDoorConversationAndCannotOperateComputerDialogue" classname="MiniGame.UnityHost.Tests.WorldDialogueInputPlayModeTests" runstate="Runnable" seed="936378323" result="Passed" start-time="2026-10-21 06:29:49Z" end-time="2026-10-21 06:29:57Z" duration="7.518071" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

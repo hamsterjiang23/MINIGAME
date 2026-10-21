@@ -65,10 +65,7 @@ namespace MiniGame.UnityHost
                     row.Body.text = (playing ? currentPage : entry.Text).Replace("\r\n", "\n").Replace('\r', '\n');
                     row.Body.color = index == entries.Count - 1 ? TerminalView.Bright : TerminalView.Ink;
                     row.Speaker.text = entry.IsPlayer ? "值班员" : entry.IsNarration ? "终端" : "对象";
-                    var settings = row.Body.GetGenerationSettings(new Vector2(415, 0));
-                    settings.verticalOverflow = VerticalWrapMode.Overflow;
-                    float height = Mathf.Max(24, row.Body.cachedTextGeneratorForLayout.GetPreferredHeight(row.Body.text, settings)
-                        / row.Body.pixelsPerUnit + 6);
+                    float height = Mathf.Max(24, TerminalTextMetrics.MeasureHeight(row.Body.text, 14, 415, 20, true) + 6);
                     TerminalIndustrialSkin.Position(row.Root, 0, y, 475, height);
                     TerminalIndustrialSkin.Position(row.Body.rectTransform, 56, 0, 415, height);
                     row.Root.gameObject.SetActive(true);

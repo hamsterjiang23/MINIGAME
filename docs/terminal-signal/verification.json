@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-20",
+  "status": "implemented-and-verified",
+  "evidenceRoot": "Artifacts/TerminalSignal",
+  "sourceProject": "UnityProject",
+  "validationProject": "Artifacts/TerminalSignal/ValidationProject",
+  "sourceHashReport": "Artifacts/TerminalSignal/source-hashes.json",
+  "all13SourceFilesMatchValidationCopy": true,
+  "features": [
+    "Norm transparent logo intermittent row tear and RGB separation",
+    "Patient, Day0 supervisor and self-review monitor scanlines, rolling band and glitches",
+    "F6 runtime parameter panel with independent Logo/Monitor controls",
+    "Freeze, reset selected group and save both groups",
+    "Editor menu MiniGame/画面/标志与监控扰动"
+  ],
+  "controls": {
+    "openClose": "F6",
+    "close": "Escape or Close button",
+    "runtimeSettings": "Application.persistentDataPath/terminal-signal-settings.json",
+    "defaults": "UnityProject/Assets/MiniGame/Resources/MiniGame/TerminalSignalDefault.asset"
+  },
+  "tests": [
+    {
+      "report": "Artifacts/TerminalSignal/signal-tests.json",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "tests": [
+        "MiniGame.UnityHost.Tests.TerminalSignalIntegrationTests.PanelSlidersEditIndependentGroupsAndBlockOpeningInput",
+        "MiniGame.UnityHost.Tests.TerminalSignalIntegrationTests.PauseAndPreviewFreezeStopTheClockWhileLiveEditsStillApply",
+        "MiniGame.UnityHost.Tests.TerminalSignalShaderTests.LogoBurstPreservesTransparencyAndRendersColoredFringes",
+        "MiniGame.UnityHost.Tests.TerminalSignalShaderTests.MonitorScanlineStrengthChangesRenderedRows",
+        "MiniGame.UnityHost.Tests.TerminalSignalShaderTests.ZeroIntensityMatchesDefaultUiAndFixedClockIsRepeatable"
+      ]
+    },
+    {
+      "report": "Artifacts/TerminalSignal/opening-tests.json",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "tests": [
+        "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne",
+        "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.PausedPullbackFreezesAndUnfinishedOpeningRestoresAtItsWaitingStart"
+      ]
+    },
+    {
+      "report": "Artifacts/TerminalSignal/monitor-tests.json",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "tests": [
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.DestroyReleasesStageTexturesMeshesAndMaterialsWithoutChangingHostRendering",
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.ExternalClockLimitsFramesAndPauseAndDisableSuspendPresentation",
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.MissingPortraitUnknownPatientAndDisabledProfileNeverExposeStaleFootage",
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.SaturationControlChangesWarmGrayTintWithoutChangingPatient",
+        "MiniGame.UnityHost.Tests.PatientSurveillancePlayModeTests.SwitchingPatientsUsesDistinctOccupiedRoomsAndRendersRealPixels"
+      ]
+    },
+    {
+      "report": "Artifacts/TerminalSignal/pause-tests.json",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "tests": [
+        "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.DisabledActionsStaySilentAndPointerSubmitPairsInvokeEachActionOnce",
+        "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.FullscreenModalInterceptsClicksAndFadesWhileTimeIsStopped",
+        "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.KeyboardFocusSkipsDisabledRowsSurvivesUpdatesAndRestoresPreviousSelection",
+        "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.PerspectiveHitAreasFollowTheVisibleRowsAcrossTheirWidth",
+        "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.ResumeSubmitCannotAlsoChooseAResponseOrAdvanceDialogueInTheSameFrame"
+      ]
+    }
+  ],
+  "totalPassed": 17,
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/TerminalSignal/MiniGame.exe",
+    "errors": 0,
+    "warnings": 10,
+    "seconds": 15.675529099999999,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/Artifacts/TerminalSignal/ValidationProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "playerStartup": {
+    "pid": 79244,
+    "startupReady": true,
+    "startupErrorCount": 0,
+    "responding": true,
+    "log": "Artifacts/TerminalSignal/player.log",
+    "scope": "Windows Player startup smoke; GPU and panel behavior validated separately in PlayMode"
+  },
+  "panelRaycast": {
+    "name": "TerminalSignalTuningPanel",
+    "canvasOrder": 110,
+    "inPanel": true
+  },
+  "visualEvidence": [
+    "Artifacts/TerminalSignal/Visuals/norm-off.png",
+    "Artifacts/TerminalSignal/Visuals/norm-on.png",
+    "Artifacts/TerminalSignal/Visuals/norm-panel.png",
+    "Artifacts/TerminalSignal/Visuals/monitor-off.png",
+    "Artifacts/TerminalSignal/Visuals/monitor-on.png",
+    "Artifacts/TerminalSignal/Visuals/monitor-panel.png"
+  ],
+  "visualReview": "Agent inspected in-engine GPU captures: logo silhouette and transparent margins retained; row tearing and RGB fringes visible; monitor scanlines remain local; both parameter tabs readable.",
+  "limits": [
+    "Windows Player was startup-smoked; detailed GPU/input tests ran in the isolated Unity PlayMode project.",
+    "Human visual acceptance and target-hardware performance are not measured.",
+    "Existing patient-feed grading and fixed scanlines remain beneath the additional effect layer."
+  ],
+  "review": {
+    "fixed": [
+      "Correct premultiplied UI alpha",
+      "Avoid caching panel input block in dialogue button availability",
+      "Independent panel canvas, raycaster and material queue"
+    ],
+    "remainingFindings": 0
+  },
+  "whitespaceCheck": "git diff --check for touched tracked code and git diff --no-index --check for new files passed"
+}

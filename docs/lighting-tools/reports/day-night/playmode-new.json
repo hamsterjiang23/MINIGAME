@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 3.51,\r\n  \"summary\": {\r\n    \"total\": 3,\r\n    \"passed\": 3,\r\n    \"failed\": 0,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.DayNightLightingPlayModeTests.GameControlsAndExternalSceneChangesShareIndependentNightValues\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 1.8623828,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.DayNightLightingPlayModeTests.GamePanelCanExportAndImportARealShareFileWithoutChangingTheGame\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.4874365,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.DayNightLightingPlayModeTests.GamePanelOwnsInputAndRestoresPauseAndAutomaticLighting\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.9904924,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

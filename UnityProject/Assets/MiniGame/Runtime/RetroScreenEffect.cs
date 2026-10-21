@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MiniGame.UnityHost
 {
-    [ExecuteAlways, RequireComponent(typeof(Camera)), DisallowMultipleComponent]
+    [ExecuteAlways, ImageEffectAllowedInSceneView, RequireComponent(typeof(Camera)), DisallowMultipleComponent]
     [AddComponentMenu("MiniGame/画面/复古画面效果")]
     public sealed class RetroScreenEffect : MonoBehaviour
     {
@@ -50,6 +50,8 @@ namespace MiniGame.UnityHost
             material.SetFloat("_PerceptualQuantization", profile.PerceptualQuantization ? 1 : 0);
             material.SetFloat("_QuantizationStrength", profile.QuantizationStrength);
             material.SetFloat("_DitherStrength", profile.DitherStrength);
+            material.SetFloat("_FilmGrainStrength", profile.FilmGrainStrength);
+            material.SetFloat("_FilmGrainFrame", Time.frameCount % 4096);
             material.SetFloat("_UseVirtualResolution", profile.UseVirtualResolution ? 1 : 0);
             material.SetFloat("_VirtualHeight", profile.VirtualHeight);
             Graphics.Blit(source, destination, material);

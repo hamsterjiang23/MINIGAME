@@ -32,6 +32,8 @@ namespace MiniGame.UnityHost.Editor
             if (scene.path != MainRoomGameplayBuilder.ScenePath) throw new InvalidOperationException("请先打开 MainRoomCombined 场景。");
             var room = scene.GetRootGameObjects().Single(item => item.name == "MainRoomCombined");
             var surfaces = room.GetComponentsInChildren<MeshRenderer>(true);
+            if (surfaces.Any(surface => surface.sharedMaterials.Any(material => material != null && material.name == "MainRoom_30_B")))
+                WallSurfaceRepairSetup.Apply(scene, true);
             var floor = surfaces.Single(item => item.name == "B_Floor");
             var lamp = surfaces.Single(item => item.name.Contains("Attic_Light"));
             var lights = scene.GetRootGameObjects().SelectMany(item => item.GetComponentsInChildren<Light>(true)).ToArray();

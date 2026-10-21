@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e7c270605d801499af9ef1c38e1454, type: 3}
+  m_Name: Profile
+  m_EditorClassIdentifier: 
+  lampOffset: {x: 0, y: -0.04, z: 0}
+  lampEulerAngles: {x: 55, y: 10, z: 5}
+  lampColor: {r: 1, g: 0.84, b: 0.62, a: 1}
+  lampIntensity: 3.35
+  lampRange: 7
+  outerAngle: 125
+  innerAngle: 70
+  shadowStrength: 1
+  shadowBias: 0.015
+  shadowNormalBias: 0.08
+  bulbEmission: 1.4
+  ambientColor: {r: 0.22, g: 0.205, b: 0.155, a: 1}
+  reflectionIntensity: 0.15
+  windowColor: {r: 0.62, g: 0.72, b: 0.8, a: 1}
+  windowIntensity: 0.18
+  windowRange: 4.5
+  monitorIntensity: 0.12
+  lightingBandsEnabled: 0
+  lightingBands: 8
+  lightingBandsStrength: 0.4
+  lightingDither: 0
+  floorGain: 1.65
+  floorContrast: 1.08
+  floorSmoothness: 0.13
+  rugVisible: 1
+  rugOffset: {x: 1.09, y: 0.008, z: -0.23}
+  rugSize: {x: 3.4, y: 2}
+  rugYaw: 0
+  rugTint: {r: 0.82, g: 0.74, b: 0.6, a: 1}
+  SceneLights:
+  - HierarchyPath: Fixture%20root#0/Rim#0
+    dayEnabled: 1
+    localPosition: {x: 4, y: 5, z: 6}
+    localEuler: {x: 20, y: 30, z: 40}
+    color: {r: 0.6, g: 0.4, b: 0.2, a: 1}
+    intensity: 2.25
+    range: 6.75
+    type: 0
+    spotAngle: 80
+    innerSpotAngle: 35
+    shadows: 2
+    shadowBias: 0.07
+    shadowNormalBias: 0.25

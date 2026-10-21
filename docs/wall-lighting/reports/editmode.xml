@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.6958404">
+  <test-suite type="TestSuite" id="1091" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="68" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.695840" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1177" name="MiniGame.UnityHost.EditorTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.EditorTests.dll" runstate="Runnable" testcasecount="68" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.686732" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="37208" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1178" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="68" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.685865" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1179" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="68" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.681692" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1180" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="68" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.678674" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1143" name="RoomLightingShaderTests" fullname="MiniGame.UnityHost.Tests.RoomLightingShaderTests" classname="MiniGame.UnityHost.Tests.RoomLightingShaderTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.049457" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1147" name="DisablingFullscreenQuantizationPreservesFineColoursAndHdr" fullname="MiniGame.UnityHost.Tests.RoomLightingShaderTests.DisablingFullscreenQuantizationPreservesFineColoursAndHdr" methodname="DisablingFullscreenQuantizationPreservesFineColoursAndHdr" classname="MiniGame.UnityHost.Tests.RoomLightingShaderTests" runstate="Runnable" seed="1179157323" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.018290" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1145" name="LegacyRetroProfileKeepsQuantizationUntilExplicitlyDisabled" fullname="MiniGame.UnityHost.Tests.RoomLightingShaderTests.LegacyRetroProfileKeepsQuantizationUntilExplicitlyDisabled" methodname="LegacyRetroProfileKeepsQuantizationUntilExplicitlyDisabled" classname="MiniGame.UnityHost.Tests.RoomLightingShaderTests" runstate="Runnable" seed="1685122008" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.000592" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1144" name="RoomShaderCompilesAndDefaultsToUnmodifiedStandardLighting" fullname="MiniGame.UnityHost.Tests.RoomLightingShaderTests.RoomShaderCompilesAndDefaultsToUnmodifiedStandardLighting" methodname="RoomShaderCompilesAndDefaultsToUnmodifiedStandardLighting" classname="MiniGame.UnityHost.Tests.RoomLightingShaderTests" runstate="Runnable" seed="231181615" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.013723" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1146" name="TwoLightingBandsStillPreserveContinuousAlbedoDetail" fullname="MiniGame.UnityHost.Tests.RoomLightingShaderTests.TwoLightingBandsStillPreserveContinuousAlbedoDetail" methodname="TwoLightingBandsStillPreserveContinuousAlbedoDetail" classname="MiniGame.UnityHost.Tests.RoomLightingShaderTests" runstate="Runnable" seed="2068309354" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.006086" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1173" name="WallSurfaceRepairTests" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.624368" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1176" name="InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects" methodname="InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="1000160449" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.005174" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1174" name="PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials" methodname="PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="1738194819" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.431066" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1175" name="RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets" methodname="RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="58360017" result="Passed" start-time="2026-10-20 17:48:57Z" end-time="2026-10-20 17:48:57Z" duration="0.183222" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

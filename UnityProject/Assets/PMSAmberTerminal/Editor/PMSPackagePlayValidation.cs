@@ -46,7 +46,7 @@ namespace PMSAmber.Editor
                 else if(stage==2&&now>deadline)
                 {
                     Capture("Unity_Review");
-                    CharacterInfo glyph;if(!view.Typeface.GetCharacterInfo('对',out glyph,14)||glyph.advance<=0)throw new Exception("Chinese glyph did not load.");
+                    if(!view.Glyphs.Covers('对',14))throw new Exception("Chinese glyph did not load.");
                     view.HandleKey("Enter");view.HandleKey("Enter");view.HandleKey("1");view.HandleKey("Enter");
                     if(view.Phase!=PMSTerminalView.PowerPhase.Shutdown)throw new Exception("Demo disposition did not request shutdown.");
                     shutdownAt=now;SessionState.SetInt(Flag+".Stage",3);deadline=now+15;

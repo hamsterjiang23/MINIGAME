@@ -132,6 +132,46 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
+        public IEnumerator ScannerOnlyPlaysForNewMorningInstrumentCuesAcrossDays()
+        {
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            Assert.That(played, Has.No.Member(MiniGameSound.Scan));
+            Accept(runtime.TryInteract(InteractionTarget.Door));
+            Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.MorningInspection));
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1));
+
+            runtime.SetPaused(true);
+            runtime.SetPaused(false);
+            runtime.SetPaused(false);
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
+                "Pause and repeated view delivery must not retrigger the current scan.");
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            director.Bind(runtime);
+            runtime.SetPaused(true); runtime.SetPaused(false);
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
+                "Loading an in-flight morning scan must not replay its sound.");
+
+            EnterTerminal();
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
+                "Entering a patient review does not use the morning instrument.");
+            Accept(runtime.Inspect(InspectionKind.Eyes));
+            Accept(runtime.CloseInspection());
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
+                "Reading a patient inspection is not a new instrument scan.");
+            Step();
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
+                "Confirming an answer must not use the scan sound.");
+
+            for (int guard = 0; !(runtime.GetView().Game.Day == 2
+                && runtime.GetView().Cue?.Kind == PresentationKind.MorningInspection) && guard < 700; guard++) Step();
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.MorningInspection));
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(2),
+                "The next day's instrument scan plays once after every review in the previous day stayed silent.");
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator CheckpointRestoresLoopsWithoutReplayingRecordedLinesScanOrLamp()
         {
             EnterTerminal();

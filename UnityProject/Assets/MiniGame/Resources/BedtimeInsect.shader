@@ -1,4 +1,4 @@
-Shader "MiniGame/Bedtime/WingedInsects"
+Shader "MiniGame/Bedtime/GlowParticles"
 {
     Properties { _Strength ("Visibility", Range(0,1)) = 0 }
     SubShader
@@ -6,7 +6,8 @@ Shader "MiniGame/Bedtime/WingedInsects"
         Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
         Cull Off
         ZWrite Off
-        Blend SrcAlpha OneMinusSrcAlpha
+        ZTest LEqual
+        Blend One One
         Pass
         {
             CGPROGRAM
@@ -27,13 +28,13 @@ Shader "MiniGame/Bedtime/WingedInsects"
             }
             fixed4 frag(v2f input) : SV_Target
             {
-                float distance = length(input.uv);
-                float silhouette = 1 - smoothstep(.74, 1, distance);
-                // Neutral edge reflection on thin wings; ordinary alpha, never an additive glow sprite.
-                float edge = smoothstep(.50, .78, distance) * (1 - smoothstep(.78, .98, distance));
-                float isWing = step(.3, input.color.r);
-                fixed3 color = input.color.rgb + edge * .12 * isWing;
-                return fixed4(color, silhouette * input.color.a * _Strength);
+                float radiusSquared = dot(input.uv, input.uv);
+                float edge = 1 - smoothstep(.72, 1, sqrt(radiusSquared));
+                float core = exp2(-110 * radiusSquared);
+                float halo = .14 * exp2(-5.5 * radiusSquared);
+                float glow = (core + halo) * edge * input.color.a * saturate(_Strength);
+                // A fine centre with a faint halo; additive RGB leaves the captured destination alpha unchanged.
+                return fixed4(input.color.rgb * glow, 0);
             }
             ENDCG
         }

@@ -1,8 +1,8 @@
 # 监管者开场与Day0
 
-正式游戏启动后直接显示监管者监控近景。点击屏幕后，镜头用2.2秒连续拉远，同一画面缩回终端左侧监控窗口；停稳后开放Day0教学操作。Day0使用提供的监管者参考图，Day1起继续使用各人物的动态监控室。`[verified: MiniGameBootstrap.StartTerminalDemo；PresentationEffects.DayZeroOpening；TerminalView.Day0SupervisorFeed]`
+正式游戏启动后，在开场终端中央显示用户提供的透明NORM标志，保留原比例与透明像素，不添加底板。点击屏幕后，镜头用2.2秒连续拉远，同一标志缩回终端左侧监控窗口；停稳后恢复监管者画面并开放Day0教学操作。Day1起继续使用各人物的动态监控室。原图与SHA256见[来源记录](../../Art/Branding/norm-logo-source.json)，最新预览与验证见[NORM开场验证](../norm-opening/verification.json)。`[verified: TerminalView.SetOpeningLogo/FitOpeningLogo；MiniGameScreen.BeginDayZeroOpening/EndDayZeroOpening；PresentationEffects.DayZeroOpening]`
 
-教学保留五段介绍、唯一净化处置和两段反应。每个时点仅“继续”或“净化”一个按钮可以操作，底部命令条只显示提示；开场点击不推进教学。F2/F3保持移除。`[verified: DayZeroOpeningPlayModeTests.SupervisorPullsBackIntoTheSameMonitorThenOneButtonTutorialAndOneSleepStartDayOne；TerminalView.Render]`
+教学保留五段介绍、唯一净化处置和两段反应。每个时点仅“继续”或“净化”一个按钮可以操作，底部命令条只显示提示；开场点击不推进教学。F2/F3保持移除。`[verified: DayZeroOpeningPlayModeTests.NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne；TerminalView.Render]`
 
 反应读完后自动关机并返回房间，聚光灯照床。此时关闭家具、电脑和海报碰撞，保留地面、墙体、玩家和实体门；床保留可交互的触发器。睡一次，闭眼淡出后进入Day1晨检；家具碰撞恢复前先回到安全起床点，同时保留玩家朝向、俯仰角和视野。Day0没有墙面梦境，也不需要第二次睡眠。`[verified: GameRuntime.BeginNightDream/TryInteract/CompleteCue；BedtimeCollisionGate.Apply；ApartmentPlayer.RestoreDayZeroWakePose/PlaceAtWakePose]`
 

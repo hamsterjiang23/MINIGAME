@@ -29,7 +29,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host, Is.Not.Null);
             host.Player.enabled = false;
             host.Screen.DialogueCharactersPerSecond = 0;
-            yield return Until(() => host.Screen.DayZeroOpeningWaiting, "fresh supervisor monitor");
+            yield return Until(() => host.Screen.DayZeroOpeningWaiting, "fresh NORM opening logo");
         }
 
         [UnityTearDown]
@@ -52,12 +52,33 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator SupervisorPullsBackIntoTheSameMonitorThenOneButtonTutorialAndOneSleepStartDayOne()
+        public IEnumerator NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne()
         {
             var display = host.Screen.TerminalDisplay;
             var supervisor = host.Screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "Day0SupervisorFeed");
             var texture = supervisor.texture;
+            Assert.That(texture, Is.SameAs(Resources.Load<Texture2D>("MiniGame/NormLogo")));
             Assert.That(texture, Is.Not.Null);
+            Assert.That(supervisor.color, Is.EqualTo(Color.white), "The supplied logo keeps its original colour and alpha.");
+            Assert.That(supervisor.raycastTarget, Is.False);
+            Assert.That(supervisor.rectTransform.rect.width / supervisor.rectTransform.rect.height,
+                Is.EqualTo((float)texture.width / texture.height).Within(.001), "The logo must retain its aspect ratio.");
+            Assert.That(Vector3.Distance(supervisor.rectTransform.TransformPoint(supervisor.rectTransform.rect.center),
+                ((RectTransform)supervisor.transform.parent).TransformPoint(((RectTransform)supervisor.transform.parent).rect.center)),
+                Is.LessThan(.001), "The logo must be centred in the opening terminal view.");
+            var viewport = (RectTransform)display.transform;
+            var originalSize = viewport.sizeDelta;
+            try
+            {
+                foreach (float aspect in new[] { 4f / 3, 16f / 9, 32f / 9, 9f / 16 })
+                {
+                    viewport.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 600 * aspect);
+                    viewport.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 600);
+                    viewport.ForceUpdateRectTransforms(); host.Screen.ReflowTerminal();
+                    AssertLogoFitsViewport(supervisor);
+                }
+            }
+            finally { viewport.sizeDelta = originalSize; viewport.ForceUpdateRectTransforms(); host.Screen.ReflowTerminal(); }
             Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
             Assert.That(host.Effects.EntryPhase, Is.EqualTo(TerminalEntryPhase.OpeningMonitor));
             Assert.That(display.OpeningProgress, Is.Zero);
@@ -81,7 +102,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Effects.EntryPhase, Is.EqualTo(TerminalEntryPhase.Active));
             Assert.That(display.OpeningProgress, Is.EqualTo(1));
             Assert.That(display.OutputRect.rect.width / display.OutputRect.rect.height, Is.EqualTo(4f / 3).Within(.001));
-            Assert.That(supervisor.texture, Is.SameAs(texture));
+            Assert.That(supervisor.texture, Is.SameAs(Resources.Load<Texture2D>("MiniGame/Day0Supervisor")));
             Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
             Assert.That(host.Screen.PowerPhase, Is.EqualTo(TerminalPowerPhase.Running));
             CaptureComposite("day0-opening-terminal");
@@ -191,6 +212,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.CompleteCue(oldToken).Accepted, Is.False);
             yield return Until(() => host.Screen.DayZeroOpeningWaiting, "restored opening waits for a fresh click");
             Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.Zero);
+            Assert.That(host.Screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "Day0SupervisorFeed").texture,
+                Is.SameAs(Resources.Load<Texture2D>("MiniGame/NormLogo")), "Restoring an unfinished opening must show the centred logo again.");
             Assert.That(host.Runtime.GetView().Transcript, Is.Empty);
             Assert.That(host.Screen.RequestDayZeroOpening(), Is.False);
             host.Runtime.SetPaused(false);
@@ -199,12 +222,23 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.RequestDayZeroOpening(), Is.False);
             yield return Until(() => Find("Continue") != null && !host.Screen.TransitionLocked, "restored pullback finishes");
             Assert.That(host.Runtime.GetView().Transcript.Count(line => !line.IsPlayer), Is.EqualTo(1));
-            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__D0_T1"), Is.False,
+            Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.False,
                 "Neither the opening nor the repeated click may complete the first tutorial line.");
         }
 
         private Button[] ActiveButtons() => host.Screen.GetComponentsInChildren<Button>(false)
             .Where(button => button.IsActive() && button.IsInteractable()).ToArray();
+        private void AssertLogoFitsViewport(RawImage logo)
+        {
+            var camera = host.Screen.GetComponentsInChildren<Camera>(true).Single(item => item.name == "Terminal UI camera");
+            var corners = new Vector3[4]; logo.rectTransform.GetWorldCorners(corners);
+            foreach (var corner in corners)
+            {
+                var point = camera.WorldToViewportPoint(corner);
+                Assert.That(point.x, Is.InRange(.03f, .97f), "The complete logo must fit horizontally inside the CRT.");
+                Assert.That(point.y, Is.InRange(.03f, .97f), "The complete logo must fit vertically inside the CRT.");
+            }
+        }
         private Button Find(string name) => ActiveButtons().FirstOrDefault(button => button.name == name);
 
         private IEnumerator Click(Button button)

@@ -134,7 +134,7 @@ namespace MiniGame.UnityHost.Tests
             string entering = host.Runtime.Save();
             string staleToken = host.Runtime.GetView().Cue.Token;
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
-            yield return Until(() => host.Effects.EntryPhase == TerminalEntryPhase.FadingWorld);
+            yield return Until(() => host.Effects.EntryPhase == TerminalEntryPhase.RevealingInterface);
             var surface = Object.FindObjectsOfType<MeshRenderer>().Single(item => item.name.StartsWith("CRT screen emission", StringComparison.Ordinal));
             AssertScreenCoversViewport(camera, surface); // Same entry, before restore can recompute the destination.
             host.RestoreCheckpoint(entering);

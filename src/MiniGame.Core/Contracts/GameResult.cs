@@ -38,6 +38,8 @@ namespace MiniGame.Core
         public GamePhase Phase { get; }
         public EndingType Ending { get; }
         public int RemainingPurificationQuota { get; }
+        public int PurificationsToday { get; }
+        public int PurificationRequirement { get; }
         public int Rebellion { get; }
         public string? CurrentPatientId { get; }
         public string? CurrentPatientName { get; }
@@ -51,10 +53,13 @@ namespace MiniGame.Core
         internal PlayerView(int day, GamePhase phase, EndingType ending, int remainingQuota,
             string? patientId, string? patientName, string? encounterId, string? nodeId,
             EncounterStage? stage, IEnumerable<string> responses,
-            IEnumerable<Disposition> dispositions, IEnumerable<InteractionTarget> interactions, int rebellion = 0)
+            IEnumerable<Disposition> dispositions, IEnumerable<InteractionTarget> interactions, int rebellion = 0,
+            int purificationsToday = 0, int purificationRequirement = 0)
         {
             Day = day; Phase = phase; Ending = ending;
             RemainingPurificationQuota = remainingQuota;
+            PurificationsToday = purificationsToday;
+            PurificationRequirement = purificationRequirement;
             Rebellion = rebellion;
             CurrentPatientId = patientId; CurrentPatientName = patientName;
             CurrentEncounterId = encounterId; CurrentNodeId = nodeId; EncounterStage = stage;

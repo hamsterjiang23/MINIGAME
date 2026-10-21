@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-21T02:01:41.5453337+08:00",
+  "sourceManifest": "source-manifest.json",
+  "scope": "First fix the Feishu wall rendering issue, then apply the GitHub scene lighting and supplied camera colour profile.",
+  "wallRepair": {
+    "renderers": 12,
+    "insetMetres": 0.004000000189989805,
+    "sourceModelUnchanged": true,
+    "allUvsPreserved": true,
+    "allMaterialsUnchanged": true,
+    "report": "reports/wall-surface-repair.json",
+    "depthComparison": "reports/surface-id-comparison.json"
+  },
+  "lighting": {
+    "source": "c28a44c0213172e4e464c3d9fc7027b325568c31",
+    "protectedBlocksUnchanged": {
+      "949261499": true,
+      "1041216280": true,
+      "1288090740": true,
+      "1288090739": true,
+      "620713269": true,
+      "530088015": true,
+      "1626607314": true
+    },
+    "preservedGeometryBlocks": 254,
+    "allLocalGeometryPreserved": true,
+    "preservedGameplayBehaviourBlocks": 18,
+    "attachmentFieldsPreserved": true,
+    "grain": 0.05,
+    "realtimeOverride": [
+      {
+        "id": "709709736",
+        "name": "MonitorLight (1)",
+        "remote": 2,
+        "applied": 4
+      },
+      {
+        "id": "1127447290",
+        "name": "MonitorLight (2)",
+        "remote": 2,
+        "applied": 4
+      },
+      {
+        "id": "529657926",
+        "name": "MonitorLight (3)",
+        "remote": 2,
+        "applied": 4
+      },
+      {
+        "id": "620645195",
+        "name": "MonitorLight (4)",
+        "remote": 2,
+        "applied": 4
+      },
+      {
+        "id": "1920014243",
+        "name": "MonitorLight (5)",
+        "remote": 2,
+        "applied": 4
+      }
+    ],
+    "report": "reports/applied-lighting.json"
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "editMode": {
+      "passed": 7,
+      "failed": 0,
+      "report": "reports/editmode.xml"
+    },
+    "playMode": {
+      "uniqueTests": 18,
+      "passed": 18,
+      "failed": 0,
+      "reports": [
+        "reports/playmode-initial.xml",
+        "reports/room-lighting-final.xml"
+      ],
+      "aggregate": "reports/final-playmode-cases.json",
+      "note": "Final class results supersede the stale immediate-Day1 assertion in the initial run."
+    },
+    "build": {
+      "result": "Succeeded",
+      "output": "F:/AAMINIGAME/MINIGAME\\Builds\\WallLighting\\MiniGame.exe",
+      "unity": "2022.3.23f1c1",
+      "scenes": [
+        "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+        "Assets/MiniGame/Scenes/InspectionApartment.unity",
+        "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+      ],
+      "errors": 0,
+      "warnings": 0,
+      "seconds": 8.4647147
+    },
+    "backend": "Mono",
+    "platform": "Windows x64",
+    "developmentBuild": false,
+    "sourceSnapshot": "reports/source-snapshot.json",
+    "sourceHashesMatched": 36
+  },
+  "nativePlayer": {
+    "result": "PASSED",
+    "detail": "Live Player profile, twelve generated wallpaper meshes, five realtime day supplements and their bedtime shutdown observed; paired real-camera room captures saved.",
+    "unity": "2022.3.23f1c1",
+    "graphics": "Direct3D11",
+    "dayPhase": "MorningInspection",
+    "nightPhase": "Evening",
+    "captureMode": "Actual player ViewCamera.Render with its live RetroScreenEffect; temporary room-centre poses, restored in finally. World image only, no UI or manual-play acceptance claim.",
+    "passed": true,
+    "developmentBuild": false,
+    "dayObserved": true,
+    "nightObserved": true,
+    "profileMatchesResource": true,
+    "profileValuesPassed": true,
+    "wallpaperPassed": true,
+    "dayLightsPassed": true,
+    "nightLightsPassed": true,
+    "cameraPoseRestored": true,
+    "cameraTargetRestored": true,
+    "playerPoseUnchanged": true,
+    "runtimeUnchangedByCaptures": true,
+    "bedSpotlightEnabled": true,
+    "wallpaperCount": 12,
+    "targetFrameRate": 30,
+    "seconds": 36.058807373046875,
+    "isolation": 1.0,
+    "bedSpotlightIntensity": 8.0,
+    "captureEye": {
+      "x": -2.79433012008667,
+      "y": 0.9221184253692627,
+      "z": -1.5155500173568726
+    },
+    "profile": {
+      "name": "RoomLightingReferenceRetro",
+      "effectEnabled": true,
+      "fullscreenQuantization": true,
+      "colorGradingEnabled": true,
+      "previewOriginal": false,
+      "presentationBypass": false,
+      "levels": 16,
+      "strength": 1.0,
+      "gammaBefore": 0.906000018119812,
+      "gammaAfter": 1.0230000019073486,
+      "postExposure": 0.2800000011920929,
+      "contrast": -4.300000190734863,
+      "saturation": 6.800000190734863,
+      "grain": 0.05000000074505806
+    },
+    "supplementaryLights": [
+      {
+        "name": "MonitorLight (1)",
+        "path": "MonitorLight (1)",
+        "type": "Point",
+        "bakeType": "Realtime",
+        "dayEnabled": true,
+        "dayActive": true,
+        "nightEnabled": false,
+        "nightActive": true,
+        "nightObserved": true,
+        "isBaked": false,
+        "dayIntensity": 3.109999895095825,
+        "nightIntensity": 0.0
+      },
+      {
+        "name": "MonitorLight (2)",
+        "path": "MonitorLight (2)",
+        "type": "Point",
+        "bakeType": "Realtime",
+        "dayEnabled": true,
+        "dayActive": true,
+        "nightEnabled": false,
+        "nightActive": true,
+        "nightObserved": true,
+        "isBaked": false,
+        "dayIntensity": 1.0499999523162842,
+        "nightIntensity": 0.0
+      },
+      {
+        "name": "MonitorLight (3)",
+        "path": "MonitorLight (3)",
+        "type": "Point",
+        "bakeType": "Realtime",
+        "dayEnabled": true,
+        "dayActive": true,
+        "nightEnabled": false,
+        "nightActive": true,
+        "nightObserved": true,
+        "isBaked": false,
+        "dayIntensity": 2.0799999237060547,
+        "nightIntensity": 0.0
+      },
+      {
+        "name": "MonitorLight (4)",
+        "path": "MonitorLight (4)",
+        "type": "Point",
+        "bakeType": "Realtime",
+        "dayEnabled": true,
+        "dayActive": true,
+        "nightEnabled": false,
+        "nightActive": true,
+        "nightObserved": true,
+        "isBaked": false,
+        "dayIntensity": 2.890000104904175,
+        "nightIntensity": 0.0
+      },
+      {
+        "name": "MonitorLight (5)",
+        "path": "MonitorLight (5)",
+        "type": "Point",
+        "bakeType": "Realtime",
+        "dayEnabled": true,
+        "dayActive": true,
+        "nightEnabled": false,
+        "nightActive": true,
+        "nightObserved": true,
+        "isBaked": false,
+        "dayIntensity": 0.8500000238418579,
+        "nightIntensity": 0.0
+      }
+    ],
+    "wallpapers": [
+      {
+        "renderer": "MainRoomCombined/B_平面",
+        "mesh": "B_平面_-7951886638913546258",
+        "shadowCasting": "Off",
+        "vertices": 36,
+        "subMeshes": 1,
+        "normals": 36,
+        "uv": 36,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.001",
+        "mesh": "B_平面_001_-4043127826428628215",
+        "shadowCasting": "Off",
+        "vertices": 30,
+        "subMeshes": 1,
+        "normals": 30,
+        "uv": 30,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.002",
+        "mesh": "B_平面_002_1091224107525181009",
+        "shadowCasting": "Off",
+        "vertices": 4,
+        "subMeshes": 1,
+        "normals": 4,
+        "uv": 4,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.003",
+        "mesh": "B_平面_003_7527258002745046323",
+        "shadowCasting": "Off",
+        "vertices": 59,
+        "subMeshes": 1,
+        "normals": 59,
+        "uv": 59,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.004",
+        "mesh": "B_平面_004_7294289259420279284",
+        "shadowCasting": "Off",
+        "vertices": 4,
+        "subMeshes": 1,
+        "normals": 4,
+        "uv": 4,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.005",
+        "mesh": "B_平面_005_-1672925723338815221",
+        "shadowCasting": "Off",
+        "vertices": 42,
+        "subMeshes": 1,
+        "normals": 42,
+        "uv": 42,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.006",
+        "mesh": "B_平面_006_-4123773509398720473",
+        "shadowCasting": "Off",
+        "vertices": 42,
+        "subMeshes": 1,
+        "normals": 42,
+        "uv": 42,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.007",
+        "mesh": "B_平面_007_-1243411915737478160",
+        "shadowCasting": "Off",
+        "vertices": 31,
+        "subMeshes": 1,
+        "normals": 31,
+        "uv": 31,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.008",
+        "mesh": "B_平面_008_8896106778504898485",
+        "shadowCasting": "Off",
+        "vertices": 42,
+        "subMeshes": 1,
+        "normals": 42,
+        "uv": 42,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.009",
+        "mesh": "B_平面_009_6419006254901402695",
+        "shadowCasting": "Off",
+        "vertices": 30,
+        "subMeshes": 1,
+        "normals": 30,
+        "uv": 30,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.010",
+        "mesh": "B_平面_010_2275747457975706330",
+        "shadowCasting": "Off",
+        "vertices": 34,
+        "subMeshes": 1,
+        "normals": 34,
+        "uv": 34,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      },
+      {
+        "renderer": "MainRoomCombined/B_平面.011",
+        "mesh": "B_平面_011_-6971972543358434274",
+        "shadowCasting": "Off",
+        "vertices": 4,
+        "subMeshes": 1,
+        "normals": 4,
+        "uv": 4,
+        "generatedMeshName": true,
+        "receiveShadows": true,
+        "cpuReadable": true,
+        "normalsInspected": true,
+        "normalsFinite": true
+      }
+    ],
+    "captures": [
+      {
+        "file": "day-positive-z.png",
+        "phase": "day",
+        "eye": {
+          "x": -2.79433012008667,
+          "y": 0.9221184849739075,
+          "z": -1.515550136566162
+        },
+        "forward": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 1.0
+        },
+        "verticalFieldOfView": 37.299068450927734,
+        "aspect": 1.7777777910232544,
+        "meanLuminance": 0.36312583088874817,
+        "sampledColors": 3077,
+        "sampledNonBlack": 24909,
+        "sampledPixels": 24909,
+        "retroEnabled": true
+      },
+      {
+        "file": "day-desk-bed-rear.png",
+        "phase": "day",
+        "eye": {
+          "x": -2.79433012008667,
+          "y": 0.9221184849739075,
+          "z": -1.515550136566162
+        },
+        "forward": {
+          "x": 0.7487884759902954,
+          "y": 0.0,
+          "z": 0.6628091335296631
+        },
+        "verticalFieldOfView": 37.299068450927734,
+        "aspect": 1.7777777910232544,
+        "meanLuminance": 0.2672264277935028,
+        "sampledColors": 3080,
+        "sampledNonBlack": 24909,
+        "sampledPixels": 24909,
+        "retroEnabled": true
+      },
+      {
+        "file": "night-positive-z.png",
+        "phase": "night",
+        "eye": {
+          "x": -2.79433012008667,
+          "y": 0.9221184253692627,
+          "z": -1.515550136566162
+        },
+        "forward": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 1.0
+        },
+        "verticalFieldOfView": 37.299068450927734,
+        "aspect": 1.7777777910232544,
+        "meanLuminance": 0.0061986311338841915,
+        "sampledColors": 7,
+        "sampledNonBlack": 3601,
+        "sampledPixels": 24909,
+        "retroEnabled": true
+      },
+      {
+        "file": "night-desk-bed-rear.png",
+        "phase": "night",
+        "eye": {
+          "x": -2.79433012008667,
+          "y": 0.9221184253692627,
+          "z": -1.515550136566162
+        },
+        "forward": {
+          "x": 0.7487884759902954,
+          "y": 0.0,
+          "z": 0.6628091335296631
+        },
+        "verticalFieldOfView": 37.299068450927734,
+        "aspect": 1.7777777910232544,
+        "meanLuminance": 0.03856633976101875,
+        "sampledColors": 931,
+        "sampledNonBlack": 8974,
+        "sampledPixels": 24909,
+        "retroEnabled": true
+      }
+    ]
+  },
+  "terminalRegression": {
+    "result": "Passed",
+    "detail": "Mapped UI clicks verified live nonuniform UI for at least two seconds after world exit, pause/resume and checkpoint restore, with hidden UI picking blocked; then completed six replies and final shutdown with source rendering stopped and one sound per power sequence.",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Standalone GPU native UI RenderTexture + actual CRT material; persistent source frames and UI pixels, asymmetric source-canvas markers through physical CRT shader, pause/restore, raycast isolation, power blocks and audio events",
+    "replies": 6,
+    "quota": 5,
+    "powerOnSounds": 1,
+    "powerOffSounds": 1,
+    "bootTypingSounds": 322,
+    "shutdownTypingSounds": 47,
+    "invalidTypingSounds": 0,
+    "typingVariants": 4,
+    "manualReopen": true,
+    "automaticShutdown": true,
+    "removedFunctionKeys": true,
+    "directoryPixels": true,
+    "reviewPixels": true,
+    "initiallyOff": true,
+    "middayLit": true,
+    "reopenedWithoutBoot": true,
+    "finallyDark": true,
+    "middayLiveUi": true,
+    "middaySourceUpdating": true,
+    "middayPixels": true,
+    "middayWorldPickingBlocked": true,
+    "liveAfterPause": true,
+    "liveAfterRestore": true,
+    "sourceStoppedAfterShutdown": true,
+    "orientationAfterExit": true,
+    "orientationAfterRestore": true,
+    "typingSourceObservedPlaying": true,
+    "seconds": 36.508628845214844,
+    "middayPersistenceSeconds": 2.00604248046875
+  },
+  "package": {
+    "path": "Builds/Deliverables/NORM-Windows-x64-Mono-WallLighting-20261021-020030.zip",
+    "bytes": 213809076,
+    "sha256": "2d524be367e7088c4a8ab02d5ed8a9149f5c708b2a89d2cebfa40139b3347a85",
+    "payloadFilesVerified": 161,
+    "zipEntryHashesVerified": true,
+    "manifest": "Builds/WallLighting/package-manifest.json"
+  },
+  "checks": {
+    "gitDiffCheckCommand": "git diff --check",
+    "gitDiffCheckExitCode": 0,
+    "localLinksChecked": 15,
+    "brokenLinks": 0
+  },
+  "dotnet": {
+    "runThisTurn": false,
+    "reason": "Only Unity Editor tools, generated visual meshes, scene/profile assets and opt-in Player probes changed; core rules and presentation runtime were unchanged."
+  },
+  "limits": [
+    "New dream assets remain deferred.",
+    "The lighting merge excludes four new duplicate wall planes and unrelated poster, door and rug transforms to preserve the repaired geometry and existing gameplay.",
+    "28-camera-mode Editor comparisons are raw world rendering; final native Player captures include the actual selected camera post-effect. The temporary capture poses are restored and do not establish exhaustive manual gameplay acceptance.",
+    "18 selected related PlayMode tests were verified in batches, not the complete Unity suite.",
+    "Initial failures were corrected test fixtures: additive untitled-scene creation and an obsolete instant-Day1 assumption. Production sleep timing was not changed for these tests.",
+    "Global tone and film grain retain the user supplied grading fields plus the existing grain strength 0.05; aesthetic preference is left to user review."
+  ]
+}

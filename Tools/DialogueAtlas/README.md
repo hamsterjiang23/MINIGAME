@@ -1,5 +1,7 @@
 # 游戏逻辑分支图
 
+此工具及下述交付保留为2026-10-18旧表结构的快照。2026-10新版游戏对白通过 [DialogueCampaign](../DialogueCampaign/README.md) 转换；旧HTML图未随本次游戏内容更新，不能作为新版连线核验依据。`[verified: 本次更新的 source-imports.json；DialogueCampaign/updated_source.py source_columns]`
+
 交付文件：[游戏逻辑分支图.html](../../Art/chat_excel/游戏逻辑分支图.html)。单文件内嵌数据和样式，可双击离线打开。
 
 - 全局图整理开场、日循环、三种处置及文档中的结局描述；点节点查看来源与未定项。

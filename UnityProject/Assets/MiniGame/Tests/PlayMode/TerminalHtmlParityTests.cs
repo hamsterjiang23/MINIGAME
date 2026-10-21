@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,13 +80,20 @@ namespace MiniGame.UnityHost.Tests
                 for (int i=0;i<8;i++) screen.SetDialogueLine("对象", "记录"+i+"：审查对话", "passive-"+i,"ML01");
                 int advanced=0, quota=runtime.GetView().Game.RemainingPurificationQuota;
                 screen.ShowResponseButtons(Responses(),_=>advanced++); yield return null;
+                var recordKeys=runtime.GetView().Transcript.Select(entry=>entry.Key).ToArray();
                 Assert.That(screen.HandleTerminalKey(KeyCode.F2),Is.False);
                 Assert.That(screen.HandleTerminalKey(KeyCode.F3),Is.False);
                 Assert.That(screen.HistoryOpen,Is.False);
                 Assert.That(screen.TryCloseHistory(),Is.False);
                 Assert.That(screen.GetComponentsInChildren<Transform>(true).Any(t=>t.name=="TerminalSettings"||t.name=="HistoryTab"),Is.False);
                 var rows=screen.GetComponentsInChildren<Text>(false).Where(t=>t.name.StartsWith("TranscriptText")).ToArray();
-                Assert.That(rows,Has.Length.EqualTo(5)); Assert.That(rows.Last().text,Does.Contain("记录7"));
+                Assert.That(rows,Has.Length.EqualTo(8),"The passive scrollable transcript must retain all saved records.");
+                Assert.That(rows.Select(row=>row.text),Is.EqualTo(Enumerable.Range(0,8).Select(i=>"记录"+i+"：审查对话")));
+                Assert.That(runtime.GetView().Transcript.Count(entry=>entry.SourceNodeId.StartsWith("passive-",StringComparison.Ordinal)),Is.EqualTo(8));
+                Assert.That(runtime.GetView().Transcript.Select(entry=>entry.Key),Is.EqualTo(recordKeys),"Removed function keys must not alter saved transcript entries.");
+                var scroll=rows.Last().GetComponentInParent<ScrollRect>();
+                Assert.That(scroll,Is.Not.Null);
+                Assert.That(scroll.content.rect.height,Is.GreaterThan(scroll.viewport.rect.height));
                 screen.HandleTerminalKey(KeyCode.Return); Assert.That(advanced,Is.EqualTo(1));
                 Assert.That(runtime.GetView().Game.RemainingPurificationQuota,Is.EqualTo(quota));
             }

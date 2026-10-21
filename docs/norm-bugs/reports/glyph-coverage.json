@@ -1,0 +1,822 @@
+{
+  "generator": "Art/TerminalHtmlMatched/extend-glyph-atlas.cjs",
+  "originalExporter": {
+    "path": "Art/TerminalHtmlMatched/Source/HTML原字形导出.html",
+    "sha256": "0fd3e1e9e275c020ccadf01fb2090167b08bdfe4b55b10122862cc55b9d3cd74"
+  },
+  "originalAtlas": {
+    "width": 2048,
+    "height": 2048,
+    "glyphs": 18795,
+    "pngSha256": "215c752cb1625c969e5a78b6ef6d8ec0002626bcd7ae0838c777c2aba1109937",
+    "metricsSha256": "7952eac3836a096e63f1089a8889c447b250cc1325b61f9876be63d153d07507"
+  },
+  "browser": "155.0.8059.82",
+  "fonts": [
+    {
+      "file": "C:/Windows/Fonts/simsun.ttc",
+      "sha256": "1526ac24375f51f6eb73bc2d3f8072dbe4a80a3a65217677c9d9a84f67dab2ab"
+    },
+    {
+      "file": "C:/Windows/Fonts/lucon.ttf",
+      "sha256": "2ca2cfde263fa420e8d39420f075ee9ac80bc0794272c53ac4571a88f8a075a6"
+    }
+  ],
+  "rasterRules": {
+    "renderer": "Windows Chromium Canvas2D",
+    "textBaseline": "top",
+    "origin": [
+      12,
+      12
+    ],
+    "scratchSize": [
+      72,
+      72
+    ],
+    "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      18,
+      19
+    ],
+    "colors": [
+      "#efb83f",
+      "#ffcf68",
+      "#a77d2d",
+      "#674b19",
+      "#170e02"
+    ],
+    "crop": "nonzero-alpha bounding rectangle",
+    "padding": 2,
+    "deviceScaleFactor": 1
+  },
+  "preservation": {
+    "preservedGlyphs": 18795,
+    "changedOriginalGlyphRgba": 0,
+    "changedOriginalGlyphMetrics": 0,
+    "packingCoordinatesMayChange": true,
+    "note": "Original glyphs are copied byte-for-byte from the vendor PNG, never re-rasterized.",
+    "roundTripPngAndJsonVerified": true
+  },
+  "output": {
+    "width": 4096,
+    "height": 4096,
+    "usedHeight": 2967,
+    "codepoints": 1487,
+    "glyphs": 52045,
+    "addedGlyphs": 33250,
+    "pngBytes": 13784643,
+    "metricsBytes": 5587779,
+    "pngSha256": "4d889cf7452716e859657b58e5f04327513d6a065dc90fb978456220439ae55f",
+    "metricsSha256": "f689dcac261e7c83a576ac17b4d724e305403c5a27d988d134725f0d4ed01978"
+  },
+  "coverage": {
+    "missingGlyphs": 0,
+    "nonBmp": [],
+    "sources": [
+      {
+        "path": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json",
+        "kind": "campaign",
+        "sha256": "361ad956cb11808a729bb724ab0b269197948a6a886d838b951ce5ccc88258df",
+        "stringCount": 142,
+        "nonBmp": [],
+        "codepoints": 1175,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/AmberTerminalPlayerSmoke.cs",
+        "kind": "runtime",
+        "sha256": "f9f34062adacef086c519383dd7075ba2ab19795ac99d446cbe810aaad0f6d52",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 84,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+        "kind": "runtime",
+        "sha256": "d7ee6bedc84d17264a8364a34a0a3c8946ec2c63e1041251c6d4fd3c6758e76f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 138,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeAtmosphere.cs",
+        "kind": "runtime",
+        "sha256": "80725773b71e4115d477f9fe7d846dedfe24741e342baf2dac6b1009ac97d0fb",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 84,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeCollisionGate.cs",
+        "kind": "runtime",
+        "sha256": "2c558b4086afc720510651ab1fa8a0f0ca4e4461f6c614e713587d553747e1e5",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 69,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+        "kind": "runtime",
+        "sha256": "88bf8927b85a96ea34adbdd8548ba44167eeddad108bb9acbf0bc9b8f5d12f1a",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 81,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/CrtUiOrientationProbe.cs",
+        "kind": "runtime",
+        "sha256": "4af3fcc7e90f9aac9f5b0fc8876a5986add47fc2b3e3511ecafd1290aad23d18",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 84,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs",
+        "kind": "runtime",
+        "sha256": "318f61b817ec70d5ddaece6c8e90e51386eda095184253b23dd3f206c42a3011",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 84,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DialoguePackageAsset.cs",
+        "kind": "runtime",
+        "sha256": "44f27590db473dc2010fd3dc047507ca62d651eeaca076d8ecd01405654d28a4",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 61,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs",
+        "kind": "runtime",
+        "sha256": "b3cae6bd665ed523fcc68f84a064571d4ac395240330ccabc8ec4deaaf583acf",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 70,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DoorViewCamera.cs",
+        "kind": "runtime",
+        "sha256": "024f8b12b51eff20c50bf52591fbcf54077532fba07ffb816e4454b533606713",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 96,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs",
+        "kind": "runtime",
+        "sha256": "481adf45fec8baefcefefe68dfe04064587abe54dd01b6c46c0d8fc12d6c0e8a",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 77,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs",
+        "kind": "runtime",
+        "sha256": "f1ccf903960be7d9b39fcc6a47ab5653a630a2b93d9cfe037cb6e5a1e5eea7da",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 141,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs",
+        "kind": "runtime",
+        "sha256": "f99a07bd5ee90215892f46aec27b1f491c9b86782c8249d4696c6e6fcd978c98",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 83,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs",
+        "kind": "runtime",
+        "sha256": "4e7782c02d0e083ae8bd8c74473d77d3d43ad3a6e81c4279768fd4bd507699c1",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 231,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/HingedDoor.cs",
+        "kind": "runtime",
+        "sha256": "7e9e7645bd4ef51a257e661b1ce21635fbced0a2e2680e16e490211952e5343e",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 73,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/InteractionFocusOutline.cs",
+        "kind": "runtime",
+        "sha256": "2b8681703801a5531a1f914429e3e20be58cd3bdc50de0e4cf3180ec1252c192",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 71,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioButton.cs",
+        "kind": "runtime",
+        "sha256": "8e24e39235d764b7c2b18dfb3598124a759f2afc25e91587ae8c80816798ee22",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 59,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs",
+        "kind": "runtime",
+        "sha256": "11e6465c24e0d0927c47497198ef2fcf6144eb1d56ad2f9af5e04d71a485f7cd",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 72,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioProfile.cs",
+        "kind": "runtime",
+        "sha256": "a50971162c7cb01574486102874f88f770768bdd44a9e75a7b959e67cd188ba5",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 204,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioService.cs",
+        "kind": "runtime",
+        "sha256": "e615c9605d1bcaaaeba9d3801bea9c2ecde79cd51e249f8f5787dd5d2dede90b",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 79,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs",
+        "kind": "runtime",
+        "sha256": "b0b5ec35a7add80a9f7c3e894503b88ccefe6a91bb6e9c64fea29c695749fcd4",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 142,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+        "kind": "runtime",
+        "sha256": "1ea6e480adf19ce17f5b792a20ead47eecc08f32adc773c604f255796cacf173",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 268,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs",
+        "kind": "runtime",
+        "sha256": "d27cf85a603bf7a24aab19c6860845737d2bb5697f98094052867664aab5bb8f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 134,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/NormBugPlayerProbe.cs",
+        "kind": "runtime",
+        "sha256": "f8dadd99cda4bc7c3968cea93d928cb5f8c2e2402568bc0f508976d53aef9ffd",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 96,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/OpeningMotionProbe.cs",
+        "kind": "runtime",
+        "sha256": "761cf82b5faa6cbbd7d703da913a494b11a82b08783a8730f9ebec950a630728",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 88,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PatientMonitorProfile.cs",
+        "kind": "runtime",
+        "sha256": "4874198c8d4255e0b328223126538ffecea1a3829fe35d4de8f282824c3278ef",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 130,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PatientMonitorRoom.cs",
+        "kind": "runtime",
+        "sha256": "19ba2e445c53d0c07fcdfbf9ed191a4d44de81d9fda9f86e00f89cf935459310",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 79,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PatientSurveillanceFeed.cs",
+        "kind": "runtime",
+        "sha256": "a2ba6238aae0edf38a0ab85e06762124e14ef2048ba062d53fddbbae260833ad",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 98,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PauseBackdropPlayerProbe.cs",
+        "kind": "runtime",
+        "sha256": "e8e98d209f9ddf25c0392479ac37e0e42d9dfbda9bfddd13f21357483fc8a54b",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 89,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuBackdrop.cs",
+        "kind": "runtime",
+        "sha256": "c9ffdf82690acb6e1bc5ebe2097ff56c106f8cafdcf82408726688786596d302",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 74,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuButton.cs",
+        "kind": "runtime",
+        "sha256": "ee183ce25e056e286dc0073da486b071000376707be6004dd34f4eb122e6c01c",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 68,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuHitArea.cs",
+        "kind": "runtime",
+        "sha256": "847a9280c00a5d55b5e622131006705af5dd983d6f90966bda43f35f25c2af43",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 61,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuPerspective.cs",
+        "kind": "runtime",
+        "sha256": "8f14557cfe5b0469fc146a43d58b8005040acf285c0973fe2e8b04bb62284467",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 64,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
+        "kind": "runtime",
+        "sha256": "df4572c0e882252a10a6588f8a08d5563d590f4c147952d417f636df95e4f136",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 171,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PlayerRebellionProfile.cs",
+        "kind": "runtime",
+        "sha256": "c35c88442357b09f8e3151cab0ba18cd8515bc98c3ee42c3eb0ff591885816f5",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 111,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PlayerRuntimeSettings.cs",
+        "kind": "runtime",
+        "sha256": "b296423d6b370d036b3e0df57217020d1969e9221f5f65eedda87807eeaaa2ef",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 52,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PortraitCatalog.cs",
+        "kind": "runtime",
+        "sha256": "4d928dafd43005181bc4eadff06708d290cf647ca748367e868a6a49c1b141a7",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 74,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+        "kind": "runtime",
+        "sha256": "fcd8eeaf29c903e8974288422ae7c79a4b792a70e574bbd6df09e83dddcee988",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 83,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PropNarrationComposite.cs",
+        "kind": "runtime",
+        "sha256": "33027db594dfd4c4fdefd03b51f8db071f520b7780058cb08ea30be61f620210",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 51,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+        "kind": "runtime",
+        "sha256": "30a623265f4a58807053f0c7c365881087b5798bf9427e5c2511e95666fd760f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 83,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/ReadableProp.cs",
+        "kind": "runtime",
+        "sha256": "2d012738b5f313b2541b1830b4d7fbe75e461c538c6e4eece93e89adb145eb38",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 136,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/ReferenceCameraProjection.cs",
+        "kind": "runtime",
+        "sha256": "6f282a584a8d11b9a64f4b3c249c4f8512a07735b1c10734fb4bce1c364c4ddf",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 70,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/RetroScreenEffect.cs",
+        "kind": "runtime",
+        "sha256": "6e78e093947fb1d5f77362bfc12573f99059a0ddcc303749cadda340fb002248",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 78,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/RetroScreenProfile.cs",
+        "kind": "runtime",
+        "sha256": "597e8f8b5ede0dce46bdbd00680cfbd0c618074c5922d88f7ff87c4d06e258ec",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 82,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/RoomLightingController.cs",
+        "kind": "runtime",
+        "sha256": "650d84b08121242c90925c32af21474db1dbacabab8cbf2dd0bcd812bf1662e1",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 87,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/RoomLightingPlayerProbe.cs",
+        "kind": "runtime",
+        "sha256": "5b68ee5b6867c6ef06312a737a4dbd1f253643a4a9176790be6b0b9f69887768",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 84,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/RoomLightingProfile.cs",
+        "kind": "runtime",
+        "sha256": "bb894167a07d22d44ec6f52d3110f6e2af2a66339c2fb9260efbae4776cb5cdf",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 129,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/SelfReviewMonitor.cs",
+        "kind": "runtime",
+        "sha256": "15db0cdc30ad82cee51e86d788c9cde7a79594f40e232ea59b715c6c9bca25ba",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 79,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/SupervisorDoorwayView.cs",
+        "kind": "runtime",
+        "sha256": "cbf7d86175af41ddc35d056507415254f623dbe7e6a66289fdbe320a8bd8d08d",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 75,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalAssetSet.cs",
+        "kind": "runtime",
+        "sha256": "42ac84d34aba7c8c1198dce6df1c91cc2b9126c8bebcad8d30db0fea002754dd",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 96,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalBitmapText.cs",
+        "kind": "runtime",
+        "sha256": "8f2f4c62f5665afe54219ae7b8f0dbb7c5317c1e1b77a01cbbf491aad8ebd931",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 83,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalButtonVisual.cs",
+        "kind": "runtime",
+        "sha256": "419d518d42f7032985d3357d5cf10ad62224b441f7f42edbacbcf60e1b16b7b5",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 78,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalClosingRecorder.cs",
+        "kind": "runtime",
+        "sha256": "3d334f207b6bcdff3eb2991608772277b7913527009b7ff8d7e0a3c1753b36d7",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 84,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalDisplay.cs",
+        "kind": "runtime",
+        "sha256": "8d16fdf4ab6509d768e3915b735c42c39d3cf167f0fe4a7ba618c43b874f6a23",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 81,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalHighlightGroup.cs",
+        "kind": "runtime",
+        "sha256": "98c4d74096761110bbbfcc778a8813243bae18c81c31a64bbd73864b27d270a7",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 57,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalIndustrialSkin.cs",
+        "kind": "runtime",
+        "sha256": "c10b4e4097009ec9d21539aea7311c009ac4e3f5cca9c1339057c0d425900795",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 74,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalPortraitPresenter.cs",
+        "kind": "runtime",
+        "sha256": "874cd6777edf0490cc1b13a3efc262be921320ac9cf2daf06b963e29f00c198f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 54,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalRosterPointer.cs",
+        "kind": "runtime",
+        "sha256": "d489835ed3ad0d13136d33b24fbebf3993f9afa91a2faaef285443c30f1ab12f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 50,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSeating.cs",
+        "kind": "runtime",
+        "sha256": "088a164d0aa7f5dac449fa669ea4c51e716ffc0e2eb7e24e085ab57819f4507f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 62,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalController.cs",
+        "kind": "runtime",
+        "sha256": "2b5004248f3566a3bc1fb24020b20e92d3575893d6e553176f0566250507d12b",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 109,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalEffect.cs",
+        "kind": "runtime",
+        "sha256": "d97280b1618a21ec601172505997f9e1434d2698f413711ab53df04dc8bc8637",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 73,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalProfile.cs",
+        "kind": "runtime",
+        "sha256": "790c05372cbb19258533da2417fc172e8d0ae34b3ea6bba330d5a659a7ddddd4",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 126,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalTuningPanel.cs",
+        "kind": "runtime",
+        "sha256": "c051e03b28db57df4e037e0ecae13e8d7ccace6d1152b8eb911727c28e21b8f6",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 182,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalTextMetrics.cs",
+        "kind": "runtime",
+        "sha256": "dc811d8bf4d1e812d7c77970f2d093350a3825cfeed3419037da3f226115d555",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 67,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalTranscriptView.cs",
+        "kind": "runtime",
+        "sha256": "a3cbe8a15bac2d965e01b14f36efcd4496cf1c7cbcd236cf1735bdb8a6dea84e",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 88,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalTransitionView.cs",
+        "kind": "runtime",
+        "sha256": "8573ca89d5cb331596eec94ec4c379a024fd86b79c4111839a32bf652e68b3d3",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 81,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+        "kind": "runtime",
+        "sha256": "7bcfcd38f12858789b9894ade3b6cf9d336779ef30b2d9ca560aa5354a03f19e",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 200,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/WorldInteraction.cs",
+        "kind": "runtime",
+        "sha256": "17fe79413745fd4d784f695a4b621c34a454e64e6c34ead9b459ea795b9b1ca5",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 105,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "Art/TerminalHtmlMatched/Source/Dialogue_Reference.json",
+        "kind": "terminal-demo",
+        "sha256": "8ff17f9ab40057e8d15c7357ea920e714d62e4aa9de4ed36a3ce42436eb63340",
+        "stringCount": 316,
+        "nonBmp": [],
+        "codepoints": 188,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json",
+        "kind": "terminal-demo",
+        "sha256": "e538e0d856c4d4b0d8d691723e807ba90edc70e02511cac9da673b4d217a1d83",
+        "stringCount": 17,
+        "nonBmp": [],
+        "codepoints": 218,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.yarn",
+        "kind": "yarn-content",
+        "sha256": "ce16ee4f2fa4889887d4085f76d88a81c24659fe2fbc9826612f8fc9987b9de1",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 1133,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Content/Prototype.yarn",
+        "kind": "yarn-content",
+        "sha256": "ffd770ebd6b81fa437835568661babef6b73c514a173301fed21e62804af23ab",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 481,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.yarn",
+        "kind": "yarn-content",
+        "sha256": "bc2463382bb6e9ed5f7f76e5c4848f9e272c7b4efb78dd8f72b465ba38616407",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 218,
+        "missingGlyphs": 0,
+        "missing": []
+      }
+    ]
+  }
+}

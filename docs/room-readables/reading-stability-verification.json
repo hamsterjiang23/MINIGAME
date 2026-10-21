@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-21",
+  "project": "F:/AAMINIGAME/MINIGAME/UnityProject",
+  "unity": "2022.3.23f1c1",
+  "caption": {
+    "id": "poster-beach",
+    "text": "海报里的小镇是我的故乡...但我从没去过海边",
+    "savedScene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "source": "../../Art/RoomReadables/Source/beach-caption-correction.jpg",
+    "sourceSha256": "bf59729eb4e2407ef807c66980d9c4a6323ce84554791ac983890e5f4bd8120b",
+    "sceneReport": "reports/reading-stability/scene-caption.json"
+  },
+  "behavior": {
+    "layout": "Choose a source-safe viewport rectangle per page; latch its position and size during camera turns.",
+    "rightMargin": 0.015,
+    "occlusion": "Hide in place on source overlap; keep following the camera while hidden; recover the same page and rectangle.",
+    "relayout": "Page change, viewport aspect change, or initially unavailable space before the first visible placement.",
+    "continueHint": "点击继续阅读",
+    "hintRule": "Shown only when a following page remains; hidden on the last page.",
+    "hintFontSize": 22,
+    "hintReservedHeight": 40,
+    "bodyFontSize": 48,
+    "bodyFontStyle": "Bold",
+    "bodyColor": "White",
+    "background": "Opaque black",
+    "border": "None"
+  },
+  "cameraSweep": {
+    "samples": 97,
+    "yawDegrees": 32,
+    "pitchDegrees": 14,
+    "baselineReport": "reports/reading-stability/baseline-metrics.json",
+    "fixedReport": "reports/reading-stability/fixed-metrics.json",
+    "baseline": {
+      "hiddenFrames": 3,
+      "maxRightChange": 0.02822399139404297,
+      "maxCenterYChange": 0.586249589920044,
+      "maxWidthChange": 0.1246415376663208,
+      "maxHeightChange": 0.04451483488082886
+    },
+    "fixed": {
+      "hiddenFrames": 43,
+      "maxRightChange": 1.6093254089355469E-06,
+      "maxCenterYChange": 5.841255187988281E-06,
+      "maxWidthChange": 1.7881393432617188E-07,
+      "maxHeightChange": 3.8743019104003906E-07
+    },
+    "units": "Normalized camera viewport; samples include hidden frames."
+  },
+  "tests": [
+    {
+      "report": "reports/reading-stability/prop-narration-tests.json",
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ContinuousCameraTurnsKeepReadingViewportBoundsStableEvenWhileHidden",
+          "Status": "Passed",
+          "Duration": 8.0026582,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.InitiallyRightSidePropChoosesClearVerticalDockOnlyOnce",
+          "Status": "Passed",
+          "Duration": 1.0696956,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.LongParagraphRemainsCompleteAcrossReadablePages",
+          "Status": "Passed",
+          "Duration": 2.0669019,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.PinnedReadingHidesForNewObstructionAndRecoversSamePageAfterCameraMotion",
+          "Status": "Passed",
+          "Duration": 1.3037862,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingOwnsInputPagesAndPauseWithoutChangingGameState",
+          "Status": "Passed",
+          "Duration": 2.06804,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingPanelKeepsSmallRightMarginAndFollowsCameraYawAndPitch",
+          "Status": "Passed",
+          "Duration": 1.1351294,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.RestoreDisableAndTargetRemovalReleaseNarrationAndCameraOwnership",
+          "Status": "Passed",
+          "Duration": 0.5057529,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/reading-stability/room-readables-tests.json",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests.DayZeroHidesUnpublishedNewsWhileStaticDocumentsStayReadable",
+          "Status": "Passed",
+          "Duration": 4.4539988,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests.NewspaperUsesAuthoritativeDayAcrossSleepAndRestoringAnEarlierDay",
+          "Status": "Passed",
+          "Duration": 8.5548866,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests.ThreePhysicalReadablesUseLeftClickAndKeepFullTextWithoutSaveSideEffects",
+          "Status": "Passed",
+          "Duration": 6.4767473,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/reading-stability/poster-regression-tests.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.ReferenceRoomPlayModeTests.PostersUseSecondaryInputDistanceOcclusionAndManualSpatialNarration",
+          "Status": "Passed",
+          "Duration": 19.9569708,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    }
+  ],
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/ReadingStable/MiniGame.exe",
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 7.3393085,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "buildReport": "reports/reading-stability/windows-build.json",
+  "buildWarning": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds.",
+  "playerStartup": {
+    "ready": true,
+    "marker": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56",
+    "log": "reports/reading-stability/player-startup.log",
+    "scope": "Native player startup only; gameplay interactions were checked in Play Mode."
+  },
+  "images": [
+    "images/beach-caption-corrected.png",
+    "images/continue-reading-hint.png"
+  ],
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+      "sha256": "13263b0c91887ab36df0c8836687a9401b424f1561b421388cc39fb7bb33606e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/ReferenceRoomGameplayBuilder.cs",
+      "sha256": "5c9950168c7a2ee4be86cd8f1bc931a90fcfd9d469208373bb4925dce68868ad"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "1c67cd4252ea4edb12ce6903b29b1df8b4aaefa9b4177df17302497ec8762488"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PropNarrationPlayModeTests.cs",
+      "sha256": "47dfb31cdae4709aeca1962a6d06a764b57a3287184186a30f426e37ea6008a0"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/ReferenceRoomPlayModeTests.cs",
+      "sha256": "7458c969142d3116b53b9819b7e5f1684beb94f23e07de4f2350ef2cee057bde"
+    }
+  ],
+  "validationScope": "Native Unity Play Mode with controlled camera turns and rendered captures; Windows Mono build and startup. No hardware mouse or human acceptance claim."
+}

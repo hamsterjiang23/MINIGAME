@@ -9,6 +9,8 @@ namespace MiniGame.UnityHost
         private readonly GameObject console, loading;
         private readonly Text[] rows = new Text[28];
         public string ConsoleText { get; private set; } = "";
+        private string previousPowerText = "";
+        private TerminalPowerPhase previousPowerPhase = TerminalPowerPhase.Running;
         private readonly GameObject[] masks;
         private static readonly Rect[] Regions = {
             new Rect(9,9,782,27),new Rect(9,37,782,71),
@@ -32,8 +34,20 @@ namespace MiniGame.UnityHost
                 font.RequestCharactersInTexture("PMS console 3.14 Self-test Tests completed. BOOT Console ready. Closing session... Session closed. System halted. >>> _ 0123456789", 14, FontStyle.Normal);
             SetPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
         }
-        public void SetPowerFrame(TerminalPowerFrame frame)
+        public int SetPowerFrame(TerminalPowerFrame frame)
         {
+            string text = frame.ConsoleText ?? "";
+            int newCharacters = 0;
+            if (frame.Phase == TerminalPowerPhase.Boot || frame.Phase == TerminalPowerPhase.Shutdown)
+            {
+                int shared = 0;
+                if (previousPowerPhase == frame.Phase)
+                    while (shared < previousPowerText.Length && shared < text.Length && previousPowerText[shared] == text[shared]) shared++;
+                for (int i = shared; i < text.Length; i++)
+                    if (!char.IsWhiteSpace(text[i])) newCharacters++;
+            }
+            previousPowerText = text;
+            previousPowerPhase = frame.Phase;
             bool load=frame.Phase==TerminalPowerPhase.Loading;
             bool visible=frame.Phase!=TerminalPowerPhase.Running && !load;
             loading.SetActive(load); console.SetActive(visible);
@@ -47,7 +61,9 @@ namespace MiniGame.UnityHost
             }
             if(visible) console.transform.SetAsLastSibling();
             if(load) loading.transform.SetAsLastSibling();
+            return newCharacters;
         }
+        public void ResetTyping() { previousPowerText = ""; previousPowerPhase = TerminalPowerPhase.Running; }
         // Camera motion remains separate from the terminal's power timeline.
         public void SetFrame(float progress,bool exiting,bool active) { }
     }

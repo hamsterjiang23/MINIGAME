@@ -17,10 +17,15 @@ namespace MiniGame.UnityHost
         private readonly GameObject directory, review, selfReview, history, answers;
         private readonly Text date, day, count, previewName, previewId, previewStatus, previewUnit, quota;
         private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, commandStatus, footerText, footerHelp, pageLabel;
+        private readonly Text directoryRequirement, reviewRequirement;
+        private readonly Text dailyWorkRemaining;
         private readonly TerminalTranscriptView transcriptView;
         private readonly Button enter, leave, returnDirectory, selfPurify, footer;
         private readonly RawImage selfMonitor;
         private readonly RawImage supervisor;
+        private readonly TerminalSignalEffect supervisorSignal;
+        private readonly Texture2D supervisorTexture, openingLogo;
+        private bool showingOpeningLogo;
         private readonly PortraitCatalog portraits;
         private readonly PatientSurveillanceFeed patientMonitor;
         private readonly TerminalPortraitPresenter portraitPresenter;
@@ -53,12 +58,13 @@ namespace MiniGame.UnityHost
 
         public TerminalView(RectTransform parent, Font terminalFont, Action<string> enterSelected,
             Action returnDirectoryAction, Action leaveAction, Action<Disposition> dispositionAction,
-            Action<InspectionKind> inspectionAction, Action selfPurifyAction = null)
+            Action<InspectionKind> inspectionAction, Action selfPurifyAction = null, TerminalSignalController signals = null)
         {
             font = terminalFont; assets = Resources.Load<TerminalAssetSet>("MiniGame/TerminalAssets"); enterPatient = enterSelected; returnToDirectory = returnDirectoryAction;
             if (assets != null && assets.Typeface != null) font = assets.Typeface;
             portraits = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
             logical = Panel(parent, "TerminalLogical800x600", Desk, 0, 0, 800, 600);
+            logical.gameObject.AddComponent<TerminalHighlightGroup>();
             logical.anchorMin = logical.anchorMax = logical.pivot = new Vector2(.5f, .5f);
             logical.anchoredPosition = Vector2.zero;
             var packageBackdrop = new GameObject("PMS package frame", typeof(RectTransform), typeof(RawImage));
@@ -68,35 +74,38 @@ namespace MiniGame.UnityHost
             Border(logical, "TerminalBorder", 8, 8, 784, 584, ColorOf("d9a339"));
             Rule(logical, 8, 36, 784);
             date = Label(logical, "TerminalDate", "1994-11-08", 22, 16, 160, 17, 13, Bright);
-            Label(logical, "TerminalVersion", "PMS / 3.14", 334, 16, 160, 17, 13, Ink);
-            Label(logical, "TerminalNumber", "T-06 / 047", 674, 16, 110, 17, 13, Bright);
+            Label(logical, "TerminalVersion", "PMS / 3.14", 270, 16, 260, 17, 13, Ink).alignment = TextAnchor.UpperCenter;
+            Label(logical, "TerminalNumber", "T-06 / 047", 600, 16, 178, 17, 13, Bright).alignment = TextAnchor.UpperRight;
             directory = Panel(logical, "ObjectDirectory", Color.clear, 0, 0, 800, 548).gameObject;
             review = Panel(logical, "PersonnelReview", Color.clear, 0, 0, 800, 548).gameObject;
             selfReview = Panel(logical, "SelfReview", Color.clear, 0, 0, 800, 548).gameObject;
             var dr = (RectTransform)directory.transform;
             Label(dr, "RosterHeading", "第三安置所 / B区 / 观察对象", 23, 51, 490, 20, 14, Bright);
-            day = Label(dr, "DirectoryDay", "", 600, 51, 180, 20, 13, Ink);
+            day = Label(dr, "DirectoryDay", "", 597, 51, 180, 20, 13, Ink); day.alignment = TextAnchor.UpperRight;
             Label(dr, "RosterColumnLabels", "对象 / 登记编号", 29, 82, 480, 18, 13, Dim);
-            Label(dr, "RosterStatusColumn", "单元       状态", 624, 82, 150, 18, 13, Dim);
+            Label(dr, "RosterStatusColumn", "单元       状态", 22, 82, 750, 18, 13, Dim).alignment = TextAnchor.UpperRight;
             for (int i = 0; i < 5; i++)
             {
                 int slot = i;
                 var row = Button(dr, "Roster-" + i, "", 22, 108 + 30 * i, 756, 27, () => SelectRoster(slot));
                 var pointer = row.gameObject.AddComponent<TerminalRosterPointer>();
                 pointer.DoubleClicked = () => { SelectRoster(slot); EnterSelected(); };
-                Label(row.transform, "RowNumber", (i + 1).ToString("00"), 7, 5, 28, 18, 13, Dim);
-                var name = row.transform.Find("Label").GetComponent<Text>(); Position(name.rectTransform, 40, 4, 160, 20);
-                var registration = Label(row.transform, "Registration", "", 200, 5, 270, 18, 13, Ink);
-                var unit = Label(row.transform, "Unit", "", 600, 5, 65, 18, 13, Ink);
-                var status = Label(row.transform, "Status", "", 672, 5, 80, 18, 13, Ink);
+                Label(row.transform, "RowNumber", (i + 1).ToString("00"), 8, 5, 28, 18, 12, Dim);
+                var name = row.transform.Find("Label").GetComponent<Text>(); Position(name.rectTransform, 42, 4, 158, 20);
+                var registration = Label(row.transform, "Registration", "", 200, 4, 270, 20, 14, Ink);
+                var unit = Label(row.transform, "Unit", "", 8, 5, 684, 18, 12, Ink); unit.alignment = TextAnchor.UpperRight;
+                var status = Label(row.transform, "Status", "", 8, 5, 740, 18, 12, Ink); status.alignment = TextAnchor.UpperRight;
                 foreach (var label in new[] { registration, unit, status, row.transform.Find("RowNumber").GetComponent<Text>() }) TerminalIndustrialSkin.RegisterLabel(row, label);
                 rosterRows.Add(row); rosterLabels.Add(new[] { name, registration, unit, status });
             }
             count = Label(dr, "RosterCount", "", 29, 351, 730, 20, 13, Dim);
+            directoryRequirement = Label(dr, "DirectoryPurificationRequirement", "", 29, 318, 730, 20, 14, Bright);
             Rule(dr, 8, 393, 784);
             Field(dr, "终端", "第三安置所 / B区", 410);
             previewName = Field(dr, "对象", "", 436);
-            enter = Button(dr, "EnterReview", "进入人员复核", 131, 458, 465, 26, EnterSelected);
+            enter = Button(dr, "EnterReview", "进入人员复核", 131, 458, 465, 24, EnterSelected);
+            ((TerminalButtonVisual)enter).SetCommandField();
+            Position(enter.transform.Find("Label").GetComponent<RectTransform>(), 7, 4, 451, 20);
             Label(dr, "CurrentCommandLabel", "当前命令", 24, 462, 100, 19, 14, Ink);
             previewStatus = Field(dr, "档案状态", "", 488);
             quota = Field(dr, "净化配额", "", 514);
@@ -122,11 +131,15 @@ namespace MiniGame.UnityHost
             feed.transform.SetParent(livePortrait.transform, false); Position((RectTransform)feed.transform, 0, 0, 464, 261);
             patientMonitor = feed.GetComponent<PatientSurveillanceFeed>();
             patientMonitor.Initialize(feed.GetComponent<RawImage>(), Resources.Load<PatientMonitorProfile>("MiniGame/PatientMonitorDefault"));
+            signals?.Attach(feed.GetComponent<RawImage>());
             cameraLabel = Label(video, "CameraLabel", "", 7, 8, 280, 16, 10, Dim);
             var supervisorObject = new GameObject("Day0SupervisorFeed", typeof(RectTransform), typeof(RawImage));
             supervisorObject.transform.SetParent(video, false); Position((RectTransform)supervisorObject.transform, 0, 0, 464, 261);
             supervisor = supervisorObject.GetComponent<RawImage>(); supervisor.raycastTarget = false;
-            supervisor.texture = Resources.Load<Texture2D>("MiniGame/Day0Supervisor");
+            supervisorSignal = signals?.Attach(supervisor);
+            supervisorTexture = Resources.Load<Texture2D>("MiniGame/Day0Supervisor");
+            openingLogo = Resources.Load<Texture2D>("MiniGame/NormLogo");
+            supervisor.texture = supervisorTexture;
             supervisorObject.SetActive(false);
             signalLoss = Panel(video, "MonitorSignalLoss", ColorOf("0e0b04"), 0, 0, 464, 261).gameObject;
             for (int i = 0; i < 22; i++) stripes.Add(Panel(signalLoss.transform, "Noise" + i, i % 3 == 0 ? Ink : Edge, 0, 7 + i * 11, 464, i % 2 == 0 ? 2 : 1));
@@ -135,15 +148,21 @@ namespace MiniGame.UnityHost
             Rule(rr, 22, 388, 480);
             transcriptView = new TerminalTranscriptView(rr, font);
             history = transcriptView.GameObject;
-            roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 242, 19, 13, Dim);
-            commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 46, 12, Dim);
+            roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 124, 19, 13, Dim);
+            commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 24, 12, Dim);
+            reviewRequirement = Label(rr, "ReviewPurificationRequirement", "", 662, 84, 116, 18, 11, Bright);
+            reviewRequirement.alignment = TextAnchor.UpperRight;
+            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 147, 195, 20, 12, Dim);
+            dailyWorkRemaining = Label(rr, "DailyWorkIndicatorRemaining", "", 738, 145, 40, 24, 18, Bright);
+            dailyWorkRemaining.alignment = TextAnchor.UpperRight;
             Label(rr, "DispositionHeading", "处置命令", 534, 173, 240, 19, 13, Dim); Rule(rr, 530, 194, 248);
             var types = new[] { Disposition.Release, Disposition.Treat, Disposition.Purify };
             for (int i = 0; i < types.Length; i++)
             {
                 var type = types[i];
                 var button = Button(rr, "Disposition-" + type, (i + 1).ToString("00") + "   " + DispositionName(type), 530, 204 + i * 37, 248, 28, () => dispositionAction(type));
-                var availability = Label(button.transform, "Availability", "锁定", 184, 6, 60, 18, 13, Dim);
+                var availability = Label(button.transform, "Availability", "锁定", 8, 5, 232, 18, 12, Dim);
+                availability.alignment = TextAnchor.UpperRight;
                 TerminalIndustrialSkin.RegisterLabel(button, availability); dispositions.Add(type, button);
             }
             Rule(rr, 530, 334, 248); Label(rr, "AnswerHeading", "应答命令", 534, 346, 240, 19, 13, Dim);
@@ -170,12 +189,14 @@ namespace MiniGame.UnityHost
             Border(sr, "SelfMonitorFrame", 26, 88, 472, 269, Edge);
             var selfFeed = new GameObject("SelfMonitorFeed", typeof(RectTransform), typeof(RawImage)); selfFeed.transform.SetParent(sr, false);
             Position((RectTransform)selfFeed.transform, 30, 92, 464, 261); selfMonitor = selfFeed.GetComponent<RawImage>(); selfMonitor.raycastTarget = false;
+            signals?.Attach(selfMonitor);
             Label(sr, "SelfCameraLabel", "CAM 07 / LIVE", 37, 100, 300, 20, 10, Dim);
             Label(sr, "SelfStatus", "本人复核 / 处置待确认", 534, 112, 240, 70, 14, Ink);
             selfPurify = Button(sr, "SelfPurify", "01   净化", 530, 204, 248, 28, selfPurifyAction);
 
             footer = Button(logical, "TerminalCommandStrip", "", 9, 548, 782, 43, () => ConfirmRequested?.Invoke());
-            footerText = footer.transform.Find("Label").GetComponent<Text>(); Position(footerText.rectTransform, 5, 5, 772, 20); footerText.alignment = TextAnchor.UpperCenter;
+            ((TerminalButtonVisual)footer).SetAlwaysHighlighted();
+            footerText = footer.transform.Find("Label").GetComponent<Text>(); Position(footerText.rectTransform, 5, 6, 772, 20); footerText.alignment = TextAnchor.UpperCenter;
             footerHelp = Label(footer.transform, "TerminalHelp", "", 5, 26, 772, 16, 12, Desk); footerHelp.alignment = TextAnchor.UpperCenter;
             TerminalIndustrialSkin.RegisterLabel(footer, footerHelp); TerminalIndustrialSkin.SetSelected(footer, true);
             Continue.gameObject.SetActive(false); returnDirectory.gameObject.SetActive(false); NarrationBody.gameObject.SetActive(false);
@@ -183,7 +204,31 @@ namespace MiniGame.UnityHost
             Fit();
         }
 
-        public void Fit() => display.Fit();
+        public void Fit()
+        {
+            display.Fit();
+            if (showingOpeningLogo) FitOpeningLogo();
+        }
+        public void SetOpeningLogo(bool visible)
+        {
+            showingOpeningLogo = visible;
+            supervisor.texture = visible ? openingLogo : supervisorTexture;
+            supervisorSignal?.SetLogoMode(visible);
+            if (visible) FitOpeningLogo();
+            else Position(supervisor.rectTransform, 0, 0, 464, 261);
+        }
+        private void FitOpeningLogo()
+        {
+            if (openingLogo == null) return;
+            var viewport = ((RectTransform)display.transform).rect;
+            float aspect = viewport.width / Mathf.Max(1, viewport.height);
+            float visibleWidth = Mathf.Min(464, 261 * aspect);
+            float width = .82f * Mathf.Min(visibleWidth, visibleWidth / Mathf.Max(.01f, aspect) * openingLogo.width / openingLogo.height);
+            float height = width * openingLogo.height / openingLogo.width;
+            if (Mathf.Approximately(supervisor.rectTransform.rect.width, width)
+                && Mathf.Approximately(supervisor.rectTransform.rect.height, height)) return;
+            Position(supervisor.rectTransform, (464 - width) * .5f, (261 - height) * .5f, width, height);
+        }
         public void ResetNavigation(RuntimeView view)
         {
             current = view; rosterIndex = 0;
@@ -199,7 +244,8 @@ namespace MiniGame.UnityHost
             if (nextEncounter) { sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId); transcriptView.Reset(); RestorePresentation(view); }
             if (enteringDirectory) { int next = view.Patients.ToList().FindIndex(p => p.IsCurrent); if (next >= 0) rosterIndex = next; }
             bool self = view.TerminalPage == TerminalPage.SelfReview;
-            bool dir = view.TerminalPage == TerminalPage.Directory || view.ArchiveDirectoryVisible;
+            bool dir = view.TerminalPage == TerminalPage.Directory || view.ArchiveDirectoryVisible
+                || view.TerminalPage == TerminalPage.Closed && view.TerminalPowered && view.UsesTerminalDirectory;
             packageFrame.texture = assets != null ? (dir ? assets.DirectoryFrame : assets.ReviewFrame) : null;
             directory.SetActive(dir && !self); review.SetActive(!dir && !self); selfReview.SetActive(self);
             bool archived = view.TerminalPage == TerminalPage.Archive;
@@ -210,6 +256,8 @@ namespace MiniGame.UnityHost
             cameraLabel.text = "CAM " + PortraitCatalog.Unit(id).Replace("-", "") + "-01";
             string round = RoundName(sourceNodeId);
             roundLabel.text = "人员复核 / " + round;
+            directoryRequirement.text = reviewRequirement.text = "净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;
+            dailyWorkRemaining.text = Math.Max(0, view.Game.RemainingPurificationQuota).ToString("00");
             bool measure = view.Game.EncounterStage == EncounterStage.AwaitingDisposition && !archived;
             commandStatus.text = measure ? "会谈结束，可执行处置。" : view.PresentedDisposition.HasValue ? "处置已登记。" : "会谈进行中，处置暂时锁定。";
             int available = 0;
@@ -275,10 +323,10 @@ namespace MiniGame.UnityHost
         public Button AddResponse(string id, string text, int index, Action action)
         {
             var button = Button(ChoiceRoot, "Reply-" + id, text, 0, index * 35, 248, 28, action, 14);
-            var label = button.transform.Find("Label").GetComponent<Text>(); Position(label.rectTransform, 34, 5, 208, 21);
-            var clip = Panel(button.transform, "ChoiceTextViewport", Color.clear, 34, 5, 208, 21); clip.gameObject.AddComponent<RectMask2D>();
-            label.transform.SetParent(clip, false); Position(label.rectTransform, 0, 0, 208, 21);
-            var number = Label(button.transform, "ChoiceNumber", (index + 1).ToString("00"), 7, 6, 25, 18, 13, Dim);
+            var label = button.transform.Find("Label").GetComponent<Text>(); Position(label.rectTransform, 42, 4, 200, 21);
+            var clip = Panel(button.transform, "ChoiceTextViewport", Color.clear, 42, 4, 200, 21); clip.gameObject.AddComponent<RectMask2D>();
+            label.transform.SetParent(clip, false); Position(label.rectTransform, 0, 0, 200, 21);
+            var number = Label(button.transform, "ChoiceNumber", (index + 1).ToString("00"), 8, 5, 28, 18, 12, Dim);
             TerminalIndustrialSkin.RegisterLabel(button, number);
             display.InvalidateSourceLayers(); return button;
         }
@@ -291,6 +339,7 @@ namespace MiniGame.UnityHost
         }
         public void HighlightResponse(int index)
         {
+            TerminalHighlightGroup.ClearPointerHighlight(logical);
             footerText.text = "选择应答并确认";
             int number = 0;
             foreach (Transform child in ChoiceRoot)
@@ -303,6 +352,7 @@ namespace MiniGame.UnityHost
             if (active.Count == 0) return false;
             if (key == KeyCode.UpArrow || key == KeyCode.DownArrow)
             {
+                TerminalHighlightGroup.ClearPointerHighlight(logical);
                 selectedDisposition = (selectedDisposition + (key == KeyCode.UpArrow ? active.Count - 1 : 1)) % active.Count;
                 for (int i = 0; i < active.Count; i++) TerminalIndustrialSkin.SetSelected(active[i], i == selectedDisposition);
                 return true;
@@ -312,6 +362,7 @@ namespace MiniGame.UnityHost
         public bool HandleDirectoryKey(KeyCode key)
         {
             if (!directory.activeSelf || locked) return false;
+            if (key == KeyCode.UpArrow || key == KeyCode.DownArrow) TerminalHighlightGroup.ClearPointerHighlight(logical);
             if (key == KeyCode.UpArrow) SelectRoster(Mathf.Max(0, rosterIndex - 1));
             else if (key == KeyCode.DownArrow) SelectRoster(Mathf.Min(4, rosterIndex + 1));
             else if (key == KeyCode.Return || key == KeyCode.KeypadEnter) return MiniGameAudioButton.Activate(enter);
@@ -332,6 +383,7 @@ namespace MiniGame.UnityHost
                 labels[1].text = p == null ? "" : PortraitCatalog.Registration(p.Id);
                 labels[2].text = p == null ? "--" : PortraitCatalog.Unit(p.Id);
                 labels[3].text = p == null ? "未接入" : PatientStatus(p);
+                Position(labels[2].rectTransform, 8, 5, 740 - TerminalTextMetrics.Width(labels[3].text, 12) - 32, 18);
                 rosterRows[i].interactable = !locked; TerminalIndustrialSkin.SetSelected(rosterRows[i], i == rosterIndex);
             }
             var selected = rosterIndex < current.Patients.Count ? current.Patients[rosterIndex] : null;

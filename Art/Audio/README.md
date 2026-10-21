@@ -1,8 +1,10 @@
 # 音频来源与署名
 
+终端开关机逐字音使用提交 `073bdb12` 新增的 `SFX/UIType/UIType1.wav` 至 `UIType4.wav`，四段 WAV 与 Unity 副本均核对远端 LFS 哈希；逐字随机、音量设置和本轮运行版见[接入说明](../../docs/terminal-typing-audio/guide.md)。同提交的 `OptionPopSound.wav` 保留为源资料。`[verified: docs/terminal-typing-audio/source-manifest.json sourceAssets/unityImports]`
+
 远端提交 `8a9fd32c` 将原 `Dream0.wav`、`Dream1.wav` 分别改名为 `Dream1.wav`、`Dream2.wav`，两个文件的 LFS SHA-256 均未改变，并新增 `Dream3.wav`。本工程保持已序列化的声音 ID 与 Unity 副本名称；导入器按新源文件名读取。旧枯花田音乐另存为 `Music/UnusedFlowerField.wav`。以下清单保留首次接入时的历史路径和哈希，不将其当作当前目录索引。`[verified: 8a9fd32c 与父提交的 LFS oid；MiniGameAudioSetup.cs ImportClip]`
 
-本目录沿用仓库 Git LFS 交付的 **12 个 WAV：5 首音乐、7 个音效**，内容对应提交 `a50abea8ae33c058d4ac20faed960708c046a4cd`。逐文件 SHA-256、字节数已与该提交的 LFS `oid`、`size` 核对，12 项一致；结果与来源记录见 [source-manifest.json](source-manifest.json)。`[verified: source-manifest.json repositoryAcquisition、assets[].local]`
+首次接入的 **12 个 WAV：5 首音乐、7 个音效**，内容对应提交 `a50abea8ae33c058d4ac20faed960708c046a4cd`。逐文件 SHA-256、字节数已与该提交的 LFS `oid`、`size` 核对，12 项一致；历史结果与来源记录见 [source-manifest.json](source-manifest.json)。`[verified: source-manifest.json repositoryAcquisition、assets[].local]`
 
 用途与外链来自[主 Wiki](../../docs/sources/game-wiki.md)第 132–145 行及[梦境设计](../../docs/sources/dream-scenes.md)第 26、38、50 行。**本地文件名与外部歌曲的对应属于按用途作出的设计映射，未验证外部原文件与本地 WAV 的字节或波形一致性。**`[verified: docs/sources/game-wiki.md L132–145；docs/sources/dream-scenes.md L26、L38、L50]` `[opinion]`
 

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-21T02:46:13.0447612+08:00",
+  "scope": "Designer lighting authoring beside Scene and Game views, including paused Play-mode edits, persistence and shared camera effects.",
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "graphics": "Direct3D 11",
+    "editMode": {
+      "filter": "MiniGame.UnityHost.Tests.LightingDesignerToolsTests",
+      "passed": 6,
+      "failed": 0,
+      "exitCode": 0,
+      "report": "reports/editmode.xml",
+      "log": "reports/editmode.log"
+    },
+    "playMode": {
+      "filter": "MiniGame.UnityHost.Tests.RoomLightingAuthoringPlayModeTests;MiniGame.UnityHost.Tests.RoomLightingPlayModeTests;MiniGame.UnityHost.Tests.RetroScreenPlayModeTests;MiniGame.UnityHost.Tests.RetroScreenFilmGrainPlayModeTests",
+      "passed": 10,
+      "failed": 0,
+      "exitCode": 0,
+      "report": "reports/playmode.xml",
+      "log": "reports/playmode.log"
+    }
+  },
+  "covered": [
+    "Scene View image-effect eligibility",
+    "Five supplemental lights and scene-local escaped hierarchy identities",
+    "First-override Undo and Redo restore profile and live light",
+    "Consumed Scene-handle MouseUp separates drag Undo groups",
+    "Saved temporary asset survives actual scene close and reopen",
+    "Enter Play, pause, author light and base profile, exit without explicit save, force-import and verify disk plus live light",
+    "Empty override list preserves original scene lights",
+    "Night edits preserve darkness and update the next morning",
+    "Actual camera shader output, neutral bypass, grain and Overlay UI regression"
+  ],
+  "assetIntegrity": "reports/asset-integrity.json",
+  "fixtureAutosaveEvidence": "reports/fixture-autosave-before-import.asset.txt",
+  "sourceFiles": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/RoomLightingProfile.cs",
+      "sha256": "cedb0c3229982a7fdeb9fa879d570d9c55f925faab6ac703b3d3944056940a88",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/RoomLightingController.cs",
+      "sha256": "b6c4669b775e2a65e34d78d8a1b67aa045d242d7df5d9943c945c3709f6b6339",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+      "sha256": "0c8b8ca1606ba408b19bd7afd21f8004a789590ed744f622109b06bca1592567",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/RetroScreenEffect.cs",
+      "sha256": "88964112e8890ecd7320131bffa7134e2b7727879dff76d544cb78d98274ab27",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/RoomLightingWindow.cs",
+      "sha256": "8e67047a8f1fd4dc52628172739ce729ad81eb132c6d4312e711c9eff5f0cd09",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/RoomLightingAuthoring.cs",
+      "sha256": "280d5a15450ee2f56a0d862ad5fbc777781f36259ac24c403a36bf3e9d6cded4",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/RetroScreenEditor.cs",
+      "sha256": "3cf2cb3dfdd26474f040424a358ed9953b9db5e9892d8397d894cb00ed179d29",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/EditMode/LightingDesignerToolsTests.cs",
+      "sha256": "0ac565d70a750a1c52ec6901ff7d82aec4c95e46dff58e3117598157c39cfee8",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/RoomLightingAuthoringPlayModeTests.cs",
+      "sha256": "0f83937e85dc43334acceae9fdba7e1d788e2ae3a89c6207f9a34a5106a8f463",
+      "isolatedCopyMatches": true
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/RetroScreenPlayModeTests.cs",
+      "sha256": "0cf7aae9da1b7f03d834a23301c0371c4f7a4fee2ff9758f2fbda4ce7bfc1c68",
+      "isolatedCopyMatches": true
+    }
+  ],
+  "review": {
+    "production": "No bugs found in final read-only review",
+    "finalModeTransitionChange": "Immediate application on EnteredEditMode/EnteredPlayMode plus one deduplicated delayed reapplication; no profile mutation",
+    "diffCheck": "git diff --check for edited source and documentation: exit 0"
+  },
+  "limits": [
+    "No manual mouse-and-keyboard acceptance of the docked Editor windows in this run. Scene View effect support was checked by attribute; camera shader rendering was exercised in PlayMode.",
+    "No new standalone Windows build; this change is the Unity Editor designer workflow.",
+    "Core .NET tests were not rerun because this change does not edit core rule source.",
+    "Historical wall and lighting Player validation remains in docs/wall-lighting/verification.json and is not counted here."
+  ],
+  "documentationLinks": {
+    "checked": 27,
+    "broken": 0
+  }
+}

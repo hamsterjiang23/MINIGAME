@@ -8,7 +8,8 @@ namespace MiniGame.UnityHost
     public enum MiniGameAudioChannel
     {
         MenuMusic = 0, GameplayMusic = 1, DreamMusic = 2, ComputerNoise = 3, Projector = 4,
-        World = 5, UI = 6, Dialogue = 7, Scanner = 8, Lamp = 9, EndingMusic = 10, Ocean = 11, Voice = 12, TerminalPower = 13
+        World = 5, UI = 6, Dialogue = 7, Scanner = 8, Lamp = 9, EndingMusic = 10, Ocean = 11, Voice = 12, TerminalPower = 13,
+        TerminalTyping = 14, Door = 15
     }
 
     /// <summary>Scene-owned named sources, sound-bank lookup and interruptible fades.</summary>
@@ -26,6 +27,10 @@ namespace MiniGame.UnityHost
 
         private readonly Dictionary<MiniGameAudioChannel, Channel> channels = new Dictionary<MiniGameAudioChannel, Channel>();
         private readonly Dictionary<string, float> mixerValues = new Dictionary<string, float>();
+        private static readonly MiniGameSound[] TypingSounds = { MiniGameSound.TerminalType1, MiniGameSound.TerminalType2,
+            MiniGameSound.TerminalType3, MiniGameSound.TerminalType4 };
+        private readonly MiniGameSound[] typingPool = new MiniGameSound[TypingSounds.Length];
+        private readonly System.Random typingRandom = new System.Random();
         private MiniGameAudioProfile profile;
         private AudioMixer appliedMixer;
         public MiniGameAudioProfile Profile => profile;
@@ -91,6 +96,15 @@ namespace MiniGame.UnityHost
             state.Source.PlayOneShot(entry.Clip, Unit(entry.Volume));
             SoundPlayed?.Invoke(channel, sound);
             return true;
+        }
+
+        public bool PlayTerminalTyping()
+        {
+            if (!isActiveAndEnabled || profile == null) return false;
+            int count = 0;
+            foreach (var sound in TypingSounds)
+                if (profile.GetClip(sound) != null) typingPool[count++] = sound;
+            return count > 0 && PlayOneShot(MiniGameAudioChannel.TerminalTyping, typingPool[typingRandom.Next(count)]);
         }
 
         public void Stop(MiniGameAudioChannel channel, float fadeSeconds = 0)
@@ -203,7 +217,8 @@ namespace MiniGame.UnityHost
             source.outputAudioMixerGroup = id == MiniGameAudioChannel.MenuMusic || id == MiniGameAudioChannel.GameplayMusic
                 || id == MiniGameAudioChannel.DreamMusic || id == MiniGameAudioChannel.EndingMusic ? profile.MusicGroup
                 : id == MiniGameAudioChannel.ComputerNoise || id == MiniGameAudioChannel.Projector || id == MiniGameAudioChannel.Ocean ? profile.AmbienceGroup
-                : id == MiniGameAudioChannel.UI || id == MiniGameAudioChannel.Dialogue || id == MiniGameAudioChannel.Voice ? profile.UIGroup : profile.SfxGroup;
+                : id == MiniGameAudioChannel.UI || id == MiniGameAudioChannel.Dialogue || id == MiniGameAudioChannel.Voice
+                    || id == MiniGameAudioChannel.TerminalTyping ? profile.UIGroup : profile.SfxGroup;
         }
 
         private void ApplyVolume(string parameter, float value)

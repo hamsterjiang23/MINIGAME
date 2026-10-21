@@ -1,5 +1,11 @@
 # 梦境与海滩终局：来源及本轮裁决
 
+## 2026-10-21 更新：每日梦境采用 McQueen 的 30 张序列图
+
+当前视觉素材优先采用 McQueenMa777 提交 `87d9c3ec` 的 `Art/Dream/Dream1–3`。用户确认按 1–10 编号组成每晚动画，并授权按照世界观增强后处理。Day2 的当前画面改为倒悬花海；下文“无尽长路”等附件描述保留为旧版来源，不再代表当前绑定画面。[verified: 用户本轮确认；DreamImageSequenceSetup.Import；source-manifest.json]
+
+原始图片未改写，Unity 副本按帧编号命名并保持 SHA-256 一致；新增效果仅在运行时 Shader 中叠加。详见[图片序列说明](image-sequence-notes.md)。[verified: DreamImageSequenceSetup.Import；DreamProjectionAnimation.shader；DreamImageSequence20261021/source-manifest.json]
+
 ## 每日梦境采用最新附件
 
 本轮采用用户提供的 `E:\Downloads\梦场景.docx`，仓库原件为 [Art/Dreams/Reference/梦场景.docx](../../Art/Dreams/Reference/梦场景.docx)。两份 SHA-256 均为 `d6b7769fba7b6fce710545a0dd3d9796f6ac79c8436dec8b0e8dbd857d1a15b1`；正文包含 Day1–3 和 **9 张正文参考图**。这份附件在本轮制作中优先于[旧四梦境记录](../sources/dream-scenes.md)，旧记录保留历史身份。`[verified: 两份 DOCX 的本轮 Get-FileHash；最新 DOCX document.xml P2–19；本轮已接受的来源优先级]`

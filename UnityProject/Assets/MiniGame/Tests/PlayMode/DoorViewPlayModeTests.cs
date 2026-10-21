@@ -43,7 +43,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(doorCamera.Handles(door), Is.True, "DoorViewCamera needs the door, player and both authored pose references.");
             Assert.That(doorCamera.InsidePose, Is.Not.Null);
             Assert.That(doorCamera.OutsidePose, Is.Not.Null);
-            Assert.That(Vector3.Distance(doorCamera.InsidePose.position, doorCamera.OutsidePose.position), Is.GreaterThan(.1f));
+            Assert.That(Vector3.Distance(doorCamera.InsidePose.position, doorCamera.OutsidePose.position), Is.LessThan(.001f),
+                "The main room observes from its aligned threshold without continuing into the hall.");
 
             var marker = GameObject.Find("Door approach");
             Assert.That(marker, Is.Not.Null, "The authored Door approach marker is required.");
@@ -62,7 +63,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(45000)]
-        public IEnumerator EntryAlignsBeforePushingAndEPathReturnsBeforeClosingWithoutMovingTheBody()
+        public IEnumerator EntryStopsAtThresholdAndEPathReturnsBeforeClosingWithoutMovingTheBody()
         {
             var room = CapturePose();
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "door-view-room");
@@ -82,7 +83,7 @@ namespace MiniGame.UnityHost.Tests
                 {
                     Assert.That(host.Runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.DoorMotion), Describe());
                     Assert.That(host.Runtime.GetView().Cue?.Token, Is.EqualTo(openingToken));
-                    Assert.That(door.MotionCompletionBlocked, Is.True, "Physical opening must not acknowledge before the push finishes.");
+                    Assert.That(door.MotionCompletionBlocked, Is.True, "Physical opening must not acknowledge before alignment finishes.");
                 }
                 if (doorCamera.Phase == DoorCameraPhase.WaitingForDoor)
                     AssertCameraAt(doorCamera.InsidePose.position, doorCamera.InsidePose.rotation, room.FieldOfView);
@@ -90,8 +91,8 @@ namespace MiniGame.UnityHost.Tests
             }
             Assert.That(host.Runtime.GetView().Input, Is.EqualTo(InputContext.DoorView), "Entry timed out: " + Describe());
             Assert.That(phases.IndexOf(DoorCameraPhase.Aligning), Is.GreaterThanOrEqualTo(0));
-            Assert.That(phases.IndexOf(DoorCameraPhase.Pushing), Is.GreaterThan(phases.IndexOf(DoorCameraPhase.Aligning)),
-                "Observed phases: " + string.Join(", ", phases));
+            Assert.That(phases, Has.No.Member(DoorCameraPhase.Pushing),
+                "Door opening must stop at its first aligned threshold. Observed phases: " + string.Join(", ", phases));
             AssertOutside(room);
             Assert.That(host.Runtime.CompleteCue(openingToken).Accepted, Is.False, "Opening acknowledgment is single-use.");
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "door-view-outside");
@@ -129,13 +130,13 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(45000)]
-        public IEnumerator PauseFreezesPushAndReturnAndResumesTheSameCue()
+        public IEnumerator PauseFreezesAlignmentAndReturnAndResumesTheSameCue()
         {
             var room = CapturePose();
             Assert.That(player.InteractFocused(), Is.True);
-            yield return Until(() => doorCamera.Phase == DoorCameraPhase.Pushing, "camera reaches its push phase");
+            yield return Until(() => doorCamera.Phase == DoorCameraPhase.Aligning, "camera reaches its alignment phase");
             yield return PauseAndAssertFrozen(room);
-            yield return Until(() => host.Runtime.GetView().Input == InputContext.DoorView, "push resumes and reaches the outside hold");
+            yield return Until(() => host.Runtime.GetView().Input == InputContext.DoorView, "alignment resumes and reaches the threshold hold");
             AssertOutside(room);
             Assert.That(player.InteractFocused(), Is.True);
             yield return Until(() => doorCamera.Phase == DoorCameraPhase.Returning
@@ -261,60 +262,44 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(45000)]
-        public IEnumerator FixedDoorAlignmentFacesOutwardAndPushesStraightAlongTheClosedDoorNormal()
+        public IEnumerator FixedDoorAlignmentFacesOutwardAndHoldsInsideTheThresholdWithoutForwardDrift()
         {
             var room = CapturePose();
             var transforms = SceneManager.GetActiveScene().GetRootGameObjects()
                 .SelectMany(root => root.GetComponentsInChildren<Transform>(true)).ToArray();
             var origin = transforms.Single(item => item.name == "Unity_ReferenceOrigin");
             var right = transforms.Single(item => item.name == "Unity_ReferenceRight");
-            // Derive the closed-door normal from the room's reference frame, independently of camera anchors and the animated leaf.
             var outward = (right.position - origin.position).normalized;
             Assert.That(outward.sqrMagnitude, Is.GreaterThan(.999f), "The room reference markers must define the outward direction.");
             Assert.That(Mathf.Abs(outward.y), Is.LessThan(.0001f), "The closed doorway normal must remain horizontal.");
-            var sideways = Vector3.Cross(Vector3.up, outward).normalized;
+            var doorway = transforms.Single(item => item.name == "Unity_DoorCentre");
             var insidePosition = doorCamera.InsidePose.position;
+            Assert.That(Vector3.Dot(insidePosition - doorway.position, outward), Is.EqualTo(-.85f).Within(.001f),
+                "The observation point must remain 0.85 metres inside the actual doorway plane.");
             Assert.That(player.InteractFocused(), Is.True);
-            yield return Until(() => doorCamera.Phase == DoorCameraPhase.WaitingForDoor,
-                "fixed front alignment completes before the straight outward push");
-            Assert.That(Vector3.Distance(camera.transform.position, insidePosition), Is.LessThan(.001f));
-            Assert.That(Vector3.Dot(camera.transform.forward, outward), Is.GreaterThan(.9999f),
-                "Completed alignment must face perpendicular to the closed doorway. " + Describe());
-
-            yield return Until(() => doorCamera.Phase == DoorCameraPhase.Pushing, "normal-direction push begins");
-            float previousDistance = 0;
-            int pushingFrames = 0;
             float deadline = Time.realtimeSinceStartup + 10f;
-            while (doorCamera.Phase == DoorCameraPhase.Pushing && Time.realtimeSinceStartup < deadline)
+            while (host.Runtime.GetView().Input != InputContext.DoorView && Time.realtimeSinceStartup < deadline)
             {
-                var displacement = camera.transform.position - insidePosition;
-                float distance = Vector3.Dot(displacement, outward);
-                Assert.That(Vector3.Dot(camera.transform.forward, outward), Is.GreaterThan(.9999f),
-                    "The push must keep looking straight through the doorway, without a sideways yaw. " + Describe());
-                Assert.That(Vector3.Cross(displacement, outward).magnitude, Is.LessThan(.001f),
-                    "The complete push displacement must stay parallel to the independently derived door normal.");
-                Assert.That(Mathf.Abs(Vector3.Dot(displacement, sideways)), Is.LessThan(.001f), "No lateral drift during the push.");
-                Assert.That(Mathf.Abs(displacement.y), Is.LessThan(.001f), "No vertical drift during the push.");
-                Assert.That(distance, Is.GreaterThanOrEqualTo(previousDistance - .0001f), "Push progress must not reverse.");
+                Assert.That(doorCamera.Phase, Is.Not.EqualTo(DoorCameraPhase.Pushing), "Opening does not include a further corridor dolly.");
+                if (doorCamera.Phase == DoorCameraPhase.WaitingForDoor)
+                    AssertCameraAt(insidePosition, doorCamera.InsidePose.rotation, room.FieldOfView);
                 AssertBody(room);
-                previousDistance = distance;
-                pushingFrames++;
                 yield return null;
             }
-            Assert.That(pushingFrames, Is.GreaterThan(0), "The test must observe the physical push before accepting the outside hold.");
-            yield return Until(() => host.Runtime.GetView().Input == InputContext.DoorView, "straight push reaches the outside hold");
             AssertOutside(room);
-            for (int frame = 0; frame < 3; frame++)
+            for (int frame = 0; frame < 10; frame++)
             {
-                var displacement = camera.transform.position - insidePosition;
-                Assert.That(Vector3.Dot(camera.transform.forward, outward), Is.GreaterThan(.9999f), "Outside hold must keep facing the door normal.");
-                Assert.That(Vector3.Cross(displacement, outward).magnitude, Is.LessThan(.001f));
-                Assert.That(Vector3.Dot(displacement, outward), Is.GreaterThan(.1f));
-                Assert.That(Mathf.Abs(displacement.y), Is.LessThan(.001f));
+                AssertCameraAt(insidePosition, doorCamera.InsidePose.rotation, room.FieldOfView);
+                Assert.That(Vector3.Dot(camera.transform.forward, outward), Is.GreaterThan(.9999f),
+                    "The threshold hold must keep looking through the door normal.");
                 yield return null;
             }
-            Assert.That(player.InteractFocused(), Is.True, "E must still return after the corrected normal-direction camera move.");
-            yield return Until(() => host.Runtime.GetView().Input == InputContext.World, "E return and door closure after the straight push");
+            yield return PrototypePlayModeTests.CaptureIfRequested(host, "door-view-threshold");
+            Debug.Log("MINIGAME_DOOR_THRESHOLD_HOLD position=" + camera.transform.position.ToString("F5")
+                + " alignedDistance=" + Vector3.Distance(camera.transform.position, insidePosition).ToString("F6")
+                + " signedDoorwayDistance=" + Vector3.Dot(camera.transform.position - doorway.position, outward).ToString("F6"));
+            Assert.That(player.InteractFocused(), Is.True, "E must still return from the threshold hold.");
+            yield return Until(() => host.Runtime.GetView().Input == InputContext.World, "E return and door closure after the threshold hold");
             AssertReturned(room);
         }
 

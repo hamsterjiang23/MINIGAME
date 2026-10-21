@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39979c7b591244c7a61c2731d6b79398, type: 3}
+  m_Name: FamilyLetter
+  m_EditorClassIdentifier:
+  id: family-letter
+  title: "桌子上的信件"
+  interactionLabel: "阅读信件"
+  text: "你能考上国家干部，我们全家都很高兴。咱们家总算出了个有出息的人！听说和平部的工作很体面，坐办公室，吃穿都有国家照顾，还能帮助那些危险的人重新过上正常的生活，功德无量。能做这样的工作是你的福气。\n\n现在国家太平，百姓安居乐业，全靠领袖这些年的辛劳。你既然进了和平部，就更要懂得感恩，服从领导安排，凡事以国家的利益为先。记得把衣服收拾整齐，见了领导要主动问好。好好工作，别给家里丢脸。\n\n等领到制服，记得寄张照片回来，你爸想拿给亲戚们看看。\n\n爱你的\n\n父母"
+  changesWithDay: 0
+  dailyTexts: []

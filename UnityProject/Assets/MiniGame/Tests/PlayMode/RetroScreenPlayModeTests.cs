@@ -18,7 +18,6 @@ namespace MiniGame.UnityHost.Tests
             var effect = host.Player.ViewCamera.GetComponent<RetroScreenEffect>();
             Assert.That(effect, Is.Not.Null);
             Assert.That(effect.Profile, Is.SameAs(Resources.Load<RetroScreenProfile>("RoomLightingReferenceRetro")));
-            Assert.That(effect.Profile.FullscreenQuantization, Is.False);
             Assert.That(host.Screen.Canvas.renderMode, Is.EqualTo(RenderMode.ScreenSpaceOverlay));
             string profileBefore = JsonUtility.ToJson(effect.Profile);
             effect.PreviewOriginal = true;

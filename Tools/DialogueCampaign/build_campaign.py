@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "Tools/DialogueAtlas"))
 from build_atlas import NS, REL_ID, read_workbook
+from updated_source import apply_repairs, build_updated_meeting, normalize_rows, source_columns
 
 Row = dict[str, str]
 Record = dict[str, object]
@@ -208,7 +209,7 @@ def build_meeting(patient: Record, rows: list[Row], day: int, mappings: list[Rec
     return {"patientId": pid, "startNode": start, "endNode": end, "yarnSource": "\n".join(yarn)}
 
 
-def build(smoke: bool = False) -> tuple[Record, Record]:
+def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Record, Record]:
     config = cast(Record, json.loads((HERE / "conversion-config.json").read_text(encoding="utf-8-sig")))
     patients = cast(list[Record], config["patients"])
     if smoke:
@@ -217,44 +218,68 @@ def build(smoke: bool = False) -> tuple[Record, Record]:
     adaptations: list[Record] = []
     books: list[Record] = []
     portraits: list[Record] = []
+    excluded: list[Record] = []
+    repairs: list[Record] = []
+    source_directory = source_directory or ROOT / "Art/chat_excel"
     days: list[Record] = [{"day": day, "quota": config["tutorialQuota"] if day == 0 else config["dailyQuota"], "meetings": []} for day in range(3 if smoke else 4)]
     for patient in patients:
-        paths = [p for p in (ROOT / "Art/chat_excel").glob("*.xlsx") if not p.name.startswith("~$") and str(patient["match"]) in p.name]
+        paths = [p for p in source_directory.glob("*.xlsx") if not p.name.startswith("~$") and str(patient["match"]) in p.name]
         assert len(paths) == 1
         path = paths[0]
         sheets, cached, recovered = read_source(path)
         rows = sheets["对话流程"][1:]
-        assert len({r["J"] for r in rows}) == len(rows)
+        columns = source_columns(sheets["对话流程"][0])
+        if columns:
+            normalized = normalize_rows(rows, columns)
+            active, source_repairs, source_excluded = apply_repairs(
+                str(patient["id"]), digest(path), normalized, HERE / "source-repairs.json")
+            repairs.extend(source_repairs)
+            excluded.extend(source_excluded)
+        else:
+            assert len({r["J"] for r in rows}) == len(rows)
+            active = rows
         for row in sheets["立绘ID"][1:]:
             portraits.append({"id": row["A"], "label": row["B"]})
-        book = {"patientId": patient["id"], "file": path.relative_to(ROOT).as_posix(), "sha256": digest(path), "rows": rows,
-                "cachedRows": cached["对话流程"][1:], "recoveredCells": recovered}
+        file = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else path.as_posix()
+        book = {"patientId": patient["id"], "file": file, "sha256": digest(path), "rows": rows,
+                "cachedRows": cached["对话流程"][1:], "recoveredCells": recovered,
+                "schemaColumns": columns, "activeRows": active}
         books.append(book)
         for day in days:
             number = int(str(day["day"]))
             if (patient["id"] == "tutorial") != (number == 0):
                 continue
-            cast(list[Record], day["meetings"]).append(build_meeting(patient, rows, number, mappings, adaptations))
+            meeting = (build_updated_meeting(patient, active, number, columns, mappings, adaptations)
+                       if columns else build_meeting(patient, active, number, mappings, adaptations))
+            cast(list[Record], day["meetings"]).append(meeting)
     variants = json.loads((HERE / "text-variants.json").read_text(encoding="utf-8-sig")) if not smoke else []
     rules = [{"id": p["id"], "name": p["name"], "firstDay": p["firstDay"], "initialTrust": config["initialTrust"],
               "treatmentLimit": 3, "treatmentOutcome": p["treatmentOutcome"], "treatmentDelayDays": p.get("treatmentDelayDays", 0),
               "attacksAfterRelease": p.get("attacksAfterRelease", False)} for p in patients]
     sources = [str(m["yarnSource"]) for d in days for m in cast(list[Record], d["meetings"])]
-    package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": "1.0.0-development", "yarnSource": "\n".join(sources), "portraits": portraits,
-               "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": "tutorial__D0_T1", "endNode": "tutorial__END_DAY0", "initialTrust": 0, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
+    tutorial = cast(list[Record], days[0]["meetings"])[0]
+    package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": "1.1.0-development", "yarnSource": "\n".join(sources), "portraits": portraits,
+               "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": tutorial["startNode"], "endNode": tutorial["endNode"], "initialTrust": 0, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
                "campaign": {"patients": rules, "days": days, "releaseThreshold": config["releaseThreshold"], "variants": variants}}
     all_mappings = {str(m["sourceId"]): m for m in mappings}
     for variant in variants:
         assert variant["sourceId"] in all_mappings, variant
     for book in books:
-        for row in cast(list[Row], book["rows"]):
-            if smoke and day_of(row["J"]) == 3:
+        id_column = "id" if book["schemaColumns"] else "J"
+        for row in cast(list[Row], book["activeRows"]):
+            if smoke and day_of(row[id_column]) == 3:
                 continue
-            assert any(m["patientId"] == book["patientId"] and m["originalId"] == row["J"] for m in mappings), row
+            assert any(m["patientId"] == book["patientId"] and m["originalId"] == row[id_column]
+                       and m["row"] == int(row["row"]) for m in mappings), row
     audit = {"sourceRowCount": sum(len(cast(list[Row], b["rows"])) for b in books), "books": books, "mappings": mappings, "adaptations": adaptations,
+             "activeSourceRowCount": sum(len(cast(list[Row], b["activeRows"])) for b in books),
+             "excludedSourceRowCount": len(excluded), "excludedRows": excluded, "repairs": repairs,
+             "repairManifestHash": digest(HERE / "source-repairs.json"),
              "configHash": digest(HERE / "conversion-config.json"), "variantHash": digest(HERE / "text-variants.json"),
              "meetingCount": sum(len(cast(list[Record], d["meetings"])) for d in days), "declaredPortraits": len(portraits),
-             "referencedPortraits": sorted({r["M"] for b in books for r in cast(list[Row], b["rows"]) if r.get("M")})}
+             "referencedPortraits": sorted({r["portrait" if b["schemaColumns"] else "M"]
+                                            for b in books for r in cast(list[Row], b["activeRows"])
+                                            if r.get("portrait" if b["schemaColumns"] else "M")})}
     return package, audit
 
 

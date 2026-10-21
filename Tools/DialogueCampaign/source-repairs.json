@@ -1,0 +1,2972 @@
+{
+  "version": 1,
+  "policy": "User approved: retain earlier complete branches, exclude later conflicting blocks, restore missing edges from previous corresponding dialogue. Original XLSX stays unchanged.",
+  "books": {
+    "tutorial": {
+      "sourceSha256": "ebbcb4c75c754e603d91c92101a1573ac939d8f899400c8313a8e60f3538b843",
+      "excludedRanges": [
+        {
+          "firstRow": 10,
+          "lastRow": 10,
+          "reason": "Orphan legacy final sentence repeats the completed primary tutorial ending."
+        }
+      ],
+      "repairs": [
+        {
+          "row": 9,
+          "expected": {
+            "id": "P00_D0_R1_ACTION_002",
+            "next": ""
+          },
+          "set": {
+            "next": "END_DAY0"
+          },
+          "kind": "missing-tutorial-terminal",
+          "evidence": {
+            "rule": "Last authored action response in the complete tutorial branch; following row is orphan legacy ID."
+          }
+        }
+      ]
+    },
+    "diplomat": {
+      "sourceSha256": "b1ceac6e1e2797775f7a8b82fd7d480e106ad87182563bce08733ac9cef76f17",
+      "excludedRanges": [
+        {
+          "firstRow": 281,
+          "lastRow": 343,
+          "reason": "Later appended conflicting Day3 branch; earlier Day3 R6 graph is complete and retained."
+        }
+      ],
+      "repairs": []
+    },
+    "battlefield-doctor": {
+      "sourceSha256": "c37ed3fa8a1cf44f30952eab9427668b7a57a22c658b76d7f1b94386b95fed80",
+      "excludedRanges": [
+        {
+          "firstRow": 233,
+          "lastRow": 234,
+          "reason": "Extra duplicate treatment options inside damaged copied Day3 tail; retain earlier complete treatment branch at row226."
+        },
+        {
+          "firstRow": 242,
+          "lastRow": 318,
+          "exceptRows": [
+            255
+          ],
+          "reason": "Appended duplicated/conflicting Day3 blocks; retain primary rows134:241 and recover the missing purification response from row255 only."
+        }
+      ],
+      "repairs": [
+        {
+          "row": 134,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_001",
+            "next": "",
+            "open": "先告诉我这是哪一天。我知道地点，可日期像被擦过。"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_001,P04_D3_R1_OPTION_002,P04_D3_R1_OPTION_003",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 210,
+            "oldId": "ED_D3_R1_START",
+            "oldRound": "R1",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O1",
+              "ED_D3_R1_O2",
+              "ED_D3_R1_O3"
+            ],
+            "oldText": "先告诉我这是哪一天。我知道地点，可日期像被擦过。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 135,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_001",
+            "next": "",
+            "option": "这是第三天。你在治疗中心。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_001",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 211,
+            "oldId": "ED_D3_R1_O1",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O1_T1"
+            ],
+            "oldText": "这是第三天。你在治疗中心。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 136,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_001",
+            "next": "",
+            "response": "第三天。好，我还能接上。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_002",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 212,
+            "oldId": "ED_D3_R1_O1_T1",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O1_T2"
+            ],
+            "oldText": "第三天。好，我还能接上。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 137,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_002",
+            "next": "",
+            "response": "谢谢。我记下了。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_003",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 213,
+            "oldId": "ED_D3_R1_O1_T2",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O1_T3"
+            ],
+            "oldText": "谢谢。我记下了。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 138,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_003",
+            "next": "",
+            "response": "别看仪器，看着我说。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_002",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 214,
+            "oldId": "ED_D3_R1_O1_T3",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R2_START",
+            "resolvedOldTargets": [
+              "ED_D3_R2_START"
+            ],
+            "oldText": "别看仪器，看着我说。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 139,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_002",
+            "next": "",
+            "option": "日期不重要，你需要休息。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_004",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 215,
+            "oldId": "ED_D3_R1_O2",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O2_T1"
+            ],
+            "oldText": "日期不重要，你需要休息。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 140,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_004",
+            "next": "",
+            "response": "对失去记忆的人，日期很重要。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_005",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 216,
+            "oldId": "ED_D3_R1_O2_T1",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O2_T2"
+            ],
+            "oldText": "对失去记忆的人，日期很重要。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 141,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_005",
+            "next": "",
+            "response": "不要替我缩小问题。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_006",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 217,
+            "oldId": "ED_D3_R1_O2_T2",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O2_T3"
+            ],
+            "oldText": "不要替我缩小问题。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 142,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_006",
+            "next": "",
+            "response": "休息不是答案。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_002",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 218,
+            "oldId": "ED_D3_R1_O2_T3",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R2_START",
+            "resolvedOldTargets": [
+              "ED_D3_R2_START"
+            ],
+            "oldText": "休息不是答案。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 143,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_003",
+            "next": "",
+            "option": "你还记得昨天说了什么吗？"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_007",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 219,
+            "oldId": "ED_D3_R1_O3",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O3_T1"
+            ],
+            "oldText": "你还记得昨天说了什么吗？",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 144,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_007",
+            "next": "",
+            "response": "记得一个选择，和一个没等到我的人。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_008",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 220,
+            "oldId": "ED_D3_R1_O3_T1",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O3_T2"
+            ],
+            "oldText": "记得一个选择，和一个没等到我的人。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 145,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_008",
+            "next": "",
+            "response": "片段。顺序不稳。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_009",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 221,
+            "oldId": "ED_D3_R1_O3_T2",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R1_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R1_O3_T3"
+            ],
+            "oldText": "片段。顺序不稳。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 146,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_009",
+            "next": "",
+            "response": "这正是我害怕的。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_002",
+            "round": "R1"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 222,
+            "oldId": "ED_D3_R1_O3_T3",
+            "oldRound": "R1",
+            "oldNext": "ED_D3_R2_START",
+            "resolvedOldTargets": [
+              "ED_D3_R2_START"
+            ],
+            "oldText": "这正是我害怕的。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 147,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_002",
+            "next": "",
+            "open": "我开始担心，明天我只记得自己有罪，却忘了为什么。"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_004,P04_D3_R1_OPTION_005,P04_D3_R1_OPTION_006",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 223,
+            "oldId": "ED_D3_R2_START",
+            "oldRound": "R2",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O1",
+              "ED_D3_R2_O2",
+              "ED_D3_R2_O3"
+            ],
+            "oldText": "我开始担心，明天我只记得自己有罪，却忘了为什么。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 148,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_004",
+            "next": "",
+            "option": "我可以为你保存记录。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_010",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 224,
+            "oldId": "ED_D3_R2_O1",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O1_T1"
+            ],
+            "oldText": "我可以为你保存记录。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 149,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_010",
+            "next": "",
+            "response": "记录有用，但不能代替我自己记得。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_011",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 225,
+            "oldId": "ED_D3_R2_O1_T1",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O1_T2"
+            ],
+            "oldText": "记录有用，但不能代替我自己记得。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 150,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_011",
+            "next": "",
+            "response": "请完整保存。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_012",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 226,
+            "oldId": "ED_D3_R2_O1_T2",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O1_T3"
+            ],
+            "oldText": "请完整保存。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 151,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_012",
+            "next": "",
+            "response": "记录在谁手里，意义就不同。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_003",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 227,
+            "oldId": "ED_D3_R2_O1_T3",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R3_START",
+            "resolvedOldTargets": [
+              "ED_D3_R3_START"
+            ],
+            "oldText": "记录在谁手里，意义就不同。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 152,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_005",
+            "next": "",
+            "option": "忘记也许会让你轻松。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_013",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 228,
+            "oldId": "ED_D3_R2_O2",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O2_T1"
+            ],
+            "oldText": "忘记也许会让你轻松。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 153,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_013",
+            "next": "",
+            "response": "轻松不等于活着。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_014",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 229,
+            "oldId": "ED_D3_R2_O2_T1",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O2_T2"
+            ],
+            "oldText": "轻松不等于活着。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 154,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_014",
+            "next": "",
+            "response": "也许会。可那还是我吗？"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_015",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 230,
+            "oldId": "ED_D3_R2_O2_T2",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O2_T3"
+            ],
+            "oldText": "也许会。可那还是我吗？",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 155,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_015",
+            "next": "",
+            "response": "你们总把空白叫康复。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_003",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 231,
+            "oldId": "ED_D3_R2_O2_T3",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R3_START",
+            "resolvedOldTargets": [
+              "ED_D3_R3_START"
+            ],
+            "oldText": "你们总把空白叫康复。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 156,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_006",
+            "next": "",
+            "option": "你害怕失去对他们的在乎。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_016",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 232,
+            "oldId": "ED_D3_R2_O3",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O3_T1"
+            ],
+            "oldText": "你害怕失去对他们的在乎。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 157,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_016",
+            "next": "",
+            "response": "是。痛苦证明不了善良，但不在乎也不是治疗。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_017",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 233,
+            "oldId": "ED_D3_R2_O3_T1",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O3_T2"
+            ],
+            "oldText": "是。痛苦证明不了善良，但不在乎也不是治疗。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 158,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_017",
+            "next": "",
+            "response": "至少你听明白了。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_018",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 234,
+            "oldId": "ED_D3_R2_O3_T2",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R2_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R2_O3_T3"
+            ],
+            "oldText": "至少你听明白了。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 159,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_018",
+            "next": "",
+            "response": "别把它简化成一个指标。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_003",
+            "round": "R2"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 235,
+            "oldId": "ED_D3_R2_O3_T3",
+            "oldRound": "R2",
+            "oldNext": "ED_D3_R3_START",
+            "resolvedOldTargets": [
+              "ED_D3_R3_START"
+            ],
+            "oldText": "别把它简化成一个指标。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 160,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_003",
+            "next": "",
+            "open": "昨晚我想过，如果什么都不记得，也许能睡一觉。"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_007,P04_D3_R1_OPTION_008,P04_D3_R1_OPTION_009",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 236,
+            "oldId": "ED_D3_R3_START",
+            "oldRound": "R3",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O1",
+              "ED_D3_R3_O2",
+              "ED_D3_R3_O3"
+            ],
+            "oldText": "昨晚我想过，如果什么都不记得，也许能睡一觉。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 161,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_007",
+            "next": "",
+            "option": "想停止痛苦并不可耻。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_019",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 237,
+            "oldId": "ED_D3_R3_O1",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O1_T1"
+            ],
+            "oldText": "想停止痛苦并不可耻。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 162,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_019",
+            "next": "",
+            "response": "谢谢。可我还要决定代价。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_020",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 238,
+            "oldId": "ED_D3_R3_O1_T1",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O1_T2"
+            ],
+            "oldText": "谢谢。可我还要决定代价。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 163,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_020",
+            "next": "",
+            "response": "我知道。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_021",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 239,
+            "oldId": "ED_D3_R3_O1_T2",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O1_T3"
+            ],
+            "oldText": "我知道。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 164,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_021",
+            "next": "",
+            "response": "别把这句话当成同意净化。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_004",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 240,
+            "oldId": "ED_D3_R3_O1_T3",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R4_START",
+            "resolvedOldTargets": [
+              "ED_D3_R4_START"
+            ],
+            "oldText": "别把这句话当成同意净化。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 165,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_008",
+            "next": "",
+            "option": "那净化可能正适合你。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_022",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 241,
+            "oldId": "ED_D3_R3_O2",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O2_T1"
+            ],
+            "oldText": "那净化可能正适合你。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 166,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_022",
+            "next": "",
+            "response": "我说想睡，不是想消失。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_023",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 242,
+            "oldId": "ED_D3_R3_O2_T1",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O2_T2"
+            ],
+            "oldText": "我说想睡，不是想消失。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 167,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_023",
+            "next": "",
+            "response": "你只听见了方便的部分。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_024",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 243,
+            "oldId": "ED_D3_R3_O2_T2",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O2_T3"
+            ],
+            "oldText": "你只听见了方便的部分。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 168,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_024",
+            "next": "",
+            "response": "所以你一直在等我自己签字。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_004",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 244,
+            "oldId": "ED_D3_R3_O2_T3",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R4_START",
+            "resolvedOldTargets": [
+              "ED_D3_R4_START"
+            ],
+            "oldText": "所以你一直在等我自己签字。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 169,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_009",
+            "next": "",
+            "option": "你希望保留什么？"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_025",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 245,
+            "oldId": "ED_D3_R3_O3",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O3_T1"
+            ],
+            "oldText": "你希望保留什么？",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 170,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_025",
+            "next": "",
+            "response": "名字、选择、以及我没有回去的事实。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_026",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 246,
+            "oldId": "ED_D3_R3_O3_T1",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O3_T2"
+            ],
+            "oldText": "名字、选择、以及我没有回去的事实。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 171,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_026",
+            "next": "",
+            "response": "至少保留我为何难过。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_027",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 247,
+            "oldId": "ED_D3_R3_O3_T2",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R3_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R3_O3_T3"
+            ],
+            "oldText": "至少保留我为何难过。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 172,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_027",
+            "next": "",
+            "response": "我希望保留提问的能力。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_004",
+            "round": "R3"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 248,
+            "oldId": "ED_D3_R3_O3_T3",
+            "oldRound": "R3",
+            "oldNext": "ED_D3_R4_START",
+            "resolvedOldTargets": [
+              "ED_D3_R4_START"
+            ],
+            "oldText": "我希望保留提问的能力。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 173,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_004",
+            "next": "",
+            "open": "痛苦不是勋章。我不想歌颂它。我只是不接受你们把人和痛苦一起切掉。"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_010,P04_D3_R1_OPTION_011,P04_D3_R1_OPTION_012",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 249,
+            "oldId": "ED_D3_R4_START",
+            "oldRound": "R4",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O1",
+              "ED_D3_R4_O2",
+              "ED_D3_R4_O3"
+            ],
+            "oldText": "痛苦不是勋章。我不想歌颂它。我只是不接受你们把人和痛苦一起切掉。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 174,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_010",
+            "next": "",
+            "option": "缓解和删除应该有界线。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_001",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 250,
+            "oldId": "ED_D3_R4_O1",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O1_T1"
+            ],
+            "oldText": "缓解和删除应该有界线。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 175,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_001",
+            "next": "",
+            "response": "对。治疗要让人回来，不是让人更容易管理。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_002",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 251,
+            "oldId": "ED_D3_R4_O1_T1",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O1_T2"
+            ],
+            "oldText": "对。治疗要让人回来，不是让人更容易管理。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 176,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_002",
+            "next": "",
+            "response": "这就是我一直问的。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_003",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 252,
+            "oldId": "ED_D3_R4_O1_T2",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O1_T3"
+            ],
+            "oldText": "这就是我一直问的。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 177,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_003",
+            "next": "",
+            "response": "界线不能只写在宣传册上。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_005",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 253,
+            "oldId": "ED_D3_R4_O1_T3",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R5_START",
+            "resolvedOldTargets": [
+              "ED_D3_R5_START"
+            ],
+            "oldText": "界线不能只写在宣传册上。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 178,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_011",
+            "next": "",
+            "option": "制度认为风险优先。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_004",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 254,
+            "oldId": "ED_D3_R4_O2",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O2_T1"
+            ],
+            "oldText": "制度认为风险优先。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 179,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_004",
+            "next": "",
+            "response": "风险不能吞掉身份。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_005",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 255,
+            "oldId": "ED_D3_R4_O2_T1",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O2_T2"
+            ],
+            "oldText": "风险不能吞掉身份。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 180,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_005",
+            "next": "",
+            "response": "那也要证明风险是什么。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_006",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 256,
+            "oldId": "ED_D3_R4_O2_T2",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O2_T3"
+            ],
+            "oldText": "那也要证明风险是什么。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 181,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_006",
+            "next": "",
+            "response": "制度不必看人的时候，最轻松。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_005",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 257,
+            "oldId": "ED_D3_R4_O2_T3",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R5_START",
+            "resolvedOldTargets": [
+              "ED_D3_R5_START"
+            ],
+            "oldText": "制度不必看人的时候，最轻松。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 182,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_012",
+            "next": "",
+            "option": "我理解你的拒绝。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_007",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 258,
+            "oldId": "ED_D3_R4_O3",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O3_T1"
+            ],
+            "oldText": "我理解你的拒绝。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 183,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_007",
+            "next": "",
+            "response": "理解之后，你还得做选择。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_008",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 259,
+            "oldId": "ED_D3_R4_O3_T1",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O3_T2"
+            ],
+            "oldText": "理解之后，你还得做选择。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 184,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_008",
+            "next": "",
+            "response": "好。别替我加理由。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_009",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 260,
+            "oldId": "ED_D3_R4_O3_T2",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R4_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R4_O3_T3"
+            ],
+            "oldText": "好。别替我加理由。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 185,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_009",
+            "next": "",
+            "response": "理解不是免责。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_005",
+            "round": "R4"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 261,
+            "oldId": "ED_D3_R4_O3_T3",
+            "oldRound": "R4",
+            "oldNext": "ED_D3_R5_START",
+            "resolvedOldTargets": [
+              "ED_D3_R5_START"
+            ],
+            "oldText": "理解不是免责。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 186,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_005",
+            "next": "",
+            "open": "如果我忘了那个人，我会不会变得更安全？还是只是更安静？"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_013,P04_D3_R1_OPTION_014,P04_D3_R1_OPTION_015",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 262,
+            "oldId": "ED_D3_R5_START",
+            "oldRound": "R5",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O1",
+              "ED_D3_R5_O2",
+              "ED_D3_R5_O3"
+            ],
+            "oldText": "如果我忘了那个人，我会不会变得更安全？还是只是更安静？",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 187,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_013",
+            "next": "",
+            "option": "安静不代表安全。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_028",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 263,
+            "oldId": "ED_D3_R5_O1",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O1_T1"
+            ],
+            "oldText": "安静不代表安全。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 188,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_028",
+            "next": "",
+            "response": "终于有人把这两个词分开。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_029",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 264,
+            "oldId": "ED_D3_R5_O1_T1",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O1_T2"
+            ],
+            "oldText": "终于有人把这两个词分开。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 189,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_029",
+            "next": "",
+            "response": "对。机器没分开。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_030",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 265,
+            "oldId": "ED_D3_R5_O1_T2",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O1_T3"
+            ],
+            "oldText": "对。机器没分开。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 190,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_030",
+            "next": "",
+            "response": "记住这句话。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_006",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 266,
+            "oldId": "ED_D3_R5_O1_T3",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R6_START",
+            "resolvedOldTargets": [
+              "ED_D3_R6_START"
+            ],
+            "oldText": "记住这句话。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 191,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_014",
+            "next": "",
+            "option": "至少你不会再被触发。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_031",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 267,
+            "oldId": "ED_D3_R5_O2",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O2_T1"
+            ],
+            "oldText": "至少你不会再被触发。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 192,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_031",
+            "next": "",
+            "response": "也不会再回应。那不是完整的我。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_032",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 268,
+            "oldId": "ED_D3_R5_O2_T1",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O2_T2"
+            ],
+            "oldText": "也不会再回应。那不是完整的我。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 193,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_032",
+            "next": "",
+            "response": "触发需要治疗，不是抹除。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_033",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 269,
+            "oldId": "ED_D3_R5_O2_T2",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O2_T3"
+            ],
+            "oldText": "触发需要治疗，不是抹除。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 194,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_033",
+            "next": "",
+            "response": "你只想让房间安静。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_006",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 270,
+            "oldId": "ED_D3_R5_O2_T3",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R6_START",
+            "resolvedOldTargets": [
+              "ED_D3_R6_START"
+            ],
+            "oldText": "你只想让房间安静。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 195,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_015",
+            "next": "",
+            "option": "我无法替你回答。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_034",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 271,
+            "oldId": "ED_D3_R5_O3",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O3_T1"
+            ],
+            "oldText": "我无法替你回答。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 196,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_034",
+            "next": "",
+            "response": "这是诚实的回答。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_035",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 272,
+            "oldId": "ED_D3_R5_O3_T1",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O3_T2"
+            ],
+            "oldText": "这是诚实的回答。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 197,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_035",
+            "next": "",
+            "response": "那就别替机器装作确定。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_036",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 273,
+            "oldId": "ED_D3_R5_O3_T2",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R5_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R5_O3_T3"
+            ],
+            "oldText": "那就别替机器装作确定。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 198,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_036",
+            "next": "",
+            "response": "至少别伪造确定性。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_006",
+            "round": "R5"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 274,
+            "oldId": "ED_D3_R5_O3_T3",
+            "oldRound": "R5",
+            "oldNext": "ED_D3_R6_START",
+            "resolvedOldTargets": [
+              "ED_D3_R6_START"
+            ],
+            "oldText": "至少别伪造确定性。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 199,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_006",
+            "next": "",
+            "open": "我当年替别人排序。今天轮到你替我排序。"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_016,P04_D3_R1_OPTION_017,P04_D3_R1_OPTION_018",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 275,
+            "oldId": "ED_D3_R6_START",
+            "oldRound": "R6",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O1",
+              "ED_D3_R6_O2",
+              "ED_D3_R6_O3"
+            ],
+            "oldText": "我当年替别人排序。今天轮到你替我排序。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 200,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_016",
+            "next": "",
+            "option": "我会看你的行为和经历。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_037",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 276,
+            "oldId": "ED_D3_R6_O1",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O1_T1"
+            ],
+            "oldText": "我会看你的行为和经历。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 201,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_037",
+            "next": "",
+            "response": "不要只看哪一项更方便。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_038",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 277,
+            "oldId": "ED_D3_R6_O1_T1",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O1_T2"
+            ],
+            "oldText": "不要只看哪一项更方便。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 202,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_038",
+            "next": "",
+            "response": "好。也看治疗后的变化。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_039",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 278,
+            "oldId": "ED_D3_R6_O1_T2",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O1_T3"
+            ],
+            "oldText": "好。也看治疗后的变化。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 203,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_039",
+            "next": "",
+            "response": "至少比只看红灯强。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_007",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 279,
+            "oldId": "ED_D3_R6_O1_T3",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R7_START",
+            "resolvedOldTargets": [
+              "ED_D3_R7_START"
+            ],
+            "oldText": "至少比只看红灯强。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 204,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_017",
+            "next": "",
+            "option": "我必须遵守流程。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_040",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 280,
+            "oldId": "ED_D3_R6_O2",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O2_T1"
+            ],
+            "oldText": "我必须遵守流程。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 205,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_040",
+            "next": "",
+            "response": "流程仍然由人执行。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_041",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 281,
+            "oldId": "ED_D3_R6_O2_T1",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O2_T2"
+            ],
+            "oldText": "流程仍然由人执行。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 206,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_041",
+            "next": "",
+            "response": "那就把反对写进流程。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_042",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 282,
+            "oldId": "ED_D3_R6_O2_T2",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O2_T3"
+            ],
+            "oldText": "那就把反对写进流程。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 207,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_042",
+            "next": "",
+            "response": "别再说自己没有选择。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_007",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 283,
+            "oldId": "ED_D3_R6_O2_T3",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R7_START",
+            "resolvedOldTargets": [
+              "ED_D3_R7_START"
+            ],
+            "oldText": "别再说自己没有选择。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 208,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_018",
+            "next": "",
+            "option": "你希望被释放吗？"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_043",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 284,
+            "oldId": "ED_D3_R6_O3",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O3_T1"
+            ],
+            "oldText": "你希望被释放吗？",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 209,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_043",
+            "next": "",
+            "response": "我希望保留选择。释放不是证明我没有伤。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_044",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 285,
+            "oldId": "ED_D3_R6_O3_T1",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O3_T2"
+            ],
+            "oldText": "我希望保留选择。释放不是证明我没有伤。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 210,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_044",
+            "next": "",
+            "response": "是。但别把它叫痊愈。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_045",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 286,
+            "oldId": "ED_D3_R6_O3_T2",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R6_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R6_O3_T3"
+            ],
+            "oldText": "是。但别把它叫痊愈。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 211,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_045",
+            "next": "",
+            "response": "我希望门由人打开，不是机器。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_007",
+            "round": "R6"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 287,
+            "oldId": "ED_D3_R6_O3_T3",
+            "oldRound": "R6",
+            "oldNext": "ED_D3_R7_START",
+            "resolvedOldTargets": [
+              "ED_D3_R7_START"
+            ],
+            "oldText": "我希望门由人打开，不是机器。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 212,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_007",
+            "next": "",
+            "open": "无论你选什么，别替我把最后一句说掉。"
+          },
+          "set": {
+            "next": "P04_D3_R1_OPTION_019,P04_D3_R1_OPTION_020,P04_D3_R1_OPTION_021",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 288,
+            "oldId": "ED_D3_R7_START",
+            "oldRound": "R7",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O1",
+              "ED_D3_R7_O2",
+              "ED_D3_R7_O3"
+            ],
+            "oldText": "无论你选什么，别替我把最后一句说掉。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 213,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_019",
+            "next": "",
+            "option": "你自己说。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_010",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 289,
+            "oldId": "ED_D3_R7_O1",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O1_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O1_T1"
+            ],
+            "oldText": "你自己说。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 214,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_010",
+            "next": "",
+            "response": "我有责任。我也仍然是一个人。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_011",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 290,
+            "oldId": "ED_D3_R7_O1_T1",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O1_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O1_T2"
+            ],
+            "oldText": "我有责任。我也仍然是一个人。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 215,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_011",
+            "next": "",
+            "response": "我没救下所有人。可我不接受被删除。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_012",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 291,
+            "oldId": "ED_D3_R7_O1_T2",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O1_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O1_T3"
+            ],
+            "oldText": "我没救下所有人。可我不接受被删除。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 216,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_012",
+            "next": "",
+            "response": "至少这一句属于我。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_008",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 292,
+            "oldId": "ED_D3_R7_O1_T3",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_DECISION",
+            "resolvedOldTargets": [
+              "ED_D3_DECISION"
+            ],
+            "oldText": "至少这一句属于我。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 217,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_020",
+            "next": "",
+            "option": "我会按记录判断。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_013",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 293,
+            "oldId": "ED_D3_R7_O2",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O2_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O2_T1"
+            ],
+            "oldText": "我会按记录判断。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 218,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_013",
+            "next": "",
+            "response": "记录要完整，否则判断只是装饰。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_014",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 294,
+            "oldId": "ED_D3_R7_O2_T1",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O2_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O2_T2"
+            ],
+            "oldText": "记录要完整，否则判断只是装饰。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 219,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_014",
+            "next": "",
+            "response": "那就把今天全部写进去。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_015",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 295,
+            "oldId": "ED_D3_R7_O2_T2",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O2_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O2_T3"
+            ],
+            "oldText": "那就把今天全部写进去。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 220,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_015",
+            "next": "",
+            "response": "你又躲回纸后面了。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_008",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 296,
+            "oldId": "ED_D3_R7_O2_T3",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_DECISION",
+            "resolvedOldTargets": [
+              "ED_D3_DECISION"
+            ],
+            "oldText": "你又躲回纸后面了。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 221,
+          "expected": {
+            "id": "P04_D3_R1_OPTION_021",
+            "next": "",
+            "option": "我已经决定了。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_016",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 297,
+            "oldId": "ED_D3_R7_O3",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O3_T1",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O3_T1"
+            ],
+            "oldText": "我已经决定了。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 222,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_016",
+            "next": "",
+            "response": "那就看着我说出来。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_017",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 298,
+            "oldId": "ED_D3_R7_O3_T1",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O3_T2",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O3_T2"
+            ],
+            "oldText": "那就看着我说出来。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 223,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_017",
+            "next": "",
+            "response": "别让按钮替你开口。"
+          },
+          "set": {
+            "next": "P04_D3_R1_SPECIAL_018",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 299,
+            "oldId": "ED_D3_R7_O3_T2",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_R7_O3_T3",
+            "resolvedOldTargets": [
+              "ED_D3_R7_O3_T3"
+            ],
+            "oldText": "别让按钮替你开口。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 224,
+          "expected": {
+            "id": "P04_D3_R1_SPECIAL_018",
+            "next": "",
+            "response": "你最怕的，是承认这是你的决定。"
+          },
+          "set": {
+            "next": "P04_D3_R1_COMMON_008",
+            "round": "R7"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 300,
+            "oldId": "ED_D3_R7_O3_T3",
+            "oldRound": "R7",
+            "oldNext": "ED_D3_DECISION",
+            "resolvedOldTargets": [
+              "ED_D3_DECISION"
+            ],
+            "oldText": "你最怕的，是承认这是你的决定。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 225,
+          "expected": {
+            "id": "P04_D3_R1_COMMON_008",
+            "next": "",
+            "open": "我想停止做梦，也想记得他们。你的处置会告诉我，这里是否允许两句话同时成立。"
+          },
+          "set": {
+            "next": "P04_D3_R1_PLAYER_ACTION_001,P04_D3_R1_PLAYER_ACTION_002,P04_D3_R1_PLAYER_ACTION_005",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 301,
+            "oldId": "ED_D3_DECISION",
+            "oldRound": "R8",
+            "oldNext": "",
+            "resolvedOldTargets": [
+              "ED_D3_TREAT",
+              "ED_D3_PURIFY",
+              "ED_D3_RELEASE"
+            ],
+            "oldText": "我想停止做梦，也想记得他们。你的处置会告诉我，这里是否允许两句话同时成立。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 226,
+          "expected": {
+            "id": "P04_D3_R1_PLAYER_ACTION_001",
+            "next": "",
+            "action": "治疗"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_001",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 302,
+            "oldId": "ED_D3_TREAT",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_TREAT_T1",
+            "resolvedOldTargets": [
+              "ED_D3_TREAT_T1"
+            ],
+            "oldText": "继续治疗",
+            "match": "same-action-label-treatment"
+          }
+        },
+        {
+          "row": 227,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_001",
+            "next": "",
+            "actionResponse": "如果明天没有我，请保留完整记录。"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_002",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 303,
+            "oldId": "ED_D3_TREAT_T1",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_TREAT_T2",
+            "resolvedOldTargets": [
+              "ED_D3_TREAT_T2"
+            ],
+            "oldText": "如果明天没有我，请保留完整记录。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 228,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_002",
+            "next": "",
+            "actionResponse": "第三次了。至少别说这是我同意的。"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_003",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 304,
+            "oldId": "ED_D3_TREAT_T2",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_TREAT_T3",
+            "resolvedOldTargets": [
+              "ED_D3_TREAT_T3"
+            ],
+            "oldText": "第三次了。至少别说这是我同意的。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 229,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_003",
+            "next": "",
+            "actionResponse": "你们终于会得到一间安静的房。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_046",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 305,
+            "oldId": "ED_D3_TREAT_T3",
+            "oldRound": "R8",
+            "oldNext": "ED_END_TREATMENT",
+            "resolvedOldTargets": [
+              "ED_END_TREATMENT"
+            ],
+            "oldText": "你们终于会得到一间安静的房。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 230,
+          "expected": {
+            "id": "P04_D3_R1_PLAYER_ACTION_002",
+            "next": "",
+            "action": "净化"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_004",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 306,
+            "oldId": "ED_D3_PURIFY",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_PURIFY_T1",
+            "resolvedOldTargets": [
+              "ED_D3_PURIFY_T1"
+            ],
+            "oldText": "净化",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 231,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_004",
+            "next": "",
+            "actionResponse": "我想睡一觉。但我没有说，我想把他们忘了。"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_005",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 307,
+            "oldId": "ED_D3_PURIFY_T1",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_PURIFY_T2",
+            "resolvedOldTargets": [
+              "ED_D3_PURIFY_T2"
+            ],
+            "oldText": "我想睡一觉。但我没有说，我想把他们忘了。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 232,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_005",
+            "next": "",
+            "actionResponse": "你选择了安静。"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_014",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 308,
+            "oldId": "ED_D3_PURIFY_T2",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_PURIFY_T3",
+            "resolvedOldTargets": [
+              "ED_D3_PURIFY_T3"
+            ],
+            "oldText": "你选择了安静。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 255,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_014",
+            "next": "",
+            "actionResponse": "别再叫我病人。病人还能被治疗。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_047",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 309,
+            "oldId": "ED_D3_PURIFY_T3",
+            "oldRound": "R8",
+            "oldNext": "ED_END_PURIFY",
+            "resolvedOldTargets": [
+              "ED_END_PURIFY"
+            ],
+            "oldText": "别再叫我病人。病人还能被治疗。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 235,
+          "expected": {
+            "id": "P04_D3_R1_PLAYER_ACTION_005",
+            "next": "",
+            "action": "释放"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_006",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 310,
+            "oldId": "ED_D3_RELEASE",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_RELEASE_T1",
+            "resolvedOldTargets": [
+              "ED_D3_RELEASE_T1"
+            ],
+            "oldText": "释放",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 236,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_006",
+            "next": "",
+            "actionResponse": "你听完了。谢谢你没有替我把最后一句说掉。"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_007",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 311,
+            "oldId": "ED_D3_RELEASE_T1",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_RELEASE_T2",
+            "resolvedOldTargets": [
+              "ED_D3_RELEASE_T2"
+            ],
+            "oldText": "你听完了。谢谢你没有替我把最后一句说掉。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 237,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_007",
+            "next": "",
+            "actionResponse": "我知道门外还有什么。我还是想自己走出去。"
+          },
+          "set": {
+            "next": "P04_D3_R1_ACTION_008",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 312,
+            "oldId": "ED_D3_RELEASE_T2",
+            "oldRound": "R8",
+            "oldNext": "ED_D3_RELEASE_T3",
+            "resolvedOldTargets": [
+              "ED_D3_RELEASE_T3"
+            ],
+            "oldText": "我知道门外还有什么。我还是想自己走出去。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 238,
+          "expected": {
+            "id": "P04_D3_R1_ACTION_008",
+            "next": "",
+            "actionResponse": "打开门。让我保留后果。"
+          },
+          "set": {
+            "next": "P04_D3_R1_CLOSE_048",
+            "round": "R8"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 313,
+            "oldId": "ED_D3_RELEASE_T3",
+            "oldRound": "R8",
+            "oldNext": "ED_END_RELEASE",
+            "resolvedOldTargets": [
+              "ED_END_RELEASE"
+            ],
+            "oldText": "打开门。让我保留后果。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 239,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_046",
+            "next": "",
+            "response": "第三次治疗后，埃德温的回应停止。档案以“疗程达到上限”结束，不直接展示死亡。"
+          },
+          "set": {
+            "next": "END_DAY3",
+            "round": "R8",
+            "narration": "true"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 314,
+            "oldId": "ED_END_TREATMENT",
+            "oldRound": "END",
+            "oldNext": "",
+            "resolvedOldTargets": [],
+            "oldText": "第三次治疗后，埃德温的回应停止。档案以“疗程达到上限”结束，不直接展示死亡。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 240,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_047",
+            "next": "",
+            "response": "净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。"
+          },
+          "set": {
+            "next": "END_DAY3",
+            "round": "R8",
+            "narration": "true"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 315,
+            "oldId": "ED_END_PURIFY",
+            "oldRound": "END",
+            "oldNext": "",
+            "resolvedOldTargets": [],
+            "oldText": "净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 241,
+          "expected": {
+            "id": "P04_D3_R1_CLOSE_048",
+            "next": "",
+            "response": "埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。"
+          },
+          "set": {
+            "next": "END_DAY3",
+            "round": "R8",
+            "narration": "true"
+          },
+          "kind": "restore-old-corresponding-branch",
+          "evidence": {
+            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
+            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
+            "oldRow": 316,
+            "oldId": "ED_END_RELEASE",
+            "oldRound": "END",
+            "oldNext": "",
+            "resolvedOldTargets": [],
+            "oldText": "埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。",
+            "match": "same-text"
+          }
+        },
+        {
+          "row": 75,
+          "expected": {
+            "id": "P04_D1_R7_ACTION_002",
+            "next": "",
+            "actionResponse": "我宁愿死在战场上。"
+          },
+          "set": {
+            "next": "END_DAY1"
+          },
+          "kind": "missing-action-terminal",
+          "evidence": {
+            "rule": "Final action response with no authored successor; current meeting ends after it."
+          }
+        },
+        {
+          "row": 79,
+          "expected": {
+            "id": "P04_D1_R7_ACTION_005",
+            "next": "",
+            "actionResponse": "……"
+          },
+          "set": {
+            "next": "END_DAY1"
+          },
+          "kind": "missing-action-terminal",
+          "evidence": {
+            "rule": "Final action response with no authored successor; current meeting ends after it."
+          }
+        },
+        {
+          "row": 84,
+          "expected": {
+            "id": "P04_D1_R7_ACTION_009",
+            "next": "",
+            "actionResponse": "但你是个好人。"
+          },
+          "set": {
+            "next": "END_DAY1"
+          },
+          "kind": "missing-action-terminal",
+          "evidence": {
+            "rule": "Final action response with no authored successor; current meeting ends after it."
+          }
+        },
+        {
+          "row": 129,
+          "expected": {
+            "id": "P04_D2_R5_ACTION_003",
+            "next": "",
+            "actionResponse": "谢谢你了。"
+          },
+          "set": {
+            "next": "END_DAY2"
+          },
+          "kind": "missing-action-terminal",
+          "evidence": {
+            "rule": "Final action response with no authored successor; current meeting ends after it."
+          }
+        },
+        {
+          "row": 132,
+          "expected": {
+            "id": "P04_D2_R5_ACTION_006",
+            "next": "",
+            "actionResponse": "我宁愿去死。"
+          },
+          "set": {
+            "next": "END_DAY2"
+          },
+          "kind": "missing-action-terminal",
+          "evidence": {
+            "rule": "Final action response with no authored successor; current meeting ends after it."
+          }
+        },
+        {
+          "row": 133,
+          "expected": {
+            "id": "P04_D2_R5_ACTION_007",
+            "next": "",
+            "actionResponse": "你也逃不过。"
+          },
+          "set": {
+            "next": "END_DAY2"
+          },
+          "kind": "missing-action-terminal",
+          "evidence": {
+            "rule": "Final action response with no authored successor; current meeting ends after it."
+          }
+        }
+      ]
+    },
+    "priest": {
+      "sourceSha256": "359677e626706199140aace2df8296460f303e54a38ab14f08faa24428bc7119",
+      "excludedRanges": [],
+      "repairs": [
+        {
+          "row": 60,
+          "expected": {
+            "id": "P01_D1_R7_ACTION_002",
+            "next": "END_DAY1,P01_D1_R7_ACTION_007"
+          },
+          "set": {
+            "next": "P01_D1_R7_ACTION_007"
+          },
+          "kind": "terminal-with-continuation",
+          "evidence": {
+            "continuationRow": 67,
+            "continuationId": "P01_D1_R7_ACTION_007",
+            "continuationText": "不要让我等待太久…",
+            "continuationNext": "END_DAY1",
+            "rule": "Preserve final authored linear response before reaching the same terminal; no choice or numeric side effect added."
+          }
+        }
+      ]
+    }
+  }
+}

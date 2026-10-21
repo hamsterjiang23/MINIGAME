@@ -9,7 +9,7 @@ namespace MiniGame.UnityHost
         [InspectorName("主菜单音乐")] StartMenu = 0,
         [InspectorName("房间音乐")] Gameplay = 1,
         [InspectorName("Day1 鲸尸海滩")] Dream0 = 2,
-        [InspectorName("Day2 无尽长路")] Dream1 = 3,
+        [InspectorName("Day2 倒悬花海")] Dream1 = 3,
         [InspectorName("备用：枯花田")] Dream2 = 4,
         [InspectorName("电脑底噪")] PCNoise = 5,
         [InspectorName("放映机")] Projector = 6,
@@ -22,7 +22,13 @@ namespace MiniGame.UnityHost
         [InspectorName("海滩终局音乐")] EndingMusic = 13,
         [InspectorName("海浪环境声")] OceanWaves = 14,
         [InspectorName("电脑开机")] TerminalPowerOn = 15,
-        [InspectorName("电脑关机")] TerminalPowerOff = 16
+        [InspectorName("电脑关机")] TerminalPowerOff = 16,
+        [InspectorName("终端打字 1")] TerminalType1 = 17,
+        [InspectorName("终端打字 2")] TerminalType2 = 18,
+        [InspectorName("终端打字 3")] TerminalType3 = 19,
+        [InspectorName("终端打字 4")] TerminalType4 = 20,
+        [InspectorName("开门")] DoorOpen = 21,
+        [InspectorName("关门")] DoorShut = 22
     }
 
     [Serializable]

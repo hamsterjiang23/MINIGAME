@@ -1,0 +1,159 @@
+{
+  "checkedAt": "2026-10-21T02:49:53.72652+08:00",
+  "result": "PASS",
+  "alreadyConfigured": true,
+  "remote": {
+    "repository": "https://github.com/hamsterjiang23/MINIGAME.git",
+    "commit": "c28a44c0213172e4e464c3d9fc7027b325568c31",
+    "subject": "SceneLightingChange"
+  },
+  "attachment": {
+    "path": "C:\\Users\\admin\\Downloads\\RoomLightingReferenceRetro.asset",
+    "sha256": "e64eab65c7a7382c24cbb430cb1481613279fb20e382afa73944dc71a2c989b6",
+    "fieldsCompared": 34,
+    "mismatches": {}
+  },
+  "screenshot": {
+    "path": "C:\\Users\\admin\\AppData\\Roaming\\LarkShell\\sdk_storage\\78f034e755d6027faf7872f34bc06316\\resources\\images\\img_v3_0216l_738abf8d-beea-4baf-b567-ee942ee66a3g.jpg",
+    "sha256": "bcf7341bb84284b4a44fc4692a5079885cb5f0bdf5575f489eaf78766415bb8d"
+  },
+  "profile": {
+    "path": "UnityProject\\Assets\\MiniGame\\Resources\\RoomLightingReferenceRetro.asset",
+    "sha256": "23f86b2a839d8420464e4a1059780ff31f29ae0539e0a972c31c9c347f0e1054",
+    "guid": "ac53fcb818485fc45baa8f74aeb84a3f",
+    "boundToSceneCamera": true,
+    "extraFieldsPreserved": {
+      "MonoBehaviour.filmGrainStrength": "0.05"
+    }
+  },
+  "scene": {
+    "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "sha256": "b327ed5bf5265de6fed2b7f32ca8bc807078aceb2b8260b30b18d3a6305e568e",
+    "supplementalLights": [
+      {
+        "fileID": "709709736",
+        "name": "MonitorLight (1)",
+        "position": "{x: -2.833, y: 0.99, z: -0.572}",
+        "color": "{r: 0.72, g: 0.77, b: 0.5, a: 1}",
+        "intensity": "3.11",
+        "range": "2.37",
+        "upstreamTransformMatches": true,
+        "upstreamFieldsMatchExceptRealtimeMode": true,
+        "realtimeMode": "4"
+      },
+      {
+        "fileID": "1127447290",
+        "name": "MonitorLight (2)",
+        "position": "{x: -2.288, y: 1.022, z: -2.994}",
+        "color": "{r: 0.72, g: 0.77, b: 0.5, a: 1}",
+        "intensity": "1.05",
+        "range": "3.26",
+        "upstreamTransformMatches": true,
+        "upstreamFieldsMatchExceptRealtimeMode": true,
+        "realtimeMode": "4"
+      },
+      {
+        "fileID": "529657926",
+        "name": "MonitorLight (3)",
+        "position": "{x: 0.008, y: 0.406, z: -1.618}",
+        "color": "{r: 0.72, g: 0.77, b: 0.5, a: 1}",
+        "intensity": "2.08",
+        "range": "4.27",
+        "upstreamTransformMatches": true,
+        "upstreamFieldsMatchExceptRealtimeMode": true,
+        "realtimeMode": "4"
+      },
+      {
+        "fileID": "620645195",
+        "name": "MonitorLight (4)",
+        "position": "{x: -4.154, y: 0.872, z: -1.588}",
+        "color": "{r: 0.72, g: 0.77, b: 0.5, a: 1}",
+        "intensity": "2.89",
+        "range": "4.27",
+        "upstreamTransformMatches": true,
+        "upstreamFieldsMatchExceptRealtimeMode": true,
+        "realtimeMode": "4"
+      },
+      {
+        "fileID": "1920014243",
+        "name": "MonitorLight (5)",
+        "position": "{x: -1.51, y: 1.04, z: -0.364}",
+        "color": "{r: 0.72, g: 0.77, b: 0.5, a: 1}",
+        "intensity": "0.85",
+        "range": "4.27",
+        "upstreamTransformMatches": true,
+        "upstreamFieldsMatchExceptRealtimeMode": true,
+        "realtimeMode": "4"
+      }
+    ],
+    "daylightProfileHasNoSavedSceneLightOverrides": true
+  },
+  "sourceMutation": "None: fetched latest origin/main, confirmed existing lighting merge and uploaded profile fields; no scene, profile, geometry or gameplay source rewrite was necessary.",
+  "unityVerification": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "filter": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests;MiniGame.UnityHost.Tests.RetroScreenPlayModeTests",
+    "passed": 6,
+    "failed": 0,
+    "exitCode": 0,
+    "report": "current-playmode.xml",
+    "log": "current-playmode.log",
+    "checks": [
+      "Scene camera profile binding",
+      "Actual camera shader rendering and neutral bypass",
+      "Main lamp pose and real furniture shadows",
+      "Live light changes preserve the shared asset",
+      "Bedtime darkness and next-morning restoration",
+      "Terminal glow preserves lighting material bands"
+    ],
+    "testedSource": [
+      {
+        "file": "Scenes/MainRoomCombined.unity",
+        "sha256": "b327ed5bf5265de6fed2b7f32ca8bc807078aceb2b8260b30b18d3a6305e568e",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Resources/RoomLightingReferenceRetro.asset",
+        "sha256": "23f86b2a839d8420464e4a1059780ff31f29ae0539e0a972c31c9c347f0e1054",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Resources/RoomLightingDefault.asset",
+        "sha256": "859d26a7b807675aaf60b3fd1d142a27f526c9f4bde75fda27190677280e82b9",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Runtime/RoomLightingController.cs",
+        "sha256": "b6c4669b775e2a65e34d78d8a1b67aa045d242d7df5d9943c945c3709f6b6339",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Runtime/RoomLightingProfile.cs",
+        "sha256": "cedb0c3229982a7fdeb9fa879d570d9c55f925faab6ac703b3d3944056940a88",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Runtime/RetroScreenEffect.cs",
+        "sha256": "88964112e8890ecd7320131bffa7134e2b7727879dff76d544cb78d98274ab27",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Runtime/RetroScreenProfile.cs",
+        "sha256": "597e8f8b5ede0dce46bdbd00680cfbd0c618074c5922d88f7ff87c4d06e258ec",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Tests/PlayMode/RoomLightingPlayModeTests.cs",
+        "sha256": "a1ba3b683c841efcdd29a9659be964a0af9f9ac6d0a820bc35de911579528d67",
+        "isolatedCopyMatches": true
+      },
+      {
+        "file": "Tests/PlayMode/RetroScreenPlayModeTests.cs",
+        "sha256": "0cf7aae9da1b7f03d834a23301c0371c4f7a4fee2ff9758f2fbda4ce7bfc1c68",
+        "isolatedCopyMatches": true
+      }
+    ],
+    "manualEditorAcceptance": "Not performed in this recheck",
+    "newWindowsBuild": "Not performed; no scene, profile or runtime source changes were needed"
+  }
+}

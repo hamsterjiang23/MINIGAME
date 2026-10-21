@@ -272,6 +272,9 @@ namespace MiniGame.Presentation.Authoring
                             + " #source:" + line.SourceNodeId + (line.PortraitId.Length == 0 ? "" : " #portrait:" + line.PortraitId)
                             + (line.IsNarration ? " #kind:narration" : ""));
                     }
+                    // Yarn prunes empty nodes; keep silent response branches executable without inventing dialogue.
+                    if (segment.Lines.Count == 0 && node.Responses.Count == 0)
+                        source.AppendLine("<<stop>>");
                 }
                 else source.AppendLine(Escape(node.Speaker) + ": " + Escape(node.Text));
                 foreach (var option in node.Responses)

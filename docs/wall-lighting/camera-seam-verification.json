@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-21",
+  "issue": "Narrow bright wallpaper seams change when the camera turns.",
+  "conclusion": "Coplanar overlaps between adjacent wallpaper sheets cause depth ties and duplicate forward lighting. Stable depth separation removes the bright seams.",
+  "controls": {
+    "overlapWidthAtReportedSeamMetres": 0.0185257,
+    "temporarySeparationMetres": 0.001,
+    "sameLightsAndMaterials": true,
+    "baseline": "previews/seam-before.png",
+    "fixed": "previews/seam-fixed-editmode.png"
+  },
+  "repair": {
+    "renderers": 12,
+    "baseInsetMetres": 0.004000000189989805,
+    "overlapDepthStepMetres": 0.0010000000474974513,
+    "maximumLayer": 1.0,
+    "sameDepthTrianglePairsBefore": 124,
+    "sameDepthTrianglePairsAfter": 0,
+    "report": "reports/camera-seams/wall-repair.json",
+    "gpuRefresh": "Explicit vertex upload after copying serialized mesh data keeps the Editor renderer current."
+  },
+  "preservation": {
+    "sourceFbxUnchanged": true,
+    "sceneFileUnchanged": true,
+    "originalUvsAndTangentialContours": "Checked against source FBX for all twelve generated meshes in EditMode tests",
+    "materialsCollidersAndOtherMeshes": "Unchanged in EditMode preview regression",
+    "sourceFbxSha256": "5d071f68ce865f2cef01c9e7ebfebbcd9c88f660678e64704c72c882f69dfb90",
+    "sceneSha256": "1c67cd4252ea4edb12ce6903b29b1df8b4aaefa9b4177df17302497ec8762488"
+  },
+  "cameraSweep": {
+    "count": 21,
+    "yawDegrees": [
+      -20,
+      20
+    ],
+    "yawStepDegrees": 2,
+    "baselineMaximum": 0.41877609491348267,
+    "fixedMaximum": 0.042146265506744385,
+    "metric": "Normalized RGB luminance excess in the reported seam band relative to nearby wall pixels",
+    "scope": "Actual player ViewCamera; raw world preview, grading/grain bypassed for measurement",
+    "report": "reports/camera-seams/camera-sweep.json"
+  },
+  "tests": [
+    {
+      "report": "reports/camera-seams/wall-repair-tests.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects",
+          "Status": "Passed",
+          "Duration": 0.0135238,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials",
+          "Status": "Passed",
+          "Duration": 0.1491844,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets",
+          "Status": "Passed",
+          "Duration": 0.1998049,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.SavedOverlappingWallpapersHaveDistinctDepth",
+          "Status": "Passed",
+          "Duration": 0.012738,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/camera-seams/camera-sweep-tests.json",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSeamPlayModeTests.CameraYawSweepHasNoBrightSeamAndCoplanarControlReproducesIt",
+          "Status": "Passed",
+          "Duration": 1.8386625,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/camera-seams/room-lighting-tests.json",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug",
+          "Status": "Passed",
+          "Duration": 1.1783227,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.EditingTheProfileAtBedtimeKeepsTheRoomDarkAndUpdatesTheNextMorning",
+          "Status": "Passed",
+          "Duration": 2.3642041,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset",
+          "Status": "Passed",
+          "Duration": 0.4994025,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.TerminalGlowUpdatesMaterialSlotsWithoutDiscardingTheirLightingBands",
+          "Status": "Passed",
+          "Duration": 0.4317998,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    {
+      "report": "reports/camera-seams/retro-tests.json",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.LiveProfileChangesReachTheCameraAndNeutralSettingsMatchOriginal",
+          "Status": "Passed",
+          "Duration": 1.0040329,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.RetroScreenPlayModeTests.MainRoomUsesProfileAndKeepsOverlayUiOutsideTheEffect",
+          "Status": "Passed",
+          "Duration": 0.5784789,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    }
+  ],
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/WallSeams/MiniGame.exe",
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 2.8874542,
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "project": "F:/AAMINIGAME/MINIGAME/UnityProject/Assets",
+    "unity": "2022.3.23f1c1"
+  },
+  "buildReport": "reports/camera-seams/windows-build.json",
+  "playerStartup": {
+    "ready": true,
+    "marker": "MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56",
+    "log": "reports/camera-seams/player-startup.log",
+    "scope": "Standalone startup only; angle sweep was measured in native Unity Play Mode."
+  },
+  "review": "Read-only code review found no bugs, including persistence/GPU refresh and camera-sweep cleanup.",
+  "previews": [
+    "previews/seam-before.png",
+    "previews/seam-fixed-editmode.png",
+    "previews/seam-fixed.png"
+  ],
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/WallSurfaceRepairSetup.cs",
+      "sha256": "f84d584663613ae7ce500b14d3c59844c1da566a5112bf2ebb1cd6482501c372"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/EditMode/WallSurfaceRepairTests.cs",
+      "sha256": "53aee9627953adcb5f3663c2f895e7c8b35637961996b170cdce596ddd332f90"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/WallSeamPlayModeTests.cs",
+      "sha256": "3b4b4d94600a10820ecdc113b52d2876876e263a1895393edb1e5f80f71731d2"
+    }
+  ],
+  "limits": [
+    "Camera sweep bypasses grading and temporal grain for measurement; the existing retro pipeline was checked separately.",
+    "No hardware mouse, human acceptance or performance claim.",
+    "Initial build reported pending compilation; the final build followed explicit recompilation."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "completedAt": "2026-10-21T10:50:26.060796+08:00",
+  "issue": "Hard dark wedge above the bed remained after the wallpaper depth repair.",
+  "conclusion": "Lighting continuity defect: Auto supplemental lights produced different illumination across the wall and wallpaper. ForcePixel removes the hard dark wedge while preserving geometry and the selected colour profile.",
+  "controls": {
+    "baseline": "Artifacts/WallLighting/wall-recheck-20261021/diagnostics.json",
+    "forcePixelSameBudget": "Artifacts/WallLighting/wall-continuity-force-pixel/diagnostics.json",
+    "autoWithPixelBudget16": "Artifacts/WallLighting/wall-continuity-larger-pixel-budget/diagnostics.json",
+    "defaultPixelBudget": 4,
+    "allFiveAutoInBaseline": true,
+    "bothLightingControlsRemoveDarkWedge": true,
+    "priorShadowMetalAndNormalsControls": "reports/wall-render-recheck.json",
+    "scope": "Same saved scene, viewpoint, shaders and textures; raw EditMode Camera.Render. Each control changes lighting policy only."
+  },
+  "change": "reports/lighting-continuity-change.json",
+  "scene": {
+    "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "sha256": "b29331ae8dbad4adaf61b8e2afb1be22d598c8d71dacd63cdcb296a45e232e11",
+    "testedCopyMatches": true,
+    "changedFields": 5,
+    "field": "Light.m_RenderMode",
+    "before": "Auto",
+    "after": "ForcePixel",
+    "geometryAndAuthoredLightValuesPreserved": true,
+    "colourProfileSHA256": "23f86b2a839d8420464e4a1059780ff31f29ae0539e0a972c31c9c347f0e1054",
+    "qualitySettingsSHA256": "944b52d523bcb15b945bc80924b9289f59185ab19bce8a00e99eec345bde6440"
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "project": "Artifacts/Unity/OfflineProject",
+    "graphics": "Direct3D11",
+    "editMode": {
+      "filter": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests",
+      "passed": 3,
+      "failed": 0,
+      "report": "reports/wall-continuity-editmode.xml",
+      "log": "reports/wall-continuity-editmode.log"
+    },
+    "playMode": {
+      "filter": "MiniGame.UnityHost.Tests.WallRenderingRecheckEvidenceTests;MiniGame.UnityHost.Tests.RoomLightingPlayModeTests;MiniGame.UnityHost.Tests.RetroScreenPlayModeTests",
+      "passed": 7,
+      "failed": 0,
+      "report": "reports/wall-continuity-playmode.xml",
+      "log": "reports/wall-continuity-playmode.log"
+    },
+    "savedSceneCapture": "Artifacts/WallLighting/wall-continuity-final/diagnostics.json",
+    "finalSceneLog": "reports/wall-continuity-final-scene.log",
+    "liveProfile": "Artifacts/WallLighting/wall-continuity-game/live-profile.json",
+    "captureFixture": "Artifacts/LightingTools/WallContinuityCaptureTests.cs.txt"
+  },
+  "previews": {
+    "beforeScene": "previews/lighting-continuity-before-scene.png",
+    "afterScene": "previews/lighting-continuity-after-scene.png",
+    "beforeGame": "previews/lighting-continuity-before-game.png",
+    "afterGame": "previews/lighting-continuity-after-game.png"
+  },
+  "review": "Final read-only review: no bugs found; runtime and authoring do not reset renderMode and bedtime controls remain independent.",
+  "limits": [
+    "The PlayMode capture uses the real host ViewCamera and current post-effect with temporary restored poses; no manual GUI acceptance claim.",
+    "No new standalone Windows build or performance benchmark in this change.",
+    "No commit or push performed; the corrected scene remains in the local worktree.",
+    "One early isolated PlayMode startup compilation encountered a removed temporary probe path; Unity reimport recovered and all 7 tests passed. The subsequent saved-scene capture and EditMode log contain no compiler errors."
+  ],
+  "finalChecks": {
+    "diffCheck": "PASS",
+    "markdownLinksChecked": 8,
+    "brokenLinks": 0,
+    "requiredArtifactsPresent": true
+  }
+}

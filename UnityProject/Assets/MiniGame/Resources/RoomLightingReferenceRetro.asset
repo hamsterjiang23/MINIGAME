@@ -15,18 +15,18 @@ MonoBehaviour:
   effectEnabled: 1
   strength: 1
   pixelSize: 1
-  fullscreenQuantization: 0
-  levels: 10
-  gammaBefore: 1
-  gammaAfter: 1
-  colorGradingEnabled: 0
-  postExposure: 0
-  contrast: 0
-  saturation: 0
-  shadowTint: {r: 1, g: 1, b: 1, a: 1}
-  midtoneTint: {r: 1, g: 1, b: 1, a: 1}
-  highlightTint: {r: 1, g: 1, b: 1, a: 1}
-  shadowExposure: 0
+  fullscreenQuantization: 1
+  levels: 16
+  gammaBefore: 0.906
+  gammaAfter: 1.023
+  colorGradingEnabled: 1
+  postExposure: 0.28
+  contrast: -4.3
+  saturation: 6.8
+  shadowTint: {r: 1, g: 0.8513091, b: 0.23137254, a: 1}
+  midtoneTint: {r: 1, g: 0.87812114, b: 0.6745283, a: 1}
+  highlightTint: {r: 0.9928623, g: 1, b: 0.56078434, a: 1}
+  shadowExposure: -0.2
   midtoneExposure: 0
   highlightExposure: 0
   shadowEnd: 0.35
@@ -35,5 +35,6 @@ MonoBehaviour:
   perceptualQuantization: 0
   quantizationStrength: 1
   ditherStrength: 0
+  filmGrainStrength: 0.05
   useVirtualResolution: 0
   virtualHeight: 540

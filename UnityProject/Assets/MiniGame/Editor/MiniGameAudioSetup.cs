@@ -31,7 +31,13 @@ namespace MiniGame.UnityHost.Editor
             (MiniGameSound.UIInteraction, "SFX/UIInteraction.wav", false),
             (MiniGameSound.DialoguePop, "SFX/DialoguePop.wav", false),
             (MiniGameSound.TerminalPowerOn, "SFX/TerminalPowerOn.wav", false),
-            (MiniGameSound.TerminalPowerOff, "SFX/TerminalPowerOff.wav", false)
+            (MiniGameSound.TerminalPowerOff, "SFX/TerminalPowerOff.wav", false),
+            (MiniGameSound.TerminalType1, "SFX/UIType/UIType1.wav", false),
+            (MiniGameSound.TerminalType2, "SFX/UIType/UIType2.wav", false),
+            (MiniGameSound.TerminalType3, "SFX/UIType/UIType3.wav", false),
+            (MiniGameSound.TerminalType4, "SFX/UIType/UIType4.wav", false),
+            (MiniGameSound.DoorOpen, "SFX/DoorOpen.wav", false),
+            (MiniGameSound.DoorShut, "SFX/DoorShut.wav", false)
         };
 
         public static MiniGameAudioProfile EnsureAssets()
@@ -44,10 +50,12 @@ namespace MiniGame.UnityHost.Editor
 
             EnsureFolder("Assets/MiniGame/Audio/Music");
             EnsureFolder("Assets/MiniGame/Audio/SFX");
+            EnsureFolder("Assets/MiniGame/Audio/SFX/UIType");
             EnsureFolder("Assets/MiniGame/Resources/MiniGame");
             var entries = SourceClips.Select(source => new MiniGameSoundEntry
             {
-                Id = source.Id, Clip = ImportClip(source.File, source.Streaming), Volume = 1
+                Id = source.Id, Clip = ImportClip(source.File, source.Streaming),
+                Volume = source.Id >= MiniGameSound.TerminalType1 && source.Id <= MiniGameSound.TerminalType4 ? .18f : 1
             }).ToArray();
             var mixer = AssetDatabase.LoadAssetAtPath<AudioMixer>(MixerPath);
             if (mixer == null)
@@ -74,6 +82,30 @@ namespace MiniGame.UnityHost.Editor
                 if (!EditorUtility.IsPersistent(profile)) UnityEngine.Object.DestroyImmediate(profile);
                 throw;
             }
+        }
+
+        [MenuItem("MiniGame/音频/应用开门与关门音效")]
+        public static void ApplyDoorSounds()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                throw new InvalidOperationException("请先停止播放再导入开关门音效。");
+            var profile = EnsureAssets();
+            var open = ImportClip("SFX/DoorOpen.wav", false);
+            var shut = ImportClip("SFX/DoorShut.wav", false);
+            Undo.RecordObject(profile, "绑定开关门音效");
+            foreach (var pair in new[] { (Id: MiniGameSound.DoorOpen, Clip: open), (Id: MiniGameSound.DoorShut, Clip: shut) })
+            {
+                var entry = profile.GetEntry(pair.Id);
+                if (entry == null)
+                {
+                    entry = new MiniGameSoundEntry { Id = pair.Id, Volume = 1 };
+                    profile.Sounds = (profile.Sounds ?? Array.Empty<MiniGameSoundEntry>()).Concat(new[] { entry }).ToArray();
+                }
+                entry.Clip = pair.Clip;
+            }
+            EditorUtility.SetDirty(profile);
+            AssetDatabase.SaveAssetIfDirty(profile);
+            Debug.Log("DOOR_AUDIO_APPLIED DoorOpen.wav / DoorShut.wav");
         }
 
         private static AudioClip ImportClip(string relativePath, bool streaming)

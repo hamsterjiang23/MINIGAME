@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-20",
+  "scope": "User original transparent NORM logo centred on the existing opening terminal view, preserving aspect; no added background panel",
+  "asset": {
+    "height": 724,
+    "sha256": "d9ec48e59dce14377a9a8288947accbf560ef25858e02013add071cc60e246f0",
+    "byteIdenticalToSource": true,
+    "source": "Art/Branding/norm-logo-source.json",
+    "alphaPreserved": true,
+    "width": 2172
+  },
+  "integration": {
+    "afterClick": "Existing 2.2 second pullback; supervisor restored when Day0 tutorial opens",
+    "opening": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs BeginDayZeroOpening/EndDayZeroOpening",
+    "uiNativeBackground": "Existing terminal surface colour is retained, no additional image background",
+    "runtime": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs SetOpeningLogo/FitOpeningLogo"
+  },
+  "playmode": {
+    "evidence": "Artifacts/NormOpening/playmode.xml",
+    "passed": 2,
+    "result": "Passed",
+    "checks": [
+      "Logo resource identity, original alpha tint, aspect, centre and complete camera bounds",
+      "Day0 tutorial, single purification, reaction, closing session, bed-only and one sleep to Day1",
+      "Pause and unfinished-opening checkpoint recovery"
+    ],
+    "failed": 0,
+    "viewportAspects": [
+      "4:3",
+      "16:9",
+      "32:9",
+      "9:16"
+    ]
+  },
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\NormOpening\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 16.1552729
+  },
+  "player": {
+    "result": "passed",
+    "detail": "Fresh campaign opening, native UI tutorial and one sleep completed",
+    "unity": "2022.3.23f1c1",
+    "captureMode": "Native UI camera RenderTexture and the displayed CRT material; room capture uses the actual room camera",
+    "sourceLines": 7,
+    "day": 1,
+    "singlePurification": true,
+    "bedOnly": true,
+    "furnitureRestored": true,
+    "normLogoPresent": true,
+    "seconds": 13.172548294067383
+  },
+  "previews": {
+    "pullbackSource": "PlayMode native UI texture through the actual CRT material",
+    "opening": "previews/opening.png",
+    "openingSource": "Actual Windows Player native UI texture through the actual CRT material",
+    "pullback": "previews/pullback.png"
+  },
+  "review": "Independent read-only asset/UI review CLEAN after dual-axis fit correction",
+  "limits": [
+    "No core rule changes; .NET suite not rerun for this UI-only update.",
+    "Verification used isolated Unity copy and Windows Mono development Player, not primary editor restart.",
+    "No claim of new human playthrough or performance benchmark."
+  ]
+}

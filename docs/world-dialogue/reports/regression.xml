@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="16" result="Passed" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:33:27Z" duration="44.5634624">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:33:27Z" duration="44.563462" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1216" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:33:27Z" duration="44.554977" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="36688" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1217" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:33:27Z" duration="44.524084" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1218" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:33:27Z" duration="44.490750" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1219" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="164" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:33:27Z" duration="44.457339" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1109" name="NormWorldPresentationPlayModeTests" fullname="MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests" classname="MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:32:46Z" duration="4.122770" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1110" name="MorningUsesSupervisorAndAWhiteFrameWithoutDeveloperLabelsOrWorldInstructions" fullname="MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests.MorningUsesSupervisorAndAWhiteFrameWithoutDeveloperLabelsOrWorldInstructions" methodname="MorningUsesSupervisorAndAWhiteFrameWithoutDeveloperLabelsOrWorldInstructions" classname="MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests" runstate="Runnable" seed="1956270743" result="Passed" start-time="2026-10-21 06:32:42Z" end-time="2026-10-21 06:32:43Z" duration="0.668429" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+              </test-case>
+              <test-case id="1111" name="RealRoomManualKeepsPauseUntilTheSecondEscapeAndMorningCanBeRead" fullname="MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests.RealRoomManualKeepsPauseUntilTheSecondEscapeAndMorningCanBeRead" methodname="RealRoomManualKeepsPauseUntilTheSecondEscapeAndMorningCanBeRead" classname="MiniGame.UnityHost.Tests.NormWorldPresentationPlayModeTests" runstate="Runnable" seed="862739909" result="Passed" start-time="2026-10-21 06:32:43Z" end-time="2026-10-21 06:32:46Z" duration="3.417827" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="20000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\supervisor-already-outside-closed-door.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\supervisor-morning.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\pause-operation-manual.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\pause-amber-menu.png
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1131" name="PropNarrationPlayModeTests" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-21 06:32:46Z" end-time="2026-10-21 06:33:04Z" duration="17.202994" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1134" name="ContinuousCameraTurnsKeepReadingViewportBoundsStableAndVisible" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ContinuousCameraTurnsKeepReadingViewportBoundsStableAndVisible" methodname="ContinuousCameraTurnsKeepReadingViewportBoundsStableAndVisible" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="1132439835" result="Passed" start-time="2026-10-21 06:32:46Z" end-time="2026-10-21 06:32:53Z" duration="7.108435" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+Reading camera bounds: right=0.00000, centerY=0.00001, width=0.00000, height=0.00000, hidden=0; F:\AAMINIGAME\MINIGAME\Artifacts\WorldDialogue\fixed-metrics.json
+]]></output>
+              </test-case>
+              <test-case id="1136" name="InitiallyRightSidePropChoosesClearVerticalDockOnlyOnce" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.InitiallyRightSidePropChoosesClearVerticalDockOnlyOnce" methodname="InitiallyRightSidePropChoosesClearVerticalDockOnlyOnce" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="1773860590" result="Passed" start-time="2026-10-21 06:32:53Z" end-time="2026-10-21 06:32:55Z" duration="1.166273" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+OnRenderImage() possibly didn't write anything to the destination texture!
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\poster-initial-vertical-dock.png
+]]></output>
+              </test-case>
+              <test-case id="1139" name="LongParagraphRemainsCompleteAcrossReadablePages" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.LongParagraphRemainsCompleteAcrossReadablePages" methodname="LongParagraphRemainsCompleteAcrossReadablePages" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="76017218" result="Passed" start-time="2026-10-21 06:32:55Z" end-time="2026-10-21 06:32:57Z" duration="2.067389" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1137" name="OversizedSourceKeepsFallbackReadableAndDismissRestoresWorldInput" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.OversizedSourceKeepsFallbackReadableAndDismissRestoresWorldInput" methodname="OversizedSourceKeepsFallbackReadableAndDismissRestoresWorldInput" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="167648022" result="Passed" start-time="2026-10-21 06:32:57Z" end-time="2026-10-21 06:32:58Z" duration="0.995356" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+Reading cursor state: frame=395 focused=False input=World propBlocks=True playerEnabled=True visible=True lock=None
+Restored world cursor state: frame=405 focused=False input=World paused=False propBlocks=False playerEnabled=True cameraEnabled=True sceneChanging=False dreamOwnsCamera=False signalBlocks=False visible=False lock=None
+Physical OS pointer-lock verification requires application focus; world input and cursor visibility are still asserted.
+]]></output>
+              </test-case>
+              <test-case id="1135" name="PinnedReadingStaysVisibleThroughObstructionAndCanFinish" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.PinnedReadingStaysVisibleThroughObstructionAndCanFinish" methodname="PinnedReadingStaysVisibleThroughObstructionAndCanFinish" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="379190660" result="Passed" start-time="2026-10-21 06:32:58Z" end-time="2026-10-21 06:33:00Z" duration="1.996229" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1132" name="ReadingOwnsInputPagesAndPauseWithoutChangingGameState" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingOwnsInputPagesAndPauseWithoutChangingGameState" methodname="ReadingOwnsInputPagesAndPauseWithoutChangingGameState" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="345933131" result="Passed" start-time="2026-10-21 06:33:00Z" end-time="2026-10-21 06:33:02Z" duration="2.166387" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+OnRenderImage() possibly didn't write anything to the destination texture!
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\poster-borderless-black-reading.png
+]]></output>
+              </test-case>
+              <test-case id="1133" name="ReadingPanelKeepsSmallRightMarginAndFollowsCameraYawAndPitch" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ReadingPanelKeepsSmallRightMarginAndFollowsCameraYawAndPitch" methodname="ReadingPanelKeepsSmallRightMarginAndFollowsCameraYawAndPitch" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="580219668" result="Passed" start-time="2026-10-21 06:33:02Z" end-time="2026-10-21 06:33:03Z" duration="1.172057" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+OnRenderImage() possibly didn't write anything to the destination texture!
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\poster-following-camera-right-edge.png
+]]></output>
+              </test-case>
+              <test-case id="1138" name="RestoreDisableAndTargetRemovalReleaseNarrationAndCameraOwnership" fullname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.RestoreDisableAndTargetRemovalReleaseNarrationAndCameraOwnership" methodname="RestoreDisableAndTargetRemovalReleaseNarrationAndCameraOwnership" classname="MiniGame.UnityHost.Tests.PropNarrationPlayModeTests" runstate="Runnable" seed="725562211" result="Passed" start-time="2026-10-21 06:33:03Z" end-time="2026-10-21 06:33:04Z" duration="0.498375" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1163" name="RoomReadablesPlayModeTests" fullname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests" classname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-21 06:33:04Z" end-time="2026-10-21 06:33:23Z" duration="19.364567" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1166" name="DayZeroHidesUnpublishedNewsWhileStaticDocumentsStayReadable" fullname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests.DayZeroHidesUnpublishedNewsWhileStaticDocumentsStayReadable" methodname="DayZeroHidesUnpublishedNewsWhileStaticDocumentsStayReadable" classname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests" runstate="Runnable" seed="1348655896" result="Passed" start-time="2026-10-21 06:33:04Z" end-time="2026-10-21 06:33:07Z" duration="3.768094" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1165" name="NewspaperUsesAuthoritativeDayAcrossSleepAndRestoringAnEarlierDay" fullname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests.NewspaperUsesAuthoritativeDayAcrossSleepAndRestoringAnEarlierDay" methodname="NewspaperUsesAuthoritativeDayAcrossSleepAndRestoringAnEarlierDay" classname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests" runstate="Runnable" seed="893488641" result="Passed" start-time="2026-10-21 06:33:07Z" end-time="2026-10-21 06:33:16Z" duration="8.701717" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+OnRenderImage() possibly didn't write anything to the destination texture!
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\daily-newspaper-day-1.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\daily-newspaper-day-2.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\daily-newspaper-day-3.png
+]]></output>
+              </test-case>
+              <test-case id="1164" name="ThreePhysicalReadablesUseLeftClickAndKeepFullTextWithoutSaveSideEffects" fullname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests.ThreePhysicalReadablesUseLeftClickAndKeepFullTextWithoutSaveSideEffects" methodname="ThreePhysicalReadablesUseLeftClickAndKeepFullTextWithoutSaveSideEffects" classname="MiniGame.UnityHost.Tests.RoomReadablesPlayModeTests" runstate="Runnable" seed="1527106097" result="Passed" start-time="2026-10-21 06:33:16Z" end-time="2026-10-21 06:33:23Z" duration="6.861258" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+OnRenderImage() possibly didn't write anything to the destination texture!
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\family-letter-black-reading.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\daily-newspaper-black-reading.png
+MINIGAME_CAPTURE F:/AAMINIGAME/MINIGAME/Artifacts/WorldDialogue/screenshots\employment-notice-black-reading.png
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1175" name="SupervisorDoorwayPlayModeTests" fullname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests" classname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-21 06:33:23Z" end-time="2026-10-21 06:33:27Z" duration="3.732647" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1178" name="PauseAndCheckpointRebindKeepTheOutsideWorldPose" fullname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.PauseAndCheckpointRebindKeepTheOutsideWorldPose" methodname="PauseAndCheckpointRebindKeepTheOutsideWorldPose" classname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests" runstate="Runnable" seed="1166859852" result="Passed" start-time="2026-10-21 06:33:23Z" end-time="2026-10-21 06:33:24Z" duration="0.866736" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+              </test-case>
+              <test-case id="1177" name="PlayerMovementAndDoorEntryDoNotMoveThePermanentSupervisor" fullname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.PlayerMovementAndDoorEntryDoNotMoveThePermanentSupervisor" methodname="PlayerMovementAndDoorEntryDoNotMoveThePermanentSupervisor" classname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests" runstate="Runnable" seed="1369101234" result="Passed" start-time="2026-10-21 06:33:24Z" end-time="2026-10-21 06:33:25Z" duration="0.833080" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+              </test-case>
+              <test-case id="1176" name="SupervisorAlreadyStandsOutsideClosedDoorAndRemainsThroughMorningAndWork" fullname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.SupervisorAlreadyStandsOutsideClosedDoorAndRemainsThroughMorningAndWork" methodname="SupervisorAlreadyStandsOutsideClosedDoorAndRemainsThroughMorningAndWork" classname="MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests" runstate="Runnable" seed="1423165162" result="Passed" start-time="2026-10-21 06:33:25Z" end-time="2026-10-21 06:33:27Z" duration="1.999863" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

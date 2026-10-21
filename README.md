@@ -6,11 +6,15 @@
 
 2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](docs/feishu-sync-2026-10-15.md)。[verified: docs/.source-data/game-wiki.json content「结局」；docs/.source-data/sync-2026-10-15.json changes] [opinion]
 
-**全流程内容包接入六份Excel的994行对白**：Day0教学、五名角色三天会谈、三种现有结局与27个立绘状态。全流程导入后，融合主场景使用独立的 `ActiveCampaignPackage`；小孩Day1演示和旧三天原型保留。启动、修改、暂定解释与验证入口见[全流程指南](docs/campaign-guide.md)。`[verified: UnityProject/Assets/MiniGame/Content/Campaign/provenance.json sourceRowCount/meetingCount/declaredPortraits；UnityProject/Assets/MiniGame/Editor/CampaignBuilder.cs ImportAndActivate；UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs StartCampaign]`
+**全流程内容包已更新为六份新版Excel**：1437行原始资料中启用1295行，142行重复或后附冲突内容按确认规则暂不启用；覆盖Day0及五名角色三天的16场会谈，声明22个立绘状态。修复依据与新版条件分支见[本次对白更新](docs/dialogue-update-2026-10-21/guide.md)。融合主场景使用独立的 `ActiveCampaignPackage`，旧小孩Day1演示保留；启动与编辑入口见[全流程指南](docs/campaign-guide.md)。`[verified: UnityProject/Assets/MiniGame/Content/Campaign/provenance.json sourceRowCount/activeSourceRowCount/excludedSourceRowCount/meetingCount/declaredPortraits；UnityProject/Assets/MiniGame/Editor/CampaignBuilder.cs ImportAndActivate]`
 
 ## 玩法设计
 
-电脑终端现采用用户提供的v0.8.12琥珀资源包，支持开机自检、分区加载和动态人物监控。每天仅首次交互开机，中途退出操作保持亮屏，再次进入继续；当日全部会谈与反应结束后自动关机，开关机各有专用音效；F2／F3功能已移除。物理CRT覆盖面按真实玻璃曲率贴合。Day0启动显示监管者监控，点击后连续拉远进入教学，关机后睡一次进入Day1，起床不重设视角；海报正文改为白框。最新运行版与验证见[CRT指南](docs/crt-screen-fit/guide.md)，开场和操作见[开场指南](docs/opening/guide.md)与[琥珀终端指南](docs/terminal-amber/guide.md)。`[verified: MiniGameBootstrap.StartTerminalDemo；PresentationEffects.DayZeroOpening/PowerOn/PowerOff；GameRuntime.CompleteCue/LeaveTerminal；docs/crt-screen-fit/verification.json]`
+电脑终端现采用用户提供的v0.8.12琥珀资源包，支持开机自检、分区加载和动态人物监控。每天仅首次交互开机，中途退出操作保持亮屏，再次进入继续；当日全部会谈与反应结束后自动关机，开关机各有专用音效；F2／F3功能已移除。物理CRT覆盖面按真实玻璃曲率贴合。Day0启动居中显示透明NORM标志，点击后连续拉远进入教学，关机后睡一次进入Day1，起床不重设视角；海报、家书、日报和录用通知书共用黑底无框白字阅读面板，右侧留小边距并随镜头转动，自动避让当前交互物；日报按游戏日切换，见[阅读物件指南](docs/room-readables/guide.md)。最新运行版与验证见[CRT指南](docs/crt-screen-fit/guide.md)，开场和操作见[开场指南](docs/opening/guide.md)与[琥珀终端指南](docs/terminal-amber/guide.md)；新版工作指标与逐字开机音效见[当日指标指南](docs/terminal-daily-work/guide.md)。`[verified: MiniGameBootstrap.StartTerminalDemo；PresentationEffects.DayZeroOpening/PowerOn/PowerOff；GameRuntime.CompleteCue/LeaveTerminal；TerminalView.SetOpeningLogo；docs/crt-screen-fit/verification.json]`
+
+NORM 调整包括门外监督员与白框晨检、暂停操作手册、净化要求进度、晨检扫描声、门口镜头停止推进和独立胶片颗粒；先前结果见[NORM 修复指南](docs/norm-bugs/guide.md)。墙纸穿墙与黑斑已修复，并已合入GitHub场景灯光及用户提供的调色配置；当前运行版见[墙体与灯光指南](docs/wall-lighting/guide.md)，新梦境素材继续暂缓。`[verified: docs/norm-bugs/guide.md；docs/wall-lighting/guide.md]`
+
+开机与关机文字现逐字显现，每个可见字符从新上传的四段 UIType 短音中随机选择一段；空白与光标不发声，暂停、跳过自检和中途重开保持原规则。音量设置、来源哈希和运行版见[终端逐字音效](docs/terminal-typing-audio/guide.md)。`[verified: TerminalPowerTimeline；TerminalTransitionView.SetPowerFrame；MiniGameAudioService.PlayTerminalTyping]`
 
 2026-10-19 的 Combined 正式 Campaign 已接入墙面梦境、玩家全局反叛值、自我审查净化及独立海滩终局；中文调参、音频选取和动态海浪说明见[梦境与结局指南](docs/dreams/guide.md)，录制视频随仓库保存。`[verified: docs/dreams/verification.json；docs/dreams/water-verification.json；Art/Dreams/Previews/manifest.json]`
 

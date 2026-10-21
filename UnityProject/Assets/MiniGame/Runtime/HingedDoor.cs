@@ -18,6 +18,9 @@ namespace MiniGame.UnityHost
         private bool subscribed;
         private float startAngle, targetAngle, elapsed;
         private string pendingToken;
+        private string lastSoundToken;
+        public event Action<HingedDoor, bool> MotionStarted;
+        internal bool IsBoundTo(GameRuntime game) => runtime == game;
 
         public bool EnableToggle
         {
@@ -56,6 +59,7 @@ namespace MiniGame.UnityHost
             var view = runtime.GetView();
             Snap(TargetAngle(view));
             pendingToken = view.Cue?.Kind == PresentationKind.DoorMotion ? view.Cue.Token : null;
+            lastSoundToken = pendingToken; // Restored/rebound poses are silent.
             Subscribe();
         }
 
@@ -144,6 +148,11 @@ namespace MiniGame.UnityHost
             if (!Mathf.Approximately(targetAngle, TargetAngle(view))) OnViewChanged(view);
             if (IsMoving)
             {
+                if (pendingToken != null && pendingToken != lastSoundToken)
+                {
+                    lastSoundToken = pendingToken;
+                    MotionStarted?.Invoke(this, Mathf.Abs(targetAngle) > .01f);
+                }
                 elapsed += Time.unscaledDeltaTime;
                 float fraction = animationSeconds <= 0 ? 1 : Mathf.Clamp01(elapsed / animationSeconds);
                 SetAngle(Mathf.LerpUnclamped(startAngle, targetAngle, Mathf.SmoothStep(0, 1, fraction)));

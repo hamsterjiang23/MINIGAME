@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 8.53,\r\n  \"summary\": {\r\n    \"total\": 1,\r\n    \"passed\": 0,\r\n    \"failed\": 1,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.PropNarrationPlayModeTests.ContinuousCameraTurnsKeepReadingViewportBoundsStableEvenWhileHidden\",\r\n      \"Status\": \"Failed\",\r\n      \"Duration\": 8.3603137,\r\n      \"Message\": \"  The right margin must follow the camera during every frame, including hidden frames.\\r\\n  Expected: less than 0.00200000009f\\r\\n  But was:  0.0282239914f\\r\\n\",\r\n      \"StackTrace\": \"at MiniGame.UnityHost.Tests.PropNarrationPlayModeTests+<ContinuousCameraTurnsKeepReadingViewportBoundsStableEvenWhileHidden>d__2.MoveNext () [0x00742] in F:\\\\AAMINIGAME\\\\MINIGAME\\\\UnityProject\\\\Assets\\\\MiniGame\\\\Tests\\\\PlayMode\\\\PropNarrationPlayModeTests.cs:178\\r\\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\\\Library\\\\PackageCache\\\\com.unity.test-framework@1.1.33\\\\UnityEngine.TestRunner\\\\NUnitExtensions\\\\Attributes\\\\TestEnumerator.cs:46\\r\\n\"\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.EmptyPoolsStaySilentAndMissingClipsAreExcluded",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.TerminalDailyPowerPlayModeTests.OneDailyBootKeepsPhysicalScreenLitUntilFinalAutomaticClosingWithSounds",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.MorningSupervisorIsGroundedOutsideTheDoorAndHiddenWhenClosedOrWorking",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/room-lighting-final.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.PausedPullbackFreezesAndUnfinishedOpeningRestoresAtItsWaitingStart",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.TerminalGlowUpdatesMaterialSlotsWithoutDiscardingTheirLightingBands",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/room-lighting-final.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.PauseAndCheckpointRebindKeepTheOutsideWorldPose",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.TypingDoesNotReplaceOrRestartTheSeparatePowerSound",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.PauseRestoreAndDisableStopOldTypingWithoutReplayingIt",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.SupervisorDoorwayPlayModeTests.FirstMorningRegroundsSupervisorAfterAnInitiallySeatedBind",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/room-lighting-final.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.TerminalTypingAudioPlayModeTests.EachCharacterChoosesOneOfFourClipsWithNaturalRepeatsAndIndependentRandomness",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.SeatedTerminalEntryPlayModeTests.ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/playmode-initial.xml"
+  },
+  {
+    "name": "MiniGame.UnityHost.Tests.RoomLightingPlayModeTests.EditingTheProfileAtBedtimeKeepsTheRoomDarkAndUpdatesTheNextMorning",
+    "result": "Passed",
+    "report": "Artifacts/WallLighting/room-lighting-final.xml"
+  }
+]

@@ -1,0 +1,823 @@
+{
+  "name": "NORM-Windows-x64-Mono-20261021-144903",
+  "createdAt": "2026-10-21T14:49:04.0067376+08:00",
+  "platform": "Windows x64",
+  "backend": "Mono",
+  "developmentBuild": false,
+  "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-20261021-144903.zip",
+  "zipBytes": 188570196,
+  "zipSha256": "ade00e4aa151986ee3c95f8aa1fea58707c5417297cc48cd8e6a6ca5ca8682a1",
+  "checksumPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-20261021-144903.sha256",
+  "sourceFolder": "F:\\AAMINIGAME\\MINIGAME\\Builds\\NORM-Windows-x64-Mono-20261021-144903",
+  "extractedFolder": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\MonoDelivery-20261021-144903\\Extracted\\NORM-Windows-x64-Mono-20261021-144903",
+  "extractedExe": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\MonoDelivery-20261021-144903\\Extracted\\NORM-Windows-x64-Mono-20261021-144903\\MiniGame.exe",
+  "files": 160,
+  "allExtractedFileHashesMatch": true,
+  "payloadChecks": {
+    "monoRuntimePresent": true,
+    "managedGameAssemblyPresent": true,
+    "il2cppGameAssemblyAbsent": true
+  },
+  "manifest": [
+    {
+      "path": "MiniGame.exe",
+      "bytes": 666624,
+      "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+    },
+    {
+      "path": "MiniGame_Data/app.info",
+      "bytes": 27,
+      "sha256": "569de529a339fa06260194759f95f3a4234dfb68d2805dd82eede24c5ad76a17"
+    },
+    {
+      "path": "MiniGame_Data/boot.config",
+      "bytes": 164,
+      "sha256": "4bf50abc6fec88afb3db32019bf73c22c84bbc6a3aa2ec03797acfc72894af8d"
+    },
+    {
+      "path": "MiniGame_Data/globalgamemanagers",
+      "bytes": 44492,
+      "sha256": "fe825164c7a7c925867d1d9f092bfc4601bdf646105ff125571e4a78211984d8"
+    },
+    {
+      "path": "MiniGame_Data/globalgamemanagers.assets",
+      "bytes": 59288,
+      "sha256": "5220f02d8409633190febaa4db5a6842d41d07eaa8bc57cecdc1e61d0d6e6897"
+    },
+    {
+      "path": "MiniGame_Data/globalgamemanagers.assets.resS",
+      "bytes": 2798288,
+      "sha256": "ebf0f91664c0aa69e3b92e93d4d4e6feae1a9152529b0efeac047e3c9c3b0fc0"
+    },
+    {
+      "path": "MiniGame_Data/level0",
+      "bytes": 172924,
+      "sha256": "199c58e100c33232efbd535fc02c1ea6fc7a928fcb57da80df117d9e4341b746"
+    },
+    {
+      "path": "MiniGame_Data/level1",
+      "bytes": 15188,
+      "sha256": "17b06418d9bb098953866dcb55bdf6a325da1f9b6623dc8ee27e79fcffc0c01d"
+    },
+    {
+      "path": "MiniGame_Data/level1.resS",
+      "bytes": 131232,
+      "sha256": "e406dbca582a01e45cca79a3abe7b310919d6155d9ce9664c832a18ca630abd8"
+    },
+    {
+      "path": "MiniGame_Data/level2",
+      "bytes": 5696,
+      "sha256": "45c3fdbdce7d502d5b0d09b13371dd7e9176b9e485595986f56f021dd968fff6"
+    },
+    {
+      "path": "MiniGame_Data/level2.resS",
+      "bytes": 131232,
+      "sha256": "d370f5010a38a6a181acf8a8989186a15fd20f4d31c2c6a3fbad08b73e460b01"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Microsoft.CSharp.dll",
+      "bytes": 301568,
+      "sha256": "c882803fc35a553e985fa7e7261a75ee5119b42483927404f1afb3a56fc508ca"
+    },
+    {
+      "path": "MiniGame_Data/Managed/MiniGame.Core.dll",
+      "bytes": 74240,
+      "sha256": "8618acd506471518c432fa772796ee3658060a87070313e3c83578df6b9e1400"
+    },
+    {
+      "path": "MiniGame_Data/Managed/MiniGame.Presentation.dll",
+      "bytes": 129024,
+      "sha256": "8464710e0bd1e0264cc06b2b10f079748afa0b2994046466d31e56e0dc7c5bbc"
+    },
+    {
+      "path": "MiniGame_Data/Managed/MiniGame.UnityHost.dll",
+      "bytes": 318976,
+      "sha256": "961f9340cc7c40986eff093ccfc06ce2c3f210ab5571423194af133363cc6d93"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Mono.Security.dll",
+      "bytes": 241152,
+      "sha256": "6920a7cd2e3dee16d0e77f9bbc3e780eb2636ab8775362bf75701478f0c05683"
+    },
+    {
+      "path": "MiniGame_Data/Managed/mscorlib.dll",
+      "bytes": 4631552,
+      "sha256": "92d3dfb18bb49a8fc6d793ef1442d355af8d517960cc04d627a679702fd4085e"
+    },
+    {
+      "path": "MiniGame_Data/Managed/netstandard.dll",
+      "bytes": 90112,
+      "sha256": "6ae62e082dc494a2433984177f60ca4db5fae69b1f360a8b33754172b310b8c5"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Newtonsoft.Json.dll",
+      "bytes": 691712,
+      "sha256": "a56146202232958f46bd6a28b5a7da166aea123ee0d646735a46e5c341dfbf1f"
+    },
+    {
+      "path": "MiniGame_Data/Managed/PMSAmberTerminal.Runtime.dll",
+      "bytes": 38400,
+      "sha256": "1a1886b7ff396bbecf82f3a3eb389505ca7b1f174ee372e279b7d14260fbaa70"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Buffers.dll",
+      "bytes": 4608,
+      "sha256": "762f8fdbe975e05b76be5fe996c53ce7c75e4a2830f2f50b02a5948ef6ba0aeb"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.ComponentModel.Composition.dll",
+      "bytes": 257024,
+      "sha256": "a6f55db150c96676f2d43691d551647cb3d9044ac06357e4f4b3a9d9a6650f26"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Configuration.dll",
+      "bytes": 124928,
+      "sha256": "5cb931c2f6bf511da63b4bf991ad34cf6f797053a4522dbd953c88d1fd5e6eb6"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Core.dll",
+      "bytes": 1113088,
+      "sha256": "0d1ccb7f3767ac495ba5732ac1a65853c735ead430843a455cf2572984fbf0af"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Data.DataSetExtensions.dll",
+      "bytes": 29696,
+      "sha256": "f8fde604810544c0b6c044aca04f8d5043b3d6b591353f660f4d87e1f5584ed7"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Data.dll",
+      "bytes": 2125312,
+      "sha256": "e0f618c60cb0ef26bbad5e87381d83a24c647a684fc29dd19337be81cc402fde"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.dll",
+      "bytes": 2637824,
+      "sha256": "294ac2a3f2441c85f18a68b57adc83325f203877e8bb7bee55aa181e905c71bb"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Drawing.dll",
+      "bytes": 489984,
+      "sha256": "56fdd108f9f1c19a98242ead5b76c2331d58fa87da1258fb20cf63aa719f9548"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.EnterpriseServices.dll",
+      "bytes": 44544,
+      "sha256": "7c4c3236a966481e2bebeb36001fb89ec79c366f4950dbe02d282f2d66c67159"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.IO.Compression.dll",
+      "bytes": 114688,
+      "sha256": "7a9749b20e4c26f08cc02fc2add9726c4d0cd6881e7fe81acede8e305ad774f3"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.IO.Compression.FileSystem.dll",
+      "bytes": 18432,
+      "sha256": "deadb57a5293c323471504fd2e44eb387b4c4b23def41acb427c2751c0a0db73"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Memory.dll",
+      "bytes": 4608,
+      "sha256": "c4f030a2cba7da7cdcf493257c24560e203d355904aee490d645a935842f834a"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Net.Http.dll",
+      "bytes": 122880,
+      "sha256": "123a2721b0944eadc6257ce0b12d217edbdfca1cbdb7f28d1b6ef500250325a3"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Numerics.dll",
+      "bytes": 119296,
+      "sha256": "dba8fc9bdb0e5925ae6229723f5204ec643045ed0c937f061f8036a625d890bb"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Numerics.Vectors.dll",
+      "bytes": 12288,
+      "sha256": "8f1ed54dbafe236e50fe2c735340e27bfc633ae8ea7a73c17d5f5ca21dd55a6c"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Runtime.Serialization.dll",
+      "bytes": 934400,
+      "sha256": "f61898747489389b27fc1206d0f2ef92c2855162d4e017dc9b7f5ef798ec4afd"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Security.dll",
+      "bytes": 320000,
+      "sha256": "80218fbb10840bfa0c8ed9637b8c6dbaf3ca46bde6eef822ef55601c91969dd1"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.ServiceModel.Internals.dll",
+      "bytes": 215040,
+      "sha256": "ab012017d720c9af60a8271e3d14b9fca92a25f72ec866945d4040c43386a332"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Threading.Tasks.Extensions.dll",
+      "bytes": 5120,
+      "sha256": "96150abdca5df4446b376560e069d59b3550212deda8cbdd316272f6b834f597"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Transactions.dll",
+      "bytes": 35328,
+      "sha256": "c2e78800b95f47ec55fdb90eb9c8d860d89ae71f244a9584acdb641d1aa6f358"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Xml.dll",
+      "bytes": 3160064,
+      "sha256": "d0d8f037267ae524d54c3227a4e094ae7e8b870e2027801754bd62ad123f27ea"
+    },
+    {
+      "path": "MiniGame_Data/Managed/System.Xml.Linq.dll",
+      "bytes": 136704,
+      "sha256": "39e7f42b05db6d5afcd9277cff3e94f6d6e7af10e33cb766b127493d17b38c68"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Unity.TextMeshPro.dll",
+      "bytes": 380416,
+      "sha256": "9bc4f3407060cee9935e047579704bf18f8fd6702c73c2cb7f8d30a611e75fed"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.AccessibilityModule.dll",
+      "bytes": 22808,
+      "sha256": "6a7efdfef237a38c3f8a2b2b3aeaad26b5b4f3a7e81ca6e1ff2a898bf64b2def"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.AIModule.dll",
+      "bytes": 57624,
+      "sha256": "fad64efe5c164e61161cd9743005aced6aae2d7bc478fc339d0ccf9f573dd0f4"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+      "bytes": 93976,
+      "sha256": "762c91a17598b08301ce2161e6d2bfd82f2f2481bfbe80dfcd87bf48bb8307b5"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.AnimationModule.dll",
+      "bytes": 163096,
+      "sha256": "7dfabf3e1f8c60f16a0961620f510e81163d028cda37a675d7a4f4c96752bf6e"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ARModule.dll",
+      "bytes": 20760,
+      "sha256": "0ce2efd013630c322ce729cd421df28793ffb5484553459f0b2bddf3c24617a4"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.AssetBundleModule.dll",
+      "bytes": 32536,
+      "sha256": "4ee4cf8909fcb26346ed9cb6dda10b2a6e6c1c0cf308e8a5d651ce97ef6e1534"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.AudioModule.dll",
+      "bytes": 70424,
+      "sha256": "3defeef9123916869136d8976804345e117dab8608921cbf433013dac6579e23"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ClothModule.dll",
+      "bytes": 25368,
+      "sha256": "dbc1fe6dfd2d677c1bcbb01306b7f33af95bed2fca91413461efb8c8a334d9a4"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ClusterInputModule.dll",
+      "bytes": 20760,
+      "sha256": "54ba2a6203fe67c8d61edde0bae28efc97ef2a255c2f5fef6b3a94779e27a3f6"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+      "bytes": 21784,
+      "sha256": "573435f9511a63980c53cfa38a50d2deeb8be7bc1a55c5b91dcedcaebeee57d1"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ContentLoadModule.dll",
+      "bytes": 26392,
+      "sha256": "b25d62f206f9eda044e4b782a45b7c3a0197686ba81cecdab8d4cc5bbef7ce2f"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.CoreModule.dll",
+      "bytes": 1387288,
+      "sha256": "e7486afb4aeb7ff6f5fd00a99287a244f90c4eabb79960948cf96a1a8bbfba79"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.CrashReportingModule.dll",
+      "bytes": 20248,
+      "sha256": "1f4cbb08fda3c5b69ca711a7730a7b357341d6ab438aca5aaad5e5df2ee6f4f3"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.DirectorModule.dll",
+      "bytes": 24344,
+      "sha256": "84e6f521839676437857fd06896d3ad0754469457d07564a1ebf386ec0334819"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.dll",
+      "bytes": 125720,
+      "sha256": "ebddcfe79f8421a7b00aae6852f8a7a39ffdaa95922070738f87aab8d2eef343"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.DSPGraphModule.dll",
+      "bytes": 28952,
+      "sha256": "915dd9df01fe83713a1769ff79d8b73861a9e016ff0ac3a0fa8324de4d98be1f"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.GameCenterModule.dll",
+      "bytes": 39192,
+      "sha256": "0e2007af9ad6edf385959b03aff77b773e8e2dff7002363ade490dab4f22edfa"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.GIModule.dll",
+      "bytes": 19224,
+      "sha256": "4c1ca6ce3afe59903e0df8239f89e86b404272fa42c2590f61f5cd18972bce20"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.GridModule.dll",
+      "bytes": 24344,
+      "sha256": "b7eaebb11c98d59ad3c3bd9c15f4a69943e032eb9a144b9a5ba829dbb3347072"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.HotReloadModule.dll",
+      "bytes": 19736,
+      "sha256": "2485242717fc1a1aa249c75c029f43e8a6791ef78e255b9d43387973a717ff78"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ImageConversionModule.dll",
+      "bytes": 23832,
+      "sha256": "385e201565dd6717f0d2db899e0fab0cb91209b56f2b343026a9b6d38c2bcb03"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.IMGUIModule.dll",
+      "bytes": 189208,
+      "sha256": "27b1d3e5bed18b63a1ce5dd560a2b2b3b0d997165921e79f8943e541a89ac370"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.InputLegacyModule.dll",
+      "bytes": 38168,
+      "sha256": "27ff4c163bafd7b7c6976411584c6eb1564bced181334fb018f994d2259d11f0"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.InputModule.dll",
+      "bytes": 23320,
+      "sha256": "4a5e48dfa5ab9f9779ab421d2e8ea02e3e933a195a38133e00dfd604f4197814"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+      "bytes": 21272,
+      "sha256": "8c42d2198350610be3b0296d54e846aa636cb99418abb148cbcaba5a9015b310"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.LocalizationModule.dll",
+      "bytes": 20760,
+      "sha256": "0b1077e24e90858a9fa3650a0f6521e4cc0ca068e40a4d59b5ee2d11aa884505"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.NVIDIAModule.dll",
+      "bytes": 33560,
+      "sha256": "f212fda107fd6069ed6fb938e4dbf340ccb2ef6951e44d45768b08564beeffa0"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+      "bytes": 160536,
+      "sha256": "b7e87db403e6f229f417af698ae93efd1302d195f2620b68d46c4ec80824380b"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+      "bytes": 20248,
+      "sha256": "5b20679e8eb58254a797f9e1da7be45943c7f9435bf27dd56d16140b8d9727c8"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.Physics2DModule.dll",
+      "bytes": 141080,
+      "sha256": "7d33667b64e0ea44ce5d1fc13887a303e78ae080f139d27d123f05d169cfb3be"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.PhysicsModule.dll",
+      "bytes": 137496,
+      "sha256": "4ccbe5267a0a3f9f9b7025997a7fbab2ac2d0d411e1fdb7b9fe4e6c84281c937"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ProfilerModule.dll",
+      "bytes": 19224,
+      "sha256": "11e595d8fea1f6fb7a2179764b3fae2f0ae86f41d94f9d51a1d27e168a0b3594"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.PropertiesModule.dll",
+      "bytes": 151320,
+      "sha256": "cbd5780ac11f3712f2cbdd9031191d5dd6b0bde2925e59a21d54bf8f6c3be643"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+      "bytes": 19736,
+      "sha256": "da775deed7235acd94b6d5f8956a28c833a1ae6c5d62f1789e5f32045ce659d5"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+      "bytes": 20760,
+      "sha256": "d8c1cc5f584c8c485f55032065bb43986a2935c878cd34cc11cefaafc37054ac"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.SharedInternalsModule.dll",
+      "bytes": 32024,
+      "sha256": "17b11747658d5687d923ffef0d53226da21bcbca4ea83dced208a6204f31bff5"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+      "bytes": 21272,
+      "sha256": "9cc709e60972675f099cd8045e3a5828a11c420fd954d942e1597c4f79f6db6e"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+      "bytes": 25368,
+      "sha256": "e45afe11027991badff6638363d81178688e0879121f73e6190b0c0c83b67a4b"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.StreamingModule.dll",
+      "bytes": 20248,
+      "sha256": "791f7867d8fb6a33abb49eb8c9ffd21c692337a9ae28bdab67f100d59385ca8b"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.SubstanceModule.dll",
+      "bytes": 24344,
+      "sha256": "7d45a275c41746aece340fe670279de8d3dd39586fdd333446534e24f247e177"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.SubsystemsModule.dll",
+      "bytes": 34072,
+      "sha256": "d6cc51190f8a158d149f1a1ee9cc00e50fc27d73b52180538ac170288f242c2b"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TerrainModule.dll",
+      "bytes": 100120,
+      "sha256": "712d641418e44d16fc7cb05c530a32b05cad873d3a95026f355a47fa213ca820"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+      "bytes": 20248,
+      "sha256": "e010c8a94df2c7455cfc8a42777ab8d229ee6ef7949b7466639ada1d94dc0c96"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+      "bytes": 71960,
+      "sha256": "43b0899d0cff2edc1c888710b5c88d4a28720ca7fa812c12c6d3d4ecc857700a"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+      "bytes": 249112,
+      "sha256": "e720afbf2539206615b483c2faa96c5f1cf74e37ffed87f946839152237f5dd3"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TextRenderingModule.dll",
+      "bytes": 38168,
+      "sha256": "520ee7089267f846273e98b58784494e2c2107f06c795af2421cdfeaf9ea445f"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TilemapModule.dll",
+      "bytes": 46360,
+      "sha256": "2321e778c0fca19269c92783998c5e9a23ef8393bd834ba94814197a4a405fa7"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.TLSModule.dll",
+      "bytes": 26392,
+      "sha256": "ae3f22ed9b502e231e620ae6c09398492ca6c6b110e5cf545704dc59da45b73f"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UI.dll",
+      "bytes": 261632,
+      "sha256": "a69365aadd397ce566f1349316d7b9187465dffb23620c3c1c5dcdd675f6d358"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UIElementsModule.dll",
+      "bytes": 1525528,
+      "sha256": "f0a2e771fd2e1593dc9932372596dd4601cfd80fe1831272284ccf33f4317c9d"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UIModule.dll",
+      "bytes": 36120,
+      "sha256": "838d0dd4b37a81e401f9084abb3c5e41a898e95b9f030c7219011a73fbf62c2e"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UmbraModule.dll",
+      "bytes": 19224,
+      "sha256": "b2d0559d90f642c89ef5fa71d3b60f38a33a591dcec66125731ded5aef9e718b"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+      "bytes": 20248,
+      "sha256": "4edf6a8adb273c370a207e445c86a1d78058296e9240b3b8838f109873039f08"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+      "bytes": 43800,
+      "sha256": "efe8b1dcf98cdae3fbeb2263763a4452d6c61edf19edb46ad7672d014dd75147"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityConnectModule.dll",
+      "bytes": 21272,
+      "sha256": "df5f0ac526b43215b1ac8034bc88c04f9177d42a67f9fbb5d14b01abda53e47f"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityCurlModule.dll",
+      "bytes": 21272,
+      "sha256": "48247a601c389f03c276a0a4fd933878fd2329c646584f596790c36bd2b44ec3"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
+      "bytes": 19736,
+      "sha256": "11ff64932812b456917910690a10254cb74f68ae28681fbd6577922e8314465b"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+      "bytes": 22296,
+      "sha256": "1c5e93f0eb1c7588584912a382d21172ed23d21e7299922f7d45f8bbd854f67a"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+      "bytes": 22296,
+      "sha256": "a49dc01a959651953e5c4641c0d0a110a5812c3e3aca7787530d9f6ba144a27c"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+      "bytes": 57624,
+      "sha256": "5d36f73d19fc1694bfed9b12ee1f9b0ffcc40447132390bcb55e38e26fd1018c"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+      "bytes": 21272,
+      "sha256": "b3382f3b7afee735d042568a0efa04d9a0f502f803801025615d15177c84cf8a"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+      "bytes": 31000,
+      "sha256": "518756de5743f3061a2be3b0038b0f648015aae7d96bd0d82353129bb6fcb8c3"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.VehiclesModule.dll",
+      "bytes": 23320,
+      "sha256": "208aa8b632b5cabef720a11e1e8f37be77ebf33fe019ebf8c4eeeb5be0e88c0c"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.VFXModule.dll",
+      "bytes": 57624,
+      "sha256": "606a1ea50d54a2e7c662405eb5d3aaee643844e8f0ea8c32202250fa0971167c"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.VideoModule.dll",
+      "bytes": 40728,
+      "sha256": "19d018d82576efded032f60dc8ee37506f03abe833dafab65251c1185fcc9c19"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+      "bytes": 35096,
+      "sha256": "c06c2cf361c9fddeb0b69b5b0277457e484b5a2794c04810062a09d3584c5085"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.VRModule.dll",
+      "bytes": 25880,
+      "sha256": "192a098883204040c786fd5a79dda77a2936ad50ad9183df9243af03ce425d97"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.WindModule.dll",
+      "bytes": 20248,
+      "sha256": "f6ac0f70cb288355833f9beda3dc898a72b80a5035fb4db435d6b0a6c98b8611"
+    },
+    {
+      "path": "MiniGame_Data/Managed/UnityEngine.XRModule.dll",
+      "bytes": 70424,
+      "sha256": "52bf1fb0ad85d94ea4f6b75ae7b11cb19c71559deb33cd5e4ce7022da11cedc9"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.Antlr4.Runtime.Standard.dll",
+      "bytes": 190976,
+      "sha256": "0665f957f8d249ec2cc7e2da7abdbe833a32324aba851d50a8d0d67e78fb4a35"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.CsvHelper.dll",
+      "bytes": 146432,
+      "sha256": "6579323f95990735cd07bd74db09a6337c4fefd6585b082eeca7e1d2f906db58"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.Google.Protobuf.dll",
+      "bytes": 486400,
+      "sha256": "5ad1360f023aa93ab1d5e64cbdca0214a46de402a61a9a24ab61dfcf94a752ff"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.Microsoft.Bcl.AsyncInterfaces.dll",
+      "bytes": 8704,
+      "sha256": "822b18cd110a59783301fb3d0319076551d2bbede0116bc628b998ee5b752eea"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.Microsoft.Extensions.FileSystemGlobbing.dll",
+      "bytes": 38400,
+      "sha256": "0b42170e83d66e1c5832be1b4fa4e96a2d85c808a3c6ea93ab24f187fc69fe86"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.System.Runtime.CompilerServices.Unsafe.dll",
+      "bytes": 8704,
+      "sha256": "edb5170934879df701b1681383de1d8a75e39005249ea688c9c45d040e1ae842"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.System.Text.Encodings.Web.dll",
+      "bytes": 68608,
+      "sha256": "726afac4fae78aead3fb3bad5356d3835928521d0704f137b9d00af2d9e67dd4"
+    },
+    {
+      "path": "MiniGame_Data/Managed/Yarn.System.Text.Json.dll",
+      "bytes": 595456,
+      "sha256": "437e5f14241cae8efe441dfd277e030468c1be83314821af3a9919deeeb34bd8"
+    },
+    {
+      "path": "MiniGame_Data/Managed/YarnSpinner.Compiler.dll",
+      "bytes": 392192,
+      "sha256": "48bb6c6bdabab998c363c62fbc18fe8563b57504ce1094e7b95ce2981d8193ab"
+    },
+    {
+      "path": "MiniGame_Data/Managed/YarnSpinner.dll",
+      "bytes": 187904,
+      "sha256": "b1eed9961705080062e1ecb204c066d99dbcfd11aaf6cc506ec0b25be4211716"
+    },
+    {
+      "path": "MiniGame_Data/Managed/YarnSpinner.Unity.dll",
+      "bytes": 161280,
+      "sha256": "65fe6f2988b083a326d6410054af0c1a209d23bfb9d38455ab622fe94cc353b4"
+    },
+    {
+      "path": "MiniGame_Data/Managed/YarnSpinnerTests.CommandsInAnAssemblyDefinition.dll",
+      "bytes": 6144,
+      "sha256": "1bcc5f5547ded60259c78f1549a2ab574709db0b7f913e40d414a9264668783c"
+    },
+    {
+      "path": "MiniGame_Data/Resources/unity default resources",
+      "bytes": 1551312,
+      "sha256": "447caf3737cc58e2cf965f9829ae1c00c2c88505c055df2e8be0d8ede76b4da9"
+    },
+    {
+      "path": "MiniGame_Data/Resources/unity_builtin_extra",
+      "bytes": 387228,
+      "sha256": "61087b70ad59e8ff3302decf501c35c27b56a72b03da036152818b15bce95d28"
+    },
+    {
+      "path": "MiniGame_Data/resources.assets",
+      "bytes": 23810664,
+      "sha256": "fa30e63a415ac0477e1fb9ed2737a8e2232af4c84091f8adbcef1afca49f65fc"
+    },
+    {
+      "path": "MiniGame_Data/resources.assets.resS",
+      "bytes": 124028928,
+      "sha256": "a315f3a814f01a989cee0072ce345887363f316ba879e03250d92fed2c0efbdb"
+    },
+    {
+      "path": "MiniGame_Data/RuntimeInitializeOnLoads.json",
+      "bytes": 717,
+      "sha256": "1fd18249aa3e42efc1128e99a51651d48dfa2985add633864777560ba992742e"
+    },
+    {
+      "path": "MiniGame_Data/ScriptingAssemblies.json",
+      "bytes": 3208,
+      "sha256": "c693c993b370a7a3ac866c4f9ebb586efa99d9ed435684161b2ef60a3e77d48a"
+    },
+    {
+      "path": "MiniGame_Data/sharedassets0.assets",
+      "bytes": 46775304,
+      "sha256": "c11c88ab2b9b3f1fdafefde9279c4f864e468812a39a83ba5ce7654ae52e1957"
+    },
+    {
+      "path": "MiniGame_Data/sharedassets0.assets.resS",
+      "bytes": 115122416,
+      "sha256": "6cfe8548f1cffcfd43c6d890e26e47db1b638dfebec99cb85703b3a20ec3612f"
+    },
+    {
+      "path": "MiniGame_Data/sharedassets0.resource",
+      "bytes": 26496800,
+      "sha256": "693f5336a3f0051d02e66ac1abcaed364d41ce22e2766795fdca0d6ae72afaf7"
+    },
+    {
+      "path": "MiniGame_Data/sharedassets1.assets",
+      "bytes": 13440,
+      "sha256": "ba5ed1e109ca6fe35e695f7152583b86adbb31b2c9476cd48124ef3889866fad"
+    },
+    {
+      "path": "MiniGame_Data/sharedassets2.assets",
+      "bytes": 2318300,
+      "sha256": "61bf60930a63b68890dcaea001bfe36e153bb50ed64be47c94e1f397a062b839"
+    },
+    {
+      "path": "MiniGame_Data/sharedassets2.assets.resS",
+      "bytes": 545472,
+      "sha256": "9dbfdf68b2e9e093681dccbac3d05289b4d31ca7d73cae4470530d0e9bfea9c0"
+    },
+    {
+      "path": "MiniGame_Data/StreamingAssets/YarnSpinnerVersion.json",
+      "bytes": 161,
+      "sha256": "4636368291647778fef7f02d48af0a844350401f7899b11cdb2473f2a1f1a0df"
+    },
+    {
+      "path": "MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
+      "bytes": 7896856,
+      "sha256": "83f0d8d19934dca7888598044c1986cba11db3e9939dc02b94f3a9503c33be99"
+    },
+    {
+      "path": "MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
+      "bytes": 610584,
+      "sha256": "2dc59841ab2fcb76d7e7519b0009726ce50f4a747823d676c0a79b04995a3305"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+      "bytes": 1605,
+      "sha256": "8a1082057ac5681dcd4e9c227ed7fb8eb42ac1618963b5de3b65739dd77e2741"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+      "bytes": 60575,
+      "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/2.0/machine.config",
+      "bytes": 29066,
+      "sha256": "e91782a27fa39fc6c1d6ee8b08529f5d35052310d0006034b878eb04b8f2af30"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/2.0/settings.map",
+      "bytes": 2622,
+      "sha256": "49c6160f9d54af4270a3b4e997fc4a8301f79b9e2070118fa46ddbcbbc44f9a2"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/2.0/web.config",
+      "bytes": 11635,
+      "sha256": "cf2b54339e069b9e42f7d6795eecbf562c50c1011f4ca8f65f578fe52d97ff92"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+      "bytes": 1605,
+      "sha256": "8a1082057ac5681dcd4e9c227ed7fb8eb42ac1618963b5de3b65739dd77e2741"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+      "bytes": 60575,
+      "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.0/machine.config",
+      "bytes": 33598,
+      "sha256": "e60aec2c5115d65b3acb3c55ea21576dbd770f579166c017125571e46ae560ed"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.0/settings.map",
+      "bytes": 2622,
+      "sha256": "ce1db1ad8a9512073164e3eccdc193f7eda036e1a9733caec4635de21b2865c8"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.0/web.config",
+      "bytes": 18802,
+      "sha256": "e38bb8cc68fe5b4edecdfd288d094b9e8ced7629039b2a347682aba0d8bd7492"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+      "bytes": 1605,
+      "sha256": "8a1082057ac5681dcd4e9c227ed7fb8eb42ac1618963b5de3b65739dd77e2741"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+      "bytes": 60575,
+      "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.5/machine.config",
+      "bytes": 34056,
+      "sha256": "ee950004b576fb28dc85f4b0435ed04bf96612de2e8b53be84d07afe85a0de6c"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.5/settings.map",
+      "bytes": 2622,
+      "sha256": "ce1db1ad8a9512073164e3eccdc193f7eda036e1a9733caec4635de21b2865c8"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/4.5/web.config",
+      "bytes": 18811,
+      "sha256": "c4cbddd4fd9347b58cc5a72b36dc4ba1ad2bb699e65869d05cd3fb9865f0d824"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/browscap.ini",
+      "bytes": 311984,
+      "sha256": "4ddd50f31fb968f30bedefc253a46dc3f2890192d05cdaa9e0a64a056eee807e"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/config",
+      "bytes": 3815,
+      "sha256": "5776169973a26a387b8b3e5c0f2301a7ab9a6dd7c7d3efa22a96abc47fbf8662"
+    },
+    {
+      "path": "MonoBleedingEdge/etc/mono/mconfig/config.xml",
+      "bytes": 25817,
+      "sha256": "0c56e34c69124510fa8c19e7b4c2ca6c1c4ff460ae19f798dd0ca035809e396d"
+    },
+    {
+      "path": "UnityCrashHandler64.exe",
+      "bytes": 1113880,
+      "sha256": "2b3e19fce89f9373fae5e1dafe0b5ae8d2de9e085070ac8b70dd6c63a222b823"
+    },
+    {
+      "path": "UnityPlayer.dll",
+      "bytes": 31053592,
+      "sha256": "5ab3374b61e59c8c81c048688a64a7875fde2b116772a9b4ea63fa51b58615f5"
+    },
+    {
+      "path": "运行说明.txt",
+      "bytes": 178,
+      "sha256": "d35d662591ff4660bd6f100a3beec5eb3478c0ee033f8df2f02c0ee1bb1e3f89"
+    }
+  ]
+}

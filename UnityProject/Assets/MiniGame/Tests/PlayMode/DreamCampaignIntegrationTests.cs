@@ -45,6 +45,8 @@ namespace MiniGame.UnityHost.Tests
             originalDreamJson = JsonUtility.ToJson(originalDreams);
             originalRebellionJson = JsonUtility.ToJson(originalRebellion);
             dreams = Object.Instantiate(originalDreams);
+            // Keep the original beach-scene compatibility scenarios; the room path has its own suite.
+            dreams.UseRoomCubemapEnding = false;
             rebellion = Object.Instantiate(originalRebellion);
             dreams.EnableDreamFlow = true;
             rebellion.InitialValue = 0; rebellion.Maximum = 100; rebellion.Threshold = 100;
@@ -612,6 +614,64 @@ namespace MiniGame.UnityHost.Tests
             float difference = 0;
             for (int index = 0; index < first.Length; index++) difference += Vector4.Distance(first[index], second[index]);
             return difference / first.Length;
+        }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator DayOneShutdownReturnsToTheVisibleBedAndNaturalDreamReachesDayTwo()
+        {
+            var fixture = Fixture();
+            DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Evening
+                && view.TerminalOpen && !view.LeavingTerminal && view.Cue?.Kind == PresentationKind.ExitTerminal);
+            host.Effects.PrepareForRuntimeChange();
+            var computer = Interaction(InteractionTarget.Computer);
+            TeleportTo("Computer approach", computer.GetComponent<Collider>().bounds.center);
+            host.RestoreCheckpoint(fixture.Save());
+            host.Dreams.UseExternalClock = false;
+            yield return Until(() => !host.Runtime.GetView().TerminalOpen && !host.Screen.TransitionLocked,
+                "Day1 shutdown camera return", 12);
+            var guidance = host.GetComponent<BedtimeGuidance>();
+            var camera = host.Player.ViewCamera;
+            Assert.That(Vector3.Dot(camera.transform.forward,
+                (guidance.SleepFocusPoint - camera.transform.position).normalized), Is.GreaterThan(.99f),
+                "Daily shutdown must return to the illuminated bed, not a black computer-facing wall.");
+            var returnedRotation = camera.transform.rotation;
+            host.Player.enabled = true;
+            yield return null;
+            yield return null;
+            Assert.That(Quaternion.Angle(camera.transform.rotation, returnedRotation), Is.LessThan(.1f),
+                "The first player look update must retain the new return heading.");
+            host.Player.enabled = false;
+            var view = host.Runtime.GetView();
+            Debug.Log("DAY1_SHUTDOWN_STATE " + JsonUtility.ToJson(new ShutdownDiagnostic {
+                phase = view.Game.Phase.ToString(), cue = view.Cue?.Kind.ToString(), input = view.Input.ToString(),
+                locked = host.Screen.TransitionLocked, camera = host.Player.ViewCamera.transform.position,
+                dream = host.Dreams.Phase.ToString(), power = host.Screen.PowerPhase.ToString()
+            }));
+            yield return PrototypePlayModeTests.CaptureIfRequested(host, "day1-after-shutdown");
+            Assert.That(view.Game.Phase, Is.EqualTo(GamePhase.Evening));
+            Assert.That(view.AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
+            var fade = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade");
+            Assert.That(fade.color.a, Is.LessThan(.01f));
+            var bed = Interaction(InteractionTarget.Bed);
+            TeleportTo("Bed approach", bed.GetComponent<Collider>().bounds.center);
+            host.Player.RefreshInteractionFocus();
+            Assert.That(host.Player.FocusedInteraction, Is.SameAs(bed));
+            Assert.That(host.Player.InteractFocused(), Is.True);
+            yield return Until(() => host.Dreams.IsPlaying, "Day1 dream starts on normal clock", 6);
+            yield return PrototypePlayModeTests.CaptureIfRequested(host, "day1-natural-dream");
+            yield return Until(() => host.Runtime.GetView().Game.Day == 2,
+                "Day1 dream finishes on normal clock", dreams.GetDay(1).Duration + dreams.ReturnSeconds + 5);
+            Assert.That(host.Screen.TransitionLocked, Is.False);
+            Assert.That(fade.color.a, Is.LessThan(.01f));
+            yield return Until(() => host.Runtime.GetView().Game.Day == 2 && host.Runtime.GetView().Cue == null,
+                "Day2 starts after sleep", 5);
+        }
+
+        [Serializable] private sealed class ShutdownDiagnostic
+        {
+            public string phase, cue, input, dream, power;
+            public bool locked;
+            public Vector3 camera;
         }
 
         private void StartConfiguredCampaign(bool high)

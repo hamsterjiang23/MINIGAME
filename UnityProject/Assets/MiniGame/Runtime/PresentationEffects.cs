@@ -250,6 +250,13 @@ namespace MiniGame.UnityHost
             {
                 yield return PowerOff(token);
                 if (activeToken != token) yield break;
+                // The room is now dark except for the bed. Returning to the computer's
+                // old heading leaves a completely black view and hides the next action.
+                if (bedtimeGuidance != null)
+                {
+                    var towardBed = bedtimeGuidance.SleepFocusPoint - destination;
+                    if (towardBed.sqrMagnitude > .001f) rotation = Quaternion.LookRotation(towardBed, Vector3.up);
+                }
             }
             var source = viewCamera.transform.position;
             var sourceRotation = viewCamera.transform.rotation;
@@ -293,6 +300,8 @@ namespace MiniGame.UnityHost
             {
                 seating?.Restore(true);
                 viewCamera.transform.SetPositionAndRotation(destination, rotation);
+                if (shuttingDown && seatedPlayer != null)
+                    seatedPlayer.FacePoint(destination + rotation * Vector3.forward);
                 hasRoomPose = false;
                 EntryPhase = TerminalEntryPhase.None;
             }
@@ -461,7 +470,9 @@ namespace MiniGame.UnityHost
 
         private void SetLiveDisplay(MaterialPropertyBlock properties)
         {
-            bool live = runtime != null && runtime.GetView().TerminalOpen && screen != null && screen.TerminalDisplay != null;
+            var view = runtime?.GetView();
+            bool live = view != null && (view.TerminalOpen || view.TerminalPowered)
+                && screen != null && screen.TerminalDisplay != null;
             properties.SetFloat("_LiveDisplay", live ? 1 : 0);
             if (live) properties.SetTexture("_LiveDisplayTex", screen.TerminalDisplay.Texture);
         }

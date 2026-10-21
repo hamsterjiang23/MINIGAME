@@ -27,6 +27,7 @@ namespace MiniGame.UnityHost
         public float OpeningProgress => openingProgress;
         public int Mode { get; private set; } = 1;
         public RenderTexture Texture => texture;
+        public int RenderedFrameCount { get; private set; }
         public Material ScreenMaterial => material;
         public RectTransform OutputRect => output != null ? output.rectTransform : null;
         internal TerminalSourceRaycaster SourceRaycaster { get; private set; }
@@ -41,13 +42,15 @@ namespace MiniGame.UnityHost
             sourceRoot.transform.localScale = Vector3.one;
             var rect = (RectTransform)sourceRoot.transform; rect.sizeDelta = new Vector2(800, 600);
             sourceCanvas = sourceRoot.GetComponent<Canvas>(); sourceCanvas.renderMode = RenderMode.WorldSpace;
+            sourceCanvas.pixelPerfect = true;
             content.SetParent(rect, false); content.anchorMin = content.anchorMax = content.pivot = new Vector2(.5f, .5f); content.anchoredPosition = Vector2.zero;
             var cameraObject = new GameObject("Terminal UI camera", typeof(Camera)); cameraObject.transform.SetParent(sourceRoot.transform, false);
             cameraObject.transform.localPosition = new Vector3(0, 0, -1000);
             sourceCamera = cameraObject.GetComponent<Camera>(); sourceCamera.enabled = false; sourceCamera.orthographic = true;
             sourceCamera.orthographicSize = 300; sourceCamera.aspect = 4f / 3; sourceCamera.nearClipPlane = 1; sourceCamera.farClipPlane = 2000;
             sourceCamera.clearFlags = CameraClearFlags.SolidColor; sourceCamera.backgroundColor = TerminalView.Desk; sourceCamera.cullingMask = 1 << SourceLayer;
-            texture = new RenderTexture(1600, 1200, 24, RenderTextureFormat.ARGB32) { name = "Terminal native UI 800x600 @2x", filterMode = FilterMode.Bilinear, hideFlags = HideFlags.DontSave };
+            texture = new RenderTexture(800, 600, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear)
+                { name = "Terminal HTML UI 800x600", filterMode = FilterMode.Point, antiAliasing = 1, hideFlags = HideFlags.DontSave };
             texture.Create(); sourceCamera.targetTexture = texture; sourceCanvas.worldCamera = sourceCamera;
             SourceRaycaster = sourceRoot.GetComponent<TerminalSourceRaycaster>(); SourceRaycaster.ignoreReversedGraphics = false;
             var outputObject = new GameObject("Amber CRT display", typeof(RectTransform), typeof(RawImage), typeof(TerminalDisplayRaycaster)); outputObject.transform.SetParent(transform, false);
@@ -60,6 +63,7 @@ namespace MiniGame.UnityHost
             Fit(); RenderFrame();
         }
         public void SetMode(int value) { Mode = Mathf.Clamp(value, 0, 2); if (material != null) material.SetFloat("_Mode", Mode); }
+        public void SetOutputVisible(bool visible) { if (output != null) output.gameObject.SetActive(visible); }
         public void SetZoom(float value) { zoom = Mathf.Max(0, value); Fit(); }
         internal void InvalidateSourceLayers() => layerHierarchyCount = -1;
         /// <summary>Pulls back from the native 464x261 monitor to the complete terminal.</summary>
@@ -111,7 +115,7 @@ namespace MiniGame.UnityHost
             // World-space canvases maintain layout and font atlases before this manually rendered camera.
             Canvas.ForceUpdateCanvases();
             var previous = RenderTexture.active;
-            try { sourceCamera.Render(); }
+            try { sourceCamera.Render(); RenderedFrameCount++; }
             finally { RenderTexture.active = previous; }
         }
         private void OnEnable() { if (sourceRoot != null) sourceRoot.SetActive(true); }

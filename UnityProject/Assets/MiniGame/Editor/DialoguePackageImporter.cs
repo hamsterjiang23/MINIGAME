@@ -82,6 +82,11 @@ namespace MiniGame.UnityHost.Editor
             if (source == null || project == null || project.compiledYarnProgram == null || project.compiledYarnProgram.Length == 0
                 || project.Program == null || project.NodeNames.Length == 0)
                 throw new InvalidOperationException(projectPath + ": Native Yarn import failed. The previous active package was preserved.");
+            var absent = compiled.Content.Nodes
+                .Select(node => MiniGame.Presentation.PrototypeYarnSource.NodeName(node.NodeId))
+                .Where(name => !project.NodeNames.Contains(name)).ToArray();
+            if (absent.Length != 0)
+                throw new InvalidOperationException(projectPath + ": Imported Yarn is missing mapped nodes: " + string.Join(", ", absent));
 
             var candidatePath = directory + "/DialoguePackage.asset";
             var candidate = AssetDatabase.LoadAssetAtPath<DialoguePackageAsset>(candidatePath);

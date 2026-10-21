@@ -1,6 +1,6 @@
 # 主场景复古效果调参
 
-打开 `MainRoomCombined`，选择 **MiniGame → 画面 → 复古效果**。在 Game 视图看效果；进入 Play Mode 后也可以边走动边调参。默认配置为 [RetroScreenDefault.asset](../UnityProject/Assets/MiniGame/Resources/RetroScreenDefault.asset)。`[verified: RetroScreenEditor.cs Open/OnGUI；RetroScreenEffect.cs ExecuteAlways/OnRenderImage]`
+打开 `MainRoomCombined`，选择 **MiniGame → 画面 → 复古效果** 或 **调色与像素风格**。Scene／Game 均可预览，进入 Play Mode 后也可以边走动边调参。窗口读取当前场景绑定的资产；当前主场景使用 [RoomLightingReferenceRetro.asset](../UnityProject/Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset)，未绑定时回退到 `RetroScreenDefault.asset`。Scene 请打开场景灯光与 Effects，也可在[房间灯光工具](lighting-tools/guide.md)点击「场景真实预览」。`[verified: RetroScreenWindow.OnGUI；RetroScreenEffect.cs ExecuteAlways/ImageEffectAllowedInSceneView；MainRoomCombined.unity 的 profile 引用；RoomLightingWindow.EnableScenePreview]`
 
 ## 参数
 
@@ -11,13 +11,13 @@
 - **暗部层次（前置 Gamma）**：0.25–2，默认 0.8；改变进入色阶量化前的明暗分布。
 - **输出明暗（后置 Gamma）**：0.25–3，默认 1.25；改变量化后的明暗分布。
 
-以上范围和默认值由配置类型定义。`[verified: RetroScreenProfile.cs 字段初始化与属性]`
+以上是早期轻度预设的范围和默认值，当前房间参考配置以资产实际值为准。`[verified: RetroScreenProfile.cs ResetToLightDefaults；Resources/RoomLightingReferenceRetro.asset]`
 
 建议先调整像素尺寸和色阶分段数，再调整暗部与输出明暗；最后用整体强度融合。先检查墙角、床下和门边，再看电脑界面。`[opinion]`
 
 ## 保存与原图对比
 
-面板与配置 Inspector 使用同一套中文控件，修改支持 Undo/Redo。**保存配置**写入配置资产；Play Mode 中编辑的也是这个资产，保存后退出播放仍保留。**恢复轻度默认**可撤销，不会自动保存。`[verified: RetroScreenEditor.cs OnInspectorGUI]`
+面板与配置 Inspector 使用同一套中文控件，修改支持 Undo/Redo。**保存配置**立即写入配置资产；Play Mode 中编辑的也是这个资产。修改及预设切换在退出播放、脚本重载、退出编辑器前自动保存，返回编辑模式仍保留；预设切换可撤销。`[verified: RetroScreenProfileEditor.OnInspectorGUI；RetroScreenPreview.ProfileEdited/SaveEditedProfiles/SaveAndClear]`
 
 **临时查看原图**只改变预览状态，不修改参数。关闭调参面板、切换 Inspector、切换播放状态或脚本重载后恢复效果。`[verified: RetroScreenPreview.SetOriginal/Clear；RetroScreenProfileEditor.OnDisable；RetroScreenWindow.OnDisable]`
 

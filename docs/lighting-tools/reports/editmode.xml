@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.8198638">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.819864" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1093" name="MiniGame.UnityHost.EditorTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/Unity/OfflineProject/Library/ScriptAssemblies/MiniGame.UnityHost.EditorTests.dll" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.717932" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="31884" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1094" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.717430" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1095" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.717156" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1096" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.716869" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1026" name="LightingDesignerToolsTests" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-20 18:44:21Z" end-time="2026-10-20 18:44:22Z" duration="0.714075" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1030" name="ConsumedMouseUpEndsEachSceneHandleUndoGroupIndependently" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests.ConsumedMouseUpEndsEachSceneHandleUndoGroupIndependently" methodname="ConsumedMouseUpEndsEachSceneHandleUndoGroupIndependently" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" seed="1926228090" result="Passed" start-time="2026-10-20 18:44:20Z" end-time="2026-10-20 18:44:20Z" duration="0.216405" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1029" name="FirstOverrideImmediatelyUpdatesTheLightAndUndoRedoRestoresBothAssetAndScene" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests.FirstOverrideImmediatelyUpdatesTheLightAndUndoRedoRestoresBothAssetAndScene" methodname="FirstOverrideImmediatelyUpdatesTheLightAndUndoRedoRestoresBothAssetAndScene" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" seed="669080470" result="Passed" start-time="2026-10-20 18:44:20Z" end-time="2026-10-20 18:44:20Z" duration="0.152495" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1028" name="FiveSupplementalLightsUseUnambiguousScenePathsAndProtectManagedLights" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests.FiveSupplementalLightsUseUnambiguousScenePathsAndProtectManagedLights" methodname="FiveSupplementalLightsUseUnambiguousScenePathsAndProtectManagedLights" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" seed="311421174" result="Passed" start-time="2026-10-20 18:44:20Z" end-time="2026-10-20 18:44:20Z" duration="0.136624" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1032" name="PlayModeWritesAndProfileInspectorEditsSurviveReturningToEditMode" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests.PlayModeWritesAndProfileInspectorEditsSurviveReturningToEditMode" methodname="PlayModeWritesAndProfileInspectorEditsSurviveReturningToEditMode" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" seed="1712728291" result="Passed" start-time="2026-10-20 18:44:20Z" end-time="2026-10-20 18:44:22Z" duration="1.311969" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="90000" />
+                </properties>
+                <output><![CDATA[[LightingDesignerToolsTests] stage=before-enter-play playing=False paused=False phase=1 folder=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9 fileExists=True loaded=True entries=0 loadedRevision=1 lightPath= scenes=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Harness.unity|loaded=True|dirty=False;Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity|loaded=True|dirty=False] controllers=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity/Fixture root|profile=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Profile.asset|revision=1|lights=[]]
+[LightingDesignerToolsTests] stage=after-enter-play playing=True paused=False phase=1 folder=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9 fileExists=True loaded=True entries=0 loadedRevision=2 lightPath= scenes=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Harness.unity|loaded=True|dirty=False;Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity|loaded=True|dirty=False] controllers=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity/Fixture root|profile=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Profile.asset|revision=2|lights=[]]
+[LightingDesignerToolsTests] stage=before-exit-play playing=True paused=False phase=2 folder=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9 fileExists=True loaded=True entries=1 loadedRevision=5 lightPath=Fixture%20root#0/Rim#0 scenes=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Harness.unity|loaded=True|dirty=False;Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity|loaded=True|dirty=False] controllers=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity/Fixture root|profile=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Profile.asset|revision=5|lights=[Fixture%20root#0/Rim#0|storedPos=(4.0000, 5.0000, 6.0000)|actualPos=(4.0000, 5.0000, 6.0000)]]
+[LightingDesignerToolsTests] stage=after-exit-before-import playing=False paused=False phase=2 folder=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9 fileExists=True loaded=True entries=1 loadedRevision=5 lightPath=Fixture%20root#0/Rim#0 scenes=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Harness.unity|loaded=True|dirty=False;Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity|loaded=True|dirty=False] controllers=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity/Fixture root|profile=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Profile.asset|revision=5|lights=[Fixture%20root#0/Rim#0|storedPos=(4.0000, 5.0000, 6.0000)|actualPos=(4.0000, 5.0000, 6.0000)]]
+[LightingDesignerToolsTests] stage=after-import playing=False paused=False phase=2 folder=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9 fileExists=True loaded=True entries=1 loadedRevision=5 lightPath=Fixture%20root#0/Rim#0 scenes=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Harness.unity|loaded=True|dirty=False;Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity|loaded=True|dirty=False] controllers=[Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Fixture.unity/Fixture root|profile=Assets/__LightingDesignerToolsTests_3f5b7f1f3f7e41e0a6a7b52ce353e9c9/Profile.asset|revision=5|lights=[Fixture%20root#0/Rim#0|storedPos=(4.0000, 5.0000, 6.0000)|actualPos=(4.0000, 5.0000, 6.0000)]]
+]]></output>
+              </test-case>
+              <test-case id="1031" name="SavingTheTemporaryAssetReappliesItsValuesAfterARealSceneReload" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests.SavingTheTemporaryAssetReappliesItsValuesAfterARealSceneReload" methodname="SavingTheTemporaryAssetReappliesItsValuesAfterARealSceneReload" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" seed="899908458" result="Passed" start-time="2026-10-20 18:44:22Z" end-time="2026-10-20 18:44:22Z" duration="0.168299" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1027" name="SceneViewCameraHasTheExistingRetroImageEffectEnabled" fullname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests.SceneViewCameraHasTheExistingRetroImageEffectEnabled" methodname="SceneViewCameraHasTheExistingRetroImageEffectEnabled" classname="MiniGame.UnityHost.Tests.LightingDesignerToolsTests" runstate="Runnable" seed="692262489" result="Passed" start-time="2026-10-20 18:44:22Z" end-time="2026-10-20 18:44:22Z" duration="0.000265" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

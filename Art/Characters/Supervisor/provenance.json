@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-20",
+  "status": "superseded",
+  "supersededBy": "docs/dialogue-update-2026-10-21/supervisor/source-manifest.json",
+  "historicalOutputNote": "This records the old generated portrait. The active Unity resource now uses the user-supplied JD01.png; the old Art output is preserved.",
+  "request": "Use the user-provided standing supervisor portrait in morning inspection and briefing; remove the light gray background for game UI.",
+  "source": {
+    "extractedFrom": "E:/Downloads/NORM调整建议.docx",
+    "extractedImage": "Artifacts/NormBugs/docx-20261020/media/image7.jpeg",
+    "preservedCopy": "Art/Characters/Supervisor/source.jpeg",
+    "sha256": "0b16e6f0f00e0f2562a7d876e6fcd40465e77eb8f26059dedae314eeac50f661",
+    "bytes": 721133,
+    "width": 1024,
+    "height": 1536
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "mode": "built-in edit",
+    "referenced_image_paths": [
+      "F:/AAMINIGAME/MINIGAME/Artifacts/NormBugs/docx-20261020/media/image7.jpeg"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: background-extraction.\nAsset type: transparent standing supervisor portrait for an existing game UI.\nInput image 1 is the exact edit target, not an inspiration reference.\nPrimary request: Remove ONLY the plain light gray background and floor shadow. Return the SAME complete full-body person as a clean transparent PNG cutout with genuine alpha. Preserve the original person's exact face, glasses, hat, body proportions, stance, hands, uniform, belt, shoes, colors, lighting, painterly posterized texture and every visible detail. Preserve the original frontal pose and full head-to-toe framing. Do not redraw, restyle, improve, re-pose, crop the feet or cap, add objects, add text, add a new background or alter the character in any way. Change only background pixels to transparent; keep natural clean antialiased silhouette edges.",
+    "outputPath": "C:/Users/admin/.codex/generated_images/01a159d4-51a5-7b10-9cf7-3beaa40f1747/exec-22c680b5-d3de-493a-9660-69806ba32c2d.png",
+    "originalOutputPreserved": true
+  },
+  "output": {
+    "artPath": "Art/Characters/Supervisor/Supervisor.png",
+    "unityPath": "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorPortrait.png",
+    "sha256": "a26cdae9f813208dd9af459da0ae7fae0d928c242c0391cac4cd0b3feb3b0db0",
+    "copiesIdentical": true,
+    "width": 1024,
+    "height": 1536,
+    "format": "32-bit RGBA PNG",
+    "alpha": {
+      "zero": 845803,
+      "partial": 727061,
+      "opaque": 0,
+      "atLeast128": 706780
+    },
+    "verification": "Inspected native generated image and read System.Drawing Bitmap alpha values without modifying pixels.",
+    "limitations": [
+      "Built-in AI extraction preserves the visual design but does not guarantee pixel-identical foreground details.",
+      "Unity import and actual game compositing are validated by the parent task separately."
+    ]
+  },
+  "unityImporter": {
+    "maxTextureSize": 4096,
+    "mipmaps": false,
+    "textureCompression": 0,
+    "sRGB": true,
+    "alphaSource": "Input",
+    "alphaIsTransparency": true,
+    "filterMode": "Bilinear",
+    "npotScale": "None",
+    "textureType": "Default",
+    "readable": false,
+    "guid": "71160f1ae0b14797a9b24aec098317cf"
+  }
+}

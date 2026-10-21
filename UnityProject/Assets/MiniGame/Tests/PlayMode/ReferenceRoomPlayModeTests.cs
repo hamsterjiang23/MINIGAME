@@ -21,13 +21,13 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             var host = Host();
-            var posters = Object.FindObjectsOfType<ReadableProp>();
+            var posters = Object.FindObjectsOfType<ReadableProp>().Where(prop => prop.Id.StartsWith("poster-")).ToArray();
             // This fixture drives pose/clicks explicitly; desktop mouse input must not move its ray during timed waits.
             host.Player.enabled = false;
             Assert.That(posters.Select(poster => poster.Id), Is.EquivalentTo(new[] { "poster-beach", "poster-instrument" }));
             var beach = posters.Single(poster => poster.Id == "poster-beach");
             var instrument = posters.Single(poster => poster.Id == "poster-instrument");
-            Assert.That(beach.Caption, Is.EqualTo("这里是我的故乡…但我从没去过海边"));
+            Assert.That(beach.Caption, Is.EqualTo("海报里的小镇是我的故乡...但我从没去过海边"));
             Assert.That(instrument.Caption, Is.EqualTo("新一代手持仪器引领我们走向未来！"));
             foreach (var poster in posters)
             {

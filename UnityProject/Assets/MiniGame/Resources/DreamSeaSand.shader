@@ -5,6 +5,7 @@ Shader "MiniGame/Dream Sand"
         _Color ("Sand", Color) = (.78,.70,.55,1)
         _DreamTime ("Playback time", Float) = 0
         _UseDreamTime ("Use explicit playback time", Float) = 0
+        _DreamOrigin ("Isolated source origin", Vector) = (0,0,0,0)
         _WaveHeight ("Wave height (m)", Float) = .24
         _WavePeriod ("Wave period (s)", Float) = 6
         _WaveLength ("Wave length (m)", Float) = 7
@@ -23,19 +24,20 @@ Shader "MiniGame/Dream Sand"
         struct Input { float3 worldPos; };
         void vert(inout appdata_full v)
         {
-            float3 world = mul(unity_ObjectToWorld,v.vertex).xyz;
+            float3 world = mul(unity_ObjectToWorld,v.vertex).xyz-_DreamOrigin.xyz;
             float2 gradient = DreamShoreOffsetGradient(world.xz);
             world.y += DreamShoreOffset(world.xz);
             float3 normal = normalize(UnityObjectToWorldNormal(v.normal)-float3(gradient.x,0,gradient.y));
-            v.vertex = mul(unity_WorldToObject,float4(world,1));
+            v.vertex = mul(unity_WorldToObject,float4(world+_DreamOrigin.xyz,1));
             v.normal = normalize(mul(normal,(float3x3)unity_ObjectToWorld));
         }
         void surf(Input i, inout SurfaceOutputStandard o)
         {
-            float grain=DreamOceanHash(floor(i.worldPos.xz*65));
-            float ripple=sin(i.worldPos.z*23+sin(i.worldPos.x*.5)*2)*.014;
-            float wet=DreamSandWetness(i.worldPos.xz,DreamOceanTime());
-            float detail=1-saturate(max(length(ddx(i.worldPos.xz)),length(ddy(i.worldPos.xz)))*12);
+            float3 world = i.worldPos-_DreamOrigin.xyz;
+            float grain=DreamOceanHash(floor(world.xz*65));
+            float ripple=sin(world.z*23+sin(world.x*.5)*2)*.014;
+            float wet=DreamSandWetness(world.xz,DreamOceanTime());
+            float detail=1-saturate(max(length(ddx(world.xz)),length(ddy(world.xz)))*12);
             o.Albedo=_Color.rgb*.82*(.97+(grain-.5)*.10*detail+ripple*detail)*(1-wet*.38);
             o.Smoothness=lerp(.10,.58,wet);
             o.Metallic=0;
