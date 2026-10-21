@@ -25,6 +25,7 @@ namespace MiniGame.UnityHost.Editor
         public static void BuildWindowsWallLighting() => BuildWindowsVariant("WallLighting", false);
         public static void BuildWindowsLightingContinuity() => BuildWindowsVariant("LightingContinuity", false);
         public static void BuildWindowsWorldDialogue() => BuildWindowsVariant("WorldDialogue", false);
+        public static void BuildWindowsBedtimeParticles() => BuildWindowsVariant("BedtimeParticles", false);
         private static void BuildWindowsVariant(string variant, bool development = true)
         {
             string root=Environment.GetEnvironmentVariable("MINIGAME_REPOSITORY_ROOT");

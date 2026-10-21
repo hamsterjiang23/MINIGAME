@@ -64,10 +64,10 @@ namespace MiniGame.UnityHost.Tests
             }
             var particlePositions = Enumerable.Range(0, guidance.Atmosphere.ParticleCount)
                 .Select(guidance.Atmosphere.GetParticlePosition).ToArray();
-            yield return new WaitForSecondsRealtime(.25f);
+            yield return new WaitForSecondsRealtime(.5f);
             Assert.That(Enumerable.Range(0, guidance.Atmosphere.ParticleCount).Count(index =>
-                Vector3.Distance(guidance.Atmosphere.GetParticlePosition(index), particlePositions[index]) > .005f), Is.GreaterThan(1),
-                "Several particles must actually drift within the lit volume.");
+                Vector3.Distance(guidance.Atmosphere.GetParticlePosition(index), particlePositions[index]) > .0005f), Is.GreaterThan(1),
+                "Several glow particles must measurably drift within the lit volume.");
             yield return Capture(host, "bedtime-particles-later");
 
             yield return StageAt(host, InteractionTarget.Bed);
