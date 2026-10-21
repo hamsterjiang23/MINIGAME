@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-21T19:51:21.3893237+08:00",
+  "scope": "Replace nightly bed spotlight insects with slow floating glow particles; preserve beam and sleep flow",
+  "unity": "2022.3.23f1c1",
+  "graphics": "Direct3D11 / NVIDIA RTX 4070",
+  "playMode": [
+    {
+      "report": "Artifacts/BedtimeParticles/atmosphere.xml",
+      "passed": 2,
+      "failed": 0
+    },
+    {
+      "report": "Artifacts/BedtimeParticles/bedtime-regression.xml",
+      "passed": 7,
+      "failed": 0
+    }
+  ],
+  "playModePassed": 9,
+  "native": [
+    {
+      "report": "Artifacts/BedtimeParticles/Player/Terminal/verification.json",
+      "result": "Passed"
+    },
+    {
+      "report": "Artifacts/BedtimeParticles/Player/Lighting/verification.json",
+      "result": "PASSED"
+    }
+  ],
+  "nativePassed": 2,
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\BedtimeParticles\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 12.492816399999999
+  },
+  "sourceHashes": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeAtmosphere.cs",
+      "sha256": "87e7bdc860cc0fd2f99bc7490aa918ec8840c06920c4c1b845c947daf52c0e94"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/BedtimeInsect.shader",
+      "sha256": "cb6c1d550244677262902276d18be923d78ebe795555be11c0d34566dabcf234"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/BedtimeInsect.shader.meta",
+      "sha256": "2ba26dc30c73e59ae73a43b5f81392c6a832b8849786d7831591560224f4774c"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/BedtimeBeam.shader",
+      "sha256": "4c8894284ce637bbdcc58bd3bbcebe175fa15207eeeaa07ca8f46cdd7c5179c2"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+      "sha256": "014364ecc09c4c1ba28d36759cf041b66b6da03df3dc95b9f94eeb3afcb765b2"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "2a1475900407296fd2a2c76bc58f1eb6cf4c7f4fc8b613c6fd94410475a86043"
+    }
+  ],
+  "package": {
+    "schemaVersion": 1,
+    "packagedAt": "2026-10-21T19:50:01.124719+08:00",
+    "timezone": "Asia/Shanghai",
+    "buildDirectory": "F:\\AAMINIGAME\\MINIGAME\\Builds\\BedtimeParticles",
+    "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-BedtimeParticles-20261021-195001.zip",
+    "zipBytes": 294368764,
+    "zipSha256": "70b907d9aef37d8b2ed895e573340f16a673f57415f6a659404e701e45482cd5",
+    "sha256Path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-BedtimeParticles-20261021-195001.sha256",
+    "exe": {
+      "path": "MiniGame.exe",
+      "bytes": 666624,
+      "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+    },
+    "sourceScene": {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "bytes": 332998,
+      "sha256": "2a1475900407296fd2a2c76bc58f1eb6cf4c7f4fc8b613c6fd94410475a86043"
+    },
+    "manifest": {
+      "path": "package-manifest.json",
+      "bytes": 29632,
+      "sha256": "fa79fc400e0e5b499bb9be89e127d3ac5d6d41d860642c07370b644a8c4faa24"
+    },
+    "payloadFiles": 157,
+    "verifiedZipEntries": 173,
+    "verifiedZipFileEntries": 158,
+    "verifiedZipDirectoryEntries": 15,
+    "validation": {
+      "windowsX64Exe": true,
+      "monoBleedingEdgeIncluded": true,
+      "dataDirectoryIncluded": true,
+      "safePaths": true,
+      "allEntrySha256Matched": true,
+      "fileAndDirectoryInventoryMatched": true,
+      "sourceBuildUnchangedDuringPackaging": true,
+      "sourceSceneUnchangedDuringPackaging": true
+    }
+  },
+  "visual": {
+    "selfReview": "Soft radial glow points visible in particle-only and live-room captures; no insect geometry; user acceptance pending",
+    "room": "Artifacts/BedtimeParticles/Captures/bedtime-spotlight.png",
+    "later": "Artifacts/BedtimeParticles/Captures/bedtime-particles-later.png",
+    "native": "Artifacts/BedtimeParticles/Player/Lighting/night-desk-bed-rear.png",
+    "preview": "Artifacts/BedtimeParticles/bedtime-particles.mp4",
+    "previewTiming": "Ordered screenshot preview; no timestamp-accurate frame-rate claim"
+  },
+  "limits": [
+    "No performance budget measured",
+    "User visual acceptance pending",
+    "Primary Editor left running; tests and build used isolated project",
+    "Core behaviour unchanged by this task; dotnet checks not repeated"
+  ],
+  "initialFailure": "Stale isolated Presentation.GameRuntime lacked door-lock APIs; copied current source dependency then tests passed"
+}
