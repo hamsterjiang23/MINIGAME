@@ -13,7 +13,7 @@ namespace MiniGame.UnityHost
     public static class RoomLightingPresetIO
     {
         public const string Format = "NORM.RoomLightingPreset";
-        public const int Version = 2;
+        public const int Version = 3;
         private const int MaximumJsonLength = 2 * 1024 * 1024;
         private static readonly Encoding Utf8 = new UTF8Encoding(false, true);
         private static readonly FieldInfo[] DataFields = typeof(ProfileData).GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -42,7 +42,7 @@ namespace MiniGame.UnityHost
             public float rugYaw;
             public List<SceneLightSettings> SceneLights;
             public List<SceneLightSettings> SceneLightDefaults;
-            public float lightMultiplier, emissionMultiplier, fadeSeconds;
+            public float lightMultiplier, emissionMultiplier, fadeSeconds, ambientIntensity;
         }
 #pragma warning restore CS0649
 
@@ -70,21 +70,26 @@ namespace MiniGame.UnityHost
             {
                 RequireObject(json);
                 bool legacy = !HasField(json, "format") && HasField(json, "lampIntensity");
+                bool versionTwo = false;
                 string profileJson = json;
                 if (!legacy)
                 {
                     RequireFields(json, "format", "version", "profileName", "profileJson");
                     var envelope = JsonUtility.FromJson<Envelope>(json);
                     if (envelope == null || envelope.format != Format) throw new InvalidDataException("不是 NORM 房间灯光配置格式。");
-                    if (envelope.version != Version && envelope.version != 1) throw new InvalidDataException("不支持此灯光配置版本。");
+                    if (envelope.version != Version && envelope.version != 1 && envelope.version != 2) throw new InvalidDataException("不支持此灯光配置版本。");
                     legacy = envelope.version == 1;
+                    versionTwo = envelope.version == 2;
                     if (envelope.profileName == null) throw new InvalidDataException("缺少配置名称。");
                     profileJson = envelope.profileJson;
                 }
                 RequireObject(profileJson);
                 foreach (var field in DataFields)
+                {
+                    if (field.Name == "ambientIntensity" && (legacy || versionTwo)) continue;
                     if (!legacy || field.Name != "SceneLights" && field.Name != "SceneLightDefaults" && field.Name != "lampEulerAngles"
                         && field.Name != "lightMultiplier" && field.Name != "emissionMultiplier" && field.Name != "fadeSeconds") RequireFields(profileJson, field.Name);
+                }
                 temporary = ScriptableObject.CreateInstance<RoomLightingProfile>();
                 var data = ReadData(temporary);
                 JsonUtility.FromJsonOverwrite(profileJson, data);

@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-21",
+  "unity": "2022.3.23f1c1",
+  "fixes": [
+    "Restore missing dedicated WindowLight/MonitorLight at authored markers, preserving five existing fill lights",
+    "Separate ambientIntensity from material reflection strength",
+    "Apply overall multiplier after per-light overrides; native Inspector edits convert actual intensity back to authored intensity",
+    "Disable controls that do not apply to light type or shadow state"
+  ],
+  "sceneAudit": {
+    "lightsPerPeriod": 10,
+    "periodLightPairs": 20,
+    "checks": [
+      "enabled",
+      "intensity",
+      "RGB",
+      "positionXYZ",
+      "rotationXYZ",
+      "range",
+      "threeLightTypes",
+      "spotAngles",
+      "threeShadowTypes",
+      "shadowStrength",
+      "shadowBias",
+      "shadowNormalBias"
+    ],
+    "saveAndShareRoundtrip": true,
+    "sourceProfilesUnchanged": true,
+    "evidence": "reports/strength/scene-all-controls.json"
+  },
+  "gameAudit": {
+    "lightsPerPeriod": 10,
+    "periodLightPairs": 20,
+    "checks": [
+      "enabled",
+      "intensity",
+      "RGB",
+      "positionXYZ",
+      "rotationXYZ",
+      "range",
+      "threeLightTypes",
+      "spotAngles",
+      "threeShadowTypes",
+      "shadowStrength",
+      "shadowBias",
+      "shadowNormalBias"
+    ],
+    "additionalChecks": [
+      "overallMultiplier0And2",
+      "directionalRangeDisabled",
+      "nonSpotAnglesDisabled",
+      "noShadowPropertiesDisabled",
+      "otherPeriodUnchanged"
+    ],
+    "evidence": "reports/strength/playmode-all-controls.json"
+  },
+  "visualAudit": {
+    "comparisons": 8,
+    "controls": [
+      "ambientIntensity",
+      "windowIntensity",
+      "monitorIntensity",
+      "windowRange"
+    ],
+    "minimumMeanAbsolute8BitChannelDifference": 10.564422743055555,
+    "sourceProfilesUnchanged": true,
+    "scope": "Fixed camera pairs in actual main scene with other light sources suppressed in temporary profile copies. Not a Player build or human artistic acceptance.",
+    "evidence": "reports/strength/visual-verification.json"
+  },
+  "tests": [
+    {
+      "report": "reports/strength/editor-independent.json",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "report": "reports/strength/editor-presets.json",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    },
+    {
+      "report": "reports/strength/playmode-all-controls.json",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      }
+    }
+  ],
+  "totalPassed": 18.0,
+  "presets": {
+    "version": 3,
+    "legacyVersions": [
+      1,
+      2
+    ],
+    "legacyAmbientDefault": 1,
+    "roundtripPassed": true,
+    "evidence": "reports/strength/export-verification.json"
+  },
+  "compilation": "completed; failed=false; errors=[]",
+  "review": "CLEAN",
+  "packaged": false,
+  "pushed": false,
+  "finalStates": "reports/strength/final-light-states.json",
+  "staticChecks": {
+    "guideLinksPassed": 8,
+    "diffCheck": "passed"
+  }
+}

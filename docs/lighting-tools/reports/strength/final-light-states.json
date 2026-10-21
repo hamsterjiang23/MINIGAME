@@ -1,0 +1,243 @@
+{
+  "playing": false,
+  "independent": true,
+  "missingWindowBinding": false,
+  "missingMonitorBinding": false,
+  "preview": "Automatic",
+  "periods": [
+    {
+      "period": "Day",
+      "profile": "RoomLightingDay",
+      "ambientIntensity": 0.54,
+      "lights": [
+        {
+          "name": "CeilingLight",
+          "HierarchyPath": "CeilingLight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 4.8,
+          "actualTargetIntensity": 4.8,
+          "range": 7.0,
+          "type": "Spot",
+          "shadows": "Soft"
+        },
+        {
+          "name": "Night bed guidance",
+          "HierarchyPath": "MainRoom%20Gameplay#0/Night%20bed%20guidance#0",
+          "activeObject": true,
+          "enabledInProfile": false,
+          "authoredIntensity": 8.0,
+          "actualTargetIntensity": 0.0,
+          "range": 3.6,
+          "type": "Spot",
+          "shadows": "Soft"
+        },
+        {
+          "name": "Corridor red spotlight",
+          "HierarchyPath": "MainRoom%20Gameplay#0/Reference%20exterior%20corridor#0/Corridor%20red%20spotlight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 4.5,
+          "actualTargetIntensity": 4.5,
+          "range": 4.8,
+          "type": "Spot",
+          "shadows": "Soft"
+        },
+        {
+          "name": "MonitorLight (1)",
+          "HierarchyPath": "MonitorLight%20%281%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 3.11,
+          "actualTargetIntensity": 3.11,
+          "range": 2.37,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (2)",
+          "HierarchyPath": "MonitorLight%20%282%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 1.05,
+          "actualTargetIntensity": 1.05,
+          "range": 3.26,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (3)",
+          "HierarchyPath": "MonitorLight%20%283%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 2.08,
+          "actualTargetIntensity": 2.08,
+          "range": 4.27,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (4)",
+          "HierarchyPath": "MonitorLight%20%284%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 2.89,
+          "actualTargetIntensity": 2.89,
+          "range": 4.27,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (5)",
+          "HierarchyPath": "MonitorLight%20%285%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 0.85,
+          "actualTargetIntensity": 0.85,
+          "range": 4.27,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight",
+          "HierarchyPath": "Room%20lighting#0/MonitorLight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 0.043,
+          "actualTargetIntensity": 0.043,
+          "range": 2.4,
+          "type": "Point",
+          "shadows": "Soft"
+        },
+        {
+          "name": "WindowLight",
+          "HierarchyPath": "Room%20lighting#0/WindowLight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 0.55,
+          "actualTargetIntensity": 0.55,
+          "range": 1.84,
+          "type": "Point",
+          "shadows": "Soft"
+        }
+      ]
+    },
+    {
+      "period": "Night",
+      "profile": "RoomLightingNight",
+      "ambientIntensity": 1.0,
+      "lights": [
+        {
+          "name": "CeilingLight",
+          "HierarchyPath": "CeilingLight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 4.8,
+          "actualTargetIntensity": 4.8,
+          "range": 7.0,
+          "type": "Spot",
+          "shadows": "Soft"
+        },
+        {
+          "name": "Night bed guidance",
+          "HierarchyPath": "MainRoom%20Gameplay#0/Night%20bed%20guidance#0",
+          "activeObject": true,
+          "enabledInProfile": false,
+          "authoredIntensity": 8.0,
+          "actualTargetIntensity": 0.0,
+          "range": 3.6,
+          "type": "Spot",
+          "shadows": "Soft"
+        },
+        {
+          "name": "Corridor red spotlight",
+          "HierarchyPath": "MainRoom%20Gameplay#0/Reference%20exterior%20corridor#0/Corridor%20red%20spotlight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 4.5,
+          "actualTargetIntensity": 4.5,
+          "range": 4.8,
+          "type": "Spot",
+          "shadows": "Soft"
+        },
+        {
+          "name": "MonitorLight (1)",
+          "HierarchyPath": "MonitorLight%20%281%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 3.11,
+          "actualTargetIntensity": 3.11,
+          "range": 2.37,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (2)",
+          "HierarchyPath": "MonitorLight%20%282%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 1.05,
+          "actualTargetIntensity": 1.05,
+          "range": 3.26,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (3)",
+          "HierarchyPath": "MonitorLight%20%283%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 2.08,
+          "actualTargetIntensity": 2.08,
+          "range": 4.27,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (4)",
+          "HierarchyPath": "MonitorLight%20%284%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 2.89,
+          "actualTargetIntensity": 2.89,
+          "range": 4.27,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight (5)",
+          "HierarchyPath": "MonitorLight%20%285%29#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 0.85,
+          "actualTargetIntensity": 0.85,
+          "range": 4.27,
+          "type": "Point",
+          "shadows": "None"
+        },
+        {
+          "name": "MonitorLight",
+          "HierarchyPath": "Room%20lighting#0/MonitorLight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 0.12,
+          "actualTargetIntensity": 0.12,
+          "range": 2.4,
+          "type": "Point",
+          "shadows": "Soft"
+        },
+        {
+          "name": "WindowLight",
+          "HierarchyPath": "Room%20lighting#0/WindowLight#0",
+          "activeObject": true,
+          "enabledInProfile": true,
+          "authoredIntensity": 0.18,
+          "actualTargetIntensity": 0.18,
+          "range": 4.5,
+          "type": "Point",
+          "shadows": "Soft"
+        }
+      ]
+    }
+  ]
+}

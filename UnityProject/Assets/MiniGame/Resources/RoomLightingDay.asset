@@ -26,14 +26,15 @@ MonoBehaviour:
   shadowBias: 0.015
   shadowNormalBias: 0.08
   bulbEmission: 1.4
-  ambientColor: {r: 0.22, g: 0.205, b: 0.155, a: 1}
-  reflectionIntensity: 0.15
-  windowColor: {r: 0.62, g: 0.72, b: 0.8, a: 1}
-  windowIntensity: 0.18
-  windowRange: 4.5
-  monitorIntensity: 0.12
+  ambientColor: {r: 0.9433962, g: 0.6452474, b: 0.7315965, a: 1}
+  ambientIntensity: 0.54
+  reflectionIntensity: 0.13
+  windowColor: {r: 0.14509808, g: 0.20010805, b: 0.47058824, a: 1}
+  windowIntensity: 0.55
+  windowRange: 1.84
+  monitorIntensity: 0.043
   lightingBandsEnabled: 0
-  lightingBands: 8
+  lightingBands: 9
   lightingBandsStrength: 0.4
   lightingDither: 0
   floorGain: 1.65
@@ -158,6 +159,34 @@ MonoBehaviour:
     shadowStrength: 1
     shadowBias: 0.02
     shadowNormalBias: 0.4
+  - HierarchyPath: Room%20lighting#0/WindowLight#0
+    dayEnabled: 1
+    localPosition: {x: 1.75, y: 1.52, z: -1.55}
+    localEuler: {x: 0, y: 0, z: 0}
+    color: {r: 0.12677999, g: 0.7264151, b: 0.12677999, a: 1}
+    intensity: 2
+    range: 8
+    type: 2
+    spotAngle: 30
+    innerSpotAngle: 21.80208
+    shadows: 2
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.05
+  - HierarchyPath: Room%20lighting#0/MonitorLight#0
+    dayEnabled: 1
+    localPosition: {x: -3.0039997, y: 0.31849995, z: 0.040999997}
+    localEuler: {x: 0, y: 0, z: 0}
+    color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
+    intensity: 1
+    range: 2.4
+    type: 2
+    spotAngle: 30
+    innerSpotAngle: 21.80208
+    shadows: 2
+    shadowStrength: 1
+    shadowBias: 0.02
+    shadowNormalBias: 0.05
   night:
     ambientColor: {r: 0.22904919, g: 0.23584908, b: 0.18578678, a: 1}
     reflectionIntensity: 1

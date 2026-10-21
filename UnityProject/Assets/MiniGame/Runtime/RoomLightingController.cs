@@ -47,6 +47,8 @@ namespace MiniGame.UnityHost
             ApplyNow();
         }
         public Light MainLight => ceiling;
+        public Light WindowLight => window;
+        public Light MonitorLight => monitor;
         public Renderer Rug => rug;
         public bool PreviewUnbanded { get; set; }
         public RoomLightingPreviewMode PreviewMode { get; private set; }
@@ -144,7 +146,8 @@ namespace MiniGame.UnityHost
             if (!IsEditableSceneLight(light, period)) return null;
             if (HasIndependentProfiles)
             {
-                var complete = BuildPeriodLights(GetProfile(period), period);
+                // Editors display authored values; the overall multiplier is applied only when presenting the light.
+                var complete = BuildPeriodLights(GetProfile(period), period, false);
                 return complete.TryGetValue(light, out var value) ? value.Copy() : null;
             }
             string path = GetHierarchyPath(light);
@@ -190,7 +193,7 @@ namespace MiniGame.UnityHost
             return original.Copy();
         }
 
-        private Dictionary<Light, SceneLightSettings> BuildPeriodLights(RoomLightingProfile p, RoomLightingPeriod period)
+        private Dictionary<Light, SceneLightSettings> BuildPeriodLights(RoomLightingProfile p, RoomLightingPeriod period, bool applyMultiplier = true)
         {
             var result = new Dictionary<Light, SceneLightSettings>();
             foreach (var light in GetEditableSceneLights(period))
@@ -229,8 +232,6 @@ namespace MiniGame.UnityHost
                 bed.dayEnabled = period == RoomLightingPeriod.Night;
                 bed.intensity = period == RoomLightingPeriod.Night ? guidance.DefaultSpotIntensity : 0;
             }
-            foreach (var entry in result.Values)
-            { entry.intensity *= p.lightMultiplier; entry.dayEnabled &= entry.intensity > 0; }
             foreach (var entry in p.SceneLights ?? Enumerable.Empty<SceneLightSettings>())
             {
                 if (entry == null) continue;
@@ -238,6 +239,9 @@ namespace MiniGame.UnityHost
                 if (light == null) continue;
                 var copy = entry.Copy(); copy.ValidateValues(); result[light] = copy;
             }
+            if (applyMultiplier)
+                foreach (var entry in result.Values)
+                { entry.intensity *= p.lightMultiplier; entry.dayEnabled &= entry.intensity > 0; }
             return result;
         }
 
@@ -374,14 +378,14 @@ namespace MiniGame.UnityHost
                 guidance?.UpdateDaylightSettings(item.Key, item.Value);
                 if (guidance == null || !guidance.OwnsLighting) ApplyPresentedLight(item.Key, item.Value);
             }
-            var probe = new SphericalHarmonicsL2(); probe.AddAmbientLight(p.ambientColor);
+            var probe = new SphericalHarmonicsL2(); probe.AddAmbientLight(p.AmbientLightColor);
             if (gameObject.scene == SceneManager.GetActiveScene() && (guidance == null || !guidance.OwnsLighting))
             {
-                RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = p.ambientColor;
-                RenderSettings.ambientSkyColor = RenderSettings.ambientEquatorColor = RenderSettings.ambientGroundColor = p.ambientColor;
+                RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = p.AmbientLightColor;
+                RenderSettings.ambientSkyColor = RenderSettings.ambientEquatorColor = RenderSettings.ambientGroundColor = p.AmbientLightColor;
                 RenderSettings.ambientIntensity = 1; RenderSettings.ambientProbe = probe; RenderSettings.reflectionIntensity = p.reflectionIntensity;
             }
-            guidance?.UpdateDaylightAmbient(p.ambientColor, probe, p.reflectionIntensity);
+            guidance?.UpdateDaylightAmbient(p.AmbientLightColor, probe, p.reflectionIntensity);
             if (roomSurfaces != null) foreach (var surface in roomSurfaces) ApplySurface(surface);
             if (rug != null && floor != null)
             {
@@ -400,7 +404,7 @@ namespace MiniGame.UnityHost
             guidance?.ConfigureLighting(this, p.night ?? new RoomNightLightingSettings(), PreviewMode, dayLights);
             // ConfigureLighting may capture the room for the first time. Write the authored
             // day environment after that capture, including for an additively loaded room.
-            guidance?.UpdateDaylightAmbient(p.ambientColor, probe, p.reflectionIntensity);
+            guidance?.UpdateDaylightAmbient(p.AmbientLightColor, probe, p.reflectionIntensity);
             guidance?.ReapplyLighting();
         }
 
@@ -413,10 +417,10 @@ namespace MiniGame.UnityHost
         private void ApplyAmbient(RoomLightingProfile selected)
         {
             if (gameObject.scene != SceneManager.GetActiveScene()) return;
-            var probe = new SphericalHarmonicsL2(); probe.AddAmbientLight(selected.ambientColor);
+            var probe = new SphericalHarmonicsL2(); probe.AddAmbientLight(selected.AmbientLightColor);
             RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = selected.ambientColor;
-            RenderSettings.ambientSkyColor = RenderSettings.ambientEquatorColor = RenderSettings.ambientGroundColor = selected.ambientColor;
+            RenderSettings.ambientLight = selected.AmbientLightColor;
+            RenderSettings.ambientSkyColor = RenderSettings.ambientEquatorColor = RenderSettings.ambientGroundColor = selected.AmbientLightColor;
             RenderSettings.ambientIntensity = 1; RenderSettings.ambientProbe = probe;
             RenderSettings.reflectionIntensity = selected.reflectionIntensity;
         }

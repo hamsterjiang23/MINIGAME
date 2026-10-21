@@ -44,6 +44,63 @@ namespace MiniGame.UnityHost.Editor
         public static RoomLightingController FindController(Scene scene) => scene.IsValid() && scene.isLoaded
             ? scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<RoomLightingController>(true)).FirstOrDefault() : null;
 
+        public static void RepairMissingBaseLights(RoomLightingController controller)
+        {
+            if (controller == null) throw new ArgumentNullException(nameof(controller));
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("请退出播放后修复光源。");
+            var scene = controller.gameObject.scene;
+            var roots = scene.GetRootGameObjects();
+            var room = roots.Single(item => item.name == "MainRoomCombined");
+            var anchors = room.GetComponentsInChildren<Transform>(true);
+            var serialized = new SerializedObject(controller);
+            Undo.RecordObject(controller, "修复房间基础光源绑定");
+            foreach (string role in new[] { "window", "monitor" })
+            {
+                var property = serialized.FindProperty(role);
+                if (property.objectReferenceValue != null) continue;
+                string name = role == "window" ? "WindowLight" : "MonitorLight";
+                var light = roots.SelectMany(root => root.GetComponentsInChildren<Light>(true)).SingleOrDefault(item => item.name == name);
+                if (light == null)
+                {
+                    var anchor = anchors.SingleOrDefault(item => item.name == "Unity_" + name);
+                    if (anchor == null) throw new InvalidOperationException("找不到光源定位点 Unity_" + name);
+                    var go = new GameObject(name);
+                    SceneManager.MoveGameObjectToScene(go, scene);
+                    Undo.RegisterCreatedObjectUndo(go, "补充 " + name);
+                    go.transform.SetParent(controller.transform, false);
+                    go.transform.position = anchor.position;
+                    light = Undo.AddComponent<Light>(go);
+                    light.type = LightType.Point;
+                    light.lightmapBakeType = LightmapBakeType.Realtime;
+                    light.renderMode = LightRenderMode.ForcePixel;
+                    light.color = role == "window" ? new Color(.62f, .72f, .8f) : new Color(.72f, .77f, .5f);
+                    light.range = role == "window" ? 4.5f : 2.4f;
+                    light.intensity = role == "window" ? .18f : .12f;
+                    light.shadows = LightShadows.Soft;
+                    light.shadowBias = .02f;
+                    light.shadowNormalBias = .05f;
+                }
+                property.objectReferenceValue = light;
+            }
+            serialized.ApplyModifiedProperties();
+            controller.ApplyFromProfile();
+            if (controller.HasIndependentProfiles)
+                foreach (var period in new[] { RoomLightingPeriod.Day, RoomLightingPeriod.Night })
+                {
+                    var profile = controller.GetProfile(period);
+                    foreach (var light in new[] { controller.WindowLight, controller.MonitorLight })
+                    {
+                        string path = controller.GetHierarchyPath(light);
+                        if (profile.SceneLightDefaults.Any(item => item != null && item.HierarchyPath == path)) continue;
+                        Undo.RecordObject(profile, "保存基础灯光默认值");
+                        profile.SceneLightDefaults.Add(controller.CaptureSceneLight(light, period));
+                    }
+                    RoomLightingAuthoring.ProfileEdited(profile);
+                }
+            EditorUtility.SetDirty(controller);
+            EditorSceneManager.MarkSceneDirty(scene);
+        }
+
         public static RoomLightingController EnsureInScene(Scene scene)
         {
             if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("请退出播放后首次安装房间灯光。");
@@ -123,6 +180,7 @@ namespace MiniGame.UnityHost.Editor
                 floor.sharedMaterial.EnableKeyword("_NORMALMAP");
                 EditorUtility.SetDirty(floor.sharedMaterial);
             }
+            RepairMissingBaseLights(controller);
             EditorUtility.SetDirty(controller); EditorSceneManager.MarkSceneDirty(scene);
             return controller;
         }

@@ -422,8 +422,8 @@ namespace MiniGame.UnityHost
                 blended.dayEnabled = blended.intensity > 0 && (amount < .9999f && day.dayEnabled || amount > .0001f && !specialIsolation && night.dayEnabled);
                 lightingController.ApplyPresentedLight(item.Key, blended);
             }
-            var dayAmbient = fullDayProfile.ambientColor;
-            var nightAmbient = specialIsolation ? Color.black : fullNightProfile.ambientColor;
+            var dayAmbient = fullDayProfile.AmbientLightColor;
+            var nightAmbient = specialIsolation ? Color.black : fullNightProfile.AmbientLightColor;
             if (gameObject.scene == SceneManager.GetActiveScene())
             {
                 var color = Color.Lerp(dayAmbient, nightAmbient, amount);

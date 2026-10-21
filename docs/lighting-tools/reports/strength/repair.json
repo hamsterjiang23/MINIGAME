@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "command": "command eval_file",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "F:/AAMINIGAME/MINIGAME/Artifacts/LightingStrength20261021/repair.cs"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "command": null,
+      "result": {
+        "window": "WindowLight",
+        "windowPosition": "(1.75, 1.52, -1.55)",
+        "monitor": "MonitorLight",
+        "monitorPosition": "(-3.00, 0.32, 0.04)",
+        "dayDefaults": 10,
+        "nightDefaults": 10,
+        "version": 3
+      },
+      "executionTimeMs": 895,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "0001-01-01T00:00:00"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -18,3 +18,18 @@
 # Completion
 
 - Native EditMode/PlayMode 共19项通过；八灯基准逐项保留；两份v2JSON经原生导入往返一致；旧Default的SHA256与迁移前备份一致；复核CLEAN。`[verified: independent-verification.json tests/baseline/presets/migration/review]`
+
+# Strength control repair
+
+- Native inspection found window/monitor bindings null while five unrelated MonitorLight(n) fill lights remain. Restore dedicated lights at authored Unity_WindowLight/Unity_MonitorLight anchors; preserve the existing fill lights and both period values. `[verified: strength-verification.json fixes/sceneAudit]`
+- Add ambientIntensity (default 1) independently from reflectionIntensity; v3 JSON keeps v1/v2 import compatibility. Reflection is labelled as material reflection rather than room brightness. `[verified: strength-verification.json fixes/presets]`
+- Verify actual Light intensity/range and rendered pixels at slider endpoints, using temporary profile copies so diagnostics cannot overwrite artist settings. `[verified: strength-verification.json sceneAudit/visualAudit]`
+- All-light audit also found that explicit per-light overrides bypassed the overall multiplier. Apply the multiplier after overrides, display unscaled authored values, and convert native Inspector intensity back through the multiplier to avoid double scaling. `[verified: strength-verification.json fixes/tests]`
+
+# Strength repair completion
+
+- Deviations: four control fixes. `[verified: strength-verification.json fixes]`
+- Most likely to revisit: reflection control naming and discoverability. `[opinion]`
+- Edge cases: old JSON defaults, light-type applicability, multiplier after overrides and native Inspector conversion. `[verified: strength-verification.json presets/gameAudit/fixes]`
+- Verification: 18 tests, 20 Scene period/light pairs, 20 Game period/light pairs, 8 render comparisons; review CLEAN. `[verified: strength-verification.json tests/sceneAudit/gameAudit/visualAudit/review]`
+- Read first: guide.md and strength-verification.json. `[opinion]`

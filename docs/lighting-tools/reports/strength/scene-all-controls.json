@@ -1,0 +1,409 @@
+{
+  "lightsPerPeriod": 10,
+  "editedPeriodLightPairs": 20,
+  "sourceProfilesUnchanged": true,
+  "overallMultiplierPassed": true,
+  "saveAndShareRoundtrip": true,
+  "records": [
+    {
+      "period": "Day",
+      "path": "CeilingLight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MainRoom%20Gameplay#0/Night%20bed%20guidance#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MainRoom%20Gameplay#0/Reference%20exterior%20corridor#0/Corridor%20red%20spotlight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MonitorLight%20%281%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MonitorLight%20%282%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MonitorLight%20%283%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MonitorLight%20%284%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "MonitorLight%20%285%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "Room%20lighting#0/MonitorLight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Day",
+      "path": "Room%20lighting#0/WindowLight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "CeilingLight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MainRoom%20Gameplay#0/Night%20bed%20guidance#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MainRoom%20Gameplay#0/Reference%20exterior%20corridor#0/Corridor%20red%20spotlight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MonitorLight%20%281%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MonitorLight%20%282%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MonitorLight%20%283%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MonitorLight%20%284%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "MonitorLight%20%285%29#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "Room%20lighting#0/MonitorLight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    },
+    {
+      "period": "Night",
+      "path": "Room%20lighting#0/WindowLight#0",
+      "activeObject": true,
+      "adjustable": true,
+      "checks": [
+        "enabled",
+        "intensity",
+        "RGB",
+        "positionXYZ",
+        "rotationXYZ",
+        "range",
+        "threeLightTypes",
+        "spotAngles",
+        "threeShadowTypes",
+        "shadowStrength",
+        "shadowBias",
+        "shadowNormalBias"
+      ]
+    }
+  ]
+}

@@ -415,7 +415,10 @@ namespace MiniGame.UnityHost.Editor
                     switch (path)
                     {
                         case "m_Enabled": value.dayEnabled = number != 0; recognized = true; break;
-                        case "m_Intensity": value.intensity = number; recognized = true; break;
+                        case "m_Intensity":
+                            float multiplier = controller.HasIndependentProfiles ? controller.GetProfile(period).lightMultiplier : 1;
+                            value.intensity = multiplier > .0001f ? number / multiplier : number;
+                            recognized = true; break;
                         case "m_Range": value.range = number; recognized = true; break;
                         case "m_Type": value.type = (LightType)(int)number; recognized = true; break;
                         case "m_SpotAngle": value.spotAngle = number; recognized = true; break;

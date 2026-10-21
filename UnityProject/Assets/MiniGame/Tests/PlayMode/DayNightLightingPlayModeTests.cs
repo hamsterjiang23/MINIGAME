@@ -166,5 +166,92 @@ namespace MiniGame.UnityHost.Tests
             panel.SetPanelOpen(false);
             Assert.That(selected.intensity, Is.EqualTo(day.intensity).Within(.001f));
         }
+
+        [UnityTest, Timeout(60000)]
+        public IEnumerator EverySceneLightRespondsToAllGameControlsInBothPeriods()
+        {
+            var panel = host.Screen.LightingTuning;
+            panel.SetPanelOpen(true);
+            foreach (var period in new[] { RoomLightingPeriod.Day, RoomLightingPeriod.Night })
+            {
+                panel.SelectPeriod(period);
+                panel.SetPreview(period == RoomLightingPeriod.Day ? RoomLightingPreviewMode.Day : RoomLightingPreviewMode.Night);
+                yield return null;
+                var other = period == RoomLightingPeriod.Day ? workingNight : working;
+                string otherBefore = JsonUtility.ToJson(other);
+                var lights = controller.GetEditableSceneLights(period);
+                Assert.That(lights.Length, Is.GreaterThanOrEqualTo(10), "The actual scene must include the restored window and monitor lights.");
+                foreach (var light in lights)
+                {
+                    string path = controller.GetHierarchyPath(light);
+                    Assert.That(panel.SelectLight(path), Is.True, path);
+                    SetLightInput(panel, "灯光强度", .67f);
+                    if (!controller.CaptureSceneLight(light, period).dayEnabled) ClickLightAction(panel, "灯光启用");
+                    for (int attempts = 0; light.type != LightType.Spot && attempts < 3; attempts++) ClickLightAction(panel, "灯光类型");
+                    Assert.That(light.type, Is.EqualTo(LightType.Spot), path);
+                    foreach (var type in new[] { LightType.Directional, LightType.Point, LightType.Spot })
+                    {
+                        ClickLightAction(panel, "灯光类型"); Assert.That(light.type, Is.EqualTo(type), path);
+                        Assert.That(LightInput(panel, "灯光范围").interactable, Is.EqualTo(type != LightType.Directional), path);
+                        Assert.That(LightInput(panel, "聚光外角").interactable, Is.EqualTo(type == LightType.Spot), path);
+                    }
+                    SetLightInput(panel, "灯光颜色 R", .31f); SetLightInput(panel, "灯光颜色 G", .55f); SetLightInput(panel, "灯光颜色 B", .79f);
+                    SetLightInput(panel, "灯光范围", 4.2f);
+                    float x = light.transform.localPosition.x + .11f;
+                    float y = light.transform.localPosition.y + .07f, z = light.transform.localPosition.z - .09f;
+                    SetLightInput(panel, "局部位置 X", x); SetLightInput(panel, "局部位置 Y", y); SetLightInput(panel, "局部位置 Z", z);
+                    SetLightInput(panel, "局部旋转 X", 12); SetLightInput(panel, "局部旋转 Y", 37); SetLightInput(panel, "局部旋转 Z", 8);
+                    SetLightInput(panel, "聚光外角", 97); SetLightInput(panel, "聚光内角", 31);
+                    for (int attempts = 0; light.shadows != LightShadows.Soft && attempts < 3; attempts++) ClickLightAction(panel, "阴影类型");
+                    foreach (var shadows in new[] { LightShadows.None, LightShadows.Hard, LightShadows.Soft })
+                    {
+                        ClickLightAction(panel, "阴影类型"); Assert.That(light.shadows, Is.EqualTo(shadows), path);
+                        Assert.That(LightInput(panel, "阴影强度").interactable, Is.EqualTo(shadows != LightShadows.None), path);
+                    }
+                    SetLightInput(panel, "阴影强度", .63f); SetLightInput(panel, "阴影偏差", .09f); SetLightInput(panel, "阴影法线偏差", .17f);
+                    yield return null;
+                    Assert.That(light.enabled, Is.True, path);
+                    Assert.That(light.intensity, Is.EqualTo(.67f).Within(.001f), path);
+                    Assert.That(light.range, Is.EqualTo(4.2f).Within(.001f), path);
+                    Assert.That(light.color.r, Is.EqualTo(.31f).Within(.001f), path);
+                    Assert.That(light.color.g, Is.EqualTo(.55f).Within(.001f), path);
+                    Assert.That(light.color.b, Is.EqualTo(.79f).Within(.001f), path);
+                    Assert.That(light.transform.localPosition.x, Is.EqualTo(x).Within(.001f), path);
+                    Assert.That(light.transform.localPosition.y, Is.EqualTo(y).Within(.001f), path);
+                    Assert.That(light.transform.localPosition.z, Is.EqualTo(z).Within(.001f), path);
+                    Assert.That(Quaternion.Angle(light.transform.localRotation, Quaternion.Euler(12, 37, 8)), Is.LessThan(.05f), path);
+                    Assert.That(light.spotAngle, Is.EqualTo(97).Within(.001f), path);
+                    Assert.That(light.innerSpotAngle, Is.EqualTo(31).Within(.001f), path);
+                    Assert.That(light.shadows, Is.EqualTo(LightShadows.Soft), path);
+                    Assert.That(light.shadowStrength, Is.EqualTo(.63f).Within(.001f), path);
+                    Assert.That(light.shadowBias, Is.EqualTo(.09f).Within(.001f), path);
+                    Assert.That(light.shadowNormalBias, Is.EqualTo(.17f).Within(.001f), path);
+                    ClickLightAction(panel, "灯光启用"); Assert.That(light.enabled, Is.False, path);
+                    ClickLightAction(panel, "灯光启用"); Assert.That(light.enabled, Is.True, path);
+                    SetLightInput(panel, "灯光强度", 0); Assert.That(light.intensity, Is.Zero, path);
+                    SetLightInput(panel, "灯光强度", .67f);
+                }
+                SetLightInput(panel, "灯光整体倍率", 0);
+                Assert.That(lights.All(light => !light.enabled && light.intensity == 0), Is.True);
+                SetLightInput(panel, "灯光整体倍率", 2);
+                Assert.That(lights.All(light => light.enabled && Mathf.Abs(light.intensity - 1.34f) < .001f), Is.True);
+                Assert.That(controller.CaptureSceneLight(lights[0], period).intensity, Is.EqualTo(.67f).Within(.001f));
+                SetLightInput(panel, "灯光整体倍率", 1);
+                Assert.That(JsonUtility.ToJson(other), Is.EqualTo(otherBefore));
+            }
+        }
+
+        private static void SetLightInput(RoomLightingTuningPanel panel, string row, float value)
+        {
+            var field = LightInput(panel, row);
+            field.text = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            field.onEndEdit.Invoke(field.text);
+        }
+
+        private static InputField LightInput(RoomLightingTuningPanel panel, string row) =>
+            panel.GetComponentsInChildren<InputField>(true).Last(item => item.transform.parent.name == row);
+
+        private static void ClickLightAction(RoomLightingTuningPanel panel, string row) =>
+            panel.GetComponentsInChildren<Button>(true).Last(item => item.transform.parent.name == row).onClick.Invoke();
     }
 }

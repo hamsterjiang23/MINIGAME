@@ -143,5 +143,55 @@ namespace MiniGame.UnityHost.Tests
             }
             finally { UnityEngine.Object.DestroyImmediate(incoming); }
         }
+
+        [TestCase(RoomLightingPeriod.Day)]
+        [TestCase(RoomLightingPeriod.Night)]
+        public void AmbientWindowAndMonitorStrengthsDriveTheirActualTargets(RoomLightingPeriod period)
+        {
+            SceneManager.SetActiveScene(room.gameObject.scene);
+            var computer = new GameObject("Computer light", typeof(Light)).GetComponent<Light>();
+            computer.transform.SetParent(room.transform, false);
+            var guidance = room.GetComponent<BedtimeGuidance>();
+            room.Configure(day, null, fill, null, null, computer, null, null, 0, Array.Empty<Renderer>(), null, guidance);
+            var selected = room.GetProfile(period);
+            var other = room.GetProfile(period == RoomLightingPeriod.Day ? RoomLightingPeriod.Night : RoomLightingPeriod.Day);
+            string otherBefore = JsonUtility.ToJson(other);
+            selected.windowIntensity = .95f; selected.windowRange = 6.2f; selected.monitorIntensity = .72f;
+            selected.ambientColor = new Color(.2f, .3f, .4f); selected.ambientIntensity = 2.5f;
+            selected.NotifyChanged();
+            room.SetPreviewMode(period == RoomLightingPeriod.Day ? RoomLightingPreviewMode.Day : RoomLightingPreviewMode.Night);
+            Assert.That(fill.enabled, Is.True); Assert.That(fill.intensity, Is.EqualTo(.95f).Within(.001f));
+            Assert.That(fill.range, Is.EqualTo(6.2f).Within(.001f));
+            Assert.That(computer.enabled, Is.True); Assert.That(computer.intensity, Is.EqualTo(.72f).Within(.001f));
+            Assert.That(RenderSettings.ambientLight.r, Is.EqualTo(.5f).Within(.001f));
+            Assert.That(RenderSettings.ambientLight.g, Is.EqualTo(.75f).Within(.001f));
+            Assert.That(RenderSettings.ambientLight.b, Is.EqualTo(1).Within(.001f));
+            selected.windowIntensity = selected.monitorIntensity = selected.ambientIntensity = 0;
+            selected.NotifyChanged(); room.ApplyFromProfile();
+            Assert.That(fill.enabled, Is.False); Assert.That(computer.enabled, Is.False);
+            Assert.That(RenderSettings.ambientLight.maxColorComponent, Is.Zero);
+            Assert.That(JsonUtility.ToJson(other), Is.EqualTo(otherBefore));
+        }
+
+        [TestCase(RoomLightingPeriod.Day)]
+        [TestCase(RoomLightingPeriod.Night)]
+        public void OverallStrengthIncludesOverridesAndNativeEditsDoNotMultiplyTwice(RoomLightingPeriod period)
+        {
+            var selected = room.GetProfile(period);
+            selected.lightMultiplier = .5f; selected.NotifyChanged();
+            var changed = room.CaptureSceneLight(fill, period);
+            changed.intensity = 3; changed.dayEnabled = true;
+            RoomLightingAuthoring.WriteLight(room, fill, changed, period);
+            room.SetPreviewMode(period == RoomLightingPeriod.Day ? RoomLightingPreviewMode.Day : RoomLightingPreviewMode.Night);
+            Assert.That(fill.intensity, Is.EqualTo(1.5f).Within(.001f));
+            Assert.That(room.CaptureSceneLight(fill, period).intensity, Is.EqualTo(3));
+            var edit = new UndoPropertyModification { currentValue = new PropertyModification {
+                target = fill, propertyPath = "m_Intensity", value = "2" } };
+            Assert.That(RoomLightingAuthoring.SyncNativeModifications(room, fill, new[] { edit }, period), Is.True);
+            Assert.That(fill.intensity, Is.EqualTo(2).Within(.001f));
+            Assert.That(room.CaptureSceneLight(fill, period).intensity, Is.EqualTo(4));
+            selected.lightMultiplier = 0; selected.NotifyChanged(); room.ApplyFromProfile();
+            Assert.That(fill.intensity, Is.Zero); Assert.That(fill.enabled, Is.False);
+        }
     }
 }

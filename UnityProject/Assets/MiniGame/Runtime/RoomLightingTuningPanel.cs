@@ -379,7 +379,8 @@ namespace MiniGame.UnityHost
         {
             AddHeading(PeriodLabel + " · 环境与整体控制");
             AddColor("环境光", () => Profile.ambientColor, value => Profile.ambientColor = value);
-            AddNumber("反射强度", 0, 1, () => Profile.reflectionIntensity, value => Profile.reflectionIntensity = value);
+            AddNumber("环境光强度", 0, 4, () => Profile.ambientIntensity, value => Profile.ambientIntensity = value);
+            AddNumber("反射强度（非环境光亮度）", 0, 1, () => Profile.reflectionIntensity, value => Profile.reflectionIntensity = value);
             AddNumber("灯光整体倍率", 0, 4, () => Profile.lightMultiplier, value => Profile.lightMultiplier = value);
             AddNumber("自发光整体倍率", 0, 4, () => Profile.emissionMultiplier, value => Profile.emissionMultiplier = value);
             AddNumber("时段渐变秒数", .01f, 10, () => Profile.fadeSeconds, value => Profile.fadeSeconds = value);
@@ -445,16 +446,22 @@ namespace MiniGame.UnityHost
                 settings.type = settings.type == LightType.Point ? LightType.Spot : settings.type == LightType.Spot ? LightType.Directional : LightType.Point));
             AddColor("灯光颜色", () => ReadSelected().color, value => WriteSelected(settings => settings.color = value));
             AddNumber("灯光强度", 0, 100, () => ReadSelected().intensity, value => WriteSelected(settings => settings.intensity = value));
-            AddNumber("灯光范围", .01f, 100, () => ReadSelected().range, value => WriteSelected(settings => settings.range = value));
+            AddNumber("灯光范围", .01f, 100, () => ReadSelected().range, value => WriteSelected(settings => settings.range = value),
+                () => ReadSelected().type != LightType.Directional);
             AddVector("局部位置", -30, 30, () => ReadSelected().localPosition, value => WriteSelected(settings => settings.localPosition = value));
             AddVector("局部旋转", -180, 180, () => ReadSelected().localEuler, value => WriteSelected(settings => settings.localEuler = value));
-            AddNumber("聚光外角", 1, 179, () => ReadSelected().spotAngle, value => WriteSelected(settings => settings.spotAngle = value));
-            AddNumber("聚光内角", 0, 179, () => ReadSelected().innerSpotAngle, value => WriteSelected(settings => settings.innerSpotAngle = value));
+            AddNumber("聚光外角", 1, 179, () => ReadSelected().spotAngle, value => WriteSelected(settings => settings.spotAngle = value),
+                () => ReadSelected().type == LightType.Spot);
+            AddNumber("聚光内角", 0, 179, () => ReadSelected().innerSpotAngle, value => WriteSelected(settings => settings.innerSpotAngle = value),
+                () => ReadSelected().type == LightType.Spot);
             AddAction("阴影类型", () => ReadSelected().shadows.ToString(), () => EditSelected(settings =>
                 settings.shadows = settings.shadows == LightShadows.None ? LightShadows.Hard : settings.shadows == LightShadows.Hard ? LightShadows.Soft : LightShadows.None));
-            AddNumber("阴影强度", 0, 1, () => ReadSelected().shadowStrength, value => WriteSelected(settings => settings.shadowStrength = value));
-            AddNumber("阴影偏差", 0, 2, () => ReadSelected().shadowBias, value => WriteSelected(settings => settings.shadowBias = value));
-            AddNumber("阴影法线偏差", 0, 3, () => ReadSelected().shadowNormalBias, value => WriteSelected(settings => settings.shadowNormalBias = value));
+            AddNumber("阴影强度", 0, 1, () => ReadSelected().shadowStrength, value => WriteSelected(settings => settings.shadowStrength = value),
+                () => ReadSelected().shadows != LightShadows.None);
+            AddNumber("阴影偏差", 0, 2, () => ReadSelected().shadowBias, value => WriteSelected(settings => settings.shadowBias = value),
+                () => ReadSelected().shadows != LightShadows.None);
+            AddNumber("阴影法线偏差", 0, 3, () => ReadSelected().shadowNormalBias, value => WriteSelected(settings => settings.shadowNormalBias = value),
+                () => ReadSelected().shadows != LightShadows.None);
             AddAction("清除当前灯光覆盖", () => "恢复当前时段默认值", () =>
             {
                 BeginEdit();
@@ -509,7 +516,7 @@ namespace MiniGame.UnityHost
             }
         }
 
-        private void AddNumber(string label, float min, float max, Func<float> read, Action<float> write)
+        private void AddNumber(string label, float min, float max, Func<float> read, Action<float> write, Func<bool> applicable = null)
         {
             var row = NewRow(label);
             var text = MakeText(row, "Label", label, 15, Paper);
@@ -537,7 +544,7 @@ namespace MiniGame.UnityHost
             slider.navigation = new Navigation { mode = Navigation.Mode.None };
             Action<float> commit = value =>
             {
-                if (refreshing || Profile == null || float.IsNaN(value) || float.IsInfinity(value)) return;
+                if (refreshing || Profile == null || applicable != null && !applicable() || float.IsNaN(value) || float.IsInfinity(value)) return;
                 BeginEdit(); write(value); Changed();
             };
             slider.onValueChanged.AddListener(value => commit(value));
@@ -550,6 +557,9 @@ namespace MiniGame.UnityHost
             });
             refreshers.Add(() =>
             {
+                bool available = applicable == null || applicable();
+                input.interactable = slider.interactable = available;
+                text.color = available ? Paper : Quiet;
                 float value = read();
                 slider.SetValueWithoutNotify(value);
                 if (!input.isFocused)

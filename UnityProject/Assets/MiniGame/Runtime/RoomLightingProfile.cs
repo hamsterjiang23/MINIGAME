@@ -90,6 +90,9 @@ namespace MiniGame.UnityHost
         [Range(0, 4)] public float bulbEmission = 1.4f;
         [Header("环境与窗边")]
         public Color ambientColor = new Color(.22f, .205f, .155f);
+        [Range(0, 4)] public float ambientIntensity = 1;
+        public Color AmbientLightColor => new Color(ambientColor.r * ambientIntensity,
+            ambientColor.g * ambientIntensity, ambientColor.b * ambientIntensity, ambientColor.a);
         [Range(0, 1)] public float reflectionIntensity = .15f;
         public Color windowColor = new Color(.62f, .72f, .8f);
         [Range(0, 2)] public float windowIntensity = .18f;
@@ -146,6 +149,7 @@ namespace MiniGame.UnityHost
             rugYaw = Safe(rugYaw, -180, 180, 0);
             lampColor = SafeColor(lampColor, new Color(1, .84f, .62f));
             ambientColor = SafeColor(ambientColor, new Color(.22f, .205f, .155f));
+            ambientIntensity = Safe(ambientIntensity, 0, 4, 1);
             windowColor = SafeColor(windowColor, new Color(.62f, .72f, .8f)); rugTint = SafeColor(rugTint, Color.white);
             SceneLights ??= new List<SceneLightSettings>();
             foreach (var light in SceneLights) light?.ValidateValues();

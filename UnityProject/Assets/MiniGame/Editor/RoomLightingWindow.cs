@@ -45,7 +45,9 @@ namespace MiniGame.UnityHost.Editor
             Draw(settings, "shadowStrength", "阴影强度"); Draw(settings, "shadowBias", "阴影深度偏移");
             Draw(settings, "shadowNormalBias", "阴影法线偏移"); Draw(settings, "bulbEmission", "灯泡自发光");
             EditorGUILayout.Space(); EditorGUILayout.LabelField("环境与窗边", EditorStyles.boldLabel);
-            Draw(settings, "ambientColor", "暗部环境色"); Draw(settings, "reflectionIntensity", "环境反射强度");
+            Draw(settings, "ambientColor", "环境光颜色（Ambient）");
+            Draw(settings, "ambientIntensity", "环境光强度", "控制房间暗部的整体亮度；0 关闭环境光，1 为原始亮度。");
+            Draw(settings, "reflectionIntensity", "环境反射强度", "只影响材质反射，不控制房间整体亮度；效果取决于反射贴图与材质光滑度。");
             Draw(settings, "windowColor", "窗边冷光颜色"); Draw(settings, "windowIntensity", "窗边冷光强度");
             Draw(settings, "windowRange", "窗边冷光范围"); Draw(settings, "monitorIntensity", "电脑微光强度");
             EditorGUILayout.Space(); EditorGUILayout.LabelField("可选照明分层（默认关闭）", EditorStyles.boldLabel);
@@ -214,6 +216,12 @@ namespace MiniGame.UnityHost.Editor
                 return;
             }
             using (new EditorGUI.DisabledScope(true)) EditorGUILayout.ObjectField("实际配置资产", profile, typeof(RoomLightingProfile), false);
+            if (controller != null && (controller.WindowLight == null || controller.MonitorLight == null))
+            {
+                EditorGUILayout.HelpBox("窗边灯或电脑灯未绑定，对应强度不会生效。退出播放后修复缺失光源。", MessageType.Warning);
+                using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
+                    if (GUILayout.Button("修复窗边灯与电脑灯绑定")) RoomLightingSetup.RepairMissingBaseLights(controller);
+            }
             if (RoomLightingAuthoring.GetLoadedControllers().Count(room => room.Profile == profile || room.NightProfile == profile) > 1)
                 EditorGUILayout.HelpBox("多个已加载房间共用这份配置，修改会同步到这些房间。需要独立效果时请为目标房间绑定独立配置资产。", MessageType.Info);
             if (!EditorUtility.IsPersistent(profile))

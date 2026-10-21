@@ -1,0 +1,93 @@
+{
+  "sourceProfilesUnchanged": true,
+  "comparisons": [
+    {
+      "period": "Day",
+      "control": "Ambient",
+      "low": 0.0,
+      "high": 2.0,
+      "meanAbsoluteChannelDifference": 41.082589699074077,
+      "changedPixels": 215604,
+      "windowIntensity": 0.0,
+      "monitorIntensity": 0.0,
+      "windowRange": 4.5
+    },
+    {
+      "period": "Day",
+      "control": "Window",
+      "low": 0.0,
+      "high": 2.0,
+      "meanAbsoluteChannelDifference": 10.564422743055555,
+      "changedPixels": 165329,
+      "windowIntensity": 2.0,
+      "monitorIntensity": 0.0,
+      "windowRange": 4.5
+    },
+    {
+      "period": "Day",
+      "control": "Monitor",
+      "low": 0.0,
+      "high": 1.0,
+      "meanAbsoluteChannelDifference": 10.72890625,
+      "changedPixels": 106195,
+      "windowIntensity": 0.0,
+      "monitorIntensity": 1.0,
+      "windowRange": 4.5
+    },
+    {
+      "period": "Day",
+      "control": "WindowRange",
+      "low": 1.0,
+      "high": 8.0,
+      "meanAbsoluteChannelDifference": 12.766901041666667,
+      "changedPixels": 176410,
+      "windowIntensity": 2.0,
+      "monitorIntensity": 0.0,
+      "windowRange": 8.0
+    },
+    {
+      "period": "Night",
+      "control": "Ambient",
+      "low": 0.0,
+      "high": 2.0,
+      "meanAbsoluteChannelDifference": 41.082589699074077,
+      "changedPixels": 215604,
+      "windowIntensity": 0.0,
+      "monitorIntensity": 0.0,
+      "windowRange": 4.5
+    },
+    {
+      "period": "Night",
+      "control": "Window",
+      "low": 0.0,
+      "high": 2.0,
+      "meanAbsoluteChannelDifference": 21.510001446759258,
+      "changedPixels": 165969,
+      "windowIntensity": 2.0,
+      "monitorIntensity": 0.0,
+      "windowRange": 4.5
+    },
+    {
+      "period": "Night",
+      "control": "Monitor",
+      "low": 0.0,
+      "high": 1.0,
+      "meanAbsoluteChannelDifference": 10.72890625,
+      "changedPixels": 106195,
+      "windowIntensity": 0.0,
+      "monitorIntensity": 1.0,
+      "windowRange": 4.5
+    },
+    {
+      "period": "Night",
+      "control": "WindowRange",
+      "low": 1.0,
+      "high": 8.0,
+      "meanAbsoluteChannelDifference": 35.921546585648152,
+      "changedPixels": 178326,
+      "windowIntensity": 2.0,
+      "monitorIntensity": 0.0,
+      "windowRange": 8.0
+    }
+  ]
+}

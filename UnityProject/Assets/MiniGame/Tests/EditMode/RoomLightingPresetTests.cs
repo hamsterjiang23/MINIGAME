@@ -19,6 +19,7 @@ namespace MiniGame.UnityHost.Tests
             source.lampIntensity = 2.3f; source.windowColor = Color.cyan;
             source.ambientColor = new Color(.05f, .1f, .2f); source.lightMultiplier = .4f;
             source.emissionMultiplier = .7f; source.fadeSeconds = 2;
+            source.ambientIntensity = 2.5f;
             source.SceneLights.Add(new SceneLightSettings { HierarchyPath = "Room#0/Lamp#0", intensity = 1.7f });
             source.SceneLightDefaults.Add(new SceneLightSettings { HierarchyPath = "Room#0/Lamp#0", intensity = 3.6f,
                 color = Color.red, localPosition = new Vector3(1, 2, 3), shadowStrength = .7f });
@@ -46,6 +47,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(target.lampIntensity, Is.EqualTo(2.3f).Within(.0001f));
             Assert.That(target.windowColor, Is.EqualTo(Color.cyan));
             Assert.That(target.ambientColor, Is.EqualTo(source.ambientColor));
+            Assert.That(target.ambientIntensity, Is.EqualTo(2.5f));
             Assert.That(target.lightMultiplier, Is.EqualTo(.4f));
             Assert.That(target.emissionMultiplier, Is.EqualTo(.7f));
             Assert.That(target.fadeSeconds, Is.EqualTo(2));
@@ -98,6 +100,26 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(RoomLightingPresetIO.TryLoadFile(path, target, out string message), Is.False);
             Assert.That(message, Is.Not.Empty);
             Assert.That(JsonUtility.ToJson(target), Is.EqualTo(before));
+        }
+
+        [Serializable] private sealed class VersionTwoFile
+        {
+            public string format = RoomLightingPresetIO.Format;
+            public int version = 2;
+            public string profileName;
+            public string profileJson;
+        }
+
+        [Test]
+        public void VersionTwoFilesDefaultAmbientStrengthToOne()
+        {
+            string previous = JsonUtility.ToJson(source).Replace("\"ambientIntensity\":2.5,", "");
+            Assert.That(previous, Does.Not.Contain("\"ambientIntensity\""));
+            string json = JsonUtility.ToJson(new VersionTwoFile { profileName = source.name, profileJson = previous });
+            target.ambientIntensity = .2f;
+            Assert.That(RoomLightingPresetIO.TryImportJson(json, target, out string message), Is.True, message);
+            Assert.That(target.ambientIntensity, Is.EqualTo(1));
+            Assert.That(target.windowColor, Is.EqualTo(source.windowColor));
         }
     }
 }
