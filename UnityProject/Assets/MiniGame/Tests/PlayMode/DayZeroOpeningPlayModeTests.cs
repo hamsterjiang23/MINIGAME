@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using MiniGame.Core;
 using MiniGame.Presentation;
+using MiniGame.Presentation.Authoring;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -66,6 +67,19 @@ namespace MiniGame.UnityHost.Tests
         [UnityTest, Timeout(45000)]
         public IEnumerator DayZeroShutdownReturnsBesideComputerWithStandingCollision()
         {
+            int shutdownTyping = 0, shutdownPower = 0;
+            bool typingSourcePlaying = false;
+            host.Audio.Service.SoundPlayed += (channel, sound) =>
+            {
+                if (host.Screen.PowerPhase == TerminalPowerPhase.Shutdown && channel == MiniGameAudioChannel.TerminalTyping)
+                {
+                    shutdownTyping++;
+                    var source = host.Audio.Service.GetSource(channel);
+                    typingSourcePlaying |= source.isPlaying && source.enabled && !source.mute && source.volume > 0;
+                    Assert.That(source.outputAudioMixerGroup, Is.EqualTo(host.Audio.Profile.UIGroup));
+                }
+                if (sound == MiniGameSound.TerminalPowerOff) shutdownPower++;
+            };
             Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
             float deadline = Time.realtimeSinceStartup + 35;
             while (host.Runtime.GetView().TerminalOpen && Time.realtimeSinceStartup < deadline)
@@ -79,6 +93,10 @@ namespace MiniGame.UnityHost.Tests
                 yield return null;
             }
             Assert.That(host.Runtime.GetView().TerminalOpen, Is.False);
+            TestContext.WriteLine($"Day0 shutdown: typing={shutdownTyping}, powerOff={shutdownPower}, sourcePlaying={typingSourcePlaying}");
+            Assert.That(shutdownTyping, Is.GreaterThan(0), "Day0 shutdown text must use the daily terminal typing sounds.");
+            Assert.That(shutdownPower, Is.EqualTo(1));
+            Assert.That(typingSourcePlaying, Is.True, "Day0 typing must reach an enabled, unmuted audio source.");
             var approach = host.gameObject.scene.GetRootGameObjects()
                 .SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Single(item => item.name == "Computer approach");
             Assert.That(Vector3.Distance(host.Player.transform.position, approach.position), Is.LessThan(.04f));
@@ -119,6 +137,8 @@ namespace MiniGame.UnityHost.Tests
             }
             finally { viewport.sizeDelta = originalSize; viewport.ForceUpdateRectTransforms(); host.Screen.ReflowTerminal(); }
             Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
+            Assert.That(host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single().gameObject.activeInHierarchy,
+                Is.False, "The tutorial feed must not cover the centred opening logo.");
             Assert.That(host.Effects.EntryPhase, Is.EqualTo(TerminalEntryPhase.OpeningMonitor));
             Assert.That(display.OpeningProgress, Is.Zero);
             Assert.That(display.OutputRect.rect.width / display.OutputRect.rect.height,
@@ -141,12 +161,30 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Effects.EntryPhase, Is.EqualTo(TerminalEntryPhase.Active));
             Assert.That(display.OpeningProgress, Is.EqualTo(1));
             Assert.That(display.OutputRect.rect.width / display.OutputRect.rect.height, Is.EqualTo(4f / 3).Within(.001));
-            Assert.That(supervisor.texture, Is.SameAs(Resources.Load<Texture2D>("MiniGame/Day0Supervisor")));
-            Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
+            Assert.That(supervisor.gameObject.activeInHierarchy, Is.False, "The opening logo overlay must retire after the pullback.");
+            var guide = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
+            yield return Until(() => guide.IsShowing, "tutorial patient surveillance feed");
+            var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+            var firstGuide = catalog.Find("D0_01");
+            Assert.That(firstGuide, Is.Not.Null, "The new tutorial character must be registered as D0_01.");
+            Assert.That(guide.PatientId, Is.EqualTo("tutorial"));
+            Assert.That(guide.CurrentSprite, Is.SameAs(firstGuide));
+            Assert.That(guide.GetComponent<RawImage>().texture, Is.SameAs(guide.Output));
+            Assert.That(guide.RenderedFrames, Is.GreaterThan(0));
+            #if UNITY_EDITOR
+            string guidePath = UnityEditor.AssetDatabase.GetAssetPath(firstGuide.texture);
+            Assert.That(guidePath, Does.Contain("/NamedPortraits/"), "Day0 must use the supplied character PNG, not a legacy portrait.");
+            TestContext.WriteLine("Day0 guide D0_01: " + guidePath);
+            #endif
             Assert.That(host.Screen.PowerPhase, Is.EqualTo(TerminalPowerPhase.Running));
             CaptureComposite("day0-opening-terminal");
+            CaptureComposite("day0-guide-D0_01");
 
             var completed = new HashSet<string>();
+            var sourcePackage = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+            var expectedLines = DialoguePackageCompiler.Compile(sourcePackage.PackageSource.text).SourceNodes
+                .Where(node => node.Kind == "line" && node.Headers.TryGetValue("patient", out var patient) && patient == "tutorial")
+                .Select(node => node.Id).ToArray();
             int maxDispositionRecords = 0;
             bool submitted = false, sawShutdown = false, sawClosingSession = false, sawSessionClosed = false;
             float deadline = Time.realtimeSinceStartup + 30;
@@ -160,7 +198,7 @@ namespace MiniGame.UnityHost.Tests
                 var closingConsole = host.Screen.GetComponentsInChildren<Text>(true).Single(label => label.name == "BootConsole");
                 if (closingConsole.gameObject.activeInHierarchy && closingConsole.text.Contains("Closing session..."))
                 {
-                    if (!sawClosingSession) CaptureComposite("day0-closing-session");
+                    if (!sawClosingSession) CaptureComposite("day0-closing-session", closingConsole.text);
                     sawClosingSession = true;
                     Assert.That(host.Screen.TerminalReveal, Is.EqualTo(1));
                     Assert.That(host.Screen.TerminalDisplay.OutputRect.gameObject.activeInHierarchy, Is.True);
@@ -190,7 +228,7 @@ namespace MiniGame.UnityHost.Tests
             }
             Assert.That(submitted && sawShutdown, Is.True);
             Assert.That(sawClosingSession && sawSessionClosed, Is.True, "Day0 must visibly play the HTML Closing session and Session closed output before leaving the terminal.");
-            Assert.That(completed.Count, Is.EqualTo(7), "Five introduction and two reaction source lines must complete before shutdown.");
+            Assert.That(completed, Is.EquivalentTo(expectedLines), "Every tutorial introduction and reaction source line must complete before shutdown.");
             Assert.That(maxDispositionRecords, Is.EqualTo(1));
             Assert.That(host.Runtime.GetView().Game.RemainingPurificationQuota, Is.Zero);
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
@@ -206,8 +244,25 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Player.GetComponent<CharacterController>().enabled, Is.True);
             var guidance = host.GetComponent<BedtimeGuidance>();
             Assert.That(guidance, Is.Not.Null);
-            yield return Until(() => guidance.BeamStrength > .95f, "bed spotlight");
-            Assert.That(guidance.Spotlight.enabled, Is.True);
+            yield return Until(() => guidance.BeamStrength > .95f && guidance.Isolation >= .9999f, "bedtime guidance and night lighting");
+            var lighting = Object.FindObjectsOfType<RoomLightingController>()
+                .Single(roomController => roomController.gameObject.scene == host.gameObject.scene);
+            var nightBed = lighting.CaptureSceneLight(guidance.Spotlight, RoomLightingPeriod.Night);
+            Assert.That(nightBed, Is.Not.Null, "The bed light must remain addressable in the authored night configuration.");
+            float nightIntensity = nightBed.intensity * (lighting.HasIndependentProfiles ? lighting.NightProfile.lightMultiplier : 1);
+            bool nightBedEnabled = nightBed.dayEnabled && nightIntensity > 0;
+            bool visibleAtmosphere = nightBedEnabled && nightIntensity > .001f;
+            TestContext.WriteLine("Night bed guidance: configured enabled=" + nightBed.dayEnabled + ", effective intensity=" + nightIntensity);
+            Assert.That(guidance.Spotlight.enabled, Is.EqualTo(nightBedEnabled), "The authored night period controls the bed light.");
+            Assert.That(guidance.OwnsLighting, Is.True);
+            Assert.That(guidance.Atmosphere, Is.Not.Null);
+            Assert.That(guidance.Atmosphere.BeamRenderer, Is.Not.Null);
+            Assert.That(guidance.Atmosphere.ParticleRenderer, Is.Not.Null);
+            Assert.That(guidance.Atmosphere.ParticleCount, Is.GreaterThan(0), "Glow particles remain available when the authored bed light is enabled.");
+            Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.EqualTo(visibleAtmosphere));
+            Assert.That(guidance.Atmosphere.ParticleRenderer.enabled, Is.EqualTo(visibleAtmosphere));
+            Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }),
+                "Configuring night lighting must retain the bed-only gameplay gate.");
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "day0-bed-only");
 
             var bed = host.gameObject.scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<WorldInteraction>(true))
@@ -231,7 +286,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
             Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False);
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
-            Debug.Log("MINIGAME_DAY0_OPENING_PASSED monitor pullback; one active action; seven Yarn lines; one purification; automatic shutdown; one sleep; Day1 morning");
+            Debug.Log("MINIGAME_DAY0_OPENING_PASSED monitor pullback; supplied tutorial guide; one active action; " + expectedLines.Length + " Yarn lines; one purification; automatic shutdown; one sleep; Day1 morning");
         }
 
         [UnityTest, Timeout(30000)]
@@ -270,6 +325,23 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().Transcript.Count(line => !line.IsPlayer), Is.EqualTo(1));
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.False,
                 "Neither the opening nor the repeated click may complete the first tutorial line.");
+            var guide = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
+            yield return Until(() => guide.IsShowing, "restored tutorial feed");
+            Assert.That(guide.PatientId, Is.EqualTo("tutorial"));
+            Assert.That(guide.CurrentSprite, Is.SameAs(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find("D0_01")));
+            host.Runtime.SetPaused(true);
+            yield return null;
+            float monitorTime = guide.PresentationTime;
+            int monitorFrames = guide.RenderedFrames;
+            yield return new WaitForSecondsRealtime(.2f);
+            Assert.That(guide.PresentationTime, Is.EqualTo(monitorTime), "Pausing must freeze the new tutorial feed.");
+            Assert.That(guide.RenderedFrames, Is.EqualTo(monitorFrames));
+            string activeSave = host.Runtime.Save();
+            host.RestoreCheckpoint(activeSave);
+            yield return Until(() => guide.IsShowing && guide.CurrentSprite != null, "restored active tutorial portrait");
+            Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False, "An active tutorial save must not restart the opening logo.");
+            Assert.That(guide.CurrentSprite, Is.SameAs(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find("D0_01")),
+                "A tutorial line without an explicit portrait must restore its registered base portrait.");
         }
 
         private Button[] ActiveButtons() => host.Screen.GetComponentsInChildren<Button>(false)
@@ -314,7 +386,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(predicate(), Is.True, label);
         }
 
-        private void CaptureComposite(string name)
+        private void CaptureComposite(string name, string sparseConsoleText = null)
         {
             var display = host.Screen.TerminalDisplay;
             display.RenderFrame();
@@ -329,14 +401,26 @@ namespace MiniGame.UnityHost.Tests
                 RenderTexture.active = composite;
                 image.ReadPixels(new Rect(0, 0, composite.width, composite.height), 0, 0);
                 image.Apply();
-                Assert.That(image.GetPixels32().Count(pixel => pixel.r > 45 && pixel.g > 20), Is.GreaterThan(1000),
-                    "The native GPU composite must contain a visible monitor, not a black frame.");
                 string directory = Environment.GetEnvironmentVariable("MINIGAME_CAPTURE_DIR");
                 if (!string.IsNullOrEmpty(directory))
                 {
                     Directory.CreateDirectory(directory);
                     File.WriteAllBytes(Path.Combine(directory, name + ".png"), image.EncodeToPNG());
                 }
+                int litPixels = image.GetPixels32().Count(pixel => pixel.r > 45 && pixel.g > 20);
+                if (sparseConsoleText != null)
+                {
+                    // Shutdown deliberately clears the full review screen. Validate its actual
+                    // console content instead of applying the full-monitor pixel-area oracle.
+                    int visibleCharacters = sparseConsoleText.Count(character => !char.IsWhiteSpace(character));
+                    Assert.That(visibleCharacters, Is.GreaterThan(0), "The shutdown capture needs nonblank console output.");
+                    TestContext.WriteLine(name + ": lit pixels=" + litPixels + ", console character lower bound=" + visibleCharacters);
+                    Assert.That(litPixels, Is.GreaterThanOrEqualTo(visibleCharacters),
+                        "The shutdown composite must retain at least one above-background pixel per nonblank console character.");
+                }
+                else
+                    Assert.That(litPixels, Is.GreaterThan(1000),
+                        "The native GPU composite must contain a visible monitor, not a black frame.");
             }
             finally
             {

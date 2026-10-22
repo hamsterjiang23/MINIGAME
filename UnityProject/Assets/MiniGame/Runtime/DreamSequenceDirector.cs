@@ -15,6 +15,7 @@ namespace MiniGame.UnityHost
         private MiniGameScreen screen;
         private ApartmentPlayer player;
         private MiniGameAudioDirector audio;
+        private BedtimeGuidance bedtime;
         private DreamAnimationStage stage;
         private Material projectionMaterial;
         private Material[] originalMaterials;
@@ -35,6 +36,7 @@ namespace MiniGame.UnityHost
         public DreamPlaybackPhase Phase { get; private set; }
         public bool OwnsCamera => hasRoomPose && Phase != DreamPlaybackPhase.None;
         public bool IsPlaying => Phase == DreamPlaybackPhase.Playing;
+        public bool MusicActive => Phase == DreamPlaybackPhase.Aligning || IsPlaying;
         public bool IsPreview => preview;
         public bool PreviewPaused { get; set; }
         public bool UseExternalClock { get; set; }
@@ -54,6 +56,7 @@ namespace MiniGame.UnityHost
         {
             PrepareForRuntimeChange();
             runtime = game; screen = ui; player = owner; audio = sound; profile = settings;
+            bedtime = GetComponent<BedtimeGuidance>();
             lastAudioDay = -1;
             if (runtime == null || !isActiveAndEnabled) return;
             runtime.Changed += OnViewChanged;
@@ -75,7 +78,7 @@ namespace MiniGame.UnityHost
                 if (OwnsCamera) StopInternal();
                 return;
             }
-            if (activeToken == view.Cue.Token) { UpdateAudio(IsPlaying, view.Paused); return; }
+            if (activeToken == view.Cue.Token) { UpdateAudio(MusicActive, view.Paused); return; }
             StartDay(view.Game.Day, view.Cue.Token, false);
         }
 
@@ -127,9 +130,9 @@ namespace MiniGame.UnityHost
             projectionSurface.enabled = false;
             viewingFieldOfView = FramedFieldOfView();
             Phase = DreamPlaybackPhase.Aligning;
-            if (screen != null) { screen.SetTransitionLocked(true); screen.SetWorldPrompt(string.Empty); }
+            if (screen != null) { screen.SetTransitionLocked(true); screen.SetWorldPrompt(string.Empty); screen.SetFade(1); screen.SetGlitch(0); }
             RenderStage();
-            UpdateAudio(false, false);
+            UpdateAudio(true, runtime != null && !preview && runtime.GetView().Paused);
             return true;
         }
 
@@ -142,7 +145,7 @@ namespace MiniGame.UnityHost
         {
             if (!OwnsCamera || stage == null) return;
             bool paused = PreviewPaused || (!preview && runtime != null && runtime.GetView().Paused);
-            UpdateAudio(IsPlaying, paused);
+            UpdateAudio(MusicActive, paused);
             if (paused) return;
             float delta = Finite(deltaTime) ? Mathf.Max(0, deltaTime) : 0;
             elapsed += delta;
@@ -150,12 +153,14 @@ namespace MiniGame.UnityHost
             {
                 case DreamPlaybackPhase.Aligning:
                     ApplyAlignment();
-                    if (elapsed >= AlignDuration)
+                    if (elapsed >= BlackDuration)
                     {
+                        ApplyViewingPose();
                         Phase = DreamPlaybackPhase.Playing;
                         SetRetroBypass(true);
                         elapsed = 0;
                         projectionSurface.enabled = true;
+                        screen?.SetFade(0);
                         RenderStage();
                         UpdateAudio(true, false);
                     }
@@ -170,6 +175,7 @@ namespace MiniGame.UnityHost
                         SetRetroBypass(false);
                         elapsed = 0;
                         projectionSurface.enabled = false;
+                        bedtime?.SetDreamBedReveal(true);
                         UpdateAudio(false, false);
                     }
                     break;
@@ -179,8 +185,9 @@ namespace MiniGame.UnityHost
                     {
                         string token = activeToken;
                         bool complete = !preview && runtime != null && runtime.GetView().Cue?.Token == token;
-                        StopInternal();
+                        StopInternal(complete);
                         if (complete) runtime.CompleteCue(token);
+                        bedtime?.SetDreamBedReveal(false);
                     }
                     break;
             }
@@ -191,7 +198,7 @@ namespace MiniGame.UnityHost
             var day = profile.GetDay(ActiveDay);
             stage.Render(day, PlaybackSeconds);
             if (projectionMaterial != null)
-                projectionMaterial.SetFloat("_Opacity", Mathf.Min(1, PlaybackSeconds / .35f, (PlaybackDuration - PlaybackSeconds) / .45f));
+                projectionMaterial.SetFloat("_Opacity", 1);
         }
 
         private float FramedFieldOfView()
@@ -214,7 +221,7 @@ namespace MiniGame.UnityHost
 
         private void ApplyAlignment()
         {
-            float p = Smooth(elapsed / AlignDuration);
+            float p = Smooth(elapsed / Mathf.Min(AlignDuration, BlackDuration));
             viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(roomPosition, viewingPose.position, p), Quaternion.Slerp(roomRotation, viewingPose.rotation, p));
             viewCamera.fieldOfView = Mathf.Lerp(roomFieldOfView, viewingFieldOfView, p);
         }
@@ -226,7 +233,7 @@ namespace MiniGame.UnityHost
         private void ApplyReturn()
         {
             float p = Smooth(elapsed / ReturnDuration);
-            viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(viewingPose.position, roomPosition, p), Quaternion.Slerp(viewingPose.rotation, roomRotation, p));
+            viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(viewingPose.position, roomPosition, p), Quaternion.Slerp(viewingPose.rotation, ReturnRotation, p));
             viewCamera.fieldOfView = Mathf.Lerp(viewingFieldOfView, roomFieldOfView, p);
         }
 
@@ -250,14 +257,16 @@ namespace MiniGame.UnityHost
             PlaybackSeconds = Finite(data.PlaybackSeconds) ? Mathf.Clamp(data.PlaybackSeconds, 0, PlaybackDuration) : 0;
             Phase = data.Phase;
             elapsed = Finite(data.Elapsed) ? Mathf.Max(0, data.Elapsed) : 0;
-            if (Phase == DreamPlaybackPhase.Aligning) { elapsed = Mathf.Min(elapsed, AlignDuration); ApplyAlignment(); }
+            if (Phase == DreamPlaybackPhase.Aligning) { elapsed = Mathf.Min(elapsed, BlackDuration); ApplyAlignment(); }
             else if (Phase == DreamPlaybackPhase.Playing) ApplyViewingPose();
             else if (Phase == DreamPlaybackPhase.Returning) { elapsed = Mathf.Min(elapsed, ReturnDuration); ApplyReturn(); }
             else { StopInternal(); return; }
             projectionSurface.enabled = IsPlaying;
+            screen?.SetFade(Phase == DreamPlaybackPhase.Aligning ? 1 : 0);
+            bedtime?.SetDreamBedReveal(Phase == DreamPlaybackPhase.Returning);
             SetRetroBypass(IsPlaying);
             RenderStage();
-            UpdateAudio(IsPlaying, runtime.GetView().Paused);
+            UpdateAudio(MusicActive, runtime.GetView().Paused);
         }
 
         private void UpdateAudio(bool playing, bool paused)
@@ -267,7 +276,7 @@ namespace MiniGame.UnityHost
             lastAudioPlaying = playing; lastAudioPaused = paused; lastAudioDay = ActiveDay;
         }
 
-        private void StopInternal()
+        private void StopInternal(bool faceBed = false)
         {
             SetRetroBypass(false);
             capturedRetro = false;
@@ -280,11 +289,12 @@ namespace MiniGame.UnityHost
             UpdateAudio(false, false);
             if (hasRoomPose && viewCamera != null)
             {
-                viewCamera.transform.SetPositionAndRotation(roomPosition, roomRotation);
+                Quaternion rotation = faceBed ? ReturnRotation : roomRotation;
+                viewCamera.transform.SetPositionAndRotation(roomPosition, rotation);
                 viewCamera.fieldOfView = roomFieldOfView;
                 // Release ownership before synchronizing the first-person look angles.
                 Phase = DreamPlaybackPhase.None;
-                if (player != null) player.FacePoint(roomPosition + roomRotation * Vector3.forward);
+                if (player != null) player.FacePoint(roomPosition + rotation * Vector3.forward);
             }
             if (projectionSurface != null && originalMaterials != null)
             {
@@ -298,7 +308,8 @@ namespace MiniGame.UnityHost
                 if (Application.isPlaying) Destroy(projectionMaterial); else DestroyImmediate(projectionMaterial);
             }
             projectionMaterial = null;
-            if (hasRoomPose && screen != null) screen.SetTransitionLocked(false);
+            if (hasRoomPose && screen != null) { screen.SetTransitionLocked(false); screen.SetFade(0); }
+            if (!faceBed) bedtime?.SetDreamBedReveal(false);
             hasRoomPose = false; preview = false; PreviewPaused = false;
             Phase = DreamPlaybackPhase.None; activeToken = null;
         }
@@ -309,8 +320,11 @@ namespace MiniGame.UnityHost
         }
 
         private float AlignDuration => SafeDuration(profile.AlignSeconds, 1.2f);
+        private float BlackDuration => SafeDuration(profile.BlackScreenSeconds, 5);
         private float ReturnDuration => SafeDuration(profile.ReturnSeconds, 1);
-        private float PlaybackDuration => SafeDuration(profile.GetDay(ActiveDay).Duration, 20);
+        private float PlaybackDuration => SafeDuration(profile.GetDay(ActiveDay).Duration, 5);
+        private Quaternion ReturnRotation => !preview && bedtime != null && (bedtime.SleepFocusPoint - roomPosition).sqrMagnitude > .0001f
+            ? Quaternion.LookRotation(bedtime.SleepFocusPoint - roomPosition, Vector3.up) : roomRotation;
         private static float SafeDuration(float value, float fallback) => Finite(value) ? Mathf.Max(.01f, value) : fallback;
         private static float Smooth(float value) { float p = Mathf.Clamp01(value); return p * p * (3 - 2 * p); }
         private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);

@@ -30,7 +30,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator ThreeDreamsHaveDeterministicMovingPixelsAndAnOffscreenOnlyCamera()
+        public IEnumerator LegacyProceduralDreamsHaveDeterministicMovingPixelsAndAnOffscreenOnlyCamera()
         {
             for (int day = 1; day <= 3; day++)
             {
@@ -69,9 +69,15 @@ namespace MiniGame.UnityHost.Tests
             var originalMaterial = projection.sharedMaterial;
             Assert.That(director.PreviewDay(1), Is.True);
             Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Aligning));
-            Assert.That(projection.enabled, Is.False, "Projection starts only after alignment.");
+            Assert.That(projection.enabled, Is.False, "Projection stays hidden throughout the black-screen interval.");
             director.Advance(profile.AlignSeconds);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Aligning));
+            Assert.That(projection.enabled, Is.False, "Finishing camera alignment must not end the black screen early.");
+            Assert.That(Vector3.Distance(camera.transform.position, viewingPose.position), Is.LessThan(.00001f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, viewingPose.rotation), Is.LessThan(.001f));
+            director.Advance(profile.BlackScreenSeconds - profile.AlignSeconds);
             Assert.That(director.IsPlaying, Is.True);
+            Assert.That(projection.enabled, Is.True);
             Assert.That(director.StageTexture.width, Is.EqualTo(1920));
             Assert.That(director.StageTexture.height, Is.EqualTo(1080));
             director.Advance(2);
@@ -108,12 +114,16 @@ namespace MiniGame.UnityHost.Tests
             var rules = Rules();
             var content = new FixtureContent();
             var runtime = new GameRuntime(rules, content, true);
-            ReachFirstDream(runtime);
+            ReachFirstEvening(runtime);
             Vector3 originalPosition = camera.transform.position;
             Quaternion originalRotation = camera.transform.rotation;
             director.Bind(runtime, null, null, null, profile);
-            director.Advance(profile.AlignSeconds);
-            director.Advance(6.25f);
+            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
+            var sleep = runtime.GetView().Cue;
+            Assert.That(sleep?.Kind, Is.EqualTo(PresentationKind.Sleep));
+            Assert.That(runtime.CompleteCue(sleep.Token).Accepted, Is.True);
+            director.Advance(profile.BlackScreenSeconds);
+            director.Advance(2.25f);
             Assert.That(runtime.SetPaused(true).Accepted, Is.True);
             var checkpoint = director.CaptureCheckpoint();
             Assert.That(checkpoint.Phase, Is.EqualTo(DreamPlaybackPhase.Playing));
@@ -122,14 +132,19 @@ namespace MiniGame.UnityHost.Tests
             var restored = GameRuntime.Restore(runtime.Save(), rules, content);
             director.Bind(restored, null, null, null, profile);
             director.RestoreCheckpoint(checkpoint);
-            Assert.That(director.PlaybackSeconds, Is.EqualTo(6.25f));
+            Assert.That(director.PlaybackSeconds, Is.EqualTo(2.25f));
             Assert.That(Capture(director.StageTexture), Is.EqualTo(frame));
             director.Advance(10);
-            Assert.That(director.PlaybackSeconds, Is.EqualTo(6.25f));
+            Assert.That(director.PlaybackSeconds, Is.EqualTo(2.25f));
             Assert.That(restored.SetPaused(false).Accepted, Is.True);
             Assert.That(restored.CompleteCue(oldToken).Accepted, Is.False);
-            director.Advance(20);
+            director.Advance(2.5f);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Playing));
+            Assert.That(projection.enabled, Is.True);
+            director.Advance(.25f);
             Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Returning));
+            Assert.That(director.PlaybackSeconds, Is.EqualTo(5));
+            Assert.That(projection.enabled, Is.False);
             Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
             director.Advance(profile.ReturnSeconds);
             Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
@@ -137,6 +152,52 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Vector3.Distance(camera.transform.position, originalPosition), Is.LessThan(.00001f));
             Assert.That(Quaternion.Angle(camera.transform.rotation, originalRotation), Is.LessThan(.001f));
             yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator PausedAlignmentCheckpointRestoresTheRemainingBlackScreenTime()
+        {
+            CreateRig();
+            var rules = Rules();
+            var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            ReachFirstEvening(runtime);
+            director.Bind(runtime, null, null, null, profile);
+            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
+            var sleep = runtime.GetView().Cue;
+            Assert.That(sleep?.Kind, Is.EqualTo(PresentationKind.Sleep));
+            Assert.That(runtime.CompleteCue(sleep.Token).Accepted, Is.True);
+            director.Advance(2.25f);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Aligning));
+            Assert.That(projection.enabled, Is.False);
+            Assert.That(Vector3.Distance(camera.transform.position, viewingPose.position), Is.LessThan(.00001f));
+            Assert.That(runtime.SetPaused(true).Accepted, Is.True);
+            var checkpoint = director.CaptureCheckpoint();
+            Assert.That(checkpoint.Elapsed, Is.EqualTo(2.25f));
+            director.Advance(10);
+            yield return null;
+            Assert.That(director.CaptureCheckpoint().Elapsed, Is.EqualTo(checkpoint.Elapsed));
+            Assert.That(projection.enabled, Is.False);
+
+            var restored = GameRuntime.Restore(runtime.Save(), rules, content);
+            director.Bind(restored, null, null, null, profile);
+            director.RestoreCheckpoint(checkpoint);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Aligning));
+            Assert.That(director.CaptureCheckpoint().Elapsed, Is.EqualTo(2.25f));
+            Assert.That(director.PlaybackSeconds, Is.Zero);
+            Assert.That(projection.enabled, Is.False);
+            director.Advance(10);
+            Assert.That(director.CaptureCheckpoint().Elapsed, Is.EqualTo(2.25f));
+
+            Assert.That(restored.SetPaused(false).Accepted, Is.True);
+            director.Advance(profile.BlackScreenSeconds - checkpoint.Elapsed - .25f);
+            Assert.That(director.CaptureCheckpoint().Elapsed, Is.EqualTo(4.75f));
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Aligning));
+            Assert.That(projection.enabled, Is.False);
+            director.Advance(.25f);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Playing));
+            Assert.That(director.PlaybackSeconds, Is.Zero);
+            Assert.That(projection.enabled, Is.True);
         }
 
         private void CreateRig()
@@ -158,8 +219,10 @@ namespace MiniGame.UnityHost.Tests
             viewingPose = Track(new GameObject("Dream test viewing pose")).transform;
             viewingPose.position = origin + new Vector3(0, 1, -4);
             profile = Track(ScriptableObject.CreateInstance<DreamSequenceProfile>());
+            profile.BlackScreenSeconds = 5;
             foreach (var day in profile.Days)
             {
+                day.Duration = 5;
                 day.Artwork = Artwork(day.Day);
                 var production = Resources.Load<DreamSequenceProfile>("MiniGame/DreamSequenceDefault").GetDay(day.Day);
                 day.Frames = production.Frames;
@@ -167,6 +230,7 @@ namespace MiniGame.UnityHost.Tests
                 day.PostIntensity = production.PostIntensity;
             }
             director = Track(new GameObject("Dream test director")).AddComponent<DreamSequenceDirector>();
+            director.UseExternalClock = true;
             director.Configure(wall, viewingPose, projection, camera, profile);
         }
 
@@ -214,12 +278,13 @@ namespace MiniGame.UnityHost.Tests
                 .WithDreamFlow(0, 100, 100, new Dictionary<string,int>());
         }
 
-        private static void ReachFirstDream(GameRuntime runtime)
+        private static void ReachFirstEvening(GameRuntime runtime)
         {
             for (int step = 0; step < 100; step++)
             {
                 var view = runtime.GetView();
-                if (view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream) return;
+                if (view.Game.Day == 1 && view.Game.Phase == GamePhase.Evening
+                    && view.TerminalPage == TerminalPage.Closed && view.Cue == null) return;
                 RuntimeResult result;
                 if (view.Cue != null) result = runtime.CompleteCue(view.Cue.Token);
                 else if (view.TerminalPage == TerminalPage.Archive) result = runtime.LeaveTerminal();
@@ -227,13 +292,13 @@ namespace MiniGame.UnityHost.Tests
                 else if (view.Input == InputContext.Dialogue) result = view.Game.EncounterStage == EncounterStage.AwaitingDisposition
                     ? runtime.SubmitDisposition(view.Game.CurrentEncounterId, Disposition.Treat)
                     : runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, "pick");
-                else if (view.Game.Phase == GamePhase.Evening) result = runtime.BeginNightDream();
+                else if (view.Game.Phase == GamePhase.Evening) result = runtime.TryInteract(InteractionTarget.Bed);
                 else if (view.Game.Phase == GamePhase.MorningInspection) result = runtime.TryInteract(InteractionTarget.Door);
                 else if (view.Game.Phase == GamePhase.AfterDream) result = runtime.TryInteract(InteractionTarget.Bed);
                 else result = runtime.TryInteract(InteractionTarget.Computer);
                 Assert.That(result.Accepted, Is.True, "Fixture could not advance from " + view.Game.Phase);
             }
-            Assert.Fail("The bounded fixture did not reach Day1 Dream.");
+            Assert.Fail("The bounded fixture did not reach Day1 Evening with the terminal closed.");
         }
 
         private T Track<T>(T value) where T : Object { cleanup.Add(value); return value; }

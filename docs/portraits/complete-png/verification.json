@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-22T18:21:53.2160829+08:00",
+  "assets": {
+    "roles": 6,
+    "pngCount": 22,
+    "catalogIds": 25,
+    "previouslyIdentical": 11,
+    "newPngs": 11,
+    "originalPixelHashesMatched": true,
+    "legacyAliases": [
+      "ML04 -> ML03",
+      "ML05 -> ML03",
+      "JN05 -> JN04"
+    ],
+    "sourceManifest": "docs/portraits/complete-png/source-manifest.json"
+  },
+  "editMode": {
+    "report": "Artifacts/NamedPortraits/editmode-final.xml",
+    "passed": 32,
+    "failed": 0
+  },
+  "playMode": {
+    "passed": 20,
+    "failed": 0,
+    "method": "Latest result by unique test name; targeted retries after correcting stale diagnostic expectations",
+    "cases": "Artifacts/NamedPortraits/playmode-latest-cases.json",
+    "reports": [
+      "Artifacts/NamedPortraits/playmode.xml",
+      "Artifacts/NamedPortraits/playmode-final.xml",
+      "Artifacts/NamedPortraits/current.xml"
+    ],
+    "currentSceneSubsetPassed": 8
+  },
+  "gpu": {
+    "namedPortraitFrames": 22,
+    "directory": "Artifacts/NamedPortraits/Current",
+    "additionalFrames": "Artifacts/NamedPortraits/Final",
+    "all22RenderContributionsChecked": true,
+    "userVisualAcceptance": "pending"
+  },
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\CompletePortraits\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 5.1385634
+  },
+  "nativeOpening": {
+    "report": "Artifacts/NamedPortraits/Player/Opening/verification.json",
+    "result": "passed",
+    "sourceLines": 7,
+    "day": 1,
+    "singlePurification": true,
+    "furnitureRestored": true,
+    "normLogoPresent": true
+  },
+  "nativeTerminal": {
+    "report": "Artifacts/NamedPortraits/Player/Terminal/verification.json",
+    "result": "Passed",
+    "note": "Passed on the same current-scene candidate before final changes limited to the opt-in opening diagnostic; no terminal gameplay code/assets changed afterward"
+  },
+  "package": {
+    "schemaVersion": 1,
+    "packagedAt": "2026-10-22T18:17:35.552891+08:00",
+    "timezone": "Asia/Shanghai",
+    "buildDirectory": "F:\\AAMINIGAME\\MINIGAME\\Builds\\CompletePortraits",
+    "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-CompletePortraits-20261022-181735.zip",
+    "zipBytes": 330510316,
+    "zipSha256": "4bec8777af2ff38e16a10194f8404329895ceb1c3de29a3508f33b3d8e411f5f",
+    "sha256Path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-CompletePortraits-20261022-181735.sha256",
+    "exe": {
+      "path": "MiniGame.exe",
+      "bytes": 666624,
+      "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+    },
+    "sourceScene": {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "bytes": 527771,
+      "sha256": "7bba4911e019036fd5dcd18465a8376ecf5a5c5c8f0a949a37d855f5ebd2196e"
+    },
+    "manifest": {
+      "path": "package-manifest.json",
+      "bytes": 29814,
+      "sha256": "431fb286afcfa4ab214388e9f425f6a06397db3ea74a18c59d175a95314de956"
+    },
+    "payloadFiles": 158,
+    "verifiedZipEntries": 174,
+    "verifiedZipFileEntries": 159,
+    "verifiedZipDirectoryEntries": 15,
+    "validation": {
+      "windowsX64Exe": true,
+      "monoBleedingEdgeIncluded": true,
+      "dataDirectoryIncluded": true,
+      "safePaths": true,
+      "allEntrySha256Matched": true,
+      "fileAndDirectoryInventoryMatched": true,
+      "sourceBuildUnchangedDuringPackaging": true,
+      "sourceSceneUnchangedDuringPackaging": true
+    }
+  },
+  "sourceHashes": [
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\TerminalView.cs",
+      "sha256": "c3b4f0b88999f95b42197ca80239dec08b8183a734f4a7e06ff5ace28866c26f",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\PatientSurveillanceFeed.cs",
+      "sha256": "8f96e2efbfccb17ea8f0309eb760bd811839a5a52ab89e91340dfa1b4b6159e8",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\TerminalPortraitPresenter.cs",
+      "sha256": "0e40bf017fa0be29333eb6d8c8465a29bdde9a8636cbd81f24ad9d9c98c45a99",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\DayZeroOpeningPlayerSmoke.cs",
+      "sha256": "db7cedeeac1576c63e75bb4de32aa9f2729fc41e27e911b4746a86e292dc481c",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Editor\\NamedPortraitImport.cs",
+      "sha256": "b9f671b1af1959840f3f2d5284b08d422a8391403a6d4b4f63124e15935908b4",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Editor\\PatientMonitorWindow.cs",
+      "sha256": "233b58daef9e9579898a8ff398eae8a6f690499a2ff8973b82b6550f2b43f5c9",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Editor\\AmberTerminalValidation.cs",
+      "sha256": "bca59767f737be5fd19db098d347d7473fb156d759d85c0941a84b0caf9ac78e",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Resources\\MiniGame\\PatientMonitorDefault.asset",
+      "sha256": "ccc8ef6297e286cb28ac169342318ffe7ed786efe3fcd322cd7ef423d2f9f862",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Scenes\\MainRoomCombined.unity",
+      "sha256": "7bba4911e019036fd5dcd18465a8376ecf5a5c5c8f0a949a37d855f5ebd2196e",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Content\\Campaign\\campaign.minigame.json",
+      "sha256": "55b76afdf3d7d083a63b4810f218222108473d53a825bf6ecc172e77af3c7260",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Content\\Campaign\\campaign.yarn",
+      "sha256": "e16d7ad11626d2b936fb5936a860bc0a9244686cf229c749269ee75d9f34a2cb",
+      "stagedMatches": true
+    }
+  ],
+  "pngHashes": [
+    {
+      "id": "AD01",
+      "sha256": "c4cdeff637a82cd621fc0609cffa2ae92ba82105bf83d2b1a79ce5354004bb5c",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "AD02",
+      "sha256": "2ba6bf21708baefbd359702894c0ab869bbb5d4910471e230fc172183907513d",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "AD03",
+      "sha256": "18f16a6a03a6a70b1cab1c76ca4ca244947df96106b0fcd3cc9d5ba32cf8e54f",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "AD04",
+      "sha256": "957db6613c6e05ed22ce6b23610c81ea2e1b3317da0a483f4ffdbd432e8cadff",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ML01",
+      "sha256": "5cd5bd3c22cd29961c462b7958d81a18746ea8f0e185e655e664555138f84e31",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ML02",
+      "sha256": "013a232e4e189183ccc4a99927c0f088a225db6259b310b601bde74516f05361",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ML03",
+      "sha256": "e23de3464bacf8189acd3f9747eebdc694fcabd1f5ad1e6d29887fdd92bfa095",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "D0_01",
+      "sha256": "99714af9ea02574514eea4583b8cf03ad01108918bc1cb09cdc6b81a2cd28a13",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "D0_02",
+      "sha256": "9b5f3320293e144e8d88791ccf4b43cb4cbc2f7a9b3eb7a1ccc7c9a5b3917141",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "D0_03",
+      "sha256": "01067e139e8dea374806cd1aadbb329fbece5546532fb5cb8f39ca606411cdbd",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ED01",
+      "sha256": "f618b3e14f0d3f8a6b2f70612a447ce944110c463a0399f9e395c3e9fa3d6562",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ED02",
+      "sha256": "d0a0bf205c333d7b8acf891e45c90e69243f829261eaa852e5dc11e79eb2d3f8",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ED03",
+      "sha256": "c3ac1c04e402e28b51a2258545c33d2770fe9d3ed20569c56454d1eeed6d81e2",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "ED04",
+      "sha256": "e765124f116eabfcd7fbb9e4f5cfe05d0ab2de48edaeca10c5100cee6cb27d7c",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "VV01",
+      "sha256": "961c01c8eec416da5b35b358b3f8f053d42f3832ba279f8771d29a1ab719014f",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "VV02",
+      "sha256": "ac6398cf3448952e09192ff3e56ca7152aa503a3a2ed06eecfd1e2e53f9834bc",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "VV03",
+      "sha256": "479ad263624353c14369dd5e29ba3fb0437432563b232cce33518c5718f87a4b",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "VV04",
+      "sha256": "e1487f798ad32c39bce8fd04a1a9b151068c1cf5cc6faa2f195acb9bd1c15e76",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "JN01",
+      "sha256": "ac3c276828d78c13195a3d0f4e705f7fee6de3846f6098b56ab15a093fa8e4a3",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "JN02",
+      "sha256": "88c49be341491baa4615dc265c673afdee5a6efa49c6176bbc55ceed71bfa94e",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "JN03",
+      "sha256": "c078206e6153c79f12d0d96b6fa80ac06a11d6fdfd045f2fef49adab3d015867",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    },
+    {
+      "id": "JN04",
+      "sha256": "34b90540b98af189792696e2d43a9b90bef1bddc8f39132a4da3b14b5be2b9f6",
+      "sourceUnchanged": true,
+      "stagedMatches": true
+    }
+  ],
+  "review": "No bugs found: source import/catalog aliases, per-pose framing, Logo-to-guide and empty portrait restoration",
+  "notes": [
+    "Primary Editor left running; all validation/build in isolated project",
+    "D0_02/D0_03 available in catalog and preview; no unrequested dialogue timing invented",
+    "Doorway JD supervisor remains a separate unchanged character",
+    "Current user night-lighting and authored collision states preserved",
+    "Obsolete isolated source files quarantined outside Assets",
+    "No core rule changes; dotnet checks not repeated"
+  ]
+}

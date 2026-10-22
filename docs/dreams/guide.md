@@ -2,17 +2,18 @@
 
 ## 当前每日梦境：McQueen 图片序列
 
-当前三晚已接入 McQueen 最新的 30 张画面，每晚按编号播放 10 张、每秒 1 张、时长 10 秒。Day1 鲸滩、Day2 倒悬花海、Day3 红黑审视分别使用递进的折射、畸变重影、CRT 撕裂与色差；可在“每日梦境”页调整“顺序画面”“画面叠化时长”“运动强度”“梦境后处理强度”。制作细节与资料来源见[图片序列说明](image-sequence-notes.md)。[verified: DreamSequenceDefault.asset Days；DreamSettingsWindow.DrawDailyDreams；DreamProjectionAnimation.shader]
+当前三晚各按编号播放 **10 张原画，共 5 秒，每张 0.5 秒**。Day1 鲸尸海滩、Day2 倒悬花海、Day3 受缚待审都使用静止画面和直接切图；不加运动、叠化、折射、重影、CRT 撕裂或色差，只有可调的轻微暗角，默认 `VignetteIntensity = 0.12`。原始素材来源见[图片序列说明](image-sequence-notes.md)，当前播放规则以本文为准。`[verified: UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset L16-L78；UnityProject/Assets/MiniGame/Editor/DreamSettingsWindow.cs L168-L174；UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L79-L93；UnityProject/Assets/MiniGame/Resources/DreamProjectionAnimation.shader L134-L140]`
 
-本轮预览：[Day1](../../Art/Dreams/Previews/day1-sequence-1fps.mp4)、[Day2](../../Art/Dreams/Previews/day2-sequence-1fps.mp4)、[Day3](../../Art/Dreams/Previews/day3-sequence-1fps.mp4)。下文较早的单图制作与视频记录保留历史身份；隐藏海滩结局的当前实现以[固定门口布景指南](cubemap-guide.md)为准。[verified: Previews/daily-sequences-manifest.json；cubemap-guide.md]
+**历史预览**：[Day1](../../Art/Dreams/Previews/day1-sequence-1fps.mp4)、[Day2](../../Art/Dreams/Previews/day2-sequence-1fps.mp4)、[Day3](../../Art/Dreams/Previews/day3-sequence-1fps.mp4)。这些旧视频保留原文件名，本轮没有把它们重录为新流程，不可据此验收当前节奏、原画显示或第二次床交互。隐藏海滩结局仍查阅[固定门口布景指南](cubemap-guide.md)，本轮每日梦境修改不扩大海滩范围。`[opinion]`
 
 从 [MainRoomCombined](../../UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity) 开始正式游戏；隐藏海上梦结局默认在房间内显示动态全景，原 [DreamEndingBeach](../../UnityProject/Assets/MiniGame/Scenes/DreamEndingBeach.unity) 保留为捕获源制作场景及兼容模式。菜单 **MiniGame → 梦境与结局** 分为“每日梦境”“海滩终局”“玩家反叛值”三个页签；音频文件和音量在 **MiniGame → 音频设置** 中选择。全景操作与更新流程见[动态全景指南](cubemap-guide.md)。`[verified: DreamSettingsWindow.cs DrawEnding；MiniGameSessionHost.cs LateUpdate；DreamCubemapSetup.cs BuildSource]`
 
 ## 策划操作
 
-- **每日梦境**：按 Day1 鲸滩、Day2 倒悬花海、Day3 红黑审视配置画面、音乐用途、播放时长与运动强度。当前序列每段 **10 秒**、每秒 **1 张图**，运动强度依次 **0.8/0.7/0.65**；镜头定位 **1.2 秒**、返回 **1 秒**、投影边缘留白 **0.15 米**。`[verified: DreamSequenceDefault.asset AlignSeconds/ReturnSeconds/ProjectionInset/Days]`
+- **每日梦境**：可调整“黑屏音乐时间”`BlackScreenSeconds`（默认 **5 秒**）、“起床前黑屏时间”`WakeBlackSeconds`（默认 **1 秒**），以及各晚画面、音乐用途、播放时长（默认 **5 秒**）和边角压暗强度（默认 **0.12**）。镜头定位默认 **1.2 秒**，在前面的黑屏内完成；返回默认 **1 秒**，投影边缘留白 **0.15 米**。`[verified: UnityProject/Assets/MiniGame/Editor/DreamSettingsWindow.cs L153-L175；UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset L16-L78；UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs L222-L237]`
+- `CrossfadeSeconds`、`MotionIntensity`、`PostIntensity` 仅保留旧资产兼容字段，已从面板隐藏，每日原画播放不读取它们。改播放时长会按画面张数均分每张停留时间；`VignetteIntensity = 0` 可关闭暗角。`[verified: UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs L10-L17；UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L79-L93；UnityProject/Assets/MiniGame/Resources/DreamProjectionAnimation.shader L134-L140]`
 - 点击 **预览 Day1/2/3 梦境** 查看墙面效果；工具栏可以暂停、停止预览。预览不推进剧情，停止后恢复镜头；正式演出进行中不会被预览替换。若没有接入，先打开 Combined，退出播放模式，再点击 **更新 Combined 梦境接入与墙面定位**。`[verified: DreamSettingsWindow.cs L102–110、L134–139、L320–340；DreamSequenceDirector.cs PreviewDay/StopInternal]`
-- **动画播放时保持原画清晰**：墙面动画实际播放期间临时跳过房间复古效果，进入镜头返回或停止预览后恢复原状态；无需到复古面板改参数，也不改动原图预览或组件启用选择。投影矩形内采用前景优先显示，避免吊灯等房间物体盖住动画；正常房间继续使用原复古设置。`[verified: DreamSequenceDirector.cs L151–173、L270–308；RetroScreenEffect.cs L14–28；DreamProjectionSurface.shader L6–8]`
+- **原画播放时保持画面清晰**：逐图播放期间临时跳过房间复古效果，镜头返回或停止时恢复此前的 bypass 状态；不用修改房间复古资产。播放相机保持固定，切换原画时不再变形或淡入淡出。`[verified: UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs L112-L114,L154-L179,L228-L231,L279-L281,L317-L319；UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L85-L92]`
 - “Combined 场景定位”可指定投影墙面、显示面、观影点及其位置朝向；用 **保存场景定位** 保存这些场景修改。播放模式和预览期间定位只读。`[verified: DreamSettingsWindow.cs L176–218]`
 - **海滩终局**：调整前进速度、床交互距离、躺下、漂流、流云及字幕。默认前进 **1.2 米/秒**、交互距离 **1.5 米**、躺下 **1.5 秒**；起伏幅度 **0.08 米**、周期 **8 秒**、摇摆 **1.5°**、漂流 **0.04 米/秒**、流云速度 **0.006**。点击 **打开海滩终局场景** 检查场景。`[verified: DreamSettingsWindow.cs L143–173；DreamSequenceDefault.asset WalkSpeed–CloudSpeed]`
 - 播放或暂停时，场景按钮显示 **退出播放并打开海滩**；点击后先结束播放，再打开场景。暂停本身不会退出 Play Mode。窗口顶部也提供同一快捷按钮，正常的场景保存提示仍会保留。`[verified: DreamSettingsWindow.cs RequestOpenBeach/CompletePendingBeachOpen/OpenBeach]`
@@ -33,7 +34,9 @@
 ## 正式流程与操作
 
 - **Day0**：启动显示监管者监控，点击拉远后完成教学；自动关机后直接亮床引导，不播放墙面梦境。关闭家具碰撞，保留地面、墙、玩家及床触发器；一次床交互播放闭眼后进入Day1，恢复碰撞前回到安全起床点。详见[开场指南](../opening/guide.md)。`[verified: PresentationEffects.DayZeroOpening/SleepTransition；GameRuntime.BeginNightDream/CompleteCue；BedtimeCollisionGate.Apply]`
-- **Day1–3**：工作结束并退出电脑后，亮床引导；玩家与床交互，完成闭眼过渡后才播放对应梦境。播放期间没有 Continue，不能用空格或 E 跳过；结束后自动推进到次日，或进入既有自我审查／结局分支。睡眠与梦境中的存档保留这次床交互，恢复不会要求重复上床。梦境素材后续继续由美术补充。`[verified: GameRuntime.TryInteract/CompleteCue/Save/Restore；DreamSequenceDirector.StartDay/Advance；DreamFlowRuntimeTests.BedStartsSleepBeforeAnyDreamAndRestoresAcrossBothPresentations]`
+- **Day1–3 第一次上床前**：工作结束并退出电脑后，保留普通夜景，床可交互。第一次按 E 上床，先用 **0.8 秒**闭眼，再进入 **5 秒**黑屏音乐；镜头定位在黑屏内完成，房间保持黑暗。`[verified: UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs L161-L174；src/MiniGame.Presentation/GameRuntime.cs L157-L166；UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs L499-L528；UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs L130-L135,L154-L164,L222-L226]`
+- **Day1–3 原画与返回**：黑屏后锁定镜头，10 张原画各停留 **0.5 秒**；播放期间输入仍由梦境演出占用。最后一张结束后，房间继续全黑，仅床的强聚光和光束已点亮；镜头用 **1 秒**转回后方床位，完成后停在 `AfterDream` 等待玩家。`[verified: UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L79-L93；UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs L168-L190,L233-L237；UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs L178-L189,L449-L456；src/MiniGame.Presentation/GameRuntime.cs L295-L314]`
+- **Day1–3 第二次上床后**：再次按 E 才开始 **0.8 秒**闭眼，随后保持全黑 **1 秒**，完成这次 Sleep cue 才进入次日或既有普通结局。梦境结束本身不会自动醒来；重复 E、旧 cue 和暂停中的完成回调不能提前推进日期。`[verified: UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs L499-L528；src/MiniGame.Presentation/GameRuntime.cs L117-L120,L163-L166,L282-L314,L358-L360；src/MiniGame.Presentation.Tests/DreamFlowRuntimeTests.cs L56-L126]`
 - **Day3 特殊分支**：优先级为**神父袭击 → KPI 失败 → 海上梦结局 → 普通结局**。达到反叛阈值且没有更高优先级条件时，梦后改为仅电脑引导；终端显示审查员本人实时监控，只有“净化”一个行动按钮。鼠标点击或 Enter 确认一次后进入海滩，不消耗患者净化配额，也不新建患者会谈。`[verified: GameRules.cs WithDreamFlow；GameSession.cs FinishDream/SelfPurify/ResolveEnding；TerminalView.cs HandleSelfReviewKey；SelfReviewMonitor.cs ApplyView]`
 - **隐藏海上梦结局**：房间内仅显示床，使用 **WASD** 自由行走、鼠标转头；到床边按 **E** 躺下，之后仰看流云，随床缓慢漂流起伏并显示字幕；按 **Esc** 暂停。动态海滩全景包围玩家；普通三天梦境仍采用各自的插画演出。关闭全景模式时保留原海滩场景只向前行走的兼容路径。`[verified: RoomDreamEnding.cs AdvanceExploration；DreamEndingController.cs Update/AdvanceSubtitles；MiniGameSessionHost.cs LateUpdate]`
 
@@ -41,11 +44,17 @@
 
 梦境流程使用 `Application.persistentDataPath/campaign-dream-save.json`；旧的 `campaign-save.json` 保留。房间与海滩由同一个持久会话持有游戏进度，存档同时记录放映／漂流阶段及房间镜头返回位置。Combined 可用 F5／F9，海滩从 Esc 暂停菜单保存或恢复；场景正在切换时须等切换结束。`[verified: MiniGameSessionHost.cs L25、L28–40、L69–142；MiniGameBootstrap.cs Update/Save/Load；DreamEndingController.cs BuildInterface]`
 
-**验证结果**：核心及表现层 .NET 测试 **293 项通过**；Unity PlayMode 按完整测试名去重 **49 项通过**，Editor 调参测试 **3 项通过**。六个梦境相关 Shader 无编译错误；Windows 构建成功，必要资源已打包，Player 成功启动正式梦境 Campaign。构建有 10 条既有包警告：1 条 Pipeline Player 未启用、9 条 Yarn 旧输入字段未使用。详细检查与证据路径见 [verification.json](verification.json)。`[verified: verification.json core/editor/player]`
+**本轮 .NET 验证**：核心 **114 项**、表现层 **233 项**，合计 **347 项通过，0 失败**。报告为 `src/MiniGame.Core.Tests/TestResults/dream-night-flow_net8.0_20261022183526.trx` 与 `src/MiniGame.Presentation.Tests/TestResults/dream-night-flow_net8.0_20261022183533.trx`。`[verified: 前一报告 L702；后一报告 L1416]`
 
-三段梦境采用附件插画加 Unity 实时运动；海滩使用 Blender 地形、原房间床和动态海水／天空。可编辑海滩 [Prefab](../../UnityProject/Assets/MiniGame/Art/DreamEnding/DreamEndingStage.prefab) 与 [Blender 源文件](../../Art/DreamEnding/DreamEndingBeach.blend) 已保存。`[verified: DreamAnimationStage.cs Render；DreamEndingSceneBuilder.cs BuildScene；verification.json authoring]`
+**本轮 Unity 验证仍在进行**；最终范围与结果待写入 `docs/dreams/night-flow-2026-10-22/verification.json`。当前不宣称新录像、Windows 新构建或人工视觉／听感验收通过。`[opinion]`
 
-查看录制：[Day1 鲸尸海滩](../../Art/Dreams/Previews/day1-whale-beach.mp4)、[Day2 无尽长路](../../Art/Dreams/Previews/day2-endless-road.mp4)、[Day3 受缚待审](../../Art/Dreams/Previews/day3-bound-judgment.mp4)、[海滩终局](../../Art/Dreams/Previews/beach-ending.mp4)、[无字幕流云](../../Art/Dreams/Previews/beach-clouds-preview.mp4)。这些是生产相机的固定步长画面，声音由同一配置音频后期混合；不代表实时性能或人工听感验收。Player 本轮检查范围为构建、资源包含和启动，完整跨场景流程由 Editor PlayMode 测试覆盖。`[verified: verification.json visual/audio/player.scope]`
+存档保留梦境黑屏、原画播放和镜头返回进度；暂停恢复 Returning 时立即恢复床聚光，暂停期间不等待渐亮。第二次床交互产生的 `AfterDream + Sleep` 检查点可以恢复，旧实例的 cue token 失效。闭眼与起床黑屏过渡按恢复后的 Sleep cue 重新演出，不能把它当作逐帧恢复。`[verified: UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs L240-L269；UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs L178-L189；src/MiniGame.Presentation/GameRuntime.cs L662,L750-L760；UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs L499-L528]`
+
+**历史验证**：[verification.json](verification.json) 记录于 **2026-10-19**，其中的 **293 项 .NET、49 项 PlayMode** 及旧构建／启动结果仅属于当时版本。`[verified: verification.json L3,L24,L71]`
+
+海滩的可编辑 [Prefab](../../UnityProject/Assets/MiniGame/Art/DreamEnding/DreamEndingStage.prefab) 与 [Blender 源文件](../../Art/DreamEnding/DreamEndingBeach.blend) 沿用既有交付；本轮不将每日静止原画改造扩展到海滩演出。`[opinion]`
+
+**更早的单图与海滩录制**：[Day1 鲸尸海滩](../../Art/Dreams/Previews/day1-whale-beach.mp4)、[Day2 无尽长路](../../Art/Dreams/Previews/day2-endless-road.mp4)、[Day3 受缚待审](../../Art/Dreams/Previews/day3-bound-judgment.mp4)、[海滩终局](../../Art/Dreams/Previews/beach-ending.mp4)、[无字幕流云](../../Art/Dreams/Previews/beach-clouds-preview.mp4)。这些是历史材料，不能作为本轮静止序列、节奏或操作流程的录像证据，也不替代实时性能或人工听感验收。`[opinion]`
 
 随仓库交付的预览文件与哈希见 [预览清单](../../Art/Dreams/Previews/manifest.json)；选定的录制、测试及构建报告见 [证据索引](evidence/index.json)。这些副本与原报告保持字节一致，原报告中的本机 Artifacts 路径作为历史来源保留；原始 PNG 帧与构建目录不纳入此交付。`[verified: Previews/manifest.json purpose/files；evidence/index.json purpose/files]`
 

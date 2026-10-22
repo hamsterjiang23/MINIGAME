@@ -7,6 +7,14 @@ namespace MiniGame.UnityHost
     public sealed class PatientMonitorProfile : ScriptableObject
     {
         [Serializable]
+        public sealed class PortraitPlacement
+        {
+            [InspectorName("立绘编号")] public string PortraitId;
+            [InspectorName("大小倍率"), Range(.1f, 2)] public float HeightMultiplier = 1;
+            [InspectorName("底部中心（画面比例）")] public Vector2 BottomCenter = new Vector2(.42f, .01f);
+        }
+
+        [Serializable]
         public sealed class Room
         {
             [InspectorName("人物 ID")] public string PatientId;
@@ -32,9 +40,18 @@ namespace MiniGame.UnityHost
         [InspectorName("信号噪点"), Range(0, .2f)] public float Noise = .035f;
         [InspectorName("人物轻微呼吸"), Range(0, .03f)] public float IdleMotion = .006f;
         [InspectorName("各人物房间")] public Room[] Rooms = Defaults();
+        [InspectorName("独立立绘落点")] public PortraitPlacement[] PortraitPlacements = Array.Empty<PortraitPlacement>();
         public int Revision { get; private set; }
         public void MarkChanged() => Revision++;
         private void OnValidate() => MarkChanged();
+
+        public PortraitPlacement FindPlacement(string portraitId)
+        {
+            if (PortraitPlacements != null)
+                foreach (var entry in PortraitPlacements)
+                    if (entry != null && string.Equals(entry.PortraitId, portraitId, StringComparison.Ordinal)) return entry;
+            return null;
+        }
 
         public Room Find(string id)
         {

@@ -295,6 +295,28 @@ namespace MiniGame.UnityHost.Tests
             finally { Object.Destroy(plate); }
         }
 
+        [UnityTest, Timeout(30000)]
+        public IEnumerator SeatedPosePlacementDoesNotMoveOtherExpressions()
+        {
+            profile.Backdrop = firstTexture;
+            profile.IdleMotion = 0;
+            firstSprite.name = "VV04";
+            secondSprite.name = "Standing";
+            profile.PortraitPlacements = new[] { new PatientMonitorProfile.PortraitPlacement
+                { PortraitId = "VV04", HeightMultiplier = .74f, BottomCenter = new Vector2(.625f, .15f) } };
+            feed.Show(profile.Rooms[0].PatientId, firstSprite, true);
+            var actor = feed.ActiveRoom.transform.parent.Find("Seated patient cutout").GetComponent<SpriteRenderer>();
+            var bottom = feed.ViewCamera.WorldToViewportPoint(new Vector3(actor.bounds.center.x, actor.bounds.min.y, actor.bounds.center.z));
+            Assert.That(bottom.x, Is.EqualTo(.625f).Within(.002f));
+            Assert.That(bottom.y, Is.EqualTo(.15f).Within(.002f));
+            Assert.That(actor.bounds.size.y, Is.EqualTo(profile.Rooms[0].ActorHeight * .74f).Within(.002f));
+            feed.Show(profile.Rooms[0].PatientId, secondSprite, true);
+            bottom = feed.ViewCamera.WorldToViewportPoint(new Vector3(actor.bounds.center.x, actor.bounds.min.y, actor.bounds.center.z));
+            Assert.That(bottom.x, Is.EqualTo(.42f).Within(.002f));
+            Assert.That(bottom.y, Is.EqualTo(.01f).Within(.002f));
+            yield return null;
+        }
+
         private void AssertLiveFeed(Sprite expectedSprite, string expectedId)
         {
             Assert.That(feed.CurrentSprite, Is.SameAs(expectedSprite));

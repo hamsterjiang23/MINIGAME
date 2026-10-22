@@ -3,7 +3,8 @@ Shader "MiniGame/Dream Projection Animation"
     Properties
     {
         _Artwork ("Artwork", 2D) = "black" {}
-        _ArtworkNext ("Next artwork", 2D) = "black" {}
+        _CleanMode ("Source frame mode", Float) = 0
+        _VignetteIntensity ("Source frame vignette", Range(0, 1)) = 0.12
     }
     SubShader
     {
@@ -17,8 +18,7 @@ Shader "MiniGame/Dream Projection Animation"
             #pragma target 3.0
             #include "UnityCG.cginc"
             sampler2D _Artwork;
-            sampler2D _ArtworkNext;
-            float _SequenceMode, _FrameBlend, _PostIntensity;
+            float _CleanMode, _VignetteIntensity;
             float _Day, _PlaybackSeconds, _Progress, _MotionIntensity;
             float hash(float2 p) { return frac(sin(dot(p, float2(127.1,311.7))) * 43758.5453); }
             float noise(float2 p)
@@ -128,80 +128,23 @@ Shader "MiniGame/Dream Projection Animation"
                 return color;
             }
 
-            float3 sequenceSample(float2 uv)
-            {
-                uv=clamp(uv,.001,.999);
-                return lerp(tex2D(_Artwork,uv).rgb,tex2D(_ArtworkNext,uv).rgb,_FrameBlend);
-            }
-
-            float3 memorySequence(float2 uv,float t)
-            {
-                float motion=_MotionIntensity;
-                float2 q=(uv-.5)/(1+(.012+.028*_Progress)*motion)+.5;
-                q.x+=sin(t*.19)*.0015*motion;
-                float post=_PostIntensity;
-                float tension=smoothstep(.05,.95,_Progress);
-                float a=(_Progress-.31)/.025,b=(_Progress-.66)/.022,c=(_Progress-.88)/.018;
-                float interruption=exp(-a*a)+exp(-b*b)+exp(-c*c);
-                float2 centered=q-.5;
-                float radius=dot(centered,centered);
-                float curve=(_Day<1.5 ? .035 : _Day<2.5 ? .11 : .085)*post*(.5+.5*tension);
-                q=centered*(1+curve*radius)/(1+curve*.55)+.5;
-                if(_Day<1.5)
-                {
-                    // Let the authored waves and gulls carry the scene; add only a low sea sway.
-                    float water=1-smoothstep(.45,.67,uv.y);
-                    q.y+=sin(uv.x*22-t*.65)*.0012*water*motion;
-                    q.x+=sin(uv.y*31-t*.8)*.004*water*post*(.3+.7*tension);
-                }
-                else if(_Day<2.5)
-                {
-                    // The inverted architecture drifts almost imperceptibly above the flower field.
-                    float angle=sin(t*.15)*(.002*motion+.011*post);
-                    float2 p=q-.5;
-                    q=float2(cos(angle)*p.x-sin(angle)*p.y,sin(angle)*p.x+cos(angle)*p.y)+.5;
-                    q.y+=sin(t*.23)*.0012*motion;
-                    q.y+=sin(uv.x*8+t*.4)*.003*post;
-                }
-                else
-                {
-                    q.x+=(sin(t*2.1)+.3*sin(t*3.7))*.00065*motion;
-                    float band=(uv.y-frac(t*.13))/.035;
-                    q.x+=exp(-band*band)*sin(t*17)*(.008+.025*interruption)*post;
-                    q.x+=(hash(float2(floor(uv.y*28),floor(t*7)))-.5)*.012*interruption*post;
-                }
-                float3 color=sequenceSample(q);
-                float2 split=(uv-.5)*(.003+.011*tension)*post*(_Day<1.5 ? .4 : _Day<2.5 ? .75 : 1);
-                color.r=sequenceSample(q+split).r;
-                color.b=sequenceSample(q-split).b;
-                float ghost=(_Day<1.5 ? .025 : .05+.14*interruption)*post;
-                color=lerp(color,sequenceSample(q+float2((.009+.025*interruption)*post,.002*sin(t*.3)*post)),saturate(ghost));
-                float2 blur=float2(.0025,.0015)*post;
-                float3 glow=(sequenceSample(q+blur)+sequenceSample(q-blur)
-                    +sequenceSample(q+float2(blur.x,-blur.y))+sequenceSample(q+float2(-blur.x,blur.y)))*.25;
-                color+=max(glow-.65,0)*.16*post;
-                if(_Day>2.5)
-                {
-                    color.r=lerp(color.r,sequenceSample(q+float2(.0007*motion,0)).r,.35*motion);
-                    color.b=lerp(color.b,sequenceSample(q-float2(.0007*motion,0)).b,.35*motion);
-                    color*=1-(.012*motion+.13*post)*(.5+.5*sin(uv.y*900+t*.6));
-                    color*=1-.22*interruption*post;
-                }
-                color*=1-smoothstep(.12,.5,radius)*.2*post;
-                color+=(hash(floor(uv*float2(1920,1080))+floor(t*18))-.5)*.014*post;
-                return color*(1+.009*sin(t*.8)*motion);
-            }
-
             fixed4 frag(v2f_img input) : SV_Target
             {
                 float2 uv = input.uv;
+                if (_CleanMode > .5)
+                {
+                    float4 source = tex2D(_Artwork, uv);
+                    float2 centered = uv * 2 - 1;
+                    float corners = smoothstep(.35, 1, dot(centered, centered) * .5);
+                    source.rgb *= 1 - corners * saturate(_VignetteIntensity);
+                    return source;
+                }
                 float t = _PlaybackSeconds;
-                float3 color = _SequenceMode>.5 ? memorySequence(uv,t)
-                    : _Day < 1.5 ? beach(uv,t) : _Day < 2.5 ? road(uv,t) : judgment(uv,t);
+                float3 color = _Day < 1.5 ? beach(uv,t) : _Day < 2.5 ? road(uv,t) : judgment(uv,t);
                 float vignette = saturate(16 * uv.x * (1-uv.x) * uv.y * (1-uv.y));
-                color *= lerp(_SequenceMode>.5 ? .92 : .84,1,pow(vignette,.2));
+                color *= lerp(.84,1,pow(vignette,.2));
                 float grain = hash(floor(uv * float2(1920,1080)) + floor(t * 12)) - .5;
-                color += grain * (_SequenceMode>.5 ? .004 : .012) * _MotionIntensity;
+                color += grain * .012 * _MotionIntensity;
                 return fixed4(max(color,0),1);
             }
             ENDCG

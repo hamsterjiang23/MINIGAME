@@ -7,13 +7,14 @@ namespace MiniGame.UnityHost
     public sealed class DreamDaySettings
     {
         [InspectorName("日期")] public int Day;
-        [Range(5, 180), InspectorName("播放时长（秒）")] public float Duration = 20;
+        [Range(5, 180), InspectorName("播放时长（秒）")] public float Duration = 5;
         [InspectorName("梦境画面")] public Texture2D Artwork;
         [InspectorName("顺序画面（按编号）")] public Texture2D[] Frames = Array.Empty<Texture2D>();
-        [Range(0, 2), InspectorName("画面叠化时长（秒）")] public float CrossfadeSeconds = .6f;
+        [HideInInspector] public float CrossfadeSeconds;
         [InspectorName("梦境音乐")] public MiniGameSound Music;
-        [Range(0, 2), InspectorName("运动强度")] public float MotionIntensity = 1;
-        [Range(0, 2), InspectorName("梦境后处理强度")] public float PostIntensity = 1;
+        [HideInInspector] public float MotionIntensity;
+        [HideInInspector] public float PostIntensity;
+        [Range(0, 1), InspectorName("边角压暗强度")] public float VignetteIntensity = .12f;
     }
 
     [Serializable]
@@ -28,6 +29,8 @@ namespace MiniGame.UnityHost
     public sealed class DreamSequenceProfile : ScriptableObject
     {
         [Header("墙面梦境"), InspectorName("启用正式梦境流程")] public bool EnableDreamFlow = true;
+        [Min(.1f), InspectorName("黑屏音乐时间（秒）")] public float BlackScreenSeconds = 5;
+        [Min(.1f), InspectorName("起床前黑屏时间（秒）")] public float WakeBlackSeconds = 1;
         [Min(.1f), InspectorName("镜头定位时间（秒）")] public float AlignSeconds = 1.2f;
         [Min(.1f), InspectorName("镜头返回时间（秒）")] public float ReturnSeconds = 1;
         [Range(0, .5f), InspectorName("投影边缘留白（米）")] public float ProjectionInset = .15f;
@@ -87,6 +90,8 @@ namespace MiniGame.UnityHost
 
         private void OnValidate()
         {
+            BlackScreenSeconds = Valid(BlackScreenSeconds, .1f, 30, 5);
+            WakeBlackSeconds = Valid(WakeBlackSeconds, .1f, 10, 1);
             AlignSeconds = Valid(AlignSeconds, .1f, 10, 1.2f);
             ReturnSeconds = Valid(ReturnSeconds, .1f, 10, 1);
             ProjectionInset = Valid(ProjectionInset, 0, .5f, .15f);
@@ -111,7 +116,8 @@ namespace MiniGame.UnityHost
             SubtitleDelay = Valid(SubtitleDelay, 0, 15, 2);
             if (Days != null) foreach (var day in Days) if (day != null)
             {
-                day.Duration = Valid(day.Duration, 5, 180, 20);
+                day.Duration = Valid(day.Duration, 5, 180, 5);
+                day.VignetteIntensity = Valid(day.VignetteIntensity, 0, 1, .12f);
                 day.MotionIntensity = Valid(day.MotionIntensity, 0, 2, 1);
                 day.CrossfadeSeconds = Valid(day.CrossfadeSeconds, 0, 2, .6f);
                 day.PostIntensity = Valid(day.PostIntensity, 0, 2, 1);

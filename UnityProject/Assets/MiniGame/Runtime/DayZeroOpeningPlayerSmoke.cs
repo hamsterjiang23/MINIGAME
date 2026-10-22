@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using MiniGame.Core;
 using MiniGame.Presentation;
+using MiniGame.Presentation.Authoring;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,10 +19,16 @@ namespace MiniGame.UnityHost
         private string folder;
         private float began, nextAction, pullbackStart = -1;
         private int lines;
-        private bool submitted, slept, done, success, normLogoPresent;
+        private bool submitted, slept, done, success, normLogoPresent, furnitureRestored;
         private Button pendingButton;
         private int pendingFrame;
         private readonly HashSet<string> captures = new HashSet<string>();
+        private readonly HashSet<string> expectedTutorialLines = new HashSet<string>(StringComparer.Ordinal);
+        private readonly Dictionary<Collider, (bool Enabled, bool IsTrigger, string Name, string Path)> collisionBefore
+            = new Dictionary<Collider, (bool Enabled, bool IsTrigger, string Name, string Path)>();
+        private Collider[] furnitureColliders, wallColliders;
+        private Collider floorCollider, doorCollider, bedCollider;
+        private WorldInteraction bed;
 
         [Serializable] private sealed class Report
         {
@@ -47,6 +54,17 @@ namespace MiniGame.UnityHost
             Directory.CreateDirectory(folder);
             host = FindObjectOfType<MiniGameBootstrap>();
             if (host == null) { Finish(false, "Missing game host"); return; }
+            try
+            {
+                var sourcePackage = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+                Require(sourcePackage != null && sourcePackage.PackageSource != null, "Missing active campaign source package");
+                expectedTutorialLines.UnionWith(DialoguePackageCompiler.Compile(sourcePackage.PackageSource.text).SourceNodes
+                    .Where(node => node.Kind == "line" && node.Headers.TryGetValue("patient", out var patient) && patient == "tutorial")
+                    .Select(node => node.Id));
+                Require(expectedTutorialLines.Count > 0, "Active campaign must define tutorial source lines");
+                CaptureCollisionBaseline();
+            }
+            catch (Exception error) { Finish(false, error.ToString()); return; }
             host.Screen.DialogueCharactersPerSecond = 0;
         }
 
@@ -99,24 +117,92 @@ namespace MiniGame.UnityHost
             {
                 Require(submitted, "Tutorial must finish before sleep");
                 Require(view.AllowedInteractions.SequenceEqual(new[] { InteractionTarget.Bed }), "Bed-only interactions");
-                lines = view.Transcript.Count(line => !line.IsPlayer && line.Completed);
-                Require(lines == 11 && view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify") == 1, "Nine intro, two reaction, one purification");
+                var completedLines = new HashSet<string>(view.Transcript
+                    .Where(line => !line.IsPlayer && line.Completed && !line.SourceNodeId.StartsWith("disposition:", StringComparison.Ordinal))
+                    .Select(line => line.SourceNodeId), StringComparer.Ordinal);
+                lines = completedLines.Count;
+                Require(completedLines.SetEquals(expectedTutorialLines), "Every authored tutorial source line must complete. Missing: "
+                    + string.Join(", ", expectedTutorialLines.Except(completedLines)) + "; unexpected: "
+                    + string.Join(", ", completedLines.Except(expectedTutorialLines)));
+                Require(view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify") == 1, "Exactly one tutorial purification");
                 var guidance = host.GetComponent<BedtimeGuidance>();
                 if (guidance.BeamStrength < .98f) return;
                 CaptureRoom("bed-only");
-                Require(host.gameObject.scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Collider>(true))
-                    .Where(collider => collider.transform.parent != null && collider.transform.parent.name == "Room collision"
-                        && (collider.name.StartsWith("B_HT01") || collider.name.StartsWith("B_obj_01") || collider.name.StartsWith("B_SM_")))
-                    .All(collider => collider.enabled && !collider.isTrigger), "Furniture stays solid after Day0");
-                Require(host.Player.GetComponent<CharacterController>().enabled, "Player collision retained");
+                RequireAuthoredCollision("Day0 bedtime");
+                RequireRoomBoundariesAndBed();
                 slept = host.Runtime.TryInteract(InteractionTarget.Bed).Accepted;
                 Require(slept && host.Runtime.GetView().Cue?.Kind == PresentationKind.Sleep, "Single sleep action");
             }
             if (slept && view.Game.Day == 1 && view.Cue == null)
             {
                 Require(view.Game.Phase == GamePhase.MorningInspection, "Day1 morning");
+                RequireAuthoredCollision("Day1 morning");
+                RequireRoomBoundariesAndBed();
+                furnitureRestored = furnitureColliders.All(collider => collider != null
+                    && collider.enabled == collisionBefore[collider].Enabled && collider.isTrigger == collisionBefore[collider].IsTrigger);
+                Require(furnitureRestored, "Day1 furniture must match its authored enabled and trigger states");
                 CaptureRoom("day1"); Finish(true, "Fresh campaign opening, native UI tutorial and one sleep completed");
             }
+        }
+
+        private void CaptureCollisionBaseline()
+        {
+            var roots = host.gameObject.scene.GetRootGameObjects();
+            var collisionRoot = roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Single(item => item.name == "Room collision");
+            var roomColliders = collisionRoot.GetComponentsInChildren<Collider>(true);
+            furnitureColliders = roomColliders.Where(collider => collider.transform.parent == collisionRoot
+                && (collider.name.StartsWith("B_HT01", StringComparison.Ordinal) || collider.name.StartsWith("B_obj_01", StringComparison.Ordinal)
+                    || collider.name.StartsWith("B_SM_", StringComparison.Ordinal))).ToArray();
+            Require(furnitureColliders.Length >= 5, "The authored room must expose its furniture obstruction colliders");
+            floorCollider = roomColliders.Single(collider => collider.name == "Reference floor collider" || collider.name == "Floor substrate collider");
+            var interactions = roots.SelectMany(root => root.GetComponentsInChildren<WorldInteraction>(true)).ToArray();
+            bed = interactions.Single(item => item.Target == InteractionTarget.Bed);
+            bedCollider = bed.GetComponent<Collider>();
+            doorCollider = interactions.Single(item => item.Target == InteractionTarget.Door).GetComponent<Collider>();
+            wallColliders = roots.SelectMany(root => root.GetComponentsInChildren<Collider>(true))
+                .Where(collider => collider.name.StartsWith("B_Wall__", StringComparison.Ordinal)
+                || collider.name == "B_Awall2" || collider.name.StartsWith("B_ReferenceDoorWall", StringComparison.Ordinal)
+                || collider.name.StartsWith("Front left wall", StringComparison.Ordinal) || collider.name.StartsWith("Front right wall", StringComparison.Ordinal)
+                || collider.name.StartsWith("Left wallpaper", StringComparison.Ordinal) || collider.name.StartsWith("Right wallpaper", StringComparison.Ordinal)).ToArray();
+            Require(wallColliders.Length > 0, "The authored room must expose its wall collision boundaries");
+            // Only retain the authored collision root, direct interaction colliders, and
+            // identified room walls. Runtime CRT/proxy primitives can disappear at frame end.
+            foreach (var collider in roomColliders.Concat(interactions.Select(item => item.GetComponent<Collider>()))
+                .Concat(wallColliders).Where(item => item != null && !(item is CharacterController)).Distinct())
+                collisionBefore.Add(collider, (collider.enabled, collider.isTrigger, collider.name, CollisionPath(collider.transform)));
+        }
+
+        private void RequireAuthoredCollision(string stage)
+        {
+            // Authoring can disable obsolete furniture colliders or mark ray targets as triggers.
+            // The current Day0 contract preserves these exact states through bedtime and waking.
+            foreach (var pair in collisionBefore)
+            {
+                Require(pair.Key != null, stage + ": authored collider was removed: " + pair.Value.Name + " at " + pair.Value.Path);
+                Require(pair.Key.enabled == pair.Value.Enabled && pair.Key.isTrigger == pair.Value.IsTrigger,
+                    stage + ": collider state changed for " + pair.Value.Name + " at " + pair.Value.Path);
+            }
+        }
+
+        private static string CollisionPath(Transform target)
+        {
+            var path = new Stack<string>();
+            for (var current = target; current != null; current = current.parent)
+                path.Push(current.name + "[" + current.GetSiblingIndex() + "]");
+            return string.Join("/", path);
+        }
+
+        private void RequireRoomBoundariesAndBed()
+        {
+            Require(floorCollider != null && floorCollider.enabled && !floorCollider.isTrigger && floorCollider.gameObject.activeInHierarchy,
+                "The room floor must support the player");
+            Require(doorCollider != null && doorCollider.enabled && !doorCollider.isTrigger && doorCollider.gameObject.activeInHierarchy,
+                "The door must remain a solid room boundary");
+            Require(wallColliders.Any(collider => collider != null && collider.enabled && !collider.isTrigger && collider.gameObject.activeInHierarchy),
+                "The authored solid walls must remain available");
+            Require(host.Player.GetComponent<CharacterController>().enabled, "Player collision retained");
+            Require(bed != null && bed.isActiveAndEnabled && bedCollider != null && bedCollider.enabled && bedCollider.gameObject.activeInHierarchy,
+                "The bed interaction collider must remain available");
         }
 
         private void Click(Button button)
@@ -180,7 +266,7 @@ namespace MiniGame.UnityHost
             var view = host != null ? host.Runtime.GetView() : null;
             var report = new Report { result = passed ? "passed" : "failed", detail = detail, unity = Application.unityVersion,
                 sourceLines = lines, day = view?.Game.Day ?? -1, singlePurification = submitted, bedOnly = slept,
-                furnitureRestored = passed, normLogoPresent = normLogoPresent, seconds = Time.realtimeSinceStartup - began };
+                furnitureRestored = furnitureRestored, normLogoPresent = normLogoPresent, seconds = Time.realtimeSinceStartup - began };
             File.WriteAllText(Path.Combine(folder, "verification.json"), JsonUtility.ToJson(report, true));
             Debug.Log("MINIGAME_OPENING_PLAYER_" + (passed ? "PASSED " : "FAILED ") + detail);
         }

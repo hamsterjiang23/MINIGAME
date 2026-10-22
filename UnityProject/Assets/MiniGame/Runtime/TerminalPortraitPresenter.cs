@@ -8,9 +8,11 @@ namespace MiniGame.UnityHost
         private Image previous;
         private Image current;
         private float blend = 1;
+        private bool visible = true;
         public bool Paused { get; set; }
 
         public void Initialize(Image before, Image after) { previous = before; current = after; }
+        public void SetVisible(bool value) { visible = value; Paint(); }
         public void Show(Sprite sprite)
         {
             if (current.sprite == sprite) return;
@@ -31,7 +33,8 @@ namespace MiniGame.UnityHost
         {
             previous.color = new Color(1, 1, 1, 1 - blend);
             current.color = new Color(1, 1, 1, blend);
-            if (blend >= 1) previous.enabled = false;
+            previous.enabled = visible && previous.sprite != null && blend < 1;
+            current.enabled = visible && current.sprite != null;
         }
     }
 }

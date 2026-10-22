@@ -26,7 +26,7 @@ namespace MiniGame.UnityHost
         private readonly RawImage selfMonitor;
         private readonly RawImage supervisor;
         private readonly TerminalSignalEffect supervisorSignal;
-        private readonly Texture2D supervisorTexture, openingLogo;
+        private readonly Texture2D openingLogo;
         private bool showingOpeningLogo;
         private readonly PortraitCatalog portraits;
         private readonly PatientSurveillanceFeed patientMonitor;
@@ -133,15 +133,17 @@ namespace MiniGame.UnityHost
             feed.transform.SetParent(livePortrait.transform, false); Position((RectTransform)feed.transform, 0, 0, 464, 261);
             patientMonitor = feed.GetComponent<PatientSurveillanceFeed>();
             patientMonitor.Initialize(feed.GetComponent<RawImage>(), Resources.Load<PatientMonitorProfile>("MiniGame/PatientMonitorDefault"));
+            patientMonitor.VisibilityChanged += showing => portraitPresenter.SetVisible(!showing);
             signals?.Attach(feed.GetComponent<RawImage>());
             cameraLabel = Label(video, "CameraLabel", "", 7, 8, 280, 16, 10, Dim);
             var supervisorObject = new GameObject("Day0SupervisorFeed", typeof(RectTransform), typeof(RawImage));
             supervisorObject.transform.SetParent(video, false); Position((RectTransform)supervisorObject.transform, 0, 0, 464, 261);
             supervisor = supervisorObject.GetComponent<RawImage>(); supervisor.raycastTarget = false;
             supervisorSignal = signals?.Attach(supervisor);
-            supervisorTexture = Resources.Load<Texture2D>("MiniGame/Day0Supervisor");
             openingLogo = Resources.Load<Texture2D>("MiniGame/NormLogo");
-            supervisor.texture = supervisorTexture;
+            // Keep the legacy object name for signal controls and opening captures.
+            // Only the opening logo uses this overlay; the tutorial uses the patient feed.
+            supervisor.texture = openingLogo;
             supervisorObject.SetActive(false);
             signalLoss = Panel(video, "MonitorSignalLoss", ColorOf("0e0b04"), 0, 0, 464, 261).gameObject;
             for (int i = 0; i < 22; i++) stripes.Add(Panel(signalLoss.transform, "Noise" + i, i % 3 == 0 ? Ink : Edge, 0, 7 + i * 11, 464, i % 2 == 0 ? 2 : 1));
@@ -222,10 +224,21 @@ namespace MiniGame.UnityHost
         public void SetOpeningLogo(bool visible)
         {
             showingOpeningLogo = visible;
-            supervisor.texture = visible ? openingLogo : supervisorTexture;
+            supervisor.texture = openingLogo;
             supervisorSignal?.SetLogoMode(visible);
-            if (visible) FitOpeningLogo();
-            else Position(supervisor.rectTransform, 0, 0, 464, 261);
+            supervisor.gameObject.SetActive(visible);
+            if (visible)
+            {
+                livePortrait.SetActive(false);
+                silhouette.SetActive(false);
+                cameraLabel.gameObject.SetActive(false);
+                FitOpeningLogo();
+            }
+            else
+            {
+                Position(supervisor.rectTransform, 0, 0, 464, 261);
+                if (current != null) Render(current, locked);
+            }
         }
         private void FitOpeningLogo()
         {
@@ -289,22 +302,22 @@ namespace MiniGame.UnityHost
             returnDirectory.interactable = !locked;
             answers.SetActive(true);
             bool live = !dir && !self && !archived && !view.LeavingTerminal;
-            livePortrait.SetActive(live); silhouette.SetActive(live && (portraits == null || portraits.Find(portraitId) == null));
-            cameraLabel.gameObject.SetActive(live);
+            bool showPatient = live && !showingOpeningLogo;
+            livePortrait.SetActive(showPatient); silhouette.SetActive(showPatient && (portraits == null || portraits.Find(portraitId) == null));
+            cameraLabel.gameObject.SetActive(showPatient);
             signalLostMessage.SetActive(archived);
             if (archived || view.LeavingTerminal || view.Cue?.Kind != PresentationKind.ExitTerminal) SetSignalDistortion(0);
             portraitPresenter.Paused = view.Paused;
-            if (live) UpdatePortrait();
+            if (showPatient) UpdatePortrait();
             bool tutorial = view.Game.Day == 0;
-            supervisor.gameObject.SetActive(tutorial && live);
-            if (tutorial) { livePortrait.SetActive(false); silhouette.SetActive(false); cameraLabel.gameObject.SetActive(false); }
+            supervisor.gameObject.SetActive(showingOpeningLogo && live);
             historyHeading.text = "对话 / " + round;
             RenderRoster(); RenderHistory();
             footer.interactable = !locked && !tutorial;
             footer.enabled = !tutorial;
             footer.GetComponent<Image>().raycastTarget = !tutorial;
             Footer(self ? "本人复核 / 确认净化" : dir ? enter.interactable ? "选择对象并确认，进入人员复核" : "当前对象不可再次接待" : archived ? "审查已结束 / 档案已关闭" : measure ? "会谈结束 / 选择处置命令并确认" : "按 Enter 或单击反白命令条继续",
-                dir ? "↑↓ 选择对象   双击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答   F3 对话记录");
+                dir ? "↑↓ 选择对象   双击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答");
             if (!dir && !self && ChoiceRoot.GetComponentsInChildren<Button>(false).Any(b => b.name.StartsWith("Reply-", StringComparison.Ordinal))) footerText.text = "选择应答并确认";
             Fit();
         }
@@ -323,11 +336,16 @@ namespace MiniGame.UnityHost
             portraitPresenter.Show(sprite);
             patientMonitor.SetCloseUp(false);
             patientMonitor.Show(current?.PresentedPatientId ?? current?.Game.CurrentPatientId, sprite, current != null && (current.Paused));
+            portraitPresenter.SetVisible(!patientMonitor.IsShowing);
         }
         private void RestorePresentation(RuntimeView view)
         {
             var last = view.Transcript.LastOrDefault(e => !e.IsPlayer && !e.IsNarration);
-            if (last != null) { Body.text = last.Text; Speaker.text = last.Speaker; sourceNodeId = last.SourceNodeId; portraitId = last.PortraitId; }
+            if (last != null)
+            {
+                Body.text = last.Text; Speaker.text = last.Speaker; sourceNodeId = last.SourceNodeId;
+                if (!string.IsNullOrEmpty(last.PortraitId)) portraitId = last.PortraitId;
+            }
         }
         public void SetNarration(string text) { NarrationBody.text = text; NarrationBody.gameObject.SetActive(true); Position(Continue.GetComponent<RectTransform>(), 0, 119, 248, 28); }
         public void ClearNarration() { NarrationBody.gameObject.SetActive(false); Position(Continue.GetComponent<RectTransform>(), 0, 0, 248, 28); }

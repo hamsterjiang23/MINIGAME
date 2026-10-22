@@ -1,0 +1,80 @@
+{
+    "passed": true,
+    "capture": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\DreamCubeWork\\Artifacts\\CrtUiOrientation\\physical-screen.png",
+    "graphicsDevice": "Direct3D11",
+    "description": "Four Image markers in the real 800x600 native source canvas, sampled on the front-facing physical CRT after the existing material and UV mapping.",
+    "sourceFramesBefore": 454,
+    "sourceFramesAfter": 455,
+    "screenViewport": {
+        "x": 0.10573720932006836,
+        "y": 0.08333349227905274,
+        "z": 0.8942623138427734,
+        "w": 0.9166668653488159
+    },
+    "samples": [
+        {
+            "expected": "TL-red",
+            "pixel": {
+                "x": 387.0,
+                "y": 679.0
+            },
+            "centerColor": {
+                "r": 1.0,
+                "g": 0.11372549086809159,
+                "b": 0.07450980693101883,
+                "a": 1.0
+            },
+            "matchingPixels": 121,
+            "sampledPixels": 121,
+            "passed": true
+        },
+        {
+            "expected": "TR-green",
+            "pixel": {
+                "x": 892.0,
+                "y": 679.0
+            },
+            "centerColor": {
+                "r": 0.13725490868091584,
+                "g": 1.0,
+                "b": 0.09019608050584793,
+                "a": 1.0
+            },
+            "matchingPixels": 121,
+            "sampledPixels": 121,
+            "passed": true
+        },
+        {
+            "expected": "BL-blue",
+            "pixel": {
+                "x": 387.0,
+                "y": 280.0
+            },
+            "centerColor": {
+                "r": 0.04313725605607033,
+                "g": 0.04313725605607033,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "matchingPixels": 121,
+            "sampledPixels": 121,
+            "passed": true
+        },
+        {
+            "expected": "BR-yellow",
+            "pixel": {
+                "x": 892.0,
+                "y": 280.0
+            },
+            "centerColor": {
+                "r": 1.0,
+                "g": 0.95686274766922,
+                "b": 0.04313725605607033,
+                "a": 1.0
+            },
+            "matchingPixels": 121,
+            "sampledPixels": 121,
+            "passed": true
+        }
+    ]
+}

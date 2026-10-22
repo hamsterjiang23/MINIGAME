@@ -45,6 +45,7 @@ namespace MiniGame.UnityHost
         private readonly Dictionary<Light, SceneLightSettings> nightLights = new Dictionary<Light, SceneLightSettings>();
         private SceneLightSettings spotlightDay;
         private bool specialIsolation;
+        private bool dreamBedReveal, bedOnlyTarget;
         private RuntimeView lastView;
         private RoomLightingProfile fullDayProfile, fullNightProfile;
         private readonly Dictionary<Light, SceneLightSettings> fullDayLights = new Dictionary<Light, SceneLightSettings>();
@@ -96,6 +97,7 @@ namespace MiniGame.UnityHost
             }
             runtime = game;
             awaitingDayZeroWake = false;
+            dreamBedReveal = false;
             runtime.Changed += SetTargets;
             SetTargets(game.GetView());
             // Checkpoint restoration derives presentation from the saved phase, without a flash of daylight.
@@ -159,14 +161,32 @@ namespace MiniGame.UnityHost
                     foreach (var player in root.GetComponentsInChildren<ApartmentPlayer>(true)) player.RestoreDayZeroWakePose();
             awaitingDayZeroWake = view.Game.Day == 0 && IsSleepOnly(view);
             lastView = view;
+            if (view.Game.Phase != GamePhase.Dream && view.Game.Phase != GamePhase.AfterDream)
+                dreamBedReveal = false;
+            bedOnlyTarget = view.Game.Day > 0 && (dreamBedReveal || view.Game.Phase == GamePhase.AfterDream);
             bool inDream = view.Game.Phase == GamePhase.Sleeping || view.Game.Phase == GamePhase.Dream;
             bool guide = IsSleepOnly(view) && (!view.TerminalOpen || view.LeavingTerminal);
             bool beforeDream = view.UsesDreamFlow && view.Game.Phase == GamePhase.Evening && (!view.TerminalOpen || view.LeavingTerminal);
             selfReviewTarget = view.UsesDreamFlow && view.Game.Phase == GamePhase.SelfReview;
-            isolationTarget = guide || inDream || beforeDream || selfReviewTarget ? 1 : 0;
-            beamTarget = guide ? 1 : 0;
-            specialIsolation = inDream || selfReviewTarget;
+            isolationTarget = guide || inDream || beforeDream || selfReviewTarget || bedOnlyTarget ? 1 : 0;
+            beamTarget = guide || bedOnlyTarget ? 1 : 0;
+            specialIsolation = inDream || selfReviewTarget || bedOnlyTarget;
             ApplyPreviewTargets();
+        }
+
+        /// <summary>Reveal the bed while a nightly dream returns its camera; the runtime still owns waking.</summary>
+        public void SetDreamBedReveal(bool reveal)
+        {
+            dreamBedReveal = reveal;
+            if (runtime == null) return;
+            var view = runtime.GetView();
+            SetTargets(view);
+            // Returning checkpoints can be restored while paused, before the transition clock can advance.
+            if (previewMode == RoomLightingPreviewMode.Automatic && view.Game.Day > 0
+                && (view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.AfterDream))
+            { Isolation = isolationTarget; BeamStrength = beamTarget; }
+            ApplyRoom();
+            if (atmosphere != null) atmosphere.SetVisualState(VisibleBeamStrength(), 0, view.Paused);
         }
 
         private void ApplyPreviewTargets()
@@ -174,7 +194,7 @@ namespace MiniGame.UnityHost
             if (previewMode == RoomLightingPreviewMode.Automatic) return;
             isolationTarget = previewMode == RoomLightingPreviewMode.Night ? 1 : 0;
             beamTarget = isolationTarget;
-            specialIsolation = selfReviewTarget = false;
+            specialIsolation = selfReviewTarget = bedOnlyTarget = false;
         }
 
         public void ConfigureLighting(RoomLightingController controller, RoomNightLightingSettings settings,
@@ -393,6 +413,8 @@ namespace MiniGame.UnityHost
 
         private float VisibleBeamStrength()
         {
+            if (bedOnlyTarget)
+                return spotlight != null && spotlight.enabled && spotlight.intensity > .001f ? BeamStrength : 0;
             if (UsesFullProfiles)
                 return spotlight != null && spotlight.enabled && spotlight.intensity > .001f && !specialIsolation ? 1 : 0;
             if (spotlight != null && (!spotlight.enabled || spotlight.intensity <= .001f)) return 0;
@@ -423,6 +445,13 @@ namespace MiniGame.UnityHost
                 blended.intensity = Mathf.Lerp(day.dayEnabled ? day.intensity : 0, nightIntensity, amount);
                 blended.dayEnabled = blended.intensity > 0 && (amount < .9999f && day.dayEnabled || amount > .0001f && !specialIsolation && night.dayEnabled);
                 lightingController.ApplyPresentedLight(item.Key, blended);
+            }
+            if (bedOnlyTarget)
+            {
+                // A disabled or dim ordinary-night bed light cannot suppress the dream's wake-up cue.
+                if (spotlightDay != null) RoomLightingController.ApplyLight(spotlight, spotlightDay);
+                spotlight.enabled = BeamStrength > .001f;
+                spotlight.intensity = spotIntensity * Mathf.SmoothStep(0, 1, BeamStrength);
             }
             var dayAmbient = fullDayProfile.AmbientLightColor;
             var nightAmbient = specialIsolation ? Color.black : fullNightProfile.AmbientLightColor;

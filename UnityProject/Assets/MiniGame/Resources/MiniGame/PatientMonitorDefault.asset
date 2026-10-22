@@ -21,6 +21,73 @@ MonoBehaviour:
   Saturation: 1
   Noise: 0.0088
   IdleMotion: 0.00392
+  PortraitPlacements:
+  - PortraitId: VV04
+    HeightMultiplier: 0.74
+    BottomCenter: {x: 0.625, y: 0.15}
+  - PortraitId: ML01
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: ML02
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: ML03
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: VV01
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: VV02
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: VV03
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: AD01
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: AD02
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: AD03
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: AD04
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: ED01
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: ED02
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: ED03
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: JN01
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: JN02
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: JN03
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.035}
+  - PortraitId: ED04
+    HeightMultiplier: 0.74
+    BottomCenter: {x: 0.625, y: 0.15}
+  - PortraitId: JN04
+    HeightMultiplier: 0.9
+    BottomCenter: {x: 0.54, y: 0.025}
+  - PortraitId: D0_01
+    HeightMultiplier: 0.95
+    BottomCenter: {x: 0.52, y: 0.025}
+  - PortraitId: D0_02
+    HeightMultiplier: 0.95
+    BottomCenter: {x: 0.52, y: 0.025}
+  - PortraitId: D0_03
+    HeightMultiplier: 0.95
+    BottomCenter: {x: 0.52, y: 0.025}
   Rooms:
   - PatientId: child
     Label: B-12

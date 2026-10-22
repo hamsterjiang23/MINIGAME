@@ -184,9 +184,9 @@ namespace MiniGame.UnityHost
             }
             activeToken = token;
             if (playing != null) { StopCoroutine(playing); playing = null; }
-            screen.SetTransitionLocked(false);
+            screen.SetTransitionLocked(cue?.Kind == PresentationKind.Dream);
             screen.EndDayZeroOpening();
-            screen.SetFade(0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
+            screen.SetFade(cue?.Kind == PresentationKind.Dream ? 1 : 0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
             screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
             if (cue == null)
             {
@@ -499,6 +499,7 @@ namespace MiniGame.UnityHost
         private IEnumerator SleepTransition(string token)
         {
             screen.SetTransitionLocked(true);
+            bool waking = runtime.GetView().Game.Phase == GamePhase.AfterDream;
             float elapsed = 0;
             while (elapsed < .8f && activeToken == token)
             {
@@ -510,7 +511,19 @@ namespace MiniGame.UnityHost
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
-            screen.SetTransitionLocked(false); screen.SetFade(0);
+            if (waking)
+            {
+                float hold = GetComponent<MiniGameBootstrap>()?.DreamProfile?.WakeBlackSeconds ?? 1;
+                if (float.IsNaN(hold) || float.IsInfinity(hold)) hold = 1;
+                float held = 0;
+                while (held < Mathf.Max(.1f, hold) && activeToken == token)
+                {
+                    if (!runtime.GetView().Paused) held += Time.unscaledDeltaTime;
+                    yield return null;
+                }
+                while (activeToken == token && runtime.GetView().Paused) yield return null;
+                if (activeToken != token) yield break;
+            }
             playing = null;
             runtime.CompleteCue(token);
         }

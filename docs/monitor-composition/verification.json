@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-22T16:43:54.0825670+08:00",
+  "scope": "Isolate concurrent patient monitor stages, mutually exclusive fallback, correct seated and half-body framing",
+  "reproduction": {
+    "report": "Artifacts/MonitorComposition/before.xml",
+    "failed": 2,
+    "crossFeedChangedPixels": 43379,
+    "singleTerminalFallbackWasOccluded": true
+  },
+  "playMode": {
+    "report": "Artifacts/MonitorComposition/final.xml",
+    "result": "Passed",
+    "passed": 15,
+    "failed": 0,
+    "testCases": "Artifacts/MonitorComposition/test-cases.json"
+  },
+  "visual": {
+    "vv04": "Artifacts/MonitorComposition/Final/monitor-vv04-native-feed.png",
+    "terminal": "Artifacts/MonitorComposition/Final/monitor-vv04-terminal.png",
+    "patients": [
+      "child-ML01",
+      "former-ruler-VV04",
+      "battlefield-doctor-ED01",
+      "diplomat-AD01",
+      "priest-JN01"
+    ],
+    "captureDirectory": "Artifacts/MonitorComposition/Final",
+    "status": "Self-reviewed native GPU frames; user visual acceptance pending"
+  },
+  "build": {
+    "result": "Succeeded",
+    "output": "F:/AAMINIGAME/MINIGAME\\Builds\\MonitorComposition\\MiniGame.exe",
+    "unity": "2022.3.23f1c1",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 11.5538338
+  },
+  "native": {
+    "report": "Artifacts/MonitorComposition/Player/verification.json",
+    "result": "Passed",
+    "replies": 6,
+    "removedFunctionKeys": true,
+    "automaticShutdown": true,
+    "seconds": 36.182861328125
+  },
+  "package": {
+    "schemaVersion": 1,
+    "packagedAt": "2026-10-22T16:42:07.271039+08:00",
+    "timezone": "Asia/Shanghai",
+    "buildDirectory": "F:\\AAMINIGAME\\MINIGAME\\Builds\\MonitorComposition",
+    "zipPath": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-MonitorComposition-20261022-164207.zip",
+    "zipBytes": 301419904,
+    "zipSha256": "983b7a207b9c83d3b75d0a5911345235f823e904b1a45c32c0e6f7a50598ec14",
+    "sha256Path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\Deliverables\\NORM-Windows-x64-Mono-MonitorComposition-20261022-164207.sha256",
+    "exe": {
+      "path": "MiniGame.exe",
+      "bytes": 666624,
+      "sha256": "cf8eb3f5e48064945700d3a5df65b57e246cd70335a67160065c21b6c70b9fbe"
+    },
+    "sourceScene": {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "bytes": 356833,
+      "sha256": "2ba7d7b508d443ac22032e05d8422e691a9ce2f2242110228004bbc4e80e01a9"
+    },
+    "manifest": {
+      "path": "package-manifest.json",
+      "bytes": 29634,
+      "sha256": "27b562a35771c6c18a339451f9e2fb8ccd33d09e29504be2400ec95638215dcf"
+    },
+    "payloadFiles": 157,
+    "verifiedZipEntries": 173,
+    "verifiedZipFileEntries": 158,
+    "verifiedZipDirectoryEntries": 15,
+    "validation": {
+      "windowsX64Exe": true,
+      "monoBleedingEdgeIncluded": true,
+      "dataDirectoryIncluded": true,
+      "safePaths": true,
+      "allEntrySha256Matched": true,
+      "fileAndDirectoryInventoryMatched": true,
+      "sourceBuildUnchangedDuringPackaging": true,
+      "sourceSceneUnchangedDuringPackaging": true
+    }
+  },
+  "sourceHashes": [
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\PatientSurveillanceFeed.cs",
+      "sha256": "8f96e2efbfccb17ea8f0309eb760bd811839a5a52ab89e91340dfa1b4b6159e8",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\PatientMonitorProfile.cs",
+      "sha256": "d392173bcbe34c6b570ae3a357489726e48e352ccb9a5c73e5cc11f35d6f9c6c",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\TerminalView.cs",
+      "sha256": "df289abbbcd89c837a895310d73fb7faa6fd973dc04e7937d688efeb19b40af1",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\TerminalPortraitPresenter.cs",
+      "sha256": "0e40bf017fa0be29333eb6d8c8465a29bdde9a8636cbd81f24ad9d9c98c45a99",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Runtime\\MiniGameScreen.cs",
+      "sha256": "e486ffc359fb45f615d12e0611683f3adb1998466b736cc8e120d382059707ce",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Resources\\MiniGame\\PatientMonitorDefault.asset",
+      "sha256": "05ef131bf6a0fea99ee8cc0e94eb8da913baa57302589719fa7d66808b304bfb",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Editor\\AmberTerminalValidation.cs",
+      "sha256": "a73912ba44abc16d099ab52ddaf990f650f2bfe69b16b62b7a384fc9180c3a23",
+      "stagedMatches": true
+    },
+    {
+      "path": "UnityProject\\Assets\\MiniGame\\Tests\\PlayMode\\PatientMonitorCompositionPlayModeTests.cs",
+      "sha256": "e1716ed992924cd10ed400d15668b163fbea17e8ea6c857173b26268770680e3",
+      "stagedMatches": true
+    }
+  ],
+  "review": "C1-C4 addressed; final read-only review: No bugs found",
+  "preserved": [
+    "Existing artwork and ward plate",
+    "Existing VV04 bed placement",
+    "Profile color/distortion values",
+    "Unrelated dirty workspace changes",
+    "Shared primary Editor process 46496"
+  ],
+  "limits": [
+    "Full game-session Editor hot reload not tested",
+    "No new character artwork generated",
+    "Visual style acceptance remains with user",
+    "No core rules changed; dotnet suite not repeated"
+  ]
+}

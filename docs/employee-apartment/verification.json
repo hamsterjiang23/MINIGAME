@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-22",
+  "scene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+  "sourceFile": "employee apartment1.0.blend",
+  "sourceSha256": "31d1e5b81f2a33afdbe8480ad8eb2e9533f2be555763c7b53464940b7c50cf94",
+  "sourceUnchanged": true,
+  "unityArt": "UnityProject/Assets/MiniGame/Art/EmployeeApartment",
+  "exportMeshes": 111,
+  "exportMaterials": 44,
+  "exportTextures": 89,
+  "corridorDoorAndCameraPreserved": true,
+  "missingMaterials": 0,
+  "blockedAnchors": [],
+  "overlappingSourcePostersDisabled": [
+    "B_平面.015",
+    "B_平面.022",
+    "B_平面.026"
+  ],
+  "playMode": {
+    "tests": [
+      {
+        "result": "Passed",
+        "name": "DayZeroShutdownReturnsBesideComputerWithStandingCollision"
+      },
+      {
+        "result": "Passed",
+        "name": "EntryStopsAtThresholdAndEPathReturnsBeforeClosingWithoutMovingTheBody"
+      },
+      {
+        "result": "Passed",
+        "name": "WorldExitPauseAndRestoreKeepLiveUiUntilTheDailyShutdown"
+      }
+    ],
+    "result": "Passed",
+    "failed": 0,
+    "passed": 3
+  },
+  "physicalCrtOrientation": "passed: red TL, green TR, blue BL, yellow BR",
+  "review": {
+    "resolved": true,
+    "finding": "Horizontal source UV handedness"
+  },
+  "blenderSourcesIgnored": true,
+  "scope": "Unity room art replacement and targeted Editor Play Mode validation; no new executable build",
+  "evidence": {
+    "preview": "preview.png",
+    "playMode": "Artifacts/EmployeeApartmentImport/playmode.xml",
+    "corridor": "corridor-preservation.json",
+    "crt": "crt-orientation.json"
+  }
+}

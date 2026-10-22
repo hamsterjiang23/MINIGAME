@@ -26,6 +26,8 @@ namespace MiniGame.UnityHost.Editor
         public static void BuildWindowsLightingContinuity() => BuildWindowsVariant("LightingContinuity", false);
         public static void BuildWindowsWorldDialogue() => BuildWindowsVariant("WorldDialogue", false);
         public static void BuildWindowsBedtimeParticles() => BuildWindowsVariant("BedtimeParticles", false);
+        public static void BuildWindowsMonitorComposition() => BuildWindowsVariant("MonitorComposition", false);
+        public static void BuildWindowsCompletePortraits() => BuildWindowsVariant("CompletePortraits", false);
         public static void BuildWindowsPixelSettings() => BuildWindowsVariant("PixelSettings", false);
         private static void BuildWindowsVariant(string variant, bool development = true)
         {

@@ -40,6 +40,12 @@ namespace MiniGame.UnityHost.Tests
             yield return new WaitForSecondsRealtime(2);
             AssertPersistentUi(host, surface, firstFrame);
             AssertHiddenUiCannotBePicked(host);
+            var orientationProbe = typeof(MiniGameBootstrap).Assembly.GetType("MiniGame.UnityHost.CrtUiOrientationProbe");
+            Assert.That(orientationProbe, Is.Not.Null);
+            string orientationPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,
+                "../../Artifacts/CrtUiOrientation/physical-screen.png"));
+            Assert.That((bool)orientationProbe.GetMethod("CaptureAndVerify").Invoke(null, new object[] { host, surface, orientationPath }),
+                Is.True, "The native UI must remain correctly oriented on the authored room monitor mesh.");
 
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             yield return new WaitForSecondsRealtime(.3f);

@@ -154,9 +154,10 @@ namespace MiniGame.UnityHost.Editor
         {
             EditorGUILayout.LabelField("墙面放映", EditorStyles.boldLabel);
             Draw(settings, "EnableDreamFlow");
+            Draw(settings, "BlackScreenSeconds"); Draw(settings, "WakeBlackSeconds");
             Draw(settings, "AlignSeconds"); Draw(settings, "ReturnSeconds"); Draw(settings, "ProjectionInset");
             Draw(settings, "Audio");
-            EditorGUILayout.HelpBox("Day0 完成教学后只开启床引导。Day1–3 上床闭眼后播放对应梦境；顺序画面按编号均分播放时长，末段保持最后一张。", MessageType.None);
+            EditorGUILayout.HelpBox("Day0 保持一次睡眠。Day1–3：上床 → 黑屏音乐 → 锁定画面逐帧播放 → 转向聚光床 → 再次交互后黑屏起床。画面只允许轻微暗角。", MessageType.None);
             var entries = settings.FindProperty("Days");
             for (int i = 0; i < entries.arraySize; i++)
             {
@@ -169,10 +170,8 @@ namespace MiniGame.UnityHost.Editor
                     Relative(day, "Duration", "播放时长（秒）");
                     Relative(day, "Artwork", "画面资源");
                     Relative(day, "Frames", "顺序画面（按编号）");
-                    Relative(day, "CrossfadeSeconds", "画面叠化时长（秒）");
                     Relative(day, "Music", "音乐用途");
-                    Relative(day, "MotionIntensity", "运动强度");
-                    Relative(day, "PostIntensity", "梦境后处理强度");
+                    Relative(day, "VignetteIntensity", "边角压暗强度");
                     if (GUILayout.Button("预览 Day" + number + " 梦境")) StartPreview(number);
                 }
             }
