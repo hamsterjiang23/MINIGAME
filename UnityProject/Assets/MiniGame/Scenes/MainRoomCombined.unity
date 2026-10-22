@@ -506,6 +506,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &67390283
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -652,6 +653,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &94361623
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -741,6 +743,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &113661432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -867,6 +870,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &130134540
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1004,6 +1008,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &141184246
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1133,6 +1138,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &220936805
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1286,6 +1292,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &253306927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1406,6 +1413,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &275644147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1511,6 +1519,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &278462361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1721,6 +1730,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &367092435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1779,7 +1789,7 @@ Transform:
   m_GameObject: {fileID: 376460842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.25, y: 0.9, z: 0.66533}
+  m_LocalPosition: {x: -4.532, y: 0.9, z: 0.66533}
   m_LocalScale: {x: 0.66, y: 0.88, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1866,6 +1876,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &376460847
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1954,6 +1965,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &392914097
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2069,6 +2081,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &461011944
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2157,6 +2170,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &498018420
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2500,6 +2514,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &557803730
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2622,6 +2637,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &573268947
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2706,6 +2722,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &578041482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2810,6 +2827,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &590850803
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3161,6 +3179,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &628147893
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3318,6 +3337,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &680874769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3423,6 +3443,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &691080347
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3527,6 +3548,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &702153517
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3710,6 +3732,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &735480064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3819,6 +3842,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &776001150
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3903,6 +3927,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &782598307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4038,6 +4063,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &811268382
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4126,6 +4152,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &850354191
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4246,6 +4273,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &882746296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4382,6 +4410,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &893733749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4561,6 +4590,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &945908683
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4644,6 +4674,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &946458201
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5448,6 +5479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: ac53fcb818485fc45baa8f74aeb84a3f, type: 2}
+  followRoomLighting: 1
   effectShader: {fileID: 4800000, guid: b1623267a76c441ca0d8d41b01b96418, type: 3}
 --- !u!114 &1041216285
 MonoBehaviour:
@@ -5543,6 +5575,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1062037095
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5626,6 +5659,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1072273263
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5710,6 +5744,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1079528861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5768,7 +5803,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
-  m_Intensity: 0.0028679192
+  m_Intensity: 0.0016318461
   m_Range: 4.27
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5908,6 +5943,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1091801176
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5991,6 +6027,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1101900538
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6129,15 +6166,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134948997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4543219, y: 0.74212, z: 0.66533}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -7.627, y: 0.415, z: -0.902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1241403466}
   - {fileID: 557803728}
   m_Father: {fileID: 1716076763}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1134948999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6253,6 +6290,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1145183663
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6423,6 +6461,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1241403468
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6511,6 +6550,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1275297254
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6773,6 +6813,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1295360523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6835,13 +6876,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410420548}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8358, y: 0.9, z: 0.66533}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 2.051, y: 0.9, z: -0.039}
   m_LocalScale: {x: 0.66, y: 0.88, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 317562795}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1410420550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6923,6 +6964,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1410420553
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7006,6 +7048,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1415701205
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7089,6 +7132,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1446652309
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7276,6 +7320,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1500466076
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7470,6 +7515,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1527904462
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7554,6 +7600,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1550820938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7785,6 +7832,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1591280848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7874,6 +7922,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1597292136
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8009,6 +8058,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1631491463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8113,6 +8163,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1633772173
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8201,6 +8252,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1665522942
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8302,6 +8354,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1676558479
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8380,7 +8433,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.62, g: 0.72, b: 0.8, a: 1}
-  m_Intensity: 0.10242
+  m_Intensity: 0.05827698
   m_Range: 4.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8505,6 +8558,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1710098517
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8625,6 +8679,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1743645391
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8783,6 +8838,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1761621303
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8867,6 +8923,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1778682657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9108,6 +9165,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1817435247
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9191,6 +9249,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1818366258
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9275,6 +9334,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1818629551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9380,6 +9440,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1825529438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9624,6 +9685,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &1856314295
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9838,6 +9900,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &1921977621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10067,6 +10130,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2005775838
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10181,6 +10245,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2009915031
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10265,6 +10330,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &2025259198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10430,6 +10496,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &2047428415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10491,7 +10558,7 @@ Transform:
   m_GameObject: {fileID: 2073092253}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.554322, y: 1.14212, z: 0.66533}
+  m_LocalPosition: {x: -2.089, y: 0.841, z: 0.66533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10620,6 +10687,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &2091119321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10724,6 +10792,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2104156217
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10812,6 +10881,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2109024808
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10896,6 +10966,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!65 &2114621499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10950,7 +11021,7 @@ Transform:
   m_GameObject: {fileID: 2121203014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: -0.67288, z: -0.45}
+  m_LocalPosition: {x: 1.55, y: -0.67288, z: -1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11054,6 +11125,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2129632462
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11217,6 +11289,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2140603898
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11300,6 +11373,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+  m_PreviewFP16: 0
 --- !u!33 &2143338665
 MeshFilter:
   m_ObjectHideFlags: 0
