@@ -23,6 +23,7 @@ namespace MiniGame.UnityHost
         }
 
         [InspectorName("开启房间监控")] public bool Enabled = true;
+        [InspectorName("病房背景（留空使用三维病房）")] public Texture2D Backdrop;
         [InspectorName("画面宽度"), Range(346, 1600)] public int Width = 928;
         [InspectorName("画面高度"), Range(140, 800)] public int Height = 522;
         [InspectorName("监控帧率"), Range(1, 30)] public int FramesPerSecond = 12;
