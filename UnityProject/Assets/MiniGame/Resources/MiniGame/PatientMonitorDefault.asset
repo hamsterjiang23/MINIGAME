@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: PatientMonitorDefault
   m_EditorClassIdentifier: 
   Enabled: 1
+  Backdrop: {fileID: 2800000, guid: 30fa8c5610aaf724aa13e649201bf4a6, type: 3}
   Width: 928
   Height: 522
   FramesPerSecond: 24
-  Exposure: 1.7
-  Saturation: 0.874
+  Exposure: 1
+  Saturation: 1
   Noise: 0.0088
   IdleMotion: 0.00392
   Rooms:

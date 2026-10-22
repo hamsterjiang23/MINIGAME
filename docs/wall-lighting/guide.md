@@ -4,6 +4,10 @@
 
 此前完整Windows x64 Mono交付包及历史验证见[交付记录](latest-mono.json)。`[verified: latest-mono.json]`
 
+## 门缝透红光
+
+2026-10-22：门框增加完整实体止口与门槛，遮挡关门时的四周运行间隙；几何保持在门扇室内侧6毫米以外，不随门扇转动。走廊红灯使用完整阴影（Strength=1）、Bias=0.005、Normal Bias=0.01，昼夜配置及重建默认值保持一致，红灯亮度/颜色/范围保留。关门的明显红缝已解除，开门后正常显示走廊红光。详情及回归边界见[验证记录](door-seal-verification.json)，[修复前](previews/door-seal-before.png)、[白天关门](previews/door-seal-day.png)、[夜间关门](previews/door-seal-night.png)、[夜间开门](previews/door-seal-open.png)。`[verified: door-seal-verification.json geometry、lighting、rendering]`
+
 ## 墙顶与窗旁漏光
 
 2026-10-22：两侧墙顶亮线及窗旁断续竖线均在WindowLight照射下出现；阴影Bias/Normal Bias归零、双面投影没有解除墙顶亮线。最终采用完整封闭几何：天花板上方新增20厘米厚、四周延伸20厘米的实体屋顶，距原内饰平面2毫米以避免重合；窗墙四片替换为共用室内平面的实体Cube，向室外增加20厘米厚度，原窗洞Y/Z边界和原材质保留。五个实体均正常渲染、投射并接收阴影，没有使用ShadowsOnly。`[verified: solid-shell-verification.json controls、geometry]`

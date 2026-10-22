@@ -66,7 +66,7 @@ namespace MiniGame.UnityHost.Editor
                 importer.SetTextureSettings(textureSettings);
                 importer.SaveAndReimport();
                 foreach (var sprite in AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>())
-                    replacements[sprite.name] = sprite;
+                    replacements[sprite.name] = FindRemadeSprite(sprite.name) ?? sprite;
             }
             if (updateCatalog && replacements.Count > 0)
             {
@@ -134,6 +134,9 @@ namespace MiniGame.UnityHost.Editor
         public static Sprite FindRemadeSprite(string id)
         {
             if (string.IsNullOrEmpty(id)) return null;
+            var named = AssetDatabase.LoadAllAssetsAtPath("Assets/MiniGame/Art/Characters/NamedPortraits/" + id + ".png")
+                .OfType<Sprite>().FirstOrDefault();
+            if (named != null) return named;
             string prefix = id.StartsWith("D0_", StringComparison.Ordinal) ? "D0" : id.Substring(0, Math.Min(2, id.Length));
             return AssetDatabase.LoadAllAssetsAtPath(ArtPath + "/" + prefix + "-sheet.png")
                 .OfType<Sprite>().FirstOrDefault(sprite => sprite.name == id);
@@ -211,10 +214,17 @@ namespace MiniGame.UnityHost.Editor
             }
             scroll = EditorGUILayout.BeginScrollView(scroll);
             serialized.Update();
-            foreach (string property in new[] { "Enabled", "Width", "Height", "FramesPerSecond", "Exposure", "Saturation", "Noise", "IdleMotion" })
+            foreach (string property in new[] { "Enabled", "Backdrop", "Width", "Height", "FramesPerSecond", "Exposure", "Saturation", "Noise", "IdleMotion" })
                 EditorGUILayout.PropertyField(serialized.FindProperty(property));
             EditorGUILayout.Space();
-            EditorGUILayout.PropertyField(serialized.FindProperty("Rooms").GetArrayElementAtIndex(roomIndex), new GUIContent(labels[roomIndex]), true);
+            var roomProperty = serialized.FindProperty("Rooms").GetArrayElementAtIndex(roomIndex);
+            if (serialized.FindProperty("Backdrop").objectReferenceValue == null)
+                EditorGUILayout.PropertyField(roomProperty, new GUIContent(labels[roomIndex]), true);
+            else
+            {
+                foreach (string property in new[] { "PatientId", "Label", "ActorHeight", "ActorOffset" })
+                    EditorGUILayout.PropertyField(roomProperty.FindPropertyRelative(property));
+            }
             if (serialized.ApplyModifiedProperties())
             {
                 profile.MarkChanged();

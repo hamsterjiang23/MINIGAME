@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-22",
+  "unity": "2022.3.23f1c1",
+  "geometry": {
+    "asset": "UnityProject/Assets/MiniGame/Generated/ReferenceRoom/Entrance frame.asset",
+    "solidDoorStopAndThreshold": true,
+    "leafOverlapMetres": 0.02,
+    "closedLeafDepthClearanceMetres": 0.006,
+    "rebateDepthMetres": 0.04,
+    "doorLeafHingeAndAnglesUnchanged": true,
+    "repeatBuildStable": true,
+    "oneFilterRendererCollider": true,
+    "vertices": 120,
+    "triangles": 60
+  },
+  "lighting": {
+    "target": "Corridor red spotlight",
+    "shadowStrength": 1,
+    "shadowBias": 0.005,
+    "shadowNormalBias": 0.01,
+    "sceneDayNightAndGeneratorSynchronized": true,
+    "positionColorIntensityRangeAndAnglesUnchanged": true
+  },
+  "controls": {
+    "baselineGapRayTest": "Failed before adding the solid rebate",
+    "biasZeroWithoutRebate": "Did not close visible operating gaps",
+    "rebateWithOldBias": "Visible red edge remained",
+    "rebateWithSmallBias": "Daytime red edge suppressed",
+    "shadowStrengthPoint85": "Nighttime red spill remained",
+    "shadowStrengthOne": "Nighttime closed-door red spill suppressed; open doorway still red"
+  },
+  "rendering": {
+    "scope": "Isolated Unity 2022 EditMode Camera.Render with scene day/night profiles; no gameplay UI or retro post-processing",
+    "gpuReport": "reports/door-seal-gpu.json",
+    "metric": "Whole-frame positive red-channel excess over green/blue from red-lamp-on minus red-lamp-off, counted when >8/255. This is a targeted rendering comparison, not a performance measurement.",
+    "samples": [
+      {
+        "name": "before-day-closed-centre",
+        "redPixels": 12204,
+        "maximumRedDelta": 68
+      },
+      {
+        "name": "after-day-closed-left",
+        "redPixels": 11,
+        "maximumRedDelta": 23
+      },
+      {
+        "name": "after-day-closed-centre",
+        "redPixels": 0,
+        "maximumRedDelta": 8
+      },
+      {
+        "name": "after-day-closed-right",
+        "redPixels": 7,
+        "maximumRedDelta": 15
+      },
+      {
+        "name": "after-day-open",
+        "redPixels": 135506,
+        "maximumRedDelta": 170
+      },
+      {
+        "name": "after-night-closed",
+        "redPixels": 10,
+        "maximumRedDelta": 12
+      },
+      {
+        "name": "after-night-open",
+        "redPixels": 192212,
+        "maximumRedDelta": 226
+      }
+    ],
+    "before": "previews/door-seal-before.png",
+    "dayClosed": "previews/door-seal-day.png",
+    "nightClosed": "previews/door-seal-night.png",
+    "nightOpen": "previews/door-seal-open.png"
+  },
+  "validation": {
+    "playModePassed": 16,
+    "playModeFailed": 0,
+    "doorReport": "reports/door-seal-playmode.xml",
+    "cameraReport": "reports/door-seal-camera-regression.xml",
+    "initialRegression": "reports/door-seal-initial-regression.xml",
+    "cameraFollowup": "Restricted Day0 canonical return to actual Review+BootRequired+EnterTerminal opening; ordinary Directory/Review checkpoints retain their explicit return poses",
+    "review": "One checkpoint guard issue confirmed and fixed; final read-only review found no additional bugs",
+    "combinedRun": "One earlier mixed run stopped progressing and was cancelled; required tests passed in split runs",
+    "nativePlayerBuildRun": false
+  },
+  "sourceFiles": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/ReferenceDoorFrameBuilder.cs",
+      "sha256": "e2f62ec991882364b9e831e307676935d1e510e359fd9fd66a4fc5e0c5d7d5cd"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/ReferenceCorridorBuilder.cs",
+      "sha256": "9ad36eee1d7aba68230f584abb3f44ed9a859ad4351795a642ef8cd1dd0558aa"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Generated/ReferenceRoom/Entrance frame.asset",
+      "sha256": "51f51e9b480b8bf4ac87192213ec6f042fea378d8b5c13ab703cd61caadb7618"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/RoomLightingDay.asset",
+      "sha256": "3f38bf2cd94255c682fcd1d1a021c0e3824754c41ddc982973992e593cb8a2e8"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/RoomLightingNight.asset",
+      "sha256": "bbe7f0e5cb87e31320e7d13051f45db75618edf1e7d036df558931e2255feb3b"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "2ba7d7b508d443ac22032e05d8422e691a9ce2f2242110228004bbc4e80e01a9"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "760754f7484c010d44d181d5f36a70d4362830f78d85cde44ec95bed08cea251"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DoorFrameRenderingPlayModeTests.cs",
+      "sha256": "b332ab8c77e01e86439f3a360568c6e6e1c730d5367e1b3dcd038750cda2792e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DoorViewPlayModeTests.cs",
+      "sha256": "f6bb0a603f28e036c383c6b99b0d0089a7f1b0a7e9c8d6850bd1624fc341688b"
+    }
+  ]
+}

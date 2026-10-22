@@ -1,0 +1,77 @@
+{
+  "portraits": [
+    {
+      "id": "ML01",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/ML01.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:314.00, y:232.00, width:720.00, height:1289.00)"
+    },
+    {
+      "id": "ML02",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/ML02.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:93.00, y:105.00, width:865.00, height:1289.00)"
+    },
+    {
+      "id": "ML03",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/ML03.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:0.00, y:152.00, width:865.00, height:1289.00)"
+    },
+    {
+      "id": "VV01",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/VV01.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:84.00, y:118.00, width:940.00, height:1527.00)"
+    },
+    {
+      "id": "VV02",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/VV02.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:153.00, y:97.00, width:940.00, height:1520.00)"
+    },
+    {
+      "id": "VV03",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/VV03.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:0.00, y:0.00, width:380.00, height:900.00)"
+    },
+    {
+      "id": "VV04",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/VV04.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:58.00, y:0.00, width:552.00, height:679.00)"
+    },
+    {
+      "id": "AD01",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/AD01.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:0.00, y:66.00, width:1171.00, height:1844.00)"
+    },
+    {
+      "id": "AD02",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/AD02.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:111.00, y:29.00, width:1081.00, height:1699.00)"
+    },
+    {
+      "id": "AD03",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/AD03.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:66.00, y:28.00, width:293.00, height:857.00)"
+    },
+    {
+      "id": "AD04",
+      "path": "Assets/MiniGame/Art/Characters/NamedPortraits/AD04.png",
+      "reimportKeepsOverride": true,
+      "rect": "(x:193.00, y:49.00, width:555.00, height:1380.00)"
+    }
+  ],
+  "background": "Assets/PMSAmberTerminal/Art/Ward_Original.jpg",
+  "nativeCompilation": "zero errors",
+  "playModeTests": "PatientSurveillancePlayModeTests: 6 passed / 6",
+  "sourceBytes": "11/11 SHA256 exact",
+  "preview": "11 native camera renders; preview/",
+  "playerBuild": "not run",
+  "validationLimits": "Isolated native monitor renders and PlayMode tests; no full campaign walkthrough"
+}

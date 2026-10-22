@@ -17,6 +17,25 @@ namespace MiniGame.UnityHost.Tests
         private const float PlaneTolerance = .0001f;
         private const float OverlapAreaTolerance = .000001f;
 
+        [UnityTest, Timeout(15000)]
+        public IEnumerator ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening()
+        {
+            yield return SceneManager.LoadSceneAsync("MainRoomCombined");
+            yield return null;
+            var frame = GameObject.Find("Entrance frame").transform;
+            var solid = frame.GetComponent<MeshCollider>();
+            Physics.SyncTransforms();
+            foreach (var point in new[] { new Vector2(-.72f, 1.2f), new Vector2(.72f, 1.2f),
+                new Vector2(0, 2.47f), new Vector2(0, .008f) })
+            {
+                var ray = new Ray(frame.TransformPoint(new Vector3(point.x, point.y, -.25f)), frame.forward);
+                Assert.That(solid.Raycast(ray, out _, .5f), Is.True,
+                    "The solid door stop must occlude the closed leaf gap at " + point);
+            }
+            Assert.That(solid.Raycast(new Ray(frame.TransformPoint(new Vector3(0, 1.2f, -.25f)), frame.forward), out _, .5f),
+                Is.False, "Door stops must retain the actual doorway opening.");
+        }
+
         [UnityTest, Timeout(90000)]
         public IEnumerator DoorFrameHasNoPositiveAreaCoplanarOverlapWithItselfOrEntranceWalls()
         {

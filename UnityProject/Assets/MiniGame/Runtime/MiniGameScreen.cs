@@ -622,7 +622,7 @@ namespace MiniGame.UnityHost
         private void EnsureBuilt()
         {
             if (canvasRoot != null) return;
-            font = Font.CreateDynamicFontFromOSFont(new[] { "SimSun", "Noto Serif CJK SC", "Microsoft YaHei", "SimHei", "PingFang SC", "Arial" }, 24);
+            font = GameUiTypography.CreateFont();
             Font.textureRebuilt += RefreshFontTexture;
             RefreshFontTexture(font);
             var go = new GameObject("Prototype UI", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));

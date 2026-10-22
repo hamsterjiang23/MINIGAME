@@ -161,9 +161,9 @@ namespace MiniGame.UnityHost.Editor
             light.innerSpotAngle = 38;
             light.renderMode = LightRenderMode.ForcePixel;
             light.shadows = LightShadows.Soft;
-            light.shadowStrength = .85f;
-            light.shadowBias = .025f;
-            light.shadowNormalBias = .15f;
+            light.shadowStrength = 1f;
+            light.shadowBias = .005f;
+            light.shadowNormalBias = .01f;
             return light;
         }
 

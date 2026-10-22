@@ -134,7 +134,9 @@ namespace MiniGame.UnityHost
             if (hasRoomPose) return;
             // Day0 enters the terminal automatically, before the player can walk to
             // the desk. Capture its authored standing approach instead of the spawn.
-            if (HasSeatedEntry && runtime.GetView().Game.Day == 0)
+            var view = runtime.GetView();
+            if (HasSeatedEntry && view.Game.Day == 0 && view.TerminalPage == TerminalPage.Review
+                && view.TerminalBootRequired && view.Cue?.Kind == PresentationKind.EnterTerminal)
             {
                 Transform approach = null;
                 foreach (var root in seatedPlayer.gameObject.scene.GetRootGameObjects())

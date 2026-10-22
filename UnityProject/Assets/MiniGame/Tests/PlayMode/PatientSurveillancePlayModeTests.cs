@@ -253,6 +253,48 @@ namespace MiniGame.UnityHost.Tests
             }
         }
 
+        [UnityTest, Timeout(30000)]
+        public IEnumerator WardBackdropSurvivesExpressionChangesAndReleasesItsOwnedSprite()
+        {
+            var plate = new Texture2D(2, 2);
+            plate.SetPixels(new[] { Color.gray, Color.gray, Color.gray, Color.gray });
+            plate.Apply();
+            profile.Backdrop = plate;
+            profile.Noise = 0; profile.IdleMotion = 0; profile.Exposure = 1; profile.Saturation = 1;
+            profile.Rooms[0].ActorHeight = 1.2f;
+            profile.Rooms[0].ActorOffset = new Vector3(.2f, .1f, 0);
+            try
+            {
+                feed.Show(profile.Rooms[0].PatientId, firstSprite, true);
+                Assert.That(feed.ViewCamera.orthographic, Is.True);
+                Assert.That(feed.ActiveRoom.gameObject.activeSelf, Is.False, "Room geometry cannot occlude flat artwork.");
+                var background = feed.ActiveRoom.transform.parent.Find("Original white ward backdrop").GetComponent<SpriteRenderer>();
+                var ownedSprite = background.sprite;
+                var actor = feed.ActiveRoom.transform.parent.Find("Seated patient cutout").GetComponent<SpriteRenderer>();
+                Assert.That(actor.bounds.size.y, Is.EqualTo(1.2f).Within(.002f));
+                Assert.That(actor.bounds.min.y - feed.ActiveRoom.transform.parent.position.y, Is.EqualTo(-.88f).Within(.002f));
+                Assert.That(ownedSprite.texture, Is.SameAs(plate));
+                var before = ReadPixels(feed.Output);
+                feed.Show(profile.Rooms[0].PatientId, secondSprite, true);
+                var after = ReadPixels(feed.Output);
+                int corner = feed.Output.width * (feed.Output.height / 2) + feed.Output.width * 9 / 10;
+                Assert.That(after[corner], Is.EqualTo(before[corner]), "Changing expression must retain the ward background.");
+                Assert.That(after[corner].r, Is.GreaterThan(40), "The background must render as visible pixels.");
+                Assert.That(after[corner].r, Is.EqualTo(after[corner].b).Within(2), "The white plate must keep neutral color.");
+                Assert.That(after.SequenceEqual(before), Is.False, "The selected expression must change rendered pixels.");
+                profile.Rooms[0].ActorOffset = Vector3.zero;
+                feed.SetCloseUp(true);
+                float top = feed.ViewCamera.WorldToViewportPoint(actor.bounds.max).y;
+                Assert.That(top, Is.InRange(.95f, 1f), "A close-up must keep the top of the head inside the frame.");
+                Object.Destroy(fixture);
+                yield return null;
+                yield return null;
+                Assert.That(ownedSprite == null, Is.True);
+                Assert.That(plate != null, Is.True, "The controller owns its sprite, not the shared texture asset.");
+            }
+            finally { Object.Destroy(plate); }
+        }
+
         private void AssertLiveFeed(Sprite expectedSprite, string expectedId)
         {
             Assert.That(feed.CurrentSprite, Is.SameAs(expectedSprite));

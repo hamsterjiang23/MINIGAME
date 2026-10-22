@@ -15,6 +15,8 @@ namespace MiniGame.UnityHost
         private GameObject stage;
         private Camera stageCamera;
         private SpriteRenderer actor;
+        private SpriteRenderer backdrop;
+        private Sprite backdropSprite;
         private Material actorMaterial, signalMaterial;
         private RenderTexture source, output;
         private PatientMonitorRoom activeRoom;
@@ -133,6 +135,19 @@ namespace MiniGame.UnityHost
             actor.sharedMaterial = actorMaterial;
             actor.shadowCastingMode = ShadowCastingMode.Off;
             actor.receiveShadows = false;
+            if (profile.Backdrop != null)
+            {
+                backdropSprite = Sprite.Create(profile.Backdrop, new Rect(0, 0, profile.Backdrop.width, profile.Backdrop.height), new Vector2(.5f, .5f), 100);
+                var backgroundObject = new GameObject("Original white ward backdrop", typeof(SpriteRenderer));
+                backgroundObject.transform.SetParent(stage.transform, false);
+                backgroundObject.layer = StageLayer;
+                backdrop = backgroundObject.GetComponent<SpriteRenderer>();
+                backdrop.sprite = backdropSprite;
+                backdrop.sharedMaterial = actorMaterial;
+                backdrop.sortingOrder = -1;
+                backdrop.shadowCastingMode = ShadowCastingMode.Off;
+                backdrop.receiveShadows = false;
+            }
             image.texture = output;
             revision = profile.Revision;
             needsFrame = true;
@@ -204,7 +219,27 @@ namespace MiniGame.UnityHost
             float scale = height / Mathf.Max(.01f, sprite.bounds.size.y);
             float breath = Mathf.Sin(clock * 1.4f) * Mathf.Clamp(profile.IdleMotion, 0, .03f) / height;
             actor.transform.localScale = new Vector3(scale, scale * (1 + breath), scale);
+            if (backdrop != null)
+            {
+                // Flat artwork uses the original ward plate, without perspective skew or bed occlusion.
+                activeRoom.gameObject.SetActive(false);
+                stageCamera.orthographic = true;
+                stageCamera.orthographicSize = 1;
+                stageCamera.transform.position = stage.transform.position + new Vector3(0, 0, -10);
+                stageCamera.transform.rotation = Quaternion.identity;
+                float backgroundScale = Mathf.Max(2 * stageCamera.aspect / backdropSprite.bounds.size.x, 2 / backdropSprite.bounds.size.y);
+                backdrop.transform.localPosition = Vector3.forward;
+                backdrop.transform.localScale = Vector3.one * backgroundScale;
+                actor.transform.rotation = Quaternion.identity;
+                float portraitHeight = height * (IsCloseUp ? 1.4f : 1);
+                scale = portraitHeight / Mathf.Max(.01f, sprite.bounds.size.y);
+                actor.transform.localScale = new Vector3(scale, scale * (1 + breath), scale);
+                float portraitY = IsCloseUp ? .96f - sprite.bounds.max.y * scale * (1 + breath)
+                    : -.98f - sprite.bounds.min.y * scale * (1 + breath);
+                actor.transform.position = stage.transform.position + new Vector3(-.16f * stageCamera.aspect, portraitY, 0) + settings.ActorOffset;
+            }
             signalMaterial.SetFloat("_Clock", clock);
+            signalMaterial.SetFloat("_OriginalColor", backdrop != null ? 1 : 0);
             signalMaterial.SetFloat("_Exposure", Mathf.Clamp(profile.Exposure, .25f, 2));
             signalMaterial.SetFloat("_Saturation", Mathf.Clamp01(profile.Saturation));
             signalMaterial.SetFloat("_Noise", Mathf.Clamp(profile.Noise, 0, .2f));
@@ -239,11 +274,13 @@ namespace MiniGame.UnityHost
             if (stageCamera != null) stageCamera.targetTexture = null;
             if (stage != null) { stage.SetActive(false); Release(stage); }
             if (actorMaterial != null) Release(actorMaterial);
+            if (backdropSprite != null) Release(backdropSprite);
             if (signalMaterial != null) Release(signalMaterial);
             if (source != null) { source.Release(); Release(source); }
             if (output != null) { output.Release(); Release(output); }
             rooms.Clear();
             stage = null; activeRoom = null; stageCamera = null; actor = null;
+            backdrop = null; backdropSprite = null;
             source = null; output = null;
         }
         private static void Release(Object value)

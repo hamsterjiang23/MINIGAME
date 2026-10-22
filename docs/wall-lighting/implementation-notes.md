@@ -63,3 +63,25 @@ Mono交付更新：构建前发现隔离工程的ApartmentPlayer、PropNarration
 发现边界：窗旁竖缝需同时处理窗墙遮挡；诊断图中的蓝色代表无墙纸覆盖的底墙，并非游戏颜色。`[verified: solid-shell-verification.json controls；WallSurfaceDiagnostics.CaptureSurfaceIds]`
 最终验证：4项墙纸EditMode通过；实体重复生成、保存重载、洞口/材质/碰撞体/灯光保留验证通过；昼夜原始相机渲染已复查，未进行本轮PlayMode或Player构建。`[verified: solid-shell-verification.json validation、scope]`
 后续先读：solid-shell-verification.json及guide.md的“墙顶与窗旁漏光”。`[opinion]`
+## 2026-10-22 门缝红光
+
+### Deviations
+
+- 使用门框网格内的实体闭合止口和门槛，正面与背面保持连续且无面积重叠；门扇尺寸、转轴和开合角度保留。止口与门扇闭门间隔6毫米，投影重叠20毫米。`[verified: ReferenceDoorFrameBuilder.AddDoorStop；reports/door-seal-gpu.json]`
+- 红灯阴影Strength由0.85改为1、Bias由0.025改为0.005、Normal Bias由0.15改为0.01；同步场景、昼夜配置和重建默认值，保留灯的位置、颜色、强度、范围、角度。`[verified: 本轮三份配置与ReferenceCorridorBuilder.EnsureCeilingRedSpotlight差异]`
+
+### Discovered edge cases
+
+- 旧门框射线可穿过左右、顶部及底部运行间隙；门挡补齐后，原阴影偏移仍使新门挡泛红，零/小偏移对照解除；Strength=0.85在夜间仍向室内透出红光，改为1后闭门遮挡成立，开门保留走廊红光。`[verified: door-seal-verification.json controls；reports/door-seal-gpu.json samples]`
+- 额外回归发现此前Day0定位覆盖了普通终端读档；现在只对Day0+Review+首次开机+EnterTerminal教学开场定位，普通目录和病人Review读档保留明确的站立返回姿态。`[verified: PresentationEffects.RememberRoomPose；DoorViewPlayModeTests.RestoringOrdinaryDayZeroPatientReviewPreservesTheExplicitRoomReturnPose]`
+- 一次混合组合运行停止推进，已仅终止隔离测试编辑器并拆分验证；没有终止正式Unity编辑器。`[verified: Artifacts/WallLighting/door-seal-playmode-final-20261022.log；本轮PID99660隔离进程校验输出]`
+
+### Questions for review
+
+- 无阻塞项；本轮不重建Player。`[opinion]`
+
+变更偏差：1项，门红光回归顺带收紧此前Day0自动开场定位分支。`[verified: door-seal-verification.json validation.cameraFollowup]`
+最可能回看：若重设门扇尺寸或开门方向，需重新核对止口投影和6毫米间隔。`[opinion]`
+发现边界：真实门缝、阴影偏移和半透明阴影强度会分别引入红光；只有实际首次开机可替换Day0返回位置。`[verified: door-seal-verification.json controls、validation]`
+最终验证：16项PlayMode通过，门框无正面积共面重叠、0/30/60/90度开合无穿插，昼夜关/开门GPU对照完成；本轮未构建Player。`[verified: door-seal-verification.json validation、rendering]`
+后续先读：door-seal-verification.json及ReferenceDoorFrameBuilder.AddDoorStop。`[opinion]`

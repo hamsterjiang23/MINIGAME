@@ -1,0 +1,147 @@
+{
+  "family": "SimSun",
+  "fontNames": [
+    "SimSun"
+  ],
+  "separateOwnerInstances": true,
+  "allPauseLabelsShareReferenceFont": true,
+  "labels": [
+    {
+      "name": "PauseTitle",
+      "fontSize": 40,
+      "style": "Normal"
+    },
+    {
+      "name": "PauseSessionState",
+      "fontSize": 20,
+      "style": "Normal"
+    },
+    {
+      "name": "CommandNumber",
+      "fontSize": 21,
+      "style": "Normal"
+    },
+    {
+      "name": "Label",
+      "fontSize": 28,
+      "style": "Normal"
+    },
+    {
+      "name": "Shortcut",
+      "fontSize": 19,
+      "style": "Normal"
+    },
+    {
+      "name": "PauseStatus",
+      "fontSize": 20,
+      "style": "Normal"
+    },
+    {
+      "name": "ManualTitle",
+      "fontSize": 34,
+      "style": "Normal"
+    },
+    {
+      "name": "ManualRoomHeading",
+      "fontSize": 24,
+      "style": "Normal"
+    },
+    {
+      "name": "ManualRoomControls",
+      "fontSize": 24,
+      "style": "Normal"
+    },
+    {
+      "name": "ManualTerminalHeading",
+      "fontSize": 24,
+      "style": "Normal"
+    },
+    {
+      "name": "ManualTerminalControls",
+      "fontSize": 24,
+      "style": "Normal"
+    },
+    {
+      "name": "ManualSystemControls",
+      "fontSize": 23,
+      "style": "Normal"
+    },
+    {
+      "name": "Label",
+      "fontSize": 26,
+      "style": "Normal"
+    },
+    {
+      "name": "Shortcut",
+      "fontSize": 19,
+      "style": "Normal"
+    },
+    {
+      "name": "SettingsTitle",
+      "fontSize": 34,
+      "style": "Normal"
+    },
+    {
+      "name": "PixelDetailHeading",
+      "fontSize": 28,
+      "style": "Normal"
+    },
+    {
+      "name": "PixelDetailDescription",
+      "fontSize": 21,
+      "style": "Normal"
+    },
+    {
+      "name": "Label",
+      "fontSize": 27,
+      "style": "Normal"
+    },
+    {
+      "name": "Shortcut",
+      "fontSize": 20,
+      "style": "Normal"
+    },
+    {
+      "name": "Label",
+      "fontSize": 27,
+      "style": "Normal"
+    },
+    {
+      "name": "Shortcut",
+      "fontSize": 20,
+      "style": "Normal"
+    },
+    {
+      "name": "Label",
+      "fontSize": 27,
+      "style": "Normal"
+    },
+    {
+      "name": "Shortcut",
+      "fontSize": 20,
+      "style": "Normal"
+    },
+    {
+      "name": "SettingsSaveHint",
+      "fontSize": 21,
+      "style": "Normal"
+    },
+    {
+      "name": "Label",
+      "fontSize": 27,
+      "style": "Normal"
+    },
+    {
+      "name": "Shortcut",
+      "fontSize": 20,
+      "style": "Normal"
+    }
+  ],
+  "arkAtlasAvailable": true,
+  "verification": {
+    "unityCompilation": "completed; zero errors",
+    "pausePlayModeTests": "7 passed / 7 total",
+    "diffCheck": "passed",
+    "scope": "Font selection only; no label size/style edits; no player build or push"
+  }
+}

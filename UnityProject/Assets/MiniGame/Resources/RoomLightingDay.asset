@@ -143,9 +143,9 @@ MonoBehaviour:
     spotAngle: 163.1
     innerSpotAngle: 38
     shadows: 2
-    shadowStrength: 0.85
-    shadowBias: 0.025
-    shadowNormalBias: 0.15
+    shadowStrength: 1
+    shadowBias: 0.005
+    shadowNormalBias: 0.01
   - HierarchyPath: MonitorLight%20%281%29#0
     dayEnabled: 1
     localPosition: {x: -2.833, y: 0.99, z: -0.572}
