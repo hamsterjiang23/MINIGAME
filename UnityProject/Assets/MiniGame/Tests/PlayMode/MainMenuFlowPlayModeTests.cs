@@ -140,7 +140,9 @@ namespace MiniGame.UnityHost.Tests
             var pause = host.Screen.GetComponentInChildren<PauseMenuView>(true);
             Assert.That(pause.gameObject.activeInHierarchy, Is.True);
             AssertSharedTypography();
-            yield return PrototypePlayModeTests.CaptureIfRequested(host, "pause-menu-font");
+            yield return new WaitForSecondsRealtime(.6f);
+            CaptureTransitionFrameIfRequested("pause-menu-font");
+            yield return null;
             var returnButton = pause.Buttons.Single(button => button.GetComponentsInChildren<Text>(true)
                 .Any(text => text.text == "回到主菜单"));
             Assert.That(returnButton, Is.InstanceOf<MiniGameAudioButton>());

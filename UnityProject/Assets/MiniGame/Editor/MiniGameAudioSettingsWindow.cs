@@ -212,6 +212,7 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.TerminalType4: return "终端打字 4";
                 case MiniGameSound.DoorOpen: return "开门";
                 case MiniGameSound.DoorShut: return "关门";
+                case MiniGameSound.DoorKnock: return "敲门";
                 case MiniGameSound.PCNoise: return "电脑底噪";
                 case MiniGameSound.Projector: return "放映机";
                 case MiniGameSound.Scan: return "扫描";
@@ -242,6 +243,7 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.TerminalPowerOff: return "当天全部会谈完成后，关闭会话并熄屏时播放一次。";
                 case MiniGameSound.DoorOpen: return "门开始打开时播放一次；锁门拒绝操作或读档定位不播放。";
                 case MiniGameSound.DoorShut: return "门开始关闭时播放一次；暂停恢复不会重复播放。";
+                case MiniGameSound.DoorKnock: return "晨检等待开门时整段循环，片段结束后间隔0.5秒；开门停止。";
                 case MiniGameSound.TerminalType1:
                 case MiniGameSound.TerminalType2:
                 case MiniGameSound.TerminalType3:

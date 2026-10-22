@@ -55,7 +55,7 @@ namespace MiniGame.UnityHost.Tests
         private void OnSound(MiniGameAudioChannel channel, MiniGameSound sound) => played.Add(sound);
 
         [UnityTest]
-        public IEnumerator SupervisorKnockRepeatsThreeRapidHitsThenPauses()
+        public IEnumerator SupervisorKnockRepeatsTheWholeRecordingAfterHalfSecondSilence()
         {
             var times = new List<float>();
             Action<MiniGameAudioChannel, MiniGameSound> record = (channel, sound) =>
@@ -66,12 +66,13 @@ namespace MiniGame.UnityHost.Tests
             director.Bind(runtime);
             try
             {
-                float deadline = Time.realtimeSinceStartup + 5;
-                while (times.Count < 7 && Time.realtimeSinceStartup < deadline) yield return null;
-                Assert.That(times.Count, Is.GreaterThanOrEqualTo(7));
+                float recordingSeconds = profile.GetClip(MiniGameSound.DoorKnock).length;
+                float deadline = Time.realtimeSinceStartup + (recordingSeconds + .5f) * 3 + 2;
+                while (times.Count < 3 && Time.realtimeSinceStartup < deadline) yield return null;
+                Assert.That(times.Count, Is.GreaterThanOrEqualTo(3));
                 for (int index = 1; index < times.Count; index++)
                     Assert.That(times[index] - times[index - 1],
-                        Is.EqualTo(index % 3 == 0 ? 1.2f : .14f).Within(.09f));
+                        Is.InRange(recordingSeconds + .45f, recordingSeconds + .85f));
             }
             finally { service.SoundPlayed -= record; }
         }
@@ -82,20 +83,20 @@ namespace MiniGame.UnityHost.Tests
             director.Bind(runtime);
             played.Clear();
             var knock = service.GetSource(MiniGameAudioChannel.DoorKnock);
-            Assert.That(profile.GetClip(MiniGameSound.DoorKnock).name, Is.EqualTo("DoorKnockOnce"));
+            Assert.That(profile.GetClip(MiniGameSound.DoorKnock).name, Is.EqualTo("NewDoorKnock"));
             yield return new WaitForSecondsRealtime(.4f);
-            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(3));
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1));
             Assert.That(knock.outputAudioMixerGroup, Is.EqualTo(profile.SfxGroup));
             runtime.SetPaused(true);
             yield return new WaitForSecondsRealtime(1.8f);
-            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(3));
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1));
             runtime.SetPaused(false);
             yield return new WaitForSecondsRealtime(.4f);
-            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(3), "The gap resumes without restarting the triplet.");
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1), "The recording resumes without restarting or overlapping.");
             runtime = GameRuntime.Restore(runtime.Save(), rules, content);
             director.Bind(runtime);
             yield return null;
-            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(4));
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(2));
             Accept(runtime.EnterDoorView());
             Assert.That(knock.isPlaying, Is.False, "Opening the door cancels the knock immediately.");
             Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
@@ -103,7 +104,7 @@ namespace MiniGame.UnityHost.Tests
             runtime = GameRuntime.Restore(runtime.Save(), rules, content);
             director.Bind(runtime);
             yield return new WaitForSecondsRealtime(1.8f);
-            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(4),
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(2),
                 "Loading an open door or supervisor conversation must not resume knocking.");
         }
 
@@ -136,9 +137,8 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             host.Player.enabled = false;
             Assert.That(host.Audio, Is.Not.Null);
-            Assert.That(host.Audio.SupervisorKnockInterval, Is.EqualTo(.14f).Within(.001f),
-                "The serialized scene value must match the requested cadence, not an old Inspector value.");
-            Assert.That(host.Audio.Profile.GetEntry(MiniGameSound.DoorKnock).Volume, Is.EqualTo(2));
+            Assert.That(host.Audio.Profile.GetClip(MiniGameSound.DoorKnock).name, Is.EqualTo("NewDoorKnock"));
+            Assert.That(host.Audio.Profile.GetEntry(MiniGameSound.DoorKnock).Volume, Is.EqualTo(1));
             Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.MenuMusic).isPlaying, Is.False,
                 "Title music belongs only to the main menu.");
             Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.True);
