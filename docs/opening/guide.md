@@ -4,7 +4,7 @@
 
 教学保留五段介绍、唯一净化处置和两段反应。每个时点仅“继续”或“净化”一个按钮可以操作，底部命令条只显示提示；开场点击不推进教学。F2/F3保持移除。`[verified: DayZeroOpeningPlayModeTests.NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne；TerminalView.Render]`
 
-反应读完后自动关机并返回房间，聚光灯照床。此时关闭家具、电脑和海报碰撞，保留地面、墙体、玩家和实体门；床保留可交互的触发器。睡一次，闭眼淡出后进入Day1晨检；家具碰撞恢复前先回到安全起床点，同时保留玩家朝向、俯仰角和视野。Day0没有墙面梦境，也不需要第二次睡眠。`[verified: GameRuntime.BeginNightDream/TryInteract/CompleteCue；BedtimeCollisionGate.Apply；ApartmentPlayer.RestoreDayZeroWakePose/PlaceAtWakePose]`
+反应读完后自动关机，镜头退回电脑前的Computer approach站立位置，聚光灯照床；不再回到远处的开场出生点。家具、电脑、海报和床保留原有碰撞enabled/isTrigger状态，Day0不再例外关闭碰撞。睡一次，闭眼淡出后回到安全起床点并进入Day1晨检，同时保留玩家朝向、俯仰角和视野。Day0没有墙面梦境，也不需要第二次睡眠；后续天数仍按实际进入终端的位置返回。`[verified: PresentationEffects.RememberRoomPose/CameraTransition；BedtimeGuidance.SetTargets；ApartmentPlayer.RestoreDayZeroWakePose；day0-return-verification.json]`
 
 暂停冻结拉远、监控和关机。未完成开场时读档，回到监管者近景等待重新点击；已开始教学的检查点恢复当前未完成句，净化保持一次结算。Day0闭眼期间的存档从该段起点重播。`[verified: DayZeroOpeningPlayModeTests.PausedPullbackFreezesAndUnfinishedOpeningRestoresAtItsWaitingStart；CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce；CampaignRuntimeTests.DayZeroOpeningUsesReviewCueAndRestoresWithoutDuplicatingSelectionOrDisposition]`
 

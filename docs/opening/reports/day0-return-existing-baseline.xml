@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:44Z" duration="8.9506307">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="256" result="Failed" site="Child" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:44Z" duration="8.950631" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1258" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DreamRuntime20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:44Z" duration="8.940964" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="32672" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1259" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:44Z" duration="8.909939" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1260" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:44Z" duration="8.876598" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1261" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="196" result="Failed" site="Child" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:44Z" duration="8.843193" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1010" name="BedtimeGuidancePlayModeTests" fullname="MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests" classname="MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:39Z" duration="3.772251" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1012" name="RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent" fullname="MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent" methodname="RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent" classname="MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests" runstate="Runnable" seed="1297665414" result="Failed" start-time="2026-10-22 07:16:35Z" end-time="2026-10-22 07:16:38Z" duration="2.409035" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 0
+  But was:  1.0f
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.AssertNight (MiniGame.UnityHost.MiniGameBootstrap host, MiniGame.UnityHost.BedtimeGuidance guidance) [0x00050] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\BedtimeGuidancePlayModeTests.cs:186
+at MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests+<RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent>d__1.MoveNext () [0x0035a] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\BedtimeGuidancePlayModeTests.cs:129
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1011" name="TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom" fullname="MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom" methodname="TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom" classname="MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests" runstate="Runnable" seed="2089767684" result="Failed" start-time="2026-10-22 07:16:38Z" end-time="2026-10-22 07:16:39Z" duration="1.326839" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="90000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Corridor red spotlight must dim continuously from the archive lighting, without a brightness jump.
+  Expected: less than or equal to 2.57050014f
+  But was:  2.68069577f
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests+<TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom>d__0.MoveNext () [0x002fd] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\BedtimeGuidancePlayModeTests.cs:44
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1036" name="DayZeroOpeningPlayModeTests" fullname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests" classname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-22 07:16:39Z" end-time="2026-10-22 07:16:44Z" duration="5.036761" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1039" name="NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne" fullname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne" methodname="NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne" classname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests" runstate="Runnable" seed="164001749" result="Failed" start-time="2026-10-22 07:16:39Z" end-time="2026-10-22 07:16:44Z" duration="5.005011" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  The native GPU composite must contain a visible monitor, not a black frame.
+  Expected: greater than 1000
+  But was:  724
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.CaptureComposite (System.String name) [0x000c1] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DayZeroOpeningPlayModeTests.cs:332
+at MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests+<NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne>d__5.MoveNext () [0x00821] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DayZeroOpeningPlayModeTests.cs:163
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -339,7 +339,7 @@ namespace MiniGame.UnityHost
             ClearFocus();
         }
 
-        // Called before the Day0 furniture solids return, including while player input is disabled.
+        // Restore the Day0 wake position even while presentation keeps player input disabled.
         public void RestoreDayZeroWakePose()
         {
             if (dreamWakePose == null) return;

@@ -51,6 +51,45 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
+        [UnityTest, Timeout(15000)]
+        public IEnumerator FreshOpeningCachesTheComputerStandingReturnPose()
+        {
+            var approach = host.gameObject.scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Single(item => item.name == "Computer approach");
+            Assert.That(host.Effects.TryGetRoomReturnPose(out var actor, out _, out var eyes, out _, out _), Is.True);
+            Assert.That(Vector3.Distance(actor, approach.position), Is.LessThan(.001f),
+                "Day0 automatic entry must cache the same computer-side standing point used by later terminal visits.");
+            Assert.That(Vector3.Distance(eyes, actor + Vector3.up * 1.56f), Is.LessThan(.001f));
+            yield return null;
+        }
+
+        [UnityTest, Timeout(45000)]
+        public IEnumerator DayZeroShutdownReturnsBesideComputerWithStandingCollision()
+        {
+            Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
+            float deadline = Time.realtimeSinceStartup + 35;
+            while (host.Runtime.GetView().TerminalOpen && Time.realtimeSinceStartup < deadline)
+            {
+                if (!host.Screen.TransitionLocked)
+                {
+                    var buttons = ActiveButtons();
+                    Assert.That(buttons.Length, Is.LessThanOrEqualTo(1));
+                    if (buttons.Length == 1) buttons[0].onClick.Invoke();
+                }
+                yield return null;
+            }
+            Assert.That(host.Runtime.GetView().TerminalOpen, Is.False);
+            var approach = host.gameObject.scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Single(item => item.name == "Computer approach");
+            Assert.That(Vector3.Distance(host.Player.transform.position, approach.position), Is.LessThan(.04f));
+            Assert.That(Vector3.Distance(host.Player.ViewCamera.transform.position, host.Player.transform.position + Vector3.up * 1.56f),
+                Is.LessThan(.04f));
+            Assert.That(host.Player.GetComponent<CharacterController>().enabled, Is.True);
+            Assert.That(host.Effects.IsSeated, Is.False);
+            Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
+            yield return PrototypePlayModeTests.CaptureIfRequested(host, "day0-return-fixed");
+        }
+
         [UnityTest, Timeout(60000)]
         public IEnumerator NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne()
         {
@@ -158,6 +197,13 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.False);
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Door).Accepted, Is.False);
             Assert.That(host.Dreams.OwnsCamera, Is.False);
+            var computerApproach = host.gameObject.scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true)).Single(item => item.name == "Computer approach");
+            Assert.That(Vector3.Distance(host.Player.transform.position, computerApproach.position), Is.LessThan(.04f),
+                "Day0 must return beside the computer, like later terminal visits, rather than to the distant opening spawn.");
+            Assert.That(Vector3.Distance(host.Player.ViewCamera.transform.position, host.Player.transform.position + Vector3.up * 1.56f),
+                Is.LessThan(.04f), "The exit restores the standing eye position with the player.");
+            Assert.That(host.Player.GetComponent<CharacterController>().enabled, Is.True);
             var guidance = host.GetComponent<BedtimeGuidance>();
             Assert.That(guidance, Is.Not.Null);
             yield return Until(() => guidance.BeamStrength > .95f, "bed spotlight");

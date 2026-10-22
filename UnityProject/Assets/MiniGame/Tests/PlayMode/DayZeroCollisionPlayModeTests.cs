@@ -11,10 +11,27 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
-    public sealed class BedtimeCollisionGatePlayModeTests
+    public sealed class DayZeroCollisionPlayModeTests
     {
+        [UnityTearDown]
+        public IEnumerator Cleanup()
+        {
+            var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            if (host != null)
+            {
+                host.enabled = false;
+                host.Dreams?.PrepareForRuntimeChange();
+                host.Effects?.PrepareForRuntimeChange();
+            }
+            MiniGameSessionHost.Release();
+            var scene = SceneManager.GetActiveScene();
+            var empty = SceneManager.CreateScene("Day0 collision cleanup");
+            SceneManager.SetActiveScene(empty);
+            if (scene.IsValid() && scene.isLoaded) yield return SceneManager.UnloadSceneAsync(scene);
+        }
+
         [UnityTest, Timeout(30000)]
-        public IEnumerator MainRoomDayZeroLeavesTheBedTouchableAndRestoresFurnitureAfterOneSleep()
+        public IEnumerator MainRoomDayZeroKeepsFurnitureSolidAndBedTouchableThroughOneSleep()
         {
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
@@ -38,17 +55,14 @@ namespace MiniGame.UnityHost.Tests
             var night = TutorialBedtime(host.Runtime.UsesDreamFlow);
             host.RestoreCheckpoint(night.Save());
             yield return null;
-            var gate = host.GetComponent<BedtimeCollisionGate>();
-            Assert.That(gate, Is.Not.Null);
-            Assert.That(gate.Suppressing, Is.True);
-            Assert.That(furniture.All(collider => !collider.enabled), Is.True);
+            for (int index = 0; index < furniture.Length; index++)
+                Assert.That(furniture[index].enabled, Is.EqualTo(enabledBefore[index]), furniture[index].name + " must retain its authored collision after Day0.");
             Assert.That(floor.enabled && !floor.isTrigger, Is.True, "The floor must still support the character.");
             Assert.That(door.enabled && !door.isTrigger, Is.True, "The door remains a solid room boundary.");
             Assert.That(host.Player.GetComponent<CharacterController>().enabled, Is.True, "Day0 retains player collision.");
             Assert.That(host.Player.DreamTraversalActive, Is.False);
-            Assert.That(bedCollider.enabled && bedCollider.isTrigger, Is.True, "The bed stops obstructing movement but retains its ray target.");
-            Assert.That(scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<ReadableProp>(true))
-                .SelectMany(prop => prop.GetComponentsInChildren<Collider>(true)).All(collider => !collider.enabled), Is.True);
+            Assert.That(bedCollider.enabled, Is.True);
+            Assert.That(bedCollider.isTrigger, Is.EqualTo(bedWasTrigger), "The bed retains its authored solid collision and ray target.");
 
             var controller = host.Player.GetComponent<CharacterController>();
             controller.enabled = false;
@@ -57,15 +71,11 @@ namespace MiniGame.UnityHost.Tests
             Physics.SyncTransforms();
             host.Player.FacePoint(bedCollider.bounds.center);
             host.Player.RefreshInteractionFocus();
-            Assert.That(host.Player.FocusedInteraction, Is.EqualTo(bed), "The production player ray must detect the retained sleep trigger.");
+            Assert.That(host.Player.FocusedInteraction, Is.EqualTo(bed), "The production player ray must detect the solid bed.");
             Quaternion headingBeforeSleep = host.Player.transform.rotation;
             Quaternion lookBeforeSleep = host.Player.ViewCamera.transform.rotation;
             float fovBeforeSleep = host.Player.ViewCamera.fieldOfView;
             Assert.That(host.Player.InteractFocused(), Is.True);
-            // Sleep can be requested while the player stands inside furniture that is temporarily non-solid.
-            controller.enabled = false;
-            host.Player.transform.position = bedCollider.bounds.center - Vector3.up * .2f;
-            controller.enabled = true;
             // Some presentation profiles advance the day immediately; others retain a Sleep cue first.
             for (int step = 0; host.Runtime.GetView().Game.Day == 0 && step < 4; step++)
             {
@@ -74,7 +84,6 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(host.Runtime.CompleteCue(cue.Token).Accepted, Is.True);
             }
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
-            Assert.That(gate.Suppressing, Is.False);
             Assert.That(Quaternion.Angle(host.Player.transform.rotation, headingBeforeSleep), Is.LessThan(.01f), "Day0 waking must not turn the player toward the wake anchor.");
             Assert.That(Quaternion.Angle(host.Player.ViewCamera.transform.rotation, lookBeforeSleep), Is.LessThan(.01f), "Day0 waking must preserve the camera look angle.");
             Assert.That(host.Player.ViewCamera.fieldOfView, Is.EqualTo(fovBeforeSleep));
@@ -86,58 +95,42 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(floor.enabled && door.enabled && controller.enabled, Is.True);
         }
 
-        [UnityTest, Timeout(15000)]
-        public IEnumerator DisableRebindAndReloadRestoreOriginalEnabledAndTriggerStates()
+        [UnityTest, Timeout(30000)]
+        public IEnumerator DayZeroBedtimePauseAndCheckpointReloadPreserveAuthoredColliderStates()
         {
-            var scene = SceneManager.CreateScene("Bedtime collision isolation fixture");
-            var owner = new GameObject("Collision fixture");
-            SceneManager.MoveGameObjectToScene(owner, scene);
-            try
+            yield return SceneManager.LoadSceneAsync("MainRoomCombined");
+            yield return null;
+            var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            var disabled = new GameObject("Authored disabled collision").AddComponent<BoxCollider>();
+            disabled.enabled = false;
+            var trigger = new GameObject("Authored trigger collision").AddComponent<BoxCollider>();
+            trigger.isTrigger = true;
+            var states = host.gameObject.scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Collider>(true))
+                .Where(collider => !(collider is CharacterController))
+                .ToDictionary(collider => collider, collider => (collider.enabled, collider.isTrigger));
+            Assert.That(states.Count, Is.GreaterThan(10));
+            var night = TutorialBedtime(host.Runtime.UsesDreamFlow);
+            host.RestoreCheckpoint(night.Save());
+            AssertColliderStates(states);
+            Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+            yield return null;
+            AssertColliderStates(states);
+            Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
+            host.RestoreCheckpoint(host.Runtime.Save());
+            yield return null;
+            AssertColliderStates(states);
+            Object.Destroy(disabled.gameObject);
+            Object.Destroy(trigger.gameObject);
+        }
+
+        private static void AssertColliderStates(System.Collections.Generic.Dictionary<Collider, (bool enabled, bool isTrigger)> states)
+        {
+            foreach (var pair in states)
             {
-                var solids = Child(owner.transform, "Room collision");
-                var furniture = Collider(solids, "B_HT01.001 collider");
-                var originallyDisabled = Collider(solids, "B_SM_SingleBox collider");
-                originallyDisabled.enabled = false;
-                var unknown = Collider(solids, "Unclassified structural mesh");
-                var floor = Collider(solids, "Reference floor collider");
-                var bed = Collider(owner.transform, "Bed interaction collider");
-                bed.gameObject.AddComponent<WorldInteraction>().Configure(InteractionTarget.Bed, "Bed", null);
-                var disabledBed = Collider(bed.transform, "Disabled extra bed hitbox");
-                disabledBed.enabled = false;
-                var computer = Collider(owner.transform, "Computer interaction collider");
-                computer.gameObject.AddComponent<WorldInteraction>().Configure(InteractionTarget.Computer, "Computer", null);
-                var door = Collider(owner.transform, "Entrance door");
-                door.gameObject.AddComponent<WorldInteraction>().Configure(InteractionTarget.Door, "Door", null);
-                var doorTrigger = Collider(door.transform, "Door interaction trigger");
-                doorTrigger.isTrigger = true;
-                var player = Child(owner.transform, "Player").gameObject.AddComponent<CharacterController>();
-                var playerBody = Collider(player.transform, "Player physical child");
-                var gate = owner.AddComponent<BedtimeCollisionGate>();
-                var night = TutorialBedtime();
-                gate.Bind(night);
-                Assert.That(furniture.enabled || computer.enabled || doorTrigger.enabled, Is.False);
-                Assert.That(unknown.enabled && floor.enabled && door.enabled && player.enabled && playerBody.enabled, Is.True);
-                Assert.That(bed.isTrigger && disabledBed.isTrigger && !disabledBed.enabled, Is.True);
-                night.SetPaused(true);
-                Assert.That(gate.Suppressing, Is.True, "Pause does not restore furniture into the player's path.");
-                gate.enabled = false;
-                Assert.That(furniture.enabled && computer.enabled && doorTrigger.enabled, Is.True);
-                Assert.That(originallyDisabled.enabled || disabledBed.enabled || bed.isTrigger || disabledBed.isTrigger, Is.False);
-                gate.enabled = true;
-                Assert.That(gate.Suppressing && !furniture.enabled && bed.isTrigger, Is.True);
-                var package = Package();
-                var restored = GameRuntime.Restore(night.Save(), package.Rules, package.Content);
-                gate.Bind(restored);
-                Assert.That(!furniture.enabled && bed.isTrigger, Is.True, "A saved bedtime re-derives collision presentation.");
-                gate.Bind(new GameRuntime(package.Rules, package.Content, true));
-                Assert.That(furniture.enabled && computer.enabled && !bed.isTrigger, Is.True);
-                night.SetPaused(false);
-                Assert.That(furniture.enabled, Is.True, "The previous runtime must no longer drive the gate.");
-                Assert.That(originallyDisabled.enabled, Is.False);
-                yield return null;
+                Assert.That(pair.Key, Is.Not.Null);
+                Assert.That(pair.Key.enabled, Is.EqualTo(pair.Value.enabled), pair.Key.name);
+                Assert.That(pair.Key.isTrigger, Is.EqualTo(pair.Value.isTrigger), pair.Key.name);
             }
-            finally { Object.Destroy(owner); }
-            yield return SceneManager.UnloadSceneAsync(scene);
         }
 
         private static CompiledDialoguePackage Package()
@@ -173,13 +166,5 @@ namespace MiniGame.UnityHost.Tests
             return runtime;
         }
 
-        private static Transform Child(Transform parent, string name)
-        {
-            var child = new GameObject(name).transform;
-            child.SetParent(parent, false);
-            return child;
-        }
-
-        private static BoxCollider Collider(Transform parent, string name) => Child(parent, name).gameObject.AddComponent<BoxCollider>();
     }
 }

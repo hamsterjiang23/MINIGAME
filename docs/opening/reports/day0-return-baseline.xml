@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.6846622">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="258" result="Failed" site="Child" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.684662" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1261" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DreamRuntime20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="198" result="Failed" site="Child" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.674745" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="56184" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1262" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="198" result="Failed" site="Child" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.643433" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1263" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="198" result="Failed" site="Child" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.610089" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1264" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="198" result="Failed" site="Child" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.576679" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1036" name="DayZeroCollisionPlayModeTests" fullname="MiniGame.UnityHost.Tests.DayZeroCollisionPlayModeTests" classname="MiniGame.UnityHost.Tests.DayZeroCollisionPlayModeTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-22 07:09:49Z" end-time="2026-10-22 07:09:52Z" duration="2.105298" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1037" name="MainRoomDayZeroKeepsFurnitureSolidAndBedTouchableThroughOneSleep" fullname="MiniGame.UnityHost.Tests.DayZeroCollisionPlayModeTests.MainRoomDayZeroKeepsFurnitureSolidAndBedTouchableThroughOneSleep" methodname="MainRoomDayZeroKeepsFurnitureSolidAndBedTouchableThroughOneSleep" classname="MiniGame.UnityHost.Tests.DayZeroCollisionPlayModeTests" runstate="Runnable" seed="828672677" result="Failed" start-time="2026-10-22 07:09:50Z" end-time="2026-10-22 07:09:52Z" duration="2.069141" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="30000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  B_HT01 collider must retain its authored collision after Day0.
+  Expected: True
+  But was:  False
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.DayZeroCollisionPlayModeTests+<MainRoomDayZeroKeepsFurnitureSolidAndBedTouchableThroughOneSleep>d__1.MoveNext () [0x00293] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DayZeroCollisionPlayModeTests.cs:59
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1039" name="DayZeroOpeningPlayModeTests" fullname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests" classname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-22 07:09:52Z" end-time="2026-10-22 07:09:52Z" duration="0.437234" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1040" name="FreshOpeningCachesTheComputerStandingReturnPose" fullname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests.FreshOpeningCachesTheComputerStandingReturnPose" methodname="FreshOpeningCachesTheComputerStandingReturnPose" classname="MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests" runstate="Runnable" seed="600076250" result="Failed" start-time="2026-10-22 07:09:52Z" end-time="2026-10-22 07:09:52Z" duration="0.415577" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Day0 automatic entry must cache the same computer-side standing point used by later terminal visits.
+  Expected: less than 0.00100000005f
+  But was:  2.95750189f
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.DayZeroOpeningPlayModeTests+<FreshOpeningCachesTheComputerStandingReturnPose>d__3.MoveNext () [0x000a7] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DayZeroOpeningPlayModeTests.cs:60
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

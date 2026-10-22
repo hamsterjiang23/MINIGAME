@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-22",
+  "unity": "2022.3.23f1c1",
+  "baselineCommit": "9d27c272e825e2835085274dd39b3f282d797e4f",
+  "scope": "Unity adapter only: Day0 automatic terminal standing return and collision retention. No core rules, scene geometry, dream traversal or later-day return behavior changed.",
+  "changes": {
+    "returnAnchor": "Computer approach",
+    "oldReturnDistanceFromAnchorMetres": 2.95750189,
+    "standingEyeHeightMetres": 1.56,
+    "normalDayOnePlusEntryPositionPreserved": true,
+    "removedDayZeroFurnitureCollisionSuppression": true,
+    "authoredEnabledAndTriggerStatesPreserved": true,
+    "singleSleepToDayOneWakePreserved": true
+  },
+  "tests": {
+    "targetedOldBaseline": {
+      "total": 2,
+      "failed": 2,
+      "report": "reports/day0-return-baseline.xml"
+    },
+    "fixedRun": {
+      "total": 10,
+      "passed": 7,
+      "failed": 3,
+      "report": "reports/day0-return-fixed.xml",
+      "cases": [
+        {
+          "name": "RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent",
+          "result": "Failed",
+          "failure": "  Expected: 0\n  But was:  1.0f\n"
+        },
+        {
+          "name": "TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom",
+          "result": "Failed",
+          "failure": "  Corridor red spotlight must dim continuously from the archive lighting, without a brightness jump.\n  Expected: less than or equal to 2.57050014f\n  But was:  2.6805799f\n"
+        },
+        {
+          "name": "DayZeroBedtimePauseAndCheckpointReloadPreserveAuthoredColliderStates",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "MainRoomDayZeroKeepsFurnitureSolidAndBedTouchableThroughOneSleep",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DayZeroShutdownReturnsBesideComputerWithStandingCollision",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FreshOpeningCachesTheComputerStandingReturnPose",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne",
+          "result": "Failed",
+          "failure": "  The native GPU composite must contain a visible monitor, not a black frame.\n  Expected: greater than 1000\n  But was:  724\n"
+        },
+        {
+          "name": "PausedPullbackFreezesAndUnfinishedOpeningRestoresAtItsWaitingStart",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ActorSitsBeforeAlignedDollyAndLiveDisplayCrossfadesWithoutBlackCover",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SeatedEntryPauseRestoreAndWideViewportKeepOriginalStandingPose",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    "existingFailures": {
+      "reproducedOnOldRuntime": true,
+      "report": "reports/day0-return-existing-baseline.xml",
+      "cases": [
+        {
+          "name": "RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent",
+          "failure": "  Expected: 0\n  But was:  1.0f\n"
+        },
+        {
+          "name": "TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom",
+          "failure": "  Corridor red spotlight must dim continuously from the archive lighting, without a brightness jump.\n  Expected: less than or equal to 2.57050014f\n  But was:  2.68069577f\n"
+        },
+        {
+          "name": "NormLogoPullsBackIntoTheTerminalThenOneButtonTutorialAndOneSleepStartDayOne",
+          "failure": "  The native GPU composite must contain a visible monitor, not a black frame.\n  Expected: greater than 1000\n  But was:  724\n"
+        }
+      ]
+    },
+    "review": "Read-only code review: no actionable bugs found",
+    "nativePlayerBuilt": false,
+    "nativePlayerSmokeRun": false
+  },
+  "sourceFiles": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "5e59e5e465e09bd5e6361c51820e92147eedf8b1a34553b18522166b7074e3f4"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+      "sha256": "3d3a225fb16ec505ad1c5154b39566ff2c8768d539bea51a3c79fd357eaf15b5"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+      "sha256": "da17dca169a71c08673771c89f4ce72cb97331fe4ee7c05e1d1c725c5c7b45e3"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs",
+      "sha256": "df52140d835ebf65f90fdeb3247c1c034ce00f9c2b1d4089786738c9061d939f"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DayZeroCollisionPlayModeTests.cs",
+      "sha256": "e7252feb7692d4c01d01ab03f9a69f8b359dd4464f059c5a5fdbb58c4ab41a41"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DayZeroOpeningPlayModeTests.cs",
+      "sha256": "eef6cb9a8c5255934eb861cce001968a1ad968b27d27bc976a7b95a45bcb2a9a"
+    }
+  ]
+}
