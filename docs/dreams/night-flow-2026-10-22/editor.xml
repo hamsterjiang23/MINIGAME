@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.1883641">
+  <test-suite type="TestSuite" id="1230" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="182" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.188364" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1415" name="MiniGame.UnityHost.EditorTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DialogueUpdate20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.EditorTests.dll" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.180793" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="107420" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1416" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.180354" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1417" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.176245" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1418" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.172198" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1259" name="DreamSettingsEditorTests" fullname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests" classname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:50:00Z" duration="2.167506" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1260" name="DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign" fullname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests.DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign" methodname="DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign" classname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests" runstate="Runnable" seed="257499275" result="Passed" start-time="2026-10-22 10:49:58Z" end-time="2026-10-22 10:49:59Z" duration="1.457238" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DreamSettingsEditorTests.DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DreamSettingsEditorTests.DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign Passed
+]]></output>
+              </test-case>
+              <test-case id="1262" name="SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey" fullname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests.SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey" methodname="SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey" classname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests" runstate="Runnable" seed="17692997" result="Passed" start-time="2026-10-22 10:49:59Z" end-time="2026-10-22 10:50:00Z" duration="0.281956" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DreamSettingsEditorTests.SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DreamSettingsEditorTests.SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey Passed
+]]></output>
+              </test-case>
+              <test-case id="1261" name="WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults" fullname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests.WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults" methodname="WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults" classname="MiniGame.UnityHost.Tests.DreamSettingsEditorTests" runstate="Runnable" seed="1162641507" result="Passed" start-time="2026-10-22 10:50:00Z" end-time="2026-10-22 10:50:00Z" duration="0.419894" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DreamSettingsEditorTests.WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DreamSettingsEditorTests.WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults Passed
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

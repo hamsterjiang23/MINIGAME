@@ -234,8 +234,8 @@ namespace MiniGame.UnityHost
             {
                 Require(report.dayZeroPurificationClicks == 1 && view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify") == 1,
                     "Day0 must submit its unique purification once.");
-                Require(view.Transcript.Count(line => !line.IsPlayer && line.Completed) == 7,
-                    "The five introduction lines and two reactions must finish before sleeping.");
+                Require(view.Transcript.Count(line => !line.IsPlayer && line.Completed) == 11,
+                    "The nine introduction lines and two reactions must finish before sleeping.");
                 Require(view.TerminalPower == TerminalPowerState.Off, "Day0 must shut down before its single sleep.");
                 Require(view.AllowedInteractions.SequenceEqual(new[] { InteractionTarget.Bed }), "Only the bed may advance Day0.");
                 report.dayZeroSlept = host.Runtime.TryInteract(InteractionTarget.Bed).Accepted;

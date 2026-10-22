@@ -65,7 +65,7 @@ namespace MiniGame.UnityHost.Editor
             importer.importBlendShapes = false;
             importer.materialImportMode = ModelImporterMaterialImportMode.ImportStandard;
             importer.SaveAndReimport();
-            var materials = source.materials.ToDictionary(definition => definition.name, definition => MakeMaterial(definition, artPath));
+            var materials = ImportMaterialAssets(artPath);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             var model = AssetDatabase.LoadAssetAtPath<GameObject>(modelPath);
@@ -185,6 +185,14 @@ namespace MiniGame.UnityHost.Editor
             light.range = range;
             light.shadows = shadows ? LightShadows.Soft : LightShadows.None;
             light.shadowBias = .02f;
+        }
+
+        internal static Dictionary<string, Material> ImportMaterialAssets(string artPath)
+        {
+            var source = JsonUtility.FromJson<SourceManifest>(File.ReadAllText(artPath + "materials.json"));
+            Directory.CreateDirectory(artPath + "Materials");
+            AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+            return source.materials.ToDictionary(definition => definition.name, definition => MakeMaterial(definition, artPath));
         }
 
         private static Material MakeMaterial(MaterialDefinition definition, string artPath)

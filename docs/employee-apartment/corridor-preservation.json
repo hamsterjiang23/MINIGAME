@@ -1,0 +1,129 @@
+{
+  "before": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\EmployeeApartmentImport\\MainRoomCombined.before.unity",
+  "after": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Scenes\\MainRoomCombined.unity",
+  "normalization": "LF line endings, trimmed trailing whitespace, documents sorted by fileID",
+  "scope": "Scene serialized objects/components only; external assets and runtime are not checked.",
+  "preserved": true,
+  "checks": [
+    {
+      "name": "Reference exterior corridor",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 1946347717,
+      "after_root_file_id": 1946347717,
+      "before_counts": {
+        "documents": 274,
+        "game_objects": 63,
+        "components": 211,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 274,
+        "game_objects": 63,
+        "components": 211,
+        "prefab_instances": 0
+      },
+      "before_sha256": "d7d6e8a5973e1a3bf174a6e99df0404531e6ce59acaf8a0684989b9d54622f51",
+      "after_sha256": "d7d6e8a5973e1a3bf174a6e99df0404531e6ce59acaf8a0684989b9d54622f51",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Entrance hinge",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 13228275,
+      "after_root_file_id": 13228275,
+      "before_counts": {
+        "documents": 13,
+        "game_objects": 3,
+        "components": 10,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 13,
+        "game_objects": 3,
+        "components": 10,
+        "prefab_instances": 0
+      },
+      "before_sha256": "f401c0736be541dbd579e35aed2bebc256bb11daf1da54a9da8c9db2123a5e9a",
+      "after_sha256": "f401c0736be541dbd579e35aed2bebc256bb11daf1da54a9da8c9db2123a5e9a",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Entrance frame",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 2129632458,
+      "after_root_file_id": 2129632458,
+      "before_counts": {
+        "documents": 5,
+        "game_objects": 1,
+        "components": 4,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 5,
+        "game_objects": 1,
+        "components": 4,
+        "prefab_instances": 0
+      },
+      "before_sha256": "c7165add68e45486cb3935f09d6d05bc5e352ac50c2b83f2fce38a0d50881735",
+      "after_sha256": "c7165add68e45486cb3935f09d6d05bc5e352ac50c2b83f2fce38a0d50881735",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Door camera alignment",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 530088014,
+      "after_root_file_id": 530088014,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "1abeb395f12a4c372ed704750f54e82b85bdf639823b573493adc738b5b0f531",
+      "after_sha256": "1abeb395f12a4c372ed704750f54e82b85bdf639823b573493adc738b5b0f531",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Door camera outside",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 1626607313,
+      "after_root_file_id": 1626607313,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "066a07b6fed1977e7f442105315b5dc5addc3b4653eed6baeb10fdd5b5854fdd",
+      "after_sha256": "066a07b6fed1977e7f442105315b5dc5addc3b4653eed6baeb10fdd5b5854fdd",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    }
+  ]
+}

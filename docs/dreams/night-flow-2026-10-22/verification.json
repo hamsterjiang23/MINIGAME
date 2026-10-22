@@ -1,0 +1,201 @@
+{
+  "unityVersion": "2022.3.23f1c1",
+  "runs": [
+    {
+      "passed": 15,
+      "sha256": "2685bac91b19796ba5ce78c4dc6d1958729bd9ec2c8953e006bc6039c19d79c0",
+      "failed": 1,
+      "report": "projection.xml"
+    },
+    {
+      "passed": 8,
+      "sha256": "a124caa72342b21c5c00142b72229e1703eb23103c8d54c5bd633765bc17e91b",
+      "failed": 3,
+      "report": "room.xml"
+    },
+    {
+      "passed": 1,
+      "sha256": "357a0e1dea687eb858288bd8d447789a44d629d454d69e93cf0d55b346bc0b26",
+      "failed": 0,
+      "report": "retro.xml"
+    },
+    {
+      "passed": 3,
+      "sha256": "31caf644151292f44b5c690ae9af55cdc67455a640b73fa191d3187a5d789aee",
+      "failed": 0,
+      "report": "bed-lighting.xml"
+    },
+    {
+      "passed": 3,
+      "sha256": "ff265a00363e766bf612a829c00ffbef75c520cae02f73b3d06a842859e88fd8",
+      "failed": 0,
+      "report": "editor.xml"
+    }
+  ],
+  "configuration": {
+    "wakeBlackSeconds": 1,
+    "blackMusicSeconds": 5,
+    "playbackSeconds": 5,
+    "day0": "one sleep",
+    "days": [
+      1,
+      2,
+      3
+    ],
+    "framesPerDay": 10,
+    "vignetteIntensity": 0.12,
+    "cameraReturnSeconds": 1
+  },
+  "latestTestOutcomes": {
+    "MiniGame.UnityHost.Tests.DreamSettingsEditorTests.DailyDefaultsAndTheEditorCatalogMatchTheActiveCampaign": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.AfterDreamPassesFurnitureClampsTheFloorAndWakesSafelyAfterBed": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay": "Passed",
+    "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.RuntimeCheckpointKeepsPlaybackTimeAndCompletesOnlyAfterReturn": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroWaitsForTheBedAndOneInteractionSleepsWithoutShowingADream": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DisableAndRebindRestoreThePreviousControllerState(False)": "Passed",
+    "MiniGame.UnityHost.Tests.DreamImageSequencePlayModeTests.AllThreeProductionDreamsUseTenOrderedFramesOverFiveSeconds": "Passed",
+    "MiniGame.UnityHost.Tests.DreamSettingsEditorTests.SyntheticSpecialRoundKeepsItsLabelAndStableRebellionKey": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DisableAndRebindRestoreThePreviousControllerState(True)": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.SelfReviewOffersOnlyComputerAndDoesNotTeleportOnTerminalEntry": "Passed",
+    "MiniGame.UnityHost.Tests.DreamImageSequencePlayModeTests.SubtleVignetteDarkensCornersWithoutChangingTheirColorBalanceOrTheCenter": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamPreviewStopRebindAndDisableRestoreExistingRetroFlags": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.FirstBedBlackScreenPlaysMusicAndPausedRestorePreservesTheRemainingFiveSecondWait": "Passed",
+    "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.LegacyProceduralDreamsHaveDeterministicMovingPixelsAndAnOffscreenOnlyCamera": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DreamAudioDisabledSourcesStayStoppedAndReenableSynchronizesActualPlayback": "Passed",
+    "MiniGame.UnityHost.Tests.DreamBedLightingPlayModeTests.ReturningRevealWorksBeforeDreamCompletionAndRebindClearsItsTransientOverride": "Passed",
+    "MiniGame.UnityHost.Tests.DreamImageSequencePlayModeTests.MissingFramesUseTheArtworkOrBlackWithoutEnablingProceduralEffects": "Passed",
+    "MiniGame.UnityHost.Tests.DreamImageSequencePlayModeTests.ZeroVignettePreservesEverySourcePixelDespiteLegacySettingsAndPriorProceduralRendering": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DayZeroWakeRepositionsSafelyWithoutChangingLookOrControllerState(False)": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.DayZeroWakeRepositionsSafelyWithoutChangingLookOrControllerState(True)": "Passed",
+    "MiniGame.UnityHost.Tests.DreamImageSequencePlayModeTests.TenFramesAdvanceEveryHalfSecondWithoutBlendingAndHoldTheLastImage": "Passed",
+    "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.PreviewFramesWallPausesAndRestoresCameraAndProjection": "Passed",
+    "MiniGame.UnityHost.Tests.DreamProjectionPlayModeTests.PausedAlignmentCheckpointRestoresTheRemainingBlackScreenTime": "Passed",
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneFirstBedProjectsOnTheAuthoredWallAndReturnsToTheBedWithoutAdvancingTheDay": "Passed",
+    "MiniGame.UnityHost.Tests.DreamSettingsEditorTests.WindowSerializedEditsUndoRedoAndSaveReloadWithoutChangingRealDefaults": "Passed",
+    "MiniGame.UnityHost.Tests.DreamBedLightingPlayModeTests.BeforeTheFirstSleepEachEveningUsesTheOrdinaryNightProfile": "Passed",
+    "MiniGame.UnityHost.Tests.DreamBedLightingPlayModeTests.EveryNightRestoresOnlyTheBedWhilePausedAndPreservesLightingPreviews": "Passed",
+    "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.BedGuidanceIsAvailableBeforeSleepAndSelfReviewKeepsOnlyTheTerminalGlow": "Passed"
+  },
+  "supersededTest": {
+    "reason": "Old pre-sleep test assumed automatic projection. Current contract offers the first bed interaction in Evening.",
+    "replacement": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.BedGuidanceIsAvailableBeforeSleepAndSelfReviewKeepsOnlyTheTerminalGlow",
+    "oldName": "MiniGame.UnityHost.Tests.DreamTraversalPlayModeTests.BedLightingStartsAfterDreamAndSelfReviewKeepsOnlyTheTerminalGlow"
+  },
+  "core": {
+    "failed": 0,
+    "passed": 114,
+    "report": "core.trx"
+  },
+  "captures": [
+    {
+      "sha256": "c2304de8b291ebccf1f2804055212fc5fcb85b9b8e1d8933838053002d1c651c",
+      "scope": "D3D11 production camera, actual-clock PlayMode after origin/main conflict resolution",
+      "path": "day1-after-shutdown.png"
+    },
+    {
+      "sha256": "a889d62fc7dc9ac1624da2adab93cdb4e582ba78184797476f8b061b2734a27a",
+      "scope": "D3D11 production camera, actual-clock PlayMode after origin/main conflict resolution",
+      "path": "day1-natural-dream.png"
+    },
+    {
+      "sha256": "0b0297a11932ef646aa11850f0d24556e32b13616f31df799683e81a2bc6a4ce",
+      "scope": "D3D11 production camera, actual-clock PlayMode after origin/main conflict resolution",
+      "path": "day1-spotlight-bed.png"
+    }
+  ],
+  "latestFailed": 0,
+  "latestPassed": 29,
+  "snapshot": "Artifacts/DialogueUpdate20261022/UnityProject",
+  "limitations": [
+    "No new standalone Windows Player build",
+    "No new real-time video or independent audio listening acceptance",
+    "Original supplied frame textures include baked scanline/color details; runtime adds only static vignette"
+  ],
+  "scope": [
+    "Isolated Unity Editor PlayMode, actual Combined scene and D3D11 rendering",
+    "Core and Presentation locked restore, Release build, tests",
+    "EditMode serialized settings undo/redo/save/reload",
+    "Captured production camera during actual-clock Day1 sequence"
+  ],
+  "presentation": {
+    "failed": 0,
+    "passed": 233,
+    "report": "presentation.trx"
+  },
+  "date": "2026-10-22",
+  "finalPlayMode": {
+    "sha256": "5e6ff0d7f043a91ad76c46890078b4d55bb638de56c54fbf7449d65e49fa5c68",
+    "failed": 0,
+    "scope": "Merged origin/main runtime, scene and resources copied after all conflict markers were resolved",
+    "report": "final-playmode.xml",
+    "passed": 26
+  },
+  "editMode": {
+    "failed": 0,
+    "report": "editor.xml",
+    "passed": 3
+  },
+  "validatedFiles": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+      "sha256": "6e884c0accb67d787b91c37c6a808b8ed4d81bf87154a5595cc08e9a00b07dde"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs",
+      "sha256": "afc0fc437fb4a62ce7e6c151920e45a5514cfc94d47d150289a962760f2551b2"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs",
+      "sha256": "286b678d53cce5c6facffecdf1d9fed17a0b72f01bf7fc188c35caf4492f3202"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "585579213365413d11219d717b9b418eb1db7ce5d824f8bbf3ea3b8520b7a6bc"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs",
+      "sha256": "5735556d15bc5ba51b6092fd2df9102f790389c654fc4d663fe8ac65ca67fb2c"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs",
+      "sha256": "19cf708ebefaf1e25a4669cba0a47b64792bc99f1f44f8204d240b263cc06b92"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+      "sha256": "bc7792c34f64bc49f3532b972c37d7cce30e56b10202e70e8504954b69c4e82f"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "a5efaddc30d189e957bf617367830b8cf7c668fa5c123b06a594f88ccbe2f395"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+      "sha256": "bc4b73249edd9d5e8ff82934ccb0c04f65cfebb0ebba45c53db4283faed6dc19"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/DreamProjectionAnimation.shader",
+      "sha256": "c85abc4eb00ab370f75511c10fedd7e0479e9a2d161fe4cbce3ea62a3e1f18a4"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset",
+      "sha256": "c4425ad863151e0d56d2713326f030272cd2bd6916b53039930560d8dd4aed65"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "3bf3d235a1d726ea07b2fee14270592ae720c14e52147220f1e0add881ea2a4e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/EditMode/DreamSettingsEditorTests.cs",
+      "sha256": "fe2266f0cc8d3661bdfab592327101f7841cd8aa474531afd978508c84f7edf7"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DreamBedLightingPlayModeTests.cs",
+      "sha256": "9737e0e656df8e116d6d729a171bfba2cce98261f3b53c7a84633836f7110f72"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DreamCampaignIntegrationTests.cs",
+      "sha256": "ac26f62e055cb5fd7e2be144972fac2860187011b974c59a8e4759a31ee05542"
+    }
+  ]
+}

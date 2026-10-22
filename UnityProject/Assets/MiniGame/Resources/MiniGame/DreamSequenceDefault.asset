@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: DreamSequenceDefault
   m_EditorClassIdentifier: 
   EnableDreamFlow: 1
+  BlackScreenSeconds: 5
+  WakeBlackSeconds: 1
   AlignSeconds: 1.2
   ReturnSeconds: 1
   ProjectionInset: 0.15
   Days:
   - Day: 1
-    Duration: 10
+    Duration: 5
     Artwork: {fileID: 2800000, guid: 915a5d46376483b469b786e1bb458d9b, type: 3}
     Frames:
     - {fileID: 2800000, guid: 915a5d46376483b469b786e1bb458d9b, type: 3}
@@ -31,12 +33,13 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 91d4f7f474b1fbb4ca5d65593d1a36d5, type: 3}
     - {fileID: 2800000, guid: 1f45752789866bd41bdde987bd2fcb15, type: 3}
     - {fileID: 2800000, guid: e9dd80d31a7c9f64ea1c65f6d5796279, type: 3}
-    CrossfadeSeconds: 0.15
+    CrossfadeSeconds: 0
     Music: 2
-    MotionIntensity: 0.8
-    PostIntensity: 0.8
+    MotionIntensity: 0
+    PostIntensity: 0
+    VignetteIntensity: 0.12
   - Day: 2
-    Duration: 10
+    Duration: 5
     Artwork: {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
     Frames:
     - {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
@@ -49,12 +52,13 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 7dbcab28fab7dae49ad3c176435d93be, type: 3}
     - {fileID: 2800000, guid: f892b3f391662a84ba319c8d943f3919, type: 3}
     - {fileID: 2800000, guid: b326627087b7a804ab8c3401d955bfde, type: 3}
-    CrossfadeSeconds: 0.2
+    CrossfadeSeconds: 0
     Music: 3
-    MotionIntensity: 0.7
-    PostIntensity: 1
+    MotionIntensity: 0
+    PostIntensity: 0
+    VignetteIntensity: 0.12
   - Day: 3
-    Duration: 10
+    Duration: 5
     Artwork: {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}
     Frames:
     - {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}
@@ -67,10 +71,11 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 7110690a89464644995127a0fec3cf2a, type: 3}
     - {fileID: 2800000, guid: be747b7141958cc4f8cc95636c71c405, type: 3}
     - {fileID: 2800000, guid: bfbb4bfcd16810043b1825c9eb477f80, type: 3}
-    CrossfadeSeconds: 0.1
+    CrossfadeSeconds: 0
     Music: 12
-    MotionIntensity: 0.65
-    PostIntensity: 1.2
+    MotionIntensity: 0
+    PostIntensity: 0
+    VignetteIntensity: 0.12
   UseRoomCubemapEnding: 1
   RoomPanoramaSkybox: {fileID: 2100000, guid: 83e91a72e75b4b8f80c037724a51789c, type: 2}
   ShowRoomOutline: 0

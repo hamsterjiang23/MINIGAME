@@ -48,11 +48,14 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_003"), Is.True);
             Assert.That(host.Runtime.IsDialogueLineComplete(checkpointLine), Is.False);
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+            var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+            AssertPatientFeed(host, "tutorial", catalog.Find("D0_01"));
             string checkpoint = host.Runtime.Save();
             host.RestoreCheckpoint(checkpoint);
             Assert.That(host.Runtime.GetView().Paused, Is.True);
             Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False, "A running tutorial checkpoint must not replay the opening.");
             Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.EqualTo(1));
+            AssertPatientFeed(host, "tutorial", catalog.Find("D0_01"));
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.True);
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_002"), Is.True);
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_003"), Is.True);
@@ -73,7 +76,7 @@ namespace MiniGame.UnityHost.Tests
             { var next = Find(host, "Continue"); if (next != null) yield return Click(next); yield return null; }
             var view = host.Runtime.GetView();
             Assert.That(view.Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition), Describe(host));
-            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(5));
+            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(9));
             Assert.That(view.Transcript.Where(line => !line.IsPlayer).All(line => line.Completed), Is.True);
             Assert.That(view.Game.AvailableDispositions, Is.EqualTo(new[] { Disposition.Purify }));
             Assert.That(Find(host, "Disposition-Treat"), Is.Null);
@@ -88,7 +91,7 @@ namespace MiniGame.UnityHost.Tests
             { var next = Find(host, "Continue"); if (next != null) yield return Click(next); yield return null; }
             view = host.Runtime.GetView();
             Assert.That(view.TerminalPage, Is.EqualTo(TerminalPage.Archive), Describe(host));
-            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(7));
+            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(11));
             Assert.That(view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify"), Is.EqualTo(1));
             Assert.That(view.Transcript.Select(line => line.SourceNodeId).Distinct().Count(), Is.EqualTo(view.Transcript.Count));
             var package = Campaign();
@@ -97,7 +100,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(core.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.Zero);
             Assert.That(view.Game.RemainingPurificationQuota, Is.EqualTo(0));
             Assert.That(view.PresentedPatientId, Is.EqualTo("tutorial"));
-            Debug.Log("MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; five intro and two reaction lines; page checkpoint; one purification; trust=0");
+            Debug.Log("MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; nine intro and two reaction lines; page checkpoint; one purification; trust=0");
         }
 
         [UnityTest, Timeout(240000)]
@@ -146,30 +149,16 @@ namespace MiniGame.UnityHost.Tests
                     var latest = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration);
                     if (latest != null && photographed.Add(view.PresentedPatientId))
                     {
+                        string portraitId = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration && line.PortraitId.Length > 0)?.PortraitId
+                            ?? PortraitCatalog.BasePortrait(view.PresentedPatientId);
+                        var expectedSprite = catalog.Find(portraitId);
+                        Assert.That(expectedSprite, Is.Not.Null, "No displayed portrait for " + view.PresentedPatientId);
                         if (view.Game.Day == 0)
                         {
-                            var supervisor = host.Screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "Day0SupervisorFeed");
-                            Assert.That(supervisor.gameObject.activeInHierarchy, Is.True);
-                            Assert.That(supervisor.texture, Is.SameAs(Resources.Load<Texture2D>("MiniGame/Day0Supervisor")));
+                            Assert.That(view.PresentedPatientId, Is.EqualTo("tutorial"));
+                            Assert.That(portraitId, Is.EqualTo("D0_01"), "The tutorial guide is not the outside-door supervisor.");
                         }
-                        else
-                        {
-                            string portraitId = view.Transcript.LastOrDefault(line => !line.IsPlayer && !line.IsNarration && line.PortraitId.Length > 0)?.PortraitId
-                                ?? PortraitCatalog.BasePortrait(view.PresentedPatientId);
-                            var expectedSprite = catalog.Find(portraitId);
-                            Assert.That(expectedSprite, Is.Not.Null, "No displayed portrait for " + view.PresentedPatientId);
-                            var portrait = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait");
-                            Assert.That(portrait.enabled && portrait.gameObject.activeInHierarchy, Is.True);
-                            Assert.That(portrait.sprite, Is.SameAs(expectedSprite));
-                            var feed = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
-                            var feedImage = feed.GetComponent<RawImage>();
-                            Assert.That(feedImage.enabled && feedImage.gameObject.activeInHierarchy, Is.True);
-                            Assert.That(feed.PatientId, Is.EqualTo(view.PresentedPatientId));
-                            Assert.That(feed.CurrentSprite, Is.SameAs(expectedSprite));
-                            Assert.That(feed.Output, Is.Not.Null);
-                            Assert.That(feedImage.texture, Is.SameAs(feed.Output));
-                            Assert.That(feed.RenderedFrames, Is.GreaterThan(0));
-                        }
+                        AssertPatientFeed(host, view.PresentedPatientId, expectedSprite);
                         yield return new WaitForSecondsRealtime(.14f);
                         if (expected == EndingType.TakenAway)
                             yield return PrototypePlayModeTests.CaptureIfRequested(host, "campaign-actor-" + view.PresentedPatientId);
@@ -206,6 +195,22 @@ namespace MiniGame.UnityHost.Tests
             yield return Until(host, () => Find(host, "Continue") != null, "ending line is presented by Yarn");
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "campaign-ending-" + expected);
             Debug.Log("MINIGAME_CAMPAIGN_ROUTE_PASSED ending=" + expected + " meetings=" + visited.Count + " sourceLines=" + sourceLines.Count + " actors=" + photographed.Count);
+        }
+
+        private static void AssertPatientFeed(MiniGameBootstrap host, string patientId, Sprite expectedSprite)
+        {
+            Assert.That(expectedSprite, Is.Not.Null);
+            var feed = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
+            var feedImage = feed.GetComponent<RawImage>();
+            Assert.That(feedImage.isActiveAndEnabled, Is.True);
+            Assert.That(feed.PatientId, Is.EqualTo(patientId));
+            Assert.That(feed.CurrentSprite, Is.SameAs(expectedSprite));
+            Assert.That(feed.Output, Is.Not.Null);
+            Assert.That(feedImage.texture, Is.SameAs(feed.Output));
+            Assert.That(feed.RenderedFrames, Is.GreaterThan(0));
+            foreach (var portrait in host.Screen.GetComponentsInChildren<Image>(true)
+                .Where(image => image.name == "CurrentPortrait" || image.name == "PreviousPortrait"))
+                Assert.That(portrait.enabled, Is.False, "Fallback portraits must stay hidden while the room feed is live.");
         }
 
         private static IEnumerator Step(MiniGameBootstrap host, CompiledDialoguePackage package, EndingType ending)

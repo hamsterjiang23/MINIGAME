@@ -34,12 +34,6 @@ namespace MiniGame.UnityHost
         private Color surfaceEmission;
         private bool surfaceReady;
         private TerminalSeating seating;
-        [SerializeField, Min(.01f)] private float bedLookSeconds = 1.25f;
-        [SerializeField, Min(.01f)] private float bedFadeSeconds = .4f;
-        private Quaternion sleepStandingRotation, sleepActorRotation;
-        private bool hasSleepView, completingSleep, waking;
-        private int lastPresentedDay = -1;
-        public bool SleepCameraActive => hasSleepView || waking;
         public float TerminalTransitionProgress { get; private set; }
         public bool IsTransitioning => screen != null && screen.TransitionLocked;
         public TerminalEntryPhase EntryPhase { get; private set; }
@@ -58,7 +52,6 @@ namespace MiniGame.UnityHost
             if (runtime != null) runtime.Changed -= Present;
             if (playing != null) StopCoroutine(playing);
             playing = null;
-            RestoreSleepView();
             screen?.EndDayZeroOpening();
             seating?.Restore(true);
             if (hasRoomPose)
@@ -76,13 +69,6 @@ namespace MiniGame.UnityHost
         {
             actorPosition = seatedPlayer != null ? seatedPlayer.transform.position : Vector3.zero;
             actorRotation = seatedPlayer != null ? seatedPlayer.transform.rotation : Quaternion.identity;
-            if (hasSleepView)
-            {
-                actorRotation = sleepActorRotation;
-                cameraPosition = viewCamera.transform.position; cameraRotation = sleepStandingRotation;
-                fieldOfView = viewCamera.fieldOfView;
-                return true;
-            }
             if (seating != null && seating.TryGetStandingPose(out var position, out var rotation))
             { actorPosition = position; actorRotation = rotation; }
             cameraPosition = roomPosition; cameraRotation = roomRotation; fieldOfView = roomFieldOfView;
@@ -99,9 +85,7 @@ namespace MiniGame.UnityHost
             if (runtime != null) runtime.Changed -= Present;
             if (playing != null) StopCoroutine(playing);
             playing = null;
-            RestoreSleepView();
             runtime = game; screen = ui; activeToken = null;
-            lastPresentedDay = game.GetView().Game.Day;
             screen.EndDayZeroOpening();
             screen.SetTransitionLocked(false); screen.SetFade(0); screen.SetGlitch(0);
             screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
@@ -191,18 +175,6 @@ namespace MiniGame.UnityHost
                 || view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.AfterDream;
             if (bedGuide != null && (bedtimeGuidance == null || !bedtimeGuidance.isActiveAndEnabled))
                 bedGuide.enabled = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream;
-            if (completingSleep) return;
-            bool newMorning = lastPresentedDay >= 0 && view.Game.Day > lastPresentedDay
-                && (view.Game.Phase == GamePhase.MorningInspection || view.Game.Phase == GamePhase.Apartment);
-            lastPresentedDay = view.Game.Day;
-            if (newMorning)
-            {
-                CaptureSleepView();
-                activeToken = view.Cue?.Token;
-                if (playing != null) StopCoroutine(playing);
-                playing = StartCoroutine(WakeTransition());
-                return;
-            }
             var cue = view.Cue;
             string token = cue?.Token;
             if (activeToken == token)
@@ -212,9 +184,9 @@ namespace MiniGame.UnityHost
             }
             activeToken = token;
             if (playing != null) { StopCoroutine(playing); playing = null; }
-            screen.SetTransitionLocked(false);
+            screen.SetTransitionLocked(cue?.Kind == PresentationKind.Dream);
             screen.EndDayZeroOpening();
-            screen.SetFade(0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
+            screen.SetFade(cue?.Kind == PresentationKind.Dream ? 1 : 0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
             screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
             if (cue == null)
             {
@@ -257,7 +229,6 @@ namespace MiniGame.UnityHost
                 viewCamera.transform.SetPositionAndRotation(terminalCameraPose.position, terminalCameraPose.rotation);
                 viewCamera.fieldOfView = 48;
             }
-            screen.Audio?.PlayMenuMusic();
             screen.BeginDayZeroOpening(); EntryPhase = TerminalEntryPhase.OpeningMonitor;
             TerminalTransitionProgress = 0;
             while (activeToken == token && runtime.GetView().Paused) yield return null;
@@ -271,7 +242,6 @@ namespace MiniGame.UnityHost
                 yield return null;
             }
             if (activeToken != token) yield break;
-            screen.Audio?.EndMenuMusic();
             EntryPhase = TerminalEntryPhase.OpeningPullback;
             const float duration = 2.2f;
             float elapsed = 0;
@@ -528,70 +498,34 @@ namespace MiniGame.UnityHost
 
         private IEnumerator SleepTransition(string token)
         {
-            CaptureSleepView();
             screen.SetTransitionLocked(true);
+            bool waking = runtime.GetView().Game.Phase == GamePhase.AfterDream;
             float elapsed = 0;
-            var ceilingRotation = Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0);
-            while (elapsed < bedLookSeconds + bedFadeSeconds && activeToken == token)
+            while (elapsed < .8f && activeToken == token)
             {
                 if (runtime.GetView().Paused) { yield return null; continue; }
                 elapsed += Time.unscaledDeltaTime;
-                viewCamera.transform.rotation = Quaternion.Slerp(sleepStandingRotation, ceilingRotation,
-                    Ease(Mathf.Clamp01(elapsed / Mathf.Max(.01f, bedLookSeconds))));
-                screen.SetFade(Mathf.Clamp01((elapsed - bedLookSeconds) / Mathf.Max(.01f, bedFadeSeconds)));
+                // Keep opacity 1 reserved for the final yielded frame, including float rounding near the endpoint.
+                screen.SetFade(elapsed >= .8f ? 1 : Mathf.Min(.9999f, Ease(Mathf.Clamp01(elapsed / .8f))));
                 yield return null;
             }
             while (activeToken == token && runtime.GetView().Paused) yield return null;
             if (activeToken != token) yield break;
-            // The dream director captures a standing return pose behind the black frame.
-            // Waking later supplies the visible, reversed ceiling-to-standing motion.
-            viewCamera.transform.rotation = sleepStandingRotation;
-            playing = null;
-            completingSleep = true;
-            try { runtime.CompleteCue(token); }
-            finally { completingSleep = false; }
-            Present(runtime.GetView());
-        }
-
-        private void CaptureSleepView()
-        {
-            if (hasSleepView || viewCamera == null) return;
-            sleepStandingRotation = viewCamera.transform.rotation;
-            sleepActorRotation = seatedPlayer != null ? seatedPlayer.transform.rotation : Quaternion.identity;
-            hasSleepView = true;
-        }
-
-        private void RestoreSleepView()
-        {
-            if (hasSleepView && viewCamera != null)
+            if (waking)
             {
-                if (seatedPlayer != null) seatedPlayer.transform.rotation = sleepActorRotation;
-                viewCamera.transform.rotation = sleepStandingRotation;
+                float hold = GetComponent<MiniGameBootstrap>()?.DreamProfile?.WakeBlackSeconds ?? 1;
+                if (float.IsNaN(hold) || float.IsInfinity(hold)) hold = 1;
+                float held = 0;
+                while (held < Mathf.Max(.1f, hold) && activeToken == token)
+                {
+                    if (!runtime.GetView().Paused) held += Time.unscaledDeltaTime;
+                    yield return null;
+                }
+                while (activeToken == token && runtime.GetView().Paused) yield return null;
+                if (activeToken != token) yield break;
             }
-            hasSleepView = completingSleep = waking = false;
-        }
-
-        private IEnumerator WakeTransition()
-        {
-            waking = true;
-            screen.SetTransitionLocked(true);
-            var ceilingRotation = Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0);
-            viewCamera.transform.rotation = ceilingRotation;
-            screen.SetFade(1);
-            float elapsed = 0;
-            while (elapsed < bedFadeSeconds + bedLookSeconds)
-            {
-                if (runtime.GetView().Paused) { yield return null; continue; }
-                elapsed += Time.unscaledDeltaTime;
-                screen.SetFade(1 - Mathf.Clamp01(elapsed / Mathf.Max(.01f, bedFadeSeconds)));
-                viewCamera.transform.rotation = Quaternion.Slerp(ceilingRotation, sleepStandingRotation,
-                    Ease(Mathf.Clamp01((elapsed - bedFadeSeconds) / Mathf.Max(.01f, bedLookSeconds))));
-                yield return null;
-            }
-            RestoreSleepView();
-            screen.SetFade(0);
-            screen.SetTransitionLocked(false);
             playing = null;
+            runtime.CompleteCue(token);
         }
 
         private IEnumerator ReactionSignal(string token)

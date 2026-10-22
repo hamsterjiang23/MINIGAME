@@ -69,6 +69,9 @@ namespace MiniGame.UnityHost.Tests
             camera.fieldOfView = 72;
             wake.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y + 135, 0);
             Assert.That(player.InteractFocused(), Is.True);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
+            Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Sleep));
+            Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
             Assert.That(player.DreamTraversalActive, Is.False);
             Assert.That(controller.enabled, Is.True);
@@ -149,7 +152,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator BedLightingStartsAfterDreamAndSelfReviewKeepsOnlyTheTerminalGlow()
+        public IEnumerator BedGuidanceIsAvailableBeforeSleepAndSelfReviewKeepsOnlyTheTerminalGlow()
         {
             CreateRig();
             var emissiveShader = Shader.Find("Standard");
@@ -170,9 +173,9 @@ namespace MiniGame.UnityHost.Tests
             guidance.ConfigureSelfReview(computer.Surface);
             var runtime = Runtime();
             DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Evening && !view.TerminalOpen && view.Cue == null);
-            Assert.That(BedtimeGuidance.IsSleepOnly(runtime.GetView()), Is.False);
+            Assert.That(BedtimeGuidance.IsSleepOnly(runtime.GetView()), Is.True);
             guidance.Bind(runtime);
-            Assert.That(spotlight.enabled, Is.False);
+            Assert.That(spotlight.enabled, Is.True, "The fallback rig has no ordinary-night profile and uses the existing bed guide before sleep.");
             Assert.That(guidance.Isolation, Is.EqualTo(1));
             Assert.That(runtime.BeginNightDream().Accepted, Is.True);
             guidance.Bind(runtime);

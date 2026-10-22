@@ -92,7 +92,7 @@ namespace MiniGame.UnityHost.Editor
 
         // Slice metadata only; keep the generated source PNG unchanged. One union crop per
         // character keeps its feet, scale and framing stable across all expressions.
-        private static Rect CharacterCrop(string path, int width, int height, int count, out Vector2[] pivots)
+        internal static Rect CharacterCrop(string path, int width, int height, int count, out Vector2[] pivots)
         {
             var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
             try
@@ -134,7 +134,7 @@ namespace MiniGame.UnityHost.Editor
         public static Sprite FindRemadeSprite(string id)
         {
             if (string.IsNullOrEmpty(id)) return null;
-            var named = AssetDatabase.LoadAllAssetsAtPath("Assets/MiniGame/Art/Characters/NamedPortraits/" + id + ".png")
+            var named = AssetDatabase.LoadAllAssetsAtPath("Assets/MiniGame/Art/Characters/NamedPortraits/" + NamedPortraitImport.NamedId(id) + ".png")
                 .OfType<Sprite>().FirstOrDefault();
             if (named != null) return named;
             string prefix = id.StartsWith("D0_", StringComparison.Ordinal) ? "D0" : id.Substring(0, Math.Min(2, id.Length));
@@ -187,10 +187,11 @@ namespace MiniGame.UnityHost.Editor
             {
                 if (GUILayout.Button("保存配置", EditorStyles.toolbarButton)) AssetDatabase.SaveAssetIfDirty(profile);
                 if (GUILayout.Button("定位配置", EditorStyles.toolbarButton)) EditorGUIUtility.PingObject(profile);
-                if (GUILayout.Button("导入重绘立绘", EditorStyles.toolbarButton))
+                if (GUILayout.Button("更新完整PNG目录", EditorStyles.toolbarButton))
                 {
                     StopPreview();
-                    message = "已导入 " + PatientMonitorAssets.ImportArtwork() + " 个表情；原素材保留。";
+                    NamedPortraitImport.Run();
+                    message = "已更新命名PNG与表情目录；原图保持不变。";
                 }
             }
             EditorGUILayout.HelpBox(message + " 参数可撤销；播放中保存也会保留。", MessageType.Info);
@@ -199,7 +200,7 @@ namespace MiniGame.UnityHost.Editor
             if (rooms.Length == 0) { EditorGUILayout.HelpBox("请配置人物房间。", MessageType.Warning); return; }
             EditorGUI.BeginChangeCheck();
             roomIndex = EditorGUILayout.Popup("人物房间", Mathf.Clamp(roomIndex, 0, rooms.Length - 1), labels);
-            expression = EditorGUILayout.IntSlider("表情编号", expression + 1, 1, rooms[roomIndex]?.PatientId == "tutorial" ? 2 : 5) - 1;
+            expression = EditorGUILayout.IntSlider("表情编号", expression + 1, 1, NamedPortraitImport.ExpressionCount(rooms[roomIndex]?.PatientId)) - 1;
             if (EditorGUI.EndChangeCheck() && preview != null) ApplyPreviewPortrait();
             using (new EditorGUILayout.HorizontalScope())
             {
@@ -224,6 +225,7 @@ namespace MiniGame.UnityHost.Editor
             {
                 foreach (string property in new[] { "PatientId", "Label", "ActorHeight", "ActorOffset" })
                     EditorGUILayout.PropertyField(roomProperty.FindPropertyRelative(property));
+                EditorGUILayout.PropertyField(serialized.FindProperty("PortraitPlacements"), true);
             }
             if (serialized.ApplyModifiedProperties())
             {

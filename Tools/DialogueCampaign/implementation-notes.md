@@ -27,3 +27,5 @@ Next read: README.md, source-repairs.json, then docs/dialogue-update-2026-10-21/
 Historical baseline: 994 rows/16 meetings, Python3 and authoring tests30; current results are recorded in the dated update report.
 
 Review fix: trust bounds are now checked after every ordinary choice as well as after disposition. A later opposite delta cannot hide an earlier Int32 overflow. Added max/+1/-1 and min/-1/+1 regressions plus wrong-day/missing-choice negative cases; focused authoring suite 34/34 passes. Canonical campaign assets unchanged.
+
+2026-10-22 source refresh: all1440 authored rows were reviewed. Day0 now keeps all12 source rows (9 introduction lines, one Purify action,2 reaction lines); the obsolete duplicate exclusion is removed. Priest JN05 was removed from the new portrait definitions; the user explicitly approved JN04 for its7 remaining references. Existing other-day prose and numeric rules are unchanged. The original341 repair preconditions were rechecked before repinning file hashes. Current totals:1299 active rows,141 retained conflict exclusions,122 recorded adaptations. Evidence: docs/dialogue-update-2026-10-22/verification.json.

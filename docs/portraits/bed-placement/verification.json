@@ -1,0 +1,20 @@
+{
+  "source": "Copied current PatientSurveillanceFeed, PatientMonitorProfile, PatientMonitorRoom and shaders into isolated Unity 2022.3 project",
+  "seatedBottom": {
+    "x": 0.625,
+    "y": 0.14990234375,
+    "z": 10.0
+  },
+  "defaultBottom": {
+    "x": 0.419921875,
+    "y": 0.010009765625,
+    "z": 10.0
+  },
+  "checks": "native compile; real monitor render; independent pose anchor; default placement restoration",
+  "exactSourceSHA256": {
+    "PatientSurveillanceFeed": "554db96cc7cd11f280725bd21f2985ea46e9e7faeadf34382d5cea1c3f016a9f",
+    "PatientMonitorProfile": "d392173bcbe34c6b570ae3a357489726e48e352ccb9a5c73e5cc11f35d6f9c6c",
+    "PatientMonitorRoom": "19ba2e445c53d0c07fcdfbf9ed191a4d44de81d9fda9f86e00f89cf935459310"
+  },
+  "mainProjectPlayMode": "not rerun; shared editor automation timed out"
+}

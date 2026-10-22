@@ -422,12 +422,13 @@ namespace MiniGame.UnityHost
         }
 
         private static readonly KeyCode[] DialogueKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.Return,
-            KeyCode.KeypadEnter, KeyCode.Space, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.F3 };
+            KeyCode.KeypadEnter, KeyCode.Space, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4 };
 
         // The same input path is used by live keyboard input and PlayMode checks.
         // Escape stays in MiniGameBootstrap and closes the read-only record viewer before opening pause.
         public bool HandleTerminalKey(KeyCode key)
         {
+            if (key == KeyCode.F2 || key == KeyCode.F3) return false;
             if (PresentationToolsBlockInput) return false;
             if (current != null && !current.Paused && pauseClosedFrame != Time.frameCount && current.TerminalOpen && PowerPhase == TerminalPowerPhase.Boot
                 && (key == KeyCode.Return || key == KeyCode.KeypadEnter)) { skipBootRequested = true; return true; }
@@ -443,7 +444,6 @@ namespace MiniGame.UnityHost
                         terminalView.ScrollSavedHistory(key == KeyCode.UpArrow ? 1 : -1);
                     return key != KeyCode.F2;
                 }
-                if (key == KeyCode.F3) return terminalView.OpenHistory();
                 if (current.TerminalPage == TerminalPage.SelfReview) return terminalView.HandleSelfReviewKey(key);
                 if (terminalView.HandleDirectoryKey(key) || terminalView.HandleArchiveKey(key)) return true;
                 if (terminalView.HandleDispositionKey(key)) return true;

@@ -309,7 +309,7 @@ namespace MiniGame.UnityHost
             Bind(runtime);
             var projection = GetComponent<DreamSequenceDirector>();
             if (projection != null && projection.OwnsCamera)
-                SetDreamPlayback(projection.IsPlaying, projection.ActiveDay, runtime.GetView().Paused);
+                SetDreamPlayback(projection.MusicActive, projection.ActiveDay, runtime.GetView().Paused);
         }
     }
 }

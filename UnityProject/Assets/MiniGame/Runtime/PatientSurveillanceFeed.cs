@@ -9,6 +9,7 @@ namespace MiniGame.UnityHost
     public sealed class PatientSurveillanceFeed : MonoBehaviour
     {
         public const int StageLayer = 31;
+        private int stageSlot = -1;
         private readonly Dictionary<string, PatientMonitorRoom> rooms = new Dictionary<string, PatientMonitorRoom>();
         private PatientMonitorProfile profile;
         private RawImage image;
@@ -24,7 +25,7 @@ namespace MiniGame.UnityHost
         private string patientId;
         private Sprite sprite;
         private float clock, sinceFrame;
-        private bool paused, failed, needsFrame;
+        private bool paused, failed, needsFrame, showing;
         private int revision;
         public Sprite CurrentSprite => sprite;
         public string PatientId => patientId;
@@ -35,6 +36,9 @@ namespace MiniGame.UnityHost
         public float PresentationTime => clock;
         public bool UseExternalClock { get; set; }
         public bool IsCloseUp { get; private set; }
+        public bool IsShowing => image != null && image.isActiveAndEnabled && output != null
+            && output.IsCreated() && image.texture == output;
+        public event System.Action<bool> VisibilityChanged;
 
         public void SetCloseUp(bool value)
         {
@@ -47,8 +51,10 @@ namespace MiniGame.UnityHost
 
         public void Initialize(RawImage target, PatientMonitorProfile configuration)
         {
+            if (image != target || profile != configuration) ReleaseStage();
             image = target;
             profile = configuration;
+            failed = false;
             image.raycastTarget = false;
             image.enabled = false;
         }
@@ -71,7 +77,7 @@ namespace MiniGame.UnityHost
             if (image == null || profile == null || !profile.Enabled || sprite == null || failed) return false;
             settings = profile.Find(patientId);
             if (settings == null) return false;
-            if (stage == null || revision != profile.Revision)
+            if (stage == null || stageSlot < 0 || rooms.Count == 0 || revision != profile.Revision)
             {
                 ReleaseStage();
                 Build();
@@ -93,7 +99,16 @@ namespace MiniGame.UnityHost
                 return;
             }
             stage = new GameObject("Patient surveillance stages") { hideFlags = HideFlags.DontSave };
-            stage.transform.position = new Vector3(6000, -6000, 0);
+            // Preview and gameplay feeds can coexist. They share the CCTV layer, so place
+            // their stages beyond each other's far plane rather than photographing both.
+            // Inspect live stages so an Editor script reload cannot reset a static slot pool.
+            var occupied = new HashSet<int>();
+            foreach (var other in Resources.FindObjectsOfTypeAll<PatientSurveillanceFeed>())
+                if (other != this && other.stage != null)
+                    occupied.Add(Mathf.RoundToInt(other.stage.transform.position.z / 128f));
+            stageSlot = 0;
+            while (occupied.Contains(stageSlot)) stageSlot++;
+            stage.transform.position = new Vector3(6000, -6000, stageSlot * 128f);
             UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(stage, gameObject.scene);
             int index = 0;
             foreach (var entry in profile.Rooms)
@@ -163,7 +178,7 @@ namespace MiniGame.UnityHost
 
         private void SelectRoom()
         {
-            if (!rooms.TryGetValue(patientId, out var next)) { image.enabled = false; return; }
+            if (!rooms.TryGetValue(patientId, out var next)) { image.enabled = false; NotifyVisibility(); return; }
             if (activeRoom != next)
             {
                 if (activeRoom != null) activeRoom.gameObject.SetActive(false);
@@ -172,6 +187,7 @@ namespace MiniGame.UnityHost
             }
             image.enabled = true;
             actor.sprite = sprite;
+            NotifyVisibility();
         }
 
         private void LateUpdate()
@@ -231,12 +247,14 @@ namespace MiniGame.UnityHost
                 backdrop.transform.localPosition = Vector3.forward;
                 backdrop.transform.localScale = Vector3.one * backgroundScale;
                 actor.transform.rotation = Quaternion.identity;
-                float portraitHeight = height * (IsCloseUp ? 1.4f : 1);
+                var placement = profile.FindPlacement(sprite.name);
+                float portraitHeight = height * (placement != null ? Mathf.Clamp(placement.HeightMultiplier, .1f, 2) : 1) * (IsCloseUp ? 1.4f : 1);
                 scale = portraitHeight / Mathf.Max(.01f, sprite.bounds.size.y);
                 actor.transform.localScale = new Vector3(scale, scale * (1 + breath), scale);
+                var bottom = placement != null ? placement.BottomCenter : new Vector2(.42f, .01f);
                 float portraitY = IsCloseUp ? .96f - sprite.bounds.max.y * scale * (1 + breath)
-                    : -.98f - sprite.bounds.min.y * scale * (1 + breath);
-                actor.transform.position = stage.transform.position + new Vector3(-.16f * stageCamera.aspect, portraitY, 0) + settings.ActorOffset;
+                    : bottom.y * 2 - 1 - sprite.bounds.min.y * scale * (1 + breath);
+                actor.transform.position = stage.transform.position + new Vector3((bottom.x * 2 - 1) * stageCamera.aspect, portraitY, 0) + settings.ActorOffset;
             }
             signalMaterial.SetFloat("_Clock", clock);
             signalMaterial.SetFloat("_OriginalColor", backdrop != null ? 1 : 0);
@@ -266,13 +284,23 @@ namespace MiniGame.UnityHost
         {
             if (image != null) image.enabled = false;
             if (stage != null) stage.SetActive(false);
+            NotifyVisibility();
+        }
+        private void NotifyVisibility()
+        {
+            bool visible = IsShowing;
+            if (showing == visible) return;
+            showing = visible;
+            VisibilityChanged?.Invoke(visible);
         }
         private void OnDisable() => HideFeed();
         private void ReleaseStage()
         {
             if (image != null) { image.enabled = false; image.texture = null; }
+            NotifyVisibility();
             if (stageCamera != null) stageCamera.targetTexture = null;
             if (stage != null) { stage.SetActive(false); Release(stage); }
+            stageSlot = -1;
             if (actorMaterial != null) Release(actorMaterial);
             if (backdropSprite != null) Release(backdropSprite);
             if (signalMaterial != null) Release(signalMaterial);

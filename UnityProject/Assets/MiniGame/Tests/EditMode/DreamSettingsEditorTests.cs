@@ -82,7 +82,9 @@ namespace MiniGame.UnityHost.Tests
             try
             {
                 Assert.That(defaults.Days.Select(day => day.Day), Is.EqualTo(new[] { 1, 2, 3 }));
-                Assert.That(defaults.Days.Select(day => day.Duration), Is.All.EqualTo(20));
+                Assert.That(defaults.Days.Select(day => day.Duration), Is.All.EqualTo(5));
+                Assert.That(defaults.BlackScreenSeconds, Is.EqualTo(5));
+                Assert.That(defaults.WakeBlackSeconds, Is.EqualTo(1));
                 Assert.That(defaults.Days.Select(day => day.Music),
                     Is.EqualTo(new[] { MiniGameSound.Dream0, MiniGameSound.Dream1, MiniGameSound.Dream3 }));
                 Assert.That(defaults.GetDay(0), Is.Null, "Day0 skips projection instead of borrowing a formal-day slot.");
@@ -130,6 +132,8 @@ namespace MiniGame.UnityHost.Tests
             int group = Undo.GetCurrentGroup();
             settings.Update(); rules.Update();
             settings.FindProperty("AlignSeconds").floatValue = 2.25f;
+            settings.FindProperty("BlackScreenSeconds").floatValue = 6;
+            settings.FindProperty("WakeBlackSeconds").floatValue = 1.5f;
             settings.FindProperty("SeaWaveHeight").floatValue = .41f;
             settings.FindProperty("ShoreWashDistance").floatValue = 2.8f;
             settings.FindProperty("AnimateRoomWater").boolValue = false;
@@ -137,6 +141,7 @@ namespace MiniGame.UnityHost.Tests
             settings.FindProperty("PanoramaSeaLevel").floatValue = -5.2f;
             var day = settings.FindProperty("Days").GetArrayElementAtIndex(0);
             day.FindPropertyRelative("Duration").floatValue = 42.5f;
+            day.FindPropertyRelative("VignetteIntensity").floatValue = .08f;
             day.FindPropertyRelative("Music").intValue = (int)MiniGameSound.Dream1;
             day.FindPropertyRelative("Artwork").objectReferenceValue = artwork;
             var line = settings.FindProperty("EndingLines").GetArrayElementAtIndex(0);
@@ -176,6 +181,9 @@ namespace MiniGame.UnityHost.Tests
             profile = AssetDatabase.LoadAssetAtPath<DreamSequenceProfile>(profilePath);
             rebellion = AssetDatabase.LoadAssetAtPath<PlayerRebellionProfile>(rebellionPath);
             Assert.That(profile.AlignSeconds, Is.EqualTo(2.25f));
+            Assert.That(profile.BlackScreenSeconds, Is.EqualTo(6));
+            Assert.That(profile.WakeBlackSeconds, Is.EqualTo(1.5f));
+            Assert.That(profile.GetDay(1).VignetteIntensity, Is.EqualTo(.08f));
             Assert.That(profile.SeaWaveHeight, Is.EqualTo(.41f).Within(.0001));
             Assert.That(profile.ShoreWashDistance, Is.EqualTo(2.8f).Within(.0001));
             Assert.That(profile.AnimateRoomWater, Is.False);

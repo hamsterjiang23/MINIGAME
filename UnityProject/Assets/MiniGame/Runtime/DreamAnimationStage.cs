@@ -66,8 +66,7 @@ namespace MiniGame.UnityHost
         {
             CurrentFrameIndex = NextFrameIndex = 0;
             FrameBlend = 0;
-            material.SetFloat("_SequenceMode", 0);
-            material.SetFloat("_PostIntensity", 0);
+            material.SetFloat("_CleanMode", 0);
             PlaybackSeconds = float.IsNaN(seconds) || float.IsInfinity(seconds) ? 0 : Mathf.Max(0, seconds);
             material.SetTexture("_Artwork", artwork != null ? artwork : Texture2D.blackTexture);
             material.SetFloat("_Day", Mathf.Clamp(day, 1, 3));
@@ -81,36 +80,21 @@ namespace MiniGame.UnityHost
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
             int count = settings.Frames?.Length ?? 0;
-            if (count == 0)
-            {
-                Render(settings.Day, settings.Artwork, seconds, settings.Duration, settings.MotionIntensity);
-                return;
-            }
-            float duration = float.IsNaN(settings.Duration) || float.IsInfinity(settings.Duration) ? 20 : Mathf.Max(.01f, settings.Duration);
+            float duration = float.IsNaN(settings.Duration) || float.IsInfinity(settings.Duration) ? 5 : Mathf.Max(.01f, settings.Duration);
             PlaybackSeconds = float.IsNaN(seconds) || float.IsInfinity(seconds) ? 0 : Mathf.Clamp(seconds, 0, duration);
-            float step = duration / count;
-            CurrentFrameIndex = Mathf.Min(count - 1, Mathf.FloorToInt(PlaybackSeconds / step));
-            NextFrameIndex = Mathf.Min(count - 1, CurrentFrameIndex + 1);
-            float fade = float.IsNaN(settings.CrossfadeSeconds) || float.IsInfinity(settings.CrossfadeSeconds)
-                ? 0 : Mathf.Clamp(settings.CrossfadeSeconds, 0, step);
-            FrameBlend = CurrentFrameIndex == NextFrameIndex || fade <= 0 ? 0
-                : Mathf.SmoothStep(0, 1, Mathf.Clamp01((PlaybackSeconds - CurrentFrameIndex * step - step + fade) / fade));
+            CurrentFrameIndex = count == 0 ? 0 : Mathf.Min(count - 1, Mathf.FloorToInt(PlaybackSeconds / (duration / count)));
+            NextFrameIndex = CurrentFrameIndex;
+            FrameBlend = 0;
+            // Daily dreams show the authored frames directly, including profiles with legacy effect values.
             material.SetTexture("_Artwork", Frame(settings, CurrentFrameIndex));
-            material.SetTexture("_ArtworkNext", Frame(settings, NextFrameIndex));
-            material.SetFloat("_FrameBlend", FrameBlend);
-            material.SetFloat("_SequenceMode", 1);
-            material.SetFloat("_PostIntensity", float.IsNaN(settings.PostIntensity) || float.IsInfinity(settings.PostIntensity)
-                ? 0 : Mathf.Clamp(settings.PostIntensity, 0, 2));
-            material.SetFloat("_Day", Mathf.Clamp(settings.Day, 1, 3));
-            material.SetFloat("_PlaybackSeconds", PlaybackSeconds);
-            material.SetFloat("_Progress", PlaybackSeconds / duration);
-            material.SetFloat("_MotionIntensity", float.IsNaN(settings.MotionIntensity) || float.IsInfinity(settings.MotionIntensity)
-                ? 0 : Mathf.Clamp(settings.MotionIntensity, 0, 2));
+            material.SetFloat("_CleanMode", 1);
+            material.SetFloat("_VignetteIntensity", float.IsNaN(settings.VignetteIntensity) || float.IsInfinity(settings.VignetteIntensity)
+                ? 0 : Mathf.Clamp01(settings.VignetteIntensity));
             RenderCamera();
         }
 
         private static Texture2D Frame(DreamDaySettings settings, int index)
-            => settings.Frames[index] != null ? settings.Frames[index]
+            => settings.Frames != null && index < settings.Frames.Length && settings.Frames[index] != null ? settings.Frames[index]
                 : settings.Artwork != null ? settings.Artwork : Texture2D.blackTexture;
 
         private void RenderCamera()

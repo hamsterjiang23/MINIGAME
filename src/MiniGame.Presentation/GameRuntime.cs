@@ -160,7 +160,7 @@ namespace MiniGame.Presentation
                 SetCue(PresentationKind.Sleep);
                 return Accept();
             }
-            if (UsesDreamFlow && target == InteractionTarget.Bed && view.Game.Day == 0 && view.Game.Phase == GamePhase.AfterDream)
+            if (UsesDreamFlow && target == InteractionTarget.Bed && view.Game.Phase == GamePhase.AfterDream)
             {
                 SetCue(PresentationKind.Sleep);
                 return Accept();
@@ -293,7 +293,7 @@ namespace MiniGame.Presentation
                 PresentationKind.Reaction => new CompleteReaction(game.CurrentEncounterId!),
                 PresentationKind.Introduction => new CompleteIntroduction(game.CurrentEncounterId!, game.CurrentNodeId!),
                 PresentationKind.Sleep => _dreamFromBed && game.Phase == GamePhase.Evening
-                    ? (GameCommand)new BeginNightDream() : game.Day == 0 && game.Phase == GamePhase.AfterDream
+                    ? (GameCommand)new BeginNightDream() : game.Phase == GamePhase.AfterDream
                     ? (GameCommand)new Interact(InteractionTarget.Bed) : new CompleteSleep(),
                 PresentationKind.Dream => new CompleteDream(),
                 _ => null
@@ -302,14 +302,14 @@ namespace MiniGame.Presentation
             if (result != null && !result.Accepted) return Reject(result.Reason.ToString());
             IEnumerable<GameEvent>? events = result?.Events;
             _cue = null;
-            if (_dreamFromBed && (kind == PresentationKind.Sleep || kind == PresentationKind.Dream)
+            if (_dreamFromBed && game.Day == 0 && kind == PresentationKind.Sleep
                 && _session.GetPlayerView().Phase == GamePhase.AfterDream)
             {
+                // Day0 has one sleep and no dream film. Later nights wait for another bed interaction.
                 var wake = _session.Execute(new Interact(InteractionTarget.Bed));
-                if (!wake.Accepted) throw new InvalidOperationException("Completed bed dream could not advance the night.");
+                if (!wake.Accepted) throw new InvalidOperationException("Completed Day0 sleep could not advance the night.");
                 events = (events ?? Array.Empty<GameEvent>()).Concat(wake.Events);
                 _dreamFromBed = false;
-                if (_session.GetPlayerView().Phase == GamePhase.Ending) SetCue(PresentationKind.Ending);
             }
             else if (_dreamFromBed && kind == PresentationKind.Dream) _dreamFromBed = false;
             switch (kind)
@@ -357,6 +357,7 @@ namespace MiniGame.Presentation
                     break;
                 case PresentationKind.Sleep:
                     if (_session.GetPlayerView().Phase == GamePhase.Dream) SetCue(PresentationKind.Dream);
+                    else if (_session.GetPlayerView().Phase == GamePhase.Ending) SetCue(PresentationKind.Ending);
                     break;
             }
             return Accept(events);
@@ -658,7 +659,7 @@ namespace MiniGame.Presentation
                     || (afterReaction && open && cue == PresentationKind.ExitTerminal),
                 GamePhase.Sleeping => !open && cue == PresentationKind.Sleep,
                 GamePhase.Dream => !open && cue == PresentationKind.Dream,
-                GamePhase.AfterDream => !open && (cue == null || rules.DreamFlowEnabled && game.Day == 0 && cue == PresentationKind.Sleep),
+                GamePhase.AfterDream => !open && (cue == null || rules.DreamFlowEnabled && cue == PresentationKind.Sleep),
                 GamePhase.SelfReview => rules.DreamFlowEnabled && ((!open && cue == null)
                     || (open && page == TerminalPage.SelfReview && (cue == null || cue == PresentationKind.EnterTerminal))),
                 GamePhase.Ending => !open && (cue == null || cue == PresentationKind.Ending),

@@ -9,38 +9,46 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class DreamImageSequencePlayModeTests
     {
+        private const int Width = 128;
+        private const int Height = 72;
+
         [UnityTest]
-        public IEnumerator FramesAdvanceInOrderCrossfadeAndHoldTheLastImageDeterministically()
+        public IEnumerator TenFramesAdvanceEveryHalfSecondWithoutBlendingAndHoldTheLastImage()
         {
-            var frames = new[] { Solid(Color.red), Solid(Color.green), Solid(Color.blue) };
+            var colors = new Color32[] { Color.red, Color.green, Color.blue, Color.cyan, Color.magenta,
+                Color.yellow, Color.white, Color.black, new Color32(32, 64, 128, 255), new Color32(192, 96, 48, 255) };
+            var frames = colors.Select(color => Solid(color)).ToArray();
             try
             {
-                var settings = new DreamDaySettings { Day = 2, Frames = frames, Duration = 6,
-                    CrossfadeSeconds = .5f, MotionIntensity = 0, PostIntensity = 0 };
-                using (var stage = new DreamAnimationStage(128, 72))
+                var settings = new DreamDaySettings { Day = 2, Frames = frames, Duration = 5,
+                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0 };
+                using (var stage = new DreamAnimationStage(Width, Height))
                 {
-                    stage.Render(settings, 0);
-                    var red = Read(stage.Texture);
-                    Assert.That(red[36 * 128 + 64].r, Is.GreaterThan(240));
-                    stage.Render(settings, 1.75f);
-                    Assert.That(stage.CurrentFrameIndex, Is.EqualTo(0));
-                    Assert.That(stage.NextFrameIndex, Is.EqualTo(1));
-                    Assert.That(stage.FrameBlend, Is.EqualTo(.5f).Within(.001f));
-                    var blended = Read(stage.Texture);
-                    var sample = blended[36 * 128 + 64];
-                    Assert.That(sample.r, Is.GreaterThan(90));
-                    Assert.That(sample.g, Is.GreaterThan(90));
-                    Assert.That(sample.b, Is.LessThan(10));
-                    stage.Render(settings, 2);
-                    Assert.That(stage.CurrentFrameIndex, Is.EqualTo(1));
-                    Assert.That(Read(stage.Texture)[36 * 128 + 64].g, Is.GreaterThan(240));
-                    stage.Render(settings, 60);
-                    Assert.That(stage.CurrentFrameIndex, Is.EqualTo(2));
-                    Assert.That(stage.NextFrameIndex, Is.EqualTo(2));
-                    Assert.That(stage.FrameBlend, Is.Zero);
-                    Assert.That(Read(stage.Texture)[36 * 128 + 64].b, Is.GreaterThan(240));
-                    stage.Render(settings, 1.75f);
-                    Assert.That(Read(stage.Texture), Is.EqualTo(blended), "Restoring time must restore the same transition pixels.");
+                    for (int index = 0; index < frames.Length; index++)
+                    {
+                        foreach (float time in new[] { index * .5f, index * .5f + .499f })
+                        {
+                            stage.Render(settings, time);
+                            Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index), "Frame at " + time);
+                            Assert.That(stage.NextFrameIndex, Is.EqualTo(index));
+                            Assert.That(stage.FrameBlend, Is.Zero);
+                            Assert.That(Read(stage.Texture), Is.All.EqualTo(colors[index]), "Source pixels at " + time);
+                        }
+                    }
+                    foreach (float time in new[] { 5f, 50f })
+                    {
+                        stage.Render(settings, time);
+                        Assert.That(stage.CurrentFrameIndex, Is.EqualTo(9));
+                        Assert.That(stage.PlaybackSeconds, Is.EqualTo(5));
+                        Assert.That(Read(stage.Texture), Is.All.EqualTo(colors[9]));
+                    }
+                    foreach (float time in new[] { -1f, float.NaN, float.PositiveInfinity, float.NegativeInfinity })
+                    {
+                        stage.Render(settings, time);
+                        Assert.That(stage.CurrentFrameIndex, Is.Zero);
+                        Assert.That(stage.PlaybackSeconds, Is.Zero);
+                        Assert.That(Read(stage.Texture), Is.All.EqualTo(colors[0]));
+                    }
                 }
             }
             finally { foreach (var frame in frames) Object.Destroy(frame); }
@@ -48,44 +56,124 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator AllThreeDaysUseTenOrderedImagesAndReproduciblePostProcessing()
+        public IEnumerator ZeroVignettePreservesEverySourcePixelDespiteLegacySettingsAndPriorProceduralRendering()
+        {
+            var source = Pattern();
+            var next = Solid(Color.blue);
+            try
+            {
+                var expected = source.GetPixels32();
+                var settings = new DreamDaySettings { Frames = new[] { source, next }, Duration = 5,
+                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0 };
+                using (var stage = new DreamAnimationStage(Width, Height))
+                {
+                    for (int day = 1; day <= 3; day++)
+                    {
+                        settings.Day = day;
+                        stage.Render(day, source, 17, 20, 2);
+                        foreach (float time in new[] { 0f, .25f, 1.75f, 2.499f, .25f })
+                        {
+                            stage.Render(settings, time);
+                            Assert.That(stage.CurrentFrameIndex, Is.Zero);
+                            Assert.That(Read(stage.Texture), Is.EqualTo(expected),
+                                "Day " + day + " must preserve all source pixels throughout the frame at " + time);
+                        }
+                    }
+                }
+            }
+            finally { Object.Destroy(source); Object.Destroy(next); }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator SubtleVignetteDarkensCornersWithoutChangingTheirColorBalanceOrTheCenter()
+        {
+            var original = new Color32(200, 120, 60, 255);
+            var source = Solid(original);
+            try
+            {
+                var settings = new DreamDaySettings { Day = 3, Frames = new[] { source }, Duration = 5,
+                    MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = .12f };
+                using (var stage = new DreamAnimationStage(Width, Height))
+                {
+                    stage.Render(settings, 0);
+                    var pixels = Read(stage.Texture);
+                    Assert.That(pixels[Height / 2 * Width + Width / 2], Is.EqualTo(original));
+                    foreach (int index in new[] { 0, Width - 1, (Height - 1) * Width, pixels.Length - 1 })
+                    {
+                        var corner = pixels[index];
+                        float scale = corner.r / (float)original.r;
+                        Assert.That(scale, Is.InRange(.875f, .89f), "A subtle vignette darkens the corner by about twelve percent.");
+                        Assert.That(corner.g / (float)original.g, Is.EqualTo(scale).Within(.01f));
+                        Assert.That(corner.b / (float)original.b, Is.EqualTo(scale).Within(.01f));
+                        Assert.That(corner.a, Is.EqualTo(original.a));
+                    }
+                    stage.Render(settings, 4.999f);
+                    Assert.That(Read(stage.Texture), Is.EqualTo(pixels), "The vignette must not animate or flicker.");
+                    settings.VignetteIntensity = 0;
+                    stage.Render(settings, 4.999f);
+                    Assert.That(Read(stage.Texture), Is.All.EqualTo(original), "Disabling the vignette must remove all darkening.");
+                }
+            }
+            finally { Object.Destroy(source); }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator MissingFramesUseTheArtworkOrBlackWithoutEnablingProceduralEffects()
+        {
+            var source = Pattern();
+            try
+            {
+                var settings = new DreamDaySettings { Day = 3, Artwork = source, Duration = 5,
+                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0 };
+                using (var stage = new DreamAnimationStage(Width, Height))
+                {
+                    foreach (var frames in new[] { null, System.Array.Empty<Texture2D>(), new Texture2D[] { null } })
+                    {
+                        settings.Frames = frames;
+                        stage.Render(settings, 3);
+                        Assert.That(Read(stage.Texture), Is.EqualTo(source.GetPixels32()));
+                    }
+                    settings.Artwork = null;
+                    stage.Render(settings, 3);
+                    Assert.That(Read(stage.Texture).All(pixel => pixel.r == 0 && pixel.g == 0 && pixel.b == 0), Is.True,
+                        "Missing artwork must render black RGB; the projection surface does not sample source alpha.");
+                }
+            }
+            finally { Object.Destroy(source); }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator AllThreeProductionDreamsUseTenOrderedFramesOverFiveSeconds()
         {
             var profile = Resources.Load<DreamSequenceProfile>("MiniGame/DreamSequenceDefault");
             Assert.That(profile, Is.Not.Null);
             for (int day = 1; day <= 3; day++)
             {
-                var settings = JsonUtility.FromJson<DreamDaySettings>(JsonUtility.ToJson(profile.GetDay(day)));
-                settings.Frames = profile.GetDay(day).Frames;
-                settings.Artwork = profile.GetDay(day).Artwork;
+                var settings = profile.GetDay(day);
                 Assert.That(settings.Frames.Length, Is.EqualTo(10));
-                Assert.That(settings.Duration / settings.Frames.Length, Is.EqualTo(1f).Within(.0001f),
-                    "The production sequence must advance one image per second.");
-                Assert.That(settings.CrossfadeSeconds, Is.LessThan(1f));
+                Assert.That(settings.Duration, Is.EqualTo(5));
+                Assert.That(settings.CrossfadeSeconds, Is.Zero);
+                Assert.That(settings.MotionIntensity, Is.Zero);
+                Assert.That(settings.PostIntensity, Is.Zero);
+                Assert.That(settings.VignetteIntensity, Is.InRange(0f, .2f));
                 Assert.That(settings.Frames.Select(frame => frame.name),
                     Is.EqualTo(Enumerable.Range(1, 10).Select(index => "Frame" + index.ToString("00"))));
                 Assert.That(settings.Frames.All(frame => frame.width >= 1600 && frame.height >= 900), Is.True);
-                using (var stage = new DreamAnimationStage(320, 180))
+                using (var stage = new DreamAnimationStage(Width, Height))
                 {
                     for (int index = 0; index < 10; index++)
                     {
-                        stage.Render(settings, index);
+                        stage.Render(settings, index * .5f);
                         Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index));
-                        stage.Render(settings, index + .999f);
+                        var pixels = Read(stage.Texture);
+                        stage.Render(settings, index * .5f + .499f);
                         Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index));
+                        Assert.That(stage.FrameBlend, Is.Zero);
+                        Assert.That(Read(stage.Texture), Is.EqualTo(pixels), "Production frames must remain unchanged until the next half-second boundary.");
                     }
-                    float time = settings.Duration * .66f;
-                    stage.Render(settings, time);
-                    var processed = Read(stage.Texture);
-                    stage.Render(settings, time);
-                    Assert.That(Read(stage.Texture), Is.EqualTo(processed));
-                    settings.PostIntensity = 0;
-                    stage.Render(settings, time);
-                    var plain = Read(stage.Texture);
-                    long difference = 0;
-                    for (int i = 0; i < plain.Length; i++)
-                        difference += Mathf.Abs(plain[i].r - processed[i].r) + Mathf.Abs(plain[i].g - processed[i].g)
-                            + Mathf.Abs(plain[i].b - processed[i].b);
-                    Assert.That(difference / (plain.Length * 3f * 255), Is.GreaterThan(.003f), "Post processing must affect actual pixels for Day " + day);
                 }
                 yield return null;
             }
@@ -95,6 +183,17 @@ namespace MiniGame.UnityHost.Tests
         {
             var texture = new Texture2D(4, 4, TextureFormat.RGBA32, false);
             texture.SetPixels(Enumerable.Repeat(color, 16).ToArray()); texture.Apply(); return texture;
+        }
+
+        private static Texture2D Pattern()
+        {
+            var texture = new Texture2D(Width, Height, TextureFormat.RGBA32, false)
+                { filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp };
+            var pixels = new Color32[Width * Height];
+            for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width; x++)
+                pixels[y * Width + x] = new Color32((byte)(x * 2), (byte)(y * 3), (byte)((x + y) % 2 * 255), 255);
+            texture.SetPixels32(pixels); texture.Apply(); return texture;
         }
 
         private static Color32[] Read(RenderTexture target)
