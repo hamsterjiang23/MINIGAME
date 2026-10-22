@@ -96,14 +96,16 @@ namespace MiniGame.Core.Tests
             Assert.That(overflow.GetPlayerView().Rebellion, Is.EqualTo(10));
         }
 
-        [TestCase(false, false, 100, EndingType.DreamSea)]
-        [TestCase(false, false, 99, EndingType.TakenAway)]
-        [TestCase(true, false, 100, EndingType.PriestAttack)]
-        [TestCase(false, true, 100, EndingType.LockedInRoom)]
-        [TestCase(true, true, 100, EndingType.PriestAttack)]
-        public void FinalDreamUsesTheSamePriestQuotaDreamThenTakenAwayPriority(bool attack, bool quotaFailure, int rebellion, EndingType expected)
+        [TestCase(false, false, 10, EndingType.DreamSea)]
+        [TestCase(false, false, 9, EndingType.TakenAway)]
+        [TestCase(true, false, 10, EndingType.DreamSea)]
+        [TestCase(false, true, 10, EndingType.DreamSea)]
+        [TestCase(true, true, 10, EndingType.DreamSea)]
+        [TestCase(true, true, 9, EndingType.PriestAttack)]
+        [TestCase(false, true, 9, EndingType.LockedInRoom)]
+        public void FinalDreamPrioritizesActivePatientTrustBeforePriestAndQuota(bool attack, bool quotaFailure, int trust, EndingType expected)
         {
-            var rules = Rules(attack, quotaFailure).WithDreamFlow(rebellion, 100, 100, EmptyDeltas());
+            var rules = Rules(attack, quotaFailure, trust).WithDreamFlow(100, 100, 100, EmptyDeltas());
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream, attack);
             var before = session.CreateSnapshot().State;
@@ -118,6 +120,9 @@ namespace MiniGame.Core.Tests
                 Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.SelfReview));
                 Scenario.RejectWithoutMutation(session, new Interact(InteractionTarget.Bed));
                 Scenario.RejectWithoutMutation(session, new SubmitDisposition("self", Disposition.Purify));
+                Scenario.RejectWithoutMutation(session, new ConfirmSelfPurification());
+                for (int index = 0; index < rules.SelfReviewLineCount; index++)
+                    Scenario.Accept(session, new AdvanceSelfReviewCommand(index));
                 Scenario.Accept(session, new ConfirmSelfPurification());
                 var after = session.CreateSnapshot();
                 Assert.That(JToken.DeepEquals(JToken.FromObject(before.Patients), JToken.FromObject(after.State.Patients)), Is.True);
@@ -167,7 +172,7 @@ namespace MiniGame.Core.Tests
         [Test]
         public void SelfPurificationDoesNotExecutePendingPatientTreatmentOrCreateADayFourRecord()
         {
-            var rules = Scenario.SinglePatient(treatmentLimit: 3, delay: 1, normalRounds: 1)
+            var rules = Scenario.SinglePatient(initialTrust: 10, treatmentLimit: 3, delay: 1, normalRounds: 1)
                 .WithDreamFlow(100, 100, 100, EmptyDeltas());
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream);
@@ -175,6 +180,8 @@ namespace MiniGame.Core.Tests
             Assert.That(before.PendingEvents.Single().Kind, Is.EqualTo(ScheduledEventKind.TreatmentTermination));
             Assert.That(before.PendingEvents.Single().DueDay, Is.EqualTo(4));
             Scenario.Accept(session, new CompleteDream());
+            for (int index = 0; index < rules.SelfReviewLineCount; index++)
+                Scenario.Accept(session, new AdvanceSelfReviewCommand(index));
             Scenario.Accept(session, new ConfirmSelfPurification());
             var after = session.CreateSnapshot().State;
             Assert.That(after.Patients.Single().Presence, Is.EqualTo(PatientPresence.Active));
@@ -217,11 +224,11 @@ namespace MiniGame.Core.Tests
             Assert.Fail("Dream-flow scenario did not reach its requested checkpoint.");
         }
 
-        private static GameRules Rules(bool attack = false, bool quotaFailure = false)
+        private static GameRules Rules(bool attack = false, bool quotaFailure = false, int firstTrust = 0)
         {
             var patients = new[]
             {
-                new PatientDefinition("first", "第一位", 1, 0, null, PatientPresence.TreatmentEnded),
+                new PatientDefinition("first", "第一位", 1, firstTrust, null, PatientPresence.TreatmentEnded),
                 new PatientDefinition("second", "第二位", 1, 0, null, PatientPresence.TreatmentEnded, attacksAfterRelease: attack)
             };
             MeetingDefinition Meeting(string patient, int day) => new MeetingDefinition(patient,

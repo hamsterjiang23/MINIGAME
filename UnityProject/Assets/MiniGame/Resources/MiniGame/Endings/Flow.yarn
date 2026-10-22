@@ -1,0 +1,43 @@
+title: PriestEnding
+---
+乔纳: 咚咚咚。 #line:priest-ending__CUSTOM001_D1_R1_COMMON_001 #source:priest-ending__CUSTOM001_D1_R1_COMMON_001 #portrait:PE01
+乔纳: 你果然也听到了。 #line:priest-ending__CUSTOM001_D1_R1_COMMON_002 #source:priest-ending__CUSTOM001_D1_R1_COMMON_002 #portrait:PE01
+乔纳: 门叩响的声音。 #line:priest-ending__CUSTOM001_D1_R1_COMMON_003 #source:priest-ending__CUSTOM001_D1_R1_COMMON_003 #portrait:PE01
+乔纳: 那你为什么要把我拒之门外…… #line:priest-ending__CUSTOM001_D1_R1_COMMON_004 #source:priest-ending__CUSTOM001_D1_R1_COMMON_004 #portrait:PE01
+乔纳: 我只想寻求净化，你为什么又要把我放回这污浊的世间？ #line:priest-ending__CUSTOM001_D1_R1_COMMON_005 #source:priest-ending__CUSTOM001_D1_R1_COMMON_005 #portrait:PE01
+乔纳: 一定是上帝……您还期盼我给更多人带来净化。 #line:priest-ending__CUSTOM001_D1_R1_COMMON_006 #source:priest-ending__CUSTOM001_D1_R1_COMMON_006 #portrait:PE01
+乔纳: 来吧孩子，我会帮你洗涤罪恶。 #line:priest-ending__CUSTOM001_D1_R1_COMMON_007 #source:priest-ending__CUSTOM001_D1_R1_COMMON_007 #portrait:PE02
+乔纳: 拥抱净化吧。 #line:priest-ending__CUSTOM001_D1_R1_COMMON_008 #source:priest-ending__CUSTOM001_D1_R1_COMMON_008 #blackScreen:true
+===
+
+title: SelfReview
+---
+玩家自己: 我的名字是...我记不清了... #line:self-review__CUSTOM001_D1_R1_COMMON_001 #source:self-review__CUSTOM001_D1_R1_COMMON_001 #portrait:SJ01
+玩家自己: 和你相处这么久了，好像也不重要了。 #line:self-review__CUSTOM001_D1_R1_COMMON_002 #source:self-review__CUSTOM001_D1_R1_COMMON_002 #portrait:SJ01
+玩家自己: 我的工作...我是一名公务员，我的工作是按下按键，决定他们的命运。 #line:self-review__CUSTOM001_D1_R1_COMMON_003 #source:self-review__CUSTOM001_D1_R1_COMMON_003 #portrait:SJ01
+玩家自己: 记得...当时拿到这份工作，我成为了全家人的荣耀。 #line:self-review__CUSTOM001_D1_R1_COMMON_004 #source:self-review__CUSTOM001_D1_R1_COMMON_004 #portrait:SJ02
+玩家自己: 毕竟在这个社会里，能吃饱饭就是奢望了！ #line:self-review__CUSTOM001_D1_R1_COMMON_005 #source:self-review__CUSTOM001_D1_R1_COMMON_005 #portrait:SJ02
+玩家自己: 你说是吧，哪还有所谓的... #line:self-review__CUSTOM001_D1_R1_COMMON_006 #source:self-review__CUSTOM001_D1_R1_COMMON_006 #portrait:SJ01
+玩家自己: 自由是什么？自由是什么呢？ #line:self-review__CUSTOM001_D1_R1_COMMON_007 #source:self-review__CUSTOM001_D1_R1_COMMON_007 #portrait:SJ01
+玩家自己: 不知道，这好像是一个没有答案的问题。 #line:self-review__CUSTOM001_D1_R1_COMMON_008 #source:self-review__CUSTOM001_D1_R1_COMMON_008 #portrait:SJ01
+玩家自己: 那些人，会懂吗？ #line:self-review__CUSTOM001_D1_R1_COMMON_009 #source:self-review__CUSTOM001_D1_R1_COMMON_009 #portrait:SJ01
+玩家自己: 他们靠着自己的意志走出去了，外面的世界会欢迎他们吗？ #line:self-review__CUSTOM001_D1_R1_COMMON_010 #source:self-review__CUSTOM001_D1_R1_COMMON_010 #portrait:SJ01
+玩家自己: 呵呵...蛀虫已把这个社会蚕食殆尽，哪还会有新鲜的血肉？ #line:self-review__CUSTOM001_D1_R1_COMMON_011 #source:self-review__CUSTOM001_D1_R1_COMMON_011 #portrait:SJ01
+玩家自己: ...... #line:self-review__CUSTOM001_D1_R1_COMMON_012 #source:self-review__CUSTOM001_D1_R1_COMMON_012 #portrait:SJ01
+玩家自己: 说不定有呢？你说是吧！ #line:self-review__CUSTOM001_D1_R1_COMMON_013 #source:self-review__CUSTOM001_D1_R1_COMMON_013 #portrait:SJ02
+玩家自己: 我想走了。 #line:self-review__CUSTOM001_D1_R1_COMMON_014 #source:self-review__CUSTOM001_D1_R1_COMMON_014 #portrait:SJ01
+玩家自己: 妈妈告诉我，我们家曾经在海边的一个小村里。 #line:self-review__CUSTOM001_D1_R1_COMMON_015 #source:self-review__CUSTOM001_D1_R1_COMMON_015 #portrait:SJ02
+玩家自己: 那里的天好蓝，水好清澈，我想回去看看了。 #line:self-review__CUSTOM001_D1_R1_COMMON_016 #source:self-review__CUSTOM001_D1_R1_COMMON_016 #portrait:SJ02
+-> 净化 #id:self-review__CUSTOM001_D1_R1_PLAYER_ACTION_001 #disposition:purify
+===
+
+title: SupervisorEnding
+---
+监督员: 惊——喜。 #line:supervisor-ending__P02_D4_R1_COMMON_001 #source:supervisor-ending__P02_D4_R1_COMMON_001 #portrait:JD06
+监督员: 做过什么你自己清楚。 #line:supervisor-ending__P02_D4_R1_COMMON_002 #source:supervisor-ending__P02_D4_R1_COMMON_002 #portrait:JD06
+监督员: 看来你要跟我走一趟了。 #line:supervisor-ending__P02_D4_R1_COMMON_003 #source:supervisor-ending__P02_D4_R1_COMMON_003 #portrait:JD06
+监督员: 进去之后，记得好好表现。 #line:supervisor-ending__P02_D4_R1_COMMON_004 #source:supervisor-ending__P02_D4_R1_COMMON_004 #portrait:JD06
+监督员: 也许就不会那么早迎来净化。 #line:supervisor-ending__P02_D4_R1_COMMON_005 #source:supervisor-ending__P02_D4_R1_COMMON_005 #portrait:JD06
+监督员: 我们之间也能多玩一会，不是吗？ #line:supervisor-ending__P02_D4_R1_COMMON_006 #source:supervisor-ending__P02_D4_R1_COMMON_006 #portrait:JD06
+监督员: 走吧。 #line:supervisor-ending__P02_D4_R1_COMMON_007 #source:supervisor-ending__P02_D4_R1_COMMON_007 #portrait:JD06
+===

@@ -16,7 +16,68 @@ namespace MiniGame.UnityHost.Tests
     public sealed class TerminalHtmlParityTests
     {
         [UnityTest]
-        public IEnumerator MissingExpressionUsesSamePatientAndNoImageUpdatesImmediately()
+        public IEnumerator PatientStageAndDailyReviewStatusStaySeparateInRosterAndSelection()
+        {
+            foreach (var disposition in new[] { Disposition.Treat, Disposition.Purify, Disposition.Release })
+            {
+                var runtime = CreateRuntime();
+                var owner = new GameObject("Patient stage and status regression");
+                var screen = owner.AddComponent<MiniGameScreen>();
+                try
+                {
+                    OpenReview(screen, runtime);
+                    string patientId = runtime.GetView().Game.CurrentPatientId;
+                    int patientIndex = runtime.GetView().Patients.ToList().FindIndex(patient => patient.Id == patientId);
+                    var row = ButtonNamed(screen, "Roster-" + patientIndex);
+                    Assert.That(row.transform.Find("Stage").GetComponent<Text>().text, Is.EqualTo("未处理"));
+                    Assert.That(row.transform.Find("Status").GetComponent<Text>().text, Is.EqualTo("待审"));
+                    for (int step = 0; step < 100 && runtime.GetView().Game.EncounterStage != EncounterStage.AwaitingDisposition; step++)
+                    {
+                        var view = runtime.GetView();
+                        var result = view.Cue != null ? runtime.CompleteCue(view.Cue.Token)
+                            : runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, view.Game.AvailableResponseIds.First());
+                        Assert.That(result.Accepted, Is.True, result.Reason);
+                    }
+                    Assert.That(runtime.GetView().Game.AvailableDispositions, Does.Contain(disposition));
+                    Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, disposition).Accepted, Is.True);
+                    for (int step = 0; step < 5 && runtime.GetView().Cue != null; step++)
+                        Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
+                    Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Archive));
+                    Assert.That(runtime.ReturnToDirectory().Accepted, Is.True);
+                    yield return null;
+
+                    string stage = disposition == Disposition.Treat ? "治疗1次"
+                        : disposition == Disposition.Purify ? "已净化" : "已释放";
+                    Assert.That(row.gameObject.activeInHierarchy, Is.True, "Same-day disposed patients retain their directory records.");
+                    Assert.That(row.transform.Find("Stage").GetComponent<Text>().text, Is.EqualTo(stage));
+                    Assert.That(row.transform.Find("Status").GetComponent<Text>().text, Is.EqualTo("已审"));
+                    Assert.That(row.transform.Find("Unit").GetComponent<Text>().text, Is.EqualTo(PortraitCatalog.Unit(patientId)));
+                    Assert.That(TextNamed(screen, "RosterStageColumn").text, Is.EqualTo("阶段"));
+                    Assert.That(TextNamed(screen, "RosterUnitColumn").text, Is.EqualTo("单元"));
+                    Assert.That(TextNamed(screen, "RosterStatusColumn").text, Is.EqualTo("状态"));
+                    var stageRect = row.transform.Find("Stage").GetComponent<RectTransform>();
+                    var unitRect = row.transform.Find("Unit").GetComponent<RectTransform>();
+                    var statusRect = row.transform.Find("Status").GetComponent<RectTransform>();
+                    Assert.That(stageRect.anchoredPosition.x + stageRect.rect.width, Is.LessThan(unitRect.anchoredPosition.x));
+                    Assert.That(unitRect.anchoredPosition.x + unitRect.rect.width, Is.LessThan(statusRect.anchoredPosition.x));
+
+                    var pointer = new PointerEventData(EventSystem.current)
+                        { position = screen.TerminalDisplay.ScreenPointFor((RectTransform)row.transform) };
+                    ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                    Assert.That(TextNamed(screen, "PreviewStage").text, Is.EqualTo(stage));
+                    Assert.That(TextNamed(screen, "Preview状态").text, Is.EqualTo("已审"));
+                    Assert.That(TextNamed(screen, "PreviewUnit").text, Does.Contain(PortraitCatalog.Unit(patientId)));
+                    Assert.That(runtime.GetView().Patients.Where(patient => !patient.HasMetToday).Count(), Is.GreaterThan(0));
+                    Assert.That(TextNamed(screen, "RosterCount").text, Does.Contain("已审 01"));
+                    CaptureTerminalSource(screen, "patient-stage-" + disposition);
+                }
+                finally { Object.Destroy(owner); }
+                yield return null;
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator UnknownPortraitIdShowsNoImageAndValidIdClearsTheWarning()
         {
             var runtime = CreateRuntime();
             var owner = new GameObject("Portrait fallback regression");
@@ -26,16 +87,18 @@ namespace MiniGame.UnityHost.Tests
                 OpenReview(screen, runtime);
                 var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
                 string patient = runtime.GetView().PresentedPatientId;
-                var expected = catalog.Find(PortraitCatalog.BasePortrait(patient));
+                string portraitId = PortraitCatalog.BasePortrait(patient);
+                var expected = catalog.Find(portraitId);
                 Assert.That(expected, Is.Not.Null);
                 // Reproduce a stale warning left by a previous failed lookup.
                 ObjectNamed(screen, "MonitorNoImage").SetActive(true);
                 screen.SetDialogueLine("病人", "缺失表情", "portrait-regression", "missing-expression");
-                Assert.That(ObjectNamed(screen, "MonitorNoImage").activeSelf, Is.False);
+                Assert.That(ObjectNamed(screen, "MonitorNoImage").activeSelf, Is.True);
                 Assert.That(screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait").sprite,
-                    Is.SameAs(expected));
-                screen.SetDialogueLine("病人", "正常表情", "portrait-regression", expected.name);
+                    Is.Null, "An unknown table ID must not substitute another portrait.");
+                screen.SetDialogueLine("病人", "正常表情", "portrait-regression", portraitId);
                 Assert.That(ObjectNamed(screen, "MonitorNoImage").activeSelf, Is.False);
+                Assert.That(screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait").sprite, Is.SameAs(expected));
                 yield return null;
             }
             finally { Object.Destroy(owner); }
@@ -143,7 +206,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator ReadOnlyF3RecordsPreserveTranscriptAndBlockUnderlyingChoices()
+        public IEnumerator ReadOnlyRecordsPreserveTranscriptAndBlockUnderlyingChoicesWhileF3StaysDisabled()
         {
             var runtime = CreateRuntime(); var owner = new GameObject("Passive transcript test");
             var screen = owner.AddComponent<MiniGameScreen>();
@@ -155,7 +218,10 @@ namespace MiniGame.UnityHost.Tests
                 screen.ShowResponseButtons(Responses(),_=>advanced++); yield return null;
                 var recordKeys=runtime.GetView().Transcript.Select(entry=>entry.Key).ToArray();
                 Assert.That(screen.HandleTerminalKey(KeyCode.F2),Is.False);
-                Assert.That(screen.HandleTerminalKey(KeyCode.F3),Is.True);
+                Assert.That(screen.HandleTerminalKey(KeyCode.F3),Is.False);
+                var terminalView = typeof(MiniGameScreen).GetField("terminalView",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(screen);
+                Assert.That(terminalView.GetType().GetMethod("OpenHistory").Invoke(terminalView, null), Is.EqualTo(true));
                 Assert.That(screen.HistoryOpen,Is.True);
                 CaptureTerminalSource(screen,"ark-history");
                 AssertGlyphEffectIsScoped(screen);
@@ -275,6 +341,55 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.ExitTerminal));
                 Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
                 Assert.That(runtime.GetView().TerminalOpen, Is.False);
+            }
+            finally { Object.Destroy(owner); }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator DispositionHoverKeepsItsSelectionAcrossPointerGapsAndCrtModes()
+        {
+            var runtime = CreateRuntime();
+            var owner = new GameObject("Disposition hover regression");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            try
+            {
+                OpenReview(screen, runtime);
+                for (int step = 0; step < 100 && runtime.GetView().Game.EncounterStage != EncounterStage.AwaitingDisposition; step++)
+                {
+                    var view = runtime.GetView();
+                    var result = view.Cue != null ? runtime.CompleteCue(view.Cue.Token)
+                        : runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, view.Game.AvailableResponseIds.First());
+                    Assert.That(result.Accepted, Is.True, result.Reason);
+                }
+                Assert.That(runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition));
+                yield return null;
+                var rows = screen.GetComponentsInChildren<Button>(true).Where(button => button.name.StartsWith("Disposition-")
+                    && button.gameObject.activeInHierarchy && button.interactable).ToArray();
+                Assert.That(rows.Length, Is.GreaterThanOrEqualTo(2));
+                for (int mode = 0; mode < 3; mode++)
+                {
+                    screen.TerminalDisplay.SetMode(mode);
+                    foreach (var row in rows)
+                    {
+                        var pointer = new PointerEventData(EventSystem.current) { position = screen.TerminalDisplay.ScreenPointFor((RectTransform)row.transform) };
+                        var hits = new List<RaycastResult>();
+                        EventSystem.current.RaycastAll(pointer, hits);
+                        Assert.That(hits.First().gameObject, Is.EqualTo(row.gameObject));
+                        ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                        var color = row.GetComponent<Image>().color;
+                        ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+                        for (int frame = 0; frame < 5; frame++)
+                        {
+                            yield return null;
+                            Assert.That(row.GetComponent<Image>().color, Is.EqualTo(color), "A pointer gap must retain the last hovered disposition.");
+                            Assert.That(rows.Where(other => other != row).All(other => other.GetComponent<Image>().color != color), Is.True);
+                        }
+                    }
+                }
+                var expected = (Disposition)Enum.Parse(typeof(Disposition), rows.Last().name.Substring("Disposition-".Length));
+                Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
+                Assert.That(runtime.GetView().PresentedDisposition, Is.EqualTo(expected));
             }
             finally { Object.Destroy(owner); }
             yield return null;

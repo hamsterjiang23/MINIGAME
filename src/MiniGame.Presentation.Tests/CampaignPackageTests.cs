@@ -23,14 +23,15 @@ namespace MiniGame.Presentation.Tests
         private static CompiledDialoguePackage Compile() => DialoguePackageCompiler.Compile(Source("campaign.minigame.json"));
 
         [Test]
-        public void FullCampaignHasTutorialAndFifteenOrderedMeetingsWithOriginalDeclaredPortraits()
+        public void FullCampaignHasThirteenMeetingsWithStaggeredArrivalAndOriginalDeclaredPortraits()
         {
             var package = Compile();
             Assert.That(package.Package.FormatVersion, Is.EqualTo(2));
             Assert.That(package.Rules.Days.Select(d => d.Day), Is.EqualTo(new[] { 0, 1, 2, 3 }));
-            Assert.That(package.Rules.Days.Sum(d => d.Meetings.Count), Is.EqualTo(16));
+            Assert.That(package.Rules.Days.Sum(d => d.Meetings.Count), Is.EqualTo(13));
+            var roster = new[] { "former-ruler", "battlefield-doctor", "child", "priest", "diplomat" };
             foreach (var day in package.Rules.Days.Skip(1))
-                Assert.That(day.Meetings.Select(m => m.PatientId), Is.EqualTo(new[] { "child", "former-ruler", "battlefield-doctor", "diplomat", "priest" }));
+                Assert.That(day.Meetings.Select(m => m.PatientId), Is.EqualTo(roster.Take(day.Day + 2)));
             var tutorial = package.Rules.Days[0].Meetings.Single();
             Assert.That(tutorial.NormalRounds, Is.Empty);
             Assert.That(package.Content.GetSegment(tutorial.IntroNodeId!).Lines.Count, Is.EqualTo(9));
@@ -38,9 +39,9 @@ namespace MiniGame.Presentation.Tests
             Assert.That(tutorial.DispositionTrustDeltas[Disposition.Purify], Is.Zero);
             Assert.That(package.Content.GetSegment(tutorial.ReactionNodes[Disposition.Purify]).Lines.Count, Is.EqualTo(2));
             Assert.That(package.Package.Portraits.Count, Is.EqualTo(21));
-            Assert.That(package.SourceNodes.Select(n => n.PortraitId).Where(p => p.Length > 0).Distinct().Count(), Is.EqualTo(15));
+            Assert.That(package.SourceNodes.Select(n => n.PortraitId).Where(p => p.Length > 0).Distinct().Count(), Is.EqualTo(17));
             var specialMeetings = package.Rules.Days.SelectMany(day => day.Meetings).Where(meeting => meeting.SpecialRound != null).ToArray();
-            Assert.That(specialMeetings.Length, Is.EqualTo(9));
+            Assert.That(specialMeetings.Length, Is.EqualTo(7));
             Assert.That(specialMeetings.Select(meeting => meeting.PatientId).Distinct(),
                 Is.EquivalentTo(new[] { "child", "former-ruler", "diplomat" }));
             Assert.That(specialMeetings.All(meeting => meeting.SpecialTrustThreshold == 3 && meeting.ReleaseTrustThreshold == 5), Is.True);
@@ -56,9 +57,9 @@ namespace MiniGame.Presentation.Tests
             var mappings = (JArray)audit["mappings"]!;
             var nodes = compiled.SourceNodes.ToDictionary(n => n.Id);
             var options = compiled.SourceNodes.SelectMany(n => n.Options).ToDictionary(o => o.Id);
-            Assert.That((int)audit["sourceRowCount"]!, Is.EqualTo(1440));
-            Assert.That((int)audit["activeSourceRowCount"]!, Is.EqualTo(1299));
-            Assert.That((int)audit["excludedSourceRowCount"]!, Is.EqualTo(141));
+            Assert.That((int)audit["sourceRowCount"]!, Is.EqualTo(1360));
+            Assert.That((int)audit["activeSourceRowCount"]!, Is.EqualTo(1295));
+            Assert.That((int)audit["excludedSourceRowCount"]!, Is.EqualTo(65));
             Assert.That(mappings.Count, Is.EqualTo((int)audit["activeSourceRowCount"]!));
             var excluded = (JArray)audit["excludedRows"]!;
             Assert.That(excluded.Count, Is.EqualTo((int)audit["excludedSourceRowCount"]!));
@@ -100,10 +101,19 @@ namespace MiniGame.Presentation.Tests
                     }
                 }
             }
+            int emittedMappings = 0;
             foreach (var mapping in mappings)
             {
                 var id = (string)mapping["sourceId"]!;
                 var text = (string)mapping["text"]!;
+                var patient = compiled.Rules.Patients.Single(item => item.Id == (string)mapping["patientId"]!);
+                if ((int)mapping["day"]! < patient.FirstDay)
+                {
+                    Assert.That(nodes.ContainsKey(id) || options.ContainsKey(id), Is.False,
+                        "Pre-arrival dialogue remains audited but cannot run: " + id);
+                    continue;
+                }
+                emittedMappings++;
                 if ((string)mapping["kind"]! == "option")
                 {
                     Assert.That(options[id].Text, Is.EqualTo(text), id);
@@ -112,30 +122,31 @@ namespace MiniGame.Presentation.Tests
                 else Assert.That(nodes[id].Text, Is.EqualTo(text), id);
             }
             Assert.That(nodes.Values.Count(node => node.Kind == "line" || node.Kind == "narration") + options.Count,
-                Is.EqualTo(mappings.Count), "Every compiled sentence and player option must have an active source row.");
+                Is.EqualTo(emittedMappings), "Every scheduled sentence and player option must retain its active source row.");
         }
 
         [Test]
-        public void RevisedDiplomatKeepsIndividualSentencesWithoutLegacyHistoricalWording()
+        public void DiplomatArrivesOnDayThreeAndKeepsUnmodifiedWording()
         {
             var compiled = Compile();
-            var meeting = compiled.Rules.Days.Single(day => day.Day == 1).Meetings.Single(item => item.PatientId == "diplomat");
-            Assert.That(compiled.Content.GetSegment(meeting.NormalRounds[0].NodeId).Lines, Is.Empty);
-            Assert.That(compiled.Content.GetSegment(meeting.NormalRounds[0].NodeId).Responses.Single().Text,
-                Is.EqualTo("先核对身份。姓名、职业，再说明你是怎么被送进来的。"));
-            Assert.That(compiled.Content.GetSegment(meeting.NormalRounds[1].NodeId).Lines.Select(line => line.SourceNodeId),
-                Is.EqualTo(Enumerable.Range(1, 4).Select(index => "diplomat__P05_D1_R2_COMMON_00" + index)));
+            Assert.That(compiled.Rules.Patients.Single(patient => patient.Id == "diplomat").FirstDay, Is.EqualTo(3));
+            Assert.That(compiled.Rules.Days.Where(day => day.Day < 3).SelectMany(day => day.Meetings)
+                .Any(meeting => meeting.PatientId == "diplomat"), Is.False);
+            var meeting = compiled.Rules.Days.Single(day => day.Day == 3).Meetings.Single(item => item.PatientId == "diplomat");
+            Assert.That(meeting.NormalRounds, Is.Not.Empty);
             Assert.That(compiled.Content.TextVariants, Is.Empty);
             foreach (var line in compiled.Content.Segments.Values.SelectMany(segment => segment.Lines))
             {
                 Assert.That(compiled.Content.ResolveText(line.SourceNodeId, line.Text, _ => false), Is.EqualTo(line.Text));
                 Assert.That(compiled.Content.ResolveText(line.SourceNodeId, line.Text, _ => true), Is.EqualTo(line.Text));
             }
-            Assert.That(compiled.Content.IsNarration("diplomat__P05_D1_R2_COMMON_001"), Is.False);
-            foreach (var narrator in compiled.SourceNodes.Where(node => node.Kind == "narration"))
-                Assert.That(compiled.Content.IsNarration(narrator.Id), Is.True, narrator.Id);
-            Assert.That(compiled.RuntimeYarn, Does.Contain("#kind:narration"));
-            Assert.That(compiled.RuntimeYarn, Does.Contain("#source:diplomat__P05_D1_R2_COMMON_001"));
+            Assert.That(compiled.Content.IsNarration("diplomat__P05_D3_R2_COMMON_001"), Is.False);
+            var introduction = compiled.SourceNodes.Single(node => node.Id == "diplomat__P05_D3_R2_COMMON_001");
+            Assert.That(introduction.Kind, Is.EqualTo("line"));
+            Assert.That(introduction.Text, Is.EqualTo("阿德里安。你要核对的贸易身份和这次收容，有一部分需要更正。"));
+            Assert.That(compiled.SourceNodes.Where(node => node.Kind == "narration"), Is.Empty);
+            Assert.That(compiled.RuntimeYarn, Does.Not.Contain("#kind:narration"));
+            Assert.That(compiled.RuntimeYarn, Does.Contain("#source:diplomat__P05_D3_R2_COMMON_001"));
         }
 
         [Test]

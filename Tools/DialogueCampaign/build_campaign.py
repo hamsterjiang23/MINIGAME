@@ -213,7 +213,7 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
     config = cast(Record, json.loads((HERE / "conversion-config.json").read_text(encoding="utf-8-sig")))
     patients = cast(list[Record], config["patients"])
     if smoke:
-        patients = patients[:2]
+        patients = [patient for patient in patients if patient["id"] in {"tutorial", "child"}]
     mappings: list[Record] = []
     adaptations: list[Record] = []
     books: list[Record] = []
@@ -223,9 +223,12 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
     source_directory = source_directory or ROOT / "Art/chat_excel"
     days: list[Record] = [{"day": day, "quota": config["tutorialQuota"] if day == 0 else config["dailyQuota"], "meetings": []} for day in range(3 if smoke else 4)]
     for patient in patients:
-        paths = [p for p in source_directory.glob("*.xlsx") if not p.name.startswith("~$") and str(patient["match"]) in p.name]
-        assert len(paths) == 1
-        path = paths[0]
+        filename = str(patient["file"])
+        if Path(filename).name != filename:
+            raise ValueError(f"Patient source must be one explicit filename: {filename}")
+        path = source_directory / filename
+        if not path.is_file():
+            raise ValueError(f"Missing patient source: {path}")
         sheets, cached, recovered = read_source(path)
         rows = sheets["对话流程"][1:]
         columns = source_columns(sheets["对话流程"][0])
@@ -251,14 +254,16 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
                 continue
             meeting = (build_updated_meeting(patient, active, number, columns, mappings, adaptations)
                        if columns else build_meeting(patient, active, number, mappings, adaptations))
-            cast(list[Record], day["meetings"]).append(meeting)
+            # Preserve every workbook row in the source audit, including days before arrival.
+            if number >= int(str(patient["firstDay"])):
+                cast(list[Record], day["meetings"]).append(meeting)
     variants = json.loads((HERE / "text-variants.json").read_text(encoding="utf-8-sig")) if not smoke else []
     rules = [{"id": p["id"], "name": p["name"], "firstDay": p["firstDay"], "initialTrust": config["initialTrust"],
               "treatmentLimit": 3, "treatmentOutcome": p["treatmentOutcome"], "treatmentDelayDays": p.get("treatmentDelayDays", 0),
               "attacksAfterRelease": p.get("attacksAfterRelease", False)} for p in patients]
     sources = [str(m["yarnSource"]) for d in days for m in cast(list[Record], d["meetings"])]
     tutorial = cast(list[Record], days[0]["meetings"])[0]
-    package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": "1.1.1-development", "yarnSource": "\n".join(sources), "portraits": portraits,
+    package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": config["contentVersion"], "yarnSource": "\n".join(sources), "portraits": portraits,
                "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": tutorial["startNode"], "endNode": tutorial["endNode"], "initialTrust": 0, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
                "campaign": {"patients": rules, "days": days, "releaseThreshold": config["releaseThreshold"], "variants": variants}}
     all_mappings = {str(m["sourceId"]): m for m in mappings}

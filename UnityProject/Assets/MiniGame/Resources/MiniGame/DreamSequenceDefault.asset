@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: DreamSequenceDefault
   m_EditorClassIdentifier: 
   EnableDreamFlow: 1
-  BlackScreenSeconds: 5
+  BlackScreenSeconds: 4.5
   WakeBlackSeconds: 1
   AlignSeconds: 1.2
   ReturnSeconds: 1
   ProjectionInset: 0.15
   Days:
   - Day: 1
-    Duration: 5
+    Duration: 15
     Artwork: {fileID: 2800000, guid: 915a5d46376483b469b786e1bb458d9b, type: 3}
     Frames:
     - {fileID: 2800000, guid: 915a5d46376483b469b786e1bb458d9b, type: 3}
@@ -39,7 +39,7 @@ MonoBehaviour:
     PostIntensity: 0
     VignetteIntensity: 0.12
   - Day: 2
-    Duration: 5
+    Duration: 15
     Artwork: {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
     Frames:
     - {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
@@ -58,7 +58,7 @@ MonoBehaviour:
     PostIntensity: 0
     VignetteIntensity: 0.12
   - Day: 3
-    Duration: 5
+    Duration: 15
     Artwork: {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}
     Frames:
     - {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}

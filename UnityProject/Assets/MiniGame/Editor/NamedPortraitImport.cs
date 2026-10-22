@@ -21,12 +21,7 @@ namespace MiniGame.UnityHost.Editor
 
         public static string NamedId(string id)
         {
-            switch (id)
-            {
-                case "ML04": case "ML05": return "ML03";
-                case "JN05": return "JN04";
-                default: return id;
-            }
+            return id;
         }
 
         [MenuItem("MiniGame/人物素材/更新命名PNG目录")]
@@ -80,12 +75,21 @@ namespace MiniGame.UnityHost.Editor
                 var entry = entries.GetArrayElementAtIndex(index);
                 string id = entry.FindPropertyRelative("id").stringValue;
                 var old = entry.FindPropertyRelative("sprite").objectReferenceValue as Sprite;
+                if (old != null && old.name != id && !replacements.ContainsKey(id))
+                    old = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/MiniGame/Art/Characters/" + id + ".png");
                 values.Add(new PortraitCatalog.Entry { id = id,
                     sprite = replacements.TryGetValue(NamedId(id), out var replacement) ? replacement : old });
                 seen.Add(id);
             }
             foreach (var pair in replacements.OrderBy(pair => pair.Key, StringComparer.Ordinal))
-                if (seen.Add(pair.Key)) values.Add(new PortraitCatalog.Entry { id = pair.Key, sprite = pair.Value });
+                if (seen.Add(pair.Key)) values.Add(new PortraitCatalog.Entry
+                    { id = pair.Key, sprite = replacements[NamedId(pair.Key)] });
+            foreach (string id in new[] { "ML04", "ML05", "JN05" })
+                if (seen.Add(id)) values.Add(new PortraitCatalog.Entry
+                {
+                    id = id,
+                    sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/MiniGame/Art/Characters/" + id + ".png")
+                });
             catalog.Configure(values.ToArray());
             EditorUtility.SetDirty(catalog);
             AssetDatabase.SaveAssetIfDirty(catalog);
@@ -95,7 +99,8 @@ namespace MiniGame.UnityHost.Editor
                 string folder = Path.Combine(root, "Artifacts", "NamedPortraits");
                 Directory.CreateDirectory(folder);
                 File.WriteAllText(Path.Combine(folder, "import.txt"), "Named PNGs: " + replacements.Count
-                    + "\nCatalog IDs: " + values.Count + "\nAliases: ML04/ML05 -> ML03; JN05 -> JN04\n");
+                    + "\nCatalog IDs: " + values.Count + "\nPortrait IDs resolve to the same-named PNG without remapping."
+                    + "\nSource PNGs: " + string.Join("; ", values.Select(value => value.id + " -> " + value.sprite.name)) + "\n");
             }
             Debug.Log("MINIGAME_NAMED_PORTRAITS_IMPORTED " + replacements.Count);
         }

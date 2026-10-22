@@ -49,13 +49,13 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.IsDialogueLineComplete(checkpointLine), Is.False);
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
-            AssertPatientFeed(host, "tutorial", catalog.Find("D0_01"));
+            AssertPatientFeed(host, "tutorial", catalog.Find("D0_03"));
             string checkpoint = host.Runtime.Save();
             host.RestoreCheckpoint(checkpoint);
             Assert.That(host.Runtime.GetView().Paused, Is.True);
             Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False, "A running tutorial checkpoint must not replay the opening.");
             Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.EqualTo(1));
-            AssertPatientFeed(host, "tutorial", catalog.Find("D0_01"));
+            AssertPatientFeed(host, "tutorial", catalog.Find("D0_03"));
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_001"), Is.True);
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_002"), Is.True);
             Assert.That(host.Runtime.IsDialogueLineComplete("tutorial__P00_D0_R1_COMMON_003"), Is.True);
@@ -156,7 +156,7 @@ namespace MiniGame.UnityHost.Tests
                         if (view.Game.Day == 0)
                         {
                             Assert.That(view.PresentedPatientId, Is.EqualTo("tutorial"));
-                            Assert.That(portraitId, Is.EqualTo("D0_01"), "The tutorial guide is not the outside-door supervisor.");
+                            Assert.That(portraitId, Is.EqualTo("D0_03"), "The tutorial guide is not the outside-door supervisor.");
                         }
                         AssertPatientFeed(host, view.PresentedPatientId, expectedSprite);
                         yield return new WaitForSecondsRealtime(.14f);

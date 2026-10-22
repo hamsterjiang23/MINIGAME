@@ -144,8 +144,14 @@ namespace MiniGame.UnityHost.Tests
             director.Advance(.25f);
             Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Returning));
             Assert.That(director.PlaybackSeconds, Is.EqualTo(5));
+            Assert.That(projection.enabled, Is.True, "The last dream image stays visible during its fade to black.");
+            Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
+            director.Advance(profile.ReturnSeconds);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
             Assert.That(projection.enabled, Is.False);
             Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
+            director.Advance(profile.WakeBlackSeconds);
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Revealing));
             director.Advance(profile.ReturnSeconds);
             Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
             Assert.That(director.OwnsCamera, Is.False);

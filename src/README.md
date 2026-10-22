@@ -1,6 +1,6 @@
 # 游戏核心逻辑源码
 
-这里实现Day0教学、五位病人三天流程的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。旧原型保留三种结局；Combined Campaign 通过 `WithDreamFlow` 接入玩家全局反叛值、自我审查及海滩结局，Unity 负责墙面梦境与终局演出。操作和验证范围见[梦境与结局指南](../docs/dreams/guide.md)。[verified: MiniGame.Core/Rules/GameRules.cs WithDreamFlow；../docs/dreams/verification.json]
+这里实现Day0教学、五位病人三天流程的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。旧原型保留三种结局；Combined Campaign 通过 `WithDreamFlow` 接入每日梦境、留院正式病人信任总和条件、16句自我审判及四分支终局。全局反叛值独立保留，不再用于隐藏结局门槛。操作与当前规则见[结局指南](../docs/endings/guide.md)。`[verified: MiniGame.Core/Rules/GameRules.cs WithDreamFlow；MiniGame.Core/Runtime/GameSession.cs HasHiddenEndingTrust/AdvanceSelfReview]`
 
 [实现说明：文件职责、设计理由与借鉴来源](architecture-and-rationale.md)解释代码为什么这样组织；[研究路线](../research/unity-2022-roadmap.md)和[游戏设计](../docs/game-overview.md)提供需求背景。
 

@@ -57,6 +57,8 @@ namespace MiniGame.UnityHost
             _supervisor = supervisor;
             _supervisorContent = SupervisorDialogueContent.Load();
             _supervisorProject = Resources.Load<YarnProject>("MiniGame/Supervisor/DialogueProject");
+            var endings = GetComponent<EndingDialoguePresenter>() ?? gameObject.AddComponent<EndingDialoguePresenter>();
+            endings.Bind(runtime, screen, supervisor);
             screen.UseYarnPresentation();
             _runtime.Changed += OnRuntimeChanged;
             PresentCurrent();
@@ -95,6 +97,12 @@ namespace MiniGame.UnityHost
         {
             if (!_pumpRequested || _runtime == null || _screen == null || project == null || _stopping) return;
             var view = _runtime.GetView();
+            if (_runtime.UsesEndingFlow && (view.IsSelfReview || view.Game.Phase == GamePhase.Ending))
+            {
+                if (_run != null) InvalidateRun();
+                _pumpRequested = false;
+                return;
+            }
             if (view.UsesDreamFlow && (view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.SelfReview
                 || view.Game.Ending == EndingType.DreamSea))
             {
@@ -260,7 +268,7 @@ namespace MiniGame.UnityHost
                 string portraitId = portrait != null ? portrait.Substring("portrait:".Length) : "JD_01";
                 if (_supervisor == null || !_supervisor.SetPortrait(portraitId))
                     throw new InvalidOperationException("Missing supervisor portrait: " + portraitId);
-                _supervisor.GetComponent<MiniGameAudioDirector>()?.PresentSupervisorPortrait(run.Runtime, portraitId);
+                screen.Audio?.PresentSupervisorPortrait(run.Runtime, portraitId);
                 if (run.Runtime.GetView().Cue?.Kind == PresentationKind.Ending) _supervisor.ShowEndingAtDoorway();
                 _supervisorCursor = new SupervisorDialogueCheckpoint {
                     revision = _supervisorContent!.revision, sourceId = sourceId,

@@ -23,7 +23,16 @@ namespace MiniGame.UnityHost
             public MiniGameSound? IntroSound;
             public bool LoopRequested;
             public bool Paused;
+            public bool StartPending;
+            public readonly List<PendingOneShot> PendingOneShots = new List<PendingOneShot>();
             public float Gain, StartGain, TargetGain, Elapsed, Duration;
+        }
+
+        private readonly struct PendingOneShot
+        {
+            public readonly AudioClip Clip;
+            public readonly float Volume;
+            public PendingOneShot(AudioClip clip, float volume) { Clip = clip; Volume = volume; }
         }
 
         private readonly Dictionary<MiniGameAudioChannel, Channel> channels = new Dictionary<MiniGameAudioChannel, Channel>();
@@ -35,11 +44,13 @@ namespace MiniGame.UnityHost
         private MiniGameAudioProfile profile;
         private AudioMixer appliedMixer;
         public MiniGameAudioProfile Profile => profile;
+        public bool MenuSuspended { get; private set; }
         public event Action<MiniGameAudioChannel, MiniGameSound> SoundPlayed;
 
         public void Configure(MiniGameAudioProfile value)
         {
             StopAll();
+            MenuSuspended = false;
             profile = value;
             mixerValues.Clear();
             foreach (MiniGameAudioChannel id in Enum.GetValues(typeof(MiniGameAudioChannel)))
@@ -70,17 +81,17 @@ namespace MiniGame.UnityHost
             state.Sound = sound;
             state.IntroSound = null;
             state.LoopRequested = true;
-            if (!sameClip || (!state.Source.isPlaying && !state.Paused))
+            if (!sameClip || (!state.Source.isPlaying && !state.Paused && !MenuSuspended && !state.StartPending))
             {
                 state.Source.Stop();
-                state.Paused = false;
+                state.PendingOneShots.Clear();
                 state.Source.clip = entry.Clip;
                 state.Source.loop = true;
                 state.Source.pitch = 1;
                 state.Gain = 0;
                 Route(channel, state.Source);
                 state.Source.volume = 0;
-                state.Source.Play();
+                StartPlayback(state);
                 SoundPlayed?.Invoke(channel, sound.Value);
             }
             Fade(state, 1, fadeSeconds);
@@ -95,8 +106,11 @@ namespace MiniGame.UnityHost
             state.Source.pitch = 1;
             state.Source.loop = false;
             state.Source.volume = 1;
-            state.Source.PlayOneShot(entry.Clip, float.IsNaN(entry.Volume) || float.IsInfinity(entry.Volume)
-                ? 0 : Mathf.Clamp(entry.Volume, 0, 2));
+            float volume = float.IsNaN(entry.Volume) || float.IsInfinity(entry.Volume)
+                ? 0 : Mathf.Clamp(entry.Volume, 0, 2);
+            if (MenuSuspended || state.Paused)
+                state.PendingOneShots.Add(new PendingOneShot(entry.Clip, volume));
+            else state.Source.PlayOneShot(entry.Clip, volume);
             SoundPlayed?.Invoke(channel, sound);
             return true;
         }
@@ -111,7 +125,7 @@ namespace MiniGame.UnityHost
             state.Sound = loop;
             state.IntroSound = intro;
             state.LoopRequested = true;
-            state.Paused = false;
+            state.PendingOneShots.Clear();
             state.Source.clip = entry.Clip;
             state.Source.loop = false;
             state.Source.pitch = 1;
@@ -119,7 +133,7 @@ namespace MiniGame.UnityHost
             Fade(state, 1, 0);
             Route(channel, state.Source);
             state.Source.volume = Unit(entry.Volume);
-            state.Source.Play();
+            StartPlayback(state);
             SoundPlayed?.Invoke(channel, intro);
         }
 
@@ -135,7 +149,13 @@ namespace MiniGame.UnityHost
         public void Stop(MiniGameAudioChannel channel, float fadeSeconds = 0)
         {
             if (!channels.TryGetValue(channel, out var state)) return;
-            if (!state.Sound.HasValue) { state.Source.Stop(); state.Paused = false; return; }
+            if (!state.Sound.HasValue)
+            {
+                state.Source.Stop();
+                state.Paused = state.StartPending = false;
+                state.PendingOneShots.Clear();
+                return;
+            }
             if (!state.LoopRequested && state.TargetGain == 0 && fadeSeconds > 0) return;
             state.LoopRequested = false;
             state.IntroSound = null;
@@ -152,21 +172,53 @@ namespace MiniGame.UnityHost
         public void PlayVoice(AudioClip clip, float startSeconds = 0, float volume = 1)
         {
             if (!isActiveAndEnabled || !channels.TryGetValue(MiniGameAudioChannel.Voice, out var state)) return;
+            bool wasPaused = state.Paused;
             Stop(MiniGameAudioChannel.Voice);
             if (clip == null || startSeconds >= clip.length) return;
+            state.Paused = wasPaused;
             Route(MiniGameAudioChannel.Voice, state.Source);
             state.Source.clip = clip;
             state.Source.loop = false;
             state.Source.volume = Unit(volume);
             state.Source.time = Mathf.Clamp(startSeconds, 0, Mathf.Max(0, clip.length - .01f));
-            state.Source.Play();
+            StartPlayback(state);
         }
 
         public void Resume(MiniGameAudioChannel channel)
         {
             if (!channels.TryGetValue(channel, out var state) || !state.Paused) return;
             state.Paused = false;
-            state.Source.UnPause();
+            if (!MenuSuspended) ResumePlayback(state);
+        }
+
+        public void SetMenuSuspended(bool suspended)
+        {
+            if (MenuSuspended == suspended || !isActiveAndEnabled) return;
+            MenuSuspended = suspended;
+            foreach (var state in channels.Values)
+            {
+                if (suspended) state.Source.Pause();
+                else if (!state.Paused) ResumePlayback(state);
+            }
+        }
+
+        private void StartPlayback(Channel state)
+        {
+            state.StartPending = MenuSuspended || state.Paused;
+            if (!state.StartPending) state.Source.Play();
+        }
+
+        private static void ResumePlayback(Channel state)
+        {
+            if (state.StartPending)
+            {
+                state.StartPending = false;
+                state.Source.Play();
+            }
+            else state.Source.UnPause();
+            foreach (var shot in state.PendingOneShots)
+                if (shot.Clip != null) state.Source.PlayOneShot(shot.Clip, shot.Volume);
+            state.PendingOneShots.Clear();
         }
 
         public void StopAll()
@@ -178,8 +230,9 @@ namespace MiniGame.UnityHost
                 state.Source.loop = false;
                 state.Sound = null;
                 state.IntroSound = null;
-                state.LoopRequested = state.Paused = false;
-                state.Gain = state.StartGain = state.TargetGain = state.Duration = 0;
+                state.LoopRequested = state.Paused = state.StartPending = false;
+                state.PendingOneShots.Clear();
+                state.Gain = state.StartGain = state.TargetGain = state.Elapsed = state.Duration = 0;
             }
         }
 
@@ -202,7 +255,7 @@ namespace MiniGame.UnityHost
                 {
                     if (state.IntroSound.HasValue)
                     {
-                        if (state.Paused || state.Source.isPlaying) continue;
+                        if (MenuSuspended || state.Paused || state.StartPending || state.Source.isPlaying) continue;
                         state.IntroSound = null;
                         state.LoopRequested = false;
                         SetLoop(pair.Key, state.Sound, 0);
@@ -215,7 +268,7 @@ namespace MiniGame.UnityHost
                         continue;
                     }
                 }
-                if (!state.Paused && state.Duration > 0)
+                if (!MenuSuspended && !state.Paused && state.Duration > 0)
                 {
                     state.Elapsed += Time.unscaledDeltaTime;
                     float t = Mathf.Clamp01(state.Elapsed / state.Duration);
@@ -243,7 +296,8 @@ namespace MiniGame.UnityHost
             state.Source.Stop();
             state.Source.clip = null;
             state.Sound = null;
-            state.Paused = false;
+            state.Paused = state.StartPending = false;
+            state.PendingOneShots.Clear();
         }
 
         private void Route(MiniGameAudioChannel id, AudioSource source)
@@ -266,6 +320,10 @@ namespace MiniGame.UnityHost
         }
 
         private static float Unit(float value) => float.IsNaN(value) || float.IsInfinity(value) ? 0 : Mathf.Clamp01(value);
-        private void OnDisable() => StopAll();
+        private void OnDisable()
+        {
+            StopAll();
+            MenuSuspended = false;
+        }
     }
 }

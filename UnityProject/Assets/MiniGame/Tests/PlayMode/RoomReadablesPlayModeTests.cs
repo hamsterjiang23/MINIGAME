@@ -15,6 +15,16 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class RoomReadablesPlayModeTests
     {
+        private bool previousSkipStartup;
+        [SetUp]
+        public void StartDirectlyForRoomTests()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+        }
+        [TearDown]
+        public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
+
         [UnityTest, Timeout(45000)]
         public IEnumerator ThreePhysicalReadablesUseLeftClickAndKeepFullTextWithoutSaveSideEffects()
         {
@@ -37,6 +47,12 @@ namespace MiniGame.UnityHost.Tests
                     Assert.That(prop.Surface.sharedMaterial, Is.Not.Null);
                     Assert.That(prop.GetComponentsInChildren<Collider>().Any(collider => collider.enabled && !collider.isTrigger), Is.True,
                         id + " must be physically targetable by the existing world raycast.");
+                    if (id == "family-letter")
+                    {
+                        var paperCollider = prop.Surface.GetComponent<MeshCollider>();
+                        Assert.That(paperCollider, Is.Not.Null, "The collider must follow the visible paper when it is moved.");
+                        Assert.That(Vector3.Distance(paperCollider.bounds.center, prop.Surface.bounds.center), Is.LessThan(.01f));
+                    }
                     Assert.That(host.Player.FocusedReadable, Is.EqualTo(prop), id + " must be reachable from its authored approach.");
                     var prompt = host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "InteractionPrompt");
                     Assert.That(prompt.text, Does.Contain("鼠标左键"));

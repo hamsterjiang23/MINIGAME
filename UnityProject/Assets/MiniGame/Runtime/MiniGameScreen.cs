@@ -55,6 +55,7 @@ namespace MiniGame.UnityHost
         private bool yarnBound;
         private bool dialogueInteractable = true;
         private bool transitionLocked;
+        private bool mainMenuCovered;
         private string fallbackKey;
         private float notificationEnd;
         private int pauseClosedFrame = -1;
@@ -70,7 +71,7 @@ namespace MiniGame.UnityHost
         public TerminalSignalController SignalTuning { get; private set; }
         public bool SignalTuningBlocksInput => SignalTuning != null && SignalTuning.BlocksGameplayInput;
         public RoomLightingTuningPanel LightingTuning { get; private set; }
-        public bool PresentationToolsBlockInput => SignalTuningBlocksInput || LightingTuning != null && LightingTuning.BlocksInput;
+        public bool PresentationToolsBlockInput => mainMenuCovered || MainMenuController.BlocksGameplayInput || SignalTuningBlocksInput || LightingTuning != null && LightingTuning.BlocksInput;
         internal bool TerminalPointerAllowed => current != null && current.TerminalOpen && !current.Paused
             && !PresentationToolsBlockInput && current.Inspection == null && !transitionLocked && PowerPhase == TerminalPowerPhase.Running && terminalReveal >= .999f;
         private readonly DialogueTextPlayback linePlayback = new DialogueTextPlayback();
@@ -81,6 +82,7 @@ namespace MiniGame.UnityHost
         public event Action SaveRequested;
         public event Action LoadRequested;
         public event Action RestartRequested;
+        public event Action MainMenuRequested;
         public Canvas Canvas { get; private set; }
         public float TerminalReveal => terminalReveal;
         public bool TransitionLocked => transitionLocked;
@@ -97,6 +99,20 @@ namespace MiniGame.UnityHost
         public PropNarrationView PropNarration => propNarration;
         public bool PropNarrationBlocksWorld => propNarration != null && propNarration.BlocksWorldInput;
         public MiniGameAudioDirector Audio { get; private set; }
+
+        public void SetMainMenuCovered(bool value)
+        {
+            mainMenuCovered = value;
+            if (Canvas != null) Canvas.enabled = !value;
+            RefreshPresentationToolVisibility();
+            if (!value) pauseClosedFrame = Time.frameCount;
+        }
+
+        internal void RevealForMainMenuTransition()
+        {
+            // Keep input and the pause overlay covered while exposing the live monitor for the title dissolve.
+            if (mainMenuCovered && Canvas != null) Canvas.enabled = true;
+        }
 
         public void BindAudio(MiniGameAudioDirector value) => Audio = value;
         public void BindSelfMonitor(Texture texture) { EnsureBuilt(); terminalView.SetSelfMonitor(texture); }
@@ -115,7 +131,7 @@ namespace MiniGame.UnityHost
         {
             if (pauseMenu == null) return;
             bool lightingOpen = LightingTuning != null && LightingTuning.IsPanelOpen;
-            pauseMenu.SetVisible(current != null && current.Paused && !lightingOpen);
+            pauseMenu.SetVisible(current != null && current.Paused && !lightingOpen && !mainMenuCovered);
             // Authoring pauses the session, while its room lighting must remain a live view.
             // Skip the ordinary pause fade as well, cancelling a pending frozen-frame capture.
             if (lightingOpen) pauseMenu.gameObject.SetActive(false);
@@ -225,6 +241,12 @@ namespace MiniGame.UnityHost
             if (!DayZeroOpeningWaiting || current == null || current.Paused || PresentationToolsBlockInput || pauseClosedFrame == Time.frameCount) return false;
             openingClickRequested = true; DayZeroOpeningWaiting = false; return true;
         }
+        internal bool RequestDayZeroOpeningFromMainMenu()
+        {
+            if (!mainMenuCovered || !MainMenuController.BlocksGameplayInput || !DayZeroOpeningWaiting
+                || current == null || current.Paused) return false;
+            openingClickRequested = true; DayZeroOpeningWaiting = false; return true;
+        }
         public bool ConsumeOpeningClick() { bool clicked = openingClickRequested; openingClickRequested = false; return clicked; }
         public void EndDayZeroOpening()
         {
@@ -265,7 +287,7 @@ namespace MiniGame.UnityHost
 
         public void SetDialogueText(string displaySpeaker, string text)
         {
-            EnsureBuilt(); speaker.text = IsSupervisorCue(current) ? "监督员" : displaySpeaker;
+            EnsureBuilt(); speaker.text = displaySpeaker;
             body.text = WorldCueText(text);
             if (current == null || !current.UsesTerminalDirectory) terminalView.SetLine(displaySpeaker, text, null);
         }
@@ -380,6 +402,7 @@ namespace MiniGame.UnityHost
 
         private void Update()
         {
+            if (mainMenuCovered) return;
             if (roomCaptionRemaining > 0 && current != null && !current.Paused)
             {
                 roomCaptionRemaining -= Time.unscaledDeltaTime;
@@ -444,7 +467,6 @@ namespace MiniGame.UnityHost
                         terminalView.ScrollSavedHistory(key == KeyCode.UpArrow ? 1 : -1);
                     return key != KeyCode.F2;
                 }
-                if (current.TerminalPage == TerminalPage.SelfReview) return terminalView.HandleSelfReviewKey(key);
                 if (terminalView.HandleDirectoryKey(key) || terminalView.HandleArchiveKey(key)) return true;
                 if (terminalView.HandleDispositionKey(key)) return true;
             }
@@ -550,7 +572,8 @@ namespace MiniGame.UnityHost
             terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
             conversation.SetActive(!dedicatedDream && !view.TerminalOpen && view.Cue?.Kind != PresentationKind.DoorMotion
                 && view.Cue?.Kind != PresentationKind.DoorViewReturn
-                && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending));
+                && view.Cue?.Kind != PresentationKind.Sleep
+                && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending && view.EndingStage == EndingStage.None));
             bool supervisor = IsSupervisorCue(view) && conversation.activeSelf;
             SetRect(conversationRect, supervisor ? new Vector2(.20f, .08f) : new Vector2(.17f, .19f),
                 supervisor ? new Vector2(.80f, .38f) : new Vector2(.83f, .74f));
@@ -569,7 +592,7 @@ namespace MiniGame.UnityHost
             if (dedicatedDream) HideDialogueActions();
             else if (!yarnBound || (view.Cue != null && (view.Cue.Kind == PresentationKind.EnterTerminal || view.Cue.Kind == PresentationKind.ExitTerminal || view.Cue.Kind == PresentationKind.Sleep || view.Cue.Kind == PresentationKind.DoorMotion || view.Cue.Kind == PresentationKind.DoorViewReturn)))
                 RenderFallback(view);
-            if (view.Game.Phase == GamePhase.Ending && view.Cue == null && !dedicatedDream)
+            if (view.Game.Phase == GamePhase.Ending && view.EndingStage == EndingStage.None && view.Cue == null && !dedicatedDream)
             {
                 SetDialogueText("检查期结束", EndingName(view.Game.Ending) + "\n\n按 ESC 可保存、恢复或开始新的检查期。");
                 HideDialogueActions();
@@ -578,12 +601,12 @@ namespace MiniGame.UnityHost
         }
 
         private static bool HasDedicatedDreamPresentation(RuntimeView view)
-            => view.UsesDreamFlow && (view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.SelfReview
+            => view.UsesDreamFlow && (view.Game.Phase == GamePhase.Dream
                 || view.Game.Ending == EndingType.DreamSea);
 
         private static bool IsSupervisorCue(RuntimeView view) => view != null && !view.TerminalOpen
             && (view.Cue?.Kind == PresentationKind.MorningInspection || view.Cue?.Kind == PresentationKind.Briefing
-                || view.Cue?.Kind == PresentationKind.Ending && view.Game.Ending == EndingType.TakenAway);
+                || view.Cue?.Kind == PresentationKind.Ending && view.Game.Ending != EndingType.DreamSea);
         private string WorldCueText(string text) => IsSupervisorCue(current)
             ? (text ?? string.Empty).Replace("【开发占位】", string.Empty).Trim() : text;
 
@@ -636,6 +659,7 @@ namespace MiniGame.UnityHost
             Canvas = go.GetComponent<Canvas>();
             Canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             Canvas.sortingOrder = 10;
+            Canvas.enabled = !mainMenuCovered;
             var scaler = go.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920, 1080);
@@ -665,7 +689,7 @@ namespace MiniGame.UnityHost
                 () => Check(runtime.LeaveTerminal()), disposition =>
                 {
                     var view = runtime.GetView();
-                    var result = runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition);
+                    var result = runtime.SubmitDisposition(view.IsSelfReview ? GameRuntime.SelfPatientId : view.Game.CurrentEncounterId, disposition);
                     Check(result);
                 }, kind => Check(runtime.Inspect(kind)), () => Check(runtime.ConfirmSelfPurification()), SignalTuning);
             terminalView.ConfirmRequested = () => HandleTerminalKey(KeyCode.Return);
@@ -693,10 +717,10 @@ namespace MiniGame.UnityHost
             closeInspection = MakeButton(ir, "CloseInspection", "记录并返回 [ESC]", () => runtime.CloseInspection());
             SetRect(closeInspection.GetComponent<RectTransform>(), new Vector2(.58f, .04f), new Vector2(.95f, .15f));
 
-            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期", "游戏设置", "操作手册", "退出游戏" };
+            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期", "游戏设置", "操作手册", "回到主菜单", "退出游戏" };
             Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(),
-                () => RestartRequested?.Invoke(), () => pauseMenu.ShowSettings(), () => pauseMenu.ShowManual(), () => Application.Quit() };
-            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "", "", "" }, actions);
+                () => RestartRequested?.Invoke(), () => pauseMenu.ShowSettings(), () => pauseMenu.ShowManual(), () => MainMenuRequested?.Invoke(), () => Application.Quit() };
+            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "", "", "", "" }, actions);
             pauseMenu.SetHint("保存当前进度，下次可从这里继续检查。");
             fade = MakePanel(canvasRoot, "PresentationFade", Color.clear, Vector2.zero, Vector2.one).GetComponent<Image>();
             fade.raycastTarget = false;

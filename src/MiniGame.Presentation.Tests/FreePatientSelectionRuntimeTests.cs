@@ -14,7 +14,7 @@ namespace MiniGame.Presentation.Tests
         [TestCase(EndingType.TakenAway, 3)]
         [TestCase(EndingType.LockedInRoom, 3)]
         [TestCase(EndingType.PriestAttack, 3)]
-        [TestCase(EndingType.PriestAttack, 1)]
+        [TestCase(EndingType.PriestAttack, 2)]
         public void ImportedCampaignAllowsDifferentDailyOrdersThroughAllEndingsAndRestores(EndingType expected, int releaseDay)
         {
             var package = Campaign();
@@ -25,8 +25,8 @@ namespace MiniGame.Presentation.Tests
             var orders = new[]
             {
                 new[] { "tutorial" },
-                new[] { "priest", "diplomat", "battlefield-doctor", "former-ruler", "child" },
-                new[] { "diplomat", "child", "priest", "battlefield-doctor", "former-ruler" },
+                new[] { "battlefield-doctor", "child", "former-ruler" },
+                new[] { "child", "priest", "battlefield-doctor", "former-ruler" },
                 new[] { "battlefield-doctor", "former-ruler", "priest", "child", "diplomat" }
             };
             for (var step = 0; step < 1600 && runtime.GetView().Game.Phase != GamePhase.Ending; step++)
@@ -69,7 +69,7 @@ namespace MiniGame.Presentation.Tests
                 {
                     var available = view.Patients.Where(patient => patient.CanReceiveToday).Select(patient => patient.Id).ToArray();
                     var id = orders[view.Game.Day].First(available.Contains);
-                    if (view.Game.Day == 1 && selected.Count == 1) Assert.That(available.Length, Is.EqualTo(5));
+                    if (view.Game.Day == 1 && selected.Count == 1) Assert.That(available.Length, Is.EqualTo(3));
                     RuntimeScenario.Accept(runtime.EnterSelectedPatient(id));
                     selected.Add(view.Game.Day + ":" + id);
                     Assert.That(runtime.GetView().PresentedPatientId, Is.EqualTo(id));
@@ -102,10 +102,10 @@ namespace MiniGame.Presentation.Tests
                 else RuntimeScenario.Accept(runtime.TryInteract(view.Game.Phase == GamePhase.Apartment ? InteractionTarget.Computer : InteractionTarget.Bed));
             }
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(expected));
-            var earlyAttack = expected == EndingType.PriestAttack && releaseDay == 1;
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(earlyAttack ? 2 : 4));
-            Assert.That(dayTwoDiplomatLines.Count, earlyAttack ? Is.Zero : Is.GreaterThan(0));
-            if (earlyAttack) Assert.That(selected.Count, Is.EqualTo(6));
+            var earlyAttack = expected == EndingType.PriestAttack && releaseDay == 2;
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(earlyAttack ? 3 : 4));
+            Assert.That(dayTwoDiplomatLines, Is.Empty, "The diplomat has not arrived on Day2.");
+            if (earlyAttack) Assert.That(selected.Count, Is.EqualTo(8));
             Assert.That(selected.Where(id => id.StartsWith("1:", StringComparison.Ordinal)), Is.EqualTo(orders[1].Select(id => "1:" + id)));
             Assert.That(selected.Distinct().Count(), Is.EqualTo(selected.Count));
             var state = Core(runtime)["State"]!;
@@ -169,6 +169,52 @@ namespace MiniGame.Presentation.Tests
             Assert.That(restored.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
             Assert.That(JObject.Parse(restored.Save())["Version"]!.Value<int>(), Is.EqualTo(campaign ? 2 : 1));
             Assert.That(restored.GetView().Cue?.Kind, Is.EqualTo(runtime.GetView().Cue?.Kind));
+        }
+
+        [Test]
+        public void ReleasedAndPurifiedLeaveTheNextDaysDirectoryWhileTreatmentCountsAndHistorySurviveRestore()
+        {
+            var package = Campaign();
+            var runtime = new GameRuntime(package.Rules, package.Content, true);
+            bool checkedSameDay = false;
+            for (int step = 0; step < 2000; step++)
+            {
+                var view = runtime.GetView();
+                if (view.Game.Day == 1 && view.Game.Phase == GamePhase.Evening)
+                {
+                    Assert.That(view.Patients.Select(patient => patient.Id), Is.EqualTo(new[] { "former-ruler", "battlefield-doctor", "child" }));
+                    checkedSameDay = true;
+                }
+                if (view.Game.Day == 2 && view.TerminalPage == TerminalPage.Directory && view.Cue == null) break;
+                RuntimeResult result;
+                if (view.Cue != null) result = runtime.CompleteCue(view.Cue.Token);
+                else if (view.TerminalPage == TerminalPage.Archive) result = runtime.LeaveTerminal();
+                else if (view.TerminalPage == TerminalPage.Directory)
+                    result = runtime.EnterSelectedPatient(view.Patients.First(patient => patient.CanReceiveToday).Id);
+                else if (view.Game.EncounterStage == EncounterStage.AwaitingDisposition)
+                    result = runtime.SubmitDisposition(view.Game.CurrentEncounterId!, view.Game.Day == 0 || view.Game.CurrentPatientId == "child"
+                        ? Disposition.Purify : view.Game.CurrentPatientId == "former-ruler" ? Disposition.Release : Disposition.Treat);
+                else if (view.Input == InputContext.Dialogue)
+                {
+                    var meeting = package.Rules.Days.Single(day => day.Day == view.Game.Day).Meetings.Single(item => item.PatientId == view.Game.CurrentPatientId);
+                    var round = view.Game.EncounterStage == EncounterStage.SpecialDialogue ? meeting.SpecialRound!
+                        : meeting.NormalRounds.Single(item => item.NodeId == view.Game.CurrentNodeId);
+                    result = runtime.SelectResponse(view.Game.CurrentEncounterId!, view.Game.CurrentNodeId!, round.Responses.OrderByDescending(item => item.TrustDelta).First().Id);
+                }
+                else result = runtime.TryInteract(view.Game.Phase == GamePhase.MorningInspection ? InteractionTarget.Door
+                    : view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream ? InteractionTarget.Bed : InteractionTarget.Computer);
+                Assert.That(result.Accepted, Is.True, $"{view.Game.Day}/{view.Game.Phase}/{view.Input}/{view.TerminalPage}: {result.Reason}");
+            }
+            Assert.That(checkedSameDay, Is.True);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(runtime.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { "battlefield-doctor", "priest" }));
+            Assert.That(runtime.GetView().Patients.Single(patient => patient.Id == "battlefield-doctor").TreatmentCount, Is.EqualTo(1));
+            var saved = runtime.Save();
+            var restored = GameRuntime.Restore(saved, package.Rules, package.Content);
+            Assert.That(restored.Save(), Is.EqualTo(saved));
+            Assert.That(restored.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { "battlefield-doctor", "priest" }));
+            Assert.That(Core(restored)["State"]!["Patients"]!.Single(patient => patient["Id"]!.Value<string>() == "former-ruler")["Presence"]!.Value<string>(), Is.EqualTo("Released"));
+            Assert.That(Core(restored)["State"]!["Patients"]!.Single(patient => patient["Id"]!.Value<string>() == "child")["Presence"]!.Value<string>(), Is.EqualTo("Purified"));
         }
 
         private static JObject Core(GameRuntime runtime) => JObject.Parse(JObject.Parse(runtime.Save())["CoreJson"]!.Value<string>()!);

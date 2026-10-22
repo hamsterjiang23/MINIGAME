@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -13,6 +14,9 @@ namespace MiniGame.UnityHost.Editor
         private const string Pending = "MiniGame.CubemapPreview.Pending";
         private const string Active = "MiniGame.CubemapPreview.Active";
         private const string Setup = "MiniGame.CubemapPreview.SceneSetup";
+        private const string SaveDirectory = "MiniGame.CubemapPreview.SaveDirectory";
+        private const string PreviousDebugDirectory = "MiniGame.CubemapPreview.PreviousDebugDirectory";
+        private const string PreviousMenuDirectory = "MiniGame.CubemapPreview.PreviousMenuDirectory";
         private static RoomDreamEnding owner;
         private static double deadline;
         [Serializable] private sealed class SavedScenes { public SceneSetup[] Scenes; }
@@ -35,6 +39,11 @@ namespace MiniGame.UnityHost.Editor
             if (profile == null || profile.RoomPanoramaSkybox == null && profile.CubemapSourcePrefab == null)
                 throw new InvalidOperationException("请先在“梦境与结局 → 海滩终局”生成全景捕获源。");
             if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            SessionState.SetString(PreviousDebugDirectory, EditorCampaignDebugSession.SaveDirectory ?? "");
+            SessionState.SetString(PreviousMenuDirectory, MainMenuController.SaveDirectoryOverride ?? "");
+            string directory = Path.GetFullPath(Path.Combine(Application.temporaryCachePath, "HiddenEndingPreview"));
+            Directory.CreateDirectory(directory);
+            SessionState.SetString(SaveDirectory, directory);
             SessionState.SetString(Setup, JsonUtility.ToJson(new SavedScenes { Scenes = EditorSceneManager.GetSceneManagerSetup() }));
             SessionState.SetBool(Pending, true);
             SessionState.SetBool(Active, true);
@@ -76,12 +85,18 @@ namespace MiniGame.UnityHost.Editor
             if (!EditorApplication.isPlaying) return;
             try
             {
+                string directory = SessionState.GetString(SaveDirectory, "");
+                if (string.IsNullOrEmpty(directory)) throw new InvalidOperationException("隐藏结局预览缺少独立存档目录。");
+                EditorCampaignDebugSession.SaveDirectory = directory;
+                MainMenuController.SaveDirectoryOverride = directory;
+                if (MainMenuController.Current != null && !MainMenuController.Current.TryDismissForEditorDebug()) return;
                 if (owner == null)
                 {
                     owner = UnityEngine.Object.FindObjectOfType<RoomDreamEnding>();
                     if (owner == null)
                     {
                         var host = UnityEngine.Object.FindObjectOfType<MiniGameBootstrap>();
+                        if (host != null && host.Runtime == null) host.StartCampaign();
                         var session = MiniGameSessionHost.Current;
                         if (host != null && host.Runtime != null && session != null)
                             owner = RoomDreamEnding.Begin(host, session, true);
@@ -103,6 +118,11 @@ namespace MiniGame.UnityHost.Editor
             if (EditorApplication.isPlayingOrWillChangePlaymode) return;
             EditorApplication.update -= Tick; owner = null;
             string json = SessionState.GetString(Setup, "");
+            string debugDirectory = SessionState.GetString(PreviousDebugDirectory, "");
+            string menuDirectory = SessionState.GetString(PreviousMenuDirectory, "");
+            EditorCampaignDebugSession.SaveDirectory = string.IsNullOrEmpty(debugDirectory) ? null : debugDirectory;
+            MainMenuController.SaveDirectoryOverride = string.IsNullOrEmpty(menuDirectory) ? null : menuDirectory;
+            SessionState.EraseString(SaveDirectory); SessionState.EraseString(PreviousDebugDirectory); SessionState.EraseString(PreviousMenuDirectory);
             SessionState.EraseBool(Pending); SessionState.EraseBool(Active); SessionState.EraseString(Setup);
             var saved = string.IsNullOrEmpty(json) ? null : JsonUtility.FromJson<SavedScenes>(json);
             if (saved?.Scenes != null && saved.Scenes.Length > 0 && saved.Scenes.All(scene => !string.IsNullOrEmpty(scene.path)))

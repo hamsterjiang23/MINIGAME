@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23",
+  "status": "verified",
+  "changes": {
+    "menu": "Controls fade; title music fades out; matching logo dissolves into existing monitor pullback; no second opening click",
+    "initialSelection": "No selected button until pointer or navigation input",
+    "letter": "MeshCollider follows visible paper; current approach ray hits at 1.2066m",
+    "terminal": "Separate Stage/Unit/Status in directory and selected summary; authoritative treatment and presence values",
+    "sleep": "1.5 second fully black hold after bed move/look/fade, preserving pause and checkpoint time"
+  },
+  "verified": [
+    "BedtimeGuidancePlayModeTests 3/3",
+    "DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay 1/1",
+    "FollowupFlowPlayModeTests 5/5",
+    "MainMenuFlowPlayModeTests 11/11",
+    "MainMenuPersistencePlayModeTests 8/8",
+    "MenuAudioSuspensionPlayModeTests 6/6",
+    "MiniGameAudioPlayModeTests 15/15",
+    "RoomReadablesPlayModeTests 3/3",
+    "TerminalBitmapTextTests 22/22",
+    "TerminalHtmlParityTests 7/7",
+    "Font coverage 10003 glyph/size pairs; missing=[]",
+    "git diff --check exit 0",
+    "10/10 production source SHA256 matches isolated project"
+  ],
+  "pending": [],
+  "artifacts": "Artifacts/MenuRoomRepair20261023",
+  "editorRestart": {
+    "recoveredPid": 67424,
+    "nativeCrashStack": "editor-crash.log",
+    "project": "UnityProject",
+    "version": "2022.3.23f1c1"
+  },
+  "totalTests": 81,
+  "failedTests": 0,
+  "isolatedProject": "Artifacts/MenuRoomRepair20261023/Isolated/UnityProject",
+  "verificationScope": "Unity Editor Play Mode/Edit Mode regression tests; no standalone build performed by this repair task. The three earlier suites ran in main Editor; seven final reruns used a physical isolated project, with all ten repair production files SHA256-equal.",
+  "sourceParity": "Artifacts/MenuRoomRepair20261023/source-parity.json",
+  "spatialAudio": {
+    "source": "Artifacts/MenuRoomRepair20261023/spatial-audio-measurement.json",
+    "farPeak": 0.02290129,
+    "nearDistance": 0.5,
+    "farDistance": 9.5,
+    "nearPeak": 0.4213514
+  }
+}

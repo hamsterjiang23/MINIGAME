@@ -10,6 +10,7 @@ namespace MiniGame.Presentation
     public enum InputContext { World, Dialogue, Presentation, Inspection, Paused, Ending, TerminalDirectory, DoorView }
     public enum TerminalPage { Closed, Directory, Review, Archive, SelfReview }
     public enum TerminalPowerState { Off, Booting, Running, ShuttingDown }
+    public enum EndingStage { None, AwaitingDoor, Dialogue, Transition, Space, Thanks, Completed }
     public enum PresentationKind { MorningInspection, Briefing, EnterTerminal, ResponseBranch, Reaction, ExitTerminal, Sleep, Dream, Ending, Introduction, DoorMotion, DoorViewReturn }
     public enum InspectionKind { Eyes, Hands, Teeth, Photo, DailySigns, Records }
 
@@ -101,6 +102,9 @@ namespace MiniGame.Presentation
         public bool DoorViewActive { get; }
         public bool UsesDreamFlow { get; }
         public bool DreamTraversal { get; }
+        public EndingStage EndingStage { get; }
+        public bool IsSelfReview => Game.Phase == GamePhase.SelfReview;
+        public bool SelfReviewReady => IsSelfReview && Game.SelfReviewCompleted;
         public IReadOnlyList<TranscriptEntry> Transcript { get; }
         public string? PresentedPatientId { get; }
         public string? PresentedPatientName { get; }
@@ -115,7 +119,7 @@ namespace MiniGame.Presentation
             string? presentedPatientId = null, string? presentedPatientName = null, string? presentedEncounterId = null,
             Disposition? presentedDisposition = null, IEnumerable<Disposition>? configuredDispositions = null,
             bool roomDoorOpen = false, bool doorViewActive = false, bool usesDreamFlow = false,
-            TerminalPowerState terminalPower = TerminalPowerState.Off)
+            TerminalPowerState terminalPower = TerminalPowerState.Off, EndingStage endingStage = EndingStage.None)
         {
             Game = game; Input = input; TerminalOpen = terminalOpen; Paused = paused;
             Cue = cue; Dialogue = dialogue; Inspection = inspection;
@@ -124,6 +128,7 @@ namespace MiniGame.Presentation
             ObservedSigns = new ReadOnlyCollection<string>(new List<string>(observedSigns));
             TerminalPage = terminalPage; UsesTerminalDirectory = usesTerminalDirectory; LeavingTerminal = leavingTerminal;
             TerminalPower = terminalPower;
+            EndingStage = endingStage;
             ArchiveDirectoryVisible = archiveDirectoryVisible;
             RoomDoorOpen = roomDoorOpen;
             DoorViewActive = doorViewActive;

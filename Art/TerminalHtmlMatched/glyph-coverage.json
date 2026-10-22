@@ -64,14 +64,14 @@
   "output": {
     "width": 4096,
     "height": 4096,
-    "usedHeight": 3018,
-    "codepoints": 1515,
-    "glyphs": 53025,
-    "addedGlyphs": 34230,
-    "pngBytes": 14040779,
-    "metricsBytes": 5693806,
-    "pngSha256": "d9238a830d2eaae3fc4890df3cbf009b5ad5b2f01a0be4e3b4ccbcf282e36631",
-    "metricsSha256": "637243b27a8ad1e69fbdb77bb5c4d13d23c4cb25ddb4d6148ca30f173cef0d71"
+    "usedHeight": 2994,
+    "codepoints": 1505,
+    "glyphs": 52675,
+    "addedGlyphs": 33880,
+    "pngBytes": 13941843,
+    "metricsBytes": 5655886,
+    "pngSha256": "6a7f3b014264ebafa381348ebcb8e12cc82f65d0524243ec67499fb1a181edf9",
+    "metricsSha256": "80866b4000c00314d6bd80769f8989ec77310ff57a65d1860ea5767c58264e9a"
   },
   "coverage": {
     "missingGlyphs": 0,
@@ -80,10 +80,30 @@
       {
         "path": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json",
         "kind": "campaign",
-        "sha256": "55b76afdf3d7d083a63b4810f218222108473d53a825bf6ecc172e77af3c7260",
-        "stringCount": 140,
+        "sha256": "f5eca115d0a15767153082fd073e55449040b0f6a521824f2c299943b382b89d",
+        "stringCount": 126,
         "nonBmp": [],
-        "codepoints": 1169,
+        "codepoints": 1069,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Dialogue.json",
+        "kind": "ending-dialogue",
+        "sha256": "5acf96f877dd7eb082cf944f496c445514bea0422c237abffe1c3b0200573d9e",
+        "stringCount": 253,
+        "nonBmp": [],
+        "codepoints": 243,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Dialogue.json",
+        "kind": "supervisor-dialogue",
+        "sha256": "eb7cb8cda7fe28dcf76e80f1445133189ff6da4356100d367a0a440241cd0635",
+        "stringCount": 197,
+        "nonBmp": [],
+        "codepoints": 280,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -100,10 +120,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
         "kind": "runtime",
-        "sha256": "da17dca169a71c08673771c89f4ce72cb97331fe4ee7c05e1d1c725c5c7b45e3",
+        "sha256": "b6e160508c93125b8f2eb005ec153fc215feb770df6fbb271c25566d82759e15",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 136,
+        "codepoints": 149,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -120,7 +140,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
         "kind": "runtime",
-        "sha256": "3d3a225fb16ec505ad1c5154b39566ff2c8768d539bea51a3c79fd357eaf15b5",
+        "sha256": "3afe431401f13087708b5219065d5c45b37768c00457d667c35df8935303042b",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 84,
@@ -140,10 +160,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs",
         "kind": "runtime",
-        "sha256": "1383c24ccacd0dca7f2c49a60d6cdf9170db2afb88ab57d060b549cce81198ef",
+        "sha256": "db7cedeeac1576c63e75bb4de32aa9f2729fc41e27e911b4746a86e292dc481c",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 84,
+        "codepoints": 85,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -160,7 +180,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs",
         "kind": "runtime",
-        "sha256": "b3cae6bd665ed523fcc68f84a064571d4ac395240330ccabc8ec4deaaf583acf",
+        "sha256": "1471ef18c32525859cdc289cf2530bbb1e80650b98997c47208911be5ed7cc12",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 70,
@@ -170,7 +190,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DoorViewCamera.cs",
         "kind": "runtime",
-        "sha256": "024f8b12b51eff20c50bf52591fbcf54077532fba07ffb816e4454b533606713",
+        "sha256": "92a7224d90d4a8cb4734a567994edbfee60c4fa954c71dab33061a725053e852",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 96,
@@ -180,7 +200,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs",
         "kind": "runtime",
-        "sha256": "84e18595bceca94397a65d3a318e092081739221f3fbca29d9bc4605450ce215",
+        "sha256": "19cf708ebefaf1e25a4669cba0a47b64792bc99f1f44f8204d240b263cc06b92",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 78,
@@ -230,10 +250,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs",
         "kind": "runtime",
-        "sha256": "72675b9825e2f2f87231e4925f3914bc79f39e56179c076c1d357e4e15333c26",
+        "sha256": "b76eb11d598f744a9fc94962750891ed0ad398457910290459ae54c33b213235",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 161,
+        "codepoints": 164,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -250,7 +270,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs",
         "kind": "runtime",
-        "sha256": "6d270d8c5d6d03b01ad46509151c421380d795572549be14d57b5b362871063f",
+        "sha256": "b7ab7be6b35ad462c7017aa9828f522b96248e4cbc19060d1081047992110619",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 83,
@@ -260,10 +280,40 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs",
         "kind": "runtime",
-        "sha256": "7964e206ce01db4c54af35f85c6cb8e088f00baac6c9c2755da86445c8850e47",
+        "sha256": "e717ebda8cc8a8e40f86422584d6b081fd9dd8d8c28de816bb92245d8339af7d",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 276,
+        "codepoints": 275,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/EditorCampaignDebugSession.cs",
+        "kind": "runtime",
+        "sha256": "da203812c85c5f0c628dace2bdeb486b184c00aa50749f0bc94bf7ba20d7222c",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 59,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/EndingDialoguePresenter.cs",
+        "kind": "runtime",
+        "sha256": "65fc52c31ec0f652d05532a9a77e50d86d10a3c973832a0b0de53cfe6a0f8558",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 65,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/EndingThanksView.cs",
+        "kind": "runtime",
+        "sha256": "4e5db50ae5a3b09c6968019e20d818dfce879b3e4b7baab916a0945632ceab0f",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 88,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -280,7 +330,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/HingedDoor.cs",
         "kind": "runtime",
-        "sha256": "e88b44327cf99e3af0e721a0f52abab820ca9f18324f032ef2f73cc166ff12ec",
+        "sha256": "08f11d1e3c2679605ba7dd75e64584140c1dbf0421d6298310c36acc052f15b3",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 73,
@@ -298,6 +348,36 @@
         "missing": []
       },
       {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuContinueStore.cs",
+        "kind": "runtime",
+        "sha256": "f35575b361be9767af77eb2d3f85b6b456e717c9df59993ec4408ccfc9ab60a7",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 61,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs",
+        "kind": "runtime",
+        "sha256": "c2a4c702b01b1278ca55c3d2741fbf7afbd31d403f251615d8de916236ee909b",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 115,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuView.cs",
+        "kind": "runtime",
+        "sha256": "91b4d1c35f7ac8a82bf1f344d934e7d8dd0350ca67247711fce94c6532330061",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 125,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioButton.cs",
         "kind": "runtime",
         "sha256": "8e24e39235d764b7c2b18dfb3598124a759f2afc25e91587ae8c80816798ee22",
@@ -310,27 +390,27 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs",
         "kind": "runtime",
-        "sha256": "d4246d06fc36e934f7414893006f393b05f7d4626e6635090b49a57fdf16354b",
+        "sha256": "37b3fd5fedb043513449c09bebb9c5238d807f19c1fae5623d651258142d6dce",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 72,
+        "codepoints": 92,
         "missingGlyphs": 0,
         "missing": []
       },
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioProfile.cs",
         "kind": "runtime",
-        "sha256": "5594d6b12e7ba56f37533c515a616e143b5a432debcdd4680e70cd12b8243d2d",
+        "sha256": "dd5b2d870a4830bcdb9848de890730f5fb03f1e9fe183b90b0f74a29f37add68",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 208,
+        "codepoints": 219,
         "missingGlyphs": 0,
         "missing": []
       },
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioService.cs",
         "kind": "runtime",
-        "sha256": "d474eefb57b85e7b962e1d998f4a9c686703abddb0ca4ec4118db31e8324305f",
+        "sha256": "b624b4405a801835e25b5a28ebc413244c982093f746a63a93877ac41d7b95e9",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 79,
@@ -340,17 +420,17 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs",
         "kind": "runtime",
-        "sha256": "0ce2a167674be602cf86ae1c1d4846d44c5feddbc2141d906009a2970a31c6a6",
+        "sha256": "4b027d355ff3acc37314ffdda2bbfc8e7487d75b9eba4305631460c7fd963a1f",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 142,
+        "codepoints": 156,
         "missingGlyphs": 0,
         "missing": []
       },
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
         "kind": "runtime",
-        "sha256": "e486ffc359fb45f615d12e0611683f3adb1998466b736cc8e120d382059707ce",
+        "sha256": "9b7c312a2d837e7084023279e4c120c855ffd66a4c15ac87a964264dbd41131f",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 268,
@@ -360,10 +440,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs",
         "kind": "runtime",
-        "sha256": "86b678a261749e32f7eb8ddd7ba9f476523b84ffdf19c5466ace785ec2229246",
+        "sha256": "0c30ba286f1dbd5810f1a4c2e5ef3cd0b92d719b28e399e8073f22aeecf30275",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 142,
+        "codepoints": 164,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -400,7 +480,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/PatientMonitorRoom.cs",
         "kind": "runtime",
-        "sha256": "19ba2e445c53d0c07fcdfbf9ed191a4d44de81d9fda9f86e00f89cf935459310",
+        "sha256": "f0888ab2a6f1c7b32fe81f1187e85695163d1b2ed6509c17ccf1578bf982e34d",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 79,
@@ -410,10 +490,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/PatientSurveillanceFeed.cs",
         "kind": "runtime",
-        "sha256": "8f96e2efbfccb17ea8f0309eb760bd811839a5a52ab89e91340dfa1b4b6159e8",
+        "sha256": "164e6a2d5547f9abf6059b03c790fac37a64aefa9ce5ccf45e1314be815ef6a7",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 99,
+        "codepoints": 101,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -470,10 +550,20 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
         "kind": "runtime",
-        "sha256": "9c9dfdb9e4c3f1839395732afd502362c11500c8148050e9b05fa087288ebeb3",
+        "sha256": "3a97a22766b06957ad5851e21bea1ed6295dc26c335c7b672fa18e96efd4d603",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 198,
+        "codepoints": 171,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PlayerBrightnessEffect.cs",
+        "kind": "runtime",
+        "sha256": "dc6fbba9e5475dd59a57adb64e317099284d5ba1dbb959643b3089b466d4ead7",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 64,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -498,6 +588,16 @@
         "missing": []
       },
       {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PlayerPreferences.cs",
+        "kind": "runtime",
+        "sha256": "d6d05aadf57fa6269348388dca1a17c4797841a29922ae1f68d21c0e7a426d28",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 65,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
         "path": "UnityProject/Assets/MiniGame/Runtime/PlayerRebellionProfile.cs",
         "kind": "runtime",
         "sha256": "c35c88442357b09f8e3151cab0ba18cd8515bc98c3ee42c3eb0ff591885816f5",
@@ -518,19 +618,29 @@
         "missing": []
       },
       {
-        "path": "UnityProject/Assets/MiniGame/Runtime/PortraitCatalog.cs",
+        "path": "UnityProject/Assets/MiniGame/Runtime/PlayerSettingsView.cs",
         "kind": "runtime",
-        "sha256": "4d928dafd43005181bc4eadff06708d290cf647ca748367e868a6a49c1b141a7",
+        "sha256": "a41a7fc04e39783d6e5092574c94e77dc79d2dda9a612f09fa6ccf17722be36b",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 74,
+        "codepoints": 108,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/PortraitCatalog.cs",
+        "kind": "runtime",
+        "sha256": "8a741f49fab9a3c3c453f99b4da383e556e300ed1bdaad92160bcc01bd0b1722",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 76,
         "missingGlyphs": 0,
         "missing": []
       },
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
         "kind": "runtime",
-        "sha256": "760754f7484c010d44d181d5f36a70d4362830f78d85cde44ec95bed08cea251",
+        "sha256": "e7b5142572fe6f1d117621a530337f0321089340def8f5e9ed7562b5f3da1dc4",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 84,
@@ -600,10 +710,20 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/RoomDreamEnding.cs",
         "kind": "runtime",
-        "sha256": "7962dbe62907a394c63efdb28b80bbe899a6d74fdecddcc8c781685180deeb73",
+        "sha256": "c3a56798cf8b85c895adc197d1ac3f71b3adb1381af6fda91f1bdaa99586a4d0",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 161,
+        "codepoints": 167,
+        "missingGlyphs": 0,
+        "missing": []
+      },
+      {
+        "path": "UnityProject/Assets/MiniGame/Runtime/RoomEndingTransitionCheckpoint.cs",
+        "kind": "runtime",
+        "sha256": "38b72705092f76618554eb0104d2958e37e35788a14ade1faac5d5bce1522630",
+        "stringCount": 1,
+        "nonBmp": [],
+        "codepoints": 71,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -700,10 +820,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/SupervisorDoorwayView.cs",
         "kind": "runtime",
-        "sha256": "c2e519be13f397a135f0ce6fff185f755c9fe8a81473ee9b141a6d0ff242c662",
+        "sha256": "ce82c127fe86e0230dd1187990f84c98e928ef39e42c3f4f0b132434576e6e61",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 88,
+        "codepoints": 102,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -720,7 +840,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalBitmapText.cs",
         "kind": "runtime",
-        "sha256": "43ec52785e70f77006b6e6a24ace05caf9e06ab10389a818099b3dd5c6d3ee13",
+        "sha256": "9f35603324264609e48009740312050b0fdf4817f76a8b2c91fe7acdcabdd863",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 83,
@@ -730,7 +850,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalButtonVisual.cs",
         "kind": "runtime",
-        "sha256": "419d518d42f7032985d3357d5cf10ad62224b441f7f42edbacbcf60e1b16b7b5",
+        "sha256": "e8ae07840102dd5f2c91630199d65e46274959cbd798a8dad3fdb0bde56eaa34",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 78,
@@ -820,10 +940,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalRosterPointer.cs",
         "kind": "runtime",
-        "sha256": "d489835ed3ad0d13136d33b24fbebf3993f9afa91a2faaef285443c30f1ab12f",
+        "sha256": "21c4ecc4c20618885afb09dfdc9b38f00dc2a7b24136439988af3c6006555a42",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 50,
+        "codepoints": 49,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -840,7 +960,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalController.cs",
         "kind": "runtime",
-        "sha256": "99d62a1c4e2b6998700ce93a8201cb4648921a0928a62aaac112c318e466ce5a",
+        "sha256": "2e2aa62f3edc70765fa62f0088302f4315eefe0827e1cc22ff8d370f9b1126ff",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 109,
@@ -850,20 +970,20 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalEffect.cs",
         "kind": "runtime",
-        "sha256": "d97280b1618a21ec601172505997f9e1434d2698f413711ab53df04dc8bc8637",
+        "sha256": "91f3ca84d7f808b22e54d64a9217904b4e2119c1bfff8d197ab426347e4ad55a",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 73,
+        "codepoints": 76,
         "missingGlyphs": 0,
         "missing": []
       },
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalSignalProfile.cs",
         "kind": "runtime",
-        "sha256": "790c05372cbb19258533da2417fc172e8d0ae34b3ea6bba330d5a659a7ddddd4",
+        "sha256": "54cbb2144ffeeece9041371850b535d612a42ff37f1ff4d14afb85ac94845535",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 126,
+        "codepoints": 131,
         "missingGlyphs": 0,
         "missing": []
       },
@@ -910,7 +1030,7 @@
       {
         "path": "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
         "kind": "runtime",
-        "sha256": "c3b4f0b88999f95b42197ca80239dec08b8183a734f4a7e06ff5ace28866c26f",
+        "sha256": "868eefd3e6329422c5472b638248a9ad28bf46f816683bd7e1ce10d33e2daf77",
         "stringCount": 1,
         "nonBmp": [],
         "codepoints": 206,
@@ -960,10 +1080,10 @@
       {
         "path": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.yarn",
         "kind": "yarn-content",
-        "sha256": "e16d7ad11626d2b936fb5936a860bc0a9244686cf229c749269ee75d9f34a2cb",
+        "sha256": "9a3bf7bb575e1e2498e928d22c8485445a4a965c33b7c3396cf1cf966e5b25f3",
         "stringCount": 1,
         "nonBmp": [],
-        "codepoints": 1136,
+        "codepoints": 1031,
         "missingGlyphs": 0,
         "missing": []
       },

@@ -1,0 +1,373 @@
+{
+  "recordedAtUtc": "2026-10-22T17:45:02.279339+00:00",
+  "scope": "Endings and dialogue update in the shared dirty checkout; concurrent menu/room work preserved.",
+  "contentVersion": "1.2.0-development",
+  "sdk": "8.0.424",
+  "unity": "2022.3.23f1c1",
+  "dotnet": {
+    "commands": [
+      "../.dotnet/dotnet.exe restore MiniGame.sln --locked-mode",
+      "../.dotnet/dotnet.exe build MiniGame.sln -c Release --no-restore",
+      "../.dotnet/dotnet.exe test MiniGame.sln -c Release --no-build --no-restore"
+    ],
+    "workingDirectory": "src",
+    "restore": "passed",
+    "build": {
+      "result": "passed",
+      "warnings": 0,
+      "errors": 0
+    },
+    "tests": [
+      {
+        "report": "Artifacts/Endings/dotnet/endings-final_net8.0_20261023012236.trx",
+        "sha256": "84c480d0d4902a37f25fbc85eaafdb564dbefc5d2cac0c3c23f408f5b3151b4b",
+        "counts": {
+          "total": "139",
+          "executed": "139",
+          "passed": "139",
+          "failed": "0",
+          "error": "0",
+          "timeout": "0",
+          "aborted": "0",
+          "inconclusive": "0",
+          "passedButRunAborted": "0",
+          "notRunnable": "0",
+          "notExecuted": "0",
+          "disconnected": "0",
+          "warning": "0",
+          "completed": "0",
+          "inProgress": "0",
+          "pending": "0"
+        }
+      },
+      {
+        "report": "Artifacts/Endings/dotnet/endings-final_net8.0_20261023012242.trx",
+        "sha256": "d6d3a4a5de2ae950dca171056650ab05b32a6743c24315e7ab45d5ee9b146873",
+        "counts": {
+          "total": "242",
+          "executed": "242",
+          "passed": "242",
+          "failed": "0",
+          "error": "0",
+          "timeout": "0",
+          "aborted": "0",
+          "inconclusive": "0",
+          "passedButRunAborted": "0",
+          "notRunnable": "0",
+          "notExecuted": "0",
+          "disconnected": "0",
+          "warning": "0",
+          "completed": "0",
+          "inProgress": "0",
+          "pending": "0"
+        }
+      }
+    ]
+  },
+  "content": {
+    "python": {
+      "command": "python -B -m unittest discover -s Tools/DialogueCampaign -p test_*.py",
+      "tests": 26,
+      "passed": 26,
+      "deterministicChecks": [
+        "build_campaign.py --check",
+        "build_supervisor.py --check",
+        "build_endings.py --check"
+      ]
+    },
+    "commandRouteProbe": {
+      "sdk": "8.0.424",
+      "executable": ".dotnet/dotnet.exe",
+      "scope": "Isolated temporary console references existing Release Core/Presentation DLLs and reads the current generated campaign and ending JSON. It drives real runtime commands, then deserializes and replays a separate read-only snapshot to inspect eligible residents. No running DTO, source rules or initial trust is edited.",
+      "routes": [
+        {
+          "route": "Normal",
+          "commands": 213,
+          "day": 4,
+          "phase": "Ending",
+          "ending": "TakenAway",
+          "residentCount": 1,
+          "residentTrustSum": 2,
+          "rebellion": 0
+        },
+        {
+          "route": "Priest",
+          "commands": 146,
+          "day": 3,
+          "phase": "Ending",
+          "ending": "PriestAttack",
+          "residentCount": 2,
+          "residentTrustSum": -5,
+          "rebellion": 0
+        },
+        {
+          "route": "Quota",
+          "commands": 77,
+          "day": 4,
+          "phase": "Ending",
+          "ending": "LockedInRoom",
+          "residentCount": 5,
+          "residentTrustSum": -13,
+          "rebellion": 0
+        },
+        {
+          "route": "Hidden",
+          "commands": 223,
+          "day": 3,
+          "phase": "SelfReview",
+          "ending": "None",
+          "residentCount": 2,
+          "residentTrustSum": 123,
+          "rebellion": 0
+        }
+      ]
+    },
+    "unity": {
+      "status": "Not run by the content worker; coordinated Editor/PlayMode validation is separate.",
+      "newSuite": "UnityProject/Assets/MiniGame/Tests/PlayMode/EndingCampaignPlayModeTests.cs",
+      "updatedLegacyCase": "DreamCampaignIntegrationTests.ResidentTrustSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress"
+    }
+  },
+  "playMode": [
+    {
+      "report": "Artifacts/Endings/EndingCampaignPlayModeTests.json",
+      "sha256": "d6afabbf0d49480f10337719acf169cbfd0bb174480cc8e73e1326bfa125b5d6",
+      "status": "completed",
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "durationSeconds": 44.94,
+      "failures": []
+    },
+    {
+      "report": "Artifacts/Endings/EndingTransitionPlayModeTests.json",
+      "sha256": "28491c3b5da079025486d3dcdcf37c648cfbc490e67be4dc5b34bbb9e988e303",
+      "status": "completed",
+      "summary": {
+        "total": 10,
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "durationSeconds": 0.33,
+      "failures": []
+    },
+    {
+      "report": "Artifacts/Endings/DreamCampaignIntegrationTests.json",
+      "sha256": "4f71d1366c8fa9d62787daa31ab808dad2e0fb3fc17f2eb6c45dcdf176fe6169",
+      "status": "completed",
+      "summary": {
+        "total": 11,
+        "passed": 10,
+        "failed": 1,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "durationSeconds": 91.07,
+      "failures": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign",
+          "Status": "Failed",
+          "Duration": 6.2628652,
+          "Message": "  Expected: 3\r\n  But was:  4\r\n",
+          "StackTrace": "at MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests+<CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign>d__21.MoveNext () [0x00a51] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\PlayMode\\DreamCampaignIntegrationTests.cs:530\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@1.1.33\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46\r\n"
+        }
+      ]
+    },
+    {
+      "report": "Artifacts/Endings/CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign.json",
+      "sha256": "fb887f91d155f5eef73d6718baeb67b8ccaf2cc3b457005bc77421456a8428f5",
+      "status": "completed",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "durationSeconds": 7.79,
+      "failures": []
+    },
+    {
+      "report": "Artifacts/Endings/DreamCubemapPlayModeTests.json",
+      "sha256": "b2c0102829fd351a92cf878c44a7473af218169f145e55d2b99c77c0331f0ed6",
+      "status": "completed",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "durationSeconds": 15.86,
+      "failures": []
+    }
+  ],
+  "latestPlayModeEvidenceByCase": {
+    "total": 36,
+    "passed": 36,
+    "notPassed": {},
+    "note": "Latest evidence per named case combines the full suites and explicitly listed targeted rerun; it is not a claim that every suite passed in a single uninterrupted run."
+  },
+  "regressionRetest": {
+    "suite": "DreamCampaignIntegrationTests",
+    "initialResult": "10 passed / 1 failed after other legacy fixture corrections",
+    "lastFailure": "Cross-scene hidden-ending restore expected Day3 after purification; core intentionally records the ending as Day4.",
+    "correction": "Restore assertion now expects Day4, matching SelfPurify; production rules unchanged.",
+    "retest": "CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign.json"
+  },
+  "editModeAssembly": {
+    "report": "Artifacts/Endings/editmode.json",
+    "sha256": "11261d68e21e3f46b05a4f6fcfdf676f48ade1c779d471b1b7f41154d4ab9dc0",
+    "status": "completed",
+    "summary": {
+      "total": 174,
+      "passed": 168,
+      "failed": 6,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "durationSeconds": 6.62,
+    "failures": [
+      {
+        "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials",
+        "Status": "Failed",
+        "Duration": 0.0028906,
+        "Message": "System.InvalidOperationException : Run wall repair tests with a clean MainRoomCombined in the isolated project.",
+        "StackTrace": "  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.WithCombined (System.Action`1[T] check) [0x001e2] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:261 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials () [0x00000] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:26 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets",
+        "Status": "Failed",
+        "Duration": 0.0002148,
+        "Message": "System.InvalidOperationException : Run wall repair tests with a clean MainRoomCombined in the isolated project.",
+        "StackTrace": "  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.WithCombined (System.Action`1[T] check) [0x001e2] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:261 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets () [0x00000] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:146 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.SavedOverlappingWallpapersHaveDistinctDepth",
+        "Status": "Failed",
+        "Duration": 0.0001555,
+        "Message": "System.InvalidOperationException : Run wall repair tests with a clean MainRoomCombined in the isolated project.",
+        "StackTrace": "  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.WithCombined (System.Action`1[T] check) [0x001e2] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:261 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.SavedOverlappingWallpapersHaveDistinctDepth () [0x00000] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:114 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+      }
+    ]
+  },
+  "knownUnrelatedFailures": {
+    "report": {
+      "report": "Artifacts/Endings/wall-isolated.json",
+      "sha256": "dc52bbc2a70add332878ec8c93b131b4cf4c98b26cfeb730d62966a95fd61b6d",
+      "status": "completed",
+      "summary": {
+        "total": 4,
+        "passed": 1,
+        "failed": 3,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "durationSeconds": 0.16,
+      "failures": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials",
+          "Status": "Failed",
+          "Duration": 0.0584862,
+          "Message": "System.InvalidOperationException : Expected the twelve unique reference wallpaper renderers; found: ",
+          "StackTrace": "  at MiniGame.UnityHost.Editor.WallSurfaceRepairSetup.Apply (UnityEngine.SceneManagement.Scene scene, System.Boolean persist) [0x000f1] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\WallSurfaceRepairSetup.cs:93 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests+<>c.<PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials>b__3_0 (UnityEngine.SceneManagement.Scene scene) [0x001e4] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:38 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.WithCombined (System.Action`1[T] check) [0x00092] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:246 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials () [0x00000] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:26 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets",
+          "Status": "Failed",
+          "Duration": 0.0521336,
+          "Message": "System.InvalidOperationException : Expected the twelve unique reference wallpaper renderers; found: ",
+          "StackTrace": "  at MiniGame.UnityHost.Editor.WallSurfaceRepairSetup.Apply (UnityEngine.SceneManagement.Scene scene, System.Boolean persist) [0x000f1] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\WallSurfaceRepairSetup.cs:93 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests+<>c.<RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets>b__5_0 (UnityEngine.SceneManagement.Scene scene) [0x00022] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:150 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.WithCombined (System.Action`1[T] check) [0x00092] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:246 \r\n  at MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets () [0x00000] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:146 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests.SavedOverlappingWallpapersHaveDistinctDepth",
+          "Status": "Failed",
+          "Duration": 0.0201342,
+          "Message": "  Expected: String starting with \"Assets/MiniGame/Generated/WallSurfaceRepair/\"\r\n  But was:  \"Assets/MiniGame/Art/EmployeeApartment/MainRoom.fbx\"\r\n",
+          "StackTrace": "at MiniGame.UnityHost.Tests.WallSurfaceRepairTests+<>c.<SavedOverlappingWallpapersHaveDistinctDepth>b__4_0 (UnityEngine.SceneManagement.Scene scene) [0x0005f] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:121\r\nat MiniGame.UnityHost.Tests.WallSurfaceRepairTests.WithCombined (System.Action`1[T] check) [0x00092] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:246\r\nat MiniGame.UnityHost.Tests.WallSurfaceRepairTests.SavedOverlappingWallpapersHaveDistinctDepth () [0x00000] in F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\WallSurfaceRepairTests.cs:114\r\n"
+        }
+      ]
+    },
+    "description": "Three legacy WallSurfaceRepairTests still expect twelve old wallpaper meshes and Generated/WallSurfaceRepair assets. The current MainRoomCombined uses EmployeeApartment/MainRoom.fbx. The scene was not reverted to satisfy the old fixture.",
+    "countNote": "Unity pipeline aggregate summary includes nested counts; use named result entries for the three distinct failing cases."
+  },
+  "visualEvidence": {
+    "manifests": [
+      {
+        "manifest": "Artifacts/Endings/Visuals/20261022T1718134572958Z-7164cdd0/manifest.jsonl",
+        "sha256": "903e5253c0f41d559a28cae64dba073ce2869f24efe30427a4b74bcf5d4533f6",
+        "images": 15
+      },
+      {
+        "manifest": "Artifacts/Endings/Visuals/20261022T1719184727960Z-8b9e840d/manifest.jsonl",
+        "sha256": "3607a2efb61379415d7d75acf2ec9e24d982355dd99d064006050a0579c845ad",
+        "images": 12
+      },
+      {
+        "manifest": "Artifacts/Endings/Visuals/20261022T1722219345981Z-93510f2f/manifest.jsonl",
+        "sha256": "8029edc61a538c04dc8ea095d279d4ececf12be42113b67c29f79d42b4cf9086",
+        "images": 27
+      },
+      {
+        "manifest": "Artifacts/Endings/Visuals/20261022T1742350347466Z-8f411153/manifest.jsonl",
+        "sha256": "4fb4441e10172f2edda9448e04b9d499ea7d7d03d9ef9f8120afc9fc96982fae",
+        "images": 31
+      }
+    ],
+    "validatedFourRouteRun": "Artifacts/Endings/Visuals/20261022T1742350347466Z-8f411153/manifest.jsonl",
+    "kind": "Actual Unity Game view frames; all manifests are retained, including exploratory runs before fixes. The validated four-route run is explicitly named. Generation placeholders have separate provenance."
+  },
+  "fonts": {
+    "htmlAtlas": "Art/TerminalHtmlMatched/glyph-coverage.json",
+    "htmlMissingGlyphs": 0,
+    "arkAtlas": "docs/terminal-font/coverage.json",
+    "arkMissing": []
+  },
+  "sourceHashes": {
+    "src/MiniGame.Core/Runtime/GameSession.cs": "2e7e92b9cef84bb6b6abde02d20aa16aad01b10514fa2d7d9e29af6884eaf657",
+    "src/MiniGame.Core/Rules/GameRules.cs": "3b054cc8cb37e851e9e4370efa1400eb346be3e15951ee172ded8d67da5fecac",
+    "src/MiniGame.Presentation/GameRuntime.cs": "4af889ecf2aee4b7a17430192bf88505a5c1f1023e49c7c7be416c511fcacc9f",
+    "src/MiniGame.Presentation/EndingDialogueCatalog.cs": "76256cce03d400ead3ecdfa77a3e0b16ad43b19f46aa54f233599411071a0afa",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Dialogue.json": "5acf96f877dd7eb082cf944f496c445514bea0422c237abffe1c3b0200573d9e",
+    "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json": "f5eca115d0a15767153082fd073e55449040b0f6a521824f2c299943b382b89d",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs": "0c5c0f79aefb1f7324781f7d46589f404e5be782f747235eb315cc215f8e0f6c",
+    "UnityProject/Assets/MiniGame/Runtime/EndingDialoguePresenter.cs": "65fc52c31ec0f652d05532a9a77e50d86d10a3c973832a0b0de53cfe6a0f8558",
+    "UnityProject/Assets/MiniGame/Runtime/EndingThanksView.cs": "07678db9280478fc53551e6a49c699ff4322bafda6d7649bb8b72fbed0afb580",
+    "UnityProject/Assets/MiniGame/Runtime/RoomDreamEnding.cs": "557e790a671e2b22273ef5ef44b73f4e28d3d847915e4b05d5b17e0c2ee835f7",
+    "UnityProject/Assets/MiniGame/Runtime/RoomEndingTransitionCheckpoint.cs": "38b72705092f76618554eb0104d2958e37e35788a14ade1faac5d5bce1522630",
+    "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs": "fa10325089ad769966b77d937b9ed24ad28651ef7e4b4bf22ec0c07c20df8f67",
+    "UnityProject/Assets/MiniGame/Runtime/MainMenuContinueStore.cs": "f35575b361be9767af77eb2d3f85b6b456e717c9df59993ec4408ccfc9ab60a7",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs": "4d388a20bb60ecbe92ffa431fa656c5ff8dfdefbca7935a25b6359572e6515c7",
+    "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs": "d02596cd71a1b341ebe1165477c2696bb00a86a88653ae5f60ce31c52dc022a3"
+  },
+  "oldSaves": "Files retained. Incompatible content/rule versions require a new inspection period.",
+  "windowsBuild": {
+    "report": "Artifacts/Endings/build-final.json",
+    "sha256": "8d591ed3da48e936f8ec5d808faeec2b7ae510e0d813c98892929d97e2dd8e74",
+    "result": {
+      "status": "completed",
+      "buildId": "build_9fad8e370075",
+      "result": "Succeeded",
+      "platform": "StandaloneWindows64",
+      "outputPath": "F:/AAMINIGAME/MINIGAME/Artifacts/Endings/Windows/MiniGame.exe",
+      "totalSizeBytes": 869897760,
+      "buildTimeMs": 10848,
+      "buildStartedAt": "2026-10-22T09:44:19.3310101Z",
+      "buildEndedAt": "2026-10-22T09:44:30.1793261Z",
+      "totalWarnings": 1,
+      "totalErrors": 0,
+      "errors": [],
+      "warnings": [
+        {
+          "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+        }
+      ]
+    }
+  }
+}

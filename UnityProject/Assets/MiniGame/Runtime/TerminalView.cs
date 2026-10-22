@@ -15,7 +15,7 @@ namespace MiniGame.UnityHost
         private readonly Font font;
         private readonly RectTransform logical;
         private readonly GameObject directory, review, selfReview, history, answers;
-        private readonly Text date, day, count, previewName, previewId, previewStatus, previewUnit, quota;
+        private readonly Text date, day, count, previewName, previewId, previewStage, previewStatus, previewUnit, quota;
         private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, commandStatus, footerText, footerHelp, pageLabel;
         private readonly Text directoryRequirement, reviewRequirement;
         private readonly Text dailyWorkRemaining;
@@ -85,7 +85,9 @@ namespace MiniGame.UnityHost
             Label(dr, "RosterHeading", "第三安置所 / B区 / 观察对象", 23, 51, 490, 20, 14, Bright);
             day = Label(dr, "DirectoryDay", "", 597, 51, 180, 20, 13, Ink); day.alignment = TextAnchor.UpperRight;
             Label(dr, "RosterColumnLabels", "对象 / 登记编号", 29, 82, 480, 18, 13, Dim);
-            Label(dr, "RosterStatusColumn", "单元       状态", 22, 82, 750, 18, 13, Dim).alignment = TextAnchor.UpperRight;
+            Label(dr, "RosterStageColumn", "阶段", 490, 82, 104, 18, 13, Dim);
+            Label(dr, "RosterUnitColumn", "单元", 610, 82, 88, 18, 13, Dim).alignment = TextAnchor.UpperRight;
+            Label(dr, "RosterStatusColumn", "状态", 714, 82, 56, 18, 13, Dim).alignment = TextAnchor.UpperRight;
             for (int i = 0; i < 5; i++)
             {
                 int slot = i;
@@ -94,11 +96,12 @@ namespace MiniGame.UnityHost
                 pointer.Hovered = () => SelectRoster(slot);
                 Label(row.transform, "RowNumber", (i + 1).ToString("00"), 8, 5, 28, 18, 12, Dim);
                 var name = row.transform.Find("Label").GetComponent<Text>(); Position(name.rectTransform, 42, 4, 158, 20);
-                var registration = Label(row.transform, "Registration", "", 200, 4, 270, 20, 14, Ink);
-                var unit = Label(row.transform, "Unit", "", 8, 5, 684, 18, 12, Ink); unit.alignment = TextAnchor.UpperRight;
-                var status = Label(row.transform, "Status", "", 8, 5, 740, 18, 12, Ink); status.alignment = TextAnchor.UpperRight;
-                foreach (var label in new[] { registration, unit, status, row.transform.Find("RowNumber").GetComponent<Text>() }) TerminalIndustrialSkin.RegisterLabel(row, label);
-                rosterRows.Add(row); rosterLabels.Add(new[] { name, registration, unit, status });
+                var registration = Label(row.transform, "Registration", "", 200, 4, 240, 20, 14, Ink);
+                var stage = Label(row.transform, "Stage", "", 468, 5, 104, 18, 12, Ink);
+                var unit = Label(row.transform, "Unit", "", 588, 5, 88, 18, 12, Ink); unit.alignment = TextAnchor.UpperRight;
+                var status = Label(row.transform, "Status", "", 692, 5, 56, 18, 12, Ink); status.alignment = TextAnchor.UpperRight;
+                foreach (var label in new[] { registration, stage, unit, status, row.transform.Find("RowNumber").GetComponent<Text>() }) TerminalIndustrialSkin.RegisterLabel(row, label);
+                rosterRows.Add(row); rosterLabels.Add(new[] { name, registration, unit, status, stage });
             }
             count = Label(dr, "RosterCount", "", 29, 351, 730, 20, 13, Dim);
             directoryRequirement = Label(dr, "DirectoryPurificationRequirement", "", 29, 318, 730, 20, 14, Bright);
@@ -109,7 +112,10 @@ namespace MiniGame.UnityHost
             ((TerminalButtonVisual)enter).SetCommandField();
             Position(enter.transform.Find("Label").GetComponent<RectTransform>(), 7, 4, 451, 20);
             Label(dr, "CurrentCommandLabel", "当前命令", 24, 462, 100, 19, 14, Ink);
-            previewStatus = Field(dr, "档案状态", "", 488);
+            previewStatus = Field(dr, "状态", "", 488);
+            Position(previewStatus.rectTransform, 138, 488, 200, 20);
+            Label(dr, "PreviewStageLabel", "阶段", 390, 488, 70, 20, 14, Ink);
+            previewStage = Label(dr, "PreviewStage", "", 464, 488, 180, 20, 14, Ink);
             quota = Field(dr, "净化配额", "", 514);
             quota.name = "PurificationQuota";
             previewUnit = Label(dr, "PreviewUnit", "", 596, 514, 180, 20, 14, Ink);
@@ -168,6 +174,7 @@ namespace MiniGame.UnityHost
                 var availability = Label(button.transform, "Availability", "锁定", 8, 5, 232, 18, 12, Dim);
                 availability.alignment = TextAnchor.UpperRight;
                 TerminalIndustrialSkin.RegisterLabel(button, availability); dispositions.Add(type, button);
+                ((TerminalButtonVisual)button).PointerSelected = () => SelectDisposition(button);
             }
             Rule(rr, 530, 334, 248); Label(rr, "AnswerHeading", "应答命令", 534, 346, 240, 19, 13, Dim);
             answers = Panel(rr, "AnswerContents", Color.clear, 530, 374, 248, 158).gameObject;
@@ -267,7 +274,7 @@ namespace MiniGame.UnityHost
             current = view; locked = inputLocked;
             if (nextEncounter) { sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId); transcriptView.Reset(); RestorePresentation(view); }
             if (enteringDirectory) { int next = view.Patients.ToList().FindIndex(p => p.IsCurrent); if (next >= 0) rosterIndex = next; }
-            bool self = view.TerminalPage == TerminalPage.SelfReview;
+            bool self = false; // Self judgment uses the ordinary directory and personnel review.
             bool dir = view.TerminalPage == TerminalPage.Directory || view.ArchiveDirectoryVisible
                 || view.TerminalPage == TerminalPage.Closed && view.TerminalPowered && view.UsesTerminalDirectory;
             packageFrame.texture = assets != null ? (dir ? assets.DirectoryFrame : assets.ReviewFrame) : null;
@@ -283,14 +290,15 @@ namespace MiniGame.UnityHost
             roundLabel.text = "人员复核 / " + round;
             directoryRequirement.text = reviewRequirement.text = "净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;
             dailyWorkRemaining.text = Math.Max(0, view.Game.RemainingPurificationQuota).ToString("00");
-            bool measure = view.Game.EncounterStage == EncounterStage.AwaitingDisposition && !archived;
+            bool measure = (view.Game.EncounterStage == EncounterStage.AwaitingDisposition || view.SelfReviewReady) && !archived;
             commandStatus.text = measure ? "会谈结束，可执行处置。" : view.PresentedDisposition.HasValue ? "处置已登记。" : "会谈进行中，处置暂时锁定。";
             int available = 0;
             foreach (var pair in dispositions)
             {
                 bool configured = !view.UsesTerminalDirectory || view.ConfiguredDispositions.Contains(pair.Key);
                 pair.Value.gameObject.SetActive(configured);
-                bool enabled = configured && measure && !locked && view.Input == InputContext.Dialogue && view.Game.AvailableDispositions.Contains(pair.Key);
+                bool enabled = configured && measure && !locked && view.Input == InputContext.Dialogue
+                    && (view.IsSelfReview ? pair.Key == Disposition.Purify && view.SelfReviewReady : view.Game.AvailableDispositions.Contains(pair.Key));
                 pair.Value.interactable = enabled;
                 pair.Value.transform.Find("Availability").GetComponent<Text>().text = enabled ? "可执行" : "锁定";
                 if (enabled) available++;
@@ -333,6 +341,7 @@ namespace MiniGame.UnityHost
         private void UpdatePortrait()
         {
             Sprite sprite = portraits != null ? portraits.Find(portraitId) : null;
+            silhouette.SetActive(livePortrait.activeSelf && sprite == null);
             portraitPresenter.Show(sprite);
             patientMonitor.SetCloseUp(false);
             patientMonitor.Show(current?.PresentedPatientId ?? current?.Game.CurrentPatientId, sprite, current != null && (current.Paused));
@@ -350,9 +359,10 @@ namespace MiniGame.UnityHost
         public void SetNarration(string text) { NarrationBody.text = text; NarrationBody.gameObject.SetActive(true); Position(Continue.GetComponent<RectTransform>(), 0, 119, 248, 28); }
         public void ClearNarration() { NarrationBody.gameObject.SetActive(false); Position(Continue.GetComponent<RectTransform>(), 0, 0, 248, 28); }
         public void SetPageIndicator(int page, int pages) => pageLabel.text = pages > 1 ? page + "/" + pages : "";
-        public Button AddResponse(string id, string text, int index, Action action)
+        public Button AddResponse(string id, string text, int index, Action action, Action hovered = null)
         {
             var button = Button(ChoiceRoot, "Reply-" + id, text, 0, index * 35, 248, 28, action, 14);
+            ((TerminalButtonVisual)button).PointerSelected = hovered;
             var label = button.transform.Find("Label").GetComponent<Text>(); Position(label.rectTransform, 42, 4, 200, 21);
             var clip = Panel(button.transform, "ChoiceTextViewport", Color.clear, 42, 4, 200, 21); clip.gameObject.AddComponent<RectMask2D>();
             label.transform.SetParent(clip, false); Position(label.rectTransform, 0, 0, 200, 21);
@@ -367,9 +377,9 @@ namespace MiniGame.UnityHost
                 for (int i = 0; i < stripes.Count; i++) stripes[i].anchoredPosition = new Vector2(0, -((7 + i * 11 + Mathf.FloorToInt(time * 25)) % 261));
             RenderHistory();
         }
-        public void HighlightResponse(int index)
+        public void HighlightResponse(int index, bool keyboard = true)
         {
-            TerminalHighlightGroup.ClearPointerHighlight(logical);
+            if (keyboard) TerminalHighlightGroup.ClearPointerHighlight(logical);
             footerText.text = "选择应答并确认";
             int number = 0;
             foreach (Transform child in ChoiceRoot)
@@ -377,7 +387,7 @@ namespace MiniGame.UnityHost
         }
         public bool HandleDispositionKey(KeyCode key)
         {
-            if (locked || current?.Game.EncounterStage != EncounterStage.AwaitingDisposition) return false;
+            if (locked || current == null || current.Game.EncounterStage != EncounterStage.AwaitingDisposition && !current.SelfReviewReady) return false;
             var active = dispositions.Values.Where(b => b.gameObject.activeInHierarchy && b.interactable).ToList();
             if (active.Count == 0) return false;
             if (key == KeyCode.UpArrow || key == KeyCode.DownArrow)
@@ -394,7 +404,7 @@ namespace MiniGame.UnityHost
             if (!directory.activeSelf || locked) return false;
             if (key == KeyCode.UpArrow || key == KeyCode.DownArrow) TerminalHighlightGroup.ClearPointerHighlight(logical);
             if (key == KeyCode.UpArrow) SelectRoster(Mathf.Max(0, rosterIndex - 1));
-            else if (key == KeyCode.DownArrow) SelectRoster(Mathf.Min(4, rosterIndex + 1));
+            else if (key == KeyCode.DownArrow) SelectRoster(rosterIndex + 1);
             else if (key == KeyCode.Return || key == KeyCode.KeypadEnter) return MiniGameAudioButton.Activate(enter);
             else return false;
             return true;
@@ -415,19 +425,36 @@ namespace MiniGame.UnityHost
             historyModal.SetActive(false); return true;
         }
         public void ScrollSavedHistory(int amount) => historyTranscript.Scroll(amount);
-        private void SelectRoster(int index) { if (locked || rosterIndex == index) return; rosterIndex = index; RenderRoster(); }
+        private void SelectDisposition(Button button)
+        {
+            var active = dispositions.Values.Where(value => value.gameObject.activeSelf && value.interactable).ToList();
+            int index = active.IndexOf(button);
+            if (index < 0) return;
+            selectedDisposition = index;
+            foreach (var value in dispositions.Values) TerminalIndustrialSkin.SetSelected(value, value == button);
+        }
+        private void SelectRoster(int index)
+        {
+            if (locked || current == null || current.Patients.Count == 0) return;
+            index = Mathf.Clamp(index, 0, current.Patients.Count - 1);
+            if (rosterIndex == index) return;
+            rosterIndex = index; RenderRoster();
+        }
         private void EnterSelected() { if (current == null || locked || !enter.interactable || rosterIndex >= current.Patients.Count) return; enterPatient(current.Patients[rosterIndex].Id); }
         private void RenderRoster()
         {
             if (current == null) return;
+            rosterIndex = Mathf.Clamp(rosterIndex, 0, Mathf.Max(0, current.Patients.Count - 1));
             for (int i = 0; i < rosterRows.Count; i++)
             {
                 var p = i < current.Patients.Count ? current.Patients[i] : null; var labels = rosterLabels[i];
-                labels[0].text = p?.Name ?? "未配置对象 " + (i + 1).ToString("00");
-                labels[1].text = p == null ? "" : PortraitCatalog.Registration(p.Id);
-                labels[2].text = p == null ? "--" : PortraitCatalog.Unit(p.Id);
-                labels[3].text = p == null ? "未接入" : PatientStatus(p);
-                Position(labels[2].rectTransform, 8, 5, 740 - TerminalTextMetrics.Width(labels[3].text, 12) - 32, 18);
+                rosterRows[i].gameObject.SetActive(p != null);
+                if (p == null) continue;
+                labels[0].text = p.Name;
+                labels[1].text = PortraitCatalog.Registration(p.Id);
+                labels[2].text = PortraitCatalog.Unit(p.Id);
+                labels[3].text = PatientStatus(p);
+                labels[4].text = PatientStage(p);
                 rosterRows[i].interactable = !locked; TerminalIndustrialSkin.SetSelected(rosterRows[i], i == rosterIndex);
             }
             var selected = rosterIndex < current.Patients.Count ? current.Patients[rosterIndex] : null;
@@ -435,12 +462,13 @@ namespace MiniGame.UnityHost
             enter.interactable = available && !locked;
             previewName.text = selected?.Name ?? "未配置";
             previewId.text = selected == null ? "" : PortraitCatalog.Registration(selected.Id);
-            previewStatus.text = selected == null ? "无登记数据" : PatientStatus(selected);
+            previewStatus.text = selected == null ? "--" : PatientStatus(selected);
+            previewStage.text = selected == null ? "--" : PatientStage(selected);
             previewUnit.text = "单元    " + (selected == null ? "--" : PortraitCatalog.Unit(selected.Id));
             quota.text = current.Game.RemainingPurificationQuota.ToString("00");
             enter.GetComponentInChildren<Text>().text = available ? "进入人员复核" : selected == null ? "尚未接入" : "档案已关闭";
             leave.interactable = !locked; day.text = "人员复核 / DAY " + current.Game.Day.ToString("00");
-            count.text = "当日登记 " + current.Patients.Count.ToString("00") + " / 待审 " + current.Patients.Count(p => p.CanReceiveToday).ToString("00") + " / 已处置 " + current.Patients.Count(p => p.HasMetToday).ToString("00");
+            count.text = "当日登记 " + current.Patients.Count.ToString("00") + " / 待审 " + current.Patients.Count(p => !p.HasMetToday).ToString("00") + " / 已审 " + current.Patients.Count(p => p.HasMetToday).ToString("00");
         }
         private void RenderHistory()
         {
@@ -450,7 +478,10 @@ namespace MiniGame.UnityHost
         }
         private void Footer(string text, string help) { footerText.text = text; footerHelp.text = help; }
         private Text Field(Transform parent, string label, string value, float y) { Label(parent, label + "Label", label, 24, y, 110, 20, 14, Ink); return Label(parent, "Preview" + label, value, 138, y, 440, 20, 14, Ink); }
-        private static string PatientStatus(PatientView p) => p.HasMetToday || p.Presence != PatientPresence.Active ? p.LastDisposition.HasValue ? "已" + DispositionName(p.LastDisposition.Value) : "已归档" : p.CanReceiveToday ? "待审" : "待接待";
+        private static string PatientStatus(PatientView p) => p.HasMetToday ? "已审" : "待审";
+        private static string PatientStage(PatientView p) => p.Presence == PatientPresence.Purified ? "已净化"
+            : p.Presence == PatientPresence.Released ? "已释放"
+            : p.TreatmentCount > 0 ? "治疗" + p.TreatmentCount + "次" : "未处理";
         private static string RoundName(string id) { if (string.IsNullOrEmpty(id)) return "R1"; if (id.IndexOf("_M_", StringComparison.Ordinal) >= 0) return "措施"; int start = id.IndexOf("_R", StringComparison.Ordinal); if (start < 0) return "R1"; int end = id.IndexOf('_', start + 1); return id.Substring(start + 1, (end < 0 ? id.Length : end) - start - 1); }
         private static string DispositionName(Disposition type) => type == Disposition.Release ? "释放" : type == Disposition.Treat ? "治疗" : "净化";
         private static Color ColorOf(string value) => TerminalIndustrialSkin.ColorOf(value);

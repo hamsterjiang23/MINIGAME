@@ -26,9 +26,10 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
             RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Ending));
-            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Ending));
+            Assert.That(runtime.EndingStage, Is.EqualTo(EndingStage.AwaitingDoor));
+            Assert.That(runtime.GetView().Input, Is.EqualTo(InputContext.World));
+            Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
             runtime = GameRuntime.Restore(runtime.Save(), rules, content);
-            RuntimeScenario.Complete(runtime, PresentationKind.Ending);
             Assert.That(runtime.GetView().Cue, Is.Null);
         }
 
@@ -212,27 +213,28 @@ namespace MiniGame.Presentation.Tests
         public void SelfReviewRequiresItsOwnTerminalAndCommitsThePlayerEndingExactlyOnce(bool directory)
         {
             var rules = Rules(100); var content = new FixtureContent();
-            var runtime = new GameRuntime(rules, content, directory);
+            var endings = EndingRuntimeFixture.Catalog();
+            var runtime = EndingRuntimeFixture.Create(rules, content, endings, directory);
             DriveTo(runtime, view => view.Game.Phase == GamePhase.SelfReview);
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(3));
             Assert.That(runtime.GetView().Game.Rebellion, Is.EqualTo(100));
             Assert.That(runtime.GetView().DreamTraversal, Is.True);
             Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Computer }));
-            Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Running), "The self-review safety screen must already guide the player before computer interaction.");
+            Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Off), "Self review begins at the dormant terminal.");
             Assert.That(runtime.GetView().TerminalBootRequired, Is.False);
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.ConfirmSelfPurification);
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
-            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content, endings);
             RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Computer));
-            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.SelfReview));
+            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
             Assert.That(runtime.GetView().TerminalBootRequired, Is.False, "Self review does not start another daily boot.");
             Assert.That(runtime.GetView().DreamTraversal, Is.False);
             Assert.That(runtime.GetView().Game.CurrentEncounterId, Is.Null);
-            Assert.That(runtime.GetView().PresentedPatientId, Is.Null);
+            Assert.That(runtime.GetView().PresentedPatientId, Is.EqualTo(GameRuntime.SelfPatientId));
             Assert.That(runtime.GetView().Transcript, Is.Empty);
             string enterToken = runtime.GetView().Cue!.Token;
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.ConfirmSelfPurification);
-            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content, endings);
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(enterToken));
             RuntimeScenario.Complete(runtime, PresentationKind.EnterTerminal);
             Assert.That(runtime.GetView().Input, Is.EqualTo(InputContext.TerminalDirectory));
@@ -245,7 +247,10 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.SubmitDisposition("self", Disposition.Purify));
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.SelectResponse("self", "self", "pick"));
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.Inspect(InspectionKind.Records));
-            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content, endings);
+            RuntimeScenario.Accept(runtime.EnterSelectedPatient(GameRuntime.SelfPatientId));
+            foreach (var line in endings.Get(GameRuntime.SelfPatientId).Lines)
+                RuntimeScenario.Accept(runtime.CompleteEndingLine(line.SourceId));
             var before = Core(runtime);
             var confirmed = RuntimeScenario.Accept(runtime.ConfirmSelfPurification());
             Assert.That(confirmed.Events.Count(item => item.Kind == GameEventKind.GameEnded), Is.EqualTo(1));
@@ -258,7 +263,7 @@ namespace MiniGame.Presentation.Tests
             Assert.That(JToken.DeepEquals(before["State"]!["Days"], after["State"]!["Days"]), Is.True);
             Assert.That(JToken.DeepEquals(before["State"]!["Encounters"], after["State"]!["Encounters"]), Is.True);
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.ConfirmSelfPurification);
-            Assert.That(GameRuntime.Restore(runtime.Save(), rules, content).Save(), Is.EqualTo(runtime.Save()));
+            Assert.That(GameRuntime.Restore(runtime.Save(), rules, content, endings).Save(), Is.EqualTo(runtime.Save()));
         }
 
         [Test]
@@ -273,7 +278,7 @@ namespace MiniGame.Presentation.Tests
             DriveTo(runtime, view => view.Game.Phase == GamePhase.SelfReview);
             RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Computer));
             RuntimeScenario.Complete(runtime, PresentationKind.EnterTerminal);
-            foreach (string wrongPage in new[] { "Review", "Directory", "Archive" })
+            foreach (string wrongPage in new[] { "SelfReview", "Closed", "Archive" })
             {
                 var changed = JObject.Parse(runtime.Save());
                 changed["Page"] = wrongPage;
@@ -289,7 +294,7 @@ namespace MiniGame.Presentation.Tests
 
         [TestCase(false)]
         [TestCase(true)]
-        public void RestoringUnpoweredSelfReviewEnablesItsSafetyScreenWithoutBootOrCoreChanges(bool missingPowerFields)
+        public void RestoringUnpoweredSelfReviewPreservesItsDormantTerminalWithoutBootOrCoreChanges(bool missingPowerFields)
         {
             var rules = Rules(100); var content = new FixtureContent();
             var runtime = new GameRuntime(rules, content, true);
@@ -299,7 +304,7 @@ namespace MiniGame.Presentation.Tests
             else saved["TerminalPower"] = "Off";
             var core = saved["CoreJson"]!.Value<string>();
             runtime = GameRuntime.Restore(saved.ToString(), rules, content);
-            Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Running));
+            Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Off));
             Assert.That(runtime.GetView().TerminalBootRequired, Is.False);
             Assert.That(runtime.GetView().TerminalOpen, Is.False);
             Assert.That(runtime.GetView().Cue, Is.Null);
@@ -336,8 +341,9 @@ namespace MiniGame.Presentation.Tests
         private static GameRules Rules(int initial, bool enabled = true)
         {
             var patient = new PatientDefinition("patient", "测试病人", 0, 0, null, PatientPresence.TreatmentEnded);
-            var rules = new GameRules("dream-runtime-fixture", new[] { patient }, Enumerable.Range(0, 4).Select(day =>
-                new DayDefinition(day, 0, new[] { new MeetingDefinition(patient.Id,
+            var formal = new PatientDefinition("formal", "正式病人", 1, initial, null, PatientPresence.TreatmentEnded);
+            var rules = new GameRules("dream-runtime-fixture", new[] { patient, formal }, Enumerable.Range(0, 4).Select(day =>
+                new DayDefinition(day, 0, new[] { new MeetingDefinition(day == 0 ? patient.Id : formal.Id,
                     new[] { new RoundDefinition("day" + day, new[] { new ResponseDefinition("pick", "branch", 1) }) },
                     null, 100, 0, new Dictionary<Disposition, string> { [Disposition.Treat] = "treated" }) })),
                 new[] { EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.TakenAway });

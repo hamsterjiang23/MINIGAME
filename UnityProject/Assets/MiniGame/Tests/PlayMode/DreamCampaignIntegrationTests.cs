@@ -24,11 +24,14 @@ namespace MiniGame.UnityHost.Tests
         private RetroScreenProfile retroOverride;
         private CompiledDialoguePackage compiled;
         private string originalDreamJson, originalRebellionJson;
+        private bool previousSkipStartup;
         private readonly List<string> saveFiles = new List<string>();
 
         [UnitySetUp]
         public IEnumerator LoadCombined()
         {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
             MiniGameSessionHost.Release();
             yield return null;
             yield return SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene, LoadSceneMode.Single);
@@ -64,6 +67,7 @@ namespace MiniGame.UnityHost.Tests
         [UnityTearDown]
         public IEnumerator TearDown()
         {
+            MainMenuController.SkipStartup = previousSkipStartup;
             if (host != null)
             {
                 host.enabled = false;
@@ -136,8 +140,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening));
             Assert.That(host.Dreams.OwnsCamera, Is.False);
-            InteractWithBed();
-            var original = Pose.Capture(host.Player);
+            var original = InteractWithBed();
             yield return Until(() => host.Runtime.GetView().Cue?.Kind == PresentationKind.Dream, "Day1 first-bed dream", 8);
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             Assert.That(host.Dreams.OwnsCamera, Is.True);
@@ -167,6 +170,17 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
             host.Dreams.Advance(dreams.ReturnSeconds);
+            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
+            Assert.That(host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade").color.a,
+                Is.EqualTo(1));
+            var returnRotation = host.Player.ViewCamera.transform.rotation;
+            host.Dreams.Advance(dreams.WakeBlackSeconds - .1f);
+            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
+            host.Dreams.Advance(.11f);
+            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.Revealing));
+            Assert.That(Quaternion.Angle(host.Player.ViewCamera.transform.rotation, returnRotation), Is.LessThan(.01f),
+                "The camera is already facing the bed when the black frame fades out.");
+            host.Dreams.Advance(dreams.ReturnSeconds);
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
             original.AssertPositionAndFieldOfView(host.Player);
@@ -181,36 +195,61 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator HighRebellionSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress()
+        public IEnumerator ResidentTrustSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress()
         {
-            StartConfiguredCampaign(true);
+            StartConfiguredCampaign(false);
             dreams.LieDownSeconds = .15f;
             dreams.SubtitleDelay = .1f;
             foreach (var line in dreams.EndingLines) { line.Duration = 1; line.Voice = null; }
-            var fixture = Fixture();
-            DriveTo(fixture, view => view.Game.Phase == GamePhase.SelfReview);
-            Assert.That(fixture.GetView().Game.Rebellion, Is.EqualTo(100), "Accepted real campaign choices must build the global counter.");
+            var fixture = EndingCampaignScenario.CreateHidden(compiled, dreams, rebellion);
+            AssertResidentTrustEligibility(fixture, MiniGameSessionHost.Current.Rules);
+            Assert.That(fixture.GetView().Game.Rebellion, Is.Zero, "The resident trust sum, not the global counter, qualifies this real command path.");
             host.RestoreCheckpoint(fixture.Save());
+            yield return null;
+            yield return null;
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Computer }));
-            Assert.That(host.Runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Running));
+            Assert.That(host.Runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Off));
+            Assert.That(host.Runtime.GetView().TerminalOpen, Is.False);
+            Assert.That(host.Runtime.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { GameRuntime.SelfPatientId }));
             Assert.That(host.Runtime.GetView().TerminalBootRequired, Is.False);
             var physicalScreen = Object.FindObjectsOfType<MeshRenderer>().Single(item => item.name.StartsWith("CRT screen emission", StringComparison.Ordinal));
             var screenProperties = new MaterialPropertyBlock(); physicalScreen.GetPropertyBlock(screenProperties, 0);
             Assert.That(screenProperties.HasProperty(Shader.PropertyToID("_CrtPower")), Is.True);
-            Assert.That(screenProperties.GetFloat("_CrtPower"), Is.EqualTo(1).Within(.001f), "The real CRT surface must guide the player before self-review interaction.");
+            Assert.That(screenProperties.GetFloat("_CrtPower"), Is.InRange(.1f, 1f), "The unbooted CRT surface must still emit the self-review guidance light.");
             yield return null;
             physicalScreen.GetPropertyBlock(screenProperties, 0);
-            Assert.That(screenProperties.GetFloat("_CrtPower"), Is.EqualTo(1).Within(.001f), "Bedtime and room lighting must preserve the safety screen power.");
+            Assert.That(screenProperties.GetFloat("_CrtPower"), Is.InRange(.1f, 1f), "Bedtime and room lighting must preserve the unbooted monitor's guidance light.");
             var computer = Interaction(InteractionTarget.Computer);
             TeleportTo("Computer approach", computer.GetComponent<Collider>().bounds.center);
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedInteraction, Is.SameAs(computer));
             Assert.That(host.Player.InteractFocused(), Is.True);
             yield return Until(() => host.Runtime.GetView().Cue == null && !host.Effects.IsTransitioning
-                && host.Runtime.GetView().TerminalPage == TerminalPage.SelfReview, "actual self-review terminal transition", 12);
-            var selfReview = host.Screen.GetComponentsInChildren<Transform>(true).Single(item => item.name == "SelfReview");
-            var buttons = selfReview.GetComponentsInChildren<Button>().Where(item => item.IsActive() && item.IsInteractable()).ToArray();
-            Assert.That(buttons.Select(item => item.name), Is.EqualTo(new[] { "SelfPurify" }));
+                && host.Runtime.GetView().TerminalPage == TerminalPage.Directory, "actual self-review directory transition", 12);
+            Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True);
+            yield return null;
+            Assert.That(host.Runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
+            Assert.That(host.Runtime.GetView().PresentedEncounterId, Is.EqualTo(GameRuntime.SelfPatientId));
+            var authored = host.Runtime.Endings.Get(GameRuntime.SelfPatientId).Lines;
+            Assert.That(authored.Length, Is.EqualTo(16));
+            for (int index = 0; index < authored.Length; index++)
+            {
+                yield return null;
+                Assert.That(host.Runtime.GetView().Game.SelfReviewLineIndex, Is.EqualTo(index));
+                Assert.That(host.Runtime.ConfirmSelfPurification().Accepted, Is.False);
+                string sourceId = authored[index].SourceId;
+                for (int page = 0; page < 24 && host.Runtime.CurrentEndingLine?.SourceId == sourceId; page++)
+                {
+                    yield return null;
+                    Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True, sourceId);
+                    yield return null;
+                }
+                Assert.That(host.Runtime.CurrentEndingLine?.SourceId, Is.Not.EqualTo(sourceId));
+            }
+            Assert.That(host.Runtime.GetView().SelfReviewReady, Is.True);
+            var buttons = host.Screen.GetComponentsInChildren<Button>(true).Where(item => item.name.StartsWith("Disposition-", StringComparison.Ordinal)
+                && item.IsActive() && item.IsInteractable()).ToArray();
+            Assert.That(buttons.Select(item => item.name), Is.EqualTo(new[] { "Disposition-Purify" }));
             Assert.That(buttons[0].GetComponentInChildren<Text>().text, Does.Contain("净化"));
             var sameRuntime = host.Runtime;
             var session = MiniGameSessionHost.Current;
@@ -225,7 +264,7 @@ namespace MiniGame.UnityHost.Tests
             ending.enabled = false;
             Assert.That(MiniGameSessionHost.Current, Is.SameAs(session));
             Assert.That(session.Runtime, Is.SameAs(sameRuntime));
-            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.EqualTo(100));
+            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.Zero);
             Assert.That(ending.Profile, Is.SameAs(dreams));
             ending.AdvanceForTests(1, .4f);
             var walk = ending.CaptureCheckpoint();
@@ -235,7 +274,7 @@ namespace MiniGame.UnityHost.Tests
             session.LoadFrom(walkingSave);
             Assert.That(session.LastMessage, Does.Contain("已恢复"));
             Assert.That(ending.CaptureCheckpoint().WalkDistance, Is.EqualTo(walk.WalkDistance).Within(.0001f));
-            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.EqualTo(100));
+            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.Zero);
             ending.AdvanceForTests(1, 100);
             Assert.That(ending.TryLieDown(), Is.True);
             Assert.That(ending.TryLieDown(), Is.False);
@@ -254,7 +293,26 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(resumed.SubtitleIndex, Is.EqualTo(drift.SubtitleIndex));
             Assert.That(resumed.SubtitleElapsed, Is.EqualTo(drift.SubtitleElapsed).Within(.0001f));
             Assert.That(ending.CurrentSubtitle, Is.EqualTo(caption));
-            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.EqualTo(100));
+            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.Zero);
+            AssertResidentTrustEligibility(session.Runtime, session.Rules);
+        }
+
+        private static void AssertResidentTrustEligibility(GameRuntime runtime, GameRules rules)
+        {
+            // Deserialize and replay a separate read-only snapshot; never edit the running session's DTO.
+            string core = JsonUtility.FromJson<ReadOnlyCoreEnvelope>(runtime.Save()).CoreJson;
+            var state = SnapshotCodec.Deserialize(core, rules).CreateSnapshot().State;
+            var formal = rules.Patients.Where(patient => patient.FirstDay > 0 && patient.FirstDay <= state.Day)
+                .Select(patient => patient.Id).ToArray();
+            var remaining = state.Patients.Where(patient => patient.Presence == PatientPresence.Active && formal.Contains(patient.Id)).ToArray();
+            Assert.That(remaining, Is.Not.Empty);
+            Assert.That(remaining.Sum(patient => (long)patient.Trust), Is.GreaterThanOrEqualTo(10));
+        }
+
+        [Serializable]
+        private sealed class ReadOnlyCoreEnvelope
+        {
+            public string CoreJson = "";
         }
 
         [UnityTest, Timeout(90000)]
@@ -368,7 +426,7 @@ namespace MiniGame.UnityHost.Tests
         [UnityTest, Timeout(120000)]
         public IEnumerator CrossSceneLoadsRestoreRoomAndFloatingEndingWithoutStartingAnotherCampaign()
         {
-            StartConfiguredCampaign(true);
+            StartConfiguredCampaign(false);
             var session = MiniGameSessionHost.Current;
             var sessionRules = session.Rules;
             var roomPose = Pose.Capture(host.Player);
@@ -376,18 +434,46 @@ namespace MiniGame.UnityHost.Tests
             dreams.LieDownSeconds = .15f;
             dreams.SubtitleDelay = .1f;
             foreach (var line in dreams.EndingLines) { line.Duration = 1; line.Voice = null; }
-            var fixture = Fixture();
-            DriveTo(fixture, view => view.Game.Phase == GamePhase.SelfReview);
+            var fixture = EndingCampaignScenario.CreateHidden(compiled, dreams, rebellion);
+            AssertResidentTrustEligibility(fixture, sessionRules);
             host.RestoreCheckpoint(fixture.Save());
+            yield return null;
+            yield return null;
+            Assert.That(host.Runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Off));
+            Assert.That(host.Runtime.GetView().TerminalOpen, Is.False);
             var computer = Interaction(InteractionTarget.Computer);
             TeleportTo("Computer approach", computer.GetComponent<Collider>().bounds.center);
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.InteractFocused(), Is.True);
             yield return Until(() => host.Runtime.GetView().Cue == null && !host.Effects.IsTransitioning
-                && host.Runtime.GetView().TerminalPage == TerminalPage.SelfReview, "cross-scene self-review terminal", 12);
-            var purify = host.Screen.GetComponentsInChildren<MiniGameAudioButton>(true)
-                .Single(button => button.name == "SelfPurify");
-            Assert.That(purify.ActivateWithAudio(), Is.True);
+                && host.Runtime.GetView().TerminalPage == TerminalPage.Directory, "cross-scene self-review directory", 12);
+            Assert.That(host.Runtime.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { GameRuntime.SelfPatientId }));
+            Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True);
+            yield return null;
+            Assert.That(host.Runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
+            Assert.That(host.Runtime.GetView().PresentedEncounterId, Is.EqualTo(GameRuntime.SelfPatientId));
+            var authored = host.Runtime.Endings.Get(GameRuntime.SelfPatientId).Lines;
+            Assert.That(authored.Length, Is.EqualTo(16));
+            for (int index = 0; index < authored.Length; index++)
+            {
+                yield return null;
+                Assert.That(host.Runtime.GetView().Game.SelfReviewLineIndex, Is.EqualTo(index));
+                Assert.That(host.Runtime.ConfirmSelfPurification().Accepted, Is.False);
+                string sourceId = authored[index].SourceId;
+                for (int page = 0; page < 24 && host.Runtime.CurrentEndingLine?.SourceId == sourceId; page++)
+                {
+                    yield return null;
+                    Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True, sourceId);
+                    yield return null;
+                }
+                Assert.That(host.Runtime.CurrentEndingLine?.SourceId, Is.Not.EqualTo(sourceId));
+            }
+            Assert.That(host.Runtime.GetView().SelfReviewReady, Is.True);
+            var dispositions = host.Screen.GetComponentsInChildren<MiniGameAudioButton>(true)
+                .Where(button => button.name.StartsWith("Disposition-", StringComparison.Ordinal)
+                    && button.IsActive() && button.IsInteractable()).ToArray();
+            Assert.That(dispositions.Select(button => button.name), Is.EqualTo(new[] { "Disposition-Purify" }));
+            Assert.That(dispositions.Single().ActivateWithAudio(), Is.True);
             yield return Until(() => SceneManager.GetActiveScene().name == MiniGameSessionHost.BeachScene && !session.IsTransitioning,
                 "initial beach scene", 15);
             yield return null;
@@ -442,7 +528,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(MiniGameSessionHost.Current, Is.SameAs(session));
             Assert.That(session.Runtime, Is.SameAs(incomingEndingRuntime));
             Assert.That(session.Runtime.GetView().Game.Day, Is.EqualTo(4));
-            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.EqualTo(100));
+            Assert.That(session.Runtime.GetView().Game.Rebellion, Is.Zero);
+            AssertResidentTrustEligibility(session.Runtime, sessionRules);
             Assert.That(session.PendingCombinedRestore, Is.False);
             Assert.That(ending.Profile, Is.SameAs(dreams));
             var resumed = ending.CaptureCheckpoint();
@@ -616,10 +703,10 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
             host.Dreams.Advance(dreams.GetDay(1).Duration);
             Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.Returning));
-            Assert.That(retro.PresentationBypass, Is.False);
-            Assert.That(PixelDifference(RenderRetroProbe(retro), processedPixels), Is.LessThan(.00001f));
+            Assert.That(retro.PresentationBypass, Is.True, "Dream pixels retain their presentation until fully black.");
             host.Dreams.Advance(dreams.ReturnSeconds);
             Assert.That(retro.PresentationBypass, Is.False);
+            Assert.That(PixelDifference(RenderRetroProbe(retro), processedPixels), Is.LessThan(.00001f));
             Assert.That(JsonUtility.ToJson(retroOverride), Is.EqualTo(settings));
             Assert.That(JsonUtility.ToJson(sourceProfile), Is.EqualTo(sourceJson), "The user's saved retro profile must remain unchanged.");
         }
@@ -751,7 +838,7 @@ namespace MiniGame.UnityHost.Tests
             InteractWithBed();
             Assert.That(host.Runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.Sleep));
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
-            yield return Until(() => fade.color.a == 1, "second bed becomes black", 2);
+            yield return Until(() => fade.color.a == 1, "second bed becomes black", 4);
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1), "The sleep blackout must precede the day change.");
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
             yield return new WaitForSecondsRealtime(1.1f);
@@ -761,8 +848,14 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
             yield return Until(() => host.Runtime.GetView().Game.Day == 2 && host.Runtime.GetView().Cue == null,
                 "Day2 starts after sleep", 5);
-            Assert.That(Time.realtimeSinceStartup - resumedAt, Is.GreaterThanOrEqualTo(dreams.WakeBlackSeconds - .1f),
-                "The second bed must hold a full black screen for one unpaused second before waking.");
+            Assert.That(Time.realtimeSinceStartup - resumedAt, Is.EqualTo(1.5f).Within(.15f),
+                "The second bed must hold a full black screen for 1.5 unpaused seconds before waking.");
+            yield return Until(() => !host.Effects.SleepCameraActive, "Day2 wake returns camera to its relocated actor", 5);
+            Assert.That(Vector3.Distance(camera.transform.localPosition, host.Player.StandingEyeLocalPosition), Is.LessThan(.01f));
+            host.Player.enabled = true;
+            yield return null;
+            yield return null;
+            Assert.That(Vector3.Distance(camera.transform.localPosition, host.Player.StandingEyeLocalPosition), Is.LessThan(.01f));
         }
 
         [Serializable] private sealed class ShutdownDiagnostic
@@ -794,7 +887,9 @@ namespace MiniGame.UnityHost.Tests
             var rules = compiled.Rules.WithDreamFlow(rebellion.InitialValue, rebellion.Maximum, rebellion.Threshold, rebellion.CreateDeltas());
             Assert.That(rules.RulesId, Is.EqualTo(MiniGameSessionHost.Current.Rules.RulesId));
             Assert.That(rules.Fingerprint, Is.EqualTo(MiniGameSessionHost.Current.Rules.Fingerprint));
-            return new GameRuntime(rules, compiled.Content, true);
+            var runtime = new GameRuntime(rules, compiled.Content, true);
+            runtime.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
+            return runtime;
         }
 
         private static void DriveTo(GameRuntime runtime, Func<RuntimeView,bool> stop)
@@ -839,13 +934,15 @@ namespace MiniGame.UnityHost.Tests
         private WorldInteraction Interaction(InteractionTarget target) => host.gameObject.scene.GetRootGameObjects()
             .SelectMany(root => root.GetComponentsInChildren<WorldInteraction>(true)).Single(item => item.Target == target);
 
-        private void InteractWithBed()
+        private Pose InteractWithBed()
         {
             var bed = Interaction(InteractionTarget.Bed);
             TeleportTo("Bed approach", bed.GetComponent<Collider>().bounds.center);
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedInteraction, Is.SameAs(bed));
+            var original = Pose.Capture(host.Player);
             Assert.That(host.Player.InteractFocused(), Is.True);
+            return original;
         }
 
         private void AssertFacingIlluminatedBed()

@@ -29,6 +29,8 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.MainMenu.TryDismissForEditorDebug();
+            host.StartCampaign();
             bridge = Object.FindObjectOfType<MiniGameYarnBridge>();
             supervisor = host.GetComponent<SupervisorDoorwayView>();
             host.Effects.PrepareForRuntimeChange(); host.Effects.enabled = false;
@@ -76,7 +78,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
                 scanDays.Add(runtime.GetView().Game.Day);
             };
-            var actorPosition = supervisor.Surface.transform.position;
+            float actorHeight = supervisor.Surface.transform.position.y;
             foreach (int day in new[] { 1, 2, 3, 4 })
             {
                 if (day < 4) Assert.That(host.Player.ViewCamera.GetComponent<DoorViewCamera>().TryEnter(), Is.True);
@@ -92,7 +94,8 @@ namespace MiniGame.UnityHost.Tests
                         Assert.That(source, Is.EqualTo(SupervisorDialogueContent.SourcePrefix + line.id));
                         Assert.That(supervisor.CurrentPortraitId, Is.EqualTo(line.portraitId));
                         Assert.That(host.Screen.GetComponentsInChildren<UnityEngine.UI.Text>(true).Single(text => text.name == "DialogueBody").text, Is.EqualTo(line.text));
-                        Assert.That(Vector3.Distance(supervisor.Surface.transform.position, actorPosition), Is.LessThan(.001f));
+                        Assert.That(supervisor.Surface.transform.position.y, Is.EqualTo(actorHeight).Within(.001f),
+                            "Door avoidance may move the supervisor sideways without changing portrait height.");
                         seen.Add(source); portraits.Add(line.portraitId);
                         Assert.That(scanDays.Count, Is.EqualTo(expected.Take(seen.Count)
                             .Where(item => item.portraitId == "JD_04").Select(item => item.day).Distinct().Count()),
@@ -112,6 +115,32 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(portraits, Is.EquivalentTo(Enumerable.Range(1, 6).Select(index => "JD_" + index.ToString("00"))));
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.TakenAway));
             Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_06"));
+        }
+
+        [UnityTest, Timeout(25000)]
+        public IEnumerator ScanPortraitPlaysRealSamplesThroughTheActiveAudioOwner()
+        {
+            Assert.That(host.Player.ViewCamera.GetComponent<DoorViewCamera>().TryEnter(), Is.True);
+            yield return Reach("supervisor__P02_D1_R1_COMMON_014");
+            Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
+            var source = host.Audio.Service.GetSource(MiniGameAudioChannel.Scanner);
+            Assert.That(source.outputAudioMixerGroup, Is.EqualTo(host.Audio.Profile.SfxGroup));
+            var samples = new float[1024];
+            float peak = 0, deadline = Time.realtimeSinceStartup + 1.5f;
+            while (peak < .0001f && Time.realtimeSinceStartup < deadline)
+            {
+                yield return null;
+                source.GetOutputData(samples, 0);
+                peak = Mathf.Max(peak, samples.Max(value => Mathf.Abs(value)));
+            }
+            Assert.That(source.isPlaying, Is.True);
+            Assert.That(peak, Is.GreaterThan(.0001f), "The scan must output audio samples, beyond emitting a presentation event.");
+            runtime.SetPaused(true);
+            yield return null;
+            Assert.That(source.isPlaying, Is.False);
+            runtime.SetPaused(false);
+            yield return null;
+            Assert.That(source.isPlaying, Is.True);
         }
 
         [UnityTest, Timeout(25000)]

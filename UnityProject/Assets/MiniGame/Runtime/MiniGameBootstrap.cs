@@ -34,11 +34,24 @@ namespace MiniGame.UnityHost
         public MiniGameAudioDirector Audio { get; private set; }
         public DreamSequenceDirector Dreams { get; private set; }
         public DreamSequenceProfile DreamProfile => dreamProfile;
+        public MainMenuController MainMenu { get; private set; }
         public bool TerminalDemoActive => terminalDemoActive;
         public bool CampaignActive => campaignActive;
         public string SavePath => Runtime != null && Runtime.UsesDreamFlow && MiniGameSessionHost.Current != null
-            ? MiniGameSessionHost.Current.SavePath : Path.Combine(Application.persistentDataPath,
+            ? MiniGameSessionHost.Current.SavePath : Path.Combine(SaveDirectory,
             campaignActive ? "campaign-save.json" : terminalDemoActive ? "terminal-demo-save.json" : "prototype-save.json");
+
+        internal static string SaveDirectory
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return EditorCampaignDebugSession.SaveDirectory ?? Application.persistentDataPath;
+#else
+                return Application.persistentDataPath;
+#endif
+            }
+        }
 
         public void Configure(MiniGameScreen ui, ApartmentPlayer worldPlayer, PresentationEffects presentation, MiniGameYarnBridge bridge)
         { screen = ui; player = worldPlayer; effects = presentation; yarn = bridge; }
@@ -61,8 +74,23 @@ namespace MiniGame.UnityHost
         private void Awake()
         {
             legacyProject = yarn.Project;
+            screen.SaveRequested += Save;
+            screen.LoadRequested += Load;
+            screen.RestartRequested += Restart;
+            screen.MainMenuRequested += ReturnToMainMenu;
+            if (useCampaign) MainMenu = MainMenuController.Attach(this);
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.PendingCombinedRestore)
                 RestoreFromSession(MiniGameSessionHost.Current);
+            else if (MainMenu != null && MainMenu.TryTakeNewInspection(out var continuePath))
+            {
+                bool loaded = TryLoadCampaign(continuePath, out var error);
+                MainMenu.FinishNewInspection(loaded, error);
+            }
+            else if (useCampaign && !MainMenuController.SkipStartup)
+            {
+                MainMenu.ShowStartup();
+                return;
+            }
             else if (useCampaign) StartCampaign();
             else if (useTerminalDemo)
             {
@@ -75,10 +103,7 @@ namespace MiniGame.UnityHost
                 }
             }
             else StartLegacyPrototype();
-            screen.SaveRequested += Save;
-            screen.LoadRequested += Load;
-            screen.RestartRequested += Restart;
-            Debug.Log("MINIGAME_PLAYER_READY unity=" + Application.unityVersion + " phase=" + Runtime.GetView().Game.Phase
+            if (Runtime != null) Debug.Log("MINIGAME_PLAYER_READY unity=" + Application.unityVersion + " phase=" + Runtime.GetView().Game.Phase
                 + " profile=" + (campaignActive ? "campaign" : terminalDemoActive ? "terminal-demo" : "legacy-three-day") + " rules=" + rules.RulesId);
         }
 
@@ -88,10 +113,14 @@ namespace MiniGame.UnityHost
             screen.SaveRequested -= Save;
             screen.LoadRequested -= Load;
             screen.RestartRequested -= Restart;
+            screen.MainMenuRequested -= ReturnToMainMenu;
         }
+
+        private void ReturnToMainMenu() => MainMenu?.ReturnToMenu();
 
         private void Update()
         {
+            if (MainMenuController.BlocksGameplayInput) return;
             if (Runtime == null || (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning)) return;
             ApplyRoomInteractionSettings();
             if (screen != null && screen.PresentationToolsBlockInput) return;
@@ -106,6 +135,8 @@ namespace MiniGame.UnityHost
 
         public void HandleEscape()
         {
+            if (MainMenu != null && MainMenu.IsVisible) { MainMenu.HandleEscape(); return; }
+            if (MainMenuController.BlocksGameplayInput) return;
             if (Runtime == null || screen.PresentationToolsBlockInput
                 || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
             var view = Runtime.GetView();
@@ -113,6 +144,8 @@ namespace MiniGame.UnityHost
             else if (screen.TryClosePropNarration()) { }
             else if (screen.TryCloseHistory()) { }
             else if (view.Inspection != null) Runtime.CloseInspection();
+            else if (view.Input == InputContext.TerminalDirectory && view.TerminalPage == TerminalPage.Directory && !view.IsSelfReview)
+                Runtime.LeaveTerminal();
             else Runtime.SetPaused(true);
         }
 
@@ -146,6 +179,7 @@ namespace MiniGame.UnityHost
             player.Bind(runtime, screen);
             var retro = player.ViewCamera.GetComponent<RetroScreenEffect>();
             if (retro != null) retro.UsePlayerPixelSettings = true;
+            PlayerBrightnessEffect.EnsureFor(player.ViewCamera);
             effects.Bind(runtime, screen);
             var monitor = GetComponent<SelfReviewMonitor>();
             if (monitor == null && runtime.UsesDreamFlow) monitor = gameObject.AddComponent<SelfReviewMonitor>();
@@ -180,6 +214,7 @@ namespace MiniGame.UnityHost
             InstallRuntime(session.Runtime, false, true);
             yarn.RestoreSupervisorCheckpoint(session.SupervisorCheckpoint);
             if (Dreams != null && session.DreamCheckpoint != null) Dreams.RestoreCheckpoint(session.DreamCheckpoint);
+            effects.RestoreSleepCheckpoint(session.SleepCheckpoint);
         }
 
         public void Save()
@@ -219,6 +254,13 @@ namespace MiniGame.UnityHost
 
         public void StartTerminalDemo(DialoguePackageAsset package = null)
         {
+            PrepareContent(package);
+            InstallRuntime(new GameRuntime(rules, content, useTerminalDirectory: true));
+            if (campaignActive) Runtime.BeginDayZeroOpening();
+        }
+
+        private void PrepareContent(DialoguePackageAsset package)
+        {
             var selected = package != null ? package : dialoguePackage != null ? dialoguePackage
                 : Resources.Load<DialoguePackageAsset>("MiniGame/ActiveDialoguePackage");
             if (selected == null || selected.PackageSource == null || selected.Project == null)
@@ -236,8 +278,43 @@ namespace MiniGame.UnityHost
                     rebellionProfile.Threshold, rebellionProfile.CreateDeltas());
             }
             yarn.Configure(selected.Project);
-            InstallRuntime(new GameRuntime(rules, content, useTerminalDirectory: true));
-            if (campaignActive) Runtime.BeginDayZeroOpening();
+        }
+
+        public bool TryLoadCampaign(string path, out string error)
+        {
+            error = null;
+            try
+            {
+                PrepareContent(Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage"));
+                var session = MiniGameSessionHost.Install(new GameRuntime(rules, content, true), rules, content, dreamProfile);
+                if (session.TryLoadFrom(path, out error, pauseOnLoad: true)) return true;
+                MiniGameSessionHost.Release();
+                return false;
+            }
+            catch (Exception exception) { error = "读取失败：" + exception.Message; return false; }
+        }
+
+        public static void WriteNewCampaignContinuation(string path)
+        {
+            var package = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+            if (package == null || package.PackageSource == null || package.Project == null)
+                throw new InvalidOperationException("缺少正式对话配置。");
+            var compiled = DialoguePackageCompiler.Compile(package.PackageSource.text);
+            if (compiled.SourceHash != package.SourceHash || package.Project.Program == null)
+                throw new InvalidOperationException("对话源与编译结果不一致。");
+            var rules = compiled.Rules;
+            var dream = Resources.Load<DreamSequenceProfile>("MiniGame/DreamSequenceDefault");
+            if (dream != null && dream.EnableDreamFlow)
+            {
+                var rebellion = Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion");
+                if (rebellion == null) throw new InvalidOperationException("缺少反叛值配置。");
+                rules = rules.WithDreamFlow(rebellion.InitialValue, rebellion.Maximum, rebellion.Threshold, rebellion.CreateDeltas());
+            }
+            var seed = new GameRuntime(rules, compiled.Content, true);
+            if (seed.UsesEndingFlow) seed.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
+            seed.BeginDayZeroOpening();
+            seed.SetPaused(true);
+            new RuntimeFileSaveStore(path).Save(seed);
         }
 
         public void StartLegacyPrototype()
@@ -251,6 +328,7 @@ namespace MiniGame.UnityHost
 
         public void Restart()
         {
+            if (MainMenu != null) { MainMenu.RequestNewInspection(); return; }
             if (Runtime.UsesDreamFlow && MiniGameSessionHost.Current != null) MiniGameSessionHost.Current.RestartToCombined();
             else
             {
@@ -258,7 +336,8 @@ namespace MiniGame.UnityHost
                 if (campaignActive) Runtime.BeginDayZeroOpening();
             }
         }
-        public void RestoreCheckpoint(string json) => InstallRuntime(GameRuntime.Restore(json, rules, content));
+        public void RestoreCheckpoint(string json) => InstallRuntime(GameRuntime.Restore(json, rules, content,
+            rules.DreamFlowEnabled ? EndingDialoguePresenter.LoadCatalog() : null));
 
         public void StartCampaign()
         {

@@ -30,6 +30,7 @@ namespace MiniGame.UnityHost
         private int dreamTraversalDay;
         private float dreamFloorY;
         private WorldInteraction[] dreamTargets = new WorldInteraction[0];
+        private BoxCollider dreamBedCollider;
         public Camera ViewCamera => viewCamera;
         public Vector3 StandingEyeLocalPosition => standingEyeLocalPosition;
         public WorldInteraction FocusedInteraction => focused;
@@ -302,7 +303,24 @@ namespace MiniGame.UnityHost
             downwardSpeed = 0;
             dreamTargets = gameObject.scene.GetRootGameObjects()
                 .SelectMany(root => root.GetComponentsInChildren<WorldInteraction>(true)).ToArray();
+            CreateDreamBedCollision();
             ClearFocus();
+        }
+
+        private void CreateDreamBedCollision()
+        {
+            var bed = dreamTargets.FirstOrDefault(target => target.Target == InteractionTarget.Bed);
+            if (bed == null || bed.Surface == null) return;
+            var bedBounds = bed.Surface.bounds;
+            var guidance = gameObject.scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<BedtimeGuidance>(true)).FirstOrDefault();
+            if (guidance != null && guidance.BedRenderers != null)
+                foreach (var part in guidance.BedRenderers) if (part != null) bedBounds.Encapsulate(part.bounds);
+            var obstacle = new GameObject("Dream bed collision");
+            UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(obstacle, gameObject.scene);
+            obstacle.transform.position = bedBounds.center;
+            dreamBedCollider = obstacle.AddComponent<BoxCollider>();
+            dreamBedCollider.size = bedBounds.size;
         }
 
         public bool TryMoveDreamTraversal(Vector3 displacement)
@@ -311,8 +329,39 @@ namespace MiniGame.UnityHost
                 || (dreamDirector != null && dreamDirector.OwnsCamera)) return false;
             var bounds = new Bounds(dreamTraversalCenter, dreamTraversalSize);
             Vector3 next = transform.position + displacement;
-            transform.position = new Vector3(Mathf.Clamp(next.x, bounds.min.x, bounds.max.x), dreamFloorY,
+            next = new Vector3(Mathf.Clamp(next.x, bounds.min.x, bounds.max.x), dreamFloorY,
                 Mathf.Clamp(next.z, bounds.min.z, bounds.max.z));
+            if (dreamBedCollider != null)
+            {
+                var obstacle = dreamBedCollider.bounds;
+                float margin = controller != null ? controller.radius + controller.skinWidth : .35f;
+                obstacle.Expand(new Vector3(margin * 2, 0, margin * 2));
+                var start = transform.position;
+                if (start.x > obstacle.min.x && start.x < obstacle.max.x
+                    && start.z > obstacle.min.z && start.z < obstacle.max.z)
+                {
+                    // Older saves may have been made while the bed was passable.
+                    var exits = new[] { new Vector3(obstacle.min.x - .001f, dreamFloorY, start.z),
+                        new Vector3(obstacle.max.x + .001f, dreamFloorY, start.z),
+                        new Vector3(start.x, dreamFloorY, obstacle.min.z - .001f),
+                        new Vector3(start.x, dreamFloorY, obstacle.max.z + .001f) };
+                    var available = exits.Where(point => bounds.Contains(new Vector3(point.x, bounds.center.y, point.z)))
+                        .OrderBy(point => (point - start).sqrMagnitude).ToArray();
+                    if (available.Length > 0) start = available[0];
+                    next = start + new Vector3(displacement.x, 0, displacement.z);
+                    next.x = Mathf.Clamp(next.x, bounds.min.x, bounds.max.x);
+                    next.z = Mathf.Clamp(next.z, bounds.min.z, bounds.max.z);
+                }
+                var movement = next - start;
+                float distance = movement.magnitude;
+                if (distance > .00001f)
+                {
+                    var ray = new Ray(new Vector3(start.x, obstacle.center.y, start.z), movement / distance);
+                    if (obstacle.IntersectRay(ray, out float hit) && hit <= distance)
+                        next = start + movement / distance * Mathf.Max(0, hit - .001f);
+                }
+            }
+            transform.position = next;
             return true;
         }
 
@@ -340,6 +389,12 @@ namespace MiniGame.UnityHost
         {
             if (!dreamTraversalActive) return;
             dreamTraversalActive = false;
+            if (dreamBedCollider != null)
+            {
+                dreamBedCollider.enabled = false;
+                if (Application.isPlaying) Destroy(dreamBedCollider.gameObject); else DestroyImmediate(dreamBedCollider.gameObject);
+                dreamBedCollider = null;
+            }
             if (controller != null) controller.enabled = false;
             if (wake) PlaceAtWakePose();
             if (controller != null) controller.enabled = controllerBeforeDream;

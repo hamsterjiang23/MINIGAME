@@ -10,7 +10,9 @@ namespace MiniGame.UnityHost.Tests
         {
             var session = MiniGameSessionHost.Current;
             Assert.That(session, Is.Not.Null, "The combined campaign must provide its actual rules and content.");
-            host.RestoreCheckpoint(new GameRuntime(session.Rules, session.Content, true).Save());
+            var runtime = new GameRuntime(session.Rules, session.Content, true);
+            if (runtime.UsesEndingFlow) runtime.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
+            host.RestoreCheckpoint(runtime.Save());
         }
     }
 }

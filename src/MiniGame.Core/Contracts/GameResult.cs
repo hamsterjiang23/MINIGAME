@@ -41,6 +41,10 @@ namespace MiniGame.Core
         public int PurificationsToday { get; }
         public int PurificationRequirement { get; }
         public int Rebellion { get; }
+        public int SelfReviewLineIndex { get; }
+        public int SelfReviewLineCount { get; }
+        public bool SelfReviewCompleted => Phase == GamePhase.SelfReview && SelfReviewLineCount > 0
+            && SelfReviewLineIndex == SelfReviewLineCount;
         public string? CurrentPatientId { get; }
         public string? CurrentPatientName { get; }
         public string? CurrentEncounterId { get; }
@@ -54,13 +58,16 @@ namespace MiniGame.Core
             string? patientId, string? patientName, string? encounterId, string? nodeId,
             EncounterStage? stage, IEnumerable<string> responses,
             IEnumerable<Disposition> dispositions, IEnumerable<InteractionTarget> interactions, int rebellion = 0,
-            int purificationsToday = 0, int purificationRequirement = 0)
+            int purificationsToday = 0, int purificationRequirement = 0,
+            int selfReviewLineIndex = 0, int selfReviewLineCount = 0)
         {
             Day = day; Phase = phase; Ending = ending;
             RemainingPurificationQuota = remainingQuota;
             PurificationsToday = purificationsToday;
             PurificationRequirement = purificationRequirement;
             Rebellion = rebellion;
+            SelfReviewLineIndex = selfReviewLineIndex;
+            SelfReviewLineCount = selfReviewLineCount;
             CurrentPatientId = patientId; CurrentPatientName = patientName;
             CurrentEncounterId = encounterId; CurrentNodeId = nodeId; EncounterStage = stage;
             AvailableResponseIds = new ReadOnlyCollection<string>(new List<string>(responses));

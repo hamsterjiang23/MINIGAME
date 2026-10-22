@@ -163,9 +163,10 @@ namespace MiniGame.UnityHost
             lastView = view;
             if (view.Game.Phase != GamePhase.Dream && view.Game.Phase != GamePhase.AfterDream)
                 dreamBedReveal = false;
-            bedOnlyTarget = view.Game.Day > 0 && (dreamBedReveal || view.Game.Phase == GamePhase.AfterDream);
             bool inDream = view.Game.Phase == GamePhase.Sleeping || view.Game.Phase == GamePhase.Dream;
             bool guide = IsSleepOnly(view) && (!view.TerminalOpen || view.LeavingTerminal);
+            bedOnlyTarget = view.Game.Day == 0 && (guide || inDream)
+                || view.Game.Day > 0 && (dreamBedReveal || view.Game.Phase == GamePhase.AfterDream);
             bool beforeDream = view.UsesDreamFlow && view.Game.Phase == GamePhase.Evening && (!view.TerminalOpen || view.LeavingTerminal);
             selfReviewTarget = view.UsesDreamFlow && view.Game.Phase == GamePhase.SelfReview;
             isolationTarget = guide || inDream || beforeDream || selfReviewTarget || bedOnlyTarget ? 1 : 0;

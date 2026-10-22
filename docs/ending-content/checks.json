@@ -1,0 +1,24 @@
+{
+  "python": {
+    "command": "python -B -m unittest discover -s Tools/DialogueCampaign -p test_*.py",
+    "tests": 26,
+    "passed": 26,
+    "deterministicChecks": ["build_campaign.py --check", "build_supervisor.py --check", "build_endings.py --check"]
+  },
+  "commandRouteProbe": {
+    "sdk": "8.0.424",
+    "executable": ".dotnet/dotnet.exe",
+    "scope": "Isolated temporary console references existing Release Core/Presentation DLLs and reads the current generated campaign and ending JSON. It drives real runtime commands, then deserializes and replays a separate read-only snapshot to inspect eligible residents. No running DTO, source rules or initial trust is edited.",
+    "routes": [
+      {"route": "Normal", "commands": 213, "day": 4, "phase": "Ending", "ending": "TakenAway", "residentCount": 1, "residentTrustSum": 2, "rebellion": 0},
+      {"route": "Priest", "commands": 146, "day": 3, "phase": "Ending", "ending": "PriestAttack", "residentCount": 2, "residentTrustSum": -5, "rebellion": 0},
+      {"route": "Quota", "commands": 77, "day": 4, "phase": "Ending", "ending": "LockedInRoom", "residentCount": 5, "residentTrustSum": -13, "rebellion": 0},
+      {"route": "Hidden", "commands": 223, "day": 3, "phase": "SelfReview", "ending": "None", "residentCount": 2, "residentTrustSum": 123, "rebellion": 0}
+    ]
+  },
+  "unity": {
+    "status": "Not run by the content worker; coordinated Editor/PlayMode validation is separate.",
+    "newSuite": "UnityProject/Assets/MiniGame/Tests/PlayMode/EndingCampaignPlayModeTests.cs",
+    "updatedLegacyCase": "DreamCampaignIntegrationTests.ResidentTrustSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress"
+  }
+}

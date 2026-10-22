@@ -29,14 +29,15 @@ class SupervisorSourceTests(unittest.TestCase):
         self.assertEqual(data["conversations"][2]["lines"][-1]["next"], "P02_D4_R1_COMMON_002")
         self.assertTrue(any(item.get("cell") == "J40" and item["kind"] == "day-boundary" for item in adaptations))
 
-    def test_missing_portrait_inherits_and_all_original_png_bytes_match(self: SupervisorSourceTests) -> None:
+    def test_missing_portrait_inherits_and_approved_supervisor_png_bytes_match(self: SupervisorSourceTests) -> None:
         data, _ = compile_dialogue(ROOT / "Art/chat_excel/【对话】监督员.xlsx")
         line = next(line for day in data["conversations"] for line in day["lines"] if line["sourceRow"] == 20)
         self.assertEqual(line["portraitId"], "JD_03")
-        manifest = json.loads((ROOT / "docs/dialogue-update-2026-10-21/supervisor/source-manifest.json").read_text(encoding="utf-8"))
-        self.assertEqual(len(manifest["images"]), 6)
-        for image in manifest["images"]:
-            self.assertEqual(digest(ROOT / image["source"]), digest(ROOT / image["resource"]))
+        manifest = json.loads((ROOT / "docs/portrait-remap/source-manifest.json").read_text(encoding="utf-8-sig"))
+        images = [image for image in manifest["entries"] if image["role"] == "supervisor"]
+        self.assertEqual(len(images), 6)
+        for image in images:
+            self.assertEqual(digest(ROOT / "UnityProject" / image["target"]), image["sourceSha256"])
 
     def test_ambiguous_duplicate_ids_are_rejected(self: SupervisorSourceTests) -> None:
         workbook = ROOT / "Art/chat_excel/【对话】监督员.xlsx"

@@ -416,18 +416,20 @@ namespace MiniGame.UnityHost
             return mesh;
         }
 
-        private void OnDestroy()
+        public void DisposePresentation(bool immediate)
         {
-            foreach (Mesh mesh in meshes) Release(mesh);
-            foreach (Material material in materials) Release(material);
+            foreach (Mesh mesh in meshes) Release(mesh, immediate);
+            foreach (Material material in materials) Release(material, immediate);
             meshes.Clear();
             materials.Clear();
         }
 
-        private static void Release(UnityEngine.Object value)
+        private void OnDestroy() => DisposePresentation(!Application.isPlaying);
+
+        private static void Release(UnityEngine.Object value, bool immediate = false)
         {
             if (value == null) return;
-            if (Application.isPlaying) Destroy(value); else DestroyImmediate(value);
+            if (immediate || !Application.isPlaying) DestroyImmediate(value); else Destroy(value);
         }
     }
 }

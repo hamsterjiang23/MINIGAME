@@ -43,11 +43,23 @@ class CampaignConversionTests(unittest.TestCase):
         smoke, audit = build(smoke=True)
         self.assertEqual(audit["meetingCount"], 3)
         self.assertEqual(smoke["formatVersion"], 2)
-        self.assertEqual(self.audit["sourceRowCount"], 1440)
-        self.assertEqual(self.audit["activeSourceRowCount"], 1299)
-        self.assertEqual(self.audit["excludedSourceRowCount"], 141)
-        self.assertEqual(self.audit["meetingCount"], 16)
-        self.assertEqual(self.package["contentVersion"], "1.1.1-development")
+        self.assertEqual(self.audit["sourceRowCount"], 1360)
+        self.assertEqual(self.audit["activeSourceRowCount"], 1295)
+        self.assertEqual(self.audit["excludedSourceRowCount"], 65)
+        self.assertEqual(self.audit["meetingCount"], 13)
+        self.assertEqual(self.package["contentVersion"], "1.2.0-development")
+
+    def test_daily_rosters_follow_the_confirmed_arrival_order(self) -> None:
+        campaign = cast(Record, self.package["campaign"])
+        days = cast(list[Record], campaign["days"])
+        expected = [
+            ["tutorial"],
+            ["former-ruler", "battlefield-doctor", "child"],
+            ["former-ruler", "battlefield-doctor", "child", "priest"],
+            ["former-ruler", "battlefield-doctor", "child", "priest", "diplomat"],
+        ]
+        for day, roster in zip(days, expected, strict=True):
+            self.assertEqual([meeting["patientId"] for meeting in cast(list[Record], day["meetings"])], roster)
 
     def test_every_source_row_is_either_exactly_mapped_or_explicitly_excluded(self) -> None:
         mappings = cast(list[Record], self.audit["mappings"])
@@ -89,22 +101,26 @@ class CampaignConversionTests(unittest.TestCase):
     def test_doctor_recovered_branches_match_old_evidence_and_never_join_options(self) -> None:
         repairs = cast(list[Record], self.audit["repairs"])
         recovered = [repair for repair in repairs if repair["kind"] == "restore-old-corresponding-branch"]
-        self.assertEqual(len(recovered), 107)
+        self.assertEqual(len(recovered), 103)
         by_row = {int(str(repair["row"])): repair for repair in recovered}
         self.assertEqual(cast(Record, by_row[134]["after"])["next"],
                          "P04_D3_R1_OPTION_001,P04_D3_R1_OPTION_002,P04_D3_R1_OPTION_003")
         self.assertEqual(cast(Record, by_row[138]["after"])["next"], "P04_D3_R1_COMMON_002")
         self.assertEqual(cast(Record, by_row[139]["after"])["next"], "P04_D3_R1_CLOSE_004")
-        self.assertEqual(cast(Record, by_row[232]["after"])["next"], "P04_D3_R1_ACTION_014")
-        self.assertEqual(cast(Record, by_row[255]["evidence"])["oldId"], "ED_D3_PURIFY_T3")
-        self.assertEqual(cast(Record, by_row[255]["after"])["next"], "P04_D3_R1_CLOSE_047")
+        for row in (229, 232, 238):
+            self.assertEqual(cast(Record, by_row[row]["after"])["next"], "END_DAY3")
+        self.assertFalse({239, 240, 241, 255} & set(by_row))
         exclusions = cast(list[Record], self.audit["excludedRows"])
         doctor_excluded = {entry["row"] for entry in exclusions if entry["patientId"] == "battlefield-doctor"}
-        self.assertIn(233, doctor_excluded)
-        self.assertIn(234, doctor_excluded)
-        self.assertIn(290, doctor_excluded)
-        self.assertNotIn(255, doctor_excluded)
+        self.assertEqual(doctor_excluded, {233, 234})
         self.assertTrue(all(cast(Record, repair["evidence"])["oldSha256"] for repair in recovered))
+        doctor = next(book for book in cast(list[Record], self.audit["books"])
+                      if book["patientId"] == "battlefield-doctor")
+        active = cast(list[Row], doctor["activeRows"])
+        self.assertEqual(len(active), 235)
+        self.assertEqual(max(int(row["row"]) for row in active), 238)
+        self.assertEqual(next(row["actionResponse"] for row in active if row["row"] == "238"),
+                         "打开门，让我保留后果。")
 
     def test_repair_manifest_rejects_new_source_hash_instead_of_guessing(self) -> None:
         with self.assertRaisesRegex(ValueError, "does not match"):
@@ -121,10 +137,13 @@ class CampaignConversionTests(unittest.TestCase):
         original = {int(row["row"]): row for row in cast(list[Row], books["priest"]["rows"])}
         aliases = [repair for repair in cast(list[Record], self.audit["repairs"])
                    if repair["kind"] == "user-confirmed-portrait-remap"]
-        self.assertEqual([repair["row"] for repair in aliases], [62, 63, 67, 121, 122, 178, 179])
+        self.assertEqual([repair["row"] for repair in aliases], [178, 179])
         for repair in aliases:
             self.assertEqual(original[int(str(repair["row"]))]["L"], "JN05")
             self.assertEqual(cast(Record, repair["after"])["portrait"], "JN04")
+        self.assertEqual(original[67]["L"], "JN03")
+        priest_active = {int(row["row"]): row for row in cast(list[Row], books["priest"]["activeRows"])}
+        self.assertEqual(priest_active[67]["portrait"], "JN03")
         self.assertNotIn("JN05", self.audit["referencedPortraits"])
         declared = {portrait["id"] for portrait in cast(list[Record], self.package["portraits"])}
         self.assertTrue(set(cast(list[str], self.audit["referencedPortraits"])) <= declared)
@@ -134,7 +153,7 @@ class CampaignConversionTests(unittest.TestCase):
         by_row = {int(row["row"]): row for row in cast(list[Row], priest["activeRows"])}
         self.assertEqual(by_row[60]["next"], by_row[67]["id"])
         self.assertEqual(by_row[67]["next"], "END_DAY1")
-        self.assertEqual(by_row[67]["actionResponse"], "不要让我等待太久…")
+        self.assertEqual(by_row[67]["actionResponse"], "不会让你等待太久…")
         self.assertFalse(by_row[67]["option"] or by_row[67]["action"])
         self.assertEqual(int(by_row[67]["delta"] or "0"), 0)
 
@@ -143,7 +162,7 @@ class CampaignConversionTests(unittest.TestCase):
         meetings = [meeting for day in cast(list[Record], campaign["days"])
                     for meeting in cast(list[Record], day["meetings"])]
         gated = [meeting for meeting in meetings if "specialRoundStartNode" in meeting]
-        self.assertEqual(len(gated), 9)
+        self.assertEqual(len(gated), 7)
         self.assertEqual({meeting["patientId"] for meeting in gated}, {"child", "former-ruler", "diplomat"})
         for meeting in gated:
             self.assertEqual(meeting["specialTrustThreshold"], 3)

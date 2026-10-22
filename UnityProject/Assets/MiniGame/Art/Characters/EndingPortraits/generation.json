@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "../NamedPortraits/JN03.png",
+  "images": [
+    {
+      "path": "PE01.png",
+      "sha256": "9fe24fcce513a07aa03900c74a8b6a4418542f02843947a41d4db193bbbd86fa",
+      "prompt": "Use case: identity-preserve. Asset type: transparent character portrait cutout for a psychological horror game. Reference image: existing fictional priest JN03, preserve his exact recognizable elderly face, round wire glasses, black rounded priest hat, black double-breasted coat and white clerical collar. Create a pose variant: head tilted upward, eyes rolled upward with visible whites, ecstatic unsettling smile; his RIGHT hand at abdomen holds the same rosary and cross with a modest but unmistakable dark-red blood stain on the beads and hand. Keep the same posterized painterly rough-edged illustration style, muted brown-black clothing and chalk-white skin, full head and body through upper thighs, centered character with clear silhouette. Truly transparent background, no scenery, no rectangular matte, no text, no watermark, no extra hands or people. Preserve identity and costume; change expression and blood-stained rosary only."
+    },
+    {
+      "path": "PE02.png",
+      "sha256": "a0da3e52d9952f9e6232f34bd7c108aad7663155204e329b86f50ac700ad8dd6",
+      "prompt": "Use case: identity-preserve. Asset type: transparent character portrait cutout for a psychological horror game. Reference JN03 is the same fictional elderly priest: keep his recognizable face, round wire glasses, black rounded priest hat, black double-breasted coat and white clerical collar. New attack pose: torso leans forward toward the viewer, head faces camera directly, eyes glaring with fanatical fierce expression, his LEFT arm thrust forward so an open reaching left hand is closer to camera with dramatic but believable foreshortening; his right hand retains the blood-stained rosary near chest. Match reference posterized painterly rough-edged illustration, muted brown-black clothing, chalk-white skin and restrained dark-red blood. Portrait framing from full hat through upper thighs, keep the entire outstretched hand and fingertips inside the image with padding, centered isolated character. Genuine transparent background, no scenery, no matte, no text, no watermarks, no extra limbs or people. Preserve costume, age and identity."
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "requestedChanges": {
+    "knocking": {
+      "hitsPerBurst": 3,
+      "pauseAndDoorOpen": "freeze/resume cadence on pause; cancel immediately when door opens",
+      "pauseAfterBurstSeconds": 1.2,
+      "rolloff": "Linear",
+      "spatialBlend": 1,
+      "maxDistance": 10,
+      "gapSeconds": 0.14,
+      "minDistance": 0.8
+    },
+    "sleep": {
+      "popup": "hidden for sleep/wake",
+      "checkpoints": "preserve translation/rotation progress, support old checkpoints without positional fields",
+      "moveToBedSeconds": 0.65,
+      "wake": "reverse sequence; restore actor-relative standing eye after safe actor relocation",
+      "fadeSeconds": 0.4,
+      "lookUpSeconds": 1.25
+    },
+    "roster": {
+      "treatment": "Display 已治疗X次 using authoritative TreatmentCount",
+      "remove": "Released and Purified disappear from next-day terminal directory; same-day entries and core history remain"
+    },
+    "hover": "Last hovered disposition persists across pointer gaps, matches Enter, and remains stable in all CRT modes",
+    "dream": {
+      "wakeBlackSeconds": 1,
+      "filmSeconds": [
+        15,
+        15,
+        15
+      ],
+      "blackMusicSeconds": 4.5
+    },
+    "hiddenPreview": {
+      "startup": "dismiss title and initialize host",
+      "saves": "temporary HiddenEndingPreview directory; restore routing on exit",
+      "buttons": [
+        "预览隐藏结局",
+        "停止隐藏结局预览"
+      ],
+      "window": "MiniGame → 调试 → 日期与阶段跳转"
+    }
+  },
+  "verification": {
+    "sdk": "8.0.424",
+    "lockedRestore": "passed",
+    "releaseBuild": "passed, zero warnings/errors",
+    "dotnet": {
+      "total": 348,
+      "evidence": "Artifacts/InteractionRepair20261022/dotnet-second",
+      "passed": 348,
+      "failed": 0
+    },
+    "unity": {
+      "total": 73.0,
+      "passed": 73.0,
+      "failed": 0,
+      "suites": [
+        {
+          "filter": "MiniGameAudioPlayModeTests",
+          "summary": {
+            "total": 15,
+            "passed": 15,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/MiniGameAudioPlayModeTests.json"
+        },
+        {
+          "filter": "FollowupFlowPlayModeTests",
+          "summary": {
+            "total": 5,
+            "passed": 5,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/FollowupFlowPlayModeTests.json"
+        },
+        {
+          "filter": "BedtimeGuidancePlayModeTests",
+          "summary": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/BedtimeGuidancePlayModeTests.json"
+        },
+        {
+          "filter": "TerminalHtmlParityTests",
+          "summary": {
+            "total": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/TerminalHtmlParityTests.json"
+        },
+        {
+          "filter": "DreamProjectionPlayModeTests",
+          "summary": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/DreamProjectionPlayModeTests.json"
+        },
+        {
+          "filter": "CampaignDebugEditorTests",
+          "summary": {
+            "total": 9,
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/CampaignDebugEditorTests.json"
+        },
+        {
+          "filter": "TerminalBitmapTextTests",
+          "summary": {
+            "total": 22,
+            "passed": 22,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/TerminalBitmapTextTests.json"
+        },
+        {
+          "filter": "MainMenuPersistencePlayModeTests",
+          "summary": {
+            "total": 8,
+            "passed": 8,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/MainMenuPersistencePlayModeTests.json"
+        },
+        {
+          "filter": "DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay",
+          "summary": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/InteractionRepair20261022/DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay.json"
+        }
+      ]
+    },
+    "spatialAudio": {
+      "nearDistance": 0.5,
+      "farDistance": 9.5,
+      "nearPeak": 0.4213849,
+      "farPeak": 0.02290129
+    },
+    "preview": {
+      "ready": {
+        "ready": true,
+        "active": true,
+        "failure": null,
+        "menuVisible": false,
+        "runtimePresent": true,
+        "preview": true,
+        "debugSaveDirectory": "C:\\Users\\admin\\AppData\\Local\\Temp\\DefaultCompany\\UnityProject\\HiddenEndingPreview",
+        "menuSaveDirectory": "C:\\Users\\admin\\AppData\\Local\\Temp\\DefaultCompany\\UnityProject\\HiddenEndingPreview",
+        "sessionSavePath": "C:\\Users\\admin\\AppData\\Local\\Temp\\DefaultCompany\\UnityProject\\HiddenEndingPreview\\campaign-dream-save.json"
+      },
+      "image": "Artifacts/InteractionRepair20261022/hidden-ending-preview.png",
+      "restored": {
+        "state": {
+          "playing": false,
+          "active": false,
+          "sceneSetup": [
+            {
+              "path": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+              "isLoaded": true,
+              "isActive": true
+            }
+          ],
+          "debugSaveDirectory": null,
+          "menuSaveDirectory": null,
+          "blackSeconds": 4.5,
+          "filmSeconds": [
+            15.0,
+            15.0,
+            15.0
+          ],
+          "wakeBlackSeconds": 1.0,
+          "knockGap": 0.14,
+          "knockPause": 1.2
+        },
+        "scenesRestored": true,
+        "formalSaveFiles": 2,
+        "formalSavesUnchanged": true,
+        "afterHashes": [
+          {
+            "path": "C:\\Users\\admin\\AppData\\LocalLow\\DefaultCompany\\UnityProject\\campaign-continue.json",
+            "hash": "1E47A2D0E700B7C097D8BCFF3565C873B47ED2F3B30009BF80C739C21FFE5781"
+          },
+          {
+            "path": "C:\\Users\\admin\\AppData\\LocalLow\\DefaultCompany\\UnityProject\\campaign-dream-save.json",
+            "hash": "24288CE4B78F5EE3DC9524B152EDE2725AC0EBC79527021BCAE3E0B1BB4764BA"
+          }
+        ]
+      },
+      "movement": {
+        "movedMeters": 0.239999935,
+        "ready": true,
+        "preview": true
+      },
+      "save": {
+        "saved": true,
+        "error": null,
+        "path": "C:\\Users\\admin\\AppData\\Local\\Temp\\DefaultCompany\\UnityProject\\HiddenEndingPreview\\campaign-dream-save.json",
+        "exists": true
+      }
+    },
+    "fontCoverage": {
+      "missing": 0,
+      "evidence": "Artifacts/InteractionRepair20261022/font-coverage.log",
+      "verifiedGlyphSizePairs": 10003
+    },
+    "review": "C1 actor-relative wake, C2 timing, C3 legacy pose capture fixed; rereview clean; hidden-preview startup/save cleanup review clean",
+    "diffCheck": "passed",
+    "scope": "Removed incidental preview/editor light and letter-transform serialization changes; retained new serialized sleep-move and knock settings."
+  },
+  "backup": "Artifacts/InteractionRepair20261022/before/session.json",
+  "limits": {
+    "gameVisuals": "hidden preview framebuffer inspected; timing and transitions verified via Play Mode",
+    "humanSpeakerAcceptance": "not performed; audio output measured in Play Mode",
+    "targetPlatformBuild": "not run"
+  },
+  "editorState": "stopped; original scene setup and save routing restored"
+}

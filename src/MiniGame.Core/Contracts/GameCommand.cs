@@ -10,6 +10,12 @@ namespace MiniGame.Core
     public sealed class BeginNightDream : GameCommand { }
     public sealed class ConfirmSelfPurification : GameCommand { }
 
+    public sealed class AdvanceSelfReviewCommand : GameCommand
+    {
+        public int ExpectedLineIndex { get; }
+        public AdvanceSelfReviewCommand(int expectedLineIndex) { ExpectedLineIndex = expectedLineIndex; }
+    }
+
     public sealed class Interact : GameCommand
     {
         public InteractionTarget Target { get; }

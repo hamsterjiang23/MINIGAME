@@ -45,7 +45,11 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(controller.enabled, Is.False);
             Assert.That(player.TryMoveDreamTraversal(origin - player.transform.position), Is.True);
             Assert.That(player.TryMoveDreamTraversal(Vector3.forward * 2), Is.True);
-            Assert.That(player.transform.position.z, Is.EqualTo(origin.z + 2).Within(.001f), "Dream traversal must cross the furniture blocker.");
+            Assert.That(player.transform.position.z, Is.GreaterThan(origin.z + 1), "Dream traversal must still cross the invisible furniture blocker.");
+            float bedEdge = bed.Surface.bounds.min.z - controller.radius - controller.skinWidth;
+            Assert.That(player.transform.position.z, Is.EqualTo(bedEdge).Within(.002f), "The bed alone remains solid in the dream.");
+            player.TryMoveDreamTraversal(Vector3.forward * 100);
+            Assert.That(player.transform.position.z, Is.EqualTo(bedEdge).Within(.002f), "Large steps cannot tunnel through the bed.");
             Assert.That(player.transform.position.y, Is.EqualTo(origin.y));
             player.TryMoveDreamTraversal(origin - player.transform.position);
             player.FacePoint(bed.GetComponent<Collider>().bounds.center);
@@ -79,6 +83,21 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Quaternion.Angle(player.transform.rotation, bodyRotationBeforeSleep), Is.LessThan(.01f), "Waking must preserve heading instead of turning toward the wall-facing anchor.");
             Assert.That(Quaternion.Angle(camera.transform.rotation, cameraRotationBeforeSleep), Is.LessThan(.01f), "Waking must preserve the player's vertical look angle.");
             Assert.That(camera.fieldOfView, Is.EqualTo(72));
+        }
+
+        [Test]
+        public void LargeDiagonalDreamStepCannotCrossTheBed()
+        {
+            CreateRig();
+            bed.transform.position = origin + Vector3.up * 1.6f;
+            player.transform.position = origin + new Vector3(-2, 0, -2);
+            Physics.SyncTransforms();
+            var runtime = Runtime();
+            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.AfterDream);
+            player.Bind(runtime, null);
+            Assert.That(player.TryMoveDreamTraversal(new Vector3(4, 0, 4)), Is.True);
+            Assert.That(player.transform.position.x, Is.LessThan(bed.Surface.bounds.min.x));
+            Assert.That(player.transform.position.z, Is.LessThan(bed.Surface.bounds.min.z));
         }
 
         [TestCase(true)]

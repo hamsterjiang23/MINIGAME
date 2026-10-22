@@ -15,7 +15,6 @@ namespace MiniGame.UnityHost
     public sealed class RoomDreamEnding : MonoBehaviour
     {
         private const int BedLayer = 26;
-        private const float FadeSeconds = .35f;
         private readonly List<EnabledState<MonoBehaviour>> behaviours = new List<EnabledState<MonoBehaviour>>();
         private readonly List<EnabledState<Canvas>> canvases = new List<EnabledState<Canvas>>();
         private readonly List<EnabledState<Renderer>> renderers = new List<EnabledState<Renderer>>();
@@ -45,9 +44,19 @@ namespace MiniGame.UnityHost
         private RetroScreenProfile savedRetroProfile;
         private LightingState lighting;
         private Image fade;
+        private RoomEndingTransitionClock transition;
+        private Font failureFont;
+        private Text failureLabel;
+        private bool bedCompleted, resumingExploration;
+
+        public event Action BedCompleted;
+        public bool IsTransitioning => !restored && !Ready && !bedCompleted;
+        public RoomEndingTransitionPhase TransitionPhase => transition?.State.Phase ?? RoomEndingTransitionPhase.FadingOut;
+        public float TransitionElapsed => transition?.State.Elapsed ?? 0;
 
         public bool Ready { get; private set; }
         public bool IsPreview { get; private set; }
+        public bool UsesSharedThanks => !IsPreview && session != null && session.Runtime != null && session.Runtime.UsesEndingFlow;
         public string FailureReason { get; private set; }
         public DreamEndingController Ending { get; private set; }
         public DreamCubemapRenderer Cubemap { get; private set; }
@@ -76,8 +85,11 @@ namespace MiniGame.UnityHost
             owner.session = session;
             owner.player = room.Player;
             owner.ViewCamera = room.Player.ViewCamera;
+            if (!isPreview) session.RestoreEndingFadePose(room.Player);
             owner.savedCursorLock = Cursor.lockState;
             owner.savedCursorVisible = Cursor.visible;
+            owner.transition = new RoomEndingTransitionClock(isPreview ? null : session.RoomEndingTransition);
+            owner.resumingExploration = owner.TransitionPhase == RoomEndingTransitionPhase.Exploring;
             owner.CreateFade();
             owner.StartCoroutine(owner.Enter());
             return owner;
@@ -85,7 +97,19 @@ namespace MiniGame.UnityHost
 
         private IEnumerator Enter()
         {
-            yield return Fade(0, 1);
+            if (TransitionPhase == RoomEndingTransitionPhase.Failed)
+            {
+                ShowFailure("隐藏空间尚未就绪。按 R 重试。");
+                yield break;
+            }
+            while (TransitionPhase == RoomEndingTransitionPhase.FadingOut)
+            {
+                AdvanceTransition(false);
+                yield return null;
+            }
+            // Always cover reconstruction, including a save restored halfway through the entry camera motion.
+            fade.color = Color.black;
+            yield return null;
             try
             {
                 PrepareRoom();
@@ -98,19 +122,153 @@ namespace MiniGame.UnityHost
                 Ending.ConfigureRoom(session.DreamProfile, ViewCamera, bed, pillow, standing, this);
                 if (!Cubemap.IsReady)
                     throw new InvalidOperationException("海滩全景尚未完成首幅六面捕获。");
+                PrepareEntryPose();
             }
             catch (Exception exception)
             {
                 FailureReason = "隐藏梦结局未能开始：" + exception.Message;
                 Debug.LogException(exception, this);
-                StopAndRestore();
-                if (room != null && room.Screen != null) room.Screen.Notify(FailureReason, true);
+                transition.Fail();
+                PublishTransition();
+                ShowFailure(FailureReason + "\n按 R 重试");
                 yield break;
             }
-            yield return Fade(1, 0);
+            while (TransitionPhase != RoomEndingTransitionPhase.Exploring)
+            {
+                AdvanceTransition(true);
+                ApplyEntryPose();
+                yield return null;
+            }
             if (restored) yield break;
             Ready = true;
+            // The free-look controller takes ownership only after the camera reaches its exact target.
+            if (!resumingExploration)
+                PlacePose(safeSpawn, HeadingToBed(safeSpawn), 8);
             if (fade != null) fade.gameObject.SetActive(false);
+            PublishTransition();
+        }
+
+        private void AdvanceTransition(bool sceneReady)
+        {
+            bool paused = session.Runtime.GetView().Paused || MainMenuController.BlocksGameplayInput;
+            transition.Advance(Time.unscaledDeltaTime, sceneReady, paused);
+            if (fade != null) fade.color = new Color(0, 0, 0, transition.Opacity);
+            PublishTransition();
+        }
+
+        private void PrepareEntryPose()
+        {
+            var state = transition.State;
+            if (state.Phase == RoomEndingTransitionPhase.Exploring) return;
+            bool valid = state.HasEntryPose && Finite(state.EntryStartPosition) && Finite(state.EntryTargetPosition)
+                && ValidRotation(state.EntryStartRotation) && ValidRotation(state.EntryTargetRotation);
+            if (!valid)
+            {
+                state.HasEntryPose = true;
+                state.EntryTargetPosition = standing.position;
+                state.EntryTargetRotation = standing.rotation;
+                // Start a short distance inside the room; backing into the authored doorway avoids clipping its wall.
+                var start = AvoidBed(Clamp(safeSpawn + Vector3.ProjectOnPlane(standing.forward, Vector3.up).normalized * .35f));
+                state.EntryStartPosition = standing.position + start - safeSpawn;
+                state.EntryStartRotation = Quaternion.Euler(0, -12, 0) * standing.rotation;
+            }
+            ApplyEntryPose();
+        }
+
+        private void ApplyEntryPose()
+        {
+            var state = transition.State;
+            if (!state.HasEntryPose || ViewCamera == null || state.Phase == RoomEndingTransitionPhase.Exploring && resumingExploration) return;
+            float t = state.Phase == RoomEndingTransitionPhase.Exploring ? 1 : state.Phase == RoomEndingTransitionPhase.Entering
+                ? Mathf.SmoothStep(0, 1, Mathf.Clamp01(state.Elapsed / RoomEndingTransitionClock.EntrySeconds)) : 0;
+            ViewCamera.transform.SetPositionAndRotation(Vector3.Lerp(state.EntryStartPosition, state.EntryTargetPosition, t),
+                Quaternion.Slerp(state.EntryStartRotation, state.EntryTargetRotation, t));
+        }
+
+        public RoomEndingTransitionCheckpoint CaptureTransitionCheckpoint() => transition?.State.Copy();
+        private void PublishTransition()
+        {
+            if (!IsPreview && session != null) session.RoomEndingTransition = CaptureTransitionCheckpoint();
+        }
+
+        public bool CompleteAtBed()
+        {
+            if (!UsesSharedThanks || !Ready || bedCompleted || session.Runtime.GetView().Paused
+                || session.Runtime.EndingStage != MiniGame.Presentation.EndingStage.Space
+                || Ending == null || !Ending.CanLieDown) return false;
+            RestoreThanksPresentation();
+            BedCompleted?.Invoke();
+            return true;
+        }
+
+        public void RestoreThanksPresentation()
+        {
+            if (restored) return;
+            bedCompleted = true;
+            Ready = false;
+            Ending?.HideForThanks();
+        }
+
+        private void Update()
+        {
+            if (restored || Ready || bedCompleted || MainMenuController.BlocksGameplayInput) return;
+            if (room != null && !room.enabled && Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (Ending != null) Ending.SetPaused(!session.Runtime.GetView().Paused);
+                else session.Runtime.SetPaused(!session.Runtime.GetView().Paused);
+            }
+            if (TransitionPhase == RoomEndingTransitionPhase.Failed && Input.GetKeyDown(KeyCode.R)) RetryInitialization();
+        }
+
+        private void ShowFailure(string message)
+        {
+            FailureReason = message;
+            fade.color = Color.black;
+            if (failureLabel == null)
+            {
+                var root = new GameObject("Hidden ending failure", typeof(RectTransform), typeof(Text));
+                root.transform.SetParent(fade.transform.parent, false);
+                var rect = (RectTransform)root.transform;
+                rect.anchorMin = rect.anchorMax = new Vector2(.5f, .5f);
+                rect.sizeDelta = new Vector2(1200, 240);
+                failureLabel = root.GetComponent<Text>();
+                failureFont = GameUiTypography.CreateFont();
+                failureLabel.font = failureFont; failureLabel.fontSize = 24;
+                failureLabel.alignment = TextAnchor.MiddleCenter;
+            }
+            failureLabel.text = message;
+            failureLabel.gameObject.SetActive(true);
+        }
+
+        public bool RetryInitialization()
+        {
+            if (restored || TransitionPhase != RoomEndingTransitionPhase.Failed || session.Runtime.GetView().Paused) return false;
+            StartCoroutine(RetryUnderBlack());
+            return true;
+        }
+
+        private IEnumerator RetryUnderBlack()
+        {
+            if (resumingExploration)
+                transition = new RoomEndingTransitionClock(new RoomEndingTransitionCheckpoint { Phase = RoomEndingTransitionPhase.Exploring });
+            else transition.Retry();
+            RestoreRoomState();
+            foreach (Transform child in transform)
+                if (child != fade.transform.parent) Destroy(child.gameObject);
+            if (Ending != null)
+            {
+                if (Ending.Audio != null) Destroy(Ending.Audio);
+                Destroy(Ending);
+            }
+            Ending = null; Cubemap = null; RoomSurface = null;
+            behaviours.Clear(); canvases.Clear(); renderers.Clear(); colliders.Clear(); lights.Clear(); cameras.Clear();
+            moved.Clear(); layers.Clear(); audio.Clear();
+            cameraSaved = roomDisabled = false;
+            failureLabel.gameObject.SetActive(false);
+            FailureReason = null;
+            // Delayed destruction finishes beneath the still-opaque transition canvas.
+            yield return null;
+            yield return Enter();
         }
 
         private void PrepareRoom()
@@ -149,7 +307,7 @@ namespace MiniGame.UnityHost
             foreach (var behaviour in RoomComponents<MonoBehaviour>())
             {
                 if (behaviour == null || behaviour is EventSystem || behaviour is BaseInputModule
-                    || behaviour is MiniGameSessionHost || behaviour is RetroScreenEffect) continue;
+                    || behaviour is MiniGameSessionHost || behaviour is RetroScreenEffect || behaviour is PlayerBrightnessEffect) continue;
                 behaviours.Add(new EnabledState<MonoBehaviour>(behaviour, behaviour.enabled));
                 behaviour.enabled = false;
             }
@@ -219,6 +377,12 @@ namespace MiniGame.UnityHost
             foreach (var part in bedRenderers) MoveWithBed(part.transform);
             foreach (var collider in bedColliders)
                 if (!collider.transform.IsChildOf(bed)) MoveWithBed(collider.transform);
+            // The daytime interaction collider may be a trigger; the dream needs a solid bed body.
+            var bedObstacle = new GameObject("Dream bed solid collider");
+            bedObstacle.transform.position = bedBounds.center;
+            bedObstacle.transform.SetParent(bed, true);
+            bedObstacle.layer = BedLayer;
+            bedObstacle.AddComponent<BoxCollider>().size = bedBounds.size;
             pillow = new GameObject("Room Pillow Eye Position").transform;
             pillow.SetParent(bed, false);
             var pillowBounds = bedRenderers[2].bounds;
@@ -398,6 +562,13 @@ namespace MiniGame.UnityHost
             restored = true;
             Ready = false;
             StopAllCoroutines();
+            RestoreRoomState();
+            gameObject.SetActive(false);
+            if (Application.isPlaying) Destroy(gameObject); else DestroyImmediate(gameObject);
+        }
+
+        private void RestoreRoomState()
+        {
             if (Ending != null) { Ending.enabled = false; Ending.Audio?.StopAll(); }
             Cubemap?.Dispose();
             RoomSurface?.Dispose();
@@ -430,8 +601,6 @@ namespace MiniGame.UnityHost
             Cursor.lockState = savedCursorLock;
             Cursor.visible = savedCursorVisible;
             Physics.SyncTransforms();
-            gameObject.SetActive(false);
-            if (Application.isPlaying) Destroy(gameObject); else DestroyImmediate(gameObject);
         }
 
         private void CreateFade()
@@ -440,28 +609,15 @@ namespace MiniGame.UnityHost
             overlay.transform.SetParent(transform, false);
             var canvas = overlay.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = short.MaxValue;
+            canvas.sortingOrder = 900;
             var panel = new GameObject("Black", typeof(RectTransform), typeof(Image));
             panel.transform.SetParent(overlay.transform, false);
             var rect = (RectTransform)panel.transform;
             rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
             rect.offsetMin = rect.offsetMax = Vector2.zero;
             fade = panel.GetComponent<Image>();
-            fade.color = Color.clear;
-            fade.raycastTarget = false;
-        }
-
-        private IEnumerator Fade(float from, float to)
-        {
-            float elapsed = 0;
-            while (elapsed < FadeSeconds)
-            {
-                if (fade == null) yield break;
-                fade.color = new Color(0, 0, 0, Mathf.Lerp(from, to, elapsed / FadeSeconds));
-                elapsed += Time.unscaledDeltaTime;
-                yield return null;
-            }
-            if (fade != null) fade.color = new Color(0, 0, 0, to);
+            fade.color = new Color(0, 0, 0, TransitionPhase == RoomEndingTransitionPhase.FadingOut ? transition.Opacity : 1);
+            fade.raycastTarget = true;
         }
 
         public void CleanupForDestruction()
@@ -486,9 +642,11 @@ namespace MiniGame.UnityHost
             retro.PreviewOriginal = savedRetroOriginal;
         }
 
-        private void OnDestroy() => CleanupForDestruction();
+        private void OnDestroy() { CleanupForDestruction(); if (failureFont != null) Destroy(failureFont); }
         private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
         private static bool Finite(Vector3 value) => Finite(value.x) && Finite(value.y) && Finite(value.z);
+        private static bool ValidRotation(Quaternion value) => Finite(value.x) && Finite(value.y) && Finite(value.z)
+            && Finite(value.w) && value.x * value.x + value.y * value.y + value.z * value.z + value.w * value.w > .0001f;
 
         private readonly struct EnabledState<T> where T : UnityEngine.Object
         {

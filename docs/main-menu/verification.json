@@ -1,0 +1,406 @@
+{
+  "sources": [
+    {
+      "sha256": "f0a90a7f377a6bd889b9d29986a9755ea1d6ed84f7a339ec3f56aa97dcef0fd5",
+      "path": "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs"
+    },
+    {
+      "sha256": "8e094e067f024a376c5852e9d2e26df9659af7f93b036e6071721ef7c6d5f510",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs"
+    },
+    {
+      "sha256": "32eee4136c373a28ad451757d75d4b78de3c13579eecc29beb78c0a702a75c4b",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioService.cs"
+    },
+    {
+      "sha256": "fa9048d6d4a7e373b02ea22fd26c2d63eb418b3e0eb61dc8ccb8b3b5916b7e46",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs"
+    },
+    {
+      "sha256": "8623168ae4004407b2bf9b613af3904dd0f821828ac3cd627a3cf8164a92d1c4",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs"
+    },
+    {
+      "sha256": "0abc0fc1640e13b53764170bb27b07ff571c859b5c3e3cc03e0a6ad32ec4dce1",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs"
+    },
+    {
+      "sha256": "b30280aa444fae4845747f2683726c615bbf8e296df25268abd65f30072ed942",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs"
+    },
+    {
+      "sha256": "740ebb6740927db1edee51c7461b8e89765edbaf51f7703dc228b54a1cd09cf8",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs"
+    },
+    {
+      "sha256": "4784ff10db7374ae18eada1e0bb098085b3cb9a4d6766384dcbb2cc0f94f1bb8",
+      "path": "UnityProject/Assets/MiniGame/Runtime/RoomDreamEnding.cs"
+    },
+    {
+      "sha256": "e60836ed0a3a2e553eee5086a291be47082f95e9e9acdf959ed2ee697bd5a340",
+      "path": "UnityProject/Assets/MiniGame/Resources/PlayerBrightness.shader"
+    },
+    {
+      "sha256": "94e16e622aec91f65a524399f1345c073ec32cdb6557126e9c2b87ff11df74c2",
+      "path": "UnityProject/Assets/MiniGame/Resources/PlayerBrightness.shader.meta"
+    },
+    {
+      "sha256": "fc15af1bd13b5e86bad1d7e96da6a1b1bed80829b9ccd40bf4a284521e707172",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuContinueStore.cs"
+    },
+    {
+      "sha256": "fd683f1eb646a4bb6abbab4ddff27eba63cbd310ae5214cad3d7550637ba1288",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuContinueStore.cs.meta"
+    },
+    {
+      "sha256": "0936e906a6a8473b6fcc961f48008515ce08e2134ba78854c3a3e3a5f58788ee",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs"
+    },
+    {
+      "sha256": "a7908c1572c7b68626823ffe252317e1674674633438a678b83d4d0186d363a1",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs.meta"
+    },
+    {
+      "sha256": "dfaaf0761dfab9927d8ad8fd68793aa168a4a3f082972c5acfa97eeb88b6808c",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuView.cs"
+    },
+    {
+      "sha256": "22ce6a2a1e1514ee1514482d26cc05285870a9132908382267239af9a1c7b6d5",
+      "path": "UnityProject/Assets/MiniGame/Runtime/MainMenuView.cs.meta"
+    },
+    {
+      "sha256": "dc6fbba9e5475dd59a57adb64e317099284d5ba1dbb959643b3089b466d4ead7",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PlayerBrightnessEffect.cs"
+    },
+    {
+      "sha256": "18a74cc4cd92a477cb6fafefc944a8d8b1faa0ec04368d436515a04fdcd198e1",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PlayerBrightnessEffect.cs.meta"
+    },
+    {
+      "sha256": "d6d05aadf57fa6269348388dca1a17c4797841a29922ae1f68d21c0e7a426d28",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PlayerPreferences.cs"
+    },
+    {
+      "sha256": "c215a6ef03818d79b81b0df7aed90388fa96114272d754d8152357ee1a552cb9",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PlayerPreferences.cs.meta"
+    },
+    {
+      "sha256": "71222da4bf72bd2f323326b0b3638b568a345bae33fb6a02551d1a34b0a49e38",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PlayerSettingsView.cs"
+    },
+    {
+      "sha256": "5209a9b9b381c9ad39b12abb008e466324938abd39c88409f2867649b78bfd8e",
+      "path": "UnityProject/Assets/MiniGame/Runtime/PlayerSettingsView.cs.meta"
+    },
+    {
+      "sha256": "b0a6059e614c4ad8d602ae8932d897aaf6a3006c858f6c55cde252f42b6c1bfd",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/MainMenuFlowPlayModeTests.cs"
+    },
+    {
+      "sha256": "58cba15a8d3c9a60d09549dd5266d57e982ad205e8906962b57c331698a25164",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/MainMenuFlowPlayModeTests.cs.meta"
+    },
+    {
+      "sha256": "fbe6477c38290a948f23afbf335e0d13de95dc4d96977e0815e8c33dadfdbcf6",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/MainMenuPersistencePlayModeTests.cs"
+    },
+    {
+      "sha256": "cca78656f69a11be0111a4c0010887c0bc080540898eecf8b745cced3993ab9d",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/MainMenuPersistencePlayModeTests.cs.meta"
+    },
+    {
+      "sha256": "7b54cb76f4608b3fcb450b1faff509ba4afda0e3ce3d3c1f2766844c97a4efa8",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/MenuAudioSuspensionPlayModeTests.cs"
+    },
+    {
+      "sha256": "5a88cbd977aa2b4886dc89b9e02445736bb21bdc827e0f4002ab6d1d43c5afb2",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/MenuAudioSuspensionPlayModeTests.cs.meta"
+    },
+    {
+      "sha256": "98342c6b71cc1fa1d4399f8e9d76cf9180f00b6c6abf5c1f96723c2549e71ecc",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PlayerPreferencesPlayModeTests.cs"
+    },
+    {
+      "sha256": "47a04d1b876e559d14582c7c469be8a36a39098d9c4a2361e0546fba052b385b",
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PlayerPreferencesPlayModeTests.cs.meta"
+    }
+  ],
+  "images": [
+    {
+      "visualReview": "inspected; text readable, amber palette, exclusive pages, no clipping",
+      "path": "evidence/first-start-1920x1080.png",
+      "sha256": "707c1f7e7723d56ae6ec0a7b188125735d4c6dcdee78142399324810c69383a7"
+    },
+    {
+      "visualReview": "inspected; text readable, amber palette, exclusive pages, no clipping",
+      "path": "evidence/first-start-2560x1440.png",
+      "sha256": "2b78086e08c08dd2d51cc1d529413d7b0f1ac8eebaf8f4c7b4618a1172f8a492"
+    },
+    {
+      "visualReview": "inspected; text readable, amber palette, exclusive pages, no clipping",
+      "path": "evidence/main-menu-1920x1080.png",
+      "sha256": "dae35294640156cbc1cd01762d45a739d375107fc558e21498ff225a788ad5d1"
+    },
+    {
+      "visualReview": "inspected; text readable, amber palette, exclusive pages, no clipping",
+      "path": "evidence/main-menu-2560x1440.png",
+      "sha256": "7176a6dc65f17b9f36619c119c963e6a0212c93f5ab0331f55ff8dbee58c9be1"
+    },
+    {
+      "visualReview": "inspected; text readable, amber palette, exclusive pages, no clipping",
+      "path": "evidence/settings-1920x1080.png",
+      "sha256": "77e47a00d01bf43e98678fce5325fe30fd280959050c49f2a5fb0d5c62b948c7"
+    },
+    {
+      "visualReview": "inspected; text readable, amber palette, exclusive pages, no clipping",
+      "path": "evidence/settings-2560x1440.png",
+      "sha256": "6dfcb8c836cc3babf2d18b4eacf250306bdf73da9d544720c0a6bab1561c21d6"
+    }
+  ],
+  "latestFailed": 0,
+  "baseCommit": "d25eae59046c2c8408f952184ffd458f501dabae",
+  "latestPassed": 39,
+  "date": "2026-10-22",
+  "typography": {
+    "auxiliary": "same family; supporting sizes retained",
+    "source": "GameUiTypography.CreateFont(); existing Pause Continue Inspection label",
+    "titlesAndButtons": "ReferenceSize 28, FontStyle.Normal",
+    "logo": "existing NormLogo image, unchanged"
+  },
+  "persistence": {
+    "manualFilesPreserved": true,
+    "automatic": "campaign-continue.json",
+    "sleep": "fade elapsed and remaining black hold restored before resuming",
+    "newPeriod": "atomic paused Day0 seed, then scene reload",
+    "fallback": [
+      "campaign-dream-save.json",
+      "campaign-save.json"
+    ],
+    "corruptAutomatic": "error; no silent fallback"
+  },
+  "resolvedTestIssues": [
+    "Destroyed Unity object retained by test TearDown; fixture now clears it",
+    "First-start correctly has no gameplay UI; font baseline compared before game starts",
+    "Current Day1 workbook opens with reception choice; native dialogue test now selects it through the real Reply button",
+    "Test calls public ActivateWithAudio rather than assembly-internal helper"
+  ],
+  "defaults": {
+    "brightness": 1,
+    "pixelSizes": {
+      "low": 2,
+      "medium": 4,
+      "high": 8
+    },
+    "brightnessRange": [
+      0.5,
+      1.5
+    ],
+    "defaultPixel": "low",
+    "volumeRange": [
+      0,
+      1
+    ],
+    "masterVolume": 1
+  },
+  "scope": "Isolated Unity 2022 Editor PlayMode and D3D11 UI/brightness rendering; production MainRoomCombined scene",
+  "latestCases": {
+    "MiniGame.UnityHost.Tests.PlayerGraphicsSettingsPlayModeTests.ActualPauseSettingsClicksApplyImmediatelyAndEscapeReturnsBeforeResuming": {
+      "report": "evidence/regression.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications": {
+      "report": "evidence/modules.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.AtomicContinueSaveDoesNotOverwriteManualSavesAndReportsWriteFailure": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayZeroWaitsForTheBedAndOneInteractionSleepsWithoutShowingADream": {
+      "report": "evidence/regression.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.RestartedTitleRestoresRemainingWakeBlackoutAndAdvancesTheDayOnce": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.CorruptAutomaticProgressIsReportedInsteadOfFallingBackToValidManualProgress": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PlayerGraphicsSettingsPlayModeTests.ShaderRendersEightFourTwoBlocksAndNeverEditsTheAuthoredProfile": {
+      "report": "evidence/regression.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.ManualListsLiveControlsAndResetsWhenThePauseCloses": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.DisabledActionsStaySilentAndPointerSubmitPairsInvokeEachActionOnce": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.EscapePauseMenuReturnsFromDayZeroOpeningWithoutConsumingItsFirstClick": {
+      "report": "evidence/dialogue-font.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.BrightnessMultipliesTheFinalImageAndPreservesBlackWhenRetroIsBypassed": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.MismatchedSleepCheckpointIsRejectedBeforeReplacingLiveRuntime": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.SharedSettingsRefreshBothMenusAndHiddenControlsCannotChangePreferences": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile(\"{\\\"FormatVersion\\\":1,\\\"Runtime\\\":\\\"{}\\\"}\")": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PlayerGraphicsSettingsPlayModeTests.DefaultIsLowTwoAndEachChoicePersistsWithoutAStorySave": {
+      "report": "evidence/regression.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.FullscreenModalInterceptsClicksAndFadesWhileTimeIsStopped": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.RestartedTitleResumesSavedDreamFrameRatherThanStartingDayZero": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.DefaultsAndPersistedSettingsControlTheGlobalListenerWithoutASaveGame": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.OutOfRangeAndInvalidPreferencesHaveSafeFiniteBounds": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.OperationManualKeepsTheGamePausedAndBlocksMainMenuCallbacksUntilReturn": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.NewLoopVoiceAndOneShotWaitForMenuRelease": {
+      "report": "evidence/modules.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.NewPeriodCancelPreservesProgressAndConfirmationReplacesOnlyAutomaticProgress": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.FailedAutomaticSaveKeepsRetainedSessionAvailableAndShowsAnError": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.FreshLaunchHasOnlyStartPromptAndStartsOneDayZeroPeriod": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.ReturningDuringDreamFreezesTheSameSessionAcrossSettingsAndContinuesInPlace": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.LogicalPausesAreIndependentAndStoppedSourcesStayStopped": {
+      "report": "evidence/modules.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay": {
+      "report": "evidence/regression.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.KeyboardFocusSkipsDisabledRowsSurvivesUpdatesAndRestoresPreviousSelection": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedFadeRestoresOpacityAndOnlyItsRemainingTime": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile(\"{not json\")": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.ResumeSubmitCannotAlsoChooseAResponseOrAdvanceDialogueInTheSameFrame": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.PauseMenuPlayModeTests.FlatAmberCommandsHaveMatchingPointerTargetsAcrossTheirWidth": {
+      "report": "evidence/final-ui.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.MenuSuspendsLoopPlayheadAndFadeThenResumesBoth": {
+      "report": "evidence/modules.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.ReturningDuringNativeDayOneDialogueFreezesTypingWithoutAdvancingItsSourceLine": {
+      "report": "evidence/dialogue-font.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile(\"{\\\"FormatVersion\\\":99,\\\"Runtime\\\":\\\"old\\\"}\")": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ConfigureAndDisableDiscardSuspendedAndDeferredPlayback": {
+      "report": "evidence/modules.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ExistingOneShotAndVoiceSurviveRepeatedMenuToggles": {
+      "report": "evidence/modules.xml",
+      "result": "Passed"
+    },
+    "MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback": {
+      "report": "evidence/flow.xml",
+      "result": "Passed"
+    }
+  },
+  "unity": "2022.3.23f1c1",
+  "limitations": [
+    "No new standalone Windows Player build or process-relaunch executable smoke",
+    "Cross-launch continuation is exercised by releasing session/menu and reloading the production scene with on-disk saves",
+    "No independent audio listening acceptance"
+  ],
+  "review": {
+    "fixed": "Room-ending takeover preserves PlayerBrightnessEffect",
+    "status": "no outstanding findings"
+  },
+  "runs": [
+    {
+      "failed": 1,
+      "report": "evidence/modules.xml",
+      "passed": 17,
+      "sha256": "0a96fa556759a23a0e69cb9e84dc336b8deccac9b1d1369883211c1a4ea864a6"
+    },
+    {
+      "failed": 0,
+      "report": "evidence/flow.xml",
+      "passed": 15,
+      "sha256": "7075e9b01329d42e9064f9593d19c92a515d132c964e67f50797b58df4875987"
+    },
+    {
+      "failed": 0,
+      "report": "evidence/regression.xml",
+      "passed": 12,
+      "sha256": "f573310ee8316c612d1c4e55fd3d664dedd82ad536decb861a92983674dc0214"
+    },
+    {
+      "failed": 1,
+      "report": "evidence/final-ui.xml",
+      "passed": 19,
+      "sha256": "e031d40e7fe5ff0e902dba9ee5ff2b66ad6bb5e67c19496f2e46d272acd35a34"
+    },
+    {
+      "failed": 0,
+      "report": "evidence/dialogue-font.xml",
+      "passed": 2,
+      "sha256": "514d01ea2fe1dd8bc2860d2ab679eb3c5f78ae7eec84ed2cf8bf258474bbed6d"
+    }
+  ]
+}

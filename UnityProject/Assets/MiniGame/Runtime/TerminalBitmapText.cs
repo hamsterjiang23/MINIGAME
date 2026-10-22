@@ -17,6 +17,12 @@ namespace MiniGame.UnityHost
         [SerializeField] private PMSBitmapFont bitmapFont;
         [SerializeField] private float linePitch = 20;
         [SerializeField] private bool commandRow;
+        [SerializeField] private bool scaleToFontSize;
+        public bool ScaleToFontSize
+        {
+            get => scaleToFontSize;
+            set { if (scaleToFontSize == value) return; scaleToFontSize = value; SetAllDirty(); }
+        }
         private Mesh bitmapMesh;
         private bool warnedMissingResource, warnedSize;
         private TerminalPixelFont arkTypeface;
@@ -48,13 +54,13 @@ namespace MiniGame.UnityHost
         public override Texture mainTexture => ArkTypeface != null && ArkTypeface.Atlas != null ? ArkTypeface.Atlas
             : BitmapFont && BitmapFont.Atlas ? BitmapFont.Atlas : Texture2D.whiteTexture;
 
-        public override float preferredWidth => IsNumberedCommand(out int bodyStart)
+        public override float preferredWidth => scaleToFontSize ? TerminalTextMetrics.Width(text, 12) * GlyphScale : IsNumberedCommand(out int bodyStart)
             ? 34 + TerminalTextMetrics.Width(text.Substring(bodyStart), 14)
             : TerminalTextMetrics.Width(text, fontSize);
 
         public override float preferredHeight => IsNumberedCommand(out _)
             ? LinePitch
-            : TerminalTextMetrics.MeasureHeight(text, fontSize, rectTransform.rect.width,
+            : TerminalTextMetrics.MeasureHeight(text, scaleToFontSize ? 12 : fontSize, rectTransform.rect.width / GlyphScale,
                 LinePitch * Mathf.Max(.01f, lineSpacing), horizontalOverflow == HorizontalWrapMode.Wrap);
 
         // Unity's Text.UpdateGeometry refuses to draw without a dynamic Font. The bitmap host does not need one.
@@ -146,24 +152,27 @@ namespace MiniGame.UnityHost
                 RenderArkRun(vertices, start, text.Length - start, 14, rect.xMin + 34, rect.yMax);
                 return;
             }
-            int size = SupportedSize(fontSize);
-            var lines = TerminalTextMetrics.Layout(text, size, rect.width, horizontalOverflow == HorizontalWrapMode.Wrap);
+            int size = scaleToFontSize ? 12 : SupportedSize(fontSize);
+            float scale = GlyphScale;
+            var lines = TerminalTextMetrics.Layout(text, size, rect.width / scale, horizontalOverflow == HorizontalWrapMode.Wrap);
             float pitch = LinePitch * Mathf.Max(.01f, lineSpacing);
             int count = lines.Count;
             if (verticalOverflow == VerticalWrapMode.Truncate)
-                count = Mathf.Min(count, rect.height < size ? 0 : 1 + Mathf.FloorToInt((rect.height - size) / pitch));
+                count = Mathf.Min(count, rect.height < size * scale ? 0 : 1 + Mathf.FloorToInt((rect.height - size * scale) / pitch));
             var anchor = GetTextAnchorPivot(alignment);
-            float height = (count - 1) * pitch + size;
+            float height = (count - 1) * pitch + size * scale;
             float top = rect.yMax - Mathf.Floor((rect.height - height) * (1 - anchor.y));
             for (int index = 0; index < count; index++)
             {
                 var line = lines[index];
-                float left = rect.xMin + Mathf.Floor((rect.width - line.Width) * anchor.x);
-                RenderArkRun(vertices, line.Start, line.Length, size, left, top - index * pitch);
+                float left = rect.xMin + Mathf.Floor((rect.width - line.Width * scale) * anchor.x);
+                RenderArkRun(vertices, line.Start, line.Length, size, left, top - index * pitch, scale);
             }
         }
 
-        private void RenderArkRun(VertexHelper vertices, int start, int length, int size, float left, float top)
+        private float GlyphScale => scaleToFontSize ? Mathf.Max(1, fontSize) / 12f : 1;
+
+        private void RenderArkRun(VertexHelper vertices, int start, int length, int size, float left, float top, float scale = 1)
         {
             float x = left;
             for (int index = start; index < start + length; index++)
@@ -176,15 +185,15 @@ namespace MiniGame.UnityHost
                 if (glyph != null && glyph.w > 0 && glyph.h > 0)
                 {
                     Rect uv = ArkTypeface.UV(glyph);
-                    float x0 = x + glyph.offsetX, y1 = top - glyph.offsetY;
+                    float x0 = x + glyph.offsetX * scale, y1 = top - glyph.offsetY * scale;
                     int first = vertices.currentVertCount;
-                    vertices.AddVert(new Vector3(x0, y1 - glyph.h), color, new Vector2(uv.xMin, uv.yMin));
+                    vertices.AddVert(new Vector3(x0, y1 - glyph.h * scale), color, new Vector2(uv.xMin, uv.yMin));
                     vertices.AddVert(new Vector3(x0, y1), color, new Vector2(uv.xMin, uv.yMax));
-                    vertices.AddVert(new Vector3(x0 + glyph.w, y1), color, new Vector2(uv.xMax, uv.yMax));
-                    vertices.AddVert(new Vector3(x0 + glyph.w, y1 - glyph.h), color, new Vector2(uv.xMax, uv.yMin));
+                    vertices.AddVert(new Vector3(x0 + glyph.w * scale, y1), color, new Vector2(uv.xMax, uv.yMax));
+                    vertices.AddVert(new Vector3(x0 + glyph.w * scale, y1 - glyph.h * scale), color, new Vector2(uv.xMax, uv.yMin));
                     vertices.AddTriangle(first, first + 1, first + 2); vertices.AddTriangle(first, first + 2, first + 3);
                 }
-                x += TerminalTextMetrics.Cell(character, size);
+                x += TerminalTextMetrics.Cell(character, size) * scale;
             }
         }
 

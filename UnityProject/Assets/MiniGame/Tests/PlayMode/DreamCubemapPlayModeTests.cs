@@ -20,6 +20,16 @@ namespace MiniGame.UnityHost.Tests
         private DreamCubemapRenderer isolated;
         private RoomDreamEnding room;
         private MiniGameBootstrap host;
+        private bool previousSkipStartup;
+
+        [UnitySetUp]
+        public IEnumerator PrepareDirectPlay()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+            if (MainMenuController.Current != null) Object.Destroy(MainMenuController.Current.gameObject);
+            yield return null;
+        }
 
         [UnityTearDown]
         public IEnumerator Cleanup()
@@ -34,6 +44,8 @@ namespace MiniGame.UnityHost.Tests
                 host.Effects?.PrepareForRuntimeChange();
             }
             MiniGameSessionHost.Release();
+            if (MainMenuController.Current != null) Object.Destroy(MainMenuController.Current.gameObject);
+            MainMenuController.SkipStartup = previousSkipStartup;
             foreach (var value in owned) if (value != null) Object.Destroy(value);
             owned.Clear();
             foreach (var file in saveFiles) if (File.Exists(file)) File.Delete(file);
@@ -354,7 +366,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator RoomExplorationPauseCheckpointDriftAndCleanupPreserveOriginalRoom()
+        public IEnumerator PreviewRoomExplorationPauseCheckpointDriftAndCleanupPreserveOriginalRoom()
         {
             MiniGameSessionHost.Release();
             yield return null;
@@ -384,7 +396,7 @@ namespace MiniGame.UnityHost.Tests
             var originalSkybox = camera.GetComponent<Skybox>();
             var originalMaterial = originalSkybox != null ? originalSkybox.material : null;
             bool originalSkyEnabled = originalSkybox != null && originalSkybox.enabled;
-            room = RoomDreamEnding.Begin(host, MiniGameSessionHost.Current);
+            room = RoomDreamEnding.Begin(host, MiniGameSessionHost.Current, isPreview: true);
             yield return Until(() => room != null && room.Ready, 10);
             var ending = room.Ending;
             ending.UseExternalClock = true;
@@ -402,6 +414,11 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(camera.clearFlags, Is.EqualTo(CameraClearFlags.SolidColor));
             Assert.That(room.MappedRoomBounds.Contains(camera.transform.position), Is.True);
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.Walking));
+            var solidBed = ending.Bed.GetComponentsInChildren<BoxCollider>()
+                .Single(value => value.name == "Dream bed solid collider");
+            Assert.That(solidBed.enabled, Is.True);
+            Assert.That(solidBed.isTrigger, Is.False);
+            Assert.That(solidBed.bounds.size.sqrMagnitude, Is.GreaterThan(.1f));
             Assert.That(renderers.Where(value => value.enabled).All(value => value.transform.IsChildOf(ending.Bed)), Is.True,
                 "Among original scene renderers, only the physical bed remains visible.");
             Assert.That(colliders.Where((value, index) => colliderStates[index] && value.enabled && !(value is CharacterController)).Any(), Is.True,
@@ -529,7 +546,7 @@ namespace MiniGame.UnityHost.Tests
             else Assert.That(camera.GetComponent<Skybox>(), Is.Null);
             Assert.That(Resources.FindObjectsOfTypeAll<DreamCubemapSource>()
                 .Where(value => value.gameObject.activeInHierarchy), Is.Empty);
-            room = RoomDreamEnding.Begin(host, MiniGameSessionHost.Current);
+            room = RoomDreamEnding.Begin(host, MiniGameSessionHost.Current, isPreview: true);
             yield return Until(() => room != null && room.Ready, 10);
             Assert.That(room.Cubemap.CapturedFrames, Is.EqualTo(1), "Reentry creates exactly one new static capture.");
             Assert.That(room.Cubemap.Texture, Is.Not.SameAs(frozenCube));
@@ -548,7 +565,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator CrossSceneLyingAndDriftingLoadsKeepTheAuthoredDoorwayProjectionEye()
+        public IEnumerator CrossSceneExplorationLoadsKeepTheAuthoredDoorwayProjectionEye()
         {
             MiniGameSessionHost.Release();
             yield return null;
@@ -559,11 +576,8 @@ namespace MiniGame.UnityHost.Tests
             var profile = Own(Object.Instantiate(host.DreamProfile));
             profile.AnimateRoomWater = false; // Dynamic water has separate clock and shader coverage.
             profile.CubemapFaceSize = 256;
-            profile.LieDownSeconds = 1;
             Assert.That(profile.RoomPanoramaSkybox, Is.Not.Null, "The shipped static room panorama must be configured.");
             var rebellion = Own(Object.Instantiate(Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion")));
-            rebellion.InitialValue = rebellion.Maximum = rebellion.Threshold = 100;
-            rebellion.Choices.Clear();
             host.ConfigureDreams(profile, rebellion);
             host.StartCampaign();
             var session = MiniGameSessionHost.Current;
@@ -572,29 +586,31 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Player.StandingEyeLocalPosition, Is.EqualTo(new Vector3(0, 1.56f, 0)));
             var authoredEye = doorway.position + host.Player.StandingEyeLocalPosition;
             var fixture = new GameRuntime(session.Rules, session.Content, true);
-            DriveToSelfReview(fixture);
+            EndingCampaignScenario.DriveToSelfReview(fixture);
             host.RestoreCheckpoint(fixture.Save());
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
             yield return Until(() => host.Runtime.GetView().Cue == null && !host.Effects.IsTransitioning
-                && host.Runtime.GetView().TerminalPage == TerminalPage.SelfReview, 15);
+                && host.Runtime.GetView().TerminalPage == TerminalPage.Directory, 15);
+            Assert.That(host.Runtime.EnterSelectedPatient(GameRuntime.SelfPatientId).Accepted, Is.True);
+            yield return Until(() => host.Runtime.GetView().Cue == null, 15);
+            EndingCampaignScenario.DriveSelfReview(host.Runtime);
             Assert.That(host.Runtime.ConfirmSelfPurification().Accepted, Is.True);
-            yield return Until(() => (room = Object.FindObjectOfType<RoomDreamEnding>()) != null && room.Ready && !session.IsTransitioning, 20);
+            yield return Until(() => (room = Object.FindObjectOfType<RoomDreamEnding>()) != null && room.Ready
+                && session.Runtime.EndingStage == EndingStage.Space && !session.IsTransitioning, 20);
             Assert.That(session.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.DreamSea));
             Assert.That(Vector3.Distance(room.PanoramaOrigin, authoredEye), Is.LessThan(.01f));
             var ending = room.Ending;
             ending.UseExternalClock = true;
-            ApproachBed(room);
-            Assert.That(ending.TryLieDown(), Is.True);
+            var doorwayCheckpoint = ending.CaptureCheckpoint();
+            var doorwayFile = SaveTemporaryEnding(session);
+            room.AdvanceExploration(new Vector2(.5f, .5f), new Vector2(10, 3), .25f);
             ending.AdvanceForTests(0, .4f);
-            var lying = ending.CaptureCheckpoint();
-            Assert.That(lying.Phase, Is.EqualTo(BeachEndingPhase.Lying));
-            var lyingFile = SaveTemporaryEnding(session);
-            ending.AdvanceForTests(0, profile.LieDownSeconds + profile.SubtitleDelay + .5f);
-            var drifting = ending.CaptureCheckpoint();
-            Assert.That(drifting.Phase, Is.EqualTo(BeachEndingPhase.Drifting));
-            var driftingFile = SaveTemporaryEnding(session);
-            var paths = new[] { lyingFile, driftingFile };
-            var checkpoints = new[] { lying, drifting };
+            var walkingCheckpoint = ending.CaptureCheckpoint();
+            Assert.That(walkingCheckpoint.Phase, Is.EqualTo(BeachEndingPhase.Walking));
+            Assert.That(Vector3.Distance(walkingCheckpoint.RoomPosition, doorwayCheckpoint.RoomPosition), Is.GreaterThan(.02f));
+            var walkingFile = SaveTemporaryEnding(session);
+            var paths = new[] { doorwayFile, walkingFile };
+            var checkpoints = new[] { doorwayCheckpoint, walkingCheckpoint };
             for (int index = 0; index < paths.Length; index++)
             {
                 // A blank scene has no bootstrap that could install a different campaign.
@@ -621,8 +637,11 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(restored.WorldTime, Is.EqualTo(checkpoints[index].WorldTime).Within(.0001f));
                 Assert.That(restored.SubtitleIndex, Is.EqualTo(checkpoints[index].SubtitleIndex));
                 Assert.That(restored.SubtitleElapsed, Is.EqualTo(checkpoints[index].SubtitleElapsed).Within(.0001f));
+                Assert.That(Vector3.Distance(restored.RoomPosition, checkpoints[index].RoomPosition), Is.LessThan(.005f));
+                Assert.That(restored.RoomYaw, Is.EqualTo(checkpoints[index].RoomYaw).Within(.001f));
+                Assert.That(restored.RoomPitch, Is.EqualTo(checkpoints[index].RoomPitch).Within(.001f));
                 Assert.That(Vector3.Distance(room.PanoramaOrigin, authoredEye), Is.LessThan(.01f),
-                    "Loading a pillow camera pose must not redefine the doorway's authored standing eye.");
+                    "Loading a walking pose must not redefine the doorway's authored standing eye.");
                 Assert.That(Vector3.Distance(room.Cubemap.CaptureCamera.transform.position, authoredEye), Is.LessThan(.01f));
                 Assert.That(Vector3.Distance((Vector3)room.RoomSurface.Material.GetVector("_ProjectionOrigin"), authoredEye), Is.LessThan(.01f));
                 Assert.That(room.Cubemap.CapturedFrames, Is.EqualTo(1));
@@ -637,35 +656,6 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(session.LastMessage, Does.Contain("已保存"));
             Assert.That(File.Exists(path), Is.True);
             return path;
-        }
-
-        private static void DriveToSelfReview(GameRuntime runtime)
-        {
-            for (int step = 0; step < 2000; step++)
-            {
-                var view = runtime.GetView();
-                if (view.Game.Phase == GamePhase.SelfReview) return;
-                RuntimeResult result;
-                if (view.Cue != null) result = runtime.CompleteCue(view.Cue.Token);
-                else if (view.TerminalPage == TerminalPage.Archive) result = runtime.LeaveTerminal();
-                else if (view.TerminalPage == TerminalPage.Directory)
-                    result = runtime.EnterSelectedPatient(view.Patients.First(patient => patient.CanReceiveToday).Id);
-                else if (view.Input == InputContext.Dialogue)
-                    result = view.Game.EncounterStage == EncounterStage.AwaitingDisposition
-                        ? runtime.SubmitDisposition(view.Game.CurrentEncounterId,
-                            view.Game.RemainingPurificationQuota > 0 && view.Game.AvailableDispositions.Contains(Disposition.Purify)
-                                ? Disposition.Purify : view.Game.AvailableDispositions.Contains(Disposition.Treat)
-                                    ? Disposition.Treat : view.Game.AvailableDispositions.First())
-                        : runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, view.Game.AvailableResponseIds.First());
-                else if (view.Game.Phase == GamePhase.Evening) result = runtime.BeginNightDream();
-                else if (view.Game.Phase == GamePhase.AfterDream) result = runtime.TryInteract(InteractionTarget.Bed);
-                else if (view.Game.Phase == GamePhase.MorningInspection) result = runtime.TryInteract(InteractionTarget.Door);
-                else if (view.Game.Phase == GamePhase.Apartment || view.Game.Phase == GamePhase.Work)
-                    result = runtime.TryInteract(InteractionTarget.Computer);
-                else { Assert.Fail("No accepted campaign route from " + view.Game.Phase); return; }
-                Assert.That(result.Accepted, Is.True, "Campaign fixture rejected command at step " + step);
-            }
-            Assert.Fail("Campaign fixture exceeded its 2000-command bound.");
         }
 
         private static void AssertPhysicalBedParallax(RoomDreamEnding value)

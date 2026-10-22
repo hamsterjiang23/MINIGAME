@@ -41,6 +41,8 @@ function collectSources() {
   const runtime = path.join(repo, 'UnityProject/Assets/MiniGame/Runtime');
   const demoPath = path.join(sourceRoot, 'Dialogue_Reference.json');
   const sources = [{ file: campaignPath, kind: 'campaign', json: true },
+    { file: path.join(repo, 'UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Dialogue.json'), kind: 'ending-dialogue', json: true },
+    { file: path.join(repo, 'UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Dialogue.json'), kind: 'supervisor-dialogue', json: true },
     ...walk(runtime).filter(file => file.endsWith('.cs')).sort().map(file => ({ file, kind: 'runtime', json: false })),
     { file: demoPath, kind: 'terminal-demo', json: true }];
   // Other checked-in terminal JSON content is included without importing metrics themselves.

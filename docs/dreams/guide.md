@@ -1,5 +1,7 @@
 # 梦境、反叛值与海滩终局调参
 
+2026-10-23 正式结局改为[信任总和条件与自我审判流程](../endings/guide.md)：隐藏条件不再读取反叛值，空间盒床交互直接进入感谢页。下文的反叛阈值与漂流字幕参数仅属于旧配置／预览，不能用于验收正式结局。`[verified: 本轮用户接受的结局修订方案；../../src/MiniGame.Core/Runtime/GameSession.cs FinishDream；../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs TryLieDown]`
+
 ## 当前每日梦境：McQueen 图片序列
 
 当前三晚各按编号播放 **10 张原画，共 5 秒，每张 0.5 秒**。Day1 鲸尸海滩、Day2 倒悬花海、Day3 受缚待审都使用静止画面和直接切图；不加运动、叠化、折射、重影、CRT 撕裂或色差，只有可调的轻微暗角，默认 `VignetteIntensity = 0.12`。原图自带的扫描线和红蓝细线属于素材本身，仍保留；运行时不添加这些效果。原始素材来源见[图片序列说明](image-sequence-notes.md)，当前播放规则以本文为准。`[verified: UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset L16-L78；UnityProject/Assets/MiniGame/Editor/DreamSettingsWindow.cs L168-L174；UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L79-L93；UnityProject/Assets/MiniGame/Resources/DreamProjectionAnimation.shader L134-L140]`

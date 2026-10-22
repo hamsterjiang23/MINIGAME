@@ -15,6 +15,7 @@ namespace MiniGame.Core
         [JsonProperty(Required = Required.AllowNull)] public string? ResponseId { get; set; }
         [JsonProperty(Required = Required.AllowNull)] public Disposition? Disposition { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? PatientId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public int? ExpectedLineIndex { get; set; }
 
         internal static CommandRecord From(GameCommand command)
         {
@@ -26,6 +27,8 @@ namespace MiniGame.Core
                 case CompleteDream _: return new CommandRecord { Kind = CommandKind.CompleteDream };
                 case BeginNightDream _: return new CommandRecord { Kind = CommandKind.BeginNightDream };
                 case ConfirmSelfPurification _: return new CommandRecord { Kind = CommandKind.ConfirmSelfPurification };
+                case AdvanceSelfReviewCommand c: return new CommandRecord
+                    { Kind = CommandKind.AdvanceSelfReview, ExpectedLineIndex = c.ExpectedLineIndex };
                 case Interact c: return new CommandRecord { Kind = CommandKind.Interact, Target = c.Target };
                 case SelectPatient c: return new CommandRecord { Kind = CommandKind.SelectPatient, PatientId = c.PatientId };
                 case SelectResponse c: return new CommandRecord
@@ -53,6 +56,8 @@ namespace MiniGame.Core
                 case CommandKind.CompleteDream: command = new CompleteDream(); break;
                 case CommandKind.BeginNightDream: command = new BeginNightDream(); break;
                 case CommandKind.ConfirmSelfPurification: command = new ConfirmSelfPurification(); break;
+                case CommandKind.AdvanceSelfReview when ExpectedLineIndex.HasValue:
+                    command = new AdvanceSelfReviewCommand(ExpectedLineIndex.Value); break;
                 case CommandKind.Interact when Target.HasValue: command = new Interact(Target.Value); break;
                 case CommandKind.SelectPatient when PatientId != null: command = new SelectPatient(PatientId); break;
                 case CommandKind.SelectResponse when EncounterId != null && NodeId != null && ResponseId != null:

@@ -1,0 +1,84 @@
+{
+  "editMode": {
+    "total": 9,
+    "raw": "Artifacts/DayDebug/editmode-delivery.xml",
+    "passed": 9,
+    "result": "Passed",
+    "supportedCheckpoints": 30,
+    "failed": 0
+  },
+  "live": {
+    "cleanup": {
+      "playing": false,
+      "scope": null,
+      "menuOverride": null
+    },
+    "formalSavesUnchanged": true,
+    "raw": "Artifacts/DayDebug/live-verification.json",
+    "cases": [
+      {
+        "valid": true,
+        "day": 0,
+        "point": "Opening",
+        "menuBlocked": false,
+        "paused": false
+      },
+      {
+        "valid": true,
+        "day": 0,
+        "point": "Shutdown",
+        "menuBlocked": false,
+        "paused": true
+      },
+      {
+        "valid": true,
+        "day": 0,
+        "point": "Bedtime",
+        "menuBlocked": false,
+        "paused": true
+      },
+      {
+        "valid": true,
+        "day": 1,
+        "point": "Room",
+        "menuBlocked": false,
+        "paused": true
+      },
+      {
+        "valid": true,
+        "day": 2,
+        "point": "Terminal",
+        "menuBlocked": false,
+        "paused": true
+      },
+      {
+        "valid": true,
+        "day": 3,
+        "point": "Dream",
+        "menuBlocked": false,
+        "paused": true
+      },
+      {
+        "valid": true,
+        "day": 3,
+        "point": "Morning",
+        "menuBlocked": false,
+        "paused": true
+      },
+      {
+        "valid": true,
+        "day": 0,
+        "point": "Opening",
+        "menuBlocked": false,
+        "paused": false
+      }
+    ],
+    "passed": true,
+    "count": 8
+  },
+  "delivery": {
+    "playerBuildRun": false,
+    "editorOnly": true,
+    "gitPushRun": false
+  }
+}

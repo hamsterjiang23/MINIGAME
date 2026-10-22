@@ -10,13 +10,19 @@ namespace MiniGame.UnityHost
     public sealed class MiniGameAudioDirector : MonoBehaviour
     {
         [SerializeField] private MiniGameAudioProfile profile;
-        [SerializeField, Min(.2f), InspectorName("监督员敲门间隔（秒）")]
-        private float supervisorKnockInterval = .3f;
+        [SerializeField, Min(.08f), InspectorName("连续三声敲门的间隔（秒）")]
+        private float supervisorKnockInterval = .14f;
+        [SerializeField, Min(.3f), InspectorName("三声敲门后的停顿（秒）")]
+        private float supervisorKnockPause = 1.2f;
         public float SupervisorKnockInterval => float.IsNaN(supervisorKnockInterval) || float.IsInfinity(supervisorKnockInterval)
-            ? .3f : Mathf.Max(.2f, supervisorKnockInterval);
+            ? .14f : Mathf.Max(.08f, supervisorKnockInterval);
+        public float SupervisorKnockPause => float.IsNaN(supervisorKnockPause) || float.IsInfinity(supervisorKnockPause)
+            ? 1.2f : Mathf.Max(.3f, supervisorKnockPause);
         private bool waitingForSupervisor;
+        private int knockInBurst;
         private float knockDelay;
         private MiniGameAudioService service;
+        private MiniGameAudioService menuService;
         private GameRuntime runtime;
         private RuntimeView previous;
         private static readonly MiniGameSound[] LoopSounds = { MiniGameSound.StartMenu, MiniGameSound.Gameplay,
@@ -34,18 +40,20 @@ namespace MiniGame.UnityHost
 
         public void Bind(GameRuntime game)
         {
+            StopMenuMusic();
             UnsubscribeDoors();
             if (runtime != null) runtime.Changed -= Present;
             if (runtime != game) supervisorScanDays.Clear();
             runtime = game;
             waitingForSupervisor = false;
             knockDelay = 0;
-            menuMusic = game.GetView().Game.Day == 0 && game.GetView().TerminalBootRequired
-                && game.GetView().Cue?.Kind == PresentationKind.EnterTerminal;
+            knockInBurst = 0;
+            menuMusic = false;
             dreamPlayback = false;
             service = GetComponent<MiniGameAudioService>();
             if (profile == null) profile = Resources.Load<MiniGameAudioProfile>("MiniGame/AudioDefault");
             service.Configure(profile);
+            ConfigureKnockPosition();
             previous = game.GetView();
             transcriptKeys.Clear();
             foreach (var entry in previous.Transcript) transcriptKeys.Add(entry.Key);
@@ -59,6 +67,23 @@ namespace MiniGame.UnityHost
                     doors.Add(door);
                     door.MotionStarted += PlayDoorMotion;
                 }
+        }
+
+        private void ConfigureKnockPosition()
+        {
+            var source = service.GetSource(MiniGameAudioChannel.DoorKnock);
+            source.spatialBlend = 1;
+            source.rolloffMode = AudioRolloffMode.Linear;
+            source.minDistance = .8f;
+            source.maxDistance = 10;
+            foreach (var root in gameObject.scene.GetRootGameObjects())
+                foreach (var interaction in root.GetComponentsInChildren<WorldInteraction>(true))
+                    if (interaction.Target == InteractionTarget.Door)
+                    {
+                        var collider = interaction.GetComponent<Collider>();
+                        source.transform.position = collider != null ? collider.bounds.center : interaction.transform.position;
+                        return;
+                    }
         }
 
         private void PlayDoorMotion(HingedDoor door, bool opening)
@@ -112,14 +137,16 @@ namespace MiniGame.UnityHost
             knockDelay -= Time.unscaledDeltaTime;
             if (knockDelay > 0) return;
             service.PlayOneShot(MiniGameAudioChannel.DoorKnock, MiniGameSound.DoorKnock);
-            knockDelay = SupervisorKnockInterval;
+            knockInBurst++;
+            knockDelay = knockInBurst == 3 ? SupervisorKnockPause : SupervisorKnockInterval;
+            if (knockInBurst == 3) knockInBurst = 0;
         }
 
         private void SynchronizeSupervisorKnocking(RuntimeView view)
         {
             bool waiting = !menuMusic && view.Game.Phase == GamePhase.MorningInspection
                 && !view.RoomDoorOpen && view.Cue == null;
-            if (waiting != waitingForSupervisor) knockDelay = 0;
+            if (waiting != waitingForSupervisor) { knockDelay = 0; knockInBurst = 0; }
             waitingForSupervisor = waiting;
             if (!waiting) service.Stop(MiniGameAudioChannel.DoorKnock);
             else if (view.Paused) service.Pause(MiniGameAudioChannel.DoorKnock);
@@ -133,8 +160,8 @@ namespace MiniGame.UnityHost
             {
                 if (mappedClips[i] == profile.GetClip(LoopSounds[i])) continue;
                 RememberClips();
-                if (menuMusic) service.SetLoop(MiniGameAudioChannel.MenuMusic, MiniGameSound.StartMenu, profile.FadeSeconds);
-                else SynchronizeLoops(runtime.GetView());
+                if (menuMusic && menuService != null) menuService.SetLoop(MiniGameAudioChannel.MenuMusic, MiniGameSound.StartMenu, profile.FadeSeconds);
+                SynchronizeLoops(runtime.GetView());
                 break;
             }
         }
@@ -160,14 +187,17 @@ namespace MiniGame.UnityHost
             {
                 service.Pause(MiniGameAudioChannel.TerminalPower);
                 service.Pause(MiniGameAudioChannel.Door);
-                service.Stop(MiniGameAudioChannel.TerminalTyping);
+                service.Pause(MiniGameAudioChannel.TerminalTyping);
                 service.Pause(MiniGameAudioChannel.LogoGlitch);
+                service.Pause(MiniGameAudioChannel.Scanner);
             }
             else
             {
                 service.Resume(MiniGameAudioChannel.TerminalPower);
                 service.Resume(MiniGameAudioChannel.Door);
                 service.Resume(MiniGameAudioChannel.LogoGlitch);
+                service.Resume(MiniGameAudioChannel.Scanner);
+                service.Resume(MiniGameAudioChannel.TerminalTyping);
             }
             bool reviewing = view.TerminalOpen && view.TerminalPage == TerminalPage.Review;
             if (before != null && !view.Paused)
@@ -192,13 +222,13 @@ namespace MiniGame.UnityHost
             bool ending = view.Game.Phase == GamePhase.Ending;
             bool projecting = dream && (!runtime.UsesDreamFlow || dreamPlayback);
             float fade = profile.FadeSeconds;
-            service.SetLoop(MiniGameAudioChannel.MenuMusic, menuMusic ? MiniGameSound.StartMenu : (MiniGameSound?)null, fade);
-            service.SetLoop(MiniGameAudioChannel.GameplayMusic, menuMusic || dream || ending ? (MiniGameSound?)null : MiniGameSound.Gameplay, fade);
+            service.Stop(MiniGameAudioChannel.MenuMusic);
+            service.SetLoop(MiniGameAudioChannel.GameplayMusic, dream || ending ? (MiniGameSound?)null : MiniGameSound.Gameplay, fade);
             MiniGameSound? music = !projecting ? null : runtime.UsesDreamFlow
                 ? dreamProfile != null ? dreamProfile.GetDay(dreamDay)?.Music : DreamSound(dreamDay - 1)
                 : DreamSound(view.Game.Day);
             service.SetLoop(MiniGameAudioChannel.DreamMusic, music, fade);
-            service.SetLoop(MiniGameAudioChannel.ComputerNoise, view.TerminalPowered && !menuMusic && !dream && !ending ? MiniGameSound.PCNoise : (MiniGameSound?)null, fade);
+            service.SetLoop(MiniGameAudioChannel.ComputerNoise, view.TerminalPowered && !dream && !ending ? MiniGameSound.PCNoise : (MiniGameSound?)null, fade);
             if (projecting)
                 service.SetLoopWithIntro(MiniGameAudioChannel.Projector, MiniGameSound.ProjectorOpen, MiniGameSound.Projector, fade);
             else service.Stop(MiniGameAudioChannel.Projector, fade);
@@ -216,17 +246,34 @@ namespace MiniGame.UnityHost
             }
         }
 
-        // The Day0 NORM opening owns this override until its first click.
+        // A menu uses its own sources so returning to the room retains all playheads.
         public void PlayMenuMusic()
         {
             if (!isActiveAndEnabled || service == null || profile == null) return;
+            if (menuService == null)
+            {
+                var child = new GameObject("Menu Audio");
+                child.transform.SetParent(transform, false);
+                menuService = child.AddComponent<MiniGameAudioService>();
+                menuService.Configure(profile);
+            }
+            else if (menuService.Profile != profile) menuService.Configure(profile);
+            service.SetMenuSuspended(true);
             menuMusic = true;
-            SynchronizeLoops(runtime.GetView());
+            menuService.SetLoop(MiniGameAudioChannel.MenuMusic, MiniGameSound.StartMenu, profile.FadeSeconds);
+        }
+
+        public void StopMenuMusic()
+        {
+            if (!menuMusic) return;
+            menuMusic = false;
+            if (menuService != null) menuService.StopAll();
+            if (service != null) service.SetMenuSuspended(false);
         }
 
         public void EndMenuMusic()
         {
-            menuMusic = false;
+            StopMenuMusic();
             if (isActiveAndEnabled && service != null && runtime != null) SynchronizeLoops(runtime.GetView());
         }
 
@@ -265,7 +312,8 @@ namespace MiniGame.UnityHost
 
         public void PlayUIInteraction()
         {
-            if (isActiveAndEnabled) service?.PlayOneShot(MiniGameAudioChannel.UI, MiniGameSound.UIInteraction);
+            if (isActiveAndEnabled)
+                (menuMusic ? menuService : service)?.PlayOneShot(MiniGameAudioChannel.UI, MiniGameSound.UIInteraction);
         }
 
         public void PlayDialoguePop()
@@ -300,7 +348,13 @@ namespace MiniGame.UnityHost
         {
             UnsubscribeDoors();
             if (runtime != null) runtime.Changed -= Present;
-            if (service != null) service.StopAll();
+            if (service != null)
+            {
+                service.StopAll();
+                service.SetMenuSuspended(false);
+            }
+            if (menuService != null) menuService.StopAll();
+            menuMusic = false;
         }
 
         private void OnEnable()

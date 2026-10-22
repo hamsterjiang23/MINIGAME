@@ -45,10 +45,10 @@ namespace MiniGame.UnityHost
             clearanceDoor = doorway.Door;
             if (clearanceDoor != null) clearanceDoor.MotionClearance = HasDoorClearance;
             SetPortrait("JD_01");
-            if (game.IsCampaign && game.GetView().Game.Ending == EndingType.TakenAway)
+            if (game.IsCampaign && game.GetView().Game.Phase == GamePhase.Ending)
             {
-                SetPortrait("JD_06");
-                ShowEndingAtDoorway(player.ViewCamera);
+                SetPortrait(game.GetView().Game.Ending == EndingType.PriestAttack ? "PE01" : "JD_06");
+                if (!game.UsesEndingFlow) ShowEndingAtDoorway(player.ViewCamera);
             }
 
             // A permanent world actor: the closed door occludes him naturally, rather than
@@ -84,6 +84,9 @@ namespace MiniGame.UnityHost
         private void LateUpdate()
         {
             if (runtime == null || surface == null || doorway == null || runtime.GetView().Paused) return;
+            var view = runtime.GetView();
+            if (runtime.UsesEndingFlow && view.EndingStage == EndingStage.AwaitingDoor)
+                SetPortrait(view.Game.Ending == EndingType.PriestAttack ? "PE01" : "JD_06");
             float target = ShouldAvoidDoor() ? Mathf.Max(0, doorAvoidanceDistance) : 0;
             if (!Mathf.Approximately(slideTo, target))
             { slideFrom = avoidance; slideTo = target; slideElapsed = 0; }
@@ -119,6 +122,7 @@ namespace MiniGame.UnityHost
         {
             if (string.IsNullOrEmpty(id)) return null;
             if (sprites.TryGetValue(id, out var found)) return found;
+            if (id == "PE01" || id == "PE02") return Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog")?.Find(id);
             string resource = SupervisorDialogueContent.PortraitResource(id);
             if (resource == null) return null;
             var texture = Resources.Load<Texture2D>(resource);
@@ -132,9 +136,11 @@ namespace MiniGame.UnityHost
 
         public bool SetPortrait(string id)
         {
+            if (id != null && id.Length == 4 && id.StartsWith("JD", System.StringComparison.Ordinal)) id = "JD_" + id.Substring(2);
             var portrait = GetPortrait(id);
             if (surface == null || portrait == null) return false;
             surface.sprite = portrait;
+            if (id == "PE01" || id == "PE02") surface.transform.localScale = Vector3.one * (1.8f / portrait.bounds.size.y);
             CurrentPortraitId = id;
             return true;
         }

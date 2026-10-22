@@ -15,6 +15,75 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class BedtimeGuidancePlayModeTests
     {
+        private bool previousSkipStartup;
+        [SetUp]
+        public void StartDirectlyForPresentationTests()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+        }
+        [TearDown]
+        public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
+
+        [UnityTest, Timeout(30000)]
+        public IEnumerator SleepMovesOntoTheBedBeforeLookingUpAndWakeReturnsWithoutPopupsOrCheckpointJumps()
+        {
+            yield return SceneManager.LoadSceneAsync("MainRoomCombined");
+            yield return null;
+            var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.Player.enabled = false;
+            var evening = TutorialSignalLoss(host.Runtime.UsesDreamFlow);
+            for (int step = 0; evening.GetView().Cue != null && step < 4; step++)
+                Assert.That(evening.CompleteCue(evening.GetView().Cue.Token).Accepted, Is.True);
+            host.RestoreCheckpoint(evening.Save());
+            yield return StageAt(host, InteractionTarget.Bed);
+            var camera = host.Player.ViewCamera;
+            var standing = camera.transform.rotation;
+            var standingPosition = camera.transform.position;
+            Assert.That(host.Player.InteractFocused(), Is.True);
+            yield return new WaitForSecondsRealtime(.35f);
+            Assert.That(Vector3.Distance(camera.transform.position, standingPosition), Is.GreaterThan(.02f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, standing), Is.LessThan(.1f), "Move onto the bed before rotating upwards.");
+            Assert.That(host.Screen.GetComponentsInChildren<Transform>(true).Single(item => item.name == "Conversation").gameObject.activeInHierarchy, Is.False);
+            Assert.That(Vector3.Dot(camera.transform.forward, Vector3.up), Is.LessThan(.999f));
+            host.Runtime.SetPaused(true);
+            var pausedRotation = camera.transform.rotation;
+            var pausedPosition = camera.transform.position;
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(Quaternion.Angle(camera.transform.rotation, pausedRotation), Is.LessThan(.01f));
+            Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
+            var checkpoint = JsonUtility.FromJson<SleepTransitionCheckpoint>(JsonUtility.ToJson(host.Effects.CaptureSleepCheckpoint()));
+            Assert.That(checkpoint.HasPositionPose, Is.True);
+            Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True);
+            Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
+            checkpoint.HasPositionPose = false;
+            Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True, "Old checkpoints reuse the original captured standing pose.");
+            Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
+            host.Runtime.SetPaused(false);
+            yield return new WaitForSecondsRealtime(.6f);
+            Assert.That(Quaternion.Angle(camera.transform.rotation, standing), Is.GreaterThan(1));
+            yield return new WaitForSecondsRealtime(1.1f);
+            Assert.That(Vector3.Dot(camera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
+            yield return Until(host, () => host.Effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.BlackHold,
+                "sleep reaches full black before advancing the calendar");
+            float blackAt = Time.realtimeSinceStartup;
+            var black = host.Effects.CaptureSleepCheckpoint();
+            Assert.That(black.BlackHoldRemaining, Is.EqualTo(1.5f).Within(.1f));
+            Assert.That(host.Screen.GetComponentsInChildren<Transform>(true).Single(item => item.name == "Conversation").gameObject.activeInHierarchy, Is.False);
+            yield return new WaitForSecondsRealtime(.8f);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
+            Assert.That(host.Screen.GetComponentsInChildren<Image>(true).Single(item => item.name == "PresentationFade").color.a, Is.EqualTo(1));
+            yield return Until(host, () => host.Runtime.GetView().Game.Day == 1, "sleep advances once");
+            Assert.That(Time.realtimeSinceStartup - blackAt, Is.EqualTo(black.BlackHoldRemaining).Within(.12f));
+            Assert.That(host.Screen.TransitionLocked, Is.True);
+            Assert.That(Vector3.Dot(camera.transform.forward, Vector3.up), Is.GreaterThan(.99f));
+            yield return Until(host, () => !host.Effects.SleepCameraActive, "wake returns to standing");
+            Assert.That(Quaternion.Angle(camera.transform.rotation, standing), Is.LessThan(.05f));
+            Assert.That(Vector3.Distance(camera.transform.localPosition, host.Player.StandingEyeLocalPosition), Is.LessThan(.01f));
+            Assert.That(host.Screen.TransitionLocked, Is.False);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
+        }
+
         [UnityTest, Timeout(90000)]
         public IEnumerator TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom()
         {
@@ -77,7 +146,7 @@ namespace MiniGame.UnityHost.Tests
             bool dreamObserved = false;
             Action<RuntimeView> observe = view => dreamObserved |= view.Cue?.Kind == PresentationKind.Dream;
             host.Runtime.Changed += observe;
-            yield return new WaitForSecondsRealtime(1.3f);
+            yield return new WaitForSecondsRealtime(2.05f);
             Assert.That(Vector3.Dot(host.Player.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f),
                 "Sleeping must finish the visible look toward the ceiling before the day advances.");
             Assert.That(host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade").color.a,
@@ -170,7 +239,9 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(rebellion, Is.Not.Null);
                 rules = rules.WithDreamFlow(rebellion.InitialValue, rebellion.Maximum, rebellion.Threshold, rebellion.CreateDeltas());
             }
-            return new GameRuntime(rules, package.Content, useTerminalDirectory: true);
+            var runtime = new GameRuntime(rules, package.Content, useTerminalDirectory: true);
+            if (runtime.UsesEndingFlow) runtime.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
+            return runtime;
         }
 
         private static GameRuntime TutorialSignalLoss(bool dreamFlow)

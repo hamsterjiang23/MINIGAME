@@ -18,11 +18,7 @@ namespace MiniGame.UnityHost
         private RectTransform settings;
         private CanvasGroup columnInput;
         private Button manualReturn;
-        private Button settingsReturn;
-        private Text[] detailLabels;
         private GameObject settingsPreviousSelection;
-        private PixelDetail shownDetail;
-        private bool settingsRefreshed;
         private Text status;
         private PauseMenuBackdrop backdrop;
         private GameObject previousSelection, manualPreviousSelection;
@@ -34,7 +30,8 @@ namespace MiniGame.UnityHost
         public bool ManualVisible => visible && manual != null && manual.gameObject.activeSelf;
         public bool SettingsVisible => visible && settings != null && settings.gameObject.activeSelf;
         private bool SubmenuVisible => ManualVisible || SettingsVisible;
-        public Button[] PixelDetailButtons { get; private set; } = Array.Empty<Button>();
+        public PlayerSettingsView SharedSettings { get; private set; }
+        public Button[] PixelDetailButtons => SharedSettings != null ? SharedSettings.PixelDetailButtons : Array.Empty<Button>();
 
         public static PauseMenuView Create(Transform parent, Font font, string name,
             string[] labels, string[] shortcuts, Action[] actions)
@@ -46,6 +43,10 @@ namespace MiniGame.UnityHost
             var go = new GameObject(string.IsNullOrEmpty(name) ? "PauseMenu" : name,
                 typeof(RectTransform), typeof(CanvasGroup), typeof(PauseMenuView));
             go.transform.SetParent(parent, false);
+            var overlay = go.AddComponent<Canvas>();
+            overlay.overrideSorting = true;
+            overlay.sortingOrder = 950;
+            go.AddComponent<GraphicRaycaster>();
             var view = go.GetComponent<PauseMenuView>();
             view.Build(font, labels, shortcuts ?? Array.Empty<string>(), actions);
             return view;
@@ -75,7 +76,7 @@ namespace MiniGame.UnityHost
             columnHeight = 166 + labels.Length * 66;
             column.sizeDelta = new Vector2(600, columnHeight);
             columnInput = column.gameObject.AddComponent<CanvasGroup>();
-            var title = MakeText(column, font, "PauseTitle", 40, 0, 0, 600, 62);
+            var title = MakeText(column, font, "PauseTitle", GameUiTypography.ReferenceSize, 0, 0, 600, 62);
             title.text = "NORM  /  暂停";
             title.color = Bright;
             var state = MakeText(column, font, "PauseSessionState", 20, 0, 72, 600, 32);
@@ -144,7 +145,7 @@ namespace MiniGame.UnityHost
             MakeLine(manual, "ManualBottomBorder", 0, 809, 1100, 1, Ink);
             MakeLine(manual, "ManualLeftBorder", 0, 0, 1, 810, Ink);
             MakeLine(manual, "ManualRightBorder", 1099, 0, 1, 810, Ink);
-            var title = MakeText(manual, font, "ManualTitle", 34, 38, 28, 1024, 56);
+            var title = MakeText(manual, font, "ManualTitle", GameUiTypography.ReferenceSize, 38, 28, 1024, 56);
             title.text = "NORM  /  操作手册";
             title.color = Bright;
             MakeLine(manual, "ManualTitleRule", 38, 106, 1024, 1, Edge);
@@ -179,7 +180,7 @@ namespace MiniGame.UnityHost
             TopRect(mark, 12, 23, 3, 18);
             var marker = mark.gameObject.AddComponent<Image>();
             marker.color = Color.clear; marker.raycastTarget = false;
-            var label = MakeText(row, font, "Label", 26, 34, 0, 290, 64);
+            var label = MakeText(row, font, "Label", GameUiTypography.ReferenceSize, 34, 0, 290, 64);
             label.alignment = TextAnchor.MiddleLeft;
             label.text = "返回暂停菜单";
             var key = MakeText(row, font, "Shortcut", 19, 340, 0, 130, 64);
@@ -223,63 +224,11 @@ namespace MiniGame.UnityHost
 
         private void BuildSettings(Font font)
         {
-            settings = NewRect(root, "PauseGameSettings");
+            SharedSettings = PlayerSettingsView.Create(root, font, () => TryCloseSettings());
+            settings = (RectTransform)SharedSettings.transform;
+            settings.name = "PauseGameSettings";
             settings.anchorMin = settings.anchorMax = new Vector2(.085f, .52f);
-            settings.pivot = new Vector2(0, .5f); settings.sizeDelta = new Vector2(740, 600);
-            var panel = settings.gameObject.AddComponent<Image>();
-            panel.color = new Color(Desk.r, Desk.g, Desk.b, .96f);
-            MakeLine(settings, "TopBorder", 0, 0, 740, 1, Ink);
-            MakeLine(settings, "BottomBorder", 0, 599, 740, 1, Ink);
-            var title = MakeText(settings, font, "SettingsTitle", 34, 38, 28, 664, 56);
-            title.text = "NORM  /  游戏设置"; title.color = Bright;
-            MakeLine(settings, "TitleRule", 38, 106, 664, 1, Edge);
-            MakeText(settings, font, "PixelDetailHeading", 28, 38, 128, 664, 42).text = "像素风强度";
-            MakeText(settings, font, "PixelDetailDescription", 21, 38, 176, 664, 34).text = "选择场景中的像素颗粒大小";
-            var details = new[] { PixelDetail.High, PixelDetail.Medium, PixelDetail.Low };
-            var labels = new[] { "高", "中", "低" };
-            var descriptions = new[] { "粗颗粒", "中等颗粒", "细颗粒" };
-            PixelDetailButtons = new Button[3]; detailLabels = new Text[3];
-            for (int i = 0; i < 3; i++)
-            {
-                PixelDetail detail = details[i];
-                int index = i;
-                PixelDetailButtons[i] = SettingsButton(font, "PixelDetail" + detail, 220 + i * 72, labels[i], descriptions[i], () =>
-                {
-                    if (!SettingsVisible) return;
-                    PlayerGraphicsSettings.SetDetail(detail); RefreshSettings();
-                    EventSystem.current?.SetSelectedGameObject(PixelDetailButtons[index].gameObject);
-                }, out detailLabels[i]);
-            }
-            MakeText(settings, font, "SettingsSaveHint", 21, 38, 448, 664, 34).text = "即时生效，自动保存";
-            settingsReturn = SettingsButton(font, "SettingsReturn", 506, "返回暂停菜单", "ESC", () => TryCloseSettings(), out _);
-            settings.gameObject.SetActive(false);
-        }
-
-        private Button SettingsButton(Font font, string name, float y, string value, string hint, Action action, out Text label)
-        {
-            var row = NewRect(settings, name); TopRect(row, 38, y, 664, 56);
-            var hit = row.gameObject.AddComponent<Image>(); hit.color = Color.clear;
-            var button = row.gameObject.AddComponent<PauseMenuButton>(); button.targetGraphic = hit;
-            var frame = NewRect(row, "FocusFrame"); Stretch(frame);
-            var fill = frame.gameObject.AddComponent<Image>(); fill.color = Ink; fill.raycastTarget = false;
-            var focus = frame.gameObject.AddComponent<CanvasGroup>(); focus.alpha = 0; focus.blocksRaycasts = false;
-            var mark = NewRect(row, "SelectionMark"); TopRect(mark, 12, 19, 3, 18);
-            var marker = mark.gameObject.AddComponent<Image>(); marker.color = Color.clear; marker.raycastTarget = false;
-            label = MakeText(row, font, "Label", 27, 34, 0, 400, 56); label.text = value; label.alignment = TextAnchor.MiddleLeft;
-            var shortcut = MakeText(row, font, "Shortcut", 20, 454, 0, 180, 56); shortcut.text = hint; shortcut.alignment = TextAnchor.MiddleRight;
-            button.ConfigureVisuals(label, shortcut, focus, marker, Ink);
-            button.onClick.AddListener(() => action());
-            return button;
-        }
-
-        private void RefreshSettings()
-        {
-            var detail = PlayerGraphicsSettings.Detail;
-            if (settingsRefreshed && shownDetail == detail) return;
-            shownDetail = detail; settingsRefreshed = true;
-            var details = new[] { PixelDetail.High, PixelDetail.Medium, PixelDetail.Low };
-            var labels = new[] { "高", "中", "低" };
-            for (int i = 0; i < 3; i++) detailLabels[i].text = labels[i] + (details[i] == detail ? "  ·  已选择" : "");
+            settings.pivot = new Vector2(0, .5f);
         }
 
         public void ShowSettings()
@@ -287,21 +236,15 @@ namespace MiniGame.UnityHost
             if (!visible || SubmenuVisible) return;
             settingsPreviousSelection = EventSystem.current?.currentSelectedGameObject;
             columnInput.interactable = columnInput.blocksRaycasts = false;
-            column.gameObject.SetActive(false); settings.gameObject.SetActive(true);
+            column.gameObject.SetActive(false); SharedSettings.Show("返回暂停菜单");
             backdrop.SetLivePreview(true); group.alpha = 1;
-            RefreshSettings(); LayoutColumn();
-            var navigation = new[] { PixelDetailButtons[0], PixelDetailButtons[1], PixelDetailButtons[2], settingsReturn };
-            for (int i = 0; i < navigation.Length; i++) navigation[i].navigation = new Navigation {
-                mode = Navigation.Mode.Explicit, selectOnUp = navigation[(i + navigation.Length - 1) % navigation.Length],
-                selectOnDown = navigation[(i + 1) % navigation.Length] };
-            int selected = PlayerGraphicsSettings.Detail == PixelDetail.High ? 0 : PlayerGraphicsSettings.Detail == PixelDetail.Medium ? 1 : 2;
-            EventSystem.current?.SetSelectedGameObject(PixelDetailButtons[selected].gameObject);
+            LayoutColumn();
         }
 
         public bool TryCloseSettings()
         {
             if (!SettingsVisible) return false;
-            settings.gameObject.SetActive(false); column.gameObject.SetActive(true);
+            SharedSettings.Hide(); column.gameObject.SetActive(true);
             columnInput.interactable = columnInput.blocksRaycasts = true;
             backdrop.SetLivePreview(false); RefreshNavigation();
             var selectable = settingsPreviousSelection != null ? settingsPreviousSelection.GetComponent<Selectable>() : null;
@@ -354,7 +297,6 @@ namespace MiniGame.UnityHost
             if (group == null) return;
             if (!backdrop.Capturing)
                 group.alpha = Mathf.MoveTowards(group.alpha, visible ? 1 : 0, Time.unscaledDeltaTime / FadeSeconds);
-            if (SettingsVisible) RefreshSettings();
             if (visible && !SubmenuVisible) RefreshNavigation();
             else if (!visible && group.alpha <= 0) gameObject.SetActive(false);
         }
@@ -434,7 +376,7 @@ namespace MiniGame.UnityHost
 
         private void ResetSettings()
         {
-            if (settings != null) settings.gameObject.SetActive(false);
+            if (SharedSettings != null) SharedSettings.Hide();
             if (backdrop != null) backdrop.SetLivePreview(false, false);
             settingsPreviousSelection = null;
         }
@@ -459,8 +401,9 @@ namespace MiniGame.UnityHost
         {
             var rect = NewRect(parent, name);
             TopRect(rect, x, y, width, height);
-            var label = rect.gameObject.AddComponent<Text>();
-            label.font = font; label.fontSize = size; label.color = Ink;
+            var label = rect.gameObject.AddComponent<TerminalBitmapText>();
+            label.ScaleToFontSize = true; label.LinePitch = size * 1.3f;
+            label.font = font; label.fontStyle = FontStyle.Normal; label.fontSize = size; label.color = Ink;
             label.alignment = TextAnchor.UpperLeft; label.raycastTarget = false;
             label.horizontalOverflow = HorizontalWrapMode.Wrap;
             label.verticalOverflow = VerticalWrapMode.Truncate;

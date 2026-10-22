@@ -1,0 +1,415 @@
+{
+  "formatVersion": 1,
+  "contentVersion": "1.2.0-development",
+  "sources": [
+    {
+      "id": "battlefield-doctor",
+      "sha256": "1d4f79cf3666e208e92f543e3e2e25404f28eda3427091f2ddae8bf0ae419362"
+    },
+    {
+      "id": "child",
+      "sha256": "d68000b6cee20e1a7fc1a088f9743ee28a6568d09f1d26d3e2a8d3ed43a27226"
+    },
+    {
+      "id": "diplomat",
+      "sha256": "253735fb00a5c22e6ace8e1f582013a305ae89c0e64eb819224c2e910057cdb0"
+    },
+    {
+      "id": "former-ruler",
+      "sha256": "18c9a1845455ec2cc42ce6b9dfe1e17a656fb6657ec4300d509fb08da9bc48bb"
+    },
+    {
+      "id": "priest",
+      "sha256": "59fd8209d7cf839e4360323401a2f7edb6fef216fe1dce9bb1b80798c3868647"
+    },
+    {
+      "id": "priest-ending",
+      "sha256": "1ed431bc072942666b828679b717eab733cdd4bd1a11c64c8817d2e06afdd10e"
+    },
+    {
+      "id": "self-review",
+      "sha256": "ff782d70cd011511e84301e5bdfcdf123839ea3f0e7aae493c537d1cef14e2b1"
+    },
+    {
+      "id": "supervisor",
+      "sha256": "922deb323f2f25cdfa07bb446a221bcd890900813890abb6c8b56a90bcfe8630"
+    },
+    {
+      "id": "tutorial",
+      "sha256": "d416f5ca0056c93a7471a5671a7866ec5d197aec1408dbcc922ed2e323900fa5"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "priest-ending",
+      "node": "PriestEnding",
+      "speaker": "乔纳",
+      "lines": [
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_001",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_001",
+          "sourceRow": 2,
+          "sourceCell": "D2",
+          "text": "咚咚咚。",
+          "portraitId": "PE01",
+          "blackScreen": false,
+          "originalPortraitId": "ED_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_002"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_002",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_002",
+          "sourceRow": 3,
+          "sourceCell": "D3",
+          "text": "你果然也听到了。",
+          "portraitId": "PE01",
+          "blackScreen": false,
+          "originalPortraitId": "ED_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_003"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_003",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_003",
+          "sourceRow": 4,
+          "sourceCell": "D4",
+          "text": "门叩响的声音。",
+          "portraitId": "PE01",
+          "blackScreen": false,
+          "originalPortraitId": "ED_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_004"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_004",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_004",
+          "sourceRow": 5,
+          "sourceCell": "D5",
+          "text": "那你为什么要把我拒之门外……",
+          "portraitId": "PE01",
+          "blackScreen": false,
+          "originalPortraitId": "ED_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_005"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_005",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_005",
+          "sourceRow": 6,
+          "sourceCell": "D6",
+          "text": "我只想寻求净化，你为什么又要把我放回这污浊的世间？",
+          "portraitId": "PE01",
+          "blackScreen": false,
+          "originalPortraitId": "ED_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_006"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_006",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_006",
+          "sourceRow": 7,
+          "sourceCell": "D7",
+          "text": "一定是上帝……您还期盼我给更多人带来净化。",
+          "portraitId": "PE01",
+          "blackScreen": false,
+          "originalPortraitId": "ED_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_007"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_007",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_007",
+          "sourceRow": 8,
+          "sourceCell": "D8",
+          "text": "来吧孩子，我会帮你洗涤罪恶。",
+          "portraitId": "PE02",
+          "blackScreen": false,
+          "originalPortraitId": "ED_02",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_008"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_008",
+          "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_008",
+          "sourceRow": 9,
+          "sourceCell": "D9",
+          "text": "拥抱净化吧。",
+          "portraitId": "",
+          "blackScreen": true,
+          "originalPortraitId": "ED_03",
+          "originalNextId": ""
+        }
+      ],
+      "finalAction": ""
+    },
+    {
+      "id": "self-review",
+      "node": "SelfReview",
+      "speaker": "玩家自己",
+      "lines": [
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_001",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_001",
+          "sourceRow": 2,
+          "sourceCell": "D2",
+          "text": "我的名字是...我记不清了...",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_002"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_002",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_002",
+          "sourceRow": 3,
+          "sourceCell": "D3",
+          "text": "和你相处这么久了，好像也不重要了。",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_003"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_003",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_003",
+          "sourceRow": 4,
+          "sourceCell": "D4",
+          "text": "我的工作...我是一名公务员，我的工作是按下按键，决定他们的命运。",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_004"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_004",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_004",
+          "sourceRow": 5,
+          "sourceCell": "D5",
+          "text": "记得...当时拿到这份工作，我成为了全家人的荣耀。",
+          "portraitId": "SJ02",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_02",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_005"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_005",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_005",
+          "sourceRow": 6,
+          "sourceCell": "D6",
+          "text": "毕竟在这个社会里，能吃饱饭就是奢望了！",
+          "portraitId": "SJ02",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_02",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_006"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_006",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_006",
+          "sourceRow": 7,
+          "sourceCell": "D7",
+          "text": "你说是吧，哪还有所谓的...",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_007"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_007",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_007",
+          "sourceRow": 8,
+          "sourceCell": "D8",
+          "text": "自由是什么？自由是什么呢？",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_008"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_008",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_008",
+          "sourceRow": 9,
+          "sourceCell": "D9",
+          "text": "不知道，这好像是一个没有答案的问题。",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_009"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_009",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_009",
+          "sourceRow": 10,
+          "sourceCell": "D10",
+          "text": "那些人，会懂吗？",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_010"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_010",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_010",
+          "sourceRow": 11,
+          "sourceCell": "D11",
+          "text": "他们靠着自己的意志走出去了，外面的世界会欢迎他们吗？",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_011"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_011",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_011",
+          "sourceRow": 12,
+          "sourceCell": "D12",
+          "text": "呵呵...蛀虫已把这个社会蚕食殆尽，哪还会有新鲜的血肉？",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_012"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_012",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_012",
+          "sourceRow": 13,
+          "sourceCell": "D13",
+          "text": "......",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_013"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_013",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_013",
+          "sourceRow": 14,
+          "sourceCell": "D14",
+          "text": "说不定有呢？你说是吧！",
+          "portraitId": "SJ02",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_02",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_014"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_014",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_014",
+          "sourceRow": 15,
+          "sourceCell": "D15",
+          "text": "我想走了。",
+          "portraitId": "SJ01",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_01",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_015"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_015",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_015",
+          "sourceRow": 16,
+          "sourceCell": "D16",
+          "text": "妈妈告诉我，我们家曾经在海边的一个小村里。",
+          "portraitId": "SJ02",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_02",
+          "originalNextId": "CUSTOM001_D1_R1_COMMON_016"
+        },
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_016",
+          "sourceId": "self-review__CUSTOM001_D1_R1_COMMON_016",
+          "sourceRow": 17,
+          "sourceCell": "D17",
+          "text": "那里的天好蓝，水好清澈，我想回去看看了。",
+          "portraitId": "SJ02",
+          "blackScreen": false,
+          "originalPortraitId": "SJ_02",
+          "originalNextId": "CUSTOM001_D1_R1_PLAYER_ACTION_001"
+        }
+      ],
+      "finalAction": "purify",
+      "finalActionSourceId": "self-review__CUSTOM001_D1_R1_PLAYER_ACTION_001",
+      "finalActionSourceRow": 18,
+      "finalActionSourceCell": "G18",
+      "finalActionText": "净化",
+      "finalActionPortraitId": "SJ02"
+    },
+    {
+      "id": "supervisor-ending",
+      "node": "SupervisorEnding",
+      "speaker": "监督员",
+      "lines": [
+        {
+          "id": "P02_D4_R1_COMMON_001",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_001",
+          "sourceRow": 41,
+          "sourceCell": "D41",
+          "text": "惊——喜。",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": "P02_D4_R1_COMMON_002"
+        },
+        {
+          "id": "P02_D4_R1_COMMON_002",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_002",
+          "sourceRow": 42,
+          "sourceCell": "D42",
+          "text": "做过什么你自己清楚。",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": "P02_D4_R1_COMMON_003"
+        },
+        {
+          "id": "P02_D4_R1_COMMON_003",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_003",
+          "sourceRow": 43,
+          "sourceCell": "D43",
+          "text": "看来你要跟我走一趟了。",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": "P02_D4_R1_COMMON_004"
+        },
+        {
+          "id": "P02_D4_R1_COMMON_004",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_004",
+          "sourceRow": 44,
+          "sourceCell": "D44",
+          "text": "进去之后，记得好好表现。",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": "P02_D4_R1_COMMON_005"
+        },
+        {
+          "id": "P02_D4_R1_COMMON_005",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_005",
+          "sourceRow": 45,
+          "sourceCell": "D45",
+          "text": "也许就不会那么早迎来净化。",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": "P02_D4_R1_COMMON_006"
+        },
+        {
+          "id": "P02_D4_R1_COMMON_006",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_006",
+          "sourceRow": 46,
+          "sourceCell": "D46",
+          "text": "我们之间也能多玩一会，不是吗？",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": "P02_D4_R1_COMMON_007"
+        },
+        {
+          "id": "P02_D4_R1_COMMON_007",
+          "sourceId": "supervisor-ending__P02_D4_R1_COMMON_007",
+          "sourceRow": 47,
+          "sourceCell": "D47",
+          "text": "走吧。",
+          "portraitId": "JD06",
+          "blackScreen": false,
+          "originalPortraitId": "JD_06",
+          "originalNextId": ""
+        }
+      ],
+      "finalAction": ""
+    }
+  ],
+  "revision": "534c45b91e545093e8bfa85004fc27491e049bb9f37ade9aa5d255da1eb1dfd7"
+}

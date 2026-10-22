@@ -45,6 +45,7 @@ namespace MiniGame.Core
                 case CompleteDream _: reason = FinishDream(events); break;
                 case BeginNightDream _: reason = StartNightDream(events); break;
                 case ConfirmSelfPurification _: reason = SelfPurify(events); break;
+                case AdvanceSelfReviewCommand c: reason = AdvanceSelfReview(c, events); break;
                 case Interact c: reason = InteractWith(c, events); break;
                 case SelectPatient c: reason = SelectPatientForToday(c, events); break;
                 case SelectResponse c: reason = Select(c, events); break;
@@ -79,7 +80,8 @@ namespace MiniGame.Core
                 encounter?.PatientId, encounter == null ? null : _rules.Patient(encounter.PatientId).DisplayName,
                 encounter?.Id, encounter == null ? null : CurrentNode(encounter), encounter?.Stage,
                 responses, dispositions, AllowedInteractions(), _state.Rebellion,
-                record?.Purifications ?? 0, record?.PurificationQuota ?? 0);
+                record?.Purifications ?? 0, record?.PurificationQuota ?? 0,
+                _state.SelfReviewLineIndex, _rules.DreamFlowEnabled ? _rules.SelfReviewLineCount : 0);
         }
 
         public GameSnapshot CreateSnapshot() => SnapshotCodec.Copy(new GameSnapshot
@@ -182,38 +184,48 @@ namespace MiniGame.Core
         {
             if (_state.Phase != GamePhase.Dream) return RejectionReason.WrongPhase;
             bool selfReview = _rules.DreamFlowEnabled && _state.Day == 3
-                && NextDawnEnding(true) == EndingType.DreamSea;
+                && HasHiddenEndingTrust();
+            if (selfReview) _state.SelfReviewLineIndex = 0;
             SetPhase(selfReview ? GamePhase.SelfReview : GamePhase.AfterDream, events);
+            return RejectionReason.None;
+        }
+
+        private bool HasHiddenEndingTrust()
+        {
+            var active = _state.Patients.Where(patient => patient.Presence == PatientPresence.Active
+                && _rules.Patient(patient.Id).FirstDay > 0 && _rules.Patient(patient.Id).FirstDay <= _state.Day).ToList();
+            return active.Count > 0 && active.Sum(patient => (long)patient.Trust) >= _rules.ActivePatientTrustThreshold;
+        }
+
+        private RejectionReason AdvanceSelfReview(AdvanceSelfReviewCommand command, List<GameEvent> events)
+        {
+            if (!_rules.DreamFlowEnabled || _state.Phase != GamePhase.SelfReview) return RejectionReason.WrongPhase;
+            if (_state.SelfReviewLineIndex >= _rules.SelfReviewLineCount) return RejectionReason.WrongStage;
+            if (command.ExpectedLineIndex != _state.SelfReviewLineIndex) return RejectionReason.WrongNode;
+            _state.SelfReviewLineIndex++;
+            events.Add(new GameEvent(GameEventKind.SelfReviewLineAdvanced, _state.Day,
+                referenceId: _state.SelfReviewLineIndex.ToString(System.Globalization.CultureInfo.InvariantCulture)));
             return RejectionReason.None;
         }
 
         private RejectionReason SelfPurify(List<GameEvent> events)
         {
-            if (!_rules.DreamFlowEnabled || _state.Phase != GamePhase.SelfReview
-                || NextDawnEnding(true) != EndingType.DreamSea) return RejectionReason.WrongPhase;
+            if (!_rules.DreamFlowEnabled || _state.Phase != GamePhase.SelfReview) return RejectionReason.WrongPhase;
+            if (_state.SelfReviewLineIndex != _rules.SelfReviewLineCount) return RejectionReason.WrongStage;
             // This is the player's ending decision, not a patient disposition or a new work day.
             _state.Day++;
             EndGame(EndingType.DreamSea, events);
             return RejectionReason.None;
         }
 
-        private EndingType NextDawnEnding(bool includeDreamSea)
-        {
-            int nextDay = _state.Day + 1;
-            bool priestAttack = _state.PendingEvents.Any(item => item.DueDay <= nextDay
-                && item.Kind == ScheduledEventKind.PriestAttack && !_state.ExecutedEventIds.Contains(item.Id));
-            return ResolveEnding(nextDay, priestAttack, includeDreamSea);
-        }
-
-        private EndingType ResolveEnding(int day, bool priestAttack, bool includeDreamSea)
+        private EndingType ResolveEnding(int day, bool priestAttack)
         {
             bool finished = day > _rules.EndDay;
             var eligible = new HashSet<EndingType>();
             if (priestAttack) eligible.Add(EndingType.PriestAttack);
-            if (finished && _state.Days.Any(item => item.Day > 0 && item.QuotaMet == false)) eligible.Add(EndingType.LockedInRoom);
+            if ((finished || _rules.DreamFlowEnabled) && _state.Days.Any(item => item.Day > 0 && item.Completed && item.QuotaMet == false))
+                eligible.Add(EndingType.LockedInRoom);
             if (finished) eligible.Add(EndingType.TakenAway);
-            if (finished && _rules.DreamFlowEnabled && includeDreamSea && _state.Rebellion >= _rules.DreamSeaThreshold)
-                eligible.Add(EndingType.DreamSea);
             return _rules.EndingPriority.FirstOrDefault(eligible.Contains);
         }
 
@@ -472,9 +484,12 @@ namespace MiniGame.Core
                 events.Add(new GameEvent(GameEventKind.ScheduledEventExecuted, _state.Day,
                     scheduled.PatientId, referenceId: scheduled.Id));
             }
-            var ending = ResolveEnding(_state.Day, priestAttack, false);
+            var ending = ResolveEnding(_state.Day, priestAttack);
             if (ending != EndingType.None)
             {
+                // Evaluate scheduled events at the natural next dawn before the KPI jump.
+                // The jump is an ending date, not three fabricated work-day records.
+                if (_rules.DreamFlowEnabled && ending == EndingType.LockedInRoom) _state.Day = 4;
                 EndGame(ending, events);
                 return;
             }

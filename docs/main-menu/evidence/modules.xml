@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="18" result="Failed(Child)" total="18" passed="17" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:27:00Z" duration="6.5135906">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="290" result="Failed" site="Child" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:27:00Z" duration="6.513591" total="18" passed="17" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1298" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DialogueUpdate20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="230" result="Failed" site="Child" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:27:00Z" duration="6.503273" total="18" passed="17" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="28392" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1299" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="230" result="Failed" site="Child" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:27:00Z" duration="6.471899" total="18" passed="17" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1300" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="230" result="Failed" site="Child" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:27:00Z" duration="6.438542" total="18" passed="17" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1301" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="230" result="Failed" site="Child" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:27:00Z" duration="6.405151" total="18" passed="17" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1132" name="MainMenuPersistencePlayModeTests" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:57Z" duration="3.502632" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1134" name="AtomicContinueSaveDoesNotOverwriteManualSavesAndReportsWriteFailure" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.AtomicContinueSaveDoesNotOverwriteManualSavesAndReportsWriteFailure" methodname="AtomicContinueSaveDoesNotOverwriteManualSavesAndReportsWriteFailure" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="693797464" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:54Z" duration="0.127816" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.AtomicContinueSaveDoesNotOverwriteManualSavesAndReportsWriteFailure
+保存失败：Cannot create a file when that file already exists
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.AtomicContinueSaveDoesNotOverwriteManualSavesAndReportsWriteFailure Passed
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1138" name="InvalidLoadPreservesLiveRuntimeAndOriginalFile" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:54Z" duration="0.015568" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1135" name="InvalidLoadPreservesLiveRuntimeAndOriginalFile(&quot;{not json&quot;)" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile(&quot;{not json&quot;)" methodname="InvalidLoadPreservesLiveRuntimeAndOriginalFile" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="1584066968" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:54Z" duration="0.003553" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile("{not json")
+读取失败：JSON parse error: Missing a name for object member.
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile("{not json") Passed
+]]></output>
+                </test-case>
+                <test-case id="1136" name="InvalidLoadPreservesLiveRuntimeAndOriginalFile(&quot;{\&quot;FormatVersion\&quot;:99,\&quot;Runtime\&quot;:\&quot;old\&quot;}&quot;)" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile(&quot;{\&quot;FormatVersion\&quot;:99,\&quot;Runtime\&quot;:\&quot;old\&quot;}&quot;)" methodname="InvalidLoadPreservesLiveRuntimeAndOriginalFile" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="744936669" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:54Z" duration="0.002598" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile("{\"FormatVersion\":99,\"Runtime\":\"old\"}")
+读取失败：存档版本不兼容；旧存档文件已保留，请开始新的梦境流程。
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile("{\"FormatVersion\":99,\"Runtime\":\"old\"}") Passed
+]]></output>
+                </test-case>
+                <test-case id="1137" name="InvalidLoadPreservesLiveRuntimeAndOriginalFile(&quot;{\&quot;FormatVersion\&quot;:1,\&quot;Runtime\&quot;:\&quot;{}\&quot;}&quot;)" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile(&quot;{\&quot;FormatVersion\&quot;:1,\&quot;Runtime\&quot;:\&quot;{}\&quot;}&quot;)" methodname="InvalidLoadPreservesLiveRuntimeAndOriginalFile" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="1145253170" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:54Z" duration="0.005947" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile("{\"FormatVersion\":1,\"Runtime\":\"{}\"}")
+读取失败：Runtime checkpoint JSON is invalid.
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.InvalidLoadPreservesLiveRuntimeAndOriginalFile("{\"FormatVersion\":1,\"Runtime\":\"{}\"}") Passed
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1139" name="MismatchedSleepCheckpointIsRejectedBeforeReplacingLiveRuntime" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.MismatchedSleepCheckpointIsRejectedBeforeReplacingLiveRuntime" methodname="MismatchedSleepCheckpointIsRejectedBeforeReplacingLiveRuntime" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="1829761605" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:54Z" duration="0.032537" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.MismatchedSleepCheckpointIsRejectedBeforeReplacingLiveRuntime
+读取失败：睡眠检查点与当前日期或演出不匹配。
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.MismatchedSleepCheckpointIsRejectedBeforeReplacingLiveRuntime Passed
+]]></output>
+              </test-case>
+              <test-case id="1141" name="PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce" methodname="PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="366286377" result="Passed" start-time="2026-10-22 11:26:54Z" end-time="2026-10-22 11:26:56Z" duration="2.133838" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce Passed
+]]></output>
+              </test-case>
+              <test-case id="1140" name="PausedFadeRestoresOpacityAndOnlyItsRemainingTime" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedFadeRestoresOpacityAndOnlyItsRemainingTime" methodname="PausedFadeRestoresOpacityAndOnlyItsRemainingTime" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="1562199741" result="Passed" start-time="2026-10-22 11:26:56Z" end-time="2026-10-22 11:26:57Z" duration="1.115657" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedFadeRestoresOpacityAndOnlyItsRemainingTime
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.PausedFadeRestoresOpacityAndOnlyItsRemainingTime Passed
+]]></output>
+              </test-case>
+              <test-case id="1133" name="ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback" fullname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback" methodname="ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback" classname="MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests" runstate="Runnable" seed="433321903" result="Failed" label="Error" start-time="2026-10-22 11:26:57Z" end-time="2026-10-22 11:26:57Z" duration="0.038557" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[TearDown : UnityEngine.MissingReferenceException : The object of type 'RawImage' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.]]></message>
+                  <stack-trace><![CDATA[--TearDown
+  at (wrapper managed-to-native) UnityEngine.Component.get_gameObject(UnityEngine.Component)
+  at MiniGame.UnityHost.TerminalView.SetOpeningLogo (System.Boolean visible) [0x0002a] in F:\AAMINIGAME\MINIGAME\Artifacts\DialogueUpdate20261022\UnityProject\Assets\MiniGame\Runtime\TerminalView.cs:229 
+  at MiniGame.UnityHost.MiniGameScreen.EndDayZeroOpening () [0x0000e] in F:\AAMINIGAME\MINIGAME\Artifacts\DialogueUpdate20261022\UnityProject\Assets\MiniGame\Runtime\MiniGameScreen.cs:242 
+  at MiniGame.UnityHost.PresentationEffects.PrepareForRuntimeChange () [0x00041] in F:\AAMINIGAME\MINIGAME\Artifacts\DialogueUpdate20261022\UnityProject\Assets\MiniGame\Runtime\PresentationEffects.cs:81 
+  at MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.TearDown () [0x00000] in F:\AAMINIGAME\MINIGAME\Artifacts\DialogueUpdate20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\MainMenuPersistencePlayModeTests.cs:35 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 ]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuPersistencePlayModeTests.ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback Failed
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1142" name="MenuAudioSuspensionPlayModeTests" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-22 11:26:57Z" end-time="2026-10-22 11:27:00Z" duration="2.601685" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1147" name="ConfigureAndDisableDiscardSuspendedAndDeferredPlayback" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ConfigureAndDisableDiscardSuspendedAndDeferredPlayback" methodname="ConfigureAndDisableDiscardSuspendedAndDeferredPlayback" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" seed="1547268263" result="Passed" start-time="2026-10-22 11:26:57Z" end-time="2026-10-22 11:26:58Z" duration="0.232801" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ConfigureAndDisableDiscardSuspendedAndDeferredPlayback
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ConfigureAndDisableDiscardSuspendedAndDeferredPlayback Passed
+]]></output>
+              </test-case>
+              <test-case id="1148" name="DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications" methodname="DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" seed="648402940" result="Passed" start-time="2026-10-22 11:26:58Z" end-time="2026-10-22 11:26:58Z" duration="0.532658" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications Passed
+]]></output>
+              </test-case>
+              <test-case id="1146" name="ExistingOneShotAndVoiceSurviveRepeatedMenuToggles" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ExistingOneShotAndVoiceSurviveRepeatedMenuToggles" methodname="ExistingOneShotAndVoiceSurviveRepeatedMenuToggles" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" seed="224296423" result="Passed" start-time="2026-10-22 11:26:58Z" end-time="2026-10-22 11:26:59Z" duration="0.532711" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ExistingOneShotAndVoiceSurviveRepeatedMenuToggles
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.ExistingOneShotAndVoiceSurviveRepeatedMenuToggles Passed
+]]></output>
+              </test-case>
+              <test-case id="1144" name="LogicalPausesAreIndependentAndStoppedSourcesStayStopped" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.LogicalPausesAreIndependentAndStoppedSourcesStayStopped" methodname="LogicalPausesAreIndependentAndStoppedSourcesStayStopped" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" seed="75361184" result="Passed" start-time="2026-10-22 11:26:59Z" end-time="2026-10-22 11:26:59Z" duration="0.266128" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.LogicalPausesAreIndependentAndStoppedSourcesStayStopped
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.LogicalPausesAreIndependentAndStoppedSourcesStayStopped Passed
+]]></output>
+              </test-case>
+              <test-case id="1143" name="MenuSuspendsLoopPlayheadAndFadeThenResumesBoth" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.MenuSuspendsLoopPlayheadAndFadeThenResumesBoth" methodname="MenuSuspendsLoopPlayheadAndFadeThenResumesBoth" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" seed="1636315045" result="Passed" start-time="2026-10-22 11:26:59Z" end-time="2026-10-22 11:27:00Z" duration="0.632732" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.MenuSuspendsLoopPlayheadAndFadeThenResumesBoth
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.MenuSuspendsLoopPlayheadAndFadeThenResumesBoth Passed
+]]></output>
+              </test-case>
+              <test-case id="1145" name="NewLoopVoiceAndOneShotWaitForMenuRelease" fullname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.NewLoopVoiceAndOneShotWaitForMenuRelease" methodname="NewLoopVoiceAndOneShotWaitForMenuRelease" classname="MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests" runstate="Runnable" seed="586866482" result="Passed" start-time="2026-10-22 11:27:00Z" end-time="2026-10-22 11:27:00Z" duration="0.399374" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.NewLoopVoiceAndOneShotWaitForMenuRelease
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MenuAudioSuspensionPlayModeTests.NewLoopVoiceAndOneShotWaitForMenuRelease Passed
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1196" name="PlayerPreferencesPlayModeTests" fullname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests" classname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-22 11:27:00Z" end-time="2026-10-22 11:27:00Z" duration="0.266863" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1200" name="BrightnessMultipliesTheFinalImageAndPreservesBlackWhenRetroIsBypassed" fullname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.BrightnessMultipliesTheFinalImageAndPreservesBlackWhenRetroIsBypassed" methodname="BrightnessMultipliesTheFinalImageAndPreservesBlackWhenRetroIsBypassed" classname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests" runstate="Runnable" seed="1589857075" result="Passed" start-time="2026-10-22 11:27:00Z" end-time="2026-10-22 11:27:00Z" duration="0.100208" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.BrightnessMultipliesTheFinalImageAndPreservesBlackWhenRetroIsBypassed
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.BrightnessMultipliesTheFinalImageAndPreservesBlackWhenRetroIsBypassed Passed
+]]></output>
+              </test-case>
+              <test-case id="1197" name="DefaultsAndPersistedSettingsControlTheGlobalListenerWithoutASaveGame" fullname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.DefaultsAndPersistedSettingsControlTheGlobalListenerWithoutASaveGame" methodname="DefaultsAndPersistedSettingsControlTheGlobalListenerWithoutASaveGame" classname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests" runstate="Runnable" seed="948457037" result="Passed" start-time="2026-10-22 11:27:00Z" end-time="2026-10-22 11:27:00Z" duration="0.000984" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.DefaultsAndPersistedSettingsControlTheGlobalListenerWithoutASaveGame
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.DefaultsAndPersistedSettingsControlTheGlobalListenerWithoutASaveGame Passed
+]]></output>
+              </test-case>
+              <test-case id="1198" name="OutOfRangeAndInvalidPreferencesHaveSafeFiniteBounds" fullname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.OutOfRangeAndInvalidPreferencesHaveSafeFiniteBounds" methodname="OutOfRangeAndInvalidPreferencesHaveSafeFiniteBounds" classname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests" runstate="Runnable" seed="567390470" result="Passed" start-time="2026-10-22 11:27:00Z" end-time="2026-10-22 11:27:00Z" duration="0.000763" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.OutOfRangeAndInvalidPreferencesHaveSafeFiniteBounds
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.OutOfRangeAndInvalidPreferencesHaveSafeFiniteBounds Passed
+]]></output>
+              </test-case>
+              <test-case id="1199" name="SharedSettingsRefreshBothMenusAndHiddenControlsCannotChangePreferences" fullname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.SharedSettingsRefreshBothMenusAndHiddenControlsCannotChangePreferences" methodname="SharedSettingsRefreshBothMenusAndHiddenControlsCannotChangePreferences" classname="MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests" runstate="Runnable" seed="1136869929" result="Passed" start-time="2026-10-22 11:27:00Z" end-time="2026-10-22 11:27:00Z" duration="0.129726" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.SharedSettingsRefreshBothMenusAndHiddenControlsCannotChangePreferences
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.PlayerPreferencesPlayModeTests.SharedSettingsRefreshBothMenusAndHiddenControlsCannotChangePreferences Passed
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,28 @@
+{
+  "workbook": "Art/chat_excel/【对话】监督员.xlsx",
+  "sha256": "922deb323f2f25cdfa07bb446a221bcd890900813890abb6c8b56a90bcfe8630",
+  "sheet": "对话流程",
+  "sourceRows": 46,
+  "adaptations": [
+    {
+      "cell": "L20",
+      "kind": "inherit-portrait",
+      "value": "JD_03"
+    },
+    {
+      "cell": "J40",
+      "kind": "day-boundary",
+      "originalNext": "P02_D4_R1_COMMON_002",
+      "policy": "End this day's presentation; Day4 starts at its own root in the TakenAway ending."
+    },
+    {
+      "kind": "literal-array-recovered",
+      "sheet": "立绘ID",
+      "cell": "A2",
+      "formulaCell": "A2",
+      "value": "JD_01"
+    }
+  ],
+  "portraitPolicy": "Preserve the approved live portraits in docs/portrait-remap/source-manifest.json; this text converter never copies images.",
+  "stagePolicy": "For Day1-3, the final two authored lines use the existing Briefing cue; preceding lines use MorningInspection. Day4 is TakenAway ending content."
+}

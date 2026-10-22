@@ -35,7 +35,7 @@ namespace MiniGame.UnityHost
         public float Clock { get; private set; }
         public static string SettingsPath => Path.Combine(Application.persistentDataPath, "terminal-signal-settings.json");
 
-        public void Initialize(RectTransform parent, Font font, Func<bool> isPaused)
+        public void Initialize(RectTransform parent, Font font, Func<bool> isPaused, bool createTuningPanel = true)
         {
             paused = isPaused;
             var defaults = Resources.Load<TerminalSignalProfile>("MiniGame/TerminalSignalDefault");
@@ -44,8 +44,11 @@ namespace MiniGame.UnityHost
             Profile.hideFlags = HideFlags.DontSave;
             LoadSettings();
             Profile.Sanitize();
-            Panel = TerminalSignalTuningPanel.Create(parent, font, this);
-            Panel.SetVisible(false);
+            if (createTuningPanel)
+            {
+                Panel = TerminalSignalTuningPanel.Create(parent, font, this);
+                Panel.SetVisible(false);
+            }
         }
 
         public TerminalSignalEffect Attach(RawImage image, bool logo = false)

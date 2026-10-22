@@ -42,12 +42,13 @@ namespace MiniGame.UnityHost
                 case "diplomat": return "AD01";
                 case "priest": return "JN01";
                 case "tutorial": return "D0_01";
+                case "self-review": return "SJ01";
                 default: return "";
             }
         }
 
-        public static string Unit(string patientId) => "B-" + (12 + PatientIndex(patientId)).ToString("00");
-        public static string Registration(string patientId) => "R-0317-" + (42 + PatientIndex(patientId)).ToString("000");
+        public static string Unit(string patientId) => patientId == "self-review" ? "T-06" : "B-" + (12 + PatientIndex(patientId)).ToString("00");
+        public static string Registration(string patientId) => patientId == "self-review" ? "T-06 / 047" : "R-0317-" + (42 + PatientIndex(patientId)).ToString("000");
         private static int PatientIndex(string patientId)
         {
             switch (patientId)

@@ -69,6 +69,9 @@ namespace MiniGame.Core
         public int InitialRebellion { get; }
         public int MaximumRebellion { get; } = 100;
         public int DreamSeaThreshold { get; } = 100;
+        public int ActivePatientTrustThreshold { get; } = 10;
+        public int SelfReviewLineCount { get; } = 16;
+        private const int EndingPolicyVersion = 2;
         public IReadOnlyDictionary<string, int> RebellionOptionDeltas { get; }
             = new ReadOnlyDictionary<string, int>(new Dictionary<string, int>(StringComparer.Ordinal));
         private readonly GameRules? _originalRules;
@@ -124,8 +127,9 @@ namespace MiniGame.Core
             DreamFlowEnabled = true;
             InitialRebellion = initial; MaximumRebellion = maximum; DreamSeaThreshold = threshold;
             RebellionOptionDeltas = new ReadOnlyDictionary<string, int>(optionDeltas.ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal));
-            EndingPriority = Array.AsReadOnly(new[] { EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.DreamSea, EndingType.TakenAway });
-            var settings = SnapshotCodec.Canonical(new { initial, maximum, threshold,
+            EndingPriority = Array.AsReadOnly(new[] { EndingType.DreamSea, EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.TakenAway });
+            var settings = SnapshotCodec.Canonical(new { initial, maximum, threshold, EndingPolicyVersion,
+                ActivePatientTrustThreshold, SelfReviewLineCount,
                 Deltas = RebellionOptionDeltas.OrderBy(pair => pair.Key, StringComparer.Ordinal).Select(pair => new { pair.Key, pair.Value }) });
             using var hash = SHA256.Create();
             var suffix = string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(settings))
@@ -168,7 +172,8 @@ namespace MiniGame.Core
                 : SnapshotCodec.Canonical(new { Rules = canonical, MeetingExtensions = extensions });
             if (DreamFlowEnabled)
                 serialized = SnapshotCodec.Canonical(new { Rules = serialized, DreamFlowEnabled, InitialRebellion, MaximumRebellion,
-                    DreamSeaThreshold, RebellionOptions = RebellionOptionDeltas.OrderBy(pair => pair.Key, StringComparer.Ordinal)
+                    DreamSeaThreshold, EndingPolicyVersion, ActivePatientTrustThreshold, SelfReviewLineCount,
+                    RebellionOptions = RebellionOptionDeltas.OrderBy(pair => pair.Key, StringComparer.Ordinal)
                         .Select(pair => new { pair.Key, pair.Value }) });
             var bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(serialized));
             return string.Concat(bytes.Select(b => b.ToString("x2", System.Globalization.CultureInfo.InvariantCulture)));

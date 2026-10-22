@@ -280,7 +280,8 @@ namespace MiniGame.UnityHost.Tests
                 int corner = feed.Output.width * (feed.Output.height / 2) + feed.Output.width * 9 / 10;
                 Assert.That(after[corner], Is.EqualTo(before[corner]), "Changing expression must retain the ward background.");
                 Assert.That(after[corner].r, Is.GreaterThan(40), "The background must render as visible pixels.");
-                Assert.That(after[corner].r, Is.EqualTo(after[corner].b).Within(2), "The white plate must keep neutral color.");
+                Assert.That(after[corner].r, Is.GreaterThan(after[corner].g), "The ward plate uses the original warm monitor tint.");
+                Assert.That(after[corner].g, Is.GreaterThan(after[corner].b), "Amber grading must cover the ward as well as the person.");
                 Assert.That(after.SequenceEqual(before), Is.False, "The selected expression must change rendered pixels.");
                 profile.Rooms[0].ActorOffset = Vector3.zero;
                 feed.SetCloseUp(true);

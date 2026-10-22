@@ -7,7 +7,7 @@ namespace MiniGame.UnityHost
     public sealed class DreamDaySettings
     {
         [InspectorName("日期")] public int Day;
-        [Range(5, 180), InspectorName("播放时长（秒）")] public float Duration = 5;
+        [Range(5, 180), InspectorName("播放时长（秒）")] public float Duration = 15;
         [InspectorName("梦境画面")] public Texture2D Artwork;
         [InspectorName("顺序画面（按编号）")] public Texture2D[] Frames = Array.Empty<Texture2D>();
         [HideInInspector] public float CrossfadeSeconds;
@@ -29,7 +29,7 @@ namespace MiniGame.UnityHost
     public sealed class DreamSequenceProfile : ScriptableObject
     {
         [Header("墙面梦境"), InspectorName("启用正式梦境流程")] public bool EnableDreamFlow = true;
-        [Min(.1f), InspectorName("黑屏音乐时间（秒）")] public float BlackScreenSeconds = 5;
+        [Min(.1f), InspectorName("黑屏音乐时间（秒）")] public float BlackScreenSeconds = 4.5f;
         [Min(.1f), InspectorName("起床前黑屏时间（秒）")] public float WakeBlackSeconds = 1;
         [Min(.1f), InspectorName("镜头定位时间（秒）")] public float AlignSeconds = 1.2f;
         [Min(.1f), InspectorName("镜头返回时间（秒）")] public float ReturnSeconds = 1;
@@ -90,7 +90,7 @@ namespace MiniGame.UnityHost
 
         private void OnValidate()
         {
-            BlackScreenSeconds = Valid(BlackScreenSeconds, .1f, 30, 5);
+            BlackScreenSeconds = Valid(BlackScreenSeconds, .1f, 30, 4.5f);
             WakeBlackSeconds = Valid(WakeBlackSeconds, .1f, 10, 1);
             AlignSeconds = Valid(AlignSeconds, .1f, 10, 1.2f);
             ReturnSeconds = Valid(ReturnSeconds, .1f, 10, 1);
@@ -116,7 +116,7 @@ namespace MiniGame.UnityHost
             SubtitleDelay = Valid(SubtitleDelay, 0, 15, 2);
             if (Days != null) foreach (var day in Days) if (day != null)
             {
-                day.Duration = Valid(day.Duration, 5, 180, 5);
+                day.Duration = Valid(day.Duration, 5, 180, 15);
                 day.VignetteIntensity = Valid(day.VignetteIntensity, 0, 1, .12f);
                 day.MotionIntensity = Valid(day.MotionIntensity, 0, 2, 1);
                 day.CrossfadeSeconds = Valid(day.CrossfadeSeconds, 0, 2, .6f);
@@ -130,7 +130,7 @@ namespace MiniGame.UnityHost
             => float.IsNaN(value) || float.IsInfinity(value) ? fallback : Mathf.Clamp(value, min, max);
     }
 
-    public enum DreamPlaybackPhase { None, Aligning, Playing, Returning }
+    public enum DreamPlaybackPhase { None, Aligning, Playing, Returning, BlackHold, Revealing }
     [Serializable]
     public sealed class DreamPlaybackCheckpoint
     {

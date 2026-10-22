@@ -65,6 +65,32 @@ namespace MiniGame.UnityHost.Tests
             }
         }
 
+        [TestCase(20)] [TestCase(23)] [TestCase(28)]
+        public void MenuSizesScalePixelGeometryWithoutChangingTheAtlas(int size)
+        {
+            label.ScaleToFontSize = true;
+            label.fontSize = 12;
+            var original = ReadVertices();
+            label.fontSize = size;
+            var scaled = ReadVertices();
+            float scale = size / 12f;
+            Assert.That(scaled.Count, Is.EqualTo(original.Count));
+            Assert.That(scaled[4].position.x - scaled[0].position.x, Is.EqualTo(8 * scale).Within(.001f));
+            Assert.That(label.preferredWidth, Is.EqualTo(16 * scale).Within(.001f));
+            for (int index = 0; index < original.Count; index++)
+                Assert.That(scaled[index].uv0, Is.EqualTo(original[index].uv0));
+        }
+
+        [Test]
+        public void ProductionDreamsUseOnePointFiveTimesTheMusicAndFilmDurations()
+        {
+            var profile = Resources.Load<DreamSequenceProfile>("MiniGame/DreamSequenceDefault");
+            Assert.That(profile, Is.Not.Null);
+            Assert.That(profile.WakeBlackSeconds, Is.EqualTo(1));
+            Assert.That(profile.BlackScreenSeconds, Is.EqualTo(4.5f));
+            foreach (var day in profile.Days) Assert.That(day.Duration, Is.EqualTo(15), "Day " + day.Day);
+        }
+
         [TestCase(239, 184, 63)] [TestCase(255, 207, 104)] [TestCase(167, 125, 45)]
         [TestCase(103, 75, 25)] [TestCase(23, 14, 2)]
         public void ExportedColorsAreNotRetinted(int red, int green, int blue)

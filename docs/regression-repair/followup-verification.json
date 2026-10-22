@@ -1,0 +1,196 @@
+{
+  "referenceCommit": "25a950893326d41dfcd51cfb645d937ca6e5d9e7",
+  "unityVersion": "2022.3.23f1c1",
+  "changes": {
+    "scan": "First JD_04 portrait per day uses active screen audio owner; scanner pauses/resumes with game. Output-data samples verified.",
+    "dayZero": "Terminal shutdown and bedtime isolate the bed spotlight instead of night-room lighting.",
+    "schedule": {
+      "day2Adds": "乔纳",
+      "day3Adds": "阿德里安",
+      "day1": [
+        "薇拉",
+        "埃德温",
+        "米洛"
+      ],
+      "terminal": "Hide unscheduled row pool entries and clamp keyboard selection."
+    },
+    "escape": "Directory exits terminal; patient dialogue pauses.",
+    "dream": "3 seconds black with music, 10 seconds film, fade to black, 1 second black hold, reveal already facing bed."
+  },
+  "activeContent": {
+    "sourceHash": "7f736ea421031f81f6083ac393cff3d40fb1d90c98bd64bfa50a00dfd8673f4e",
+    "yarnProjectBound": true,
+    "nativeNodes": 341,
+    "contentRevision": "inspection-campaign:1.1.2-development:7f736ea421031f81f6083ac393cff3d40fb1d90c98bd64bfa50a00dfd8673f4e:f52658054192b67c58a9a9605b8510dc25fe6a69488d5e177b5367ee299016d9",
+    "meetings": 13,
+    "dailyRosters": [
+      {
+        "day": 0,
+        "patients": [
+          "tutorial"
+        ]
+      },
+      {
+        "day": 1,
+        "patients": [
+          "former-ruler",
+          "battlefield-doctor",
+          "child"
+        ]
+      },
+      {
+        "day": 2,
+        "patients": [
+          "former-ruler",
+          "battlefield-doctor",
+          "child",
+          "priest"
+        ]
+      },
+      {
+        "day": 3,
+        "patients": [
+          "former-ruler",
+          "battlefield-doctor",
+          "child",
+          "priest",
+          "diplomat"
+        ]
+      }
+    ],
+    "blackSeconds": 3.0,
+    "filmSeconds": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "wakeBlackSeconds": 1.0,
+    "oldSaveError": "SnapshotValidationException: Runtime checkpoint version or content revision does not match."
+  },
+  "tests": {
+    "dotnet": {
+      "passed": 347,
+      "releaseBuild": "passed, zero warnings and errors",
+      "sdk": "8.0.424",
+      "failed": 0,
+      "results": [
+        {
+          "file": "followup-final_net8.0_20261022232714.trx",
+          "counters": []
+        },
+        {
+          "file": "followup-final_net8.0_20261022232719.trx",
+          "counters": []
+        }
+      ],
+      "total": 347,
+      "restore": "locked-mode passed"
+    },
+    "python": {
+      "meetings": 13,
+      "generationCheck": "build_campaign.py --check passed",
+      "total": 19,
+      "sourceRows": 1440,
+      "passed": 19
+    },
+    "unity": {
+      "failed": 0.0,
+      "suites": [
+        {
+          "filter": "SupervisorDialoguePlayModeTests",
+          "summary": {
+            "total": 5,
+            "passed": 5,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/SupervisorDialoguePlayModeTests.json"
+        },
+        {
+          "filter": "FollowupFlowPlayModeTests",
+          "summary": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/FollowupFlowPlayModeTests.json"
+        },
+        {
+          "filter": "BedtimeGuidancePlayModeTests",
+          "summary": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/BedtimeGuidancePlayModeTests.json"
+        },
+        {
+          "filter": "MainMenuFlowPlayModeTests",
+          "summary": {
+            "total": 9,
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/MainMenuFlowPlayModeTests.json"
+        },
+        {
+          "filter": "DreamProjectionPlayModeTests",
+          "summary": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/DreamProjectionPlayModeTests.json"
+        },
+        {
+          "filter": "PortraitSourcePackTests",
+          "summary": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/PortraitSourcePackTests.json"
+        },
+        {
+          "filter": "TerminalBitmapTextTests",
+          "summary": {
+            "total": 22,
+            "passed": 22,
+            "failed": 0,
+            "skipped": 0,
+            "inconclusive": 0
+          },
+          "evidence": "Artifacts/FollowupRepair20261022/TerminalBitmapTextTests.json"
+        }
+      ],
+      "total": 51.0,
+      "passed": 51.0
+    },
+    "fontCoverage": {
+      "missing": 0,
+      "verifiedGlyphSizePairs": 10003,
+      "command": "uv run Tools/TerminalTypography/build_ark_atlas.py --check-only"
+    },
+    "diffCheck": "git diff --check passed",
+    "independentReview": "No actionable bugs found; reviewed arrival filtering/audit, roster bounds, Escape, Day0 isolation, dream timing, audio ownership and Scanner pause/resume."
+  },
+  "priorRepairs": "Earlier eight repairs and 120-test evidence remain in verification.json; the two previously failing Day0 lighting checks are now resolved, with all three BedtimeGuidancePlayModeTests passing.",
+  "limits": {
+    "targetPlatformBuild": "not run",
+    "oldSave": "Rejected by content-revision check; original running session backed up before stopping Play Mode.",
+    "humanVisualAndSpeakerAcceptance": "not performed"
+  },
+  "backup": "Artifacts/FollowupRepair20261022/before/session.json",
+  "editorState": "stopped, not compiling"
+}

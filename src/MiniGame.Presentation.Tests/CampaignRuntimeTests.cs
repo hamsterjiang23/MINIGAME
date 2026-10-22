@@ -54,7 +54,7 @@ namespace MiniGame.Presentation.Tests
         [TestCase(EndingType.TakenAway, 3)]
         [TestCase(EndingType.LockedInRoom, 3)]
         [TestCase(EndingType.PriestAttack, 3)]
-        [TestCase(EndingType.PriestAttack, 1)]
+        [TestCase(EndingType.PriestAttack, 2)]
         public void ImportedCampaignPlaysRealSegmentsToAllEndingsIncludingEarliestPriestRelease(EndingType expected, int releaseDay)
         {
             var folder = new DirectoryInfo(TestContext.CurrentContext.TestDirectory);
@@ -128,18 +128,19 @@ namespace MiniGame.Presentation.Tests
                 else RuntimeScenario.Accept(runtime.TryInteract(view.Game.Phase == GamePhase.Apartment ? InteractionTarget.Computer : InteractionTarget.Bed));
             }
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Ending));
-            var earlyAttack = expected == EndingType.PriestAttack && releaseDay == 1;
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(earlyAttack ? 2 : 4));
+            var earlyAttack = expected == EndingType.PriestAttack && releaseDay == 2;
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(earlyAttack ? 3 : 4));
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(expected));
             Assert.That(presentedLines.Count, Is.GreaterThan(earlyAttack ? 100 : 300));
-            Assert.That(dayTwoDiplomatLines.Count, earlyAttack ? Is.Zero : Is.GreaterThan(0));
+            Assert.That(dayTwoDiplomatLines, Is.Empty, "The diplomat has not arrived on Day2.");
             Assert.That(visited, Does.Contain("0:tutorial").And.Contain("1:child").And.Contain("1:former-ruler")
-                .And.Contain("1:battlefield-doctor").And.Contain("1:diplomat").And.Contain("1:priest"));
-            if (earlyAttack) Assert.That(visited.Count, Is.EqualTo(6));
+                .And.Contain("1:battlefield-doctor").And.Contain("2:priest"));
+            Assert.That(visited, Has.No.Member("1:priest").And.No.Member("1:diplomat").And.No.Member("2:diplomat"));
+            if (earlyAttack) Assert.That(visited.Count, Is.EqualTo(8));
             else
             {
                 Assert.That(visited, Does.Contain("3:priest"));
-                if (expected != EndingType.TakenAway) Assert.That(visited.Count, Is.EqualTo(16));
+                if (expected != EndingType.TakenAway) Assert.That(visited.Count, Is.EqualTo(13));
             }
             Assert.That(GameRuntime.Restore(runtime.Save(), package.Rules, package.Content).Save(), Is.EqualTo(runtime.Save()));
         }

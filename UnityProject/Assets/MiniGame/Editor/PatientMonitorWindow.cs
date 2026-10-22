@@ -171,11 +171,14 @@ namespace MiniGame.UnityHost.Editor
             serialized = new SerializedObject(profile);
             EditorApplication.update += TickPreview;
             EditorApplication.playModeStateChanged += OnPlayModeChanged;
+            AssemblyReloadEvents.beforeAssemblyReload += StopPreview;
+            PatientSurveillanceFeed.CleanupOrphanedEditorStages();
         }
         private void OnDisable()
         {
             EditorApplication.update -= TickPreview;
             EditorApplication.playModeStateChanged -= OnPlayModeChanged;
+            AssemblyReloadEvents.beforeAssemblyReload -= StopPreview;
             StopPreview();
         }
         private void OnPlayModeChanged(PlayModeStateChange state) => StopPreview();
@@ -272,6 +275,7 @@ namespace MiniGame.UnityHost.Editor
         }
         private void StopPreview()
         {
+            if (preview != null) preview.DisposePresentation();
             if (previewOwner != null) DestroyImmediate(previewOwner);
             preview = null;
             previewOwner = null;

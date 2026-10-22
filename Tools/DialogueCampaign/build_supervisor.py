@@ -5,8 +5,8 @@ import argparse
 import hashlib
 import json
 import re
-import shutil
 from pathlib import Path
+from typing import cast
 
 from build_campaign import escape, read_source
 
@@ -82,41 +82,43 @@ def compile_dialogue(workbook: Path) -> tuple[dict[str, object], list[dict[str, 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workbook", type=Path, default=ROOT / "Art/chat_excel/【对话】监督员.xlsx")
+    parser.add_argument("--smoke", action="store_true")
+    parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     result, adaptations = compile_dialogue(args.workbook)
     resource = ROOT / "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor"
-    resource.mkdir(parents=True, exist_ok=True)
-    (resource / "Dialogue.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     yarn: list[str] = []
-    for conversation in result["conversations"]:
+    conversations = cast(list[dict[str, object]], result["conversations"])
+    for conversation in conversations:
         day = conversation["day"]
-        lines = conversation["lines"]
-        split = conversation["morningCount"]
-        stages = [("MorningInspection", lines[:split]), ("Briefing", lines[split:])] if day < 4 else [("Ending", lines)]
+        lines = cast(list[dict[str, object]], conversation["lines"])
+        split = int(str(conversation["morningCount"]))
+        stages = [("MorningInspection", lines[:split]), ("Briefing", lines[split:])] if int(str(day)) < 4 else [("Ending", lines)]
         for stage, selected in stages:
             yarn.extend([f"title: Supervisor_D{day}_{stage}", "---"])
             for line in selected:
-                yarn.append(f"监督员: {escape(line['text'])} #line:supervisor_{line['id']} #source:supervisor__{line['id']} #portrait:{line['portraitId']}")
+                yarn.append(f"监督员: {escape(str(line['text']))} #line:supervisor_{line['id']} #source:supervisor__{line['id']} #portrait:{line['portraitId']}")
             yarn.extend(["===", ""])
-    (resource / "Flow.yarn").write_text("\n".join(yarn), encoding="utf-8")
-    (resource / "DialogueProject.yarnproject").write_text(json.dumps({"projectFileVersion": 3,
-        "sourceFiles": ["Flow.yarn"], "excludeFiles": [], "baseLanguage": "zh-Hans", "localisation": {}}, indent=2) + "\n", encoding="utf-8")
-    images: list[dict[str, object]] = []
-    for index in range(1, 7):
-        source = ROOT / f"Art/Characters/Supervisor/Expressions/JD{index:02}.png"
-        target = resource.parent / "SupervisorPortrait.png" if index == 1 else resource / source.name
-        shutil.copyfile(source, target)
-        images.append({"id": f"JD_{index:02}", "source": source.relative_to(ROOT).as_posix(),
-            "resource": target.relative_to(ROOT).as_posix(), "sha256": digest(source), "byteIdentical": digest(source) == digest(target)})
-    archive = ROOT / "Art/Characters/Supervisor/Source/监督员立绘.rar"
     manifest = {"workbook": args.workbook.relative_to(ROOT).as_posix(), "sha256": digest(args.workbook),
-        "portraitArchive": {"path": archive.relative_to(ROOT).as_posix(), "sha256": digest(archive)},
-        "sheet": "对话流程", "sourceRows": 46, "images": images, "adaptations": adaptations,
+        "sheet": "对话流程", "sourceRows": 46, "adaptations": adaptations,
+        "portraitPolicy": "Preserve the approved live portraits in docs/portrait-remap/source-manifest.json; this text converter never copies images.",
         "stagePolicy": "For Day1-3, the final two authored lines use the existing Briefing cue; preceding lines use MorningInspection. Day4 is TakenAway ending content."}
-    output = ROOT / "docs/dialogue-update-2026-10-21/supervisor"
-    output.mkdir(parents=True, exist_ok=True)
-    (output / "source-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"days": [len(day["lines"]) for day in result["conversations"]], "portraits": len(images), "adaptations": adaptations}, ensure_ascii=False))
+    artifacts = {
+        resource / "Dialogue.json": json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+        resource / "Flow.yarn": "\n".join(yarn),
+        resource / "DialogueProject.yarnproject": json.dumps({"projectFileVersion": 3,
+            "sourceFiles": ["Flow.yarn"], "excludeFiles": [], "baseLanguage": "zh-Hans", "localisation": {}}, indent=2) + "\n",
+        ROOT / "docs/ending-content/supervisor-source-manifest.json": json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+    }
+    if not args.smoke:
+        for path, text in artifacts.items():
+            if args.check:
+                if path.read_text(encoding="utf-8") != text:
+                    raise ValueError(f"Generated supervisor artifact differs: {path}")
+            else:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(text, encoding="utf-8", newline="\n")
+    print(json.dumps({"days": [len(cast(list[object], day["lines"])) for day in conversations], "adaptations": adaptations}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

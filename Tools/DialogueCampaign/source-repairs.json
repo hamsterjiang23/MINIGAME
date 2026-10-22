@@ -1,9 +1,9 @@
 {
-  "version": 1,
-  "policy": "User approved: retain earlier complete branches, exclude later conflicting blocks, restore missing edges from previous corresponding dialogue. Original XLSX stays unchanged.",
+  "version": 2,
+  "policy": "User approved: retain earlier complete branches and exclude later conflicting blocks. Reuse reviewed doctor graph by matching stable source IDs, preserve the new 237-row text, end its three Day3 disposition responses in-place, and do not restore deleted dialogue. Original XLSX files remain byte-identical.",
   "books": {
     "tutorial": {
-      "sourceSha256": "9fdc91da9477d72e8db9e121ea39c6438f374e4edcebfe4a0f6c9c9086ff0168",
+      "sourceSha256": "d416f5ca0056c93a7471a5671a7866ec5d197aec1408dbcc922ed2e323900fa5",
       "excludedRanges": [],
       "repairs": [
         {
@@ -20,10 +20,11 @@
             "rule": "Last authored action response in the new complete tutorial branch; all12 source rows retained."
           }
         }
-      ]
+      ],
+      "previousSourceSha256": "9fdc91da9477d72e8db9e121ea39c6438f374e4edcebfe4a0f6c9c9086ff0168"
     },
     "diplomat": {
-      "sourceSha256": "37ff099b4a3dee1a1e2417a61853178a4839584bff50f8815f62a637ad88f2ee",
+      "sourceSha256": "253735fb00a5c22e6ace8e1f582013a305ae89c0e64eb819224c2e910057cdb0",
       "excludedRanges": [
         {
           "firstRow": 281,
@@ -31,23 +32,16 @@
           "reason": "Later appended conflicting Day3 branch; earlier Day3 R6 graph is complete and retained."
         }
       ],
-      "repairs": []
+      "repairs": [],
+      "previousSourceSha256": "37ff099b4a3dee1a1e2417a61853178a4839584bff50f8815f62a637ad88f2ee"
     },
     "battlefield-doctor": {
-      "sourceSha256": "de0c574fff1927218a18ef96c40e8de12519292d8d9c840c61209c8bf4a5cc8e",
+      "sourceSha256": "1d4f79cf3666e208e92f543e3e2e25404f28eda3427091f2ddae8bf0ae419362",
       "excludedRanges": [
         {
           "firstRow": 233,
           "lastRow": 234,
           "reason": "Extra duplicate treatment options inside damaged copied Day3 tail; retain earlier complete treatment branch at row226."
-        },
-        {
-          "firstRow": 242,
-          "lastRow": 318,
-          "exceptRows": [
-            255
-          ],
-          "reason": "Appended duplicated/conflicting Day3 blocks; retain primary rows134:241 and recover the missing purification response from row255 only."
         }
       ],
       "repairs": [
@@ -162,7 +156,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_003",
             "next": "",
-            "response": "别看仪器，看着我说。"
+            "response": "看着我说。"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_002",
@@ -180,7 +174,11 @@
               "ED_D3_R2_START"
             ],
             "oldText": "别看仪器，看着我说。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "看着我说。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -344,7 +342,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_008",
             "next": "",
-            "response": "片段。顺序不稳。"
+            "response": "我的记忆不稳……"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_009",
@@ -362,7 +360,11 @@
               "ED_D3_R1_O3_T3"
             ],
             "oldText": "片段。顺序不稳。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "我的记忆不稳……"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -502,7 +504,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_012",
             "next": "",
-            "response": "记录在谁手里，意义就不同。"
+            "response": "记录有用，但不能代替我自己记得。"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_003",
@@ -520,7 +522,11 @@
               "ED_D3_R3_START"
             ],
             "oldText": "记录在谁手里，意义就不同。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "记录有用，但不能代替我自己记得。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -658,7 +664,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_016",
             "next": "",
-            "response": "是。痛苦证明不了善良，但不在乎也不是治疗。"
+            "response": "痛苦证明不了善良，但不在乎也不是治疗。"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_017",
@@ -676,7 +682,11 @@
               "ED_D3_R2_O3_T2"
             ],
             "oldText": "是。痛苦证明不了善良，但不在乎也不是治疗。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "痛苦证明不了善良，但不在乎也不是治疗。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -894,7 +904,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_022",
             "next": "",
-            "response": "我说想睡，不是想消失。"
+            "response": "我说想睡，不是想消失！"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_023",
@@ -912,7 +922,11 @@
               "ED_D3_R3_O2_T2"
             ],
             "oldText": "我说想睡，不是想消失。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "我说想睡，不是想消失！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -946,7 +960,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_024",
             "next": "",
-            "response": "所以你一直在等我自己签字。"
+            "response": "所以你一直在等我自己签字！"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_004",
@@ -964,7 +978,11 @@
               "ED_D3_R4_START"
             ],
             "oldText": "所以你一直在等我自己签字。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "所以你一直在等我自己签字！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1130,7 +1148,7 @@
           "expected": {
             "id": "P04_D3_R1_SPECIAL_001",
             "next": "",
-            "response": "对。治疗要让人回来，不是让人更容易管理。"
+            "response": "对啊，治疗是要让人回来，不是让人更容易管理。"
           },
           "set": {
             "next": "P04_D3_R1_SPECIAL_002",
@@ -1148,7 +1166,11 @@
               "ED_D3_R4_O1_T2"
             ],
             "oldText": "对。治疗要让人回来，不是让人更容易管理。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "对啊，治疗是要让人回来，不是让人更容易管理。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1364,7 +1386,7 @@
           "expected": {
             "id": "P04_D3_R1_SPECIAL_008",
             "next": "",
-            "response": "好。别替我加理由。"
+            "response": "别替你自己找借口。"
           },
           "set": {
             "next": "P04_D3_R1_SPECIAL_009",
@@ -1382,7 +1404,11 @@
               "ED_D3_R4_O3_T3"
             ],
             "oldText": "好。别替我加理由。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "别替你自己找借口。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1390,7 +1416,7 @@
           "expected": {
             "id": "P04_D3_R1_SPECIAL_009",
             "next": "",
-            "response": "理解不是免责。"
+            "response": "理解可不是免责！"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_005",
@@ -1408,7 +1434,11 @@
               "ED_D3_R5_START"
             ],
             "oldText": "理解不是免责。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "理解可不是免责！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1470,7 +1500,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_028",
             "next": "",
-            "response": "终于有人把这两个词分开。"
+            "response": "终于有人把这两个词分开了。"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_029",
@@ -1488,7 +1518,11 @@
               "ED_D3_R5_O1_T2"
             ],
             "oldText": "终于有人把这两个词分开。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "终于有人把这两个词分开了。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1496,7 +1530,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_029",
             "next": "",
-            "response": "对。机器没分开。"
+            "response": "但是仪器没分开。"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_030",
@@ -1514,7 +1548,11 @@
               "ED_D3_R5_O1_T3"
             ],
             "oldText": "对。机器没分开。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "但是仪器没分开。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1522,7 +1560,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_030",
             "next": "",
-            "response": "记住这句话。"
+            "response": "你要记住这句话！"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_006",
@@ -1540,7 +1578,11 @@
               "ED_D3_R6_START"
             ],
             "oldText": "记住这句话。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "你要记住这句话！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1626,7 +1668,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_033",
             "next": "",
-            "response": "你只想让房间安静。"
+            "response": "你只想让房间安静！"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_006",
@@ -1644,7 +1686,11 @@
               "ED_D3_R6_START"
             ],
             "oldText": "你只想让房间安静。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "你只想让房间安静！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1836,7 +1882,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_038",
             "next": "",
-            "response": "好。也看治疗后的变化。"
+            "response": "也要看治疗后的变化啊！"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_039",
@@ -1854,7 +1900,11 @@
               "ED_D3_R6_O1_T3"
             ],
             "oldText": "好。也看治疗后的变化。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "也要看治疗后的变化啊！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1862,7 +1912,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_039",
             "next": "",
-            "response": "至少比只看红灯强。"
+            "response": "但这至少比只看红灯强。"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_007",
@@ -1880,7 +1930,11 @@
               "ED_D3_R7_START"
             ],
             "oldText": "至少比只看红灯强。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "但这至少比只看红灯强。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -1966,7 +2020,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_042",
             "next": "",
-            "response": "别再说自己没有选择。"
+            "response": "别再说自己没有选择！"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_007",
@@ -1984,7 +2038,11 @@
               "ED_D3_R7_START"
             ],
             "oldText": "别再说自己没有选择。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "别再说自己没有选择！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -2044,7 +2102,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_044",
             "next": "",
-            "response": "是。但别把它叫痊愈。"
+            "response": "但别把它叫痊愈。"
           },
           "set": {
             "next": "P04_D3_R1_CLOSE_045",
@@ -2062,7 +2120,11 @@
               "ED_D3_R6_O3_T3"
             ],
             "oldText": "是。但别把它叫痊愈。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "但别把它叫痊愈。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -2070,7 +2132,7 @@
           "expected": {
             "id": "P04_D3_R1_CLOSE_045",
             "next": "",
-            "response": "我希望门由人打开，不是机器。"
+            "response": "我希望门由人打开，不是机器！"
           },
           "set": {
             "next": "P04_D3_R1_COMMON_007",
@@ -2088,7 +2150,11 @@
               "ED_D3_R7_START"
             ],
             "oldText": "我希望门由人打开，不是机器。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "response": "我希望门由人打开，不是机器！"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -2545,7 +2611,7 @@
             "actionResponse": "你们终于会得到一间安静的房。"
           },
           "set": {
-            "next": "P04_D3_R1_CLOSE_046",
+            "next": "END_DAY3",
             "round": "R8"
           },
           "kind": "restore-old-corresponding-branch",
@@ -2560,7 +2626,8 @@
               "ED_END_TREATMENT"
             ],
             "oldText": "你们终于会得到一间安静的房。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentTailDecision": "User approved the new source tail as complete: terminate this final disposition response without restoring removed old rows239-241/255."
           }
         },
         {
@@ -2623,7 +2690,7 @@
             "actionResponse": "你选择了安静。"
           },
           "set": {
-            "next": "P04_D3_R1_ACTION_014",
+            "next": "END_DAY3",
             "round": "R8"
           },
           "kind": "restore-old-corresponding-branch",
@@ -2638,33 +2705,8 @@
               "ED_D3_PURIFY_T3"
             ],
             "oldText": "你选择了安静。",
-            "match": "same-text"
-          }
-        },
-        {
-          "row": 255,
-          "expected": {
-            "id": "P04_D3_R1_ACTION_014",
-            "next": "",
-            "actionResponse": "别再叫我病人。病人还能被治疗。"
-          },
-          "set": {
-            "next": "P04_D3_R1_CLOSE_047",
-            "round": "R8"
-          },
-          "kind": "restore-old-corresponding-branch",
-          "evidence": {
-            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
-            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
-            "oldRow": 309,
-            "oldId": "ED_D3_PURIFY_T3",
-            "oldRound": "R8",
-            "oldNext": "ED_END_PURIFY",
-            "resolvedOldTargets": [
-              "ED_END_PURIFY"
-            ],
-            "oldText": "别再叫我病人。病人还能被治疗。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentTailDecision": "User approved the new source tail as complete: terminate this final disposition response without restoring removed old rows239-241/255."
           }
         },
         {
@@ -2724,7 +2766,7 @@
           "expected": {
             "id": "P04_D3_R1_ACTION_007",
             "next": "",
-            "actionResponse": "我知道门外还有什么。我还是想自己走出去。"
+            "actionResponse": "我知道门外还有什么，我还是想自己走出去。"
           },
           "set": {
             "next": "P04_D3_R1_ACTION_008",
@@ -2742,7 +2784,11 @@
               "ED_D3_RELEASE_T3"
             ],
             "oldText": "我知道门外还有什么。我还是想自己走出去。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "actionResponse": "我知道门外还有什么，我还是想自己走出去。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text."
           }
         },
         {
@@ -2750,10 +2796,10 @@
           "expected": {
             "id": "P04_D3_R1_ACTION_008",
             "next": "",
-            "actionResponse": "打开门。让我保留后果。"
+            "actionResponse": "打开门，让我保留后果。"
           },
           "set": {
-            "next": "P04_D3_R1_CLOSE_048",
+            "next": "END_DAY3",
             "round": "R8"
           },
           "kind": "restore-old-corresponding-branch",
@@ -2768,82 +2814,12 @@
               "ED_END_RELEASE"
             ],
             "oldText": "打开门。让我保留后果。",
-            "match": "same-text"
-          }
-        },
-        {
-          "row": 239,
-          "expected": {
-            "id": "P04_D3_R1_CLOSE_046",
-            "next": "",
-            "response": "第三次治疗后，埃德温的回应停止。档案以“疗程达到上限”结束，不直接展示死亡。"
-          },
-          "set": {
-            "next": "END_DAY3",
-            "round": "R8",
-            "narration": "true"
-          },
-          "kind": "restore-old-corresponding-branch",
-          "evidence": {
-            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
-            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
-            "oldRow": 314,
-            "oldId": "ED_END_TREATMENT",
-            "oldRound": "END",
-            "oldNext": "",
-            "resolvedOldTargets": [],
-            "oldText": "第三次治疗后，埃德温的回应停止。档案以“疗程达到上限”结束，不直接展示死亡。",
-            "match": "same-text"
-          }
-        },
-        {
-          "row": 240,
-          "expected": {
-            "id": "P04_D3_R1_CLOSE_047",
-            "next": "",
-            "response": "净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。"
-          },
-          "set": {
-            "next": "END_DAY3",
-            "round": "R8",
-            "narration": "true"
-          },
-          "kind": "restore-old-corresponding-branch",
-          "evidence": {
-            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
-            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
-            "oldRow": 315,
-            "oldId": "ED_END_PURIFY",
-            "oldRound": "END",
-            "oldNext": "",
-            "resolvedOldTargets": [],
-            "oldText": "净化程序完成。埃德温从队列中消失，记录没有交代他之后的命运。",
-            "match": "same-text"
-          }
-        },
-        {
-          "row": 241,
-          "expected": {
-            "id": "P04_D3_R1_CLOSE_048",
-            "next": "",
-            "response": "埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。"
-          },
-          "set": {
-            "next": "END_DAY3",
-            "round": "R8",
-            "narration": "true"
-          },
-          "kind": "restore-old-corresponding-branch",
-          "evidence": {
-            "oldFile": "【对话】战场医生·埃德温v1.0.xlsx",
-            "oldSha256": "8f4deaf8b619d4856cb3ef0c4f196a2047cc088dad15c393820058277aaaadac",
-            "oldRow": 316,
-            "oldId": "ED_END_RELEASE",
-            "oldRound": "END",
-            "oldNext": "",
-            "resolvedOldTargets": [],
-            "oldText": "埃德温走向门外。释放不证明他已经康复，只代表他保留了自己的感受与选择。",
-            "match": "same-text"
+            "match": "same-text",
+            "currentSourceText": {
+              "actionResponse": "打开门，让我保留后果。"
+            },
+            "reuseBasis": "Stable source ID and graph position; current authored text supersedes historical evidence text.",
+            "currentTailDecision": "User approved the new source tail as complete: terminate this final disposition response without restoring removed old rows239-241/255."
           }
         },
         {
@@ -2936,10 +2912,33 @@
             "rule": "Final action response with no authored successor; current meeting ends after it."
           }
         }
+      ],
+      "previousSourceSha256": "de0c574fff1927218a18ef96c40e8de12519292d8d9c840c61209c8bf4a5cc8e",
+      "retiredRepairs": [
+        {
+          "row": 255,
+          "id": "P04_D3_R1_ACTION_014",
+          "reason": "Removed from updated source; do not restore deleted dialogue."
+        },
+        {
+          "row": 239,
+          "id": "P04_D3_R1_CLOSE_046",
+          "reason": "Removed from updated source; do not restore deleted dialogue."
+        },
+        {
+          "row": 240,
+          "id": "P04_D3_R1_CLOSE_047",
+          "reason": "Removed from updated source; do not restore deleted dialogue."
+        },
+        {
+          "row": 241,
+          "id": "P04_D3_R1_CLOSE_048",
+          "reason": "Removed from updated source; do not restore deleted dialogue."
+        }
       ]
     },
     "priest": {
-      "sourceSha256": "b2e2bb5560a8526b837ea015c0f50f04aaf6de819bc6dccd133d5576ae07d3bd",
+      "sourceSha256": "59fd8209d7cf839e4360323401a2f7edb6fef216fe1dce9bb1b80798c3868647",
       "excludedRanges": [],
       "repairs": [
         {
@@ -2955,84 +2954,10 @@
           "evidence": {
             "continuationRow": 67,
             "continuationId": "P01_D1_R7_ACTION_007",
-            "continuationText": "不要让我等待太久…",
+            "continuationText": "不会让你等待太久…",
+            "previousContinuationText": "不要让我等待太久…",
             "continuationNext": "END_DAY1",
             "rule": "Preserve final authored linear response before reaching the same terminal; no choice or numeric side effect added."
-          }
-        },
-        {
-          "row": 62,
-          "expected": {
-            "id": "P01_D1_R7_ACTION_003",
-            "portrait": "JN05"
-          },
-          "set": {
-            "portrait": "JN04"
-          },
-          "kind": "user-confirmed-portrait-remap",
-          "evidence": {
-            "cell": "L62",
-            "userDecision": "2026-10-22: map all remaining JN05 dialogue references to JN04 to match the new portrait definitions."
-          }
-        },
-        {
-          "row": 63,
-          "expected": {
-            "id": "P01_D1_R7_ACTION_004",
-            "portrait": "JN05"
-          },
-          "set": {
-            "portrait": "JN04"
-          },
-          "kind": "user-confirmed-portrait-remap",
-          "evidence": {
-            "cell": "L63",
-            "userDecision": "2026-10-22: map all remaining JN05 dialogue references to JN04 to match the new portrait definitions."
-          }
-        },
-        {
-          "row": 67,
-          "expected": {
-            "id": "P01_D1_R7_ACTION_007",
-            "portrait": "JN05"
-          },
-          "set": {
-            "portrait": "JN04"
-          },
-          "kind": "user-confirmed-portrait-remap",
-          "evidence": {
-            "cell": "L67",
-            "userDecision": "2026-10-22: map all remaining JN05 dialogue references to JN04 to match the new portrait definitions."
-          }
-        },
-        {
-          "row": 121,
-          "expected": {
-            "id": "P01_D2_R7_ACTION_003",
-            "portrait": "JN05"
-          },
-          "set": {
-            "portrait": "JN04"
-          },
-          "kind": "user-confirmed-portrait-remap",
-          "evidence": {
-            "cell": "L121",
-            "userDecision": "2026-10-22: map all remaining JN05 dialogue references to JN04 to match the new portrait definitions."
-          }
-        },
-        {
-          "row": 122,
-          "expected": {
-            "id": "P01_D2_R7_ACTION_004",
-            "portrait": "JN05"
-          },
-          "set": {
-            "portrait": "JN04"
-          },
-          "kind": "user-confirmed-portrait-remap",
-          "evidence": {
-            "cell": "L122",
-            "userDecision": "2026-10-22: map all remaining JN05 dialogue references to JN04 to match the new portrait definitions."
           }
         },
         {
@@ -3064,6 +2989,39 @@
             "cell": "L179",
             "userDecision": "2026-10-22: map all remaining JN05 dialogue references to JN04 to match the new portrait definitions."
           }
+        }
+      ],
+      "previousSourceSha256": "b2e2bb5560a8526b837ea015c0f50f04aaf6de819bc6dccd133d5576ae07d3bd",
+      "retiredRepairs": [
+        {
+          "row": 62,
+          "id": "P01_D1_R7_ACTION_003",
+          "currentPortrait": "JN04",
+          "reason": "Updated workbook supplies its own current portrait; retain the source value."
+        },
+        {
+          "row": 63,
+          "id": "P01_D1_R7_ACTION_004",
+          "currentPortrait": "JN04",
+          "reason": "Updated workbook supplies its own current portrait; retain the source value."
+        },
+        {
+          "row": 67,
+          "id": "P01_D1_R7_ACTION_007",
+          "currentPortrait": "JN03",
+          "reason": "Updated workbook supplies its own current portrait; retain the source value."
+        },
+        {
+          "row": 121,
+          "id": "P01_D2_R7_ACTION_003",
+          "currentPortrait": "JN04",
+          "reason": "Updated workbook supplies its own current portrait; retain the source value."
+        },
+        {
+          "row": 122,
+          "id": "P01_D2_R7_ACTION_004",
+          "currentPortrait": "JN04",
+          "reason": "Updated workbook supplies its own current portrait; retain the source value."
         }
       ]
     }

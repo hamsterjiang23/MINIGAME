@@ -151,15 +151,15 @@ namespace MiniGame.UnityHost.Tests
             GameObject owner = null;
             var groups = new[]
             {
-                new { PatientId = "child", PortraitIds = new[] { "ML01", "ML02", "ML03" } },
-                new { PatientId = "former-ruler", PortraitIds = new[] { "VV01", "VV02", "VV03", "VV04" } },
-                new { PatientId = "battlefield-doctor", PortraitIds = new[] { "ED01", "ED02", "ED03", "ED04" } },
-                new { PatientId = "diplomat", PortraitIds = new[] { "AD01", "AD02", "AD03", "AD04" } },
-                new { PatientId = "priest", PortraitIds = new[] { "JN01", "JN02", "JN03", "JN04" } },
-                new { PatientId = "tutorial", PortraitIds = new[] { "D0_01", "D0_02", "D0_03" } }
+                new { PatientId = "child", PortraitIds = new[] { "ML01", "ML02", "ML03" }, SourceIds = new[] { "ML01", "ML02", "ML03" } },
+                new { PatientId = "former-ruler", PortraitIds = new[] { "VV01", "VV02", "VV03", "VV04" }, SourceIds = new[] { "VV01", "VV02", "VV03", "VV04" } },
+                new { PatientId = "battlefield-doctor", PortraitIds = new[] { "ED01", "ED02", "ED03", "ED04" }, SourceIds = new[] { "ED04", "ED01", "ED03", "ED02" } },
+                new { PatientId = "diplomat", PortraitIds = new[] { "AD01", "AD02", "AD03", "AD04" }, SourceIds = new[] { "AD01", "AD02", "AD03", "AD04" } },
+                new { PatientId = "priest", PortraitIds = new[] { "JN01", "JN02", "JN03", "JN04" }, SourceIds = new[] { "JN04", "JN01", "JN02", "JN03" } },
+                new { PatientId = "tutorial", PortraitIds = new[] { "D0_01", "D0_02", "D0_03" }, SourceIds = new[] { "D0_02", "D0_03", "D0_01" } }
             };
-            var targets = groups.SelectMany(group => group.PortraitIds.Select(id =>
-                new { group.PatientId, PortraitId = id })).ToArray();
+            var targets = groups.SelectMany(group => group.PortraitIds.Select((id, index) =>
+                new { group.PatientId, PortraitId = id, SourceId = group.SourceIds[index] })).ToArray();
             Assert.That(targets, Has.Length.EqualTo(22));
             try
             {
@@ -169,8 +169,9 @@ namespace MiniGame.UnityHost.Tests
                 {
                     var portrait = catalog.Find(target.PortraitId);
                     Assert.That(portrait, Is.Not.Null, target.PortraitId);
-                    Assert.That(portrait.texture.name, Is.EqualTo(target.PortraitId),
-                        "The monitor must use the named PNG rather than an older portrait sheet.");
+                    Assert.That(portrait.texture.name, Is.EqualTo(target.SourceId),
+                        "The monitor must use the artwork pose assigned to the workbook portrait ID.");
+                    Assert.That(portrait.name, Is.EqualTo(target.SourceId));
                     int before = feed.RenderedFrames;
                     feed.Show(target.PatientId, portrait, true);
                     Assert.That(feed.PatientId, Is.EqualTo(target.PatientId));
@@ -181,6 +182,11 @@ namespace MiniGame.UnityHost.Tests
                     Capture(feed.Output, "monitor-patient-" + target.PatientId + "-" + target.PortraitId);
                     Assert.That(currentOutput.Count(pixel => pixel.r > 20 || pixel.g > 20 || pixel.b > 20),
                         Is.GreaterThan(1000), target.PortraitId + " must render a nonempty GPU frame.");
+                    long red = currentOutput.Sum(pixel => (long)pixel.r);
+                    long green = currentOutput.Sum(pixel => (long)pixel.g);
+                    long blue = currentOutput.Sum(pixel => (long)pixel.b);
+                    Assert.That(red, Is.GreaterThan(green * 1.02), target.PortraitId + " must retain the original warm monitor filter.");
+                    Assert.That(green, Is.GreaterThan(blue * 1.1), target.PortraitId + " must be amber, not a gray/color bypass.");
                     if (previousOutput != null)
                         Assert.That(previousOutput.Zip(currentOutput, (a, b) => a.Equals(b) ? 0 : 1).Sum(),
                             Is.GreaterThan(100), "Changing portrait must replace the actual output pixels.");

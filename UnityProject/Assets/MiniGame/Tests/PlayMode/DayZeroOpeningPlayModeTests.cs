@@ -165,8 +165,8 @@ namespace MiniGame.UnityHost.Tests
             var guide = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
             yield return Until(() => guide.IsShowing, "tutorial patient surveillance feed");
             var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
-            var firstGuide = catalog.Find("D0_01");
-            Assert.That(firstGuide, Is.Not.Null, "The new tutorial character must be registered as D0_01.");
+            var firstGuide = catalog.Find("D0_03");
+            Assert.That(firstGuide, Is.Not.Null, "The new tutorial character must be registered as D0_03.");
             Assert.That(guide.PatientId, Is.EqualTo("tutorial"));
             Assert.That(guide.CurrentSprite, Is.SameAs(firstGuide));
             Assert.That(guide.GetComponent<RawImage>().texture, Is.SameAs(guide.Output));
@@ -174,11 +174,11 @@ namespace MiniGame.UnityHost.Tests
             #if UNITY_EDITOR
             string guidePath = UnityEditor.AssetDatabase.GetAssetPath(firstGuide.texture);
             Assert.That(guidePath, Does.Contain("/NamedPortraits/"), "Day0 must use the supplied character PNG, not a legacy portrait.");
-            TestContext.WriteLine("Day0 guide D0_01: " + guidePath);
+            TestContext.WriteLine("Day0 guide D0_03: " + guidePath);
             #endif
             Assert.That(host.Screen.PowerPhase, Is.EqualTo(TerminalPowerPhase.Running));
             CaptureComposite("day0-opening-terminal");
-            CaptureComposite("day0-guide-D0_01");
+            CaptureComposite("day0-guide-D0_03");
 
             var completed = new HashSet<string>();
             var sourcePackage = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
@@ -328,7 +328,7 @@ namespace MiniGame.UnityHost.Tests
             var guide = host.Screen.GetComponentsInChildren<PatientSurveillanceFeed>(true).Single();
             yield return Until(() => guide.IsShowing, "restored tutorial feed");
             Assert.That(guide.PatientId, Is.EqualTo("tutorial"));
-            Assert.That(guide.CurrentSprite, Is.SameAs(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find("D0_01")));
+            Assert.That(guide.CurrentSprite, Is.SameAs(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find("D0_03")));
             host.Runtime.SetPaused(true);
             yield return null;
             float monitorTime = guide.PresentationTime;
@@ -340,7 +340,7 @@ namespace MiniGame.UnityHost.Tests
             host.RestoreCheckpoint(activeSave);
             yield return Until(() => guide.IsShowing && guide.CurrentSprite != null, "restored active tutorial portrait");
             Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False, "An active tutorial save must not restart the opening logo.");
-            Assert.That(guide.CurrentSprite, Is.SameAs(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find("D0_01")),
+            Assert.That(guide.CurrentSprite, Is.SameAs(Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog").Find("D0_03")),
                 "A tutorial line without an explicit portrait must restore its registered base portrait.");
         }
 

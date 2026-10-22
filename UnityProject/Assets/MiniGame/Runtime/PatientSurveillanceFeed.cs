@@ -6,9 +6,11 @@ using UnityEngine.UI;
 namespace MiniGame.UnityHost
 {
     /// <summary>Presentation-only cameras. No patient decisions or session state are stored here.</summary>
+    [ExecuteAlways]
     public sealed class PatientSurveillanceFeed : MonoBehaviour
     {
         public const int StageLayer = 31;
+        private const string StageName = "Patient surveillance stages";
         private int stageSlot = -1;
         private readonly Dictionary<string, PatientMonitorRoom> rooms = new Dictionary<string, PatientMonitorRoom>();
         private PatientMonitorProfile profile;
@@ -98,14 +100,17 @@ namespace MiniGame.UnityHost
                 Debug.LogError("人物监控室 Shader 不可用，回退到原立绘。", this);
                 return;
             }
-            stage = new GameObject("Patient surveillance stages") { hideFlags = HideFlags.DontSave };
+            CleanupOrphanedEditorStages();
+            stage = new GameObject(StageName) { hideFlags = HideFlags.DontSave };
             // Preview and gameplay feeds can coexist. They share the CCTV layer, so place
             // their stages beyond each other's far plane rather than photographing both.
             // Inspect live stages so an Editor script reload cannot reset a static slot pool.
             var occupied = new HashSet<int>();
-            foreach (var other in Resources.FindObjectsOfTypeAll<PatientSurveillanceFeed>())
-                if (other != this && other.stage != null)
-                    occupied.Add(Mathf.RoundToInt(other.stage.transform.position.z / 128f));
+            // A preview owner can disappear during a reload while its native renderers survive.
+            // Reserve the actual generated roots, including roots without a managed feed owner.
+            foreach (var other in Resources.FindObjectsOfTypeAll<GameObject>())
+                if (other != stage && IsGeneratedStage(other))
+                    occupied.Add(Mathf.RoundToInt(other.transform.position.z / 128f));
             stageSlot = 0;
             while (occupied.Contains(stageSlot)) stageSlot++;
             stage.transform.position = new Vector3(6000, -6000, stageSlot * 128f);
@@ -257,7 +262,8 @@ namespace MiniGame.UnityHost
                 actor.transform.position = stage.transform.position + new Vector3((bottom.x * 2 - 1) * stageCamera.aspect, portraitY, 0) + settings.ActorOffset;
             }
             signalMaterial.SetFloat("_Clock", clock);
-            signalMaterial.SetFloat("_OriginalColor", backdrop != null ? 1 : 0);
+            // Both the ward plate and the person use the original amber CCTV transfer.
+            signalMaterial.SetFloat("_OriginalColor", 0);
             signalMaterial.SetFloat("_Exposure", Mathf.Clamp(profile.Exposure, .25f, 2));
             signalMaterial.SetFloat("_Saturation", Mathf.Clamp01(profile.Saturation));
             signalMaterial.SetFloat("_Noise", Mathf.Clamp(profile.Noise, 0, .2f));
@@ -294,26 +300,50 @@ namespace MiniGame.UnityHost
             VisibilityChanged?.Invoke(visible);
         }
         private void OnDisable() => HideFeed();
+        public void DisposePresentation() => ReleaseStage();
         private void ReleaseStage()
         {
+            bool immediate = !Application.isPlaying;
+#if UNITY_EDITOR
+            immediate |= stage != null && (!stage.scene.IsValid() || UnityEditor.SceneManagement.EditorSceneManager.IsPreviewScene(stage.scene));
+#endif
             if (image != null) { image.enabled = false; image.texture = null; }
             NotifyVisibility();
             if (stageCamera != null) stageCamera.targetTexture = null;
-            if (stage != null) { stage.SetActive(false); Release(stage); }
+            if (stage != null)
+                foreach (var room in stage.GetComponentsInChildren<PatientMonitorRoom>(true)) room.DisposePresentation(immediate);
+            if (stage != null) { stage.SetActive(false); Release(stage, immediate); }
             stageSlot = -1;
-            if (actorMaterial != null) Release(actorMaterial);
-            if (backdropSprite != null) Release(backdropSprite);
-            if (signalMaterial != null) Release(signalMaterial);
-            if (source != null) { source.Release(); Release(source); }
-            if (output != null) { output.Release(); Release(output); }
+            if (actorMaterial != null) Release(actorMaterial, immediate);
+            if (backdropSprite != null) Release(backdropSprite, immediate);
+            if (signalMaterial != null) Release(signalMaterial, immediate);
+            if (source != null) { source.Release(); Release(source, immediate); }
+            if (output != null) { output.Release(); Release(output, immediate); }
             rooms.Clear();
             stage = null; activeRoom = null; stageCamera = null; actor = null;
             backdrop = null; backdropSprite = null;
             source = null; output = null;
         }
-        private static void Release(Object value)
+        private static bool IsGeneratedStage(GameObject value) => value != null && value.name == StageName
+            && value.transform.parent == null && (value.hideFlags & HideFlags.DontSave) != 0;
+
+        public static int CleanupOrphanedEditorStages()
         {
-            if (Application.isPlaying) Destroy(value); else DestroyImmediate(value);
+            int removed = 0;
+#if UNITY_EDITOR
+            foreach (var root in Resources.FindObjectsOfTypeAll<GameObject>())
+                if (IsGeneratedStage(root) && !root.scene.IsValid() && !UnityEditor.EditorUtility.IsPersistent(root))
+                {
+                    foreach (var room in root.GetComponentsInChildren<PatientMonitorRoom>(true)) room.DisposePresentation(true);
+                    DestroyImmediate(root); removed++;
+                }
+#endif
+            return removed;
+        }
+
+        private static void Release(Object value, bool immediate)
+        {
+            if (immediate) DestroyImmediate(value); else Destroy(value);
         }
         private void OnDestroy() => ReleaseStage();
     }

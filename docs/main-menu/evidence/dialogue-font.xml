@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.7094979">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="299" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.709498" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1308" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DialogueUpdate20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="239" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.700598" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="110556" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1309" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="239" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.669497" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1310" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="239" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.636157" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1311" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="239" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.602784" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1132" name="MainMenuFlowPlayModeTests" fullname="MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests" classname="MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:53Z" duration="4.568708" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1134" name="EscapePauseMenuReturnsFromDayZeroOpeningWithoutConsumingItsFirstClick" fullname="MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.EscapePauseMenuReturnsFromDayZeroOpeningWithoutConsumingItsFirstClick" methodname="EscapePauseMenuReturnsFromDayZeroOpeningWithoutConsumingItsFirstClick" classname="MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests" runstate="Runnable" seed="1310690288" result="Passed" start-time="2026-10-22 11:50:48Z" end-time="2026-10-22 11:50:51Z" duration="3.169634" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="90000" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.EscapePauseMenuReturnsFromDayZeroOpeningWithoutConsumingItsFirstClick
+MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.1-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_CAPTURE F:\AAMINIGAME\MINIGAME\Artifacts\MainMenu20261022\captures\pause-menu-font.png
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.EscapePauseMenuReturnsFromDayZeroOpeningWithoutConsumingItsFirstClick Passed
+]]></output>
+              </test-case>
+              <test-case id="1135" name="ReturningDuringNativeDayOneDialogueFreezesTypingWithoutAdvancingItsSourceLine" fullname="MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.ReturningDuringNativeDayOneDialogueFreezesTypingWithoutAdvancingItsSourceLine" methodname="ReturningDuringNativeDayOneDialogueFreezesTypingWithoutAdvancingItsSourceLine" classname="MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests" runstate="Runnable" seed="1043181140" result="Passed" start-time="2026-10-22 11:50:51Z" end-time="2026-10-22 11:50:53Z" duration="1.361201" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="90000" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.ReturningDuringNativeDayOneDialogueFreezesTypingWithoutAdvancingItsSourceLine
+MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.1-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_MENU_DIALOGUE native Day1 reception choice; day=1; phase=Work; input=Dialogue; stage=NormalDialogue; node=child__P02_D1_R1_OPTION_001__MENU; cue=/; paused=False; lineRevealed=True; linePages=0; transitionLocked=False; power=Running; menu=Hidden; body=; transcript=0; recent=; yarn=bound=True; project=True; enabled=True; epoch=4; pump=True; stopping=False; run=none; nodeTaskComplete=True; presenterPending=0; runnerActive=False; runnerTaskComplete=True
+MINIGAME_MENU_DIALOGUE native Day1 reception choice READY; day=1; phase=Work; input=Dialogue; stage=NormalDialogue; node=child__P02_D1_R1_OPTION_001__MENU; cue=/; paused=False; lineRevealed=True; linePages=0; transitionLocked=False; power=Running; menu=Hidden; body=; transcript=0; recent=; yarn=bound=True; project=True; enabled=True; epoch=4; pump=False; stopping=False; run=dialogue:day1:child:child__P02_D1_R1_OPTION_001__MENU; nodeTaskComplete=False; presenterPending=1; runnerActive=True; runnerTaskComplete=False
+MINIGAME_MENU_DIALOGUE before native reception click; day=1; phase=Work; input=Dialogue; stage=NormalDialogue; node=child__P02_D1_R1_OPTION_001__MENU; cue=/; paused=False; lineRevealed=True; linePages=0; transitionLocked=False; power=Running; menu=Hidden; body=; transcript=0; recent=; yarn=bound=True; project=True; enabled=True; epoch=4; pump=False; stopping=False; run=dialogue:day1:child:child__P02_D1_R1_OPTION_001__MENU; nodeTaskComplete=False; presenterPending=1; runnerActive=True; runnerTaskComplete=False
+MINIGAME_MENU_DIALOGUE native Day1 source line begins typing; day=1; phase=Work; input=Dialogue; stage=NormalDialogue; node=child__P02_D1_R1_OPTION_001__MENU; cue=/; paused=False; lineRevealed=True; linePages=0; transitionLocked=False; power=Running; menu=Hidden; body=; transcript=0; recent=; yarn=bound=True; project=True; enabled=True; epoch=4; pump=False; stopping=False; run=dialogue:day1:child:child__P02_D1_R1_OPTION_001__MENU; nodeTaskComplete=False; presenterPending=1; runnerActive=True; runnerTaskComplete=False
+MINIGAME_MENU_DIALOGUE native Day1 source line begins typing READY; day=1; phase=Work; input=Dialogue; stage=NormalDialogue; node=child__P02_D1_R2_COMMON_001; cue=/; paused=False; lineRevealed=False; linePages=1; transitionLocked=False; power=Running; menu=Hidden; body=你; transcript=2; recent=child__P02_D1_R1_OPTION_001:completed=False:player=True,child__P02_D1_R2_COMMON_001:completed=False:player=False; yarn=bound=True; project=True; enabled=True; epoch=4; pump=True; stopping=False; run=dialogue:day1:child:child__P02_D1_R2_COMMON_001; nodeTaskComplete=False; presenterPending=1; runnerActive=True; runnerTaskComplete=False
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.MainMenuFlowPlayModeTests.ReturningDuringNativeDayOneDialogueFreezesTypingWithoutAdvancingItsSourceLine Passed
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -21,17 +21,28 @@ namespace MiniGame.UnityHost.Tests
             "D0_01", "D0_02", "D0_03"
         };
 
-        [TestCaseSource(nameof(SourceIds))]
-        public void CatalogUsesTheNamedPngAndKeepsVisiblePixelsAndTransparency(string id)
+        // Independent workbook-to-artwork expectations, not computed by the importer under test.
+        private static readonly string[][] ExpectedMappings =
+        {
+            new[] { "ML01", "ML01" }, new[] { "ML02", "ML02" }, new[] { "ML03", "ML03" },
+            new[] { "VV01", "VV01" }, new[] { "VV02", "VV02" }, new[] { "VV03", "VV03" }, new[] { "VV04", "VV04" },
+            new[] { "AD01", "AD01" }, new[] { "AD02", "AD02" }, new[] { "AD03", "AD03" }, new[] { "AD04", "AD04" },
+            new[] { "ED01", "ED01" }, new[] { "ED02", "ED02" }, new[] { "ED03", "ED03" }, new[] { "ED04", "ED04" },
+            new[] { "JN01", "JN01" }, new[] { "JN02", "JN02" }, new[] { "JN03", "JN03" }, new[] { "JN04", "JN04" },
+            new[] { "D0_01", "D0_01" }, new[] { "D0_02", "D0_02" }, new[] { "D0_03", "D0_03" }
+        };
+
+        [TestCaseSource(nameof(ExpectedMappings))]
+        public void CatalogUsesTheWorkbookPoseAndKeepsVisiblePixelsAndTransparency(string id, string sourceId)
         {
             var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
             Assert.That(catalog, Is.Not.Null);
             var sprite = catalog.Find(id);
             Assert.That(sprite, Is.Not.Null, id);
-            string assetPath = NamedDirectory + "/" + id + ".png";
+            string assetPath = NamedDirectory + "/" + sourceId + ".png";
             Assert.That(AssetDatabase.GetAssetPath(sprite.texture), Is.EqualTo(assetPath),
                 "Catalog must not retain a sprite from an older sheet.");
-            Assert.That(sprite.name, Is.EqualTo(id));
+            Assert.That(sprite.name, Is.EqualTo(sourceId));
             Assert.That(AssetDatabase.LoadAllAssetsAtPath(assetPath).OfType<Sprite>(), Does.Contain(sprite));
             var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
             Assert.That(importer, Is.Not.Null);
@@ -67,17 +78,80 @@ namespace MiniGame.UnityHost.Tests
             finally { Object.DestroyImmediate(source); }
         }
 
-        [TestCase("ML04", "ML03")]
-        [TestCase("ML05", "ML03")]
-        [TestCase("JN05", "JN04")]
-        public void LegacyPortraitIdsResolveToTheNewCharacterSprite(string legacyId, string namedId)
+        [TestCase("ML04")]
+        [TestCase("ML05")]
+        [TestCase("JN05")]
+        public void LegacyPortraitIdsKeepTheirOwnNamedSprite(string legacyId)
         {
             var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
             Assert.That(catalog, Is.Not.Null);
-            var target = catalog.Find(namedId);
+            var target = catalog.Find(legacyId);
             Assert.That(target, Is.Not.Null);
-            Assert.That(catalog.Find(legacyId), Is.SameAs(target));
-            Assert.That(AssetDatabase.GetAssetPath(target.texture), Is.EqualTo(NamedDirectory + "/" + namedId + ".png"));
+            Assert.That(target.name, Is.EqualTo(legacyId));
+            Assert.That(AssetDatabase.GetAssetPath(target.texture), Is.EqualTo("Assets/MiniGame/Art/Characters/" + legacyId + ".png"));
+        }
+
+        [Test]
+        public void NamedImporterResolvesEachWorkbookPoseDirectlyToItsSourcePng()
+        {
+            foreach (var mapping in ExpectedMappings)
+                Assert.That(MiniGame.UnityHost.Editor.NamedPortraitImport.NamedId(mapping[0]),
+                    Is.EqualTo(mapping[1]), mapping[0]);
+        }
+
+        [TestCase("battlefield-doctor", "ED01", "ED01")]
+        [TestCase("priest", "JN01", "JN01")]
+        [TestCase("tutorial", "D0_01", "D0_01")]
+        public void NeutralFallbackKeepsTheOriginalNeutralArtwork(string patientId, string logicalId, string sourceId)
+        {
+            Assert.That(PortraitCatalog.BasePortrait(patientId), Is.EqualTo(logicalId));
+            var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+            Assert.That(catalog, Is.Not.Null);
+            var sprite = catalog.Find(logicalId);
+            Assert.That(sprite, Is.Not.Null);
+            Assert.That(sprite.name, Is.EqualTo(sourceId));
+        }
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void ReimportPreservesWorkbookPosesAndRepairsMissingEntries(bool removeReorderedEntries)
+        {
+            const string catalogPath = "Assets/Resources/MiniGame/PortraitCatalog.asset";
+            string diskPath = ProjectPath(catalogPath);
+            byte[] original = File.ReadAllBytes(diskPath);
+            var catalog = AssetDatabase.LoadAssetAtPath<PortraitCatalog>(catalogPath);
+            Assert.That(catalog, Is.Not.Null);
+            var playerOne = catalog.Find("SJ01");
+            var playerTwo = catalog.Find("SJ02");
+            try
+            {
+                if (removeReorderedEntries)
+                {
+                    var serialized = new SerializedObject(catalog);
+                    var entries = serialized.FindProperty("entries");
+                    for (int i = entries.arraySize - 1; i >= 0; i--)
+                    {
+                        string id = entries.GetArrayElementAtIndex(i).FindPropertyRelative("id").stringValue;
+                        if (id == "ED01" || id == "JN01" || id == "D0_01") entries.DeleteArrayElementAtIndex(i);
+                    }
+                    serialized.ApplyModifiedPropertiesWithoutUndo();
+                }
+                MiniGame.UnityHost.Editor.NamedPortraitImport.Run();
+                foreach (var mapping in ExpectedMappings)
+                {
+                    var sprite = catalog.Find(mapping[0]);
+                    Assert.That(sprite, Is.Not.Null, mapping[0]);
+                    Assert.That(AssetDatabase.GetAssetPath(sprite),
+                        Is.EqualTo(NamedDirectory + "/" + mapping[1] + ".png"), mapping[0]);
+                }
+                Assert.That(catalog.Find("SJ01"), Is.SameAs(playerOne));
+                Assert.That(catalog.Find("SJ02"), Is.SameAs(playerTwo));
+            }
+            finally
+            {
+                File.WriteAllBytes(diskPath, original);
+                AssetDatabase.ImportAsset(catalogPath, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+            }
         }
 
         [TestCase("child", 3)]

@@ -23,6 +23,7 @@ namespace MiniGame.Core
         [JsonProperty(Required = Required.Always)] public GamePhase Phase { get; set; }
         [JsonProperty(Required = Required.Always)] public EndingType Ending { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public int Rebellion { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)] public int SelfReviewLineIndex { get; set; }
         [JsonProperty(Required = Required.Always)] public List<PatientSnapshot> Patients { get; set; } = new List<PatientSnapshot>();
         [JsonProperty(Required = Required.Always)] public List<DaySnapshot> Days { get; set; } = new List<DaySnapshot>();
         [JsonProperty(Required = Required.Always)] public List<string> Queue { get; set; } = new List<string>();

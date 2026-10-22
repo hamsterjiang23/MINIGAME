@@ -36,7 +36,7 @@ namespace MiniGame.UnityHost
         private Font font;
         private int voiceIndex = -1;
         private RoomDreamEnding roomEnding;
-        private bool previewMode;
+        private bool previewMode, thanksActive;
         public bool IsPreview => previewMode;
         public bool IsRoomCubemapEnding => roomEnding != null;
         public float WorldTime => worldTime;
@@ -49,6 +49,7 @@ namespace MiniGame.UnityHost
         public bool Paused => MiniGameSessionHost.Current?.Runtime?.GetView().Paused ?? localPaused;
         public string CurrentSubtitle => caption != null ? caption.text : string.Empty;
         public bool CanLieDown => initialized && !Paused && state.Phase == BeachEndingPhase.Walking
+            && (roomEnding == null || roomEnding.Ready)
             && (roomEnding != null ? roomEnding.IsNearBed(Safe(profile.BedInteractionDistance, 1.5f, .1f))
                 : pathLength - state.WalkDistance <= Safe(profile.BedInteractionDistance, 1.5f, .1f));
         private float MaximumWalkDistance => Mathf.Max(0, pathLength
@@ -88,6 +89,7 @@ namespace MiniGame.UnityHost
                 return;
             }
             initialized = true;
+            PlayerBrightnessEffect.EnsureFor(viewCamera);
             startPosition = approach.position;
             standingRotation = approach.rotation;
             walkDirection = Vector3.ProjectOnPlane(approach.forward, Vector3.up).normalized;
@@ -113,6 +115,7 @@ namespace MiniGame.UnityHost
 
         private void Update()
         {
+            if (MainMenuController.BlocksGameplayInput) return;
             if (!initialized || UseExternalClock || roomEnding != null && !roomEnding.Ready) return;
             if (Input.GetKeyDown(KeyCode.Escape)) SetPaused(!Paused);
             if (roomEnding != null && state.Phase == BeachEndingPhase.Walking)
@@ -128,6 +131,18 @@ namespace MiniGame.UnityHost
             MiniGameSessionHost.Current?.Runtime?.SetPaused(value);
             ApplyPause();
         }
+
+        public void HideForThanks()
+        {
+            thanksActive = true;
+            if (hint != null) hint.gameObject.SetActive(false);
+            if (caption != null) caption.gameObject.SetActive(false);
+            pauseMenu?.SetVisible(Paused && !MainMenuController.BlocksGameplayInput);
+            audioService?.StopAll();
+            enabled = false;
+        }
+
+        public void RefreshPausePresentation() => ApplyPause();
 
         /// <summary>Forward is clamped to [0,1]; reverse and lateral input have no route.</summary>
         public void AdvanceForTests(float forward, float dt)
@@ -170,6 +185,7 @@ namespace MiniGame.UnityHost
         public bool TryLieDown()
         {
             if (!CanLieDown) return false;
+            if (roomEnding != null && roomEnding.UsesSharedThanks) return roomEnding.CompleteAtBed();
             state.Phase = BeachEndingPhase.Lying;
             if (roomEnding != null)
             {
@@ -376,11 +392,11 @@ namespace MiniGame.UnityHost
                     if (paused) audioService.Pause(channel); else audioService.Resume(channel);
                 audioPaused = paused;
             }
-            pauseMenu?.SetVisible(paused);
-            if (hint != null) hint.gameObject.SetActive(!paused);
-            if (caption != null) caption.gameObject.SetActive(!paused);
-            Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = paused;
+            pauseMenu?.SetVisible(paused && !MainMenuController.BlocksGameplayInput);
+            if (hint != null) hint.gameObject.SetActive(!paused && !thanksActive);
+            if (caption != null) caption.gameObject.SetActive(!paused && !thanksActive);
+            Cursor.lockState = paused || thanksActive ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = paused || thanksActive;
         }
 
         private void PublishCheckpoint()
@@ -393,7 +409,7 @@ namespace MiniGame.UnityHost
 
         private void RefreshInterface()
         {
-            if (hint != null) hint.text = state.Phase != BeachEndingPhase.Walking ? string.Empty
+            if (hint != null) hint.text = state.Phase != BeachEndingPhase.Walking || roomEnding != null && !roomEnding.Ready ? string.Empty
                 : CanLieDown ? "E  躺下" : roomEnding != null ? "WASD 移动  ·  鼠标转头  ·  到床边按 E 躺下" : "W  走向床";
             if (caption == null) return;
             var lines = profile.EndingLines;
@@ -409,21 +425,23 @@ namespace MiniGame.UnityHost
             go.transform.SetParent(transform, false);
             canvas = go.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 100;
+            canvas.sortingOrder = 950;
             var scaler = go.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920, 1080);
             scaler.matchWidthOrHeight = .5f;
             hint = Label(go.transform, "提示", new Vector2(.5f, .12f), new Vector2(700, 54), 24);
             caption = Label(go.transform, "字幕", new Vector2(.5f, .12f), new Vector2(1600, 90), 28);
-            string[] names = { "继续", "保存进度", "读取存档", "重新开始", "退出游戏" };
-            Action[] actions = { () => SetPaused(false), SaveFromPause, LoadFromPause, Restart, Quit };
+            string[] names = { "继续", "保存进度", "读取存档", "重新开始", "回到主菜单", "退出游戏" };
+            Action[] actions = { () => SetPaused(false), SaveFromPause, LoadFromPause, Restart,
+                () => MainMenuController.Current?.ReturnToMenu(), Quit };
             pauseMenu = PauseMenuView.Create(go.transform, font, "EndingPauseModal", names,
-                new[] { "ESC", "", "", "", "" }, actions);
+                new[] { "ESC", "", "", "", "", "" }, actions);
             pauseMenu.SetContext("海上之梦");
             pauseMenu.SetHint("海浪会在继续后流动。");
             pauseMenu.Buttons[1].interactable = !previewMode && MiniGameSessionHost.Current != null;
             pauseMenu.Buttons[2].interactable = !previewMode && MiniGameSessionHost.Current != null;
+            pauseMenu.Buttons[4].interactable = !previewMode && MainMenuController.Current != null;
             if (previewMode)
             {
                 pauseMenu.SetContext("海上之梦 · 预览");

@@ -191,7 +191,7 @@ namespace MiniGame.UnityHost.Editor
             var surface = MeshRenderer(root, name, face, print);
             MeshRenderer(root, name + " edge and back", body, edge);
             // These stationary, concave document shapes retain their silhouette instead of filling the empty corners with a box.
-            var collider = root.gameObject.AddComponent<MeshCollider>(); collider.sharedMesh = collision;
+            var collider = surface.gameObject.AddComponent<MeshCollider>(); collider.sharedMesh = collision;
             var readable = root.gameObject.AddComponent<ReadableProp>();
             readable.Configure(document.Id, "", surface, 2f);
             readable.ConfigureDocument(document);

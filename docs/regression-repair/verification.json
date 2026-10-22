@@ -1,0 +1,214 @@
+{
+  "referenceCommit": "25a950893326d41dfcd51cfb645d937ca6e5d9e7",
+  "unityVersion": "2022.3.23f1c1",
+  "changes": {
+    "restored": [
+      "smooth sleep and wake camera animation",
+      "supervisor knock audio with valid clip reference",
+      "title music confined to title sources",
+      "title logo glitch sound synchronized with logo bursts"
+    ],
+    "new": [
+      "daily dream duration 10s, fade to black, black hold 1s, reveal facing bed",
+      "solid bed collision and swept dream movement, including diagonal and old saves",
+      "portrait IDs use exact same-named source, no ED/JN/D0 permutation",
+      "title, pause, manual and settings use the existing Ark pixel atlas"
+    ]
+  },
+  "targetedTests": {
+    "failed": 0.0,
+    "total": 120.0,
+    "passed": 120.0,
+    "suites": [
+      {
+        "filter": "NamedPortraitAssetsTests",
+        "result": {
+          "total": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/NamedPortraitAssetsTests.json"
+      },
+      {
+        "filter": "TerminalBitmapTextTests",
+        "result": {
+          "total": 22,
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/TerminalBitmapTextTests.json"
+      },
+      {
+        "filter": "PortraitSourcePackTests",
+        "result": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/PortraitSourcePackTests.json"
+      },
+      {
+        "filter": "MiniGameAudioPlayModeTests",
+        "result": {
+          "total": 15,
+          "passed": 15,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/MiniGameAudioPlayModeTests.json"
+      },
+      {
+        "filter": "MainMenuFlowPlayModeTests",
+        "result": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/MainMenuFlowPlayModeTests.json"
+      },
+      {
+        "filter": "MainMenuPersistencePlayModeTests",
+        "result": {
+          "total": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/MainMenuPersistencePlayModeTests.json"
+      },
+      {
+        "filter": "DreamProjectionPlayModeTests",
+        "result": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/DreamProjectionPlayModeTests.json"
+      },
+      {
+        "filter": "DreamTraversalPlayModeTests",
+        "result": {
+          "total": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/DreamTraversalPlayModeTests.json"
+      },
+      {
+        "filter": "RoomExplorationPauseCheckpointDriftAndCleanupPreserveOriginalRoom",
+        "result": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/RoomExplorationPauseCheckpointDriftAndCleanupPreserveOriginalRoom.json"
+      },
+      {
+        "filter": "SleepAndWakeSmoothlyRotateTheCameraAndPauseWithoutSnapping",
+        "result": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/SleepAndWakeSmoothlyRotateTheCameraAndPauseWithoutSnapping.json"
+      },
+      {
+        "filter": "DayOneFirstBedProjectsOnTheAuthoredWallAndReturnsToTheBedWithoutAdvancingTheDay",
+        "result": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/DayOneFirstBedProjectsOnTheAuthoredWallAndReturnsToTheBedWithoutAdvancingTheDay.json"
+      },
+      {
+        "filter": "ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile",
+        "result": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile.json"
+      },
+      {
+        "filter": "DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay",
+        "result": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay.json"
+      },
+      {
+        "filter": "PatientSurveillancePlayModeTests",
+        "result": {
+          "total": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "evidence": "Artifacts/RegressionRepair20261022/PatientSurveillancePlayModeTests.json"
+      }
+    ]
+  },
+  "additionalChecks": {
+    "fontCoverage": {
+      "command": "uv run Tools/TerminalTypography/build_ark_atlas.py --check-only",
+      "missing": 0,
+      "glyphSizePairs": 10003
+    },
+    "diffCheck": "git diff --check passed",
+    "targetPlatformBuild": "not run",
+    "review": "C1 diagonal collision fixed; independent rereview CLEAN",
+    "lighting": {
+      "failures": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.RestoringPausedBedtimeKeepsUnavailableObjectFeedback",
+          "Message": "  Expected: 0\r\n  But was:  1.0f\r\n"
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.BedtimeGuidancePlayModeTests.TerminalDepartureRevealsOnlyTheBedAndSleepRestoresTheMorningRoom",
+          "Message": "  CeilingLight must dim continuously from the archive lighting, without a brightness jump.\r\n  Expected: less than or equal to 2.74120021f\r\n  But was:  2.86037493f\r\n"
+        }
+      ],
+      "summary": {
+        "total": 2,
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "evidence": "Artifacts/RegressionRepair20261022/BedtimeGuidancePlayModeTests.json"
+    },
+    "humanVisualAcceptance": "pending"
+  },
+  "visuals": {
+    "title": "Artifacts/RegressionRepair20261022/visuals/first-start-1920x1080.png",
+    "pause": "Artifacts/RegressionRepair20261022/visuals/pause-screen.png"
+  }
+}

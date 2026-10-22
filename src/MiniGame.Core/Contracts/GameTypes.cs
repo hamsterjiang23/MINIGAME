@@ -22,7 +22,8 @@ namespace MiniGame.Core
     {
         CompleteMorningInspection, CompleteBriefing, Interact,
         CompleteSleep, CompleteDream, SelectResponse, CompleteResponseBranch,
-        SubmitDisposition, CompleteReaction, CompleteIntroduction, SelectPatient, BeginNightDream, ConfirmSelfPurification
+        SubmitDisposition, CompleteReaction, CompleteIntroduction, SelectPatient, BeginNightDream, ConfirmSelfPurification,
+        AdvanceSelfReview
     }
 
     public enum RejectionReason
@@ -37,6 +38,6 @@ namespace MiniGame.Core
         PhaseChanged, EncounterStarted, DialogueNodeStarted, ResponseSelected,
         ResponseBranchStarted, DispositionAvailable, DispositionCommitted,
         ReactionRequested, EncounterCompleted, DayCompleted,
-        PatientTerminated, ScheduledEventExecuted, GameEnded, IntroductionStarted
+        PatientTerminated, ScheduledEventExecuted, GameEnded, IntroductionStarted, SelfReviewLineAdvanced
     }
 }
