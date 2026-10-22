@@ -127,7 +127,7 @@ namespace MiniGame.UnityHost.Tests
         public IEnumerator SelfReviewOffersOnlyComputerAndDoesNotTeleportOnTerminalEntry()
         {
             CreateRig();
-            var runtime = Runtime(100);
+            var runtime = Runtime(10);
             DriveTo(runtime, view => view.Game.Phase == GamePhase.SelfReview);
             player.Bind(runtime, null);
             Physics.SyncTransforms();
@@ -142,9 +142,10 @@ namespace MiniGame.UnityHost.Tests
             player.RefreshInteractionFocus();
             Assert.That(player.FocusedInteraction, Is.SameAs(computer));
             var previousPosition = player.transform.position;
-            Assert.That(player.InteractSecondaryFocused(), Is.True);
+            Assert.That(player.InteractPrimaryFocused(), Is.True);
             Assert.That(runtime.GetView().TerminalOpen, Is.True);
-            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.SelfReview));
+            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
+            Assert.That(runtime.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { GameRuntime.SelfPatientId }));
             Assert.That(player.DreamTraversalActive, Is.False);
             Assert.That(controller.enabled, Is.True);
             Assert.That(player.transform.position, Is.EqualTo(previousPosition), "The seating transition must start from the current position, not the bed's wake anchor.");
@@ -203,7 +204,7 @@ namespace MiniGame.UnityHost.Tests
             guidance.Bind(runtime);
             Assert.That(BedtimeGuidance.IsSleepOnly(runtime.GetView()), Is.True);
             Assert.That(spotlight.enabled, Is.True);
-            var review = Runtime(100);
+            var review = Runtime(10);
             DriveTo(review, view => view.Game.Phase == GamePhase.SelfReview);
             guidance.Bind(review);
             Assert.That(spotlight.enabled, Is.False);
@@ -259,15 +260,15 @@ namespace MiniGame.UnityHost.Tests
             return block.HasProperty(id) ? block.GetColor(id) : renderer.sharedMaterial.GetColor(id);
         }
 
-        private static GameRuntime Runtime(int initial = 0)
+        private static GameRuntime Runtime(int residentTrust = 0)
         {
-            var patient = new PatientDefinition("patient", "测试病人", 0, 0, null, PatientPresence.TreatmentEnded);
+            var patient = new PatientDefinition("patient", "测试病人", 1, residentTrust, null, PatientPresence.TreatmentEnded);
             var rules = new GameRules("dream-traversal-fixture", new[] { patient }, Enumerable.Range(0, 4).Select(day =>
-                new DayDefinition(day, 0, new[] { new MeetingDefinition(patient.Id,
+                new DayDefinition(day, 0, day == 0 ? Array.Empty<MeetingDefinition>() : new[] { new MeetingDefinition(patient.Id,
                     new[] { new RoundDefinition("day" + day, new[] { new ResponseDefinition("pick", "branch", 1) }) },
                     null, 100, 0, new Dictionary<Disposition,string> { [Disposition.Treat] = "treated" }) })),
                 new[] { EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.TakenAway })
-                .WithDreamFlow(initial, 100, 100, new Dictionary<string,int>());
+                .WithDreamFlow(0, 100, 100, new Dictionary<string,int>());
             return new GameRuntime(rules, new FixtureContent(), true);
         }
 

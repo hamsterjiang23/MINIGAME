@@ -35,12 +35,12 @@ namespace MiniGame.UnityHost
             bool disabled = state == SelectionState.Disabled;
             bool focused = state == SelectionState.Highlighted || state == SelectionState.Selected || state == SelectionState.Pressed;
             frameTarget = focused && !disabled ? state == SelectionState.Pressed ? .80f : 1 : 0;
-            Color text = focused && !disabled ? TerminalView.Desk : ink;
+            Color text = ink;
             label.color = new Color(text.r, text.g, text.b, disabled ? .30f : 1);
             shortcut.color = new Color(text.r, text.g, text.b, disabled ? .20f : focused ? 1 : .62f);
             if (number != null) number.color = new Color(text.r, text.g, text.b, disabled ? .20f : focused ? 1 : .62f);
             if (instant) frame.alpha = frameTarget;
-            marker.color = new Color(text.r, text.g, text.b, frameTarget > 0 ? 1 : 0);
+            if (marker != null) marker.color = Color.clear;
         }
 
         private void Update()

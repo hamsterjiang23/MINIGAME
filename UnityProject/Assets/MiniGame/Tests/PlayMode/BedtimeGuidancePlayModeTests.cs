@@ -211,15 +211,23 @@ namespace MiniGame.UnityHost.Tests
             {
                 yield return StageAt(host, target);
                 host.Screen.ClearNotification();
-                Assert.That(Text(host, "InteractionPrompt").text, Is.Not.Empty, "Unavailable objects retain their normal focus feedback at night.");
                 var before = host.Runtime.Save();
-                Assert.That(host.Player.InteractFocused(), Is.False);
-                Assert.That(Text(host, "Notification").text, Is.Not.Empty, "Pressing E explains why the object is unavailable.");
-                Assert.That(host.Runtime.Save(), Is.EqualTo(before), "Feedback cannot reopen the terminal or door or advance the day.");
+                Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.None),
+                    "Blocked furniture must not advertise an available action.");
+                if (host.Player.FocusedInteraction != null)
+                {
+                    Assert.That(host.Player.FocusedInteraction.IsHighlighted, Is.False);
+                }
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
+                Assert.That(Text(host, "Notification").text, Is.Empty, "Clicking blocked furniture must not add a rejection toast.");
+                Assert.That(host.Runtime.Save(), Is.EqualTo(before), "Blocked clicks cannot reopen the terminal or door or advance the day.");
                 Assert.That(BedtimeGuidance.IsSleepOnly(host.Runtime.GetView()), Is.True);
             }
             yield return StageAt(host, InteractionTarget.Bed);
-            Assert.That(Text(host, "InteractionPrompt").text, Does.Contain("[ E ]"));
+            Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.Sleep));
+            yield return null;
+            Assert.That(host.Screen.InteractionCursorVisible, Is.True);
+            Assert.That(Text(host, "Reticle").gameObject.activeSelf, Is.False, "The sleep cursor replaces the dot.");
             host.RestoreCheckpoint(apartment);
             Assert.That(guidance.Isolation, Is.Zero);
             Assert.That(guidance.OwnsLighting, Is.False);

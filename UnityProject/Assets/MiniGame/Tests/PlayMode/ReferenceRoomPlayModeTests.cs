@@ -15,6 +15,16 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class ReferenceRoomPlayModeTests
     {
+        private bool previousSkipStartup;
+        [SetUp]
+        public void EnterDirectWorldMode()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+            if (MainMenuController.Current != null) Object.DestroyImmediate(MainMenuController.Current.gameObject);
+        }
+        [TearDown]
+        public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
         [UnityTest, Timeout(90000)]
         public IEnumerator PostersUseSecondaryInputDistanceOcclusionAndManualSpatialNarration()
         {
@@ -46,7 +56,7 @@ namespace MiniGame.UnityHost.Tests
 
             PositionCameraFromSurface(host, beach, 2.05f);
             Assert.That(host.Player.FocusedReadable, Is.Null, "A poster beyond two metres must not stay focused.");
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             PositionCameraFromSurface(host, beach, 1.85f);
             Assert.That(host.Player.FocusedReadable, Is.EqualTo(beach));
             var blocker = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -58,11 +68,11 @@ namespace MiniGame.UnityHost.Tests
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedReadable, Is.Null, "The focus ray must stop at a real intervening collider.");
             Assert.That(beach.IsHighlighted, Is.False);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             Object.Destroy(blocker);
             yield return null;
             yield return StageAtPoster(host, beach);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo(beach.Caption));
             Assert.That(host.Screen.RoomCaptionVisible, Is.True);
             Assert.That(host.Runtime.Save(), Is.EqualTo(checkpoint), "Reading a poster must not change authoritative gameplay or save data.");
@@ -80,15 +90,15 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.RoomCaptionVisible, Is.True);
             yield return new WaitForSecondsRealtime(1.6f);
             Assert.That(host.Screen.RoomCaptionVisible, Is.True, "The page waits for confirmation instead of expiring.");
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False, "Reading owns input until its fade finishes.");
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "Reading owns input until its fade finishes.");
             Assert.That(host.Screen.AdvancePropNarration(), Is.True);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False, "The closing click cannot reopen the poster.");
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "The closing click cannot reopen the poster.");
             yield return new WaitForSecondsRealtime(.35f);
             yield return null;
             Assert.That(host.Screen.RoomCaptionVisible, Is.False);
 
             yield return StageAtPoster(host, instrument);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo(instrument.Caption));
             yield return Capture(host, "reference-poster-instrument");
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True,
@@ -197,15 +207,15 @@ namespace MiniGame.UnityHost.Tests
             Complete(host.Runtime, PresentationKind.MorningInspection);
             Complete(host.Runtime, PresentationKind.Briefing);
             core = CoreJson(host.Runtime);
-            for (int toggle = 0; toggle < 2; toggle++)
-            {
-                yield return StageAt(host, InteractionTarget.Door);
-                Assert.That(host.Player.InteractFocused(), Is.True);
-                yield return Until(host, () => !door.IsMoving && host.Runtime.GetView().Cue == null,
-                    "ordinary Day1 door motion completes without another inspection");
-                Assert.That(CoreJson(host.Runtime), Is.EqualTo(core));
-                Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Apartment));
-            }
+            Assert.That(host.Runtime.IsDoorLockedAfterSupervisor, Is.True);
+            yield return StageAt(host, InteractionTarget.Door);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True, "An already open locked door must still close.");
+            yield return Until(host, () => !door.IsMoving && host.Runtime.GetView().Cue == null, "close the door after inspection");
+            Assert.That(host.Runtime.GetView().RoomDoorOpen, Is.False);
+            yield return StageAt(host, InteractionTarget.Door);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "The completed inspection must apply the target project's door lock.");
+            Assert.That(CoreJson(host.Runtime), Is.EqualTo(core));
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Apartment));
             Debug.Log("MINIGAME_REFERENCE_DOOR_PASSED default60; physical hinge/handle/collider; threshold; pause; save target and stale token; configurable90; disabled fallback; morning once");
         }
 
@@ -231,7 +241,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(horizontalFov, Is.EqualTo(61.9275f).Within(.05f), "Horizontal framing must stay correct for the current Game view aspect.");
             var exterior = Object.FindObjectsOfType<MeshRenderer>().Where(renderer => renderer.name.StartsWith("B_ExteriorConcrete_", StringComparison.Ordinal)).ToArray();
             Assert.That(exterior, Has.Length.EqualTo(2));
-            Assert.That(exterior.All(renderer => renderer.enabled), Is.True);
+            var exteriorAuthoredVisibility = exterior.Select(renderer => renderer.enabled).ToArray();
+            string daylight = host.Runtime.Save();
             foreach (string anchor in new[] { "Player spawn", "Door approach", "Computer approach", "Bed approach", "Poster beach approach", "Poster device approach" })
             {
                 var marker = GameObject.Find(anchor);
@@ -261,11 +272,18 @@ namespace MiniGame.UnityHost.Tests
                 "All corridor and room lights must go dark outside the bed spotlight.");
             Assert.That(guidance.Spotlight.enabled, Is.True);
             Assert.That(RenderSettings.ambientIntensity, Is.Zero);
+            Assert.That(exterior.All(renderer => !renderer.enabled), Is.True, "Night must hide the corridor regardless of authored daylight visibility.");
             var poster = Object.FindObjectsOfType<ReadableProp>().Single(item => item.Id == "poster-instrument");
             yield return StageAtPoster(host, poster, false);
-            Assert.That(host.Player.FocusedReadable, Is.Null);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
-            Assert.That(poster.IsHighlighted, Is.False);
+            Assert.That(host.Player.FocusedReadable, Is.SameAs(poster));
+            Assert.That(poster.IsHighlighted, Is.True);
+            string beforeReading = host.Runtime.Save();
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True, "The target room permits reading before sleep.");
+            yield return new WaitForSecondsRealtime(.3f);
+            Assert.That(host.Screen.PropNarration.IsOpen, Is.True);
+            Assert.That(host.Screen.TryClosePropNarration(), Is.True);
+            yield return Until(host, () => !host.Screen.PropNarrationBlocksWorld, "night reading closes without advancing time");
+            Assert.That(host.Runtime.Save(), Is.EqualTo(beforeReading));
             Assert.That(host.Screen.RoomCaptionVisible, Is.False);
             Assert.That(door.TryInteract().Accepted, Is.False);
             MovePlayer(host, GameObject.Find("Player spawn").transform.position);
@@ -276,7 +294,10 @@ namespace MiniGame.UnityHost.Tests
             host.Player.RefreshInteractionFocus();
             // The visible bed remains the only permitted route to the next day.
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
-            Debug.Log("MINIGAME_REFERENCE_LAYOUT_PASSED net9.70078x4.41176x3.12066; horizontalFOV61.9275; grounded anchors; exterior concrete; door auto-close; corridor dark; posters sleep-disabled");
+            host.RestoreCheckpoint(daylight);
+            yield return null;
+            Assert.That(exterior.Select(renderer => renderer.enabled), Is.EqualTo(exteriorAuthoredVisibility));
+            Debug.Log("MINIGAME_REFERENCE_LAYOUT_PASSED net9.70078x4.41176x3.12066; horizontalFOV61.9275; grounded anchors; authored exterior visibility; door auto-close; corridor dark; night reading preserves progress");
         }
 
         private static MiniGameBootstrap Host()
@@ -371,6 +392,7 @@ namespace MiniGame.UnityHost.Tests
             var session = MiniGameSessionHost.Current;
             Assert.That(session, Is.Not.Null);
             var runtime = new GameRuntime(session.Rules, session.Content, true);
+            if (runtime.UsesEndingFlow) runtime.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
             if (openDoor)
             {
                 Assert.That(runtime.ToggleRoomDoor().Accepted, Is.True);

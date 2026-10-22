@@ -18,7 +18,7 @@ namespace MiniGame.UnityHost
         [Serializable] private sealed class Report
         {
             public bool passed, developmentBuild, supervisorWorldObject, noSupervisorIndoors, supervisorPresentBeforeDoor, supervisorRemainsAfterBriefing;
-            public bool headerAmber, worldInstructionsHidden, manualOpenedByPointer, escapeClosesManualOnly, escapeResumes;
+            public bool headerRemoved, worldInstructionsHidden, manualOpenedByPointer, escapeClosesManualOnly, escapeResumes;
             public bool terminalDirectoryReached, campaignStart, dayZeroLogoRequested, dayZeroSlept;
             public string result, detail, unity, graphics;
             public string captureMode = "Actual room Camera + native UI Canvas to 1280x720 RenderTexture; no window backbuffer capture";
@@ -302,10 +302,10 @@ namespace MiniGame.UnityHost
         {
             var texts = host.Screen.GetComponentsInChildren<Text>(true);
             var headers = texts.Where(item => item.name == "ShiftHeader").ToArray();
-            report.headerAmber = headers.Length > 0 && headers.All(item => item.color.r > item.color.g && item.color.g > item.color.b);
+            report.headerRemoved = headers.Length == 0;
             var instructions = texts.Where(item => item.name == "WorldInstructions").ToArray();
             report.worldInstructionsHidden = instructions.Length > 0 && instructions.All(item => !item.gameObject.activeSelf);
-            Require(report.headerAmber && report.worldInstructionsHidden, "World header must be amber and the old footer instructions hidden.");
+            Require(report.headerRemoved && report.worldInstructionsHidden, "The removed world header must stay absent and the old footer instructions hidden.");
         }
 
         private bool Click(Button button)

@@ -259,9 +259,10 @@ namespace MiniGame.UnityHost
             activeToken = token;
             sleepCheckpoint = null;
             if (playing != null) { StopCoroutine(playing); playing = null; }
-            screen.SetTransitionLocked(cue?.Kind == PresentationKind.Dream);
+            bool projectionDream = view.UsesDreamFlow && cue?.Kind == PresentationKind.Dream;
+            screen.SetTransitionLocked(projectionDream);
             screen.EndDayZeroOpening();
-            screen.SetFade(cue?.Kind == PresentationKind.Dream ? 1 : 0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
+            screen.SetFade(projectionDream ? 1 : 0); screen.SetGlitch(0); screen.SetTerminalHandoff(0, false, false);
             screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
             if (cue == null)
             {

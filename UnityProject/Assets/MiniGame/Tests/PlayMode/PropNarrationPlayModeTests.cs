@@ -13,6 +13,16 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class PropNarrationPlayModeTests
     {
+        private bool previousSkipStartup;
+        [SetUp]
+        public void EnterDirectWorldMode()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+            if (MainMenuController.Current != null) Object.DestroyImmediate(MainMenuController.Current.gameObject);
+        }
+        [TearDown]
+        public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
         [UnityTest]
         public IEnumerator ReadingOwnsInputPagesAndPauseWithoutChangingGameState()
         {
@@ -23,14 +33,14 @@ namespace MiniGame.UnityHost.Tests
             prop.Configure(prop.Id, "这里是我的故乡。\n但我从没去过海边。", prop.Surface);
             string checkpoint = host.Runtime.Save();
             int originalMask = host.Player.ViewCamera.cullingMask;
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             Assert.That(host.Screen.AdvancePropNarration(), Is.False, "Opening click must not consume the first page.");
             Assert.That(host.Screen.PropNarration.Dismiss(), Is.False, "The opening frame must not also dismiss the reading.");
             host.HandleEscape();
             Assert.That(host.Runtime.GetView().Paused, Is.False, "The reading consumes opening-frame Escape without pausing.");
             Assert.That(host.Screen.PropNarration.IsOpen, Is.True);
             Assert.That(host.Player.InteractFocused(), Is.False);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             yield return new WaitForSecondsRealtime(.3f);
             var narration = host.Screen.PropNarration;
             Assert.That(narration.GetComponentInChildren<Canvas>().renderMode, Is.EqualTo(RenderMode.WorldSpace));
@@ -73,7 +83,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(narration.Dismiss(), Is.False, "Closing cannot accept another dismissal.");
             host.HandleEscape();
             Assert.That(host.Runtime.GetView().Paused, Is.False, "Escape during closing belongs to the reading, not the pause menu.");
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             yield return new WaitForSecondsRealtime(.35f);
             yield return null;
             Assert.That(narration.IsOpen, Is.False);
@@ -91,7 +101,7 @@ namespace MiniGame.UnityHost.Tests
             var prop = Object.FindObjectsOfType<ReadableProp>().Single(item => item.Id == "poster-beach");
             var camera = host.Player.ViewCamera;
             string checkpoint = host.Runtime.Save();
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             yield return new WaitForSecondsRealtime(.3f);
             var narration = host.Screen.PropNarration;
             string caption = narration.CurrentText;
@@ -232,7 +242,7 @@ namespace MiniGame.UnityHost.Tests
             var originalSurface = prop.Surface;
             string originalCaption = prop.Caption;
             prop.Configure(prop.Id, "第一段留在海边。\n第二段不会因遮挡而丢失。", originalSurface);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             yield return new WaitForSecondsRealtime(.3f);
             Assert.That(host.Screen.AdvancePropNarration(), Is.True);
             yield return new WaitForSecondsRealtime(.3f);
@@ -407,7 +417,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(bounds.yMax, Is.LessThanOrEqualTo(1.001f));
                 AssertTextFitsPanel(narration);
                 Assert.That(host.Player.InteractFocused(), Is.False);
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
                 Assert.That(narration.Dismiss(), Is.True);
                 Assert.That(narration.Dismiss(), Is.False, "Only the first dismissal may enter closing.");
                 Assert.That(host.Screen.AdvancePropNarration(), Is.False);
@@ -466,20 +476,20 @@ namespace MiniGame.UnityHost.Tests
             string checkpoint = host.Runtime.Save();
             var camera = host.Player.ViewCamera;
             int originalMask = camera.cullingMask;
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             yield return null;
             host.RestoreCheckpoint(checkpoint);
             Assert.That(host.Screen.PropNarration.IsOpen, Is.False);
             Assert.That(camera.cullingMask, Is.EqualTo(originalMask));
             yield return null;
             host.Player.enabled = false;
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             yield return null;
             host.Screen.enabled = false;
             Assert.That(host.Screen.PropNarration.IsOpen, Is.False);
             host.Screen.enabled = true;
             yield return null;
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             camera.cullingMask &= ~(1 << 4);
             var prop = Object.FindObjectsOfType<ReadableProp>().Single(item => item.Id == "poster-beach");
             prop.gameObject.SetActive(false);
@@ -609,7 +619,7 @@ namespace MiniGame.UnityHost.Tests
             string text = string.Concat(Enumerable.Repeat("海风吹过门外，记忆仍在远方。", 20));
             prop.Configure(prop.Id, text, prop.Surface);
             string checkpoint = host.Runtime.Save();
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             Assert.That(host.Screen.PropNarration.PageCount, Is.GreaterThan(1));
             var read = new List<string>();
             for (int index = 0; index < host.Screen.PropNarration.PageCount; index++)

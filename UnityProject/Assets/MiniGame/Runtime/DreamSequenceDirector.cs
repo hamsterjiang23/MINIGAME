@@ -130,7 +130,7 @@ namespace MiniGame.UnityHost
             projectionSurface.enabled = false;
             viewingFieldOfView = FramedFieldOfView();
             Phase = DreamPlaybackPhase.Aligning;
-            if (screen != null) { screen.SetTransitionLocked(true); screen.SetWorldPrompt(string.Empty); screen.SetFade(1); screen.SetGlitch(0); }
+            if (screen != null) { screen.SetTransitionLocked(true); screen.SetInteractionCursor(InteractionCursorKind.None, false); screen.SetFade(1); screen.SetGlitch(0); }
             RenderStage();
             UpdateAudio(true, runtime != null && !preview && runtime.GetView().Paused);
             return true;

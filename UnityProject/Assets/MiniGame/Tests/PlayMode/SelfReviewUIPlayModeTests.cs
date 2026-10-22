@@ -15,6 +15,15 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class SelfReviewUIPlayModeTests
     {
+        private bool previousSkipStartup;
+        private void EnterDirectWorldMode()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+            if (MainMenuController.Current != null) Object.DestroyImmediate(MainMenuController.Current.gameObject);
+        }
+        [TearDown]
+        public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
         private MiniGameBootstrap host;
         private GameRuntime runtime;
         private SelfReviewMonitor monitor;
@@ -22,6 +31,7 @@ namespace MiniGame.UnityHost.Tests
         [UnitySetUp]
         public IEnumerator LoadRoomWithoutRegisteringTheFixtureRuntimeAsASceneTransition()
         {
+            EnterDirectWorldMode();
             MiniGameSessionHost.Release();
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
@@ -36,44 +46,25 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(45000)]
-        public IEnumerator SelfReviewShowsTheLiveSeatedPlayerAndOnlyPurification()
+        public IEnumerator SelfDirectoryUsesAllSixteenAuthoredLinesBeforeOfferingOnlyPurification()
         {
-            Assert.That(monitor.Output, Is.Not.Null, "Configure allocates the output before self-review entry.");
-            Assert.That(monitor.IsActive, Is.False);
             yield return EnterTerminal();
-            var buttons = host.Screen.GetComponentsInChildren<Button>(false).Where(button => button.IsActive()).ToArray();
-            Assert.That(buttons.Select(button => button.name), Is.EqualTo(new[] { "SelfPurify" }));
-            Assert.That(buttons[0].GetComponentInChildren<Text>().text, Is.EqualTo("净化"));
-            var feed = host.Screen.GetComponentsInChildren<RawImage>(false).Single(image => image.name == "SelfMonitorFeed");
-            Assert.That(feed.texture, Is.SameAs(monitor.Output));
-            Assert.That(monitor.Output.IsCreated(), Is.True);
-            Assert.That(monitor.IsActive, Is.True);
-            Assert.That(monitor.ViewCamera.GetComponent<AudioListener>(), Is.Null, "The monitor must not add another listener.");
-            Assert.That(host.Player.ViewCamera.cullingMask & (1 << SelfReviewMonitor.ProxyLayer), Is.Zero);
-            Assert.That(monitor.ViewCamera.cullingMask & (1 << SelfReviewMonitor.ProxyLayer), Is.Not.Zero);
-            Assert.That(monitor.ProxyRoot.GetComponentsInChildren<Renderer>(), Has.Length.GreaterThan(10));
-            Assert.That(monitor.ProxyRoot.GetComponentsInChildren<Renderer>().All(item => item.gameObject.layer == SelfReviewMonitor.ProxyLayer), Is.True);
-            Assert.That(monitor.ProxyRoot.GetComponentsInChildren<Collider>(), Is.Empty);
-            Assert.That(Vector3.Distance(monitor.ProxyRoot.position, host.Player.transform.position), Is.LessThan(.001f));
-            foreach (string part in new[] { "Head", "Torso" })
-            {
-                var point = monitor.ViewCamera.WorldToViewportPoint(monitor.ProxyRoot.Find(part).position);
-                Assert.That(point.x, Is.InRange(0f, 1f), part + " must be in the monitor frame.");
-                Assert.That(point.y, Is.InRange(0f, 1f));
-                Assert.That(point.z, Is.GreaterThan(monitor.ViewCamera.nearClipPlane));
-            }
-            int frames = monitor.RenderedFrames;
-            yield return null;
-            Assert.That(monitor.RenderedFrames, Is.GreaterThan(frames), "The feed must update instead of showing a static portrait.");
-            AssertVisibleFeed();
-            Assert.That(host.Screen.HandleTerminalKey(KeyCode.Space), Is.False, "Only the explicit purification action may commit self review.");
-            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.SelfReview));
+            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
+            Assert.That(runtime.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { GameRuntime.SelfPatientId }));
+            Assert.That(monitor.IsActive, Is.False, "Self review uses the ordinary patient presentation, not the obsolete proxy feed.");
+            Assert.That(runtime.ConfirmSelfPurification().Accepted, Is.False);
+            yield return CompleteSelfReview();
+            var buttons = host.Screen.GetComponentsInChildren<Button>(false)
+                .Where(button => button.IsActive() && button.name.StartsWith("Disposition-", StringComparison.Ordinal)).ToArray();
+            Assert.That(buttons.Select(button => button.name), Is.EqualTo(new[] { "Disposition-Purify" }));
+            Assert.That(runtime.GetView().Game.SelfReviewLineIndex, Is.EqualTo(16));
         }
 
         [UnityTest, Timeout(45000)]
         public IEnumerator EnterPurifiesOnceAndHidesNormalEndingUiBeforeTheSceneHandoff()
         {
             yield return EnterTerminal();
+            yield return CompleteSelfReview();
             var button = FindPurify();
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True);
             string committed = runtime.Save();
@@ -83,11 +74,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
             Assert.That(runtime.Save(), Is.EqualTo(committed));
             Assert.That(host.Screen.Canvas.transform.Find("Conversation").gameObject.activeInHierarchy, Is.False);
-            Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader").gameObject.activeInHierarchy, Is.False);
+            Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader"), Is.Null);
             Assert.That(monitor.IsActive, Is.False);
-            int frames = monitor.RenderedFrames;
             yield return null;
-            Assert.That(monitor.RenderedFrames, Is.EqualTo(frames));
         }
 
         [UnityTest, Timeout(45000)]
@@ -97,12 +86,14 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False, "The camera approach must finish first.");
             yield return Until(() => runtime.GetView().Cue == null && !host.Effects.IsTransitioning && host.Screen.TerminalReveal >= .999f,
                 "self-review camera entry");
+            yield return CompleteSelfReview();
             var button = FindPurify();
             Assert.That(runtime.SetPaused(true).Accepted, Is.True);
             Click(button);
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.SelfReview));
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
             Assert.That(runtime.SetPaused(false).Accepted, Is.True);
+            yield return null;
             Click(button);
             string committed = runtime.Save();
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.DreamSea));
@@ -110,7 +101,6 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(runtime.Save(), Is.EqualTo(committed));
             yield return null;
         }
-
         [UnityTest, Timeout(45000)]
         public IEnumerator DreamProjectionHasNoConversationContinueHeaderOrKeyboardSkip()
         {
@@ -121,7 +111,7 @@ namespace MiniGame.UnityHost.Tests
             {
                 yield return null;
                 Assert.That(host.Screen.Canvas.transform.Find("Conversation").gameObject.activeInHierarchy, Is.False);
-                Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader").gameObject.activeInHierarchy, Is.False);
+                Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader"), Is.Null);
                 Assert.That(host.Screen.GetComponentsInChildren<Button>(false).Any(button => button.name == "Continue"), Is.False);
                 Assert.That(host.Screen.HandleTerminalKey(KeyCode.Space), Is.False);
                 Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
@@ -142,38 +132,43 @@ namespace MiniGame.UnityHost.Tests
             monitor.Bind(runtime);
             host.Screen.BindSelfMonitor(monitor.Output);
             host.GetComponent<MiniGameYarnBridge>().Bind(runtime, host.Screen);
+            host.GetComponent<EndingDialoguePresenter>().Bind(runtime, host.Screen, null);
+            host.Screen.DialogueCharactersPerSecond = 0;
         }
 
         private IEnumerator EnterTerminal()
         {
             Assert.That(runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
             yield return Until(() => runtime.GetView().Input == InputContext.TerminalDirectory
-                && !host.Effects.IsTransitioning && host.Screen.TerminalReveal >= .999f && monitor.RenderedFrames > 0,
-                "self-review terminal and live monitor");
+                && !host.Effects.IsTransitioning && host.Screen.TerminalReveal >= .999f,
+                "self-review terminal directory");
         }
 
         private MiniGameAudioButton FindPurify() => host.Screen.GetComponentsInChildren<MiniGameAudioButton>(true)
-            .Single(button => button.name == "SelfPurify");
+            .Single(button => button.name == "Disposition-Purify");
 
         private static void Click(MiniGameAudioButton button) => button.OnPointerClick(new PointerEventData(EventSystem.current)
         { button = PointerEventData.InputButton.Left, clickCount = 1 });
 
-        private void AssertVisibleFeed()
+        private IEnumerator CompleteSelfReview()
         {
-            var previous = RenderTexture.active;
-            var pixels = new Texture2D(monitor.Output.width, monitor.Output.height, TextureFormat.RGBA32, false);
-            try
+            Assert.That(runtime.EnterSelectedPatient(GameRuntime.SelfPatientId).Accepted, Is.True);
+            for (int index = 0; index < 16; index++)
             {
-                RenderTexture.active = monitor.Output;
-                pixels.ReadPixels(new Rect(0, 0, pixels.width, pixels.height), 0, 0);
-                pixels.Apply();
-                var colors = pixels.GetPixels32();
-                Assert.That(colors.Select(color => color.r * 65536 + color.g * 256 + color.b).Distinct().Count(), Is.GreaterThan(32),
-                    "A uniformly dark/blank monitor is not a live room feed.");
+                yield return null;
+                Assert.That(runtime.CurrentEndingLine, Is.Not.Null);
+                Assert.That(runtime.CurrentEndingLine.PortraitId, Is.EqualTo("SJ01").Or.EqualTo("SJ02"));
+                Assert.That(runtime.ConfirmSelfPurification().Accepted, Is.False);
+                int pages = 0;
+                while (runtime.GetView().Game.SelfReviewLineIndex == index && pages++ < 24)
+                {
+                    Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True);
+                    yield return null;
+                }
+                Assert.That(runtime.GetView().Game.SelfReviewLineIndex, Is.EqualTo(index + 1));
             }
-            finally { RenderTexture.active = previous; Object.Destroy(pixels); }
+            Assert.That(runtime.GetView().SelfReviewReady, Is.True);
         }
-
         private IEnumerator Until(Func<bool> condition, string expectation)
         {
             float deadline = Time.realtimeSinceStartup + 12;
@@ -184,12 +179,13 @@ namespace MiniGame.UnityHost.Tests
 
         private static GameRuntime CreateRuntime(bool stopAtDream)
         {
-            var patient = new PatientDefinition("unused", "未安排会谈", 0, 0, null, PatientPresence.TreatmentEnded);
+            var patient = new PatientDefinition("unused", "未安排会谈", 1, 10, null, PatientPresence.TreatmentEnded);
             var rules = new GameRules("self-monitor-test", new[] { patient }, Enumerable.Range(0, 4)
                 .Select(day => new DayDefinition(day, 0, Array.Empty<MeetingDefinition>())),
                 new[] { EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.TakenAway })
-                .WithDreamFlow(100, 100, 100, new System.Collections.Generic.Dictionary<string, int>());
+                .WithDreamFlow(0, 100, 100, new System.Collections.Generic.Dictionary<string, int>());
             var game = new GameRuntime(rules, new EmptyContent(), true);
+            game.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
             for (int guard = 0; guard < 80; guard++)
             {
                 var view = game.GetView();

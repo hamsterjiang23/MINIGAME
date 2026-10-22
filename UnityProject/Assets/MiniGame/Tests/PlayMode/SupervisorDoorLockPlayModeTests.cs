@@ -16,6 +16,15 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class SupervisorDoorLockPlayModeTests
     {
+        private bool previousSkipStartup;
+        private void EnterDirectWorldMode()
+        {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
+            if (MainMenuController.Current != null) Object.DestroyImmediate(MainMenuController.Current.gameObject);
+        }
+        [TearDown]
+        public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
         private MiniGameBootstrap host;
         private MiniGameYarnBridge bridge;
         private DoorViewCamera doorway;
@@ -31,6 +40,7 @@ namespace MiniGame.UnityHost.Tests
         [UnitySetUp]
         public IEnumerator SetUp()
         {
+            EnterDirectWorldMode();
             MiniGameSessionHost.Release();
             yield return SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene);
             yield return null;
@@ -225,16 +235,25 @@ namespace MiniGame.UnityHost.Tests
             host.Player.FacePoint(hitbox.bounds.center);
             Physics.SyncTransforms();
             host.Player.RefreshInteractionFocus();
+            if (host.Player.FocusedInteraction == null)
+            {
+                var camera = host.Player.ViewCamera.transform;
+                var hits = Physics.RaycastAll(camera.position, camera.forward, 20, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)
+                    .OrderBy(hit => hit.distance).Select(hit => hit.collider.name + "@" + hit.distance);
+                Debug.Log("Door focus diagnostic: input=" + host.Runtime.GetView().Input + "; transition=" + host.Screen.TransitionLocked
+                    + "; tools=" + host.Screen.PresentationToolsBlockInput + "; menu=" + MainMenuController.BlocksGameplayInput
+                    + "; narration=" + host.Screen.PropNarrationBlocksWorld + "; dreams=" + host.Dreams.OwnsCamera
+                    + "; camera=" + camera.position + "; target=" + hitbox.bounds + "; hits=" + string.Join(",", hits));
+            }
         }
 
         private void AssertLockedDoorFocus()
         {
             Assert.That(host.Runtime.GetView().AllowedInteractions, Has.No.Member(InteractionTarget.Door));
             StageAtDoor();
-            string prompt = host.Screen.GetComponentsInChildren<Text>(true).Single(value => value.name == "InteractionPrompt").text;
-            Assert.That(prompt, Does.Contain("门已锁"));
-            Assert.That(prompt, Does.Not.Contain("[ E ]"));
-            Assert.That(host.Player.InteractFocused(), Is.False, "The actual player E path must not bypass the global lock.");
+            Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.None));
+            Assert.That(host.Player.FocusedInteraction.IsHighlighted, Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "The left-click path must not bypass the global lock.");
             Assert.That(host.Runtime.GetView().RoomDoorOpen, Is.False);
         }
 

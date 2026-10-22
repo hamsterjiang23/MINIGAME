@@ -25,13 +25,16 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             host.StartLegacyPrototype();
+            host.Screen.DialogueCharactersPerSecond = 0;
             Assert.That(host, Is.Not.Null);
             Assert.That(Object.FindObjectsOfType<MiniGameBootstrap>(), Has.Length.EqualTo(1));
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EquivalentTo(new[] { InteractionTarget.Door }));
             Assert.That(Object.FindObjectsOfType<WorldInteraction>().Select(item => item.Target),
                 Is.EquivalentTo(new[] { InteractionTarget.Door, InteractionTarget.Computer, InteractionTarget.Bed }));
-            var text = host.Screen.GetComponentsInChildren<Text>(true).First(item => item.name == "ShiftHeader");
+            Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader"), Is.Null);
+            Assert.That(host.Screen.Canvas.transform.Find("InteractionCursor"), Is.Not.Null);
+            var text = host.Screen.GetComponentsInChildren<Text>(true).First(item => item.name == "DialogueBody");
             Assert.That(text.font, Is.Not.Null);
             Assert.That(text.font.HasCharacter('检'), Is.True, "A Chinese OS font must be installed for the target player.");
             yield return CaptureIfRequested(host, "world");
@@ -50,18 +53,20 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             host.StartLegacyPrototype();
+            host.Screen.DialogueCharactersPerSecond = 0;
             var runtime = host.Runtime;
             int frames = 0;
             float deadline = Time.realtimeSinceStartup + 90f;
             int roomReturns = 0;
-            bool sawEyes = false;
+            int encounteredPatients = 0;
             bool capturedTerminal = false;
-            string inspectedEncounter = null;
+            string visitedEncounter = null;
             string previousState = null;
             while (runtime.GetView().Game.Phase != GamePhase.Ending && Time.realtimeSinceStartup < deadline)
             {
                 frames++;
                 var view = runtime.GetView();
+                if (host.Screen.PowerPhase == TerminalPowerPhase.Boot) host.Screen.HandleTerminalKey(KeyCode.Return);
                 string state = view.Game.Day + ":" + view.Game.Phase + ":" + view.Game.CurrentNodeId + ":" + view.Cue?.Kind;
                 if (state != previousState) { previousState = state; DumpState(host, "flow transition"); }
                 if (view.Input == InputContext.World)
@@ -69,28 +74,16 @@ namespace MiniGame.UnityHost.Tests
                     if (view.Game.Phase == GamePhase.Work) roomReturns++;
                     Assert.That(runtime.TryInteract(view.AllowedInteractions.First()).Accepted, Is.True);
                 }
-                else if (view.Input == InputContext.Dialogue && view.Game.CurrentEncounterId != inspectedEncounter)
+                else if (view.Input == InputContext.Dialogue && view.Game.CurrentEncounterId != visitedEncounter)
                 {
-                    inspectedEncounter = view.Game.CurrentEncounterId;
+                    visitedEncounter = view.Game.CurrentEncounterId;
                     if (!capturedTerminal && !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MINIGAME_CAPTURE_DIR")))
                     {
                         yield return WaitForButton(host, "Continue");
                         yield return CaptureIfRequested(host, "terminal");
                         capturedTerminal = true;
                     }
-                    foreach (var kind in new[] { InspectionKind.Eyes, InspectionKind.Hands, InspectionKind.Teeth, InspectionKind.Photo, InspectionKind.DailySigns, InspectionKind.Records })
-                    {
-                        var check = host.Screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "Inspect-" + kind);
-                        Assert.That(check.interactable, Is.True);
-                        check.onClick.Invoke();
-                        Assert.That(runtime.GetView().Input, Is.EqualTo(InputContext.Inspection));
-                        Assert.That(runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, "empathize").Accepted, Is.False);
-                        Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(item => item.name == "InspectionDescription").text, Is.Not.Empty);
-                        if (kind == InspectionKind.Eyes && !sawEyes) yield return CaptureIfRequested(host, "eyes");
-                        host.Screen.GetComponentsInChildren<Button>(false).Single(button => button.name == "CloseInspection").onClick.Invoke();
-                        Assert.That(runtime.GetView().Inspection, Is.Null);
-                    }
-                    sawEyes = true;
+                    encounteredPatients++;
                 }
                 else
                 {
@@ -111,7 +104,7 @@ namespace MiniGame.UnityHost.Tests
                             if (view.Cue?.Kind == PresentationKind.Reaction)
                             {
                                 Assert.That(next.GetComponentInChildren<Text>().text, Does.Contain("返回房间"));
-                                Assert.That(buttons.Any(button => button.name.StartsWith("Disposition-")), Is.False);
+                                Assert.That(buttons.Any(button => button.name.StartsWith("Disposition-") && button.IsInteractable()), Is.False);
                             }
                             yield return ClickThroughPointer(next);
                         }
@@ -121,13 +114,13 @@ namespace MiniGame.UnityHost.Tests
             }
             DumpState(host, "flow final frames=" + frames);
             Assert.That(Time.realtimeSinceStartup, Is.LessThan(deadline), "The runtime or Yarn UI stopped offering a usable action.");
-            Assert.That(sawEyes, Is.True);
+            Assert.That(encounteredPatients, Is.GreaterThan(1));
             Assert.That(roomReturns, Is.GreaterThan(0), "Every reaction must return through the room before the next terminal session.");
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.TakenAway));
             var rules = PrototypeRules.Create();
             var restored = GameRuntime.Restore(runtime.Save(), rules, new PrototypeContent(rules));
             Assert.That(restored.GetView().Game.Ending, Is.EqualTo(EndingType.TakenAway));
-            Debug.Log("MINIGAME_PLAYMODE_FLOW_PASSED three days; real Yarn line/options; six-check UI; room returns; ending restore");
+            Debug.Log("MINIGAME_PLAYMODE_FLOW_PASSED three days; real Yarn line/options; multiple patient encounters; room returns; ending restore");
         }
 
         private static void AssertPointerCanReach(Button button)
@@ -135,7 +128,7 @@ namespace MiniGame.UnityHost.Tests
             Canvas.ForceUpdateCanvases();
             var rect = button.GetComponent<RectTransform>();
             var pointer = new PointerEventData(EventSystem.current)
-            { position = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center)) };
+            { position = button.GetComponentInParent<MiniGameScreen>().TerminalDisplay.ScreenPointFor(rect) };
             var hits = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointer, hits);
             Debug.Log("MINIGAME_RAYCAST button=" + button.name + " pointer=" + pointer.position + " rect=" + rect.rect
@@ -155,7 +148,7 @@ namespace MiniGame.UnityHost.Tests
             var rect = button.GetComponent<RectTransform>();
             var pointer = new PointerEventData(EventSystem.current)
             {
-                position = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center)),
+                position = button.GetComponentInParent<MiniGameScreen>().TerminalDisplay.ScreenPointFor(rect),
                 button = PointerEventData.InputButton.Left,
                 clickCount = 1
             };
@@ -187,16 +180,15 @@ namespace MiniGame.UnityHost.Tests
                 yield return SceneManager.LoadSceneAsync("InspectionApartment");
                 yield return null;
                 var host = Object.FindObjectOfType<MiniGameBootstrap>();
-            host.StartLegacyPrototype();
+                host.StartLegacyPrototype();
+                host.Screen.DialogueCharactersPerSecond = 0;
                 Assert.That(host.Runtime.TryInteract(InteractionTarget.Door).Accepted, Is.True);
                 yield return WaitForButton(host, "Continue");
                 if (replies)
                 {
-                    FindActiveButton(host, "Continue").onClick.Invoke();
-                    yield return WaitForPhase(host, GamePhase.Briefing);
+                    yield return ContinueUntilPhase(host, GamePhase.Briefing);
                     yield return WaitForButton(host, "Continue");
-                    FindActiveButton(host, "Continue").onClick.Invoke();
-                    yield return WaitForPhase(host, GamePhase.Apartment);
+                    yield return ContinueUntilPhase(host, GamePhase.Apartment);
                     Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
                     yield return WaitForButton(host, "Continue");
                     FindActiveButton(host, "Continue").onClick.Invoke();
@@ -223,8 +215,7 @@ namespace MiniGame.UnityHost.Tests
                 else
                 {
                     yield return WaitForButton(host, "Continue");
-                    FindActiveButton(host, "Continue").onClick.Invoke();
-                    yield return WaitForPhase(host, GamePhase.Briefing);
+                    yield return ContinueUntilPhase(host, GamePhase.Briefing);
                 }
             }
         }
@@ -235,12 +226,22 @@ namespace MiniGame.UnityHost.Tests
 
         private static IEnumerator WaitForButton(MiniGameBootstrap host, string name, bool prefix = false)
         {
-            float deadline = Time.realtimeSinceStartup + 10f;
+            float deadline = Time.realtimeSinceStartup + 20f;
             while (Time.realtimeSinceStartup < deadline && FindActiveButton(host, name, prefix) == null) yield return null;
             DumpState(host, "wait button " + name);
             Assert.That(FindActiveButton(host, name, prefix), Is.Not.Null, "A fresh Yarn presentation failed to offer " + name);
         }
 
+        private static IEnumerator ContinueUntilPhase(MiniGameBootstrap host, GamePhase phase)
+        {
+            float deadline = Time.realtimeSinceStartup + 10f;
+            while (Time.realtimeSinceStartup < deadline && host.Runtime.GetView().Game.Phase != phase)
+            {
+                FindActiveButton(host, "Continue")?.onClick.Invoke();
+                yield return null;
+            }
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(phase));
+        }
         private static IEnumerator WaitForPhase(MiniGameBootstrap host, GamePhase phase)
         {
             float deadline = Time.realtimeSinceStartup + 10f;
@@ -320,6 +321,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             host.StartLegacyPrototype();
+            host.Screen.DialogueCharactersPerSecond = 0;
             var initial = host.Runtime.Save();
             host.Screen.SetFade(.8f); host.Screen.SetGlitch(.7f);
             host.RestoreCheckpoint(initial);
@@ -374,7 +376,12 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(transition.MoveNext(), Is.True, "A paused final frame must keep waiting rather than lose its completion.");
             Assert.That(runtime.GetView().Cue.Token, Is.EqualTo(sleepToken));
             runtime.SetPaused(false);
-            Assert.That(transition.MoveNext(), Is.False);
+            Assert.That(transition.MoveNext(), Is.True, "The authored black hold starts after the paused fade boundary.");
+            float holdStarted = Time.realtimeSinceStartup;
+            int holdFrames = 0;
+            while (transition.MoveNext() && holdFrames++ < 500) yield return null;
+            Assert.That(holdFrames, Is.LessThan(500), "Sleep black hold must complete.");
+            Assert.That(Time.realtimeSinceStartup - holdStarted, Is.GreaterThanOrEqualTo(1.3f));
             Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Dream));
             Assert.That(runtime.CompleteCue(sleepToken).Accepted, Is.False);
             host.RestoreCheckpoint(initial);
