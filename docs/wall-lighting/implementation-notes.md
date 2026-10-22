@@ -42,3 +42,24 @@ Mono交付更新：构建前发现隔离工程的ApartmentPlayer、PropNarration
 验证：4项EditMode、7项PlayMode通过。真实ViewCamera在21个yaw角度下比较同深度对照与修复网格，亮度尖峰从0.419降到0.042；测量临时绕过调色和颗粒以隔离接缝，随后另测原后处理配置。场景文件与FBX未改，最新构建和启动结果见[接缝验证](camera-seam-verification.json)。`[verified: reports/camera-seams/camera-sweep.json；camera-seam-verification.json tests、preservation、build、playerStartup]`
 
 按用户要求重新交付非开发版Mono：使用BuildOptions.None和现有Mono2x后端构建独立新目录，构建0错误、1条Pipeline组件缺失提示；构建期间运行脚本、场景和墙纸网格哈希保持不变。ZIP内160个文件解压后逐项SHA-256一致，从解压目录启动到达ready标记。`[verified: camera-seam-mono-package.json build、package、nativeStartup；reports/camera-seams/mono-release-build.json messages、sourceSnapshot]`
+
+## 2026-10-22 墙顶漏光
+
+### Deviations
+
+- 用户随后要求完整几何：最终采用5个正常渲染、投射和接收阴影的封闭Cube（1块实体屋顶、4块窗墙），替代临时ShadowsOnly方案；天花板原内饰平面保留，源FBX不改。`[verified: solid-shell-verification.json geometry；用户消息“用完整的几何体”]`
+
+### Discovered edge cases
+
+- 窗外WindowLight照射下，零厚度天花板两侧出现亮线；归零阴影Bias、Normal Bias及双面投影均未解除，临时屋顶遮光体消除了亮线且保留窗户进光。`[verified: Artifacts/WallLighting/wall-top-shadow-controls-20261022 与 wall-top-roof-volume-20261022 对照图]`
+- 用户要求同时提交已有复古配置：pixelSize从8改为2，useVirtualResolution从0改为1，virtualHeight保持540。`[verified: git diff pixelSize/useVirtualResolution；用户消息“一起提交”]`
+
+### Questions for review
+
+- 用户已授权更新正式场景、一起提交复古配置并push；未要求重新打包Player。`[verified: 用户消息“更新然后push”“一起提交”]`
+
+变更偏差：1项，由仅投影遮光体改为正常渲染的封闭几何。`[verified: solid-shell-verification.json geometry]`
+最可能回看：如重新设计窗墙轮廓，需重新核对洞口和四块实体的边界。`[opinion]`
+发现边界：窗旁竖缝需同时处理窗墙遮挡；诊断图中的蓝色代表无墙纸覆盖的底墙，并非游戏颜色。`[verified: solid-shell-verification.json controls；WallSurfaceDiagnostics.CaptureSurfaceIds]`
+最终验证：4项墙纸EditMode通过；实体重复生成、保存重载、洞口/材质/碰撞体/灯光保留验证通过；昼夜原始相机渲染已复查，未进行本轮PlayMode或Player构建。`[verified: solid-shell-verification.json validation、scope]`
+后续先读：solid-shell-verification.json及guide.md的“墙顶与窗旁漏光”。`[opinion]`

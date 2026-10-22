@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-22",
+  "unity": "2022.3.23f1c1",
+  "scope": {
+    "sourceScene": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "method": "Isolated Unity 2022 EditMode Camera.Render at player spawn, 1.56 m eye height, looking toward window with upward pitch",
+    "postProcessingIncluded": false,
+    "playModeRun": false,
+    "playerBuildRun": false
+  },
+  "controls": {
+    "exteriorWindowLightDisabled": "Top and corner strips disappear",
+    "zeroShadowBias": "Top strips remain",
+    "zeroNormalBias": "Top strips remain",
+    "twoSidedCasting": "Top strips remain",
+    "normalMapDisabled": "Corner strips remain",
+    "solidWindowPanels": "Corner strips disappear while window daylight remains",
+    "baseline": "previews/solid-shell-before.png",
+    "day": "previews/solid-shell-day.png",
+    "night": "previews/solid-shell-night.png"
+  },
+  "geometry": {
+    "root": "Main room solid shell",
+    "solidClosedBoxes": 5,
+    "ceilingThicknessMetres": 0.2,
+    "ceilingOverhangPerSideMetres": 0.2,
+    "ceilingInteriorFinishRetained": true,
+    "ceilingFinishSeparationMetres": 0.002,
+    "windowWallOriginalRenderersDisabled": 4,
+    "windowWallInteriorPlane": "shared minimum X of original four panels",
+    "windowWallExteriorExtensionMetres": 0.2,
+    "windowOpeningYZUnchanged": true,
+    "materialsPreserved": true,
+    "shadowCasting": "On",
+    "receiveShadows": true,
+    "shadowsOnlyUsed": false,
+    "collidersAdded": 0,
+    "lightCountUnchanged": true,
+    "sourceFbxUnchanged": true,
+    "sourcePreservation": "reports/solid-shell-source-preservation.json"
+  },
+  "retroProfile": {
+    "path": "UnityProject/Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset",
+    "pixelSize": 2,
+    "useVirtualResolution": true,
+    "virtualHeight": 540,
+    "authorization": "User requested including existing changes"
+  },
+  "validation": {
+    "installation": {
+      "result": "passed",
+      "idempotent": true,
+      "savedAndReloaded": true,
+      "shadowCasting": "On",
+      "lightCountUnchanged": true,
+      "colliderCountUnchanged": true,
+      "position": {
+        "x": -2.79433012008667,
+        "y": 2.4947779178619385,
+        "z": -1.5155500173568726
+      },
+      "size": {
+        "x": 10.10077953338623,
+        "y": 0.20000000298023224,
+        "z": 4.811760425567627
+      }
+    },
+    "editMode": {
+      "filter": "MiniGame.UnityHost.Tests.WallSurfaceRepairTests",
+      "result": "Passed",
+      "passed": 4,
+      "failed": 0,
+      "report": "reports/solid-shell-editmode.xml"
+    },
+    "day": {
+      "result": "passed",
+      "captures": 32,
+      "sceneUnchangedDuringCapture": true,
+      "temporaryStatesRestored": true
+    },
+    "night": {
+      "result": "passed",
+      "captures": 32,
+      "sceneUnchangedDuringCapture": true,
+      "temporaryStatesRestored": true
+    },
+    "visual": "Inspected day/night raw camera renders: targeted wall-top and window-side strips absent; window remains open"
+  },
+  "sourceFiles": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Editor/WallSurfaceRepairSetup.cs",
+      "sha256": "7f9a94df2ae4f8d7009a248cbf0ee612c00e998b0799f8a199c346455eb298a6"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "sha256": "cc9948bb1e946262473b06cc2789015318be9f03b31533c3d72d126c3a215777"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset",
+      "sha256": "8bc9c9fa7cdbcb99fd2b0101eeadc4fa1a36c9e856bae84a8598d6a36298efd2"
+    }
+  ]
+}

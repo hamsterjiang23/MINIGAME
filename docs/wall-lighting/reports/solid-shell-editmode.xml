@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="1.0472209">
+  <test-suite type="TestSuite" id="1194" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="1.047221" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1343" name="MiniGame.UnityHost.EditorTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DreamRuntime20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.EditorTests.dll" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="1.009036" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="66300" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1344" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="1.007617" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1345" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="1.006521" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1346" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="1.003990" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1338" name="WallSurfaceRepairTests" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="0.999147" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1342" name="InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects" methodname="InstallFromAnUnrelatedDirtyScenePreservesTheSceneAndUnsavedObjects" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="118440518" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:24Z" duration="0.014372" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1339" name="PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials" methodname="PreviewRepairsAllTwelveActualSurfacesWithoutChangingOtherMeshesCollidersOrMaterials" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="1449932117" result="Passed" start-time="2026-10-22 06:56:24Z" end-time="2026-10-22 06:56:25Z" duration="0.767291" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1341" name="RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets" methodname="RepeatedPreviewKeepsIdenticalGeometryAndOriginalFbxIdentityWithoutWritingAssets" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="101734336" result="Passed" start-time="2026-10-22 06:56:25Z" end-time="2026-10-22 06:56:25Z" duration="0.187022" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1340" name="SavedOverlappingWallpapersHaveDistinctDepth" fullname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests.SavedOverlappingWallpapersHaveDistinctDepth" methodname="SavedOverlappingWallpapersHaveDistinctDepth" classname="MiniGame.UnityHost.Tests.WallSurfaceRepairTests" runstate="Runnable" seed="966463559" result="Passed" start-time="2026-10-22 06:56:25Z" end-time="2026-10-22 06:56:25Z" duration="0.014920" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

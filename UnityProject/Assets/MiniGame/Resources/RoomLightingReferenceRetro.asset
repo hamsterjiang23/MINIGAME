@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectEnabled: 1
   strength: 1
-  pixelSize: 8
+  pixelSize: 2
   fullscreenQuantization: 1
   levels: 16
   gammaBefore: 0.906
@@ -36,5 +36,5 @@ MonoBehaviour:
   quantizationStrength: 1
   ditherStrength: 0
   filmGrainStrength: 0.05
-  useVirtualResolution: 0
+  useVirtualResolution: 1
   virtualHeight: 540

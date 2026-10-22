@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Editor
 {
-    /// <summary>Projects only the reference wallpaper onto the interior wall faces; never edits the imported model.</summary>
+    /// <summary>Repairs reference wallpaper and solid wall coverage without editing the imported model.</summary>
     public static class WallSurfaceRepairSetup
     {
         private const string ModelPath = "Assets/MiniGame/Art/MainRoom/Combined/MainRoom.fbx";
@@ -130,7 +130,11 @@ namespace MiniGame.UnityHost.Editor
                     if (previous != null && TemporarySources.Remove(previous.GetInstanceID())) Object.DestroyImmediate(previous);
                     report.surfaces.Add(plan.Report);
                 }
-                if (persist) EditorSceneManager.MarkSceneDirty(scene);
+                if (persist)
+                {
+                    EnsureSolidRoomShell(scene);
+                    EditorSceneManager.MarkSceneDirty(scene);
+                }
                 report.repairedRenderers = plans.Count;
                 report.sourceModelSha256After = ModelHash();
                 report.sourceModelUnchanged = report.sourceModelSha256Before == report.sourceModelSha256After;
@@ -148,6 +152,69 @@ namespace MiniGame.UnityHost.Editor
                 if (persist)
                     foreach (var plan in plans) if (plan.Mesh != null) Object.DestroyImmediate(plan.Mesh);
             }
+        }
+
+        public static void EnsureSolidRoomShell(Scene scene)
+        {
+            if (!scene.IsValid() || !scene.isLoaded) throw new InvalidOperationException("A loaded scene is required.");
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Solid room repair requires Edit Mode.");
+            var surfaces = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<MeshRenderer>(true)).ToArray();
+            var ceiling = surfaces.Single(renderer => renderer.name == "B_Awal");
+            var windowPanels = new[] { "B_Wall__2_", "B_Wall__2_.001", "B_Wall__2_.002", "B_Wall__2_.003" }
+                .Select(name => surfaces.Single(renderer => renderer.name == name)).ToArray();
+            const string shellName = "Main room solid shell";
+            var shell = scene.GetRootGameObjects().SingleOrDefault(root => root.name == shellName);
+            if (shell == null)
+            {
+                shell = new GameObject(shellName);
+                SceneManager.MoveGameObjectToScene(shell, scene);
+            }
+            shell.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            shell.transform.localScale = Vector3.one;
+            shell.SetActive(true);
+            // Keep the authored ceiling plane as the interior finish. The solid roof is
+            // 2 mm above it, avoiding coplanar surfaces while sealing the shadow-map edge.
+            var bounds = ceiling.bounds;
+            SetSolidBox(shell.transform, "Solid ceiling", ceiling,
+                new Bounds(new Vector3(bounds.center.x, bounds.max.y + .102f, bounds.center.z),
+                    new Vector3(bounds.size.x + .40f, .20f, bounds.size.z + .40f)));
+            float insidePlane = windowPanels.Min(panel => panel.bounds.min.x);
+            foreach (var panel in windowPanels)
+            {
+                // Share a continuous interior plane; retain each panel's exact Y/Z
+                // limits so the window aperture stays open. Extend thickness outdoors.
+                var min = panel.bounds.min; var max = panel.bounds.max;
+                min.x = insidePlane; max.x += .20f;
+                SetSolidBox(shell.transform, "Solid " + panel.name, panel, new Bounds((min + max) * .5f, max - min));
+                panel.enabled = false;
+                Record(panel);
+            }
+            EditorSceneManager.MarkSceneDirty(scene);
+        }
+
+        private static void SetSolidBox(Transform parent, string name, MeshRenderer source, Bounds bounds)
+        {
+            var child = parent.Find(name);
+            GameObject box;
+            if (child == null)
+            {
+                box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                box.name = name;
+                box.transform.SetParent(parent, false);
+            }
+            else box = child.gameObject;
+            box.transform.SetPositionAndRotation(bounds.center, Quaternion.identity);
+            box.transform.localScale = bounds.size;
+            box.layer = source.gameObject.layer;
+            box.SetActive(true);
+            var renderer = box.GetComponent<MeshRenderer>();
+            renderer.enabled = true;
+            renderer.sharedMaterial = source.sharedMaterial;
+            renderer.shadowCastingMode = ShadowCastingMode.On;
+            renderer.receiveShadows = true;
+            renderer.lightProbeUsage = LightProbeUsage.Off;
+            renderer.reflectionProbeUsage = ReflectionProbeUsage.Off;
+            foreach (var collider in box.GetComponents<Collider>()) Object.DestroyImmediate(collider);
         }
 
         [MenuItem("MiniGame/Main Room/Install wallpaper surface repair")]

@@ -4,6 +4,12 @@
 
 此前完整Windows x64 Mono交付包及历史验证见[交付记录](latest-mono.json)。`[verified: latest-mono.json]`
 
+## 墙顶与窗旁漏光
+
+2026-10-22：两侧墙顶亮线及窗旁断续竖线均在WindowLight照射下出现；阴影Bias/Normal Bias归零、双面投影没有解除墙顶亮线。最终采用完整封闭几何：天花板上方新增20厘米厚、四周延伸20厘米的实体屋顶，距原内饰平面2毫米以避免重合；窗墙四片替换为共用室内平面的实体Cube，向室外增加20厘米厚度，原窗洞Y/Z边界和原材质保留。五个实体均正常渲染、投射并接收阴影，没有使用ShadowsOnly。`[verified: solid-shell-verification.json controls、geometry]`
+
+原FBX、墙纸撕裂轮廓、门窗位置、灯光和碰撞体不改。持久化墙体修复会重复更新实体，避免重建时丢失；已有复古配置按用户要求一起提交：pixelSize=2、useVirtualResolution=true、virtualHeight=540。昼夜原始相机预览、4项EditMode及保留项验证见[本轮记录](solid-shell-verification.json)，[修复前](previews/solid-shell-before.png)、[白天修复后](previews/solid-shell-day.png)、[夜间修复后](previews/solid-shell-night.png)。这些是隔离Unity 2022的EditMode原始相机渲染，本轮未重跑PlayMode或构建Player。`[verified: solid-shell-verification.json geometry、retroProfile、validation、scope]`
+
 ## 转动视角时的竖向亮缝
 
 相邻墙纸存在同深度重叠，电脑右侧接缝重叠约1.85厘米，导致转动时出现亮缝。相同灯光下将一片墙纸临时错开1毫米，亮缝消失；正式修复为相邻重叠片分配固定深度层，当前距底墙4或5毫米。原UV、撕裂轮廓、材质、FBX和场景布局保留。`[verified: camera-seam-verification.json controls、repair、preservation]`
