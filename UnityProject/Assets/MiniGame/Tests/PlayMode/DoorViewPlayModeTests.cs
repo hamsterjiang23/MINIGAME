@@ -340,6 +340,32 @@ namespace MiniGame.UnityHost.Tests
                 "Terminal exit must return to the original room position, never the previously visible outside position.");
         }
 
+        [UnityTest, Timeout(45000)]
+        public IEnumerator RestoringOrdinaryDayZeroPatientReviewPreservesTheExplicitRoomReturnPose()
+        {
+            var room = CapturePose();
+            string roomCheckpoint = host.Runtime.Save();
+            Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
+            yield return Until(() => host.Runtime.GetView().Input == InputContext.TerminalDirectory
+                && !host.Effects.IsTransitioning, "ordinary Day0 directory", 20);
+            Assert.That(host.Runtime.EnterSelectedPatient(host.Runtime.GetView().Game.CurrentPatientId).Accepted, Is.True);
+            Assert.That(host.Runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
+            Assert.That(host.Runtime.GetView().TerminalBootRequired, Is.False);
+            string reviewCheckpoint = host.Runtime.Save();
+            host.RestoreCheckpoint(roomCheckpoint);
+            AssertReturned(room);
+            Assert.That(player.InteractFocused(), Is.True);
+            yield return Until(() => host.Runtime.GetView().Input == InputContext.DoorView, "outside view before restoring patient review");
+            host.RestoreCheckpoint(reviewCheckpoint);
+            Assert.That(host.Effects.TryGetRoomReturnPose(out var actor, out var actorRotation,
+                out var eyes, out var eyeRotation, out var fov), Is.True);
+            Assert.That(Vector3.Distance(actor, room.PlayerPosition), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(actorRotation, room.PlayerRotation), Is.LessThan(.01f));
+            Assert.That(Vector3.Distance(eyes, room.CameraPosition), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(eyeRotation, room.CameraRotation), Is.LessThan(.01f));
+            Assert.That(fov, Is.EqualTo(room.FieldOfView).Within(.001f));
+        }
+
         private IEnumerator PauseAndAssertFrozen(RoomPose room)
         {
             string token = host.Runtime.GetView().Cue.Token;

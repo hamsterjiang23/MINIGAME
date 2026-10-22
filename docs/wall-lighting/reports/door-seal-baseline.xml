@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="2.1365708">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="257" result="Failed" site="Child" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="2.136571" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1259" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DreamRuntime20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="2.127761" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="45548" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1260" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="2.096511" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1261" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="2.063162" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1262" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="2.029790" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1043" name="DoorFrameRenderingPlayModeTests" fullname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" classname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="1.995779" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1044" name="ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening" fullname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening" methodname="ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening" classname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" runstate="Runnable" seed="1751612500" result="Failed" start-time="2026-10-22 07:45:37Z" end-time="2026-10-22 07:45:39Z" duration="1.959880" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  The solid door stop must occlude the closed leaf gap at (-0.72, 1.20)
+  Expected: True
+  But was:  False
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests+<ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening>d__2.MoveNext () [0x0010e] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DoorFrameRenderingPlayModeTests.cs:32
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

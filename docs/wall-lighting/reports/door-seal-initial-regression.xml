@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="12" result="Failed(Child)" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:55:20Z" duration="43.2406645">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="257" result="Failed" site="Child" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:55:20Z" duration="43.240665" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1259" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DreamRuntime20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:55:20Z" duration="43.230867" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79556" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1260" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:55:20Z" duration="43.199565" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1261" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:55:20Z" duration="43.166228" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1262" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="197" result="Failed" site="Child" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:55:20Z" duration="43.132836" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1043" name="DoorFrameRenderingPlayModeTests" fullname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" classname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:54:44Z" duration="7.111181" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1044" name="ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening" fullname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening" methodname="ClosedDoorJambAndThresholdSealTheLightGapsWithoutFillingTheOpening" classname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" runstate="Runnable" seed="856716420" result="Passed" start-time="2026-10-22 07:54:37Z" end-time="2026-10-22 07:54:39Z" duration="1.863405" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="15000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1045" name="DoorFrameHasNoPositiveAreaCoplanarOverlapWithItselfOrEntranceWalls" fullname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.DoorFrameHasNoPositiveAreaCoplanarOverlapWithItselfOrEntranceWalls" methodname="DoorFrameHasNoPositiveAreaCoplanarOverlapWithItselfOrEntranceWalls" classname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" runstate="Runnable" seed="953360268" result="Passed" start-time="2026-10-22 07:54:39Z" end-time="2026-10-22 07:54:39Z" duration="0.348665" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="90000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_DOOR_FRAME_COPLANAR_AUDIT frameTriangles=60 wallTriangles=3456 overlaps=0
+]]></output>
+              </test-case>
+              <test-case id="1046" name="OpenDoorKeepsFrameFixedAndClearAcrossConfiguredAnglesAndRoomSideViews" fullname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests.OpenDoorKeepsFrameFixedAndClearAcrossConfiguredAnglesAndRoomSideViews" methodname="OpenDoorKeepsFrameFixedAndClearAcrossConfiguredAnglesAndRoomSideViews" classname="MiniGame.UnityHost.Tests.DoorFrameRenderingPlayModeTests" runstate="Runnable" seed="1865467687" result="Passed" start-time="2026-10-22 07:54:39Z" end-time="2026-10-22 07:54:44Z" duration="4.862703" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="90000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_DOOR_FRAME_MOTION_PASSED stationary world vertices; no leaf/frame penetration through 0/30/60/90-degree opening and closing; eight room-side views
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1047" name="DoorViewPlayModeTests" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-22 07:54:44Z" end-time="2026-10-22 07:55:20Z" duration="35.987495" total="9" passed="8" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1054" name="CameraPathAndOutsideSightlineClearTheOpenDoorLeaf" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.CameraPathAndOutsideSightlineClearTheOpenDoorLeaf" methodname="CameraPathAndOutsideSightlineClearTheOpenDoorLeaf" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="278943239" result="Passed" start-time="2026-10-22 07:54:44Z" end-time="2026-10-22 07:54:47Z" duration="2.761941" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1048" name="EntryStopsAtThresholdAndEPathReturnsBeforeClosingWithoutMovingTheBody" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.EntryStopsAtThresholdAndEPathReturnsBeforeClosingWithoutMovingTheBody" methodname="EntryStopsAtThresholdAndEPathReturnsBeforeClosingWithoutMovingTheBody" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="1835564658" result="Passed" start-time="2026-10-22 07:54:47Z" end-time="2026-10-22 07:54:49Z" duration="2.822114" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1055" name="FixedDoorAlignmentFacesOutwardAndHoldsInsideTheThresholdWithoutForwardDrift" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.FixedDoorAlignmentFacesOutwardAndHoldsInsideTheThresholdWithoutForwardDrift" methodname="FixedDoorAlignmentFacesOutwardAndHoldsInsideTheThresholdWithoutForwardDrift" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="1175661915" result="Passed" start-time="2026-10-22 07:54:49Z" end-time="2026-10-22 07:54:53Z" duration="3.126192" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_DOOR_THRESHOLD_HOLD position=(-6.89472, 0.88712, -3.17488) alignedDistance=0.000000 signedDoorwayDistance=-0.850000
+]]></output>
+              </test-case>
+              <test-case id="1053" name="ImmediateDisableAndReenableDuringReturnDoesNotTrapPresentationInput" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.ImmediateDisableAndReenableDuringReturnDoesNotTrapPresentationInput" methodname="ImmediateDisableAndReenableDuringReturnDoesNotTrapPresentationInput" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="1523335348" result="Passed" start-time="2026-10-22 07:54:53Z" end-time="2026-10-22 07:54:55Z" duration="2.754686" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1052" name="OutsideHoldShowsTheReturnPromptThroughItsCanvasGroup" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.OutsideHoldShowsTheReturnPromptThroughItsCanvasGroup" methodname="OutsideHoldShowsTheReturnPromptThroughItsCanvasGroup" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="1231717059" result="Passed" start-time="2026-10-22 07:54:55Z" end-time="2026-10-22 07:54:58Z" duration="3.025275" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1049" name="PauseFreezesAlignmentAndReturnAndResumesTheSameCue" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.PauseFreezesAlignmentAndReturnAndResumesTheSameCue" methodname="PauseFreezesAlignmentAndReturnAndResumesTheSameCue" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="636826312" result="Passed" start-time="2026-10-22 07:54:58Z" end-time="2026-10-22 07:55:02Z" duration="3.420920" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1051" name="RestoringMidReturnCancelsToTheRoomAndRejectsItsOldToken" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringMidReturnCancelsToTheRoomAndRejectsItsOldToken" methodname="RestoringMidReturnCancelsToTheRoomAndRejectsItsOldToken" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="1543750267" result="Passed" start-time="2026-10-22 07:55:02Z" end-time="2026-10-22 07:55:05Z" duration="2.760514" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1050" name="RestoringOutsideKeepsTheOriginalRoomPoseAcrossRepeatedRebinds" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringOutsideKeepsTheOriginalRoomPoseAcrossRepeatedRebinds" methodname="RestoringOutsideKeepsTheOriginalRoomPoseAcrossRepeatedRebinds" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="1230758284" result="Passed" start-time="2026-10-22 07:55:05Z" end-time="2026-10-22 07:55:07Z" duration="2.859580" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+              <test-case id="1056" name="RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom" fullname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests.RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom" methodname="RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom" classname="MiniGame.UnityHost.Tests.DoorViewPlayModeTests" runstate="Runnable" seed="2134739012" result="Failed" start-time="2026-10-22 07:55:07Z" end-time="2026-10-22 07:55:20Z" duration="12.423988" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="45000" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Door observation only moves the camera. input=World cue= cameraPhase=None active=False open=False doorAngle=0 blocked=False camera=(-3.0040, 0.8871, -1.1500) body=(-3.0040, -0.6729, -1.1500)
+  Expected: less than 0.00100000005f
+  But was:  3.96213222f
+]]></message>
+                  <stack-trace><![CDATA[at MiniGame.UnityHost.Tests.DoorViewPlayModeTests.AssertBody (MiniGame.UnityHost.Tests.DoorViewPlayModeTests+RoomPose room) [0x00000] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DoorViewPlayModeTests.cs:383
+at MiniGame.UnityHost.Tests.DoorViewPlayModeTests.AssertReturned (MiniGame.UnityHost.Tests.DoorViewPlayModeTests+RoomPose room) [0x000dd] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DoorViewPlayModeTests.cs:417
+at MiniGame.UnityHost.Tests.DoorViewPlayModeTests+<RestoringTerminalFromOutsideKeepsTerminalPoseAndReturnsToTheOriginalRoom>d__14.MoveNext () [0x000cc] in F:\AAMINIGAME\MINIGAME\Artifacts\DreamRuntime20261022\UnityProject\Assets\MiniGame\Tests\PlayMode\DoorViewPlayModeTests.cs:317
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.0-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

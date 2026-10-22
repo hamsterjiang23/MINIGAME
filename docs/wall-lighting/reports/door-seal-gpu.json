@@ -1,0 +1,47 @@
+{
+    "result": "passed",
+    "unity": "2022.3.23f1c1",
+    "repeatBuildStable": true,
+    "oneFilterRendererCollider": true,
+    "vertices": 120,
+    "triangles": 60,
+    "shadowBias": 0.004999999888241291,
+    "shadowNormalBias": 0.009999999776482582,
+    "samples": [
+        {
+            "name": "before-day-closed-centre",
+            "redPixels": 12204,
+            "maximumRedDelta": 68
+        },
+        {
+            "name": "after-day-closed-left",
+            "redPixels": 11,
+            "maximumRedDelta": 23
+        },
+        {
+            "name": "after-day-closed-centre",
+            "redPixels": 0,
+            "maximumRedDelta": 8
+        },
+        {
+            "name": "after-day-closed-right",
+            "redPixels": 7,
+            "maximumRedDelta": 15
+        },
+        {
+            "name": "after-day-open",
+            "redPixels": 135506,
+            "maximumRedDelta": 170
+        },
+        {
+            "name": "after-night-closed",
+            "redPixels": 10,
+            "maximumRedDelta": 12
+        },
+        {
+            "name": "after-night-open",
+            "redPixels": 192212,
+            "maximumRedDelta": 226
+        }
+    ]
+}
