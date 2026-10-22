@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="22" result="Passed" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.8775646">
+  <test-suite type="TestSuite" id="1194" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="150" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.877565" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1343" name="MiniGame.UnityHost.EditorTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DreamRuntime20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.EditorTests.dll" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.869060" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="51312" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1344" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.868618" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1345" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.865320" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1346" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="118" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.862169" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1218" name="DialoguePackageImporterTests" fullname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests" classname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:08:00Z" duration="1.718634" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1222" name="NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn" fullname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests.NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn" methodname="NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn" classname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests" runstate="Runnable" seed="714648971" result="Passed" start-time="2026-10-22 09:07:58Z" end-time="2026-10-22 09:07:59Z" duration="0.606320" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn
+MINIGAME_DIALOGUE_PACKAGE_IMPORTED package=terminal-child-day1 source=bc2463382bb6e9ed5f7f76e5c4848f9e272c7b4efb78dd8f72b465ba38616407 rules=98098f0ed3e15ce98c7b9d7148e57e750b957c12a354578d67b6f40d4cb8b10a active=False path=Assets/MiniGame/ImportedDialogue/terminal-child-day1/89b931449c3b0e923d17f63877bd9f24/DialoguePackage.asset
+MINIGAME_DIALOGUE_PACKAGE_IMPORTED package=terminal-child-day1 source=bc2463382bb6e9ed5f7f76e5c4848f9e272c7b4efb78dd8f72b465ba38616407 rules=98098f0ed3e15ce98c7b9d7148e57e750b957c12a354578d67b6f40d4cb8b10a active=False path=Assets/MiniGame/ImportedDialogue/terminal-child-day1/89b931449c3b0e923d17f63877bd9f24/DialoguePackage.asset
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn Passed
+]]></output>
+              </test-case>
+              <test-case id="1221" name="RejectedPackagePreservesActiveSourceProjectAndAssetBytes" fullname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests.RejectedPackagePreservesActiveSourceProjectAndAssetBytes" methodname="RejectedPackagePreservesActiveSourceProjectAndAssetBytes" classname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests" runstate="Runnable" seed="93853263" result="Passed" start-time="2026-10-22 09:07:59Z" end-time="2026-10-22 09:07:59Z" duration="0.007314" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.RejectedPackagePreservesActiveSourceProjectAndAssetBytes
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.RejectedPackagePreservesActiveSourceProjectAndAssetBytes Passed
+]]></output>
+              </test-case>
+              <test-case id="1219" name="SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo" fullname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo" methodname="SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo" classname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests" runstate="Runnable" seed="1501355596" result="Passed" start-time="2026-10-22 09:07:59Z" end-time="2026-10-22 09:07:59Z" duration="0.007356" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo Passed
+]]></output>
+              </test-case>
+              <test-case id="1220" name="UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches" fullname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests.UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches" methodname="UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches" classname="MiniGame.UnityHost.Tests.DialoguePackageImporterTests" runstate="Runnable" seed="1330893889" result="Passed" start-time="2026-10-22 09:07:59Z" end-time="2026-10-22 09:08:00Z" duration="1.088461" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches
+MINIGAME_DIALOGUE_PACKAGE_IMPORTED package=inspection-campaign source=3d2069e63fdc1410dc26576638c11df26a12dadb085bd3b91c10f65e38b8a7f0 rules=cb420723f1772f3b4ba3ee5ced3a355ad8d2d148b417b34d0822f615ea75c54b active=False path=Assets/MiniGame/ImportedDialogue/inspection-campaign/d406aa637edd1b342ccdcc5344988d79/DialoguePackage.asset
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DialoguePackageImporterTests.UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches Passed
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1309" name="TerminalBitmapTextTests" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.138724" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1326" name="AlignmentWrapAndTruncationUseTheSameFixedMetrics" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.AlignmentWrapAndTruncationUseTheSameFixedMetrics" methodname="AlignmentWrapAndTruncationUseTheSameFixedMetrics" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1992427306" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.072804" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.AlignmentWrapAndTruncationUseTheSameFixedMetrics
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.AlignmentWrapAndTruncationUseTheSameFixedMetrics Passed
+]]></output>
+              </test-case>
+              <test-case id="1327" name="CenteredLabelsUseIntegerHtmlCoordinatesAtOddWidths" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CenteredLabelsUseIntegerHtmlCoordinatesAtOddWidths" methodname="CenteredLabelsUseIntegerHtmlCoordinatesAtOddWidths" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1714162889" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.001641" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CenteredLabelsUseIntegerHtmlCoordinatesAtOddWidths
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CenteredLabelsUseIntegerHtmlCoordinatesAtOddWidths Passed
+]]></output>
+              </test-case>
+              <test-case id="1328" name="CommandRowsKeepTheOriginalValueAndUseSeparateTwelveAndFourteenPixelRuns" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CommandRowsKeepTheOriginalValueAndUseSeparateTwelveAndFourteenPixelRuns" methodname="CommandRowsKeepTheOriginalValueAndUseSeparateTwelveAndFourteenPixelRuns" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="946727226" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.001411" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CommandRowsKeepTheOriginalValueAndUseSeparateTwelveAndFourteenPixelRuns
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.CommandRowsKeepTheOriginalValueAndUseSeparateTwelveAndFourteenPixelRuns Passed
+]]></output>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1318" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.008165" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1311" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(10)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(10)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1552823943" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.001609" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(10)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(10) Passed
+]]></output>
+                </test-case>
+                <test-case id="1312" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(11)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(11)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="135285816" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000239" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(11)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(11) Passed
+]]></output>
+                </test-case>
+                <test-case id="1313" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(12)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(12)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1838612864" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000223" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(12)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(12) Passed
+]]></output>
+                </test-case>
+                <test-case id="1314" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(13)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(13)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1790467585" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000213" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(13)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(13) Passed
+]]></output>
+                </test-case>
+                <test-case id="1315" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(14)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(14)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1897235010" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000211" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(14)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(14) Passed
+]]></output>
+                </test-case>
+                <test-case id="1316" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(18)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(18)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="2106359763" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000221" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(18)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(18) Passed
+]]></output>
+                </test-case>
+                <test-case id="1317" name="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(19)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(19)" methodname="EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="34730714" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000242" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(19)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.EveryExportedSizeDrawsAtlasPixelsWithoutADynamicFont(19) Passed
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1324" name="ExportedColorsAreNotRetinted" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.003920" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1319" name="ExportedColorsAreNotRetinted(239,184,63)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(239,184,63)" methodname="ExportedColorsAreNotRetinted" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1329378574" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000562" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(239,184,63)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(239,184,63) Passed
+]]></output>
+                </test-case>
+                <test-case id="1320" name="ExportedColorsAreNotRetinted(255,207,104)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(255,207,104)" methodname="ExportedColorsAreNotRetinted" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="815970336" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000180" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(255,207,104)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(255,207,104) Passed
+]]></output>
+                </test-case>
+                <test-case id="1321" name="ExportedColorsAreNotRetinted(167,125,45)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(167,125,45)" methodname="ExportedColorsAreNotRetinted" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="863024867" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000169" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(167,125,45)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(167,125,45) Passed
+]]></output>
+                </test-case>
+                <test-case id="1322" name="ExportedColorsAreNotRetinted(103,75,25)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(103,75,25)" methodname="ExportedColorsAreNotRetinted" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="366064569" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000169" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(103,75,25)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(103,75,25) Passed
+]]></output>
+                </test-case>
+                <test-case id="1323" name="ExportedColorsAreNotRetinted(23,14,2)" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(23,14,2)" methodname="ExportedColorsAreNotRetinted" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1775540332" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000162" asserts="0">
+                  <properties />
+                  <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(23,14,2)
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.ExportedColorsAreNotRetinted(23,14,2) Passed
+]]></output>
+                </test-case>
+              </test-suite>
+              <test-case id="1329" name="GeometryUpdatesWithoutFontAndParticipatesInRectMaskClipping" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.GeometryUpdatesWithoutFontAndParticipatesInRectMaskClipping" methodname="GeometryUpdatesWithoutFontAndParticipatesInRectMaskClipping" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="475635987" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.009798" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.GeometryUpdatesWithoutFontAndParticipatesInRectMaskClipping
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.GeometryUpdatesWithoutFontAndParticipatesInRectMaskClipping Passed
+]]></output>
+              </test-case>
+              <test-case id="1310" name="MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines" methodname="MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1136904736" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000620" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines Passed
+]]></output>
+              </test-case>
+              <test-case id="1325" name="NonExportedColorsReuseCoveredGlyphsRatherThanFallbackQuestionMarks" fullname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests.NonExportedColorsReuseCoveredGlyphsRatherThanFallbackQuestionMarks" methodname="NonExportedColorsReuseCoveredGlyphsRatherThanFallbackQuestionMarks" classname="MiniGame.UnityHost.Tests.TerminalBitmapTextTests" runstate="Runnable" seed="1166821293" result="Passed" start-time="2026-10-22 09:08:00Z" end-time="2026-10-22 09:08:00Z" duration="0.000507" asserts="0">
+                <properties />
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.NonExportedColorsReuseCoveredGlyphsRatherThanFallbackQuestionMarks
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.TerminalBitmapTextTests.NonExportedColorsReuseCoveredGlyphsRatherThanFallbackQuestionMarks Passed
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

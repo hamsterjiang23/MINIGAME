@@ -1,0 +1,18 @@
+{
+  "result": "Passed",
+  "test": "NativeCampaignAllTreatmentRouteVisitsEveryMeetingThenLocksTheRoom",
+  "evidenceType": "NUnit per-test completion callback plus successful route marker; subsequent grouped test was interrupted",
+  "meetings": 16,
+  "sourceLines": 555,
+  "actors": 6,
+  "evidence": [
+    {
+      "line": 461,
+      "text": "MINIGAME_CAMPAIGN_ROUTE_PASSED ending=LockedInRoom meetings=16 sourceLines=555 actors=6"
+    },
+    {
+      "line": 473,
+      "text": "MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.CampaignPlayModeTests.NativeCampaignAllTreatmentRouteVisitsEveryMeetingThenLocksTheRoom Passed"
+    }
+  ]
+}

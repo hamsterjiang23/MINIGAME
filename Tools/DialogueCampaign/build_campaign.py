@@ -258,7 +258,7 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
               "attacksAfterRelease": p.get("attacksAfterRelease", False)} for p in patients]
     sources = [str(m["yarnSource"]) for d in days for m in cast(list[Record], d["meetings"])]
     tutorial = cast(list[Record], days[0]["meetings"])[0]
-    package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": "1.1.0-development", "yarnSource": "\n".join(sources), "portraits": portraits,
+    package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": "1.1.1-development", "yarnSource": "\n".join(sources), "portraits": portraits,
                "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": tutorial["startNode"], "endNode": tutorial["endNode"], "initialTrust": 0, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
                "campaign": {"patients": rules, "days": days, "releaseThreshold": config["releaseThreshold"], "variants": variants}}
     all_mappings = {str(m["sourceId"]): m for m in mappings}

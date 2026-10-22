@@ -100,7 +100,7 @@ namespace MiniGame.UnityHost
                 Require(submitted, "Tutorial must finish before sleep");
                 Require(view.AllowedInteractions.SequenceEqual(new[] { InteractionTarget.Bed }), "Bed-only interactions");
                 lines = view.Transcript.Count(line => !line.IsPlayer && line.Completed);
-                Require(lines == 7 && view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify") == 1, "Five intro, two reaction, one purification");
+                Require(lines == 11 && view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify") == 1, "Nine intro, two reaction, one purification");
                 var guidance = host.GetComponent<BedtimeGuidance>();
                 if (guidance.BeamStrength < .98f) return;
                 CaptureRoom("bed-only");
