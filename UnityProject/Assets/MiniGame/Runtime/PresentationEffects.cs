@@ -132,6 +132,23 @@ namespace MiniGame.UnityHost
         private void RememberRoomPose()
         {
             if (hasRoomPose) return;
+            // Day0 enters the terminal automatically, before the player can walk to
+            // the desk. Capture its authored standing approach instead of the spawn.
+            if (HasSeatedEntry && runtime.GetView().Game.Day == 0)
+            {
+                Transform approach = null;
+                foreach (var root in seatedPlayer.gameObject.scene.GetRootGameObjects())
+                    foreach (var candidate in root.GetComponentsInChildren<Transform>(true))
+                        if (candidate.name == "Computer approach") approach = candidate;
+                if (approach != null)
+                {
+                    var controller = seatedPlayer.GetComponent<CharacterController>();
+                    bool wasEnabled = controller.enabled;
+                    controller.enabled = false;
+                    seatedPlayer.transform.position = approach.position;
+                    controller.enabled = wasEnabled;
+                }
+            }
             roomPosition = viewCamera.transform.position;
             roomRotation = viewCamera.transform.rotation;
             roomFieldOfView = viewCamera.fieldOfView;

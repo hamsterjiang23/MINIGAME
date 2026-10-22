@@ -104,7 +104,10 @@ namespace MiniGame.UnityHost
                 var guidance = host.GetComponent<BedtimeGuidance>();
                 if (guidance.BeamStrength < .98f) return;
                 CaptureRoom("bed-only");
-                Require(host.GetComponent<BedtimeCollisionGate>().Suppressing, "Furniture collision suppression");
+                Require(host.gameObject.scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<Collider>(true))
+                    .Where(collider => collider.transform.parent != null && collider.transform.parent.name == "Room collision"
+                        && (collider.name.StartsWith("B_HT01") || collider.name.StartsWith("B_obj_01") || collider.name.StartsWith("B_SM_")))
+                    .All(collider => collider.enabled && !collider.isTrigger), "Furniture stays solid after Day0");
                 Require(host.Player.GetComponent<CharacterController>().enabled, "Player collision retained");
                 slept = host.Runtime.TryInteract(InteractionTarget.Bed).Accepted;
                 Require(slept && host.Runtime.GetView().Cue?.Kind == PresentationKind.Sleep, "Single sleep action");
@@ -112,7 +115,6 @@ namespace MiniGame.UnityHost
             if (slept && view.Game.Day == 1 && view.Cue == null)
             {
                 Require(view.Game.Phase == GamePhase.MorningInspection, "Day1 morning");
-                Require(!host.GetComponent<BedtimeCollisionGate>().Suppressing, "Furniture restored");
                 CaptureRoom("day1"); Finish(true, "Fresh campaign opening, native UI tutorial and one sleep completed");
             }
         }

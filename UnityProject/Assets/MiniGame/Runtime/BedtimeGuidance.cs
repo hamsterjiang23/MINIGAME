@@ -22,7 +22,7 @@ namespace MiniGame.UnityHost
         [SerializeField] private Renderer selfReviewSurface;
         private GameRuntime runtime;
         private BedtimeAtmosphere atmosphere;
-        private BedtimeCollisionGate collisionGate;
+        private bool awaitingDayZeroWake;
         private readonly List<LightState> lights = new List<LightState>();
         private readonly List<SurfaceState> surfaces = new List<SurfaceState>();
         private bool captured, restored = true;
@@ -95,9 +95,7 @@ namespace MiniGame.UnityHost
                 atmosphere.Initialize(spotlight.transform, bedSurfaceCenter, beamRadius);
             }
             runtime = game;
-            if (collisionGate == null) collisionGate = GetComponent<BedtimeCollisionGate>() ?? gameObject.AddComponent<BedtimeCollisionGate>();
-            collisionGate.enabled = isActiveAndEnabled;
-            collisionGate.Bind(game);
+            awaitingDayZeroWake = false;
             runtime.Changed += SetTargets;
             SetTargets(game.GetView());
             // Checkpoint restoration derives presentation from the saved phase, without a flash of daylight.
@@ -156,6 +154,10 @@ namespace MiniGame.UnityHost
 
         private void SetTargets(RuntimeView view)
         {
+            if (awaitingDayZeroWake && view.Game.Day > 0)
+                foreach (var root in gameObject.scene.GetRootGameObjects())
+                    foreach (var player in root.GetComponentsInChildren<ApartmentPlayer>(true)) player.RestoreDayZeroWakePose();
+            awaitingDayZeroWake = view.Game.Day == 0 && IsSleepOnly(view);
             lastView = view;
             bool inDream = view.Game.Phase == GamePhase.Sleeping || view.Game.Phase == GamePhase.Dream;
             bool guide = IsSleepOnly(view) && (!view.TerminalOpen || view.LeavingTerminal);
@@ -525,7 +527,6 @@ namespace MiniGame.UnityHost
         {
             previewMode = RoomLightingPreviewMode.Automatic;
             lightingController?.SetPreviewMode(RoomLightingPreviewMode.Automatic);
-            if (collisionGate != null) collisionGate.enabled = false;
             if (!restored) RestoreRoom();
             Isolation = BeamStrength = 0;
             if (atmosphere != null) atmosphere.SetVisualState(0, 0, true);
@@ -534,7 +535,6 @@ namespace MiniGame.UnityHost
         private void OnEnable()
         {
             if (runtime == null) return;
-            if (collisionGate != null) collisionGate.enabled = true;
             SetTargets(runtime.GetView());
             Isolation = isolationTarget; BeamStrength = beamTarget;
             ApplyRoom();
