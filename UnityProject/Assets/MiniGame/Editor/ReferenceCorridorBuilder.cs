@@ -180,6 +180,9 @@ namespace MiniGame.UnityHost.Editor
             frame.Box("Window crossbar", 0, 2.18f, 2.04f, new Vector3(1.5f, .045f, .12f), metal, false);
             var glass = PlainMaterial("Corridor window glass", new Color(.72f, .83f, .87f, .18f), true);
             frame.Box("Corridor window glass", 0, 2.2f, 1.94f, new Vector3(1.45f, 1.4f, .012f), glass, false);
+            // Standard's transparent shadow caster turns pane alpha into a stippled shadow.
+            // Keep the glass visible, but let the opaque window frame cast the shadows.
+            frame.Root.Find("Corridor window glass").GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
         }
 
         private static void BuildNeighborDoor(Frame frame, float x, string number, Material metal, Material dark)

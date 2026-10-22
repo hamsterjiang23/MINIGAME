@@ -37,7 +37,7 @@ namespace MiniGame.UnityHost
         [InspectorName("用途")] public MiniGameSound Id;
         [InspectorName("音频片段"), Tooltip("保留为空时，此用途不播放声音；不会自动借用其他片段。")]
         public AudioClip Clip;
-        [Range(0, 1), InspectorName("片段音量"), Tooltip("此片段的独立音量，再乘以所属通道和总音量。")]
+        [Range(0, 2), InspectorName("片段音量"), Tooltip("此片段的独立音量，再乘以所属通道和总音量。")]
         public float Volume = 1f;
     }
 
@@ -45,7 +45,7 @@ namespace MiniGame.UnityHost
     public sealed class MiniGameAudioProfile : ScriptableObject
     {
         [Header("音量"), Range(0, 1), InspectorName("总音量")] public float MasterVolume = 1f;
-        [Range(0, 1), InspectorName("音乐音量")] public float MusicVolume = .5f;
+        [Range(0, 1), InspectorName("音乐音量")] public float MusicVolume = .6f;
         [Range(0, 1), InspectorName("环境音量")] public float AmbienceVolume = .45f;
         [Range(0, 1), InspectorName("场景音效音量")] public float SfxVolume = .7f;
         [Range(0, 1), InspectorName("界面音效音量")] public float UIVolume = .65f;
@@ -75,14 +75,15 @@ namespace MiniGame.UnityHost
         private void OnValidate()
         {
             MasterVolume = Volume(MasterVolume, 1);
-            MusicVolume = Volume(MusicVolume, .5f);
+            MusicVolume = Volume(MusicVolume, .6f);
             AmbienceVolume = Volume(AmbienceVolume, .45f);
             SfxVolume = Volume(SfxVolume, .7f);
             UIVolume = Volume(UIVolume, .65f);
             FadeSeconds = float.IsNaN(FadeSeconds) || float.IsInfinity(FadeSeconds) ? 1 : Mathf.Max(0, FadeSeconds);
             if (Sounds == null) Sounds = Array.Empty<MiniGameSoundEntry>();
             foreach (var entry in Sounds)
-                if (entry != null) entry.Volume = Volume(entry.Volume, 1);
+                if (entry != null) entry.Volume = float.IsNaN(entry.Volume) || float.IsInfinity(entry.Volume)
+                    ? 1 : Mathf.Clamp(entry.Volume, 0, 2);
         }
 
         private static float Volume(float value, float fallback) => float.IsNaN(value) || float.IsInfinity(value)
