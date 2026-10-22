@@ -25,3 +25,8 @@ UnityProject/ProjectSettings/TagManagerV2.asset
 # Include the complete research snapshot in this private repository.
 !/research/no-im-not-a-human/
 !/research/no-im-not-a-human/**
+
+# Blender authoring sources and automatic backups stay local.
+*.blend
+*.blend[0-9]*
+*.blend@
