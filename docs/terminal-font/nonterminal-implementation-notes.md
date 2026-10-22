@@ -14,4 +14,3 @@
 # Verification
 
 - Native Unity selected SimSun as the single family; all 26 pause/settings/manual labels share the reference Font. Title/action sizes remain 40/28. Compilation completed without errors; PauseMenuPlayModeTests passed 7/7. See nonterminal-verification.json. No player build or push.
-
