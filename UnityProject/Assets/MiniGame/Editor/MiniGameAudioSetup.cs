@@ -40,7 +40,8 @@ namespace MiniGame.UnityHost.Editor
             (MiniGameSound.TerminalType3, "SFX/UIType/UIType3.wav", false),
             (MiniGameSound.TerminalType4, "SFX/UIType/UIType4.wav", false),
             (MiniGameSound.DoorOpen, "SFX/DoorOpen.wav", false),
-            (MiniGameSound.DoorShut, "SFX/DoorShut.wav", false)
+            (MiniGameSound.DoorShut, "SFX/NewDoorShut.wav", false),
+            (MiniGameSound.DoorKnock, "SFX/NewDoorKnock.wav", false)
         };
 
         public static MiniGameAudioProfile EnsureAssets()
@@ -95,9 +96,11 @@ namespace MiniGame.UnityHost.Editor
                 throw new InvalidOperationException("请先停止播放再导入开关门音效。");
             var profile = EnsureAssets();
             var open = ImportClip("SFX/DoorOpen.wav", false);
-            var shut = ImportClip("SFX/DoorShut.wav", false);
+            var shut = ImportClip("SFX/NewDoorShut.wav", false);
+            var knock = ImportClip("SFX/NewDoorKnock.wav", false);
             Undo.RecordObject(profile, "绑定开关门音效");
-            foreach (var pair in new[] { (Id: MiniGameSound.DoorOpen, Clip: open), (Id: MiniGameSound.DoorShut, Clip: shut) })
+            foreach (var pair in new[] { (Id: MiniGameSound.DoorOpen, Clip: open), (Id: MiniGameSound.DoorShut, Clip: shut),
+                (Id: MiniGameSound.DoorKnock, Clip: knock) })
             {
                 var entry = profile.GetEntry(pair.Id);
                 if (entry == null)
@@ -109,7 +112,7 @@ namespace MiniGame.UnityHost.Editor
             }
             EditorUtility.SetDirty(profile);
             AssetDatabase.SaveAssetIfDirty(profile);
-            Debug.Log("DOOR_AUDIO_APPLIED DoorOpen.wav / DoorShut.wav");
+            Debug.Log("DOOR_AUDIO_APPLIED DoorOpen.wav / NewDoorShut.wav / NewDoorKnock.wav");
         }
 
         private static AudioClip ImportClip(string relativePath, bool streaming)

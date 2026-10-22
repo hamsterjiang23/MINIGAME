@@ -1,5 +1,7 @@
 # 音频来源与署名
 
+2026-10-23 按用户指定接入 `SFX/NewDoorKnock.wav` 与 `SFX/NewDoorShut.wav`：晨检等待开门时完整播放四次敲门的录音，每段播放结束后等待0.5秒再重复；开门立即停止，暂停冻结录音或间隔，恢复后继续。关门改用 NewDoorShut，开门沿用 DoorOpen。Unity副本与两份源文件逐一核对SHA-256一致，均沿用根目录WAV的Git LFS规则。Unity 2022.3.23f1c1实际导入及门音效PlayMode测试2项通过；本轮未构建Windows Player。`[verified: UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs UpdateKnocking；UnityProject/Assets/MiniGame/Editor/MiniGameAudioSetup.cs ApplyDoorSounds；Artifacts/Unity/DoorAudio/import.log；Artifacts/Unity/DoorAudio/playmode-results.xml test-run passed=2/failed=0]`
+
 终端开关机逐字音使用提交 `073bdb12` 新增的 `SFX/UIType/UIType1.wav` 至 `UIType4.wav`，四段 WAV 与 Unity 副本均核对远端 LFS 哈希；逐字随机、音量设置和本轮运行版见[接入说明](../../docs/terminal-typing-audio/guide.md)。同提交的 `OptionPopSound.wav` 保留为源资料。`[verified: docs/terminal-typing-audio/source-manifest.json sourceAssets/unityImports]`
 
 远端提交 `8a9fd32c` 将原 `Dream0.wav`、`Dream1.wav` 分别改名为 `Dream1.wav`、`Dream2.wav`，两个文件的 LFS SHA-256 均未改变，并新增 `Dream3.wav`。本工程保持已序列化的声音 ID 与 Unity 副本名称；导入器按新源文件名读取。旧枯花田音乐另存为 `Music/UnusedFlowerField.wav`。以下清单保留首次接入时的历史路径和哈希，不将其当作当前目录索引。`[verified: 8a9fd32c 与父提交的 LFS oid；MiniGameAudioSetup.cs ImportClip]`

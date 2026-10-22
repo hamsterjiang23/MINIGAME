@@ -23,6 +23,8 @@ namespace MiniGame.UnityHost
             MiniGameSound.Dream0, MiniGameSound.Dream1, MiniGameSound.Dream2, MiniGameSound.Dream3, MiniGameSound.PCNoise, MiniGameSound.Projector };
         private readonly AudioClip[] mappedClips = new AudioClip[LoopSounds.Length];
         private bool menuMusic;
+        private float knockRemaining;
+        private bool knockPlaying;
         private bool dreamPlayback;
         private int dreamDay;
         private DreamSequenceProfile dreamProfile;
@@ -46,6 +48,8 @@ namespace MiniGame.UnityHost
             service = GetComponent<MiniGameAudioService>();
             if (profile == null) profile = Resources.Load<MiniGameAudioProfile>("MiniGame/AudioDefault");
             service.Configure(profile);
+            knockRemaining = 0;
+            knockPlaying = false;
             previous = game.GetView();
             transcriptKeys.Clear();
             foreach (var entry in previous.Transcript) transcriptKeys.Add(entry.Key);
@@ -129,6 +133,7 @@ namespace MiniGame.UnityHost
         private void LateUpdate()
         {
             if (profile == null || runtime == null) return;
+            UpdateKnocking(runtime.GetView(), Time.unscaledDeltaTime);
             for (int i = 0; i < LoopSounds.Length; i++)
             {
                 if (mappedClips[i] == profile.GetClip(LoopSounds[i])) continue;
@@ -156,6 +161,7 @@ namespace MiniGame.UnityHost
             var before = previous;
             previous = view;
             SynchronizeLoops(view);
+            UpdateKnocking(view, 0);
             if (view.Paused)
             {
                 service.Pause(MiniGameAudioChannel.TerminalPower);
@@ -182,6 +188,38 @@ namespace MiniGame.UnityHost
                 if (transcriptKeys.Add(entry.Key) && !entry.IsPlayer && entry.EncounterId == view.Game.CurrentEncounterId)
                     newLine = true;
             if (reviewing && newLine && !view.Paused) PlayDialoguePop();
+        }
+
+        private void UpdateKnocking(RuntimeView view, float deltaTime)
+        {
+            // The recording already contains all four knocks; repeat the whole clip.
+            bool waiting = view.Game.Phase == GamePhase.MorningInspection
+                && !view.RoomDoorOpen && view.Cue == null;
+            if (!waiting)
+            {
+                service.Stop(MiniGameAudioChannel.DoorKnock);
+                knockRemaining = 0;
+                knockPlaying = false;
+                return;
+            }
+            if (view.Paused)
+            {
+                service.Pause(MiniGameAudioChannel.DoorKnock);
+                return;
+            }
+            service.Resume(MiniGameAudioChannel.DoorKnock);
+            if (knockPlaying)
+            {
+                if (service.GetSource(MiniGameAudioChannel.DoorKnock).isPlaying) return;
+                knockPlaying = false;
+                knockRemaining = .5f;
+                return;
+            }
+            knockRemaining = Mathf.Max(0, knockRemaining - deltaTime);
+            if (knockRemaining > 0) return;
+            var clip = profile != null ? profile.GetClip(MiniGameSound.DoorKnock) : null;
+            if (clip != null && service.PlayOneShot(MiniGameAudioChannel.DoorKnock, MiniGameSound.DoorKnock))
+                knockPlaying = true;
         }
 
         private void SynchronizeLoops(RuntimeView view)

@@ -14,6 +14,49 @@ namespace MiniGame.UnityHost.Tests
     public sealed class DoorAudioPlayModeTests
     {
         [UnityTest]
+        public IEnumerator KnockRepeatsWholeClipWithHalfSecondGapPausesAndStopsWhenDoorOpens()
+        {
+            var root = new GameObject("Knock fixture");
+            var profile = Object.Instantiate(Resources.Load<MiniGameAudioProfile>("MiniGame/AudioDefault"));
+            var clip = AudioClip.Create("Short four-knock recording", 4410, 1, 44100, false);
+            try
+            {
+                Assert.That(profile.GetClip(MiniGameSound.DoorKnock).name, Is.EqualTo("NewDoorKnock"));
+                profile.GetEntry(MiniGameSound.DoorKnock).Clip = clip;
+                var director = root.AddComponent<MiniGameAudioDirector>();
+                director.Configure(profile);
+                var rules = PrototypeRules.Create();
+                var runtime = new GameRuntime(rules, new PrototypeContent(rules));
+                director.Bind(runtime);
+                var starts = new List<float>();
+                director.Service.SoundPlayed += (channel, sound) =>
+                { if (sound == MiniGameSound.DoorKnock) starts.Add(Time.realtimeSinceStartup); };
+                yield return null;
+                Assert.That(starts.Count, Is.EqualTo(1));
+                yield return new WaitForSecondsRealtime(.25f);
+                runtime.SetPaused(true);
+                yield return new WaitForSecondsRealtime(.7f);
+                Assert.That(starts.Count, Is.EqualTo(1), "Pause must freeze the inter-recording wait.");
+                runtime.SetPaused(false);
+                yield return new WaitForSecondsRealtime(.2f);
+                Assert.That(starts.Count, Is.EqualTo(1), "The remaining gap must survive resume.");
+                yield return Until(() => starts.Count == 2);
+                Assert.That(starts[1] - starts[0], Is.GreaterThanOrEqualTo(clip.length + .5f + .65f));
+                Assert.That(runtime.ToggleRoomDoor().Accepted, Is.True);
+                yield return null;
+                Assert.That(director.Service.GetSource(MiniGameAudioChannel.DoorKnock).isPlaying, Is.False);
+                yield return new WaitForSecondsRealtime(.7f);
+                Assert.That(starts.Count, Is.EqualTo(2));
+            }
+            finally
+            {
+                Object.Destroy(root);
+                Object.Destroy(profile);
+                Object.Destroy(clip);
+            }
+        }
+
+        [UnityTest]
         public IEnumerator ActualDoorMotionPlaysMappedClipsOnceAndRejectedOrRestoredDoorsStaySilent()
         {
             var scene = SceneManager.CreateScene("Door audio " + Guid.NewGuid().ToString("N"));
@@ -23,7 +66,7 @@ namespace MiniGame.UnityHost.Tests
             try
             {
                 Assert.That(profile.GetClip(MiniGameSound.DoorOpen).name, Is.EqualTo("DoorOpen"));
-                Assert.That(profile.GetClip(MiniGameSound.DoorShut).name, Is.EqualTo("DoorShut"));
+                Assert.That(profile.GetClip(MiniGameSound.DoorShut).name, Is.EqualTo("NewDoorShut"));
                 Assert.That(profile.GetClip(MiniGameSound.DoorOpen).loadState, Is.EqualTo(AudioDataLoadState.Loaded));
                 var pivot = new GameObject("Door hinge");
                 pivot.transform.SetParent(root.transform, false);

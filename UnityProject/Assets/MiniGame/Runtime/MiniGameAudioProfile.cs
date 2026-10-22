@@ -29,9 +29,13 @@ namespace MiniGame.UnityHost
         [InspectorName("终端打字 4")] TerminalType4 = 20,
         [InspectorName("开门")] DoorOpen = 21,
         [InspectorName("关门")] DoorShut = 22,
+<<<<<<< Updated upstream
         [InspectorName("放映机启动（单次）")] ProjectorOpen = 23,
         [InspectorName("主菜单标志闪烁")] LogoGlitch = 24,
         [InspectorName("监督员敲门")] DoorKnock = 25
+=======
+        [InspectorName("敲门")] DoorKnock = 23
+>>>>>>> Stashed changes
     }
 
     [Serializable]
