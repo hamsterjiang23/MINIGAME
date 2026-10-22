@@ -1,0 +1,443 @@
+{
+  "checkedAt": "2026-10-23T03:33:54.545770+08:00",
+  "sourceRevision": "9ffe841da4f09d2607db91cfe04cdd3032a26a0b",
+  "mergeCommits": [
+    "ccccb4bf",
+    "f31b26ce"
+  ],
+  "incomingFunctionalCommit": "1d4658414fae03d8587eb33f01d3640249b4f879",
+  "incomingMain": "47bf51bd51cf88c067838e8d602c66f2f8fe8a5f",
+  "functionalFiles": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/InteractionCursorMask.shader",
+      "sha256": "6d8def86dfefbcadc3ba1e74f0fa6861e6e95a24372a1434a7a68581ca480778"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/InteractionCursorMask.shader.meta",
+      "sha256": "3162ed59ef067bd6de2e3c9a59945e98970733f28af806010804cc8e3b0e7e4c"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/InteractionFocusOutline.shader",
+      "sha256": "cdc2a14ab901f16a16af99ce3615e14e3a565dff8977a9b4c3782fbcfe791ffd"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/InteractionOutlineExterior.compute",
+      "sha256": "c78167f038cdc915284e9b5c7cf9ee07eb818501c7c72087962f57a5fb102a4e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/InteractionOutlineExterior.compute.meta",
+      "sha256": "b84063f1750ea408f427fbc3b37f345784ef37bf6d3fc2efd080612a50d2aa3d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/InteractionCursorAtlas.png",
+      "sha256": "b0ad5324e095f5e882a47cf0f070e497fe2daed68493bd5224ea4863b5f764f1"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/InteractionCursorAtlas.png.meta",
+      "sha256": "c2c0f2f5d383fcc78850934f29f18a5180e09d2a1d21f40cda1732659d51469e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/InteractionCursorMouse.png",
+      "sha256": "86fe4f51243dd61855c640ab41f7dda0cd4082c2fb208c386c321ad8be7c9af1"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/MiniGame/InteractionCursorMouse.png.meta",
+      "sha256": "b1e4cd85a678d26425e30f45b50af5ac66b6153db16e6e938d85250fe0c522e8"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/PauseBackdrop.shader",
+      "sha256": "a405e4df35e3b0401f9f2fe9197c20213d042dad99d9e8d8c080082685606ff1"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/PauseLettering.shader",
+      "sha256": "de6da779cb4ee30c68619862579ee1fb195a207f177d1d134d447956d37130c0"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/PauseLettering.shader.meta",
+      "sha256": "b3b9c85c81cdaa52ef4ad9be490332ff8d7e30e476f7d8401f6bbd2394a0e72d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/SoftDialogueBorder.shader",
+      "sha256": "e11473fff73da5115c2cda6b539cefd156a612c110dcc3a018836cf0b9933144"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Resources/SoftDialogueBorder.shader.meta",
+      "sha256": "44a37028f69899a0d00843f5e071c657742d578ce8132b4da588142823d649a0"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+      "sha256": "d2a7934c2eeebd18bc9070e743bbd8f26025b4068e39c1b0eb83d9bf923ad745"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs",
+      "sha256": "ce31b16167da79779d5b2fae408256ff8f699e28d76a1442f28c640fd465445d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs",
+      "sha256": "b260aed73f393c522b5314e0d440bf130b374c6c786edd0030a7ddb1b3711e60"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/InteractionCursorView.cs",
+      "sha256": "1f894dcb0f3c20129eeb2d7249a1abb5509528c561e5cdd9d39e94e055d37032"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/InteractionCursorView.cs.meta",
+      "sha256": "4360dceef7188ae0224c712d240595fc7c4a0d2d3b743dc84afa96cb725e8604"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/InteractionFocusOutline.cs",
+      "sha256": "66504383d5de50e7568b0f3b190261dad73b1d87cd440a9fff449d3d40c90c2c"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+      "sha256": "91c3df2d7a76ae0819da503885b32b624e7559fc5f274a799819039183086ca1"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuButton.cs",
+      "sha256": "ec6a317050748f585567ccbc33c1029c79ea0da63307ae1cf531315b3f827a31"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
+      "sha256": "f38bd616497e07298110f6c31f64a80cf861365cd5fe3adcb047d68d9e60358f"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/WorldInteraction.cs",
+      "sha256": "894397528aaaac86d983ecc52dbfbe3a1c7d84d199e6baf9f37159de3031170d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/BedtimeGuidancePlayModeTests.cs",
+      "sha256": "d7fa22a38fbab1fc851d9fa5e902638d20562fac8bc856a91598f7cc8cc4ff6e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DoorViewPlayModeTests.cs",
+      "sha256": "01622846ce3fcd7638fd027988284ad59ad63e0dc68e3a82dee47f0d4554cf3d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/DreamTraversalPlayModeTests.cs",
+      "sha256": "c3020f1940cbb4c82ad3533c66ba887ae73e75d5ab15adcc2db02a53e695552d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/InteractionDistancePlayModeTests.cs",
+      "sha256": "7c2048f145e3ef8a7490253fa00454f52771f3c1893dfdfe396f3a68acb914a0"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/InteractionOutlinePlayModeTests.cs",
+      "sha256": "fd768a90bc1d065df0fd80bcc2b9fdc7b9d645bb80a5322399b8f7e53763b99b"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/InteractionPresentationPlayModeTests.cs",
+      "sha256": "690e16a313275d08ed4bc5dcadec16afdf879081d7b08b5178c68abc9f799986"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/InteractionPresentationPlayModeTests.cs.meta",
+      "sha256": "768189a9d34b7ec1d6601b3a4d8d965f8ef6d586c93f25cf9cf091c6add54383"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PauseMenuPlayModeTests.cs",
+      "sha256": "5e0e92dc127f7c430c25f045fb8269d8967598ed0e8f04a1d7ac60e2231d34ad"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PrimaryInteractionPlayModeTests.cs",
+      "sha256": "fb8d4be589254e61a5afcbfadaf519a2f811d97b31ed3f0fea8e40d842a51856"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PrimaryInteractionPlayModeTests.cs.meta",
+      "sha256": "b532c62cf5142f48d1709d54b5f45fc2cc826c0edb105ef9f7e9efc012f54856"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PropNarrationPlayModeTests.cs",
+      "sha256": "5f1f2e4a8c4c64cb2a23357ed48f59b5b6fea9704b27abb05032467db1581e00"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs",
+      "sha256": "305974f88a75e0ae953f028252d7263062d13c422be36c6c0fb0b7d33ca39895"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/ReferenceRoomPlayModeTests.cs",
+      "sha256": "f5a63eae49b690f50743d4facef49005493ef2a9d032bc26ac9e4559705ebda5"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/RoomReadablesPlayModeTests.cs",
+      "sha256": "9865fd00cfb6ff74deccadeca9f037e88ae756d4c983f846ed85465c87962f6e"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/SelfReviewUIPlayModeTests.cs",
+      "sha256": "9465178700a552dee1ce159027409ec8f0bb91c0ad942e9a03efb8795d5a343d"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/SupervisorDoorLockPlayModeTests.cs",
+      "sha256": "8348e82dae0e9548ce172281ca9c63c54d69eff6fb6c5b371e8063fb013bc0e8"
+    }
+  ],
+  "preservedTargetSceneAndLightingFrom": "3379e8de",
+  "snapshotVerification": "git diff against 9ffe841d: zero changes in all 3431 exported UnityProject/src tracked files",
+  "core": {
+    "sdk": "8.0.424",
+    "commands": [
+      "dotnet restore MiniGame.sln --locked-mode",
+      "dotnet build MiniGame.sln -c Release --no-restore",
+      "dotnet test MiniGame.sln -c Release --no-build"
+    ],
+    "results": [
+      {
+        "file": "admin_SK-20260401PDYS_2026-10-23_02_28_42.trx",
+        "counters": {
+          "total": "139",
+          "executed": "139",
+          "passed": "139",
+          "failed": "0",
+          "error": "0",
+          "timeout": "0",
+          "aborted": "0",
+          "inconclusive": "0",
+          "passedButRunAborted": "0",
+          "notRunnable": "0",
+          "notExecuted": "0",
+          "disconnected": "0",
+          "warning": "0",
+          "completed": "0",
+          "inProgress": "0",
+          "pending": "0"
+        },
+        "sha256": "23fd638b090bcfb95b531863d2b5278a18ef50c680388a138d64d12f2d118749"
+      },
+      {
+        "file": "admin_SK-20260401PDYS_2026-10-23_02_28_42[1].trx",
+        "counters": {
+          "total": "242",
+          "executed": "242",
+          "passed": "242",
+          "failed": "0",
+          "error": "0",
+          "timeout": "0",
+          "aborted": "0",
+          "inconclusive": "0",
+          "passedButRunAborted": "0",
+          "notRunnable": "0",
+          "notExecuted": "0",
+          "disconnected": "0",
+          "warning": "0",
+          "completed": "0",
+          "inProgress": "0",
+          "pending": "0"
+        },
+        "sha256": "fa2cb04783fb31f25f7fdccbc1c6f0dd5f9da7237dc34970fb4d0d5575cccd93"
+      }
+    ]
+  },
+  "unity": {
+    "version": "2022.3.23f1c1",
+    "scope": "Selected integration and regression suites, not the entire Unity test project",
+    "total": 117,
+    "passed": 117,
+    "suites": [
+      {
+        "suite": "BedtimeGuidancePlayModeTests",
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "50b3ce9d1db1ffbe075502520aaabf112a69bab7dd2b32ecdf2e5830325596f0"
+      },
+      {
+        "suite": "DoorAudioPlayModeTests",
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "70f2ac822cde30d6ae9e234310c8b7f54b2cc148b740577128240ac9fbed909e"
+      },
+      {
+        "suite": "DoorViewPlayModeTests",
+        "total": 10,
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "afc4a1aa3fd461c9f306a7d9e8f73cbfbead1e300129aa6fee6c914a05d02b48"
+      },
+      {
+        "suite": "DreamTraversalPlayModeTests",
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "41db94509ace0080d1d6929e7656aa53c125592704c70c8537a8802f43ef752b"
+      },
+      {
+        "suite": "EndingCampaignPlayModeTests",
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "16ec3d2057911e80295309f09509a036999b5d6fda4aebb498b093c4613aac65"
+      },
+      {
+        "suite": "EndingTransitionPlayModeTests",
+        "total": 10,
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "5072b03ddf3e174402ad6593216b6f4d4a2b94f477f390684397bd4ca78c5690"
+      },
+      {
+        "suite": "FollowupFlowPlayModeTests",
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "c6f85e2b4a229dff2d37048ef03af68f0d48f6cee54e7af3b17891110da83c2a"
+      },
+      {
+        "suite": "InteractionDistancePlayModeTests",
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "6597f67e53c21854695631e12b57d57e4f497b09cb2c54e057a3c798078c474a"
+      },
+      {
+        "suite": "InteractionOutlinePlayModeTests",
+        "total": 11,
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "544ddc7918f331beabb7370dbaec578b694f7f1517b9a32726d22e78b424a6e7"
+      },
+      {
+        "suite": "InteractionPresentationPlayModeTests",
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "d5fbf241c3fa253973e964990fd2ab452be32dd33a2cb646b3a74329a1095401"
+      },
+      {
+        "suite": "MainMenuFlowPlayModeTests",
+        "total": 11,
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "4b2fbe718771e8000ecfa80251de724564313e9fcb86f35655c7eb79c19915d8"
+      },
+      {
+        "suite": "MiniGameAudioPlayModeTests",
+        "total": 15,
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "681eba3fd3ccb1a2d5a1470cb8c696f945245b4a148e85124c8d60e11cf5c49c"
+      },
+      {
+        "suite": "PauseMenuPlayModeTests",
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "8bf3120f1d32a096affa0b3c8fe7f9d35284cdbdf02bbeb9d48b1e8f7e85340c"
+      },
+      {
+        "suite": "PrimaryInteractionPlayModeTests",
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "09fe605a02b3626847feb84774eeb7155c93d6aaa452e1b23f1775162ca40e34"
+      },
+      {
+        "suite": "PropNarrationPlayModeTests",
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "d1969668cb0614ee175de8a19accff067c3b36811eed0695caaa80475148ac11"
+      },
+      {
+        "suite": "PrototypePlayModeTests",
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "e9505da42dfeddad7c0021118a41c5e2c858e9f6b8352af0e58ae837b86066b0"
+      },
+      {
+        "suite": "ReferenceRoomPlayModeTests",
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "022a9dc8c69db822b46cc81394730f001470fa39ab8e7bdfcb6a7fcc5ac7eed0"
+      },
+      {
+        "suite": "RoomReadablesPlayModeTests",
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "9746db1c78a1c7bf5afc6b83d41ad772c81b5310d90f416447f58f3abf4afccc"
+      },
+      {
+        "suite": "SelfReviewUIPlayModeTests",
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "d4053866b56942b0701aa3ee25c029163eba5f64c7812dacda95dd4f1cc93389"
+      },
+      {
+        "suite": "SupervisorDoorLockPlayModeTests",
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "evidenceSha256": "1d405cb33a6f3594181ba68e027970e96f80ecb0da408a3aa5cd8bfff9dcfb50"
+      }
+    ]
+  },
+  "build": {
+    "result": "Succeeded",
+    "platform": "StandaloneWindows64",
+    "buildTimeMs": 15982,
+    "totalSizeBytes": 848944055,
+    "totalWarnings": 10,
+    "totalErrors": 0
+  },
+  "buildWarnings": "Nine unused legacy Yarn input field warnings; one notice that the optional Pipeline runtime controller is absent.",
+  "package": {
+    "sourceRevision": "9ffe841d",
+    "path": "Artifacts/Merge20261023/MiniGame-Windows-20261023-merged.zip",
+    "bytes": 332637599,
+    "sha256": "634fea8e36ef69c34a4f3e47bb1d2f0d1e4a9006cef80d6168cab2eb00ce23e3",
+    "files": 159,
+    "crc": "passed"
+  },
+  "secretPatternScan": {
+    "base": "c26d27bf",
+    "target": "9ffe841d",
+    "changedPaths": 283,
+    "scannedTextBlobs": 281,
+    "findings": [],
+    "scope": "Known credential patterns in changed committed text blobs; not a full-history or entropy scan"
+  },
+  "gitLfsFsck": "passed at 9ffe841d",
+  "concurrentWork": "The separate nine-item experience revision remained in progress in the primary worktree and is not included in this immutable build snapshot."
+}
