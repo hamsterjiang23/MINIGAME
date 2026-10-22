@@ -34,7 +34,7 @@ namespace MiniGame.UnityHost.Tests
                 Is.EquivalentTo(new[] { "child", "former-ruler", "battlefield-doctor", "diplomat", "priest" }));
             Assert.That(available.Game.CurrentPatientId, Is.EqualTo("child"), "The suggested first row must not lock the roster order.");
 
-            yield return Click(Find(host, "Roster-4"), 2);
+            yield return Click(Find(host, "Roster-4"));
             yield return Until(host, () => HasPortraitLine(host, "priest"), "the selected priest starts native Yarn");
             AssertActor(host, "priest", "JN");
             Assert.That(host.Runtime.EnterSelectedPatient("child").Accepted, Is.False,
@@ -73,11 +73,6 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().Patients.Single(patient => patient.Id == "priest").TreatmentCount, Is.EqualTo(1));
 
             yield return Click(Find(host, "Roster-2"));
-            Assert.That(host.Runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory),
-                "A single roster click previews the selected actor without starting a meeting.");
-            Assert.That(Find(host, "EnterReview"), Is.Not.Null);
-            yield return PrototypePlayModeTests.CaptureIfRequested(host, "free-roster-doctor-selected");
-            yield return Click(Find(host, "EnterReview"));
             yield return Until(host, () => HasPortraitLine(host, "battlefield-doctor"), "doctor starts before the first two roster rows");
             AssertActor(host, "battlefield-doctor", "ED");
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));

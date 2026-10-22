@@ -20,6 +20,12 @@ namespace MiniGame.UnityHost
         private Vector3 returnPosition;
         private Quaternion returnRotation;
         private float returnFieldOfView;
+        [SerializeField, Min(0), InspectorName("开关门时向左避让（米）")] private float doorAvoidanceDistance = .7f;
+        [SerializeField, Min(.01f), InspectorName("开门后回位时间（秒）")] private float doorReturnSeconds = .6f;
+        [SerializeField, Min(.01f), InspectorName("向左避让时间（秒）")] private float doorAvoidanceSeconds = .45f;
+        private Vector3 doorwayPosition, doorwayRight;
+        private float avoidance, slideFrom, slideTo, slideElapsed;
+        private HingedDoor clearanceDoor;
 
         public SpriteRenderer Surface => surface;
         public bool IsVisible => surface != null && surface.enabled && surface.gameObject.activeInHierarchy;
@@ -36,6 +42,8 @@ namespace MiniGame.UnityHost
             EnsureSurface();
             if (surface == null) return;
             PlaceAtDoorway();
+            clearanceDoor = doorway.Door;
+            if (clearanceDoor != null) clearanceDoor.MotionClearance = HasDoorClearance;
             SetPortrait("JD_01");
             if (game.IsCampaign && game.GetView().Game.Ending == EndingType.TakenAway)
             {
@@ -62,7 +70,35 @@ namespace MiniGame.UnityHost
             position.y += verticalOffset;
             surface.transform.SetPositionAndRotation(position, Quaternion.LookRotation(outward, Vector3.up));
             surface.transform.localScale = Vector3.one * (1.8f / surface.sprite.bounds.size.y);
+            doorwayPosition = position;
+            doorwayRight = Vector3.ProjectOnPlane(doorway.InsidePose.right, Vector3.up).normalized;
+            avoidance = ShouldAvoidDoor() ? Mathf.Max(0, doorAvoidanceDistance) : 0;
+            slideFrom = slideTo = avoidance;
+            slideElapsed = 0;
+            ApplyDoorOffset();
         }
+
+        private bool ShouldAvoidDoor() => endingCamera == null && doorway != null && doorway.Door != null
+            && (doorway.Door.IsMoving || !doorway.Door.IsOpen || doorway.Phase == DoorCameraPhase.Returning);
+
+        private void LateUpdate()
+        {
+            if (runtime == null || surface == null || doorway == null || runtime.GetView().Paused) return;
+            float target = ShouldAvoidDoor() ? Mathf.Max(0, doorAvoidanceDistance) : 0;
+            if (!Mathf.Approximately(slideTo, target))
+            { slideFrom = avoidance; slideTo = target; slideElapsed = 0; }
+            slideElapsed += Time.unscaledDeltaTime;
+            float duration = target > 0 ? doorAvoidanceSeconds : doorReturnSeconds;
+            float progress = Mathf.Clamp01(slideElapsed / Mathf.Max(.01f, duration));
+            avoidance = Mathf.Lerp(slideFrom, slideTo, Mathf.SmoothStep(0, 1, progress));
+            ApplyDoorOffset();
+        }
+
+        private bool HasDoorClearance() => !isActiveAndEnabled || surface == null
+            || !ShouldAvoidDoor() || avoidance >= Mathf.Max(0, doorAvoidanceDistance) - .001f;
+
+        private void ApplyDoorOffset()
+        { if (surface != null) surface.transform.position = doorwayPosition - doorwayRight * avoidance; }
 
         private void EnsureSurface()
         {
@@ -107,6 +143,8 @@ namespace MiniGame.UnityHost
         {
             if (endingCamera != null || camera == null || doorway == null || doorway.InsidePose == null) return;
             endingCamera = camera;
+            avoidance = 0;
+            ApplyDoorOffset();
             returnPosition = camera.transform.position; returnRotation = camera.transform.rotation; returnFieldOfView = camera.fieldOfView;
             // The ending cuts to the hall side of the closed door; the actor stays outside.
             var outward = Vector3.ProjectOnPlane(doorway.InsidePose.forward, Vector3.up).normalized;
@@ -124,6 +162,9 @@ namespace MiniGame.UnityHost
 
         public void PrepareForRuntimeChange()
         {
+            if (clearanceDoor != null && clearanceDoor.MotionClearance == HasDoorClearance)
+                clearanceDoor.MotionClearance = null;
+            clearanceDoor = null;
             if (endingCamera == null) return;
             endingCamera.transform.SetPositionAndRotation(returnPosition, returnRotation);
             endingCamera.fieldOfView = returnFieldOfView;
@@ -143,6 +184,7 @@ namespace MiniGame.UnityHost
 
         private void OnDestroy()
         {
+            PrepareForRuntimeChange();
             if (surface != null) Destroy(surface.gameObject);
             foreach (var sprite in sprites.Values) if (sprite != null) Destroy(sprite);
             sprites.Clear();

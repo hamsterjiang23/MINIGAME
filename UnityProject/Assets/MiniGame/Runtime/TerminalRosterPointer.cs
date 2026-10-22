@@ -4,14 +4,12 @@ using UnityEngine.EventSystems;
 
 namespace MiniGame.UnityHost
 {
-    public sealed class TerminalRosterPointer : MonoBehaviour, IPointerClickHandler
+    public sealed class TerminalRosterPointer : MonoBehaviour, IPointerEnterHandler, IPointerMoveHandler
     {
-        public Action DoubleClicked;
+        public Action Hovered;
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (eventData.button == PointerEventData.InputButton.Left && eventData.clickCount == 2)
-                DoubleClicked?.Invoke();
-        }
+        public void OnPointerEnter(PointerEventData eventData) => Hovered?.Invoke();
+        public void OnPointerMove(PointerEventData eventData)
+        { if (eventData.delta.sqrMagnitude > 0) Hovered?.Invoke(); }
     }
 }

@@ -44,8 +44,8 @@ namespace MiniGame.UnityHost.Tests
                 }
                 display.SetMode(1);
                 var selected = Pick(display, new Vector2(400, 121)).Select(h => h.gameObject.GetComponentInParent<Button>()).First(b => b != null && b.name == "Roster-0");
-                var pointer = new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left, clickCount = 2 };
-                selected.GetComponent<TerminalRosterPointer>().OnPointerClick(pointer);
+                var pointer = new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left, clickCount = 1 };
+                ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerClickHandler);
                 Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
                 if (runtime.GetView().Cue != null) runtime.CompleteCue(runtime.GetView().Cue.Token);
                 screen.SetDialogueLine("对象", "这是监控画面中的人物。", "D1_R1_OPEN1", "ML01");

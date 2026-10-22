@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AudioDefault
   m_EditorClassIdentifier: 
   MasterVolume: 1
-  MusicVolume: 0.6
+  MusicVolume: 0.8
   AmbienceVolume: 0.45
   SfxVolume: 0.7
   UIVolume: 0.65
@@ -41,7 +41,7 @@ MonoBehaviour:
     Volume: 1
   - Id: 5
     Clip: {fileID: 8300000, guid: ebc4306a0482a5e4386d8bfb2b2c6679, type: 3}
-    Volume: 0.7
+    Volume: 0.25
   - Id: 6
     Clip: {fileID: 8300000, guid: c0a4508344adde44dad8dde1c30783e4, type: 3}
     Volume: 1

@@ -89,9 +89,9 @@ namespace MiniGame.UnityHost
             for (int i = 0; i < 5; i++)
             {
                 int slot = i;
-                var row = Button(dr, "Roster-" + i, "", 22, 108 + 30 * i, 756, 27, () => SelectRoster(slot));
+                var row = Button(dr, "Roster-" + i, "", 22, 108 + 30 * i, 756, 27, () => { SelectRoster(slot); EnterSelected(); });
                 var pointer = row.gameObject.AddComponent<TerminalRosterPointer>();
-                pointer.DoubleClicked = () => { SelectRoster(slot); EnterSelected(); };
+                pointer.Hovered = () => SelectRoster(slot);
                 Label(row.transform, "RowNumber", (i + 1).ToString("00"), 8, 5, 28, 18, 12, Dim);
                 var name = row.transform.Find("Label").GetComponent<Text>(); Position(name.rectTransform, 42, 4, 158, 20);
                 var registration = Label(row.transform, "Registration", "", 200, 4, 270, 20, 14, Ink);
@@ -304,7 +304,7 @@ namespace MiniGame.UnityHost
             footer.enabled = !tutorial;
             footer.GetComponent<Image>().raycastTarget = !tutorial;
             Footer(self ? "本人复核 / 确认净化" : dir ? enter.interactable ? "选择对象并确认，进入人员复核" : "当前对象不可再次接待" : archived ? "审查已结束 / 档案已关闭" : measure ? "会谈结束 / 选择处置命令并确认" : "按 Enter 或单击反白命令条继续",
-                dir ? "↑↓ 选择对象   双击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答   F3 对话记录");
+                dir ? "↑↓ 选择对象   单击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答   F3 对话记录");
             if (!dir && !self && ChoiceRoot.GetComponentsInChildren<Button>(false).Any(b => b.name.StartsWith("Reply-", StringComparison.Ordinal))) footerText.text = "选择应答并确认";
             Fit();
         }
@@ -397,7 +397,7 @@ namespace MiniGame.UnityHost
             historyModal.SetActive(false); return true;
         }
         public void ScrollSavedHistory(int amount) => historyTranscript.Scroll(amount);
-        private void SelectRoster(int index) { if (locked) return; rosterIndex = index; RenderRoster(); }
+        private void SelectRoster(int index) { if (locked || rosterIndex == index) return; rosterIndex = index; RenderRoster(); }
         private void EnterSelected() { if (current == null || locked || !enter.interactable || rosterIndex >= current.Patients.Count) return; enterPatient(current.Patients[rosterIndex].Id); }
         private void RenderRoster()
         {

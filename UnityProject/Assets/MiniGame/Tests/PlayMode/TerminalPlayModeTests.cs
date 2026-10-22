@@ -69,7 +69,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator DirectoryRejectsUnscheduledPatientAndDoubleClickSelectsAnyAvailablePatient()
+        public IEnumerator DirectoryHoverStaysOnItsRowAndSingleClickEntersAvailablePatient()
         {
             var rules = PrototypeRules.Create();
             var runtime = new GameRuntime(rules, new PrototypeContent(rules), useTerminalDirectory: true);
@@ -87,12 +87,24 @@ namespace MiniGame.UnityHost.Tests
                 unavailable.onClick.Invoke();
                 var enter = buttons.Single(button => button.name == "EnterReview");
                 Assert.That(enter.interactable, Is.False);
-                unavailable.GetComponent<TerminalRosterPointer>().OnPointerClick(new PointerEventData(EventSystem.current)
-                { button = PointerEventData.InputButton.Left, clickCount = 2 });
+                ExecuteEvents.Execute(unavailable.gameObject, new PointerEventData(EventSystem.current)
+                { button = PointerEventData.InputButton.Left, clickCount = 1 }, ExecuteEvents.pointerClickHandler);
                 Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
                 var doctor = buttons.Single(button => button.name == "Roster-2");
-                doctor.GetComponent<TerminalRosterPointer>().OnPointerClick(new PointerEventData(EventSystem.current)
-                { button = PointerEventData.InputButton.Left, clickCount = 2 });
+                var pointer = new PointerEventData(EventSystem.current);
+                ExecuteEvents.Execute(doctor.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                var hoverColor = doctor.GetComponent<Image>().color;
+                for (int frame = 0; frame < 3; frame++)
+                {
+                    yield return null;
+                    Assert.That(doctor.GetComponent<Image>().color, Is.EqualTo(hoverColor));
+                    Assert.That(buttons.Where(button => button.name.StartsWith("Roster-") && button != doctor)
+                        .All(button => button.GetComponent<Image>().color != hoverColor), Is.True);
+                }
+                ExecuteEvents.Execute(doctor.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+                Assert.That(doctor.GetComponent<Image>().color, Is.EqualTo(hoverColor), "Pointer exit must not jump back to an old selection.");
+                ExecuteEvents.Execute(doctor.gameObject, new PointerEventData(EventSystem.current)
+                { button = PointerEventData.InputButton.Left, clickCount = 1 }, ExecuteEvents.pointerClickHandler);
                 Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
                 Assert.That(runtime.GetView().Game.CurrentPatientId, Is.EqualTo(PrototypeRules.Doctor));
             }

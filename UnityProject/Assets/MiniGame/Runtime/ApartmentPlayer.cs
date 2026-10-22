@@ -171,7 +171,8 @@ namespace MiniGame.UnityHost
             var view = runtime.GetView();
             if (BedtimeGuidance.IsSleepOnly(view) && !view.AllowedInteractions.Contains(focused.Target))
             {
-                if (screen != null) screen.ClearNotification();
+                if (screen != null) screen.Notify(focused.Target == InteractionTarget.Computer
+                    ? "今日审判已结束，电脑暂不可使用，请先休息。" : "夜晚暂不可出门，请先休息。", true);
                 return false;
             }
             var door = focused.GetComponentInParent<HingedDoor>();
@@ -204,7 +205,7 @@ namespace MiniGame.UnityHost
             return focused != null && focused.Target == InteractionTarget.Computer && InteractFocused();
         }
 
-        private static bool CanRead(RuntimeView view) => view.Input == InputContext.World && !BedtimeGuidance.IsSleepOnly(view) && !view.DreamTraversal;
+        private static bool CanRead(RuntimeView view) => view.Input == InputContext.World && !view.DreamTraversal;
 
         private bool CompleteWorldInteraction(bool accepted)
         {
@@ -253,8 +254,8 @@ namespace MiniGame.UnityHost
             bool bedtime = BedtimeGuidance.IsSleepOnly(view);
             bool doorLocked = focused != null && focused.Target == InteractionTarget.Door
                 && runtime.IsDoorLockedAfterSupervisor && !view.RoomDoorOpen;
-            if (screen != null) screen.SetWorldFocus(focused == null || (bedtime && !allowed) ? string.Empty
-                : bedtime ? "躺下休息" : doorLocked ? "门已锁" : hingedDoor != null ? hingedDoor.IsOpen ? "关门" : "开门" : focused.Label, allowed,
+            if (screen != null) screen.SetWorldFocus(focused == null ? string.Empty
+                : bedtime && focused.Target == InteractionTarget.Bed ? "躺下休息" : doorLocked ? "门已锁" : hingedDoor != null ? hingedDoor.IsOpen ? "关门" : "开门" : focused.Label, allowed,
                 focused != null && focused.Target == InteractionTarget.Computer ? "E / 鼠标左键" : "E");
         }
 
@@ -314,8 +315,8 @@ namespace MiniGame.UnityHost
             WorldInteraction result = null;
             foreach (var candidate in dreamTargets)
             {
-                if (candidate == null || !candidate.isActiveAndEnabled || !view.AllowedInteractions.Contains(candidate.Target)
-                    || (candidate.Target != InteractionTarget.Bed && candidate.Target != InteractionTarget.Computer)) continue;
+                if (candidate == null || !candidate.isActiveAndEnabled
+                    || (!BedtimeGuidance.IsSleepOnly(view) && !view.AllowedInteractions.Contains(candidate.Target))) continue;
                 foreach (var collider in candidate.GetComponentsInChildren<Collider>())
                 {
                     if (!collider.enabled || collider.isTrigger || collider.GetComponentInParent<WorldInteraction>() != candidate) continue;

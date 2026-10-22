@@ -95,7 +95,7 @@ namespace MiniGame.UnityHost.Tests
             Accept(runtime.TryInteract(InteractionTarget.Computer));
             Assert.That(supervisor.IsVisible, Is.True);
             Assert.That(Vector3.Distance(surface.transform.position, initialPosition), Is.LessThan(.0001f),
-                "Door and work transitions must never move the permanently placed supervisor.");
+                "Closing returns to the same safe offset without accumulating displacement.");
         }
 
         [UnityTest, Timeout(15000)]
@@ -114,8 +114,43 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(doorway.TryEnter(), Is.True);
             yield return UntilMorning();
             Assert.That(supervisor.IsVisible, Is.True);
-            Assert.That(Vector3.Distance(supervisor.Surface.transform.position, fixedPosition), Is.LessThan(.0001f),
-                "Entering the doorway must retain the actor's original pose instead of spawning at the player's new height.");
+            var displacement = supervisor.Surface.transform.position - fixedPosition;
+            Assert.That(Vector3.Dot(displacement, doorway.InsidePose.right), Is.EqualTo(.7f).Within(.001f));
+            Assert.That(displacement.y, Is.Zero.Within(.001f), "Door avoidance must not change the actor's authored height.");
+        }
+
+        [UnityTest, Timeout(15000)]
+        public IEnumerator PortraitStaysLeftDuringDoorMotionAndReturnsOnlyAfterFullyOpen()
+        {
+            door.AnimationSeconds = .8f;
+            var safePosition = supervisor.Surface.transform.position;
+            Assert.That(doorway.TryEnter(), Is.True);
+            yield return null;
+            Assert.That(door.IsMoving, Is.True);
+            float deadline = Time.realtimeSinceStartup + 5;
+            while (door.IsMoving && Time.realtimeSinceStartup < deadline)
+            {
+                Assert.That(Vector3.Distance(supervisor.Surface.transform.position, safePosition), Is.LessThan(.001f));
+                yield return null;
+            }
+            Assert.That(door.IsMoving, Is.False);
+            yield return UntilMorning();
+            Assert.That(Vector3.Dot(supervisor.Surface.transform.position - safePosition, doorway.InsidePose.right),
+                Is.EqualTo(.7f).Within(.001f));
+            Assert.That(doorway.TryReturn(), Is.False, "The morning dialogue still owns progression.");
+            Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
+            Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
+            Assert.That(doorway.TryReturn(), Is.True);
+            yield return new WaitForSecondsRealtime(.15f);
+            float remaining = Vector3.Distance(supervisor.Surface.transform.position, safePosition);
+            Assert.That(remaining, Is.GreaterThan(.01f).And.LessThan(.69f), "Avoidance must slide through intermediate positions rather than teleport.");
+            var pausedPosition = supervisor.Surface.transform.position;
+            Accept(runtime.SetPaused(true));
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(Vector3.Distance(supervisor.Surface.transform.position, pausedPosition), Is.LessThan(.001f));
+            Accept(runtime.SetPaused(false));
+            yield return new WaitForSecondsRealtime(.5f);
+            Assert.That(Vector3.Distance(supervisor.Surface.transform.position, safePosition), Is.LessThan(.001f));
         }
 
         [UnityTest, Timeout(15000)]
@@ -148,6 +183,9 @@ namespace MiniGame.UnityHost.Tests
                 yield return null;
             Assert.That(runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.MorningInspection));
             Assert.That(runtime.GetView().RoomDoorOpen, Is.True);
+            // The dialogue cue may be acknowledged on the final door frame; allow the
+            // separate presentation-only portrait return to reach its resting pose.
+            yield return new WaitForSecondsRealtime(.7f);
         }
 
         private static void Accept(RuntimeResult result) => Assert.That(result.Accepted, Is.True, result.Reason);

@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectEnabled: 1
   strength: 1
-  pixelSize: 1
-  fullscreenQuantization: 0
+  pixelSize: 2
+  fullscreenQuantization: 1
   levels: 10
-  gammaBefore: 1
+  gammaBefore: 1.118
   gammaAfter: 1
   colorGradingEnabled: 1
   postExposure: 0.5
   contrast: -5
   saturation: -5
   shadowTint: {r: 0.93, g: 1, b: 0.9, a: 1}
-  midtoneTint: {r: 1, g: 0.99, b: 0.91, a: 1}
+  midtoneTint: {r: 1, g: 0.94910425, b: 0.6839622, a: 1}
   highlightTint: {r: 1, g: 0.99, b: 0.95, a: 1}
   shadowExposure: 0
   midtoneExposure: 0

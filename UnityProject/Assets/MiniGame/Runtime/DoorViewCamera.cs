@@ -26,6 +26,7 @@ namespace MiniGame.UnityHost
         public DoorCameraPhase Phase { get; private set; }
         public bool HasRoomPose => hasRoomPose;
         public Transform InsidePose => insidePose;
+        internal HingedDoor Door => door;
         public Transform OutsidePose => outsidePose;
         public Vector3 ReturnPosition => roomPosition;
         public Quaternion ReturnRotation => roomRotation;

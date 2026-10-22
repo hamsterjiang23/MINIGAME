@@ -22,13 +22,14 @@ namespace MiniGame.UnityHost
         public int PageNumber => page + 1;
         public bool PageRevealed => visible >= elements.Length;
 
-        public void Begin(Text label, string text, float charactersPerSecond, Action finish)
+        public void Begin(Text label, string text, float charactersPerSecond, Action finish, bool paginate = true)
         {
             Cancel();
             target = label;
             speed = Mathf.Max(0, charactersPerSecond);
             completed = finish;
-            pages.AddRange(Paginate(label, text));
+            if (paginate) pages.AddRange(Paginate(label, text));
+            else pages.Add(text ?? string.Empty);
             ShowPage();
         }
 

@@ -73,6 +73,35 @@ namespace MiniGame.UnityHost.Tests
                 AssertEmission(surface.GetComponent<Renderer>(), false);
                 Assert.That(played.Count(s => s == MiniGameSound.TerminalPowerOn), Is.EqualTo(1));
                 Assert.That(played.Count(s => s == MiniGameSound.TerminalPowerOff), Is.EqualTo(1));
+                yield return null;
+                var reticle = screen.GetComponentsInChildren<UnityEngine.UI.Text>(true).Single(text => text.name == "Reticle");
+                Assert.That(runtime.GetView().Input, Is.EqualTo(InputContext.World));
+                Assert.That(screen.TransitionLocked, Is.False);
+                Assert.That(reticle.gameObject.activeInHierarchy, Is.True, "Night keeps an aiming reference before a bed is focused.");
+
+                Assert.That(runtime.SetPaused(true).Accepted, Is.True);
+                yield return null;
+                Assert.That(reticle.gameObject.activeInHierarchy, Is.False);
+                Assert.That(runtime.SetPaused(false).Accepted, Is.True);
+                yield return null;
+                Assert.That(reticle.gameObject.activeInHierarchy, Is.True);
+
+                // Exercise the actual player ray and bed action after the daily shutdown.
+                var player = owner.AddComponent<ApartmentPlayer>();
+                player.Configure(cameraObject.GetComponent<Camera>());
+                player.Bind(runtime, screen);
+                player.enabled = false;
+                var bed = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                bed.transform.SetParent(owner.transform);
+                bed.transform.position = cameraObject.transform.position + cameraObject.transform.forward * 2;
+                var interaction = bed.AddComponent<WorldInteraction>();
+                interaction.Configure(InteractionTarget.Bed, "Sleep", bed.GetComponent<Renderer>());
+                surface.GetComponent<Collider>().enabled = false;
+                Physics.SyncTransforms();
+                player.RefreshInteractionFocus();
+                Assert.That(player.FocusedInteraction, Is.SameAs(interaction));
+                Assert.That(player.InteractFocused(), Is.True, "The night bed action must accept the player's focused interaction.");
+                Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Sleep));
             }
             finally { Object.Destroy(owner); Object.Destroy(material); }
             yield return null;
