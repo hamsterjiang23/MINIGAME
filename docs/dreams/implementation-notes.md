@@ -17,7 +17,7 @@
 
 # Questions for review
 
-- 本轮 Unity 原画渲染、完整流程、暂停恢复和床灯回归仍在验证中；最终结果待写入 `docs/dreams/night-flow-2026-10-22/verification.json`。当前不宣称新的 Windows 构建、新录像或人工视觉／听感验收完成。`[opinion]`
+- 本轮 Unity 26 项 PlayMode、3 项 EditMode 回归通过，原报告、修正后测试结果与截图见 [verification.json](night-flow-2026-10-22/verification.json)。未运行新的 Windows 构建或录制新视频，人工听感仍待确认。`[verified: night-flow-2026-10-22/verification.json latestTestOutcomes/scope/limitations]`
 - 节奏和音乐平衡需按 [guide.md](guide.md) 的两次床交互流程实测；当前参数开放调节，人工视觉／听感结论待确认。`[opinion]`
 
 # Historical implementation notes

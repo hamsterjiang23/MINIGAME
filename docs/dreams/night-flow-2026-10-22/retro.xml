@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 10:44:29Z" end-time="2026-10-22 10:44:33Z" duration="3.2365217">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="271" result="Passed" start-time="2026-10-22 10:44:29Z" end-time="2026-10-22 10:44:33Z" duration="3.236522" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1275" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DialogueUpdate20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="211" result="Passed" start-time="2026-10-22 10:44:29Z" end-time="2026-10-22 10:44:33Z" duration="3.227606" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="91452" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1276" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="211" result="Passed" start-time="2026-10-22 10:44:29Z" end-time="2026-10-22 10:44:33Z" duration="3.196364" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1277" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="211" result="Passed" start-time="2026-10-22 10:44:30Z" end-time="2026-10-22 10:44:33Z" duration="3.162986" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1278" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="211" result="Passed" start-time="2026-10-22 10:44:30Z" end-time="2026-10-22 10:44:33Z" duration="3.129635" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1062" name="DreamCampaignIntegrationTests" fullname="MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests" classname="MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-22 10:44:30Z" end-time="2026-10-22 10:44:33Z" duration="3.095625" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1071" name="ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile" fullname="MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile" methodname="ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile" classname="MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests" runstate="Runnable" seed="1170632560" result="Passed" start-time="2026-10-22 10:44:30Z" end-time="2026-10-22 10:44:33Z" duration="3.058615" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile
+MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=Work profile=campaign rules=campaign:inspection-campaign:1.1.1-development:dream-flow:76aee9caa724d5ee30765674009c3a089b7bcdd644fc0296e989cf13801dfb56
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.DreamCampaignIntegrationTests.ActualDreamPlaybackBypassesRetroPixelsWithoutChangingTheProfile Passed
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

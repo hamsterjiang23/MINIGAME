@@ -2,7 +2,7 @@
 
 ## 当前每日梦境：McQueen 图片序列
 
-当前三晚各按编号播放 **10 张原画，共 5 秒，每张 0.5 秒**。Day1 鲸尸海滩、Day2 倒悬花海、Day3 受缚待审都使用静止画面和直接切图；不加运动、叠化、折射、重影、CRT 撕裂或色差，只有可调的轻微暗角，默认 `VignetteIntensity = 0.12`。原始素材来源见[图片序列说明](image-sequence-notes.md)，当前播放规则以本文为准。`[verified: UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset L16-L78；UnityProject/Assets/MiniGame/Editor/DreamSettingsWindow.cs L168-L174；UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L79-L93；UnityProject/Assets/MiniGame/Resources/DreamProjectionAnimation.shader L134-L140]`
+当前三晚各按编号播放 **10 张原画，共 5 秒，每张 0.5 秒**。Day1 鲸尸海滩、Day2 倒悬花海、Day3 受缚待审都使用静止画面和直接切图；不加运动、叠化、折射、重影、CRT 撕裂或色差，只有可调的轻微暗角，默认 `VignetteIntensity = 0.12`。原图自带的扫描线和红蓝细线属于素材本身，仍保留；运行时不添加这些效果。原始素材来源见[图片序列说明](image-sequence-notes.md)，当前播放规则以本文为准。`[verified: UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset L16-L78；UnityProject/Assets/MiniGame/Editor/DreamSettingsWindow.cs L168-L174；UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs L79-L93；UnityProject/Assets/MiniGame/Resources/DreamProjectionAnimation.shader L134-L140]`
 
 **历史预览**：[Day1](../../Art/Dreams/Previews/day1-sequence-1fps.mp4)、[Day2](../../Art/Dreams/Previews/day2-sequence-1fps.mp4)、[Day3](../../Art/Dreams/Previews/day3-sequence-1fps.mp4)。这些旧视频保留原文件名，本轮没有把它们重录为新流程，不可据此验收当前节奏、原画显示或第二次床交互。隐藏海滩结局仍查阅[固定门口布景指南](cubemap-guide.md)，本轮每日梦境修改不扩大海滩范围。`[opinion]`
 
@@ -46,7 +46,7 @@
 
 **本轮 .NET 验证**：核心 **114 项**、表现层 **233 项**，合计 **347 项通过，0 失败**。报告为 `src/MiniGame.Core.Tests/TestResults/dream-night-flow_net8.0_20261022183526.trx` 与 `src/MiniGame.Presentation.Tests/TestResults/dream-night-flow_net8.0_20261022183533.trx`。`[verified: 前一报告 L702；后一报告 L1416]`
 
-**本轮 Unity 验证仍在进行**；最终范围与结果待写入 `docs/dreams/night-flow-2026-10-22/verification.json`。当前不宣称新录像、Windows 新构建或人工视觉／听感验收通过。`[opinion]`
+**本轮 Unity 验证**：26 项 PlayMode 与 3 项 EditMode 测试通过，覆盖原画像素、5 秒黑屏、暂停读档、聚光床、第二次交互与 1 秒起床黑屏、面板保存和撤销。详见[本轮验证](night-flow-2026-10-22/verification.json)与[聚光床截图](night-flow-2026-10-22/day1-spotlight-bed.png)。未制作新录像或 Windows 构建，未做独立听感验收。`[verified: night-flow-2026-10-22/verification.json latestTestOutcomes/scope/limitations]`
 
 存档保留梦境黑屏、原画播放和镜头返回进度；暂停恢复 Returning 时立即恢复床聚光，暂停期间不等待渐亮。第二次床交互产生的 `AfterDream + Sleep` 检查点可以恢复，旧实例的 cue token 失效。闭眼与起床黑屏过渡按恢复后的 Sleep cue 重新演出，不能把它当作逐帧恢复。`[verified: UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs L240-L269；UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs L178-L189；src/MiniGame.Presentation/GameRuntime.cs L662,L750-L760；UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs L499-L528]`
 

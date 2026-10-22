@@ -39,6 +39,7 @@ namespace MiniGame.UnityHost
         }
         public bool IsMoving { get; private set; }
         public bool MotionCompletionBlocked { get; set; }
+        internal Func<bool> MotionClearance { get; set; }
         public float CurrentAngle { get; private set; }
         public bool IsOpen => enableToggle && (runtime != null ? runtime.GetView().RoomDoorOpen : Mathf.Abs(CurrentAngle) > .01f);
 
@@ -148,6 +149,7 @@ namespace MiniGame.UnityHost
             if (!Mathf.Approximately(targetAngle, TargetAngle(view))) OnViewChanged(view);
             if (IsMoving)
             {
+                if (MotionClearance != null && !MotionClearance()) return;
                 if (pendingToken != null && pendingToken != lastSoundToken)
                 {
                     lastSoundToken = pendingToken;

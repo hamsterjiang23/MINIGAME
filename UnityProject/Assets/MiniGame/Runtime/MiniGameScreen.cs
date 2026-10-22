@@ -166,7 +166,7 @@ namespace MiniGame.UnityHost
         {
             EnsureBuilt();
             if (current == null || current.Paused || PresentationToolsBlockInput || current.Input != InputContext.World || transitionLocked
-                || BedtimeGuidance.IsSleepOnly(current) || current.DreamTraversal || PropNarrationBlocksWorld) return false;
+                || current.DreamTraversal || PropNarrationBlocksWorld) return false;
             if (propNarration == null)
             {
                 var root = new GameObject("Prop narration presentation", typeof(PropNarrationView));
@@ -294,7 +294,8 @@ namespace MiniGame.UnityHost
             }
             if (runtime == null || !runtime.IsCampaign) return;
             var target = current != null && current.TerminalOpen ? narration ? terminalView.NarrationBody : terminalView.Body : body;
-            linePlayback.Begin(target, current != null && !current.TerminalOpen ? WorldCueText(text) : text, dialogueCharactersPerSecond, complete);
+            linePlayback.Begin(target, current != null && !current.TerminalOpen ? WorldCueText(text) : text, dialogueCharactersPerSecond, complete,
+                paginate: current == null || !current.TerminalOpen || narration);
             terminalView.SetPageIndicator(linePlayback.PageNumber, linePlayback.PageCount);
             var next = ActiveContinue;
             next.onClick.RemoveAllListeners();
@@ -386,7 +387,7 @@ namespace MiniGame.UnityHost
                 promptGroup.alpha = Mathf.MoveTowards(promptGroup.alpha, showPrompt ? promptTarget : 0, Time.unscaledDeltaTime * 6);
                 worldPrompt.color = focusAllowed ? Ink : TerminalView.Dim;
                 foreach (var edge in promptFrameEdges) edge.color = worldPrompt.color;
-                reticle.gameObject.SetActive(world && (!BedtimeGuidance.IsSleepOnly(current) || focusAllowed));
+                reticle.gameObject.SetActive(world);
                 if (conversation.activeSelf) conversationGroup.alpha = Mathf.MoveTowards(conversationGroup.alpha, 1, Time.unscaledDeltaTime * 6);
                 else conversationGroup.alpha = 0;
             }
@@ -530,7 +531,7 @@ namespace MiniGame.UnityHost
             if (current != null && current.Paused && !view.Paused) pauseClosedFrame = Time.frameCount;
             if (current != null && current.Game.Phase != view.Game.Phase) ClearNotification();
             current = view;
-            if (!view.Paused && (view.Input != InputContext.World || BedtimeGuidance.IsSleepOnly(view))) ClearRoomCaption();
+            if (!view.Paused && view.Input != InputContext.World) ClearRoomCaption();
             propNarration?.SetPaused(view.Paused);
             header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     " + PhaseName(view.Game.Phase)
                 + "     净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;

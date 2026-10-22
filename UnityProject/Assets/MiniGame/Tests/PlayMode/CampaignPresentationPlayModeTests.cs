@@ -17,58 +17,43 @@ namespace MiniGame.UnityHost.Tests
     public sealed class CampaignPresentationPlayModeTests
     {
         [UnityTest]
-        public IEnumerator LongUnicodeDialogueRevealsThenPagesWithoutLosingTextOrRepeatingCompletion()
+        public IEnumerator LongUnicodeDialogueWrapsAsOneLineWithoutExtraPageClicks()
         {
-            var owner = new GameObject("Campaign Unicode Pagination Test");
+            var owner = new GameObject("Campaign complete dialogue test");
             var screen = owner.AddComponent<MiniGameScreen>();
             try
             {
                 var runtime = OpenTutorial(screen);
                 Canvas.ForceUpdateCanvases();
                 screen.ReflowTerminal();
-                Assert.That(screen.DialogueCharactersPerSecond, Is.EqualTo(30));
-                var text = string.Concat(Enumerable.Repeat("窗外的墙还在。e\u0301 与 \U0001F642 都应该完整保留。\n", 12)) + "  最后一句。";
-                var boundaries = new HashSet<int>(StringInfo.ParseCombiningCharacters(text)) { text.Length };
+                var text = string.Concat(Enumerable.Repeat("\u8fd9\u662f\u5b8c\u6574\u7684\u4e00\u53e5\u8bdd e\u0301 \U0001F642 ", 10));
                 int completed = 0;
-                screen.PresentDialogueLine("对象", text, "pagination-line", "D0_01", false, () =>
+                screen.PresentDialogueLine("Patient", text, "whole-line", "D0_01", false, () =>
                 {
                     completed++;
-                    runtime.CompleteDialogueLine("pagination-line");
+                    runtime.CompleteDialogueLine("whole-line");
                 });
                 var label = TextNamed(screen, "TerminalDialogueBody");
-                Assert.That(screen.CurrentLinePageCount, Is.GreaterThan(1), "The complete line must paginate within the existing speech field.");
-                Assert.That(screen.LineIsRevealed, Is.False);
+                Assert.That(screen.CurrentLinePageCount, Is.EqualTo(1));
                 Assert.That(label.text, Is.Empty);
-                Assert.That(runtime.GetView().Transcript.Single().Text, Is.EqualTo(text), "History retains the entire source line while the screen pages it.");
-                var reconstructed = new StringBuilder();
-                int pageCount = screen.CurrentLinePageCount;
-                for (int page = 0; page < pageCount; page++)
-                {
-                    Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
-                    Assert.That(screen.LineIsRevealed, Is.True);
-                    Assert.That(completed, Is.Zero, "Revealing a page cannot complete the source line.");
-                    Assert.That(label.text, Is.Not.Empty);
-                    reconstructed.Append(label.text);
-                    Assert.That(boundaries.Contains(reconstructed.Length), Is.True, "A page cannot split a surrogate pair or combining text element.");
-                    Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
-                    if (page + 1 < pageCount)
-                    {
-                        Assert.That(completed, Is.Zero);
-                        Assert.That(screen.LineIsRevealed, Is.False, "Moving to a new page starts its typing instead of advancing the whole line.");
-                        Assert.That(label.text, Is.Empty);
-                    }
-                }
-                Assert.That(reconstructed.ToString(), Is.EqualTo(text));
-                Assert.That(completed, Is.EqualTo(1));
-                Assert.That(runtime.IsDialogueLineComplete("pagination-line"), Is.True);
+                Assert.That(runtime.GetView().Transcript.Single().Text, Is.EqualTo(text));
+                Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
+                Assert.That(screen.LineIsRevealed, Is.True);
+                Assert.That(label.text, Is.EqualTo(text), "One reveal shows the entire line, including its former second page.");
+                Assert.That(completed, Is.Zero);
+                yield return null;
+                Assert.That(TextNamed(screen, "TranscriptText").text, Is.EqualTo(text));
+                Assert.That(TextNamed(screen, "TranscriptText").horizontalOverflow, Is.EqualTo(HorizontalWrapMode.Wrap));
+                Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
+                Assert.That(completed, Is.EqualTo(1), "The next click completes this line rather than displaying another fragment.");
+                Assert.That(runtime.IsDialogueLineComplete("whole-line"), Is.True);
                 screen.HandleTerminalKey(KeyCode.Return);
                 screen.HandleTerminalKey(KeyCode.Space);
-                Assert.That(completed, Is.EqualTo(1), "Late input cannot call an already completed line again.");
+                Assert.That(completed, Is.EqualTo(1));
             }
             finally { Object.Destroy(owner); }
             yield return null;
         }
-
         [UnityTest]
         public IEnumerator HistoryAndPauseFreezeTypingAndBlockContinueUntilTheyClose()
         {

@@ -95,7 +95,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(30000)]
-        public IEnumerator RestoringPausedBedtimeSnapsTheLightAndBlockedObjectsStaySilent()
+        public IEnumerator RestoringPausedBedtimeKeepsUnavailableObjectFeedback()
         {
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
@@ -131,11 +131,13 @@ namespace MiniGame.UnityHost.Tests
                 "The spotlight replaces the list of unavailable world interactions.");
             foreach (var target in new[] { InteractionTarget.Computer, InteractionTarget.Door })
             {
-                yield return StageAt(host, target, expectHit: target == InteractionTarget.Door);
+                yield return StageAt(host, target);
                 host.Screen.ClearNotification();
-                Assert.That(Text(host, "InteractionPrompt").text, Is.Empty, "Blocked furniture must not show a 'temporarily unavailable' prompt.");
+                Assert.That(Text(host, "InteractionPrompt").text, Is.Not.Empty, "Unavailable objects retain their normal focus feedback at night.");
+                var before = host.Runtime.Save();
                 Assert.That(host.Player.InteractFocused(), Is.False);
-                Assert.That(Text(host, "Notification").text, Is.Empty, "Pressing E on blocked furniture must not add a rejection toast.");
+                Assert.That(Text(host, "Notification").text, Is.Not.Empty, "Pressing E explains why the object is unavailable.");
+                Assert.That(host.Runtime.Save(), Is.EqualTo(before), "Feedback cannot reopen the terminal or door or advance the day.");
                 Assert.That(BedtimeGuidance.IsSleepOnly(host.Runtime.GetView()), Is.True);
             }
             yield return StageAt(host, InteractionTarget.Bed);
@@ -144,7 +146,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(guidance.Isolation, Is.Zero);
             Assert.That(guidance.OwnsLighting, Is.False);
             daylight.AssertRestored(host.Player.ViewCamera);
-            Debug.Log("MINIGAME_BEDTIME_RESTORE_PASSED paused checkpoint snap; frozen particles; blocked furniture silent; original lighting restored");
+            Debug.Log("MINIGAME_BEDTIME_RESTORE_PASSED paused checkpoint snap; frozen particles; unavailable furniture feedback; original lighting restored");
         }
 
         private static GameRuntime CreateCampaign(bool dreamFlow)
