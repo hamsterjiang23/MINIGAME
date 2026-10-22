@@ -1,0 +1,54 @@
+{
+  "sourceReview": [
+    {
+      "patientId": "tutorial",
+      "oldSha256": "ebbcb4c75c754e603d91c92101a1573ac939d8f899400c8313a8e60f3538b843",
+      "newSha256": "9fdc91da9477d72e8db9e121ea39c6438f374e4edcebfe4a0f6c9c9086ff0168",
+      "changedFlowCells": 50,
+      "previousRepairExpectedFieldsRechecked": 0
+    },
+    {
+      "patientId": "child",
+      "oldSha256": "61dfa17d9dc547158d3330397585729730f72cf3225fae3bd73b056d6efd36de",
+      "newSha256": "5d73e740a1049caede2a351329cbbc7aa37fde0623a53e7c1c67cab52e68f56a",
+      "changedFlowCells": 0,
+      "previousRepairExpectedFieldsRechecked": 0
+    },
+    {
+      "patientId": "former-ruler",
+      "oldSha256": "2e2ae887a1d1e70eb951e8a62dc3fba51ce630404f41367409a77d385a5a4b57",
+      "newSha256": "2d9bb7a35c29332f63413817dfb7889d8050cc6215601debf5c242231ec2bee0",
+      "changedFlowCells": 0,
+      "previousRepairExpectedFieldsRechecked": 0
+    },
+    {
+      "patientId": "battlefield-doctor",
+      "oldSha256": "c37ed3fa8a1cf44f30952eab9427668b7a57a22c658b76d7f1b94386b95fed80",
+      "newSha256": "de0c574fff1927218a18ef96c40e8de12519292d8d9c840c61209c8bf4a5cc8e",
+      "changedFlowCells": 0,
+      "previousRepairExpectedFieldsRechecked": 339
+    },
+    {
+      "patientId": "diplomat",
+      "oldSha256": "b1ceac6e1e2797775f7a8b82fd7d480e106ad87182563bce08733ac9cef76f17",
+      "newSha256": "37ff099b4a3dee1a1e2417a61853178a4839584bff50f8815f62a637ad88f2ee",
+      "changedFlowCells": 0,
+      "previousRepairExpectedFieldsRechecked": 0
+    },
+    {
+      "patientId": "priest",
+      "oldSha256": "359677e626706199140aace2df8296460f303e54a38ab14f08faa24428bc7119",
+      "newSha256": "b2e2bb5560a8526b837ea015c0f50f04aaf6de819bc6dccd133d5576ae07d3bd",
+      "changedFlowCells": 0,
+      "previousRepairExpectedFieldsRechecked": 2
+    }
+  ],
+  "rawRows": 1440,
+  "activeRows": 1299,
+  "excludedRows": 141,
+  "repairs": 122,
+  "portraits": 21,
+  "smokeMeetings": 3,
+  "meetingCount": 16,
+  "dayOneToThreeUnchangedExceptConfirmedPortraitRemap": true
+}

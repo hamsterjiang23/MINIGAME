@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.2381203">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="258" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.238120" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1260" name="MiniGame.UnityHost.PlayModeTests.dll" fullname="F:/AAMINIGAME/MINIGAME/Artifacts/DialogueUpdate20261022/UnityProject/Library/ScriptAssemblies/MiniGame.UnityHost.PlayModeTests.dll" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.230470" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="97528" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1261" name="MiniGame" fullname="MiniGame" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.199211" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1262" name="UnityHost" fullname="MiniGame.UnityHost" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.165882" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1263" name="Tests" fullname="MiniGame.UnityHost.Tests" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.132519" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1013" name="CampaignPlayModeTests" fullname="MiniGame.UnityHost.Tests.CampaignPlayModeTests" classname="MiniGame.UnityHost.Tests.CampaignPlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.098418" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1014" name="TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce" fullname="MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce" methodname="TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce" classname="MiniGame.UnityHost.Tests.CampaignPlayModeTests" runstate="Runnable" seed="1749260979" result="Passed" start-time="2026-10-22 09:44:57Z" end-time="2026-10-22 09:45:02Z" duration="5.061705" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="60000" />
+                </properties>
+                <output><![CDATA[MINIGAME_TEST_STARTED MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce
+MINIGAME_PLAYER_READY unity=2022.3.23f1c1 phase=MorningInspection profile=terminal-demo rules=terminal-demo:terminal-child-day1:1.0.0
+MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; nine intro and two reaction lines; page checkpoint; one purification; trust=0
+MINIGAME_TEST_FINISHED MiniGame.UnityHost.Tests.CampaignPlayModeTests.TutorialResumesTheCurrentPageWithoutReplayingCompletedLinesAndPurifiesOnce Passed
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

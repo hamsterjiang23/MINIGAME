@@ -43,11 +43,11 @@ class CampaignConversionTests(unittest.TestCase):
         smoke, audit = build(smoke=True)
         self.assertEqual(audit["meetingCount"], 3)
         self.assertEqual(smoke["formatVersion"], 2)
-        self.assertEqual(self.audit["sourceRowCount"], 1437)
-        self.assertEqual(self.audit["activeSourceRowCount"], 1295)
-        self.assertEqual(self.audit["excludedSourceRowCount"], 142)
+        self.assertEqual(self.audit["sourceRowCount"], 1440)
+        self.assertEqual(self.audit["activeSourceRowCount"], 1299)
+        self.assertEqual(self.audit["excludedSourceRowCount"], 141)
         self.assertEqual(self.audit["meetingCount"], 16)
-        self.assertEqual(self.package["contentVersion"], "1.1.0-development")
+        self.assertEqual(self.package["contentVersion"], "1.1.1-development")
 
     def test_every_source_row_is_either_exactly_mapped_or_explicitly_excluded(self) -> None:
         mappings = cast(list[Record], self.audit["mappings"])
@@ -109,6 +109,25 @@ class CampaignConversionTests(unittest.TestCase):
     def test_repair_manifest_rejects_new_source_hash_instead_of_guessing(self) -> None:
         with self.assertRaisesRegex(ValueError, "does not match"):
             apply_repairs("battlefield-doctor", "future-revision", [], HERE / "source-repairs.json")
+
+    def test_new_tutorial_is_complete_and_confirmed_priest_alias_keeps_source_evidence(self) -> None:
+        books = {book["patientId"]: book for book in cast(list[Record], self.audit["books"])}
+        tutorial = cast(list[Row], books["tutorial"]["activeRows"])
+        self.assertEqual([int(row["row"]) for row in tutorial], list(range(2, 14)))
+        self.assertEqual([row["open"] for row in tutorial if row["open"]],
+                         ["嘿！", "你好啊。", "别害怕，我动不了。", "这玩意把我绑的严严实实呢。", "……",
+                          "不过我发现了一件有趣的事。", "有些人啊，根本不需要绳子。", "……", "你说是不是？"])
+        self.assertEqual(tutorial[-1]["next"], "END_DAY0")
+        original = {int(row["row"]): row for row in cast(list[Row], books["priest"]["rows"])}
+        aliases = [repair for repair in cast(list[Record], self.audit["repairs"])
+                   if repair["kind"] == "user-confirmed-portrait-remap"]
+        self.assertEqual([repair["row"] for repair in aliases], [62, 63, 67, 121, 122, 178, 179])
+        for repair in aliases:
+            self.assertEqual(original[int(str(repair["row"]))]["L"], "JN05")
+            self.assertEqual(cast(Record, repair["after"])["portrait"], "JN04")
+        self.assertNotIn("JN05", self.audit["referencedPortraits"])
+        declared = {portrait["id"] for portrait in cast(list[Record], self.package["portraits"])}
+        self.assertTrue(set(cast(list[str], self.audit["referencedPortraits"])) <= declared)
 
     def test_priest_terminal_continuation_is_one_linear_effect_free_response(self) -> None:
         priest = next(book for book in cast(list[Record], self.audit["books"]) if book["patientId"] == "priest")

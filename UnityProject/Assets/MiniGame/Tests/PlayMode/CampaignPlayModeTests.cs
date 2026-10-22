@@ -73,7 +73,7 @@ namespace MiniGame.UnityHost.Tests
             { var next = Find(host, "Continue"); if (next != null) yield return Click(next); yield return null; }
             var view = host.Runtime.GetView();
             Assert.That(view.Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition), Describe(host));
-            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(5));
+            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(9));
             Assert.That(view.Transcript.Where(line => !line.IsPlayer).All(line => line.Completed), Is.True);
             Assert.That(view.Game.AvailableDispositions, Is.EqualTo(new[] { Disposition.Purify }));
             Assert.That(Find(host, "Disposition-Treat"), Is.Null);
@@ -88,7 +88,7 @@ namespace MiniGame.UnityHost.Tests
             { var next = Find(host, "Continue"); if (next != null) yield return Click(next); yield return null; }
             view = host.Runtime.GetView();
             Assert.That(view.TerminalPage, Is.EqualTo(TerminalPage.Archive), Describe(host));
-            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(7));
+            Assert.That(view.Transcript.Count(line => !line.IsPlayer), Is.EqualTo(11));
             Assert.That(view.Transcript.Count(line => line.SourceNodeId == "disposition:Purify"), Is.EqualTo(1));
             Assert.That(view.Transcript.Select(line => line.SourceNodeId).Distinct().Count(), Is.EqualTo(view.Transcript.Count));
             var package = Campaign();
@@ -97,7 +97,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(core.Patients.Single(patient => patient.Id == "tutorial").Trust, Is.Zero);
             Assert.That(view.Game.RemainingPurificationQuota, Is.EqualTo(0));
             Assert.That(view.PresentedPatientId, Is.EqualTo("tutorial"));
-            Debug.Log("MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; five intro and two reaction lines; page checkpoint; one purification; trust=0");
+            Debug.Log("MINIGAME_CAMPAIGN_TUTORIAL_PASSED native Yarn; nine intro and two reaction lines; page checkpoint; one purification; trust=0");
         }
 
         [UnityTest, Timeout(240000)]

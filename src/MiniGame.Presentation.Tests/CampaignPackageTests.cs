@@ -33,12 +33,12 @@ namespace MiniGame.Presentation.Tests
                 Assert.That(day.Meetings.Select(m => m.PatientId), Is.EqualTo(new[] { "child", "former-ruler", "battlefield-doctor", "diplomat", "priest" }));
             var tutorial = package.Rules.Days[0].Meetings.Single();
             Assert.That(tutorial.NormalRounds, Is.Empty);
-            Assert.That(package.Content.GetSegment(tutorial.IntroNodeId!).Lines.Count, Is.EqualTo(5));
+            Assert.That(package.Content.GetSegment(tutorial.IntroNodeId!).Lines.Count, Is.EqualTo(9));
             Assert.That(tutorial.ReactionNodes.Keys, Is.EqualTo(new[] { Disposition.Purify }));
             Assert.That(tutorial.DispositionTrustDeltas[Disposition.Purify], Is.Zero);
             Assert.That(package.Content.GetSegment(tutorial.ReactionNodes[Disposition.Purify]).Lines.Count, Is.EqualTo(2));
-            Assert.That(package.Package.Portraits.Count, Is.EqualTo(22));
-            Assert.That(package.SourceNodes.Select(n => n.PortraitId).Where(p => p.Length > 0).Distinct().Count(), Is.EqualTo(16));
+            Assert.That(package.Package.Portraits.Count, Is.EqualTo(21));
+            Assert.That(package.SourceNodes.Select(n => n.PortraitId).Where(p => p.Length > 0).Distinct().Count(), Is.EqualTo(15));
             var specialMeetings = package.Rules.Days.SelectMany(day => day.Meetings).Where(meeting => meeting.SpecialRound != null).ToArray();
             Assert.That(specialMeetings.Length, Is.EqualTo(9));
             Assert.That(specialMeetings.Select(meeting => meeting.PatientId).Distinct(),
@@ -56,9 +56,9 @@ namespace MiniGame.Presentation.Tests
             var mappings = (JArray)audit["mappings"]!;
             var nodes = compiled.SourceNodes.ToDictionary(n => n.Id);
             var options = compiled.SourceNodes.SelectMany(n => n.Options).ToDictionary(o => o.Id);
-            Assert.That((int)audit["sourceRowCount"]!, Is.EqualTo(1437));
-            Assert.That((int)audit["activeSourceRowCount"]!, Is.EqualTo(1295));
-            Assert.That((int)audit["excludedSourceRowCount"]!, Is.EqualTo(142));
+            Assert.That((int)audit["sourceRowCount"]!, Is.EqualTo(1440));
+            Assert.That((int)audit["activeSourceRowCount"]!, Is.EqualTo(1299));
+            Assert.That((int)audit["excludedSourceRowCount"]!, Is.EqualTo(141));
             Assert.That(mappings.Count, Is.EqualTo((int)audit["activeSourceRowCount"]!));
             var excluded = (JArray)audit["excludedRows"]!;
             Assert.That(excluded.Count, Is.EqualTo((int)audit["excludedSourceRowCount"]!));

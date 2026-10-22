@@ -4,7 +4,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: 求求你了，我还有老婆和孩子！
+无名男子: 嘿！
 <<jump tutorial__P00_D0_R1_COMMON_002>>
 ===
 
@@ -14,7 +14,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: ……
+无名男子: 你好啊。
 <<jump tutorial__P00_D0_R1_COMMON_003>>
 ===
 
@@ -24,7 +24,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: 你觉得我会这么说吗？
+无名男子: 别害怕，我动不了。
 <<jump tutorial__P00_D0_R1_COMMON_004>>
 ===
 
@@ -34,7 +34,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: 一个人可以在不知道答案的时候，提出正确的问题吗？
+无名男子: 这玩意把我绑的严严实实呢。
 <<jump tutorial__P00_D0_R1_COMMON_005>>
 ===
 
@@ -44,7 +44,47 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: 所谓的答案，是否只是让问题停止存在的一种方法？
+无名男子: ……
+<<jump tutorial__P00_D0_R1_COMMON_006>>
+===
+
+title: tutorial__P00_D0_R1_COMMON_006
+kind: line
+round: R1
+patient: tutorial
+day: 0
+---
+无名男子: 不过我发现了一件有趣的事。
+<<jump tutorial__P00_D0_R1_COMMON_007>>
+===
+
+title: tutorial__P00_D0_R1_COMMON_007
+kind: line
+round: R1
+patient: tutorial
+day: 0
+---
+无名男子: 有些人啊，根本不需要绳子。
+<<jump tutorial__P00_D0_R1_COMMON_008>>
+===
+
+title: tutorial__P00_D0_R1_COMMON_008
+kind: line
+round: R1
+patient: tutorial
+day: 0
+---
+无名男子: ……
+<<jump tutorial__P00_D0_R1_COMMON_009>>
+===
+
+title: tutorial__P00_D0_R1_COMMON_009
+kind: line
+round: R1
+patient: tutorial
+day: 0
+---
+无名男子: 你说是不是？
 <<jump tutorial__P00_D0_R1_PLAYER_ACTION_001__MENU>>
 ===
 
@@ -54,7 +94,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: ……原来如此。
+无名男子: 别担心。
 <<jump tutorial__P00_D0_R1_ACTION_002>>
 ===
 
@@ -64,7 +104,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: 这样就够了。
+无名男子: 你会习惯的。
 <<jump tutorial__END_DAY0>>
 ===
 
@@ -4035,7 +4075,7 @@ kind: line
 round: R7
 patient: priest
 day: 1
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 感谢仁慈的父亲。
 <<jump priest__P01_D1_R7_ACTION_004>>
@@ -4046,7 +4086,7 @@ kind: line
 round: R7
 patient: priest
 day: 1
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 请让我彻底摆脱原罪。
 <<jump priest__END_DAY1>>
@@ -4079,7 +4119,7 @@ kind: line
 round: R7
 patient: priest
 day: 1
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 不要让我等待太久…
 <<jump priest__END_DAY1>>
@@ -7741,7 +7781,7 @@ kind: line
 round: R7
 patient: priest
 day: 2
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 终于。
 <<jump priest__P01_D2_R7_ACTION_004>>
@@ -7752,7 +7792,7 @@ kind: line
 round: R7
 patient: priest
 day: 2
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 等我安静以后，不要为我哀悼。
 <<jump priest__END_DAY2>>
@@ -11931,7 +11971,7 @@ kind: line
 round: R6
 patient: priest
 day: 3
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 赞美仁慈的父亲。
 <<jump priest__P01_D3_R6_ACTION_004>>
@@ -11942,7 +11982,7 @@ kind: line
 round: R6
 patient: priest
 day: 3
-portrait: JN05
+portrait: JN04
 ---
 乔纳: 罪和‘我’，终于可以一起结束。
 <<jump priest__END_DAY3>>

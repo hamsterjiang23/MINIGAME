@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-22",
+  "status": "updated-and-verified",
+  "contentVersion": "1.1.1-development",
+  "sourceFiles": 6,
+  "sourceCopiesByteIdentical": true,
+  "allDialogueRowsRead": 1440,
+  "sourceManifest": "source-manifest.json",
+  "changes": {
+    "tutorialIntroductionLines": 9,
+    "tutorialReactionLines": 2,
+    "tutorialAction": "Purify",
+    "tutorialAll12RowsActive": true,
+    "priestPortraitAlias": "JN05 -> JN04",
+    "priestAliasRows": [
+      62,
+      63,
+      67,
+      121,
+      122,
+      178,
+      179
+    ],
+    "aliasAuthorizedByUser": true,
+    "dayOneToThreeIdenticalExceptPortraitAlias": true
+  },
+  "counts": {
+    "rawRows": 1440,
+    "activeRows": 1299,
+    "excludedRows": 141,
+    "repairs": 122,
+    "meetings": 16,
+    "declaredPortraits": 21,
+    "referencedPortraits": 15
+  },
+  "sourceAdaptations": {
+    "existingDoctorAndDiplomatConflictExclusionsRetained": 141,
+    "newlyExcludedRows": 0,
+    "previousRepairExpectedFieldsRechecked": 341,
+    "allOriginalRowsRemainAudited": true,
+    "newTutorialTerminal": "J13 -> END_DAY0",
+    "sourceStoryTextNotRewritten": true
+  },
+  "nativeImport": {
+    "result": "passed",
+    "unity": "2022.3.23f1c1",
+    "sourceHash": "3d2069e63fdc1410dc26576638c11df26a12dadb085bd3b91c10f65e38b8a7f0",
+    "rulesFingerprint": "cb420723f1772f3b4ba3ee5ced3a355ad8d2d148b417b34d0822f615ea75c54b",
+    "packagePath": "Assets/MiniGame/ImportedDialogue/inspection-campaign/d406aa637edd1b342ccdcc5344988d79/Package.minigame.json",
+    "projectPath": "Assets/MiniGame/ImportedDialogue/inspection-campaign/d406aa637edd1b342ccdcc5344988d79/Runtime.yarnproject",
+    "candidateDirectory": "Assets\\MiniGame\\ImportedDialogue\\inspection-campaign\\d406aa637edd1b342ccdcc5344988d79",
+    "sourceNodes": 1092,
+    "nativeNodes": 429,
+    "declaredPortraits": 21,
+    "nativeNodesComplete": true,
+    "portraitsAvailable": true,
+    "activeResourceUpdated": true
+  },
+  "glyphs": {
+    "previousMissingCharacters": "嘿绑绳趣",
+    "missingGlyphs": 0,
+    "codepoints": 1515,
+    "glyphs": 53025,
+    "originalGlyphPixelsChanged": 0,
+    "originalGlyphMetricsChanged": 0,
+    "report": "../../Art/TerminalHtmlMatched/glyph-coverage.json"
+  },
+  "validation": {
+    "pythonPassed": 18,
+    "deterministicRegeneration": "passed",
+    "dotnetSdk": "8.0.424",
+    "lockedRestore": "passed",
+    "releaseBuild": "passed, 0 warnings, 0 errors",
+    "dotnetPassed": 343,
+    "unityEditModePassed": 22,
+    "unityPlayModeCasesPassed": 4,
+    "allTreatmentRoute": "reports/unity-treatment-route.json",
+    "normalRoute": "reports/unity-normal-route.xml",
+    "priestReleaseRoute": "reports/unity-priest-route.xml",
+    "tutorialCheckpoint": "reports/unity-tutorial.xml",
+    "review": "No actionable update defects found",
+    "isolation": "Old reused test project stopped advancing in combined/follow-up runs; remaining routes passed in a clean isolated project",
+    "nativePlayerBuildRun": false
+  },
+  "compatibility": "Active content hash changed; start a new campaign. Existing save files were not deleted.",
+  "sourceHashes": [
+    {
+      "path": "Tools/DialogueCampaign/build_campaign.py",
+      "sha256": "d856ee6d1420de5ab780a8de240fb3aae6e599cf5d7355cd10380fe9f5814885"
+    },
+    {
+      "path": "Tools/DialogueCampaign/source-repairs.json",
+      "sha256": "e73276c420a98f51cf7a6fe7c8dba1d96c5f58e248f582aae097739190c303ea"
+    },
+    {
+      "path": "Tools/DialogueCampaign/test_campaign.py",
+      "sha256": "9a36a0ca78868ff5b98ef31c51de7ff74f3ccd5db9952b074e9be098881ea310"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json",
+      "sha256": "55b76afdf3d7d083a63b4810f218222108473d53a825bf6ecc172e77af3c7260"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Content/Campaign/campaign.yarn",
+      "sha256": "e16d7ad11626d2b936fb5936a860bc0a9244686cf229c749269ee75d9f34a2cb"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Content/Campaign/provenance.json",
+      "sha256": "50f5d0b0401fbb79b60fadef22bf17629fc835d8d91e38554dbb56d1b747dc8e"
+    },
+    {
+      "path": "UnityProject/Assets/Resources/MiniGame/ActiveCampaignPackage.asset",
+      "sha256": "515529b4d0b84e7cc71856b685a421cf92f897dceadbbf9aca3f14509507872d"
+    },
+    {
+      "path": "UnityProject/Assets/PMSAmberTerminal/Art/FontAtlas/HTML_FontMetrics.json",
+      "sha256": "637243b27a8ad1e69fbdb77bb5c4d13d23c4cb25ddb4d6148ca30f173cef0d71"
+    },
+    {
+      "path": "UnityProject/Assets/PMSAmberTerminal/Art/FontAtlas/HTML_SimSun_Lucida.png",
+      "sha256": "d9238a830d2eaae3fc4890df3cbf009b5ad5b2f01a0be4e3b4ccbcf282e36631"
+    },
+    {
+      "path": "src/MiniGame.Presentation.Tests/CampaignPackageTests.cs",
+      "sha256": "28ac1e99c6cb199817e9da28a592d5b099b462c003fbcb426c6bbc90f4038326"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/NormBugPlayerProbe.cs",
+      "sha256": "3ff727bc1aa911babcd1788964d8770da2599f66781449741a8a64bb5004d292"
+    }
+  ],
+  "partialFileUpdates": [
+    {
+      "path": "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs",
+      "change": "Only the tutorial expected spoken-line count7->11 and matching message are staged; independent changes stay in the working tree.",
+      "stagedTextSha256": "1383c24ccacd0dca7f2c49a60d6cdf9170db2afb88ab57d060b549cce81198ef"
+    },
+    {
+      "path": "UnityProject/Assets/MiniGame/Tests/PlayMode/CampaignPlayModeTests.cs",
+      "change": "Only tutorial9/11 source-count assertions and matching success message are staged."
+    }
+  ]
+}
