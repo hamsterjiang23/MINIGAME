@@ -212,7 +212,6 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.TerminalType4: return "终端打字 4";
                 case MiniGameSound.DoorOpen: return "开门";
                 case MiniGameSound.DoorShut: return "关门";
-                case MiniGameSound.DoorKnock: return "敲门";
                 case MiniGameSound.PCNoise: return "电脑底噪";
                 case MiniGameSound.Projector: return "放映机";
                 case MiniGameSound.Scan: return "扫描";
@@ -229,7 +228,7 @@ namespace MiniGame.UnityHost.Editor
             switch (role)
             {
                 case MiniGameSound.LogoGlitch: return "NORM 标志每次故障闪烁开始时播放一次，与画面共用时钟；暂停及冻结预览时不重复触发。";
-                case MiniGameSound.DoorKnock: return "每天白天进入晨检后、开门前间隔重复敲门；开门或进入监督员对话即停止。暂停冻结间隔，读档按当前阶段恢复。";
+                case MiniGameSound.DoorKnock: return "晨检等待开门时完整播放敲门录音，片段结束后间隔0.5秒；开门或进入监督员对话即停止。暂停冻结播放与间隔，读档按当前阶段恢复。";
                 case MiniGameSound.StartMenu: return "Day0 NORM 开始界面循环播放，点击开始后与房间音乐交叉淡化。";
                 case MiniGameSound.Gameplay: return "房间内昼夜共用的循环音乐，与梦境及开场音乐交叉淡化。";
                 case MiniGameSound.Dream0: return "正式流程 Day1 鲸尸海滩投影期间播放。";
@@ -243,7 +242,6 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.TerminalPowerOff: return "当天全部会谈完成后，关闭会话并熄屏时播放一次。";
                 case MiniGameSound.DoorOpen: return "门开始打开时播放一次；锁门拒绝操作或读档定位不播放。";
                 case MiniGameSound.DoorShut: return "门开始关闭时播放一次；暂停恢复不会重复播放。";
-                case MiniGameSound.DoorKnock: return "晨检等待开门时整段循环，片段结束后间隔0.5秒；开门停止。";
                 case MiniGameSound.TerminalType1:
                 case MiniGameSound.TerminalType2:
                 case MiniGameSound.TerminalType3:
