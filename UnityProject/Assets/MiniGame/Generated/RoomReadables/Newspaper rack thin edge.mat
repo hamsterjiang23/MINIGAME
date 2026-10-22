@@ -43,6 +43,7 @@ Material:
     m_Floats:
     - _AlbedoContrast: 1
     - _AlbedoGain: 1
+    - _ReadableFill: 0.025
     - _BumpScale: 1
     - _CrtPower: 1
     - _Cull: 0
@@ -54,8 +55,8 @@ Material:
     - _LightingBandsStrength: 1
     - _LightingDither: 0
     - _LiveDisplay: 0
-    - _Metallic: 0.2
+    - _Metallic: 0.05
     m_Colors:
-    - _Color: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+    - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

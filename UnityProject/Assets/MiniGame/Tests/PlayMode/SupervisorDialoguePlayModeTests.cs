@@ -69,6 +69,13 @@ namespace MiniGame.UnityHost.Tests
             var expected = data.conversations.SelectMany(day => day.lines).ToArray();
             var seen = new List<string>();
             var portraits = new HashSet<string>();
+            var scanDays = new List<int>();
+            host.Audio.Service.SoundPlayed += (channel, sound) =>
+            {
+                if (sound != MiniGameSound.Scan) return;
+                Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
+                scanDays.Add(runtime.GetView().Game.Day);
+            };
             var actorPosition = supervisor.Surface.transform.position;
             foreach (int day in new[] { 1, 2, 3, 4 })
             {
@@ -87,6 +94,9 @@ namespace MiniGame.UnityHost.Tests
                         Assert.That(host.Screen.GetComponentsInChildren<UnityEngine.UI.Text>(true).Single(text => text.name == "DialogueBody").text, Is.EqualTo(line.text));
                         Assert.That(Vector3.Distance(supervisor.Surface.transform.position, actorPosition), Is.LessThan(.001f));
                         seen.Add(source); portraits.Add(line.portraitId);
+                        Assert.That(scanDays.Count, Is.EqualTo(expected.Take(seen.Count)
+                            .Where(item => item.portraitId == "JD_04").Select(item => item.day).Distinct().Count()),
+                            "Only the first JD_04 line of each day may play Scan.");
                         if (day == 4 && seen.Count == 40 || day == 1 && (line.portraitId == "JD_04" || line.id.EndsWith("_015")))
                             yield return PrototypePlayModeTests.CaptureIfRequested(host, day == 4 ? "supervisor-red-ending"
                                 : line.portraitId == "JD_05" ? "supervisor-green-check" : "supervisor-instrument");
@@ -98,9 +108,34 @@ namespace MiniGame.UnityHost.Tests
                 if (day < 4) { bridge.enabled = false; AdvanceNight(); bridge.enabled = true; bridge.PresentCurrent(); }
             }
             Assert.That(seen.Count, Is.EqualTo(46));
+            Assert.That(scanDays, Is.EqualTo(new[] { 1, 2, 3 }));
             Assert.That(portraits, Is.EquivalentTo(Enumerable.Range(1, 6).Select(index => "JD_" + index.ToString("00"))));
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.TakenAway));
             Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_06"));
+        }
+
+        [UnityTest, Timeout(25000)]
+        public IEnumerator LoadingTheScanPortraitDoesNotReplayTheSameDaysScan()
+        {
+            int scans = 0;
+            host.Audio.Service.SoundPlayed += (channel, sound) => { if (sound == MiniGameSound.Scan) scans++; };
+            Assert.That(host.Player.ViewCamera.GetComponent<DoorViewCamera>().TryEnter(), Is.True);
+            yield return Reach("supervisor__P02_D1_R1_COMMON_014");
+            Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
+            Assert.That(scans, Is.EqualTo(1));
+            var session = MiniGameSessionHost.Install(runtime, rules, content, host.DreamProfile);
+            string path = Path.Combine(Application.temporaryCachePath, "supervisor-scan-" + Guid.NewGuid().ToString("N") + ".json");
+            try
+            {
+                session.SaveTo(path);
+                Assert.That(File.Exists(path), Is.True, session.LastMessage);
+                Assert.That(session.SupervisorScanDays, Is.EqualTo(new[] { 1 }));
+                session.LoadFrom(path);
+                runtime = session.Runtime;
+                yield return Reach("supervisor__P02_D1_R1_COMMON_014", false);
+                Assert.That(scans, Is.EqualTo(1), "Restoring JD_04 must preserve today's Scan deduplication.");
+            }
+            finally { if (File.Exists(path)) File.Delete(path); }
         }
 
         [UnityTest, Timeout(25000)]
@@ -175,6 +210,7 @@ namespace MiniGame.UnityHost.Tests
 
         private void Bind()
         {
+            host.Audio.Bind(runtime);
             host.Screen.Bind(runtime); host.Screen.UseYarnPresentation(); host.Screen.SetTransitionLocked(false);
             host.Player.Bind(runtime, host.Screen);
             var door = Object.FindObjectOfType<HingedDoor>(); door.Bind(runtime);

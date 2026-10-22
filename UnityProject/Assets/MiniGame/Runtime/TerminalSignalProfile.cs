@@ -43,6 +43,17 @@ namespace MiniGame.UnityHost
         private static float Limit(float value, float min, float max) =>
             float.IsNaN(value) || float.IsInfinity(value) ? min : Mathf.Clamp(value, min, max);
 
+        // Matches the logo burst window in TerminalSignalDistortion.shader.
+        public int LogoBurstIndex(float clock)
+        {
+            if (!Enabled || Intensity <= 0) return -1;
+            float frequency = Mathf.Max(.1f, BurstFrequency);
+            float eventTime = Mathf.Max(0, clock) * frequency - .37f;
+            if (eventTime < 0) return -1;
+            float duty = Mathf.Min(.8f, Mathf.Max(.001f, BurstDuration * frequency));
+            return eventTime - Mathf.Floor(eventTime) < duty ? Mathf.FloorToInt(eventTime) : -1;
+        }
+
         public void Apply(Material material, float clock, bool logo)
         {
             material.SetFloat("_Clock", clock);

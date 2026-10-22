@@ -5,6 +5,7 @@ using System.Text;
 using MiniGame.Presentation.Authoring;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
+using UnityEditor.Build;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -151,6 +152,20 @@ namespace MiniGame.UnityHost.Editor
             Debug.Log("MINIGAME_CAMPAIGN_BUILD_PASSED " + destination);
         }
 
+        [MenuItem("MiniGame/Campaign/Validate portrait catalog")]
+        public static void ValidatePortraits()
+        {
+            var catalog = AssetDatabase.LoadAssetAtPath<PortraitCatalog>(PortraitPath);
+            if (catalog == null) throw new BuildFailedException("Missing portrait catalog: " + PortraitPath);
+            var required = new[] { PackagePath, DialoguePackageImporter.DefaultPackagePath }
+                .SelectMany(path => DialoguePackageCompiler.Compile(File.ReadAllText(path, Encoding.UTF8)).Package.Portraits)
+                .Select(portrait => portrait.Id).Distinct(StringComparer.Ordinal);
+            var missing = required.Where(id => catalog.Find(id) == null).ToArray();
+            if (missing.Length > 0)
+                throw new BuildFailedException("Missing portrait sprites: " + string.Join(", ", missing)
+                    + ". Check PNG .meta GUIDs and Sprite import settings, then import the campaign again.");
+        }
+
         private static void EnsureFolder(string path)
         {
             if (AssetDatabase.IsValidFolder(path)) return;
@@ -178,5 +193,11 @@ namespace MiniGame.UnityHost.Editor
             public ulong sizeBytes;
             public double seconds;
         }
+    }
+
+    internal sealed class CampaignPortraitBuildValidator : IPreprocessBuildWithReport
+    {
+        public int callbackOrder => 0;
+        public void OnPreprocessBuild(BuildReport report) => CampaignBuilder.ValidatePortraits();
     }
 }

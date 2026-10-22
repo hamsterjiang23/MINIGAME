@@ -10,6 +10,12 @@ namespace MiniGame.UnityHost
     public sealed class MiniGameAudioDirector : MonoBehaviour
     {
         [SerializeField] private MiniGameAudioProfile profile;
+        [SerializeField, Min(.2f), InspectorName("监督员敲门间隔（秒）")]
+        private float supervisorKnockInterval = .3f;
+        public float SupervisorKnockInterval => float.IsNaN(supervisorKnockInterval) || float.IsInfinity(supervisorKnockInterval)
+            ? .3f : Mathf.Max(.2f, supervisorKnockInterval);
+        private bool waitingForSupervisor;
+        private float knockDelay;
         private MiniGameAudioService service;
         private GameRuntime runtime;
         private RuntimeView previous;
@@ -21,6 +27,7 @@ namespace MiniGame.UnityHost
         private int dreamDay;
         private DreamSequenceProfile dreamProfile;
         private readonly HashSet<string> transcriptKeys = new HashSet<string>();
+        private readonly HashSet<int> supervisorScanDays = new HashSet<int>();
         private readonly List<HingedDoor> doors = new List<HingedDoor>();
         public MiniGameAudioService Service => service;
         public MiniGameAudioProfile Profile => profile;
@@ -29,8 +36,12 @@ namespace MiniGame.UnityHost
         {
             UnsubscribeDoors();
             if (runtime != null) runtime.Changed -= Present;
+            if (runtime != game) supervisorScanDays.Clear();
             runtime = game;
-            menuMusic = false;
+            waitingForSupervisor = false;
+            knockDelay = 0;
+            menuMusic = game.GetView().Game.Day == 0 && game.GetView().TerminalBootRequired
+                && game.GetView().Cue?.Kind == PresentationKind.EnterTerminal;
             dreamPlayback = false;
             service = GetComponent<MiniGameAudioService>();
             if (profile == null) profile = Resources.Load<MiniGameAudioProfile>("MiniGame/AudioDefault");
@@ -95,6 +106,26 @@ namespace MiniGame.UnityHost
             }
         }
 
+        private void Update()
+        {
+            if (!waitingForSupervisor || runtime == null || service == null || runtime.GetView().Paused) return;
+            knockDelay -= Time.unscaledDeltaTime;
+            if (knockDelay > 0) return;
+            service.PlayOneShot(MiniGameAudioChannel.DoorKnock, MiniGameSound.DoorKnock);
+            knockDelay = SupervisorKnockInterval;
+        }
+
+        private void SynchronizeSupervisorKnocking(RuntimeView view)
+        {
+            bool waiting = !menuMusic && view.Game.Phase == GamePhase.MorningInspection
+                && !view.RoomDoorOpen && view.Cue == null;
+            if (waiting != waitingForSupervisor) knockDelay = 0;
+            waitingForSupervisor = waiting;
+            if (!waiting) service.Stop(MiniGameAudioChannel.DoorKnock);
+            else if (view.Paused) service.Pause(MiniGameAudioChannel.DoorKnock);
+            else service.Resume(MiniGameAudioChannel.DoorKnock);
+        }
+
         private void LateUpdate()
         {
             if (profile == null || runtime == null) return;
@@ -124,26 +155,23 @@ namespace MiniGame.UnityHost
         {
             var before = previous;
             previous = view;
-            menuMusic = false;
             SynchronizeLoops(view);
             if (view.Paused)
             {
                 service.Pause(MiniGameAudioChannel.TerminalPower);
                 service.Pause(MiniGameAudioChannel.Door);
                 service.Stop(MiniGameAudioChannel.TerminalTyping);
+                service.Pause(MiniGameAudioChannel.LogoGlitch);
             }
             else
             {
                 service.Resume(MiniGameAudioChannel.TerminalPower);
                 service.Resume(MiniGameAudioChannel.Door);
+                service.Resume(MiniGameAudioChannel.LogoGlitch);
             }
             bool reviewing = view.TerminalOpen && view.TerminalPage == TerminalPage.Review;
             if (before != null && !view.Paused)
             {
-                bool beganMorningScan = view.Cue?.Kind == PresentationKind.MorningInspection
-                    && before.Cue?.Token != view.Cue.Token;
-                if (beganMorningScan)
-                    service.PlayOneShot(MiniGameAudioChannel.Scanner, MiniGameSound.Scan);
                 if (reviewing && view.Game.EncounterStage == EncounterStage.AwaitingDisposition
                     && (before.Game.EncounterStage != EncounterStage.AwaitingDisposition
                         || before.Game.CurrentEncounterId != view.Game.CurrentEncounterId))
@@ -159,18 +187,21 @@ namespace MiniGame.UnityHost
         private void SynchronizeLoops(RuntimeView view)
         {
             if (profile == null) return;
+            SynchronizeSupervisorKnocking(view);
             bool dream = view.Game.Phase == GamePhase.Dream;
             bool ending = view.Game.Phase == GamePhase.Ending;
             bool projecting = dream && (!runtime.UsesDreamFlow || dreamPlayback);
             float fade = profile.FadeSeconds;
-            service.SetLoop(MiniGameAudioChannel.MenuMusic, null, fade);
-            service.SetLoop(MiniGameAudioChannel.GameplayMusic, dream || ending ? (MiniGameSound?)null : MiniGameSound.Gameplay, fade);
+            service.SetLoop(MiniGameAudioChannel.MenuMusic, menuMusic ? MiniGameSound.StartMenu : (MiniGameSound?)null, fade);
+            service.SetLoop(MiniGameAudioChannel.GameplayMusic, menuMusic || dream || ending ? (MiniGameSound?)null : MiniGameSound.Gameplay, fade);
             MiniGameSound? music = !projecting ? null : runtime.UsesDreamFlow
                 ? dreamProfile != null ? dreamProfile.GetDay(dreamDay)?.Music : DreamSound(dreamDay - 1)
                 : DreamSound(view.Game.Day);
             service.SetLoop(MiniGameAudioChannel.DreamMusic, music, fade);
-            service.SetLoop(MiniGameAudioChannel.ComputerNoise, view.TerminalPowered && !dream && !ending ? MiniGameSound.PCNoise : (MiniGameSound?)null, fade);
-            service.SetLoop(MiniGameAudioChannel.Projector, projecting ? MiniGameSound.Projector : (MiniGameSound?)null, fade);
+            service.SetLoop(MiniGameAudioChannel.ComputerNoise, view.TerminalPowered && !menuMusic && !dream && !ending ? MiniGameSound.PCNoise : (MiniGameSound?)null, fade);
+            if (projecting)
+                service.SetLoopWithIntro(MiniGameAudioChannel.Projector, MiniGameSound.ProjectorOpen, MiniGameSound.Projector, fade);
+            else service.Stop(MiniGameAudioChannel.Projector, fade);
             if (runtime.UsesDreamFlow) SetDreamPaused(view.Paused);
         }
 
@@ -185,19 +216,51 @@ namespace MiniGame.UnityHost
             }
         }
 
-        // For a future menu host; Combined currently starts directly in the room.
+        // The Day0 NORM opening owns this override until its first click.
         public void PlayMenuMusic()
         {
             if (!isActiveAndEnabled || service == null || profile == null) return;
-            service.StopAll();
             menuMusic = true;
-            service.SetLoop(MiniGameAudioChannel.MenuMusic, MiniGameSound.StartMenu, profile.FadeSeconds);
+            SynchronizeLoops(runtime.GetView());
+        }
+
+        public void EndMenuMusic()
+        {
+            menuMusic = false;
+            if (isActiveAndEnabled && service != null && runtime != null) SynchronizeLoops(runtime.GetView());
         }
 
         public void PlayWorldInteraction()
         {
             if (isActiveAndEnabled && runtime != null && !runtime.GetView().Paused)
                 service.PlayOneShot(MiniGameAudioChannel.World, MiniGameSound.WorldInteraction);
+        }
+
+        public void PresentSupervisorPortrait(GameRuntime game, string portraitId)
+        {
+            if (!isActiveAndEnabled || runtime == null || runtime != game || service == null || portraitId != "JD_04") return;
+            var view = runtime.GetView();
+            if (view.Paused || (view.Cue?.Kind != PresentationKind.MorningInspection && view.Cue?.Kind != PresentationKind.Briefing)
+                || supervisorScanDays.Contains(view.Game.Day)) return;
+            if (service.PlayOneShot(MiniGameAudioChannel.Scanner, MiniGameSound.Scan))
+                supervisorScanDays.Add(view.Game.Day);
+        }
+
+        public int[] CaptureSupervisorScanDays(GameRuntime game)
+        {
+            if (runtime != game) return System.Array.Empty<int>();
+            var days = new int[supervisorScanDays.Count];
+            supervisorScanDays.CopyTo(days);
+            System.Array.Sort(days);
+            return days;
+        }
+
+        public void RestoreSupervisorScanDays(int[] days)
+        {
+            supervisorScanDays.Clear();
+            if (runtime == null || days == null) return;
+            int currentDay = runtime.GetView().Game.Day;
+            foreach (int day in days) if (day >= 0 && day <= currentDay) supervisorScanDays.Add(day);
         }
 
         public void PlayUIInteraction()
@@ -212,6 +275,13 @@ namespace MiniGame.UnityHost
         }
 
         public void PlayTerminalPowerOn() => PlayTerminalPower(MiniGameSound.TerminalPowerOn);
+        public void PlayLogoGlitch()
+        {
+            if (isActiveAndEnabled && runtime != null && !runtime.GetView().Paused)
+                service?.PlayOneShot(MiniGameAudioChannel.LogoGlitch, MiniGameSound.LogoGlitch);
+        }
+
+        public void StopLogoGlitch() => service?.Stop(MiniGameAudioChannel.LogoGlitch);
         public void PlayTerminalPowerOff() => PlayTerminalPower(MiniGameSound.TerminalPowerOff);
 
         public void PlayTerminalTyping()

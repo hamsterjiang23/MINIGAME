@@ -228,6 +228,7 @@ namespace MiniGame.UnityHost
         public bool ConsumeOpeningClick() { bool clicked = openingClickRequested; openingClickRequested = false; return clicked; }
         public void EndDayZeroOpening()
         {
+            Audio?.StopLogoGlitch();
             DayZeroOpeningWaiting = false; openingClickRequested = false;
             terminalView?.SetOpeningLogo(false);
             terminalView?.Display.SetOpeningProgress(1);
@@ -315,8 +316,13 @@ namespace MiniGame.UnityHost
             foreach (var response in responses.Take(4))
             {
                 var id = response.Id;
+                int index = choices.Count;
                 var button = current != null && current.TerminalOpen
-                    ? terminalView.AddResponse(id, response.Text, choices.Count, () => { if (CanAdvanceDialogue()) selected(id); })
+                    ? terminalView.AddResponse(id, response.Text, index, () => { if (CanAdvanceDialogue()) selected(id); }, () =>
+                    {
+                        selectedResponse = index;
+                        terminalView.HighlightResponse(index, false);
+                    })
                     : MakeButton(choiceRoot, "Reply-" + id, response.Text, () => { if (CanAdvanceDialogue()) selected(id); });
                 if (current == null || !current.TerminalOpen)
                 {
@@ -381,7 +387,7 @@ namespace MiniGame.UnityHost
             }
             if (promptGroup != null)
             {
-                bool world = current != null && current.Input == InputContext.World && !PropNarrationBlocksWorld;
+                bool world = current != null && current.Input == InputContext.World && !transitionLocked && !PropNarrationBlocksWorld;
                 bool showPrompt = world || (current != null && current.Input == InputContext.DoorView);
                 worldHelp.gameObject.SetActive(false);
                 promptGroup.alpha = Mathf.MoveTowards(promptGroup.alpha, showPrompt ? promptTarget : 0, Time.unscaledDeltaTime * 6);
@@ -639,6 +645,7 @@ namespace MiniGame.UnityHost
                 new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
             SignalTuning = gameObject.AddComponent<TerminalSignalController>();
             SignalTuning.Initialize(canvasRoot, font, () => current != null && current.Paused);
+            SignalTuning.LogoGlitch += () => Audio?.PlayLogoGlitch();
 
             header = MakeText(canvasRoot, "ShiftHeader", "", 22, TextAnchor.MiddleLeft, new Vector2(.03f, .925f), new Vector2(.97f, .98f));
             worldHelp = MakeText(canvasRoot, "WorldInstructions", "", 19, TextAnchor.LowerLeft, new Vector2(.03f, .04f), new Vector2(.57f, .16f));

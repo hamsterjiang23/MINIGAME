@@ -11,6 +11,21 @@ namespace MiniGame.UnityHost.Tests
     public sealed class DialoguePackageImporterTests
     {
         [Test]
+        public void SharedCatalogResolvesEveryCampaignAndLegacyExpression()
+        {
+            Assert.DoesNotThrow(CampaignBuilder.ValidatePortraits);
+            var catalog = AssetDatabase.LoadAssetAtPath<PortraitCatalog>(CampaignBuilder.PortraitPath);
+            foreach (string patient in new[] { "child", "former-ruler", "battlefield-doctor", "diplomat", "priest", "tutorial" })
+            {
+                var neutral = catalog.Find(PortraitCatalog.BasePortrait(patient));
+                Assert.That(neutral, Is.Not.Null, patient);
+                Assert.That(catalog.Resolve("missing-expression", patient), Is.SameAs(neutral), patient);
+                Assert.That(catalog.Resolve(null, patient), Is.SameAs(neutral), patient);
+            }
+            Assert.That(catalog.Resolve("missing-expression", "unknown-patient"), Is.Null);
+        }
+
+        [Test]
         public void SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo()
         {
             var legacy = DialoguePackageImporter.EnsureDefaultPackage();

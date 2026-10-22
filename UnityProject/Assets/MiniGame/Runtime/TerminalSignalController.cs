@@ -30,6 +30,8 @@ namespace MiniGame.UnityHost
         public bool BlocksGameplayInput => PanelOpen || blockedFrame == Time.frameCount;
         public bool FreezePreview { get; set; }
         public event Action Opening;
+        public event Action LogoGlitch;
+        private int lastLogoBurst = -1;
         public float Clock { get; private set; }
         public static string SettingsPath => Path.Combine(Application.persistentDataPath, "terminal-signal-settings.json");
 
@@ -64,8 +66,19 @@ namespace MiniGame.UnityHost
         private void LateUpdate()
         {
             if (Profile == null) return;
-            if (!FreezePreview && !(paused?.Invoke() ?? false)) Clock += Time.unscaledDeltaTime;
+            bool advancing = !FreezePreview && !(paused?.Invoke() ?? false);
+            if (advancing) Clock += Time.unscaledDeltaTime;
             ApplySettings();
+            if (advancing)
+            {
+                int burst = Profile.Logo.LogoBurstIndex(Clock);
+                if (burst >= 0 && burst != lastLogoBurst)
+                {
+                    lastLogoBurst = burst;
+                    foreach (var effect in effects)
+                        if (effect != null && effect.IsVisibleLogo) { LogoGlitch?.Invoke(); break; }
+                }
+            }
             if (PanelOpen) { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; }
         }
 

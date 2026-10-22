@@ -22,6 +22,7 @@ namespace MiniGame.UnityHost
         public BeachEndingCheckpoint EndingCheckpoint { get; set; }
         public DreamPlaybackCheckpoint DreamCheckpoint { get; private set; }
         public SupervisorDialogueCheckpoint SupervisorCheckpoint { get; private set; }
+        public int[] SupervisorScanDays { get; private set; } = Array.Empty<int>();
         public bool PendingCombinedRestore { get; private set; }
         public bool IsTransitioning { get; private set; }
         public string SavePath => Path.Combine(Application.persistentDataPath, "campaign-dream-save.json");
@@ -43,6 +44,7 @@ namespace MiniGame.UnityHost
             host.Runtime = runtime; host.Rules = rules; host.Content = content; host.DreamProfile = profile;
             host.DreamCheckpoint = null; host.EndingCheckpoint = null;
             host.SupervisorCheckpoint = null;
+            host.SupervisorScanDays = Array.Empty<int>();
             host.PendingCombinedRestore = false;
             host.roomEndingFailed = false;
             return host;
@@ -134,6 +136,9 @@ namespace MiniGame.UnityHost
                 };
                 SupervisorCheckpoint = FindObjectOfType<MiniGameYarnBridge>()?.CaptureSupervisorCheckpoint();
                 saved.Supervisor = SupervisorCheckpoint;
+                var audio = FindObjectOfType<MiniGameBootstrap>()?.Audio;
+                if (audio != null) SupervisorScanDays = audio.CaptureSupervisorScanDays(Runtime);
+                saved.SupervisorScanDays = SupervisorScanDays;
                 var player = FindObjectOfType<ApartmentPlayer>();
                 if (player != null)
                 {
@@ -177,6 +182,7 @@ namespace MiniGame.UnityHost
                 var restored = GameRuntime.Restore(envelope.Runtime, Rules, Content);
                 Runtime = restored;
                 SupervisorCheckpoint = envelope.Supervisor;
+                SupervisorScanDays = envelope.SupervisorScanDays ?? Array.Empty<int>();
                 roomEndingFailed = false;
                 // JsonUtility materializes null nested serializable classes as default objects.
                 // Core phase, rather than the presence of a visual DTO, decides which state is meaningful.
@@ -282,6 +288,7 @@ namespace MiniGame.UnityHost
             public DreamPlaybackCheckpoint Dream;
             public BeachEndingCheckpoint Ending;
             public SupervisorDialogueCheckpoint Supervisor;
+            public int[] SupervisorScanDays;
             public bool HasRoomPose;
             public Vector3 PlayerPosition;
             public Quaternion PlayerRotation;

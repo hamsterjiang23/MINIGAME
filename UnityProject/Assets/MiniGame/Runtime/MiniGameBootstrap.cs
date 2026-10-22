@@ -134,6 +134,8 @@ namespace MiniGame.UnityHost
             if (Audio == null) Audio = gameObject.AddComponent<MiniGameAudioDirector>();
             Audio.ConfigureDreams(dreamProfile);
             Audio.Bind(runtime);
+            if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.Runtime == runtime)
+                Audio.RestoreSupervisorScanDays(MiniGameSessionHost.Current.SupervisorScanDays);
             screen.BindAudio(Audio);
             screen.Bind(runtime);
             var roomLighting = GetComponent<RoomLightingController>();

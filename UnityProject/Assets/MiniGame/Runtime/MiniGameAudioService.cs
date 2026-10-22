@@ -9,7 +9,7 @@ namespace MiniGame.UnityHost
     {
         MenuMusic = 0, GameplayMusic = 1, DreamMusic = 2, ComputerNoise = 3, Projector = 4,
         World = 5, UI = 6, Dialogue = 7, Scanner = 8, Lamp = 9, EndingMusic = 10, Ocean = 11, Voice = 12, TerminalPower = 13,
-        TerminalTyping = 14, Door = 15
+        TerminalTyping = 14, Door = 15, LogoGlitch = 16, DoorKnock = 17
     }
 
     /// <summary>Scene-owned named sources, sound-bank lookup and interruptible fades.</summary>
@@ -20,6 +20,7 @@ namespace MiniGame.UnityHost
         {
             public AudioSource Source;
             public MiniGameSound? Sound;
+            public MiniGameSound? IntroSound;
             public bool LoopRequested;
             public bool Paused;
             public float Gain, StartGain, TargetGain, Elapsed, Duration;
@@ -67,6 +68,7 @@ namespace MiniGame.UnityHost
 
             bool sameClip = state.Source.clip == entry.Clip && state.Sound == sound;
             state.Sound = sound;
+            state.IntroSound = null;
             state.LoopRequested = true;
             if (!sameClip || (!state.Source.isPlaying && !state.Paused))
             {
@@ -99,6 +101,28 @@ namespace MiniGame.UnityHost
             return true;
         }
 
+        public void SetLoopWithIntro(MiniGameAudioChannel channel, MiniGameSound intro, MiniGameSound loop, float fadeSeconds)
+        {
+            if (!isActiveAndEnabled || profile == null || !channels.TryGetValue(channel, out var state)) return;
+            if (state.LoopRequested && state.Sound == loop) return;
+            var entry = profile.GetEntry(intro);
+            if (entry?.Clip == null) { SetLoop(channel, loop, fadeSeconds); return; }
+            state.Source.Stop();
+            state.Sound = loop;
+            state.IntroSound = intro;
+            state.LoopRequested = true;
+            state.Paused = false;
+            state.Source.clip = entry.Clip;
+            state.Source.loop = false;
+            state.Source.pitch = 1;
+            state.Gain = 1;
+            Fade(state, 1, 0);
+            Route(channel, state.Source);
+            state.Source.volume = Unit(entry.Volume);
+            state.Source.Play();
+            SoundPlayed?.Invoke(channel, intro);
+        }
+
         public bool PlayTerminalTyping()
         {
             if (!isActiveAndEnabled || profile == null) return false;
@@ -114,6 +138,7 @@ namespace MiniGame.UnityHost
             if (!state.Sound.HasValue) { state.Source.Stop(); state.Paused = false; return; }
             if (!state.LoopRequested && state.TargetGain == 0 && fadeSeconds > 0) return;
             state.LoopRequested = false;
+            state.IntroSound = null;
             Fade(state, 0, fadeSeconds);
         }
 
@@ -152,6 +177,7 @@ namespace MiniGame.UnityHost
                 state.Source.clip = null;
                 state.Source.loop = false;
                 state.Sound = null;
+                state.IntroSound = null;
                 state.LoopRequested = state.Paused = false;
                 state.Gain = state.StartGain = state.TargetGain = state.Duration = 0;
             }
@@ -174,6 +200,14 @@ namespace MiniGame.UnityHost
                 if (!state.Sound.HasValue) continue;
                 if (state.LoopRequested)
                 {
+                    if (state.IntroSound.HasValue)
+                    {
+                        if (state.Paused || state.Source.isPlaying) continue;
+                        state.IntroSound = null;
+                        state.LoopRequested = false;
+                        SetLoop(pair.Key, state.Sound, 0);
+                        continue;
+                    }
                     var clip = profile.GetClip(state.Sound.Value);
                     if (clip != state.Source.clip)
                     {
@@ -219,7 +253,7 @@ namespace MiniGame.UnityHost
                 || id == MiniGameAudioChannel.DreamMusic || id == MiniGameAudioChannel.EndingMusic ? profile.MusicGroup
                 : id == MiniGameAudioChannel.ComputerNoise || id == MiniGameAudioChannel.Projector || id == MiniGameAudioChannel.Ocean ? profile.AmbienceGroup
                 : id == MiniGameAudioChannel.UI || id == MiniGameAudioChannel.Dialogue || id == MiniGameAudioChannel.Voice
-                    || id == MiniGameAudioChannel.TerminalTyping ? profile.UIGroup : profile.SfxGroup;
+                    || id == MiniGameAudioChannel.TerminalTyping || id == MiniGameAudioChannel.LogoGlitch ? profile.UIGroup : profile.SfxGroup;
         }
 
         private void ApplyVolume(string parameter, float value)

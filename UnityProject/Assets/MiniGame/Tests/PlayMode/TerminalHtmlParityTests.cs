@@ -6,6 +6,7 @@ using MiniGame.Core;
 using MiniGame.Presentation;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -14,6 +15,78 @@ namespace MiniGame.UnityHost.Tests
 {
     public sealed class TerminalHtmlParityTests
     {
+        [UnityTest]
+        public IEnumerator MissingExpressionUsesSamePatientAndNoImageUpdatesImmediately()
+        {
+            var runtime = CreateRuntime();
+            var owner = new GameObject("Portrait fallback regression");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            try
+            {
+                OpenReview(screen, runtime);
+                var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+                string patient = runtime.GetView().PresentedPatientId;
+                var expected = catalog.Find(PortraitCatalog.BasePortrait(patient));
+                Assert.That(expected, Is.Not.Null);
+                // Reproduce a stale warning left by a previous failed lookup.
+                ObjectNamed(screen, "MonitorNoImage").SetActive(true);
+                screen.SetDialogueLine("病人", "缺失表情", "portrait-regression", "missing-expression");
+                Assert.That(ObjectNamed(screen, "MonitorNoImage").activeSelf, Is.False);
+                Assert.That(screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "CurrentPortrait").sprite,
+                    Is.SameAs(expected));
+                screen.SetDialogueLine("病人", "正常表情", "portrait-regression", expected.name);
+                Assert.That(ObjectNamed(screen, "MonitorNoImage").activeSelf, Is.False);
+                yield return null;
+            }
+            finally { Object.Destroy(owner); }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator ChoiceHoverPickingAndKeyboardSelectionStayTogetherAcrossCrtModes()
+        {
+            var runtime = CreateRuntime();
+            var owner = new GameObject("Choice hover regression");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            try
+            {
+                OpenReview(screen, runtime);
+                var selected = new List<string>();
+                screen.ShowResponseButtons(Responses(), selected.Add);
+                yield return null;
+                var rows = Enumerable.Range(1, 4).Select(i => ButtonNamed(screen, "Reply-choice-" + i)).ToArray();
+                var hits = new List<RaycastResult>();
+                for (int mode = 0; mode < 3; mode++)
+                {
+                    screen.TerminalDisplay.SetMode(mode);
+                    foreach (var row in rows)
+                    {
+                        var point = screen.TerminalDisplay.ScreenPointFor((RectTransform)row.transform);
+                        var pointer = new PointerEventData(EventSystem.current) { position = point };
+                        for (int sample = -1; sample <= 1; sample++)
+                        {
+                            pointer.position = point + Vector2.up * sample * 2;
+                            hits.Clear();
+                            EventSystem.current.RaycastAll(pointer, hits);
+                            Assert.That(hits.FirstOrDefault().gameObject, Is.EqualTo(row.gameObject), "Visible row must match picking in CRT mode " + mode);
+                        }
+                        ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                        var highlighted = row.GetComponent<Image>().color;
+                        ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+                        Assert.That(row.GetComponent<Image>().color, Is.EqualTo(highlighted), "Crossing the gap must retain the last hovered choice.");
+                        Assert.That(rows.Where(other => other != row).All(other => other.GetComponent<Image>().color != highlighted), Is.True);
+                        screen.HandleTerminalKey(KeyCode.Return);
+                        Assert.That(selected.Last(), Is.EqualTo(row.name.Substring("Reply-".Length)), "Enter must confirm the highlighted choice.");
+                    }
+                }
+                screen.HandleTerminalKey(KeyCode.DownArrow);
+                screen.HandleTerminalKey(KeyCode.Return);
+                Assert.That(selected.Last(), Is.EqualTo("choice-1"), "Keyboard navigation wraps from the last hovered choice.");
+            }
+            finally { Object.Destroy(owner); }
+            yield return null;
+        }
+
         [UnityTest]
         public IEnumerator ChoiceKeysDefaultToFirstWrapAndSupportAllFourNumberShortcuts()
         {

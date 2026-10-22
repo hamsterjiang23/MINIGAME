@@ -19,12 +19,15 @@ namespace MiniGame.UnityHost.Editor
         private static readonly (MiniGameSound Id, string File, bool Streaming)[] SourceClips =
         {
             (MiniGameSound.StartMenu, "Music/StartMenu.wav", true),
+            (MiniGameSound.LogoGlitch, "SFX/LogoGlitchSound.wav", false),
+            (MiniGameSound.DoorKnock, "SFX/DoorKnockOnce.wav", false),
             (MiniGameSound.Gameplay, "Music/BGMGameplay.wav", true),
             (MiniGameSound.Dream0, "Music/Dream0.wav", true),
             (MiniGameSound.Dream1, "Music/Dream1.wav", true),
             (MiniGameSound.Dream2, "Music/Dream2.wav", true),
             (MiniGameSound.PCNoise, "SFX/PCNoise.wav", true),
-            (MiniGameSound.Projector, "SFX/Projector.wav", false),
+            (MiniGameSound.Projector, "SFX/ProjectorRunning.wav", false),
+            (MiniGameSound.ProjectorOpen, "SFX/ProjectorOpen.wav", false),
             (MiniGameSound.Scan, "SFX/Scan.wav", false),
             (MiniGameSound.LightBeep, "SFX/LightBeep.wav", false),
             (MiniGameSound.WorldInteraction, "SFX/3DSceneInteraction.wav", false),

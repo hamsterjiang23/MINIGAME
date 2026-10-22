@@ -46,6 +46,46 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(30000)]
+        public IEnumerator OpeningLogoPlaysOneSoundPerBurstAndStopsAfterOpening()
+        {
+            var controls = host.Screen.SignalTuning;
+            controls.Profile.Logo.Enabled = true;
+            controls.Profile.Logo.Intensity = 1;
+            controls.Profile.Logo.BurstFrequency = 2;
+            controls.Profile.Logo.BurstDuration = .15f;
+            int sounds = 0;
+            host.Audio.Service.SoundPlayed += (channel, sound) =>
+            {
+                if (sound != MiniGameSound.LogoGlitch) return;
+                Assert.That(channel, Is.EqualTo(MiniGameAudioChannel.LogoGlitch));
+                Assert.That(controls.Profile.Logo.LogoBurstIndex(controls.Clock), Is.GreaterThanOrEqualTo(0));
+                sounds++;
+            };
+            Assert.That(host.Audio.Profile.GetClip(MiniGameSound.LogoGlitch), Is.Not.Null);
+            yield return Until(() => sounds > 0);
+            controls.FreezePreview = true;
+            int frozenCount = sounds;
+            for (int index = 0; index < 5; index++) { controls.ApplySettings(); yield return null; }
+            yield return new WaitForSecondsRealtime(.6f);
+            Assert.That(sounds, Is.EqualTo(frozenCount), "A frozen burst must not replay its sound.");
+            controls.FreezePreview = false;
+            host.Runtime.SetPaused(true);
+            yield return new WaitForSecondsRealtime(.6f);
+            Assert.That(sounds, Is.EqualTo(frozenCount));
+            host.Runtime.SetPaused(false);
+            yield return Until(() => sounds > frozenCount);
+            int resumedCount = sounds;
+            yield return new WaitForSecondsRealtime(.52f);
+            Assert.That(sounds - resumedCount, Is.EqualTo(1), "One burst must produce one sound, not one per frame.");
+            Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
+            yield return Until(() => !host.Screen.GetComponentsInChildren<TerminalSignalEffect>(true).Any(effect => effect.LogoMode));
+            int finishedCount = sounds;
+            yield return new WaitForSecondsRealtime(.6f);
+            Assert.That(sounds, Is.EqualTo(finishedCount));
+            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.LogoGlitch).isPlaying, Is.False);
+        }
+
+        [UnityTest, Timeout(30000)]
         public IEnumerator PanelSlidersEditIndependentGroupsAndBlockOpeningInput()
         {
             var controls = host.Screen.SignalTuning;

@@ -17,6 +17,7 @@ namespace MiniGame.UnityHost
         private Dictionary<string, Sprite> lookup;
 
         public void Configure(Entry[] values) { entries = values ?? Array.Empty<Entry>(); lookup = null; }
+        private void OnValidate() => lookup = null;
         public Sprite Find(string id)
         {
             if (lookup == null)
@@ -27,6 +28,9 @@ namespace MiniGame.UnityHost
             }
             return id != null && lookup.TryGetValue(id, out var sprite) ? sprite : null;
         }
+
+        // A missing expression may fall back only to the same patient's neutral portrait.
+        public Sprite Resolve(string id, string patientId) => Find(id) ?? Find(BasePortrait(patientId));
 
         public static string BasePortrait(string patientId)
         {

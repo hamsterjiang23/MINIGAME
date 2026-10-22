@@ -64,10 +64,13 @@ namespace MiniGame.UnityHost.Editor
 
             var letterInk = Material("Family letter print", cutout, Color.white, PrintedTexture("family-letter"));
             var newspaperInk = Material("Newspaper print", cutout, Color.white, PrintedTexture("daily-newspaper"));
+            newspaperInk.SetFloat("_AlbedoGain", 1.2f);
+            newspaperInk.SetFloat("_ReadableFill", .035f);
             var noticeInk = Material("Employment notice print", cutout, Color.white, PrintedTexture("employment-notice"));
             // The rear and sides use the same alpha silhouette so transparent holes never reveal an opaque backing rectangle.
             var paperEdge = Material("Letter thin edge", cutout, new Color(.72f, .72f, .72f), letterInk.mainTexture);
-            var rackEdge = Material("Newspaper rack thin edge", cutout, new Color(.55f, .55f, .55f), newspaperInk.mainTexture, .2f);
+            var rackEdge = Material("Newspaper rack thin edge", cutout, new Color(.8f, .8f, .8f), newspaperInk.mainTexture, .05f);
+            rackEdge.SetFloat("_ReadableFill", .025f);
             var frameEdge = Material("Notice frame thin edge", cutout, new Color(.62f, .62f, .62f), noticeInk.mainTexture);
 
             var root = new GameObject(RootName + " (installing)").transform;

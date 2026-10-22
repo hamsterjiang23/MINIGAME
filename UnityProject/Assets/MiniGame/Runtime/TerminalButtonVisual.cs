@@ -7,6 +7,7 @@ namespace MiniGame.UnityHost
 {
     internal sealed class TerminalButtonVisual : MiniGameAudioButton, IPointerMoveHandler
     {
+        internal System.Action PointerSelected;
         private readonly List<Text> labels = new List<Text>();
         private readonly Dictionary<Text, Vector2> restingLabelPositions = new Dictionary<Text, Vector2>();
         private Image face;
@@ -79,6 +80,7 @@ namespace MiniGame.UnityHost
             {
                 hovered = true;
                 highlightGroup?.SetPointer(this);
+                PointerSelected?.Invoke();
             }
             Paint();
         }

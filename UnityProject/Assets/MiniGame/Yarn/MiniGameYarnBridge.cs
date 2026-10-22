@@ -260,6 +260,7 @@ namespace MiniGame.UnityHost
                 string portraitId = portrait != null ? portrait.Substring("portrait:".Length) : "JD_01";
                 if (_supervisor == null || !_supervisor.SetPortrait(portraitId))
                     throw new InvalidOperationException("Missing supervisor portrait: " + portraitId);
+                _supervisor.GetComponent<MiniGameAudioDirector>()?.PresentSupervisorPortrait(run.Runtime, portraitId);
                 if (run.Runtime.GetView().Cue?.Kind == PresentationKind.Ending) _supervisor.ShowEndingAtDoorway();
                 _supervisorCursor = new SupervisorDialogueCheckpoint {
                     revision = _supervisorContent!.revision, sourceId = sourceId,

@@ -90,8 +90,7 @@ namespace MiniGame.UnityHost
             {
                 int slot = i;
                 var row = Button(dr, "Roster-" + i, "", 22, 108 + 30 * i, 756, 27, () => { SelectRoster(slot); EnterSelected(); });
-                var pointer = row.gameObject.AddComponent<TerminalRosterPointer>();
-                pointer.Hovered = () => SelectRoster(slot);
+                ((TerminalButtonVisual)row).PointerSelected = () => SelectRoster(slot);
                 Label(row.transform, "RowNumber", (i + 1).ToString("00"), 8, 5, 28, 18, 12, Dim);
                 var name = row.transform.Find("Label").GetComponent<Text>(); Position(name.rectTransform, 42, 4, 158, 20);
                 var registration = Label(row.transform, "Registration", "", 200, 4, 270, 20, 14, Ink);
@@ -166,6 +165,14 @@ namespace MiniGame.UnityHost
                 var availability = Label(button.transform, "Availability", "锁定", 8, 5, 232, 18, 12, Dim);
                 availability.alignment = TextAnchor.UpperRight;
                 TerminalIndustrialSkin.RegisterLabel(button, availability); dispositions.Add(type, button);
+                ((TerminalButtonVisual)button).PointerSelected = () =>
+                {
+                    var active = dispositions.Values.Where(b => b.gameObject.activeInHierarchy && b.interactable).ToList();
+                    int index = active.IndexOf(button);
+                    if (index < 0) return;
+                    selectedDisposition = index;
+                    for (int slot = 0; slot < active.Count; slot++) TerminalIndustrialSkin.SetSelected(active[slot], slot == index);
+                };
             }
             Rule(rr, 530, 334, 248); Label(rr, "AnswerHeading", "应答命令", 534, 346, 240, 19, 13, Dim);
             answers = Panel(rr, "AnswerContents", Color.clear, 530, 374, 248, 158).gameObject;
@@ -289,7 +296,8 @@ namespace MiniGame.UnityHost
             returnDirectory.interactable = !locked;
             answers.SetActive(true);
             bool live = !dir && !self && !archived && !view.LeavingTerminal;
-            livePortrait.SetActive(live); silhouette.SetActive(live && (portraits == null || portraits.Find(portraitId) == null));
+            livePortrait.SetActive(live);
+            if (!live) silhouette.SetActive(false);
             cameraLabel.gameObject.SetActive(live);
             signalLostMessage.SetActive(archived);
             if (archived || view.LeavingTerminal || view.Cue?.Kind != PresentationKind.ExitTerminal) SetSignalDistortion(0);
@@ -319,22 +327,25 @@ namespace MiniGame.UnityHost
         }
         private void UpdatePortrait()
         {
-            Sprite sprite = portraits != null ? portraits.Find(portraitId) : null;
+            string patientId = current?.PresentedPatientId ?? current?.Game.CurrentPatientId;
+            Sprite sprite = portraits != null ? portraits.Resolve(portraitId, patientId) : null;
+            silhouette.SetActive(livePortrait.activeSelf && sprite == null && current?.Game.Day != 0);
             portraitPresenter.Show(sprite);
             patientMonitor.SetCloseUp(false);
-            patientMonitor.Show(current?.PresentedPatientId ?? current?.Game.CurrentPatientId, sprite, current != null && (current.Paused));
+            patientMonitor.Show(patientId, sprite, current != null && (current.Paused));
         }
         private void RestorePresentation(RuntimeView view)
         {
             var last = view.Transcript.LastOrDefault(e => !e.IsPlayer && !e.IsNarration);
-            if (last != null) { Body.text = last.Text; Speaker.text = last.Speaker; sourceNodeId = last.SourceNodeId; portraitId = last.PortraitId; }
+            if (last != null) { Body.text = last.Text; Speaker.text = last.Speaker; sourceNodeId = last.SourceNodeId; if (!string.IsNullOrEmpty(last.PortraitId)) portraitId = last.PortraitId; }
         }
         public void SetNarration(string text) { NarrationBody.text = text; NarrationBody.gameObject.SetActive(true); Position(Continue.GetComponent<RectTransform>(), 0, 119, 248, 28); }
         public void ClearNarration() { NarrationBody.gameObject.SetActive(false); Position(Continue.GetComponent<RectTransform>(), 0, 0, 248, 28); }
         public void SetPageIndicator(int page, int pages) => pageLabel.text = pages > 1 ? page + "/" + pages : "";
-        public Button AddResponse(string id, string text, int index, Action action)
+        public Button AddResponse(string id, string text, int index, Action action, Action hovered = null)
         {
             var button = Button(ChoiceRoot, "Reply-" + id, text, 0, index * 35, 248, 28, action, 14);
+            ((TerminalButtonVisual)button).PointerSelected = hovered;
             var label = button.transform.Find("Label").GetComponent<Text>(); Position(label.rectTransform, 42, 4, 200, 21);
             var clip = Panel(button.transform, "ChoiceTextViewport", Color.clear, 42, 4, 200, 21); clip.gameObject.AddComponent<RectMask2D>();
             label.transform.SetParent(clip, false); Position(label.rectTransform, 0, 0, 200, 21);
@@ -349,9 +360,9 @@ namespace MiniGame.UnityHost
                 for (int i = 0; i < stripes.Count; i++) stripes[i].anchoredPosition = new Vector2(0, -((7 + i * 11 + Mathf.FloorToInt(time * 25)) % 261));
             RenderHistory();
         }
-        public void HighlightResponse(int index)
+        public void HighlightResponse(int index, bool keyboard = true)
         {
-            TerminalHighlightGroup.ClearPointerHighlight(logical);
+            if (keyboard) TerminalHighlightGroup.ClearPointerHighlight(logical);
             footerText.text = "选择应答并确认";
             int number = 0;
             foreach (Transform child in ChoiceRoot)

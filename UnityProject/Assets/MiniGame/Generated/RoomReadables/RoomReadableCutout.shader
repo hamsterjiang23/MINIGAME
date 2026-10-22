@@ -20,6 +20,7 @@ Shader "MiniGame/Room Readable Cutout"
         _LightingBandsStrength ("Lighting Bands Strength", Range(0, 1)) = 1
         _LightingDither ("Lighting Dither", Range(0, 1)) = 0
         _AlbedoGain ("Albedo Gain", Range(0, 3)) = 1
+        _ReadableFill ("Paper Shadow Fill", Range(0, 0.2)) = 0
         _AlbedoContrast ("Albedo Contrast", Range(0, 2)) = 1
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 2
     }
@@ -43,6 +44,7 @@ Shader "MiniGame/Room Readable Cutout"
         half _CrtPower;
         half _LightingBandsEnabled, _LightingBands, _LightingBandsStrength, _LightingDither;
         half _AlbedoGain, _AlbedoContrast;
+        half _ReadableFill;
 
         struct SurfaceOutputRoom
         {
@@ -121,7 +123,8 @@ Shader "MiniGame/Room Readable Cutout"
                 output.Normal = half3(0, 0, 1);
             #endif
             output.Normal *= input.facing >= 0 ? 1 : -1;
-            output.Emission = _EmissionColor.rgb * saturate(_CrtPower);
+            // Texture-scaled shadow fill preserves printed ink and the alpha silhouette.
+            output.Emission = (_EmissionColor.rgb + output.Albedo * _ReadableFill) * saturate(_CrtPower);
             if (_LiveDisplay > .5)
             {
                 output.Albedo = 0;

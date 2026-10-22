@@ -10,6 +10,8 @@ namespace MiniGame.UnityHost
         private Material original, owned;
         private TerminalSignalController controller;
         public bool LogoMode { get; private set; }
+        public bool IsVisibleLogo => LogoMode && isActiveAndEnabled && owned != null && image != null
+            && image.isActiveAndEnabled && image.canvasRenderer.GetInheritedAlpha() > .001f;
         public Material EffectMaterial => owned;
 
         public void Initialize(TerminalSignalController owner, bool logo)

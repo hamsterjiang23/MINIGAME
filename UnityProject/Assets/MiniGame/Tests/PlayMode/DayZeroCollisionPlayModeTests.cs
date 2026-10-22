@@ -84,6 +84,9 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(host.Runtime.CompleteCue(cue.Token).Accepted, Is.True);
             }
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
+            float wakeDeadline = Time.realtimeSinceStartup + 5;
+            while (host.Screen.TransitionLocked && Time.realtimeSinceStartup < wakeDeadline) yield return null;
+            Assert.That(host.Screen.TransitionLocked, Is.False);
             Assert.That(Quaternion.Angle(host.Player.transform.rotation, headingBeforeSleep), Is.LessThan(.01f), "Day0 waking must not turn the player toward the wake anchor.");
             Assert.That(Quaternion.Angle(host.Player.ViewCamera.transform.rotation, lookBeforeSleep), Is.LessThan(.01f), "Day0 waking must preserve the camera look angle.");
             Assert.That(host.Player.ViewCamera.fieldOfView, Is.EqualTo(fovBeforeSleep));

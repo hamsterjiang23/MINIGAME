@@ -465,7 +465,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(projector.clip, Is.Null, "A disabled audio director must ignore the visual director's playback request.");
             audio.enabled = true;
             yield return Until(() => projector.isPlaying && music.isPlaying, "audio enable synchronizes active projection", 5);
-            Assert.That(projector.clip, Is.SameAs(audio.Profile.GetClip(MiniGameSound.Projector)));
+            Assert.That(projector.clip, Is.SameAs(audio.Profile.GetClip(MiniGameSound.ProjectorOpen)));
+            Assert.That(projector.loop, Is.False);
             Assert.That(music.clip, Is.SameAs(audio.Profile.GetClip(dreams.GetDay(1).Music)));
             Assert.That(projector.outputAudioMixerGroup, Is.SameAs(audio.Profile.AmbienceGroup));
             Assert.That(music.outputAudioMixerGroup, Is.SameAs(audio.Profile.MusicGroup));

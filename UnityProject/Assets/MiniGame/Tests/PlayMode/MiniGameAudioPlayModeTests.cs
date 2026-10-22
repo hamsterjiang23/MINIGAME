@@ -40,6 +40,7 @@ namespace MiniGame.UnityHost.Tests
             service.SoundPlayed += OnSound;
             played.Clear();
             yield return null;
+            played.Clear();
         }
 
         [UnityTearDown]
@@ -54,6 +55,72 @@ namespace MiniGame.UnityHost.Tests
         private void OnSound(MiniGameAudioChannel channel, MiniGameSound sound) => played.Add(sound);
 
         [UnityTest]
+        public IEnumerator SupervisorKnockCadenceUsesTheRequestedPointThreeSeconds()
+        {
+            var times = new List<float>();
+            Action<MiniGameAudioChannel, MiniGameSound> record = (channel, sound) =>
+            {
+                if (channel == MiniGameAudioChannel.DoorKnock) times.Add(Time.realtimeSinceStartup);
+            };
+            service.SoundPlayed += record;
+            try
+            {
+                float deadline = Time.realtimeSinceStartup + 3;
+                while (times.Count < 4 && Time.realtimeSinceStartup < deadline) yield return null;
+                Assert.That(times.Count, Is.GreaterThanOrEqualTo(4));
+                for (int index = 1; index < times.Count; index++)
+                    Assert.That(times[index] - times[index - 1], Is.EqualTo(.3f).Within(.08f));
+            }
+            finally { service.SoundPlayed -= record; }
+        }
+
+        [UnityTest]
+        public IEnumerator SupervisorKnocksRepeatBeforeOpeningAndPauseAndRestoreRespectTheCurrentPhase()
+        {
+            var knock = service.GetSource(MiniGameAudioChannel.DoorKnock);
+            Assert.That(profile.GetClip(MiniGameSound.DoorKnock).name, Is.EqualTo("DoorKnockOnce"));
+            yield return new WaitForSecondsRealtime(.4f);
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1));
+            Assert.That(knock.outputAudioMixerGroup, Is.EqualTo(profile.SfxGroup));
+            runtime.SetPaused(true);
+            yield return new WaitForSecondsRealtime(1.8f);
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1));
+            runtime.SetPaused(false);
+            yield return new WaitForSecondsRealtime(.4f);
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(2));
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            director.Bind(runtime);
+            yield return null;
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(3));
+            Accept(runtime.EnterDoorView());
+            Assert.That(knock.isPlaying, Is.False, "Opening the door cancels the knock immediately.");
+            Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
+            Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.MorningInspection));
+            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
+            director.Bind(runtime);
+            yield return new WaitForSecondsRealtime(1.8f);
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(3),
+                "Loading an open door or supervisor conversation must not resume knocking.");
+        }
+
+        [UnityTest]
+        public IEnumerator NextMorningStartsKnockingAgainAndDaysWithoutMorningInspectionStaySilent()
+        {
+            EnterTerminal();
+            played.Clear();
+            yield return new WaitForSecondsRealtime(.1f);
+            Assert.That(played, Has.No.Member(MiniGameSound.DoorKnock));
+            for (int guard = 0; runtime.GetView().Game.Day < 2 && guard < 700; guard++) Step();
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            Assert.That(runtime.GetView().Cue, Is.Null);
+            yield return null;
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1));
+            Accept(runtime.TryInteract(InteractionTarget.Door));
+            yield return new WaitForSecondsRealtime(1.8f);
+            Assert.That(played.Count(sound => sound == MiniGameSound.DoorKnock), Is.EqualTo(1));
+        }
+
+        [UnityTest]
         public IEnumerator SerializedCombinedSceneStartsBackgroundMusicWithoutPlayerInput()
         {
             Object.Destroy(root);
@@ -62,10 +129,63 @@ namespace MiniGame.UnityHost.Tests
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
             host.Player.enabled = false;
             Assert.That(host.Audio, Is.Not.Null);
-            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic).clip,
-                Is.EqualTo(host.Audio.Profile.GetClip(MiniGameSound.Gameplay)));
-            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.True,
+            Assert.That(host.Audio.SupervisorKnockInterval, Is.EqualTo(.3f).Within(.001f),
+                "The serialized scene value must match the requested cadence, not an old Inspector value.");
+            Assert.That(host.Audio.Profile.GetEntry(MiniGameSound.DoorKnock).Volume, Is.EqualTo(2));
+            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.MenuMusic).clip,
+                Is.EqualTo(host.Audio.Profile.GetClip(MiniGameSound.StartMenu)));
+            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.MenuMusic).isPlaying, Is.True,
                 "Serialized component Awake/OnEnable order must not leave initial music silent.");
+            Assert.That(host.Screen.RequestDayZeroOpening(), Is.True);
+            yield return null;
+            yield return new WaitForSecondsRealtime(host.Audio.Profile.FadeSeconds + .2f);
+            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.MenuMusic).isPlaying, Is.False);
+            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.True);
+        }
+
+        [UnityTest]
+        public IEnumerator OpeningMusicSurvivesPauseAndCrossfadesIntoRoom()
+        {
+            director.PlayMenuMusic();
+            yield return new WaitForSecondsRealtime(.15f);
+            var menu = service.GetSource(MiniGameAudioChannel.MenuMusic);
+            var room = service.GetSource(MiniGameAudioChannel.GameplayMusic);
+            Assert.That(menu.clip, Is.EqualTo(profile.GetClip(MiniGameSound.StartMenu)));
+            Assert.That(room.isPlaying, Is.False);
+            float position = menu.time;
+            runtime.SetPaused(true); runtime.SetPaused(false);
+            yield return new WaitForSecondsRealtime(.1f);
+            Assert.That(menu.time, Is.GreaterThan(position));
+            director.EndMenuMusic();
+            Assert.That(menu.isPlaying, Is.True, "Outgoing music remains audible during the crossfade.");
+            Assert.That(room.isPlaying, Is.True);
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(menu.isPlaying, Is.False);
+            Assert.That(room.volume, Is.GreaterThan(0));
+        }
+
+        [UnityTest]
+        public IEnumerator EveningKeepsRoomMusicWithoutRestartingThenCrossfadesIntoDream()
+        {
+            for (int guard = 0; runtime.GetView().Game.Phase != GamePhase.Evening && guard < 500; guard++) Step();
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening));
+            var room = service.GetSource(MiniGameAudioChannel.GameplayMusic);
+            Assert.That(room.isPlaying, Is.True);
+            Assert.That(room.clip, Is.EqualTo(profile.GetClip(MiniGameSound.Gameplay)));
+            float position = room.time;
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(room.time, Is.GreaterThan(position));
+            runtime.SetPaused(true); runtime.SetPaused(false);
+            yield return new WaitForSecondsRealtime(.1f);
+            Assert.That(played.Count(sound => sound == MiniGameSound.Gameplay), Is.Zero);
+            director.Bind(GameRuntime.Restore(runtime.Save(), rules, content));
+            Assert.That(room.clip, Is.EqualTo(profile.GetClip(MiniGameSound.Gameplay)));
+            director.Bind(runtime);
+            for (int guard = 0; runtime.GetView().Game.Phase != GamePhase.Dream && guard < 10; guard++) Step();
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(room.isPlaying, Is.False);
+            Assert.That(service.GetSource(MiniGameAudioChannel.DreamMusic).isPlaying, Is.True);
         }
 
         [UnityTest]
@@ -132,21 +252,39 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator ScannerOnlyPlaysForNewMorningInstrumentCuesAcrossDays()
+        public IEnumerator ScannerOnlyPlaysForPortrait04OncePerDayAcrossPauseAndRestore()
         {
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
             Assert.That(played, Has.No.Member(MiniGameSound.Scan));
             Accept(runtime.TryInteract(InteractionTarget.Door));
             Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.MorningInspection));
+            Assert.That(played, Has.No.Member(MiniGameSound.Scan), "Starting the conversation must remain silent.");
+            director.PresentSupervisorPortrait(runtime, "JD_01");
+            director.PresentSupervisorPortrait(runtime, "JD_03");
+            Assert.That(played, Has.No.Member(MiniGameSound.Scan));
+            runtime.SetPaused(true);
+            director.PresentSupervisorPortrait(runtime, "JD_04");
+            Assert.That(played, Has.No.Member(MiniGameSound.Scan));
+            runtime.SetPaused(false);
+            director.PresentSupervisorPortrait(runtime, "JD_04");
             Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1));
+            director.PresentSupervisorPortrait(runtime, "JD_04");
+            director.PresentSupervisorPortrait(runtime, "JD_01");
+            director.PresentSupervisorPortrait(runtime, "JD_04");
 
             runtime.SetPaused(true);
             runtime.SetPaused(false);
             runtime.SetPaused(false);
             Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
                 "Pause and repeated view delivery must not retrigger the current scan.");
+            var scannedDays = director.CaptureSupervisorScanDays(runtime);
             runtime = GameRuntime.Restore(runtime.Save(), rules, content);
             director.Bind(runtime);
+            director.RestoreSupervisorScanDays(scannedDays);
+            director.PresentSupervisorPortrait(runtime, "JD_04");
+            director.enabled = false;
+            director.enabled = true;
+            director.PresentSupervisorPortrait(runtime, "JD_04");
             runtime.SetPaused(true); runtime.SetPaused(false);
             Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1),
                 "Loading an in-flight morning scan must not replay its sound.");
@@ -166,6 +304,8 @@ namespace MiniGame.UnityHost.Tests
                 && runtime.GetView().Cue?.Kind == PresentationKind.MorningInspection) && guard < 700; guard++) Step();
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
             Assert.That(runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.MorningInspection));
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1));
+            director.PresentSupervisorPortrait(runtime, "JD_04");
             Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(2),
                 "The next day's instrument scan plays once after every review in the previous day stayed silent.");
             yield return null;
@@ -180,7 +320,7 @@ namespace MiniGame.UnityHost.Tests
             runtime.RecordDialogueLine(line.Speaker, line.Text, line.NodeId, "");
             runtime.RecordDialogueLine(line.Speaker, line.Text, line.NodeId, "");
             Assert.That(played.Count(sound => sound == MiniGameSound.DialoguePop), Is.EqualTo(1));
-            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1));
+            Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.Zero);
             for (int guard = 0; runtime.GetView().Game.EncounterStage != EncounterStage.AwaitingDisposition && guard < 50; guard++) Step();
             Assert.That(runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition));
             Assert.That(played.Count(sound => sound == MiniGameSound.LightBeep), Is.EqualTo(1));
@@ -198,6 +338,51 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
+        public IEnumerator ProjectorPlaysOpenOnceThenLoopsRunningAndPauseDoesNotAdvanceIntro()
+        {
+            // Exercise the service independently of the room director's loop synchronization.
+            director.enabled = false;
+            var open = AudioClip.Create("Short projector open", 22050, 1, 44100, false);
+            var running = AudioClip.Create("Short projector running", 8820, 1, 44100, false);
+            profile.GetEntry(MiniGameSound.ProjectorOpen).Clip = open;
+            profile.GetEntry(MiniGameSound.Projector).Clip = running;
+            var source = service.GetSource(MiniGameAudioChannel.Projector);
+            try
+            {
+                service.SetLoopWithIntro(MiniGameAudioChannel.Projector, MiniGameSound.ProjectorOpen, MiniGameSound.Projector, 0);
+                Assert.That(source.clip, Is.SameAs(open));
+                Assert.That(source.loop, Is.False);
+                yield return new WaitForSecondsRealtime(.1f);
+                service.Pause(MiniGameAudioChannel.Projector);
+                yield return new WaitForSecondsRealtime(.6f);
+                Assert.That(source.clip, Is.SameAs(open), "Pause must not start the running loop.");
+                service.Resume(MiniGameAudioChannel.Projector);
+                for (int i = 0; i < 20 && source.clip != running; i++)
+                {
+                    service.SetLoopWithIntro(MiniGameAudioChannel.Projector, MiniGameSound.ProjectorOpen, MiniGameSound.Projector, 0);
+                    yield return new WaitForSecondsRealtime(.05f);
+                }
+                Assert.That(source.clip, Is.SameAs(running));
+                Assert.That(source.loop, Is.True);
+                yield return new WaitForSecondsRealtime(.5f);
+                Assert.That(source.isPlaying, Is.True);
+                Assert.That(played.Count(sound => sound == MiniGameSound.ProjectorOpen), Is.EqualTo(1));
+                Assert.That(played.Count(sound => sound == MiniGameSound.Projector), Is.EqualTo(1));
+                service.Stop(MiniGameAudioChannel.Projector);
+                service.SetLoopWithIntro(MiniGameAudioChannel.Projector, MiniGameSound.ProjectorOpen, MiniGameSound.Projector, 0);
+                service.Stop(MiniGameAudioChannel.Projector);
+                yield return new WaitForSecondsRealtime(.6f);
+                Assert.That(source.isPlaying, Is.False, "Stopping during open must cancel the pending loop.");
+                Assert.That(source.clip, Is.Null);
+            }
+            finally
+            {
+                Object.Destroy(open);
+                Object.Destroy(running);
+            }
+        }
+
+        [UnityTest]
         public IEnumerator DreamUsesDayMusicAndProjectorUntilDreamEnds()
         {
             for (int guard = 0; runtime.GetView().Game.Phase != GamePhase.Dream && guard < 500; guard++) Step();
@@ -206,16 +391,21 @@ namespace MiniGame.UnityHost.Tests
             yield return new WaitForSecondsRealtime(.15f);
             Assert.That(service.GetSource(MiniGameAudioChannel.DreamMusic).clip, Is.EqualTo(profile.GetClip(MiniGameSound.Dream1)));
             Assert.That(service.GetSource(MiniGameAudioChannel.Projector).isPlaying, Is.True);
-            Assert.That(service.GetSource(MiniGameAudioChannel.Projector).loop, Is.True);
+            Assert.That(service.GetSource(MiniGameAudioChannel.Projector).clip, Is.EqualTo(profile.GetClip(MiniGameSound.ProjectorOpen)));
+            Assert.That(service.GetSource(MiniGameAudioChannel.Projector).loop, Is.False);
             Assert.That(service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.False);
             Assert.That(service.GetSource(MiniGameAudioChannel.ComputerNoise).isPlaying, Is.False);
             director.Bind(GameRuntime.Restore(runtime.Save(), rules, content));
-            Assert.That(service.GetSource(MiniGameAudioChannel.Projector).clip, Is.EqualTo(profile.GetClip(MiniGameSound.Projector)));
+            Assert.That(service.GetSource(MiniGameAudioChannel.Projector).clip, Is.EqualTo(profile.GetClip(MiniGameSound.ProjectorOpen)));
             director.Bind(runtime);
             Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
             yield return new WaitForSecondsRealtime(.15f);
             Assert.That(service.GetSource(MiniGameAudioChannel.Projector).isPlaying, Is.False);
             Assert.That(service.GetSource(MiniGameAudioChannel.DreamMusic).isPlaying, Is.False);
+            Assert.That(service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.True);
+            for (int guard = 0; runtime.GetView().Game.Day == 1 && guard < 10; guard++) Step();
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
+            yield return new WaitForSecondsRealtime(.15f);
             Assert.That(service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.True);
         }
 

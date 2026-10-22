@@ -71,17 +71,26 @@ namespace MiniGame.UnityHost.Tests
             yield return Capture(host, "bedtime-particles-later");
 
             yield return StageAt(host, InteractionTarget.Bed);
+            var standingRotation = host.Player.ViewCamera.transform.rotation;
             Assert.That(host.Player.InteractFocused(), Is.True, "The physical bed ray must remain usable in the darkness.");
             Assert.That(host.Runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Sleep));
             bool dreamObserved = false;
             Action<RuntimeView> observe = view => dreamObserved |= view.Cue?.Kind == PresentationKind.Dream;
             host.Runtime.Changed += observe;
-            yield return new WaitForSecondsRealtime(.2f);
+            yield return new WaitForSecondsRealtime(1.3f);
+            Assert.That(Vector3.Dot(host.Player.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f),
+                "Sleeping must finish the visible look toward the ceiling before the day advances.");
             Assert.That(host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade").color.a,
                 Is.GreaterThan(0), "The single Day0 sleep plays its actual fade.");
             Assert.That(host.Runtime.GetView().Game.Day, Is.Zero, "The day advances after the sleep fade.");
             Assert.That(guidance.Isolation, Is.GreaterThan(.999f), "Sleep must not bring ordinary room lights back.");
             yield return Until(host, () => host.Runtime.GetView().Game.Day == 1, "one sleep completes Day0");
+            Assert.That(host.Screen.TransitionLocked, Is.True, "Waking must retain input ownership after the core advances the day.");
+            host.Player.RefreshInteractionFocus();
+            Assert.That(host.Player.FocusedInteraction, Is.Null);
+            yield return Until(host, () => !host.Effects.SleepCameraActive && !host.Screen.TransitionLocked,
+                "waking returns the standing view before releasing controls");
+            Assert.That(Quaternion.Angle(host.Player.ViewCamera.transform.rotation, standingRotation), Is.LessThan(.05f));
             host.Runtime.Changed -= observe;
             Assert.That(dreamObserved, Is.False, "Day0 has no dream video or second bed interaction.");
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));

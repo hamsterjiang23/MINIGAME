@@ -84,6 +84,13 @@ namespace MiniGame.UnityHost
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) { ClearFocus(); return; }
             var current = runtime.GetView();
             UpdateDreamTraversal(current);
+            if (screen != null && screen.TransitionLocked)
+            {
+                ClearFocus();
+                Cursor.visible = current.Paused;
+                Cursor.lockState = current.Paused ? CursorLockMode.None : CursorLockMode.Locked;
+                return;
+            }
             if (dreamDirector != null && dreamDirector.OwnsCamera)
             {
                 ClearFocus();
@@ -153,6 +160,7 @@ namespace MiniGame.UnityHost
         public void RefreshInteractionFocus()
         {
             if (runtime == null || runtime.GetView().Input != InputContext.World
+                || (screen != null && screen.TransitionLocked)
                 || (screen != null && screen.PresentationToolsBlockInput)
                 || (screen != null && screen.PropNarrationBlocksWorld)
                 || (dreamDirector != null && dreamDirector.OwnsCamera)) { ClearFocus(); return; }
