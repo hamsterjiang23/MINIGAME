@@ -404,7 +404,7 @@ namespace MiniGame.UnityHost
 
         private void BuildInterface()
         {
-            font = Font.CreateDynamicFontFromOSFont(new[] { "SimSun", "Noto Serif CJK SC", "Microsoft YaHei", "SimHei", "PingFang SC", "Arial" }, 26);
+            font = GameUiTypography.CreateFont();
             var go = new GameObject("海滩字幕与暂停", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             go.transform.SetParent(transform, false);
             canvas = go.GetComponent<Canvas>();
