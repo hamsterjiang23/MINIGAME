@@ -104,8 +104,8 @@ namespace MiniGame.UnityHost
             {
                 ClearFocus();
                 Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked;
-                if (screen != null) screen.SetWorldFocus("返回房间", true, "E");
-                if (Input.GetKeyDown(KeyCode.E)) InteractFocused();
+                if (screen != null) screen.SetInteractionCursor(InteractionCursorKind.Door, true);
+                if (Input.GetMouseButtonDown(0)) InteractPrimaryFocused();
                 return;
             }
             bool world = runtime.GetView().Input == InputContext.World;
@@ -126,8 +126,7 @@ namespace MiniGame.UnityHost
                 controller.Move((motion.normalized * walkSpeed + Vector3.up * downwardSpeed) * Time.deltaTime);
             }
             RefreshFocus();
-            if (Input.GetKeyDown(KeyCode.E)) InteractFocused();
-            else if (Input.GetMouseButtonDown(0)) InteractSecondaryFocused();
+            if (Input.GetMouseButtonDown(0)) InteractPrimaryFocused();
         }
 
         private void UpdateLook()
@@ -186,10 +185,12 @@ namespace MiniGame.UnityHost
             return CompleteWorldInteraction(result.Accepted);
         }
 
-        public bool InteractSecondaryFocused()
+        public bool InteractPrimaryFocused()
         {
+            if (runtime == null || viewCamera == null) return false;
             if (screen != null && screen.PresentationToolsBlockInput) return false;
             if (screen != null && screen.PropNarrationBlocksWorld) return false;
+            if (runtime.GetView().Input == InputContext.DoorView) return InteractFocused();
             RefreshInteractionFocus();
             if (focusedReadable != null && CanRead(runtime.GetView()) && focusedReadable.IsReadableOnDay(runtime.GetView().Game.Day))
             {
@@ -201,7 +202,7 @@ namespace MiniGame.UnityHost
                 }
                 return CompleteWorldInteraction(shown);
             }
-            return focused != null && focused.Target == InteractionTarget.Computer && InteractFocused();
+            return focused != null && InteractFocused();
         }
 
         private static bool CanRead(RuntimeView view) => view.Input == InputContext.World && !BedtimeGuidance.IsSleepOnly(view) && !view.DreamTraversal;
@@ -241,7 +242,7 @@ namespace MiniGame.UnityHost
             {
                 bool canRead = CanRead(view) && focusedReadable.IsReadableOnDay(view.Game.Day);
                 focusedReadable.Highlight(canRead);
-                if (screen != null) screen.SetWorldFocus(canRead ? focusedReadable.InteractionLabel : string.Empty, canRead, "鼠标左键");
+                if (screen != null) screen.SetInteractionCursor(InteractionCursorKind.Read, canRead);
                 return;
             }
             bool allowed = focused != null && view.AllowedInteractions.Contains(focused.Target);
@@ -250,12 +251,11 @@ namespace MiniGame.UnityHost
                 allowed = allowed && !BedtimeGuidance.IsSleepOnly(view)
                     && (view.Game.Phase == GamePhase.MorningInspection || hingedDoor != null && hingedDoor.EnableToggle);
             if (focused != null) focused.Highlight(allowed);
-            bool bedtime = BedtimeGuidance.IsSleepOnly(view);
-            bool doorLocked = focused != null && focused.Target == InteractionTarget.Door
-                && runtime.IsDoorLockedAfterSupervisor && !view.RoomDoorOpen;
-            if (screen != null) screen.SetWorldFocus(focused == null || (bedtime && !allowed) ? string.Empty
-                : bedtime ? "躺下休息" : doorLocked ? "门已锁" : hingedDoor != null ? hingedDoor.IsOpen ? "关门" : "开门" : focused.Label, allowed,
-                focused != null && focused.Target == InteractionTarget.Computer ? "E / 鼠标左键" : "E");
+            if (screen != null) screen.SetInteractionCursor(focused == null ? InteractionCursorKind.None
+                : focused.Target == InteractionTarget.Bed ? InteractionCursorKind.Sleep
+                : focused.Target == InteractionTarget.Computer ? InteractionCursorKind.Work
+                : focused.Target == InteractionTarget.Door ? InteractionCursorKind.Door
+                : InteractionCursorKind.None, allowed);
         }
 
         private void ClearFocus()
@@ -264,7 +264,7 @@ namespace MiniGame.UnityHost
             if (focusedReadable != null) focusedReadable.Highlight(false);
             focused = null;
             focusedReadable = null;
-            if (screen != null) screen.SetWorldPrompt(string.Empty);
+            if (screen != null) screen.SetInteractionCursor(InteractionCursorKind.None, false);
         }
 
         private void OnRuntimeViewChanged(RuntimeView view)

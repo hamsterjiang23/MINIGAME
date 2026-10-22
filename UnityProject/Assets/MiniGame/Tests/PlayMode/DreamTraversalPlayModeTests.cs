@@ -120,7 +120,7 @@ namespace MiniGame.UnityHost.Tests
             player.RefreshInteractionFocus();
             Assert.That(player.FocusedInteraction, Is.SameAs(computer));
             var previousPosition = player.transform.position;
-            Assert.That(player.InteractSecondaryFocused(), Is.True);
+            Assert.That(player.InteractPrimaryFocused(), Is.True);
             Assert.That(runtime.GetView().TerminalOpen, Is.True);
             Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.SelfReview));
             Assert.That(player.DreamTraversalActive, Is.False);

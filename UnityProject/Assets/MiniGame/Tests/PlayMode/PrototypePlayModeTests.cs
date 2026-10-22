@@ -31,7 +31,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EquivalentTo(new[] { InteractionTarget.Door }));
             Assert.That(Object.FindObjectsOfType<WorldInteraction>().Select(item => item.Target),
                 Is.EquivalentTo(new[] { InteractionTarget.Door, InteractionTarget.Computer, InteractionTarget.Bed }));
-            var text = host.Screen.GetComponentsInChildren<Text>(true).First(item => item.name == "ShiftHeader");
+            Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader"), Is.Null);
+            Assert.That(host.Screen.Canvas.transform.Find("InteractionCursor"), Is.Not.Null);
+            var text = host.Screen.GetComponentsInChildren<Text>(true).First(item => item.name == "DialogueBody");
             Assert.That(text.font, Is.Not.Null);
             Assert.That(text.font.HasCharacter('检'), Is.True, "A Chinese OS font must be installed for the target player.");
             yield return CaptureIfRequested(host, "world");

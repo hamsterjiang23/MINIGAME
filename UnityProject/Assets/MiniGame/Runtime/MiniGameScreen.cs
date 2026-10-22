@@ -21,12 +21,10 @@ namespace MiniGame.UnityHost
         private RectTransform canvasRoot;
         private GameObject terminal;
         private CanvasGroup terminalGroup;
-        private CanvasGroup promptGroup;
-        private Image[] promptFrameEdges = Array.Empty<Image>();
+        private InteractionCursorView interactionCursor;
         private CanvasGroup conversationGroup;
         private TerminalTransitionView handoff;
         private Text reticle;
-        private float promptTarget;
         private bool focusAllowed;
         private float terminalReveal = 1f;
         private TerminalView terminalView;
@@ -36,10 +34,8 @@ namespace MiniGame.UnityHost
         private GameObject inspectionDrawing;
         private Image fade;
         private Image glitch;
-        private Text header;
         private Text speaker;
         private Text body;
-        private Text worldPrompt;
         private Text roomCaption;
         private float roomCaptionRemaining;
         private PropNarrationView propNarration;
@@ -51,6 +47,8 @@ namespace MiniGame.UnityHost
         private Button closeInspection;
         private RectTransform choiceRoot;
         private RectTransform conversationRect;
+        private GameObject supervisorBorder;
+        private Material supervisorBorderMaterial;
         private readonly List<Button> choices = new List<Button>();
         private bool yarnBound;
         private bool dialogueInteractable = true;
@@ -142,12 +140,13 @@ namespace MiniGame.UnityHost
         }
 
         public void UseYarnPresentation() => yarnBound = true;
-        public void SetWorldPrompt(string text)
-        { if (worldPrompt != null) { worldPrompt.text = text; promptTarget = string.IsNullOrEmpty(text) ? 0 : 1; } }
-        public void SetWorldFocus(string label, bool allowed, string shortcut = "E")
+        public InteractionCursorKind InteractionCursor => interactionCursor?.Kind ?? InteractionCursorKind.None;
+        public bool InteractionCursorVisible => interactionCursor != null && interactionCursor.Visible;
+
+        public void SetInteractionCursor(InteractionCursorKind kind, bool allowed)
         {
             focusAllowed = allowed;
-            SetWorldPrompt(string.IsNullOrEmpty(label) ? string.Empty : allowed ? "[ " + shortcut + " ]   " + label : label + "  ·  暂不可用");
+            interactionCursor?.SetKind(allowed ? kind : InteractionCursorKind.None);
         }
         public void ShowRoomCaption(string text, float seconds = 4)
         {
@@ -175,7 +174,7 @@ namespace MiniGame.UnityHost
             }
             if (!propNarration.Show(prop, camera, font, current.Game.Day)) return false;
             roomCaptionRemaining = 0; roomCaption.gameObject.SetActive(false);
-            SetWorldPrompt(string.Empty);
+            SetInteractionCursor(InteractionCursorKind.None, false);
             return true;
         }
         public bool AdvancePropNarration()
@@ -319,6 +318,8 @@ namespace MiniGame.UnityHost
                     : MakeButton(choiceRoot, "Reply-" + id, response.Text, () => { if (CanAdvanceDialogue()) selected(id); });
                 if (current == null || !current.TerminalOpen)
                 {
+                    StyleConversationButton(button);
+                    button.GetComponentInChildren<Text>().fontSize = 30;
                     var element = button.gameObject.AddComponent<LayoutElement>();
                     element.preferredHeight = 64f;
                     element.minHeight = 54f;
@@ -378,15 +379,15 @@ namespace MiniGame.UnityHost
                 roomCaptionRemaining -= Time.unscaledDeltaTime;
                 if (roomCaptionRemaining <= 0) ClearRoomCaption();
             }
-            if (promptGroup != null)
+            if (interactionCursor != null)
             {
                 bool world = current != null && current.Input == InputContext.World && !PropNarrationBlocksWorld;
                 bool showPrompt = world || (current != null && current.Input == InputContext.DoorView);
                 worldHelp.gameObject.SetActive(false);
-                promptGroup.alpha = Mathf.MoveTowards(promptGroup.alpha, showPrompt ? promptTarget : 0, Time.unscaledDeltaTime * 6);
-                worldPrompt.color = focusAllowed ? Ink : TerminalView.Dim;
-                foreach (var edge in promptFrameEdges) edge.color = worldPrompt.color;
-                reticle.gameObject.SetActive(world && (!BedtimeGuidance.IsSleepOnly(current) || focusAllowed));
+                interactionCursor.SetVisible(showPrompt && !current.Paused && !PresentationToolsBlockInput);
+                reticle.color = Ink;
+                reticle.gameObject.SetActive(world && !interactionCursor.Visible
+                    && (!BedtimeGuidance.IsSleepOnly(current) || focusAllowed));
                 if (conversation.activeSelf) conversationGroup.alpha = Mathf.MoveTowards(conversationGroup.alpha, 1, Time.unscaledDeltaTime * 6);
                 else conversationGroup.alpha = 0;
             }
@@ -514,6 +515,8 @@ namespace MiniGame.UnityHost
             Font.textureRebuilt -= RefreshFontTexture;
             if (runtime != null) runtime.Changed -= Render;
             if (font != null) Destroy(font);
+            interactionCursor?.Dispose();
+            if (supervisorBorderMaterial != null) Destroy(supervisorBorderMaterial);
         }
         private void OnDisable() => ClearRoomCaption();
 
@@ -532,11 +535,7 @@ namespace MiniGame.UnityHost
             current = view;
             if (!view.Paused && (view.Input != InputContext.World || BedtimeGuidance.IsSleepOnly(view))) ClearRoomCaption();
             propNarration?.SetPaused(view.Paused);
-            header.text = "和平部 / 检定室 07     第 " + view.Game.Day + " 天     " + PhaseName(view.Game.Phase)
-                + "     净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;
-            bool bedtime = BedtimeGuidance.IsSleepOnly(view);
             bool dedicatedDream = HasDedicatedDreamPresentation(view);
-            header.gameObject.SetActive(!view.Paused && !view.TerminalOpen && !bedtime && !dedicatedDream);
             // Leaving the desk hides the fullscreen output, but a powered computer keeps rendering its UI.
             terminal.SetActive(view.TerminalOpen || view.TerminalPowered);
             terminalView.Display.SetOutputVisible(view.TerminalOpen);
@@ -545,10 +544,19 @@ namespace MiniGame.UnityHost
                 && view.Cue?.Kind != PresentationKind.DoorViewReturn
                 && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending));
             bool supervisor = IsSupervisorCue(view) && conversation.activeSelf;
-            SetRect(conversationRect, supervisor ? new Vector2(.20f, .08f) : new Vector2(.17f, .19f),
-                supervisor ? new Vector2(.80f, .38f) : new Vector2(.83f, .74f));
-            SetRect(body.rectTransform, supervisor ? new Vector2(.05f, .23f) : new Vector2(.03f, .57f),
-                supervisor ? new Vector2(.95f, .83f) : new Vector2(.97f, .86f));
+            supervisorBorder.SetActive(supervisor);
+            SetRect(conversationRect, supervisor ? new Vector2(.24f, .10f) : new Vector2(.17f, .19f),
+                supervisor ? new Vector2(.76f, .28f) : new Vector2(.83f, .74f));
+            speaker.gameObject.SetActive(!supervisor);
+            // Keep the existing advance button active for keyboard/click input, with no visible hint.
+            continueButton.GetComponentInChildren<Text>(true).color = supervisor ? Color.clear : Color.white;
+            body.fontSize = supervisor ? 42 : 38;
+            SetRect(speaker.rectTransform, new Vector2(.05f, .80f), new Vector2(.95f, .96f));
+            SetRect(body.rectTransform, supervisor ? new Vector2(.05f, .12f) : new Vector2(.05f, .57f),
+                supervisor ? new Vector2(.95f, .88f) : new Vector2(.95f, .78f));
+            SetRect(continueButton.GetComponent<RectTransform>(), supervisor ? Vector2.zero : new Vector2(.69f, .07f),
+                supervisor ? Vector2.one : new Vector2(.97f, .22f));
+            continueButton.GetComponent<Image>().color = supervisor ? Color.clear : Color.black;
             worldHelp.gameObject.SetActive(false); worldHelp.text = string.Empty;
             inspection.SetActive(view.Inspection != null);
             if (view.Inspection != null)
@@ -639,16 +647,15 @@ namespace MiniGame.UnityHost
             SignalTuning = gameObject.AddComponent<TerminalSignalController>();
             SignalTuning.Initialize(canvasRoot, font, () => current != null && current.Paused);
 
-            header = MakeText(canvasRoot, "ShiftHeader", "", 22, TextAnchor.MiddleLeft, new Vector2(.03f, .925f), new Vector2(.97f, .98f));
             worldHelp = MakeText(canvasRoot, "WorldInstructions", "", 19, TextAnchor.LowerLeft, new Vector2(.03f, .04f), new Vector2(.57f, .16f));
-            var promptFrame = MakePanel(canvasRoot, "InteractionFrame", new Color(.025f, .018f, .008f, .55f), new Vector2(.25f, .25f), new Vector2(.75f, .33f));
-            promptFrameEdges = AddNarrativeFrame(promptFrame);
-            worldPrompt = MakeText(promptFrame, "InteractionPrompt", "", 26, TextAnchor.MiddleCenter, new Vector2(.04f, .12f), new Vector2(.96f, .88f));
+            interactionCursor = new InteractionCursorView(canvasRoot, Ink);
             roomCaption = MakeText(canvasRoot, "RoomPropCaption", "", 26, TextAnchor.MiddleCenter, new Vector2(.12f, .12f), new Vector2(.88f, .21f));
             roomCaption.raycastTarget = false;
             roomCaption.gameObject.SetActive(false);
-            promptGroup = promptFrame.gameObject.AddComponent<CanvasGroup>(); promptGroup.blocksRaycasts = false; promptGroup.alpha = 0;
             reticle = MakeText(canvasRoot, "Reticle", "·", 28, TextAnchor.MiddleCenter, new Vector2(.49f, .485f), new Vector2(.51f, .515f));
+            var reticleOutline = reticle.gameObject.AddComponent<Outline>();
+            reticleOutline.effectColor = new Color(.025f, .022f, .018f, .9f);
+            reticleOutline.effectDistance = new Vector2(1, -1);
             terminal = MakePanel(canvasRoot, "Terminal", Color.black, Vector2.zero, Vector2.one).gameObject;
             terminal.GetComponent<Image>().raycastTarget = false;
             terminalGroup = terminal.AddComponent<CanvasGroup>();
@@ -662,12 +669,14 @@ namespace MiniGame.UnityHost
                 }, kind => Check(runtime.Inspect(kind)), () => Check(runtime.ConfirmSelfPurification()), SignalTuning);
             terminalView.ConfirmRequested = () => HandleTerminalKey(KeyCode.Return);
             UnityEngine.Canvas.willRenderCanvases += ReflowTerminal;
-            conversationRect = MakePanel(canvasRoot, "Conversation", new Color(.025f, .018f, .008f, .55f), new Vector2(.36f, .115f), new Vector2(.955f, .65f));
-            AddNarrativeFrame(conversationRect);
+            conversationRect = MakePanel(canvasRoot, "Conversation", Color.black, new Vector2(.36f, .115f), new Vector2(.955f, .65f));
             conversation = conversationRect.gameObject;
             conversationGroup = conversation.AddComponent<CanvasGroup>();
-            speaker = MakeText(conversationRect, "Speaker", "", 26, TextAnchor.MiddleLeft, new Vector2(.03f, .875f), new Vector2(.97f, .98f));
-            body = MakeText(conversationRect, "DialogueBody", "", 27, TextAnchor.UpperLeft, new Vector2(.03f, .57f), new Vector2(.97f, .86f));
+            speaker = MakeText(conversationRect, "Speaker", "", 30, TextAnchor.MiddleLeft, new Vector2(.05f, .80f), new Vector2(.95f, .96f));
+            body = MakeText(conversationRect, "DialogueBody", "", 38, TextAnchor.UpperLeft, new Vector2(.05f, .57f), new Vector2(.95f, .78f));
+            StyleConversationText(speaker);
+            StyleConversationText(body);
+            body.lineSpacing = 1.18f;
             choiceRoot = MakePanel(conversationRect, "Choices", Color.clear, new Vector2(.03f, .035f), new Vector2(.97f, .53f));
             choiceRoot.GetComponent<Image>().raycastTarget = false;
             var layout = choiceRoot.gameObject.AddComponent<VerticalLayoutGroup>();
@@ -675,7 +684,24 @@ namespace MiniGame.UnityHost
             layout.childControlWidth = true; layout.childControlHeight = true;
             layout.childForceExpandWidth = true; layout.childForceExpandHeight = false;
             continueButton = MakeButton(conversationRect, "Continue", "继续 [空格]", () => { });
+            StyleConversationButton(continueButton);
             SetRect(continueButton.GetComponent<RectTransform>(), new Vector2(.69f, .07f), new Vector2(.97f, .22f));
+            supervisorBorder = MakePanel(conversationRect, "SupervisorBorder",
+                new Color(Ink.r, Ink.g, Ink.b, .52f), Vector2.zero, Vector2.one).gameObject;
+            var borderImage = supervisorBorder.GetComponent<Image>();
+            borderImage.raycastTarget = false;
+            var borderShader = Resources.Load<Shader>("SoftDialogueBorder");
+            if (borderShader != null && borderShader.isSupported)
+            {
+                supervisorBorderMaterial = new Material(borderShader) { hideFlags = HideFlags.HideAndDontSave };
+                borderImage.material = supervisorBorderMaterial;
+            }
+            else
+            {
+                borderImage.enabled = false;
+                Debug.LogError("Supervisor dialogue border shader is unavailable.");
+            }
+            supervisorBorder.SetActive(false);
 
             inspection = MakePanel(canvasRoot, "InspectionModal", new Color(.043f, .031f, .012f, .995f), new Vector2(.14f, .12f), new Vector2(.86f, .86f)).gameObject;
             var ir = inspection.GetComponent<RectTransform>();
@@ -758,23 +784,23 @@ namespace MiniGame.UnityHost
             go.GetComponent<Image>().color = color;
             return rect;
         }
-        private static Image[] AddNarrativeFrame(RectTransform parent)
+        private static void StyleConversationText(Text text)
         {
-            var edges = new Image[4];
-            for (int index = 0; index < 4; index++)
-            {
-                var edge = new GameObject("NarrativeFrame" + index, typeof(RectTransform), typeof(Image));
-                edge.transform.SetParent(parent, false);
-                var rect = (RectTransform)edge.transform;
-                bool horizontal = index < 2;
-                rect.anchorMin = horizontal ? new Vector2(0, index) : new Vector2(index - 2, 0);
-                rect.anchorMax = horizontal ? new Vector2(1, index) : new Vector2(index - 2, 1);
-                rect.sizeDelta = horizontal ? new Vector2(0, 2) : new Vector2(2, 0);
-                rect.anchoredPosition = Vector2.zero;
-                var image = edge.GetComponent<Image>(); image.color = Ink; image.raycastTarget = false;
-                edges[index] = image;
-            }
-            return edges;
+            // Match the room's reading cards while keeping dialogue at a smaller size.
+            text.color = Color.white;
+            text.fontStyle = FontStyle.Bold;
+            text.resizeTextForBestFit = false;
+        }
+        private static void StyleConversationButton(Button button)
+        {
+            button.GetComponent<Image>().color = Color.black;
+            var colors = button.colors;
+            colors.normalColor = Color.white;
+            colors.highlightedColor = new Color(.8f, .8f, .8f);
+            colors.pressedColor = new Color(.6f, .6f, .6f);
+            colors.disabledColor = new Color(.4f, .4f, .4f);
+            button.colors = colors;
+            StyleConversationText(button.GetComponentInChildren<Text>());
         }
         private Text MakeText(Transform parent, string name, string value, int size, TextAnchor alignment, Vector2 minimum, Vector2 maximum)
         {

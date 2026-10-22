@@ -83,7 +83,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
             Assert.That(runtime.Save(), Is.EqualTo(committed));
             Assert.That(host.Screen.Canvas.transform.Find("Conversation").gameObject.activeInHierarchy, Is.False);
-            Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader").gameObject.activeInHierarchy, Is.False);
+            Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader"), Is.Null);
             Assert.That(monitor.IsActive, Is.False);
             int frames = monitor.RenderedFrames;
             yield return null;
@@ -121,7 +121,7 @@ namespace MiniGame.UnityHost.Tests
             {
                 yield return null;
                 Assert.That(host.Screen.Canvas.transform.Find("Conversation").gameObject.activeInHierarchy, Is.False);
-                Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader").gameObject.activeInHierarchy, Is.False);
+                Assert.That(host.Screen.Canvas.transform.Find("ShiftHeader"), Is.Null);
                 Assert.That(host.Screen.GetComponentsInChildren<Button>(false).Any(button => button.name == "Continue"), Is.False);
                 Assert.That(host.Screen.HandleTerminalKey(KeyCode.Space), Is.False);
                 Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);

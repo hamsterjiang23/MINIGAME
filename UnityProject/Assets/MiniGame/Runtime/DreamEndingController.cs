@@ -119,7 +119,7 @@ namespace MiniGame.UnityHost
                 roomEnding.AdvanceExploration(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
                     new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")), Time.unscaledDeltaTime);
             AdvanceForTests(Input.GetKey(KeyCode.W) ? 1 : 0, Time.unscaledDeltaTime);
-            if (Input.GetKeyDown(KeyCode.E)) TryLieDown();
+            if (Input.GetMouseButtonDown(0)) TryLieDown();
         }
 
         public void SetPaused(bool value)
@@ -394,7 +394,7 @@ namespace MiniGame.UnityHost
         private void RefreshInterface()
         {
             if (hint != null) hint.text = state.Phase != BeachEndingPhase.Walking ? string.Empty
-                : CanLieDown ? "E  躺下" : roomEnding != null ? "WASD 移动  ·  鼠标转头  ·  到床边按 E 躺下" : "W  走向床";
+                : CanLieDown ? "鼠标左键  躺下" : roomEnding != null ? "WASD 移动  ·  鼠标转头  ·  到床边点击左键躺下" : "W  走向床";
             if (caption == null) return;
             var lines = profile.EndingLines;
             caption.text = state.Phase == BeachEndingPhase.Drifting && !state.SubtitlesComplete

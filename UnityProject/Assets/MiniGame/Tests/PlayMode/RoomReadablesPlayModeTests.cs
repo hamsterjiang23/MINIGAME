@@ -38,12 +38,9 @@ namespace MiniGame.UnityHost.Tests
                     Assert.That(prop.GetComponentsInChildren<Collider>().Any(collider => collider.enabled && !collider.isTrigger), Is.True,
                         id + " must be physically targetable by the existing world raycast.");
                     Assert.That(host.Player.FocusedReadable, Is.EqualTo(prop), id + " must be reachable from its authored approach.");
-                    var prompt = host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "InteractionPrompt");
-                    Assert.That(prompt.text, Does.Contain("鼠标左键"));
-                    Assert.That(prompt.text, Does.Contain(prop.InteractionLabel));
+                    Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.Read));
                     string checkpoint = runtime.Save();
-                    Assert.That(host.Player.InteractFocused(), Is.False, "The E interaction must not open a readable document.");
-                    Assert.That(host.Player.InteractSecondaryFocused(), Is.True, id + " must open with the left-click interaction.");
+                    Assert.That(host.Player.InteractPrimaryFocused(), Is.True, id + " must open with the left-click interaction.");
                     if (id == "family-letter")
                         Assert.That(host.Screen.PropNarration.PageCount, Is.GreaterThan(1), "The complete family letter must remain readable across pages.");
                     yield return ReadAll(host, prop.CaptionForDay(1), id + "-black-reading");
@@ -74,14 +71,14 @@ namespace MiniGame.UnityHost.Tests
                     var newspaper = Stage(host, "daily-newspaper");
                     Assert.That(host.Player.FocusedReadable, Is.EqualTo(newspaper));
                     string checkpoint = runtime.Save();
-                    Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+                    Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
                     yield return ReadAll(host, newspaper.CaptionForDay(day), "daily-newspaper-day-" + day);
                     Assert.That(runtime.Save(), Is.EqualTo(checkpoint), "Reading the daily news must preserve the authoritative session.");
                     if (day < 3) AdvanceOneDay(runtime);
                 }
 
                 var latest = Stage(host, "daily-newspaper");
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
                 yield return new WaitForSecondsRealtime(.3f);
                 string latestPage = host.Screen.CurrentRoomCaption;
                 runtime = GameRuntime.Restore(dayOneCheckpoint, rules, content);
@@ -90,7 +87,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
                 yield return null;
                 Stage(host, "daily-newspaper");
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
                 Assert.That(host.Screen.CurrentRoomCaption, Is.Not.EqualTo(latestPage), "A restored Day1 must not reuse the cached Day3 news.");
                 yield return ReadAll(host, latest.CaptionForDay(1), null);
                 Assert.That(runtime.Save(), Is.EqualTo(dayOneCheckpoint));
@@ -110,14 +107,14 @@ namespace MiniGame.UnityHost.Tests
             var newspaper = Stage(host, "daily-newspaper");
             Assert.That(host.Player.FocusedReadable, Is.Null, "Day0 must not expose an unpublished news interaction.");
             Assert.That(newspaper.IsHighlighted, Is.False);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             Assert.That(host.Screen.ShowPropNarration(newspaper, host.Player.ViewCamera), Is.False,
                 "The screen adapter must also reject news when the current day has no issue.");
             foreach (string id in new[] { "family-letter", "employment-notice" })
             {
                 var prop = Stage(host, id);
                 Assert.That(host.Player.FocusedReadable, Is.EqualTo(prop));
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
                 yield return ReadAll(host, prop.CaptionForDay(0), null);
             }
             Assert.That(host.Runtime.Save(), Is.EqualTo(checkpoint));

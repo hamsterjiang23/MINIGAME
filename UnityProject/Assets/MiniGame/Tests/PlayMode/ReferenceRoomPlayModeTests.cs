@@ -46,7 +46,7 @@ namespace MiniGame.UnityHost.Tests
 
             PositionCameraFromSurface(host, beach, 2.05f);
             Assert.That(host.Player.FocusedReadable, Is.Null, "A poster beyond two metres must not stay focused.");
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             PositionCameraFromSurface(host, beach, 1.85f);
             Assert.That(host.Player.FocusedReadable, Is.EqualTo(beach));
             var blocker = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -58,11 +58,11 @@ namespace MiniGame.UnityHost.Tests
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedReadable, Is.Null, "The focus ray must stop at a real intervening collider.");
             Assert.That(beach.IsHighlighted, Is.False);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             Object.Destroy(blocker);
             yield return null;
             yield return StageAtPoster(host, beach);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo(beach.Caption));
             Assert.That(host.Screen.RoomCaptionVisible, Is.True);
             Assert.That(host.Runtime.Save(), Is.EqualTo(checkpoint), "Reading a poster must not change authoritative gameplay or save data.");
@@ -80,15 +80,15 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.RoomCaptionVisible, Is.True);
             yield return new WaitForSecondsRealtime(1.6f);
             Assert.That(host.Screen.RoomCaptionVisible, Is.True, "The page waits for confirmation instead of expiring.");
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False, "Reading owns input until its fade finishes.");
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "Reading owns input until its fade finishes.");
             Assert.That(host.Screen.AdvancePropNarration(), Is.True);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False, "The closing click cannot reopen the poster.");
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "The closing click cannot reopen the poster.");
             yield return new WaitForSecondsRealtime(.35f);
             yield return null;
             Assert.That(host.Screen.RoomCaptionVisible, Is.False);
 
             yield return StageAtPoster(host, instrument);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
             Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo(instrument.Caption));
             yield return Capture(host, "reference-poster-instrument");
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True,
@@ -264,7 +264,7 @@ namespace MiniGame.UnityHost.Tests
             var poster = Object.FindObjectsOfType<ReadableProp>().Single(item => item.Id == "poster-instrument");
             yield return StageAtPoster(host, poster, false);
             Assert.That(host.Player.FocusedReadable, Is.Null);
-            Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             Assert.That(poster.IsHighlighted, Is.False);
             Assert.That(host.Screen.RoomCaptionVisible, Is.False);
             Assert.That(door.TryInteract().Accepted, Is.False);

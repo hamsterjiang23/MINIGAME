@@ -9,7 +9,7 @@ namespace MiniGame.UnityHost
         [SerializeField] private string label;
         [SerializeField, InspectorName("描边物体")] private Renderer indicator;
         [SerializeField, Min(.1f), InspectorName("交互距离（米）")]
-        [Tooltip("从玩家镜头到鼠标命中的碰撞表面的最大距离；门和床不描边，但同样受此距离限制。")]
+        [Tooltip("从玩家镜头到鼠标命中的碰撞表面的最大距离；可交互时显示白色轮廓。")]
         private float interactionDistance = 3.2f;
         private InteractionFocusOutline outline;
 
@@ -34,13 +34,19 @@ namespace MiniGame.UnityHost
 
         public void Highlight(bool enabled)
         {
-            bool show = enabled && isActiveAndEnabled && target != InteractionTarget.Door && target != InteractionTarget.Bed;
+            bool show = enabled && isActiveAndEnabled;
             if (!show)
             {
                 ClearOutline();
                 return;
             }
-            if (outline == null) outline = InteractionFocusOutline.Create(indicator);
+            if (outline == null)
+            {
+                var bed = target == InteractionTarget.Bed ? FindObjectOfType<BedtimeGuidance>() : null;
+                var group = bed != null ? bed.BedRenderers : null;
+                outline = InteractionFocusOutline.Create(indicator,
+                    group != null && System.Array.IndexOf(group, indicator) >= 0 ? group : null);
+            }
         }
 
         private static float ValidDistance(float value) => float.IsNaN(value) || float.IsInfinity(value)

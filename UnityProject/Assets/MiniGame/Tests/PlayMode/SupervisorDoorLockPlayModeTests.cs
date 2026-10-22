@@ -231,10 +231,9 @@ namespace MiniGame.UnityHost.Tests
         {
             Assert.That(host.Runtime.GetView().AllowedInteractions, Has.No.Member(InteractionTarget.Door));
             StageAtDoor();
-            string prompt = host.Screen.GetComponentsInChildren<Text>(true).Single(value => value.name == "InteractionPrompt").text;
-            Assert.That(prompt, Does.Contain("门已锁"));
-            Assert.That(prompt, Does.Not.Contain("[ E ]"));
-            Assert.That(host.Player.InteractFocused(), Is.False, "The actual player E path must not bypass the global lock.");
+            Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.None));
+            Assert.That(host.Player.FocusedInteraction.IsHighlighted, Is.False);
+            Assert.That(host.Player.InteractPrimaryFocused(), Is.False, "The left-click path must not bypass the global lock.");
             Assert.That(host.Runtime.GetView().RoomDoorOpen, Is.False);
         }
 

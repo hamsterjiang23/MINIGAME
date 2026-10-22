@@ -86,7 +86,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(15000)]
-        public IEnumerator FlatAmberCommandsHaveMatchingPointerTargetsAcrossTheirWidth()
+        public IEnumerator SeparateBlackStripsKeepWhiteLetteringAndMatchingPointerTargetsAcrossTheirWidth()
         {
             view.SetVisible(true);
             yield return WaitForFade(true);
@@ -101,17 +101,31 @@ namespace MiniGame.UnityHost.Tests
                     var screen = RectTransformUtility.WorldToScreenPoint(null, row.TransformPoint(local));
                     var hit = FirstHit(screen);
                     Assert.That(hit.GetComponentInParent<PauseMenuButton>(), Is.SameAs(button),
-                        "Each amber command and its pointer target must agree across the complete row.");
+                        "Each black strip and its pointer target must agree across the complete row.");
                 }
             }
             Assert.That(column.GetComponentsInChildren<PauseMenuPerspective>(true), Is.Empty,
-                "The terminal-themed pause commands must stay flat rather than skewing text away from its hit rectangle.");
+                "The pause lettering must stay flat and aligned with its pointer target.");
             var selectedFill = view.Buttons[0].transform.Find("FocusFrame").GetComponent<Image>();
-            Assert.That(selectedFill.color, Is.EqualTo(new Color(239f / 255, 184f / 255, 63f / 255, 1)));
+            Assert.That(selectedFill.color, Is.EqualTo(Color.white));
+            Assert.That(selectedFill.sprite, Is.Not.Null);
+            Assert.That(view.Buttons[0].transform.Find("Label").GetComponent<Text>().color, Is.EqualTo(Color.white),
+                "Selection is a white outline; selected text must not become dark or invert.");
             var unselectedLabel = view.Buttons[2].transform.Find("Label").GetComponent<Text>();
-            Assert.That(unselectedLabel.color.r, Is.GreaterThan(unselectedLabel.color.g));
-            Assert.That(unselectedLabel.color.g, Is.GreaterThan(unselectedLabel.color.b),
-                "Unselected commands must use the same amber family as the terminal, without ivory or green UI text.");
+            Assert.That(unselectedLabel.color, Is.EqualTo(Color.white));
+            Assert.That(unselectedLabel.fontStyle, Is.EqualTo(FontStyle.Bold), "Reuse the room narration's bold Song lettering.");
+            foreach (var button in view.Buttons)
+            {
+                Assert.That(button.GetComponent<Image>().sprite, Is.Not.Null);
+                Assert.That(button.transform.Find("CommandNumber"), Is.Null);
+            }
+            var first = (RectTransform)view.Buttons[0].transform;
+            var next = (RectTransform)view.Buttons[1].transform;
+            float gapY = (first.anchoredPosition.y - first.rect.height + next.anchoredPosition.y) * .5f;
+            var gap = RectTransformUtility.WorldToScreenPoint(null, column.TransformPoint(new Vector2(first.rect.width * .5f, column.rect.yMax + gapY)));
+            Assert.That(FirstHit(gap), Is.SameAs(view.gameObject), "The visible gaps between black strips must block world clicks without activating a command.");
+            Assert.That(view.transform.Find("PauseColumn/PauseSessionState"), Is.Null);
+            Assert.That(view.transform.Find("PauseColumn/PauseTitleRule"), Is.Null);
             Assert.That(view.transform.Find("PauseColumn/PauseContext"), Is.Null);
             Assert.That(view.transform.Find("PauseColumn/PauseHint"), Is.Null);
             Assert.That(view.GetComponentsInChildren<Text>(false).Any(text => text.name == "PauseStatus"), Is.False);
@@ -164,7 +178,7 @@ namespace MiniGame.UnityHost.Tests
             view.ShowManual();
             var manual = view.transform.Find("PauseOperationManual");
             string text = string.Join("\n", manual.GetComponentsInChildren<Text>(true).Select(label => label.text));
-            foreach (string binding in new[] { "WASD", "鼠标左键", "E    ", "Enter", "空格", "1–4", "Esc", "F5", "F9" })
+            foreach (string binding in new[] { "WASD", "鼠标左键", "Enter", "空格", "1–4", "Esc", "F5", "F9" })
                 Assert.That(text, Does.Contain(binding));
             Assert.That(text, Does.Not.Contain("F2"));
             Assert.That(text, Does.Not.Contain("F3"));

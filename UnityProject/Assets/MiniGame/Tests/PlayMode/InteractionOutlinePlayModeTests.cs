@@ -75,14 +75,26 @@ namespace MiniGame.UnityHost.Tests
 
         [TestCase(InteractionTarget.Door)]
         [TestCase(InteractionTarget.Bed)]
-        public void DoorAndBedNeverChangeAppearance(InteractionTarget targetKind)
+        [TestCase(InteractionTarget.Computer)]
+        public void DoorBedAndComputerShowOnlyAnExteriorOutlineWhenFocused(InteractionTarget targetKind)
         {
-            interaction.Configure(targetKind, "No highlight", surface);
+            interaction.Configure(targetKind, "Focused target", surface);
             var before = Capture();
             interaction.Highlight(true);
-            Assert.That(interaction.IsHighlighted, Is.False);
-            Assert.That(Capture(), Is.EqualTo(before), "Door/bed focus must not tint or outline any pixel.");
+            Assert.That(interaction.IsHighlighted, Is.True);
+            var highlighted = Capture();
+            int white = 0;
+            for (int index = 0; index < before.Length; index++)
+            {
+                if (before[index].r > 5 || before[index].g > 5 || before[index].b > 5)
+                    Assert.That(highlighted[index], Is.EqualTo(before[index]), "Focus must preserve the original surface.");
+                else if (IsMuted(highlighted[index])) white++;
+            }
+            Assert.That(white, Is.GreaterThan(80), "Each target must show a muted exterior silhouette.");
             AssertSourceUnchanged();
+            interaction.Highlight(false);
+            Assert.That(interaction.IsHighlighted, Is.False);
+            Assert.That(Capture(), Is.EqualTo(before));
             Assert.That(camera.GetCommandBuffers(CameraEvent.BeforeForwardAlpha), Is.Empty);
         }
 
@@ -108,8 +120,34 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(poster.InteractionDistance, Is.EqualTo(.1f));
         }
 
+        [Test]
+        public void BedOutlineIncludesFrameAndBeddingWithoutDrawingTheirSharedSeam()
+        {
+            var frame = Track(GameObject.CreatePrimitive(PrimitiveType.Cube));
+            frame.layer = TestLayer;
+            frame.transform.position = subject.transform.position + new Vector3(.65f, .4f, .15f);
+            var frameSurface = frame.GetComponent<Renderer>();
+            frameSurface.sharedMaterial = originalMaterial;
+            var guidance = Track(new GameObject("Bed outline group")).AddComponent<BedtimeGuidance>();
+            guidance.Configure(camera, null, new[] { surface, frameSurface }, subject.transform.position, 1);
+            interaction.Configure(InteractionTarget.Bed, "Bed", surface);
+            var before = Capture();
+            interaction.Highlight(true);
+            var after = Capture();
+            int frameBorder = 0;
+            for (int index = 0; index < before.Length; index++)
+            {
+                if (before[index].r > 5 || before[index].g > 5 || before[index].b > 5)
+                    Assert.That(after[index], Is.EqualTo(before[index]), "The shared silhouette must preserve both parts and their seam.");
+                else if (index % target.width > 205 && IsMuted(after[index])) frameBorder++;
+            }
+            Assert.That(frameBorder, Is.GreaterThan(15), "The frame beyond the mattress must have its own exterior border.");
+            interaction.Highlight(false);
+            Assert.That(Capture(), Is.EqualTo(before));
+        }
+
         [UnityTest]
-        public IEnumerator MultiMaterialOutlineIsWhiteKeepsInteriorAndReleasesOnDisable()
+        public IEnumerator MultiMaterialOutlineIsMutedKeepsInteriorAndReleasesOnDisable()
         {
             var filter = subject.GetComponent<MeshFilter>();
             var mesh = Track(Object.Instantiate(filter.sharedMesh));
@@ -134,9 +172,9 @@ namespace MiniGame.UnityHost.Tests
             {
                 if (before[index].r > 5 || before[index].g > 5 || before[index].b > 5)
                     Assert.That(highlighted[index], Is.EqualTo(before[index]), "Focus must preserve the material inside the silhouette.");
-                else if (highlighted[index].r > 245 && highlighted[index].g > 245 && highlighted[index].b > 245) white++;
+                else if (IsMuted(highlighted[index])) white++;
             }
-            Assert.That(white, Is.GreaterThan(80), "The GPU must render a visible white exterior border.");
+            Assert.That(white, Is.GreaterThan(80), "The GPU must render a visible muted exterior border.");
             AssertSourceUnchanged();
             Assert.That(camera.GetCommandBuffers(CameraEvent.BeforeForwardAlpha).Length, Is.EqualTo(1));
             interaction.enabled = false;
@@ -172,7 +210,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator CoarseRetroKeepsWhiteOutlineContinuousAcrossPixelGridOffsetsAndBypasses()
+        public IEnumerator CoarseRetroKeepsMutedOutlineContinuousAcrossPixelGridOffsetsAndBypasses()
         {
             interaction.Highlight(true);
             var nativeOutline = Capture();
@@ -187,7 +225,7 @@ namespace MiniGame.UnityHost.Tests
                 interaction.Highlight(false);
                 var baseline = Capture();
                 interaction.Highlight(true);
-                AssertWhitePerimeter(baseline, Capture(), "Computer offset " + offset);
+                AssertPerimeter(baseline, Capture(), "Computer offset " + offset);
             }
             subject.transform.position = origin;
             Assert.That(JsonUtility.ToJson(effect.Profile), Is.EqualTo(settings), "Outline adaptation must not modify the designer's profile.");
@@ -224,7 +262,7 @@ namespace MiniGame.UnityHost.Tests
                 poster.Highlight(false);
                 var baseline = Capture();
                 poster.Highlight(true);
-                AssertWhitePerimeter(baseline, Capture(), "Poster offset " + offset);
+                AssertPerimeter(baseline, Capture(), "Poster offset " + offset, true);
             }
             subject.transform.position = origin;
             effect.PreviewOriginal = true;
@@ -263,6 +301,60 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(properties.GetFloat("_UnrelatedProperty"), Is.EqualTo(19));
         }
 
+        [Test]
+        public void EnclosedRailingsHaveNoInnerBorderButOpenConcavitiesKeepTheirContour()
+        {
+            var vertices = new List<Vector3>();
+            var triangles = new List<int>();
+            void Strip(float left, float bottom, float right, float top)
+            {
+                int start = vertices.Count;
+                vertices.Add(new Vector3(left, bottom, 0)); vertices.Add(new Vector3(right, bottom, 0));
+                vertices.Add(new Vector3(right, top, 0)); vertices.Add(new Vector3(left, top, 0));
+                triangles.AddRange(new[] { start, start + 2, start + 1, start, start + 3, start + 2 });
+            }
+            Strip(-.8f, .65f, .8f, .8f);
+            Strip(-.8f, -.8f, -.65f, .65f);
+            Strip(.65f, -.8f, .8f, .65f);
+            Strip(-.04f, -.8f, .04f, .65f);
+            Strip(-.8f, -.8f, .8f, -.65f);
+            var mesh = Track(new Mesh());
+            mesh.SetVertices(vertices); mesh.SetTriangles(triangles, 0); mesh.RecalculateBounds();
+            subject.GetComponent<MeshFilter>().sharedMesh = mesh;
+            var baseline = Capture();
+            interaction.Highlight(true);
+            var highlighted = Capture();
+            for (int y = 80; y < 176; y++)
+                for (int x = 80; x < 176; x++)
+                    Assert.That(highlighted[y * 256 + x], Is.EqualTo(baseline[y * 256 + x]),
+                        "An enclosed opening or railing must remain unchanged at " + x + "," + y);
+            Assert.That(Array.Exists(highlighted, IsMuted), Is.True, "The outer border must still be visible.");
+            interaction.Highlight(false);
+            // The top rail is now off screen, but the real hole is still enclosed.
+            subject.transform.position += Vector3.up * 1.1f;
+            baseline = Capture();
+            interaction.Highlight(true);
+            highlighted = Capture();
+            for (int y = 190; y < 245; y++)
+                for (int x = 80; x < 176; x++)
+                    Assert.That(highlighted[y * 256 + x], Is.EqualTo(baseline[y * 256 + x]),
+                        "Cropping the headboard must not introduce an inner border.");
+            interaction.Highlight(false);
+            subject.transform.position -= Vector3.up * 1.1f;
+            // Remove the bottom rail. This opening now belongs to the exterior, so the
+            // concave side must remain outlined instead of becoming a convex hull.
+            triangles.RemoveRange(triangles.Count - 6, 6);
+            mesh.SetTriangles(triangles, 0);
+            baseline = Capture();
+            interaction.Highlight(true);
+            highlighted = Capture();
+            int insideBorder = 0;
+            for (int y = 80; y < 176; y++)
+                for (int x = 80; x < 176; x++)
+                    if (baseline[y * 256 + x].r < 5 && IsMuted(highlighted[y * 256 + x])) insideBorder++;
+            Assert.That(insideBorder, Is.GreaterThan(20), "Open exterior recesses must keep their true contour.");
+        }
+
         private Color32[] Capture()
         {
             camera.Render();
@@ -286,7 +378,7 @@ namespace MiniGame.UnityHost.Tests
             return effect;
         }
 
-        private void AssertWhitePerimeter(Color32[] baseline, Color32[] highlighted, string label)
+        private void AssertPerimeter(Color32[] baseline, Color32[] highlighted, string label, bool white = false)
         {
             int width = target.width, height = target.height;
             int minX = width, maxX = -1, minY = height, maxY = -1;
@@ -304,20 +396,22 @@ namespace MiniGame.UnityHost.Tests
             for (int y = minY + 8; y <= maxY - 8; y++)
             {
                 bool left = false, right = false;
-                for (int x = 0; x < minX; x++) left |= IsWhite(highlighted[y * width + x]);
-                for (int x = maxX + 1; x < width; x++) right |= IsWhite(highlighted[y * width + x]);
+                for (int x = 0; x < minX; x++) left |= white ? IsWhite(highlighted[y * width + x]) : IsMuted(highlighted[y * width + x]);
+                for (int x = maxX + 1; x < width; x++) right |= white ? IsWhite(highlighted[y * width + x]) : IsMuted(highlighted[y * width + x]);
                 Assert.That(left && right, Is.True, label + " has a broken side border at row " + y);
             }
             for (int x = minX + 8; x <= maxX - 8; x++)
             {
                 bool bottom = false, top = false;
-                for (int y = 0; y < minY; y++) bottom |= IsWhite(highlighted[y * width + x]);
-                for (int y = maxY + 1; y < height; y++) top |= IsWhite(highlighted[y * width + x]);
+                for (int y = 0; y < minY; y++) bottom |= white ? IsWhite(highlighted[y * width + x]) : IsMuted(highlighted[y * width + x]);
+                for (int y = maxY + 1; y < height; y++) top |= white ? IsWhite(highlighted[y * width + x]) : IsMuted(highlighted[y * width + x]);
                 Assert.That(bottom && top, Is.True, label + " has a broken top/bottom border at column " + x);
             }
         }
 
         private static bool IsWhite(Color32 color) => color.r > 245 && color.g > 245 && color.b > 245;
+        private static bool IsMuted(Color32 color) => color.r > 60 && color.g > 60 && color.b > 50
+            && color.r < 230 && color.g < 230 && color.b < 230;
 
         private T Track<T>(T value) where T : Object
         {

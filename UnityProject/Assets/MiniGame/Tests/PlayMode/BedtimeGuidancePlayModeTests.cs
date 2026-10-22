@@ -133,13 +133,21 @@ namespace MiniGame.UnityHost.Tests
             {
                 yield return StageAt(host, target, expectHit: target == InteractionTarget.Door);
                 host.Screen.ClearNotification();
-                Assert.That(Text(host, "InteractionPrompt").text, Is.Empty, "Blocked furniture must not show a 'temporarily unavailable' prompt.");
-                Assert.That(host.Player.InteractFocused(), Is.False);
-                Assert.That(Text(host, "Notification").text, Is.Empty, "Pressing E on blocked furniture must not add a rejection toast.");
+                Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.None),
+                    "Blocked furniture must not advertise an available action.");
+                if (host.Player.FocusedInteraction != null)
+                {
+                    Assert.That(host.Player.FocusedInteraction.IsHighlighted, Is.False);
+                }
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
+                Assert.That(Text(host, "Notification").text, Is.Empty, "Clicking blocked furniture must not add a rejection toast.");
                 Assert.That(BedtimeGuidance.IsSleepOnly(host.Runtime.GetView()), Is.True);
             }
             yield return StageAt(host, InteractionTarget.Bed);
-            Assert.That(Text(host, "InteractionPrompt").text, Does.Contain("[ E ]"));
+            Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.Sleep));
+            yield return null;
+            Assert.That(host.Screen.InteractionCursorVisible, Is.True);
+            Assert.That(Text(host, "Reticle").gameObject.activeSelf, Is.False, "The sleep cursor replaces the dot.");
             host.RestoreCheckpoint(apartment);
             Assert.That(guidance.Isolation, Is.Zero);
             Assert.That(guidance.OwnsLighting, Is.False);

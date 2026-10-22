@@ -8,10 +8,11 @@ namespace MiniGame.UnityHost
     /// <summary>Shared scene-backed pause presentation. Runtime owners provide actions and input policy.</summary>
     public sealed class PauseMenuView : MonoBehaviour
     {
-        private static readonly Color Ink = TerminalView.Ink;
-        private static readonly Color Bright = TerminalView.Bright;
-        private static readonly Color Desk = TerminalView.Desk;
-        private static readonly Color Edge = TerminalView.Edge;
+        private static readonly Color Ink = Color.white;
+        private static readonly Color Bright = Color.white;
+        private static readonly Color Desk = Color.black;
+        private static readonly Color Edge = new Color(1, 1, 1, .35f);
+        private const float ColumnWidth = 512, RowHeight = 80, RowStride = 96;
         private const float FadeSeconds = .12f;
         private CanvasGroup group;
         private RectTransform root, column, manual;
@@ -28,8 +29,9 @@ namespace MiniGame.UnityHost
         private GameObject previousSelection, manualPreviousSelection;
         private bool visible;
         private float columnHeight;
-        private Sprite backdropSprite;
-        private Texture2D backdropTexture;
+        private Sprite stripSprite, focusSprite;
+        private Texture2D stripTexture, focusTexture;
+        private Material lettering;
         public Button[] Buttons { get; private set; } = Array.Empty<Button>();
         public bool ManualVisible => visible && manual != null && manual.gameObject.activeSelf;
         public bool SettingsVisible => visible && settings != null && settings.gameObject.activeSelf;
@@ -66,53 +68,44 @@ namespace MiniGame.UnityHost
             var shading = NewRect(root, "PauseShading");
             Stretch(shading);
             var shadingImage = shading.gameObject.AddComponent<Image>();
-            shadingImage.sprite = backdropSprite;
+            shadingImage.color = new Color(0, 0, 0, .22f);
             shadingImage.raycastTarget = false;
 
             column = NewRect(root, "PauseColumn");
-            column.anchorMin = column.anchorMax = new Vector2(.085f, .52f);
+            column.anchorMin = column.anchorMax = new Vector2(.06f, .5f);
             column.pivot = new Vector2(0, .5f);
-            columnHeight = 166 + labels.Length * 66;
-            column.sizeDelta = new Vector2(600, columnHeight);
+            columnHeight = 100 + labels.Length * RowStride - (RowStride - RowHeight);
+            column.sizeDelta = new Vector2(ColumnWidth, columnHeight);
             columnInput = column.gameObject.AddComponent<CanvasGroup>();
-            var title = MakeText(column, font, "PauseTitle", 40, 0, 0, 600, 62);
-            title.text = "NORM  /  暂停";
+            var title = MakeText(column, font, "PauseTitle", 46, 20, 0, ColumnWidth - 40, 68);
+            title.text = "暂停";
             title.color = Bright;
-            var state = MakeText(column, font, "PauseSessionState", 20, 0, 72, 600, 32);
-            state.text = "检查会话已挂起";
-            MakeLine(column, "PauseTitleRule", 0, 120, 600, 1, Edge);
 
             Buttons = new Button[labels.Length];
             for (int i = 0; i < labels.Length; i++)
             {
                 var row = NewRect(column, "PauseAction" + i);
-                TopRect(row, 0, 144 + i * 66, 600, 54);
+                TopRect(row, 0, 100 + i * RowStride, ColumnWidth, RowHeight);
                 var hit = row.gameObject.AddComponent<Image>();
-                hit.color = Color.clear;
+                hit.sprite = stripSprite;
+                hit.color = Color.white;
                 var button = row.gameObject.AddComponent<PauseMenuButton>();
                 button.targetGraphic = hit;
                 var outline = NewRect(row, "FocusFrame");
                 Stretch(outline);
                 var outlineImage = outline.gameObject.AddComponent<Image>();
+                outlineImage.sprite = focusSprite;
                 outlineImage.color = Ink;
                 outlineImage.raycastTarget = false;
                 var focus = outline.gameObject.AddComponent<CanvasGroup>();
                 focus.alpha = 0; focus.blocksRaycasts = false; focus.interactable = false;
-                var mark = NewRect(row, "SelectionMark");
-                TopRect(mark, 12, 18, 3, 18);
-                var marker = mark.gameObject.AddComponent<Image>();
-                marker.raycastTarget = false;
-                marker.color = Color.clear;
-                var number = MakeText(row, font, "CommandNumber", 21, 28, 0, 44, 54);
-                number.text = (i + 1).ToString("00");
-                number.alignment = TextAnchor.MiddleLeft;
-                var label = MakeText(row, font, "Label", 28, 88, 0, 376, 54);
+                var label = MakeText(row, font, "Label", 40, 32, 0, 380, RowHeight);
                 label.alignment = TextAnchor.MiddleLeft;
-                var key = MakeText(row, font, "Shortcut", 19, 472, 0, 106, 54);
+                var key = MakeText(row, font, "Shortcut", 28, 412, 0, 66, RowHeight);
                 key.alignment = TextAnchor.MiddleRight;
                 label.text = labels[i] ?? string.Empty;
                 key.text = i < shortcuts.Length ? shortcuts[i] ?? string.Empty : string.Empty;
-                button.ConfigureVisuals(label, key, focus, marker, Ink, number);
+                button.ConfigureVisuals(label, key, focus, null, Ink);
                 Action action = actions[i];
                 int lastActivationFrame = -1;
                 button.onClick.AddListener(() =>
@@ -124,7 +117,7 @@ namespace MiniGame.UnityHost
                 Buttons[i] = button;
             }
             // Only action feedback is transient; there is no persistent context or footer.
-            status = MakeText(column, font, "PauseStatus", 20, 0, columnHeight + 8, 600, 64);
+            status = MakeText(column, font, "PauseStatus", 22, 20, columnHeight + 12, ColumnWidth - 40, 64);
             status.gameObject.SetActive(false);
             BuildManual(font);
             BuildSettings(font);
@@ -145,14 +138,14 @@ namespace MiniGame.UnityHost
             MakeLine(manual, "ManualLeftBorder", 0, 0, 1, 810, Ink);
             MakeLine(manual, "ManualRightBorder", 1099, 0, 1, 810, Ink);
             var title = MakeText(manual, font, "ManualTitle", 34, 38, 28, 1024, 56);
-            title.text = "NORM  /  操作手册";
+            title.text = "操作手册";
             title.color = Bright;
             MakeLine(manual, "ManualTitleRule", 38, 106, 1024, 1, Edge);
             var leftTitle = MakeText(manual, font, "ManualRoomHeading", 24, 38, 132, 478, 42);
             leftTitle.text = "01  房间";
             var left = MakeText(manual, font, "ManualRoomControls", 24, 38, 188, 478, 330);
             left.lineSpacing = 1.3f;
-            left.text = "WASD    移动\n鼠标    转动视角\nE    与准星指向的物件交互\n鼠标左键    使用电脑\n鼠标左键    阅读海报与物品";
+            left.text = "WASD    移动\n鼠标    转动视角\n鼠标左键    阅读 / 开门 / 睡觉 / 工作\n鼠标左键    在门外返回房间\n准星图标    提示当前可进行的交互";
             var rightTitle = MakeText(manual, font, "ManualTerminalHeading", 24, 570, 132, 492, 42);
             rightTitle.text = "02  终端";
             var right = MakeText(manual, font, "ManualTerminalControls", 24, 570, 188, 492, 330);
@@ -171,6 +164,7 @@ namespace MiniGame.UnityHost
             var frame = NewRect(row, "FocusFrame");
             Stretch(frame);
             var fill = frame.gameObject.AddComponent<Image>();
+            fill.sprite = focusSprite;
             fill.color = Ink;
             fill.raycastTarget = false;
             var focus = frame.gameObject.AddComponent<CanvasGroup>();
@@ -231,7 +225,7 @@ namespace MiniGame.UnityHost
             MakeLine(settings, "TopBorder", 0, 0, 740, 1, Ink);
             MakeLine(settings, "BottomBorder", 0, 599, 740, 1, Ink);
             var title = MakeText(settings, font, "SettingsTitle", 34, 38, 28, 664, 56);
-            title.text = "NORM  /  游戏设置"; title.color = Bright;
+            title.text = "游戏设置"; title.color = Bright;
             MakeLine(settings, "TitleRule", 38, 106, 664, 1, Edge);
             MakeText(settings, font, "PixelDetailHeading", 28, 38, 128, 664, 42).text = "像素风强度";
             MakeText(settings, font, "PixelDetailDescription", 21, 38, 176, 664, 34).text = "选择场景中的像素颗粒大小";
@@ -261,7 +255,7 @@ namespace MiniGame.UnityHost
             var hit = row.gameObject.AddComponent<Image>(); hit.color = Color.clear;
             var button = row.gameObject.AddComponent<PauseMenuButton>(); button.targetGraphic = hit;
             var frame = NewRect(row, "FocusFrame"); Stretch(frame);
-            var fill = frame.gameObject.AddComponent<Image>(); fill.color = Ink; fill.raycastTarget = false;
+            var fill = frame.gameObject.AddComponent<Image>(); fill.sprite = focusSprite; fill.color = Ink; fill.raycastTarget = false;
             var focus = frame.gameObject.AddComponent<CanvasGroup>(); focus.alpha = 0; focus.blocksRaycasts = false;
             var mark = NewRect(row, "SelectionMark"); TopRect(mark, 12, 19, 3, 18);
             var marker = mark.gameObject.AddComponent<Image>(); marker.color = Color.clear; marker.raycastTarget = false;
@@ -407,7 +401,7 @@ namespace MiniGame.UnityHost
             if (root == null || column == null || columnHeight <= 0) return;
             float height = root.rect.height > 0 ? root.rect.height : 1080;
             float width = root.rect.width > 0 ? root.rect.width : 1920;
-            float scale = Mathf.Min(1, height * .86f / (columnHeight + 80), width * .68f / 600);
+            float scale = Mathf.Min(height * .82f / columnHeight, width * .30f / ColumnWidth);
             column.localScale = Vector3.one * scale;
             if (manual != null)
                 manual.localScale = Vector3.one * Mathf.Min(1, height * .88f / 810, width * .88f / 1100);
@@ -455,12 +449,15 @@ namespace MiniGame.UnityHost
             rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
             rect.pivot = new Vector2(0, 1); rect.anchoredPosition = new Vector2(x, -y); rect.sizeDelta = new Vector2(width, height);
         }
-        private static Text MakeText(Transform parent, Font font, string name, int size, float x, float y, float width, float height)
+        private Text MakeText(Transform parent, Font font, string name, int size, float x, float y, float width, float height)
         {
             var rect = NewRect(parent, name);
             TopRect(rect, x, y, width, height);
             var label = rect.gameObject.AddComponent<Text>();
             label.font = font; label.fontSize = size; label.color = Ink;
+            // Use the same bold Song typeface as room narration, with a stable, lightly worn edge.
+            label.fontStyle = FontStyle.Bold;
+            label.material = lettering;
             label.alignment = TextAnchor.UpperLeft; label.raycastTarget = false;
             label.horizontalOverflow = HorizontalWrapMode.Wrap;
             label.verticalOverflow = VerticalWrapMode.Truncate;
@@ -478,21 +475,37 @@ namespace MiniGame.UnityHost
 
         private void CreateTextures()
         {
-            backdropTexture = new Texture2D(256, 128, TextureFormat.RGBA32, false)
-                { name = "Pause amber shading", hideFlags = HideFlags.HideAndDontSave, wrapMode = TextureWrapMode.Clamp };
-            var background = new Color32[256 * 128];
-            for (int y = 0; y < 128; y++)
-                for (int x = 0; x < 256; x++)
+            const int width = (int)ColumnWidth, height = (int)RowHeight;
+            var strip = new Color32[width * height];
+            var focus = new Color32[width * height];
+            for (int y = 0; y < height; y++)
+                for (int x = 0; x < width; x++)
                 {
-                    float u = x / 255f;
-                    float alpha = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.32f, .85f, u));
-                    float grain = Noise(x, y) - .5f;
-                    background[y * 256 + x] = new Color(Desk.r + grain * .008f, Desk.g + grain * .005f,
-                        Desk.b + grain * .002f, Mathf.Clamp01(alpha * (.88f + grain * .025f)));
+                    float verticalEdge = Mathf.Min(y, height - 1 - y);
+                    float horizontalEdge = Mathf.Min(x, width - 1 - x);
+                    float edge = Mathf.Min(verticalEdge - Noise(x / 3, 7) * 1.4f,
+                        horizontalEdge - Noise(11, y / 3) * 1.4f);
+                    strip[y * width + x] = new Color(0, 0, 0, Mathf.Clamp01(edge));
+                    float frameEdge = Mathf.Min(verticalEdge - Noise(x / 4, 19) * .8f,
+                        horizontalEdge - Noise(23, y / 4) * .8f);
+                    float alpha = Mathf.Clamp01(frameEdge - 5) * Mathf.Clamp01(9 - frameEdge);
+                    focus[y * width + x] = new Color(1, 1, 1, alpha);
                 }
-            backdropTexture.SetPixels32(background); backdropTexture.Apply(false, true);
-            backdropSprite = Sprite.Create(backdropTexture, new Rect(0, 0, 256, 128), Vector2.one * .5f, 100);
-            backdropSprite.name = "Pause amber backdrop";
+            stripSprite = MakeSprite("Pause black strip", strip, width, height, out stripTexture);
+            focusSprite = MakeSprite("Pause white outline", focus, width, height, out focusTexture);
+            var shader = Resources.Load<Shader>("PauseLettering");
+            if (shader != null && shader.isSupported)
+                lettering = new Material(shader) { name = "Pause worn white lettering", hideFlags = HideFlags.HideAndDontSave };
+        }
+
+        private static Sprite MakeSprite(string name, Color32[] pixels, int width, int height, out Texture2D texture)
+        {
+            texture = new Texture2D(width, height, TextureFormat.RGBA32, false)
+                { name = name, hideFlags = HideFlags.HideAndDontSave, filterMode = FilterMode.Bilinear, wrapMode = TextureWrapMode.Clamp };
+            texture.SetPixels32(pixels); texture.Apply(false, true);
+            var sprite = Sprite.Create(texture, new Rect(0, 0, width, height), Vector2.one * .5f, 100, 0, SpriteMeshType.FullRect);
+            sprite.name = name;
+            return sprite;
         }
 
         private static float Noise(int x, int y)
@@ -507,8 +520,11 @@ namespace MiniGame.UnityHost
 
         private void OnDestroy()
         {
-            if (backdropSprite != null) Destroy(backdropSprite);
-            if (backdropTexture != null) Destroy(backdropTexture);
+            if (stripSprite != null) Destroy(stripSprite);
+            if (focusSprite != null) Destroy(focusSprite);
+            if (stripTexture != null) Destroy(stripTexture);
+            if (focusTexture != null) Destroy(focusTexture);
+            if (lettering != null) Destroy(lettering);
         }
     }
 }

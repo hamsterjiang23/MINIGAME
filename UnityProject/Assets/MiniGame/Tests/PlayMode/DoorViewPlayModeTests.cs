@@ -203,23 +203,18 @@ namespace MiniGame.UnityHost.Tests
             var room = CapturePose();
             Assert.That(player.InteractFocused(), Is.True);
             yield return Until(() => host.Runtime.GetView().Input == InputContext.DoorView, "outside hold before showing the return prompt");
-            // The fixture disables physical input, so provide the same focus text as ApartmentPlayer.Update.
-            host.Screen.SetWorldFocus("返回房间", true, "E");
-            var prompt = host.Screen.GetComponentsInChildren<Text>(true).Single(item => item.name == "InteractionPrompt");
-            var group = prompt.GetComponentInParent<CanvasGroup>();
-            Assert.That(group, Is.Not.Null, "The interaction prompt needs its visibility group.");
-            yield return Until(() => prompt.gameObject.activeInHierarchy && group.alpha > .9f,
-                "outside E return prompt becomes visible (alpha=" + group.alpha + ")");
-            Assert.That(prompt.text, Does.Contain("返回房间"));
-            Assert.That(prompt.text, Does.Contain("E"));
+            // The fixture disables physical input, so provide the same cursor as ApartmentPlayer.Update.
+            host.Screen.SetInteractionCursor(InteractionCursorKind.Door, true);
+            yield return Until(() => host.Screen.InteractionCursorVisible, "outside return cursor becomes visible");
+            Assert.That(host.Screen.InteractionCursor, Is.EqualTo(InteractionCursorKind.Door));
             for (int frame = 0; frame < 3; frame++)
             {
                 yield return null;
-                Assert.That(group.alpha, Is.GreaterThan(.9f), "DoorView input must keep the E return prompt visible.");
+                Assert.That(host.Screen.InteractionCursorVisible, Is.True, "DoorView must keep the return cursor visible.");
                 AssertOutside(room);
             }
-            Assert.That(player.InteractFocused(), Is.True);
-            yield return Until(() => host.Runtime.GetView().Input == InputContext.World, "return through the visible E prompt");
+            Assert.That(player.InteractPrimaryFocused(), Is.True);
+            yield return Until(() => host.Runtime.GetView().Input == InputContext.World, "return through the left-click cursor");
             AssertReturned(room);
         }
 

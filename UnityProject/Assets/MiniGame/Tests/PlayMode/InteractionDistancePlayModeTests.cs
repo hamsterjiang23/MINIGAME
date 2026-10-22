@@ -35,7 +35,7 @@ namespace MiniGame.UnityHost.Tests
                 Physics.SyncTransforms();
                 host.Player.RefreshInteractionFocus();
                 Assert.That(host.Player.FocusedInteraction, Is.Null);
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
                 interaction.InteractionDistance = 5;
                 host.Player.RefreshInteractionFocus();
                 Assert.That(host.Player.FocusedInteraction, Is.SameAs(interaction));
@@ -44,9 +44,9 @@ namespace MiniGame.UnityHost.Tests
                 blocker.SetActive(true); Physics.SyncTransforms();
                 host.Player.RefreshInteractionFocus();
                 Assert.That(host.Player.FocusedInteraction, Is.Null, "A nearer solid collider blocks interaction even with a longer range.");
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
                 blocker.SetActive(false); Physics.SyncTransforms();
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.True, "Configured range must govern the action as well as the focus.");
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.True, "Configured range must govern the action as well as the focus.");
             }
             finally { Object.Destroy(target); Object.Destroy(blocker); controller.enabled = true; }
         }
@@ -70,16 +70,16 @@ namespace MiniGame.UnityHost.Tests
                 var poster = target.AddComponent<ReadableProp>();
                 poster.Configure("range-fixture", "distance caption", target.GetComponent<Renderer>(), 2);
                 Physics.SyncTransforms();
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
                 poster.InteractionDistance = 4.1f;
                 host.Player.RefreshInteractionFocus();
                 Assert.That(host.Player.FocusedReadable, Is.SameAs(poster));
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.True);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.True);
                 Assert.That(host.Screen.CurrentRoomCaption, Is.EqualTo("distance caption"));
                 poster.InteractionDistance = 3.9f;
                 host.Player.RefreshInteractionFocus();
                 Assert.That(poster.IsHighlighted, Is.False);
-                Assert.That(host.Player.InteractSecondaryFocused(), Is.False);
+                Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
             }
             finally { Object.Destroy(target); controller.enabled = true; }
         }
