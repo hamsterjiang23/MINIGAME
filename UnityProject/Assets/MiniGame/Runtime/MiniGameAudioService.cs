@@ -93,7 +93,8 @@ namespace MiniGame.UnityHost
             state.Source.pitch = 1;
             state.Source.loop = false;
             state.Source.volume = 1;
-            state.Source.PlayOneShot(entry.Clip, Unit(entry.Volume));
+            state.Source.PlayOneShot(entry.Clip, float.IsNaN(entry.Volume) || float.IsInfinity(entry.Volume)
+                ? 0 : Mathf.Clamp(entry.Volume, 0, 2));
             SoundPlayed?.Invoke(channel, sound);
             return true;
         }

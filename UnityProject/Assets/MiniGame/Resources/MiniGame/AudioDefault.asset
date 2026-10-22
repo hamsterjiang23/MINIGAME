@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AudioDefault
   m_EditorClassIdentifier: 
   MasterVolume: 1
-  MusicVolume: 0.5
+  MusicVolume: 0.6
   AmbienceVolume: 0.45
   SfxVolume: 0.7
   UIVolume: 0.65
@@ -41,13 +41,13 @@ MonoBehaviour:
     Volume: 1
   - Id: 5
     Clip: {fileID: 8300000, guid: ebc4306a0482a5e4386d8bfb2b2c6679, type: 3}
-    Volume: 1
+    Volume: 0.7
   - Id: 6
     Clip: {fileID: 8300000, guid: c0a4508344adde44dad8dde1c30783e4, type: 3}
     Volume: 1
   - Id: 7
     Clip: {fileID: 8300000, guid: dfcf4e0720ec30649b99054ce0fa2b0e, type: 3}
-    Volume: 1
+    Volume: 1.3
   - Id: 8
     Clip: {fileID: 8300000, guid: 885ca0a5decfcfd4aac5370251f202da, type: 3}
     Volume: 1
@@ -77,16 +77,16 @@ MonoBehaviour:
     Volume: 0.8
   - Id: 17
     Clip: {fileID: 8300000, guid: d1902ad9bdff40bcac02a7b3763ec326, type: 3}
-    Volume: 0.18
+    Volume: 0.234
   - Id: 18
     Clip: {fileID: 8300000, guid: 021820b964c3437e9e341a9203f7bbcd, type: 3}
-    Volume: 0.18
+    Volume: 0.234
   - Id: 19
     Clip: {fileID: 8300000, guid: ea09ea20ca764850bceeef16da23ca46, type: 3}
-    Volume: 0.18
+    Volume: 0.234
   - Id: 20
     Clip: {fileID: 8300000, guid: de335580072546b988fe0b5bb8bfccf1, type: 3}
-    Volume: 0.18
+    Volume: 0.234
   - Id: 21
     Clip: {fileID: 8300000, guid: 96cc914236c612b41b998056e4800be6, type: 3}
     Volume: 1
