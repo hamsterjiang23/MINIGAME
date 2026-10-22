@@ -165,6 +165,7 @@ namespace MiniGame.UnityHost.Editor
                 }
                 if (firstInstall || previous == null || AssetDatabase.GetAssetPath(previous) == RetroScreenSetup.ProfilePath)
                     RetroScreenSetup.Attach(camera, reference);
+                if (controller.HasIndependentProfiles) RetroScreenSetup.EnsureRoomProfiles(controller);
             }
             foreach (var texture in new[] { floor.sharedMaterial.mainTexture, floor.sharedMaterial.GetTexture("_BumpMap") })
             {

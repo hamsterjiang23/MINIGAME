@@ -99,8 +99,8 @@ namespace MiniGame.UnityHost
             {
                 HandleEscape(); return;
             }
-            if (!screen.PauseManualVisible && Input.GetKeyDown(KeyCode.F5)) Save();
-            if (!screen.PauseManualVisible && Input.GetKeyDown(KeyCode.F9)) Load();
+            if (!screen.PauseSubmenuVisible && Input.GetKeyDown(KeyCode.F5)) Save();
+            if (!screen.PauseSubmenuVisible && Input.GetKeyDown(KeyCode.F9)) Load();
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
         }
 
@@ -109,7 +109,7 @@ namespace MiniGame.UnityHost
             if (Runtime == null || screen.PresentationToolsBlockInput
                 || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
             var view = Runtime.GetView();
-            if (view.Paused) { if (!screen.TryClosePauseManual()) Runtime.SetPaused(false); }
+            if (view.Paused) { if (!screen.TryClosePauseSettings() && !screen.TryClosePauseManual()) Runtime.SetPaused(false); }
             else if (screen.TryClosePropNarration()) { }
             else if (screen.TryCloseHistory()) { }
             else if (view.Inspection != null) Runtime.CloseInspection();
@@ -142,6 +142,8 @@ namespace MiniGame.UnityHost
                     if (candidate.gameObject.scene == gameObject.scene) { roomLighting = candidate; break; }
             screen.BindLighting(runtime, roomLighting);
             player.Bind(runtime, screen);
+            var retro = player.ViewCamera.GetComponent<RetroScreenEffect>();
+            if (retro != null) retro.UsePlayerPixelSettings = true;
             effects.Bind(runtime, screen);
             var monitor = GetComponent<SelfReviewMonitor>();
             if (monitor == null && runtime.UsesDreamFlow) monitor = gameObject.AddComponent<SelfReviewMonitor>();

@@ -52,6 +52,7 @@ namespace MiniGame.UnityHost
                     var originalPixels = image.GetPixels32();
                     var effect = camera.GetComponent<RetroScreenEffect>();
                     var originalProfile = effect.Profile;
+                    bool followedLighting = effect.FollowRoomLighting;
                     var preview = Instantiate(originalProfile);
                     try
                     {
@@ -69,7 +70,7 @@ namespace MiniGame.UnityHost
                         if (!result.gradingChangesPixels) throw new InvalidOperationException("Player grading did not change rendered pixels.");
                         File.WriteAllBytes(Path.Combine(path, "player-grade-720.png"), image.EncodeToPNG());
                     }
-                    finally { effect.Profile = originalProfile; Destroy(preview); }
+                    finally { effect.Profile = originalProfile; effect.FollowRoomLighting = followedLighting; Destroy(preview); }
                 }
                 finally
                 {

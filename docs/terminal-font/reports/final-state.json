@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "command": "command eval_file",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "F:/AAMINIGAME/MINIGAME/Artifacts/TerminalArk20261021/final-state.cs"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "command": null,
+      "result": {
+        "playing": false,
+        "licenses": 5,
+        "atlas": [
+          2048,
+          2048
+        ],
+        "HorizontalPixels": 0,
+        "VerticalPixels": 2.5,
+        "Intensity": 0.65,
+        "GlyphFraction": 0.08
+      },
+      "executionTimeMs": 891,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "0001-01-01T00:00:00"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

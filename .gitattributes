@@ -1,5 +1,7 @@
 # Binary documents and game/research files use Git LFS.
 *.png filter=lfs diff=lfs merge=lfs -text
+*.bdf filter=lfs diff=lfs merge=lfs -text
+UnityProject/Assets/MiniGame/Art/Fonts/ArkPixel12/ArkPixel12.json filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.jpeg filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
@@ -849,3 +851,6 @@ UnityProject/Assets/PMSAmberTerminal/Art/FontAtlas/HTML_FontMetrics.json filter=
 Art/TerminalHtmlMatched/Source/HTML_FontMetrics.json filter=lfs diff=lfs merge=lfs -text
 UnityProject/Assets/MiniGame/Content/Campaign/provenance.json filter=lfs diff=lfs merge=lfs -text
 UnityProject/Assets/MiniGame/Art/DreamEnding/DoorwayBeachPanorama.asset filter=lfs diff=lfs merge=lfs -text
+UnityProject/Assets/MiniGame/Art/DreamEnding/SeaMidpointPanorama.asset filter=lfs diff=lfs merge=lfs -text
+UnityProject/Assets/MiniGame/Art/DreamEnding/SeaMidpointWaterMask.asset filter=lfs diff=lfs merge=lfs -text
+Art/DreamEnding/SeaMidpoint/SeaMidpointAligned.blend1 filter=lfs diff=lfs merge=lfs -text

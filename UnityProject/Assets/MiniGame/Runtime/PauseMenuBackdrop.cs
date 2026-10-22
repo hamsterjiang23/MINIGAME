@@ -13,6 +13,7 @@ namespace MiniGame.UnityHost
         private Material material;
         private float captureStarted;
         private int captureWidth, captureHeight;
+        private bool livePreview;
         public bool Capturing { get; private set; }
 
         public void Configure(RectTransform root, CanvasGroup fade)
@@ -33,7 +34,7 @@ namespace MiniGame.UnityHost
 
         public void Capture()
         {
-            if (Capturing || Application.isBatchMode || material == null) return;
+            if (livePreview || Capturing || Application.isBatchMode || material == null) return;
             captureStarted = Time.realtimeSinceStartup;
             captureWidth = Screen.width; captureHeight = Screen.height;
             StartCoroutine(CaptureFrame());
@@ -41,6 +42,7 @@ namespace MiniGame.UnityHost
 
         private void Update()
         {
+            if (livePreview) return;
             // A hidden Game view may never reach end-of-frame. Keep the modal usable.
             if (Capturing)
             {
@@ -98,7 +100,18 @@ namespace MiniGame.UnityHost
             }
         }
 
-        private void OnDisable() { StopAllCoroutines(); Capturing = false; if (image != null) image.enabled = false; }
+        public void SetLivePreview(bool value, bool recapture = true)
+        {
+            livePreview = value;
+            if (value)
+            {
+                StopAllCoroutines(); Capturing = false;
+                if (image != null) image.enabled = false;
+            }
+            else if (recapture && isActiveAndEnabled) Capture();
+        }
+
+        private void OnDisable() { StopAllCoroutines(); Capturing = false; livePreview = false; if (image != null) image.enabled = false; }
         private void ReleaseTexture()
         {
             if (blurred == null) return;

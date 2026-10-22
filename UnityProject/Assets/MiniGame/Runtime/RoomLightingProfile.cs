@@ -71,6 +71,8 @@ namespace MiniGame.UnityHost
     [CreateAssetMenu(menuName = "MiniGame/画面/房间灯光配置", fileName = "RoomLightingProfile")]
     public sealed class RoomLightingProfile : ScriptableObject
     {
+        [Header("调色与像素风格"), InspectorName("当前时段调色配置")]
+        public RetroScreenProfile ScreenStyle;
         [Header("当前时段整体控制")]
         [Range(0, 4)] public float lightMultiplier = 1;
         [Range(0, 4)] public float emissionMultiplier = 1;

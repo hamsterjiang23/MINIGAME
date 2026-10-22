@@ -1,0 +1,70 @@
+{
+  "source": "C:\\Users\\admin\\Downloads\\sea(1).blend",
+  "source_had_unsaved_changes": true,
+  "cameras": {
+    "Camera": [
+      -12.888055801391602,
+      -50.86968994140625,
+      5.08964204788208
+    ],
+    "Camera2": [
+      -13.02441692352295,
+      -44.144744873046875,
+      4.80019474029541
+    ]
+  },
+  "spawn_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    3.384918689727783
+  ],
+  "eye_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    4.944918632507324
+  ],
+  "eye_height_m": 1.56,
+  "room_source": "F:\\AAMINIGAME\\MINIGAME\\Art\\MainRoom\\reference\\MainRoomReference.blend",
+  "room_authored_spawn": [
+    5.900000095367432,
+    1.75,
+    -0.6728799939155579
+  ],
+  "room_reference_hidden_for_render": true,
+  "room_rotation_blender_degrees": 183.41746937689308,
+  "initial_forward_blender": [
+    -0.05961073562502861,
+    0.998221755027771,
+    0.0
+  ],
+  "render": {
+    "engine": "CYCLES",
+    "device": "GPU CUDA",
+    "face_size": 1024,
+    "samples": 32
+  },
+  "coordinate_contract": "Reference FBX converts Blender (-x,-y,z) to Unity (x,z,y). House rotation=capture yaw+pi, so Unity (x,y,z) matches captured Rz(yaw)*(x,z,y). Native Cubemap PNG rows are top-down, verified on Unity D3D11.",
+  "spawn_alignment_error_m": 2.384185791015625e-07,
+  "camera_midpoint_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    4.944918632507324
+  ],
+  "previous_eye_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    6.504918575286865
+  ],
+  "capture_eye_matches_camera_midpoint": true,
+  "removed_source_objects": [
+    "SM_bed_1"
+  ],
+  "capture_eye_alignment_error_m": 0.0,
+  "panorama_sea_level": -4.94,
+  "capture_revision": "source-bed-removed-camera-height",
+  "blender_frame": 1,
+  "remaining_source_bed_objects": [],
+  "final_eye_alignment_error_m": 0.0,
+  "water_mask_rebuilt": true,
+  "animated_source_water_objects": []
+}

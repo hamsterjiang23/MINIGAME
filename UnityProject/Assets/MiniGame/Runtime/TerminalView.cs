@@ -20,6 +20,8 @@ namespace MiniGame.UnityHost
         private readonly Text directoryRequirement, reviewRequirement;
         private readonly Text dailyWorkRemaining;
         private readonly TerminalTranscriptView transcriptView;
+        private readonly TerminalTranscriptView historyTranscript;
+        private readonly GameObject historyModal;
         private readonly Button enter, leave, returnDirectory, selfPurify, footer;
         private readonly RawImage selfMonitor;
         private readonly RawImage supervisor;
@@ -49,7 +51,7 @@ namespace MiniGame.UnityHost
         public Text Body { get; }
         public Text NarrationBody { get; }
         public Button Continue { get; }
-        public bool HistoryOpen => false;
+        public bool HistoryOpen => historyModal != null && historyModal.activeSelf;
                 public bool IsReview => current != null && current.TerminalPage == TerminalPage.Review;
         public Action ConfirmRequested;
         public TerminalDisplay Display => display;
@@ -146,7 +148,7 @@ namespace MiniGame.UnityHost
             signalLostMessage = Label(video, "SignalLostMessage", "SIGNAL LOST", 176, 123, 200, 25, 13, Dim).gameObject;
             historyHeading = Label(rr, "DialogueHeading", "对话 / R1", 26, 368, 470, 20, 13, Dim);
             Rule(rr, 22, 388, 480);
-            transcriptView = new TerminalTranscriptView(rr, font);
+            transcriptView = new TerminalTranscriptView(rr, font, signals);
             history = transcriptView.GameObject;
             roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 124, 19, 13, Dim);
             commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 24, 12, Dim);
@@ -199,6 +201,14 @@ namespace MiniGame.UnityHost
             footerText = footer.transform.Find("Label").GetComponent<Text>(); Position(footerText.rectTransform, 5, 6, 772, 20); footerText.alignment = TextAnchor.UpperCenter;
             footerHelp = Label(footer.transform, "TerminalHelp", "", 5, 26, 772, 16, 12, Desk); footerHelp.alignment = TextAnchor.UpperCenter;
             TerminalIndustrialSkin.RegisterLabel(footer, footerHelp); TerminalIndustrialSkin.SetSelected(footer, true);
+            historyModal = Panel(logical, "DialogueHistoryOverlay", new Color(0, 0, 0, .8f), 0, 0, 800, 600).gameObject;
+            historyModal.GetComponent<Image>().raycastTarget = true;
+            var historyWindow = Panel(historyModal.transform, "DialogueHistoryWindow", Desk, 40, 55, 720, 480);
+            Border(historyWindow, "HistoryBorder", 0, 0, 720, 480, Edge);
+            Label(historyWindow, "HistoryTitle", "对话记录 / 当前检查期", 17, 15, 660, 24, 14, Bright);
+            historyTranscript = new TerminalTranscriptView(historyWindow, font, signals, "SavedDialogueRecords", 17, 48, 686, 372);
+            Button(historyWindow, "CloseHistory", "关闭记录  ESC / F3", 480, 435, 220, 28, () => CloseHistory(), 13);
+            historyModal.SetActive(false);
             Continue.gameObject.SetActive(false); returnDirectory.gameObject.SetActive(false); NarrationBody.gameObject.SetActive(false);
             display = parent.gameObject.AddComponent<TerminalDisplay>(); display.Initialize(logical);
             Fit();
@@ -231,6 +241,7 @@ namespace MiniGame.UnityHost
         }
         public void ResetNavigation(RuntimeView view)
         {
+            CloseHistory();
             current = view; rosterIndex = 0;
             transcriptView.Reset();
             sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId ?? view.Game.CurrentPatientId);
@@ -249,6 +260,7 @@ namespace MiniGame.UnityHost
             packageFrame.texture = assets != null ? (dir ? assets.DirectoryFrame : assets.ReviewFrame) : null;
             directory.SetActive(dir && !self); review.SetActive(!dir && !self); selfReview.SetActive(self);
             bool archived = view.TerminalPage == TerminalPage.Archive;
+            if (!view.TerminalOpen || dir || self || view.LeavingTerminal) CloseHistory();
             selfPurify.interactable = self && !locked && view.Cue == null && !view.Paused;
             string id = view.PresentedPatientId ?? view.Game.CurrentPatientId;
             recordName.text = PortraitCatalog.Registration(id);
@@ -292,7 +304,7 @@ namespace MiniGame.UnityHost
             footer.enabled = !tutorial;
             footer.GetComponent<Image>().raycastTarget = !tutorial;
             Footer(self ? "本人复核 / 确认净化" : dir ? enter.interactable ? "选择对象并确认，进入人员复核" : "当前对象不可再次接待" : archived ? "审查已结束 / 档案已关闭" : measure ? "会谈结束 / 选择处置命令并确认" : "按 Enter 或单击反白命令条继续",
-                dir ? "↑↓ 选择对象   双击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答");
+                dir ? "↑↓ 选择对象   双击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答   F3 对话记录");
             if (!dir && !self && ChoiceRoot.GetComponentsInChildren<Button>(false).Any(b => b.name.StartsWith("Reply-", StringComparison.Ordinal))) footerText.text = "选择应答并确认";
             Fit();
         }
@@ -371,6 +383,20 @@ namespace MiniGame.UnityHost
         }
         public bool HandleArchiveKey(KeyCode key) => !locked && returnDirectory.gameObject.activeInHierarchy && (key == KeyCode.Return || key == KeyCode.KeypadEnter) && MiniGameAudioButton.Activate(returnDirectory);
         public void ScrollHistory(int amount) { if (current != null) transcriptView.Scroll(amount); }
+        public bool OpenHistory()
+        {
+            if (locked || current == null || !current.TerminalOpen
+                || current.TerminalPage != TerminalPage.Review && current.TerminalPage != TerminalPage.Archive) return false;
+            historyTranscript.Reset();
+            historyModal.SetActive(true); RenderHistory();
+            return true;
+        }
+        public bool CloseHistory()
+        {
+            if (!HistoryOpen) return false;
+            historyModal.SetActive(false); return true;
+        }
+        public void ScrollSavedHistory(int amount) => historyTranscript.Scroll(amount);
         private void SelectRoster(int index) { if (locked) return; rosterIndex = index; RenderRoster(); }
         private void EnterSelected() { if (current == null || locked || !enter.interactable || rosterIndex >= current.Patients.Count) return; enterPatient(current.Patients[rosterIndex].Id); }
         private void RenderRoster()
@@ -402,6 +428,7 @@ namespace MiniGame.UnityHost
         {
             if (current == null) return;
             transcriptView.Render(current.Transcript, sourceNodeId, Body.text);
+            if (HistoryOpen) historyTranscript.Render(current.Transcript, sourceNodeId, Body.text);
         }
         private void Footer(string text, string help) { footerText.text = text; footerHelp.text = help; }
         private Text Field(Transform parent, string label, string value, float y) { Label(parent, label + "Label", label, 24, y, 110, 20, 14, Ink); return Label(parent, "Preview" + label, value, 138, y, 440, 20, 14, Ink); }

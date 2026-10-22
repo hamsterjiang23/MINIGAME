@@ -12,6 +12,9 @@ Shader "MiniGame/Dream Sea"
         _WaveLength ("Wave length (m)", Float) = 7
         _ShoreWash ("Shore wash (m)", Float) = 1.8
         _FoamAmount ("Foam amount", Range(0,1.5)) = .85
+        _UsePanoramaMask ("Clip to panorama water", Float) = 0
+        _PanoramaWaterMask ("Panorama water visibility", Cube) = "white" {}
+        _CaptureOrigin ("Fixed panorama eye", Vector) = (0,0,0,0)
     }
     SubShader
     {
@@ -27,6 +30,9 @@ Shader "MiniGame/Dream Sea"
             #include "UnityCG.cginc"
             #include "DreamOcean.cginc"
             float4 _Shallow, _Deep;
+            samplerCUBE _PanoramaWaterMask;
+            float _UsePanoramaMask;
+            float3 _CaptureOrigin;
             struct v2f { float4 vertex:SV_POSITION; float3 world:TEXCOORD0; float3 normal:TEXCOORD1; float2 anchor:TEXCOORD2; float crest:TEXCOORD3; };
             v2f vert(appdata_base v)
             {
@@ -40,7 +46,13 @@ Shader "MiniGame/Dream Sea"
             {
                 float t = DreamOceanTime();
                 float edge = i.world.z-DreamShoreFront(i.world.x,t);
-                clip(edge+.04);
+                float visibility = 1;
+                if (_UsePanoramaMask > .5)
+                {
+                    visibility = texCUBE(_PanoramaWaterMask, i.world + _DreamOrigin.xyz - _CaptureOrigin).r;
+                    clip(visibility-.01);
+                }
+                else clip(edge+.04);
                 float depth = max(0,i.world.y-DreamSandHeight(i.world.xz));
                 float footprint = max(length(ddx(i.world.xz)),length(ddy(i.world.xz)));
                 float detail = (1-smoothstep(.08,.35,footprint))*saturate(_WaveHeight/.24);
@@ -66,7 +78,8 @@ Shader "MiniGame/Dream Sea"
                 float foamAlpha = smoothstep(.08,.60,foam);
                 float opacity = foamAlpha+waterAlpha*(1-foamAlpha);
                 c = (float3(.94,.97,.93)*foamAlpha+c*waterAlpha*(1-foamAlpha))/max(opacity,.0001);
-                return float4(c,opacity*smoothstep(-.02,.20,edge));
+                // A masked capture replaces the photographed water, so baked crests do not show through.
+                return float4(c, _UsePanoramaMask > .5 ? visibility : opacity*smoothstep(-.02,.20,edge));
             }
             ENDCG
         }

@@ -134,7 +134,7 @@ namespace MiniGame.UnityHost
         {
             if (!initialized || roomEnding != null && !roomEnding.Ready) return;
             ApplyPause();
-            if (Paused) { ApplyWaterParameters(); return; }
+            if (Paused) { ApplyWaterParameters(); RenderRoomCubemap(); return; }
             dt = Finite(dt) ? Mathf.Max(0, dt) : 0;
             worldTime += dt;
             if (state.Phase == BeachEndingPhase.Walking)
@@ -256,9 +256,10 @@ namespace MiniGame.UnityHost
         private void RenderRoomCubemap()
         {
             if (roomEnding?.Cubemap == null) return;
-            // One image per room entry, including restores into lying or drifting.
-            // Camera movement, pause and the ending timeline never repaint the scenery.
-            if (!roomEnding.Cubemap.IsReady)
+            // Water uses the shared ending clock. The capture eye stays fixed when the player moves.
+            if (roomEnding.Cubemap.HasPanoramaWater)
+                roomEnding.Cubemap.Render(worldTime, BeachEndingPhase.Walking, 0, 0);
+            else if (!roomEnding.Cubemap.IsReady)
                 roomEnding.Cubemap.Render(0, BeachEndingPhase.Walking, 0, 0, true);
             roomEnding.UpdateRoomSurface();
         }

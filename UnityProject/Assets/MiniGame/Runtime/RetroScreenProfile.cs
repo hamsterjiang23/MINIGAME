@@ -63,6 +63,45 @@ namespace MiniGame.UnityHost
         public bool UseVirtualResolution { get => useVirtualResolution; set => useVirtualResolution = value; }
         public int VirtualHeight { get => Mathf.Clamp(virtualHeight, 180, 1080); set => virtualHeight = Mathf.Clamp(value, 180, 1080); }
 
+        // Only used on a transient render profile. Authored day/night assets are never interpolated in place.
+        internal void BlendFrom(RetroScreenProfile day, RetroScreenProfile night, float amount)
+        {
+            float strength = Mathf.Lerp(day.EffectEnabled ? day.Strength : 0, night.EffectEnabled ? night.Strength : 0, amount);
+            bool dayDisabled = !day.EffectEnabled || day.Strength <= 0;
+            bool nightDisabled = !night.EffectEnabled || night.Strength <= 0;
+            // A disabled endpoint fades the other endpoint's effect; its stale style parameters must not leak into the transition.
+            if (dayDisabled) day = night;
+            if (nightDisabled) night = day;
+            var selected = amount < .5f ? day : night;
+            EffectEnabled = true;
+            Strength = strength;
+            ColorGradingEnabled = day.ColorGradingEnabled || night.ColorGradingEnabled;
+            PostExposure = Mathf.Lerp(day.ColorGradingEnabled ? day.PostExposure : 0, night.ColorGradingEnabled ? night.PostExposure : 0, amount);
+            Contrast = Mathf.Lerp(day.ColorGradingEnabled ? day.Contrast : 0, night.ColorGradingEnabled ? night.Contrast : 0, amount);
+            Saturation = Mathf.Lerp(day.ColorGradingEnabled ? day.Saturation : 0, night.ColorGradingEnabled ? night.Saturation : 0, amount);
+            ShadowTint = Color.Lerp(day.ColorGradingEnabled ? day.ShadowTint : Color.white, night.ColorGradingEnabled ? night.ShadowTint : Color.white, amount);
+            MidtoneTint = Color.Lerp(day.ColorGradingEnabled ? day.MidtoneTint : Color.white, night.ColorGradingEnabled ? night.MidtoneTint : Color.white, amount);
+            HighlightTint = Color.Lerp(day.ColorGradingEnabled ? day.HighlightTint : Color.white, night.ColorGradingEnabled ? night.HighlightTint : Color.white, amount);
+            ShadowExposure = Mathf.Lerp(day.ColorGradingEnabled ? day.ShadowExposure : 0, night.ColorGradingEnabled ? night.ShadowExposure : 0, amount);
+            MidtoneExposure = Mathf.Lerp(day.ColorGradingEnabled ? day.MidtoneExposure : 0, night.ColorGradingEnabled ? night.MidtoneExposure : 0, amount);
+            HighlightExposure = Mathf.Lerp(day.ColorGradingEnabled ? day.HighlightExposure : 0, night.ColorGradingEnabled ? night.HighlightExposure : 0, amount);
+            ShadowEnd = Mathf.Lerp(day.ShadowEnd, night.ShadowEnd, amount);
+            HighlightStart = Mathf.Lerp(day.HighlightStart, night.HighlightStart, amount);
+            NeutralTonemapping = selected.ColorGradingEnabled && selected.NeutralTonemapping;
+            FullscreenQuantization = day.FullscreenQuantization || night.FullscreenQuantization;
+            QuantizationStrength = Mathf.Lerp(day.FullscreenQuantization ? day.QuantizationStrength : 0,
+                night.FullscreenQuantization ? night.QuantizationStrength : 0, amount);
+            PerceptualQuantization = selected.PerceptualQuantization;
+            Levels = Mathf.RoundToInt(Mathf.Lerp(day.Levels, night.Levels, amount));
+            GammaBefore = Mathf.Lerp(day.GammaBefore, night.GammaBefore, amount);
+            GammaAfter = Mathf.Lerp(day.GammaAfter, night.GammaAfter, amount);
+            DitherStrength = Mathf.Lerp(day.DitherStrength, night.DitherStrength, amount);
+            FilmGrainStrength = Mathf.Lerp(day.FilmGrainStrength, night.FilmGrainStrength, amount);
+            PixelSize = Mathf.RoundToInt(Mathf.Lerp(day.PixelSize, night.PixelSize, amount));
+            UseVirtualResolution = selected.UseVirtualResolution;
+            VirtualHeight = Mathf.RoundToInt(Mathf.Lerp(day.VirtualHeight, night.VirtualHeight, amount));
+        }
+
         public void ResetToLightDefaults()
         {
             ResetNewControls();

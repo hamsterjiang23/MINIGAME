@@ -72,7 +72,7 @@ MonoBehaviour:
     MotionIntensity: 0.65
     PostIntensity: 1.2
   UseRoomCubemapEnding: 1
-  RoomPanoramaSkybox: {fileID: 2100000, guid: 28710663e0cb0824aae1a55bcd58c552, type: 2}
+  RoomPanoramaSkybox: {fileID: 2100000, guid: 83e91a72e75b4b8f80c037724a51789c, type: 2}
   ShowRoomOutline: 0
   CubemapSourcePrefab: {fileID: 6476519832283112598, guid: d34e39ae5cb8652499a1acc1a1219781, type: 3}
   CubemapFaceSize: 1024
@@ -109,3 +109,9 @@ MonoBehaviour:
   - Text: "\u6765\u5427\uFF0C\u6211\u4EEC\u628A\u4ED6\u9001\u5230\u4E0B\u9762\u53BB"
     Voice: {fileID: 0}
     Duration: 7.87
+  EnableEndingRetro: 1
+  EndingRetro: {fileID: 11400000, guid: b53af644d95a439c8f45888661bf2ff2, type: 2}
+  AnimateRoomWater: 1
+  PanoramaWaterMask: {fileID: 8900000, guid: 26442d7640604f5ab267b57ba19ae0be, type: 2}
+  PanoramaSeaLevel: -4.94
+  PanoramaShoreDistance: 12

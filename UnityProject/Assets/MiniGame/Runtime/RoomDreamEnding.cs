@@ -41,6 +41,8 @@ namespace MiniGame.UnityHost
         private bool savedCursorVisible;
         private RetroScreenEffect retro;
         private bool savedBypass;
+        private bool savedRetroEnabled, savedRetroOriginal;
+        private RetroScreenProfile savedRetroProfile;
         private LightingState lighting;
         private Image fade;
 
@@ -132,7 +134,15 @@ namespace MiniGame.UnityHost
             floorY = savedActorPosition.y;
             cameraSaved = true;
             retro = ViewCamera.GetComponent<RetroScreenEffect>();
-            if (retro != null) { savedBypass = retro.PresentationBypass; retro.PresentationBypass = true; }
+            if (retro != null)
+            {
+                savedBypass = retro.PresentationBypass;
+                savedRetroEnabled = retro.enabled;
+                savedRetroOriginal = retro.PreviewOriginal;
+                savedRetroProfile = retro.PresentationProfile;
+                retro.PreviewOriginal = false;
+                retro.PresentationBypass = true;
+            }
 
             foreach (var roomAudio in RoomComponents<AudioSource>()) audio.Add(new AudioState(roomAudio));
             // OnDisable restores any ordinary dream, bedside isolation and focus effects first.
@@ -330,6 +340,12 @@ namespace MiniGame.UnityHost
 
         public void UpdateRoomSurface()
         {
+            if (retro != null)
+            {
+                retro.enabled = true;
+                retro.PresentationProfile = session.DreamProfile.EndingRetro;
+                retro.PresentationBypass = !session.DreamProfile.EnableEndingRetro;
+            }
             if (Cubemap != null && Cubemap.IsReady)
             {
                 RoomSurface?.Bind(Cubemap.Texture, session.DreamProfile.CubemapYaw);
@@ -402,8 +418,8 @@ namespace MiniGame.UnityHost
                 ViewCamera.farClipPlane = savedFar;
                 ViewCamera.cullingMask = savedCameraMask;
                 ViewCamera.clearFlags = savedCameraFlags;
-                if (retro != null) retro.PresentationBypass = savedBypass;
             }
+            RestoreRetro();
             if (roomDisabled)
             {
                 foreach (var value in behaviours) if (value.Value != null) value.Value.enabled = value.Enabled;
@@ -458,6 +474,16 @@ namespace MiniGame.UnityHost
             Cubemap?.Dispose();
             RoomSurface?.Dispose();
             lighting?.Restore();
+            RestoreRetro();
+        }
+
+        private void RestoreRetro()
+        {
+            if (retro == null) return;
+            retro.PresentationProfile = savedRetroProfile;
+            retro.PresentationBypass = savedBypass;
+            retro.enabled = savedRetroEnabled;
+            retro.PreviewOriginal = savedRetroOriginal;
         }
 
         private void OnDestroy() => CleanupForDestruction();

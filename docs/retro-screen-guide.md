@@ -1,6 +1,14 @@
 # 主场景复古效果调参
 
-打开 `MainRoomCombined`，选择 **MiniGame → 画面 → 复古效果** 或 **调色与像素风格**。Scene／Game 均可预览，进入 Play Mode 后也可以边走动边调参。窗口读取当前场景绑定的资产；当前主场景使用 [RoomLightingReferenceRetro.asset](../UnityProject/Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset)，未绑定时回退到 `RetroScreenDefault.asset`。Scene 请打开场景灯光与 Effects，也可在[房间灯光工具](lighting-tools/guide.md)点击「场景真实预览」。`[verified: RetroScreenWindow.OnGUI；RetroScreenEffect.cs ExecuteAlways/ImageEffectAllowedInSceneView；MainRoomCombined.unity 的 profile 引用；RoomLightingWindow.EnableScenePreview]`
+打开 `MainRoomCombined`，选择 **MiniGame → 画面 → 调色与像素风格**。窗口提供“编辑白天／编辑夜晚”，与[房间灯光工具](lighting-tools/guide.md)共用目标房间和编辑时段。白天绑定 [RoomLightingReferenceRetro.asset](../UnityProject/Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset)，夜晚绑定独立的 [RoomLightingNightRetro.asset](../UnityProject/Assets/MiniGame/Resources/RoomLightingNightRetro.asset)。两者初始参数沿用当前美术配置，可分别调整曝光、色彩、色阶、颗粒与像素化。`[verified: RoomLightingDay.asset/RoomLightingNight.asset ScreenStyle；RetroScreenWindow；RoomLightingAuthoring.GetEditingPeriod]`
+
+“画面预览”可选跟随游戏、白天或夜晚，调色与真实灯光同时切换。游戏中的调色过渡读取床灯原有的过渡进度，不新增计时器；暂停与读档仍使用原灯光状态。Scene View 跟随工具指定的房间；Scene 请打开场景灯光与 Effects，也可点击「场景真实预览」。旧场景未绑定时段调色时继续使用相机原配置。`[verified: RetroScreenEffect.ProfileForRendering；RoomLightingController.NightBlend；RetroScreenPreview.SynchronizeSceneCamera]`
+
+## 白天／夜晚的暗部与亮部
+
+房间灯光窗口的时段按钮下方提供**暗部与亮部**：暗部亮度、暗部颜色、亮部亮度、亮部颜色，以及暗部范围、亮部起点。它们写入当前时段的调色资产，与像素风工具中的暗部／高光参数完全相同，保存灯光配置时也会保存这份调色资产。`[verified: RoomLightingWindow.DrawToneControls；RoomLightingAuthoring.SaveProfile]`
+
+亮度单位为 EV：正数提亮、负数压暗；颜色为白色时不偏色。分区依据画面亮度，真实灯光的遮挡与阴影仍由场景灯光决定。夜晚调整不会覆盖白天；需要继承另一时段的参数时，用“复制白天参数到夜晚／复制夜晚参数到白天”，支持撤销。灯光 JSON 保持只传递灯光参数，导入不会覆盖当前调色资产绑定。`[verified: RetroScreenProfile.ShadowExposure/HighlightExposure；RetroScreen.shader；RetroScreenWindow.OnGUI；RoomLightingPresetIO.ProfileData]`
 
 ## 参数
 

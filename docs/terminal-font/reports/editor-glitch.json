@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 0.09,\r\n  \"summary\": {\r\n    \"total\": 3,\r\n    \"passed\": 3,\r\n    \"failed\": 0,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.TerminalDialogueTextGlitchTests.ArkAtlasCoversUiAndRetainsAllLogicalSizes\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.033102,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.TerminalDialogueTextGlitchTests.DisabledOrIdleEffectRestoresUnchangedGeometry\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.0067058,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"MiniGame.UnityHost.Tests.TerminalDialogueTextGlitchTests.DisturbanceChangesOnlyGlyphVerticesAndPreservesTextAndRandomState\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 0.003452,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

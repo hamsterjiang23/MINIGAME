@@ -38,9 +38,10 @@ namespace MiniGame.UnityHost
         internal static int ActivePixelSize(Camera camera)
         {
             var effect = camera.GetComponent<RetroScreenEffect>();
-            var profile = effect != null ? effect.Profile : null;
+            var profile = effect != null ? effect.RenderProfile : null;
             return effect != null && effect.isActiveAndEnabled && !effect.PreviewOriginal
-                && profile != null && profile.EffectEnabled && profile.Strength > 0 ? profile.PixelSize : 1;
+                && !effect.PresentationBypass
+                && profile != null && profile.EffectEnabled && profile.Strength > 0 ? effect.EffectivePixelSize : 1;
         }
 
         private void PrepareCamera(Camera camera)

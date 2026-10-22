@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e7c270605d801499af9ef1c38e1454, type: 3}
   m_Name: RoomLightingNight
   m_EditorClassIdentifier: 
+  ScreenStyle: {fileID: 11400000, guid: 5f4a4d821d724acab8ac28e6531d469f, type: 2}
   lightMultiplier: 1
   emissionMultiplier: 1
   fadeSeconds: 1.1

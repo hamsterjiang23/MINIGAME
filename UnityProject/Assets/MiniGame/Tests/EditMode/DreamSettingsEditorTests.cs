@@ -21,7 +21,8 @@ namespace MiniGame.UnityHost.Tests
         private PlayerRebellionProfile originalRebellion, rebellion;
         private CompiledDialoguePackage compiled;
         private string originalProfileJson, originalRebellionJson;
-        private string token, profilePath, rebellionPath;
+        private string token, profilePath, rebellionPath, retroPath;
+        private RetroScreenProfile endingRetro;
 
         [SetUp]
         public void SetUp()
@@ -38,8 +39,12 @@ namespace MiniGame.UnityHost.Tests
             token = Guid.NewGuid().ToString("N");
             profilePath = "Assets/MiniGame/Tests/DreamSettingsTest-" + token + "-dream.asset";
             rebellionPath = "Assets/MiniGame/Tests/DreamSettingsTest-" + token + "-rebellion.asset";
+            retroPath = "Assets/MiniGame/Tests/DreamSettingsTest-" + token + "-retro.asset";
             Assert.That(File.Exists(profilePath) || File.Exists(rebellionPath), Is.False);
             profile = Object.Instantiate(originalProfile);
+            endingRetro = Object.Instantiate(originalProfile.EndingRetro);
+            AssetDatabase.CreateAsset(endingRetro, retroPath);
+            profile.EndingRetro = endingRetro;
             rebellion = Object.Instantiate(originalRebellion);
             AssetDatabase.CreateAsset(profile, profilePath);
             AssetDatabase.CreateAsset(rebellion, rebellionPath);
@@ -52,7 +57,8 @@ namespace MiniGame.UnityHost.Tests
             CloseWindow();
             if (profile != null) Undo.ClearUndo(profile);
             if (rebellion != null) Undo.ClearUndo(rebellion);
-            foreach (string path in new[] { profilePath, rebellionPath })
+            if (endingRetro != null) Undo.ClearUndo(endingRetro);
+            foreach (string path in new[] { profilePath, rebellionPath, retroPath })
             {
                 if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
                 Assert.That(Guid.TryParseExact(token, "N", out _), Is.True);
@@ -126,6 +132,9 @@ namespace MiniGame.UnityHost.Tests
             settings.FindProperty("AlignSeconds").floatValue = 2.25f;
             settings.FindProperty("SeaWaveHeight").floatValue = .41f;
             settings.FindProperty("ShoreWashDistance").floatValue = 2.8f;
+            settings.FindProperty("AnimateRoomWater").boolValue = false;
+            settings.FindProperty("EnableEndingRetro").boolValue = false;
+            settings.FindProperty("PanoramaSeaLevel").floatValue = -5.2f;
             var day = settings.FindProperty("Days").GetArrayElementAtIndex(0);
             day.FindPropertyRelative("Duration").floatValue = 42.5f;
             day.FindPropertyRelative("Music").intValue = (int)MiniGameSound.Dream1;
@@ -154,17 +163,26 @@ namespace MiniGame.UnityHost.Tests
             rules.Update();
             rules.FindProperty("Choices").MoveArrayElement(0, 1);
             rules.ApplyModifiedProperties();
+            endingRetro.Strength = .37f;
+            endingRetro.FilmGrainStrength = .04f;
+            EditorUtility.SetDirty(endingRetro);
             Invoke(window, "Save");
             Assert.That(ReadField<string>(window, "error"), Is.Null);
             Assert.That(ReadField<string>(window, "savedMessage"), Does.Contain("配置已保存"));
             CloseWindow();
             Undo.ClearUndo(profile); Undo.ClearUndo(rebellion);
             Resources.UnloadAsset(profile); Resources.UnloadAsset(rebellion);
+            Resources.UnloadAsset(endingRetro); endingRetro = null;
             profile = AssetDatabase.LoadAssetAtPath<DreamSequenceProfile>(profilePath);
             rebellion = AssetDatabase.LoadAssetAtPath<PlayerRebellionProfile>(rebellionPath);
             Assert.That(profile.AlignSeconds, Is.EqualTo(2.25f));
             Assert.That(profile.SeaWaveHeight, Is.EqualTo(.41f).Within(.0001));
             Assert.That(profile.ShoreWashDistance, Is.EqualTo(2.8f).Within(.0001));
+            Assert.That(profile.AnimateRoomWater, Is.False);
+            Assert.That(profile.EnableEndingRetro, Is.False);
+            Assert.That(profile.PanoramaSeaLevel, Is.EqualTo(-5.2f).Within(.0001));
+            Assert.That(profile.EndingRetro.Strength, Is.EqualTo(.37f).Within(.0001));
+            Assert.That(profile.EndingRetro.FilmGrainStrength, Is.EqualTo(.04f).Within(.0001));
             Assert.That(profile.GetDay(1).Duration, Is.EqualTo(42.5f));
             Assert.That(profile.GetDay(1).Music, Is.EqualTo(MiniGameSound.Dream1));
             Assert.That(AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(profile.GetDay(1).Artwork)), Is.EqualTo(artworkGuid));

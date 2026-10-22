@@ -32,6 +32,8 @@ namespace MiniGame.UnityHost.Editor
         internal static void DrawSettings(SerializedObject settings) => DrawSettings(settings, RoomLightingPeriod.Day);
         internal static void DrawSettings(SerializedObject settings, RoomLightingPeriod period)
         {
+            using (new EditorGUI.DisabledScope(true))
+                Draw(settings, "ScreenStyle", "当前时段调色配置", "使用调色与像素风格窗口绑定两份独立资产。");
             EditorGUILayout.LabelField("当前时段整体控制", EditorStyles.boldLabel);
             Draw(settings, "lightMultiplier", "整体灯光倍率");
             Draw(settings, "emissionMultiplier", "整体自发光倍率");
@@ -149,6 +151,7 @@ namespace MiniGame.UnityHost.Editor
             if (controller != next)
             { EndSceneHandleInteraction(); SetToolsHidden(false); ReleaseController(controller); selectedPath = ""; }
             controller = next;
+            editingPeriod = RoomLightingAuthoring.GetEditingPeriod(controller, editingPeriod);
             RoomLightingAuthoring.SetEditingPeriod(controller, editingPeriod);
             profile = controller != null ? controller.GetProfile(editingPeriod) : RoomLightingAuthoring.GetLoadedControllers().Length == 0
                 ? AssetDatabase.LoadAssetAtPath<RoomLightingProfile>(editingPeriod == RoomLightingPeriod.Day
@@ -186,7 +189,7 @@ namespace MiniGame.UnityHost.Editor
                     if (GUILayout.Button("保存" + PeriodLabel + "配置", EditorStyles.toolbarButton)) RoomLightingAuthoring.SaveProfile(profile);
                 if (GUILayout.Button("定位配置", EditorStyles.toolbarButton) && profile != null) { Selection.activeObject = profile; EditorGUIUtility.PingObject(profile); }
                 if (GUILayout.Button("场景真实预览", EditorStyles.toolbarButton)) EnableScenePreview();
-                if (GUILayout.Button("调色与像素风格", EditorStyles.toolbarButton)) RetroScreenWindow.Open();
+                if (GUILayout.Button("调色与像素风格", EditorStyles.toolbarButton)) RetroScreenWindow.OpenForRoom(controller, editingPeriod);
             }
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar))
             {
@@ -229,6 +232,7 @@ namespace MiniGame.UnityHost.Editor
             using (var scrolling = new EditorGUILayout.ScrollViewScope(scroll))
             {
                 scroll = scrolling.scrollPosition;
+                DrawToneControls();
                 DrawSceneLights();
                 EditorGUILayout.Space();
                 showBaseSettings = EditorGUILayout.Foldout(showBaseSettings, PeriodLabel + "完整基础光、环境、地板与地毯", true);
@@ -247,6 +251,34 @@ namespace MiniGame.UnityHost.Editor
                     }
                 }
             }
+        }
+
+        private void DrawToneControls()
+        {
+            EditorGUILayout.LabelField(PeriodLabel + " · 暗部与亮部", EditorStyles.boldLabel);
+            var style = profile.ScreenStyle;
+            var otherStyle = controller != null
+                ? controller.GetProfile(editingPeriod == RoomLightingPeriod.Day ? RoomLightingPeriod.Night : RoomLightingPeriod.Day)?.ScreenStyle : null;
+            if (style == null || style == otherStyle)
+            {
+                EditorGUILayout.HelpBox("先建立昼夜调色配置，即可分别调整暗部和亮部。", MessageType.Info);
+                if (controller != null && controller.HasIndependentProfiles && GUILayout.Button("建立昼夜调色配置"))
+                    RetroScreenSetup.EnsureRoomProfiles(controller);
+                return;
+            }
+            var settings = new SerializedObject(style); settings.Update();
+            EditorGUILayout.PropertyField(settings.FindProperty("colorGradingEnabled"), new GUIContent("启用明暗分区调节"));
+            using (new EditorGUI.DisabledScope(!settings.FindProperty("colorGradingEnabled").boolValue))
+            {
+                EditorGUILayout.PropertyField(settings.FindProperty("shadowExposure"), new GUIContent("暗部亮度（EV）", "+1 表示暗部约两倍亮度，负值压暗。按画面亮度分区，保留真实灯光的阴影遮挡。"));
+                EditorGUILayout.PropertyField(settings.FindProperty("shadowTint"), new GUIContent("暗部颜色"));
+                EditorGUILayout.PropertyField(settings.FindProperty("highlightExposure"), new GUIContent("亮部亮度（EV）", "调整高光区域亮度；负值可压低过亮的灯罩、墙面和地板光斑。"));
+                EditorGUILayout.PropertyField(settings.FindProperty("highlightTint"), new GUIContent("亮部颜色"));
+                EditorGUILayout.PropertyField(settings.FindProperty("shadowEnd"), new GUIContent("暗部范围"));
+                EditorGUILayout.PropertyField(settings.FindProperty("highlightStart"), new GUIContent("亮部起点"));
+            }
+            if (settings.ApplyModifiedProperties()) RetroScreenPreview.ProfileEdited(style);
+            EditorGUILayout.Space();
         }
 
         private string PeriodLabel => editingPeriod == RoomLightingPeriod.Day ? "白天" : "夜晚";

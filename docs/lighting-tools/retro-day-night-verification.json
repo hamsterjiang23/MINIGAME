@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-21",
+  "unity": "2022.3.23f1",
+  "scope": "Independent per-room day/night grading and pixel style, synchronized with existing lighting preview and transition; dark/highlight controls shared by lighting and style tools.",
+  "profiles": {
+    "day": "RoomLightingDay.ScreenStyle -> RoomLightingReferenceRetro",
+    "night": "RoomLightingNight.ScreenStyle -> RoomLightingNightRetro",
+    "initialStyle": "Cloned existing artist settings; no new visual preset imposed."
+  },
+  "controls": [
+    "shadowExposure",
+    "shadowTint",
+    "highlightExposure",
+    "highlightTint",
+    "shadowEnd",
+    "highlightStart"
+  ],
+  "editorTests": {
+    "passed": 28,
+    "failed": 0,
+    "evidence": "Artifacts/Unity/DayNightRetro20261021/editmode-final.xml"
+  },
+  "playModeTests": {
+    "passed": 22,
+    "failed": 0,
+    "evidence": "Artifacts/Unity/DayNightRetro20261021/playmode-final.xml"
+  },
+  "review": "C1 disabled endpoint transition; C2 pinned Scene View target; C3 outline pixel size: fixed and reviewed. Legacy Configure and original-preview regressions fixed and covered by final tests.",
+  "captures": {
+    "dayDefault": "Artifacts/Unity/DayNightRetro20261021/screenshots/day-default.png",
+    "nightDefault": "Artifacts/Unity/DayNightRetro20261021/screenshots/night-default.png",
+    "nightAdjustedExample": "Artifacts/Unity/DayNightRetro20261021/screenshots/night-adjusted-example.png",
+    "exampleScope": "Adjusted screenshot uses temporary test profiles to demonstrate coarse pixels and shadow/highlight controls; not the authored default."
+  },
+  "sourceFiles": [
+    {
+      "path": "Assets/MiniGame/Runtime/RetroScreenEffect.cs",
+      "sha256": "E95961B2701B20D46C2A6487056AF7665741FF57C88EF63201D02E19AE79CA8E",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Runtime/RetroScreenProfile.cs",
+      "sha256": "F66C1C1CBAB70800EF88389285C2D808DFDC778774D4746783D77FC46C1364C9",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Runtime/RoomLightingProfile.cs",
+      "sha256": "CE73087BF5BAF9FF3055186C49E1BC95D37E11D596EABC646EB729E07D3E719D",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Runtime/RoomLightingController.cs",
+      "sha256": "76E23E7BE97C25CB46D798F9493ABFFBE6A52A36AC69D8430A583166E830D687",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Runtime/RoomLightingPlayerProbe.cs",
+      "sha256": "D417253A9CD0450561B13B1DF3BE432C2164B7DB12765DA40E22C8C87967ABF4",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Runtime/InteractionFocusOutline.cs",
+      "sha256": "7AA1C543ACF412E15F2773718276F7F4D14FBFA8694C763296CB5C5F381A662C",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Editor/RetroScreenEditor.cs",
+      "sha256": "894D90DCFB2CB9660B925FE4EB4C6114E1697768AD1870CAA839D18A453856C1",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Editor/RoomLightingWindow.cs",
+      "sha256": "71C9D12E4B4F0E57874ED12F9C9F481FE23246B4F9B3F085AE0453ED60F361CF",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Editor/RoomLightingAuthoring.cs",
+      "sha256": "040477FA3828849984D676993C712B4BA481CE27CFB581FAA0593192F8AE4F5B",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Editor/RoomLightingSetup.cs",
+      "sha256": "3887DF5D47A332A8E0BE4D4FEDED4396B040E2304E7CD70A1D00BDA29C856A06",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Resources/RoomLightingDay.asset",
+      "sha256": "401B4BFF5C7112F70FC7AB5456EF5217D93782B725CF3808FA71623DA8A966B4",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Resources/RoomLightingNight.asset",
+      "sha256": "04A25F6A9A051EB1FA275366D391854269DE8B20E29065EEA09EB51AFED63DF0",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset",
+      "sha256": "23F86B2A839D8420464E4A1059780FF31F29AE0539E0A972C31C9C347F0E1054",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Resources/RoomLightingNightRetro.asset",
+      "sha256": "7B2A3F0022C0C3FC885D72522F743B4B4865F861CB29BD24569BA5A2FCED52F7",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Tests/EditMode/DayNightRetroToolsTests.cs",
+      "sha256": "754F87AE13EE4555DCF470A12BAABA7D1239A2DDF876DD1FADBAB8EFA974E626",
+      "matchesTestedSnapshot": true
+    },
+    {
+      "path": "Assets/MiniGame/Tests/PlayMode/DayNightRetroPlayModeTests.cs",
+      "sha256": "D063F2F5F12C46999C25A429B99D431C4BBFD9C6BC608BBCA3FFA8167F6CF911",
+      "matchesTestedSnapshot": true
+    }
+  ],
+  "limits": [
+    "Validation used an isolated Editor snapshot. The shared active Editor was not stopped.",
+    "No new Windows Player package or real-time Player performance measurement in this change.",
+    "Lighting JSON preserves style asset bindings and carries lighting parameters only."
+  ]
+}

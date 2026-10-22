@@ -57,6 +57,7 @@ namespace MiniGame.UnityHost.Editor
         private Vector2 scroll;
         private bool showRawRules;
         private DreamSequenceDirector preview;
+        private UnityEditor.Editor endingRetroEditor;
 
         [MenuItem("MiniGame/梦境与结局")]
         public static void Open()
@@ -64,6 +65,15 @@ namespace MiniGame.UnityHost.Editor
             var window = GetWindow<DreamSettingsWindow>("梦境与结局");
             window.minSize = new Vector2(540, 440);
             window.Show();
+        }
+
+        [MenuItem("MiniGame/梦境/海滩参数面板")]
+        public static void OpenEndingPanel()
+        {
+            Open();
+            var window = GetWindow<DreamSettingsWindow>("梦境与结局");
+            window.tab = 1;
+            window.Repaint();
         }
 
         private void OnEnable()
@@ -85,6 +95,7 @@ namespace MiniGame.UnityHost.Editor
             EditorSceneManager.sceneClosing -= OnSceneClosing;
             EditorApplication.projectChanged -= ReloadChoices;
             settings?.Dispose(); rules?.Dispose();
+            if (endingRetroEditor != null) DestroyImmediate(endingRetroEditor);
         }
 
         private void ResolveAssets()
@@ -180,12 +191,12 @@ namespace MiniGame.UnityHost.Editor
                 using (new EditorGUI.DisabledScope(!DreamCubemapPreview.IsActive))
                     if (GUILayout.Button("停止全景预览")) Run(DreamCubemapPreview.Stop);
             }
-            EditorGUILayout.LabelField("房门视点 · 固定全景墙纸", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("房门视点 · 海滩梦境", EditorStyles.boldLabel);
             Draw(settings, "UseRoomCubemapEnding");
             Draw(settings, "RoomPanoramaSkybox");
             Draw(settings, "ShowRoomOutline");
             Draw(settings, "CubemapYaw");
-            EditorGUILayout.HelpBox("墙纸以 Combined 房门的 Player spawn 视点对齐：站在门口看起来是海滩天空盒，向床走近后会看出房间墙面。图像只烘焙一次，走动、暂停或躺下都不会重新捕获。", MessageType.None);
+            EditorGUILayout.HelpBox("海滩构图固定在房门出生点；移动后会显露房间布景。动态海面使用旧海水 Shader，按演出时间更新，暂停时冻结。", MessageType.None);
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("固定海滩图的烘焙来源", EditorStyles.boldLabel);
             Draw(settings, "CubemapSourcePrefab");
@@ -217,11 +228,28 @@ namespace MiniGame.UnityHost.Editor
             Draw(settings, "FloatAmplitude"); Draw(settings, "FloatPeriod"); Draw(settings, "FloatTiltDegrees");
             Draw(settings, "DriftSpeed"); Draw(settings, "CloudSpeed");
             EditorGUILayout.Space(); EditorGUILayout.LabelField("海浪与岸边", EditorStyles.boldLabel);
+            Draw(settings, "AnimateRoomWater");
+            Draw(settings, "PanoramaWaterMask");
+            Draw(settings, "PanoramaSeaLevel"); Draw(settings, "PanoramaShoreDistance");
+            Draw(settings, "CubemapRefreshRate");
             Draw(settings, "SeaWaveHeight"); Draw(settings, "SeaWavePeriod"); Draw(settings, "SeaWaveLength");
             Draw(settings, "ShoreWashDistance"); Draw(settings, "SeaFoamAmount");
             EditorGUILayout.HelpBox(settings.FindProperty("UseRoomCubemapEnding").boolValue
-                ? "固定海滩图取海浪时钟的第 0 秒。调整海浪参数后需重新烘焙；游戏内墙纸不随时间变化。"
+                ? "播放中调整波高、周期、波长、冲刷、泡沫、海平面或岸线距离会实时生效。更换海面遮罩后需重新进入梦境；关闭动态海浪则显示原全景。"
                 : "海面和湿沙共用同一演出时钟；暂停会停止波浪，读档恢复当时的浪形。播放中调整参数会实时更新。", MessageType.None);
+            if (settings.FindProperty("UseRoomCubemapEnding").boolValue
+                && settings.FindProperty("AnimateRoomWater").boolValue
+                && settings.FindProperty("PanoramaWaterMask").objectReferenceValue == null)
+                EditorGUILayout.HelpBox("请指定当前海滩的全景海面遮罩；缺少遮罩时保持静态全景。", MessageType.Warning);
+            EditorGUILayout.Space(); EditorGUILayout.LabelField("梦境复古效果 · 独立配置", EditorStyles.boldLabel);
+            Draw(settings, "EnableEndingRetro");
+            Draw(settings, "EndingRetro");
+            var retroProfile = settings.FindProperty("EndingRetro").objectReferenceValue as RetroScreenProfile;
+            if (retroProfile != null)
+            {
+                UnityEditor.Editor.CreateCachedEditor(retroProfile, typeof(RetroScreenProfileEditor), ref endingRetroEditor);
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) endingRetroEditor.OnInspectorGUI();
+            }
             EditorGUILayout.Space(); EditorGUILayout.LabelField("字幕与配音", EditorStyles.boldLabel);
             Draw(settings, "SubtitleDelay");
             var lines = settings.FindProperty("EndingLines");
@@ -451,6 +479,7 @@ namespace MiniGame.UnityHost.Editor
                 }
                 EditorUtility.SetDirty(profile); EditorUtility.SetDirty(rebellion);
                 AssetDatabase.SaveAssetIfDirty(profile); AssetDatabase.SaveAssetIfDirty(rebellion);
+                if (profile.EndingRetro != null) AssetDatabase.SaveAssetIfDirty(profile.EndingRetro);
                 savedMessage = "配置已保存。反叛规则从下一次新游戏生效。";
             });
         }

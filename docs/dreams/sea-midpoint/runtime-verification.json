@@ -1,0 +1,89 @@
+{
+  "engine": "Unity 2022.3.23f1c1",
+  "project": "F:/AAMINIGAME/MINIGAME/UnityProject",
+  "parameter_panel": "MiniGame/梦境/海滩参数面板",
+  "tests": {
+    "play_mode": {
+      "result": "Passed",
+      "total": "20",
+      "passed": "20",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "edit_mode": {
+      "result": "Passed",
+      "total": "26",
+      "passed": "26",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "gpu_capture": {
+    "unity": "2022.3.23f1c1",
+    "sceneScope": "Authored production assets and shaders rendered on GPU; Campaign Play Mode tested separately.",
+    "changedWavePixels": 25373,
+    "changedRetroPixels": 230400,
+    "captureFrames": 4,
+    "fixedCaptureEye": true,
+    "liveParameters": true,
+    "passed": true
+  },
+  "source_matches_validated_snapshot": true,
+  "source_sha256": {
+    "Runtime/DreamPanoramaWater.cs": "7cdc9ac77191674fe59961a2f767318252dafe7392647f487dbf52f3706ed4b9",
+    "Runtime/DreamCubemapRenderer.cs": "b9136f52156c54bd96ec01ca535361e5f5ea9792469025bb7638d31d962f1367",
+    "Runtime/DreamEndingController.cs": "47d4a45fd98da8cde14ca0ceae76fe6f7364aab1cd0a709fd4a2cf8541ad72ae",
+    "Runtime/RoomDreamEnding.cs": "7962dbe62907a394c63efdb28b80bbe899a6d74fdecddcc8c781685180deeb73",
+    "Runtime/DreamSequenceProfile.cs": "7964e206ce01db4c54af35f85c6cb8e088f00baac6c9c2755da86445c8850e47",
+    "Runtime/RetroScreenEffect.cs": "4a430486311b5d107fd65f4d20fcfc053c3b614a1e2f497fe621135f0dab2d74",
+    "Editor/DreamSettingsWindow.cs": "a2403067365509ddfa12a8b81ab60e1a695482c22f80ee00360b07b8bbbe2f17",
+    "Editor/DreamEndingRuntimeCapture.cs": "33da1210d7073ea45cd1092ecbbbd1af01f642e9143d2c5051d9cc60877b5a0f",
+    "Tests/PlayMode/DreamDynamicSeaPlayModeTests.cs": "dc8218841f8f6e687c722a07642cff3ffed2eedcff8e36e271c9e49aa9febc84",
+    "Tests/PlayMode/DreamCubemapPlayModeTests.cs": "98ac1d1dcf1bc411336d721dd3045dd579629a8dce4daae829c4379e9f3d52b6",
+    "Tests/EditMode/DreamSettingsEditorTests.cs": "45a950b575be9785a53d54bc7456775f3cd6c9eae7ab6ec9b35c7820420910fd",
+    "Resources/DreamSea.shader": "c45fed8ed9663b38a13f5f5c1f71b6e9fc17cc68e01ab336e452b0178e9a0665",
+    "Resources/MiniGame/DreamSequenceDefault.asset": "f26fdda8c57da0531029a832369816e75a0b8b1cad50290ac79961394530c86a",
+    "Resources/MiniGame/DreamEndingRetro.asset": "8aad645d28ab3e388866ca367533aed9482b0cdd7e4ce5be557594da7a37c2ab"
+  },
+  "scope": {
+    "production_campaign_room_play_mode": true,
+    "start_to_finish_campaign_playthrough": false,
+    "player_build": false,
+    "live_editor_panel_screenshot": false
+  },
+  "review": "Three findings corrected: optional sea assets in static mode; retro-only image baseline; early skybox validation.",
+  "documentation_links": "passed",
+  "tests_scope": "Earlier 20 Play Mode/26 Edit Mode code regression; current asset revision additionally passed the three targeted Play Mode tests below.",
+  "latest_asset_revision": {
+    "revision": "source-bed-removed-camera-height",
+    "report": "retake-verification.json",
+    "play_mode": {
+      "result": "Passed",
+      "total": "3",
+      "passed": "3",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "gpu_capture": {
+      "unity": "2022.3.23f1c1",
+      "sceneScope": "Authored production assets and shaders rendered on GPU; Campaign Play Mode tested separately.",
+      "changedWavePixels": 10224,
+      "changedRetroPixels": 230400,
+      "captureFrames": 4,
+      "fixedCaptureEye": true,
+      "liveParameters": true,
+      "passed": true
+    },
+    "cube_import": {
+      "unity": "2022.3.23f1c1",
+      "source": "SeaMidpointPanorama.asset",
+      "scope": "Isolated Unity import, six-face byte comparison and GPU skybox rendering; not a full Campaign Play Mode test.",
+      "faces": 6,
+      "faceSize": 1024,
+      "maximumStoredChannelError": 0.0,
+      "maximumCenterRenderError": 0.10196079313755035,
+      "maximumFaceMeanRenderError": 0.01078937016427517,
+      "passed": true
+    }
+  }
+}

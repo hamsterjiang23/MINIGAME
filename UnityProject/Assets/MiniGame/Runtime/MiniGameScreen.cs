@@ -86,6 +86,9 @@ namespace MiniGame.UnityHost
         public bool TransitionLocked => transitionLocked;
         public bool HistoryOpen => terminalView != null && terminalView.HistoryOpen;
         public bool PauseManualVisible => pauseMenu != null && pauseMenu.ManualVisible;
+        public bool PauseSettingsVisible => pauseMenu != null && pauseMenu.SettingsVisible;
+        public bool PauseSubmenuVisible => PauseManualVisible || PauseSettingsVisible;
+        public bool TryClosePauseSettings() => pauseMenu != null && pauseMenu.TryCloseSettings();
         public bool TryClosePauseManual() => pauseMenu != null && pauseMenu.TryCloseManual();
         public string CurrentRoomCaption => propNarration != null && propNarration.IsOpen ? propNarration.CurrentText
             : roomCaption != null ? roomCaption.text : string.Empty;
@@ -361,7 +364,12 @@ namespace MiniGame.UnityHost
         public void SetDialogueInteractable(bool enabled)
         { dialogueInteractable = enabled; ApplyInputGate(); }
 
-        public bool TryCloseHistory() => false;
+        public bool TryCloseHistory()
+        {
+            if (terminalView == null || !terminalView.CloseHistory()) return false;
+            pauseClosedFrame = Time.frameCount;
+            return true;
+        }
 
         private void Update()
         {
@@ -396,7 +404,7 @@ namespace MiniGame.UnityHost
                 if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) AdvancePropNarration();
                 return;
             }
-            linePlayback.Tick(Time.unscaledDeltaTime);
+            if (!HistoryOpen) linePlayback.Tick(Time.unscaledDeltaTime);
             if (IsSupervisorCue(current) && Input.GetMouseButtonDown(0) && !PointerIsOverWorldControl())
             {
                 AdvanceWorldDialogue();
@@ -407,10 +415,10 @@ namespace MiniGame.UnityHost
         }
 
         private static readonly KeyCode[] DialogueKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.Return,
-            KeyCode.KeypadEnter, KeyCode.Space, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4 };
+            KeyCode.KeypadEnter, KeyCode.Space, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.F3 };
 
         // The same input path is used by live keyboard input and PlayMode checks.
-        // Escape stays in MiniGameBootstrap; the terminal exposes no settings/history input modes.
+        // Escape stays in MiniGameBootstrap and closes the read-only record viewer before opening pause.
         public bool HandleTerminalKey(KeyCode key)
         {
             if (PresentationToolsBlockInput) return false;
@@ -421,6 +429,14 @@ namespace MiniGame.UnityHost
             if (current.TerminalOpen)
             {
                 if (terminalReveal < .999f || PowerPhase != TerminalPowerPhase.Running) return false;
+                if (HistoryOpen)
+                {
+                    if (key == KeyCode.F3 || key == KeyCode.Escape) return TryCloseHistory();
+                    if (key == KeyCode.UpArrow || key == KeyCode.DownArrow)
+                        terminalView.ScrollSavedHistory(key == KeyCode.UpArrow ? 1 : -1);
+                    return key != KeyCode.F2;
+                }
+                if (key == KeyCode.F3) return terminalView.OpenHistory();
                 if (current.TerminalPage == TerminalPage.SelfReview) return terminalView.HandleSelfReviewKey(key);
                 if (terminalView.HandleDirectoryKey(key) || terminalView.HandleArchiveKey(key)) return true;
                 if (terminalView.HandleDispositionKey(key)) return true;
@@ -669,10 +685,10 @@ namespace MiniGame.UnityHost
             closeInspection = MakeButton(ir, "CloseInspection", "记录并返回 [ESC]", () => runtime.CloseInspection());
             SetRect(closeInspection.GetComponent<RectTransform>(), new Vector2(.58f, .04f), new Vector2(.95f, .15f));
 
-            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期", "操作手册", "退出游戏" };
+            var labels = new[] { "继续检查", "保存进度", "读取存档", "开始新检查期", "游戏设置", "操作手册", "退出游戏" };
             Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(),
-                () => RestartRequested?.Invoke(), () => pauseMenu.ShowManual(), () => Application.Quit() };
-            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "", "" }, actions);
+                () => RestartRequested?.Invoke(), () => pauseMenu.ShowSettings(), () => pauseMenu.ShowManual(), () => Application.Quit() };
+            pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "", "", "" }, actions);
             pauseMenu.SetHint("保存当前进度，下次可从这里继续检查。");
             fade = MakePanel(canvasRoot, "PresentationFade", Color.clear, Vector2.zero, Vector2.one).GetComponent<Image>();
             fade.raycastTarget = false;

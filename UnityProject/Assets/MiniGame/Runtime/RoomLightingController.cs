@@ -32,6 +32,15 @@ namespace MiniGame.UnityHost
         private readonly Dictionary<Light, SceneLightSettings> dayLights = new Dictionary<Light, SceneLightSettings>();
         public RoomLightingProfile Profile => profile;
         public RoomLightingProfile NightProfile => nightProfile;
+        public float NightBlend
+        {
+            get
+            {
+                var guidance = GetBedtimeGuidance();
+                return guidance != null && guidance.isActiveAndEnabled ? Mathf.SmoothStep(0, 1, guidance.Isolation)
+                    : PreviewMode == RoomLightingPreviewMode.Night ? 1 : 0;
+            }
+        }
         public bool HasIndependentProfiles => profile != null && nightProfile != null && profile != nightProfile;
         public RoomLightingProfile GetProfile(RoomLightingPeriod period)
         {

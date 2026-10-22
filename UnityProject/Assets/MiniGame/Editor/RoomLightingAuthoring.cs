@@ -258,6 +258,8 @@ namespace MiniGame.UnityHost.Editor
 
         public static void SetEditingPeriod(RoomLightingController controller, RoomLightingPeriod period)
         { if (controller != null) EditingPeriods[controller] = period; }
+        public static RoomLightingPeriod GetEditingPeriod(RoomLightingController controller, RoomLightingPeriod fallback = RoomLightingPeriod.Day)
+            => controller != null && EditingPeriods.TryGetValue(controller, out var period) ? period : fallback;
         public static void ClearEditingPeriod(RoomLightingController controller)
         { if (controller != null) EditingPeriods.Remove(controller); }
 
@@ -329,6 +331,8 @@ namespace MiniGame.UnityHost.Editor
         {
             RequirePersistent(profile);
             AssetDatabase.SaveAssetIfDirty(profile); Pending.Remove(profile);
+            if (profile.ScreenStyle != null && EditorUtility.IsPersistent(profile.ScreenStyle))
+                AssetDatabase.SaveAssetIfDirty(profile.ScreenStyle);
         }
         public static void SavePendingChanges()
         {

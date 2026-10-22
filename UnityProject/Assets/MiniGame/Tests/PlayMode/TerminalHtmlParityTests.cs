@@ -70,7 +70,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator RemovedFunctionKeysLeavePassiveTranscriptAndDialogueAvailable()
+        public IEnumerator ReadOnlyF3RecordsPreserveTranscriptAndBlockUnderlyingChoices()
         {
             var runtime = CreateRuntime(); var owner = new GameObject("Passive transcript test");
             var screen = owner.AddComponent<MiniGameScreen>();
@@ -82,13 +82,31 @@ namespace MiniGame.UnityHost.Tests
                 screen.ShowResponseButtons(Responses(),_=>advanced++); yield return null;
                 var recordKeys=runtime.GetView().Transcript.Select(entry=>entry.Key).ToArray();
                 Assert.That(screen.HandleTerminalKey(KeyCode.F2),Is.False);
-                Assert.That(screen.HandleTerminalKey(KeyCode.F3),Is.False);
+                Assert.That(screen.HandleTerminalKey(KeyCode.F3),Is.True);
+                Assert.That(screen.HistoryOpen,Is.True);
+                CaptureTerminalSource(screen,"ark-history");
+                AssertGlyphEffectIsScoped(screen);
+                CaptureDefaultTextMotion(screen);
+                screen.HandleTerminalKey(KeyCode.Return);
+                screen.HandleTerminalKey(KeyCode.Alpha1);
+                Assert.That(advanced,Is.Zero,"The record viewer cannot activate controls behind it.");
+                Assert.That(screen.TryCloseHistory(),Is.True);
                 Assert.That(screen.HistoryOpen,Is.False);
-                Assert.That(screen.TryCloseHistory(),Is.False);
+                yield return null;
+                CaptureTerminalSource(screen,"ark-live-transcript");
                 Assert.That(screen.GetComponentsInChildren<Transform>(true).Any(t=>t.name=="TerminalSettings"||t.name=="HistoryTab"),Is.False);
                 var rows=screen.GetComponentsInChildren<Text>(false).Where(t=>t.name.StartsWith("TranscriptText")).ToArray();
                 Assert.That(rows,Has.Length.EqualTo(8),"The passive scrollable transcript must retain all saved records.");
                 Assert.That(rows.Select(row=>row.text),Is.EqualTo(Enumerable.Range(0,8).Select(i=>"记录"+i+"：审查对话")));
+                var bitmapLabels=screen.GetComponentsInChildren<TerminalBitmapText>(true).ToArray();
+                Assert.That(bitmapLabels.All(label=>label.ArkTypeface==TerminalPixelFont.Default),Is.True);
+                foreach(var label in bitmapLabels)
+                {
+                    bool dialogue=label.name.StartsWith("TranscriptText")||label.name.StartsWith("TranscriptSpeaker")
+                        ||label.name.StartsWith("HistoryTranscriptText")||label.name.StartsWith("HistoryTranscriptSpeaker");
+                    Assert.That(label.GetComponent<TerminalDialogueTextGlitch>()!=null,Is.EqualTo(dialogue),label.name);
+                }
+                Assert.That(bitmapLabels.Count(label=>label.name.StartsWith("HistoryTranscriptText")),Is.EqualTo(8));
                 Assert.That(runtime.GetView().Transcript.Count(entry=>entry.SourceNodeId.StartsWith("passive-",StringComparison.Ordinal)),Is.EqualTo(8));
                 Assert.That(runtime.GetView().Transcript.Select(entry=>entry.Key),Is.EqualTo(recordKeys),"Removed function keys must not alter saved transcript entries.");
                 var scroll=rows.Last().GetComponentInParent<ScrollRect>();
@@ -220,5 +238,82 @@ namespace MiniGame.UnityHost.Tests
 
         private static GameObject ObjectNamed(MiniGameScreen screen, string name) =>
             screen.GetComponentsInChildren<Transform>(true).Single(item => item.name == name).gameObject;
+
+        private static void CaptureTerminalSource(MiniGameScreen screen, string name)
+        {
+            if (!Application.isEditor) return;
+            var display = screen.TerminalDisplay; display.RenderFrame();
+            var target = display.Texture; var active = RenderTexture.active;
+            var pixels = new Texture2D(target.width,target.height,TextureFormat.RGBA32,false);
+            try
+            {
+                RenderTexture.active=target;
+                pixels.ReadPixels(new Rect(0,0,target.width,target.height),0,0); pixels.Apply();
+                string folder=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../../Artifacts/TerminalArk20261021/Visuals"));
+                System.IO.Directory.CreateDirectory(folder);
+                System.IO.File.WriteAllBytes(System.IO.Path.Combine(folder,name+".png"),pixels.EncodeToPNG());
+            }
+            finally { RenderTexture.active=active; Object.Destroy(pixels); }
+        }
+
+        private static void AssertGlyphEffectIsScoped(MiniGameScreen screen)
+        {
+            var effects=screen.GetComponentsInChildren<TerminalDialogueTextGlitch>(true);
+            var originals=effects.Select(effect=>effect.Settings).ToArray();
+            var seeds=effects.Select(effect=>effect.Seed).ToArray();
+            var preview=ScriptableObject.CreateInstance<TerminalDialogueTextSettings>();
+            preview.Intensity=preview.BurstChance=preview.GlyphFraction=1; preview.HorizontalPixels=0; preview.VerticalPixels=2;
+            var heading=TextNamed(screen,"TerminalVersion");
+            var body=TextNamed(screen,"HistoryTranscriptText"); string text=body.text;
+            try
+            {
+                foreach(var effect in effects)
+                {
+                    effect.Configure(preview); effect.PreviewClock=0; effect.Seed=123;
+                    effect.GetComponent<TerminalBitmapText>().SetVerticesDirty();
+                }
+                screen.TerminalDisplay.RenderFrame();
+                var active=body.canvasRenderer.GetMesh().vertices;
+                var stable=heading.canvasRenderer.GetMesh().vertices;
+                foreach(var effect in effects)
+                { effect.PreviewClock=.1f; effect.GetComponent<TerminalBitmapText>().SetVerticesDirty(); }
+                screen.TerminalDisplay.RenderFrame();
+                var idle=body.canvasRenderer.GetMesh().vertices;
+                Assert.That(active.Length,Is.GreaterThan(0));
+                Assert.That(active.SequenceEqual(idle),Is.False,"The real Canvas glyph mesh must react to the preview clock.");
+                Assert.That(active.Zip(idle,(a,b)=>a.x==b.x).All(value=>value),Is.True,"The default haunting displacement is vertical.");
+                Assert.That(active.Zip(idle,(a,b)=>a.y>b.y).Any(value=>value),Is.True);
+                Assert.That(active.Zip(idle,(a,b)=>a.y<b.y).Any(value=>value),Is.True);
+                Assert.That(heading.canvasRenderer.GetMesh().vertices,Is.EqualTo(stable),"Non-dialogue headings remain fixed.");
+                Assert.That(body.text,Is.EqualTo(text));
+            }
+            finally
+            {
+                for(int index=0;index<effects.Length;index++)
+                { effects[index].Configure(originals[index]); effects[index].PreviewClock=null; effects[index].Seed=seeds[index]; }
+                Object.Destroy(preview);
+            }
+        }
+
+        private static void CaptureDefaultTextMotion(MiniGameScreen screen)
+        {
+            if(!Application.isEditor) return;
+            var effects=screen.GetComponentsInChildren<TerminalDialogueTextGlitch>(true);
+            try
+            {
+                for(int frame=0;frame<16;frame++)
+                {
+                    float clock=(frame/2)*.125f+(frame%2==0?0:.075f);
+                    foreach(var effect in effects)
+                    { effect.PreviewClock=clock; effect.GetComponent<TerminalBitmapText>().SetVerticesDirty(); }
+                    CaptureTerminalSource(screen,"ark-vertical-"+frame.ToString("00"));
+                }
+            }
+            finally
+            {
+                foreach(var effect in effects)
+                { effect.PreviewClock=null; effect.GetComponent<TerminalBitmapText>().SetVerticesDirty(); }
+            }
+        }
     }
 }

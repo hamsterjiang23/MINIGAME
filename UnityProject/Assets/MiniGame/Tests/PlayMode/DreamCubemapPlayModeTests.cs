@@ -365,6 +365,7 @@ namespace MiniGame.UnityHost.Tests
             var originalProfile = host.DreamProfile;
             string originalJson = JsonUtility.ToJson(originalProfile);
             var profile = Own(Object.Instantiate(originalProfile));
+            profile.AnimateRoomWater = false; // This regression deliberately exercises the static-wallpaper option.
             profile.CubemapFaceSize = 256;
             profile.LieDownSeconds = .2f;
             profile.ShowRoomOutline = false;
@@ -556,6 +557,7 @@ namespace MiniGame.UnityHost.Tests
             host = Object.FindObjectOfType<MiniGameBootstrap>();
             Assert.That(host, Is.Not.Null);
             var profile = Own(Object.Instantiate(host.DreamProfile));
+            profile.AnimateRoomWater = false; // Dynamic water has separate clock and shader coverage.
             profile.CubemapFaceSize = 256;
             profile.LieDownSeconds = 1;
             Assert.That(profile.RoomPanoramaSkybox, Is.Not.Null, "The shipped static room panorama must be configured.");

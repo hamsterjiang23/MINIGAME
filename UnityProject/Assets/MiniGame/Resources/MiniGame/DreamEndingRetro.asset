@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73100fd2020e40bc8648b20dedb91018, type: 3}
+  m_Name: DreamEndingRetro
+  m_EditorClassIdentifier: 
+  effectEnabled: 1
+  strength: 1
+  pixelSize: 1
+  fullscreenQuantization: 1
+  levels: 16
+  gammaBefore: 0.906
+  gammaAfter: 1.023
+  colorGradingEnabled: 1
+  postExposure: 0.918
+  contrast: 12.6
+  saturation: -52.6
+  shadowTint: {r: 0.30650786, g: 0.23137254, b: 1, a: 1}
+  midtoneTint: {r: 1, g: 0.6745098, b: 0.93964684, a: 1}
+  highlightTint: {r: 0.56078434, g: 0.9688448, b: 1, a: 1}
+  shadowExposure: -0.2
+  midtoneExposure: 0
+  highlightExposure: 0
+  shadowEnd: 0.35
+  highlightStart: 0.65
+  neutralTonemapping: 1
+  perceptualQuantization: 0
+  quantizationStrength: 1
+  ditherStrength: 0
+  filmGrainStrength: 0.05
+  useVirtualResolution: 0
+  virtualHeight: 540

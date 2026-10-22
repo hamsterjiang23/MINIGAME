@@ -1,0 +1,295 @@
+{
+  "faces": [
+    {
+      "face": "px",
+      "size": [
+        1024,
+        1024
+      ],
+      "mean_rgb": [
+        161.61955547332764,
+        166.39374446868896,
+        168.19582557678223
+      ],
+      "extrema": [
+        [
+          0,
+          218
+        ],
+        [
+          0,
+          215
+        ],
+        [
+          0,
+          215
+        ]
+      ]
+    },
+    {
+      "face": "nx",
+      "size": [
+        1024,
+        1024
+      ],
+      "mean_rgb": [
+        188.61887454986572,
+        186.8223056793213,
+        176.8306016921997
+      ],
+      "extrema": [
+        [
+          29,
+          216
+        ],
+        [
+          29,
+          216
+        ],
+        [
+          21,
+          216
+        ]
+      ]
+    },
+    {
+      "face": "py",
+      "size": [
+        1024,
+        1024
+      ],
+      "mean_rgb": [
+        153.73820686340332,
+        172.5096435546875,
+        190.27192878723145
+      ],
+      "extrema": [
+        [
+          84,
+          197
+        ],
+        [
+          122,
+          197
+        ],
+        [
+          168,
+          200
+        ]
+      ]
+    },
+    {
+      "face": "ny",
+      "size": [
+        1024,
+        1024
+      ],
+      "mean_rgb": [
+        189.45596504211426,
+        175.2589168548584,
+        152.58942413330078
+      ],
+      "extrema": [
+        [
+          48,
+          218
+        ],
+        [
+          50,
+          202
+        ],
+        [
+          40,
+          187
+        ]
+      ]
+    },
+    {
+      "face": "pz",
+      "size": [
+        1024,
+        1024
+      ],
+      "mean_rgb": [
+        160.70954132080078,
+        169.27445125579834,
+        170.81608390808105
+      ],
+      "extrema": [
+        [
+          45,
+          218
+        ],
+        [
+          69,
+          215
+        ],
+        [
+          72,
+          215
+        ]
+      ]
+    },
+    {
+      "face": "nz",
+      "size": [
+        1024,
+        1024
+      ],
+      "mean_rgb": [
+        157.22869873046875,
+        156.64382362365723,
+        154.05275630950928
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    }
+  ],
+  "cube": "UnityProject\\Assets\\MiniGame\\Art\\DreamEnding\\SeaMidpointPanorama.asset",
+  "cubemap_guid": "1ffd31a6106b4da3bbed29b13ea58ebf",
+  "material_guid": "83e91a72e75b4b8f80c037724a51789c",
+  "rgba32_bytes": 25165824,
+  "profile_bindings_updated": 1,
+  "runtime_verification": "Unity 2022.3 import/GPU rendering plus three dynamic sea Play Mode tests passed after no-bed camera-height retake.",
+  "capture_settings": {
+    "source": "C:\\Users\\admin\\Downloads\\sea(1).blend",
+    "source_had_unsaved_changes": true,
+    "cameras": {
+      "Camera": [
+        -12.888055801391602,
+        -50.86968994140625,
+        5.08964204788208
+      ],
+      "Camera2": [
+        -13.02441692352295,
+        -44.144744873046875,
+        4.80019474029541
+      ]
+    },
+    "spawn_blender": [
+      -12.956235885620117,
+      -47.50721740722656,
+      3.384918689727783
+    ],
+    "eye_blender": [
+      -12.956235885620117,
+      -47.50721740722656,
+      4.944918632507324
+    ],
+    "eye_height_m": 1.56,
+    "room_source": "F:\\AAMINIGAME\\MINIGAME\\Art\\MainRoom\\reference\\MainRoomReference.blend",
+    "room_authored_spawn": [
+      5.900000095367432,
+      1.75,
+      -0.6728799939155579
+    ],
+    "room_reference_hidden_for_render": true,
+    "room_rotation_blender_degrees": 183.41746937689308,
+    "initial_forward_blender": [
+      -0.05961073562502861,
+      0.998221755027771,
+      0.0
+    ],
+    "render": {
+      "engine": "CYCLES",
+      "device": "GPU CUDA",
+      "face_size": 1024,
+      "samples": 32
+    },
+    "coordinate_contract": "Reference FBX converts Blender (-x,-y,z) to Unity (x,z,y). House rotation=capture yaw+pi, so Unity (x,y,z) matches captured Rz(yaw)*(x,z,y). Native Cubemap PNG rows are top-down, verified on Unity D3D11.",
+    "spawn_alignment_error_m": 2.384185791015625e-07,
+    "camera_midpoint_blender": [
+      -12.956235885620117,
+      -47.50721740722656,
+      4.944918632507324
+    ],
+    "previous_eye_blender": [
+      -12.956235885620117,
+      -47.50721740722656,
+      6.504918575286865
+    ],
+    "capture_eye_matches_camera_midpoint": true,
+    "removed_source_objects": [
+      "SM_bed_1"
+    ],
+    "capture_eye_alignment_error_m": 0.0,
+    "panorama_sea_level": -4.94,
+    "capture_revision": "source-bed-removed-camera-height",
+    "blender_frame": 1,
+    "remaining_source_bed_objects": [],
+    "final_eye_alignment_error_m": 0.0,
+    "water_mask_rebuilt": true,
+    "animated_source_water_objects": []
+  },
+  "unity_verification": {
+    "unity": "2022.3.23f1c1",
+    "source": "SeaMidpointPanorama.asset",
+    "scope": "Isolated Unity import, six-face byte comparison and GPU skybox rendering; not a full Campaign Play Mode test.",
+    "faces": 6,
+    "faceSize": 1024,
+    "maximumStoredChannelError": 0.0,
+    "maximumCenterRenderError": 0.10196079313755035,
+    "maximumFaceMeanRenderError": 0.01078937016427517,
+    "passed": true
+  },
+  "full_face_gpu_comparisons": [
+    {
+      "face": "px",
+      "mean_absolute_rgb_byte_error": 1.3130826666666666
+    },
+    {
+      "face": "nx",
+      "mean_absolute_rgb_byte_error": 1.2299413333333333
+    },
+    {
+      "face": "py",
+      "mean_absolute_rgb_byte_error": 0.35822933333333334
+    },
+    {
+      "face": "ny",
+      "mean_absolute_rgb_byte_error": 3.173605333333333
+    },
+    {
+      "face": "pz",
+      "mean_absolute_rgb_byte_error": 1.4195360000000001
+    },
+    {
+      "face": "nz",
+      "mean_absolute_rgb_byte_error": 2.082421333333333
+    }
+  ],
+  "sha256": {
+    "Art\\DreamEnding\\SeaMidpoint\\SeaMidpointAligned.blend": "bfdc843cf26f5a87c098d241852f74a539b9f3f4b8839b7800944d3d68e4207d",
+    "UnityProject\\Assets\\MiniGame\\Art\\DreamEnding\\SeaMidpointPanorama.asset": "55601c64cc6dfc69571ff95337052a94019bc5b21f8685a00a983c31823b192d",
+    "UnityProject\\Assets\\MiniGame\\Art\\DreamEnding\\SeaMidpointWaterMask.asset": "3e6ec6d467825c55fdbe3b854f1bc4f5589fc83ca0e20ba568719002407226b4"
+  },
+  "dynamic_water_and_retro": {
+    "unity": "2022.3.23f1c1",
+    "sceneScope": "Authored production assets and shaders rendered on GPU; Campaign Play Mode tested separately.",
+    "changedWavePixels": 10224,
+    "changedRetroPixels": 230400,
+    "captureFrames": 4,
+    "fixedCaptureEye": true,
+    "liveParameters": true,
+    "passed": true
+  },
+  "play_mode": {
+    "result": "Passed",
+    "total": "3",
+    "passed": "3",
+    "failed": "0",
+    "skipped": "0"
+  }
+}

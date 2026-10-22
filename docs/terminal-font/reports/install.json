@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "command": "command eval_file",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "F:/AAMINIGAME/MINIGAME/Artifacts/TerminalArk20261021/install.cs"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "command": null,
+      "result": {
+        "atlas": "Assets/MiniGame/Art/Fonts/ArkPixel12/ArkPixel12.png",
+        "metrics": "Assets/MiniGame/Art/Fonts/ArkPixel12/ArkPixel12.json",
+        "size": [
+          2048,
+          2048
+        ],
+        "filterMode": 0,
+        "directoryFrame": "Assets/PMSAmberTerminal/Art/UI_Frame_Directory.png",
+        "reviewFrame": "Assets/PMSAmberTerminal/Art/UI_Frame_Review.png"
+      },
+      "executionTimeMs": 1068,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "0001-01-01T00:00:00"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

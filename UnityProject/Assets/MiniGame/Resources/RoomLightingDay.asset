@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e7c270605d801499af9ef1c38e1454, type: 3}
   m_Name: RoomLightingDay
   m_EditorClassIdentifier: 
+  ScreenStyle: {fileID: 11400000, guid: ac53fcb818485fc45baa8f74aeb84a3f, type: 2}
   lightMultiplier: 0.569
   emissionMultiplier: 0.116
   fadeSeconds: 1.1
   lampOffset: {x: 0, y: -0.04, z: 0}
   lampEulerAngles: {x: 90, y: 0, z: 0}
-  lampColor: {r: 1, g: 0.84, b: 0.62, a: 1}
-  lampIntensity: 4.8
+  lampColor: {r: 0.8001453, g: 1, b: 0.61960787, a: 1}
+  lampIntensity: 1.8
   lampRange: 7
   outerAngle: 125
   innerAngle: 70

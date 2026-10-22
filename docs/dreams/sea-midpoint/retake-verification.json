@@ -1,0 +1,90 @@
+{
+  "revision": "source-bed-removed-camera-height",
+  "source_bed_removed": true,
+  "removed_source_objects": [
+    "SM_bed_1"
+  ],
+  "eye_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    4.944918632507324
+  ],
+  "previous_eye_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    6.504918575286865
+  ],
+  "camera_midpoint_blender": [
+    -12.956235885620117,
+    -47.50721740722656,
+    4.944918632507324
+  ],
+  "eye_alignment_error_m": 0.0,
+  "panorama_sea_level": -4.94,
+  "faces": 6,
+  "face_size": 1024,
+  "cross_size": [
+    4096,
+    3072
+  ],
+  "unity_import": {
+    "unity": "2022.3.23f1c1",
+    "source": "SeaMidpointPanorama.asset",
+    "scope": "Isolated Unity import, six-face byte comparison and GPU skybox rendering; not a full Campaign Play Mode test.",
+    "faces": 6,
+    "faceSize": 1024,
+    "maximumStoredChannelError": 0.0,
+    "maximumCenterRenderError": 0.10196079313755035,
+    "maximumFaceMeanRenderError": 0.01078937016427517,
+    "passed": true
+  },
+  "full_face_gpu_comparisons": [
+    {
+      "face": "px",
+      "mean_absolute_rgb_byte_error": 1.3130826666666666
+    },
+    {
+      "face": "nx",
+      "mean_absolute_rgb_byte_error": 1.2299413333333333
+    },
+    {
+      "face": "py",
+      "mean_absolute_rgb_byte_error": 0.35822933333333334
+    },
+    {
+      "face": "ny",
+      "mean_absolute_rgb_byte_error": 3.173605333333333
+    },
+    {
+      "face": "pz",
+      "mean_absolute_rgb_byte_error": 1.4195360000000001
+    },
+    {
+      "face": "nz",
+      "mean_absolute_rgb_byte_error": 2.082421333333333
+    }
+  ],
+  "dynamic_water_and_retro": {
+    "unity": "2022.3.23f1c1",
+    "sceneScope": "Authored production assets and shaders rendered on GPU; Campaign Play Mode tested separately.",
+    "changedWavePixels": 10224,
+    "changedRetroPixels": 230400,
+    "captureFrames": 4,
+    "fixedCaptureEye": true,
+    "liveParameters": true,
+    "passed": true
+  },
+  "play_mode": {
+    "result": "Passed",
+    "total": "3",
+    "passed": "3",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "sha256": {
+    "Art\\DreamEnding\\SeaMidpoint\\SeaMidpointAligned.blend": "bfdc843cf26f5a87c098d241852f74a539b9f3f4b8839b7800944d3d68e4207d",
+    "UnityProject\\Assets\\MiniGame\\Art\\DreamEnding\\SeaMidpointPanorama.asset": "55601c64cc6dfc69571ff95337052a94019bc5b21f8685a00a983c31823b192d",
+    "UnityProject\\Assets\\MiniGame\\Art\\DreamEnding\\SeaMidpointWaterMask.asset": "3e6ec6d467825c55fdbe3b854f1bc4f5589fc83ca0e20ba568719002407226b4"
+  },
+  "scope": "Rephotographed panorama and mask, Unity 2022 import/GPU rendering and three targeted Play Mode tests; no Player rebuild."
+}

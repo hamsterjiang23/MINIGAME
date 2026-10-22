@@ -100,16 +100,53 @@ namespace MiniGame.UnityHost.Editor
         private RetroScreenProfile profile;
         private UnityEditor.Editor profileEditor;
         private Vector2 scroll;
+        [SerializeField] private RoomLightingController targetRoom;
+        [SerializeField] private bool followSelection = true;
+        [SerializeField] private RoomLightingPeriod editingPeriod;
+        private RoomLightingController room;
+        private string error;
+        private readonly Dictionary<RoomLightingController, RoomLightingPreviewMode> previousPreviews = new Dictionary<RoomLightingController, RoomLightingPreviewMode>();
 
         [MenuItem("MiniGame/画面/复古效果")]
         [MenuItem("MiniGame/画面/调色与像素风格")]
         public static void Open() => GetWindow<RetroScreenWindow>("调色与像素风格").Show();
 
+        public static void OpenForRoom(RoomLightingController controller, RoomLightingPeriod period)
+        {
+            var window = GetWindow<RetroScreenWindow>("调色与像素风格");
+            window.targetRoom = controller; window.followSelection = controller == null;
+            window.editingPeriod = period;
+            RoomLightingAuthoring.SetEditingPeriod(controller, period);
+            window.Show(); window.Repaint();
+        }
+
+        private void OnEnable()
+        {
+            minSize = new Vector2(440, 420);
+            Undo.undoRedoPerformed += Repaint;
+            Selection.selectionChanged += Repaint;
+        }
+        private void OnInspectorUpdate() => Repaint();
+
+        private void Preview(RoomLightingPreviewMode mode)
+        {
+            if (room == null) return;
+            if (!previousPreviews.ContainsKey(room)) previousPreviews.Add(room, room.PreviewMode);
+            room.SetPreviewMode(mode); RoomLightingWindow.EnableScenePreview();
+            RetroScreenPreview.Refresh();
+        }
+
         private void OnGUI()
         {
-            var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-            var resolved = scene.path == MainRoomGameplayBuilder.ScenePath ? RetroScreenSetup.FindProfile(scene) : null;
-            if (resolved == null) resolved = AssetDatabase.LoadAssetAtPath<RetroScreenProfile>(RetroScreenSetup.ProfilePath);
+            if (!RoomLightingAuthoring.IsSavingScenePreview)
+                room = followSelection ? RoomLightingAuthoring.FindController() : targetRoom;
+            if (room != null && (!room.gameObject.scene.IsValid() || !room.gameObject.scene.isLoaded)) room = null;
+            RetroScreenPreview.TargetRoom = room;
+            editingPeriod = RoomLightingAuthoring.GetEditingPeriod(room, editingPeriod);
+            var scene = room != null ? room.gameObject.scene : UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            var resolved = room != null ? room.GetProfile(editingPeriod)?.ScreenStyle : RetroScreenSetup.FindProfile(scene);
+            if (resolved == null && room == null && RoomLightingAuthoring.GetLoadedControllers().Length == 0)
+                resolved = AssetDatabase.LoadAssetAtPath<RetroScreenProfile>(RetroScreenSetup.ProfilePath);
             if (profile != resolved)
             {
                 RetroScreenPreview.Clear();
@@ -117,13 +154,62 @@ namespace MiniGame.UnityHost.Editor
             }
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar))
                 if (GUILayout.Button("房间灯光", EditorStyles.toolbarButton)) RoomLightingWindow.Open();
-            EditorGUILayout.LabelField("主场景 · 调色与像素风格", EditorStyles.boldLabel);
-            EditorGUILayout.ObjectField("当前配置", profile, typeof(RetroScreenProfile), false);
+            EditorGUILayout.LabelField("房间 · 昼夜调色与像素风格", EditorStyles.boldLabel);
+            followSelection = EditorGUILayout.Toggle("跟随所选物件的房间", followSelection);
+            if (!followSelection) targetRoom = (RoomLightingController)EditorGUILayout.ObjectField("目标房间", targetRoom != null ? targetRoom : room, typeof(RoomLightingController), true);
+            if (room != null)
+            {
+                EditorGUILayout.LabelField("当前目标", room.gameObject.scene.name + " / " + room.name);
+                DrawBinding(RoomLightingPeriod.Day, "白天调色配置");
+                DrawBinding(RoomLightingPeriod.Night, "夜晚调色配置");
+                int period = GUILayout.Toolbar((int)editingPeriod, new[] { "编辑白天", "编辑夜晚" });
+                if (period != (int)editingPeriod)
+                {
+                    editingPeriod = (RoomLightingPeriod)period;
+                    RoomLightingAuthoring.SetEditingPeriod(room, editingPeriod);
+                    Preview(editingPeriod == RoomLightingPeriod.Day ? RoomLightingPreviewMode.Day : RoomLightingPreviewMode.Night);
+                    GUIUtility.ExitGUI();
+                }
+                var mode = (RoomLightingPreviewMode)EditorGUILayout.Popup("画面预览", (int)room.PreviewMode,
+                    new[] { "跟随游戏流程", "白天", "夜晚" });
+                if (mode != room.PreviewMode) Preview(mode);
+                EditorGUILayout.LabelField("当前画面时段", room.EffectivePeriod == RoomLightingPeriod.Day ? "白天" : "夜晚");
+                if (room.EffectivePeriod != editingPeriod)
+                    EditorGUILayout.HelpBox("当前画面与编辑时段不同。切换画面预览可检查当前时段的修改。", MessageType.Info);
+                if (!room.HasIndependentProfiles || room.Profile.ScreenStyle == null || room.NightProfile.ScreenStyle == null
+                    || room.Profile.ScreenStyle == room.NightProfile.ScreenStyle)
+                {
+                    EditorGUILayout.HelpBox("昼夜使用两份独立调色资产。初始化会保留当前调色，创建夜晚副本。", MessageType.Info);
+                    using (new EditorGUI.DisabledScope(!room.HasIndependentProfiles))
+                        if (GUILayout.Button("建立昼夜独立调色配置"))
+                        { RetroScreenSetup.EnsureRoomProfiles(room); error = null; }
+                    if (!room.HasIndependentProfiles) EditorGUILayout.HelpBox("请先在房间灯光工具中绑定独立的白天与夜晚灯光配置。", MessageType.Warning);
+                    if (room.HasIndependentProfiles && room.Profile.ScreenStyle != null && room.Profile.ScreenStyle == room.NightProfile.ScreenStyle)
+                        return;
+                }
+            }
+            else if (RoomLightingAuthoring.GetLoadedControllers().Length > 0)
+                EditorGUILayout.HelpBox("请选择目标房间内的物件，或取消跟随后指定房间。", MessageType.Warning);
+            if (!string.IsNullOrEmpty(error)) EditorGUILayout.HelpBox(error, MessageType.Warning);
+            EditorGUILayout.ObjectField(editingPeriod == RoomLightingPeriod.Day ? "正在编辑白天" : "正在编辑夜晚", profile, typeof(RetroScreenProfile), false);
             if (profile == null)
             {
-                EditorGUILayout.HelpBox("尚未创建默认配置。", MessageType.Warning);
-                if (GUILayout.Button("创建默认配置")) profile = RetroScreenSetup.EnsureProfile();
+                EditorGUILayout.HelpBox("当前时段尚未绑定调色配置。", MessageType.Warning);
+                if (room == null && RoomLightingAuthoring.GetLoadedControllers().Length == 0 && GUILayout.Button("创建默认配置"))
+                    profile = RetroScreenSetup.EnsureProfile();
                 return;
+            }
+            if (room != null)
+            {
+                EditorGUILayout.HelpBox("曝光、色彩、颗粒、色阶和像素尺寸只写入当前时段。两套资产独立保存，预览时与房间灯光同步。", MessageType.Info);
+                var other = room.GetProfile(editingPeriod == RoomLightingPeriod.Day ? RoomLightingPeriod.Night : RoomLightingPeriod.Day)?.ScreenStyle;
+                using (new EditorGUI.DisabledScope(other == null || other == profile))
+                    if (GUILayout.Button(editingPeriod == RoomLightingPeriod.Day ? "复制夜晚参数到白天" : "复制白天参数到夜晚"))
+                    {
+                        Undo.RecordObject(profile, "复制另一时段调色");
+                        string name = profile.name; EditorUtility.CopySerialized(other, profile); profile.name = name;
+                        RetroScreenPreview.ProfileEdited(profile);
+                    }
             }
             using (var view = new EditorGUILayout.ScrollViewScope(scroll))
             {
@@ -136,14 +222,33 @@ namespace MiniGame.UnityHost.Editor
 
         private void OnDisable()
         {
+            Undo.undoRedoPerformed -= Repaint;
+            Selection.selectionChanged -= Repaint;
             RetroScreenPreview.Clear();
             if (profileEditor != null) DestroyImmediate(profileEditor);
+            RetroScreenPreview.TargetRoom = null;
+            foreach (var pair in previousPreviews) if (pair.Key != null) pair.Key.SetPreviewMode(pair.Value);
+            previousPreviews.Clear();
+        }
+
+        private void DrawBinding(RoomLightingPeriod period, string label)
+        {
+            var owner = room.GetProfile(period);
+            using (new EditorGUI.DisabledScope(owner == null || !EditorUtility.IsPersistent(owner)))
+            {
+                var current = owner != null ? owner.ScreenStyle : null;
+                var next = (RetroScreenProfile)EditorGUILayout.ObjectField(label, current, typeof(RetroScreenProfile), false);
+                if (next == current) return;
+                try { RetroScreenSetup.SetPeriodProfile(room, period, next); error = null; }
+                catch (System.ArgumentException exception) { error = exception.Message; }
+            }
         }
     }
 
     [InitializeOnLoad]
     internal static class RetroScreenPreview
     {
+        public static RoomLightingController TargetRoom { get; set; }
         private static RetroScreenProfile originalProfile;
         private static readonly HashSet<RetroScreenProfile> EditedProfiles = new HashSet<RetroScreenProfile>();
         static RetroScreenPreview()
@@ -182,7 +287,7 @@ namespace MiniGame.UnityHost.Editor
             Clear();
             originalProfile = original ? profile : null;
             foreach (var effect in Object.FindObjectsOfType<RetroScreenEffect>())
-                effect.PreviewOriginal = original && effect.Profile == profile;
+                effect.PreviewOriginal = original && effect.ActiveProfile == profile;
             Refresh();
         }
         public static void Clear()
@@ -198,9 +303,15 @@ namespace MiniGame.UnityHost.Editor
         }
         private static void SynchronizeSceneCamera(Camera camera)
         {
-            if (camera == null || camera.cameraType != CameraType.SceneView) return;
+            if (camera == null) return;
+            var room = camera.cameraType == CameraType.SceneView
+                ? TargetRoom != null ? TargetRoom : RoomLightingAuthoring.FindController() : null;
             foreach (var effect in camera.GetComponents<RetroScreenEffect>())
-                effect.PreviewOriginal = originalProfile != null && effect.Profile == originalProfile;
+            {
+                if (camera.cameraType == CameraType.SceneView) effect.BindLighting(room);
+                if (camera.cameraType == CameraType.SceneView || originalProfile != null)
+                    effect.PreviewOriginal = originalProfile != null && effect.ActiveProfile == originalProfile;
+            }
         }
     }
 
@@ -208,6 +319,50 @@ namespace MiniGame.UnityHost.Editor
     {
         public const string ProfilePath = "Assets/MiniGame/Resources/RetroScreenDefault.asset";
         public const string ShaderPath = "Assets/MiniGame/Resources/RetroScreen.shader";
+
+        public static void SetPeriodProfile(RoomLightingController room, RoomLightingPeriod period, RetroScreenProfile value)
+        {
+            var owner = room != null ? room.GetProfile(period) : null;
+            if (owner == null || !EditorUtility.IsPersistent(owner)) throw new System.ArgumentException("请先绑定当前时段的 Project 灯光配置资产。");
+            if (value != null && !EditorUtility.IsPersistent(value)) throw new System.ArgumentException("调色必须使用 Project 配置资产。");
+            var other = room.GetProfile(period == RoomLightingPeriod.Day ? RoomLightingPeriod.Night : RoomLightingPeriod.Day);
+            if (value != null && other != null && value == other.ScreenStyle)
+                throw new System.ArgumentException("白天和夜晚必须使用不同的调色配置。可先建立独立副本。");
+            Undo.RecordObject(owner, "绑定时段调色配置");
+            owner.ScreenStyle = value; RoomLightingAuthoring.ProfileEdited(owner);
+            RetroScreenPreview.Refresh();
+        }
+
+        public static void EnsureRoomProfiles(RoomLightingController room)
+        {
+            if (room == null || !room.HasIndependentProfiles) throw new System.ArgumentException("请先建立独立的昼夜灯光配置。");
+            if (!EditorUtility.IsPersistent(room.Profile) || !EditorUtility.IsPersistent(room.NightProfile))
+                throw new System.ArgumentException("昼夜灯光必须使用 Project 配置资产。");
+            var day = room.Profile.ScreenStyle;
+            if (day == null || !EditorUtility.IsPersistent(day))
+            {
+                day = FindProfile(room.gameObject.scene);
+                if (day == null || !EditorUtility.IsPersistent(day) || day == room.NightProfile.ScreenStyle)
+                {
+                    day = UnityEngine.Object.Instantiate(day != null ? day : EnsureProfile());
+                    day.name = room.Profile.name + "Retro";
+                    AssetDatabase.CreateAsset(day, AssetDatabase.GenerateUniqueAssetPath(
+                        System.IO.Path.GetDirectoryName(AssetDatabase.GetAssetPath(room.Profile)) + "/" + day.name + ".asset"));
+                    Undo.RegisterCreatedObjectUndo(day, "创建白天调色配置");
+                }
+                SetPeriodProfile(room, RoomLightingPeriod.Day, day);
+            }
+            if (room.NightProfile.ScreenStyle == null || room.NightProfile.ScreenStyle == day)
+            {
+                var night = UnityEngine.Object.Instantiate(day); night.name = room.NightProfile.name + "Retro";
+                AssetDatabase.CreateAsset(night, AssetDatabase.GenerateUniqueAssetPath(
+                    System.IO.Path.GetDirectoryName(AssetDatabase.GetAssetPath(room.NightProfile)) + "/" + night.name + ".asset"));
+                Undo.RegisterCreatedObjectUndo(night, "创建夜晚调色配置");
+                SetPeriodProfile(room, RoomLightingPeriod.Night, night);
+                AssetDatabase.SaveAssetIfDirty(night);
+            }
+            RoomLightingAuthoring.SaveProfile(room.Profile); RoomLightingAuthoring.SaveProfile(room.NightProfile);
+        }
 
         public static RetroScreenProfile EnsureProfile()
         {
@@ -244,6 +399,7 @@ namespace MiniGame.UnityHost.Editor
             if (effect == null) effect = camera.gameObject.AddComponent<RetroScreenEffect>();
             effect.Configure(retainedProfile != null ? retainedProfile : effect.Profile != null ? effect.Profile : EnsureProfile(),
                 AssetDatabase.LoadAssetAtPath<Shader>(ShaderPath));
+            effect.FollowRoomLighting = true;
             EditorUtility.SetDirty(effect);
         }
 

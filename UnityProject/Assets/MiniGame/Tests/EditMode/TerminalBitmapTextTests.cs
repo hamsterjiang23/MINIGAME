@@ -59,7 +59,7 @@ namespace MiniGame.UnityHost.Tests
                 Is.EqualTo(Mathf.Ceil(size * .6f)));
             foreach (var vertex in vertices)
             {
-                Assert.That(vertex.color, Is.EqualTo(new Color32(255, 255, 255, 255)));
+                Assert.That(vertex.color, Is.EqualTo((Color32)label.color));
                 Assert.That(vertex.uv0.x, Is.InRange(0f, 1f));
                 Assert.That(vertex.uv0.y, Is.InRange(0f, 1f));
             }
@@ -86,7 +86,7 @@ namespace MiniGame.UnityHost.Tests
             for (int index = 0; index < approximated.Count; index++)
             {
                 Assert.That(approximated[index].uv0, Is.EqualTo(exported[index].uv0));
-                Assert.That(approximated[index].color, Is.EqualTo(tint));
+                Assert.That(approximated[index].color, Is.EqualTo(new Color32(228, 220, 180, 255)));
             }
         }
 

@@ -29,6 +29,7 @@ namespace MiniGame.UnityHost
         private bool createdSkybox, previousSkyEnabled, disposed;
         private RenderTexture front, back;
         private float nextCaptureTime, lastWorldTime;
+        private DreamPanoramaWater panoramaWater;
 
         public bool IsReady { get; private set; }
         public RenderTexture Texture => front;
@@ -37,6 +38,8 @@ namespace MiniGame.UnityHost
         public float LastCaptureMilliseconds { get; private set; }
         public Camera CaptureCamera => captureCamera;
         public GameObject SourceRoot => root;
+        public bool HasPanoramaWater => panoramaWater != null;
+        public Material PanoramaWaterMaterial => panoramaWater?.Material;
 
         /// <summary>Photographs a selected skybox at the doorway without including room geometry.</summary>
         public DreamCubemapRenderer(DreamSequenceProfile settings, Camera viewCamera, Material skybox, Vector3 captureOrigin)
@@ -64,6 +67,11 @@ namespace MiniGame.UnityHost
                 captureCamera.allowMSAA = false;
                 captureCamera.useOcclusionCulling = false;
                 root.AddComponent<Skybox>().material = sourceSky;
+                if (settings.PanoramaWaterMask != null && (settings.AnimateRoomWater || DreamPanoramaWater.CanCreate(settings)))
+                {
+                    panoramaWater = new DreamPanoramaWater(settings, root.transform, captureOrigin);
+                    captureCamera.cullingMask = StageMask;
+                }
                 int size = Mathf.ClosestPowerOfTwo(Mathf.Clamp(profile.CubemapFaceSize, 256, 2048));
                 front = CreateTexture(size, "Doorway fixed panorama front");
                 back = CreateTexture(size, "Doorway fixed panorama back");
@@ -219,12 +227,14 @@ namespace MiniGame.UnityHost
         {
             if (disposed) throw new ObjectDisposedException(nameof(DreamCubemapRenderer));
             float time = Safe(worldTime, 0, 0);
+            bool waterChanged = panoramaWater != null && panoramaWater.Apply(time);
+            if (panoramaWater != null && !panoramaWater.Enabled && IsReady && !waterChanged && !force) return;
             bool clockRewound = IsReady && time < lastWorldTime;
             var position = CapturePosition(phase, phaseProgress, driftElapsed, explorationOffset);
             bool positionChanged = position != captureCamera.transform.position;
             // A translated viewer needs a fresh view of the nearby ground in the same
             // frame as the physical bed. Only stationary animation updates are throttled.
-            if (!force && IsReady && !clockRewound && !positionChanged && time + .0001f < nextCaptureTime) return;
+            if (!force && !waterChanged && IsReady && !clockRewound && !positionChanged && time + .0001f < nextCaptureTime) return;
             ApplyParameters(time);
             captureCamera.transform.SetPositionAndRotation(position, Quaternion.identity);
             var previousActive = RenderTexture.active;
@@ -382,6 +392,8 @@ namespace MiniGame.UnityHost
         {
             if (disposed) return;
             disposed = true;
+            panoramaWater?.Dispose();
+            panoramaWater = null;
             IsReady = false;
             if (viewer != null)
             {

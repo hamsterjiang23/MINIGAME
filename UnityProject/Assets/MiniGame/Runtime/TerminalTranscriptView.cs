@@ -19,12 +19,18 @@ namespace MiniGame.UnityHost
         private readonly List<Row> rows = new List<Row>();
         private bool rendering;
         private string signature;
+        private readonly TerminalSignalController signals;
+        private readonly float viewportWidth, bodyWidth;
+        private readonly string prefix;
         public GameObject GameObject => viewport.gameObject;
 
-        public TerminalTranscriptView(RectTransform parent, Font typeface)
+        public TerminalTranscriptView(RectTransform parent, Font typeface, TerminalSignalController signalOwner = null,
+            string name = "TranscriptPanel", float x = 23, float y = 395, float width = 478, float height = 135)
         {
             font = typeface;
-            viewport = TerminalIndustrialSkin.Panel(parent, "TranscriptPanel", Color.clear, 23, 395, 478, 135);
+            signals = signalOwner; viewportWidth = width; bodyWidth = width - 63;
+            prefix = name == "TranscriptPanel" ? "Transcript" : "HistoryTranscript";
+            viewport = TerminalIndustrialSkin.Panel(parent, name, Color.clear, x, y, width, height);
             viewport.GetComponent<Image>().raycastTarget = true;
             viewport.gameObject.AddComponent<RectMask2D>();
             content = NewRect(viewport, "TranscriptContents");
@@ -39,7 +45,7 @@ namespace MiniGame.UnityHost
             {
                 if (!rendering) UpdateThumb();
             });
-            thumb = TerminalIndustrialSkin.Panel(viewport, "HistoryThumb", TerminalView.Dim, 475, 0, 2, 135);
+            thumb = TerminalIndustrialSkin.Panel(viewport, "HistoryThumb", TerminalView.Dim, width - 3, 0, 2, height);
             thumb.GetComponent<Image>().raycastTarget = false;
         }
 
@@ -65,9 +71,9 @@ namespace MiniGame.UnityHost
                     row.Body.text = (playing ? currentPage : entry.Text).Replace("\r\n", "\n").Replace('\r', '\n');
                     row.Body.color = index == entries.Count - 1 ? TerminalView.Bright : TerminalView.Ink;
                     row.Speaker.text = entry.IsPlayer ? "值班员" : entry.IsNarration ? "终端" : "对象";
-                    float height = Mathf.Max(24, TerminalTextMetrics.MeasureHeight(row.Body.text, 14, 415, 20, true) + 6);
-                    TerminalIndustrialSkin.Position(row.Root, 0, y, 475, height);
-                    TerminalIndustrialSkin.Position(row.Body.rectTransform, 56, 0, 415, height);
+                    float height = Mathf.Max(24, TerminalTextMetrics.MeasureHeight(row.Body.text, 14, bodyWidth, 20, true) + 6);
+                    TerminalIndustrialSkin.Position(row.Root, 0, y, viewportWidth - 3, height);
+                    TerminalIndustrialSkin.Position(row.Body.rectTransform, 56, 0, bodyWidth, height);
                     row.Root.gameObject.SetActive(true);
                     y += height;
                 }
@@ -95,10 +101,12 @@ namespace MiniGame.UnityHost
         private Row EnsureRow(int index)
         {
             if (index < rows.Count) return rows[index];
-            var root = NewRect(content, "TranscriptRow" + index);
-            var speaker = TerminalIndustrialSkin.Label(root, font, "TranscriptSpeaker" + index, "", 3, 0, 52, 18, 11, TerminalView.Dim);
-            var body = TerminalIndustrialSkin.Label(root, font, index == 0 ? "TranscriptText" : "TranscriptText" + index,
-                "", 56, 0, 415, 24, 14, TerminalView.Ink);
+            var root = NewRect(content, prefix + "Row" + index);
+            var speaker = TerminalIndustrialSkin.Label(root, font, prefix + "Speaker" + index, "", 3, 0, 52, 18, 11, TerminalView.Dim);
+            var body = TerminalIndustrialSkin.Label(root, font, index == 0 ? prefix + "Text" : prefix + "Text" + index,
+                "", 56, 0, bodyWidth, 24, 14, TerminalView.Ink);
+            speaker.gameObject.AddComponent<TerminalDialogueTextGlitch>().Initialize(signals);
+            body.gameObject.AddComponent<TerminalDialogueTextGlitch>().Initialize(signals);
             body.horizontalOverflow = HorizontalWrapMode.Wrap; body.verticalOverflow = VerticalWrapMode.Overflow;
             body.alignment = TextAnchor.UpperLeft;
             speaker.raycastTarget = body.raycastTarget = false;
@@ -111,7 +119,7 @@ namespace MiniGame.UnityHost
             thumb.gameObject.SetActive(full > visible + 1);
             if (full <= visible) return;
             float height = Mathf.Max(12, visible * visible / full);
-            TerminalIndustrialSkin.Position(thumb, 475, (1 - scroll.verticalNormalizedPosition) * (visible - height), 2, height);
+            TerminalIndustrialSkin.Position(thumb, viewportWidth - 3, (1 - scroll.verticalNormalizedPosition) * (visible - height), 2, height);
         }
 
         private static RectTransform NewRect(Transform parent, string name)

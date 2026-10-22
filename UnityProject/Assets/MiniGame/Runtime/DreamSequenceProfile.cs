@@ -39,6 +39,12 @@ namespace MiniGame.UnityHost
         };
         [Header("海滩终局"), InspectorName("使用门口固定全景布景")] public bool UseRoomCubemapEnding = true;
         [InspectorName("门口固定天空盒")] public Material RoomPanoramaSkybox;
+        [InspectorName("启用梦境复古效果")] public bool EnableEndingRetro = true;
+        [InspectorName("梦境复古配置")] public RetroScreenProfile EndingRetro;
+        [InspectorName("启用动态海浪")] public bool AnimateRoomWater = true;
+        [InspectorName("全景海面遮罩")] public Cubemap PanoramaWaterMask;
+        [Range(-30, -.1f), InspectorName("海平面相对眼睛高度（米）")] public float PanoramaSeaLevel = -6.5f;
+        [Range(0, 60), InspectorName("眼睛到岸线距离（米）")] public float PanoramaShoreDistance = 12;
         [InspectorName("显示房间白色边框")] public bool ShowRoomOutline;
         [InspectorName("全景捕获源")] public GameObject CubemapSourcePrefab;
         [InspectorName("全景每面分辨率")] public int CubemapFaceSize = 1024;
@@ -87,6 +93,8 @@ namespace MiniGame.UnityHost
             CubemapFaceSize = Mathf.ClosestPowerOfTwo(Mathf.Clamp(CubemapFaceSize, 256, 2048));
             CubemapRefreshRate = Valid(CubemapRefreshRate, 1, 30, 10);
             CubemapYaw = Valid(CubemapYaw, -180, 180, 0);
+            PanoramaSeaLevel = Valid(PanoramaSeaLevel, -30, -.1f, -6.5f);
+            PanoramaShoreDistance = Valid(PanoramaShoreDistance, 0, 60, 12);
             WalkSpeed = Valid(WalkSpeed, .1f, 4, 1.2f);
             BedInteractionDistance = Valid(BedInteractionDistance, .5f, 4, 1.5f);
             LieDownSeconds = Valid(LieDownSeconds, .2f, 5, 1.5f);
