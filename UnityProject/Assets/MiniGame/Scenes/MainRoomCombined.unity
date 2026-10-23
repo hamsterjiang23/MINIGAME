@@ -7741,7 +7741,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: aa4b868cbfe98d24eaa171a4264bb8c0, type: 2}
     - target: {fileID: -6363185579530747056, guid: b0853e96104899e43806b3104590c555, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: -6363185579530747056, guid: b0853e96104899e43806b3104590c555, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.022
+      objectReference: {fileID: 0}
+    - target: {fileID: -6363185579530747056, guid: b0853e96104899e43806b3104590c555, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: -6363185579530747056, guid: b0853e96104899e43806b3104590c555, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9752,7 +9760,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
-  m_Intensity: 0.00000019700424
+  m_Intensity: 0.000000112095414
   m_Range: 4.27
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11556,8 +11564,6 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   profile: {fileID: 11400000, guid: 3e7cf040c14680542b4958add4222b4c, type: 2}
-  supervisorKnockInterval: 0.14
-  supervisorKnockPause: 1.2
 --- !u!114 &1288090743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13925,7 +13931,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.62, g: 0.72, b: 0.8, a: 1}
-  m_Intensity: 0.000007035473
+  m_Intensity: 0.000004003184
   m_Range: 4.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
