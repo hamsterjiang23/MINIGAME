@@ -30,3 +30,5 @@ C#验收入口为 `CampaignPackageTests` 与 `CampaignConditionalRoundTests`，�
 2026-10-22更新：Day0新版12行全部启用（9句引导、1项净化、2句回应），末句补END_DAY0。神父7处JN05按用户确认统一映射JN04，原单元格与映射依据保留在审计中；其他Day1–3会谈除该立绘映射外保持一致。`[verified: docs/dialogue-update-2026-10-22/reports/source-compatibility.json]`
 
 2026-10-23更新：医生采用237行新源，复用109项经复核修复，仅排除233/234；229/232/238为三个处置的当前末句并结束Day3，不恢复已删除旧台词。神父按新表62处立绘与5处正文更新，仅剩L178/L179的JN05映射JN04，L67新值JN03保留。外交官仍排除281–343。结局内容和完整来源快照见[结局内容说明](../../docs/ending-content/guide.md)。`[verified: source-repairs.json books；../../docs/ending-content/sources/source-refresh.json sources]`
+
+角色工作簿里的 Day 是该角色到场后的会谈日。正式包 `1.2.1-development` 按 `sourceDay = campaignDay - firstDay + 1` 排期：乔纳在游戏 Day2/3 使用表 Day1/2，阿德里安在游戏 Day3 使用表 Day1。源节点ID、跳转和信任变化保持原表，Yarn的 day 头使用游戏日；教程仍为 Day0，正式流程仍到 Day3。来源审计的 `meetingSchedule` 和逐行映射同时记录 `sourceDay`、`campaignDay`、`scheduled`，超出三天的后续会谈保留审计而不放入可玩包。`[verified: build_campaign.py build；updated_source.py build_updated_meeting；test_campaign.py test_late_arrivals_start_at_their_first_workbook_day_without_rewriting_source_ids/test_later_workbook_visits_remain_audited_but_do_not_extend_the_three_day_campaign]`

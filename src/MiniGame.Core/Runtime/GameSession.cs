@@ -192,9 +192,12 @@ namespace MiniGame.Core
 
         private bool HasHiddenEndingTrust()
         {
-            var active = _state.Patients.Where(patient => patient.Presence == PatientPresence.Active
-                && _rules.Patient(patient.Id).FirstDay > 0 && _rules.Patient(patient.Id).FirstDay <= _state.Day).ToList();
-            return active.Count > 0 && active.Sum(patient => (long)patient.Trust) >= _rules.ActivePatientTrustThreshold;
+            // Trust retains signed response and disposition changes after a patient leaves.
+            // Only these four histories contribute; the priest, tutorial and player never do.
+            return _state.Patients.Where(patient => patient.Id == PrototypeRules.FormerRuler
+                || patient.Id == PrototypeRules.Doctor || patient.Id == PrototypeRules.Child
+                || patient.Id == PrototypeRules.Diplomat)
+                .Sum(patient => (long)patient.Trust) >= _rules.ActivePatientTrustThreshold;
         }
 
         private RejectionReason AdvanceSelfReview(AdvanceSelfReviewCommand command, List<GameEvent> events)

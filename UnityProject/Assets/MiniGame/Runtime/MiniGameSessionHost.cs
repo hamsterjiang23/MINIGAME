@@ -77,22 +77,8 @@ namespace MiniGame.UnityHost
             { roomEndingFailed = false; Runtime.MarkEndingSpaceReady(); view = Runtime.GetView(); }
             if (Runtime.UsesEndingFlow && view.EndingStage == EndingStage.Thanks)
             {
-                if (UsesRoomEnding && view.Game.Ending == EndingType.DreamSea && !hiddenThanksReady)
-                {
-                    if (roomEnding != null && roomEnding.Ready)
-                    {
-                        // An owner's retry outlives the initial startup coroutine, including during thanks restoration.
-                        roomEndingFailed = false;
-                        roomEnding.RestoreThanksPresentation();
-                        hiddenThanksReady = true;
-                    }
-                    else
-                    {
-                        if (!roomEndingFailed && roomEnding == null) EnsureRoomEnding();
-                        return;
-                    }
-                }
-                if (thanks == null) thanks = EndingThanksView.Show(CompleteEnding, ThanksCheckpoint);
+                // Keep the serialized stage for compatible checkpoints, but end immediately without a final page.
+                if (!view.Paused) CompleteEnding();
                 return;
             }
             if (Runtime.UsesEndingFlow && view.EndingStage != EndingStage.Transition && view.EndingStage != EndingStage.Space) return;
@@ -149,14 +135,18 @@ namespace MiniGame.UnityHost
 
         private void OnHiddenBed()
         {
-            if (Runtime != null && Runtime.CompleteHiddenBed().Accepted) hiddenThanksReady = true;
+            if (Runtime != null && Runtime.CompleteHiddenBed().Accepted)
+            {
+                hiddenThanksReady = true;
+                CompleteEnding();
+            }
         }
 
         private void CompleteEnding()
         {
             if (Runtime == null || !Runtime.MarkEndingCompleted().Accepted) return;
-            ThanksCheckpoint = thanks != null ? thanks.CaptureCheckpoint() : ThanksCheckpoint;
-            FindObjectOfType<MiniGameBootstrap>()?.MainMenu?.CompleteInspectionAndReturnToMenu();
+            ThanksCheckpoint = new EndingThanksCheckpoint { Phase = EndingThanksPhase.Completed };
+            FindObjectOfType<MiniGameBootstrap>()?.MainMenu?.CompleteInspectionAndReturnToMenu(true);
             if (thanks != null) Destroy(thanks.gameObject);
             thanks = null;
         }
@@ -307,8 +297,7 @@ namespace MiniGame.UnityHost
                     && Enum.IsDefined(typeof(DreamPlaybackPhase), envelope.Dream.Phase) ? envelope.Dream : null;
                 EndingCheckpoint = restored.GetView().Game.Ending == EndingType.DreamSea ? envelope.Ending : null;
                 bool beach = restored.GetView().Game.Ending == EndingType.DreamSea
-                    && (!restored.UsesEndingFlow || restored.EndingStage == EndingStage.Transition || restored.EndingStage == EndingStage.Space
-                        || UsesRoomEnding && restored.EndingStage == EndingStage.Thanks);
+                    && (!restored.UsesEndingFlow || restored.EndingStage == EndingStage.Transition || restored.EndingStage == EndingStage.Space);
                 // Before full black the original apartment is still visible; later phases restore their own room pose.
                 bool visibleApartmentFade = restored.EndingStage == EndingStage.Transition
                     && (RoomEndingTransition == null || RoomEndingTransition.Phase == RoomEndingTransitionPhase.FadingOut);

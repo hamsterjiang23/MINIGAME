@@ -40,7 +40,8 @@ namespace MiniGame.UnityHost.Editor
             (MiniGameSound.TerminalType4, "SFX/UIType/UIType4.wav", false),
             (MiniGameSound.DoorOpen, "SFX/DoorOpen.wav", false),
             (MiniGameSound.DoorShut, "SFX/NewDoorShut.wav", false),
-            (MiniGameSound.DoorKnock, "SFX/NewDoorKnock.wav", false)
+            (MiniGameSound.DoorKnock, "SFX/NewDoorKnock.wav", false),
+            (MiniGameSound.EndNote, "SFX/EndNote.wav", false)
         };
 
         public static MiniGameAudioProfile EnsureAssets()
@@ -132,6 +133,25 @@ namespace MiniGame.UnityHost.Editor
             else if (!SameBytes(source, destination))
                 throw new InvalidOperationException("已有音频副本与源文件不同，已保留现有文件，请先核对：" + destination);
             return ConfigureImportedClip(destination, streaming, false);
+        }
+
+        [MenuItem("MiniGame/Audio/Apply ending note")]
+        public static void ApplyEndNoteSound()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                throw new InvalidOperationException("请先停止播放再导入结局音效。");
+            var bank = EnsureAssets();
+            var clip = ImportClip("SFX/EndNote.wav", false);
+            Undo.RecordObject(bank, "绑定结局音效");
+            var entry = bank.GetEntry(MiniGameSound.EndNote);
+            if (entry == null)
+            {
+                entry = new MiniGameSoundEntry { Id = MiniGameSound.EndNote };
+                bank.Sounds = bank.Sounds.Concat(new[] { entry }).ToArray();
+            }
+            entry.Clip = clip;
+            EditorUtility.SetDirty(bank);
+            AssetDatabase.SaveAssetIfDirty(bank);
         }
 
         public static bool IsSupportedAudioFile(string path)

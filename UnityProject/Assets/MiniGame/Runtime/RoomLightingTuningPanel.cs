@@ -34,6 +34,7 @@ namespace MiniGame.UnityHost
         private int blockedFrame = -1, rowIndex;
         private string selectedPath = "";
         private RoomLightingProfile rowsProfile;
+        private Light[] rowsLights = Array.Empty<Light>();
         private readonly HashSet<RoomLightingProfile> loadedPlayerProfiles = new HashSet<RoomLightingProfile>();
 
         [Serializable] private sealed class SavedSettings
@@ -75,16 +76,32 @@ namespace MiniGame.UnityHost
             Build(parent);
         }
 
-        public void Bind(GameRuntime game, RoomLightingController lighting, TerminalSignalController signalController = null)
+        public void Bind(GameRuntime game, RoomLightingController lighting, TerminalSignalController signalController = null,
+            Action<string> preparationMarker = null)
         {
+            bool reuseRows = controller == lighting && SelectedPeriod == RoomLightingPeriod.Day
+                && rowsProfile == (lighting != null ? lighting.GetProfile(RoomLightingPeriod.Day) : null)
+                && content != null && content.childCount > 0;
+            if (reuseRows && lighting != null)
+            {
+                var lights = lighting.GetEditableSceneLights(RoomLightingPeriod.Day);
+                reuseRows = rowsLights.SequenceEqual(lights) && (lights.Length == 0
+                    ? string.IsNullOrEmpty(selectedPath)
+                    : lights.Any(light => lighting.GetHierarchyPath(light) == selectedPath));
+            }
             SetPanelOpen(false);
             if (signal != null) signal.Opening -= CloseForSignal;
             runtime = game; controller = lighting; signal = signalController;
             if (signal != null) signal.Opening += CloseForSignal;
             SelectedPeriod = RoomLightingPeriod.Day;
-            selectedPath = "";
+            if (!reuseRows) selectedPath = "";
+            preparationMarker?.Invoke("install.lighting_panel_binding");
             LoadPlayerSettings();
-            if (modal != null) RebuildRows();
+            preparationMarker?.Invoke("install.lighting_settings");
+            // Bind closes the tool. Its next open rebuilds and refreshes from the current profile;
+            // updating every hidden input here adds work to the title-to-gameplay handoff.
+            if (modal != null && !reuseRows) RebuildRows();
+            preparationMarker?.Invoke(reuseRows ? "install.lighting_rows_reused" : "install.lighting_rows_rebuild");
         }
 
         public bool SetPanelOpen(bool open)
@@ -361,6 +378,7 @@ namespace MiniGame.UnityHost
             { child.gameObject.SetActive(false); Destroy(child.gameObject); }
             refreshing = wasRefreshing;
             rowsProfile = Profile;
+            rowsLights = Array.Empty<Light>();
             if (Profile == null)
             {
                 AddHeading(MissingProfileMessage(SelectedPeriod));
@@ -424,6 +442,7 @@ namespace MiniGame.UnityHost
         {
             AddHeading(PeriodLabel + " · 场景灯光（含吊灯、窗光、电脑、床灯）");
             var lights = controller.GetEditableSceneLights(SelectedPeriod);
+            rowsLights = lights;
             if (lights.Length == 0) { AddHeading("此时段没有可编辑的场景灯。"); return; }
             if (lights.All(light => controller.GetHierarchyPath(light) != selectedPath))
                 selectedPath = controller.GetHierarchyPath(lights[0]);

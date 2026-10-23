@@ -82,8 +82,8 @@ namespace MiniGame.UnityHost.Tests
             try
             {
                 Assert.That(defaults.Days.Select(day => day.Day), Is.EqualTo(new[] { 1, 2, 3 }));
-                Assert.That(defaults.Days.Select(day => day.Duration), Is.All.EqualTo(5));
-                Assert.That(defaults.BlackScreenSeconds, Is.EqualTo(5));
+                Assert.That(defaults.Days.Select(day => day.Duration), Is.All.EqualTo(15));
+                Assert.That(defaults.BlackScreenSeconds, Is.EqualTo(4.5f));
                 Assert.That(defaults.WakeBlackSeconds, Is.EqualTo(1));
                 Assert.That(defaults.Days.Select(day => day.Music),
                     Is.EqualTo(new[] { MiniGameSound.Dream0, MiniGameSound.Dream1, MiniGameSound.Dream3 }));
@@ -142,6 +142,10 @@ namespace MiniGame.UnityHost.Tests
             var day = settings.FindProperty("Days").GetArrayElementAtIndex(0);
             day.FindPropertyRelative("Duration").floatValue = 42.5f;
             day.FindPropertyRelative("VignetteIntensity").floatValue = .08f;
+            day.FindPropertyRelative("BlackEdgeWidths").vector4Value = new Vector4(.04f, .16f, .11f, .06f);
+            day.FindPropertyRelative("BlackEdgeStrength").vector4Value = new Vector4(.9f, .95f, 1, .85f);
+            day.FindPropertyRelative("BlackEdgeSoftness").floatValue = .045f;
+            day.FindPropertyRelative("BlackEdgeIrregularity").floatValue = .025f;
             day.FindPropertyRelative("Music").intValue = (int)MiniGameSound.Dream1;
             day.FindPropertyRelative("Artwork").objectReferenceValue = artwork;
             var line = settings.FindProperty("EndingLines").GetArrayElementAtIndex(0);
@@ -184,6 +188,10 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(profile.BlackScreenSeconds, Is.EqualTo(6));
             Assert.That(profile.WakeBlackSeconds, Is.EqualTo(1.5f));
             Assert.That(profile.GetDay(1).VignetteIntensity, Is.EqualTo(.08f));
+            Assert.That(profile.GetDay(1).BlackEdgeWidths, Is.EqualTo(new Vector4(.04f, .16f, .11f, .06f)));
+            Assert.That(profile.GetDay(1).BlackEdgeStrength, Is.EqualTo(new Vector4(.9f, .95f, 1, .85f)));
+            Assert.That(profile.GetDay(1).BlackEdgeSoftness, Is.EqualTo(.045f));
+            Assert.That(profile.GetDay(1).BlackEdgeIrregularity, Is.EqualTo(.025f));
             Assert.That(profile.SeaWaveHeight, Is.EqualTo(.41f).Within(.0001));
             Assert.That(profile.ShoreWashDistance, Is.EqualTo(2.8f).Within(.0001));
             Assert.That(profile.AnimateRoomWater, Is.False);
@@ -205,6 +213,29 @@ namespace MiniGame.UnityHost.Tests
             Assert.DoesNotThrow(() => compiled.Rules.WithDreamFlow(rebellion.InitialValue, rebellion.Maximum, rebellion.Threshold, deltas));
             OpenIsolatedWindow();
             Assert.That(ReadField<SerializedObject>(window, "settings").FindProperty("AlignSeconds").floatValue, Is.EqualTo(2.25f));
+        }
+
+        [Test]
+        public void ProductionRebellionChoicesMatchTheCurrentCampaignIncludingZeroDeltas()
+        {
+            var responseIds = new HashSet<string>(compiled.Rules.Days.SelectMany(day => day.Meetings)
+                .SelectMany(meeting => meeting.NormalRounds.Concat(meeting.SpecialRound == null
+                    ? Array.Empty<RoundDefinition>() : new[] { meeting.SpecialRound }))
+                .SelectMany(round => round.Responses).Select(response => response.Id), StringComparer.Ordinal);
+            var deltas = originalRebellion.CreateDeltas();
+            Assert.That(deltas.Keys.Where(id => !responseIds.Contains(id)), Is.Empty,
+                "Production rebellion choices must reference scheduled campaign responses, even when their delta is zero.");
+            Assert.DoesNotThrow(() => compiled.Rules.WithDreamFlow(originalRebellion.InitialValue,
+                originalRebellion.Maximum, originalRebellion.Threshold, deltas));
+        }
+
+        [TestCase("priest__P01_D3_R6_OPTION_002")]
+        [TestCase("diplomat__P05_D2_R1_OPTION_001")]
+        public void UnscheduledWorkbookResponsesCannotConfigureZeroRebellionDeltas(string optionId)
+        {
+            Assert.Throws<ArgumentException>(() => compiled.Rules.WithDreamFlow(originalRebellion.InitialValue,
+                originalRebellion.Maximum, originalRebellion.Threshold,
+                new Dictionary<string, int> { [optionId] = 0 }));
         }
 
         [Test]

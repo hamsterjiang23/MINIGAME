@@ -197,6 +197,7 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.StartMenu: return "主菜单音乐";
                 case MiniGameSound.LogoGlitch: return "主菜单标志闪烁";
                 case MiniGameSound.DoorKnock: return "监督员敲门";
+                case MiniGameSound.EndNote: return "结局结束音";
                 case MiniGameSound.Gameplay: return "房间音乐";
                 case MiniGameSound.Dream0: return "Day1 鲸尸海滩";
                 case MiniGameSound.Dream1: return "Day2 倒悬花海";
@@ -228,7 +229,8 @@ namespace MiniGame.UnityHost.Editor
             switch (role)
             {
                 case MiniGameSound.LogoGlitch: return "NORM 标志每次故障闪烁开始时播放一次，与画面共用时钟；暂停及冻结预览时不重复触发。";
-                case MiniGameSound.DoorKnock: return "晨检等待开门时完整播放敲门录音，片段结束后间隔0.5秒；开门或进入监督员对话即停止。暂停冻结播放与间隔，读档按当前阶段恢复。";
+                case MiniGameSound.DoorKnock: return "晨检或神父结局等待开门时完整播放敲门录音，片段结束后间隔0.5秒；开门即停止。暂停冻结播放与间隔，读档按当前阶段恢复。";
+                case MiniGameSound.EndNote: return "结局完成时播放一次，同时直接返回主菜单；尾音在菜单中继续，完成存档不会重播。";
                 case MiniGameSound.StartMenu: return "Day0 NORM 开始界面循环播放，点击开始后与房间音乐交叉淡化。";
                 case MiniGameSound.Gameplay: return "房间内昼夜共用的循环音乐，与梦境及开场音乐交叉淡化。";
                 case MiniGameSound.Dream0: return "正式流程 Day1 鲸尸海滩投影期间播放。";

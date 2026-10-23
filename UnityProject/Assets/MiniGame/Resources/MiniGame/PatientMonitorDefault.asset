@@ -23,8 +23,8 @@ MonoBehaviour:
   IdleMotion: 0.00392
   PortraitPlacements:
   - PortraitId: VV04
-    HeightMultiplier: 0.74
-    BottomCenter: {x: 0.625, y: 0.15}
+    HeightMultiplier: 0.42
+    BottomCenter: {x: 0.515, y: 0.3}
   - PortraitId: ML01
     HeightMultiplier: 1
     BottomCenter: {x: 0.42, y: -0.035}
@@ -74,8 +74,8 @@ MonoBehaviour:
     HeightMultiplier: 1
     BottomCenter: {x: 0.42, y: -0.035}
   - PortraitId: ED04
-    HeightMultiplier: 0.74
-    BottomCenter: {x: 0.625, y: 0.15}
+    HeightMultiplier: 0.45
+    BottomCenter: {x: 0.52, y: 0.29}
   - PortraitId: JN04
     HeightMultiplier: 0.9
     BottomCenter: {x: 0.54, y: 0.025}

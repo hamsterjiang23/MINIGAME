@@ -187,7 +187,7 @@ namespace MiniGame.UnityHost
         private void UpdateKnocking(RuntimeView view, float deltaTime)
         {
             // The recording already contains all four knocks; repeat the whole clip.
-            bool waiting = view.Game.Phase == GamePhase.MorningInspection
+            bool waiting = (view.Game.Phase == GamePhase.MorningInspection || view.EndingStage == EndingStage.AwaitingDoor)
                 && !view.RoomDoorOpen && view.Cue == null;
             if (!waiting)
             {

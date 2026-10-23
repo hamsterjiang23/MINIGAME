@@ -42,9 +42,9 @@ namespace MiniGame.Core.Tests
             DriveTo(session, view => view.Day == 1 && view.Phase == GamePhase.Work);
             Scenario.Reply(session, "raise");
             Assert.That(session.GetPlayerView().Rebellion, Is.EqualTo(35));
-            Assert.That(session.CreateSnapshot().State.Patients.Single(item => item.Id == "first").Trust, Is.EqualTo(3));
+            Assert.That(session.CreateSnapshot().State.Patients.Single(item => item.Id == PrototypeRules.Child).Trust, Is.EqualTo(3));
             FinishPatient(session);
-            Assert.That(session.GetPlayerView().CurrentPatientId, Is.EqualTo("second"));
+            Assert.That(session.GetPlayerView().CurrentPatientId, Is.EqualTo(PrototypeRules.Priest));
             Scenario.Reply(session, "raise");
             Assert.That(session.GetPlayerView().Rebellion, Is.EqualTo(60));
             FinishPatient(session);
@@ -54,7 +54,7 @@ namespace MiniGame.Core.Tests
             Assert.That(session.GetPlayerView().Rebellion, Is.EqualTo(60));
             Scenario.Reply(session, "lower");
             Assert.That(session.GetPlayerView().Rebellion, Is.EqualTo(40));
-            Assert.That(session.CreateSnapshot().State.Patients.Single(item => item.Id == "first").Trust, Is.EqualTo(1));
+            Assert.That(session.CreateSnapshot().State.Patients.Single(item => item.Id == PrototypeRules.Child).Trust, Is.EqualTo(1));
             var saved = SnapshotCodec.Serialize(session);
             Assert.That(SnapshotCodec.Serialize(SnapshotCodec.Deserialize(saved, rules)), Is.EqualTo(saved));
         }
@@ -103,7 +103,7 @@ namespace MiniGame.Core.Tests
         [TestCase(true, true, 10, EndingType.DreamSea)]
         [TestCase(true, true, 9, EndingType.PriestAttack)]
         [TestCase(false, true, 9, EndingType.LockedInRoom)]
-        public void FinalDreamPrioritizesActivePatientTrustBeforePriestAndQuota(bool attack, bool quotaFailure, int trust, EndingType expected)
+        public void FinalDreamPrioritizesHistoricalPatientTrustBeforePriestAndQuota(bool attack, bool quotaFailure, int trust, EndingType expected)
         {
             var rules = Rules(attack, quotaFailure, trust).WithDreamFlow(100, 100, 100, EmptyDeltas());
             var session = new GameSession(rules);
@@ -172,7 +172,7 @@ namespace MiniGame.Core.Tests
         [Test]
         public void SelfPurificationDoesNotExecutePendingPatientTreatmentOrCreateADayFourRecord()
         {
-            var rules = Scenario.SinglePatient(initialTrust: 10, treatmentLimit: 3, delay: 1, normalRounds: 1)
+            var rules = Rules(firstTrust: 10, firstTreatmentLimit: 3, firstTreatmentDelayDays: 1)
                 .WithDreamFlow(100, 100, 100, EmptyDeltas());
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream);
@@ -184,7 +184,7 @@ namespace MiniGame.Core.Tests
                 Scenario.Accept(session, new AdvanceSelfReviewCommand(index));
             Scenario.Accept(session, new ConfirmSelfPurification());
             var after = session.CreateSnapshot().State;
-            Assert.That(after.Patients.Single().Presence, Is.EqualTo(PatientPresence.Active));
+            Assert.That(after.Patients.Single(patient => patient.Id == PrototypeRules.Child).Presence, Is.EqualTo(PatientPresence.Active));
             Assert.That(JToken.DeepEquals(JToken.FromObject(before.Patients), JToken.FromObject(after.Patients)), Is.True);
             Assert.That(JToken.DeepEquals(JToken.FromObject(before.PendingEvents), JToken.FromObject(after.PendingEvents)), Is.True);
             Assert.That(after.Days.Any(day => day.Day == 4), Is.False);
@@ -219,17 +219,19 @@ namespace MiniGame.Core.Tests
             {
                 if (stop(session.GetPlayerView())) return;
                 if (session.GetPlayerView().Phase == GamePhase.Evening) Scenario.Accept(session, new BeginNightDream());
-                else Scenario.Step(session, (day, patient) => releasePriest && day == 3 && patient == "second" ? Disposition.Release : Disposition.Treat);
+                else Scenario.Step(session, (day, patient) => releasePriest && day == 3 && patient == PrototypeRules.Priest ? Disposition.Release : Disposition.Treat);
             }
             Assert.Fail("Dream-flow scenario did not reach its requested checkpoint.");
         }
 
-        private static GameRules Rules(bool attack = false, bool quotaFailure = false, int firstTrust = 0)
+        private static GameRules Rules(bool attack = false, bool quotaFailure = false, int firstTrust = 0,
+            int? firstTreatmentLimit = null, int firstTreatmentDelayDays = 0)
         {
             var patients = new[]
             {
-                new PatientDefinition("first", "第一位", 1, firstTrust, null, PatientPresence.TreatmentEnded),
-                new PatientDefinition("second", "第二位", 1, 0, null, PatientPresence.TreatmentEnded, attacksAfterRelease: attack)
+                new PatientDefinition(PrototypeRules.Child, "第一位", 1, firstTrust, firstTreatmentLimit,
+                    PatientPresence.TreatmentEnded, firstTreatmentDelayDays),
+                new PatientDefinition(PrototypeRules.Priest, "第二位", 1, 0, null, PatientPresence.TreatmentEnded, attacksAfterRelease: attack)
             };
             MeetingDefinition Meeting(string patient, int day) => new MeetingDefinition(patient,
                 new[] { new RoundDefinition(patient + "." + day, new[]

@@ -40,6 +40,11 @@ namespace MiniGame.UnityHost.Tests
             var camera = host.Player.ViewCamera;
             var standing = camera.transform.rotation;
             var standingPosition = camera.transform.position;
+            var bedParts = host.GetComponent<BedtimeGuidance>().BedRenderers;
+            var pillow = bedParts.Single(part => part.name.IndexOf("pillow", StringComparison.OrdinalIgnoreCase) >= 0);
+            var mattress = bedParts.Single(part => part.name.IndexOf("mattress", StringComparison.OrdinalIgnoreCase) >= 0);
+            var headDirection = Vector3.ProjectOnPlane(pillow.bounds.center - mattress.bounds.center, Vector3.up).normalized;
+            var lying = Quaternion.LookRotation(Vector3.up, headDirection);
             Assert.That(host.Player.InteractFocused(), Is.True);
             yield return new WaitForSecondsRealtime(.35f);
             Assert.That(Vector3.Distance(camera.transform.position, standingPosition), Is.GreaterThan(.02f));
@@ -54,6 +59,10 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
             var checkpoint = JsonUtility.FromJson<SleepTransitionCheckpoint>(JsonUtility.ToJson(host.Effects.CaptureSleepCheckpoint()));
             Assert.That(checkpoint.HasPositionPose, Is.True);
+            Assert.That(checkpoint.HasBedRotation, Is.True);
+            Assert.That(Quaternion.Angle(checkpoint.BedRotation, lying), Is.LessThan(.01f));
+            Assert.That(Vector3.Distance(checkpoint.BedPosition,
+                new Vector3(pillow.bounds.center.x, pillow.bounds.max.y + .12f, pillow.bounds.center.z)), Is.LessThan(.001f));
             Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True);
             Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
             checkpoint.HasPositionPose = false;
@@ -64,6 +73,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Quaternion.Angle(camera.transform.rotation, standing), Is.GreaterThan(1));
             yield return new WaitForSecondsRealtime(1.1f);
             Assert.That(Vector3.Dot(camera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, lying), Is.LessThan(.05f), "Ceiling framing must follow the bed long axis toward its pillow.");
             yield return Until(host, () => host.Effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.BlackHold,
                 "sleep reaches full black before advancing the calendar");
             float blackAt = Time.realtimeSinceStartup;
@@ -77,6 +87,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Time.realtimeSinceStartup - blackAt, Is.EqualTo(black.BlackHoldRemaining).Within(.12f));
             Assert.That(host.Screen.TransitionLocked, Is.True);
             Assert.That(Vector3.Dot(camera.transform.forward, Vector3.up), Is.GreaterThan(.99f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, lying), Is.LessThan(.05f), "Waking must start from the same saved pillow orientation.");
             yield return Until(host, () => !host.Effects.SleepCameraActive, "wake returns to standing");
             Assert.That(Quaternion.Angle(camera.transform.rotation, standing), Is.LessThan(.05f));
             Assert.That(Vector3.Distance(camera.transform.localPosition, host.Player.StandingEyeLocalPosition), Is.LessThan(.01f));

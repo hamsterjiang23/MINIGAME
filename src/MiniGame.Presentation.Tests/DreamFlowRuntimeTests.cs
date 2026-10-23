@@ -341,7 +341,7 @@ namespace MiniGame.Presentation.Tests
         private static GameRules Rules(int initial, bool enabled = true)
         {
             var patient = new PatientDefinition("patient", "测试病人", 0, 0, null, PatientPresence.TreatmentEnded);
-            var formal = new PatientDefinition("formal", "正式病人", 1, initial, null, PatientPresence.TreatmentEnded);
+            var formal = new PatientDefinition(PrototypeRules.Child, "正式病人", 1, initial, null, PatientPresence.TreatmentEnded);
             var rules = new GameRules("dream-runtime-fixture", new[] { patient, formal }, Enumerable.Range(0, 4).Select(day =>
                 new DayDefinition(day, 0, new[] { new MeetingDefinition(day == 0 ? patient.Id : formal.Id,
                     new[] { new RoundDefinition("day" + day, new[] { new ResponseDefinition("pick", "branch", 1) }) },

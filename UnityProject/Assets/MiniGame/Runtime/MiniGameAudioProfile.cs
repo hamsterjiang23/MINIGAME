@@ -31,7 +31,8 @@ namespace MiniGame.UnityHost
         [InspectorName("关门")] DoorShut = 22,
         [InspectorName("放映机启动（单次）")] ProjectorOpen = 23,
         [InspectorName("主菜单标志闪烁")] LogoGlitch = 24,
-        [InspectorName("监督员敲门")] DoorKnock = 25
+        [InspectorName("监督员敲门")] DoorKnock = 25,
+        [InspectorName("结局结束提示")] EndNote = 26
     }
 
     [Serializable]

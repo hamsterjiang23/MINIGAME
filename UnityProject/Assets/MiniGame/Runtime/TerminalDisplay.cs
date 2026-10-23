@@ -24,6 +24,10 @@ namespace MiniGame.UnityHost
         private Vector2 fittedViewport;
         private float fittedZoom, fittedOpening;
         private int layerHierarchyCount = -1;
+        private bool titlePullback;
+        private Vector3 titleCameraPosition;
+        private float titleCameraSize;
+        private readonly Vector3[] projectedCorners = new Vector3[4];
         public float OpeningProgress => openingProgress;
         public int Mode { get; private set; } = 1;
         public RenderTexture Texture => texture;
@@ -68,6 +72,32 @@ namespace MiniGame.UnityHost
         internal void InvalidateSourceLayers() => layerHierarchyCount = -1;
         /// <summary>Pulls back from the native 464x261 monitor to the complete terminal.</summary>
         public void SetOpeningProgress(float value) { openingProgress = Mathf.Clamp01(value); Fit(); }
+        public void BeginTitlePullback(Rect logoScreenRect, RectTransform nativeLogo)
+        {
+            titlePullback = true; openingProgress = 0; fitted = false;
+            float aspect = Mathf.Max(.01f, viewport.rect.width / Mathf.Max(1, viewport.rect.height));
+            nativeLogo.GetWorldCorners(projectedCorners);
+            float logoHeight = Vector3.Distance(projectedCorners[0], projectedCorners[1]);
+            titleCameraSize = logoHeight * Screen.height / Mathf.Max(1, logoScreenRect.height) * .5f;
+            var center = sourceRoot.transform.InverseTransformPoint(nativeLogo.TransformPoint(nativeLogo.rect.center));
+            var desired = new Vector2(logoScreenRect.center.x / Screen.width, logoScreenRect.center.y / Screen.height);
+            titleCameraPosition = new Vector3(center.x - (desired.x - .5f) * titleCameraSize * 2 * aspect,
+                center.y - (desired.y - .5f) * titleCameraSize * 2, -1000);
+            // Match the existing title through the CRT's same inverse UV mapping; do not move the title to a second logo.
+            for (int i = 0; i < 8; i++)
+            {
+                fitted = false; Fit();
+                var projected = ScreenRectFor(nativeLogo);
+                titleCameraSize *= projected.height / Mathf.Max(1, logoScreenRect.height);
+                titleCameraPosition.x += (projected.center.x - logoScreenRect.center.x) / Screen.width * titleCameraSize * 2 * aspect;
+                titleCameraPosition.y += (projected.center.y - logoScreenRect.center.y) / Screen.height * titleCameraSize * 2;
+            }
+            fitted = false; Fit();
+        }
+        public void EndTitlePullback(float restoredProgress = 1)
+        {
+            titlePullback = false; fitted = false; SetOpeningProgress(restoredProgress);
+        }
         public void SetCollapse(float progress) { if (material != null) material.SetFloat("_Collapse", progress); }
         public void Fit()
         {
@@ -80,8 +110,8 @@ namespace MiniGame.UnityHost
             var rect = output.rectTransform; rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(.5f, .5f); rect.anchoredPosition = Vector2.zero;
             rect.sizeDelta = Vector2.Lerp(viewport.rect.size, new Vector2(800, 600) * scale, openingProgress);
             sourceCamera.aspect = rect.sizeDelta.x / Mathf.Max(1, rect.sizeDelta.y);
-            sourceCamera.orthographicSize = Mathf.Lerp(Mathf.Min(130.5f, 232 / sourceCamera.aspect), 300, openingProgress);
-            sourceCamera.transform.localPosition = Vector3.Lerp(new Vector3(-138, 77.5f, -1000), new Vector3(0, 0, -1000), openingProgress);
+            sourceCamera.orthographicSize = Mathf.Lerp(titlePullback ? titleCameraSize : Mathf.Min(130.5f, 232 / sourceCamera.aspect), 300, openingProgress);
+            sourceCamera.transform.localPosition = Vector3.Lerp(titlePullback ? titleCameraPosition : new Vector3(-138, 77.5f, -1000), new Vector3(0, 0, -1000), openingProgress);
         }
         public static Vector2 DisplayToSource(Vector2 uv, int mode)
         {
@@ -101,6 +131,23 @@ namespace MiniGame.UnityHost
             for (int i = 0; i < 12; i++) uv += wanted - DisplayToSource(uv, Mode);
             var r = output.rectTransform;
             return RectTransformUtility.WorldToScreenPoint(null, r.TransformPoint(new Vector3(r.rect.xMin + uv.x * r.rect.width, r.rect.yMin + uv.y * r.rect.height, 0)));
+        }
+        public Rect ScreenRectFor(RectTransform sourceRect)
+        {
+            sourceRect.GetWorldCorners(projectedCorners);
+            var minimum = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+            var maximum = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+            var rect = output.rectTransform;
+            foreach (var corner in projectedCorners)
+            {
+                var projected = sourceCamera.WorldToViewportPoint(corner);
+                Vector2 wanted = projected, uv = wanted;
+                for (int i = 0; i < 12; i++) uv += wanted - DisplayToSource(uv, Mode);
+                var point = RectTransformUtility.WorldToScreenPoint(null,
+                    rect.TransformPoint(new Vector3(rect.rect.xMin + uv.x * rect.rect.width, rect.rect.yMin + uv.y * rect.rect.height, 0)));
+                minimum = Vector2.Min(minimum, point); maximum = Vector2.Max(maximum, point);
+            }
+            return new Rect(minimum, maximum - minimum);
         }
         private void LateUpdate() { Fit(); RenderFrame(); }
         public void RenderFrame()

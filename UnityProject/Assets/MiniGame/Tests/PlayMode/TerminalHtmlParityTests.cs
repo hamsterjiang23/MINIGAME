@@ -16,6 +16,66 @@ namespace MiniGame.UnityHost.Tests
     public sealed class TerminalHtmlParityTests
     {
         [UnityTest]
+        public IEnumerator DirectoryDossierFollowsPointerAndKeyboardWithoutStartingAnEncounter()
+        {
+            var ids = new[] { "former-ruler", "battlefield-doctor", "child", "priest", "diplomat" };
+            var portraitIds = new[] { "VV01", "ED01", "ML01", "JN01", "AD01" };
+            var names = new[] { "薇拉", "埃德温", "米洛", "乔纳", "阿德里安" };
+            var patients = ids.Select((id, index) => new PatientDefinition(id, names[index], 1, 0, null, PatientPresence.TreatmentEnded));
+            var rules = new GameRules("directory-dossier-fixture", patients,
+                new[] { new DayDefinition(1, 1, ids.Select(id => PrototypeRules.CreateMeeting(id, 1))) },
+                new[] { EndingType.PriestAttack, EndingType.LockedInRoom, EndingType.TakenAway });
+            var runtime = new GameRuntime(rules, new PrototypeContent(rules), true);
+            var owner = new GameObject("Directory dossier regression");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            try
+            {
+                OpenDirectory(screen, runtime);
+                string checkpoint = runtime.Save();
+                yield return null;
+                var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+                var portrait = screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "DirectoryPortrait");
+                var introduction = TextNamed(screen, "PreviewIntroduction");
+                for (int index = 0; index < ids.Length; index++)
+                {
+                    var row = ButtonNamed(screen, "Roster-" + index);
+                    var pointer = new PointerEventData(EventSystem.current)
+                        { position = screen.TerminalDisplay.ScreenPointFor((RectTransform)row.transform) };
+                    ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+                    Assert.That(TextNamed(screen, "Preview对象").text, Is.EqualTo(names[index]));
+                    Assert.That(portrait.sprite, Is.SameAs(catalog.Find(portraitIds[index])));
+                    Assert.That(portrait.sprite, Is.Not.Null);
+                    Assert.That(portrait.enabled && portrait.preserveAspect, Is.True);
+                    Assert.That(ObjectNamed(screen, "DirectoryPortraitNoImage").activeSelf, Is.False);
+                    Assert.That(introduction.text, Is.Not.Empty);
+                    Assert.That(introduction.preferredHeight, Is.LessThanOrEqualTo(introduction.rectTransform.rect.height));
+                    Assert.That(TextNamed(screen, "PreviewStage").text, Is.EqualTo("未处理"));
+                    Assert.That(TextNamed(screen, "Preview状态").text, Is.EqualTo("待审"));
+                    Assert.That(TextNamed(screen, "PreviewUnit").text, Does.Contain(PortraitCatalog.Unit(ids[index])));
+                    Assert.That(runtime.Save(), Is.EqualTo(checkpoint), "Browsing dossiers cannot select or mutate the authoritative encounter.");
+                    yield return EndingVisualCapture.Capture("dossier-" + ids[index] + "-" + Screen.width, runtime);
+                }
+                Assert.That(introduction.text, Does.Contain("贸易代表"));
+                Assert.That(introduction.text, Does.Not.Contain("观察审查人员"));
+                Assert.That(introduction.text, Does.Not.Contain("秘密"));
+                Assert.That(screen.HandleTerminalKey(KeyCode.UpArrow), Is.True);
+                Assert.That(portrait.sprite, Is.SameAs(catalog.Find("JN01")));
+                Assert.That(TextNamed(screen, "Preview对象").text, Is.EqualTo("乔纳"));
+                Assert.That(runtime.Save(), Is.EqualTo(checkpoint));
+                Assert.That(ButtonNamed(screen, "EnterReview").interactable, Is.True);
+                Assert.That(ButtonNamed(screen, "LeaveTerminal").interactable, Is.True);
+                var panel = ObjectNamed(screen, "DirectoryPortraitPanel").GetComponent<RectTransform>();
+                Assert.That(panel.rect.height, Is.GreaterThan(200));
+                Assert.That(panel.anchoredPosition.x + panel.rect.width, Is.LessThan(introduction.rectTransform.anchoredPosition.x));
+                Assert.That(ButtonNamed(screen, "EnterReview").GetComponent<RectTransform>().anchoredPosition.y,
+                    Is.LessThan(introduction.rectTransform.anchoredPosition.y - introduction.rectTransform.rect.height));
+                yield return EndingVisualCapture.Flush();
+            }
+            finally { Object.Destroy(owner); }
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator PatientStageAndDailyReviewStatusStaySeparateInRosterAndSelection()
         {
             foreach (var disposition in new[] { Disposition.Treat, Disposition.Purify, Disposition.Release })
@@ -403,6 +463,13 @@ namespace MiniGame.UnityHost.Tests
 
         private static void OpenReview(MiniGameScreen screen, GameRuntime runtime)
         {
+            OpenDirectory(screen, runtime);
+            Assert.That(runtime.EnterSelectedPatient(runtime.GetView().Game.CurrentPatientId).Accepted, Is.True);
+            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
+        }
+
+        private static void OpenDirectory(MiniGameScreen screen, GameRuntime runtime)
+        {
             screen.Bind(runtime);
             screen.UseYarnPresentation();
             Assert.That(runtime.TryInteract(InteractionTarget.Door).Accepted, Is.True);
@@ -411,8 +478,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(runtime.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
             if (runtime.GetView().Cue != null)
                 Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
-            Assert.That(runtime.EnterSelectedPatient(runtime.GetView().Game.CurrentPatientId).Accepted, Is.True);
-            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
+            Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
         }
 
         private static ResponseContent[] Responses() => Enumerable.Range(1, 4)

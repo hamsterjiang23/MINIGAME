@@ -100,7 +100,7 @@ def apply_repairs(patient_id: str, source_hash: str, rows: list[Row],
 
 def build_updated_meeting(patient: Record, rows: list[Row], day: int,
                           columns: dict[str, str], mappings: list[Record],
-                          adaptations: list[Record]) -> Record:
+                          adaptations: list[Record], campaign_day: int | None = None) -> Record:
     pid = str(patient["id"])
     selected = [row for row in rows if day_of(row) == day]
     if not selected:
@@ -295,7 +295,7 @@ def build_updated_meeting(patient: Record, rows: list[Row], day: int,
 
     for node in nodes.values():
         yarn.extend(["title: " + str(node["id"]), "kind: " + str(node["kind"]), "round: " + str(node["round"]),
-                     "patient: " + pid, "day: " + str(day)])
+                     "patient: " + pid, "day: " + str(day if campaign_day is None else campaign_day)])
         if node.get("portrait"):
             yarn.append("portrait: " + str(node["portrait"]))
         yarn.append("---")

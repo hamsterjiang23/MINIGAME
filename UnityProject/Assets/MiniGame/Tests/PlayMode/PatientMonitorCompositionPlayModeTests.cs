@@ -215,6 +215,91 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
+        [UnityTest]
+        public IEnumerator SuppliedSeatedPortraitsStayAtTheLeftBedEdgeAtMediumRoomScale()
+        {
+            var template = Resources.Load<PatientMonitorProfile>("MiniGame/PatientMonitorDefault");
+            var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+            Assert.That(template, Is.Not.Null);
+            Assert.That(catalog, Is.Not.Null);
+            var configuration = FrozenProfile(template);
+            GameObject owner = null;
+            try
+            {
+                var feed = CreateFeed("Supplied seated placement references", configuration, out owner);
+                foreach (var target in new[] { new { Id = "VV04", Patient = "former-ruler" }, new { Id = "ED04", Patient = "battlefield-doctor" } })
+                {
+                    var sprite = catalog.Find(target.Id);
+                    Assert.That(sprite, Is.Not.Null);
+                    Assert.That(sprite.name, Is.EqualTo(target.Id), "Placement must never remap the workbook ID to another PNG.");
+                    feed.Show(target.Patient, sprite, true);
+                    var actor = feed.ActiveRoom.transform.parent.Find("Seated patient cutout").GetComponent<SpriteRenderer>();
+                    var bounds = actor.bounds;
+                    var bottom = feed.ViewCamera.WorldToViewportPoint(new Vector3(bounds.center.x, bounds.min.y, bounds.center.z));
+                    var top = feed.ViewCamera.WorldToViewportPoint(new Vector3(bounds.center.x, bounds.max.y, bounds.center.z));
+                    Assert.That(bottom.x, Is.InRange(.49f, .55f), "Feet belong to the floor left of the bed, not its far-right footboard.");
+                    Assert.That(bottom.y, Is.InRange(.27f, .33f));
+                    Assert.That(top.y - bottom.y, Is.InRange(.28f, .4f), "The supplied sheets use a medium room-wide seated figure, not a foreground enlargement.");
+                    AssertVisibleSeatedPixels(feed, actor, target.Id);
+                    Capture(feed.Output, "reference-seated-" + target.Id);
+                    if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MINIGAME_CAPTURE_DIR")))
+                    {
+                        try
+                        {
+                            foreach (int width in new[] { 1920, 2560 })
+                            {
+                                int height = width * 9 / 16;
+                                ResizeFeedForCapture(feed, configuration, width, height);
+                                Assert.That(feed.Output.width, Is.EqualTo(width));
+                                Assert.That(feed.Output.height, Is.EqualTo(height));
+                                AssertVisibleSeatedPixels(feed, actor, target.Id);
+                                Capture(feed.Output, "reference-seated-" + target.Id + "-" + width + "x" + height);
+                            }
+                        }
+                        finally { ResizeFeedForCapture(feed, configuration, 640, 360); }
+                    }
+                    yield return null;
+                }
+            }
+            finally
+            {
+                configuration.Width = 640; configuration.Height = 360;
+                Object.Destroy(owner); Object.Destroy(configuration);
+            }
+        }
+
+        private static void AssertVisibleSeatedPixels(PatientSurveillanceFeed feed, SpriteRenderer actor, string portraitId)
+        {
+            var camera = feed.ViewCamera;
+            camera.Render();
+            var withActor = ReadPixels(camera.targetTexture);
+            try
+            {
+                actor.enabled = false;
+                camera.Render();
+                var withoutActor = ReadPixels(camera.targetTexture);
+                Assert.That(withActor.Zip(withoutActor, (a, b) => a.Equals(b) ? 0 : 1).Sum(),
+                    Is.GreaterThan(camera.targetTexture.width * camera.targetTexture.height / 500),
+                    portraitId + " must contribute visible GPU pixels, independently of its configured placement.");
+            }
+            finally { actor.enabled = true; camera.Render(); }
+        }
+
+        private static void ResizeFeedForCapture(PatientSurveillanceFeed feed, PatientMonitorProfile configuration, int width, int height)
+        {
+            configuration.Width = width; configuration.Height = height;
+            // Native test captures bypass the normal 1600x800 performance cap, without upscaling a small image.
+            foreach (var texture in new[] { feed.ViewCamera.targetTexture, feed.Output })
+            {
+                texture.Release();
+                texture.width = width; texture.height = height;
+                Assert.That(texture.Create(), Is.True, "The requested native capture texture must be created.");
+            }
+            // Use the feed's public rendering path while retaining its frozen clock and final room-wide framing.
+            feed.SetCloseUp(true);
+            feed.SetCloseUp(false);
+        }
+
         private static PatientMonitorProfile FrozenProfile(PatientMonitorProfile template)
         {
             var value = Object.Instantiate(template);

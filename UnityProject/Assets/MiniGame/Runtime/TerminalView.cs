@@ -16,6 +16,8 @@ namespace MiniGame.UnityHost
         private readonly RectTransform logical;
         private readonly GameObject directory, review, selfReview, history, answers;
         private readonly Text date, day, count, previewName, previewId, previewStage, previewStatus, previewUnit, quota;
+        private readonly Text previewIntroduction, previewNoImage;
+        private readonly Image previewPortrait;
         private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, commandStatus, footerText, footerHelp, pageLabel;
         private readonly Text directoryRequirement, reviewRequirement;
         private readonly Text dailyWorkRemaining;
@@ -103,24 +105,34 @@ namespace MiniGame.UnityHost
                 foreach (var label in new[] { registration, stage, unit, status, row.transform.Find("RowNumber").GetComponent<Text>() }) TerminalIndustrialSkin.RegisterLabel(row, label);
                 rosterRows.Add(row); rosterLabels.Add(new[] { name, registration, unit, status, stage });
             }
-            count = Label(dr, "RosterCount", "", 29, 351, 730, 20, 13, Dim);
-            directoryRequirement = Label(dr, "DirectoryPurificationRequirement", "", 29, 318, 730, 20, 14, Bright);
-            Rule(dr, 8, 393, 784);
-            Field(dr, "终端", "第三安置所 / B区", 410);
-            previewName = Field(dr, "对象", "", 436);
-            enter = Button(dr, "EnterReview", "进入人员复核", 131, 458, 465, 24, EnterSelected);
+            count = Label(dr, "RosterCount", "", 29, 272, 470, 20, 12, Dim);
+            directoryRequirement = Label(dr, "DirectoryPurificationRequirement", "", 554, 272, 220, 20, 13, Bright);
+            directoryRequirement.alignment = TextAnchor.UpperRight;
+            Rule(dr, 8, 297, 784);
+            var dossierPortrait = Panel(dr, "DirectoryPortraitPanel", ColorOf("0e0b04"), 24, 306, 180, 228);
+            Border(dossierPortrait, "DirectoryPortraitBorder", 0, 0, 180, 228, Edge);
+            previewPortrait = Portrait(dossierPortrait, "DirectoryPortrait", 6, 6, 168, 216);
+            previewNoImage = Label(dossierPortrait, "DirectoryPortraitNoImage", "NO IMAGE", 12, 104, 156, 20, 12, Dim);
+            previewNoImage.alignment = TextAnchor.UpperCenter;
+            previewName = Label(dr, "Preview对象", "", 224, 308, 254, 25, 18, Bright);
+            previewId = Label(dr, "PreviewId", "", 486, 313, 288, 20, 13, Ink);
+            previewId.alignment = TextAnchor.UpperRight;
+            Label(dr, "PreviewIntroductionLabel", "公开档案", 224, 343, 220, 20, 12, Dim);
+            previewIntroduction = Label(dr, "PreviewIntroduction", "", 224, 366, 548, 66, 14, Ink);
+            previewIntroduction.horizontalOverflow = HorizontalWrapMode.Wrap;
+            previewIntroduction.verticalOverflow = VerticalWrapMode.Truncate;
+            Label(dr, "PreviewStageLabel", "阶段", 224, 449, 44, 20, 13, Dim);
+            previewStage = Label(dr, "PreviewStage", "", 274, 449, 150, 20, 13, Ink);
+            Label(dr, "状态Label", "状态", 458, 449, 44, 20, 13, Dim);
+            previewStatus = Label(dr, "Preview状态", "", 508, 449, 70, 20, 13, Ink);
+            previewUnit = Label(dr, "PreviewUnit", "", 608, 449, 166, 20, 13, Ink);
+            previewUnit.alignment = TextAnchor.UpperRight;
+            Label(dr, "净化配额Label", "净化配额", 224, 477, 110, 20, 12, Dim);
+            quota = Label(dr, "PurificationQuota", "", 338, 477, 70, 20, 12, Ink);
+            enter = Button(dr, "EnterReview", "进入人员复核", 224, 506, 350, 28, EnterSelected);
             ((TerminalButtonVisual)enter).SetCommandField();
-            Position(enter.transform.Find("Label").GetComponent<RectTransform>(), 7, 4, 451, 20);
-            Label(dr, "CurrentCommandLabel", "当前命令", 24, 462, 100, 19, 14, Ink);
-            previewStatus = Field(dr, "状态", "", 488);
-            Position(previewStatus.rectTransform, 138, 488, 200, 20);
-            Label(dr, "PreviewStageLabel", "阶段", 390, 488, 70, 20, 14, Ink);
-            previewStage = Label(dr, "PreviewStage", "", 464, 488, 180, 20, 14, Ink);
-            quota = Field(dr, "净化配额", "", 514);
-            quota.name = "PurificationQuota";
-            previewUnit = Label(dr, "PreviewUnit", "", 596, 514, 180, 20, 14, Ink);
-            previewId = Label(dr, "PreviewId", "", 390, 436, 260, 20, 14, Ink);
-            leave = Button(dr, "LeaveTerminal", "退出终端返回房间", 602, 458, 176, 26, leaveAction, 13);
+            Position(enter.transform.Find("Label").GetComponent<RectTransform>(), 7, 5, 336, 20);
+            leave = Button(dr, "LeaveTerminal", "退出终端返回房间", 590, 506, 188, 28, leaveAction, 13);
 
             var rr = (RectTransform)review.transform;
             recordName = Label(rr, "RecordRegistration", "", 26, 51, 470, 20, 13, Ink);
@@ -462,6 +474,10 @@ namespace MiniGame.UnityHost
             enter.interactable = available && !locked;
             previewName.text = selected?.Name ?? "未配置";
             previewId.text = selected == null ? "" : PortraitCatalog.Registration(selected.Id);
+            previewIntroduction.text = PublicIntroduction(selected?.Id);
+            previewPortrait.sprite = selected == null || portraits == null ? null : portraits.Find(PortraitCatalog.BasePortrait(selected.Id));
+            previewPortrait.enabled = previewPortrait.sprite != null;
+            previewNoImage.gameObject.SetActive(previewPortrait.sprite == null);
             previewStatus.text = selected == null ? "--" : PatientStatus(selected);
             previewStage.text = selected == null ? "--" : PatientStage(selected);
             previewUnit.text = "单元    " + (selected == null ? "--" : PortraitCatalog.Unit(selected.Id));
@@ -477,7 +493,20 @@ namespace MiniGame.UnityHost
             if (HistoryOpen) historyTranscript.Render(current.Transcript, sourceNodeId, Body.text);
         }
         private void Footer(string text, string help) { footerText.text = text; footerHelp.text = help; }
-        private Text Field(Transform parent, string label, string value, float y) { Label(parent, label + "Label", label, 24, y, 110, 20, 14, Ink); return Label(parent, "Preview" + label, value, 138, y, 440, 20, 14, Ink); }
+        private static string PublicIntroduction(string patientId)
+        {
+            switch (patientId)
+            {
+                case "former-ruler": return "薇拉·沃斯，前执政委员会成员。要求核验身份，并对收容记录中的判断提出异议。";
+                case "battlefield-doctor": return "埃德温，战场医生。曾在前线救治伤员，关注治疗的具体方法与风险。";
+                case "child": return "米洛，年幼的收容者。面对审查显得紧张，反复确认自己的回答是否正确。";
+                case "priest": return "乔纳，神职人员。谈话常围绕信仰与赎罪，明确表达了接受净化的愿望。";
+                case "diplomat": return "阿德里安，以贸易代表身份登记。来访事项涉及工业制品采购与交付，因例行检测异常被送入安置所。";
+                case "tutorial": return "身份尚未登记的收容者。等待本次审查。";
+                case "self-review": return "第三安置所值班审查员。本人复核记录。";
+                default: return "暂无公开档案。";
+            }
+        }
         private static string PatientStatus(PatientView p) => p.HasMetToday ? "已审" : "待审";
         private static string PatientStage(PatientView p) => p.Presence == PatientPresence.Purified ? "已净化"
             : p.Presence == PatientPresence.Released ? "已释放"

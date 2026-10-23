@@ -5156,508 +5156,586 @@ day: 2
     <<jump child__P02_D2_R2_COMMON_001>>
 ===
 
-title: priest__P01_D2_R2_COMMON_001
+title: priest__P01_D1_R2_COMMON_001
 kind: line
 round: R2
 patient: priest
 day: 2
 portrait: JN02
----
-乔纳: 你昨天把我从门前拖了回来。
-<<jump priest__P01_D2_R2_COMMON_002>>
-===
-
-title: priest__P01_D2_R2_COMMON_002
-kind: line
-round: R2
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 是我的信仰不够虔诚吗？
-<<jump priest__P01_D2_R2_COMMON_003>>
-===
-
-title: priest__P01_D2_R2_COMMON_003
-kind: line
-round: R2
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 不，不是。
-<<jump priest__P01_D2_R2_COMMON_004>>
-===
-
-title: priest__P01_D2_R2_COMMON_004
-kind: line
-round: R2
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 是你不懂得上帝赐予你权力的意义。
-<<jump priest__P01_D2_R2_OPTION_001__MENU>>
-===
-
-title: priest__P01_D2_R2_CLOSE_001
-kind: line
-round: R2
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 你根本什么都不知道！
-<<jump priest__P01_D2_R2_CLOSE_002>>
-===
-
-title: priest__P01_D2_R2_CLOSE_002
-kind: line
-round: R2
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: “若是你的右眼使你跌倒，剜出它来。”
-<<jump priest__P01_D2_R3_COMMON_001>>
-===
-
-title: priest__P01_D2_R3_COMMON_001
-kind: line
-round: R3
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 我曾经等过仪器很多次。
-<<jump priest__P01_D2_R3_COMMON_002>>
-===
-
-title: priest__P01_D2_R3_COMMON_002
-kind: line
-round: R3
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 每一次，它都没有认可我。
-<<jump priest__P01_D2_R3_OPTION_001__MENU>>
-===
-
-title: priest__P01_D2_R3_CLOSE_001
-kind: line
-round: R3
-patient: priest
-day: 2
-portrait: JN04
----
-乔纳: 我决定亲手证明，净化可以由信徒开始。
-<<jump priest__P01_D2_R3_CLOSE_002>>
-===
-
-title: priest__P01_D2_R3_CLOSE_002
-kind: line
-round: R3
-patient: priest
-day: 2
-portrait: JN04
----
-乔纳: 被我亲手净化的人…他们都很幸福。
-<<jump priest__P01_D2_R4_COMMON_001>>
-===
-
-title: priest__P01_D2_R4_COMMON_001
-kind: line
-round: R4
-patient: priest
-day: 2
-portrait: JN04
----
-乔纳: 神啊……
-<<jump priest__P01_D2_R4_COMMON_002>>
-===
-
-title: priest__P01_D2_R4_COMMON_002
-kind: line
-round: R4
-patient: priest
-day: 2
-portrait: JN04
----
-乔纳: 请赐予我净化！！！
-<<jump priest__P01_D2_R4_OPTION_001__MENU>>
-===
-
-title: priest__P01_D2_R4_CLOSE_001
-kind: line
-round: R4
-patient: priest
-day: 2
-portrait: JN04
----
-乔纳: 我听到了回应。
-<<jump priest__P01_D2_R4_CLOSE_003>>
-===
-
-title: priest__P01_D2_R4_CLOSE_002
-kind: line
-round: R4
-patient: priest
-day: 2
-portrait: JN04
----
-乔纳: 祂把我召唤至此。
-<<jump priest__P01_D2_R4_CLOSE_003>>
-===
-
-title: priest__P01_D2_R4_CLOSE_003
-kind: line
-round: R4
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 你和我，都肩负着重大的使命。
-<<jump priest__P01_D2_R5_COMMON_001>>
-===
-
-title: priest__P01_D2_R5_COMMON_001
-kind: line
-round: R5
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 如果我在你这个位置上，我会将净化的恩泽传递给每一个人。
-<<jump priest__P01_D2_R5_COMMON_002>>
-===
-
-title: priest__P01_D2_R5_COMMON_002
-kind: line
-round: R5
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 而你…你还没领悟你的责任…
-<<jump priest__P01_D2_R5_OPTION_001__MENU>>
-===
-
-title: priest__P01_D2_R5_CLOSE_001
-kind: line
-round: R5
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 这正是上帝的考验…
-<<jump priest__P01_D2_R5_CLOSE_003>>
-===
-
-title: priest__P01_D2_R5_CLOSE_002
-kind: line
-round: R5
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 愚不可及。
-<<jump priest__P01_D2_R5_CLOSE_003>>
-===
-
-title: priest__P01_D2_R5_CLOSE_003
-kind: line
-round: R5
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 我不怪你没法理解这一切。
-<<jump priest__P01_D2_R5_CLOSE_004>>
-===
-
-title: priest__P01_D2_R5_CLOSE_004
-kind: line
-round: R5
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 但这都是神迹……
-<<jump priest__P01_D2_R6_COMMON_001>>
-===
-
-title: priest__P01_D2_R6_COMMON_001
-kind: line
-round: R6
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 神圣的机器指引着我们……净化仪式让我们变得不再有罪……
-<<jump priest__P01_D2_R6_OPTION_001__MENU>>
-===
-
-title: priest__P01_D2_R6_CLOSE_001
-kind: line
-round: R6
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 我放弃了，你过于愚蠢。
-<<jump priest__P01_D2_R6_CLOSE_002>>
-===
-
-title: priest__P01_D2_R6_CLOSE_002
-kind: line
-round: R6
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 别废话了，快让我接受净化！！
-<<jump priest__P01_D2_R7_COMMON_001>>
-===
-
-title: priest__P01_D2_R7_COMMON_001
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 我好不容易来到这里，不能再拖延下去了！！！！
-<<jump priest__P01_D2_R7_COMMON_002>>
-===
-
-title: priest__P01_D2_R7_COMMON_002
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 你还要用治疗拖延我吗？
-<<jump priest__P01_D2_R7_OPTION_001__MENU>>
-===
-
-title: priest__P01_D2_R7_CLOSE_001
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 别试图阻止神的旨意。
-<<jump priest__P01_D2_R7_CLOSE_004>>
-===
-
-title: priest__P01_D2_R7_CLOSE_002
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN02
----
-乔纳: 他们向我忏悔过……这就是在寻求净化。
-<<jump priest__P01_D2_R7_CLOSE_004>>
-===
-
-title: priest__P01_D2_R7_CLOSE_003
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 配不配由祂决定，不由一个害怕按下按钮的人决定。
-<<jump priest__P01_D2_R7_CLOSE_004>>
-===
-
-title: priest__P01_D2_R7_CLOSE_004
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 给我净化！否则，我会自己寻找方法。
-<<jump priest__P01_D2_R7_PLAYER_ACTION_001__MENU>>
-===
-
-title: priest__P01_D2_R7_ACTION_001
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 这不是治疗，这是亵渎。
-<<jump priest__P01_D2_R7_ACTION_002>>
-===
-
-title: priest__P01_D2_R7_ACTION_002
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN03
----
-乔纳: 你一次又一次把我从门前拖回来。
-<<jump priest__END_DAY2>>
-===
-
-title: priest__P01_D2_R7_ACTION_003
-kind: line
-round: R7
-patient: priest
-day: 2
-portrait: JN04
 ---
 乔纳: 终于。
-<<jump priest__P01_D2_R7_ACTION_004>>
+<<jump priest__P01_D1_R2_COMMON_002>>
 ===
 
-title: priest__P01_D2_R7_ACTION_004
+title: priest__P01_D1_R2_COMMON_002
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 请告诉我，今天就能接受净化吗？
+<<jump priest__P01_D1_R2_OPTION_001__MENU>>
+===
+
+title: priest__P01_D1_R2_CLOSE_001
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 谈话也是门前的礼仪，我明白。
+<<jump priest__P01_D1_R2_CLOSE_002>>
+===
+
+title: priest__P01_D1_R2_CLOSE_002
+kind: line
+round: R2
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 只是我等得太久了。
+<<jump priest__P01_D1_R3_COMMON_001>>
+===
+
+title: priest__P01_D1_R3_COMMON_001
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 而且罪不会因为活着而消失，我急需净化。
+<<jump priest__P01_D1_R3_OPTION_001__MENU>>
+===
+
+title: priest__P01_D1_R3_CLOSE_001
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 生而为人，就已经带着不能洗净的东西。
+<<jump priest__P01_D1_R3_CLOSE_003>>
+===
+
+title: priest__P01_D1_R3_CLOSE_002
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 当一个人停止思考，他的罪也就被洗涤干净了。
+<<jump priest__P01_D1_R3_CLOSE_003>>
+===
+
+title: priest__P01_D1_R3_CLOSE_003
+kind: line
+round: R3
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 名字不同，不会改变恩赐本身。
+<<jump priest__P01_D1_R4_COMMON_001>>
+===
+
+title: priest__P01_D1_R4_COMMON_001
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 仪器过去从不选择我。
+<<jump priest__P01_D1_R4_COMMON_002>>
+===
+
+title: priest__P01_D1_R4_COMMON_002
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 我一度以为，是我的祈祷还不够虔诚。
+<<jump priest__P01_D1_R4_OPTION_001__MENU>>
+===
+
+title: priest__P01_D1_R4_CLOSE_001
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 无罪？那是最可怕的拒绝。没有人真正无罪。
+<<jump priest__P01_D1_R4_CLOSE_004>>
+===
+
+title: priest__P01_D1_R4_CLOSE_002
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 因为只有被选中，我才能能接受净化，我才能确定祂没有忘记我。
+<<jump priest__P01_D1_R4_CLOSE_004>>
+===
+
+title: priest__P01_D1_R4_CLOSE_003
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 怀疑也是罪。我不会因此责怪你，只会为你祈祷。
+<<jump priest__P01_D1_R4_CLOSE_004>>
+===
+
+title: priest__P01_D1_R4_CLOSE_004
+kind: line
+round: R4
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 今天红灯终于亮了，这就是回应。
+<<jump priest__P01_D1_R5_COMMON_001>>
+===
+
+title: priest__P01_D1_R5_COMMON_001
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 我见过净化后的人。
+<<jump priest__P01_D1_R5_COMMON_002>>
+===
+
+title: priest__P01_D1_R5_COMMON_002
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 他们不再恐惧，也不再被欲望折磨。
+<<jump priest__P01_D1_R5_OPTION_001__MENU>>
+===
+
+title: priest__P01_D1_R5_CLOSE_001
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 我说过，思考本就是一种罪。
+<<jump priest__P01_D1_R5_CLOSE_003>>
+===
+
+title: priest__P01_D1_R5_CLOSE_002
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 这是洗涤罪孽的唯一方式！
+<<jump priest__P01_D1_R5_CLOSE_003>>
+===
+
+title: priest__P01_D1_R5_CLOSE_003
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 沉默并不空洞。
+<<jump priest__P01_D1_R5_CLOSE_004>>
+===
+
+title: priest__P01_D1_R5_CLOSE_004
+kind: line
+round: R5
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 也许只是我们还听不懂洁净后的语言。
+<<jump priest__P01_D1_R6_COMMON_001>>
+===
+
+title: priest__P01_D1_R6_COMMON_001
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 你每天站在这里，为别人打开那扇门。
+<<jump priest__P01_D1_R6_OPTION_001__MENU>>
+===
+
+title: priest__P01_D1_R6_CLOSE_001
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 工作也可以是圣职，只是你还没有接受这个名字。
+<<jump priest__P01_D1_R6_CLOSE_003>>
+===
+
+title: priest__P01_D1_R6_CLOSE_002
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 羡慕，也替他们喜悦。每一次都是祂先召唤别人。
+<<jump priest__P01_D1_R6_CLOSE_003>>
+===
+
+title: priest__P01_D1_R6_CLOSE_003
+kind: line
+round: R6
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 信仰本来就发生在看不见结果的地方。
+<<jump priest__P01_D1_R7_COMMON_001>>
+===
+
+title: priest__P01_D1_R7_COMMON_001
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 如果今天不能净化，请告诉我原因。
+<<jump priest__P01_D1_R7_COMMON_002>>
+===
+
+title: priest__P01_D1_R7_COMMON_002
 kind: line
 round: R7
 patient: priest
 day: 2
 portrait: JN04
 ---
-乔纳: 好舒服啊。
-<<jump priest__END_DAY2>>
+乔纳: 我曾经亲自为几个信徒实施净化仪式。
+<<jump priest__P01_D1_R7_COMMON_003>>
 ===
 
-title: priest__P01_D2_R7_ACTION_005
+title: priest__P01_D1_R7_COMMON_003
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 只是我的手仍然比不上上帝的恩泽。
+<<jump priest__P01_D1_R7_COMMON_004>>
+===
+
+title: priest__P01_D1_R7_COMMON_004
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 他们的脑袋被我开了个大洞，但我没法把里面的东西再装回去。
+<<jump priest__P01_D1_R7_COMMON_005>>
+===
+
+title: priest__P01_D1_R7_COMMON_005
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 他们在幸福中上了天堂。
+<<jump priest__P01_D1_R7_COMMON_006>>
+===
+
+title: priest__P01_D1_R7_COMMON_006
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 我等了好久，仪器才亮起红灯。
+<<jump priest__P01_D1_R7_COMMON_007>>
+===
+
+title: priest__P01_D1_R7_COMMON_007
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 请赐予我真正的净化……
+<<jump priest__P01_D1_R7_OPTION_001__MENU>>
+===
+
+title: priest__P01_D1_R7_CLOSE_001
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 程序也是祂借人的手写下的秩序。
+<<jump priest__P01_D1_R7_CLOSE_004>>
+===
+
+title: priest__P01_D1_R7_CLOSE_002
 kind: line
 round: R7
 patient: priest
 day: 2
 portrait: JN03
 ---
-乔纳: 你把一个未完成使命的人送回街上。
-<<jump priest__P01_D2_R7_ACTION_006>>
+乔纳: 还要我说多少遍，这是摆脱原罪的唯一办法！！
+<<jump priest__P01_D1_R7_CLOSE_004>>
 ===
 
-title: priest__P01_D2_R7_ACTION_006
+title: priest__P01_D1_R7_CLOSE_003
 kind: line
 round: R7
 patient: priest
 day: 2
 portrait: JN03
 ---
-乔纳: 也许这正是祂的安排。
-<<jump priest__END_DAY2>>
+乔纳: 你害怕承担引路人的责任，对吗？
+<<jump priest__P01_D1_R7_CLOSE_004>>
 ===
 
-title: priest__P01_D2_R2_OPTION_001__MENU
+title: priest__P01_D1_R7_CLOSE_004
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN02
+---
+乔纳: 我已经准备好了。请不要让我在门外停太久。
+<<jump priest__P01_D1_R7_CLOSE_005>>
+===
+
+title: priest__P01_D1_R7_CLOSE_005
+kind: line
+round: R7
+patient: priest
+day: 2
+---
+乔纳: 记住，千  万  不  要  释  放  我，这会让我失去耐心。
+<<jump priest__P01_D1_R7_PLAYER_ACTION_001__MENU>>
+===
+
+title: priest__P01_D1_R7_ACTION_001
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 为什么还要治疗我？
+<<jump priest__P01_D1_R7_ACTION_002>>
+===
+
+title: priest__P01_D1_R7_ACTION_002
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我已经站在门前了！
+<<jump priest__P01_D1_R7_ACTION_007>>
+===
+
+title: priest__P01_D1_R7_ACTION_003
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 感谢仁慈的父亲。
+<<jump priest__P01_D1_R7_ACTION_004>>
+===
+
+title: priest__P01_D1_R7_ACTION_004
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN04
+---
+乔纳: 请让我彻底摆脱原罪。
+<<jump priest__END_DAY1>>
+===
+
+title: priest__P01_D1_R7_ACTION_005
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 看来你罪孽深重…
+<<jump priest__P01_D1_R7_ACTION_006>>
+===
+
+title: priest__P01_D1_R7_ACTION_006
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 我将亲手为你操办净化仪式。
+<<jump priest__END_DAY1>>
+===
+
+title: priest__P01_D1_R7_ACTION_007
+kind: line
+round: R7
+patient: priest
+day: 2
+portrait: JN03
+---
+乔纳: 不会让你等待太久…
+<<jump priest__END_DAY1>>
+===
+
+title: priest__P01_D1_R2_OPTION_001__MENU
 kind: choice
 round: R2
 patient: priest
 day: 2
 ---
--> 我的权力和上帝没有关系。 #id:priest__P01_D2_R2_OPTION_001 #trust:0
-    <<jump priest__P01_D2_R2_CLOSE_001>>
--> 你真是个危险的疯子。 #id:priest__P01_D2_R2_OPTION_002 #trust:0
-    <<jump priest__P01_D2_R2_CLOSE_001>>
--> 你的精神正常吗？ #id:priest__P01_D2_R2_OPTION_003 #trust:0
-    <<jump priest__P01_D2_R2_CLOSE_001>>
+-> 先完成谈话。 #id:priest__P01_D1_R2_OPTION_001 #trust:0
+    <<jump priest__P01_D1_R2_CLOSE_001>>
+-> 你很期待？ #id:priest__P01_D1_R2_OPTION_002 #trust:0
+    <<jump priest__P01_D1_R2_CLOSE_001>>
 ===
 
-title: priest__P01_D2_R3_OPTION_001__MENU
+title: priest__P01_D1_R3_OPTION_001__MENU
 kind: choice
 round: R3
 patient: priest
 day: 2
 ---
--> 所以你做了什么？ #id:priest__P01_D2_R3_OPTION_001 #trust:0
-    <<jump priest__P01_D2_R3_CLOSE_001>>
--> 你现在不还是来了吗？ #id:priest__P01_D2_R3_OPTION_002 #trust:0
-    <<jump priest__P01_D2_R3_CLOSE_002>>
--> 你的信仰荒谬至极。 #id:priest__P01_D2_R3_OPTION_003 #trust:0
-    <<jump priest__P01_D2_R3_CLOSE_002>>
--> 这不过是个仪器，你甚至不知道它的原理。 #id:priest__P01_D2_R3_OPTION_004 #trust:0
-    <<jump priest__P01_D2_R3_CLOSE_002>>
+-> 你犯了什么罪？ #id:priest__P01_D1_R3_OPTION_001 #trust:0
+    <<jump priest__P01_D1_R3_CLOSE_001>>
+-> 每个人都会犯错。 #id:priest__P01_D1_R3_OPTION_002 #trust:0
+    <<jump priest__P01_D1_R3_CLOSE_001>>
+-> 你认为净化能赎罪？ #id:priest__P01_D1_R3_OPTION_003 #trust:0
+    <<jump priest__P01_D1_R3_CLOSE_002>>
+-> 这不过是一个手术。 #id:priest__P01_D1_R3_OPTION_004 #trust:0
+    <<jump priest__P01_D1_R3_CLOSE_002>>
 ===
 
-title: priest__P01_D2_R4_OPTION_001__MENU
+title: priest__P01_D1_R4_OPTION_001__MENU
 kind: choice
 round: R4
 patient: priest
 day: 2
 ---
--> 你在听我说话吗？ #id:priest__P01_D2_R4_OPTION_001 #trust:0
-    <<jump priest__P01_D2_R4_CLOSE_001>>
--> …… #id:priest__P01_D2_R4_OPTION_002 #trust:3
-    <<jump priest__P01_D2_R4_CLOSE_002>>
+-> 也许仪器认为你无罪。 #id:priest__P01_D1_R4_OPTION_001 #trust:0
+    <<jump priest__P01_D1_R4_CLOSE_001>>
+-> 你为什么一定要被选中？ #id:priest__P01_D1_R4_OPTION_002 #trust:3
+    <<jump priest__P01_D1_R4_CLOSE_002>>
+-> 你的信仰没有依据。 #id:priest__P01_D1_R4_OPTION_003 #trust:-3
+    <<jump priest__P01_D1_R4_CLOSE_003>>
 ===
 
-title: priest__P01_D2_R5_OPTION_001__MENU
+title: priest__P01_D1_R5_OPTION_001__MENU
 kind: choice
 round: R5
 patient: priest
 day: 2
 ---
--> 我只是按照规章办事。 #id:priest__P01_D2_R5_OPTION_001 #trust:0
-    <<jump priest__P01_D2_R5_CLOSE_003>>
--> 要想坐在我这个位置上可不容易，我经过了漫长的学习与考试。 #id:priest__P01_D2_R5_OPTION_002 #trust:0
-    <<jump priest__P01_D2_R5_CLOSE_001>>
--> 还要我说多少遍，这个世界上根本没有神。 #id:priest__P01_D2_R5_OPTION_003 #trust:0
-    <<jump priest__P01_D2_R5_CLOSE_002>>
+-> 他们也不再回应。 #id:priest__P01_D1_R5_OPTION_001 #trust:0
+    <<jump priest__P01_D1_R5_CLOSE_003>>
+-> 这和罪有什么关系？ #id:priest__P01_D1_R5_OPTION_002 #trust:0
+    <<jump priest__P01_D1_R5_CLOSE_001>>
+-> 你也想成为这样？ #id:priest__P01_D1_R5_OPTION_003 #trust:0
+    <<jump priest__P01_D1_R5_CLOSE_002>>
 ===
 
-title: priest__P01_D2_R6_OPTION_001__MENU
+title: priest__P01_D1_R6_OPTION_001__MENU
 kind: choice
 round: R6
 patient: priest
 day: 2
 ---
--> 仪器和手术都不过是人造的，你的信仰根本不存在。 #id:priest__P01_D2_R6_OPTION_001 #trust:0
-    <<jump priest__P01_D2_R6_CLOSE_001>>
--> 天呐……你说的有道理。 #id:priest__P01_D2_R6_OPTION_002 #trust:0
-    <<jump priest__P01_D2_R6_CLOSE_002>>
--> 我必须承认，这份工作比我想象中的要难。 #id:priest__P01_D2_R6_OPTION_003 #trust:0
-    <<jump priest__P01_D2_R6_CLOSE_002>>
+-> 这不过是我的工作。 #id:priest__P01_D1_R6_OPTION_001 #trust:0
+    <<jump priest__P01_D1_R6_CLOSE_001>>
+-> 别把我算进你的信仰。 #id:priest__P01_D1_R6_OPTION_002 #trust:0
+    <<jump priest__P01_D1_R6_CLOSE_003>>
+-> 你羡慕他们？ #id:priest__P01_D1_R6_OPTION_003 #trust:0
+    <<jump priest__P01_D1_R6_CLOSE_002>>
+-> 你不知道净化会发生什么。 #id:priest__P01_D1_R6_OPTION_004 #trust:0
+    <<jump priest__P01_D1_R6_CLOSE_003>>
 ===
 
-title: priest__P01_D2_R7_OPTION_001__MENU
+title: priest__P01_D1_R7_OPTION_001__MENU
 kind: choice
 round: R7
 patient: priest
 day: 2
 ---
--> 你越渴望，我就越不能让你得到，你太危险了…… #id:priest__P01_D2_R7_OPTION_001 #trust:0
-    <<jump priest__P01_D2_R7_CLOSE_001>>
--> 你杀了不少人…应该让你得到净化。 #id:priest__P01_D2_R7_OPTION_002 #trust:3
-    <<jump priest__P01_D2_R7_CLOSE_002>>
--> 你根本不配谈救赎。 #id:priest__P01_D2_R7_OPTION_003 #trust:-3
-    <<jump priest__P01_D2_R7_CLOSE_003>>
+-> 需要按程序决定。 #id:priest__P01_D1_R7_OPTION_001 #trust:0
+    <<jump priest__P01_D1_R7_CLOSE_001>>
+-> 告诉我你怎样理解净化。 #id:priest__P01_D1_R7_OPTION_002 #trust:3
+    <<jump priest__P01_D1_R7_CLOSE_002>>
+-> 我不会满足你的妄想。 #id:priest__P01_D1_R7_OPTION_003 #trust:-3
+    <<jump priest__P01_D1_R7_CLOSE_003>>
 ===
 
-title: priest__P01_D2_R7_PLAYER_ACTION_001__MENU
+title: priest__P01_D1_R7_PLAYER_ACTION_001__MENU
 kind: measure
 round: R7
 patient: priest
 day: 2
 ---
--> 治疗 #id:priest__P01_D2_R7_PLAYER_ACTION_001 #trust:0 #disposition:treat
-    <<jump priest__P01_D2_R7_ACTION_001>>
--> 净化 #id:priest__P01_D2_R7_PLAYER_ACTION_002 #trust:0 #disposition:purify
-    <<jump priest__P01_D2_R7_ACTION_003>>
--> 释放 #id:priest__P01_D2_R7_PLAYER_ACTION_003 #trust:0 #disposition:release
-    <<jump priest__P01_D2_R7_ACTION_005>>
+-> 治疗 #id:priest__P01_D1_R7_PLAYER_ACTION_001 #trust:0 #disposition:treat
+    <<jump priest__P01_D1_R7_ACTION_001>>
+-> 净化 #id:priest__P01_D1_R7_PLAYER_ACTION_002 #trust:0 #disposition:purify
+    <<jump priest__P01_D1_R7_ACTION_003>>
+-> 释放 #id:priest__P01_D1_R7_PLAYER_ACTION_003 #trust:0 #disposition:release
+    <<jump priest__P01_D1_R7_ACTION_005>>
 ===
 
-title: priest__P01_D2_R1_OPTION_001__MENU
+title: priest__P01_D1_R1_OPTION_001__MENU
 kind: choice
 round: R1
 patient: priest
 day: 2
 ---
--> 请上前接受审查 #id:priest__P01_D2_R1_OPTION_001 #trust:100
-    <<jump priest__P01_D2_R2_COMMON_001>>
+-> 请上前接受审查 #id:priest__P01_D1_R1_OPTION_001 #trust:100
+    <<jump priest__P01_D1_R2_COMMON_001>>
 ===
 
 title: former-ruler__P03_D3_R2_COMMON_001
@@ -8512,1367 +8590,1395 @@ day: 3
     <<jump child__P02_D3_R2_COMMON_001>>
 ===
 
-title: priest__P01_D3_R1_COMMON_001
-kind: line
-round: R1
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 别再念治疗两个字。
-<<jump priest__P01_D3_R1_COMMON_002>>
-===
-
-title: priest__P01_D3_R1_COMMON_002
-kind: line
-round: R1
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 我的头还在，我的罪也还在。
-<<jump priest__P01_D3_R1_OPTION_001__MENU>>
-===
-
-title: priest__P01_D3_R1_CLOSE_001
-kind: line
-round: R1
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 危险？终于，你也肯承认了。
-<<jump priest__P01_D3_R1_CLOSE_002>>
-===
-
-title: priest__P01_D3_R1_CLOSE_002
-kind: line
-round: R1
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 那就停止拖延。
-<<jump priest__P01_D3_R2_COMMON_001>>
-===
-
-title: priest__P01_D3_R2_COMMON_001
+title: priest__P01_D2_R2_COMMON_001
 kind: line
 round: R2
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 昨晚我检查过房间里的每一件东西。
-<<jump priest__P01_D3_R2_OPTION_001__MENU>>
+乔纳: 你昨天把我从门前拖了回来。
+<<jump priest__P01_D2_R2_COMMON_002>>
 ===
 
-title: priest__P01_D3_R2_CLOSE_001
+title: priest__P01_D2_R2_COMMON_002
 kind: line
 round: R2
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 任何能打开头骨、让恩典进入的东西。
-<<jump priest__P01_D3_R2_CLOSE_003>>
+乔纳: 是我的信仰不够虔诚吗？
+<<jump priest__P01_D2_R2_COMMON_003>>
 ===
 
-title: priest__P01_D3_R2_CLOSE_002
+title: priest__P01_D2_R2_COMMON_003
 kind: line
 round: R2
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 如果你拒绝履行职责，我只能自己完成。
-<<jump priest__P01_D3_R2_CLOSE_003>>
+乔纳: 不，不是。
+<<jump priest__P01_D2_R2_COMMON_004>>
 ===
 
-title: priest__P01_D3_R2_CLOSE_003
+title: priest__P01_D2_R2_COMMON_004
 kind: line
 round: R2
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 不是威胁，是通知。祷告结束前，我会找到方法。
-<<jump priest__P01_D3_R3_COMMON_001>>
+乔纳: 是你不懂得上帝赐予你权力的意义。
+<<jump priest__P01_D2_R2_OPTION_001__MENU>>
 ===
 
-title: priest__P01_D3_R3_COMMON_001
+title: priest__P01_D2_R2_CLOSE_001
+kind: line
+round: R2
+patient: priest
+day: 3
+portrait: JN03
+---
+乔纳: 你根本什么都不知道！
+<<jump priest__P01_D2_R2_CLOSE_002>>
+===
+
+title: priest__P01_D2_R2_CLOSE_002
+kind: line
+round: R2
+patient: priest
+day: 3
+portrait: JN03
+---
+乔纳: “若是你的右眼使你跌倒，剜出它来。”
+<<jump priest__P01_D2_R3_COMMON_001>>
+===
+
+title: priest__P01_D2_R3_COMMON_001
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN02
+---
+乔纳: 我曾经等过仪器很多次。
+<<jump priest__P01_D2_R3_COMMON_002>>
+===
+
+title: priest__P01_D2_R3_COMMON_002
+kind: line
+round: R3
+patient: priest
+day: 3
+portrait: JN02
+---
+乔纳: 每一次，它都没有认可我。
+<<jump priest__P01_D2_R3_OPTION_001__MENU>>
+===
+
+title: priest__P01_D2_R3_CLOSE_001
 kind: line
 round: R3
 patient: priest
 day: 3
 portrait: JN04
 ---
-乔纳: 你迟迟不给我净化。
-<<jump priest__P01_D3_R3_COMMON_002>>
+乔纳: 我决定亲手证明，净化可以由信徒开始。
+<<jump priest__P01_D2_R3_CLOSE_002>>
 ===
 
-title: priest__P01_D3_R3_COMMON_002
+title: priest__P01_D2_R3_CLOSE_002
 kind: line
 round: R3
 patient: priest
 day: 3
 portrait: JN04
 ---
-乔纳: 是因为你不洁，还是因为你羡慕我的坚定？
-<<jump priest__P01_D3_R3_OPTION_001__MENU>>
+乔纳: 被我亲手净化的人…他们都很幸福。
+<<jump priest__P01_D2_R4_COMMON_001>>
 ===
 
-title: priest__P01_D3_R3_CLOSE_001
-kind: line
-round: R3
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 名称不重要。它能结束罪，这就足够。
-<<jump priest__P01_D3_R3_CLOSE_004>>
-===
-
-title: priest__P01_D3_R3_CLOSE_002
-kind: line
-round: R3
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: ……他们没有回来告诉我。可沉默，也许不是同意。
-<<jump priest__P01_D3_R3_CLOSE_004>>
-===
-
-title: priest__P01_D3_R3_CLOSE_003
-kind: line
-round: R3
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 惩罚太轻了。我要求的是彻底消失。
-<<jump priest__P01_D3_R3_CLOSE_004>>
-===
-
-title: priest__P01_D3_R3_CLOSE_004
-kind: line
-round: R3
-patient: priest
-day: 3
-portrait: JN04
----
-乔纳: 不要再用你自己的恐惧替祂作答。
-<<jump priest__P01_D3_R4_COMMON_001>>
-===
-
-title: priest__P01_D3_R4_COMMON_001
+title: priest__P01_D2_R4_COMMON_001
 kind: line
 round: R4
 patient: priest
 day: 3
 portrait: JN04
 ---
-乔纳: 我求了祂那么多年，为什么偏偏在最后把我送出来？
-<<jump priest__P01_D3_R4_COMMON_002>>
+乔纳: 神啊……
+<<jump priest__P01_D2_R4_COMMON_002>>
 ===
 
-title: priest__P01_D3_R4_COMMON_002
+title: priest__P01_D2_R4_COMMON_002
 kind: line
 round: R4
 patient: priest
 day: 3
 portrait: JN04
 ---
-乔纳: 我现在明白了：我的工作还没做完。
-<<jump priest__P01_D3_R4_OPTION_001__MENU>>
+乔纳: 请赐予我净化！！！
+<<jump priest__P01_D2_R4_OPTION_001__MENU>>
 ===
 
-title: priest__P01_D3_R4_CLOSE_001
+title: priest__P01_D2_R4_CLOSE_001
 kind: line
 round: R4
 patient: priest
 day: 3
 portrait: JN04
 ---
-乔纳: 等所有人都洁净以后，祂才会允许我成为最后一个。
-<<jump priest__P01_D3_R5_COMMON_001>>
+乔纳: 我听到了回应。
+<<jump priest__P01_D2_R4_CLOSE_003>>
 ===
 
-title: priest__P01_D3_R5_COMMON_001
+title: priest__P01_D2_R4_CLOSE_002
+kind: line
+round: R4
+patient: priest
+day: 3
+portrait: JN04
+---
+乔纳: 祂把我召唤至此。
+<<jump priest__P01_D2_R4_CLOSE_003>>
+===
+
+title: priest__P01_D2_R4_CLOSE_003
+kind: line
+round: R4
+patient: priest
+day: 3
+portrait: JN02
+---
+乔纳: 你和我，都肩负着重大的使命。
+<<jump priest__P01_D2_R5_COMMON_001>>
+===
+
+title: priest__P01_D2_R5_COMMON_001
 kind: line
 round: R5
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 你也需要净化。
-<<jump priest__P01_D3_R5_COMMON_002>>
+乔纳: 如果我在你这个位置上，我会将净化的恩泽传递给每一个人。
+<<jump priest__P01_D2_R5_COMMON_002>>
 ===
 
-title: priest__P01_D3_R5_COMMON_002
+title: priest__P01_D2_R5_COMMON_002
 kind: line
 round: R5
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 你每天决定谁保留痛苦，早已把罪握在手里。
-<<jump priest__P01_D3_R5_OPTION_001__MENU>>
+乔纳: 而你…你还没领悟你的责任…
+<<jump priest__P01_D2_R5_OPTION_001__MENU>>
 ===
 
-title: priest__P01_D3_R5_CLOSE_001
+title: priest__P01_D2_R5_CLOSE_001
 kind: line
 round: R5
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 现在你终于像其他人一样害怕了。
-<<jump priest__P01_D3_R5_CLOSE_003>>
+乔纳: 这正是上帝的考验…
+<<jump priest__P01_D2_R5_CLOSE_003>>
 ===
 
-title: priest__P01_D3_R5_CLOSE_002
+title: priest__P01_D2_R5_CLOSE_002
 kind: line
 round: R5
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 我的方法粗糙，意志却和这里没有区别。
-<<jump priest__P01_D3_R5_CLOSE_003>>
+乔纳: 愚不可及。
+<<jump priest__P01_D2_R5_CLOSE_003>>
 ===
 
-title: priest__P01_D3_R5_CLOSE_003
+title: priest__P01_D2_R5_CLOSE_003
 kind: line
 round: R5
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 程序让你安心，正如祷告让我安心。区别只是制服。
-<<jump priest__P01_D3_R6_COMMON_001>>
+乔纳: 我不怪你没法理解这一切。
+<<jump priest__P01_D2_R5_CLOSE_004>>
 ===
 
-title: priest__P01_D3_R6_COMMON_001
+title: priest__P01_D2_R5_CLOSE_004
+kind: line
+round: R5
+patient: priest
+day: 3
+portrait: JN02
+---
+乔纳: 但这都是神迹……
+<<jump priest__P01_D2_R6_COMMON_001>>
+===
+
+title: priest__P01_D2_R6_COMMON_001
 kind: line
 round: R6
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 最后一次。
-<<jump priest__P01_D3_R6_COMMON_002>>
+乔纳: 神圣的机器指引着我们……净化仪式让我们变得不再有罪……
+<<jump priest__P01_D2_R6_OPTION_001__MENU>>
 ===
 
-title: priest__P01_D3_R6_COMMON_002
+title: priest__P01_D2_R6_CLOSE_001
 kind: line
 round: R6
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 打开那扇门，或者把我送上净化台。
-<<jump priest__P01_D3_R6_OPTION_001__MENU>>
+乔纳: 我放弃了，你过于愚蠢。
+<<jump priest__P01_D2_R6_CLOSE_002>>
 ===
 
-title: priest__P01_D3_R6_CLOSE_001
+title: priest__P01_D2_R6_CLOSE_002
 kind: line
 round: R6
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 那我会在夜里自己完成。你已经得到提醒。
-<<jump priest__P01_D3_R6_CLOSE_004>>
+乔纳: 别废话了，快让我接受净化！！
+<<jump priest__P01_D2_R7_COMMON_001>>
 ===
 
-title: priest__P01_D3_R6_CLOSE_002
+title: priest__P01_D2_R7_COMMON_001
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 选择……这个词像一根刺。可现在太迟了。
-<<jump priest__P01_D3_R6_CLOSE_004>>
+乔纳: 我好不容易来到这里，不能再拖延下去了！！！！
+<<jump priest__P01_D2_R7_COMMON_002>>
 ===
 
-title: priest__P01_D3_R6_CLOSE_003
+title: priest__P01_D2_R7_COMMON_002
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 那就别听。明天，你会看见我的布道。
-<<jump priest__P01_D3_R6_CLOSE_004>>
+乔纳: 你还要用治疗拖延我吗？
+<<jump priest__P01_D2_R7_OPTION_001__MENU>>
 ===
 
-title: priest__P01_D3_R6_CLOSE_004
+title: priest__P01_D2_R7_CLOSE_001
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 仁慈的父亲，请原谅这个替你关门的人。
-<<jump priest__P01_D3_R6_PLAYER_ACTION_001__MENU>>
+乔纳: 别试图阻止神的旨意。
+<<jump priest__P01_D2_R7_CLOSE_004>>
 ===
 
-title: priest__P01_D3_R6_ACTION_001
+title: priest__P01_D2_R7_CLOSE_002
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN02
 ---
-乔纳: 你又一次把我从门前拖走。
-<<jump priest__P01_D3_R6_ACTION_002>>
+乔纳: 他们向我忏悔过……这就是在寻求净化。
+<<jump priest__P01_D2_R7_CLOSE_004>>
 ===
 
-title: priest__P01_D3_R6_ACTION_002
+title: priest__P01_D2_R7_CLOSE_003
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 那我会用自己的手，完成最后的手术。
-<<jump priest__END_DAY3>>
+乔纳: 配不配由祂决定，不由一个害怕按下按钮的人决定。
+<<jump priest__P01_D2_R7_CLOSE_004>>
 ===
 
-title: priest__P01_D3_R6_ACTION_003
+title: priest__P01_D2_R7_CLOSE_004
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 赞美仁慈的父亲。
-<<jump priest__P01_D3_R6_ACTION_004>>
+乔纳: 给我净化！否则，我会自己寻找方法。
+<<jump priest__P01_D2_R7_PLAYER_ACTION_001__MENU>>
 ===
 
-title: priest__P01_D3_R6_ACTION_004
+title: priest__P01_D2_R7_ACTION_001
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 罪和‘我’，终于可以一起结束。
-<<jump priest__END_DAY3>>
+乔纳: 这不是治疗，这是亵渎。
+<<jump priest__P01_D2_R7_ACTION_002>>
 ===
 
-title: priest__P01_D3_R6_ACTION_005
+title: priest__P01_D2_R7_ACTION_002
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
-portrait: JN04
+portrait: JN03
 ---
-乔纳: 你选择把我送回人群。
-<<jump priest__P01_D3_R6_ACTION_006>>
+乔纳: 你一次又一次把我从门前拖回来。
+<<jump priest__END_DAY2>>
 ===
 
-title: priest__P01_D3_R6_ACTION_006
+title: priest__P01_D2_R7_ACTION_003
 kind: line
-round: R6
+round: R7
 patient: priest
 day: 3
 portrait: JN04
 ---
-乔纳: 很好。我的工作还没有完成。
-<<jump priest__END_DAY3>>
+乔纳: 终于。
+<<jump priest__P01_D2_R7_ACTION_004>>
 ===
 
-title: priest__P01_D3_R1_OPTION_001__MENU
-kind: choice
-round: R1
+title: priest__P01_D2_R7_ACTION_004
+kind: line
+round: R7
 patient: priest
 day: 3
+portrait: JN04
 ---
--> 冷静一点。 #id:priest__P01_D3_R1_OPTION_001 #trust:0
-    <<jump priest__P01_D3_R1_CLOSE_001>>
--> 你现在很危险。 #id:priest__P01_D3_R1_OPTION_002 #trust:0
-    <<jump priest__P01_D3_R1_CLOSE_001>>
--> 我们继续谈。 #id:priest__P01_D3_R1_OPTION_003 #trust:0
-    <<jump priest__P01_D3_R1_CLOSE_001>>
+乔纳: 好舒服啊。
+<<jump priest__END_DAY2>>
 ===
 
-title: priest__P01_D3_R2_OPTION_001__MENU
+title: priest__P01_D2_R7_ACTION_005
+kind: line
+round: R7
+patient: priest
+day: 3
+portrait: JN03
+---
+乔纳: 你把一个未完成使命的人送回街上。
+<<jump priest__P01_D2_R7_ACTION_006>>
+===
+
+title: priest__P01_D2_R7_ACTION_006
+kind: line
+round: R7
+patient: priest
+day: 3
+portrait: JN03
+---
+乔纳: 也许这正是祂的安排。
+<<jump priest__END_DAY2>>
+===
+
+title: priest__P01_D2_R2_OPTION_001__MENU
 kind: choice
 round: R2
 patient: priest
 day: 3
 ---
--> 你在找什么？ #id:priest__P01_D3_R2_OPTION_001 #trust:0
-    <<jump priest__P01_D3_R2_CLOSE_001>>
--> 房间里没有工具。 #id:priest__P01_D3_R2_OPTION_002 #trust:0
-    <<jump priest__P01_D3_R2_CLOSE_003>>
--> 你想对自己动手？ #id:priest__P01_D3_R2_OPTION_003 #trust:0
-    <<jump priest__P01_D3_R2_CLOSE_002>>
--> 你是在威胁我。 #id:priest__P01_D3_R2_OPTION_004 #trust:0
-    <<jump priest__P01_D3_R2_CLOSE_003>>
+-> 我的权力和上帝没有关系。 #id:priest__P01_D2_R2_OPTION_001 #trust:0
+    <<jump priest__P01_D2_R2_CLOSE_001>>
+-> 你真是个危险的疯子。 #id:priest__P01_D2_R2_OPTION_002 #trust:0
+    <<jump priest__P01_D2_R2_CLOSE_001>>
+-> 你的精神正常吗？ #id:priest__P01_D2_R2_OPTION_003 #trust:0
+    <<jump priest__P01_D2_R2_CLOSE_001>>
 ===
 
-title: priest__P01_D3_R3_OPTION_001__MENU
+title: priest__P01_D2_R3_OPTION_001__MENU
 kind: choice
 round: R3
 patient: priest
 day: 3
 ---
--> 因为净化不是救赎。 #id:priest__P01_D3_R3_OPTION_001 #trust:0
-    <<jump priest__P01_D3_R3_CLOSE_001>>
--> 那些死者从未得到救赎。 #id:priest__P01_D3_R3_OPTION_002 #trust:3
-    <<jump priest__P01_D3_R3_CLOSE_002>>
--> 闭嘴。你只是在逃避惩罚。 #id:priest__P01_D3_R3_OPTION_003 #trust:-3
-    <<jump priest__P01_D3_R3_CLOSE_003>>
+-> 所以你做了什么？ #id:priest__P01_D2_R3_OPTION_001 #trust:0
+    <<jump priest__P01_D2_R3_CLOSE_001>>
+-> 你现在不还是来了吗？ #id:priest__P01_D2_R3_OPTION_002 #trust:0
+    <<jump priest__P01_D2_R3_CLOSE_002>>
+-> 你的信仰荒谬至极。 #id:priest__P01_D2_R3_OPTION_003 #trust:0
+    <<jump priest__P01_D2_R3_CLOSE_002>>
+-> 这不过是个仪器，你甚至不知道它的原理。 #id:priest__P01_D2_R3_OPTION_004 #trust:0
+    <<jump priest__P01_D2_R3_CLOSE_002>>
 ===
 
-title: priest__P01_D3_R4_OPTION_001__MENU
+title: priest__P01_D2_R4_OPTION_001__MENU
 kind: choice
 round: R4
 patient: priest
 day: 3
 ---
--> 什么工作？ #id:priest__P01_D3_R4_OPTION_001 #trust:0
-    <<jump priest__P01_D3_R4_CLOSE_001>>
--> 你准备伤害谁？ #id:priest__P01_D3_R4_OPTION_002 #trust:0
-    <<jump priest__P01_D3_R4_CLOSE_001>>
--> 没人派给你使命。 #id:priest__P01_D3_R4_OPTION_003 #trust:0
-    <<jump priest__P01_D3_R4_CLOSE_001>>
+-> 你在听我说话吗？ #id:priest__P01_D2_R4_OPTION_001 #trust:0
+    <<jump priest__P01_D2_R4_CLOSE_001>>
+-> …… #id:priest__P01_D2_R4_OPTION_002 #trust:3
+    <<jump priest__P01_D2_R4_CLOSE_002>>
 ===
 
-title: priest__P01_D3_R5_OPTION_001__MENU
+title: priest__P01_D2_R5_OPTION_001__MENU
 kind: choice
 round: R5
 patient: priest
 day: 3
 ---
--> 别靠近我。 #id:priest__P01_D3_R5_OPTION_001 #trust:0
-    <<jump priest__P01_D3_R5_CLOSE_001>>
--> 你说得不算。 #id:priest__P01_D3_R5_OPTION_002 #trust:0
-    <<jump priest__P01_D3_R5_CLOSE_003>>
--> 你把杀人叫净化。 #id:priest__P01_D3_R5_OPTION_003 #trust:0
-    <<jump priest__P01_D3_R5_CLOSE_002>>
--> 这里至少有程序。 #id:priest__P01_D3_R5_OPTION_004 #trust:0
-    <<jump priest__P01_D3_R5_CLOSE_003>>
+-> 我只是按照规章办事。 #id:priest__P01_D2_R5_OPTION_001 #trust:0
+    <<jump priest__P01_D2_R5_CLOSE_003>>
+-> 要想坐在我这个位置上可不容易，我经过了漫长的学习与考试。 #id:priest__P01_D2_R5_OPTION_002 #trust:0
+    <<jump priest__P01_D2_R5_CLOSE_001>>
+-> 还要我说多少遍，这个世界上根本没有神。 #id:priest__P01_D2_R5_OPTION_003 #trust:0
+    <<jump priest__P01_D2_R5_CLOSE_002>>
 ===
 
-title: priest__P01_D3_R6_OPTION_001__MENU
+title: priest__P01_D2_R6_OPTION_001__MENU
 kind: choice
 round: R6
 patient: priest
 day: 3
 ---
--> 你会接受继续治疗。 #id:priest__P01_D3_R6_OPTION_001 #trust:0
-    <<jump priest__P01_D3_R6_CLOSE_001>>
--> 你的信徒本应拥有选择。 #id:priest__P01_D3_R6_OPTION_002 #trust:3
-    <<jump priest__P01_D3_R6_CLOSE_002>>
--> 我不会听一个杀人犯讲道。 #id:priest__P01_D3_R6_OPTION_003 #trust:-3
-    <<jump priest__P01_D3_R6_CLOSE_003>>
+-> 仪器和手术都不过是人造的，你的信仰根本不存在。 #id:priest__P01_D2_R6_OPTION_001 #trust:0
+    <<jump priest__P01_D2_R6_CLOSE_001>>
+-> 天呐……你说的有道理。 #id:priest__P01_D2_R6_OPTION_002 #trust:0
+    <<jump priest__P01_D2_R6_CLOSE_002>>
+-> 我必须承认，这份工作比我想象中的要难。 #id:priest__P01_D2_R6_OPTION_003 #trust:0
+    <<jump priest__P01_D2_R6_CLOSE_002>>
 ===
 
-title: priest__P01_D3_R6_PLAYER_ACTION_001__MENU
+title: priest__P01_D2_R7_OPTION_001__MENU
+kind: choice
+round: R7
+patient: priest
+day: 3
+---
+-> 你越渴望，我就越不能让你得到，你太危险了…… #id:priest__P01_D2_R7_OPTION_001 #trust:0
+    <<jump priest__P01_D2_R7_CLOSE_001>>
+-> 你杀了不少人…应该让你得到净化。 #id:priest__P01_D2_R7_OPTION_002 #trust:3
+    <<jump priest__P01_D2_R7_CLOSE_002>>
+-> 你根本不配谈救赎。 #id:priest__P01_D2_R7_OPTION_003 #trust:-3
+    <<jump priest__P01_D2_R7_CLOSE_003>>
+===
+
+title: priest__P01_D2_R7_PLAYER_ACTION_001__MENU
+kind: measure
+round: R7
+patient: priest
+day: 3
+---
+-> 治疗 #id:priest__P01_D2_R7_PLAYER_ACTION_001 #trust:0 #disposition:treat
+    <<jump priest__P01_D2_R7_ACTION_001>>
+-> 净化 #id:priest__P01_D2_R7_PLAYER_ACTION_002 #trust:0 #disposition:purify
+    <<jump priest__P01_D2_R7_ACTION_003>>
+-> 释放 #id:priest__P01_D2_R7_PLAYER_ACTION_003 #trust:0 #disposition:release
+    <<jump priest__P01_D2_R7_ACTION_005>>
+===
+
+title: priest__P01_D2_R1_OPTION_001__MENU
+kind: choice
+round: R1
+patient: priest
+day: 3
+---
+-> 请上前接受审查 #id:priest__P01_D2_R1_OPTION_001 #trust:100
+    <<jump priest__P01_D2_R2_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R2_COMMON_001
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 阿德里安。贸易代表，来这里商谈工业制品的采购和交付。
+<<jump diplomat__P05_D1_R2_COMMON_002>>
+===
+
+title: diplomat__P05_D1_R2_COMMON_002
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 昨天谈判结束后，我按要求参加了例行检测。仪器亮了红灯。
+<<jump diplomat__P05_D1_R2_COMMON_003>>
+===
+
+title: diplomat__P05_D1_R2_COMMON_003
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 工作人员把我从队伍里带出来，送到了这里。入境材料应该和收容记录放在一起。
+<<jump diplomat__P05_D1_R2_COMMON_004>>
+===
+
+title: diplomat__P05_D1_R2_COMMON_004
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 我明白需要接受审查。你问，我会把自己记得的经过说清楚。
+<<jump diplomat__P05_D1_R2_OPTION_001__MENU>>
+===
+
+title: diplomat__P05_D1_R2_CLOSE_001
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我先核对报价，问了产能、工期，还有月底追加的数量。
+<<jump diplomat__P05_D1_R2_CLOSE_004>>
+===
+
+title: diplomat__P05_D1_R2_CLOSE_002
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 红灯确实亮了。这一点我没有异议。
+<<jump diplomat__P05_D1_R2_CLOSE_005>>
+===
+
+title: diplomat__P05_D1_R2_CLOSE_003
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 好。我不替你解释红灯，也不替自己解释你的表情。
+<<jump diplomat__P05_D1_R2_CLOSE_006>>
+===
+
+title: diplomat__P05_D1_R2_CLOSE_004
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 对方说生产安排不便解释。谈判结束，我们就被带去排队检测。
+<<jump diplomat__P05_D1_R3_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R2_CLOSE_005
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我有异议的是，除此之外，材料里有没有留下别的理由。
+<<jump diplomat__P05_D1_R3_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R2_CLOSE_006
+kind: line
+round: R2
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我们从经过开始。这样最容易核对。
+<<jump diplomat__P05_D1_R3_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R3_COMMON_001
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 排队时，我在想交货会不会延期。订单拖一天，费用就往上添一点。
+<<jump diplomat__P05_D1_R3_COMMON_002>>
+===
+
+title: diplomat__P05_D1_R3_COMMON_002
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 轮到我，工作人员让我站好，把仪器贴过来。
+<<jump diplomat__P05_D1_R3_COMMON_003>>
+===
+
+title: diplomat__P05_D1_R3_COMMON_003
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 红灯亮起以后，他先收走了我的证件，再让我跟着走。
+<<jump diplomat__P05_D1_R3_COMMON_004>>
+===
+
+title: diplomat__P05_D1_R3_COMMON_004
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我没有拒绝检测，也没有和他争吵。你若要记情绪，我当时确实有些不耐烦。
+<<jump diplomat__P05_D1_R3_OPTION_001__MENU>>
+===
+
+title: diplomat__P05_D1_R3_CLOSE_001
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 供货方不肯解释，却仍要我按原来的日期付款。
+<<jump diplomat__P05_D1_R3_CLOSE_003>>
+===
+
+title: diplomat__P05_D1_R3_CLOSE_002
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 产能、交付周期，还有月底为什么突然多出一批零件。
+<<jump diplomat__P05_D1_R3_CLOSE_004>>
+===
+
+title: diplomat__P05_D1_R3_CLOSE_003
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我不喜欢这种条款。不过，不喜欢和打算伤人，你应当分开问。
+<<jump diplomat__P05_D1_R4_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R3_CLOSE_004
+kind: line
+round: R3
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 外壳和标准件，给检测设备用的。我问的是怎么按时交货，不是仪器怎么判断人。
+<<jump diplomat__P05_D1_R4_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R4_COMMON_001
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 在这次之前，我还在入境时接受过检测。那一次是绿灯。
+<<jump diplomat__P05_D1_R4_COMMON_002>>
+===
+
+title: diplomat__P05_D1_R4_COMMON_002
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 旁边一位旅客被请去复检，他妻子一直在解释。我这边的接待人员递了一张纸。
+<<jump diplomat__P05_D1_R4_COMMON_003>>
+===
+
+title: diplomat__P05_D1_R4_COMMON_003
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我的检测已经结束，他便带我从侧门走了。那张纸不是交给我的。
+<<jump diplomat__P05_D1_R4_COMMON_004>>
+===
+
+title: diplomat__P05_D1_R4_COMMON_004
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你若要核对，可以从入境日期查起。我不会把“走得快”说成“从来不必检测”。
+<<jump diplomat__P05_D1_R4_OPTION_001__MENU>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_001
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 接待我的人。名字应该在来访登记里。
+<<jump diplomat__P05_D1_R4_CLOSE_005>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_002
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我没有接到复检要求。有没有本该给我的要求，我不能替他们作证。
+<<jump diplomat__P05_D1_R4_CLOSE_006>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_003
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你可以先核对两边各用了多少时间。
+<<jump diplomat__P05_D1_R4_CLOSE_007>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_004
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 没有。我把手续办得快，当成接待工作的周到。
+<<jump diplomat__P05_D1_R4_CLOSE_008>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_005
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我只看见工作人员收下纸，没有问他凭什么能替我把手续办完。
+<<jump diplomat__P05_D1_R5_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_006
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 这两种说法差一个步骤。最好别为了写得简洁，把它省掉。
+<<jump diplomat__P05_D1_R5_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_007
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我当时没有抗议这种差别。较快离开，对我有利。
+<<jump diplomat__P05_D1_R5_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R4_CLOSE_008
+kind: line
+round: R4
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 一件事对自己有利的时候，人通常很晚才想起核对它。
+<<jump diplomat__P05_D1_R5_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R5_COMMON_001
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 进来时，有人问我是否愿意接受关怀。我问，回答“不愿意”，还能不能离开。
+<<jump diplomat__P05_D1_R5_COMMON_002>>
+===
+
+title: diplomat__P05_D1_R5_COMMON_002
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 他让我先把表填完。表上没有留给那个问题的位置。
+<<jump diplomat__P05_D1_R5_COMMON_003>>
+===
+
+title: diplomat__P05_D1_R5_COMMON_003
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 接待手册也教过我们换词：别问谁被带走，要问谁接受了关怀。
+<<jump diplomat__P05_D1_R5_COMMON_004>>
+===
+
+title: diplomat__P05_D1_R5_COMMON_004
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 所以我刚才把“红灯”和“理由”分开说。你可以不同意，但请不要替我换成“本人无异议”。
+<<jump diplomat__P05_D1_R5_OPTION_001__MENU>>
+===
+
+title: diplomat__P05_D1_R5_CLOSE_001
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 能减少。签字的人也更容易把笔放下。
+<<jump diplomat__P05_D1_R5_CLOSE_004>>
+===
+
+title: diplomat__P05_D1_R5_CLOSE_002
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 谢谢。包括我问过、却没有得到回答的那一句。
+<<jump diplomat__P05_D1_R5_CLOSE_005>>
+===
+
+title: diplomat__P05_D1_R5_CLOSE_003
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 一直在。我靠这个工作。
+<<jump diplomat__P05_D1_R5_CLOSE_006>>
+===
+
+title: diplomat__P05_D1_R5_CLOSE_004
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 至于被带走的人还害不害怕，通常不在同一张表里。
+<<jump diplomat__P05_D1_R6_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R5_CLOSE_005
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你肯留下问号，我就不必假装我们已经谈妥。
+<<jump diplomat__P05_D1_R6_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R5_CLOSE_006
+kind: line
+round: R5
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你注意到这一点，比因为我态度好就相信我，要可靠一些。
+<<jump diplomat__P05_D1_R6_COMMON_001>>
+===
+
+title: diplomat__P05_D1_R6_COMMON_001
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 如果基础信息已经核对完，你接下来要判断的，应该不是我会不会配合说话。
+<<jump diplomat__P05_D1_R6_COMMON_002>>
+===
+
+title: diplomat__P05_D1_R6_COMMON_002
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我会解释，会等你，也会在你打断时停下。别人未必做得到。
+<<jump diplomat__P05_D1_R6_COMMON_003>>
+===
+
+title: diplomat__P05_D1_R6_COMMON_003
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 这些让我更容易被听见，却没有一项能单独证明我无害。
+<<jump diplomat__P05_D1_R6_COMMON_004>>
+===
+
+title: diplomat__P05_D1_R6_COMMON_004
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你可以继续问。我只希望，你知道自己究竟在用哪一项作判断。
+<<jump diplomat__P05_D1_R6_OPTION_001__MENU>>
+===
+
+title: diplomat__P05_D1_R6_CLOSE_001
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 那就给说不清楚的人，也留一段核对的时间。
+<<jump diplomat__P05_D1_R6_CLOSE_003>>
+===
+
+title: diplomat__P05_D1_R6_CLOSE_002
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 明白。保持合作，不会自动换来一个结论。
+<<jump diplomat__P05_D1_R6_CLOSE_004>>
+===
+
+title: diplomat__P05_D1_R6_CLOSE_003
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 会组织语言的人，已经比他们少了一道障碍。
+<<jump diplomat__P05_D1_R6_SPECIAL_001>>
+===
+
+title: diplomat__P05_D1_R6_CLOSE_004
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 这样我就得回答真正对我不利的问题了。
+<<jump diplomat__P05_D1_R6_SPECIAL_001>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_001
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你还愿意听，我可以补充一个不适合放在来访材料里的习惯。
+<<jump diplomat__P05_D1_R6_SPECIAL_002>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_002
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就比较相信后面的“同意”出于自己。
+<<jump diplomat__P05_D1_R6_SPECIAL_003>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_003
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 有时我会主动承认一个小问题。这样，比从头到尾毫无破绽更容易让人放心。
+<<jump diplomat__P05_D1_R6_SPECIAL_004>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_004
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你现在听到这几句，也可能觉得我比刚才诚实了一些。
+<<jump diplomat__P05_D1_R6_OPTION_003__MENU>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_005
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 因为恰到好处的坦白，本来就可以让人更愿意继续谈。
+<<jump diplomat__P05_D1_R6_SPECIAL_009>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_006
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 这样很好。你不用证明自己已经完全不受影响。
+<<jump diplomat__P05_D1_R6_SPECIAL_010>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_007
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 好。我接受这个边界。
+<<jump diplomat__P05_D1_R6_SPECIAL_011>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_008
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 是。你对哪一句停得久，我就知道该在哪里多说一点。
+<<jump diplomat__P05_D1_R6_SPECIAL_012>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_009
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我告诉你时，也正在得到这份好处。
+<<jump diplomat__P05_D1_R6_SPECIAL_013>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_010
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 知道一个手段，不代表下一次就一定能认出来。
+<<jump diplomat__P05_D1_R6_SPECIAL_013>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_011
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你不需要为了让我不舒服，再额外作一个决定。
+<<jump diplomat__P05_D1_R6_SPECIAL_013>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_012
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 我把这一点告诉你，你也许又会觉得，我这次终于没有隐瞒。
+<<jump diplomat__P05_D1_R6_SPECIAL_013>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_013
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 你若要结束，我会配合。继续说下去，也不意味着我已经答应了你的判断。
+<<jump diplomat__P05_D1_R6_SPECIAL_014>>
+===
+
+title: diplomat__P05_D1_R6_SPECIAL_014
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD01
+---
+阿德里安: 至少今天，我们都知道对方没有把所有东西放在桌上。
+<<jump diplomat__P05_D1_R6_PLAYER_ACTION_001__MENU>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_001
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD04
+---
+阿德里安: 我明白。
+<<jump diplomat__P05_D1_R6_ACTION_004>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_002
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD04
+---
+阿德里安: 这个词我听清楚了。
+<<jump diplomat__P05_D1_R6_ACTION_005>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_003
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 门开了以后，我会自己走。
+<<jump diplomat__P05_D1_R6_ACTION_006>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_004
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD04
+---
+阿德里安: 下一次见面，可以从没有核对完的部分继续。
+<<jump diplomat__P05_D1_R6_ACTION_007>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_005
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD04
+---
+阿德里安: 不必补上一句很快就不难受了，那不是你现在能核实的事。
+<<jump diplomat__P05_D1_R6_ACTION_008>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_006
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 你愿意留下这个例外。我会记得，是在怎样的谈话之后。
+<<jump diplomat__P05_D1_R6_ACTION_009>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_007
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD04
+---
+阿德里安: 请留下今天的理由，不必写得像一份道歉。
+<<jump diplomat__END_DAY1>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_008
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD04
+---
+阿德里安: 我的话到这里。你可以结束这次谈话。
+<<jump diplomat__END_DAY1>>
+===
+
+title: diplomat__P05_D1_R6_ACTION_009
+kind: line
+round: R6
+patient: diplomat
+day: 3
+portrait: AD03
+---
+阿德里安: 谢谢。今天的部分到这里。
+<<jump diplomat__END_DAY1>>
+===
+
+title: diplomat__P05_D1_R2_OPTION_001__MENU
+kind: choice
+round: R2
+patient: diplomat
+day: 3
+---
+-> 说明检测前发生了什么。 #id:diplomat__P05_D1_R2_OPTION_001 #trust:1
+    <<jump diplomat__P05_D1_R2_CLOSE_001>>
+-> 你对收容原因有什么异议？ #id:diplomat__P05_D1_R2_OPTION_002 #trust:1
+    <<jump diplomat__P05_D1_R2_CLOSE_002>>
+-> 先如实回答，不要替审查下结论。 #id:diplomat__P05_D1_R2_OPTION_003 #trust:-1
+    <<jump diplomat__P05_D1_R2_CLOSE_003>>
+===
+
+title: diplomat__P05_D1_R3_OPTION_001__MENU
+kind: choice
+round: R3
+patient: diplomat
+day: 3
+---
+-> 不耐烦是因为什么？ #id:diplomat__P05_D1_R3_OPTION_001 #trust:1
+    <<jump diplomat__P05_D1_R3_CLOSE_001>>
+-> 检测前具体问了哪些生产问题？ #id:diplomat__P05_D1_R3_OPTION_002 #trust:1
+    <<jump diplomat__P05_D1_R3_CLOSE_002>>
+===
+
+title: diplomat__P05_D1_R4_OPTION_001__MENU
+kind: choice
+round: R4
+patient: diplomat
+day: 3
+---
+-> 那张纸是谁提供的？ #id:diplomat__P05_D1_R4_OPTION_001 #trust:1
+    <<jump diplomat__P05_D1_R4_CLOSE_001>>
+-> 你是否绕过了复检？ #id:diplomat__P05_D1_R4_OPTION_002 #trust:0
+    <<jump diplomat__P05_D1_R4_CLOSE_002>>
+-> 有人因为身份得到不同待遇？ #id:diplomat__P05_D1_R4_OPTION_003 #trust:2
+    <<jump diplomat__P05_D1_R4_CLOSE_003>>
+-> 你当时有没有要求与其他旅客走同一套手续？ #id:diplomat__P05_D1_R4_OPTION_004 #trust:2
+    <<jump diplomat__P05_D1_R4_CLOSE_004>>
+===
+
+title: diplomat__P05_D1_R5_OPTION_001__MENU
+kind: choice
+round: R5
+patient: diplomat
+day: 3
+---
+-> 措辞是为了减少不必要的恐慌。 #id:diplomat__P05_D1_R5_OPTION_001 #trust:0
+    <<jump diplomat__P05_D1_R5_CLOSE_001>>
+-> 我会记录你的原话。 #id:diplomat__P05_D1_R5_OPTION_002 #trust:1
+    <<jump diplomat__P05_D1_R5_CLOSE_002>>
+-> 你自己也一直在挑选措辞。 #id:diplomat__P05_D1_R5_OPTION_003 #trust:2
+    <<jump diplomat__P05_D1_R5_CLOSE_003>>
+===
+
+title: diplomat__P05_D1_R6_OPTION_001__MENU
+kind: choice
+round: R6
+patient: diplomat
+day: 3
+---
+-> 我会核对记录。谈吐不作为无害的依据。 #id:diplomat__P05_D1_R6_OPTION_001 #trust:1
+    <<jump diplomat__P05_D1_R6_CLOSE_001>>
+-> 配合会被记录，但不能据此认定没有风险。 #id:diplomat__P05_D1_R6_OPTION_002 #trust:-1
+    <<jump diplomat__P05_D1_R6_CLOSE_002>>
+===
+
+title: diplomat__P05_D1_R6_PLAYER_ACTION_001__MENU
 kind: measure
 round: R6
-patient: priest
-day: 3
----
--> 治疗（第3次） #id:priest__P01_D3_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
-    <<jump priest__P01_D3_R6_ACTION_001>>
--> 净化 #id:priest__P01_D3_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
-    <<jump priest__P01_D3_R6_ACTION_003>>
--> 释放 #id:priest__P01_D3_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
-    <<jump priest__P01_D3_R6_ACTION_005>>
-===
-
-title: diplomat__P05_D3_R2_COMMON_001
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 阿德里安。你要核对的贸易身份和这次收容，有一部分需要更正。
-<<jump diplomat__P05_D3_R2_COMMON_002>>
-===
-
-title: diplomat__P05_D3_R2_COMMON_002
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 贸易代表的身份，是为了让我带着这份收容材料进入队列。名字可以继续用。
-<<jump diplomat__P05_D3_R2_COMMON_003>>
-===
-
-title: diplomat__P05_D3_R2_COMMON_003
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 你拿到的是一份检测异常的记录。我接到的，是观察审查人员怎样工作的任务。
-<<jump diplomat__P05_D3_R2_COMMON_004>>
-===
-
-title: diplomat__P05_D3_R2_COMMON_004
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 我知道这不会让你更愿意听。但继续让你核对一份假的来访目的，已经没有必要。
-<<jump diplomat__P05_D3_R2_OPTION_001__MENU>>
-===
-
-title: diplomat__P05_D3_R2_CLOSE_001
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你在审查病人，我在记录你怎样审查。
-<<jump diplomat__P05_D3_R2_CLOSE_003>>
-===
-
-title: diplomat__P05_D3_R2_CLOSE_002
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 来自允许我查看工作记录的人。我没有给你一个能直接核实的名字。
-<<jump diplomat__P05_D3_R2_CLOSE_004>>
-===
-
-title: diplomat__P05_D3_R2_CLOSE_003
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 对象写在另一份表上。你这边没有显示那一栏。
-<<jump diplomat__P05_D3_R3_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R2_CLOSE_004
-kind: line
-round: R2
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你可以把这当成我的解释，暂时不必把它当成已经查明的事实。
-<<jump diplomat__P05_D3_R3_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R3_COMMON_001
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我能查看获准提供的工作记录，核对回应、处置和填写的理由。
-<<jump diplomat__P05_D3_R3_COMMON_002>>
-===
-
-title: diplomat__P05_D3_R3_COMMON_002
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我不知道你房间里发生的每一件事，也不知道每次沉默究竟在想什么。
-<<jump diplomat__P05_D3_R3_COMMON_003>>
-===
-
-title: diplomat__P05_D3_R3_COMMON_003
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 所以我需要你说。把“只是按规定”再往后解释一句，比猜测有用得多。
-<<jump diplomat__P05_D3_R3_COMMON_004>>
-===
-
-title: diplomat__P05_D3_R3_COMMON_004
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你不必把一个能读记录的人，想成无处不在。那会让我省掉很多工作。
-<<jump diplomat__P05_D3_R3_OPTION_001__MENU>>
-===
-
-title: diplomat__P05_D3_R3_CLOSE_001
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 是。一个选择能留下结果，未必能留下理由。
-<<jump diplomat__P05_D3_R3_CLOSE_004>>
-===
-
-title: diplomat__P05_D3_R3_CLOSE_002
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 让你舒服一点，确实有利于我的任务。
-<<jump diplomat__P05_D3_R3_CLOSE_005>>
-===
-
-title: diplomat__P05_D3_R3_CLOSE_003
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 可以。我不会替沉默编出一个你没说过的理由。
-<<jump diplomat__P05_D3_R3_CLOSE_006>>
-===
-
-title: diplomat__P05_D3_R3_CLOSE_004
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 让你觉得这里可以把话说完，理由就比较容易出现。
-<<jump diplomat__P05_D3_R4_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R3_CLOSE_005
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你累的时候，我也确实看得出来。这两点并不互相抵消。
-<<jump diplomat__P05_D3_R4_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R3_CLOSE_006
-kind: line
-round: R3
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你也不用为了证明自己不受影响，特地给我一个最强硬的答案。
-<<jump diplomat__P05_D3_R4_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R4_COMMON_001
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 我曾请一群邻居帮忙，照看情绪不稳定的住户。给他们的表上，没有写“举报”。
-<<jump diplomat__P05_D3_R4_COMMON_002>>
-===
-
-title: diplomat__P05_D3_R4_COMMON_002
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 最先填写的人很认真，连谁夜里睡不着、谁总提起家人，都记了。
-<<jump diplomat__P05_D3_R4_COMMON_003>>
-===
-
-title: diplomat__P05_D3_R4_COMMON_003
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 他们以为多写几行，那个人就更容易得到照顾。我没有纠正。
-<<jump diplomat__P05_D3_R4_COMMON_004>>
-===
-
-title: diplomat__P05_D3_R4_COMMON_004
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 收件的部门没有变。把标题改得温和一些，是我自己的主意。
-<<jump diplomat__P05_D3_R4_OPTION_001__MENU>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_001
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 知道。我仍然把收集办法改得更容易配合。
-<<jump diplomat__P05_D3_R4_CLOSE_005>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_002
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 任务规定要交什么，没有规定一定用“照看”这个词。
-<<jump diplomat__P05_D3_R4_CLOSE_006>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_003
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 是。他们需要有人告诉他们，认真填完就是做对了。
-<<jump diplomat__P05_D3_R4_CLOSE_007>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_004
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 知道。不是后来拿到结果，我才明白它能用来找谁。
-<<jump diplomat__P05_D3_R4_CLOSE_008>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_005
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 你可以把这叫作主动帮忙。只是不必把帮的是谁省掉。
-<<jump diplomat__P05_D3_R5_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_006
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 你不必替我把这一部分责任也交出去。
-<<jump diplomat__P05_D3_R5_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_007
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 我写过一封感谢配合的回信。那封信，也是真正送出去的。
-<<jump diplomat__P05_D3_R5_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R4_CLOSE_008
-kind: line
-round: R4
-patient: diplomat
-day: 3
-portrait: AD01
----
-阿德里安: 我选那个标题，就是为了让他们动笔时少问一个问题。
-<<jump diplomat__P05_D3_R5_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R5_COMMON_001
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我不认为人只是趋利避害。那种说法太粗，解释不了很多费力的事。
-<<jump diplomat__P05_D3_R5_COMMON_002>>
-===
-
-title: diplomat__P05_D3_R5_COMMON_002
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 有人肯受损失，也要相信自己守了规矩。有人冒险救人，也希望有人看见他在救。
-<<jump diplomat__P05_D3_R5_COMMON_003>>
-===
-
-title: diplomat__P05_D3_R5_COMMON_003
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我会先听，他最不能忍受自己变成哪一种人。之后再决定，请他替我做什么。
-<<jump diplomat__P05_D3_R5_COMMON_004>>
-===
-
-title: diplomat__P05_D3_R5_COMMON_004
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我能平静地做这些，并不是因为我比那些哭喊的人更无害。
-<<jump diplomat__P05_D3_R5_OPTION_001__MENU>>
-===
-
-title: diplomat__P05_D3_R5_CLOSE_001
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 是。听懂一个人，有时候只意味着终于知道该往哪里施力。
-<<jump diplomat__P05_D3_R5_CLOSE_004>>
-===
-
-title: diplomat__P05_D3_R5_CLOSE_002
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 当然不是。我没有创造它。
-<<jump diplomat__P05_D3_R5_CLOSE_005>>
-===
-
-title: diplomat__P05_D3_R5_CLOSE_003
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 有的人宁可让我失望，也不肯给一个好听的解释。
-<<jump diplomat__P05_D3_R5_CLOSE_006>>
-===
-
-title: diplomat__P05_D3_R5_CLOSE_004
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 理解没有使我收手。它让我少走了弯路。
-<<jump diplomat__P05_D3_R6_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R5_CLOSE_005
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我只是给它挑了一个出口，然后把收到的东西交上去。
-<<jump diplomat__P05_D3_R6_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R5_CLOSE_006
-kind: line
-round: R5
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 那种时候，我只好承认没谈成。我没有把每个人都算清楚。
-<<jump diplomat__P05_D3_R6_COMMON_001>>
-===
-
-title: diplomat__P05_D3_R6_COMMON_001
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你仍然可以处置我。知道我的身份，没有让按钮换一个名字。
-<<jump diplomat__P05_D3_R6_COMMON_002>>
-===
-
-title: diplomat__P05_D3_R6_COMMON_002
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你若放我出去，放走的会是一个懂得利用信任、也确实做过这件事的人。
-<<jump diplomat__P05_D3_R6_COMMON_003>>
-===
-
-title: diplomat__P05_D3_R6_COMMON_003
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你若留下我，我也不会因此替你的其他判断作担保。我们没有谈成这种交换。
-<<jump diplomat__P05_D3_R6_COMMON_004>>
-===
-
-title: diplomat__P05_D3_R6_COMMON_004
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 现在你已经有足够的理由不喜欢我。别把喜欢或不喜欢，当成最后一项证据。
-<<jump diplomat__P05_D3_R6_OPTION_001__MENU>>
-===
-
-title: diplomat__P05_D3_R6_CLOSE_001
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 那就把我承认过的几件事都算进去。
-<<jump diplomat__P05_D3_R6_CLOSE_003>>
-===
-
-title: diplomat__P05_D3_R6_CLOSE_002
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 对。你终于指出一项我没有拿到的权限。
-<<jump diplomat__P05_D3_R6_CLOSE_004>>
-===
-
-title: diplomat__P05_D3_R6_CLOSE_003
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 不要只保留对眼前这个决定方便的部分。
-<<jump diplomat__P05_D3_R6_SPECIAL_001>>
-===
-
-title: diplomat__P05_D3_R6_CLOSE_004
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我能施压，能替答案命名。最后那个动作，仍然要你自己做。
-<<jump diplomat__P05_D3_R6_SPECIAL_001>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_001
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你还可以问，我为什么明知道会发生什么，仍然愿意做。
-<<jump diplomat__P05_D3_R6_SPECIAL_002>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_002
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 因为我不想再站在一扇门外，等别人解释哪一页缺了一个字。我宁可做认得那页纸的人。
-<<jump diplomat__P05_D3_R6_SPECIAL_003>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_003
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 这不是被迫。我也不打算把它说成牺牲。
-<<jump diplomat__P05_D3_R6_SPECIAL_004>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_004
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 懂得怎样让人服从以后，我很少再需要请求谁。这件事，我确实喜欢。
-<<jump diplomat__P05_D3_R6_OPTION_003__MENU>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_005
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 是，还给它准备了一套精确的用词。
-<<jump diplomat__P05_D3_R6_SPECIAL_009>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_006
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 对。这一项，你没有说错。
-<<jump diplomat__P05_D3_R6_SPECIAL_010>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_007
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 这样，我们至少省掉了一场没有必要的宽恕。
-<<jump diplomat__P05_D3_R6_SPECIAL_011>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_008
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 当然。把自己说得足够难看，也能让人以为已经看到了全部。
-<<jump diplomat__P05_D3_R6_SPECIAL_012>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_009
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我明白这句话为什么成立，并不意味着我愿意放弃现在的位置。
-<<jump diplomat__P05_D3_R6_SPECIAL_013>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_010
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 我没有向你出示过门外的人会怎样处理命令的凭证。你也不必替我编一份保证。
-<<jump diplomat__P05_D3_R6_SPECIAL_013>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_011
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你能听懂我在想什么，不必因此同意我。
-<<jump diplomat__P05_D3_R6_SPECIAL_013>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_012
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 你若因此停止核对，我今天这份坦白仍然有用。
-<<jump diplomat__P05_D3_R6_SPECIAL_013>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_013
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 时间差不多了。我不会把这几句换成一句“我已经改了”。
-<<jump diplomat__P05_D3_R6_SPECIAL_014>>
-===
-
-title: diplomat__P05_D3_R6_SPECIAL_014
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD02
----
-阿德里安: 今天我们可以省掉的，是“这都是为你好”。
-<<jump diplomat__P05_D3_R6_PLAYER_ACTION_001__MENU>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_001
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 第三次。我听清楚了。
-<<jump diplomat__P05_D3_R6_ACTION_004>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_002
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 你已经听见我的身份，也听见我承认过什么。
-<<jump diplomat__P05_D3_R6_ACTION_005>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_003
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD03
----
-阿德里安: 请看着我离开，不必把这想成一个好人的获救。
-<<jump diplomat__P05_D3_R6_ACTION_006>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_004
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 你不用从我的反应里，再找一份对这个决定的认可。
-<<jump diplomat__P05_D3_R6_ACTION_007>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_005
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 我不会因为你作了这个决定，就替你写一句好评。
-<<jump diplomat__P05_D3_R6_ACTION_008>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_006
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD03
----
-阿德里安: 你知道我承认过什么。我也听见了你的理由。
-<<jump diplomat__P05_D3_R6_ACTION_009>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_007
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 今天的谈话结束了。剩下的，不在这次谈话里。
-<<jump diplomat__END_DAY3>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_008
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD04
----
-阿德里安: 这次决定，我听见了。
-<<jump diplomat__END_DAY3>>
-===
-
-title: diplomat__P05_D3_R6_ACTION_009
-kind: line
-round: R6
-patient: diplomat
-day: 3
-portrait: AD03
----
-阿德里安: 今天的审查结束了。你的部分也是。
-<<jump diplomat__END_DAY3>>
-===
-
-title: diplomat__P05_D3_R2_OPTION_001__MENU
-kind: choice
-round: R2
-patient: diplomat
-day: 3
----
--> 所以这场审查真正针对的是我。 #id:diplomat__P05_D3_R2_OPTION_001 #trust:1
-    <<jump diplomat__P05_D3_R2_CLOSE_001>>
--> 你的授权来自哪里？ #id:diplomat__P05_D3_R2_OPTION_002 #trust:1
-    <<jump diplomat__P05_D3_R2_CLOSE_002>>
-===
-
-title: diplomat__P05_D3_R3_OPTION_001__MENU
-kind: choice
-round: R3
-patient: diplomat
-day: 3
----
--> 你用谈话补齐记录里看不到的部分。 #id:diplomat__P05_D3_R3_OPTION_001 #trust:2
-    <<jump diplomat__P05_D3_R3_CLOSE_001>>
--> 之前的体谅，全是为了让我透露信息？ #id:diplomat__P05_D3_R3_OPTION_002 #trust:1
-    <<jump diplomat__P05_D3_R3_CLOSE_002>>
--> 那我可以拒绝继续解释。 #id:diplomat__P05_D3_R3_OPTION_003 #trust:0
-    <<jump diplomat__P05_D3_R3_CLOSE_003>>
-===
-
-title: diplomat__P05_D3_R4_OPTION_001__MENU
-kind: choice
-round: R4
-patient: diplomat
-day: 3
----
--> 你知道名单可能使他们被收容。 #id:diplomat__P05_D3_R4_OPTION_001 #trust:2
-    <<jump diplomat__P05_D3_R4_CLOSE_001>>
--> 你只是执行任务？ #id:diplomat__P05_D3_R4_OPTION_002 #trust:-1
-    <<jump diplomat__P05_D3_R4_CLOSE_002>>
--> 那些人当时相信你。 #id:diplomat__P05_D3_R4_OPTION_003 #trust:1
-    <<jump diplomat__P05_D3_R4_CLOSE_003>>
--> 这份名单会造成什么后果，你写表时就知道。 #id:diplomat__P05_D3_R4_OPTION_004 #trust:2
-    <<jump diplomat__P05_D3_R4_CLOSE_004>>
-===
-
-title: diplomat__P05_D3_R5_OPTION_001__MENU
-kind: choice
-round: R5
 patient: diplomat
 day: 3
 ---
--> 你把别人在乎的东西变成了控制手段。 #id:diplomat__P05_D3_R5_OPTION_001 #trust:2
-    <<jump diplomat__P05_D3_R5_CLOSE_001>>
--> 人的善意不是你安排出来的。 #id:diplomat__P05_D3_R5_OPTION_002 #trust:1
-    <<jump diplomat__P05_D3_R5_CLOSE_002>>
--> 总有人不会照你的预料行动。 #id:diplomat__P05_D3_R5_OPTION_003 #trust:1
-    <<jump diplomat__P05_D3_R5_CLOSE_003>>
+-> 治疗 #id:diplomat__P05_D1_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+    <<jump diplomat__P05_D1_R6_ACTION_001>>
+-> 净化 #id:diplomat__P05_D1_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+    <<jump diplomat__P05_D1_R6_ACTION_002>>
+-> 释放 #id:diplomat__P05_D1_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+    <<jump diplomat__P05_D1_R6_ACTION_003>>
 ===
 
-title: diplomat__P05_D3_R6_OPTION_001__MENU
+title: diplomat__P05_D1_R6_OPTION_003__MENU
 kind: choice
 round: R6
 patient: diplomat
 day: 3
 ---
--> 我会根据你的行为作判断，不按身份给优待。 #id:diplomat__P05_D3_R6_OPTION_001 #trust:1
-    <<jump diplomat__P05_D3_R6_CLOSE_001>>
--> 最后的决定由我承担。 #id:diplomat__P05_D3_R6_OPTION_002 #trust:2
-    <<jump diplomat__P05_D3_R6_CLOSE_002>>
+-> 你为什么要把手段告诉我？ #id:diplomat__P05_D1_R6_OPTION_003 #trust:1
+    <<jump diplomat__P05_D1_R6_SPECIAL_005>>
+-> 我会继续核对，不把坦白当作无罪证据。 #id:diplomat__P05_D1_R6_OPTION_004 #trust:2
+    <<jump diplomat__P05_D1_R6_SPECIAL_006>>
+-> 到这里。下面只谈审查事项。 #id:diplomat__P05_D1_R6_OPTION_005 #trust:0
+    <<jump diplomat__P05_D1_R6_SPECIAL_007>>
+-> 你也在看我更容易相信哪种坦白。 #id:diplomat__P05_D1_R6_OPTION_006 #trust:2
+    <<jump diplomat__P05_D1_R6_SPECIAL_008>>
 ===
 
-title: diplomat__P05_D3_R6_PLAYER_ACTION_001__MENU
-kind: measure
-round: R6
-patient: diplomat
-day: 3
----
--> 治疗 #id:diplomat__P05_D3_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
-    <<jump diplomat__P05_D3_R6_ACTION_001>>
--> 净化 #id:diplomat__P05_D3_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
-    <<jump diplomat__P05_D3_R6_ACTION_002>>
--> 释放 #id:diplomat__P05_D3_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
-    <<jump diplomat__P05_D3_R6_ACTION_003>>
-===
-
-title: diplomat__P05_D3_R6_OPTION_003__MENU
-kind: choice
-round: R6
-patient: diplomat
-day: 3
----
--> 你把自己的恐惧转嫁给了别人。 #id:diplomat__P05_D3_R6_OPTION_003 #trust:2
-    <<jump diplomat__P05_D3_R6_SPECIAL_005>>
--> 你现在也在等我决定。 #id:diplomat__P05_D3_R6_OPTION_004 #trust:2
-    <<jump diplomat__P05_D3_R6_SPECIAL_006>>
--> 我不会再替你找一个藏在里面的好人。 #id:diplomat__P05_D3_R6_OPTION_005 #trust:1
-    <<jump diplomat__P05_D3_R6_SPECIAL_007>>
--> 你说这些，也在影响我最后怎样解释你。 #id:diplomat__P05_D3_R6_OPTION_006 #trust:2
-    <<jump diplomat__P05_D3_R6_SPECIAL_008>>
-===
-
-title: diplomat__P05_D3_R1_OPTION_001__MENU
+title: diplomat__P05_D1_R1_OPTION_001__MENU
 kind: choice
 round: R1
 patient: diplomat
 day: 3
 ---
--> 你知道要干什么了吧。 #id:diplomat__P05_D3_R1_OPTION_001 #trust:0
-    <<jump diplomat__P05_D3_R2_COMMON_001>>
+-> 先核对身份。姓名、职业，再说明你是怎么被送进来的。 #id:diplomat__P05_D1_R1_OPTION_001 #trust:0
+    <<jump diplomat__P05_D1_R2_COMMON_001>>
 ===

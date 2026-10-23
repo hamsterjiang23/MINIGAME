@@ -19,7 +19,13 @@ namespace MiniGame.Presentation
         public void Save(GameRuntime runtime)
         {
             if (runtime == null) throw new ArgumentNullException(nameof(runtime));
-            var bytes = new UTF8Encoding(false).GetBytes(runtime.Save());
+            SaveSerialized(runtime.Save());
+        }
+
+        public void SaveSerialized(string checkpoint)
+        {
+            if (string.IsNullOrWhiteSpace(checkpoint)) throw new ArgumentException("A checkpoint is required.", nameof(checkpoint));
+            var bytes = new UTF8Encoding(false).GetBytes(checkpoint);
             var directory = Path.GetDirectoryName(FilePath)!;
             Directory.CreateDirectory(directory);
             var temporary = Path.Combine(directory, $".{Path.GetFileName(FilePath)}.{Guid.NewGuid():N}.tmp");

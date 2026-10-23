@@ -39,7 +39,8 @@ namespace MiniGame.Presentation.Tests
             Assert.That(tutorial.DispositionTrustDeltas[Disposition.Purify], Is.Zero);
             Assert.That(package.Content.GetSegment(tutorial.ReactionNodes[Disposition.Purify]).Lines.Count, Is.EqualTo(2));
             Assert.That(package.Package.Portraits.Count, Is.EqualTo(21));
-            Assert.That(package.SourceNodes.Select(n => n.PortraitId).Where(p => p.Length > 0).Distinct().Count(), Is.EqualTo(17));
+            Assert.That(package.SourceNodes.Select(n => n.PortraitId).Where(p => p.Length > 0).Distinct(), Is.EquivalentTo(new[]
+                { "AD01", "AD03", "AD04", "ED02", "ED03", "ED04", "JN02", "JN03", "JN04", "ML01", "ML02", "ML03", "VV01", "VV02", "VV03", "VV04" }));
             var specialMeetings = package.Rules.Days.SelectMany(day => day.Meetings).Where(meeting => meeting.SpecialRound != null).ToArray();
             Assert.That(specialMeetings.Length, Is.EqualTo(7));
             Assert.That(specialMeetings.Select(meeting => meeting.PatientId).Distinct(),
@@ -106,11 +107,10 @@ namespace MiniGame.Presentation.Tests
             {
                 var id = (string)mapping["sourceId"]!;
                 var text = (string)mapping["text"]!;
-                var patient = compiled.Rules.Patients.Single(item => item.Id == (string)mapping["patientId"]!);
-                if ((int)mapping["day"]! < patient.FirstDay)
+                if (!(bool)mapping["scheduled"]!)
                 {
                     Assert.That(nodes.ContainsKey(id) || options.ContainsKey(id), Is.False,
-                        "Pre-arrival dialogue remains audited but cannot run: " + id);
+                        "Later workbook visits remain audited but cannot extend the three-day campaign: " + id);
                     continue;
                 }
                 emittedMappings++;
@@ -126,7 +126,7 @@ namespace MiniGame.Presentation.Tests
         }
 
         [Test]
-        public void DiplomatArrivesOnDayThreeAndKeepsUnmodifiedWording()
+        public void DiplomatArrivesOnDayThreeWithTheFirstWorkbookVisitAndKeepsUnmodifiedWording()
         {
             var compiled = Compile();
             Assert.That(compiled.Rules.Patients.Single(patient => patient.Id == "diplomat").FirstDay, Is.EqualTo(3));
@@ -140,13 +140,14 @@ namespace MiniGame.Presentation.Tests
                 Assert.That(compiled.Content.ResolveText(line.SourceNodeId, line.Text, _ => false), Is.EqualTo(line.Text));
                 Assert.That(compiled.Content.ResolveText(line.SourceNodeId, line.Text, _ => true), Is.EqualTo(line.Text));
             }
-            Assert.That(compiled.Content.IsNarration("diplomat__P05_D3_R2_COMMON_001"), Is.False);
-            var introduction = compiled.SourceNodes.Single(node => node.Id == "diplomat__P05_D3_R2_COMMON_001");
+            Assert.That(compiled.Content.IsNarration("diplomat__P05_D1_R2_COMMON_001"), Is.False);
+            var introduction = compiled.SourceNodes.Single(node => node.Id == "diplomat__P05_D1_R2_COMMON_001");
             Assert.That(introduction.Kind, Is.EqualTo("line"));
-            Assert.That(introduction.Text, Is.EqualTo("阿德里安。你要核对的贸易身份和这次收容，有一部分需要更正。"));
+            Assert.That(introduction.Text, Is.EqualTo("阿德里安。贸易代表，来这里商谈工业制品的采购和交付。"));
             Assert.That(compiled.SourceNodes.Where(node => node.Kind == "narration"), Is.Empty);
             Assert.That(compiled.RuntimeYarn, Does.Not.Contain("#kind:narration"));
-            Assert.That(compiled.RuntimeYarn, Does.Contain("#source:diplomat__P05_D3_R2_COMMON_001"));
+            Assert.That(compiled.RuntimeYarn, Does.Contain("#source:diplomat__P05_D1_R2_COMMON_001"));
+            Assert.That(compiled.SourceNodes.Any(node => node.Id.StartsWith("diplomat__P05_D3_", StringComparison.Ordinal)), Is.False);
         }
 
         [Test]

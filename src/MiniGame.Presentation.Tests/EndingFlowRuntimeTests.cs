@@ -273,7 +273,7 @@ namespace MiniGame.Presentation.Tests
         internal static GameRules Rules(int trust = 0, int quotaDay = -1)
         {
             var patients = new[] { new PatientDefinition("tutorial", "教学", 0, 100, null, PatientPresence.TreatmentEnded),
-                new PatientDefinition("formal", "正式病人", 1, trust, null, PatientPresence.TreatmentEnded),
+                new PatientDefinition(PrototypeRules.Child, "正式病人", 1, trust, null, PatientPresence.TreatmentEnded),
                 new PatientDefinition("priest", "神父", 2, 0, null, PatientPresence.TreatmentEnded, attacksAfterRelease: true) };
             return new GameRules("ending-runtime-fixture", patients, Enumerable.Range(0, 4).Select(day =>
                 new DayDefinition(day, day == quotaDay ? 1 : 0, patients.Where(patient => day == 0

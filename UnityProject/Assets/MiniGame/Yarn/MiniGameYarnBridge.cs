@@ -179,6 +179,8 @@ namespace MiniGame.UnityHost
             _nodeTask.Forget();
         }
 
+        public void PrewarmPresentation() => EnsureRunner();
+
         private void EnsureRunner()
         {
             if (_runner != null || project == null) return;

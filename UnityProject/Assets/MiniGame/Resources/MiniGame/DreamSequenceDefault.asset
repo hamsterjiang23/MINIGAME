@@ -38,6 +38,10 @@ MonoBehaviour:
     MotionIntensity: 0
     PostIntensity: 0
     VignetteIntensity: 0.12
+    BlackEdgeWidths: {x: 0.07, y: 0.12, z: 0.1, w: 0.05}
+    BlackEdgeStrength: {x: 0.99, y: 0.94, z: 1, w: 0.97}
+    BlackEdgeSoftness: 0.035
+    BlackEdgeIrregularity: 0.018
   - Day: 2
     Duration: 15
     Artwork: {fileID: 2800000, guid: 0fac609b29fddff4bbc6cb2c709b645e, type: 3}
@@ -57,6 +61,10 @@ MonoBehaviour:
     MotionIntensity: 0
     PostIntensity: 0
     VignetteIntensity: 0.12
+    BlackEdgeWidths: {x: 0.07, y: 0.12, z: 0.1, w: 0.05}
+    BlackEdgeStrength: {x: 0.99, y: 0.94, z: 1, w: 0.97}
+    BlackEdgeSoftness: 0.035
+    BlackEdgeIrregularity: 0.018
   - Day: 3
     Duration: 15
     Artwork: {fileID: 2800000, guid: 48ce7f29a92b6784b9444bac9cd19448, type: 3}
@@ -76,6 +84,10 @@ MonoBehaviour:
     MotionIntensity: 0
     PostIntensity: 0
     VignetteIntensity: 0.12
+    BlackEdgeWidths: {x: 0.07, y: 0.12, z: 0.1, w: 0.05}
+    BlackEdgeStrength: {x: 0.99, y: 0.94, z: 1, w: 0.97}
+    BlackEdgeSoftness: 0.035
+    BlackEdgeIrregularity: 0.018
   UseRoomCubemapEnding: 1
   RoomPanoramaSkybox: {fileID: 2100000, guid: 83e91a72e75b4b8f80c037724a51789c, type: 2}
   ShowRoomOutline: 0

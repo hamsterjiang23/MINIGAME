@@ -25,6 +25,7 @@ namespace MiniGame.UnityHost.Tests
         private CompiledDialoguePackage compiled;
         private string temporaryDirectory, previousSaveDirectory;
         private bool previousSkipStartup;
+        private int endNoteStarts;
 
         [UnitySetUp]
         public IEnumerator LoadCombined()
@@ -51,6 +52,9 @@ namespace MiniGame.UnityHost.Tests
             host.ConfigureDreams(dreams, rebellion);
             host.StartCampaign();
             compiled = EndingCampaignScenario.LoadPackage();
+            endNoteStarts = 0;
+            foreach (var audio in Object.FindObjectsOfType<MiniGameAudioService>(true))
+                audio.SoundPlayed += (channel, sound) => { if (sound == MiniGameSound.EndNote) endNoteStarts++; };
             Assert.That(host.Runtime.Endings, Is.Not.Null, "EndingContentImport must install the current catalog.");
             Assert.That(MainMenuController.Current.ContinuePath, Does.StartWith(temporaryDirectory));
         }
@@ -117,9 +121,13 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             yield return null;
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
+            var knocking = host.Audio.Service.GetSource(MiniGameAudioChannel.DoorKnock);
+            Assert.That(knocking.spatialBlend, Is.EqualTo(1));
+            Assert.That(knocking.isPlaying, Is.True, "Ending visitors must use the same spatial door recording as the supervisor.");
             Interact(InteractionTarget.Door, "Door approach");
             yield return Until(() => host.Runtime.EndingStage == EndingStage.Dialogue && !host.Screen.TransitionLocked,
                 "the physical ending door completes its motion", 15);
+            Assert.That(knocking.isPlaying, Is.False);
             var expected = host.Runtime.Endings.Get(conversationId).Lines;
             Assert.That(expected.Length, Is.EqualTo(count));
             // Let the authored actor return from the door's clearance position before inspecting the first portrait.
@@ -143,12 +151,12 @@ namespace MiniGame.UnityHost.Tests
                 }
                 yield return AdvanceSceneLine(expected[index].SourceId, false);
             }
-            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Thanks));
-            yield return FinishThanksWithFreshClick(route.ToString().ToLowerInvariant());
+            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Thanks).Or.EqualTo(EndingStage.Completed));
+            yield return FinishWithoutThanks(route.ToString().ToLowerInvariant());
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator HiddenEndingRequiresSelfDirectorySixteenLinesAndPurificationThenEntersRoomAndBedThanks()
+        public IEnumerator HiddenEndingRequiresSelfReviewAndBedThenCutsStraightToMenu()
         {
             var fixture = EndingCampaignScenario.CreateHidden(compiled, dreams, rebellion);
             host.RestoreCheckpoint(fixture.Save());
@@ -212,9 +220,8 @@ namespace MiniGame.UnityHost.Tests
                 room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
             Assert.That(room.Ending.CanLieDown, Is.True);
             Assert.That(room.Ending.TryLieDown(), Is.True);
-            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Thanks));
-            yield return RestorePartialHiddenThanks(room);
-            yield return FinishThanksWithFreshClick("hidden");
+            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Thanks).Or.EqualTo(EndingStage.Completed));
+            yield return FinishWithoutThanks("hidden");
         }
 
         private Button[] ActiveDispositionButtons() => host.Screen.GetComponentsInChildren<Button>(true)
@@ -276,77 +283,50 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator HiddenThanksRestorationRetriesMissingSourceWithoutRepeatingPurificationOrBed()
+        public IEnumerator CompletedHiddenSaveIsRejectedAndNewPeriodRestoresTheSameRoomWithoutAnotherEndNote()
         {
             yield return ReachHiddenPurification();
             Assert.That(host.Runtime.ConfirmSelfPurification().Accepted, Is.True);
             yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true
-                && host.Runtime.EndingStage == EndingStage.Space, "initial hidden space", 15);
-            var originalRoom = Object.FindObjectOfType<RoomDreamEnding>();
-            for (int step = 0; step < 300 && !originalRoom.Ending.CanLieDown; step++)
-                originalRoom.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
-            Assert.That(originalRoom.Ending.TryLieDown(), Is.True);
-            Assert.That(originalRoom.CompleteAtBed(), Is.False);
-            yield return Until(() => Object.FindObjectOfType<EndingThanksView>() != null, "thanks before failed restore", 5);
-            var originalThanks = Object.FindObjectOfType<EndingThanksView>();
-            originalThanks.UseExternalClock = true;
-            originalThanks.RestoreCheckpoint(new EndingThanksCheckpoint { Phase = EndingThanksPhase.FadingOut, Elapsed = .4f });
-            float opacity = originalThanks.Opacity;
-            Vector3 savedBedCamera = originalRoom.ViewCamera.transform.position;
-            Quaternion savedBedRotation = originalRoom.ViewCamera.transform.rotation;
-            originalRoom.Ending.SetPaused(true);
+                && host.Runtime.EndingStage == EndingStage.Space, "hidden space", 15);
+            var room = Object.FindObjectOfType<RoomDreamEnding>();
+            for (int step = 0; step < 300 && !room.Ending.CanLieDown; step++)
+                room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
+            Assert.That(room.Ending.TryLieDown(), Is.True);
+            yield return FinishWithoutThanks("hidden-completed");
             var session = MiniGameSessionHost.Current;
-            string before = session.Runtime.Save();
-            string path = Path.Combine(temporaryDirectory, "hidden-thanks-failed-restore.json");
+            string path = Path.Combine(temporaryDirectory, "hidden-completed.json");
             Assert.That(session.TrySaveTo(path, out var saveError), Is.True, saveError);
-            var originalSky = dreams.RoomPanoramaSkybox;
-            var originalPrefab = dreams.CubemapSourcePrefab;
-            try
-            {
-                dreams.RoomPanoramaSkybox = null;
-                dreams.CubemapSourcePrefab = null;
-                LogAssert.Expect(LogType.Exception, new Regex("InvalidOperationException: 海滩全景缺少捕获源预制体"));
-                Assert.That(session.TryLoadFrom(path, out var loadError), Is.True, loadError);
-                yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.TransitionPhase == RoomEndingTransitionPhase.Failed,
-                    "thanks reconstruction fails under black", 10);
-                yield return null;
-                var restoredRoom = Object.FindObjectOfType<RoomDreamEnding>();
-                Assert.That(Object.FindObjectOfType<EndingThanksView>(), Is.Null);
-                Assert.That(restoredRoom.GetComponentsInChildren<Image>(true).Single(image => image.name == "Black").color.a, Is.EqualTo(1));
-                Assert.That(restoredRoom.CompleteAtBed(), Is.False);
-                Assert.That(session.Runtime.Save(), Is.EqualTo(before));
-                dreams.RoomPanoramaSkybox = originalSky;
-                dreams.CubemapSourcePrefab = originalPrefab;
-                session.Runtime.SetPaused(false);
-                Assert.That(session.RetryRoomEnding(), Is.True, "Thanks reconstruction must support the same retry as initial entry.");
-                Assert.That(session.RetryRoomEnding(), Is.False);
-                Assert.That(restoredRoom.RetryInitialization(), Is.False);
-                yield return Until(() => restoredRoom.TransitionPhase == RoomEndingTransitionPhase.Exploring,
-                    "retried thanks space finishes reconstruction", 15);
-                session.Runtime.SetPaused(true); // Freeze the saved thanks opacity as soon as reconstruction finishes.
-                yield return Until(() => Object.FindObjectOfType<EndingThanksView>() != null,
-                    "successful retry restores the original thanks fade", 5);
-                var restoredThanks = Object.FindObjectOfType<EndingThanksView>();
-                restoredThanks.UseExternalClock = true;
-                Assert.That(restoredThanks.Opacity, Is.EqualTo(opacity).Within(.001f));
-                Assert.That(restoredRoom.RoomSurface, Is.Not.Null);
-                Assert.That(restoredRoom.Cubemap.IsReady, Is.True);
-                Assert.That(restoredRoom.Ready, Is.False);
-                Assert.That(Vector3.Distance(restoredRoom.ViewCamera.transform.position, savedBedCamera), Is.LessThan(.001f));
-                Assert.That(Quaternion.Angle(restoredRoom.ViewCamera.transform.rotation, savedBedRotation), Is.LessThan(.01f));
-                Assert.That(session.Runtime.Save(), Is.EqualTo(before), "Neither purification nor bed completion may run during retry.");
-                Assert.That(session.Runtime.ConfirmSelfPurification().Accepted, Is.False);
-                Assert.That(restoredRoom.CompleteAtBed(), Is.False);
-                restoredRoom.Ending.SetPaused(false);
-                yield return FinishThanksWithFreshClick("hidden-thanks-retry");
-            }
-            finally
-            {
-                dreams.RoomPanoramaSkybox = originalSky;
-                dreams.CubemapSourcePrefab = originalPrefab;
-            }
+            string saved = File.ReadAllText(path);
+            var completedRuntime = session.Runtime;
+            Assert.That(session.TryLoadFrom(path, out var loadError), Is.False);
+            Assert.That(loadError, Does.Contain("本次检查期已结束"));
+            Assert.That(File.ReadAllText(path), Is.EqualTo(saved), "Rejected completion saves stay intact.");
+            yield return null;
+            yield return null;
+            Assert.That(session.Runtime, Is.SameAs(completedRuntime));
+            Assert.That(session.Runtime.EndingStage, Is.EqualTo(EndingStage.Completed));
+            Assert.That(Object.FindObjectOfType<EndingThanksView>(), Is.Null);
+            Assert.That(Object.FindObjectOfType<RoomDreamEnding>(), Is.SameAs(room), "Rejecting a completed save must not rebuild the retained room.");
+            Assert.That(endNoteStarts, Is.EqualTo(1));
+            int sceneHandle = host.gameObject.scene.handle;
+            var previousHost = host;
+            var menu = MainMenuController.Current;
+            menu.RequestNewInspection();
+            Assert.That(menu.View.Page, Is.EqualTo(MainMenuPage.ConfirmNew));
+            menu.ConfirmNewInspection();
+            yield return Until(() => !menu.IsVisible && !MainMenuController.BlocksGameplayInput
+                && !host.Runtime.GetView().Paused, "new inspection after the completed hidden room", 15);
+            Assert.That(host, Is.SameAs(previousHost));
+            Assert.That(host.gameObject.scene.handle, Is.EqualTo(sceneHandle));
+            Assert.That(host.Runtime, Is.Not.SameAs(completedRuntime));
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
+            Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.None));
+            Assert.That(Object.FindObjectOfType<RoomDreamEnding>(), Is.Null);
+            Assert.That(host.Player.ViewCamera.enabled, Is.True);
+            Assert.That(host.Screen.isActiveAndEnabled, Is.True);
+            Assert.That(endNoteStarts, Is.EqualTo(1), "Starting the next inspection must not replay the ending sting.");
         }
-
         [UnityTest, Timeout(90000)]
         public IEnumerator HiddenFadingOutCrossSceneRestorePreservesTheFirstRenderedCameraPose()
         {
@@ -491,65 +471,24 @@ namespace MiniGame.UnityHost.Tests
             yield return Until(() => room.Ready && host.Runtime.EndingStage == EndingStage.Space, "room exploration ready", 5);
         }
 
-        private IEnumerator RestorePartialHiddenThanks(RoomDreamEnding originalRoom)
+        private IEnumerator FinishWithoutThanks(string route)
         {
-            yield return Until(() => Object.FindObjectOfType<EndingThanksView>() != null, "hidden thanks begins fading", 5);
-            var originalThanks = Object.FindObjectOfType<EndingThanksView>();
-            originalThanks.UseExternalClock = true;
-            originalThanks.RestoreCheckpoint(new EndingThanksCheckpoint { Phase = EndingThanksPhase.FadingOut, Elapsed = .4f });
-            float opacity = originalThanks.Opacity;
-            Assert.That(opacity, Is.EqualTo(.4f / EndingThanksView.FadeSeconds).Within(.001f));
-            yield return EndingVisualCapture.Capture("hidden-thanks-partial-before-save", host.Runtime);
-            originalRoom.Ending.SetPaused(true);
-            var session = MiniGameSessionHost.Current;
-            string before = session.Runtime.Save();
-            string path = Path.Combine(temporaryDirectory, "hidden-thanks-partial.json");
-            Assert.That(session.TrySaveTo(path, out var saveError), Is.True, saveError);
-            Assert.That(session.TryLoadFrom(path, out var loadError), Is.True, loadError);
-            Assert.That(session.Runtime.EndingStage, Is.EqualTo(EndingStage.Thanks));
-            Assert.That(session.Runtime.Save(), Is.EqualTo(before), "Loading the visual fade must not resubmit purification or advance the campaign.");
-            yield return Until(() => Object.FindObjectOfType<EndingThanksView>() != null
-                && Object.FindObjectOfType<EndingThanksView>() != originalThanks
-                && Object.FindObjectOfType<RoomDreamEnding>() != null
-                && Object.FindObjectOfType<RoomDreamEnding>() != originalRoom,
-                "hidden thanks restores over its space instead of the ordinary apartment", 15);
-            var restoredRoom = Object.FindObjectOfType<RoomDreamEnding>();
-            var restoredThanks = Object.FindObjectOfType<EndingThanksView>();
-            restoredThanks.UseExternalClock = true;
-            Assert.That(restoredRoom.RoomSurface, Is.Not.Null);
-            Assert.That(restoredRoom.Cubemap.IsReady, Is.True);
-            Assert.That(restoredRoom.Ready, Is.False, "The thanks page keeps exploration locked.");
-            Assert.That(restoredRoom.TransitionPhase, Is.EqualTo(RoomEndingTransitionPhase.Exploring));
-            Assert.That(restoredThanks.Opacity, Is.EqualTo(opacity).Within(.001f));
-            Assert.That(session.Runtime.GetView().Paused, Is.True);
-            Assert.That(session.Runtime.ConfirmSelfPurification().Accepted, Is.False);
-            restoredRoom.Ending.SetPaused(false);
-            yield return EndingVisualCapture.Capture("hidden-thanks-partial-restored", session.Runtime);
-        }
-
-        private IEnumerator FinishThanksWithFreshClick(string route)
-        {
-            yield return Until(() => Object.FindObjectOfType<EndingThanksView>() != null, "shared thanks appears", 5);
-            var thanks = Object.FindObjectOfType<EndingThanksView>();
-            thanks.UseExternalClock = true;
-            thanks.AdvanceForTests(EndingThanksView.FadeSeconds + .1f, true, true);
-            Assert.That(thanks.IsPageVisible, Is.True);
-            Assert.That(thanks.IsComplete, Is.False, "The click that finishes the fade cannot dismiss the page.");
-            yield return EndingVisualCapture.Capture(route + "-thanks", MiniGameSessionHost.Current.Runtime);
-            thanks.AdvanceForTests(.1f, true, true);
-            Assert.That(thanks.IsComplete, Is.False, "A held click cannot dismiss the page.");
-            thanks.AdvanceForTests(.1f, false, false);
-            thanks.AdvanceForTests(.1f, true, true);
-            yield return null;
-            Assert.That(MainMenuController.Current.IsVisible, Is.True);
+            yield return Until(() => MainMenuController.Current.IsVisible
+                && host.Runtime.EndingStage == EndingStage.Completed, "immediate menu", 2);
+            Assert.That(Object.FindObjectOfType<EndingThanksView>(), Is.Null);
+            Assert.That(endNoteStarts, Is.EqualTo(1), "Each ending must emit exactly one EndNote.");
+            var menuAudio = MainMenuController.Current.GetComponentsInChildren<MiniGameAudioService>(true).Single();
+            Assert.That(menuAudio.GetSource(MiniGameAudioChannel.EndNote).isPlaying, Is.True,
+                "EndNote must survive the immediate menu cut.");
             Assert.That(MainMenuController.Current.View.Page, Is.EqualTo(MainMenuPage.Menu));
             Assert.That(MainMenuController.Current.View.ContinueButton.interactable, Is.False);
             Assert.That(MainMenuController.Current.HasRetainedGame, Is.False);
             Assert.That(MainMenuContinueStore.HasCompletedInspection(temporaryDirectory), Is.True);
+            MainMenuController.Current.CompleteInspectionAndReturnToMenu(true);
+            Assert.That(endNoteStarts, Is.EqualTo(1), "Repeated completion cannot replay the note.");
             yield return EndingVisualCapture.Capture(route + "-main-menu", MiniGameSessionHost.Current.Runtime);
             yield return EndingVisualCapture.Flush();
         }
-
         private void Interact(InteractionTarget target, string anchorName)
         {
             FocusInteraction(target, anchorName);

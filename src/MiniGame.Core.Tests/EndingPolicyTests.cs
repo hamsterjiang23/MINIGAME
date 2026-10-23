@@ -15,9 +15,10 @@ namespace MiniGame.Core.Tests
         [TestCase(-4, 14, true)]
         [TestCase(-4, 13, false)]
         [TestCase(int.MaxValue, int.MaxValue, true)]
-        public void HiddenEndingUsesNonemptyActiveTrustSumIncludingSignedValuesWithoutOverflow(int first, int second, bool eligible)
+        public void HiddenEndingUsesTheFourPatientHistoriesIncludingSignedValuesWithoutOverflow(int first, int second, bool eligible)
         {
-            var rules = Rules(new[] { Patient("first", first), Patient("second", second) }, rebellion: eligible ? 0 : 100);
+            var rules = Rules(new[] { Patient(PrototypeRules.FormerRuler, first), Patient(PrototypeRules.Doctor, second),
+                Patient(PrototypeRules.Child, -1), Patient(PrototypeRules.Diplomat, 1) }, rebellion: eligible ? 0 : 100);
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream);
             Scenario.Accept(session, new CompleteDream());
@@ -25,37 +26,82 @@ namespace MiniGame.Core.Tests
             Assert.That(session.GetPlayerView().Ending, Is.EqualTo(EndingType.None));
         }
 
-        [TestCase(Disposition.Release, PatientPresence.TreatmentEnded, PatientPresence.Released)]
-        [TestCase(Disposition.Purify, PatientPresence.TreatmentEnded, PatientPresence.Purified)]
-        [TestCase(Disposition.Treat, PatientPresence.Deceased, PatientPresence.Deceased)]
-        [TestCase(Disposition.Treat, PatientPresence.TreatmentEnded, PatientPresence.TreatmentEnded)]
-        public void DepartedPatientsNeverContributeEvenWhenTheirTrustIsHigh(Disposition disposition,
+        [TestCase(PrototypeRules.FormerRuler, Disposition.Release, PatientPresence.TreatmentEnded, PatientPresence.Released)]
+        [TestCase(PrototypeRules.Doctor, Disposition.Purify, PatientPresence.TreatmentEnded, PatientPresence.Purified)]
+        [TestCase(PrototypeRules.Child, Disposition.Treat, PatientPresence.Deceased, PatientPresence.Deceased)]
+        [TestCase(PrototypeRules.Diplomat, Disposition.Treat, PatientPresence.TreatmentEnded, PatientPresence.TreatmentEnded)]
+        public void DepartedPatientHistoryStillQualifiesAfterSaveRestore(string patientId, Disposition disposition,
             PatientPresence outcome, PatientPresence expectedPresence)
         {
-            var rules = Rules(new[] { Patient("departed", 100, limit: disposition == Disposition.Treat ? 1 : null, outcome: outcome),
-                Patient("remaining", 9) });
+            var rules = Rules(new[] { Patient(patientId, 10, limit: disposition == Disposition.Treat ? 1 : null, outcome: outcome) });
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream,
-                (_, patient) => patient == "departed" ? disposition : Disposition.Treat);
-            Assert.That(session.CreateSnapshot().State.Patients.Single(patient => patient.Id == "departed").Presence,
-                Is.EqualTo(expectedPresence));
+                (_, __) => disposition);
+            var saved = SnapshotCodec.Serialize(session);
+            session = SnapshotCodec.Deserialize(saved, rules);
+            Assert.That(SnapshotCodec.Serialize(session), Is.EqualTo(saved));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Presence, Is.EqualTo(expectedPresence));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(10));
+            Scenario.Accept(session, new CompleteDream());
+            Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.SelfReview));
+        }
+
+        [Test]
+        public void PriestTutorialPlayerAndUnknownPatientTrustCannotMeetTheHiddenGate()
+        {
+            var session = new GameSession(Rules(new[] { Patient(PrototypeRules.Child, 9), Patient(PrototypeRules.Priest, 100),
+                Patient("tutorial", 100, firstDay: 0), Patient("self", 100), Patient("unknown", 100) }));
+            DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream);
             Scenario.Accept(session, new CompleteDream());
             Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.AfterDream));
         }
 
         [Test]
-        public void EmptyActivePopulationDoesNotPassTheHiddenGate()
+        public void HistoricalTrustIncludesSignedResponsesAndDispositionsAcrossDaysAndRestore()
         {
-            var session = new GameSession(Rules(new[] { Patient("departed", 100) }));
-            DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream, (_, __) => Disposition.Release);
+            int ResponseDelta(int day, string id) => id switch
+            {
+                PrototypeRules.FormerRuler => 8,
+                PrototypeRules.Doctor => 8,
+                PrototypeRules.Child => day == 1 ? -3 : day == 2 ? 2 : 0,
+                PrototypeRules.Diplomat => 2,
+                _ => 0
+            };
+            int DispositionDelta(int day, string id) => id switch
+            {
+                PrototypeRules.FormerRuler => -2,
+                PrototypeRules.Doctor => -4,
+                PrototypeRules.Diplomat => -1,
+                _ => 0
+            };
+            Disposition Policy(int day, string id) => id == PrototypeRules.FormerRuler ? Disposition.Release
+                : id == PrototypeRules.Doctor ? Disposition.Purify : Disposition.Treat;
+            var rules = Rules(new[] { Patient(PrototypeRules.FormerRuler, 0), Patient(PrototypeRules.Doctor, 0),
+                Patient(PrototypeRules.Child, 0), Patient(PrototypeRules.Diplomat, 0, firstDay: 3),
+                Patient(PrototypeRules.Priest, 100) }, responseDelta: ResponseDelta, dispositionDelta: DispositionDelta);
+            var session = new GameSession(rules);
+            DriveTo(session, view => view.Day == 2 && view.Phase == GamePhase.MorningInspection, Policy);
+            session = SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), rules);
+            DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream, Policy);
+            var patients = session.CreateSnapshot().State.Patients.ToDictionary(patient => patient.Id);
+            Assert.That(patients[PrototypeRules.FormerRuler].Trust, Is.EqualTo(6));
+            Assert.That(patients[PrototypeRules.FormerRuler].Presence, Is.EqualTo(PatientPresence.Released));
+            Assert.That(patients[PrototypeRules.Doctor].Trust, Is.EqualTo(4));
+            Assert.That(patients[PrototypeRules.Doctor].Presence, Is.EqualTo(PatientPresence.Purified));
+            Assert.That(patients[PrototypeRules.Child].Trust, Is.EqualTo(-1));
+            Assert.That(patients[PrototypeRules.Diplomat].Trust, Is.EqualTo(1));
+            session = SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), rules);
             Scenario.Accept(session, new CompleteDream());
-            Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.AfterDream));
+            Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.SelfReview));
+            Scenario.RejectWithoutMutation(session, new CompleteDream());
+            Assert.That(SnapshotCodec.Serialize(SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), rules)),
+                Is.EqualTo(SnapshotCodec.Serialize(session)));
         }
 
         [Test]
         public void TutorialAndNotYetIntroducedPatientsDoNotContribute()
         {
-            var rules = Rules(new[] { Patient("tutorial", 100, firstDay: 0), Patient("formal", 9),
+            var rules = Rules(new[] { Patient("tutorial", 100, firstDay: 0), Patient(PrototypeRules.Child, 9),
                 Patient("future", 100, firstDay: 4) }, lastDay: 4);
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream);
@@ -69,7 +115,7 @@ namespace MiniGame.Core.Tests
         }
 
         [Test]
-        public void TutorialAloneCannotMeetTheNonemptyFormalPatientRequirement()
+        public void TutorialAloneCannotMeetTheFourPatientHistoryRequirement()
         {
             var session = new GameSession(Rules(new[] { Patient("tutorial", 100, firstDay: 0) }));
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream);
@@ -81,7 +127,7 @@ namespace MiniGame.Core.Tests
         [TestCase(2)]
         public void EarlierDreamsDoNotTriggerHiddenEnding(int day)
         {
-            var session = new GameSession(Rules(new[] { Patient("formal", 100) }));
+            var session = new GameSession(Rules(new[] { Patient(PrototypeRules.Child, 100) }));
             DriveTo(session, view => view.Day == day && view.Phase == GamePhase.Dream);
             Scenario.Accept(session, new CompleteDream());
             Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.AfterDream));
@@ -174,7 +220,7 @@ namespace MiniGame.Core.Tests
         [Test]
         public void SelfReviewProgressRequiresEveryExpectedLineAndRestoresWithoutReplaySideEffects()
         {
-            var rules = Rules(new[] { Patient("formal", 10) });
+            var rules = Rules(new[] { Patient(PrototypeRules.Child, 10) });
             var session = new GameSession(rules);
             DriveTo(session, view => view.Phase == GamePhase.SelfReview);
             var original = session.CreateSnapshot().State;
@@ -214,7 +260,7 @@ namespace MiniGame.Core.Tests
         [Test]
         public void RestoreRejectsForgedSelfReviewProgressSkippedRepeatedAndMissingLineArguments()
         {
-            var rules = Rules(new[] { Patient("formal", 10) });
+            var rules = Rules(new[] { Patient(PrototypeRules.Child, 10) });
             var session = new GameSession(rules);
             DriveTo(session, view => view.Phase == GamePhase.SelfReview);
             var forgedState = session.CreateSnapshot();
@@ -243,12 +289,17 @@ namespace MiniGame.Core.Tests
             => new PatientDefinition(id, id, firstDay, trust, limit, outcome, attacksAfterRelease: attacks, attackDelayDays: attackDelay);
 
         private static GameRules Rules(IReadOnlyList<PatientDefinition> patients, int quotaDay = -1, int startDay = 1,
-            int lastDay = 3, int rebellion = 0)
+            int lastDay = 3, int rebellion = 0, Func<int, string, int>? responseDelta = null,
+            Func<int, string, int>? dispositionDelta = null)
         {
             MeetingDefinition Meeting(PatientDefinition patient, int day) => new MeetingDefinition(patient.Id,
-                new[] { new RoundDefinition(patient.Id + "." + day, new[] { new ResponseDefinition("neutral", patient.Id + ".reply", 0) }) },
+                new[] { new RoundDefinition(patient.Id + "." + day, new[]
+                { new ResponseDefinition("neutral", patient.Id + ".reply", responseDelta?.Invoke(day, patient.Id) ?? 0) }) },
                 null, 100, 0, new Dictionary<Disposition, string>
-                { [Disposition.Treat] = patient.Id + ".treat", [Disposition.Purify] = patient.Id + ".purify", [Disposition.Release] = patient.Id + ".release" });
+                { [Disposition.Treat] = patient.Id + ".treat", [Disposition.Purify] = patient.Id + ".purify", [Disposition.Release] = patient.Id + ".release" },
+                dispositionTrustDeltas: dispositionDelta == null ? null : new Dictionary<Disposition, int>
+                { [Disposition.Treat] = dispositionDelta(day, patient.Id), [Disposition.Purify] = dispositionDelta(day, patient.Id),
+                    [Disposition.Release] = dispositionDelta(day, patient.Id) });
             return new GameRules("ending-policy-fixture", patients,
                 Enumerable.Range(startDay, lastDay - startDay + 1).Select(day => new DayDefinition(day, day == quotaDay ? 1 : 0,
                     patients.Where(patient => patient.FirstDay <= day).Select(patient => Meeting(patient, day)))),

@@ -157,7 +157,7 @@ namespace MiniGame.UnityHost.Editor
             Draw(settings, "BlackScreenSeconds"); Draw(settings, "WakeBlackSeconds");
             Draw(settings, "AlignSeconds"); Draw(settings, "ReturnSeconds"); Draw(settings, "ProjectionInset");
             Draw(settings, "Audio");
-            EditorGUILayout.HelpBox("Day0 保持一次睡眠。Day1–3：上床 → 黑屏音乐 → 锁定画面逐帧播放 → 转向聚光床 → 再次交互后黑屏起床。画面只允许轻微暗角。", MessageType.None);
+            EditorGUILayout.HelpBox("Day0 保持一次睡眠。Day1–3：上床 → 黑屏音乐 → 锁定画面逐帧播放 → 转向聚光床 → 再次交互后黑屏起床。四周黑边固定不闪动，中心保留原图。", MessageType.None);
             var entries = settings.FindProperty("Days");
             for (int i = 0; i < entries.arraySize; i++)
             {
@@ -172,6 +172,10 @@ namespace MiniGame.UnityHost.Editor
                     Relative(day, "Frames", "顺序画面（按编号）");
                     Relative(day, "Music", "音乐用途");
                     Relative(day, "VignetteIntensity", "边角压暗强度");
+                    Relative(day, "BlackEdgeWidths", "黑边宽度（左、右、下、上）");
+                    Relative(day, "BlackEdgeStrength", "黑边强度（左、右、下、上）");
+                    Relative(day, "BlackEdgeSoftness", "黑边柔和范围");
+                    Relative(day, "BlackEdgeIrregularity", "黑边轮廓不规则程度");
                     if (GUILayout.Button("预览 Day" + number + " 梦境")) StartPreview(number);
                 }
             }

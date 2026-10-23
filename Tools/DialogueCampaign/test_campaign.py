@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import unittest
 import tempfile
+import re
 from pathlib import Path
 from typing import cast
 from zipfile import ZipFile
@@ -47,7 +48,7 @@ class CampaignConversionTests(unittest.TestCase):
         self.assertEqual(self.audit["activeSourceRowCount"], 1295)
         self.assertEqual(self.audit["excludedSourceRowCount"], 65)
         self.assertEqual(self.audit["meetingCount"], 13)
-        self.assertEqual(self.package["contentVersion"], "1.2.0-development")
+        self.assertEqual(self.package["contentVersion"], "1.2.1-development")
 
     def test_daily_rosters_follow_the_confirmed_arrival_order(self) -> None:
         campaign = cast(Record, self.package["campaign"])
@@ -60,6 +61,40 @@ class CampaignConversionTests(unittest.TestCase):
         ]
         for day, roster in zip(days, expected, strict=True):
             self.assertEqual([meeting["patientId"] for meeting in cast(list[Record], day["meetings"])], roster)
+
+    def test_late_arrivals_start_at_their_first_workbook_day_without_rewriting_source_ids(self) -> None:
+        days = cast(list[Record], cast(Record, self.package["campaign"])["days"])
+        expected = [(2, "priest", "P01_D1", 1), (3, "priest", "P01_D2", 2),
+                    (3, "diplomat", "P05_D1", 1)]
+        for campaign_day, patient, source_prefix, source_day in expected:
+            meeting = next(item for item in cast(list[Record], days[campaign_day]["meetings"])
+                           if item["patientId"] == patient)
+            self.assertEqual(meeting["startNode"], f"{patient}__{source_prefix}_R1_OPTION_001__MENU")
+            self.assertEqual(meeting["endNode"], f"{patient}__END_DAY{source_day}")
+            self.assertEqual(set(re.findall(r"^day: (\d+)$", str(meeting["yarnSource"]), re.MULTILINE)),
+                             {str(campaign_day)})
+        priest_first = next(item for item in cast(list[Record], days[2]["meetings"]) if item["patientId"] == "priest")
+        self.assertIn("请告诉我，今天就能接受净化吗？", str(priest_first["yarnSource"]))
+        self.assertNotIn("你昨天把我从门前拖了回来。", str(priest_first["yarnSource"]))
+        diplomat_first = next(item for item in cast(list[Record], days[3]["meetings"]) if item["patientId"] == "diplomat")
+        self.assertIn("先核对身份。姓名、职业，再说明你是怎么被送进来的。", str(diplomat_first["yarnSource"]))
+        self.assertNotIn("我接到的，是观察审查人员怎样工作的任务。", str(diplomat_first["yarnSource"]))
+
+    def test_later_workbook_visits_remain_audited_but_do_not_extend_the_three_day_campaign(self) -> None:
+        schedule = cast(list[Record], self.audit["meetingSchedule"])
+        future = {(item["patientId"], item["sourceDay"], item["campaignDay"])
+                  for item in schedule if not item["scheduled"]}
+        self.assertEqual(future, {("priest", 3, 4), ("diplomat", 2, 4), ("diplomat", 3, 5)})
+        self.assertEqual(sum(bool(item["scheduled"]) for item in schedule), 13)
+        yarn = str(self.package["yarnSource"])
+        for patient, source_day, campaign_day in future:
+            mappings = [item for item in cast(list[Record], self.audit["mappings"])
+                        if item["patientId"] == patient and item["sourceDay"] == source_day]
+            self.assertTrue(mappings)
+            self.assertTrue(all(not item["scheduled"] and item["campaignDay"] == campaign_day for item in mappings))
+            self.assertTrue(all("title: " + str(item["sourceId"]) + "\n" not in yarn for item in mappings))
+        self.assertEqual([day["day"] for day in cast(list[Record], cast(Record, self.package["campaign"])["days"])],
+                         [0, 1, 2, 3])
 
     def test_every_source_row_is_either_exactly_mapped_or_explicitly_excluded(self) -> None:
         mappings = cast(list[Record], self.audit["mappings"])

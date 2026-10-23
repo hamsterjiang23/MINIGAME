@@ -2,7 +2,9 @@
 
 > 本清单记录原文之间的差异与缺失，不替策划裁决。当前Mini Game范围采用主Wiki交付标准，正文逐篇保留原口径。
 
-2026-10-23 结局裁决：Q07、Q25、Q26 在本轮范围采用用户接受的[结局修订方案](endings/guide.md)。隐藏只在Day3梦后检查留院正式病人信任总和≥10且至少一人；优先级为隐藏、神父次日袭击、KPI失败、普通。KPI失败保留当天梦，次日跳Day4开门走监督员；全部结局统一感谢页与返回菜单。下方旧记录保留历史身份。`[verified: 本轮用户 PLEASE IMPLEMENT THIS PLAN「结局规则」「隐藏结局完整流程」]`
+2026-10-23 结局裁决：Q07、Q25、Q26 在本轮范围采用用户接受的[结局修订方案](endings/guide.md)。隐藏只在Day3梦后检查薇拉、埃德温、米洛、阿德里安四人的历史有符号信任合计≥10；包括对白与处置变化，已释放、净化、死亡或结束治疗者仍计入，排除神父、教学角色与玩家。优先级为隐藏、神父次日袭击、KPI失败、普通。KPI失败保留当天梦，次日跳Day4开门走监督员；全部结局在最终对白或床交互完成后播放一次EndNote并同时直接回菜单，不显示感谢页、不增加结束淡出或额外确认。下方旧记录保留历史身份。`[verified: ../src/MiniGame.Core/Runtime/GameSession.cs L183–200/L378–407；../src/MiniGame.Core/Rules/GameRules.cs L72；../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs L78–82/L136–149；../UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs L181–198]`
+
+同日对白日期裁决：Q03在三天流程内采用Day1薇拉、埃德温、米洛，Day2加入乔纳，Day3加入阿德里安的顺序；对白表Day按加入后的相对日期读取，乔纳游戏Day2→表Day1、游戏Day3→表Day2，阿德里安游戏Day3→表Day1。保留源节点ID与未进入三天流程的来源行，释放后“次日”等事件仍按游戏日期结算。`[verified: ../Tools/DialogueCampaign/conversion-config.json L15–55；../Tools/DialogueCampaign/build_campaign.py L254–269；../src/MiniGame.Core/Runtime/GameSession.cs L391–395]`
 
 ## 1. 开发范围与流程
 

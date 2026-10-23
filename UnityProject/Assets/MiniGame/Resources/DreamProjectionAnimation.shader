@@ -5,6 +5,10 @@ Shader "MiniGame/Dream Projection Animation"
         _Artwork ("Artwork", 2D) = "black" {}
         _CleanMode ("Source frame mode", Float) = 0
         _VignetteIntensity ("Source frame vignette", Range(0, 1)) = 0.12
+        _BlackEdgeWidths ("Black edge widths: left right bottom top", Vector) = (0.07, 0.12, 0.10, 0.05)
+        _BlackEdgeStrength ("Black edge strength: left right bottom top", Vector) = (0.99, 0.94, 1, 0.97)
+        _BlackEdgeSoftness ("Black edge softness", Float) = 0.035
+        _BlackEdgeIrregularity ("Black edge irregularity", Float) = 0.018
     }
     SubShader
     {
@@ -19,6 +23,8 @@ Shader "MiniGame/Dream Projection Animation"
             #include "UnityCG.cginc"
             sampler2D _Artwork;
             float _CleanMode, _VignetteIntensity;
+            float4 _BlackEdgeWidths, _BlackEdgeStrength;
+            float _BlackEdgeSoftness, _BlackEdgeIrregularity;
             float _Day, _PlaybackSeconds, _Progress, _MotionIntensity;
             float hash(float2 p) { return frac(sin(dot(p, float2(127.1,311.7))) * 43758.5453); }
             float noise(float2 p)
@@ -35,6 +41,25 @@ Shader "MiniGame/Dream Projection Animation"
                 return length(p - a - v * saturate(dot(p - a, v) / max(dot(v,v), .00001)));
             }
             float3 artwork(float2 uv) { return tex2D(_Artwork, clamp(uv, .001, .999)).rgb; }
+
+            float staticBlackEdge(float distance, float tangent, float width, float seed)
+            {
+                float contour = (field(float2(tangent * 9.7, seed)) * 2 - 1) * _BlackEdgeIrregularity;
+                float boundary = max(0, width + contour);
+                float softness = max(.001, _BlackEdgeSoftness);
+                return (1 - smoothstep(max(0, boundary - softness), boundary + softness, distance)) * step(.0001, width);
+            }
+
+            float blackEdgeMask(float2 uv)
+            {
+                // Coordinates and fixed seeds only: the outline never changes with playback time or frame index.
+                float4 sides = float4(staticBlackEdge(uv.x, uv.y, _BlackEdgeWidths.x, 1.3),
+                    staticBlackEdge(1 - uv.x, uv.y, _BlackEdgeWidths.y, 8.1),
+                    staticBlackEdge(uv.y, uv.x, _BlackEdgeWidths.z, 15.7),
+                    staticBlackEdge(1 - uv.y, uv.x, _BlackEdgeWidths.w, 23.9)) * saturate(_BlackEdgeStrength);
+                float clearCenter = smoothstep(.18, .34, max(abs(uv.x - .5), abs(uv.y - .5)));
+                return max(max(sides.x, sides.y), max(sides.z, sides.w)) * clearCenter;
+            }
 
             float3 beach(float2 uv, float t)
             {
@@ -137,6 +162,7 @@ Shader "MiniGame/Dream Projection Animation"
                     float2 centered = uv * 2 - 1;
                     float corners = smoothstep(.35, 1, dot(centered, centered) * .5);
                     source.rgb *= 1 - corners * saturate(_VignetteIntensity);
+                    source.rgb *= 1 - blackEdgeMask(uv);
                     return source;
                 }
                 float t = _PlaybackSeconds;

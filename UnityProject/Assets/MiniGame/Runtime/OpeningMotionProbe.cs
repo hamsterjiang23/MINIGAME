@@ -1,11 +1,13 @@
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using MiniGame.Presentation;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 namespace MiniGame.UnityHost
 {
@@ -15,15 +17,23 @@ namespace MiniGame.UnityHost
     {
         private const int Width = 1280, Height = 720, BufferCount = 180;
         private const double CaptureInterval = 1.0 / 60;
-        private readonly List<FrameTiming> timings = new List<FrameTiming>(512);
+        private readonly List<FrameTiming> timings = new List<FrameTiming>(4096);
         private readonly List<CaptureInfo> captures = new List<CaptureInfo>(BufferCount);
         private readonly RenderTexture[] targets = new RenderTexture[3];
         private readonly bool[] busy = new bool[3];
         private CaptureBuffer[] buffers;
         private MiniGameBootstrap host;
+        private MainMenuController menu;
+        private RectTransform logo;
+        private readonly Vector3[] corners = new Vector3[4];
+        private RenderTexture screenCapture;
         private string folder;
-        private double began, readyAt = -1, clickedAt, settledAt, nextCapture;
+        private double began, readyAt = -1, clickedAt, settledAt, nextCapture, previousFrameAt;
         private bool recording, clicked, observedMotion, settled, completed, captureFailed, disposed;
+        private bool mainMenuEntry, initialCaptured, finalCaptured, captureQueued, queuedEndpoint;
+        private string queuedStage, previousSaveDirectory;
+        private float queuedProgress, startActionMs;
+        private double queuedAt;
         private int bufferIndex, pending, rateSkipped, busyDropped, capacityDropped;
         private int originalTargetFrameRate, originalVSyncCount;
         private bool controlledCaptureRate;
@@ -33,7 +43,10 @@ namespace MiniGame.UnityHost
         {
             public int frame;
             public double seconds;
-            public float milliseconds, progress;
+            public float milliseconds, unityDeltaMilliseconds, progress, transitionClock, controlsAlpha, backdropAlpha;
+            public Rect logoRect, startButtonRect, continueButtonRect, newPeriodButtonRect, settingsButtonRect;
+            public bool menuVisible, startButtonVisible, menuButtonsVisible;
+            public string stage;
         }
 
         [Serializable] private sealed class CaptureInfo
@@ -42,6 +55,7 @@ namespace MiniGame.UnityHost
             public int frame;
             public double seconds;
             public float progress;
+            public float transitionClock;
             public bool readbackError;
         }
 
@@ -59,10 +73,11 @@ namespace MiniGame.UnityHost
         {
             public string result, detail, unity, graphicsDevice, captureMode;
             public int count, over33ms, over50ms, targetFrameRate, vSyncCount, originalTargetFrameRate, originalVSyncCount, screenWidth, screenHeight;
-            public float medianMs, p95Ms, maximumMs;
+            public int captureWidth, captureHeight;
+            public float medianMs, p95Ms, maximumMs, startActionMilliseconds, expectedTransitionClock, finalTransitionClock;
             public double wallSeconds;
-            public bool captureRequested, asyncReadbackSupported, tutorialUnlocked;
-            public int capturedFrames, skippedBy60FpsLimit, droppedBusy, droppedCapacity;
+            public bool captureRequested, asyncReadbackSupported, tutorialUnlocked, firstTutorialLinePresented, mainMenuEntry, graphicsUVStartsAtTop;
+            public int capturedFrames, skippedBy60FpsLimit, droppedBusy, droppedCapacity, emptyFrames;
             public FrameTiming[] frames;
             public CaptureInfo[] captures;
         }
@@ -92,6 +107,18 @@ namespace MiniGame.UnityHost
             {
                 host = FindObjectOfType<MiniGameBootstrap>();
                 if (host == null) throw new InvalidOperationException("Missing fresh campaign host");
+                menu = MainMenuController.Current;
+                mainMenuEntry = menu != null && menu.IsVisible;
+                if (mainMenuEntry)
+                {
+                    // The opt-in probe must never replace the player's normal continuation or completion marker.
+                    previousSaveDirectory = MainMenuController.SaveDirectoryOverride;
+                    MainMenuController.SaveDirectoryOverride = Path.Combine(folder, "save");
+                    Directory.CreateDirectory(MainMenuController.SaveDirectoryOverride);
+                    menu.ShowStartup();
+                    foreach (var image in menu.View.GetComponentsInChildren<RawImage>(true))
+                        if (image.name == "NormLogo") { logo = image.rectTransform; break; }
+                }
                 if (!recording) return;
                 // Pace only this opt-in recorder. Hidden batch players otherwise run their update loop uncapped.
                 QualitySettings.vSyncCount = 0;
@@ -113,6 +140,10 @@ namespace MiniGame.UnityHost
                         { name = "Opening asynchronous capture " + i, hideFlags = HideFlags.DontSave };
                     targets[i].Create();
                 }
+                screenCapture = new RenderTexture(Screen.width, Screen.height, 0, RenderTextureFormat.ARGB32)
+                    { name = "Opening final screen capture", hideFlags = HideFlags.DontSave };
+                screenCapture.Create();
+                StartCoroutine(CaptureAfterScreenRender());
             }
             catch (Exception error) { Fail(error); }
         }
@@ -131,41 +162,122 @@ namespace MiniGame.UnityHost
             if (now - began > 35) throw new TimeoutException("Fresh campaign opening did not settle within 35 seconds");
             if (!clicked)
             {
-                if (!host.Screen.DayZeroOpeningWaiting) return;
+                if (mainMenuEntry ? !menu.IsVisible : !host.Screen.DayZeroOpeningWaiting) return;
                 if (readyAt < 0) readyAt = now;
                 if (now - readyAt < 1) return;
-                if (recording) Capture("start", now, 0, true);
-                if (!host.Screen.RequestDayZeroOpening()) throw new InvalidOperationException("Opening click was rejected");
-                clicked = true; clickedAt = now; nextCapture = now + CaptureInterval;
+                if (recording && !initialCaptured)
+                {
+                    QueueCapture("start", now, 0, true);
+                    return;
+                }
+                clicked = true; clickedAt = previousFrameAt = now; nextCapture = now + CaptureInterval;
+                if (mainMenuEntry)
+                {
+                    if (menu.View.Page == MainMenuPage.FirstStart) menu.View.StartButton.onClick.Invoke();
+                    else
+                    {
+                        menu.RequestNewInspection();
+                        menu.View.ConfirmButton.onClick.Invoke();
+                    }
+                }
+                else if (!host.Screen.RequestDayZeroOpening()) throw new InvalidOperationException("Opening click was rejected");
+                startActionMs = (float)((Time.realtimeSinceStartupAsDouble - now) * 1000);
                 return;
             }
-            if (host.Effects.EntryPhase == TerminalEntryPhase.OpeningPullback)
+            if (!settled)
             {
-                observedMotion = true;
                 float progress = host.Screen.TerminalDisplay.OpeningProgress;
-                timings.Add(new FrameTiming { frame = Time.frameCount, seconds = now - clickedAt,
-                    milliseconds = Time.unscaledDeltaTime * 1000, progress = progress });
-                if (recording)
+                observedMotion |= progress > 0 && progress < 1;
+                string stage = mainMenuEntry && menu.TransitionElapsed <= MainMenuController.ControlsFadeSeconds ? "controls"
+                    : progress < 1 ? "pullback" : "tutorial";
+                RecordFrame(now, progress, stage);
+                var view = host.Runtime?.GetView();
+                if (observedMotion && !MainMenuController.BlocksGameplayInput && !host.Screen.TransitionLocked
+                    && !host.Screen.DayZeroOpeningWaiting && view?.Cue?.Kind == PresentationKind.Introduction && HasTutorialLine())
+                {
+                    settledAt = now;
+                    settled = true;
+                    if (recording) QueueCapture("end", now, progress, true);
+                }
+                else if (recording)
                 {
                     if (now + .00001 >= nextCapture)
                     {
-                        Capture("pullback", now, progress, false);
+                        QueueCapture(stage, now, progress, false);
                         nextCapture = clickedAt + (Math.Floor((now - clickedAt) / CaptureInterval) + 1) * CaptureInterval;
                     }
                     else rateSkipped++;
                 }
+            }
+            if (!settled) return;
+            if (recording && !finalCaptured)
+            {
+                if (!captureQueued) QueueCapture("end", now, 1, true);
                 return;
             }
-            if (!observedMotion) return;
-            if (!settled)
-            {
-                var view = host.Runtime.GetView();
-                if (host.Screen.TransitionLocked || view.Cue?.Kind != PresentationKind.Introduction) return;
-                if (settledAt <= 0) settledAt = now;
-                if (recording && !Capture("end", now, 1, true)) return;
-                settled = true;
-            }
             if (pending == 0) Complete(!captureFailed);
+        }
+
+        private void RecordFrame(double now, float progress, string stage)
+        {
+            var view = mainMenuEntry ? menu.View : null;
+            timings.Add(new FrameTiming
+            {
+                frame = Time.frameCount, seconds = now - clickedAt,
+                milliseconds = (float)((now - previousFrameAt) * 1000), unityDeltaMilliseconds = Time.unscaledDeltaTime * 1000,
+                progress = progress, transitionClock = mainMenuEntry ? menu.TransitionElapsed : host.Effects.TerminalTransitionProgress * 2.2f,
+                controlsAlpha = view != null ? view.ControlsAlpha : 0, backdropAlpha = view != null ? view.ReleaseAlpha : 0,
+                logoRect = ScreenRect(logo), startButtonRect = ScreenRect(view != null ? view.StartButton.transform as RectTransform : null),
+                continueButtonRect = ScreenRect(view != null ? view.ContinueButton.transform as RectTransform : null),
+                newPeriodButtonRect = ScreenRect(view != null ? view.NewPeriodButton.transform as RectTransform : null),
+                settingsButtonRect = ScreenRect(view != null ? view.SettingsButton.transform as RectTransform : null),
+                menuVisible = menu != null && menu.IsVisible, startButtonVisible = view != null && view.StartButton.gameObject.activeInHierarchy,
+                menuButtonsVisible = view != null && view.ContinueButton.gameObject.activeInHierarchy, stage = stage
+            });
+            previousFrameAt = now;
+        }
+
+        private Rect ScreenRect(RectTransform source)
+        {
+            if (source == null) return default;
+            source.GetWorldCorners(corners);
+            var bottomLeft = RectTransformUtility.WorldToScreenPoint(null, corners[0]);
+            var topRight = RectTransformUtility.WorldToScreenPoint(null, corners[2]);
+            return new Rect(bottomLeft, topRight - bottomLeft);
+        }
+
+        private bool HasTutorialLine()
+        {
+            if (host == null || host.Runtime == null) return false;
+            foreach (var line in host.Runtime.GetView().Transcript) if (!line.IsPlayer) return true;
+            return false;
+        }
+
+        private void QueueCapture(string stage, double now, float progress, bool endpoint)
+        {
+            if (captureQueued) return;
+            queuedStage = stage; queuedAt = now; queuedProgress = progress; queuedEndpoint = endpoint;
+            captureQueued = true;
+        }
+
+        private IEnumerator CaptureAfterScreenRender()
+        {
+            var endOfFrame = new WaitForEndOfFrame();
+            while (!completed)
+            {
+                yield return endOfFrame;
+                if (!captureQueued || failure != null) continue;
+                captureQueued = false;
+                try
+                {
+                    if (recording && Capture(queuedStage, queuedAt, queuedProgress, queuedEndpoint))
+                    {
+                        if (queuedStage == "start") initialCaptured = true;
+                        else if (queuedStage == "end") finalCaptured = true;
+                    }
+                }
+                catch (Exception error) { Fail(error); }
+            }
         }
 
         private bool Capture(string stage, double now, float progress, bool endpoint)
@@ -174,27 +286,16 @@ namespace MiniGame.UnityHost
             if (bufferIndex >= capacity) { capacityDropped++; return false; }
             int slot = Array.FindIndex(busy, value => !value);
             if (slot < 0) { busyDropped++; return false; }
-            var display = host.Screen.TerminalDisplay;
             var target = targets[slot];
-            var previous = RenderTexture.active;
-            try
-            {
-                RenderTexture.active = target; GL.Clear(true, true, Color.black);
-                float aspect = display.OutputRect.rect.width / display.OutputRect.rect.height;
-                float drawWidth = Mathf.Min(Width, Height * aspect), drawHeight = drawWidth / aspect;
-                GL.PushMatrix();
-                try
-                {
-                    GL.LoadPixelMatrix(0, Width, Height, 0);
-                    Graphics.DrawTexture(new Rect((Width - drawWidth) / 2, (Height - drawHeight) / 2, drawWidth, drawHeight),
-                        display.Texture, new Rect(0, 0, 1, 1), 0, 0, 0, 0, Color.white, display.ScreenMaterial);
-                }
-                finally { GL.PopMatrix(); }
-            }
-            finally { RenderTexture.active = previous; }
+            if (screenCapture.width != Screen.width || screenCapture.height != Screen.height)
+                throw new InvalidOperationException("Screen resolution changed during the opening recording");
+            ScreenCapture.CaptureScreenshotIntoRenderTexture(screenCapture);
+            Graphics.Blit(screenCapture, target, new Vector2(1, SystemInfo.graphicsUVStartsAtTop ? -1 : 1),
+                new Vector2(0, SystemInfo.graphicsUVStartsAtTop ? 1 : 0));
             var buffer = buffers[bufferIndex];
             buffer.info = new CaptureInfo { file = "frames/" + bufferIndex.ToString("000") + ".png", stage = stage,
-                frame = Time.frameCount, seconds = clicked ? now - clickedAt : 0, progress = progress };
+                frame = Time.frameCount, seconds = clicked ? now - clickedAt : 0, progress = progress,
+                transitionClock = mainMenuEntry ? menu.TransitionElapsed : host.Effects.TerminalTransitionProgress * 2.2f };
             buffer.slot = slot; busy[slot] = true; pending++;
             captures.Add(buffer.info); bufferIndex++;
             try
@@ -230,6 +331,9 @@ namespace MiniGame.UnityHost
             completed = true;
             try
             {
+                string preparation = host != null ? host.OpeningPreparationTimingJson : null;
+                if (!string.IsNullOrEmpty(preparation)) File.WriteAllText(Path.Combine(folder, "preparation-timings.json"), preparation);
+                int emptyFrames = 0;
                 if (recording && buffers != null)
                 {
                     var pixels = new Texture2D(Width, Height, TextureFormat.RGBA32, false);
@@ -239,6 +343,7 @@ namespace MiniGame.UnityHost
                         {
                             var buffer = buffers[i];
                             if (buffer.info.readbackError) continue;
+                            if (!HasVisiblePixels(buffer.data)) emptyFrames++;
                             pixels.LoadRawTextureData(buffer.data); pixels.Apply(false, false);
                             File.WriteAllBytes(Path.Combine(folder, buffer.info.file), pixels.EncodeToPNG());
                         }
@@ -251,18 +356,26 @@ namespace MiniGame.UnityHost
                 { sorted.Add(frame.milliseconds); if (frame.milliseconds > 33) over33++; if (frame.milliseconds > 50) over50++; }
                 sorted.Sort();
                 bool unlocked = host != null && !host.Screen.TransitionLocked
+                    && host.Runtime != null && !MainMenuController.BlocksGameplayInput
                     && host.Runtime.GetView().Cue?.Kind == PresentationKind.Introduction;
-                passed &= unlocked && timings.Count > 0;
-                var report = new Report { result = passed ? "passed" : "failed", detail = failure ?? (captureFailed ? "GPU readback failed" : "Fresh campaign pullback settled into tutorial"),
+                float expectedClock = mainMenuEntry ? MainMenuController.ControlsFadeSeconds + MainMenuController.MonitorPullbackSeconds : 2.2f;
+                float finalClock = mainMenuEntry && menu != null ? menu.TransitionElapsed
+                    : host != null ? host.Effects.TerminalTransitionProgress * 2.2f : 0;
+                passed &= unlocked && HasTutorialLine() && timings.Count > 0 && emptyFrames == 0 && Mathf.Abs(finalClock - expectedClock) < .01f;
+                var report = new Report { result = passed ? "passed" : "failed", detail = failure ?? (emptyFrames > 0 ? "Captured frames contain no visible rendered pixels" : captureFailed ? "GPU readback failed"
+                        : "Opening reached its first native tutorial line; timing statistics are measurements, not an automatic smoothness verdict"),
                     unity = Application.unityVersion, graphicsDevice = SystemInfo.graphicsDeviceName,
-                    captureMode = recording ? "Capture-only 60fps pacing; native UI RT after TerminalDisplay.LateUpdate, actual CRT material, 1280x720 letterboxed, asynchronous RGBA32 readback; PNG encoding and disk writes after motion" : "Timing only; no frame capture or pacing override",
+                    captureMode = recording ? "Capture-only 60fps pacing; final screen after WaitForEndOfFrame including overlay logo/buttons, GPU resampled to 1280x720, asynchronous RGBA32 readback; PNG encoding and disk writes after the first tutorial line" : "Timing only; raw wall-clock frame intervals, no frame capture or pacing override",
                     count = timings.Count, medianMs = Percentile(sorted, .5f), p95Ms = Percentile(sorted, .95f), maximumMs = Percentile(sorted, 1),
                     over33ms = over33, over50ms = over50, wallSeconds = settledAt > 0 ? settledAt - clickedAt : 0,
                     targetFrameRate = Application.targetFrameRate, vSyncCount = QualitySettings.vSyncCount,
                     originalTargetFrameRate = originalTargetFrameRate, originalVSyncCount = originalVSyncCount,
                     screenWidth = Screen.width, screenHeight = Screen.height, captureRequested = recording,
-                    asyncReadbackSupported = SystemInfo.supportsAsyncGPUReadback, tutorialUnlocked = unlocked,
-                    capturedFrames = captures.Count, skippedBy60FpsLimit = rateSkipped, droppedBusy = busyDropped, droppedCapacity = capacityDropped,
+                    captureWidth = recording ? Width : 0, captureHeight = recording ? Height : 0,
+                    startActionMilliseconds = startActionMs, expectedTransitionClock = expectedClock, finalTransitionClock = finalClock,
+                    mainMenuEntry = mainMenuEntry, graphicsUVStartsAtTop = SystemInfo.graphicsUVStartsAtTop,
+                    asyncReadbackSupported = SystemInfo.supportsAsyncGPUReadback, tutorialUnlocked = unlocked, firstTutorialLinePresented = HasTutorialLine(),
+                    capturedFrames = captures.Count, skippedBy60FpsLimit = rateSkipped, droppedBusy = busyDropped, droppedCapacity = capacityDropped, emptyFrames = emptyFrames,
                     frames = timings.ToArray(), captures = captures.ToArray() };
                 File.WriteAllText(Path.Combine(folder, "verification.json"), JsonUtility.ToJson(report, true));
                 Debug.Log("MINIGAME_OPENING_MOTION_" + (passed ? "PASSED " : "FAILED ") + report.detail);
@@ -279,6 +392,15 @@ namespace MiniGame.UnityHost
         }
 
         private void OnDestroy() { DisposeBuffers(); }
+
+        private static bool HasVisiblePixels(NativeArray<byte> rgba)
+        {
+            int visible = 0;
+            for (int index = 0; index + 2 < rgba.Length; index += 256)
+                if (rgba[index] > 32 || rgba[index + 1] > 32 || rgba[index + 2] > 32)
+                    if (++visible >= 16) return true;
+            return false;
+        }
 
         private void DisposeBuffers()
         {
@@ -297,6 +419,8 @@ namespace MiniGame.UnityHost
             if (buffers != null)
                 foreach (var buffer in buffers) if (buffer != null && buffer.data.IsCreated) buffer.data.Dispose();
             foreach (var target in targets) if (target != null) { target.Release(); Destroy(target); }
+            if (screenCapture != null) { screenCapture.Release(); Destroy(screenCapture); }
+            if (mainMenuEntry) MainMenuController.SaveDirectoryOverride = previousSaveDirectory;
         }
     }
 }

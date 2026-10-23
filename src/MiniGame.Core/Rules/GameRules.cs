@@ -71,7 +71,7 @@ namespace MiniGame.Core
         public int DreamSeaThreshold { get; } = 100;
         public int ActivePatientTrustThreshold { get; } = 10;
         public int SelfReviewLineCount { get; } = 16;
-        private const int EndingPolicyVersion = 2;
+        private const int EndingPolicyVersion = 3;
         public IReadOnlyDictionary<string, int> RebellionOptionDeltas { get; }
             = new ReadOnlyDictionary<string, int>(new Dictionary<string, int>(StringComparer.Ordinal));
         private readonly GameRules? _originalRules;

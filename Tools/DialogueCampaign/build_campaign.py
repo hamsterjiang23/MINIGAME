@@ -97,7 +97,8 @@ def escape(text: str) -> str:
     return re.sub(r"([\\#<>\[\]{}])", r"\\\1", text.replace("\r", " ").replace("\n", " "))
 
 
-def build_meeting(patient: Record, rows: list[Row], day: int, mappings: list[Record], adaptations: list[Record]) -> Record:
+def build_meeting(patient: Record, rows: list[Row], day: int, mappings: list[Record], adaptations: list[Record],
+                  campaign_day: int | None = None) -> Record:
     pid = str(patient["id"])
     by_raw = {r["J"]: r for r in rows}
     selected = [r for r in rows if day_of(r["J"]) == day]
@@ -193,7 +194,8 @@ def build_meeting(patient: Record, rows: list[Row], day: int, mappings: list[Rec
         raise ValueError(f"Unreachable nodes: {set(node_map) - visited}")
     yarn: list[str] = []
     for node in actual:
-        yarn.extend(["title: " + str(node["id"]), "kind: " + str(node["kind"]), "round: " + str(node["round"]), "patient: " + pid, "day: " + str(day)])
+        yarn.extend(["title: " + str(node["id"]), "kind: " + str(node["kind"]), "round: " + str(node["round"]),
+                     "patient: " + pid, "day: " + str(day if campaign_day is None else campaign_day)])
         if node.get("portrait"):
             yarn.append("portrait: " + str(node["portrait"]))
         yarn.append("---")
@@ -220,6 +222,7 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
     portraits: list[Record] = []
     excluded: list[Record] = []
     repairs: list[Record] = []
+    schedule: list[Record] = []
     source_directory = source_directory or ROOT / "Art/chat_excel"
     days: list[Record] = [{"day": day, "quota": config["tutorialQuota"] if day == 0 else config["dailyQuota"], "meetings": []} for day in range(3 if smoke else 4)]
     for patient in patients:
@@ -248,15 +251,22 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
                 "cachedRows": cached["对话流程"][1:], "recoveredCells": recovered,
                 "schemaColumns": columns, "activeRows": active}
         books.append(book)
-        for day in days:
-            number = int(str(day["day"]))
-            if (patient["id"] == "tutorial") != (number == 0):
+        for source_day in range(len(days)):
+            if (patient["id"] == "tutorial") != (source_day == 0):
                 continue
-            meeting = (build_updated_meeting(patient, active, number, columns, mappings, adaptations)
-                       if columns else build_meeting(patient, active, number, mappings, adaptations))
-            # Preserve every workbook row in the source audit, including days before arrival.
-            if number >= int(str(patient["firstDay"])):
-                cast(list[Record], day["meetings"]).append(meeting)
+            campaign_day = 0 if patient["id"] == "tutorial" else int(str(patient["firstDay"])) + source_day - 1
+            mapping_start, adaptation_start = len(mappings), len(adaptations)
+            meeting = (build_updated_meeting(patient, active, source_day, columns, mappings, adaptations, campaign_day)
+                       if columns else build_meeting(patient, active, source_day, mappings, adaptations, campaign_day))
+            scheduled = campaign_day < len(days)
+            # The workbook day is the patient's visit day. Keep unused future visits in the audit,
+            # while the playable campaign remains Day0 plus three working days.
+            for item in mappings[mapping_start:] + adaptations[adaptation_start:]:
+                item.update({"sourceDay": source_day, "campaignDay": campaign_day, "scheduled": scheduled})
+            schedule.append({"patientId": patient["id"], "sourceDay": source_day, "campaignDay": campaign_day,
+                             "scheduled": scheduled, "startNode": meeting["startNode"], "endNode": meeting["endNode"]})
+            if scheduled:
+                cast(list[Record], days[campaign_day]["meetings"]).append(meeting)
     variants = json.loads((HERE / "text-variants.json").read_text(encoding="utf-8-sig")) if not smoke else []
     rules = [{"id": p["id"], "name": p["name"], "firstDay": p["firstDay"], "initialTrust": config["initialTrust"],
               "treatmentLimit": 3, "treatmentOutcome": p["treatmentOutcome"], "treatmentDelayDays": p.get("treatmentDelayDays", 0),
@@ -277,6 +287,7 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
             assert any(m["patientId"] == book["patientId"] and m["originalId"] == row[id_column]
                        and m["row"] == int(row["row"]) for m in mappings), row
     audit = {"sourceRowCount": sum(len(cast(list[Row], b["rows"])) for b in books), "books": books, "mappings": mappings, "adaptations": adaptations,
+             "meetingSchedule": schedule,
              "activeSourceRowCount": sum(len(cast(list[Row], b["activeRows"])) for b in books),
              "excludedSourceRowCount": len(excluded), "excludedRows": excluded, "repairs": repairs,
              "repairManifestHash": digest(HERE / "source-repairs.json"),

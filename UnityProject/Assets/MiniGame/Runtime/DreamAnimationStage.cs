@@ -90,8 +90,22 @@ namespace MiniGame.UnityHost
             material.SetFloat("_CleanMode", 1);
             material.SetFloat("_VignetteIntensity", float.IsNaN(settings.VignetteIntensity) || float.IsInfinity(settings.VignetteIntensity)
                 ? 0 : Mathf.Clamp01(settings.VignetteIntensity));
+            var widths = settings.BlackEdgeWidths;
+            var strength = settings.BlackEdgeStrength;
+            for (int side = 0; side < 4; side++)
+            {
+                widths[side] = SafeEdgeValue(widths[side], 0, .35f, .07f);
+                strength[side] = SafeEdgeValue(strength[side], 0, 1, 1);
+            }
+            material.SetVector("_BlackEdgeWidths", widths);
+            material.SetVector("_BlackEdgeStrength", strength);
+            material.SetFloat("_BlackEdgeSoftness", SafeEdgeValue(settings.BlackEdgeSoftness, .001f, .2f, .035f));
+            material.SetFloat("_BlackEdgeIrregularity", SafeEdgeValue(settings.BlackEdgeIrregularity, 0, .1f, .018f));
             RenderCamera();
         }
+
+        private static float SafeEdgeValue(float value, float minimum, float maximum, float fallback)
+            => float.IsNaN(value) || float.IsInfinity(value) ? fallback : Mathf.Clamp(value, minimum, maximum);
 
         private static Texture2D Frame(DreamDaySettings settings, int index)
             => settings.Frames != null && index < settings.Frames.Length && settings.Frames[index] != null ? settings.Frames[index]

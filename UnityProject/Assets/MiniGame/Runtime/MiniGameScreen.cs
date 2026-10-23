@@ -28,6 +28,8 @@ namespace MiniGame.UnityHost
         private bool focusAllowed;
         private float terminalReveal = 1f;
         private TerminalView terminalView;
+        private RawImage menuOpeningLogo;
+        private RectTransform menuLogoProjection;
         private GameObject conversation;
         private GameObject inspection;
         private PauseMenuView pauseMenu;
@@ -101,7 +103,7 @@ namespace MiniGame.UnityHost
         public void SetMainMenuCovered(bool value)
         {
             mainMenuCovered = value;
-            if (Canvas != null) Canvas.enabled = !value;
+            if (Canvas != null) Canvas.enabled = !value && isActiveAndEnabled;
             RefreshPresentationToolVisibility();
             if (!value) pauseClosedFrame = Time.frameCount;
         }
@@ -109,12 +111,60 @@ namespace MiniGame.UnityHost
         internal void RevealForMainMenuTransition()
         {
             // Keep input and the pause overlay covered while exposing the live monitor for the title dissolve.
-            if (mainMenuCovered && Canvas != null) Canvas.enabled = true;
+            if (mainMenuCovered && Canvas != null && isActiveAndEnabled) Canvas.enabled = true;
+        }
+
+        internal void PrewarmTitlePresentation(bool tutorial = false, RuntimeView openingView = null)
+        {
+            EnsureBuilt();
+            if (openingView != null) terminalView.ResetNavigation(openingView);
+            if (tutorial)
+            {
+                var portrait = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog")?.Find("D0_03");
+                if (portrait != null)
+                    foreach (var feed in terminalView.Logical.GetComponentsInChildren<PatientSurveillanceFeed>(true))
+                    {
+                        var hidden = new List<GameObject>();
+                        for (var node = feed.transform; node != null && node != transform; node = node.parent)
+                            if (!node.gameObject.activeSelf) { hidden.Add(node.gameObject); node.gameObject.SetActive(true); }
+                        feed.Show("tutorial", portrait, true);
+                        for (int i = hidden.Count - 1; i >= 0; i--) hidden[i].SetActive(false);
+                    }
+            }
+            UnityEngine.Canvas.ForceUpdateCanvases();
+            terminalView.Display.RenderFrame();
+        }
+
+        internal RectTransform PrepareTitleLogoProjection(bool opening)
+        {
+            EnsureBuilt();
+            if (menuOpeningLogo == null)
+                foreach (var image in terminalView.Logical.GetComponentsInChildren<RawImage>(true))
+                    if (image.name == "Day0SupervisorFeed") { menuOpeningLogo = image; break; }
+            if (menuOpeningLogo == null) return null;
+            if (opening) { menuOpeningLogo.enabled = false; return menuOpeningLogo.rectTransform; }
+            if (menuLogoProjection == null)
+            {
+                var go = new GameObject("Title logo projection", typeof(RectTransform));
+                menuLogoProjection = (RectTransform)go.transform;
+                menuLogoProjection.SetParent(menuOpeningLogo.transform.parent, false);
+                menuLogoProjection.anchorMin = menuLogoProjection.anchorMax = menuLogoProjection.pivot = Vector2.one * .5f;
+                menuLogoProjection.anchoredPosition = Vector2.zero;
+                var texture = Resources.Load<Texture2D>("MiniGame/NormLogo");
+                float width = 464 * .82f;
+                menuLogoProjection.sizeDelta = new Vector2(width, width * texture.height / texture.width);
+            }
+            return menuLogoProjection;
+        }
+
+        internal void FinishTitleLogoProjection()
+        {
+            if (menuOpeningLogo != null) menuOpeningLogo.enabled = true;
         }
 
         public void BindAudio(MiniGameAudioDirector value) => Audio = value;
         public void BindSelfMonitor(Texture texture) { EnsureBuilt(); terminalView.SetSelfMonitor(texture); }
-        public void BindLighting(GameRuntime game, RoomLightingController lighting)
+        public void BindLighting(GameRuntime game, RoomLightingController lighting, Action<string> preparationMarker = null)
         {
             EnsureBuilt();
             if (LightingTuning == null)
@@ -123,7 +173,8 @@ namespace MiniGame.UnityHost
                 LightingTuning.Initialize(canvasRoot, font);
                 LightingTuning.VisibilityChanged += RefreshPresentationToolVisibility;
             }
-            LightingTuning.Bind(game, lighting, SignalTuning);
+            preparationMarker?.Invoke("install.lighting_panel_initialize");
+            LightingTuning.Bind(game, lighting, SignalTuning, preparationMarker);
         }
         private void RefreshPresentationToolVisibility()
         {

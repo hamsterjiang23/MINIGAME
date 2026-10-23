@@ -21,7 +21,7 @@ namespace MiniGame.UnityHost.Tests
             try
             {
                 var settings = new DreamDaySettings { Day = 2, Frames = frames, Duration = 5,
-                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0 };
+                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0, BlackEdgeStrength = Vector4.zero };
                 using (var stage = new DreamAnimationStage(Width, Height))
                 {
                     for (int index = 0; index < frames.Length; index++)
@@ -64,7 +64,7 @@ namespace MiniGame.UnityHost.Tests
             {
                 var expected = source.GetPixels32();
                 var settings = new DreamDaySettings { Frames = new[] { source, next }, Duration = 5,
-                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0 };
+                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0, BlackEdgeStrength = Vector4.zero };
                 using (var stage = new DreamAnimationStage(Width, Height))
                 {
                     for (int day = 1; day <= 3; day++)
@@ -93,7 +93,7 @@ namespace MiniGame.UnityHost.Tests
             try
             {
                 var settings = new DreamDaySettings { Day = 3, Frames = new[] { source }, Duration = 5,
-                    MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = .12f };
+                    MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = .12f, BlackEdgeStrength = Vector4.zero };
                 using (var stage = new DreamAnimationStage(Width, Height))
                 {
                     stage.Render(settings, 0);
@@ -126,7 +126,7 @@ namespace MiniGame.UnityHost.Tests
             try
             {
                 var settings = new DreamDaySettings { Day = 3, Artwork = source, Duration = 5,
-                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0 };
+                    CrossfadeSeconds = 2, MotionIntensity = 2, PostIntensity = 2, VignetteIntensity = 0, BlackEdgeStrength = Vector4.zero };
                 using (var stage = new DreamAnimationStage(Width, Height))
                 {
                     foreach (var frames in new[] { null, System.Array.Empty<Texture2D>(), new Texture2D[] { null } })
@@ -146,7 +146,39 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator AllThreeProductionDreamsUseTenOrderedFramesOverFiveSeconds()
+        public IEnumerator StaticBlackEdgesHaveDifferentSidesAndAnUnchangedCenterWithoutFlicker()
+        {
+            var original = new Color32(200, 120, 60, 255);
+            var source = Solid(original);
+            try
+            {
+                var settings = new DreamDaySettings { Frames = new[] { source }, Duration = 15, VignetteIntensity = 0,
+                    BlackEdgeWidths = new Vector4(.05f, .18f, .12f, .08f),
+                    BlackEdgeStrength = new Vector4(.6f, .95f, 1, .8f),
+                    BlackEdgeSoftness = .025f, BlackEdgeIrregularity = .02f };
+                using (var stage = new DreamAnimationStage(Width, Height))
+                {
+                    stage.Render(settings, 0);
+                    var pixels = Read(stage.Texture);
+                    Assert.That(pixels[Height / 2 * Width + Width / 2], Is.EqualTo(original));
+                    var sides = new[] { pixels[Height / 2 * Width + 1], pixels[Height / 2 * Width + Width - 2],
+                        pixels[Width / 2], pixels[(Height - 1) * Width + Width / 2] };
+                    Assert.That(sides.Select(pixel => pixel.r).Distinct().Count(), Is.EqualTo(4), "Each side has its own darkening strength.");
+                    Assert.That(sides.All(pixel => pixel.r < original.r / 2), Is.True);
+                    Assert.That(pixels[Height / 2 * Width + (int)(Width * .9f)].r,
+                        Is.LessThan(pixels[Height / 2 * Width + (int)(Width * .1f)].r), "The right border must be wider than the left.");
+                    var contour = Enumerable.Range(Height / 4, Height / 2).Select(y => pixels[y * Width + (int)(Width * .82f)].r);
+                    Assert.That(contour.Distinct().Count(), Is.GreaterThan(2), "The soft border must have a non-straight contour.");
+                    stage.Render(settings, 7.3f);
+                    Assert.That(Read(stage.Texture), Is.EqualTo(pixels), "Neither the border nor its irregular contour may flicker.");
+                }
+            }
+            finally { Object.Destroy(source); }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator AllThreeProductionDreamsUseTenOrderedFramesOverFifteenSeconds()
         {
             var profile = Resources.Load<DreamSequenceProfile>("MiniGame/DreamSequenceDefault");
             Assert.That(profile, Is.Not.Null);
@@ -154,11 +186,14 @@ namespace MiniGame.UnityHost.Tests
             {
                 var settings = profile.GetDay(day);
                 Assert.That(settings.Frames.Length, Is.EqualTo(10));
-                Assert.That(settings.Duration, Is.EqualTo(5));
+                Assert.That(settings.Duration, Is.EqualTo(15));
                 Assert.That(settings.CrossfadeSeconds, Is.Zero);
                 Assert.That(settings.MotionIntensity, Is.Zero);
                 Assert.That(settings.PostIntensity, Is.Zero);
                 Assert.That(settings.VignetteIntensity, Is.InRange(0f, .2f));
+                Assert.That(settings.BlackEdgeWidths.x, Is.Not.EqualTo(settings.BlackEdgeWidths.y));
+                Assert.That(settings.BlackEdgeWidths.z, Is.Not.EqualTo(settings.BlackEdgeWidths.w));
+                Assert.That(settings.BlackEdgeStrength.x, Is.GreaterThan(.8f));
                 Assert.That(settings.Frames.Select(frame => frame.name),
                     Is.EqualTo(Enumerable.Range(1, 10).Select(index => "Frame" + index.ToString("00"))));
                 Assert.That(settings.Frames.All(frame => frame.width >= 1600 && frame.height >= 900), Is.True);
@@ -166,13 +201,13 @@ namespace MiniGame.UnityHost.Tests
                 {
                     for (int index = 0; index < 10; index++)
                     {
-                        stage.Render(settings, index * .5f);
+                        stage.Render(settings, index * 1.5f);
                         Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index));
                         var pixels = Read(stage.Texture);
-                        stage.Render(settings, index * .5f + .499f);
+                        stage.Render(settings, index * 1.5f + 1.499f);
                         Assert.That(stage.CurrentFrameIndex, Is.EqualTo(index));
                         Assert.That(stage.FrameBlend, Is.Zero);
-                        Assert.That(Read(stage.Texture), Is.EqualTo(pixels), "Production frames must remain unchanged until the next half-second boundary.");
+                        Assert.That(Read(stage.Texture), Is.EqualTo(pixels), "Production frames and their border must remain unchanged until the next 1.5-second boundary.");
                     }
                 }
                 yield return null;

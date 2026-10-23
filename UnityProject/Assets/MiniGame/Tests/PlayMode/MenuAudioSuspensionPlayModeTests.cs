@@ -165,6 +165,31 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
+        public IEnumerator MusicCrossfadePlaysOnlyItsSelectedChannelAndRestoresLogicalPause()
+        {
+            service.SetLoop(MiniGameAudioChannel.GameplayMusic, MiniGameSound.Gameplay, 0);
+            service.SetLoop(MiniGameAudioChannel.DreamMusic, MiniGameSound.Dream0, 0);
+            yield return new WaitForSecondsRealtime(.1f);
+            service.Pause(MiniGameAudioChannel.DreamMusic);
+            service.SetMenuSuspended(true);
+            var dream = service.GetSource(MiniGameAudioChannel.DreamMusic);
+            int sample = dream.timeSamples;
+            service.BeginMenuMusicTransition(MiniGameAudioChannel.DreamMusic);
+            service.SetMenuMusicTransitionGain(MiniGameAudioChannel.DreamMusic, .5f);
+            yield return new WaitForSecondsRealtime(.1f);
+            Assert.That(dream.isPlaying, Is.True);
+            Assert.That(dream.timeSamples, Is.GreaterThan(sample));
+            Assert.That(dream.volume, Is.EqualTo(.35f).Within(.01f));
+            Assert.That(service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.False);
+            service.EndMenuMusicTransition(MiniGameAudioChannel.DreamMusic);
+            Assert.That(dream.isPlaying, Is.False);
+            service.SetMenuSuspended(false);
+            yield return null;
+            Assert.That(dream.isPlaying, Is.False, "Crossfade must preserve the retained dream's logical pause.");
+            Assert.That(service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.True);
+        }
+
+        [UnityTest]
         public IEnumerator DirectorMenuHelperPreservesWorldAudioAcrossRuntimeNotifications()
         {
             var director = root.AddComponent<MiniGameAudioDirector>();

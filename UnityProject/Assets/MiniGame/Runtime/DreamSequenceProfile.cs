@@ -15,6 +15,10 @@ namespace MiniGame.UnityHost
         [HideInInspector] public float MotionIntensity;
         [HideInInspector] public float PostIntensity;
         [Range(0, 1), InspectorName("边角压暗强度")] public float VignetteIntensity = .12f;
+        [InspectorName("黑边宽度（左、右、下、上）")] public Vector4 BlackEdgeWidths = new Vector4(.07f, .12f, .10f, .05f);
+        [InspectorName("黑边强度（左、右、下、上）")] public Vector4 BlackEdgeStrength = new Vector4(.99f, .94f, 1, .97f);
+        [Range(.001f, .2f), InspectorName("黑边柔和范围")] public float BlackEdgeSoftness = .035f;
+        [Range(0, .1f), InspectorName("黑边轮廓不规则程度")] public float BlackEdgeIrregularity = .018f;
     }
 
     [Serializable]
@@ -118,6 +122,13 @@ namespace MiniGame.UnityHost
             {
                 day.Duration = Valid(day.Duration, 5, 180, 15);
                 day.VignetteIntensity = Valid(day.VignetteIntensity, 0, 1, .12f);
+                for (int side = 0; side < 4; side++)
+                {
+                    day.BlackEdgeWidths[side] = Valid(day.BlackEdgeWidths[side], 0, .35f, .07f);
+                    day.BlackEdgeStrength[side] = Valid(day.BlackEdgeStrength[side], 0, 1, 1);
+                }
+                day.BlackEdgeSoftness = Valid(day.BlackEdgeSoftness, .001f, .2f, .035f);
+                day.BlackEdgeIrregularity = Valid(day.BlackEdgeIrregularity, 0, .1f, .018f);
                 day.MotionIntensity = Valid(day.MotionIntensity, 0, 2, 1);
                 day.CrossfadeSeconds = Valid(day.CrossfadeSeconds, 0, 2, .6f);
                 day.PostIntensity = Valid(day.PostIntensity, 0, 2, 1);

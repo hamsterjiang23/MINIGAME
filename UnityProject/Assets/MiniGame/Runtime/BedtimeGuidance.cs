@@ -84,10 +84,9 @@ namespace MiniGame.UnityHost
             bedSurfaceCenter = surfaceCenter; beamRadius = radius;
         }
 
-        public void Bind(GameRuntime game)
+        public void PrewarmPresentation()
         {
-            if (runtime != null) runtime.Changed -= SetTargets;
-            lightingController?.SetPreviewMode(RoomLightingPreviewMode.Automatic);
+            // Cache the authored room and create disabled visual resources without starting a session.
             CaptureRoom();
             EnsureSelfReviewGlow();
             if (atmosphere == null)
@@ -95,6 +94,13 @@ namespace MiniGame.UnityHost
                 atmosphere = gameObject.AddComponent<BedtimeAtmosphere>();
                 atmosphere.Initialize(spotlight.transform, bedSurfaceCenter, beamRadius);
             }
+        }
+
+        public void Bind(GameRuntime game)
+        {
+            if (runtime != null) runtime.Changed -= SetTargets;
+            lightingController?.SetPreviewMode(RoomLightingPreviewMode.Automatic);
+            PrewarmPresentation();
             runtime = game;
             awaitingDayZeroWake = false;
             dreamBedReveal = false;

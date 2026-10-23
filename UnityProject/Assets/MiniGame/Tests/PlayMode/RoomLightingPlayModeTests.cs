@@ -17,12 +17,15 @@ namespace MiniGame.UnityHost.Tests
     {
         private MiniGameBootstrap host;
         private RoomLightingController controller;
-        private RoomLightingProfile original, settings;
-        private string originalJson;
+        private RoomLightingProfile original, originalNight, settings, nightSettings;
+        private string originalJson, originalNightJson;
+        private bool previousSkipStartup;
 
         [UnitySetUp]
         public IEnumerator LoadRoom()
         {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
             MiniGameSessionHost.Release();
             yield return null;
             yield return SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene, LoadSceneMode.Single);
@@ -32,17 +35,22 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host, Is.Not.Null);
             Assert.That(controller, Is.Not.Null, "Combined must have the installed room lighting controller.");
             Assert.That(controller.Profile, Is.Not.Null);
+            Assert.That(host.Runtime, Is.Not.Null, "Lighting integration tests start the real gameplay adapters.");
             host.Player.enabled = false;
             original = controller.Profile;
+            originalNight = controller.GetProfile(RoomLightingPeriod.Night);
+            Assert.That(originalNight, Is.Not.Null);
             originalJson = JsonUtility.ToJson(original);
+            originalNightJson = JsonUtility.ToJson(originalNight);
         }
 
         [UnityTearDown]
         public IEnumerator ReleaseRoom()
         {
+            MainMenuController.SkipStartup = previousSkipStartup;
             if (controller != null && original != null)
             {
-                SetProfile(original);
+                controller.ConfigureProfiles(original, originalNight);
                 controller.PreviewUnbanded = false;
                 controller.ApplyNow();
             }
@@ -61,14 +69,17 @@ namespace MiniGame.UnityHost.Tests
             if (room.IsValid() && room.isLoaded && room.name == MiniGameSessionHost.CombinedScene)
                 yield return SceneManager.UnloadSceneAsync(room);
             if (settings != null) Object.Destroy(settings);
+            if (nightSettings != null) Object.Destroy(nightSettings);
             if (original != null && originalJson != null)
                 Assert.That(JsonUtility.ToJson(original), Is.EqualTo(originalJson), "Tests must not edit the shared designer asset.");
+            if (originalNight != null && originalNightJson != null)
+                Assert.That(JsonUtility.ToJson(originalNight), Is.EqualTo(originalNightJson), "Tests must not edit the shared night asset.");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
 
         [UnityTest]
-        public IEnumerator CombinedUsesADownwardLampOutsideTheShadeAndAShadowReceivingFloorRug()
+        public IEnumerator CombinedUsesADownwardLampAndShadowReceivingFloorWithoutAnOptionalRugBinding()
         {
             var lamp = Field<Renderer>("lamp");
             var floor = Field<Renderer>("floor");
@@ -94,13 +105,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(furniture, Is.Not.Empty, "Verify actual furniture, not only the light component.");
             foreach (var item in furniture)
                 Assert.That(item.shadowCastingMode, Is.EqualTo(ShadowCastingMode.On), item.name + " must retain real furniture occlusion.");
-            Assert.That(controller.Rug, Is.Not.Null);
-            Assert.That(controller.Rug.receiveShadows, Is.True);
-            Assert.That(controller.Rug.GetComponentsInChildren<Collider>(true), Is.Empty);
-            Assert.That(RugSize().x, Is.EqualTo(original.rugSize.x).Within(.025f));
-            Assert.That(RugSize().z, Is.EqualTo(original.rugSize.y).Within(.025f));
-            Assert.That(controller.Rug.bounds.min.y, Is.GreaterThan(floor.bounds.max.y), "The rug must not z-fight the floor.");
-            Assert.That(controller.Rug.sharedMaterial.mainTexture, Is.Not.Null);
+            Assert.That(floor.receiveShadows, Is.True);
+            Assert.That(controller.Rug, Is.Null, "The authored Combined scene does not bind an optional rug.");
             yield return null;
         }
 
@@ -108,17 +114,17 @@ namespace MiniGame.UnityHost.Tests
         public IEnumerator LiveProfileChangesAndUnbandedPreviewDoNotMutateTheSharedAsset()
         {
             CloneSettings();
-            settings.lampIntensity = 2.35f;
-            settings.innerAngle = 45;
-            settings.outerAngle = 105;
-            settings.rugSize = new Vector2(3.1f, 1.8f);
+            settings.lightMultiplier = 1;
+            var lampSettings = RegisteredLampSettings();
+            lampSettings.intensity = 2.35f;
+            lampSettings.innerSpotAngle = 45;
+            lampSettings.spotAngle = 105;
             settings.lightingBandsEnabled = true;
             settings.lightingBands = 6;
             settings.NotifyChanged();
             yield return null;
             Assert.That(controller.MainLight.intensity, Is.EqualTo(2.35f).Within(.001f));
             Assert.That(controller.MainLight.spotAngle, Is.EqualTo(105).Within(.001f));
-            Assert.That(RugSize().x, Is.EqualTo(3.1f).Within(.025f));
             var floor = Field<Renderer>("floor");
             var block = new MaterialPropertyBlock();
             floor.GetPropertyBlock(block, 0);
@@ -144,13 +150,16 @@ namespace MiniGame.UnityHost.Tests
             var session = MiniGameSessionHost.Current;
             Assert.That(session, Is.Not.Null);
             var fixture = new GameRuntime(session.Rules, session.Content, true);
+            if (fixture.UsesEndingFlow) fixture.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
             DriveToAfterDream(fixture);
             host.RestoreCheckpoint(fixture.Save());
             var guidance = Object.FindObjectOfType<BedtimeGuidance>();
             Assert.That(guidance.Isolation, Is.EqualTo(1).Within(.0001f));
             Assert.That(guidance.OwnsLighting, Is.True);
             Assert.That(controller.MainLight.enabled, Is.False);
-            settings.lampIntensity = 2.4f;
+            settings.lightMultiplier = 1;
+            RegisteredLampSettings().intensity = 2.4f;
+            settings.ambientIntensity = 1;
             settings.ambientColor = new Color(.04f, .035f, .025f);
             settings.lightingBandsEnabled = true;
             settings.lightingBands = 5;
@@ -176,7 +185,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(RenderSettings.ambientLight.g, Is.EqualTo(settings.ambientColor.g).Within(.001f));
             Assert.That(RenderSettings.ambientLight.b, Is.EqualTo(settings.ambientColor.b).Within(.001f));
             AssertBands(Field<Renderer>("lamp"), 5, false);
-            AssertBands(TerminalSurface(), 5, false);
+            AssertBands(Field<Renderer>("floor"), 5, false);
         }
 
         [UnityTest]
@@ -188,6 +197,17 @@ namespace MiniGame.UnityHost.Tests
             settings.NotifyChanged();
             yield return null;
             var terminal = TerminalSurface();
+            // The authored CRT is not a roomSurfaces entry. Seed its per-slot properties to
+            // exercise the glow writer's preservation contract independently of that wiring.
+            var initial = new MaterialPropertyBlock();
+            for (int slot = 0; slot < terminal.sharedMaterials.Length; slot++)
+            {
+                terminal.GetPropertyBlock(initial, slot);
+                initial.SetFloat("_LightingBands", 7);
+                initial.SetFloat("_LightingBandsEnabled", 1);
+                terminal.SetPropertyBlock(initial, slot);
+            }
+            AssertBands(terminal, 7, true);
             var daylight = terminal.sharedMaterial.GetColor("_EmissionColor");
             Assert.That(daylight.maxColorComponent, Is.GreaterThan(.01f), "The CRT must have a nonzero daylight emission to exercise dimming.");
             var setGlow = typeof(PresentationEffects).GetMethod("SetSurfaceGlow", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -212,18 +232,15 @@ namespace MiniGame.UnityHost.Tests
         private void CloneSettings()
         {
             settings = Object.Instantiate(original);
-            SetProfile(settings);
-            controller.ApplyNow();
+            nightSettings = Object.Instantiate(originalNight);
+            controller.ConfigureProfiles(settings, nightSettings);
         }
 
-        private void SetProfile(RoomLightingProfile profile) => typeof(RoomLightingController)
-            .GetField("profile", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(controller, profile);
+        private SceneLightSettings RegisteredLampSettings() => settings.SceneLights.Single(item =>
+            item != null && item.HierarchyPath == controller.GetHierarchyPath(controller.MainLight));
 
         private T Field<T>(string name) where T : Object => (T)typeof(RoomLightingController)
             .GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).GetValue(controller);
-
-        private Vector3 RugSize() => Vector3.Scale(controller.Rug.GetComponent<MeshFilter>().sharedMesh.bounds.size,
-            controller.Rug.transform.lossyScale);
 
         private Renderer TerminalSurface() => (Renderer)typeof(PresentationEffects)
             .GetField("terminalSurface", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(host.Effects);

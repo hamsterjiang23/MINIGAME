@@ -14,10 +14,22 @@ namespace MiniGame.UnityHost
         private RectTransform root, logoArea, firstStart, menu, confirmation;
         private Text statusText, continueLabel;
         private CanvasGroup releaseGroup, startGroup, menuGroup, confirmationGroup;
+        private CanvasGroup logoGroup;
+        private RawImage logoImage;
+        private Image backdrop;
         private bool releaseStarted;
-        private float controlsElapsed;
         public float ControlsAlpha => menuGroup != null ? menuGroup.alpha : 1;
-        public float ReleaseAlpha => releaseGroup != null ? releaseGroup.alpha : 1;
+        public float ReleaseAlpha => backdrop != null ? backdrop.color.a : 1;
+        public Rect LogoScreenRect
+        {
+            get
+            {
+                var corners = new Vector3[4]; logoImage.rectTransform.GetWorldCorners(corners);
+                var bottomLeft = RectTransformUtility.WorldToScreenPoint(null, corners[0]);
+                var topRight = RectTransformUtility.WorldToScreenPoint(null, corners[2]);
+                return new Rect(bottomLeft, topRight - bottomLeft);
+            }
+        }
         public MainMenuPage Page { get; private set; }
         public Canvas Canvas { get; private set; }
         public Button StartButton { get; private set; }
@@ -58,13 +70,15 @@ namespace MiniGame.UnityHost
             font = GameUiTypography.CreateFont();
             SignalTuning = gameObject.AddComponent<TerminalSignalController>();
             SignalTuning.Initialize(root, font, () => false, false);
-            var backdrop = gameObject.AddComponent<Image>();
+            backdrop = gameObject.AddComponent<Image>();
             backdrop.color = TerminalView.Desk;
             backdrop.raycastTarget = true;
 
             logoArea = CenterRect(root, "NormLogoArea", new Vector2(.5f, .65f), 1344, 448);
+            logoGroup = logoArea.gameObject.AddComponent<CanvasGroup>();
             var logoRect = CenterRect(logoArea, "NormLogo", Vector2.one * .5f, 1344, 448);
             var logo = logoRect.gameObject.AddComponent<RawImage>();
+            logoImage = logo;
             logo.texture = Resources.Load<Texture2D>("MiniGame/NormLogo");
             logo.raycastTarget = false;
             SignalTuning.Attach(logo, true);
@@ -115,10 +129,12 @@ namespace MiniGame.UnityHost
 
         public void Show(MainMenuPage page, bool canContinue, string status = "")
         {
-            releaseStarted = false; controlsElapsed = 0;
+            releaseStarted = false;
             releaseGroup.alpha = 1; releaseGroup.interactable = true;
+            logoGroup.alpha = 1; backdrop.color = TerminalView.Desk;
             startGroup.alpha = menuGroup.alpha = confirmationGroup.alpha = 1;
             logoArea.anchorMin = logoArea.anchorMax = new Vector2(.5f, .65f);
+            logoArea.anchoredPosition = Vector2.zero;
             logoArea.sizeDelta = new Vector2(1344, 448);
             Page = page;
             gameObject.SetActive(page != MainMenuPage.Hidden);
@@ -161,32 +177,28 @@ namespace MiniGame.UnityHost
         public void BeginRelease()
         {
             if (releaseStarted) return;
-            releaseStarted = true; controlsElapsed = 0;
+            releaseStarted = true;
             releaseGroup.interactable = false;
             EventSystem.current?.SetSelectedGameObject(null);
         }
 
-        public void SetReleaseProgress(float seconds, bool alignToMonitor)
+        public void SetReleaseProgress(float elapsed, bool monitorPullback)
         {
-            if (alignToMonitor)
-            {
-                float position = Mathf.SmoothStep(0, 1, seconds / .65f);
-                logoArea.anchorMin = logoArea.anchorMax = Vector2.Lerp(new Vector2(.5f, .65f), Vector2.one * .5f, position);
-                var logo = logoArea.GetComponentInChildren<RawImage>();
-                float aspect = logo.texture != null ? (float)logo.texture.width / logo.texture.height : 3;
-                float width = .82f * Mathf.Min(root.rect.width, root.rect.height * aspect);
-                logoArea.sizeDelta = Vector2.Lerp(new Vector2(1344, 448), new Vector2(width, width / aspect), position);
-            }
-            // Align the same logo before revealing the live monitor underneath it.
-            releaseGroup.alpha = 1 - Mathf.SmoothStep(0, 1, (seconds - .65f) / .4f);
+            startGroup.alpha = menuGroup.alpha = confirmationGroup.alpha = 1 - Mathf.SmoothStep(0, 1, elapsed / .45f);
+            float reveal = Mathf.SmoothStep(0, 1, (elapsed - .45f) / .2f);
+            var color = TerminalView.Desk; color.a = 1 - reveal; backdrop.color = color;
+            if (!monitorPullback) logoGroup.alpha = 1 - reveal;
         }
 
-        private void Update()
+        public void SetProjectedLogoRect(Rect screenRect)
         {
-            if (!releaseStarted) return;
-            controlsElapsed += Time.unscaledDeltaTime;
-            startGroup.alpha = menuGroup.alpha = confirmationGroup.alpha = 1 - Mathf.SmoothStep(0, 1, controlsElapsed / .45f);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(root, screenRect.center, null, out var local);
+            logoArea.anchorMin = logoArea.anchorMax = Vector2.one * .5f;
+            logoArea.anchoredPosition = local;
+            logoArea.sizeDelta = screenRect.size / Mathf.Max(.01f, Canvas.scaleFactor);
         }
+
+        public void SetLogoAlpha(float value) => logoGroup.alpha = Mathf.Clamp01(value);
 
         public void SetStatus(string text, bool error = false)
         {

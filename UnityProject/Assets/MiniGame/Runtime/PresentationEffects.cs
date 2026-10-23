@@ -24,6 +24,8 @@ namespace MiniGame.UnityHost
         public Quaternion ActorRotation = Quaternion.identity;
         public bool HasPositionPose;
         public Vector3 StandingPosition, StandingLocalPosition, BedPosition;
+        public bool HasBedRotation;
+        public Quaternion BedRotation = Quaternion.identity;
 
         public bool Matches(RuntimeView view) => Version == 1 && view?.Cue?.Kind == PresentationKind.Sleep
             && Day == view.Game.Day && GamePhase == view.Game.Phase
@@ -33,7 +35,8 @@ namespace MiniGame.UnityHost
             && BlackHoldRemaining >= 0 && BlackHoldRemaining <= 180
             && (Phase != SleepTransitionPhase.BlackHold || FadeElapsed == .8f)
             && (!HasCameraPose || ValidRotation(StandingRotation) && ValidRotation(ActorRotation))
-            && (!HasPositionPose || HasCameraPose && ValidPosition(StandingPosition) && ValidPosition(StandingLocalPosition) && ValidPosition(BedPosition));
+            && (!HasPositionPose || HasCameraPose && ValidPosition(StandingPosition) && ValidPosition(StandingLocalPosition) && ValidPosition(BedPosition))
+            && (!HasBedRotation || HasCameraPose && ValidRotation(BedRotation));
 
         private static bool ValidPosition(Vector3 value) => !float.IsNaN(value.sqrMagnitude) && !float.IsInfinity(value.sqrMagnitude);
 
@@ -78,6 +81,7 @@ namespace MiniGame.UnityHost
         [SerializeField, Min(.01f)] private float bedFadeSeconds = .4f;
         [SerializeField, Min(0)] private float sleepBlackSeconds = 1.5f;
         private Quaternion sleepStandingRotation, sleepActorRotation;
+        private Quaternion sleepBedRotation;
         private Vector3 sleepStandingPosition, sleepStandingLocalPosition, sleepBedPosition;
         private bool hasSleepView, completingSleep, waking;
         private int lastPresentedDay = -1;
@@ -96,6 +100,7 @@ namespace MiniGame.UnityHost
         }
         public void ConfigureTerminalSurface(Renderer surface) { terminalSurface = surface; surfaceReady = false; }
         public void ConfigureBedtime(BedtimeGuidance guidance) => bedtimeGuidance = guidance;
+        public void PrewarmPresentation() => bedtimeGuidance?.PrewarmPresentation();
         public void PrepareForRuntimeChange()
         {
             if (runtime != null) runtime.Changed -= Present;
@@ -138,7 +143,7 @@ namespace MiniGame.UnityHost
             ConfigureTerminalSurface(surface);
         }
 
-        public void Bind(GameRuntime game, MiniGameScreen ui)
+        public void Bind(GameRuntime game, MiniGameScreen ui, Action<string> preparationMarker = null)
         {
             if (runtime != null) runtime.Changed -= Present;
             if (playing != null) StopCoroutine(playing);
@@ -152,6 +157,7 @@ namespace MiniGame.UnityHost
             screen.SetTerminalPowerFrame(new TerminalPowerFrame(TerminalPowerPhase.Running));
             screen.SetTerminalHandoff(0, false, false);
             var view = game.GetView();
+            preparationMarker?.Invoke("install.effects_reset");
             if (HasSeatedEntry && seating == null) seating = new TerminalSeating(seatedPlayer, viewCamera);
             EntryPhase = TerminalEntryPhase.None;
             if (hasRoomPose && !view.TerminalOpen)
@@ -183,11 +189,15 @@ namespace MiniGame.UnityHost
                     viewCamera.fieldOfView = 48;
                 }
             }
+            preparationMarker?.Invoke("install.effects_terminal_pose");
             screen.SetTerminalReveal(view.TerminalOpen && view.Cue?.Kind != PresentationKind.EnterTerminal ? 1 : 0);
             SetSurfaceGlow(view.TerminalPowered ? 1 : 0);
+            preparationMarker?.Invoke("install.effects_terminal_glow");
             if (bedtimeGuidance != null) bedtimeGuidance.Bind(game);
+            preparationMarker?.Invoke("install.effects_bedtime");
             runtime.Changed += Present;
             Present(view);
+            preparationMarker?.Invoke("install.effects_present");
         }
 
         private void RememberRoomPose()
@@ -333,6 +343,33 @@ namespace MiniGame.UnityHost
             if (activeToken != token) yield break;
             screen.EndDayZeroOpening(); EntryPhase = TerminalEntryPhase.Active;
             screen.SetTransitionLocked(false); playing = null;
+            runtime.CompleteCue(token);
+        }
+
+        public bool BeginMenuOpeningPullback()
+        {
+            if (screen == null || !screen.DayZeroOpeningWaiting || runtime?.GetView().Cue?.Kind != PresentationKind.EnterTerminal)
+                return false;
+            if (playing != null) StopCoroutine(playing);
+            playing = null;
+            EntryPhase = TerminalEntryPhase.OpeningPullback;
+            TerminalTransitionProgress = 0;
+            return true;
+        }
+
+        public void ApplyMenuOpeningPullback(float progress)
+        {
+            if (EntryPhase != TerminalEntryPhase.OpeningPullback) return;
+            TerminalTransitionProgress = Mathf.Clamp01(progress);
+            screen.TerminalDisplay.SetOpeningProgress(Ease(TerminalTransitionProgress));
+        }
+
+        public void CompleteMenuOpeningPullback()
+        {
+            if (EntryPhase != TerminalEntryPhase.OpeningPullback || activeToken == null) return;
+            string token = activeToken;
+            screen.EndDayZeroOpening(); EntryPhase = TerminalEntryPhase.Active;
+            screen.SetTransitionLocked(false);
             runtime.CompleteCue(token);
         }
 
@@ -594,6 +631,8 @@ namespace MiniGame.UnityHost
                 sleepStandingLocalPosition = checkpoint.StandingLocalPosition;
                 sleepBedPosition = checkpoint.BedPosition;
             }
+            sleepBedRotation = checkpoint.HasBedRotation ? Quaternion.Normalize(checkpoint.BedRotation)
+                : Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0);
             activeToken = runtime.GetView().Cue.Token;
             playing = StartCoroutine(SleepTransition(activeToken));
             return true;
@@ -614,12 +653,13 @@ namespace MiniGame.UnityHost
                     BlackHoldRemaining = Mathf.Clamp(hold, 0, 180),
                     HasCameraPose = true, StandingRotation = sleepStandingRotation, ActorRotation = sleepActorRotation,
                     HasPositionPose = true, StandingPosition = sleepStandingPosition,
-                    StandingLocalPosition = sleepStandingLocalPosition, BedPosition = sleepBedPosition
+                    StandingLocalPosition = sleepStandingLocalPosition, BedPosition = sleepBedPosition,
+                    HasBedRotation = true, BedRotation = sleepBedRotation
                 };
             }
             var checkpoint = sleepCheckpoint;
             float duration = Mathf.Max(.01f, bedMoveSeconds) + Mathf.Max(.01f, bedLookSeconds) + Mathf.Max(.01f, bedFadeSeconds);
-            var ceilingRotation = Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0);
+            var ceilingRotation = sleepBedRotation;
             ApplySleepFrame(checkpoint.FadeElapsed, duration, ceilingRotation);
             while (checkpoint.FadeElapsed < .8f && activeToken == token)
             {
@@ -669,11 +709,31 @@ namespace MiniGame.UnityHost
             sleepActorRotation = seatedPlayer != null ? seatedPlayer.transform.rotation : Quaternion.identity;
             sleepStandingPosition = viewCamera.transform.position;
             sleepStandingLocalPosition = viewCamera.transform.localPosition;
-            sleepBedPosition = SleepBedPosition();
+            CaptureSleepBedPose();
             hasSleepView = true;
         }
 
-        private Vector3 SleepBedPosition() => bedtimeGuidance != null ? bedtimeGuidance.SleepFocusPoint : viewCamera.transform.position;
+        private void CaptureSleepBedPose()
+        {
+            sleepBedPosition = bedtimeGuidance != null ? bedtimeGuidance.SleepFocusPoint : viewCamera.transform.position;
+            // With no authored bed, rotate the previous ceiling framing clockwise by a quarter turn.
+            sleepBedRotation = Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0)
+                * Quaternion.AngleAxis(90, Vector3.forward);
+            if (bedtimeGuidance == null || bedtimeGuidance.BedRenderers == null) return;
+            Renderer pillow = null, mattress = null;
+            foreach (var part in bedtimeGuidance.BedRenderers)
+            {
+                if (part == null) continue;
+                if (part.name.IndexOf("pillow", StringComparison.OrdinalIgnoreCase) >= 0) pillow = part;
+                else if (part.name.IndexOf("mattress", StringComparison.OrdinalIgnoreCase) >= 0) mattress = part;
+            }
+            if (pillow == null) return;
+            sleepBedPosition = new Vector3(pillow.bounds.center.x, pillow.bounds.max.y + .12f, pillow.bounds.center.z);
+            if (mattress == null) return;
+            var headDirection = Vector3.ProjectOnPlane(pillow.bounds.center - mattress.bounds.center, Vector3.up);
+            if (headDirection.sqrMagnitude > .0001f)
+                sleepBedRotation = Quaternion.LookRotation(Vector3.up, headDirection.normalized);
+        }
         private Vector3 StandingPositionForCurrentActor() => viewCamera.transform.parent != null
             ? viewCamera.transform.parent.TransformPoint(sleepStandingLocalPosition) : sleepStandingLocalPosition;
 
@@ -692,7 +752,7 @@ namespace MiniGame.UnityHost
         {
             waking = true;
             screen.SetTransitionLocked(true);
-            var ceilingRotation = Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0);
+            var ceilingRotation = sleepBedRotation;
             viewCamera.transform.position = sleepBedPosition;
             viewCamera.transform.rotation = ceilingRotation;
             screen.SetFade(1);

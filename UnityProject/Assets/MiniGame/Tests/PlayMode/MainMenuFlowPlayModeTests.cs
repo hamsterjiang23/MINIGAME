@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MiniGame.Core;
@@ -21,6 +22,9 @@ namespace MiniGame.UnityHost.Tests
         private bool previousSkipStartup, hadBrightness, hadVolume, hadDetail;
         private float previousBrightness, previousVolume;
         private int previousDetail;
+        private TransitionTrace transitionTrace;
+        private bool observeTransition;
+        private static int captureRequestedFrame = -1;
         private MainMenuController Menu => MainMenuController.Current;
         private string ManualPath => Path.Combine(directory, "campaign-dream-save.json");
         private string AutomaticPath => Path.Combine(directory, "campaign-continue.json");
@@ -46,6 +50,8 @@ namespace MiniGame.UnityHost.Tests
         [UnityTearDown]
         public IEnumerator Cleanup()
         {
+            observeTransition = false;
+            WriteTransitionTraceIfRequested();
             StopSceneAdapters();
             if (Menu != null) Object.Destroy(Menu.gameObject);
             MiniGameSessionHost.Release();
@@ -181,13 +187,42 @@ namespace MiniGame.UnityHost.Tests
         {
             var audio = Menu.GetComponentInChildren<MiniGameAudioService>().GetSource(MiniGameAudioChannel.MenuMusic);
             yield return new WaitForSecondsRealtime(.4f);
+            Assert.That(host.Runtime, Is.Null, "Title prewarming must not install its prepared seed as an active runtime.");
+            Assert.That(MiniGameSessionHost.Current, Is.Null);
+            Assert.That(Directory.GetFiles(directory), Is.Empty, "Prewarming may prepare a checkpoint in memory but cannot write it before Start.");
+            var lightingPanel = host.Screen.LightingTuning;
+            var lightingRows = LightingRows();
+            var selectedLight = lightingPanel.SelectedLightPath;
+            Assert.That(selectedLight, Is.Not.Empty, "The authored room selects a real light during prewarming.");
+            var guidance = Object.FindObjectOfType<BedtimeGuidance>();
+            var atmosphere = guidance.Atmosphere;
+            Assert.That(atmosphere, Is.Not.Null, "Bedtime resources are prepared without binding a runtime.");
+            var atmosphereRenderers = atmosphere.GetComponentsInChildren<MeshRenderer>(true)
+                .Where(item => item.name == "BedtimeCeilingHaze" || item.name == "BedtimeGlowParticles").ToArray();
+            Assert.That(atmosphereRenderers.Length, Is.EqualTo(2));
+            Assert.That(atmosphereRenderers.All(item => !item.enabled), Is.True, "Prewarming cannot reveal bedtime effects on the title.");
             float initialVolume = audio.volume;
             Assert.That(initialVolume, Is.GreaterThan(0));
+            var originalHost = host;
+            int sceneHandle = host.gameObject.scene.handle;
+            var logoRect = Menu.View.LogoScreenRect;
+            var logoObject = Menu.View.GetComponentsInChildren<RawImage>(true).Single(item => item.name == "NormLogo");
+            BeginTransitionTrace();
             Menu.View.StartButton.onClick.Invoke();
+            Assert.That(LightingRows(), Is.EqualTo(lightingRows), "Starting must reuse the prewarmed lighting controls.");
+            Assert.That(lightingPanel.SelectedLightPath, Is.EqualTo(selectedLight));
+            Assert.That(guidance.Atmosphere, Is.SameAs(atmosphere));
             yield return new WaitForSecondsRealtime(.18f);
             Assert.That(Menu.View.ControlsAlpha, Is.InRange(.01f, .99f), "Controls must fade across several frames.");
             Assert.That(audio.isPlaying, Is.True);
             Assert.That(audio.volume, Is.GreaterThan(0).And.LessThan(initialVolume));
+            var gameplayMusic = host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic);
+            Assert.That(gameplayMusic.isPlaying && gameplayMusic.volume > 0, Is.True, "The existing gameplay track crossfades in while the title fades out.");
+            Assert.That(Vector2.Distance(Menu.View.LogoScreenRect.position, logoRect.position), Is.LessThan(.1f));
+            Assert.That(Vector2.Distance(Menu.View.LogoScreenRect.size, logoRect.size), Is.LessThan(.1f));
+            Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.Zero, "The fixed title holds through the controls fade.");
+            Assert.That(host, Is.SameAs(originalHost));
+            Assert.That(host.gameObject.scene.handle, Is.EqualTo(sceneHandle), "The opening must reuse its prewarmed scene.");
             Assert.That(MainMenuController.BlocksGameplayInput, Is.True);
             CaptureTransitionFrameIfRequested("transition-controls-midpoint");
             yield return Until(() => Menu.View.ReleaseAlpha > .05f && Menu.View.ReleaseAlpha < .95f,
@@ -195,7 +230,7 @@ namespace MiniGame.UnityHost.Tests
             host = Object.FindObjectOfType<MiniGameBootstrap>();
             Assert.That(host.Screen.Canvas.enabled, Is.True, "The dissolve must reveal a live frame, not a disabled canvas.");
             Assert.That(host.Runtime.GetView().Paused, Is.True);
-            Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.Zero);
+            Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.GreaterThan(0).And.LessThan(.1f));
             Assert.That(Menu.View.ControlsAlpha, Is.Zero.Within(.001f));
             CaptureTransitionFrameIfRequested("transition-title-dissolve");
             yield return Until(() => host.Screen.TerminalDisplay.OpeningProgress > .1f
@@ -205,17 +240,56 @@ namespace MiniGame.UnityHost.Tests
             float framing = camera.orthographicSize;
             Assert.That(MainMenuController.BlocksGameplayInput, Is.True);
             Assert.That(host.Runtime.GetView().Transcript, Is.Empty);
+            Assert.That(Menu.View.GetComponentsInChildren<RawImage>(true).Single(item => item.name == "NormLogo"), Is.SameAs(logoObject));
             CaptureTransitionFrameIfRequested("transition-monitor-pullback");
             yield return new WaitForSecondsRealtime(.15f);
             Assert.That(host.Screen.TerminalDisplay.OpeningProgress, Is.GreaterThan(progress));
             Assert.That(camera.orthographicSize, Is.GreaterThan(framing), "The monitor camera must pull back continuously.");
             yield return WaitForGame();
+            Assert.That(Menu.TransitionElapsed, Is.EqualTo(MainMenuController.ControlsFadeSeconds + MainMenuController.MonitorPullbackSeconds).Within(.001f));
             Assert.That(audio.isPlaying, Is.False);
             yield return WaitForTutorialIntroduction();
             Assert.That(host.Runtime.GetView().Transcript.Count(line => !line.IsPlayer), Is.EqualTo(1));
             Assert.That(host.Runtime.GetView().Transcript.Any(line => line.IsPlayer), Is.False);
             CaptureTransitionFrameIfRequested("transition-gameplay-ready");
+            observeTransition = false;
         }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator TitleLightingRebindRetainsSelectionAndInvalidatesRowsWhenLightsChange()
+        {
+            yield return new WaitForSecondsRealtime(.1f);
+            var panel = host.Screen.LightingTuning;
+            var lighting = panel.Controller;
+            var lights = lighting.GetEditableSceneLights(RoomLightingPeriod.Day);
+            Assert.That(lights.Length, Is.GreaterThan(1));
+            var selectedPath = lighting.GetHierarchyPath(lights[lights.Length - 1]);
+            Assert.That(panel.SelectLight(selectedPath), Is.True);
+            yield return null;
+            var rows = LightingRows();
+            panel.Bind(null, lighting, host.Screen.SignalTuning);
+            Assert.That(LightingRows(), Is.EqualTo(rows));
+            Assert.That(panel.SelectedLightPath, Is.EqualTo(selectedPath));
+
+            var addedLight = new GameObject("Title lighting cache regression", typeof(Light));
+            SceneManager.MoveGameObjectToScene(addedLight, host.gameObject.scene);
+            try
+            {
+                panel.Bind(null, lighting, host.Screen.SignalTuning);
+                Assert.That(rows.All(row => !row.gameObject.activeSelf), Is.True,
+                    "Changing the editable light list must invalidate its captured selection rows.");
+                yield return null;
+                Assert.That(LightingRows().Intersect(rows), Is.Empty);
+                Assert.That(host.Runtime, Is.Null);
+                Assert.That(MiniGameSessionHost.Current, Is.Null);
+                Assert.That(Directory.GetFiles(directory), Is.Empty);
+            }
+            finally { Object.Destroy(addedLight); }
+        }
+
+        private Transform[] LightingRows() => host.Screen.GetComponentsInChildren<Transform>(true)
+            .Single(item => item.name == "Parameters" && item.parent.name == "Viewport"
+                && item.parent.parent.name == "LightingControls").Cast<Transform>().ToArray();
 
         [UnityTest, Timeout(90000)]
         public IEnumerator ContinueHasNoInitialSelectionAndKeyboardNavigationStillSelectsIt()
@@ -360,6 +434,108 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
+        public IEnumerator HiddenSpaceContinueCrossfadesItsMusicAndOceanWithoutResumingVoiceEarly()
+        {
+            yield return StartGame();
+            Assert.That(host.DreamProfile.UseRoomCubemapEnding, Is.True);
+            var fixture = EndingCampaignScenario.CreateHidden(EndingCampaignScenario.LoadPackage(), host.DreamProfile,
+                Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion"));
+            Assert.That(fixture.TryInteract(InteractionTarget.Computer).Accepted, Is.True);
+            while (fixture.GetView().Cue != null)
+                Assert.That(fixture.CompleteCue(fixture.GetView().Cue.Token).Accepted, Is.True);
+            Assert.That(fixture.EnterSelectedPatient(GameRuntime.SelfPatientId).Accepted, Is.True);
+            while (fixture.GetView().Cue != null)
+                Assert.That(fixture.CompleteCue(fixture.GetView().Cue.Token).Accepted, Is.True);
+            EndingCampaignScenario.DriveSelfReview(fixture);
+            Assert.That(fixture.ConfirmSelfPurification().Accepted, Is.True);
+            host.RestoreCheckpoint(fixture.Save());
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>() != null
+                && Object.FindObjectOfType<RoomDreamEnding>().Ready, "native hidden space ready", 20);
+            var room = Object.FindObjectOfType<RoomDreamEnding>();
+            var ending = room.Ending;
+            ending.UseExternalClock = true;
+            var productionAudio = ending.Profile.Audio;
+            Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.Null,
+                "The production hidden space currently has optional music unassigned and uses its ocean loop.");
+            Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic).clip, Is.Null);
+            MiniGameAudioProfile twoTrackAudio = null;
+            var voiceClip = AudioClip.Create("Hidden menu voice pause regression", 44100 * 4, 1, 44100, false);
+            try
+            {
+                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, false);
+
+                // Exercise a configured second loop on the same native owner without changing an authored asset.
+                twoTrackAudio = Object.Instantiate(productionAudio);
+                twoTrackAudio.Sounds = productionAudio.Sounds.Select(entry => entry == null ? null
+                    : new MiniGameSoundEntry { Id = entry.Id, Clip = entry.Clip, Volume = entry.Volume }).ToArray();
+                var testMusic = productionAudio.GetClip(MiniGameSound.Gameplay);
+                Assert.That(testMusic, Is.Not.Null);
+                twoTrackAudio.GetEntry(MiniGameSound.EndingMusic).Clip = testMusic;
+                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.Null);
+                ending.SetPaused(false);
+                ending.Audio.Configure(twoTrackAudio);
+                ending.Audio.SetLoop(MiniGameAudioChannel.EndingMusic, MiniGameSound.EndingMusic, 0);
+                ending.Audio.SetLoop(MiniGameAudioChannel.Ocean, MiniGameSound.OceanWaves, 0);
+                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, true);
+                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.Null);
+            }
+            finally
+            {
+                ending.Audio.Configure(productionAudio);
+                if (twoTrackAudio != null) Object.Destroy(twoTrackAudio);
+                Object.Destroy(voiceClip);
+            }
+        }
+
+        private IEnumerator VerifyHiddenSpaceAudioContinue(DreamEndingController ending, AudioClip voiceClip, bool hasMusic)
+        {
+            var music = ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic);
+            var ocean = ending.Audio.GetSource(MiniGameAudioChannel.Ocean);
+            Assert.That(ocean.clip, Is.Not.Null);
+            Assert.That(music.clip != null, Is.EqualTo(hasMusic));
+            yield return Until(() => (!hasMusic || music.isPlaying && music.volume > 0) && ocean.isPlaying && ocean.volume > 0,
+                "configured hidden-space audio", 3);
+            float musicVolume = music.volume, oceanVolume = ocean.volume;
+            var position = ending.ViewCamera.transform.position;
+            var rotation = ending.ViewCamera.transform.rotation;
+            ending.Audio.PlayVoice(voiceClip, .25f, 1);
+            ending.SetPaused(true);
+            Menu.ReturnToMenu();
+            var voice = ending.Audio.GetSource(MiniGameAudioChannel.Voice);
+            int musicSample = music.timeSamples, oceanSample = ocean.timeSamples, voiceSample = voice.timeSamples;
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(music.timeSamples, Is.EqualTo(musicSample));
+            Assert.That(ocean.timeSamples, Is.EqualTo(oceanSample));
+            Menu.View.ContinueButton.onClick.Invoke();
+            yield return Until(() => Menu.TransitionElapsed > .08f && Menu.TransitionElapsed < .35f,
+                "hidden-space crossfade midpoint", 3);
+            Assert.That(host.Runtime.GetView().Paused, Is.True);
+            Assert.That(music.isPlaying, Is.EqualTo(hasMusic));
+            Assert.That(ocean.isPlaying, Is.True);
+            if (hasMusic)
+            {
+                Assert.That(music.volume, Is.GreaterThan(0).And.LessThan(musicVolume));
+                Assert.That(music.timeSamples, Is.GreaterThan(musicSample), "Ending music resumes its retained playhead.");
+            }
+            Assert.That(ocean.volume, Is.GreaterThan(0).And.LessThan(oceanVolume));
+            Assert.That(ocean.timeSamples, Is.GreaterThan(oceanSample), "Ocean ambience participates in the same fade.");
+            Assert.That(voice.isPlaying, Is.False, "Only the selected loops bypass logical pause during the fade.");
+            Assert.That(voice.timeSamples, Is.EqualTo(voiceSample));
+            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.False);
+            Assert.That(host.Screen.Canvas.enabled, Is.False, "The disabled room UI must not cover the hidden space.");
+            yield return WaitForGame();
+            Assert.That(ending.Paused, Is.False);
+            Assert.That(music.isPlaying, Is.EqualTo(hasMusic));
+            Assert.That(ocean.isPlaying && voice.isPlaying, Is.True);
+            Assert.That(host.Screen.Canvas.enabled, Is.False);
+            Assert.That(Vector3.Distance(ending.ViewCamera.transform.position, position), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(ending.ViewCamera.transform.rotation, rotation), Is.LessThan(.01f));
+            ending.SetPaused(true);
+            Assert.That(music.isPlaying || ocean.isPlaying || voice.isPlaying, Is.False,
+                "The temporary music override must be removed after Continue.");
+        }
+
+        [UnityTest, Timeout(90000)]
         public IEnumerator NewPeriodCancelPreservesProgressAndConfirmationReplacesOnlyAutomaticProgress()
         {
             yield return StartGame();
@@ -372,6 +548,8 @@ namespace MiniGame.UnityHost.Tests
             File.WriteAllText(ManualPath, "retain this manual checkpoint");
             Menu.ReturnToMenu();
             var previousRuntime = host.Runtime;
+            var previousHost = host;
+            int sceneHandle = host.gameObject.scene.handle;
             string previousAutomatic = File.ReadAllText(AutomaticPath);
             Menu.View.NewPeriodButton.onClick.Invoke();
             Assert.That(Menu.View.Page, Is.EqualTo(MainMenuPage.ConfirmNew));
@@ -383,6 +561,8 @@ namespace MiniGame.UnityHost.Tests
             Menu.View.ConfirmButton.onClick.Invoke();
             yield return WaitForGame();
             Assert.That(host.Runtime, Is.Not.SameAs(previousRuntime));
+            Assert.That(host, Is.SameAs(previousHost), "A new period resets the existing prewarmed room.");
+            Assert.That(host.gameObject.scene.handle, Is.EqualTo(sceneHandle));
             Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
             Assert.That(File.ReadAllText(AutomaticPath), Is.Not.EqualTo(previousAutomatic));
             Assert.That(File.ReadAllText(ManualPath), Is.EqualTo("retain this manual checkpoint"));
@@ -698,7 +878,64 @@ namespace MiniGame.UnityHost.Tests
             string output = Environment.GetEnvironmentVariable("MINIGAME_MENU_CAPTURE_DIR");
             if (string.IsNullOrWhiteSpace(output)) return;
             Directory.CreateDirectory(output);
-            ScreenCapture.CaptureScreenshot(Path.Combine(output, name + ".png"));
+            captureRequestedFrame = Time.frameCount;
+            ScreenCapture.CaptureScreenshot(Path.Combine(output, name + "-" + Screen.width + "x" + Screen.height + ".png"));
+        }
+
+        [Serializable]
+        private sealed class TransitionTrace
+        {
+            public int width, height;
+            public string note = "Editor frame intervals include test assertions and optional asynchronous screenshot requests; captureFrame flags the request frame and following frame.";
+            public List<TransitionFrame> frames = new List<TransitionFrame>(4096);
+        }
+
+        [Serializable]
+        private struct TransitionFrame
+        {
+            public int frame;
+            public float wallSeconds, frameSeconds, clock, controlsAlpha, backdropAlpha, openingProgress, cameraSize;
+            public bool menuVisible, captureFrame;
+        }
+
+        private void BeginTransitionTrace()
+        {
+            if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("MINIGAME_MENU_CAPTURE_DIR"))) return;
+            transitionTrace = new TransitionTrace { width = Screen.width, height = Screen.height };
+            observeTransition = true;
+            host.StartCoroutine(ObserveTransitionFrames());
+        }
+
+        private IEnumerator ObserveTransitionFrames()
+        {
+            var camera = host.Screen.GetComponentsInChildren<Camera>(true).Single(item => item.name == "Terminal UI camera");
+            float start = Time.realtimeSinceStartup, previous = start;
+            while (observeTransition && Menu != null && transitionTrace.frames.Count < 4096)
+            {
+                float now = Time.realtimeSinceStartup;
+                transitionTrace.frames.Add(new TransitionFrame
+                {
+                    frame = Time.frameCount, wallSeconds = now - start, frameSeconds = now - previous,
+                    clock = Menu.TransitionElapsed, controlsAlpha = Menu.View.ControlsAlpha, backdropAlpha = Menu.View.ReleaseAlpha,
+                    openingProgress = host.Screen.TerminalDisplay.OpeningProgress, cameraSize = camera.orthographicSize,
+                    menuVisible = Menu.IsVisible, captureFrame = Time.frameCount - captureRequestedFrame <= 1
+                });
+                previous = now;
+                yield return null;
+            }
+        }
+
+        private void WriteTransitionTraceIfRequested()
+        {
+            if (transitionTrace == null) return;
+            string output = Environment.GetEnvironmentVariable("MINIGAME_MENU_CAPTURE_DIR");
+            if (!string.IsNullOrWhiteSpace(output))
+            {
+                Directory.CreateDirectory(output);
+                File.WriteAllText(Path.Combine(output, "transition-frames-" + transitionTrace.width + "x" + transitionTrace.height + ".json"),
+                    JsonUtility.ToJson(transitionTrace, true));
+            }
+            transitionTrace = null;
         }
 
         private IEnumerator CaptureIfRequested(string name)

@@ -5,7 +5,7 @@ using System.IO;
 using MiniGame.Presentation;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+using MiniGame.Core;
 
 namespace MiniGame.UnityHost
 {
@@ -26,8 +26,12 @@ namespace MiniGame.UnityHost
         private MiniGameAudioService menuAudio;
         private readonly List<MiniGameAudioService> suspended = new List<MiniGameAudioService>();
         private bool retained, releasing, completedInspection;
-        private const float MenuFadeSeconds = 1.05f;
-        private string pendingNewInspection;
+        public const float ControlsFadeSeconds = .45f;
+        public const float MonitorPullbackSeconds = 2.2f;
+        public float TransitionElapsed { get; private set; }
+        private MiniGameAudioService transitionAudio;
+        private DreamEndingController transitionEnding;
+        private readonly List<MiniGameAudioChannel> transitionChannels = new List<MiniGameAudioChannel>(2);
         private GameRuntime Runtime => owner != null && owner.Runtime != null ? owner.Runtime : MiniGameSessionHost.Current?.Runtime;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -86,6 +90,14 @@ namespace MiniGame.UnityHost
             View.Show(MainMenuContinueStore.ResolveResumePath(SaveDirectory) == null && !MainMenuContinueStore.HasCompletedInspection(SaveDirectory)
                 ? MainMenuPage.FirstStart : MainMenuPage.Menu, HasResumeFile());
             StartMenuMusic();
+        }
+
+        private IEnumerator PrewarmTitle()
+        {
+            yield return null;
+            if (owner == null || releasing) yield break;
+            try { owner.PrewarmTitleAssets(); }
+            catch (Exception exception) { View.SetStatus(exception.Message, true); }
         }
 
         public void ReturnToMenu()
@@ -151,58 +163,15 @@ namespace MiniGame.UnityHost
 
         private void BeginNewInspection()
         {
-            try
-            {
-                // Publish the new active period before unloading the old one. A write failure leaves both intact.
-                MiniGameBootstrap.WriteNewCampaignContinuation(ContinuePath);
-                MainMenuContinueStore.StartNewInspection(SaveDirectory);
-                completedInspection = false;
-                pendingNewInspection = ContinuePath;
-                BeginMenuRelease();
-                retained = false;
-                StartCoroutine(LoadNewInspectionAfterControls());
-            }
-            catch (Exception exception)
-            {
-                releasing = false; pendingNewInspection = null;
-                View.Show(MainMenuPage.Menu, HasResumeFile());
-                StartMenuMusic();
-                View.SetStatus("新检查期未开始：" + exception.Message, true);
-            }
-        }
-
-        private IEnumerator LoadNewInspectionAfterControls()
-        {
-            // Let the visible button fade finish before scene loading can stall a frame.
-            yield return new WaitForSecondsRealtime(.45f);
-            try
-            {
-                MiniGameSessionHost.Release();
-                SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene, LoadSceneMode.Single);
-            }
-            catch (Exception exception)
-            {
-                releasing = false; pendingNewInspection = null;
-                View.Show(MainMenuPage.Menu, HasResumeFile(), "新检查期未开始：" + exception.Message);
-                StartMenuMusic();
-            }
-        }
-
-        public bool TryTakeNewInspection(out string path)
-        {
-            path = pendingNewInspection;
-            pendingNewInspection = null;
-            return path != null;
-        }
-
-        public void FinishNewInspection(bool success, string error)
-        {
-            retained = success;
-            if (!success) { releasing = false; View.Show(MainMenuPage.Menu, HasResumeFile(), error); StartMenuMusic(); return; }
-            Runtime.SetPaused(true);
+            if (owner == null) { View.SetStatus("当前场景不能开始检查期。", true); return; }
+            releasing = true;
+            if (!owner.TryPrepareNewCampaign(ContinuePath, out var error))
+            { releasing = false; View.SetStatus(error, true); return; }
+            completedInspection = false; retained = true;
             CoverGame(true);
             SuspendGameAudio();
             StartCoroutine(ReleaseInputAndResume());
+            owner.FinishOpeningPreparation("ready_for_menu_release");
         }
 
         public void CancelNewInspection()
@@ -210,9 +179,10 @@ namespace MiniGame.UnityHost
             if (View.Page == MainMenuPage.ConfirmNew && !releasing) BackToMenu();
         }
 
-        public void CompleteInspectionAndReturnToMenu()
+        public void CompleteInspectionAndReturnToMenu(bool playEndNote = false)
         {
             if (releasing || Runtime == null) return;
+            bool firstCompletion = !completedInspection;
             CoverGame(true);
             Runtime.SetPaused(true);
             retained = false;
@@ -224,6 +194,8 @@ namespace MiniGame.UnityHost
             if (MiniGameSessionHost.Current != null
                 && !MiniGameSessionHost.Current.TrySaveTo(ContinuePath, out var saveError)) error = saveError;
             View.Show(MainMenuPage.Menu, false, error ?? string.Empty);
+            if (playEndNote && firstCompletion)
+                menuAudio.PlayOneShot(MiniGameAudioChannel.EndNote, MiniGameSound.EndNote);
             StartMenuMusic();
         }
 
@@ -245,7 +217,8 @@ namespace MiniGame.UnityHost
 
         private IEnumerator ReleaseInputAndResume()
         {
-            BeginMenuRelease();
+            releasing = true;
+            TransitionElapsed = 0;
             yield return null;
             while (Input.anyKey || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) yield return null;
             var screen = owner != null ? owner.Screen : null;
@@ -253,55 +226,105 @@ namespace MiniGame.UnityHost
             var display = screen != null ? screen.TerminalDisplay : null;
             bool pullBack = !opening && display != null && Runtime != null && Runtime.GetView().TerminalOpen
                 && !screen.TransitionLocked;
+            bool monitor = opening || pullBack;
             float previousOpening = display != null ? display.OpeningProgress : 1;
-            if (pullBack) display.SetOpeningProgress(0);
-            screen?.RevealForMainMenuTransition();
-            float elapsed = 0;
-            while (elapsed < MenuFadeSeconds)
+            RectTransform projectedLogo = null;
+            Rect titleLogo = View.LogoScreenRect, projectedStart = titleLogo;
+            if (monitor)
             {
-                elapsed += Time.unscaledDeltaTime;
-                View.SetReleaseProgress(elapsed, opening || pullBack);
+                if (opening) owner.Effects.BeginMenuOpeningPullback();
+                projectedLogo = screen.PrepareTitleLogoProjection(opening);
+                UnityEngine.Canvas.ForceUpdateCanvases();
+                display.BeginTitlePullback(titleLogo, projectedLogo);
+                projectedStart = display.ScreenRectFor(projectedLogo);
+            }
+            screen?.RevealForMainMenuTransition();
+            display?.RenderFrame();
+            // No loading, compilation or new render targets below this point: one clock owns the visible handoff.
+            BeginMenuRelease();
+            float duration = ControlsFadeSeconds + (monitor ? MonitorPullbackSeconds : .2f);
+            while (TransitionElapsed < duration)
+            {
+                TransitionElapsed = Mathf.Min(duration, TransitionElapsed + Time.unscaledDeltaTime);
+                float blend = Mathf.Clamp01(TransitionElapsed / ControlsFadeSeconds);
+                menuAudio.SetMenuMusicTransitionGain(MiniGameAudioChannel.MenuMusic, Mathf.Cos(blend * Mathf.PI * .5f));
+                foreach (var channel in transitionChannels)
+                    transitionAudio?.SetMenuMusicTransitionGain(channel, Mathf.Sin(blend * Mathf.PI * .5f));
+                if (blend >= 1) menuAudio.Stop(MiniGameAudioChannel.MenuMusic);
+                float progress = Mathf.Clamp01((TransitionElapsed - ControlsFadeSeconds) / MonitorPullbackSeconds);
+                if (monitor && TransitionElapsed > ControlsFadeSeconds)
+                {
+                    if (opening) owner.Effects.ApplyMenuOpeningPullback(progress);
+                    else display.SetOpeningProgress(Mathf.SmoothStep(0, previousOpening, progress));
+                    var projected = display.ScreenRectFor(projectedLogo);
+                    float correction = 1 - Mathf.SmoothStep(0, 1, progress);
+                    projected.position += (titleLogo.position - projectedStart.position) * correction;
+                    projected.size += (titleLogo.size - projectedStart.size) * correction;
+                    View.SetProjectedLogoRect(projected);
+                    if (!opening) View.SetLogoAlpha(1 - Mathf.SmoothStep(0, 1, (progress - .7f) / .3f));
+                }
+                View.SetReleaseProgress(TransitionElapsed, monitor);
                 yield return null;
             }
-            menuAudio.StopAll();
+            menuAudio.Stop(MiniGameAudioChannel.MenuMusic);
+            menuAudio.EndMenuMusicTransition(MiniGameAudioChannel.MenuMusic);
+            if (monitor) display.EndTitlePullback(opening ? 1 : previousOpening);
             EventSystem.current?.SetSelectedGameObject(null);
-            View.Show(MainMenuPage.Hidden, false);
-            if (opening)
-            {
-                ResumeGameAudio();
-                Runtime?.SetPaused(false);
-                // The title action owns the opening. No second click or synthetic gameplay input is needed.
-                if (screen.RequestDayZeroOpeningFromMainMenu())
-                    while (owner != null && screen.TransitionLocked) yield return null;
-            }
-            else if (pullBack)
-            {
-                const float duration = 2.2f;
-                elapsed = 0;
-                while (elapsed < duration)
-                {
-                    elapsed += Time.unscaledDeltaTime;
-                    display.SetOpeningProgress(Mathf.Lerp(0, previousOpening, Mathf.SmoothStep(0, 1, elapsed / duration)));
-                    yield return null;
-                }
-                display.SetOpeningProgress(previousOpening);
-            }
             // Only the completed presentation releases input; its initiating key cannot enter the dialogue.
             while (Input.anyKey) yield return null;
+            View.Show(MainMenuPage.Hidden, false);
             ResumeGameAudio();
             CoverGame(false);
             Runtime?.SetPaused(false);
+            transitionEnding?.RefreshPausePresentation();
+            EndIncomingMusicTransition();
+            if (opening) owner.Effects.CompleteMenuOpeningPullback();
+            screen?.FinishTitleLogoProjection();
             retained = true;
             releasing = false;
         }
 
         private void BeginMenuRelease()
         {
-            if (releasing) return;
             releasing = true;
             View.BeginRelease();
-            menuAudio.Stop(MiniGameAudioChannel.MenuMusic, MenuFadeSeconds);
+            menuAudio.BeginMenuMusicTransition(MiniGameAudioChannel.MenuMusic);
+            menuAudio.SetMenuMusicTransitionGain(MiniGameAudioChannel.MenuMusic, 1);
+            transitionEnding = FindObjectOfType<DreamEndingController>();
+            if (transitionEnding != null && transitionEnding.isActiveAndEnabled && transitionEnding.Audio != null
+                && transitionEnding.Audio.isActiveAndEnabled)
+            {
+                transitionAudio = transitionEnding.Audio;
+                BeginIncomingMusicChannel(MiniGameAudioChannel.EndingMusic);
+                BeginIncomingMusicChannel(MiniGameAudioChannel.Ocean);
+            }
+            else
+            {
+                transitionEnding = null;
+                transitionAudio = owner != null ? owner.Audio?.Service : null;
+                BeginIncomingMusicChannel(Runtime != null && Runtime.GetView().Game.Phase == GamePhase.Dream
+                    ? MiniGameAudioChannel.DreamMusic : MiniGameAudioChannel.GameplayMusic);
+                if (transitionChannels.Count == 0) BeginIncomingMusicChannel(MiniGameAudioChannel.Ocean);
+            }
             menuAudio.Stop(MiniGameAudioChannel.LogoGlitch, .2f);
+        }
+
+        private void BeginIncomingMusicChannel(MiniGameAudioChannel channel)
+        {
+            if (transitionAudio == null || !transitionAudio.isActiveAndEnabled) return;
+            var source = transitionAudio.GetSource(channel);
+            if (source == null || !source.enabled || source.clip == null) return;
+            transitionChannels.Add(channel);
+            transitionAudio.BeginMenuMusicTransition(channel);
+            transitionAudio.SetMenuMusicTransitionGain(channel, 0);
+        }
+
+        private void EndIncomingMusicTransition()
+        {
+            foreach (var channel in transitionChannels) transitionAudio?.EndMenuMusicTransition(channel);
+            transitionChannels.Clear();
+            transitionAudio = null;
+            transitionEnding = null;
         }
 
         private void ResumeGameAudio()
@@ -313,8 +336,11 @@ namespace MiniGame.UnityHost
         private void SuspendGameAudio()
         {
             foreach (var service in FindObjectsOfType<MiniGameAudioService>(true))
-                if (service != menuAudio && !suspended.Contains(service))
-                { service.SetMenuSuspended(true); suspended.Add(service); }
+                if (service != menuAudio)
+                {
+                    service.SetMenuSuspended(true);
+                    if (!suspended.Contains(service)) suspended.Add(service);
+                }
         }
 
         private void CoverGame(bool value)
@@ -326,9 +352,10 @@ namespace MiniGame.UnityHost
 #if UNITY_EDITOR
         public bool TryDismissForEditorDebug()
         {
-            // A new-inspection scene load must finish before its old owner can be replaced.
-            if (pendingNewInspection != null) return false;
             StopAllCoroutines();
+            EndIncomingMusicTransition();
+            owner?.Screen.TerminalDisplay?.EndTitlePullback();
+            owner?.Screen.FinishTitleLogoProjection();
             releasing = false;
             foreach (var service in suspended) if (service != null) service.SetMenuSuspended(false);
             suspended.Clear();
@@ -343,6 +370,7 @@ namespace MiniGame.UnityHost
         {
             menuAudio.SetLoop(MiniGameAudioChannel.MenuMusic, MiniGameSound.StartMenu, .3f);
             Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
+            StartCoroutine(PrewarmTitle());
         }
 
         private bool HasResumeFile() => !completedInspection && MainMenuContinueStore.ResolveResumePath(SaveDirectory) != null;
@@ -363,6 +391,7 @@ namespace MiniGame.UnityHost
 
         private void OnDestroy()
         {
+            EndIncomingMusicTransition();
             foreach (var service in suspended) if (service != null) service.SetMenuSuspended(false);
             if (Current == this) Current = null;
         }
