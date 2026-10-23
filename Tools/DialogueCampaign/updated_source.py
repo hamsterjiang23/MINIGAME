@@ -59,6 +59,9 @@ def apply_repairs(patient_id: str, source_hash: str, rows: list[Row],
     manifest = cast(Record, json.loads(manifest_path.read_text(encoding="utf-8")))
     specs = cast(dict[str, Record], manifest["books"])
     if patient_id not in specs:
+        ids = [row["id"] for row in rows]
+        if len(ids) != len(set(ids)):
+            raise ValueError(f"Active duplicate IDs remain in {patient_id}")
         return [dict(row) for row in rows], [], []
     spec = specs[patient_id]
     if source_hash != spec["sourceSha256"]:

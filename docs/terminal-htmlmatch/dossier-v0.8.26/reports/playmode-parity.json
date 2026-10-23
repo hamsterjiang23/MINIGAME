@@ -1,0 +1,76 @@
+{
+  "status": "completed",
+  "duration": 5.13,
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ChoiceHoverPickingAndKeyboardSelectionStayTogetherAcrossCrtModes",
+      "Status": "Passed",
+      "Duration": 0.4892588,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ChoiceKeysDefaultToFirstWrapAndSupportAllFourNumberShortcuts",
+      "Status": "Passed",
+      "Duration": 0.2358966,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DirectoryDossierFollowsPointerAndKeyboardWithoutStartingAnEncounter",
+      "Status": "Passed",
+      "Duration": 0.4702684,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DispositionHoverKeepsItsSelectionAcrossPointerGapsAndCrtModes",
+      "Status": "Passed",
+      "Duration": 1.7664064,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.DispositionKeepsLastSpeechAndLocalSignalLossThenReturnsToDirectoryBeforeRoomExit",
+      "Status": "Passed",
+      "Duration": 0.2884044,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.EndingCharactersRenderThroughTheLiveDialogueCanvas",
+      "Status": "Passed",
+      "Duration": 0.3123523,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.PatientStageAndDailyReviewStatusStaySeparateInRosterAndSelection",
+      "Status": "Passed",
+      "Duration": 0.645922,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.ReadOnlyRecordsPreserveTranscriptAndBlockUnderlyingChoicesWhileF3StaysDisabled",
+      "Status": "Passed",
+      "Duration": 0.4851145,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalHtmlParityTests.UnknownPortraitIdShowsNoImageAndValidIdClearsTheWarning",
+      "Status": "Passed",
+      "Duration": 0.2569782,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

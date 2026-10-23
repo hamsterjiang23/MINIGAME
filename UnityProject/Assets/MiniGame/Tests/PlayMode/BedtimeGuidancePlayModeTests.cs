@@ -13,6 +13,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class BedtimeGuidancePlayModeTests
     {
         private bool previousSkipStartup;
@@ -36,6 +37,14 @@ namespace MiniGame.UnityHost.Tests
             for (int step = 0; evening.GetView().Cue != null && step < 4; step++)
                 Assert.That(evening.CompleteCue(evening.GetView().Cue.Token).Accepted, Is.True);
             host.RestoreCheckpoint(evening.Save());
+            host.Player.FacePoint(host.Player.ViewCamera.transform.position + Vector3.up * 10);
+            host.Player.RefreshInteractionFocus();
+            yield return null;
+            Assert.That(host.Player.FocusedInteraction, Is.Null);
+            Assert.That(host.Player.FocusedReadable, Is.Null);
+            Assert.That(Text(host, "Reticle").gameObject.activeInHierarchy, Is.True,
+                "Day0 bedtime must keep an actual visible aiming dot when no object is targeted.");
+            yield return Capture(host, "day0-bed-reticle");
             yield return StageAt(host, InteractionTarget.Bed);
             var camera = host.Player.ViewCamera;
             var standing = camera.transform.rotation;
@@ -66,6 +75,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True);
             Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
             checkpoint.HasPositionPose = false;
+            checkpoint.Version = 1;
             Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True, "Old checkpoints reuse the original captured standing pose.");
             Assert.That(Vector3.Distance(camera.transform.position, pausedPosition), Is.LessThan(.001f));
             host.Runtime.SetPaused(false);
@@ -198,8 +208,8 @@ namespace MiniGame.UnityHost.Tests
             var evening = TutorialSignalLoss(host.Runtime.UsesDreamFlow);
             for (int step = 0; evening.GetView().Cue != null && step < 4; step++)
                 Assert.That(evening.CompleteCue(evening.GetView().Cue.Token).Accepted, Is.True);
-            if (evening.UsesDreamFlow && evening.GetView().Game.Phase == GamePhase.Evening)
-                Assert.That(evening.BeginNightDream().Accepted, Is.True);
+            Assert.That(evening.GetView().Game.Phase, Is.EqualTo(GamePhase.Evening),
+                "This checkpoint must precede the first bed interaction.");
             Assert.That(evening.SetPaused(true).Accepted, Is.True);
             host.RestoreCheckpoint(evening.Save());
             Assert.That(guidance.Isolation, Is.EqualTo(1).Within(.00001f), "A restored bedtime must not flash the daylight room.");

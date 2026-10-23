@@ -87,6 +87,14 @@ namespace MiniGame.UnityHost
         {
             get
             {
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+                if (!string.IsNullOrEmpty(TerminalDossierPlayerProbe.IsolatedSaveDirectory))
+                    return TerminalDossierPlayerProbe.IsolatedSaveDirectory;
+                if (!string.IsNullOrEmpty(PixelStrengthPlayerProbe.IsolatedSaveDirectory))
+                    return PixelStrengthPlayerProbe.IsolatedSaveDirectory;
+                if (!string.IsNullOrEmpty(TerminalCommandPlayerProbe.IsolatedSaveDirectory))
+                    return TerminalCommandPlayerProbe.IsolatedSaveDirectory;
+#endif
 #if UNITY_EDITOR
                 return EditorCampaignDebugSession.SaveDirectory ?? Application.persistentDataPath;
 #else
@@ -177,7 +185,7 @@ namespace MiniGame.UnityHost
             if (Runtime == null || screen.PresentationToolsBlockInput
                 || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
             var view = Runtime.GetView();
-            if (view.Paused) { if (!screen.TryClosePauseSettings() && !screen.TryClosePauseManual()) Runtime.SetPaused(false); }
+            if (view.Paused) { if (!screen.TryClosePauseGm() && !screen.TryClosePauseSettings() && !screen.TryClosePauseManual()) Runtime.SetPaused(false); }
             else if (screen.TryClosePropNarration()) { }
             else if (screen.TryCloseHistory()) { }
             else if (view.Inspection != null) Runtime.CloseInspection();
@@ -266,7 +274,16 @@ namespace MiniGame.UnityHost
             InstallRuntime(session.Runtime, false, true);
             yarn.RestoreSupervisorCheckpoint(session.SupervisorCheckpoint);
             if (Dreams != null && session.DreamCheckpoint != null) Dreams.RestoreCheckpoint(session.DreamCheckpoint);
-            effects.RestoreSleepCheckpoint(session.SleepCheckpoint);
+            if (!effects.RestoreSleepCheckpoint(session.SleepCheckpoint) && session.Runtime.RestoredFromAfterDream)
+                effects.RestoreLegacyDreamWake();
+        }
+
+        public void EnterGmEnding(EndingType ending)
+        {
+            var session = MiniGameSessionHost.Current;
+            string error = null;
+            if (session == null || !session.TryEnterGmEnding(ending, out error))
+                screen.Notify(session == null ? "当前流程不支持 GM 结局。" : error, true);
         }
 
         public void Save()

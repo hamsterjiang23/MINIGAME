@@ -40,6 +40,8 @@ namespace MiniGame.UnityHost
                 return;
             }
             if (presented == line.SourceId) return;
+            if (!view.IsSelfReview && view.DoorViewActive
+                && actor != null && !actor.IsReadyForDialogue) return;
             presented = line.SourceId;
             int generation = epoch;
             if (!view.IsSelfReview)

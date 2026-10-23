@@ -14,7 +14,7 @@ namespace MiniGame.UnityHost.Tests
     public sealed class NormWorldPresentationPlayModeTests
     {
         [UnityTest]
-        public IEnumerator MorningUsesSupervisorAndAWhiteFrameWithoutDeveloperLabelsOrWorldInstructions()
+        public IEnumerator MorningUsesSupervisorWithWhiteTextAndSoftBorderWithoutDeveloperLabelsOrWorldInstructions()
         {
             var rules = PrototypeRules.Create();
             var runtime = new GameRuntime(rules, new PrototypeContent(rules), true);
@@ -32,12 +32,13 @@ namespace MiniGame.UnityHost.Tests
                     "The supervisor is a world actor outside the door, never an indoor HUD overlay.");
                 var body = screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "DialogueBody");
                 Assert.That(body.text, Is.EqualTo("门外扫描灯亮起。"));
-                Assert.That(body.color.r, Is.GreaterThan(body.color.g));
-                Assert.That(body.color.g, Is.GreaterThan(body.color.b));
-                Assert.That(screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "Speaker").text, Is.EqualTo("监督员"));
-                var frame = body.transform.parent.GetComponentsInChildren<Image>(true).Where(image => image.name.StartsWith("NarrativeFrame")).ToArray();
-                Assert.That(frame.Length, Is.EqualTo(4));
-                Assert.That(frame.All(image => image.color == Color.white && !image.raycastTarget), Is.True);
+                Assert.That(body.color, Is.EqualTo(Color.white));
+                Assert.That(screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "Speaker").gameObject.activeSelf,
+                    Is.False, "The supervisor card shows only dialogue body text.");
+                var border = body.transform.parent.GetComponentsInChildren<Image>(true).Single(image => image.name == "SupervisorBorder");
+                Assert.That(border.isActiveAndEnabled, Is.True);
+                Assert.That(border.raycastTarget, Is.False);
+                Assert.That(border.material.shader, Is.EqualTo(Resources.Load<Shader>("SoftDialogueBorder")));
                 Assert.That(screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "WorldInstructions").gameObject.activeSelf, Is.False);
                 Assert.That(screen.GetComponentsInChildren<Transform>(true).Any(node => node.name == "FocusUnderline" || node.name == "DialogueAccent"), Is.False);
                 runtime.CompleteCue(runtime.GetView().Cue.Token);
@@ -59,7 +60,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(supervisor.IsVisible, Is.True, "The actual room must already contain the supervisor before opening its door.");
             var effects = host.GetComponent<PresentationEffects>();
             if (effects.TryGetRoomReturnPose(out var standingPosition, out _, out _, out _, out _))
-                Assert.That(supervisor.Surface.bounds.min.y, Is.EqualTo(standingPosition.y + .1f).Within(.001f),
+                Assert.That(supervisor.Surface.transform.position.y, Is.EqualTo(standingPosition.y + .1f).Within(.001f),
                     "An opening seated capsule must not lower the permanently placed supervisor.");
             host.StartTerminalDemo(); host.Player.enabled = false; host.Screen.DialogueCharactersPerSecond = 0;
             var outsidePosition = supervisor.Surface.transform.position;

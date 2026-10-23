@@ -32,7 +32,8 @@ namespace MiniGame.UnityHost.Tests
             imageObject.transform.SetParent(canvasObject.transform, false);
             image = imageObject.GetComponent<RawImage>();
             profile = ScriptableObject.CreateInstance<PatientMonitorProfile>();
-            Assert.That(profile.Rooms.Length, Is.EqualTo(6), "The campaign profile must include all five patients and the tutorial.");
+            Assert.That(profile.Rooms.Length, Is.EqualTo(7), "The campaign profile must include all five patients, the tutorial and self review.");
+            Assert.That(profile.Find("self-review"), Is.Not.Null);
             profile.Rooms = profile.Rooms.Take(2).ToArray();
             profile.Width = 346;
             profile.Height = 140;

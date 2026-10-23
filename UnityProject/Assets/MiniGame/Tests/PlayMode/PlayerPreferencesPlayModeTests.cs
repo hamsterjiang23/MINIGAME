@@ -8,6 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("PixelStrength")]
     public sealed class PlayerPreferencesPlayModeTests
     {
         private bool hadBrightness, hadVolume, hadDetail;
@@ -48,7 +49,7 @@ namespace MiniGame.UnityHost.Tests
         {
             Assert.That(PlayerPreferences.Brightness, Is.EqualTo(1));
             Assert.That(PlayerPreferences.MasterVolume, Is.EqualTo(1));
-            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(PixelDetail.Low));
+            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(PixelDetail.Medium));
             PlayerPreferences.SetBrightness(1.25f);
             PlayerPreferences.SetMasterVolume(0);
             Assert.That(AudioListener.volume, Is.Zero);
@@ -60,7 +61,7 @@ namespace MiniGame.UnityHost.Tests
             PlayerPreferences.SetMasterVolume(.4f);
             Assert.That(AudioListener.volume, Is.EqualTo(.4f));
             Assert.That(PlayerPrefs.GetFloat(PlayerPreferences.MasterVolumeKey), Is.EqualTo(.4f));
-            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(PixelDetail.Low));
+            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(PixelDetail.Medium));
         }
 
         [Test]

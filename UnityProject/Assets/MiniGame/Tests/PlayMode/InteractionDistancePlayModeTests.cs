@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using MiniGame.Core;
 using NUnit.Framework;
 using UnityEngine;
@@ -8,6 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class InteractionDistancePlayModeTests
     {
         private bool previousSkipStartup;
@@ -20,6 +22,24 @@ namespace MiniGame.UnityHost.Tests
         }
         [TearDown]
         public void RestoreStartupMode() => MainMenuController.SkipStartup = previousSkipStartup;
+        [UnityTest]
+        public IEnumerator CombinedScenePersistsAllEightConfiguredDistances()
+        {
+            yield return SceneManager.LoadSceneAsync("MainRoomCombined");
+            yield return null;
+            var scene = SceneManager.GetActiveScene();
+            var world = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<WorldInteraction>(true)).ToArray();
+            var readables = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<ReadableProp>(true)).ToArray();
+            Assert.That(world.Select(item => item.Target), Is.EquivalentTo(new[] { InteractionTarget.Bed, InteractionTarget.Computer, InteractionTarget.Door }));
+            foreach (var item in world) Assert.That(item.InteractionDistance, Is.EqualTo(3.2f), item.name);
+            foreach (var name in new[] { "Daily newspaper - wall rack", "Employment notice - framed",
+                "Family letter - opened envelope", "Readable poster beach", "Readable poster instrument" })
+            {
+                var item = readables.Single(readable => readable.name == name);
+                Assert.That(item.InteractionDistance, Is.EqualTo(3.5f), item.name);
+            }
+        }
+
         [UnityTest]
         public IEnumerator PerObjectDistancesControlFocusAndUseBeyondTheFormerGlobalCap()
         {
@@ -42,6 +62,13 @@ namespace MiniGame.UnityHost.Tests
                 var interaction = target.AddComponent<WorldInteraction>();
                 interaction.Configure(InteractionTarget.Computer, "distance fixture", target.GetComponent<Renderer>(), 3.2f);
                 blocker.SetActive(false);
+                foreach (float distance in new[] { 3.19f, 3.21f })
+                {
+                    target.transform.position = camera.transform.position + Vector3.forward * (distance + .5f);
+                    Physics.SyncTransforms(); host.Player.RefreshInteractionFocus();
+                    Assert.That(host.Player.FocusedInteraction == interaction, Is.EqualTo(distance < 3.2f), "Range is measured to the collider surface.");
+                }
+                target.transform.position = camera.transform.position + Vector3.forward * 4.5f;
                 Physics.SyncTransforms();
                 host.Player.RefreshInteractionFocus();
                 Assert.That(host.Player.FocusedInteraction, Is.Null);
@@ -79,6 +106,15 @@ namespace MiniGame.UnityHost.Tests
                 host.Player.FacePoint(target.transform.position);
                 var poster = target.AddComponent<ReadableProp>();
                 poster.Configure("range-fixture", "distance caption", target.GetComponent<Renderer>(), 2);
+                poster.InteractionDistance = 3.5f;
+                foreach (float distance in new[] { 3.49f, 3.51f })
+                {
+                    target.transform.position = camera.transform.position + Vector3.forward * distance;
+                    Physics.SyncTransforms(); host.Player.RefreshInteractionFocus();
+                    Assert.That(host.Player.FocusedReadable == poster, Is.EqualTo(distance < 3.5f));
+                }
+                target.transform.position = camera.transform.position + Vector3.forward * 4;
+                poster.InteractionDistance = 2;
                 Physics.SyncTransforms();
                 Assert.That(host.Player.InteractPrimaryFocused(), Is.False);
                 poster.InteractionDistance = 4.1f;

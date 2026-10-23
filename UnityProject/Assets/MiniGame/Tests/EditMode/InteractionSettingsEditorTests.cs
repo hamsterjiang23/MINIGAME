@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class InteractionSettingsEditorTests
     {
         private Scene scene;

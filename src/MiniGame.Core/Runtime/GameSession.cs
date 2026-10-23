@@ -35,7 +35,8 @@ namespace MiniGame.Core
         {
             var events = new List<GameEvent>();
             if (command == null) return new CommandResult(RejectionReason.InvalidCommand, events);
-            if (_state.Phase == GamePhase.Ending) return new CommandResult(RejectionReason.GameEnded, events);
+            if (_state.Phase == GamePhase.Ending && !(command is EnterGmEnding))
+                return new CommandResult(RejectionReason.GameEnded, events);
             RejectionReason reason;
             switch (command)
             {
@@ -44,6 +45,8 @@ namespace MiniGame.Core
                 case CompleteSleep _: reason = AdvancePhase(GamePhase.Sleeping, GamePhase.Dream, events); break;
                 case CompleteDream _: reason = FinishDream(events); break;
                 case BeginNightDream _: reason = StartNightDream(events); break;
+                case EnterHiddenEndingCheat _: reason = EnterHiddenEnding(events); break;
+                case EnterGmEnding c: reason = EnterGmRoute(c, events); break;
                 case ConfirmSelfPurification _: reason = SelfPurify(events); break;
                 case AdvanceSelfReviewCommand c: reason = AdvanceSelfReview(c, events); break;
                 case Interact c: reason = InteractWith(c, events); break;
@@ -81,7 +84,8 @@ namespace MiniGame.Core
                 encounter?.Id, encounter == null ? null : CurrentNode(encounter), encounter?.Stage,
                 responses, dispositions, AllowedInteractions(), _state.Rebellion,
                 record?.Purifications ?? 0, record?.PurificationQuota ?? 0,
-                _state.SelfReviewLineIndex, _rules.DreamFlowEnabled ? _rules.SelfReviewLineCount : 0);
+                _state.SelfReviewLineIndex, _rules.DreamFlowEnabled ? _rules.SelfReviewLineCount : 0,
+                _state.Phase == GamePhase.Dream ? ResolveDreamReturnPhase() : (GamePhase?)null);
         }
 
         public GameSnapshot CreateSnapshot() => SnapshotCodec.Copy(new GameSnapshot
@@ -183,12 +187,14 @@ namespace MiniGame.Core
         private RejectionReason FinishDream(List<GameEvent> events)
         {
             if (_state.Phase != GamePhase.Dream) return RejectionReason.WrongPhase;
-            bool selfReview = _rules.DreamFlowEnabled && _state.Day == 3
-                && HasHiddenEndingTrust();
-            if (selfReview) _state.SelfReviewLineIndex = 0;
-            SetPhase(selfReview ? GamePhase.SelfReview : GamePhase.AfterDream, events);
+            var destination = ResolveDreamReturnPhase();
+            if (destination == GamePhase.SelfReview) _state.SelfReviewLineIndex = 0;
+            SetPhase(destination, events);
             return RejectionReason.None;
         }
+
+        private GamePhase ResolveDreamReturnPhase() => _rules.DreamFlowEnabled && _state.Day == 3
+            && HasHiddenEndingTrust() ? GamePhase.SelfReview : GamePhase.AfterDream;
 
         private bool HasHiddenEndingTrust()
         {
@@ -208,6 +214,31 @@ namespace MiniGame.Core
             _state.SelfReviewLineIndex++;
             events.Add(new GameEvent(GameEventKind.SelfReviewLineAdvanced, _state.Day,
                 referenceId: _state.SelfReviewLineIndex.ToString(System.Globalization.CultureInfo.InvariantCulture)));
+            return RejectionReason.None;
+        }
+
+        private RejectionReason EnterHiddenEnding(List<GameEvent> events)
+        {
+            if (!_rules.DreamFlowEnabled) return RejectionReason.WrongPhase;
+            // Record the explicit shortcut so saves replay it without forging patient decisions or trust.
+            EndGame(EndingType.DreamSea, events);
+            return RejectionReason.None;
+        }
+
+        private RejectionReason EnterGmRoute(EnterGmEnding command, List<GameEvent> events)
+        {
+            if (!_rules.DreamFlowEnabled) return RejectionReason.WrongPhase;
+            if (command.Ending == EndingType.None || !Enum.IsDefined(typeof(EndingType), command.Ending))
+                return RejectionReason.InvalidCommand;
+            // Keep real campaign records intact; only abandon the active presentation and choose its route.
+            _state.CurrentEncounterId = null;
+            _state.SelfReviewLineIndex = 0;
+            if (command.Ending == EndingType.DreamSea)
+            {
+                _state.Ending = EndingType.None;
+                SetPhase(GamePhase.SelfReview, events);
+            }
+            else EndGame(command.Ending, events);
             return RejectionReason.None;
         }
 

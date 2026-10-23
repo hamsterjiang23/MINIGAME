@@ -1,0 +1,142 @@
+{
+  "source": "C:\\Users\\admin\\Downloads\\employee apartment1.0(1).blend",
+  "sourceSha256": "a68f41133e22a81614430ca3d73a607bfe5476b9d1c08d852ce74e227bc22ffb",
+  "sourceFrame": 170,
+  "objects": [
+    {
+      "sourceName": "立方体.034",
+      "exportName": "Exterior_立方体.034",
+      "vertices": 2454,
+      "min": [
+        -68.65326690673828,
+        -14.875843048095703,
+        -36.67551040649414
+      ],
+      "max": [
+        -22.60048484802246,
+        12.524984359741211,
+        32.5845947265625
+      ]
+    },
+    {
+      "sourceName": "平面.032",
+      "exportName": "Exterior_平面.032",
+      "vertices": 4,
+      "min": [
+        -166.1951446533203,
+        -135.0452117919922,
+        -32.45186233520508
+      ],
+      "max": [
+        98.47248840332031,
+        129.62242126464844,
+        -32.45186233520508
+      ]
+    },
+    {
+      "sourceName": "立方体.003",
+      "exportName": "Exterior_立方体.003",
+      "vertices": 2454,
+      "min": [
+        -68.65326690673828,
+        26.677122116088867,
+        -36.67551040649414
+      ],
+      "max": [
+        -22.60048484802246,
+        54.07794952392578,
+        32.5845947265625
+      ]
+    },
+    {
+      "sourceName": "立方体.016",
+      "exportName": "Exterior_立方体.016",
+      "vertices": 2470,
+      "min": [
+        -68.65326690673828,
+        -55.68888854980469,
+        -37.0633659362793
+      ],
+      "max": [
+        -22.60048484802246,
+        -28.28805923461914,
+        32.5845947265625
+      ]
+    },
+    {
+      "sourceName": "立方体.017",
+      "exportName": "Exterior_立方体.017",
+      "vertices": 2454,
+      "min": [
+        -138.04293823242188,
+        -47.41155242919922,
+        -41.746665954589844
+      ],
+      "max": [
+        -91.99015045166016,
+        -20.010726928710938,
+        27.51344108581543
+      ]
+    },
+    {
+      "sourceName": "立方体.019",
+      "exportName": "Exterior_立方体.019",
+      "vertices": 2454,
+      "min": [
+        -138.04293823242188,
+        6.318784713745117,
+        -42.422935485839844
+      ],
+      "max": [
+        -91.99015045166016,
+        33.71961212158203,
+        26.83717155456543
+      ]
+    },
+    {
+      "sourceName": "立方体.020",
+      "exportName": "Exterior_立方体.020",
+      "vertices": 2470,
+      "min": [
+        -113.5783920288086,
+        -104.79533386230469,
+        -36.618995666503906
+      ],
+      "max": [
+        -67.5256118774414,
+        -77.3945083618164,
+        33.02896499633789
+      ]
+    },
+    {
+      "sourceName": "立方体.021",
+      "exportName": "Exterior_立方体.021",
+      "vertices": 2470,
+      "min": [
+        -113.5783920288086,
+        74.75900268554688,
+        -36.618995666503906
+      ],
+      "max": [
+        -67.5256118774414,
+        102.15982818603516,
+        33.02896499633789
+      ]
+    }
+  ],
+  "materials": [
+    "KB3D_ARV_ConcreteGray",
+    "roof"
+  ],
+  "textures": [
+    "ConcreteNew0033_5_M.jpg",
+    "KB3D_ARV_ConcreteGray_basecolor.png",
+    "KB3D_ARV_ConcreteGray_metallic.png",
+    "KB3D_ARV_ConcreteGray_normal.png",
+    "KB3D_ARV_ConcreteGray_roughness.png",
+    "ce75e1791767ea08b5e63ac3d7aca3394e9e5e761f95b-mREQ6C.jpg"
+  ],
+  "missingTextures": [],
+  "coordinates": "Retain Blender world coordinates; existing FBX converter maps to Unity (-x,z,-y)",
+  "scope": "Exterior only: seven apartment blocks and ground; no room, camera or source lights"
+}

@@ -26,6 +26,7 @@ namespace MiniGame.UnityHost
         private MiniGameAudioService menuAudio;
         private readonly List<MiniGameAudioService> suspended = new List<MiniGameAudioService>();
         private bool retained, releasing, completedInspection;
+        private int pixelSetupConfirmedFrame = -1;
         public const float ControlsFadeSeconds = .45f;
         public const float MonitorPullbackSeconds = 2.2f;
         public float TransitionElapsed { get; private set; }
@@ -64,7 +65,7 @@ namespace MiniGame.UnityHost
             View = MainMenuView.Create(transform,
                 () => Click(StartFirstInspection), () => Click(Continue), () => Click(RequestNewInspection),
                 () => Click(ShowSettings), () => Click(ConfirmNewInspection), () => Click(CancelNewInspection),
-                () => Click(BackToMenu));
+                () => Click(BackToMenu), () => Click(ConfirmPixelSetup));
             var audioRoot = new GameObject("Main menu audio", typeof(MiniGameAudioService));
             audioRoot.transform.SetParent(transform, false);
             menuAudio = audioRoot.GetComponent<MiniGameAudioService>();
@@ -87,9 +88,29 @@ namespace MiniGame.UnityHost
         {
             retained = false;
             CoverGame(true);
-            View.Show(MainMenuContinueStore.ResolveResumePath(SaveDirectory) == null && !MainMenuContinueStore.HasCompletedInspection(SaveDirectory)
-                ? MainMenuPage.FirstStart : MainMenuPage.Menu, HasResumeFile());
+            View.Show(PixelStrengthOnboarding.ShouldShow(SaveDirectory) ? MainMenuPage.PixelSetup
+                : MainMenuContinueStore.ResolveResumePath(SaveDirectory) == null && !MainMenuContinueStore.HasCompletedInspection(SaveDirectory)
+                    ? MainMenuPage.FirstStart : MainMenuPage.Menu, HasResumeFile());
             StartMenuMusic();
+        }
+
+        public void ConfirmPixelSetup()
+        {
+            if (releasing || View.Page != MainMenuPage.PixelSetup) return;
+            try { PixelStrengthOnboarding.Confirm(View.PixelSetup.SelectedDetail); }
+            catch (Exception exception) { View.SetStatus("设置保存失败：" + exception.Message, true); return; }
+            pixelSetupConfirmedFrame = Time.frameCount;
+            View.Show(MainMenuPage.FirstStart, false);
+        }
+
+        public bool HandlePixelSetupKey(KeyCode key)
+        {
+            if (releasing || View.Page != MainMenuPage.PixelSetup) return false;
+            if (key == KeyCode.LeftArrow || key == KeyCode.UpArrow) View.PixelSetup.MoveSelection(-1);
+            else if (key == KeyCode.RightArrow || key == KeyCode.DownArrow || key == KeyCode.Tab) View.PixelSetup.MoveSelection(1);
+            else if (key == KeyCode.Return || key == KeyCode.KeypadEnter) Click(ConfirmPixelSetup);
+            else if (key != KeyCode.Escape) return false;
+            return true;
         }
 
         private IEnumerator PrewarmTitle()
@@ -141,7 +162,7 @@ namespace MiniGame.UnityHost
 
         public void StartFirstInspection()
         {
-            if (View.Page != MainMenuPage.FirstStart || releasing) return;
+            if (View.Page != MainMenuPage.FirstStart || releasing || pixelSetupConfirmedFrame == Time.frameCount) return;
             BeginNewInspection();
         }
 
@@ -376,7 +397,14 @@ namespace MiniGame.UnityHost
         private bool HasResumeFile() => !completedInspection && MainMenuContinueStore.ResolveResumePath(SaveDirectory) != null;
         private void Update()
         {
-            if (!IsVisible || releasing) return;
+            if (!IsVisible || releasing || pixelSetupConfirmedFrame == Time.frameCount) return;
+            if (View.Page == MainMenuPage.PixelSetup)
+            {
+                foreach (var key in new[] { KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.RightArrow,
+                    KeyCode.DownArrow, KeyCode.Tab, KeyCode.Return, KeyCode.KeypadEnter, KeyCode.Escape })
+                    if (Input.GetKeyDown(key)) { HandlePixelSetupKey(key); return; }
+                return;
+            }
             if (View.Page == MainMenuPage.FirstStart && Input.anyKeyDown) StartFirstInspection();
             else if (Input.GetKeyDown(KeyCode.Escape)) HandleEscape();
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.UpArrow)) View.SelectInitialForNavigation(true);

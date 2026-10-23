@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "buildId": "build_dfadaecd1a94",
+  "result": "Succeeded",
+  "platform": "StandaloneWindows64",
+  "outputPath": "F:/AAMINIGAME/MINIGAME/Artifacts/TerminalV0824/Player/MiniGame.exe",
+  "totalSizeBytes": 872851887,
+  "buildTimeMs": 6972,
+  "totalWarnings": 1,
+  "totalErrors": 0,
+  "errors": [],
+  "warnings": [
+    {
+      "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+    }
+  ]
+}

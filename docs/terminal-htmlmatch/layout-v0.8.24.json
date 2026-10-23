@@ -1,0 +1,196 @@
+{
+  "version": "0.8.24",
+  "coordinateOrigin": "top-left",
+  "nativeCanvas": [
+    800,
+    600
+  ],
+  "scaleFromPreviousIcons": 0.6,
+  "selection": "full command row, latest approved preview",
+  "monitor": {
+    "rect": [
+      30,
+      92,
+      464,
+      261
+    ],
+    "aspect": "16:9"
+  },
+  "disposition": {
+    "rowOrigin": [
+      530,
+      200
+    ],
+    "width": 248,
+    "hitHeight": 44,
+    "pitch": 48,
+    "dividerOffsetY": 46
+  },
+  "icons": [
+    {
+      "id": "Release",
+      "name": "释放",
+      "sourceScale": 0.6,
+      "nativeSize": [
+        24,
+        20
+      ],
+      "cellSize": [
+        52,
+        44
+      ],
+      "cellBounds": [
+        2,
+        12,
+        24,
+        20
+      ],
+      "trimmedTopLeft": [
+        552,
+        212
+      ],
+      "labelTopLeft": [
+        674,
+        214
+      ],
+      "labelSize": [
+        32,
+        16
+      ],
+      "hitRect": [
+        530,
+        200,
+        248,
+        44
+      ]
+    },
+    {
+      "id": "Treatment",
+      "name": "治疗",
+      "sourceScale": 0.6,
+      "nativeSize": [
+        24,
+        22
+      ],
+      "cellSize": [
+        52,
+        44
+      ],
+      "cellBounds": [
+        2,
+        11,
+        24,
+        22
+      ],
+      "trimmedTopLeft": [
+        552,
+        259
+      ],
+      "labelTopLeft": [
+        674,
+        262
+      ],
+      "labelSize": [
+        32,
+        16
+      ],
+      "hitRect": [
+        530,
+        248,
+        248,
+        44
+      ]
+    },
+    {
+      "id": "Purification",
+      "name": "净化",
+      "sourceScale": 0.6,
+      "nativeSize": [
+        16,
+        24
+      ],
+      "cellSize": [
+        52,
+        44
+      ],
+      "cellBounds": [
+        2,
+        10,
+        16,
+        24
+      ],
+      "trimmedTopLeft": [
+        552,
+        306
+      ],
+      "labelTopLeft": [
+        674,
+        310
+      ],
+      "labelSize": [
+        32,
+        16
+      ],
+      "hitRect": [
+        530,
+        296,
+        248,
+        44
+      ]
+    }
+  ],
+  "labels": {
+    "centerX": 690,
+    "nativeSize": [
+      32,
+      16
+    ]
+  },
+  "quota": {
+    "rect": [
+      712,
+      135,
+      66,
+      32
+    ],
+    "source": "read-only value supplied by host"
+  },
+  "responses": {
+    "rect": [
+      530,
+      392,
+      248,
+      28
+    ],
+    "pitch": 35,
+    "maxRows": 4,
+    "lastBottom": 525
+  },
+  "footer": {
+    "rect": [
+      9,
+      548,
+      782,
+      43
+    ]
+  },
+  "unity": {
+    "RectTransformAnchors": [
+      0,
+      1
+    ],
+    "RectTransformPivot": [
+      0,
+      1
+    ],
+    "positionMapping": "(x, -y)",
+    "recommendedCanvasReferenceResolution": [
+      800,
+      600
+    ],
+    "filterMode": "Point",
+    "mipmaps": false,
+    "compression": "None",
+    "runtimeFontSubstitution": false
+  }
+}

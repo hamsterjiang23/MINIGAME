@@ -93,9 +93,116 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
+        public IEnumerator PauseTitleShortcutFromDayZeroReachesHiddenBedAndReturnsWithOneEndNote()
+        {
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
+            Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+            yield return null;
+            var menu = host.Screen.GetComponentsInChildren<PauseMenuView>(true).Single();
+            var title = menu.transform.Find("PauseColumn/PauseTitle").GetComponent<UnityEngine.UI.Button>();
+            for (int i = 0; i < 3; i++) { title.onClick.Invoke(); yield return null; }
+            Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.None));
+            title.onClick.Invoke();
+            Assert.That(host.Runtime.GetView().Paused, Is.False);
+            Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.DreamSea));
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true
+                && host.Runtime.EndingStage == EndingStage.Space, "shortcut hidden space", 15);
+            var room = Object.FindObjectOfType<RoomDreamEnding>();
+            Assert.That(room.IsPreview, Is.False);
+            var session = MiniGameSessionHost.Current;
+            Assert.That(session.TrySaveTo(Path.Combine(temporaryDirectory, "shortcut.json"), out var error), Is.True, error);
+            for (int step = 0; step < 300 && !room.Ending.CanLieDown; step++)
+                room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
+            Assert.That(room.Ending.TryLieDown(), Is.True);
+            yield return FinishHiddenBedWithExternalClock(room);
+            yield return FinishWithoutThanks("hidden-shortcut");
+            Assert.That(endNoteStarts, Is.EqualTo(1));
+        }
+
+        [UnityTest, Timeout(60000)]
         public IEnumerator NormalDayFourOpensDoorPlaysSevenSourceLinesAndReturnsWithoutContinue()
         {
             yield return DoorEnding(EndingCampaignRoute.Normal, EndingType.TakenAway, "supervisor-ending", 7);
+        }
+
+        [UnityTest, Timeout(60000), Category("InteractionWakeGm")]
+        public IEnumerator GmReplacesEachFlowAndPreservesManualSaveAndOldCallbackIsolation()
+        {
+            var session = MiniGameSessionHost.Current;
+            string manualPath = Path.Combine(temporaryDirectory, "campaign-dream-save.json");
+            Assert.That(session.TrySaveTo(manualPath, out var error), Is.True, error);
+            string manual = File.ReadAllText(manualPath);
+            int day = host.Runtime.GetView().Game.Day;
+            var oldRuntime = host.Runtime;
+            string oldCue = oldRuntime.GetView().Cue?.Token;
+            Assert.That(session.TryEnterGmEnding(EndingType.TakenAway, out error), Is.False,
+                "The public host entrypoint cannot bypass the paused-menu requirement.");
+            Assert.That(session.Runtime, Is.SameAs(oldRuntime));
+            foreach (var ending in new[] { EndingType.TakenAway, EndingType.LockedInRoom, EndingType.PriestAttack, EndingType.DreamSea })
+            {
+                host.Runtime.SetPaused(true);
+                Assert.That(session.TryEnterGmEnding(ending, out error), Is.True, error);
+                Assert.That(host.Runtime, Is.SameAs(session.Runtime));
+                Assert.That(host.Runtime.GetView().Paused, Is.False);
+                Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(day));
+                if (ending == EndingType.DreamSea)
+                {
+                    Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.SelfReview));
+                    Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.None));
+                    Assert.That(host.Runtime.GetView().Game.SelfReviewLineIndex, Is.Zero);
+                    Assert.That(host.Runtime.GetView().TerminalOpen, Is.False);
+                    Assert.That(host.Runtime.GetView().AllowedInteractions, Does.Contain(InteractionTarget.Computer));
+                }
+                else
+                {
+                    Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(ending));
+                    Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.AwaitingDoor));
+                    Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
+                }
+                Assert.That(session.DreamCheckpoint, Is.Null);
+                Assert.That(session.SleepCheckpoint, Is.Null);
+                Assert.That(session.EndingCheckpoint, Is.Null);
+                Assert.That(session.RoomEndingTransition, Is.Null);
+                Assert.That(session.ThanksCheckpoint, Is.Null);
+                Assert.That(session.SupervisorCheckpoint, Is.Null);
+                Assert.That(File.ReadAllText(manualPath), Is.EqualTo(manual));
+                yield return null;
+            }
+            string newFlow = host.Runtime.Save();
+            Assert.That(host.Runtime, Is.Not.SameAs(oldRuntime));
+            oldRuntime.SetPaused(false);
+            if (oldCue != null) oldRuntime.CompleteCue(oldCue);
+            yield return null;
+            Assert.That(host.Runtime.Save(), Is.EqualTo(newFlow), "A delayed previous-flow callback cannot advance the replacement runtime.");
+            Assert.That(endNoteStarts, Is.Zero, "Switching routes must not complete the abandoned ending.");
+        }
+
+        [UnityTest, Timeout(60000), Category("InteractionWakeGm")]
+        public IEnumerator GmFromFormalBeachRestoresRoomBeforeStartingAnotherDoorEnding()
+        {
+            var session = MiniGameSessionHost.Current;
+            host.Runtime.SetPaused(true);
+            Assert.That(host.Runtime.EnterHiddenEndingFromPause().Accepted, Is.True);
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true,
+                "formal beach before GM", 15);
+            var beach = Object.FindObjectOfType<RoomDreamEnding>();
+            var ending = beach.Ending;
+            var endingAudio = ending.Audio;
+            Assert.That(host.enabled, Is.False);
+            ending.SetPaused(true);
+            Assert.That(session.TryEnterGmEnding(EndingType.PriestAttack, out var error), Is.True, error);
+            Assert.That(host.enabled, Is.True);
+            Assert.That(host.Screen.enabled, Is.True);
+            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.AwaitingDoor));
+            Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.PriestAttack));
+            Assert.That(endingAudio.GetSource(MiniGameAudioChannel.EndingMusic).isPlaying, Is.False);
+            Assert.That(session.RoomEndingTransition, Is.Null);
+            Assert.That(session.EndingCheckpoint, Is.Null);
+            yield return null;
+            Assert.That(Object.FindObjectOfType<RoomDreamEnding>(), Is.Null);
+            Assert.That(endNoteStarts, Is.Zero);
+            Assert.That(host.Runtime.GetView().Paused, Is.False);
+            Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
         }
 
         [UnityTest, Timeout(60000)]
@@ -130,11 +237,23 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(knocking.isPlaying, Is.False);
             var expected = host.Runtime.Endings.Get(conversationId).Lines;
             Assert.That(expected.Length, Is.EqualTo(count));
-            // Let the authored actor return from the door's clearance position before inspecting the first portrait.
-            yield return new WaitForSecondsRealtime(.7f);
+            var actor = host.GetComponent<SupervisorDoorwayView>();
+            var body = host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "DialogueBody");
+            float readyDeadline = Time.realtimeSinceStartup + 3;
+            while (!actor.IsReadyForDialogue && Time.realtimeSinceStartup < readyDeadline)
+            {
+                Assert.That(body.text, Is.Not.EqualTo(expected[0].Text),
+                    "The first ending line must wait until the visitor stops sliding back from the door.");
+                yield return null;
+            }
+            Assert.That(actor.IsReadyForDialogue, Is.True);
+            yield return Until(() => body.text == expected[0].Text, "the settled visitor's first line", 3);
+            var fixedActorPosition = actor.Surface.transform.position;
             for (int index = 0; index < count; index++)
             {
                 yield return null;
+                Assert.That(Vector3.Distance(actor.Surface.transform.position, fixedActorPosition), Is.LessThan(.001f),
+                    "Advancing ending dialogue must keep the visitor stationary.");
                 Assert.That(host.Runtime.CurrentEndingLine.SourceId, Is.EqualTo(expected[index].SourceId));
                 if (index == 0)
                     yield return EndingVisualCapture.Capture(route == EndingCampaignRoute.Priest ? "priest-PE01"
@@ -156,7 +275,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator HiddenEndingRequiresSelfReviewAndBedThenCutsStraightToMenu()
+        public IEnumerator HiddenEndingRequiresSelfReviewThenLiesDownHoldsSkyAndFadesToMenu()
         {
             var fixture = EndingCampaignScenario.CreateHidden(compiled, dreams, rebellion);
             host.RestoreCheckpoint(fixture.Save());
@@ -220,7 +339,7 @@ namespace MiniGame.UnityHost.Tests
                 room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
             Assert.That(room.Ending.CanLieDown, Is.True);
             Assert.That(room.Ending.TryLieDown(), Is.True);
-            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Thanks).Or.EqualTo(EndingStage.Completed));
+            yield return VerifyHiddenBedOnRealClock(room);
             yield return FinishWithoutThanks("hidden");
         }
 
@@ -293,6 +412,7 @@ namespace MiniGame.UnityHost.Tests
             for (int step = 0; step < 300 && !room.Ending.CanLieDown; step++)
                 room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
             Assert.That(room.Ending.TryLieDown(), Is.True);
+            yield return FinishHiddenBedWithExternalClock(room);
             yield return FinishWithoutThanks("hidden-completed");
             var session = MiniGameSessionHost.Current;
             string path = Path.Combine(temporaryDirectory, "hidden-completed.json");
@@ -327,6 +447,103 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Screen.isActiveAndEnabled, Is.True);
             Assert.That(endNoteStarts, Is.EqualTo(1), "Starting the next inspection must not replay the ending sting.");
         }
+        [UnityTest, Timeout(90000)]
+        public IEnumerator HiddenBedPresentationPausesAndRestoresEveryStageWithoutEarlyCompletion()
+        {
+            yield return ReachHiddenPurification();
+            Assert.That(host.Runtime.ConfirmSelfPurification().Accepted, Is.True);
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true
+                && host.Runtime.EndingStage == EndingStage.Space, "hidden space for bed checkpoints", 15);
+            var room = Object.FindObjectOfType<RoomDreamEnding>();
+            var ending = room.Ending;
+            ending.UseExternalClock = true;
+            for (int step = 0; step < 300 && !ending.CanLieDown; step++)
+                room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
+            Assert.That(ending.TryLieDown(), Is.True);
+            ending.AdvanceForTests(0, .45f);
+
+            foreach (var phase in new[] { BeachEndingPhase.Lying, BeachEndingPhase.SkyHold, BeachEndingPhase.FadingOut })
+            {
+                Assert.That(ending.Phase, Is.EqualTo(phase));
+                AssertHiddenBedInputLocked(room);
+                ending.SetPaused(true);
+                var saved = ending.CaptureCheckpoint();
+                Assert.That(saved.HasMusicPosition, Is.True);
+                Assert.That(saved.MusicSeconds, Is.GreaterThan(1), "The checkpoint must contain a progressed musical prelude.");
+                var position = ending.ViewCamera.transform.position;
+                var rotation = ending.ViewCamera.transform.rotation;
+                var bedPosition = ending.Bed.position;
+                var bedRotation = ending.Bed.rotation;
+                float opacity = ending.EndingFadeOpacity;
+                string checkpointJson = JsonUtility.ToJson(saved);
+                string path = Path.Combine(temporaryDirectory, "hidden-bed-" + phase + ".json");
+                var session = MiniGameSessionHost.Current;
+                Assert.That(session.TrySaveTo(path, out var saveError), Is.True, saveError);
+                ending.AdvanceForTests(1, 30);
+                room.AdvanceExploration(Vector2.one, Vector2.one, 30);
+                yield return new WaitForSecondsRealtime(.05f);
+                Assert.That(JsonUtility.ToJson(ending.CaptureCheckpoint()), Is.EqualTo(checkpointJson),
+                    "Pause must freeze the entire saved bed presentation in " + phase);
+                AssertCameraPose(ending.ViewCamera, position, rotation);
+                Assert.That(ending.EndingFadeOpacity, Is.EqualTo(opacity).Within(.0001f));
+                Assert.That(room.CompleteAtBed(), Is.False);
+                Assert.That(endNoteStarts, Is.Zero);
+
+                ending.SetPaused(false);
+                ending.AdvanceForTests(0, .15f);
+                ending.SetPaused(true);
+                var previousRoom = room;
+                Assert.That(session.TryLoadFrom(path, out var loadError), Is.True, loadError);
+                yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>() is RoomDreamEnding restored
+                    && restored != previousRoom && restored.Ready, "restored bed presentation " + phase, 15);
+                room = Object.FindObjectOfType<RoomDreamEnding>();
+                ending = room.Ending;
+                ending.UseExternalClock = true;
+                Assert.That(session.Runtime.GetView().Paused, Is.True);
+                var resumed = ending.CaptureCheckpoint();
+                Assert.That(resumed.Phase, Is.EqualTo(phase));
+                Assert.That(resumed.PhaseElapsed, Is.EqualTo(saved.PhaseElapsed).Within(.0001f));
+                Assert.That(resumed.WorldTime, Is.EqualTo(saved.WorldTime).Within(.0001f));
+                Assert.That(resumed.HasMusicPosition, Is.True);
+                var restoredMusic = ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic);
+                Assert.That(restoredMusic.clip.name, Is.EqualTo("EndingAscent"));
+                Assert.That(restoredMusic.isPlaying, Is.False, "A paused load must not resume the music early.");
+                // Streaming MP3 seeks may land on an adjacent packet rather than an exact sample.
+                Assert.That(restoredMusic.time, Is.EqualTo(saved.MusicSeconds).Within(.25f));
+                Assert.That(resumed.MusicSeconds, Is.EqualTo(saved.MusicSeconds).Within(.25f));
+                Assert.That(resumed.LieStartPosition, Is.EqualTo(saved.LieStartPosition));
+                Assert.That(Quaternion.Angle(resumed.LieStartRotation, saved.LieStartRotation), Is.LessThan(.01f));
+                AssertCameraPose(ending.ViewCamera, position, rotation);
+                Assert.That(Vector3.Distance(ending.Bed.position, bedPosition), Is.LessThan(.001f));
+                Assert.That(Quaternion.Angle(ending.Bed.rotation, bedRotation), Is.LessThan(.01f));
+                Assert.That(ending.EndingFadeOpacity, Is.EqualTo(opacity).Within(.0001f));
+                if (phase != BeachEndingPhase.Lying) AssertPanoramaOriginAtCamera(room);
+                Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space));
+                Assert.That(endNoteStarts, Is.Zero);
+                ending.SetPaused(false);
+                AssertHiddenBedInputLocked(room);
+                EndingVisualCapture.Request("hidden-bed-restored-" + phase.ToString().ToLowerInvariant(), session.Runtime);
+                yield return null;
+                float duration = phase == BeachEndingPhase.Lying ? ending.Profile.LieDownSeconds
+                    : phase == BeachEndingPhase.SkyHold ? DreamEndingController.SkyHoldSeconds
+                    : DreamEndingController.EndingFadeSeconds;
+                ending.AdvanceForTests(0, duration - ending.CaptureCheckpoint().PhaseElapsed);
+                if (phase != BeachEndingPhase.FadingOut) ending.AdvanceForTests(0, .35f);
+            }
+
+            Assert.That(ending.IsBedEndingComplete, Is.True);
+            Assert.That(ending.EndingFadeOpacity, Is.EqualTo(1).Within(.0001f));
+            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space),
+                "Completion must wait until the fully black frame has been presented.");
+            Assert.That(endNoteStarts, Is.Zero);
+            ending.SetPaused(true);
+            yield return null;
+            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space), "Pause blocks the pending completion.");
+            Assert.That(endNoteStarts, Is.Zero);
+            ending.SetPaused(false);
+            yield return FinishWithoutThanks("hidden-bed-restored");
+        }
+
         [UnityTest, Timeout(90000)]
         public IEnumerator HiddenFadingOutCrossSceneRestorePreservesTheFirstRenderedCameraPose()
         {
@@ -434,24 +651,185 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.CurrentEndingLine?.SourceId, Is.Not.EqualTo(sourceId));
         }
 
+        private IEnumerator VerifyHiddenBedOnRealClock(RoomDreamEnding room)
+        {
+            var ending = room.Ending;
+            Assert.That(ending.UseExternalClock, Is.False);
+            Assert.That(ending.Profile.LieDownSeconds, Is.EqualTo(1.5f).Within(.0001f));
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.Lying));
+            var standingPosition = ending.ViewCamera.transform.position;
+            var standingRotation = ending.ViewCamera.transform.rotation;
+            float lyingStarted = Time.realtimeSinceStartup;
+            int movingFrames = 0;
+            bool capturedLying = false;
+            while (ending.Phase == BeachEndingPhase.Lying)
+            {
+                AssertHiddenBedInputLocked(room);
+                Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space));
+                Assert.That(endNoteStarts, Is.Zero);
+                float elapsed = ending.CaptureCheckpoint().PhaseElapsed;
+                if (elapsed > .1f && elapsed < ending.Profile.LieDownSeconds - .1f)
+                {
+                    Assert.That(Vector3.Distance(ending.ViewCamera.transform.position, standingPosition), Is.GreaterThan(.001f));
+                    Assert.That(Quaternion.Angle(ending.ViewCamera.transform.rotation, standingRotation), Is.GreaterThan(.1f));
+                    movingFrames++;
+                    if (!capturedLying && elapsed >= .6f && elapsed <= 1f)
+                    {
+                        EndingVisualCapture.Request("hidden-bed-lying-camera", host.Runtime);
+                        capturedLying = true;
+                    }
+                }
+                yield return null;
+            }
+            Assert.That(movingFrames, Is.GreaterThan(0), "The player must see the camera move onto the bed.");
+            Assert.That(capturedLying, Is.True, "Capture the visible middle of the lie-down motion.");
+            Assert.That(Time.realtimeSinceStartup - lyingStarted, Is.GreaterThanOrEqualTo(1.4f));
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
+            var skyPosition = ending.ViewCamera.transform.position;
+            var skyRotation = ending.ViewCamera.transform.rotation;
+            var bedPosition = ending.Bed.position;
+            var bedRotation = ending.Bed.rotation;
+            Assert.That(Vector3.Dot(ending.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
+            float skyStarted = Time.realtimeSinceStartup;
+            EndingVisualCapture.Request("hidden-bed-sky-hold", host.Runtime);
+            while (ending.Phase == BeachEndingPhase.SkyHold)
+            {
+                AssertHiddenBedInputLocked(room);
+                AssertCameraPose(ending.ViewCamera, skyPosition, skyRotation);
+                AssertPanoramaOriginAtCamera(room);
+                Assert.That(Vector3.Distance(ending.Bed.position, bedPosition), Is.LessThan(.001f), "The final bed must not drift.");
+                Assert.That(Quaternion.Angle(ending.Bed.rotation, bedRotation), Is.LessThan(.01f));
+                Assert.That(ending.EndingFadeOpacity, Is.Zero);
+                Assert.That(ending.CurrentSubtitle, Is.Empty);
+                Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space));
+                Assert.That(endNoteStarts, Is.Zero);
+                yield return null;
+            }
+            Assert.That(Time.realtimeSinceStartup - skyStarted, Is.GreaterThanOrEqualTo(9.8f));
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.FadingOut));
+            float fadeStarted = Time.realtimeSinceStartup;
+            float previousOpacity = 0;
+            bool capturedFade = false;
+            bool capturedFullBlack = false;
+            while (host.Runtime.EndingStage == EndingStage.Space)
+            {
+                Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.FadingOut));
+                AssertCameraPose(ending.ViewCamera, skyPosition, skyRotation);
+                AssertPanoramaOriginAtCamera(room);
+                Assert.That(ending.TryLieDown(), Is.False);
+                Assert.That(ending.EndingFadeOpacity, Is.GreaterThanOrEqualTo(previousOpacity));
+                previousOpacity = ending.EndingFadeOpacity;
+                Assert.That(endNoteStarts, Is.Zero);
+                if (!ending.IsBedEndingComplete) Assert.That(room.CompleteAtBed(), Is.False);
+                if (!capturedFade && previousOpacity >= .35f && previousOpacity < .95f)
+                {
+                    EndingVisualCapture.Request("hidden-bed-fading-out", host.Runtime);
+                    capturedFade = true;
+                }
+                if (!capturedFullBlack && previousOpacity >= .999f)
+                {
+                    EndingVisualCapture.Request("hidden-bed-fully-black", host.Runtime);
+                    capturedFullBlack = true;
+                }
+                yield return null;
+            }
+            Assert.That(capturedFade, Is.True);
+            Assert.That(capturedFullBlack, Is.True, "At least one fully black frame must precede the main menu.");
+            Assert.That(Time.realtimeSinceStartup - fadeStarted, Is.GreaterThanOrEqualTo(.8f));
+            Assert.That(previousOpacity, Is.EqualTo(1).Within(.0001f));
+        }
+
+        private IEnumerator FinishHiddenBedWithExternalClock(RoomDreamEnding room)
+        {
+            var ending = room.Ending;
+            ending.UseExternalClock = true;
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.Lying));
+            AssertHiddenBedInputLocked(room);
+            ending.AdvanceForTests(0, ending.Profile.LieDownSeconds);
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
+            ending.AdvanceForTests(0, DreamEndingController.SkyHoldSeconds);
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.FadingOut));
+            ending.AdvanceForTests(0, DreamEndingController.EndingFadeSeconds);
+            Assert.That(ending.IsBedEndingComplete, Is.True);
+            Assert.That(ending.EndingFadeOpacity, Is.EqualTo(1).Within(.0001f));
+            Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space));
+            Assert.That(endNoteStarts, Is.Zero);
+            yield return null;
+        }
+
+        private static void AssertHiddenBedInputLocked(RoomDreamEnding room)
+        {
+            var ending = room.Ending;
+            Assert.That(ending.CanLieDown, Is.False);
+            Assert.That(ending.TryLieDown(), Is.False, "Repeated bed interaction cannot restart the ending.");
+            Assert.That(room.CompleteAtBed(), Is.False, "The bed cannot complete the ending before its fade.");
+            var position = ending.ViewCamera.transform.position;
+            var rotation = ending.ViewCamera.transform.rotation;
+            var playerPosition = room.PlayerPosition;
+            room.AdvanceExploration(Vector2.one, Vector2.one, 1);
+            Assert.That(room.PlayerPosition, Is.EqualTo(playerPosition));
+            AssertCameraPose(ending.ViewCamera, position, rotation);
+        }
+
+        private static void AssertCameraPose(Camera camera, Vector3 position, Quaternion rotation)
+        {
+            Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
+        }
+
+        private static void AssertPanoramaOriginAtCamera(RoomDreamEnding room)
+        {
+            Vector3 projectionOrigin = room.RoomSurface.Material.GetVector("_ProjectionOrigin");
+            Assert.That(Vector3.Distance(projectionOrigin, room.ViewCamera.transform.position), Is.LessThan(.001f),
+                "The sky must be projected from the lying camera rather than the former standing viewpoint.");
+        }
+
         private IEnumerator VerifyRoomEntry(RoomDreamEnding room)
         {
             yield return Until(() => room.TransitionPhase == RoomEndingTransitionPhase.BlackHold, "black hold begins", 10);
             float blackStarted = Time.realtimeSinceStartup;
+            yield return Until(() => room.Ending != null && room.Ending.Audio != null
+                && room.Ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic).isPlaying,
+                "ending music begins beneath the black curtain", 2);
+            Assert.That(room.TransitionPhase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
+            var music = room.Ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic);
+            var clip = music.clip;
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(clip.name, Is.EqualTo("EndingAscent"));
+            int firstMusicSample = music.timeSamples;
+            int previousMusicSample = firstMusicSample;
+            Assert.That(RoomEndingTransitionClock.BlackHoldSeconds, Is.EqualTo(3));
+            float pauseStarted = Time.realtimeSinceStartup;
+            Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+            yield return null;
+            float pausedElapsed = room.CaptureTransitionCheckpoint().Elapsed;
+            int pausedSample = music.timeSamples;
+            Assert.That(music.isPlaying, Is.False, "The black-screen prelude pauses with the game.");
+            yield return new WaitForSecondsRealtime(.2f);
+            Assert.That(room.TransitionPhase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
+            Assert.That(room.CaptureTransitionCheckpoint().Elapsed, Is.EqualTo(pausedElapsed).Within(.0001f));
+            Assert.That(music.timeSamples, Is.EqualTo(pausedSample));
+            Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
+            float pausedSeconds = Time.realtimeSinceStartup - pauseStarted;
+            yield return null;
             EndingVisualCapture.Request("hidden-full-black", host.Runtime);
             while (room.TransitionPhase == RoomEndingTransitionPhase.BlackHold)
             {
                 Assert.That(room.GetComponentsInChildren<Image>(true).Single(image => image.name == "Black").color.a, Is.EqualTo(1));
                 Assert.That(room.Ready, Is.False);
+                AssertContinuousEndingMusic(room, music, clip, ref previousMusicSample);
                 yield return null;
             }
-            Assert.That(Time.realtimeSinceStartup - blackStarted, Is.GreaterThanOrEqualTo(1.9f));
+            Assert.That(Time.realtimeSinceStartup - blackStarted - pausedSeconds, Is.GreaterThanOrEqualTo(2.9f));
+            Assert.That((music.timeSamples - firstMusicSample) / (float)clip.frequency, Is.GreaterThanOrEqualTo(2.8f),
+                "The player must hear the musical prelude while the scene remains black.");
             Assert.That(room.TransitionPhase, Is.EqualTo(RoomEndingTransitionPhase.Entering));
             float entryStarted = Time.realtimeSinceStartup;
             int interpolatedFrames = 0;
             bool entryCaptured = false;
             while (room.TransitionPhase == RoomEndingTransitionPhase.Entering)
             {
+                AssertContinuousEndingMusic(room, music, clip, ref previousMusicSample);
                 var state = room.CaptureTransitionCheckpoint();
                 float t = Mathf.SmoothStep(0, 1, state.Elapsed / RoomEndingTransitionClock.EntrySeconds);
                 Assert.That(Vector3.Distance(room.ViewCamera.transform.position,
@@ -469,6 +847,17 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Time.realtimeSinceStartup - entryStarted, Is.GreaterThanOrEqualTo(.85f));
             Assert.That(interpolatedFrames, Is.GreaterThan(0));
             yield return Until(() => room.Ready && host.Runtime.EndingStage == EndingStage.Space, "room exploration ready", 5);
+            AssertContinuousEndingMusic(room, music, clip, ref previousMusicSample);
+        }
+
+        private static void AssertContinuousEndingMusic(RoomDreamEnding room, AudioSource music, AudioClip clip,
+            ref int previousSample)
+        {
+            Assert.That(room.Ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic), Is.SameAs(music));
+            Assert.That(music.clip, Is.SameAs(clip));
+            Assert.That(music.isPlaying, Is.True, "Entering the beach must not stop or replace the music.");
+            Assert.That(music.timeSamples, Is.GreaterThanOrEqualTo(previousSample), "The ending track must not restart.");
+            previousSample = music.timeSamples;
         }
 
         private IEnumerator FinishWithoutThanks(string route)

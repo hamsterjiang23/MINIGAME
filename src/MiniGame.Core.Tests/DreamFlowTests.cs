@@ -27,8 +27,10 @@ namespace MiniGame.Core.Tests
             Scenario.RejectWithoutMutation(session, new Interact(InteractionTarget.Bed));
             Scenario.Accept(session, new BeginNightDream());
             Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.Dream));
+            Assert.That(session.GetPlayerView().DreamReturnPhase, Is.EqualTo(GamePhase.AfterDream));
             Scenario.RejectWithoutMutation(session, new Interact(InteractionTarget.Bed));
             Scenario.Accept(session, new CompleteDream());
+            Assert.That(session.GetPlayerView().DreamReturnPhase, Is.Null);
             Assert.That(session.GetPlayerView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
             Scenario.Accept(session, new Interact(InteractionTarget.Bed));
             Assert.That(session.GetPlayerView().Day, Is.EqualTo(2));
@@ -109,7 +111,15 @@ namespace MiniGame.Core.Tests
             var session = new GameSession(rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream, attack);
             var before = session.CreateSnapshot().State;
+            var beforePreview = SnapshotCodec.Serialize(session);
+            var expectedReturn = expected == EndingType.DreamSea ? GamePhase.SelfReview : GamePhase.AfterDream;
+            Assert.That(session.GetPlayerView().DreamReturnPhase, Is.EqualTo(expectedReturn));
+            Assert.That(SnapshotCodec.Serialize(session), Is.EqualTo(beforePreview), "Preview must not commit a phase or pending event.");
+            session = SnapshotCodec.Deserialize(beforePreview, rules);
+            Assert.That(session.GetPlayerView().DreamReturnPhase, Is.EqualTo(expectedReturn));
             Scenario.Accept(session, new CompleteDream());
+            Assert.That(session.GetPlayerView().Phase, Is.EqualTo(expectedReturn));
+            Assert.That(session.GetPlayerView().DreamReturnPhase, Is.Null);
             Assert.That(session.GetPlayerView().Day, Is.EqualTo(3), "Completing projection cannot commit day four early.");
             Assert.That(JToken.DeepEquals(JToken.FromObject(before.PendingEvents), JToken.FromObject(session.CreateSnapshot().State.PendingEvents)), Is.True,
                 "Previewing priority cannot consume next-dawn events.");

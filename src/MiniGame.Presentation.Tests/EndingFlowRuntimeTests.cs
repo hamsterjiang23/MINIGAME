@@ -11,6 +11,45 @@ namespace MiniGame.Presentation.Tests
     [TestFixture]
     public sealed class EndingFlowRuntimeTests
     {
+        [TestCase(GamePhase.Apartment)]
+        [TestCase(GamePhase.Work)]
+        [TestCase(GamePhase.Dream)]
+        [TestCase(GamePhase.AfterDream)]
+        [TestCase(GamePhase.SelfReview)]
+        public void PauseShortcutEntersReplayableHiddenEndingWithoutChangingPatientHistory(GamePhase phase)
+        {
+            var rules = EndingRuntimeFixture.Rules(trust: 10);
+            var content = new EndingRuntimeFixture.Content();
+            var catalog = EndingRuntimeFixture.Catalog();
+            var runtime = EndingRuntimeFixture.Create(rules, content, catalog);
+            EndingRuntimeFixture.DriveTo(runtime, view => view.Game.Phase == phase);
+            RuntimeScenario.RejectWithoutMutation(runtime, runtime.EnterHiddenEndingFromPause);
+            string? oldToken = runtime.GetView().Cue?.Token;
+            var before = EndingRuntimeFixture.Core(runtime);
+            RuntimeScenario.Accept(runtime.SetPaused(true));
+            var result = RuntimeScenario.Accept(runtime.EnterHiddenEndingFromPause());
+            Assert.That(result.Events.Count(item => item.Kind == GameEventKind.GameEnded), Is.EqualTo(1));
+            Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.DreamSea));
+            Assert.That(runtime.GetView().Input, Is.EqualTo(InputContext.Ending));
+            Assert.That(runtime.GetView().TerminalOpen, Is.False);
+            Assert.That(runtime.GetView().Paused, Is.False);
+            Assert.That(runtime.EndingStage, Is.EqualTo(EndingStage.Transition));
+            var after = EndingRuntimeFixture.Core(runtime);
+            foreach (string key in new[] { "Patients", "Days", "Encounters", "Day", "Rebellion" })
+                Assert.That(JToken.DeepEquals(before["State"]![key], after["State"]![key]), Is.True, key);
+            Assert.That(after["CommandHistory"]!.Count(), Is.EqualTo(before["CommandHistory"]!.Count() + 1));
+            if (oldToken != null) RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(oldToken));
+            runtime = RoundTrip(runtime, rules, content, catalog);
+            RuntimeScenario.Accept(runtime.SetPaused(true));
+            RuntimeScenario.RejectWithoutMutation(runtime, runtime.EnterHiddenEndingFromPause);
+            RuntimeScenario.Accept(runtime.SetPaused(false));
+            RuntimeScenario.Accept(runtime.MarkEndingSpaceReady());
+            runtime = RoundTrip(runtime, rules, content, catalog);
+            RuntimeScenario.Accept(runtime.CompleteHiddenBed());
+            RuntimeScenario.Accept(runtime.MarkEndingCompleted());
+            Assert.That(RoundTrip(runtime, rules, content, catalog).EndingStage, Is.EqualTo(EndingStage.Completed));
+        }
+
         [TestCase(-1, -1, EndingType.TakenAway, 4, "supervisor-ending", 7)]
         [TestCase(1, -1, EndingType.LockedInRoom, 4, "supervisor-ending", 7)]
         [TestCase(2, 2, EndingType.PriestAttack, 3, "priest-ending", 8)]

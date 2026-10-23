@@ -23,7 +23,7 @@ namespace MiniGame.Core
         CompleteMorningInspection, CompleteBriefing, Interact,
         CompleteSleep, CompleteDream, SelectResponse, CompleteResponseBranch,
         SubmitDisposition, CompleteReaction, CompleteIntroduction, SelectPatient, BeginNightDream, ConfirmSelfPurification,
-        AdvanceSelfReview
+        AdvanceSelfReview, EnterHiddenEndingCheat, EnterGmEnding
     }
 
     public enum RejectionReason

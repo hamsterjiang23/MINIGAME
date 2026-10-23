@@ -1,0 +1,194 @@
+{
+    "result": "Passed",
+    "detail": "UI raycasts advanced the formal Day1 interview; keyboard disposition submission was blocked, arrows selected, pointer-down rendered without committing, and one Purify click committed once.",
+    "unity": "2022.3.23f1c1",
+    "environment": "Unity Editor Play Mode",
+    "checkpoint": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\TerminalV0824\\day1-directory.json",
+    "output": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\TerminalV0824\\EditorProbeFinal",
+    "isolatedSaveDirectory": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\TerminalV0824\\EditorProbeFinal\\isolated-saves-fa1034cf60454e5aa2519cb01dfb4391",
+    "manualSavePath": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\TerminalV0824\\EditorProbeFinal\\isolated-saves-fa1034cf60454e5aa2519cb01dfb4391\\campaign-dream-save.json",
+    "captureMode": "TerminalDisplay.Texture native GPU output plus current ScreenMaterial GPU CRT composite; neither image is a whole-window capture.",
+    "initialRuntimeHash": "32a2a214d7b9b0a9b582ccc47363d8a1047f4cc295d67ee48f22375793d82afa",
+    "finalRuntimeHash": "c266f7c99bd55874442fde7662589c812c2b8e4cf2db7a0f1f6c3cb242e4ca50",
+    "seconds": 18.58972930908203,
+    "initialQuota": 1,
+    "finalQuota": 0,
+    "uiClicks": 90,
+    "replyClicks": 7,
+    "lockedCaptured": true,
+    "keyboardSubmissionBlocked": true,
+    "directionSelectionVerified": true,
+    "pressedWithoutCommit": true,
+    "duplicateOldClickBlocked": true,
+    "captures": [
+        {
+            "label": "directory",
+            "nativeFile": "directory-terminal-native.png",
+            "crtFile": "directory-terminal-crt-gpu.png",
+            "shader": "PMS/Amber CRT",
+            "phase": "Work",
+            "stage": "NormalDialogue",
+            "page": "Directory",
+            "power": "Running",
+            "patient": "former-ruler",
+            "runtimeHash": "32a2a214d7b9b0a9b582ccc47363d8a1047f4cc295d67ee48f22375793d82afa",
+            "frame": 274,
+            "sourceFrame": 276,
+            "terminalMode": 1,
+            "day": 1,
+            "quota": 1,
+            "seconds": 0.29110050201416018,
+            "paused": false,
+            "transitionLocked": false,
+            "commands": []
+        },
+        {
+            "label": "locked",
+            "nativeFile": "locked-terminal-native.png",
+            "crtFile": "locked-terminal-crt-gpu.png",
+            "shader": "PMS/Amber CRT",
+            "phase": "Work",
+            "stage": "NormalDialogue",
+            "page": "Review",
+            "power": "Running",
+            "patient": "former-ruler",
+            "runtimeHash": "fcb15ac8fb28ba20fb4455019e540b2be1ce776e2c102ef6ea48c0c20f8c81e6",
+            "frame": 278,
+            "sourceFrame": 281,
+            "terminalMode": 1,
+            "day": 1,
+            "quota": 1,
+            "seconds": 0.510493278503418,
+            "paused": false,
+            "transitionLocked": false,
+            "commands": [
+                {
+                    "name": "Disposition-Release",
+                    "texture": "Release_Disabled",
+                    "interactable": false
+                },
+                {
+                    "name": "Disposition-Treat",
+                    "texture": "Treatment_Disabled",
+                    "interactable": false
+                },
+                {
+                    "name": "Disposition-Purify",
+                    "texture": "Purification_Disabled",
+                    "interactable": false
+                }
+            ]
+        },
+        {
+            "label": "normal-selected",
+            "nativeFile": "normal-selected-terminal-native.png",
+            "crtFile": "normal-selected-terminal-crt-gpu.png",
+            "shader": "PMS/Amber CRT",
+            "phase": "Work",
+            "stage": "AwaitingDisposition",
+            "page": "Review",
+            "power": "Running",
+            "patient": "former-ruler",
+            "runtimeHash": "ae57e3b436a491202312336f22c18e1ceab316f46a44e00485ad8ed2f1d13a89",
+            "frame": 806,
+            "sourceFrame": 810,
+            "terminalMode": 1,
+            "day": 1,
+            "quota": 1,
+            "seconds": 18.19272232055664,
+            "paused": false,
+            "transitionLocked": false,
+            "commands": [
+                {
+                    "name": "Disposition-Release",
+                    "texture": "Release_Selected",
+                    "interactable": true
+                },
+                {
+                    "name": "Disposition-Treat",
+                    "texture": "Treatment_Normal",
+                    "interactable": true
+                },
+                {
+                    "name": "Disposition-Purify",
+                    "texture": "Purification_Normal",
+                    "interactable": true
+                }
+            ]
+        },
+        {
+            "label": "pressed-before-submit",
+            "nativeFile": "pressed-before-submit-terminal-native.png",
+            "crtFile": "pressed-before-submit-terminal-crt-gpu.png",
+            "shader": "PMS/Amber CRT",
+            "phase": "Work",
+            "stage": "AwaitingDisposition",
+            "page": "Review",
+            "power": "Running",
+            "patient": "former-ruler",
+            "runtimeHash": "ae57e3b436a491202312336f22c18e1ceab316f46a44e00485ad8ed2f1d13a89",
+            "frame": 806,
+            "sourceFrame": 811,
+            "terminalMode": 1,
+            "day": 1,
+            "quota": 1,
+            "seconds": 18.301952362060548,
+            "paused": false,
+            "transitionLocked": false,
+            "commands": [
+                {
+                    "name": "Disposition-Release",
+                    "texture": "Release_Normal",
+                    "interactable": true
+                },
+                {
+                    "name": "Disposition-Treat",
+                    "texture": "Treatment_Normal",
+                    "interactable": true
+                },
+                {
+                    "name": "Disposition-Purify",
+                    "texture": "Purification_Pressed",
+                    "interactable": true
+                }
+            ]
+        },
+        {
+            "label": "committed",
+            "nativeFile": "committed-terminal-native.png",
+            "crtFile": "committed-terminal-crt-gpu.png",
+            "shader": "PMS/Amber CRT",
+            "phase": "Work",
+            "stage": "Reaction",
+            "page": "Review",
+            "power": "Running",
+            "patient": "former-ruler",
+            "runtimeHash": "c266f7c99bd55874442fde7662589c812c2b8e4cf2db7a0f1f6c3cb242e4ca50",
+            "frame": 812,
+            "sourceFrame": 818,
+            "terminalMode": 1,
+            "day": 1,
+            "quota": 0,
+            "seconds": 18.583026885986329,
+            "paused": false,
+            "transitionLocked": false,
+            "commands": [
+                {
+                    "name": "Disposition-Release",
+                    "texture": "Release_Disabled",
+                    "interactable": false
+                },
+                {
+                    "name": "Disposition-Treat",
+                    "texture": "Treatment_Disabled",
+                    "interactable": false
+                },
+                {
+                    "name": "Disposition-Purify",
+                    "texture": "Purification_Disabled",
+                    "interactable": false
+                }
+            ]
+        }
+    ]
+}

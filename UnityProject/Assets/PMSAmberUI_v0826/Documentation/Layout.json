@@ -1,0 +1,549 @@
+{
+  "version": "0.8.26",
+  "coordinateOrigin": "top-left",
+  "nativeCanvas": [
+    800,
+    600
+  ],
+  "scaleFromPreviousIcons": 0.6,
+  "selection": "full command row, latest approved preview",
+  "monitor": {
+    "rect": [
+      30,
+      92,
+      464,
+      261
+    ],
+    "aspect": "16:9"
+  },
+  "disposition": {
+    "rowOrigin": [
+      530,
+      200
+    ],
+    "width": 248,
+    "hitHeight": 44,
+    "pitch": 48,
+    "dividerOffsetY": 46
+  },
+  "icons": [
+    {
+      "id": "Release",
+      "name": "释放",
+      "sourceScale": 0.6,
+      "nativeSize": [
+        24,
+        20
+      ],
+      "cellSize": [
+        52,
+        44
+      ],
+      "cellBounds": [
+        2,
+        12,
+        24,
+        20
+      ],
+      "trimmedTopLeft": [
+        552,
+        212
+      ],
+      "labelTopLeft": [
+        674,
+        214
+      ],
+      "labelSize": [
+        32,
+        16
+      ],
+      "hitRect": [
+        530,
+        200,
+        248,
+        44
+      ]
+    },
+    {
+      "id": "Treatment",
+      "name": "治疗",
+      "sourceScale": 0.6,
+      "nativeSize": [
+        24,
+        22
+      ],
+      "cellSize": [
+        52,
+        44
+      ],
+      "cellBounds": [
+        2,
+        11,
+        24,
+        22
+      ],
+      "trimmedTopLeft": [
+        552,
+        259
+      ],
+      "labelTopLeft": [
+        674,
+        262
+      ],
+      "labelSize": [
+        32,
+        16
+      ],
+      "hitRect": [
+        530,
+        248,
+        248,
+        44
+      ]
+    },
+    {
+      "id": "Purification",
+      "name": "净化",
+      "sourceScale": 0.6,
+      "nativeSize": [
+        16,
+        24
+      ],
+      "cellSize": [
+        52,
+        44
+      ],
+      "cellBounds": [
+        2,
+        10,
+        16,
+        24
+      ],
+      "trimmedTopLeft": [
+        552,
+        306
+      ],
+      "labelTopLeft": [
+        674,
+        310
+      ],
+      "labelSize": [
+        32,
+        16
+      ],
+      "hitRect": [
+        530,
+        296,
+        248,
+        44
+      ]
+    }
+  ],
+  "labels": {
+    "centerX": 690,
+    "nativeSize": [
+      32,
+      16
+    ]
+  },
+  "quota": {
+    "rect": [
+      712,
+      135,
+      66,
+      32
+    ],
+    "source": "read-only value supplied by host"
+  },
+  "responses": {
+    "rect": [
+      530,
+      392,
+      248,
+      28
+    ],
+    "pitch": 35,
+    "maxRows": 4,
+    "lastBottom": 525
+  },
+  "footer": {
+    "rect": [
+      9,
+      548,
+      782,
+      43
+    ]
+  },
+  "unity": {
+    "RectTransformAnchors": [
+      0,
+      1
+    ],
+    "RectTransformPivot": [
+      0,
+      1
+    ],
+    "positionMapping": "(x, -y)",
+    "recommendedCanvasReferenceResolution": [
+      800,
+      600
+    ],
+    "filterMode": "Point",
+    "mipmaps": false,
+    "compression": "None",
+    "runtimeFontSubstitution": false
+  },
+  "directory": {
+    "dividerY": 305,
+    "rowOrigin": [
+      22,
+      108
+    ],
+    "rowSize": [
+      756,
+      27
+    ],
+    "rowPitch": 30,
+    "count": 5,
+    "configuredCount": 1,
+    "summary": [
+      29,
+      283
+    ],
+    "title": [
+      140,
+      322
+    ],
+    "portraitFrame": [
+      30,
+      322,
+      98,
+      130
+    ],
+    "portraitImage": [
+      31,
+      323,
+      96,
+      128
+    ],
+    "portraitDefault": "ML01",
+    "leftLabelsX": 140,
+    "leftValuesX": 212,
+    "leftRowsY": [
+      356,
+      380,
+      404,
+      428,
+      452
+    ],
+    "bodySize": 14,
+    "valueMaxWidth": 190,
+    "quota": [
+      212,
+      448,
+      56,
+      24
+    ],
+    "metadata": [
+      {
+        "label": "年龄",
+        "labelPosition": [
+          418,
+          354
+        ],
+        "valueRect": [
+          490,
+          348,
+          288,
+          26
+        ]
+      },
+      {
+        "label": "职业",
+        "labelPosition": [
+          418,
+          388
+        ],
+        "valueRect": [
+          490,
+          382,
+          288,
+          26
+        ]
+      },
+      {
+        "label": "登记摘要",
+        "labelPosition": [
+          418,
+          422
+        ],
+        "valueRect": [
+          490,
+          416,
+          288,
+          56
+        ]
+      }
+    ],
+    "placeholderValues": [
+      "未登记",
+      "未登记",
+      "待补录"
+    ],
+    "command": {
+      "labelPosition": [
+        24,
+        492
+      ],
+      "outline": [
+        118,
+        486,
+        660,
+        26
+      ],
+      "textPosition": [
+        128,
+        492
+      ]
+    },
+    "newCharacterGameplayConfigured": false
+  },
+  "portraits": {
+    "version": "0.8.26",
+    "origin": "top-left",
+    "nativeSize": [
+      96,
+      128
+    ],
+    "atlasSize": [
+      576,
+      128
+    ],
+    "portraits": [
+      {
+        "id": "AD01",
+        "name": "外交官",
+        "native": [
+          96,
+          128
+        ],
+        "atlasRect": [
+          0,
+          0,
+          96,
+          128
+        ],
+        "nativeFile": "Portraits/Native/AD01_Amber.png",
+        "doubleFile": "Portraits/Double/AD01_Amber.png",
+        "largeFile": "Portraits/Large/AD01_Amber.png",
+        "background": "#0b0803",
+        "precoloredAmber": true,
+        "alpha": "opaque",
+        "generatedMaster": [
+          1086,
+          1448
+        ],
+        "sourceFile": "Reference/UserSources/AD01_Source.png"
+      },
+      {
+        "id": "ML01",
+        "name": "小孩",
+        "native": [
+          96,
+          128
+        ],
+        "atlasRect": [
+          96,
+          0,
+          96,
+          128
+        ],
+        "nativeFile": "Portraits/Native/ML01_Amber.png",
+        "doubleFile": "Portraits/Double/ML01_Amber.png",
+        "largeFile": "Portraits/Large/ML01_Amber.png",
+        "background": "#0b0803",
+        "precoloredAmber": true,
+        "alpha": "opaque",
+        "generatedMaster": [
+          1086,
+          1448
+        ],
+        "sourceFile": "Reference/UserSources/ML01_Source.png"
+      },
+      {
+        "id": "ED02",
+        "name": "战场医生",
+        "native": [
+          96,
+          128
+        ],
+        "atlasRect": [
+          192,
+          0,
+          96,
+          128
+        ],
+        "nativeFile": "Portraits/Native/ED02_Amber.png",
+        "doubleFile": "Portraits/Double/ED02_Amber.png",
+        "largeFile": "Portraits/Large/ED02_Amber.png",
+        "background": "#0b0803",
+        "precoloredAmber": true,
+        "alpha": "opaque",
+        "generatedMaster": [
+          1086,
+          1448
+        ],
+        "sourceFile": "Reference/UserSources/ED02_Source.png"
+      },
+      {
+        "id": "VV01",
+        "name": "执政者",
+        "native": [
+          96,
+          128
+        ],
+        "atlasRect": [
+          288,
+          0,
+          96,
+          128
+        ],
+        "nativeFile": "Portraits/Native/VV01_Amber.png",
+        "doubleFile": "Portraits/Double/VV01_Amber.png",
+        "largeFile": "Portraits/Large/VV01_Amber.png",
+        "background": "#0b0803",
+        "precoloredAmber": true,
+        "alpha": "opaque",
+        "generatedMaster": [
+          1086,
+          1448
+        ],
+        "sourceFile": "Reference/UserSources/VV01_Source.png"
+      },
+      {
+        "id": "SJ01",
+        "name": "主角",
+        "native": [
+          96,
+          128
+        ],
+        "atlasRect": [
+          384,
+          0,
+          96,
+          128
+        ],
+        "nativeFile": "Portraits/Native/SJ01_Amber.png",
+        "doubleFile": "Portraits/Double/SJ01_Amber.png",
+        "largeFile": "Portraits/Large/SJ01_Amber.png",
+        "background": "#0b0803",
+        "precoloredAmber": true,
+        "alpha": "opaque",
+        "generatedMaster": [
+          1086,
+          1448
+        ],
+        "sourceFile": "Reference/UserSources/SJ01_Source.png"
+      },
+      {
+        "id": "JN02",
+        "name": "神父",
+        "native": [
+          96,
+          128
+        ],
+        "atlasRect": [
+          480,
+          0,
+          96,
+          128
+        ],
+        "nativeFile": "Portraits/Native/JN02_Amber.png",
+        "doubleFile": "Portraits/Double/JN02_Amber.png",
+        "largeFile": "Portraits/Large/JN02_Amber.png",
+        "background": "#0b0803",
+        "precoloredAmber": true,
+        "alpha": "opaque",
+        "generatedMaster": [
+          1086,
+          1448
+        ],
+        "sourceFile": "Reference/UserSources/JN02_Source.png"
+      }
+    ]
+  },
+  "dossierLabels": [
+    {
+      "text": "终端",
+      "file": "Labels/Dossier_终端.png",
+      "size": [
+        28,
+        14
+      ]
+    },
+    {
+      "text": "对象",
+      "file": "Labels/Dossier_对象.png",
+      "size": [
+        28,
+        14
+      ]
+    },
+    {
+      "text": "单元",
+      "file": "Labels/Dossier_单元.png",
+      "size": [
+        28,
+        14
+      ]
+    },
+    {
+      "text": "档案状态",
+      "file": "Labels/Dossier_档案状态.png",
+      "size": [
+        56,
+        14
+      ]
+    },
+    {
+      "text": "净化配额",
+      "file": "Labels/Dossier_净化配额.png",
+      "size": [
+        56,
+        14
+      ]
+    },
+    {
+      "text": "年龄",
+      "file": "Labels/Dossier_年龄.png",
+      "size": [
+        28,
+        14
+      ]
+    },
+    {
+      "text": "职业",
+      "file": "Labels/Dossier_职业.png",
+      "size": [
+        28,
+        14
+      ]
+    },
+    {
+      "text": "登记摘要",
+      "file": "Labels/Dossier_登记摘要.png",
+      "size": [
+        56,
+        14
+      ]
+    },
+    {
+      "text": "当前命令",
+      "file": "Labels/Dossier_当前命令.png",
+      "size": [
+        56,
+        14
+      ]
+    }
+  ]
+}

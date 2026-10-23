@@ -1,0 +1,77 @@
+{
+  "version": "0.8.26",
+  "packageSha256": "ba6769267a76aac1b2b82980bd46bdea425d7901436377e6f3bc4b4d0f05863f",
+  "documentSha256": "c3da4182e94351d147f0f9e345fb92bf1ed45a9746a0759207067ee8f54c40db",
+  "htmlSha256": "53e542d3e056eddd8f5020969685bdfe48487173228d79f79441e88d331934a8",
+  "sources": {
+    "package": "C:\\Users\\admin\\Downloads\\PMS_UI_Resources_v0.8.26_Portraits.zip",
+    "document": "E:\\Downloads\\角色信息缩略版.docx",
+    "html": "C:\\Users\\admin\\Downloads\\审查终端_Day1_交互原型_v0.8.26_肖像档案资源版.html"
+  },
+  "importedAssets": {
+    "Portraits/Native/ML01_Amber.png": "c31808626fd501d26201ea2060faf8198b1f9811d3ed9fa364e9ecb0260bd47b",
+    "Portraits/Native/JN02_Amber.png": "dd50f5cc354e97369baf7704b6e22bce15d05d7482e1ae4ec0e4d3f6c2c95fdd",
+    "Portraits/Native/VV01_Amber.png": "4a156308a2a8f5da2c1236ecfbc042d8aa0833eef8229f2fa064b728463d3a95",
+    "Portraits/Native/AD01_Amber.png": "6e37f0362844afe5e90ba48d8ddd220de4024dd208d419842fe375d4c76bb78a",
+    "Portraits/Native/ED02_Amber.png": "ab9027cdb19af507a1a7883796f947acf0fedaf7a0d19391f6a8024a6a62e152",
+    "Portraits/Native/SJ01_Amber.png": "0ab9b172e77d92b2ee03f2bddeb02fd91e0d6fc10f01b9aa84a322a93ea33e51",
+    "Portraits/Portraits.json": "6470d37d6098b65c7d0dcbdb1df2731314882dd61071e253843eca8aa2816a43",
+    "UI/Frame_Directory_800x600.png": "2207ddf1c9864f5ebbf0d7ff51bcee14f0573d365de9af0868010f57f49cfb5a",
+    "Fonts/DossierQuota_00_99.png": "4c70cadc5ed65deac885e06bb3bafd200795b9a2bffb71bf5e2e30c571d7f7c4",
+    "Fonts/DossierQuota.json": "d30127e8cf422f9b5375558a9f969c329a4c7221cd7496970414fc21223db6f6",
+    "Documentation/Layout.json": "6e92b30fc95059a6475dc531ab639629a52cdb91cb2ba52a623d33f6c615a4ce",
+    "Documentation/ThirdPartyNotices.md": "b2999cf3d6839cbe901c3f32f40075b41874779231ce04374606232db6279a88",
+    "README.md": "d899a068473bbf39e26e380f8e8ebbacb3ea41157940737a5d89acef3a949297"
+  },
+  "profiles": [
+    {
+      "patientId": "child",
+      "portraitId": "ML01",
+      "age": "8岁",
+      "occupation": "无",
+      "summary": "无父无母，未接受教育，检测时表现异常。"
+    },
+    {
+      "patientId": "priest",
+      "portraitId": "JN02",
+      "age": "67岁",
+      "occupation": "神父",
+      "summary": "私自对多名信徒实施自创的“净化手术”，导致多人被残忍杀害，情绪极度不稳定，强烈向往净化。"
+    },
+    {
+      "patientId": "former-ruler",
+      "portraitId": "VV01",
+      "age": "35岁",
+      "occupation": "***",
+      "summary": "高度危险的政治倾向，********，建议直接净化。"
+    },
+    {
+      "patientId": "diplomat",
+      "portraitId": "AD01",
+      "age": "28岁",
+      "occupation": "外交官",
+      "summary": "高度危险的政治倾向，********，建议直接净化。"
+    },
+    {
+      "patientId": "battlefield-doctor",
+      "portraitId": "ED02",
+      "age": "58岁",
+      "occupation": "前战地医生",
+      "summary": "高强度战后应激创伤障碍，情绪不稳定，曾对人实施过非致命暴力，思想因战争产生偏差。"
+    },
+    {
+      "patientId": "self-review",
+      "portraitId": "SJ01",
+      "age": "未登记",
+      "occupation": "未登记",
+      "summary": "第三安置所值班审查员。本人复核记录。"
+    },
+    {
+      "patientId": "tutorial",
+      "portraitId": "",
+      "age": "未登记",
+      "occupation": "未登记",
+      "summary": "身份尚未登记的收容者。等待本次审查。"
+    }
+  ]
+}

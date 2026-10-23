@@ -25,7 +25,6 @@ namespace MiniGame.UnityHost
         private CanvasGroup conversationGroup;
         private TerminalTransitionView handoff;
         private Text reticle;
-        private bool focusAllowed;
         private float terminalReveal = 1f;
         private TerminalView terminalView;
         private RawImage menuOpeningLogo;
@@ -89,7 +88,10 @@ namespace MiniGame.UnityHost
         public bool HistoryOpen => terminalView != null && terminalView.HistoryOpen;
         public bool PauseManualVisible => pauseMenu != null && pauseMenu.ManualVisible;
         public bool PauseSettingsVisible => pauseMenu != null && pauseMenu.SettingsVisible;
-        public bool PauseSubmenuVisible => PauseManualVisible || PauseSettingsVisible;
+        public bool PauseGmVisible => pauseMenu != null && pauseMenu.GmVisible;
+        public bool PauseSubmenuVisible => PauseManualVisible || PauseSettingsVisible || PauseGmVisible;
+        public bool TryClosePauseGm() => pauseMenu != null && pauseMenu.TryCloseGm();
+        public bool WorldInputBlockedThisFrame => pauseClosedFrame == Time.frameCount;
         public bool TryClosePauseSettings() => pauseMenu != null && pauseMenu.TryCloseSettings();
         public bool TryClosePauseManual() => pauseMenu != null && pauseMenu.TryCloseManual();
         public string CurrentRoomCaption => propNarration != null && propNarration.IsOpen ? propNarration.CurrentText
@@ -212,7 +214,6 @@ namespace MiniGame.UnityHost
 
         public void SetInteractionCursor(InteractionCursorKind kind, bool allowed)
         {
-            focusAllowed = allowed;
             interactionCursor?.SetKind(allowed ? kind : InteractionCursorKind.None);
         }
         public void ShowRoomCaption(string text, float seconds = 4)
@@ -333,7 +334,12 @@ namespace MiniGame.UnityHost
             glitch.rectTransform.anchoredPosition = amount > 0f ? new Vector2(Mathf.Sin(Time.unscaledTime * 73f) * 22f, 0f) : Vector2.zero;
         }
         public void SetTransitionLocked(bool locked)
-        { transitionLocked = locked; if (locked) ClearRoomCaption(); ApplyInputGate(); }
+        {
+            if (transitionLocked && !locked) pauseClosedFrame = Time.frameCount;
+            transitionLocked = locked;
+            if (locked) ClearRoomCaption();
+            ApplyInputGate();
+        }
 
         public void SetDialogueText(string displaySpeaker, string text)
         {
@@ -462,13 +468,13 @@ namespace MiniGame.UnityHost
             }
             if (interactionCursor != null)
             {
-                bool world = current != null && current.Input == InputContext.World && !transitionLocked && !PropNarrationBlocksWorld;
+                bool world = current != null && current.Input == InputContext.World && !current.Paused
+                    && !PresentationToolsBlockInput && !transitionLocked && !PropNarrationBlocksWorld;
                 bool showPrompt = world || (current != null && current.Input == InputContext.DoorView);
                 worldHelp.gameObject.SetActive(false);
                 interactionCursor.SetVisible(showPrompt && !current.Paused && !PresentationToolsBlockInput);
                 reticle.color = Ink;
-                reticle.gameObject.SetActive(world && !interactionCursor.Visible
-                    && (!BedtimeGuidance.IsSleepOnly(current) || focusAllowed));
+                reticle.gameObject.SetActive(world && !interactionCursor.Visible);
                 if (conversation.activeSelf) conversationGroup.alpha = Mathf.MoveTowards(conversationGroup.alpha, 1, Time.unscaledDeltaTime * 6);
                 else conversationGroup.alpha = 0;
             }
@@ -610,7 +616,8 @@ namespace MiniGame.UnityHost
         {
             EnsureBuilt();
             // Submit can close the pause menu before this frame's dialogue input is polled.
-            if (current != null && current.Paused && !view.Paused) pauseClosedFrame = Time.frameCount;
+            if (current != null && (current.Paused && !view.Paused
+                || current.Input != InputContext.World && view.Input == InputContext.World)) pauseClosedFrame = Time.frameCount;
             if (current != null && current.Game.Phase != view.Game.Phase) ClearNotification();
             current = view;
             if (!view.Paused && view.Input != InputContext.World) ClearRoomCaption();
@@ -798,6 +805,19 @@ namespace MiniGame.UnityHost
             Action[] actions = { () => runtime.SetPaused(false), () => SaveRequested?.Invoke(), () => LoadRequested?.Invoke(),
                 () => RestartRequested?.Invoke(), () => pauseMenu.ShowSettings(), () => pauseMenu.ShowManual(), () => MainMenuRequested?.Invoke(), () => Application.Quit() };
             pauseMenu = PauseMenuView.Create(canvasRoot, font, "PauseModal", labels, new[] { "ESC", "F5", "F9", "", "", "", "", "" }, actions);
+            pauseMenu.ConfigureHiddenEndingShortcut(() =>
+            {
+                if (runtime == null || PresentationToolsBlockInput) return;
+                var result = runtime.EnterHiddenEndingFromPause();
+                if (!result.Accepted) Notify("当前无法进入隐藏梦结局。", true);
+            });
+            pauseMenu.ConfigureGmEndings(ending =>
+            {
+                if (runtime == null || PresentationToolsBlockInput) return;
+                var host = FindObjectOfType<MiniGameBootstrap>();
+                if (host != null) host.EnterGmEnding(ending);
+                else Notify("当前场景没有可切换的检查流程。", true);
+            });
             pauseMenu.SetHint("保存当前进度，下次可从这里继续检查。");
             fade = MakePanel(canvasRoot, "PresentationFade", Color.clear, Vector2.zero, Vector2.one).GetComponent<Image>();
             fade.raycastTarget = false;
@@ -924,7 +944,7 @@ namespace MiniGame.UnityHost
         {
             switch (phase) { case GamePhase.MorningInspection: return "门外有人。到门前完成晨检。"; case GamePhase.Apartment: return "简报已送达。到电脑开始工作。";
                 case GamePhase.Work: return "下一位病人在等候。到电脑继续。"; case GamePhase.Evening: return "工作结束。到床前休息。";
-                case GamePhase.AfterDream: return "从梦境醒来。只有床可以继续推进日期。"; default: return "按屏幕提示继续。"; }
+                case GamePhase.AfterDream: return "即将从梦境醒来。"; default: return "按屏幕提示继续。"; }
         }
     }
 }

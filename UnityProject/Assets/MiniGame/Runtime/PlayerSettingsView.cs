@@ -20,6 +20,7 @@ namespace MiniGame.UnityHost
         public Slider VolumeSlider { get; private set; }
         public Button[] PixelDetailButtons { get; private set; } = Array.Empty<Button>();
         public Button ReturnButton { get; private set; }
+        public PixelStrengthTooltip PixelLegend { get; private set; }
 
         public static PlayerSettingsView Create(Transform parent, Font font, Action onBack)
         {
@@ -53,7 +54,7 @@ namespace MiniGame.UnityHost
             volumeValue = TextAt(root, font, "VolumeValue", "100%", 24, 528, 231, 174, 40);
             volumeValue.alignment = TextAnchor.MiddleRight;
             VolumeSlider = MakeSlider("Volume", 276, 0, 1, PlayerPreferences.SetMasterVolume);
-            TextAt(root, font, "PixelDetailHeading", "复古效果", 26, 38, 337, 664, 40);
+            TextAt(root, font, "PixelDetailHeading", "像素风强度", 26, 38, 337, 664, 40);
             PixelDetailButtons = new Button[3];
             for (int i = 0; i < PixelDetailButtons.Length; i++)
             {
@@ -67,11 +68,15 @@ namespace MiniGame.UnityHost
                         EventSystem.current?.SetSelectedGameObject(PixelDetailButtons[index].gameObject);
                     }, out detailLabels[i]);
             }
-            TextAt(root, font, "SettingsSaveHint", "即时生效，自动保存", 21, 38, 462, 664, 34);
+            TextAt(root, font, "SettingsSaveHint", "像素块越大，像素风越强。即时生效，自动保存。", 20, 38, 462, 664, 34);
             ReturnButton = MakeButton(font, "SettingsReturn", 38, 506, 664, "返回", "ESC", () =>
             {
                 if (isActiveAndEnabled) onBack?.Invoke();
             }, out returnLabel);
+            PixelLegend = PixelStrengthTooltip.Create(root, font);
+            for (int i = 0; i < PixelDetailButtons.Length; i++)
+                PixelDetailButtons[i].gameObject.AddComponent<PixelStrengthHintTrigger>()
+                    .Initialize(PixelLegend, Details[i], new Vector2(38 + i * 228, -165));
             ConfigureNavigation();
             Refresh();
         }
@@ -86,6 +91,7 @@ namespace MiniGame.UnityHost
 
         public void Hide()
         {
+            PixelLegend?.Hide();
             var selected = EventSystem.current?.currentSelectedGameObject;
             if (selected != null && selected.transform.IsChildOf(transform)) EventSystem.current.SetSelectedGameObject(null);
             gameObject.SetActive(false);

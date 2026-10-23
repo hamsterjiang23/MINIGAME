@@ -17,10 +17,14 @@ namespace MiniGame.UnityHost
         private readonly GameObject directory, review, selfReview, history, answers;
         private readonly Text date, day, count, previewName, previewId, previewStage, previewStatus, previewUnit, quota;
         private readonly Text previewIntroduction, previewNoImage;
+        private readonly Text previewAge, previewOccupation;
+        private readonly TerminalDossierSummary dossierSummary;
+        private readonly TerminalQuotaField dossierQuota;
         private readonly Image previewPortrait;
         private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, commandStatus, footerText, footerHelp, pageLabel;
-        private readonly Text directoryRequirement, reviewRequirement;
-        private readonly Text dailyWorkRemaining;
+        private readonly Text directoryRequirement;
+        private readonly TerminalQuotaField dailyWorkRemaining;
+        private readonly Text dispositionInstructions;
         private readonly TerminalTranscriptView transcriptView;
         private readonly TerminalTranscriptView historyTranscript;
         private readonly GameObject historyModal;
@@ -105,34 +109,46 @@ namespace MiniGame.UnityHost
                 foreach (var label in new[] { registration, stage, unit, status, row.transform.Find("RowNumber").GetComponent<Text>() }) TerminalIndustrialSkin.RegisterLabel(row, label);
                 rosterRows.Add(row); rosterLabels.Add(new[] { name, registration, unit, status, stage });
             }
-            count = Label(dr, "RosterCount", "", 29, 272, 470, 20, 12, Dim);
-            directoryRequirement = Label(dr, "DirectoryPurificationRequirement", "", 554, 272, 220, 20, 13, Bright);
+            count = Label(dr, "RosterCount", "", 29, 283, 470, 20, 12, Dim);
+            directoryRequirement = Label(dr, "DirectoryPurificationRequirement", "", 554, 283, 220, 20, 13, Bright);
             directoryRequirement.alignment = TextAnchor.UpperRight;
-            Rule(dr, 8, 297, 784);
-            var dossierPortrait = Panel(dr, "DirectoryPortraitPanel", ColorOf("0e0b04"), 24, 306, 180, 228);
-            Border(dossierPortrait, "DirectoryPortraitBorder", 0, 0, 180, 228, Edge);
-            previewPortrait = Portrait(dossierPortrait, "DirectoryPortrait", 6, 6, 168, 216);
-            previewNoImage = Label(dossierPortrait, "DirectoryPortraitNoImage", "NO IMAGE", 12, 104, 156, 20, 12, Dim);
+            var dossierPortrait = Panel(dr, "DirectoryPortraitPanel", Color.clear, 30, 322, 98, 130);
+            previewPortrait = Portrait(dossierPortrait, "DirectoryPortrait", 1, 1, 96, 128);
+            previewNoImage = Label(dossierPortrait, "DirectoryPortraitNoImage", "影像待载入", 1, 58, 96, 20, 12, Dim);
             previewNoImage.alignment = TextAnchor.UpperCenter;
-            previewName = Label(dr, "Preview对象", "", 224, 308, 254, 25, 18, Bright);
-            previewId = Label(dr, "PreviewId", "", 486, 313, 288, 20, 13, Ink);
-            previewId.alignment = TextAnchor.UpperRight;
-            Label(dr, "PreviewIntroductionLabel", "公开档案", 224, 343, 220, 20, 12, Dim);
-            previewIntroduction = Label(dr, "PreviewIntroduction", "", 224, 366, 548, 66, 14, Ink);
-            previewIntroduction.horizontalOverflow = HorizontalWrapMode.Wrap;
-            previewIntroduction.verticalOverflow = VerticalWrapMode.Truncate;
-            Label(dr, "PreviewStageLabel", "阶段", 224, 449, 44, 20, 13, Dim);
-            previewStage = Label(dr, "PreviewStage", "", 274, 449, 150, 20, 13, Ink);
-            Label(dr, "状态Label", "状态", 458, 449, 44, 20, 13, Dim);
-            previewStatus = Label(dr, "Preview状态", "", 508, 449, 70, 20, 13, Ink);
-            previewUnit = Label(dr, "PreviewUnit", "", 608, 449, 166, 20, 13, Ink);
-            previewUnit.alignment = TextAnchor.UpperRight;
-            Label(dr, "净化配额Label", "净化配额", 224, 477, 110, 20, 12, Dim);
-            quota = Label(dr, "PurificationQuota", "", 338, 477, 70, 20, 12, Ink);
-            enter = Button(dr, "EnterReview", "进入人员复核", 224, 506, 350, 28, EnterSelected);
+            previewId = Label(dr, "PreviewId", "", 140, 322, 638, 24, 18, Bright);
+            Label(dr, "DossierFacilityLabel", "终端", 140, 356, 70, 20, 14, Ink);
+            Label(dr, "DossierFacility", "第三安置所 / B区", 212, 356, 190, 20, 14, Ink);
+            Label(dr, "DossierSubjectLabel", "对象", 140, 380, 70, 20, 14, Ink);
+            previewName = Label(dr, "Preview对象", "", 212, 380, 190, 20, 14, Ink);
+            Label(dr, "DossierUnitLabel", "单元", 140, 404, 70, 20, 14, Ink);
+            previewUnit = Label(dr, "PreviewUnit", "", 212, 404, 190, 20, 14, Ink);
+            Label(dr, "状态Label", "档案状态", 140, 428, 70, 20, 14, Ink);
+            previewStatus = Label(dr, "Preview状态", "", 212, 428, 32, 20, 14, Ink);
+            Label(dr, "DossierStatusSeparator", "/", 249, 428, 14, 20, 14, Ink);
+            previewStage = Label(dr, "PreviewStage", "", 270, 428, 132, 20, 14, Ink);
+            Label(dr, "净化配额Label", "净化配额", 140, 452, 70, 20, 14, Ink);
+            var quotaRoot = Panel(dr, "DossierQuota", Color.clear, 212, 448, 56, 24);
+            quota = Label(quotaRoot, "PurificationQuota", "", 0, 3, 56, 20, 14, ColorOf("170e02"));
+            quota.alignment = TextAnchor.UpperCenter;
+            dossierQuota = quotaRoot.gameObject.AddComponent<TerminalQuotaField>();
+            dossierQuota.Initialize(assets != null ? assets.DossierQuotaFields : null,
+                assets != null ? assets.DossierQuotaMetrics : null, quota, new Vector2Int(56, 24));
+            Label(dr, "DossierAgeLabel", "年龄", 418, 354, 70, 20, 14, Ink);
+            previewAge = Label(dr, "DossierAge", "", 499, 354, 270, 20, 14, ColorOf("170e02"));
+            Label(dr, "DossierOccupationLabel", "职业", 418, 388, 70, 20, 14, Ink);
+            previewOccupation = Label(dr, "DossierOccupation", "", 499, 388, 270, 20, 14, ColorOf("170e02"));
+            Label(dr, "PreviewIntroductionLabel", "登记摘要", 418, 422, 70, 20, 14, Ink);
+            var summaryRoot = Panel(dr, "DossierSummary", Color.clear, 490, 416, 288, 56);
+            summaryRoot.GetComponent<Image>().raycastTarget = true;
+            previewIntroduction = Label(summaryRoot, "PreviewIntroduction", "", 9, 6, 270, 44, 14, ColorOf("170e02"));
+            dossierSummary = summaryRoot.gameObject.AddComponent<TerminalDossierSummary>();
+            dossierSummary.Initialize(previewIntroduction, font);
+            Label(dr, "DossierCommandLabel", "当前命令", 24, 492, 90, 20, 14, Ink);
+            enter = Button(dr, "EnterReview", "进入人员复核", 118, 486, 660, 26, EnterSelected, 14);
             ((TerminalButtonVisual)enter).SetCommandField();
-            Position(enter.transform.Find("Label").GetComponent<RectTransform>(), 7, 5, 336, 20);
-            leave = Button(dr, "LeaveTerminal", "退出终端返回房间", 590, 506, 188, 28, leaveAction, 13);
+            Position(enter.transform.Find("Label").GetComponent<RectTransform>(), 10, 6, 640, 20);
+            leave = Button(dr, "LeaveTerminal", "退出终端返回房间", 590, 518, 188, 24, leaveAction, 13);
 
             var rr = (RectTransform)review.transform;
             recordName = Label(rr, "RecordRegistration", "", 26, 51, 470, 20, 13, Ink);
@@ -171,26 +187,32 @@ namespace MiniGame.UnityHost
             transcriptView = new TerminalTranscriptView(rr, font, signals);
             history = transcriptView.GameObject;
             roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 124, 19, 13, Dim);
-            commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 24, 12, Dim);
-            reviewRequirement = Label(rr, "ReviewPurificationRequirement", "", 662, 84, 116, 18, 11, Bright);
-            reviewRequirement.alignment = TextAnchor.UpperRight;
-            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 147, 195, 20, 12, Dim);
-            dailyWorkRemaining = Label(rr, "DailyWorkIndicatorRemaining", "", 738, 145, 40, 24, 18, Bright);
-            dailyWorkRemaining.alignment = TextAnchor.UpperRight;
+            commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 46, 12, Dim);
+            commandStatus.horizontalOverflow = HorizontalWrapMode.Wrap;
+            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 147, 168, 20, 12, Dim);
+            var quotaField = Panel(rr, "DailyWorkQuotaField", Bright, 712, 135, 66, 32);
+            var quotaFallback = Label(quotaField, "DailyWorkIndicatorRemaining", "", 0, 0, 66, 32, 24, ColorOf("170e02"));
+            quotaFallback.alignment = TextAnchor.MiddleCenter;
+            dailyWorkRemaining = quotaField.gameObject.AddComponent<TerminalQuotaField>();
+            dailyWorkRemaining.Initialize(assets, quotaFallback);
             Label(rr, "DispositionHeading", "处置命令", 534, 173, 240, 19, 13, Dim); Rule(rr, 530, 194, 248);
             var types = new[] { Disposition.Release, Disposition.Treat, Disposition.Purify };
             for (int i = 0; i < types.Length; i++)
             {
                 var type = types[i];
-                var button = Button(rr, "Disposition-" + type, (i + 1).ToString("00") + "   " + DispositionName(type), 530, 204 + i * 37, 248, 28, () => dispositionAction(type));
-                var availability = Label(button.transform, "Availability", "锁定", 8, 5, 232, 18, 12, Dim);
-                availability.alignment = TextAnchor.UpperRight;
-                TerminalIndustrialSkin.RegisterLabel(button, availability); dispositions.Add(type, button);
-                ((TerminalButtonVisual)button).PointerSelected = () => SelectDisposition(button);
+                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 200 + i * 48, 248, 44, () => dispositionAction(type));
+                var visual = (TerminalButtonVisual)button;
+                visual.SetCommandArtwork(type == Disposition.Release ? assets.ReleaseCommand
+                    : type == Disposition.Treat ? assets.TreatmentCommand : assets.PurificationCommand);
+                dispositions.Add(type, button);
+                visual.PointerSelected = () => SelectDisposition(button);
             }
-            Rule(rr, 530, 334, 248); Label(rr, "AnswerHeading", "应答命令", 534, 346, 240, 19, 13, Dim);
-            answers = Panel(rr, "AnswerContents", Color.clear, 530, 374, 248, 158).gameObject;
+            Rule(rr, 530, 352, 248); Label(rr, "AnswerHeading", "应答命令", 534, 364, 240, 19, 13, Dim);
+            answers = Panel(rr, "AnswerContents", Color.clear, 530, 392, 248, 140).gameObject;
             ChoiceRoot = (RectTransform)answers.transform;
+            dispositionInstructions = Label(ChoiceRoot, "DispositionInstructions", "会谈结束。请用鼠标点击上方处置命令。", 6, 8, 236, 76, 14, Dim);
+            dispositionInstructions.horizontalOverflow = HorizontalWrapMode.Wrap;
+            dispositionInstructions.gameObject.SetActive(false);
             Continue = Button(ChoiceRoot, "Continue", "下一句      Enter", 0, 0, 248, 28, null);
             returnDirectory = Button(ChoiceRoot, "ReturnDirectory", "返回对象目录   Enter", 0, 0, 248, 28, () => returnToDirectory());
             NarrationBody = Label(ChoiceRoot, "ConclusionBody", "", 6, 2, 236, 100, 14, Ink);
@@ -276,6 +298,7 @@ namespace MiniGame.UnityHost
             CloseHistory();
             current = view; rosterIndex = 0;
             transcriptView.Reset();
+            dossierSummary.ResetScroll();
             sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId ?? view.Game.CurrentPatientId);
             ClearNarration(); RestorePresentation(view); SetSignalDistortion(0); Render(view, false);
         }
@@ -283,6 +306,7 @@ namespace MiniGame.UnityHost
         {
             bool nextEncounter = current == null || current.PresentedEncounterId != view.PresentedEncounterId;
             bool enteringDirectory = view.TerminalPage == TerminalPage.Directory && current?.TerminalPage != TerminalPage.Directory;
+            bool reopeningTerminal = view.TerminalOpen && current?.TerminalOpen != true;
             current = view; locked = inputLocked;
             if (nextEncounter) { sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId); transcriptView.Reset(); RestorePresentation(view); }
             if (enteringDirectory) { int next = view.Patients.ToList().FindIndex(p => p.IsCurrent); if (next >= 0) rosterIndex = next; }
@@ -300,24 +324,10 @@ namespace MiniGame.UnityHost
             cameraLabel.text = "CAM " + PortraitCatalog.Unit(id).Replace("-", "") + "-01";
             string round = RoundName(sourceNodeId);
             roundLabel.text = "人员复核 / " + round;
-            directoryRequirement.text = reviewRequirement.text = "净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;
-            dailyWorkRemaining.text = Math.Max(0, view.Game.RemainingPurificationQuota).ToString("00");
+            directoryRequirement.text = "净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;
+            dailyWorkRemaining.SetValue(view.Game.RemainingPurificationQuota);
             bool measure = (view.Game.EncounterStage == EncounterStage.AwaitingDisposition || view.SelfReviewReady) && !archived;
-            commandStatus.text = measure ? "会谈结束，可执行处置。" : view.PresentedDisposition.HasValue ? "处置已登记。" : "会谈进行中，处置暂时锁定。";
-            int available = 0;
-            foreach (var pair in dispositions)
-            {
-                bool configured = !view.UsesTerminalDirectory || view.ConfiguredDispositions.Contains(pair.Key);
-                pair.Value.gameObject.SetActive(configured);
-                bool enabled = configured && measure && !locked && view.Input == InputContext.Dialogue
-                    && (view.IsSelfReview ? pair.Key == Disposition.Purify && view.SelfReviewReady : view.Game.AvailableDispositions.Contains(pair.Key));
-                pair.Value.interactable = enabled;
-                pair.Value.transform.Find("Availability").GetComponent<Text>().text = enabled ? "可执行" : "锁定";
-                if (enabled) available++;
-            }
-            var activeDispositions = dispositions.Values.Where(b => b.gameObject.activeSelf && b.interactable).ToList();
-            selectedDisposition = Mathf.Clamp(selectedDisposition, 0, Mathf.Max(0, available - 1));
-            foreach (var pair in dispositions) TerminalIndustrialSkin.SetSelected(pair.Value, activeDispositions.Count > 0 && pair.Value == activeDispositions[selectedDisposition]);
+            RenderDispositionCommands();
             returnDirectory.gameObject.SetActive(archived && !dir && !view.LeavingTerminal);
             returnDirectory.interactable = !locked;
             answers.SetActive(true);
@@ -332,13 +342,14 @@ namespace MiniGame.UnityHost
             bool tutorial = view.Game.Day == 0;
             supervisor.gameObject.SetActive(showingOpeningLogo && live);
             historyHeading.text = "对话 / " + round;
+            if (enteringDirectory || reopeningTerminal) dossierSummary.ResetScroll();
             RenderRoster(); RenderHistory();
             footer.interactable = !locked && !tutorial;
             footer.enabled = !tutorial;
             footer.GetComponent<Image>().raycastTarget = !tutorial;
-            Footer(self ? "本人复核 / 确认净化" : dir ? enter.interactable ? "选择对象并确认，进入人员复核" : "当前对象不可再次接待" : archived ? "审查已结束 / 档案已关闭" : measure ? "会谈结束 / 选择处置命令并确认" : "按 Enter 或单击反白命令条继续",
-                dir ? "↑↓ 选择对象   单击 / Enter 打开" : "↑↓ 选择   Enter / 单击 确认   1–4 应答");
-            if (!dir && !self && ChoiceRoot.GetComponentsInChildren<Button>(false).Any(b => b.name.StartsWith("Reply-", StringComparison.Ordinal))) footerText.text = "选择应答并确认";
+            Footer(self ? "本人复核 / 确认净化" : dir ? enter.interactable ? "选择对象并确认，进入人员复核" : "当前对象不可再次接待" : archived ? "审查已结束 / 档案已关闭" : measure ? "会谈结束 / 单击处置命令执行" : "按 Enter 或单击反白命令条继续",
+                dir ? "↑↓ 选择对象   单击 / Enter 打开" : measure ? "仅鼠标左键执行处置" : "↑↓ 选择   Enter / 单击 确认   1–4 应答");
+            if (!dir && !self && !measure && ChoiceRoot.GetComponentsInChildren<Button>(false).Any(b => b.name.StartsWith("Reply-", StringComparison.Ordinal))) footerText.text = "选择应答并确认";
             Fit();
         }
         public void SetSelfMonitor(Texture texture) => selfMonitor.texture = texture;
@@ -368,7 +379,7 @@ namespace MiniGame.UnityHost
                 if (!string.IsNullOrEmpty(last.PortraitId)) portraitId = last.PortraitId;
             }
         }
-        public void SetNarration(string text) { NarrationBody.text = text; NarrationBody.gameObject.SetActive(true); Position(Continue.GetComponent<RectTransform>(), 0, 119, 248, 28); }
+        public void SetNarration(string text) { NarrationBody.text = text; NarrationBody.gameObject.SetActive(true); Position(Continue.GetComponent<RectTransform>(), 0, 105, 248, 28); }
         public void ClearNarration() { NarrationBody.gameObject.SetActive(false); Position(Continue.GetComponent<RectTransform>(), 0, 0, 248, 28); }
         public void SetPageIndicator(int page, int pages) => pageLabel.text = pages > 1 ? page + "/" + pages : "";
         public Button AddResponse(string id, string text, int index, Action action, Action hovered = null)
@@ -400,6 +411,7 @@ namespace MiniGame.UnityHost
         public bool HandleDispositionKey(KeyCode key)
         {
             if (locked || current == null || current.Game.EncounterStage != EncounterStage.AwaitingDisposition && !current.SelfReviewReady) return false;
+            if (key == KeyCode.Return || key == KeyCode.KeypadEnter || key == KeyCode.Space) return true;
             var active = dispositions.Values.Where(b => b.gameObject.activeInHierarchy && b.interactable).ToList();
             if (active.Count == 0) return false;
             if (key == KeyCode.UpArrow || key == KeyCode.DownArrow)
@@ -409,7 +421,7 @@ namespace MiniGame.UnityHost
                 for (int i = 0; i < active.Count; i++) TerminalIndustrialSkin.SetSelected(active[i], i == selectedDisposition);
                 return true;
             }
-            return (key == KeyCode.Return || key == KeyCode.KeypadEnter) && MiniGameAudioButton.Activate(active[Mathf.Clamp(selectedDisposition, 0, active.Count - 1)]);
+            return false;
         }
         public bool HandleDirectoryKey(KeyCode key)
         {
@@ -428,15 +440,37 @@ namespace MiniGame.UnityHost
             if (locked || current == null || !current.TerminalOpen
                 || current.TerminalPage != TerminalPage.Review && current.TerminalPage != TerminalPage.Archive) return false;
             historyTranscript.Reset();
-            historyModal.SetActive(true); RenderHistory();
+            historyModal.SetActive(true); RenderHistory(); RenderDispositionCommands();
             return true;
         }
         public bool CloseHistory()
         {
             if (!HistoryOpen) return false;
-            historyModal.SetActive(false); return true;
+            historyModal.SetActive(false); RenderDispositionCommands(); return true;
         }
         public void ScrollSavedHistory(int amount) => historyTranscript.Scroll(amount);
+        private void RenderDispositionCommands()
+        {
+            if (current == null) return;
+            bool measure = (current.Game.EncounterStage == EncounterStage.AwaitingDisposition || current.SelfReviewReady)
+                && current.TerminalPage != TerminalPage.Archive;
+            commandStatus.text = HistoryOpen ? "查阅记录中，处置暂时锁定。" : measure ? "会谈结束，可执行处置。"
+                : current.PresentedDisposition.HasValue ? "处置已登记。" : "会谈进行中，处置暂时锁定。";
+            dispositionInstructions.gameObject.SetActive(measure && !HistoryOpen);
+            foreach (var pair in dispositions)
+            {
+                bool configured = !current.UsesTerminalDirectory || current.ConfiguredDispositions.Contains(pair.Key);
+                pair.Value.gameObject.SetActive(configured);
+                pair.Value.interactable = configured && measure && !locked && !HistoryOpen && !current.Paused
+                    && current.Input == InputContext.Dialogue
+                    && (current.IsSelfReview ? pair.Key == Disposition.Purify && current.SelfReviewReady
+                        : current.Game.AvailableDispositions.Contains(pair.Key));
+            }
+            var active = dispositions.Values.Where(b => b.gameObject.activeSelf && b.interactable).ToList();
+            selectedDisposition = Mathf.Clamp(selectedDisposition, 0, Mathf.Max(0, active.Count - 1));
+            foreach (var button in dispositions.Values)
+                TerminalIndustrialSkin.SetSelected(button, active.Count > 0 && button == active[selectedDisposition]);
+        }
         private void SelectDisposition(Button button)
         {
             var active = dispositions.Values.Where(value => value.gameObject.activeSelf && value.interactable).ToList();
@@ -472,16 +506,22 @@ namespace MiniGame.UnityHost
             var selected = rosterIndex < current.Patients.Count ? current.Patients[rosterIndex] : null;
             bool available = selected != null && selected.CanReceiveToday && current.TerminalPage == TerminalPage.Directory;
             enter.interactable = available && !locked;
-            previewName.text = selected?.Name ?? "未配置";
-            previewId.text = selected == null ? "" : PortraitCatalog.Registration(selected.Id);
-            previewIntroduction.text = PublicIntroduction(selected?.Id);
-            previewPortrait.sprite = selected == null || portraits == null ? null : portraits.Find(PortraitCatalog.BasePortrait(selected.Id));
+            var dossier = assets != null && assets.Dossiers != null ? assets.Dossiers.Find(selected?.Id) : null;
+            previewName.text = selected == null ? "未配置" : selected.Name + " / " + PortraitCatalog.Registration(selected.Id);
+            previewId.text = "对象档案 / " + (selected == null ? "未配置" : PortraitCatalog.Registration(selected.Id));
+            previewAge.text = selected == null ? "--" : dossier?.age ?? "未登记";
+            previewOccupation.text = selected == null ? "--" : dossier?.occupation ?? "未登记";
+            dossierSummary.SetContent(selected?.Id, dossier?.summary ?? PublicIntroduction(selected?.Id));
+            dossierSummary.SetInputEnabled(!locked && !current.Paused && current.TerminalOpen);
+            var dossierPortrait = dossier?.portrait;
+            previewPortrait.sprite = selected == null ? null : dossierPortrait != null ? dossierPortrait
+                : portraits == null ? null : portraits.Find(PortraitCatalog.BasePortrait(selected.Id));
             previewPortrait.enabled = previewPortrait.sprite != null;
             previewNoImage.gameObject.SetActive(previewPortrait.sprite == null);
             previewStatus.text = selected == null ? "--" : PatientStatus(selected);
             previewStage.text = selected == null ? "--" : PatientStage(selected);
-            previewUnit.text = "单元    " + (selected == null ? "--" : PortraitCatalog.Unit(selected.Id));
-            quota.text = current.Game.RemainingPurificationQuota.ToString("00");
+            previewUnit.text = selected == null ? "--" : PortraitCatalog.Unit(selected.Id);
+            dossierQuota.SetValue(current.Game.RemainingPurificationQuota);
             enter.GetComponentInChildren<Text>().text = available ? "进入人员复核" : selected == null ? "尚未接入" : "档案已关闭";
             leave.interactable = !locked; day.text = "人员复核 / DAY " + current.Game.Day.ToString("00");
             count.text = "当日登记 " + current.Patients.Count.ToString("00") + " / 待审 " + current.Patients.Count(p => !p.HasMetToday).ToString("00") + " / 已审 " + current.Patients.Count(p => p.HasMetToday).ToString("00");

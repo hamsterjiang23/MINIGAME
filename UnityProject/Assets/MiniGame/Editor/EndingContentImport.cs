@@ -54,6 +54,19 @@ namespace MiniGame.UnityHost.Editor
                 importer.maxTextureSize = 4096; importer.npotScale = TextureImporterNPOTScale.None;
                 importer.filterMode = FilterMode.Bilinear;
                 importer.textureCompression = TextureImporterCompression.Uncompressed;
+                if (id == "PE01" || id == "PE02")
+                {
+                    // Register the supplied ED_01/ED_02 at their visible feet, not the canvas margins.
+                    // Alpha > 16, bottom 10% centroid; keep one full-canvas pixel scale for both poses.
+                    var settings = new TextureImporterSettings();
+                    importer.ReadTextureSettings(settings);
+                    settings.spriteAlignment = (int)SpriteAlignment.Custom;
+                    settings.spritePivot = id == "PE01" ? new Vector2(514.08828f / 1024, 33f / 1536)
+                        : new Vector2(310.96351f / 1024, 16f / 1536);
+                    settings.spriteMeshType = SpriteMeshType.FullRect;
+                    settings.spritePixelsPerUnit = 100;
+                    importer.SetTextureSettings(settings);
+                }
                 importer.SaveAndReimport();
                 entries[id] = AssetDatabase.LoadAssetAtPath<Sprite>(path)
                     ?? throw new InvalidOperationException("Could not import ending portrait " + id);

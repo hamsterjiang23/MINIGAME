@@ -36,6 +36,8 @@ Unity资源键为 `MiniGame/Endings/Dialogue`，文件为[Dialogue.json](../../U
 
 revision为正文、版本及全部9源hash的规范JSON SHA-256。源文件或正文变化会改变revision。审计保存所有原始内容与适配，JSON/Yarn均可确定性重建。`[verified: ../../Tools/DialogueCampaign/build_endings.py canonical_hash/build；../../Tools/DialogueCampaign/test_endings.py test_revision_covers_both_content_and_all_source_hashes]`
 
+神父结局两张图已替换为用户提供的 ED_01/ED_02，沿用 PE01/PE02 资源键；脚底锚点、共同缩放和正式场景验证见[立绘替换记录](priest-portraits-20261023.md)。`[verified: ../../UnityProject/Assets/MiniGame/Art/Characters/EndingPortraits/generation.json images；priest-portraits-20261023.md 验证]`
+
 ## 验证边界
 
 已执行三个转换器的小样及全量构建、三个 `--check` 逐字重建、Python unittest 26项通过，以及限定内容目录的 `git diff --check`。监督员图片来源校验通过，文字转换器不写图片。该结果验证数据与静态生成物；Unity导入、Play Mode及目标平台构建由运行层单独验收。`[verified: Tools/DialogueCampaign unittest output: Ran 26 tests / OK；build_campaign.py --check output: sourceRowCount1360/meetingCount13；build_endings.py --check output: lineCounts8/16/7；build_supervisor.py --check output: days16/12/11/7]`

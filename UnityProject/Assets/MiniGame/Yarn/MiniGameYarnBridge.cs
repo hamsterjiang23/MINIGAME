@@ -267,11 +267,17 @@ namespace MiniGame.UnityHost
             {
                 if (_resumeSupervisor != null && _resumeSupervisor.sourceId != sourceId) return;
                 _resumeSupervisor = null;
+                if (run.Runtime.GetView().Cue?.Kind == PresentationKind.Ending) _supervisor?.ShowEndingAtDoorway();
+                // Opening the door can finish before the actor's clearance slide. Show the first
+                // line only after both the doorway camera and the supervisor have come to rest.
+                while (IsCurrent(run) && (!CanInteract(run)
+                    || (_supervisor != null && run.Runtime.GetView().DoorViewActive
+                        && !_supervisor.IsReadyForDialogue))) await YarnTask.Yield();
+                if (!IsCurrent(run)) return;
                 string portraitId = portrait != null ? portrait.Substring("portrait:".Length) : "JD_01";
                 if (_supervisor == null || !_supervisor.SetPortrait(portraitId))
                     throw new InvalidOperationException("Missing supervisor portrait: " + portraitId);
                 screen.Audio?.PresentSupervisorPortrait(run.Runtime, portraitId);
-                if (run.Runtime.GetView().Cue?.Kind == PresentationKind.Ending) _supervisor.ShowEndingAtDoorway();
                 _supervisorCursor = new SupervisorDialogueCheckpoint {
                     revision = _supervisorContent!.revision, sourceId = sourceId,
                     day = run.Runtime.GetView().Game.Day, cue = run.Runtime.GetView().Cue!.Kind };

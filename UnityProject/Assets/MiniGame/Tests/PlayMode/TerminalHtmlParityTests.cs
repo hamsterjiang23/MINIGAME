@@ -13,13 +13,47 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("TerminalV0824")]
     public sealed class TerminalHtmlParityTests
     {
+        [UnityTest]
+        public IEnumerator EndingCharactersRenderThroughTheLiveDialogueCanvas()
+        {
+            var runtime = CreateRuntime();
+            var owner = new GameObject("Ending glyph regression");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            try
+            {
+                OpenReview(screen, runtime);
+                var lines = new[] {
+                    "一定是上帝……您还期盼我给更多人带来净化。",
+                    "呵呵...蛀虫已把这个社会蚕食殆尽，哪还会有新鲜的血肉？",
+                    "那里的天好蓝，水好清澈，我想回去看看了。" };
+                for (int index = 0; index < lines.Length; index++)
+                {
+                    screen.SetDialogueLine("对象", lines[index], "glyph-audit-" + index, "ML01");
+                    yield return null;
+                    screen.TerminalDisplay.RenderFrame();
+                    var label = screen.GetComponentsInChildren<TerminalBitmapText>()
+                        .Single(item => item.name.StartsWith("TranscriptText") && item.text == lines[index]);
+                    foreach (char character in label.text.Where(character => !char.IsWhiteSpace(character)))
+                    {
+                        Assert.That(label.ArkTypeface.TryGet(character, label.fontSize, out var glyph), Is.True, character.ToString());
+                        Assert.That(glyph.w * glyph.h, Is.GreaterThan(0), character.ToString());
+                    }
+                    Assert.That(label.canvasRenderer.GetMesh().vertexCount,
+                        Is.EqualTo(label.text.Count(character => !char.IsWhiteSpace(character)) * 4));
+                    CaptureTerminalSource(screen, "ending-glyphs-" + index);
+                }
+            }
+            finally { Object.Destroy(owner); }
+            yield return null;
+        }
+
         [UnityTest]
         public IEnumerator DirectoryDossierFollowsPointerAndKeyboardWithoutStartingAnEncounter()
         {
             var ids = new[] { "former-ruler", "battlefield-doctor", "child", "priest", "diplomat" };
-            var portraitIds = new[] { "VV01", "ED01", "ML01", "JN01", "AD01" };
             var names = new[] { "薇拉", "埃德温", "米洛", "乔纳", "阿德里安" };
             var patients = ids.Select((id, index) => new PatientDefinition(id, names[index], 1, 0, null, PatientPresence.TreatmentEnded));
             var rules = new GameRules("directory-dossier-fixture", patients,
@@ -33,7 +67,8 @@ namespace MiniGame.UnityHost.Tests
                 OpenDirectory(screen, runtime);
                 string checkpoint = runtime.Save();
                 yield return null;
-                var catalog = Resources.Load<PortraitCatalog>("MiniGame/PortraitCatalog");
+                var catalog = Resources.Load<TerminalDossierCatalog>("MiniGame/TerminalDossiers");
+                var summary = screen.GetComponentInChildren<TerminalDossierSummary>(true);
                 var portrait = screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "DirectoryPortrait");
                 var introduction = TextNamed(screen, "PreviewIntroduction");
                 for (int index = 0; index < ids.Length; index++)
@@ -42,33 +77,36 @@ namespace MiniGame.UnityHost.Tests
                     var pointer = new PointerEventData(EventSystem.current)
                         { position = screen.TerminalDisplay.ScreenPointFor((RectTransform)row.transform) };
                     ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-                    Assert.That(TextNamed(screen, "Preview对象").text, Is.EqualTo(names[index]));
-                    Assert.That(portrait.sprite, Is.SameAs(catalog.Find(portraitIds[index])));
+                    Assert.That(TextNamed(screen, "Preview对象").text, Does.StartWith(names[index] + " / "));
+                    Assert.That(portrait.sprite, Is.SameAs(catalog.Find(ids[index]).portrait));
                     Assert.That(portrait.sprite, Is.Not.Null);
                     Assert.That(portrait.enabled && portrait.preserveAspect, Is.True);
                     Assert.That(ObjectNamed(screen, "DirectoryPortraitNoImage").activeSelf, Is.False);
                     Assert.That(introduction.text, Is.Not.Empty);
-                    Assert.That(introduction.preferredHeight, Is.LessThanOrEqualTo(introduction.rectTransform.rect.height));
+                    Assert.That(summary.FullText, Is.EqualTo(catalog.Find(ids[index]).summary));
+                    Assert.That(introduction.preferredHeight, Is.LessThanOrEqualTo(44));
+                    Assert.That(TextNamed(screen, "DossierAge").text, Is.EqualTo(catalog.Find(ids[index]).age));
+                    Assert.That(TextNamed(screen, "DossierOccupation").text, Is.EqualTo(catalog.Find(ids[index]).occupation));
                     Assert.That(TextNamed(screen, "PreviewStage").text, Is.EqualTo("未处理"));
                     Assert.That(TextNamed(screen, "Preview状态").text, Is.EqualTo("待审"));
                     Assert.That(TextNamed(screen, "PreviewUnit").text, Does.Contain(PortraitCatalog.Unit(ids[index])));
                     Assert.That(runtime.Save(), Is.EqualTo(checkpoint), "Browsing dossiers cannot select or mutate the authoritative encounter.");
                     yield return EndingVisualCapture.Capture("dossier-" + ids[index] + "-" + Screen.width, runtime);
                 }
-                Assert.That(introduction.text, Does.Contain("贸易代表"));
+                Assert.That(summary.FullText, Is.EqualTo("高度危险的政治倾向，********，建议直接净化。"));
                 Assert.That(introduction.text, Does.Not.Contain("观察审查人员"));
                 Assert.That(introduction.text, Does.Not.Contain("秘密"));
                 Assert.That(screen.HandleTerminalKey(KeyCode.UpArrow), Is.True);
-                Assert.That(portrait.sprite, Is.SameAs(catalog.Find("JN01")));
-                Assert.That(TextNamed(screen, "Preview对象").text, Is.EqualTo("乔纳"));
+                Assert.That(portrait.sprite, Is.SameAs(catalog.Find("priest").portrait));
+                Assert.That(TextNamed(screen, "Preview对象").text, Does.StartWith("乔纳 / "));
                 Assert.That(runtime.Save(), Is.EqualTo(checkpoint));
                 Assert.That(ButtonNamed(screen, "EnterReview").interactable, Is.True);
                 Assert.That(ButtonNamed(screen, "LeaveTerminal").interactable, Is.True);
                 var panel = ObjectNamed(screen, "DirectoryPortraitPanel").GetComponent<RectTransform>();
-                Assert.That(panel.rect.height, Is.GreaterThan(200));
-                Assert.That(panel.anchoredPosition.x + panel.rect.width, Is.LessThan(introduction.rectTransform.anchoredPosition.x));
+                Assert.That(panel.rect.size, Is.EqualTo(new Vector2(98, 130)));
+                Assert.That(panel.anchoredPosition, Is.EqualTo(new Vector2(30, -322)));
                 Assert.That(ButtonNamed(screen, "EnterReview").GetComponent<RectTransform>().anchoredPosition.y,
-                    Is.LessThan(introduction.rectTransform.anchoredPosition.y - introduction.rectTransform.rect.height));
+                    Is.EqualTo(-486));
                 yield return EndingVisualCapture.Flush();
             }
             finally { Object.Destroy(owner); }
@@ -222,6 +260,8 @@ namespace MiniGame.UnityHost.Tests
                 var selected = new List<string>();
                 var responses = Responses();
                 screen.ShowResponseButtons(responses, selected.Add);
+                yield return null;
+                Assert.That(screen.WorldInputBlockedThisFrame, Is.False, "Keyboard checks need a fresh frame after the fixture's world transition.");
                 screen.HandleTerminalKey(KeyCode.Return);
                 screen.HandleTerminalKey(KeyCode.KeypadEnter);
                 screen.HandleTerminalKey(KeyCode.Space);
@@ -389,7 +429,8 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(TextNamed(screen, "TerminalDialogueBody").text, Is.EqualTo(lastSpeech),
                     "Rebinding an archive checkpoint restores the last actor speech from its transcript.");
                 Assert.That(ObjectNamed(screen, "SignalLostMessage").activeInHierarchy, Is.True);
-                screen.HandleTerminalKey(KeyCode.Return);
+                yield return null;
+                Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True, "A fresh confirmation returns the restored archive to its directory.");
                 Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
                 Assert.That(runtime.GetView().TerminalOpen, Is.True, "Archive completion returns to the terminal directory, not the room.");
                 Assert.That(ObjectNamed(screen, "ObjectDirectory").activeInHierarchy, Is.True);
@@ -437,18 +478,25 @@ namespace MiniGame.UnityHost.Tests
                         EventSystem.current.RaycastAll(pointer, hits);
                         Assert.That(hits.First().gameObject, Is.EqualTo(row.gameObject));
                         ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-                        var color = row.GetComponent<Image>().color;
+                        var artwork = row.transform.Find("CommandArtwork").GetComponent<RawImage>();
+                        var selectedTexture = artwork.texture;
                         ExecuteEvents.Execute(row.gameObject, pointer, ExecuteEvents.pointerExitHandler);
                         for (int frame = 0; frame < 5; frame++)
                         {
                             yield return null;
-                            Assert.That(row.GetComponent<Image>().color, Is.EqualTo(color), "A pointer gap must retain the last hovered disposition.");
-                            Assert.That(rows.Where(other => other != row).All(other => other.GetComponent<Image>().color != color), Is.True);
+                            Assert.That(artwork.texture, Is.SameAs(selectedTexture), "A pointer gap must retain the last hovered disposition.");
                         }
                     }
                 }
                 var expected = (Disposition)Enum.Parse(typeof(Disposition), rows.Last().name.Substring("Disposition-".Length));
-                Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
+                string before = runtime.Save();
+                foreach (var key in new[] { KeyCode.Return, KeyCode.KeypadEnter, KeyCode.Space })
+                {
+                    Assert.That(screen.HandleTerminalKey(key), Is.True, "Disposition confirmation keys are consumed without executing.");
+                    Assert.That(runtime.Save(), Is.EqualTo(before));
+                }
+                ExecuteEvents.Execute(rows.Last().gameObject,
+                    new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left }, ExecuteEvents.pointerClickHandler);
                 Assert.That(runtime.GetView().PresentedDisposition, Is.EqualTo(expected));
             }
             finally { Object.Destroy(owner); }
@@ -503,7 +551,8 @@ namespace MiniGame.UnityHost.Tests
             {
                 RenderTexture.active=target;
                 pixels.ReadPixels(new Rect(0,0,target.width,target.height),0,0); pixels.Apply();
-                string folder=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../../Artifacts/TerminalArk20261021/Visuals"));
+                string folder=System.Environment.GetEnvironmentVariable("MINIGAME_FONT_CAPTURE_DIR")
+                    ?? System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../../Artifacts/TerminalArk20261021/Visuals"));
                 System.IO.Directory.CreateDirectory(folder);
                 System.IO.File.WriteAllBytes(System.IO.Path.Combine(folder,name+".png"),pixels.EncodeToPNG());
             }

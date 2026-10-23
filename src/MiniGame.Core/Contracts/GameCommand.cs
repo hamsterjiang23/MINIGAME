@@ -8,6 +8,12 @@ namespace MiniGame.Core
     public sealed class CompleteSleep : GameCommand { }
     public sealed class CompleteDream : GameCommand { }
     public sealed class BeginNightDream : GameCommand { }
+    public sealed class EnterHiddenEndingCheat : GameCommand { }
+    public sealed class EnterGmEnding : GameCommand
+    {
+        public EndingType Ending { get; }
+        public EnterGmEnding(EndingType ending) { Ending = ending; }
+    }
     public sealed class ConfirmSelfPurification : GameCommand { }
 
     public sealed class AdvanceSelfReviewCommand : GameCommand

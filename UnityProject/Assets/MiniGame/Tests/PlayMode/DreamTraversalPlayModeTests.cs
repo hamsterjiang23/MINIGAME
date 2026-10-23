@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class DreamTraversalPlayModeTests
     {
         private readonly List<Object> cleanup = new List<Object>();
@@ -32,57 +33,30 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator AfterDreamPassesFurnitureClampsTheFloorAndWakesSafelyAfterBed()
+        public IEnumerator OrdinaryDreamWakesDirectlyWithoutGhostTraversalOrAnotherBedInteraction()
         {
             CreateRig();
             var runtime = Runtime();
             player.Bind(runtime, null);
             Physics.SyncTransforms();
             controller.Move(Vector3.forward * 2);
-            Assert.That(player.transform.position.z, Is.LessThan(origin.z + 1), "Normal movement must retain physical furniture collision.");
-            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.AfterDream);
-            Assert.That(player.DreamTraversalActive, Is.True);
-            Assert.That(controller.enabled, Is.False);
-            Assert.That(player.TryMoveDreamTraversal(origin - player.transform.position), Is.True);
-            Assert.That(player.TryMoveDreamTraversal(Vector3.forward * 2), Is.True);
-            Assert.That(player.transform.position.z, Is.GreaterThan(origin.z + 1), "Dream traversal must still cross the invisible furniture blocker.");
-            float bedEdge = bed.Surface.bounds.min.z - controller.radius - controller.skinWidth;
-            Assert.That(player.transform.position.z, Is.EqualTo(bedEdge).Within(.002f), "The bed alone remains solid in the dream.");
-            player.TryMoveDreamTraversal(Vector3.forward * 100);
-            Assert.That(player.transform.position.z, Is.EqualTo(bedEdge).Within(.002f), "Large steps cannot tunnel through the bed.");
-            Assert.That(player.transform.position.y, Is.EqualTo(origin.y));
-            player.TryMoveDreamTraversal(origin - player.transform.position);
-            player.FacePoint(bed.GetComponent<Collider>().bounds.center);
-            player.RefreshInteractionFocus();
-            Assert.That(player.FocusedInteraction, Is.SameAs(bed), "The invisible furniture blocker must not occlude the allowed bed interaction.");
-            Assert.That(player.FocusedReadable, Is.Null);
-            var pausedPosition = player.transform.position;
+            Assert.That(player.transform.position.z, Is.LessThan(origin.z + 1), "Normal movement keeps furniture collision.");
+            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream);
+            Assert.That(player.DreamTraversalActive, Is.False);
+            Assert.That(controller.enabled, Is.True);
+            string token = runtime.GetView().Cue.Token;
             Assert.That(runtime.SetPaused(true).Accepted, Is.True);
             Assert.That(player.TryMoveDreamTraversal(Vector3.one), Is.False);
+            Assert.That(runtime.CompleteCue(token).Accepted, Is.False);
             yield return null;
-            Assert.That(player.transform.position, Is.EqualTo(pausedPosition));
             Assert.That(runtime.SetPaused(false).Accepted, Is.True);
-            Assert.That(player.TryMoveDreamTraversal(new Vector3(100, 100, 100)), Is.True);
-            Assert.That(player.transform.position.x, Is.EqualTo(bounds.max.x));
-            Assert.That(player.transform.position.z, Is.EqualTo(bounds.max.z));
-            Assert.That(player.transform.position.y, Is.EqualTo(origin.y));
-            player.TryMoveDreamTraversal(origin - player.transform.position);
-            player.FacePoint(bed.GetComponent<Collider>().bounds.center);
-            Quaternion bodyRotationBeforeSleep = player.transform.rotation;
-            Quaternion cameraRotationBeforeSleep = camera.transform.rotation;
-            camera.fieldOfView = 72;
-            wake.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y + 135, 0);
-            Assert.That(player.InteractFocused(), Is.True);
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
-            Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Sleep));
-            Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
+            Assert.That(runtime.CompleteCue(token).Accepted, Is.True);
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
             Assert.That(player.DreamTraversalActive, Is.False);
             Assert.That(controller.enabled, Is.True);
-            Assert.That(player.transform.position, Is.EqualTo(wake.position), "Returning to daytime must use the safe authored wake position.");
-            Assert.That(Quaternion.Angle(player.transform.rotation, bodyRotationBeforeSleep), Is.LessThan(.01f), "Waking must preserve heading instead of turning toward the wall-facing anchor.");
-            Assert.That(Quaternion.Angle(camera.transform.rotation, cameraRotationBeforeSleep), Is.LessThan(.01f), "Waking must preserve the player's vertical look angle.");
-            Assert.That(camera.fieldOfView, Is.EqualTo(72));
+            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
+            Assert.That(player.TryMoveDreamTraversal(Vector3.forward * 2), Is.False);
+            Assert.That(runtime.CompleteCue(token).Accepted, Is.False);
         }
 
         [Test]
@@ -92,8 +66,8 @@ namespace MiniGame.UnityHost.Tests
             bed.transform.position = origin + Vector3.up * 1.6f;
             player.transform.position = origin + new Vector3(-2, 0, -2);
             Physics.SyncTransforms();
-            var runtime = Runtime();
-            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.AfterDream);
+            var runtime = Runtime(10);
+            DriveTo(runtime, view => view.Game.Phase == GamePhase.SelfReview);
             player.Bind(runtime, null);
             Assert.That(player.TryMoveDreamTraversal(new Vector3(4, 0, 4)), Is.True);
             Assert.That(player.transform.position.x, Is.LessThan(bed.Surface.bounds.min.x));
@@ -158,8 +132,8 @@ namespace MiniGame.UnityHost.Tests
         {
             CreateRig();
             controller.enabled = initiallyEnabled;
-            var night = Runtime();
-            DriveTo(night, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.AfterDream);
+            var night = Runtime(10);
+            DriveTo(night, view => view.Game.Phase == GamePhase.SelfReview);
             player.Bind(night, null);
             Assert.That(controller.enabled, Is.False);
             player.enabled = false;
@@ -202,8 +176,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(spotlight.enabled, Is.False);
             Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
             guidance.Bind(runtime);
-            Assert.That(BedtimeGuidance.IsSleepOnly(runtime.GetView()), Is.True);
-            Assert.That(spotlight.enabled, Is.True);
+            Assert.That(BedtimeGuidance.IsSleepOnly(runtime.GetView()), Is.False);
+            Assert.That(spotlight.enabled, Is.False);
             var review = Runtime(10);
             DriveTo(review, view => view.Game.Phase == GamePhase.SelfReview);
             guidance.Bind(review);
@@ -262,7 +236,7 @@ namespace MiniGame.UnityHost.Tests
 
         private static GameRuntime Runtime(int residentTrust = 0)
         {
-            var patient = new PatientDefinition("patient", "测试病人", 1, residentTrust, null, PatientPresence.TreatmentEnded);
+            var patient = new PatientDefinition(PrototypeRules.Child, "测试病人", 1, residentTrust, null, PatientPresence.TreatmentEnded);
             var rules = new GameRules("dream-traversal-fixture", new[] { patient }, Enumerable.Range(0, 4).Select(day =>
                 new DayDefinition(day, 0, day == 0 ? Array.Empty<MeetingDefinition>() : new[] { new MeetingDefinition(patient.Id,
                     new[] { new RoundDefinition("day" + day, new[] { new ResponseDefinition("pick", "branch", 1) }) },

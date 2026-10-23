@@ -1,0 +1,37 @@
+{
+    "label": "committed",
+    "nativeFile": "committed-terminal-native.png",
+    "crtFile": "committed-terminal-crt-gpu.png",
+    "shader": "PMS/Amber CRT",
+    "phase": "Work",
+    "stage": "Reaction",
+    "page": "Review",
+    "power": "Running",
+    "patient": "former-ruler",
+    "runtimeHash": "c266f7c99bd55874442fde7662589c812c2b8e4cf2db7a0f1f6c3cb242e4ca50",
+    "frame": 543,
+    "sourceFrame": 548,
+    "terminalMode": 1,
+    "day": 1,
+    "quota": 0,
+    "seconds": 18.68052101135254,
+    "paused": false,
+    "transitionLocked": false,
+    "commands": [
+        {
+            "name": "Disposition-Release",
+            "texture": "Release_Disabled",
+            "interactable": false
+        },
+        {
+            "name": "Disposition-Treat",
+            "texture": "Treatment_Disabled",
+            "interactable": false
+        },
+        {
+            "name": "Disposition-Purify",
+            "texture": "Purification_Disabled",
+            "interactable": false
+        }
+    ]
+}

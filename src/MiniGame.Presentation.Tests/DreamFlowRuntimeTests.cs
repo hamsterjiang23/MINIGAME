@@ -11,7 +11,7 @@ namespace MiniGame.Presentation.Tests
     public sealed class DreamFlowRuntimeTests
     {
         [Test]
-        public void FinalBedStartedDreamWaitsForTheSecondSleepBeforeTheOrdinaryEndingPresentation()
+        public void FinalBedStartedDreamWakesDirectlyIntoTheOrdinaryEndingPresentation()
         {
             var rules = Rules(0); var content = new FixtureContent();
             var runtime = new GameRuntime(rules, content, true);
@@ -20,11 +20,9 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
             RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
             RuntimeScenario.Complete(runtime, PresentationKind.Dream);
-            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(3));
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(4));
             Assert.That(runtime.GetView().Cue, Is.Null);
-            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
-            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Ending));
             Assert.That(runtime.EndingStage, Is.EqualTo(EndingStage.AwaitingDoor));
             Assert.That(runtime.GetView().Input, Is.EqualTo(InputContext.World));
@@ -57,7 +55,7 @@ namespace MiniGame.Presentation.Tests
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
-        public void NightlyBedCycleRequiresSecondSleepAndPreservesPauseCheckpointAndStaleCueGuards(int day)
+        public void NightlyDreamWakesOnceWithoutSecondSleepAndPreservesPauseAndStaleCueGuards(int day)
         {
             var rules = Rules(0); var content = new FixtureContent();
             var runtime = new GameRuntime(rules, content, true);
@@ -89,11 +87,15 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Accept(runtime.SetPaused(false));
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(dreamToken));
             string dreamCompletion = runtime.GetView().Cue!.Token;
+            var published = new List<RuntimeView>();
+            runtime.Changed += published.Add;
             RuntimeScenario.Complete(runtime, PresentationKind.Dream);
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(day), "Finishing the film must leave the player in the same night's room.");
-            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
+            Assert.That(published.Count, Is.EqualTo(1), "Dream completion and waking publish one atomic view.");
+            Assert.That(published.Single().Game.Day, Is.EqualTo(day + 1));
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(day + 1));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(day == 3 ? GamePhase.Ending : GamePhase.MorningInspection));
             Assert.That(runtime.GetView().Cue, Is.Null);
-            Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
+            Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
             Assert.That(JObject.Parse(runtime.Save())["DreamFromBed"]?.Value<bool>() ?? false, Is.False);
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(dreamCompletion));
             RuntimeScenario.Accept(runtime.SetPaused(true));
@@ -103,26 +105,8 @@ namespace MiniGame.Presentation.Tests
             Assert.That(runtime.Save(), Is.EqualTo(waiting));
             RuntimeScenario.Accept(runtime.SetPaused(false));
 
-            var beforeSecondBed = Core(runtime);
-            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
-            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Sleep));
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(day));
-            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
-            Assert.That(JToken.DeepEquals(Core(runtime), beforeSecondBed), Is.True, "The second bed interaction must wait for its sleep fade before waking.");
-            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
-            string wakeToken = runtime.GetView().Cue!.Token;
-            RuntimeScenario.Accept(runtime.SetPaused(true));
-            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(wakeToken));
-            runtime = GameRuntime.Restore(runtime.Save(), rules, content);
-            Assert.That(runtime.GetView().Paused, Is.True);
-            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Sleep));
-            RuntimeScenario.Accept(runtime.SetPaused(false));
-            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(wakeToken));
-            string wakeCompletion = runtime.GetView().Cue!.Token;
-            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(day + 1));
             Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(day == 3 ? GamePhase.Ending : GamePhase.MorningInspection));
-            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(wakeCompletion));
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(dreamCompletion));
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
         }
@@ -183,14 +167,11 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Accept(runtime.SetPaused(false));
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(token));
             RuntimeScenario.Complete(runtime, PresentationKind.Dream);
-            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
-            Assert.That(runtime.GetView().DreamTraversal, Is.True);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            Assert.That(runtime.GetView().DreamTraversal, Is.False);
             RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Computer));
             Assert.That(Core(runtime)["CommandHistory"]!.Any(item => item["Kind"]!.Value<string>() == "CompleteSleep"), Is.False);
-            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
-            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
-            Assert.That(runtime.GetView().Cue!.Kind, Is.EqualTo(PresentationKind.Sleep));
-            RuntimeScenario.Complete(runtime, PresentationKind.Sleep);
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
         }
 
@@ -199,9 +180,8 @@ namespace MiniGame.Presentation.Tests
         {
             var rules = Rules(0); var content = new FixtureContent();
             var runtime = new GameRuntime(rules, content, true);
-            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.AfterDream);
-            RuntimeScenario.Accept(runtime.TryInteract(InteractionTarget.Bed));
-            string checkpoint = runtime.Save();
+            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream);
+            string checkpoint = LegacyAfterDream(runtime, rules, true, true);
             Assert.That(GameRuntime.Restore(checkpoint, rules, content).Save(), Is.EqualTo(checkpoint));
             var invalid = JObject.Parse(checkpoint);
             invalid["DreamFromBed"] = true;
@@ -266,6 +246,27 @@ namespace MiniGame.Presentation.Tests
             Assert.That(GameRuntime.Restore(runtime.Save(), rules, content, endings).Save(), Is.EqualTo(runtime.Save()));
         }
 
+        [TestCase(0, GamePhase.AfterDream)]
+        [TestCase(100, GamePhase.SelfReview)]
+        public void DreamReturnPreviewSurvivesPauseAndRestoreWithoutCompletingTheCue(int initialTrust, GamePhase expected)
+        {
+            var rules = Rules(initialTrust); var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            DriveTo(runtime, view => view.Game.Day == 3 && view.Game.Phase == GamePhase.Dream);
+            RuntimeScenario.Accept(runtime.SetPaused(true));
+            string before = runtime.Save();
+            Assert.That(runtime.GetView().Game.DreamReturnPhase, Is.EqualTo(expected));
+            Assert.That(runtime.Save(), Is.EqualTo(before));
+            runtime = GameRuntime.Restore(before, rules, content);
+            Assert.That(runtime.GetView().Game.DreamReturnPhase, Is.EqualTo(expected));
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(runtime.GetView().Cue!.Token));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
+            RuntimeScenario.Accept(runtime.SetPaused(false));
+            RuntimeScenario.Complete(runtime, PresentationKind.Dream);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(expected == GamePhase.SelfReview ? GamePhase.SelfReview : GamePhase.Ending));
+            Assert.That(runtime.GetView().Game.DreamReturnPhase, Is.Null);
+        }
+
         [Test]
         public void CorruptSelfReviewPagesAndLegacyRuleLoadsAreRejected()
         {
@@ -310,6 +311,86 @@ namespace MiniGame.Presentation.Tests
             Assert.That(runtime.GetView().Cue, Is.Null);
             Assert.That(JObject.Parse(runtime.Save())["CoreJson"]!.Value<string>(), Is.EqualTo(core));
             Assert.That(GameRuntime.Restore(runtime.Save(), rules, content).Save(), Is.EqualTo(runtime.Save()));
+        }
+
+        [TestCase(1, false, false, false)]
+        [TestCase(1, true, false, false)]
+        [TestCase(1, false, true, false)]
+        [TestCase(1, false, true, true)]
+        [TestCase(3, false, false, false)]
+        [TestCase(3, true, true, false)]
+        public void LegacyAfterDreamLoadsWakeExactlyOnceAndRespectBothPauseSources(int day, bool paused, bool sleeping, bool pauseOnLoad)
+        {
+            var rules = Rules(0); var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            DriveTo(runtime, view => view.Game.Day == day && view.Game.Phase == GamePhase.Dream);
+            string oldToken = runtime.GetView().Cue!.Token;
+            string legacy = LegacyAfterDream(runtime, rules, paused, sleeping);
+            var legacyCore = JObject.Parse(JObject.Parse(legacy)["CoreJson"]!.Value<string>()!);
+            runtime = GameRuntime.Restore(legacy, rules, content, pauseOnLoad: pauseOnLoad);
+            Assert.That(runtime.RestoredFromAfterDream, Is.True);
+            if (paused || pauseOnLoad)
+            {
+                Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
+                Assert.That(JToken.DeepEquals(Core(runtime), legacyCore), Is.True);
+                RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
+                RuntimeScenario.Accept(runtime.SetPaused(true));
+                Assert.That(JToken.DeepEquals(Core(runtime), legacyCore), Is.True);
+                var published = new List<RuntimeView>();
+                runtime.Changed += published.Add;
+                RuntimeScenario.Accept(runtime.SetPaused(false));
+                Assert.That(published.Count, Is.EqualTo(1));
+            }
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(day + 1));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(day == 3 ? GamePhase.Ending : GamePhase.MorningInspection));
+            Assert.That(runtime.GetView().Cue, Is.Null);
+            Assert.That(runtime.GetView().DreamTraversal, Is.False);
+            Assert.That(runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Door }));
+            Assert.That(Core(runtime)["CommandHistory"]!.Count(), Is.EqualTo(legacyCore["CommandHistory"]!.Count() + 1));
+            var afterWake = Core(runtime);
+            RuntimeScenario.Accept(runtime.SetPaused(false));
+            Assert.That(JToken.DeepEquals(Core(runtime), afterWake), Is.True);
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.CompleteCue(oldToken));
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.TryInteract(InteractionTarget.Bed));
+            string saved = runtime.Save();
+            runtime = GameRuntime.Restore(saved, rules, content);
+            Assert.That(runtime.Save(), Is.EqualTo(saved));
+            Assert.That(runtime.RestoredFromAfterDream, Is.False, "The migration marker is not persisted after waking.");
+        }
+
+        [TestCase(EndingType.TakenAway)]
+        [TestCase(EndingType.LockedInRoom)]
+        [TestCase(EndingType.PriestAttack)]
+        [TestCase(EndingType.DreamSea)]
+        public void GmReplacementClearsLegacyWakeProvenanceWithoutAdvancingTheOldNight(EndingType ending)
+        {
+            var rules = Rules(0); var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            DriveTo(runtime, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream);
+            runtime = GameRuntime.Restore(LegacyAfterDream(runtime, rules, true, false), rules, content);
+            Assert.That(runtime.RestoredFromAfterDream, Is.True);
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.EnterGmEndingFromPause(EndingType.None));
+            Assert.That(runtime.RestoredFromAfterDream, Is.True, "A rejected jump must preserve the pending legacy wake.");
+            int commands = Core(runtime)["CommandHistory"]!.Count();
+            RuntimeScenario.Accept(runtime.EnterGmEndingFromPause(ending));
+            Assert.That(runtime.RestoredFromAfterDream, Is.False, "A replacement route must not replay the old wake presentation.");
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(1));
+            Assert.That(Core(runtime)["CommandHistory"]!.Count(), Is.EqualTo(commands + 1));
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(ending == EndingType.DreamSea ? GamePhase.SelfReview : GamePhase.Ending));
+        }
+
+        private static string LegacyAfterDream(GameRuntime runtime, GameRules rules, bool paused, bool sleeping)
+        {
+            // Reproduce an old adapter save using a separate authoritative session, never mutate the active runtime's DTO.
+            var checkpoint = JObject.Parse(runtime.Save());
+            var session = SnapshotCodec.Deserialize(checkpoint["CoreJson"]!.Value<string>()!, rules);
+            Assert.That(session.Execute(new CompleteDream()).Accepted, Is.True);
+            Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.AfterDream));
+            checkpoint["CoreJson"] = SnapshotCodec.Serialize(session);
+            checkpoint["Paused"] = paused;
+            checkpoint.Remove("DreamFromBed");
+            checkpoint["CueKind"] = sleeping ? JToken.FromObject(PresentationKind.Sleep.ToString()) : JValue.CreateNull();
+            return checkpoint.ToString();
         }
 
         private static JObject Core(GameRuntime runtime) => JObject.Parse(JObject.Parse(runtime.Save())["CoreJson"]!.Value<string>()!);

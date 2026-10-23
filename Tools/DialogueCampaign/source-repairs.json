@@ -2938,7 +2938,7 @@
       ]
     },
     "priest": {
-      "sourceSha256": "59fd8209d7cf839e4360323401a2f7edb6fef216fe1dce9bb1b80798c3868647",
+      "sourceSha256": "39779a1fc514fd020b4be003180de4bbc8b2b27e7ec011b789b82804e1e4203d",
       "excludedRanges": [],
       "repairs": [
         {
@@ -2991,7 +2991,7 @@
           }
         }
       ],
-      "previousSourceSha256": "b2e2bb5560a8526b837ea015c0f50f04aaf6de819bc6dccd133d5576ae07d3bd",
+      "previousSourceSha256": "59fd8209d7cf839e4360323401a2f7edb6fef216fe1dce9bb1b80798c3868647",
       "retiredRepairs": [
         {
           "row": 62,
@@ -3024,6 +3024,56 @@
           "reason": "Updated workbook supplies its own current portrait; retain the source value."
         }
       ]
+    },
+    "former-ruler": {
+      "sourceSha256": "a6c9a040b49a1cd6d871f730582ebfc17e027ff21a5832783d59dca617d9bc0c",
+      "previousSourceSha256": "18c9a1845455ec2cc42ce6b9dfe1e17a656fb6657ec4300d509fb08da9bc48bb",
+      "excludedRanges": [
+        {
+          "firstRow": 297,
+          "lastRow": 297,
+          "reason": "Trailing duplicate retains the previous workbook's final line. Keep the first complete updated branch at row 296, following the existing duplicate-block policy.",
+          "evidence": {
+            "retainedRow": 296,
+            "retainedSource": {
+              "row": "296",
+              "A": "Day3",
+              "B": "R6",
+              "C": "措施回应",
+              "H": "谢谢...这次不是客套。我是真的，想活着回家。",
+              "I": "P03_D3_R6_ACTION_009",
+              "J": "END_RELEASE",
+              "K": "0",
+              "L": "VV03"
+            },
+            "excludedSource": {
+              "row": "297",
+              "A": "Day3",
+              "B": "R6",
+              "C": "措施回应",
+              "H": "谢谢。今天这句...不用替我记得那么正式。",
+              "I": "P03_D3_R6_ACTION_009",
+              "J": "END_RELEASE",
+              "K": "0",
+              "L": "VV03"
+            },
+            "previousRow": 297,
+            "previousSource": {
+              "row": "297",
+              "A": "Day3",
+              "B": "R6",
+              "C": "措施回应",
+              "H": "谢谢。今天这句...不用替我记得那么正式。",
+              "I": "P03_D3_R6_ACTION_009",
+              "J": "END_RELEASE",
+              "K": "0",
+              "L": "VV03"
+            },
+            "previousSha256": "18c9a1845455ec2cc42ce6b9dfe1e17a656fb6657ec4300d509fb08da9bc48bb"
+          }
+        }
+      ],
+      "repairs": []
     }
   }
 }

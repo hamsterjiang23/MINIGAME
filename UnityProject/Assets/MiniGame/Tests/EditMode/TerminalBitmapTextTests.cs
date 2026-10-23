@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +32,41 @@ namespace MiniGame.UnityHost.Tests
 
         [TearDown]
         public void TearDown() => Object.DestroyImmediate(owner);
+
+        [Test]
+        public void EveryActiveDialogueCharacterHasVisibleGlyphsAtEveryLogicalSize()
+        {
+            var active = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+            Assert.That(active, Is.Not.Null);
+            var sources = new[] { active.PackageSource,
+                Resources.Load<TextAsset>("MiniGame/Supervisor/Dialogue"),
+                Resources.Load<TextAsset>("MiniGame/Endings/Dialogue") };
+            var characters = new HashSet<char>();
+            foreach (var source in sources)
+            {
+                Assert.That(source, Is.Not.Null);
+                foreach (var value in JObject.Parse(source.text).Descendants().OfType<JValue>()
+                    .Where(value => value.Type == JTokenType.String))
+                    foreach (char character in (string)value)
+                        if (!char.IsWhiteSpace(character)) characters.Add(character);
+            }
+            var failures = new List<string>();
+            foreach (int size in new[] { 10, 11, 12, 13, 14, 18, 19 })
+                foreach (char character in characters)
+                    if (!label.ArkTypeface.TryGet(character, size, out var glyph) || glyph.w <= 0 || glyph.h <= 0)
+                        failures.Add("U+" + ((int)character).ToString("X4") + " " + character + " @" + size);
+            Assert.That(failures, Is.Empty, "Dialogue cannot use missing or empty glyphs: " + string.Join(", ", failures));
+        }
+
+        [TestCase(10, "!'.:T|")]
+        [TestCase(11, "-–—一")]
+        public void SmallFontStrokesDoNotDisappear(int size, string value)
+        {
+            label.fontSize = size;
+            label.text = value;
+            label.rectTransform.sizeDelta = new Vector2(400, 40);
+            Assert.That(ReadVertices().Count, Is.EqualTo(value.Length * 4), "Every visible character must produce its own quad.");
+        }
 
         [Test]
         public void MixedTextUsesHtmlCharacterAdvancesAndPreservesExplicitLines()

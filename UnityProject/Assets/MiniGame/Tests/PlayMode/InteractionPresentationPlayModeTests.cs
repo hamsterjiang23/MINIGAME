@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class InteractionPresentationPlayModeTests
     {
         [UnityTest]

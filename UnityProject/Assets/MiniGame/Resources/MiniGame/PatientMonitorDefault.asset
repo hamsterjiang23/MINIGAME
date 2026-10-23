@@ -155,3 +155,14 @@ MonoBehaviour:
     CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
     CameraTarget: {x: 0, y: 0.95, z: 0.3}
     FieldOfView: 40
+  - PatientId: self-review
+    Label: T-06
+    Seed: 18
+    WallTint: {r: 0.74, g: 0.77, b: 0.72, a: 1}
+    LightTint: {r: 0.82, g: 0.91, b: 0.88, a: 1}
+    Grime: 0.3
+    ActorHeight: 1.6
+    ActorOffset: {x: 0, y: 0, z: 0}
+    CameraPosition: {x: -0.3, y: 2.7, z: -4.5}
+    CameraTarget: {x: 0, y: 0.95, z: 0.3}
+    FieldOfView: 40

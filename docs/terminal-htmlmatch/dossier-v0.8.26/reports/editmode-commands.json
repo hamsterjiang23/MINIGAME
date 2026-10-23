@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "duration": 0.36,
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalCommandAssetTests.CommandsReferenceAllTwelveUnscaledPointFilteredArtworkStates",
+      "Status": "Passed",
+      "Duration": 0.0232197,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalCommandAssetTests.QuotaAtlasContainsEveryTwoDigitValueAndPreservesTopLeftSourceRects",
+      "Status": "Passed",
+      "Duration": 0.0043792,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalCommandAssetTests.QuotaFieldUsesArtworkWithoutClampingValidThreeDigitValues(-1,\"00\",True)",
+      "Status": "Passed",
+      "Duration": 0.0129358,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalCommandAssetTests.QuotaFieldUsesArtworkWithoutClampingValidThreeDigitValues(0,\"00\",True)",
+      "Status": "Passed",
+      "Duration": 0.0003649,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalCommandAssetTests.QuotaFieldUsesArtworkWithoutClampingValidThreeDigitValues(99,\"99\",True)",
+      "Status": "Passed",
+      "Duration": 0.0003204,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalCommandAssetTests.QuotaFieldUsesArtworkWithoutClampingValidThreeDigitValues(100,\"100\",False)",
+      "Status": "Passed",
+      "Duration": 0.0005351,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

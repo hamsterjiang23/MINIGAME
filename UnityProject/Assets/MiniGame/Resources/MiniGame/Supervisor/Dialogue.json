@@ -1,5 +1,5 @@
 {
-  "revision": "supervisor-v1:922deb323f2f25cdfa07bb446a221bcd890900813890abb6c8b56a90bcfe8630",
+  "revision": "supervisor-v1:3afb95a3f3455cc0d8c08643bb7e7ec0d3623ea49d3c89585e57d011d2bd9c3e",
   "conversations": [
     {
       "day": 1,
@@ -48,7 +48,7 @@
         {
           "id": "P02_D1_R1_COMMON_006",
           "day": 1,
-          "text": "总之，就是好好教育一下那些社会的蛀虫们。",
+          "text": "你的电脑上有三个选项“释放”“治疗”和“净化”。",
           "next": "P02_D1_R1_COMMON_007",
           "portraitId": "JD_01",
           "sourceRow": 7
@@ -56,7 +56,7 @@
         {
           "id": "P02_D1_R1_COMMON_007",
           "day": 1,
-          "text": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
+          "text": "如果你觉得这人有意思，想留到第二天继续说话，可以选“治疗”，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
           "next": "P02_D1_R1_COMMON_008",
           "portraitId": "JD_01",
           "sourceRow": 8
@@ -72,7 +72,7 @@
         {
           "id": "P02_D1_R1_COMMON_009",
           "day": 1,
-          "text": "对了，还有个释放按钮。那个按钮能点击的前提是，经过你的教育，仪器检测到他们悔改了。",
+          "text": "对了，还有个释放按钮。只有你的教育取得被仪器认可的结果之后，释放按钮才会亮起。",
           "next": "P02_D1_R1_COMMON_010",
           "portraitId": "JD_01",
           "sourceRow": 10
@@ -88,7 +88,7 @@
         {
           "id": "P02_D1_R1_COMMON_011",
           "day": 1,
-          "text": "我每天都会来看望你的，这样你就不会太孤单了嘛。",
+          "text": "记得你每天最起码要净化一个人，不然你的指标没达成，你可就危险了呀。",
           "next": "P02_D1_R1_COMMON_012",
           "portraitId": "JD_03",
           "sourceRow": 12
@@ -98,15 +98,15 @@
           "day": 1,
           "text": "好了，检测时间到。",
           "next": "P02_D1_R1_COMMON_013",
-          "portraitId": "JD_01",
+          "portraitId": "JD_04",
           "sourceRow": 13
         },
         {
           "id": "P02_D1_R1_COMMON_013",
           "day": 1,
-          "text": "身为公务员，你一定能通过仪器检测吧？",
+          "text": "我们可是很注重公务员的心理健康的。",
           "next": "P02_D1_R1_COMMON_014",
-          "portraitId": "JD_01",
+          "portraitId": "JD_04",
           "sourceRow": 14
         },
         {
@@ -214,9 +214,9 @@
         {
           "id": "P02_D2_R1_COMMON_010",
           "day": 2,
-          "text": "让我看看你是不是真的过关。",
+          "text": "让我看看你是不是听了里头那些蛀虫的话。",
           "next": "P02_D2_R1_COMMON_011",
-          "portraitId": "JD_05",
+          "portraitId": "JD_04",
           "sourceRow": 27
         },
         {
@@ -224,7 +224,7 @@
           "day": 2,
           "text": "不错嘛。",
           "next": "P02_D2_R1_COMMON_012",
-          "portraitId": "JD_04",
+          "portraitId": "JD_05",
           "sourceRow": 28
         },
         {
@@ -232,7 +232,7 @@
           "day": 2,
           "text": "你最好继续保持。",
           "next": "",
-          "portraitId": "JD_04",
+          "portraitId": "JD_05",
           "sourceRow": 29
         }
       ]
@@ -308,7 +308,7 @@
         {
           "id": "P02_D3_R1_COMMON_009",
           "day": 3,
-          "text": "好了，笑一个。",
+          "text": "好了，严肃点，检测时间到。",
           "next": "P02_D3_R1_COMMON_010",
           "portraitId": "JD_04",
           "sourceRow": 38

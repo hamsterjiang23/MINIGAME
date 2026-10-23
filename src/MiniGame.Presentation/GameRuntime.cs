@@ -111,6 +111,8 @@ namespace MiniGame.Presentation
         public event Action<RuntimeView>? Changed;
         public bool IsCampaign => _rules.StartDay == 0;
         public bool UsesDreamFlow => _rules.DreamFlowEnabled;
+        /// <summary>Transient load provenance for restoring the old dream-return camera beneath a black curtain.</summary>
+        public bool RestoredFromAfterDream { get; private set; }
         public bool LockDoorAfterSupervisor { get; private set; }
         public bool IsDoorLockedAfterSupervisor
         {
@@ -292,6 +294,44 @@ namespace MiniGame.Presentation
             return Accept(result.Events);
         }
 
+        public RuntimeResult EnterHiddenEndingFromPause()
+        {
+            if (!_paused || !UsesDreamFlow) return Reject("HiddenEndingShortcutUnavailable");
+            var result = _session.Execute(new EnterHiddenEndingCheat());
+            if (!result.Accepted) return Reject(result.Reason.ToString());
+            _paused = false;
+            _inspection = null;
+            _terminalOpen = false;
+            _terminalPower = TerminalPowerState.Off;
+            _terminalPage = TerminalPage.Closed;
+            _leavingDirectory = _archiveDirectoryVisible = _dreamFromBed = false;
+            _historyEncounterId = null;
+            _endingStage = EndingStage.Transition;
+            _endingLineIndex = 0;
+            SetCue(PresentationKind.Ending);
+            return Accept(result.Events);
+        }
+
+        public RuntimeResult EnterGmEndingFromPause(EndingType ending)
+        {
+            if (!_paused || !UsesDreamFlow) return Reject("GmEndingUnavailable");
+            var result = _session.Execute(new EnterGmEnding(ending));
+            if (!result.Accepted) return Reject(result.Reason.ToString());
+            RestoredFromAfterDream = false;
+            _paused = false;
+            _inspection = null;
+            _cue = null;
+            _terminalOpen = false;
+            _terminalPower = TerminalPowerState.Off;
+            _terminalPage = TerminalPage.Closed;
+            _leavingDirectory = _archiveDirectoryVisible = _dreamFromBed = false;
+            _roomDoorOpen = _doorViewActive = false;
+            _historyEncounterId = null;
+            _endingStage = EndingStage.None;
+            _endingLineIndex = 0;
+            return Accept(result.Events);
+        }
+
         public RuntimeResult ConfirmSelfPurification()
         {
             var view = GetView();
@@ -396,7 +436,7 @@ namespace MiniGame.Presentation
             if (_dreamFromBed && game.Day == 0 && kind == PresentationKind.Sleep
                 && _session.GetPlayerView().Phase == GamePhase.AfterDream)
             {
-                // Day0 has one sleep and no dream film. Later nights wait for another bed interaction.
+                // Day0 keeps its single sleep without a dream film.
                 var wake = _session.Execute(new Interact(InteractionTarget.Bed));
                 if (!wake.Accepted) throw new InvalidOperationException("Completed Day0 sleep could not advance the night.");
                 events = (events ?? Array.Empty<GameEvent>()).Concat(wake.Events);
@@ -623,7 +663,8 @@ namespace MiniGame.Presentation
             return buffer.ToString();
         }
 
-        public static GameRuntime Restore(string json, GameRules rules, IGameContent content, EndingDialogueCatalog? endings = null)
+        public static GameRuntime Restore(string json, GameRules rules, IGameContent content, EndingDialogueCatalog? endings = null,
+            bool pauseOnLoad = false)
         {
             if (rules == null) throw new ArgumentNullException(nameof(rules));
             if (content == null) throw new ArgumentNullException(nameof(content));
@@ -642,7 +683,7 @@ namespace MiniGame.Presentation
                 ValidateCheckpoint(checkpoint, session, rules);
                 var runtime = new GameRuntime(session, rules, content, checkpoint.UseTerminalDirectory)
                 {
-                    _terminalOpen = checkpoint.TerminalOpen, _paused = checkpoint.Paused,
+                    _terminalOpen = checkpoint.TerminalOpen, _paused = checkpoint.Paused || pauseOnLoad,
                     _terminalPage = checkpoint.Page ?? (checkpoint.TerminalOpen ? TerminalPage.Review : TerminalPage.Closed),
                     _leavingDirectory = checkpoint.LeavingDirectory, _historyEncounterId = checkpoint.HistoryEncounterId,
                     _terminalPowerDay = session.GetPlayerView().Day,
@@ -651,7 +692,9 @@ namespace MiniGame.Presentation
                     _roomDoorOpen = checkpoint.RoomDoorOpen,
                     _doorViewActive = checkpoint.DoorViewActive,
                     _dreamFromBed = checkpoint.DreamFromBed,
-                    _endings = endings, _endingStage = checkpoint.EndingStage, _endingLineIndex = checkpoint.EndingLineIndex
+                    _endings = endings, _endingStage = checkpoint.EndingStage, _endingLineIndex = checkpoint.EndingLineIndex,
+                    RestoredFromAfterDream = rules.DreamFlowEnabled && session.GetPlayerView().Day > 0
+                        && session.GetPlayerView().Phase == GamePhase.AfterDream
                 };
                 runtime.ValidateEndingCheckpoint();
                 runtime._transcript.AddRange(checkpoint.Transcript.Select(entry => new TranscriptEntry(entry.Key,
@@ -678,6 +721,7 @@ namespace MiniGame.Presentation
                     var view = session.GetPlayerView();
                     runtime._inspection = content.GetInspection(view.CurrentPatientId!, view.Day, checkpoint.OpenInspectionKind.Value);
                 }
+                if (runtime.RestoredFromAfterDream) runtime.Accept();
                 return runtime;
             }
             catch (JsonException error)
@@ -869,6 +913,7 @@ namespace MiniGame.Presentation
 
         private RuntimeResult Accept(IEnumerable<GameEvent>? events = null)
         {
+            events = WakeAfterDreamIfNeeded(events);
             var game = _session.GetPlayerView();
             if (_terminalPowerDay != game.Day)
             {
@@ -891,6 +936,18 @@ namespace MiniGame.Presentation
             _cachedView = null;
             Changed?.Invoke(GetView());
             return new RuntimeResult("", events);
+        }
+
+        private IEnumerable<GameEvent>? WakeAfterDreamIfNeeded(IEnumerable<GameEvent>? events)
+        {
+            var game = _session.GetPlayerView();
+            if (_paused || !UsesDreamFlow || game.Day == 0 || game.Phase != GamePhase.AfterDream) return events;
+            var wake = _session.Execute(new Interact(InteractionTarget.Bed));
+            if (!wake.Accepted) throw new InvalidOperationException("Completed dream could not advance the night.");
+            _cue = null;
+            _dreamFromBed = false;
+            _roomDoorOpen = _doorViewActive = false;
+            return (events ?? Array.Empty<GameEvent>()).Concat(wake.Events);
         }
 
         private static RuntimeResult Reject(string reason) => new RuntimeResult(reason);

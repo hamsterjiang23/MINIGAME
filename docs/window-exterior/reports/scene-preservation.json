@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "beforeDocuments": 781,
+  "afterDocuments": 782,
+  "unchangedOriginalDocuments": 764,
+  "hiddenBackdrop": [
+    "B_Wall__3_.003",
+    "B_Wall__3_.012",
+    "B_Wall__3_.013",
+    "B_立方体.003",
+    "B_立方体.016",
+    "B_立方体.017",
+    "B_立方体.019",
+    "B_立方体.020",
+    "B_立方体.021",
+    "B_立方体.022",
+    "B_立方体.024",
+    "B_立方体.025",
+    "B_立方体.026",
+    "B_立方体.027",
+    "B_立方体.028"
+  ],
+  "cameraFarChanges": 1,
+  "singleExteriorPrefabAdded": true,
+  "exteriorRootAppended": true,
+  "exteriorModelGuid": "59968e0efb99d0d41990ff553293d011",
+  "unexpectedChanges": [],
+  "scope": "All original room, light, collider and gameplay documents are identical except 15 exterior renderer flags and the camera far plane; one exterior prefab and its root reference are added.",
+  "beforeSha256": "46acefb6caec530b297d3a6aa56c79081a46ccdf74209165a0686ee80b1f1ac7",
+  "afterSha256": "a2f92ba3882843c581c2d2051968ba62c1e6f4a8d56f69112582e3c244d7b35d"
+}

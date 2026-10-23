@@ -20,7 +20,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
             Assert.That(clock.State.Elapsed, Is.Zero, "Fade overshoot must not shorten the full-black interval.");
             Assert.That(clock.Opacity, Is.EqualTo(1));
-            clock.Advance(1.99f, true, false);
+            Assert.That(RoomEndingTransitionClock.BlackHoldSeconds, Is.EqualTo(3));
+            clock.Advance(RoomEndingTransitionClock.BlackHoldSeconds - .01f, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
             clock.Advance(.02f, false, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
@@ -38,6 +39,7 @@ namespace MiniGame.UnityHost.Tests
 
         [TestCase(RoomEndingTransitionPhase.FadingOut, .2f)]
         [TestCase(RoomEndingTransitionPhase.BlackHold, 1.4f)]
+        [TestCase(RoomEndingTransitionPhase.BlackHold, 2.4f)]
         [TestCase(RoomEndingTransitionPhase.Entering, .6f)]
         public void PauseAndSerializationPreserveOnlyRemainingTransition(RoomEndingTransitionPhase phase, float elapsed)
         {
@@ -73,7 +75,7 @@ namespace MiniGame.UnityHost.Tests
             clock.Retry();
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
             Assert.That(clock.State.Elapsed, Is.Zero);
-            clock.Advance(1.99f, true, false);
+            clock.Advance(RoomEndingTransitionClock.BlackHoldSeconds - .01f, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
         }
 
@@ -81,7 +83,7 @@ namespace MiniGame.UnityHost.Tests
         public void InvalidTransitionPoseAndElapsedCannotBeRestored()
         {
             Assert.That(new RoomEndingTransitionCheckpoint
-                { Phase = RoomEndingTransitionPhase.BlackHold, Elapsed = 2.01f }.IsValid(), Is.False);
+                { Phase = RoomEndingTransitionPhase.BlackHold, Elapsed = RoomEndingTransitionClock.BlackHoldSeconds + .01f }.IsValid(), Is.False);
             Assert.That(new RoomEndingTransitionCheckpoint
                 { Phase = RoomEndingTransitionPhase.Entering, Elapsed = .5f }.IsValid(), Is.False);
             Assert.That(new RoomEndingTransitionCheckpoint

@@ -1,0 +1,225 @@
+{
+  "date": "2026-10-23",
+  "scope": "Dialogue glyph coverage, pixel visibility, atlas refresh and runtime terminal rendering",
+  "reproducedBeforeFix": {
+    "missingEndingCharacters": [
+      "叩",
+      "呵",
+      "咚",
+      "奢",
+      "您",
+      "抱",
+      "村",
+      "殆",
+      "毕",
+      "浊",
+      "澈",
+      "盼",
+      "耀",
+      "肉",
+      "荣",
+      "蓝",
+      "蚕",
+      "血",
+      "食",
+      "饱",
+      "鲜"
+    ],
+    "blankGlyphs": [
+      {
+        "code": "U+0021",
+        "char": "!",
+        "size": 10,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+0027",
+        "char": "'",
+        "size": 10,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+002D",
+        "char": "-",
+        "size": 11,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+002E",
+        "char": ".",
+        "size": 10,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+003A",
+        "char": ":",
+        "size": 10,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+0054",
+        "char": "T",
+        "size": 10,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+007C",
+        "char": "|",
+        "size": 10,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+2013",
+        "char": "–",
+        "size": 11,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+2014",
+        "char": "—",
+        "size": 11,
+        "sourceBlank": true
+      },
+      {
+        "code": "U+4E00",
+        "char": "一",
+        "size": 11,
+        "sourceBlank": true
+      }
+    ],
+    "failingRegression": "Artifacts/DialogueGlyphAudit20261023/baseline-failure.json"
+  },
+  "after": {
+    "sourceFiles": 161,
+    "characters": 1449,
+    "activePackage": "UnityProject\\Assets\\MiniGame\\ImportedDialogue\\inspection-campaign\\aaaf853464d1d62142bd42fc93b83a79\\Package.minigame.json",
+    "activeMatchesAuthoring": true,
+    "atlasSize": [
+      2048,
+      2048
+    ],
+    "checkedGlyphPixels": 10143,
+    "missingOrSuspiciousSources": [],
+    "blankGlyphs": [],
+    "pixelMismatches": []
+  },
+  "atlas": {
+    "characters": 1452,
+    "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      18,
+      19
+    ],
+    "verifiedGlyphSizePairs": 10164
+  },
+  "fontTests": {
+    "total": 4,
+    "passed": 4,
+    "failures": [],
+    "errors": []
+  },
+  "unityTests": {
+    "TerminalBitmapTextTests": {
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "TerminalDialogueTextGlitchTests": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "DialogueBitmapPaginationTests": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "TerminalHtmlParityTests": {
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "reimport": {
+    "refreshed": true,
+    "width": 11,
+    "height": 11,
+    "atlasWidth": 2048,
+    "atlasHeight": 2048
+  },
+  "visualEvidence": {
+    "inspected": [
+      "Artifacts/DialogueGlyphAudit20261023/Visuals/ending-glyphs-1.png",
+      "Artifacts/DialogueGlyphAudit20261023/Visuals/ending-glyphs-2.png"
+    ],
+    "captureSize": [
+      800,
+      600
+    ],
+    "source": "Unity PlayMode live terminal Canvas"
+  },
+  "dialogueSourceTests": {
+    "total": 28,
+    "passed": 27,
+    "failed": [
+      "test_endings.EndingContentTests.test_checked_in_artifacts_match_deterministic_build"
+    ],
+    "endingMetadataDrift": {
+      "differentPackageKeys": [
+        "contentVersion",
+        "revision"
+      ],
+      "differentAuditKeys": [
+        "revision"
+      ],
+      "versions": [
+        "1.2.0-development",
+        "1.2.1-development"
+      ],
+      "yarnEqual": true
+    },
+    "action": "Reported independently; existing ending content and save revision preserved."
+  },
+  "windowsBuild": {
+    "result": "Succeeded",
+    "errors": "0",
+    "warnings": "1",
+    "seconds": "7.1859286",
+    "bytes": "873903132",
+    "output": "F:/AAMINIGAME/MINIGAME/Builds/DialogueGlyphAudit20261023/MiniGame.exe",
+    "unity": "2022.3.23f1c1"
+  },
+  "windowsBuildWarnings": [
+    "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+  ],
+  "package": {
+    "path": "F:\\AAMINIGAME\\MINIGAME\\Builds\\MiniGame-Windows-20261023-FontFix.zip",
+    "bytes": 341516009,
+    "files": 237,
+    "executable": true,
+    "unityPlayer": true,
+    "gameData": true,
+    "sha256": "C7416E3E1265A8CED58F920538B63342B0A43773385BC447CDD5F34F6840B0CF"
+  },
+  "limitations": [
+    "Standalone Player interaction was not tested during this font audit."
+  ],
+  "commands": [
+    "uv run Tools/TerminalTypography/build_ark_atlas.py --check-only",
+    "uv run --with Pillow==12.3.0 python -m unittest discover -s Tools/TerminalTypography -v",
+    "uv run python -m unittest discover -s Tools/DialogueCampaign -v",
+    "git diff --check"
+  ]
+}

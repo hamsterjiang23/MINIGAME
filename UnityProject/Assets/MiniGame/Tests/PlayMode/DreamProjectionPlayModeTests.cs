@@ -107,8 +107,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(director.StageTexture, Is.Null);
         }
 
-        [UnityTest]
-        public IEnumerator RuntimeCheckpointKeepsPlaybackTimeAndCompletesOnlyAfterReturn()
+        [UnityTest, Category("InteractionWakeGm")]
+        public IEnumerator RuntimeCheckpointKeepsPlaybackTimeAndWakesOnlyAfterTheFinalImageFadesBlack()
         {
             CreateRig();
             var rules = Rules();
@@ -147,13 +147,14 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(projection.enabled, Is.True, "The last dream image stays visible during its fade to black.");
             Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
             director.Advance(profile.ReturnSeconds);
-            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
+            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.None));
             Assert.That(projection.enabled, Is.False);
-            Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
-            director.Advance(profile.WakeBlackSeconds);
-            Assert.That(director.Phase, Is.EqualTo(DreamPlaybackPhase.Revealing));
-            director.Advance(profile.ReturnSeconds);
-            Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
+            Assert.That(restored.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            Assert.That(restored.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
+            string awake = restored.Save();
+            director.Advance(60);
+            Assert.That(restored.Save(), Is.EqualTo(awake), "Repeated playback ticks cannot wake twice.");
             Assert.That(director.OwnsCamera, Is.False);
             Assert.That(Vector3.Distance(camera.transform.position, originalPosition), Is.LessThan(.00001f));
             Assert.That(Quaternion.Angle(camera.transform.rotation, originalRotation), Is.LessThan(.001f));

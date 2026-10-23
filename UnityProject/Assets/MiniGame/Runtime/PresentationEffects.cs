@@ -8,17 +8,18 @@ namespace MiniGame.UnityHost
 {
     public enum TerminalEntryPhase { None, Sitting, Aligning, Pushing, FadingWorld, RevealingInterface, Active, OpeningMonitor, OpeningPullback }
 
-    public enum SleepTransitionPhase { None, FadingOut, BlackHold }
+    public enum SleepTransitionPhase { None, FadingOut, BlackHold, Waking, WaitingToWake }
 
     [Serializable]
     public sealed class SleepTransitionCheckpoint
     {
-        public int Version = 1;
+        public int Version = 2;
         public int Day;
         public GamePhase GamePhase;
         public SleepTransitionPhase Phase;
         public float FadeElapsed;
         public float BlackHoldRemaining;
+        public float WakeElapsed;
         public bool HasCameraPose;
         public Quaternion StandingRotation = Quaternion.identity;
         public Quaternion ActorRotation = Quaternion.identity;
@@ -27,16 +28,44 @@ namespace MiniGame.UnityHost
         public bool HasBedRotation;
         public Quaternion BedRotation = Quaternion.identity;
 
-        public bool Matches(RuntimeView view) => Version == 1 && view?.Cue?.Kind == PresentationKind.Sleep
+        public bool Matches(RuntimeView view) => (Version == 1 || Version == 2) && view != null
             && Day == view.Game.Day && GamePhase == view.Game.Phase
-            && (Phase == SleepTransitionPhase.FadingOut || Phase == SleepTransitionPhase.BlackHold)
+            && ((Phase == SleepTransitionPhase.FadingOut || Phase == SleepTransitionPhase.BlackHold)
+                && view.Cue?.Kind == PresentationKind.Sleep
+                || Version == 2 && Phase == SleepTransitionPhase.Waking && IsWakeView(view)
+                || Version == 2 && Phase == SleepTransitionPhase.WaitingToWake && view.Game.Phase == MiniGame.Core.GamePhase.AfterDream)
             && !float.IsNaN(FadeElapsed) && !float.IsInfinity(FadeElapsed) && FadeElapsed >= 0 && FadeElapsed <= .8f
             && !float.IsNaN(BlackHoldRemaining) && !float.IsInfinity(BlackHoldRemaining)
             && BlackHoldRemaining >= 0 && BlackHoldRemaining <= 180
+            && !float.IsNaN(WakeElapsed) && !float.IsInfinity(WakeElapsed) && WakeElapsed >= 0 && WakeElapsed <= 180
             && (Phase != SleepTransitionPhase.BlackHold || FadeElapsed == .8f)
             && (!HasCameraPose || ValidRotation(StandingRotation) && ValidRotation(ActorRotation))
             && (!HasPositionPose || HasCameraPose && ValidPosition(StandingPosition) && ValidPosition(StandingLocalPosition) && ValidPosition(BedPosition))
             && (!HasBedRotation || HasCameraPose && ValidRotation(BedRotation));
+
+        public static bool IsWakeView(RuntimeView view) => view != null
+            && (view.Game.Phase == MiniGame.Core.GamePhase.MorningInspection || view.Game.Phase == MiniGame.Core.GamePhase.Apartment
+                || view.EndingStage == EndingStage.AwaitingDoor);
+
+        public SleepTransitionCheckpoint ForRestoredView(RuntimeView view)
+        {
+            if (float.IsNaN(WakeElapsed) || float.IsInfinity(WakeElapsed) || WakeElapsed < 0 || WakeElapsed > 180) return null;
+            bool legacyWake = Day > 0 && GamePhase == MiniGame.Core.GamePhase.AfterDream
+                && (Version == 1 || Version == 2)
+                && (Phase == SleepTransitionPhase.WaitingToWake || Phase == SleepTransitionPhase.FadingOut
+                    || Phase == SleepTransitionPhase.BlackHold && FadeElapsed == .8f);
+            if (legacyWake && view != null && (view.Game.Day == Day && view.Game.Phase == MiniGame.Core.GamePhase.AfterDream
+                || view.Game.Day == Day + 1 && IsWakeView(view)))
+            {
+                var mapped = Copy();
+                mapped.Version = 2; mapped.Day = view.Game.Day; mapped.GamePhase = view.Game.Phase;
+                mapped.Phase = view.Game.Phase == MiniGame.Core.GamePhase.AfterDream
+                    ? SleepTransitionPhase.WaitingToWake : SleepTransitionPhase.Waking;
+                mapped.WakeElapsed = 0;
+                return mapped.Matches(view) ? mapped : null;
+            }
+            return Matches(view) ? Copy() : null;
+        }
 
         private static bool ValidPosition(Vector3 value) => !float.IsNaN(value.sqrMagnitude) && !float.IsInfinity(value.sqrMagnitude);
 
@@ -245,11 +274,10 @@ namespace MiniGame.UnityHost
             night = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.Sleeping
                 || view.Game.Phase == GamePhase.Dream || view.Game.Phase == GamePhase.AfterDream;
             if (bedGuide != null && (bedtimeGuidance == null || !bedtimeGuidance.isActiveAndEnabled))
-                bedGuide.enabled = view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream;
+                bedGuide.enabled = view.Game.Phase == GamePhase.Evening;
             if (completingSleep) return;
             bool newMorning = lastPresentedDay >= 0 && view.Game.Day > lastPresentedDay
-                && (view.Game.Phase == GamePhase.MorningInspection || view.Game.Phase == GamePhase.Apartment
-                    || view.EndingStage == EndingStage.AwaitingDoor);
+                && SleepTransitionCheckpoint.IsWakeView(view);
             lastPresentedDay = view.Game.Day;
             if (newMorning)
             {
@@ -574,9 +602,17 @@ namespace MiniGame.UnityHost
             }
         }
 
+        public void RefreshTerminalSurfaceGlow()
+        {
+            if (runtime != null) SetSurfaceGlow(runtime.GetView().TerminalPowered ? 1 : 0);
+        }
+
         private void SetSurfaceGlow(float amount)
         {
-            if (runtime != null && runtime.GetView().IsSelfReview && !runtime.GetView().TerminalOpen) amount = .55f;
+            var view = runtime?.GetView();
+            if (view != null && !view.TerminalOpen && (view.IsSelfReview
+                || view.Game.Phase == GamePhase.Dream && bedtimeGuidance != null && bedtimeGuidance.DreamReturnSelfReviewVisible))
+                amount = .55f;
             if (terminalSurface == null || terminalSurface.sharedMaterial == null) return;
             if (!surfaceReady)
             {
@@ -615,7 +651,8 @@ namespace MiniGame.UnityHost
 
         public bool RestoreSleepCheckpoint(SleepTransitionCheckpoint checkpoint)
         {
-            if (checkpoint == null || !checkpoint.Matches(runtime?.GetView())) return false;
+            checkpoint = checkpoint?.ForRestoredView(runtime?.GetView());
+            if (checkpoint == null) return false;
             if (playing != null) StopCoroutine(playing);
             CaptureSleepView();
             sleepCheckpoint = checkpoint.Copy();
@@ -633,10 +670,44 @@ namespace MiniGame.UnityHost
             }
             sleepBedRotation = checkpoint.HasBedRotation ? Quaternion.Normalize(checkpoint.BedRotation)
                 : Quaternion.Euler(-90, sleepStandingRotation.eulerAngles.y, 0);
-            activeToken = runtime.GetView().Cue.Token;
-            playing = StartCoroutine(SleepTransition(activeToken));
+            activeToken = runtime.GetView().Cue?.Token;
+            if (checkpoint.Phase == SleepTransitionPhase.WaitingToWake)
+            {
+                playing = null;
+                screen.SetTransitionLocked(true);
+                ApplyWakeFrame(0);
+            }
+            else playing = StartCoroutine(checkpoint.Phase == SleepTransitionPhase.Waking
+                ? WakeTransition() : SleepTransition(activeToken));
             return true;
         }
+
+        public void RestoreLegacyDreamWake()
+        {
+            var view = runtime?.GetView();
+            if (view == null || view.Game.Phase != GamePhase.AfterDream && !SleepTransitionCheckpoint.IsWakeView(view)) return;
+            if (playing != null) StopCoroutine(playing);
+            CaptureSleepView();
+            sleepCheckpoint = CreateSleepCheckpoint(view, view.Game.Phase == GamePhase.AfterDream
+                ? SleepTransitionPhase.WaitingToWake : SleepTransitionPhase.Waking);
+            activeToken = view.Cue?.Token;
+            if (view.Game.Phase == GamePhase.AfterDream)
+            {
+                playing = null;
+                screen.SetTransitionLocked(true);
+                ApplyWakeFrame(0);
+            }
+            else playing = StartCoroutine(WakeTransition());
+        }
+
+        private SleepTransitionCheckpoint CreateSleepCheckpoint(RuntimeView view, SleepTransitionPhase phase) => new SleepTransitionCheckpoint
+        {
+            Day = view.Game.Day, GamePhase = view.Game.Phase, Phase = phase,
+            HasCameraPose = true, StandingRotation = sleepStandingRotation, ActorRotation = sleepActorRotation,
+            HasPositionPose = true, StandingPosition = sleepStandingPosition,
+            StandingLocalPosition = sleepStandingLocalPosition, BedPosition = sleepBedPosition,
+            HasBedRotation = true, BedRotation = sleepBedRotation
+        };
 
         private IEnumerator SleepTransition(string token)
         {
@@ -647,15 +718,8 @@ namespace MiniGame.UnityHost
             {
                 float hold = sleepBlackSeconds;
                 if (float.IsNaN(hold) || float.IsInfinity(hold)) hold = 1.5f;
-                sleepCheckpoint = new SleepTransitionCheckpoint
-                {
-                    Day = view.Game.Day, GamePhase = view.Game.Phase, Phase = SleepTransitionPhase.FadingOut,
-                    BlackHoldRemaining = Mathf.Clamp(hold, 0, 180),
-                    HasCameraPose = true, StandingRotation = sleepStandingRotation, ActorRotation = sleepActorRotation,
-                    HasPositionPose = true, StandingPosition = sleepStandingPosition,
-                    StandingLocalPosition = sleepStandingLocalPosition, BedPosition = sleepBedPosition,
-                    HasBedRotation = true, BedRotation = sleepBedRotation
-                };
+                sleepCheckpoint = CreateSleepCheckpoint(view, SleepTransitionPhase.FadingOut);
+                sleepCheckpoint.BlackHoldRemaining = Mathf.Clamp(hold, 0, 180);
             }
             var checkpoint = sleepCheckpoint;
             float duration = Mathf.Max(.01f, bedMoveSeconds) + Mathf.Max(.01f, bedLookSeconds) + Mathf.Max(.01f, bedFadeSeconds);
@@ -752,26 +816,37 @@ namespace MiniGame.UnityHost
         {
             waking = true;
             screen.SetTransitionLocked(true);
-            var ceilingRotation = sleepBedRotation;
-            viewCamera.transform.position = sleepBedPosition;
-            viewCamera.transform.rotation = ceilingRotation;
-            screen.SetFade(1);
-            float elapsed = 0;
-            while (elapsed < bedFadeSeconds + bedLookSeconds + bedMoveSeconds)
+            var view = runtime.GetView();
+            if (sleepCheckpoint == null || sleepCheckpoint.Phase != SleepTransitionPhase.Waking || !sleepCheckpoint.Matches(view))
+                sleepCheckpoint = CreateSleepCheckpoint(view, SleepTransitionPhase.Waking);
+            var checkpoint = sleepCheckpoint;
+            float duration = Mathf.Max(.01f, bedFadeSeconds) + Mathf.Max(.01f, bedLookSeconds) + Mathf.Max(.01f, bedMoveSeconds);
+            checkpoint.WakeElapsed = Mathf.Min(checkpoint.WakeElapsed, duration);
+            ApplyWakeFrame(checkpoint.WakeElapsed);
+            // The dream completion frame remains fully black before the first wake fade frame.
+            yield return null;
+            while (checkpoint.WakeElapsed < duration)
             {
                 if (runtime.GetView().Paused) { yield return null; continue; }
-                elapsed += Time.unscaledDeltaTime;
-                screen.SetFade(1 - Mathf.Clamp01(elapsed / Mathf.Max(.01f, bedFadeSeconds)));
-                viewCamera.transform.rotation = Quaternion.Slerp(ceilingRotation, sleepStandingRotation,
-                    Ease(Mathf.Clamp01((elapsed - bedFadeSeconds) / Mathf.Max(.01f, bedLookSeconds))));
-                viewCamera.transform.position = Vector3.Lerp(sleepBedPosition, StandingPositionForCurrentActor(),
-                    Ease(Mathf.Clamp01((elapsed - bedFadeSeconds - bedLookSeconds) / Mathf.Max(.01f, bedMoveSeconds))));
+                checkpoint.WakeElapsed = Mathf.Min(duration, checkpoint.WakeElapsed + Time.unscaledDeltaTime);
+                ApplyWakeFrame(checkpoint.WakeElapsed);
                 yield return null;
             }
+            while (runtime.GetView().Paused) yield return null;
+            sleepCheckpoint = null;
             RestoreSleepView();
             screen.SetFade(0);
             screen.SetTransitionLocked(false);
             playing = null;
+        }
+
+        private void ApplyWakeFrame(float elapsed)
+        {
+            screen.SetFade(1 - Mathf.Clamp01(elapsed / Mathf.Max(.01f, bedFadeSeconds)));
+            viewCamera.transform.rotation = Quaternion.Slerp(sleepBedRotation, sleepStandingRotation,
+                Ease(Mathf.Clamp01((elapsed - bedFadeSeconds) / Mathf.Max(.01f, bedLookSeconds))));
+            viewCamera.transform.position = Vector3.Lerp(sleepBedPosition, StandingPositionForCurrentActor(),
+                Ease(Mathf.Clamp01((elapsed - bedFadeSeconds - bedLookSeconds) / Mathf.Max(.01f, bedMoveSeconds))));
         }
 
         private IEnumerator ReactionSignal(string token)

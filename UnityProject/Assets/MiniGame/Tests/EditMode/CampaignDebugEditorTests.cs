@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class CampaignDebugEditorTests
     {
         private GameRules rules;
@@ -37,9 +38,10 @@ namespace MiniGame.UnityHost.Tests
                 var view = runtime.GetView();
                 Assert.That(CampaignDebugCheckpoint.Matches(view, day, point), Is.True, day + "/" + point);
                 Assert.That(view.Paused, Is.False);
+                if (point == CampaignDebugPoint.AfterDream && view.Game.Phase == GamePhase.Ending) continue;
                 RuntimeResult result;
                 if (view.Cue != null) result = runtime.CompleteCue(view.Cue.Token);
-                else if (point == CampaignDebugPoint.Morning) result = runtime.TryInteract(InteractionTarget.Door);
+                else if (view.Game.Phase == GamePhase.MorningInspection) result = runtime.TryInteract(InteractionTarget.Door);
                 else if (point == CampaignDebugPoint.Terminal)
                     result = runtime.EnterSelectedPatient(view.Patients.First(patient => patient.CanReceiveToday).Id);
                 else if (point == CampaignDebugPoint.Bedtime || point == CampaignDebugPoint.AfterDream && view.Game.Phase != GamePhase.SelfReview)

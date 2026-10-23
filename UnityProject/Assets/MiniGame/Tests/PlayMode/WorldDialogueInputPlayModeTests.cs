@@ -16,6 +16,13 @@ namespace MiniGame.UnityHost.Tests
     {
         private MiniGameBootstrap host;
 
+        [UnityTearDown]
+        public IEnumerator TearDown()
+        {
+            MiniGameSessionHost.Release();
+            yield return null;
+        }
+
         [UnityTest, Timeout(30000)]
         public IEnumerator SupervisorPointerKeyboardAndBackgroundShareRevealAndAdvanceGuard()
         {
@@ -135,9 +142,12 @@ namespace MiniGame.UnityHost.Tests
 
         private IEnumerator OpenMorning(float charactersPerSecond)
         {
+            MiniGameSessionHost.Release();
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.MainMenu.TryDismissForEditorDebug();
+            host.StartCampaign();
             RestoreFirstMorning(host);
             host.Player.enabled = false;
             host.Screen.DialogueCharactersPerSecond = charactersPerSecond;
@@ -163,6 +173,7 @@ namespace MiniGame.UnityHost.Tests
             var session = MiniGameSessionHost.Current;
             Assert.That(session, Is.Not.Null, "The combined scene must provide the real Campaign rules and content.");
             var runtime = new GameRuntime(session.Rules, session.Content, useTerminalDirectory: true);
+            runtime.ConfigureEndings(host.Runtime.Endings);
             Assert.That(runtime.IsCampaign, Is.True);
             Assert.That(runtime.GetView().Game.Day, Is.Zero);
             Assert.That(runtime.BeginDayZeroOpening().Accepted, Is.True);

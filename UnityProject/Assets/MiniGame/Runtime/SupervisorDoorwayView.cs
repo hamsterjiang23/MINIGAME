@@ -30,6 +30,8 @@ namespace MiniGame.UnityHost
         public SpriteRenderer Surface => surface;
         public bool IsVisible => surface != null && surface.enabled && surface.gameObject.activeInHierarchy;
         public string CurrentPortraitId { get; private set; } = "JD_01";
+        public bool IsReadyForDialogue => endingCamera != null || (IsVisible && doorway != null
+            && doorway.Phase == DoorCameraPhase.Viewing && !ShouldAvoidDoor() && avoidance == 0);
 
         public void Bind(GameRuntime game, ApartmentPlayer player, DoorViewCamera doorway)
         {
@@ -41,10 +43,10 @@ namespace MiniGame.UnityHost
             if (game == null || player == null || doorway == null || doorway.InsidePose == null) return;
             EnsureSurface();
             if (surface == null) return;
+            SetPortrait("JD_01");
             PlaceAtDoorway();
             clearanceDoor = doorway.Door;
             if (clearanceDoor != null) clearanceDoor.MotionClearance = HasDoorClearance;
-            SetPortrait("JD_01");
             if (game.IsCampaign && game.GetView().Game.Phase == GamePhase.Ending)
             {
                 SetPortrait(game.GetView().Game.Ending == EndingType.PriestAttack ? "PE01" : "JD_06");
@@ -101,7 +103,11 @@ namespace MiniGame.UnityHost
             || !ShouldAvoidDoor() || avoidance >= Mathf.Max(0, doorAvoidanceDistance) - .001f;
 
         private void ApplyDoorOffset()
-        { if (surface != null) surface.transform.position = doorwayPosition - doorwayRight * avoidance; }
+        {
+            const float priestLeftOffset = .4f;
+            float portraitOffset = CurrentPortraitId == "PE01" || CurrentPortraitId == "PE02" ? priestLeftOffset : 0;
+            if (surface != null) surface.transform.position = doorwayPosition - doorwayRight * (avoidance + portraitOffset);
+        }
 
         private void EnsureSurface()
         {
@@ -128,10 +134,26 @@ namespace MiniGame.UnityHost
             var texture = Resources.Load<Texture2D>(resource);
             if (texture == null) return null;
             var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
-                new Vector2(.5f, 0), 100, 0, SpriteMeshType.FullRect);
+                PortraitPivot(id), 100, 0, SpriteMeshType.FullRect);
             sprite.name = "Supervisor " + id;
             sprites.Add(id, sprite);
             return sprite;
+        }
+
+        // Original PNGs have different transparent margins. Register their feet rather than
+        // their canvases (alpha > 16, bottom 10% centroid); see the supervisor asset guide.
+        private static Vector2 PortraitPivot(string id)
+        {
+            switch (id)
+            {
+                case "JD_01": return new Vector2(406.99f / 728, 31f / 1296);
+                case "JD_02": return new Vector2(323.99f / 632, 52f / 1327);
+                case "JD_03": return new Vector2(322.99f / 654, 5f / 1254);
+                case "JD_04": return new Vector2(409.77f / 755, 18f / 1279);
+                case "JD_05": return new Vector2(362.06f / 703, 4f / 1254);
+                case "JD_06": return new Vector2(343.29f / 682, 42f / 1315);
+                default: return new Vector2(.5f, 0);
+            }
         }
 
         public bool SetPortrait(string id)
@@ -140,8 +162,11 @@ namespace MiniGame.UnityHost
             var portrait = GetPortrait(id);
             if (surface == null || portrait == null) return false;
             surface.sprite = portrait;
-            if (id == "PE01" || id == "PE02") surface.transform.localScale = Vector3.one * (1.8f / portrait.bounds.size.y);
+            // Keep one reference pixel scale per actor across expressions and checkpoint rebinds.
+            var reference = id == "PE01" || id == "PE02" ? GetPortrait("PE01") : GetPortrait("JD_01");
+            surface.transform.localScale = Vector3.one * (1.8f / reference.bounds.size.y);
             CurrentPortraitId = id;
+            ApplyDoorOffset();
             return true;
         }
 

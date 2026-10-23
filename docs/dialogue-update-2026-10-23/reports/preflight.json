@@ -1,0 +1,130 @@
+{
+  "priestRepairChecks": [
+    {
+      "row": 60,
+      "id": "P01_D1_R7_ACTION_002",
+      "fullSourceRowUnchanged": true,
+      "preconditions": {
+        "id": "P01_D1_R7_ACTION_002",
+        "next": "END_DAY1,P01_D1_R7_ACTION_007"
+      }
+    },
+    {
+      "row": 67,
+      "id": "P01_D1_R7_ACTION_007",
+      "fullSourceRowUnchanged": true
+    },
+    {
+      "row": 178,
+      "id": "P01_D3_R6_ACTION_003",
+      "fullSourceRowUnchanged": true,
+      "preconditions": {
+        "id": "P01_D3_R6_ACTION_003",
+        "portrait": "JN05"
+      }
+    },
+    {
+      "row": 179,
+      "id": "P01_D3_R6_ACTION_004",
+      "fullSourceRowUnchanged": true,
+      "preconditions": {
+        "id": "P01_D3_R6_ACTION_004",
+        "portrait": "JN05"
+      }
+    }
+  ],
+  "unchangedMeetings": [
+    {
+      "day": 0,
+      "patientId": "tutorial",
+      "unchanged": true
+    },
+    {
+      "day": 1,
+      "patientId": "battlefield-doctor",
+      "unchanged": true
+    },
+    {
+      "day": 1,
+      "patientId": "child",
+      "unchanged": true
+    },
+    {
+      "day": 2,
+      "patientId": "battlefield-doctor",
+      "unchanged": true
+    },
+    {
+      "day": 2,
+      "patientId": "child",
+      "unchanged": true
+    },
+    {
+      "day": 3,
+      "patientId": "battlefield-doctor",
+      "unchanged": true
+    },
+    {
+      "day": 3,
+      "patientId": "child",
+      "unchanged": true
+    },
+    {
+      "day": 3,
+      "patientId": "diplomat",
+      "unchanged": true
+    }
+  ],
+  "updatedMeetings": [
+    {
+      "day": 1,
+      "patientId": "former-ruler",
+      "unchanged": false
+    },
+    {
+      "day": 2,
+      "patientId": "former-ruler",
+      "unchanged": false
+    },
+    {
+      "day": 2,
+      "patientId": "priest",
+      "unchanged": false
+    },
+    {
+      "day": 3,
+      "patientId": "former-ruler",
+      "unchanged": false
+    },
+    {
+      "day": 3,
+      "patientId": "priest",
+      "unchanged": false
+    }
+  ],
+  "patientsAndScheduleUnchanged": true,
+  "sourceRows": 1360,
+  "activeRows": 1294,
+  "excludedRows": 66,
+  "supervisorLines": 46,
+  "supervisorAdaptations": [
+    {
+      "cell": "L20",
+      "kind": "inherit-portrait",
+      "value": "JD_03"
+    },
+    {
+      "cell": "J40",
+      "kind": "day-boundary",
+      "originalNext": "P02_D4_R1_COMMON_002",
+      "policy": "End this day's presentation; Day4 starts at its own root in the TakenAway ending."
+    },
+    {
+      "kind": "literal-array-recovered",
+      "sheet": "立绘ID",
+      "cell": "A2",
+      "formulaCell": "A2",
+      "value": "JD_01"
+    }
+  ]
+}

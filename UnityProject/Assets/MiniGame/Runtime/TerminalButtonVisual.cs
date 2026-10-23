@@ -11,6 +11,8 @@ namespace MiniGame.UnityHost
         private readonly List<Text> labels = new List<Text>();
         private readonly Dictionary<Text, Vector2> restingLabelPositions = new Dictionary<Text, Vector2>();
         private Image face;
+        private RawImage commandArtwork;
+        private TerminalCommandArtwork commandImages;
         private TerminalHighlightGroup highlightGroup;
         private RectTransform pressedFrame, commandFrame;
         private Image[] commandEdges;
@@ -60,6 +62,19 @@ namespace MiniGame.UnityHost
                 labels.Add(text);
                 if (pressed) OffsetLabel(text);
             }
+            Paint();
+        }
+
+        public void SetCommandArtwork(TerminalCommandArtwork artwork)
+        {
+            commandImages = artwork;
+            var imageObject = new GameObject("CommandArtwork", typeof(RectTransform), typeof(RawImage));
+            imageObject.layer = gameObject.layer;
+            imageObject.transform.SetParent(transform, false);
+            TerminalIndustrialSkin.Position((RectTransform)imageObject.transform, 0, 0, 248, 48);
+            commandArtwork = imageObject.GetComponent<RawImage>();
+            commandArtwork.raycastTarget = false;
+            foreach (var label in labels) label.enabled = false;
             Paint();
         }
 
@@ -162,6 +177,16 @@ namespace MiniGame.UnityHost
             bool pointerActive = highlightGroup != null ? highlightGroup.IsPointer(this) : hovered;
             bool keyboardActive = selected && (highlightGroup == null || !highlightGroup.HasPointer);
             bool active = alwaysHighlighted || enabled && !commandField && (pointerActive || keyboardActive);
+            if (commandArtwork != null)
+            {
+                // The supplied row already includes its palette, pressed offset and separator.
+                commandArtwork.texture = !enabled ? commandImages?.Disabled : pressed ? commandImages?.Pressed
+                    : active ? commandImages?.Selected : commandImages?.Normal;
+                face.color = Color.clear;
+                pressedFrame.gameObject.SetActive(false);
+                commandFrame.gameObject.SetActive(false);
+                return;
+            }
             face.color = active ? TerminalIndustrialSkin.ColorOf("eeb430") : TerminalView.Desk;
             Color color = alwaysHighlighted ? TerminalIndustrialSkin.ColorOf("170e02") :
                 !enabled ? TerminalView.Edge : active ? TerminalIndustrialSkin.ColorOf("170e02") :

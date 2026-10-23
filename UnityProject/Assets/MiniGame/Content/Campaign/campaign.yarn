@@ -125,7 +125,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 对着我，放尊重点。
+薇拉: 先把镜头对准我。审查可以，别用训犯人的口气！
 <<jump former-ruler__P03_D1_R2_COMMON_002>>
 ===
 
@@ -136,7 +136,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 姓名，薇拉·沃斯。前执政委员会成员。
+薇拉: 薇拉·沃斯，前执政委员会成员。对，是“前”成员。
 <<jump former-ruler__P03_D1_R2_COMMON_003>>
 ===
 
@@ -147,7 +147,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: “情绪失控”那一栏，暂时别动。
+薇拉: 我在会上发过火，后来检测出了狂乱倾向，就被送到这里。但发火的原因，你们问过吗？！
 <<jump former-ruler__P03_D1_R2_COMMON_004>>
 ===
 
@@ -158,7 +158,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 先告诉我，这段话有没有人在记录。
+薇拉: 先回答我：这段谈话会完整留档，还是只记下我提高声音的部分？
 <<jump former-ruler__P03_D1_R2_OPTION_001__MENU>>
 ===
 
@@ -169,7 +169,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 很好。把“前”字也留下。
+薇拉: 很好，给我把我的原职务、被撤职的经过，都写清楚。
 <<jump former-ruler__P03_D1_R2_CLOSE_004>>
 ===
 
@@ -180,7 +180,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 那就问得像样一点。
+薇拉: 有本事问我为什么发火，别上来就替我认罪。
 <<jump former-ruler__P03_D1_R2_CLOSE_005>>
 ===
 
@@ -191,7 +191,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我进门时已经按要求交出了腰带。
+薇拉: 我已经交出腰带，坐到了镜头前。还要怎样才算配合？！
 <<jump former-ruler__P03_D1_R2_CLOSE_006>>
 ===
 
@@ -202,7 +202,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 他们改过一次我的职务，我不希望你这里还用着旧的。
+薇拉: 别把档案改成我从来没有担任过委员。我做过的事，我认；我的经历，也别删。
 <<jump former-ruler__P03_D1_R3_COMMON_001>>
 ===
 
@@ -213,7 +213,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我坐在这张椅子上，不代表你可以省掉准备。
+薇拉: 你要审查我，至少先把材料看完，我为什么被带来，不该只由一张检测单解释。
 <<jump former-ruler__P03_D1_R3_COMMON_001>>
 ===
 
@@ -224,7 +224,18 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 现在，轮到你回答一个不需要仪器的问题。
+薇拉: 我会回答。但你也得听我把话说完，不能只收下你想听的那一句。
+<<jump former-ruler__P03_D1_R2_CLOSE_007>>
+===
+
+title: former-ruler__P03_D1_R2_CLOSE_007
+kind: line
+round: R2
+patient: former-ruler
+day: 1
+portrait: VV01
+---
+薇拉: 社会的渣滓。
 <<jump former-ruler__P03_D1_R3_COMMON_001>>
 ===
 
@@ -235,7 +246,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 你手边应该有一份决议。看签名。
+薇拉: 你看过的那份延长收容的决议，末尾有我的签名。
 <<jump former-ruler__P03_D1_R3_COMMON_002>>
 ===
 
@@ -246,7 +257,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 是我的。没必要拿着它反复试探。
+薇拉: 我承认，我签了...这份决议造成的后果，我有责任。
 <<jump former-ruler__P03_D1_R3_COMMON_003>>
 ===
 
@@ -257,18 +268,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 往后翻。我的名字后面，本来还接着一页。
-<<jump former-ruler__P03_D1_R3_COMMON_004>>
-===
-
-title: former-ruler__P03_D1_R3_COMMON_004
-kind: line
-round: R3
-patient: former-ruler
-day: 1
-portrait: VV01
----
-薇拉: 找到了吗？别只看装订好的地方。
+薇拉: 但那不是我一个人的决定。后面原本有一张附页，记着另外六名委员的表决意见和需要复核的事项。
 <<jump former-ruler__P03_D1_R3_OPTION_001__MENU>>
 ===
 
@@ -279,7 +279,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 另外六个人的表决意见。
+薇拉: 另外六个人，无一例外。
 <<jump former-ruler__P03_D1_R3_CLOSE_005>>
 ===
 
@@ -290,7 +290,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 说明我签了字。
+薇拉: 我从来不否认所作所为。
 <<jump former-ruler__P03_D1_R3_CLOSE_006>>
 ===
 
@@ -301,7 +301,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我认为你应该亲自翻一遍。
+薇拉: 因为我看过原件，那张纸比前一页窄，装订后会露出一道边。
 <<jump former-ruler__P03_D1_R3_CLOSE_007>>
 ===
 
@@ -312,7 +312,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 另外六个人的联署，和需要复核的事项。
+薇拉: 被收容的人是否需要继续关着，要再核查。那一页还记着另外六个人的联署。
 <<jump former-ruler__P03_D1_R3_CLOSE_008>>
 ===
 
@@ -323,7 +323,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我记得纸比前一页窄。装订时，总会露出一道边。
+薇拉: 把他们投了什么票也查清楚。谁赞成、谁反对，都不该从记录里消失。
 <<jump former-ruler__P03_D1_R4_COMMON_001>>
 ===
 
@@ -334,7 +334,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 你要问我签了什么，还是打算靠这四个字结束今天的工作？
+薇拉: 你可以追究我。但你不能拿着我的签名，说整件事到此为止。
 <<jump former-ruler__P03_D1_R4_COMMON_001>>
 ===
 
@@ -345,7 +345,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 别急着把我的判断抄成你的判断。
+薇拉: 请你自己回去亲自翻，别直接把我的话当结论。
 <<jump former-ruler__P03_D1_R4_COMMON_001>>
 ===
 
@@ -356,7 +356,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 只留下我的签名，看起来就像我一个人把事情决定了。
+薇拉: 附页不见了，人就能一直关着，另外六个人还不用被问话。这还不值得查吗？！
 <<jump former-ruler__P03_D1_R4_COMMON_001>>
 ===
 
@@ -367,7 +367,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我在这里等过一次热水。送来时，杯底结了一圈垢。
+薇拉: 这里送来的热水，杯底全是水垢。我以前批准过这些街区的供水维修预算。
 <<jump former-ruler__P03_D1_R4_COMMON_002>>
 ===
 
@@ -378,7 +378,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 从前配给处的人说，下面几条街的管道都清理过了。
+薇拉: 配给处向我汇报，说管道已经清理好了，居民都能喝上干净水。
 <<jump former-ruler__P03_D1_R4_COMMON_003>>
 ===
 
@@ -389,7 +389,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我问他们，有没有进去看。答复是，已经收到了完工报告。
+薇拉: 我问有没有去现场检查。他们说：“完工报告已经收到了。”
 <<jump former-ruler__P03_D1_R4_COMMON_004>>
 ===
 
@@ -400,7 +400,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 现在想来，我们喝的从来不是同一段管子里的水。
+薇拉: 委员办公室里的水是干净的，下面街区的水却还是脏的。我们批准了预算，却没人确认居民到底喝上了什么！
 <<jump former-ruler__P03_D1_R4_OPTION_001__MENU>>
 ===
 
@@ -411,7 +411,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 去过剪彩。车停在新修的路边。
+薇拉: 去过...参加剪彩。车就停在修好的那段路边，我没走进居民家里。
 <<jump former-ruler__P03_D1_R4_CLOSE_003>>
 ===
 
@@ -422,7 +422,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 预算到我们桌上，管道在他们图纸上。
+薇拉: 我们批预算，配给处负责施工和验收。我当时觉得各管各的就够了。
 <<jump former-ruler__P03_D1_R4_CLOSE_004>>
 ===
 
@@ -433,7 +433,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 他们没有骗我那天走的路线。只是我没再往里走。
+薇拉: 他们给我看的地方确实修好了。可我没再往里走，就回去宣布维修完成...这是我的失职。
 <<jump former-ruler__P03_D1_R5_COMMON_001>>
 ===
 
@@ -444,7 +444,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 中间隔着多少人，出了事才有人开始数。
+薇拉: 出了事才发现，每个人都说自己那一步做完了！真正没解决的事，就这样留给居民。
 <<jump former-ruler__P03_D1_R5_COMMON_001>>
 ===
 
@@ -455,7 +455,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 接替我的人，你应该见过照片。
+薇拉: 接替我的，是以前坐在我右边的男委员。你应该见过他的照片。
 <<jump former-ruler__P03_D1_R5_COMMON_002>>
 ===
 
@@ -466,7 +466,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 他以前坐在我右边。每次开会，先把椅子往后挪半寸。
+薇拉: 他也参与过那些决议。以前开会，总把椅子往后挪一点，让我先开口、先签字。
 <<jump former-ruler__P03_D1_R5_COMMON_003>>
 ===
 
@@ -477,7 +477,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 现在那把椅子不必挪了。
+薇拉: 现在我被撤职、送来接受治疗，他坐上了我的位置。
 <<jump former-ruler__P03_D1_R5_COMMON_004>>
 ===
 
@@ -488,7 +488,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 听说我的办公室也没空着。倒是门牌，换得很快。
+薇拉: 我的审查还没结束，办公室的门牌已经换成他的了。
 <<jump former-ruler__P03_D1_R5_OPTION_001__MENU>>
 ===
 
@@ -499,7 +499,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 想。
+薇拉: 你说呢...我不会为了让你满意，就装成自己不在乎权力。
 <<jump former-ruler__P03_D1_R5_CLOSE_004>>
 ===
 
@@ -510,7 +510,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 有人反对我，有人反对换人。两拨人未必站在一起。
+薇拉: 有人反对我，也有人反对由他接任。他们争的是谁上位，不一定是谁该被收容。
 <<jump former-ruler__P03_D1_R5_CLOSE_005>>
 ===
 
@@ -521,7 +521,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 那就把镜头往下压回去。
+薇拉: 接受审查，就不能再问撤职的事了？！
 <<jump former-ruler__P03_D1_R5_CLOSE_006>>
 ===
 
@@ -532,7 +532,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 这不妨碍你继续问。别因为我没有装作不在乎，就觉得抓住了什么。
+薇拉: 但想回去，不等于我签过的决议就没问题。你可以继续追问，我会答。
 <<jump former-ruler__P03_D1_R6_COMMON_001>>
 ===
 
@@ -543,7 +543,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 在那个房间里，沉默尤其不意味着同意。
+薇拉: 最后没人把我留下。至于那些没说话的人...我现在也不知道，有多少是赞成，又有多少是不敢反对。
 <<jump former-ruler__P03_D1_R6_COMMON_001>>
 ===
 
@@ -554,7 +554,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 你显然更喜欢看着一双被要求放好的手。
+薇拉: 我会回答治疗的问题。也请你记下，我对撤职和收容仍有异议，很大的异议！
 <<jump former-ruler__P03_D1_R6_COMMON_001>>
 ===
 
@@ -565,7 +565,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 刚才门外有人经过。你那边也停了一下。
+薇拉: 门外刚有人经过，你就停下了。有人在监督你，对吧？
 <<jump former-ruler__P03_D1_R6_COMMON_002>>
 ===
 
@@ -576,7 +576,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 别解释。我认得有人站在身后的时候，人会怎样说话。
+薇拉: 不用急着解释。我当过委员，知道一个人怕被上级听见时，会怎么改口。
 <<jump former-ruler__P03_D1_R6_COMMON_003>>
 ===
 
@@ -587,7 +587,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我的话还没有说完。你的班次倒未必等得起。
+薇拉: 我还没说完，你却已经开始看时间了...今天能谈多久，也不全由你决定，是吗？
 <<jump former-ruler__P03_D1_R6_COMMON_004>>
 ===
 
@@ -598,7 +598,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 今天先把那一页有没有，核对清楚。
+薇拉: 那就先做一件具体的事：核对那张附页，别让另外六个人的责任一起消失。
 <<jump former-ruler__P03_D1_R6_OPTION_001__MENU>>
 ===
 
@@ -609,7 +609,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 记原话。包括我说想回去那一句。
+薇拉: 请记原话，包括我承认签字，也包括我想恢复原职。
 <<jump former-ruler__P03_D1_R6_CLOSE_003>>
 ===
 
@@ -620,7 +620,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 当然。
+薇拉: 好，你判断。但判断以前，请你把材料看全。
 <<jump former-ruler__P03_D1_R6_CLOSE_004>>
 ===
 
@@ -631,7 +631,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我不需要一份比本人更体面的记录。
+薇拉: 我不是来求一份替我开脱的记录。做过什么、没做过什么，都写清楚。
 <<jump former-ruler__P03_D1_R6_SPECIAL_001>>
 ===
 
@@ -642,7 +642,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我今天就在试着弄清，你能决定的究竟有多少。
+薇拉: ...我也想知道，你能不能真的作这个决定，还是也只能照上面的意思办。
 <<jump former-ruler__P03_D1_R6_SPECIAL_001>>
 ===
 
@@ -653,7 +653,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我问你那一页，不只是为了添六个名字。
+薇拉: 你肯听到这里，我就把那次会议的经过说清楚。
 <<jump former-ruler__P03_D1_R6_SPECIAL_002>>
 ===
 
@@ -664,7 +664,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 有一次会前的晚餐，我没有被邀请。秘书第二天才把座次单收进来。
+薇拉: 会前有一场晚餐，另外几名委员都去了，唯独没邀请我。第二天，秘书才给我看座次单。
 <<jump former-ruler__P03_D1_R6_SPECIAL_003>>
 ===
 
@@ -675,7 +675,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 会上有人翻到争议的那一条，说，就按昨晚谈的。
+薇拉: 到了会上，有人直接说：“延长收容那一条，就按昨晚谈的办。”我连他们谈过什么都不知道！
 <<jump former-ruler__P03_D1_R6_SPECIAL_004>>
 ===
 
@@ -686,7 +686,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我问昨晚谈了什么。他说，你太激动，先休息。
+薇拉: 我问为什么不让我参加，他却说：“你太激动了，先休息。”我连反对意见都还没说！
 <<jump former-ruler__P03_D1_R6_SPECIAL_005>>
 ===
 
@@ -697,7 +697,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 那天我连反对的话都还没有说。
+薇拉: 他们先把我排除在商量之外，再把我的不满说成情绪问题。这就是我发火的经过。
 <<jump former-ruler__P03_D1_R6_OPTION_003__MENU>>
 ===
 
@@ -708,7 +708,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 决议仍在会上通过。少一道手续，也不会少得那么明白。
+薇拉: 对，正式表决照样举行，可意见早就串好了。我那时才听到具体安排。
 <<jump former-ruler__P03_D1_R6_SPECIAL_010>>
 ===
 
@@ -719,7 +719,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 他们从来不在议程上写这个。
+薇拉: 是。他们亲口说过，那是男人放松的场合。
 <<jump former-ruler__P03_D1_R6_SPECIAL_011>>
 ===
 
@@ -730,7 +730,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我反对了延长收容。后来又投了赞成。
+薇拉: 我先反对了延长收容，后来又投了赞成...这两件事都是真的。
 <<jump former-ruler__P03_D1_R6_SPECIAL_012>>
 ===
 
@@ -741,7 +741,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 也包括我后来举手的那一刻。
+薇拉: 好。别漏掉我举手赞成的那一刻。
 <<jump former-ruler__P03_D1_R6_SPECIAL_013>>
 ===
 
@@ -752,7 +752,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 只是他们已经彼此点过头。我开口以后，反倒像在耽误所有人。
+薇拉: 我要求重新讨论，他们就说我拖延会议、情绪不稳定。可我连参与讨论的机会都没有...
 <<jump former-ruler__P03_D1_R6_SPECIAL_014>>
 ===
 
@@ -763,7 +763,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 只说那是男人放松的地方，不适合带我去。我若坚持，就显得不懂分寸。
+薇拉: 我要是坚持参加，又会被说成不懂分寸。他们能谈公事，我却连门都进不去！
 <<jump former-ruler__P03_D1_R6_SPECIAL_015>>
 ===
 
@@ -774,7 +774,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 有人说，只要这次一致通过，下次的任命我就不用担心。
+薇拉: 有人告诉我，只要这次一致通过，下次任命就不会动我。我想保住位置...所以妥协了。
 <<jump former-ruler__P03_D1_R6_SPECIAL_016>>
 ===
 
@@ -785,7 +785,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我要你查全，不是只替我留下有利的部分。
+薇拉: 把我受到的排挤和我作出的选择放在一起写。别只挑对我有利的部分！
 <<jump former-ruler__P03_D1_R6_SPECIAL_017>>
 ===
 
@@ -796,7 +796,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 我后来也试过提前找人谈。站到门外，才发现有些地方不接待我。
+薇拉: 我也试过会前找他们谈。可他们常去的那些地方，有些根本不接待女人。
 <<jump former-ruler__P03_D1_R6_SPECIAL_017>>
 ===
 
@@ -807,7 +807,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 第二天，他们把昨晚的话带进会场，连同那份懂分寸一起。
+薇拉: 到了第二天，昨晚商量过的事就成了大家默认的安排。我若再问，反而是我“不懂分寸”。
 <<jump former-ruler__P03_D1_R6_SPECIAL_017>>
 ===
 
@@ -818,7 +818,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 别替我说被迫。我犹豫了，然后自己把手举起来。
+薇拉: 别替我说成完全被迫！他们施压了，但最后那只手，是我自己举起来的。
 <<jump former-ruler__P03_D1_R6_SPECIAL_017>>
 ===
 
@@ -829,7 +829,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 后来他们审查我，把我那天发火的记录调出来。
+薇拉: 后来审查我，他们调出了我发火的记录，说那能证明我情绪失控。
 <<jump former-ruler__P03_D1_R6_SPECIAL_018>>
 ===
 
@@ -840,7 +840,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 晚餐的座次单，没有人认为需要调。
+薇拉: 可我为什么发火、为什么没被邀请，没人查，那张晚餐座次单，也没人要看。
 <<jump former-ruler__P03_D1_R6_SPECIAL_019>>
 ===
 
@@ -851,7 +851,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 你若只能查到一张纸...别再只查那张容易找到的。
+薇拉: 你要判断我有没有问题，就把前因后果查全...别再只看那张写着我发火的记录。
 <<jump former-ruler__P03_D1_R6_PLAYER_ACTION_001__MENU>>
 ===
 
@@ -862,7 +862,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 名称我听见了。
+薇拉: ...好，我听清了。请先说明接下来要做什么。
 <<jump former-ruler__P03_D1_R6_ACTION_004>>
 ===
 
@@ -873,7 +873,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 等一下。我的话还没有说完。
+薇拉: ......
 <<jump former-ruler__P03_D1_R6_ACTION_005>>
 ===
 
@@ -884,7 +884,7 @@ patient: former-ruler
 day: 1
 portrait: VV03
 ---
-薇拉: 打开门。
+薇拉: 是你开的吗。
 <<jump former-ruler__P03_D1_R6_ACTION_006>>
 ===
 
@@ -895,7 +895,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 把我的反对也记进去。
+薇拉: 我仍然反对这次收容。这一点，也必须留在记录里。
 <<jump former-ruler__P03_D1_R6_ACTION_007>>
 ===
 
@@ -906,7 +906,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: ...不必重复名称。我听见了。
+薇拉: ...我听见了，不必再重复“净化”。我只是还想把事情说完。
 <<jump former-ruler__P03_D1_R6_ACTION_008>>
 ===
 
@@ -917,7 +917,7 @@ patient: former-ruler
 day: 1
 portrait: VV03
 ---
-薇拉: 我会自己走。你不必替我扶椅子。
+薇拉: 我会自己走，不用扶。我的腿还站得住。
 <<jump former-ruler__P03_D1_R6_ACTION_009>>
 ===
 
@@ -928,7 +928,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 现在，告诉门外的人进来。
+薇拉: 好了...让门外的人进来吧。我会配合治疗。
 <<jump former-ruler__END_DAY1>>
 ===
 
@@ -939,7 +939,7 @@ patient: former-ruler
 day: 1
 portrait: VV04
 ---
-薇拉: 把那张附页找出来。你要是还打算找的话。
+薇拉: 答应我，一定要把记录找出来...
 <<jump former-ruler__END_DAY1>>
 ===
 
@@ -950,7 +950,7 @@ patient: former-ruler
 day: 1
 portrait: VV03
 ---
-薇拉: ...等一下。今天的记录，请留着。
+薇拉: ...等一下。今天的完整记录，请保留下来。谢谢。
 <<jump former-ruler__END_DAY1>>
 ===
 
@@ -960,11 +960,11 @@ round: R2
 patient: former-ruler
 day: 1
 ---
--> 谈话全程留档。 #id:former-ruler__P03_D1_R2_OPTION_001 #trust:0
+-> 全程留档。你的解释也会记录。 #id:former-ruler__P03_D1_R2_OPTION_001 #trust:0
     <<jump former-ruler__P03_D1_R2_CLOSE_001>>
--> 这里只有我在问问题。 #id:former-ruler__P03_D1_R2_OPTION_002 #trust:0
+-> 现在由我提问。先回答审查问题。 #id:former-ruler__P03_D1_R2_OPTION_002 #trust:0
     <<jump former-ruler__P03_D1_R2_CLOSE_002>>
--> 先服从审查安排。 #id:former-ruler__P03_D1_R2_OPTION_003 #trust:-1
+-> 请先配合审查，再说明你的异议。 #id:former-ruler__P03_D1_R2_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D1_R2_CLOSE_003>>
 ===
 
@@ -974,13 +974,13 @@ round: R3
 patient: former-ruler
 day: 1
 ---
--> 后面还有什么？ #id:former-ruler__P03_D1_R3_OPTION_001 #trust:1
+-> 另外六个人也同意了这份决议？ #id:former-ruler__P03_D1_R3_OPTION_001 #trust:1
     <<jump former-ruler__P03_D1_R3_CLOSE_001>>
--> 签名已经足够说明问题。 #id:former-ruler__P03_D1_R3_OPTION_002 #trust:-1
+-> 无论别人怎么投票，你都签了字。 #id:former-ruler__P03_D1_R3_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D1_R3_CLOSE_002>>
--> 你怀疑档案缺页？先说明依据。 #id:former-ruler__P03_D1_R3_OPTION_003 #trust:0
+-> 你怎么确定原件有附页？ #id:former-ruler__P03_D1_R3_OPTION_003 #trust:0
     <<jump former-ruler__P03_D1_R3_CLOSE_003>>
--> 缺少的那一页，原本记了什么？ #id:former-ruler__P03_D1_R3_OPTION_004 #trust:1
+-> 附页里需要复核的，具体是什么？ #id:former-ruler__P03_D1_R3_OPTION_004 #trust:1
     <<jump former-ruler__P03_D1_R3_CLOSE_004>>
 ===
 
@@ -990,9 +990,9 @@ round: R4
 patient: former-ruler
 day: 1
 ---
--> 你没有亲自去过？ #id:former-ruler__P03_D1_R4_OPTION_001 #trust:1
+-> 你去过现场，还是只看过报告？ #id:former-ruler__P03_D1_R4_OPTION_001 #trust:1
     <<jump former-ruler__P03_D1_R4_CLOSE_001>>
--> 配给处不受你管辖？ #id:former-ruler__P03_D1_R4_OPTION_002 #trust:0
+-> 预算由你们批，为什么没追查？ #id:former-ruler__P03_D1_R4_OPTION_002 #trust:0
     <<jump former-ruler__P03_D1_R4_CLOSE_002>>
 ===
 
@@ -1002,11 +1002,11 @@ round: R5
 patient: former-ruler
 day: 1
 ---
--> 你还想回去坐那个位置？ #id:former-ruler__P03_D1_R5_OPTION_001 #trust:1
+-> 你还想恢复原职？ #id:former-ruler__P03_D1_R5_OPTION_001 #trust:1
     <<jump former-ruler__P03_D1_R5_CLOSE_001>>
--> 其他委员没有反对？ #id:former-ruler__P03_D1_R5_OPTION_002 #trust:1
+-> 其他委员就接受了这个安排？ #id:former-ruler__P03_D1_R5_OPTION_002 #trust:1
     <<jump former-ruler__P03_D1_R5_CLOSE_002>>
--> 现在的位置更适合你。 #id:former-ruler__P03_D1_R5_OPTION_003 #trust:-1
+-> 既然检测出了问题，就先接受治疗。 #id:former-ruler__P03_D1_R5_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D1_R5_CLOSE_003>>
 ===
 
@@ -1016,9 +1016,9 @@ round: R6
 patient: former-ruler
 day: 1
 ---
--> 我先把你说的记下来。 #id:former-ruler__P03_D1_R6_OPTION_001 #trust:1
+-> 我会记录你的说法，并核对附页。 #id:former-ruler__P03_D1_R6_OPTION_001 #trust:1
     <<jump former-ruler__P03_D1_R6_CLOSE_001>>
--> 是否核对，由我决定。 #id:former-ruler__P03_D1_R6_OPTION_002 #trust:0
+-> 我会自行判断是否需要核查。 #id:former-ruler__P03_D1_R6_OPTION_002 #trust:0
     <<jump former-ruler__P03_D1_R6_CLOSE_002>>
 ===
 
@@ -1042,13 +1042,13 @@ round: R6
 patient: former-ruler
 day: 1
 ---
--> 他们把决定留在会前做了。 #id:former-ruler__P03_D1_R6_OPTION_003 #trust:1
+-> 他们会前已经商量好了，会上只让你表决？ #id:former-ruler__P03_D1_R6_OPTION_003 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_006>>
--> 因为你是女人？ #id:former-ruler__P03_D1_R6_OPTION_004 #trust:2
+-> 他们不邀请你，是因为你是女人？ #id:former-ruler__P03_D1_R6_OPTION_004 #trust:2
     <<jump former-ruler__P03_D1_R6_SPECIAL_007>>
--> 那次你为什么没有反对？ #id:former-ruler__P03_D1_R6_OPTION_005 #trust:1
+-> 既然不满，你为什么最后还是同意了？ #id:former-ruler__P03_D1_R6_OPTION_005 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_008>>
--> 我会把你发火前的经过一并记录。 #id:former-ruler__P03_D1_R6_OPTION_006 #trust:1
+-> 我会记录他们的做法，也记录你的表决。 #id:former-ruler__P03_D1_R6_OPTION_006 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_009>>
 ===
 
@@ -2828,7 +2828,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 我在门口把日期念了三遍。进来以后，还是想了一会儿。
+薇拉: 昨天治疗以后，我记东西变慢了...刚才在门口把日期念了三遍，进来还是差点忘掉。
 <<jump former-ruler__P03_D2_R2_COMMON_002>>
 ===
 
@@ -2839,7 +2839,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 你要核对，就趁我还能想起来的时候。
+薇拉: 你要核对昨天的事，就趁我现在还记得。
 <<jump former-ruler__P03_D2_R2_COMMON_003>>
 ===
 
@@ -2850,7 +2850,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 不要因为我说得慢，替我把句子说完。
+薇拉: 但请让我自己说完...我说得慢，不代表我同意你替我回答。
 <<jump former-ruler__P03_D2_R2_OPTION_001__MENU>>
 ===
 
@@ -2861,7 +2861,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我记得。
+薇拉: 我和那些人不一样，我不是精神错乱的异常体。
 <<jump former-ruler__P03_D2_R2_CLOSE_003>>
 ===
 
@@ -2872,7 +2872,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我正在慢。
+薇拉: 我已经在放慢了...我怕一停下来，后面的话就没了。
 <<jump former-ruler__P03_D2_R2_CLOSE_004>>
 ===
 
@@ -2883,7 +2883,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 先记下我的回答。等一会儿，再拿它问我一次。
+薇拉: 你知道吗...
 <<jump former-ruler__P03_D2_R3_COMMON_001>>
 ===
 
@@ -2894,7 +2894,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我得确认，停下来以后还能记得下一句。你先等我。
+薇拉: 你先等我...我得确认，这是我忘了，还是我只是太紧张。
 <<jump former-ruler__P03_D2_R3_COMMON_001>>
 ===
 
@@ -2905,7 +2905,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 以前有一张冬季配给表，送到我的桌上。
+薇拉: 我任职时，有个女工来问我，为什么她自己上班，却领不到自己的口粮。
 <<jump former-ruler__P03_D2_R3_COMMON_002>>
 ===
 
@@ -2916,7 +2916,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 最后几行，只有户主的名字。工坊里做夜班的人，写在“随户”后面。
+薇拉: 冬季配给按户发，只登记户主。她在工坊做夜班，名字却挂在丈夫名下，写着“随户”。
 <<jump former-ruler__P03_D2_R3_COMMON_003>>
 ===
 
@@ -2927,7 +2927,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 有个人问，丈夫搬走了，自己这一份去哪儿领。
+薇拉: 后来丈夫搬走了，她再去领，配给处就让她找户主。可她连人在哪里都不知道！
 <<jump former-ruler__P03_D2_R3_COMMON_004>>
 ===
 
@@ -2938,7 +2938,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 她没问我要多一份。她问的就是原来那一份。
+薇拉: 她不是想多领一份，她只想领到自己原本就该有的口粮。
 <<jump former-ruler__P03_D2_R3_OPTION_001__MENU>>
 ===
 
@@ -2949,7 +2949,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我让配给处按她的工号发。
+薇拉: 我让配给处按她的工号发。她确实在工作，凭什么没有自己的那一份？！
 <<jump former-ruler__P03_D2_R3_CLOSE_005>>
 ===
 
@@ -2960,7 +2960,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 她的工钱按工号记，口粮却要找另一张名册。
+薇拉: 可一个有工作的人，按完两套规定，最后没饭吃...那规定就该改。
 <<jump former-ruler__P03_D2_R3_CLOSE_006>>
 ===
 
@@ -2971,7 +2971,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 改了那几行。
+薇拉: 改了她那几行记录，但没有改掉整套按户主发放的办法。
 <<jump former-ruler__P03_D2_R3_CLOSE_007>>
 ===
 
@@ -2982,7 +2982,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 表是按户发的。一个名字领走，再由那个人分。
+薇拉: 因为这张表只认户主，再由户主把口粮分给家里的人。她自己做了多少工，都不能直接领。
 <<jump former-ruler__P03_D2_R3_CLOSE_008>>
 ===
 
@@ -2993,7 +2993,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 那天下午，他们送来一张“特殊照顾”申请，等我签字。
+薇拉: 结果他们给我送来一张“特殊照顾”申请...把正常发口粮，也办成了我额外施恩。
 <<jump former-ruler__P03_D2_R4_COMMON_001>>
 ===
 
@@ -3004,7 +3004,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 两张表都按规定做得很整齐。她没饭吃。
+薇拉: 她的工钱按工号登记，口粮却要靠丈夫领取。两边都说没错，饿着的是她！
 <<jump former-ruler__P03_D2_R4_COMMON_001>>
 ===
 
@@ -3015,7 +3015,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 下一批送来时，工坊里几个女人仍被算在别人的名字下面。
+薇拉: 下一批表送来，其他女工还是挂在丈夫名下。我解决了一个人的问题，却没改掉让她们反复求人的规则。
 <<jump former-ruler__P03_D2_R4_COMMON_001>>
 ===
 
@@ -3026,7 +3026,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 写表的人觉得这已经足够。来问我的那个人，显然没有分到。
+薇拉: 写表的人默认户主会分给她。可丈夫已经走了，她向谁要？！这件事，他们连问都没问。
 <<jump former-ruler__P03_D2_R4_COMMON_001>>
 ===
 
@@ -3037,7 +3037,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 委员会不负责给每个人开门。
+薇拉: 我现在才体会到，被收容以后，想找一个能放自己出去的人有多难。
 <<jump former-ruler__P03_D2_R4_COMMON_002>>
 ===
 
@@ -3048,7 +3048,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 城门认通行章，检测站认检验单。送到这里，外面的章便不算了。
+薇拉: 送我来的人只认移交单，这里的人只认检测结果。我以前的任命和通行章，到这里全不管用了。
 <<jump former-ruler__P03_D2_R4_COMMON_003>>
 ===
 
@@ -3059,7 +3059,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 任命他们的人，通常不站在门口。
+薇拉: 我问谁能重新审查，他们就让我问下一个部门。可作出规定的人，我根本见不到。
 <<jump former-ruler__P03_D2_R4_COMMON_004>>
 ===
 
@@ -3070,7 +3070,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我以前觉得这样很好。每个人只管自己的一段，就不会乱。
+薇拉: ...这套分工，我以前还赞成过。我以为每个人只负责自己的部分，事情就能办好。
 <<jump former-ruler__P03_D2_R4_OPTION_001__MENU>>
 ===
 
@@ -3081,7 +3081,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 送我来的人说，他只负责送。
+薇拉: 送我来的人说：“我只负责移交。”好，我跟他来了。
 <<jump former-ruler__P03_D2_R4_CLOSE_004>>
 ===
 
@@ -3092,8 +3092,8 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 你的处置栏上，有那个选项。
-<<jump former-ruler__P03_D2_R4_CLOSE_005>>
+薇拉: 你。
+<<jump former-ruler__P03_D2_R5_COMMON_001>>
 ===
 
 title: former-ruler__P03_D2_R4_CLOSE_003
@@ -3103,8 +3103,8 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 是。
-<<jump former-ruler__P03_D2_R4_CLOSE_006>>
+薇拉: 是...我拒绝过，而且不止一次。
+<<jump former-ruler__P03_D2_R4_CLOSE_005>>
 ===
 
 title: former-ruler__P03_D2_R4_CLOSE_004
@@ -3114,7 +3114,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 收我的人说，他只负责收。我还没问到那个负责让我离开的人。
+薇拉: 收下我的人又说：“我只负责接收。”所有人都把手续办完了，却没人回答我什么时候能出去...
 <<jump former-ruler__P03_D2_R5_COMMON_001>>
 ===
 
@@ -3125,18 +3125,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 别急着告诉我没有权力。先看一眼。
-<<jump former-ruler__P03_D2_R5_COMMON_001>>
-===
-
-title: former-ruler__P03_D2_R4_CLOSE_006
-kind: line
-round: R4
-patient: former-ruler
-day: 2
-portrait: VV01
----
-薇拉: 我曾把一封又一封申诉退回原处，说不要越级。纸回去了，人没有。
+薇拉: 我把那些申诉退回去，让他们“不要越级”。现在才知道，退回一张纸，就是让一个人继续被关着。
 <<jump former-ruler__P03_D2_R5_COMMON_001>>
 ===
 
@@ -3147,7 +3136,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 那份决议，把收容的时间延长了。
+薇拉: 昨天说的那份决议，延长了被检测出狂乱倾向者的收容时间。这一点，我有责任。
 <<jump former-ruler__P03_D2_R5_COMMON_002>>
 ===
 
@@ -3158,7 +3147,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我推动的。我当时想，先把街上的人留住，等秩序恢复，再一件件复核。
+薇拉: 大狂乱之后，我也推动过延长收容。我怕秩序再乱，想先把人关住，等稳定了再逐个复核。
 <<jump former-ruler__P03_D2_R5_COMMON_003>>
 ===
 
@@ -3169,7 +3158,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 秘书问我，复核的日期填哪天。
+薇拉: 秘书当时问我：“那复核日期填哪天？”我其实答不上来。
 <<jump former-ruler__P03_D2_R5_COMMON_004>>
 ===
 
@@ -3180,7 +3169,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我说，留空。先执行。
+薇拉: 可我还是说了：“留空，先执行。”...没有期限，是我同意的。
 <<jump former-ruler__P03_D2_R5_OPTION_001__MENU>>
 ===
 
@@ -3191,7 +3180,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我需要它很快结束。
+薇拉: 我希望它很快稳定...可我没有把握。
 <<jump former-ruler__P03_D2_R5_CLOSE_003>>
 ===
 
@@ -3202,7 +3191,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 对。
+薇拉: ...对。我知道他们得等，还是让那份决议通过了。
 <<jump former-ruler__P03_D2_R5_CLOSE_004>>
 ===
 
@@ -3213,7 +3202,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 这和我有多少把握，是两回事。
+薇拉: 我把自己的愿望当成了依据。只想着先把眼前的事压下去，没有想他们要被关多久。
 <<jump former-ruler__P03_D2_R6_COMMON_001>>
 ===
 
@@ -3224,7 +3213,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我没有逐个人看过他们的名字。后来我也等，才知道日期空着的时候，一天有多长。
+薇拉: 我没逐个看过被收容者的名字。现在换我盯着一个空白日期...才知道那不是少填一栏，是不知道哪天才能出去。
 <<jump former-ruler__P03_D2_R6_COMMON_001>>
 ===
 
@@ -3235,7 +3224,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 你今天没有急着打断我。
+薇拉: 今天你一直在听，没有急着让我停下。
 <<jump former-ruler__P03_D2_R6_COMMON_002>>
 ===
 
@@ -3246,7 +3235,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 别把这当成赞许。我没有什么可以给你的评语了。
+薇拉: 我知道，你是在做审查。我也已经不是能给你写评语的委员了。
 <<jump former-ruler__P03_D2_R6_COMMON_003>>
 ===
 
@@ -3257,7 +3246,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 只是刚才那句话，换个人来问，我可能不会说。
+薇拉: 但要是换个人，只追着问我签没签字...我可能不会承认自己当时根本没把握。
 <<jump former-ruler__P03_D2_R6_COMMON_004>>
 ===
 
@@ -3268,7 +3257,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: ...水先放着。我不想在这个时候停下来。
+薇拉: ...水先放着吧。我想趁还记得，把这些说完。
 <<jump former-ruler__P03_D2_R6_OPTION_001__MENU>>
 ===
 
@@ -3279,7 +3268,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 以前这时候，我会让别人继续说，自己看下一份文件。
+薇拉: ...我以前也会让别人一边说，自己一边看下一份文件。我以为那也算在听。
 <<jump former-ruler__P03_D2_R6_CLOSE_004>>
 ===
 
@@ -3290,7 +3279,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 因为你问了我怎么回答她。
+薇拉: 因为你问了，我当时怎么回答那个女工。你愿意听事情是怎么发生的。
 <<jump former-ruler__P03_D2_R6_CLOSE_005>>
 ===
 
@@ -3301,7 +3290,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我也说过。
+薇拉: “只是履行职责”...这句话，我也说过很多次。
 <<jump former-ruler__P03_D2_R6_CLOSE_006>>
 ===
 
@@ -3312,7 +3301,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 你把杯子留在那里就行。谢谢。
+薇拉: 你把杯子留在那里就行。谢谢...我一会儿喝。
 <<jump former-ruler__P03_D2_R6_SPECIAL_001>>
 ===
 
@@ -3323,7 +3312,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 大多数人只问，我最后有没有签字。
+薇拉: 大多数人只要我承认签字，好结束询问。你听完了后面的话，我才愿意继续说。
 <<jump former-ruler__P03_D2_R6_SPECIAL_001>>
 ===
 
@@ -3334,7 +3323,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: ...今天你说这句话，我没有刚进来时那么讨厌。
+薇拉: 但今天你至少让我说完了。...这份职责，你履行得比我当时认真。
 <<jump former-ruler__P03_D2_R6_SPECIAL_001>>
 ===
 
@@ -3345,7 +3334,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 送来的那件外套，是我的。你应该见过口袋里的领扣。
+薇拉: 我的外套口袋里有一颗制服领扣。以前开会，我总把领口扣到最上面。
 <<jump former-ruler__P03_D2_R6_SPECIAL_002>>
 ===
 
@@ -3356,7 +3345,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我以前开会都戴着。太紧，低头的时候会顶住喉咙。
+薇拉: 很紧...低头时会顶住喉咙。我每次发言前，都得先忍住想扯开它的动作。
 <<jump former-ruler__P03_D2_R6_SPECIAL_003>>
 ===
 
@@ -3367,7 +3356,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 秘书说，松一颗也没关系。我没有听。
+薇拉: 秘书劝我松一颗，说没人会在意。我没听...我知道有人会在意！
 <<jump former-ruler__P03_D2_R6_SPECIAL_004>>
 ===
 
@@ -3378,7 +3367,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 第一次任命听证，有人夸我穿得端正，又问一个女人能不能管住那么多人的口粮。
+薇拉: 第一次任命听证，有人先夸我穿得端正，接着就问：“一个女人，能管住这么多人的口粮吗？”
 <<jump former-ruler__P03_D2_R6_SPECIAL_005>>
 ===
 
@@ -3389,7 +3378,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 那天以后，我连热的时候都没有松过。
+薇拉: 那以后我就怕，衣服稍微松一点、话说软一点，他们又会拿“女人不适合”来质疑我的任职。
 <<jump former-ruler__P03_D2_R6_OPTION_004__MENU>>
 ===
 
@@ -3400,7 +3389,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我签的。签在“特殊照顾”下面。
+薇拉: 是我。签在“特殊照顾”下面...我明知道她本来就该有口粮，还是接受了这个名目。
 <<jump former-ruler__P03_D2_R6_SPECIAL_010>>
 ===
 
@@ -3411,7 +3400,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我见过一个负责仓储的，别人叫她“某人的妻子”。那个男人从来不进仓库。
+薇拉: 会！有个负责仓储的女人，大家总叫她“某人的妻子”。她丈夫连仓库都没进去过！
 <<jump former-ruler__P03_D2_R6_SPECIAL_011>>
 ===
 
@@ -3422,7 +3411,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 不。我是在告诉你，她来找过我。
+薇拉: 不！我有难处，不代表我就可以让那个女工继续挨饿。
 <<jump former-ruler__P03_D2_R6_SPECIAL_012>>
 ===
 
@@ -3433,7 +3422,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我知道。...这句话从前我会先说。
+薇拉: 我知道...只是习惯了，连松一颗扣子，都怕别人说我不够端正。
 <<jump former-ruler__P03_D2_R6_SPECIAL_013>>
 ===
 
@@ -3444,7 +3433,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 她拿到了口粮。我拿着那张获批的纸，回去证明事情解决了。
+薇拉: 她那次领到了。我就拿着批准单，说问题解决了...其实她下次还得重新申请。
 <<jump former-ruler__P03_D2_R6_SPECIAL_014>>
 ===
 
@@ -3455,7 +3444,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 有一次我特意叫了她的职务。她愣了一下，才抬头。
+薇拉: 我有一次特意叫她的职务。她愣了一下才抬头...她都不习惯别人承认那是她自己的工作。
 <<jump former-ruler__P03_D2_R6_SPECIAL_015>>
 ===
 
@@ -3466,7 +3455,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我当时很难，是真的。她的口粮因此又少等了一天吗？没有。
+薇拉: 我受过排挤，是真的。可她来找我时，我有权帮她改掉规定，却只批了一次例外。
 <<jump former-ruler__P03_D2_R6_SPECIAL_016>>
 ===
 
@@ -3477,7 +3466,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 今天听你说完，倒也没有那么难受。
+薇拉: ...谢谢你这样说。在这里，我至少能试着不再一直绷着。
 <<jump former-ruler__P03_D2_R6_SPECIAL_019>>
 ===
 
@@ -3488,7 +3477,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 后来她来问，为什么每次换名册，都要重新证明自己还是自己。
+薇拉: 后来换了名册，她又被挂回丈夫名下。她来问我：“为什么每次都要重新证明，我有自己的那一份？”
 <<jump former-ruler__P03_D2_R6_SPECIAL_017>>
 ===
 
@@ -3499,7 +3488,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我回去之后，把这件事当作自己做得不错的一天。
+薇拉: 我那天还觉得，自己帮她争回了应有的尊重...可这远远不够。
 <<jump former-ruler__P03_D2_R6_SPECIAL_018>>
 ===
 
@@ -3510,7 +3499,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 你要记录我的处境，记下去。别拿它盖住她来敲门那一段。
+薇拉: 你可以记我的处境。但也请记下，我有权作决定时，究竟有没有帮到她！
 <<jump former-ruler__P03_D2_R6_SPECIAL_019>>
 ===
 
@@ -3521,7 +3510,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 这一次我没有见她。我让秘书去答复。
+薇拉: 那次我没有见她...我让秘书出去解释。我不想承认，自己上次根本没把问题解决。
 <<jump former-ruler__P03_D2_R6_SPECIAL_019>>
 ===
 
@@ -3532,7 +3521,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 可下一次排座位，我还是让她坐在后面。
+薇拉: 下次开会排座位，我还是把她安排在后面。叫对一次职务，并不等于我真的让她参与决定。
 <<jump former-ruler__P03_D2_R6_SPECIAL_019>>
 ===
 
@@ -3543,7 +3532,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我把那颗领扣收进了口袋。今天没有戴。
+薇拉: 今天那颗领扣，我放在口袋里，没有戴。
 <<jump former-ruler__P03_D2_R6_SPECIAL_020>>
 ===
 
@@ -3554,7 +3543,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: ...隔着镜头，你大概看不出来。
+薇拉: ...隔着镜头，你可能看不出来。我刚才说话，喉咙总算没被勒着了。
 <<jump former-ruler__P03_D2_R6_SPECIAL_021>>
 ===
 
@@ -3565,7 +3554,7 @@ patient: former-ruler
 day: 2
 portrait: VV02
 ---
-薇拉: 我只是想告诉你一件，名单上没有的事。
+薇拉: 我想让你知道，我也一直在害怕被否定...只是从前，我不肯承认。
 <<jump former-ruler__P03_D2_R6_PLAYER_ACTION_001__MENU>>
 ===
 
@@ -3576,7 +3565,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 先把今天那段...记完。
+薇拉: 又要治疗了...请先把今天的话记完。我怕明天，自己就说不全了。
 <<jump former-ruler__P03_D2_R6_ACTION_004>>
 ===
 
@@ -3587,7 +3576,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 你已经听见我签过什么。
+薇拉: 你听见我承认责任了...所以决定净化我？
 <<jump former-ruler__P03_D2_R6_ACTION_005>>
 ===
 
@@ -3598,7 +3587,7 @@ patient: former-ruler
 day: 2
 portrait: VV03
 ---
-薇拉: 我还以为，要再争很久。
+薇拉: 释放？...我以为，还得再求你听很久。
 <<jump former-ruler__P03_D2_R6_ACTION_006>>
 ===
 
@@ -3609,7 +3598,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 别从我停下的地方往前删。
+薇拉: 别因为我说到一半停住，就把前面那些也删掉。我仍然记得自己说过什么。
 <<jump former-ruler__P03_D2_R6_ACTION_007>>
 ===
 
@@ -3620,7 +3609,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 也听见过，原来只有谁的名字留在那里。
+薇拉: 那也请记得，这份决议还有其他人参与。我的责任该追究，他们的也一样。
 <<jump former-ruler__P03_D2_R6_ACTION_008>>
 ===
 
@@ -3631,7 +3620,7 @@ patient: former-ruler
 day: 2
 portrait: VV03
 ---
-薇拉: 外套给我就好。
+薇拉: ...把外套给我吧。我想穿自己的衣服出去。
 <<jump former-ruler__P03_D2_R6_ACTION_009>>
 ===
 
@@ -3642,7 +3631,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 好了。你继续。
+薇拉: 记完了吗？...好。现在可以继续了。
 <<jump former-ruler__END_DAY2>>
 ===
 
@@ -3653,7 +3642,7 @@ patient: former-ruler
 day: 2
 portrait: VV04
 ---
-薇拉: 别把今天写成...没有异议。
+薇拉: 我没有同意净化！最后这份记录，别替我写成“没有异议”...
 <<jump former-ruler__END_DAY2>>
 ===
 
@@ -3664,7 +3653,7 @@ patient: former-ruler
 day: 2
 portrait: VV03
 ---
-薇拉: ...谢谢。让我自己站一会儿。
+薇拉: 谢谢...让我先站稳。我想自己走出去。
 <<jump former-ruler__END_DAY2>>
 ===
 
@@ -3674,9 +3663,9 @@ round: R2
 patient: former-ruler
 day: 2
 ---
--> 今天是哪一天？ #id:former-ruler__P03_D2_R2_OPTION_001 #trust:0
+-> 你还记得今天的日期吗？ #id:former-ruler__P03_D2_R2_OPTION_001 #trust:0
     <<jump former-ruler__P03_D2_R2_CLOSE_001>>
--> 你可以慢一点。 #id:former-ruler__P03_D2_R2_OPTION_002 #trust:-1
+-> ...不用急。我等你想清楚。 #id:former-ruler__P03_D2_R2_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D2_R2_CLOSE_002>>
 ===
 
@@ -3686,13 +3675,13 @@ round: R3
 patient: former-ruler
 day: 2
 ---
--> 你怎么回答她？ #id:former-ruler__P03_D2_R3_OPTION_001 #trust:1
+-> 你当时怎么处理的？ #id:former-ruler__P03_D2_R3_OPTION_001 #trust:1
     <<jump former-ruler__P03_D2_R3_CLOSE_001>>
--> 既然有规定，就该按规定办。 #id:former-ruler__P03_D2_R3_OPTION_002 #trust:-1
+-> 配给处也是按现行规定办事。 #id:former-ruler__P03_D2_R3_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D2_R3_CLOSE_002>>
--> 后来改了那张表吗？ #id:former-ruler__P03_D2_R3_OPTION_003 #trust:0
+-> 后来改成可以单独领取了吗？ #id:former-ruler__P03_D2_R3_OPTION_003 #trust:0
     <<jump former-ruler__P03_D2_R3_CLOSE_003>>
--> 为什么非要通过户主才能领到？ #id:former-ruler__P03_D2_R3_OPTION_004 #trust:1
+-> 为什么她有工号，还必须通过丈夫领口粮？ #id:former-ruler__P03_D2_R3_OPTION_004 #trust:1
     <<jump former-ruler__P03_D2_R3_CLOSE_004>>
 ===
 
@@ -3702,11 +3691,11 @@ round: R4
 patient: former-ruler
 day: 2
 ---
--> 你现在不这么想了？ #id:former-ruler__P03_D2_R4_OPTION_001 #trust:1
+-> 现在你看到这套分工的问题了？ #id:former-ruler__P03_D2_R4_OPTION_001 #trust:1
     <<jump former-ruler__P03_D2_R4_CLOSE_001>>
--> 谁能让你离开？ #id:former-ruler__P03_D2_R4_OPTION_002 #trust:0
+-> 那你认为，谁有权批准释放？ #id:former-ruler__P03_D2_R4_OPTION_002 #trust:0
     <<jump former-ruler__P03_D2_R4_CLOSE_002>>
--> 你也曾这样对待别人。 #id:former-ruler__P03_D2_R4_OPTION_003 #trust:2
+-> 你以前也用同样的理由拒绝过别人。 #id:former-ruler__P03_D2_R4_OPTION_003 #trust:2
     <<jump former-ruler__P03_D2_R4_CLOSE_003>>
 ===
 
@@ -3716,9 +3705,9 @@ round: R5
 patient: former-ruler
 day: 2
 ---
--> 你以为很快就能结束。 #id:former-ruler__P03_D2_R5_OPTION_001 #trust:0
+-> 你当时以为，局势很快就会稳定？ #id:former-ruler__P03_D2_R5_OPTION_001 #trust:0
     <<jump former-ruler__P03_D2_R5_CLOSE_001>>
--> 你让他们一直等下去。 #id:former-ruler__P03_D2_R5_OPTION_002 #trust:1
+-> 你连复核时间都没定，就让他们等下去？！ #id:former-ruler__P03_D2_R5_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D2_R5_CLOSE_002>>
 ===
 
@@ -3728,11 +3717,11 @@ round: R6
 patient: former-ruler
 day: 2
 ---
--> 你可以先喝水。 #id:former-ruler__P03_D2_R6_OPTION_001 #trust:1
+-> 先喝口水吧。我等着。 #id:former-ruler__P03_D2_R6_OPTION_001 #trust:1
     <<jump former-ruler__P03_D2_R6_CLOSE_001>>
--> 为什么愿意告诉我？ #id:former-ruler__P03_D2_R6_OPTION_002 #trust:2
+-> 为什么愿意把这些告诉我？ #id:former-ruler__P03_D2_R6_OPTION_002 #trust:2
     <<jump former-ruler__P03_D2_R6_CLOSE_002>>
--> 我只是履行职责。 #id:former-ruler__P03_D2_R6_OPTION_003 #trust:0
+-> 我只是按职责完成询问。 #id:former-ruler__P03_D2_R6_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D2_R6_CLOSE_003>>
 ===
 
@@ -3756,13 +3745,13 @@ round: R6
 patient: former-ruler
 day: 2
 ---
--> 那张配给申请，后来是谁签的？ #id:former-ruler__P03_D2_R6_OPTION_004 #trust:1
+-> 那个女工的“特殊照顾”，最后是你批准的？ #id:former-ruler__P03_D2_R6_OPTION_004 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_006>>
--> 其他女人也需要这样吗？ #id:former-ruler__P03_D2_R6_OPTION_005 #trust:2
+-> 其他任职的女人，也会被这样对待？ #id:former-ruler__P03_D2_R6_OPTION_005 #trust:2
     <<jump former-ruler__P03_D2_R6_SPECIAL_007>>
--> 你是在告诉我，你也很难。 #id:former-ruler__P03_D2_R6_OPTION_006 #trust:1
+-> 所以，你是想让我理解你的难处？ #id:former-ruler__P03_D2_R6_OPTION_006 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_008>>
--> 你现在想松开它，不需要得到我的允许。 #id:former-ruler__P03_D2_R6_OPTION_007 #trust:1
+-> ...你现在想松开领口，就松开吧。不用向我申请。 #id:former-ruler__P03_D2_R6_OPTION_007 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_009>>
 ===
 
@@ -5284,7 +5273,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 因为只有被选中，我才能能接受净化，我才能确定祂没有忘记我。
+乔纳: 因为祂没有忘记我。
 <<jump priest__P01_D1_R4_CLOSE_004>>
 ===
 
@@ -5295,7 +5284,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 怀疑也是罪。我不会因此责怪你，只会为你祈祷。
+乔纳: 怀疑也是罪。但我不会因此责怪你，只会为你祈祷。
 <<jump priest__P01_D1_R4_CLOSE_004>>
 ===
 
@@ -5306,7 +5295,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 今天红灯终于亮了，这就是回应。
+乔纳: 今天红灯终于亮了，这就是我一直在寻找的回应。
 <<jump priest__P01_D1_R5_COMMON_001>>
 ===
 
@@ -5339,7 +5328,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 我说过，思考本就是一种罪。
+乔纳: 我说过，人的罪始终存在于大脑。
 <<jump priest__P01_D1_R5_CLOSE_003>>
 ===
 
@@ -5361,7 +5350,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 沉默并不空洞。
+乔纳: 他们沉默并不空洞。
 <<jump priest__P01_D1_R5_CLOSE_004>>
 ===
 
@@ -5372,7 +5361,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 也许只是我们还听不懂洁净后的语言。
+乔纳: 只是我们还听不懂洁净后的语言。
 <<jump priest__P01_D1_R6_COMMON_001>>
 ===
 
@@ -5383,7 +5372,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 你每天站在这里，为别人打开那扇门。
+乔纳: 你每天站在这里，不就是为别人打开那扇门吗？
 <<jump priest__P01_D1_R6_OPTION_001__MENU>>
 ===
 
@@ -5537,7 +5526,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 我已经准备好了。请不要让我在门外停太久。
+乔纳: 我已经准备好了，请不要让我在门外停太久。
 <<jump priest__P01_D1_R7_CLOSE_005>>
 ===
 
@@ -5634,7 +5623,7 @@ round: R2
 patient: priest
 day: 2
 ---
--> 先完成谈话。 #id:priest__P01_D1_R2_OPTION_001 #trust:0
+-> 先完成谈话再说。 #id:priest__P01_D1_R2_OPTION_001 #trust:0
     <<jump priest__P01_D1_R2_CLOSE_001>>
 -> 你很期待？ #id:priest__P01_D1_R2_OPTION_002 #trust:0
     <<jump priest__P01_D1_R2_CLOSE_001>>
@@ -5650,7 +5639,7 @@ day: 2
     <<jump priest__P01_D1_R3_CLOSE_001>>
 -> 每个人都会犯错。 #id:priest__P01_D1_R3_OPTION_002 #trust:0
     <<jump priest__P01_D1_R3_CLOSE_001>>
--> 你认为净化能赎罪？ #id:priest__P01_D1_R3_OPTION_003 #trust:0
+-> 你为什么觉得只有净化才能洗净罪恶？ #id:priest__P01_D1_R3_OPTION_003 #trust:0
     <<jump priest__P01_D1_R3_CLOSE_002>>
 -> 这不过是一个手术。 #id:priest__P01_D1_R3_OPTION_004 #trust:0
     <<jump priest__P01_D1_R3_CLOSE_002>>
@@ -5664,7 +5653,7 @@ day: 2
 ---
 -> 也许仪器认为你无罪。 #id:priest__P01_D1_R4_OPTION_001 #trust:0
     <<jump priest__P01_D1_R4_CLOSE_001>>
--> 你为什么一定要被选中？ #id:priest__P01_D1_R4_OPTION_002 #trust:3
+-> 你怎么确定自己是被选中的那个？ #id:priest__P01_D1_R4_OPTION_002 #trust:3
     <<jump priest__P01_D1_R4_CLOSE_002>>
 -> 你的信仰没有依据。 #id:priest__P01_D1_R4_OPTION_003 #trust:-3
     <<jump priest__P01_D1_R4_CLOSE_003>>
@@ -5734,7 +5723,7 @@ round: R1
 patient: priest
 day: 2
 ---
--> 请上前接受审查 #id:priest__P01_D1_R1_OPTION_001 #trust:100
+-> 请上前接受审查。 #id:priest__P01_D1_R1_OPTION_001 #trust:100
     <<jump priest__P01_D1_R2_COMMON_001>>
 ===
 
@@ -5745,7 +5734,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: 今天请让门外的人晚一点进来。
+薇拉: 今天能不能让门外的人晚一点进来？...我还有些话，怕这次不说，以后就记不住了。
 <<jump former-ruler__P03_D3_R2_COMMON_002>>
 ===
 
@@ -5756,7 +5745,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: 如果你做不到，告诉我。我不想把时间花在猜上。
+薇拉: 如果你做不到，就直接告诉我。我想把能说话的时间用完，不想再猜了。
 <<jump former-ruler__P03_D3_R2_OPTION_001__MENU>>
 ===
 
@@ -5767,7 +5756,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 那六个人，我还有三个名字不能确定。
+薇拉: 先说附页上那六名委员...我已经有三个名字想不全了。
 <<jump former-ruler__P03_D3_R2_CLOSE_003>>
 ===
 
@@ -5778,7 +5767,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 那就把你能保证的留给我。
+薇拉: 那就让我把眼前这几句说完...能有多久，就多久。
 <<jump former-ruler__P03_D3_R2_CLOSE_004>>
 ===
 
@@ -5789,7 +5778,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 别拿相近的字来替。我宁可留下空白。
+薇拉: 记不住的先留空，得去核对原件，不能靠猜。
 <<jump former-ruler__P03_D3_R3_COMMON_001>>
 ===
 
@@ -5800,7 +5789,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我会说得短一些。
+薇拉: 我会尽量说清楚...你不用替我找一个好听的结论。
 <<jump former-ruler__P03_D3_R3_COMMON_001>>
 ===
 
@@ -5811,7 +5800,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 今天来接我的人，很年轻。
+薇拉: 今天来接我的人，是个很年轻的工作人员。
 <<jump former-ruler__P03_D3_R3_COMMON_002>>
 ===
 
@@ -5822,7 +5811,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 他拿着单子对了两遍，又把我的姓念错了。
+薇拉: 他拿着移交单核对了两遍，还是把我的姓念错了。
 <<jump former-ruler__P03_D3_R3_COMMON_003>>
 ===
 
@@ -5833,7 +5822,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我纠正他。他说，单子上就是这样。
+薇拉: 我纠正他，他却说：“单子上就是这么写的。”...我连自己的名字都不能说明白了吗？
 <<jump former-ruler__P03_D3_R3_COMMON_004>>
 ===
 
@@ -5844,7 +5833,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我从前也喜欢让人按单子办。这样问起来，总有凭据。
+薇拉: 我以前也要求别人只按名单办事。现在才发现，名单写错了，当事人说什么都不算！
 <<jump former-ruler__P03_D3_R3_OPTION_001__MENU>>
 ===
 
@@ -5855,7 +5844,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 薇拉·沃斯。
+薇拉: 薇拉·沃斯...请按这个名字核对。
 <<jump former-ruler__P03_D3_R3_CLOSE_004>>
 ===
 
@@ -5866,7 +5855,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 他也是这么说的。
+薇拉: 他也是这么说的：“只是笔误。”可是明明写错了，为什么不能改。
 <<jump former-ruler__P03_D3_R3_CLOSE_005>>
 ===
 
@@ -5877,7 +5866,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我刚才没有提头衔。
+薇拉: 我没在说委员的头衔，我说的是我的名字...
 <<jump former-ruler__P03_D3_R3_CLOSE_006>>
 ===
 
@@ -5888,7 +5877,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 谢谢。这一项，不必等我争完别的再改。
+薇拉: 谢谢...这是我的姓名，不该非得争赢了审查，才肯替我改正。
 <<jump former-ruler__P03_D3_R4_COMMON_001>>
 ===
 
@@ -5899,7 +5888,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 然后他在那个名字旁边，替我签了已接收。
+薇拉: 他最后还是在那个错名字旁边签了“已接收”。手续做完了，我的话却像没说过一样。
 <<jump former-ruler__P03_D3_R4_COMMON_001>>
 ===
 
@@ -5910,7 +5899,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我说的是名字。
+薇拉: 我可以不再当委员。但我仍然叫 薇 拉·沃 斯，这一点，不需要任命！！
 <<jump former-ruler__P03_D3_R4_COMMON_001>>
 ===
 
@@ -5921,7 +5910,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 我以前进会场，总要提前一刻钟。
+薇拉: 以前开会，我连几点进门，都得反复算。
 <<jump former-ruler__P03_D3_R4_COMMON_002>>
 ===
 
@@ -5932,7 +5921,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 晚了，人们会问是不是家里有事。早了，就说我太想占那个位置。
+薇拉: 迟到，他们问是不是家里的事耽误了；早到，又说我急着占位置。男委员迟到时，他们可不会这样问！
 <<jump former-ruler__P03_D3_R4_COMMON_003>>
 ===
 
@@ -5943,7 +5932,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 后来我不早不晚，卡着钟声进去。
+薇拉: 后来我卡着钟声进去，想这样总挑不出问题了吧？
 <<jump former-ruler__P03_D3_R4_COMMON_004>>
 ===
 
@@ -5954,7 +5943,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 他们终于不问时间，改问我今天为什么没笑。
+薇拉: 结果他们又问：“今天怎么不笑？是不是对谁有意见？”...连我的表情，都能被拿来质疑我！
 <<jump former-ruler__P03_D3_R4_OPTION_001__MENU>>
 ===
 
@@ -5965,7 +5954,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 该让他坐下的时候，让他坐下。
+薇拉: 我让他们先坐下，按议程讨论。我不想每次开会，都先解释自己为什么没笑！
 <<jump former-ruler__P03_D3_R4_CLOSE_005>>
 ===
 
@@ -5976,7 +5965,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 有。一个老委员把议程往前翻，说我们讨论的是水。
+薇拉: 有。一个老委员打断他们，说：“今天讨论的是供水，先谈供水！”
 <<jump former-ruler__P03_D3_R4_CLOSE_006>>
 ===
 
@@ -5987,7 +5976,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 他们的看法，会写进任命意见。
+薇拉: 他们的评价会写进任命意见！不是我不听，就可以不受影响。
 <<jump former-ruler__P03_D3_R4_CLOSE_007>>
 ===
 
@@ -5998,7 +5987,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 我不笑，是难相处。笑了，又不够稳重。
+薇拉: 是！我不笑，他们说我难相处；我笑了，又说我不够稳重。那到底要我怎样？！
 <<jump former-ruler__P03_D3_R4_CLOSE_008>>
 ===
 
@@ -6009,7 +5998,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 该表决的时候，表决。我以为做完这些，其他话就不重要了。
+薇拉: 我把该汇报的汇报完，该表决的表决完...以为工作做好了，他们就会停。
 <<jump former-ruler__P03_D3_R5_COMMON_001>>
 ===
 
@@ -6020,7 +6009,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 他能替我挡住那一句。下一次，仍得我自己进门。
+薇拉: 那次他帮我挡住了。可下一次开会，同样的问题还是会落到我身上。
 <<jump former-ruler__P03_D3_R5_COMMON_001>>
 ===
 
@@ -6031,7 +6020,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 你可以不在意。我当时不能。
+薇拉: 你可以劝我别在意...但那时，他们真的有权决定我还能不能留任。
 <<jump former-ruler__P03_D3_R5_COMMON_001>>
 ===
 
@@ -6042,7 +6031,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 他们从不为这两句话打架，只看哪句当时用得上。
+薇拉: 他们不觉得这两种评价矛盾。只要当时能用来挑我的错，就会拿出来说。
 <<jump former-ruler__P03_D3_R5_COMMON_001>>
 ===
 
@@ -6053,7 +6042,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 我让秘书在门外等过很多次。
+薇拉: 可我也让自己的女秘书，在门外等过很多次。
 <<jump former-ruler__P03_D3_R5_COMMON_002>>
 ===
 
@@ -6064,7 +6053,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 有时候，里面的人不想让她听。有时候，是我自己让她出去。
+薇拉: 有时是其他委员不让她听...有时，是我亲口让她出去的。
 <<jump former-ruler__P03_D3_R5_COMMON_003>>
 ===
 
@@ -6075,7 +6064,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 她把每页纸都抄得清清楚楚。轮到有人问她的意见，我说她只负责记录。
+薇拉: 她明明熟悉那些材料，能提出意见。我却当着别人说：“她只负责记录，不参与讨论。”
 <<jump former-ruler__P03_D3_R5_COMMON_004>>
 ===
 
@@ -6086,7 +6075,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: ...别把这段略过去。这句话是我说的。
+薇拉: ...我受不了别人不让我发言，却也这样堵过她的嘴。这一段，请记下来。
 <<jump former-ruler__P03_D3_R5_OPTION_001__MENU>>
 ===
 
@@ -6097,7 +6086,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 记得。
+薇拉: 记得...她的名字，我还记得。
 <<jump former-ruler__P03_D3_R5_CLOSE_003>>
 ===
 
@@ -6108,7 +6097,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 想。
+薇拉: 想。我欠她一句明确的道歉。
 <<jump former-ruler__P03_D3_R5_CLOSE_004>>
 ===
 
@@ -6119,7 +6108,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 我现在才明白，我把她的名字写在那么多页上，却没有留过一处给她自己的话。
+薇拉: 我让她在那么多文件上署名，却不让她说自己的意见。她做过什么，我都知道...我当时就是不肯让她参与。
 <<jump former-ruler__P03_D3_R6_COMMON_001>>
 ===
 
@@ -6130,7 +6119,7 @@ patient: former-ruler
 day: 3
 portrait: VV01
 ---
-薇拉: 也想听她说一句不好听的，而不是又替我把信写得妥当。
+薇拉: 也想听她告诉我，她到底有多生气，不用再顾着我的脸色，把每句话都写得那么妥当...
 <<jump former-ruler__P03_D3_R6_COMMON_001>>
 ===
 
@@ -6141,7 +6130,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 你刚才又看了一次门口。
+薇拉: 你又看门口了...是不是有人在催？
 <<jump former-ruler__P03_D3_R6_COMMON_002>>
 ===
 
@@ -6152,7 +6141,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 快到时间了？
+薇拉: 快到治疗的时间了，对吗？
 <<jump former-ruler__P03_D3_R6_COMMON_003>>
 ===
 
@@ -6163,7 +6152,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...好。我不再让你往后翻。
+薇拉: ...好。那张附页请你之后核对，我现在不催你翻了。
 <<jump former-ruler__P03_D3_R6_COMMON_004>>
 ===
 
@@ -6174,7 +6163,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 最后这几句，我想看着镜头说。
+薇拉: 剩下这几句，我想看着镜头说。请你听完。
 <<jump former-ruler__P03_D3_R6_OPTION_001__MENU>>
 ===
 
@@ -6185,7 +6174,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我来时，一直想看看你的脸。
+薇拉: 刚来的时候，我只想知道，坐在镜头后面审我的人是谁。
 <<jump former-ruler__P03_D3_R6_CLOSE_004>>
 ===
 
@@ -6196,7 +6185,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 有。我的签名没有撤回。附页也没有因此变得多余。
+薇拉: 有。我的签名是真的，我也确实参与了延长收容。但请继续查那张附页，别让调查停在我这里。
 <<jump former-ruler__P03_D3_R6_CLOSE_005>>
 ===
 
@@ -6207,7 +6196,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我听见了。
+薇拉: ...听见了。再给我说完这一句，好吗？
 <<jump former-ruler__P03_D3_R6_CLOSE_006>>
 ===
 
@@ -6218,7 +6207,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 现在不必了。你坐在那里，我知道。
+薇拉: 现在...我更想知道，你有没有把我当作一个人听完。不是只等我认罪，或者服从。
 <<jump former-ruler__P03_D3_R6_SPECIAL_001>>
 ===
 
@@ -6229,7 +6218,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...剩下的话，暂时不必写成结论。
+薇拉: 我受过不公，也做过伤害别人的决定。这些都留着吧...别急着替我写成好人，或者坏人。
 <<jump former-ruler__P03_D3_R6_SPECIAL_001>>
 ===
 
@@ -6240,7 +6229,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 请不要用“本人同意”替我省事。
+薇拉: 请记清楚：结束谈话，不等于我同意接下来所有处置。别替我签“本人同意”！
 <<jump former-ruler__P03_D3_R6_SPECIAL_001>>
 ===
 
@@ -6251,7 +6240,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我家里没有第二副碗筷。
+薇拉: ...其实我想回家。我一直一个人住，家里只有一副碗筷。
 <<jump former-ruler__P03_D3_R6_SPECIAL_002>>
 ===
 
@@ -6262,7 +6251,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 以前有人去做例行登记，问我户主什么时候回来。我说，我就是。
+薇拉: 以前有人上门登记，非问我户主什么时候回来。我说：“我就是户主，这就是我的房子。”
 <<jump former-ruler__P03_D3_R6_SPECIAL_003>>
 ===
 
@@ -6273,7 +6262,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 他笑了笑，以为我在开玩笑。
+薇拉: 他还笑，以为我在开玩笑...好像一个女人，不可能自己有个家。
 <<jump former-ruler__P03_D3_R6_SPECIAL_004>>
 ===
 
@@ -6284,7 +6273,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 过了两年，我坐进委员会，他才把那一栏改掉。
+薇拉: 后来我进了委员会，他才肯把户主那一栏改成我的名字。同一个人，非要有头衔才算数。
 <<jump former-ruler__P03_D3_R6_SPECIAL_005>>
 ===
 
@@ -6295,7 +6284,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 现在人不在了...我不知道他们又填回了谁。
+薇拉: 现在我被关在这里，又没了职务...我怕他们连那个家，也不再认是我的。
 <<jump former-ruler__P03_D3_R6_OPTION_004__MENU>>
 ===
 
@@ -6306,7 +6295,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 想。窗台上有一个缺口。我每次放杯子，都会绕开。
+薇拉: 想...回我自己的家。窗台缺了一小块，我每次放杯子，都习惯绕开那里。
 <<jump former-ruler__P03_D3_R6_SPECIAL_010>>
 ===
 
@@ -6317,7 +6306,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 不一直。有人愿意同我说话，也有人帮过我。
+薇拉: 也不是一直。有人帮过我，也有人愿意和我说话...我记得的。
 <<jump former-ruler__P03_D3_R6_SPECIAL_011>>
 ===
 
@@ -6328,7 +6317,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我不知道该把手放在哪里了。
+薇拉: ...可我不知道该怎么放松。你看，我的手还按在膝盖上，怕一动又被说不配合。
 <<jump former-ruler__P03_D3_R6_SPECIAL_012>>
 ===
 
@@ -6339,7 +6328,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...好。那就先不谈那份决议。
+薇拉: ...好。那就先不谈决议，也不谈我该负什么责任了。让我歇一会儿。
 <<jump former-ruler__P03_D3_R6_SPECIAL_013>>
 ===
 
@@ -6350,7 +6339,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 夜里没人向我汇报，也不用等我开口。
+薇拉: 回去以后，我想自己烧一壶水。不用等谁来开门，也不用先回答问题。
 <<jump former-ruler__P03_D3_R6_SPECIAL_014>>
 ===
 
@@ -6361,7 +6350,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 只是每次散会，我总得等他们先走。有人不方便被看见同我一起出去。
+薇拉: 只是有些人私下肯帮我，散会时却要我晚一点走。他们不愿让别人看见，自己和我站在一起。
 <<jump former-ruler__P03_D3_R6_SPECIAL_015>>
 ===
 
@@ -6372,7 +6361,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 刚才没有注意。你也没有提醒。
+薇拉: 你刚才没有催我把手放回去...我才发现，原来我可以换个姿势。
 <<jump former-ruler__P03_D3_R6_SPECIAL_016>>
 ===
 
@@ -6383,7 +6372,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 你不用一直找问题。我听得见你还在。
+薇拉: 你不用一直提问...让我听见你还在，就行。
 <<jump former-ruler__P03_D3_R6_SPECIAL_020>>
 ===
 
@@ -6394,7 +6383,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我以前嫌那里太安静。
+薇拉: 我以前总嫌家里太安静，吃饭也想着第二天的会...现在却很想回去坐一会儿。
 <<jump former-ruler__P03_D3_R6_SPECIAL_017>>
 ===
 
@@ -6405,7 +6394,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我后来走得很快，像是我自己急着回家。
+薇拉: 所以后来，我总是一个人走得很快。别人看见了，就像是我自己不想等他们。
 <<jump former-ruler__P03_D3_R6_SPECIAL_018>>
 ===
 
@@ -6416,7 +6405,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...原来这么久没有人纠正我，我是会发现的。
+薇拉: ...这些天，我连怎么坐、怎么说话都在等人纠正。刚才你没管，我反而不习惯了。
 <<jump former-ruler__P03_D3_R6_SPECIAL_019>>
 ===
 
@@ -6427,7 +6416,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 这几天，倒常常想起水壶快烧开时的声音。
+薇拉: 我连水壶快烧开时的声音，都想得起来...可那几个名字，怎么就记不清了呢？
 <<jump former-ruler__P03_D3_R6_SPECIAL_020>>
 ===
 
@@ -6438,7 +6427,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...你别用那个语气安慰我。我怕我会接着说。
+薇拉: ...别那么温柔地安慰我。我本来还能忍住的，再说下去...我怕我会哭。
 <<jump former-ruler__P03_D3_R6_SPECIAL_020>>
 ===
 
@@ -6449,7 +6438,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 你能不能再说一句话？随便什么。不必问问题。
+薇拉: 你能不能再说句话？说什么都行...这次不必是审查的问题。
 <<jump former-ruler__P03_D3_R6_SPECIAL_020>>
 ===
 
@@ -6460,7 +6449,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 我不会把以前那些事，换成一句“我已经改了”。
+薇拉: 我知道，今天说这些，也不能让被我耽误的人少受一天罪。我不会拿一句“我改了”，就要你原谅。
 <<jump former-ruler__P03_D3_R6_SPECIAL_021>>
 ===
 
@@ -6471,7 +6460,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 你也不必替我做这个担保。
+薇拉: 你也不用保证我出去以后一定会变好...那是我自己该做的事。
 <<jump former-ruler__P03_D3_R6_SPECIAL_022>>
 ===
 
@@ -6482,7 +6471,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...如果今天还有一点时间，就陪我坐到门响。
+薇拉: 只是现在...如果还能多坐一会儿，就陪我等到门响，好吗？
 <<jump former-ruler__P03_D3_R6_PLAYER_ACTION_001__MENU>>
 ===
 
@@ -6493,7 +6482,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: ...好。
+薇拉: ...还是治疗。我听见了。只是这次以后，我还能记住多少？
 <<jump former-ruler__P03_D3_R6_ACTION_004>>
 ===
 
@@ -6504,7 +6493,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: 我知道了。
+薇拉: 净化...我知道了。我还是害怕，并没有因为说完这些就不怕了。
 <<jump former-ruler__P03_D3_R6_ACTION_005>>
 ===
 
@@ -6515,7 +6504,7 @@ patient: former-ruler
 day: 3
 portrait: VV03
 ---
-薇拉: ...是外面那扇门？
+薇拉: 释放？！...你说的是让我走出这里，回外面去？
 <<jump former-ruler__P03_D3_R6_ACTION_006>>
 ===
 
@@ -6526,7 +6515,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: 如果我一会儿叫不出你的名字，不必纠正我。
+薇拉: 如果一会儿，我连你的称呼都记不起来...别以为我故意不回答。我现在真的有些记不住了。
 <<jump former-ruler__P03_D3_R6_ACTION_007>>
 ===
 
@@ -6537,7 +6526,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: 你可以把手放下来。我看见你一直按着那里。
+薇拉: 我看见你的手一直按在那里...你也紧张吗？先放松一下吧。
 <<jump former-ruler__P03_D3_R6_ACTION_008>>
 ===
 
@@ -6548,7 +6537,7 @@ patient: former-ruler
 day: 3
 portrait: VV03
 ---
-薇拉: 我站起来会慢一点。你等一下。
+薇拉: ......
 <<jump former-ruler__P03_D3_R6_ACTION_009>>
 ===
 
@@ -6559,7 +6548,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: 我记得你的声音。
+薇拉: ...你的声音，我现在还记得。再让我听一句，好吗？
 <<jump former-ruler__END_DAY3>>
 ===
 
@@ -6570,7 +6559,7 @@ patient: former-ruler
 day: 3
 portrait: VV04
 ---
-薇拉: ...门响之前，还来得及说一句再见。
+薇拉: ...门还没响。我还来得及说一句，再见。
 <<jump former-ruler__END_DAY3>>
 ===
 
@@ -6581,7 +6570,7 @@ patient: former-ruler
 day: 3
 portrait: VV03
 ---
-薇拉: 谢谢。今天这句...不用替我记得那么正式。
+薇拉: 谢谢...这次不是客套。我是真的，想活着回家。
 <<jump former-ruler__END_DAY3>>
 ===
 
@@ -6591,9 +6580,9 @@ round: R2
 patient: former-ruler
 day: 3
 ---
--> 你想先说什么？ #id:former-ruler__P03_D3_R2_OPTION_001 #trust:1
+-> 你想先说哪件事？ #id:former-ruler__P03_D3_R2_OPTION_001 #trust:1
     <<jump former-ruler__P03_D3_R2_CLOSE_001>>
--> 我不能保证谈话时间。 #id:former-ruler__P03_D3_R2_OPTION_002 #trust:0
+-> ...我不能保证能延长谈话。 #id:former-ruler__P03_D3_R2_OPTION_002 #trust:0
     <<jump former-ruler__P03_D3_R2_CLOSE_002>>
 ===
 
@@ -6603,11 +6592,11 @@ round: R3
 patient: former-ruler
 day: 3
 ---
--> 我会核对你的姓名。 #id:former-ruler__P03_D3_R3_OPTION_001 #trust:1
+-> 我会核对，把姓名改正确。 #id:former-ruler__P03_D3_R3_OPTION_001 #trust:1
     <<jump former-ruler__P03_D3_R3_CLOSE_001>>
--> 只是一个笔误。 #id:former-ruler__P03_D3_R3_OPTION_002 #trust:0
+-> 只是笔误，不影响今天的审查。 #id:former-ruler__P03_D3_R3_OPTION_002 #trust:0
     <<jump former-ruler__P03_D3_R3_CLOSE_002>>
--> 你已经不需要那个头衔了。 #id:former-ruler__P03_D3_R3_OPTION_003 #trust:-2
+-> 你已经不是委员，不必再纠结身份了。 #id:former-ruler__P03_D3_R3_OPTION_003 #trust:-2
     <<jump former-ruler__P03_D3_R3_CLOSE_003>>
 ===
 
@@ -6617,13 +6606,13 @@ round: R4
 patient: former-ruler
 day: 3
 ---
--> 你怎么应付？ #id:former-ruler__P03_D3_R4_OPTION_001 #trust:0
+-> 那你当时怎么回应？ #id:former-ruler__P03_D3_R4_OPTION_001 #trust:0
     <<jump former-ruler__P03_D3_R4_CLOSE_001>>
--> 没人替你说话？ #id:former-ruler__P03_D3_R4_OPTION_002 #trust:1
+-> 在场就没人替你说句话吗？ #id:former-ruler__P03_D3_R4_OPTION_002 #trust:1
     <<jump former-ruler__P03_D3_R4_CLOSE_002>>
--> 你太在意别人的看法。 #id:former-ruler__P03_D3_R4_OPTION_003 #trust:-1
+-> 你是不是太在意他们的评价了？ #id:former-ruler__P03_D3_R4_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D3_R4_CLOSE_003>>
--> 他们把你的表情也当成履职的一部分。 #id:former-ruler__P03_D3_R4_OPTION_004 #trust:1
+-> 他们在评价你的表情，而不是你的工作？ #id:former-ruler__P03_D3_R4_OPTION_004 #trust:1
     <<jump former-ruler__P03_D3_R4_CLOSE_004>>
 ===
 
@@ -6633,9 +6622,9 @@ round: R5
 patient: former-ruler
 day: 3
 ---
--> 你还记得她的名字吗？ #id:former-ruler__P03_D3_R5_OPTION_001 #trust:1
+-> 你还记得那位秘书叫什么吗？ #id:former-ruler__P03_D3_R5_OPTION_001 #trust:1
     <<jump former-ruler__P03_D3_R5_CLOSE_001>>
--> 你想向她道歉。 #id:former-ruler__P03_D3_R5_OPTION_002 #trust:0
+-> ...你想当面向她道歉？ #id:former-ruler__P03_D3_R5_OPTION_002 #trust:0
     <<jump former-ruler__P03_D3_R5_CLOSE_002>>
 ===
 
@@ -6645,11 +6634,11 @@ round: R6
 patient: former-ruler
 day: 3
 ---
--> 你说。 #id:former-ruler__P03_D3_R6_OPTION_001 #trust:1
+-> ...我在听，你说。 #id:former-ruler__P03_D3_R6_OPTION_001 #trust:1
     <<jump former-ruler__P03_D3_R6_CLOSE_001>>
--> 还有需要记入档案的吗？ #id:former-ruler__P03_D3_R6_OPTION_002 #trust:0
+-> 你还有什么希望留在档案里？ #id:former-ruler__P03_D3_R6_OPTION_002 #trust:0
     <<jump former-ruler__P03_D3_R6_CLOSE_002>>
--> 按流程结束。 #id:former-ruler__P03_D3_R6_OPTION_003 #trust:-1
+-> 谈话时间到了。准备结束审查。 #id:former-ruler__P03_D3_R6_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D3_R6_CLOSE_003>>
 ===
 
@@ -6673,13 +6662,13 @@ round: R6
 patient: former-ruler
 day: 3
 ---
--> 你想回那个家？ #id:former-ruler__P03_D3_R6_OPTION_004 #trust:1
+-> ...如果能出去，你想先回家？ #id:former-ruler__P03_D3_R6_OPTION_004 #trust:1
     <<jump former-ruler__P03_D3_R6_SPECIAL_006>>
--> 你在委员会时，也一直一个人？ #id:former-ruler__P03_D3_R6_OPTION_005 #trust:1
+-> 当委员时，你也一直这么孤单吗？ #id:former-ruler__P03_D3_R6_OPTION_005 #trust:1
     <<jump former-ruler__P03_D3_R6_SPECIAL_007>>
--> 现在你可以说，不必一直争。 #id:former-ruler__P03_D3_R6_OPTION_006 #trust:1
+-> ...你现在可以歇一会儿，不必每句话都争赢。 #id:former-ruler__P03_D3_R6_OPTION_006 #trust:1
     <<jump former-ruler__P03_D3_R6_SPECIAL_008>>
--> 我还在这里。剩下的时间你自己安排。 #id:former-ruler__P03_D3_R6_OPTION_007 #trust:2
+-> 我还在。剩下的时间，你想说什么都可以。 #id:former-ruler__P03_D3_R6_OPTION_007 #trust:2
     <<jump former-ruler__P03_D3_R6_SPECIAL_009>>
 ===
 
@@ -9090,7 +9079,7 @@ round: R1
 patient: priest
 day: 3
 ---
--> 请上前接受审查 #id:priest__P01_D2_R1_OPTION_001 #trust:100
+-> 请上前接受审查。 #id:priest__P01_D2_R1_OPTION_001 #trust:100
     <<jump priest__P01_D2_R2_COMMON_001>>
 ===
 

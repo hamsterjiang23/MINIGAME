@@ -8,10 +8,12 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class DreamBedLightingPlayModeTests
     {
         private MiniGameBootstrap host;
@@ -23,14 +25,24 @@ namespace MiniGame.UnityHost.Tests
         private Renderer terminalScreen;
         private GameRules rules;
         private IGameContent content;
+        private EndingDialogueCatalog endings;
+        private bool previousSkipStartup;
 
         [UnitySetUp]
         public IEnumerator OpenRoom()
         {
+            previousSkipStartup = MainMenuController.SkipStartup;
+            MainMenuController.SkipStartup = true;
             MiniGameSessionHost.Release();
-            yield return SceneManager.LoadSceneAsync("MainRoomCombined");
+            yield return null;
+            yield return SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene, LoadSceneMode.Single);
             yield return null;
             host = Object.FindObjectOfType<MiniGameBootstrap>();
+            Assert.That(host, Is.Not.Null);
+            Assert.That(host.Runtime, Is.Not.Null, "Lighting tests require the campaign, not the startup menu.");
+            Assert.That(host.Dreams, Is.Not.Null, "The production Combined dream binding must be installed.");
+            endings = host.Runtime.Endings;
+            Assert.That(endings, Is.Not.Null, "Fixture checkpoints must use the production ending content revision.");
             guidance = host.GetComponent<BedtimeGuidance>();
             controller = Object.FindObjectsOfType<RoomLightingController>()
                 .Single(item => item.gameObject.scene == host.gameObject.scene);
@@ -68,6 +80,7 @@ namespace MiniGame.UnityHost.Tests
         [UnityTearDown]
         public IEnumerator CloseRoom()
         {
+            MainMenuController.SkipStartup = previousSkipStartup;
             if (controller != null)
             {
                 controller.SetPreviewMode(RoomLightingPreviewMode.Automatic);
@@ -85,22 +98,22 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator EveryNightRestoresOnlyTheBedWhilePausedAndPreservesLightingPreviews()
+        public IEnumerator EveryDreamRestoresWithNoBedEffectsWhilePausedAndPreservesLightingPreviews()
         {
             var fixture = CreateCampaign();
             for (int currentDay = 1; currentDay <= 3; currentDay++)
             {
-                DriveTo(fixture, view => view.Game.Day == currentDay && view.Game.Phase == GamePhase.AfterDream);
+                DriveTo(fixture, view => view.Game.Day == currentDay && view.Game.Phase == GamePhase.Dream);
                 Assert.That(fixture.SetPaused(true).Accepted, Is.True);
                 var restored = BindLightingRuntime(fixture);
-                AssertBedOnly();
+                AssertDarkRoom(); AssertNoBedEffects();
                 string saved = restored.Save();
                 float visualTime = guidance.Atmosphere.VisualTime;
                 yield return new WaitForSecondsRealtime(.1f);
-                AssertBedOnly();
+                AssertDarkRoom(); AssertNoBedEffects();
                 Assert.That(guidance.Atmosphere.VisualTime, Is.EqualTo(visualTime));
                 guidance.enabled = false; guidance.enabled = true;
-                AssertBedOnly();
+                AssertDarkRoom(); AssertNoBedEffects();
 
                 controller.SetPreviewMode(RoomLightingPreviewMode.Night);
                 AssertOrdinaryNight();
@@ -108,14 +121,14 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(RenderSettings.ambientLight, Is.EqualTo(day.AmbientLightColor));
                 Assert.That(guidance.Spotlight.enabled, Is.False);
                 controller.SetPreviewMode(RoomLightingPreviewMode.Automatic);
-                AssertBedOnly();
+                AssertDarkRoom(); AssertNoBedEffects();
                 Assert.That(restored.Save(), Is.EqualTo(saved), "Light previews and pause restoration must not wake the player.");
                 Assert.That(fixture.SetPaused(false).Accepted, Is.True);
             }
         }
 
         [UnityTest, Timeout(30000)]
-        public IEnumerator ReturningRevealWorksBeforeDreamCompletionAndRebindClearsItsTransientOverride()
+        public IEnumerator OrdinaryDreamReturnNeverEnablesBedEffectsIncludingPausedRebind()
         {
             var fixture = CreateCampaign();
             DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream);
@@ -125,23 +138,23 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(guidance.Spotlight.enabled, Is.False);
             Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.False);
             string checkpoint = fixture.Save();
-            guidance.SetDreamBedReveal(true);
-            AssertBedOnly();
+            guidance.SetDreamReturnReveal(true);
+            AssertDarkRoom(); AssertNoBedEffects();
             Assert.That(fixture.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
             Assert.That(fixture.Save(), Is.EqualTo(checkpoint), "The reveal must not consume the dream cue or wake the player.");
             yield return new WaitForSecondsRealtime(.1f);
-            AssertBedOnly();
-            guidance.SetDreamBedReveal(false);
+            AssertDarkRoom(); AssertNoBedEffects();
+            guidance.SetDreamReturnReveal(false);
             AssertDarkRoom();
             Assert.That(guidance.Spotlight.enabled, Is.False);
             Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.False);
 
-            guidance.SetDreamBedReveal(true);
-            BindLightingRuntime(GameRuntime.Restore(checkpoint, rules, content));
+            guidance.SetDreamReturnReveal(true);
+            BindLightingRuntime(GameRuntime.Restore(checkpoint, rules, content, endings));
             AssertDarkRoom();
             Assert.That(guidance.Spotlight.enabled, Is.False, "A new Dream binding must wait for its own returning cue.");
-            guidance.SetDreamBedReveal(true);
-            AssertBedOnly();
+            guidance.SetDreamReturnReveal(true);
+            AssertDarkRoom(); AssertNoBedEffects();
             BindLightingRuntime(CreateCampaign());
             Assert.That(RenderSettings.ambientLight, Is.EqualTo(day.AmbientLightColor));
             Assert.That(guidance.Spotlight.enabled, Is.False);
@@ -163,6 +176,118 @@ namespace MiniGame.UnityHost.Tests
             }
         }
 
+        [UnityTest, Timeout(60000)]
+        public IEnumerator FinalDreamReturnsDirectlyToTerminalAcrossEveryRevealFrameAndPausedRestore()
+        {
+            var fixture = CreateCampaign();
+            EndingCampaignScenario.Drive(fixture, rules, EndingCampaignRoute.Hidden,
+                view => view.Game.Day == 3 && view.Game.Phase == GamePhase.Dream);
+            Assert.That(fixture.GetView().Game.DreamReturnPhase, Is.EqualTo(GamePhase.SelfReview));
+            BindLightingRuntime(fixture);
+            host.Dreams.UseExternalClock = true;
+            host.Dreams.enabled = true;
+            var profile = host.DreamProfile;
+            host.Dreams.Advance(profile.BlackScreenSeconds);
+            host.Dreams.Advance(profile.GetDay(3).Duration);
+            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.Returning));
+            while (host.Dreams.Phase == DreamPlaybackPhase.Returning)
+            {
+                host.Dreams.Advance(profile.ReturnSeconds / 20f);
+                AssertNoBedEffects();
+                yield return null;
+            }
+            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
+            AssertTerminalOnly();
+            Assert.That(FadeOpacity(), Is.EqualTo(1));
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
+            Assert.That(Vector3.Dot(host.Player.ViewCamera.transform.forward,
+                (terminalScreen.bounds.center - host.Player.ViewCamera.transform.position).normalized), Is.GreaterThan(.99f));
+
+            foreach (var restorePhase in new[] { DreamPlaybackPhase.BlackHold, DreamPlaybackPhase.Revealing })
+            {
+                Assert.That(host.Dreams.Phase, Is.EqualTo(restorePhase));
+                Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+                var checkpoint = host.Dreams.CaptureCheckpoint();
+                string saved = host.Runtime.Save();
+                float fade = FadeOpacity();
+                var rotation = host.Player.ViewCamera.transform.rotation;
+                BindLightingRuntime(GameRuntime.Restore(saved, rules, content, endings));
+                host.Dreams.RestoreCheckpoint(checkpoint);
+                AssertTerminalOnly();
+                Assert.That(FadeOpacity(), Is.EqualTo(fade).Within(.0001f));
+                Assert.That(Quaternion.Angle(host.Player.ViewCamera.transform.rotation, rotation), Is.LessThan(.01f));
+                host.Dreams.Advance(60);
+                yield return null;
+                AssertTerminalOnly();
+                Assert.That(host.Dreams.CaptureCheckpoint().Elapsed, Is.EqualTo(checkpoint.Elapsed));
+                Assert.That(host.Runtime.Save(), Is.EqualTo(saved), "The return preview must not commit core state while paused.");
+                Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
+                if (restorePhase == DreamPlaybackPhase.BlackHold)
+                {
+                    host.Dreams.Advance(profile.WakeBlackSeconds);
+                    host.Dreams.Advance(profile.ReturnSeconds * .4f);
+                    Assert.That(FadeOpacity(), Is.InRange(.1f, .9f));
+                }
+            }
+
+            for (int frame = 0; frame < 30 && host.Dreams.OwnsCamera; frame++)
+            {
+                host.Dreams.Advance(profile.ReturnSeconds / 20f);
+                AssertTerminalOnly();
+                yield return null;
+            }
+            Assert.That(host.Dreams.OwnsCamera, Is.False);
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.SelfReview));
+            Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Computer }));
+            Assert.That(host.Runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Off));
+            Assert.That(FadeOpacity(), Is.Zero);
+        }
+
+        private float FadeOpacity() => host.Screen.GetComponentsInChildren<Image>(true)
+            .Single(image => image.name == "PresentationFade").color.a;
+
+        private void AssertNoBedEffects()
+        {
+            Assert.That(guidance.Spotlight.enabled, Is.False, "A dream return must never reveal the bed.");
+            Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.False);
+            Assert.That(guidance.Atmosphere.ParticleRenderer.enabled, Is.False);
+        }
+
+        private void AssertTerminalOnly()
+        {
+            AssertNoBedEffects();
+            var properties = new MaterialPropertyBlock();
+            terminalScreen.GetPropertyBlock(properties, 0);
+            Assert.That(properties.GetFloat("_CrtPower"), Is.EqualTo(.55f).Within(.001f));
+            Assert.That(properties.GetColor("_EmissionColor").maxColorComponent, Is.GreaterThan(.01f));
+            Assert.That(properties.GetFloat("_LiveDisplay"), Is.Zero);
+            Assert.That(RenderSettings.ambientIntensity, Is.Zero);
+            Assert.That(RenderSettings.ambientLight.maxColorComponent, Is.LessThan(.001f));
+            Assert.That(RenderSettings.reflectionIntensity, Is.Zero);
+            // The guidance owns this DontSave runtime child; global object search omits hidden transient objects.
+            var terminalGlow = guidance.GetComponentsInChildren<Light>(true)
+                .Single(light => light.name == "Self-review terminal glow");
+            Assert.That(terminalGlow.enabled, Is.True);
+            foreach (var light in guidance.gameObject.scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Light>(true)).Where(light => light != terminalGlow))
+            {
+                string diagnostic = light.name + " parent=" + light.transform.parent?.name
+                    + " position=" + light.transform.position + " enabled=" + light.enabled
+                    + " active=" + light.gameObject.activeInHierarchy + " intensity=" + light.intensity
+                    + " range=" + light.range + " cullingMask=" + light.cullingMask;
+                if (light.GetComponentInParent<PatientMonitorRoom>() != null)
+                {
+                    // Offscreen patient rooms share the scene, but cannot illuminate the apartment.
+                    Assert.That(light.type, Is.EqualTo(LightType.Spot), diagnostic);
+                    Assert.That(light.cullingMask, Is.EqualTo(1 << PatientSurveillanceFeed.StageLayer), diagnostic);
+                    Assert.That(Vector3.Distance(light.transform.position, host.Player.ViewCamera.transform.position),
+                        Is.GreaterThan(light.range), diagnostic);
+                    continue;
+                }
+                Assert.That(!light.isActiveAndEnabled || light.intensity < .001f, Is.True, diagnostic + " must stay dark.");
+            }
+        }
+
         private void AssertOrdinaryNight()
         {
             Assert.That(RenderSettings.ambientLight, Is.EqualTo(night.AmbientLightColor));
@@ -171,17 +296,6 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(ordinaryLight.intensity, Is.EqualTo(.7f).Within(.001f));
             Assert.That(guidance.Spotlight.enabled, Is.False, "Ordinary night retains the authored disabled bed light.");
             Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.False);
-        }
-
-        private void AssertBedOnly()
-        {
-            AssertDarkRoom();
-            Assert.That(guidance.Spotlight.enabled, Is.True);
-            Assert.That(guidance.Spotlight.type, Is.EqualTo(LightType.Spot));
-            Assert.That(guidance.Spotlight.intensity, Is.EqualTo(guidance.DefaultSpotIntensity).Within(.001f));
-            Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.True);
-            Assert.That(guidance.Atmosphere.ParticleRenderer.enabled, Is.True);
-            Assert.That(guidance.BedRenderers.All(renderer => guidance.Spotlight.cullingMask == 1 << renderer.gameObject.layer), Is.True);
         }
 
         private void AssertDarkRoom()
@@ -239,38 +353,14 @@ namespace MiniGame.UnityHost.Tests
             return host.Runtime;
         }
 
-        private GameRuntime CreateCampaign() => new GameRuntime(rules, content, useTerminalDirectory: true);
-
-        private static void DriveTo(GameRuntime runtime, Func<RuntimeView, bool> stop)
+        private GameRuntime CreateCampaign()
         {
-            for (int step = 0; step < 2000; step++)
-            {
-                var view = runtime.GetView();
-                if (stop(view)) return;
-                RuntimeResult result;
-                if (view.Cue != null) result = runtime.CompleteCue(view.Cue.Token);
-                else if (view.TerminalPage == TerminalPage.Archive) result = runtime.LeaveTerminal();
-                else if (view.TerminalPage == TerminalPage.Directory)
-                    result = runtime.EnterSelectedPatient(view.Patients.First(item => item.CanReceiveToday).Id);
-                else if (view.Input == InputContext.Dialogue)
-                {
-                    if (view.Game.EncounterStage == EncounterStage.AwaitingDisposition)
-                    {
-                        var available = view.Game.AvailableDispositions;
-                        var disposition = view.Game.RemainingPurificationQuota > 0 && available.Contains(Disposition.Purify) ? Disposition.Purify
-                            : available.Contains(Disposition.Treat) ? Disposition.Treat : available.First();
-                        result = runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition);
-                    }
-                    else result = runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, view.Game.AvailableResponseIds.First());
-                }
-                else if (view.Game.Phase == GamePhase.Evening) result = runtime.BeginNightDream();
-                else if (view.Game.Phase == GamePhase.AfterDream) result = runtime.TryInteract(InteractionTarget.Bed);
-                else if (view.Game.Phase == GamePhase.MorningInspection) result = runtime.TryInteract(InteractionTarget.Door);
-                else if (view.Game.Phase == GamePhase.Apartment || view.Game.Phase == GamePhase.Work) result = runtime.TryInteract(InteractionTarget.Computer);
-                else { Assert.Fail("No legal fixture step in " + view.Game.Phase + "/" + view.Input); return; }
-                Assert.That(result.Accepted, Is.True, "Rejected real campaign command: " + view.Game.Phase + "/" + view.Input);
-            }
-            Assert.Fail("Real campaign driver exceeded its 2000-command bound.");
+            var runtime = new GameRuntime(rules, content, useTerminalDirectory: true);
+            runtime.ConfigureEndings(endings);
+            return runtime;
         }
+
+        private void DriveTo(GameRuntime runtime, Func<RuntimeView, bool> stop)
+            => EndingCampaignScenario.Drive(runtime, rules, EndingCampaignRoute.Normal, stop);
     }
 }

@@ -45,10 +45,10 @@ class CampaignConversionTests(unittest.TestCase):
         self.assertEqual(audit["meetingCount"], 3)
         self.assertEqual(smoke["formatVersion"], 2)
         self.assertEqual(self.audit["sourceRowCount"], 1360)
-        self.assertEqual(self.audit["activeSourceRowCount"], 1295)
-        self.assertEqual(self.audit["excludedSourceRowCount"], 65)
+        self.assertEqual(self.audit["activeSourceRowCount"], 1294)
+        self.assertEqual(self.audit["excludedSourceRowCount"], 66)
         self.assertEqual(self.audit["meetingCount"], 13)
-        self.assertEqual(self.package["contentVersion"], "1.2.1-development")
+        self.assertEqual(self.package["contentVersion"], "1.2.2-development")
 
     def test_daily_rosters_follow_the_confirmed_arrival_order(self) -> None:
         campaign = cast(Record, self.package["campaign"])
@@ -160,6 +160,31 @@ class CampaignConversionTests(unittest.TestCase):
     def test_repair_manifest_rejects_new_source_hash_instead_of_guessing(self) -> None:
         with self.assertRaisesRegex(ValueError, "does not match"):
             apply_repairs("battlefield-doctor", "future-revision", [], HERE / "source-repairs.json")
+
+    def test_unlisted_workbook_rejects_duplicate_ids_before_a_graph_can_overwrite_text(self: CampaignConversionTests) -> None:
+        rows = [{"row": "2", "id": "X_D1_LINE", "open": "新版正文"},
+                {"row": "3", "id": "X_D1_LINE", "open": "残留旧句"}]
+        with self.assertRaisesRegex(ValueError, "duplicate IDs"):
+            apply_repairs("unlisted-patient", "unlisted-hash", rows, HERE / "source-repairs.json")
+
+    def test_ruler_refresh_keeps_new_final_line_and_audits_the_stale_duplicate(self: CampaignConversionTests) -> None:
+        ruler = next(book for book in cast(list[Record], self.audit["books"])
+                     if book["patientId"] == "former-ruler")
+        active = {row["id"]: row for row in cast(list[Row], ruler["activeRows"])}
+        final = active["P03_D3_R6_ACTION_009"]
+        self.assertEqual(final["row"], "296")
+        self.assertEqual(final["actionResponse"], "谢谢...这次不是客套。我是真的，想活着回家。")
+        self.assertEqual(final["next"], "END_RELEASE")
+        excluded = [row for row in cast(list[Record], self.audit["excludedRows"])
+                    if row["patientId"] == "former-ruler"]
+        self.assertEqual([row["row"] for row in excluded], [297])
+        self.assertEqual(cast(Record, excluded[0]["source"])["actionResponse"],
+                         "谢谢。今天这句...不用替我记得那么正式。")
+        self.assertEqual(active["P03_D2_R5_OPTION_002"]["delta"], "-1")
+        self.assertEqual(active["P03_D2_R6_OPTION_003"]["delta"], "-1")
+        self.assertIn("P03_D1_R2_CLOSE_007", active)
+        self.assertNotIn("P03_D1_R3_COMMON_004", active)
+        self.assertNotIn("P03_D2_R4_CLOSE_006", active)
 
     def test_new_tutorial_is_complete_and_confirmed_priest_alias_keeps_source_evidence(self) -> None:
         books = {book["patientId"]: book for book in cast(list[Record], self.audit["books"])}

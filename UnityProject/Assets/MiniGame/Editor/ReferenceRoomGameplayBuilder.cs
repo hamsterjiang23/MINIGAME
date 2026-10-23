@@ -54,6 +54,7 @@ namespace MiniGame.UnityHost.Editor
                     || surface.name == "B_SM_CupboardChunk" || surface.name == "B_SM_MovingBoxes" || surface.name == "B_SM_SingleBox")
                     BoundsBox(solids, surface.name, surface.bounds);
             }
+            EnsureDoorSideCabinetCollision(room);
             var bed = renderers.Single(item => item.name == "B_SM_mattress_1");
             var screen = renderers.Single(item => item.name.StartsWith("CRT screen emission", StringComparison.Ordinal));
             var monitor = renderers.Single(item => item.name.StartsWith("CRT_Monitor_Tripo", StringComparison.Ordinal));
@@ -143,6 +144,7 @@ namespace MiniGame.UnityHost.Editor
             if (renderers.Count(item => item.name.StartsWith("B_ExteriorConcrete_", StringComparison.Ordinal)) != 2)
                 throw new InvalidOperationException("Both original exterior concrete objects must be retained.");
             RoomLightingSetup.EnsureInScene(scene);
+            WindowInteractionSetup.ConfigureOpenScene();
             AssetDatabase.SaveAssets(); EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene, MainRoomGameplayBuilder.ScenePath);
             var report = new { width = Width, depth = Depth, height = Height, horizontalFov = 61.9275f, frame133 = true,
                 doorWidth = 1.5, doorHeight = 2.5, posters = 2, exteriorConcrete = 2, source = "Art/MainRoom2/minigame员工宿舍.blend" };
@@ -165,9 +167,33 @@ namespace MiniGame.UnityHost.Editor
             UnityEngine.Object.DestroyImmediate(poster.GetComponent<Collider>());
             var collider = poster.AddComponent<BoxCollider>(); collider.size = new Vector3(1, 1, .02f);
             poster.GetComponent<Renderer>().sharedMaterial = material;
-            poster.AddComponent<ReadableProp>().Configure(id, caption, poster.GetComponent<Renderer>());
+            poster.AddComponent<ReadableProp>().Configure(id, caption, poster.GetComponent<Renderer>(),
+                poster.scene.path == MainRoomGameplayBuilder.ScenePath ? 3.5f : 2f);
             return poster.transform;
         }
+        public static void EnsureDoorSideCabinetCollision(GameObject room)
+        {
+            var cabinet = room.GetComponentsInChildren<MeshFilter>(true)
+                .SingleOrDefault(item => item.name == "B_立方体.023");
+            if (cabinet == null || cabinet.sharedMesh == null) return;
+            var proxy = cabinet.transform.Find("Cabinet solid collision");
+            if (proxy == null) proxy = Child(cabinet.transform, "Cabinet solid collision");
+            proxy.localPosition = Vector3.zero;
+            proxy.localRotation = Quaternion.identity;
+            proxy.localScale = Vector3.one;
+            // Keep the original mesh for interaction rays to the letter inside the shelves.
+            // The solid hull prevents the controller stepping into thin cabinet-board edges.
+            proxy.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+            var collider = proxy.GetComponent<BoxCollider>();
+            if (collider == null) collider = proxy.gameObject.AddComponent<BoxCollider>();
+            var bounds = cabinet.sharedMesh.bounds;
+            bounds.Expand(.02f);
+            collider.center = bounds.center;
+            collider.size = bounds.size;
+            collider.isTrigger = false;
+            collider.enabled = true;
+        }
+
         private static Transform Child(Transform parent, string name) { var item = new GameObject(name).transform; item.SetParent(parent, false); return item; }
         private static void Anchor(Transform parent, string name, Vector3 position) => Child(parent, name).position = position;
         private static GameObject Cube(Transform parent, string name, Vector3 position, Vector3 scale, Material material)

@@ -1,0 +1,297 @@
+{
+  "before": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\WindowExterior20261023\\MainRoomCombined.before.unity",
+  "after": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Scenes\\MainRoomCombined.unity",
+  "normalization": "LF line endings, trimmed trailing whitespace, documents sorted by fileID",
+  "scope": "Scene serialized objects/components only; external assets and runtime are not checked.",
+  "preserved": true,
+  "checks": [
+    {
+      "name": "Reference exterior corridor",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 1946347717,
+      "after_root_file_id": 1946347717,
+      "before_counts": {
+        "documents": 247,
+        "game_objects": 57,
+        "components": 190,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 247,
+        "game_objects": 57,
+        "components": 190,
+        "prefab_instances": 0
+      },
+      "before_sha256": "b4b73b114a9a0ed50048a77ec35eaa453670272202d3b32ae9c3e3c313074224",
+      "after_sha256": "b4b73b114a9a0ed50048a77ec35eaa453670272202d3b32ae9c3e3c313074224",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Entrance hinge",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 13228275,
+      "after_root_file_id": 13228275,
+      "before_counts": {
+        "documents": 13,
+        "game_objects": 3,
+        "components": 10,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 13,
+        "game_objects": 3,
+        "components": 10,
+        "prefab_instances": 0
+      },
+      "before_sha256": "2cd2a09fecaf37007107e9475e1fbaa0c982b8420a661986f259dac40e5dc46c",
+      "after_sha256": "2cd2a09fecaf37007107e9475e1fbaa0c982b8420a661986f259dac40e5dc46c",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Entrance frame",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 2129632458,
+      "after_root_file_id": 2129632458,
+      "before_counts": {
+        "documents": 5,
+        "game_objects": 1,
+        "components": 4,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 5,
+        "game_objects": 1,
+        "components": 4,
+        "prefab_instances": 0
+      },
+      "before_sha256": "c7165add68e45486cb3935f09d6d05bc5e352ac50c2b83f2fce38a0d50881735",
+      "after_sha256": "c7165add68e45486cb3935f09d6d05bc5e352ac50c2b83f2fce38a0d50881735",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Door camera alignment",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 530088014,
+      "after_root_file_id": 530088014,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "1abeb395f12a4c372ed704750f54e82b85bdf639823b573493adc738b5b0f531",
+      "after_sha256": "1abeb395f12a4c372ed704750f54e82b85bdf639823b573493adc738b5b0f531",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Door camera outside",
+      "include_descendants": true,
+      "preserved": true,
+      "before_root_file_id": 1626607313,
+      "after_root_file_id": 1626607313,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "066a07b6fed1977e7f442105315b5dc5addc3b4653eed6baeb10fdd5b5854fdd",
+      "after_sha256": "066a07b6fed1977e7f442105315b5dc5addc3b4653eed6baeb10fdd5b5854fdd",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Player",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 1519489283,
+      "after_root_file_id": 1519489283,
+      "before_counts": {
+        "documents": 4,
+        "game_objects": 1,
+        "components": 3,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 4,
+        "game_objects": 1,
+        "components": 3,
+        "prefab_instances": 0
+      },
+      "before_sha256": "89f94f654036700fbae25eac42626997ac2eca06e6ab2918e5de67b620011ded",
+      "after_sha256": "89f94f654036700fbae25eac42626997ac2eca06e6ab2918e5de67b620011ded",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Player spawn",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 1031745830,
+      "after_root_file_id": 1031745830,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "ed1dae54a7305afadf3e74630988cc413f67af62f4f221a36f56c448bc7d5a41",
+      "after_sha256": "ed1dae54a7305afadf3e74630988cc413f67af62f4f221a36f56c448bc7d5a41",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "MiniGame Bootstrap",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 1288090735,
+      "after_root_file_id": 1288090735,
+      "before_counts": {
+        "documents": 10,
+        "game_objects": 1,
+        "components": 9,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 10,
+        "game_objects": 1,
+        "components": 9,
+        "prefab_instances": 0
+      },
+      "before_sha256": "b8d02f537d70640a784391fddfe0d56fe74fe5933a9199ca5c88761f18c8ceaa",
+      "after_sha256": "b8d02f537d70640a784391fddfe0d56fe74fe5933a9199ca5c88761f18c8ceaa",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Computer approach",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 873348315,
+      "after_root_file_id": 873348315,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "648976f543d6bba8779040a9a805edf4798c21b6866668fecb8007e6ee6189ce",
+      "after_sha256": "648976f543d6bba8779040a9a805edf4798c21b6866668fecb8007e6ee6189ce",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Bed approach",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 1790653863,
+      "after_root_file_id": 1790653863,
+      "before_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 2,
+        "game_objects": 1,
+        "components": 1,
+        "prefab_instances": 0
+      },
+      "before_sha256": "0d3d54cd504b41b7187be50265dc10181019dfdcac1f2dc15c648185a1f417fa",
+      "after_sha256": "0d3d54cd504b41b7187be50265dc10181019dfdcac1f2dc15c648185a1f417fa",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Computer interaction collider",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 1759336972,
+      "after_root_file_id": 1759336972,
+      "before_counts": {
+        "documents": 4,
+        "game_objects": 1,
+        "components": 3,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 4,
+        "game_objects": 1,
+        "components": 3,
+        "prefab_instances": 0
+      },
+      "before_sha256": "13d451c970c78082cdafb572770fbe5e619b4144c0585f4fb408f9016c324c23",
+      "after_sha256": "13d451c970c78082cdafb572770fbe5e619b4144c0585f4fb408f9016c324c23",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    },
+    {
+      "name": "Bed interaction collider",
+      "include_descendants": false,
+      "preserved": true,
+      "before_root_file_id": 46271980,
+      "after_root_file_id": 46271980,
+      "before_counts": {
+        "documents": 4,
+        "game_objects": 1,
+        "components": 3,
+        "prefab_instances": 0
+      },
+      "after_counts": {
+        "documents": 4,
+        "game_objects": 1,
+        "components": 3,
+        "prefab_instances": 0
+      },
+      "before_sha256": "768360a439570f5677a187745f49853bf88fcc78f73974cbec00517c471f5ada",
+      "after_sha256": "768360a439570f5677a187745f49853bf88fcc78f73974cbec00517c471f5ada",
+      "missing_file_ids": [],
+      "added_file_ids": [],
+      "changed_file_ids": []
+    }
+  ]
+}

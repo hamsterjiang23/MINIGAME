@@ -153,17 +153,18 @@ namespace MiniGame.UnityHost.Tests
             {
                 new { PatientId = "child", PortraitIds = new[] { "ML01", "ML02", "ML03" }, SourceIds = new[] { "ML01", "ML02", "ML03" } },
                 new { PatientId = "former-ruler", PortraitIds = new[] { "VV01", "VV02", "VV03", "VV04" }, SourceIds = new[] { "VV01", "VV02", "VV03", "VV04" } },
-                new { PatientId = "battlefield-doctor", PortraitIds = new[] { "ED01", "ED02", "ED03", "ED04" }, SourceIds = new[] { "ED04", "ED01", "ED03", "ED02" } },
+                new { PatientId = "battlefield-doctor", PortraitIds = new[] { "ED01", "ED02", "ED03", "ED04" }, SourceIds = new[] { "ED01", "ED02", "ED03", "ED04" } },
                 new { PatientId = "diplomat", PortraitIds = new[] { "AD01", "AD02", "AD03", "AD04" }, SourceIds = new[] { "AD01", "AD02", "AD03", "AD04" } },
-                new { PatientId = "priest", PortraitIds = new[] { "JN01", "JN02", "JN03", "JN04" }, SourceIds = new[] { "JN04", "JN01", "JN02", "JN03" } },
-                new { PatientId = "tutorial", PortraitIds = new[] { "D0_01", "D0_02", "D0_03" }, SourceIds = new[] { "D0_02", "D0_03", "D0_01" } }
+                new { PatientId = "priest", PortraitIds = new[] { "JN01", "JN02", "JN03", "JN04" }, SourceIds = new[] { "JN01", "JN02", "JN03", "JN04" } },
+                new { PatientId = "tutorial", PortraitIds = new[] { "D0_01", "D0_02", "D0_03" }, SourceIds = new[] { "D0_01", "D0_02", "D0_03" } },
+                new { PatientId = GameRuntime.SelfPatientId, PortraitIds = new[] { "SJ01", "SJ02" }, SourceIds = new[] { "SJ01", "SJ02" } }
             };
             var targets = groups.SelectMany(group => group.PortraitIds.Select((id, index) =>
                 new { group.PatientId, PortraitId = id, SourceId = group.SourceIds[index] })).ToArray();
-            Assert.That(targets, Has.Length.EqualTo(22));
+            Assert.That(targets, Has.Length.EqualTo(24));
             try
             {
-                var feed = CreateFeed("Five patients and the tutorial guide", configuration, out owner);
+                var feed = CreateFeed("Patients, tutorial guide and self review", configuration, out owner);
                 Color32[] previousOutput = null;
                 foreach (var target in targets)
                 {

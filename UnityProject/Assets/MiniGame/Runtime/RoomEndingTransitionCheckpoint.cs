@@ -39,7 +39,7 @@ namespace MiniGame.UnityHost
     public sealed class RoomEndingTransitionClock
     {
         public const float FadeOutSeconds = .35f;
-        public const float BlackHoldSeconds = 2f;
+        public const float BlackHoldSeconds = 3f;
         public const float EntrySeconds = 1f;
         public RoomEndingTransitionCheckpoint State { get; private set; }
         public float Opacity => State.Phase == RoomEndingTransitionPhase.FadingOut

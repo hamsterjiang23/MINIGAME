@@ -3,5 +3,7 @@
   "references": ["MiniGame.Core", "MiniGame.Presentation", "MiniGame.UnityHost", "MiniGame.UnityHost.Editor", "YarnSpinner.Unity", "UnityEngine.UI", "PMSAmberTerminal.Runtime"],
   "includePlatforms": ["Editor"],
   "optionalUnityReferences": ["TestAssemblies"],
+  "overrideReferences": true,
+  "precompiledReferences": ["nunit.framework.dll", "Newtonsoft.Json.dll"],
   "autoReferenced": false
 }

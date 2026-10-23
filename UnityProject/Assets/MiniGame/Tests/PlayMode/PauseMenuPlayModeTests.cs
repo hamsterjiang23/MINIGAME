@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using MiniGame.Core;
 using MiniGame.Presentation;
 using NUnit.Framework;
@@ -13,6 +14,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class PauseMenuPlayModeTests
     {
         private readonly List<EventSystem> suspendedEventSystems = new List<EventSystem>();
@@ -64,6 +66,155 @@ namespace MiniGame.UnityHost.Tests
             events.SetSelectedGameObject(underlying.gameObject);
             yield return null;
             Canvas.ForceUpdateCanvases();
+        }
+
+        [UnityTest]
+        public IEnumerator HiddenTitleRequiresFourConsecutiveClicksAndResetsAcrossMenuActions()
+        {
+            int entered = 0;
+            view.ConfigureHiddenEndingShortcut(() => entered++);
+            Time.timeScale = 0;
+            view.SetVisible(true);
+            yield return new WaitForSecondsRealtime(.8f);
+            var title = view.transform.Find("PauseColumn/PauseTitle").GetComponent<Button>();
+            var rect = (RectTransform)title.transform;
+            var point = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center));
+            var hits = new List<RaycastResult>();
+            var pointer = new PointerEventData(events) { position = point, button = PointerEventData.InputButton.Left };
+            events.RaycastAll(pointer, hits);
+            Assert.That(hits[0].gameObject, Is.EqualTo(title.gameObject));
+            for (int i = 0; i < 3; i++)
+            {
+                ExecuteEvents.Execute(title.gameObject, pointer, ExecuteEvents.pointerClickHandler);
+                ExecuteEvents.Execute(title.gameObject, pointer, ExecuteEvents.pointerClickHandler);
+                yield return null;
+            }
+            Assert.That(entered, Is.Zero, "Same-frame duplicate callbacks must not count twice.");
+            yield return new WaitForSecondsRealtime(PauseMenuView.HiddenEndingClickInterval + .1f);
+            title.onClick.Invoke();
+            yield return null;
+            Assert.That(entered, Is.Zero, "A long gap restarts the sequence.");
+            view.Buttons[0].onClick.Invoke();
+            for (int i = 0; i < 3; i++) { yield return null; title.onClick.Invoke(); }
+            Assert.That(entered, Is.Zero, "Other menu actions reset the sequence.");
+            view.ShowManual();
+            yield return null;
+            title.onClick.Invoke();
+            Assert.That(entered, Is.Zero, "Hidden column cannot trigger from a submenu.");
+            view.TryCloseManual();
+            for (int i = 0; i < 3; i++) { yield return null; title.onClick.Invoke(); }
+            Assert.That(entered, Is.Zero);
+            view.SetVisible(false);
+            view.SetVisible(true);
+            for (int i = 0; i < 3; i++) { yield return null; title.onClick.Invoke(); }
+            Assert.That(entered, Is.Zero, "Closing the pause menu resets partial progress.");
+            yield return null;
+            ExecuteEvents.Execute(title.gameObject, pointer, ExecuteEvents.pointerClickHandler);
+            Assert.That(entered, Is.EqualTo(1));
+            for (int i = 0; i < 8; i++) { yield return null; title.onClick.Invoke(); }
+            Assert.That(entered, Is.EqualTo(1), "The shortcut fires once per open menu.");
+            Assert.That(underlyingActivations, Is.Zero);
+        }
+
+        [UnityTest]
+        public IEnumerator GmChordRequiresAllKeysAndConsumesOnlySuccessfulOpening()
+        {
+            view.SetVisible(true);
+            yield return null;
+            // Drive key states within this frame so hardware input cannot interfere between assertions.
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.False, "Unbound menus, including previews, cannot open GM.");
+            var selected = new List<EndingType>();
+            view.ConfigureGmEndings(selected.Add);
+            foreach (int missing in Enumerable.Range(0, 4))
+            {
+                var keys = new[] { true, true, true, true };
+                keys[missing] = false;
+                GmChord(keys[0], keys[1], keys[2], keys[3]);
+                Assert.That(view.GmVisible, Is.False, "All four keys must be held together.");
+            }
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.True);
+            Assert.That(events.currentSelectedGameObject, Is.SameAs(view.GmEndingButtons[0].gameObject));
+            view.Buttons[0].onClick.Invoke();
+            Assert.That(activations[0], Is.Zero, "GM must block root menu callbacks.");
+            var endings = new[] { EndingType.TakenAway, EndingType.LockedInRoom, EndingType.PriestAttack, EndingType.DreamSea };
+            for (int i = 0; i < endings.Length; i++)
+            {
+                view.GmEndingButtons[i].onClick.Invoke();
+                view.GmEndingButtons[i].onClick.Invoke();
+            }
+            Assert.That(selected, Is.EqualTo(endings), "Each GM row dispatches its ending once per input frame.");
+            Assert.That(view.TryCloseGm(), Is.True);
+            Assert.That(view.GmVisible, Is.False);
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.False, "ESC must not reopen GM until the chord is released.");
+            foreach (bool settings in new[] { false, true })
+            {
+                GmChord(false, false, false, false);
+                if (settings) view.ShowSettings(); else view.ShowManual();
+                GmChord(true, true, true, true);
+                Assert.That(view.GmVisible, Is.False, "Settings and manual pages do not accept the chord.");
+                if (settings) view.TryCloseSettings(); else view.TryCloseManual();
+                GmChord(true, true, true, true);
+                Assert.That(view.GmVisible, Is.True, "Four keys held on the eligible root must open GM, even if first observed in a submenu.");
+                view.TryCloseGm();
+            }
+            GmChord(false, false, false, false);
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.True);
+            view.SetVisible(false);
+            Assert.That(view.GmVisible, Is.False);
+            GmChord(false, false, false, false);
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.False, "A hidden pause menu cannot open GM.");
+            Assert.That(underlyingActivations, Is.Zero);
+        }
+
+        private void GmChord(bool n, bool o, bool r, bool m)
+            => typeof(PauseMenuView).GetMethod("UpdateGmChord", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(view, new object[] { n, o, r, m });
+
+        [UnityTest]
+        public IEnumerator GmChordHeldBeforePauseOrBindingOpensWhenRootBecomesEligible()
+        {
+            view.ConfigureGmEndings(_ => { });
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.False);
+            Time.timeScale = 0;
+            view.SetVisible(true);
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.True, "Opening pause must not require a new key-down edge.");
+            view.TryCloseGm();
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.False, "Returning from GM while still holding the chord must stay on pause.");
+            GmChord(false, true, true, true);
+            view.ConfigureGmEndings(null);
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.False);
+            view.ConfigureGmEndings(_ => { });
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.True, "An unbound menu must not consume a chord that never opened GM.");
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator GmChordDoesNotAcceptSequentialLettersOrThreeHeldKeys()
+        {
+            view.ConfigureGmEndings(_ => { });
+            view.SetVisible(true);
+            for (int key = 0; key < 4; key++)
+            {
+                var keys = new bool[4]; keys[key] = true;
+                GmChord(keys[0], keys[1], keys[2], keys[3]);
+                Assert.That(view.GmVisible, Is.False, "Typing NORM separately must never open GM.");
+                GmChord(false, false, false, false);
+            }
+            GmChord(true, true, true, false);
+            Assert.That(view.GmVisible, Is.False);
+            GmChord(true, true, true, true);
+            Assert.That(view.GmVisible, Is.True);
+            yield return null;
         }
 
         [UnityTearDown]
@@ -328,6 +479,11 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.NormalDialogue));
                 Assert.That(screen.GetComponentsInChildren<Button>(false).Any(button =>
                     button.name.StartsWith("Reply-", StringComparison.Ordinal) && button.IsInteractable()), Is.True);
+                Assert.That(screen.WorldInputBlockedThisFrame, Is.True,
+                    "The synchronous fixture still shares the door-to-room input handoff frame.");
+                Assert.That(screen.HandleTerminalKey(KeyCode.DownArrow), Is.False,
+                    "The input that returns to the world cannot also select a terminal response in that frame.");
+                yield return null;
                 Assert.That(screen.HandleTerminalKey(KeyCode.DownArrow), Is.True, "Select a real underlying response before pausing.");
 
                 var menu = screen.GetComponentInChildren<PauseMenuView>(true);

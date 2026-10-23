@@ -7,6 +7,8 @@ namespace MiniGame.UnityHost.Editor
     public static class TerminalTypographySetup
     {
         private const string Folder = "Assets/MiniGame/Art/Fonts/ArkPixel12/";
+        public const string AtlasPath = Folder + "ArkPixel12.png";
+        public const string MetricsPath = Folder + "ArkPixel12.json";
         public const string FontPath = "Assets/MiniGame/Resources/MiniGame/ArkPixel12.asset";
         public const string SettingsPath = "Assets/MiniGame/Resources/MiniGame/TerminalDialogueTextDefault.asset";
 
@@ -27,11 +29,30 @@ namespace MiniGame.UnityHost.Editor
             if (font == null) { font = ScriptableObject.CreateInstance<TerminalPixelFont>(); AssetDatabase.CreateAsset(font, FontPath); }
             font.Atlas = AssetDatabase.LoadAssetAtPath<Texture2D>(Folder + "ArkPixel12.png");
             font.Metrics = AssetDatabase.LoadAssetAtPath<TextAsset>(Folder + "ArkPixel12.json");
-            font.InvalidateMetrics();
             EditorUtility.SetDirty(font); AssetDatabase.SaveAssetIfDirty(font);
-            foreach (var label in Resources.FindObjectsOfTypeAll<TerminalBitmapText>()) label.SetAllDirty();
+            RefreshLoadedFont();
             if (AssetDatabase.LoadAssetAtPath<TerminalDialogueTextSettings>(SettingsPath) == null)
                 AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<TerminalDialogueTextSettings>(), SettingsPath);
+        }
+
+        internal static void RefreshLoadedFont()
+        {
+            var font = AssetDatabase.LoadAssetAtPath<TerminalPixelFont>(FontPath);
+            if (font == null) return;
+            font.InvalidateMetrics();
+            foreach (var label in Resources.FindObjectsOfTypeAll<TerminalBitmapText>())
+                if (label.ArkTypeface == font) label.SetAllDirty();
+        }
+    }
+
+    internal sealed class TerminalPixelFontRefresh : AssetPostprocessor
+    {
+        private static void OnPostprocessAllAssets(string[] imported, string[] deleted, string[] moved, string[] movedFrom)
+        {
+            if (Array.IndexOf(imported, TerminalTypographySetup.AtlasPath) < 0
+                && Array.IndexOf(imported, TerminalTypographySetup.MetricsPath) < 0) return;
+            // Repacking changes every UV; a TextAsset reimport may retain its Unity object identity.
+            TerminalTypographySetup.RefreshLoadedFont();
         }
     }
 }

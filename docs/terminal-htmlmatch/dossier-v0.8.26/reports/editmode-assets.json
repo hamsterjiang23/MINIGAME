@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "duration": 0.07,
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalDossierAssetTests.CatalogMatchesEveryAuthoredFieldAndKeepsTheTutorialPortraitSeparate",
+      "Status": "Passed",
+      "Duration": 0.0150716,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalDossierAssetTests.DossierQuotaUsesItsOwnNativeAtlasAndPreservesActualValues(0,True)",
+      "Status": "Passed",
+      "Duration": 0.0135291,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalDossierAssetTests.DossierQuotaUsesItsOwnNativeAtlasAndPreservesActualValues(5,True)",
+      "Status": "Passed",
+      "Duration": 0.0004084,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalDossierAssetTests.DossierQuotaUsesItsOwnNativeAtlasAndPreservesActualValues(99,True)",
+      "Status": "Passed",
+      "Duration": 0.0003289,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "MiniGame.UnityHost.Tests.TerminalDossierAssetTests.DossierQuotaUsesItsOwnNativeAtlasAndPreservesActualValues(100,False)",
+      "Status": "Passed",
+      "Duration": 0.0005201,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

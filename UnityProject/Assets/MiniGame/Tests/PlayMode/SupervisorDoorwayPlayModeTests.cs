@@ -58,6 +58,35 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
+        [UnityTest]
+        public IEnumerator PriestPoseSwitchesKeepFootAnchorScaleAndCameraStationary()
+        {
+            supervisor.ShowEndingAtDoorway(player.ViewCamera);
+            Assert.That(supervisor.SetPortrait("PE01"), Is.True);
+            var surface = supervisor.Surface;
+            Vector3 position = surface.transform.position, scale = surface.transform.localScale;
+            Quaternion rotation = surface.transform.rotation;
+            Vector3 cameraPosition = player.ViewCamera.transform.position;
+            Quaternion cameraRotation = player.ViewCamera.transform.rotation;
+            float fieldOfView = player.ViewCamera.fieldOfView;
+            for (int frame = 0; frame < 30; frame++)
+            {
+                string id = frame % 2 == 0 ? "PE02" : "PE01";
+                Assert.That(supervisor.SetPortrait(id), Is.True);
+                yield return null;
+                Assert.That(Vector3.Distance(surface.transform.position, position), Is.LessThan(.00001f));
+                Assert.That(Vector3.Distance(surface.transform.localScale, scale), Is.LessThan(.00001f));
+                Assert.That(Quaternion.Angle(surface.transform.rotation, rotation), Is.LessThan(.0001f));
+                // These are measured source-image foot anchors in pixels, independent of the imported pivot.
+                Vector2 foot = id == "PE01" ? new Vector2(514.08828f, 33) : new Vector2(310.96351f, 16);
+                Vector2 local = (foot - surface.sprite.pivot) / surface.sprite.pixelsPerUnit;
+                Assert.That(Vector3.Distance(surface.transform.TransformPoint(local), position), Is.LessThan(.00001f));
+                Assert.That(Vector3.Distance(player.ViewCamera.transform.position, cameraPosition), Is.LessThan(.00001f));
+                Assert.That(Quaternion.Angle(player.ViewCamera.transform.rotation, cameraRotation), Is.LessThan(.0001f));
+                Assert.That(player.ViewCamera.fieldOfView, Is.EqualTo(fieldOfView));
+            }
+        }
+
         [UnityTest, Timeout(15000)]
         public IEnumerator SupervisorAlreadyStandsOutsideClosedDoorAndRemainsThroughMorningAndWork()
         {
@@ -75,10 +104,11 @@ namespace MiniGame.UnityHost.Tests
             var outward = doorway.InsidePose.forward;
             Assert.That(Vector3.Dot(surface.transform.position - door.transform.position, outward), Is.EqualTo(.9f).Within(.001f),
                 "The supervisor must stand beyond the actual door plane, outside the room.");
-            Assert.That(surface.bounds.min.y, Is.EqualTo(player.GetComponent<CharacterController>().bounds.min.y + .1f).Within(.001f),
-                "The supervisor is raised ten centimetres from his former floor-aligned position.");
+            Assert.That(surface.transform.position.y, Is.EqualTo(player.GetComponent<CharacterController>().bounds.min.y + .1f).Within(.001f),
+                "The visible foot anchor is raised ten centimetres above the floor; transparent margins may extend below it.");
             Assert.That(surface.bounds.size.y, Is.EqualTo(1.8f).Within(.001f));
-            Assert.That(surface.bounds.size.x / surface.bounds.size.y, Is.EqualTo(1024f / 1536).Within(.001f));
+            Assert.That(surface.bounds.size.x / surface.bounds.size.y,
+                Is.EqualTo((float)surface.sprite.texture.width / surface.sprite.texture.height).Within(.001f));
             Assert.That(Vector3.Dot(surface.transform.right, doorway.InsidePose.right), Is.GreaterThan(.999f),
                 "The front portrait must preserve its original left/right orientation.");
 

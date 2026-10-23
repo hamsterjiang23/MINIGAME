@@ -1,0 +1,304 @@
+{
+  "release": "2026.10.16",
+  "variant": "12px-monospaced-zh_hans",
+  "sourceSha256": "efe0ad2616f961be766bc84bae93a9dc949c9e29af6cb75e574ffe9f52af6603",
+  "sourceGlyphs": 25362,
+  "corpusCharacters": 1467,
+  "fallbackCharacters": [
+    {
+      "code": "U+52BF",
+      "character": "势"
+    },
+    {
+      "code": "U+5373",
+      "character": "即"
+    },
+    {
+      "code": "U+57AB",
+      "character": "垫"
+    },
+    {
+      "code": "U+5B7D",
+      "character": "孽"
+    },
+    {
+      "code": "U+5ECA",
+      "character": "廊"
+    },
+    {
+      "code": "U+6050",
+      "character": "恐"
+    },
+    {
+      "code": "U+6108",
+      "character": "愈"
+    },
+    {
+      "code": "U+6148",
+      "character": "慈"
+    },
+    {
+      "code": "U+61BE",
+      "character": "憾"
+    },
+    {
+      "code": "U+6267",
+      "character": "执"
+    },
+    {
+      "code": "U+62D6",
+      "character": "拖"
+    },
+    {
+      "code": "U+642C",
+      "character": "搬"
+    },
+    {
+      "code": "U+6447",
+      "character": "摇"
+    },
+    {
+      "code": "U+659C",
+      "character": "斜"
+    },
+    {
+      "code": "U+65BD",
+      "character": "施"
+    },
+    {
+      "code": "U+65CB",
+      "character": "旋"
+    },
+    {
+      "code": "U+65E2",
+      "character": "既"
+    },
+    {
+      "code": "U+6982",
+      "character": "概"
+    },
+    {
+      "code": "U+6EDA",
+      "character": "滚"
+    },
+    {
+      "code": "U+70ED",
+      "character": "热"
+    },
+    {
+      "code": "U+7136",
+      "character": "然"
+    },
+    {
+      "code": "U+7A97",
+      "character": "窗"
+    },
+    {
+      "code": "U+7D27",
+      "character": "紧"
+    },
+    {
+      "code": "U+7F18",
+      "character": "缘"
+    },
+    {
+      "code": "U+805A",
+      "character": "聚"
+    },
+    {
+      "code": "U+8D38",
+      "character": "贸"
+    },
+    {
+      "code": "U+9065",
+      "character": "遥"
+    },
+    {
+      "code": "U+907F",
+      "character": "避"
+    },
+    {
+      "code": "U+9910",
+      "character": "餐"
+    },
+    {
+      "code": "U+9AA4",
+      "character": "骤"
+    }
+  ],
+  "fallbackSourceSha256": "b1e9a54fdd1c1e86fdc32efa16a04d8bd2897391ddb441238cee66947d6e3388",
+  "missing": [],
+  "corpusFiles": [
+    "UnityProject/Assets/MiniGame/Runtime/AmberTerminalPlayerSmoke.cs",
+    "UnityProject/Assets/MiniGame/Runtime/ApartmentPlayer.cs",
+    "UnityProject/Assets/MiniGame/Runtime/BedtimeAtmosphere.cs",
+    "UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs",
+    "UnityProject/Assets/MiniGame/Runtime/CrtUiOrientationProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DayZeroOpeningPlayerSmoke.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DialoguePackageAsset.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DoorViewCamera.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamAnimationStage.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamCubemapPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamCubemapRenderer.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamCubemapRoomSurface.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamCubemapSource.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamPanoramaWater.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/EditorCampaignDebugSession.cs",
+    "UnityProject/Assets/MiniGame/Runtime/EndingDialoguePresenter.cs",
+    "UnityProject/Assets/MiniGame/Runtime/EndingThanksView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/GameUiTypography.cs",
+    "UnityProject/Assets/MiniGame/Runtime/HingedDoor.cs",
+    "UnityProject/Assets/MiniGame/Runtime/InteractionCursorView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/InteractionFocusOutline.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MainMenuContinueStore.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MainMenuView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioButton.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioDirector.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioService.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameBootstrap.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs",
+    "UnityProject/Assets/MiniGame/Runtime/NormBugPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/OpeningMotionProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PatientMonitorProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PatientMonitorRoom.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PatientSurveillanceFeed.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PauseBackdropPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PauseMenuBackdrop.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PauseMenuButton.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PauseMenuHitArea.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PauseMenuPerspective.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PixelStrengthHintTrigger.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PixelStrengthOnboarding.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PixelStrengthPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PixelStrengthSelectionButton.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PixelStrengthSelectionView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PixelStrengthTooltip.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerBrightnessEffect.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerGraphicsSettings.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerGraphicsSettingsSmoke.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerPreferences.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerRebellionProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerRuntimeSettings.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PlayerSettingsView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PortraitCatalog.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PropNarrationComposite.cs",
+    "UnityProject/Assets/MiniGame/Runtime/PropNarrationView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/ReadableProp.cs",
+    "UnityProject/Assets/MiniGame/Runtime/ReferenceCameraProjection.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RetroScreenEffect.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RetroScreenProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomDreamEnding.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomEndingTransitionCheckpoint.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomInteractionSettings.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomLightingController.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomLightingPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomLightingPresetIO.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomLightingProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomLightingTuningPanel.cs",
+    "UnityProject/Assets/MiniGame/Runtime/RoomReadableDocument.cs",
+    "UnityProject/Assets/MiniGame/Runtime/SelfReviewMonitor.cs",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorDialogueContent.cs",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorDoorwayView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalAssetSet.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalBitmapText.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalButtonVisual.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalClosingRecorder.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalCommandPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalDialogueTextGlitch.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalDialogueTextSettings.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalDisplay.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalHighlightGroup.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalIndustrialSkin.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalPixelFont.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalPortraitPresenter.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalQuotaField.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalRosterPointer.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalSeating.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalSignalController.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalSignalEffect.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalSignalProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalSignalTuningPanel.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalTextMetrics.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalTranscriptView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalTransitionView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/WallLightingPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/WorldInteraction.cs",
+    "UnityProject/Assets/MiniGame/Content/Campaign/campaign.yarn",
+    "UnityProject/Assets/MiniGame/Content/Prototype.yarn",
+    "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.yarn",
+    "src/MiniGame.Core/Contracts/GameCommand.cs",
+    "src/MiniGame.Core/Contracts/GameResult.cs",
+    "src/MiniGame.Core/Contracts/GameTypes.cs",
+    "src/MiniGame.Core/Persistence/SnapshotCodec.cs",
+    "src/MiniGame.Core/Rules/DialogueDefinitions.cs",
+    "src/MiniGame.Core/Rules/GameRules.cs",
+    "src/MiniGame.Core/Rules/PrototypeRules.cs",
+    "src/MiniGame.Core/Runtime/GameSession.cs",
+    "src/MiniGame.Core/State/CommandRecord.cs",
+    "src/MiniGame.Core/State/GameSnapshot.cs",
+    "src/MiniGame.Core.Tests/CampaignRulesTests.cs",
+    "src/MiniGame.Core.Tests/DreamFlowTests.cs",
+    "src/MiniGame.Core.Tests/EndingPolicyTests.cs",
+    "src/MiniGame.Core.Tests/EndingTests.cs",
+    "src/MiniGame.Core.Tests/GmEndingTests.cs",
+    "src/MiniGame.Core.Tests/PatientSelectionTests.cs",
+    "src/MiniGame.Core.Tests/PersistenceTests.cs",
+    "src/MiniGame.Core.Tests/PurificationProgressTests.cs",
+    "src/MiniGame.Core.Tests/RulesTests.cs",
+    "src/MiniGame.Core.Tests/Scenario.cs",
+    "src/MiniGame.Core.Tests/SessionTests.cs",
+    "src/MiniGame.Presentation/Authoring/CampaignDefinition.cs",
+    "src/MiniGame.Presentation/Authoring/CampaignPackageCompiler.cs",
+    "src/MiniGame.Presentation/Authoring/DialoguePackage.cs",
+    "src/MiniGame.Presentation/Authoring/DialoguePackageCompiler.cs",
+    "src/MiniGame.Presentation/Authoring/PackageGameContent.cs",
+    "src/MiniGame.Presentation/Authoring/RestrictedYarnParser.cs",
+    "src/MiniGame.Presentation/EndingDialogueCatalog.cs",
+    "src/MiniGame.Presentation/GameRuntime.cs",
+    "src/MiniGame.Presentation/PresentationContracts.cs",
+    "src/MiniGame.Presentation/PrototypeContent.cs",
+    "src/MiniGame.Presentation/PrototypeYarnSource.cs",
+    "src/MiniGame.Presentation/RuntimeFileSaveStore.cs",
+    "src/MiniGame.Presentation/TerminalPowerTimeline.cs",
+    "src/MiniGame.Presentation.Tests/AuthoringPackageTests.cs",
+    "src/MiniGame.Presentation.Tests/CampaignConditionalRoundTests.cs",
+    "src/MiniGame.Presentation.Tests/CampaignPackageTests.cs",
+    "src/MiniGame.Presentation.Tests/CampaignRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/DoorViewRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/DreamFlowRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/EndingFlowRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/FreePatientSelectionRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/GmEndingRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/PrototypeContentTests.cs",
+    "src/MiniGame.Presentation.Tests/RoomDoorPolicyTests.cs",
+    "src/MiniGame.Presentation.Tests/RoomDoorRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/RuntimeEndingTests.cs",
+    "src/MiniGame.Presentation.Tests/RuntimeFileSaveStoreTests.cs",
+    "src/MiniGame.Presentation.Tests/RuntimeInteractionTests.cs",
+    "src/MiniGame.Presentation.Tests/RuntimePersistenceTests.cs",
+    "src/MiniGame.Presentation.Tests/RuntimeScenario.cs",
+    "src/MiniGame.Presentation.Tests/TerminalDailyPowerRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/TerminalDirectoryRuntimeTests.cs",
+    "src/MiniGame.Presentation.Tests/TerminalPowerTimelineTests.cs",
+    "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json",
+    "UnityProject/Assets/MiniGame/Content/Campaign/provenance.json",
+    "UnityProject/Assets/MiniGame/Content/mapping.json",
+    "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/CrtScreenFit.json",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Dialogue.json",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Flow.yarn",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/PixelPreviews/capture-metadata.json",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Dialogue.json",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Flow.yarn"
+  ]
+}

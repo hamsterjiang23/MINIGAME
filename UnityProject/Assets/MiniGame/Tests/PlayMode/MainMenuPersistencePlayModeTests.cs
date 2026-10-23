@@ -13,6 +13,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("InteractionWakeGm")]
     public sealed class MainMenuPersistencePlayModeTests
     {
         private readonly List<Object> objects = new List<Object>();
@@ -157,37 +158,41 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest]
-        public IEnumerator PausedBlackHoldRestoresRemainingTimeAndAdvancesTheDayOnce()
+        public IEnumerator PausedAutomaticWakeRestoresRemainingTimeWithoutAdvancingTheDayAgain()
         {
             var rules = Rules();
             var content = new FixtureContent();
             var runtime = SleepingRuntime(rules, content, true);
             CreateEffects(runtime);
-            yield return Until(() => effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.BlackHold
-                && effects.CaptureSleepCheckpoint().BlackHoldRemaining < .7f, 4);
+            string oldToken = runtime.GetView().Cue.Token;
+            Assert.That(runtime.CompleteCue(oldToken).Accepted, Is.True);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(Fade().color.a, Is.EqualTo(1), "Dream completion starts the wake sequence under black.");
+            yield return Until(() => effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.Waking
+                && effects.CaptureSleepCheckpoint().WakeElapsed >= .2f, 2);
             runtime.SetPaused(true);
             var checkpoint = effects.CaptureSleepCheckpoint();
-            Assert.That(checkpoint.BlackHoldRemaining, Is.InRange(.01f, .7f));
-            string oldToken = runtime.GetView().Cue.Token;
+            Assert.That(checkpoint.WakeElapsed, Is.InRange(.2f, .5f));
+            float opacity = Fade().color.a;
             var saved = PersistSleep(runtime, rules, content);
-            Assert.That(saved.Sleep.BlackHoldRemaining, Is.EqualTo(checkpoint.BlackHoldRemaining));
+            Assert.That(saved.Sleep.WakeElapsed, Is.EqualTo(checkpoint.WakeElapsed));
             var restored = GameRuntime.Restore(saved.Runtime, rules, content);
             screen.Bind(restored);
             effects.Bind(restored, screen);
             Assert.That(effects.RestoreSleepCheckpoint(checkpoint), Is.True);
-            Assert.That(Fade().color.a, Is.EqualTo(1));
+            Assert.That(Fade().color.a, Is.EqualTo(opacity).Within(.00001f));
             yield return new WaitForSecondsRealtime(.2f);
-            Assert.That(effects.CaptureSleepCheckpoint().BlackHoldRemaining, Is.EqualTo(checkpoint.BlackHoldRemaining));
-            Assert.That(restored.GetView().Game.Day, Is.EqualTo(1));
+            Assert.That(effects.CaptureSleepCheckpoint().WakeElapsed, Is.EqualTo(checkpoint.WakeElapsed));
+            Assert.That(restored.GetView().Game.Day, Is.EqualTo(2));
             float resumedAt = Time.realtimeSinceStartup;
             restored.SetPaused(false);
-            yield return Until(() => restored.GetView().Game.Day == 2, 2);
-            Assert.That(Time.realtimeSinceStartup - resumedAt, Is.EqualTo(checkpoint.BlackHoldRemaining).Within(.16f));
+            yield return Until(() => effects.CaptureSleepCheckpoint() == null, 3);
+            Assert.That(Time.realtimeSinceStartup - resumedAt, Is.EqualTo(2.3f - checkpoint.WakeElapsed).Within(.16f));
             Assert.That(restored.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
             Assert.That(restored.CompleteCue(oldToken).Accepted, Is.False);
             yield return null;
             Assert.That(restored.GetView().Game.Day, Is.EqualTo(2));
-            Assert.That(effects.RestoreSleepCheckpoint(checkpoint), Is.False, "A completed night's checkpoint cannot attach to another day.");
+            Assert.That(Fade().color.a, Is.Zero);
         }
 
         private void CreateEffects(GameRuntime runtime)
@@ -228,7 +233,8 @@ namespace MiniGame.UnityHost.Tests
             for (int step = 0; step < 120; step++)
             {
                 var view = runtime.GetView();
-                if (view.Game.Day == 1 && view.Cue == null && view.Game.Phase == (waking ? GamePhase.AfterDream : GamePhase.Evening)
+                if (waking && view.Game.Day == 1 && view.Cue?.Kind == PresentationKind.Dream) return runtime;
+                if (!waking && view.Game.Day == 1 && view.Cue == null && view.Game.Phase == GamePhase.Evening
                     && !view.TerminalOpen)
                 {
                     Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);

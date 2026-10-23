@@ -79,7 +79,7 @@ namespace MiniGame.UnityHost.Editor
                 case CampaignDebugPoint.Bedtime: return day == 0 ? "教学结束 · 睡前房间" : "工作结束 · 夜间房间";
                 case CampaignDebugPoint.Sleep: return day == 0 ? "第一次睡觉 · 前往第一天" : "上床 · 入梦演出";
                 case CampaignDebugPoint.Dream: return "当晚梦境 · 动画播放";
-                case CampaignDebugPoint.AfterDream: return "梦后房间 / 自检入口";
+                case CampaignDebugPoint.AfterDream: return "梦醒 / 自审入口";
                 default: return value.ToString();
             }
         }

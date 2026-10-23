@@ -1,4 +1,5 @@
 using MiniGame.Presentation;
+using MiniGame.Core;
 using UnityEngine;
 
 namespace MiniGame.UnityHost
@@ -181,12 +182,17 @@ namespace MiniGame.UnityHost
                     ApplyReturnFade(Smooth(elapsed / ReturnDuration));
                     if (elapsed >= ReturnDuration)
                     {
+                        if (ReturnsToMorning)
+                        {
+                            CompleteIntoWake();
+                            break;
+                        }
                         Phase = DreamPlaybackPhase.BlackHold;
                         elapsed = 0;
                         projectionSurface.enabled = false;
                         SetRetroBypass(false);
                         ApplyReturn();
-                        bedtime?.SetDreamBedReveal(true);
+                        bedtime?.SetDreamReturnReveal(true);
                     }
                     break;
                 case DreamPlaybackPhase.BlackHold:
@@ -203,7 +209,7 @@ namespace MiniGame.UnityHost
                         bool complete = !preview && runtime != null && runtime.GetView().Cue?.Token == token;
                         StopInternal(complete);
                         if (complete) runtime.CompleteCue(token);
-                        bedtime?.SetDreamBedReveal(false);
+                        bedtime?.SetDreamReturnReveal(false);
                     }
                     break;
             }
@@ -258,6 +264,18 @@ namespace MiniGame.UnityHost
             if (projectionMaterial != null) projectionMaterial.SetFloat("_Opacity", 1 - opacity);
         }
 
+        private bool ReturnsToMorning => !preview && runtime != null
+            && runtime.GetView().Game.DreamReturnPhase == GamePhase.AfterDream;
+
+        private void CompleteIntoWake()
+        {
+            string token = activeToken;
+            bool complete = runtime.GetView().Cue?.Token == token;
+            // Release the projection before Changed starts the wake camera. Keep this handoff fully black.
+            StopInternal(preserveBlack: true);
+            if (complete) runtime.CompleteCue(token);
+        }
+
         public DreamPlaybackCheckpoint CaptureCheckpoint() => new DreamPlaybackCheckpoint
         {
             Phase = preview ? DreamPlaybackPhase.None : Phase, Day = ActiveDay,
@@ -278,6 +296,10 @@ namespace MiniGame.UnityHost
             PlaybackSeconds = Finite(data.PlaybackSeconds) ? Mathf.Clamp(data.PlaybackSeconds, 0, PlaybackDuration) : 0;
             Phase = data.Phase;
             elapsed = Finite(data.Elapsed) ? Mathf.Max(0, data.Elapsed) : 0;
+            // Old saves could be standing in the room waiting to reveal a second bed interaction.
+            // Resume them at the black handoff, leaving paused saves uncommitted until Advance resumes.
+            if (ReturnsToMorning && (Phase == DreamPlaybackPhase.BlackHold || Phase == DreamPlaybackPhase.Revealing))
+            { Phase = DreamPlaybackPhase.Returning; elapsed = ReturnDuration; }
             if (Phase == DreamPlaybackPhase.Aligning) { elapsed = Mathf.Min(elapsed, BlackDuration); ApplyAlignment(); }
             else if (Phase == DreamPlaybackPhase.Playing) ApplyViewingPose();
             else if (Phase == DreamPlaybackPhase.Returning) { elapsed = Mathf.Min(elapsed, ReturnDuration); ApplyViewingPose(); }
@@ -287,7 +309,7 @@ namespace MiniGame.UnityHost
             projectionSurface.enabled = IsPlaying || Phase == DreamPlaybackPhase.Returning;
             screen?.SetFade(Phase == DreamPlaybackPhase.Aligning || Phase == DreamPlaybackPhase.BlackHold ? 1
                 : Phase == DreamPlaybackPhase.Revealing ? 1 - Smooth(elapsed / ReturnDuration) : 0);
-            bedtime?.SetDreamBedReveal(Phase == DreamPlaybackPhase.BlackHold || Phase == DreamPlaybackPhase.Revealing);
+            bedtime?.SetDreamReturnReveal(Phase == DreamPlaybackPhase.BlackHold || Phase == DreamPlaybackPhase.Revealing);
             SetRetroBypass(IsPlaying || Phase == DreamPlaybackPhase.Returning);
             RenderStage();
             if (Phase == DreamPlaybackPhase.Returning) ApplyReturnFade(Smooth(elapsed / ReturnDuration));
@@ -301,7 +323,7 @@ namespace MiniGame.UnityHost
             lastAudioPlaying = playing; lastAudioPaused = paused; lastAudioDay = ActiveDay;
         }
 
-        private void StopInternal(bool faceBed = false)
+        private void StopInternal(bool faceReturnTarget = false, bool preserveBlack = false)
         {
             SetRetroBypass(false);
             capturedRetro = false;
@@ -314,7 +336,7 @@ namespace MiniGame.UnityHost
             UpdateAudio(false, false);
             if (hasRoomPose && viewCamera != null)
             {
-                Quaternion rotation = faceBed ? ReturnRotation : roomRotation;
+                Quaternion rotation = faceReturnTarget ? ReturnRotation : roomRotation;
                 viewCamera.transform.SetPositionAndRotation(roomPosition, rotation);
                 viewCamera.fieldOfView = roomFieldOfView;
                 // Release ownership before synchronizing the first-person look angles.
@@ -333,8 +355,8 @@ namespace MiniGame.UnityHost
                 if (Application.isPlaying) Destroy(projectionMaterial); else DestroyImmediate(projectionMaterial);
             }
             projectionMaterial = null;
-            if (hasRoomPose && screen != null) { screen.SetTransitionLocked(false); screen.SetFade(0); }
-            if (!faceBed) bedtime?.SetDreamBedReveal(false);
+            if (hasRoomPose && screen != null) { screen.SetTransitionLocked(preserveBlack); screen.SetFade(preserveBlack ? 1 : 0); }
+            if (!faceReturnTarget) bedtime?.SetDreamReturnReveal(false);
             hasRoomPose = false; preview = false; PreviewPaused = false;
             Phase = DreamPlaybackPhase.None; activeToken = null;
         }
@@ -349,8 +371,8 @@ namespace MiniGame.UnityHost
         private float ReturnDuration => SafeDuration(profile.ReturnSeconds, 1);
         private float WakeBlackDuration => SafeDuration(profile.WakeBlackSeconds, 1);
         private float PlaybackDuration => SafeDuration(profile.GetDay(ActiveDay).Duration, 10);
-        private Quaternion ReturnRotation => !preview && bedtime != null && (bedtime.SleepFocusPoint - roomPosition).sqrMagnitude > .0001f
-            ? Quaternion.LookRotation(bedtime.SleepFocusPoint - roomPosition, Vector3.up) : roomRotation;
+        private Quaternion ReturnRotation => !preview && bedtime != null && (bedtime.DreamReturnFocusPoint - roomPosition).sqrMagnitude > .0001f
+            ? Quaternion.LookRotation(bedtime.DreamReturnFocusPoint - roomPosition, Vector3.up) : roomRotation;
         private static float SafeDuration(float value, float fallback) => Finite(value) ? Mathf.Max(.01f, value) : fallback;
         private static float Smooth(float value) { float p = Mathf.Clamp01(value); return p * p * (3 - 2 * p); }
         private static bool Finite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);

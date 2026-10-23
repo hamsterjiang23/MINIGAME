@@ -154,7 +154,8 @@ namespace MiniGame.UnityHost
         public float FieldOfView;
     }
 
-    public enum BeachEndingPhase { Walking, Lying, Drifting }
+    // Append phases to retain the serialized values used by standalone beach previews.
+    public enum BeachEndingPhase { Walking, Lying, Drifting, SkyHold, FadingOut }
     [Serializable]
     public sealed class BeachEndingCheckpoint
     {
@@ -172,5 +173,7 @@ namespace MiniGame.UnityHost
         public float RoomPitch;
         public Vector3 LieStartPosition;
         public Quaternion LieStartRotation = Quaternion.identity;
+        public bool HasMusicPosition;
+        public float MusicSeconds;
     }
 }

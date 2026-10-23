@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MiniGame.UnityHost
 {
-    public enum MainMenuPage { Hidden, FirstStart, Menu, Settings, ConfirmNew }
+    public enum MainMenuPage { Hidden, FirstStart, Menu, Settings, ConfirmNew, PixelSetup }
 
     /// <summary>Title-screen presentation. The controller owns sessions, input gating and menu actions.</summary>
     public sealed class MainMenuView : MonoBehaviour
@@ -39,22 +39,23 @@ namespace MiniGame.UnityHost
         public Button ConfirmButton { get; private set; }
         public Button CancelButton { get; private set; }
         public PlayerSettingsView Settings { get; private set; }
+        public PixelStrengthSelectionView PixelSetup { get; private set; }
         public TerminalSignalController SignalTuning { get; private set; }
 
         public static MainMenuView Create(Transform parent, Action start, Action resume, Action newPeriod,
-            Action settings, Action confirm, Action cancel, Action back)
+            Action settings, Action confirm, Action cancel, Action back, Action confirmPixelSetup = null)
         {
             var go = new GameObject("NORM Main Menu", typeof(RectTransform), typeof(Canvas),
                 typeof(CanvasScaler), typeof(GraphicRaycaster), typeof(MainMenuView));
             if (parent != null) go.transform.SetParent(parent, false);
             var view = go.GetComponent<MainMenuView>();
-            view.Build(start, resume, newPeriod, settings, confirm, cancel, back);
+            view.Build(start, resume, newPeriod, settings, confirm, cancel, back, confirmPixelSetup);
             view.Show(MainMenuPage.Hidden, false);
             return view;
         }
 
         private void Build(Action start, Action resume, Action newPeriod, Action settings,
-            Action confirm, Action cancel, Action back)
+            Action confirm, Action cancel, Action back, Action confirmPixelSetup)
         {
             root = (RectTransform)transform;
             releaseGroup = gameObject.AddComponent<CanvasGroup>();
@@ -121,6 +122,10 @@ namespace MiniGame.UnityHost
             {
                 if (Page == MainMenuPage.Settings) back?.Invoke();
             });
+            PixelSetup = PixelStrengthSelectionView.Create(root, font, () =>
+            {
+                if (Page == MainMenuPage.PixelSetup) confirmPixelSetup?.Invoke();
+            });
 
             var statusRect = CenterRect(root, "MainMenuStatus", new Vector2(.5f, .055f), 1500, 70);
             statusText = statusRect.gameObject.AddComponent<TerminalBitmapText>();
@@ -141,11 +146,17 @@ namespace MiniGame.UnityHost
             firstStart.gameObject.SetActive(page == MainMenuPage.FirstStart);
             menu.gameObject.SetActive(page == MainMenuPage.Menu);
             confirmation.gameObject.SetActive(page == MainMenuPage.ConfirmNew);
-            logoArea.gameObject.SetActive(page != MainMenuPage.Settings);
+            logoArea.gameObject.SetActive(page != MainMenuPage.Settings && page != MainMenuPage.PixelSetup);
             ContinueButton.interactable = canContinue;
             continueLabel.color = canContinue ? TerminalView.Ink : TerminalView.Dim;
             Settings.Hide();
+            PixelSetup.Hide();
             SetStatus(status);
+            if (page == MainMenuPage.PixelSetup)
+            {
+                PixelSetup.Show(PlayerGraphicsSettings.Detail);
+                return;
+            }
             if (page == MainMenuPage.Settings)
             {
                 Settings.Show("返回主菜单");

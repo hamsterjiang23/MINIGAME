@@ -26,6 +26,7 @@ namespace MiniGame.UnityHost
         private ReadableProp focusedReadable;
         private float pitch;
         private float downwardSpeed;
+        private int lastInteractionInputFrame = -1;
         private bool dreamTraversalActive, controllerBeforeDream;
         private int dreamTraversalDay;
         private float dreamFloorY;
@@ -113,7 +114,7 @@ namespace MiniGame.UnityHost
                 ClearFocus();
                 Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked;
                 if (screen != null) screen.SetInteractionCursor(InteractionCursorKind.Door, true);
-                if (Input.GetMouseButtonDown(0)) InteractPrimaryFocused();
+                HandleInteractionInput(Input.GetKeyDown(KeyCode.E), Input.GetMouseButtonDown(0));
                 return;
             }
             bool world = runtime.GetView().Input == InputContext.World;
@@ -134,7 +135,15 @@ namespace MiniGame.UnityHost
                 controller.Move((motion.normalized * walkSpeed + Vector3.up * downwardSpeed) * Time.deltaTime);
             }
             RefreshFocus();
-            if (Input.GetMouseButtonDown(0)) InteractPrimaryFocused();
+            HandleInteractionInput(Input.GetKeyDown(KeyCode.E), Input.GetMouseButtonDown(0));
+        }
+
+        public bool HandleInteractionInput(bool interactPressed, bool primaryPressed)
+        {
+            if ((!interactPressed && !primaryPressed) || lastInteractionInputFrame == Time.frameCount
+                || Input.GetKeyDown(KeyCode.Escape) || screen != null && screen.WorldInputBlockedThisFrame) return false;
+            lastInteractionInputFrame = Time.frameCount;
+            return InteractPrimaryFocused();
         }
 
         private void UpdateLook()

@@ -109,7 +109,8 @@ namespace MiniGame.UnityHost
             }
             // Always cover reconstruction, including a save restored halfway through the entry camera motion.
             fade.color = Color.black;
-            yield return null;
+            // A saved bed presentation is rebuilt synchronously before its first rendered frame.
+            if (!resumingExploration) yield return null;
             try
             {
                 PrepareRoom();
@@ -195,7 +196,7 @@ namespace MiniGame.UnityHost
         {
             if (!UsesSharedThanks || !Ready || bedCompleted || session.Runtime.GetView().Paused
                 || session.Runtime.EndingStage != MiniGame.Presentation.EndingStage.Space
-                || Ending == null || !Ending.CanLieDown) return false;
+                || Ending == null || !Ending.IsBedEndingComplete) return false;
             RestoreThanksPresentation();
             BedCompleted?.Invoke();
             return true;
@@ -214,7 +215,7 @@ namespace MiniGame.UnityHost
             if (restored || Ready || bedCompleted || MainMenuController.BlocksGameplayInput) return;
             if (room != null && !room.enabled && Input.GetKeyDown(KeyCode.Escape))
             {
-                if (Ending != null) Ending.SetPaused(!session.Runtime.GetView().Paused);
+                if (Ending != null) Ending.HandlePauseEscape();
                 else session.Runtime.SetPaused(!session.Runtime.GetView().Paused);
             }
             if (TransitionPhase == RoomEndingTransitionPhase.Failed && Input.GetKeyDown(KeyCode.R)) RetryInitialization();

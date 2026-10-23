@@ -1,0 +1,205 @@
+{
+  "success": true,
+  "command": "command package_list",
+  "data": {
+    "command": "package_list",
+    "parameters": {
+      "scope": "installed",
+      "format": "json"
+    },
+    "result": {
+      "success": true,
+      "scope": "installed",
+      "count": 18,
+      "packages": [
+        {
+          "name": "com.unity.pipeline",
+          "version": "0.4.0-exp.1",
+          "displayName": "Unity Pipeline",
+          "source": "Embedded",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Packages\\com.unity.pipeline",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.hamster.minigame.core",
+          "version": "0.1.0",
+          "displayName": "MiniGame Core",
+          "source": "Local",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\src\\MiniGame.Core",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.hamster.minigame.presentation",
+          "version": "0.1.0",
+          "displayName": "MiniGame Presentation",
+          "source": "Local",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\src\\MiniGame.Presentation",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "dev.yarnspinner.unity",
+          "version": "3.2.8",
+          "displayName": "Yarn Spinner",
+          "source": "Embedded",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Packages\\dev.yarnspinner.unity",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.ugui",
+          "version": "1.0.0",
+          "displayName": "Unity UI",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.ugui@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.nuget.newtonsoft-json",
+          "version": "3.2.1",
+          "displayName": "Newtonsoft Json",
+          "source": "Registry",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.nuget.newtonsoft-json@3.2.1",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.test-framework",
+          "version": "1.1.33",
+          "displayName": "Test Framework",
+          "source": "Registry",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.test-framework@1.1.33",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.audio",
+          "version": "1.0.0",
+          "displayName": "Audio",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.audio@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.imageconversion",
+          "version": "1.0.0",
+          "displayName": "Image Conversion",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.imageconversion@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.imgui",
+          "version": "1.0.0",
+          "displayName": "IMGUI",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.imgui@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.jsonserialize",
+          "version": "1.0.0",
+          "displayName": "JSONSerialize",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.jsonserialize@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.physics",
+          "version": "1.0.0",
+          "displayName": "Physics",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.physics@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.ui",
+          "version": "1.0.0",
+          "displayName": "UI",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.ui@1.0.0",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.textmeshpro",
+          "version": "3.0.7",
+          "displayName": "TextMeshPro",
+          "source": "Registry",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.textmeshpro@3.0.7",
+          "isDirectDependency": true,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.ext.nunit",
+          "version": "1.0.6",
+          "displayName": "Custom NUnit",
+          "source": "Registry",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6",
+          "isDirectDependency": false,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.nuget.mono-cecil",
+          "version": "1.11.6",
+          "displayName": "Mono Cecil",
+          "source": "Registry",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.nuget.mono-cecil@1.11.6",
+          "isDirectDependency": false,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.uielements",
+          "version": "1.0.0",
+          "displayName": "UIElements",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.uielements@1.0.0",
+          "isDirectDependency": false,
+          "isInstalled": true
+        },
+        {
+          "name": "com.unity.modules.screencapture",
+          "version": "1.0.0",
+          "displayName": "Screen Capture",
+          "source": "BuiltIn",
+          "resolvedPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Library\\PackageCache\\com.unity.modules.screencapture@1.0.0",
+          "isDirectDependency": false,
+          "isInstalled": true
+        }
+      ],
+      "manifest": {
+        "com.unity.pipeline": "file:com.unity.pipeline",
+        "com.hamster.minigame.core": "file:../../src/MiniGame.Core",
+        "com.hamster.minigame.presentation": "file:../../src/MiniGame.Presentation",
+        "dev.yarnspinner.unity": "file:dev.yarnspinner.unity",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.test-framework": "1.1.33",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.textmeshpro": "3.0.7"
+      },
+      "message": "18 installed package(s)."
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "F:\\AAMINIGAME\\MINIGAME\\UnityProject"
+    },
+    "success": true
+  },
+  "errors": [],
+  "warnings": []
+}

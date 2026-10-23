@@ -1,4 +1,5 @@
 using System;
+using MiniGame.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,6 +18,10 @@ namespace MiniGame.UnityHost
         private CanvasGroup group;
         private RectTransform root, column, manual;
         private RectTransform settings;
+        private RectTransform gm;
+        private Action<EndingType> gmAction;
+        private GameObject gmPreviousSelection;
+        private bool gmChordConsumed;
         private CanvasGroup columnInput;
         private Button manualReturn;
         private GameObject settingsPreviousSelection;
@@ -25,13 +30,22 @@ namespace MiniGame.UnityHost
         private GameObject previousSelection, manualPreviousSelection;
         private bool visible;
         private float columnHeight;
+        public const int HiddenEndingClickCount = 4;
+        public const float HiddenEndingClickInterval = 1.25f;
+        private Button hiddenEndingButton;
+        private Action hiddenEndingAction;
+        private int hiddenEndingClicks, hiddenEndingClickFrame = -1;
+        private float hiddenEndingLastClick;
+        private bool hiddenEndingTriggered;
         private Sprite stripSprite, focusSprite;
         private Texture2D stripTexture, focusTexture;
         private Material lettering;
         public Button[] Buttons { get; private set; } = Array.Empty<Button>();
         public bool ManualVisible => visible && manual != null && manual.gameObject.activeSelf;
         public bool SettingsVisible => visible && settings != null && settings.gameObject.activeSelf;
-        private bool SubmenuVisible => ManualVisible || SettingsVisible;
+        public bool GmVisible => visible && gm != null && gm.gameObject.activeSelf;
+        public Button[] GmEndingButtons { get; private set; } = Array.Empty<Button>();
+        private bool SubmenuVisible => ManualVisible || SettingsVisible || GmVisible;
         public PlayerSettingsView SharedSettings { get; private set; }
         public Button[] PixelDetailButtons => SharedSettings != null ? SharedSettings.PixelDetailButtons : Array.Empty<Button>();
 
@@ -85,6 +99,12 @@ namespace MiniGame.UnityHost
             var title = MakeText(column, font, "PauseTitle", 46, 20, 0, ColumnWidth - 40, 68);
             title.text = "暂停";
             title.color = Bright;
+            hiddenEndingButton = title.gameObject.AddComponent<Button>();
+            hiddenEndingButton.targetGraphic = title;
+            hiddenEndingButton.transition = Selectable.Transition.None;
+            hiddenEndingButton.navigation = new Navigation { mode = Navigation.Mode.None };
+            hiddenEndingButton.interactable = false;
+            hiddenEndingButton.onClick.AddListener(ClickHiddenEnding);
 
             Buttons = new Button[labels.Length];
             for (int i = 0; i < labels.Length; i++)
@@ -117,6 +137,7 @@ namespace MiniGame.UnityHost
                 {
                     if (SubmenuVisible || lastActivationFrame == Time.frameCount) return;
                     lastActivationFrame = Time.frameCount;
+                    ResetHiddenEndingClicks();
                     action?.Invoke();
                 });
                 Buttons[i] = button;
@@ -126,8 +147,126 @@ namespace MiniGame.UnityHost
             status.gameObject.SetActive(false);
             BuildManual(font);
             BuildSettings(font);
+            BuildGm(font);
             LayoutColumn();
             gameObject.SetActive(false);
+        }
+
+        public void ConfigureHiddenEndingShortcut(Action action)
+        {
+            hiddenEndingAction = action;
+            hiddenEndingButton.interactable = action != null;
+            hiddenEndingButton.targetGraphic.raycastTarget = action != null;
+            ResetHiddenEndingClicks();
+        }
+
+        private void ClickHiddenEnding()
+        {
+            if (!visible || SubmenuVisible || hiddenEndingAction == null || hiddenEndingTriggered
+                || hiddenEndingClickFrame == Time.frameCount) return;
+            hiddenEndingClickFrame = Time.frameCount;
+            float now = Time.unscaledTime;
+            if (now - hiddenEndingLastClick > HiddenEndingClickInterval) hiddenEndingClicks = 0;
+            hiddenEndingLastClick = now;
+            if (++hiddenEndingClicks < HiddenEndingClickCount) return;
+            hiddenEndingTriggered = true;
+            hiddenEndingAction();
+        }
+
+        private void ResetHiddenEndingClicks()
+        {
+            hiddenEndingClicks = 0;
+            hiddenEndingTriggered = false;
+        }
+
+        public void ConfigureGmEndings(Action<EndingType> action)
+        {
+            gmAction = action;
+            if (action == null) TryCloseGm();
+        }
+
+        private void BuildGm(Font font)
+        {
+            gm = NewRect(root, "PauseGmEndings");
+            gm.anchorMin = gm.anchorMax = new Vector2(.06f, .5f);
+            gm.pivot = new Vector2(0, .5f);
+            gm.sizeDelta = new Vector2(ColumnWidth, 100 + 5 * RowStride - (RowStride - RowHeight));
+            var title = MakeText(gm, font, "GmTitle", 46, 20, 0, ColumnWidth - 40, 68);
+            title.text = "GM · 结局";
+            string[] labels = { "正常结局", "配额失败结局", "神父结局", "隐藏自审结局", "返回暂停菜单" };
+            EndingType[] endings = { EndingType.TakenAway, EndingType.LockedInRoom, EndingType.PriestAttack, EndingType.DreamSea };
+            var allButtons = new Button[labels.Length];
+            GmEndingButtons = new Button[endings.Length];
+            for (int i = 0; i < labels.Length; i++)
+            {
+                var row = NewRect(gm, "GmAction" + i);
+                TopRect(row, 0, 100 + i * RowStride, ColumnWidth, RowHeight);
+                var hit = row.gameObject.AddComponent<Image>();
+                hit.sprite = stripSprite;
+                var button = row.gameObject.AddComponent<PauseMenuButton>();
+                button.targetGraphic = hit;
+                var frame = NewRect(row, "FocusFrame");
+                Stretch(frame);
+                var outline = frame.gameObject.AddComponent<Image>();
+                outline.sprite = focusSprite; outline.color = Ink; outline.raycastTarget = false;
+                var focus = frame.gameObject.AddComponent<CanvasGroup>();
+                focus.alpha = 0; focus.blocksRaycasts = false; focus.interactable = false;
+                var label = MakeText(row, font, "Label", 40, 32, 0, 400, RowHeight);
+                label.alignment = TextAnchor.MiddleLeft; label.text = labels[i];
+                var key = MakeText(row, font, "Shortcut", 28, 412, 0, 66, RowHeight);
+                key.alignment = TextAnchor.MiddleRight; key.text = i == endings.Length ? "ESC" : string.Empty;
+                button.ConfigureVisuals(label, key, focus, null, Ink);
+                if (i < endings.Length)
+                {
+                    var ending = endings[i];
+                    int lastActivationFrame = -1;
+                    button.onClick.AddListener(() =>
+                    {
+                        if (!GmVisible || gmAction == null || lastActivationFrame == Time.frameCount) return;
+                        lastActivationFrame = Time.frameCount;
+                        gmAction(ending);
+                    });
+                    GmEndingButtons[i] = button;
+                }
+                else button.onClick.AddListener(() => TryCloseGm());
+                allButtons[i] = button;
+            }
+            for (int i = 0; i < allButtons.Length; i++)
+                allButtons[i].navigation = new Navigation { mode = Navigation.Mode.Explicit,
+                    selectOnUp = allButtons[(i + allButtons.Length - 1) % allButtons.Length],
+                    selectOnDown = allButtons[(i + 1) % allButtons.Length] };
+            gm.gameObject.SetActive(false);
+        }
+
+        private void UpdateGmChord(bool n, bool o, bool r, bool m)
+        {
+            bool held = n && o && r && m;
+            if (!held) { gmChordConsumed = false; return; }
+            if (gmChordConsumed || !visible || SubmenuVisible || gmAction == null || MainMenuController.BlocksGameplayInput) return;
+            // Consume only a successful opening. A chord already held when the pause root becomes
+            // eligible must still open GM; returning from GM waits for release to avoid reopening.
+            gmChordConsumed = true;
+            ResetHiddenEndingClicks();
+            gmPreviousSelection = EventSystem.current?.currentSelectedGameObject;
+            columnInput.interactable = columnInput.blocksRaycasts = false;
+            column.gameObject.SetActive(false);
+            gm.gameObject.SetActive(true);
+            LayoutColumn();
+            EventSystem.current?.SetSelectedGameObject(GmEndingButtons[0].gameObject);
+        }
+
+        public bool TryCloseGm()
+        {
+            if (!GmVisible) return false;
+            gm.gameObject.SetActive(false);
+            column.gameObject.SetActive(true);
+            columnInput.interactable = columnInput.blocksRaycasts = true;
+            RefreshNavigation();
+            var selectable = gmPreviousSelection != null ? gmPreviousSelection.GetComponent<Selectable>() : null;
+            bool valid = selectable != null && selectable.transform.IsChildOf(column) && selectable.IsActive() && selectable.IsInteractable();
+            EventSystem.current?.SetSelectedGameObject(valid ? gmPreviousSelection : FirstEnabled()?.gameObject);
+            gmPreviousSelection = null;
+            return true;
         }
 
         private void BuildManual(Font font)
@@ -150,7 +289,7 @@ namespace MiniGame.UnityHost
             leftTitle.text = "01  房间";
             var left = MakeText(manual, font, "ManualRoomControls", 24, 38, 188, 478, 330);
             left.lineSpacing = 1.3f;
-            left.text = "WASD    移动\n鼠标    转动视角\n鼠标左键    阅读 / 开门 / 睡觉 / 工作\n鼠标左键    在门外返回房间\n准星图标    提示当前可进行的交互";
+            left.text = "WASD    移动\n鼠标    转动视角\nE / 鼠标左键    阅读 / 开门 / 睡觉 / 工作\nE / 鼠标左键    在门外返回房间\n准星图标    提示当前可进行的交互";
             var rightTitle = MakeText(manual, font, "ManualTerminalHeading", 24, 570, 132, 492, 42);
             rightTitle.text = "02  终端";
             var right = MakeText(manual, font, "ManualTerminalControls", 24, 570, 188, 492, 330);
@@ -193,6 +332,7 @@ namespace MiniGame.UnityHost
         public void ShowManual()
         {
             if (!visible || SubmenuVisible) return;
+            ResetHiddenEndingClicks();
             var events = EventSystem.current;
             manualPreviousSelection = events != null ? events.currentSelectedGameObject : null;
             columnInput.interactable = false;
@@ -232,6 +372,7 @@ namespace MiniGame.UnityHost
         public void ShowSettings()
         {
             if (!visible || SubmenuVisible) return;
+            ResetHiddenEndingClicks();
             settingsPreviousSelection = EventSystem.current?.currentSelectedGameObject;
             columnInput.interactable = columnInput.blocksRaycasts = false;
             column.gameObject.SetActive(false); SharedSettings.Show("返回暂停菜单");
@@ -266,6 +407,7 @@ namespace MiniGame.UnityHost
         public void SetVisible(bool value)
         {
             if (group == null || visible == value) return;
+            ResetHiddenEndingClicks();
             visible = value;
             group.interactable = value;
             group.blocksRaycasts = value;
@@ -285,6 +427,7 @@ namespace MiniGame.UnityHost
             {
                 ResetManual();
                 ResetSettings();
+                ResetGm();
                 RestoreSelection();
                 if (group.alpha <= .001f) gameObject.SetActive(false);
             }
@@ -293,6 +436,7 @@ namespace MiniGame.UnityHost
         private void Update()
         {
             if (group == null) return;
+            UpdateGmChord(Input.GetKey(KeyCode.N), Input.GetKey(KeyCode.O), Input.GetKey(KeyCode.R), Input.GetKey(KeyCode.M));
             if (!backdrop.Capturing)
                 group.alpha = Mathf.MoveTowards(group.alpha, visible ? 1 : 0, Time.unscaledDeltaTime / FadeSeconds);
             if (visible && !SubmenuVisible) RefreshNavigation();
@@ -353,6 +497,8 @@ namespace MiniGame.UnityHost
                 manual.localScale = Vector3.one * Mathf.Min(1, height * .88f / 810, width * .88f / 1100);
             if (settings != null)
                 settings.localScale = Vector3.one * Mathf.Min(1, height * .88f / 600, width * .88f / 740);
+            if (gm != null)
+                gm.localScale = Vector3.one * Mathf.Min(height * .82f / gm.sizeDelta.y, width * .30f / ColumnWidth);
         }
 
         private void ResetManual()
@@ -365,10 +511,12 @@ namespace MiniGame.UnityHost
 
         private void OnDisable()
         {
+            ResetHiddenEndingClicks();
             if (visible) RestoreSelection();
             visible = false;
             ResetManual();
             ResetSettings();
+            ResetGm();
             if (group != null) { group.alpha = 0; group.interactable = false; group.blocksRaycasts = false; }
         }
 
@@ -377,6 +525,13 @@ namespace MiniGame.UnityHost
             if (SharedSettings != null) SharedSettings.Hide();
             if (backdrop != null) backdrop.SetLivePreview(false, false);
             settingsPreviousSelection = null;
+        }
+
+        private void ResetGm()
+        {
+            if (gm != null) gm.gameObject.SetActive(false);
+            gmPreviousSelection = null;
+            gmChordConsumed = false;
         }
 
         private static RectTransform NewRect(Transform parent, string name)

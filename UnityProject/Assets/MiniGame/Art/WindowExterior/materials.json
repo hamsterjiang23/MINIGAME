@@ -1,0 +1,59 @@
+{
+  "source": "Artifacts/WindowExterior20261023/WindowExterior.glb",
+  "sourceSha256": "f9ee737c2e9edcadcd640150407854e6c56f4ad988c91d9e17972004eff55ec6",
+  "meshCount": 8,
+  "materials": [
+    {
+      "name": "MainRoom_00",
+      "label": "KB3D_ARV_ConcreteGray",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "baseTexture": "Textures/01_KB3D_ARV_ConcreteGray_basecolor.png",
+      "normalTexture": "Textures/00_KB3D_ARV_ConcreteGray_normal.png",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "Textures/02_KB3D_ARV_ConcreteGray_metallic-KB3D_ARV_ConcreteGray_roughness.png",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "MainRoom_01",
+      "label": "roof",
+      "doubleSided": true,
+      "windowGlass": false,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.25,
+      "baseTexture": "Textures/03_ConcreteNew0033_5_M.jpg",
+      "normalTexture": "",
+      "normalScale": 1,
+      "metallicRoughnessTexture": "",
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "omittedNonNormalBumpInputs": 1,
+  "hasExteriorConcrete": false,
+  "scope": "Art preview; no gameplay integration, colliders or performance acceptance",
+  "referenceLayout": {
+    "markers": {}
+  }
+}

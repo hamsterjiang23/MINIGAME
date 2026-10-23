@@ -12,6 +12,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("TerminalV0824")]
     public sealed class NormPurificationKpiPlayModeTests
     {
         [UnityTest]
@@ -29,23 +30,23 @@ namespace MiniGame.UnityHost.Tests
                 AssertKpi(screen, "DirectoryPurificationRequirement", "净化要求：0/1");
                 Assert.That(runtime.EnterSelectedPatient("first").Accepted, Is.True);
                 Complete(runtime);
-                AssertKpi(screen, "ReviewPurificationRequirement", "净化要求：0/1");
+                AssertReviewRemaining(screen, runtime, 1);
                 string encounter = runtime.GetView().Game.CurrentEncounterId;
                 Assert.That(runtime.SubmitDisposition(encounter, Disposition.Purify).Accepted, Is.True);
-                AssertKpi(screen, "ReviewPurificationRequirement", "净化要求：1/1");
+                AssertReviewRemaining(screen, runtime, 0);
                 Assert.That(runtime.SubmitDisposition(encounter, Disposition.Purify).Accepted, Is.False);
-                AssertKpi(screen, "ReviewPurificationRequirement", "净化要求：1/1");
+                AssertReviewRemaining(screen, runtime, 0);
 
                 runtime = GameRuntime.Restore(runtime.Save(), rules, content);
                 screen.Bind(runtime);
-                AssertKpi(screen, "ReviewPurificationRequirement", "净化要求：1/1");
+                AssertReviewRemaining(screen, runtime, 0);
                 Complete(runtime); Complete(runtime);
                 Assert.That(runtime.ReturnToDirectory().Accepted, Is.True);
                 AssertKpi(screen, "DirectoryPurificationRequirement", "净化要求：1/1");
                 Assert.That(runtime.EnterSelectedPatient("second").Accepted, Is.True);
                 Complete(runtime);
                 Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, Disposition.Treat).Accepted, Is.True);
-                AssertKpi(screen, "ReviewPurificationRequirement", "净化要求：1/1");
+                AssertReviewRemaining(screen, runtime, 0);
                 Complete(runtime); Complete(runtime); Complete(runtime);
                 Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
                 Assert.That(runtime.GetView().Cue.Kind, Is.EqualTo(PresentationKind.Sleep));
@@ -57,7 +58,7 @@ namespace MiniGame.UnityHost.Tests
                 AssertKpi(screen, "DirectoryPurificationRequirement", "净化要求：0/2");
                 Assert.That(runtime.EnterSelectedPatient("second").Accepted, Is.True);
                 Complete(runtime);
-                AssertKpi(screen, "ReviewPurificationRequirement", "净化要求：0/2");
+                AssertReviewRemaining(screen, runtime, 2);
             }
             finally { Object.Destroy(owner); }
             yield return null;
@@ -69,6 +70,23 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(label.gameObject.activeInHierarchy, Is.True);
             Assert.That(label.text, Is.EqualTo(expected));
             Assert.That(label.preferredWidth, Is.LessThanOrEqualTo(label.rectTransform.rect.width));
+        }
+
+        private static void AssertReviewRemaining(MiniGameScreen screen, GameRuntime runtime, int expected)
+        {
+            int remaining = Math.Max(0, runtime.GetView().Game.RemainingPurificationQuota);
+            Assert.That(remaining, Is.EqualTo(expected));
+            var label = screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "DailyWorkIndicatorRemaining");
+            Assert.That(label.text, Is.EqualTo(remaining.ToString("00")));
+            Assert.That(label.enabled && label.gameObject.activeInHierarchy, Is.False,
+                "The authoritative value stays readable without drawing over the supplied quota artwork.");
+            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork");
+            Assert.That(artwork.enabled && artwork.gameObject.activeInHierarchy, Is.True);
+            Assert.That(artwork.texture, Is.SameAs(Resources.Load<TerminalAssetSet>("MiniGame/TerminalAssets").QuotaFields));
+            Assert.That(artwork.uvRect.x, Is.EqualTo(remaining % 10 / 10f).Within(.00001f));
+            Assert.That(artwork.uvRect.y, Is.EqualTo(1 - (remaining / 10 + 1) / 10f).Within(.00001f));
+            Assert.That(artwork.uvRect.width, Is.EqualTo(.1f).Within(.00001f));
+            Assert.That(artwork.uvRect.height, Is.EqualTo(.1f).Within(.00001f));
         }
 
         private static void Complete(GameRuntime runtime) =>

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using MiniGame.Core;
 using MiniGame.Presentation;
 using NUnit.Framework;
@@ -19,9 +20,9 @@ namespace MiniGame.UnityHost.Tests
     {
         private MiniGameBootstrap host;
         private string directory, previousDirectory;
-        private bool previousSkipStartup, hadBrightness, hadVolume, hadDetail;
+        private bool previousSkipStartup, hadBrightness, hadVolume, hadDetail, hadPixelSetup;
         private float previousBrightness, previousVolume;
-        private int previousDetail;
+        private int previousDetail, previousPixelSetup;
         private TransitionTrace transitionTrace;
         private bool observeTransition;
         private static int captureRequestedFrame = -1;
@@ -37,6 +38,10 @@ namespace MiniGame.UnityHost.Tests
             hadBrightness = PlayerPrefs.HasKey(PlayerPreferences.BrightnessKey);
             hadVolume = PlayerPrefs.HasKey(PlayerPreferences.MasterVolumeKey);
             hadDetail = PlayerPrefs.HasKey(PlayerGraphicsSettings.PreferenceKey);
+            hadPixelSetup = PlayerPrefs.HasKey(PixelStrengthOnboarding.PreferenceKey);
+            previousPixelSetup = PlayerPrefs.GetInt(PixelStrengthOnboarding.PreferenceKey);
+            // These regressions begin after the independent first-launch graphics choice.
+            PlayerPrefs.SetInt(PixelStrengthOnboarding.PreferenceKey, 1);
             previousBrightness = PlayerPrefs.GetFloat(PlayerPreferences.BrightnessKey, 1);
             previousVolume = PlayerPrefs.GetFloat(PlayerPreferences.MasterVolumeKey, 1);
             previousDetail = PlayerPrefs.GetInt(PlayerGraphicsSettings.PreferenceKey, 2);
@@ -67,6 +72,8 @@ namespace MiniGame.UnityHost.Tests
             RestoreFloat(PlayerPreferences.MasterVolumeKey, hadVolume, previousVolume);
             if (hadDetail) PlayerPrefs.SetInt(PlayerGraphicsSettings.PreferenceKey, previousDetail);
             else PlayerPrefs.DeleteKey(PlayerGraphicsSettings.PreferenceKey);
+            if (hadPixelSetup) PlayerPrefs.SetInt(PixelStrengthOnboarding.PreferenceKey, previousPixelSetup);
+            else PlayerPrefs.DeleteKey(PixelStrengthOnboarding.PreferenceKey);
             PlayerPrefs.Save();
             PlayerPreferences.Reload();
             PlayerGraphicsSettings.Reload();
@@ -84,7 +91,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
-        [UnityTest, Timeout(90000)]
+        [UnityTest, Timeout(90000), Category("PixelStrength")]
         public IEnumerator FreshLaunchHasOnlyStartPromptAndStartsOneDayZeroPeriod()
         {
             Assert.That(host.Runtime, Is.Null, "The title must not start a hidden Day0 session.");
@@ -455,34 +462,34 @@ namespace MiniGame.UnityHost.Tests
             var ending = room.Ending;
             ending.UseExternalClock = true;
             var productionAudio = ending.Profile.Audio;
-            Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.Null,
-                "The production hidden space currently has optional music unassigned and uses its ocean loop.");
-            Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic).clip, Is.Null);
-            MiniGameAudioProfile twoTrackAudio = null;
+            var productionMusic = productionAudio.GetClip(MiniGameSound.EndingMusic);
+            bool hasMusic = productionMusic != null;
+            Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic).clip, Is.EqualTo(productionMusic));
+            MiniGameAudioProfile alternateAudio = null;
             var voiceClip = AudioClip.Create("Hidden menu voice pause regression", 44100 * 4, 1, 44100, false);
             try
             {
-                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, false);
+                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, hasMusic);
 
-                // Exercise a configured second loop on the same native owner without changing an authored asset.
-                twoTrackAudio = Object.Instantiate(productionAudio);
-                twoTrackAudio.Sounds = productionAudio.Sounds.Select(entry => entry == null ? null
+                // Exercise the opposite optional-music branch without changing the authored audio profile.
+                alternateAudio = Object.Instantiate(productionAudio);
+                alternateAudio.Sounds = productionAudio.Sounds.Select(entry => entry == null ? null
                     : new MiniGameSoundEntry { Id = entry.Id, Clip = entry.Clip, Volume = entry.Volume }).ToArray();
-                var testMusic = productionAudio.GetClip(MiniGameSound.Gameplay);
-                Assert.That(testMusic, Is.Not.Null);
-                twoTrackAudio.GetEntry(MiniGameSound.EndingMusic).Clip = testMusic;
-                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.Null);
+                var testMusic = hasMusic ? null : productionAudio.GetClip(MiniGameSound.Gameplay);
+                if (!hasMusic) Assert.That(testMusic, Is.Not.Null);
+                alternateAudio.GetEntry(MiniGameSound.EndingMusic).Clip = testMusic;
+                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.EqualTo(productionMusic));
                 ending.SetPaused(false);
-                ending.Audio.Configure(twoTrackAudio);
+                ending.Audio.Configure(alternateAudio);
                 ending.Audio.SetLoop(MiniGameAudioChannel.EndingMusic, MiniGameSound.EndingMusic, 0);
                 ending.Audio.SetLoop(MiniGameAudioChannel.Ocean, MiniGameSound.OceanWaves, 0);
-                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, true);
-                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.Null);
+                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, !hasMusic);
+                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.EqualTo(productionMusic));
             }
             finally
             {
                 ending.Audio.Configure(productionAudio);
-                if (twoTrackAudio != null) Object.Destroy(twoTrackAudio);
+                if (alternateAudio != null) Object.Destroy(alternateAudio);
                 Object.Destroy(voiceClip);
             }
         }
@@ -619,32 +626,31 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Dreams.PlaybackSeconds, Is.EqualTo(2.75f).Within(.001f));
         }
 
-        [UnityTest, Timeout(90000)]
-        public IEnumerator RestartedTitleRestoresRemainingWakeBlackoutAndAdvancesTheDayOnce()
+        [UnityTest, Timeout(90000), Category("InteractionWakeGm")]
+        public IEnumerator RestartedTitleRestoresAutomaticWakeProgressWithoutAdvancingTheDayAgain()
         {
             yield return StartGame();
-            var fixture = Fixture();
-            DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.AfterDream && view.Cue == null);
-            Assert.That(fixture.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
-            host.RestoreCheckpoint(fixture.Save());
-            yield return Until(() => host.Effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.BlackHold,
-                "second-bed black hold", 5);
+            RestoreDream();
+            for (int step = 0; step < 4 && host.Dreams.OwnsCamera; step++) host.Dreams.Advance(1000);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+            yield return Until(() => host.Effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.Waking
+                && host.Effects.CaptureSleepCheckpoint().WakeElapsed >= .15f, "automatic wake progress", 5);
             Menu.ReturnToMenu();
-            float remaining = host.Effects.CaptureSleepCheckpoint().BlackHoldRemaining;
-            Assert.That(remaining, Is.GreaterThan(.2f));
+            float elapsed = host.Effects.CaptureSleepCheckpoint().WakeElapsed;
+            Assert.That(elapsed, Is.GreaterThanOrEqualTo(.15f));
             yield return new WaitForSecondsRealtime(.3f);
-            Assert.That(host.Effects.CaptureSleepCheckpoint().BlackHoldRemaining, Is.EqualTo(remaining).Within(.001f));
+            Assert.That(host.Effects.CaptureSleepCheckpoint().WakeElapsed, Is.EqualTo(elapsed).Within(.001f));
             yield return RebootToTitle();
             Menu.View.ContinueButton.onClick.Invoke();
             Assert.That(host.Runtime.GetView().Paused, Is.True);
             var loaded = host.Effects.CaptureSleepCheckpoint();
             Assert.That(loaded, Is.Not.Null);
-            Assert.That(loaded.Phase, Is.EqualTo(SleepTransitionPhase.BlackHold));
-            Assert.That(loaded.BlackHoldRemaining, Is.EqualTo(remaining).Within(.001f));
-            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
+            Assert.That(loaded.Phase, Is.EqualTo(SleepTransitionPhase.Waking));
+            Assert.That(loaded.WakeElapsed, Is.EqualTo(elapsed).Within(.001f));
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
             yield return WaitForGame();
-            yield return Until(() => host.Runtime.GetView().Game.Day == 2 && host.Runtime.GetView().Cue == null,
-                "one completed wake transition", remaining + 4);
+            yield return Until(() => host.Effects.CaptureSleepCheckpoint() == null,
+                "one completed wake transition", 5);
             yield return new WaitForSecondsRealtime(.2f);
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
             Assert.That(host.Effects.CaptureSleepCheckpoint(), Is.Null);
@@ -670,6 +676,57 @@ namespace MiniGame.UnityHost.Tests
             yield return WaitForGame();
             Assert.That(host.Runtime, Is.SameAs(runtime));
         }
+
+        [UnityTest, Timeout(90000), Category("InteractionWakeGm")]
+        public IEnumerator LegacyAfterDreamLoadStartsBlackAndWaitsForPausedResumeBeforeWakingOnce()
+        {
+            yield return StartGame();
+            var fixture = Fixture();
+            DriveTo(fixture, view => view.Game.Day == 1 && view.Cue?.Kind == PresentationKind.Dream);
+            // Recreate the former adapter boundary from legal core commands in a separate session.
+            string checkpoint = fixture.Save();
+            var session = MiniGameSessionHost.Current;
+            var core = SnapshotCodec.Deserialize(JsonUtility.FromJson<LegacyCoreEnvelope>(checkpoint).CoreJson, session.Rules);
+            Assert.That(core.Execute(new CompleteDream()).Accepted, Is.True);
+            Assert.That(core.GetPlayerView().Phase, Is.EqualTo(GamePhase.AfterDream));
+            string encoded = JsonUtility.ToJson(new LegacyCoreEnvelope { CoreJson = SnapshotCodec.Serialize(core) });
+            string quotedCore = encoded.Substring(encoded.IndexOf(':') + 1);
+            quotedCore = quotedCore.Substring(0, quotedCore.Length - 1);
+            checkpoint = ReplaceCheckpointValue(checkpoint, "CoreJson", quotedCore);
+            checkpoint = ReplaceCheckpointValue(checkpoint, "CueKind", "null");
+            checkpoint = ReplaceCheckpointValue(checkpoint, "DreamFromBed", "false");
+            checkpoint = ReplaceCheckpointValue(checkpoint, "Paused", "false");
+            string path = Path.Combine(directory, "legacy-after-dream.json");
+            File.WriteAllText(path, checkpoint);
+            foreach (bool pauseOnLoad in new[] { true, false })
+            {
+                Assert.That(session.TryLoadFrom(path, out var error, pauseOnLoad), Is.True, error);
+                Assert.That(host.Runtime.RestoredFromAfterDream, Is.True);
+                var fade = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade");
+                Assert.That(fade.color.a, Is.EqualTo(1), "The first restored frame is black, including an unpaused load.");
+                if (pauseOnLoad)
+                {
+                    Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
+                    Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
+                    Assert.That(host.Effects.CaptureSleepCheckpoint().Phase, Is.EqualTo(SleepTransitionPhase.WaitingToWake));
+                    yield return new WaitForSecondsRealtime(.2f);
+                    Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
+                    Assert.That(fade.color.a, Is.EqualTo(1));
+                    host.Runtime.SetPaused(false);
+                }
+                Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+                Assert.That(host.Effects.CaptureSleepCheckpoint().Phase, Is.EqualTo(SleepTransitionPhase.Waking));
+                yield return Until(() => host.Effects.CaptureSleepCheckpoint() == null, "legacy wake completion", 5);
+                Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+                Assert.That(fade.color.a, Is.Zero);
+                Assert.That(File.ReadAllText(path), Is.EqualTo(checkpoint), "Migration does not overwrite the manual source file.");
+            }
+        }
+
+        [Serializable] private sealed class LegacyCoreEnvelope { public string CoreJson; }
+        private static string ReplaceCheckpointValue(string json, string key, string value)
+            => Regex.Replace(json, "\"" + key + "\"\\s*:\\s*(?:\"(?:\\\\.|[^\"\\\\])*\"|true|false|null)",
+                _ => "\"" + key + "\":" + value);
 
         private IEnumerator StartGame()
         {
@@ -809,7 +866,9 @@ namespace MiniGame.UnityHost.Tests
             }
             foreach (var label in Menu.View.Settings.GetComponentsInChildren<Text>(true))
                 Assert.That(label.font, Is.SameAs(menuFont), label.name + " must retain the same font in settings.");
-            foreach (var button in Menu.View.GetComponentsInChildren<Button>(true))
+            // Preview cards have separate title/description typography; uniform action rows retain this contract.
+            foreach (var button in Menu.View.GetComponentsInChildren<Button>(true)
+                .Where(button => !button.transform.IsChildOf(Menu.View.PixelSetup.transform)))
             {
                 var label = button.GetComponentsInChildren<Text>(true).Single(text => text.name == "Label");
                 Assert.That(label.fontStyle, Is.EqualTo(FontStyle.Normal), button.name + " must use the Continue label's regular weight.");

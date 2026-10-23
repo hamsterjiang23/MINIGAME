@@ -44,6 +44,8 @@ namespace MiniGame.UnityHost.Editor
 
         public static bool Matches(RuntimeView view, int day, CampaignDebugPoint point)
         {
+            if (point == CampaignDebugPoint.AfterDream && view.Game.Day > day)
+                return view.Game.Phase == GamePhase.MorningInspection || view.Game.Phase == GamePhase.Ending;
             if (view.Game.Day != day) return false;
             switch (point)
             {
@@ -84,8 +86,9 @@ namespace MiniGame.UnityHost.Editor
                 if (view.Game.EncounterStage == EncounterStage.AwaitingDisposition)
                 {
                     var choices = view.Game.AvailableDispositions;
-                    var disposition = choices.Contains(Disposition.Treat) ? Disposition.Treat
-                        : choices.Contains(Disposition.Purify) ? Disposition.Purify : choices.First();
+                    // Meet the nightly quota so debug checkpoints can reach later days.
+                    var disposition = choices.Contains(Disposition.Purify) ? Disposition.Purify
+                        : choices.Contains(Disposition.Treat) ? Disposition.Treat : choices.First();
                     return runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition);
                 }
                 var response = view.Game.AvailableResponseIds.OrderBy(id =>

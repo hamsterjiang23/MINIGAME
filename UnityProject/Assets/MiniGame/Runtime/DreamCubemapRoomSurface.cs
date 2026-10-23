@@ -11,7 +11,7 @@ namespace MiniGame.UnityHost
         public Renderer[] Faces { get; }
         public Bounds Bounds { get; }
         public Material Material { get; }
-        public Vector3 ProjectionOrigin { get; }
+        public Vector3 ProjectionOrigin { get; private set; }
         private readonly Mesh[] meshes = new Mesh[6];
         private bool disposed;
 
@@ -55,6 +55,12 @@ namespace MiniGame.UnityHost
             if(disposed) return;
             Material.SetTexture("_Tex",texture);
             Material.SetFloat("_Yaw",float.IsNaN(yaw)||float.IsInfinity(yaw)?0:yaw);
+        }
+        public void SetProjectionOrigin(Vector3 origin)
+        {
+            if (disposed) return;
+            ProjectionOrigin = origin;
+            Material.SetVector("_ProjectionOrigin", origin);
         }
         public void SetOutline(bool visible)
         {

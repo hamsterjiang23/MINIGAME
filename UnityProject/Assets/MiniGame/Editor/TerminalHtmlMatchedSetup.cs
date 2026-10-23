@@ -8,6 +8,7 @@ namespace MiniGame.UnityHost.Editor
     {
         public const string FontPath = "Assets/PMSAmberTerminal/Resources/PMSAmberTerminal/HTMLBitmapFont.asset";
         public const string AtlasPath = "Assets/PMSAmberTerminal/Art/FontAtlas/HTML_SimSun_Lucida.png";
+        public const string ArtworkRoot = "Assets/PMSAmberUI_v0824/";
 
         [MenuItem("MiniGame/终端/接入 HTML 字体与高亮资源")]
         public static void Install()
@@ -26,8 +27,29 @@ namespace MiniGame.UnityHost.Editor
             assets.HtmlTypeface.InvalidateMetrics();
             foreach (var label in Resources.FindObjectsOfTypeAll<TerminalBitmapText>()) label.SetAllDirty();
             assets.DisplayShader = AssetDatabase.LoadAssetAtPath<Shader>("Assets/PMSAmberTerminal/Shaders/PMSAmberCRT.shader");
+            assets.ReleaseCommand = LoadCommand("Release");
+            assets.TreatmentCommand = LoadCommand("Treatment");
+            assets.PurificationCommand = LoadCommand("Purification");
+            assets.QuotaFields = LoadArtwork<Texture2D>("Fonts/QuotaFields_00_99.png");
+            assets.QuotaFieldMetrics = LoadArtwork<TextAsset>("Fonts/QuotaFields.json");
             EditorUtility.SetDirty(assets); AssetDatabase.SaveAssetIfDirty(assets);
-            Debug.Log("MINIGAME_HTML_FONT_INSTALLED 4096x4096 SimSun/Lucida Console; native terminal 800x600");
+            Debug.Log("MINIGAME_HTML_FONT_INSTALLED SimSun/Lucida Console; PMS v0.8.24 command rows and quota fields; native terminal 800x600");
+        }
+
+        private static TerminalCommandArtwork LoadCommand(string name) => new TerminalCommandArtwork
+        {
+            Normal = LoadArtwork<Texture2D>("CommandRows/" + name + "_Normal.png"),
+            Selected = LoadArtwork<Texture2D>("CommandRows/" + name + "_Selected.png"),
+            Pressed = LoadArtwork<Texture2D>("CommandRows/" + name + "_Pressed.png"),
+            Disabled = LoadArtwork<Texture2D>("CommandRows/" + name + "_Disabled.png")
+        };
+
+        private static T LoadArtwork<T>(string relativePath) where T : Object
+        {
+            string path = ArtworkRoot + relativePath;
+            var resource = AssetDatabase.LoadAssetAtPath<T>(path);
+            if (resource == null) throw new System.InvalidOperationException("HTML v0.8.24 资源不存在：" + path);
+            return resource;
         }
     }
 

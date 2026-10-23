@@ -1,0 +1,128 @@
+{
+  "source": "PlayerProbe",
+  "comparison": "Only fully opaque pixels in supplied PNGs; native 800x600 source before CRT; no claims about untested screen areas.",
+  "rows": [
+    {
+      "capture": "locked",
+      "command": "Disposition-Release",
+      "artwork": "Release_Disabled",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "locked",
+      "command": "Disposition-Treat",
+      "artwork": "Treatment_Disabled",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "locked",
+      "command": "Disposition-Purify",
+      "artwork": "Purification_Disabled",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "normal-selected",
+      "command": "Disposition-Release",
+      "artwork": "Release_Selected",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "normal-selected",
+      "command": "Disposition-Treat",
+      "artwork": "Treatment_Normal",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "normal-selected",
+      "command": "Disposition-Purify",
+      "artwork": "Purification_Normal",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "pressed-before-submit",
+      "command": "Disposition-Release",
+      "artwork": "Release_Normal",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "pressed-before-submit",
+      "command": "Disposition-Treat",
+      "artwork": "Treatment_Normal",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "pressed-before-submit",
+      "command": "Disposition-Purify",
+      "artwork": "Purification_Pressed",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "committed",
+      "command": "Disposition-Release",
+      "artwork": "Release_Disabled",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "committed",
+      "command": "Disposition-Treat",
+      "artwork": "Treatment_Disabled",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    },
+    {
+      "capture": "committed",
+      "command": "Disposition-Purify",
+      "artwork": "Purification_Disabled",
+      "opaque_pixels": 11904,
+      "max_channel_error": 0,
+      "pixels_over_1": 0
+    }
+  ],
+  "quotas": [
+    {
+      "capture": "locked",
+      "quota": 1,
+      "pixels": 2112,
+      "max_channel_error": 0
+    },
+    {
+      "capture": "normal-selected",
+      "quota": 1,
+      "pixels": 2112,
+      "max_channel_error": 0
+    },
+    {
+      "capture": "pressed-before-submit",
+      "quota": 1,
+      "pixels": 2112,
+      "max_channel_error": 0
+    },
+    {
+      "capture": "committed",
+      "quota": 0,
+      "pixels": 2112,
+      "max_channel_error": 0
+    }
+  ]
+}

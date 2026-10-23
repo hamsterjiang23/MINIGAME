@@ -52,10 +52,11 @@ def read_glyphs(path: Path = SOURCE) -> dict[int, Image.Image]:
 def corpus() -> tuple[set[int], list[str]]:
     paths = sorted((ROOT / "UnityProject/Assets/MiniGame/Runtime").glob("*.cs"))
     paths += sorted((ROOT / "UnityProject/Assets/MiniGame/Content").rglob("*.yarn"))
-    paths += sorted((ROOT / "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor").glob("*.yarn"))
     paths += sorted((ROOT / "src").rglob("*.cs"))
     paths += sorted((ROOT / "UnityProject/Assets/MiniGame/Content").rglob("*.json"))
-    paths += sorted((ROOT / "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor").glob("*.json"))
+    # Endings and supervisor dialogue are loaded directly from Resources, outside the campaign package.
+    resources = ROOT / "UnityProject/Assets/MiniGame/Resources"
+    paths += sorted(path for path in resources.rglob("*") if path.suffix in {".json", ".yarn"})
     codes = set(range(32, 127)) | {0x3000}
     for path in paths:
         if "obj" in path.parts or "bin" in path.parts:
@@ -75,6 +76,40 @@ def extract_text(value: object) -> str:
     if isinstance(value, list):
         return "".join(extract_text(item) for item in value)
     return ""
+
+
+def resize_glyph(source: Image.Image, size: int) -> Image.Image:
+    width = max(1, round(source.width * size / 12))
+    if size >= 12:
+        return source.resize((width, size), Image.Resampling.NEAREST)
+    # Nearest-neighbour reduction can omit an entire one-pixel stroke (for example 一 at 11px).
+    # Keep every covered pixel and return a binary mask, preserving the pixel-font appearance.
+    return source.resize((width, size), Image.Resampling.BOX).point([0] + [255] * 255)
+
+
+def validate_generated(codes: set[int], metrics_path: Path, atlas_path: Path) -> int:
+    if not metrics_path.exists() or not atlas_path.exists():
+        raise ValueError("Generated atlas is missing; rebuild it first.")
+    generated = json.loads(metrics_path.read_text(encoding="utf-8"))
+    pairs = {(glyph["code"], glyph["size"]): glyph for glyph in generated["glyphs"]}
+    missing = {(code, size) for code in codes for size in SIZES} - pairs.keys()
+    if missing:
+        raise ValueError(f"Generated atlas is stale ({len(missing)} missing glyph/size pairs); rebuild it.")
+    with Image.open(atlas_path) as atlas:
+        if atlas.size != (generated["atlasWidth"], generated["atlasHeight"]):
+            raise ValueError("Atlas dimensions do not match the metrics.")
+        alpha = atlas.getchannel("A")
+    for code in sorted(codes):
+        if chr(code).isspace():
+            continue
+        for size in SIZES:
+            glyph = pairs[code, size]
+            x, y, width, height = (glyph[key] for key in ("x", "y", "w", "h"))
+            if width <= 0 or height <= 0 or x < 0 or y < 0 or x + width > alpha.width or y + height > alpha.height:
+                raise ValueError(f"Invalid or empty glyph U+{code:04X} at {size}px; rebuild it.")
+            if alpha.crop((x, y, x + width, y + height)).getbbox() is None:
+                raise ValueError(f"Invisible glyph U+{code:04X} at {size}px; rebuild it.")
+    return len(codes) * len(SIZES)
 
 
 def build(check_only: bool) -> None:
@@ -99,23 +134,19 @@ def build(check_only: bool) -> None:
     if missing:
         raise SystemExit("Ark font is missing corpus characters; do not ship question-mark substitutions.")
     if check_only:
-        metrics_path = OUTPUT / "ArkPixel12.json"
-        if not metrics_path.exists():
-            raise SystemExit("Generated atlas is missing; rebuild it first.")
-        generated = json.loads(metrics_path.read_text(encoding="utf-8"))
-        pairs = {(glyph["code"], glyph["size"]) for glyph in generated["glyphs"]}
-        missing_pairs = {(code, size) for code in codes for size in SIZES} - pairs
-        if missing_pairs:
-            raise SystemExit(f"Generated atlas is stale ({len(missing_pairs)} missing glyph/size pairs); rebuild it.")
-        print(json.dumps({"generatedAtlasCoverage": True, "verifiedGlyphSizePairs": len(codes) * len(SIZES)}))
+        try:
+            count = validate_generated(codes, OUTPUT / "ArkPixel12.json", OUTPUT / "ArkPixel12.png")
+        except ValueError as error:
+            raise SystemExit(str(error)) from error
+        print(json.dumps({"generatedAtlasCoverage": True, "visibleGlyphPixels": True, "verifiedGlyphSizePairs": count}))
         return
     tiles: list[tuple[int, int, Image.Image, int, int, int]] = []
     for size in SIZES:
         for code in sorted(codes):
             source = glyphs[code]
             advance = size if code > 255 else math.ceil(size * .6)
-            width = max(1, round(source.width * size / 12))
-            resized = source.resize((width, size), Image.Resampling.NEAREST)
+            resized = resize_glyph(source, size)
+            width = resized.width
             bounds = resized.getbbox()
             if bounds is None:
                 tiles.append((code, size, Image.new("L", (1, 1)), 0, 0, advance))
@@ -143,6 +174,7 @@ def build(check_only: bool) -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     atlas.save(OUTPUT / "ArkPixel12.png")
     (OUTPUT / "ArkPixel12.json").write_text(json.dumps({"atlasWidth": width, "atlasHeight": height, "glyphs": metrics}, separators=(",", ":")) + "\n", encoding="utf-8")
+    validate_generated(codes, OUTPUT / "ArkPixel12.json", OUTPUT / "ArkPixel12.png")
     print(json.dumps({"atlas": [width, height], "glyphs": len(metrics), "sizes": SIZES}))
 
 

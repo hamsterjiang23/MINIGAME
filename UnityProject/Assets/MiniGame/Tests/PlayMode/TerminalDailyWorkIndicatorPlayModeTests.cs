@@ -13,6 +13,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("TerminalV0824")]
     public sealed class TerminalDailyWorkIndicatorPlayModeTests
     {
         [UnityTest]
@@ -51,8 +52,9 @@ namespace MiniGame.UnityHost.Tests
                     Assert.That(runtime.SubmitDisposition(encounter, dispositions[i]).Accepted, Is.False);
                     AssertRemaining(screen, runtime, expected);
                     Assert.That(runtime.GetView().Game.PurificationsToday, Is.EqualTo(Math.Max(0, i - 1)));
-                    Assert.That(Label(screen, "ReviewPurificationRequirement").text,
-                        Is.EqualTo("净化要求：" + Math.Max(0, i - 1) + "/1"));
+                    Assert.That(screen.GetComponentsInChildren<Text>(true).Any(text => text.name == "ReviewPurificationRequirement"
+                        && text.enabled && text.gameObject.activeInHierarchy), Is.False,
+                        "The artwork counter replaces the old right-column purification requirement.");
 
                     if (i == 2)
                     {
@@ -86,7 +88,6 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(runtime.EnterSelectedPatient("treated").Accepted, Is.True);
                 Complete(runtime);
                 AssertRemaining(screen, runtime, "12");
-                Assert.That(Label(screen, "ReviewPurificationRequirement").text, Is.EqualTo("净化要求：0/12"));
                 AssertIndicatorLayout(screen);
             }
             finally { Object.Destroy(owner); }
@@ -96,38 +97,31 @@ namespace MiniGame.UnityHost.Tests
         private static void AssertRemaining(MiniGameScreen screen, GameRuntime runtime, string expected)
         {
             var remaining = Label(screen, "DailyWorkIndicatorRemaining");
-            Assert.That(remaining.gameObject.activeInHierarchy, Is.True);
             Assert.That(remaining.text, Is.EqualTo(expected));
-            Assert.That(remaining.text, Is.EqualTo(runtime.GetView().Game.RemainingPurificationQuota.ToString("00")));
+            Assert.That(remaining.text, Is.EqualTo(Math.Max(0, runtime.GetView().Game.RemainingPurificationQuota).ToString("00")));
             Assert.That(runtime.GetView().Game.RemainingPurificationQuota, Is.GreaterThanOrEqualTo(0));
-            Assert.That(remaining.preferredWidth, Is.LessThanOrEqualTo(remaining.rectTransform.rect.width));
+            Assert.That(remaining.enabled && remaining.gameObject.activeInHierarchy, Is.False,
+                "The compatibility text retains the authoritative number without painting over the supplied artwork.");
+            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork");
+            Assert.That(artwork.enabled && artwork.gameObject.activeInHierarchy, Is.True);
+            Assert.That(artwork.texture, Is.SameAs(Resources.Load<TerminalAssetSet>("MiniGame/TerminalAssets").QuotaFields));
+            int value = int.Parse(expected);
+            Assert.That(artwork.uvRect.x, Is.EqualTo(value % 10 / 10f).Within(.00001f));
+            Assert.That(artwork.uvRect.y, Is.EqualTo(1 - (value / 10 + 1) / 10f).Within(.00001f));
+            Assert.That(artwork.uvRect.width, Is.EqualTo(.1f).Within(.00001f));
+            Assert.That(artwork.uvRect.height, Is.EqualTo(.1f).Within(.00001f));
         }
 
         private static void AssertIndicatorLayout(MiniGameScreen screen)
         {
-            var label = Label(screen, "DailyWorkIndicatorLabel");
-            var remaining = Label(screen, "DailyWorkIndicatorRemaining");
-            var status = Label(screen, "CommandStatus");
-            var heading = Label(screen, "DispositionHeading");
-            Assert.That(label.text, Is.EqualTo("当日指标 / 净化剩余"));
-            Assert.That(label.gameObject.activeInHierarchy, Is.True);
-            Assert.That(label.transform.parent.name, Is.EqualTo("PersonnelReview"));
-            Assert.That(remaining.transform.parent, Is.EqualTo(label.transform.parent));
-            Assert.That(remaining.alignment, Is.EqualTo(TextAnchor.UpperRight));
-            Assert.That(remaining.fontSize, Is.GreaterThan(label.fontSize));
-            Assert.That(label.preferredWidth, Is.LessThanOrEqualTo(label.rectTransform.rect.width));
-
-            var parent = label.transform.parent;
-            var labelBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(parent, label.transform);
-            var remainingBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(parent, remaining.transform);
-            var statusBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(parent, status.transform);
-            var headingBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(parent, heading.transform);
-            Assert.That(labelBounds.max.y, Is.LessThanOrEqualTo(statusBounds.min.y));
-            Assert.That(remainingBounds.max.y, Is.LessThanOrEqualTo(statusBounds.min.y));
-            Assert.That(labelBounds.min.y, Is.GreaterThanOrEqualTo(headingBounds.max.y));
-            Assert.That(remainingBounds.min.y, Is.GreaterThanOrEqualTo(headingBounds.max.y));
-            Assert.That(labelBounds.max.x, Is.LessThanOrEqualTo(remainingBounds.min.x));
-            Assert.That(remainingBounds.max.x, Is.EqualTo(778).Within(.01f));
+            var review = screen.GetComponentsInChildren<RectTransform>(true).Single(rect => rect.name == "PersonnelReview");
+            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork");
+            var bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(review, artwork.rectTransform);
+            Assert.That(bounds.min.x, Is.EqualTo(712).Within(.01f));
+            Assert.That(bounds.max.y, Is.EqualTo(-135).Within(.01f));
+            Assert.That(artwork.rectTransform.rect.size, Is.EqualTo(new Vector2(66, 32)));
+            Assert.That(((RectTransform)artwork.transform.parent).rect.size, Is.EqualTo(new Vector2(66, 32)));
+            Assert.That(artwork.raycastTarget, Is.False);
         }
 
         private static Text Label(MiniGameScreen screen, string name) =>

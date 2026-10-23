@@ -69,7 +69,8 @@ namespace MiniGame.UnityHost
             new Room { PatientId = "diplomat", Label = "B-15", Seed = 15, ActorHeight = 1.68f, Grime = .2f,
                 LightTint = new Color(.77f, .86f, .89f) },
             new Room { PatientId = "priest", Label = "B-16", Seed = 16, ActorHeight = 1.73f, Grime = .46f },
-            new Room { PatientId = "tutorial", Label = "B-17", Seed = 17, ActorHeight = 1.57f, Grime = .24f }
+            new Room { PatientId = "tutorial", Label = "B-17", Seed = 17, ActorHeight = 1.57f, Grime = .24f },
+            new Room { PatientId = "self-review", Label = "T-06", Seed = 18, ActorHeight = 1.6f, Grime = .3f }
         };
     }
 }

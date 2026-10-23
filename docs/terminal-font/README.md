@@ -23,6 +23,18 @@ uv run Tools/TerminalTypography/build_ark_atlas.py
 uv run Tools/TerminalTypography/build_ark_atlas.py --check-only
 ```
 
-随后在Unity运行“MiniGame → 终端 → 安装方舟像素字体”。检查脚本验证当前语料在所有7个逻辑字号中的覆盖，若图集落后则失败；安装器设置Point、关闭mipmap和压缩，并校验实际导入尺寸。`[verified: build_ark_atlas.py build；TerminalTypographySetup.Install；TerminalPixelFont.TryGet]`
+首次安装时在Unity运行“MiniGame → 终端 → 安装方舟像素字体”。之后图集或字形数据重新导入时，会自动清空字形缓存并刷新已加载文本。安装器设置Point、关闭mipmap和压缩，并校验实际导入尺寸。`[verified: TerminalTypographySetup.Install/RefreshLoadedFont；TerminalPixelFontRefresh.OnPostprocessAllAssets；TerminalPixelFont.TryGet]`
+
+语料扫描包括主线内容和Resources下直接加载的监督员、结局JSON及Yarn文件。检查脚本验证所有7个逻辑字号的字符覆盖、字形边界和实际可见像素；缺字、空字形、透明字形或图集尺寸不一致都会失败。10／11px缩小时保留被采样范围内的笔画，防止“一”、破折号等细笔画整字消失；12px及以上保持原采样方式。`[verified: build_ark_atlas.py corpus/resize_glyph/validate_generated；test_build_ark_atlas.py]`
+
+字体回归检查：
+
+```powershell
+uv run --with Pillow==12.3.0 python -m unittest discover -s Tools/TerminalTypography -v
+```
+
+Unity对应检查为 `TerminalBitmapTextTests`、`TerminalDialogueTextGlitchTests`、`DialogueBitmapPaginationTests`（EditMode）及 `TerminalHtmlParityTests`（PlayMode）。前者覆盖活动对白包、监督员和结局的所有非空白字符，后者在实际终端Canvas渲染包含原先缺字的结局句子并保存截图。`[verified: TerminalBitmapTextTests.EveryActiveDialogueCharacterHasVisibleGlyphsAtEveryLogicalSize；TerminalHtmlParityTests.EndingCharactersRenderThroughTheLiveDialogueCanvas]`
+
+像素风强度设置与首次选择页的文案直接来自运行时源码，自动纳入 `corpus()` 的 `Runtime/*.cs` 扫描。本次补齐“块、粒、荐”三个码位的七档字形，覆盖增至1,455个码位／10,185个字形；原10,164个字形的RGBA像素、尺寸、偏移和advance全部保留，重排仍使用既有导入缓存刷新。详见[像素风强度字形核对](pixel-strength-glyph-audit-20261023.json)。`[verified: build_ark_atlas.py corpus；pixel-strength-glyph-audit-20261023.json preservedGlyphs/addedCharacters/pixelOrMetricChanges；TerminalPixelFontRefresh.OnPostprocessAllAssets]`
 
 验证记录见 [verification.json](verification.json)。`[verified: verification.json]`

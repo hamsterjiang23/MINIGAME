@@ -15,6 +15,7 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("TerminalV0824")]
     public sealed class AmberTerminalPlayModeTests
     {
         [UnityTest, Timeout(30000)]
@@ -34,11 +35,12 @@ namespace MiniGame.UnityHost.Tests
                 foreach (int mode in new[] { 0, 1, 2 })
                 {
                     display.SetMode(mode);
-                    var targets = new[] { new Vector2(400, 121), new Vector2(400, 151), new Vector2(400, 181), new Vector2(400, 211), new Vector2(400, 241) };
+                    var targets = Enumerable.Range(0, runtime.GetView().Patients.Count)
+                        .Select(index => new Vector2(400, 121 + index * 30)).ToArray();
                     for (int i = 0; i < targets.Length; i++)
                     {
                         var hits = Pick(display, targets[i]);
-                        Assert.That(hits, Is.Not.Empty);
+                        Assert.That(hits, Is.Not.Empty, "Configured roster row " + i + " in CRT mode " + mode);
                         Assert.That(hits[0].gameObject.GetComponentInParent<Button>()?.name, Is.EqualTo("Roster-" + i), "Mode " + mode + " top hit: " + string.Join(",", hits.Select(h => h.gameObject.name)));
                     }
                 }
@@ -54,7 +56,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(screen.HandleTerminalKey(KeyCode.Return), Is.True);
                 Assert.That(replies, Is.EqualTo(1));
                 display.RenderFrame();
-                var replyHits = Pick(display, new Vector2(650, 423));
+                var replyHits = Pick(display, new Vector2(650, 441));
                 Assert.That(replyHits[0].gameObject.GetComponentInParent<Button>()?.name, Is.EqualTo("Reply-two"));
                 var reply = replyHits.Select(h => h.gameObject.GetComponentInParent<Button>()).FirstOrDefault(b => b != null && b.name == "Reply-two");
                 Assert.That(reply, Is.Not.Null, string.Join(",", replyHits.Select(h => h.gameObject.name)));
@@ -66,7 +68,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(screen.TryCloseHistory(),Is.False);
                 screen.HandleTerminalKey(KeyCode.Return);Assert.That(replies,Is.EqualTo(3));
                 runtime.SetPaused(true);
-                Assert.That(Pick(display, new Vector2(650, 423)).Any(h => h.module.GetType().Name == "TerminalDisplayRaycaster"), Is.False,
+                Assert.That(Pick(display, new Vector2(650, 441)).Any(h => h.module.GetType().Name == "TerminalDisplayRaycaster"), Is.False,
                     "The terminal raycaster must yield to the real pause overlay.");
                 runtime.SetPaused(false);
                 yield return null;
@@ -77,11 +79,11 @@ namespace MiniGame.UnityHost.Tests
                 var replaced = Read(display.Texture);
                 try
                 {
-                    Assert.That(LogicalPixels(replaced, new Rect(530, 374, 248, 28)).Count(pixel => pixel.r > .3f && pixel.g > .12f),
+                    Assert.That(LogicalPixels(replaced, new Rect(530, 392, 248, 28)).Count(pixel => pixel.r > .3f && pixel.g > .12f),
                         Is.GreaterThan(1000), "The replacement's selected reply must render, not disappear behind the layer mask.");
                 }
                 finally { Object.Destroy(replaced); }
-                Assert.That(Pick(display, new Vector2(650, 423))[0].gameObject.GetComponentInParent<Button>()?.name, Is.EqualTo("Reply-four"));
+                Assert.That(Pick(display, new Vector2(650, 441))[0].gameObject.GetComponentInParent<Button>()?.name, Is.EqualTo("Reply-four"));
                 display.RenderFrame(); CaptureTexture(display.Texture, "amber-review-source"); CaptureComposite(display,"amber-review");
             }
             finally { Object.Destroy(owner); }
@@ -187,7 +189,7 @@ namespace MiniGame.UnityHost.Tests
                     AssertButtonFill(screen, choices, secondReply, desk, "Other response remains dark");
                     Assert.That(firstReply.GetComponentsInChildren<TerminalBitmapText>().Single(t => t.name == "Label")
                         .GetComponentInParent<RectMask2D>(), Is.Not.Null);
-                    foreach (var pixel in LogicalPixels(choices, new Rect(773, 379, 4, 18)))
+                    foreach (var pixel in LogicalPixels(choices, new Rect(773, 397, 4, 18)))
                         AssertColor(pixel, highlight, "Long response text must stop at its real RectMask2D viewport.");
                 }
                 finally { Object.Destroy(choices); }

@@ -36,6 +36,8 @@ namespace MiniGame.Core
     {
         public int Day { get; }
         public GamePhase Phase { get; }
+        /// <summary>The phase CompleteDream will enter, or null outside a dream. Reading it has no side effects.</summary>
+        public GamePhase? DreamReturnPhase { get; }
         public EndingType Ending { get; }
         public int RemainingPurificationQuota { get; }
         public int PurificationsToday { get; }
@@ -59,9 +61,10 @@ namespace MiniGame.Core
             EncounterStage? stage, IEnumerable<string> responses,
             IEnumerable<Disposition> dispositions, IEnumerable<InteractionTarget> interactions, int rebellion = 0,
             int purificationsToday = 0, int purificationRequirement = 0,
-            int selfReviewLineIndex = 0, int selfReviewLineCount = 0)
+            int selfReviewLineIndex = 0, int selfReviewLineCount = 0, GamePhase? dreamReturnPhase = null)
         {
             Day = day; Phase = phase; Ending = ending;
+            DreamReturnPhase = dreamReturnPhase;
             RemainingPurificationQuota = remainingQuota;
             PurificationsToday = purificationsToday;
             PurificationRequirement = purificationRequirement;

@@ -1,0 +1,560 @@
+{
+  "passed": true,
+  "method": "Original PNG RGB pixels; dense yellow-square detection and continuous black-line counts. No image modifications.",
+  "checked": 12,
+  "errors": [],
+  "checks": [
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover1280\\main-menu-grid-high.png",
+      "image_size": [
+        1280,
+        720
+      ],
+      "expected_cells_per_axis": 2,
+      "yellow_bounds": [
+        446,
+        279,
+        530,
+        362
+      ],
+      "vertical_lines": [
+        [
+          488
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          321
+        ]
+      ],
+      "visible_cells": [
+        2,
+        2
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover1280\\main-menu-grid-medium.png",
+      "image_size": [
+        1280,
+        720
+      ],
+      "expected_cells_per_axis": 4,
+      "yellow_bounds": [
+        598,
+        279,
+        682,
+        362
+      ],
+      "vertical_lines": [
+        [
+          619
+        ],
+        [
+          640
+        ],
+        [
+          661
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          299
+        ],
+        [
+          321
+        ],
+        [
+          342
+        ]
+      ],
+      "visible_cells": [
+        4,
+        4
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover1280\\main-menu-grid-low.png",
+      "image_size": [
+        1280,
+        720
+      ],
+      "expected_cells_per_axis": 8,
+      "yellow_bounds": [
+        750,
+        279,
+        834,
+        362
+      ],
+      "vertical_lines": [
+        [
+          760
+        ],
+        [
+          771
+        ],
+        [
+          781
+        ],
+        [
+          792
+        ],
+        [
+          803
+        ],
+        [
+          813
+        ],
+        [
+          824
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          289
+        ],
+        [
+          299
+        ],
+        [
+          310
+        ],
+        [
+          321
+        ],
+        [
+          331
+        ],
+        [
+          342
+        ],
+        [
+          353
+        ]
+      ],
+      "visible_cells": [
+        8,
+        8
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover1280\\pause-grid-high.png",
+      "image_size": [
+        1280,
+        720
+      ],
+      "expected_cells_per_axis": 2,
+      "yellow_bounds": [
+        162,
+        265,
+        245,
+        348
+      ],
+      "vertical_lines": [
+        [
+          203
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          306
+        ]
+      ],
+      "visible_cells": [
+        2,
+        2
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover1280\\pause-grid-medium.png",
+      "image_size": [
+        1280,
+        720
+      ],
+      "expected_cells_per_axis": 4,
+      "yellow_bounds": [
+        314,
+        265,
+        397,
+        348
+      ],
+      "vertical_lines": [
+        [
+          334
+        ],
+        [
+          355
+        ],
+        [
+          377
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          285
+        ],
+        [
+          306
+        ],
+        [
+          328
+        ]
+      ],
+      "visible_cells": [
+        4,
+        4
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover1280\\pause-grid-low.png",
+      "image_size": [
+        1280,
+        720
+      ],
+      "expected_cells_per_axis": 8,
+      "yellow_bounds": [
+        466,
+        265,
+        549,
+        348
+      ],
+      "vertical_lines": [
+        [
+          475
+        ],
+        [
+          486
+        ],
+        [
+          497
+        ],
+        [
+          507
+        ],
+        [
+          518
+        ],
+        [
+          529
+        ],
+        [
+          539
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          274
+        ],
+        [
+          285
+        ],
+        [
+          296
+        ],
+        [
+          306
+        ],
+        [
+          317
+        ],
+        [
+          328
+        ],
+        [
+          338
+        ]
+      ],
+      "visible_cells": [
+        8,
+        8
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover4x3\\main-menu-grid-high.png",
+      "image_size": [
+        1024,
+        768
+      ],
+      "expected_cells_per_axis": 2,
+      "yellow_bounds": [
+        333,
+        309,
+        410,
+        386
+      ],
+      "vertical_lines": [
+        [
+          372
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          348
+        ]
+      ],
+      "visible_cells": [
+        2,
+        2
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover4x3\\main-menu-grid-medium.png",
+      "image_size": [
+        1024,
+        768
+      ],
+      "expected_cells_per_axis": 4,
+      "yellow_bounds": [
+        474,
+        309,
+        550,
+        386
+      ],
+      "vertical_lines": [
+        [
+          492
+        ],
+        [
+          512
+        ],
+        [
+          532
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          328
+        ],
+        [
+          348
+        ],
+        [
+          367
+        ]
+      ],
+      "visible_cells": [
+        4,
+        4
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover4x3\\main-menu-grid-low.png",
+      "image_size": [
+        1024,
+        768
+      ],
+      "expected_cells_per_axis": 8,
+      "yellow_bounds": [
+        614,
+        309,
+        691,
+        386
+      ],
+      "vertical_lines": [
+        [
+          623
+        ],
+        [
+          633
+        ],
+        [
+          643
+        ],
+        [
+          652
+        ],
+        [
+          662
+        ],
+        [
+          672
+        ],
+        [
+          682
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          318
+        ],
+        [
+          328
+        ],
+        [
+          338
+        ],
+        [
+          348
+        ],
+        [
+          358
+        ],
+        [
+          367
+        ],
+        [
+          377
+        ]
+      ],
+      "visible_cells": [
+        8,
+        8
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover4x3\\pause-grid-high.png",
+      "image_size": [
+        1024,
+        768
+      ],
+      "expected_cells_per_axis": 2,
+      "yellow_bounds": [
+        136,
+        294,
+        213,
+        371
+      ],
+      "vertical_lines": [
+        [
+          174
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          332
+        ]
+      ],
+      "visible_cells": [
+        2,
+        2
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover4x3\\pause-grid-medium.png",
+      "image_size": [
+        1024,
+        768
+      ],
+      "expected_cells_per_axis": 4,
+      "yellow_bounds": [
+        276,
+        294,
+        353,
+        371
+      ],
+      "vertical_lines": [
+        [
+          295
+        ],
+        [
+          315
+        ],
+        [
+          335
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          313
+        ],
+        [
+          332
+        ],
+        [
+          352
+        ]
+      ],
+      "visible_cells": [
+        4,
+        4
+      ],
+      "passed": true,
+      "error": null
+    },
+    {
+      "file": "F:\\AAMINIGAME\\MINIGAME\\Artifacts\\PixelStrength\\PlayerHover4x3\\pause-grid-low.png",
+      "image_size": [
+        1024,
+        768
+      ],
+      "expected_cells_per_axis": 8,
+      "yellow_bounds": [
+        417,
+        294,
+        494,
+        371
+      ],
+      "vertical_lines": [
+        [
+          426
+        ],
+        [
+          436
+        ],
+        [
+          445
+        ],
+        [
+          455
+        ],
+        [
+          465
+        ],
+        [
+          475
+        ],
+        [
+          485
+        ]
+      ],
+      "horizontal_lines": [
+        [
+          303
+        ],
+        [
+          313
+        ],
+        [
+          322
+        ],
+        [
+          332
+        ],
+        [
+          342
+        ],
+        [
+          352
+        ],
+        [
+          362
+        ]
+      ],
+      "visible_cells": [
+        8,
+        8
+      ],
+      "passed": true,
+      "error": null
+    }
+  ]
+}

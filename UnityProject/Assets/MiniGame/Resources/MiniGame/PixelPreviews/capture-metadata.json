@@ -1,0 +1,64 @@
+{
+    "scene": "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+    "unity": "2022.3.23f1c1",
+    "camera": "Main Camera",
+    "sourceProfile": "Assets/MiniGame/Resources/RoomLightingReferenceRetro.asset",
+    "sourceProfileGuid": "ac53fcb818485fc45baa8f74aeb84a3f",
+    "sourceProfileJson": "{\"effectEnabled\":true,\"strength\":1.0,\"pixelSize\":2,\"fullscreenQuantization\":true,\"levels\":16,\"gammaBefore\":0.906000018119812,\"gammaAfter\":1.0230000019073487,\"colorGradingEnabled\":true,\"postExposure\":0.2800000011920929,\"contrast\":-4.300000190734863,\"saturation\":6.800000190734863,\"shadowTint\":{\"r\":1.0,\"g\":0.8513091206550598,\"b\":0.23137253522872926,\"a\":1.0},\"midtoneTint\":{\"r\":1.0,\"g\":0.8781211376190186,\"b\":0.6745283007621765,\"a\":1.0},\"highlightTint\":{\"r\":0.9928622841835022,\"g\":1.0,\"b\":0.5607843399047852,\"a\":1.0},\"shadowExposure\":-0.20000000298023225,\"midtoneExposure\":0.0,\"highlightExposure\":0.0,\"shadowEnd\":0.3499999940395355,\"highlightStart\":0.6499999761581421,\"neutralTonemapping\":false,\"perceptualQuantization\":false,\"quantizationStrength\":1.0,\"ditherStrength\":0.0,\"filmGrainStrength\":0.05000000074505806,\"useVirtualResolution\":true,\"virtualHeight\":540}",
+    "shader": "Hidden/MiniGame/RetroScreen",
+    "captureMode": "Camera.Render, actual Combined daytime GPU output; UI canvases temporarily disabled.",
+    "width": 1280,
+    "height": 720,
+    "frame": 4144,
+    "position": {
+        "x": -4.300000190734863,
+        "y": 0.8500000238418579,
+        "z": -3.3000001907348635
+    },
+    "eulerAngles": {
+        "x": 7.198051452636719,
+        "y": 40.73210525512695,
+        "z": 2.1513891113045248e-7
+    },
+    "rotation": {
+        "x": 0.05884946510195732,
+        "y": 0.34733033180236819,
+        "z": -0.021846236661076547,
+        "w": 0.935639500617981
+    },
+    "fieldOfView": 37.299068450927737,
+    "nightBlend": 0.0,
+    "restored": true,
+    "captures": [
+        {
+            "name": "High",
+            "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Resources\\MiniGame\\PixelPreviews\\High.png",
+            "sha256": "948f86f002f5ee3b540dce9b142c380d61e2cef9ae5e3df2f9a82cd321a297d0",
+            "pixelSize": 8,
+            "gridColumns": 2,
+            "frame": 4144,
+            "shaderPixelSize": 8.0,
+            "shaderVirtualResolution": 0.0
+        },
+        {
+            "name": "Medium",
+            "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Resources\\MiniGame\\PixelPreviews\\Medium.png",
+            "sha256": "c3d54ad9a80a9d5e9174a972703131a66c9adc2f305326e870fe21d76498ec6d",
+            "pixelSize": 4,
+            "gridColumns": 4,
+            "frame": 4144,
+            "shaderPixelSize": 4.0,
+            "shaderVirtualResolution": 0.0
+        },
+        {
+            "name": "Low",
+            "path": "F:\\AAMINIGAME\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Resources\\MiniGame\\PixelPreviews\\Low.png",
+            "sha256": "aaffd5efb44b2d0be3653fbc7741b44b2b952ad13f18dd34db895872ed52a163",
+            "pixelSize": 2,
+            "gridColumns": 8,
+            "frame": 4144,
+            "shaderPixelSize": 2.0,
+            "shaderVirtualResolution": 0.0
+        }
+    ]
+}

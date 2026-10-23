@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-23",
+  "tests": {
+    "editmode-assets": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "editmode-commands": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "playmode-dossier": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "playmode-parity": {
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "totalPassed": 23,
+  "build": {
+    "status": "completed",
+    "buildId": "build_7253b79564ad",
+    "result": "Succeeded",
+    "platform": "StandaloneWindows64",
+    "outputPath": "F:/AAMINIGAME/MINIGAME/Artifacts/TerminalV0826/Player/MiniGame.exe",
+    "totalSizeBytes": 893305483,
+    "buildTimeMs": 6161,
+    "totalWarnings": 1,
+    "totalErrors": 0,
+    "warnings": [
+      {
+        "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+      }
+    ]
+  },
+  "runs": {
+    "editor": {
+      "environment": "Editor",
+      "result": "Passed",
+      "error": "",
+      "width": 1920,
+      "height": 1080,
+      "wheelEvents": 3,
+      "arrowClicks": 3,
+      "readonlyChecks": 10,
+      "awaitingNativeInput": false,
+      "nativeWheelDown": false,
+      "nativeWheelUp": false
+    },
+    "player-1280x720": {
+      "environment": "Development Player",
+      "result": "Passed",
+      "error": "",
+      "width": 1280,
+      "height": 720,
+      "wheelEvents": 3,
+      "arrowClicks": 3,
+      "readonlyChecks": 10,
+      "awaitingNativeInput": false,
+      "nativeWheelDown": true,
+      "nativeWheelUp": true,
+      "nativeDownInputFrames": 1,
+      "nativeUpInputFrames": 1
+    },
+    "player-1024x768": {
+      "environment": "Development Player",
+      "result": "Passed",
+      "error": "",
+      "width": 1024,
+      "height": 768,
+      "wheelEvents": 3,
+      "arrowClicks": 3,
+      "readonlyChecks": 10,
+      "awaitingNativeInput": false,
+      "nativeWheelDown": false,
+      "nativeWheelUp": false,
+      "nativeDownInputFrames": 0,
+      "nativeUpInputFrames": 0
+    }
+  },
+  "sourceCheck": {
+    "importedAssets": 13,
+    "profiles": 7,
+    "authoredProfiles": 5,
+    "originalBytesMatch": true
+  },
+  "preservation": {
+    "formalSaveCount": 2,
+    "formalSaveHashesUnchanged": true,
+    "sceneSha256": "9B3184BDC39E04708321821F9E8C05A60FA6A8E5CEBB0E7804B3C1E8E231A5F5",
+    "sceneUnchanged": true
+  },
+  "nativeInput": {
+    "method": "computer-use sky.scroll Windows input injection, not physical human mouse testing",
+    "downDelta": 120,
+    "upDelta": -120,
+    "windowPoint": [
+      900,
+      530
+    ],
+    "playerSize": [
+      1280,
+      720
+    ],
+    "downFrames": 1,
+    "upFrames": 1,
+    "captureMethod": "Player ScreenCapture; Windows Graphics Capture helper timed out"
+  },
+  "review": {
+    "fixed": [
+      "ResetNavigation scroll reset",
+      "Unity fake-null tutorial portrait fallback",
+      "Native wheel evidence must include raw input direction and stable patient"
+    ],
+    "openFindings": 0
+  },
+  "scope": {
+    "formalReleaseBuilt": false,
+    "coreRulesChanged": false,
+    "saveFormatChanged": false,
+    "dialogueVersionChanged": false
+  }
+}

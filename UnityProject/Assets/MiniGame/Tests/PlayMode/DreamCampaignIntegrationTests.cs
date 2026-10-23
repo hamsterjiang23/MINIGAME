@@ -67,6 +67,7 @@ namespace MiniGame.UnityHost.Tests
         [UnityTearDown]
         public IEnumerator TearDown()
         {
+            yield return EndingVisualCapture.Flush();
             MainMenuController.SkipStartup = previousSkipStartup;
             if (host != null)
             {
@@ -102,7 +103,7 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
-        [UnityTest, Timeout(60000)]
+        [UnityTest, Timeout(60000), Category("InteractionWakeGm")]
         public IEnumerator DayZeroWaitsForTheBedAndOneInteractionSleepsWithoutShowingADream()
         {
             var fixture = Fixture();
@@ -131,8 +132,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1), "Repeated E must not advance past the first morning.");
         }
 
-        [UnityTest, Timeout(60000)]
-        public IEnumerator DayOneFirstBedProjectsOnTheAuthoredWallAndReturnsToTheBedWithoutAdvancingTheDay()
+        [UnityTest, Timeout(60000), Category("InteractionWakeGm")]
+        public IEnumerator DayOneBedProjectsOnTheAuthoredWallThenWakesOnceAtFullBlack()
         {
             var fixture = Fixture();
             DriveTo(fixture, view => EveningClosed(view, 1));
@@ -170,31 +171,117 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Dream));
             Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
             host.Dreams.Advance(dreams.ReturnSeconds);
-            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
+            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.None));
             Assert.That(host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade").color.a,
                 Is.EqualTo(1));
-            var returnRotation = host.Player.ViewCamera.transform.rotation;
-            host.Dreams.Advance(dreams.WakeBlackSeconds - .1f);
-            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.BlackHold));
-            host.Dreams.Advance(.11f);
-            Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.Revealing));
-            Assert.That(Quaternion.Angle(host.Player.ViewCamera.transform.rotation, returnRotation), Is.LessThan(.01f),
-                "The camera is already facing the bed when the black frame fades out.");
-            host.Dreams.Advance(dreams.ReturnSeconds);
-            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
-            Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
-            original.AssertPositionAndFieldOfView(host.Player);
-            AssertFacingIlluminatedBed();
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            Assert.That(host.Effects.CaptureSleepCheckpoint()?.Phase, Is.EqualTo(SleepTransitionPhase.Waking));
+            Assert.That(host.GetComponent<BedtimeGuidance>().Isolation, Is.Zero,
+                "Morning lighting must already be selected under the full-black handoff.");
+            Assert.That(Vector3.Dot(host.Player.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
+            AssertNoDreamBedEffects();
             Assert.That(projection.enabled, Is.False);
+            EndingVisualCapture.Request("day1-wake-black", host.Runtime);
             host.Dreams.Advance(60);
-            yield return null;
-            yield return null;
-            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
-            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.AfterDream));
-            Assert.That(host.Runtime.GetView().Cue, Is.Null, "The second bed interaction is required to begin sleeping.");
+            bool capturedEyesOpening = false;
+            yield return Until(() =>
+            {
+                if (!capturedEyesOpening)
+                {
+                    float opacity = host.Screen.GetComponentsInChildren<Image>(true)
+                        .Single(image => image.name == "PresentationFade").color.a;
+                    if (opacity > 0 && opacity < 1)
+                    {
+                        EndingVisualCapture.Request("day1-wake-eyes-opening", host.Runtime);
+                        capturedEyesOpening = true;
+                    }
+                }
+                return !host.Effects.SleepCameraActive;
+            }, "Wake finishes without another bed interaction", 5);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
+            original.AssertPositionAndFieldOfView(host.Player);
+            AssertNoDreamBedEffects();
+            yield return EndingVisualCapture.Capture("day1-wake-completed", host.Runtime);
         }
 
-        [UnityTest, Timeout(90000)]
+        [UnityTest, Timeout(60000), Category("InteractionWakeGm")]
+        public IEnumerator WakeFadeTurnAndStandRestoreTheirExactPausedFrameWithoutAdvancingTheDayAgain()
+        {
+            var fixture = Fixture();
+            DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream);
+            host.RestoreCheckpoint(fixture.Save());
+            host.Dreams.Advance(dreams.BlackScreenSeconds);
+            host.Dreams.Advance(dreams.GetDay(1).Duration);
+            host.Dreams.Advance(dreams.ReturnSeconds);
+            Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
+            var camera = host.Player.ViewCamera;
+            var fade = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade");
+            var checkpoint = host.Effects.CaptureSleepCheckpoint();
+            Assert.That(checkpoint?.Phase, Is.EqualTo(SleepTransitionPhase.Waking));
+            string saved = host.Runtime.Save();
+            foreach (float elapsed in new[] { 0f, .2f, .95f, 1.95f })
+            {
+                checkpoint.WakeElapsed = elapsed;
+                Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True);
+                var position = camera.transform.position;
+                var rotation = camera.transform.rotation;
+                float opacity = fade.color.a;
+                host.RestoreCheckpoint(saved);
+                Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True);
+                Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
+                Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
+                Assert.That(fade.color.a, Is.EqualTo(opacity).Within(.0001f));
+                yield return new WaitForSecondsRealtime(.08f);
+                Assert.That(host.Effects.CaptureSleepCheckpoint().WakeElapsed, Is.EqualTo(elapsed));
+                Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
+                Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
+                AssertNoDreamBedEffects();
+                Assert.That(host.Runtime.Save(), Is.EqualTo(saved));
+            }
+            Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
+            yield return Until(() => !host.Effects.SleepCameraActive, "restored wake completes", 5);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(host.Runtime.GetView().Cue, Is.Null);
+            Assert.That(host.Screen.TransitionLocked, Is.False);
+        }
+
+        [UnityTest, Timeout(60000), Category("InteractionWakeGm")]
+        public IEnumerator OldDreamTailCheckpointsWaitUnderBlackWhilePausedAndWakeWithoutRevealingABed()
+        {
+            var fixture = Fixture();
+            DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Dream);
+            Assert.That(fixture.SetPaused(true).Accepted, Is.True);
+            string saved = fixture.Save();
+            foreach (var phase in new[] { DreamPlaybackPhase.Returning, DreamPlaybackPhase.BlackHold, DreamPlaybackPhase.Revealing })
+            {
+                host.RestoreCheckpoint(saved);
+                var checkpoint = host.Dreams.CaptureCheckpoint();
+                checkpoint.Phase = phase;
+                checkpoint.PlaybackSeconds = dreams.GetDay(1).Duration;
+                checkpoint.Elapsed = phase == DreamPlaybackPhase.Returning ? dreams.ReturnSeconds * .4f : .3f;
+                host.Dreams.RestoreCheckpoint(checkpoint);
+                Assert.That(host.Dreams.Phase, Is.EqualTo(DreamPlaybackPhase.Returning));
+                var fade = host.Screen.GetComponentsInChildren<Image>(true).Single(image => image.name == "PresentationFade");
+                if (phase != DreamPlaybackPhase.Returning) Assert.That(fade.color.a, Is.EqualTo(1));
+                AssertNoDreamBedEffects();
+                float elapsed = host.Dreams.CaptureCheckpoint().Elapsed;
+                host.Dreams.Advance(60);
+                yield return null;
+                Assert.That(host.Dreams.CaptureCheckpoint().Elapsed, Is.EqualTo(elapsed));
+                Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
+                Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
+                host.Dreams.Advance(dreams.ReturnSeconds);
+                Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+                Assert.That(host.Dreams.OwnsCamera, Is.False);
+                Assert.That(fade.color.a, Is.EqualTo(1));
+                Assert.That(host.Effects.CaptureSleepCheckpoint()?.Phase, Is.EqualTo(SleepTransitionPhase.Waking));
+                AssertNoDreamBedEffects();
+            }
+        }
+
+        [UnityTest, Timeout(90000), Category("InteractionWakeGm")]
         public IEnumerator ResidentTrustSelfPurificationKeepsTheRuntimeAcrossBeachAndRestoresEndingProgress()
         {
             StartConfiguredCampaign(false);
@@ -219,13 +306,16 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
             physicalScreen.GetPropertyBlock(screenProperties, 0);
             Assert.That(screenProperties.GetFloat("_CrtPower"), Is.InRange(.1f, 1f), "Bedtime and room lighting must preserve the unbooted monitor's guidance light.");
+            yield return EndingVisualCapture.Capture("day3-self-review-no-bed-light", host.Runtime);
             var computer = Interaction(InteractionTarget.Computer);
             TeleportTo("Computer approach", computer.GetComponent<Collider>().bounds.center);
             host.Player.RefreshInteractionFocus();
             Assert.That(host.Player.FocusedInteraction, Is.SameAs(computer));
             Assert.That(host.Player.InteractFocused(), Is.True);
             yield return Until(() => host.Runtime.GetView().Cue == null && !host.Effects.IsTransitioning
-                && host.Runtime.GetView().TerminalPage == TerminalPage.Directory, "actual self-review directory transition", 12);
+                && host.Runtime.GetView().TerminalPage == TerminalPage.Directory
+                && !host.Screen.WorldInputBlockedThisFrame && host.Screen.PowerPhase == TerminalPowerPhase.Running,
+                "actual self-review directory transition and fresh input frame", 12);
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.True);
             yield return null;
             Assert.That(host.Runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Review));
@@ -782,8 +872,8 @@ namespace MiniGame.UnityHost.Tests
             return difference / first.Length;
         }
 
-        [UnityTest, Timeout(90000)]
-        public IEnumerator DayOneShutdownAndDreamReturnToTheBedAndOnlyTheSecondBedStartsTheNextDay()
+        [UnityTest, Timeout(90000), Category("InteractionWakeGm")]
+        public IEnumerator DayOneShutdownAndDreamWakeAutomaticallyWithPausedWakeCheckpoint()
         {
             var fixture = Fixture();
             DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.Evening
@@ -825,32 +915,29 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Player.InteractFocused(), Is.True);
             yield return Until(() => host.Dreams.IsPlaying, "Day1 dream starts on normal clock", dreams.BlackScreenSeconds + 5);
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "day1-natural-dream");
-            yield return Until(() => host.Runtime.GetView().Game.Phase == GamePhase.AfterDream,
+            yield return Until(() => host.Runtime.GetView().Game.Day == 2,
                 "Day1 dream finishes on normal clock", dreams.GetDay(1).Duration + dreams.ReturnSeconds + 5);
-            Assert.That(host.Screen.TransitionLocked, Is.False);
-            Assert.That(fade.color.a, Is.LessThan(.01f));
-            AssertFacingIlluminatedBed();
-            yield return PrototypePlayModeTests.CaptureIfRequested(host, "day1-spotlight-bed");
-            yield return null;
-            yield return null;
-            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
-            Assert.That(host.Runtime.GetView().Cue, Is.Null, "Returning from the dream must wait at the bed.");
-            InteractWithBed();
-            Assert.That(host.Runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.Sleep));
-            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1));
-            yield return Until(() => fade.color.a == 1, "second bed becomes black", 4);
-            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1), "The sleep blackout must precede the day change.");
+            Assert.That(host.Screen.TransitionLocked, Is.True);
+            Assert.That(host.Effects.CaptureSleepCheckpoint()?.Phase, Is.EqualTo(SleepTransitionPhase.Waking));
+            AssertNoDreamBedEffects();
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True);
-            yield return new WaitForSecondsRealtime(1.1f);
-            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(1), "Pausing must freeze the second-bed blackout timer.");
-            Assert.That(fade.color.a, Is.EqualTo(1));
-            float resumedAt = Time.realtimeSinceStartup;
+            var checkpoint = host.Effects.CaptureSleepCheckpoint();
+            var position = camera.transform.position;
+            var rotation = camera.transform.rotation;
+            float opacity = fade.color.a;
+            string saved = host.Runtime.Save();
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(host.Effects.CaptureSleepCheckpoint().WakeElapsed, Is.EqualTo(checkpoint.WakeElapsed));
+            host.RestoreCheckpoint(saved);
+            Assert.That(host.Effects.RestoreSleepCheckpoint(checkpoint), Is.True);
+            Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
+            Assert.That(fade.color.a, Is.EqualTo(opacity).Within(.0001f));
+            AssertNoDreamBedEffects();
             Assert.That(host.Runtime.SetPaused(false).Accepted, Is.True);
-            yield return Until(() => host.Runtime.GetView().Game.Day == 2 && host.Runtime.GetView().Cue == null,
-                "Day2 starts after sleep", 5);
-            Assert.That(Time.realtimeSinceStartup - resumedAt, Is.EqualTo(1.5f).Within(.15f),
-                "The second bed must hold a full black screen for 1.5 unpaused seconds before waking.");
             yield return Until(() => !host.Effects.SleepCameraActive, "Day2 wake returns camera to its relocated actor", 5);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
+            Assert.That(host.Runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.False);
             Assert.That(Vector3.Distance(camera.transform.localPosition, host.Player.StandingEyeLocalPosition), Is.LessThan(.01f));
             host.Player.enabled = true;
             yield return null;
@@ -863,6 +950,14 @@ namespace MiniGame.UnityHost.Tests
             public string phase, cue, input, dream, power;
             public bool locked;
             public Vector3 camera;
+        }
+
+        private void AssertNoDreamBedEffects()
+        {
+            var guidance = host.GetComponent<BedtimeGuidance>();
+            Assert.That(guidance.Spotlight.enabled, Is.False);
+            Assert.That(guidance.Atmosphere.BeamRenderer.enabled, Is.False);
+            Assert.That(guidance.Atmosphere.ParticleRenderer.enabled, Is.False);
         }
 
         private void StartConfiguredCampaign(bool high)

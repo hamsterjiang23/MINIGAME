@@ -9,7 +9,7 @@ namespace MiniGame.UnityHost
     public static class PlayerGraphicsSettings
     {
         public const string PreferenceKey = "NORM.Graphics.PixelDetail.v1";
-        public const PixelDetail DefaultDetail = PixelDetail.Low;
+        public const PixelDetail DefaultDetail = PixelDetail.Medium;
         private static bool loaded;
         private static PixelDetail detail;
         public static PixelDetail Detail
@@ -33,7 +33,8 @@ namespace MiniGame.UnityHost
         public static void Reload()
         {
             int saved = PlayerPrefs.GetInt(PreferenceKey, (int)DefaultDetail);
-            detail = saved == 8 ? PixelDetail.High : saved == 4 ? PixelDetail.Medium : DefaultDetail;
+            detail = saved == 8 ? PixelDetail.High : saved == 4 ? PixelDetail.Medium
+                : saved == 2 ? PixelDetail.Low : DefaultDetail;
             loaded = true;
         }
 

@@ -11,16 +11,19 @@ using Object = UnityEngine.Object;
 
 namespace MiniGame.UnityHost.Tests
 {
+    [Category("PixelStrength")]
     public sealed class PlayerGraphicsSettingsPlayModeTests
     {
         private bool hadPreference;
         private int originalPreference;
+        private bool originalSkipStartup;
 
         [SetUp]
         public void SavePreference()
         {
             hadPreference = PlayerPrefs.HasKey(PlayerGraphicsSettings.PreferenceKey);
             originalPreference = PlayerPrefs.GetInt(PlayerGraphicsSettings.PreferenceKey);
+            originalSkipStartup = MainMenuController.SkipStartup;
             PlayerPrefs.DeleteKey(PlayerGraphicsSettings.PreferenceKey); PlayerGraphicsSettings.Reload();
         }
 
@@ -29,14 +32,15 @@ namespace MiniGame.UnityHost.Tests
         {
             if (hadPreference) PlayerPrefs.SetInt(PlayerGraphicsSettings.PreferenceKey, originalPreference);
             else PlayerPrefs.DeleteKey(PlayerGraphicsSettings.PreferenceKey);
+            MainMenuController.SkipStartup = originalSkipStartup;
             PlayerPrefs.Save(); PlayerGraphicsSettings.Reload();
         }
 
         [Test]
-        public void DefaultIsLowTwoAndEachChoicePersistsWithoutAStorySave()
+        public void DefaultIsMediumFourAndEachChoicePersistsWithoutAStorySave()
         {
-            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(PixelDetail.Low));
-            Assert.That(PlayerGraphicsSettings.PixelSize, Is.EqualTo(2));
+            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(PixelDetail.Medium));
+            Assert.That(PlayerGraphicsSettings.PixelSize, Is.EqualTo(4));
             foreach (var detail in new[] { PixelDetail.High, PixelDetail.Medium, PixelDetail.Low })
             {
                 PlayerGraphicsSettings.SetDetail(detail); PlayerGraphicsSettings.Reload();
@@ -44,7 +48,22 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(PlayerPrefs.GetInt(PlayerGraphicsSettings.PreferenceKey), Is.EqualTo((int)detail));
             }
             PlayerPrefs.SetInt(PlayerGraphicsSettings.PreferenceKey, 999); PlayerGraphicsSettings.Reload();
-            Assert.That(PlayerGraphicsSettings.PixelSize, Is.EqualTo(2));
+            Assert.That(PlayerGraphicsSettings.PixelSize, Is.EqualTo(4));
+        }
+
+        [TestCase(2, PixelDetail.Low)]
+        [TestCase(4, PixelDetail.Medium)]
+        [TestCase(8, PixelDetail.High)]
+        [TestCase(0, PixelDetail.Medium)]
+        [TestCase(-1, PixelDetail.Medium)]
+        [TestCase(999, PixelDetail.Medium)]
+        public void ReloadPreservesAllLegacyValuesAndFallsBackForInvalidPreferences(int saved, PixelDetail expected)
+        {
+            PlayerPrefs.SetInt(PlayerGraphicsSettings.PreferenceKey, saved);
+            PlayerGraphicsSettings.Reload();
+            Assert.That(PlayerGraphicsSettings.Detail, Is.EqualTo(expected));
+            Assert.That(PlayerPrefs.GetInt(PlayerGraphicsSettings.PreferenceKey), Is.EqualTo(saved),
+                "Reading a preference must not rewrite a player's stored choice.");
         }
 
         [UnityTest]
@@ -88,6 +107,7 @@ namespace MiniGame.UnityHost.Tests
         [UnityTest, Timeout(30000)]
         public IEnumerator ActualPauseSettingsClicksApplyImmediatelyAndEscapeReturnsBeforeResuming()
         {
+            MainMenuController.SkipStartup = true;
             MiniGameSessionHost.Release();
             yield return SceneManager.LoadSceneAsync("MainRoomCombined"); yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>(); CampaignWorldFixture.Restore(host);
@@ -96,7 +116,7 @@ namespace MiniGame.UnityHost.Tests
             var lighting = Object.FindObjectsOfType<RoomLightingController>().Single(item => item.gameObject.scene == host.gameObject.scene);
             string day = JsonUtility.ToJson(lighting.Profile.ScreenStyle), night = JsonUtility.ToJson(lighting.NightProfile.ScreenStyle);
             Assert.That(effect.UsePlayerPixelSettings, Is.True);
-            Assert.That(effect.EffectivePixelSize, Is.EqualTo(2));
+            Assert.That(effect.EffectivePixelSize, Is.EqualTo(4));
             Assert.That(host.Runtime.SetPaused(true).Accepted, Is.True); yield return null;
             var entry = view.Buttons.Single(button => button.transform.Find("Label").GetComponent<Text>().text == "游戏设置");
             EventSystem.current.SetSelectedGameObject(entry.gameObject); entry.onClick.Invoke();
@@ -104,6 +124,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(view.transform.Find("PauseColumn").gameObject.activeSelf, Is.False);
             Assert.That(view.transform.Find("PauseDefocusedScene").GetComponent<RawImage>().enabled, Is.False);
             Assert.That(host.Screen.PauseSubmenuVisible, Is.True);
+            PixelStrengthSettingsAssertions.AssertLegendInteractions(view.SharedSettings);
             string game = host.Runtime.Save();
             foreach (var pair in new[] { (0, 8), (1, 4), (2, 2) })
             {

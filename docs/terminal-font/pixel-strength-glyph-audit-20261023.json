@@ -1,0 +1,55 @@
+{
+  "beforeGlyphs": 10164,
+  "afterGlyphs": 10185,
+  "preservedGlyphs": 10164,
+  "addedGlyphSizePairs": 21,
+  "addedCharacters": [
+    {
+      "code": "U+5757",
+      "character": "块"
+    },
+    {
+      "code": "U+7C92",
+      "character": "粒"
+    },
+    {
+      "code": "U+8350",
+      "character": "荐"
+    }
+  ],
+  "removed": [],
+  "pixelOrMetricChanges": [],
+  "atlasDimensions": [
+    2048,
+    2048
+  ],
+  "preservationCompared": [
+    "RGBA pixels",
+    "w",
+    "h",
+    "offsetX",
+    "offsetY",
+    "advance"
+  ],
+  "beforeMetricsSha256": "3d5268c993cda1fda4ac38a3181ea02d57240e3a3c0ab976492b78784fdd0e50",
+  "beforeAtlasSha256": "05a8eb143bd4bb0fb08534e68e3cd55e1f5df55ebc9b0edf1d3af008c6df2b7f",
+  "afterMetricsSha256": "790d2cfa8e8d5cebf95bdeb49e3683d1926907e215c0f056b313e6c86fdfca08",
+  "afterAtlasSha256": "718f1b519fdd5af5e15d46b7c1190cd3dced20be49ce1b7b6f2eead1caeaea4b",
+  "corpusSource": "Tools/TerminalTypography/build_ark_atlas.py corpus Runtime/*.cs",
+  "newTextSources": [
+    "PlayerSettingsView.cs",
+    "PixelStrengthSelectionView.cs",
+    "PixelStrengthTooltip.cs"
+  ],
+  "cacheInvalidation": "TerminalPixelFontRefresh.OnPostprocessAllAssets -> TerminalTypographySetup.RefreshLoadedFont",
+  "builderChangedForThisFeature": false,
+  "commands": [
+    "uv run Tools/TerminalTypography/build_ark_atlas.py",
+    "uv run Tools/TerminalTypography/build_ark_atlas.py --check-only",
+    "uv run --with Pillow==12.3.0 python -m unittest discover -s Tools/TerminalTypography -v"
+  ],
+  "unitTests": {
+    "passed": 4,
+    "failed": 0
+  }
+}

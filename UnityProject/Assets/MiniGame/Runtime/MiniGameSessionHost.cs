@@ -34,6 +34,7 @@ namespace MiniGame.UnityHost
         private bool roomEndingFailed;
         private bool hiddenThanksReady;
         private EndingThanksView thanks;
+        private int flowGeneration;
         private bool UsesRoomEnding => DreamProfile != null && DreamProfile.UseRoomCubemapEnding;
 
         public static MiniGameSessionHost Install(GameRuntime runtime, GameRules rules, IGameContent content, DreamSequenceProfile profile)
@@ -45,6 +46,9 @@ namespace MiniGame.UnityHost
                 DontDestroyOnLoad(owner);
             }
             var host = Current;
+            host.flowGeneration++;
+            host.StopAllCoroutines();
+            host.IsTransitioning = false;
             host.StopRoomEnding();
             host.Runtime = runtime; host.Rules = rules; host.Content = content; host.DreamProfile = profile;
             host.DreamCheckpoint = null; host.EndingCheckpoint = null; host.SleepCheckpoint = null;
@@ -105,6 +109,8 @@ namespace MiniGame.UnityHost
 
         private IEnumerator BeginRoomEnding(MiniGameBootstrap room)
         {
+            int generation = flowGeneration;
+            var runtime = Runtime;
             IsTransitioning = true;
             try { roomEnding = RoomDreamEnding.Begin(room, this); roomEnding.BedCompleted += OnHiddenBed; IsTransitioning = false; }
             catch (Exception exception)
@@ -114,7 +120,9 @@ namespace MiniGame.UnityHost
                 Debug.LogException(exception);
                 yield break;
             }
-            while (roomEnding != null && !roomEnding.Ready && !hiddenThanksReady && string.IsNullOrEmpty(roomEnding.FailureReason)) yield return null;
+            while (generation == flowGeneration && roomEnding != null && !roomEnding.Ready && !hiddenThanksReady
+                && string.IsNullOrEmpty(roomEnding.FailureReason)) yield return null;
+            if (generation != flowGeneration || Runtime != runtime) yield break;
             IsTransitioning = false;
             if (roomEnding == null || !string.IsNullOrEmpty(roomEnding.FailureReason))
             {
@@ -128,7 +136,8 @@ namespace MiniGame.UnityHost
             }
             else if (Runtime.UsesEndingFlow && Runtime.EndingStage == EndingStage.Transition)
             {
-                while (Runtime.GetView().Paused) yield return null;
+                while (generation == flowGeneration && Runtime.GetView().Paused) yield return null;
+                if (generation != flowGeneration || Runtime != runtime) yield break;
                 Runtime.MarkEndingSpaceReady();
             }
         }
@@ -171,6 +180,7 @@ namespace MiniGame.UnityHost
             roomEnding = null;
             hiddenThanksReady = false;
             if (owner == null) return;
+            owner.BedCompleted -= OnHiddenBed;
             if (restoreRoom) owner.StopAndRestore();
             else owner.CleanupForDestruction();
         }
@@ -183,7 +193,59 @@ namespace MiniGame.UnityHost
             if (room != null) room.Screen.SetTransitionLocked(true);
             var load = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             if (load == null) { IsTransitioning = false; throw new InvalidOperationException("无法加载场景：" + sceneName); }
-            load.completed += _ => { if (this != null) IsTransitioning = false; };
+            int generation = flowGeneration;
+            load.completed += _ => { if (this != null && generation == flowGeneration) IsTransitioning = false; };
+        }
+
+        public bool TryEnterGmEnding(EndingType ending, out string error)
+        {
+            error = null;
+            if (Runtime == null || !Runtime.UsesDreamFlow || !Runtime.GetView().Paused
+                || MainMenuController.BlocksGameplayInput || IsTransitioning && roomEnding == null)
+            {
+                error = LastMessage = "请在游戏内暂停菜单选择 GM 结局。";
+                return false;
+            }
+            GameRuntime replacement;
+            try
+            {
+                // Old presenters retain their old runtime until rebinding; delayed callbacks cannot advance this flow.
+                replacement = GameRuntime.Restore(Runtime.Save(), Rules, Content, Runtime.Endings, pauseOnLoad: true);
+                if (!replacement.EnterGmEndingFromPause(ending).Accepted)
+                {
+                    error = LastMessage = "当前无法进入所选 GM 结局。";
+                    return false;
+                }
+            }
+            catch (Exception exception)
+            {
+                error = LastMessage = "GM 结局准备失败：" + exception.Message;
+                return false;
+            }
+
+            flowGeneration++;
+            StopAllCoroutines();
+            IsTransitioning = false;
+            StopRoomEnding();
+            foreach (var controller in FindObjectsOfType<DreamEndingController>())
+            {
+                controller.enabled = false;
+                controller.Audio?.StopAll();
+                controller.gameObject.SetActive(false);
+            }
+            if (thanks != null) Destroy(thanks.gameObject);
+            thanks = null;
+            DreamCheckpoint = null; EndingCheckpoint = null; SleepCheckpoint = null;
+            RoomEndingTransition = null; ThanksCheckpoint = null; SupervisorCheckpoint = null;
+            pendingRoomPose = null; pendingEndingFadePose = null;
+            roomEndingFailed = hiddenThanksReady = false;
+            Runtime = replacement;
+            PendingCombinedRestore = true;
+            var room = FindObjectOfType<MiniGameBootstrap>();
+            if (room != null) room.RestoreFromSession(this);
+            else TransitionTo(CombinedScene);
+            LastMessage = "已进入所选 GM 结局。";
+            return true;
         }
 
         public void Save() => SaveTo(SavePath);
@@ -273,15 +335,15 @@ namespace MiniGame.UnityHost
                 if (envelope == null || envelope.FormatVersion != 1 || string.IsNullOrEmpty(envelope.Runtime))
                     throw new InvalidDataException("存档版本不兼容；旧存档文件已保留，请开始新的梦境流程。");
                 var restored = GameRuntime.Restore(envelope.Runtime, Rules, Content,
-                    Rules.DreamFlowEnabled ? EndingDialoguePresenter.LoadCatalog() : null);
-                ValidateVisualCheckpoint(envelope, restored.GetView());
+                    Rules.DreamFlowEnabled ? EndingDialoguePresenter.LoadCatalog() : null, pauseOnLoad);
                 if (restored.EndingStage == EndingStage.Completed)
                     throw new InvalidDataException("本次检查期已结束，请开始新的检查期。存档文件已保留。");
+                ValidateVisualCheckpoint(envelope, restored.GetView());
+                flowGeneration++;
                 StopAllCoroutines(); IsTransitioning = false;
                 StopRoomEnding();
                 if (thanks != null) Destroy(thanks.gameObject);
                 thanks = null;
-                if (pauseOnLoad) restored.SetPaused(true);
                 Runtime = restored;
                 SupervisorCheckpoint = envelope.Supervisor;
                 SupervisorScanDays = envelope.SupervisorScanDays ?? Array.Empty<int>();
@@ -355,8 +417,19 @@ namespace MiniGame.UnityHost
                 || view.EndingStage != EndingStage.Thanks && view.EndingStage != EndingStage.Completed
                 || (saved.Thanks.Phase == EndingThanksPhase.Completed) != (view.EndingStage == EndingStage.Completed)))
                 throw new InvalidDataException("感谢页检查点无效。");
-            if (saved.HasSleepCheckpoint && (saved.Sleep == null || !saved.Sleep.Matches(view)))
+            if (saved.HasSleepCheckpoint && (saved.Sleep == null || saved.Sleep.ForRestoredView(view) == null))
                 throw new InvalidDataException("睡眠检查点与当前日期或演出不匹配。");
+            var beach = saved.Ending;
+            if (beach != null && beach.HasMusicPosition && (!Finite(beach.MusicSeconds) || beach.MusicSeconds < 0))
+                throw new InvalidDataException("海滩音乐检查点无效。");
+            if (beach != null && (beach.Phase == BeachEndingPhase.SkyHold || beach.Phase == BeachEndingPhase.FadingOut)
+                && (view.Game.Ending != EndingType.DreamSea || view.EndingStage != EndingStage.Space
+                    || !beach.HasRoomPose || !Finite(beach.RoomPosition) || !Finite(beach.RoomYaw) || !Finite(beach.RoomPitch)
+                    || !Finite(beach.LieStartPosition) || !Finite(beach.LieStartRotation)
+                    || !Finite(beach.PhaseElapsed) || beach.PhaseElapsed < 0
+                    || beach.PhaseElapsed > (beach.Phase == BeachEndingPhase.SkyHold
+                        ? DreamEndingController.SkyHoldSeconds : DreamEndingController.EndingFadeSeconds)))
+                throw new InvalidDataException("海滩收尾检查点无效。");
             if (saved.HasRoomPose && (!Finite(saved.PlayerPosition) || !Finite(saved.CameraPosition)
                 || !Finite(saved.PlayerRotation) || !Finite(saved.CameraRotation)
                 || !Finite(saved.FieldOfView) || saved.FieldOfView <= 1 || saved.FieldOfView >= 180))

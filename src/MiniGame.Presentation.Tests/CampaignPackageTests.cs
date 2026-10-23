@@ -59,8 +59,8 @@ namespace MiniGame.Presentation.Tests
             var nodes = compiled.SourceNodes.ToDictionary(n => n.Id);
             var options = compiled.SourceNodes.SelectMany(n => n.Options).ToDictionary(o => o.Id);
             Assert.That((int)audit["sourceRowCount"]!, Is.EqualTo(1360));
-            Assert.That((int)audit["activeSourceRowCount"]!, Is.EqualTo(1295));
-            Assert.That((int)audit["excludedSourceRowCount"]!, Is.EqualTo(65));
+            Assert.That((int)audit["activeSourceRowCount"]!, Is.EqualTo(1294));
+            Assert.That((int)audit["excludedSourceRowCount"]!, Is.EqualTo(66));
             Assert.That(mappings.Count, Is.EqualTo((int)audit["activeSourceRowCount"]!));
             var excluded = (JArray)audit["excludedRows"]!;
             Assert.That(excluded.Count, Is.EqualTo((int)audit["excludedSourceRowCount"]!));

@@ -1,0 +1,299 @@
+{
+  "result": "Passed",
+  "runs": [
+    {
+      "folder": "Artifacts\\TerminalV0826\\editor",
+      "result": "Passed",
+      "environment": "Editor",
+      "screenSize": [
+        1920,
+        1080
+      ],
+      "nativeSize": [
+        800,
+        600
+      ],
+      "screenCapturesVisible": true,
+      "patients": [
+        "battlefield-doctor",
+        "child",
+        "diplomat",
+        "former-ruler",
+        "priest",
+        "self-review",
+        "tutorial"
+      ],
+      "captureCount": 13,
+      "wheelEvents": 3,
+      "arrowClicks": 3,
+      "readonlyChecks": 10,
+      "portraitComparisons": [
+        {
+          "capture": "day1-archived-former-ruler-top",
+          "portrait": "VV01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-battlefield-doctor-top",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-battlefield-doctor-bottom",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-child-top",
+          "portrait": "ML01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-former-ruler-top",
+          "portrait": "VV01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-battlefield-doctor-top",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-battlefield-doctor-bottom",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-child-top",
+          "portrait": "ML01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day2-priest-top",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day2-priest-bottom",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day3-diplomat-top",
+          "portrait": "AD01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "self-review-self-review-top",
+          "portrait": "SJ01",
+          "maximumChannelDifference": 0
+        }
+      ],
+      "nativeWheelDown": false,
+      "nativeWheelUp": false,
+      "nativeDownInputFrames": 0,
+      "nativeUpInputFrames": 0
+    },
+    {
+      "folder": "Artifacts\\TerminalV0826\\player-1280x720",
+      "result": "Passed",
+      "environment": "Development Player",
+      "screenSize": [
+        1280,
+        720
+      ],
+      "nativeSize": [
+        800,
+        600
+      ],
+      "screenCapturesVisible": true,
+      "patients": [
+        "battlefield-doctor",
+        "child",
+        "diplomat",
+        "former-ruler",
+        "priest",
+        "self-review",
+        "tutorial"
+      ],
+      "captureCount": 16,
+      "wheelEvents": 3,
+      "arrowClicks": 3,
+      "readonlyChecks": 10,
+      "portraitComparisons": [
+        {
+          "capture": "day1-archived-former-ruler-top",
+          "portrait": "VV01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-battlefield-doctor-top",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-battlefield-doctor-bottom",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-child-top",
+          "portrait": "ML01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-former-ruler-top",
+          "portrait": "VV01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-battlefield-doctor-top",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-battlefield-doctor-bottom",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-child-top",
+          "portrait": "ML01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day2-priest-top",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day2-priest-bottom",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day3-diplomat-top",
+          "portrait": "AD01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "self-review-self-review-top",
+          "portrait": "SJ01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "native-wheel-before",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "native-wheel-down",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "native-wheel-up",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        }
+      ],
+      "nativeWheelDown": true,
+      "nativeWheelUp": true,
+      "nativeDownInputFrames": 1,
+      "nativeUpInputFrames": 1
+    },
+    {
+      "folder": "Artifacts\\TerminalV0826\\player-1024x768",
+      "result": "Passed",
+      "environment": "Development Player",
+      "screenSize": [
+        1024,
+        768
+      ],
+      "nativeSize": [
+        800,
+        600
+      ],
+      "screenCapturesVisible": true,
+      "patients": [
+        "battlefield-doctor",
+        "child",
+        "diplomat",
+        "former-ruler",
+        "priest",
+        "self-review",
+        "tutorial"
+      ],
+      "captureCount": 13,
+      "wheelEvents": 3,
+      "arrowClicks": 3,
+      "readonlyChecks": 10,
+      "portraitComparisons": [
+        {
+          "capture": "day1-archived-former-ruler-top",
+          "portrait": "VV01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-battlefield-doctor-top",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-battlefield-doctor-bottom",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-archived-child-top",
+          "portrait": "ML01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-former-ruler-top",
+          "portrait": "VV01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-battlefield-doctor-top",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-battlefield-doctor-bottom",
+          "portrait": "ED02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day1-child-top",
+          "portrait": "ML01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day2-priest-top",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day2-priest-bottom",
+          "portrait": "JN02",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "day3-diplomat-top",
+          "portrait": "AD01",
+          "maximumChannelDifference": 0
+        },
+        {
+          "capture": "self-review-self-review-top",
+          "portrait": "SJ01",
+          "maximumChannelDifference": 0
+        }
+      ],
+      "nativeWheelDown": false,
+      "nativeWheelUp": false,
+      "nativeDownInputFrames": 0,
+      "nativeUpInputFrames": 0
+    }
+  ]
+}

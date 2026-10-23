@@ -1,0 +1,37 @@
+{
+    "label": "locked",
+    "nativeFile": "locked-terminal-native.png",
+    "crtFile": "locked-terminal-crt-gpu.png",
+    "shader": "PMS/Amber CRT",
+    "phase": "Work",
+    "stage": "NormalDialogue",
+    "page": "Review",
+    "power": "Running",
+    "patient": "former-ruler",
+    "runtimeHash": "fcb15ac8fb28ba20fb4455019e540b2be1ce776e2c102ef6ea48c0c20f8c81e6",
+    "frame": 278,
+    "sourceFrame": 281,
+    "terminalMode": 1,
+    "day": 1,
+    "quota": 1,
+    "seconds": 0.510493278503418,
+    "paused": false,
+    "transitionLocked": false,
+    "commands": [
+        {
+            "name": "Disposition-Release",
+            "texture": "Release_Disabled",
+            "interactable": false
+        },
+        {
+            "name": "Disposition-Treat",
+            "texture": "Treatment_Disabled",
+            "interactable": false
+        },
+        {
+            "name": "Disposition-Purify",
+            "texture": "Purification_Disabled",
+            "interactable": false
+        }
+    ]
+}

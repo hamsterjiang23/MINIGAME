@@ -16,6 +16,7 @@ namespace MiniGame.Core
         [JsonProperty(Required = Required.AllowNull)] public Disposition? Disposition { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? PatientId { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public int? ExpectedLineIndex { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public EndingType? Ending { get; set; }
 
         internal static CommandRecord From(GameCommand command)
         {
@@ -26,6 +27,8 @@ namespace MiniGame.Core
                 case CompleteSleep _: return new CommandRecord { Kind = CommandKind.CompleteSleep };
                 case CompleteDream _: return new CommandRecord { Kind = CommandKind.CompleteDream };
                 case BeginNightDream _: return new CommandRecord { Kind = CommandKind.BeginNightDream };
+                case EnterHiddenEndingCheat _: return new CommandRecord { Kind = CommandKind.EnterHiddenEndingCheat };
+                case EnterGmEnding c: return new CommandRecord { Kind = CommandKind.EnterGmEnding, Ending = c.Ending };
                 case ConfirmSelfPurification _: return new CommandRecord { Kind = CommandKind.ConfirmSelfPurification };
                 case AdvanceSelfReviewCommand c: return new CommandRecord
                     { Kind = CommandKind.AdvanceSelfReview, ExpectedLineIndex = c.ExpectedLineIndex };
@@ -55,6 +58,8 @@ namespace MiniGame.Core
                 case CommandKind.CompleteSleep: command = new CompleteSleep(); break;
                 case CommandKind.CompleteDream: command = new CompleteDream(); break;
                 case CommandKind.BeginNightDream: command = new BeginNightDream(); break;
+                case CommandKind.EnterHiddenEndingCheat: command = new EnterHiddenEndingCheat(); break;
+                case CommandKind.EnterGmEnding when Ending.HasValue: command = new EnterGmEnding(Ending.Value); break;
                 case CommandKind.ConfirmSelfPurification: command = new ConfirmSelfPurification(); break;
                 case CommandKind.AdvanceSelfReview when ExpectedLineIndex.HasValue:
                     command = new AdvanceSelfReviewCommand(ExpectedLineIndex.Value); break;
