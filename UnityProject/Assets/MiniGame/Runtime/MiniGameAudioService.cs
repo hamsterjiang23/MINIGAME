@@ -146,6 +146,27 @@ namespace MiniGame.UnityHost
             return true;
         }
 
+        /// <summary>Exclusive single recording with a readable sample cursor, unlike overlapping PlayOneShot voices.</summary>
+        public bool PlayRecording(MiniGameAudioChannel channel, MiniGameSound sound)
+        {
+            if (!isActiveAndEnabled || profile == null || !channels.TryGetValue(channel, out var state)) return false;
+            var entry = profile.GetEntry(sound);
+            if (entry?.Clip == null || state.LoopRequested) return false;
+            state.Source.Stop();
+            state.PendingOneShots.Clear();
+            state.Sound = sound;
+            state.IntroSound = null;
+            state.Source.clip = entry.Clip;
+            state.Source.loop = false;
+            state.Source.pitch = 1;
+            Fade(state, 1, 0);
+            Route(channel, state.Source);
+            state.Source.volume = Unit(entry.Volume);
+            StartPlayback(state);
+            SoundPlayed?.Invoke(channel, sound);
+            return true;
+        }
+
         public void SetLoopWithIntro(MiniGameAudioChannel channel, MiniGameSound intro, MiniGameSound loop, float fadeSeconds)
         {
             if (!isActiveAndEnabled || profile == null || !channels.TryGetValue(channel, out var state)) return;

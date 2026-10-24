@@ -214,6 +214,9 @@ namespace MiniGame.UnityHost
             if (Audio == null) Audio = gameObject.AddComponent<MiniGameAudioDirector>();
             Audio.ConfigureDreams(dreamProfile);
             Audio.Bind(runtime);
+            var knockShake = player.ViewCamera.GetComponent<KnockScreenShake>();
+            if (knockShake == null) knockShake = player.ViewCamera.gameObject.AddComponent<KnockScreenShake>();
+            knockShake.Bind(Audio);
             if (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.Runtime == runtime)
                 Audio.RestoreSupervisorScanDays(MiniGameSessionHost.Current.SupervisorScanDays);
             MarkOpeningPreparation("install.audio");

@@ -212,7 +212,7 @@ namespace MiniGame.UnityHost
             knockRemaining = Mathf.Max(0, knockRemaining - deltaTime);
             if (knockRemaining > 0) return;
             var clip = profile != null ? profile.GetClip(MiniGameSound.DoorKnock) : null;
-            if (clip != null && service.PlayOneShot(MiniGameAudioChannel.DoorKnock, MiniGameSound.DoorKnock))
+            if (clip != null && service.PlayRecording(MiniGameAudioChannel.DoorKnock, MiniGameSound.DoorKnock))
                 knockPlaying = true;
         }
 

@@ -54,6 +54,113 @@ namespace MiniGame.UnityHost.Tests
 
         private void OnSound(MiniGameAudioChannel channel, MiniGameSound sound) => played.Add(sound);
 
+        [Test]
+        public void KnockShakeDetectsFourRealAttacksAndSettlesAfterTheGroup()
+        {
+            var clip = profile.GetClip(MiniGameSound.DoorKnock);
+            var track = KnockImpactTrack.Analyze(clip);
+            // Independently measured attacks in the shipped PCM recording, not four evenly spaced timers.
+            var expected = new[] { .05526f, .25476f, .45669f, .69154f };
+            Assert.That(track.ImpactSamples.Count, Is.EqualTo(4));
+            for (int i = 0; i < expected.Length; i++)
+            {
+                int sample = track.ImpactSamples[i];
+                Assert.That(sample / (float)clip.frequency, Is.EqualTo(expected[i]).Within(.003f));
+                Assert.That((track.Evaluate(sample) - track.Evaluate(sample - 1)).magnitude, Is.GreaterThan(1),
+                    "Every knock adds a fresh impact while earlier aftershocks continue.");
+            }
+            Assert.That(track.Evaluate(track.ImpactSamples[0] - 1), Is.EqualTo(Vector3.zero));
+            Assert.That(track.Evaluate(track.ImpactSamples[0] + Mathf.RoundToInt(.16f * clip.frequency)).magnitude,
+                Is.GreaterThan(.01f), "The room keeps rumbling between knocks.");
+            Assert.That(track.Evaluate(track.ImpactSamples[3] + Mathf.CeilToInt(KnockImpactTrack.ResponseSeconds * clip.frequency)),
+                Is.EqualTo(Vector3.zero));
+            Assert.That(track.Evaluate(clip.samples - 1), Is.EqualTo(Vector3.zero));
+        }
+
+        [UnityTest]
+        public IEnumerator KnockShakeFollowsTheRecordingCursorAndStopsForPauseGapAndDoorOpening()
+        {
+            var cameraObject = new GameObject("Knock shake test camera");
+            cameraObject.transform.SetParent(root.transform, false);
+            cameraObject.AddComponent<Camera>().enabled = false;
+            var shake = cameraObject.AddComponent<KnockScreenShake>();
+            shake.Bind(director);
+            director.Bind(runtime);
+            yield return null;
+            var source = service.GetSource(MiniGameAudioChannel.DoorKnock);
+            var clip = profile.GetClip(MiniGameSound.DoorKnock);
+            Assert.That(source.clip, Is.SameAs(clip), "The dedicated recording must expose the actual PCM playback cursor.");
+            var track = KnockImpactTrack.Analyze(clip);
+            foreach (int impact in track.ImpactSamples)
+            {
+                source.timeSamples = impact + 220;
+                Assert.That(shake.CurrentRotationOffset.magnitude, Is.GreaterThan(.01f));
+                Assert.That(shake.CurrentPositionOffset.magnitude, Is.GreaterThan(.001f));
+            }
+            source.timeSamples = track.ImpactSamples[3] + Mathf.CeilToInt(.5f * clip.frequency);
+            Assert.That(shake.CurrentRotationOffset, Is.EqualTo(Vector3.zero));
+            Assert.That(shake.CurrentPositionOffset, Is.EqualTo(Vector3.zero));
+            source.timeSamples = track.ImpactSamples[1] + 220;
+            runtime.SetPaused(true);
+            int pausedSample = source.timeSamples;
+            Assert.That(shake.CurrentRotationOffset, Is.EqualTo(Vector3.zero));
+            yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(source.timeSamples, Is.EqualTo(pausedSample));
+            runtime.SetPaused(false);
+            Assert.That(shake.CurrentRotationOffset.magnitude, Is.GreaterThan(.01f));
+
+            source.timeSamples = clip.samples - 100;
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(source.isPlaying, Is.False);
+            Assert.That(shake.CurrentRotationOffset, Is.EqualTo(Vector3.zero), "The inter-recording silence must be completely still.");
+            yield return new WaitForSecondsRealtime(.5f);
+            Assert.That(source.isPlaying, Is.True, "The next group of four resumes on the same audio source.");
+            source.timeSamples = track.ImpactSamples[0] + 220;
+            Assert.That(shake.CurrentRotationOffset.magnitude, Is.GreaterThan(.01f));
+            Accept(runtime.EnterDoorView());
+            Assert.That(shake.CurrentRotationOffset, Is.EqualTo(Vector3.zero));
+        }
+
+        [UnityTest]
+        public IEnumerator KnockShakeMovesOnlyTheRenderedViewAndRestoresTheCameraPose()
+        {
+            var cameraObject = new GameObject("Knock render test camera");
+            cameraObject.transform.SetParent(root.transform, false);
+            var camera = cameraObject.AddComponent<Camera>();
+            camera.enabled = false;
+            cameraObject.transform.SetPositionAndRotation(new Vector3(3, 2, 1), Quaternion.Euler(7, 24, 0));
+            var shake = cameraObject.AddComponent<KnockScreenShake>();
+            var probe = cameraObject.AddComponent<KnockShakeRenderProbe>();
+            shake.Bind(director);
+            director.Bind(runtime);
+            yield return null;
+            var source = service.GetSource(MiniGameAudioChannel.DoorKnock);
+            var clip = profile.GetClip(MiniGameSound.DoorKnock);
+            var track = KnockImpactTrack.Analyze(clip);
+            var target = new RenderTexture(128, 128, 16);
+            camera.targetTexture = target;
+            var position = camera.transform.position;
+            var rotation = camera.transform.rotation;
+            try
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    source.timeSamples = track.ImpactSamples[i % 4] + 220;
+                    camera.Render();
+                    Assert.That(Quaternion.Angle(probe.RenderRotation, rotation), Is.GreaterThan(.005f));
+                    Assert.That(Vector3.Distance(probe.RenderPosition, position), Is.GreaterThan(.001f));
+                    Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.001f));
+                    Assert.That(camera.transform.position, Is.EqualTo(position));
+                }
+                runtime.SetPaused(true);
+                camera.Render();
+                Assert.That(Quaternion.Angle(probe.RenderRotation, rotation), Is.LessThan(.001f));
+                shake.enabled = false;
+                Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.001f));
+            }
+            finally { camera.targetTexture = null; Object.Destroy(target); }
+        }
+
         [UnityTest]
         public IEnumerator SupervisorKnockRepeatsTheWholeRecordingAfterHalfSecondSilence()
         {
