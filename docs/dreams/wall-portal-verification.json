@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-25",
+  "revision": "Begin the exterior reveal only at the sky-facing angle; hold inside and above bed rails until the sky-only dissolve finishes",
+  "unity": "2022.3.23f1c1",
+  "validationEnvironment": "Independent copied Unity project with graphics enabled",
+  "tests": [
+    {
+      "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/final-results.xml",
+      "scope": "Four final current Play Mode tests: no exterior or opacity change before the 82-degree sky angle, multi-frame sky-only blend while inside wall, late crossing with no remaining print, upright final pose, ocean sway and pause restore; formal complete ending and all-stage restore; monitor noise preserves other audio",
+      "result": "Passed",
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "file": "../../Artifacts/Unity/DreamSoftCrossing20261025/verified-results.xml",
+      "scope": "Seven current Play Mode tests: GPU wall/exterior compositing including closer foreground props; static room projection and outline depth regressions; upright turn-then-recline with multiple blend frames, no print at crossing, enlarged ocean heave, pause and restored pose; full formal ending and all-stage restore; monitor noise leaves other audio unchanged",
+      "result": "Passed",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "revision": "Earlier soft-crossing revision; retained historical seven-test result"
+    },
+    {
+      "file": "../../Artifacts/Unity/DreamUprightDoubleFloat20261025/verified-results.xml",
+      "scope": "Current four Play Mode tests: left/front/right approaches converge on a world-up camera with image-up along the pillow wall, continuous final frames, doubled audio-cursor-driven heave, paused/restored pose, complete formal ending and all-stage restore; monitor noise preserves music and ocean",
+      "result": "Passed",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "revision": "Earlier upright-camera and double-float revision; retained historical four-test result"
+    },
+    {
+      "file": "../../Artifacts/Unity/DreamMonitorNoise20261025/verified-results.xml",
+      "scope": "Current targeted Play Mode checks: gaze-controlled PCNoise uses normal computer clip, looking away stops it, steady gaze does not restart it, music and ocean clip/volume/cursors remain unchanged; pause, checkpoint restore, exterior exclusion, cleanup; full formal ending and every-stage save restore; GM cleanup",
+      "result": "Passed",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "revision": "Earlier gaze-noise revision; retained historical four-test result"
+    },
+    {
+      "file": "../../Artifacts/Unity/DreamBackRecline20261025/verified-results.xml",
+      "scope": "20 current Play Mode tests: stationary first-half turn away from bed; backward recline and continuous sky orientation; ocean float; full campaign endings, pause, save restore, retry and cleanup",
+      "result": "Passed",
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "revision": "Earlier back-recline revision; retained historical 20-test regression result"
+    },
+    {
+      "file": "../../Artifacts/Unity/DreamHeadAndOcean20261025/editor-results.xml",
+      "scope": "10 final editor configuration and room shader tests",
+      "result": "Passed",
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "revision": "Previous ocean-float revision; retained historical editor/shader checks, not rerun for this camera-path-only change"
+    }
+  ],
+  "screenshots": {
+    "files": [
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/eye-crossing-wall.png",
+        "sha256": "8382249cdd1b3f4e4c850dc776a777555bfe88b20d38b6f8152b87f794770c25"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/half-bed-at-wall.png",
+        "sha256": "5b966bd3f70ab251376a0a3bd0c4a1712f87f429820eb6113d8c5eaa800a6aaa"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/lying-before-wall.png",
+        "sha256": "930a67e997cbbbaaf0c562cbaad826a53a2ca6667a402dc62b52fbb30977c859"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/monitor-return-turn.png",
+        "sha256": "aa6ae2964075f6f687f1810a7f5f0f4e06255d9da0691260e65060c9cdf778bd"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/outside-sky.png",
+        "sha256": "ef99572cb9b77afc9a9c2dd89f63a6e2dcb5465b27addec80d021bf52df6d0fb"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/printed-monitor-start.png",
+        "sha256": "25673d09cfb519b042033f63c3568ea1f6ba0614db51061f47406addfa0791ca"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/room-after-monitor-turn.png",
+        "sha256": "c4ad9f83843b432b200e5e585c7cf5c108d434b2bb9ae384b4a2f4a21d9acee8"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/frames/sky-reveal-wide.png",
+        "sha256": "3a63f064feb11f1cc90bb890425b89107ede9d17d537a5d07229cae6f13766bc"
+      },
+      {
+        "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/frames/sky-reveal-without-print-wide.png",
+        "sha256": "a860bba0eb7d69100d92194d1505eaaa4e71786ebd877bbca4e7397f05649696"
+      }
+    ],
+    "poses": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/verified/camera-poses.txt",
+    "kind": "Actual scene camera GPU renders with post effects, excluding overlay UI; shared interaction icon visibility is checked by Play Mode test"
+  },
+  "verified": [
+    "Only the bed head is captured as new wall print; no workstation meshes are copied into the panorama",
+    "Entry starts at the foreground monitor already present in SeaMidpoint/Faces/nz.png",
+    "Bed uses the shared Sleep cursor and original interaction outline, with no left-click text prompt",
+    "Looking away rejects interaction; looking at the bed accepts the normal E interaction",
+    "Complete endings, pause and save restore, retries and room cleanup pass",
+    "Live playback changes heave during the real ten-second sky hold",
+    "Heave uses the smoothed loudness envelope of OceanWaves.wav at AudioSource.timeSamples; up to 10 cm, 2.6 degree pitch and 1.2 degree roll, blended in over 1.1 seconds",
+    "Pause freezes the view; checkpoints store the displayed PCM sample and restore the exact floating pose immediately despite asynchronous streaming seeks",
+    "Tools/SeaDreamCapture/bake_ocean_float.py reproduces the checked-in envelope byte for byte",
+    "First 0.75 seconds rotate in place with zero translation or descent, ending with the pillow behind the gaze",
+    "Only after turning does the camera move backward to the pillow and tilt upward; horizontal approach direction is derived from the saved interaction start, including side approaches",
+    "The final recline frames join the sky hold with less than 3 degrees of rotation per frame, avoiding a 180-degree sky flip",
+    "The foreground printed monitor plays the normal PCNoise recording only within a central 15-degree viewing cone; look-in fades over 0.08 seconds, look-away stops immediately",
+    "Computer noise is suppressed during black transitions, pause, menu, failure, cleanup and the exterior; camera entry and checkpoint resume use the actual camera pose",
+    "Gaze changes preserve music and ocean clip identities, source volumes and continuous sample progress without restart events",
+    "Final base camera forward is world up and image up is the bed/pillow-wall direction, independent of left, front or right approach; the heading settles continuously during recline",
+    "Default heave, pitch and roll are each doubled in both profile defaults and the shipped asset; audio cursor seeks demonstrate more than 14 cm peak-to-trough heave",
+    "The opaque room remains unchanged while walking; during recline it becomes a transparent image overlay composited over the already-rendered exterior, with no sudden reveal of closer exterior props",
+    "Ocean heave, pitch and roll default to 0.1 m, 2.6 degrees and 1.2 degrees; profile ranges and runtime limits have been raised to permit the full requested increase",
+    "The original printed scene is fully retained while the camera still looks toward the horizon; no exterior layer is rendered until the camera is at least 82 degrees upward",
+    "Approach stays inside the wall and above the bed rails during the sky-only blend; after the blend finishes the eye crosses and lowers to the true pillow, so exterior computer piles are not introduced during head tilt",
+    "The first mixed frame was also rendered at 1468x766, both with the print and with only the exterior, and visually checked to contain sky without computer piles or rails"
+  ],
+  "notPerformed": [
+    "New standalone Player build",
+    "Human mouse-and-keyboard acceptance"
+  ],
+  "sources": [
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/DreamWallPortal.cs",
+      "sha256": "fc40e963142fb7c17e76c84af2c89c0a07f71c78fc7643bdabfed99831bb36c0"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/TerminalReturnMotion.cs",
+      "sha256": "b36c85317cca720f1cc9a17895abf539b54bfa90d2899b71c9ce2bcbe0870260"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/RoomDreamEnding.cs",
+      "sha256": "6b477671deefaac5d4c63bb360b57ea0f0e5e447ce6f08be521eb6f2e7c3c44a"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs",
+      "sha256": "cb3b6e128c352d4ec17fc26d442b623e795399a40f6cf6c270080bdbad947228"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/DreamCubemapRoomSurface.cs",
+      "sha256": "169f4875227273b56a312390a1d7c87998c3a8ab2e6e35bd1bbf2c86a6073f7e"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/DreamCubemapRenderer.cs",
+      "sha256": "4989abf394c2b430c01ee5b413d89e3e258dba5b5c83ecc46febe34fb87867f6"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/RoomEndingTransitionCheckpoint.cs",
+      "sha256": "eb47b4b0e8637da6295e61df945ff17c7ce47f7620417699829b7a6a493af76d"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs",
+      "sha256": "a0c1942b9f89f3735157808264ad11c0cf8b11d56f8065e2f7d8e09b2411dd56"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Editor/DreamCubemapPreview.cs",
+      "sha256": "4898c57a9d8954c7cc9ee41628912e0f8a27f5861b73953ba75896b3a210949c"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Editor/DreamSettingsWindow.cs",
+      "sha256": "ea277966482b9619c5347ed9a10d148a4856d257d36e6b539d849abeb851e3df"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Art/MainRoom/RoomArtStandard.shader",
+      "sha256": "02acb5cffe4b3da7fd051ba9ca695b921c339f22db0d89f99f2e2f12873be260"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Resources/DreamCubemapRoomSurface.shader",
+      "sha256": "bcd59e0e1fce7a06d2bdd4814f29a6da0b8645b30b87051c3f4a0a49a2636cc4"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs",
+      "sha256": "c40d16c548339ca7f29340f0274db5f7a32b0f2f15d838aac02d7c986ff598ea"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Resources/MiniGame/DreamSequenceDefault.asset",
+      "sha256": "ad133a7c7be75cf140bf2a23265928d6e333332e43de61fe760d4c8eab0c5cfa"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/OceanFloatTrack.cs",
+      "sha256": "b050869675028844702e6c900f63713e9c4f4e8cc5baca63593478a9d2883b0b"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Resources/MiniGame/OceanWaveMotion.json",
+      "sha256": "5f4d74cb8103cbd5df54d1ab434b56306faf7a9681f93173a3dfdc38d60332b3"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs",
+      "sha256": "e172b5e00c0bbb413a5ae8f342aae2de2356d625eba711bafa8bad9d5ef46277"
+    },
+    {
+      "file": "Tools/SeaDreamCapture/bake_ocean_float.py",
+      "sha256": "0afdc124bf545cd391cb3a156ff7e92174fc3655cd9b9389ce186240ca20d8ac"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Tests/PlayMode/DreamCubemapPlayModeTests.cs",
+      "sha256": "b00783f001a1b342c84de22679e49e76fd6dce38cae1f57f5ab386425bef4903"
+    },
+    {
+      "file": "UnityProject/Assets/MiniGame/Tests/PlayMode/EndingCampaignPlayModeTests.cs",
+      "sha256": "79e7020c3bc9e3a6ba56b41f97add485cb1dd7913bd8ff6c236ff586744d370e"
+    }
+  ],
+  "preview": {
+    "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/sky-only-reveal.mp4",
+    "sha256": "4320dc735ef396e39ac542f75b8bfc2cf71fe1b3e7831fe7b2925d3a0fc49a21",
+    "seconds": 6,
+    "fps": 30,
+    "kind": "Actual 1024 cubemap scene camera renders, 1280x960 video, original ocean recording aligned to captured PCM start; no overlay UI",
+    "framePoses": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/frames/camera-poses.txt",
+    "revision": "Current delayed sky-only reveal, camera renders with muxed ocean-only audio; not a full game audio recording"
+  },
+  "transitionAnalysis": {
+    "file": "../../Artifacts/Unity/DreamSkyOnlyReveal20261025/render-transition-analysis.json",
+    "mixedFramesAt30fps": 8,
+    "firstMixedFrame": {
+      "frame": 34,
+      "pitch": 87.70801600322278,
+      "opacity": 0.9958,
+      "wallDistance": -0.1606
+    },
+    "minimumMixedPitchDegrees": 87.70801600322278,
+    "allCrossedFramesHaveNoPrint": true,
+    "wideFrame": "frames/sky-reveal-wide.png",
+    "exteriorOnlyWideFrame": "frames/sky-reveal-without-print-wide.png"
+  }
+}

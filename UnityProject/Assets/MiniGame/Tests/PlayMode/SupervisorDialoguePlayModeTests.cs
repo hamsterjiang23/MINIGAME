@@ -96,6 +96,8 @@ namespace MiniGame.UnityHost.Tests
                         Assert.That(source, Is.EqualTo(SupervisorDialogueContent.SourcePrefix + line.id));
                         Assert.That(supervisor.CurrentPortraitId, Is.EqualTo(line.portraitId));
                         Assert.That(host.Screen.CurrentLinePageCount, Is.GreaterThan(0), source);
+                        Assert.That(host.GetComponent<SupervisorVoicePlayer>()?.CurrentClip, Is.Not.Null,
+                            "Every actually presented supervisor line must have its own phrase: " + source);
                         displayedPages.Add(source, new List<string>());
                         pageCounts.Add(source, host.Screen.CurrentLinePageCount);
                         Assert.That(supervisor.Surface.transform.position.y, Is.EqualTo(actorHeight).Within(.001f),

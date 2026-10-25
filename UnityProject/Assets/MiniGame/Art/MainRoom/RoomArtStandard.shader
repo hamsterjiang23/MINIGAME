@@ -12,6 +12,8 @@ Shader "MiniGame/Room Art Standard"
         _BumpScale ("Normal Scale", Float) = 1
         [HDR] _EmissionColor ("Emission", Color) = (0, 0, 0, 1)
         _CrtPower ("CRT Power", Range(0, 1)) = 1
+        [HideInInspector] _DreamClipEnabled ("Dream head capture clipping", Float) = 0
+        [HideInInspector] _DreamClipPlane ("Dream wall plane", Vector) = (0,0,1,0)
         [HideInInspector] _LiveDisplay ("Live terminal display", Float) = 0
         [HideInInspector] _LiveDisplayTex ("Native terminal frame", 2D) = "black" {}
         [Toggle] _LightingBandsEnabled ("Lighting Bands Enabled", Float) = 0
@@ -40,6 +42,8 @@ Shader "MiniGame/Room Art Standard"
         half _Metallic, _Glossiness, _GlossMapScale, _BumpScale;
         half4 _EmissionColor;
         half _CrtPower;
+        half _DreamClipEnabled;
+        float4 _DreamClipPlane;
         half _LightingBandsEnabled, _LightingBands, _LightingBandsStrength, _LightingDither;
         half _AlbedoGain, _AlbedoContrast;
 
@@ -104,6 +108,7 @@ Shader "MiniGame/Room Art Standard"
 
         void surf(Input input, inout SurfaceOutputRoom output)
         {
+            if (_DreamClipEnabled > .5) clip(dot(float4(input.worldPos, 1), _DreamClipPlane));
             fixed4 albedo = tex2D(_MainTex, input.uv_MainTex) * _Color;
             output.Albedo = max(0, (albedo.rgb - .5) * _AlbedoContrast + .5) * _AlbedoGain;
             output.Alpha = albedo.a;

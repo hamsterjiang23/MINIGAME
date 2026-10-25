@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +48,9 @@ namespace MiniGame.UnityHost
         private Font failureFont;
         private Text failureLabel;
         private bool bedCompleted, resumingExploration;
+        private Vector3 panoramaOrigin;
+        private float bedFocusDistance = 3.2f;
+        private InteractionFocusOutline bedFocusOutline;
 
         public event Action BedCompleted;
         public bool IsTransitioning => !restored && !Ready && !bedCompleted;
@@ -56,18 +59,21 @@ namespace MiniGame.UnityHost
 
         public bool Ready { get; private set; }
         public bool IsPreview { get; private set; }
+        public bool IsPortalPreview { get; private set; }
         public bool UsesSharedThanks => !IsPreview && session != null && session.Runtime != null && session.Runtime.UsesEndingFlow;
         public string FailureReason { get; private set; }
         public DreamEndingController Ending { get; private set; }
         public DreamCubemapRenderer Cubemap { get; private set; }
         public DreamCubemapRoomSurface RoomSurface { get; private set; }
+        public DreamWallPortal Portal { get; private set; }
         public Bounds MappedRoomBounds { get; private set; }
         public Bounds ExplorationBounds { get; private set; }
         public Vector3 PlayerPosition => player != null ? player.transform.position : Vector3.zero;
-        public Vector3 PanoramaOrigin => standing != null ? standing.position : Vector3.zero;
+        public Vector3 PanoramaOrigin => panoramaOrigin;
         public Camera ViewCamera { get; private set; }
 
-        public static RoomDreamEnding Begin(MiniGameBootstrap room, MiniGameSessionHost session, bool isPreview = false)
+        public static RoomDreamEnding Begin(MiniGameBootstrap room, MiniGameSessionHost session, bool isPreview = false,
+            bool wallPortalPreview = false)
         {
             if (room == null || room.Player == null || room.Player.ViewCamera == null)
                 throw new InvalidOperationException("房间梦结局缺少玩家或相机。");
@@ -82,6 +88,7 @@ namespace MiniGame.UnityHost
             var owner = root.AddComponent<RoomDreamEnding>();
             owner.room = room;
             owner.IsPreview = isPreview;
+            owner.IsPortalPreview = isPreview && wallPortalPreview;
             owner.session = session;
             owner.player = room.Player;
             owner.ViewCamera = room.Player.ViewCamera;
@@ -114,11 +121,18 @@ namespace MiniGame.UnityHost
             try
             {
                 PrepareRoom();
-                Cubemap = session.DreamProfile.RoomPanoramaSkybox != null
-                    ? new DreamCubemapRenderer(session.DreamProfile, ViewCamera, session.DreamProfile.RoomPanoramaSkybox, PanoramaOrigin)
+                var sky = session.DreamProfile.RoomPanoramaSkybox;
+                if (Portal != null && sky == null) sky = ViewCamera.GetComponent<Skybox>().material;
+                Cubemap = sky != null
+                    ? new DreamCubemapRenderer(session.DreamProfile, ViewCamera, sky, PanoramaOrigin)
                     : new DreamCubemapRenderer(session.DreamProfile, ViewCamera, false);
                 RoomSurface = new DreamCubemapRoomSurface(MappedRoomBounds, transform, BedLayer, PanoramaOrigin);
-                ViewCamera.clearFlags = CameraClearFlags.SolidColor;
+                if (Portal != null)
+                {
+                    Portal.CaptureHeadWallpaper();
+                    RoomSurface.BindHead(Portal.HeadTexture, Portal.HeadProjectionOrigin);
+                }
+                ViewCamera.clearFlags = Portal == null ? CameraClearFlags.SolidColor : CameraClearFlags.Skybox;
                 Ending = gameObject.AddComponent<DreamEndingController>();
                 Ending.ConfigureRoom(session.DreamProfile, ViewCamera, bed, pillow, standing, this);
                 if (!Cubemap.IsReady)
@@ -166,12 +180,22 @@ namespace MiniGame.UnityHost
             if (!valid)
             {
                 state.HasEntryPose = true;
+                state.MonitorReturn = Portal != null;
                 state.EntryTargetPosition = standing.position;
                 state.EntryTargetRotation = standing.rotation;
-                // Start a short distance inside the room; backing into the authored doorway avoids clipping its wall.
-                var start = AvoidBed(Clamp(safeSpawn + Vector3.ProjectOnPlane(standing.forward, Vector3.up).normalized * .35f));
-                state.EntryStartPosition = standing.position + start - safeSpawn;
-                state.EntryStartRotation = Quaternion.Euler(0, -12, 0) * standing.rotation;
+                if (Portal != null)
+                {
+                    float distance = Mathf.Max(ViewCamera.nearClipPlane * 1.5f,
+                        Portal.PrintedScreenHeight * .5f / Mathf.Tan(24 * Mathf.Deg2Rad) * .82f);
+                    state.EntryStartPosition = Portal.PrintedScreenCenter - Portal.PrintedScreenNormal * distance;
+                    state.EntryStartRotation = Quaternion.LookRotation(Portal.PrintedScreenNormal, Vector3.up);
+                }
+                else
+                {
+                    var start = AvoidBed(Clamp(safeSpawn + Vector3.ProjectOnPlane(standing.forward, Vector3.up).normalized * .35f));
+                    state.EntryStartPosition = standing.position + start - safeSpawn;
+                    state.EntryStartRotation = Quaternion.Euler(0, -12, 0) * standing.rotation;
+                }
             }
             ApplyEntryPose();
         }
@@ -180,6 +204,14 @@ namespace MiniGame.UnityHost
         {
             var state = transition.State;
             if (!state.HasEntryPose || ViewCamera == null || state.Phase == RoomEndingTransitionPhase.Exploring && resumingExploration) return;
+            if (state.MonitorReturn)
+            {
+                float progress = state.Phase == RoomEndingTransitionPhase.Exploring ? 1
+                    : state.Phase == RoomEndingTransitionPhase.Entering ? state.Elapsed / RoomEndingTransitionClock.EntrySeconds : 0;
+                TerminalReturnMotion.Apply(ViewCamera, state.EntryStartPosition, state.EntryStartRotation, 48,
+                    state.EntryTargetPosition, state.EntryTargetRotation, 62, progress);
+                return;
+            }
             float t = state.Phase == RoomEndingTransitionPhase.Exploring ? 1 : state.Phase == RoomEndingTransitionPhase.Entering
                 ? Mathf.SmoothStep(0, 1, Mathf.Clamp01(state.Elapsed / RoomEndingTransitionClock.EntrySeconds)) : 0;
             ViewCamera.transform.SetPositionAndRotation(Vector3.Lerp(state.EntryStartPosition, state.EntryTargetPosition, t),
@@ -261,7 +293,7 @@ namespace MiniGame.UnityHost
                 if (Ending.Audio != null) Destroy(Ending.Audio);
                 Destroy(Ending);
             }
-            Ending = null; Cubemap = null; RoomSurface = null;
+            Ending = null; Cubemap = null; RoomSurface = null; Portal = null;
             behaviours.Clear(); canvases.Clear(); renderers.Clear(); colliders.Clear(); lights.Clear(); cameras.Clear();
             moved.Clear(); layers.Clear(); audio.Clear();
             cameraSaved = roomDisabled = false;
@@ -325,6 +357,7 @@ namespace MiniGame.UnityHost
             var doorwaySpawn = RoomComponents<Transform>().FirstOrDefault(value => value.name == "Player spawn");
             if (doorwaySpawn == null) throw new InvalidOperationException("固定全景布景缺少门口 Player spawn 定位点。");
             floorY = doorwaySpawn.position.y;
+            panoramaOrigin = doorwaySpawn.position + cameraLocalPosition;
             var floor = allColliders.FirstOrDefault(value => value.name == "Reference floor collider");
             Bounds floorBounds;
             if (floor != null) floorBounds = floor.bounds;
@@ -346,6 +379,7 @@ namespace MiniGame.UnityHost
             MappedRoomBounds = new Bounds(new Vector3(floorBounds.center.x, (bottom + top) * .5f, floorBounds.center.z),
                 new Vector3(floorBounds.size.x, top - bottom, floorBounds.size.z));
             var bedInteraction = RoomComponents<WorldInteraction>().FirstOrDefault(value => value.Target == InteractionTarget.Bed);
+            bedFocusDistance = bedInteraction != null ? bedInteraction.InteractionDistance : 3.2f;
             var bedColliders = allColliders.Where(value => bedRenderers.Any(part => value.transform == part.transform
                     || value.transform.IsChildOf(part.transform))
                 || bedInteraction != null && (value.transform == bedInteraction.transform
@@ -389,6 +423,9 @@ namespace MiniGame.UnityHost
             var pillowBounds = bedRenderers[2].bounds;
             pillow.position = new Vector3(pillowBounds.center.x, pillowBounds.max.y + .12f, pillowBounds.center.z);
             pillow.rotation = Quaternion.LookRotation(Vector3.up, bed.forward);
+            if (UsesSharedThanks || IsPortalPreview)
+                Portal = new DreamWallPortal(session.DreamProfile, ViewCamera, transform,
+                    MappedRoomBounds, bed, bedRenderers, PanoramaOrigin);
             var bedLight = new GameObject("Dream Bed Light", typeof(Light));
             bedLight.transform.SetParent(transform, false);
             bedLight.transform.rotation = Quaternion.Euler(52, -32, 0);
@@ -397,7 +434,8 @@ namespace MiniGame.UnityHost
             light.color = new Color(1, .97f, .9f);
             light.intensity = .9f;
             light.shadows = LightShadows.None;
-            light.cullingMask = 1 << BedLayer;
+            light.cullingMask = (1 << BedLayer) | (Portal != null
+                ? 1 << DreamWallPortal.HeadCaptureLayer : 0);
             ViewCamera.cullingMask = 1 << BedLayer;
             ViewCamera.nearClipPlane = .03f;
             ViewCamera.farClipPlane = 1200;
@@ -406,7 +444,8 @@ namespace MiniGame.UnityHost
                 ? session.DreamProfile.CubemapSourcePrefab.GetComponent<DreamCubemapSource>() : null;
             if (source != null) lighting.Apply(source);
 
-            safeSpawn = AvoidBed(Clamp(doorwaySpawn.position));
+            safeSpawn = AvoidBed(Clamp(Portal != null
+                ? Portal.PrintedScreenCenter - Portal.PrintedScreenNormal * 1.05f : doorwaySpawn.position));
             standing = new GameObject("Room Dream Standing Pose").transform;
             standing.SetParent(transform, false);
             PlacePose(safeSpawn, HeadingToBed(safeSpawn), 8);
@@ -467,6 +506,59 @@ namespace MiniGame.UnityHost
             return Vector3.Distance(point, closest) <= Mathf.Max(.1f, distance);
         }
 
+        public bool IsBedFocused()
+        {
+            return Ready && ViewCamera != null && bed != null
+                && Physics.Raycast(ViewCamera.transform.position, ViewCamera.transform.forward, out var hit,
+                    bedFocusDistance, 1 << BedLayer, QueryTriggerInteraction.Ignore)
+                && hit.collider.transform.IsChildOf(bed);
+        }
+
+        public void SetBedFocus(bool focused)
+        {
+            if (!focused)
+            {
+                bedFocusOutline?.Dispose(); bedFocusOutline = null;
+            }
+            else if (bedFocusOutline == null && bedRenderers != null)
+                bedFocusOutline = InteractionFocusOutline.Create(bedRenderers[0], bedRenderers);
+        }
+
+        private const float SkyRevealStart = .74f, SkyRevealEnd = .94f;
+        public const float SkyRevealPitch = 82;
+
+        public Quaternion WallLyingRotation => Quaternion.LookRotation(Vector3.up, Portal.WallNormal);
+
+        public void ApplyWallLieDown(Vector3 start, Quaternion startRotation, Vector3 target, float progress)
+        {
+            // Turn in place before reclining. Keep the pillow behind the head throughout the descent,
+            // including an approach from either side of the bed, instead of diving face-first into it.
+            float turn = EaseWallMotion(Mathf.InverseLerp(0, .5f, progress));
+            float lie = EaseWallMotion(Mathf.InverseLerp(.5f, .8f, progress));
+            var intoPillow = Vector3.ProjectOnPlane(target - start, Vector3.up);
+            if (intoPillow.sqrMagnitude < .0001f) intoPillow = Portal.WallNormal;
+            intoPillow.Normalize();
+            var awayRotation = Quaternion.LookRotation(-intoPillow, Vector3.up);
+            // Settle onto the bed's long axis while reclining, so side approaches end in the same upright pose.
+            var settledDirection = Vector3.Slerp(intoPillow, Portal.WallNormal, lie);
+            var reclineRotation = Quaternion.LookRotation(-settledDirection, Vector3.up) * Quaternion.Euler(-90 * lie, 0, 0);
+            var startAngles = startRotation.eulerAngles;
+            var turnRotation = Quaternion.Euler(Mathf.LerpAngle(startAngles.x, 0, turn),
+                Mathf.LerpAngle(startAngles.y, awayRotation.eulerAngles.y, turn), 0);
+            // Stay just inside the pillow wall until the sky-only dissolve has finished. Crossing
+            // earlier reveals the exterior computer pile while the player can still see the horizon.
+            var wallFront = target - Portal.WallNormal * (Portal.Wall.GetDistanceToPoint(target) + .12f);
+            wallFront.y = start.y; // Keep the bed rails below the sky view until the dissolve is complete.
+            var insidePosition = Vector3.Lerp(start, wallFront, lie * lie);
+            float crossing = EaseWallMotion(Mathf.InverseLerp(SkyRevealEnd, 1, progress));
+            var position = Vector3.Lerp(insidePosition, target, crossing);
+            position.y = Mathf.Lerp(start.y, target.y, crossing * crossing);
+            ViewCamera.transform.SetPositionAndRotation(progress <= .5f ? start : position,
+                progress <= .5f ? turnRotation : reclineRotation);
+        }
+
+        private static float EaseWallMotion(float t) => t * t * t * (t * (t * 6 - 15) + 10);
+
         public void CapturePose(BeachEndingCheckpoint checkpoint)
         {
             if (checkpoint == null || restored || player == null) return;
@@ -516,6 +608,31 @@ namespace MiniGame.UnityHost
                 RoomSurface?.Bind(Cubemap.Texture, session.DreamProfile.CubemapYaw);
                 RoomSurface?.SetOutline(session.DreamProfile.ShowRoomOutline);
             }
+        }
+
+        public bool IsFacingPrintedMonitor
+        {
+            get
+            {
+                if (restored || Portal == null || ViewCamera == null || Portal.IsOutside
+                    || TransitionPhase != RoomEndingTransitionPhase.Entering && TransitionPhase != RoomEndingTransitionPhase.Exploring)
+                    return false;
+                var toScreen = Portal.PrintedScreenCenter - ViewCamera.transform.position;
+                // A small central viewing cone allows natural free look without requiring pixel-perfect aim.
+                return Vector3.Dot(toScreen, Portal.PrintedScreenNormal) > 0
+                    && Vector3.Dot(ViewCamera.transform.forward, toScreen.normalized) >= Mathf.Cos(15 * Mathf.Deg2Rad);
+            }
+        }
+
+        public void UpdatePortalView(float time, float? lieProgress = null)
+        {
+            if (Portal == null) return;
+            float reveal = Portal.IsOutside ? 1 : 0;
+            if (!Portal.IsOutside && lieProgress.HasValue
+                && Vector3.Dot(ViewCamera.transform.forward, Vector3.up) >= Mathf.Sin(SkyRevealPitch * Mathf.Deg2Rad))
+                reveal = EaseWallMotion(Mathf.InverseLerp(SkyRevealStart, SkyRevealEnd, lieProgress.Value));
+            Portal.UpdateView(time, reveal);
+            RoomSurface?.SetOpacity(1 - reveal);
         }
 
         public void KeepBedInsideRoom()
@@ -570,9 +687,11 @@ namespace MiniGame.UnityHost
 
         private void RestoreRoomState()
         {
+            SetBedFocus(false);
             if (Ending != null) { Ending.enabled = false; Ending.Audio?.StopAll(); }
             Cubemap?.Dispose();
             RoomSurface?.Dispose();
+            Portal?.Dispose();
             if (character != null) character.enabled = false;
             foreach (var value in moved.OrderBy(item => item.Sibling)) value.Restore();
             foreach (var value in layers) if (value.Key != null) value.Key.layer = value.Value;
@@ -594,6 +713,8 @@ namespace MiniGame.UnityHost
             RestoreRetro();
             if (roomDisabled)
             {
+                // Audio directors can start loops in OnEnable; their sources must be usable first.
+                foreach (var value in audio) value.EnableForRestore();
                 foreach (var value in behaviours) if (value.Value != null) value.Value.enabled = value.Enabled;
                 foreach (var value in canvases) if (value.Value != null) value.Value.enabled = value.Enabled;
                 foreach (var value in audio) value.Restore();
@@ -627,9 +748,11 @@ namespace MiniGame.UnityHost
             restored = true;
             Ready = false;
             StopAllCoroutines();
+            SetBedFocus(false);
             if (Ending != null) { Ending.enabled = false; Ending.Audio?.StopAll(); }
             Cubemap?.Dispose();
             RoomSurface?.Dispose();
+            Portal?.Dispose();
             lighting?.Restore();
             RestoreRetro();
         }
@@ -687,6 +810,7 @@ namespace MiniGame.UnityHost
                 clip = source.clip; sample = clip != null ? source.timeSamples : 0;
             }
             public void Silence() { if (source != null) source.enabled = false; }
+            public void EnableForRestore() { if (source != null) source.enabled = enabled; }
             public void Restore()
             {
                 if (source == null) return;

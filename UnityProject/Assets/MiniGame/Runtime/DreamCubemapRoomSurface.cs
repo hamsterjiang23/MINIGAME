@@ -12,6 +12,7 @@ namespace MiniGame.UnityHost
         public Bounds Bounds { get; }
         public Material Material { get; }
         public Vector3 ProjectionOrigin { get; private set; }
+        public float Opacity { get; private set; } = 1;
         private readonly Mesh[] meshes = new Mesh[6];
         private bool disposed;
 
@@ -62,9 +63,41 @@ namespace MiniGame.UnityHost
             ProjectionOrigin = origin;
             Material.SetVector("_ProjectionOrigin", origin);
         }
+        public void BindHead(Texture texture, Vector3 origin)
+        {
+            if (disposed) return;
+            Material.SetTexture("_HeadTex", texture);
+            Material.SetVector("_HeadOrigin", origin);
+            Material.SetFloat("_HeadEnabled", texture != null ? 1 : 0);
+        }
         public void SetOutline(bool visible)
         {
             if (!disposed) Material.SetFloat("_EdgeWidth", visible ? .015f : 0);
+        }
+        public void SetOpacity(float value)
+        {
+            if (disposed) return;
+            value = float.IsNaN(value) || float.IsInfinity(value) ? 1 : Mathf.Clamp01(value);
+            if (Opacity != value)
+            {
+                bool transparent = value < 1;
+                Material.SetFloat("_Opacity", value);
+                Material.SetInt("_SrcBlend", (int)(transparent ? BlendMode.SrcAlpha : BlendMode.One));
+                Material.SetInt("_DstBlend", (int)(transparent ? BlendMode.OneMinusSrcAlpha : BlendMode.Zero));
+                Material.SetInt("_ZWrite", transparent ? 0 : 1);
+                // During the dissolve the print is an image overlay; even exterior props in front
+                // of a wall must enter gradually instead of popping through it at full brightness.
+                Material.SetInt("_ZTest", (int)(transparent ? CompareFunction.Always : CompareFunction.LessEqual));
+                Material.SetOverrideTag("RenderType", transparent ? "Transparent" : "Opaque");
+                Material.renderQueue = transparent ? (int)RenderQueue.Overlay : (int)RenderQueue.Geometry;
+                Opacity = value;
+            }
+            SetVisible(value > 0);
+        }
+
+        public void SetVisible(bool visible)
+        {
+            if (!disposed && Root.activeSelf != visible) Root.SetActive(visible);
         }
         public void Dispose()
         {

@@ -22,11 +22,10 @@ Shader "MiniGame/Soft Dialogue Border"
             }
             fixed4 frag(Output input):SV_Target
             {
-                // A thin ring with softly fading sides, measured in screen pixels.
-                float2 size = 1 / max(fwidth(input.uv), .00001);
-                float2 q = abs((input.uv - .5) * size) - (size * .5 - 3);
-                float distance = length(max(q, 0)) + min(max(q.x, q.y), 0) - 3;
-                float coverage = 1 - smoothstep(.25, 1.4, abs(distance + 1.4));
+                // A borderless scrim: no rectangular edge over the actor or the room.
+                float horizontal = smoothstep(0, .18, input.uv.x) * smoothstep(0, .18, 1 - input.uv.x);
+                float vertical = smoothstep(0, .24, input.uv.y) * smoothstep(0, .40, 1 - input.uv.y);
+                float coverage = horizontal * vertical;
                 return fixed4(input.color.rgb, input.color.a * coverage);
             }
             ENDCG

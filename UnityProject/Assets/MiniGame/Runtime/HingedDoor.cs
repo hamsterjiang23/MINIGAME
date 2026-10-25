@@ -42,6 +42,27 @@ namespace MiniGame.UnityHost
         internal Func<bool> MotionClearance { get; set; }
         public float CurrentAngle { get; private set; }
         public bool IsOpen => enableToggle && (runtime != null ? runtime.GetView().RoomDoorOpen : Mathf.Abs(CurrentAngle) > .01f);
+        internal Vector3 SweepCenter => (pivot != null ? pivot : transform).position;
+        internal float HorizontalSweepRadius
+        {
+            get
+            {
+                var hinge = pivot != null ? pivot : transform;
+                float radius = 0;
+                foreach (var renderer in hinge.GetComponentsInChildren<Renderer>(true))
+                {
+                    var bounds = renderer.localBounds;
+                    for (int corner = 0; corner < 8; corner++)
+                    {
+                        var local = bounds.center + Vector3.Scale(bounds.extents, new Vector3(
+                            (corner & 1) == 0 ? -1 : 1, (corner & 2) == 0 ? -1 : 1, (corner & 4) == 0 ? -1 : 1));
+                        var offset = renderer.transform.TransformPoint(local) - hinge.position;
+                        radius = Mathf.Max(radius, new Vector2(offset.x, offset.z).magnitude);
+                    }
+                }
+                return radius;
+            }
+        }
 
         public void Configure(Transform hinge, float angle = 60f, float duration = .6f)
         {

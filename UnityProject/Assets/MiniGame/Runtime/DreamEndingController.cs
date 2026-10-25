@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,10 +33,14 @@ namespace MiniGame.UnityHost
         }
         private readonly List<SurfaceMaterials> waterSurfaces = new List<SurfaceMaterials>();
         private MiniGameAudioService audioService;
+        private OceanFloatTrack oceanFloatTrack;
+        private AudioClip oceanFloatClip;
+        private int oceanPoseSample = -1;
         private Canvas canvas;
         private Image endingFade;
         private int opaqueFrame = -1;
         private Text hint, caption;
+        private InteractionCursorView interactionCursor;
         private PauseMenuView pauseMenu;
         private Font font;
         private int voiceIndex = -1;
@@ -46,7 +50,7 @@ namespace MiniGame.UnityHost
         public bool IsRoomCubemapEnding => roomEnding != null;
         public float WorldTime => worldTime;
         public BeachEndingPhase Phase => state.Phase;
-        private bool UsesBedEndingSequence => roomEnding != null && roomEnding.UsesSharedThanks;
+        private bool UsesBedEndingSequence => roomEnding != null && (roomEnding.UsesSharedThanks || roomEnding.IsPortalPreview);
         public float EndingFadeOpacity => endingFade != null ? endingFade.color.a : 0;
         public bool IsBedEndingComplete => UsesBedEndingSequence && state.Phase == BeachEndingPhase.FadingOut
             && state.PhaseElapsed >= EndingFadeSeconds;
@@ -54,9 +58,11 @@ namespace MiniGame.UnityHost
         public DreamSequenceProfile Profile => profile;
         public Transform Bed => bed;
         public MiniGameAudioService Audio => audioService;
+        public Vector3 OceanFloatPose { get; private set; }
         public bool UseExternalClock { get; set; }
         public bool Paused => MiniGameSessionHost.Current?.Runtime?.GetView().Paused ?? localPaused;
         public string CurrentSubtitle => caption != null ? caption.text : string.Empty;
+        public bool BedInteractionFocused => CanLieDown && (roomEnding == null || roomEnding.Portal == null || roomEnding.IsBedFocused());
         public bool CanLieDown => initialized && !Paused && state.Phase == BeachEndingPhase.Walking
             && (roomEnding == null || roomEnding.Ready)
             && (roomEnding != null ? roomEnding.IsNearBed(Safe(profile.BedInteractionDistance, 1.5f, .1f))
@@ -147,11 +153,22 @@ namespace MiniGame.UnityHost
             HandleInteractionInput(Input.GetKeyDown(KeyCode.E), Input.GetMouseButtonDown(0));
         }
 
+        private void LateUpdate()
+        {
+            if (!initialized || audioService == null) return;
+            // Use the final camera pose, including the monitor-return entrance and the lie-down motion.
+            bool facing = !thanksActive && !Paused && !MainMenuController.BlocksGameplayInput
+                && roomEnding != null && roomEnding.IsFacingPrintedMonitor;
+            audioService.SetLoop(MiniGameAudioChannel.ComputerNoise,
+                facing ? MiniGameSound.PCNoise : (MiniGameSound?)null, facing ? .08f : 0);
+        }
+
         public bool HandleInteractionInput(bool interactPressed, bool primaryPressed)
         {
             if ((!interactPressed && !primaryPressed) || pauseClosedFrame == Time.frameCount
                 || lastInteractionInputFrame == Time.frameCount || MainMenuController.BlocksGameplayInput) return false;
             lastInteractionInputFrame = Time.frameCount;
+            if (roomEnding?.Portal != null && !BedInteractionFocused) return false;
             return TryLieDown();
         }
 
@@ -173,6 +190,8 @@ namespace MiniGame.UnityHost
         public void HideForThanks()
         {
             thanksActive = true;
+            interactionCursor?.SetVisible(false);
+            roomEnding?.SetBedFocus(false);
             if (hint != null) hint.gameObject.SetActive(false);
             if (caption != null) caption.gameObject.SetActive(false);
             pauseMenu?.SetVisible(Paused && !MainMenuController.BlocksGameplayInput);
@@ -288,26 +307,36 @@ namespace MiniGame.UnityHost
             }
         }
 
-        private void ApplyPose()
+        private void ApplyPose(int? restoredOceanSample = null)
         {
             bed.position = bedBasePosition;
             bed.rotation = bedBaseRotation;
             var walking = startPosition + walkDirection * state.WalkDistance;
+            var lyingRotation = roomEnding?.Portal != null
+                ? roomEnding.WallLyingRotation
+                : bedBaseRotation * Quaternion.LookRotation(Vector3.up,
+                UsesBedEndingSequence ? Vector3.back : Vector3.forward);
             if (state.Phase == BeachEndingPhase.Walking)
             {
                 if (roomEnding == null) viewCamera.transform.SetPositionAndRotation(walking, standingRotation);
             }
             else if (state.Phase == BeachEndingPhase.Lying)
             {
-                float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f)));
-                viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(roomEnding != null ? state.LieStartPosition : walking, bed.TransformPoint(pillowLocal), t),
-                    Quaternion.Slerp(roomEnding != null ? state.LieStartRotation : standingRotation,
-                        bedBaseRotation * Quaternion.LookRotation(Vector3.up, Vector3.forward), t));
+                float progress = Mathf.Clamp01(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f));
+                if (roomEnding?.Portal != null)
+                    roomEnding.ApplyWallLieDown(state.LieStartPosition, state.LieStartRotation, bed.TransformPoint(pillowLocal), progress);
+                else
+                {
+                    float t = Mathf.SmoothStep(0, 1, progress);
+                    viewCamera.transform.SetPositionAndRotation(Vector3.Lerp(roomEnding != null ? state.LieStartPosition : walking, bed.TransformPoint(pillowLocal), t),
+                        Quaternion.Slerp(roomEnding != null ? state.LieStartRotation : standingRotation, lyingRotation, t));
+                }
             }
             else if (UsesBedEndingSequence)
             {
                 viewCamera.transform.SetPositionAndRotation(bed.TransformPoint(pillowLocal),
-                    bedBaseRotation * Quaternion.LookRotation(Vector3.up, Vector3.forward));
+                    lyingRotation);
+                ApplyOceanFloat(restoredOceanSample);
             }
             else
             {
@@ -332,6 +361,29 @@ namespace MiniGame.UnityHost
             RenderRoomCubemap();
         }
 
+        private void ApplyOceanFloat(int? restoredSample)
+        {
+            OceanFloatPose = Vector3.zero;
+            if (!profile.EnableOceanFloat) return;
+            var ocean = audioService?.GetSource(MiniGameAudioChannel.Ocean);
+            if (ocean?.clip == null) return;
+            if (oceanFloatClip != ocean.clip)
+            {
+                oceanFloatClip = ocean.clip;
+                oceanFloatTrack = OceanFloatTrack.Load(ocean.clip);
+            }
+            if (oceanFloatTrack == null) return;
+            oceanPoseSample = restoredSample ?? ocean.timeSamples;
+            float elapsed = state.Phase == BeachEndingPhase.FadingOut ? SkyHoldSeconds + state.PhaseElapsed : state.PhaseElapsed;
+            float gain = Mathf.SmoothStep(0, 1, Mathf.Clamp01(elapsed / 1.1f));
+            var swell = oceanFloatTrack.Evaluate(oceanPoseSample);
+            OceanFloatPose = new Vector3(swell.x * Mathf.Min(.2f, Safe(profile.OceanFloatHeight, .1f, 0)),
+                swell.y * Mathf.Min(5, Safe(profile.OceanFloatPitch, 2.6f, 0)),
+                swell.z * Mathf.Min(3, Safe(profile.OceanFloatRoll, 1.2f, 0))) * gain;
+            viewCamera.transform.position += Vector3.up * OceanFloatPose.x;
+            viewCamera.transform.rotation *= Quaternion.Euler(OceanFloatPose.y, 0, OceanFloatPose.z);
+        }
+
         private void ApplyEndingFade()
         {
             if (endingFade == null) return;
@@ -352,13 +404,10 @@ namespace MiniGame.UnityHost
             else if (!roomEnding.Cubemap.IsReady)
                 roomEnding.Cubemap.Render(0, BeachEndingPhase.Walking, 0, 0, true);
             roomEnding.UpdateRoomSurface();
-            // Blend away from the doorway's wall projection as the player lies down,
-            // so the final upward view samples the actual sky above the pillow.
-            float skyBlend = !UsesBedEndingSequence || state.Phase == BeachEndingPhase.Walking ? 0
-                : state.Phase == BeachEndingPhase.Lying
-                    ? Mathf.SmoothStep(0, 1, Mathf.Clamp01(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f))) : 1;
-            roomEnding.RoomSurface?.SetProjectionOrigin(Vector3.Lerp(roomEnding.PanoramaOrigin,
-                viewCamera.transform.position, skyBlend));
+            // The wall image stays painted in place. The eye physically crosses it into the exterior.
+            roomEnding.RoomSurface?.SetProjectionOrigin(roomEnding.PanoramaOrigin);
+            roomEnding.UpdatePortalView(worldTime, state.Phase == BeachEndingPhase.Lying
+                ? (float?)(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f)) : null);
         }
 
         private void CreateWaterMaterials()
@@ -425,7 +474,11 @@ namespace MiniGame.UnityHost
                 SubtitleIndex = state.SubtitleIndex, SubtitlesComplete = state.SubtitlesComplete,
                 LieStartPosition = state.LieStartPosition, LieStartRotation = state.LieStartRotation,
                 HasMusicPosition = audioService?.GetSource(MiniGameAudioChannel.EndingMusic)?.clip != null,
-                MusicSeconds = audioService?.GetSource(MiniGameAudioChannel.EndingMusic)?.time ?? 0
+                MusicSeconds = audioService?.GetSource(MiniGameAudioChannel.EndingMusic)?.time ?? 0,
+                HasOceanPosition = audioService?.GetSource(MiniGameAudioChannel.Ocean)?.clip != null,
+                OceanSample = UsesBedEndingSequence && profile.EnableOceanFloat && oceanPoseSample >= 0
+                    && (state.Phase == BeachEndingPhase.SkyHold || state.Phase == BeachEndingPhase.FadingOut)
+                    ? oceanPoseSample : audioService?.GetSource(MiniGameAudioChannel.Ocean)?.timeSamples ?? 0
             };
             roomEnding?.CapturePose(saved);
             return saved;
@@ -469,10 +522,15 @@ namespace MiniGame.UnityHost
             var music = audioService.GetSource(MiniGameAudioChannel.EndingMusic);
             if (value.HasMusicPosition && music != null && music.clip != null)
                 music.time = Mathf.Clamp(Safe(value.MusicSeconds, 0, 0), 0, Mathf.Max(0, music.clip.length - .01f));
+            var ocean = audioService.GetSource(MiniGameAudioChannel.Ocean);
+            if (value.HasOceanPosition && ocean?.clip != null)
+                ocean.timeSamples = Mathf.Clamp(value.OceanSample, 0, Mathf.Max(0, ocean.clip.samples - 1));
+            oceanPoseSample = -1;
             voiceIndex = -1;
             audioService.Stop(MiniGameAudioChannel.Voice);
             if (state.Phase == BeachEndingPhase.Drifting) AdvanceSubtitles(0);
-            ApplyPose();
+            // Streaming seeks reach the audio thread asynchronously; restore the saved visual pose immediately.
+            ApplyPose(value.HasOceanPosition ? (int?)Mathf.Max(0, value.OceanSample) : null);
             RenderRoomCubemap();
             ApplyPause(true);
             RefreshInterface();
@@ -484,13 +542,18 @@ namespace MiniGame.UnityHost
             bool paused = Paused;
             if (force || paused != audioPaused)
             {
-                foreach (var channel in new[] { MiniGameAudioChannel.EndingMusic, MiniGameAudioChannel.Ocean, MiniGameAudioChannel.Voice })
+                foreach (var channel in new[] { MiniGameAudioChannel.EndingMusic, MiniGameAudioChannel.Ocean, MiniGameAudioChannel.Voice, MiniGameAudioChannel.ComputerNoise })
                     if (paused) audioService.Pause(channel); else audioService.Resume(channel);
                 audioPaused = paused;
             }
             pauseMenu?.SetVisible(paused && !MainMenuController.BlocksGameplayInput);
             if (hint != null) hint.gameObject.SetActive(!paused && !thanksActive);
             if (caption != null) caption.gameObject.SetActive(!paused && !thanksActive);
+            if (paused || thanksActive)
+            {
+                interactionCursor?.SetVisible(false);
+                roomEnding?.SetBedFocus(false);
+            }
             Cursor.lockState = paused || thanksActive ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = paused || thanksActive;
         }
@@ -505,8 +568,11 @@ namespace MiniGame.UnityHost
 
         private void RefreshInterface()
         {
-            if (hint != null) hint.text = state.Phase != BeachEndingPhase.Walking || roomEnding != null && !roomEnding.Ready ? string.Empty
-                : CanLieDown ? "鼠标左键  躺下" : roomEnding != null ? string.Empty : "W  走向床";
+            if (hint != null) hint.text = string.Empty;
+            bool focused = BedInteractionFocused && !Paused && !thanksActive;
+            interactionCursor?.SetKind(InteractionCursorKind.Sleep);
+            interactionCursor?.SetVisible(focused);
+            roomEnding?.SetBedFocus(focused);
             if (caption == null) return;
             var lines = profile.EndingLines;
             caption.text = state.Phase == BeachEndingPhase.Drifting && !state.SubtitlesComplete
@@ -527,6 +593,7 @@ namespace MiniGame.UnityHost
             scaler.referenceResolution = new Vector2(1920, 1080);
             scaler.matchWidthOrHeight = .5f;
             hint = Label(go.transform, "提示", new Vector2(.5f, .12f), new Vector2(700, 54), 24);
+            interactionCursor = new InteractionCursorView((RectTransform)go.transform, TerminalView.Ink);
             caption = Label(go.transform, "字幕", new Vector2(.5f, .12f), new Vector2(1600, 90), 28);
             var curtain = new GameObject("Ending fade", typeof(RectTransform), typeof(Image));
             curtain.transform.SetParent(go.transform, false);
@@ -623,6 +690,8 @@ namespace MiniGame.UnityHost
 
         private void OnDestroy()
         {
+            interactionCursor?.Dispose();
+            roomEnding?.SetBedFocus(false);
             if (RenderSettings.skybox == skyMaterial) RenderSettings.skybox = originalSky;
             if (skyMaterial != null) Destroy(skyMaterial);
             RestoreWaterMaterials();

@@ -57,9 +57,17 @@ namespace MiniGame.UnityHost
         [InspectorName("全景每面分辨率")] public int CubemapFaceSize = 1024;
         [Range(1, 30), InspectorName("全景每秒更新次数")] public float CubemapRefreshRate = 10;
         [Range(-180, 180), InspectorName("全景水平方向（度）")] public float CubemapYaw;
+        [InspectorName("墙面原显示器方向"), Tooltip("海景贴图中原有显示器中心的方向，不生成桌子或电脑。")]
+        public Vector3 WallMonitorDirection = new Vector3(-.041f, -.016f, -1);
+        [Range(.5f, 15), InspectorName("原显示器画面高度（度）")]
+        public float WallMonitorHeightDegrees = 3.5f;
         [Range(.1f, 4), InspectorName("前进速度（米/秒）")] public float WalkSpeed = 1.2f;
         [Range(.5f, 4), InspectorName("床交互距离（米）")] public float BedInteractionDistance = 1.5f;
         [Range(.2f, 5), InspectorName("躺下时间（秒）")] public float LieDownSeconds = 1.5f;
+        [InspectorName("躺稳后随海浪轻浮")] public bool EnableOceanFloat = true;
+        [Range(0, .2f), InspectorName("海浪视角起伏（米）")] public float OceanFloatHeight = .1f;
+        [Range(0, 5), InspectorName("海浪视角俯仰（度）")] public float OceanFloatPitch = 2.6f;
+        [Range(0, 3), InspectorName("海浪视角侧倾（度）")] public float OceanFloatRoll = 1.2f;
         [Range(0, .3f), InspectorName("床起伏幅度（米）")] public float FloatAmplitude = .08f;
         [Range(2, 30), InspectorName("床起伏周期（秒）")] public float FloatPeriod = 8;
         [Range(0, 5), InspectorName("床摇摆角度")] public float FloatTiltDegrees = 1.5f;
@@ -175,5 +183,7 @@ namespace MiniGame.UnityHost
         public Quaternion LieStartRotation = Quaternion.identity;
         public bool HasMusicPosition;
         public float MusicSeconds;
+        public bool HasOceanPosition;
+        public int OceanSample;
     }
 }

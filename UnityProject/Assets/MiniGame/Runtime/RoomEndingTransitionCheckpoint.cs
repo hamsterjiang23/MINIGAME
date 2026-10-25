@@ -11,6 +11,7 @@ namespace MiniGame.UnityHost
         public RoomEndingTransitionPhase Phase;
         public float Elapsed;
         public bool HasEntryPose;
+        public bool MonitorReturn;
         public Vector3 EntryStartPosition;
         public Quaternion EntryStartRotation = Quaternion.identity;
         public Vector3 EntryTargetPosition;
@@ -40,11 +41,11 @@ namespace MiniGame.UnityHost
     {
         public const float FadeOutSeconds = .35f;
         public const float BlackHoldSeconds = 3f;
-        public const float EntrySeconds = 1f;
+        public const float EntrySeconds = TerminalReturnMotion.Seconds;
         public RoomEndingTransitionCheckpoint State { get; private set; }
         public float Opacity => State.Phase == RoomEndingTransitionPhase.FadingOut
             ? Mathf.Clamp01(State.Elapsed / FadeOutSeconds)
-            : State.Phase == RoomEndingTransitionPhase.Entering ? 1 - Mathf.Clamp01(State.Elapsed / EntrySeconds)
+            : State.Phase == RoomEndingTransitionPhase.Entering ? State.MonitorReturn ? 0 : 1 - Mathf.Clamp01(State.Elapsed / EntrySeconds)
             : State.Phase == RoomEndingTransitionPhase.Exploring ? 0 : 1;
 
         public RoomEndingTransitionClock(RoomEndingTransitionCheckpoint saved = null)

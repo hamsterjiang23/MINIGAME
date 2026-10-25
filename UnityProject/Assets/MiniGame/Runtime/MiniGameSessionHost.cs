@@ -422,6 +422,8 @@ namespace MiniGame.UnityHost
             var beach = saved.Ending;
             if (beach != null && beach.HasMusicPosition && (!Finite(beach.MusicSeconds) || beach.MusicSeconds < 0))
                 throw new InvalidDataException("海滩音乐检查点无效。");
+            if (beach != null && beach.HasOceanPosition && beach.OceanSample < 0)
+                throw new InvalidDataException("海浪播放位置无效。");
             if (beach != null && (beach.Phase == BeachEndingPhase.SkyHold || beach.Phase == BeachEndingPhase.FadingOut)
                 && (view.Game.Ending != EndingType.DreamSea || view.EndingStage != EndingStage.Space
                     || !beach.HasRoomPose || !Finite(beach.RoomPosition) || !Finite(beach.RoomYaw) || !Finite(beach.RoomPitch)

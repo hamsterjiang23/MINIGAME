@@ -9760,7 +9760,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.72, g: 0.77, b: 0.5, a: 1}
-  m_Intensity: 0.000000112095414
+  m_Intensity: 0.000000020650218
   m_Range: 4.27
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10205,7 +10205,7 @@ Transform:
   m_GameObject: {fileID: 1134948997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7.62, y: 1.1, z: -1.227}
+  m_LocalPosition: {x: -7.62, y: 0.549, z: -1.227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11561,8 +11561,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c13e7b2bb5f88b42bbaa38650a0446e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 3e7cf040c14680542b4958add4222b4c, type: 2}
 --- !u!114 &1288090743
 MonoBehaviour:
@@ -13931,7 +13931,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.62, g: 0.72, b: 0.8, a: 1}
-  m_Intensity: 0.000004003184
+  m_Intensity: 0.0000007374666
   m_Range: 4.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

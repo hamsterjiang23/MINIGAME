@@ -14,7 +14,7 @@ namespace MiniGame.UnityHost.Tests
     public sealed class NormWorldPresentationPlayModeTests
     {
         [UnityTest]
-        public IEnumerator MorningUsesSupervisorWithWhiteTextAndSoftBorderWithoutDeveloperLabelsOrWorldInstructions()
+        public IEnumerator MorningUsesRegularWarmSubtitlesWithoutSpeakerNameOrWorldInstructions()
         {
             var rules = PrototypeRules.Create();
             var runtime = new GameRuntime(rules, new PrototypeContent(rules), true);
@@ -32,7 +32,13 @@ namespace MiniGame.UnityHost.Tests
                     "The supervisor is a world actor outside the door, never an indoor HUD overlay.");
                 var body = screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "DialogueBody");
                 Assert.That(body.text, Is.EqualTo("门外扫描灯亮起。"));
-                Assert.That(body.color, Is.EqualTo(Color.white));
+                Assert.That(body.color, Is.EqualTo((Color)new Color32(0xE4, 0xCE, 0x9A, 0xFF)));
+                Assert.That(body.fontStyle, Is.EqualTo(FontStyle.Normal));
+                Assert.That(body.font.name, Is.EqualTo("Dialogue Sans"));
+                Assert.That(body.material.shader, Is.EqualTo(Resources.Load<Shader>("PropNarration")));
+                Assert.That(body.material.GetFloat("_PixelStep"), Is.EqualTo(2f));
+                Assert.That(body.alignment, Is.EqualTo(TextAnchor.MiddleCenter));
+                Assert.That(body.transform.parent.GetComponent<Image>().color.a, Is.Zero);
                 Assert.That(screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "Speaker").gameObject.activeSelf,
                     Is.False, "The supervisor card shows only dialogue body text.");
                 var border = body.transform.parent.GetComponentsInChildren<Image>(true).Single(image => image.name == "SupervisorBorder");
@@ -55,14 +61,17 @@ namespace MiniGame.UnityHost.Tests
             yield return SceneManager.LoadSceneAsync("MainRoomCombined");
             yield return null;
             var host = Object.FindObjectOfType<MiniGameBootstrap>();
+            host.StartTerminalDemo();
+            host.MainMenu?.TryDismissForEditorDebug();
+            host.Screen.SetMainMenuCovered(false);
             var supervisor = host.GetComponent<SupervisorDoorwayView>();
             Assert.That(supervisor, Is.Not.Null);
             Assert.That(supervisor.IsVisible, Is.True, "The actual room must already contain the supervisor before opening its door.");
             var effects = host.GetComponent<PresentationEffects>();
             if (effects.TryGetRoomReturnPose(out var standingPosition, out _, out _, out _, out _))
-                Assert.That(supervisor.Surface.transform.position.y, Is.EqualTo(standingPosition.y + .1f).Within(.001f),
+                Assert.That(supervisor.Surface.transform.position.y, Is.EqualTo(standingPosition.y + .25f).Within(.001f),
                     "An opening seated capsule must not lower the permanently placed supervisor.");
-            host.StartTerminalDemo(); host.Player.enabled = false; host.Screen.DialogueCharactersPerSecond = 0;
+            host.Player.enabled = false; host.Screen.DialogueCharactersPerSecond = 0;
             var outsidePosition = supervisor.Surface.transform.position;
             Assert.That(host.Runtime.GetView().RoomDoorOpen, Is.False);
             Assert.That(supervisor.IsVisible, Is.True);
@@ -88,8 +97,14 @@ namespace MiniGame.UnityHost.Tests
             float deadline = Time.realtimeSinceStartup + 8;
             while (host.Runtime.GetView().Cue?.Kind != PresentationKind.MorningInspection && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.That(host.Runtime.GetView().Cue?.Kind, Is.EqualTo(PresentationKind.MorningInspection));
-            Assert.That(Vector3.Distance(supervisor.Surface.transform.position, outsidePosition), Is.LessThan(.001f),
-                "The actual door opening must reveal the existing actor without spawning or repositioning him.");
+            while (!supervisor.IsReadyForDialogue && Time.realtimeSinceStartup < deadline) yield return null;
+            Assert.That(supervisor.IsReadyForDialogue, Is.True);
+            var displacement = supervisor.Surface.transform.position - outsidePosition;
+            var doorway = host.Player.ViewCamera.GetComponent<DoorViewCamera>();
+            Assert.That(displacement.y, Is.Zero.Within(.001f), "Avoidance must preserve the actor's authored height.");
+            Assert.That(Vector3.Dot(displacement, doorway.InsidePose.forward), Is.Zero.Within(.001f));
+            Assert.That(Vector3.Dot(displacement, doorway.InsidePose.right), Is.EqualTo(.8f).Within(.001f),
+                "Opening reveals the same world actor, then returns it from its safe left offset.");
             yield return new WaitForSecondsRealtime(.25f);
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "supervisor-morning");
             host.Runtime.SetPaused(true); menu.ShowManual();

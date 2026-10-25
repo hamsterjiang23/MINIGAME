@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -113,6 +113,54 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(originalSky.material, Is.Null);
             }
             finally { RenderTexture.active = previousActive; }
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator PortalWallOpacityCompositesExteriorPropsWithoutAHardReveal()
+        {
+            var viewer = Own(new GameObject("Portal dissolve viewer", typeof(Camera))).GetComponent<Camera>();
+            viewer.enabled = false; viewer.cullingMask = 1 << 26;
+            viewer.clearFlags = CameraClearFlags.SolidColor; viewer.backgroundColor = Color.blue;
+            viewer.nearClipPlane = .03f; viewer.fieldOfView = 60;
+            var cube = Own(new Cubemap(8, TextureFormat.RGB24, false));
+            for (int face = 0; face < 6; face++) cube.SetPixels(Enumerable.Repeat(Color.red, 64).ToArray(), (CubemapFace)face);
+            cube.Apply();
+            var parent = Own(new GameObject("Portal dissolve room"));
+            var exteriorProp = Own(GameObject.CreatePrimitive(PrimitiveType.Cube));
+            exteriorProp.layer = DreamWallPortal.ExteriorLayer;
+            exteriorProp.transform.position = Vector3.forward;
+            var blue = Own(new Material(Shader.Find("Unlit/Color"))); blue.color = Color.blue;
+            exteriorProp.GetComponent<Renderer>().sharedMaterial = blue;
+            using (var surfaces = new DreamCubemapRoomSurface(new Bounds(Vector3.zero, Vector3.one * 4), parent.transform, 26))
+            {
+                surfaces.Bind(cube, 0); surfaces.SetOutline(false);
+                foreach (float opacity in new[] { 1f, .75f, .5f, .25f, 0f })
+                {
+                    viewer.cullingMask = (1 << 26) | (opacity < 1 ? 1 << DreamWallPortal.ExteriorLayer : 0);
+                    surfaces.SetOpacity(opacity);
+                    var image = ReadView(viewer);
+                    try
+                    {
+                        var expected = Color.Lerp(Color.blue, Color.red, opacity);
+                        if (QualitySettings.activeColorSpace == ColorSpace.Linear) expected = expected.gamma;
+                        var pixel = image.GetPixel(64, 64);
+                        Assert.That(Mathf.Abs(pixel.r - expected.r) + Mathf.Abs(pixel.g - expected.g)
+                            + Mathf.Abs(pixel.b - expected.b), Is.LessThan(.1f),
+                            "The closer exterior prop must enter at the blended opacity instead of popping in whole: " + opacity);
+                    }
+                    finally { Object.Destroy(image); }
+                }
+                Assert.That(surfaces.Root.activeSelf, Is.False);
+                surfaces.SetOpacity(1);
+                viewer.cullingMask = 1 << 26;
+                Assert.That(surfaces.Root.activeSelf, Is.True);
+                Assert.That(surfaces.Material.GetInt("_ZWrite"), Is.EqualTo(1));
+                Assert.That(surfaces.Material.GetInt("_ZTest"), Is.EqualTo((int)UnityEngine.Rendering.CompareFunction.LessEqual));
+                var restored = ReadView(viewer);
+                try { AssertColor(restored.GetPixel(64, 64), Color.red, "Returning to the room restores the opaque wall."); }
+                finally { Object.Destroy(restored); }
+            }
             yield return null;
         }
 
@@ -363,6 +411,283 @@ namespace MiniGame.UnityHost.Tests
                 }
             }
             yield return null;
+        }
+
+        [UnityTest, Timeout(30000)]
+        public IEnumerator PrintedMonitorNoiseFollowsViewWithoutChangingMusicOrOcean()
+        {
+            MiniGameSessionHost.Release();
+            yield return null;
+            yield return SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene);
+            yield return null;
+            host = Object.FindObjectOfType<MiniGameBootstrap>();
+            var profile = Own(Object.Instantiate(host.DreamProfile));
+            profile.CubemapFaceSize = 256;
+            host.ConfigureDreams(profile, Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion"));
+            host.StartCampaign();
+            host.Runtime.SetPaused(false);
+            room = RoomDreamEnding.Begin(host, MiniGameSessionHost.Current, true, true);
+            yield return Until(() => room != null && room.Ready, 10);
+            room.Ending.UseExternalClock = true;
+            yield return new WaitForSecondsRealtime(2.2f); // Let the existing two-second music fades finish.
+            var audio = room.Ending.Audio;
+            var noise = audio.GetSource(MiniGameAudioChannel.ComputerNoise);
+            var music = audio.GetSource(MiniGameAudioChannel.EndingMusic);
+            var ocean = audio.GetSource(MiniGameAudioChannel.Ocean);
+            var musicClip = music.clip; var oceanClip = ocean.clip;
+            float musicVolume = music.volume, oceanVolume = ocean.volume;
+            int musicSample = music.timeSamples, oceanSample = ocean.timeSamples;
+            int noiseStarts = 0, otherStarts = 0;
+            audio.SoundPlayed += (channel, sound) =>
+            {
+                if (channel == MiniGameAudioChannel.ComputerNoise) noiseStarts++;
+                else if (channel == MiniGameAudioChannel.EndingMusic || channel == MiniGameAudioChannel.Ocean) otherStarts++;
+            };
+            Assert.That(room.IsFacingPrintedMonitor, Is.False);
+            Assert.That(noise.isPlaying, Is.False);
+            var facingSave = room.Ending.CaptureCheckpoint();
+            var angles = Quaternion.LookRotation(room.Portal.PrintedScreenCenter - room.ViewCamera.transform.position).eulerAngles;
+            facingSave.RoomYaw = angles.y; facingSave.RoomPitch = Mathf.DeltaAngle(0, angles.x);
+            room.RestorePose(facingSave);
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(room.IsFacingPrintedMonitor, Is.True);
+            Assert.That(noise.isPlaying, Is.True);
+            Assert.That(noise.loop, Is.True);
+            Assert.That(noise.clip, Is.SameAs(host.Audio.Profile.GetClip(MiniGameSound.PCNoise)),
+                "Use the same recording as the normal computer interface.");
+            Assert.That(noise.volume, Is.GreaterThan(0));
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(noiseStarts, Is.EqualTo(1), "Keeping the monitor in view must not restart its loop every frame.");
+            var awaySave = room.Ending.CaptureCheckpoint(); awaySave.RoomYaw += 60;
+            room.RestorePose(awaySave);
+            yield return null;
+            yield return null;
+            Assert.That(noise.isPlaying, Is.False, "Looking away must stop the noise immediately.");
+            Assert.That(music.clip, Is.SameAs(musicClip)); Assert.That(ocean.clip, Is.SameAs(oceanClip));
+            Assert.That(music.isPlaying && ocean.isPlaying, Is.True);
+            Assert.That(music.volume, Is.EqualTo(musicVolume).Within(.0001f));
+            Assert.That(ocean.volume, Is.EqualTo(oceanVolume).Within(.0001f));
+            Assert.That(music.timeSamples, Is.GreaterThan(musicSample));
+            Assert.That(ocean.timeSamples, Is.GreaterThan(oceanSample));
+            Assert.That(otherStarts, Is.Zero, "Gaze changes must not restart the music or ocean recording.");
+            room.Ending.RestoreCheckpoint(facingSave);
+            yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(noise.isPlaying, Is.True, "Restoring a monitor-facing pose must restore the noise.");
+            room.Ending.SetPaused(true);
+            yield return null;
+            Assert.That(noise.isPlaying, Is.False);
+            room.Ending.SetPaused(false);
+            yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(noise.isPlaying, Is.True);
+            room.Ending.SetPaused(true);
+            room.RestorePose(awaySave);
+            room.Ending.SetPaused(false);
+            yield return null;
+            yield return null;
+            Assert.That(noise.isPlaying, Is.False, "Resuming while looking away must not leak the noise.");
+            // The room's painted monitor must not emit noise after crossing into the real exterior.
+            room.ViewCamera.transform.position = room.Ending.Bed.Find("Room Pillow Eye Position").position;
+            room.ViewCamera.transform.rotation = Quaternion.LookRotation(room.Portal.PrintedScreenCenter - room.ViewCamera.transform.position);
+            yield return null;
+            yield return null;
+            Assert.That(room.Portal.IsOutside, Is.True);
+            Assert.That(room.IsFacingPrintedMonitor, Is.False);
+            Assert.That(noise.isPlaying, Is.False);
+            room.Ending.RestoreCheckpoint(facingSave);
+            yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(noise.isPlaying, Is.True);
+            room.StopAndRestore(); room = null;
+            yield return null;
+            Assert.That(noise == null || !noise.isPlaying, Is.True, "Leaving the dream must clean up the noise.");
+        }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator WallPortalPreviewCrossesTheWallAndRestoresTheOriginalBed()
+        {
+            string videoDirectory = Environment.GetEnvironmentVariable("MINIGAME_LIE_VIDEO_DIR");
+            MiniGameSessionHost.Release();
+            yield return null;
+            yield return SceneManager.LoadSceneAsync(MiniGameSessionHost.CombinedScene);
+            yield return null;
+            host = Object.FindObjectOfType<MiniGameBootstrap>();
+            var originalBed = Object.FindObjectsOfType<Renderer>().Single(r => r.name == "B_SM_bed_1");
+            var originalPosition = originalBed.transform.position;
+            var originalRotation = originalBed.transform.rotation;
+            var profile = Own(Object.Instantiate(host.DreamProfile));
+            profile.CubemapFaceSize = string.IsNullOrWhiteSpace(videoDirectory) ? 256 : 1024;
+            host.ConfigureDreams(profile, Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion"));
+            host.StartCampaign();
+            host.Runtime.SetPaused(false);
+            room = RoomDreamEnding.Begin(host, MiniGameSessionHost.Current, true, true);
+            yield return Until(() => room != null && room.Ready, 10);
+            Assert.That(room.IsPortalPreview, Is.True);
+            Assert.That(room.CaptureTransitionCheckpoint().MonitorReturn, Is.True);
+            Assert.That(room.Portal.HeadTexture.IsCreated(), Is.True);
+            Assert.That(room.Portal.Wall.GetDistanceToPoint(room.Ending.Bed.position), Is.EqualTo(0).Within(.001f));
+            var beforePoseChecks = room.Ending.CaptureCheckpoint();
+            var pillowTarget = room.Ending.Bed.Find("Room Pillow Eye Position").position;
+            var alongBed = room.Portal.WallNormal;
+            var acrossBed = Vector3.Cross(Vector3.up, alongBed);
+            Quaternion? firstFinalRotation = null;
+            foreach (float side in new[] { -1.5f, 0, 1.5f })
+            {
+                var approachPosition = pillowTarget - alongBed * 2 + acrossBed * side + Vector3.up * .75f;
+                var approachRotation = Quaternion.LookRotation(pillowTarget - approachPosition);
+                room.ApplyWallLieDown(approachPosition, approachRotation, pillowTarget, .999f);
+                var almostSettled = room.ViewCamera.transform.rotation;
+                room.ApplyWallLieDown(approachPosition, approachRotation, pillowTarget, 1);
+                Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.99999f));
+                Assert.That(Vector3.Dot(room.ViewCamera.transform.up, alongBed), Is.GreaterThan(.99999f),
+                    "Finishing from either side must align the image with the bed, not retain the approach angle.");
+                if (firstFinalRotation.HasValue)
+                    Assert.That(Quaternion.Angle(firstFinalRotation.Value, room.ViewCamera.transform.rotation), Is.LessThan(.01f));
+                firstFinalRotation = room.ViewCamera.transform.rotation;
+                Assert.That(Quaternion.Angle(almostSettled, firstFinalRotation.Value), Is.LessThan(.05f),
+                    "The final alignment must settle during the recline without an endpoint snap.");
+            }
+            room.RestorePose(beforePoseChecks);
+            room.Ending.UseExternalClock = true;
+            for (int step = 0; step < 300 && !room.Ending.CanLieDown; step++)
+                room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
+            var bedPose = room.Ending.CaptureCheckpoint();
+            bedPose.RoomPitch = -70;
+            room.RestorePose(bedPose);
+            room.Ending.AdvanceForTests(0, 0);
+            Assert.That(room.Ending.BedInteractionFocused, Is.False);
+            Assert.That(room.Ending.HandleInteractionInput(true, false), Is.False, "Looking away must not interact with the bed.");
+            yield return null;
+            var direction = room.Ending.Bed.position + Vector3.up * .5f - room.ViewCamera.transform.position;
+            var angles = Quaternion.LookRotation(direction).eulerAngles;
+            bedPose.RoomYaw = angles.y; bedPose.RoomPitch = Mathf.DeltaAngle(0, angles.x);
+            room.RestorePose(bedPose);
+            room.Ending.AdvanceForTests(0, 0);
+            Assert.That(room.Ending.BedInteractionFocused, Is.True);
+            Assert.That(room.Ending.GetComponentsInChildren<UnityEngine.UI.Text>(true)
+                .Single(text => text.name == "提示").text, Is.Empty);
+            Assert.That(room.Ending.GetComponentsInChildren<UnityEngine.UI.RawImage>(true)
+                .Single(image => image.name == "InteractionCursor").gameObject.activeInHierarchy, Is.True);
+            Assert.That(room.Ending.HandleInteractionInput(true, false), Is.True, "The ordinary E interaction remains available.");
+            var lieStart = room.Ending.CaptureCheckpoint();
+            var pillowEye = room.Ending.Bed.Find("Room Pillow Eye Position");
+            var intoPillow = Vector3.ProjectOnPlane(pillowEye.position - lieStart.LieStartPosition, Vector3.up).normalized;
+            var ocean = room.Ending.Audio.GetSource(MiniGameAudioChannel.Ocean);
+            int oceanStart = ocean.timeSamples;
+            if (!string.IsNullOrWhiteSpace(videoDirectory))
+            {
+                Directory.CreateDirectory(videoDirectory);
+                File.WriteAllText(Path.Combine(videoDirectory, "audio-start-seconds.txt"), (oceanStart / (float)ocean.clip.frequency)
+                    .ToString("F6", System.Globalization.CultureInfo.InvariantCulture));
+                EndingCampaignPlayModeTests.CapturePortalView(room, "frame_0000", videoDirectory);
+            }
+            for (int frame = 1; frame <= 22; frame++)
+            {
+                ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
+                yield return null; // Streaming audio seeks settle on the audio thread.
+                room.Ending.AdvanceForTests(0, 1 / 30f);
+                Assert.That(Vector3.Distance(room.ViewCamera.transform.position, lieStart.LieStartPosition), Is.LessThan(.0001f),
+                    "The first half must turn in place, with no forward dive or descent.");
+                if (!string.IsNullOrWhiteSpace(videoDirectory))
+                    EndingCampaignPlayModeTests.CapturePortalView(room, "frame_" + frame.ToString("D4"), videoDirectory);
+            }
+            Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, -intoPillow), Is.GreaterThan(.999f),
+                "The turn must finish facing away from the pillow before reclining.");
+            Assert.That(room.Portal.IsOutside, Is.False);
+            int dissolveFrames = 0;
+            float previousOpacity = 1;
+            for (int frame = 23; frame <= 45; frame++)
+            {
+                var previousRotation = room.ViewCamera.transform.rotation;
+                ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
+                yield return null; // Streaming audio seeks settle on the audio thread.
+                room.Ending.AdvanceForTests(0, 1 / 30f);
+                float opacity = room.RoomSurface.Opacity;
+                if (Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up) < Mathf.Sin(RoomDreamEnding.SkyRevealPitch * Mathf.Deg2Rad))
+                {
+                    Assert.That(opacity, Is.EqualTo(1), "Keep the original room until the player is looking almost straight into the sky.");
+                    Assert.That(room.ViewCamera.cullingMask & (1 << DreamWallPortal.ExteriorLayer), Is.Zero,
+                        "The exterior computer pile must not be rendered while the horizon is still in view.");
+                }
+                Assert.That(opacity, Is.LessThanOrEqualTo(previousOpacity + .0001f), "The wall must dissolve monotonically during recline.");
+                previousOpacity = opacity;
+                if (opacity > .001f && opacity < .999f)
+                {
+                    dissolveFrames++;
+                    Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up),
+                        Is.GreaterThanOrEqualTo(Mathf.Sin(RoomDreamEnding.SkyRevealPitch * Mathf.Deg2Rad)),
+                        "Begin the scene change only after the reference sky-facing angle is reached.");
+                    if (dissolveFrames == 1 && !string.IsNullOrWhiteSpace(videoDirectory))
+                    {
+                        EndingCampaignPlayModeTests.CapturePortalView(room, "sky-reveal-wide", videoDirectory, 1468, 766);
+                        room.RoomSurface.SetVisible(false);
+                        EndingCampaignPlayModeTests.CapturePortalView(room, "sky-reveal-without-print-wide", videoDirectory, 1468, 766);
+                        room.RoomSurface.SetVisible(true);
+                    }
+                    Assert.That(room.Portal.IsOutside, Is.False);
+                    Assert.That(room.ViewCamera.cullingMask & (1 << DreamWallPortal.ExteriorLayer), Is.Not.Zero,
+                        "The real beach must already be rendering underneath the fading print.");
+                }
+                if (room.Portal.IsOutside) Assert.That(opacity, Is.Zero, "The print must be gone before the eye crosses it.");
+                if (frame >= 44)
+                    Assert.That(Quaternion.Angle(previousRotation, room.ViewCamera.transform.rotation), Is.LessThan(3),
+                        "The final lie-down frames must join the sky hold without a roll or direction flip.");
+                Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, intoPillow), Is.LessThan(.001f),
+                    "The pillow must remain behind the gaze while the camera reclines through the wall.");
+                if (!string.IsNullOrWhiteSpace(videoDirectory))
+                    EndingCampaignPlayModeTests.CapturePortalView(room, "frame_" + frame.ToString("D4"), videoDirectory);
+            }
+            Assert.That(dissolveFrames, Is.GreaterThanOrEqualTo(8), "The image transition must span multiple visible frames instead of a single cut.");
+            var lastLyingRotation = room.ViewCamera.transform.rotation;
+            room.Ending.AdvanceForTests(0, .001f);
+            Assert.That(Quaternion.Angle(lastLyingRotation, room.ViewCamera.transform.rotation), Is.LessThan(.05f),
+                "Completing the recline must not roll the sky through 180 degrees.");
+            Assert.That(room.Ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
+            Assert.That(room.Portal.IsOutside, Is.True);
+            Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
+            for (int frame = 46; frame <= 180; frame++)
+            {
+                ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
+                yield return null; // Streaming audio seeks settle on the audio thread.
+                room.Ending.AdvanceForTests(0, 1 / 30f);
+                if (!string.IsNullOrWhiteSpace(videoDirectory))
+                    EndingCampaignPlayModeTests.CapturePortalView(room, "frame_" + frame.ToString("D4"), videoDirectory);
+            }
+            var waveTrack = OceanFloatTrack.Load(ocean.clip);
+            Assert.That(waveTrack, Is.Not.Null);
+            int low = 0, high = 0;
+            for (int second = 1; second < 30; second++)
+            {
+                if (waveTrack.Evaluate(second * ocean.clip.frequency).x < waveTrack.Evaluate(low).x) low = second * ocean.clip.frequency;
+                if (waveTrack.Evaluate(second * ocean.clip.frequency).x > waveTrack.Evaluate(high).x) high = second * ocean.clip.frequency;
+            }
+            ocean.Pause(); // Hold the source cursor while verifying two exact audio positions.
+            yield return new WaitForSecondsRealtime(.05f);
+            ocean.timeSamples = low;
+            yield return Until(() => Mathf.Abs(ocean.timeSamples - low) < ocean.clip.frequency / 4, 2);
+            room.Ending.AdvanceForTests(0, 0);
+            var lowPosition = room.ViewCamera.transform.position;
+            int lowRead = ocean.timeSamples;
+            ocean.timeSamples = high;
+            yield return Until(() => Mathf.Abs(ocean.timeSamples - high) < ocean.clip.frequency / 4, 2);
+            room.Ending.AdvanceForTests(0, 0);
+            Assert.That(room.ViewCamera.transform.position.y - lowPosition.y, Is.GreaterThan(.14f),
+                "The increased heave must follow seeking only the ocean audio cursor must change the heave, without advancing presentation time. "
+                    + $"Requested {low}/{high}; observed {lowRead}/{ocean.timeSamples}; phase {room.Ending.Phase}.");
+            room.Ending.SetPaused(true);
+            yield return new WaitForSecondsRealtime(.05f);
+            var floatingSave = room.Ending.CaptureCheckpoint();
+            var floatingPosition = room.ViewCamera.transform.position;
+            var floatingRotation = room.ViewCamera.transform.rotation;
+            room.Ending.AdvanceForTests(0, 50);
+            Assert.That(Vector3.Distance(room.ViewCamera.transform.position, floatingPosition), Is.LessThan(.0001f));
+            ocean.timeSamples = low;
+            room.Ending.RestoreCheckpoint(floatingSave);
+            Assert.That(Vector3.Distance(room.ViewCamera.transform.position, floatingPosition), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(room.ViewCamera.transform.rotation, floatingRotation), Is.LessThan(.02f));
+            room.StopAndRestore(); room = null;
+            yield return null;
+            Assert.That(Vector3.Distance(originalBed.transform.position, originalPosition), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(originalBed.transform.rotation, originalRotation), Is.LessThan(.001f));
+            Assert.That(Object.FindObjectsOfType<Renderer>().Any(r => r.name.Contains("printed head")), Is.False);
         }
 
         [UnityTest, Timeout(90000)]

@@ -216,6 +216,18 @@ namespace MiniGame.UnityHost.Tests
                 screen.ShowResponseButtons(Responses(), selected.Add);
                 yield return null;
                 var rows = Enumerable.Range(1, 4).Select(i => ButtonNamed(screen, "Reply-choice-" + i)).ToArray();
+                var initialHighlight = rows[0].GetComponent<Image>().color;
+                Assert.That(rows.Skip(1).All(row => row.GetComponent<Image>().color != initialHighlight), Is.True,
+                    "The first response must visibly start selected before pointer input.");
+                // Another panel's pointer highlight must not suppress the default response.
+                var outside = ButtonNamed(screen, "Disposition-Release");
+                outside.interactable = true;
+                var outsidePointer = new PointerEventData(EventSystem.current);
+                ExecuteEvents.Execute(outside.gameObject, outsidePointer, ExecuteEvents.pointerEnterHandler);
+                Assert.That(rows[0].GetComponent<Image>().color, Is.EqualTo(initialHighlight));
+                ExecuteEvents.Execute(outside.gameObject, outsidePointer, ExecuteEvents.pointerExitHandler);
+                outside.interactable = false;
+                CaptureTerminalSource(screen, "choice-default-selected");
                 var hits = new List<RaycastResult>();
                 for (int mode = 0; mode < 3; mode++)
                 {

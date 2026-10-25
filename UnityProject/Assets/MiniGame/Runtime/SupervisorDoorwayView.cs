@@ -10,7 +10,9 @@ namespace MiniGame.UnityHost
     [DisallowMultipleComponent]
     public sealed class SupervisorDoorwayView : MonoBehaviour
     {
-        [SerializeField, InspectorName("门外人物上移（米）")] private float verticalOffset = .1f;
+        [SerializeField, Min(.01f), InspectorName("监督员距门内对齐点（米）")] private float forwardDistance = 1.5f;
+        [SerializeField, InspectorName("监督员左右偏移（米，右为正）")] private float horizontalOffset = -.22f;
+        [SerializeField, InspectorName("门外人物上移（米）")] private float verticalOffset = .25f;
         private GameRuntime runtime;
         private ApartmentPlayer player;
         private DoorViewCamera doorway;
@@ -20,10 +22,12 @@ namespace MiniGame.UnityHost
         private Vector3 returnPosition;
         private Quaternion returnRotation;
         private float returnFieldOfView;
-        [SerializeField, Min(0), InspectorName("开关门时向左避让（米）")] private float doorAvoidanceDistance = .7f;
+        [SerializeField, Min(0), InspectorName("开关门时最小向左避让（米）")] private float doorAvoidanceDistance = .8f;
+        [SerializeField, Min(0), InspectorName("门与人物安全间距（米）")] private float doorClearanceMargin = .08f;
         [SerializeField, Min(.01f), InspectorName("开门后回位时间（秒）")] private float doorReturnSeconds = .6f;
         [SerializeField, Min(.01f), InspectorName("向左避让时间（秒）")] private float doorAvoidanceSeconds = .45f;
-        private Vector3 doorwayPosition, doorwayRight;
+        private Vector3 doorwayPosition, priestPosition, doorwayRight;
+        private float safeAvoidanceDistance;
         private float avoidance, slideFrom, slideTo, slideElapsed;
         private HingedDoor clearanceDoor;
 
@@ -43,9 +47,9 @@ namespace MiniGame.UnityHost
             if (game == null || player == null || doorway == null || doorway.InsidePose == null) return;
             EnsureSurface();
             if (surface == null) return;
+            clearanceDoor = doorway.Door;
             SetPortrait("JD_01");
             PlaceAtDoorway();
-            clearanceDoor = doorway.Door;
             if (clearanceDoor != null) clearanceDoor.MotionClearance = HasDoorClearance;
             if (game.IsCampaign && game.GetView().Game.Phase == GamePhase.Ending)
             {
@@ -61,7 +65,8 @@ namespace MiniGame.UnityHost
         private void PlaceAtDoorway()
         {
             var outward = Vector3.ProjectOnPlane(doorway.InsidePose.forward, Vector3.up).normalized;
-            var position = doorway.InsidePose.position + outward * 1.75f;
+            doorwayRight = Vector3.ProjectOnPlane(doorway.InsidePose.right, Vector3.up).normalized;
+            var position = doorway.InsidePose.position;
             var controller = player.GetComponent<CharacterController>();
             position.y = controller != null && controller.bounds.size.y > .001f ? controller.bounds.min.y
                 : controller != null ? player.transform.TransformPoint(controller.center).y
@@ -69,12 +74,14 @@ namespace MiniGame.UnityHost
             var effects = GetComponent<PresentationEffects>();
             if (effects != null && effects.TryGetRoomReturnPose(out var standingPosition, out _, out _, out _, out _))
                 position.y = standingPosition.y;
-            position.y += verticalOffset;
+            // The priest keeps its previously authored ending position.
+            priestPosition = position + outward * 1.75f + Vector3.up * .1f - doorwayRight * .4f;
+            position += outward * forwardDistance + doorwayRight * horizontalOffset + Vector3.up * verticalOffset;
             surface.transform.SetPositionAndRotation(position, Quaternion.LookRotation(outward, Vector3.up));
             surface.transform.localScale = Vector3.one * (1.8f / surface.sprite.bounds.size.y);
             doorwayPosition = position;
-            doorwayRight = Vector3.ProjectOnPlane(doorway.InsidePose.right, Vector3.up).normalized;
-            avoidance = ShouldAvoidDoor() ? Mathf.Max(0, doorAvoidanceDistance) : 0;
+            RefreshDoorClearance();
+            avoidance = ShouldAvoidDoor() ? safeAvoidanceDistance : 0;
             slideFrom = slideTo = avoidance;
             slideElapsed = 0;
             ApplyDoorOffset();
@@ -89,7 +96,7 @@ namespace MiniGame.UnityHost
             var view = runtime.GetView();
             if (runtime.UsesEndingFlow && view.EndingStage == EndingStage.AwaitingDoor)
                 SetPortrait(view.Game.Ending == EndingType.PriestAttack ? "PE01" : "JD_06");
-            float target = ShouldAvoidDoor() ? Mathf.Max(0, doorAvoidanceDistance) : 0;
+            float target = ShouldAvoidDoor() ? safeAvoidanceDistance : 0;
             if (!Mathf.Approximately(slideTo, target))
             { slideFrom = avoidance; slideTo = target; slideElapsed = 0; }
             slideElapsed += Time.unscaledDeltaTime;
@@ -100,13 +107,26 @@ namespace MiniGame.UnityHost
         }
 
         private bool HasDoorClearance() => !isActiveAndEnabled || surface == null
-            || !ShouldAvoidDoor() || avoidance >= Mathf.Max(0, doorAvoidanceDistance) - .001f;
+            || !ShouldAvoidDoor() || avoidance >= safeAvoidanceDistance - .001f;
+
+        private bool IsPriest => CurrentPortraitId == "PE01" || CurrentPortraitId == "PE02";
+
+        private void RefreshDoorClearance()
+        {
+            safeAvoidanceDistance = Mathf.Max(0, doorAvoidanceDistance);
+            if (clearanceDoor == null || surface == null || doorwayRight.sqrMagnitude < .5f) return;
+            var restingPosition = IsPriest ? priestPosition : doorwayPosition;
+            var bounds = surface.bounds;
+            // Use the complete portrait rectangle, including its transparent margins.
+            float rightEdge = Vector3.Dot(restingPosition + bounds.center - surface.transform.position, doorwayRight)
+                + Mathf.Abs(doorwayRight.x) * bounds.extents.x + Mathf.Abs(doorwayRight.z) * bounds.extents.z;
+            float leftEdge = Vector3.Dot(clearanceDoor.SweepCenter, doorwayRight) - clearanceDoor.HorizontalSweepRadius;
+            safeAvoidanceDistance = Mathf.Max(safeAvoidanceDistance, rightEdge - leftEdge + Mathf.Max(0, doorClearanceMargin));
+        }
 
         private void ApplyDoorOffset()
         {
-            const float priestLeftOffset = .4f;
-            float portraitOffset = CurrentPortraitId == "PE01" || CurrentPortraitId == "PE02" ? priestLeftOffset : 0;
-            if (surface != null) surface.transform.position = doorwayPosition - doorwayRight * (avoidance + portraitOffset);
+            if (surface != null) surface.transform.position = (IsPriest ? priestPosition : doorwayPosition) - doorwayRight * avoidance;
         }
 
         private void EnsureSurface()
@@ -167,6 +187,7 @@ namespace MiniGame.UnityHost
             surface.transform.localScale = Vector3.one * (1.8f / reference.bounds.size.y);
             CurrentPortraitId = id;
             ApplyDoorOffset();
+            RefreshDoorClearance();
             return true;
         }
 

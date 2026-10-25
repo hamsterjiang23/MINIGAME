@@ -6,7 +6,7 @@
 
 ## 门口晨检与监督员
 
-- 监督员使用文档提供的站姿立绘，常驻门外并上移0.1米，开门前已存在，工作与暂停期间继续保留；人物是世界空间 Sprite，由真实门体和门框遮挡。`[verified: SupervisorDoorwayView.cs Bind/PlaceAtDoorway/EnsureSurface；reports/supervisor-presence/supervisor-tests.json]`
+- 监督员使用文档提供的站姿立绘，常驻门外；按[最新门口参考图](supervisor-placement-20261025.md)距门内对齐点 1.5 米、左移 0.22 米、上移 0.25 米。开关门时先避让，再转动门扇，安全距离按门和立绘尺寸校正；工作与暂停期间继续保留，由真实门体和门框遮挡。`[verified: SupervisorDoorwayView.cs Bind/PlaceAtDoorway/RefreshDoorClearance；HingedDoor.cs Update]`
 - 监督员对白显示在画面下方的白色细框内，称谓为“监督员”，不显示“【开发占位】”标记。`[verified: MiniGameScreen.SetDialogueText/Render/IsSupervisorCue/WorldCueText/AddWhiteFrame]`
 - 对准门按 E 进入门口观察，开门后停在门内对齐位置，不再额外向走廊推进；观察结束按 E 返回房间。`[verified: CombinedInteractionSetup.ConfigureDoorCamera；DoorViewCamera.LateUpdate/FinishEntry；ApartmentPlayer.Update DoorView 分支]`
 - 扫描声只在进入新的晨检演出时播放一次；选择终端对象、查看线索、暂停恢复或重新绑定会话不再额外触发扫描声。`[verified: MiniGameAudioDirector.Present beganMorningScan 条件及 Bind]`

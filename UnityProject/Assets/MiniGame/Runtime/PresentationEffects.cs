@@ -422,7 +422,7 @@ namespace MiniGame.UnityHost
             var sourceRotation = viewCamera.transform.rotation;
             float sourceFov = viewCamera.fieldOfView;
             float targetFov = exiting ? roomFieldOfView : 48;
-            float duration = exiting ? 1.2f : 1.65f;
+            float duration = exiting ? TerminalReturnMotion.Seconds : 1.65f;
             var controlA = source + (exiting ? -viewCamera.transform.forward * .12f : viewCamera.transform.forward * .20f);
             var controlB = destination - rotation * Vector3.forward * .15f + Vector3.up * .025f;
             screen.SetTransitionLocked(true);
@@ -442,6 +442,8 @@ namespace MiniGame.UnityHost
                     + 3 * inverse * inverse * move * controlA + 3 * inverse * move * move * controlB + move * move * move * destination;
                 viewCamera.transform.rotation = Quaternion.Slerp(sourceRotation, rotation, move);
                 viewCamera.fieldOfView = Mathf.Lerp(sourceFov, targetFov, move);
+                if (exiting) TerminalReturnMotion.Apply(viewCamera, source, sourceRotation, sourceFov,
+                    destination, rotation, targetFov, p);
                 screen.SetTerminalReveal(exiting ? 0 : Ease(Mathf.InverseLerp(.82f, 1, p)));
                 screen.SetTerminalHandoff(p, exiting, true);
                 SetSurfaceGlow(exiting ? idleGlow : Mathf.Lerp(idleGlow, 1, Mathf.InverseLerp(.15f, .7f, p)));

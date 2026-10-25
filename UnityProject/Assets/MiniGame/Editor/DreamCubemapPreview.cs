@@ -13,6 +13,7 @@ namespace MiniGame.UnityHost.Editor
     {
         private const string Pending = "MiniGame.CubemapPreview.Pending";
         private const string Active = "MiniGame.CubemapPreview.Active";
+        private const string WallPortal = "MiniGame.CubemapPreview.WallPortal";
         private const string Setup = "MiniGame.CubemapPreview.SceneSetup";
         private const string SaveDirectory = "MiniGame.CubemapPreview.SaveDirectory";
         private const string PreviousDebugDirectory = "MiniGame.CubemapPreview.PreviousDebugDirectory";
@@ -31,7 +32,10 @@ namespace MiniGame.UnityHost.Editor
                 EditorApplication.delayCall += RestoreScenes;
         }
         [MenuItem("MiniGame/梦境/预览房间全景结局")]
-        public static void Open()
+        public static void Open() => OpenPreview(false);
+        [MenuItem("MiniGame/梦境/预览半床穿墙结局")]
+        public static void OpenWallPortal() => OpenPreview(true);
+        private static void OpenPreview(bool wallPortal)
         {
             if (EditorApplication.isPlayingOrWillChangePlaymode)
                 throw new InvalidOperationException("请先停止当前 Unity 播放，再启动全景预览。");
@@ -47,6 +51,7 @@ namespace MiniGame.UnityHost.Editor
             SessionState.SetString(Setup, JsonUtility.ToJson(new SavedScenes { Scenes = EditorSceneManager.GetSceneManagerSetup() }));
             SessionState.SetBool(Pending, true);
             SessionState.SetBool(Active, true);
+            SessionState.SetBool(WallPortal, wallPortal);
             try
             {
                 EditorSceneManager.OpenScene(MainRoomPreviewBuilder.CombinedScenePath, OpenSceneMode.Single);
@@ -64,6 +69,7 @@ namespace MiniGame.UnityHost.Editor
             else RestoreScenes();
         }
         [MenuItem("MiniGame/梦境/预览房间全景结局", true)]
+        [MenuItem("MiniGame/梦境/预览半床穿墙结局", true)]
         private static bool CanOpen() => !EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isCompiling;
         [MenuItem("MiniGame/梦境/停止房间全景预览", true)]
         private static bool CanStop() => IsActive;
@@ -99,7 +105,7 @@ namespace MiniGame.UnityHost.Editor
                         if (host != null && host.Runtime == null) host.StartCampaign();
                         var session = MiniGameSessionHost.Current;
                         if (host != null && host.Runtime != null && session != null)
-                            owner = RoomDreamEnding.Begin(host, session, true);
+                            owner = RoomDreamEnding.Begin(host, session, true, SessionState.GetBool(WallPortal, false));
                     }
                 }
                 if (owner != null && !string.IsNullOrEmpty(owner.FailureReason)) throw new InvalidOperationException(owner.FailureReason);
@@ -123,7 +129,7 @@ namespace MiniGame.UnityHost.Editor
             EditorCampaignDebugSession.SaveDirectory = string.IsNullOrEmpty(debugDirectory) ? null : debugDirectory;
             MainMenuController.SaveDirectoryOverride = string.IsNullOrEmpty(menuDirectory) ? null : menuDirectory;
             SessionState.EraseString(SaveDirectory); SessionState.EraseString(PreviousDebugDirectory); SessionState.EraseString(PreviousMenuDirectory);
-            SessionState.EraseBool(Pending); SessionState.EraseBool(Active); SessionState.EraseString(Setup);
+            SessionState.EraseBool(Pending); SessionState.EraseBool(Active); SessionState.EraseBool(WallPortal); SessionState.EraseString(Setup);
             var saved = string.IsNullOrEmpty(json) ? null : JsonUtility.FromJson<SavedScenes>(json);
             if (saved?.Scenes != null && saved.Scenes.Length > 0 && saved.Scenes.All(scene => !string.IsNullOrEmpty(scene.path)))
                 EditorSceneManager.RestoreSceneManagerSetup(saved.Scenes);

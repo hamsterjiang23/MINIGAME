@@ -9,7 +9,7 @@ namespace MiniGame.UnityHost
     {
         MenuMusic = 0, GameplayMusic = 1, DreamMusic = 2, ComputerNoise = 3, Projector = 4,
         World = 5, UI = 6, Dialogue = 7, Scanner = 8, Lamp = 9, EndingMusic = 10, Ocean = 11, Voice = 12, TerminalPower = 13,
-        TerminalTyping = 14, Door = 15, LogoGlitch = 16, DoorKnock = 17, EndNote = 18
+        TerminalTyping = 14, Door = 15, LogoGlitch = 16, DoorKnock = 17, EndNote = 18, SupervisorVoice = 19
     }
 
     /// <summary>Scene-owned named sources, sound-bank lookup and interruptible fades.</summary>
@@ -221,14 +221,15 @@ namespace MiniGame.UnityHost
             if (!state.MenuTransition) state.Source.Pause();
         }
 
-        public void PlayVoice(AudioClip clip, float startSeconds = 0, float volume = 1)
+        public void PlayVoice(AudioClip clip, float startSeconds = 0, float volume = 1,
+            MiniGameAudioChannel channel = MiniGameAudioChannel.Voice)
         {
-            if (!isActiveAndEnabled || !channels.TryGetValue(MiniGameAudioChannel.Voice, out var state)) return;
+            if (!isActiveAndEnabled || !channels.TryGetValue(channel, out var state)) return;
             bool wasPaused = state.Paused;
-            Stop(MiniGameAudioChannel.Voice);
+            Stop(channel);
             if (clip == null || startSeconds >= clip.length) return;
             state.Paused = wasPaused;
-            Route(MiniGameAudioChannel.Voice, state.Source);
+            Route(channel, state.Source);
             state.Source.clip = clip;
             state.Source.loop = false;
             state.Source.volume = Unit(volume);

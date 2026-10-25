@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-25",
+  "engine": "Unity 2022.3.23f1c1",
+  "validationEnvironment": "Independent cached Unity project, assets copied from current working tree; actual graphics/audio PlayMode tests",
+  "result": {
+    "result": "Passed",
+    "total": "40",
+    "passed": "40",
+    "failed": "0",
+    "duration": "57.0435283"
+  },
+  "testResults": "Artifacts/Unity/SupervisorVoice20261025/final-results.xml",
+  "suites": [
+    {
+      "name": "MenuAudioSuspensionPlayModeTests",
+      "result": "Passed",
+      "total": "7",
+      "passed": "7",
+      "failed": "0"
+    },
+    {
+      "name": "MiniGameAudioPlayModeTests",
+      "result": "Passed",
+      "total": "18",
+      "passed": "18",
+      "failed": "0"
+    },
+    {
+      "name": "SupervisorDialoguePlayModeTests",
+      "result": "Passed",
+      "total": "8",
+      "passed": "8",
+      "failed": "0"
+    },
+    {
+      "name": "SupervisorVoicePlayModeTests",
+      "result": "Passed",
+      "total": "5",
+      "passed": "5",
+      "failed": "0"
+    },
+    {
+      "name": "WorldDialogueInputPlayModeTests",
+      "result": "Passed",
+      "total": "2",
+      "passed": "2",
+      "failed": "0"
+    }
+  ],
+  "authoredSupervisorLines": 46,
+  "defaultCharactersPerSecond": 30,
+  "preview": {
+    "path": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\监督员-含糊咕嘟配音试听.mp3",
+    "sha256": "532913df4ce9213195023a4146648f0536512a8fea00bab856748bc3588920a7",
+    "content": "Five actual authored lines, dry synthesized voice, 0.7 s audition gap after each; default 30 chars/second. Not a recording of the room mix."
+  },
+  "sampleMeasurements": [
+    {
+      "file": "P02_D1_R1_COMMON_001.wav",
+      "sampleRate": 24000,
+      "frames": 8000,
+      "seconds": 0.3333333333333333,
+      "rms": 0.12321584896835662,
+      "peak": 0.35260009765625
+    },
+    {
+      "file": "P02_D1_R1_COMMON_002.wav",
+      "sampleRate": 24000,
+      "frames": 12800,
+      "seconds": 0.5333333333333333,
+      "rms": 0.17204822267836484,
+      "peak": 0.55975341796875
+    },
+    {
+      "file": "P02_D1_R1_COMMON_003.wav",
+      "sampleRate": 24000,
+      "frames": 11200,
+      "seconds": 0.4666666666666667,
+      "rms": 0.12578713329865723,
+      "peak": 0.3946533203125
+    },
+    {
+      "file": "P02_D1_R1_COMMON_007.wav",
+      "sampleRate": 24000,
+      "frames": 42400,
+      "seconds": 1.7666666666666666,
+      "rms": 0.14545985040597315,
+      "peak": 0.53997802734375
+    },
+    {
+      "file": "P02_D4_R1_COMMON_007.wav",
+      "sampleRate": 24000,
+      "frames": 2400,
+      "seconds": 0.1,
+      "rms": 0.1076062857739289,
+      "peak": 0.338958740234375
+    }
+  ],
+  "sourceSha256": {
+    "Tools/SupervisorVoice/bake_voice.py": "55bd3f5efea3c35a3576b5a35412f944e578022514f8760f9954d33980c494f0",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorVoiceProfile.cs": "9ff3bb207e3d460510e8f653fb71ec995c5e8edf22e43eedff2a452fb3b37f24",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorVoiceSynthesizer.cs": "965d15464a9560ee3a935894fb95840b6c855843447edf65ec143b01fc76f9d8",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorVoicePlayer.cs": "316da8b81c76a78fd853b42d9b35c782bd6e2ca06f3ae451d103bddbbcf6fdd9",
+    "UnityProject/Assets/MiniGame/Runtime/DialogueTextPlayback.cs": "f16bd96426cb5e30d5c25926736b44ddca366843cc2c4b549d661b74a76741bc",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs": "6e7d7a2ae36914bb4dbff797535ac503512e9f6591cbee1f4a5c338b244ed07e",
+    "UnityProject/Assets/MiniGame/Runtime/MiniGameAudioService.cs": "a8f2678123680bb90388f06800306ea2b21fa89911b38e8c92ce2b5dea86875c",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-01.wav": "3cbc9c209bdcdbd94565d8ebf9e5d83da160bbf1aab4af4c30c9749af2722127",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-02.wav": "028a696697b4bbf52fc6ef6ec888d2fe7f9d561b5735c416ac52c7fffa241fef",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-03.wav": "8107dcc6cc0f817cf020504fb2e2b8d2b45adb0fe08bdd5b1aefb985f51ef980",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-04.wav": "504d18b32102d53b6ccb47bc1f0d78300ad8c7912a878f88b9b09850100b93e8",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-05.wav": "250dcbd4265bbc2b212944bb2fc784cb2d32ac2124aa439fdd8d4938f6c75c83",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-06.wav": "c8a351371d5e08e7cd110679d5ea7fddf00a911a8c8106638092a07cda04daa7",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-07.wav": "08e582aaecb12476c6c773bc0fa6a56a28d9392dbf1f690779b7447e132633be",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-08.wav": "286b706ad4342ba1e76a81607eadac901ed8d6bcdbae13ea560349c7dfbe9787",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-09.wav": "97b4ea8a6b23c2afee1d43abbece6417d3339118bc4cbd3848fd01c90a0dab18",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/throat-10.wav": "cbcb4c75f3f0dbdcf2689ffd89a362b77f37b2262668072de6856d443133a9be",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/Default.asset": "b6a88ab2bf0f80fc471093540da081f84d5d0a9fbcfaeeb8d741721989437ee1",
+    "Tools/SupervisorVoice/render_speech.ps1": "a733547a3891394b9854cf1273a5d8f3f81854feeacba2a956e2d5ac53160765",
+    "Tools/SupervisorVoice/process_speech.py": "cdf97e96a101ee45c258d928a910fb46ca9199693dae74d003d379232291e737",
+    "UnityProject/Assets/MiniGame/Editor/SupervisorVoicePreview.cs": "a5c32fea3eaa2e4cffe954c08880914c8555e831fbb686b62e91347680703214"
+  },
+  "limits": [
+    "Subjective horror/oppressive quality awaits user listening feedback.",
+    "No Windows Player build in this run.",
+    "Save/load retains the existing line checkpoint and restarts that line; no mid-phonation save state added.",
+    "Pages exceeding 60 s use the original text clock without synthesized voice."
+  ],
+  "volumeUpdate": {
+    "date": "2026-10-25",
+    "previousGain": 0.72,
+    "currentGain": 1.44,
+    "amplitudeRatio": 2,
+    "decibelsAdded": 6.0206,
+    "result": {
+      "result": "Passed",
+      "total": "5",
+      "passed": "5",
+      "failed": "0"
+    },
+    "testResults": "Artifacts/Unity/SupervisorVoice20261025/double-volume-results.xml",
+    "checks": "Actual PCM power times source volume confirms 2x output; default boosted voice peak is below one; pause, skip, next page and rebind still pass.",
+    "preview": "C:/Users/时/Documents/ChatGPT/NORM/监督员-配音音量加倍试听.mp3",
+    "previewProcessing": "Dry audition amplified 2x with peak limiting at 0.97 to protect encoded audition peaks. Game gain is exactly 1.44 versus the previous 0.72."
+  },
+  "baselineNote": "Earlier 40-, 5-, 13- and 14-test runs are historical. The current deeper/wetter timbre and 20% gain reduction are verified by the 6-test gurgleQuieterUpdate.",
+  "speechTimbreUpdate": {
+    "date": "2026-10-25",
+    "reason": "User found the oscillator timbre too mechanical; requested muffled lowered real-language character.",
+    "sourceType": "Offline Mandarin male TTS speech, not actor recordings",
+    "voice": "Microsoft Kangkang",
+    "processing": {
+      "pitchRatio": 0.82,
+      "highPassHz": 105,
+      "lowPassHz": 1850,
+      "localReversedArticulationMix": 0.38,
+      "sourceLevelSoftCompression": true,
+      "continuousSegmentSeconds": [
+        0.85,
+        1.4
+      ],
+      "oscillatorAndSubBassLayers": false,
+      "retainedPlaybackGain": 1.44
+    },
+    "result": {
+      "result": "Passed",
+      "total": "13",
+      "passed": "13",
+      "failed": "0"
+    },
+    "testResults": "Artifacts/Unity/SupervisorVoice20261025/muffled-speech-final-results.xml",
+    "checks": [
+      "46 authored lines: duration, finite PCM, nonzero speech and page cleanup",
+      "Actual supervisor route and ending source selection",
+      "2x gain relative to original .72 output and bounded peak",
+      "Pause, menu suspension, skip, next page, natural completion and rebind"
+    ],
+    "preview": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\监督员-模糊低沉语言试听.mp3",
+    "previewSha256": "cb12bcd39a2e4463b1f3aad7908867c9e1465a9bfb1d6358ee53e684a8b05ac9",
+    "previewProcessing": "Five actual lines generated by the runtime composer. Dry audition gain 2x with 0.97 peak limit; 0.7 s audition-only gaps. Not a room-mix recording.",
+    "sampleMeasurements": [
+      {
+        "file": "P02_D1_R1_COMMON_001.wav",
+        "seconds": 0.3333333333333333,
+        "rms": 0.1768485451574788,
+        "peak": 0.47308349609375
+      },
+      {
+        "file": "P02_D1_R1_COMMON_002.wav",
+        "seconds": 0.5333333333333333,
+        "rms": 0.16202886021200003,
+        "peak": 0.411956787109375
+      },
+      {
+        "file": "P02_D1_R1_COMMON_003.wav",
+        "seconds": 0.4666666666666667,
+        "rms": 0.15724597204505664,
+        "peak": 0.51788330078125
+      },
+      {
+        "file": "P02_D1_R1_COMMON_007.wav",
+        "seconds": 1.7666666666666666,
+        "rms": 0.1603501121366043,
+        "peak": 0.51654052734375
+      },
+      {
+        "file": "P02_D4_R1_COMMON_007.wav",
+        "seconds": 0.1,
+        "rms": 0.02536572025859858,
+        "peak": 0.100677490234375
+      }
+    ],
+    "subjectiveValidation": "Sound naturalness and horror character await user listening feedback; no claim of human auditory review or Windows Player build."
+  },
+  "denseObscuredUpdate": {
+    "date": "2026-10-25",
+    "reason": "User requested dense uninterrupted emission and further lowered, less recognizable voice.",
+    "processing": {
+      "pitchRatio": 0.66,
+      "highPassHz": 90,
+      "lowPassHz": 1050,
+      "reversedArticulationMix": 0.85,
+      "pauseCompaction": true,
+      "reverseFragmentSeconds": [
+        0.075,
+        0.16
+      ],
+      "speechValleyFillMix": 0.18
+    },
+    "punctuationGapsRemoved": true,
+    "ellipsisContinuesVoice": true,
+    "retainedPlaybackGain": 1.44,
+    "result": {
+      "result": "Passed",
+      "total": "14",
+      "passed": "14",
+      "failed": "0"
+    },
+    "testResults": "Artifacts/Unity/SupervisorVoice20261025/dense-muffled-results.xml",
+    "continuityCheck": "A long punctuation-rich runtime phrase has no interior 10 ms RMS windows below .004 for more than 20 ms.",
+    "preview": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\监督员-密集低沉模糊配音试听.mp3",
+    "previewSha256": "77adc0b31ae705ef12cdf176b1e5c8aacd6f65e6d9613a77c7d93f3e935cdc20",
+    "previewSeconds": 3.2,
+    "previewProcessing": "Five authored examples concatenated without added gaps; dry audition gain 2x with .97 peak limit. Not a room-mix recording.",
+    "bankRmsRange": [
+      0.23858495803280297,
+      0.25169927647034335
+    ],
+    "peakAtPlaybackGainUpperBound": 0.7916253283477638,
+    "subjectiveValidation": "Human-voice recognizability and mood remain subject to user audition; no claim of human auditory review or Windows Player build."
+  },
+  "gurgleQuieterUpdate": {
+    "date": "2026-10-25",
+    "request": "Slightly deeper and more wet/gurgling, and reduce current volume by 20%.",
+    "processing": {
+      "pitchRatio": 0.6,
+      "highPassHz": 90,
+      "lowPassHz": 950,
+      "reversedArticulationMix": 0.85,
+      "wetMovingReflectionMix": 0.16
+    },
+    "previousGain": 1.44,
+    "currentGain": 1.152,
+    "gainRatio": 0.8,
+    "decibelsChange": -1.9382,
+    "result": {
+      "result": "Passed",
+      "total": "6",
+      "passed": "6",
+      "failed": "0"
+    },
+    "testResults": "Artifacts/Unity/SupervisorVoice20261025/gurgle-quieter-results.xml",
+    "checks": "Actual runtime gain equals 80% of prior 1.44; no long interior gaps; all 46 authored lines retain exact duration and finite PCM; pause/skip/page/rebind regression passes.",
+    "preview": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\监督员-更低沉咕嘟声-降低音量试听.mp3",
+    "previewSha256": "09864515b2be4e2c15ed4cafe3ba2c3eb17af2206f7778af8b3849ac08e04228",
+    "previewSeconds": 3.2,
+    "previewProcessing": "Dry audition gain reduced from 2.0 to 1.6, with the same .97 peak limiter; no added gaps. Not a room-mix recording.",
+    "peakAtPlaybackGainUpperBound": 0.6334506708135019,
+    "subjectiveValidation": "Timbre quality remains for user audition; no claim of human auditory review or Player build."
+  }
+}

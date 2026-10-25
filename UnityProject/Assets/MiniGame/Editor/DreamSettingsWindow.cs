@@ -190,7 +190,10 @@ namespace MiniGame.UnityHost.Editor
             using (new EditorGUILayout.HorizontalScope())
             {
                 using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
-                    if (GUILayout.Button("预览房间全景结局")) Run(DreamCubemapPreview.Open);
+                {
+                    if (GUILayout.Button("预览半床穿墙结局")) Run(DreamCubemapPreview.OpenWallPortal);
+                    if (GUILayout.Button("旧全景预览")) Run(DreamCubemapPreview.Open);
+                }
                 using (new EditorGUI.DisabledScope(!DreamCubemapPreview.IsActive))
                     if (GUILayout.Button("停止全景预览")) Run(DreamCubemapPreview.Stop);
             }
@@ -199,6 +202,10 @@ namespace MiniGame.UnityHost.Editor
             Draw(settings, "RoomPanoramaSkybox");
             Draw(settings, "ShowRoomOutline");
             Draw(settings, "CubemapYaw");
+            Draw(settings, "EnableOceanFloat");
+            Draw(settings, "OceanFloatHeight");
+            Draw(settings, "OceanFloatPitch");
+            Draw(settings, "OceanFloatRoll");
             EditorGUILayout.HelpBox("海滩构图固定在房门出生点；移动后会显露房间布景。动态海面使用旧海水 Shader，按演出时间更新，暂停时冻结。", MessageType.None);
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("固定海滩图的烘焙来源", EditorStyles.boldLabel);

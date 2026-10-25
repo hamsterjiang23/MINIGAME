@@ -1,0 +1,99 @@
+{
+  "sampleRate": 24000,
+  "origin": "Dense, strongly lowered and obscured speech texture",
+  "provider": "Windows installed offline speech synthesis",
+  "voice": "Microsoft Kangkang",
+  "pitchRatio": 0.6,
+  "highPassHz": 90,
+  "lowPassHz": 950,
+  "reversedArticulationMix": 0.85,
+  "wetMovingReflectionMix": 0.16,
+  "pauseCompaction": true,
+  "reverseFragmentSeconds": [
+    0.075,
+    0.16
+  ],
+  "speechValleyFillMix": 0.18,
+  "grains": [
+    {
+      "file": "throat-01.wav",
+      "sourceId": "P02_D1_R1_COMMON_001",
+      "sourceSha256": "96a74332442b60a6861596f66aa24cfa08b271f42cb88b034043482277ff5544",
+      "seconds": 1.81,
+      "peak": 0.5494858470978004,
+      "rms": 0.24192504856177255
+    },
+    {
+      "file": "throat-02.wav",
+      "sourceId": "P02_D1_R1_COMMON_002",
+      "sourceSha256": "0ff947bfa4ac20a27b860879a4d34b427e0107a9e84a08d00dc31108cd1a3f05",
+      "seconds": 2.66,
+      "peak": 0.5482501554866891,
+      "rms": 0.2421330516887665
+    },
+    {
+      "file": "throat-03.wav",
+      "sourceId": "P02_D1_R1_COMMON_004",
+      "sourceSha256": "03eb1275153c26d97dc206924bf26c21ff1db57d880a329e50805eb74fb1526c",
+      "seconds": 1.602,
+      "peak": 0.5432004546666891,
+      "rms": 0.25023073808261054
+    },
+    {
+      "file": "throat-04.wav",
+      "sourceId": "P02_D1_R1_COMMON_007",
+      "sourceSha256": "416a27f630d5e156374e5bef58403e876d68a9c6bf1b1af935ac34cb2a6792b7",
+      "seconds": 8.21,
+      "peak": 0.5498683821996642,
+      "rms": 0.24308559278196615
+    },
+    {
+      "file": "throat-05.wav",
+      "sourceId": "P02_D1_R1_COMMON_009",
+      "sourceSha256": "46e71ee3bc5681903671fe70792e719f8c04699d01107a07c9be313d349888f1",
+      "seconds": 6.286,
+      "peak": 0.5497427513906059,
+      "rms": 0.244598269547793
+    },
+    {
+      "file": "throat-06.wav",
+      "sourceId": "P02_D1_R1_COMMON_013",
+      "sourceSha256": "060e9ddde4237aad3ebb69162694061b3651c7acd0adb40be81535c865dccd89",
+      "seconds": 2.798,
+      "peak": 0.5491455546476219,
+      "rms": 0.24684147509315527
+    },
+    {
+      "file": "throat-07.wav",
+      "sourceId": "P02_D2_R1_COMMON_002",
+      "sourceSha256": "898502dd5957d290aea4ecc6795d160cd8aac24bf9edb6b5917a71228410fc53",
+      "seconds": 2.266,
+      "peak": 0.5498703739700538,
+      "rms": 0.2392170755282811
+    },
+    {
+      "file": "throat-08.wav",
+      "sourceId": "P02_D2_R1_COMMON_009",
+      "sourceSha256": "2ac6a7b5959050839d9dd5ce6b092930c8d736d3ff998ea059410734d0d75d85",
+      "seconds": 1.096,
+      "peak": 0.5463985095168731,
+      "rms": 0.24785468817913225
+    },
+    {
+      "file": "throat-09.wav",
+      "sourceId": "P02_D3_R1_COMMON_003",
+      "sourceSha256": "45705b6616b3be28a8b216a41b09758a7b1ef002b302c83797a4b39735e36cac",
+      "seconds": 3.348,
+      "peak": 0.548798871885677,
+      "rms": 0.24040918250559823
+    },
+    {
+      "file": "throat-10.wav",
+      "sourceId": "P02_D3_R1_COMMON_009",
+      "sourceSha256": "1f890d72ce2be8b34a5a8dd2f3c913d16860a7ddb16070961523425e8a309683",
+      "seconds": 1.986,
+      "peak": 0.5498674899684725,
+      "rms": 0.23705859636550694
+    }
+  ]
+}

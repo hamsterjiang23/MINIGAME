@@ -210,6 +210,8 @@ namespace MiniGame.UnityHost
             Rule(rr, 530, 352, 248); Label(rr, "AnswerHeading", "应答命令", 534, 364, 240, 19, 13, Dim);
             answers = Panel(rr, "AnswerContents", Color.clear, 530, 392, 248, 140).gameObject;
             ChoiceRoot = (RectTransform)answers.transform;
+            // Keep response selection visible when the pointer rests on another panel's commands.
+            ChoiceRoot.gameObject.AddComponent<TerminalHighlightGroup>();
             dispositionInstructions = Label(ChoiceRoot, "DispositionInstructions", "会谈结束。请用鼠标点击上方处置命令。", 6, 8, 236, 76, 14, Dim);
             dispositionInstructions.horizontalOverflow = HorizontalWrapMode.Wrap;
             dispositionInstructions.gameObject.SetActive(false);

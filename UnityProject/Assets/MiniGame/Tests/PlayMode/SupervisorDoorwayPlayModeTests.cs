@@ -102,10 +102,10 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(surface.gameObject.layer, Is.Zero);
             Assert.That(surface.GetComponent<Collider>(), Is.Null, "A portrait must not introduce an indoor physics obstacle.");
             var outward = doorway.InsidePose.forward;
-            Assert.That(Vector3.Dot(surface.transform.position - door.transform.position, outward), Is.EqualTo(.9f).Within(.001f),
+            Assert.That(Vector3.Dot(surface.transform.position - door.transform.position, outward), Is.EqualTo(.65f).Within(.001f),
                 "The supervisor must stand beyond the actual door plane, outside the room.");
-            Assert.That(surface.transform.position.y, Is.EqualTo(player.GetComponent<CharacterController>().bounds.min.y + .1f).Within(.001f),
-                "The visible foot anchor is raised ten centimetres above the floor; transparent margins may extend below it.");
+            Assert.That(surface.transform.position.y, Is.EqualTo(player.GetComponent<CharacterController>().bounds.min.y + .25f).Within(.001f),
+                "The visible foot anchor uses the reference composition's height; transparent margins may extend below it.");
             Assert.That(surface.bounds.size.y, Is.EqualTo(1.8f).Within(.001f));
             Assert.That(surface.bounds.size.x / surface.bounds.size.y,
                 Is.EqualTo((float)surface.sprite.texture.width / surface.sprite.texture.height).Within(.001f));
@@ -145,7 +145,7 @@ namespace MiniGame.UnityHost.Tests
             yield return UntilMorning();
             Assert.That(supervisor.IsVisible, Is.True);
             var displacement = supervisor.Surface.transform.position - fixedPosition;
-            Assert.That(Vector3.Dot(displacement, doorway.InsidePose.right), Is.EqualTo(.7f).Within(.001f));
+            Assert.That(Vector3.Dot(displacement, doorway.InsidePose.right), Is.EqualTo(.8f).Within(.001f));
             Assert.That(displacement.y, Is.Zero.Within(.001f), "Door avoidance must not change the actor's authored height.");
         }
 
@@ -166,14 +166,14 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(door.IsMoving, Is.False);
             yield return UntilMorning();
             Assert.That(Vector3.Dot(supervisor.Surface.transform.position - safePosition, doorway.InsidePose.right),
-                Is.EqualTo(.7f).Within(.001f));
+                Is.EqualTo(.8f).Within(.001f));
             Assert.That(doorway.TryReturn(), Is.False, "The morning dialogue still owns progression.");
             Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
             Accept(runtime.CompleteCue(runtime.GetView().Cue.Token));
             Assert.That(doorway.TryReturn(), Is.True);
             yield return new WaitForSecondsRealtime(.15f);
             float remaining = Vector3.Distance(supervisor.Surface.transform.position, safePosition);
-            Assert.That(remaining, Is.GreaterThan(.01f).And.LessThan(.69f), "Avoidance must slide through intermediate positions rather than teleport.");
+            Assert.That(remaining, Is.GreaterThan(.01f).And.LessThan(.79f), "Avoidance must slide through intermediate positions rather than teleport.");
             var pausedPosition = supervisor.Surface.transform.position;
             Accept(runtime.SetPaused(true));
             yield return new WaitForSecondsRealtime(.15f);

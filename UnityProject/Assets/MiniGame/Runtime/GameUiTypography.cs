@@ -32,5 +32,15 @@ namespace MiniGame.UnityHost
             font.name = "Game UI - " + Family;
             return font;
         }
+
+        /// <summary>Clean regular-weight subtitles, independent of the room's serif labels and terminal atlas.</summary>
+        public static Font CreateDialogueFont()
+        {
+            var subtitle = Font.CreateDynamicFontFromOSFont(new[] {
+                "Microsoft YaHei", "微软雅黑", "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Arial"
+            }, ReferenceSize);
+            subtitle.name = "Dialogue Sans";
+            return subtitle;
+        }
     }
 }

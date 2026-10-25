@@ -95,9 +95,15 @@ MonoBehaviour:
   CubemapFaceSize: 1024
   CubemapRefreshRate: 10
   CubemapYaw: 0
+  WallMonitorDirection: {x: -0.041, y: -0.016, z: -1}
+  WallMonitorHeightDegrees: 3.5
   WalkSpeed: 1.2
   BedInteractionDistance: 1.5
   LieDownSeconds: 1.5
+  EnableOceanFloat: 1
+  OceanFloatHeight: 0.1
+  OceanFloatPitch: 2.6
+  OceanFloatRoll: 1.2
   FloatAmplitude: 0.08
   FloatPeriod: 8
   FloatTiltDegrees: 1.5

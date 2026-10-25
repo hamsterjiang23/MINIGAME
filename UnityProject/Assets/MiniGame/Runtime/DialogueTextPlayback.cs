@@ -17,16 +17,19 @@ namespace MiniGame.UnityHost
         private int visible;
         private float accumulated;
         private float speed;
+        private SupervisorVoicePlayer voice;
         public bool Active => completed != null;
         public int PageCount => pages.Count;
         public int PageNumber => page + 1;
         public bool PageRevealed => visible >= elements.Length;
 
-        public void Begin(Text label, string text, float charactersPerSecond, Action finish, bool paginate = true)
+        public void Begin(Text label, string text, float charactersPerSecond, Action finish, bool paginate = true,
+            SupervisorVoicePlayer pageVoice = null)
         {
             Cancel();
             target = label;
             speed = Mathf.Max(0, charactersPerSecond);
+            voice = pageVoice;
             completed = finish;
             if (paginate) pages.AddRange(Paginate(label, text));
             else pages.Add(text ?? string.Empty);
@@ -37,6 +40,7 @@ namespace MiniGame.UnityHost
         {
             if (!Active || PageRevealed) return;
             accumulated += elapsed * speed;
+            if (voice != null && voice.TryGetProgress(out float progress)) accumulated = progress * elements.Length;
             int next = Mathf.Min(elements.Length, Mathf.FloorToInt(accumulated));
             if (next != visible) { visible = next; Paint(); }
         }
@@ -44,15 +48,17 @@ namespace MiniGame.UnityHost
         public void Advance()
         {
             if (!Active) return;
-            if (!PageRevealed) { visible = elements.Length; Paint(); return; }
+            if (!PageRevealed) { visible = elements.Length; voice?.Stop(); Paint(); return; }
             if (page + 1 < pages.Count) { page++; ShowPage(); return; }
             var finish = completed;
             completed = null;
+            voice?.Stop();
             finish();
         }
 
         public void Cancel()
         {
+            voice?.Stop(); voice = null;
             completed = null; target = null;
             pages.Clear(); elements = Array.Empty<int>(); page = visible = 0; accumulated = 0;
         }
@@ -63,6 +69,7 @@ namespace MiniGame.UnityHost
             accumulated = 0;
             visible = speed <= 0 ? elements.Length : 0;
             Paint();
+            voice?.BeginPage(pages[page], speed);
         }
 
         private void Paint()

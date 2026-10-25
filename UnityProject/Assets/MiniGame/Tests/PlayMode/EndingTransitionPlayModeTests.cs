@@ -30,9 +30,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.Entering));
             Assert.That(clock.State.Elapsed, Is.Zero);
             Assert.That(clock.Opacity, Is.EqualTo(1));
-            clock.Advance(.5f, true, false);
+            clock.Advance(RoomEndingTransitionClock.EntrySeconds * .5f, true, false);
             Assert.That(clock.Opacity, Is.EqualTo(.5f));
-            clock.Advance(.5f, true, false);
+            clock.Advance(RoomEndingTransitionClock.EntrySeconds * .5f, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.Exploring));
             Assert.That(clock.Opacity, Is.Zero);
         }
