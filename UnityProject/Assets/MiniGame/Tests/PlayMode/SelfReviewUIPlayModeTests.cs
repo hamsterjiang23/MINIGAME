@@ -95,6 +95,30 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(45000)]
+        public IEnumerator SelfPurificationButtonPlaysOneLampBeepAndPauseOrRebindDoesNotReplayIt()
+        {
+            host.Audio.Bind(runtime);
+            var played = new List<MiniGameSound>();
+            Action<MiniGameAudioChannel, MiniGameSound> record = (channel, sound) => played.Add(sound);
+            host.Audio.Service.SoundPlayed += record;
+            try
+            {
+                yield return EnterTerminal();
+                Assert.That(played.Count(sound => sound == MiniGameSound.LightBeep), Is.Zero);
+                yield return CompleteSelfReview();
+                Assert.That(FindPurify().gameObject.activeInHierarchy, Is.True);
+                Assert.That(played.Count(sound => sound == MiniGameSound.LightBeep), Is.EqualTo(1));
+                Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.Lamp).isPlaying, Is.True);
+                runtime.SetPaused(true);
+                runtime.SetPaused(false);
+                host.Audio.Bind(runtime);
+                yield return null;
+                Assert.That(played.Count(sound => sound == MiniGameSound.LightBeep), Is.EqualTo(1));
+            }
+            finally { host.Audio.Service.SoundPlayed -= record; }
+        }
+
+        [UnityTest, Timeout(45000)]
         public IEnumerator BothSelfReviewPortraitsUseTheWardBackdropAndAmberMonitorInCombinedScene()
         {
             const string captureKey = "MINIGAME_ENDING_CAPTURE_DIR";

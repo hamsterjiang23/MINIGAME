@@ -837,6 +837,50 @@ namespace MiniGame.UnityHost.Tests
             }
         }
 
+        [UnityTest, Timeout(60000)]
+        public IEnumerator FinalDreamReleasesWorldLookBeforeSelfReviewComputerInteraction()
+        {
+            StartConfiguredCampaign(false);
+            var fixture = Fixture();
+            EndingCampaignScenario.Drive(fixture, MiniGameSessionHost.Current.Rules, EndingCampaignRoute.Hidden,
+                view => EveningClosed(view, 3));
+            string captureDirectory = Environment.GetEnvironmentVariable("MINIGAME_SELF_REVIEW_CAPTURE_DIR");
+            if (!string.IsNullOrEmpty(captureDirectory))
+            {
+                Directory.CreateDirectory(captureDirectory);
+                File.WriteAllText(Path.Combine(captureDirectory, "day3-evening.json"), fixture.Save());
+            }
+            host.RestoreCheckpoint(fixture.Save());
+            host.Dreams.UseExternalClock = true;
+            host.Player.enabled = true;
+            InteractWithBed();
+            yield return Until(() => host.Runtime.GetView().Cue?.Kind == PresentationKind.Dream, "Day3 actual sleep enters dream", 8);
+            host.Dreams.Advance(dreams.BlackScreenSeconds);
+            host.Dreams.Advance(dreams.GetDay(3).Duration);
+            host.Dreams.Advance(dreams.ReturnSeconds);
+            host.Dreams.Advance(dreams.WakeBlackSeconds);
+            host.Dreams.Advance(dreams.ReturnSeconds);
+            yield return null;
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.SelfReview));
+            Assert.That(host.Runtime.GetView().Input, Is.EqualTo(InputContext.World));
+            Assert.That(host.Screen.TransitionLocked, Is.False);
+            Assert.That(host.Dreams.OwnsCamera, Is.False);
+            Assert.That(host.Effects.SleepCameraActive, Is.False);
+            Assert.That(host.Screen.PropNarrationBlocksWorld, Is.False);
+            Assert.That(host.Screen.PresentationToolsBlockInput, Is.False);
+            var camera = host.Player.ViewCamera;
+            var original = camera.transform.rotation;
+            host.Player.FacePoint(camera.transform.position + Quaternion.Euler(0, 35, 0) * camera.transform.forward * 2);
+            var turned = camera.transform.rotation;
+            Assert.That(Quaternion.Angle(original, turned), Is.GreaterThan(20));
+            for (int frame = 0; frame < 5; frame++)
+            {
+                yield return null;
+                Assert.That(Quaternion.Angle(camera.transform.rotation, turned), Is.LessThan(.05f),
+                    "After the dream no presenter may pin the world view back to the computer.");
+            }
+        }
+
         private static Color[] RenderRetroProbe(RetroScreenEffect effect)
         {
             const int width = 32, height = 16;

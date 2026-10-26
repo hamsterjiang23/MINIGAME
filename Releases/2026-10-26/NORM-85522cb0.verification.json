@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM-85522cb0.zip",
+  "sourceCommit": "85522cb03c4e35422224a1c74917fee49b08b121",
+  "bytes": 349213447,
+  "sha256": "78911abbf6074f2b0246173849a9c296145485f060bf6fe87d7a4d852b974595",
+  "unity": "2022.3.62f3c1",
+  "productName": "NORM",
+  "target": "Windows x64",
+  "backend": "Mono2x",
+  "developmentBuild": false,
+  "buildResult": "Succeeded",
+  "buildErrors": 0,
+  "buildWarnings": 10,
+  "buildReport": "../../Artifacts/Packages/NORM-20261026-85522cb0/windows-build.json",
+  "sourceSnapshotFiles": 3625,
+  "currentSavedSourcesMatchBuildSnapshot": true,
+  "editorImport": "Completed without compiler errors in the isolated project.",
+  "playMode": {
+    "skipped": 0,
+    "report": "../../Artifacts/Packages/NORM-20261026-85522cb0/playmode.xml",
+    "failed": 0,
+    "passed": 49,
+    "adjustmentReport": "../../Artifacts/Packages/NORM-20261026-85522cb0/test-assertion-adjustment.json",
+    "adjustment": "Only in the isolated verification copy, stale save/load notification expectations were updated to the current 存档已记录。 and 存档已读取。 All save-file and checkpoint-restoration assertions were retained. Repository sources were not changed."
+  },
+  "dotnet": "Not rerun for this packaging task; source was not edited. The installed global SDKs do not include pinned 8.0.424.",
+  "archiveFiles": 160,
+  "archiveEveryFileHashMatchesBuild": true,
+  "contentAudit": {
+    "editorAndDevelopmentProbeTypesAbsent": true,
+    "forbiddenFiles": [],
+    "playerBinaryTiming": {
+      "PostDialogueSeconds": 36.0,
+      "CreditsStartSeconds": 16.0,
+      "CreditsSeconds": 20.0,
+      "EndingFadeSeconds": 1.0
+    }
+  },
+  "nativeStartup": {
+    "graphics": "Renderer: NVIDIA GeForce RTX 4060 (ID=0x2882)",
+    "log": "../../Artifacts/Packages/NORM-20261026-85522cb0/player-startup.log",
+    "observedShaderErrors": 0,
+    "passed": true,
+    "observedExceptions": 0,
+    "launchedFromExtractedZip": true
+  },
+  "limitation": "The final extracted Windows Player was checked for graphical startup. The entire campaign was not manually replayed in this package.",
+  "lfsPreflight": {
+    "trackedLfsFiles": 542,
+    "unresolvedPointers": 0,
+    "paths": []
+  },
+  "isolatedBuildOverrides": [
+    "Editor version set to previously delivered Unity 2022.3.62f3c1 within the same 2022.3 LTS line.",
+    "Product name set to NORM; Windows x64 Mono; Development, debugging, profiler connection and additional scripting defines disabled.",
+    "Two stale save/load notification expectations updated only in the isolated PlayMode test copy. No repository game source or scene changes."
+  ],
+  "buildRetry": {
+    "recovery": "The identical compiler command succeeded independently; a second Unity build then succeeded.",
+    "finalReport": "../../Artifacts/Packages/NORM-20261026-85522cb0/windows-build.json",
+    "firstReport": "../../Artifacts/Packages/NORM-20261026-85522cb0/windows-build-first-attempt.json",
+    "initialResult": "Compiler process returned exit code 1 with no diagnostic output; no package generated from that attempt."
+  }
+}

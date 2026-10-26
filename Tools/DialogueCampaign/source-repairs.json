@@ -46,6 +46,20 @@
       ],
       "repairs": [
         {
+          "row": 59,
+          "expected": {
+            "id": "P04_D1_R6_COMMON_002",
+            "open": "我不记得了"
+          },
+          "set": {
+            "open": "我不记得了。"
+          },
+          "kind": "user-approved-punctuation",
+          "evidence": {
+            "rule": "User requested a full stop after this battlefield-doctor line on 2026-10-26; preserve the original workbook."
+          }
+        },
+        {
           "row": 134,
           "expected": {
             "id": "P04_D3_R1_COMMON_001",

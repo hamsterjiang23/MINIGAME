@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM-SelfReviewAudioFix.zip",
+  "bytes": 349471760,
+  "sha256": "b0dbb3318b945228f1c21ed18ad88c17218fcc43ae9fa2d60423621bdd749ef8",
+  "baseCommit": "85522cb03c4e35422224a1c74917fee49b08b121",
+  "sourceState": "Saved working tree snapshot including self-review lamp sound fix and previously saved terminal options, quota digits, doctor punctuation, dialogue layout, fullscreen/icon/native-resolution and ending timing changes; not committed or pushed.",
+  "changes": [
+    "Self-review purification readiness now plays the existing LightBeep exactly once.",
+    "Includes saved terminal long-option marquee, centered quota digits and doctor Day1 punctuation correction."
+  ],
+  "unresolved": [
+    "Day3 camera lock before computer interaction was not reproduced; this package does not claim to fix it."
+  ],
+  "unity": "2022.3.62f3c1",
+  "target": "Windows x64",
+  "backend": "Mono2x",
+  "developmentBuild": false,
+  "buildResult": "Succeeded",
+  "buildErrors": 0,
+  "buildWarnings": 1,
+  "buildMessages": [
+    {
+      "type": "Warning",
+      "message": "Pipeline: No RuntimePipelineManager components found in build scenes. Pipeline will be disabled in Player builds."
+    }
+  ],
+  "buildReport": "../../Artifacts/Packages/NORM-20261026-SelfReviewAudioFix/windows-build.json",
+  "releaseSettings": {
+    "fullScreenMode": "FullScreenWindow",
+    "scenes": [
+      "Assets/MiniGame/Scenes/MainRoomCombined.unity",
+      "Assets/MiniGame/Scenes/InspectionApartment.unity",
+      "Assets/MiniGame/Scenes/DreamEndingBeach.unity"
+    ],
+    "productName": "NORM",
+    "nativeResolution": true,
+    "icon": "Assets/MiniGame/Art/Branding/NormGameIcon.png"
+  },
+  "editMode": {
+    "passed": 20,
+    "report": "../../Artifacts/Packages/NORM-20261026-SelfReviewAudioFix/editmode.xml",
+    "failed": 0
+  },
+  "playMode": {
+    "passed": 13,
+    "coverage": "Self-review UI and sound, pause/rebind deduplication, actual Day3 bed-to-dream camera release, normal audio restore, terminal dossier and disposition input.",
+    "report": "../../Artifacts/Packages/NORM-20261026-SelfReviewAudioFix/playmode.xml",
+    "failed": 0
+  },
+  "nativeStartup": {
+    "passed": true,
+    "renderWidth": 2560,
+    "renderHeight": 1440,
+    "monitorWidth": 2560,
+    "monitorHeight": 1440,
+    "mode": "FullScreenWindow",
+    "pixelSize": 4,
+    "log": "E:\\Unity\\My project\\MINIGAME\\Artifacts\\Packages\\NORM-20261026-SelfReviewAudioFix\\player-startup.log"
+  },
+  "cached720pStartup": {
+    "passed": true,
+    "renderWidth": 2560,
+    "renderHeight": 1440,
+    "monitorWidth": 2560,
+    "monitorHeight": 1440,
+    "mode": "FullScreenWindow",
+    "pixelSize": 4,
+    "log": "E:\\Unity\\My project\\MINIGAME\\Artifacts\\Packages\\NORM-20261026-SelfReviewAudioFix\\player-cached720p.log"
+  },
+  "binaryChecks": {
+    "iconResourcesMatchAcceptedRelease": true,
+    "iconImageCount": 9,
+    "selfReviewAudioFixPresent": true,
+    "temporaryDiagnosticAbsent": true,
+    "pixelPreferenceUnchanged": true,
+    "screenPreferencesRestored": true
+  },
+  "startupScope": "Graphical batch Player started from the final extracted ZIP without explicit screen-size/fullscreen overrides; both normal and cached-720p starts confirm render=monitor for three stable frames.",
+  "acceptedCreditsTiming": {
+    "PostDialogueSeconds": 36.0,
+    "CreditsStartSeconds": 16.0,
+    "CreditsSeconds": 20.0,
+    "EndingFadeSeconds": 1.0
+  },
+  "archiveFiles": 160,
+  "archiveEveryFileHashMatchesBuild": true,
+  "sourceSnapshotFiles": 3647,
+  "sourceFilesUnchangedDuringBuild": true,
+  "dotnet": "Not rerun; no Core/Presentation behavior changes. SDK 8.0.424 remains pinned.",
+  "limitations": [
+    "No visual window screenshot or full campaign manual acceptance was performed for this ZIP.",
+    "No IL2CPP build performed.",
+    "Day3 reported camera lock remains unreproduced."
+  ],
+  "lfs": "ZIP is matched by existing Git LFS attributes; no commit, staging or push performed.",
+  "gitDiffCheck": "passed",
+  "evidenceDirectory": "../../Artifacts/Packages/NORM-20261026-SelfReviewAudioFix"
+}

@@ -199,19 +199,21 @@ namespace MiniGame.UnityHost.Tests
             host.Screen.PresentDialogueLine("神父", "请跟我走。", "priest-ending__001", "", false, () => { });
             Assert.That(voice.CurrentClip, Is.Null, "Priest dialogue must stop supervisor voice without starting another one.");
             host.Screen.DialogueCharactersPerSecond = 30;
-            string longLine = string.Concat(Enumerable.Repeat("请保持原地，不要回头。", 60));
+            string longLine = SupervisorDialogueContent.Load().conversations.SelectMany(day => day.lines)
+                .OrderByDescending(line => line.text.Length).First().text;
             int completeCount = 0;
             host.Screen.PresentDialogueLine("监督员", longLine, "supervisor__pagination-fixture", "JD_01", false, () => completeCount++);
-            Assert.That(host.Screen.CurrentLinePageCount, Is.GreaterThan(1));
-            var pageOneClip = voice.CurrentClip;
-            yield return null;
-            Assert.That(host.Screen.AdvanceWorldDialogue(), Is.True); // reveal first page
-            Assert.That(voice.CurrentClip, Is.Null);
-            yield return null;
-            Assert.That(host.Screen.AdvanceWorldDialogue(), Is.True); // begin second page
+            Assert.That(host.Screen.CurrentLinePageCount, Is.EqualTo(1));
             Assert.That(voice.CurrentClip, Is.Not.Null);
-            Assert.That(voice.CurrentClip, Is.Not.SameAs(pageOneClip));
-            Assert.That(completeCount, Is.Zero, "Turning a page must not complete the logical line.");
+            yield return null;
+            Assert.That(host.Screen.AdvanceWorldDialogue(), Is.True); // reveal the whole sentence
+            Assert.That(voice.CurrentClip, Is.Null);
+            Assert.That(body.text, Is.EqualTo(longLine));
+            Assert.That(completeCount, Is.Zero, "Revealing a sentence must not advance it.");
+            yield return null;
+            Assert.That(host.Screen.AdvanceWorldDialogue(), Is.True); // advance the complete sentence
+            Assert.That(voice.CurrentClip, Is.Null, "There is no second partial page or second voice phrase.");
+            Assert.That(completeCount, Is.EqualTo(1));
             host.Screen.HideDialogueActions(); Assert.That(source.isPlaying, Is.False);
         }
 

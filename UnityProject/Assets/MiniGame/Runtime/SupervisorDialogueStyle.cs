@@ -8,6 +8,7 @@ namespace MiniGame.UnityHost
     {
         internal const int FontSize = 50;
         internal const float PixelStep = 2f * 1.4f;
+        internal const float MinimumVerticalPadding = FontSize * .75f;
         internal static readonly Color Red = new Color32(0xF2, 0x45, 0x35, 0xFF);
 
         internal static Material CreateTextMaterial()
@@ -35,21 +36,32 @@ namespace MiniGame.UnityHost
             body.resizeTextForBestFit = false;
             body.raycastTarget = false;
             var rect = body.rectTransform;
-            rect.anchorMin = new Vector2(.025f, .07f);
-            rect.anchorMax = new Vector2(.975f, .93f);
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            rect.anchorMin = new Vector2(.025f, 0);
+            rect.anchorMax = new Vector2(.975f, 1);
+            rect.offsetMin = new Vector2(0, MinimumVerticalPadding);
+            rect.offsetMax = new Vector2(0, -MinimumVerticalPadding);
         }
 
-        internal static void Layout(RectTransform panel, string text)
+        internal static void Layout(RectTransform panel, Text body, string fullText)
         {
-            int longest = 0;
-            foreach (string line in (text ?? string.Empty).Split('\n')) longest = Mathf.Max(longest, line.Length);
-            int lines = Mathf.Clamp(Mathf.CeilToInt(longest / 11f), 1, 4);
-            float halfHeight = (.11f + (lines - 1) * .06f) * .5f;
-            panel.anchorMin = new Vector2(.655f, .51f - halfHeight);
-            panel.anchorMax = new Vector2(.97f, .51f + halfHeight);
-            panel.offsetMin = panel.offsetMax = Vector2.zero;
-            Canvas.ForceUpdateCanvases();
+            var parent = (RectTransform)panel.parent;
+            // Keep the short-line silhouette. Extra lines consume its generous top/bottom
+            // space first; only grow once the reference's minimum padding is reached.
+            float width = Mathf.Max(1, parent.rect.width * (.97f - .655f) * .95f);
+            var settings = body.GetGenerationSettings(new Vector2(width, 0));
+            settings.horizontalOverflow = HorizontalWrapMode.Wrap;
+            settings.verticalOverflow = VerticalWrapMode.Overflow;
+            float textHeight = Mathf.Max(FontSize,
+                body.cachedTextGeneratorForLayout.GetPreferredHeight(fullText ?? string.Empty, settings) / body.pixelsPerUnit);
+            // Legacy Text's preferred height omits some serif ascender/descender overhang.
+            // Leave a small font-relative guard inside the text area, separate from the black padding.
+            textHeight += FontSize * .4f;
+            float baselineHeight = parent.rect.height * .11f + 120;
+            float height = Mathf.Max(baselineHeight, textHeight + MinimumVerticalPadding * 2 + 2);
+            panel.anchorMin = new Vector2(.655f, .51f);
+            panel.anchorMax = new Vector2(.97f, .51f);
+            panel.offsetMin = new Vector2(0, -height * .5f);
+            panel.offsetMax = new Vector2(0, height * .5f);
         }
 
         internal static void ApplyBackdrop(Image image)
@@ -60,8 +72,7 @@ namespace MiniGame.UnityHost
             var rect = image.rectTransform;
             rect.anchorMin = Vector2.zero;
             rect.anchorMax = Vector2.one;
-            rect.offsetMin = new Vector2(0, -60);
-            rect.offsetMax = new Vector2(0, 60);
+            rect.offsetMin = rect.offsetMax = Vector2.zero;
         }
     }
 }

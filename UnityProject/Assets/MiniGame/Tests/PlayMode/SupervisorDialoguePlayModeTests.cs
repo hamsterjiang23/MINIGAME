@@ -95,7 +95,8 @@ namespace MiniGame.UnityHost.Tests
                         var line = expected[seen.Count];
                         Assert.That(source, Is.EqualTo(SupervisorDialogueContent.SourcePrefix + line.id));
                         Assert.That(supervisor.CurrentPortraitId, Is.EqualTo(line.portraitId));
-                        Assert.That(host.Screen.CurrentLinePageCount, Is.GreaterThan(0), source);
+                        Assert.That(host.Screen.CurrentLinePageCount, Is.EqualTo(1),
+                            "An authored supervisor sentence must not be split into separate pages: " + source);
                         Assert.That(host.GetComponent<SupervisorVoicePlayer>()?.CurrentClip, Is.Not.Null,
                             "Every actually presented supervisor line must have its own phrase: " + source);
                         displayedPages.Add(source, new List<string>());

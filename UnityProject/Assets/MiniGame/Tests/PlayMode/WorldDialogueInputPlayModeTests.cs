@@ -16,6 +16,39 @@ namespace MiniGame.UnityHost.Tests
     {
         private MiniGameBootstrap host;
 
+        [UnityTest, Timeout(30000)]
+        public IEnumerator WholeSupervisorSentencesKeepStableBoundsAndNeedOnlyRevealThenAdvance()
+        {
+            yield return OpenMorning(10);
+            var screen = host.Screen;
+            var samples = new[] { "你就是新来的审查员？", "顺带一提，你刚才的表情也被我记录下来了。",
+                "你就是新来的审查员？\n检查记录会全部保留。\n请按要求完成工作。\n明天仍然照常安排。" };
+            for (int index = 0; index < samples.Length; index++)
+            {
+                string line = samples[index];
+                int completed = 0;
+                screen.PresentDialogueLine("监督员", line, "layout-regression", "JD_01", false, () => completed++);
+                Canvas.ForceUpdateCanvases();
+                var panel = (RectTransform)WorldBody().transform.parent;
+                float initialHeight = panel.rect.height;
+                Assert.That(screen.CurrentLinePageCount, Is.EqualTo(1));
+                yield return new WaitForSecondsRealtime(.2f);
+                Canvas.ForceUpdateCanvases();
+                Assert.That(panel.rect.height, Is.EqualTo(initialHeight).Within(.1f), "Typing must not resize the card.");
+                Assert.That(screen.LineIsRevealed, Is.False);
+                Assert.That(screen.AdvanceWorldDialogue(), Is.True);
+                Assert.That(completed, Is.Zero, "Revealing text must not also advance the sentence.");
+                Assert.That(WorldBody().text, Is.EqualTo(line), "The complete sentence, including authored line breaks, is revealed together.");
+                yield return null;
+                Assert.That(panel.rect.height, Is.EqualTo(initialHeight).Within(.1f));
+                yield return PrototypePlayModeTests.CaptureIfRequested(host, "supervisor-layout-" + index);
+                Assert.That(screen.AdvanceWorldDialogue(), Is.True);
+                Assert.That(completed, Is.EqualTo(1), "No second partial page may consume another click.");
+                Assert.That(screen.AdvanceWorldDialogue(), Is.False, "A duplicate input in the same frame is rejected.");
+                yield return null;
+            }
+        }
+
         [UnityTearDown]
         public IEnumerator TearDown()
         {

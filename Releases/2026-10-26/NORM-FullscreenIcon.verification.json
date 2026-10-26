@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM-FullscreenIcon.zip",
+  "bytes": 349470257,
+  "sha256": "7aa52f74772aa496983eb7ab492cfcf8861594c92836658d2548ea5a3e96ae29",
+  "baseCommit": "85522cb03c4e35422224a1c74917fee49b08b121",
+  "sourceState": "Working tree including the saved release icon, ReleasePlayerBuilder, ReleaseDisplayStartup and PlayerSettings changes; not committed or pushed.",
+  "unity": "2022.3.62f3c1",
+  "productName": "NORM",
+  "target": "Windows x64",
+  "backend": "Mono2x",
+  "developmentBuild": false,
+  "buildResult": "Succeeded",
+  "buildErrors": 0,
+  "buildWarnings": 1,
+  "buildReport": "../../Artifacts/Packages/NORM-20261026-BrandingFix/windows-build.json",
+  "fullScreen": {
+    "actualWindowScreenshotVerified": false,
+    "explicitCommandLineChoicePreserved": true,
+    "limitation": "Computer Use launch was rejected: Computer Use was not approved to use norm.",
+    "nativeResolution": true,
+    "configuredMode": "FullScreenWindow",
+    "previousStoredMode": "Windowed (3), 1280x720",
+    "startupOverrideCompiled": true,
+    "binaryAudit": "../../Artifacts/Packages/NORM-20261026-BrandingFix/player-display-binary-audit.json"
+  },
+  "icon": {
+    "asset": "Assets/MiniGame/Art/Branding/NormGameIcon.png",
+    "sourceManifest": "../../Art/Branding/norm-game-icon-source.json",
+    "source": "Previously shipped supervisor portrait icon recovered from Releases/2026-10-26/NORM/NORM/NORM.exe",
+    "capture": "../../Artifacts/Packages/NORM-20261026-BrandingFix/rebuilt-shell-icon.png",
+    "windowsResourceSizes": 9,
+    "shellIconExtractedAndVisuallyChecked": true
+  },
+  "sourceSnapshotFiles": 3632,
+  "sourceFilesUnchangedSinceBuild": true,
+  "archiveFiles": 160,
+  "archiveEveryFileHashMatchesBuild": true,
+  "nativeStartup": {
+    "passed": true,
+    "mode": "Batch Direct3D11 graphical startup from the extracted ZIP",
+    "observedExceptions": 0,
+    "log": "../../Artifacts/Packages/NORM-20261026-BrandingFix/player-startup.log",
+    "observedShaderErrors": 0
+  },
+  "validation": {
+    "dotnet": "Not rerun; no Core/Presentation changes. Pinned 8.0.424 is not among globally installed SDKs.",
+    "playMode": "Not rerun for these display/icon changes. Previous 85522cb0 gameplay validation passed 49 tests, with two stale text expectations adjusted only in that verification copy.",
+    "documentLinks": "passed",
+    "editorCompilation": "Passed in the main Editor and the isolated release build.",
+    "gitDiffCheck": "passed",
+    "lfs": "PNG and ICO files use the root LFS attributes."
+  },
+  "limitations": [
+    "Normal fullscreen window capture could not be completed because the Computer Use app permission check rejected NORM.",
+    "The full campaign was not manually replayed in the rebuilt package."
+  ]
+}

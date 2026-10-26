@@ -38,14 +38,14 @@ namespace MiniGame.UnityHost
             body = label.GetComponent<Text>();
             textMaterial = SupervisorDialogueStyle.CreateTextMaterial();
             SupervisorDialogueStyle.ApplyText(body, font, textMaterial);
-            SupervisorDialogueStyle.Layout(rect, string.Empty);
+            SupervisorDialogueStyle.Layout(rect, body, string.Empty);
             panel.SetActive(false);
         }
 
         internal void Present(int index, System.Action completed)
         {
             panel.SetActive(true);
-            SupervisorDialogueStyle.Layout((RectTransform)panel.transform, Lines[index]);
+            SupervisorDialogueStyle.Layout((RectTransform)panel.transform, body, Lines[index]);
             playback.Begin(body, Lines[index], 30, completed, false, voice);
         }
         private void RefreshFontTexture(Font rebuilt)

@@ -23,6 +23,8 @@ uv run python -m unittest discover -s Tools/DialogueCampaign -p 'test_*.py'
 
 旧外交官26条历史措辞覆盖已删除，当前 `text-variants.json` 为空；新版正文按源表播放。医生 Day1 选项 K64 的−5和直接回应 K65 的+5合并为同次回答的净影响0，来源值分别保留。神父+100和医生−107按原表保留。`[verified: text-variants.json；provenance.json mappings/adaptations；test_campaign.py]`
 
+2026-10-26按用户截图补充医生 Day1 `P04_D1_R6_COMMON_002` 的句号：“我不记得了。”。此处采用 `source-repairs.json` 的前置文本校验与标点修订，原始工作簿及审计中的原始行保持不变；逐格正文检查仅为这一稳定 ID 接受已确认的句号。`[verified: source-repairs.json books.battlefield-doctor.repairs；test_campaign.py test_every_source_row_is_either_exactly_mapped_or_explicitly_excluded；../../src/MiniGame.Presentation.Tests/CampaignPackageTests.cs EveryActiveSourceRowMapsToUnmodifiedTextAndExcludedRowsRemainAudited]`
+
 V2按会谈单独解析，每会谈最多1024源节点、整包最多8192。V1单日包仍使用原有编译规则；V2包含日程、患者、处置子集、Day0无选项引导和只读文本变体。内容修订哈希覆盖整个V2包，规则或适配文字变化同样使旧存档不兼容。`[verified: CampaignPackageCompiler.Compile/CompileMeeting；DialoguePackageCompiler.Compile]`
 
 C#验收入口为 `CampaignPackageTests` 与 `CampaignConditionalRoundTests`，覆盖活动行/排除行分区、逐格正文、数值、特殊分支边界和版本。原有 `AuthoringPackageTests` 继续验证V1兼容。更新记录见[本次接入说明](../../docs/dialogue-update-2026-10-22/guide.md)。`[verified: src/MiniGame.Presentation.Tests/CampaignPackageTests.cs；src/MiniGame.Presentation.Tests/CampaignConditionalRoundTests.cs]`

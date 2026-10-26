@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM-DialogueLayout.zip",
+  "bytes": 349470385,
+  "sha256": "ffcae47d90cb4accd3457313212a3e7d559d125365d7b6381731d0edbd62fc9c",
+  "baseCommit": "85522cb03c4e35422224a1c74917fee49b08b121",
+  "sourceState": "Saved working tree including prior full-screen/icon fixes and current supervisor dialogue layout changes; not committed or pushed.",
+  "unity": "2022.3.62f3c1",
+  "target": "Windows x64",
+  "backend": "Mono2x",
+  "developmentBuild": false,
+  "buildResult": "Succeeded",
+  "buildErrors": 0,
+  "buildWarnings": 1,
+  "buildReport": "../../Artifacts/Packages/NORM-20261026-DialogueLayout/windows-build.json",
+  "releaseSettings": {
+    "fullScreenMode": "FullScreenWindow",
+    "nativeResolution": true,
+    "icon": "Assets/MiniGame/Art/Branding/NormGameIcon.png",
+    "normalFullscreenWindowCapture": "Not repeated; Computer Use previously lacked permission to operate NORM."
+  },
+  "changes": [
+    "The complete supervisor sentence determines the card bounds before typing starts.",
+    "Multi-line text uses existing vertical space first, with 37.5 reference units minimum padding on each side, then grows to fit actual font layout.",
+    "Doorway supervisor sentences are never split into partial pages; dream dialogue shares the same card style.",
+    "Authored text, font size, pixel material, horizontal position and terminal pagination remain unchanged."
+  ],
+  "editorImport": "Current isolated Unity project compiled and imported successfully.",
+  "editMode": {
+    "passed": 12,
+    "report": "../../Artifacts/Packages/NORM-20261026-DialogueLayout/editmode.xml",
+    "coverage": "All 46 doorway and 4 dream lines plus explicit multiline text at four viewport sizes; actual generated glyph vertices fit the card. Existing terminal bitmap pagination regressions also passed.",
+    "failed": 0
+  },
+  "playMode": {
+    "initialFailed": 1,
+    "coverage": "All authored doorway lines remain one page; typing preserves bounds; whole-line reveal/advance and duplicate input handling; supervisor voice pause/rebind/skip; dream-ending interruption and restoration.",
+    "rerunPassed": 1,
+    "initialPassed": 19,
+    "rerunReport": "../../Artifacts/Packages/NORM-20261026-DialogueLayout/playmode-rerun.xml",
+    "rerunReason": "The previous voice regression expected a long supervisor sentence to create multiple pages. The repository test now asserts the requested one-page sentence, reveal without advancing, then a single completion without starting a second partial voice phrase.",
+    "initialReport": "../../Artifacts/Packages/NORM-20261026-DialogueLayout/playmode-initial.xml",
+    "distinctPassed": 20
+  },
+  "visuals": {
+    "inspected": [
+      "../../Artifacts/Packages/NORM-20261026-DialogueLayout/doorway-visuals/supervisor-layout-0.png",
+      "../../Artifacts/Packages/NORM-20261026-DialogueLayout/doorway-visuals/supervisor-layout-1.png",
+      "../../Artifacts/Packages/NORM-20261026-DialogueLayout/doorway-visuals/supervisor-layout-2.png",
+      "../../Artifacts/Packages/NORM-20261026-DialogueLayout/dream-visuals/dream-supervisor-line-0.png",
+      "../../Artifacts/Packages/NORM-20261026-DialogueLayout/dream-visuals/dream-supervisor-line-2.png"
+    ],
+    "source": "Unity Editor camera GPU renders from current PlayMode tests; not final Player screenshots."
+  },
+  "sourceSnapshotFiles": 3634,
+  "sourceFilesUnchangedDuringBuild": true,
+  "archiveFiles": 160,
+  "archiveEveryFileHashMatchesBuild": true,
+  "nativeStartup": {
+    "passed": true,
+    "observedExceptions": 0,
+    "log": "../../Artifacts/Packages/NORM-20261026-DialogueLayout/player-startup.log",
+    "observedShaderErrors": 0,
+    "mode": "Batch graphical Direct3D11 startup from the final extracted ZIP"
+  },
+  "dotnet": "Not rerun; no Core/Presentation rule changes. Globally installed SDKs do not include pinned 8.0.424.",
+  "documentLinks": "passed",
+  "gitDiffCheck": "passed",
+  "limitations": [
+    "The full campaign was not manually replayed in the final Windows Player.",
+    "Normal full-screen window capture was not repeated; full-screen defaults and the startup override are retained from the prior fix."
+  ]
+}

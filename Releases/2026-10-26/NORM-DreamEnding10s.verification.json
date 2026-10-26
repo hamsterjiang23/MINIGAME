@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM-DreamEnding10s.zip",
+  "bytes": 349232632,
+  "sha256": "5949937c89d27e102cb771b4c17fc878fb2435ce5da802b95ca423ad7161bffc",
+  "baseCommit": "3f1b43de",
+  "change": "Hold for 10 seconds after dream-ending supervisor dialogue, followed by the existing 1-second fade.",
+  "postDialogueSeconds": 10,
+  "fadeSeconds": 1,
+  "unity": "2022.3.62f3c1",
+  "developmentBuild": false,
+  "buildResult": "Succeeded",
+  "buildErrors": 0,
+  "buildWarnings": 10,
+  "targetedPlayModeTests": {
+    "report": "../../Artifacts/DreamEndingTenSeconds/playmode.xml",
+    "name": "DreamSupervisorInterruptFreezesClockRestoresSaveAndResumesTenSeconds",
+    "passed": 1,
+    "failed": 0
+  },
+  "archiveFiles": 160,
+  "archiveEveryFileHashMatchesBuild": true,
+  "extractedPlayerStartup": {
+    "observedExceptions": 0,
+    "log": "../../Artifacts/DreamEndingTenSeconds/player-graphics-startup.log",
+    "observedShaderErrors": 0,
+    "scope": "Startup only; the full campaign was not replayed in the packaged Player.",
+    "graphics": "Direct3D11 / NVIDIA GeForce RTX 4060"
+  },
+  "runtimeSourceSha256": "33c3cdeba44f4733005db0e7fd46b53c53138742bb9f8a29e0e892733c30f2b3"
+}

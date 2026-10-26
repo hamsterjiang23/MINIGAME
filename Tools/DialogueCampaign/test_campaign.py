@@ -112,7 +112,11 @@ class CampaignConversionTests(unittest.TestCase):
             by_row = {int(row["row"]): row for row in rows}
             for mapping in active:
                 original = by_row[int(str(mapping["row"]))]
-                self.assertEqual(mapping["text"], original[str(mapping["column"])])
+                expected_text = original[str(mapping["column"])]
+                if pid == "battlefield-doctor" and original.get("I") == "P04_D1_R6_COMMON_002":
+                    self.assertEqual(expected_text, "我不记得了")
+                    expected_text += "。"  # User-approved punctuation; original workbook stays intact.
+                self.assertEqual(mapping["text"], expected_text)
                 self.assertEqual(mapping["authoredDelta"], original.get(str(mapping["deltaColumn"]), ""))
             self.assertTrue(all(entry["reason"] for entry in excluded))
 

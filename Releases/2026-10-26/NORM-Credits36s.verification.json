@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM-Credits36s.zip",
+  "bytes": 349241475,
+  "sha256": "b3335a1832a9e839489aecfb7eb1a2334a4dbcd332aad58c150361181d21d098",
+  "sourceCommit": "e086e18a06d83fde09331816550c202f15ef26fd",
+  "pushedBranch": "origin/main",
+  "unity": "2022.3.62f3c1",
+  "developmentBuild": false,
+  "playerBinaryTiming": {
+    "PostDialogueSeconds": 36.0,
+    "CreditsStartSeconds": 16.0,
+    "CreditsSeconds": 20.0,
+    "EndingFadeSeconds": 1.0
+  },
+  "buildErrors": 0,
+  "buildWarnings": 10,
+  "targetedTests": {
+    "reports": [
+      "../../Artifacts/DreamEndingCredits36s/timing-test.json",
+      "../../Artifacts/DreamEndingCredits36s/checkpoint-test.json"
+    ],
+    "failed": 0,
+    "passed": 2
+  },
+  "archiveFiles": 160,
+  "archiveEveryFileHashMatchesBuild": true,
+  "nativeStartup": {
+    "observedShaderErrors": 0,
+    "log": "../../Artifacts/DreamEndingCredits36s/player-lts-startup.log",
+    "observedExceptions": 0,
+    "passed": true,
+    "graphics": "Direct3D11 / NVIDIA GeForce RTX 4060"
+  },
+  "initialBuild": {
+    "startupResult": "Windows DLL initialization failure 0xc0000142 before game startup; not delivered",
+    "unity": "2022.3.23f1",
+    "replacement": "Rebuilt identical committed game sources using the previously working Unity 2022.3 LTS version."
+  },
+  "limitation": "The final Windows Player startup was checked; the entire campaign was not manually replayed."
+}

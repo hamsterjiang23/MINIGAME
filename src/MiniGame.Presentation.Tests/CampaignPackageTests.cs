@@ -90,6 +90,11 @@ namespace MiniGame.Presentation.Tests
                     {
                         var column = (string)columns[field]!;
                         var originalText = (string?)row[column] ?? "";
+                        if (patient == "battlefield-doctor" && (string?)row["I"] == "P04_D1_R6_COMMON_002" && field == "open")
+                        {
+                            Assert.That(originalText, Is.EqualTo("我不记得了"));
+                            originalText += "。"; // User-approved punctuation; retain the source workbook text in the audit.
+                        }
                         Assert.That((string)active[number][field]!, Is.EqualTo(originalText), key + ":" + column);
                         if (originalText.Length == 0) continue;
                         Assert.That(sourceMappings.Count(mapping => (string)mapping["column"]! == column

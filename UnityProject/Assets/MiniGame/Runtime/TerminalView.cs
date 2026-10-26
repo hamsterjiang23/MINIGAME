@@ -128,12 +128,12 @@ namespace MiniGame.UnityHost
             Label(dr, "DossierStatusSeparator", "/", 249, 428, 14, 20, 14, Ink);
             previewStage = Label(dr, "PreviewStage", "", 270, 428, 132, 20, 14, Ink);
             Label(dr, "净化配额Label", "净化配额", 140, 452, 70, 20, 14, Ink);
-            var quotaRoot = Panel(dr, "DossierQuota", Color.clear, 212, 448, 56, 24);
-            quota = Label(quotaRoot, "PurificationQuota", "", 0, 3, 56, 20, 14, ColorOf("170e02"));
-            quota.alignment = TextAnchor.UpperCenter;
+            var quotaRoot = Panel(dr, "DossierQuota", ColorOf("eeb430"), 212, 448, 56, 24);
+            quota = Label(quotaRoot, "PurificationQuota", "", 0, 0, 56, 24, 14, ColorOf("170e02"));
+            quota.alignment = TextAnchor.MiddleCenter;
             dossierQuota = quotaRoot.gameObject.AddComponent<TerminalQuotaField>();
-            dossierQuota.Initialize(assets != null ? assets.DossierQuotaFields : null,
-                assets != null ? assets.DossierQuotaMetrics : null, quota, new Vector2Int(56, 24));
+            // Draw live digits with the terminal pixel font instead of the pre-rendered smooth number.
+            dossierQuota.Initialize(null, null, quota, new Vector2Int(56, 24));
             Label(dr, "DossierAgeLabel", "年龄", 418, 354, 70, 20, 14, Ink);
             previewAge = Label(dr, "DossierAge", "", 499, 354, 270, 20, 14, ColorOf("170e02"));
             Label(dr, "DossierOccupationLabel", "职业", 418, 388, 70, 20, 14, Ink);
@@ -390,8 +390,12 @@ namespace MiniGame.UnityHost
             var button = Button(ChoiceRoot, "Reply-" + id, text, 0, index * 35, 248, 28, action, 14);
             ((TerminalButtonVisual)button).PointerSelected = hovered;
             var label = button.transform.Find("Label").GetComponent<Text>(); Position(label.rectTransform, 42, 4, 200, 21);
+            // Numbering has its own label; the complete response is an ordinary single text run.
+            if (label is TerminalBitmapText bitmap) bitmap.CommandRow = false;
             var clip = Panel(button.transform, "ChoiceTextViewport", Color.clear, 42, 4, 200, 21); clip.gameObject.AddComponent<RectMask2D>();
-            label.transform.SetParent(clip, false); Position(label.rectTransform, 0, 0, 200, 21);
+            var content = Panel(clip, "ChoiceTextContent", Color.clear, 0, 0, Mathf.Max(200, label.preferredWidth), 21);
+            label.transform.SetParent(content, false); Position(label.rectTransform, 0, 0, content.rect.width, 21);
+            button.gameObject.AddComponent<TerminalChoiceMarquee>().Initialize(button, clip, content, label);
             var number = Label(button.transform, "ChoiceNumber", (index + 1).ToString("00"), 8, 5, 28, 18, 12, Dim);
             TerminalIndustrialSkin.RegisterLabel(button, number);
             display.InvalidateSourceLayers(); return button;

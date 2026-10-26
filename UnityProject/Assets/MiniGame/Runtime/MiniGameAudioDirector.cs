@@ -174,9 +174,12 @@ namespace MiniGame.UnityHost
             bool reviewing = view.TerminalOpen && view.TerminalPage == TerminalPage.Review;
             if (before != null && !view.Paused)
             {
-                if (reviewing && view.Game.EncounterStage == EncounterStage.AwaitingDisposition
-                    && (before.Game.EncounterStage != EncounterStage.AwaitingDisposition
-                        || before.Game.CurrentEncounterId != view.Game.CurrentEncounterId))
+                bool dispositionBecameReady = view.IsSelfReview
+                    ? view.SelfReviewReady && !before.SelfReviewReady
+                    : view.Game.EncounterStage == EncounterStage.AwaitingDisposition
+                        && (before.Game.EncounterStage != EncounterStage.AwaitingDisposition
+                            || before.Game.CurrentEncounterId != view.Game.CurrentEncounterId);
+                if (reviewing && dispositionBecameReady)
                     service.PlayOneShot(MiniGameAudioChannel.Lamp, MiniGameSound.LightBeep);
             }
             bool newLine = false;

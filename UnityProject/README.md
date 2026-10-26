@@ -28,6 +28,8 @@ Norm 标志与监控局部扰动通过游戏内 **F6** 调参，支持两组独�
 
 已有 Editor 时，先退出 Play，再使用 `MiniGame/Main Room/Open and play`。需要重装碰撞、镜头和宿主时使用 `MiniGame/Main Room/Setup and play`。全流程Day0直接从电脑教学开始；正式Day1–3先到门口按 E 完成晨检与简报。瞄准电脑按 E 或鼠标左键，角色落座后镜头对齐并推进到屏幕，淡入终端；在名册自由选择当日待审角色。`[verified: Assets/MiniGame/Editor/MainRoomGameplayBuilder.cs SetupAndPlay/OpenAndPlay；Assets/MiniGame/Runtime/ApartmentPlayer.cs Update；Assets/MiniGame/Runtime/PresentationEffects.cs SeatedEntry；../src/MiniGame.Presentation/GameRuntime.cs EnterSelectedPatient]`
 
+正式 Windows 外发使用 **MiniGame → Build → Build Windows external release**，统一 NORM 产品名、监督员头像图标、原生分辨率全屏和非 Development 构建；说明与验收要求见[外发包指南](../docs/windows-release.md)。[verified: Assets/MiniGame/Editor/ReleasePlayerBuilder.cs ApplySettings/Build；Assets/MiniGame/Runtime/ReleaseDisplayStartup.cs Initialize]
+
 全流程Windows开发构建菜单为 `MiniGame/Campaign/Build Windows development player`，目标为融合场景，输出 `Builds/Campaign/MiniGame.exe`；构建与启动是否通过以[全流程报告](../docs/campaign-verification.json)为准。旧 `Builds/MiniGame/MiniGame.exe` 属于此前灰盒原型构建。`[verified: Assets/MiniGame/Editor/CampaignBuilder.cs BuildWindows；Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs BuildWindows/ScenePath]`
 
 - WASD 移动，鼠标观察；瞄准门、电脑或床，在提示出现时按 E。晨检到门，工作到电脑，夜间及梦后到床。`[verified: Assets/MiniGame/Runtime/ApartmentPlayer.cs Update/RefreshFocus；Assets/MiniGame/Runtime/MiniGameScreen.cs WorldInstruction]`

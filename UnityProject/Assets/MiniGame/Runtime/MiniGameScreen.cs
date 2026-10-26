@@ -40,6 +40,7 @@ namespace MiniGame.UnityHost
         private Image glitch;
         private Text speaker;
         private Text body;
+        private string supervisorLineText = string.Empty;
         private Text roomCaption;
         private float roomCaptionRemaining;
         private PropNarrationView propNarration;
@@ -361,13 +362,15 @@ namespace MiniGame.UnityHost
         {
             EnsureBuilt(); speaker.text = displaySpeaker;
             body.text = WorldCueText(text);
+            supervisorLineText = body.text;
             if (IsSupervisorCue(current)) SetSupervisorDialogueBounds(body.text);
             if (current == null || !current.UsesTerminalDirectory) terminalView.SetLine(displaySpeaker, text, null);
         }
 
         private void SetSupervisorDialogueBounds(string text)
         {
-            SupervisorDialogueStyle.Layout(conversationRect, text);
+            SupervisorDialogueStyle.ApplyText(body, font, supervisorTextMaterial);
+            SupervisorDialogueStyle.Layout(conversationRect, body, text);
         }
 
         public void SetDialogueLine(string displaySpeaker, string text, string sourceNodeId, string portraitId)
@@ -396,7 +399,7 @@ namespace MiniGame.UnityHost
             if (runtime == null || !runtime.IsCampaign) return;
             var target = current != null && current.TerminalOpen ? narration ? terminalView.NarrationBody : terminalView.Body : body;
             linePlayback.Begin(target, current != null && !current.TerminalOpen ? WorldCueText(text) : text, dialogueCharactersPerSecond, complete,
-                paginate: current == null || !current.TerminalOpen || narration,
+                paginate: !IsSupervisorCue(current) && (current == null || !current.TerminalOpen || narration),
                 pageVoice: SupervisorVoiceSynthesizer.IsSupervisorLine(sourceNodeId, narration) ? supervisorVoice : null);
             SyncSupervisorVoicePause();
             terminalView.SetPageIndicator(linePlayback.PageNumber, linePlayback.PageCount);
@@ -447,6 +450,8 @@ namespace MiniGame.UnityHost
             EnsureBuilt(); HideDialogueActions();
             if (IsSupervisorCue(current)) worldLinePresentedFrame = Time.frameCount;
             body.text = WorldCueText(text);
+            supervisorLineText = body.text;
+            if (IsSupervisorCue(current)) SetSupervisorDialogueBounds(supervisorLineText);
             if (current == null || !current.UsesTerminalDirectory) terminalView.Body.text = text;
             var next = ActiveContinue;
             next.gameObject.SetActive(complete != null);
@@ -666,8 +671,7 @@ namespace MiniGame.UnityHost
                 && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending && view.EndingStage == EndingStage.None));
             bool supervisor = IsSupervisorCue(view) && conversation.activeSelf;
             supervisorBorder.SetActive(supervisor);
-            if (supervisor) SetSupervisorDialogueBounds(body.text);
-            else SetRect(conversationRect, new Vector2(.17f, .19f), new Vector2(.83f, .74f));
+            if (!supervisor) SetRect(conversationRect, new Vector2(.17f, .19f), new Vector2(.83f, .74f));
             speaker.gameObject.SetActive(!supervisor);
             speaker.color = DialogueName;
             speaker.fontSize = supervisor ? 24 : 30;
@@ -686,7 +690,7 @@ namespace MiniGame.UnityHost
                 supervisor ? new Vector2(.94f, .96f) : new Vector2(.95f, .96f));
             SetRect(body.rectTransform, supervisor ? new Vector2(.025f, .07f) : new Vector2(.05f, .57f),
                 supervisor ? new Vector2(.975f, .93f) : new Vector2(.95f, .78f));
-            if (supervisor) SupervisorDialogueStyle.ApplyText(body, font, supervisorTextMaterial);
+            if (supervisor) SetSupervisorDialogueBounds(supervisorLineText);
             SetRect(continueButton.GetComponent<RectTransform>(), supervisor ? Vector2.zero : new Vector2(.69f, .07f),
                 supervisor ? Vector2.one : new Vector2(.97f, .22f));
             continueButton.GetComponent<Image>().color = supervisor ? Color.clear : Color.black;
