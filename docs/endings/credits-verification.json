@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-26",
+  "postDialogueSeconds": 36,
+  "unobstructedSkySeconds": 16,
+  "creditsSeconds": 20,
+  "fadeSeconds": 1,
+  "names": "Chinese only; final user text roster, including 时子彧",
+  "groups": 5,
+  "people": 14,
+  "unity": "2022.3.23f1",
+  "playMode": {
+    "failed": 0,
+    "results": [
+      "Artifacts/DreamEndingCredits36s/timing-test.json",
+      "Artifacts/DreamEndingCredits36s/checkpoint-test.json"
+    ],
+    "passed": 2,
+    "tests": [
+      "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.DreamSupervisorInterruptRestoresThirtySixSecondsAndFinalTwentySecondCredits",
+      "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.HiddenBedPresentationPausesAndRestoresEveryStageWithoutEarlyCompletion"
+    ]
+  },
+  "pixelAtlas": {
+    "verifiedGlyphSizePairs": 10577,
+    "missingGlyphs": 0
+  },
+  "visualQA": {
+    "scope": "Previously inspected Chinese yellow pixel layout retained; this revision changes the hold and scroll duration only.",
+    "directory": "Artifacts/DreamEndingCredits/VerifiedCaptures",
+    "checked": [
+      "opening",
+      "middle",
+      "closing"
+    ]
+  },
+  "audioEditorProbe": {
+    "output": "Artifacts/DreamAudioVerification/editor-verification.json",
+    "success": true,
+    "portableOutputPath": true
+  },
+  "packaging": "Windows release will be built after the source commit is pushed, with a separate release verification record."
+}

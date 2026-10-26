@@ -13,8 +13,12 @@ namespace MiniGame.UnityHost
     {
         public const float SkyHoldSeconds = SupervisorInterruptSeconds + PostDialogueSeconds;
         public const float SupervisorInterruptSeconds = 7f;
-        public const float PostDialogueSeconds = 5f;
+        public const float PostDialogueSeconds = 36f;
+        public const float CreditsSeconds = 20f;
+        public const float CreditsStartSeconds = PostDialogueSeconds - CreditsSeconds;
         private DreamSupervisorDialogue supervisorDialogue;
+        private DreamEndingCredits credits;
+        public DreamEndingCredits Credits => credits;
         private int dialoguePresentedFrame = -1;
         public bool SupervisorDialogueActive => UsesBedEndingSequence && state.Phase == BeachEndingPhase.SkyHold
             && state.PhaseElapsed >= SupervisorInterruptSeconds && !state.SupervisorDialogueComplete;
@@ -216,6 +220,7 @@ namespace MiniGame.UnityHost
         public void HideForThanks()
         {
             supervisorDialogue?.Hide();
+            credits?.Refresh(0, false);
             thanksActive = true;
             interactionCursor?.SetVisible(false);
             roomEnding?.SetBedFocus(false);
@@ -613,6 +618,7 @@ namespace MiniGame.UnityHost
                 audioPaused = paused;
             }
             pauseMenu?.SetVisible(paused && !MainMenuController.BlocksGameplayInput);
+            RefreshCredits();
             if (hint != null) hint.gameObject.SetActive(!paused && !thanksActive);
             if (caption != null) caption.gameObject.SetActive(!paused && !thanksActive);
             if (paused || thanksActive)
@@ -634,6 +640,7 @@ namespace MiniGame.UnityHost
 
         private void RefreshInterface()
         {
+            RefreshCredits();
             if (hint != null) hint.text = string.Empty;
             bool focused = BedInteractionFocused && !Paused && !thanksActive;
             interactionCursor?.SetKind(InteractionCursorKind.Sleep);
@@ -644,6 +651,16 @@ namespace MiniGame.UnityHost
             caption.text = state.Phase == BeachEndingPhase.Drifting && !state.SubtitlesComplete
                 && state.SubtitleElapsed >= 0 && lines != null && state.SubtitleIndex < lines.Length
                 ? lines[state.SubtitleIndex]?.Text ?? string.Empty : string.Empty;
+        }
+
+        private void RefreshCredits()
+        {
+            if (credits == null) return;
+            float elapsed = state.PhaseElapsed - SupervisorInterruptSeconds - CreditsStartSeconds;
+            bool visible = UsesBedEndingSequence && state.Phase == BeachEndingPhase.SkyHold
+                && state.SupervisorDialogueComplete && elapsed >= 0 && elapsed < CreditsSeconds
+                && !Paused && !thanksActive;
+            credits.Refresh(Mathf.Clamp01(elapsed / CreditsSeconds), visible);
         }
 
         private void BuildInterface()
@@ -663,6 +680,8 @@ namespace MiniGame.UnityHost
             caption = Label(go.transform, "字幕", new Vector2(.5f, .12f), new Vector2(1600, 90), 28);
             supervisorDialogue = gameObject.AddComponent<DreamSupervisorDialogue>();
             supervisorDialogue.Initialize(go.transform, audioService);
+            credits = gameObject.AddComponent<DreamEndingCredits>();
+            credits.Initialize(go.transform);
             var curtain = new GameObject("Ending fade", typeof(RectTransform), typeof(Image));
             curtain.transform.SetParent(go.transform, false);
             var curtainRect = (RectTransform)curtain.transform;

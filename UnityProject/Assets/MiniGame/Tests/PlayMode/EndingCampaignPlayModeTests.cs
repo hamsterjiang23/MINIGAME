@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
@@ -93,7 +93,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator DreamSupervisorInterruptFreezesClockRestoresSaveAndResumesFiveSeconds()
+        public IEnumerator DreamSupervisorInterruptRestoresThirtySixSecondsAndFinalTwentySecondCredits()
         {
             host.Runtime.SetPaused(true);
             Assert.That(host.Runtime.EnterHiddenEndingFromPause().Accepted, Is.True);
@@ -146,6 +146,44 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(ending.SupervisorDialogueActive, Is.False);
             Assert.That(music.isPlaying, Is.True);
             Assert.That(ocean.isPlaying, Is.True);
+            ending.AdvanceForTests(0, 15.99f);
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
+            Assert.That(ending.Credits.IsVisible, Is.False, "The first sixteen seconds retain the unobstructed sky.");
+            ending.AdvanceForTests(0, .02f);
+            Assert.That(ending.Credits.IsVisible, Is.True);
+            Assert.That(ending.Credits.Progress, Is.EqualTo(.0005f).Within(.0001f));
+            var creditsStart = ending.Credits.ScrollPosition;
+            ending.AdvanceForTests(0, 4.99f);
+            CaptureEndingCredits(room, "dream-credits-opening");
+            ending.AdvanceForTests(0, 5f);
+            Assert.That(ending.Credits.Progress, Is.EqualTo(.5f).Within(.0001f));
+            Assert.That(ending.Credits.ScrollPosition.y, Is.GreaterThan(creditsStart.y), "Credits must scroll upward.");
+            var creditsSave = ending.CaptureCheckpoint();
+            var creditsPosition = ending.Credits.ScrollPosition;
+            ending.SetPaused(true);
+            ending.AdvanceForTests(0, 100);
+            Assert.That(ending.Credits.IsVisible, Is.False, "The pause menu must cover the credits.");
+            Assert.That(ending.Credits.ScrollPosition, Is.EqualTo(creditsPosition));
+            ending.SetPaused(false);
+            ending.AdvanceForTests(0, 1);
+            ending.RestoreCheckpoint(creditsSave);
+            Assert.That(ending.Credits.IsVisible, Is.True);
+            Assert.That(ending.Credits.ScrollPosition, Is.EqualTo(creditsPosition), "Loading must restore the scroll, not restart it.");
+            var creditLabels = ending.GetComponentsInChildren<TerminalBitmapText>(true)
+                .Where(label => label.transform.parent.name == "Credits roll").ToArray();
+            CollectionAssert.AreEqual(new[] { "制作人员", "策划", "马步庭", "时晨洋", "美术", "刘静怡", "刘皓喆", "赵耀",
+                "程序", "李海江", "黄炜轩", "发行", "胡雅淳", "吴芷娴", "黎念祺", "运营", "陈瑶瑶", "朱睿雯", "时子彧", "黄郑志一" },
+                creditLabels.Select(label => label.text).ToArray());
+            foreach (var label in creditLabels)
+            {
+                Assert.That(label.ScaleToFontSize, Is.True);
+                Assert.That((Color32)label.color, Is.EqualTo(new Color32(255, 207, 104, 255)));
+                foreach (char character in label.text)
+                    Assert.That(label.ArkTypeface.TryGet(character, 12, out _), Is.True, "Missing credits glyph: " + character);
+            }
+            CaptureEndingCredits(room, "dream-credits-middle");
+            ending.AdvanceForTests(0, 5f);
+            CaptureEndingCredits(room, "dream-credits-closing");
             ending.AdvanceForTests(0, 4.99f);
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
             string finalSave = Path.Combine(temporaryDirectory, "after-supervisor.json");
@@ -153,14 +191,15 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(session.TrySaveTo(finalSave, out var error), Is.True, error);
             Assert.That(session.TryLoadFrom(finalSave, out error, true), Is.True, error);
             yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true
-                && !session.IsTransitioning, "restored final five seconds", 15);
+                && !session.IsTransitioning, "restored final thirty-six seconds", 15);
             ending = Object.FindObjectOfType<RoomDreamEnding>().Ending;
             ending.UseExternalClock = true;
-            Assert.That(ending.CaptureCheckpoint().PhaseElapsed, Is.GreaterThan(10));
+            Assert.That(ending.CaptureCheckpoint().PhaseElapsed, Is.GreaterThan(42));
             Assert.That(ending.SupervisorDialogueActive, Is.False);
             ending.SetPaused(false);
             ending.AdvanceForTests(0, .02f);
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.FadingOut));
+            Assert.That(ending.Credits.IsVisible, Is.False);
         }
 
         [UnityTest, Timeout(60000)]
@@ -886,6 +925,59 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space));
             Assert.That(endNoteStarts, Is.Zero);
             yield return null;
+        }
+
+        // Batch mode has no presented framebuffer. Composite the live overlay after the real room
+        // camera's effects, matching ScreenSpaceOverlay rather than tinting the credits with the sky.
+        private static void CaptureEndingCredits(RoomDreamEnding room, string name)
+        {
+            string directory = Environment.GetEnvironmentVariable("MINIGAME_PORTAL_CAPTURE_DIR");
+            if (string.IsNullOrWhiteSpace(directory)) return;
+            Directory.CreateDirectory(directory);
+            var canvas = room.Ending.GetComponentsInChildren<Canvas>().First(c => c.name == "海滩字幕与暂停");
+            var mode = canvas.renderMode;
+            var originalCamera = canvas.worldCamera;
+            float planeDistance = canvas.planeDistance;
+            var children = canvas.GetComponentsInChildren<Transform>(true);
+            var layers = children.Select(child => child.gameObject.layer).ToArray();
+            var camera = room.ViewCamera;
+            var originalTarget = camera.targetTexture;
+            var originalActive = RenderTexture.active;
+            float aspect = camera.aspect;
+            var target = new RenderTexture(1920, 1080, 24, RenderTextureFormat.ARGB32);
+            var image = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
+            var overlayRoot = new GameObject("Credits capture overlay", typeof(Camera));
+            try
+            {
+                target.Create();
+                canvas.gameObject.SetActive(false);
+                camera.targetTexture = target; camera.aspect = 1920f / 1080;
+                camera.Render();
+                canvas.gameObject.SetActive(true);
+                var overlay = overlayRoot.GetComponent<Camera>();
+                overlay.enabled = false; overlay.targetTexture = target;
+                overlay.clearFlags = CameraClearFlags.Depth; overlay.cullingMask = 1 << 31;
+                overlay.orthographic = true; overlay.orthographicSize = 540;
+                overlay.nearClipPlane = .1f; overlay.farClipPlane = 10;
+                foreach (var child in children) child.gameObject.layer = 31;
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = overlay; canvas.planeDistance = 1;
+                Canvas.ForceUpdateCanvases();
+                overlay.Render();
+                RenderTexture.active = target;
+                image.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0); image.Apply();
+                File.WriteAllBytes(Path.Combine(directory, name + ".png"), image.EncodeToPNG());
+            }
+            finally
+            {
+                canvas.gameObject.SetActive(true);
+                canvas.renderMode = mode; canvas.worldCamera = originalCamera; canvas.planeDistance = planeDistance;
+                for (int i = 0; i < children.Length; i++) children[i].gameObject.layer = layers[i];
+                camera.targetTexture = originalTarget; camera.aspect = aspect;
+                RenderTexture.active = originalActive;
+                target.Release(); Object.Destroy(target); Object.Destroy(image); Object.Destroy(overlayRoot);
+                Canvas.ForceUpdateCanvases();
+            }
         }
 
         // Render the live ending canvas with its camera for opt-in batch preview evidence.

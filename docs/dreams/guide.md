@@ -2,7 +2,7 @@
 
 2026-10-25 正式隐藏结局新增[半床墙画、显示器转身与穿墙仰躺](wall-portal.md)：枕头侧半张床印在墙上，床尾保留 3D，入场从墙面显示器退开转向床；躺下前先原地转身背对床，再向后躺到枕头上，随后眼位进入真实海滩空间，躺稳后随海浪声音轻微起伏；看向墙面原有显示器时播放电脑底噪，移开视线即停，音乐与海浪不变。可通过 **MiniGame → 梦境 → 预览半床穿墙结局** 直接检查。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/DreamWallPortal.cs；../../UnityProject/Assets/MiniGame/Editor/DreamCubemapPreview.cs OpenWallPortal]`
 
-2026-10-23 正式结局使用[信任总和条件与自我审判流程](../endings/guide.md)：隐藏条件不再读取反叛值，床交互后用1.5秒躺下、固定仰看蓝天10秒、1秒淡黑，再回主菜单。自审复用病房背景与黄色滤镜；Day3隐藏分支梦后直接亮电脑，不亮床。音乐使用用户提供的《An Ending (Ascent)》，全黑先播放3秒，再连续播放进入海滩。下文的反叛阈值与漂流字幕参数仅属于旧配置／预览，不能用于验收正式结局。`[verified: 本轮用户接受的隐藏结局演出修复方案；../../src/MiniGame.Core/Runtime/GameSession.cs ResolveDreamReturnPhase；../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs AdvanceBedEnding；../../UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs SetDreamReturnReveal]`
+2026-10-26 正式结局使用[信任总和条件与自我审判流程](../endings/guide.md)：隐藏条件不再读取反叛值，床交互后躺下、仰看蓝天7秒、完成监督员对话、继续躺36秒（前16秒看天、最后20秒黄色像素字制作人员名单上滚）、1秒淡黑，再回主菜单。自审复用病房背景与黄色滤镜；Day3隐藏分支梦后直接亮电脑，不亮床。音乐使用用户提供的《An Ending (Ascent)》，全黑先播放3秒，再连续播放进入海滩。下文的反叛阈值与漂流字幕参数仅属于旧配置／预览，不能用于验收正式结局。`[verified: 本轮用户接受的隐藏结局演出修复方案；../../src/MiniGame.Core/Runtime/GameSession.cs ResolveDreamReturnPhase；../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs AdvanceBedEnding；../../UnityProject/Assets/MiniGame/Runtime/BedtimeGuidance.cs SetDreamReturnReveal]`
 
 ## 当前每日梦境：McQueen 图片序列
 

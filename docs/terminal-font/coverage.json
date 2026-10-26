@@ -3,7 +3,7 @@
   "variant": "12px-monospaced-zh_hans",
   "sourceSha256": "efe0ad2616f961be766bc84bae93a9dc949c9e29af6cb75e574ffe9f52af6603",
   "sourceGlyphs": 25362,
-  "corpusCharacters": 1471,
+  "corpusCharacters": 1511,
   "fallbackCharacters": [
     {
       "code": "U+52BF",
@@ -90,6 +90,18 @@
       "character": "然"
     },
     {
+      "code": "U+7476",
+      "character": "瑶"
+    },
+    {
+      "code": "U+777F",
+      "character": "睿"
+    },
+    {
+      "code": "U+77AC",
+      "character": "瞬"
+    },
+    {
       "code": "U+7A97",
       "character": "窗"
     },
@@ -144,9 +156,12 @@
     "UnityProject/Assets/MiniGame/Runtime/DreamCubemapRoomSurface.cs",
     "UnityProject/Assets/MiniGame/Runtime/DreamCubemapSource.cs",
     "UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamEndingCredits.cs",
     "UnityProject/Assets/MiniGame/Runtime/DreamPanoramaWater.cs",
     "UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs",
     "UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamSupervisorDialogue.cs",
+    "UnityProject/Assets/MiniGame/Runtime/DreamWallPortal.cs",
     "UnityProject/Assets/MiniGame/Runtime/EditorCampaignDebugSession.cs",
     "UnityProject/Assets/MiniGame/Runtime/EndingDialoguePresenter.cs",
     "UnityProject/Assets/MiniGame/Runtime/EndingThanksView.cs",
@@ -154,6 +169,8 @@
     "UnityProject/Assets/MiniGame/Runtime/HingedDoor.cs",
     "UnityProject/Assets/MiniGame/Runtime/InteractionCursorView.cs",
     "UnityProject/Assets/MiniGame/Runtime/InteractionFocusOutline.cs",
+    "UnityProject/Assets/MiniGame/Runtime/KnockImpactTrack.cs",
+    "UnityProject/Assets/MiniGame/Runtime/KnockScreenShake.cs",
     "UnityProject/Assets/MiniGame/Runtime/MainMenuContinueStore.cs",
     "UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs",
     "UnityProject/Assets/MiniGame/Runtime/MainMenuView.cs",
@@ -165,6 +182,7 @@
     "UnityProject/Assets/MiniGame/Runtime/MiniGameScreen.cs",
     "UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs",
     "UnityProject/Assets/MiniGame/Runtime/NormBugPlayerProbe.cs",
+    "UnityProject/Assets/MiniGame/Runtime/OceanFloatTrack.cs",
     "UnityProject/Assets/MiniGame/Runtime/OpeningMotionProbe.cs",
     "UnityProject/Assets/MiniGame/Runtime/PatientMonitorProfile.cs",
     "UnityProject/Assets/MiniGame/Runtime/PatientMonitorRoom.cs",
@@ -208,6 +226,9 @@
     "UnityProject/Assets/MiniGame/Runtime/SelfReviewMonitor.cs",
     "UnityProject/Assets/MiniGame/Runtime/SupervisorDialogueContent.cs",
     "UnityProject/Assets/MiniGame/Runtime/SupervisorDoorwayView.cs",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorVoicePlayer.cs",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorVoiceProfile.cs",
+    "UnityProject/Assets/MiniGame/Runtime/SupervisorVoiceSynthesizer.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalAssetSet.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalBitmapText.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalButtonVisual.cs",
@@ -224,6 +245,7 @@
     "UnityProject/Assets/MiniGame/Runtime/TerminalPixelFont.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalPortraitPresenter.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalQuotaField.cs",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalReturnMotion.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalRosterPointer.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalSeating.cs",
     "UnityProject/Assets/MiniGame/Runtime/TerminalSignalController.cs",
@@ -301,8 +323,10 @@
     "UnityProject/Assets/MiniGame/Resources/MiniGame/CrtScreenFit.json",
     "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Dialogue.json",
     "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Flow.yarn",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/OceanWaveMotion.json",
     "UnityProject/Assets/MiniGame/Resources/MiniGame/PixelPreviews/capture-metadata.json",
     "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Dialogue.json",
-    "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Flow.yarn"
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Supervisor/Flow.yarn",
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/SupervisorVoice/bake-report.json"
   ]
 }

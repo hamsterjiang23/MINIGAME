@@ -6,7 +6,8 @@ namespace MiniGame.UnityHost.Editor {
  [InitializeOnLoad] public static class DreamAudioVerificationProbe {
   static DreamAudioVerificationProbe() { EditorApplication.delayCall += Verify; }
   static void Verify() {
-   string output = @"C:\Users\时\Documents\ChatGPT\NORM\.validation\editor-dream-music\editor-verification.json";
+   string output = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "..", "Artifacts", "DreamAudioVerification", "editor-verification.json"));
+   Directory.CreateDirectory(Path.GetDirectoryName(output));
    GameObject root = null;
    try {
     var p = Resources.Load<MiniGameAudioProfile>("MiniGame/AudioDefault");
