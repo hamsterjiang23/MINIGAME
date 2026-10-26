@@ -20,8 +20,7 @@ namespace MiniGame.UnityHost
         private GameRuntime runtime;
         private RuntimeView current;
         private Font font;
-        private Font dialogueFont;
-        private Material subtitleTextMaterial;
+        private Material supervisorTextMaterial;
         private RectTransform canvasRoot;
         private GameObject terminal;
         private CanvasGroup terminalGroup;
@@ -53,7 +52,6 @@ namespace MiniGame.UnityHost
         private RectTransform choiceRoot;
         private RectTransform conversationRect;
         private GameObject supervisorBorder;
-        private Material supervisorBorderMaterial;
         private readonly List<Button> choices = new List<Button>();
         private bool yarnBound;
         private bool dialogueInteractable = true;
@@ -363,7 +361,13 @@ namespace MiniGame.UnityHost
         {
             EnsureBuilt(); speaker.text = displaySpeaker;
             body.text = WorldCueText(text);
+            if (IsSupervisorCue(current)) SetSupervisorDialogueBounds(body.text);
             if (current == null || !current.UsesTerminalDirectory) terminalView.SetLine(displaySpeaker, text, null);
+        }
+
+        private void SetSupervisorDialogueBounds(string text)
+        {
+            SupervisorDialogueStyle.Layout(conversationRect, text);
         }
 
         public void SetDialogueLine(string displaySpeaker, string text, string sourceNodeId, string portraitId)
@@ -623,10 +627,8 @@ namespace MiniGame.UnityHost
             Font.textureRebuilt -= RefreshFontTexture;
             if (runtime != null) runtime.Changed -= Render;
             if (font != null) Destroy(font);
-            if (dialogueFont != null) Destroy(dialogueFont);
-            if (subtitleTextMaterial != null) Destroy(subtitleTextMaterial);
+            if (supervisorTextMaterial != null) Destroy(supervisorTextMaterial);
             interactionCursor?.Dispose();
-            if (supervisorBorderMaterial != null) Destroy(supervisorBorderMaterial);
         }
         private void OnDisable() { ClearRoomCaption(); supervisorVoice?.SetPaused(true); }
 
@@ -634,8 +636,6 @@ namespace MiniGame.UnityHost
         {
             if (rebuilt == font && font != null && font.material != null && font.material.mainTexture != null)
                 font.material.mainTexture.filterMode = FilterMode.Point;
-            if (rebuilt == dialogueFont && dialogueFont != null && dialogueFont.material != null && dialogueFont.material.mainTexture != null)
-                dialogueFont.material.mainTexture.filterMode = FilterMode.Bilinear;
         }
 
         private void Render(RuntimeView view)
@@ -660,8 +660,8 @@ namespace MiniGame.UnityHost
                 && (view.Cue != null || view.Dialogue != null || view.Game.Phase == GamePhase.Ending && view.EndingStage == EndingStage.None));
             bool supervisor = IsSupervisorCue(view) && conversation.activeSelf;
             supervisorBorder.SetActive(supervisor);
-            SetRect(conversationRect, supervisor ? new Vector2(.15f, .035f) : new Vector2(.17f, .19f),
-                supervisor ? new Vector2(.85f, .22f) : new Vector2(.83f, .74f));
+            if (supervisor) SetSupervisorDialogueBounds(body.text);
+            else SetRect(conversationRect, new Vector2(.17f, .19f), new Vector2(.83f, .74f));
             speaker.gameObject.SetActive(!supervisor);
             speaker.color = DialogueName;
             speaker.fontSize = supervisor ? 24 : 30;
@@ -669,17 +669,18 @@ namespace MiniGame.UnityHost
                 ? Color.clear : Color.black;
             // Keep the existing advance button active for keyboard/click input, with no visible hint.
             continueButton.GetComponentInChildren<Text>(true).color = supervisor ? Color.clear : DialogueYellow;
-            body.font = supervisor ? dialogueFont : font;
-            body.material = supervisor ? subtitleTextMaterial : null;
-            body.fontStyle = supervisor ? FontStyle.Normal : FontStyle.Bold;
-            body.fontSize = supervisor ? 34 : 38;
-            body.color = supervisor ? new Color32(0xE4, 0xCE, 0x9A, 0xFF) : DialogueYellow;
+            body.font = font;
+            body.material = null;
+            body.fontStyle = FontStyle.Bold;
+            body.fontSize = supervisor ? 50 : 38;
+            body.color = supervisor ? new Color32(0xF2, 0x45, 0x35, 0xFF) : DialogueYellow;
             body.alignment = supervisor ? TextAnchor.MiddleCenter : TextAnchor.UpperLeft;
-            body.lineSpacing = supervisor ? 1.25f : 1.18f;
+            body.lineSpacing = supervisor ? 1.1f : 1.18f;
             SetRect(speaker.rectTransform, supervisor ? new Vector2(.06f, .76f) : new Vector2(.05f, .80f),
                 supervisor ? new Vector2(.94f, .96f) : new Vector2(.95f, .96f));
-            SetRect(body.rectTransform, supervisor ? new Vector2(.10f, .20f) : new Vector2(.05f, .57f),
-                supervisor ? new Vector2(.90f, .80f) : new Vector2(.95f, .78f));
+            SetRect(body.rectTransform, supervisor ? new Vector2(.025f, .07f) : new Vector2(.05f, .57f),
+                supervisor ? new Vector2(.975f, .93f) : new Vector2(.95f, .78f));
+            if (supervisor) SupervisorDialogueStyle.ApplyText(body, font, supervisorTextMaterial);
             SetRect(continueButton.GetComponent<RectTransform>(), supervisor ? Vector2.zero : new Vector2(.69f, .07f),
                 supervisor ? Vector2.one : new Vector2(.97f, .22f));
             continueButton.GetComponent<Image>().color = supervisor ? Color.clear : Color.black;
@@ -756,18 +757,9 @@ namespace MiniGame.UnityHost
         {
             if (canvasRoot != null) return;
             font = GameUiTypography.CreateFont();
-            dialogueFont = GameUiTypography.CreateDialogueFont();
-            var subtitleShader = Resources.Load<Shader>("PropNarration");
-            if (subtitleShader != null && subtitleShader.isSupported)
-            {
-                subtitleTextMaterial = new Material(subtitleShader) {
-                    name = "Soft pixel subtitles", hideFlags = HideFlags.HideAndDontSave
-                };
-                subtitleTextMaterial.SetFloat("_PixelStep", 2f);
-            }
+            supervisorTextMaterial = SupervisorDialogueStyle.CreateTextMaterial();
             Font.textureRebuilt += RefreshFontTexture;
             RefreshFontTexture(font);
-            RefreshFontTexture(dialogueFont);
             var go = new GameObject("Prototype UI", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             go.transform.SetParent(transform, false);
             Canvas = go.GetComponent<Canvas>();
@@ -824,23 +816,10 @@ namespace MiniGame.UnityHost
             continueButton = MakeButton(conversationRect, "Continue", "继续 [空格]", () => { });
             StyleConversationButton(continueButton);
             SetRect(continueButton.GetComponent<RectTransform>(), new Vector2(.69f, .07f), new Vector2(.97f, .22f));
-            supervisorBorder = MakePanel(conversationRect, "SupervisorBorder",
-                new Color(.035f, .028f, .017f, .72f), Vector2.zero, Vector2.one).gameObject;
-            // This image is the feathered subtitle scrim, behind every text and input element.
+            supervisorBorder = MakePanel(conversationRect, "SupervisorBorder", Color.black, Vector2.zero, Vector2.one).gameObject;
             supervisorBorder.transform.SetAsFirstSibling();
             var borderImage = supervisorBorder.GetComponent<Image>();
-            borderImage.raycastTarget = false;
-            var borderShader = Resources.Load<Shader>("SoftDialogueBorder");
-            if (borderShader != null && borderShader.isSupported)
-            {
-                supervisorBorderMaterial = new Material(borderShader) { hideFlags = HideFlags.HideAndDontSave };
-                borderImage.material = supervisorBorderMaterial;
-            }
-            else
-            {
-                borderImage.enabled = false;
-                Debug.LogError("Supervisor dialogue border shader is unavailable.");
-            }
+            SupervisorDialogueStyle.ApplyBackdrop(borderImage);
             supervisorBorder.SetActive(false);
 
             inspection = MakePanel(canvasRoot, "InspectionModal", new Color(.043f, .031f, .012f, .995f), new Vector2(.14f, .12f), new Vector2(.86f, .86f)).gameObject;

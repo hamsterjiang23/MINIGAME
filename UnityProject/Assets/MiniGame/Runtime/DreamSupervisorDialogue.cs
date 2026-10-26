@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace MiniGame.UnityHost
 {
-    /// <summary>The supervisor's existing subtitle styling and PCM-driven voice, owned by the ending.</summary>
+    /// <summary>Shared supervisor dialogue styling and PCM-driven voice, owned by the ending.</summary>
     internal sealed class DreamSupervisorDialogue : MonoBehaviour
     {
         internal static readonly string[] Lines = {
@@ -13,7 +13,7 @@ namespace MiniGame.UnityHost
         private GameObject panel;
         private Text body;
         private Font font;
-        private Material border, textMaterial;
+        private Material textMaterial;
         private SupervisorVoicePlayer voice;
         private readonly DialogueTextPlayback playback = new DialogueTextPlayback();
         internal string Text => body != null ? body.text : "";
@@ -22,38 +22,36 @@ namespace MiniGame.UnityHost
         {
             voice = gameObject.AddComponent<SupervisorVoicePlayer>();
             voice.Initialize(audio);
-            font = GameUiTypography.CreateDialogueFont();
+            font = GameUiTypography.CreateFont();
+            Font.textureRebuilt += RefreshFontTexture;
+            RefreshFontTexture(font);
             panel = new GameObject("Dream supervisor dialogue", typeof(RectTransform), typeof(Image));
             panel.transform.SetParent(parent, false);
             var rect = (RectTransform)panel.transform;
-            rect.anchorMin = new Vector2(.15f, .035f); rect.anchorMax = new Vector2(.85f, .22f);
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
             var image = panel.GetComponent<Image>();
-            image.color = new Color(.035f, .028f, .017f, .72f); image.raycastTarget = false;
-            var shader = Resources.Load<Shader>("SoftDialogueBorder");
-            if (shader != null) { border = new Material(shader); image.material = border; }
+            image.color = Color.clear; image.raycastTarget = false;
+            var backdrop = new GameObject("SupervisorBackdrop", typeof(RectTransform), typeof(Image));
+            backdrop.transform.SetParent(panel.transform, false);
+            SupervisorDialogueStyle.ApplyBackdrop(backdrop.GetComponent<Image>());
             var label = new GameObject("DialogueBody", typeof(RectTransform), typeof(Text));
             label.transform.SetParent(panel.transform, false);
             body = label.GetComponent<Text>();
-            body.rectTransform.anchorMin = new Vector2(.10f, .20f);
-            body.rectTransform.anchorMax = new Vector2(.90f, .80f);
-            body.rectTransform.offsetMin = body.rectTransform.offsetMax = Vector2.zero;
-            body.font = font; body.fontSize = 34; body.alignment = TextAnchor.MiddleCenter;
-            body.lineSpacing = 1.25f; body.color = new Color32(0xE4, 0xCE, 0x9A, 0xFF);
-            body.raycastTarget = false;
-            shader = Resources.Load<Shader>("PropNarration");
-            if (shader != null)
-            {
-                textMaterial = new Material(shader); textMaterial.SetFloat("_PixelStep", 2f);
-                body.material = textMaterial;
-            }
+            textMaterial = SupervisorDialogueStyle.CreateTextMaterial();
+            SupervisorDialogueStyle.ApplyText(body, font, textMaterial);
+            SupervisorDialogueStyle.Layout(rect, string.Empty);
             panel.SetActive(false);
         }
 
         internal void Present(int index, System.Action completed)
         {
             panel.SetActive(true);
+            SupervisorDialogueStyle.Layout((RectTransform)panel.transform, Lines[index]);
             playback.Begin(body, Lines[index], 30, completed, false, voice);
+        }
+        private void RefreshFontTexture(Font rebuilt)
+        {
+            if (rebuilt == font && font != null && font.material != null && font.material.mainTexture != null)
+                font.material.mainTexture.filterMode = FilterMode.Point;
         }
         internal void Tick(float dt) => playback.Tick(dt);
         internal void Advance() => playback.Advance();
@@ -62,8 +60,8 @@ namespace MiniGame.UnityHost
         private void OnDestroy()
         {
             playback.Cancel();
+            Font.textureRebuilt -= RefreshFontTexture;
             if (font != null) Destroy(font);
-            if (border != null) Destroy(border);
             if (textMaterial != null) Destroy(textMaterial);
         }
     }

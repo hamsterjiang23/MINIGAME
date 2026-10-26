@@ -14,7 +14,7 @@ namespace MiniGame.UnityHost.Tests
     public sealed class NormWorldPresentationPlayModeTests
     {
         [UnityTest]
-        public IEnumerator MorningUsesRegularWarmSubtitlesWithoutSpeakerNameOrWorldInstructions()
+        public IEnumerator MorningUsesDoorMountedRedSerifDialogueWithoutSpeakerNameOrWorldInstructions()
         {
             var rules = PrototypeRules.Create();
             var runtime = new GameRuntime(rules, new PrototypeContent(rules), true);
@@ -32,19 +32,22 @@ namespace MiniGame.UnityHost.Tests
                     "The supervisor is a world actor outside the door, never an indoor HUD overlay.");
                 var body = screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "DialogueBody");
                 Assert.That(body.text, Is.EqualTo("门外扫描灯亮起。"));
-                Assert.That(body.color, Is.EqualTo((Color)new Color32(0xE4, 0xCE, 0x9A, 0xFF)));
-                Assert.That(body.fontStyle, Is.EqualTo(FontStyle.Normal));
-                Assert.That(body.font.name, Is.EqualTo("Dialogue Sans"));
-                Assert.That(body.material.shader, Is.EqualTo(Resources.Load<Shader>("PropNarration")));
-                Assert.That(body.material.GetFloat("_PixelStep"), Is.EqualTo(2f));
+                Assert.That(body.color, Is.EqualTo((Color)new Color32(0xF2, 0x45, 0x35, 0xFF)));
+                Assert.That(body.fontStyle, Is.EqualTo(FontStyle.Bold));
+                Assert.That(body.font.name, Does.StartWith("Game UI - "));
+                Assert.That(body.fontSize, Is.EqualTo(50));
                 Assert.That(body.alignment, Is.EqualTo(TextAnchor.MiddleCenter));
                 Assert.That(body.transform.parent.GetComponent<Image>().color.a, Is.Zero);
+                var bounds = body.transform.parent.GetComponent<RectTransform>();
+                Assert.That(bounds.anchorMin.x, Is.EqualTo(.655f).Within(.001f));
+                Assert.That(bounds.anchorMax.x, Is.EqualTo(.97f).Within(.001f));
                 Assert.That(screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "Speaker").gameObject.activeSelf,
                     Is.False, "The supervisor card shows only dialogue body text.");
                 var border = body.transform.parent.GetComponentsInChildren<Image>(true).Single(image => image.name == "SupervisorBorder");
                 Assert.That(border.isActiveAndEnabled, Is.True);
                 Assert.That(border.raycastTarget, Is.False);
-                Assert.That(border.material.shader, Is.EqualTo(Resources.Load<Shader>("SoftDialogueBorder")));
+                Assert.That(border.color, Is.EqualTo(Color.black));
+                Assert.That(border.material.shader.name, Does.Not.Contain("SoftDialogueBorder"));
                 Assert.That(screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "WorldInstructions").gameObject.activeSelf, Is.False);
                 Assert.That(screen.GetComponentsInChildren<Transform>(true).Any(node => node.name == "FocusUnderline" || node.name == "DialogueAccent"), Is.False);
                 runtime.CompleteCue(runtime.GetView().Cue.Token);
