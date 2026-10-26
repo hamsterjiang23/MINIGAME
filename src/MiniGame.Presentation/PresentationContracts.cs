@@ -81,6 +81,7 @@ namespace MiniGame.Presentation
     public sealed class RuntimeView
     {
         public PlayerView Game { get; }
+        public DateTime CalendarDate => new DateTime(1994, 11, 8).AddDays(Game.Day);
         public InputContext Input { get; }
         public bool TerminalOpen { get; }
         public bool Paused { get; }

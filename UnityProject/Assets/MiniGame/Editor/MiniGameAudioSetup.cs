@@ -60,7 +60,7 @@ namespace MiniGame.UnityHost.Editor
             {
                 Id = source.Id, Clip = ImportClip(source.File, source.Streaming),
                 Volume = source.Id >= MiniGameSound.TerminalType1 && source.Id <= MiniGameSound.TerminalType4
-                    ? .234f : source.Id == MiniGameSound.PCNoise ? .7f : source.Id == MiniGameSound.Scan ? 1.3f : 1
+                    ? .234f : source.Id == MiniGameSound.PCNoise || source.Id == MiniGameSound.EndingMusic ? .7f : source.Id == MiniGameSound.Scan ? 1.625f : 1
             }).ToArray();
             var mixer = AssetDatabase.LoadAssetAtPath<AudioMixer>(MixerPath);
             if (mixer == null)

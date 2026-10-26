@@ -43,7 +43,9 @@ namespace MiniGame.UnityHost
             RefreshTrack();
             var source = director.Service.GetSource(MiniGameAudioChannel.DoorKnock);
             if (source == null || !source.isPlaying || source.clip != recording) return Vector3.zero;
-            return track.Evaluate(source.timeSamples);
+            float distance = Vector3.Distance(transform.position, source.transform.position);
+            float attenuation = 1 - Mathf.InverseLerp(source.minDistance, source.maxDistance, distance);
+            return track.Evaluate(source.timeSamples) * attenuation;
         }
 
         private Vector3 PositionOffset(Vector3 response)

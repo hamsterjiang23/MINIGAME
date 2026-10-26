@@ -275,6 +275,7 @@ namespace MiniGame.UnityHost
                         && !_supervisor.IsReadyForDialogue))) await YarnTask.Yield();
                 if (!IsCurrent(run)) return;
                 string portraitId = portrait != null ? portrait.Substring("portrait:".Length) : "JD_01";
+                screen.Audio?.StopSupervisorScan();
                 if (_supervisor == null || !_supervisor.SetPortrait(portraitId))
                     throw new InvalidOperationException("Missing supervisor portrait: " + portraitId);
                 screen.Audio?.PresentSupervisorPortrait(run.Runtime, portraitId);
@@ -289,11 +290,13 @@ namespace MiniGame.UnityHost
                 portrait != null ? portrait.Substring("portrait:".Length) : "", run.Runtime.IsNarration(sourceId), () =>
                 {
                     if (!CanInteract(run)) return;
+                    if (supervisor) screen.Audio?.StopSupervisorScan();
                     if (!supervisor) run.Runtime.CompleteDialogueLine(sourceId);
                     advanced = true;
                 });
             screen.SetDialogueInteractable(CanInteract(run));
             while (!advanced && !token.IsNextContentRequested && IsCurrent(run)) await YarnTask.Yield();
+            if (supervisor && IsCurrent(run)) screen.Audio?.StopSupervisorScan();
             if (IsCurrent(run)) screen.HideDialogueActions();
         }
 

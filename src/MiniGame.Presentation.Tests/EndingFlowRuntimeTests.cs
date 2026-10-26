@@ -11,6 +11,23 @@ namespace MiniGame.Presentation.Tests
     [TestFixture]
     public sealed class EndingFlowRuntimeTests
     {
+        [TestCase(0, 8)]
+        [TestCase(1, 9)]
+        [TestCase(2, 10)]
+        [TestCase(3, 11)]
+        [TestCase(4, 12)]
+        public void CalendarFollowsGameDayAndSurvivesRestore(int day, int dayOfMonth)
+        {
+            var rules = EndingRuntimeFixture.Rules();
+            var content = new EndingRuntimeFixture.Content();
+            var catalog = EndingRuntimeFixture.Catalog();
+            var runtime = EndingRuntimeFixture.Create(rules, content, catalog);
+            EndingRuntimeFixture.DriveTo(runtime, view => view.Game.Day == day);
+            Assert.That(runtime.GetView().CalendarDate, Is.EqualTo(new DateTime(1994, 11, dayOfMonth)));
+            runtime = RoundTrip(runtime, rules, content, catalog);
+            Assert.That(runtime.GetView().CalendarDate, Is.EqualTo(new DateTime(1994, 11, dayOfMonth)));
+        }
+
         [TestCase(GamePhase.Apartment)]
         [TestCase(GamePhase.Work)]
         [TestCase(GamePhase.Dream)]
@@ -122,6 +139,7 @@ namespace MiniGame.Presentation.Tests
             EndingRuntimeFixture.DriveTo(runtime, view => view.IsSelfReview);
             Assert.That(runtime.GetView().Game.Day, Is.EqualTo(3));
             Assert.That(runtime.GetView().Patients.Select(item => item.Id), Is.EqualTo(new[] { GameRuntime.SelfPatientId }));
+            Assert.That(runtime.GetView().Patients.Single().Name, Is.EqualTo("你"));
             Assert.That(runtime.GetView().Transcript, Is.Empty, "Self-review dialogue must not appear before opening its personnel review.");
             Assert.That(runtime.GetView().TerminalPower, Is.EqualTo(TerminalPowerState.Off));
             RuntimeScenario.RejectWithoutMutation(runtime, runtime.ConfirmSelfPurification);

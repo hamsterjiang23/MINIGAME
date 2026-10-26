@@ -1,5 +1,7 @@
 # 梦结局：半床墙画与显示器转身
 
+2026-10-26追加验收已改为4秒退镜、5秒上床（天空渐变1.5秒），看天监督员对白不播放电脑噪音；最新时序与回归见[第二轮镜头修订](../ui-feedback/ending-polish-2026-10-26.md)和[当前结局流程](../endings/guide.md)。下方较早轮次的时长与测试记录保留历史身份。[verified: 本轮用户确认；链接报告]
+
 正式隐藏结局仍在 `MainRoomCombined` 中运行。床沿长轴的中线对齐枕头方向的房间墙面：床尾半张保留立体网格，枕头侧半张藏在墙外，并从床前固定视点捕获成带透明背景的墙画。墙画复用原床网格、材质和光照，只保留墙外半侧；海景与半床分别投影，避免门口的斜视角把枕头拉向办公桌。玩家走动时，画留在墙上。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/DreamWallPortal.cs Wall/HeadProjectionOrigin/CopyHead/CaptureHeadWallpaper；../../UnityProject/Assets/MiniGame/Resources/DreamCubemapRoomSurface.shader _HeadTex/_HeadOrigin]`
 
 自审电脑净化后，保留原先全黑音乐前奏；入场从海景贴图中原有的前景显示器近景开始，沿普通关机共用的 **1.2 秒**后退、转身曲线回到房间，朝向半张床。海景原本已有办公桌与电脑，不再从普通房间复制或补画另一套。显示器中心取自 `SeaMidpoint/Faces/nz.png` 的原画方向，由 `WallMonitorDirection` 和 `WallMonitorHeightDegrees` 定位；它所在的墙面与床头墙分别计算。自由移动在镜头到达目标后开放，海景投影仍固定在原门口眼位。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/DreamWallPortal.cs PrintedScreenCenter/PrintedScreenNormal；../../UnityProject/Assets/MiniGame/Runtime/DreamSequenceProfile.cs WallMonitorDirection/WallMonitorHeightDegrees；../../UnityProject/Assets/MiniGame/Runtime/TerminalReturnMotion.cs]`

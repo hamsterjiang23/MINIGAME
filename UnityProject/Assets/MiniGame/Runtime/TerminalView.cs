@@ -81,7 +81,7 @@ namespace MiniGame.UnityHost
             packageFrame.raycastTarget = false;
             Border(logical, "TerminalBorder", 8, 8, 784, 584, ColorOf("d9a339"));
             Rule(logical, 8, 36, 784);
-            date = Label(logical, "TerminalDate", "1994-11-08", 22, 16, 160, 17, 13, Bright);
+            date = Label(logical, "TerminalDate", "", 22, 16, 160, 17, 13, Bright);
             Label(logical, "TerminalVersion", "PMS / 3.14", 270, 16, 260, 17, 13, Ink).alignment = TextAnchor.UpperCenter;
             Label(logical, "TerminalNumber", "T-06 / 047", 600, 16, 178, 17, 13, Bright).alignment = TextAnchor.UpperRight;
             directory = Panel(logical, "ObjectDirectory", Color.clear, 0, 0, 800, 548).gameObject;
@@ -310,6 +310,7 @@ namespace MiniGame.UnityHost
             bool enteringDirectory = view.TerminalPage == TerminalPage.Directory && current?.TerminalPage != TerminalPage.Directory;
             bool reopeningTerminal = view.TerminalOpen && current?.TerminalOpen != true;
             current = view; locked = inputLocked;
+            date.text = view.CalendarDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             if (nextEncounter) { sourceNodeId = ""; Body.text = ""; portraitId = PortraitCatalog.BasePortrait(view.PresentedPatientId); transcriptView.Reset(); RestorePresentation(view); }
             if (enteringDirectory) { int next = view.Patients.ToList().FindIndex(p => p.IsCurrent); if (next >= 0) rosterIndex = next; }
             bool self = false; // Self judgment uses the ordinary directory and personnel review.
@@ -327,7 +328,7 @@ namespace MiniGame.UnityHost
             string round = RoundName(sourceNodeId);
             roundLabel.text = "人员复核 / " + round;
             directoryRequirement.text = "净化要求：" + view.Game.PurificationsToday + "/" + view.Game.PurificationRequirement;
-            dailyWorkRemaining.SetValue(view.Game.RemainingPurificationQuota);
+            dailyWorkRemaining.SetValue(view.IsSelfReview ? 1 : view.Game.RemainingPurificationQuota);
             bool measure = (view.Game.EncounterStage == EncounterStage.AwaitingDisposition || view.SelfReviewReady) && !archived;
             RenderDispositionCommands();
             returnDirectory.gameObject.SetActive(archived && !dir && !view.LeavingTerminal);
@@ -511,8 +512,9 @@ namespace MiniGame.UnityHost
             var dossier = assets != null && assets.Dossiers != null ? assets.Dossiers.Find(selected?.Id) : null;
             previewName.text = selected == null ? "未配置" : selected.Name + " / " + PortraitCatalog.Registration(selected.Id);
             previewId.text = "对象档案 / " + (selected == null ? "未配置" : PortraitCatalog.Registration(selected.Id));
-            previewAge.text = selected == null ? "--" : dossier?.age ?? "未登记";
-            previewOccupation.text = selected == null ? "--" : dossier?.occupation ?? "未登记";
+            bool reviewingSelf = selected?.Id == GameRuntime.SelfPatientId;
+            previewAge.text = selected == null ? "--" : reviewingSelf ? "25岁" : dossier?.age ?? "未登记";
+            previewOccupation.text = selected == null ? "--" : reviewingSelf ? "审查员" : dossier?.occupation ?? "未登记";
             dossierSummary.SetContent(selected?.Id, dossier?.summary ?? PublicIntroduction(selected?.Id));
             dossierSummary.SetInputEnabled(!locked && !current.Paused && current.TerminalOpen);
             var dossierPortrait = dossier?.portrait;
@@ -523,7 +525,7 @@ namespace MiniGame.UnityHost
             previewStatus.text = selected == null ? "--" : PatientStatus(selected);
             previewStage.text = selected == null ? "--" : PatientStage(selected);
             previewUnit.text = selected == null ? "--" : PortraitCatalog.Unit(selected.Id);
-            dossierQuota.SetValue(current.Game.RemainingPurificationQuota);
+            dossierQuota.SetValue(reviewingSelf ? 1 : current.Game.RemainingPurificationQuota);
             enter.GetComponentInChildren<Text>().text = available ? "进入人员复核" : selected == null ? "尚未接入" : "档案已关闭";
             leave.interactable = !locked; day.text = "人员复核 / DAY " + current.Game.Day.ToString("00");
             count.text = "当日登记 " + current.Patients.Count.ToString("00") + " / 待审 " + current.Patients.Count(p => !p.HasMetToday).ToString("00") + " / 已审 " + current.Patients.Count(p => p.HasMetToday).ToString("00");

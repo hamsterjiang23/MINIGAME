@@ -28,7 +28,11 @@ namespace MiniGame.UnityHost.Tests
             {
                 screen.Bind(runtime);
                 screen.UseYarnPresentation();
+                screen.Notify("存档已记录。", false);
+                Assert.That(Label(screen, "Notification").text, Is.Empty);
+                Assert.That(Label(screen, "PauseStatus").text, Is.EqualTo("存档已记录。"));
                 OpenDirectory(runtime);
+                Assert.That(Label(screen, "TerminalDate").text, Is.EqualTo("1994-11-09"));
                 Assert.That(Label(screen, "DailyWorkIndicatorRemaining").gameObject.activeInHierarchy, Is.False);
                 Assert.That(Label(screen, "PurificationQuota").text, Is.EqualTo("01"));
 
@@ -84,6 +88,7 @@ namespace MiniGame.UnityHost.Tests
                 Complete(runtime);
                 Assert.That(runtime.GetView().Game.Day, Is.EqualTo(2));
                 OpenDirectory(runtime);
+                Assert.That(Label(screen, "TerminalDate").text, Is.EqualTo("1994-11-10"));
                 Assert.That(Label(screen, "PurificationQuota").text, Is.EqualTo("12"));
                 Assert.That(runtime.EnterSelectedPatient("treated").Accepted, Is.True);
                 Complete(runtime);
@@ -102,7 +107,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(runtime.GetView().Game.RemainingPurificationQuota, Is.GreaterThanOrEqualTo(0));
             Assert.That(remaining.enabled && remaining.gameObject.activeInHierarchy, Is.False,
                 "The compatibility text retains the authoritative number without painting over the supplied artwork.");
-            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork");
+            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork"
+                && image.transform.parent.name == "DailyWorkQuotaField");
             Assert.That(artwork.enabled && artwork.gameObject.activeInHierarchy, Is.True);
             Assert.That(artwork.texture, Is.SameAs(Resources.Load<TerminalAssetSet>("MiniGame/TerminalAssets").QuotaFields));
             int value = int.Parse(expected);
@@ -115,7 +121,8 @@ namespace MiniGame.UnityHost.Tests
         private static void AssertIndicatorLayout(MiniGameScreen screen)
         {
             var review = screen.GetComponentsInChildren<RectTransform>(true).Single(rect => rect.name == "PersonnelReview");
-            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork");
+            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork"
+                && image.transform.parent.name == "DailyWorkQuotaField");
             var bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(review, artwork.rectTransform);
             Assert.That(bounds.min.x, Is.EqualTo(712).Within(.01f));
             Assert.That(bounds.max.y, Is.EqualTo(-135).Within(.01f));

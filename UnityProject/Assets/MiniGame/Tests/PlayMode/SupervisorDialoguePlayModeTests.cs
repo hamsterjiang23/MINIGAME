@@ -118,6 +118,9 @@ namespace MiniGame.UnityHost.Tests
                     {
                         Assert.That(pageWasRevealed, Is.True, "The instant-text fixture must record a complete visible page: " + source);
                         pages.Add(pageText); // Record accepted page advances, including consecutive pages with identical text.
+                        if (pages.Count == pageCounts[source] && expected[seen.Count - 1].portraitId == "JD_04")
+                            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.Scanner).isPlaying, Is.False,
+                                "Advancing the scanning line must cut its sound immediately.");
                     }
                 }
                 Assert.That(seen.Count, Is.EqualTo(target), bridge.Diagnostics);
@@ -269,7 +272,7 @@ namespace MiniGame.UnityHost.Tests
         public IEnumerator ScanPortraitPlaysRealSamplesThroughTheActiveAudioOwner()
         {
             Assert.That(host.Player.ViewCamera.GetComponent<DoorViewCamera>().TryEnter(), Is.True);
-            yield return Reach("supervisor__P02_D1_R1_COMMON_014");
+            yield return Reach("supervisor__P02_D1_R1_COMMON_012");
             Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
             var source = host.Audio.Service.GetSource(MiniGameAudioChannel.Scanner);
             Assert.That(source.outputAudioMixerGroup, Is.EqualTo(host.Audio.Profile.SfxGroup));
@@ -289,6 +292,12 @@ namespace MiniGame.UnityHost.Tests
             runtime.SetPaused(false);
             yield return null;
             Assert.That(source.isPlaying, Is.True);
+            yield return Reach("supervisor__P02_D1_R1_COMMON_013");
+            Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
+            Assert.That(source.isPlaying, Is.False, "Even the next line with the same portrait must cut the scan.");
+            runtime.SetPaused(true);
+            runtime.SetPaused(false);
+            Assert.That(source.isPlaying, Is.False, "Resuming cannot restart the scan that the previous line stopped.");
         }
 
         [UnityTest, Timeout(25000)]

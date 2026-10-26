@@ -323,7 +323,7 @@ namespace MiniGame.UnityHost
         }
         public void Notify(string text, bool error)
         {
-            EnsureBuilt(); notice.text = text;
+            EnsureBuilt(); notice.text = error ? text : string.Empty;
             notice.color = error ? TerminalView.Bright : Ink;
             notificationEnd = Time.unscaledTime + 5f;
             pauseMenu?.SetStatus(text, error);
@@ -630,7 +630,7 @@ namespace MiniGame.UnityHost
             if (supervisorTextMaterial != null) Destroy(supervisorTextMaterial);
             interactionCursor?.Dispose();
         }
-        private void OnDisable() { ClearRoomCaption(); supervisorVoice?.SetPaused(true); }
+        private void OnDisable() { terminalView?.Display.ReleaseFrozenOutput(); ClearRoomCaption(); supervisorVoice?.SetPaused(true); }
 
         private void RefreshFontTexture(Font rebuilt)
         {
@@ -641,6 +641,11 @@ namespace MiniGame.UnityHost
         private void Render(RuntimeView view)
         {
             EnsureBuilt();
+            if (current?.IsSelfReview == true && view.Game.Ending == EndingType.DreamSea
+                && view.EndingStage == EndingStage.Transition && !view.TerminalOpen)
+                terminalView.Display.FreezeOutput();
+            else if (view.Game.Ending != EndingType.DreamSea || view.EndingStage != EndingStage.Transition)
+                terminalView.Display.ReleaseFrozenOutput();
             // Submit can close the pause menu before this frame's dialogue input is polled.
             if (current != null && (current.Paused && !view.Paused
                 || current.Input != InputContext.World && view.Input == InputContext.World)) pauseClosedFrame = Time.frameCount;
@@ -651,9 +656,10 @@ namespace MiniGame.UnityHost
             propNarration?.SetPaused(view.Paused);
             bool dedicatedDream = HasDedicatedDreamPresentation(view);
             // Leaving the desk hides the fullscreen output, but a powered computer keeps rendering its UI.
-            terminal.SetActive(view.TerminalOpen || view.TerminalPowered);
-            terminalView.Display.SetOutputVisible(view.TerminalOpen);
-            terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
+            bool frozenHandoff = terminalView.Display.OutputFrozen;
+            terminal.SetActive(view.TerminalOpen || view.TerminalPowered || frozenHandoff);
+            terminalView.Display.SetOutputVisible(view.TerminalOpen || frozenHandoff);
+            if (!frozenHandoff) terminalView.Render(view, transitionLocked || view.Paused || view.Inspection != null);
             conversation.SetActive(!dedicatedDream && !view.TerminalOpen && view.Cue?.Kind != PresentationKind.DoorMotion
                 && view.Cue?.Kind != PresentationKind.DoorViewReturn
                 && view.Cue?.Kind != PresentationKind.Sleep

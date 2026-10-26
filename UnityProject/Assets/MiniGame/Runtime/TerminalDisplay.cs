@@ -16,6 +16,7 @@ namespace MiniGame.UnityHost
         private Camera sourceCamera;
         private RawImage output;
         private RenderTexture texture;
+        private RenderTexture frozenOutput;
         private Material material;
         private RectTransform logical;
         private float zoom;
@@ -30,7 +31,8 @@ namespace MiniGame.UnityHost
         private readonly Vector3[] projectedCorners = new Vector3[4];
         public float OpeningProgress => openingProgress;
         public int Mode { get; private set; } = 1;
-        public RenderTexture Texture => texture;
+        public RenderTexture Texture => frozenOutput != null ? frozenOutput : texture;
+        public bool OutputFrozen => frozenOutput != null;
         public int RenderedFrameCount { get; private set; }
         public Material ScreenMaterial => material;
         public RectTransform OutputRect => output != null ? output.rectTransform : null;
@@ -68,6 +70,21 @@ namespace MiniGame.UnityHost
         }
         public void SetMode(int value) { Mode = Mathf.Clamp(value, 0, 2); if (material != null) material.SetFloat("_Mode", Mode); }
         public void SetOutputVisible(bool visible) { if (output != null) output.gameObject.SetActive(visible); }
+        public void FreezeOutput()
+        {
+            if (OutputFrozen || texture == null) return;
+            RenderFrame();
+            frozenOutput = new RenderTexture(texture.descriptor) { name = "Self review handoff frame", filterMode = texture.filterMode };
+            frozenOutput.Create();
+            Graphics.Blit(texture, frozenOutput);
+            output.texture = frozenOutput;
+        }
+        public void ReleaseFrozenOutput()
+        {
+            if (frozenOutput == null) return;
+            if (output != null) output.texture = texture;
+            frozenOutput.Release(); Destroy(frozenOutput); frozenOutput = null;
+        }
         public void SetZoom(float value) { zoom = Mathf.Max(0, value); Fit(); }
         internal void InvalidateSourceLayers() => layerHierarchyCount = -1;
         /// <summary>Pulls back from the native 464x261 monitor to the complete terminal.</summary>
@@ -152,7 +169,7 @@ namespace MiniGame.UnityHost
         private void LateUpdate() { Fit(); RenderFrame(); }
         public void RenderFrame()
         {
-            if (sourceCamera == null || sourceRoot == null || !sourceRoot.activeSelf) return;
+            if (OutputFrozen || sourceCamera == null || sourceRoot == null || !sourceRoot.activeSelf) return;
             int hierarchyCount = sourceRoot.transform.hierarchyCount;
             if (hierarchyCount != layerHierarchyCount)
             {
@@ -166,9 +183,10 @@ namespace MiniGame.UnityHost
             finally { RenderTexture.active = previous; }
         }
         private void OnEnable() { if (sourceRoot != null) sourceRoot.SetActive(true); }
-        private void OnDisable() { if (sourceRoot != null) sourceRoot.SetActive(false); }
+        private void OnDisable() { ReleaseFrozenOutput(); if (sourceRoot != null) sourceRoot.SetActive(false); }
         private void OnDestroy()
         {
+            ReleaseFrozenOutput();
             if (sourceCamera != null) sourceCamera.targetTexture = null;
             if (output != null) output.texture = null;
             if (sourceRoot != null) Destroy(sourceRoot);

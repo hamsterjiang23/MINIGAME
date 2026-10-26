@@ -300,7 +300,7 @@ namespace MiniGame.UnityHost
             try
             {
                 new RuntimeFileSaveStore(SavePath).Save(Runtime);
-                screen.Notify("检查点已保存。F9 或暂停菜单恢复。", false);
+                screen.Notify("存档已记录。", false);
             }
             catch (Exception exception)
             { screen.Notify("保存失败：" + exception.Message, true); Debug.LogException(exception); }
@@ -318,7 +318,7 @@ namespace MiniGame.UnityHost
             {
                 var restored = new RuntimeFileSaveStore(SavePath).Load(rules, content);
                 InstallRuntime(restored);
-                screen.Notify("检查点已恢复；未重复结算回答或处置。", false);
+                screen.Notify("存档已读取。", false);
             }
             catch (Exception exception)
             { screen.Notify("恢复失败：" + exception.Message, true); Debug.LogWarning(exception.Message); }

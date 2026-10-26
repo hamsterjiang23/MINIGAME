@@ -97,6 +97,18 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(shake.CurrentRotationOffset.magnitude, Is.GreaterThan(.01f));
                 Assert.That(shake.CurrentPositionOffset.magnitude, Is.GreaterThan(.001f));
             }
+            source.timeSamples = track.ImpactSamples[0] + 220;
+            cameraObject.transform.position = source.transform.position;
+            float nearRotation = shake.CurrentRotationOffset.magnitude;
+            float nearPosition = shake.CurrentPositionOffset.magnitude;
+            cameraObject.transform.position = source.transform.position + Vector3.right * ((source.minDistance + source.maxDistance) * .5f);
+            source.timeSamples = track.ImpactSamples[0] + 220;
+            Assert.That(shake.CurrentRotationOffset.magnitude / nearRotation, Is.EqualTo(.5f).Within(.08f));
+            Assert.That(shake.CurrentPositionOffset.magnitude / nearPosition, Is.EqualTo(.5f).Within(.08f));
+            cameraObject.transform.position = source.transform.position + Vector3.right * (source.maxDistance + 1);
+            Assert.That(shake.CurrentRotationOffset, Is.EqualTo(Vector3.zero));
+            Assert.That(shake.CurrentPositionOffset, Is.EqualTo(Vector3.zero));
+            cameraObject.transform.position = source.transform.position;
             source.timeSamples = track.ImpactSamples[3] + Mathf.CeilToInt(.5f * clip.frequency);
             Assert.That(shake.CurrentRotationOffset, Is.EqualTo(Vector3.zero));
             Assert.That(shake.CurrentPositionOffset, Is.EqualTo(Vector3.zero));
@@ -382,6 +394,9 @@ namespace MiniGame.UnityHost.Tests
             runtime.SetPaused(false);
             director.PresentSupervisorPortrait(runtime, "JD_04");
             Assert.That(played.Count(sound => sound == MiniGameSound.Scan), Is.EqualTo(1));
+            Assert.That(service.GetSource(MiniGameAudioChannel.Scanner).isPlaying, Is.True);
+            director.StopSupervisorScan();
+            Assert.That(service.GetSource(MiniGameAudioChannel.Scanner).isPlaying, Is.False);
             director.PresentSupervisorPortrait(runtime, "JD_04");
             director.PresentSupervisorPortrait(runtime, "JD_01");
             director.PresentSupervisorPortrait(runtime, "JD_04");

@@ -8,6 +8,7 @@ namespace MiniGame.UnityHost
     [Serializable]
     public sealed class RoomEndingTransitionCheckpoint
     {
+        public int TimingVersion;
         public RoomEndingTransitionPhase Phase;
         public float Elapsed;
         public bool HasEntryPose;
@@ -21,10 +22,9 @@ namespace MiniGame.UnityHost
 
         public bool IsValid()
         {
-            if (!Enum.IsDefined(typeof(RoomEndingTransitionPhase), Phase) || !Finite(Elapsed) || Elapsed < 0) return false;
-            float maximum = Phase == RoomEndingTransitionPhase.FadingOut ? RoomEndingTransitionClock.FadeOutSeconds
-                : Phase == RoomEndingTransitionPhase.BlackHold ? RoomEndingTransitionClock.BlackHoldSeconds
-                : Phase == RoomEndingTransitionPhase.Entering ? RoomEndingTransitionClock.EntrySeconds : 0;
+            if (TimingVersion < 0 || TimingVersion > RoomEndingTransitionClock.TimingVersion
+                || !Enum.IsDefined(typeof(RoomEndingTransitionPhase), Phase) || !Finite(Elapsed) || Elapsed < 0) return false;
+            float maximum = RoomEndingTransitionClock.Duration(Phase, TimingVersion);
             if (Elapsed > maximum || Phase == RoomEndingTransitionPhase.Entering && !HasEntryPose) return false;
             return !HasEntryPose || Finite(EntryStartPosition) && Finite(EntryTargetPosition)
                 && ValidRotation(EntryStartRotation) && ValidRotation(EntryTargetRotation);
@@ -39,24 +39,37 @@ namespace MiniGame.UnityHost
     /// <summary>Counts only visible phase time, so scene preparation never consumes the required black hold.</summary>
     public sealed class RoomEndingTransitionClock
     {
-        public const float FadeOutSeconds = .35f;
-        public const float BlackHoldSeconds = 3f;
-        public const float EntrySeconds = TerminalReturnMotion.Seconds;
+        public const int TimingVersion = 2;
+        public const float FadeOutSeconds = 1f;
+        public const float BlackHoldSeconds = 1f;
+        public const float FadeInSeconds = 1f;
+        public const float EntrySeconds = 4f;
         public RoomEndingTransitionCheckpoint State { get; private set; }
         public float Opacity => State.Phase == RoomEndingTransitionPhase.FadingOut
             ? Mathf.Clamp01(State.Elapsed / FadeOutSeconds)
-            : State.Phase == RoomEndingTransitionPhase.Entering ? State.MonitorReturn ? 0 : 1 - Mathf.Clamp01(State.Elapsed / EntrySeconds)
+            : State.Phase == RoomEndingTransitionPhase.Entering ? 1 - Mathf.Clamp01(State.Elapsed / FadeInSeconds)
             : State.Phase == RoomEndingTransitionPhase.Exploring ? 0 : 1;
 
         public RoomEndingTransitionClock(RoomEndingTransitionCheckpoint saved = null)
         {
             State = saved?.Copy() ?? new RoomEndingTransitionCheckpoint();
+            if (saved != null && State.TimingVersion < TimingVersion)
+            {
+                float oldDuration = Duration(State.Phase, State.TimingVersion);
+                if (oldDuration > 0) State.Elapsed *= Duration(State.Phase, TimingVersion) / oldDuration;
+            }
+            State.TimingVersion = TimingVersion;
             if (!Enum.IsDefined(typeof(RoomEndingTransitionPhase), State.Phase)) State.Phase = RoomEndingTransitionPhase.FadingOut;
             if (float.IsNaN(State.Elapsed) || float.IsInfinity(State.Elapsed) || State.Elapsed < 0) State.Elapsed = 0;
             float maximum = State.Phase == RoomEndingTransitionPhase.FadingOut ? FadeOutSeconds
                 : State.Phase == RoomEndingTransitionPhase.BlackHold ? BlackHoldSeconds : EntrySeconds;
             State.Elapsed = Mathf.Min(State.Elapsed, maximum);
         }
+
+        public static float Duration(RoomEndingTransitionPhase phase, int version) =>
+            phase == RoomEndingTransitionPhase.FadingOut ? version == 0 ? .35f : FadeOutSeconds
+            : phase == RoomEndingTransitionPhase.BlackHold ? version == 0 ? 3f : BlackHoldSeconds
+            : phase == RoomEndingTransitionPhase.Entering ? version == 0 ? 1.2f : version == 1 ? 2f : EntrySeconds : 0;
 
         public void Advance(float dt, bool sceneReady, bool paused)
         {

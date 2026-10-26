@@ -22,6 +22,12 @@ MonoBehaviour:
   Noise: 0.0088
   IdleMotion: 0.00392
   PortraitPlacements:
+  - PortraitId: SJ01
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.028}
+  - PortraitId: SJ02
+    HeightMultiplier: 1
+    BottomCenter: {x: 0.42, y: -0.026}
   - PortraitId: VV04
     HeightMultiplier: 0.42
     BottomCenter: {x: 0.515, y: 0.3}

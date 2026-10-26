@@ -529,6 +529,14 @@ namespace MiniGame.UnityHost.Tests
             EndingCampaignPlayModeTests.CapturePortalView(room, "bed-spawn-projection", width: 1468, height: 730);
             Assert.That(room.Portal.Wall.GetDistanceToPoint(room.Ending.Bed.position), Is.EqualTo(0).Within(.001f));
             var beforePoseChecks = room.Ending.CaptureCheckpoint();
+            room.Ending.AdvanceForTests(0, 0);
+            var beachReticle = room.Ending.GetComponentsInChildren<UnityEngine.UI.Text>(true).Single(text => text.name == "Reticle");
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.True, "Beach exploration keeps the ordinary center reticle.");
+            room.Ending.SetPaused(true);
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.False);
+            room.Ending.SetPaused(false);
+            room.Ending.AdvanceForTests(0, 0);
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.True);
             var pillowTarget = room.Ending.Bed.Find("Room Pillow Eye Position").position;
             var alongBed = room.Portal.WallNormal;
             var acrossBed = Vector3.Cross(Vector3.up, alongBed);
@@ -558,6 +566,7 @@ namespace MiniGame.UnityHost.Tests
             room.RestorePose(bedPose);
             room.Ending.AdvanceForTests(0, 0);
             Assert.That(room.Ending.BedInteractionFocused, Is.False);
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.True);
             Assert.That(room.Ending.HandleInteractionInput(true, false), Is.False, "Looking away must not interact with the bed.");
             yield return null;
             var direction = room.Ending.Bed.position + Vector3.up * .5f - room.ViewCamera.transform.position;
@@ -566,13 +575,22 @@ namespace MiniGame.UnityHost.Tests
             room.RestorePose(bedPose);
             room.Ending.AdvanceForTests(0, 0);
             Assert.That(room.Ending.BedInteractionFocused, Is.True);
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.False, "The sleep icon replaces the dot when the bed is focused.");
             Assert.That(room.Ending.GetComponentsInChildren<UnityEngine.UI.Text>(true)
                 .Single(text => text.name == "提示").text, Is.Empty);
             Assert.That(room.Ending.GetComponentsInChildren<UnityEngine.UI.RawImage>(true)
                 .Single(image => image.name == "InteractionCursor").gameObject.activeInHierarchy, Is.True);
             Assert.That(room.Ending.HandleInteractionInput(true, false), Is.True, "The ordinary E interaction remains available.");
-            Assert.That(room.Ending.LieDownDuration, Is.EqualTo(room.Ending.Profile.LieDownSeconds * 1.5f).Within(.0001f));
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.False);
+            Assert.That(room.Ending.LieDownDuration, Is.EqualTo(5).Within(.0001f));
+            Assert.That(room.SkyRevealDuration, Is.EqualTo(1.5f).Within(.0001f));
             var lieStart = room.Ending.CaptureCheckpoint();
+            var oldLying = JsonUtility.FromJson<BeachEndingCheckpoint>(JsonUtility.ToJson(lieStart));
+            oldLying.LieDownDuration = oldLying.LieDownTurnDuration = 0;
+            oldLying.PhaseElapsed = .375f;
+            room.Ending.RestoreCheckpoint(oldLying);
+            Assert.That(room.Ending.CaptureCheckpoint().PhaseElapsed, Is.EqualTo(.5f).Within(.001f), "An old halfway turn keeps its normalized pose instead of jumping backward.");
+            room.Ending.RestoreCheckpoint(lieStart);
             var pillowEye = room.Ending.Bed.Find("Room Pillow Eye Position");
             var intoPillow = Vector3.ProjectOnPlane(pillowEye.position - lieStart.LieStartPosition, Vector3.up).normalized;
             var ocean = room.Ending.Audio.GetSource(MiniGameAudioChannel.Ocean);
@@ -584,7 +602,9 @@ namespace MiniGame.UnityHost.Tests
                     .ToString("F6", System.Globalization.CultureInfo.InvariantCulture));
                 EndingCampaignPlayModeTests.CapturePortalView(room, "frame_0000", videoDirectory);
             }
-            for (int frame = 1; frame <= 22; frame++)
+            int turnFrames = Mathf.RoundToInt(room.Ending.LieDownTurnDuration * 30);
+            int lyingFrames = Mathf.CeilToInt(room.Ending.LieDownDuration * 30);
+            for (int frame = 1; frame <= turnFrames; frame++)
             {
                 ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
                 yield return null; // Streaming audio seeks settle on the audio thread.
@@ -599,7 +619,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(room.Portal.IsOutside, Is.False);
             int dissolveFrames = 0;
             float previousOpacity = 1;
-            for (int frame = 23; frame <= 68; frame++)
+            for (int frame = turnFrames + 1; frame <= lyingFrames; frame++)
             {
                 var previousRotation = room.ViewCamera.transform.rotation;
                 ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
@@ -634,7 +654,7 @@ namespace MiniGame.UnityHost.Tests
                         "The real beach must already be rendering underneath the fading print.");
                 }
                 if (room.Portal.IsOutside) Assert.That(opacity, Is.Zero, "The print must be gone before the eye crosses it.");
-                if (frame >= 66)
+                if (frame >= lyingFrames - 2)
                     Assert.That(Quaternion.Angle(previousRotation, room.ViewCamera.transform.rotation), Is.LessThan(3),
                         "The final lie-down frames must join the sky hold without a roll or direction flip.");
                 Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, intoPillow), Is.LessThan(.001f),
@@ -642,15 +662,16 @@ namespace MiniGame.UnityHost.Tests
                 if (!string.IsNullOrWhiteSpace(videoDirectory))
                     EndingCampaignPlayModeTests.CapturePortalView(room, "frame_" + frame.ToString("D4"), videoDirectory);
             }
-            Assert.That(dissolveFrames, Is.GreaterThanOrEqualTo(8), "The image transition must span multiple visible frames instead of a single cut.");
+            Assert.That(dissolveFrames, Is.GreaterThanOrEqualTo(30), "The sky dissolve must remain visible over at least a second of 30fps frames.");
             var lastLyingRotation = room.ViewCamera.transform.rotation;
             room.Ending.AdvanceForTests(0, .001f);
             Assert.That(Quaternion.Angle(lastLyingRotation, room.ViewCamera.transform.rotation), Is.LessThan(.05f),
                 "Completing the recline must not roll the sky through 180 degrees.");
             Assert.That(room.Ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
+            Assert.That(beachReticle.gameObject.activeInHierarchy, Is.False, "Sky presentation has no exploration reticle.");
             Assert.That(room.Portal.IsOutside, Is.True);
             Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
-            for (int frame = 69; frame <= 203; frame++)
+            for (int frame = lyingFrames + 1; frame <= lyingFrames + 135; frame++)
             {
                 ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
                 yield return null; // Streaming audio seeks settle on the audio thread.

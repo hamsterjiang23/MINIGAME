@@ -51,7 +51,7 @@ namespace MiniGame.UnityHost
         private Canvas canvas;
         private Image endingFade;
         private int opaqueFrame = -1;
-        private Text hint, caption;
+        private Text hint, caption, reticle;
         private InteractionCursorView interactionCursor;
         private PauseMenuView pauseMenu;
         private Font font;
@@ -63,16 +63,17 @@ namespace MiniGame.UnityHost
         public float WorldTime => worldTime;
         public BeachEndingPhase Phase => state.Phase;
         private bool UsesBedEndingSequence => roomEnding != null && (roomEnding.UsesSharedThanks || roomEnding.IsPortalPreview);
-        // Keep the initial half-duration turn; double only the subsequent recline/crossing time.
-        public float LieDownDuration => Safe(profile.LieDownSeconds, 1.5f, .01f)
-            * (roomEnding?.Portal != null ? 1.5f : 1);
+        public float LieDownDuration => Safe(profile.LieDownSeconds, 5f, .01f);
+        public float LieDownTurnDuration => roomEnding?.Portal != null ? Mathf.Min(1f, LieDownDuration * .25f) : 0;
         private float LieDownProgress
         {
             get
             {
-                float elapsed = state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f);
-                return Mathf.Clamp01(roomEnding?.Portal != null && elapsed > .5f
-                    ? .5f + (elapsed - .5f) * .5f : elapsed);
+                if (roomEnding?.Portal == null) return Mathf.Clamp01(state.PhaseElapsed / LieDownDuration);
+                return state.PhaseElapsed <= LieDownTurnDuration
+                    ? .5f * Mathf.Clamp01(state.PhaseElapsed / LieDownTurnDuration)
+                    : .5f + .5f * Mathf.Clamp01((state.PhaseElapsed - LieDownTurnDuration)
+                        / (LieDownDuration - LieDownTurnDuration));
             }
         }
         public float EndingFadeOpacity => endingFade != null ? endingFade.color.a : 0;
@@ -182,7 +183,7 @@ namespace MiniGame.UnityHost
             if (!initialized || audioService == null) return;
             // Use the final camera pose, including the monitor-return entrance and the lie-down motion.
             bool facing = !thanksActive && !Paused && !MainMenuController.BlocksGameplayInput
-                && (SupervisorDialogueActive || roomEnding != null && roomEnding.IsFacingPrintedMonitor);
+                && state.Phase == BeachEndingPhase.Walking && roomEnding != null && roomEnding.IsFacingPrintedMonitor;
             audioService.SetLoop(MiniGameAudioChannel.ComputerNoise,
                 facing ? MiniGameSound.PCNoise : (MiniGameSound?)null, facing ? .08f : 0);
         }
@@ -222,6 +223,7 @@ namespace MiniGame.UnityHost
             supervisorDialogue?.Hide();
             credits?.Refresh(0, false);
             thanksActive = true;
+            if (reticle != null) reticle.gameObject.SetActive(false);
             interactionCursor?.SetVisible(false);
             roomEnding?.SetBedFocus(false);
             if (hint != null) hint.gameObject.SetActive(false);
@@ -317,7 +319,7 @@ namespace MiniGame.UnityHost
                 ApplyPause(true);
                 PublishCheckpoint();
             });
-            audioService.SetLoop(MiniGameAudioChannel.ComputerNoise, MiniGameSound.PCNoise, 0);
+            audioService.Stop(MiniGameAudioChannel.ComputerNoise);
             ApplyPause(true);
         }
 
@@ -536,6 +538,7 @@ namespace MiniGame.UnityHost
                 DriftElapsed = state.DriftElapsed, SubtitleElapsed = state.SubtitleElapsed,
                 SubtitleIndex = state.SubtitleIndex, SubtitlesComplete = state.SubtitlesComplete,
                 LieStartPosition = state.LieStartPosition, LieStartRotation = state.LieStartRotation,
+                LieDownDuration = LieDownDuration, LieDownTurnDuration = LieDownTurnDuration,
                 HasMusicPosition = audioService?.GetSource(MiniGameAudioChannel.EndingMusic)?.clip != null,
                 MusicSeconds = audioService?.GetSource(MiniGameAudioChannel.EndingMusic)?.time ?? 0,
                 HasOceanPosition = audioService?.GetSource(MiniGameAudioChannel.Ocean)?.clip != null,
@@ -562,6 +565,19 @@ namespace MiniGame.UnityHost
                 LieStartPosition = value.LieStartPosition, LieStartRotation = value.LieStartRotation
             };
             opaqueFrame = -1;
+            if (state.Phase == BeachEndingPhase.Lying)
+            {
+                float legacyDuration = roomEnding?.Portal != null ? 2.25f : 1.5f;
+                float oldDuration = Safe(value.LieDownDuration, legacyDuration, 0);
+                if (oldDuration <= 0) oldDuration = legacyDuration;
+                float oldTurn = value.LieDownDuration > 0 ? Safe(value.LieDownTurnDuration, 0, 0) : roomEnding?.Portal != null ? .75f : 0;
+                oldTurn = Mathf.Clamp(oldTurn, 0, oldDuration - .001f);
+                float elapsed = state.PhaseElapsed;
+                state.PhaseElapsed = oldTurn > 0 && elapsed <= oldTurn
+                    ? elapsed / oldTurn * LieDownTurnDuration
+                    : LieDownTurnDuration + Mathf.Clamp01((elapsed - oldTurn) / Mathf.Max(.01f, oldDuration - oldTurn))
+                        * (LieDownDuration - LieDownTurnDuration);
+            }
             supervisorDialogue.Hide();
             // Older formal saves could contain the preview's drifting phase. Resume at the sky hold.
             if (UsesBedEndingSequence && state.Phase == BeachEndingPhase.Drifting)
@@ -623,6 +639,7 @@ namespace MiniGame.UnityHost
             if (caption != null) caption.gameObject.SetActive(!paused && !thanksActive);
             if (paused || thanksActive)
             {
+                if (reticle != null) reticle.gameObject.SetActive(false);
                 interactionCursor?.SetVisible(false);
                 roomEnding?.SetBedFocus(false);
             }
@@ -642,7 +659,10 @@ namespace MiniGame.UnityHost
         {
             RefreshCredits();
             if (hint != null) hint.text = string.Empty;
-            bool focused = BedInteractionFocused && !Paused && !thanksActive;
+            bool aiming = state.Phase == BeachEndingPhase.Walking && !Paused && !thanksActive
+                && !MainMenuController.BlocksGameplayInput && (roomEnding == null || roomEnding.Ready);
+            bool focused = aiming && BedInteractionFocused;
+            if (reticle != null) reticle.gameObject.SetActive(aiming && !focused);
             interactionCursor?.SetKind(InteractionCursorKind.Sleep);
             interactionCursor?.SetVisible(focused);
             roomEnding?.SetBedFocus(focused);
@@ -676,6 +696,10 @@ namespace MiniGame.UnityHost
             scaler.referenceResolution = new Vector2(1920, 1080);
             scaler.matchWidthOrHeight = .5f;
             hint = Label(go.transform, "提示", new Vector2(.5f, .12f), new Vector2(700, 54), 24);
+            reticle = Label(go.transform, "Reticle", new Vector2(.5f, .5f), new Vector2(40, 40), 28);
+            reticle.text = "·";
+            reticle.color = TerminalView.Ink;
+            reticle.raycastTarget = false;
             interactionCursor = new InteractionCursorView((RectTransform)go.transform, TerminalView.Ink);
             caption = Label(go.transform, "字幕", new Vector2(.5f, .12f), new Vector2(1600, 90), 28);
             supervisorDialogue = gameObject.AddComponent<DreamSupervisorDialogue>();

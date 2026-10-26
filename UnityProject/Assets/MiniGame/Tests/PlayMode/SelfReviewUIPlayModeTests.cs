@@ -77,6 +77,14 @@ namespace MiniGame.UnityHost.Tests
             yield return EnterTerminal();
             Assert.That(runtime.GetView().TerminalPage, Is.EqualTo(TerminalPage.Directory));
             Assert.That(runtime.GetView().Patients.Select(patient => patient.Id), Is.EqualTo(new[] { GameRuntime.SelfPatientId }));
+            var labels = host.Screen.GetComponentsInChildren<Text>(true);
+            Assert.That(labels.Single(label => label.name == "Preview对象").text, Does.StartWith("你 / "));
+            Assert.That(labels.Single(label => label.name == "DossierAge").text, Is.EqualTo("25岁"));
+            Assert.That(labels.Single(label => label.name == "DossierOccupation").text, Is.EqualTo("审查员"));
+            Assert.That(labels.Single(label => label.name == "PurificationQuota").text, Is.EqualTo("01"));
+            Assert.That(labels.Single(label => label.name == "TerminalDate").text, Is.EqualTo("1994-11-11"));
+            host.Screen.TerminalDisplay.RenderFrame();
+            CaptureMonitor(host.Screen.TerminalDisplay.Texture, "self-review-directory");
             Assert.That(monitor.IsActive, Is.False, "Self review uses the ordinary patient presentation, not the obsolete proxy feed.");
             Assert.That(runtime.ConfirmSelfPurification().Accepted, Is.False);
             yield return CompleteSelfReview();
@@ -130,6 +138,21 @@ namespace MiniGame.UnityHost.Tests
                     var camera = feed.ViewCamera;
                     camera.Render();
                     var withBackdrop = ReadMonitorPixels(camera.targetTexture);
+                    var actor = feed.ActiveRoom.transform.parent.GetComponentsInChildren<SpriteRenderer>(true)
+                        .Single(renderer => renderer.sprite == feed.CurrentSprite);
+                    try
+                    {
+                        actor.enabled = false;
+                        camera.Render();
+                        var withoutActor = ReadMonitorPixels(camera.targetTexture);
+                        int bottom = Enumerable.Range(0, withBackdrop.Length).Where(i =>
+                            Math.Abs(withBackdrop[i].r - withoutActor[i].r)
+                            + Math.Abs(withBackdrop[i].g - withoutActor[i].g)
+                            + Math.Abs(withBackdrop[i].b - withoutActor[i].b) > 24)
+                            .Select(i => i / camera.targetTexture.width).DefaultIfEmpty(camera.targetTexture.height).Min();
+                        Assert.That(bottom, Is.LessThanOrEqualTo(3), portraitId + " visible pixels must meet the monitor's lower edge.");
+                    }
+                    finally { actor.enabled = true; camera.Render(); }
                     try
                     {
                         backdrop.enabled = false;
@@ -142,13 +165,17 @@ namespace MiniGame.UnityHost.Tests
                     host.Screen.TerminalDisplay.RenderFrame();
                     CaptureMonitor(feed.Output, "self-review-" + portraitId + "-feed");
                     CaptureMonitor(host.Screen.TerminalDisplay.Texture, "self-review-" + portraitId + "-terminal");
-                    EndingVisualCapture.Request("self-review-" + portraitId + "-combined", runtime);
+                    if (!Application.isBatchMode)
+                        EndingVisualCapture.Request("self-review-" + portraitId + "-combined", runtime);
                 });
                 Assert.That(captured, Is.EquivalentTo(new[] { "SJ01", "SJ02" }));
-                // Flush reports the two completed captures in reverse request order.
-                LogAssert.Expect(LogType.Log, new Regex(@"^MINIGAME_ENDING_CAPTURE self-review-SJ02-combined .+[\\/]self-review-SJ02-combined-frame\d+\.png$"));
-                LogAssert.Expect(LogType.Log, new Regex(@"^MINIGAME_ENDING_CAPTURE self-review-SJ01-combined .+[\\/]self-review-SJ01-combined-frame\d+\.png$"));
-                yield return EndingVisualCapture.Flush();
+                if (!Application.isBatchMode)
+                {
+                    // Flush reports the two completed captures in reverse request order.
+                    LogAssert.Expect(LogType.Log, new Regex(@"^MINIGAME_ENDING_CAPTURE self-review-SJ02-combined .+[\\/]self-review-SJ02-combined-frame\d+\.png$"));
+                    LogAssert.Expect(LogType.Log, new Regex(@"^MINIGAME_ENDING_CAPTURE self-review-SJ01-combined .+[\\/]self-review-SJ01-combined-frame\d+\.png$"));
+                    yield return EndingVisualCapture.Flush();
+                }
                 LogAssert.NoUnexpectedReceived();
             }
             finally { Environment.SetEnvironmentVariable(captureKey, previousCaptureDirectory); }

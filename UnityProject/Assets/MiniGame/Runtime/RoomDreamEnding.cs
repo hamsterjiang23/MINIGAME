@@ -12,6 +12,7 @@ using UnityEngine.UI;
 namespace MiniGame.UnityHost
 {
     /// <summary>Temporarily lends the room's actor, camera and original bed to the hidden ending.</summary>
+    [DefaultExecutionOrder(500)]
     public sealed class RoomDreamEnding : MonoBehaviour
     {
         private const int BedLayer = 26;
@@ -51,6 +52,9 @@ namespace MiniGame.UnityHost
         private Vector3 panoramaOrigin;
         private float bedFocusDistance = 3.2f;
         private InteractionFocusOutline bedFocusOutline;
+        private Vector3 fadeCameraPosition;
+        private Quaternion fadeCameraRotation;
+        private float fadeCameraFov;
 
         public event Action BedCompleted;
         public bool IsTransitioning => !restored && !Ready && !bedCompleted;
@@ -93,6 +97,9 @@ namespace MiniGame.UnityHost
             owner.player = room.Player;
             owner.ViewCamera = room.Player.ViewCamera;
             if (!isPreview) session.RestoreEndingFadePose(room.Player);
+            owner.fadeCameraPosition = owner.ViewCamera.transform.position;
+            owner.fadeCameraRotation = owner.ViewCamera.transform.rotation;
+            owner.fadeCameraFov = owner.ViewCamera.fieldOfView;
             owner.savedCursorLock = Cursor.lockState;
             owner.savedCursorVisible = Cursor.visible;
             owner.transition = new RoomEndingTransitionClock(isPreview ? null : session.RoomEndingTransition);
@@ -171,6 +178,13 @@ namespace MiniGame.UnityHost
             PublishTransition();
         }
 
+        private void LateUpdate()
+        {
+            if (restored || TransitionPhase != RoomEndingTransitionPhase.FadingOut || ViewCamera == null) return;
+            ViewCamera.transform.SetPositionAndRotation(fadeCameraPosition, fadeCameraRotation);
+            ViewCamera.fieldOfView = fadeCameraFov;
+        }
+
         private void PrepareEntryPose()
         {
             var state = transition.State;
@@ -209,7 +223,7 @@ namespace MiniGame.UnityHost
                 float progress = state.Phase == RoomEndingTransitionPhase.Exploring ? 1
                     : state.Phase == RoomEndingTransitionPhase.Entering ? state.Elapsed / RoomEndingTransitionClock.EntrySeconds : 0;
                 TerminalReturnMotion.Apply(ViewCamera, state.EntryStartPosition, state.EntryStartRotation, 48,
-                    state.EntryTargetPosition, state.EntryTargetRotation, 62, progress);
+                    state.EntryTargetPosition, state.EntryTargetRotation, 62, progress, delayStart: false);
                 return;
             }
             float t = state.Phase == RoomEndingTransitionPhase.Exploring ? 1 : state.Phase == RoomEndingTransitionPhase.Entering
@@ -524,7 +538,10 @@ namespace MiniGame.UnityHost
                 bedFocusOutline = InteractionFocusOutline.Create(bedRenderers[0], bedRenderers);
         }
 
-        private const float SkyRevealStart = .74f, SkyRevealEnd = .94f;
+        // The four-second recline reserves 1.44s for looking up, 1.5s for the sky dissolve,
+        // then 1.06s to cross the wall without exposing the exterior below the sky.
+        private const float SkyRevealStart = .68f, SkyRevealEnd = .8675f;
+        public float SkyRevealDuration => Ending != null ? (Ending.LieDownDuration - Ending.LieDownTurnDuration) * .375f : 0;
         public const float SkyRevealPitch = 82;
 
         public Quaternion WallLyingRotation => Quaternion.LookRotation(Vector3.up, Portal.WallNormal);
@@ -534,7 +551,7 @@ namespace MiniGame.UnityHost
             // Turn in place before reclining. Keep the pillow behind the head throughout the descent,
             // including an approach from either side of the bed, instead of diving face-first into it.
             float turn = EaseWallMotion(Mathf.InverseLerp(0, .5f, progress));
-            float lie = EaseWallMotion(Mathf.InverseLerp(.5f, .8f, progress));
+            float lie = EaseWallMotion(Mathf.InverseLerp(.5f, SkyRevealStart, progress));
             var intoPillow = Vector3.ProjectOnPlane(target - start, Vector3.up);
             if (intoPillow.sqrMagnitude < .0001f) intoPillow = Portal.WallNormal;
             intoPillow.Normalize();
@@ -542,17 +559,15 @@ namespace MiniGame.UnityHost
             // Settle onto the bed's long axis while reclining, so side approaches end in the same upright pose.
             var settledDirection = Vector3.Slerp(intoPillow, Portal.WallNormal, lie);
             var reclineRotation = Quaternion.LookRotation(-settledDirection, Vector3.up) * Quaternion.Euler(-90 * lie, 0, 0);
-            var startAngles = startRotation.eulerAngles;
-            var turnRotation = Quaternion.Euler(Mathf.LerpAngle(startAngles.x, 0, turn),
-                Mathf.LerpAngle(startAngles.y, awayRotation.eulerAngles.y, turn), 0);
+            var turnRotation = Quaternion.Slerp(startRotation, awayRotation, turn);
             // Stay just inside the pillow wall until the sky-only dissolve has finished. Crossing
             // earlier reveals the exterior computer pile while the player can still see the horizon.
             var wallFront = target - Portal.WallNormal * (Portal.Wall.GetDistanceToPoint(target) + .12f);
             wallFront.y = start.y; // Keep the bed rails below the sky view until the dissolve is complete.
-            var insidePosition = Vector3.Lerp(start, wallFront, lie * lie);
+            var insidePosition = Vector3.Lerp(start, wallFront, lie);
             float crossing = EaseWallMotion(Mathf.InverseLerp(SkyRevealEnd, 1, progress));
             var position = Vector3.Lerp(insidePosition, target, crossing);
-            position.y = Mathf.Lerp(start.y, target.y, crossing * crossing);
+            position.y = Mathf.Lerp(start.y, target.y, crossing);
             ViewCamera.transform.SetPositionAndRotation(progress <= .5f ? start : position,
                 progress <= .5f ? turnRotation : reclineRotation);
         }

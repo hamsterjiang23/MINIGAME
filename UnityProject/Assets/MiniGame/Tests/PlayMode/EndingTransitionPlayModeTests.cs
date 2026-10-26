@@ -14,13 +14,13 @@ namespace MiniGame.UnityHost.Tests
         public void FullBlackHoldStartsAfterFadeAndWaitsForReadyScene()
         {
             var clock = new RoomEndingTransitionClock();
-            clock.Advance(.34f, true, false);
+            clock.Advance(.99f, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.FadingOut));
             clock.Advance(.02f, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
             Assert.That(clock.State.Elapsed, Is.Zero, "Fade overshoot must not shorten the full-black interval.");
             Assert.That(clock.Opacity, Is.EqualTo(1));
-            Assert.That(RoomEndingTransitionClock.BlackHoldSeconds, Is.EqualTo(3));
+            Assert.That(RoomEndingTransitionClock.BlackHoldSeconds, Is.EqualTo(1));
             clock.Advance(RoomEndingTransitionClock.BlackHoldSeconds - .01f, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.BlackHold));
             clock.Advance(.02f, false, false);
@@ -30,21 +30,26 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.Entering));
             Assert.That(clock.State.Elapsed, Is.Zero);
             Assert.That(clock.Opacity, Is.EqualTo(1));
-            clock.Advance(RoomEndingTransitionClock.EntrySeconds * .5f, true, false);
+            clock.Advance(.5f, true, false);
             Assert.That(clock.Opacity, Is.EqualTo(.5f));
-            clock.Advance(RoomEndingTransitionClock.EntrySeconds * .5f, true, false);
+            Assert.That(TerminalReturnMotion.Progress(.25f, false), Is.GreaterThan(0), "Movement starts during the fade-in.");
+            clock.Advance(.5f, true, false);
+            Assert.That(clock.Opacity, Is.Zero);
+            Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.Entering));
+            clock.Advance(RoomEndingTransitionClock.EntrySeconds - 1, true, false);
             Assert.That(clock.State.Phase, Is.EqualTo(RoomEndingTransitionPhase.Exploring));
             Assert.That(clock.Opacity, Is.Zero);
         }
 
         [TestCase(RoomEndingTransitionPhase.FadingOut, .2f)]
-        [TestCase(RoomEndingTransitionPhase.BlackHold, 1.4f)]
-        [TestCase(RoomEndingTransitionPhase.BlackHold, 2.4f)]
+        [TestCase(RoomEndingTransitionPhase.BlackHold, .4f)]
+        [TestCase(RoomEndingTransitionPhase.BlackHold, .8f)]
         [TestCase(RoomEndingTransitionPhase.Entering, .6f)]
         public void PauseAndSerializationPreserveOnlyRemainingTransition(RoomEndingTransitionPhase phase, float elapsed)
         {
             var saved = new RoomEndingTransitionCheckpoint
             {
+                TimingVersion = RoomEndingTransitionClock.TimingVersion,
                 Phase = phase, Elapsed = elapsed, HasEntryPose = true,
                 EntryStartPosition = new Vector3(1, 2, 3), EntryTargetPosition = new Vector3(2, 2, 3),
                 EntryStartRotation = Quaternion.Euler(8, 12, 0), EntryTargetRotation = Quaternion.Euler(8, 24, 0)
@@ -62,6 +67,22 @@ namespace MiniGame.UnityHost.Tests
                 : phase == RoomEndingTransitionPhase.BlackHold ? RoomEndingTransitionClock.BlackHoldSeconds : RoomEndingTransitionClock.EntrySeconds;
             clock.Advance(duration - elapsed, true, false);
             Assert.That(clock.State.Phase, Is.Not.EqualTo(phase));
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        public void OldTransitionTimingRestoresTheSameNormalizedPhaseWithoutRejectingOldBlackHolds(int timingVersion)
+        {
+            foreach (var phase in new[] { RoomEndingTransitionPhase.FadingOut, RoomEndingTransitionPhase.BlackHold, RoomEndingTransitionPhase.Entering })
+            {
+                var old = new RoomEndingTransitionCheckpoint { TimingVersion = timingVersion, Phase = phase, Elapsed = RoomEndingTransitionClock.Duration(phase, timingVersion) * .8f,
+                    HasEntryPose = true };
+                Assert.That(old.IsValid(), Is.True);
+                var clock = new RoomEndingTransitionClock(old);
+                Assert.That(clock.State.Elapsed, Is.EqualTo(RoomEndingTransitionClock.Duration(phase, RoomEndingTransitionClock.TimingVersion) * .8f).Within(.0001f));
+                Assert.That(clock.State.TimingVersion, Is.EqualTo(RoomEndingTransitionClock.TimingVersion));
+                Assert.That(clock.State.IsValid(), Is.True);
+            }
         }
 
         [Test]
@@ -83,7 +104,7 @@ namespace MiniGame.UnityHost.Tests
         public void InvalidTransitionPoseAndElapsedCannotBeRestored()
         {
             Assert.That(new RoomEndingTransitionCheckpoint
-                { Phase = RoomEndingTransitionPhase.BlackHold, Elapsed = RoomEndingTransitionClock.BlackHoldSeconds + .01f }.IsValid(), Is.False);
+                { TimingVersion = RoomEndingTransitionClock.TimingVersion, Phase = RoomEndingTransitionPhase.BlackHold, Elapsed = RoomEndingTransitionClock.BlackHoldSeconds + .01f }.IsValid(), Is.False);
             Assert.That(new RoomEndingTransitionCheckpoint
                 { Phase = RoomEndingTransitionPhase.Entering, Elapsed = .5f }.IsValid(), Is.False);
             Assert.That(new RoomEndingTransitionCheckpoint

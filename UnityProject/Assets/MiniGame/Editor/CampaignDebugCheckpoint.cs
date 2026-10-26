@@ -17,7 +17,8 @@ namespace MiniGame.UnityHost.Editor
                 CampaignDebugPoint.Shutdown, CampaignDebugPoint.Bedtime, CampaignDebugPoint.Sleep,
                 CampaignDebugPoint.Dream, CampaignDebugPoint.AfterDream };
 
-        public static string Create(GameRules rules, IGameContent content, int day, CampaignDebugPoint point)
+        public static string Create(GameRules rules, IGameContent content, int day, CampaignDebugPoint point,
+            EndingDialogueCatalog endings = null)
         {
             if (rules == null) throw new ArgumentNullException(nameof(rules));
             if (content == null) throw new ArgumentNullException(nameof(content));
@@ -26,6 +27,7 @@ namespace MiniGame.UnityHost.Editor
             if (!rules.DreamFlowEnabled && (point == CampaignDebugPoint.Dream || point == CampaignDebugPoint.AfterDream))
                 throw new InvalidOperationException("当前工程没有启用每日梦境流程。");
             var runtime = new GameRuntime(rules, content, useTerminalDirectory: true);
+            if (endings != null) runtime.ConfigureEndings(endings);
             if (point == CampaignDebugPoint.Opening)
             {
                 Require(runtime.BeginDayZeroOpening(), runtime.GetView());

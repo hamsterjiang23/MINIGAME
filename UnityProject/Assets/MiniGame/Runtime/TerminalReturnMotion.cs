@@ -2,20 +2,20 @@ using UnityEngine;
 
 namespace MiniGame.UnityHost
 {
-    /// <summary>The same delayed pullback and turn for ordinary shutdown and the hidden room.</summary>
+    /// <summary>Shared pullback and turn; ordinary shutdown keeps its initial hold.</summary>
     public static class TerminalReturnMotion
     {
         public const float Seconds = 1.2f;
-        public static float Progress(float elapsedFraction)
+        public static float Progress(float elapsedFraction, bool delayStart = true)
         {
-            float t = Mathf.InverseLerp(.28f, 1, elapsedFraction);
+            float t = Mathf.InverseLerp(delayStart ? .28f : 0, 1, elapsedFraction);
             return t * t * t * (t * (t * 6 - 15) + 10);
         }
 
         public static Vector3 Position(Vector3 source, Quaternion sourceRotation,
-            Vector3 destination, Quaternion targetRotation, float progress)
+            Vector3 destination, Quaternion targetRotation, float progress, bool delayStart = true)
         {
-            float t = Progress(progress), inverse = 1 - t;
+            float t = Progress(progress, delayStart), inverse = 1 - t;
             var a = source - sourceRotation * Vector3.forward * .12f;
             var b = destination - targetRotation * Vector3.forward * .15f + Vector3.up * .025f;
             return inverse * inverse * inverse * source + 3 * inverse * inverse * t * a
@@ -23,10 +23,10 @@ namespace MiniGame.UnityHost
         }
 
         public static void Apply(Camera camera, Vector3 source, Quaternion sourceRotation, float sourceFov,
-            Vector3 destination, Quaternion targetRotation, float targetFov, float progress)
+            Vector3 destination, Quaternion targetRotation, float targetFov, float progress, bool delayStart = true)
         {
-            float t = Progress(progress);
-            camera.transform.SetPositionAndRotation(Position(source, sourceRotation, destination, targetRotation, progress),
+            float t = Progress(progress, delayStart);
+            camera.transform.SetPositionAndRotation(Position(source, sourceRotation, destination, targetRotation, progress, delayStart),
                 Quaternion.Slerp(sourceRotation, targetRotation, t));
             camera.fieldOfView = Mathf.Lerp(sourceFov, targetFov, t);
         }

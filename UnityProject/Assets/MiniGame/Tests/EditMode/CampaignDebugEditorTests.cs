@@ -16,6 +16,7 @@ namespace MiniGame.UnityHost.Tests
     {
         private GameRules rules;
         private IGameContent content;
+        private EndingDialogueCatalog endings;
 
         [SetUp]
         public void SetUp()
@@ -26,6 +27,8 @@ namespace MiniGame.UnityHost.Tests
             rules = compiled.Rules.WithDreamFlow(rebellion.InitialValue, rebellion.Maximum,
                 rebellion.Threshold, rebellion.CreateDeltas());
             content = compiled.Content;
+            endings = EndingDialoguePresenter.LoadCatalog();
+            Assert.That(endings, Is.Not.Null);
         }
 
         [TestCase(0), TestCase(1), TestCase(2), TestCase(3)]
@@ -33,8 +36,8 @@ namespace MiniGame.UnityHost.Tests
         {
             foreach (var point in CampaignDebugCheckpoint.PointsForDay(day))
             {
-                string checkpoint = CampaignDebugCheckpoint.Create(rules, content, day, point);
-                var runtime = GameRuntime.Restore(checkpoint, rules, content);
+                string checkpoint = CampaignDebugCheckpoint.Create(rules, content, day, point, endings);
+                var runtime = GameRuntime.Restore(checkpoint, rules, content, endings);
                 var view = runtime.GetView();
                 Assert.That(CampaignDebugCheckpoint.Matches(view, day, point), Is.True, day + "/" + point);
                 Assert.That(view.Paused, Is.False);
@@ -49,6 +52,17 @@ namespace MiniGame.UnityHost.Tests
                 else result = runtime.TryInteract(InteractionTarget.Computer);
                 Assert.That(result.Accepted, Is.True, day + "/" + point + ": " + result.Reason);
             }
+        }
+
+        [Test]
+        public void MissingEndingRevisionIsStillRejectedByProductionRestore()
+        {
+            string oldCheckpoint = CampaignDebugCheckpoint.Create(rules, content, 3, CampaignDebugPoint.Dream);
+            Assert.Throws<SnapshotValidationException>(() => GameRuntime.Restore(oldCheckpoint, rules, content, endings));
+            string checkpoint = CampaignDebugCheckpoint.Create(rules, content, 3, CampaignDebugPoint.Dream, endings);
+            var runtime = GameRuntime.Restore(checkpoint, rules, content, endings);
+            Assert.That(runtime.GetView().Game.Day, Is.EqualTo(3));
+            Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
         }
 
         [Test]

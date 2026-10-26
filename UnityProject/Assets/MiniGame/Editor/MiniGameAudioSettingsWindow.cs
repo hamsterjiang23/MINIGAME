@@ -249,7 +249,7 @@ namespace MiniGame.UnityHost.Editor
                 case MiniGameSound.TerminalType3:
                 case MiniGameSound.TerminalType4: return "开机和 Closing session 关机文字每新增一个字符时，从已配置的四段打字声中等概率随机播放一段，允许重复；留空的片段不参与。";
                 case MiniGameSound.Projector: return "梦境期间叠加放映机循环声。";
-                case MiniGameSound.Scan: return "监督员对话显示 JD_04 立绘时播放，每天最多一次；暂停和读档不会重复播放。";
+                case MiniGameSound.Scan: return "监督员首次显示 JD_04 时播放，每天最多一次；切换下一句立即停止，暂停和读档不会重复播放。";
                 case MiniGameSound.LightBeep: return "检定仪的可处置指示灯亮起时播放。";
                 case MiniGameSound.WorldInteraction: return "有效的场景交互发生时播放。";
                 case MiniGameSound.UIInteraction: return "按钮点击或键盘确认触发时播放。";

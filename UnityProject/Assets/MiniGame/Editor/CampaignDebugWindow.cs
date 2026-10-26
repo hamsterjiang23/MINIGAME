@@ -229,7 +229,8 @@ namespace MiniGame.UnityHost.Editor
             host.StartCampaign();
             var session = MiniGameSessionHost.Current;
             if (session == null) throw new InvalidOperationException("正式场景需要启用梦境与持续会话配置。");
-            string checkpoint = CampaignDebugCheckpoint.Create(session.Rules, session.Content, request.day, request.point);
+            string checkpoint = CampaignDebugCheckpoint.Create(session.Rules, session.Content, request.day, request.point,
+                host.Runtime.Endings);
             host.Dreams?.PrepareForRuntimeChange();
             host.Effects.PrepareForRuntimeChange();
             PlacePlayer(host, request.point);

@@ -170,7 +170,7 @@ namespace MiniGame.Presentation
             }).Where(patient => !_useTerminalDirectory || patient.Presence != PatientPresence.Released && patient.Presence != PatientPresence.Purified
                 || patient.HasMetToday);
             if (game.Phase == GamePhase.SelfReview)
-                patients = new[] { new PatientView(SelfPatientId, "玩家自己", PatientPresence.Active, 0,
+                patients = new[] { new PatientView(SelfPatientId, "你", PatientPresence.Active, 0,
                     _terminalPage == TerminalPage.Review, false, null, true) };
             var dialogue = _terminalOpen && _terminalPage == TerminalPage.Review && _cue == null && _inspection == null
                 && (game.EncounterStage == EncounterStage.NormalDialogue || game.EncounterStage == EncounterStage.SpecialDialogue)
@@ -187,14 +187,14 @@ namespace MiniGame.Presentation
                 displayedTranscript = _endings.Get(SelfPatientId).Lines
                     .Take(game.SelfReviewLineIndex + (_terminalOpen && _terminalPage == TerminalPage.Review ? 1 : 0))
                     .Select((line, index) => new TranscriptEntry(SelfPatientId + ":" + line.SourceId, SelfPatientId, line.SourceId,
-                        "玩家自己", line.Text, line.SourceId, line.PortraitId, false, completed: index < game.SelfReviewLineIndex));
+                        "你", line.Text, line.SourceId, line.PortraitId, false, completed: index < game.SelfReviewLineIndex));
             _cachedView = new RuntimeView(game, input, _terminalOpen, _paused, _cue, dialogue, _inspection,
                 patients, input == InputContext.World ? WorldInteractions(game) : Array.Empty<InteractionTarget>(),
                 _observations.Select(observation => $"{observation.Day}:{observation.PatientId}:{observation.Kind}"),
                 _terminalPage, _useTerminalDirectory || game.Phase == GamePhase.SelfReview, _leavingDirectory,
                 displayedTranscript, _archiveDirectoryVisible,
                 game.Phase == GamePhase.SelfReview ? SelfPatientId : presented?.PatientId,
-                game.Phase == GamePhase.SelfReview ? "玩家自己" : presentedProfile?.DisplayName,
+                game.Phase == GamePhase.SelfReview ? "你" : presentedProfile?.DisplayName,
                 game.Phase == GamePhase.SelfReview && _terminalPage == TerminalPage.Review ? SelfPatientId : presented?.Id,
                 presented?.Disposition, game.Phase == GamePhase.SelfReview ? new[] { Disposition.Purify } : presentedMeeting?.ReactionNodes.Keys,
                 _roomDoorOpen, _doorViewActive, UsesDreamFlow, _terminalPower, _endingStage);

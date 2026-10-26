@@ -1,10 +1,14 @@
 # 结局与自我审判
 
+海滩自由行走时显示中心点准心，对准可交互的床时替换为睡眠图标；入场、暂停、上床与看天演出不显示行走准心。[verified: ../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs RefreshInterface/ApplyPause]
+
+2026-10-26已按用户验收反馈调整隐藏结局的渐黑、渐显退镜、音乐与上床时序；最新追加验收为4秒退镜、1.5秒天空渐变、5秒上床及看天对白无电脑噪音，见[第二轮修订](../ui-feedback/ending-polish-2026-10-26.md)，前轮见[镜头平滑修订](../ui-feedback/ending-smooth-2026-10-26.md)。[verified: 本轮用户确认；链接报告]
+
 2026-10-23 用户接受的修订方案是本轮实施依据。较早文档中的“反叛值阈值”“KPI三天后检查”和“床后漂流字幕”保留历史身份；本流程按下表执行。`[verified: 本轮用户 PLEASE IMPLEMENT THIS PLAN「结局与对白更新方案（修订版）」]`
 
 | 分支 | 条件与时点 | 操作 |
 | --- | --- | --- |
-| 隐藏梦 | 仅 Day3 梦结束检查：薇拉、埃德温、米洛、阿德里安的历史信任合计≥10；已释放、净化、死亡或结束治疗者仍计入，排除神父、教学角色与玩家；优先于当晚其余结局。 | 梦后直接电脑绿光且无UI → 交互打开仅有玩家的目录 → 病房黄滤镜中的16句自审 → 唯一净化 → 淡黑后在全黑中播放指定音乐3秒 → 从墙面显示器用1.2秒退开转身入场 → 自由走到床看向床并用原交互键上床 → 1.5秒先原地背向床、再向后穿墙躺到枕头 → 仰看真实蓝天7秒 → 监督员对话（计时暂停） → 对话结束后随海浪轻浮36秒（前16秒看天，后20秒黄色像素字制作人员名单从下向上滚动） → 1秒淡黑 → EndNote响起并同时回菜单。`[verified: ../../src/MiniGame.Core/Runtime/GameSession.cs ResolveDreamReturnPhase；../../UnityProject/Assets/MiniGame/Runtime/RoomEndingTransitionCheckpoint.cs BlackHoldSeconds/EntrySeconds；../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs AdvanceBedEnding/ApplyPose；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs OnHiddenBed/CompleteEnding]` |
+| 隐藏梦 | 仅 Day3 梦结束检查：薇拉、埃德温、米洛、阿德里安的历史信任合计≥10；已释放、净化、死亡或结束治疗者仍计入，排除神父、教学角色与玩家；优先于当晚其余结局。 | 梦后直接电脑绿光且无UI → 交互打开仅有玩家的目录 → 病房黄滤镜中的16句自审 → 唯一净化 → 1秒渐黑 → 1秒全黑并开始指定音乐 → 1秒渐显与4秒显示器退开转身同时开始（入场合计约6秒） → 自由走到床看向床并用原交互键上床 → 5秒上床（1秒转身＋4秒后仰与穿墙，其中天空渐变1.5秒） → 仰看真实蓝天7秒 → 监督员对话（计时暂停） → 对话结束后随海浪轻浮36秒（前16秒看天，后20秒黄色像素字制作人员名单从下向上滚动） → 1秒淡黑 → EndNote响起并同时回菜单。`[verified: ../../src/MiniGame.Core/Runtime/GameSession.cs ResolveDreamReturnPhase；../../UnityProject/Assets/MiniGame/Runtime/RoomEndingTransitionCheckpoint.cs BlackHoldSeconds/EntrySeconds；../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs AdvanceBedEnding/ApplyPose；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs OnHiddenBed/CompleteEnding]` |
 | 神父袭击 | Day2加入；释放后的自然次日开门，先于KPI失败；Day2释放对应Day3，Day3释放对应Day4。 | 开门 → 专用8句对白 → 末句黑幕 → EndNote响起并直接回菜单。`[verified: ../../Tools/DialogueCampaign/conversion-config.json priest；../../src/MiniGame.Core/Runtime/GameSession.cs AdvanceDay；../../UnityProject/Assets/MiniGame/Resources/MiniGame/Endings/Dialogue.json conversations.priest-ending；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs L78–82/L145–149]` |
 | KPI失败 | 任意正式日未完成配额，该晚梦境保留，下一次醒来跳到Day4。更早触发会终止流程，不能再进入Day3隐藏检查。 | 起床 → 开门 → 监督员7句结局对白 → EndNote响起并直接回菜单。`[verified: ../../src/MiniGame.Core/Runtime/GameSession.cs ResolveEnding/AdvanceDay；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs L78–82/L145–149]` |
 | 普通 | 完成三天且未命中前述分支。 | Day4起床 → 开门 → 监督员7句结局对白 → EndNote响起并直接回菜单。`[verified: ../../src/MiniGame.Presentation/GameRuntime.cs CompleteEndingLine；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs L78–82/L145–149]` |
@@ -19,7 +23,7 @@
 
 普通、KPI失败和神父结局仍在最后一句完成后直接返回菜单。隐藏梦在躺下看天7秒、完成监督员对话、继续躺36秒（最后20秒滚动制作人员名单）和1秒淡黑后返回菜单；完整黑幕至少显示一帧。所有分支只播放一次EndNote，与回菜单同时发生，不等待音符播完，不显示感谢页或追加确认。完成标记阻止“继续”重复播放本局，已完成存档拒绝恢复。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/DreamEndingController.cs Update/AdvanceBedEnding；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs CompleteEnding/TryLoadFrom；../../UnityProject/Assets/MiniGame/Runtime/MainMenuController.cs CompleteInspectionAndReturnToMenu]`
 
-自审 SJ01／SJ02 保留原立绘，通过 `self-review` 房间配置复用普通角色的病房底图、琥珀滤镜和监控信号。Day3 返回黑幕内读取核心的 `DreamReturnPhase`，进入自审时只启用电脑引导；其他正式日梦后在全黑中自动进入次日，接床上醒来、转头和起身演出，不再第二次点击床。海滩音乐槽已绑定用户提供的《An Ending (Ascent)》；全黑中从曲首播放3秒，再从墙面显示器用1.2秒退开并转身进入梦房间，同一音源连续播放，海浪环境声保留。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/PatientMonitorProfile.cs Defaults；../../UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs CompleteIntoWake；../../UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs WakeTransition]`
+自审 SJ01／SJ02 保留原立绘，通过 `self-review` 房间配置复用普通角色的病房底图、琥珀滤镜和监控信号。Day3 返回黑幕内读取核心的 `DreamReturnPhase`，进入自审时只启用电脑引导；其他正式日梦后在全黑中自动进入次日，接床上醒来、转头和起身演出，不再第二次点击床。海滩音乐槽已绑定用户提供的《An Ending (Ascent)》；入口按2026-10-26确认改为1秒渐黑、1秒全黑，随后1秒渐显与4秒退开转身同时开始；全黑中音乐从曲首开始并连续播放，海滩BGM增益为此前的70%，海浪环境声保留。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/PatientMonitorProfile.cs Defaults；../../UnityProject/Assets/MiniGame/Runtime/DreamSequenceDirector.cs CompleteIntoWake；../../UnityProject/Assets/MiniGame/Runtime/PresentationEffects.cs WakeTransition]`
 
 游戏内暂停根菜单同时按住 N + O + R + M 打开 GM 结局页；正常、配额失败、神父三个选项进入相应开门结局，隐藏选项从自审第一句入口开始。选择后替换当前流程并恢复游戏，可从正式海滩返回房间切换分支；Esc 只退回暂停根菜单。日期、患者历史与已有手动存档保留，旧演出及其检查点清除；旧回调不会推进新流程。主菜单、设置、操作手册和独立海滩预览不绑定该入口；原暂停标题四击仍直接进入海滩。`[verified: ../../UnityProject/Assets/MiniGame/Runtime/PauseMenuView.cs UpdateGmChord/BuildGm；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs TryEnterGmEnding；../../src/MiniGame.Presentation/GameRuntime.cs EnterGmEndingFromPause]`
 

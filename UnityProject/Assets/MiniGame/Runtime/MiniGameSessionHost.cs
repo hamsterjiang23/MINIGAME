@@ -306,7 +306,7 @@ namespace MiniGame.UnityHost
                     { saved.CameraPosition = DreamCheckpoint.CameraPosition; saved.CameraRotation = DreamCheckpoint.CameraRotation; saved.FieldOfView = DreamCheckpoint.FieldOfView; }
                 }
                 WriteAtomically(Path.GetFullPath(path), JsonUtility.ToJson(saved, true));
-                LastMessage = "梦境流程检查点已保存。";
+                LastMessage = "存档已记录。";
                 return true;
             }
             catch (Exception exception)
@@ -397,7 +397,7 @@ namespace MiniGame.UnityHost
                     if (bootstrap != null) bootstrap.RestoreFromSession(this);
                     else TransitionTo(CombinedScene);
                 }
-                LastMessage = "已恢复检查点；没有重复结算反叛值或净化。";
+                LastMessage = "存档已读取。";
                 return true;
             }
             catch (Exception exception)

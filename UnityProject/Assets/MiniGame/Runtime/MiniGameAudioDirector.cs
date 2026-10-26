@@ -151,6 +151,8 @@ namespace MiniGame.UnityHost
         {
             var before = previous;
             previous = view;
+            if (before != null && (before.Cue?.Token != view.Cue?.Token || before.Game.Day != view.Game.Day))
+                StopSupervisorScan();
             SynchronizeLoops(view);
             UpdateKnocking(view, 0);
             if (view.Paused)
@@ -293,6 +295,8 @@ namespace MiniGame.UnityHost
             if (service.PlayOneShot(MiniGameAudioChannel.Scanner, MiniGameSound.Scan))
                 supervisorScanDays.Add(view.Game.Day);
         }
+
+        public void StopSupervisorScan() => service?.Stop(MiniGameAudioChannel.Scanner);
 
         public int[] CaptureSupervisorScanDays(GameRuntime game)
         {

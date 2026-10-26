@@ -63,7 +63,7 @@ namespace MiniGame.UnityHost
         public float WallMonitorHeightDegrees = 3.5f;
         [Range(.1f, 4), InspectorName("前进速度（米/秒）")] public float WalkSpeed = 1.2f;
         [Range(.5f, 4), InspectorName("床交互距离（米）")] public float BedInteractionDistance = 1.5f;
-        [Range(.2f, 5), InspectorName("躺下时间（秒）")] public float LieDownSeconds = 1.5f;
+        [Range(.2f, 5), InspectorName("躺下时间（秒）")] public float LieDownSeconds = 5f;
         [InspectorName("躺稳后随海浪轻浮")] public bool EnableOceanFloat = true;
         [Range(0, .2f), InspectorName("海浪视角起伏（米）")] public float OceanFloatHeight = .1f;
         [Range(0, 5), InspectorName("海浪视角俯仰（度）")] public float OceanFloatPitch = 2.6f;
@@ -114,7 +114,7 @@ namespace MiniGame.UnityHost
             PanoramaShoreDistance = Valid(PanoramaShoreDistance, 0, 60, 12);
             WalkSpeed = Valid(WalkSpeed, .1f, 4, 1.2f);
             BedInteractionDistance = Valid(BedInteractionDistance, .5f, 4, 1.5f);
-            LieDownSeconds = Valid(LieDownSeconds, .2f, 5, 1.5f);
+            LieDownSeconds = Valid(LieDownSeconds, .2f, 5, 5f);
             FloatAmplitude = Valid(FloatAmplitude, 0, .3f, .08f);
             FloatPeriod = Valid(FloatPeriod, 2, 30, 8);
             FloatTiltDegrees = Valid(FloatTiltDegrees, 0, 5, 1.5f);
@@ -167,6 +167,8 @@ namespace MiniGame.UnityHost
     [Serializable]
     public sealed class BeachEndingCheckpoint
     {
+        public float LieDownDuration;
+        public float LieDownTurnDuration;
         public BeachEndingPhase Phase;
         public float WorldTime;
         public float WalkDistance;
