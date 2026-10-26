@@ -11,6 +11,15 @@ namespace MiniGame.UnityHost
         private Camera view;
         private GameRuntime runtime;
         public float HorizontalFieldOfView { get => horizontalFieldOfView; set => horizontalFieldOfView = Mathf.Clamp(value, 20, 120); }
+        // Transitions can query the world lens before the first world-input frame.
+        public float VerticalFieldOfView
+        {
+            get
+            {
+                if (view == null) view = GetComponent<Camera>();
+                return 2 * Mathf.Atan(Mathf.Tan(horizontalFieldOfView * .5f * Mathf.Deg2Rad) / view.aspect) * Mathf.Rad2Deg;
+            }
+        }
         public void Configure(float angle) { HorizontalFieldOfView = angle; Apply(); }
         public void ConfigureDreams(DreamSequenceDirector director) => dreamDirector = director;
         public void Bind(GameRuntime game) { runtime = game; if (!game.GetView().TerminalOpen) Apply(); }
@@ -23,7 +32,7 @@ namespace MiniGame.UnityHost
         {
             if (dreamDirector != null && dreamDirector.OwnsCamera) return;
             if (view == null) view = GetComponent<Camera>();
-            view.fieldOfView = 2 * Mathf.Atan(Mathf.Tan(horizontalFieldOfView * .5f * Mathf.Deg2Rad) / view.aspect) * Mathf.Rad2Deg;
+            view.fieldOfView = VerticalFieldOfView;
         }
     }
 }

@@ -514,7 +514,8 @@ namespace MiniGame.UnityHost.Tests
             var originalPosition = originalBed.transform.position;
             var originalRotation = originalBed.transform.rotation;
             var profile = Own(Object.Instantiate(host.DreamProfile));
-            profile.CubemapFaceSize = string.IsNullOrWhiteSpace(videoDirectory) ? 256 : 1024;
+            profile.CubemapFaceSize = string.IsNullOrWhiteSpace(videoDirectory)
+                && string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("MINIGAME_PORTAL_CAPTURE_DIR")) ? 256 : 1024;
             host.ConfigureDreams(profile, Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion"));
             host.StartCampaign();
             host.Runtime.SetPaused(false);
@@ -523,6 +524,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(room.IsPortalPreview, Is.True);
             Assert.That(room.CaptureTransitionCheckpoint().MonitorReturn, Is.True);
             Assert.That(room.Portal.HeadTexture.IsCreated(), Is.True);
+            Assert.That(Vector3.Distance(room.Portal.HeadProjectionOrigin, room.ViewCamera.transform.position),
+                Is.LessThan(.001f), "The printed head and physical foot must share the actual spawn eye.");
+            EndingCampaignPlayModeTests.CapturePortalView(room, "bed-spawn-projection", width: 1468, height: 730);
             Assert.That(room.Portal.Wall.GetDistanceToPoint(room.Ending.Bed.position), Is.EqualTo(0).Within(.001f));
             var beforePoseChecks = room.Ending.CaptureCheckpoint();
             var pillowTarget = room.Ending.Bed.Find("Room Pillow Eye Position").position;
@@ -567,6 +571,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(room.Ending.GetComponentsInChildren<UnityEngine.UI.RawImage>(true)
                 .Single(image => image.name == "InteractionCursor").gameObject.activeInHierarchy, Is.True);
             Assert.That(room.Ending.HandleInteractionInput(true, false), Is.True, "The ordinary E interaction remains available.");
+            Assert.That(room.Ending.LieDownDuration, Is.EqualTo(room.Ending.Profile.LieDownSeconds * 1.5f).Within(.0001f));
             var lieStart = room.Ending.CaptureCheckpoint();
             var pillowEye = room.Ending.Bed.Find("Room Pillow Eye Position");
             var intoPillow = Vector3.ProjectOnPlane(pillowEye.position - lieStart.LieStartPosition, Vector3.up).normalized;
@@ -594,12 +599,14 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(room.Portal.IsOutside, Is.False);
             int dissolveFrames = 0;
             float previousOpacity = 1;
-            for (int frame = 23; frame <= 45; frame++)
+            for (int frame = 23; frame <= 68; frame++)
             {
                 var previousRotation = room.ViewCamera.transform.rotation;
                 ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
                 yield return null; // Streaming audio seeks settle on the audio thread.
                 room.Ending.AdvanceForTests(0, 1 / 30f);
+                if (frame == 45)
+                    Assert.That(room.Ending.Phase, Is.EqualTo(BeachEndingPhase.Lying), "Half-speed recline must still be active at the old completion time.");
                 float opacity = room.RoomSurface.Opacity;
                 if (Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up) < Mathf.Sin(RoomDreamEnding.SkyRevealPitch * Mathf.Deg2Rad))
                 {
@@ -627,7 +634,7 @@ namespace MiniGame.UnityHost.Tests
                         "The real beach must already be rendering underneath the fading print.");
                 }
                 if (room.Portal.IsOutside) Assert.That(opacity, Is.Zero, "The print must be gone before the eye crosses it.");
-                if (frame >= 44)
+                if (frame >= 66)
                     Assert.That(Quaternion.Angle(previousRotation, room.ViewCamera.transform.rotation), Is.LessThan(3),
                         "The final lie-down frames must join the sky hold without a roll or direction flip.");
                 Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, intoPillow), Is.LessThan(.001f),
@@ -643,7 +650,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(room.Ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
             Assert.That(room.Portal.IsOutside, Is.True);
             Assert.That(Vector3.Dot(room.ViewCamera.transform.forward, Vector3.up), Is.GreaterThan(.999f));
-            for (int frame = 46; frame <= 180; frame++)
+            for (int frame = 69; frame <= 203; frame++)
             {
                 ocean.timeSamples = (oceanStart + Mathf.RoundToInt(frame / 30f * ocean.clip.frequency)) % ocean.clip.samples;
                 yield return null; // Streaming audio seeks settle on the audio thread.

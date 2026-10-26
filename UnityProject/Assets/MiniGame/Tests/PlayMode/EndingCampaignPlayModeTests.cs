@@ -93,6 +93,77 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
+        public IEnumerator DreamSupervisorInterruptFreezesClockRestoresSaveAndResumesFiveSeconds()
+        {
+            host.Runtime.SetPaused(true);
+            Assert.That(host.Runtime.EnterHiddenEndingFromPause().Accepted, Is.True);
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true
+                && host.Runtime.EndingStage == EndingStage.Space, "hidden space", 15);
+            var room = Object.FindObjectOfType<RoomDreamEnding>();
+            var ending = room.Ending;
+            ending.UseExternalClock = true;
+            for (int step = 0; step < 300 && !ending.CanLieDown; step++)
+                room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
+            Assert.That(ending.TryLieDown(), Is.True);
+            ending.AdvanceForTests(0, ending.LieDownDuration);
+            ending.AdvanceForTests(0, 6.99f);
+            Assert.That(ending.SupervisorDialogueActive, Is.False);
+            ending.AdvanceForTests(0, 100);
+            Assert.That(ending.SupervisorDialogueActive, Is.True);
+            Assert.That(ending.CaptureCheckpoint().PhaseElapsed, Is.EqualTo(7));
+            float world = ending.WorldTime;
+            var music = ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic);
+            var ocean = ending.Audio.GetSource(MiniGameAudioChannel.Ocean);
+            Assert.That(music.isPlaying, Is.False);
+            Assert.That(ocean.isPlaying, Is.False);
+            Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.ComputerNoise).isPlaying, Is.True);
+            for (int line = 0; line < 4; line++)
+            {
+                Assert.That(ending.SupervisorDialogueIndex, Is.EqualTo(line));
+                ending.AdvanceForTests(0, 100);
+                Assert.That(ending.WorldTime, Is.EqualTo(world));
+                Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.SupervisorVoice).clip, Is.Not.Null);
+                if (line == 1)
+                {
+                    var save = ending.CaptureCheckpoint();
+                    ending.SetPaused(true);
+                    Assert.That(ending.HandleInteractionInput(false, true), Is.False);
+                    ending.RestoreCheckpoint(save);
+                    ending.SetPaused(false);
+                    Assert.That(music.isPlaying, Is.False);
+                    Assert.That(ocean.isPlaying, Is.False);
+                }
+                yield return null;
+                // A click during typing reveals the line; the next click advances it.
+                ending.HandleInteractionInput(false, true);
+                CaptureDreamSupervisor(room, "dream-supervisor-line-" + line);
+                yield return null;
+                if (ending.SupervisorDialogueActive && ending.SupervisorDialogueIndex == line)
+                    ending.HandleInteractionInput(false, true);
+                yield return null;
+            }
+            yield return EndingVisualCapture.Flush();
+            Assert.That(ending.SupervisorDialogueActive, Is.False);
+            Assert.That(music.isPlaying, Is.True);
+            Assert.That(ocean.isPlaying, Is.True);
+            ending.AdvanceForTests(0, 4.99f);
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
+            string finalSave = Path.Combine(temporaryDirectory, "after-supervisor.json");
+            var session = MiniGameSessionHost.Current;
+            Assert.That(session.TrySaveTo(finalSave, out var error), Is.True, error);
+            Assert.That(session.TryLoadFrom(finalSave, out error, true), Is.True, error);
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>()?.Ready == true
+                && !session.IsTransitioning, "restored final five seconds", 15);
+            ending = Object.FindObjectOfType<RoomDreamEnding>().Ending;
+            ending.UseExternalClock = true;
+            Assert.That(ending.CaptureCheckpoint().PhaseElapsed, Is.GreaterThan(10));
+            Assert.That(ending.SupervisorDialogueActive, Is.False);
+            ending.SetPaused(false);
+            ending.AdvanceForTests(0, .02f);
+            Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.FadingOut));
+        }
+
+        [UnityTest, Timeout(60000)]
         public IEnumerator PauseTitleShortcutFromDayZeroReachesHiddenBedAndReturnsWithOneEndNote()
         {
             Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
@@ -546,10 +617,15 @@ namespace MiniGame.UnityHost.Tests
                 AssertHiddenBedInputLocked(room);
                 EndingVisualCapture.Request("hidden-bed-restored-" + phase.ToString().ToLowerInvariant(), session.Runtime);
                 yield return null;
-                float duration = phase == BeachEndingPhase.Lying ? ending.Profile.LieDownSeconds
-                    : phase == BeachEndingPhase.SkyHold ? DreamEndingController.SkyHoldSeconds
+                float duration = phase == BeachEndingPhase.Lying ? ending.LieDownDuration
+                    : phase == BeachEndingPhase.SkyHold ? DreamEndingController.SupervisorInterruptSeconds + DreamEndingController.PostDialogueSeconds
                     : DreamEndingController.EndingFadeSeconds;
                 ending.AdvanceForTests(0, duration - ending.CaptureCheckpoint().PhaseElapsed);
+                if (ending.SupervisorDialogueActive)
+                {
+                    yield return ClickThroughDreamSupervisor(ending);
+                    ending.AdvanceForTests(0, DreamEndingController.PostDialogueSeconds);
+                }
                 if (phase != BeachEndingPhase.FadingOut) ending.AdvanceForTests(0, .35f);
             }
 
@@ -709,7 +785,7 @@ namespace MiniGame.UnityHost.Tests
                     EndingVisualCapture.Request("hidden-bed-crossed-wall", host.Runtime);
                     CapturePortalView(room, "eye-crossing-wall");
                 }
-                if (elapsed > .1f && elapsed < ending.Profile.LieDownSeconds - .1f)
+                if (elapsed > .1f && elapsed < ending.LieDownDuration - .1f)
                 {
                     if (elapsed < ending.Profile.LieDownSeconds * .5f)
                         Assert.That(Vector3.Distance(ending.ViewCamera.transform.position, standingPosition), Is.LessThan(.0001f),
@@ -730,7 +806,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(movingFrames, Is.GreaterThan(0), "The player must see the camera move onto the bed.");
             Assert.That(capturedLying, Is.True, "Capture the visible middle of the lie-down motion.");
             Assert.That(crossedWall, Is.True, "The eye must physically pass through the wall during the motion.");
-            Assert.That(Time.realtimeSinceStartup - lyingStarted, Is.GreaterThanOrEqualTo(1.4f));
+            Assert.That(Time.realtimeSinceStartup - lyingStarted, Is.GreaterThanOrEqualTo(2.15f));
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
             var skyPosition = ending.ViewCamera.transform.position;
             var skyRotation = ending.ViewCamera.transform.rotation;
@@ -743,6 +819,7 @@ namespace MiniGame.UnityHost.Tests
             CapturePortalView(room, "outside-sky");
             while (ending.Phase == BeachEndingPhase.SkyHold)
             {
+                if (ending.SupervisorDialogueActive) ending.HandleInteractionInput(false, true);
                 AssertHiddenBedInputLocked(room);
                 minHeave = Mathf.Min(minHeave, ending.OceanFloatPose.x);
                 maxHeave = Mathf.Max(maxHeave, ending.OceanFloatPose.x);
@@ -797,9 +874,11 @@ namespace MiniGame.UnityHost.Tests
             ending.UseExternalClock = true;
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.Lying));
             AssertHiddenBedInputLocked(room);
-            ending.AdvanceForTests(0, ending.Profile.LieDownSeconds);
+            ending.AdvanceForTests(0, ending.LieDownDuration);
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.SkyHold));
-            ending.AdvanceForTests(0, DreamEndingController.SkyHoldSeconds);
+            ending.AdvanceForTests(0, DreamEndingController.SupervisorInterruptSeconds);
+            yield return ClickThroughDreamSupervisor(ending);
+            ending.AdvanceForTests(0, DreamEndingController.PostDialogueSeconds);
             Assert.That(ending.Phase, Is.EqualTo(BeachEndingPhase.FadingOut));
             ending.AdvanceForTests(0, DreamEndingController.EndingFadeSeconds);
             Assert.That(ending.IsBedEndingComplete, Is.True);
@@ -807,6 +886,46 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.EndingStage, Is.EqualTo(EndingStage.Space));
             Assert.That(endNoteStarts, Is.Zero);
             yield return null;
+        }
+
+        // Render the live ending canvas with its camera for opt-in batch preview evidence.
+        private static void CaptureDreamSupervisor(RoomDreamEnding room, string name)
+        {
+            if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("MINIGAME_PORTAL_CAPTURE_DIR"))) return;
+            var canvas = room.Ending.GetComponentsInChildren<Canvas>().First(c => c.name == "海滩字幕与暂停");
+            var mode = canvas.renderMode;
+            var camera = canvas.worldCamera;
+            float distance = canvas.planeDistance;
+            int mask = room.ViewCamera.cullingMask;
+            var children = canvas.GetComponentsInChildren<Transform>(true);
+            var layers = children.Select(child => child.gameObject.layer).ToArray();
+            try
+            {
+                room.ViewCamera.cullingMask |= 1 << 5;
+                foreach (var child in children) child.gameObject.layer = 5;
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = room.ViewCamera;
+                canvas.planeDistance = 1;
+                Canvas.ForceUpdateCanvases();
+                CapturePortalView(room, name, width: 1920, height: 1080);
+            }
+            finally
+            {
+                canvas.renderMode = mode; canvas.worldCamera = camera; canvas.planeDistance = distance;
+                room.ViewCamera.cullingMask = mask;
+                for (int i = 0; i < children.Length; i++) children[i].gameObject.layer = layers[i];
+                Canvas.ForceUpdateCanvases();
+            }
+        }
+
+        private static IEnumerator ClickThroughDreamSupervisor(DreamEndingController ending)
+        {
+            for (int click = 0; ending.SupervisorDialogueActive && click < 8; click++)
+            {
+                yield return null;
+                ending.HandleInteractionInput(false, true);
+            }
+            Assert.That(ending.SupervisorDialogueActive, Is.False);
         }
 
         private static void AssertHiddenBedInputLocked(RoomDreamEnding room)

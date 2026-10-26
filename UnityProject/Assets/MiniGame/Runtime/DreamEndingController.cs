@@ -11,7 +11,15 @@ namespace MiniGame.UnityHost
     [DisallowMultipleComponent]
     public sealed class DreamEndingController : MonoBehaviour
     {
-        public const float SkyHoldSeconds = 10f;
+        public const float SkyHoldSeconds = SupervisorInterruptSeconds + PostDialogueSeconds;
+        public const float SupervisorInterruptSeconds = 7f;
+        public const float PostDialogueSeconds = 5f;
+        private DreamSupervisorDialogue supervisorDialogue;
+        private int dialoguePresentedFrame = -1;
+        public bool SupervisorDialogueActive => UsesBedEndingSequence && state.Phase == BeachEndingPhase.SkyHold
+            && state.PhaseElapsed >= SupervisorInterruptSeconds && !state.SupervisorDialogueComplete;
+        public int SupervisorDialogueIndex => state.SupervisorDialogueIndex;
+        public string SupervisorSubtitle => supervisorDialogue != null ? supervisorDialogue.Text : string.Empty;
         public const float EndingFadeSeconds = 1f;
         [SerializeField] private DreamSequenceProfile profile;
         [SerializeField] private Camera viewCamera;
@@ -51,6 +59,18 @@ namespace MiniGame.UnityHost
         public float WorldTime => worldTime;
         public BeachEndingPhase Phase => state.Phase;
         private bool UsesBedEndingSequence => roomEnding != null && (roomEnding.UsesSharedThanks || roomEnding.IsPortalPreview);
+        // Keep the initial half-duration turn; double only the subsequent recline/crossing time.
+        public float LieDownDuration => Safe(profile.LieDownSeconds, 1.5f, .01f)
+            * (roomEnding?.Portal != null ? 1.5f : 1);
+        private float LieDownProgress
+        {
+            get
+            {
+                float elapsed = state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f);
+                return Mathf.Clamp01(roomEnding?.Portal != null && elapsed > .5f
+                    ? .5f + (elapsed - .5f) * .5f : elapsed);
+            }
+        }
         public float EndingFadeOpacity => endingFade != null ? endingFade.color.a : 0;
         public bool IsBedEndingComplete => UsesBedEndingSequence && state.Phase == BeachEndingPhase.FadingOut
             && state.PhaseElapsed >= EndingFadeSeconds;
@@ -158,7 +178,7 @@ namespace MiniGame.UnityHost
             if (!initialized || audioService == null) return;
             // Use the final camera pose, including the monitor-return entrance and the lie-down motion.
             bool facing = !thanksActive && !Paused && !MainMenuController.BlocksGameplayInput
-                && roomEnding != null && roomEnding.IsFacingPrintedMonitor;
+                && (SupervisorDialogueActive || roomEnding != null && roomEnding.IsFacingPrintedMonitor);
             audioService.SetLoop(MiniGameAudioChannel.ComputerNoise,
                 facing ? MiniGameSound.PCNoise : (MiniGameSound?)null, facing ? .08f : 0);
         }
@@ -168,6 +188,12 @@ namespace MiniGame.UnityHost
             if ((!interactPressed && !primaryPressed) || pauseClosedFrame == Time.frameCount
                 || lastInteractionInputFrame == Time.frameCount || MainMenuController.BlocksGameplayInput) return false;
             lastInteractionInputFrame = Time.frameCount;
+            if (SupervisorDialogueActive)
+            {
+                if (Paused || dialoguePresentedFrame == Time.frameCount || !primaryPressed) return false;
+                supervisorDialogue.Advance();
+                return true;
+            }
             if (roomEnding?.Portal != null && !BedInteractionFocused) return false;
             return TryLieDown();
         }
@@ -189,6 +215,7 @@ namespace MiniGame.UnityHost
 
         public void HideForThanks()
         {
+            supervisorDialogue?.Hide();
             thanksActive = true;
             interactionCursor?.SetVisible(false);
             roomEnding?.SetBedFocus(false);
@@ -208,6 +235,15 @@ namespace MiniGame.UnityHost
             ApplyPause();
             if (Paused) { ApplyWaterParameters(); RenderRoomCubemap(); return; }
             dt = Finite(dt) ? Mathf.Max(0, dt) : 0;
+            if (SupervisorDialogueActive) { supervisorDialogue.Tick(dt); return; }
+            // Discard overshoot at the interruption; waiting for a click cannot consume the ending.
+            if (UsesBedEndingSequence && !state.SupervisorDialogueComplete)
+            {
+                float until = state.Phase == BeachEndingPhase.Lying
+                    ? Mathf.Max(0, LieDownDuration - state.PhaseElapsed) + SupervisorInterruptSeconds
+                    : state.Phase == BeachEndingPhase.SkyHold ? Mathf.Max(0, SupervisorInterruptSeconds - state.PhaseElapsed) : float.PositiveInfinity;
+                dt = Mathf.Min(dt, until);
+            }
             worldTime += dt;
             if (state.Phase == BeachEndingPhase.Walking)
             {
@@ -222,7 +258,7 @@ namespace MiniGame.UnityHost
             else if (state.Phase == BeachEndingPhase.Lying)
             {
                 state.PhaseElapsed += dt;
-                float duration = Safe(profile.LieDownSeconds, 1.5f, .01f);
+                float duration = LieDownDuration;
                 if (state.PhaseElapsed >= duration)
                 {
                     float remaining = state.PhaseElapsed - duration;
@@ -239,16 +275,17 @@ namespace MiniGame.UnityHost
                 AdvanceSubtitles(dt);
             }
             ApplyPose();
+            if (SupervisorDialogueActive) BeginSupervisorDialogue();
             RefreshInterface();
             PublishCheckpoint();
         }
 
         private void AdvanceBedEnding(float dt)
         {
-            // Carry overshoot between stages without shortening the ten seconds after lying down.
+            // Carry overshoot between stages; the supervisor interruption is handled before this clock.
             for (int stage = 0; stage < 3; stage++)
             {
-                float duration = state.Phase == BeachEndingPhase.Lying ? Safe(profile.LieDownSeconds, 1.5f, .01f)
+                float duration = state.Phase == BeachEndingPhase.Lying ? LieDownDuration
                     : state.Phase == BeachEndingPhase.SkyHold ? SkyHoldSeconds : EndingFadeSeconds;
                 float used = Mathf.Min(dt, Mathf.Max(0, duration - state.PhaseElapsed));
                 state.PhaseElapsed += used;
@@ -257,6 +294,26 @@ namespace MiniGame.UnityHost
                 state.Phase = state.Phase == BeachEndingPhase.Lying ? BeachEndingPhase.SkyHold : BeachEndingPhase.FadingOut;
                 state.PhaseElapsed = 0;
             }
+        }
+
+        private void BeginSupervisorDialogue()
+        {
+            dialoguePresentedFrame = Time.frameCount;
+            supervisorDialogue.Present(state.SupervisorDialogueIndex, () =>
+            {
+                state.SupervisorDialogueIndex++;
+                if (state.SupervisorDialogueIndex < DreamSupervisorDialogue.Lines.Length) BeginSupervisorDialogue();
+                else
+                {
+                    state.SupervisorDialogueComplete = true;
+                    supervisorDialogue.Hide();
+                    audioService.Stop(MiniGameAudioChannel.ComputerNoise);
+                }
+                ApplyPause(true);
+                PublishCheckpoint();
+            });
+            audioService.SetLoop(MiniGameAudioChannel.ComputerNoise, MiniGameSound.PCNoise, 0);
+            ApplyPause(true);
         }
 
         public bool TryLieDown()
@@ -322,7 +379,7 @@ namespace MiniGame.UnityHost
             }
             else if (state.Phase == BeachEndingPhase.Lying)
             {
-                float progress = Mathf.Clamp01(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f));
+                float progress = LieDownProgress;
                 if (roomEnding?.Portal != null)
                     roomEnding.ApplyWallLieDown(state.LieStartPosition, state.LieStartRotation, bed.TransformPoint(pillowLocal), progress);
                 else
@@ -407,7 +464,7 @@ namespace MiniGame.UnityHost
             // The wall image stays painted in place. The eye physically crosses it into the exterior.
             roomEnding.RoomSurface?.SetProjectionOrigin(roomEnding.PanoramaOrigin);
             roomEnding.UpdatePortalView(worldTime, state.Phase == BeachEndingPhase.Lying
-                ? (float?)(state.PhaseElapsed / Safe(profile.LieDownSeconds, 1.5f, .01f)) : null);
+                ? (float?)LieDownProgress : null);
         }
 
         private void CreateWaterMaterials()
@@ -470,6 +527,7 @@ namespace MiniGame.UnityHost
             var saved = new BeachEndingCheckpoint
             {
                 Phase = state.Phase, WorldTime = worldTime, WalkDistance = state.WalkDistance, PhaseElapsed = state.PhaseElapsed,
+                SupervisorDialogueIndex = state.SupervisorDialogueIndex, SupervisorDialogueComplete = state.SupervisorDialogueComplete,
                 DriftElapsed = state.DriftElapsed, SubtitleElapsed = state.SubtitleElapsed,
                 SubtitleIndex = state.SubtitleIndex, SubtitlesComplete = state.SubtitlesComplete,
                 LieStartPosition = state.LieStartPosition, LieStartRotation = state.LieStartRotation,
@@ -490,6 +548,8 @@ namespace MiniGame.UnityHost
             state = new BeachEndingCheckpoint
             {
                 Phase = Enum.IsDefined(typeof(BeachEndingPhase), value.Phase) ? value.Phase : BeachEndingPhase.Walking,
+                SupervisorDialogueIndex = Mathf.Clamp(value.SupervisorDialogueIndex, 0, DreamSupervisorDialogue.Lines.Length - 1),
+                SupervisorDialogueComplete = value.SupervisorDialogueComplete,
                 WalkDistance = Mathf.Clamp(Safe(value.WalkDistance, 0, 0), 0, MaximumWalkDistance),
                 PhaseElapsed = Safe(value.PhaseElapsed, 0, 0), DriftElapsed = Safe(value.DriftElapsed, 0, 0),
                 SubtitleElapsed = Finite(value.SubtitleElapsed) ? value.SubtitleElapsed : 0,
@@ -497,15 +557,18 @@ namespace MiniGame.UnityHost
                 LieStartPosition = value.LieStartPosition, LieStartRotation = value.LieStartRotation
             };
             opaqueFrame = -1;
+            supervisorDialogue.Hide();
             // Older formal saves could contain the preview's drifting phase. Resume at the sky hold.
             if (UsesBedEndingSequence && state.Phase == BeachEndingPhase.Drifting)
             { state.Phase = BeachEndingPhase.SkyHold; state.PhaseElapsed = 0; }
             if (UsesBedEndingSequence && state.Phase != BeachEndingPhase.Walking)
             {
-                float duration = state.Phase == BeachEndingPhase.Lying ? Safe(profile.LieDownSeconds, 1.5f, .01f)
+                float duration = state.Phase == BeachEndingPhase.Lying ? LieDownDuration
                     : state.Phase == BeachEndingPhase.SkyHold ? SkyHoldSeconds : EndingFadeSeconds;
                 state.PhaseElapsed = Mathf.Min(state.PhaseElapsed, duration);
             }
+            if (UsesBedEndingSequence && state.Phase == BeachEndingPhase.SkyHold && !state.SupervisorDialogueComplete)
+                state.PhaseElapsed = Mathf.Min(state.PhaseElapsed, SupervisorInterruptSeconds);
             if (roomEnding != null)
             {
                 bed.SetPositionAndRotation(bedBasePosition, bedBaseRotation);
@@ -532,6 +595,7 @@ namespace MiniGame.UnityHost
             // Streaming seeks reach the audio thread asynchronously; restore the saved visual pose immediately.
             ApplyPose(value.HasOceanPosition ? (int?)Mathf.Max(0, value.OceanSample) : null);
             RenderRoomCubemap();
+            if (SupervisorDialogueActive) BeginSupervisorDialogue();
             ApplyPause(true);
             RefreshInterface();
             PublishCheckpoint();
@@ -543,7 +607,9 @@ namespace MiniGame.UnityHost
             if (force || paused != audioPaused)
             {
                 foreach (var channel in new[] { MiniGameAudioChannel.EndingMusic, MiniGameAudioChannel.Ocean, MiniGameAudioChannel.Voice, MiniGameAudioChannel.ComputerNoise })
-                    if (paused) audioService.Pause(channel); else audioService.Resume(channel);
+                    if (paused || SupervisorDialogueActive && (channel == MiniGameAudioChannel.EndingMusic || channel == MiniGameAudioChannel.Ocean))
+                        audioService.Pause(channel); else audioService.Resume(channel);
+                supervisorDialogue?.SetPaused(paused);
                 audioPaused = paused;
             }
             pauseMenu?.SetVisible(paused && !MainMenuController.BlocksGameplayInput);
@@ -595,6 +661,8 @@ namespace MiniGame.UnityHost
             hint = Label(go.transform, "提示", new Vector2(.5f, .12f), new Vector2(700, 54), 24);
             interactionCursor = new InteractionCursorView((RectTransform)go.transform, TerminalView.Ink);
             caption = Label(go.transform, "字幕", new Vector2(.5f, .12f), new Vector2(1600, 90), 28);
+            supervisorDialogue = gameObject.AddComponent<DreamSupervisorDialogue>();
+            supervisorDialogue.Initialize(go.transform, audioService);
             var curtain = new GameObject("Ending fade", typeof(RectTransform), typeof(Image));
             curtain.transform.SetParent(go.transform, false);
             var curtainRect = (RectTransform)curtain.transform;

@@ -29,7 +29,7 @@ namespace MiniGame.UnityHost
         public GameObject Exterior => exterior;
         public GameObject PrintedProps => props;
         public RenderTexture HeadTexture { get; private set; }
-        public Vector3 HeadProjectionOrigin { get; }
+        public Vector3 HeadProjectionOrigin { get; private set; }
 
         public DreamWallPortal(DreamSequenceProfile settings, Camera camera, Transform parent,
             Bounds roomBounds, Transform bed, Renderer[] bedParts, Vector3 origin)
@@ -47,7 +47,6 @@ namespace MiniGame.UnityHost
                 Wall = new Plane(normal, wallPoint);
                 // The bed pivot is its lengthwise midpoint: half of the real bed crosses the wall.
                 bed.position -= normal * Wall.GetDistanceToPoint(bed.position);
-                HeadProjectionOrigin = new Vector3(bed.position.x, origin.y, bed.position.z) - normal * 1.8f;
 
                 props = new GameObject("Wall print - pillow half only");
                 props.transform.SetParent(parent, false);
@@ -134,9 +133,12 @@ namespace MiniGame.UnityHost
             return origin + direction * distance;
         }
 
-        public void CaptureHeadWallpaper()
+        public void CaptureHeadWallpaper(Vector3 spawnEye)
         {
             if (HeadTexture != null) return;
+            // Anamorphic paint must share the actual spawn eye with the physical foot half.
+            // Keep this origin fixed after capture so walking still reveals the wall illusion.
+            HeadProjectionOrigin = spawnEye;
             HeadTexture = new RenderTexture(Mathf.Clamp(profile.CubemapFaceSize, 256, 1024),
                 Mathf.Clamp(profile.CubemapFaceSize, 256, 1024), 24, RenderTextureFormat.ARGB32)
             {

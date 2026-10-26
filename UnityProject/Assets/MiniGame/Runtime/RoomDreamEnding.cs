@@ -129,7 +129,7 @@ namespace MiniGame.UnityHost
                 RoomSurface = new DreamCubemapRoomSurface(MappedRoomBounds, transform, BedLayer, PanoramaOrigin);
                 if (Portal != null)
                 {
-                    Portal.CaptureHeadWallpaper();
+                    Portal.CaptureHeadWallpaper(standing.position);
                     RoomSurface.BindHead(Portal.HeadTexture, Portal.HeadProjectionOrigin);
                 }
                 ViewCamera.clearFlags = Portal == null ? CameraClearFlags.SolidColor : CameraClearFlags.Skybox;

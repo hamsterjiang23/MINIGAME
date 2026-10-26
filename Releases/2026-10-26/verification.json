@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-26",
+  "package": "NORM.zip",
+  "sha256": "06fdad59e2562bbddb6623deb92d5042aa0e7f7e94df486034596a855f2df2d5",
+  "bytes": 345411366,
+  "archiveFiles": 170,
+  "archiveCrc": "passed",
+  "unpackedFilesMatchBuild": true,
+  "currentSavedSourcesMatchBuildSnapshot": true,
+  "sourceSnapshotFiles": 3038,
+  "productName": "NORM",
+  "developmentBuild": false,
+  "buildErrors": 0,
+  "buildWarnings": 20,
+  "contentAudit": {
+    "files": 170,
+    "hits": [],
+    "forbiddenFiles": []
+  },
+  "storyDependencies": {
+    "supervisorNodes": 7,
+    "missingNodes": 0,
+    "authoredLines": 46
+  },
+  "targetedUnityChecks": {
+    "distinctPassed": 12,
+    "initialRunPassed": 11,
+    "initialRunFailed": 1,
+    "rerunPassed": 1,
+    "rerunReason": "DayZero camera fixture requires -minigameDirectPlay to enter gameplay; rerun with this setup passed"
+  },
+  "nativeWindowsSmoke": {
+    "launchedFromExtractedZip": true,
+    "mainMenu": true,
+    "titleAndSupervisorIcon": true,
+    "continuedDayOne": true,
+    "supervisorDialogueAdvanced": true,
+    "inspectedLogErrors": 0
+  },
+  "limitation": "The entire campaign was not manually replayed in the final Windows Player."
+}

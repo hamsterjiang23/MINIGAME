@@ -253,7 +253,9 @@ namespace MiniGame.UnityHost
             }
             roomPosition = viewCamera.transform.position;
             roomRotation = viewCamera.transform.rotation;
-            roomFieldOfView = viewCamera.fieldOfView;
+            var projection = viewCamera.GetComponent<ReferenceCameraProjection>();
+            roomFieldOfView = projection != null && projection.isActiveAndEnabled
+                ? projection.VerticalFieldOfView : viewCamera.fieldOfView;
             hasRoomPose = true;
         }
 
@@ -421,7 +423,11 @@ namespace MiniGame.UnityHost
             var source = viewCamera.transform.position;
             var sourceRotation = viewCamera.transform.rotation;
             float sourceFov = viewCamera.fieldOfView;
-            float targetFov = exiting ? roomFieldOfView : 48;
+            // The viewport may have changed while the terminal was open. End on the
+            // same lens the world projection will use when it resumes in LateUpdate.
+            var projection = viewCamera.GetComponent<ReferenceCameraProjection>();
+            float targetFov = exiting && projection != null && projection.isActiveAndEnabled
+                ? projection.VerticalFieldOfView : exiting ? roomFieldOfView : 48;
             float duration = exiting ? TerminalReturnMotion.Seconds : 1.65f;
             var controlA = source + (exiting ? -viewCamera.transform.forward * .12f : viewCamera.transform.forward * .20f);
             var controlB = destination - rotation * Vector3.forward * .15f + Vector3.up * .025f;

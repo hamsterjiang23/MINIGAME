@@ -23,6 +23,8 @@ MonoBehaviour:
   AmbienceGroup: {fileID: 730996643271804801, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
   SfxGroup: {fileID: 1737182478048270975, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
   UIGroup: {fileID: -5151451268429435789, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  EndingMusicGroup: {fileID: 24317001, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
+  OceanGroup: {fileID: 24317002, guid: ba2f0729a63bd8f489a58b46307d5411, type: 2}
   Sounds:
   - Id: 0
     Clip: {fileID: 8300000, guid: 4f7edba9139377348aaf81cc3ac1fb93, type: 3}
@@ -92,7 +94,7 @@ MonoBehaviour:
     Volume: 1
   - Id: 22
     Clip: {fileID: 8300000, guid: 7e690ce50fa7c994cab352b773e25678, type: 3}
-    Volume: 1
+    Volume: 1.5
   - Id: 23
     Clip: {fileID: 8300000, guid: 98a8df406297e7944a0307243831c17a, type: 3}
     Volume: 1
@@ -104,4 +106,4 @@ MonoBehaviour:
     Volume: 1
   - Id: 26
     Clip: {fileID: 8300000, guid: af4740c90f5d044498c70768ecbcdd2e, type: 3}
-    Volume: 1
+    Volume: 2

@@ -67,6 +67,9 @@ namespace MiniGame.UnityHost.Tests
         [UnityTest, Timeout(45000)]
         public IEnumerator DayZeroShutdownReturnsBesideComputerWithStandingCollision()
         {
+            // The Game view can be resized while the terminal owns the lens.
+            host.Player.ViewCamera.aspect *= 1.25f;
+            float finalTransitionFov = float.NaN;
             int shutdownTyping = 0, shutdownPower = 0;
             bool typingSourcePlaying = false;
             host.Audio.Service.SoundPlayed += (channel, sound) =>
@@ -84,6 +87,8 @@ namespace MiniGame.UnityHost.Tests
             float deadline = Time.realtimeSinceStartup + 35;
             while (host.Runtime.GetView().TerminalOpen && Time.realtimeSinceStartup < deadline)
             {
+                if (host.Effects.TerminalTransitionProgress >= .999f && host.Screen.TransitionLocked)
+                    finalTransitionFov = host.Player.ViewCamera.fieldOfView;
                 if (!host.Screen.TransitionLocked)
                 {
                     var buttons = ActiveButtons();
@@ -105,6 +110,19 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Player.GetComponent<CharacterController>().enabled, Is.True);
             Assert.That(host.Effects.IsSeated, Is.False);
             Assert.That(host.Runtime.GetView().AllowedInteractions, Is.EqualTo(new[] { InteractionTarget.Bed }));
+            var camera = host.Player.ViewCamera;
+            Assert.That(float.IsNaN(finalTransitionFov), Is.False, "Observe the final animated return frame.");
+            Assert.That(camera.fieldOfView, Is.EqualTo(finalTransitionFov).Within(.01f),
+                "Returning to world control must not change the lens after the animation.");
+            var handoffPosition = camera.transform.position;
+            var handoffRotation = camera.transform.rotation;
+            host.Runtime.SetPaused(true);
+            yield return null;
+            host.Runtime.SetPaused(false);
+            yield return null;
+            Assert.That(camera.fieldOfView, Is.EqualTo(finalTransitionFov).Within(.01f));
+            Assert.That(Vector3.Distance(camera.transform.position, handoffPosition), Is.LessThan(.001f));
+            Assert.That(Quaternion.Angle(camera.transform.rotation, handoffRotation), Is.LessThan(.05f));
             yield return PrototypePlayModeTests.CaptureIfRequested(host, "day0-return-fixed");
         }
 

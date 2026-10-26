@@ -358,7 +358,9 @@ namespace MiniGame.UnityHost
         private void Route(MiniGameAudioChannel id, AudioSource source)
         {
             if (profile == null) return;
-            source.outputAudioMixerGroup = id == MiniGameAudioChannel.MenuMusic || id == MiniGameAudioChannel.GameplayMusic
+            source.outputAudioMixerGroup = id == MiniGameAudioChannel.EndingMusic && profile.EndingMusicGroup != null ? profile.EndingMusicGroup
+                : id == MiniGameAudioChannel.Ocean && profile.OceanGroup != null ? profile.OceanGroup
+                : id == MiniGameAudioChannel.MenuMusic || id == MiniGameAudioChannel.GameplayMusic
                 || id == MiniGameAudioChannel.DreamMusic || id == MiniGameAudioChannel.EndingMusic ? profile.MusicGroup
                 : id == MiniGameAudioChannel.ComputerNoise || id == MiniGameAudioChannel.Projector || id == MiniGameAudioChannel.Ocean ? profile.AmbienceGroup
                 : id == MiniGameAudioChannel.UI || id == MiniGameAudioChannel.Dialogue || id == MiniGameAudioChannel.Voice

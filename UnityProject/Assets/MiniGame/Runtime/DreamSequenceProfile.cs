@@ -175,6 +175,8 @@ namespace MiniGame.UnityHost
         public float SubtitleElapsed;
         public int SubtitleIndex;
         public bool SubtitlesComplete;
+        public int SupervisorDialogueIndex;
+        public bool SupervisorDialogueComplete;
         public bool HasRoomPose;
         public Vector3 RoomPosition;
         public float RoomYaw;

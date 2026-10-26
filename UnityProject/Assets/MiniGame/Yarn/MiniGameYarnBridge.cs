@@ -166,7 +166,7 @@ namespace MiniGame.UnityHost
             if (!nodeProject.NodeNames.Contains(nodeName))
             {
                 Debug.LogError("The configured Yarn Project is missing the mapped node: " + nodeName, this);
-                _screen.SetDialogueText("内容错误", "当前节点不在生成的Yarn工程中。请重新生成原创开发内容。");
+                _screen.SetDialogueText("内容错误", "对话暂时无法继续，请返回主菜单后重新读取进度。");
                 _screen.HideDialogueActions();
                 return;
             }

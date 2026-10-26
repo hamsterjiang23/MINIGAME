@@ -60,6 +60,8 @@ namespace MiniGame.UnityHost
         public AudioMixer Mixer;
         [InspectorName("音乐通道")] public AudioMixerGroup MusicGroup;
         [InspectorName("环境通道")] public AudioMixerGroup AmbienceGroup;
+        [InspectorName("梦结局音乐通道")] public AudioMixerGroup EndingMusicGroup;
+        [InspectorName("海浪通道")] public AudioMixerGroup OceanGroup;
         [InspectorName("场景音效通道")] public AudioMixerGroup SfxGroup;
         [InspectorName("界面音效通道")] public AudioMixerGroup UIGroup;
 
