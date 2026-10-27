@@ -17,7 +17,11 @@ UnityProject/UserSettings/
 UnityProject/ProjectSettings/Packages/dev.yarnspinner/*-generated.ysls.json
 Builds/
 Artifacts/
-Releases/**/*.zip
+# Keep release payloads local; version only their verification reports.
+Releases/**
+!Releases/**/
+!Releases/**/*.verification.json
+!Releases/**/verification.json
 Tools/**/__pycache__/
 UnityProject/Assets/InitTestScene*.unity
 UnityProject/Assets/InitTestScene*.unity.meta
