@@ -31,7 +31,21 @@ namespace MiniGame.Core
         }
     }
 
-    // This projection intentionally excludes hidden trust and assessment history.
+    /// <summary>A read-only instrument reading relative to this meeting's release threshold.</summary>
+    public sealed class SocialAdaptationReading
+    {
+        // No raw score or patient history is exposed to the terminal.
+        public double RelativeReleaseMargin { get; }
+        public bool MeetsReleaseThreshold => RelativeReleaseMargin >= 0;
+
+        internal SocialAdaptationReading(int trust, int releaseThreshold)
+        {
+            RelativeReleaseMargin = ((double)trust - releaseThreshold)
+                / Math.Max(1d, Math.Abs((double)releaseThreshold));
+        }
+    }
+
+    // Raw trust and assessment history remain private; only the current instrument reading is public.
     public sealed class PlayerView
     {
         public int Day { get; }
@@ -55,13 +69,15 @@ namespace MiniGame.Core
         public IReadOnlyList<string> AvailableResponseIds { get; }
         public IReadOnlyList<Disposition> AvailableDispositions { get; }
         public IReadOnlyList<InteractionTarget> AllowedInteractions { get; }
+        public SocialAdaptationReading? SocialAdaptation { get; }
 
         internal PlayerView(int day, GamePhase phase, EndingType ending, int remainingQuota,
             string? patientId, string? patientName, string? encounterId, string? nodeId,
             EncounterStage? stage, IEnumerable<string> responses,
             IEnumerable<Disposition> dispositions, IEnumerable<InteractionTarget> interactions, int rebellion = 0,
             int purificationsToday = 0, int purificationRequirement = 0,
-            int selfReviewLineIndex = 0, int selfReviewLineCount = 0, GamePhase? dreamReturnPhase = null)
+            int selfReviewLineIndex = 0, int selfReviewLineCount = 0, GamePhase? dreamReturnPhase = null,
+            SocialAdaptationReading? socialAdaptation = null)
         {
             Day = day; Phase = phase; Ending = ending;
             DreamReturnPhase = dreamReturnPhase;
@@ -76,6 +92,7 @@ namespace MiniGame.Core
             AvailableResponseIds = new ReadOnlyCollection<string>(new List<string>(responses));
             AvailableDispositions = new ReadOnlyCollection<Disposition>(new List<Disposition>(dispositions));
             AllowedInteractions = new ReadOnlyCollection<InteractionTarget>(new List<InteractionTarget>(interactions));
+            SocialAdaptation = socialAdaptation;
         }
     }
 }

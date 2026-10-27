@@ -125,7 +125,7 @@ namespace MiniGame.UnityHost.Tests
                 && image.transform.parent.name == "DailyWorkQuotaField");
             var bounds = RectTransformUtility.CalculateRelativeRectTransformBounds(review, artwork.rectTransform);
             Assert.That(bounds.min.x, Is.EqualTo(712).Within(.01f));
-            Assert.That(bounds.max.y, Is.EqualTo(-135).Within(.01f));
+            Assert.That(bounds.max.y, Is.EqualTo(-52).Within(.01f));
             Assert.That(artwork.rectTransform.rect.size, Is.EqualTo(new Vector2(66, 32)));
             Assert.That(((RectTransform)artwork.transform.parent).rect.size, Is.EqualTo(new Vector2(66, 32)));
             Assert.That(artwork.raycastTarget, Is.False);

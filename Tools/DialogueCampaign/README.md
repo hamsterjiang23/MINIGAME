@@ -21,7 +21,11 @@ uv run python -m unittest discover -s Tools/DialogueCampaign -p 'test_*.py'
 
 当前 `1.2.2-development` 的 `provenance.json` 保存全部1360行，其中1294行启用、66行排除，日程实际开放13场会谈；提前于角色入院日期的原始内容仍完整留在审计里。声明21个立绘ID、正文引用17个。部分立绘表仍仅有常量数组公式，只恢复常量，不计算任意公式。`[verified: conversion-config.json contentVersion；provenance.json sourceRowCount/activeSourceRowCount/excludedSourceRowCount/meetingCount/declaredPortraits/referencedPortraits；build_campaign.py read_source]`
 
-旧外交官26条历史措辞覆盖已删除，当前 `text-variants.json` 为空；新版正文按源表播放。医生 Day1 选项 K64 的−5和直接回应 K65 的+5合并为同次回答的净影响0，来源值分别保留。神父+100和医生−107按原表保留。`[verified: text-variants.json；provenance.json mappings/adaptations；test_campaign.py]`
+旧外交官26条历史措辞覆盖已删除，当前 `text-variants.json` 为空；新版正文按源表播放。医生 Day1 选项 K64 的−5和直接回应 K65 的+5合并为同次回答的净影响0，来源值分别保留。神父固定开场+100保留；医生源表−107保留在来源审计，实际回答增量按2026-10-27用户要求调整为−10。`[verified: text-variants.json；trust-adjustments.json；provenance.json mappings/adaptations；test_campaign.py]`
+
+2026-10-27信任修订通过 `trust-adjustments.json` 的64项显式适配生效（当前排期50项、未排期14项），不改原始工作簿或已有图修复。适配在回应增量转移完成后应用，以稳定ID、原文和未适配净值校验前置条件；原始`authoredDelta`、未适配`unadjustedTrustDelta`、最终`trustDelta`与调整理由分别保留。所有条目必须在完整生成中应用，缺失、重复或源内容变化会停止生成。判定门槛、初始信任、处置增量、对白和跳转保持原样。`[verified: build_campaign.build；updated_source.build_updated_meeting；provenance.json trustAdjustmentHash/adaptations]`
+
+2026-10-28新增 `disposition-trust-adjustments.json`，逐项配置46个操作回应（当前排期37个，含教学）。神父各表日释放均扣200，固定开场+100继续保留；其余按对应回应与重复治疗后的感受区分。处置信任在核心接受操作后、回应播放前结算一次，回应期间的社会适应度直接使用更新后读数，重复提交及读档不会再次结算。64项回答适配、正文、图结构和各门槛保持原样。`[verified: disposition-trust-adjustments.json；GameSession.Dispose；CampaignPackageTests.OperationReactionUsesUpdatedTrustExactlyOnceAndRetainsItAcrossRestore]`
 
 2026-10-26按用户截图补充医生 Day1 `P04_D1_R6_COMMON_002` 的句号：“我不记得了。”。此处采用 `source-repairs.json` 的前置文本校验与标点修订，原始工作簿及审计中的原始行保持不变；逐格正文检查仅为这一稳定 ID 接受已确认的句号。`[verified: source-repairs.json books.battlefield-doctor.repairs；test_campaign.py test_every_source_row_is_either_exactly_mapped_or_explicitly_excluded；../../src/MiniGame.Presentation.Tests/CampaignPackageTests.cs EveryActiveSourceRowMapsToUnmodifiedTextAndExcludedRowsRemainAudited]`
 

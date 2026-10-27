@@ -129,13 +129,53 @@ class CampaignConversionTests(unittest.TestCase):
         self.assertEqual(doctor_option["trustDelta"], 0)
         self.assertEqual(doctor_response["authoredDelta"], "5")
         self.assertEqual(doctor_response["trustAppliedTo"], doctor_option["sourceId"])
-        self.assertEqual(by_id["battlefield-doctor__P04_D2_R4_OPTION_001"]["trustDelta"], -107)
+        self.assertEqual(by_id["battlefield-doctor__P04_D2_R4_OPTION_001"]["authoredDelta"], "-107")
+        self.assertEqual(by_id["battlefield-doctor__P04_D2_R4_OPTION_001"]["trustDelta"], -10)
         self.assertEqual(by_id["priest__P01_D1_R1_OPTION_001"]["trustDelta"], 100)
         self.assertEqual(by_id["priest__P01_D2_R1_OPTION_001"]["trustDelta"], 100)
-        self.assertEqual(sum(int(str(mapping["authoredDelta"]) or "0") for mapping in mappings),
+        adjustments = [item for item in self.audit["adaptations"]
+                       if item["kind"] == "user-approved-trust-adjustment"]
+        self.assertEqual(sum(int(str(mapping["authoredDelta"]) or "0") for mapping in mappings)
+                         + sum(int(item["after"]) - int(item["before"]) for item in adjustments),
                          sum(int(str(mapping.get("trustDelta", 0))) for mapping in mappings))
-        self.assertIn("#id:battlefield-doctor__P04_D2_R4_OPTION_001 #trust:-107",
+        self.assertIn("#id:battlefield-doctor__P04_D2_R4_OPTION_001 #trust:-10",
                       str(self.package["yarnSource"]))
+
+    def test_trust_adjustment_rejects_changed_text_or_delta(self) -> None:
+        import json
+        specs = json.loads((HERE / "trust-adjustments.json").read_text(encoding="utf-8"))["adjustments"]
+        source_id = "battlefield-doctor__P04_D2_R4_OPTION_001"
+        original = next(item for item in specs if item["sourceId"] == source_id)
+        patient = {"id": "battlefield-doctor", "name": "埃德温"}
+        book = next(item for item in self.audit["books"] if item["patientId"] == patient["id"])
+        for field, value in (("expectedText", "changed"), ("expectedEffectiveDelta", -10)):
+            with self.subTest(field=field):
+                changed = {**original, field: value}
+                with self.assertRaisesRegex(ValueError, "Trust adjustment precondition failed"):
+                    build_updated_meeting(patient, book["activeRows"], 2, book["schemaColumns"], [], [],
+                                          trust_adjustments={source_id: changed})
+
+    def test_every_disposition_has_an_explicit_audited_reaction_delta(self) -> None:
+        import json
+        entries = json.loads((HERE / "disposition-trust-adjustments.json").read_text(encoding="utf-8"))["adjustments"]
+        self.assertEqual(len(entries), 46)
+        mappings = {m["sourceId"]: m for m in self.audit["mappings"]}
+        action_ids = {book["patientId"] + "__" + row["id"] for book in self.audit["books"]
+                      for row in book["activeRows"] if row.get("action")}
+        self.assertEqual({e["sourceId"] for e in entries}, action_ids)
+        self.assertEqual(sum(bool(mappings[e["sourceId"]]["scheduled"]) for e in entries), 37)
+        for entry in entries:
+            self.assertEqual(mappings[entry["sourceId"]]["trustDelta"], entry["trustDelta"])
+            self.assertEqual(mappings[entry["sourceId"]]["authoredDelta"], "0")
+        priest_release = [e for e in entries if e["sourceId"].startswith("priest__") and e["expectedDisposition"] == "release"]
+        self.assertEqual(len(priest_release), 3)
+        self.assertTrue(all(e["trustDelta"] == -200 for e in priest_release))
+        entry = entries[0]
+        pid = entry["sourceId"].split("__", 1)[0]
+        book = next(b for b in self.audit["books"] if b["patientId"] == pid)
+        with self.assertRaisesRegex(ValueError, "Trust adjustment precondition failed"):
+            build_updated_meeting({"id": pid, "name": "测试"}, book["activeRows"], 0, book["schemaColumns"], [], [],
+                                  trust_adjustments={entry["sourceId"]: {**entry, "expectedDisposition": "release"}})
 
     def test_doctor_recovered_branches_match_old_evidence_and_never_join_options(self) -> None:
         repairs = cast(list[Record], self.audit["repairs"])

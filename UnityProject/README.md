@@ -20,6 +20,8 @@ Norm 标志与监控局部扰动通过游戏内 **F6** 调参，支持两组独�
 
 ## 运行与操作
 
+仅打开当前源工程、不自动进入 Play：双击仓库根的 [Open-Editor.cmd](../Open-Editor.cmd)。它按工程版本定位已安装的 Editor，工程已打开时切回已有窗口；`-CheckOnly` 仅检查路径与版本。[verified: Tools/Open-Editor.ps1]
+
 睡前视觉引导：当天工作结束并退出终端后，仅床被天花板聚光灯照亮，光柱内有飞虫；梦后再次使用同样引导，次日恢复房间。可通过 `MiniGame/Main Room/Preview bedtime lighting` 直接预览，说明与验证见[睡前效果](../docs/bedtime-guidance.md)。[verified: Assets/MiniGame/Runtime/BedtimeGuidance.cs；Assets/MiniGame/Editor/BedtimePreview.cs]
 
 策划验收的步骤、剧情分支条件与对白配置方式见[策划验收指南](../docs/planner-acceptance-guide.md)。[opinion]

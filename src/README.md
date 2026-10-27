@@ -80,7 +80,7 @@ game.Execute(new CompleteResponseBranch(
 
 会面ID和节点ID必须来自当前玩家视图。旧会面的回调、错误节点、连点处置、提前操作和结束后操作会被拒绝。命令需由一个宿主线程按顺序调用；本库没有并发会话控制。
 
-`PlayerView`提供日期、阶段、当前人物／节点、选项ID、可用处置、允许交互和剩余净化配额，不公开隐藏信任。完整快照含信任与历史，供存档和内部调试使用。
+`PlayerView`提供日期、阶段、当前人物／节点、选项ID、可用处置、允许交互和剩余净化配额，不公开原始信任与历史。当前会谈配置了释放处置时，另提供只读 `SocialAdaptation` 检测结果，表示距本场释放门槛的相对差距；终端将其显示为“社会适应度”波形，不显示数字，不参与释放裁决。完整快照含信任与历史，供存档和内部调试使用。[verified: MiniGame.Core/Contracts/GameResult.cs SocialAdaptationReading；MiniGame.Core/Runtime/GameSession.cs GetPlayerView]
 
 ## 开发默认规则
 

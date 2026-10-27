@@ -1,0 +1,375 @@
+{
+  "version": 1,
+  "revision": "disposition-trust-2026-10-28-v1",
+  "policy": "User approved operation-response trust deltas. Priest release subtracts 200; ordinary reply adjustments and priest opening +100 remain. Settle each accepted disposition once before reaction playback; preserve authored text, graph and thresholds.",
+  "adjustments": [
+    {
+      "sourceId": "tutorial__P00_D0_R1_PLAYER_ACTION_001",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 0,
+      "reason": "教学角色安慰的是玩家，未表达自身情绪反转；保留0，也不借用正式患者仪表。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "虽配合但仍反对收容，重复治疗令她越来越害怕遗忘。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -8,
+      "reason": "回应明确反对净化或害怕失去身份；后期被背弃感与失去自我的恐惧更强。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 3,
+      "reason": "获释后明确道谢，逐渐从警惕转为想活着回家的安心。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -4,
+      "reason": "虽配合但仍反对收容，重复治疗令她越来越害怕遗忘。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -12,
+      "reason": "回应明确反对净化或害怕失去身份；后期被背弃感与失去自我的恐惧更强。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 4,
+      "reason": "获释后明确道谢，逐渐从警惕转为想活着回家的安心。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -8,
+      "reason": "虽配合但仍反对收容，重复治疗令她越来越害怕遗忘。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -15,
+      "reason": "回应明确反对净化或害怕失去身份；后期被背弃感与失去自我的恐惧更强。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 5,
+      "reason": "获释后明确道谢，逐渐从警惕转为想活着回家的安心。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R7_PLAYER_ACTION_001",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -6,
+      "reason": "初次宁愿死在战场，第二次虽认命仍诅咒玩家，第三次反对用安静代替保留人格。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R7_PLAYER_ACTION_002",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "明确不认可治疗；再次治疗后说宁愿去死，第三次强调并未同意。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R7_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "从不确定自己该不该出去，到感谢被听完并希望自己选择后果，逐步安心。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R5_PLAYER_ACTION_001",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -5,
+      "reason": "初次宁愿死在战场，第二次虽认命仍诅咒玩家，第三次反对用安静代替保留人格。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R5_PLAYER_ACTION_002",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 3,
+      "reason": "从不确定自己该不该出去，到感谢被听完并希望自己选择后果，逐步安心。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R5_PLAYER_ACTION_003",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -3,
+      "reason": "明确不认可治疗；再次治疗后说宁愿去死，第三次强调并未同意。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -6,
+      "reason": "明确不认可治疗；再次治疗后说宁愿去死，第三次强调并未同意。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -8,
+      "reason": "初次宁愿死在战场，第二次虽认命仍诅咒玩家，第三次反对用安静代替保留人格。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_PLAYER_ACTION_005",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 4,
+      "reason": "从不确定自己该不该出去，到感谢被听完并希望自己选择后果，逐步安心。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "从担心疼痛到害怕再做一次，最终记忆与身份流失；安静和配合不等于放心。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -6,
+      "reason": "持续请求不要关掉、不要离开，害怕被遗弃；第三天仍请求多看自己一会儿。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 3,
+      "reason": "从反复确认能否走，到明确感谢并记住被允许离开，安全感逐次增强。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "从担心疼痛到害怕再做一次，最终记忆与身份流失；安静和配合不等于放心。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -8,
+      "reason": "持续请求不要关掉、不要离开，害怕被遗弃；第三天仍请求多看自己一会儿。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 4,
+      "reason": "从反复确认能否走，到明确感谢并记住被允许离开，安全感逐次增强。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -4,
+      "reason": "从担心疼痛到害怕再做一次，最终记忆与身份流失；安静和配合不等于放心。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -10,
+      "reason": "持续请求不要关掉、不要离开，害怕被遗弃；第三天仍请求多看自己一会儿。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 5,
+      "reason": "从反复确认能否走，到明确感谢并记住被允许离开，安全感逐次增强。"
+    },
+    {
+      "sourceId": "priest__P01_D1_R7_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -100,
+      "reason": "净化被推迟使他愤怒，先是喊叫，再称亵渎，最终威胁亲自动手；大幅降低以让高基值后的回应也能表现激动。"
+    },
+    {
+      "sourceId": "priest__P01_D1_R7_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 10,
+      "reason": "符合他明确且强烈的愿望，回应感谢、舒服、赞美，按角色主观安定程度加分。"
+    },
+    {
+      "sourceId": "priest__P01_D1_R7_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -200,
+      "reason": "用户指定释放信任增量−200：这是相对操作前扣200，不把累计值强制设成−200。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R7_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -120,
+      "reason": "净化被推迟使他愤怒，先是喊叫，再称亵渎，最终威胁亲自动手；大幅降低以让高基值后的回应也能表现激动。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R7_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 15,
+      "reason": "符合他明确且强烈的愿望，回应感谢、舒服、赞美，按角色主观安定程度加分。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R7_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -200,
+      "reason": "用户指定释放信任增量−200：这是相对操作前扣200，不把累计值强制设成−200。"
+    },
+    {
+      "sourceId": "priest__P01_D3_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗（第3次）",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -150,
+      "reason": "净化被推迟使他愤怒，先是喊叫，再称亵渎，最终威胁亲自动手；大幅降低以让高基值后的回应也能表现激动。"
+    },
+    {
+      "sourceId": "priest__P01_D3_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 20,
+      "reason": "符合他明确且强烈的愿望，回应感谢、舒服、赞美，按角色主观安定程度加分。"
+    },
+    {
+      "sourceId": "priest__P01_D3_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -200,
+      "reason": "用户指定释放信任增量−200：这是相对操作前扣200，不把累计值强制设成−200。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 0,
+      "reason": "前两次平静接受继续核对，取中性0；第三次明确拒绝为决定背书，小幅下降。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -3,
+      "reason": "克制地保留异议与拒绝好评，表达不认可但没有明显失控，取较小负值。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "初次道谢，小幅安心；后续仍以观察、核对为主，给予较小正反馈。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 0,
+      "reason": "前两次平静接受继续核对，取中性0；第三次明确拒绝为决定背书，小幅下降。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -3,
+      "reason": "克制地保留异议与拒绝好评，表达不认可但没有明显失控，取较小负值。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "初次道谢，小幅安心；后续仍以观察、核对为主，给予较小正反馈。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R6_PLAYER_ACTION_001",
+      "expectedText": "治疗",
+      "expectedDisposition": "treat",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "前两次平静接受继续核对，取中性0；第三次明确拒绝为决定背书，小幅下降。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R6_PLAYER_ACTION_002",
+      "expectedText": "净化",
+      "expectedDisposition": "purify",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "克制地保留异议与拒绝好评，表达不认可但没有明显失控，取较小负值。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R6_PLAYER_ACTION_003",
+      "expectedText": "释放",
+      "expectedDisposition": "release",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "初次道谢，小幅安心；后续仍以观察、核对为主，给予较小正反馈。"
+    }
+  ]
+}

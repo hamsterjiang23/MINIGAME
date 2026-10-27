@@ -64,8 +64,8 @@ namespace MiniGame.Presentation.Tests
             Assert.That(measures.Select(o => o.Disposition), Is.EquivalentTo(new[]
                 { (Disposition?)Disposition.Treat, Disposition.Purify, Disposition.Release }));
             Assert.That(compiled.Diagnostics, Is.Empty);
-            Assert.That(compiled.Package.YarnSource, Is.EqualTo(File.ReadAllText(Path.Combine(Workspace,
-                "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.yarn"))));
+            Assert.That(compiled.Package.YarnSource.Replace("\r\n", "\n"), Is.EqualTo(File.ReadAllText(Path.Combine(Workspace,
+                "UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.yarn")).Replace("\r\n", "\n")));
         }
 
         [Test]

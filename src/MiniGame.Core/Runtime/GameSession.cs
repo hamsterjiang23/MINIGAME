@@ -85,7 +85,10 @@ namespace MiniGame.Core
                 responses, dispositions, AllowedInteractions(), _state.Rebellion,
                 record?.Purifications ?? 0, record?.PurificationQuota ?? 0,
                 _state.SelfReviewLineIndex, _rules.DreamFlowEnabled ? _rules.SelfReviewLineCount : 0,
-                _state.Phase == GamePhase.Dream ? ResolveDreamReturnPhase() : (GamePhase?)null);
+                _state.Phase == GamePhase.Dream ? ResolveDreamReturnPhase() : (GamePhase?)null,
+                encounter != null && Meeting(encounter).ReactionNodes.ContainsKey(Disposition.Release)
+                    ? new SocialAdaptationReading(Patient(encounter.PatientId).Trust, Meeting(encounter).ReleaseTrustThreshold)
+                    : null);
         }
 
         public GameSnapshot CreateSnapshot() => SnapshotCodec.Copy(new GameSnapshot

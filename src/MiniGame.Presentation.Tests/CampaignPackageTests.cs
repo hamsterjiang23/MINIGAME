@@ -23,6 +23,149 @@ namespace MiniGame.Presentation.Tests
         private static CompiledDialoguePackage Compile() => DialoguePackageCompiler.Compile(Source("campaign.minigame.json"));
 
         [Test]
+        public void ActiveCampaignBindsTheValidatedRebalancedPackageAndRuntimeYarn()
+        {
+            var compiled = Compile();
+            var project = Path.Combine(Workspace(), "UnityProject");
+            var active = File.ReadAllText(Path.Combine(project, "Assets/Resources/MiniGame/ActiveCampaignPackage.asset"));
+            Assert.That(active, Does.Contain("sourceHash: " + compiled.SourceHash));
+            var match = System.Text.RegularExpressions.Regex.Match(active, @"packageSource: \{fileID: 4900000, guid: ([a-f0-9]+)");
+            Assert.That(match.Success, Is.True);
+            var meta = Directory.EnumerateFiles(Path.Combine(project, "Assets/MiniGame/ImportedDialogue/inspection-campaign"),
+                "Package.minigame.json.meta", SearchOption.AllDirectories)
+                .Single(path => File.ReadAllText(path).Contains("guid: " + match.Groups[1].Value));
+            Assert.That(File.ReadAllText(meta.Substring(0, meta.Length - 5)), Is.EqualTo(Source("campaign.minigame.json")));
+            Assert.That(File.ReadAllText(Path.Combine(Path.GetDirectoryName(meta)!, "Runtime.yarn")), Is.EqualTo(compiled.RuntimeYarn));
+        }
+
+        [TestCase(true, false)]
+        [TestCase(true, true)]
+        [TestCase(false, false)]
+        public void RebalancedCampaignRetainsLegalQuotaRoutesAndBothHiddenOutcomes(bool soothing, bool insultDoctor)
+        {
+            var compiled = Compile();
+            var rules = compiled.Rules.WithDreamFlow(0, 100, 100, new Dictionary<string, int>());
+            var session = new GameSession(rules);
+            var doctorReleaseChecked = false;
+            for (var step = 0; step < 1000; step++)
+            {
+                var view = session.GetPlayerView();
+                if (view.Phase == GamePhase.SelfReview || (view.Day == 3 && view.Phase == GamePhase.AfterDream)) break;
+                GameCommand command;
+                if (view.Phase == GamePhase.MorningInspection) command = new CompleteMorningInspection();
+                else if (view.Phase == GamePhase.Briefing) command = new CompleteBriefing();
+                else if (view.Phase == GamePhase.Apartment) command = new Interact(InteractionTarget.Computer);
+                else if (view.Phase == GamePhase.Evening) command = new BeginNightDream();
+                else if (view.Phase == GamePhase.Dream) command = new CompleteDream();
+                else if (view.Phase == GamePhase.AfterDream) command = new Interact(InteractionTarget.Bed);
+                else if (view.EncounterStage == EncounterStage.Introduction)
+                    command = new CompleteIntroduction(view.CurrentEncounterId!, view.CurrentNodeId!);
+                else if (view.EncounterStage == EncounterStage.ResponseBranch)
+                    command = new CompleteResponseBranch(view.CurrentEncounterId!, view.CurrentNodeId!);
+                else if (view.EncounterStage == EncounterStage.Reaction)
+                    command = new CompleteReaction(view.CurrentEncounterId!);
+                else if (view.EncounterStage == EncounterStage.AwaitingDisposition)
+                {
+                    if (view.Day == 3 && view.CurrentPatientId == "battlefield-doctor" && soothing && !insultDoctor)
+                    {
+                        Assert.That(view.AvailableDispositions, Does.Contain(Disposition.Release));
+                        doctorReleaseChecked = true;
+                    }
+                    var purify = view.Day == 0 || (view.Day == 1 && view.CurrentPatientId == "former-ruler")
+                        || (view.Day == 2 && view.CurrentPatientId == "priest")
+                        || (view.Day == 3 && view.CurrentPatientId == "battlefield-doctor");
+                    var release = soothing && view.Day == 3 && (view.CurrentPatientId == "child" || view.CurrentPatientId == "diplomat");
+                    command = new SubmitDisposition(view.CurrentEncounterId!, purify ? Disposition.Purify : release ? Disposition.Release : Disposition.Treat);
+                }
+                else
+                {
+                    var meeting = rules.Days.Single(d => d.Day == view.Day).Meetings.Single(m => m.PatientId == view.CurrentPatientId);
+                    var round = view.EncounterStage == EncounterStage.SpecialDialogue ? meeting.SpecialRound!
+                        : meeting.NormalRounds.Single(r => r.NodeId == view.CurrentNodeId);
+                    var response = (soothing ? round.Responses.OrderByDescending(r => r.TrustDelta)
+                        : round.Responses.OrderBy(r => r.TrustDelta)).First();
+                    if (insultDoctor)
+                        response = round.Responses.FirstOrDefault(r => r.Id == "battlefield-doctor__P04_D2_R4_OPTION_001") ?? response;
+                    command = new SelectResponse(view.CurrentEncounterId!, view.CurrentNodeId!, response.Id);
+                }
+                var result = session.Execute(command);
+                Assert.That(result.Accepted, Is.True, command.GetType().Name + ": " + result.Reason);
+            }
+            Assert.That(session.GetPlayerView().Phase, Is.EqualTo(soothing ? GamePhase.SelfReview : GamePhase.AfterDream));
+            var state = session.CreateSnapshot().State;
+            var total = state.Patients.Where(p => p.Id != "priest" && p.Id != "tutorial").Sum(p => p.Trust);
+            Assert.That(total >= 10, Is.EqualTo(soothing));
+            Assert.That(state.Days.Where(d => d.Day > 0).All(d => d.QuotaMet == true), Is.True);
+            if (soothing && !insultDoctor) Assert.That(doctorReleaseChecked, Is.True);
+            if (soothing)
+            {
+                for (var line = 0; line < 16; line++)
+                    Assert.That(session.Execute(new AdvanceSelfReviewCommand(line)).Accepted, Is.True);
+                Assert.That(session.Execute(new ConfirmSelfPurification()).Accepted, Is.True);
+                Assert.That(session.GetPlayerView().Ending, Is.EqualTo(EndingType.DreamSea));
+            }
+        }
+
+        private static IEnumerable<TestCaseData> ScheduledDispositionCases()
+        {
+            foreach (var day in Compile().Rules.Days)
+                foreach (var meeting in day.Meetings)
+                    foreach (var disposition in meeting.ReactionNodes.Keys)
+                        yield return new TestCaseData(day.Day, meeting.PatientId, disposition);
+        }
+
+        [TestCaseSource(nameof(ScheduledDispositionCases))]
+        public void OperationReactionUsesUpdatedTrustExactlyOnceAndRetainsItAcrossRestore(int day, string patientId, Disposition disposition)
+        {
+            var compiled = Compile();
+            var meeting = compiled.Rules.Days.Single(d => d.Day == day).Meetings.Single(m => m.PatientId == patientId);
+            var original = compiled.Rules.Patients.Single(p => p.Id == patientId);
+            var patient = new PatientDefinition(patientId, original.DisplayName, 1, patientId == "priest" ? 0 : 30,
+                original.TreatmentLimit, original.TreatmentOutcome);
+            var rules = new GameRules("disposition-reaction-contract", new[] { patient },
+                new[] { new DayDefinition(1, 0, new[] { meeting }) }, compiled.Rules.EndingPriority);
+            var session = new GameSession(rules);
+            Action<GameCommand> accept = command => Assert.That(session.Execute(command).Accepted, Is.True, command.GetType().Name);
+            accept(new CompleteMorningInspection()); accept(new CompleteBriefing()); accept(new Interact(InteractionTarget.Computer));
+            for (var step = 0; step < 100; step++)
+            {
+                var view = session.GetPlayerView();
+                if (view.EncounterStage == EncounterStage.AwaitingDisposition) break;
+                if (view.EncounterStage == EncounterStage.Introduction)
+                    accept(new CompleteIntroduction(view.CurrentEncounterId!, view.CurrentNodeId!));
+                else if (view.EncounterStage == EncounterStage.ResponseBranch)
+                    accept(new CompleteResponseBranch(view.CurrentEncounterId!, view.CurrentNodeId!));
+                else
+                {
+                    var round = view.EncounterStage == EncounterStage.SpecialDialogue ? meeting.SpecialRound!
+                        : meeting.NormalRounds.Single(r => r.NodeId == view.CurrentNodeId);
+                    accept(new SelectResponse(view.CurrentEncounterId!, view.CurrentNodeId!, round.Responses.OrderByDescending(r => r.TrustDelta).First().Id));
+                }
+            }
+            var before = session.GetPlayerView();
+            Assert.That(before.AvailableDispositions, Does.Contain(disposition));
+            int trust = session.CreateSnapshot().State.Patients.Single().Trust;
+            int delta = meeting.DispositionTrustDeltas[disposition];
+            if (patientId == "priest" && disposition == Disposition.Release) Assert.That(delta, Is.EqualTo(-200));
+            var command = new SubmitDisposition(before.CurrentEncounterId!, disposition);
+            accept(command);
+            Assert.That(session.GetPlayerView().EncounterStage, Is.EqualTo(EncounterStage.Reaction));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust + delta));
+            var reading = session.GetPlayerView().SocialAdaptation;
+            if (reading != null)
+                Assert.That(reading.RelativeReleaseMargin,
+                    Is.EqualTo(((double)trust + delta - meeting.ReleaseTrustThreshold) / Math.Max(1d, Math.Abs((double)meeting.ReleaseTrustThreshold))));
+            string saved = SnapshotCodec.Serialize(session);
+            Assert.That(session.Execute(command).Accepted, Is.False);
+            Assert.That(SnapshotCodec.Serialize(session), Is.EqualTo(saved));
+            session = SnapshotCodec.Deserialize(saved, rules);
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust + delta));
+            Assert.That(session.GetPlayerView().SocialAdaptation?.RelativeReleaseMargin, Is.EqualTo(reading?.RelativeReleaseMargin));
+            accept(new CompleteReaction(before.CurrentEncounterId!));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust + delta));
+        }
+
+        [Test]
         public void FullCampaignHasThirteenMeetingsWithStaggeredArrivalAndOriginalDeclaredPortraits()
         {
             var package = Compile();

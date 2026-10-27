@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-28",
+  "dotnet": {
+    "sdk": "8.0.424",
+    "restore": "passed --locked-mode",
+    "failed": 0,
+    "presentationPassed": 319,
+    "build": "passed Release; 0 warnings; 0 errors",
+    "corePassed": 154
+  },
+  "unity": {
+    "report": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\.validation\\terminal-cleanup-20261028\\playmode.xml",
+    "version": "2022.3.23f1c1",
+    "result": "Passed",
+    "project": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\.validation\\SocialAdaptation",
+    "passed": 26,
+    "failed": 0,
+    "category": "TerminalV0824"
+  },
+  "content": {
+    "endingsCheck": "passed",
+    "supervisorCheck": "passed",
+    "pythonTestsPassed": 32,
+    "smoke": "passed",
+    "campaignCheck": "passed",
+    "sourcePinsUnchanged": true
+  },
+  "launcher": {
+    "desktop": "C:\\Users\\时\\Desktop\\打开NORM项目.cmd",
+    "autoPlay": false,
+    "checkOnly": "passed",
+    "entry": "Open-Editor.cmd"
+  },
+  "sourceSha256": {
+    "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs": "8552A0DF04CB998D63432F6DEDE3D5D8FAAA9B707CE91D43E0847058F1A93870",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalAdaptationWaveform.cs": "54B71D4015D2BFB18198CE57C5DE472314FE03850DEE344D679BF7DC357AFBCD",
+    "UnityProject/Assets/MiniGame/Tests/PlayMode/SocialAdaptationPlayModeTests.cs": "E6DF5C759704426835A984FFC0DC6204E999A5B8EE827145A367F81A5A0E7D20"
+  },
+  "scope": {
+    "externalPlayerRebuilt": false,
+    "fixture": "PrototypeRules plus active-package priest operation reaction",
+    "runtimeRender": "real native Unity 800x600 terminal",
+    "fullCampaignPlaythrough": false
+  }
+}

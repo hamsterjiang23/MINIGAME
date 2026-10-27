@@ -21,9 +21,10 @@ namespace MiniGame.UnityHost
         private readonly TerminalDossierSummary dossierSummary;
         private readonly TerminalQuotaField dossierQuota;
         private readonly Image previewPortrait;
-        private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, commandStatus, footerText, footerHelp, pageLabel;
+        private readonly Text recordName, monitorHeading, cameraLabel, roundLabel, footerText, footerHelp, pageLabel;
         private readonly Text directoryRequirement;
         private readonly TerminalQuotaField dailyWorkRemaining;
+        private readonly TerminalAdaptationWaveform adaptation;
         private readonly Text dispositionInstructions;
         private readonly TerminalTranscriptView transcriptView;
         private readonly TerminalTranscriptView historyTranscript;
@@ -83,7 +84,6 @@ namespace MiniGame.UnityHost
             Rule(logical, 8, 36, 784);
             date = Label(logical, "TerminalDate", "", 22, 16, 160, 17, 13, Bright);
             Label(logical, "TerminalVersion", "PMS / 3.14", 270, 16, 260, 17, 13, Ink).alignment = TextAnchor.UpperCenter;
-            Label(logical, "TerminalNumber", "T-06 / 047", 600, 16, 178, 17, 13, Bright).alignment = TextAnchor.UpperRight;
             directory = Panel(logical, "ObjectDirectory", Color.clear, 0, 0, 800, 548).gameObject;
             review = Panel(logical, "PersonnelReview", Color.clear, 0, 0, 800, 548).gameObject;
             selfReview = Panel(logical, "SelfReview", Color.clear, 0, 0, 800, 548).gameObject;
@@ -152,7 +152,6 @@ namespace MiniGame.UnityHost
 
             var rr = (RectTransform)review.transform;
             recordName = Label(rr, "RecordRegistration", "", 26, 51, 470, 20, 13, Ink);
-            Label(rr, "ReviewFacility", "第三安置所 / B区", 532, 51, 245, 20, 13, Bright);
             Panel(rr, "ReviewDivider", Edge, 516, 48, 1, 486);
             monitorHeading = Label(rr, "MonitorHeading", "", 26, 69, 330, 19, 13, Bright);
             Label(rr, "MonitorChannel", "CH 01", 451, 69, 60, 18, 12, Dim);
@@ -182,25 +181,30 @@ namespace MiniGame.UnityHost
             signalLoss = Panel(video, "MonitorSignalLoss", ColorOf("0e0b04"), 0, 0, 464, 261).gameObject;
             for (int i = 0; i < 22; i++) stripes.Add(Panel(signalLoss.transform, "Noise" + i, i % 3 == 0 ? Ink : Edge, 0, 7 + i * 11, 464, i % 2 == 0 ? 2 : 1));
             signalLostMessage = Label(video, "SignalLostMessage", "SIGNAL LOST", 176, 123, 200, 25, 13, Dim).gameObject;
-            historyHeading = Label(rr, "DialogueHeading", "对话 / R1", 26, 368, 470, 20, 13, Dim);
-            Rule(rr, 22, 388, 480);
-            transcriptView = new TerminalTranscriptView(rr, font, signals);
+            var instrument = Panel(rr, "SocialAdaptationInstrument", Desk, 26, 362, 472, 64);
+            Label(instrument, "SocialAdaptationHeading", "社会适应度", 0, 0, 145, 17, 13, Ink);
+            var plot = new GameObject("SocialAdaptationWaveform", typeof(RectTransform), typeof(TerminalAdaptationWaveform));
+            plot.transform.SetParent(instrument, false);
+            Position((RectTransform)plot.transform, 0, 18, 472, 44);
+            adaptation = plot.GetComponent<TerminalAdaptationWaveform>(); adaptation.Initialize();
+            historyHeading = Label(rr, "DialogueHeading", "对话", 26, 431, 470, 20, 13, Dim);
+            Rule(rr, 22, 451, 480);
+            transcriptView = new TerminalTranscriptView(rr, font, signals, y: 456, height: 76);
             history = transcriptView.GameObject;
             roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 124, 19, 13, Dim);
-            commandStatus = Label(rr, "CommandStatus", "", 534, 112, 240, 46, 12, Dim);
-            commandStatus.horizontalOverflow = HorizontalWrapMode.Wrap;
-            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 147, 168, 20, 12, Dim);
-            var quotaField = Panel(rr, "DailyWorkQuotaField", Bright, 712, 135, 66, 32);
+            roundLabel.gameObject.SetActive(false);
+            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 64, 168, 20, 12, Dim);
+            var quotaField = Panel(rr, "DailyWorkQuotaField", Bright, 712, 52, 66, 32);
             var quotaFallback = Label(quotaField, "DailyWorkIndicatorRemaining", "", 0, 0, 66, 32, 24, ColorOf("170e02"));
             quotaFallback.alignment = TextAnchor.MiddleCenter;
             dailyWorkRemaining = quotaField.gameObject.AddComponent<TerminalQuotaField>();
             dailyWorkRemaining.Initialize(assets, quotaFallback);
-            Label(rr, "DispositionHeading", "处置命令", 534, 173, 240, 19, 13, Dim); Rule(rr, 530, 194, 248);
+            Label(rr, "DispositionHeading", "处置命令", 534, 108, 240, 19, 13, Dim); Rule(rr, 530, 129, 248);
             var types = new[] { Disposition.Release, Disposition.Treat, Disposition.Purify };
             for (int i = 0; i < types.Length; i++)
             {
                 var type = types[i];
-                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 200 + i * 48, 248, 44, () => dispositionAction(type));
+                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 135 + i * 48, 248, 44, () => dispositionAction(type));
                 var visual = (TerminalButtonVisual)button;
                 visual.SetCommandArtwork(type == Disposition.Release ? assets.ReleaseCommand
                     : type == Disposition.Treat ? assets.TreatmentCommand : assets.PurificationCommand);
@@ -335,6 +339,11 @@ namespace MiniGame.UnityHost
             returnDirectory.interactable = !locked;
             answers.SetActive(true);
             bool live = !dir && !self && !archived && !view.LeavingTerminal;
+            bool measuredPatient = live && !view.IsSelfReview && !showingOpeningLogo
+                && view.PresentedEncounterId == view.Game.CurrentEncounterId
+                && id == view.Game.CurrentPatientId;
+            adaptation.SetReading(measuredPatient ? view.Game.SocialAdaptation : null,
+                view.PresentedEncounterId, view.Paused || locked || !view.TerminalOpen);
             bool showPatient = live && !showingOpeningLogo;
             livePortrait.SetActive(showPatient); silhouette.SetActive(showPatient && (portraits == null || portraits.Find(portraitId) == null));
             cameraLabel.gameObject.SetActive(showPatient);
@@ -344,7 +353,7 @@ namespace MiniGame.UnityHost
             if (showPatient) UpdatePortrait();
             bool tutorial = view.Game.Day == 0;
             supervisor.gameObject.SetActive(showingOpeningLogo && live);
-            historyHeading.text = "对话 / " + round;
+            historyHeading.text = "对话";
             if (enteringDirectory || reopeningTerminal) dossierSummary.ResetScroll();
             RenderRoster(); RenderHistory();
             footer.interactable = !locked && !tutorial;
@@ -461,8 +470,6 @@ namespace MiniGame.UnityHost
             if (current == null) return;
             bool measure = (current.Game.EncounterStage == EncounterStage.AwaitingDisposition || current.SelfReviewReady)
                 && current.TerminalPage != TerminalPage.Archive;
-            commandStatus.text = HistoryOpen ? "查阅记录中，处置暂时锁定。" : measure ? "会谈结束，可执行处置。"
-                : current.PresentedDisposition.HasValue ? "处置已登记。" : "会谈进行中，处置暂时锁定。";
             dispositionInstructions.gameObject.SetActive(measure && !HistoryOpen);
             foreach (var pair in dispositions)
             {

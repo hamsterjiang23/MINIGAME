@@ -1,0 +1,38 @@
+{
+  "revision": "disposition-trust-2026-10-28-v1",
+  "configuredOperations": 46,
+  "scheduledOperations": 37,
+  "changedFromZero": 43,
+  "scheduledChangedFromZero": 35,
+  "replyAdjustmentsUnchanged": true,
+  "sourceWorkbooksUnchanged": true,
+  "textAndGraphUnchanged": true,
+  "dotnet": [
+    {
+      "project": "MiniGame.Core.Tests",
+      "passed": 154,
+      "file": "C:\\Users\\时\\Documents\\Codex\\2026-10-24\\https-github-com-hamsterjiang23-minigame-https\\MINIGAME\\src\\MiniGame.Core.Tests\\TestResults\\disposition-trust-final_net8.0_20261028000610.trx"
+    },
+    {
+      "project": "MiniGame.Presentation.Tests",
+      "passed": 319,
+      "file": "C:\\Users\\时\\Documents\\Codex\\2026-10-24\\https-github-com-hamsterjiang23-minigame-https\\MINIGAME\\src\\MiniGame.Presentation.Tests\\TestResults\\disposition-trust-final_net8.0_20261028000618.trx"
+    }
+  ],
+  "dotnetPassed": 473,
+  "pythonCampaignPassed": 20,
+  "pythonSupervisorPassed": 5,
+  "unityPlayModePassed": 2,
+  "reactionPreviewPassed": 1,
+  "unityImport": {
+    "unityVersion": "2022.3.23f1c1",
+    "sourceHash": "353187402d3cb399552148df57937c00d6ed3075d1e3249415e31d9f50be7065",
+    "packagePath": "Assets/MiniGame/ImportedDialogue/inspection-campaign/34ac68324d851347b398c4d2537023ad/Package.minigame.json",
+    "activePath": "Assets/Resources/MiniGame/ActiveCampaignPackage.asset",
+    "nativeNodes": 342,
+    "sourceBindingVerified": true
+  },
+  "externalPlayerRebuilt": false,
+  "fullManualCampaignReplay": false,
+  "sourceProjectVersionAtFinalCheck": "m_EditorVersion: 2022.3.23f1c1"
+}

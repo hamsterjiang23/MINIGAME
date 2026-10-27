@@ -1,0 +1,175 @@
+{
+  "revision": "trust-rebalance-2026-10-27-v1",
+  "changedAnswers": 64,
+  "scheduledChanges": 50,
+  "unscheduledChanges": 14,
+  "changesByPatient": {
+    "diplomat": 20,
+    "battlefield-doctor": 24,
+    "former-ruler": 9,
+    "priest": 10,
+    "child": 1
+  },
+  "oldRanges": {
+    "tutorial": [
+      0,
+      0
+    ],
+    "former-ruler": [
+      -11,
+      20
+    ],
+    "battlefield-doctor": [
+      -115,
+      0
+    ],
+    "child": [
+      -10,
+      26
+    ],
+    "priest": [
+      191,
+      212
+    ],
+    "diplomat": [
+      -1,
+      9
+    ]
+  },
+  "newRanges": {
+    "tutorial": [
+      0,
+      0
+    ],
+    "former-ruler": [
+      -9,
+      19
+    ],
+    "battlefield-doctor": [
+      -28,
+      10
+    ],
+    "child": [
+      -10,
+      25
+    ],
+    "priest": [
+      186,
+      201
+    ],
+    "diplomat": [
+      1,
+      6
+    ]
+  },
+  "dailyRanges": [
+    {
+      "gameDay": 0,
+      "patientId": "tutorial",
+      "min": 0,
+      "max": 0
+    },
+    {
+      "gameDay": 1,
+      "patientId": "former-ruler",
+      "min": -3,
+      "max": 6
+    },
+    {
+      "gameDay": 1,
+      "patientId": "battlefield-doctor",
+      "min": -11,
+      "max": 2
+    },
+    {
+      "gameDay": 1,
+      "patientId": "child",
+      "min": -2,
+      "max": 8
+    },
+    {
+      "gameDay": 2,
+      "patientId": "former-ruler",
+      "min": -5,
+      "max": 12
+    },
+    {
+      "gameDay": 2,
+      "patientId": "battlefield-doctor",
+      "min": -24,
+      "max": 3
+    },
+    {
+      "gameDay": 2,
+      "patientId": "child",
+      "min": -5,
+      "max": 17
+    },
+    {
+      "gameDay": 2,
+      "patientId": "priest",
+      "min": 94,
+      "max": 100
+    },
+    {
+      "gameDay": 3,
+      "patientId": "former-ruler",
+      "min": -9,
+      "max": 19
+    },
+    {
+      "gameDay": 3,
+      "patientId": "battlefield-doctor",
+      "min": -28,
+      "max": 10
+    },
+    {
+      "gameDay": 3,
+      "patientId": "child",
+      "min": -10,
+      "max": 25
+    },
+    {
+      "gameDay": 3,
+      "patientId": "priest",
+      "min": 186,
+      "max": 201
+    },
+    {
+      "gameDay": 3,
+      "patientId": "diplomat",
+      "min": 1,
+      "max": 6
+    }
+  ],
+  "workbookHashesUnchanged": true,
+  "textAndGraphUnchanged": true,
+  "sourceRepairsUnchanged": true,
+  "nativeImport": {
+    "unityVersion": "2022.3.23f1c1",
+    "sourceHash": "0c7d3a99151c6716f3f93dec12373fb771e5e2c40c979f8bfec5c27b4e75b801",
+    "packagePath": "Assets/MiniGame/ImportedDialogue/inspection-campaign/c3294cd2341252e2932f52609aa7d736/Package.minigame.json",
+    "activePath": "Assets/Resources/MiniGame/ActiveCampaignPackage.asset",
+    "nativeNodes": 342,
+    "sourceBindingVerified": true,
+    "sourceProjectVersion": "m_EditorVersion: 2022.3.23f1"
+  },
+  "dotnetTests": [
+    {
+      "project": "MiniGame.Core.Tests",
+      "passed": 154,
+      "file": "C:\\Users\\时\\Documents\\Codex\\2026-10-24\\https-github-com-hamsterjiang23-minigame-https\\MINIGAME\\src\\MiniGame.Core.Tests\\TestResults\\trust-rebalance-final_net8.0_20261027234217.trx"
+    },
+    {
+      "project": "MiniGame.Presentation.Tests",
+      "passed": 282,
+      "file": "C:\\Users\\时\\Documents\\Codex\\2026-10-24\\https-github-com-hamsterjiang23-minigame-https\\MINIGAME\\src\\MiniGame.Presentation.Tests\\TestResults\\trust-rebalance-final_net8.0_20261027234223.trx"
+    }
+  ],
+  "dotnetPassed": 436,
+  "campaignPythonPassed": 19,
+  "supervisorPythonPassed": 5,
+  "endingSourceCheck": "failed: Pinned source changed: self-review (pre-existing)",
+  "playerRebuilt": false,
+  "completeManualCampaignReplay": false
+}

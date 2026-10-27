@@ -213,6 +213,17 @@ def build_meeting(patient: Record, rows: list[Row], day: int, mappings: list[Rec
 
 def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Record, Record]:
     config = cast(Record, json.loads((HERE / "conversion-config.json").read_text(encoding="utf-8-sig")))
+    trust_adjustments: dict[str, Record] = {}
+    for filename in ("trust-adjustments.json", "disposition-trust-adjustments.json"):
+        trust_manifest = json.loads((HERE / filename).read_text(encoding="utf-8"))
+        for adjustment in trust_manifest["adjustments"]:
+            source_id = adjustment["sourceId"]
+            if (source_id in trust_adjustments or not adjustment["expectedText"] or not adjustment["reason"]
+                    or type(adjustment["expectedEffectiveDelta"]) is not int
+                    or type(adjustment["trustDelta"]) is not int
+                    or adjustment.get("expectedDisposition", "") not in ("", "treat", "purify", "release")):
+                raise ValueError(f"Invalid or duplicate trust adjustment: {source_id}")
+            trust_adjustments[source_id] = adjustment
     patients = cast(list[Record], config["patients"])
     if smoke:
         patients = [patient for patient in patients if patient["id"] in {"tutorial", "child"}]
@@ -256,7 +267,8 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
                 continue
             campaign_day = 0 if patient["id"] == "tutorial" else int(str(patient["firstDay"])) + source_day - 1
             mapping_start, adaptation_start = len(mappings), len(adaptations)
-            meeting = (build_updated_meeting(patient, active, source_day, columns, mappings, adaptations, campaign_day)
+            meeting = (build_updated_meeting(patient, active, source_day, columns, mappings, adaptations, campaign_day,
+                                             trust_adjustments)
                        if columns else build_meeting(patient, active, source_day, mappings, adaptations, campaign_day))
             scheduled = campaign_day < len(days)
             # The workbook day is the patient's visit day. Keep unused future visits in the audit,
@@ -277,6 +289,11 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
                "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": tutorial["startNode"], "endNode": tutorial["endNode"], "initialTrust": 0, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
                "campaign": {"patients": rules, "days": days, "releaseThreshold": config["releaseThreshold"], "variants": variants}}
     all_mappings = {str(m["sourceId"]): m for m in mappings}
+    if not smoke:
+        adjusted_ids = {str(item["sourceId"]) for item in adaptations
+                        if item["kind"] == "user-approved-trust-adjustment"}
+        if adjusted_ids != set(trust_adjustments):
+            raise ValueError(f"Unapplied trust adjustments: {set(trust_adjustments) - adjusted_ids}")
     for variant in variants:
         assert variant["sourceId"] in all_mappings, variant
     for book in books:
@@ -291,6 +308,8 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
              "activeSourceRowCount": sum(len(cast(list[Row], b["activeRows"])) for b in books),
              "excludedSourceRowCount": len(excluded), "excludedRows": excluded, "repairs": repairs,
              "repairManifestHash": digest(HERE / "source-repairs.json"),
+             "trustAdjustmentHash": digest(HERE / "trust-adjustments.json"),
+             "dispositionTrustAdjustmentHash": digest(HERE / "disposition-trust-adjustments.json"),
              "configHash": digest(HERE / "conversion-config.json"), "variantHash": digest(HERE / "text-variants.json"),
              "meetingCount": sum(len(cast(list[Record], d["meetings"])) for d in days), "declaredPortraits": len(portraits),
              "referencedPortraits": sorted({r["portrait" if b["schemaColumns"] else "M"]

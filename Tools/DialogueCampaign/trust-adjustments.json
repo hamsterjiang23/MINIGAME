@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "revision": "trust-rebalance-2026-10-27-v1",
+  "policy": "User approved: score soothing intent positively and deliberate agitation negatively; retain priest mandatory +100 entries; change doctor extreme -107 to -10. Apply after authored line-delta transfer. Preserve XLSX, text, graph, thresholds, initial trust and disposition deltas.",
+  "adjustments": [
+    {
+      "sourceId": "former-ruler__P03_D1_R2_OPTION_001",
+      "expectedText": "全程留档。你的解释也会记录。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "回应她最担心的断章取义，承诺保留解释；随后她说“很好”，属于具体的安全感回应。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R2_OPTION_002",
+      "expectedText": "现在由我提问。先回答审查问题。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "压回她关于记录的担忧，强调提问权；随后她明确抗议“别上来就替我认罪”。比同轮已有−1的措辞更强硬，却为0。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_OPTION_004",
+      "expectedText": "他们不邀请你，是因为你是女人？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 1,
+      "reason": "辨认性别歧视也可能让她感到被理解，不能只因她愤怒就判错；但+2高于同场具体承诺，现回应主要在重述遭受的排挤。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R2_OPTION_002",
+      "expectedText": "...不用急。我等你想清楚。",
+      "expectedEffectiveDelta": -1,
+      "trustDelta": 1,
+      "reason": "明确表示不催促、愿意等待，却扣分；与米洛“慢慢来，不着急。”的+2在意图上相近。她仍然紧张，不等于玩家在刺激她。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R4_OPTION_003",
+      "expectedText": "你以前也用同样的理由拒绝过别人。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "她已承认自己曾赞成这套分工，此句再指出她也这样拒绝过别人，属于追责而非明显安抚；+2可能把自省深度当成信任。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_OPTION_003",
+      "expectedText": "我只是按职责完成询问。",
+      "expectedEffectiveDelta": -1,
+      "trustDelta": 0,
+      "reason": "语气疏离可以不加分，但后续她认可玩家至少让自己说完，并称职责履行认真；缺乏扣分所需的明显刺激意图。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_OPTION_005",
+      "expectedText": "其他任职的女人，也会被这样对待？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 1,
+      "reason": "讨论其他女人的遭遇可能是共情，也可能只是追查；当前+2缺少比允许松领口（+1）更强的安抚依据。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_OPTION_006",
+      "expectedText": "所以，你是想让我理解你的难处？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 0,
+      "reason": "“所以，你是想让我理解你的难处？”容易构成动机质疑，直接引出“不！”和辩解；现+1更像奖励揭穿动机。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R3_OPTION_002",
+      "expectedText": "只是笔误，不影响今天的审查。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "在她担忧姓名被抹去时说“只是笔误”，否定具体担忧；她随后再次争辩为什么不能改。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R4_OPTION_002",
+      "expectedText": "太强烈的情感会让人做错事。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "抽象谈强烈情感会使人做错事，在其战争经历的语境里引发强烈反驳；若定位为反驳选项，应扣分。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R4_OPTION_003",
+      "expectedText": "我们只负责执行。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "强调只负责执行，引出生命价值争执；若定位为拒绝回应其担忧，建议小幅扣分。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R5_OPTION_002",
+      "expectedText": "这里没有伤员。你在治疗中心。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "从战场闪回引回当下地点，对方随后确认自己不在战场；这是全表最明确的安抚之一，现为0。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R5_OPTION_003",
+      "expectedText": "需要我帮你确认现在的环境吗？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "先征询是否帮助确认环境，保留自主权，回应当下失向；现为0。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R6_OPTION_001",
+      "expectedText": "你真是个危险的人。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "直接贴“危险的人”的标签，引出“我是医生！！！”；与此前类似“看起来很危险”的−3缺乏一致性。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R6_OPTION_003",
+      "expectedText": "对你的治疗是有必要的。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "在其刚承认记忆空白时直接断言治疗必要，引出“凭什么下判断”；目前没有任何负反馈。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R2_OPTION_001",
+      "expectedText": "这不是你该考虑的问题。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "否定他对隔壁病人安危的关心，推动争辩。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R2_OPTION_002",
+      "expectedText": "你恐怕是幻听了。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "未经核实便称其幻听，直接引出他对隐瞒的愤怒质问。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R3_OPTION_002",
+      "expectedText": "和你有什么关系？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "“和你有什么关系？”刻意排斥其担忧，后续连续质问并威胁玩家也会被带走。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R4_OPTION_001",
+      "expectedText": "什么都不知道，你还跟着打仗？",
+      "expectedEffectiveDelta": -107,
+      "trustDelta": -10,
+      "reason": "用户明确指定：保留强烈挑衅的负方向，将极端扣分由−107改为−10。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R4_OPTION_002",
+      "expectedText": "为你们感到遗憾。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "表达同情，后续叹气并认可被理解；与同轮明显羞辱的选项相比，应有正向区别。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_001",
+      "expectedText": "这是第三天。你在治疗中心。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "直接提供他所请求的日期与地点，他回应能接上并道谢。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_002",
+      "expectedText": "日期不重要，你需要休息。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "他明确请求日期，却被告知日期不重要；后续明确反对“不要替我缩小问题”。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_004",
+      "expectedText": "我可以为你保存记录。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "给出保存记忆记录的实际帮助，回应他对遗忘的恐惧。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_006",
+      "expectedText": "你害怕失去对他们的在乎。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "准确承接他对失去在乎能力的担忧，他认可“至少你听明白了”。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_007",
+      "expectedText": "想停止痛苦并不可耻。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "承认想停止痛苦并不可耻，对方道谢；没有把此愿望强行等同净化。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_008",
+      "expectedText": "那净化可能正适合你。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "把想睡觉歪解成适合净化，触发“我说想睡，不是想消失！”以及对逼签字的指控。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_009",
+      "expectedText": "你希望保留什么？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "让他说明希望保留的部分，归还表达与选择空间。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_010",
+      "expectedText": "缓解和删除应该有界线。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "承认缓解痛苦与删除人格应有边界，回应他一直反对的事情。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_013",
+      "expectedText": "安静不代表安全。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "认可安静与安全不同，他回应“终于有人把这两个词分开了”。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_014",
+      "expectedText": "至少你不会再被触发。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "用不会再被触发辩护抹除，他回应“你只想让房间安静！”；属于加重对人格丧失的担忧。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_015",
+      "expectedText": "我无法替你回答。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "不替他伪造确定结论，他明确认可这是诚实回答；可给予小幅安定反馈。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_016",
+      "expectedText": "我会看你的行为和经历。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "承诺看经历与行为可减少任意处置感，但属于审查原则，也可保持中性。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_019",
+      "expectedText": "你自己说。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "在他要求别替自己说掉最后一句时，让他亲口说，是明确尊重表达的回应。"
+    },
+    {
+      "sourceId": "priest__P01_D1_R4_OPTION_002",
+      "expectedText": "你怎么确定自己是被选中的那个？",
+      "expectedEffectiveDelta": 3,
+      "trustDelta": 0,
+      "reason": "提问被选中依据，随后他进一步确认自己受神眷顾；不是明显的安抚，+3更像奖励打开话题。"
+    },
+    {
+      "sourceId": "priest__P01_D1_R7_OPTION_002",
+      "expectedText": "告诉我你怎样理解净化。",
+      "expectedEffectiveDelta": 3,
+      "trustDelta": 0,
+      "reason": "再次要求解释净化，直接引出“还要我说多少遍……！！”，现+3与安抚效果相反，也没有清楚的安抚意图。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R2_OPTION_002",
+      "expectedText": "你真是个危险的疯子。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "直接称对方“危险的疯子”，属于羞辱，现0。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R2_OPTION_003",
+      "expectedText": "你的精神正常吗？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "以“精神正常吗”质疑对方，现0；如果想表达评估关切，需要改成具体、非羞辱的提问。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R3_OPTION_003",
+      "expectedText": "你的信仰荒谬至极。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "直接贬低信仰荒谬，现0；与表Day1“信仰没有依据”的−3方向不一致。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R4_OPTION_002",
+      "expectedText": "……",
+      "expectedEffectiveDelta": 3,
+      "trustDelta": 0,
+      "reason": "“……”无法区分等待、冷落或默认；后续仍在强调神的召唤，现+3缺乏明确语义依据。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R5_OPTION_003",
+      "expectedText": "还要我说多少遍，这个世界上根本没有神。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "带不耐烦的“还要我说多少遍”否定其信仰，回应是“愚不可及”；现0。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R6_OPTION_001",
+      "expectedText": "仪器和手术都不过是人造的，你的信仰根本不存在。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "直接否定对方信仰存在，引出“我放弃了，你过于愚蠢”；现0。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R7_OPTION_001",
+      "expectedText": "你越渴望，我就越不能让你得到，你太危险了……",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -2,
+      "reason": "“你越渴望，我就越不能让你得到”带刻意挫败对方的意味，直接刺激其执念；现0。"
+    },
+    {
+      "sourceId": "priest__P01_D2_R7_OPTION_002",
+      "expectedText": "你杀了不少人…应该让你得到净化。",
+      "expectedEffectiveDelta": 3,
+      "trustDelta": 1,
+      "reason": "顺着他想净化的愿望，可能满足他而安定，也可能强化狂热；现分支仍在合理化杀人，未表现放松，不能简单因为顺从便给+3。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R4_OPTION_003",
+      "expectedText": "有人因为身份得到不同待遇？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 1,
+      "reason": "针对身份优待的核实/追责，现+2更像奖励识破特权；可以体现认真听取，但缺乏比“记录原话”更强的安抚依据。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R4_OPTION_004",
+      "expectedText": "你当时有没有要求与其他旅客走同一套手续？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "针对身份优待的核实/追责，现+2更像奖励识破特权；可以体现认真听取，但缺乏比“记录原话”更强的安抚依据。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R5_OPTION_003",
+      "expectedText": "你自己也一直在挑选措辞。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "指出其选择措辞，他赞赏玩家识别能力；这证明认可或智力较量，不能直接等同被安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_OPTION_002",
+      "expectedText": "配合会被记录，但不能据此认定没有风险。",
+      "expectedEffectiveDelta": -1,
+      "trustDelta": 1,
+      "reason": "和上一项“谈吐不作为无害的依据”表达相近原则，上一项+1，此项−1；他也平静接受，没有情绪升级或刺激意图的依据。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_OPTION_004",
+      "expectedText": "我会继续核对，不把坦白当作无罪证据。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 1,
+      "reason": "继续核对且不轻判无罪可让程序可预期，但现+2偏高；需要明确是安定其对任意审判的担忧，还是奖励玩家判断正确。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_OPTION_006",
+      "expectedText": "你也在看我更容易相信哪种坦白。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "揭穿他正在观察玩家相信哪种坦白，后续继续承认操纵；没有明显安抚成分，现+2更像洞察奖励。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R3_OPTION_001",
+      "expectedText": "你把工人当设备询价？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R4_OPTION_001",
+      "expectedText": "你明知道她说得对，还是利用了这件事。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R5_OPTION_003",
+      "expectedText": "是工作人员提前告诉你的？",
+      "expectedEffectiveDelta": -1,
+      "trustDelta": 0,
+      "reason": "同轮问“是谁向你提供信息”+1，问“是工作人员提前告诉你”−1；差别主要是有没有猜中其手段，不是安抚与刺激的差别。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_OPTION_002",
+      "expectedText": "你在利用我对其他病人的同情。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_OPTION_003",
+      "expectedText": "你主动替审查收集了名单。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_OPTION_005",
+      "expectedText": "你现在是在用坦白争取同情？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D2_R6_OPTION_006",
+      "expectedText": "你让他们把提供名单当成了求助。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R4_OPTION_001",
+      "expectedText": "你知道名单可能使他们被收容。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R4_OPTION_002",
+      "expectedText": "你只是执行任务？",
+      "expectedEffectiveDelta": -1,
+      "trustDelta": 0,
+      "reason": "“你只是执行任务？”给出较宽容的解释，现−1来自他拒绝开脱；更像价值判断，不是明显情绪刺激。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R4_OPTION_004",
+      "expectedText": "这份名单会造成什么后果，你写表时就知道。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R5_OPTION_001",
+      "expectedText": "你把别人在乎的东西变成了控制手段。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R6_OPTION_003",
+      "expectedText": "你把自己的恐惧转嫁给了别人。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R6_OPTION_004",
+      "expectedText": "你现在也在等我决定。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "diplomat__P05_D3_R6_OPTION_006",
+      "expectedText": "你说这些，也在影响我最后怎样解释你。",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 0,
+      "reason": "此类质问、揭穿或追责普遍+2，体现对玩家洞察与立场的认可；按安抚意图衡量，不能直接给同等正反馈。角色平静承认也不自动证明玩家在安抚。"
+    },
+    {
+      "sourceId": "child__P02_D3_R5_OPTION_001",
+      "expectedText": "紧张的时候，你会怎么做？",
+      "expectedEffectiveDelta": 2,
+      "trustDelta": 1,
+      "reason": "关心紧张时的应对可以有善意，但现回答只是藏手、被要求伸手，未得到安定办法；+2的依据弱于直接解除自责的+2。这属于幅度复核，不是明确方向错误。"
+    }
+  ]
+}

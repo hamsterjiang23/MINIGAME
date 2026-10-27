@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-27",
+  "dotnet": {
+    "sdk": "8.0.424",
+    "failed": 0,
+    "restore": "passed --locked-mode",
+    "build": "Release passed; 0 warnings; 0 errors",
+    "corePassed": 154,
+    "presentationPassed": 281
+  },
+  "unity": {
+    "regression": {
+      "category": "TerminalV0824",
+      "report": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\.validation\\social-adaptation-captures\\regression.xml",
+      "passed": 24,
+      "failed": 0,
+      "result": "Passed"
+    },
+    "isolatedProject": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\.validation\\SocialAdaptation",
+    "validationVersion": "2022.3.23f1c1",
+    "specialized": {
+      "report": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\.validation\\social-adaptation-captures\\playmode.xml",
+      "passed": 1,
+      "failed": 0,
+      "result": "Passed"
+    },
+    "sourceVersion": "2022.3.23f1"
+  },
+  "sourceSha256": {
+    "src/MiniGame.Core/Contracts/GameResult.cs": "D34DD05D21B4C4C81AF6118321FED62D5B608D617834109A43BB9965CCF63458",
+    "src/MiniGame.Core/Runtime/GameSession.cs": "844B581D58716B697A1D23D4F5D3C2A8D64CBE0994ED98E577E1BF59C377730F",
+    "src/MiniGame.Presentation/SocialAdaptationSignal.cs": "C52FDC3238C8D492C624EB3232E7605AC8E92BBD9D0BADD5B0C3461DB2847C67",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalAdaptationWaveform.cs": "AB9ED6603A77923AE9F14E824A35483ABFB6CBEFE9F818CC8B7F132FD7900D76",
+    "UnityProject/Assets/MiniGame/Runtime/TerminalView.cs": "5990D97D1265FB525D825A8C83570191AB63D03500E24F707F7EF703D85757E4"
+  },
+  "scope": {
+    "externalPlayerRebuilt": false,
+    "render": "real Unity 800x600 native terminal",
+    "video": "C:\\Users\\时\\Documents\\ChatGPT\\NORM\\社会适应度-低信任与达标预览.mp4",
+    "rules": "PrototypeRules integration fixture; real accepted commands",
+    "campaignFullPlaythrough": false
+  }
+}

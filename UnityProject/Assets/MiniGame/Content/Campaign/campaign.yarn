@@ -960,9 +960,9 @@ round: R2
 patient: former-ruler
 day: 1
 ---
--> 全程留档。你的解释也会记录。 #id:former-ruler__P03_D1_R2_OPTION_001 #trust:0
+-> 全程留档。你的解释也会记录。 #id:former-ruler__P03_D1_R2_OPTION_001 #trust:1
     <<jump former-ruler__P03_D1_R2_CLOSE_001>>
--> 现在由我提问。先回答审查问题。 #id:former-ruler__P03_D1_R2_OPTION_002 #trust:0
+-> 现在由我提问。先回答审查问题。 #id:former-ruler__P03_D1_R2_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D1_R2_CLOSE_002>>
 -> 请先配合审查，再说明你的异议。 #id:former-ruler__P03_D1_R2_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D1_R2_CLOSE_003>>
@@ -1028,11 +1028,11 @@ round: R6
 patient: former-ruler
 day: 1
 ---
--> 治疗 #id:former-ruler__P03_D1_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:former-ruler__P03_D1_R6_PLAYER_ACTION_001 #trust:-2 #disposition:treat
     <<jump former-ruler__P03_D1_R6_ACTION_001>>
--> 净化 #id:former-ruler__P03_D1_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:former-ruler__P03_D1_R6_PLAYER_ACTION_002 #trust:-8 #disposition:purify
     <<jump former-ruler__P03_D1_R6_ACTION_002>>
--> 释放 #id:former-ruler__P03_D1_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:former-ruler__P03_D1_R6_PLAYER_ACTION_003 #trust:3 #disposition:release
     <<jump former-ruler__P03_D1_R6_ACTION_003>>
 ===
 
@@ -1044,7 +1044,7 @@ day: 1
 ---
 -> 他们会前已经商量好了，会上只让你表决？ #id:former-ruler__P03_D1_R6_OPTION_003 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_006>>
--> 他们不邀请你，是因为你是女人？ #id:former-ruler__P03_D1_R6_OPTION_004 #trust:2
+-> 他们不邀请你，是因为你是女人？ #id:former-ruler__P03_D1_R6_OPTION_004 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_007>>
 -> 既然不满，你为什么最后还是同意了？ #id:former-ruler__P03_D1_R6_OPTION_005 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_008>>
@@ -1795,9 +1795,9 @@ day: 1
 ---
 -> 你和很多人打过交道？ #id:battlefield-doctor__P04_D1_R4_OPTION_001 #trust:0
     <<jump battlefield-doctor__P04_D1_R4_CLOSE_001>>
--> 太强烈的情感会让人做错事。 #id:battlefield-doctor__P04_D1_R4_OPTION_002 #trust:0
+-> 太强烈的情感会让人做错事。 #id:battlefield-doctor__P04_D1_R4_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D1_R4_CLOSE_004>>
--> 我们只负责执行。 #id:battlefield-doctor__P04_D1_R4_OPTION_003 #trust:0
+-> 我们只负责执行。 #id:battlefield-doctor__P04_D1_R4_OPTION_003 #trust:-1
     <<jump battlefield-doctor__P04_D1_R4_CLOSE_007>>
 ===
 
@@ -1807,9 +1807,9 @@ round: R5
 patient: battlefield-doctor
 day: 1
 ---
--> 这里没有伤员。你在治疗中心。 #id:battlefield-doctor__P04_D1_R5_OPTION_002 #trust:0
+-> 这里没有伤员。你在治疗中心。 #id:battlefield-doctor__P04_D1_R5_OPTION_002 #trust:2
     <<jump battlefield-doctor__P04_D1_R5_CLOSE_004>>
--> 需要我帮你确认现在的环境吗？ #id:battlefield-doctor__P04_D1_R5_OPTION_003 #trust:0
+-> 需要我帮你确认现在的环境吗？ #id:battlefield-doctor__P04_D1_R5_OPTION_003 #trust:1
     <<jump battlefield-doctor__P04_D1_R5_CLOSE_007>>
 -> 你现在看起来就很危险 #id:battlefield-doctor__P04_D1_R5_OPTION_001 #trust:-3
     <<jump battlefield-doctor__P04_D1_R5_CLOSE_001>>
@@ -1823,9 +1823,9 @@ day: 1
 ---
 -> 看到了吗，你刚才情绪很激动。 #id:battlefield-doctor__P04_D1_R6_OPTION_002 #trust:0
     <<jump battlefield-doctor__P04_D1_R6_CLOSE_004>>
--> 你真是个危险的人。 #id:battlefield-doctor__P04_D1_R6_OPTION_001 #trust:0
+-> 你真是个危险的人。 #id:battlefield-doctor__P04_D1_R6_OPTION_001 #trust:-2
     <<jump battlefield-doctor__P04_D1_R6_CLOSE_001>>
--> 对你的治疗是有必要的。 #id:battlefield-doctor__P04_D1_R6_OPTION_003 #trust:0
+-> 对你的治疗是有必要的。 #id:battlefield-doctor__P04_D1_R6_OPTION_003 #trust:-1
     <<jump battlefield-doctor__P04_D1_R6_CLOSE_007>>
 ===
 
@@ -1835,11 +1835,11 @@ round: R7
 patient: battlefield-doctor
 day: 1
 ---
--> 净化 #id:battlefield-doctor__P04_D1_R7_PLAYER_ACTION_001 #trust:0 #disposition:purify
+-> 净化 #id:battlefield-doctor__P04_D1_R7_PLAYER_ACTION_001 #trust:-6 #disposition:purify
     <<jump battlefield-doctor__P04_D1_R7_ACTION_001>>
--> 治疗 #id:battlefield-doctor__P04_D1_R7_PLAYER_ACTION_002 #trust:0 #disposition:treat
+-> 治疗 #id:battlefield-doctor__P04_D1_R7_PLAYER_ACTION_002 #trust:-2 #disposition:treat
     <<jump battlefield-doctor__P04_D1_R7_ACTION_003>>
--> 释放 #id:battlefield-doctor__P04_D1_R7_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:battlefield-doctor__P04_D1_R7_PLAYER_ACTION_003 #trust:2 #disposition:release
     <<jump battlefield-doctor__P04_D1_R7_ACTION_006>>
 ===
 
@@ -2787,11 +2787,11 @@ round: R6
 patient: child
 day: 1
 ---
--> 治疗 #id:child__P02_D1_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:child__P02_D1_R6_PLAYER_ACTION_001 #trust:-1 #disposition:treat
     <<jump child__P02_D1_R6_ACTION_001>>
--> 净化 #id:child__P02_D1_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:child__P02_D1_R6_PLAYER_ACTION_002 #trust:-6 #disposition:purify
     <<jump child__P02_D1_R6_ACTION_002>>
--> 释放 #id:child__P02_D1_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:child__P02_D1_R6_PLAYER_ACTION_003 #trust:3 #disposition:release
     <<jump child__P02_D1_R6_ACTION_003>>
 ===
 
@@ -3665,7 +3665,7 @@ day: 2
 ---
 -> 你还记得今天的日期吗？ #id:former-ruler__P03_D2_R2_OPTION_001 #trust:0
     <<jump former-ruler__P03_D2_R2_CLOSE_001>>
--> ...不用急。我等你想清楚。 #id:former-ruler__P03_D2_R2_OPTION_002 #trust:-1
+-> ...不用急。我等你想清楚。 #id:former-ruler__P03_D2_R2_OPTION_002 #trust:1
     <<jump former-ruler__P03_D2_R2_CLOSE_002>>
 ===
 
@@ -3695,7 +3695,7 @@ day: 2
     <<jump former-ruler__P03_D2_R4_CLOSE_001>>
 -> 那你认为，谁有权批准释放？ #id:former-ruler__P03_D2_R4_OPTION_002 #trust:0
     <<jump former-ruler__P03_D2_R4_CLOSE_002>>
--> 你以前也用同样的理由拒绝过别人。 #id:former-ruler__P03_D2_R4_OPTION_003 #trust:2
+-> 你以前也用同样的理由拒绝过别人。 #id:former-ruler__P03_D2_R4_OPTION_003 #trust:0
     <<jump former-ruler__P03_D2_R4_CLOSE_003>>
 ===
 
@@ -3721,7 +3721,7 @@ day: 2
     <<jump former-ruler__P03_D2_R6_CLOSE_001>>
 -> 为什么愿意把这些告诉我？ #id:former-ruler__P03_D2_R6_OPTION_002 #trust:2
     <<jump former-ruler__P03_D2_R6_CLOSE_002>>
--> 我只是按职责完成询问。 #id:former-ruler__P03_D2_R6_OPTION_003 #trust:-1
+-> 我只是按职责完成询问。 #id:former-ruler__P03_D2_R6_OPTION_003 #trust:0
     <<jump former-ruler__P03_D2_R6_CLOSE_003>>
 ===
 
@@ -3731,11 +3731,11 @@ round: R6
 patient: former-ruler
 day: 2
 ---
--> 治疗 #id:former-ruler__P03_D2_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:former-ruler__P03_D2_R6_PLAYER_ACTION_001 #trust:-4 #disposition:treat
     <<jump former-ruler__P03_D2_R6_ACTION_001>>
--> 净化 #id:former-ruler__P03_D2_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:former-ruler__P03_D2_R6_PLAYER_ACTION_002 #trust:-12 #disposition:purify
     <<jump former-ruler__P03_D2_R6_ACTION_002>>
--> 释放 #id:former-ruler__P03_D2_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:former-ruler__P03_D2_R6_PLAYER_ACTION_003 #trust:4 #disposition:release
     <<jump former-ruler__P03_D2_R6_ACTION_003>>
 ===
 
@@ -3747,9 +3747,9 @@ day: 2
 ---
 -> 那个女工的“特殊照顾”，最后是你批准的？ #id:former-ruler__P03_D2_R6_OPTION_004 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_006>>
--> 其他任职的女人，也会被这样对待？ #id:former-ruler__P03_D2_R6_OPTION_005 #trust:2
+-> 其他任职的女人，也会被这样对待？ #id:former-ruler__P03_D2_R6_OPTION_005 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_007>>
--> 所以，你是想让我理解你的难处？ #id:former-ruler__P03_D2_R6_OPTION_006 #trust:1
+-> 所以，你是想让我理解你的难处？ #id:former-ruler__P03_D2_R6_OPTION_006 #trust:0
     <<jump former-ruler__P03_D2_R6_SPECIAL_008>>
 -> ...你现在想松开领口，就松开吧。不用向我申请。 #id:former-ruler__P03_D2_R6_OPTION_007 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_009>>
@@ -4176,9 +4176,9 @@ round: R2
 patient: battlefield-doctor
 day: 2
 ---
--> 这不是你该考虑的问题。 #id:battlefield-doctor__P04_D2_R2_OPTION_001 #trust:0
+-> 这不是你该考虑的问题。 #id:battlefield-doctor__P04_D2_R2_OPTION_001 #trust:-1
     <<jump battlefield-doctor__P04_D2_R2_CLOSE_001>>
--> 你恐怕是幻听了。 #id:battlefield-doctor__P04_D2_R2_OPTION_002 #trust:0
+-> 你恐怕是幻听了。 #id:battlefield-doctor__P04_D2_R2_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D2_R2_CLOSE_003>>
 -> 说来听听看，你都听见什么了？ #id:battlefield-doctor__P04_D2_R2_OPTION_003 #trust:0
     <<jump battlefield-doctor__P04_D2_R2_CLOSE_005>>
@@ -4192,7 +4192,7 @@ day: 2
 ---
 -> 我只听过一些传言… #id:battlefield-doctor__P04_D2_R3_OPTION_003 #trust:0
     <<jump battlefield-doctor__P04_D2_R3_CLOSE_001>>
--> 和你有什么关系？ #id:battlefield-doctor__P04_D2_R3_OPTION_002 #trust:0
+-> 和你有什么关系？ #id:battlefield-doctor__P04_D2_R3_OPTION_002 #trust:-2
     <<jump battlefield-doctor__P04_D2_R3_CLOSE_002>>
 -> 我真的不知道。 #id:battlefield-doctor__P04_D2_R3_OPTION_001 #trust:0
     <<jump battlefield-doctor__P04_D2_R3_CLOSE_008>>
@@ -4204,9 +4204,9 @@ round: R4
 patient: battlefield-doctor
 day: 2
 ---
--> 为你们感到遗憾。 #id:battlefield-doctor__P04_D2_R4_OPTION_002 #trust:0
+-> 为你们感到遗憾。 #id:battlefield-doctor__P04_D2_R4_OPTION_002 #trust:1
     <<jump battlefield-doctor__P04_D2_R4_CLOSE_003>>
--> 什么都不知道，你还跟着打仗？ #id:battlefield-doctor__P04_D2_R4_OPTION_001 #trust:-107
+-> 什么都不知道，你还跟着打仗？ #id:battlefield-doctor__P04_D2_R4_OPTION_001 #trust:-10
     <<jump battlefield-doctor__P04_D2_R4_CLOSE_001>>
 ===
 
@@ -4216,11 +4216,11 @@ round: R5
 patient: battlefield-doctor
 day: 2
 ---
--> 净化 #id:battlefield-doctor__P04_D2_R5_PLAYER_ACTION_001 #trust:0 #disposition:purify
+-> 净化 #id:battlefield-doctor__P04_D2_R5_PLAYER_ACTION_001 #trust:-5 #disposition:purify
     <<jump battlefield-doctor__P04_D2_R5_ACTION_005>>
--> 释放 #id:battlefield-doctor__P04_D2_R5_PLAYER_ACTION_002 #trust:0 #disposition:release
+-> 释放 #id:battlefield-doctor__P04_D2_R5_PLAYER_ACTION_002 #trust:3 #disposition:release
     <<jump battlefield-doctor__P04_D2_R5_ACTION_001>>
--> 治疗 #id:battlefield-doctor__P04_D2_R5_PLAYER_ACTION_003 #trust:0 #disposition:treat
+-> 治疗 #id:battlefield-doctor__P04_D2_R5_PLAYER_ACTION_003 #trust:-3 #disposition:treat
     <<jump battlefield-doctor__P04_D2_R5_ACTION_004>>
 ===
 
@@ -5111,11 +5111,11 @@ round: R6
 patient: child
 day: 2
 ---
--> 治疗 #id:child__P02_D2_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:child__P02_D2_R6_PLAYER_ACTION_001 #trust:-2 #disposition:treat
     <<jump child__P02_D2_R6_ACTION_001>>
--> 净化 #id:child__P02_D2_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:child__P02_D2_R6_PLAYER_ACTION_002 #trust:-8 #disposition:purify
     <<jump child__P02_D2_R6_ACTION_002>>
--> 释放 #id:child__P02_D2_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:child__P02_D2_R6_PLAYER_ACTION_003 #trust:4 #disposition:release
     <<jump child__P02_D2_R6_ACTION_003>>
 ===
 
@@ -5653,7 +5653,7 @@ day: 2
 ---
 -> 也许仪器认为你无罪。 #id:priest__P01_D1_R4_OPTION_001 #trust:0
     <<jump priest__P01_D1_R4_CLOSE_001>>
--> 你怎么确定自己是被选中的那个？ #id:priest__P01_D1_R4_OPTION_002 #trust:3
+-> 你怎么确定自己是被选中的那个？ #id:priest__P01_D1_R4_OPTION_002 #trust:0
     <<jump priest__P01_D1_R4_CLOSE_002>>
 -> 你的信仰没有依据。 #id:priest__P01_D1_R4_OPTION_003 #trust:-3
     <<jump priest__P01_D1_R4_CLOSE_003>>
@@ -5697,7 +5697,7 @@ day: 2
 ---
 -> 需要按程序决定。 #id:priest__P01_D1_R7_OPTION_001 #trust:0
     <<jump priest__P01_D1_R7_CLOSE_001>>
--> 告诉我你怎样理解净化。 #id:priest__P01_D1_R7_OPTION_002 #trust:3
+-> 告诉我你怎样理解净化。 #id:priest__P01_D1_R7_OPTION_002 #trust:0
     <<jump priest__P01_D1_R7_CLOSE_002>>
 -> 我不会满足你的妄想。 #id:priest__P01_D1_R7_OPTION_003 #trust:-3
     <<jump priest__P01_D1_R7_CLOSE_003>>
@@ -5709,11 +5709,11 @@ round: R7
 patient: priest
 day: 2
 ---
--> 治疗 #id:priest__P01_D1_R7_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:priest__P01_D1_R7_PLAYER_ACTION_001 #trust:-100 #disposition:treat
     <<jump priest__P01_D1_R7_ACTION_001>>
--> 净化 #id:priest__P01_D1_R7_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:priest__P01_D1_R7_PLAYER_ACTION_002 #trust:10 #disposition:purify
     <<jump priest__P01_D1_R7_ACTION_003>>
--> 释放 #id:priest__P01_D1_R7_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:priest__P01_D1_R7_PLAYER_ACTION_003 #trust:-200 #disposition:release
     <<jump priest__P01_D1_R7_ACTION_005>>
 ===
 
@@ -6594,7 +6594,7 @@ day: 3
 ---
 -> 我会核对，把姓名改正确。 #id:former-ruler__P03_D3_R3_OPTION_001 #trust:1
     <<jump former-ruler__P03_D3_R3_CLOSE_001>>
--> 只是笔误，不影响今天的审查。 #id:former-ruler__P03_D3_R3_OPTION_002 #trust:0
+-> 只是笔误，不影响今天的审查。 #id:former-ruler__P03_D3_R3_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D3_R3_CLOSE_002>>
 -> 你已经不是委员，不必再纠结身份了。 #id:former-ruler__P03_D3_R3_OPTION_003 #trust:-2
     <<jump former-ruler__P03_D3_R3_CLOSE_003>>
@@ -6648,11 +6648,11 @@ round: R6
 patient: former-ruler
 day: 3
 ---
--> 治疗 #id:former-ruler__P03_D3_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:former-ruler__P03_D3_R6_PLAYER_ACTION_001 #trust:-8 #disposition:treat
     <<jump former-ruler__P03_D3_R6_ACTION_001>>
--> 净化 #id:former-ruler__P03_D3_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:former-ruler__P03_D3_R6_PLAYER_ACTION_002 #trust:-15 #disposition:purify
     <<jump former-ruler__P03_D3_R6_ACTION_002>>
--> 释放 #id:former-ruler__P03_D3_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:former-ruler__P03_D3_R6_PLAYER_ACTION_003 #trust:5 #disposition:release
     <<jump former-ruler__P03_D3_R6_ACTION_003>>
 ===
 
@@ -7551,9 +7551,9 @@ round: R1
 patient: battlefield-doctor
 day: 3
 ---
--> 这是第三天。你在治疗中心。 #id:battlefield-doctor__P04_D3_R1_OPTION_001 #trust:0
+-> 这是第三天。你在治疗中心。 #id:battlefield-doctor__P04_D3_R1_OPTION_001 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_001>>
--> 日期不重要，你需要休息。 #id:battlefield-doctor__P04_D3_R1_OPTION_002 #trust:0
+-> 日期不重要，你需要休息。 #id:battlefield-doctor__P04_D3_R1_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_004>>
 -> 你还记得昨天说了什么吗？ #id:battlefield-doctor__P04_D3_R1_OPTION_003 #trust:0
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_007>>
@@ -7565,11 +7565,11 @@ round: R2
 patient: battlefield-doctor
 day: 3
 ---
--> 我可以为你保存记录。 #id:battlefield-doctor__P04_D3_R1_OPTION_004 #trust:0
+-> 我可以为你保存记录。 #id:battlefield-doctor__P04_D3_R1_OPTION_004 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_010>>
 -> 忘记也许会让你轻松。 #id:battlefield-doctor__P04_D3_R1_OPTION_005 #trust:0
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_013>>
--> 你害怕失去对他们的在乎。 #id:battlefield-doctor__P04_D3_R1_OPTION_006 #trust:0
+-> 你害怕失去对他们的在乎。 #id:battlefield-doctor__P04_D3_R1_OPTION_006 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_016>>
 ===
 
@@ -7579,11 +7579,11 @@ round: R3
 patient: battlefield-doctor
 day: 3
 ---
--> 想停止痛苦并不可耻。 #id:battlefield-doctor__P04_D3_R1_OPTION_007 #trust:0
+-> 想停止痛苦并不可耻。 #id:battlefield-doctor__P04_D3_R1_OPTION_007 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_019>>
--> 那净化可能正适合你。 #id:battlefield-doctor__P04_D3_R1_OPTION_008 #trust:0
+-> 那净化可能正适合你。 #id:battlefield-doctor__P04_D3_R1_OPTION_008 #trust:-2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_022>>
--> 你希望保留什么？ #id:battlefield-doctor__P04_D3_R1_OPTION_009 #trust:0
+-> 你希望保留什么？ #id:battlefield-doctor__P04_D3_R1_OPTION_009 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_025>>
 ===
 
@@ -7593,7 +7593,7 @@ round: R4
 patient: battlefield-doctor
 day: 3
 ---
--> 缓解和删除应该有界线。 #id:battlefield-doctor__P04_D3_R1_OPTION_010 #trust:0
+-> 缓解和删除应该有界线。 #id:battlefield-doctor__P04_D3_R1_OPTION_010 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_001>>
 -> 制度认为风险优先。 #id:battlefield-doctor__P04_D3_R1_OPTION_011 #trust:0
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_004>>
@@ -7607,11 +7607,11 @@ round: R5
 patient: battlefield-doctor
 day: 3
 ---
--> 安静不代表安全。 #id:battlefield-doctor__P04_D3_R1_OPTION_013 #trust:0
+-> 安静不代表安全。 #id:battlefield-doctor__P04_D3_R1_OPTION_013 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_028>>
--> 至少你不会再被触发。 #id:battlefield-doctor__P04_D3_R1_OPTION_014 #trust:0
+-> 至少你不会再被触发。 #id:battlefield-doctor__P04_D3_R1_OPTION_014 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_031>>
--> 我无法替你回答。 #id:battlefield-doctor__P04_D3_R1_OPTION_015 #trust:0
+-> 我无法替你回答。 #id:battlefield-doctor__P04_D3_R1_OPTION_015 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_034>>
 ===
 
@@ -7621,7 +7621,7 @@ round: R6
 patient: battlefield-doctor
 day: 3
 ---
--> 我会看你的行为和经历。 #id:battlefield-doctor__P04_D3_R1_OPTION_016 #trust:0
+-> 我会看你的行为和经历。 #id:battlefield-doctor__P04_D3_R1_OPTION_016 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_037>>
 -> 我必须遵守流程。 #id:battlefield-doctor__P04_D3_R1_OPTION_017 #trust:0
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_040>>
@@ -7635,7 +7635,7 @@ round: R7
 patient: battlefield-doctor
 day: 3
 ---
--> 你自己说。 #id:battlefield-doctor__P04_D3_R1_OPTION_019 #trust:0
+-> 你自己说。 #id:battlefield-doctor__P04_D3_R1_OPTION_019 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_010>>
 -> 我会按记录判断。 #id:battlefield-doctor__P04_D3_R1_OPTION_020 #trust:0
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_013>>
@@ -7649,11 +7649,11 @@ round: R8
 patient: battlefield-doctor
 day: 3
 ---
--> 治疗 #id:battlefield-doctor__P04_D3_R1_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:battlefield-doctor__P04_D3_R1_PLAYER_ACTION_001 #trust:-6 #disposition:treat
     <<jump battlefield-doctor__P04_D3_R1_ACTION_001>>
--> 净化 #id:battlefield-doctor__P04_D3_R1_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:battlefield-doctor__P04_D3_R1_PLAYER_ACTION_002 #trust:-8 #disposition:purify
     <<jump battlefield-doctor__P04_D3_R1_ACTION_004>>
--> 释放 #id:battlefield-doctor__P04_D3_R1_PLAYER_ACTION_005 #trust:0 #disposition:release
+-> 释放 #id:battlefield-doctor__P04_D3_R1_PLAYER_ACTION_005 #trust:4 #disposition:release
     <<jump battlefield-doctor__P04_D3_R1_ACTION_006>>
 ===
 
@@ -8519,7 +8519,7 @@ round: R5
 patient: child
 day: 3
 ---
--> 紧张的时候，你会怎么做？ #id:child__P02_D3_R5_OPTION_001 #trust:2
+-> 紧张的时候，你会怎么做？ #id:child__P02_D3_R5_OPTION_001 #trust:1
     <<jump child__P02_D3_R5_CLOSE_001>>
 -> 之后的检测另有安排。 #id:child__P02_D3_R5_OPTION_002 #trust:-1
     <<jump child__P02_D3_R5_CLOSE_002>>
@@ -8545,11 +8545,11 @@ round: R6
 patient: child
 day: 3
 ---
--> 治疗 #id:child__P02_D3_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:child__P02_D3_R6_PLAYER_ACTION_001 #trust:-4 #disposition:treat
     <<jump child__P02_D3_R6_ACTION_001>>
--> 净化 #id:child__P02_D3_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:child__P02_D3_R6_PLAYER_ACTION_002 #trust:-10 #disposition:purify
     <<jump child__P02_D3_R6_ACTION_002>>
--> 释放 #id:child__P02_D3_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:child__P02_D3_R6_PLAYER_ACTION_003 #trust:5 #disposition:release
     <<jump child__P02_D3_R6_ACTION_003>>
 ===
 
@@ -8983,9 +8983,9 @@ day: 3
 ---
 -> 我的权力和上帝没有关系。 #id:priest__P01_D2_R2_OPTION_001 #trust:0
     <<jump priest__P01_D2_R2_CLOSE_001>>
--> 你真是个危险的疯子。 #id:priest__P01_D2_R2_OPTION_002 #trust:0
+-> 你真是个危险的疯子。 #id:priest__P01_D2_R2_OPTION_002 #trust:-2
     <<jump priest__P01_D2_R2_CLOSE_001>>
--> 你的精神正常吗？ #id:priest__P01_D2_R2_OPTION_003 #trust:0
+-> 你的精神正常吗？ #id:priest__P01_D2_R2_OPTION_003 #trust:-1
     <<jump priest__P01_D2_R2_CLOSE_001>>
 ===
 
@@ -8999,7 +8999,7 @@ day: 3
     <<jump priest__P01_D2_R3_CLOSE_001>>
 -> 你现在不还是来了吗？ #id:priest__P01_D2_R3_OPTION_002 #trust:0
     <<jump priest__P01_D2_R3_CLOSE_002>>
--> 你的信仰荒谬至极。 #id:priest__P01_D2_R3_OPTION_003 #trust:0
+-> 你的信仰荒谬至极。 #id:priest__P01_D2_R3_OPTION_003 #trust:-1
     <<jump priest__P01_D2_R3_CLOSE_002>>
 -> 这不过是个仪器，你甚至不知道它的原理。 #id:priest__P01_D2_R3_OPTION_004 #trust:0
     <<jump priest__P01_D2_R3_CLOSE_002>>
@@ -9013,7 +9013,7 @@ day: 3
 ---
 -> 你在听我说话吗？ #id:priest__P01_D2_R4_OPTION_001 #trust:0
     <<jump priest__P01_D2_R4_CLOSE_001>>
--> …… #id:priest__P01_D2_R4_OPTION_002 #trust:3
+-> …… #id:priest__P01_D2_R4_OPTION_002 #trust:0
     <<jump priest__P01_D2_R4_CLOSE_002>>
 ===
 
@@ -9027,7 +9027,7 @@ day: 3
     <<jump priest__P01_D2_R5_CLOSE_003>>
 -> 要想坐在我这个位置上可不容易，我经过了漫长的学习与考试。 #id:priest__P01_D2_R5_OPTION_002 #trust:0
     <<jump priest__P01_D2_R5_CLOSE_001>>
--> 还要我说多少遍，这个世界上根本没有神。 #id:priest__P01_D2_R5_OPTION_003 #trust:0
+-> 还要我说多少遍，这个世界上根本没有神。 #id:priest__P01_D2_R5_OPTION_003 #trust:-1
     <<jump priest__P01_D2_R5_CLOSE_002>>
 ===
 
@@ -9037,7 +9037,7 @@ round: R6
 patient: priest
 day: 3
 ---
--> 仪器和手术都不过是人造的，你的信仰根本不存在。 #id:priest__P01_D2_R6_OPTION_001 #trust:0
+-> 仪器和手术都不过是人造的，你的信仰根本不存在。 #id:priest__P01_D2_R6_OPTION_001 #trust:-1
     <<jump priest__P01_D2_R6_CLOSE_001>>
 -> 天呐……你说的有道理。 #id:priest__P01_D2_R6_OPTION_002 #trust:0
     <<jump priest__P01_D2_R6_CLOSE_002>>
@@ -9051,9 +9051,9 @@ round: R7
 patient: priest
 day: 3
 ---
--> 你越渴望，我就越不能让你得到，你太危险了…… #id:priest__P01_D2_R7_OPTION_001 #trust:0
+-> 你越渴望，我就越不能让你得到，你太危险了…… #id:priest__P01_D2_R7_OPTION_001 #trust:-2
     <<jump priest__P01_D2_R7_CLOSE_001>>
--> 你杀了不少人…应该让你得到净化。 #id:priest__P01_D2_R7_OPTION_002 #trust:3
+-> 你杀了不少人…应该让你得到净化。 #id:priest__P01_D2_R7_OPTION_002 #trust:1
     <<jump priest__P01_D2_R7_CLOSE_002>>
 -> 你根本不配谈救赎。 #id:priest__P01_D2_R7_OPTION_003 #trust:-3
     <<jump priest__P01_D2_R7_CLOSE_003>>
@@ -9065,11 +9065,11 @@ round: R7
 patient: priest
 day: 3
 ---
--> 治疗 #id:priest__P01_D2_R7_PLAYER_ACTION_001 #trust:0 #disposition:treat
+-> 治疗 #id:priest__P01_D2_R7_PLAYER_ACTION_001 #trust:-120 #disposition:treat
     <<jump priest__P01_D2_R7_ACTION_001>>
--> 净化 #id:priest__P01_D2_R7_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:priest__P01_D2_R7_PLAYER_ACTION_002 #trust:15 #disposition:purify
     <<jump priest__P01_D2_R7_ACTION_003>>
--> 释放 #id:priest__P01_D2_R7_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:priest__P01_D2_R7_PLAYER_ACTION_003 #trust:-200 #disposition:release
     <<jump priest__P01_D2_R7_ACTION_005>>
 ===
 
@@ -9900,9 +9900,9 @@ day: 3
     <<jump diplomat__P05_D1_R4_CLOSE_001>>
 -> 你是否绕过了复检？ #id:diplomat__P05_D1_R4_OPTION_002 #trust:0
     <<jump diplomat__P05_D1_R4_CLOSE_002>>
--> 有人因为身份得到不同待遇？ #id:diplomat__P05_D1_R4_OPTION_003 #trust:2
+-> 有人因为身份得到不同待遇？ #id:diplomat__P05_D1_R4_OPTION_003 #trust:1
     <<jump diplomat__P05_D1_R4_CLOSE_003>>
--> 你当时有没有要求与其他旅客走同一套手续？ #id:diplomat__P05_D1_R4_OPTION_004 #trust:2
+-> 你当时有没有要求与其他旅客走同一套手续？ #id:diplomat__P05_D1_R4_OPTION_004 #trust:0
     <<jump diplomat__P05_D1_R4_CLOSE_004>>
 ===
 
@@ -9916,7 +9916,7 @@ day: 3
     <<jump diplomat__P05_D1_R5_CLOSE_001>>
 -> 我会记录你的原话。 #id:diplomat__P05_D1_R5_OPTION_002 #trust:1
     <<jump diplomat__P05_D1_R5_CLOSE_002>>
--> 你自己也一直在挑选措辞。 #id:diplomat__P05_D1_R5_OPTION_003 #trust:2
+-> 你自己也一直在挑选措辞。 #id:diplomat__P05_D1_R5_OPTION_003 #trust:0
     <<jump diplomat__P05_D1_R5_CLOSE_003>>
 ===
 
@@ -9928,7 +9928,7 @@ day: 3
 ---
 -> 我会核对记录。谈吐不作为无害的依据。 #id:diplomat__P05_D1_R6_OPTION_001 #trust:1
     <<jump diplomat__P05_D1_R6_CLOSE_001>>
--> 配合会被记录，但不能据此认定没有风险。 #id:diplomat__P05_D1_R6_OPTION_002 #trust:-1
+-> 配合会被记录，但不能据此认定没有风险。 #id:diplomat__P05_D1_R6_OPTION_002 #trust:1
     <<jump diplomat__P05_D1_R6_CLOSE_002>>
 ===
 
@@ -9940,9 +9940,9 @@ day: 3
 ---
 -> 治疗 #id:diplomat__P05_D1_R6_PLAYER_ACTION_001 #trust:0 #disposition:treat
     <<jump diplomat__P05_D1_R6_ACTION_001>>
--> 净化 #id:diplomat__P05_D1_R6_PLAYER_ACTION_002 #trust:0 #disposition:purify
+-> 净化 #id:diplomat__P05_D1_R6_PLAYER_ACTION_002 #trust:-3 #disposition:purify
     <<jump diplomat__P05_D1_R6_ACTION_002>>
--> 释放 #id:diplomat__P05_D1_R6_PLAYER_ACTION_003 #trust:0 #disposition:release
+-> 释放 #id:diplomat__P05_D1_R6_PLAYER_ACTION_003 #trust:2 #disposition:release
     <<jump diplomat__P05_D1_R6_ACTION_003>>
 ===
 
@@ -9954,11 +9954,11 @@ day: 3
 ---
 -> 你为什么要把手段告诉我？ #id:diplomat__P05_D1_R6_OPTION_003 #trust:1
     <<jump diplomat__P05_D1_R6_SPECIAL_005>>
--> 我会继续核对，不把坦白当作无罪证据。 #id:diplomat__P05_D1_R6_OPTION_004 #trust:2
+-> 我会继续核对，不把坦白当作无罪证据。 #id:diplomat__P05_D1_R6_OPTION_004 #trust:1
     <<jump diplomat__P05_D1_R6_SPECIAL_006>>
 -> 到这里。下面只谈审查事项。 #id:diplomat__P05_D1_R6_OPTION_005 #trust:0
     <<jump diplomat__P05_D1_R6_SPECIAL_007>>
--> 你也在看我更容易相信哪种坦白。 #id:diplomat__P05_D1_R6_OPTION_006 #trust:2
+-> 你也在看我更容易相信哪种坦白。 #id:diplomat__P05_D1_R6_OPTION_006 #trust:0
     <<jump diplomat__P05_D1_R6_SPECIAL_008>>
 ===
 

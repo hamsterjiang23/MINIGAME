@@ -80,7 +80,8 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(label.text, Is.EqualTo(remaining.ToString("00")));
             Assert.That(label.enabled && label.gameObject.activeInHierarchy, Is.False,
                 "The authoritative value stays readable without drawing over the supplied quota artwork.");
-            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork");
+            var artwork = screen.GetComponentsInChildren<RawImage>(true).Single(image => image.name == "DailyWorkQuotaArtwork"
+                && image.transform.parent.name == "DailyWorkQuotaField");
             Assert.That(artwork.enabled && artwork.gameObject.activeInHierarchy, Is.True);
             Assert.That(artwork.texture, Is.SameAs(Resources.Load<TerminalAssetSet>("MiniGame/TerminalAssets").QuotaFields));
             Assert.That(artwork.uvRect.x, Is.EqualTo(remaining % 10 / 10f).Within(.00001f));

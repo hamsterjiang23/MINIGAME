@@ -103,7 +103,8 @@ def apply_repairs(patient_id: str, source_hash: str, rows: list[Row],
 
 def build_updated_meeting(patient: Record, rows: list[Row], day: int,
                           columns: dict[str, str], mappings: list[Record],
-                          adaptations: list[Record], campaign_day: int | None = None) -> Record:
+                          adaptations: list[Record], campaign_day: int | None = None,
+                          trust_adjustments: dict[str, Record] | None = None) -> Record:
     pid = str(patient["id"])
     selected = [row for row in rows if day_of(row) == day]
     if not selected:
@@ -216,6 +217,19 @@ def build_updated_meeting(patient: Record, rows: list[Row], day: int,
                         "portrait": row.get("portrait", "")}
         if option:
             node.update({"trust": delta + transferred_deltas.get(row["id"], 0), "action": action_of(row)})
+            adjustment = (trust_adjustments or {}).get(str(node["id"]))
+            if adjustment is not None:
+                if (node["action"] != adjustment.get("expectedDisposition", "") or row[field] != adjustment["expectedText"]
+                        or node["trust"] != adjustment["expectedEffectiveDelta"]):
+                    raise ValueError(f"Trust adjustment precondition failed: {node['id']}")
+                adaptations.append({"kind": "user-approved-trust-adjustment", "patientId": pid,
+                                    "day": day, "row": int(row["row"]), "sourceId": node["id"],
+                                    "sourceCell": columns["delta"] + row["row"],
+                                    "before": node["trust"], "after": adjustment["trustDelta"],
+                                    "reason": adjustment["reason"]})
+                if node["action"]:
+                    adaptations[-1]["disposition"] = node["action"]
+                node["trust"] = adjustment["trustDelta"]
             options[row["id"]] = node
         else:
             node["speaker"] = "终端" if kind == "narration" else patient["name"]
@@ -226,6 +240,8 @@ def build_updated_meeting(patient: Record, rows: list[Row], day: int,
                            "deltaColumn": columns["delta"]}
         if option:
             mapping["trustDelta"] = node["trust"]
+            if (trust_adjustments or {}).get(str(node["id"])) is not None:
+                mapping["unadjustedTrustDelta"] = delta + transferred_deltas.get(row["id"], 0)
         if row["id"] in line_delta_destinations:
             mapping["trustAppliedTo"] = line_delta_destinations[row["id"]]
         mappings.append(mapping)
