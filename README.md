@@ -1,114 +1,97 @@
-# MINIGAME
+# NORM / MINIGAME
 
-本仓库用于开发一款原创的**第一人称、2D/3D混合心理恐怖叙事游戏**。玩家扮演检定员，在员工公寓中通过电脑与病人交流，在制度配额与个人判断之间选择治疗、净化或释放。Mini Game目标为 **3天、5位病人、3种结局**，原创项目研究基线为 **Unity 2022.3 LTS**。[verified: docs/game-overview.md「一句话定位」「这次要交付的范围」；research/README.md L3–L7]
+原创第一人称、2D/3D混合心理恐怖叙事游戏。玩家在员工公寓中作为检定员，通过电脑与患者交流，选择治疗、净化或释放，并承担跨日后果。当前正式流程为 **Day0教学＋Day1–3工作＋四分支结局**；Day4用于结局收束。[verified: UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json campaign.days；src/MiniGame.Core/Runtime/GameSession.cs L193–206、L255–263]
 
-目前已有设计资料、15个固定版本的参考仓库、纯C#规则与存档，以及[Unity开发原型](UnityProject/README.md)源码：原创公寓、中文界面、观察、Yarn会谈、处置反应、回房和睡眠跨日。正式资源、对白与演出尚未完成；原创原型和恢复的参考游戏工程分别验证。[verified: docs/source-lock.md L11–L25；UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate；docs/reference-gameplay-migration.md] [opinion]
+当前处于全流程内容与演出已接入、持续回归和体验打磨的阶段，最终发布验收仍需单独完成。[opinion] 本页于2026-10-27按当前源码、内容包及仓库内报告整理；历史验证不表示本次重新执行。[opinion]
 
-2026-10-15飞书来源已更新：主Wiki新增反叛值结局，流程画板新增每日开始前结局/KPI检查，小孩已有完整对白表；当前原型仍保留开发配置。变动与待裁决项见[同步记录](docs/feishu-sync-2026-10-15.md)。[verified: docs/.source-data/game-wiki.json content「结局」；docs/.source-data/sync-2026-10-15.json changes] [opinion]
+## 启动与开发
 
-**全流程内容包已更新为六份新版Excel**：1437行原始资料中启用1295行，142行重复或后附冲突内容按确认规则暂不启用；覆盖Day0及五名角色三天的16场会谈，声明22个立绘状态。修复依据与新版条件分支见[本次对白更新](docs/dialogue-update-2026-10-21/guide.md)。融合主场景使用独立的 `ActiveCampaignPackage`，旧小孩Day1演示保留；启动与编辑入口见[全流程指南](docs/campaign-guide.md)。`[verified: UnityProject/Assets/MiniGame/Content/Campaign/provenance.json sourceRowCount/activeSourceRowCount/excludedSourceRowCount/meetingCount/declaredPortraits；UnityProject/Assets/MiniGame/Editor/CampaignBuilder.cs ImportAndActivate]`
+- 主场景：[MainRoomCombined.unity](UnityProject/Assets/MiniGame/Scenes/MainRoomCombined.unity)。Windows入口为 [Open-Unity.cmd](Open-Unity.cmd)，其调用的 [Open-Project.ps1](UnityProject/Tools/Open-Project.ps1) 校验Editor版本并打开融合场景。[verified: UnityProject/Tools/Open-Project.ps1 L1–29]
+- 当前工程记录 **Unity 2022.3.23f1**；历史隔离测试使用 **2022.3.23f1c1**。运行前核对实际Editor与工程版本，不静默升级或覆盖已有版本改动。[verified: UnityProject/ProjectSettings/ProjectVersion.txt m_EditorVersion；docs/ui-feedback/ending-polish-2026-10-26.md「验证」] [opinion]
+- 已打开Editor时使用 `MiniGame/Main Room/Open and play`。移动、会谈、存读档、暂停和旧演示的操作见 [Unity工程说明](UnityProject/README.md)。[verified: UnityProject/README.md「运行与操作」]
+- 外发菜单：`MiniGame/Build/Build Windows external release`，目标为Windows x64、Mono、非Development；默认输出 `Builds/NORM/NORM.exe`。配置和交付检查见 [外发包指南](docs/windows-release.md)。[verified: docs/windows-release.md「Windows 外发包」中 Build/输出说明]
 
-## 玩法设计
+## 当前流程与完成范围
 
-电脑终端现采用用户提供的v0.8.12琥珀资源包，支持开机自检、分区加载和动态人物监控。每天仅首次交互开机，中途退出操作保持亮屏，再次进入继续；当日全部会谈与反应结束后自动关机，开关机各有专用音效；F2／F3功能已移除。物理CRT覆盖面按真实玻璃曲率贴合。Day0启动居中显示透明NORM标志，点击后连续拉远进入教学，关机后睡一次进入Day1，起床不重设视角；海报、家书、日报和录用通知书共用黑底无框白字阅读面板，右侧留小边距并随镜头转动，自动避让当前交互物；日报按游戏日切换，见[阅读物件指南](docs/room-readables/guide.md)。最新运行版与验证见[CRT指南](docs/crt-screen-fit/guide.md)，开场和操作见[开场指南](docs/opening/guide.md)与[琥珀终端指南](docs/terminal-amber/guide.md)；新版工作指标与逐字开机音效见[当日指标指南](docs/terminal-daily-work/guide.md)。`[verified: MiniGameBootstrap.StartTerminalDemo；PresentationEffects.DayZeroOpening/PowerOn/PowerOff；GameRuntime.CompleteCue/LeaveTerminal；TerminalView.SetOpeningLogo；docs/crt-screen-fit/verification.json]`
+**晨检与简报 → 电脑名册与会谈 → 处置与反应 → 夜间梦境 → 次日或结局。** Day0使用独立教学角色，正式患者退场后不再进入后续常规队列。[verified: UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json campaign.days；src/MiniGame.Core/Runtime/GameSession.cs L417–438、L460–464]
 
-NORM 调整包括门外监督员与白框晨检、暂停操作手册、净化要求进度、晨检扫描声、门口镜头停止推进和独立胶片颗粒；先前结果见[NORM 修复指南](docs/norm-bugs/guide.md)。墙纸穿墙与黑斑已修复，并已合入GitHub场景灯光及用户提供的调色配置；当前运行版见[墙体与灯光指南](docs/wall-lighting/guide.md)，新梦境素材继续暂缓。`[verified: docs/norm-bugs/guide.md；docs/wall-lighting/guide.md]`
+| 游戏日 | 候选角色 | 来源 |
+| --- | --- | --- |
+| Day0 | 无名男子（教学） | [verified: campaign.minigame.json campaign.days[0].meetings] |
+| Day1 | 薇拉、埃德温、米洛 | [verified: campaign.minigame.json campaign.days[1].meetings] |
+| Day2 | 薇拉、埃德温、米洛、乔纳 | [verified: campaign.minigame.json campaign.days[2].meetings] |
+| Day3 | 薇拉、埃德温、米洛、乔纳、阿德里安 | [verified: campaign.minigame.json campaign.days[3].meetings] |
 
-开机与关机文字现逐字显现，每个可见字符从新上传的四段 UIType 短音中随机选择一段；空白与光标不发声，暂停、跳过自检和中途重开保持原规则。音量设置、来源哈希和运行版见[终端逐字音效](docs/terminal-typing-audio/guide.md)。`[verified: TerminalPowerTimeline；TerminalTransitionView.SetPowerFrame；MiniGameAudioService.PlayTerminalTyping]`
+完整候选会谈含教学共 **13场**；实际场数受处置退场与提前结局影响。当前来源审计为1360行原始资料、1294行启用资料、66行排除资料；这些是来源数量，不等于玩家实际看到的台词数量。[verified: UnityProject/Assets/MiniGame/Content/Campaign/provenance.json sourceRowCount/activeSourceRowCount/excludedSourceRowCount/meetingCount/meetingSchedule]
 
-2026-10-19 的 Combined 正式 Campaign 已接入墙面梦境、玩家全局反叛值、自我审查净化及独立海滩终局；中文调参、音频选取和动态海浪说明见[梦境与结局指南](docs/dreams/guide.md)，录制视频随仓库保存。`[verified: docs/dreams/verification.json；docs/dreams/water-verification.json；Art/Dreams/Previews/manifest.json]`
+- **规则与存档**：患者独立信任、条件会谈、一次性处置、每日配额、跨日事件、结局、核心和演出检查点已有实现。[verified: src/README.md「调用入口」「保存与恢复」；src/MiniGame.Presentation/GameRuntime.cs L15–45]
+- **房间与终端**：融合公寓、门／电脑／床交互、CRT终端、人物监控、逐字对白、阅读物件、暂停及存取档已有接入；详细操作见 [Unity工程说明](UnityProject/README.md)、[世界交互](docs/world-dialogue/guide.md)与[终端指南](docs/terminal-amber/guide.md)。[verified: UnityProject/README.md「运行与操作」]
+- **对白与立绘**：正式Campaign使用Excel生成的V2包，按信任门槛进入特殊段；旧小孩Day1演示与 `PrototypeRules` 独立保留。[verified: src/README.md「开发默认规则」；Tools/DialogueCampaign/README.md「全流程对白转换」]
+- **梦境与终局**：每日梦境、自审、海滩行走、上床看天、监督员对白、名单与回菜单已有接入。近期镜头、声音和准心修订见 [隐藏结局打磨](docs/ui-feedback/ending-polish-2026-10-26.md)。[verified: docs/endings/guide.md「分支」；docs/ui-feedback/ending-polish-2026-10-26.md「修改」「最终补修：海滩准心」]
 
-全量对白使用[全流程指南](docs/campaign-guide.md)；V1小孩Day1使用[电脑终端与对白工具指南](docs/terminal-ui-guide.md)，旧三天开发配置见[原型验收指南](docs/planner-acceptance-guide.md)。`[opinion]`
+### 四分支结局
 
-**晨检与任务简报 → 电脑会谈 → 治疗／净化／释放 → 夜间收束 → 睡眠与梦境 → 次日反馈。** 3D公寓承载移动与物件交互，2D终端承载病人对白、选项和处置。[verified: docs/game-overview.md「玩家的一天」]
+| 分支 | 触发口径 | 来源 |
+| --- | --- | --- |
+| 隐藏梦／自我审判 | Day3梦结束，薇拉、医生、小孩、外交官历史信任合计≥10；退场者仍计入，排除神父、教学角色及玩家；16句自审与自我净化后进入海滩。 | [verified: src/MiniGame.Core/Runtime/GameSession.cs L193–206；docs/endings/guide.md「分支」] |
+| 神父袭击 | 神父释放后的自然次日触发，先于同次跨日的KPI失败；Day2释放对应Day3，Day3释放对应Day4。 | [verified: src/MiniGame.Core/Runtime/GameSession.cs L255–263、L422–426；docs/endings/guide.md「分支」] |
+| KPI失败／锁房 | 任意正式日未达配额，保留当晚梦境，在下一次跨日转到Day4结局；更早结束的局不能进入Day3隐藏检查。 | [verified: src/MiniGame.Core/Runtime/GameSession.cs L255–263、L496–528] |
+| 普通／被带走 | 完成三天且未进入上述分支。 | [verified: src/MiniGame.Core/Runtime/GameSession.cs L255–263；docs/endings/guide.md「分支」] |
 
-**《寻找伪人》（No, I'm not a Human）是本项目重要的玩法参考。**[verified: 用户确认“寻找伪人为重要的玩法参考”] 重点借鉴观察与信息核对、对话中的不确定性、决策后果、昼夜节奏和资源压力，并结合检定员与病人的原创设定改造。[opinion]
+隐藏条件先在Day3梦结束时检查，其余分支在跨日结算。**反叛值仍保留，但不再决定正式隐藏结局门槛。** 演出和GM测试入口见 [结局指南](docs/endings/guide.md)。[verified: src/MiniGame.Core/Runtime/GameSession.cs L183–206、L255–263]
 
-- 五位病人为神父、小孩、女性执政者、战场医生和外交官；角色经历与跨日变化见[游戏总览](docs/game-overview.md)。[verified: docs/game-overview.md「五位病人分别承担什么体验」]
-- 普通会谈采用多轮选项与分支汇合，符合信任条件时追加特殊会谈，结束后才允许处置；处置改变人物去留与后续事件。[verified: docs/game-overview.md「审判、对话与代价」；src/README.md「调用入口」「开发默认规则」]
-- 旧原型保留被带走、神父袭击、KPI失败后三种结局；Combined 新增反叛梦结局，优先级为神父袭击、KPI失败、反叛梦结局、普通结局。全局反叛值的缺省选项增减为0，需策划配置后自然积累。[verified: docs/dreams/guide.md「玩家全局反叛值」「正式流程与操作」]
+## 框架与配表
 
-**开发配置与正式策划分开维护。** 全流程暂用信任0、释放门槛3、每日净化目标1，按实际表格增量结算，特殊轮次暂按普通轮次播放；参数及解释集中在[转换配置](Tools/DialogueCampaign/conversion-config.json)。V1小孩Day1仍为净化剩余5，旧三天原型保持原配置；这些不是全局正式数值表，未裁定事项仍见[设计待定项](docs/open-questions.md)。`[verified: Tools/DialogueCampaign/conversion-config.json；UnityProject/Assets/MiniGame/Content/TerminalDemo/terminal-day1.minigame.json profile；src/MiniGame.Core/Rules/PrototypeRules.cs Create]` `[opinion]`
+`GameSession`裁决权威规则和状态；`GameRuntime`管理房间／终端生命周期、输入和演出；Unity／Yarn负责场景、文本及播放回调。UI与Yarn不另存权威信任、配额或患者去留。[verified: src/MiniGame.Presentation/GameRuntime.cs L15–45；src/README.md「Unity／Yarn接入」] [opinion]
 
-## 研发与研究进展
+| 修改内容 | 入口 | 来源 |
+| --- | --- | --- |
+| 规则、状态、去重、跨日与存档 | [MiniGame.Core](src/MiniGame.Core/) | [verified: src/README.md「调用入口」「保存与恢复」] |
+| 输入、演出检查点、内容编译与运行时 | [MiniGame.Presentation](src/MiniGame.Presentation/) | [verified: src/MiniGame.Presentation/GameRuntime.cs L15–45] |
+| Unity表现、场景、Editor工具与测试 | [Assets/MiniGame](UnityProject/Assets/MiniGame/) | [verified: UnityProject/README.md「运行与操作」] |
+| 日常对白、信任增量、立绘与条件 | [Art/chat_excel](Art/chat_excel/) 中六份角色／教学Excel；监督员和神父结局另有工作簿 | [verified: Tools/DialogueCampaign/conversion-config.json patients[*].file；Tools/DialogueCampaign/README.md 开篇] |
+| 初始信任、默认释放门槛、每日配额、加入日 | [conversion-config.json](Tools/DialogueCampaign/conversion-config.json) | [verified: conversion-config.json initialTrust/releaseThreshold/dailyQuota/patients[*].firstDay] |
+| 来源修复、冲突行排除与哈希约束 | [source-repairs.json](Tools/DialogueCampaign/source-repairs.json) | [verified: Tools/DialogueCampaign/updated_source.py L57–100] |
+| 生成包、Yarn与逐行来源审计 | [Content/Campaign](UnityProject/Assets/MiniGame/Content/Campaign/) | [verified: Tools/DialogueCampaign/build_campaign.py main 的 artifacts/output] |
+| 实际加载的内容绑定 | [ActiveCampaignPackage.asset](UnityProject/Assets/Resources/MiniGame/ActiveCampaignPackage.asset) | [verified: MiniGameBootstrap.cs L503–508；ActiveCampaignPackage.asset packageSource] |
 
-2026-10-18全流程的内容校验、.NET、Unity原生Yarn、PlayMode与Windows构建分别记录在[全流程验收报告](docs/campaign-verification.json)；以下终端切片和早期原型结果保留各自日期与范围。`[opinion]`
+当前默认初始信任0、释放门槛3、每日净化目标1；显式配置的特殊段≥3、释放≥5覆盖默认值。角色表的Day是加入后的相对会谈日：神父游戏Day2读表Day1，外交官游戏Day3读表Day1。[verified: Tools/DialogueCampaign/conversion-config.json initialTrust/releaseThreshold/dailyQuota/patients；Tools/DialogueCampaign/README.md「全流程对白转换」；docs/endings/guide.md「sourceDay = campaignDay - firstDay + 1」]
 
-2026-10-15终端切片最新结果：锁定SDK8.0.424的Release构建0警告/错误，185项.NET测试、18项策划工具测试、Unity EditMode2项及PlayMode9项通过，Windows Mono构建成功。浏览器视觉和下载点击未验收，Player启动及其他范围见[本轮持久化报告](docs/terminal-ui-verification.json)。下方2026-10-13记录继续保留历史身份。[verified: docs/terminal-ui-verification.json dotnet/planner/unity/limits] [opinion]
+从Excel或明确的转换规则修改内容，重建和校验后再导入Unity；不把手改生成JSON／ImportedDialogue副本当作长期配表。源哈希变化需复核修复清单，操作详见 [对白转换工具](Tools/DialogueCampaign/README.md)。[verified: Tools/DialogueCampaign/updated_source.py L57–68；Tools/DialogueCampaign/build_campaign.py main] [opinion]
 
-**原创核心逻辑**位于[源码入口](src/README.md)：日期与阶段、五人独立状态、会谈门控、一次性处置、配额、跨日事件、结局和JSON存档已有实现。新 `GameRuntime` 管理输入、观察和演出检查点，`GameSession` 保持规则权威；迁移依据与边界见[寻找伪人玩法迁移](docs/reference-gameplay-migration.md)。[verified: src/MiniGame.Presentation/GameRuntime.cs；src/MiniGame.Core/Runtime/GameSession.cs]
+```powershell
+uv run python Tools/DialogueCampaign/build_campaign.py --smoke
+uv run python Tools/DialogueCampaign/build_campaign.py
+uv run python Tools/DialogueCampaign/build_campaign.py --check
+uv run python Tools/DialogueCampaign/build_supervisor.py --check
+uv run python Tools/DialogueCampaign/build_endings.py --check
+uv run python -m unittest discover -s Tools/DialogueCampaign -p 'test_*.py'
+```
 
-2026-10-13在Windows重新完成SDK8.0.424锁定恢复、Release构建（0警告、0错误）与150项测试：Core73、Presentation77。固定Yarn编译器验证327个生成节点、536条文本且无诊断。Unity导入、PlayMode与Player构建另行记录，不从这些结果推导可玩结论。[verified: Artifacts/Tests/migration-verification-report.json；Artifacts/Tests/migration-build.log；Artifacts/YarnSmoke/compiler-report.json] [opinion]
+上述命令来自工具说明；生成后用 `MiniGame/Campaign/Import endings and updated dialogue` 更新活动内容、结局及相关立绘，该入口不重建场景。[verified: Tools/DialogueCampaign/README.md 命令块；UnityProject/Assets/MiniGame/Editor/EndingContentImport.cs L13–29]
 
-Unity2022.3.23f1c1隔离工程已完成真实场景生成、四项图形模式PlayMode测试和Windows Mono开发构建（0错误、1警告）；构建产物位于 `Builds/MiniGame/MiniGame.exe`，启动检查通过。2026-10-15通过仓库根 `Open-Unity.cmd` 修复缺失启动环境后，正常UPM工程导入、主场景打开及四项图形PlayMode测试已通过；IL2CPP尚未验证。完整结果保存在[验证汇总](docs/gameplay-migration-verification.json)，可重放入口见[工程说明](UnityProject/README.md)。[verified: docs/gameplay-migration-verification.json unity；Artifacts/Unity/player-startup.json Ready/StartupExceptions] [opinion]
+## 验证状态与剩余验收
 
-**《No, I'm not a Human》参考研究**位于 `research/no-im-not-a-human/`，入口为[逆向总报告](research/no-im-not-a-human/Reports/overview.md)和[交付检查记录](research/no-im-not-a-human/Analysis/deliverable-verification.json)。完整研究目录纳入 Git 与 Git LFS，包括工作副本、恢复代码、资源、工具、索引和报告。2026-10-19 推送前，GitHub 实时接口返回 Public，用户明确确认“不改私有，仍然全部推送”；本次保持该可见性。第三方内容的权利不因仓库可见性而改变。`[verified: 本轮 GitHub API private=false；用户本轮确认]` [opinion]
+- **历史核心／内容检查**：[结局内容检查](docs/ending-content/checks.json)记录26项Python测试和四条命令路径探针，明确不含Unity验证；其residentTrustSum是当时的留院患者统计，不替代当前四人历史信任条件。[verified: docs/ending-content/checks.json python/commandRouteProbe/unity；src/MiniGame.Core/Runtime/GameSession.cs L199–206]
+- **近期Unity历史记录**：[2026-10-26结局修订](docs/ui-feedback/ending-polish-2026-10-26.md)记载25项相关PlayMode通过，准心补修记载7项通过。本次整理时，文中两个本地XML及准心修复版程序路径不存在；保留文档记录身份，不声称已重新核验原始产物。[verified: docs/ui-feedback/ending-polish-2026-10-26.md「验证」「最终补修：海滩准心」；2026-10-27 Test-Path 对 Artifacts/EndingPolish20261026/playmode.xml、Artifacts/BeachReticle20261026/playmode.xml、Artifacts/BeachReticle20261026/Windows/NORM.exe 返回False]
+- **本地历史外发包**：2026-10-23神父更新ZIP仍在 `Builds/Deliverables/`；不能据此确认它包含10月26日的后续改动，外发应按当前源码重建并记录版本。[verified: 2026-10-27 Test-Path 对 Builds/Deliverables/NORM-Windows-x64-Mono-PriestUpdate-20261023-201409.zip 返回True] [opinion]
+- **待最终验收**：当前版本完整图形交互和四分支回归、暂停／存读档、声音与镜头人工体验、最终ZIP解压运行及性能验收，应对应同一版源码和构建；IL2CPP状态需独立证据。[opinion]
 
-- 已从真实备份程序集恢复主程序集943个类型、5855个方法索引与5126个真实CIL方法体，并建立静态调用及CIL／生成C++关系；恢复工程合并625份真实实现和53个匹配插件。[verified: research/no-im-not-a-human/Reports/code-recovery.md L5、L37、L59；research/no-im-not-a-human/Analysis/deliverable-verification.json merged_csharp9_implementations/merged_plugins]
-- 已导出7个场景、38个Prefab、1003张PNG和359份OGG，以及动画、UI与文件级GUID引用索引；编译对白索引包含3255个Yarn节点。[verified: research/no-im-not-a-human/Reports/unity-recovery.md L17–L22、L32；research/no-im-not-a-human/Analysis/deliverable-verification.json exported_scenes/exported_prefabs/yarn_nodes]
-- 73份角色配置、49份URP灯光与1份PlayerSettings仍有序列化问题；自定义Shader存在占位，准确版本Editor导入、语义编译和运行尚未验证。导出文件与语法解析成功不能证明原游戏已完整复原。[verified: research/no-im-not-a-human/Reports/unity-recovery.md L52–L68；research/no-im-not-a-human/Analysis/deliverable-verification.json comprehensive_language_feature_validation=false/unity_import_verified=false/limits]
+纯C#固定SDK **8.0.424**、C#9、可空检查和锁定依赖；行为修改后在 `src/` 执行锁定恢复、Release构建和测试。文档修改检查链接与Git差异，不代替游戏测试。[verified: src/global.json sdk.version；src/Directory.Build.props LangVersion/Nullable/RestorePackagesWithLockFile] [opinion]
 
-参考游戏使用 **Unity 6000.3.10f1、IL2CPP**；它与原创项目的Unity 2022.3基线分别记录。访客身份判定、身体检查和生存资源等是玩法研究与借鉴重点，具体采用方式结合本项目设计确定；原创规则不引入真假／善恶标准答案。第三方代码和资产的来源与许可单独记录，本仓库不重新授予其权利。[verified: research/no-im-not-a-human/Analysis/investigation-status.json unity_version/runtime_backend；research/README.md L74；src/README.md「开发默认规则」] [opinion]
+## 资料、研究与同步
 
-## 后续方向
-
-1. 复核新机器依赖获取，并另行验证IL2CPP构建。[opinion]
-2. 用正式台词、人物差分和观察线索替换占位内容，确认线索如何影响判断及每日资源压力。[opinion]
-3. 打磨已接入的梦境与海滩终局表现；确认配置、日记与特殊角色规则后再扩展随机事件或物资。[opinion]
-4. 参考研究继续从缺失角色字段、准确Editor导入和未解析动态调用入手。[opinion]
-
-具体切片与验收场景见[Unity开发路线](research/unity-2022-roadmap.md)；该路线中的尚未实施项结合[当前核心实现](src/README.md)阅读，避免把早期研究状态当作最新代码状态。[verified: research/unity-2022-roadmap.md「按验证切片推进」；src/README.md 开篇说明] [opinion]
-
-## 阅读入口
-
-- [当前完成情况与待补项](docs/project-status.md)：开发原型、验证范围、正式内容缺口和后续交付顺序。
-- [核心逻辑源码](src/README.md)与[实现说明](src/architecture-and-rationale.md)。
-- [Unity开发原型](UnityProject/README.md)与[寻找伪人玩法迁移](docs/reference-gameplay-migration.md)。
-- [主场景美术资源](Art/MainRoom/README.md)：完整Blender场景、3张部件概念图、14组独立部件、Tripo原件、贴图、预览与GLB导出；Unity导入尚未验证。[verified: Art/MainRoom/reports/asset-manifest.json parts；Art/MainRoom/reports/scene-validation.json scope]
-- [游戏总览](docs/game-overview.md)、[设计文档入口](docs/README.md)与[设计待定项](docs/open-questions.md)。
-- [源码借鉴研究](research/README.md)、[需求借鉴矩阵](research/reuse-matrix.md)、[Unity开发路线](research/unity-2022-roadmap.md)与[研究风险](research/risks-and-gaps.md)。
-- [逆向总报告](research/no-im-not-a-human/Reports/overview.md)与[交付检查记录](research/no-im-not-a-human/Analysis/deliverable-verification.json)。
-- [仓库协作规则](AGENTS.md)。
-
-## 目录
-
-- Art/MainRoom/：参考图指导下的主场景美术第一版，全部制作物料集中存放，二进制通过Git LFS保存。[verified: Art/MainRoom/README.md；Art/MainRoom/.gitattributes]
-
-- `src/`：原创纯C#核心逻辑、测试和实现说明。[verified: src/README.md 开篇说明及「目录与技术基线」]
-- `UnityProject/`：Unity 2022.3原创公寓、输入/UI、Yarn桥、场景生成器和PlayMode测试源码。[verified: UnityProject/Assets/MiniGame/Editor/ReferencePrototypeBuilder.cs CreateAndValidate；UnityProject/Assets/MiniGame/Tests/PlayMode/PrototypePlayModeTests.cs]
-- `docs/`：游戏设计整理、逐篇来源与待定问题。[verified: docs/game-overview.md 开篇来源说明]
-- `research/`：第三方源码借鉴与开发路线；其中 `no-im-not-a-human/` 为完整逆向资料，按私有Git／Git LFS规则同步。[verified: research/README.md L11–L16；用户确认“改为private”] [opinion]
-- `Dependency/`：早期技术研究材料。[verified: research/README.md L80]
-- `references/`：15个固定提交的第三方Git子模块。[verified: docs/source-lock.md L11–L25、L49]
-
-## 私有同步与获取资料
-
-主仓库按私有访问规则管理完整研究，二进制文件及单文件大小达到1MiB的其他材料使用Git LFS；较小的文本源代码通常使用普通Git，大型C++／IL文本同样按阈值纳入LFS，具体规则由根 `.gitattributes` 管理。[opinion]
-
-包含原游戏及恢复资料的仓库不得改为公开，未经授权的原游戏代码和素材不得公开分发。私有同步不改变这些内容的权利归属；历史报告中的“仅本地／未发布”描述保留为当时执行记录，当前同步约定以本说明为准。[verified: 用户确认“改为private”] [opinion]
-
-先取得私有仓库访问授权，安装Git与Git LFS并配置有权访问仓库的Git凭据，再递归克隆；进入主仓库后拉取其LFS对象。[opinion]
+- 开发入口：[核心说明](src/README.md)、[Unity工程说明](UnityProject/README.md)、[全流程指南](docs/campaign-guide.md)、[结局指南](docs/endings/guide.md)、[协作规则](AGENTS.md)。[opinion]
+- [设计总览](docs/game-overview.md)、[待定项](docs/open-questions.md)和[早期项目状态](docs/project-status.md)保留来源与历史判断；遇到旧三结局、反叛阈值、旧会谈数量时，核对当前代码和活动内容包。[opinion]
+- 《寻找伪人》是玩法参考，研究入口为[逆向总报告](research/no-im-not-a-human/Reports/overview.md)，参考版本见[source-lock](docs/source-lock.md)。借鉴观察、对话和决策后果，不自动扩展成随机事件、物资或真假标准答案系统。[opinion]
+- `research/`、`Dependency/`和`references/`保存研究及固定版本参考；二进制与大文件按根 [.gitattributes](.gitattributes) 使用Git LFS，参考子模块不使用 `git submodule update --remote`。[verified: docs/source-lock.md「获取与使用说明」] [opinion]
+- 含原游戏代码和资产的研究按现有私有同步规则处理；文档更新不改变仓库可见性和第三方授权边界。`Builds/`、`Artifacts/`和Unity缓存为忽略的本地产物。[verified: .gitignore 中 Builds/、Artifacts/、UnityProject/Library/；AGENTS.md「研究与版本」] [opinion]
 
 ```bash
 git lfs install
-git clone --recurse-submodules https://github.com/hamsterjiang23/MINIGAME.git
-cd MINIGAME
-git lfs pull
-```
-
-如果已经普通克隆过主仓库，初始化固定版本子模块：[opinion]
-
-```bash
 git submodule update --init --recursive
-```
-
-若此前跳过了LFS下载，补取主仓库大文件与各固定版本参考工程的大文件；子模块从各自上游取LFS对象：[opinion]
-
-```bash
 git lfs pull
 git submodule foreach --recursive 'git lfs pull'
 ```
 
-参考仓库通过`.gitmodules`及gitlink关联各自上游，并固定到[版本记录](docs/source-lock.md)和[source-lock.json](docs/source-lock.json)中的提交；完整历史和当前版本LFS资源从各自上游取得。不要使用 `git submodule update --remote` 自动切换研究版本。[verified: docs/source-lock.md L49–L53] [opinion]
-
-获取完成不代表工程已经编译或运行；运行状态与许可文件在对应研究文档中记录。代码、第三方依赖和资产遵循各自许可，本仓库不重新授予参考工程或素材的权利。[verified: docs/source-lock.md L29–L45、L51–L52] [opinion]
+上述命令用于已有授权的检出获取固定版本资料；资源下载不代表编译、运行或授权验收完成。[opinion]
