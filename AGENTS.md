@@ -15,7 +15,7 @@
 - `GameSession`是规则与状态权威；`GameRuntime`负责房间／终端生命周期、输入、演出与存档检查点；Unity／Yarn负责呈现和回调。不得在UI、Yarn变量或MonoBehaviour中另存权威信任、配额、治疗次数或人物去留。[verified: src/MiniGame.Presentation/GameRuntime.cs L15–45；src/README.md「Unity／Yarn接入」] [opinion]
 - 宿主提交命令、读取玩家视图、消费事件并通知演出完成，不用存档DTO修改活动会话。处置只结算一次；旧节点、旧会面及过期演出回调不得重复执行副作用。[verified: src/README.md「调用入口」「保存与恢复」] [opinion]
 - 读档同时考虑核心重放、规则／内容版本、会谈检查点、演出阶段和回调失效，不只恢复镜头而跳过状态校验。[verified: src/README.md「保存与恢复」「Unity／Yarn接入」] [opinion]
-- 信任为各患者独立、有符号的累计值，包含回答与处置变化，退场不清零；不擅自钳制为0–100，不与疯狂／偏离／狂热／反叛等数值合并。[verified: src/MiniGame.Core/Runtime/GameSession.cs L199–206、L303–319、L409–419] [opinion]
+- 信任为各患者独立、有符号的累计值，仅包含对白变化，退场不清零；处置增减只用于当前回应期间的社会适应度情绪表现，不写入长期信任、不影响次日或任何条件判断。该表现由核心按已接受处置派生，读档可重放；不擅自钳制信任为0–100，不与疯狂／偏离／狂热／反叛等数值合并。[verified: src/MiniGame.Core/Runtime/GameSession.cs SocialAdaptationTrust/Select/Dispose/HasHiddenEndingTrust] [opinion]
 
 ## 当前结局契约
 

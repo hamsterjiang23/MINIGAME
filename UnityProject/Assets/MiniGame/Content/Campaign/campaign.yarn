@@ -34,7 +34,7 @@ round: R1
 patient: tutorial
 day: 0
 ---
-无名男子: 这玩意把我绑的严严实实呢。
+无名男子: 这玩意把我绑得严严实实呢。
 <<jump tutorial__P00_D0_R1_COMMON_005>>
 ===
 
@@ -180,7 +180,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 有本事问我为什么发火，别上来就替我认罪。
+薇拉: 有本事问我为什么发火，别一上来就认定我有罪。
 <<jump former-ruler__P03_D1_R2_CLOSE_005>>
 ===
 
@@ -345,7 +345,7 @@ patient: former-ruler
 day: 1
 portrait: VV01
 ---
-薇拉: 请你自己回去亲自翻，别直接把我的话当结论。
+薇拉: 请你回去亲自翻看原件，别直接把我的话当结论。
 <<jump former-ruler__P03_D1_R4_COMMON_001>>
 ===
 
@@ -884,7 +884,7 @@ patient: former-ruler
 day: 1
 portrait: VV03
 ---
-薇拉: 是你开的吗。
+薇拉: 是你决定放我走的吗？
 <<jump former-ruler__P03_D1_R6_ACTION_006>>
 ===
 
@@ -960,7 +960,7 @@ round: R2
 patient: former-ruler
 day: 1
 ---
--> 全程留档。你的解释也会记录。 #id:former-ruler__P03_D1_R2_OPTION_001 #trust:1
+-> 全程留档。你的解释也会记录。 #id:former-ruler__P03_D1_R2_OPTION_001 #trust:2
     <<jump former-ruler__P03_D1_R2_CLOSE_001>>
 -> 现在由我提问。先回答审查问题。 #id:former-ruler__P03_D1_R2_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D1_R2_CLOSE_002>>
@@ -974,13 +974,13 @@ round: R3
 patient: former-ruler
 day: 1
 ---
--> 另外六个人也同意了这份决议？ #id:former-ruler__P03_D1_R3_OPTION_001 #trust:1
+-> 另外六个人也同意了这份决议？ #id:former-ruler__P03_D1_R3_OPTION_001 #trust:2
     <<jump former-ruler__P03_D1_R3_CLOSE_001>>
 -> 无论别人怎么投票，你都签了字。 #id:former-ruler__P03_D1_R3_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D1_R3_CLOSE_002>>
--> 你怎么确定原件有附页？ #id:former-ruler__P03_D1_R3_OPTION_003 #trust:0
+-> 你怎么确定原件有附页？ #id:former-ruler__P03_D1_R3_OPTION_003 #trust:1
     <<jump former-ruler__P03_D1_R3_CLOSE_003>>
--> 附页里需要复核的，具体是什么？ #id:former-ruler__P03_D1_R3_OPTION_004 #trust:1
+-> 附页里需要复核的，具体是什么？ #id:former-ruler__P03_D1_R3_OPTION_004 #trust:2
     <<jump former-ruler__P03_D1_R3_CLOSE_004>>
 ===
 
@@ -990,7 +990,7 @@ round: R4
 patient: former-ruler
 day: 1
 ---
--> 你去过现场，还是只看过报告？ #id:former-ruler__P03_D1_R4_OPTION_001 #trust:1
+-> 你去过现场，还是只看过报告？ #id:former-ruler__P03_D1_R4_OPTION_001 #trust:2
     <<jump former-ruler__P03_D1_R4_CLOSE_001>>
 -> 预算由你们批，为什么没追查？ #id:former-ruler__P03_D1_R4_OPTION_002 #trust:0
     <<jump former-ruler__P03_D1_R4_CLOSE_002>>
@@ -1016,7 +1016,7 @@ round: R6
 patient: former-ruler
 day: 1
 ---
--> 我会记录你的说法，并核对附页。 #id:former-ruler__P03_D1_R6_OPTION_001 #trust:1
+-> 我会记录你的说法，并核对附页。 #id:former-ruler__P03_D1_R6_OPTION_001 #trust:2
     <<jump former-ruler__P03_D1_R6_CLOSE_001>>
 -> 我会自行判断是否需要核查。 #id:former-ruler__P03_D1_R6_OPTION_002 #trust:0
     <<jump former-ruler__P03_D1_R6_CLOSE_002>>
@@ -1042,13 +1042,13 @@ round: R6
 patient: former-ruler
 day: 1
 ---
--> 他们会前已经商量好了，会上只让你表决？ #id:former-ruler__P03_D1_R6_OPTION_003 #trust:1
+-> 他们会前已经商量好了，会上只让你表决？ #id:former-ruler__P03_D1_R6_OPTION_003 #trust:2
     <<jump former-ruler__P03_D1_R6_SPECIAL_006>>
--> 他们不邀请你，是因为你是女人？ #id:former-ruler__P03_D1_R6_OPTION_004 #trust:1
+-> 他们不邀请你，是因为你是女人？ #id:former-ruler__P03_D1_R6_OPTION_004 #trust:2
     <<jump former-ruler__P03_D1_R6_SPECIAL_007>>
 -> 既然不满，你为什么最后还是同意了？ #id:former-ruler__P03_D1_R6_OPTION_005 #trust:1
     <<jump former-ruler__P03_D1_R6_SPECIAL_008>>
--> 我会记录他们的做法，也记录你的表决。 #id:former-ruler__P03_D1_R6_OPTION_006 #trust:1
+-> 我会记录他们的做法，也记录你的表决。 #id:former-ruler__P03_D1_R6_OPTION_006 #trust:2
     <<jump former-ruler__P03_D1_R6_SPECIAL_009>>
 ===
 
@@ -1320,7 +1320,7 @@ patient: battlefield-doctor
 day: 1
 portrait: ED03
 ---
-埃德温: 我曾经见过太多人了……他们因为敌人而愤怒，因为家乡被而悲伤，也因自己可能丧命而害怕……
+埃德温: 我曾经见过太多人了……他们因为敌人而愤怒，因为家乡遭难而悲伤，也因自己可能丧命而害怕……
 <<jump battlefield-doctor__P04_D1_R4_CLOSE_003>>
 ===
 
@@ -1363,7 +1363,7 @@ patient: battlefield-doctor
 day: 1
 portrait: ED02
 ---
-埃德温: 我闭上眼睛依然能想起那个被炸的只剩半截身子的战友……
+埃德温: 我闭上眼睛依然能想起那个被炸得只剩半截身子的战友……
 <<jump battlefield-doctor__P04_D1_R4_CLOSE_009>>
 ===
 
@@ -1385,7 +1385,7 @@ patient: battlefield-doctor
 day: 1
 portrait: ED03
 ---
-埃德温: 你可以做的更好的，不是吗？！
+埃德温: 你可以做得更好，不是吗？！
 <<jump battlefield-doctor__P04_D1_R4_CLOSE_010>>
 ===
 
@@ -1428,7 +1428,7 @@ round: R5
 patient: battlefield-doctor
 day: 1
 ---
-埃德温: 好多的人…都死了…被炸的粉碎！！！我要去救他们！！
+埃德温: 好多的人…都死了…被炸得粉碎！！！我要去救他们！！
 <<jump battlefield-doctor__P04_D1_R5_OPTION_002__MENU>>
 ===
 
@@ -1765,11 +1765,11 @@ round: R2
 patient: battlefield-doctor
 day: 1
 ---
--> 这不在我的工作范围内 #id:battlefield-doctor__P04_D1_R2_OPTION_001 #trust:0
+-> 这不在我的工作范围内 #id:battlefield-doctor__P04_D1_R2_OPTION_001 #trust:-1
     <<jump battlefield-doctor__P04_D1_R2_CLOSE_001>>
 -> 它会降低危险的情绪波动。 #id:battlefield-doctor__P04_D1_R2_OPTION_002 #trust:-2
     <<jump battlefield-doctor__P04_D1_R2_CLOSE_004>>
--> 你的问题都会被监控记录下来。 #id:battlefield-doctor__P04_D1_R2_OPTION_003 #trust:0
+-> 你的问题都会被监控记录下来。 #id:battlefield-doctor__P04_D1_R2_OPTION_003 #trust:1
     <<jump battlefield-doctor__P04_D1_R2_CLOSE_007>>
 ===
 
@@ -1781,7 +1781,7 @@ day: 1
 ---
 -> 你是在质疑党和人民的选择吗？ #id:battlefield-doctor__P04_D1_R3_OPTION_001 #trust:-3
     <<jump battlefield-doctor__P04_D1_R3_CLOSE_001>>
--> 我也不明白其中的原理，但他确实让犯罪率降低了。 #id:battlefield-doctor__P04_D1_R3_OPTION_002 #trust:0
+-> 我也不明白其中的原理，但它确实让犯罪率降低了。 #id:battlefield-doctor__P04_D1_R3_OPTION_002 #trust:0
     <<jump battlefield-doctor__P04_D1_R3_CLOSE_004>>
 -> 情绪强烈确实可能导致失控。 #id:battlefield-doctor__P04_D1_R3_OPTION_003 #trust:0
     <<jump battlefield-doctor__P04_D1_R3_CLOSE_007>>
@@ -1793,7 +1793,7 @@ round: R4
 patient: battlefield-doctor
 day: 1
 ---
--> 你和很多人打过交道？ #id:battlefield-doctor__P04_D1_R4_OPTION_001 #trust:0
+-> 你和很多人打过交道？ #id:battlefield-doctor__P04_D1_R4_OPTION_001 #trust:1
     <<jump battlefield-doctor__P04_D1_R4_CLOSE_001>>
 -> 太强烈的情感会让人做错事。 #id:battlefield-doctor__P04_D1_R4_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D1_R4_CLOSE_004>>
@@ -1809,7 +1809,7 @@ day: 1
 ---
 -> 这里没有伤员。你在治疗中心。 #id:battlefield-doctor__P04_D1_R5_OPTION_002 #trust:2
     <<jump battlefield-doctor__P04_D1_R5_CLOSE_004>>
--> 需要我帮你确认现在的环境吗？ #id:battlefield-doctor__P04_D1_R5_OPTION_003 #trust:1
+-> 需要我帮你确认现在的环境吗？ #id:battlefield-doctor__P04_D1_R5_OPTION_003 #trust:2
     <<jump battlefield-doctor__P04_D1_R5_CLOSE_007>>
 -> 你现在看起来就很危险 #id:battlefield-doctor__P04_D1_R5_OPTION_001 #trust:-3
     <<jump battlefield-doctor__P04_D1_R5_CLOSE_001>>
@@ -1821,7 +1821,7 @@ round: R6
 patient: battlefield-doctor
 day: 1
 ---
--> 看到了吗，你刚才情绪很激动。 #id:battlefield-doctor__P04_D1_R6_OPTION_002 #trust:0
+-> 看到了吗，你刚才情绪很激动。 #id:battlefield-doctor__P04_D1_R6_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D1_R6_CLOSE_004>>
 -> 你真是个危险的人。 #id:battlefield-doctor__P04_D1_R6_OPTION_001 #trust:-2
     <<jump battlefield-doctor__P04_D1_R6_CLOSE_001>>
@@ -2717,7 +2717,7 @@ round: R2
 patient: child
 day: 1
 ---
--> 你叫什么名字？ #id:child__P02_D1_R2_OPTION_001 #trust:0
+-> 你叫什么名字？ #id:child__P02_D1_R2_OPTION_001 #trust:1
     <<jump child__P02_D1_R2_CLOSE_001>>
 -> 慢慢来，不着急。 #id:child__P02_D1_R2_OPTION_002 #trust:2
     <<jump child__P02_D1_R2_CLOSE_002>>
@@ -2733,9 +2733,9 @@ round: R3
 patient: child
 day: 1
 ---
--> 先把手放下来，慢慢说。 #id:child__P02_D1_R3_OPTION_001 #trust:1
+-> 先把手放下来，慢慢说。 #id:child__P02_D1_R3_OPTION_001 #trust:2
     <<jump child__P02_D1_R3_CLOSE_001>>
--> 检测之前，没有人告诉你怎么做？ #id:child__P02_D1_R3_OPTION_002 #trust:1
+-> 检测之前，没有人告诉你怎么做？ #id:child__P02_D1_R3_OPTION_002 #trust:2
     <<jump child__P02_D1_R3_CLOSE_002>>
 -> 仪器不会无缘无故变红。 #id:child__P02_D1_R3_OPTION_003 #trust:-1
     <<jump child__P02_D1_R3_CLOSE_003>>
@@ -2749,9 +2749,9 @@ round: R4
 patient: child
 day: 1
 ---
--> 放在膝盖上就可以。 #id:child__P02_D1_R4_OPTION_001 #trust:0
+-> 放在膝盖上就可以。 #id:child__P02_D1_R4_OPTION_001 #trust:2
     <<jump child__P02_D1_R4_CLOSE_001>>
--> 你怕的是那个仪器？ #id:child__P02_D1_R4_OPTION_002 #trust:1
+-> 你怕的是那个仪器？ #id:child__P02_D1_R4_OPTION_002 #trust:2
     <<jump child__P02_D1_R4_CLOSE_002>>
 ===
 
@@ -2763,7 +2763,7 @@ day: 1
 ---
 -> 紧张不等于做了坏事。 #id:child__P02_D1_R5_OPTION_001 #trust:2
     <<jump child__P02_D1_R5_CLOSE_001>>
--> 先说你自己记得的。 #id:child__P02_D1_R5_OPTION_002 #trust:1
+-> 先说你自己记得的。 #id:child__P02_D1_R5_OPTION_002 #trust:2
     <<jump child__P02_D1_R5_CLOSE_002>>
 -> 把事情交代清楚就行。 #id:child__P02_D1_R5_OPTION_003 #trust:0
     <<jump child__P02_D1_R5_CLOSE_003>>
@@ -2775,7 +2775,7 @@ round: R6
 patient: child
 day: 1
 ---
--> 我在听。还有什么想说的？ #id:child__P02_D1_R6_OPTION_001 #trust:1
+-> 我在听。还有什么想说的？ #id:child__P02_D1_R6_OPTION_001 #trust:2
     <<jump child__P02_D1_R6_CLOSE_001>>
 -> 今天的问题问完了。 #id:child__P02_D1_R6_OPTION_002 #trust:0
     <<jump child__P02_D1_R6_CLOSE_002>>
@@ -2801,13 +2801,13 @@ round: R6
 patient: child
 day: 1
 ---
--> 你那时候身边没有大人？ #id:child__P02_D1_R6_OPTION_003 #trust:1
+-> 你那时候身边没有大人？ #id:child__P02_D1_R6_OPTION_003 #trust:2
     <<jump child__P02_D1_R6_SPECIAL_006>>
--> 你想有人提前教你。 #id:child__P02_D1_R6_OPTION_004 #trust:1
+-> 你想有人提前教你。 #id:child__P02_D1_R6_OPTION_004 #trust:2
     <<jump child__P02_D1_R6_SPECIAL_007>>
 -> 这件事先说到这里。 #id:child__P02_D1_R6_OPTION_005 #trust:0
     <<jump child__P02_D1_R6_SPECIAL_008>>
--> 没听见他们说什么，就只说你自己看见的。 #id:child__P02_D1_R6_OPTION_006 #trust:1
+-> 没听见他们说什么，就只说你自己看见的。 #id:child__P02_D1_R6_OPTION_006 #trust:2
     <<jump child__P02_D1_R6_SPECIAL_009>>
 ===
 
@@ -2861,7 +2861,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 我和那些人不一样，我不是精神错乱的异常体。
+薇拉: 我刚才在门口还念过……等一下，让我想想。
 <<jump former-ruler__P03_D2_R2_CLOSE_003>>
 ===
 
@@ -2883,7 +2883,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 你知道吗...
+薇拉: 你问日期，是觉得我已经精神错乱了吗？我只是……一时记不清。
 <<jump former-ruler__P03_D2_R3_COMMON_001>>
 ===
 
@@ -2960,7 +2960,7 @@ patient: former-ruler
 day: 2
 portrait: VV01
 ---
-薇拉: 可一个有工作的人，按完两套规定，最后没饭吃...那规定就该改。
+薇拉: 可一个有工作的人，两套规定都照办了，最后却没饭吃...那规定就该改。
 <<jump former-ruler__P03_D2_R3_CLOSE_006>>
 ===
 
@@ -3663,9 +3663,9 @@ round: R2
 patient: former-ruler
 day: 2
 ---
--> 你还记得今天的日期吗？ #id:former-ruler__P03_D2_R2_OPTION_001 #trust:0
+-> 你还记得今天的日期吗？ #id:former-ruler__P03_D2_R2_OPTION_001 #trust:1
     <<jump former-ruler__P03_D2_R2_CLOSE_001>>
--> ...不用急。我等你想清楚。 #id:former-ruler__P03_D2_R2_OPTION_002 #trust:1
+-> ...不用急。我等你想清楚。 #id:former-ruler__P03_D2_R2_OPTION_002 #trust:2
     <<jump former-ruler__P03_D2_R2_CLOSE_002>>
 ===
 
@@ -3675,13 +3675,13 @@ round: R3
 patient: former-ruler
 day: 2
 ---
--> 你当时怎么处理的？ #id:former-ruler__P03_D2_R3_OPTION_001 #trust:1
+-> 你当时怎么处理的？ #id:former-ruler__P03_D2_R3_OPTION_001 #trust:2
     <<jump former-ruler__P03_D2_R3_CLOSE_001>>
 -> 配给处也是按现行规定办事。 #id:former-ruler__P03_D2_R3_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D2_R3_CLOSE_002>>
 -> 后来改成可以单独领取了吗？ #id:former-ruler__P03_D2_R3_OPTION_003 #trust:0
     <<jump former-ruler__P03_D2_R3_CLOSE_003>>
--> 为什么她有工号，还必须通过丈夫领口粮？ #id:former-ruler__P03_D2_R3_OPTION_004 #trust:1
+-> 为什么她有工号，还必须通过丈夫领口粮？ #id:former-ruler__P03_D2_R3_OPTION_004 #trust:2
     <<jump former-ruler__P03_D2_R3_CLOSE_004>>
 ===
 
@@ -3691,7 +3691,7 @@ round: R4
 patient: former-ruler
 day: 2
 ---
--> 现在你看到这套分工的问题了？ #id:former-ruler__P03_D2_R4_OPTION_001 #trust:1
+-> 现在你看到这套分工的问题了？ #id:former-ruler__P03_D2_R4_OPTION_001 #trust:2
     <<jump former-ruler__P03_D2_R4_CLOSE_001>>
 -> 那你认为，谁有权批准释放？ #id:former-ruler__P03_D2_R4_OPTION_002 #trust:0
     <<jump former-ruler__P03_D2_R4_CLOSE_002>>
@@ -3717,7 +3717,7 @@ round: R6
 patient: former-ruler
 day: 2
 ---
--> 先喝口水吧。我等着。 #id:former-ruler__P03_D2_R6_OPTION_001 #trust:1
+-> 先喝口水吧。我等着。 #id:former-ruler__P03_D2_R6_OPTION_001 #trust:2
     <<jump former-ruler__P03_D2_R6_CLOSE_001>>
 -> 为什么愿意把这些告诉我？ #id:former-ruler__P03_D2_R6_OPTION_002 #trust:2
     <<jump former-ruler__P03_D2_R6_CLOSE_002>>
@@ -3747,11 +3747,11 @@ day: 2
 ---
 -> 那个女工的“特殊照顾”，最后是你批准的？ #id:former-ruler__P03_D2_R6_OPTION_004 #trust:1
     <<jump former-ruler__P03_D2_R6_SPECIAL_006>>
--> 其他任职的女人，也会被这样对待？ #id:former-ruler__P03_D2_R6_OPTION_005 #trust:1
+-> 其他任职的女人，也会被这样对待？ #id:former-ruler__P03_D2_R6_OPTION_005 #trust:2
     <<jump former-ruler__P03_D2_R6_SPECIAL_007>>
 -> 所以，你是想让我理解你的难处？ #id:former-ruler__P03_D2_R6_OPTION_006 #trust:0
     <<jump former-ruler__P03_D2_R6_SPECIAL_008>>
--> ...你现在想松开领口，就松开吧。不用向我申请。 #id:former-ruler__P03_D2_R6_OPTION_007 #trust:1
+-> ...你现在想松开领口，就松开吧。不用向我申请。 #id:former-ruler__P03_D2_R6_OPTION_007 #trust:2
     <<jump former-ruler__P03_D2_R6_SPECIAL_009>>
 ===
 
@@ -3881,7 +3881,7 @@ patient: battlefield-doctor
 day: 2
 portrait: ED04
 ---
-埃德温: 传言的发生是有依据的，对么？
+埃德温: 这些传言总有些依据，对么？
 <<jump battlefield-doctor__P04_D2_R3_CLOSE_004>>
 ===
 
@@ -4180,7 +4180,7 @@ day: 2
     <<jump battlefield-doctor__P04_D2_R2_CLOSE_001>>
 -> 你恐怕是幻听了。 #id:battlefield-doctor__P04_D2_R2_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D2_R2_CLOSE_003>>
--> 说来听听看，你都听见什么了？ #id:battlefield-doctor__P04_D2_R2_OPTION_003 #trust:0
+-> 说来听听看，你都听见什么了？ #id:battlefield-doctor__P04_D2_R2_OPTION_003 #trust:2
     <<jump battlefield-doctor__P04_D2_R2_CLOSE_005>>
 ===
 
@@ -4204,7 +4204,7 @@ round: R4
 patient: battlefield-doctor
 day: 2
 ---
--> 为你们感到遗憾。 #id:battlefield-doctor__P04_D2_R4_OPTION_002 #trust:1
+-> 为你们感到遗憾。 #id:battlefield-doctor__P04_D2_R4_OPTION_002 #trust:2
     <<jump battlefield-doctor__P04_D2_R4_CLOSE_003>>
 -> 什么都不知道，你还跟着打仗？ #id:battlefield-doctor__P04_D2_R4_OPTION_001 #trust:-10
     <<jump battlefield-doctor__P04_D2_R4_CLOSE_001>>
@@ -5045,7 +5045,7 @@ day: 2
 ---
 -> 现在感觉怎么样？ #id:child__P02_D2_R2_OPTION_001 #trust:2
     <<jump child__P02_D2_R2_CLOSE_001>>
--> 不用绷这么紧。 #id:child__P02_D2_R2_OPTION_002 #trust:1
+-> 不用绷这么紧。 #id:child__P02_D2_R2_OPTION_002 #trust:2
     <<jump child__P02_D2_R2_CLOSE_002>>
 -> 保持坐姿，开始审查。 #id:child__P02_D2_R2_OPTION_003 #trust:-1
     <<jump child__P02_D2_R2_CLOSE_003>>
@@ -5057,7 +5057,7 @@ round: R3
 patient: child
 day: 2
 ---
--> 这些是你自己想的？ #id:child__P02_D2_R3_OPTION_001 #trust:0
+-> 这些是你自己想的？ #id:child__P02_D2_R3_OPTION_001 #trust:1
     <<jump child__P02_D2_R3_CLOSE_001>>
 -> 你可以说真实的感受。 #id:child__P02_D2_R3_OPTION_002 #trust:2
     <<jump child__P02_D2_R3_CLOSE_002>>
@@ -5069,13 +5069,13 @@ round: R4
 patient: child
 day: 2
 ---
--> 先看着这里，把话说完。 #id:child__P02_D2_R4_OPTION_001 #trust:0
+-> 先看着这里，把话说完。 #id:child__P02_D2_R4_OPTION_001 #trust:1
     <<jump child__P02_D2_R4_CLOSE_001>>
--> 你现在最担心什么？ #id:child__P02_D2_R4_OPTION_002 #trust:1
+-> 你现在最担心什么？ #id:child__P02_D2_R4_OPTION_002 #trust:2
     <<jump child__P02_D2_R4_CLOSE_002>>
 -> 别东张西望。 #id:child__P02_D2_R4_OPTION_003 #trust:-1
     <<jump child__P02_D2_R4_CLOSE_003>>
--> 听不清就告诉我，我可以重复。 #id:child__P02_D2_R4_OPTION_004 #trust:1
+-> 听不清就告诉我，我可以重复。 #id:child__P02_D2_R4_OPTION_004 #trust:2
     <<jump child__P02_D2_R4_CLOSE_004>>
 ===
 
@@ -5085,7 +5085,7 @@ round: R5
 patient: child
 day: 2
 ---
--> 你昨晚没睡好。 #id:child__P02_D2_R5_OPTION_001 #trust:1
+-> 你昨晚没睡好。 #id:child__P02_D2_R5_OPTION_001 #trust:2
     <<jump child__P02_D2_R5_CLOSE_001>>
 -> 有人来过你房间吗？ #id:child__P02_D2_R5_OPTION_002 #trust:1
     <<jump child__P02_D2_R5_CLOSE_002>>
@@ -5099,9 +5099,9 @@ round: R6
 patient: child
 day: 2
 ---
--> 哪里不舒服就说，不需要忍着。 #id:child__P02_D2_R6_OPTION_001 #trust:1
+-> 哪里不舒服就说，不需要忍着。 #id:child__P02_D2_R6_OPTION_001 #trust:2
     <<jump child__P02_D2_R6_CLOSE_001>>
--> 今天先到这里。 #id:child__P02_D2_R6_OPTION_002 #trust:0
+-> 今天先到这里。 #id:child__P02_D2_R6_OPTION_002 #trust:1
     <<jump child__P02_D2_R6_CLOSE_002>>
 ===
 
@@ -5125,9 +5125,9 @@ round: R6
 patient: child
 day: 2
 ---
--> 后来杯子拿下来了吗？ #id:child__P02_D2_R6_OPTION_003 #trust:1
+-> 后来杯子拿下来了吗？ #id:child__P02_D2_R6_OPTION_003 #trust:2
     <<jump child__P02_D2_R6_SPECIAL_006>>
--> 那不是你的错。 #id:child__P02_D2_R6_OPTION_004 #trust:1
+-> 那不是你的错。 #id:child__P02_D2_R6_OPTION_004 #trust:2
     <<jump child__P02_D2_R6_SPECIAL_007>>
 -> 你没有告诉过其他大人？ #id:child__P02_D2_R6_OPTION_005 #trust:0
     <<jump child__P02_D2_R6_SPECIAL_008>>
@@ -5350,7 +5350,7 @@ patient: priest
 day: 2
 portrait: JN02
 ---
-乔纳: 他们沉默并不空洞。
+乔纳: 他们的沉默并不空洞。
 <<jump priest__P01_D1_R5_CLOSE_004>>
 ===
 
@@ -6196,7 +6196,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: ...听见了。再给我说完这一句，好吗？
+薇拉: ...听见了。再让我把这一句说完，好吗？
 <<jump former-ruler__P03_D3_R6_CLOSE_006>>
 ===
 
@@ -6207,7 +6207,7 @@ patient: former-ruler
 day: 3
 portrait: VV02
 ---
-薇拉: 现在...我更想知道，你有没有把我当作一个人听完。不是只等我认罪，或者服从。
+薇拉: 现在...我更想知道，你有没有把我当作一个人，认真听我把话说完，而不是只等我认罪或者服从。
 <<jump former-ruler__P03_D3_R6_SPECIAL_001>>
 ===
 
@@ -6580,9 +6580,9 @@ round: R2
 patient: former-ruler
 day: 3
 ---
--> 你想先说哪件事？ #id:former-ruler__P03_D3_R2_OPTION_001 #trust:1
+-> 你想先说哪件事？ #id:former-ruler__P03_D3_R2_OPTION_001 #trust:2
     <<jump former-ruler__P03_D3_R2_CLOSE_001>>
--> ...我不能保证能延长谈话。 #id:former-ruler__P03_D3_R2_OPTION_002 #trust:0
+-> ...我不能保证能延长谈话。 #id:former-ruler__P03_D3_R2_OPTION_002 #trust:1
     <<jump former-ruler__P03_D3_R2_CLOSE_002>>
 ===
 
@@ -6592,7 +6592,7 @@ round: R3
 patient: former-ruler
 day: 3
 ---
--> 我会核对，把姓名改正确。 #id:former-ruler__P03_D3_R3_OPTION_001 #trust:1
+-> 我会核对，把姓名改正确。 #id:former-ruler__P03_D3_R3_OPTION_001 #trust:2
     <<jump former-ruler__P03_D3_R3_CLOSE_001>>
 -> 只是笔误，不影响今天的审查。 #id:former-ruler__P03_D3_R3_OPTION_002 #trust:-1
     <<jump former-ruler__P03_D3_R3_CLOSE_002>>
@@ -6606,13 +6606,13 @@ round: R4
 patient: former-ruler
 day: 3
 ---
--> 那你当时怎么回应？ #id:former-ruler__P03_D3_R4_OPTION_001 #trust:0
+-> 那你当时怎么回应？ #id:former-ruler__P03_D3_R4_OPTION_001 #trust:1
     <<jump former-ruler__P03_D3_R4_CLOSE_001>>
--> 在场就没人替你说句话吗？ #id:former-ruler__P03_D3_R4_OPTION_002 #trust:1
+-> 在场就没人替你说句话吗？ #id:former-ruler__P03_D3_R4_OPTION_002 #trust:2
     <<jump former-ruler__P03_D3_R4_CLOSE_002>>
 -> 你是不是太在意他们的评价了？ #id:former-ruler__P03_D3_R4_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D3_R4_CLOSE_003>>
--> 他们在评价你的表情，而不是你的工作？ #id:former-ruler__P03_D3_R4_OPTION_004 #trust:1
+-> 他们在评价你的表情，而不是你的工作？ #id:former-ruler__P03_D3_R4_OPTION_004 #trust:2
     <<jump former-ruler__P03_D3_R4_CLOSE_004>>
 ===
 
@@ -6622,9 +6622,9 @@ round: R5
 patient: former-ruler
 day: 3
 ---
--> 你还记得那位秘书叫什么吗？ #id:former-ruler__P03_D3_R5_OPTION_001 #trust:1
+-> 你还记得那位秘书叫什么吗？ #id:former-ruler__P03_D3_R5_OPTION_001 #trust:2
     <<jump former-ruler__P03_D3_R5_CLOSE_001>>
--> ...你想当面向她道歉？ #id:former-ruler__P03_D3_R5_OPTION_002 #trust:0
+-> ...你想当面向她道歉？ #id:former-ruler__P03_D3_R5_OPTION_002 #trust:1
     <<jump former-ruler__P03_D3_R5_CLOSE_002>>
 ===
 
@@ -6634,9 +6634,9 @@ round: R6
 patient: former-ruler
 day: 3
 ---
--> ...我在听，你说。 #id:former-ruler__P03_D3_R6_OPTION_001 #trust:1
+-> ...我在听，你说。 #id:former-ruler__P03_D3_R6_OPTION_001 #trust:2
     <<jump former-ruler__P03_D3_R6_CLOSE_001>>
--> 你还有什么希望留在档案里？ #id:former-ruler__P03_D3_R6_OPTION_002 #trust:0
+-> 你还有什么希望留在档案里？ #id:former-ruler__P03_D3_R6_OPTION_002 #trust:2
     <<jump former-ruler__P03_D3_R6_CLOSE_002>>
 -> 谈话时间到了。准备结束审查。 #id:former-ruler__P03_D3_R6_OPTION_003 #trust:-1
     <<jump former-ruler__P03_D3_R6_CLOSE_003>>
@@ -6662,11 +6662,11 @@ round: R6
 patient: former-ruler
 day: 3
 ---
--> ...如果能出去，你想先回家？ #id:former-ruler__P03_D3_R6_OPTION_004 #trust:1
+-> ...如果能出去，你想先回家？ #id:former-ruler__P03_D3_R6_OPTION_004 #trust:2
     <<jump former-ruler__P03_D3_R6_SPECIAL_006>>
 -> 当委员时，你也一直这么孤单吗？ #id:former-ruler__P03_D3_R6_OPTION_005 #trust:1
     <<jump former-ruler__P03_D3_R6_SPECIAL_007>>
--> ...你现在可以歇一会儿，不必每句话都争赢。 #id:former-ruler__P03_D3_R6_OPTION_006 #trust:1
+-> ...你现在可以歇一会儿，不必每句话都争赢。 #id:former-ruler__P03_D3_R6_OPTION_006 #trust:2
     <<jump former-ruler__P03_D3_R6_SPECIAL_008>>
 -> 我还在。剩下的时间，你想说什么都可以。 #id:former-ruler__P03_D3_R6_OPTION_007 #trust:2
     <<jump former-ruler__P03_D3_R6_SPECIAL_009>>
@@ -6765,7 +6765,7 @@ patient: battlefield-doctor
 day: 3
 portrait: ED02
 ---
-埃德温: 记得一个选择，和一个没等到我的人。
+埃德温: 我当年决定过先救谁。有个人没能等到我。
 <<jump battlefield-doctor__P04_D3_R1_CLOSE_008>>
 ===
 
@@ -7124,7 +7124,7 @@ round: R5
 patient: battlefield-doctor
 day: 3
 ---
-埃德温: 如果我忘了那个人，我会不会变得更安全？还是只是更安静？
+埃德温: 有个人没等到我的救助。如果我把他忘了，我会变得更安全，还是只是更安静？
 <<jump battlefield-doctor__P04_D3_R1_OPTION_013__MENU>>
 ===
 
@@ -7179,7 +7179,7 @@ patient: battlefield-doctor
 day: 3
 portrait: ED02
 ---
-埃德温: 触发需要治疗，不是抹除。
+埃德温: 需要治疗的是我的症状，不是抹去我的记忆。
 <<jump battlefield-doctor__P04_D3_R1_CLOSE_033>>
 ===
 
@@ -7234,7 +7234,7 @@ patient: battlefield-doctor
 day: 3
 portrait: ED02
 ---
-埃德温: 我当年替别人排序。今天轮到你替我排序。
+埃德温: 我当年决定过先救谁。今天轮到你决定怎样处置我。
 <<jump battlefield-doctor__P04_D3_R1_OPTION_016__MENU>>
 ===
 
@@ -7344,7 +7344,7 @@ patient: battlefield-doctor
 day: 3
 portrait: ED02
 ---
-埃德温: 无论你选什么，别替我把最后一句说掉。
+埃德温: 无论你选什么，别替我说完最后一句。
 <<jump battlefield-doctor__P04_D3_R1_OPTION_019__MENU>>
 ===
 
@@ -7519,7 +7519,7 @@ patient: battlefield-doctor
 day: 3
 portrait: ED04
 ---
-埃德温: 你听完了。谢谢你没有替我把最后一句说掉。
+埃德温: 你听完了。谢谢你让我自己把最后一句说完。
 <<jump battlefield-doctor__P04_D3_R1_ACTION_007>>
 ===
 
@@ -7541,7 +7541,7 @@ patient: battlefield-doctor
 day: 3
 portrait: ED04
 ---
-埃德温: 打开门，让我保留后果。
+埃德温: 打开门，让我自己承担后果。
 <<jump battlefield-doctor__END_DAY3>>
 ===
 
@@ -7551,11 +7551,11 @@ round: R1
 patient: battlefield-doctor
 day: 3
 ---
--> 这是第三天。你在治疗中心。 #id:battlefield-doctor__P04_D3_R1_OPTION_001 #trust:1
+-> 这是第三天。你在治疗中心。 #id:battlefield-doctor__P04_D3_R1_OPTION_001 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_001>>
 -> 日期不重要，你需要休息。 #id:battlefield-doctor__P04_D3_R1_OPTION_002 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_004>>
--> 你还记得昨天说了什么吗？ #id:battlefield-doctor__P04_D3_R1_OPTION_003 #trust:0
+-> 你现在想起了什么？ #id:battlefield-doctor__P04_D3_R1_OPTION_003 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_007>>
 ===
 
@@ -7565,11 +7565,11 @@ round: R2
 patient: battlefield-doctor
 day: 3
 ---
--> 我可以为你保存记录。 #id:battlefield-doctor__P04_D3_R1_OPTION_004 #trust:1
+-> 我可以为你保存记录。 #id:battlefield-doctor__P04_D3_R1_OPTION_004 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_010>>
--> 忘记也许会让你轻松。 #id:battlefield-doctor__P04_D3_R1_OPTION_005 #trust:0
+-> 忘记也许会让你轻松。 #id:battlefield-doctor__P04_D3_R1_OPTION_005 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_013>>
--> 你害怕失去对他们的在乎。 #id:battlefield-doctor__P04_D3_R1_OPTION_006 #trust:1
+-> 你害怕失去对他们的在乎。 #id:battlefield-doctor__P04_D3_R1_OPTION_006 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_016>>
 ===
 
@@ -7579,11 +7579,11 @@ round: R3
 patient: battlefield-doctor
 day: 3
 ---
--> 想停止痛苦并不可耻。 #id:battlefield-doctor__P04_D3_R1_OPTION_007 #trust:1
+-> 想停止痛苦并不可耻。 #id:battlefield-doctor__P04_D3_R1_OPTION_007 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_019>>
 -> 那净化可能正适合你。 #id:battlefield-doctor__P04_D3_R1_OPTION_008 #trust:-2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_022>>
--> 你希望保留什么？ #id:battlefield-doctor__P04_D3_R1_OPTION_009 #trust:1
+-> 你希望保留什么？ #id:battlefield-doctor__P04_D3_R1_OPTION_009 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_025>>
 ===
 
@@ -7593,11 +7593,11 @@ round: R4
 patient: battlefield-doctor
 day: 3
 ---
--> 缓解和删除应该有界线。 #id:battlefield-doctor__P04_D3_R1_OPTION_010 #trust:1
+-> 缓解和删除应该有界线。 #id:battlefield-doctor__P04_D3_R1_OPTION_010 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_001>>
--> 制度认为风险优先。 #id:battlefield-doctor__P04_D3_R1_OPTION_011 #trust:0
+-> 制度认为风险优先。 #id:battlefield-doctor__P04_D3_R1_OPTION_011 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_004>>
--> 我理解你的拒绝。 #id:battlefield-doctor__P04_D3_R1_OPTION_012 #trust:0
+-> 我理解你的拒绝。 #id:battlefield-doctor__P04_D3_R1_OPTION_012 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_007>>
 ===
 
@@ -7607,11 +7607,11 @@ round: R5
 patient: battlefield-doctor
 day: 3
 ---
--> 安静不代表安全。 #id:battlefield-doctor__P04_D3_R1_OPTION_013 #trust:1
+-> 安静不代表安全。 #id:battlefield-doctor__P04_D3_R1_OPTION_013 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_028>>
--> 至少你不会再被触发。 #id:battlefield-doctor__P04_D3_R1_OPTION_014 #trust:-1
+-> 至少那些回忆不会再让你失控。 #id:battlefield-doctor__P04_D3_R1_OPTION_014 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_031>>
--> 我无法替你回答。 #id:battlefield-doctor__P04_D3_R1_OPTION_015 #trust:1
+-> 我无法替你回答。 #id:battlefield-doctor__P04_D3_R1_OPTION_015 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_034>>
 ===
 
@@ -7621,11 +7621,11 @@ round: R6
 patient: battlefield-doctor
 day: 3
 ---
--> 我会看你的行为和经历。 #id:battlefield-doctor__P04_D3_R1_OPTION_016 #trust:1
+-> 我会看你的行为和经历。 #id:battlefield-doctor__P04_D3_R1_OPTION_016 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_037>>
--> 我必须遵守流程。 #id:battlefield-doctor__P04_D3_R1_OPTION_017 #trust:0
+-> 我必须遵守流程。 #id:battlefield-doctor__P04_D3_R1_OPTION_017 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_040>>
--> 你希望被释放吗？ #id:battlefield-doctor__P04_D3_R1_OPTION_018 #trust:0
+-> 你希望被释放吗？ #id:battlefield-doctor__P04_D3_R1_OPTION_018 #trust:1
     <<jump battlefield-doctor__P04_D3_R1_CLOSE_043>>
 ===
 
@@ -7635,11 +7635,11 @@ round: R7
 patient: battlefield-doctor
 day: 3
 ---
--> 你自己说。 #id:battlefield-doctor__P04_D3_R1_OPTION_019 #trust:1
+-> 你自己说。 #id:battlefield-doctor__P04_D3_R1_OPTION_019 #trust:2
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_010>>
 -> 我会按记录判断。 #id:battlefield-doctor__P04_D3_R1_OPTION_020 #trust:0
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_013>>
--> 我已经决定了。 #id:battlefield-doctor__P04_D3_R1_OPTION_021 #trust:0
+-> 我已经决定了。 #id:battlefield-doctor__P04_D3_R1_OPTION_021 #trust:-1
     <<jump battlefield-doctor__P04_D3_R1_SPECIAL_016>>
 ===
 
@@ -8477,9 +8477,9 @@ round: R2
 patient: child
 day: 3
 ---
--> 不记得就先不用说。 #id:child__P02_D3_R2_OPTION_001 #trust:1
+-> 不记得就先不用说。 #id:child__P02_D3_R2_OPTION_001 #trust:2
     <<jump child__P02_D3_R2_CLOSE_001>>
--> 你知道自己叫什么吗？ #id:child__P02_D3_R2_OPTION_002 #trust:0
+-> 你知道自己叫什么吗？ #id:child__P02_D3_R2_OPTION_002 #trust:-1
     <<jump child__P02_D3_R2_CLOSE_002>>
 ===
 
@@ -8503,13 +8503,13 @@ round: R4
 patient: child
 day: 3
 ---
--> 可以先不说。 #id:child__P02_D3_R4_OPTION_001 #trust:1
+-> 可以先不说。 #id:child__P02_D3_R4_OPTION_001 #trust:2
     <<jump child__P02_D3_R4_CLOSE_001>>
--> 是检测那天的事？ #id:child__P02_D3_R4_OPTION_002 #trust:0
+-> 是检测那天的事？ #id:child__P02_D3_R4_OPTION_002 #trust:1
     <<jump child__P02_D3_R4_CLOSE_002>>
 -> 不配合只会延长审查。 #id:child__P02_D3_R4_OPTION_003 #trust:-1
     <<jump child__P02_D3_R4_CLOSE_003>>
--> 先告诉我，是哪里让你害怕？ #id:child__P02_D3_R4_OPTION_004 #trust:1
+-> 先告诉我，是哪里让你害怕？ #id:child__P02_D3_R4_OPTION_004 #trust:2
     <<jump child__P02_D3_R4_CLOSE_004>>
 ===
 
@@ -8519,7 +8519,7 @@ round: R5
 patient: child
 day: 3
 ---
--> 紧张的时候，你会怎么做？ #id:child__P02_D3_R5_OPTION_001 #trust:1
+-> 紧张的时候，你会怎么做？ #id:child__P02_D3_R5_OPTION_001 #trust:2
     <<jump child__P02_D3_R5_CLOSE_001>>
 -> 之后的检测另有安排。 #id:child__P02_D3_R5_OPTION_002 #trust:-1
     <<jump child__P02_D3_R5_CLOSE_002>>
@@ -8531,7 +8531,7 @@ round: R6
 patient: child
 day: 3
 ---
--> 还有什么要告诉我？ #id:child__P02_D3_R6_OPTION_001 #trust:1
+-> 还有什么要告诉我？ #id:child__P02_D3_R6_OPTION_001 #trust:2
     <<jump child__P02_D3_R6_CLOSE_001>>
 -> 结果稍后通知。 #id:child__P02_D3_R6_OPTION_002 #trust:0
     <<jump child__P02_D3_R6_CLOSE_002>>
@@ -8559,11 +8559,11 @@ round: R6
 patient: child
 day: 3
 ---
--> 你梦见她了？ #id:child__P02_D3_R6_OPTION_004 #trust:1
+-> 你梦见她了？ #id:child__P02_D3_R6_OPTION_004 #trust:2
     <<jump child__P02_D3_R6_SPECIAL_006>>
--> 她和爸爸现在在哪里？ #id:child__P02_D3_R6_OPTION_005 #trust:1
+-> 她和爸爸现在在哪里？ #id:child__P02_D3_R6_OPTION_005 #trust:2
     <<jump child__P02_D3_R6_SPECIAL_007>>
--> 我在听，你可以继续。 #id:child__P02_D3_R6_OPTION_006 #trust:1
+-> 我在听，你可以继续。 #id:child__P02_D3_R6_OPTION_006 #trust:2
     <<jump child__P02_D3_R6_SPECIAL_008>>
 -> 不用把想念也当成做错了事。 #id:child__P02_D3_R6_OPTION_007 #trust:2
     <<jump child__P02_D3_R6_SPECIAL_009>>
@@ -9365,7 +9365,7 @@ patient: diplomat
 day: 3
 portrait: AD01
 ---
-阿德里安: 没有。我把手续办得快，当成接待工作的周到。
+阿德里安: 没有。我当时觉得，手续办得快，是接待人员照顾周到。
 <<jump diplomat__P05_D1_R4_CLOSE_008>>
 ===
 
@@ -9629,7 +9629,7 @@ patient: diplomat
 day: 3
 portrait: AD01
 ---
-阿德里安: 谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就比较相信后面的“同意”出于自己。
+阿德里安: 谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就更容易相信，后面的“同意”是自己真心作出的决定。
 <<jump diplomat__P05_D1_R6_SPECIAL_003>>
 ===
 
@@ -9870,9 +9870,9 @@ round: R2
 patient: diplomat
 day: 3
 ---
--> 说明检测前发生了什么。 #id:diplomat__P05_D1_R2_OPTION_001 #trust:1
+-> 说明检测前发生了什么。 #id:diplomat__P05_D1_R2_OPTION_001 #trust:2
     <<jump diplomat__P05_D1_R2_CLOSE_001>>
--> 你对收容原因有什么异议？ #id:diplomat__P05_D1_R2_OPTION_002 #trust:1
+-> 你对收容原因有什么异议？ #id:diplomat__P05_D1_R2_OPTION_002 #trust:2
     <<jump diplomat__P05_D1_R2_CLOSE_002>>
 -> 先如实回答，不要替审查下结论。 #id:diplomat__P05_D1_R2_OPTION_003 #trust:-1
     <<jump diplomat__P05_D1_R2_CLOSE_003>>
@@ -9886,7 +9886,7 @@ day: 3
 ---
 -> 不耐烦是因为什么？ #id:diplomat__P05_D1_R3_OPTION_001 #trust:1
     <<jump diplomat__P05_D1_R3_CLOSE_001>>
--> 检测前具体问了哪些生产问题？ #id:diplomat__P05_D1_R3_OPTION_002 #trust:1
+-> 检测前具体问了哪些生产问题？ #id:diplomat__P05_D1_R3_OPTION_002 #trust:2
     <<jump diplomat__P05_D1_R3_CLOSE_002>>
 ===
 
@@ -9912,9 +9912,9 @@ round: R5
 patient: diplomat
 day: 3
 ---
--> 措辞是为了减少不必要的恐慌。 #id:diplomat__P05_D1_R5_OPTION_001 #trust:0
+-> 措辞是为了减少不必要的恐慌。 #id:diplomat__P05_D1_R5_OPTION_001 #trust:-1
     <<jump diplomat__P05_D1_R5_CLOSE_001>>
--> 我会记录你的原话。 #id:diplomat__P05_D1_R5_OPTION_002 #trust:1
+-> 我会记录你的原话。 #id:diplomat__P05_D1_R5_OPTION_002 #trust:2
     <<jump diplomat__P05_D1_R5_CLOSE_002>>
 -> 你自己也一直在挑选措辞。 #id:diplomat__P05_D1_R5_OPTION_003 #trust:0
     <<jump diplomat__P05_D1_R5_CLOSE_003>>
@@ -9926,9 +9926,9 @@ round: R6
 patient: diplomat
 day: 3
 ---
--> 我会核对记录。谈吐不作为无害的依据。 #id:diplomat__P05_D1_R6_OPTION_001 #trust:1
+-> 我会核对记录。谈吐不作为无害的依据。 #id:diplomat__P05_D1_R6_OPTION_001 #trust:2
     <<jump diplomat__P05_D1_R6_CLOSE_001>>
--> 配合会被记录，但不能据此认定没有风险。 #id:diplomat__P05_D1_R6_OPTION_002 #trust:1
+-> 配合会被记录，但不能据此认定没有风险。 #id:diplomat__P05_D1_R6_OPTION_002 #trust:2
     <<jump diplomat__P05_D1_R6_CLOSE_002>>
 ===
 
@@ -9954,7 +9954,7 @@ day: 3
 ---
 -> 你为什么要把手段告诉我？ #id:diplomat__P05_D1_R6_OPTION_003 #trust:1
     <<jump diplomat__P05_D1_R6_SPECIAL_005>>
--> 我会继续核对，不把坦白当作无罪证据。 #id:diplomat__P05_D1_R6_OPTION_004 #trust:1
+-> 我会继续核对，不把坦白当作无罪证据。 #id:diplomat__P05_D1_R6_OPTION_004 #trust:2
     <<jump diplomat__P05_D1_R6_SPECIAL_006>>
 -> 到这里。下面只谈审查事项。 #id:diplomat__P05_D1_R6_OPTION_005 #trust:0
     <<jump diplomat__P05_D1_R6_SPECIAL_007>>

@@ -15,23 +15,29 @@ class SupervisorSourceTests(unittest.TestCase):
         sheets, _, _ = read_source(workbook)
         expected = {row["I"]: row for row in sheets["对话流程"][1:] if row.get("I")}
         data, _ = compile_dialogue(workbook)
+        edits = {edit["sourceId"].split("__", 1)[1]: edit for edit in data["approvedTextEdits"]}
         lines = [line for day in data["conversations"] for line in day["lines"]]
-        self.assertEqual(len(lines), 46)
+        self.assertEqual(len(lines), 48)
         self.assertEqual({line["id"] for line in lines}, set(expected))
         for line in lines:
-            self.assertEqual(line["text"], expected[line["id"]]["D"])
+            original_text = expected[line["id"]]["D"]
+            if line["id"] in edits:
+                self.assertEqual(edits[line["id"]]["before"], original_text)
+                original_text = edits[line["id"]]["after"]
+            self.assertEqual(line["text"], original_text)
             self.assertEqual(line["next"], expected[line["id"]].get("J", ""))
 
     def test_day_boundary_preserves_the_day_four_surprise(self: SupervisorSourceTests) -> None:
         data, adaptations = compile_dialogue(ROOT / "Art/chat_excel/【对话】监督员.xlsx")
-        self.assertEqual([len(day["lines"]) for day in data["conversations"]], [16, 12, 11, 7])
+        self.assertEqual([len(day["lines"]) for day in data["conversations"]], [18, 12, 11, 7])
+        self.assertEqual([day["morningCount"] for day in data["conversations"]], [16, 10, 9, 0])
         self.assertEqual(data["conversations"][3]["lines"][0]["text"], "惊——喜。")
         self.assertEqual(data["conversations"][2]["lines"][-1]["next"], "P02_D4_R1_COMMON_002")
-        self.assertTrue(any(item.get("cell") == "J40" and item["kind"] == "day-boundary" for item in adaptations))
+        self.assertTrue(any(item.get("cell") == "J42" and item["kind"] == "day-boundary" for item in adaptations))
 
     def test_missing_portrait_inherits_and_approved_supervisor_png_bytes_match(self: SupervisorSourceTests) -> None:
         data, _ = compile_dialogue(ROOT / "Art/chat_excel/【对话】监督员.xlsx")
-        line = next(line for day in data["conversations"] for line in day["lines"] if line["sourceRow"] == 20)
+        line = next(line for day in data["conversations"] for line in day["lines"] if line["id"] == "P02_D2_R1_COMMON_003")
         self.assertEqual(line["portraitId"], "JD_03")
         manifest = json.loads((ROOT / "docs/portrait-remap/source-manifest.json").read_text(encoding="utf-8-sig"))
         images = [image for image in manifest["entries"] if image["role"] == "supervisor"]
@@ -44,7 +50,7 @@ class SupervisorSourceTests(unittest.TestCase):
         sheets, cached, recovered = read_source(workbook)
         invalid = copy.deepcopy(sheets)
         duplicate = dict(invalid["对话流程"][1])
-        duplicate.update(row="48", D="冲突文本")
+        duplicate.update(row="50", D="冲突文本")
         invalid["对话流程"].append(duplicate)
         with patch("build_supervisor.read_source", return_value=(invalid, cached, recovered)):
             with self.assertRaisesRegex(ValueError, "duplicate"):

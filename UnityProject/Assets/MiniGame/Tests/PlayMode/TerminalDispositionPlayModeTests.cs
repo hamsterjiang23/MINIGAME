@@ -27,7 +27,7 @@ namespace MiniGame.UnityHost.Tests
                 var screen = fixture.Screen;
                 var display = screen.TerminalDisplay;
                 var answers = screen.GetComponentsInChildren<RectTransform>(true).Single(rect => rect.name == "AnswerContents");
-                Assert.That(answers.anchoredPosition, Is.EqualTo(new Vector2(530, -392)));
+                Assert.That(answers.anchoredPosition, Is.EqualTo(new Vector2(530, -402)));
                 string before = fixture.Runtime.Save();
                 for (int mode = 0; mode < 3; mode++)
                 {
@@ -38,20 +38,20 @@ namespace MiniGame.UnityHost.Tests
                         var button = fixture.Buttons[index];
                         var rect = (RectTransform)button.transform;
                         var artwork = Artwork(button);
-                        Assert.That(rect.anchoredPosition, Is.EqualTo(new Vector2(530, -(135 + 48 * index))));
+                        Assert.That(rect.anchoredPosition, Is.EqualTo(new Vector2(530, -(164 + 64 * index))));
                         Assert.That(rect.rect.size, Is.EqualTo(new Vector2(248, 44)));
                         Assert.That(artwork.rectTransform.rect.size, Is.EqualTo(new Vector2(248, 48)));
                         Assert.That(artwork.raycastTarget, Is.False, "Artwork includes a four-pixel gap outside the clickable row.");
                         Assert.That(button.GetComponentsInChildren<Text>(true).All(label => !label.enabled || !label.gameObject.activeInHierarchy), Is.True);
                         foreach (float x in new[] { 531f, 654f, 777f })
                         foreach (float y in new[] { 1f, 22f, 43f })
-                            Assert.That(Pick(display, new Vector2(x, 135 + index * 48 + y)).FirstOrDefault().gameObject,
+                            Assert.That(Pick(display, new Vector2(x, 164 + index * 64 + y)).FirstOrDefault().gameObject,
                                 Is.SameAs(button.gameObject), "Mode " + mode + ", row " + index + ", point " + x + "," + y);
-                        foreach (float y in new[] { 44.5f, 46f, 47.5f })
+                        foreach (float y in new[] { 44.5f, 54f, 63.5f })
                         {
-                            var hits = Pick(display, new Vector2(654, 135 + index * 48 + y));
+                            var hits = Pick(display, new Vector2(654, 164 + index * 64 + y));
                             Assert.That(hits.Any(hit => hit.gameObject.GetComponentInParent<Button>()?.name.StartsWith("Disposition-", StringComparison.Ordinal) == true), Is.False,
-                                "The last four artwork pixels must not submit a neighboring command in mode " + mode);
+                                "The gap between command rows must not submit a disposition in mode " + mode);
                             if (hits.Count > 0) ExecuteEvents.Execute(hits[0].gameObject, Pointer(), ExecuteEvents.pointerClickHandler);
                             Assert.That(fixture.Runtime.Save(), Is.EqualTo(before));
                         }

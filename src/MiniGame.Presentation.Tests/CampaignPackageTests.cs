@@ -115,7 +115,7 @@ namespace MiniGame.Presentation.Tests
         }
 
         [TestCaseSource(nameof(ScheduledDispositionCases))]
-        public void OperationReactionUsesUpdatedTrustExactlyOnceAndRetainsItAcrossRestore(int day, string patientId, Disposition disposition)
+        public void OperationReactionOnlyChangesTheInstrumentAndRestoresWithoutChangingTrust(int day, string patientId, Disposition disposition)
         {
             var compiled = Compile();
             var meeting = compiled.Rules.Days.Single(d => d.Day == day).Meetings.Single(m => m.PatientId == patientId);
@@ -150,7 +150,7 @@ namespace MiniGame.Presentation.Tests
             var command = new SubmitDisposition(before.CurrentEncounterId!, disposition);
             accept(command);
             Assert.That(session.GetPlayerView().EncounterStage, Is.EqualTo(EncounterStage.Reaction));
-            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust + delta));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust));
             var reading = session.GetPlayerView().SocialAdaptation;
             if (reading != null)
                 Assert.That(reading.RelativeReleaseMargin,
@@ -159,10 +159,37 @@ namespace MiniGame.Presentation.Tests
             Assert.That(session.Execute(command).Accepted, Is.False);
             Assert.That(SnapshotCodec.Serialize(session), Is.EqualTo(saved));
             session = SnapshotCodec.Deserialize(saved, rules);
-            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust + delta));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust));
             Assert.That(session.GetPlayerView().SocialAdaptation?.RelativeReleaseMargin, Is.EqualTo(reading?.RelativeReleaseMargin));
             accept(new CompleteReaction(before.CurrentEncounterId!));
-            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust + delta));
+            Assert.That(session.CreateSnapshot().State.Patients.Single().Trust, Is.EqualTo(trust));
+        }
+
+        [Test]
+        public void TutorialStartsAtMaximumAgitationAndRetainsItsPurifyOnlyFlowAcrossRestore()
+        {
+            var compiled = Compile();
+            Assert.That(compiled.Rules.Patients.Single(p => p.Id == "tutorial").InitialTrust, Is.EqualTo(-2));
+            Assert.That(compiled.Rules.Patients.Where(p => p.Id != "tutorial").All(p => p.InitialTrust == 0), Is.True);
+            var session = new GameSession(compiled.Rules);
+            Assert.That(session.Execute(new Interact(InteractionTarget.Computer)).Accepted, Is.True);
+            var view = session.GetPlayerView();
+            Assert.That(view.EncounterStage, Is.EqualTo(EncounterStage.Introduction));
+            Assert.That(view.SocialAdaptation, Is.Not.Null, "Day0 must have a reading even though release is not authored.");
+            Assert.That(SocialAdaptationSignal.CoordinateFor(view.SocialAdaptation!), Is.Zero);
+            Assert.That(SocialAdaptationSignal.Parameters(0).Agitation, Is.EqualTo(1));
+            session = SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), compiled.Rules);
+            view = session.GetPlayerView();
+            Assert.That(SocialAdaptationSignal.CoordinateFor(view.SocialAdaptation!), Is.Zero);
+            Assert.That(session.Execute(new CompleteIntroduction(view.CurrentEncounterId!, view.CurrentNodeId!)).Accepted, Is.True);
+            view = session.GetPlayerView();
+            Assert.That(view.AvailableDispositions, Is.EqualTo(new[] { Disposition.Purify }));
+            Assert.That(session.Execute(new SubmitDisposition(view.CurrentEncounterId!, Disposition.Release)).Accepted, Is.False);
+            Assert.That(session.Execute(new SubmitDisposition(view.CurrentEncounterId!, Disposition.Purify)).Accepted, Is.True);
+            Assert.That(session.CreateSnapshot().State.Patients.Single(p => p.Id == "tutorial").Trust, Is.EqualTo(-2));
+            Assert.That(session.GetPlayerView().RemainingPurificationQuota, Is.Zero);
+            session = SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), compiled.Rules);
+            Assert.That(SocialAdaptationSignal.CoordinateFor(session.GetPlayerView().SocialAdaptation!), Is.Zero);
         }
 
         [Test]
@@ -194,10 +221,12 @@ namespace MiniGame.Presentation.Tests
         }
 
         [Test]
-        public void EveryActiveSourceRowMapsToUnmodifiedTextAndExcludedRowsRemainAudited()
+        public void EveryActiveSourceRowMapsToOriginalOrApprovedTextAndExcludedRowsRemainAudited()
         {
             var compiled = Compile();
             var audit = JObject.Parse(Source("provenance.json"));
+            var textEdits = JObject.Parse(File.ReadAllText(Path.Combine(Workspace(),
+                "Tools/DialogueCampaign/approved-text-edits.json")))["books"]!;
             var mappings = (JArray)audit["mappings"]!;
             var nodes = compiled.SourceNodes.ToDictionary(n => n.Id);
             var options = compiled.SourceNodes.SelectMany(n => n.Options).ToDictionary(o => o.Id);
@@ -237,6 +266,14 @@ namespace MiniGame.Presentation.Tests
                         {
                             Assert.That(originalText, Is.EqualTo("我不记得了"));
                             originalText += "。"; // User-approved punctuation; retain the source workbook text in the audit.
+                        }
+                        var edit = textEdits[patient]?["edits"]?.SingleOrDefault(item =>
+                            (string?)item["id"] == (string?)row[(string)columns["id"]!]
+                            && (string?)item["field"] == field);
+                        if (edit != null)
+                        {
+                            Assert.That(originalText, Is.EqualTo((string)edit["expectedText"]!), key + ":" + column);
+                            originalText = (string)edit["newText"]!;
                         }
                         Assert.That((string)active[number][field]!, Is.EqualTo(originalText), key + ":" + column);
                         if (originalText.Length == 0) continue;
@@ -312,7 +349,9 @@ namespace MiniGame.Presentation.Tests
             var response = compiled.SourceNodes.SelectMany(node => node.Options)
                 .Single(option => option.Id == (string)transfer["appliedTo"]!);
             Assert.That(response.Id, Is.EqualTo("battlefield-doctor__P04_D1_R6_OPTION_002"));
-            Assert.That(response.TrustDelta, Is.Zero);
+            Assert.That(response.TrustDelta, Is.EqualTo(-1));
+            var optionMapping = audit["mappings"]!.Single(item => (string)item["sourceId"]! == response.Id);
+            Assert.That((int)optionMapping["unadjustedTrustDelta"]!, Is.Zero);
             Assert.That(compiled.Content.GetSegment(response.Id + ".branch").Lines.Select(line => line.SourceNodeId),
                 Does.Contain("battlefield-doctor__P04_D1_R6_CLOSE_004"));
             var lineMapping = audit["mappings"]!.Single(item => (string)item["sourceId"]! == "battlefield-doctor__P04_D1_R6_CLOSE_004");

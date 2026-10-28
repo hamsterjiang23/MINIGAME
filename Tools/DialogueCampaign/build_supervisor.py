@@ -8,7 +8,8 @@ import re
 from pathlib import Path
 from typing import cast
 
-from build_campaign import escape, read_source
+from build_campaign import Record, escape, read_source
+from approved_text import apply_text_edits, content_revision, manifest_hash
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -19,7 +20,8 @@ def digest(path: Path) -> str:
 
 def compile_dialogue(workbook: Path) -> tuple[dict[str, object], list[dict[str, object]]]:
     sheets, _, recovered = read_source(workbook)
-    rows = sheets["对话流程"][1:]
+    rows, text_edits = apply_text_edits("supervisor", digest(workbook), sheets["对话流程"][1:],
+                                      id_column="I", columns={"open": "D"})
     portraits = {row["A"]: row.get("B", "") for row in sheets["立绘ID"][1:]}
     if set(portraits) != {f"JD_{index:02}" for index in range(1, 7)}:
         raise ValueError("Expected exactly six JD portrait identifiers.")
@@ -71,11 +73,13 @@ def compile_dialogue(workbook: Path) -> tuple[dict[str, object], list[dict[str, 
         if seen != set(daily):
             raise ValueError(f"Unreachable source nodes in Day{day}: {set(daily) - seen}")
         conversations.append({"day": day, "morningCount": len(lines) - 2 if day < 4 else 0, "lines": lines})
-    if len(nodes) != 46:
-        raise ValueError(f"Expected 46 authored supervisor lines, found {len(nodes)}.")
-    result: dict[str, object] = {"revision": "supervisor-v1:" + digest(workbook), "conversations": conversations,
+    if len(nodes) != 48:
+        raise ValueError(f"Expected 48 authored supervisor lines, found {len(nodes)}.")
+    result: dict[str, object] = {"revision": "supervisor-v1:" + content_revision("supervisor", digest(workbook)), "conversations": conversations,
+        "textEditManifestHash": manifest_hash(), "approvedTextEdits": text_edits,
         "portraits": [{"id": key, "description": value} for key, value in portraits.items()]}
     adaptations.extend({"kind": "literal-array-recovered", **item} for item in recovered)
+    adaptations.extend(text_edits)
     return result, adaptations
 
 
@@ -100,7 +104,7 @@ def main() -> None:
                 yarn.append(f"监督员: {escape(str(line['text']))} #line:supervisor_{line['id']} #source:supervisor__{line['id']} #portrait:{line['portraitId']}")
             yarn.extend(["===", ""])
     manifest = {"workbook": args.workbook.relative_to(ROOT).as_posix(), "sha256": digest(args.workbook),
-        "sheet": "对话流程", "sourceRows": 46, "adaptations": adaptations,
+        "sheet": "对话流程", "sourceRows": sum(len(cast(list[Record], day["lines"])) for day in conversations), "adaptations": adaptations,
         "portraitPolicy": "Preserve the approved live portraits in docs/portrait-remap/source-manifest.json; this text converter never copies images.",
         "stagePolicy": "For Day1-3, the final two authored lines use the existing Briefing cue; preceding lines use MorningInspection. Day4 is TakenAway ending content."}
     artifacts = {

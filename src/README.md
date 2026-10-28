@@ -1,6 +1,6 @@
 # 游戏核心逻辑源码
 
-这里实现Day0教学、五位病人三天流程的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。旧原型保留三种结局；Combined Campaign 通过 `WithDreamFlow` 接入每日梦境、留院正式病人信任总和条件、16句自我审判及四分支终局。全局反叛值独立保留，不再用于隐藏结局门槛。操作与当前规则见[结局指南](../docs/endings/guide.md)。`[verified: MiniGame.Core/Rules/GameRules.cs WithDreamFlow；MiniGame.Core/Runtime/GameSession.cs HasHiddenEndingTrust/AdvanceSelfReview]`
+这里实现Day0教学、五位病人三天流程的**纯C#规则库**，并提供不依赖Unity的宿主生命周期库。旧原型保留三种结局；Combined Campaign 通过 `WithDreamFlow` 接入每日梦境、四位患者历史对白信任总和条件、16句自我审判及四分支终局。全局反叛值独立保留，不再用于隐藏结局门槛。操作与当前规则见[结局指南](../docs/endings/guide.md)。`[verified: MiniGame.Core/Rules/GameRules.cs WithDreamFlow；MiniGame.Core/Runtime/GameSession.cs HasHiddenEndingTrust/AdvanceSelfReview]`
 
 [实现说明：文件职责、设计理由与借鉴来源](architecture-and-rationale.md)解释代码为什么这样组织；[研究路线](../research/unity-2022-roadmap.md)和[游戏设计](../docs/game-overview.md)提供需求背景。
 
@@ -80,11 +80,11 @@ game.Execute(new CompleteResponseBranch(
 
 会面ID和节点ID必须来自当前玩家视图。旧会面的回调、错误节点、连点处置、提前操作和结束后操作会被拒绝。命令需由一个宿主线程按顺序调用；本库没有并发会话控制。
 
-`PlayerView`提供日期、阶段、当前人物／节点、选项ID、可用处置、允许交互和剩余净化配额，不公开原始信任与历史。当前会谈配置了释放处置时，另提供只读 `SocialAdaptation` 检测结果，表示距本场释放门槛的相对差距；终端将其显示为“社会适应度”波形，不显示数字，不参与释放裁决。完整快照含信任与历史，供存档和内部调试使用。[verified: MiniGame.Core/Contracts/GameResult.cs SocialAdaptationReading；MiniGame.Core/Runtime/GameSession.cs GetPlayerView]
+`PlayerView`提供日期、阶段、当前人物／节点、选项ID、可用处置、允许交互和剩余净化配额，不公开原始信任与历史。Day0教学或当前会谈配置了释放处置时，另提供只读 `SocialAdaptation` 检测结果，表示距本场释放门槛的相对差距；终端将其显示为“社会适应度”波形，不显示数字，不参与释放裁决。Day0初始信任为-2，开场波形已达到最狂躁档位，教学仍只允许净化。完整快照含信任与历史，供存档和内部调试使用。[verified: MiniGame.Core/Contracts/GameResult.cs SocialAdaptationReading；MiniGame.Core/Runtime/GameSession.cs GetPlayerView；../Tools/DialogueCampaign/conversion-config.json patients[id=tutorial].initialTrust；MiniGame.Presentation/SocialAdaptationSignal.cs CoordinateFor]
 
 ## 开发默认规则
 
-本节下列清单描述保留的旧三天 `PrototypeRules`。当前V2另采用Day0＋五人三天、信任0／释放3／每日目标1及源表增量；普通会谈为6或7轮，Day0允许只有介绍与净化。`MeetingDefinition.IntroNodeId` 对应 `CompleteIntroduction`，`ReactionNodes` 定义允许的处置，`DispositionTrustDeltas` 只在处置提交时结算；旧构造参数与V1语义保持兼容。[verified: MiniGame.Core/Rules/DialogueDefinitions.cs MeetingDefinition；MiniGame.Core/Runtime/GameSession.cs CompleteIntroduction/Dispose；../Tools/DialogueCampaign/conversion-config.json]
+本节下列清单描述保留的旧三天 `PrototypeRules`。当前V2另采用Day0＋五人三天、信任0／释放3／每日目标1及源表增量；普通会谈为6或7轮，Day0允许只有介绍与净化。`MeetingDefinition.IntroNodeId` 对应 `CompleteIntroduction`，`ReactionNodes` 定义允许的处置。`DispositionTrustDeltas` 仅在已接受操作的回应期间叠加到只读社会适应度，不写入患者 `Trust`；释放、特殊对白和隐藏条件均使用对白累计值。该投影从处置记录派生，不新增权威状态；规则指纹包含策略版本2，拒绝旧累计语义的存档。无会谈扩展的旧原型指纹保持兼容。[verified: MiniGame.Core/Rules/DialogueDefinitions.cs MeetingDefinition；MiniGame.Core/Runtime/GameSession.cs SocialAdaptationTrust/Dispose；MiniGame.Core/Rules/GameRules.cs ComputeFingerprint；../Tools/DialogueCampaign/conversion-config.json]
 
 这些是用户采纳的**首轮开发配置**，不是已确认的正式策划参数；集中在[PrototypeRules.cs](MiniGame.Core/Rules/PrototypeRules.cs)。
 

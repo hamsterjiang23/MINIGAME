@@ -185,7 +185,7 @@ namespace MiniGame.Presentation.Tests
             RuntimeScenario.Complete(runtime, PresentationKind.ExitTerminal);
             var core = CoreState(runtime);
             Assert.That(core["Days"]![0]!["Purifications"]!.Value<int>(), Is.EqualTo(1));
-            Assert.That(core["Patients"]![0]!["Trust"]!.Value<int>(), Is.EqualTo(-1));
+            Assert.That(core["Patients"]![0]!["Trust"]!.Value<int>(), Is.Zero);
             Assert.That(runtime.GetView().PresentedPatientId, Is.EqualTo("tutorial"));
         }
 
@@ -331,7 +331,7 @@ namespace MiniGame.Presentation.Tests
             Assert.That(reached, Does.Contain("0:tutorial").And.Contain("1:first").And.Contain("1:second").And.Contain("2:first"));
             var core = CoreState(runtime);
             Assert.That(core["Encounters"]!.Count(), Is.EqualTo(4));
-            Assert.That(core["Patients"]![0]!["Trust"]!.Value<int>(), Is.EqualTo(-1));
+            Assert.That(core["Patients"]![0]!["Trust"]!.Value<int>(), Is.Zero);
             Assert.That(core["Patients"]![1]!["TreatmentCount"]!.Value<int>(), Is.EqualTo(2));
             Assert.That(core["Patients"]![2]!["TreatmentCount"]!.Value<int>(), Is.EqualTo(1));
         }

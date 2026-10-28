@@ -7,6 +7,9 @@ namespace MiniGame.UnityHost
 {
     internal sealed class TerminalTranscriptView
     {
+        private const float ThumbWidth = 2f * 1.7f;
+        private const float ThumbRightInset = 1f;
+
         private sealed class Row
         {
             public RectTransform Root;
@@ -45,7 +48,8 @@ namespace MiniGame.UnityHost
             {
                 if (!rendering) UpdateThumb();
             });
-            thumb = TerminalIndustrialSkin.Panel(viewport, "HistoryThumb", TerminalView.Dim, width - 3, 0, 2, height);
+            thumb = TerminalIndustrialSkin.Panel(viewport, "HistoryThumb", TerminalView.Dim,
+                width - ThumbWidth - ThumbRightInset, 0, ThumbWidth, height);
             thumb.GetComponent<Image>().raycastTarget = false;
         }
 
@@ -119,7 +123,8 @@ namespace MiniGame.UnityHost
             thumb.gameObject.SetActive(full > visible + 1);
             if (full <= visible) return;
             float height = Mathf.Max(12, visible * visible / full);
-            TerminalIndustrialSkin.Position(thumb, viewportWidth - 3, (1 - scroll.verticalNormalizedPosition) * (visible - height), 2, height);
+            TerminalIndustrialSkin.Position(thumb, viewportWidth - ThumbWidth - ThumbRightInset,
+                (1 - scroll.verticalNormalizedPosition) * (visible - height), ThumbWidth, height);
         }
 
         private static RectTransform NewRect(Transform parent, string name)

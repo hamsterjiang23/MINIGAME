@@ -1,6 +1,21 @@
 {
-  "revision": "7a93f079c10cc77873df2eb356b8f92f481edf9b888c33bc05af530922cf34e9",
-  "sourceManifestSha256": "50048f00fa5dc3d2bbfb0628b32527890aa578490e3d685f3ae486b174654b3d",
+  "revision": "b770fa298e016b213456e5c04f2e54879366f968c47f33324d202f55ddbf45ed",
+  "sourceManifestSha256": "0d2bc89d0b3596fb347230be50c18be0402e588ce60d2092508e44eadde2468f",
+  "textEditManifestHash": "af36f18bd7cd38bea0957bcbce63969c72fe774d5849cff9b51f7f2ed9d35353",
+  "approvedTextEdits": [
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "priest-ending",
+      "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_003",
+      "row": 4,
+      "field": "open",
+      "before": "门叩响的声音。",
+      "after": "叩门的声音。",
+      "issueIds": [
+        "p2.11"
+      ]
+    }
+  ],
   "sources": [
     {
       "id": "battlefield-doctor",
@@ -18,10 +33,10 @@
     },
     {
       "id": "supervisor",
-      "originalPath": "E:/Downloads/【对话】监督员 (1).xlsx",
+      "originalPath": "C:/Users/admin/Downloads/【对话】监督员 (1).xlsx",
       "file": "Art/chat_excel/【对话】监督员.xlsx",
-      "sha256": "3afb95a3f3455cc0d8c08643bb7e7ec0d3623ea49d3c89585e57d011d2bd9c3e",
-      "previousSha256": "922deb323f2f25cdfa07bb446a221bcd890900813890abb6c8b56a90bcfe8630"
+      "sha256": "71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e",
+      "previousSha256": "3afb95a3f3455cc0d8c08643bb7e7ec0d3623ea49d3c89585e57d011d2bd9c3e"
     },
     {
       "id": "tutorial",
@@ -6563,135 +6578,1505 @@
       "sheets": [
         {
           "name": "对话流程",
-          "nonemptyRows": 47,
-          "dataRows": 46,
+          "nonemptyRows": 49,
+          "dataRows": 48,
           "cellDifferences": [
             {
               "cell": "D7",
-              "before": "总之，就是好好教育一下那些社会的蛀虫们。",
-              "after": "你的电脑上有三个选项“释放”“治疗”和“净化”。"
+              "before": "你的电脑上有三个选项“释放”“治疗”和“净化”。",
+              "after": "总之，就是好好教育一下那些社会的蛀虫们。"
             },
             {
               "cell": "D8",
-              "before": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
-              "after": "如果你觉得这人有意思，想留到第二天继续说话，可以选“治疗”，这样我们兄弟几个在“治疗”的时候也能找点乐子。"
+              "before": "如果你觉得这人有意思，想留到第二天继续说话，可以选“治疗”，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
+              "after": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。"
             },
             {
               "cell": "D10",
-              "before": "对了，还有个释放按钮。那个按钮能点击的前提是，经过你的教育，仪器检测到他们悔改了。",
-              "after": "对了，还有个释放按钮。只有你的教育取得被仪器认可的结果之后，释放按钮才会亮起。"
+              "before": "对了，还有个释放按钮。只有你的教育取得被仪器认可的结果之后，释放按钮才会亮起。",
+              "after": "待会记得留意屏幕下面的“社会适应度”指示器，他们越不听话，指示器的表现就越狂躁。"
+            },
+            {
+              "cell": "D11",
+              "before": "要我说，还是别释放他们吧，好不容易抓进来你又给放了，这不是打上头的脸吗？",
+              "after": "如果你足够擅长和人打交道的话，也许能让他们的社会适应度变得符合规范，那你就能“释放”他们了。"
+            },
+            {
+              "cell": "L11",
+              "before": "JD_03",
+              "after": "JD_01"
             },
             {
               "cell": "D12",
-              "before": "我每天都会来看望你的，这样你就不会太孤单了嘛。",
-              "after": "记得你每天最起码要净化一个人，不然你的指标没达成，你可就危险了呀。"
+              "before": "记得你每天最起码要净化一个人，不然你的指标没达成，你可就危险了呀。",
+              "after": "但是释放可不是什么好事呀，绩效考核里可没有对于释放的指标。"
+            },
+            {
+              "cell": "D13",
+              "before": "好了，检测时间到。",
+              "after": "要我说还是别释放他们吧，好不容易抓进来你又给放了，这不是打上头的脸吗？"
             },
             {
               "cell": "L13",
-              "before": "JD_01",
-              "after": "JD_04"
+              "before": "JD_04",
+              "after": "JD_03"
             },
             {
               "cell": "D14",
-              "before": "身为公务员，你一定能通过仪器检测吧？",
-              "after": "我们可是很注重公务员的心理健康的。"
+              "before": "我们可是很注重公务员的心理健康的。",
+              "after": "我每天都会来看望你的，这样你就不会太孤单了嘛。"
             },
             {
               "cell": "L14",
-              "before": "JD_01",
-              "after": "JD_04"
+              "before": "JD_04",
+              "after": "JD_03"
             },
             {
-              "cell": "D27",
-              "before": "让我看看你是不是真的过关。",
-              "after": "让我看看你是不是听了里头那些蛀虫的话。"
+              "cell": "D15",
+              "before": "这玩意真方便，以前抓人还需要证据，现在让他扫一下就行了。",
+              "after": "好了，检测时间到。"
             },
             {
-              "cell": "L27",
+              "cell": "L15",
+              "before": "JD_04",
+              "after": "JD_01"
+            },
+            {
+              "cell": "D16",
+              "before": "不错嘛，你通过了检测。",
+              "after": "我们可是很关注公务员的心理健康的。"
+            },
+            {
+              "cell": "L16",
               "before": "JD_05",
               "after": "JD_04"
             },
             {
-              "cell": "L28",
-              "before": "JD_04",
+              "cell": "D17",
+              "before": "好好干，我还会再来的。",
+              "after": "这玩意真方便，以前抓人还需要证据，现在让他扫一下就行了。"
+            },
+            {
+              "cell": "J17",
+              "before": "",
+              "after": "P02_D1_R1_COMMON_017"
+            },
+            {
+              "cell": "L17",
+              "before": "JD_05",
+              "after": "JD_04"
+            },
+            {
+              "cell": "A18",
+              "before": "Day2",
+              "after": "Day1"
+            },
+            {
+              "cell": "D18",
+              "before": "又见面了。",
+              "after": "不错嘛，你通过了检测。"
+            },
+            {
+              "cell": "I18",
+              "before": "P02_D2_R1_COMMON_001",
+              "after": "P02_D1_R1_COMMON_017"
+            },
+            {
+              "cell": "J18",
+              "before": "P02_D2_R1_COMMON_002",
+              "after": "P02_D1_R1_COMMON_018"
+            },
+            {
+              "cell": "K18",
+              "before": "",
+              "after": "0"
+            },
+            {
+              "cell": "L18",
+              "before": "JD_01",
               "after": "JD_05"
             },
             {
-              "cell": "L29",
-              "before": "JD_04",
+              "cell": "A19",
+              "before": "Day2",
+              "after": "Day1"
+            },
+            {
+              "cell": "D19",
+              "before": "据我所知，你的活干的还不错嘛。",
+              "after": "好好干，我还会再来的。"
+            },
+            {
+              "cell": "I19",
+              "before": "P02_D2_R1_COMMON_002",
+              "after": "P02_D1_R1_COMMON_018"
+            },
+            {
+              "cell": "J19",
+              "before": "P02_D2_R1_COMMON_003",
+              "after": ""
+            },
+            {
+              "cell": "K19",
+              "before": "",
+              "after": "0"
+            },
+            {
+              "cell": "L19",
+              "before": "JD_03",
               "after": "JD_05"
+            },
+            {
+              "cell": "D20",
+              "before": "让我听那些蛀虫说话，我可没那么多耐心。",
+              "after": "又见面了。"
+            },
+            {
+              "cell": "I20",
+              "before": "P02_D2_R1_COMMON_003",
+              "after": "P02_D2_R1_COMMON_001"
+            },
+            {
+              "cell": "J20",
+              "before": "P02_D2_R1_COMMON_004",
+              "after": "P02_D2_R1_COMMON_002"
+            },
+            {
+              "cell": "L20",
+              "before": "",
+              "after": "JD_01"
+            },
+            {
+              "cell": "D21",
+              "before": "喂，我说。",
+              "after": "据我所知，你的活干的还不错嘛。"
+            },
+            {
+              "cell": "I21",
+              "before": "P02_D2_R1_COMMON_004",
+              "after": "P02_D2_R1_COMMON_002"
+            },
+            {
+              "cell": "J21",
+              "before": "P02_D2_R1_COMMON_005",
+              "after": "P02_D2_R1_COMMON_003"
+            },
+            {
+              "cell": "L21",
+              "before": "JD_01",
+              "after": "JD_03"
+            },
+            {
+              "cell": "D22",
+              "before": "他们说的话，你不会真听了吧？",
+              "after": "让我听那些蛀虫说话，我可没那么多耐心。"
+            },
+            {
+              "cell": "I22",
+              "before": "P02_D2_R1_COMMON_005",
+              "after": "P02_D2_R1_COMMON_003"
+            },
+            {
+              "cell": "J22",
+              "before": "P02_D2_R1_COMMON_006",
+              "after": "P02_D2_R1_COMMON_004"
+            },
+            {
+              "cell": "L22",
+              "before": "JD_02",
+              "after": ""
+            },
+            {
+              "cell": "D23",
+              "before": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+              "after": "喂，我说。"
+            },
+            {
+              "cell": "I23",
+              "before": "P02_D2_R1_COMMON_006",
+              "after": "P02_D2_R1_COMMON_004"
+            },
+            {
+              "cell": "J23",
+              "before": "P02_D2_R1_COMMON_007",
+              "after": "P02_D2_R1_COMMON_005"
+            },
+            {
+              "cell": "L23",
+              "before": "JD_02",
+              "after": "JD_01"
+            },
+            {
+              "cell": "D24",
+              "before": "他自然也成为了里面的一员。",
+              "after": "他们说的话，你不会真听了吧？"
+            },
+            {
+              "cell": "I24",
+              "before": "P02_D2_R1_COMMON_007",
+              "after": "P02_D2_R1_COMMON_005"
+            },
+            {
+              "cell": "J24",
+              "before": "P02_D2_R1_COMMON_008",
+              "after": "P02_D2_R1_COMMON_006"
+            },
+            {
+              "cell": "L24",
+              "before": "JD_03",
+              "after": "JD_02"
+            },
+            {
+              "cell": "D25",
+              "before": "如果你不想重蹈覆辙，那我劝你少搭理他们。",
+              "after": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。"
+            },
+            {
+              "cell": "I25",
+              "before": "P02_D2_R1_COMMON_008",
+              "after": "P02_D2_R1_COMMON_006"
+            },
+            {
+              "cell": "J25",
+              "before": "P02_D2_R1_COMMON_009",
+              "after": "P02_D2_R1_COMMON_007"
+            },
+            {
+              "cell": "L25",
+              "before": "JD_03",
+              "after": "JD_02"
+            },
+            {
+              "cell": "D26",
+              "before": "闲聊就到这吧。",
+              "after": "他自然也成为了里面的一员。"
+            },
+            {
+              "cell": "I26",
+              "before": "P02_D2_R1_COMMON_009",
+              "after": "P02_D2_R1_COMMON_007"
+            },
+            {
+              "cell": "J26",
+              "before": "P02_D2_R1_COMMON_010",
+              "after": "P02_D2_R1_COMMON_008"
+            },
+            {
+              "cell": "D27",
+              "before": "让我看看你是不是听了里头那些蛀虫的话。",
+              "after": "如果你不想重蹈覆辙，那我劝你少搭理他们。"
+            },
+            {
+              "cell": "I27",
+              "before": "P02_D2_R1_COMMON_010",
+              "after": "P02_D2_R1_COMMON_008"
+            },
+            {
+              "cell": "J27",
+              "before": "P02_D2_R1_COMMON_011",
+              "after": "P02_D2_R1_COMMON_009"
+            },
+            {
+              "cell": "L27",
+              "before": "JD_04",
+              "after": "JD_03"
+            },
+            {
+              "cell": "D28",
+              "before": "不错嘛。",
+              "after": "闲聊就到这吧。"
+            },
+            {
+              "cell": "I28",
+              "before": "P02_D2_R1_COMMON_011",
+              "after": "P02_D2_R1_COMMON_009"
+            },
+            {
+              "cell": "J28",
+              "before": "P02_D2_R1_COMMON_012",
+              "after": "P02_D2_R1_COMMON_010"
+            },
+            {
+              "cell": "L28",
+              "before": "JD_05",
+              "after": "JD_03"
+            },
+            {
+              "cell": "D29",
+              "before": "你最好继续保持。",
+              "after": "让我看看你是不是真的过关。"
+            },
+            {
+              "cell": "I29",
+              "before": "P02_D2_R1_COMMON_012",
+              "after": "P02_D2_R1_COMMON_010"
+            },
+            {
+              "cell": "J29",
+              "before": "",
+              "after": "P02_D2_R1_COMMON_011"
+            },
+            {
+              "cell": "A30",
+              "before": "Day3",
+              "after": "Day2"
+            },
+            {
+              "cell": "D30",
+              "before": "我又来了。",
+              "after": "不错嘛。"
+            },
+            {
+              "cell": "I30",
+              "before": "P02_D3_R1_COMMON_001",
+              "after": "P02_D2_R1_COMMON_011"
+            },
+            {
+              "cell": "J30",
+              "before": "P02_D3_R1_COMMON_002",
+              "after": "P02_D2_R1_COMMON_012"
+            },
+            {
+              "cell": "L30",
+              "before": "JD_01",
+              "after": "JD_04"
+            },
+            {
+              "cell": "A31",
+              "before": "Day3",
+              "after": "Day2"
+            },
+            {
+              "cell": "D31",
+              "before": "你还真是厉害啊。",
+              "after": "你最好继续保持。"
+            },
+            {
+              "cell": "I31",
+              "before": "P02_D3_R1_COMMON_002",
+              "after": "P02_D2_R1_COMMON_012"
+            },
+            {
+              "cell": "J31",
+              "before": "P02_D3_R1_COMMON_003",
+              "after": ""
+            },
+            {
+              "cell": "L31",
+              "before": "JD_01",
+              "after": "JD_04"
+            },
+            {
+              "cell": "D32",
+              "before": "我们都在关注你，搞不好你很快就能升职了。",
+              "after": "我又来了。"
+            },
+            {
+              "cell": "I32",
+              "before": "P02_D3_R1_COMMON_003",
+              "after": "P02_D3_R1_COMMON_001"
+            },
+            {
+              "cell": "J32",
+              "before": "P02_D3_R1_COMMON_004",
+              "after": "P02_D3_R1_COMMON_002"
+            },
+            {
+              "cell": "D33",
+              "before": "开玩笑的。",
+              "after": "你还真是厉害啊。"
+            },
+            {
+              "cell": "I33",
+              "before": "P02_D3_R1_COMMON_004",
+              "after": "P02_D3_R1_COMMON_002"
+            },
+            {
+              "cell": "J33",
+              "before": "P02_D3_R1_COMMON_005",
+              "after": "P02_D3_R1_COMMON_003"
+            },
+            {
+              "cell": "L33",
+              "before": "JD_03",
+              "after": "JD_01"
+            },
+            {
+              "cell": "D34",
+              "before": "你还真信了？",
+              "after": "我们都在关注你，搞不好你很快就能升职了。"
+            },
+            {
+              "cell": "I34",
+              "before": "P02_D3_R1_COMMON_005",
+              "after": "P02_D3_R1_COMMON_003"
+            },
+            {
+              "cell": "J34",
+              "before": "P02_D3_R1_COMMON_006",
+              "after": "P02_D3_R1_COMMON_004"
+            },
+            {
+              "cell": "L34",
+              "before": "JD_03",
+              "after": "JD_01"
+            },
+            {
+              "cell": "D35",
+              "before": "路要一步一步走，孩子。",
+              "after": "开玩笑的。"
+            },
+            {
+              "cell": "I35",
+              "before": "P02_D3_R1_COMMON_006",
+              "after": "P02_D3_R1_COMMON_004"
+            },
+            {
+              "cell": "J35",
+              "before": "P02_D3_R1_COMMON_007",
+              "after": "P02_D3_R1_COMMON_005"
+            },
+            {
+              "cell": "D36",
+              "before": "升职可没那么容易，更没那么快。",
+              "after": "你还真信了？"
+            },
+            {
+              "cell": "I36",
+              "before": "P02_D3_R1_COMMON_007",
+              "after": "P02_D3_R1_COMMON_005"
+            },
+            {
+              "cell": "J36",
+              "before": "P02_D3_R1_COMMON_008",
+              "after": "P02_D3_R1_COMMON_006"
+            },
+            {
+              "cell": "D37",
+              "before": "顺带一提，你刚才的表情也被我记录下来了。",
+              "after": "路要一步一步走，孩子。"
+            },
+            {
+              "cell": "I37",
+              "before": "P02_D3_R1_COMMON_008",
+              "after": "P02_D3_R1_COMMON_006"
+            },
+            {
+              "cell": "J37",
+              "before": "P02_D3_R1_COMMON_009",
+              "after": "P02_D3_R1_COMMON_007"
+            },
+            {
+              "cell": "L37",
+              "before": "JD_01",
+              "after": "JD_03"
             },
             {
               "cell": "D38",
-              "before": "好了，笑一个。",
-              "after": "好了，严肃点，检测时间到。"
+              "before": "好了，严肃点，检测时间到。",
+              "after": "升职可没那么容易，更没那么快。"
+            },
+            {
+              "cell": "I38",
+              "before": "P02_D3_R1_COMMON_009",
+              "after": "P02_D3_R1_COMMON_007"
+            },
+            {
+              "cell": "J38",
+              "before": "P02_D3_R1_COMMON_010",
+              "after": "P02_D3_R1_COMMON_008"
+            },
+            {
+              "cell": "L38",
+              "before": "JD_04",
+              "after": "JD_03"
+            },
+            {
+              "cell": "D39",
+              "before": "哦哦，你又一次通过了啊。",
+              "after": "顺带一提，你刚才的表情也被我记录下来了。"
+            },
+            {
+              "cell": "I39",
+              "before": "P02_D3_R1_COMMON_010",
+              "after": "P02_D3_R1_COMMON_008"
+            },
+            {
+              "cell": "J39",
+              "before": "P02_D3_R1_COMMON_011",
+              "after": "P02_D3_R1_COMMON_009"
+            },
+            {
+              "cell": "L39",
+              "before": "JD_05",
+              "after": "JD_01"
+            },
+            {
+              "cell": "D40",
+              "before": "明天也许就没那么好运了。",
+              "after": "好了，笑一个。"
+            },
+            {
+              "cell": "I40",
+              "before": "P02_D3_R1_COMMON_011",
+              "after": "P02_D3_R1_COMMON_009"
+            },
+            {
+              "cell": "J40",
+              "before": "P02_D4_R1_COMMON_002",
+              "after": "P02_D3_R1_COMMON_010"
+            },
+            {
+              "cell": "L40",
+              "before": "JD_05",
+              "after": "JD_04"
+            },
+            {
+              "cell": "A41",
+              "before": "Day4",
+              "after": "Day3"
+            },
+            {
+              "cell": "D41",
+              "before": "惊——喜。",
+              "after": "哦哦，你又一次通过了啊。"
+            },
+            {
+              "cell": "I41",
+              "before": "P02_D4_R1_COMMON_001",
+              "after": "P02_D3_R1_COMMON_010"
+            },
+            {
+              "cell": "J41",
+              "before": "P02_D4_R1_COMMON_002",
+              "after": "P02_D3_R1_COMMON_011"
+            },
+            {
+              "cell": "L41",
+              "before": "JD_06",
+              "after": "JD_05"
+            },
+            {
+              "cell": "A42",
+              "before": "Day4",
+              "after": "Day3"
+            },
+            {
+              "cell": "D42",
+              "before": "做过什么你自己清楚。",
+              "after": "明天也许就没那么好运了。"
+            },
+            {
+              "cell": "I42",
+              "before": "P02_D4_R1_COMMON_002",
+              "after": "P02_D3_R1_COMMON_011"
+            },
+            {
+              "cell": "J42",
+              "before": "P02_D4_R1_COMMON_003",
+              "after": "P02_D4_R1_COMMON_002"
+            },
+            {
+              "cell": "K42",
+              "before": "0",
+              "after": ""
+            },
+            {
+              "cell": "L42",
+              "before": "JD_06",
+              "after": "JD_05"
+            },
+            {
+              "cell": "D43",
+              "before": "看来你要跟我走一趟了。",
+              "after": "惊——喜。"
+            },
+            {
+              "cell": "I43",
+              "before": "P02_D4_R1_COMMON_003",
+              "after": "P02_D4_R1_COMMON_001"
+            },
+            {
+              "cell": "J43",
+              "before": "P02_D4_R1_COMMON_004",
+              "after": "P02_D4_R1_COMMON_002"
+            },
+            {
+              "cell": "D44",
+              "before": "进去之后，记得好好表现。",
+              "after": "做过什么你自己清楚。"
+            },
+            {
+              "cell": "I44",
+              "before": "P02_D4_R1_COMMON_004",
+              "after": "P02_D4_R1_COMMON_002"
+            },
+            {
+              "cell": "J44",
+              "before": "P02_D4_R1_COMMON_005",
+              "after": "P02_D4_R1_COMMON_003"
+            },
+            {
+              "cell": "K44",
+              "before": "",
+              "after": "0"
+            },
+            {
+              "cell": "D45",
+              "before": "也许就不会那么早迎来净化。",
+              "after": "看来你要跟我走一趟了。"
+            },
+            {
+              "cell": "I45",
+              "before": "P02_D4_R1_COMMON_005",
+              "after": "P02_D4_R1_COMMON_003"
+            },
+            {
+              "cell": "J45",
+              "before": "P02_D4_R1_COMMON_006",
+              "after": "P02_D4_R1_COMMON_004"
+            },
+            {
+              "cell": "D46",
+              "before": "我们之间也能多玩一会，不是吗？",
+              "after": "进去之后，记得好好表现。"
+            },
+            {
+              "cell": "I46",
+              "before": "P02_D4_R1_COMMON_006",
+              "after": "P02_D4_R1_COMMON_004"
+            },
+            {
+              "cell": "J46",
+              "before": "P02_D4_R1_COMMON_007",
+              "after": "P02_D4_R1_COMMON_005"
+            },
+            {
+              "cell": "D47",
+              "before": "走吧。",
+              "after": "也许就不会那么早迎来净化。"
+            },
+            {
+              "cell": "I47",
+              "before": "P02_D4_R1_COMMON_007",
+              "after": "P02_D4_R1_COMMON_005"
+            },
+            {
+              "cell": "J47",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_006"
+            },
+            {
+              "cell": "K47",
+              "before": "0",
+              "after": ""
+            },
+            {
+              "cell": "A48",
+              "before": "",
+              "after": "Day4"
+            },
+            {
+              "cell": "B48",
+              "before": "",
+              "after": "R1"
+            },
+            {
+              "cell": "C48",
+              "before": "",
+              "after": "普通对话"
+            },
+            {
+              "cell": "D48",
+              "before": "",
+              "after": "我们之间也能多玩一会，不是吗？"
+            },
+            {
+              "cell": "I48",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_006"
+            },
+            {
+              "cell": "J48",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_007"
+            },
+            {
+              "cell": "L48",
+              "before": "",
+              "after": "JD_06"
+            },
+            {
+              "cell": "A49",
+              "before": "",
+              "after": "Day4"
+            },
+            {
+              "cell": "B49",
+              "before": "",
+              "after": "R1"
+            },
+            {
+              "cell": "C49",
+              "before": "",
+              "after": "普通对话"
+            },
+            {
+              "cell": "D49",
+              "before": "",
+              "after": "走吧。"
+            },
+            {
+              "cell": "I49",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_007"
+            },
+            {
+              "cell": "K49",
+              "before": "",
+              "after": "0"
+            },
+            {
+              "cell": "L49",
+              "before": "",
+              "after": "JD_06"
             }
           ]
         },
         {
           "name": "角色文本表",
-          "nonemptyRows": 47,
-          "dataRows": 46,
+          "nonemptyRows": 49,
+          "dataRows": 48,
           "cellDifferences": [
             {
               "cell": "E7",
-              "before": "总之，就是好好教育一下那些社会的蛀虫们。",
-              "after": "你的电脑上有三个选项“释放”“治疗”和“净化”。"
+              "before": "你的电脑上有三个选项“释放”“治疗”和“净化”。",
+              "after": "总之，就是好好教育一下那些社会的蛀虫们。"
             },
             {
               "cell": "E8",
-              "before": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
-              "after": "如果你觉得这人有意思，想留到第二天继续说话，可以选“治疗”，这样我们兄弟几个在“治疗”的时候也能找点乐子。"
+              "before": "如果你觉得这人有意思，想留到第二天继续说话，可以选“治疗”，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
+              "after": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。"
             },
             {
               "cell": "E10",
-              "before": "对了，还有个释放按钮。那个按钮能点击的前提是，经过你的教育，仪器检测到他们悔改了。",
-              "after": "对了，还有个释放按钮。只有你的教育取得被仪器认可的结果之后，释放按钮才会亮起。"
+              "before": "对了，还有个释放按钮。只有你的教育取得被仪器认可的结果之后，释放按钮才会亮起。",
+              "after": "待会记得留意屏幕下面的“社会适应度”指示器，他们越不听话，指示器的表现就越狂躁。"
+            },
+            {
+              "cell": "E11",
+              "before": "要我说，还是别释放他们吧，好不容易抓进来你又给放了，这不是打上头的脸吗？",
+              "after": "如果你足够擅长和人打交道的话，也许能让他们的社会适应度变得符合规范，那你就能“释放”他们了。"
+            },
+            {
+              "cell": "F11",
+              "before": "JD_03",
+              "after": "JD_01"
             },
             {
               "cell": "E12",
-              "before": "我每天都会来看望你的，这样你就不会太孤单了嘛。",
-              "after": "记得你每天最起码要净化一个人，不然你的指标没达成，你可就危险了呀。"
+              "before": "记得你每天最起码要净化一个人，不然你的指标没达成，你可就危险了呀。",
+              "after": "但是释放可不是什么好事呀，绩效考核里可没有对于释放的指标。"
+            },
+            {
+              "cell": "E13",
+              "before": "好了，检测时间到。",
+              "after": "要我说还是别释放他们吧，好不容易抓进来你又给放了，这不是打上头的脸吗？"
             },
             {
               "cell": "F13",
-              "before": "JD_01",
-              "after": "JD_04"
+              "before": "JD_04",
+              "after": "JD_03"
             },
             {
               "cell": "E14",
-              "before": "身为公务员，你一定能通过仪器检测吧？",
-              "after": "我们可是很注重公务员的心理健康的。"
+              "before": "我们可是很注重公务员的心理健康的。",
+              "after": "我每天都会来看望你的，这样你就不会太孤单了嘛。"
             },
             {
               "cell": "F14",
-              "before": "JD_01",
-              "after": "JD_04"
+              "before": "JD_04",
+              "after": "JD_03"
             },
             {
-              "cell": "E27",
-              "before": "让我看看你是不是真的过关。",
-              "after": "让我看看你是不是听了里头那些蛀虫的话。"
+              "cell": "E15",
+              "before": "这玩意真方便，以前抓人还需要证据，现在让他扫一下就行了。",
+              "after": "好了，检测时间到。"
             },
             {
-              "cell": "F27",
+              "cell": "F15",
+              "before": "JD_04",
+              "after": "JD_01"
+            },
+            {
+              "cell": "E16",
+              "before": "不错嘛，你通过了检测。",
+              "after": "我们可是很关注公务员的心理健康的。"
+            },
+            {
+              "cell": "F16",
               "before": "JD_05",
               "after": "JD_04"
             },
             {
-              "cell": "F28",
-              "before": "JD_04",
+              "cell": "E17",
+              "before": "好好干，我还会再来的。",
+              "after": "这玩意真方便，以前抓人还需要证据，现在让他扫一下就行了。"
+            },
+            {
+              "cell": "F17",
+              "before": "JD_05",
+              "after": "JD_04"
+            },
+            {
+              "cell": "G17",
+              "before": "",
+              "after": "P02_D1_R1_COMMON_017"
+            },
+            {
+              "cell": "A18",
+              "before": "P02_D2_R1_COMMON_001",
+              "after": "P02_D1_R1_COMMON_017"
+            },
+            {
+              "cell": "B18",
+              "before": "Day2",
+              "after": "Day1"
+            },
+            {
+              "cell": "E18",
+              "before": "又见面了。",
+              "after": "不错嘛，你通过了检测。"
+            },
+            {
+              "cell": "F18",
+              "before": "JD_01",
               "after": "JD_05"
             },
             {
-              "cell": "F29",
-              "before": "JD_04",
+              "cell": "G18",
+              "before": "P02_D2_R1_COMMON_002",
+              "after": "P02_D1_R1_COMMON_018"
+            },
+            {
+              "cell": "A19",
+              "before": "P02_D2_R1_COMMON_002",
+              "after": "P02_D1_R1_COMMON_018"
+            },
+            {
+              "cell": "B19",
+              "before": "Day2",
+              "after": "Day1"
+            },
+            {
+              "cell": "E19",
+              "before": "据我所知，你的活干的还不错嘛。",
+              "after": "好好干，我还会再来的。"
+            },
+            {
+              "cell": "F19",
+              "before": "JD_03",
               "after": "JD_05"
+            },
+            {
+              "cell": "G19",
+              "before": "P02_D2_R1_COMMON_003",
+              "after": ""
+            },
+            {
+              "cell": "A20",
+              "before": "P02_D2_R1_COMMON_003",
+              "after": "P02_D2_R1_COMMON_001"
+            },
+            {
+              "cell": "E20",
+              "before": "让我听那些蛀虫说话，我可没那么多耐心。",
+              "after": "又见面了。"
+            },
+            {
+              "cell": "F20",
+              "before": "",
+              "after": "JD_01"
+            },
+            {
+              "cell": "G20",
+              "before": "P02_D2_R1_COMMON_004",
+              "after": "P02_D2_R1_COMMON_002"
+            },
+            {
+              "cell": "A21",
+              "before": "P02_D2_R1_COMMON_004",
+              "after": "P02_D2_R1_COMMON_002"
+            },
+            {
+              "cell": "E21",
+              "before": "喂，我说。",
+              "after": "据我所知，你的活干的还不错嘛。"
+            },
+            {
+              "cell": "F21",
+              "before": "JD_01",
+              "after": "JD_03"
+            },
+            {
+              "cell": "G21",
+              "before": "P02_D2_R1_COMMON_005",
+              "after": "P02_D2_R1_COMMON_003"
+            },
+            {
+              "cell": "A22",
+              "before": "P02_D2_R1_COMMON_005",
+              "after": "P02_D2_R1_COMMON_003"
+            },
+            {
+              "cell": "E22",
+              "before": "他们说的话，你不会真听了吧？",
+              "after": "让我听那些蛀虫说话，我可没那么多耐心。"
+            },
+            {
+              "cell": "F22",
+              "before": "JD_02",
+              "after": ""
+            },
+            {
+              "cell": "G22",
+              "before": "P02_D2_R1_COMMON_006",
+              "after": "P02_D2_R1_COMMON_004"
+            },
+            {
+              "cell": "A23",
+              "before": "P02_D2_R1_COMMON_006",
+              "after": "P02_D2_R1_COMMON_004"
+            },
+            {
+              "cell": "E23",
+              "before": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+              "after": "喂，我说。"
+            },
+            {
+              "cell": "F23",
+              "before": "JD_02",
+              "after": "JD_01"
+            },
+            {
+              "cell": "G23",
+              "before": "P02_D2_R1_COMMON_007",
+              "after": "P02_D2_R1_COMMON_005"
+            },
+            {
+              "cell": "A24",
+              "before": "P02_D2_R1_COMMON_007",
+              "after": "P02_D2_R1_COMMON_005"
+            },
+            {
+              "cell": "E24",
+              "before": "他自然也成为了里面的一员。",
+              "after": "他们说的话，你不会真听了吧？"
+            },
+            {
+              "cell": "F24",
+              "before": "JD_03",
+              "after": "JD_02"
+            },
+            {
+              "cell": "G24",
+              "before": "P02_D2_R1_COMMON_008",
+              "after": "P02_D2_R1_COMMON_006"
+            },
+            {
+              "cell": "A25",
+              "before": "P02_D2_R1_COMMON_008",
+              "after": "P02_D2_R1_COMMON_006"
+            },
+            {
+              "cell": "E25",
+              "before": "如果你不想重蹈覆辙，那我劝你少搭理他们。",
+              "after": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。"
+            },
+            {
+              "cell": "F25",
+              "before": "JD_03",
+              "after": "JD_02"
+            },
+            {
+              "cell": "G25",
+              "before": "P02_D2_R1_COMMON_009",
+              "after": "P02_D2_R1_COMMON_007"
+            },
+            {
+              "cell": "A26",
+              "before": "P02_D2_R1_COMMON_009",
+              "after": "P02_D2_R1_COMMON_007"
+            },
+            {
+              "cell": "E26",
+              "before": "闲聊就到这吧。",
+              "after": "他自然也成为了里面的一员。"
+            },
+            {
+              "cell": "G26",
+              "before": "P02_D2_R1_COMMON_010",
+              "after": "P02_D2_R1_COMMON_008"
+            },
+            {
+              "cell": "A27",
+              "before": "P02_D2_R1_COMMON_010",
+              "after": "P02_D2_R1_COMMON_008"
+            },
+            {
+              "cell": "E27",
+              "before": "让我看看你是不是听了里头那些蛀虫的话。",
+              "after": "如果你不想重蹈覆辙，那我劝你少搭理他们。"
+            },
+            {
+              "cell": "F27",
+              "before": "JD_04",
+              "after": "JD_03"
+            },
+            {
+              "cell": "G27",
+              "before": "P02_D2_R1_COMMON_011",
+              "after": "P02_D2_R1_COMMON_009"
+            },
+            {
+              "cell": "A28",
+              "before": "P02_D2_R1_COMMON_011",
+              "after": "P02_D2_R1_COMMON_009"
+            },
+            {
+              "cell": "E28",
+              "before": "不错嘛。",
+              "after": "闲聊就到这吧。"
+            },
+            {
+              "cell": "F28",
+              "before": "JD_05",
+              "after": "JD_03"
+            },
+            {
+              "cell": "G28",
+              "before": "P02_D2_R1_COMMON_012",
+              "after": "P02_D2_R1_COMMON_010"
+            },
+            {
+              "cell": "A29",
+              "before": "P02_D2_R1_COMMON_012",
+              "after": "P02_D2_R1_COMMON_010"
+            },
+            {
+              "cell": "E29",
+              "before": "你最好继续保持。",
+              "after": "让我看看你是不是真的过关。"
+            },
+            {
+              "cell": "G29",
+              "before": "",
+              "after": "P02_D2_R1_COMMON_011"
+            },
+            {
+              "cell": "A30",
+              "before": "P02_D3_R1_COMMON_001",
+              "after": "P02_D2_R1_COMMON_011"
+            },
+            {
+              "cell": "B30",
+              "before": "Day3",
+              "after": "Day2"
+            },
+            {
+              "cell": "E30",
+              "before": "我又来了。",
+              "after": "不错嘛。"
+            },
+            {
+              "cell": "F30",
+              "before": "JD_01",
+              "after": "JD_04"
+            },
+            {
+              "cell": "G30",
+              "before": "P02_D3_R1_COMMON_002",
+              "after": "P02_D2_R1_COMMON_012"
+            },
+            {
+              "cell": "A31",
+              "before": "P02_D3_R1_COMMON_002",
+              "after": "P02_D2_R1_COMMON_012"
+            },
+            {
+              "cell": "B31",
+              "before": "Day3",
+              "after": "Day2"
+            },
+            {
+              "cell": "E31",
+              "before": "你还真是厉害啊。",
+              "after": "你最好继续保持。"
+            },
+            {
+              "cell": "F31",
+              "before": "JD_01",
+              "after": "JD_04"
+            },
+            {
+              "cell": "G31",
+              "before": "P02_D3_R1_COMMON_003",
+              "after": ""
+            },
+            {
+              "cell": "A32",
+              "before": "P02_D3_R1_COMMON_003",
+              "after": "P02_D3_R1_COMMON_001"
+            },
+            {
+              "cell": "E32",
+              "before": "我们都在关注你，搞不好你很快就能升职了。",
+              "after": "我又来了。"
+            },
+            {
+              "cell": "G32",
+              "before": "P02_D3_R1_COMMON_004",
+              "after": "P02_D3_R1_COMMON_002"
+            },
+            {
+              "cell": "A33",
+              "before": "P02_D3_R1_COMMON_004",
+              "after": "P02_D3_R1_COMMON_002"
+            },
+            {
+              "cell": "E33",
+              "before": "开玩笑的。",
+              "after": "你还真是厉害啊。"
+            },
+            {
+              "cell": "F33",
+              "before": "JD_03",
+              "after": "JD_01"
+            },
+            {
+              "cell": "G33",
+              "before": "P02_D3_R1_COMMON_005",
+              "after": "P02_D3_R1_COMMON_003"
+            },
+            {
+              "cell": "A34",
+              "before": "P02_D3_R1_COMMON_005",
+              "after": "P02_D3_R1_COMMON_003"
+            },
+            {
+              "cell": "E34",
+              "before": "你还真信了？",
+              "after": "我们都在关注你，搞不好你很快就能升职了。"
+            },
+            {
+              "cell": "F34",
+              "before": "JD_03",
+              "after": "JD_01"
+            },
+            {
+              "cell": "G34",
+              "before": "P02_D3_R1_COMMON_006",
+              "after": "P02_D3_R1_COMMON_004"
+            },
+            {
+              "cell": "A35",
+              "before": "P02_D3_R1_COMMON_006",
+              "after": "P02_D3_R1_COMMON_004"
+            },
+            {
+              "cell": "E35",
+              "before": "路要一步一步走，孩子。",
+              "after": "开玩笑的。"
+            },
+            {
+              "cell": "G35",
+              "before": "P02_D3_R1_COMMON_007",
+              "after": "P02_D3_R1_COMMON_005"
+            },
+            {
+              "cell": "A36",
+              "before": "P02_D3_R1_COMMON_007",
+              "after": "P02_D3_R1_COMMON_005"
+            },
+            {
+              "cell": "E36",
+              "before": "升职可没那么容易，更没那么快。",
+              "after": "你还真信了？"
+            },
+            {
+              "cell": "G36",
+              "before": "P02_D3_R1_COMMON_008",
+              "after": "P02_D3_R1_COMMON_006"
+            },
+            {
+              "cell": "A37",
+              "before": "P02_D3_R1_COMMON_008",
+              "after": "P02_D3_R1_COMMON_006"
+            },
+            {
+              "cell": "E37",
+              "before": "顺带一提，你刚才的表情也被我记录下来了。",
+              "after": "路要一步一步走，孩子。"
+            },
+            {
+              "cell": "F37",
+              "before": "JD_01",
+              "after": "JD_03"
+            },
+            {
+              "cell": "G37",
+              "before": "P02_D3_R1_COMMON_009",
+              "after": "P02_D3_R1_COMMON_007"
+            },
+            {
+              "cell": "A38",
+              "before": "P02_D3_R1_COMMON_009",
+              "after": "P02_D3_R1_COMMON_007"
             },
             {
               "cell": "E38",
-              "before": "好了，笑一个。",
-              "after": "好了，严肃点，检测时间到。"
+              "before": "好了，严肃点，检测时间到。",
+              "after": "升职可没那么容易，更没那么快。"
+            },
+            {
+              "cell": "F38",
+              "before": "JD_04",
+              "after": "JD_03"
+            },
+            {
+              "cell": "G38",
+              "before": "P02_D3_R1_COMMON_010",
+              "after": "P02_D3_R1_COMMON_008"
+            },
+            {
+              "cell": "A39",
+              "before": "P02_D3_R1_COMMON_010",
+              "after": "P02_D3_R1_COMMON_008"
+            },
+            {
+              "cell": "E39",
+              "before": "哦哦，你又一次通过了啊。",
+              "after": "顺带一提，你刚才的表情也被我记录下来了。"
+            },
+            {
+              "cell": "F39",
+              "before": "JD_05",
+              "after": "JD_01"
+            },
+            {
+              "cell": "G39",
+              "before": "P02_D3_R1_COMMON_011",
+              "after": "P02_D3_R1_COMMON_009"
+            },
+            {
+              "cell": "A40",
+              "before": "P02_D3_R1_COMMON_011",
+              "after": "P02_D3_R1_COMMON_009"
+            },
+            {
+              "cell": "E40",
+              "before": "明天也许就没那么好运了。",
+              "after": "好了，笑一个。"
+            },
+            {
+              "cell": "F40",
+              "before": "JD_05",
+              "after": "JD_04"
+            },
+            {
+              "cell": "G40",
+              "before": "P02_D4_R1_COMMON_002",
+              "after": "P02_D3_R1_COMMON_010"
+            },
+            {
+              "cell": "A41",
+              "before": "P02_D4_R1_COMMON_001",
+              "after": "P02_D3_R1_COMMON_010"
+            },
+            {
+              "cell": "B41",
+              "before": "Day4",
+              "after": "Day3"
+            },
+            {
+              "cell": "E41",
+              "before": "惊——喜。",
+              "after": "哦哦，你又一次通过了啊。"
+            },
+            {
+              "cell": "F41",
+              "before": "JD_06",
+              "after": "JD_05"
+            },
+            {
+              "cell": "G41",
+              "before": "P02_D4_R1_COMMON_002",
+              "after": "P02_D3_R1_COMMON_011"
+            },
+            {
+              "cell": "A42",
+              "before": "P02_D4_R1_COMMON_002",
+              "after": "P02_D3_R1_COMMON_011"
+            },
+            {
+              "cell": "B42",
+              "before": "Day4",
+              "after": "Day3"
+            },
+            {
+              "cell": "E42",
+              "before": "做过什么你自己清楚。",
+              "after": "明天也许就没那么好运了。"
+            },
+            {
+              "cell": "F42",
+              "before": "JD_06",
+              "after": "JD_05"
+            },
+            {
+              "cell": "G42",
+              "before": "P02_D4_R1_COMMON_003",
+              "after": "P02_D4_R1_COMMON_002"
+            },
+            {
+              "cell": "A43",
+              "before": "P02_D4_R1_COMMON_003",
+              "after": "P02_D4_R1_COMMON_001"
+            },
+            {
+              "cell": "E43",
+              "before": "看来你要跟我走一趟了。",
+              "after": "惊——喜。"
+            },
+            {
+              "cell": "G43",
+              "before": "P02_D4_R1_COMMON_004",
+              "after": "P02_D4_R1_COMMON_002"
+            },
+            {
+              "cell": "A44",
+              "before": "P02_D4_R1_COMMON_004",
+              "after": "P02_D4_R1_COMMON_002"
+            },
+            {
+              "cell": "E44",
+              "before": "进去之后，记得好好表现。",
+              "after": "做过什么你自己清楚。"
+            },
+            {
+              "cell": "G44",
+              "before": "P02_D4_R1_COMMON_005",
+              "after": "P02_D4_R1_COMMON_003"
+            },
+            {
+              "cell": "A45",
+              "before": "P02_D4_R1_COMMON_005",
+              "after": "P02_D4_R1_COMMON_003"
+            },
+            {
+              "cell": "E45",
+              "before": "也许就不会那么早迎来净化。",
+              "after": "看来你要跟我走一趟了。"
+            },
+            {
+              "cell": "G45",
+              "before": "P02_D4_R1_COMMON_006",
+              "after": "P02_D4_R1_COMMON_004"
+            },
+            {
+              "cell": "A46",
+              "before": "P02_D4_R1_COMMON_006",
+              "after": "P02_D4_R1_COMMON_004"
+            },
+            {
+              "cell": "E46",
+              "before": "我们之间也能多玩一会，不是吗？",
+              "after": "进去之后，记得好好表现。"
+            },
+            {
+              "cell": "G46",
+              "before": "P02_D4_R1_COMMON_007",
+              "after": "P02_D4_R1_COMMON_005"
+            },
+            {
+              "cell": "A47",
+              "before": "P02_D4_R1_COMMON_007",
+              "after": "P02_D4_R1_COMMON_005"
+            },
+            {
+              "cell": "E47",
+              "before": "走吧。",
+              "after": "也许就不会那么早迎来净化。"
+            },
+            {
+              "cell": "G47",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_006"
+            },
+            {
+              "cell": "A48",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_006"
+            },
+            {
+              "cell": "B48",
+              "before": "",
+              "after": "Day4"
+            },
+            {
+              "cell": "C48",
+              "before": "",
+              "after": "R1"
+            },
+            {
+              "cell": "D48",
+              "before": "",
+              "after": "普通对话"
+            },
+            {
+              "cell": "E48",
+              "before": "",
+              "after": "我们之间也能多玩一会，不是吗？"
+            },
+            {
+              "cell": "F48",
+              "before": "",
+              "after": "JD_06"
+            },
+            {
+              "cell": "G48",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_007"
+            },
+            {
+              "cell": "A49",
+              "before": "",
+              "after": "P02_D4_R1_COMMON_007"
+            },
+            {
+              "cell": "B49",
+              "before": "",
+              "after": "Day4"
+            },
+            {
+              "cell": "C49",
+              "before": "",
+              "after": "R1"
+            },
+            {
+              "cell": "D49",
+              "before": "",
+              "after": "普通对话"
+            },
+            {
+              "cell": "E49",
+              "before": "",
+              "after": "走吧。"
+            },
+            {
+              "cell": "F49",
+              "before": "",
+              "after": "JD_06"
             }
           ]
         },
@@ -14277,25 +15662,25 @@
       "kind": "ending-boundary",
       "source": "supervisor",
       "rows": [
-        41,
-        42,
         43,
         44,
         45,
         46,
-        47
+        47,
+        48,
+        49
       ],
       "reason": "Authored Day4 is ending content, outside patient daily campaign meetings."
     },
     {
       "source": "supervisor",
-      "cell": "L20",
+      "cell": "L22",
       "kind": "inherit-portrait",
       "value": "JD_03"
     },
     {
       "source": "supervisor",
-      "cell": "J40",
+      "cell": "J42",
       "kind": "day-boundary",
       "originalNext": "P02_D4_R1_COMMON_002",
       "policy": "End this day's presentation; Day4 starts at its own root in the TakenAway ending."
@@ -14307,6 +15692,59 @@
       "cell": "A2",
       "formulaCell": "A2",
       "value": "JD_01"
+    },
+    {
+      "source": "supervisor",
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D2_R1_COMMON_006",
+      "row": 25,
+      "field": "open",
+      "before": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+      "after": "之前有个审查员听信了里面那些人的话，最后没能通过仪器检测。",
+      "issueIds": [
+        "p1.8"
+      ]
+    },
+    {
+      "source": "supervisor",
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D1_R1_COMMON_011",
+      "row": 12,
+      "field": "open",
+      "before": "但是释放可不是什么好事呀，绩效考核里可没有对于释放的指标。",
+      "after": "但是释放可不是什么好事呀。每天至少净化一个人，才算完成指标。释放可不算，记住了。",
+      "issueIds": [
+        "p1.9",
+        "p2.17"
+      ]
+    },
+    {
+      "source": "supervisor",
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D2_R1_COMMON_002",
+      "row": 21,
+      "field": "open",
+      "before": "据我所知，你的活干的还不错嘛。",
+      "after": "据我所知，你的活干得还不错嘛。",
+      "issueIds": [
+        "p2.3"
+      ]
+    },
+    {
+      "source": "supervisor",
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D1_R1_COMMON_007",
+      "row": 8,
+      "field": "open",
+      "before": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
+      "after": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
+      "issueIds": [
+        "p2.16"
+      ]
     }
   ]
 }

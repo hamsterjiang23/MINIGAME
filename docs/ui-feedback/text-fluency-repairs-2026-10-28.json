@@ -1,0 +1,444 @@
+{
+  "success": true,
+  "fixedIssueIds": [
+    "p0.1",
+    "p0.2",
+    "p1.1",
+    "p1.2",
+    "p1.3",
+    "p1.4",
+    "p1.5",
+    "p1.6",
+    "p1.8",
+    "p1.9",
+    "p2.1",
+    "p2.10",
+    "p2.11",
+    "p2.13",
+    "p2.16",
+    "p2.17",
+    "p2.2",
+    "p2.3",
+    "p2.4",
+    "p2.5",
+    "p2.6",
+    "p2.7",
+    "p2.8",
+    "p2.9"
+  ],
+  "preservedIssueIds": [
+    "p2.12",
+    "p2.14",
+    "p1.7"
+  ],
+  "alreadyReplacedIssueIds": [
+    "p2.15"
+  ],
+  "textEditCount": 32,
+  "edits": [
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "tutorial",
+      "sourceId": "tutorial__P00_D0_R1_COMMON_004",
+      "row": 5,
+      "field": "open",
+      "before": "这玩意把我绑的严严实实呢。",
+      "after": "这玩意把我绑得严严实实呢。",
+      "issueIds": [
+        "p2.1"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D2_R2_CLOSE_001",
+      "row": 106,
+      "field": "response",
+      "before": "我和那些人不一样，我不是精神错乱的异常体。",
+      "after": "我刚才在门口还念过……等一下，让我想想。",
+      "issueIds": [
+        "p0.2"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D2_R2_CLOSE_003",
+      "row": 108,
+      "field": "response",
+      "before": "你知道吗...",
+      "after": "你问日期，是觉得我已经精神错乱了吗？我只是……一时记不清。",
+      "issueIds": [
+        "p0.2"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D1_R2_CLOSE_002",
+      "row": 11,
+      "field": "response",
+      "before": "有本事问我为什么发火，别上来就替我认罪。",
+      "after": "有本事问我为什么发火，别一上来就认定我有罪。",
+      "issueIds": [
+        "p1.5"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D1_R3_CLOSE_007",
+      "row": 30,
+      "field": "response",
+      "before": "请你自己回去亲自翻，别直接把我的话当结论。",
+      "after": "请你回去亲自翻看原件，别直接把我的话当结论。",
+      "issueIds": [
+        "p2.5"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D1_R6_ACTION_003",
+      "row": 93,
+      "field": "actionResponse",
+      "before": "是你开的吗。",
+      "after": "是你决定放我走的吗？",
+      "issueIds": [
+        "p2.6"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D3_R6_CLOSE_004",
+      "row": 256,
+      "field": "response",
+      "before": "现在...我更想知道，你有没有把我当作一个人听完。不是只等我认罪，或者服从。",
+      "after": "现在...我更想知道，你有没有把我当作一个人，认真听我把话说完，而不是只等我认罪或者服从。",
+      "issueIds": [
+        "p2.7"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D3_R6_CLOSE_003",
+      "row": 255,
+      "field": "response",
+      "before": "...听见了。再给我说完这一句，好吗？",
+      "after": "...听见了。再让我把这一句说完，好吗？",
+      "issueIds": [
+        "p2.8"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "former-ruler",
+      "sourceId": "former-ruler__P03_D2_R3_CLOSE_002",
+      "row": 119,
+      "field": "response",
+      "before": "可一个有工作的人，按完两套规定，最后没饭吃...那规定就该改。",
+      "after": "可一个有工作的人，两套规定都照办了，最后却没饭吃...那规定就该改。",
+      "issueIds": [
+        "p2.13"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D1_R4_CLOSE_002",
+      "row": 33,
+      "field": "response",
+      "before": "我曾经见过太多人了……他们因为敌人而愤怒，因为家乡被而悲伤，也因自己可能丧命而害怕……",
+      "after": "我曾经见过太多人了……他们因为敌人而愤怒，因为家乡遭难而悲伤，也因自己可能丧命而害怕……",
+      "issueIds": [
+        "p0.1"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_003",
+      "row": 143,
+      "field": "option",
+      "before": "你还记得昨天说了什么吗？",
+      "after": "你现在想起了什么？",
+      "issueIds": [
+        "p1.1"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_CLOSE_007",
+      "row": 144,
+      "field": "response",
+      "before": "记得一个选择，和一个没等到我的人。",
+      "after": "我当年决定过先救谁。有个人没能等到我。",
+      "issueIds": [
+        "p1.1"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_COMMON_005",
+      "row": 186,
+      "field": "open",
+      "before": "如果我忘了那个人，我会不会变得更安全？还是只是更安静？",
+      "after": "有个人没等到我的救助。如果我把他忘了，我会变得更安全，还是只是更安静？",
+      "issueIds": [
+        "p1.1"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_COMMON_006",
+      "row": 199,
+      "field": "open",
+      "before": "我当年替别人排序。今天轮到你替我排序。",
+      "after": "我当年决定过先救谁。今天轮到你决定怎样处置我。",
+      "issueIds": [
+        "p1.1"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_014",
+      "row": 191,
+      "field": "option",
+      "before": "至少你不会再被触发。",
+      "after": "至少那些回忆不会再让你失控。",
+      "issueIds": [
+        "p1.2"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_CLOSE_032",
+      "row": 193,
+      "field": "response",
+      "before": "触发需要治疗，不是抹除。",
+      "after": "需要治疗的是我的症状，不是抹去我的记忆。",
+      "issueIds": [
+        "p1.2"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_ACTION_008",
+      "row": 238,
+      "field": "actionResponse",
+      "before": "打开门，让我保留后果。",
+      "after": "打开门，让我自己承担后果。",
+      "issueIds": [
+        "p1.3"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_COMMON_007",
+      "row": 212,
+      "field": "open",
+      "before": "无论你选什么，别替我把最后一句说掉。",
+      "after": "无论你选什么，别替我说完最后一句。",
+      "issueIds": [
+        "p1.4"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D3_R1_ACTION_006",
+      "row": 236,
+      "field": "actionResponse",
+      "before": "你听完了。谢谢你没有替我把最后一句说掉。",
+      "after": "你听完了。谢谢你让我自己把最后一句说完。",
+      "issueIds": [
+        "p1.4"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D1_R3_OPTION_002",
+      "row": 22,
+      "field": "option",
+      "before": "我也不明白其中的原理，但他确实让犯罪率降低了。",
+      "after": "我也不明白其中的原理，但它确实让犯罪率降低了。",
+      "issueIds": [
+        "p2.2"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D1_R4_CLOSE_006",
+      "row": 38,
+      "field": "response",
+      "before": "我闭上眼睛依然能想起那个被炸的只剩半截身子的战友……",
+      "after": "我闭上眼睛依然能想起那个被炸得只剩半截身子的战友……",
+      "issueIds": [
+        "p2.3"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D1_R4_CLOSE_008",
+      "row": 41,
+      "field": "response",
+      "before": "你可以做的更好的，不是吗？！",
+      "after": "你可以做得更好，不是吗？！",
+      "issueIds": [
+        "p2.3"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D1_R5_COMMON_001",
+      "row": 45,
+      "field": "open",
+      "before": "好多的人…都死了…被炸的粉碎！！！我要去救他们！！",
+      "after": "好多的人…都死了…被炸得粉碎！！！我要去救他们！！",
+      "issueIds": [
+        "p2.3"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "battlefield-doctor",
+      "sourceId": "battlefield-doctor__P04_D2_R3_CLOSE_001",
+      "row": 102,
+      "field": "response",
+      "before": "传言的发生是有依据的，对么？",
+      "after": "这些传言总有些依据，对么？",
+      "issueIds": [
+        "p2.4"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "priest",
+      "sourceId": "priest__P01_D1_R5_CLOSE_003",
+      "row": 33,
+      "field": "open",
+      "before": "他们沉默并不空洞。",
+      "after": "他们的沉默并不空洞。",
+      "issueIds": [
+        "p1.6"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "diplomat",
+      "sourceId": "diplomat__P05_D1_R4_CLOSE_004",
+      "row": 37,
+      "field": "response",
+      "before": "没有。我把手续办得快，当成接待工作的周到。",
+      "after": "没有。我当时觉得，手续办得快，是接待人员照顾周到。",
+      "issueIds": [
+        "p2.9"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "diplomat",
+      "sourceId": "diplomat__P05_D1_R6_SPECIAL_002",
+      "row": 66,
+      "field": "response",
+      "before": "谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就比较相信后面的“同意”出于自己。",
+      "after": "谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就更容易相信，后面的“同意”是自己真心作出的决定。",
+      "issueIds": [
+        "p2.10"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D2_R1_COMMON_006",
+      "row": 25,
+      "field": "open",
+      "before": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+      "after": "之前有个审查员听信了里面那些人的话，最后没能通过仪器检测。",
+      "issueIds": [
+        "p1.8"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D1_R1_COMMON_011",
+      "row": 12,
+      "field": "open",
+      "before": "但是释放可不是什么好事呀，绩效考核里可没有对于释放的指标。",
+      "after": "但是释放可不是什么好事呀。每天至少净化一个人，才算完成指标。释放可不算，记住了。",
+      "issueIds": [
+        "p1.9",
+        "p2.17"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D2_R1_COMMON_002",
+      "row": 21,
+      "field": "open",
+      "before": "据我所知，你的活干的还不错嘛。",
+      "after": "据我所知，你的活干得还不错嘛。",
+      "issueIds": [
+        "p2.3"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D1_R1_COMMON_007",
+      "row": 8,
+      "field": "open",
+      "before": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
+      "after": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
+      "issueIds": [
+        "p2.16"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "priest-ending",
+      "sourceId": "priest-ending__CUSTOM001_D1_R1_COMMON_003",
+      "row": 4,
+      "field": "open",
+      "before": "门叩响的声音。",
+      "after": "叩门的声音。",
+      "issueIds": [
+        "p2.11"
+      ]
+    }
+  ],
+  "checks": {
+    "campaignRulesAndGraphUnchanged": true,
+    "allTrustAndDispositionDeltasUnchanged": true,
+    "supervisorGraphAndPortraitsUnchanged": true,
+    "endingStructureAndCountsUnchanged": true,
+    "allSixteenSelfReviewLinesUnchanged": true,
+    "sourceWorkbooksByteIdentical": true,
+    "protectedFilesByteIdentical": true,
+    "activeCampaignMatchesGenerated": true
+  },
+  "activePackage": {
+    "guid": "11a3a98431b46414fa69fc3565c97d64",
+    "path": "UnityProject/Assets/MiniGame/ImportedDialogue/inspection-campaign/228214ade069d83c1c296b9049d1a58d/Package.minigame.json",
+    "contentVersion": "1.2.2-development"
+  },
+  "baselineProtectedHashes": {
+    "UnityProject/Assets/MiniGame/Resources/MiniGame/Readables/EmploymentNotice.asset": "3adef04ae706e4b78055683927902cce4be074242be3324762303aac3c6d2533",
+    "docs/ending-content/sources/self-review-revision18/snapshot.json": "ff782d70cd011511e84301e5bdfcdf123839ea3f0e7aae493c537d1cef14e2b1"
+  }
+}

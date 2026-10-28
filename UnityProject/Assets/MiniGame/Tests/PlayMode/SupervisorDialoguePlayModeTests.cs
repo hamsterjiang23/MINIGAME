@@ -107,7 +107,8 @@ namespace MiniGame.UnityHost.Tests
                         Assert.That(scanDays.Count, Is.EqualTo(expected.Take(seen.Count)
                             .Where(item => item.portraitId == "JD_04").Select(item => item.day).Distinct().Count()),
                             "Only the first JD_04 line of each day may play Scan.");
-                        if (day == 4 && seen.Count == 40 || day == 1 && (line.portraitId == "JD_04" || line.id.EndsWith("_015")))
+                        if (day == 4 && seen.Count == data.conversations.Where(item => item.day < 4).Sum(item => item.lines.Length) + 1
+                            || day == 1 && (line.portraitId == "JD_04" || line.id.EndsWith("_017")))
                             yield return PrototypePlayModeTests.CaptureIfRequested(host, day == 4 ? "supervisor-red-ending"
                                 : line.portraitId == "JD_05" ? "supervisor-green-check" : "supervisor-instrument");
                     }
@@ -136,7 +137,7 @@ namespace MiniGame.UnityHost.Tests
                 }
                 if (day < 4) { bridge.enabled = false; AdvanceNight(); bridge.enabled = true; bridge.PresentCurrent(); }
             }
-            Assert.That(seen.Count, Is.EqualTo(46));
+            Assert.That(seen.Count, Is.EqualTo(48));
             Assert.That(scanDays, Is.EqualTo(new[] { 1, 2, 3 }));
             Assert.That(portraits, Is.EquivalentTo(Enumerable.Range(1, 6).Select(index => "JD_" + index.ToString("00"))));
             Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.TakenAway));
@@ -273,7 +274,7 @@ namespace MiniGame.UnityHost.Tests
         public IEnumerator ScanPortraitPlaysRealSamplesThroughTheActiveAudioOwner()
         {
             Assert.That(host.Player.ViewCamera.GetComponent<DoorViewCamera>().TryEnter(), Is.True);
-            yield return Reach("supervisor__P02_D1_R1_COMMON_012");
+            yield return Reach("supervisor__P02_D1_R1_COMMON_015");
             Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
             var source = host.Audio.Service.GetSource(MiniGameAudioChannel.Scanner);
             Assert.That(source.outputAudioMixerGroup, Is.EqualTo(host.Audio.Profile.SfxGroup));
@@ -293,7 +294,7 @@ namespace MiniGame.UnityHost.Tests
             runtime.SetPaused(false);
             yield return null;
             Assert.That(source.isPlaying, Is.True);
-            yield return Reach("supervisor__P02_D1_R1_COMMON_013");
+            yield return Reach("supervisor__P02_D1_R1_COMMON_016");
             Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
             Assert.That(source.isPlaying, Is.False, "Even the next line with the same portrait must cut the scan.");
             runtime.SetPaused(true);
@@ -307,7 +308,7 @@ namespace MiniGame.UnityHost.Tests
             int scans = 0;
             host.Audio.Service.SoundPlayed += (channel, sound) => { if (sound == MiniGameSound.Scan) scans++; };
             Assert.That(host.Player.ViewCamera.GetComponent<DoorViewCamera>().TryEnter(), Is.True);
-            yield return Reach("supervisor__P02_D1_R1_COMMON_014");
+            yield return Reach("supervisor__P02_D1_R1_COMMON_016");
             Assert.That(supervisor.CurrentPortraitId, Is.EqualTo("JD_04"));
             Assert.That(scans, Is.EqualTo(1));
             var session = MiniGameSessionHost.Install(runtime, rules, content, host.DreamProfile);
@@ -319,7 +320,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(session.SupervisorScanDays, Is.EqualTo(new[] { 1 }));
                 session.LoadFrom(path);
                 runtime = session.Runtime;
-                yield return Reach("supervisor__P02_D1_R1_COMMON_014", false);
+                yield return Reach("supervisor__P02_D1_R1_COMMON_016", false);
                 Assert.That(scans, Is.EqualTo(1), "Restoring JD_04 must preserve today's Scan deduplication.");
             }
             finally { if (File.Exists(path)) File.Delete(path); }

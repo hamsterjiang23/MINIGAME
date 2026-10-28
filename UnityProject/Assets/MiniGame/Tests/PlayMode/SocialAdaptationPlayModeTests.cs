@@ -15,6 +15,42 @@ namespace MiniGame.UnityHost.Tests
     [Category("TerminalV0824")]
     public sealed class SocialAdaptationPlayModeTests
     {
+        [UnityTest]
+        public IEnumerator TutorialOpeningImmediatelyUsesTheMaximumAgitationReading()
+        {
+            var asset = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+            var package = MiniGame.Presentation.Authoring.DialoguePackageCompiler.Compile(asset.PackageSource.text);
+            var runtime = new GameRuntime(package.Rules, package.Content, true);
+            var owner = new GameObject("Day0 maximum agitation");
+            var screen = owner.AddComponent<MiniGameScreen>();
+            try
+            {
+                screen.Bind(runtime); screen.UseYarnPresentation();
+                Assert.That(runtime.BeginDayZeroOpening().Accepted, Is.True);
+                Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
+                var intro = runtime.GetView();
+                Assert.That(intro.Cue.Kind, Is.EqualTo(PresentationKind.Introduction));
+                foreach (var line in package.Content.GetSegment(intro.Game.CurrentNodeId).Lines.Take(1))
+                    screen.SetDialogueLine(line.Speaker, line.Text, line.SourceNodeId, line.PortraitId);
+                yield return null; yield return null;
+                var wave = screen.GetComponentInChildren<TerminalAdaptationWaveform>(true);
+                Assert.That(wave.HasReading, Is.True);
+                Assert.That(wave.DisplayCoordinate, Is.Zero);
+                Assert.That(wave.SignalParameters.Agitation, Is.EqualTo(1));
+                Assert.That(wave.SignalParameters.Amplitude, Is.EqualTo(2.45).Within(.000001));
+                Capture(screen.TerminalDisplay, "day0-maximum-agitation");
+                runtime = GameRuntime.Restore(runtime.Save(), package.Rules, package.Content);
+                screen.Bind(runtime);
+                yield return null;
+                Assert.That(wave.HasReading, Is.True);
+                Assert.That(wave.DisplayCoordinate, Is.Zero);
+                Assert.That(runtime.CompleteCue(runtime.GetView().Cue.Token).Accepted, Is.True);
+                Assert.That(runtime.GetView().Game.AvailableDispositions, Is.EqualTo(new[] { Disposition.Purify }));
+            }
+            finally { Object.Destroy(owner); }
+            yield return null;
+        }
+
         [UnityTest, Timeout(60000)]
         public IEnumerator RealRepliesDriveTheInstrumentWhileAnswersPickingAndPauseRemainUsable()
         {
@@ -143,6 +179,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(wave.SignalParameters.Amplitude, Is.LessThanOrEqualTo(1));
                 Capture(screen.TerminalDisplay, "priest-before-release");
                 double before = runtime.GetView().Game.SocialAdaptation.RelativeReleaseMargin;
+                int dialogueTrust = PersistentTrust(runtime, rules, "priest");
                 Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, Disposition.Release).Accepted, Is.True);
                 foreach (var line in package.Content.GetSegment(runtime.GetView().Game.CurrentNodeId).Lines)
                     runtime.RecordDialogueLine(line.Speaker, line.Text, line.SourceNodeId, line.PortraitId, line.IsNarration);
@@ -150,12 +187,23 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.Reaction));
                 Assert.That(runtime.GetView().Game.SocialAdaptation.RelativeReleaseMargin,
                     Is.EqualTo(before - 200d / meeting.ReleaseTrustThreshold).Within(.000001));
+                Assert.That(PersistentTrust(runtime, rules, "priest"),
+                    Is.EqualTo(dialogueTrust), "Release emotion must not alter persistent dialogue trust.");
                 Assert.That(wave.HasReading, Is.True);
                 Assert.That(wave.SignalParameters.Amplitude, Is.GreaterThan(1));
                 Capture(screen.TerminalDisplay, "priest-after-release");
             }
             finally { Object.Destroy(owner); }
             yield return null;
+        }
+
+        [Serializable]
+        private sealed class CoreCheckpoint { public string CoreJson = ""; }
+
+        private static int PersistentTrust(GameRuntime runtime, GameRules rules, string patientId)
+        {
+            var core = SnapshotCodec.Deserialize(JsonUtility.FromJson<CoreCheckpoint>(runtime.Save()).CoreJson, rules);
+            return core.CreateSnapshot().State.Patients.Single(p => p.Id == patientId).Trust;
         }
 
         private static IEnumerator CaptureAnimation(TerminalDisplay display, string state)

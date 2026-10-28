@@ -1,0 +1,242 @@
+{
+  "checkedAt": "2026-10-28T11:23:37.197741+08:00",
+  "scope": "Supervisor workbook import and fluency-audit refresh; no suggested prose repairs applied.",
+  "source": {
+    "uploadedFile": "C:\\Users\\admin\\Downloads\\【对话】监督员 (1).xlsx",
+    "boundFile": "Art/chat_excel/【对话】监督员.xlsx",
+    "sha256": "71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e",
+    "byteIdentical": true
+  },
+  "supervisor": {
+    "lineCountsByDay": [
+      18,
+      12,
+      11,
+      7
+    ],
+    "totalLines": 48,
+    "revision": "supervisor-v1:71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e"
+  },
+  "contentCommands": {
+    "build_campaign.py --smoke": "passed",
+    "build_campaign.py": "passed",
+    "build_supervisor.py": "passed",
+    "build_endings.py": "passed after restoring pinned LF bytes",
+    "build_campaign.py --check": "passed",
+    "build_supervisor.py --check": "passed",
+    "build_endings.py --check": "passed",
+    "python -m unittest discover -s Tools/DialogueCampaign -p test_*.py": {
+      "passed": 33,
+      "failed": 0
+    }
+  },
+  "selfReviewCanonicalBytes": {
+    "sha256": "ff782d70cd011511e84301e5bdfcdf123839ea3f0e7aae493c537d1cef14e2b1",
+    "change": "CRLF to LF only; matched existing pinned SHA-256 exactly; no pin weakened"
+  },
+  "editorImport": {
+    "menu": "MiniGame/Campaign/Import endings and updated dialogue",
+    "commandResponse": {
+      "success": true,
+      "command": "menu",
+      "result": {
+        "success": true,
+        "path": "MiniGame/Campaign/Import endings and updated dialogue",
+        "items": null,
+        "message": "Executed menu item 'MiniGame/Campaign/Import endings and updated dialogue'"
+      },
+      "executionTimeMs": null,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "2026-10-28T03:18:59.3011806Z"
+    },
+    "verification": {
+      "unityVersion": "2022.3.23f1",
+      "playing": false,
+      "total": 48,
+      "revision": "supervisor-v1:71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e",
+      "sourcePath": "Assets/MiniGame/ImportedDialogue/inspection-campaign/8c631cfad43eb406f04cd5275564d8ea/Package.minigame.json",
+      "sourceHash": "ef11bfdb41409b44ef0d60e64841a04302286ddac2a46ce69efa1dd83bbc0025",
+      "endingsRevision": "9483ec9ffd410060bde7f07e469e3f10809f1506a976ee4e9f1665886fc8f236"
+    }
+  },
+  "editorVersion": {
+    "running": "2022.3.23f1",
+    "projectVersionFile": "m_EditorVersion: 2022.3.23f1c1",
+    "editorRestartedOrProjectVersionChangedByThisTask": false
+  },
+  "activeCampaignComparisonAtFinalCheck": {
+    "checkedSource": "Assets/MiniGame/ImportedDialogue/inspection-campaign/8c631cfad43eb406f04cd5275564d8ea/Package.minigame.json",
+    "jsonEqualToGenerated": true,
+    "yarnSourceEqualToGenerated": true,
+    "generatedContentVersion": "1.2.2-development"
+  },
+  "editMode": {
+    "status": "completed",
+    "duration": 0.64,
+    "summary": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "results": [
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(1280,720)",
+        "Status": "Passed",
+        "Duration": 0.0977985,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(1920,1080)",
+        "Status": "Passed",
+        "Duration": 0.0239983,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(2560,1440)",
+        "Status": "Passed",
+        "Duration": 0.0265217,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(1440,1080)",
+        "Status": "Passed",
+        "Duration": 0.0228524,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.ExtraLinesSpendVerticalPaddingBeforeTheyGrowTheCard",
+        "Status": "Passed",
+        "Duration": 0.0023184,
+        "Message": null,
+        "StackTrace": null
+      }
+    ]
+  },
+  "playMode": {
+    "status": "completed",
+    "duration": 22.31,
+    "summary": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "results": [
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.AllSixPortraitFeetAndPixelScaleRemainRegisteredAcrossCheckpointRebinds",
+        "Status": "Passed",
+        "Duration": 4.7081983,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.DirectDoorMorningCheckpointStartsAndAdvancesDialogueWithoutDoorView",
+        "Status": "Passed",
+        "Duration": 0.5817573,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.DoorwayDialogueClicksAndPortraitChangesKeepActorAndCameraPoseStable",
+        "Status": "Passed",
+        "Duration": 3.6805263,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.EveryAuthoredLineAndExpressionPlaysOnceAcrossThreeMorningsAndTakenAway",
+        "Status": "Passed",
+        "Duration": 5.5177852,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.LoadingTheScanPortraitDoesNotReplayTheSameDaysScan",
+        "Status": "Passed",
+        "Duration": 2.4204182,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.PausedCheckpointResumesTheSameAuthoredLineAndPortrait",
+        "Status": "Passed",
+        "Duration": 2.018474,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.ScanPortraitPlaysRealSamplesThroughTheActiveAudioOwner",
+        "Status": "Passed",
+        "Duration": 2.42112,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.TakenAwayCheckpointKeepsCameraPoseAndZoom",
+        "Status": "Passed",
+        "Duration": 0.7901407,
+        "Message": null,
+        "StackTrace": null
+      }
+    ]
+  },
+  "issueRegistry": {
+    "totalTracked": 28,
+    "openByPriority": {
+      "p0": 2,
+      "p1": 9,
+      "p2": 16
+    },
+    "replaced": [
+      "p2.15"
+    ],
+    "added": [
+      "p1.9",
+      "p2.16",
+      "p2.17"
+    ],
+    "ids": [
+      "p0.1",
+      "p0.2",
+      "p1.1",
+      "p1.2",
+      "p1.3",
+      "p1.4",
+      "p1.5",
+      "p1.6",
+      "p1.7",
+      "p1.8",
+      "p1.9",
+      "p2.1",
+      "p2.2",
+      "p2.3",
+      "p2.4",
+      "p2.5",
+      "p2.6",
+      "p2.7",
+      "p2.8",
+      "p2.9",
+      "p2.10",
+      "p2.11",
+      "p2.12",
+      "p2.13",
+      "p2.14",
+      "p2.15",
+      "p2.16",
+      "p2.17"
+    ]
+  },
+  "limitations": [
+    "No full manual playthrough, Player build or human visual acceptance.",
+    "Other pre-existing and concurrent workspace changes were preserved; passing selected tests does not validate those unrelated changes."
+  ]
+}

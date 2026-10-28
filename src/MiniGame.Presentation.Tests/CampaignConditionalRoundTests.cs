@@ -93,6 +93,18 @@ namespace MiniGame.Presentation.Tests
             AssertFailure(package, "special-metadata");
         }
 
+        [TestCase(int.MaxValue, 1)]
+        [TestCase(int.MinValue, -1)]
+        public void DispositionEmotionCannotOverflowPersistentDialogueBounds(int trust, int emotion)
+        {
+            var package = Fixture(trust, 0, 0);
+            string source = package.YarnSource.Replace("#id:RELEASE_OPTION #trust:0",
+                "#id:RELEASE_OPTION #trust:" + emotion.ToString(CultureInfo.InvariantCulture));
+            package.YarnSource = source;
+            package.Campaign!.Days.Single().Meetings.Single().YarnSource = source;
+            Assert.DoesNotThrow(() => Compile(package));
+        }
+
         [TestCase("MISSING", "special-entry")]
         [TestCase("MEASURE", "special-entry")]
         [TestCase("FIRST", "special-position")]

@@ -170,6 +170,10 @@ namespace MiniGame.Core
                 })).ToList();
             var serialized = extensions.Count == 0 ? SnapshotCodec.Canonical(canonical)
                 : SnapshotCodec.Canonical(new { Rules = canonical, MeetingExtensions = extensions });
+            // Old saves replayed disposition deltas into persistent trust. Reject
+            // that policy rather than silently resuming it with different gates.
+            if (Days.SelectMany(d => d.Meetings).Any(m => m.DispositionTrustDeltas.Count != 0))
+                serialized = SnapshotCodec.Canonical(new { Rules = serialized, DispositionTrustPolicyVersion = 2 });
             if (DreamFlowEnabled)
                 serialized = SnapshotCodec.Canonical(new { Rules = serialized, DreamFlowEnabled, InitialRebellion, MaximumRebellion,
                     DreamSeaThreshold, EndingPolicyVersion, ActivePatientTrustThreshold, SelfReviewLineCount,

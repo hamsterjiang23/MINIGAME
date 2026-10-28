@@ -111,7 +111,8 @@ namespace MiniGame.Presentation.Tests
             var state = Core(runtime)["State"]!;
             Assert.That(state["Encounters"]!.Count(), Is.EqualTo(selected.Count));
             Assert.That(state["Encounters"]!.All(encounter => encounter["Stage"]!.Value<string>() == "Completed"), Is.True);
-            Assert.That(state["Patients"]!.Single(patient => patient["Id"]!.Value<string>() == "tutorial")["Trust"]!.Value<int>(), Is.EqualTo(0));
+            Assert.That(state["Patients"]!.Single(patient => patient["Id"]!.Value<string>() == "tutorial")["Trust"]!.Value<int>(),
+                Is.EqualTo(package.Rules.Patients.Single(patient => patient.Id == "tutorial").InitialTrust));
             Assert.That(GameRuntime.Restore(runtime.Save(), package.Rules, package.Content).Save(), Is.EqualTo(runtime.Save()));
         }
 

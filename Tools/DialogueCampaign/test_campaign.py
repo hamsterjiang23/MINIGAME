@@ -62,6 +62,14 @@ class CampaignConversionTests(unittest.TestCase):
         for day, roster in zip(days, expected, strict=True):
             self.assertEqual([meeting["patientId"] for meeting in cast(list[Record], day["meetings"])], roster)
 
+    def test_tutorial_initial_trust_override_keeps_formal_patients_at_default(self) -> None:
+        smoke, _ = build(smoke=True)
+        for package in (self.package, smoke):
+            patients = cast(list[Record], cast(Record, package["campaign"])["patients"])
+            self.assertEqual(next(p["initialTrust"] for p in patients if p["id"] == "tutorial"), -2)
+            self.assertEqual(cast(Record, package["profile"])["initialTrust"], -2)
+            self.assertTrue(all(p["initialTrust"] == 0 for p in patients if p["id"] != "tutorial"))
+
     def test_late_arrivals_start_at_their_first_workbook_day_without_rewriting_source_ids(self) -> None:
         days = cast(list[Record], cast(Record, self.package["campaign"])["days"])
         expected = [(2, "priest", "P01_D1", 1), (3, "priest", "P01_D2", 2),
@@ -116,6 +124,11 @@ class CampaignConversionTests(unittest.TestCase):
                 if pid == "battlefield-doctor" and original.get("I") == "P04_D1_R6_COMMON_002":
                     self.assertEqual(expected_text, "我不记得了")
                     expected_text += "。"  # User-approved punctuation; original workbook stays intact.
+                edits = [edit for edit in self.audit["approvedTextEdits"]
+                         if edit["sourceId"] == mapping["sourceId"]]
+                for edit in edits:
+                    self.assertEqual(edit["before"], expected_text)
+                    expected_text = edit["after"]
                 self.assertEqual(mapping["text"], expected_text)
                 self.assertEqual(mapping["authoredDelta"], original.get(str(mapping["deltaColumn"]), ""))
             self.assertTrue(all(entry["reason"] for entry in excluded))
@@ -126,7 +139,8 @@ class CampaignConversionTests(unittest.TestCase):
         doctor_option = by_id["battlefield-doctor__P04_D1_R6_OPTION_002"]
         doctor_response = by_id["battlefield-doctor__P04_D1_R6_CLOSE_004"]
         self.assertEqual(doctor_option["authoredDelta"], "-5")
-        self.assertEqual(doctor_option["trustDelta"], 0)
+        self.assertEqual(doctor_option["unadjustedTrustDelta"], 0)
+        self.assertEqual(doctor_option["trustDelta"], -1)
         self.assertEqual(doctor_response["authoredDelta"], "5")
         self.assertEqual(doctor_response["trustAppliedTo"], doctor_option["sourceId"])
         self.assertEqual(by_id["battlefield-doctor__P04_D2_R4_OPTION_001"]["authoredDelta"], "-107")
@@ -199,7 +213,7 @@ class CampaignConversionTests(unittest.TestCase):
         self.assertEqual(len(active), 235)
         self.assertEqual(max(int(row["row"]) for row in active), 238)
         self.assertEqual(next(row["actionResponse"] for row in active if row["row"] == "238"),
-                         "打开门，让我保留后果。")
+                         "打开门，让我自己承担后果。")
 
     def test_repair_manifest_rejects_new_source_hash_instead_of_guessing(self) -> None:
         with self.assertRaisesRegex(ValueError, "does not match"):
@@ -235,7 +249,7 @@ class CampaignConversionTests(unittest.TestCase):
         tutorial = cast(list[Row], books["tutorial"]["activeRows"])
         self.assertEqual([int(row["row"]) for row in tutorial], list(range(2, 14)))
         self.assertEqual([row["open"] for row in tutorial if row["open"]],
-                         ["嘿！", "你好啊。", "别害怕，我动不了。", "这玩意把我绑的严严实实呢。", "……",
+                         ["嘿！", "你好啊。", "别害怕，我动不了。", "这玩意把我绑得严严实实呢。", "……",
                           "不过我发现了一件有趣的事。", "有些人啊，根本不需要绳子。", "……", "你说是不是？"])
         self.assertEqual(tutorial[-1]["next"], "END_DAY0")
         original = {int(row["row"]): row for row in cast(list[Row], books["priest"]["rows"])}

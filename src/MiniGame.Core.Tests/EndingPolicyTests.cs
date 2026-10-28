@@ -57,7 +57,7 @@ namespace MiniGame.Core.Tests
         }
 
         [Test]
-        public void HistoricalTrustIncludesSignedResponsesAndDispositionsAcrossDaysAndRestore()
+        public void HistoricalTrustIncludesOnlySignedResponsesAcrossDaysExitsAndRestore()
         {
             int ResponseDelta(int day, string id) => id switch
             {
@@ -84,12 +84,12 @@ namespace MiniGame.Core.Tests
             session = SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), rules);
             DriveTo(session, view => view.Day == 3 && view.Phase == GamePhase.Dream, Policy);
             var patients = session.CreateSnapshot().State.Patients.ToDictionary(patient => patient.Id);
-            Assert.That(patients[PrototypeRules.FormerRuler].Trust, Is.EqualTo(6));
+            Assert.That(patients[PrototypeRules.FormerRuler].Trust, Is.EqualTo(8));
             Assert.That(patients[PrototypeRules.FormerRuler].Presence, Is.EqualTo(PatientPresence.Released));
-            Assert.That(patients[PrototypeRules.Doctor].Trust, Is.EqualTo(4));
+            Assert.That(patients[PrototypeRules.Doctor].Trust, Is.EqualTo(8));
             Assert.That(patients[PrototypeRules.Doctor].Presence, Is.EqualTo(PatientPresence.Purified));
             Assert.That(patients[PrototypeRules.Child].Trust, Is.EqualTo(-1));
-            Assert.That(patients[PrototypeRules.Diplomat].Trust, Is.EqualTo(1));
+            Assert.That(patients[PrototypeRules.Diplomat].Trust, Is.EqualTo(2));
             session = SnapshotCodec.Deserialize(SnapshotCodec.Serialize(session), rules);
             Scenario.Accept(session, new CompleteDream());
             Assert.That(session.GetPlayerView().Phase, Is.EqualTo(GamePhase.SelfReview));

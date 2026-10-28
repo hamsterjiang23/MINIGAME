@@ -60,14 +60,14 @@ namespace MiniGame.Core.Tests
         }
 
         [Test]
-        public void TutorialPurificationChangesTrustAndQuotaExactlyOnceThenTransitionsToDayOne()
+        public void TutorialPurificationOnlyChangesQuotaAndPresenceThenTransitionsToDayOne()
         {
             var session = new GameSession(TutorialRules());
             Scenario.Accept(session, new Interact(InteractionTarget.Computer));
             Scenario.ReachDisposition(session);
             var id = session.GetPlayerView().CurrentEncounterId!;
             Scenario.Accept(session, new SubmitDisposition(id, Disposition.Purify));
-            Assert.That(session.CreateSnapshot().State.Patients.Single(p => p.Id == TutorialPatient).Trust, Is.EqualTo(-1));
+            Assert.That(session.CreateSnapshot().State.Patients.Single(p => p.Id == TutorialPatient).Trust, Is.Zero);
             Assert.That(session.CreateSnapshot().State.Patients.Single(p => p.Id == TutorialPatient).Presence, Is.EqualTo(PatientPresence.Purified));
             Assert.That(session.CreateSnapshot().State.Days.Single().Purifications, Is.EqualTo(1));
             Scenario.RejectWithoutMutation(session, new SubmitDisposition(id, Disposition.Purify), RejectionReason.AlreadyDisposed);
@@ -102,19 +102,21 @@ namespace MiniGame.Core.Tests
             Scenario.DriveUntil(session, v => v.Phase == GamePhase.Ending, CampaignPolicy);
             Scenario.DriveUntil(restored, v => v.Phase == GamePhase.Ending, CampaignPolicy);
             Assert.That(SnapshotCodec.Serialize(restored), Is.EqualTo(SnapshotCodec.Serialize(session)));
-            Assert.That(restored.CreateSnapshot().State.Patients.Single(p => p.Id == TutorialPatient).Trust, Is.EqualTo(-1));
+            Assert.That(restored.CreateSnapshot().State.Patients.Single(p => p.Id == TutorialPatient).Trust, Is.Zero);
             Assert.That(restored.CreateSnapshot().State.Days.Single(d => d.Day == 0).Purifications, Is.EqualTo(1));
         }
 
         [TestCase(int.MinValue, -1)]
         [TestCase(int.MaxValue, 1)]
-        public void DispositionTrustOverflowRejectsBeforeAnySideEffect(int initialTrust, int delta)
+        public void ExtremeDispositionEmotionUsesWideReadingWithoutMutatingTrust(int initialTrust, int delta)
         {
             var session = new GameSession(TutorialRules(initialTrust: initialTrust, delta: delta));
             Scenario.Accept(session, new Interact(InteractionTarget.Computer));
             Scenario.ReachDisposition(session);
-            Scenario.RejectWithoutMutation(session, new SubmitDisposition(session.GetPlayerView().CurrentEncounterId!, Disposition.Purify),
-                RejectionReason.NumericOverflow);
+            Scenario.Accept(session, new SubmitDisposition(session.GetPlayerView().CurrentEncounterId!, Disposition.Purify));
+            Assert.That(session.CreateSnapshot().State.Patients.Single(p => p.Id == TutorialPatient).Trust, Is.EqualTo(initialTrust));
+            Assert.That(session.GetPlayerView().SocialAdaptation!.RelativeReleaseMargin,
+                Is.EqualTo(((double)initialTrust + delta - 3) / 3));
         }
 
         [Test]

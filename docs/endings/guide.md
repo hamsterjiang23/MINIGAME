@@ -13,7 +13,7 @@
 | KPI失败 | 任意正式日未完成配额，该晚梦境保留，下一次醒来跳到Day4。更早触发会终止流程，不能再进入Day3隐藏检查。 | 起床 → 开门 → 监督员7句结局对白 → EndNote响起并直接回菜单。`[verified: ../../src/MiniGame.Core/Runtime/GameSession.cs ResolveEnding/AdvanceDay；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs L78–82/L145–149]` |
 | 普通 | 完成三天且未命中前述分支。 | Day4起床 → 开门 → 监督员7句结局对白 → EndNote响起并直接回菜单。`[verified: ../../src/MiniGame.Presentation/GameRuntime.cs CompleteEndingLine；../../UnityProject/Assets/MiniGame/Runtime/MiniGameSessionHost.cs L78–82/L145–149]` |
 
-历史信任使用四人各自持续保存的有符号 `Trust`：对白与处置的正负变化都计入，跨日、离院不清零；不是只累加正值，也不要求仍有留院病人。`[verified: ../../src/MiniGame.Core/Runtime/GameSession.cs L193–200/L283–285/L378–407]`
+历史信任使用四人各自持续保存的有符号 `Trust`：仅累计对白的正负变化，跨日、离院不清零；处置增减只用于当前回应期间的社会适应度情绪表现，不影响隐藏条件、释放资格、特殊对白或次日。也不要求仍有留院病人。2026-10-28规则与选项平衡、随机达成率见[本轮修订](../ui-feedback/trust-rebalance-2026-10-28.md)。`[verified: ../../src/MiniGame.Core/Runtime/GameSession.cs HasHiddenEndingTrust/SocialAdaptationTrust/Dispose/CanRelease]`
 
 对话表的 Day 按角色加入后的相对日期读取：`sourceDay = campaignDay - firstDay + 1`。乔纳在游戏Day2读取表Day1、游戏Day3读取表Day2；阿德里安在游戏Day3读取表Day1。原始节点ID保留，超出三天流程的后续对白只留在来源审计中；释放后“次日”等事件仍按游戏日期结算。`[verified: ../../Tools/DialogueCampaign/build_campaign.py L254–269；../../Tools/DialogueCampaign/conversion-config.json L40–55；../../src/MiniGame.Core/Runtime/GameSession.cs L391–395]`
 

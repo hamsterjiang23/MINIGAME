@@ -282,9 +282,8 @@ namespace MiniGame.Presentation.Authoring
                             maximum = specialMaximum;
                         }
                     }
-                    minimum += meeting.DispositionTrustDeltas.Values.Min(); maximum += meeting.DispositionTrustDeltas.Values.Max();
-                    if (minimum < int.MinValue || maximum > int.MaxValue)
-                        RestrictedYarnParser.Fail("trust-overflow", "A campaign disposition would overflow Int32.");
+                    // Disposition deltas only affect the current instrument reading
+                    // (computed with Int64); they never alter later dialogue bounds.
                 }
             }
         }

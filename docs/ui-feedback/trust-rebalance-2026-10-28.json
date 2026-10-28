@@ -1,0 +1,1195 @@
+{
+  "checkedAt": "2026-10-28T12:11:13.771003+08:00",
+  "scope": "Current formal MainRoomCombined campaign; reaction-only disposition emotion and 91 scheduled dialogue option changes",
+  "activePackage": {
+    "guid": "69add7fe3cbf0444599da691a3c034af",
+    "path": "UnityProject\\Assets\\MiniGame\\ImportedDialogue\\inspection-campaign\\93618dc2b1196f33c6cba3588dc007e9\\Package.minigame.json",
+    "sourceSha256": "e11032002258674ce174e420e99ff00e6114f226392585f5c8e20063ad32796d",
+    "compiledSourceHash": "fea95d88170b2c5212d1bad4597088d5740ba8727f941e48c8a7b022a4d4208b",
+    "contentVersion": "1.2.2-development"
+  },
+  "adjustments": {
+    "changedScheduledOptions": 91,
+    "byPatient": {
+      "former-ruler": 29,
+      "battlefield-doctor": 24,
+      "child": 30,
+      "diplomat": 8
+    },
+    "totalManifestEntries": 136,
+    "changes": [
+      {
+        "sourceId": "former-ruler__P03_D1_R2_OPTION_001",
+        "expectedText": "全程留档。你的解释也会记录。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R3_OPTION_001",
+        "expectedText": "另外六个人也同意了这份决议？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R3_OPTION_003",
+        "expectedText": "你怎么确定原件有附页？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R3_OPTION_004",
+        "expectedText": "附页里需要复核的，具体是什么？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R4_OPTION_001",
+        "expectedText": "你去过现场，还是只看过报告？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R6_OPTION_001",
+        "expectedText": "我会记录你的说法，并核对附页。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R6_OPTION_003",
+        "expectedText": "他们会前已经商量好了，会上只让你表决？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R6_OPTION_004",
+        "expectedText": "他们不邀请你，是因为你是女人？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 2,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D1_R6_OPTION_006",
+        "expectedText": "我会记录他们的做法，也记录你的表决。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R2_OPTION_001",
+        "expectedText": "你还记得今天的日期吗？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R2_OPTION_002",
+        "expectedText": "...不用急。我等你想清楚。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": -1,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R3_OPTION_001",
+        "expectedText": "你当时怎么处理的？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R3_OPTION_004",
+        "expectedText": "为什么她有工号，还必须通过丈夫领口粮？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R4_OPTION_001",
+        "expectedText": "现在你看到这套分工的问题了？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R6_OPTION_001",
+        "expectedText": "先喝口水吧。我等着。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R6_OPTION_005",
+        "expectedText": "其他任职的女人，也会被这样对待？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 2,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D2_R6_OPTION_007",
+        "expectedText": "...你现在想松开领口，就松开吧。不用向我申请。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R2_OPTION_001",
+        "expectedText": "你想先说哪件事？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R2_OPTION_002",
+        "expectedText": "...我不能保证能延长谈话。",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R3_OPTION_001",
+        "expectedText": "我会核对，把姓名改正确。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R4_OPTION_001",
+        "expectedText": "那你当时怎么回应？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R4_OPTION_002",
+        "expectedText": "在场就没人替你说句话吗？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R4_OPTION_004",
+        "expectedText": "他们在评价你的表情，而不是你的工作？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R5_OPTION_001",
+        "expectedText": "你还记得那位秘书叫什么吗？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R5_OPTION_002",
+        "expectedText": "...你想当面向她道歉？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R6_OPTION_001",
+        "expectedText": "...我在听，你说。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R6_OPTION_002",
+        "expectedText": "你还有什么希望留在档案里？",
+        "before": 0,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R6_OPTION_004",
+        "expectedText": "...如果能出去，你想先回家？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "former-ruler__P03_D3_R6_OPTION_006",
+        "expectedText": "...你现在可以歇一会儿，不必每句话都争赢。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D1_R2_OPTION_001",
+        "expectedText": "这不在我的工作范围内",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "推卸解释责任、用激动反证其危险，即使他最终沉默，也会损伤信任；不把服从误判为安抚。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D1_R6_OPTION_002",
+        "expectedText": "看到了吗，你刚才情绪很激动。",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "推卸解释责任、用激动反证其危险，即使他最终沉默，也会损伤信任；不把服从误判为安抚。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D1_R2_OPTION_003",
+        "expectedText": "你的问题都会被监控记录下来。",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "承诺记录疑问、邀请讲述经历给予+1；明确当下安全环境给予+2，征询帮助保留自主权给予+2。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D1_R4_OPTION_001",
+        "expectedText": "你和很多人打过交道？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "承诺记录疑问、邀请讲述经历给予+1；明确当下安全环境给予+2，征询帮助保留自主权给予+2。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D1_R5_OPTION_003",
+        "expectedText": "需要我帮你确认现在的环境吗？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "承诺记录疑问、邀请讲述经历给予+1；明确当下安全环境给予+2，征询帮助保留自主权给予+2。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D2_R2_OPTION_003",
+        "expectedText": "说来听听看，你都听见什么了？",
+        "before": 0,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "认真听取隔壁异响、承认战争遭遇带来的损失，分别给予+2与+2；保留同轮羞辱的既定-10。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D2_R4_OPTION_002",
+        "expectedText": "为你们感到遗憾。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "认真听取隔壁异响、承认战争遭遇带来的损失，分别给予+2与+2；保留同轮羞辱的既定-10。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_001",
+        "expectedText": "这是第三天。你在治疗中心。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_003",
+        "expectedText": "你现在想起了什么？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_004",
+        "expectedText": "我可以为你保存记录。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_006",
+        "expectedText": "你害怕失去对他们的在乎。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_007",
+        "expectedText": "想停止痛苦并不可耻。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_009",
+        "expectedText": "你希望保留什么？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_010",
+        "expectedText": "缓解和删除应该有界线。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_012",
+        "expectedText": "我理解你的拒绝。",
+        "before": 0,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_013",
+        "expectedText": "安静不代表安全。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_015",
+        "expectedText": "我无法替你回答。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_016",
+        "expectedText": "我会看你的行为和经历。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_018",
+        "expectedText": "你希望被释放吗？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_019",
+        "expectedText": "你自己说。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_005",
+        "expectedText": "忘记也许会让你轻松。",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_011",
+        "expectedText": "制度认为风险优先。",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_017",
+        "expectedText": "我必须遵守流程。",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+      },
+      {
+        "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_021",
+        "expectedText": "我已经决定了。",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+      },
+      {
+        "sourceId": "child__P02_D1_R2_OPTION_001",
+        "expectedText": "你叫什么名字？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R3_OPTION_001",
+        "expectedText": "先把手放下来，慢慢说。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R3_OPTION_002",
+        "expectedText": "检测之前，没有人告诉你怎么做？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R4_OPTION_001",
+        "expectedText": "放在膝盖上就可以。",
+        "before": 0,
+        "after": 2,
+        "expectedEffectiveDelta": 0,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R4_OPTION_002",
+        "expectedText": "你怕的是那个仪器？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R5_OPTION_002",
+        "expectedText": "先说你自己记得的。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R6_OPTION_001",
+        "expectedText": "我在听。还有什么想说的？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R6_OPTION_003",
+        "expectedText": "你那时候身边没有大人？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R6_OPTION_004",
+        "expectedText": "你想有人提前教你。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D1_R6_OPTION_006",
+        "expectedText": "没听见他们说什么，就只说你自己看见的。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R2_OPTION_002",
+        "expectedText": "不用绷这么紧。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R3_OPTION_001",
+        "expectedText": "这些是你自己想的？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R4_OPTION_001",
+        "expectedText": "先看着这里，把话说完。",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R4_OPTION_002",
+        "expectedText": "你现在最担心什么？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R4_OPTION_004",
+        "expectedText": "听不清就告诉我，我可以重复。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R5_OPTION_001",
+        "expectedText": "你昨晚没睡好。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R6_OPTION_001",
+        "expectedText": "哪里不舒服就说，不需要忍着。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R6_OPTION_002",
+        "expectedText": "今天先到这里。",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R6_OPTION_003",
+        "expectedText": "后来杯子拿下来了吗？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D2_R6_OPTION_004",
+        "expectedText": "那不是你的错。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+      },
+      {
+        "sourceId": "child__P02_D3_R2_OPTION_001",
+        "expectedText": "不记得就先不用说。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R4_OPTION_001",
+        "expectedText": "可以先不说。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R4_OPTION_002",
+        "expectedText": "是检测那天的事？",
+        "before": 0,
+        "after": 1,
+        "expectedEffectiveDelta": 0,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R4_OPTION_004",
+        "expectedText": "先告诉我，是哪里让你害怕？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R5_OPTION_001",
+        "expectedText": "紧张的时候，你会怎么做？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 2,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R6_OPTION_001",
+        "expectedText": "还有什么要告诉我？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R6_OPTION_004",
+        "expectedText": "你梦见她了？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R6_OPTION_005",
+        "expectedText": "她和爸爸现在在哪里？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R6_OPTION_006",
+        "expectedText": "我在听，你可以继续。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+      },
+      {
+        "sourceId": "child__P02_D3_R2_OPTION_002",
+        "expectedText": "你知道自己叫什么吗？",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "以“知道自己做了什么”预设责任，在记忆受损语境中形成责备，不能保持无反馈。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R2_OPTION_001",
+        "expectedText": "说明检测前发生了什么。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R2_OPTION_002",
+        "expectedText": "你对收容原因有什么异议？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R3_OPTION_002",
+        "expectedText": "检测前具体问了哪些生产问题？",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R5_OPTION_002",
+        "expectedText": "我会记录你的原话。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R6_OPTION_001",
+        "expectedText": "我会核对记录。谈吐不作为无害的依据。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 1,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R6_OPTION_002",
+        "expectedText": "配合会被记录，但不能据此认定没有风险。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": -1,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R6_OPTION_004",
+        "expectedText": "我会继续核对，不把坦白当作无罪证据。",
+        "before": 1,
+        "after": 2,
+        "expectedEffectiveDelta": 2,
+        "reason": "给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+      },
+      {
+        "sourceId": "diplomat__P05_D1_R5_OPTION_001",
+        "expectedText": "措辞是为了减少不必要的恐慌。",
+        "before": 0,
+        "after": -1,
+        "expectedEffectiveDelta": 0,
+        "reason": "以减少恐慌合理化改写他人话语、打断既往经历只谈当前，都会削弱被完整听取的预期，给予-1。"
+      }
+    ]
+  },
+  "analysis": {
+    "final": {
+      "source": "E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Content\\Campaign\\campaign.minigame.json",
+      "sourceSha256": "e11032002258674ce174e420e99ff00e6114f226392585f5c8e20063ad32796d",
+      "contentVersion": "1.2.2-development",
+      "definition": "Disposition deltas apply to persistent trust only when persistent mode is explicitly selected. Dialogue trust alone determines every gate in reaction-only mode. Reported sum includes only dialogue trust changes from four patients, including exited patients. Uniform choices and uniform legal dispositions. Day-end results conditional on reaching the day.",
+      "days": [
+        {
+          "day": 1,
+          "reachedProbability": 1.0,
+          "reachedExact": "1",
+          "quotaMetConditionalProbability": 0.8056857729848833,
+          "dialogueTrust": {
+            "mean": 8.36111111111111,
+            "meanExact": "301/36",
+            "median": 9.0,
+            "medianLower": 9,
+            "medianUpper": 9,
+            "minimum": -14,
+            "maximum": 26,
+            "probabilityAtLeast10": 0.427246596096965
+          },
+          "supportSize": 41
+        },
+        {
+          "day": 2,
+          "reachedProbability": 0.8056857729848833,
+          "reachedExact": "194866951/241864704",
+          "quotaMetConditionalProbability": 0.57937520854985,
+          "dialogueTrust": {
+            "mean": 10.303427316540224,
+            "meanExact": "578245670215/56121681888",
+            "median": 11.0,
+            "medianLower": 11,
+            "medianUpper": 11,
+            "minimum": -28,
+            "maximum": 48,
+            "probabilityAtLeast10": 0.5614986405438539
+          },
+          "supportSize": 77
+        },
+        {
+          "day": 3,
+          "reachedProbability": 0.3676781435385292,
+          "reachedExact": "38237569357513379/103997395628457984",
+          "quotaMetConditionalProbability": 0.5077416360296575,
+          "dialogueTrust": {
+            "mean": 18.181678752541256,
+            "meanExact": "400448564545722389455/22024839949927706304",
+            "median": 18.0,
+            "medianLower": 18,
+            "medianUpper": 18,
+            "minimum": -41,
+            "maximum": 83,
+            "probabilityAtLeast10": 0.8225839879167511
+          },
+          "supportSize": 125
+        }
+      ]
+    },
+    "reactionOnlyBeforeBalance": {
+      "source": "E:\\Unity\\My project\\MINIGAME\\Artifacts\\TrustRebalance20261028\\campaign-before.json",
+      "sourceSha256": "501f8bf530ecbbbbda7ca2347321c5dfa6ff2d06f2a3e2396eed6e9e8be1670a",
+      "contentVersion": "1.2.2-development",
+      "definition": "Disposition deltas apply to persistent trust only when persistent mode is explicitly selected. Dialogue trust alone determines every gate in reaction-only mode. Reported sum includes only dialogue trust changes from four patients, including exited patients. Uniform choices and uniform legal dispositions. Day-end results conditional on reaching the day.",
+      "days": [
+        {
+          "day": 1,
+          "reachedProbability": 1.0,
+          "reachedExact": "1",
+          "quotaMetConditionalProbability": 0.8604748886799125,
+          "dialogueTrust": {
+            "mean": 1.0199652777777777,
+            "meanExact": "1175/1152",
+            "median": 1.0,
+            "medianLower": 1,
+            "medianUpper": 1,
+            "minimum": -16,
+            "maximum": 16,
+            "probabilityAtLeast10": 0.016511958685794848
+          },
+          "supportSize": 33
+        },
+        {
+          "day": 2,
+          "reachedProbability": 0.8604748886799125,
+          "reachedExact": "3425819/3981312",
+          "quotaMetConditionalProbability": 0.6435681314504194,
+          "dialogueTrust": {
+            "mean": 0.7650438983329404,
+            "meanExact": "3019279015/3946543488",
+            "median": 2.0,
+            "medianLower": 2,
+            "medianUpper": 2,
+            "minimum": -32,
+            "maximum": 31,
+            "probabilityAtLeast10": 0.08459912529562236
+          },
+          "supportSize": 64
+        },
+        {
+          "day": 3,
+          "reachedProbability": 0.42029958958052155,
+          "reachedExact": "7285010450014003/17332899271409664",
+          "quotaMetConditionalProbability": 0.6089078695896472,
+          "dialogueTrust": {
+            "mean": 4.89749984850749,
+            "meanExact": "2283413604820420013/466240668800896192",
+            "median": 6.0,
+            "medianLower": 6,
+            "medianUpper": 6,
+            "minimum": -40,
+            "maximum": 52,
+            "probabilityAtLeast10": 0.2782365072346647
+          },
+          "supportSize": 93
+        }
+      ]
+    },
+    "hiddenAllStarts": 0.302446153581751,
+    "coreSimulation": {
+      "games": 20000,
+      "seed": 20261028,
+      "SourceHash": "fea95d88170b2c5212d1bad4597088d5740ba8727f941e48c8a7b022a4d4208b",
+      "hidden": 6152,
+      "hiddenAllStarts": 0.3076,
+      "hiddenAmongDay3": 0.8192835264349447,
+      "endings": {
+        "LockedInRoom": 7641,
+        "TakenAway": 639,
+        "PriestAttack": 5568
+      },
+      "days": [
+        {
+          "day": 1,
+          "reached": 20000,
+          "reachProbability": 1.0,
+          "mean": 8.2742,
+          "median": 8,
+          "meanStandardError": 0.03705726268897837,
+          "observedMinimum": -13,
+          "observedMaximum": 26
+        },
+        {
+          "day": 2,
+          "reached": 16216,
+          "reachProbability": 0.8108,
+          "mean": 10.239393191909226,
+          "median": 11,
+          "meanStandardError": 0.06429375250587116,
+          "observedMinimum": -20,
+          "observedMaximum": 38
+        },
+        {
+          "day": 3,
+          "reached": 7509,
+          "reachProbability": 0.37545,
+          "mean": 18.11745904914103,
+          "median": 18,
+          "meanStandardError": 0.10983727384399981,
+          "observedMinimum": -14,
+          "observedMaximum": 53
+        }
+      ]
+    },
+    "validation": [
+      {
+        "day": 1,
+        "meanWithinSixStandardErrors": true,
+        "reachWithinSixStandardErrors": true
+      },
+      {
+        "day": 2,
+        "meanWithinSixStandardErrors": true,
+        "reachWithinSixStandardErrors": true
+      },
+      {
+        "day": 3,
+        "meanWithinSixStandardErrors": true,
+        "reachWithinSixStandardErrors": true
+      }
+    ]
+  },
+  "checks": {
+    "python": {
+      "testsPassed": 39,
+      "smoke": "passed",
+      "campaignCheck": "passed",
+      "supervisorCheck": "passed",
+      "endingsCheck": "passed"
+    },
+    "dotnet": {
+      "sdk": "8.0.424",
+      "lockedRestore": "passed",
+      "releaseBuild": "passed",
+      "warnings": 0,
+      "errors": 0,
+      "passed": 482,
+      "results": [
+        {
+          "file": "Artifacts\\TrustRebalance20261028\\dotnet-results\\final_net8.0_20261028120803.trx",
+          "total": "160",
+          "executed": "160",
+          "passed": "160",
+          "failed": "0",
+          "error": "0",
+          "timeout": "0",
+          "aborted": "0",
+          "inconclusive": "0",
+          "passedButRunAborted": "0",
+          "notRunnable": "0",
+          "notExecuted": "0",
+          "disconnected": "0",
+          "warning": "0",
+          "completed": "0",
+          "inProgress": "0",
+          "pending": "0"
+        },
+        {
+          "file": "Artifacts\\TrustRebalance20261028\\dotnet-results\\final_net8.0_20261028120810.trx",
+          "total": "322",
+          "executed": "322",
+          "passed": "322",
+          "failed": "0",
+          "error": "0",
+          "timeout": "0",
+          "aborted": "0",
+          "inconclusive": "0",
+          "passedButRunAborted": "0",
+          "notRunnable": "0",
+          "notExecuted": "0",
+          "disconnected": "0",
+          "warning": "0",
+          "completed": "0",
+          "inProgress": "0",
+          "pending": "0"
+        }
+      ]
+    },
+    "unity": {
+      "actualEditor": "2022.3.23f1",
+      "preservedProjectVersion": "2022.3.23f1c1",
+      "editorImport": {
+        "success": true,
+        "command": "menu",
+        "result": {
+          "success": true,
+          "path": "MiniGame/Campaign/Import endings and updated dialogue",
+          "items": null,
+          "message": "Executed menu item 'MiniGame/Campaign/Import endings and updated dialogue'"
+        },
+        "executionTimeMs": null,
+        "message": null,
+        "error": null,
+        "errorDetails": null,
+        "executedAt": "2026-10-28T04:04:40.7322116Z"
+      },
+      "campaignEditMode": {
+        "status": "completed",
+        "duration": 1.44,
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches",
+            "Status": "Passed",
+            "Duration": 1.206279,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      },
+      "socialAdaptationPlayMode": {
+        "status": "completed",
+        "duration": 3.35,
+        "summary": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SocialAdaptationPlayModeTests.PriestReleaseUpdatesTheLiveInstrumentDuringItsReaction",
+            "Status": "Passed",
+            "Duration": 1.0967034,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SocialAdaptationPlayModeTests.RealRepliesDriveTheInstrumentWhileAnswersPickingAndPauseRemainUsable",
+            "Status": "Passed",
+            "Duration": 1.7407605,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.SocialAdaptationPlayModeTests.TutorialOpeningImmediatelyUsesTheMaximumAgitationReading",
+            "Status": "Passed",
+            "Duration": 0.3344821,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      },
+      "dispositionPlayMode": {
+        "status": "completed",
+        "duration": 0.84,
+        "summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.TerminalDispositionPlayModeTests.AuthoredStatesAndFortyFourPixelHitAreasMatchAllThreeCrtModes",
+            "Status": "Passed",
+            "Duration": 0.404279,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.TerminalDispositionPlayModeTests.DialoguePauseHistoryAndTransitionBlockCommandsAndOnlyALeftClickCommitsOnce",
+            "Status": "Passed",
+            "Duration": 0.2561637,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      },
+      "expandedImporterEditMode": {
+        "status": "completed",
+        "duration": 1.56,
+        "summary": {
+          "total": 5,
+          "passed": 2,
+          "failed": 3,
+          "skipped": 0,
+          "inconclusive": 0
+        },
+        "results": [
+          {
+            "FullName": "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn",
+            "Status": "Failed",
+            "Duration": 0.1475585,
+            "Message": "System.InvalidOperationException : Assets/MiniGame/ImportedDialogue/terminal-child-day1/89b931449c3b0e923d17f63877bd9f24/Runtime.yarn: Existing immutable source differs from this package. Import was stopped.",
+            "StackTrace": "  at MiniGame.UnityHost.Editor.DialoguePackageImporter.WriteImmutable (System.String assetPath, System.String text) [0x0003b] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\DialoguePackageImporter.cs:166 \r\n  at MiniGame.UnityHost.Editor.DialoguePackageImporter.ImportPackage (System.String absoluteFilePath, System.Boolean activate) [0x00111] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\DialoguePackageImporter.cs:75 \r\n  at MiniGame.UnityHost.Tests.DialoguePackageImporterTests.NativeImportIsIdempotentAndKeepsCanonicalSourceSeparateFromExecutableYarn () [0x00000] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\DialoguePackageImporterTests.cs:81 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.RejectedPackagePreservesActiveSourceProjectAndAssetBytes",
+            "Status": "Failed",
+            "Duration": 0.023613,
+            "Message": "System.InvalidOperationException : Assets/Resources/MiniGame/ActiveDialoguePackage.asset: Source package and native Yarn output do not match. Import the package again.",
+            "StackTrace": "  at MiniGame.UnityHost.Editor.DialoguePackageImporter.RequireUsable (MiniGame.UnityHost.DialoguePackageAsset asset) [0x000eb] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\DialoguePackageImporter.cs:155 \r\n  at MiniGame.UnityHost.Editor.DialoguePackageImporter.EnsureDefaultPackage () [0x00014] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\DialoguePackageImporter.cs:27 \r\n  at MiniGame.UnityHost.Tests.DialoguePackageImporterTests.RejectedPackagePreservesActiveSourceProjectAndAssetBytes () [0x00006] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\DialoguePackageImporterTests.cs:58 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogResolvesEveryCampaignAndLegacyExpression",
+            "Status": "Passed",
+            "Duration": 0.0371421,
+            "Message": null,
+            "StackTrace": null
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo",
+            "Status": "Failed",
+            "Duration": 0.0020177,
+            "Message": "System.InvalidOperationException : Assets/Resources/MiniGame/ActiveDialoguePackage.asset: Source package and native Yarn output do not match. Import the package again.",
+            "StackTrace": "  at MiniGame.UnityHost.Editor.DialoguePackageImporter.RequireUsable (MiniGame.UnityHost.DialoguePackageAsset asset) [0x000eb] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\DialoguePackageImporter.cs:155 \r\n  at MiniGame.UnityHost.Editor.DialoguePackageImporter.EnsureDefaultPackage () [0x00014] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Editor\\DialoguePackageImporter.cs:27 \r\n  at MiniGame.UnityHost.Tests.DialoguePackageImporterTests.SharedCatalogRetainsPortraitsRequiredByTheLegacyDemo () [0x00000] in E:\\Unity\\My project\\MINIGAME\\UnityProject\\Assets\\MiniGame\\Tests\\EditMode\\DialoguePackageImporterTests.cs:31 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <b11ba2a8fbf24f219f7cc98532a11304>:0 "
+          },
+          {
+            "FullName": "MiniGame.UnityHost.Tests.DialoguePackageImporterTests.UpdatedCampaignKeepsEveryMappedNodeIncludingSilentResponseBranches",
+            "Status": "Passed",
+            "Duration": 1.1187534,
+            "Message": null,
+            "StackTrace": null
+          }
+        ]
+      }
+    },
+    "documentation": {
+      "newAndChangedLinksPassed": true,
+      "existingMissingHistoricalLinks": [
+        {
+          "file": "src/README.md",
+          "target": "../Artifacts/Tests/migration-verification-report.json"
+        }
+      ],
+      "diffCheck": "passed"
+    }
+  },
+  "invariants": {
+    "sourceWorkbooksScenesAndProjectSettingsByteIdentical": true,
+    "protectedHashes": {
+      "UnityProject\\Assets\\MiniGame\\Scenes\\DreamEndingBeach.unity": "c968aca9451691c7bea8f8f8c9459b02c66094d4be4fb21ff30de6914137a0eb",
+      "UnityProject\\Assets\\MiniGame\\Scenes\\InspectionApartment.unity": "82d2378d613d33d1d351802908c5c9be671987305b35432a6d0bb98843400650",
+      "UnityProject\\Assets\\MiniGame\\Scenes\\MainRoomCombined.unity": "36ded25695c34648a972031a967dde89d676545d90b3b9b4d01017b6c5ccd606",
+      "UnityProject\\Assets\\MiniGame\\Scenes\\MainRoomPreview.unity": "1d163345801f70d4d71c585a9d4b97ff29bef9f82c6496fa1984bab34a8e866d",
+      "UnityProject\\ProjectSettings\\AudioManager.asset": "a3089f0bdeb508ecede2f54e1a5a043e9dbb52b9c0dc0c9f2d54cceee9028795",
+      "UnityProject\\ProjectSettings\\ClusterInputManager.asset": "06a192320121e445dcff1ae8ddad2a948ff671ca134603c043d9f4e920427ea9",
+      "UnityProject\\ProjectSettings\\DynamicsManager.asset": "75b99d95212e2a363a9ce0849abe344fa85a355072375fd0270b7cbce64a31ab",
+      "UnityProject\\ProjectSettings\\EditorBuildSettings.asset": "92589ba0541941d09ccc472a9cff9ccce3936d22430c214a612752fd7966d130",
+      "UnityProject\\ProjectSettings\\EditorSettings.asset": "17d4ba3d29a4316025bc78e8e217b03206a1aac43b2b7aa3b07e943e21b3853f",
+      "UnityProject\\ProjectSettings\\GraphicsSettings.asset": "3fa0aa3498c3c0684304e5201fd67921ceebd81deae2919a5559830f4f2d4053",
+      "UnityProject\\ProjectSettings\\InputManager.asset": "1cb6c5fcf8424dc1d902905d70159df67cd39ee79fbeedbdbb748398cd01a69e",
+      "UnityProject\\ProjectSettings\\MemorySettings.asset": "a660cb9890d880df92f3b80fa40723f183cc5ef2cb3ecc850b366191f05834c7",
+      "UnityProject\\ProjectSettings\\NavMeshAreas.asset": "75da067e99628dc5c30d90492887cdaff68171e7b33d1217a1311b182aa47b50",
+      "UnityProject\\ProjectSettings\\PackageManagerSettings.asset": "828bc2e7817e9e78285abcf0440e3d0d0dea2397016b403431a9d8de2c807c32",
+      "UnityProject\\ProjectSettings\\Physics2DSettings.asset": "4c0823d5f0742e9a546000e33fe82cf050f2acfb5f1092c0854e712a5d8dd136",
+      "UnityProject\\ProjectSettings\\PresetManager.asset": "6ba879310e2be2e5ba18702578cda93b26b030ecd88e883fef22ab456a9f9697",
+      "UnityProject\\ProjectSettings\\ProjectSettings.asset": "84c063e8fcd672341e3226db76259b0cdb29607289eeb8c84255f7006ed2aac4",
+      "UnityProject\\ProjectSettings\\ProjectVersion.txt": "abcbf3ace31993b24dacf5ac73e34d2a45009144ac5b6e3c2728788c8653ce9a",
+      "UnityProject\\ProjectSettings\\QualitySettings.asset": "1f844a9eec14968625daf45fc4e12fccfcf4367995b2783c24a396425d5bc30f",
+      "UnityProject\\ProjectSettings\\SceneTemplateSettings.json": "017f2e3f4c71e36d0b77cb5f84452fb363bf523b0779ae0b8d45e9c780c2883f",
+      "UnityProject\\ProjectSettings\\TagManager.asset": "26e5e0e9475d4be9aa381c498427398ddf2a3313ce04f0a8c7d05a8b10fed83a",
+      "UnityProject\\ProjectSettings\\TimeManager.asset": "6c320ee59ae1e55aa74558f012437f63cb9de59d69fda62fc321c4f1971c52cb",
+      "UnityProject\\ProjectSettings\\UnityConnectSettings.asset": "ca3466f6d55df1ca5d8f04c64620742f8efc373b46be40819b5ba9657a8b53aa",
+      "UnityProject\\ProjectSettings\\VersionControlSettings.asset": "b693342eb84fb0378d21cd2a4557d900777709ad00c2ff5041c2d8451b6da246",
+      "UnityProject\\ProjectSettings\\VFXManager.asset": "10f40a79781aad9c6e22766a05ee3ea0b0fe7028102487607ab29050b7a2d49f",
+      "Art\\chat_excel\\【对话】Day0引导角色v1.0.xlsx": "d416f5ca0056c93a7471a5671a7866ec5d197aec1408dbcc922ed2e323900fa5",
+      "Art\\chat_excel\\【对话】外交官·阿德里安v1.0.xlsx": "253735fb00a5c22e6ace8e1f582013a305ae89c0e64eb819224c2e910057cdb0",
+      "Art\\chat_excel\\【对话】女性执政者·薇拉v1.0.xlsx": "a6c9a040b49a1cd6d871f730582ebfc17e027ff21a5832783d59dca617d9bc0c",
+      "Art\\chat_excel\\【对话】小孩v1.1.xlsx": "d68000b6cee20e1a7fc1a088f9743ee28a6568d09f1d26d3e2a8d3ed43a27226",
+      "Art\\chat_excel\\【对话】战场医生·埃德温v1.0.xlsx": "1d4f79cf3666e208e92f543e3e2e25404f28eda3427091f2ddae8bf0ae419362",
+      "Art\\chat_excel\\【对话】监督员.xlsx": "71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e",
+      "Art\\chat_excel\\【对话】神父·乔纳v1.0.xlsx": "39779a1fc514fd020b4be003180de4bbc8b2b27e7ec011b789b82804e1e4203d",
+      "Art\\chat_excel\\【对话】神父结局.xlsx": "1ed431bc072942666b828679b717eab733cdd4bd1a11c64c8817d2e06afdd10e"
+    },
+    "textGraphRosterThresholdsAndDispositionDeltasUnchanged": true,
+    "onlyPlanned91OptionDeltasChanged": true,
+    "activePackageMatchesGenerated": true
+  },
+  "limits": [
+    "No Player build or full manual playthrough or visual acceptance.",
+    "Three expanded V1 legacy importer tests fail on immutable Runtime.yarn/source consistency; the formal campaign importer test passes.",
+    "Old disposition-persistent saves intentionally fail the updated rules fingerprint check."
+  ]
+}

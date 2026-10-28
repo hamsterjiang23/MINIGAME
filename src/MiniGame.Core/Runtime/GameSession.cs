@@ -86,9 +86,21 @@ namespace MiniGame.Core
                 record?.Purifications ?? 0, record?.PurificationQuota ?? 0,
                 _state.SelfReviewLineIndex, _rules.DreamFlowEnabled ? _rules.SelfReviewLineCount : 0,
                 _state.Phase == GamePhase.Dream ? ResolveDreamReturnPhase() : (GamePhase?)null,
-                encounter != null && Meeting(encounter).ReactionNodes.ContainsKey(Disposition.Release)
-                    ? new SocialAdaptationReading(Patient(encounter.PatientId).Trust, Meeting(encounter).ReleaseTrustThreshold)
+                encounter != null && (_state.Day == 0 || Meeting(encounter).ReactionNodes.ContainsKey(Disposition.Release))
+                    ? new SocialAdaptationReading(SocialAdaptationTrust(encounter), Meeting(encounter).ReleaseTrustThreshold)
                     : null);
+        }
+
+        // Disposition reactions express a temporary emotional response. Derive the
+        // reading from the accepted encounter so replay restores it without adding
+        // a second authoritative trust value or carrying the effect into tomorrow.
+        private long SocialAdaptationTrust(EncounterSnapshot encounter)
+        {
+            long trust = Patient(encounter.PatientId).Trust;
+            if (encounter.Stage == EncounterStage.Reaction && encounter.Disposition.HasValue
+                && Meeting(encounter).DispositionTrustDeltas.TryGetValue(encounter.Disposition.Value, out var delta))
+                trust += delta;
+            return trust;
         }
 
         public GameSnapshot CreateSnapshot() => SnapshotCodec.Copy(new GameSnapshot
@@ -201,7 +213,8 @@ namespace MiniGame.Core
 
         private bool HasHiddenEndingTrust()
         {
-            // Trust retains signed response and disposition changes after a patient leaves.
+            // Trust retains signed dialogue changes after a patient leaves.
+            // Disposition deltas are reaction-only instrument effects.
             // Only these four histories contribute; the priest, tutorial and player never do.
             return _state.Patients.Where(patient => patient.Id == PrototypeRules.FormerRuler
                 || patient.Id == PrototypeRules.Doctor || patient.Id == PrototypeRules.Child
@@ -409,12 +422,6 @@ namespace MiniGame.Core
                 return RejectionReason.NumericOverflow;
             if (command.Disposition == Disposition.Purify && CurrentDay().Purifications == int.MaxValue)
                 return RejectionReason.NumericOverflow;
-            int trust;
-            meeting.DispositionTrustDeltas.TryGetValue(command.Disposition, out var delta);
-            try { trust = checked(patient.Trust + delta); }
-            catch (OverflowException) { return RejectionReason.NumericOverflow; }
-
-            patient.Trust = trust;
             encounter.Disposition = command.Disposition;
             encounter.Stage = EncounterStage.Reaction;
             if (command.Disposition == Disposition.Purify)

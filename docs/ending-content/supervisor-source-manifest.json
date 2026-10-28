@@ -1,16 +1,16 @@
 {
   "workbook": "Art/chat_excel/【对话】监督员.xlsx",
-  "sha256": "3afb95a3f3455cc0d8c08643bb7e7ec0d3623ea49d3c89585e57d011d2bd9c3e",
+  "sha256": "71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e",
   "sheet": "对话流程",
-  "sourceRows": 46,
+  "sourceRows": 48,
   "adaptations": [
     {
-      "cell": "L20",
+      "cell": "L22",
       "kind": "inherit-portrait",
       "value": "JD_03"
     },
     {
-      "cell": "J40",
+      "cell": "J42",
       "kind": "day-boundary",
       "originalNext": "P02_D4_R1_COMMON_002",
       "policy": "End this day's presentation; Day4 starts at its own root in the TakenAway ending."
@@ -21,6 +21,55 @@
       "cell": "A2",
       "formulaCell": "A2",
       "value": "JD_01"
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D2_R1_COMMON_006",
+      "row": 25,
+      "field": "open",
+      "before": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+      "after": "之前有个审查员听信了里面那些人的话，最后没能通过仪器检测。",
+      "issueIds": [
+        "p1.8"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D1_R1_COMMON_011",
+      "row": 12,
+      "field": "open",
+      "before": "但是释放可不是什么好事呀，绩效考核里可没有对于释放的指标。",
+      "after": "但是释放可不是什么好事呀。每天至少净化一个人，才算完成指标。释放可不算，记住了。",
+      "issueIds": [
+        "p1.9",
+        "p2.17"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D2_R1_COMMON_002",
+      "row": 21,
+      "field": "open",
+      "before": "据我所知，你的活干的还不错嘛。",
+      "after": "据我所知，你的活干得还不错嘛。",
+      "issueIds": [
+        "p2.3"
+      ]
+    },
+    {
+      "kind": "user-approved-text-edit",
+      "bookId": "supervisor",
+      "sourceId": "supervisor__P02_D1_R1_COMMON_007",
+      "row": 8,
+      "field": "open",
+      "before": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
+      "after": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
+      "issueIds": [
+        "p2.16"
+      ]
     }
   ],
   "portraitPolicy": "Preserve the approved live portraits in docs/portrait-remap/source-manifest.json; this text converter never copies images.",

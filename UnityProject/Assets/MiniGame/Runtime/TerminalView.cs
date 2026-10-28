@@ -193,26 +193,26 @@ namespace MiniGame.UnityHost
             history = transcriptView.GameObject;
             roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 124, 19, 13, Dim);
             roundLabel.gameObject.SetActive(false);
-            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 64, 168, 20, 12, Dim);
+            Label(rr, "DailyWorkIndicatorLabel", "当日指标 / 净化剩余", 534, 64, 168, 20, 12, Bright);
             var quotaField = Panel(rr, "DailyWorkQuotaField", Bright, 712, 52, 66, 32);
             var quotaFallback = Label(quotaField, "DailyWorkIndicatorRemaining", "", 0, 0, 66, 32, 24, ColorOf("170e02"));
             quotaFallback.alignment = TextAnchor.MiddleCenter;
             dailyWorkRemaining = quotaField.gameObject.AddComponent<TerminalQuotaField>();
             dailyWorkRemaining.Initialize(assets, quotaFallback);
-            Label(rr, "DispositionHeading", "处置命令", 534, 108, 240, 19, 13, Dim); Rule(rr, 530, 129, 248);
+            Label(rr, "DispositionHeading", "处置命令", 534, 128, 240, 19, 13, Dim); Rule(rr, 530, 150, 248);
             var types = new[] { Disposition.Release, Disposition.Treat, Disposition.Purify };
             for (int i = 0; i < types.Length; i++)
             {
                 var type = types[i];
-                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 135 + i * 48, 248, 44, () => dispositionAction(type));
+                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 164 + i * 64, 248, 44, () => dispositionAction(type));
                 var visual = (TerminalButtonVisual)button;
                 visual.SetCommandArtwork(type == Disposition.Release ? assets.ReleaseCommand
                     : type == Disposition.Treat ? assets.TreatmentCommand : assets.PurificationCommand);
                 dispositions.Add(type, button);
                 visual.PointerSelected = () => SelectDisposition(button);
             }
-            Rule(rr, 530, 352, 248); Label(rr, "AnswerHeading", "应答命令", 534, 364, 240, 19, 13, Dim);
-            answers = Panel(rr, "AnswerContents", Color.clear, 530, 392, 248, 140).gameObject;
+            Rule(rr, 530, 362, 248); Label(rr, "AnswerHeading", "应答命令", 534, 374, 240, 19, 13, Dim);
+            answers = Panel(rr, "AnswerContents", Color.clear, 530, 402, 248, 134).gameObject;
             ChoiceRoot = (RectTransform)answers.transform;
             // Keep response selection visible when the pointer rests on another panel's commands.
             ChoiceRoot.gameObject.AddComponent<TerminalHighlightGroup>();

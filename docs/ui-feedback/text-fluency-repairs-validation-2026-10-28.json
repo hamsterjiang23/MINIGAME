@@ -1,0 +1,330 @@
+{
+  "checkedAt": "2026-10-28T11:40:07.717628+08:00",
+  "success": true,
+  "changes": {
+    "fixedIssues": 24,
+    "textEdits": 32,
+    "preservedIssueIds": [
+      "p2.12",
+      "p2.14",
+      "p1.7"
+    ],
+    "previouslyReplaced": [
+      "p2.15"
+    ]
+  },
+  "sourceAndGameplayInvariants": {
+    "campaignRulesAndGraphUnchanged": true,
+    "allTrustAndDispositionDeltasUnchanged": true,
+    "supervisorGraphAndPortraitsUnchanged": true,
+    "endingStructureAndCountsUnchanged": true,
+    "allSixteenSelfReviewLinesUnchanged": true,
+    "sourceWorkbooksByteIdentical": true,
+    "protectedFilesByteIdentical": true,
+    "activeCampaignMatchesGenerated": true
+  },
+  "activePackage": {
+    "guid": "11a3a98431b46414fa69fc3565c97d64",
+    "path": "UnityProject/Assets/MiniGame/ImportedDialogue/inspection-campaign/228214ade069d83c1c296b9049d1a58d/Package.minigame.json",
+    "contentVersion": "1.2.2-development"
+  },
+  "generation": {
+    "smoke": "passed",
+    "campaignCheck": "passed",
+    "supervisorCheck": "passed",
+    "endingCheck": "passed"
+  },
+  "python": {
+    "passed": 39,
+    "failed": 0,
+    "command": "python -m unittest discover -s Tools/DialogueCampaign -p 'test_*.py'"
+  },
+  "dotnet": {
+    "sdk": "8.0.424",
+    "lockedRestore": "passed",
+    "releaseBuild": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "testPassed": 474,
+    "results": [
+      {
+        "file": "Artifacts/TextFluencyRepair20261028/dotnet-results/text-fluency_net8.0_20261028113537.trx",
+        "total": 154,
+        "executed": 154,
+        "passed": 154,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      },
+      {
+        "file": "Artifacts/TextFluencyRepair20261028/dotnet-results/text-fluency_net8.0_20261028113544.trx",
+        "total": 320,
+        "executed": 320,
+        "passed": 320,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      }
+    ],
+    "logs": [
+      "Artifacts/TextFluencyRepair20261028/dotnet-restore.log",
+      "Artifacts/TextFluencyRepair20261028/dotnet-build.log",
+      "Artifacts/TextFluencyRepair20261028/dotnet-test.log"
+    ]
+  },
+  "unity": {
+    "importMenu": "MiniGame/Campaign/Import endings and updated dialogue",
+    "importResponse": {
+      "success": true,
+      "command": "menu",
+      "result": {
+        "success": true,
+        "path": "MiniGame/Campaign/Import endings and updated dialogue",
+        "items": null,
+        "message": "Executed menu item 'MiniGame/Campaign/Import endings and updated dialogue'"
+      },
+      "executionTimeMs": null,
+      "message": null,
+      "error": null,
+      "errorDetails": null,
+      "executedAt": "2026-10-28T03:34:17.8502164Z"
+    },
+    "editMode": {
+      "status": "completed",
+      "duration": 0.52,
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(1280,720)",
+          "Status": "Passed",
+          "Duration": 0.0340611,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(1920,1080)",
+          "Status": "Passed",
+          "Duration": 0.0247717,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(2560,1440)",
+          "Status": "Passed",
+          "Duration": 0.0401874,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.AllAuthoredDoorAndDreamLinesKeepTheirRenderedGlyphsInsideTheCard(1440,1080)",
+          "Status": "Passed",
+          "Duration": 0.0642109,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialogueLayoutTests.ExtraLinesSpendVerticalPaddingBeforeTheyGrowTheCard",
+          "Status": "Passed",
+          "Duration": 0.0056288,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "supervisorPlayMode": {
+      "status": "completed",
+      "duration": 20.29,
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.AllSixPortraitFeetAndPixelScaleRemainRegisteredAcrossCheckpointRebinds",
+          "Status": "Passed",
+          "Duration": 2.602556,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.DirectDoorMorningCheckpointStartsAndAdvancesDialogueWithoutDoorView",
+          "Status": "Passed",
+          "Duration": 0.8954115,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.DoorwayDialogueClicksAndPortraitChangesKeepActorAndCameraPoseStable",
+          "Status": "Passed",
+          "Duration": 3.6723546,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.EveryAuthoredLineAndExpressionPlaysOnceAcrossThreeMorningsAndTakenAway",
+          "Status": "Passed",
+          "Duration": 5.4365771,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.LoadingTheScanPortraitDoesNotReplayTheSameDaysScan",
+          "Status": "Passed",
+          "Duration": 2.3829045,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.PausedCheckpointResumesTheSameAuthoredLineAndPortrait",
+          "Status": "Passed",
+          "Duration": 1.9769286,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.ScanPortraitPlaysRealSamplesThroughTheActiveAudioOwner",
+          "Status": "Passed",
+          "Duration": 2.3719502,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.SupervisorDialoguePlayModeTests.TakenAwayCheckpointKeepsCameraPoseAndZoom",
+          "Status": "Passed",
+          "Duration": 0.7744809,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "endingPlayMode": {
+      "status": "completed",
+      "duration": 137.44,
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.CompletedHiddenSaveIsRejectedAndNewPeriodRestoresTheSameRoomWithoutAnotherEndNote",
+          "Status": "Passed",
+          "Duration": 13.6842071,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.DreamSupervisorInterruptRestoresThirtySixSecondsAndFinalTwentySecondCredits",
+          "Status": "Passed",
+          "Duration": 7.2455955,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.GmFromFormalBeachRestoresRoomBeforeStartingAnotherDoorEnding",
+          "Status": "Passed",
+          "Duration": 6.6869131,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.GmReplacesEachFlowAndPreservesManualSaveAndOldCallbackIsolation",
+          "Status": "Passed",
+          "Duration": 0.7193985,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.HiddenBedPresentationPausesAndRestoresEveryStageWithoutEarlyCompletion",
+          "Status": "Passed",
+          "Duration": 11.0056848,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.HiddenEndingRequiresSelfReviewThenLiesDownHoldsSkyAndFadesToMenu",
+          "Status": "Passed",
+          "Duration": 61.5269412,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.HiddenFadingOutCrossSceneRestorePreservesTheFirstRenderedCameraPose",
+          "Status": "Passed",
+          "Duration": 10.1337076,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.MissedDayOneQuotaUsesTheSupervisorEndingAndReturnsWithoutContinue",
+          "Status": "Passed",
+          "Duration": 2.7093334,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.MissingHiddenCaptureSourceKeepsBlackAndRetriesOnlyOnce",
+          "Status": "Passed",
+          "Duration": 10.3929298,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.NormalDayFourOpensDoorPlaysSevenSourceLinesAndReturnsWithoutContinue",
+          "Status": "Passed",
+          "Duration": 2.9485489,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.PauseTitleShortcutFromDayZeroReachesHiddenBedAndReturnsWithOneEndNote",
+          "Status": "Passed",
+          "Duration": 7.2305619,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "MiniGame.UnityHost.Tests.EndingCampaignPlayModeTests.ReleasedDayTwoPriestUsesEightEndingLinesAndFinalBlackScreen",
+          "Status": "Passed",
+          "Duration": 2.9837323,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    }
+  },
+  "limits": [
+    "No Player build or human full-playthrough/visual acceptance in this change."
+  ]
+}

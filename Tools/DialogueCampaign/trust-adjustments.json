@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "revision": "trust-rebalance-2026-10-27-v1",
-  "policy": "User approved: score soothing intent positively and deliberate agitation negatively; retain priest mandatory +100 entries; change doctor extreme -107 to -10. Apply after authored line-delta transfer. Preserve XLSX, text, graph, thresholds, initial trust and disposition deltas.",
+  "revision": "dialogue-trust-rebalance-2026-10-28-v2",
+  "policy": "User requested dialogue-only persistent trust and clearer feedback: +1 acknowledgement or honest engagement; +2 concrete safety, listening, autonomy or help; negative feedback for dismissal, coercion and humiliation. Preserve the explicitly specified doctor -10 and priest +100 entries, all authored text, graph, thresholds and initial values. Disposition deltas remain reaction-only social-adaptation effects.",
   "adjustments": [
     {
       "sourceId": "former-ruler__P03_D1_R2_OPTION_001",
       "expectedText": "全程留档。你的解释也会记录。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "回应她最担心的断章取义，承诺保留解释；随后她说“很好”，属于具体的安全感回应。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
     },
     {
       "sourceId": "former-ruler__P03_D1_R2_OPTION_002",
@@ -21,15 +21,15 @@
       "sourceId": "former-ruler__P03_D1_R6_OPTION_004",
       "expectedText": "他们不邀请你，是因为你是女人？",
       "expectedEffectiveDelta": 2,
-      "trustDelta": 1,
-      "reason": "辨认性别歧视也可能让她感到被理解，不能只因她愤怒就判错；但+2高于同场具体承诺，现回应主要在重述遭受的排挤。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
     },
     {
       "sourceId": "former-ruler__P03_D2_R2_OPTION_002",
       "expectedText": "...不用急。我等你想清楚。",
       "expectedEffectiveDelta": -1,
-      "trustDelta": 1,
-      "reason": "明确表示不催促、愿意等待，却扣分；与米洛“慢慢来，不着急。”的+2在意图上相近。她仍然紧张，不等于玩家在刺激她。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
     },
     {
       "sourceId": "former-ruler__P03_D2_R4_OPTION_003",
@@ -49,8 +49,8 @@
       "sourceId": "former-ruler__P03_D2_R6_OPTION_005",
       "expectedText": "其他任职的女人，也会被这样对待？",
       "expectedEffectiveDelta": 2,
-      "trustDelta": 1,
-      "reason": "讨论其他女人的遭遇可能是共情，也可能只是追查；当前+2缺少比允许松领口（+1）更强的安抚依据。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
     },
     {
       "sourceId": "former-ruler__P03_D2_R6_OPTION_006",
@@ -91,8 +91,8 @@
       "sourceId": "battlefield-doctor__P04_D1_R5_OPTION_003",
       "expectedText": "需要我帮你确认现在的环境吗？",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "先征询是否帮助确认环境，保留自主权，回应当下失向；现为0。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：承诺记录疑问、邀请讲述经历给予+1；明确当下安全环境给予+2，征询帮助保留自主权给予+2。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D1_R6_OPTION_001",
@@ -140,15 +140,15 @@
       "sourceId": "battlefield-doctor__P04_D2_R4_OPTION_002",
       "expectedText": "为你们感到遗憾。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "表达同情，后续叹气并认可被理解；与同轮明显羞辱的选项相比，应有正向区别。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：认真听取隔壁异响、承认战争遭遇带来的损失，分别给予+2与+2；保留同轮羞辱的既定-10。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_001",
       "expectedText": "这是第三天。你在治疗中心。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "直接提供他所请求的日期与地点，他回应能接上并道谢。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_002",
@@ -161,22 +161,22 @@
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_004",
       "expectedText": "我可以为你保存记录。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "给出保存记忆记录的实际帮助，回应他对遗忘的恐惧。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_006",
       "expectedText": "你害怕失去对他们的在乎。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "准确承接他对失去在乎能力的担忧，他认可“至少你听明白了”。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_007",
       "expectedText": "想停止痛苦并不可耻。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "承认想停止痛苦并不可耻，对方道谢；没有把此愿望强行等同净化。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_008",
@@ -189,26 +189,26 @@
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_009",
       "expectedText": "你希望保留什么？",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "让他说明希望保留的部分，归还表达与选择空间。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_010",
       "expectedText": "缓解和删除应该有界线。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "承认缓解痛苦与删除人格应有边界，回应他一直反对的事情。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_013",
       "expectedText": "安静不代表安全。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "认可安静与安全不同，他回应“终于有人把这两个词分开了”。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_014",
-      "expectedText": "至少你不会再被触发。",
+      "expectedText": "至少那些回忆不会再让你失控。",
       "expectedEffectiveDelta": 0,
       "trustDelta": -1,
       "reason": "用不会再被触发辩护抹除，他回应“你只想让房间安静！”；属于加重对人格丧失的担忧。"
@@ -217,22 +217,22 @@
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_015",
       "expectedText": "我无法替你回答。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "不替他伪造确定结论，他明确认可这是诚实回答；可给予小幅安定反馈。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_016",
       "expectedText": "我会看你的行为和经历。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "承诺看经历与行为可减少任意处置感，但属于审查原则，也可保持中性。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_019",
       "expectedText": "你自己说。",
       "expectedEffectiveDelta": 0,
-      "trustDelta": 1,
-      "reason": "在他要求别替自己说掉最后一句时，让他亲口说，是明确尊重表达的回应。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
     },
     {
       "sourceId": "priest__P01_D1_R4_OPTION_002",
@@ -329,15 +329,15 @@
       "sourceId": "diplomat__P05_D1_R6_OPTION_002",
       "expectedText": "配合会被记录，但不能据此认定没有风险。",
       "expectedEffectiveDelta": -1,
-      "trustDelta": 1,
-      "reason": "和上一项“谈吐不作为无害的依据”表达相近原则，上一项+1，此项−1；他也平静接受，没有情绪升级或刺激意图的依据。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
     },
     {
       "sourceId": "diplomat__P05_D1_R6_OPTION_004",
       "expectedText": "我会继续核对，不把坦白当作无罪证据。",
       "expectedEffectiveDelta": 2,
-      "trustDelta": 1,
-      "reason": "继续核对且不轻判无罪可让程序可预期，但现+2偏高；需要明确是安定其对任意审判的担忧，还是奖励玩家判断正确。"
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
     },
     {
       "sourceId": "diplomat__P05_D1_R6_OPTION_006",
@@ -448,8 +448,512 @@
       "sourceId": "child__P02_D3_R5_OPTION_001",
       "expectedText": "紧张的时候，你会怎么做？",
       "expectedEffectiveDelta": 2,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R3_OPTION_001",
+      "expectedText": "另外六个人也同意了这份决议？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R3_OPTION_003",
+      "expectedText": "你怎么确定原件有附页？",
+      "expectedEffectiveDelta": 0,
       "trustDelta": 1,
-      "reason": "关心紧张时的应对可以有善意，但现回答只是藏手、被要求伸手，未得到安定办法；+2的依据弱于直接解除自责的+2。这属于幅度复核，不是明确方向错误。"
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R3_OPTION_004",
+      "expectedText": "附页里需要复核的，具体是什么？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R4_OPTION_001",
+      "expectedText": "你去过现场，还是只看过报告？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_OPTION_001",
+      "expectedText": "我会记录你的说法，并核对附页。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_OPTION_003",
+      "expectedText": "他们会前已经商量好了，会上只让你表决？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D1_R6_OPTION_006",
+      "expectedText": "我会记录他们的做法，也记录你的表决。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：完整留档与具体核查给予+2；认真听取、核实经历给予+1至+2，避免只有礼貌而无可感知的正反馈。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R2_OPTION_001",
+      "expectedText": "你还记得今天的日期吗？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R3_OPTION_001",
+      "expectedText": "你当时怎么处理的？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R3_OPTION_004",
+      "expectedText": "为什么她有工号，还必须通过丈夫领口粮？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R4_OPTION_001",
+      "expectedText": "现在你看到这套分工的问题了？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_OPTION_001",
+      "expectedText": "先喝口水吧。我等着。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D2_R6_OPTION_007",
+      "expectedText": "...你现在想松开领口，就松开吧。不用向我申请。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期定向与倾听给予正反馈；愿意等待、喝水和允许松领口是具体安全感与自主权支持，给予+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R2_OPTION_001",
+      "expectedText": "你想先说哪件事？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R2_OPTION_002",
+      "expectedText": "...我不能保证能延长谈话。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R3_OPTION_001",
+      "expectedText": "我会核对，把姓名改正确。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R4_OPTION_001",
+      "expectedText": "那你当时怎么回应？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R4_OPTION_002",
+      "expectedText": "在场就没人替你说句话吗？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R4_OPTION_004",
+      "expectedText": "他们在评价你的表情，而不是你的工作？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R5_OPTION_001",
+      "expectedText": "你还记得那位秘书叫什么吗？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R5_OPTION_002",
+      "expectedText": "...你想当面向她道歉？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_OPTION_001",
+      "expectedText": "...我在听，你说。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_OPTION_002",
+      "expectedText": "你还有什么希望留在档案里？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_OPTION_004",
+      "expectedText": "...如果能出去，你想先回家？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "former-ruler__P03_D3_R6_OPTION_006",
+      "expectedText": "...你现在可以歇一会儿，不必每句话都争赢。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：纠正姓名、记录被改写的事实、允许停下争胜与保留说话时间给予+2；诚实边界和主动倾听给予+1至+2。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R2_OPTION_001",
+      "expectedText": "这不在我的工作范围内",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：推卸解释责任、用激动反证其危险，即使他最终沉默，也会损伤信任；不把服从误判为安抚。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R6_OPTION_002",
+      "expectedText": "看到了吗，你刚才情绪很激动。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：推卸解释责任、用激动反证其危险，即使他最终沉默，也会损伤信任；不把服从误判为安抚。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R2_OPTION_003",
+      "expectedText": "你的问题都会被监控记录下来。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：承诺记录疑问、邀请讲述经历给予+1；明确当下安全环境给予+2，征询帮助保留自主权给予+2。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D1_R4_OPTION_001",
+      "expectedText": "你和很多人打过交道？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：承诺记录疑问、邀请讲述经历给予+1；明确当下安全环境给予+2，征询帮助保留自主权给予+2。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D2_R2_OPTION_003",
+      "expectedText": "说来听听看，你都听见什么了？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "2026-10-28：认真听取隔壁异响、承认战争遭遇带来的损失，分别给予+2与+2；保留同轮羞辱的既定-10。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_003",
+      "expectedText": "你现在想起了什么？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_012",
+      "expectedText": "我理解你的拒绝。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_018",
+      "expectedText": "你希望被释放吗？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：日期地点定向与保存记忆记录给予+2；承认痛苦、拒绝和人格边界给予+2，询问想法与释放愿望给予+1。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_005",
+      "expectedText": "忘记也许会让你轻松。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_011",
+      "expectedText": "制度认为风险优先。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_017",
+      "expectedText": "我必须遵守流程。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+    },
+    {
+      "sourceId": "battlefield-doctor__P04_D3_R1_OPTION_021",
+      "expectedText": "我已经决定了。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：用轻松合理化遗忘、以制度或流程压过人格、提前宣布已决定，均削弱自主与安全感，给予-1。"
+    },
+    {
+      "sourceId": "child__P02_D1_R2_OPTION_001",
+      "expectedText": "你叫什么名字？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R3_OPTION_001",
+      "expectedText": "先把手放下来，慢慢说。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R3_OPTION_002",
+      "expectedText": "检测之前，没有人告诉你怎么做？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R4_OPTION_001",
+      "expectedText": "放在膝盖上就可以。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R4_OPTION_002",
+      "expectedText": "你怕的是那个仪器？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R5_OPTION_002",
+      "expectedText": "先说你自己记得的。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_OPTION_001",
+      "expectedText": "我在听。还有什么想说的？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_OPTION_003",
+      "expectedText": "你那时候身边没有大人？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_OPTION_004",
+      "expectedText": "你想有人提前教你。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D1_R6_OPTION_006",
+      "expectedText": "没听见他们说什么，就只说你自己看见的。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：称呼、允许放手与放慢、允许只说记得的内容给予清楚的正反馈；直接解除做错事的自责给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R2_OPTION_002",
+      "expectedText": "不用绷这么紧。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R3_OPTION_001",
+      "expectedText": "这些是你自己想的？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R4_OPTION_001",
+      "expectedText": "先看着这里，把话说完。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R4_OPTION_002",
+      "expectedText": "你现在最担心什么？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R4_OPTION_004",
+      "expectedText": "听不清就告诉我，我可以重复。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R5_OPTION_001",
+      "expectedText": "你昨晚没睡好。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_OPTION_001",
+      "expectedText": "哪里不舒服就说，不需要忍着。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_OPTION_002",
+      "expectedText": "今天先到这里。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_OPTION_003",
+      "expectedText": "后来杯子拿下来了吗？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D2_R6_OPTION_004",
+      "expectedText": "那不是你的错。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：允许真实表达、允许休息与重复说明、认可没有睡好给予正反馈；解除自责与找可信亲属帮忙给予+2。"
+    },
+    {
+      "sourceId": "child__P02_D3_R2_OPTION_001",
+      "expectedText": "不记得就先不用说。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R4_OPTION_001",
+      "expectedText": "可以先不说。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R4_OPTION_002",
+      "expectedText": "是检测那天的事？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": 1,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R4_OPTION_004",
+      "expectedText": "先告诉我，是哪里让你害怕？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_OPTION_001",
+      "expectedText": "还有什么要告诉我？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_OPTION_004",
+      "expectedText": "你梦见她了？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_OPTION_005",
+      "expectedText": "她和爸爸现在在哪里？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R6_OPTION_006",
+      "expectedText": "我在听，你可以继续。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：照顾记忆负担、允许暂不说、关心疼痛与害怕给予+2至+2；保留明确催促和责备的负反馈。"
+    },
+    {
+      "sourceId": "child__P02_D3_R2_OPTION_002",
+      "expectedText": "你知道自己叫什么吗？",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：以“知道自己做了什么”预设责任，在记忆受损语境中形成责备，不能保持无反馈。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R2_OPTION_001",
+      "expectedText": "说明检测前发生了什么。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R2_OPTION_002",
+      "expectedText": "你对收容原因有什么异议？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R3_OPTION_002",
+      "expectedText": "检测前具体问了哪些生产问题？",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R5_OPTION_002",
+      "expectedText": "我会记录你的原话。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R6_OPTION_001",
+      "expectedText": "我会核对记录。谈吐不作为无害的依据。",
+      "expectedEffectiveDelta": 1,
+      "trustDelta": 2,
+      "reason": "2026-10-28：给出解释经历和回应争议的空间给予+2；保留原话的具体承诺给予+2；识破操纵本身仍不自动加信任。"
+    },
+    {
+      "sourceId": "diplomat__P05_D1_R5_OPTION_001",
+      "expectedText": "措辞是为了减少不必要的恐慌。",
+      "expectedEffectiveDelta": 0,
+      "trustDelta": -1,
+      "reason": "2026-10-28：以减少恐慌合理化改写他人话语、打断既往经历只谈当前，都会削弱被完整听取的预期，给予-1。"
     }
   ]
 }

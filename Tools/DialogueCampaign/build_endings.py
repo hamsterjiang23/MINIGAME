@@ -9,6 +9,7 @@ from typing import cast
 
 from build_campaign import HERE, ROOT, Record, Row, digest, escape, read_source
 from build_supervisor import compile_dialogue
+from approved_text import apply_text_edits, manifest_hash
 
 SOURCES = ROOT / "docs/ending-content/sources/source-refresh.json"
 OUTPUT = ROOT / "UnityProject/Assets/MiniGame/Resources/MiniGame/Endings"
@@ -116,6 +117,8 @@ def linear_conversation(identifier: str, node: str, speaker: str, sheets: dict[s
 def build() -> tuple[Record, Record]:
     sources = verified_sources()
     priest, _, recovered = read_source(ROOT / str(sources["priest-ending"]["file"]))
+    priest["对话流程"], text_edits = apply_text_edits("priest-ending", str(sources["priest-ending"]["sha256"]),
+        priest["对话流程"], id_column="I", columns={"open": "D"})
     self_review = read_snapshot(sources["self-review"])
     conversations = [
         linear_conversation("priest-ending", "PriestEnding", "乔纳", priest,
@@ -137,9 +140,11 @@ def build() -> tuple[Record, Record]:
     config = cast(Record, json.loads((HERE / "conversion-config.json").read_text(encoding="utf-8")))
     hashes = [{"id": key, "sha256": entry["sha256"]} for key, entry in sorted(sources.items())]
     body: Record = {"formatVersion": 1, "contentVersion": config["contentVersion"],
+                    "textEditManifestHash": manifest_hash(),
                     "sources": hashes, "conversations": conversations}
     package: Record = {**body, "revision": canonical_hash(body)}
     audit: Record = {"revision": package["revision"], "sourceManifestSha256": digest(SOURCES),
+                    "textEditManifestHash": manifest_hash(), "approvedTextEdits": text_edits,
                     "sources": [{key: value for key, value in entry.items() if key != "sheets"}
                                 for entry in sources.values()],
                     "sheetCoverage": [{"source": key, "sheets": entry["sheets"]} for key, entry in sources.items()],

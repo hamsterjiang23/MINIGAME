@@ -33,7 +33,16 @@ class EndingContentTests(unittest.TestCase):
         for identifier, sheets in books.items():
             lines = cast(list[Record], self.conversations[identifier]["lines"])
             originals = [row for row in sheets["对话流程"][1:] if row.get("D")]
-            self.assertEqual([line["text"] for line in lines], [row["D"] for row in originals])
+            edits = {edit["sourceId"].split("__", 1)[1]: edit for edit in self.audit["approvedTextEdits"]
+                     if edit["bookId"] == identifier}
+            expected_texts = []
+            for row in originals:
+                text = row["D"]
+                if row["I"] in edits:
+                    self.assertEqual(edits[row["I"]]["before"], text)
+                    text = edits[row["I"]]["after"]
+                expected_texts.append(text)
+            self.assertEqual([line["text"] for line in lines], expected_texts)
             self.assertEqual([line["id"] for line in lines], [row["I"] for row in originals])
             for line, row in zip(lines, originals, strict=True):
                 self.assertEqual(line["sourceRow"], int(row["row"]))
@@ -67,7 +76,7 @@ class EndingContentTests(unittest.TestCase):
         expected = [row for row in source["对话流程"][1:] if row.get("A") == "Day4"]
         lines = cast(list[Record], self.conversations["supervisor-ending"]["lines"])
         self.assertEqual([line["text"] for line in lines], [row["D"] for row in expected])
-        self.assertEqual([line["sourceRow"] for line in lines], list(range(41, 48)))
+        self.assertEqual([line["sourceRow"] for line in lines], list(range(43, 50)))
         self.assertEqual(lines[0]["text"], "惊——喜。")
 
     def test_revision_covers_both_content_and_all_source_hashes(self: EndingContentTests) -> None:

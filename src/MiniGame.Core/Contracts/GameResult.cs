@@ -38,7 +38,7 @@ namespace MiniGame.Core
         public double RelativeReleaseMargin { get; }
         public bool MeetsReleaseThreshold => RelativeReleaseMargin >= 0;
 
-        internal SocialAdaptationReading(int trust, int releaseThreshold)
+        internal SocialAdaptationReading(long trust, int releaseThreshold)
         {
             RelativeReleaseMargin = ((double)trust - releaseThreshold)
                 / Math.Max(1d, Math.Abs((double)releaseThreshold));

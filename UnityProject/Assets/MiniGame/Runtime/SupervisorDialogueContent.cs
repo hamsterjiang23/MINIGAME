@@ -37,7 +37,7 @@ namespace MiniGame.UnityHost
             if (source == null) return null;
             var data = JsonUtility.FromJson<SupervisorDialogueContent>(source.text);
             if (data == null || string.IsNullOrEmpty(data.revision) || data.conversations.Length != 4
-                || data.conversations.SelectMany(day => day.lines).Count() != 46)
+                || data.conversations.SelectMany(day => day.lines).Count() != 48)
                 throw new InvalidOperationException("Supervisor dialogue resource is incomplete.");
             return data;
         }

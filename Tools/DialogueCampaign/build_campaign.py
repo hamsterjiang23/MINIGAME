@@ -18,6 +18,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "Tools/DialogueAtlas"))
 from build_atlas import NS, REL_ID, read_workbook
 from updated_source import apply_repairs, build_updated_meeting, normalize_rows, source_columns
+from approved_text import apply_text_edits, manifest_hash
 
 Row = dict[str, str]
 Record = dict[str, object]
@@ -233,6 +234,7 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
     portraits: list[Record] = []
     excluded: list[Record] = []
     repairs: list[Record] = []
+    text_edits: list[Record] = []
     schedule: list[Record] = []
     source_directory = source_directory or ROOT / "Art/chat_excel"
     days: list[Record] = [{"day": day, "quota": config["tutorialQuota"] if day == 0 else config["dailyQuota"], "meetings": []} for day in range(3 if smoke else 4)]
@@ -252,6 +254,8 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
                 str(patient["id"]), digest(path), normalized, HERE / "source-repairs.json")
             repairs.extend(source_repairs)
             excluded.extend(source_excluded)
+            active, approved = apply_text_edits(str(patient["id"]), digest(path), active)
+            text_edits.extend(approved)
         else:
             assert len({r["J"] for r in rows}) == len(rows)
             active = rows
@@ -280,13 +284,14 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
             if scheduled:
                 cast(list[Record], days[campaign_day]["meetings"]).append(meeting)
     variants = json.loads((HERE / "text-variants.json").read_text(encoding="utf-8-sig")) if not smoke else []
-    rules = [{"id": p["id"], "name": p["name"], "firstDay": p["firstDay"], "initialTrust": config["initialTrust"],
+    rules = [{"id": p["id"], "name": p["name"], "firstDay": p["firstDay"], "initialTrust": p.get("initialTrust", config["initialTrust"]),
               "treatmentLimit": 3, "treatmentOutcome": p["treatmentOutcome"], "treatmentDelayDays": p.get("treatmentDelayDays", 0),
               "attacksAfterRelease": p.get("attacksAfterRelease", False)} for p in patients]
     sources = [str(m["yarnSource"]) for d in days for m in cast(list[Record], d["meetings"])]
     tutorial = cast(list[Record], days[0]["meetings"])[0]
+    tutorial_trust = next(rule["initialTrust"] for rule in rules if rule["id"] == tutorial["patientId"])
     package = {"formatVersion": 2, "packageId": "inspection-campaign", "contentVersion": config["contentVersion"], "yarnSource": "\n".join(sources), "portraits": portraits,
-               "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": tutorial["startNode"], "endNode": tutorial["endNode"], "initialTrust": 0, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
+               "profile": {"patientId": "tutorial", "patientName": "无名男子", "day": 0, "startNode": tutorial["startNode"], "endNode": tutorial["endNode"], "initialTrust": tutorial_trust, "releaseThreshold": config["releaseThreshold"], "initialQuota": config["tutorialQuota"]},
                "campaign": {"patients": rules, "days": days, "releaseThreshold": config["releaseThreshold"], "variants": variants}}
     all_mappings = {str(m["sourceId"]): m for m in mappings}
     if not smoke:
@@ -308,6 +313,7 @@ def build(smoke: bool = False, source_directory: Path | None = None) -> tuple[Re
              "activeSourceRowCount": sum(len(cast(list[Row], b["activeRows"])) for b in books),
              "excludedSourceRowCount": len(excluded), "excludedRows": excluded, "repairs": repairs,
              "repairManifestHash": digest(HERE / "source-repairs.json"),
+             "textEditManifestHash": manifest_hash(), "approvedTextEdits": text_edits,
              "trustAdjustmentHash": digest(HERE / "trust-adjustments.json"),
              "dispositionTrustAdjustmentHash": digest(HERE / "disposition-trust-adjustments.json"),
              "configHash": digest(HERE / "conversion-config.json"), "variantHash": digest(HERE / "text-variants.json"),

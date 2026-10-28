@@ -1,0 +1,339 @@
+{
+  "version": 1,
+  "revision": "fluency-2026-10-28-v1",
+  "policy": "User approved all remaining audit issues except p2.12, p2.14 and p1.7. Apply exact, source-pinned prose changes only; preserve XLSX, nodes, graph, numbers, portraits and ending line counts.",
+  "preservedIssueIds": [
+    "p2.12",
+    "p2.14",
+    "p1.7"
+  ],
+  "alreadyReplacedIssueIds": [
+    "p2.15"
+  ],
+  "books": {
+    "battlefield-doctor": {
+      "sourceSha256": "1d4f79cf3666e208e92f543e3e2e25404f28eda3427091f2ddae8bf0ae419362",
+      "edits": [
+        {
+          "id": "P04_D1_R4_CLOSE_002",
+          "field": "response",
+          "expectedText": "我曾经见过太多人了……他们因为敌人而愤怒，因为家乡被而悲伤，也因自己可能丧命而害怕……",
+          "newText": "我曾经见过太多人了……他们因为敌人而愤怒，因为家乡遭难而悲伤，也因自己可能丧命而害怕……",
+          "issueIds": [
+            "p0.1"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_OPTION_003",
+          "field": "option",
+          "expectedText": "你还记得昨天说了什么吗？",
+          "newText": "你现在想起了什么？",
+          "issueIds": [
+            "p1.1"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_CLOSE_007",
+          "field": "response",
+          "expectedText": "记得一个选择，和一个没等到我的人。",
+          "newText": "我当年决定过先救谁。有个人没能等到我。",
+          "issueIds": [
+            "p1.1"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_COMMON_005",
+          "field": "open",
+          "expectedText": "如果我忘了那个人，我会不会变得更安全？还是只是更安静？",
+          "newText": "有个人没等到我的救助。如果我把他忘了，我会变得更安全，还是只是更安静？",
+          "issueIds": [
+            "p1.1"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_COMMON_006",
+          "field": "open",
+          "expectedText": "我当年替别人排序。今天轮到你替我排序。",
+          "newText": "我当年决定过先救谁。今天轮到你决定怎样处置我。",
+          "issueIds": [
+            "p1.1"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_OPTION_014",
+          "field": "option",
+          "expectedText": "至少你不会再被触发。",
+          "newText": "至少那些回忆不会再让你失控。",
+          "issueIds": [
+            "p1.2"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_CLOSE_032",
+          "field": "response",
+          "expectedText": "触发需要治疗，不是抹除。",
+          "newText": "需要治疗的是我的症状，不是抹去我的记忆。",
+          "issueIds": [
+            "p1.2"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_ACTION_008",
+          "field": "actionResponse",
+          "expectedText": "打开门，让我保留后果。",
+          "newText": "打开门，让我自己承担后果。",
+          "issueIds": [
+            "p1.3"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_COMMON_007",
+          "field": "open",
+          "expectedText": "无论你选什么，别替我把最后一句说掉。",
+          "newText": "无论你选什么，别替我说完最后一句。",
+          "issueIds": [
+            "p1.4"
+          ]
+        },
+        {
+          "id": "P04_D3_R1_ACTION_006",
+          "field": "actionResponse",
+          "expectedText": "你听完了。谢谢你没有替我把最后一句说掉。",
+          "newText": "你听完了。谢谢你让我自己把最后一句说完。",
+          "issueIds": [
+            "p1.4"
+          ]
+        },
+        {
+          "id": "P04_D1_R3_OPTION_002",
+          "field": "option",
+          "expectedText": "我也不明白其中的原理，但他确实让犯罪率降低了。",
+          "newText": "我也不明白其中的原理，但它确实让犯罪率降低了。",
+          "issueIds": [
+            "p2.2"
+          ]
+        },
+        {
+          "id": "P04_D1_R4_CLOSE_006",
+          "field": "response",
+          "expectedText": "我闭上眼睛依然能想起那个被炸的只剩半截身子的战友……",
+          "newText": "我闭上眼睛依然能想起那个被炸得只剩半截身子的战友……",
+          "issueIds": [
+            "p2.3"
+          ]
+        },
+        {
+          "id": "P04_D1_R4_CLOSE_008",
+          "field": "response",
+          "expectedText": "你可以做的更好的，不是吗？！",
+          "newText": "你可以做得更好，不是吗？！",
+          "issueIds": [
+            "p2.3"
+          ]
+        },
+        {
+          "id": "P04_D1_R5_COMMON_001",
+          "field": "open",
+          "expectedText": "好多的人…都死了…被炸的粉碎！！！我要去救他们！！",
+          "newText": "好多的人…都死了…被炸得粉碎！！！我要去救他们！！",
+          "issueIds": [
+            "p2.3"
+          ]
+        },
+        {
+          "id": "P04_D2_R3_CLOSE_001",
+          "field": "response",
+          "expectedText": "传言的发生是有依据的，对么？",
+          "newText": "这些传言总有些依据，对么？",
+          "issueIds": [
+            "p2.4"
+          ]
+        }
+      ]
+    },
+    "former-ruler": {
+      "sourceSha256": "a6c9a040b49a1cd6d871f730582ebfc17e027ff21a5832783d59dca617d9bc0c",
+      "edits": [
+        {
+          "id": "P03_D2_R2_CLOSE_001",
+          "field": "response",
+          "expectedText": "我和那些人不一样，我不是精神错乱的异常体。",
+          "newText": "我刚才在门口还念过……等一下，让我想想。",
+          "issueIds": [
+            "p0.2"
+          ]
+        },
+        {
+          "id": "P03_D2_R2_CLOSE_003",
+          "field": "response",
+          "expectedText": "你知道吗...",
+          "newText": "你问日期，是觉得我已经精神错乱了吗？我只是……一时记不清。",
+          "issueIds": [
+            "p0.2"
+          ]
+        },
+        {
+          "id": "P03_D1_R2_CLOSE_002",
+          "field": "response",
+          "expectedText": "有本事问我为什么发火，别上来就替我认罪。",
+          "newText": "有本事问我为什么发火，别一上来就认定我有罪。",
+          "issueIds": [
+            "p1.5"
+          ]
+        },
+        {
+          "id": "P03_D1_R3_CLOSE_007",
+          "field": "response",
+          "expectedText": "请你自己回去亲自翻，别直接把我的话当结论。",
+          "newText": "请你回去亲自翻看原件，别直接把我的话当结论。",
+          "issueIds": [
+            "p2.5"
+          ]
+        },
+        {
+          "id": "P03_D1_R6_ACTION_003",
+          "field": "actionResponse",
+          "expectedText": "是你开的吗。",
+          "newText": "是你决定放我走的吗？",
+          "issueIds": [
+            "p2.6"
+          ]
+        },
+        {
+          "id": "P03_D3_R6_CLOSE_004",
+          "field": "response",
+          "expectedText": "现在...我更想知道，你有没有把我当作一个人听完。不是只等我认罪，或者服从。",
+          "newText": "现在...我更想知道，你有没有把我当作一个人，认真听我把话说完，而不是只等我认罪或者服从。",
+          "issueIds": [
+            "p2.7"
+          ]
+        },
+        {
+          "id": "P03_D3_R6_CLOSE_003",
+          "field": "response",
+          "expectedText": "...听见了。再给我说完这一句，好吗？",
+          "newText": "...听见了。再让我把这一句说完，好吗？",
+          "issueIds": [
+            "p2.8"
+          ]
+        },
+        {
+          "id": "P03_D2_R3_CLOSE_002",
+          "field": "response",
+          "expectedText": "可一个有工作的人，按完两套规定，最后没饭吃...那规定就该改。",
+          "newText": "可一个有工作的人，两套规定都照办了，最后却没饭吃...那规定就该改。",
+          "issueIds": [
+            "p2.13"
+          ]
+        }
+      ]
+    },
+    "priest": {
+      "sourceSha256": "39779a1fc514fd020b4be003180de4bbc8b2b27e7ec011b789b82804e1e4203d",
+      "edits": [
+        {
+          "id": "P01_D1_R5_CLOSE_003",
+          "field": "open",
+          "expectedText": "他们沉默并不空洞。",
+          "newText": "他们的沉默并不空洞。",
+          "issueIds": [
+            "p1.6"
+          ]
+        }
+      ]
+    },
+    "supervisor": {
+      "sourceSha256": "71a1bff89ffcfee40d96a3543611e87d8eb361c3fa550ab4854fb63d0f44119e",
+      "edits": [
+        {
+          "id": "P02_D2_R1_COMMON_006",
+          "field": "open",
+          "expectedText": "之前有个审查员听信了里面那些人的话，最后被仪器检测不通过。",
+          "newText": "之前有个审查员听信了里面那些人的话，最后没能通过仪器检测。",
+          "issueIds": [
+            "p1.8"
+          ]
+        },
+        {
+          "id": "P02_D1_R1_COMMON_011",
+          "field": "open",
+          "expectedText": "但是释放可不是什么好事呀，绩效考核里可没有对于释放的指标。",
+          "newText": "但是释放可不是什么好事呀。每天至少净化一个人，才算完成指标。释放可不算，记住了。",
+          "issueIds": [
+            "p1.9",
+            "p2.17"
+          ]
+        },
+        {
+          "id": "P02_D2_R1_COMMON_002",
+          "field": "open",
+          "expectedText": "据我所知，你的活干的还不错嘛。",
+          "newText": "据我所知，你的活干得还不错嘛。",
+          "issueIds": [
+            "p2.3"
+          ]
+        },
+        {
+          "id": "P02_D1_R1_COMMON_007",
+          "field": "open",
+          "expectedText": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在”治疗“的时候也能找点乐子。",
+          "newText": "你可以继续治疗，把他们留到第二天继续教育，这样我们兄弟几个在“治疗”的时候也能找点乐子。",
+          "issueIds": [
+            "p2.16"
+          ]
+        }
+      ]
+    },
+    "tutorial": {
+      "sourceSha256": "d416f5ca0056c93a7471a5671a7866ec5d197aec1408dbcc922ed2e323900fa5",
+      "edits": [
+        {
+          "id": "P00_D0_R1_COMMON_004",
+          "field": "open",
+          "expectedText": "这玩意把我绑的严严实实呢。",
+          "newText": "这玩意把我绑得严严实实呢。",
+          "issueIds": [
+            "p2.1"
+          ]
+        }
+      ]
+    },
+    "diplomat": {
+      "sourceSha256": "253735fb00a5c22e6ace8e1f582013a305ae89c0e64eb819224c2e910057cdb0",
+      "edits": [
+        {
+          "id": "P05_D1_R4_CLOSE_004",
+          "field": "response",
+          "expectedText": "没有。我把手续办得快，当成接待工作的周到。",
+          "newText": "没有。我当时觉得，手续办得快，是接待人员照顾周到。",
+          "issueIds": [
+            "p2.9"
+          ]
+        },
+        {
+          "id": "P05_D1_R6_SPECIAL_002",
+          "field": "response",
+          "expectedText": "谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就比较相信后面的“同意”出于自己。",
+          "newText": "谈判时，我常先提一个很容易被拒绝的小要求。对方说过一次“不”，就更容易相信，后面的“同意”是自己真心作出的决定。",
+          "issueIds": [
+            "p2.10"
+          ]
+        }
+      ]
+    },
+    "priest-ending": {
+      "sourceSha256": "1ed431bc072942666b828679b717eab733cdd4bd1a11c64c8817d2e06afdd10e",
+      "edits": [
+        {
+          "id": "CUSTOM001_D1_R1_COMMON_003",
+          "field": "open",
+          "expectedText": "门叩响的声音。",
+          "newText": "叩门的声音。",
+          "issueIds": [
+            "p2.11"
+          ]
+        }
+      ]
+    }
+  }
+}
