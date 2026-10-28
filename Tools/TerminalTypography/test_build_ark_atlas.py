@@ -3,12 +3,25 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 from PIL import Image
 import build_ark_atlas as atlas
 
 
 class GlyphAtlasTests(unittest.TestCase):
+    def test_audit_only_characters_do_not_block_runtime_font_generation(self: GlyphAtlasTests) -> None:
+        with tempfile.TemporaryDirectory(prefix="minigame-font-corpus-") as directory:
+            root = Path(directory)
+            content = root / "UnityProject/Assets/MiniGame/Content/Campaign"
+            content.mkdir(parents=True)
+            (content / "campaign.minigame.json").write_text('{"text":"遭症躁符绩"}', encoding="utf-8")
+            (content / "provenance.json").write_text('{"reason":"−107"}', encoding="utf-8")
+            with patch.object(atlas, "ROOT", root):
+                codes, _ = atlas.corpus()
+            self.assertTrue({ord(char) for char in "遭症躁符绩"} <= codes)
+            self.assertNotIn(ord("−"), codes)
+
     def test_corpus_includes_all_direct_resource_dialogue(self: GlyphAtlasTests) -> None:
         codes, paths = atlas.corpus()
         for category in ("Supervisor", "Endings"):

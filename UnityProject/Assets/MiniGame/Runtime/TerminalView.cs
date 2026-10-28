@@ -181,15 +181,15 @@ namespace MiniGame.UnityHost
             signalLoss = Panel(video, "MonitorSignalLoss", ColorOf("0e0b04"), 0, 0, 464, 261).gameObject;
             for (int i = 0; i < 22; i++) stripes.Add(Panel(signalLoss.transform, "Noise" + i, i % 3 == 0 ? Ink : Edge, 0, 7 + i * 11, 464, i % 2 == 0 ? 2 : 1));
             signalLostMessage = Label(video, "SignalLostMessage", "SIGNAL LOST", 176, 123, 200, 25, 13, Dim).gameObject;
-            var instrument = Panel(rr, "SocialAdaptationInstrument", Desk, 26, 362, 472, 64);
+            var instrument = Panel(rr, "SocialAdaptationInstrument", Desk, 530, 96, 248, 64);
             Label(instrument, "SocialAdaptationHeading", "社会适应度", 0, 0, 145, 17, 13, Ink);
             var plot = new GameObject("SocialAdaptationWaveform", typeof(RectTransform), typeof(TerminalAdaptationWaveform));
             plot.transform.SetParent(instrument, false);
-            Position((RectTransform)plot.transform, 0, 18, 472, 44);
+            Position((RectTransform)plot.transform, 0, 18, 248, 44);
             adaptation = plot.GetComponent<TerminalAdaptationWaveform>(); adaptation.Initialize();
-            historyHeading = Label(rr, "DialogueHeading", "对话", 26, 431, 470, 20, 13, Dim);
-            Rule(rr, 22, 451, 480);
-            transcriptView = new TerminalTranscriptView(rr, font, signals, y: 456, height: 76);
+            historyHeading = Label(rr, "DialogueHeading", "对话", 26, 365, 470, 20, 13, Dim);
+            Rule(rr, 22, 385, 480);
+            transcriptView = new TerminalTranscriptView(rr, font, signals, y: 390, height: 142);
             history = transcriptView.GameObject;
             roundLabel = Label(rr, "RecordNode", "人员复核 / R1", 534, 83, 124, 19, 13, Dim);
             roundLabel.gameObject.SetActive(false);
@@ -199,20 +199,20 @@ namespace MiniGame.UnityHost
             quotaFallback.alignment = TextAnchor.MiddleCenter;
             dailyWorkRemaining = quotaField.gameObject.AddComponent<TerminalQuotaField>();
             dailyWorkRemaining.Initialize(assets, quotaFallback);
-            Label(rr, "DispositionHeading", "处置命令", 534, 128, 240, 19, 13, Dim); Rule(rr, 530, 150, 248);
+            Label(rr, "DispositionHeading", "处置命令", 534, 170, 240, 19, 13, Dim); Rule(rr, 530, 192, 248);
             var types = new[] { Disposition.Release, Disposition.Treat, Disposition.Purify };
             for (int i = 0; i < types.Length; i++)
             {
                 var type = types[i];
-                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 164 + i * 64, 248, 44, () => dispositionAction(type));
+                var button = Button(rr, "Disposition-" + type, DispositionName(type), 530, 200 + i * 48, 248, 44, () => dispositionAction(type));
                 var visual = (TerminalButtonVisual)button;
                 visual.SetCommandArtwork(type == Disposition.Release ? assets.ReleaseCommand
                     : type == Disposition.Treat ? assets.TreatmentCommand : assets.PurificationCommand);
                 dispositions.Add(type, button);
                 visual.PointerSelected = () => SelectDisposition(button);
             }
-            Rule(rr, 530, 362, 248); Label(rr, "AnswerHeading", "应答命令", 534, 374, 240, 19, 13, Dim);
-            answers = Panel(rr, "AnswerContents", Color.clear, 530, 402, 248, 134).gameObject;
+            Rule(rr, 530, 346, 248); Label(rr, "AnswerHeading", "应答命令", 534, 354, 240, 19, 13, Dim);
+            answers = Panel(rr, "AnswerContents", Color.clear, 530, 382, 248, 154).gameObject;
             ChoiceRoot = (RectTransform)answers.transform;
             // Keep response selection visible when the pointer rests on another panel's commands.
             ChoiceRoot.gameObject.AddComponent<TerminalHighlightGroup>();
@@ -342,8 +342,12 @@ namespace MiniGame.UnityHost
             bool measuredPatient = live && !view.IsSelfReview && !showingOpeningLogo
                 && view.PresentedEncounterId == view.Game.CurrentEncounterId
                 && id == view.Game.CurrentPatientId;
-            adaptation.SetReading(measuredPatient ? view.Game.SocialAdaptation : null,
-                view.PresentedEncounterId, view.Paused || locked || !view.TerminalOpen);
+            bool freezeAdaptation = view.Paused || locked || !view.TerminalOpen;
+            if (live && view.IsSelfReview && !showingOpeningLogo)
+                adaptation.SetSelfReviewReading(freezeAdaptation);
+            else
+                adaptation.SetReading(measuredPatient ? view.Game.SocialAdaptation : null,
+                    view.PresentedEncounterId, freezeAdaptation);
             bool showPatient = live && !showingOpeningLogo;
             livePortrait.SetActive(showPatient); silhouette.SetActive(showPatient && (portraits == null || portraits.Find(portraitId) == null));
             cameraLabel.gameObject.SetActive(showPatient);

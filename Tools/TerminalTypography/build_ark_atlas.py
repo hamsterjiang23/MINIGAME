@@ -53,7 +53,9 @@ def corpus() -> tuple[set[int], list[str]]:
     paths = sorted((ROOT / "UnityProject/Assets/MiniGame/Runtime").glob("*.cs"))
     paths += sorted((ROOT / "UnityProject/Assets/MiniGame/Content").rglob("*.yarn"))
     paths += sorted((ROOT / "src").rglob("*.cs"))
-    paths += sorted((ROOT / "UnityProject/Assets/MiniGame/Content").rglob("*.json"))
+    # Provenance contains research notes and adjustment reasons, never displayed by the game.
+    paths += sorted(path for path in (ROOT / "UnityProject/Assets/MiniGame/Content").rglob("*.json")
+                    if path.name != "provenance.json")
     # Endings and supervisor dialogue are loaded directly from Resources, outside the campaign package.
     resources = ROOT / "UnityProject/Assets/MiniGame/Resources"
     paths += sorted(path for path in resources.rglob("*") if path.suffix in {".json", ".yarn"})

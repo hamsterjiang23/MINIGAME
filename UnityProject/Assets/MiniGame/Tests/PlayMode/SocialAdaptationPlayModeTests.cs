@@ -235,11 +235,11 @@ namespace MiniGame.UnityHost.Tests
         private static void AssertWaveformPixels(TerminalDisplay display)
         {
             display.RenderFrame(); var previous = RenderTexture.active;
-            var image = new Texture2D(472, 44, TextureFormat.RGB24, false);
+            var image = new Texture2D(248, 44, TextureFormat.RGB24, false);
             try
             {
                 RenderTexture.active = display.Texture;
-                image.ReadPixels(new Rect(26, 600 - 424, 472, 44), 0, 0); image.Apply();
+                image.ReadPixels(new Rect(530, 600 - 158, 248, 44), 0, 0); image.Apply();
                 Assert.That(image.GetPixels32().Count(pixel => pixel.r > 90 && pixel.g > 40), Is.GreaterThan(100),
                     "The waveform must contribute visible pixels on the actual 800x600 terminal render target.");
             }

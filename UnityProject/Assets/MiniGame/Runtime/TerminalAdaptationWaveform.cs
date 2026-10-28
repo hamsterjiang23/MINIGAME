@@ -33,13 +33,21 @@ namespace MiniGame.UnityHost
                 hasReading = false; encounterId = null;
                 SetVerticesDirty(); return;
             }
-            double next = SocialAdaptationSignal.CoordinateFor(reading);
+            SetCoordinate(SocialAdaptationSignal.CoordinateFor(reading), identity, reading.MeetsReleaseThreshold, freeze);
+        }
+
+        // Self judgment has no patient trust or release threshold; this is a visual-only reading.
+        public void SetSelfReviewReading(bool freeze) => SetCoordinate(1, "self-review", true, freeze);
+
+        private void SetCoordinate(double next, string identity, bool passesThreshold, bool freeze)
+        {
+            paused = freeze;
             bool changedEncounter = !hasReading || encounterId != identity;
             // Snap across the boundary so the graph never disagrees with current core eligibility.
-            if (changedEncounter || meetsThreshold != reading.MeetsReleaseThreshold) coordinate = next;
+            if (changedEncounter || meetsThreshold != passesThreshold) coordinate = next;
             if (changedEncounter) phase = noiseClock = 0;
             target = next; encounterId = identity; hasReading = true;
-            meetsThreshold = reading.MeetsReleaseThreshold;
+            meetsThreshold = passesThreshold;
             SetVerticesDirty();
         }
 

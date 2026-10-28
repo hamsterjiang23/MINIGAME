@@ -21,6 +21,7 @@ namespace MiniGame.Presentation.Tests
         }
         private static string Source(string name) => File.ReadAllText(Path.Combine(Workspace(), "UnityProject/Assets/MiniGame/Content/Campaign", name));
         private static CompiledDialoguePackage Compile() => DialoguePackageCompiler.Compile(Source("campaign.minigame.json"));
+        private static string NormalizeNewlines(string text) => text.Replace("\r\n", "\n").Replace('\r', '\n');
 
         [Test]
         public void ActiveCampaignBindsTheValidatedRebalancedPackageAndRuntimeYarn()
@@ -35,7 +36,8 @@ namespace MiniGame.Presentation.Tests
                 "Package.minigame.json.meta", SearchOption.AllDirectories)
                 .Single(path => File.ReadAllText(path).Contains("guid: " + match.Groups[1].Value));
             Assert.That(File.ReadAllText(meta.Substring(0, meta.Length - 5)), Is.EqualTo(Source("campaign.minigame.json")));
-            Assert.That(File.ReadAllText(Path.Combine(Path.GetDirectoryName(meta)!, "Runtime.yarn")), Is.EqualTo(compiled.RuntimeYarn));
+            Assert.That(NormalizeNewlines(File.ReadAllText(Path.Combine(Path.GetDirectoryName(meta)!, "Runtime.yarn"))),
+                Is.EqualTo(NormalizeNewlines(compiled.RuntimeYarn)));
         }
 
         [TestCase(true, false)]
@@ -217,7 +219,7 @@ namespace MiniGame.Presentation.Tests
                 Is.EquivalentTo(new[] { "child", "former-ruler", "diplomat" }));
             Assert.That(specialMeetings.All(meeting => meeting.SpecialTrustThreshold == 3 && meeting.ReleaseTrustThreshold == 5), Is.True);
             Assert.That(package.Diagnostics, Is.Empty);
-            Assert.That(package.Package.YarnSource, Is.EqualTo(Source("campaign.yarn")));
+            Assert.That(NormalizeNewlines(package.Package.YarnSource), Is.EqualTo(NormalizeNewlines(Source("campaign.yarn"))));
         }
 
         [Test]

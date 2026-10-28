@@ -309,6 +309,9 @@ namespace MiniGame.UnityHost.Tests
             for (int index = 0; index < 16; index++)
             {
                 yield return null;
+                var wave = host.Screen.GetComponentInChildren<TerminalAdaptationWaveform>(true);
+                Assert.That(wave.HasReading, Is.True);
+                Assert.That(wave.DisplayCoordinate, Is.EqualTo(1), "Self judgment must retain the calmest reading for every line.");
                 Assert.That(runtime.CurrentEndingLine, Is.Not.Null);
                 Assert.That(runtime.CurrentEndingLine.PortraitId, Is.EqualTo("SJ01").Or.EqualTo("SJ02"));
                 if (inspectPortrait != null)
@@ -326,6 +329,7 @@ namespace MiniGame.UnityHost.Tests
                 Assert.That(runtime.GetView().Game.SelfReviewLineIndex, Is.EqualTo(index + 1));
             }
             Assert.That(runtime.GetView().SelfReviewReady, Is.True);
+            Assert.That(host.Screen.GetComponentInChildren<TerminalAdaptationWaveform>(true).DisplayCoordinate, Is.EqualTo(1));
         }
 
         private static Color32[] ReadMonitorPixels(RenderTexture source)
