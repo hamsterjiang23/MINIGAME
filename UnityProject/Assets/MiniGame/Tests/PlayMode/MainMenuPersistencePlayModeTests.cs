@@ -45,7 +45,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [Test]
-        public void ResumePriorityKeepsCorruptAutomaticRecordAheadOfManualFallback()
+        public void ResumePriorityKeepsManualAheadOfAutomaticEvenAfterCompletion()
         {
             Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.Null);
             var manual = FilePath("campaign-save.json");
@@ -56,8 +56,35 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(dreamManual));
             var automatic = FilePath("campaign-continue.json");
             File.WriteAllText(automatic, "invalid automatic record");
-            Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(automatic),
-                "A bad automatic record must surface an error, never silently fall back to older progress.");
+            MainMenuContinueStore.MarkCompleted(directory);
+            files.Add(Path.Combine(directory, "campaign-completed.json"));
+            Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(dreamManual));
+        }
+
+        [Test]
+        public void AvailableResolverSkipsCorruptManualAndDoesNotChangeTheSession()
+        {
+            var rules = Rules();
+            var content = new FixtureContent();
+            var runtime = new GameRuntime(rules, content, true);
+            runtime.ConfigureEndings(EndingDialoguePresenter.LoadCatalog());
+            var session = MiniGameSessionHost.Install(runtime, rules, content, null);
+            var manual = FilePath("campaign-dream-save.json");
+            var automatic = FilePath("campaign-continue.json");
+            File.WriteAllText(manual, "{broken");
+            Assert.That(session.TrySaveTo(automatic, out var error), Is.True, error);
+            string before = runtime.Save();
+            var path = MainMenuContinueStore.ResolveAvailable(directory, null,
+                candidate => MiniGameSessionHost.TryValidateSave(candidate, rules, content, out var failure) ? null : failure,
+                out var warning);
+            Assert.That(path, Is.EqualTo(automatic), warning);
+            Assert.That(warning, Does.Contain("campaign-dream-save.json"));
+            Assert.That(session.Runtime, Is.SameAs(runtime));
+            Assert.That(runtime.Save(), Is.EqualTo(before));
+            Assert.That(File.ReadAllText(manual), Is.EqualTo("{broken"));
+            Assert.That(MainMenuContinueStore.ResolveAvailable(directory, CampaignSaveSlot.Manual,
+                candidate => MiniGameSessionHost.TryValidateSave(candidate, rules, content, out var failure) ? null : failure,
+                out _), Is.Null, "Explicit manual selection cannot fall back to the automatic slot.");
         }
 
         [Test]

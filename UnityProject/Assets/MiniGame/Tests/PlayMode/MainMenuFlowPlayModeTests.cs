@@ -91,6 +91,157 @@ namespace MiniGame.UnityHost.Tests
             yield return null;
         }
 
+        [UnityTest, Timeout(90000)]
+        public IEnumerator AutosaveSlotsAreIndependentAndContinueLoadsManualAfterCompletion()
+        {
+            yield return StartGame();
+            host.Save();
+            string manual = File.ReadAllText(ManualPath);
+            RestoreDream();
+            MiniGameSessionHost.Current.SaveAutomatic();
+            string automatic = File.ReadAllText(AutomaticPath);
+            Assert.That(automatic, Is.Not.EqualTo(manual));
+            Assert.That(File.ReadAllText(ManualPath), Is.EqualTo(manual));
+            var previous = host.Runtime;
+            Menu.CompleteInspectionAndReturnToMenu();
+            Assert.That(Menu.View.ContinueButton.interactable, Is.True);
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            Menu.Continue();
+            yield return WaitForGame();
+            Assert.That(host.Runtime, Is.Not.SameAs(previous));
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero, "Manual checkpoint wins over the newer automatic dream.");
+            Menu.ReturnToMenu();
+            Assert.That(Menu.HasRetainedGame, Is.True, "The historical completion marker must not lock a restored session.");
+        }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator AutosaveLoadPanelShowsTwoSlotsAndReturnsToPause()
+        {
+            yield return StartGame();
+            host.Save();
+            string manual = File.ReadAllText(ManualPath);
+            string automatic = File.ReadAllText(AutomaticPath);
+            host.Load();
+            var panel = host.Screen.GetComponentInChildren<PauseMenuView>(true);
+            Assert.That(panel.LoadSlotsVisible, Is.True);
+            Assert.That(panel.LoadSlotButtons.Length, Is.EqualTo(3));
+            Assert.That(panel.LoadSlotButtons[0].interactable && panel.LoadSlotButtons[1].interactable, Is.True);
+            Assert.That(host.Runtime.GetView().Paused, Is.True);
+            yield return new WaitForSecondsRealtime(.3f);
+            yield return CaptureIfRequested("autosave-load-slots", host.Screen.Canvas);
+            yield return null;
+            var previous = host.Runtime;
+            panel.LoadSlotButtons[1].onClick.Invoke();
+            Assert.That(host.Runtime, Is.Not.SameAs(previous));
+            Assert.That(host.Runtime.GetView().Paused, Is.True);
+            Assert.That(panel.LoadSlotsVisible, Is.False);
+            Assert.That(File.ReadAllText(ManualPath), Is.EqualTo(manual));
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            host.Load();
+            yield return null;
+            previous = host.Runtime;
+            File.WriteAllText(AutomaticPath, "{broken after opening");
+            panel.LoadSlotButtons[1].onClick.Invoke();
+            Assert.That(host.Runtime, Is.SameAs(previous), "Failed selection preserves the live session.");
+            Assert.That(panel.LoadSlotsVisible, Is.True);
+            Assert.That(panel.GetComponentsInChildren<Text>(true).Single(text => text.name == "LoadStatus").text,
+                Does.Contain("读取失败"));
+            File.WriteAllText(AutomaticPath, automatic);
+            host.HandleEscape();
+            Assert.That(panel.LoadSlotsVisible, Is.False);
+            Assert.That(host.Runtime.GetView().Paused, Is.True);
+        }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator AutosaveContinueFallsBackFromBrokenManualAndKeepsFiles()
+        {
+            yield return StartGame();
+            string automatic = File.ReadAllText(AutomaticPath);
+            File.WriteAllText(ManualPath, "{broken manual");
+            Menu.ReturnToMenu();
+            Assert.That(Menu.View.ContinueButton.interactable, Is.True);
+            Menu.Continue();
+            yield return WaitForGame();
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
+            Assert.That(File.ReadAllText(ManualPath), Is.EqualTo("{broken manual"));
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+        }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator AutosaveDoorKeepsPreInteractionStateAndDetachesOldRuntime()
+        {
+            yield return StartGame();
+            var fixture = Fixture();
+            DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.MorningInspection && view.Cue == null);
+            host.RestoreCheckpoint(fixture.Save());
+            var previous = host.Runtime;
+            host.RestoreCheckpoint(fixture.Save());
+            var runtime = host.Runtime;
+            host.Save();
+            string manual = File.ReadAllText(ManualPath);
+            string oldAutomatic = File.ReadAllText(AutomaticPath);
+            Assert.That(previous.TryInteract(InteractionTarget.Door).Accepted, Is.True);
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(oldAutomatic), "Old runtime has no disk subscription.");
+            string checkpoint = runtime.Save();
+            Assert.That(runtime.TryInteract(InteractionTarget.Door).Accepted, Is.True);
+            string automatic = File.ReadAllText(AutomaticPath);
+            Assert.That(JsonUtility.FromJson<AutomaticEnvelope>(automatic).Runtime, Is.EqualTo(checkpoint));
+            Assert.That(File.ReadAllText(ManualPath), Is.EqualTo(manual));
+            Assert.That(runtime.TryInteract(InteractionTarget.Door).Accepted, Is.False);
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            Assert.That(host.TryLoadCampaign(AutomaticPath, out var error), Is.True, error);
+            Assert.That(host.Runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.MorningInspection));
+            Assert.That(host.Runtime.GetView().Cue, Is.Null);
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic), "Loading does not autosave.");
+        }
+
+        [Serializable] private sealed class AutomaticEnvelope { public string Runtime; }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator AutosaveEmptySlotsDisableLoadingAndKeepReturnNavigation()
+        {
+            yield return StartGame();
+            File.Delete(AutomaticPath);
+            host.Load();
+            var panel = host.Screen.GetComponentInChildren<PauseMenuView>(true);
+            Assert.That(panel.LoadSlotButtons[0].interactable, Is.False);
+            Assert.That(panel.LoadSlotButtons[1].interactable, Is.False);
+            Assert.That(EventSystem.current.currentSelectedGameObject, Is.EqualTo(panel.LoadSlotButtons[2].gameObject));
+            Assert.That(panel.LoadSlotButtons[2].navigation.selectOnDown, Is.SameAs(panel.LoadSlotButtons[2]));
+            host.HandleEscape();
+            Menu.ReturnToMenu();
+            Assert.That(Menu.View.ContinueButton.interactable, Is.False);
+        }
+
+        [UnityTest, Timeout(90000)]
+        public IEnumerator AutosaveWithoutDreamFlowKeepsFailureNoticeAfterAcceptedDoor()
+        {
+            yield return StartGame();
+            var profile = Object.Instantiate(host.DreamProfile);
+            profile.EnableDreamFlow = false;
+            try
+            {
+                host.ConfigureDreams(profile, Resources.Load<PlayerRebellionProfile>("MiniGame/PlayerRebellion"));
+                host.StartCampaign();
+                Assert.That(MiniGameSessionHost.Current, Is.Null);
+                var compiled = EndingCampaignScenario.LoadPackage();
+                var fixture = new GameRuntime(compiled.Rules, compiled.Content, true);
+                DriveTo(fixture, view => view.Game.Day == 1 && view.Game.Phase == GamePhase.MorningInspection && view.Cue == null);
+                host.RestoreCheckpoint(fixture.Save());
+                string blockingFile = Path.Combine(directory, "blocked-auto-directory");
+                File.WriteAllText(blockingFile, "keep");
+                MainMenuController.SaveDirectoryOverride = blockingFile;
+                Assert.That(host.Runtime.TryInteract(InteractionTarget.Door).Accepted, Is.True);
+                host.Screen.ClearNotification(); // The successful world interaction clears immediate feedback.
+                MainMenuController.SaveDirectoryOverride = directory;
+                yield return null;
+                yield return null;
+                Assert.That(host.Screen.GetComponentsInChildren<Text>(true).Single(text => text.name == "Notification").text,
+                    Does.Contain("自动保存失败"));
+            }
+            finally { MainMenuController.SaveDirectoryOverride = directory; Object.Destroy(profile); }
+        }
+
         [UnityTest, Timeout(90000), Category("PixelStrength")]
         public IEnumerator FreshLaunchHasOnlyStartPromptAndStartsOneDayZeroPeriod()
         {
@@ -176,10 +327,12 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
             Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
 
+            host.Save();
             Menu.View.ContinueButton.onClick.Invoke();
             Assert.That(host.Screen.RequestDayZeroOpening(), Is.False, "Continue's frame is still owned by the menu.");
             yield return WaitForGame();
-            Assert.That(host.Runtime, Is.SameAs(runtime));
+            Assert.That(host.Runtime, Is.Not.SameAs(runtime));
+            runtime = host.Runtime;
             Assert.That(host.Screen.DayZeroOpeningWaiting, Is.False);
             Assert.That(runtime.GetView().Transcript.Count, Is.EqualTo(transcriptCount));
             Assert.That(runtime.GetView().Game.CurrentNodeId, Is.EqualTo(node));
@@ -353,6 +506,7 @@ namespace MiniGame.UnityHost.Tests
             var position = camera.transform.position;
             var rotation = camera.transform.rotation;
 
+            host.Save();
             Menu.ReturnToMenu();
             string pausedText = body.text;
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
@@ -369,25 +523,24 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
             Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
 
-            float resumeRequestedAt = Time.realtimeSinceStartup;
             Menu.View.ContinueButton.onClick.Invoke();
             Assert.That(host.Screen.HandleTerminalKey(KeyCode.Return), Is.False);
             yield return WaitForGame();
-            Assert.That(host.Runtime, Is.SameAs(runtime));
+            Assert.That(host.Runtime, Is.Not.SameAs(runtime));
+            runtime = host.Runtime;
             Assert.That(runtime.GetView().Game.CurrentNodeId, Is.EqualTo(node));
-            Assert.That(runtime.GetView().Cue?.Token, Is.EqualTo(cue));
+            if (cue != null) Assert.That(runtime.GetView().Cue?.Token, Is.Not.EqualTo(cue), "Loading invalidates presentation callbacks.");
+            else Assert.That(runtime.GetView().Cue, Is.Null);
             Assert.That(runtime.GetView().Transcript.Count, Is.EqualTo(transcriptCount));
             Assert.That(runtime.IsDialogueLineComplete(sourceId), Is.False, "Continue cannot complete a Yarn source line or select a response.");
-            Assert.That(body.text.StartsWith(pausedText, StringComparison.Ordinal), Is.True);
-            int naturalCharacters = Mathf.CeilToInt((Time.realtimeSinceStartup - resumeRequestedAt) * typingSpeed) + 1;
-            Assert.That(body.text.Length - pausedText.Length, Is.LessThanOrEqualTo(naturalCharacters),
-                "Resuming permits only normal character timing, never a confirm-key full-line reveal.");
+            Assert.That(line.Text.StartsWith(body.text, StringComparison.Ordinal), Is.True,
+                "Loading may replay the current source line, but must not advance it.");
             Assert.That(Vector3.Distance(camera.transform.position, position), Is.LessThan(.001f));
             Assert.That(Quaternion.Angle(camera.transform.rotation, rotation), Is.LessThan(.01f));
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator ReturningDuringDreamFreezesTheSameSessionAcrossSettingsAndContinuesInPlace()
+        public IEnumerator ReturningDuringDreamFreezesThenReloadsManualCheckpoint()
         {
             yield return StartGame();
             RestoreDream();
@@ -398,7 +551,7 @@ namespace MiniGame.UnityHost.Tests
             var camera = host.Player.ViewCamera;
             var position = camera.transform.position;
             var rotation = camera.transform.rotation;
-            File.WriteAllText(ManualPath, "manual save must remain byte-for-byte unchanged");
+            host.Save();
             string manual = File.ReadAllText(ManualPath);
             Menu.ReturnToMenu();
             Assert.That(Menu.HasRetainedGame, Is.True);
@@ -433,7 +586,7 @@ namespace MiniGame.UnityHost.Tests
             Menu.View.ContinueButton.onClick.Invoke();
             Assert.That(MainMenuController.BlocksGameplayInput, Is.True, "Continue also consumes its triggering frame.");
             yield return WaitForGame();
-            Assert.That(host.Runtime, Is.SameAs(runtime));
+            Assert.That(host.Runtime, Is.Not.SameAs(runtime));
             Assert.That(host.Dreams.PlaybackSeconds, Is.EqualTo(2.25f).Within(.001f));
             host.Dreams.Advance(.25f);
             Assert.That(host.Dreams.PlaybackSeconds, Is.EqualTo(2.5f).Within(.001f));
@@ -441,7 +594,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator HiddenSpaceContinueCrossfadesItsMusicAndOceanWithoutResumingVoiceEarly()
+        public IEnumerator HiddenSpaceContinueReloadsManualCheckpointAndResumesItsOcean()
         {
             yield return StartGame();
             Assert.That(host.DreamProfile.UseRoomCubemapEnding, Is.True);
@@ -461,85 +614,24 @@ namespace MiniGame.UnityHost.Tests
             var room = Object.FindObjectOfType<RoomDreamEnding>();
             var ending = room.Ending;
             ending.UseExternalClock = true;
-            var productionAudio = ending.Profile.Audio;
-            var productionMusic = productionAudio.GetClip(MiniGameSound.EndingMusic);
-            bool hasMusic = productionMusic != null;
-            Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic).clip, Is.EqualTo(productionMusic));
-            MiniGameAudioProfile alternateAudio = null;
-            var voiceClip = AudioClip.Create("Hidden menu voice pause regression", 44100 * 4, 1, 44100, false);
-            try
-            {
-                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, hasMusic);
-
-                // Exercise the opposite optional-music branch without changing the authored audio profile.
-                alternateAudio = Object.Instantiate(productionAudio);
-                alternateAudio.Sounds = productionAudio.Sounds.Select(entry => entry == null ? null
-                    : new MiniGameSoundEntry { Id = entry.Id, Clip = entry.Clip, Volume = entry.Volume }).ToArray();
-                var testMusic = hasMusic ? null : productionAudio.GetClip(MiniGameSound.Gameplay);
-                if (!hasMusic) Assert.That(testMusic, Is.Not.Null);
-                alternateAudio.GetEntry(MiniGameSound.EndingMusic).Clip = testMusic;
-                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.EqualTo(productionMusic));
-                ending.SetPaused(false);
-                ending.Audio.Configure(alternateAudio);
-                ending.Audio.SetLoop(MiniGameAudioChannel.EndingMusic, MiniGameSound.EndingMusic, 0);
-                ending.Audio.SetLoop(MiniGameAudioChannel.Ocean, MiniGameSound.OceanWaves, 0);
-                yield return VerifyHiddenSpaceAudioContinue(ending, voiceClip, !hasMusic);
-                Assert.That(productionAudio.GetClip(MiniGameSound.EndingMusic), Is.EqualTo(productionMusic));
-            }
-            finally
-            {
-                ending.Audio.Configure(productionAudio);
-                if (alternateAudio != null) Object.Destroy(alternateAudio);
-                Object.Destroy(voiceClip);
-            }
-        }
-
-        private IEnumerator VerifyHiddenSpaceAudioContinue(DreamEndingController ending, AudioClip voiceClip, bool hasMusic)
-        {
-            var music = ending.Audio.GetSource(MiniGameAudioChannel.EndingMusic);
-            var ocean = ending.Audio.GetSource(MiniGameAudioChannel.Ocean);
-            Assert.That(ocean.clip, Is.Not.Null);
-            Assert.That(music.clip != null, Is.EqualTo(hasMusic));
-            yield return Until(() => (!hasMusic || music.isPlaying && music.volume > 0) && ocean.isPlaying && ocean.volume > 0,
-                "configured hidden-space audio", 3);
-            float musicVolume = music.volume, oceanVolume = ocean.volume;
-            var position = ending.ViewCamera.transform.position;
-            var rotation = ending.ViewCamera.transform.rotation;
-            ending.Audio.PlayVoice(voiceClip, .25f, 1);
             ending.SetPaused(true);
+            host.Save();
+            var previousRuntime = host.Runtime;
+            var position = ending.ViewCamera.transform.position;
             Menu.ReturnToMenu();
-            var voice = ending.Audio.GetSource(MiniGameAudioChannel.Voice);
-            int musicSample = music.timeSamples, oceanSample = ocean.timeSamples, voiceSample = voice.timeSamples;
-            yield return new WaitForSecondsRealtime(.15f);
-            Assert.That(music.timeSamples, Is.EqualTo(musicSample));
-            Assert.That(ocean.timeSamples, Is.EqualTo(oceanSample));
-            Menu.View.ContinueButton.onClick.Invoke();
-            yield return Until(() => Menu.TransitionElapsed > .08f && Menu.TransitionElapsed < .35f,
-                "hidden-space crossfade midpoint", 3);
-            Assert.That(host.Runtime.GetView().Paused, Is.True);
-            Assert.That(music.isPlaying, Is.EqualTo(hasMusic));
-            Assert.That(ocean.isPlaying, Is.True);
-            if (hasMusic)
-            {
-                Assert.That(music.volume, Is.GreaterThan(0).And.LessThan(musicVolume));
-                Assert.That(music.timeSamples, Is.GreaterThan(musicSample), "Ending music resumes its retained playhead.");
-            }
-            Assert.That(ocean.volume, Is.GreaterThan(0).And.LessThan(oceanVolume));
-            Assert.That(ocean.timeSamples, Is.GreaterThan(oceanSample), "Ocean ambience participates in the same fade.");
-            Assert.That(voice.isPlaying, Is.False, "Only the selected loops bypass logical pause during the fade.");
-            Assert.That(voice.timeSamples, Is.EqualTo(voiceSample));
-            Assert.That(host.Audio.Service.GetSource(MiniGameAudioChannel.GameplayMusic).isPlaying, Is.False);
-            Assert.That(host.Screen.Canvas.enabled, Is.False, "The disabled room UI must not cover the hidden space.");
+            Menu.Continue();
             yield return WaitForGame();
-            Assert.That(ending.Paused, Is.False);
-            Assert.That(music.isPlaying, Is.EqualTo(hasMusic));
-            Assert.That(ocean.isPlaying && voice.isPlaying, Is.True);
+            yield return Until(() => Object.FindObjectOfType<RoomDreamEnding>() != null
+                && Object.FindObjectOfType<RoomDreamEnding>().Ready, "restored hidden space ready", 20);
+            ending = Object.FindObjectOfType<RoomDreamEnding>().Ending;
+            Assert.That(host.Runtime, Is.Not.SameAs(previousRuntime));
+            Assert.That(host.Runtime.GetView().Game.Ending, Is.EqualTo(EndingType.DreamSea));
+            yield return Until(() => ending.Audio.GetSource(MiniGameAudioChannel.Ocean).isPlaying,
+                "restored ocean audio", 3);
             Assert.That(host.Screen.Canvas.enabled, Is.False);
             Assert.That(Vector3.Distance(ending.ViewCamera.transform.position, position), Is.LessThan(.001f));
-            Assert.That(Quaternion.Angle(ending.ViewCamera.transform.rotation, rotation), Is.LessThan(.01f));
             ending.SetPaused(true);
-            Assert.That(music.isPlaying || ocean.isPlaying || voice.isPlaying, Is.False,
-                "The temporary music override must be removed after Continue.");
+            Assert.That(ending.Audio.GetSource(MiniGameAudioChannel.Ocean).isPlaying, Is.False);
         }
 
         [UnityTest, Timeout(90000)]
@@ -553,6 +645,7 @@ namespace MiniGame.UnityHost.Tests
             PlayerPreferences.SetMasterVolume(.4f);
             PlayerGraphicsSettings.SetDetail(PixelDetail.Medium);
             File.WriteAllText(ManualPath, "retain this manual checkpoint");
+            MiniGameSessionHost.Current.SaveAutomatic();
             Menu.ReturnToMenu();
             var previousRuntime = host.Runtime;
             var previousHost = host;
@@ -581,20 +674,18 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator CorruptAutomaticProgressIsReportedInsteadOfFallingBackToValidManualProgress()
+        public IEnumerator CorruptAutomaticProgressDoesNotOverrideValidManualProgress()
         {
             MiniGameBootstrap.WriteNewCampaignContinuation(ManualPath);
             string manual = File.ReadAllText(ManualPath);
             File.WriteAllText(AutomaticPath, "{broken automatic save");
             Menu.ShowStartup();
             Assert.That(Menu.View.Page, Is.EqualTo(MainMenuPage.Menu));
-            Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(AutomaticPath));
+            Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(ManualPath));
             Menu.View.ContinueButton.onClick.Invoke();
-            yield return null;
-            Assert.That(host.Runtime, Is.Null);
-            Assert.That(MiniGameSessionHost.Current, Is.Null);
-            Assert.That(Menu.View.Page, Is.EqualTo(MainMenuPage.Menu));
-            Assert.That(StatusText(), Does.Contain("读取失败"));
+            yield return WaitForGame();
+            Assert.That(host.Runtime, Is.Not.Null);
+            Assert.That(host.Runtime.GetView().Game.Day, Is.Zero);
             Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo("{broken automatic save"));
             Assert.That(File.ReadAllText(ManualPath), Is.EqualTo(manual));
         }
@@ -608,6 +699,7 @@ namespace MiniGame.UnityHost.Tests
             host.Dreams.Advance(2.25f);
             var previousRuntime = host.Runtime;
             var savedPosition = host.Player.ViewCamera.transform.position;
+            MiniGameSessionHost.Current.SaveTo(AutomaticPath);
             Menu.ReturnToMenu();
             yield return RebootToTitle();
             Assert.That(host.Runtime, Is.Null);
@@ -635,6 +727,7 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(host.Runtime.GetView().Game.Day, Is.EqualTo(2));
             yield return Until(() => host.Effects.CaptureSleepCheckpoint()?.Phase == SleepTransitionPhase.Waking
                 && host.Effects.CaptureSleepCheckpoint().WakeElapsed >= .15f, "automatic wake progress", 5);
+            MiniGameSessionHost.Current.SaveTo(AutomaticPath);
             Menu.ReturnToMenu();
             float elapsed = host.Effects.CaptureSleepCheckpoint().WakeElapsed;
             Assert.That(elapsed, Is.GreaterThanOrEqualTo(.15f));
@@ -657,24 +750,22 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(90000)]
-        public IEnumerator FailedAutomaticSaveKeepsRetainedSessionAvailableAndShowsAnError()
+        public IEnumerator FailedAutomaticSavePreservesFilesAndDoesNotBlockGameplay()
         {
             yield return StartGame();
             RestoreDream();
+            string automatic = File.ReadAllText(AutomaticPath);
             string blockingFile = Path.Combine(directory, "not-a-directory");
             File.WriteAllText(blockingFile, "preserve this file");
             MainMenuController.SaveDirectoryOverride = blockingFile;
             var runtime = host.Runtime;
-            Menu.ReturnToMenu();
-            Assert.That(Menu.View.Page, Is.EqualTo(MainMenuPage.Menu));
-            Assert.That(StatusText(), Does.Contain("保存失败"));
-            Assert.That(Menu.HasRetainedGame, Is.True);
-            Assert.That(runtime.GetView().Paused, Is.True);
-            Assert.That(File.ReadAllText(blockingFile), Is.EqualTo("preserve this file"));
-            MainMenuController.SaveDirectoryOverride = directory;
-            Menu.View.ContinueButton.onClick.Invoke();
-            yield return WaitForGame();
+            MiniGameSessionHost.Current.SaveAutomatic();
+            Assert.That(MiniGameSessionHost.Current.LastMessage, Does.Contain("保存失败"));
             Assert.That(host.Runtime, Is.SameAs(runtime));
+            Assert.That(File.ReadAllText(blockingFile), Is.EqualTo("preserve this file"));
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            MainMenuController.SaveDirectoryOverride = directory;
+            yield return null;
         }
 
         [UnityTest, Timeout(90000), Category("InteractionWakeGm")]
@@ -997,12 +1088,12 @@ namespace MiniGame.UnityHost.Tests
             transitionTrace = null;
         }
 
-        private IEnumerator CaptureIfRequested(string name)
+        private IEnumerator CaptureIfRequested(string name, Canvas captureCanvas = null)
         {
             string output = Environment.GetEnvironmentVariable("MINIGAME_MENU_CAPTURE_DIR");
             if (string.IsNullOrWhiteSpace(output)) yield break;
             Directory.CreateDirectory(output);
-            var canvas = Menu.View.Canvas;
+            var canvas = captureCanvas != null ? captureCanvas : Menu.View.Canvas;
             var originalMode = canvas.renderMode;
             var originalCamera = canvas.worldCamera;
             float originalPlane = canvas.planeDistance;

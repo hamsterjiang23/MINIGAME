@@ -41,6 +41,14 @@ Norm 标志与监控局部扰动通过游戏内 **F6** 调参，支持两组独�
 
 全流程包含五名正式角色的Day1–3对白和Day0教学，立绘由 [人物资源目录](../Art/Characters/README.md) 导入；晨检、梦境和结局沿用现有演出。全流程读档跳过已完成的句子，从当前未完成句的第一页重新显示。V1编辑仍使用[独立HTML工具](../Tools/DialoguePlanner/DialoguePlanner.html)，该工具拒绝修改V2全流程包。`[verified: Assets/MiniGame/Content/Campaign/provenance.json meetingCount；Assets/MiniGame/Editor/CampaignBuilder.cs ImportPortraits；Assets/MiniGame/Yarn/MiniGameYarnBridge.cs PresentLineAsync；../Tools/DialoguePlanner/planner-core.js assertEditablePackage]`
 
+
+### 手动与自动存档
+
+- **F5／保存进度**只更新手动槽；**F9／读取存档**打开手动、自动两个独立槽位，显示保存时间，可用鼠标或上下键选择，Enter读取，Esc返回暂停菜单。空槽或校验失败的槽位不可读取。`[verified: Assets/MiniGame/Runtime/MiniGameBootstrap.cs Save/Load；Assets/MiniGame/Runtime/PauseMenuView.cs ShowLoadSlots/LoadSelectedSlot]`
+- 自动槽使用 `campaign-continue.json`：有效床／门交互前保存，对话选项成功结算后保存；包含海滩床。无效操作、镜头返回和读档本身不更新自动槽。写入失败保留旧档，提示错误并继续游戏。`[verified: ../src/MiniGame.Presentation/GameRuntime.cs AutoSaveRequested/TryInteract/SelectResponse；Assets/MiniGame/Runtime/MiniGameSessionHost.cs SaveAutomatic/WriteAtomically；Assets/MiniGame/Runtime/DreamEndingController.cs TryLieDown]`
+- 主菜单“继续检查”始终读取存档：依次尝试 `campaign-dream-save.json`、旧版 `campaign-save.json`、自动槽，跳过校验失败的文件。结局结束后仍可读取此前检查点；返回菜单及结局结束不覆盖自动槽。暂停菜单“继续检查”只解除暂停。`[verified: Assets/MiniGame/Runtime/MainMenuContinueStore.cs CandidatePaths/ResolveAvailable；Assets/MiniGame/Runtime/MainMenuController.cs Continue/ReturnToMenu/CompleteInspectionAndReturnToMenu]`
+- 开始新检查期替换自动槽，保留手动槽。对话恢复沿用段落／演出检查点，可能重播当前对白，不重复结算已接受的回答或处置。`[verified: Assets/MiniGame/Runtime/MiniGameBootstrap.cs TryPrepareNewCampaign；../src/README.md「保存与恢复」「Unity／Yarn接入」]`
+
 ## 可重放的本机验证路线
 
 全流程内容、原生Yarn、项目PlayMode、截图及Windows开发构建的当前结果见[全流程验收报告](../docs/campaign-verification.json)；下面的切片验证保留历史日期和范围。`[opinion]`

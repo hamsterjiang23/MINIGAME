@@ -112,7 +112,7 @@ namespace MiniGame.UnityHost
             Border(confirmation, 1040, 280);
             TextAt(confirmation, "ConfirmTitle", "开始新的检查期？", GameUiTypography.ReferenceSize, 30, 24, 980, 48);
             var description = TextAt(confirmation, "ConfirmDescription",
-                "当前自动继续进度将被替换。\n手动存档和设置保留。", 26, 30, 82, 980, 82);
+                "自动存档将被替换为新检查期。\n手动存档和设置保留。", 26, 30, 82, 980, 82);
             description.lineSpacing = 1.2f;
             ConfirmButton = ButtonAt(confirmation, "ConfirmNew", "确认", new Vector2(.31f, .18f), 300, 64,
                 MainMenuPage.ConfirmNew, confirm, out _);

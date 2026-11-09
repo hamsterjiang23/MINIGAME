@@ -35,6 +35,7 @@ namespace MiniGame.UnityHost
         private bool hiddenThanksReady;
         private EndingThanksView thanks;
         private int flowGeneration;
+        private string pendingAutoSaveError;
         private bool UsesRoomEnding => DreamProfile != null && DreamProfile.UseRoomCubemapEnding;
 
         public static MiniGameSessionHost Install(GameRuntime runtime, GameRules rules, IGameContent content, DreamSequenceProfile profile)
@@ -50,7 +51,7 @@ namespace MiniGame.UnityHost
             host.StopAllCoroutines();
             host.IsTransitioning = false;
             host.StopRoomEnding();
-            host.Runtime = runtime; host.Rules = rules; host.Content = content; host.DreamProfile = profile;
+            host.BindRuntime(runtime); host.Rules = rules; host.Content = content; host.DreamProfile = profile;
             host.DreamCheckpoint = null; host.EndingCheckpoint = null; host.SleepCheckpoint = null;
             host.RoomEndingTransition = null; host.ThanksCheckpoint = null;
             host.pendingEndingFadePose = null;
@@ -68,12 +69,19 @@ namespace MiniGame.UnityHost
             if (Current == null) return;
             var previous = Current;
             Current = null;
+            previous.BindRuntime(null);
             previous.StopRoomEnding();
             Destroy(previous.gameObject);
         }
 
         private void LateUpdate()
         {
+            if (pendingAutoSaveError != null)
+            {
+                FindObjectOfType<MiniGameBootstrap>()?.Screen.Notify(pendingAutoSaveError, true);
+                FindObjectOfType<DreamEndingController>()?.NotifySaveError(pendingAutoSaveError);
+                pendingAutoSaveError = null;
+            }
             if (Runtime == null || IsTransitioning) return;
             var view = Runtime.GetView();
             if (roomEnding != null && !string.IsNullOrEmpty(roomEnding.FailureReason)) roomEndingFailed = true;
@@ -239,13 +247,32 @@ namespace MiniGame.UnityHost
             RoomEndingTransition = null; ThanksCheckpoint = null; SupervisorCheckpoint = null;
             pendingRoomPose = null; pendingEndingFadePose = null;
             roomEndingFailed = hiddenThanksReady = false;
-            Runtime = replacement;
+            BindRuntime(replacement);
             PendingCombinedRestore = true;
             var room = FindObjectOfType<MiniGameBootstrap>();
             if (room != null) room.RestoreFromSession(this);
             else TransitionTo(CombinedScene);
             LastMessage = "已进入所选 GM 结局。";
             return true;
+        }
+
+        public string AutomaticSavePath => Path.Combine(MainMenuController.SaveDirectoryOverride
+            ?? MiniGameBootstrap.SaveDirectory, "campaign-continue.json");
+
+        private void BindRuntime(GameRuntime runtime)
+        {
+            pendingAutoSaveError = null;
+            if (Runtime != null) Runtime.AutoSaveRequested -= SaveAutomatic;
+            Runtime = runtime;
+            if (Runtime != null) Runtime.AutoSaveRequested += SaveAutomatic;
+        }
+
+        public void SaveAutomatic()
+        {
+            if (Runtime == null || !Runtime.IsCampaign) return;
+            if (TrySaveTo(AutomaticSavePath, out var error)) return;
+            // World interaction feedback clears notices synchronously; report after the command returns.
+            pendingAutoSaveError = "自动" + error;
         }
 
         public void Save() => SaveTo(SavePath);
@@ -320,31 +347,44 @@ namespace MiniGame.UnityHost
         public void Load() => LoadFrom(SavePath);
         public void LoadFrom(string path) => TryLoadFrom(path, out _);
 
+        public static bool TryValidateSave(string path, GameRules rules, IGameContent content, out string error)
+        {
+            try { ReadSave(path, rules, content, true, out _); error = null; return true; }
+            catch (Exception exception) { error = "读取失败：" + exception.Message; return false; }
+        }
+
+        private static DreamSessionSave ReadSave(string path, GameRules rules, IGameContent content,
+            bool pauseOnLoad, out GameRuntime restored)
+        {
+            var json = File.ReadAllText(path, Encoding.UTF8);
+            var envelope = JsonUtility.FromJson<DreamSessionSave>(json);
+            // Pre-dream manual saves contain the strict runtime checkpoint directly.
+            // Let the authoritative parser validate it before changing this session.
+            if (envelope != null && envelope.FormatVersion == 0 && string.IsNullOrEmpty(envelope.Runtime))
+                envelope = new DreamSessionSave { FormatVersion = 1, Runtime = json };
+            if (envelope == null || envelope.FormatVersion != 1 || string.IsNullOrEmpty(envelope.Runtime))
+                throw new InvalidDataException("存档版本不兼容；旧存档文件已保留，请开始新的梦境流程。");
+            restored = GameRuntime.Restore(envelope.Runtime, rules, content,
+                rules.DreamFlowEnabled ? EndingDialoguePresenter.LoadCatalog() : null, pauseOnLoad);
+            if (restored.EndingStage == EndingStage.Completed)
+                throw new InvalidDataException("本次检查期已结束，请开始新的检查期。存档文件已保留。");
+            ValidateVisualCheckpoint(envelope, restored.GetView());
+            return envelope;
+        }
+
         public bool TryLoadFrom(string path, out string error, bool pauseOnLoad = false)
         {
             error = null;
             try
             {
                 if (IsTransitioning && roomEnding == null) throw new InvalidOperationException("请等待场景切换结束后读取。");
-                var json = File.ReadAllText(path, Encoding.UTF8);
-                var envelope = JsonUtility.FromJson<DreamSessionSave>(json);
-                // Pre-dream manual saves contain the strict runtime checkpoint directly.
-                // Let the authoritative parser validate it before changing this session.
-                if (envelope != null && envelope.FormatVersion == 0 && string.IsNullOrEmpty(envelope.Runtime))
-                    envelope = new DreamSessionSave { FormatVersion = 1, Runtime = json };
-                if (envelope == null || envelope.FormatVersion != 1 || string.IsNullOrEmpty(envelope.Runtime))
-                    throw new InvalidDataException("存档版本不兼容；旧存档文件已保留，请开始新的梦境流程。");
-                var restored = GameRuntime.Restore(envelope.Runtime, Rules, Content,
-                    Rules.DreamFlowEnabled ? EndingDialoguePresenter.LoadCatalog() : null, pauseOnLoad);
-                if (restored.EndingStage == EndingStage.Completed)
-                    throw new InvalidDataException("本次检查期已结束，请开始新的检查期。存档文件已保留。");
-                ValidateVisualCheckpoint(envelope, restored.GetView());
+                var envelope = ReadSave(path, Rules, Content, pauseOnLoad, out var restored);
                 flowGeneration++;
                 StopAllCoroutines(); IsTransitioning = false;
                 StopRoomEnding();
                 if (thanks != null) Destroy(thanks.gameObject);
                 thanks = null;
-                Runtime = restored;
+                BindRuntime(restored);
                 SupervisorCheckpoint = envelope.Supervisor;
                 SupervisorScanDays = envelope.SupervisorScanDays ?? Array.Empty<int>();
                 SleepCheckpoint = envelope.HasSleepCheckpoint ? envelope.Sleep : null;
@@ -397,6 +437,7 @@ namespace MiniGame.UnityHost
                     if (bootstrap != null) bootstrap.RestoreFromSession(this);
                     else TransitionTo(CombinedScene);
                 }
+                MainMenuController.Current?.NotifyProgressLoaded();
                 LastMessage = "存档已读取。";
                 return true;
             }
@@ -491,7 +532,7 @@ namespace MiniGame.UnityHost
             SceneManager.LoadSceneAsync(CombinedScene, LoadSceneMode.Single);
         }
 
-        private void OnDestroy() { StopRoomEnding(false); if (thanks != null) Destroy(thanks.gameObject); if (Current == this) Current = null; }
+        private void OnDestroy() { BindRuntime(null); StopRoomEnding(false); if (thanks != null) Destroy(thanks.gameObject); if (Current == this) Current = null; }
 
         private static void WriteAtomically(string path, string json)
         {

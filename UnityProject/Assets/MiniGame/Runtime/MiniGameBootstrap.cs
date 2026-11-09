@@ -87,6 +87,8 @@ namespace MiniGame.UnityHost
         {
             get
             {
+                if (!string.IsNullOrEmpty(MainMenuController.SaveDirectoryOverride))
+                    return MainMenuController.SaveDirectoryOverride;
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
                 if (!string.IsNullOrEmpty(TerminalDossierPlayerProbe.IsolatedSaveDirectory))
                     return TerminalDossierPlayerProbe.IsolatedSaveDirectory;
@@ -154,6 +156,7 @@ namespace MiniGame.UnityHost
 
         private void OnDestroy()
         {
+            if (Runtime != null) Runtime.AutoSaveRequested -= SaveAutomaticWithoutSession;
             if (screen == null) return;
             screen.SaveRequested -= Save;
             screen.LoadRequested -= Load;
@@ -163,8 +166,15 @@ namespace MiniGame.UnityHost
 
         private void ReturnToMainMenu() => MainMenu?.ReturnToMenu();
 
+        private string pendingAutoSaveError;
+
         private void Update()
         {
+            if (pendingAutoSaveError != null)
+            {
+                screen.Notify(pendingAutoSaveError, true);
+                pendingAutoSaveError = null;
+            }
             if (MainMenuController.BlocksGameplayInput) return;
             if (Runtime == null || (MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning)) return;
             ApplyRoomInteractionSettings();
@@ -185,7 +195,7 @@ namespace MiniGame.UnityHost
             if (Runtime == null || screen.PresentationToolsBlockInput
                 || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
             var view = Runtime.GetView();
-            if (view.Paused) { if (!screen.TryClosePauseGm() && !screen.TryClosePauseSettings() && !screen.TryClosePauseManual()) Runtime.SetPaused(false); }
+            if (view.Paused) { if (!screen.TryClosePauseLoad() && !screen.TryClosePauseGm() && !screen.TryClosePauseSettings() && !screen.TryClosePauseManual()) Runtime.SetPaused(false); }
             else if (screen.TryClosePropNarration()) { }
             else if (screen.TryCloseHistory()) { }
             else if (view.Inspection != null) Runtime.CloseInspection();
@@ -201,7 +211,10 @@ namespace MiniGame.UnityHost
             if (!prepared && Dreams != null) Dreams.PrepareForRuntimeChange();
             var doorView = player.ViewCamera.GetComponent<DoorViewCamera>();
             if (!prepared && doorView != null) doorView.PrepareForRuntimeChange(runtime);
+            pendingAutoSaveError = null;
+            if (Runtime != null) Runtime.AutoSaveRequested -= SaveAutomaticWithoutSession;
             Runtime = runtime;
+            Runtime.AutoSaveRequested += SaveAutomaticWithoutSession;
             ApplyRoomInteractionSettings();
             MarkOpeningPreparation("install.prepare_previous_adapters_and_interactions");
             if (installSession)
@@ -289,6 +302,13 @@ namespace MiniGame.UnityHost
                 screen.Notify(session == null ? "当前流程不支持 GM 结局。" : error, true);
         }
 
+        private void SaveAutomaticWithoutSession()
+        {
+            if (!campaignActive || MiniGameSessionHost.Current != null) return;
+            try { new RuntimeFileSaveStore(Path.Combine(SaveDirectory, "campaign-continue.json")).Save(Runtime); }
+            catch (Exception exception) { pendingAutoSaveError = "自动保存失败：" + exception.Message; }
+        }
+
         public void Save()
         {
             if (Runtime.UsesDreamFlow && MiniGameSessionHost.Current != null)
@@ -308,6 +328,12 @@ namespace MiniGame.UnityHost
 
         public void Load()
         {
+            if (campaignActive)
+            {
+                Runtime.SetPaused(true);
+                screen.ShowLoadSlots(this);
+                return;
+            }
             if (Runtime.UsesDreamFlow && MiniGameSessionHost.Current != null)
             {
                 MiniGameSessionHost.Current.Load();
@@ -441,11 +467,36 @@ namespace MiniGame.UnityHost
             { FinishOpeningPreparation("failed"); error = "新检查期未开始：" + exception.Message; return false; }
         }
 
+        public string FindCampaignSave(CampaignSaveSlot? slot, out string warning, string directory = null)
+        {
+            return MainMenuContinueStore.ResolveAvailable(directory ?? SaveDirectory, slot,
+                path => TryValidateCampaignSave(path, out var error) ? null : error, out warning);
+        }
+
+        public bool TryValidateCampaignSave(string path, out string error)
+        {
+            try
+            {
+                var package = Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage");
+                if (package == null || package.PackageSource == null || package.Project == null)
+                    throw new InvalidOperationException("缺少正式对话配置。");
+                var compiled = CompilePreparedPackage(package);
+                if (compiled.SourceHash != package.SourceHash || package.Project.Program == null)
+                    throw new InvalidOperationException("对话源与编译结果不一致。");
+                PrepareCampaignSeed(compiled);
+                return MiniGameSessionHost.TryValidateSave(path, preparedCampaign.Rules, compiled.Content, out error);
+            }
+            catch (Exception exception) { error = "读取失败：" + exception.Message; return false; }
+        }
+
         public bool TryLoadCampaign(string path, out string error)
         {
             error = null;
             try
             {
+                if (!TryValidateCampaignSave(path, out error)) return false;
+                if (MiniGameSessionHost.Current != null)
+                    return MiniGameSessionHost.Current.TryLoadFrom(path, out error, pauseOnLoad: true);
                 PrepareContent(Resources.Load<DialoguePackageAsset>("MiniGame/ActiveCampaignPackage"));
                 var session = MiniGameSessionHost.Install(new GameRuntime(rules, content, true), rules, content, dreamProfile);
                 if (session.TryLoadFrom(path, out error, pauseOnLoad: true)) return true;

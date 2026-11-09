@@ -1,24 +1,54 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MiniGame.UnityHost
 {
-    /// <summary>Automatic continuation has priority without replacing either manual save.</summary>
+    public enum CampaignSaveSlot { Manual, Automatic }
+
+    /// <summary>Manual progress has priority; the automatic slot never replaces a manual file.</summary>
     public static class MainMenuContinueStore
     {
         private const string CompletedName = "campaign-completed.json";
         public static string ContinuePath => Path.Combine(Application.persistentDataPath, "campaign-continue.json");
 
-        public static string ResolveResumePath(string directory = null)
+        public static IEnumerable<string> CandidatePaths(string directory, CampaignSaveSlot? slot = null)
         {
             var root = directory ?? Application.persistentDataPath;
-            if (HasCompletedInspection(root)) return null;
-            foreach (var name in new[] { "campaign-continue.json", "campaign-dream-save.json", "campaign-save.json" })
+            if (slot != CampaignSaveSlot.Automatic)
             {
-                var path = Path.Combine(root, name);
+                yield return Path.Combine(root, "campaign-dream-save.json");
+                yield return Path.Combine(root, "campaign-save.json");
+            }
+            if (slot != CampaignSaveSlot.Manual) yield return Path.Combine(root, "campaign-continue.json");
+        }
+
+        public static string ResolveResumePath(string directory = null)
+        {
+            foreach (var path in CandidatePaths(directory))
+            {
                 if (File.Exists(path)) return path;
             }
+            return null;
+        }
+
+        public static string ResolveAvailable(string directory, CampaignSaveSlot? slot,
+            Func<string, string> validate, out string warning)
+        {
+            var failures = new List<string>();
+            foreach (var path in CandidatePaths(directory, slot))
+            {
+                if (!File.Exists(path)) continue;
+                var error = validate(path);
+                if (string.IsNullOrEmpty(error))
+                {
+                    warning = failures.Count == 0 ? null : "已跳过不可用存档：" + string.Join("；", failures);
+                    return path;
+                }
+                failures.Add(Path.GetFileName(path) + "：" + error);
+            }
+            warning = failures.Count == 0 ? "空槽位" : string.Join("；", failures);
             return null;
         }
 

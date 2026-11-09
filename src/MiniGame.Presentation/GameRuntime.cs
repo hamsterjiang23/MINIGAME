@@ -109,6 +109,8 @@ namespace MiniGame.Presentation
         }
 
         public event Action<RuntimeView>? Changed;
+        /// <summary>A validated interaction is about to run, or an answer has been committed. Hosts own persistence.</summary>
+        public event Action? AutoSaveRequested;
         public bool IsCampaign => _rules.StartDay == 0;
         public bool UsesDreamFlow => _rules.DreamFlowEnabled;
         /// <summary>Transient load provenance for restoring the old dream-return camera beneath a black curtain.</summary>
@@ -209,6 +211,7 @@ namespace MiniGame.Presentation
             {
                 if (_endingStage == EndingStage.AwaitingDoor) return EnterDoorView();
                 if (view.Game.Phase != GamePhase.MorningInspection) return Reject("InteractionUnavailable");
+                AutoSaveRequested?.Invoke();
                 SetCue(PresentationKind.MorningInspection);
                 return Accept();
             }
@@ -242,6 +245,7 @@ namespace MiniGame.Presentation
                 }
                 return Accept(result?.Events);
             }
+            if (target == InteractionTarget.Bed) AutoSaveRequested?.Invoke();
             if (UsesDreamFlow && target == InteractionTarget.Bed && view.Game.Phase == GamePhase.Evening)
             {
                 _dreamFromBed = true;
@@ -357,6 +361,7 @@ namespace MiniGame.Presentation
             if (view.Game.Phase != GamePhase.MorningInspection && view.Game.Phase != GamePhase.Apartment
                 && view.Game.Phase != GamePhase.Work && _endingStage != EndingStage.AwaitingDoor) return Reject("InteractionUnavailable");
             if (!_roomDoorOpen && IsDoorLockedAfterSupervisor) return Reject("DoorLockedAfterSupervisor");
+            AutoSaveRequested?.Invoke();
             _roomDoorOpen = !_roomDoorOpen;
             SetCue(PresentationKind.DoorMotion);
             return Accept();
@@ -369,6 +374,7 @@ namespace MiniGame.Presentation
             if (view.Game.Phase != GamePhase.MorningInspection && view.Game.Phase != GamePhase.Apartment
                 && view.Game.Phase != GamePhase.Work && _endingStage != EndingStage.AwaitingDoor) return Reject("InteractionUnavailable");
             if (!_roomDoorOpen && IsDoorLockedAfterSupervisor) return Reject("DoorLockedAfterSupervisor");
+            AutoSaveRequested?.Invoke();
             _doorViewActive = true;
             _roomDoorOpen = true;
             SetCue(PresentationKind.DoorMotion);
@@ -391,7 +397,9 @@ namespace MiniGame.Presentation
             if (!result.Accepted) return Reject(result.Reason.ToString());
             AddTranscript(encounterId, nodeId, "值班员", selected?.Text ?? responseId, responseId, "", true);
             SetCue(PresentationKind.ResponseBranch);
-            return Accept(result.Events);
+            var accepted = Accept(result.Events);
+            AutoSaveRequested?.Invoke();
+            return accepted;
         }
 
         public RuntimeResult SubmitDisposition(string encounterId, Disposition disposition)

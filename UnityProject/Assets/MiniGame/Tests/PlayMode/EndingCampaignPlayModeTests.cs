@@ -233,7 +233,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator NormalDayFourOpensDoorPlaysSevenSourceLinesAndReturnsWithoutContinue()
+        public IEnumerator NormalDayFourOpensDoorPlaysSevenSourceLinesAndKeepsContinue()
         {
             yield return DoorEnding(EndingCampaignRoute.Normal, EndingType.TakenAway, "supervisor-ending", 7);
         }
@@ -325,7 +325,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator MissedDayOneQuotaUsesTheSupervisorEndingAndReturnsWithoutContinue()
+        public IEnumerator MissedDayOneQuotaUsesTheSupervisorEndingAndKeepsContinue()
         {
             yield return DoorEnding(EndingCampaignRoute.Quota, EndingType.LockedInRoom, "supervisor-ending", 7);
         }
@@ -562,7 +562,7 @@ namespace MiniGame.UnityHost.Tests
                 room.AdvanceExploration(Vector2.up, Vector2.zero, .1f);
             Assert.That(room.Ending.TryLieDown(), Is.True);
             yield return FinishHiddenBedWithExternalClock(room);
-            yield return FinishWithoutThanks("hidden-completed");
+            yield return FinishWithoutThanks("hidden-completed", verifyContinue: false);
             var session = MiniGameSessionHost.Current;
             string path = Path.Combine(temporaryDirectory, "hidden-completed.json");
             Assert.That(session.TrySaveTo(path, out var saveError), Is.True, saveError);
@@ -1205,7 +1205,7 @@ namespace MiniGame.UnityHost.Tests
             previousSample = music.timeSamples;
         }
 
-        private IEnumerator FinishWithoutThanks(string route)
+        private IEnumerator FinishWithoutThanks(string route, bool verifyContinue = true)
         {
             yield return Until(() => MainMenuController.Current.IsVisible
                 && host.Runtime.EndingStage == EndingStage.Completed, "immediate menu", 2);
@@ -1215,13 +1215,23 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(menuAudio.GetSource(MiniGameAudioChannel.EndNote).isPlaying, Is.True,
                 "EndNote must survive the immediate menu cut.");
             Assert.That(MainMenuController.Current.View.Page, Is.EqualTo(MainMenuPage.Menu));
-            Assert.That(MainMenuController.Current.View.ContinueButton.interactable, Is.False);
+            Assert.That(MainMenuController.Current.View.ContinueButton.interactable, Is.True);
             Assert.That(MainMenuController.Current.HasRetainedGame, Is.False);
             Assert.That(MainMenuContinueStore.HasCompletedInspection(temporaryDirectory), Is.True);
             MainMenuController.Current.CompleteInspectionAndReturnToMenu(true);
             Assert.That(endNoteStarts, Is.EqualTo(1), "Repeated completion cannot replay the note.");
             yield return EndingVisualCapture.Capture(route + "-main-menu", MiniGameSessionHost.Current.Runtime);
             yield return EndingVisualCapture.Flush();
+            if (verifyContinue)
+            {
+                string automatic = File.ReadAllText(MainMenuController.Current.ContinuePath);
+                var completed = host.Runtime;
+                MainMenuController.Current.Continue();
+                yield return Until(() => !MainMenuController.BlocksGameplayInput, "continue after ending", 30);
+                Assert.That(host.Runtime, Is.Not.SameAs(completed));
+                Assert.That(host.Runtime.EndingStage, Is.Not.EqualTo(EndingStage.Completed));
+                Assert.That(File.ReadAllText(MainMenuController.Current.ContinuePath), Is.EqualTo(automatic));
+            }
         }
         private void Interact(InteractionTarget target, string anchorName)
         {

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using MiniGame.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,7 +19,15 @@ namespace MiniGame.UnityHost
         private CanvasGroup group;
         private RectTransform root, column, manual;
         private RectTransform settings;
-        private RectTransform gm;
+        private RectTransform gm, loadSlots;
+        private Text loadStatus;
+        private readonly Text[] loadLabels = new Text[2];
+        private readonly string[] loadPaths = new string[2];
+        private GameObject loadPreviousSelection;
+        private MiniGameBootstrap loadOwner;
+        private int loadOpenedFrame, loadActivationFrame = -1;
+        public Button[] LoadSlotButtons { get; private set; } = Array.Empty<Button>();
+        public bool LoadSlotsVisible => visible && loadSlots != null && loadSlots.gameObject.activeSelf;
         private Action<EndingType> gmAction;
         private GameObject gmPreviousSelection;
         private bool gmChordConsumed;
@@ -45,7 +54,7 @@ namespace MiniGame.UnityHost
         public bool SettingsVisible => visible && settings != null && settings.gameObject.activeSelf;
         public bool GmVisible => visible && gm != null && gm.gameObject.activeSelf;
         public Button[] GmEndingButtons { get; private set; } = Array.Empty<Button>();
-        private bool SubmenuVisible => ManualVisible || SettingsVisible || GmVisible;
+        public bool SubmenuVisible => ManualVisible || SettingsVisible || GmVisible || LoadSlotsVisible;
         public PlayerSettingsView SharedSettings { get; private set; }
         public Button[] PixelDetailButtons => SharedSettings != null ? SharedSettings.PixelDetailButtons : Array.Empty<Button>();
 
@@ -148,6 +157,7 @@ namespace MiniGame.UnityHost
             BuildManual(font);
             BuildSettings(font);
             BuildGm(font);
+            BuildLoadSlots(font);
             LayoutColumn();
             gameObject.SetActive(false);
         }
@@ -266,6 +276,133 @@ namespace MiniGame.UnityHost
             bool valid = selectable != null && selectable.transform.IsChildOf(column) && selectable.IsActive() && selectable.IsInteractable();
             EventSystem.current?.SetSelectedGameObject(valid ? gmPreviousSelection : FirstEnabled()?.gameObject);
             gmPreviousSelection = null;
+            return true;
+        }
+
+        private void BuildLoadSlots(Font font)
+        {
+            loadSlots = NewRect(root, "PauseLoadSlots");
+            loadSlots.anchorMin = loadSlots.anchorMax = loadSlots.pivot = Vector2.one * .5f;
+            loadSlots.sizeDelta = new Vector2(900, 600);
+            loadSlots.gameObject.AddComponent<Image>().color = new Color(0, 0, 0, .97f);
+            MakeText(loadSlots, font, "LoadTitle", 38, 38, 24, 824, 60).text = "读取存档";
+            MakeLine(loadSlots, "LoadRule", 38, 100, 824, 1, Edge);
+            LoadSlotButtons = new Button[3];
+            for (int i = 0; i < 3; i++)
+            {
+                var row = NewRect(loadSlots, "LoadSlot" + i);
+                TopRect(row, 38, 125 + i * 110, 824, 96);
+                var hit = row.gameObject.AddComponent<Image>();
+                hit.sprite = stripSprite;
+                var button = row.gameObject.AddComponent<PauseMenuButton>();
+                button.targetGraphic = hit;
+                var frame = NewRect(row, "FocusFrame");
+                Stretch(frame);
+                var outline = frame.gameObject.AddComponent<Image>();
+                outline.sprite = focusSprite; outline.raycastTarget = false;
+                var focus = frame.gameObject.AddComponent<CanvasGroup>();
+                focus.alpha = 0; focus.blocksRaycasts = false; focus.interactable = false;
+                var label = MakeText(row, font, "Label", 26, 24, 0, 776, 96);
+                label.alignment = TextAnchor.MiddleLeft;
+                var key = MakeText(row, font, "Shortcut", 20, 780, 0, 20, 96);
+                button.ConfigureVisuals(label, key, focus, null, Ink);
+                int index = i;
+                if (i < 2)
+                {
+                    loadLabels[i] = label;
+                    button.onClick.AddListener(() => LoadSelectedSlot(index));
+                }
+                else
+                {
+                    label.text = "返回暂停菜单    Esc";
+                    button.onClick.AddListener(() => TryCloseLoadSlots());
+                }
+                LoadSlotButtons[i] = button;
+            }
+            loadStatus = MakeText(loadSlots, font, "LoadStatus", 20, 38, 465, 824, 110);
+            loadSlots.gameObject.SetActive(false);
+        }
+
+        public void ShowLoadSlots(MiniGameBootstrap owner = null)
+        {
+            if (!visible || SubmenuVisible) return;
+            loadOwner = owner;
+            loadOpenedFrame = Time.frameCount;
+            loadPreviousSelection = EventSystem.current?.currentSelectedGameObject;
+            loadStatus.text = string.Empty;
+            for (int i = 0; i < 2; i++)
+            {
+                var slot = (CampaignSaveSlot)i;
+                string warning;
+                var session = MiniGameSessionHost.Current;
+                loadPaths[i] = owner != null ? owner.FindCampaignSave(slot, out warning)
+                    : MainMenuContinueStore.ResolveAvailable(MainMenuController.SaveDirectoryOverride ?? MiniGameBootstrap.SaveDirectory,
+                        slot, path =>
+                        {
+                            if (session == null) return "当前没有可恢复的检查流程。";
+                            return MiniGameSessionHost.TryValidateSave(path, session.Rules, session.Content, out var error) ? null : error;
+                        }, out warning);
+                LoadSlotButtons[i].interactable = loadPaths[i] != null;
+                string details = warning;
+                if (loadPaths[i] != null)
+                {
+                    try { details = "可读取 · " + File.GetLastWriteTime(loadPaths[i]).ToString("yyyy-MM-dd HH:mm:ss"); }
+                    catch (Exception) { details = "可读取 · 时间不可用"; }
+                    if (!string.IsNullOrEmpty(warning)) loadStatus.text = warning;
+                }
+                else if (warning != "空槽位")
+                {
+                    details = "不可读取";
+                    loadStatus.text = warning;
+                }
+                loadLabels[i].text = (i == 0 ? "手动存档" : "自动存档") + "\n" + details;
+            }
+            columnInput.interactable = columnInput.blocksRaycasts = false;
+            column.gameObject.SetActive(false);
+            loadSlots.gameObject.SetActive(true);
+            LayoutColumn();
+            for (int i = 0; i < LoadSlotButtons.Length; i++)
+            {
+                Button above = null, below = null;
+                for (int step = 1; step <= LoadSlotButtons.Length; step++)
+                {
+                    var up = LoadSlotButtons[(i - step + LoadSlotButtons.Length) % LoadSlotButtons.Length];
+                    var down = LoadSlotButtons[(i + step) % LoadSlotButtons.Length];
+                    if (above == null && up.interactable) above = up;
+                    if (below == null && down.interactable) below = down;
+                }
+                LoadSlotButtons[i].navigation = new Navigation { mode = Navigation.Mode.Explicit, selectOnUp = above, selectOnDown = below };
+            }
+            foreach (var button in LoadSlotButtons)
+                if (button.interactable) { EventSystem.current?.SetSelectedGameObject(button.gameObject); break; }
+        }
+
+        private void LoadSelectedSlot(int index)
+        {
+            if (!LoadSlotsVisible || loadPaths[index] == null || Time.frameCount == loadOpenedFrame
+                || Time.frameCount == loadActivationFrame) return;
+            loadActivationFrame = Time.frameCount;
+            string error = "当前场景不能读取存档。";
+            var session = MiniGameSessionHost.Current;
+            bool loaded = loadOwner != null ? loadOwner.TryLoadCampaign(loadPaths[index], out error)
+                : session != null && session.TryLoadFrom(loadPaths[index], out error, pauseOnLoad: true);
+            if (!loaded) { loadStatus.text = error; return; }
+            TryCloseLoadSlots();
+            SetStatus("存档已读取。");
+        }
+
+        public bool TryCloseLoadSlots()
+        {
+            if (!LoadSlotsVisible) return false;
+            loadSlots.gameObject.SetActive(false);
+            column.gameObject.SetActive(true);
+            columnInput.interactable = columnInput.blocksRaycasts = true;
+            RefreshNavigation();
+            var selected = loadPreviousSelection != null ? loadPreviousSelection.GetComponent<Selectable>() : null;
+            EventSystem.current?.SetSelectedGameObject(selected != null && selected.IsActive() && selected.IsInteractable()
+                ? loadPreviousSelection : FirstEnabled()?.gameObject);
+            loadPreviousSelection = null;
+            loadOwner = null;
             return true;
         }
 
@@ -428,6 +565,7 @@ namespace MiniGame.UnityHost
                 ResetManual();
                 ResetSettings();
                 ResetGm();
+                ResetLoadSlots();
                 RestoreSelection();
                 if (group.alpha <= .001f) gameObject.SetActive(false);
             }
@@ -497,6 +635,8 @@ namespace MiniGame.UnityHost
                 manual.localScale = Vector3.one * Mathf.Min(1, height * .88f / 810, width * .88f / 1100);
             if (settings != null)
                 settings.localScale = Vector3.one * Mathf.Min(1, height * .88f / 600, width * .88f / 740);
+            if (loadSlots != null)
+                loadSlots.localScale = Vector3.one * Mathf.Min(1, height * .88f / 600, width * .88f / 900);
             if (gm != null)
                 gm.localScale = Vector3.one * Mathf.Min(height * .82f / gm.sizeDelta.y, width * .30f / ColumnWidth);
         }
@@ -517,6 +657,7 @@ namespace MiniGame.UnityHost
             ResetManual();
             ResetSettings();
             ResetGm();
+            ResetLoadSlots();
             if (group != null) { group.alpha = 0; group.interactable = false; group.blocksRaycasts = false; }
         }
 
@@ -525,6 +666,13 @@ namespace MiniGame.UnityHost
             if (SharedSettings != null) SharedSettings.Hide();
             if (backdrop != null) backdrop.SetLivePreview(false, false);
             settingsPreviousSelection = null;
+        }
+
+        private void ResetLoadSlots()
+        {
+            if (loadSlots != null) loadSlots.gameObject.SetActive(false);
+            loadPreviousSelection = null;
+            loadOwner = null;
         }
 
         private void ResetGm()

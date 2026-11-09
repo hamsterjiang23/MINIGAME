@@ -124,39 +124,29 @@ namespace MiniGame.UnityHost
         public void ReturnToMenu()
         {
             if (releasing || Runtime == null || MiniGameSessionHost.Current != null && MiniGameSessionHost.Current.IsTransitioning) return;
-            if (completedInspection || MainMenuContinueStore.HasCompletedInspection(SaveDirectory))
+            if (completedInspection)
             { CompleteInspectionAndReturnToMenu(); return; }
             CoverGame(true);
             Runtime.SetPaused(true);
             retained = true;
             SuspendGameAudio();
-            string error = null;
-            if (MiniGameSessionHost.Current != null) MiniGameSessionHost.Current.TrySaveTo(ContinuePath, out error);
-            else
-            {
-                try { new RuntimeFileSaveStore(ContinuePath).Save(Runtime); }
-                catch (Exception exception) { error = "保存失败：" + exception.Message; }
-            }
-            View.Show(MainMenuPage.Menu, true, error ?? string.Empty);
+            View.Show(MainMenuPage.Menu, HasResumeFile());
             StartMenuMusic();
         }
 
         public void Continue()
         {
             if (releasing || View.Page != MainMenuPage.Menu) return;
-            if (completedInspection || MainMenuContinueStore.HasCompletedInspection(SaveDirectory))
-            { View.SetStatus("本次检查期已结束，请开始新的检查期。", true); return; }
-            if (!HasRetainedGame)
-            {
-                string path = MainMenuContinueStore.ResolveResumePath(SaveDirectory);
-                if (path == null) { View.SetStatus("没有可继续的检查进度。", true); return; }
-                if (owner == null) { View.SetStatus("当前场景不能读取检查进度。", true); return; }
-                if (!owner.TryLoadCampaign(path, out var error)) { View.SetStatus(error, true); return; }
-                Runtime?.SetPaused(true);
-                retained = true;
-                CoverGame(true);
-                SuspendGameAudio();
-            }
+            if (owner == null) { View.SetStatus("当前场景不能读取检查进度。", true); return; }
+            string path = owner.FindCampaignSave(null, out var warning, SaveDirectory);
+            if (path == null) { View.Show(MainMenuPage.Menu, false, warning); return; }
+            if (!owner.TryLoadCampaign(path, out var error)) { View.SetStatus(error, true); return; }
+            NotifyProgressLoaded();
+            Runtime?.SetPaused(true);
+            retained = true;
+            CoverGame(true);
+            SuspendGameAudio();
+            if (!string.IsNullOrEmpty(warning)) owner.Screen.Notify(warning, true);
             StartCoroutine(ReleaseInputAndResume());
         }
 
@@ -173,7 +163,7 @@ namespace MiniGame.UnityHost
             {
                 ReturnToMenu();
             }
-            View.Show(MainMenuPage.ConfirmNew, HasRetainedGame || HasResumeFile());
+            View.Show(MainMenuPage.ConfirmNew, HasResumeFile());
         }
 
         public void ConfirmNewInspection()
@@ -212,9 +202,7 @@ namespace MiniGame.UnityHost
             string error = null;
             try { MainMenuContinueStore.MarkCompleted(SaveDirectory); }
             catch (Exception exception) { error = "完成记录保存失败：" + exception.Message; }
-            if (MiniGameSessionHost.Current != null
-                && !MiniGameSessionHost.Current.TrySaveTo(ContinuePath, out var saveError)) error = saveError;
-            View.Show(MainMenuPage.Menu, false, error ?? string.Empty);
+            View.Show(MainMenuPage.Menu, HasResumeFile(), error ?? string.Empty);
             if (playEndNote && firstCompletion)
                 menuAudio.PlayOneShot(MiniGameAudioChannel.EndNote, MiniGameSound.EndNote);
             StartMenuMusic();
@@ -222,12 +210,12 @@ namespace MiniGame.UnityHost
 
         public void ShowSettings()
         {
-            if (View.Page == MainMenuPage.Menu && !releasing) View.Show(MainMenuPage.Settings, HasRetainedGame || HasResumeFile());
+            if (View.Page == MainMenuPage.Menu && !releasing) View.Show(MainMenuPage.Settings, HasResumeFile());
         }
 
         public void BackToMenu()
         {
-            if (!releasing) View.Show(MainMenuPage.Menu, HasRetainedGame || HasResumeFile());
+            if (!releasing) View.Show(MainMenuPage.Menu, HasResumeFile());
         }
 
         public void HandleEscape()
@@ -394,7 +382,9 @@ namespace MiniGame.UnityHost
             StartCoroutine(PrewarmTitle());
         }
 
-        private bool HasResumeFile() => !completedInspection && MainMenuContinueStore.ResolveResumePath(SaveDirectory) != null;
+        public void NotifyProgressLoaded() { completedInspection = false; retained = true; }
+
+        private bool HasResumeFile() => owner != null && owner.FindCampaignSave(null, out _, SaveDirectory) != null;
         private void Update()
         {
             if (!IsVisible || releasing || pixelSetupConfirmedFrame == Time.frameCount) return;

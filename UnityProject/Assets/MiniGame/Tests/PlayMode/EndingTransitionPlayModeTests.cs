@@ -188,7 +188,7 @@ namespace MiniGame.UnityHost.Tests
         }
 
         [Test]
-        public void CompletedPeriodDisablesContinueWithoutDeletingSaves()
+        public void CompletedPeriodKeepsManualContinueWithoutDeletingSaves()
         {
             string directory = Path.Combine(Path.GetTempPath(), "minigame-ending-completion-" + Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(directory);
@@ -199,11 +199,11 @@ namespace MiniGame.UnityHost.Tests
                 File.WriteAllText(manual, "manual remains");
                 File.WriteAllText(automatic, "automatic remains");
                 MainMenuContinueStore.MarkCompleted(directory);
-                Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.Null);
+                Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(manual));
                 Assert.That(File.ReadAllText(manual), Is.EqualTo("manual remains"));
                 Assert.That(File.ReadAllText(automatic), Is.EqualTo("automatic remains"));
                 MainMenuContinueStore.StartNewInspection(directory);
-                Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(automatic));
+                Assert.That(MainMenuContinueStore.ResolveResumePath(directory), Is.EqualTo(manual));
                 Assert.That(File.ReadAllText(manual), Is.EqualTo("manual remains"));
             }
             finally

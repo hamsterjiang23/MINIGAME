@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -54,6 +54,8 @@ namespace MiniGame.UnityHost
         private Text hint, caption, reticle;
         private InteractionCursorView interactionCursor;
         private PauseMenuView pauseMenu;
+        private Text saveNotice;
+        private float saveNoticeUntil;
         private Font font;
         private int voiceIndex = -1;
         private RoomDreamEnding roomEnding;
@@ -156,12 +158,19 @@ namespace MiniGame.UnityHost
         private void Update()
         {
             if (MainMenuController.BlocksGameplayInput) return;
+            if (saveNotice != null && Time.unscaledTime >= saveNoticeUntil) saveNotice.text = string.Empty;
             if (initialized) ApplyPause();
             if (initialized && !UseExternalClock && (roomEnding == null || roomEnding.Ready)
                 && Input.GetKeyDown(KeyCode.Escape))
             {
                 HandlePauseEscape();
                 return;
+            }
+            if (initialized && !UseExternalClock && pauseMenu != null && !pauseMenu.SubmenuVisible
+                && (roomEnding == null || roomEnding.Ready))
+            {
+                if (Input.GetKeyDown(KeyCode.F5)) SaveFromPause();
+                if (Input.GetKeyDown(KeyCode.F9)) LoadFromPause();
             }
             // Present a full black frame before the menu takes over, including after a restore.
             if (initialized && !Paused && roomEnding != null && roomEnding.Ready && IsBedEndingComplete
@@ -213,7 +222,7 @@ namespace MiniGame.UnityHost
 
         public void HandlePauseEscape()
         {
-            if (Paused && pauseMenu != null && (pauseMenu.TryCloseGm()
+            if (Paused && pauseMenu != null && (pauseMenu.TryCloseLoadSlots() || pauseMenu.TryCloseGm()
                 || pauseMenu.TryCloseSettings() || pauseMenu.TryCloseManual())) return;
             SetPaused(!Paused);
         }
@@ -326,6 +335,7 @@ namespace MiniGame.UnityHost
         public bool TryLieDown()
         {
             if (!CanLieDown) return false;
+            if (!previewMode) MiniGameSessionHost.Current?.SaveAutomatic();
             state.Phase = BeachEndingPhase.Lying;
             if (roomEnding != null)
             {
@@ -715,6 +725,7 @@ namespace MiniGame.UnityHost
             endingFade.color = Color.clear;
             endingFade.raycastTarget = false;
             curtain.SetActive(false);
+            saveNotice = Label(go.transform, "SaveNotice", new Vector2(.5f, .9f), new Vector2(1400, 70), 24);
             string[] names = { "继续", "保存进度", "读取存档", "重新开始", "回到主菜单", "退出游戏" };
             Action[] actions = { () => SetPaused(false), SaveFromPause, LoadFromPause, Restart,
                 () => MainMenuController.Current?.ReturnToMenu(), Quit };
@@ -746,6 +757,12 @@ namespace MiniGame.UnityHost
             pauseMenu.SetVisible(false);
         }
 
+        public void NotifySaveError(string message)
+        {
+            pauseMenu?.SetStatus(message, true);
+            if (saveNotice != null) { saveNotice.text = message; saveNoticeUntil = Time.unscaledTime + 5; }
+        }
+
         private void SaveFromPause()
         {
             if (previewMode) return;
@@ -760,8 +777,8 @@ namespace MiniGame.UnityHost
             if (previewMode) return;
             var session = MiniGameSessionHost.Current;
             if (session == null) return;
-            session.Load();
-            if (pauseMenu != null) pauseMenu.SetStatus(session.LastMessage);
+            SetPaused(true);
+            pauseMenu.ShowLoadSlots();
         }
 
         private Text Label(Transform parent, string name, Vector2 anchor, Vector2 size, int fontSize)

@@ -93,7 +93,14 @@ namespace MiniGame.UnityHost
         public bool PauseManualVisible => pauseMenu != null && pauseMenu.ManualVisible;
         public bool PauseSettingsVisible => pauseMenu != null && pauseMenu.SettingsVisible;
         public bool PauseGmVisible => pauseMenu != null && pauseMenu.GmVisible;
-        public bool PauseSubmenuVisible => PauseManualVisible || PauseSettingsVisible || PauseGmVisible;
+        public bool PauseSubmenuVisible => pauseMenu != null && pauseMenu.SubmenuVisible;
+        public bool TryClosePauseLoad() => pauseMenu != null && pauseMenu.TryCloseLoadSlots();
+        public void ShowLoadSlots(MiniGameBootstrap owner)
+        {
+            EnsureBuilt();
+            pauseMenu.SetVisible(true);
+            pauseMenu.ShowLoadSlots(owner);
+        }
         public bool TryClosePauseGm() => pauseMenu != null && pauseMenu.TryCloseGm();
         public bool WorldInputBlockedThisFrame => pauseClosedFrame == Time.frameCount;
         public bool TryClosePauseSettings() => pauseMenu != null && pauseMenu.TryCloseSettings();
