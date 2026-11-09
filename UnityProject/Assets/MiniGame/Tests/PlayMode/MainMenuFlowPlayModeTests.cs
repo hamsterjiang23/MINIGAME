@@ -198,6 +198,44 @@ namespace MiniGame.UnityHost.Tests
         [Serializable] private sealed class AutomaticEnvelope { public string Runtime; }
 
         [UnityTest, Timeout(90000)]
+        public IEnumerator PriestReleasePreservesJudgmentFileAcrossLaterInteractionsAndManualLoad()
+        {
+            yield return StartGame();
+            var fixture = Fixture();
+            DriveTo(fixture, view => view.Game.Day == 2 && view.Game.CurrentPatientId == "priest"
+                && view.TerminalPage == TerminalPage.Review && view.Cue != null, true);
+            host.RestoreCheckpoint(fixture.Save());
+            DriveTo(host.Runtime, view => view.Game.EncounterStage == EncounterStage.AwaitingDisposition, true);
+            var runtime = host.Runtime;
+            string judgment = runtime.Save();
+            string automatic = File.ReadAllText(AutomaticPath);
+            Assert.That(JsonUtility.FromJson<AutomaticEnvelope>(automatic).Runtime, Is.EqualTo(judgment));
+            Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, Disposition.Release).Accepted, Is.True);
+            Assert.That(runtime.IsAutomaticSaveLocked, Is.True);
+            host.Save();
+            string manual = File.ReadAllText(ManualPath);
+            MiniGameSessionHost.Current.SaveAutomatic();
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            DriveTo(runtime, view => view.Game.Phase == GamePhase.Ending, true);
+            Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.PriestAttack));
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            Assert.That(host.TryLoadCampaign(ManualPath, out var error), Is.True, error);
+            Assert.That(host.Runtime.IsAutomaticSaveLocked, Is.True);
+            MiniGameSessionHost.Current.SaveAutomatic();
+            Assert.That(File.ReadAllText(AutomaticPath), Is.EqualTo(automatic));
+            Assert.That(host.TryLoadCampaign(AutomaticPath, out error), Is.True, error);
+            runtime = host.Runtime;
+            runtime.SetPaused(false);
+            Assert.That(runtime.IsAutomaticSaveLocked, Is.False);
+            Assert.That(runtime.GetView().Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition));
+            Assert.That(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId, Disposition.Treat).Accepted, Is.True);
+            DriveTo(runtime, view => view.Game.Phase == GamePhase.Evening && view.Cue == null, true);
+            Assert.That(runtime.TryInteract(InteractionTarget.Bed).Accepted, Is.True);
+            Assert.That(File.ReadAllText(AutomaticPath), Is.Not.EqualTo(automatic));
+            Assert.That(File.ReadAllText(ManualPath), Is.EqualTo(manual));
+        }
+
+        [UnityTest, Timeout(90000)]
         public IEnumerator AutosaveEmptySlotsDisableLoadingAndKeepReturnNavigation()
         {
             yield return StartGame();
@@ -986,8 +1024,9 @@ namespace MiniGame.UnityHost.Tests
             Assert.That(condition(), Is.True, label + " timed out.");
         }
 
-        private static void DriveTo(GameRuntime runtime, Func<RuntimeView, bool> stop)
+        private static void DriveTo(GameRuntime runtime, Func<RuntimeView, bool> stop, bool maximizeTrust = false)
         {
+            var package = maximizeTrust ? EndingCampaignScenario.LoadPackage() : null;
             for (int step = 0; step < 2000; step++)
             {
                 var view = runtime.GetView();
@@ -1010,7 +1049,18 @@ namespace MiniGame.UnityHost.Tests
                             ? Disposition.Purify : available.Contains(Disposition.Treat) ? Disposition.Treat : available.First();
                         result = runtime.SubmitDisposition(view.Game.CurrentEncounterId, disposition);
                     }
-                    else result = runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, view.Game.AvailableResponseIds.First());
+                    else
+                    {
+                        string response = view.Game.AvailableResponseIds.First();
+                        if (package != null)
+                        {
+                            var meeting = package.Rules.Days.Single(d => d.Day == view.Game.Day).Meetings.Single(m => m.PatientId == view.Game.CurrentPatientId);
+                            var round = view.Game.EncounterStage == EncounterStage.SpecialDialogue ? meeting.SpecialRound
+                                : meeting.NormalRounds.Single(r => r.NodeId == view.Game.CurrentNodeId);
+                            response = round.Responses.OrderByDescending(r => r.TrustDelta).First().Id;
+                        }
+                        result = runtime.SelectResponse(view.Game.CurrentEncounterId, view.Game.CurrentNodeId, response);
+                    }
                 }
                 else if (view.Game.Phase == GamePhase.Evening || view.Game.Phase == GamePhase.AfterDream)
                     result = runtime.TryInteract(InteractionTarget.Bed);

@@ -44,6 +44,8 @@ Norm 标志与监控局部扰动通过游戏内 **F6** 调参，支持两组独�
 
 ### 手动与自动存档
 
+- 神父进入审判抉择时，自动保存尚未选择的检查点。选择释放后，本局后续自动保存全部冻结；选择治疗或净化则沿用正常自动保存。冻结状态由已结算的释放记录派生，读取释放后的手动档仍冻结，读取抉择前的自动档可重新选择；手动保存不受影响。`[verified: ../src/MiniGame.Presentation/GameRuntime.cs Accept/IsAutomaticSaveLocked/RequestAutomaticSave；Assets/MiniGame/Runtime/MiniGameSessionHost.cs SaveAutomatic]`
+
 - **F5／保存进度**只更新手动槽；**F9／读取存档**打开手动、自动两个独立槽位，显示保存时间，可用鼠标或上下键选择，Enter读取，Esc返回暂停菜单。空槽或校验失败的槽位不可读取。`[verified: Assets/MiniGame/Runtime/MiniGameBootstrap.cs Save/Load；Assets/MiniGame/Runtime/PauseMenuView.cs ShowLoadSlots/LoadSelectedSlot]`
 - 自动槽使用 `campaign-continue.json`：有效床／门交互前保存，对话选项成功结算后保存；包含海滩床。无效操作、镜头返回和读档本身不更新自动槽。写入失败保留旧档，提示错误并继续游戏。`[verified: ../src/MiniGame.Presentation/GameRuntime.cs AutoSaveRequested/TryInteract/SelectResponse；Assets/MiniGame/Runtime/MiniGameSessionHost.cs SaveAutomatic/WriteAtomically；Assets/MiniGame/Runtime/DreamEndingController.cs TryLieDown]`
 - 主菜单“继续检查”始终读取存档：依次尝试 `campaign-dream-save.json`、旧版 `campaign-save.json`、自动槽，跳过校验失败的文件。结局结束后仍可读取此前检查点；返回菜单及结局结束不覆盖自动槽。暂停菜单“继续检查”只解除暂停。`[verified: Assets/MiniGame/Runtime/MainMenuContinueStore.cs CandidatePaths/ResolveAvailable；Assets/MiniGame/Runtime/MainMenuController.cs Continue/ReturnToMenu/CompleteInspectionAndReturnToMenu]`

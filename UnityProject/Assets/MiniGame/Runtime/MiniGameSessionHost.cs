@@ -269,7 +269,7 @@ namespace MiniGame.UnityHost
 
         public void SaveAutomatic()
         {
-            if (Runtime == null || !Runtime.IsCampaign) return;
+            if (Runtime == null || !Runtime.IsCampaign || Runtime.IsAutomaticSaveLocked) return;
             if (TrySaveTo(AutomaticSavePath, out var error)) return;
             // World interaction feedback clears notices synchronously; report after the command returns.
             pendingAutoSaveError = "自动" + error;

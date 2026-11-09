@@ -304,7 +304,7 @@ namespace MiniGame.UnityHost
 
         private void SaveAutomaticWithoutSession()
         {
-            if (!campaignActive || MiniGameSessionHost.Current != null) return;
+            if (!campaignActive || MiniGameSessionHost.Current != null || Runtime.IsAutomaticSaveLocked) return;
             try { new RuntimeFileSaveStore(Path.Combine(SaveDirectory, "campaign-continue.json")).Save(Runtime); }
             catch (Exception exception) { pendingAutoSaveError = "自动保存失败：" + exception.Message; }
         }

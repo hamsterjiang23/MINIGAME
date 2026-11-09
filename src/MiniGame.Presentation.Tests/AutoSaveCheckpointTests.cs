@@ -1,11 +1,96 @@
 using System;
+using System.IO;
+using System.Linq;
 using MiniGame.Core;
+using MiniGame.Presentation.Authoring;
 using NUnit.Framework;
 
 namespace MiniGame.Presentation.Tests
 {
     public sealed class AutoSaveCheckpointTests
     {
+        [TestCase(Disposition.Release, 2)]
+        [TestCase(Disposition.Release, 3)]
+        [TestCase(Disposition.Treat, 2)]
+        [TestCase(Disposition.Purify, 2)]
+        public void PriestJudgmentCheckpointFreezesOnlyAfterReleaseAndSurvivesRestore(Disposition choice, int day)
+        {
+            var folder = new DirectoryInfo(TestContext.CurrentContext.TestDirectory);
+            while (folder != null && !Directory.Exists(Path.Combine(folder.FullName, "UnityProject"))) folder = folder.Parent;
+            var package = DialoguePackageCompiler.Compile(File.ReadAllText(Path.Combine(folder!.FullName,
+                "UnityProject/Assets/MiniGame/Content/Campaign/campaign.minigame.json")));
+            var runtime = new GameRuntime(package.Rules, package.Content, true);
+            string? automatic = null;
+            int requests = 0;
+            void Bind() => runtime.AutoSaveRequested += () => { requests++; automatic = runtime.Save(); };
+            Bind();
+            for (int step = 0; step < 2000 && !(runtime.GetView().Game.Day == day
+                && runtime.GetView().Game.CurrentPatientId == "priest"
+                && runtime.GetView().Game.EncounterStage == EncounterStage.AwaitingDisposition); step++)
+                StepCampaign(runtime, package);
+            var judgment = runtime.GetView();
+            Assert.That(judgment.Game.CurrentPatientId, Is.EqualTo("priest"));
+            Assert.That(judgment.Game.Day, Is.EqualTo(day));
+            Assert.That(judgment.Game.EncounterStage, Is.EqualTo(EncounterStage.AwaitingDisposition));
+            Assert.That(automatic, Is.EqualTo(runtime.Save()), "Save must be at the actionable judgment, not its preceding response.");
+            string checkpoint = automatic!;
+            int before = requests;
+            runtime.SetPaused(true);
+            runtime.SetPaused(false);
+            RuntimeScenario.RejectWithoutMutation(runtime, () => runtime.SubmitDisposition("stale", choice));
+            Assert.That(requests, Is.EqualTo(before));
+            RuntimeScenario.Accept(runtime.SubmitDisposition(judgment.Game.CurrentEncounterId!, choice));
+            Assert.That(runtime.IsAutomaticSaveLocked, Is.EqualTo(choice == Disposition.Release));
+            string manualAfterChoice = runtime.Save();
+            runtime = GameRuntime.Restore(manualAfterChoice, package.Rules, package.Content);
+            Bind();
+            Assert.That(runtime.IsAutomaticSaveLocked, Is.EqualTo(choice == Disposition.Release));
+            for (int step = 0; step < 2000 && runtime.GetView().Game.Phase != GamePhase.Ending; step++)
+                StepCampaign(runtime, package);
+            Assert.That(runtime.GetView().Game.Phase, Is.EqualTo(GamePhase.Ending));
+            if (choice == Disposition.Release)
+            {
+                Assert.That(runtime.GetView().Game.Ending, Is.EqualTo(EndingType.PriestAttack));
+                Assert.That(requests, Is.EqualTo(before), "No later interaction or response may overwrite the judgment.");
+                Assert.That(automatic, Is.EqualTo(checkpoint));
+            }
+            else Assert.That(requests, Is.GreaterThan(before));
+
+            runtime = GameRuntime.Restore(checkpoint, package.Rules, package.Content);
+            Bind();
+            Assert.That(runtime.IsAutomaticSaveLocked, Is.False);
+            Assert.That(runtime.GetView().Game.AvailableDispositions, Does.Contain(Disposition.Treat));
+            RuntimeScenario.Accept(runtime.SubmitDisposition(runtime.GetView().Game.CurrentEncounterId!, Disposition.Treat));
+            before = requests;
+            for (int step = 0; step < 500 && requests == before; step++) StepCampaign(runtime, package);
+            Assert.That(requests, Is.GreaterThan(before), "Choosing a different route after loading must resume autosaves.");
+            Assert.That(new GameRuntime(package.Rules, package.Content).IsAutomaticSaveLocked, Is.False);
+        }
+
+        private static void StepCampaign(GameRuntime runtime, CompiledDialoguePackage package)
+        {
+            var view = runtime.GetView();
+            RuntimeResult result;
+            if (view.Cue != null) result = runtime.CompleteCue(view.Cue.Token);
+            else if (view.TerminalPage == TerminalPage.Archive) result = runtime.LeaveTerminal();
+            else if (view.TerminalPage == TerminalPage.Directory) result = runtime.EnterSelectedPatient(view.Game.CurrentPatientId!);
+            else if (view.Game.EncounterStage == EncounterStage.AwaitingDisposition)
+                result = runtime.SubmitDisposition(view.Game.CurrentEncounterId!,
+                    view.Game.RemainingPurificationQuota > 0 && view.Game.CurrentPatientId != "priest"
+                        ? Disposition.Purify : Disposition.Treat);
+            else if (view.Input == InputContext.Dialogue)
+            {
+                var meeting = package.Rules.Days.Single(d => d.Day == view.Game.Day).Meetings.Single(m => m.PatientId == view.Game.CurrentPatientId);
+                var round = view.Game.EncounterStage == EncounterStage.SpecialDialogue ? meeting.SpecialRound!
+                    : meeting.NormalRounds.Single(r => r.NodeId == view.Game.CurrentNodeId);
+                result = runtime.SelectResponse(view.Game.CurrentEncounterId!, view.Game.CurrentNodeId!,
+                    round.Responses.OrderByDescending(r => r.TrustDelta).First().Id);
+            }
+            else result = runtime.TryInteract(view.Game.Phase == GamePhase.MorningInspection ? InteractionTarget.Door
+                : view.Game.Phase == GamePhase.Apartment || view.Game.Phase == GamePhase.Work ? InteractionTarget.Computer : InteractionTarget.Bed);
+            RuntimeScenario.Accept(result);
+        }
+
         [TestCase("inspection")]
         [TestCase("toggle")]
         [TestCase("door-view")]

@@ -118,6 +118,9 @@ namespace MiniGame.Core
         public bool HasDispositionOtherThan(string patientId, int day, Disposition disposition)
             => _state.Encounters.Any(e => e.PatientId != patientId && e.Day == day && e.Disposition == disposition);
 
+        public bool HasReleasedPatient(string patientId)
+            => _state.Encounters.Any(e => e.PatientId == patientId && e.Disposition == Disposition.Release);
+
         public bool CanReceiveToday(string patientId)
             => CanSelectPendingEncounter() && _state.Queue.Skip(_state.QueueIndex).Contains(patientId)
                 && Patient(patientId).Presence == PatientPresence.Active
